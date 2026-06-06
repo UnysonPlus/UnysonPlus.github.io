@@ -10,7 +10,7 @@ The Page Builder ships with **27 built-in elements** (shortcodes). You add them 
 them onto the page canvas and configuring them through their options panel — no code
 required. They're grouped into three tabs in the builder:
 
-- **[Content Elements](./content-elements.md)** — text, buttons, media boxes, posts, tables, and more (20 elements).
+- **[Content Elements](/docs/shortcodes/content-elements)** — text, buttons, media boxes, posts, tables, and more (20 elements, each with its own page).
 - **[Layout Elements](./layout-elements.md)** — sections, rows, columns and special section types (5 elements).
 - **[Media Elements](./media-elements.md)** — image and video (2 elements).
 

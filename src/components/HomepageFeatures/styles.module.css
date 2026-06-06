@@ -1,20 +1,40 @@
 .features {
-  display: flex;
-  align-items: center;
-  padding: 2rem 0;
   width: 100%;
+  padding: 1rem 0 2rem;
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+.feature {
+  text-align: center;
+  padding: 1.5rem 1.25rem;
 }
 
-.featureIcon {
-  font-size: 4rem;
-  line-height: 1;
-  height: 96px;
+.featureIconWrap {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 72px;
+  margin-bottom: 0.75rem;
+}
+
+.featureIcon {
+  color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .featureIcon {
+  color: var(--brand-teal);
+}
+
+.featureTitle {
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 800;
+  margin-bottom: 0.4rem;
+}
+
+.featureText {
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
 }

@@ -8,37 +8,86 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
+const HIGHLIGHTS = [
+  {value: '27', label: 'Builder Elements'},
+  {value: '20+', label: 'Extensions'},
+  {value: 'Free', label: 'GPL Licensed'},
+  {value: 'Auto', label: 'GitHub Updates'},
+];
+
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   const bannerUrl = useBaseUrl('img/unysonplus-banner.jpg');
   return (
-    <header className={clsx('hero', styles.heroBanner)}>
+    <header className={styles.hero}>
       <div className="container">
-        {/* Visually-hidden H1 keeps the page accessible/SEO-friendly while the banner shows the brand. */}
         <Heading as="h1" className="sr-only">
           {siteConfig.title}
         </Heading>
+        <p className={styles.eyebrow}>Ready to build premium WordPress themes?</p>
         <img
           src={bannerUrl}
           alt="Unyson+ Framework Plugin"
           className={styles.heroBannerImg}
         />
-        <p className={clsx('hero__subtitle', styles.heroSubtitle)}>
-          {siteConfig.tagline}
-        </p>
+        <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
+
+        <ul className={styles.highlights}>
+          {HIGHLIGHTS.map((h) => (
+            <li key={h.label} className={styles.highlight}>
+              <span className={styles.highlightValue}>{h.value}</span>
+              <span className={styles.highlightLabel}>{h.label}</span>
+            </li>
+          ))}
+        </ul>
+
         <div className={styles.buttons}>
-          <Link className="button button--primary button--lg" to="/docs/intro">
-            Read the Manual
+          <Link
+            className="button button--brand-orange button--lg"
+            href="https://github.com/UnysonPlus/UnysonPlus">
+            Get the Plugin — Free
           </Link>
           <Link
-            className="button button--secondary button--outline button--lg"
-            style={{marginLeft: '1rem'}}
-            href="https://github.com/UnysonPlus/UnysonPlus">
-            Get the Plugin
+            className={clsx('button button--outline button--lg', styles.ghostButton)}
+            to="/docs/intro">
+            Read the Manual
           </Link>
         </div>
       </div>
     </header>
+  );
+}
+
+function SectionHeader({eyebrow, title}) {
+  return (
+    <div className={styles.sectionHeader}>
+      <p className={styles.sectionEyebrow}>{eyebrow}</p>
+      <Heading as="h2" className={styles.sectionTitle}>
+        {title}
+      </Heading>
+    </div>
+  );
+}
+
+function ClosingCTA() {
+  return (
+    <section className={styles.cta}>
+      <div className="container">
+        <p className={styles.sectionEyebrow}>Start building your premium WordPress theme</p>
+        <Heading as="h2" className={styles.sectionTitle}>
+          Get Unyson+ — Free
+        </Heading>
+        <p className={styles.ctaText}>
+          Free and GPL-licensed, forever. Install the plugin and start theming with the
+          drag &amp; drop builder, options framework, and extensions.
+        </p>
+        <Link
+          className="button button--brand-orange button--lg"
+          href="https://github.com/UnysonPlus/UnysonPlus">
+          Download Unyson+ (Free)
+        </Link>
+      </div>
+    </section>
   );
 }
 
@@ -50,7 +99,16 @@ export default function Home() {
       description="Unyson+ is a free drag & drop framework for WordPress that helps you build premium themes fast, with a visual page builder, an options framework, and modular extensions.">
       <HomepageHeader />
       <main>
-        <HomepageFeatures />
+        <section className={styles.featuresBand}>
+          <div className="container">
+            <SectionHeader
+              eyebrow="Check out the Unyson+ framework"
+              title="Built-in Extensions & Options"
+            />
+          </div>
+          <HomepageFeatures />
+        </section>
+        <ClosingCTA />
       </main>
     </Layout>
   );

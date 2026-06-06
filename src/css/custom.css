@@ -44,3 +44,24 @@
   white-space: nowrap;
   border: 0;
 }
+
+/* ---- Brand accents (in the spirit of the original framework site) ---- */
+:root {
+  --brand-orange: #ff6a3d;
+  --brand-orange-dark: #ec5a2e;
+  --brand-teal: #2ec4b6;
+  --brand-green-1: #2f4f47;
+  --brand-green-2: #233b35;
+}
+
+/* Orange flat CTA button. */
+.button--brand-orange {
+  background-color: var(--brand-orange);
+  border-color: var(--brand-orange);
+  color: #fff;
+}
+.button--brand-orange:hover {
+  background-color: var(--brand-orange-dark);
+  border-color: var(--brand-orange-dark);
+  color: #fff;
+}

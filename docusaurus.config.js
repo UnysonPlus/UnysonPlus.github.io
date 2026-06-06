@@ -8,7 +8,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'Unyson+',
   tagline: 'A free drag & drop framework for building premium WordPress themes — fast.',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/unysonplus-logo.jpg',
 
   future: {
     v4: true,
@@ -71,7 +71,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/unysonplus-banner.jpg',
       colorMode: {
         respectPrefersColorScheme: true,
       },
@@ -79,7 +79,7 @@ const config = {
         title: 'Unyson+',
         logo: {
           alt: 'Unyson+ Logo',
-          src: 'img/logo.svg',
+          src: 'img/unysonplus-logo.jpg',
         },
         items: [
           {

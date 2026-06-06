@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 
@@ -9,21 +10,28 @@ import styles from './index.module.css';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
+  const bannerUrl = useBaseUrl('img/unysonplus-banner.jpg');
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+    <header className={clsx('hero', styles.heroBanner)}>
       <div className="container">
-        <Heading as="h1" className="hero__title">
+        {/* Visually-hidden H1 keeps the page accessible/SEO-friendly while the banner shows the brand. */}
+        <Heading as="h1" className="sr-only">
           {siteConfig.title}
         </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <img
+          src={bannerUrl}
+          alt="Unyson+ Framework Plugin"
+          className={styles.heroBannerImg}
+        />
+        <p className={clsx('hero__subtitle', styles.heroSubtitle)}>
+          {siteConfig.tagline}
+        </p>
         <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
+          <Link className="button button--primary button--lg" to="/docs/intro">
             Read the Manual
           </Link>
           <Link
-            className="button button--outline button--secondary button--lg"
+            className="button button--secondary button--outline button--lg"
             style={{marginLeft: '1rem'}}
             href="https://github.com/UnysonPlus/UnysonPlus">
             Get the Plugin

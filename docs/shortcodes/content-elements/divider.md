@@ -5,16 +5,37 @@ sidebar_position: 6
 
 # Divider
 
-A horizontal separator, optionally with text or an icon.
+A horizontal separator, optionally with text or an icon. Tabs: **Content**, **Layout**,
+**Styling**, **Animations**, **Advanced**.
 
-## Options
+## Content
 
-Ruler Type, Line Design, Add Element (text/icon), Divider Text, Select Icon, Content Alignment, Height, Margin Top/Bottom, Width (%), Line Color, Icon Color, Divider Text Color.
+| Option | Choices |
+| --- | --- |
+| **Ruler Type** | Line / Divider, Whitespace |
+| **Line Design** | Standard (Solid), Gradient Fade, Ornamental / Glyph, Inner Shadow |
+| **Add Element** | None, Text / Title, Icon |
+| **Divider Text** | Shown when Add Element = Text |
+| **Select Icon** | Shown when Add Element = Icon |
+| **Content Alignment** | Center, Left, Right |
+| **Height (px)** | Thickness / whitespace height |
 
-> Shared with most elements: **Background Color**, **Text Color**, and **Margin & Padding**.
+:::note Screenshots — line designs
+Capture each **Line Design** and the text/icon variants: `divider-solid`,
+`divider-gradient`, `divider-ornament`, `divider-shadow`, `divider-with-text`,
+`divider-with-icon`.
+:::
+
+## Layout
+
+Margin Top/Bottom, Width (%), and spacing controls.
+
+## Styling
+
+Line Color, Icon Color, Divider Text Color, Background Color, and Margin & Padding.
 
 ## Screenshots
 
 :::note
-Screenshots coming soon — drop images into `static/img/shortcodes/` and embed them here, e.g. `![Divider](/img/shortcodes/divider-1.png)`.
+Drop screenshots into `static/img/shortcodes/` and embed them here.
 :::

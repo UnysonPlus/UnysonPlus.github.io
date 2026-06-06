@@ -5,16 +5,33 @@ sidebar_position: 11
 
 # Notification
 
-A notification / alert box.
+A notification / alert box. Tabs: **Content**, **Styling**, **Animations**, **Advanced**.
 
-## Options
+## Content
 
-Message, Custom Label, Type, Border Style, Icon (or Custom Emoji/SVG), Layout Style, Dismissible, Auto-dismiss Seconds, plus label/message/icon colors.
+| Option | Choices |
+| --- | --- |
+| **Message** | The alert text |
+| **Custom Label** | Optional leading label |
+| **Type** | Primary, Secondary, Success, Information, Warning, Danger, Light, Dark |
+| **Border Style** | Filled (default), Outline (transparent background), Accent Left Border |
+| **Icon** / **Custom Icon (Emoji / SVG)** | Leading icon |
+| **Layout Style** | Inline (single row), Stacked (label above message) |
+| **Dismissible** | On/Off |
+| **Auto-dismiss Seconds** | Auto-hide after N seconds |
 
-> Shared with most elements: **Background Color**, **Text Color**, and **Margin & Padding**.
+:::note Screenshots — types, borders & layouts
+Capture the 8 **Types**, 3 **Border Styles**, and 2 **Layout Styles**, e.g.
+`notification-success-filled`, `notification-warning-outline`, `notification-danger-accent`,
+`notification-stacked`.
+:::
+
+## Styling
+
+Text, Label, Message and Icon colors, Background Color, and Margin & Padding.
 
 ## Screenshots
 
 :::note
-Screenshots coming soon — drop images into `static/img/shortcodes/` and embed them here, e.g. `![Notification](/img/shortcodes/notification-1.png)`.
+Drop screenshots into `static/img/shortcodes/` and embed them here.
 :::

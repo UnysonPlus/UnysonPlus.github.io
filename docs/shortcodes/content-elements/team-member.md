@@ -5,16 +5,23 @@ sidebar_position: 16
 
 # Team Member
 
-A team member card (photo, name, role, bio).
+A team member card. Tabs: **Content**, **Styling**, **Animations**, **Advanced**.
 
-## Options
+## Content
 
-Image, Name, Job Title, Description.
+| Option | Notes |
+| --- | --- |
+| **Team Member Image** | Photo |
+| **Team Member Name** | Full name |
+| **Team Member Job Title** | Role |
+| **Team Member Description** | Short bio |
 
-> Shared with most elements: **Background Color**, **Text Color**, and **Margin & Padding**.
+## Styling
+
+Text Color, Background Color, and Margin & Padding.
 
 ## Screenshots
 
 :::note
-Screenshots coming soon — drop images into `static/img/shortcodes/` and embed them here, e.g. `![Team Member](/img/shortcodes/team-member-1.png)`.
+Drop screenshots into `static/img/shortcodes/` and embed them here.
 :::

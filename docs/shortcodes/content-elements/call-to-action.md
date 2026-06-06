@@ -5,16 +5,25 @@ sidebar_position: 4
 
 # Call To Action
 
-A title + content + button block to drive an action.
+A title + content + button block to drive an action. Tabs: **Content**, **Styling**,
+**Animations**, **Advanced**.
 
-## Options
+## Content
 
-Title, Content, Button Label, Button Link, Open in New Window, Title Color, Content Color.
+| Option | Notes |
+| --- | --- |
+| **Title** | Headline |
+| **Content** | Supporting text |
+| **Button Label** | Button text |
+| **Button Link** | Destination URL |
+| **Open Link in New Window** | On/Off |
 
-> Shared with most elements: **Background Color**, **Text Color**, and **Margin & Padding**.
+## Styling
+
+Background Color, Title Color, Content Color, and Margin & Padding.
 
 ## Screenshots
 
 :::note
-Screenshots coming soon — drop images into `static/img/shortcodes/` and embed them here, e.g. `![Call To Action](/img/shortcodes/call-to-action-1.png)`.
+Drop screenshots into `static/img/shortcodes/` and embed them here.
 :::

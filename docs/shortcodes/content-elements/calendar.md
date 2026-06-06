@@ -5,16 +5,27 @@ sidebar_position: 3
 
 # Calendar
 
-A date/events calendar.
+A date / events calendar. Tabs: **Content**, **Styling**, **Animations**, **Advanced**.
 
-## Options
+## Content
 
-Population Method, Calendar Type, Start Week On, plus heading and navigation-button colors.
+| Option | Choices |
+| --- | --- |
+| **Population Method** | How events are sourced |
+| **Calendar Type** | Daily, Weekly, Monthly |
+| **Start Week On** | Monday, Sunday |
 
-> Shared with most elements: **Background Color**, **Text Color**, and **Margin & Padding**.
+:::note Screenshots — calendar types
+Capture the Daily / Weekly / Monthly views: `calendar-daily`, `calendar-weekly`,
+`calendar-monthly`.
+:::
+
+## Styling
+
+Text Color, Background Color, Heading Color, Navigation Buttons Color, and Margin & Padding.
 
 ## Screenshots
 
 :::note
-Screenshots coming soon — drop images into `static/img/shortcodes/` and embed them here, e.g. `![Calendar](/img/shortcodes/calendar-1.png)`.
+Drop screenshots into `static/img/shortcodes/` and embed them here.
 :::

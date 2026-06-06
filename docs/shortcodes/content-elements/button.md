@@ -5,16 +5,38 @@ sidebar_position: 2
 
 # Button
 
-A styled, linkable button.
+A styled, linkable button. Tabs: **Content**, **Styling**, **Animations**, **Advanced**.
 
-## Options
+## Content
 
-Button Label, Button Link, Open in New Window, Button Icon, Icon Position, Button Style, Button Size, Button Width (or Custom Width), Alignment, Button State, Hover Animation.
+| Option | Notes |
+| --- | --- |
+| **Button Label** | The text shown on the button |
+| **Button Link** | Destination URL |
+| **Open Link in New Window** | On/Off |
+| **Button Icon** | Optional icon |
+| **Icon Position** | Before Label, After Label |
 
-> Shared with most elements: **Background Color**, **Text Color**, and **Margin & Padding**.
+## Styling
+
+| Option | Choices |
+| --- | --- |
+| **Button Style** | A set of visual presets (image-picker) |
+| **Button Size** | Size presets (image-picker) |
+| **Button Width** | Full Width, or Custom |
+| **Custom Width** | Used when Button Width = Custom |
+| **Alignment** | Left, Center, Right |
+| **Button State** | Active, Disabled |
+| **Hover Animation** | A set of hover effects |
+| **Margin** | Spacing |
+
+:::note Screenshots — styles, sizes & hover
+Capture each **Button Style**, **Button Size**, and **Hover Animation** variant. Suggested
+files: `button-style-1`, `button-size-lg`, `button-hover-grow` in `static/img/shortcodes/`.
+:::
 
 ## Screenshots
 
 :::note
-Screenshots coming soon — drop images into `static/img/shortcodes/` and embed them here, e.g. `![Button](/img/shortcodes/button-1.png)`.
+Drop screenshots into `static/img/shortcodes/` and embed them here.
 :::

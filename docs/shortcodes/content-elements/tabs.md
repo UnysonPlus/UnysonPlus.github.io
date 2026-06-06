@@ -5,16 +5,34 @@ sidebar_position: 15
 
 # Tabs
 
-Tabbed content panels.
+Tabbed content panels. Tabs: **Content**, **Styling**, **Animations**, **Advanced**.
 
-## Options
+## Content
 
-Tabs (Title, Content), Active Tab, Tab Style, Justified Tabs, Tab Alignment, Tabs Orientation, Fade Animation, plus tab title/content colors.
+- **Tabs** — a repeatable list; each tab has a **Title**, **Content** (rich text), and an
+  **Active Tab** switch.
 
-> Shared with most elements: **Background Color**, **Text Color**, and **Margin & Padding**.
+## Layout & style
+
+| Option | Choices |
+| --- | --- |
+| **Tab Style** | Tabs (default), Pills, Underline |
+| **Justified Tabs** | On/Off (stretch tabs to full width) |
+| **Tab Alignment** | Start (default), Center, End |
+| **Tabs Orientation** | Horizontal, Vertical |
+| **Fade Animation** | On/Off |
+
+:::note Screenshots — tab styles & orientation
+Capture each style and orientation: `tabs-default`, `tabs-pills`, `tabs-underline`,
+`tabs-vertical`.
+:::
+
+## Styling
+
+Tab Title Color, Tab Content Color, Text Color, Background Color, and Margin & Padding.
 
 ## Screenshots
 
 :::note
-Screenshots coming soon — drop images into `static/img/shortcodes/` and embed them here, e.g. `![Tabs](/img/shortcodes/tabs-1.png)`.
+Drop screenshots into `static/img/shortcodes/` and embed them here.
 :::

@@ -5,16 +5,20 @@ sidebar_position: 18
 
 # Text Block
 
-A rich-text (WYSIWYG) block.
+A rich-text (WYSIWYG) block. Tabs: **Content**, **Styling**, **Animations**, **Advanced**.
 
-## Options
+## Content
 
-Content.
+| Option | Notes |
+| --- | --- |
+| **Content** | Rich text; supports formatting and nested shortcodes |
 
-> Shared with most elements: **Background Color**, **Text Color**, and **Margin & Padding**.
+## Styling
+
+Text Color, Background Color, and Margin & Padding.
 
 ## Screenshots
 
 :::note
-Screenshots coming soon — drop images into `static/img/shortcodes/` and embed them here, e.g. `![Text Block](/img/shortcodes/text-block-1.png)`.
+Drop screenshots into `static/img/shortcodes/` and embed them here.
 :::

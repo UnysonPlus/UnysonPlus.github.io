@@ -5,16 +5,21 @@ sidebar_position: 5
 
 # Code Block
 
-Insert raw HTML, CSS, or JavaScript.
+Insert raw **HTML, CSS, or JavaScript**. Tabs: **Content**, **Styling**, **Animations**,
+**Advanced**.
 
-## Options
+## Content
 
-Code.
+| Option | Notes |
+| --- | --- |
+| **Code** | The raw markup/script to output on the page |
 
-> Shared with most elements: **Background Color**, **Text Color**, and **Margin & Padding**.
+## Styling
+
+Text Color, Background Color, and Margin & Padding.
 
 ## Screenshots
 
 :::note
-Screenshots coming soon — drop images into `static/img/shortcodes/` and embed them here, e.g. `![Code Block](/img/shortcodes/code-block-1.png)`.
+Drop screenshots into `static/img/shortcodes/` and embed them here.
 :::

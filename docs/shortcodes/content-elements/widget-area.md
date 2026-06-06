@@ -5,16 +5,21 @@ sidebar_position: 20
 
 # Widget Area
 
-Render a registered sidebar / widget area inside the page.
+Render a registered sidebar / widget area inside the page. Tabs: **Content**, **Styling**,
+**Animations**, **Advanced**.
 
-## Options
+## Content
 
-Sidebar.
+| Option | Notes |
+| --- | --- |
+| **Sidebar** | Select which registered sidebar / widget area to render |
 
-> Shared with most elements: **Background Color**, **Text Color**, and **Margin & Padding**.
+## Styling
+
+Text Color, Background Color, and Margin & Padding.
 
 ## Screenshots
 
 :::note
-Screenshots coming soon — drop images into `static/img/shortcodes/` and embed them here, e.g. `![Widget Area](/img/shortcodes/widget-area-1.png)`.
+Drop screenshots into `static/img/shortcodes/` and embed them here.
 :::

@@ -5,16 +5,22 @@ sidebar_position: 7
 
 # Icon
 
-A single icon with an optional title.
+A single icon with an optional title. Tabs: **Content**, **Styling**, **Animations**,
+**Advanced**.
 
-## Options
+## Content
 
-Icon, Title, Title Color, Icon Color.
+| Option | Notes |
+| --- | --- |
+| **Icon** | Pick a font icon from the library |
+| **Title** | Optional label shown with the icon |
 
-> Shared with most elements: **Background Color**, **Text Color**, and **Margin & Padding**.
+## Styling
+
+Title Color, Icon Color, Background Color, and Margin & Padding.
 
 ## Screenshots
 
 :::note
-Screenshots coming soon — drop images into `static/img/shortcodes/` and embed them here, e.g. `![Icon](/img/shortcodes/icon-1.png)`.
+Drop screenshots into `static/img/shortcodes/` and embed them here.
 :::

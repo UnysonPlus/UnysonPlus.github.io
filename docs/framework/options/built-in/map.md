@@ -1,0 +1,23 @@
+---
+title: "Map"
+sidebar_position: 30
+---
+
+
+Google maps location.
+
+```php
+array(
+    'type'  => 'map',
+    'value' => array(
+        'coordinates' => array(
+            'lat'   => -34,
+            'lng'   => 150,
+        )
+    ),
+    'attr'  => array( 'class' => 'custom-class', 'data-foo' => 'bar' ),
+    'label' => __('Label', '{domain}'),
+    'desc'  => __('Description', '{domain}'),
+    'help'  => __('Help tip', '{domain}'),
+)
+```

@@ -1,0 +1,44 @@
+# Decap CMS configuration for the Unyson+ manual.
+# Edits commit Markdown to the `main` branch; GitHub Actions (deploy.yml) then
+# rebuilds and publishes the site automatically.
+
+backend:
+  name: github
+  repo: UnysonPlus/UnysonPlus.github.io
+  branch: main
+  # For ONLINE editing from anywhere, uncomment and point these at your OAuth
+  # proxy (see oauth-worker/ and docs-editing.md, Phase 2):
+  # base_url: https://YOUR-WORKER.workers.dev
+  # auth_endpoint: /auth
+
+# Enables offline, no-login editing via `npm run cms` (decap-server on :8081).
+local_backend: true
+
+media_folder: "static/img"
+public_folder: "/img"
+
+site_url: https://unysonplus.github.io
+display_url: https://unysonplus.github.io
+publish_mode: simple
+
+collections:
+  - name: docs
+    label: "Manual Pages"
+    label_singular: "Page"
+    description: "Every page of the Unyson+ manual (the Markdown files under /docs)."
+    folder: "docs"
+    extension: md
+    format: frontmatter
+    create: true
+    delete: false            # safer default; flip to true once comfortable
+    nested: { depth: 5 }     # mirror the docs/ folder tree in the editor
+    meta:
+      path:
+        widget: string
+        label: "Path (folder/filename, no extension)"
+        index_file: index
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "Sidebar position", name: "sidebar_position", widget: "number", required: false, value_type: "int", min: 1 }
+      - { label: "Slug (optional)", name: "slug", widget: "string", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }

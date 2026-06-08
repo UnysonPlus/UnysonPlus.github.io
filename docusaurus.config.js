@@ -29,10 +29,32 @@ const config = {
   onBrokenLinks: 'warn',
 
   markdown: {
+    // .md files parse as lenient CommonMark (so legacy docs with {braces} and
+    // <tags> in prose don't crash the MDX compiler); .mdx still parses as MDX.
+    format: 'detect',
     hooks: {
       onBrokenMarkdownLinks: 'warn',
+      // Some legacy pages reference old screenshots not committed to the repo;
+      // warn (don't fail) so they can be dropped into static/img/legacy/ later.
+      onBrokenMarkdownImages: 'warn',
     },
   },
+
+  // Offline, client-side search (replaces the old Sphinx "Search docs" box).
+  themes: [
+    [
+      '@easyops-cn/docusaurus-search-local',
+      /** @type {import('@easyops-cn/docusaurus-search-local').PluginOptions} */
+      ({
+        hashed: true,
+        indexDocs: true,
+        indexBlog: true,
+        docsRouteBasePath: '/docs',
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+      }),
+    ],
+  ],
 
   i18n: {
     defaultLocale: 'en',

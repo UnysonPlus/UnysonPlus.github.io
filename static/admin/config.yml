@@ -6,10 +6,9 @@ backend:
   name: github
   repo: UnysonPlus/UnysonPlus.github.io
   branch: main
-  # For ONLINE editing from anywhere, uncomment and point these at your OAuth
-  # proxy (see oauth-worker/ and docs-editing.md, Phase 2):
-  # base_url: https://YOUR-WORKER.workers.dev
-  # auth_endpoint: /auth
+  # OAuth proxy (Cloudflare Worker in oauth-worker/) for online GitHub login.
+  base_url: https://unysonplus-cms-oauth.unysonplus.workers.dev
+  auth_endpoint: /auth
 
 # Enables offline, no-login editing via `npm run cms` (decap-server on :8081).
 local_backend: true

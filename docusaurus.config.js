@@ -144,7 +144,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Unyson+. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Unyson+. Created by Jon-Michael Lastimosa`,
       },
       prism: {
         theme: prismThemes.github,

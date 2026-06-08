@@ -3,7 +3,8 @@
 One-shot migration: legacy Sphinx/RST docs  ->  Docusaurus Markdown.
 
 Source:  ../UnysonPlus-Documentation  (95 .rst files)
-Target:  ./docs/framework/...          (mirrors the old tree under one section)
+Target:  ./docs/<category>/...         (legacy categories merged at the top level,
+                                        after the existing Unyson+ pages)
 
 Requires a pandoc binary:  pip install pypandoc_binary
 Run from the unysonplus-site repo root:  python migrate-legacy-docs.py
@@ -17,8 +18,34 @@ import pypandoc
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.normpath(os.path.join(HERE, "..", "UnysonPlus-Documentation"))
-DEST = os.path.join(HERE, "docs", "framework")
-URL_BASE = "/docs/framework"
+DOCS = os.path.join(HERE, "docs")
+URL_BASE = "/docs"
+
+# The legacy categories are written at the TOP level of the docs sidebar (merged
+# with the Unyson+ pages), AFTER the existing curated categories (positions 1..6).
+TOP_OFFSET = 6
+# Legacy top folder -> renamed folder, to avoid colliding with an existing one.
+RENAME = {"extensions": "creating-extensions"}
+LABEL_OVERRIDE = {"creating-extensions": "Creating Extensions"}
+# Top-level folders this script owns (everything else under docs/ is left alone).
+MANAGED = ["convention", "options", "creating-extensions", "components",
+           "helpers", "manifest", "extension", "hooks"]
+
+
+def new_rel(old_rel):
+    """old 'extensions/cookbook.rst' -> new 'creating-extensions/cookbook.md'."""
+    parts = old_rel[:-4].split("/")
+    parts[0] = RENAME.get(parts[0], parts[0])
+    return "/".join(parts) + ".md"
+
+
+def to_old(new_path):
+    """new docs-relative dir -> legacy dir (reverse the top-folder rename)."""
+    parts = new_path.split("/")
+    for old, new in RENAME.items():
+        if parts[0] == new:
+            parts[0] = old
+    return "/".join(parts)
 
 # Link targets shared across all pages (the old .. include:: /links.rst.inc).
 with open(os.path.join(SRC, "links.rst.inc"), encoding="utf-8") as f:
@@ -100,10 +127,12 @@ def resolve_ref(target, cur_dir):
         absp = os.path.normpath(os.path.join(cur_dir, target)).replace("\\", "/")
     absp = absp.rstrip("/")
     if absp == "index":
-        return URL_BASE
+        return "/docs/intro"                       # old getting-started -> intro
     if absp.endswith("/index"):
-        return f"{URL_BASE}/{absp[:-len('/index')]}"
-    return f"{URL_BASE}/{absp}"
+        absp = absp[:-len("/index")]
+    parts = absp.split("/")
+    parts[0] = RENAME.get(parts[0], parts[0])
+    return f"{URL_BASE}/{'/'.join(parts)}"
 
 
 def convert_roles(text, cur_dir):
@@ -216,18 +245,13 @@ def old_dir_of(rel):
 
 
 def main():
-    # Clear DEST contents without removing the root dir (Windows may lock it).
-    if os.path.isdir(DEST):
-        for entry in os.listdir(DEST):
-            p = os.path.join(DEST, entry)
-            if os.path.isdir(p):
-                shutil.rmtree(p, ignore_errors=True)
-            else:
-                try:
-                    os.remove(p)
-                except OSError:
-                    pass
-    os.makedirs(DEST, exist_ok=True)
+    # Remove only the folders this script owns (leave Unyson+ docs untouched),
+    # plus the old docs/framework wrapper from a previous run.
+    for m in MANAGED + ["framework"]:
+        p = os.path.join(DOCS, m)
+        if os.path.isdir(p):
+            shutil.rmtree(p, ignore_errors=True)
+    os.makedirs(DOCS, exist_ok=True)
 
     # Copy whatever legacy images exist into static/img/legacy (paths rewritten
     # to /img/legacy/...). Missing screenshots simply warn at build time.
@@ -276,14 +300,13 @@ def main():
     category_only = []   # dirs that get a generated-index instead of index.md
 
     for rel in sorted(rst_files):
+        if rel == "index.rst":
+            continue                            # legacy getting-started -> use intro
         cur_dir = old_dir_of(rel)
         md = convert_file(os.path.join(SRC, rel), cur_dir)
         title, body = split_title(md)
-        if rel == "index.rst":
-            title = "Unyson Framework"          # avoid clashing with the new intro
         stem = os.path.splitext(os.path.basename(rel))[0]
-        dest_rel = rel[:-4] + ".md"           # keep tree, .rst -> .md
-        dest_path = os.path.join(DEST, dest_rel)
+        dest_path = os.path.join(DOCS, new_rel(rel))   # top-level, renamed tree
         pos = position_for(rel)
 
         if stem == "index":
@@ -308,38 +331,38 @@ def main():
 
     cat_only_dirs = {d: (t, p) for d, t, p in category_only}
 
-    for root, dirs, files in os.walk(DEST):
-        relroot = os.path.relpath(root, DEST).replace("\\", "/")
-        if relroot == ".":
+    # _category_.json for each managed top-level folder and its sub-dirs.
+    for m in MANAGED:
+        base = os.path.join(DOCS, m)
+        if not os.path.isdir(base):
             continue
-        old_dir = relroot  # same tree
-        label = index_titles.get(old_dir, os.path.basename(root).replace("-", " ").title())
-        pos = folder_pos.get(old_dir)
-        cat = {"label": label}
-        if pos is not None:
-            cat["position"] = pos
-        has_index = os.path.exists(os.path.join(root, "index.md"))
-        if old_dir in cat_only_dirs or not has_index:
-            cat["link"] = {"type": "generated-index",
-                           "title": label,
-                           "slug": f"/framework/{old_dir}"}
-        with open(os.path.join(root, "_category_.json"), "w",
-                  encoding="utf-8", newline="\n") as f:
-            json.dump(cat, f, indent=2)
+        for root, dirs, files in os.walk(base):
+            new_dir = os.path.relpath(root, DOCS).replace("\\", "/")
+            old_dir = to_old(new_dir)
+            is_top = "/" not in new_dir
+            label = (LABEL_OVERRIDE.get(new_dir) or index_titles.get(old_dir)
+                     or os.path.basename(root).replace("-", " ").title())
+            base_pos = folder_pos.get(old_dir)
+            if is_top and base_pos is not None:
+                pos = base_pos + TOP_OFFSET
+            else:
+                pos = base_pos
+            cat = {"label": label}
+            if pos is not None:
+                cat["position"] = pos
+            has_index = os.path.exists(os.path.join(root, "index.md"))
+            if old_dir in cat_only_dirs or not has_index:
+                cat["link"] = {"type": "generated-index", "title": label}
+            with open(os.path.join(root, "_category_.json"), "w",
+                      encoding="utf-8", newline="\n") as f:
+                json.dump(cat, f, indent=2)
 
-    # top-level framework/_category_.json (the section itself)
-    top = {"label": "Framework Reference", "position": 7,
-           "collapsed": True,
-           "link": {"type": "doc", "id": "framework/index"}}
-    with open(os.path.join(DEST, "_category_.json"), "w",
-              encoding="utf-8", newline="\n") as f:
-        json.dump(top, f, indent=2)
-
-    # report
-    n = sum(len(fs) for _, _, fs in os.walk(DEST) for f2 in [0])
-    md_count = sum(1 for r, _, fs in os.walk(DEST) for x in fs if x.endswith(".md"))
-    cat_count = sum(1 for r, _, fs in os.walk(DEST) for x in fs if x == "_category_.json")
-    print(f"Wrote {md_count} markdown pages and {cat_count} category files to docs/framework")
+    md_count = sum(1 for m in MANAGED for r, _, fs in os.walk(os.path.join(DOCS, m))
+                   for x in fs if x.endswith(".md"))
+    cat_count = sum(1 for m in MANAGED for r, _, fs in os.walk(os.path.join(DOCS, m))
+                    for x in fs if x == "_category_.json")
+    print(f"Wrote {md_count} markdown pages and {cat_count} category files "
+          f"to {len(MANAGED)} top-level docs categories")
 
 
 if __name__ == "__main__":

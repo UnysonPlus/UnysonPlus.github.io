@@ -177,6 +177,104 @@ def gh_alerts_to_admonitions(md):
     return "\n".join(out)
 
 
+# ---------------------------------------------------------------- rebrand
+def _map_repo(repo):
+    """ThemeFuse repo name -> existing UnysonPlus repo name (or None)."""
+    if repo == "Unyson":
+        return "UnysonPlus"
+    if repo.startswith("Unyson-") and repo.endswith("-Extension"):
+        return "UnysonPlus-" + repo[len("Unyson-"):]
+    return None  # e.g. Theme-Includes has no UnysonPlus equivalent
+
+
+def _repoint_or_drop(url):
+    """A ThemeFuse github/raw URL -> repointed UnysonPlus URL, or None to drop.
+
+    Shallow links (repo root / master|main path) are repointed; deep links
+    pinned to a commit/tag/line, or to issues/pulls, or to an unmapped repo,
+    are dropped (the user keeps the surrounding text)."""
+    m = re.search(r"/ThemeFuse/([A-Za-z0-9._-]+)", url)
+    if not m:
+        return url
+    mapped = _map_repo(m.group(1))
+    ref = re.search(r"/(?:blob|tree)/([^/#]+)", url)
+    shallow = (ref is None) or (ref.group(1) in ("master", "main"))
+    deep = (not shallow) or ("#l" in url.lower()) or ("/issues/" in url) \
+        or ("/pull/" in url) or bool(re.search(r"/[0-9a-f]{40}/", url))
+    if mapped and not deep:
+        return url.replace("/ThemeFuse/" + m.group(1), "/UnysonPlus/" + mapped)
+    return None
+
+
+def _process_links(line):
+    """Repoint/unwrap ThemeFuse markdown links and autolinks (prose only)."""
+    def md(m):
+        text, url = m.group(1), m.group(2)
+        low = url.lower()
+        if "themefuse.com" in low and "github" not in low:
+            return text                                   # drop marketing link
+        if "/themefuse/" in low:
+            nu = _repoint_or_drop(url)
+            return f"[{text}]({nu})" if nu else text
+        return m.group(0)
+    line = re.sub(r"\[([^\]]+)\]\((https?://[^)]+)\)", md, line)
+
+    def auto(m):
+        url = m.group(1); low = url.lower()
+        if "themefuse.com" in low and "github" not in low:
+            return url.replace("themefuse.com", "example.com")
+        if "/themefuse/" in low:
+            nu = _repoint_or_drop(url)
+            return f"<{nu}>" if nu else ""
+        return m.group(0)
+    return re.sub(r"<(https?://[^>]+)>", auto, line)
+
+
+def _code_url_subs(line):
+    """Bare ThemeFuse URLs (incl. inside code) -> repoint shallow / neutralize."""
+    line = line.replace("unyson.themefuse.com", "unysonplus.github.io")
+    line = re.sub(
+        r"https?://(?:raw\.githubusercontent\.com|github\.com)/ThemeFuse/[^\s)>\]\"'`]+",
+        lambda m: _repoint_or_drop(m.group(0)) or m.group(0), line)
+    # unmapped repo + example "author" credit strings inside code samples
+    line = line.replace("github.com/ThemeFuse/Theme-Includes", "github.com/UnysonPlus")
+    line = line.replace("'ThemeFuse'", "'Unyson+'")
+    return line.replace("themefuse.com", "example.com")
+
+
+def _prose_words(line):
+    """'Unyson' -> 'Unyson+' and 'ThemeFuse' -> 'Unyson+' in free text only
+    (never inside code spans, link targets, or bare URLs)."""
+    protected = re.compile(r"`[^`]*`|\]\([^)]*\)|<https?://[^>]*>|https?://\S+")
+    def sub(seg):
+        seg = re.sub(r"\bUnyson\b(?!\+)", "Unyson+", seg)
+        seg = re.sub(r"\bThemeFuse\b", "Unyson+", seg)
+        return seg
+    out, last = [], 0
+    for m in protected.finditer(line):
+        out.append(sub(line[last:m.start()]))
+        out.append(m.group(0))
+        last = m.end()
+    out.append(sub(line[last:]))
+    return "".join(out)
+
+
+def rebrand(md):
+    """De-ThemeFuse + Unyson->Unyson+ across a converted page."""
+    fenced, out = False, []
+    for line in md.split("\n"):
+        if line.lstrip().startswith("```"):
+            fenced = not fenced
+            out.append(line); continue
+        if fenced:
+            out.append(_code_url_subs(line)); continue
+        line = _process_links(line)
+        line = _code_url_subs(line)
+        line = _prose_words(line)
+        out.append(line)
+    return "\n".join(out)
+
+
 def clean_markdown(md, raw_blocks):
     md = gh_alerts_to_admonitions(md)
     # normalize ``` php  ->  ```php
@@ -186,6 +284,8 @@ def clean_markdown(md, raw_blocks):
     # restore raw html
     for idx, html in enumerate(raw_blocks):
         md = md.replace(f"@@RAWHTML{idx}@@", html)
+    # rebrand: Unyson -> Unyson+, repoint/remove ThemeFuse references
+    md = rebrand(md)
     # collapse 3+ blank lines
     md = re.sub(r"\n{3,}", "\n\n", md)
     return md.strip() + "\n"

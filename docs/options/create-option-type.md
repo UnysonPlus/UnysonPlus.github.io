@@ -7,7 +7,7 @@ sidebar_position: 6
 To define a new option type, create a class that extends the base option type class and register it.
 
 :::note
-It doesn't matter where you place your new option type. If you use the [Theme Includes](https://github.com/ThemeFuse/Theme-Includes#directory-structure) directory structure, place it in the `{theme}/inc/includes/option-types/my-option/` directory and include it on `fw_option_types_init` action:
+It doesn't matter where you place your new option type. If you use the Theme Includes directory structure, place it in the `{theme}/inc/includes/option-types/my-option/` directory and include it on `fw_option_types_init` action:
 
 ```php
 // file: {theme}/inc/hooks.php

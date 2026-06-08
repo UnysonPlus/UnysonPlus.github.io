@@ -3,19 +3,19 @@ title: "WordPress Shortcodes"
 ---
 
 
-This extensions gives a way to insert and render correctly Unyson shortcodes inside WordPress editor.
+This extensions gives a way to insert and render correctly Unyson+ shortcodes inside WordPress editor.
 
 ## Understanding the purpose of this extension
 
-At first, this extension is not a silver bullet for all of the use cases you may want to try, it is quite limited in what it can achieve. If you want to get more details you should really go and read the whole discussion on [GitHub](https://github.com/ThemeFuse/Unyson-Shortcodes-Extension/issues/62).
+At first, this extension is not a silver bullet for all of the use cases you may want to try, it is quite limited in what it can achieve. If you want to get more details you should really go and read the whole discussion on GitHub.
 
 :::warning
 This document is a work in process.
 :::
 
-## The structure of a Unyson shortcode
+## The structure of a Unyson+ shortcode
 
-At first, you should know that an Unyson shortcode consists of three parts that make him look the way it does:
+At first, you should know that an Unyson+ shortcode consists of three parts that make him look the way it does:
 
 1.  HTML. Usually it is located in `view.php`
 2.  All of the static. Located in `static.php`

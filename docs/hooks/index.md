@@ -32,7 +32,7 @@ title: "Filters & Actions"
   > }
   > ```
 
-- `fw_backend_add_custom_extensions_menu` - Change **Unyson** menu. Works the same as previous action.
+- `fw_backend_add_custom_extensions_menu` - Change **Unyson+** menu. Works the same as previous action.
 
 ### Assets Enqueue
 
@@ -89,7 +89,7 @@ title: "Filters & Actions"
 
 ### Database
 
-- `fw_post_options_update` - After database post option or all options were updated. The description of parameters can be found [here](https://github.com/ThemeFuse/Unyson/blob/v2.4.17/framework/helpers/database.php#L147-L179).
+- `fw_post_options_update` - After database post option or all options were updated. The description of parameters can be found here.
 
   > ``` php
   > add_action('fw_post_options_update', '_action_theme_fw_post_options_update', 10, 4);

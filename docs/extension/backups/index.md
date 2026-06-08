@@ -58,16 +58,16 @@ The next step is to let your users view and select which demo content to install
 
 2.  Upload the zip on your server (in any directory you want, for e.g. `your-site.com/demo/`)
 
-3.  Upload this [download script](https://raw.githubusercontent.com/ThemeFuse/Unyson-Backups-Extension/master/includes/module/tasks/type/download/type/piecemeal/server/index.php), let's say in the same directory `your-site.com/demo/`
+3.  Upload this [download script](https://raw.githubusercontent.com/UnysonPlus/UnysonPlus-Backups-Extension/master/includes/module/tasks/type/download/type/piecemeal/server/index.php), let's say in the same directory `your-site.com/demo/`
 
-4.  In the same directory with the download script, create a [config.php](https://raw.githubusercontent.com/ThemeFuse/Unyson-Backups-Extension/master/includes/module/tasks/type/download/type/piecemeal/server/config.php) file and add your demos in the following format:
+4.  In the same directory with the download script, create a [config.php](https://raw.githubusercontent.com/UnysonPlus/UnysonPlus-Backups-Extension/master/includes/module/tasks/type/download/type/piecemeal/server/config.php) file and add your demos in the following format:
 
     > ``` php
     > //   'demo-id' => '/path/to/demo.zip',
     > 'awesome-demo' => dirname(__FILE__) .'/awesome-demo.zip',
     > ```
 
-5.  Register the demo(s) in your theme. Add in [{theme}/inc/hooks.php](https://github.com/ThemeFuse/Theme-Includes):
+5.  Register the demo(s) in your theme. Add in {theme}/inc/hooks.php:
 
     > ``` php
     > /**
@@ -197,7 +197,7 @@ Make sure you have enough disk space. The full backup backups the entire wp-cont
 
 LiteSpeed webserver ^^^^^^^^^^^^
 
-The admin notice "Unyson: Your website is hosted using the LiteSpeed web server. Please consult this article if you have problems backing up." means that your web hosting company uses the LiteSpeed webserver. LiteSpeed appears to have problems with all WordPress scheduled tasks that last more than a very short time – including all backup plugins. Adding this in an early position in the .htaccess file in your WordPress root folder may fix the problem:
+The admin notice "Unyson+: Your website is hosted using the LiteSpeed web server. Please consult this article if you have problems backing up." means that your web hosting company uses the LiteSpeed webserver. LiteSpeed appears to have problems with all WordPress scheduled tasks that last more than a very short time – including all backup plugins. Adding this in an early position in the .htaccess file in your WordPress root folder may fix the problem:
 
 > ``` php
 > RewriteRule (wp-cron|class-fw-extension-backups|class--fw-ext-backups-module-tasks)\.php - [E=noabort:1]

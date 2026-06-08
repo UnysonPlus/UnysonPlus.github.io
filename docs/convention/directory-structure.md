@@ -4,7 +4,7 @@ sidebar_position: 3
 ---
 
 
-We've organized the files and folders in order to be easy to understand and use. What follows is the directory and file structure of an Unyson theme:
+We've organized the files and folders in order to be easy to understand and use. What follows is the directory and file structure of an Unyson+ theme:
 
 ```text
 themes/
@@ -40,7 +40,7 @@ Let's take a closer look at each directory and file, and understand how it works
 
 - `framework-customizations/theme/manifest.php` - Contains an array with information about theme, accessible through `fw()->theme->manifest->get('key');`. More details about the [theme manifest](/docs/manifest/theme).
 
-- `framework-customizations/theme/config.php` - Theme configuration array, accessible through `fw()->theme->get_config('key');`. [Here](https://github.com/ThemeFuse/Unyson/blob/3b79926d5e09f7c9b2697444ffa8d4c9a39b7f5b/framework/core/components/theme.php#L156-L159) are the default values.
+- `framework-customizations/theme/config.php` - Theme configuration array, accessible through `fw()->theme->get_config('key');`. Here are the default values.
 
   > ``` php
   > $cfg = array(
@@ -60,13 +60,13 @@ Let's take a closer look at each directory and file, and understand how it works
   >     > ``` php
   >     > $options = array(
   >     >     'section_1' => array(
-  >     >         'title' => __('Unyson Section', '{domain}'),
+  >     >         'title' => __('Unyson+ Section', '{domain}'),
   >     >         'options' => array(
   >     >
   >     >             'option_1' => array(
   >     >                 'type' => 'text',
   >     >                 'value' => 'Default Value',
-  >     >                 'label' => __('Unyson Option', '{domain}'),
+  >     >                 'label' => __('Unyson+ Option', '{domain}'),
   >     >                 'desc' => __('Option Description', '{domain}'),
   >     >             ),
   >     >

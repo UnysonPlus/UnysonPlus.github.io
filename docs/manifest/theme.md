@@ -64,8 +64,8 @@ $manifest['requirements'] = array(
 // These keys are automatically fetched from theme styles.css
 //$manifest['name'] = __('Theme Title', '{domain}');
 //$manifest['description'] = __('Another awesome wordpress theme', '{domain}');
-//$manifest['uri'] = 'http://themefuse.com/wp-themes-shop/theme-name';
+//$manifest['uri'] = 'http://example.com/wp-themes-shop/theme-name';
 //$manifest['version'] = '1.0';
-//$manifest['author'] = 'ThemeFuse';
-//$manifest['author_uri'] = 'http://themefuse.com/';
+//$manifest['author'] = 'Unyson+';
+//$manifest['author_uri'] = 'http://example.com/';
 ```

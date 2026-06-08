@@ -6,7 +6,7 @@ title: "Mega Menu"
 The Mega Menu extension gives the end-user the ability to construct advanced navigation menus.
 
 :::info
-This extensions is not be visible by default in Unyson Extensions page. To make it appear in that list, you have to:
+This extensions is not be visible by default in Unyson+ Extensions page. To make it appear in that list, you have to:
 
 - Add the extension name in [theme manifest](/docs/manifest/theme)
 
@@ -136,7 +136,7 @@ If you want to change it to
 <a href="..."><i class="fa fa-..."></i> Menu item</a>
 ```
 
-overwrite [this view](https://github.com/ThemeFuse/Unyson-MegaMenu-Extension/blob/master/views/item-link.php) in your theme
+overwrite [this view](https://github.com/UnysonPlus/UnysonPlus-MegaMenu-Extension/blob/master/views/item-link.php) in your theme
 
 ```php
 <?php if (!defined('FW')) die('Forbidden');
@@ -209,7 +209,7 @@ class FW_Ext_Mega_Menu_Custom_Walker extends FW_Ext_Mega_Menu_Walker
 
 ## Item Custom Options
 
-1.  Overwrite these [options](https://github.com/ThemeFuse/Unyson-MegaMenu-Extension/tree/master/options) in your theme.
+1.  Overwrite these [options](https://github.com/UnysonPlus/UnysonPlus-MegaMenu-Extension/tree/master/options) in your theme.
 
 2.  Get the saved db value (it has the same structure as `multi-picker` option-type value)
 
@@ -219,4 +219,4 @@ class FW_Ext_Mega_Menu_Custom_Walker extends FW_Ext_Mega_Menu_Walker
     > }
     > ```
 
-3.  Adapt options popup sizes by overwriting these [config keys](https://github.com/ThemeFuse/Unyson-MegaMenu-Extension/blob/v1.1.0/config.php#L5-L7).
+3.  Adapt options popup sizes by overwriting these config keys.

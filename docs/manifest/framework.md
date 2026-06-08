@@ -18,11 +18,11 @@ It supports the following parameters:
 $manifest = array();
 
 $manifest['name']         = __('Framework', 'fw');
-$manifest['uri']          = 'http://themefuse.com/framework';
+$manifest['uri']          = 'http://example.com/framework';
 $manifest['description']  = __('WordPress Framework', 'fw');
 $manifest['version']      = '1.0';
-$manifest['author']       = 'ThemeFuse';
-$manifest['author_uri']   = 'http://themefuse.com/';
+$manifest['author']       = 'Unyson+';
+$manifest['author_uri']   = 'http://example.com/';
 $manifest['requirements'] = array(
     'wordpress' => array(
         'min_version' => '4.0',

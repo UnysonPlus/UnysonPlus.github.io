@@ -195,7 +195,7 @@ fwEvents.trigger('script-2:message', {message: 'Hello World!'});
 
 This section is a draft for an upcoming documentation for reactive option types.
 
-For now, it documents only [fw.options.fetchHtml()](https://github.com/ThemeFuse/Unyson/pull/2723) helper.
+For now, it documents only fw.options.fetchHtml() helper.
 
 ```javascript
 fw.options.fetchHtml(

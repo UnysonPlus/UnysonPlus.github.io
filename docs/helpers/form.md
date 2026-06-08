@@ -71,13 +71,13 @@ add_action('fw_form_display_errors_frontend', '_action_theme_fw_form_errors_disp
 
 ## Ajax submit
 
-You can use [this script](https://github.com/ThemeFuse/Unyson/blob/master/framework/static/js/fw-form-helpers.js) to make `FW_Form` ajax submittable.
+You can use [this script](https://github.com/UnysonPlus/UnysonPlus/blob/master/framework/static/js/fw-form-helpers.js) to make `FW_Form` ajax submittable.
 
 Enqueue the script in frontend:
 
 ```php
 // file: {theme}/inc/static.php
-// https://github.com/ThemeFuse/Theme-Includes
+// https://github.com/UnysonPlus
 
 if (!is_admin()) {
     wp_enqueue_script(

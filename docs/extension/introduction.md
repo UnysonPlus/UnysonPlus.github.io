@@ -4,7 +4,7 @@ sidebar_position: 1
 ---
 
 
-The Unyson framework comes with the following built-in extensions:
+The Unyson+ framework comes with the following built-in extensions:
 
 - [Index](/docs/extension/shortcodes)
 - [Index](/docs/extension/slider)

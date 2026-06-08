@@ -53,17 +53,17 @@ The second version of the first Icon option type. It was improved a lot in terms
 You'll have to enable <span class="title-ref">SVG</span> uploads by yourself, with a hook in your theme.
 :::
 
-By default, we have just 6 icon packs enabled and served with Unyson itself.
+By default, we have just 6 icon packs enabled and served with Unyson+ itself.
 
 - [Font Awesome](https://github.com/FortAwesome/Font-Awesome)
 - [Entypo](http://www.entypo.com)
 - [Linecons](http://designmodo.com/linecons-free/)
 - [Linearicons](https://linearicons.com/)
 - [Typicons](http://typicons.com/)
-- [Unycons](https://github.com/ThemeFuse/Unyson/tree/v2.5.8/framework/static/libs/unycon)
+- Unycons
 
 :::note
-By default, [none](https://github.com/ThemeFuse/Unyson/blob/0bed6c7b3c03f64bae27f988a39fb763d75abdc3/framework/includes/option-types/icon-v2/class-fw-option-type-icon-v2.php#L18) of this packs will be enqueued in the frontend of your theme.
+By default, none of this packs will be enqueued in the frontend of your theme.
 
 You should call this in order to enqueue them: `fw()->backend->option_type('icon-v2')->packs_loader->enqueue_frontend_css();`
 :::
@@ -116,7 +116,7 @@ And this will just work for most of the cases. You don't need to specify which i
 
 **Computing icons list**
 
-[By default](https://github.com/ThemeFuse/Unyson/blob/0bed6c7b3c03f64bae27f988a39fb763d75abdc3/framework/includes/option-types/icon-v2/includes/class-fw-icon-v2-packs-loader.php#L105), when you register an icon pack it's icons will be extracted from the css file automatically, so that you don't have to maintain a [long array](https://github.com/ThemeFuse/Unyson/blob/master/framework/includes/option-types/icon/class-fw-option-type-icon.php#L203) of icons for each pack. Instead we do some trick instead. We look into the css file for each pack and look for patterns that look like this:
+By default, when you register an icon pack it's icons will be extracted from the css file automatically, so that you don't have to maintain a long array of icons for each pack. Instead we do some trick instead. We look into the css file for each pack and look for patterns that look like this:
 
 ```php
 .`css_class_prefix`-some-icon:before {
@@ -142,4 +142,4 @@ Generally speaking, that's what an icon pack CSS file consist of:
 - icon generations -- we try hard to get just them
 - some other general purpose helpers -- they're encountered not that often
 
-You can also completely stop this mechanism for one pack by specifying an array of icons for the `icons` option. A more complete pack definition can be found [here](https://github.com/ThemeFuse/Unyson/blob/0bed6c7b3c03f64bae27f988a39fb763d75abdc3/framework/includes/option-types/icon-v2/includes/class-fw-icon-v2-packs-loader.php#L19).
+You can also completely stop this mechanism for one pack by specifying an array of icons for the `icons` option. A more complete pack definition can be found here.

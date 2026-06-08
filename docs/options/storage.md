@@ -40,7 +40,7 @@ Here are some examples with default storage types:
     >
     > Add the above option array in post, settings, customizer or term options, save the form and check the database `wp_options` table for an option named `demo_wp_option`.
     >
-    > Additional parameters can be found [here](https://github.com/ThemeFuse/Unyson/blob/master/framework/includes/option-storage/type/class-fw-option-storage-type-wp-option.php).
+    > Additional parameters can be found [here](https://github.com/UnysonPlus/UnysonPlus/blob/master/framework/includes/option-storage/type/class-fw-option-storage-type-wp-option.php).
 
 2.  To save an option in a separate [post meta](https://developer.wordpress.org/reference/functions/get_post_meta/):
 
@@ -57,7 +57,7 @@ Here are some examples with default storage types:
     >
     > Add the above option array in **post options**, edit a post and check the database `wp_postmeta` table for a meta named `demo_post_meta`.
     >
-    > Additional parameters can be found [here](https://github.com/ThemeFuse/Unyson/blob/master/framework/includes/option-storage/type/class-fw-option-storage-type-post-meta.php).
+    > Additional parameters can be found [here](https://github.com/UnysonPlus/UnysonPlus/blob/master/framework/includes/option-storage/type/class-fw-option-storage-type-post-meta.php).
 
 ## Custom Types
 
@@ -127,7 +127,7 @@ It's possible to register new storage types.
     > ```
     >
     > > [!NOTE]
-    > > The class implementation is simplified just to give you an idea of how it works. For a complete implementation inspect [the predefined types](https://github.com/ThemeFuse/Unyson/tree/master/framework/includes/option-storage/type).
+    > > The class implementation is simplified just to give you an idea of how it works. For a complete implementation inspect [the predefined types](https://github.com/UnysonPlus/UnysonPlus/tree/master/framework/includes/option-storage/type).
 
 2.  Register your custom type. Add in `{theme}/functions.php`:
 

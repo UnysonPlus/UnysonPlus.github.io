@@ -7,7 +7,7 @@ This extension provides the core builder functionality that you can extend to cr
 
 ## Changing the grid
 
-By default the Builder uses a [bootstrap like grid](https://github.com/ThemeFuse/Unyson-Builder-Extension/blob/master/static/css/frontend-grid.css), with the same class names but prefixed with `.fw-{bootstrap-class-name}`. The grid css is enqueued in all frontend pages from `framework/extensions/builder/static.php`. Also this extension defines the grid columns for all builders (for e.g. `page-builder` and `form-builder`) in `framework/extensions/builder/config.php`.
+By default the Builder uses a [bootstrap like grid](https://github.com/UnysonPlus/UnysonPlus-Builder-Extension/blob/master/static/css/frontend-grid.css), with the same class names but prefixed with `.fw-{bootstrap-class-name}`. The grid css is enqueued in all frontend pages from `framework/extensions/builder/static.php`. Also this extension defines the grid columns for all builders (for e.g. `page-builder` and `form-builder`) in `framework/extensions/builder/config.php`.
 
 ### Changing the grid for all builders
 
@@ -20,7 +20,7 @@ By default the Builder uses a [bootstrap like grid](https://github.com/ThemeFuse
     >
     > $cfg['default_item_widths'] = array(
     >     /**
-    >      * Copy/Paste here default columns https://github.com/ThemeFuse/Unyson-Builder-Extension/blob/master/config.php
+    >      * Copy/Paste here default columns https://github.com/UnysonPlus/UnysonPlus-Builder-Extension/blob/master/config.php
     >      * and add, remove or change them
     >      */
     > );
@@ -49,7 +49,7 @@ Other extensions use the `fw_ext_builder_get_item_width($builder_type, $width_id
 <div class="<?php echo esc_attr(fw_ext_builder_get_item_width('page-builder', '1_2/frontend_class')) ?>" >
 ```
 
-The function loads the grid from config, but allows you to change it via [this filter](https://github.com/ThemeFuse/Unyson-Builder-Extension/blob/f57ebc5623407277f1c2d22365fe0a74cff22b36/helpers.php#L22-L24). You can use the filter to change the grid columns for some builder type.
+The function loads the grid from config, but allows you to change it via this filter. You can use the filter to change the grid columns for some builder type.
 
 ```php
 add_filter(
@@ -116,7 +116,7 @@ FW_Option_Type::register('FW_Option_Type_Lists_Builder');
 That's it, the new builder was created. Use it in your post options to see what it shows at this point.
 
 :::note
-This example assumes that you use in your theme [this directory structure](https://github.com/ThemeFuse/Theme-Includes#directory-structure).
+This example assumes that you use in your theme this directory structure.
 :::
 
 1.  Include the option type:
@@ -562,4 +562,4 @@ while ( have_posts() ) : the_post();
 
 Congratulations, now you can create new builders!
 
-There are many things that can be improved in the Lists Builder, but this article will become too big. You can inspect [the builder code](https://github.com/ThemeFuse/Unyson-Builder-Extension/tree/master/includes/option-types/builder) and other builders like [Page Builder](https://github.com/ThemeFuse/Unyson-PageBuilder-Extension/tree/master/includes/fw-option-type-page-builder), [Forms Builder](https://github.com/ThemeFuse/Unyson-Forms-Extension/tree/master/includes/option-types/form-builder) and [Learning Quiz Builder](https://github.com/ThemeFuse/Unyson-Learning-Extension/tree/master/extensions/learning-quiz/includes/option-types/quiz-builder) to find the answers for the questions that may appear while developing your own builder.
+There are many things that can be improved in the Lists Builder, but this article will become too big. You can inspect [the builder code](https://github.com/UnysonPlus/UnysonPlus-Builder-Extension/tree/master/includes/option-types/builder) and other builders like [Page Builder](https://github.com/UnysonPlus/UnysonPlus-PageBuilder-Extension/tree/master/includes/fw-option-type-page-builder), [Forms Builder](https://github.com/UnysonPlus/UnysonPlus-Forms-Extension/tree/master/includes/option-types/form-builder) and [Learning Quiz Builder](https://github.com/UnysonPlus/UnysonPlus-Learning-Extension/tree/master/extensions/learning-quiz/includes/option-types/quiz-builder) to find the answers for the questions that may appear while developing your own builder.

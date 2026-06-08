@@ -4,7 +4,7 @@ sidebar_position: 1
 ---
 
 
-The Unyson framework core has three components:
+The Unyson+ framework core has three components:
 
 - [Theme](/docs/components/theme)
 - [Backend](/docs/components/backend)

@@ -551,4 +551,4 @@ class FW_Option_Type_Form_Builder_Item_Yes_No extends FW_Option_Type_Form_Builde
 
 Now the field will be displayed in frontend as a radio box and the validation will work. The submitted value will be used by the form type you chose when created the form, for e.g. the Contact Forms sub-extensions will send the value in email.
 
-You can [inspect the built-in form items](https://github.com/ThemeFuse/Unyson-Forms-Extension/tree/master/includes/option-types/form-builder/items) to learn what possibilities for customization are available (for e.g. what methods from the extended class you can overwrite).
+You can [inspect the built-in form items](https://github.com/UnysonPlus/UnysonPlus-Forms-Extension/tree/master/includes/option-types/form-builder/items) to learn what possibilities for customization are available (for e.g. what methods from the extended class you can overwrite).

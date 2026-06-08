@@ -7,7 +7,7 @@ The shortcodes extension makes possible the easy creation of [WordPress Shortcod
 
 ## Built-in shortcodes
 
-Unyson comes with a set of built-in shortcodes like `accordion`, `button`, `map`, `testimonials` and others. All shortcodes are located in `{some-extension}/shortcodes/` but the vast majority of them are located in the shortcodes extension (`framework/extensions/shortcodes/shortcodes`). They can be modified by overwriting or disabled
+Unyson+ comes with a set of built-in shortcodes like `accordion`, `button`, `map`, `testimonials` and others. All shortcodes are located in `{some-extension}/shortcodes/` but the vast majority of them are located in the shortcodes extension (`framework/extensions/shortcodes/shortcodes`). They can be modified by overwriting or disabled
 
 ## Overwriting shortcodes
 

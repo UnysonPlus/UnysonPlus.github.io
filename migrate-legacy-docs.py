@@ -57,6 +57,9 @@ ALERT_MAP = {
     "WARNING": "warning", "CAUTION": "danger",
 }
 
+# old doc path (no ext) -> page title, populated in main() before conversion.
+DOC_TITLES = {}
+
 
 # ---------------------------------------------------------------- helpers
 def strip_directive_blocks(text, names):
@@ -118,14 +121,19 @@ def parse_toctree_order(text):
     return order
 
 
-def resolve_ref(target, cur_dir):
-    """old doc target (abs '/a/b' or relative 'a/b') -> Docusaurus URL."""
+def old_target(target, cur_dir):
+    """old doc target (abs '/a/b' or relative 'a/b') -> normalized old path."""
     target = target.strip()
     if target.startswith("/"):
         absp = target[1:]
     else:
         absp = os.path.normpath(os.path.join(cur_dir, target)).replace("\\", "/")
-    absp = absp.rstrip("/")
+    return absp.rstrip("/")
+
+
+def resolve_ref(target, cur_dir):
+    """old doc target (abs '/a/b' or relative 'a/b') -> Docusaurus URL."""
+    absp = old_target(target, cur_dir)
     if absp == "index":
         return "/docs/intro"                       # old getting-started -> intro
     if absp.endswith("/index"):
@@ -142,10 +150,15 @@ def convert_roles(text, cur_dir):
         return f"`{m.group(1).strip()} <{resolve_ref(m.group(2), cur_dir)}>`__"
     text = re.sub(r":doc:`([^<`]+?)\s*<([^>]+)>`", doc_textlink, text)
 
-    # :doc:`/path`  /  :doc:`path`   (no explicit text -> use last segment)
+    # :doc:`/path`  /  :doc:`path`   (no explicit text -> use the page title)
     def doc_bare(m):
         tgt = m.group(1).strip()
-        label = tgt.rstrip("/").split("/")[-1].replace("-", " ").replace("_", " ").title()
+        op = old_target(tgt, cur_dir)
+        label = DOC_TITLES.get(op)
+        if not label:
+            parts = op.split("/")
+            seg = parts[-2] if parts[-1] == "index" and len(parts) > 1 else parts[-1]
+            label = seg.replace("-", " ").replace("_", " ").title()
         return f"`{label} <{resolve_ref(tgt, cur_dir)}>`__"
     text = re.sub(r":doc:`([^<`]+?)`", doc_bare, text)
 
@@ -375,6 +388,15 @@ def main():
             if fn.endswith(".rst"):
                 rel = os.path.relpath(os.path.join(root, fn), SRC).replace("\\", "/")
                 rst_files.append(rel)
+
+    # Page titles for every doc (first heading) -> used to label bare :doc: links.
+    for rel in rst_files:
+        with open(os.path.join(SRC, rel), encoding="utf-8") as f:
+            for ln in f:
+                s = ln.strip()
+                if s and not s.startswith(".."):
+                    DOC_TITLES[rel[:-4]] = s
+                    break
 
     # Positions from EVERY toctree (entries may be 'stem' or 'subdir/landing').
     doc_pos = {}     # old path w/o ext -> sidebar_position (leaf docs)

@@ -33,6 +33,16 @@ A section that packs its columns into a masonry grid.
 
 **Key options:** Columns (Desktop / Tablet / Phone), Gap, Full Width, Padding Top/Bottom.
 
+## Bleed Section
+
+A split section: content on one side and a full-bleed image on the other. Stacks on mobile.
+
+**Key options:** Bleed Image, Image Side (Right / Left), Image / Content Ratio (eleven presets
+from `1/12 + 11/12` to `11/12 + 1/12`), Image Position (Center / Top / Bottom / corners),
+Mobile Stacking Order (Content First / Image First), Full Width Content, Content Background
+(color / gradient / image), Content Vertical Align (Top / Center / Bottom), Content Padding
+(None / Small / Medium / Large).
+
 ## Row
 
 A builder **row** — the horizontal container that holds columns inside a section. Added

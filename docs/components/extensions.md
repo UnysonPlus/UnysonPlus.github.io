@@ -4,7 +4,7 @@ sidebar_position: 4
 ---
 
 
-The core of [Extensions](/docs/creating-extensions/introduction).
+The core of [Extensions](/docs/extensions/creating-extensions/introduction).
 
 - `get($extension_name)` - get instance of an existing active extension.
 

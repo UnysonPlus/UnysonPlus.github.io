@@ -81,11 +81,11 @@ Let's take a closer look at each directory and file, and understand how it works
   >     > $value = fw_get_db_customizer_option('option_1');
   >     > ```
 
-- `framework-customizations/extensions/` - Contains customizations for the framework extensions. You can overwrite options, views and configuration files of the extensions located in the framework or [custom locations](/docs/creating-extensions/introduction) like other plugins. You can also store there theme extensions and create sub-extensions for extensions located in the framework or custom locations. Extension is identified by its relative path, for e.g. an extension can be located in:
+- `framework-customizations/extensions/` - Contains customizations for the framework extensions. You can overwrite options, views and configuration files of the extensions located in the framework or [custom locations](/docs/extensions/creating-extensions/introduction) like other plugins. You can also store there theme extensions and create sub-extensions for extensions located in the framework or custom locations. Extension is identified by its relative path, for e.g. an extension can be located in:
 
   > - Framework `wp-content/plugins/unyson/framework/extensions/{extension-name}`
   > - Plugin `wp-content/plugins/whaterever-plugin/custom-dir/extensions/{extension-name}`
   >
-  > that extension can be customized in `{theme}/framework-customizations/extensions/{extension-name}`. Also you can [create a sub-extension](/docs/creating-extensions/create-extension) in `{theme}/framework-customizations/extensions/{extension-name}/extensions/{sub-extension-name}`.
+  > that extension can be customized in `{theme}/framework-customizations/extensions/{extension-name}`. Also you can [create a sub-extension](/docs/extensions/creating-extensions/create-extension) in `{theme}/framework-customizations/extensions/{extension-name}/extensions/{sub-extension-name}`.
 
 You can also create a `framework-customizations/` directory in the child theme. There you can do the same things as in parent theme, and also you can overwrite some files from the parent theme, like options and configuration files. Keep in mind that some files from the child theme are included before the parent theme files (or the other way around, it depends on the case) to give you the ability to customize some parent theme behavior.

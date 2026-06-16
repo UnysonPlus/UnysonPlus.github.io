@@ -13,25 +13,32 @@ what a project needs.
 
 | Extension | What it does |
 | --- | --- |
-| **Page Builder** | Visual drag &amp; drop page building with shortcodes. |
-| **WordPress Shortcodes** | Insert Unyson+ shortcodes in any editor. |
+| **Page Builder** | Visual drag &amp; drop page building with shortcodes. → [docs](/docs/page-builder) |
+| **Shortcodes** | The shortcodes framework that powers the page builder. → [docs](./shortcodes/index.md) |
+| **WordPress Shortcodes** | Insert Unyson+ shortcodes in any editor. → [docs](./wp-shortcodes/index.md) |
 | **Header &amp; Footer Builder** | Build headers/footers with the page builder. → [docs](./header-footer-builder.md) |
 | **Live Page Editor** | Edit builder pages on the live front end. → [docs](./live-editor.md) |
 | **Site Converter** | Import an AI-generated website into WordPress. → [docs](./site-converter.md) |
 | **Custom Fields** | ACF-style custom fields builder. → [docs](./custom-fields.md) |
 | **Post Types &amp; Taxonomies** | Register CPTs and taxonomies from the admin. → [docs](./post-types.md) |
-| **Portfolio** | A fully-featured portfolio module. |
-| **Sidebars** | Add multiple/dynamic sidebars per page. |
-| **Breadcrumbs** | Drop-in breadcrumb navigation. |
-| **SEO** | Meta titles, keywords and descriptions. |
-| **Forms** | Drag &amp; drop contact form builder. |
-| **Mailer** | Global email settings used by other extensions. |
-| **Sliders** | Built-in jQuery sliders. |
-| **Styling** | Control fonts and colors site-wide. |
-| **Events / Feedback / Learning** | Calendar, reviews, and courses modules. |
+| **Portfolio** | A fully-featured portfolio module. → [docs](./portfolio/index.md) |
+| **Sidebars** | Add multiple/dynamic sidebars per page. → [docs](./sidebars/index.md) |
+| **Breadcrumbs** | Drop-in breadcrumb navigation. → [docs](./breadcrumbs/index.md) |
+| **SEO** | Meta titles, keywords and descriptions. → [docs](./seo/index.md) |
+| **Forms** | Drag &amp; drop contact form builder. → [docs](./forms/index.md) |
+| **Sliders** | Built-in jQuery sliders. → [docs](./slider/index.md) |
+| **Mega Menu** | Multi-column dropdown mega menus. → [docs](./megamenu/index.md) |
+| **Social** | Social profile links and sharing. → [docs](./social/index.md) |
+| **Builder** | The base builder option type to build custom builders on. → [docs](./builder/index.md) |
+| **Translation** | Multi-language helpers. → [docs](./translation/index.md) |
+| **Events** | An events / calendar module. → [docs](./events/index.md) |
+| **Feedback** | Reviews and feedback. → [docs](./feedback/index.md) |
+| **Learning** | Courses and quizzes. → [docs](./learning/index.md) |
+| **Backup &amp; Demo Content** | Scheduled backups and demo import/export. → [docs](./backups/index.md) |
 | **Asset Optimizer** | Combine enqueued assets to cut HTTP requests. → [docs](./asset-optimizer.md) |
 | **Snippets** | Save and embed reusable builder content. → [docs](./snippets.md) |
-| **Backup &amp; Demo Content** | Scheduled backups and demo import/export. |
+| **Mailer** | Global email settings used by other extensions. |
+| **Styling** | Control fonts and colors site-wide. |
 
 ## Installing &amp; updating
 
@@ -43,5 +50,6 @@ it automatically.
 ## Developer note
 
 Extensions live in `framework/extensions/`. See
+[Creating Extensions](/docs/category/creating-extensions) for how to build your own,
 [Option types](/docs/options/option-types) for how options and shortcodes are
 built, and the per-area `AGENTS.md` files in the plugin source for recipes.

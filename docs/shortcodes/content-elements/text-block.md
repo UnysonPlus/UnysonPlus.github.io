@@ -17,8 +17,8 @@ A rich-text (WYSIWYG) block. Tabs: **Content**, **Styling**, **Animations**, **A
 
 Text Color, Background Color, and Margin & Padding.
 
-## Screenshots
+## Screenshot
 
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::
+The Text Block element's options panel in the Page Builder:
+
+![Text Block options panel — the Content tab with the WYSIWYG editor](/img/shortcodes/text-block-content.png)

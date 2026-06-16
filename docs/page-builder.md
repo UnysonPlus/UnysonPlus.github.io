@@ -36,4 +36,4 @@ The **Snippets** extension lets you save builder layouts and embed them anywhere
 ## See also
 
 - [Extensions overview](./extensions/overview.md)
-- [Option types](./developers/option-types.md) — the building blocks of shortcode options
+- [Option types](/docs/options/option-types) — the building blocks of shortcode options

@@ -43,6 +43,13 @@ Mobile Stacking Order (Content First / Image First), Full Width Content, Content
 (color / gradient / image), Content Vertical Align (Top / Center / Bottom), Content Padding
 (None / Small / Medium / Large).
 
+## Container
+
+A second content container you can add to a section to hold columns — **Boxed** (constrained to
+the site width) or **Full-width** (edge-to-edge).
+
+**Key options:** Full Width (Off = Boxed, On = Full-width).
+
 ## Row
 
 A builder **row** — the horizontal container that holds columns inside a section. Added

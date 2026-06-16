@@ -6,14 +6,17 @@ slug: /shortcodes/overview
 
 # Page Builder Elements
 
-The Page Builder ships with **38 built-in elements** (shortcodes). You add them by dragging
+The Page Builder ships with **54 built-in elements** (shortcodes). You add them by dragging
 them onto the page canvas and configuring them through their options panel — no code
 required. They're grouped in the builder:
 
-- **[Content Elements](/docs/shortcodes/content-elements)** — text, buttons, media boxes, posts, tables, and more (26 elements, each with its own page).
-- **[Layout Elements](./layout-elements.md)** — sections, rows, columns and special section types (6 elements).
-- **[Media Elements](./media-elements.md)** — image and video (2 elements).
+- **[Content Elements](/docs/shortcodes/content-elements)** — text, buttons, media boxes, posts, tables, and more (36 elements, each with its own page).
+- **[Layout Elements](./layout-elements.md)** — sections, rows, columns and special section types (7 elements).
+- **[Media Elements](./media-elements.md)** — image, video and comparison/hotspot elements (6 elements).
 - **[Header / Footer Elements](./header-footer-elements.md)** — menus, logo, search, social icons and menu toggle (5 elements).
+
+Some elements come from their own extensions — **Contact Form** (Forms), **Portfolio Grid** and
+**Project Gallery** (Portfolio) — and appear in the builder once that extension is active.
 
 :::note Work in progress
 This reference is generated from the plugin source. Add screenshots and refine the prose as
@@ -50,14 +53,29 @@ you go — the option lists below reflect what's actually configurable today.
 | Text Expander | Content | Inline read-more / reveal toggle |
 | Table of Contents | Content | Auto-generated, clickable list of the page's headings |
 | Widget Area | Content | Render a registered sidebar / widget area |
+| Animated Heading | Content | A heading with rotating, animated words |
+| Flip Box | Content | A two-sided card that flips on hover or click |
+| Modal / Popup | Content | A trigger that opens content in a modal/drawer |
+| Pricing Table | Content | Comparable pricing plans with a featured highlight |
+| Social Share | Content | Share-to buttons for popular networks |
+| Timeline | Content | A sequence of milestones, vertical or horizontal |
+| Tooltip | Content | A trigger that reveals a tooltip on hover/click |
+| Portfolio Grid | Content | A filterable grid of portfolio projects (Portfolio ext) |
+| Project Gallery | Content | A portfolio project's image gallery + lightbox (Portfolio ext) |
+| Contact Form | Content | A drag-and-drop contact form (Forms ext) |
 | Section | Layout | A full content section with background options |
 | Hero Section | Layout | A section with a parallax background image |
 | Masonry Section | Layout | A section that packs columns into a masonry grid |
 | Bleed Section | Layout | A split section: content one side, full-bleed image the other |
+| Container | Layout | A second Boxed/Full-width container inside a section |
 | Row | Layout | A builder row (column container) |
 | Column | Layout | A responsive column with width/offset/order controls |
 | Image | Media | A single image with sizing and link |
 | Video | Media | An embedded video (URL based) |
+| Before / After | Media | An interactive before/after image comparison slider |
+| Image Box | Media | An image with heading, text, link and hover effects |
+| Image Hotspots | Media | An image with interactive pins that reveal tooltips |
+| Video Popup | Media | A poster with a play button that opens a video lightbox |
 | Navigation Menu | Header/Footer | Display a WordPress menu (dropdown / mega / accordion) |
 | Site Logo | Header/Footer | Site logo or title from Site Identity, or a custom image |
 | Site Search | Header/Footer | A site search form (inline or expanding icon) |

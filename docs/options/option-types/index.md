@@ -5,102 +5,106 @@ slug: /options/option-types
 
 # Option Types
 
-Option types are the building blocks of every Unyson+ form — theme settings, meta boxes,
-Customizer panels and shortcode options. The framework ships with many: text, textarea,
-select, switch, color, typography, image/upload, gallery, spacing, gradient, box-shadow and
-more. Every page below documents one type and the parameters it accepts.
+Option types are the building blocks of Unyson+ settings, meta boxes, and shortcode
+options. The framework ships with many — text, textarea, select, switch, color, typography,
+image/upload, gallery, spacing, gradient, box-shadow, and more.
 
-Every option has a `type` parameter (required) — its value is the id of a registered option
-type. Most options also accept a small set of base parameters:
-
-- `label` *(string)* — the field label.
-- `desc` *(string)* — a description shown under the label.
-- `value` *(mixed)* — the default value.
-- `attr` *(array)* — extra HTML attributes (placed on the input or wrapper, depending on the type).
-- `help` *(string\|array)* — extra info shown in a help tip next to the option.
+Every option has `type` as a required parameter. Its value should be an existing registered
+option type.
 
 ## Defining options
 
-Options are declared as a PHP array. The array **key** is the option id (must be unique) and is
-how you read the saved value back:
+Options are declared as a PHP array:
 
 ```php
-$options = [
-	'demo_text' => [
-		'label' => __( 'Text', 'unysonplus' ),
-		'type'  => 'text',
-		'value' => 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem',
-		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'unysonplus' ),
-		'help'  => __( 'Help tip shown next to the option.', 'unysonplus' ),
-	],
-	'demo_accent' => [
-		'label' => __( 'Accent color', 'unysonplus' ),
-		'type'  => 'color-picker',
-		'value' => '#2563eb',
-	],
-];
+<?php
+$options = array(
+    'heading' => array(
+        'type'  => 'text',
+        'label' => __( 'Heading', 'fw' ),
+        'value' => 'Hello world',
+    ),
+    'accent' => array(
+        'type'  => 'color-picker',
+        'label' => __( 'Accent color', 'fw' ),
+        'value' => '#ffcc00',
+    ),
+);
 ```
-
-:::tip Reference: `demo.php`
-Every code example in this section mirrors the live demo options in the parent theme at
-`framework-customizations/theme/options/demo.php`. Copy a block from there to get a working,
-copy-pasteable example of any option type.
-:::
 
 ## Reading saved values
 
 ```php
 <?php
 // Theme settings
-$accent = fw_get_db_settings_option( 'demo_accent' );
+$accent = fw_get_db_settings_option( 'accent' );
 
 // Post meta (e.g. from a Custom Fields group or a meta box)
-$text = fw_get_field( 'demo_text' );
+$heading = fw_get_field( 'heading' );
 ```
 
-## Conventions for custom option types
+## Adding a new option type
 
-New option types live in `framework/includes/option-types/`. Each registers a class extending
-`FW_Option_Type`. When you build one, follow these conventions:
+New option types live in `framework/includes/option-types/`. Each registers a class
+extending `FW_Option_Type`. See the existing option types in the plugin source for working
+examples, and the per-area `AGENTS.md` notes for conventions. When you build a custom option
+type, follow the conventions below.
 
 ### HTML
 
-The main/wrapper element of every option type must carry the `.fw-option-type-{type}` class.
+All option types must have a `.fw-option-type-{type}` class on the main/wrapper html element.
 
 ### CSS
 
-Prefix every rule with `.fw-option-type-{type}` to prevent conflicts:
+If the option type has css, all rules must be prefixed with the `.fw-option-type-{type}` class:
 
 ```css
 /* correct */
-.fw-option-type-demo .some-class { color: blue; }
+.fw-option-type-demo .some-class {
+    color: blue;
+}
 
 /* wrong */
-.some-class { color: blue; }
+.some-class {
+    color: blue;
+}
 ```
+
+:::tip
+This is done to prevent css conflicts.
+:::
 
 ### JavaScript
 
-All JavaScript must scope to the `.fw-option-type-{type}` element (no events attached to the
-body). If an option type fires custom events, they are triggered on that element:
+All javascript must stick to the `.fw-option-type-{type}` class and work only within the
+main/wrapper element (no events attached to the body). If the option type has custom
+javascript events, those events must be triggered on the main element.
 
 ```javascript
-// Listen for an option type's custom event
-jQuery( '.fw-option-type-demo#fw-option-demo' )
-	.on( 'fw:option-type:demo:custom-event', function ( event, data ) {
-		console.log( data );
-	} );
+$someInnerElement.closest('.fw-option-type-demo')
+    .trigger('fw:option-type:demo:custom-event', {some: 'data'});
+```
+
+If it's specified in the documentation that an option type has custom events, it means that
+you can attach event listeners on the elements with the `.fw-option-type-{type}` class (not on
+body or `fwEvents`). Some events send data that can be accessed this way:
+
+```php
+jQuery('.fw-option-type-demo#fw-option-demo')
+    .on('fw:option-type:demo:custom-event', function(event, data){
+        console.log(data);
+    });
 ```
 
 :::danger
-Don't confuse `.fw-option-type-{type}` with `.fw-backend-option-type-{type}`, which is used
-internally by the framework and must not be relied on in option-type scripts.
+Do not confuse `.fw-option-type-{type}` with the `.fw-backend-option-type-{type}` class which
+is used internally by the framework and should not be used in option type scripts.
 :::
-
-See the existing option types in the plugin source for working examples, and the per-area
-`AGENTS.md` notes for conventions.
 
 ## Built-in option types
 
-Below is the complete list of built-in option types, each with its available parameters. Click
-through for the reference and a copy-pasteable example.
+<iframe src="https://player.vimeo.com/video/105002864?title=0&amp;byline=0&amp;portrait=0" width="100%" height="384" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<br/><br/>
+
+Here is a complete list of all built-in option types with all available parameters for each
+option. Click through any type below for its reference and a copy-pasteable example.

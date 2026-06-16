@@ -1,7 +1,20 @@
 ---
-title: "Filters & Actions"
+title: "Hooks & Filters"
+slug: /hooks
 ---
 
+# Hooks & Filters
+
+Unyson+ exposes WordPress actions and filters so themes and extensions can extend the
+framework.
+
+:::tip Auto-generating this reference
+Because hooks are defined in code with docblocks, you can auto-generate this page from the
+plugin source using a tool like
+[pronamic/wp-documentor](https://github.com/pronamic/wp-documentor) or
+[wp-hooks-generator](https://github.com/johnbillion/wp-hooks-generator), then paste the
+output here. The user-facing guide stays hand-written; only the reference is generated.
+:::
 
 ## Actions
 
@@ -120,6 +133,14 @@ title: "Filters & Actions"
   >      */
   >     return '/fw';
   > }
+  > ```
+
+- `fw_ext_mngr_github_branch` - The GitHub branch an extension is downloaded/updated from.
+
+  > ``` php
+  > add_filter( 'fw_ext_mngr_github_branch', function ( $branch, $user_repo ) {
+  >     return 'main';
+  > }, 10, 2 );
   > ```
 
 ### Options

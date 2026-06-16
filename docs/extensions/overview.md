@@ -43,5 +43,5 @@ it automatically.
 ## Developer note
 
 Extensions live in `framework/extensions/`. See
-[Creating extensions](../developers/option-types.md) for how options and shortcodes are
+[Option types](/docs/options/option-types) for how options and shortcodes are
 built, and the per-area `AGENTS.md` files in the plugin source for recipes.

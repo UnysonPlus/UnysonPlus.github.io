@@ -36,6 +36,13 @@ track) and **Label Color**.
 
 ## Screenshots
 
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::
+The element's **options panel** in the Page Builder:
+
+**Bars tab:**
+
+![Progress Bars options panel — Bars tab](/img/shortcodes/progress-bars.png)
+
+**Style tab:**
+
+![Progress Bars options panel — Style tab](/img/shortcodes/progress-style.png)
+

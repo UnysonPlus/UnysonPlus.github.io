@@ -28,6 +28,16 @@ the **Number**, **Prefix** and **Suffix**.
 
 ## Screenshots
 
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::
+The element's **options panel** in the Page Builder:
+
+**Content tab:**
+
+![Animated Counter options panel — Content tab](/img/shortcodes/counter-content.png)
+
+**Style tab:**
+
+![Animated Counter options panel — Style tab](/img/shortcodes/counter-style.png)
+
+**On the Page Builder canvas:**
+
+![Animated Counter with example content on the Page Builder canvas](/img/shortcodes/counter-backend.png)

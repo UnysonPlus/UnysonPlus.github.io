@@ -33,6 +33,13 @@ Tab Title Color, Tab Content Color, Text Color, Background Color, and Margin & P
 
 ## Screenshots
 
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::
+The element's **options panel** in the Page Builder:
+
+**Content tab:**
+
+![Tabs options panel — Content tab](/img/shortcodes/tabs-content.png)
+
+**Styling tab:**
+
+![Tabs options panel — Styling tab](/img/shortcodes/tabs-styling.png)
+

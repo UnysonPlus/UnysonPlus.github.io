@@ -31,6 +31,16 @@ typography control. Tabs: **Content**, **Style**, **Animations**, **Advanced**.
 
 ## Screenshots
 
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::
+The element's **options panel** in the Page Builder:
+
+**Content tab:**
+
+![Countdown Timer options panel — Content tab](/img/shortcodes/countdown-content.png)
+
+**Style tab:**
+
+![Countdown Timer options panel — Style tab](/img/shortcodes/countdown-style.png)
+
+**On the Page Builder canvas:**
+
+![Countdown Timer with example content on the Page Builder canvas](/img/shortcodes/countdown-backend.png)

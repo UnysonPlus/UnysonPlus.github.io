@@ -38,6 +38,17 @@ colors, a **Font Size Preset**, and **Margin & Padding**.
 
 ## Screenshots
 
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::
+The element's **options panel** in the Page Builder:
+
+**Content tab:**
+
+![Timeline options panel — Content tab](/img/shortcodes/timeline-content.png)
+
+**Design tab:**
+
+![Timeline options panel — Design tab](/img/shortcodes/timeline-design.png)
+
+**Styling tab:**
+
+![Timeline options panel — Styling tab](/img/shortcodes/timeline-styling.png)
+

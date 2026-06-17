@@ -37,6 +37,17 @@ Text Color, Background Color, and Margin & Padding.
 
 ## Screenshots
 
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::
+The element's **options panel** in the Page Builder:
+
+**Content tab:**
+
+![Table options panel — Content tab](/img/shortcodes/table-content.png)
+
+**Table Options tab:**
+
+![Table options panel — Table Options tab](/img/shortcodes/table-table-options.png)
+
+**Styling tab:**
+
+![Table options panel — Styling tab](/img/shortcodes/table-styling.png)
+

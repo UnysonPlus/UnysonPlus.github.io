@@ -49,6 +49,21 @@ Per-state Title, Content and Icon colors (closed/open), Background Color, and Ma
 
 ## Screenshots
 
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::
+The element's **options panel** in the Page Builder:
+
+**Content tab:**
+
+![Accordion options panel — Content tab](/img/shortcodes/accordion-content.png)
+
+**Layout tab:**
+
+![Accordion options panel — Layout tab](/img/shortcodes/accordion-layout.png)
+
+**Behaviour tab:**
+
+![Accordion options panel — Behaviour tab](/img/shortcodes/accordion-behaviour.png)
+
+**Styling tab:**
+
+![Accordion options panel — Styling tab](/img/shortcodes/accordion-styling.png)
+

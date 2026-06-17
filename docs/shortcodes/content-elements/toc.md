@@ -1,6 +1,7 @@
 ---
 title: Table of Contents
 sidebar_position: 26
+sidebar_custom_props: { icon: '/img/shortcode-icons/toc.svg' }
 ---
 
 # Table of Contents

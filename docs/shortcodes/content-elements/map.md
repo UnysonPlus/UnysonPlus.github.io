@@ -1,6 +1,7 @@
 ---
 title: Map
 sidebar_position: 10
+sidebar_custom_props: { icon: '/img/shortcode-icons/map.svg' }
 ---
 
 # Map

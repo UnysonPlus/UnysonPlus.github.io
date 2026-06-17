@@ -1,6 +1,7 @@
 ---
 title: Text Block
 sidebar_position: 18
+sidebar_custom_props: { icon: '/img/shortcode-icons/text-block.svg' }
 ---
 
 # Text Block

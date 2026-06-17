@@ -1,6 +1,7 @@
 ---
 title: Social Share
 sidebar_position: 34
+sidebar_custom_props: { icon: '/img/shortcode-icons/social-share.svg' }
 ---
 
 # Social Share

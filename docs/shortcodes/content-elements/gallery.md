@@ -1,6 +1,7 @@
 ---
 title: Gallery
 sidebar_position: 24
+sidebar_custom_props: { icon: '/img/shortcode-icons/gallery.svg' }
 ---
 
 # Gallery

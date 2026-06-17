@@ -1,6 +1,7 @@
 ---
 title: Project Gallery
 sidebar_position: 33
+sidebar_custom_props: { icon: '/img/shortcode-icons/project-gallery.svg' }
 ---
 
 # Project Gallery

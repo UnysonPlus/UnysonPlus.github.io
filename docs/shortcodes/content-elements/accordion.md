@@ -1,6 +1,7 @@
 ---
 title: Accordion
 sidebar_position: 1
+sidebar_custom_props: { icon: '/img/shortcode-icons/accordion.svg' }
 ---
 
 # Accordion

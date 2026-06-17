@@ -1,6 +1,7 @@
 ---
 title: Widget Area
 sidebar_position: 20
+sidebar_custom_props: { icon: '/img/shortcode-icons/widget-area.svg' }
 ---
 
 # Widget Area

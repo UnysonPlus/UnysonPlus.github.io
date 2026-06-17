@@ -1,6 +1,7 @@
 ---
 title: Flip Box
 sidebar_position: 29
+sidebar_custom_props: { icon: '/img/shortcode-icons/flip-box.svg' }
 ---
 
 # Flip Box

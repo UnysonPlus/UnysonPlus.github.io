@@ -1,6 +1,7 @@
 ---
 title: Special Heading
 sidebar_position: 13
+sidebar_custom_props: { icon: '/img/shortcode-icons/special-heading.svg' }
 ---
 
 # Special Heading

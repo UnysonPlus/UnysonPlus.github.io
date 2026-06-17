@@ -1,6 +1,7 @@
 ---
 title: Animated Counter
 sidebar_position: 23
+sidebar_custom_props: { icon: '/img/shortcode-icons/counter.svg' }
 ---
 
 # Animated Counter

@@ -1,6 +1,7 @@
 ---
 title: Animated Heading
 sidebar_position: 27
+sidebar_custom_props: { icon: '/img/shortcode-icons/animated-heading.svg' }
 ---
 
 # Animated Heading

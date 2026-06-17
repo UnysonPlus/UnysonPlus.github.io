@@ -1,6 +1,7 @@
 ---
 title: Progress Bars
 sidebar_position: 25
+sidebar_custom_props: { icon: '/img/shortcode-icons/progress.svg' }
 ---
 
 # Progress Bars

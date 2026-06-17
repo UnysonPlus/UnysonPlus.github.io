@@ -1,6 +1,7 @@
 ---
 title: Text Expander
 sidebar_position: 19
+sidebar_custom_props: { icon: '/img/shortcode-icons/text-expander.svg' }
 ---
 
 # Text Expander

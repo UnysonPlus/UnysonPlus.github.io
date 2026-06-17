@@ -1,6 +1,7 @@
 ---
 title: Button
 sidebar_position: 2
+sidebar_custom_props: { icon: '/img/shortcode-icons/button.svg' }
 ---
 
 # Button

@@ -40,6 +40,20 @@ Capture the collapsed/expanded states and toggle icons: `text-expander-collapsed
 
 ## Screenshots
 
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::
+The element's **options panel** in the Page Builder:
+
+**Content tab:**
+
+![Text Expander options panel — Content tab](/img/shortcodes/text-expander-content.png)
+
+**Layout tab:**
+
+![Text Expander options panel — Layout tab](/img/shortcodes/text-expander-layout.png)
+
+**Styling tab:**
+
+![Text Expander options panel — Styling tab](/img/shortcodes/text-expander-styling.png)
+
+**On the Page Builder canvas:**
+
+![Text Expander with example content on the Page Builder canvas](/img/shortcodes/text-expander-backend.png)

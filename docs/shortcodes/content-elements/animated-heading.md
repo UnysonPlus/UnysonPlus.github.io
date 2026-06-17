@@ -33,6 +33,20 @@ flip, zoom or clip animation. Tabs: **Content**, **Design**, **Styling**, **Anim
 
 ## Screenshots
 
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::
+The element's **options panel** in the Page Builder:
+
+**Content tab:**
+
+![Animated Heading options panel — Content tab](/img/shortcodes/animated-heading-content.png)
+
+**Design tab:**
+
+![Animated Heading options panel — Design tab](/img/shortcodes/animated-heading-design.png)
+
+**Styling tab:**
+
+![Animated Heading options panel — Styling tab](/img/shortcodes/animated-heading-styling.png)
+
+**On the Page Builder canvas:**
+
+![Animated Heading with example content on the Page Builder canvas](/img/shortcodes/animated-heading-backend.png)

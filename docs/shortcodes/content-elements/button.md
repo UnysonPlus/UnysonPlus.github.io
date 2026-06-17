@@ -37,6 +37,16 @@ files: `button-style-1`, `button-size-lg`, `button-hover-grow` in `static/img/sh
 
 ## Screenshots
 
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::
+The element's **options panel** in the Page Builder:
+
+**Content tab:**
+
+![Button options panel — Content tab](/img/shortcodes/button-content.png)
+
+**Styling tab:**
+
+![Button options panel — Styling tab](/img/shortcodes/button-styling.png)
+
+**On the Page Builder canvas:**
+
+![Button with example content on the Page Builder canvas](/img/shortcodes/button-backend.png)

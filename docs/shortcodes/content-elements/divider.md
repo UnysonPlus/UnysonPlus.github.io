@@ -8,11 +8,11 @@ sidebar_position: 6
 A horizontal separator, optionally with text or an icon. Tabs: **Content**, **Layout**,
 **Styling**, **Animations**, **Advanced**.
 
-![Divider on the Page Builder canvas](/img/shortcodes/divider-backend.png)
+<img src="/img/shortcodes/divider-backend.png" alt="Divider on the Page Builder canvas" width="936" />
 
 ## Content
 
-![Divider options panel — Content tab](/img/shortcodes/divider-content.png)
+<img src="/img/shortcodes/divider-content.png" alt="Divider options panel — Content tab" width="750" />
 
 | Option | Choices |
 | --- | --- |
@@ -32,12 +32,12 @@ Capture each **Line Design** and the text/icon variants: `divider-solid`,
 
 ## Layout
 
-![Divider options panel — Layout tab](/img/shortcodes/divider-layout.png)
+<img src="/img/shortcodes/divider-layout.png" alt="Divider options panel — Layout tab" width="750" />
 
 Margin Top/Bottom, Width (%), and spacing controls.
 
 ## Styling
 
-![Divider options panel — Styling tab](/img/shortcodes/divider-styling.png)
+<img src="/img/shortcodes/divider-styling.png" alt="Divider options panel — Styling tab" width="750" />
 
 Line Color, Icon Color, Divider Text Color, Background Color, and Margin & Padding.

@@ -11,7 +11,7 @@ Provided by the **Portfolio** extension. Tabs: **Content**, **Layout**, **Stylin
 
 ## Content
 
-![Project Gallery options panel — Content tab](/img/shortcodes/project-gallery-content.png)
+<img src="/img/shortcodes/project-gallery-content.png" alt="Project Gallery options panel — Content tab" width="840" />
 
 | Option | Choices |
 | --- | --- |
@@ -20,7 +20,7 @@ Provided by the **Portfolio** extension. Tabs: **Content**, **Layout**, **Stylin
 
 ## Layout
 
-![Project Gallery options panel — Layout tab](/img/shortcodes/project-gallery-layout.png)
+<img src="/img/shortcodes/project-gallery-layout.png" alt="Project Gallery options panel — Layout tab" width="840" />
 
 | Option | Choices |
 | --- | --- |
@@ -33,6 +33,6 @@ Provided by the **Portfolio** extension. Tabs: **Content**, **Layout**, **Stylin
 
 ## Styling
 
-![Project Gallery options panel — Styling tab](/img/shortcodes/project-gallery-styling.png)
+<img src="/img/shortcodes/project-gallery-styling.png" alt="Project Gallery options panel — Styling tab" width="840" />
 
 **Text Color**, **Background Color**, a **Font Size Preset**, and **Margin & Padding**.

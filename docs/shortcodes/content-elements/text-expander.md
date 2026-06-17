@@ -8,18 +8,18 @@ sidebar_position: 19
 An inline read-more / reveal toggle — hide part of a sentence or paragraph behind a
 **Show More** button. Tabs: **Content**, **Layout**, **Styling**, **Animations**, **Advanced**.
 
-![Text Expander on the Page Builder canvas](/img/shortcodes/text-expander-backend.png)
+<img src="/img/shortcodes/text-expander-backend.png" alt="Text Expander on the Page Builder canvas" width="936" />
 
 ## Content
 
-![Text Expander options panel — Content tab](/img/shortcodes/text-expander-content.png)
+<img src="/img/shortcodes/text-expander-content.png" alt="Text Expander options panel — Content tab" width="1200" />
 
 Visible Content, Hidden Content, **Button Text (Show)** (default "Show More"),
 **Button Text (Hide)** (default "Show Less").
 
 ## Layout
 
-![Text Expander options panel — Layout tab](/img/shortcodes/text-expander-layout.png)
+<img src="/img/shortcodes/text-expander-layout.png" alt="Text Expander options panel — Layout tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |
@@ -33,7 +33,7 @@ Visible Content, Hidden Content, **Button Text (Show)** (default "Show More"),
 
 ## Styling
 
-![Text Expander options panel — Styling tab](/img/shortcodes/text-expander-styling.png)
+<img src="/img/shortcodes/text-expander-styling.png" alt="Text Expander options panel — Styling tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |

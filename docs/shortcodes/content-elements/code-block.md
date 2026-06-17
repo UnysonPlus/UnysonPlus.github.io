@@ -10,7 +10,7 @@ Insert raw **HTML, CSS, or JavaScript**. Tabs: **Content**, **Styling**, **Anima
 
 ## Content
 
-![Code Block options panel — Content tab](/img/shortcodes/code-block-content.png)
+<img src="/img/shortcodes/code-block-content.png" alt="Code Block options panel — Content tab" width="1200" />
 
 | Option | Notes |
 | --- | --- |
@@ -18,6 +18,6 @@ Insert raw **HTML, CSS, or JavaScript**. Tabs: **Content**, **Styling**, **Anima
 
 ## Styling
 
-![Code Block options panel — Styling tab](/img/shortcodes/code-block-styling.png)
+<img src="/img/shortcodes/code-block-styling.png" alt="Code Block options panel — Styling tab" width="1200" />
 
 Text Color, Background Color, and Margin & Padding.

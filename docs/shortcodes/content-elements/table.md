@@ -10,7 +10,7 @@ A data table with optional interactivity. Tabs: **Content**, **Table Options**, 
 
 ## Table Options
 
-![Table options panel — Table Options tab](/img/shortcodes/table-table-options.png)
+<img src="/img/shortcodes/table-table-options.png" alt="Table options panel — Table Options tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |
@@ -35,10 +35,14 @@ Capture a couple of presets and the interactive features: `table-preset-1`,
 
 ## Styling
 
-![Table options panel — Styling tab](/img/shortcodes/table-styling.png)
+<img src="/img/shortcodes/table-styling.png" alt="Table options panel — Styling tab" width="1200" />
 
 Text Color, Background Color, and Margin & Padding.
 
 ## Content
 
 ![Table options panel — Content tab](/img/shortcodes/table-content.png)
+
+## Content
+
+<img src="/img/shortcodes/table-content.png" alt="Table options panel — Content tab" width="1200" />

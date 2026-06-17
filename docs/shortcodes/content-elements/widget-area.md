@@ -10,7 +10,7 @@ Render a registered sidebar / widget area inside the page. Tabs: **Content**, **
 
 ## Content
 
-![Widget Area options panel — Content tab](/img/shortcodes/widget-area-content.png)
+<img src="/img/shortcodes/widget-area-content.png" alt="Widget Area options panel — Content tab" width="750" />
 
 | Option | Notes |
 | --- | --- |
@@ -18,6 +18,6 @@ Render a registered sidebar / widget area inside the page. Tabs: **Content**, **
 
 ## Styling
 
-![Widget Area options panel — Styling tab](/img/shortcodes/widget-area-styling.png)
+<img src="/img/shortcodes/widget-area-styling.png" alt="Widget Area options panel — Styling tab" width="750" />
 
 Text Color, Background Color, and Margin & Padding.

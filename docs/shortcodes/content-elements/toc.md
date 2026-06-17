@@ -11,7 +11,7 @@ with optional numbering, scrollspy highlighting and a sticky/floating layout. Ta
 
 ## Content
 
-![Table of Contents options panel — Content tab](/img/shortcodes/toc-content.png)
+<img src="/img/shortcodes/toc-content.png" alt="Table of Contents options panel — Content tab" width="840" />
 
 | Option | Choices |
 | --- | --- |
@@ -26,7 +26,7 @@ with optional numbering, scrollspy highlighting and a sticky/floating layout. Ta
 
 ## Behavior
 
-![Table of Contents options panel — Behavior tab](/img/shortcodes/toc-behavior.png)
+<img src="/img/shortcodes/toc-behavior.png" alt="Table of Contents options panel — Behavior tab" width="840" />
 
 | Option | Choices |
 | --- | --- |
@@ -41,7 +41,7 @@ with optional numbering, scrollspy highlighting and a sticky/floating layout. Ta
 
 ## Styling
 
-![Table of Contents options panel — Styling tab](/img/shortcodes/toc-styling.png)
+<img src="/img/shortcodes/toc-styling.png" alt="Table of Contents options panel — Styling tab" width="840" />
 
 | Option | Choices |
 | --- | --- |

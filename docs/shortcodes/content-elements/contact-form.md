@@ -13,7 +13,7 @@ The options open in a modal with a **Form Fields** builder and a **Settings** se
 
 ## Form Fields
 
-![Contact form options panel — Form Fields tab](/img/shortcodes/contact-form-form-fields.png)
+<img src="/img/shortcodes/contact-form-form-fields.png" alt="Contact form options panel — Form Fields tab" width="1200" />
 
 - **Form** — a drag-and-drop form builder (header/title, text inputs, textarea, and the other
   form field types) for laying out the form.
@@ -33,5 +33,7 @@ The options open in a modal with a **Form Fields** builder and a **Settings** se
 - **Mailer** — the mail-service configuration (SMTP, etc.), shared with the Mailer extension.
 
 ## Settings
+
+<img src="/img/shortcodes/contact-form-settings.png" alt="Contact form options panel — Settings tab" width="1200" />
 
 ![Contact form options panel — Settings tab](/img/shortcodes/contact-form-settings.png)

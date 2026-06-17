@@ -9,11 +9,11 @@ A heading where part of the text rotates through several words with a typewriter
 flip, zoom or clip animation. Tabs: **Content**, **Design**, **Styling**, **Animations**,
 **Advanced**.
 
-![Animated Heading on the Page Builder canvas](/img/shortcodes/animated-heading-backend.png)
+<img src="/img/shortcodes/animated-heading-backend.png" alt="Animated Heading on the Page Builder canvas" width="936" />
 
 ## Content
 
-![Animated Heading options panel — Content tab](/img/shortcodes/animated-heading-content.png)
+<img src="/img/shortcodes/animated-heading-content.png" alt="Animated Heading options panel — Content tab" width="840" />
 
 | Option | Choices |
 | --- | --- |
@@ -24,7 +24,7 @@ flip, zoom or clip animation. Tabs: **Content**, **Design**, **Styling**, **Anim
 
 ## Design
 
-![Animated Heading options panel — Design tab](/img/shortcodes/animated-heading-design.png)
+<img src="/img/shortcodes/animated-heading-design.png" alt="Animated Heading options panel — Design tab" width="840" />
 
 | Option | Choices |
 | --- | --- |
@@ -35,6 +35,6 @@ flip, zoom or clip animation. Tabs: **Content**, **Design**, **Styling**, **Anim
 
 ## Styling
 
-![Animated Heading options panel — Styling tab](/img/shortcodes/animated-heading-styling.png)
+<img src="/img/shortcodes/animated-heading-styling.png" alt="Animated Heading options panel — Styling tab" width="840" />
 
 **Text Color**, **Highlight / Accent Color**, a **Font Size Preset**, and **Margin & Padding**.

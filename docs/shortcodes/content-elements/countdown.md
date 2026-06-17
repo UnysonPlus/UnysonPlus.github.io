@@ -8,11 +8,11 @@ sidebar_position: 22
 A live countdown to a target date and time — days, hours, minutes and seconds — with full
 typography control. Tabs: **Content**, **Style**, **Animations**, **Advanced**.
 
-![Countdown Timer on the Page Builder canvas](/img/shortcodes/countdown-backend.png)
+<img src="/img/shortcodes/countdown-backend.png" alt="Countdown Timer on the Page Builder canvas" width="936" />
 
 ## Content
 
-![Countdown Timer options panel — Content tab](/img/shortcodes/countdown-content.png)
+<img src="/img/shortcodes/countdown-content.png" alt="Countdown Timer options panel — Content tab" width="840" />
 
 | Option | Choices |
 | --- | --- |
@@ -24,7 +24,7 @@ typography control. Tabs: **Content**, **Style**, **Animations**, **Advanced**.
 
 ## Style
 
-![Countdown Timer options panel — Style tab](/img/shortcodes/countdown-style.png)
+<img src="/img/shortcodes/countdown-style.png" alt="Countdown Timer options panel — Style tab" width="840" />
 
 | Option | Choices |
 | --- | --- |

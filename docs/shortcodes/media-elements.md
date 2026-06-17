@@ -12,7 +12,7 @@ Builder.
 
 ## Image
 
-![Image on the Page Builder canvas](/img/shortcodes/image-backend.png)
+<img src="/img/shortcodes/image-backend.png" alt="Image on the Page Builder canvas" width="936" />
 
 A single image with sizing and an optional link.
 
@@ -37,7 +37,7 @@ Background/Text).
 
 ## Image Box
 
-![Image Box on the Page Builder canvas](/img/shortcodes/image-box-backend.png)
+<img src="/img/shortcodes/image-box-backend.png" alt="Image Box on the Page Builder canvas" width="936" />
 
 An image paired with a heading, text and link, in many hover-overlay, caption, card and frame
 designs. Tabs: **Content**, **Design**, **Effects & Link**, **Styling**.
@@ -60,7 +60,7 @@ Tooltip Text / Link colors.
 
 ## Video Popup
 
-![Video Popup on the Page Builder canvas](/img/shortcodes/video-popup-backend.png)
+<img src="/img/shortcodes/video-popup-backend.png" alt="Video Popup on the Page Builder canvas" width="936" />
 
 A poster image with a play button that opens a YouTube / Vimeo / self-hosted video in a
 lightbox.

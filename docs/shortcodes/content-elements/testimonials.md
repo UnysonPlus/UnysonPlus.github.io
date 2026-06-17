@@ -10,7 +10,7 @@ Display testimonials in a carousel, grid, or single layout. Tabs: **Content**, *
 
 ## Content
 
-![Testimonials options panel — Content tab](/img/shortcodes/testimonials-content.png)
+<img src="/img/shortcodes/testimonials-content.png" alt="Testimonials options panel — Content tab" width="1200" />
 
 - **Title** — optional section title.
 - **Testimonials** — a repeatable list; each has: **Quote**, **Image** (avatar), **Name**,
@@ -18,7 +18,7 @@ Display testimonials in a carousel, grid, or single layout. Tabs: **Content**, *
 
 ## Layout
 
-![Testimonials options panel — Design tab](/img/shortcodes/testimonials-design.png)
+<img src="/img/shortcodes/testimonials-design.png" alt="Testimonials options panel — Design tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |
@@ -35,7 +35,7 @@ Capture each layout: `testimonials-carousel`, `testimonials-grid`, `testimonials
 
 ## Style
 
-![Testimonials options panel — Style tab](/img/shortcodes/testimonials-style.png)
+<img src="/img/shortcodes/testimonials-style.png" alt="Testimonials options panel — Style tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |

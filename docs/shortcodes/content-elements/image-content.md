@@ -8,17 +8,17 @@ sidebar_position: 9
 An image alongside text in a responsive two-column layout. Tabs: **Content**, **Layout**,
 **Styling**, **Animations**, **Advanced**.
 
-![Image Content on the Page Builder canvas](/img/shortcodes/image-content-backend.png)
+<img src="/img/shortcodes/image-content-backend.png" alt="Image Content on the Page Builder canvas" width="936" />
 
 ## Content
 
-![Image Content options panel — Content tab](/img/shortcodes/image-content-content.png)
+<img src="/img/shortcodes/image-content-content.png" alt="Image Content options panel — Content tab" width="1200" />
 
 Image, Content (rich text), Image Alt Text, Image Link, Open Link in New Window.
 
 ## Layout
 
-![Image Content options panel — Layout tab](/img/shortcodes/image-content-layout.png)
+<img src="/img/shortcodes/image-content-layout.png" alt="Image Content options panel — Layout tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |
@@ -30,7 +30,7 @@ Image, Content (rich text), Image Alt Text, Image Link, Open Link in New Window.
 
 ## Styling
 
-![Image Content options panel — Styling tab](/img/shortcodes/image-content-styling.png)
+<img src="/img/shortcodes/image-content-styling.png" alt="Image Content options panel — Styling tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |

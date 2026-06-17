@@ -47,8 +47,10 @@ Capture a few representative tile styles: `map-osm-standard`, `map-carto-dark`,
 
 ## Content
 
-![Map options panel — Content tab](/img/shortcodes/map-content.png)
+<img src="/img/shortcodes/map-content.png" alt="Map options panel — Content tab" width="840" />
 
 ## Styling
+
+<img src="/img/shortcodes/map-styling.png" alt="Map options panel — Styling tab" width="840" />
 
 ![Map options panel — Styling tab](/img/shortcodes/map-styling.png)

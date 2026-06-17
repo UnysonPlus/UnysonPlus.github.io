@@ -11,14 +11,14 @@ Tabs: **Slides**, **Layout**, **Behavior**, **Style**, **Animations**, **Advance
 
 ## Slides
 
-![Carousel / Slider options panel — Slides tab](/img/shortcodes/carousel-slides.png)
+<img src="/img/shortcodes/carousel-slides.png" alt="Carousel / Slider options panel — Slides tab" width="1200" />
 
 - **Slides** — a repeatable list; each slide has an **Image**, **Heading**, **Text** and a
   **Button** (label + link).
 
 ## Layout
 
-![Carousel / Slider options panel — Layout tab](/img/shortcodes/carousel-layout.png)
+<img src="/img/shortcodes/carousel-layout.png" alt="Carousel / Slider options panel — Layout tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |
@@ -32,7 +32,7 @@ Tabs: **Slides**, **Layout**, **Behavior**, **Style**, **Animations**, **Advance
 
 ## Behavior
 
-![Carousel / Slider options panel — Behavior tab](/img/shortcodes/carousel-behavior.png)
+<img src="/img/shortcodes/carousel-behavior.png" alt="Carousel / Slider options panel — Behavior tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |
@@ -46,7 +46,7 @@ Tabs: **Slides**, **Layout**, **Behavior**, **Style**, **Animations**, **Advance
 
 ## Style
 
-![Carousel / Slider options panel — Style tab](/img/shortcodes/carousel-style.png)
+<img src="/img/shortcodes/carousel-style.png" alt="Carousel / Slider options panel — Style tab" width="1200" />
 
 **Dark Overlay** (On/Off) and **Overlay Strength** (0–90%) for legibility over images, plus
 **Heading Color** and **Text Color**.

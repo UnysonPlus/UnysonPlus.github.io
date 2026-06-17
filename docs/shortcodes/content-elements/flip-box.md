@@ -9,11 +9,11 @@ A two-sided card that flips on hover or click — icon/title on the front, text 
 back — with four flip directions and several designs. Tabs: **Content**, **Design**,
 **Styling**, **Animations**, **Advanced**.
 
-![Flip Box on the Page Builder canvas](/img/shortcodes/flip-box-backend.png)
+<img src="/img/shortcodes/flip-box-backend.png" alt="Flip Box on the Page Builder canvas" width="936" />
 
 ## Content
 
-![Flip Box options panel — Content tab](/img/shortcodes/flip-box-content.png)
+<img src="/img/shortcodes/flip-box-content.png" alt="Flip Box options panel — Content tab" width="1200" />
 
 | Option | Notes |
 | --- | --- |
@@ -28,7 +28,7 @@ back — with four flip directions and several designs. Tabs: **Content**, **Des
 
 ## Design
 
-![Flip Box options panel — Design tab](/img/shortcodes/flip-box-design.png)
+<img src="/img/shortcodes/flip-box-design.png" alt="Flip Box options panel — Design tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |
@@ -40,7 +40,7 @@ back — with four flip directions and several designs. Tabs: **Content**, **Des
 
 ## Styling
 
-![Flip Box options panel — Styling tab](/img/shortcodes/flip-box-styling.png)
+<img src="/img/shortcodes/flip-box-styling.png" alt="Flip Box options panel — Styling tab" width="1200" />
 
 Per-face **Front / Back Background** and **Text Color**, **Button Color**, a **Font Size
 Preset**, and **Margin & Padding**.

@@ -7,11 +7,11 @@ sidebar_position: 18
 
 A rich-text (WYSIWYG) block. Tabs: **Content**, **Styling**, **Animations**, **Advanced**.
 
-![Text Block on the Page Builder canvas](/img/shortcodes/text-block-backend.png)
+<img src="/img/shortcodes/text-block-backend.png" alt="Text Block on the Page Builder canvas" width="936" />
 
 ## Content
 
-![Text Block options panel — Content tab](/img/shortcodes/text-block-content.png)
+<img src="/img/shortcodes/text-block-content.png" alt="Text Block options panel — Content tab" width="1200" />
 
 | Option | Notes |
 | --- | --- |
@@ -19,6 +19,6 @@ A rich-text (WYSIWYG) block. Tabs: **Content**, **Styling**, **Animations**, **A
 
 ## Styling
 
-![Text Block options panel — Styling tab](/img/shortcodes/text-block-styling.png)
+<img src="/img/shortcodes/text-block-styling.png" alt="Text Block options panel — Styling tab" width="1200" />
 
 Text Color, Background Color, and Margin & Padding.

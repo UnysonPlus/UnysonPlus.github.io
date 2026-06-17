@@ -8,11 +8,11 @@ sidebar_position: 4
 A title + content + button block to drive an action. Tabs: **Content**, **Styling**,
 **Animations**, **Advanced**.
 
-![Call To Action on the Page Builder canvas](/img/shortcodes/call-to-action-backend.png)
+<img src="/img/shortcodes/call-to-action-backend.png" alt="Call To Action on the Page Builder canvas" width="936" />
 
 ## Content
 
-![Call To Action options panel — Content tab](/img/shortcodes/call-to-action-content.png)
+<img src="/img/shortcodes/call-to-action-content.png" alt="Call To Action options panel — Content tab" width="1200" />
 
 | Option | Notes |
 | --- | --- |
@@ -24,10 +24,12 @@ A title + content + button block to drive an action. Tabs: **Content**, **Stylin
 
 ## Styling
 
-![Call To Action options panel — Styling tab](/img/shortcodes/call-to-action-styling.png)
+<img src="/img/shortcodes/call-to-action-styling.png" alt="Call To Action options panel — Styling tab" width="1200" />
 
 Background Color, Title Color, Content Color, and Margin & Padding.
 
 ## Layout
+
+<img src="/img/shortcodes/call-to-action-layout.png" alt="Call To Action options panel — Layout tab" width="1200" />
 
 ![Call To Action options panel — Layout tab](/img/shortcodes/call-to-action-layout.png)

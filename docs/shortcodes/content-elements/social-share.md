@@ -9,11 +9,11 @@ Share-to buttons (Facebook, X, LinkedIn, Pinterest, WhatsApp, Telegram, Reddit, 
 link) in several styles and shapes. Tabs: **Content**, **Design**, **Styling**,
 **Animations**, **Advanced**.
 
-![Social Share on the Page Builder canvas](/img/shortcodes/social-share-backend.png)
+<img src="/img/shortcodes/social-share-backend.png" alt="Social Share on the Page Builder canvas" width="936" />
 
 ## Content
 
-![Social Share options panel — Content tab](/img/shortcodes/social-share-content.png)
+<img src="/img/shortcodes/social-share-content.png" alt="Social Share options panel — Content tab" width="840" />
 
 | Option | Choices |
 | --- | --- |
@@ -25,7 +25,7 @@ link) in several styles and shapes. Tabs: **Content**, **Design**, **Styling**,
 
 ## Design
 
-![Social Share options panel — Design tab](/img/shortcodes/social-share-design.png)
+<img src="/img/shortcodes/social-share-design.png" alt="Social Share options panel — Design tab" width="840" />
 
 | Option | Choices |
 | --- | --- |
@@ -38,7 +38,7 @@ link) in several styles and shapes. Tabs: **Content**, **Design**, **Styling**,
 
 ## Styling
 
-![Social Share options panel — Styling tab](/img/shortcodes/social-share-styling.png)
+<img src="/img/shortcodes/social-share-styling.png" alt="Social Share options panel — Styling tab" width="840" />
 
 **Override Button Color** (one color for all), **Icon / Label Color** (for Minimal/Outline), a
 **Font Size Preset**, and **Margin & Padding**.

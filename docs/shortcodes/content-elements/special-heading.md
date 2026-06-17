@@ -8,17 +8,17 @@ sidebar_position: 13
 An overline + title + subtitle heading block. Tabs: **Content**, **Layout**, **Styling**,
 **Animations**, **Advanced**.
 
-![Special Heading on the Page Builder canvas](/img/shortcodes/special-heading-backend.png)
+<img src="/img/shortcodes/special-heading-backend.png" alt="Special Heading on the Page Builder canvas" width="936" />
 
 ## Content
 
-![Special Heading options panel — Content tab](/img/shortcodes/special-heading-content.png)
+<img src="/img/shortcodes/special-heading-content.png" alt="Special Heading options panel — Content tab" width="840" />
 
 Overline, Title, Subtitle, Title Tag (H1–H6 / span / p).
 
 ## Layout
 
-![Special Heading options panel — Layout tab](/img/shortcodes/special-heading-layout.png)
+<img src="/img/shortcodes/special-heading-layout.png" alt="Special Heading options panel — Layout tab" width="840" />
 
 | Option | Choices |
 | --- | --- |
@@ -32,7 +32,7 @@ Overline, Title, Subtitle, Title Tag (H1–H6 / span / p).
 
 ## Styling
 
-![Special Heading options panel — Styling tab](/img/shortcodes/special-heading-styling.png)
+<img src="/img/shortcodes/special-heading-styling.png" alt="Special Heading options panel — Styling tab" width="840" />
 
 | Option | Choices |
 | --- | --- |

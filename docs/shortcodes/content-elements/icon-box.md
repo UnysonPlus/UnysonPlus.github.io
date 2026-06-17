@@ -9,7 +9,7 @@ An icon paired with a title and content — great for feature grids, service lis
 highlights. Options are organized into tabs: **Content**, **Layout**, **Link & SEO**,
 **Styling**, **Animations**, and **Advanced**.
 
-![Icon Box on the Page Builder canvas](/img/shortcodes/icon-box-backend.png)
+<img src="/img/shortcodes/icon-box-backend.png" alt="Icon Box on the Page Builder canvas" width="936" />
 
 ## Layouts (Icon Position)
 
@@ -90,16 +90,18 @@ class/ID and visibility controls).
 
 ## Content
 
-![Icon Box options panel — Content tab](/img/shortcodes/icon-box-content.png)
+<img src="/img/shortcodes/icon-box-content.png" alt="Icon Box options panel — Content tab" width="1200" />
 
 ## Layout
 
-![Icon Box options panel — Layout tab](/img/shortcodes/icon-box-layout.png)
+<img src="/img/shortcodes/icon-box-layout.png" alt="Icon Box options panel — Layout tab" width="1200" />
 
 ## Link & SEO
 
-![Icon Box options panel — Link & SEO tab](/img/shortcodes/icon-box-link-seo.png)
+<img src="/img/shortcodes/icon-box-link-seo.png" alt="Icon Box options panel — Link & SEO tab" width="1200" />
 
 ## Styling
+
+<img src="/img/shortcodes/icon-box-styling.png" alt="Icon Box options panel — Styling tab" width="1200" />
 
 ![Icon Box options panel — Styling tab](/img/shortcodes/icon-box-styling.png)

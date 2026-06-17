@@ -9,11 +9,11 @@ A trigger (button, text, icon or image) that opens custom content in a modal —
 side drawer or fullscreen. Tabs: **Content**, **Design**, **Styling**, **Animations**,
 **Advanced**.
 
-![Modal / Popup on the Page Builder canvas](/img/shortcodes/modal-popup-backend.png)
+<img src="/img/shortcodes/modal-popup-backend.png" alt="Modal / Popup on the Page Builder canvas" width="936" />
 
 ## Content
 
-![Modal / Popup options panel — Content tab](/img/shortcodes/modal-popup-content.png)
+<img src="/img/shortcodes/modal-popup-content.png" alt="Modal / Popup options panel — Content tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |
@@ -25,7 +25,7 @@ side drawer or fullscreen. Tabs: **Content**, **Design**, **Styling**, **Animati
 
 ## Design
 
-![Modal / Popup options panel — Design tab](/img/shortcodes/modal-popup-design.png)
+<img src="/img/shortcodes/modal-popup-design.png" alt="Modal / Popup options panel — Design tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |
@@ -37,7 +37,7 @@ side drawer or fullscreen. Tabs: **Content**, **Design**, **Styling**, **Animati
 
 ## Styling
 
-![Modal / Popup options panel — Styling tab](/img/shortcodes/modal-popup-styling.png)
+<img src="/img/shortcodes/modal-popup-styling.png" alt="Modal / Popup options panel — Styling tab" width="1200" />
 
 **Trigger / Accent Color**, **Overlay Color**, **Modal Background**, **Modal Text**, a **Font
 Size Preset**, and **Trigger Margin & Padding**.

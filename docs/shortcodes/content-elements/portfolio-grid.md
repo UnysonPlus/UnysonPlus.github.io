@@ -11,7 +11,7 @@ in the builder. Tabs: **Content**, **Layout**, **Styling**, **Animations**, **Ad
 
 ## Content
 
-![Portfolio Grid options panel — Content tab](/img/shortcodes/portfolio-grid-content.png)
+<img src="/img/shortcodes/portfolio-grid-content.png" alt="Portfolio Grid options panel — Content tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |
@@ -23,7 +23,7 @@ in the builder. Tabs: **Content**, **Layout**, **Styling**, **Animations**, **Ad
 
 ## Layout
 
-![Portfolio Grid options panel — Layout tab](/img/shortcodes/portfolio-grid-layout.png)
+<img src="/img/shortcodes/portfolio-grid-layout.png" alt="Portfolio Grid options panel — Layout tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |
@@ -35,6 +35,6 @@ in the builder. Tabs: **Content**, **Layout**, **Styling**, **Animations**, **Ad
 
 ## Styling
 
-![Portfolio Grid options panel — Styling tab](/img/shortcodes/portfolio-grid-styling.png)
+<img src="/img/shortcodes/portfolio-grid-styling.png" alt="Portfolio Grid options panel — Styling tab" width="1200" />
 
 **Text Color**, **Background Color**, a **Font Size Preset**, and **Margin & Padding**.

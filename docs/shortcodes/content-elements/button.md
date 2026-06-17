@@ -7,11 +7,11 @@ sidebar_position: 2
 
 A styled, linkable button. Tabs: **Content**, **Styling**, **Animations**, **Advanced**.
 
-![Button on the Page Builder canvas](/img/shortcodes/button-backend.png)
+<img src="/img/shortcodes/button-backend.png" alt="Button on the Page Builder canvas" width="936" />
 
 ## Content
 
-![Button options panel — Content tab](/img/shortcodes/button-content.png)
+<img src="/img/shortcodes/button-content.png" alt="Button options panel — Content tab" width="1200" />
 
 | Option | Notes |
 | --- | --- |
@@ -23,7 +23,7 @@ A styled, linkable button. Tabs: **Content**, **Styling**, **Animations**, **Adv
 
 ## Styling
 
-![Button options panel — Styling tab](/img/shortcodes/button-styling.png)
+<img src="/img/shortcodes/button-styling.png" alt="Button options panel — Styling tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |

@@ -11,7 +11,7 @@ A sequence of milestones with date, title, text, icon and image — vertical (al
 
 ## Content
 
-![Timeline options panel — Content tab](/img/shortcodes/timeline-content.png)
+<img src="/img/shortcodes/timeline-content.png" alt="Timeline options panel — Content tab" width="1200" />
 
 - **Heading** — optional section heading.
 - **Milestones** — a repeatable list; each milestone has:
@@ -27,7 +27,7 @@ A sequence of milestones with date, title, text, icon and image — vertical (al
 
 ## Design
 
-![Timeline options panel — Design tab](/img/shortcodes/timeline-design.png)
+<img src="/img/shortcodes/timeline-design.png" alt="Timeline options panel — Design tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |
@@ -37,7 +37,7 @@ A sequence of milestones with date, title, text, icon and image — vertical (al
 
 ## Styling
 
-![Timeline options panel — Styling tab](/img/shortcodes/timeline-styling.png)
+<img src="/img/shortcodes/timeline-styling.png" alt="Timeline options panel — Styling tab" width="1200" />
 
 **Accent** (line + markers), **Line Color**, **Card Background**, **Date / Title / Text**
 colors, a **Font Size Preset**, and **Margin & Padding**.

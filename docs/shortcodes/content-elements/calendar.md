@@ -9,7 +9,7 @@ A date / events calendar. Tabs: **Content**, **Styling**, **Animations**, **Adva
 
 ## Content
 
-![Calendar options panel — Content tab](/img/shortcodes/calendar-content.png)
+<img src="/img/shortcodes/calendar-content.png" alt="Calendar options panel — Content tab" width="750" />
 
 | Option | Choices |
 | --- | --- |
@@ -24,6 +24,6 @@ Capture the Daily / Weekly / Monthly views: `calendar-daily`, `calendar-weekly`,
 
 ## Styling
 
-![Calendar options panel — Styling tab](/img/shortcodes/calendar-styling.png)
+<img src="/img/shortcodes/calendar-styling.png" alt="Calendar options panel — Styling tab" width="750" />
 
 Text Color, Background Color, Heading Color, Navigation Buttons Color, and Margin & Padding.

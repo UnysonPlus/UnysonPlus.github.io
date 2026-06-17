@@ -8,11 +8,11 @@ sidebar_position: 7
 A single icon with an optional title. Tabs: **Content**, **Styling**, **Animations**,
 **Advanced**.
 
-![Icon on the Page Builder canvas](/img/shortcodes/icon-backend.png)
+<img src="/img/shortcodes/icon-backend.png" alt="Icon on the Page Builder canvas" width="936" />
 
 ## Content
 
-![Icon options panel — Content tab](/img/shortcodes/icon-content.png)
+<img src="/img/shortcodes/icon-content.png" alt="Icon options panel — Content tab" width="750" />
 
 | Option | Notes |
 | --- | --- |
@@ -21,6 +21,6 @@ A single icon with an optional title. Tabs: **Content**, **Styling**, **Animatio
 
 ## Styling
 
-![Icon options panel — Styling tab](/img/shortcodes/icon-styling.png)
+<img src="/img/shortcodes/icon-styling.png" alt="Icon options panel — Styling tab" width="750" />
 
 Title Color, Icon Color, Background Color, and Margin & Padding.

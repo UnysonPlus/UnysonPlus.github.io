@@ -8,11 +8,11 @@ sidebar_position: 36
 A trigger (text, icon or button) that reveals a tooltip on hover, focus or click — four
 positions and themes. Tabs: **Content**, **Design**, **Styling**, **Animations**, **Advanced**.
 
-![Tooltip on the Page Builder canvas](/img/shortcodes/tooltip-backend.png)
+<img src="/img/shortcodes/tooltip-backend.png" alt="Tooltip on the Page Builder canvas" width="936" />
 
 ## Content
 
-![Tooltip options panel — Content tab](/img/shortcodes/tooltip-content.png)
+<img src="/img/shortcodes/tooltip-content.png" alt="Tooltip options panel — Content tab" width="840" />
 
 | Option | Choices |
 | --- | --- |
@@ -24,7 +24,7 @@ positions and themes. Tabs: **Content**, **Design**, **Styling**, **Animations**
 
 ## Design
 
-![Tooltip options panel — Design tab](/img/shortcodes/tooltip-design.png)
+<img src="/img/shortcodes/tooltip-design.png" alt="Tooltip options panel — Design tab" width="840" />
 
 | Option | Choices |
 | --- | --- |
@@ -36,7 +36,7 @@ positions and themes. Tabs: **Content**, **Design**, **Styling**, **Animations**
 
 ## Styling
 
-![Tooltip options panel — Styling tab](/img/shortcodes/tooltip-styling.png)
+<img src="/img/shortcodes/tooltip-styling.png" alt="Tooltip options panel — Styling tab" width="840" />
 
 **Tooltip Background**, **Tooltip Text**, **Accent** (button/icon trigger), a **Font Size
 Preset**, and **Margin & Padding**.

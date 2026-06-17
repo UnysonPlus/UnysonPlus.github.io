@@ -9,7 +9,7 @@ Tabbed content panels. Tabs: **Content**, **Styling**, **Animations**, **Advance
 
 ## Content
 
-![Tabs options panel — Content tab](/img/shortcodes/tabs-content.png)
+<img src="/img/shortcodes/tabs-content.png" alt="Tabs options panel — Content tab" width="750" />
 
 - **Tabs** — a repeatable list; each tab has a **Title**, **Content** (rich text), and an
   **Active Tab** switch.
@@ -31,6 +31,6 @@ Capture each style and orientation: `tabs-default`, `tabs-pills`, `tabs-underlin
 
 ## Styling
 
-![Tabs options panel — Styling tab](/img/shortcodes/tabs-styling.png)
+<img src="/img/shortcodes/tabs-styling.png" alt="Tabs options panel — Styling tab" width="750" />
 
 Tab Title Color, Tab Content Color, Text Color, Background Color, and Margin & Padding.

@@ -10,14 +10,14 @@ Collapsible accordion panels. Tabs: **Content**, **Layout**, **Behaviour**, **St
 
 ## Content
 
-![Accordion options panel — Content tab](/img/shortcodes/accordion-content.png)
+<img src="/img/shortcodes/accordion-content.png" alt="Accordion options panel — Content tab" width="1200" />
 
 - **Accordion Items** — a repeatable list; each item has a **Title**, **Content** (rich text),
   and an **Open by Default** switch.
 
 ## Layout
 
-![Accordion options panel — Layout tab](/img/shortcodes/accordion-layout.png)
+<img src="/img/shortcodes/accordion-layout.png" alt="Accordion options panel — Layout tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |
@@ -39,7 +39,7 @@ These two options have several visible variants worth a screenshot each. Suggest
 
 ## Behaviour
 
-![Accordion options panel — Behaviour tab](/img/shortcodes/accordion-behaviour.png)
+<img src="/img/shortcodes/accordion-behaviour.png" alt="Accordion options panel — Behaviour tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |
@@ -51,6 +51,6 @@ These two options have several visible variants worth a screenshot each. Suggest
 
 ## Styling
 
-![Accordion options panel — Styling tab](/img/shortcodes/accordion-styling.png)
+<img src="/img/shortcodes/accordion-styling.png" alt="Accordion options panel — Styling tab" width="1200" />
 
 Per-state Title, Content and Icon colors (closed/open), Background Color, and Margin & Padding.

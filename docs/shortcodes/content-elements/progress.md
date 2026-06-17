@@ -10,7 +10,7 @@ scrolled into view. Tabs: **Bars**, **Style**, **Animations**, **Advanced**.
 
 ## Bars
 
-![Progress Bars options panel — Bars tab](/img/shortcodes/progress-bars.png)
+<img src="/img/shortcodes/progress-bars.png" alt="Progress Bars options panel — Bars tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |
@@ -22,7 +22,7 @@ The **Circle** and **Gauge** styles add **Diameter / Width**, **Thickness** and 
 
 ## Style
 
-![Progress Bars options panel — Style tab](/img/shortcodes/progress-style.png)
+<img src="/img/shortcodes/progress-style.png" alt="Progress Bars options panel — Style tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |

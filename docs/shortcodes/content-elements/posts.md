@@ -21,7 +21,7 @@ Add a screenshot of each Layout Mode to `static/img/shortcodes/` (e.g.
 
 ## Query
 
-![Posts options panel — Query tab](/img/shortcodes/posts-query.png)
+<img src="/img/shortcodes/posts-query.png" alt="Posts options panel — Query tab" width="1200" />
 
 Post Type, Filter by Taxonomy/Terms, Term Relation, Include/Exclude IDs, Limit to Authors,
 Date Range, Posts per Page, Offset, Order By (incl. Custom Field Key), Order Direction,
@@ -45,16 +45,18 @@ interval, loop), Transient Caching with a configurable lifespan, and an Empty-St
 
 ## Design
 
-![Posts options panel — Design tab](/img/shortcodes/posts-design.png)
+<img src="/img/shortcodes/posts-design.png" alt="Posts options panel — Design tab" width="1200" />
 
 ## Elements
 
-![Posts options panel — Elements tab](/img/shortcodes/posts-elements.png)
+<img src="/img/shortcodes/posts-elements.png" alt="Posts options panel — Elements tab" width="1200" />
 
 ## Navigation & Cache
 
-![Posts options panel — Navigation & Cache tab](/img/shortcodes/posts-navigation-cache.png)
+<img src="/img/shortcodes/posts-navigation-cache.png" alt="Posts options panel — Navigation & Cache tab" width="1200" />
 
 ## Styling
+
+<img src="/img/shortcodes/posts-styling.png" alt="Posts options panel — Styling tab" width="1200" />
 
 ![Posts options panel — Styling tab](/img/shortcodes/posts-styling.png)

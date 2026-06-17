@@ -11,14 +11,8 @@ Regular text input.
 ```php
 $options = [
 	'demo_text'                      => [
-		'label' => __( 'Text', 'unysonplus' ),
+		'label' => __( 'Text', 'unysonplus' ),  // or false to hide the label column
 		'type'  => 'text',
-		// — Optional attributes you can add (commented) —
-		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
-		// 'desc'  => __( 'Short description', 'unysonplus' ),
-		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
-		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
-		// 'dynamic_content' => false,  // hide the Dynamic Content (database) picker
 		'value' => 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
 		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 			'unysonplus' ),
@@ -28,6 +22,9 @@ $options = [
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
 				'unysonplus' )
 		),
+		// — Optional attributes you can add —
+		// 'attr' => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
+		// 'dynamic_content' => false,  // hide the Dynamic Content (database) picker
 	],
 ];
 ```

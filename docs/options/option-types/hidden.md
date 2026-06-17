@@ -9,15 +9,12 @@ Simple hidden input.
 ```php
 $options = [
 	'demo_hidden'                    => [
-		'label' => false,
+		'label' => false,  // or false to hide the label column
 		'type'  => 'hidden',
-		// — Optional attributes you can add (commented) —
-		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
-		// 'desc'  => __( 'Short description', 'unysonplus' ),
-		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
-		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 		'value' => '{some: "json"}',
 		'desc'  => false,
+		// — Optional attributes you can add —
+		// 'attr' => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 	],
 ];
 ```

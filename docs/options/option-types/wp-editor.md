@@ -9,13 +9,8 @@ Textarea with the WordPress Editor like the one you use on the blog posts edit p
 ```php
 $options = [
 	'demo_wp_editor'                 => [
-		'label' => __( 'Rich Text Editor', 'unysonplus' ),
+		'label' => __( 'Rich Text Editor', 'unysonplus' ),  // or false to hide the label column
 		'type'  => 'wp-editor',
-		// — Optional attributes you can add (commented) —
-		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
-		// 'desc'  => __( 'Short description', 'unysonplus' ),
-		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
-		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 		'value' => 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
 		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 			'unysonplus' ),
@@ -26,6 +21,9 @@ $options = [
 				'unysonplus' )
 		),
 		'reinit' => true,
+		// — Optional attributes you can add —
+		// 'attr' => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
+		// 'dynamic_content' => false,  // hide the Dynamic Content (database) picker
 	],
 ];
 ```

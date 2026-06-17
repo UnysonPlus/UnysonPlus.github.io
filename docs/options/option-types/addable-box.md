@@ -11,16 +11,8 @@ Addable box with options.
 ```php
 $options = [
 	'demo_addable_box'               => [
-		'label'        => __( 'Addable Box', 'unysonplus' ),
+		'label'        => __( 'Addable Box', 'unysonplus' ),  // or false to hide the label column
 		'type'         => 'addable-box',
-		// — Optional attributes you can add (commented) —
-		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
-		// 'desc'  => __( 'Short description', 'unysonplus' ),
-		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
-		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
-		// 'add-button-text' => __( 'Add', 'unysonplus' ),
-		// 'sortable'        => false,
-		// 'limit'           => 5,  // max boxes (0 = unlimited)
 		'value'        => [],
 		'desc'         => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'unysonplus' ),
 		'help'         => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
@@ -59,6 +51,10 @@ $options = [
 		],
 		'template' => '{{- demo_text }}',
 		'limit' => 3,
+		// — Optional attributes you can add —
+		// 'attr' => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
+		// 'add-button-text' => __( 'Add', 'unysonplus' ),
+		// 'sortable' => false,
 	],
 ];
 ```

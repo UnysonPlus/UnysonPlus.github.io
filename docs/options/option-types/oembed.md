@@ -10,15 +10,10 @@ Generate oembed preview of the inserted link, for more details see [Embeds](http
 $options = [
 	'demo_oembed' => [
 		'type'  => 'oembed',
-		// — Optional attributes you can add (commented) —
-		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
-		// 'desc'  => __( 'Short description', 'unysonplus' ),
-		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
-		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 		'value' => 'https://vimeo.com/113078377',
-		'label' => __('Label', 'unysonplus'),
+		'label' => __('Label', 'unysonplus'),  // or false to hide the label column
 		'desc'  => __('Description', 'unysonplus'),
-		'help'  => __('Help tip', 'unysonplus'),
+		'help'  => __('Help tip', 'unysonplus'),  // string, or [ 'icon' => 'video', 'html' => '…' ]
 		'preview' => [
 			'width'  => 300, // optional, if you want to set the fixed width to iframe
 			'height' => 300, // optional, if you want to set the fixed height to iframe
@@ -28,6 +23,8 @@ $options = [
 			 */
 			'keep_ratio' => true
 		]
+		// — Optional attributes you can add —
+		// 'attr' => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 	],
 ];
 ```

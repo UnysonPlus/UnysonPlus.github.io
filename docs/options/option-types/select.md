@@ -11,14 +11,8 @@ Regular select.
 ```php
 $options = [
 	'demo_select'                    => [
-		'label'   => __( 'Select', 'unysonplus' ),
+		'label'   => __( 'Select', 'unysonplus' ),  // or false to hide the label column
 		'type'    => 'select',
-		// — Optional attributes you can add (commented) —
-		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
-		// 'desc'  => __( 'Short description', 'unysonplus' ),
-		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
-		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
-		// 'choices' => [ 'key' => __( 'Label', 'unysonplus' ) /*, … */ ],  // the dropdown options
 		'value'   => 'c',
 		'desc'    => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 			'unysonplus' ),
@@ -52,6 +46,8 @@ $options = [
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
 				'unysonplus' )
 		),
+		// — Optional attributes you can add —
+		// 'attr' => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 	],
 ];
 ```

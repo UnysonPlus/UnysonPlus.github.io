@@ -10,16 +10,11 @@ Popup with options.
 $options = [
 	'demo_popup' => [
 		'type' => 'popup',
-		// — Optional attributes you can add (commented) —
-		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
-		// 'desc'  => __( 'Short description', 'unysonplus' ),
-		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
-		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 		'value' => [
 			'option_1' => 'value 1',
 			'option_2' => 'value 2',
 		],
-		'label' => __('Popup', 'unysonplus'),
+		'label' => __('Popup', 'unysonplus'),  // or false to hide the label column
 		'desc'  => __('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'unysonplus'),
 		'popup-title' => __('Popup Title', 'unysonplus'),
 		'button' => __('Edit', 'unysonplus'),
@@ -47,6 +42,8 @@ $options = [
 				),
 			],
 		],
+		// — Optional attributes you can add —
+		// 'attr' => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 	],
 ];
 ```

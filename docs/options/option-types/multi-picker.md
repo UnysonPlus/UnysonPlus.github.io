@@ -3,18 +3,21 @@ title: "Multi-Picker"
 sidebar_position: 29
 ---
 
-
 Pick a choice, then complete options related to that choice.
 
 The `picker` parameter holds a valid option type with choices. Supported option types are `select`, `radio`, `image-picker` and `switch`.
 
 <img src="/img/options/opt-multi-picker.png" alt="multi-picker option type — Theme Settings example" width="1040" />
 
+## Multi Picker: Select
+
+<img src="/img/options/opt-demo_multi_picker_select.png" alt="Option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
-	'demo_multi_picker_select' => [
+	'demo_multi_picker_select'       => [
 		'type'         => 'multi-picker',
-		'label'        => false,  // or false to hide the label column
+		'label'        => false,
 		'desc'         => false,
 		'picker'       => [
 			'gadget' => [
@@ -63,9 +66,214 @@ $options = [
 			],
 		],
 		'show_borders' => false,
-		// — Optional attributes you can add —
-		// 'attr' => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
-		// 'hide_picker' => true,  // hide the picker (drive it from another option)
+	],
+];
+```
+
+## Multi Picker: Radio
+
+<img src="/img/options/opt-demo_multi_picker_radio.png" alt="Option type — Theme Settings example" width="1040" />
+
+```php
+$options = [
+	'demo_multi_picker_radio'        => [
+		'type'         => 'multi-picker',
+		'label'        => false,
+		'desc'         => false,
+		'value'        => [
+			'gadget' => 'laptop',
+		],
+		'picker'       => [
+			'gadget' => [
+				'label'   => __( 'Multi Picker: Radio', 'unysonplus' ),
+				'type'    => 'radio',
+				'choices' => [
+					'phone'  => __( 'Phone', 'unysonplus' ),
+					'laptop' => __( 'Laptop', 'unysonplus' )
+				],
+				'desc'    => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+					'unysonplus' ),
+				'help'    => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
+					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+						'unysonplus' ),
+					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
+						'unysonplus' )
+				)
+			]
+		],
+		'choices'      => [
+			'phone'  => [
+				'price'  => [
+					'type'  => 'text',
+					'label' => __( 'Price', 'unysonplus' ),
+				],
+				'memory' => [
+					'type'    => 'select',
+					'label'   => __( 'Memory', 'unysonplus' ),
+					'choices' => [
+						'16' => __( '16Gb', 'unysonplus' ),
+						'32' => __( '32Gb', 'unysonplus' ),
+						'64' => __( '64Gb', 'unysonplus' ),
+					]
+				]
+			],
+			'laptop' => [
+				'price'  => [
+					'type'  => 'text',
+					'label' => __( 'Price', 'unysonplus' ),
+				],
+				'webcam' => [
+					'type'  => 'switch',
+					'label' => __( 'Webcam', 'unysonplus' ),
+				]
+			],
+		],
+		'show_borders' => false,
+	],
+];
+```
+
+## Multi Picker: Image Picker
+
+<img src="/img/options/opt-demo_multi_picker_image_picker.png" alt="Option type — Theme Settings example" width="1040" />
+
+```php
+$options = [
+	'demo_multi_picker_image_picker' => [
+		'type'         => 'multi-picker',
+		'label'        => false,
+		'desc'         => false,
+		'picker'       => [
+			'gadget' => [
+				'label'   => __( 'Multi Picker: Image Picker', 'unysonplus' ),
+				'type'    => 'image-picker',
+				'choices' => [
+					'phone'  => [
+						'label' => __( 'Phone', 'unysonplus' ),
+						'small' => [
+							'height' => 70,
+							'src'    => get_template_directory_uri() . '/images/image-picker-demo/thumb1.jpg'
+						],
+						'large' => [
+							'height' => 214,
+							'src'    => get_template_directory_uri() . '/images/image-picker-demo/tooltip1.jpg'
+						],
+					],
+					'laptop' => [
+						'label' => __( 'Laptop', 'unysonplus' ),
+						'small' => [
+							'height' => 70,
+							'src'    => get_template_directory_uri() . '/images/image-picker-demo/thumb2.jpg'
+						],
+						'large' => [
+							'height' => 214,
+							'src'    => get_template_directory_uri() . '/images/image-picker-demo/tooltip2.jpg'
+						],
+					]
+				],
+				'desc'    => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+					'unysonplus' ),
+				'help'    => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
+					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+						'unysonplus' ),
+					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
+						'unysonplus' )
+				)
+			]
+		],
+		'choices'      => [
+			'phone'  => [
+				'price'  => [
+					'type'  => 'text',
+					'label' => __( 'Price', 'unysonplus' ),
+				],
+				'memory' => [
+					'type'    => 'select',
+					'label'   => __( 'Memory', 'unysonplus' ),
+					'choices' => [
+						'16' => __( '16Gb', 'unysonplus' ),
+						'32' => __( '32Gb', 'unysonplus' ),
+						'64' => __( '64Gb', 'unysonplus' ),
+					]
+				]
+			],
+			'laptop' => [
+				'price'  => [
+					'type'  => 'text',
+					'label' => __( 'Price', 'unysonplus' ),
+				],
+				'webcam' => [
+					'type'  => 'switch',
+					'label' => __( 'Webcam', 'unysonplus' ),
+				]
+			],
+		],
+		'show_borders' => false,
+	],
+];
+```
+
+## Multi Picker: Switch
+
+<img src="/img/options/opt-demo_multi_picker_switch.png" alt="Option type — Theme Settings example" width="1040" />
+
+```php
+$options = [
+	'demo_multi_picker_switch'       => [
+		'type'         => 'multi-picker',
+		'label'        => false,
+		'desc'         => false,
+		'picker'       => [
+			'gadget' => [
+				'label'        => __( 'Switch', 'unysonplus' ),
+				'type'         => 'switch',
+				'right-choice' => [
+					'value' => 'laptop',
+					'label' => __( 'Laptop', 'unysonplus' )
+				],
+				'left-choice'  => [
+					'value' => 'phone',
+					'label' => __( 'Phone', 'unysonplus' )
+				],
+				'value'        => 'yes',
+				'desc'         => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+					'unysonplus' ),
+				'help'         => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
+					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+						'unysonplus' ),
+					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
+						'unysonplus' )
+				),
+			]
+		],
+		'choices'      => [
+			'phone'  => [
+				'price'  => [
+					'type'  => 'text',
+					'label' => __( 'Price', 'unysonplus' ),
+				],
+				'memory' => [
+					'type'    => 'select',
+					'label'   => __( 'Memory', 'unysonplus' ),
+					'choices' => [
+						'16' => __( '16Gb', 'unysonplus' ),
+						'32' => __( '32Gb', 'unysonplus' ),
+						'64' => __( '64Gb', 'unysonplus' ),
+					]
+				]
+			],
+			'laptop' => [
+				'price'  => [
+					'type'  => 'text',
+					'label' => __( 'Price', 'unysonplus' ),
+				],
+				'webcam' => [
+					'type'  => 'switch',
+					'label' => __( 'Webcam', 'unysonplus' ),
+				]
+			],
+		],
+		'show_borders' => false,
 	],
 ];
 ```

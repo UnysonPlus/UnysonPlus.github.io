@@ -3,6 +3,7 @@ title: "Icon v2"
 sidebar_position: 18
 ---
 
+<img src="/img/options/opt-icon-v2.png" alt="icon-v2 option type — Theme Settings example" width="1040" />
 
 ```php
 $options = [

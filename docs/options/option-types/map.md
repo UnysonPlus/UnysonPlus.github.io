@@ -3,8 +3,9 @@ title: "Map"
 sidebar_position: 30
 ---
 
-
 Google maps location.
+
+<img src="/img/options/opt-map.png" alt="map option type — Theme Settings example" width="1040" />
 
 ```php
 $options = [

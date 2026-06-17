@@ -3,8 +3,9 @@ title: "Popup"
 sidebar_position: 23
 ---
 
-
 Popup with options.
+
+<img src="/img/options/opt-popup.png" alt="popup option type — Theme Settings example" width="1040" />
 
 ```php
 $options = [

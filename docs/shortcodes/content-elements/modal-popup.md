@@ -1,6 +1,7 @@
 ---
 title: Modal / Popup
 sidebar_position: 30
+sidebar_custom_props: { icon: '/img/shortcode-icons/modal-popup.svg' }
 ---
 
 # Modal / Popup

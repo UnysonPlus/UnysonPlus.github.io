@@ -1,6 +1,7 @@
 ---
 title: Pricing Table
 sidebar_position: 32
+sidebar_custom_props: { icon: '/img/shortcode-icons/pricing-table.svg' }
 ---
 
 # Pricing Table

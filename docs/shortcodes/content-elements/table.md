@@ -1,6 +1,7 @@
 ---
 title: Table
 sidebar_position: 14
+sidebar_custom_props: { icon: '/img/shortcode-icons/table.svg' }
 ---
 
 # Table

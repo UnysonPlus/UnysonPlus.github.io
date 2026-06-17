@@ -1,6 +1,7 @@
 ---
 title: Calendar
 sidebar_position: 3
+sidebar_custom_props: { icon: '/img/shortcode-icons/calendar.svg' }
 ---
 
 # Calendar

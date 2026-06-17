@@ -1,6 +1,7 @@
 ---
 title: Timeline
 sidebar_position: 35
+sidebar_custom_props: { icon: '/img/shortcode-icons/timeline.svg' }
 ---
 
 # Timeline

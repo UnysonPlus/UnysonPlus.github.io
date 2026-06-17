@@ -1,6 +1,7 @@
 ---
 title: Team Member
 sidebar_position: 16
+sidebar_custom_props: { icon: '/img/shortcode-icons/team-member.svg' }
 ---
 
 # Team Member

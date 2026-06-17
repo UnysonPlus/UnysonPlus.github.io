@@ -1,6 +1,7 @@
 ---
 title: Notification
 sidebar_position: 11
+sidebar_custom_props: { icon: '/img/shortcode-icons/notification.svg' }
 ---
 
 # Notification

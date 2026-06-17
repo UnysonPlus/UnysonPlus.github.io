@@ -1,6 +1,7 @@
 ---
 title: Carousel
 sidebar_position: 21
+sidebar_custom_props: { icon: '/img/shortcode-icons/carousel.svg' }
 ---
 
 # Carousel

@@ -1,6 +1,7 @@
 ---
 title: Posts
 sidebar_position: 12
+sidebar_custom_props: { icon: '/img/shortcode-icons/posts.svg' }
 ---
 
 # Posts

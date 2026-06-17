@@ -1,6 +1,7 @@
 ---
 title: Code Block
 sidebar_position: 5
+sidebar_custom_props: { icon: '/img/shortcode-icons/code-block.svg' }
 ---
 
 # Code Block

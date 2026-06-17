@@ -1,6 +1,7 @@
 ---
 title: Icon Box
 sidebar_position: 8
+sidebar_custom_props: { icon: '/img/shortcode-icons/icon-box.svg' }
 ---
 
 # Icon Box

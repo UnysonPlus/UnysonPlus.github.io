@@ -1,6 +1,7 @@
 ---
 title: Countdown Timer
 sidebar_position: 22
+sidebar_custom_props: { icon: '/img/shortcode-icons/countdown.svg' }
 ---
 
 # Countdown Timer

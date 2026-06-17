@@ -1,6 +1,7 @@
 ---
 title: Image Content
 sidebar_position: 9
+sidebar_custom_props: { icon: '/img/shortcode-icons/image-content.svg' }
 ---
 
 # Image Content

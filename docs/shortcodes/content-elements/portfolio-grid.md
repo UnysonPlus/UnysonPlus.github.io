@@ -1,6 +1,7 @@
 ---
 title: Portfolio Grid
 sidebar_position: 31
+sidebar_custom_props: { icon: '/img/shortcode-icons/portfolio-grid.svg' }
 ---
 
 # Portfolio Grid

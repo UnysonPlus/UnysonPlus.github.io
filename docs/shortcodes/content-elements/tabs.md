@@ -1,6 +1,7 @@
 ---
 title: Tabs
 sidebar_position: 15
+sidebar_custom_props: { icon: '/img/shortcode-icons/tabs.svg' }
 ---
 
 # Tabs

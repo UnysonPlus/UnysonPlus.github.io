@@ -1,6 +1,7 @@
 ---
 title: Testimonials
 sidebar_position: 17
+sidebar_custom_props: { icon: '/img/shortcode-icons/testimonials.svg' }
 ---
 
 # Testimonials

@@ -6,6 +6,8 @@ sidebar_position: 16
 
 Pick a datetime in calendar.
 
+<img src="/img/options/opt-datetime-picker.png" alt="datetime-picker option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_datetime_picker'           => [

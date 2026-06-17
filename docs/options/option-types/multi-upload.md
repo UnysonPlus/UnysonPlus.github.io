@@ -6,6 +6,8 @@ sidebar_position: 20
 
 Upload multiple files.
 
+<img src="/img/options/opt-multi-upload.png" alt="multi-upload option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_multi_upload' => [

@@ -6,6 +6,8 @@ sidebar_position: 24
 
 Addable popup with options.
 
+<img src="/img/options/opt-addable-popup.png" alt="addable-popup option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_addable_popup'             => [

@@ -6,6 +6,8 @@ sidebar_position: 25
 
 Create a list of options.
 
+<img src="/img/options/opt-addable-option.png" alt="addable-option option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_addable_option' => [

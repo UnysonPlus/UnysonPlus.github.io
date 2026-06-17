@@ -6,6 +6,8 @@ sidebar_position: 19
 
 Single file upload.
 
+<img src="/img/options/opt-upload.png" alt="upload option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_upload' => [

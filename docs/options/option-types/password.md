@@ -6,6 +6,8 @@ sidebar_position: 34
 
 Regular password input.
 
+<img src="/img/options/opt-password.png" alt="password option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_password'                  => [

@@ -6,6 +6,8 @@ sidebar_position: 6
 
 Regular select.
 
+<img src="/img/options/opt-select.png" alt="select option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_select'                    => [

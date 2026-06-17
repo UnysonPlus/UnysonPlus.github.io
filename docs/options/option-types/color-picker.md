@@ -6,6 +6,8 @@ sidebar_position: 10
 
 Pick a color.
 
+<img src="/img/options/opt-color-picker.png" alt="color-picker option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_color_picker' => [

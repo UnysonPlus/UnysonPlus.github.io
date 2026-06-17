@@ -6,6 +6,8 @@ sidebar_position: 36
 
 Choose font family, size, style and color.
 
+<img src="/img/options/opt-typography.png" alt="typography option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_typography' => [

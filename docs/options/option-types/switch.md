@@ -6,6 +6,8 @@ sidebar_position: 9
 
 Switch between two choices.
 
+<img src="/img/options/opt-switch.png" alt="switch option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_switch'                    => [

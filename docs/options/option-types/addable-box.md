@@ -6,6 +6,8 @@ sidebar_position: 26
 
 Addable box with options.
 
+<img src="/img/options/opt-addable-box.png" alt="addable-box option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_addable_box'               => [

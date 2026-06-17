@@ -6,6 +6,8 @@ sidebar_position: 11
 
 Pick a `rgba()` color.
 
+<img src="/img/options/opt-rgba-color-picker.png" alt="rgba-color-picker option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_rgba_color_picker' => [

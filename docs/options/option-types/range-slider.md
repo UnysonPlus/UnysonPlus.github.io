@@ -6,6 +6,8 @@ sidebar_position: 22
 
 Drag the handles to set a numeric value range.
 
+<img src="/img/options/opt-range-slider.png" alt="range-slider option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_range_slider' => [

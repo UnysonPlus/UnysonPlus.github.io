@@ -6,6 +6,8 @@ sidebar_position: 8
 
 Select multiple choices from different sources: posts, taxonomies, users or a custom array.
 
+<img src="/img/options/opt-multi-select.png" alt="multi-select option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_multi_select_array'      => [

@@ -6,6 +6,8 @@ sidebar_position: 14
 
 Choose background image.
 
+<img src="/img/options/opt-background-image.png" alt="background-image option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_background_image' => [

@@ -6,6 +6,8 @@ sidebar_position: 7
 
 Select with multiple values.
 
+<img src="/img/options/opt-select-multiple.png" alt="select-multiple option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_select_multiple'           => [

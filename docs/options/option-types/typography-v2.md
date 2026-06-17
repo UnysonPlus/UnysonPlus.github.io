@@ -6,6 +6,8 @@ sidebar_position: 27
 
 Choose font family, style, weight, size, line-height, letter-spacing and color.
 
+<img src="/img/options/opt-typography-v2.png" alt="typography-v2 option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_typography-v2' => [

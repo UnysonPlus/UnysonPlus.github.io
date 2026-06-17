@@ -6,6 +6,8 @@ sidebar_position: 3
 
 Single checkbox.
 
+<img src="/img/options/opt-checkbox.png" alt="checkbox option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_checkbox'                  => [

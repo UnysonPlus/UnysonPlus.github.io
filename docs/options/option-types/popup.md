@@ -10,6 +10,11 @@ Popup with options.
 $options = [
 	'demo_popup' => [
 		'type' => 'popup',
+		// — Optional attributes you can add (commented) —
+		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
+		// 'desc'  => __( 'Short description', 'unysonplus' ),
+		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
+		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 		'value' => [
 			'option_1' => 'value 1',
 			'option_2' => 'value 2',

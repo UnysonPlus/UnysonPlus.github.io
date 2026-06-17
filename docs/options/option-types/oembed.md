@@ -10,6 +10,11 @@ Generate oembed preview of the inserted link, for more details see [Embeds](http
 $options = [
 	'demo_oembed' => [
 		'type'  => 'oembed',
+		// — Optional attributes you can add (commented) —
+		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
+		// 'desc'  => __( 'Short description', 'unysonplus' ),
+		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
+		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 		'value' => 'https://vimeo.com/113078377',
 		'label' => __('Label', 'unysonplus'),
 		'desc'  => __('Description', 'unysonplus'),

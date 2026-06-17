@@ -13,6 +13,15 @@ $options = [
 	'demo_addable_popup'             => [
 		'label'         => __( 'Addable Popup', 'unysonplus' ),
 		'type'          => 'addable-popup',
+		// — Optional attributes you can add (commented) —
+		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
+		// 'desc'  => __( 'Short description', 'unysonplus' ),
+		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
+		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
+		// 'add-button-text' => __( 'Add', 'unysonplus' ),
+		// 'sortable'        => false,
+		// 'limit'           => 5,
+		// 'template'        => '{{- demo_text }}',  // popup label template
 		'desc'          => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 			'unysonplus' ),
 		'template'      => '{{- demo_text }}',

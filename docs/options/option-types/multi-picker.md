@@ -14,6 +14,13 @@ The `picker` parameter holds a valid option type with choices. Supported option 
 $options = [
 	'demo_multi_picker_select' => [
 		'type'         => 'multi-picker',
+		// — Optional attributes you can add (commented) —
+		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
+		// 'desc'  => __( 'Short description', 'unysonplus' ),
+		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
+		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
+		// 'hide_picker'  => true,  // hide the picker (drive it from another option)
+		// 'show_borders' => true,  // separators between the revealed options
 		'label'        => false,
 		'desc'         => false,
 		'picker'       => [

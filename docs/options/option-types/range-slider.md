@@ -13,6 +13,12 @@ $options = [
 	'demo_range_slider' => [
 		'label' => __( 'Range Slider', 'unysonplus' ),
 		'type'  => 'range-slider',
+		// — Optional attributes you can add (commented) —
+		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
+		// 'desc'  => __( 'Short description', 'unysonplus' ),
+		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
+		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
+		// 'properties' => [ 'min' => 0, 'max' => 100, 'step' => 1 ],  // ion.rangeSlider settings
 		'value' => [
 			'from' => 30,
 			'to' => 50

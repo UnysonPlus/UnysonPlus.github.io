@@ -12,6 +12,12 @@ Set a datetime range.
 $options = [
 	'demo_datetime_range'            => [
 		'type'             => 'datetime-range',
+		// — Optional attributes you can add (commented) —
+		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
+		// 'desc'  => __( 'Short description', 'unysonplus' ),
+		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
+		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
+		// 'datetime-pickers' => [ 'from' => [ 'format' => 'Y/m/d H:i' /*, … */ ], 'to' => [ /* … */ ] ],
 		'attr'             => [ 'class' => 'custom-class', 'data-foo' => 'bar' ],
 		'label'            => __( 'Demo date range', 'unysonplus' ),
 		'desc'             => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',

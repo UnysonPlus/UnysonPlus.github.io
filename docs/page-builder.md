@@ -8,9 +8,7 @@ title: Page Builder
 The Page Builder lets you compose pages visually from **shortcodes**, using drag &amp; drop —
 no code required.
 
-:::note Work in progress
-This page is a starting point. Expand it with your own screenshots and walkthroughs.
-:::
+<img src="/img/page-builder.png" alt="The Unyson+ Page Builder — element palette with a populated Section on the canvas" width="968" />
 
 ## Enabling the builder
 

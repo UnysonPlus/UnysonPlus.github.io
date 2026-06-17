@@ -11,6 +11,8 @@ with optional numbering, scrollspy highlighting and a sticky/floating layout. Ta
 
 ## Content
 
+![Table of Contents options panel — Content tab](/img/shortcodes/toc-content.png)
+
 | Option | Choices |
 | --- | --- |
 | **Title** | Default `Table of Contents` |
@@ -23,6 +25,8 @@ with optional numbering, scrollspy highlighting and a sticky/floating layout. Ta
 | **Toggle Label — Show / Hide** | Defaults `show` / `hide` |
 
 ## Behavior
+
+![Table of Contents options panel — Behavior tab](/img/shortcodes/toc-behavior.png)
 
 | Option | Choices |
 | --- | --- |
@@ -37,6 +41,8 @@ with optional numbering, scrollspy highlighting and a sticky/floating layout. Ta
 
 ## Styling
 
+![Table of Contents options panel — Styling tab](/img/shortcodes/toc-styling.png)
+
 | Option | Choices |
 | --- | --- |
 | **Width** | Full width · Auto (fit content) · Custom |
@@ -47,9 +53,3 @@ with optional numbering, scrollspy highlighting and a sticky/floating layout. Ta
 
 Plus **Background**, **Border**, **Title**, **Link**, **Link Hover** and **Active Link**
 colors, and **Margin & Padding**.
-
-## Screenshots
-
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::

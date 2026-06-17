@@ -11,12 +11,16 @@ Provided by the **Portfolio** extension. Tabs: **Content**, **Layout**, **Stylin
 
 ## Content
 
+![Project Gallery options panel — Content tab](/img/shortcodes/project-gallery-content.png)
+
 | Option | Choices |
 | --- | --- |
 | **Project** | Current project (auto) or a specific project |
 | **Empty message** | Shown when there are no images (blank = render nothing) |
 
 ## Layout
+
+![Project Gallery options panel — Layout tab](/img/shortcodes/project-gallery-layout.png)
 
 | Option | Choices |
 | --- | --- |
@@ -29,10 +33,6 @@ Provided by the **Portfolio** extension. Tabs: **Content**, **Layout**, **Stylin
 
 ## Styling
 
+![Project Gallery options panel — Styling tab](/img/shortcodes/project-gallery-styling.png)
+
 **Text Color**, **Background Color**, a **Font Size Preset**, and **Margin & Padding**.
-
-## Screenshots
-
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::

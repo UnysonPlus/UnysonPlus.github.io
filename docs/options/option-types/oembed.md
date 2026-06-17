@@ -3,8 +3,9 @@ title: "Oembed"
 sidebar_position: 35
 ---
 
-
 Generate oembed preview of the inserted link, for more details see [Embeds](https://codex.wordpress.org/Embeds) in WordPress.
+
+<img src="/img/options/opt-oembed.png" alt="oembed option type — Theme Settings example" width="1040" />
 
 ```php
 $options = [

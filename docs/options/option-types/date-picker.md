@@ -3,8 +3,9 @@ title: "Date Picker"
 sidebar_position: 15
 ---
 
-
 Pick a date in calendar.
+
+<img src="/img/options/opt-date-picker.png" alt="date-picker option type — Theme Settings example" width="1040" />
 
 ```php
 $options = [

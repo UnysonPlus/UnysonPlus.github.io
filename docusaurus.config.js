@@ -147,7 +147,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Unyson+. Created by Jon-Michael Lastimosa`,
+        copyright: `Copyright © ${new Date().getFullYear()} Unyson+. Created by <a href="/blog/authors/jon">Jon-Michael Lastimosa</a>`,
       },
       prism: {
         theme: prismThemes.github,

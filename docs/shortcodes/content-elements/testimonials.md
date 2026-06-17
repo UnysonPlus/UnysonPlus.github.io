@@ -51,6 +51,17 @@ Margin & Padding.
 
 ## Screenshots
 
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::
+The element's **options panel** in the Page Builder:
+
+**Content tab:**
+
+![Testimonials options panel — Content tab](/img/shortcodes/testimonials-content.png)
+
+**Design tab:**
+
+![Testimonials options panel — Design tab](/img/shortcodes/testimonials-design.png)
+
+**Style tab:**
+
+![Testimonials options panel — Style tab](/img/shortcodes/testimonials-style.png)
+

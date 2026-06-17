@@ -42,6 +42,17 @@ Name / Price / Features** colors, a **Font Size Preset**, and **Margin & Padding
 
 ## Screenshots
 
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::
+The element's **options panel** in the Page Builder:
+
+**Content tab:**
+
+![Pricing Table options panel — Content tab](/img/shortcodes/pricing-table-content.png)
+
+**Design tab:**
+
+![Pricing Table options panel — Design tab](/img/shortcodes/pricing-table-design.png)
+
+**Styling tab:**
+
+![Pricing Table options panel — Styling tab](/img/shortcodes/pricing-table-styling.png)
+

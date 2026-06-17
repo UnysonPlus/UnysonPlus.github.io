@@ -6,6 +6,8 @@ sidebar_position: 4
 
 A list of checkboxes.
 
+<img src="/img/options/opt-checkboxes.png" alt="checkboxes option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_checkboxes'                => [

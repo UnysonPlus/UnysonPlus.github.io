@@ -6,6 +6,8 @@ sidebar_position: 21
 
 Drag the handle to select a numeric value.
 
+<img src="/img/options/opt-slider.png" alt="slider option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_slider' => [

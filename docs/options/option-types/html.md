@@ -10,6 +10,8 @@ If you want to display a custom piece of html, use this option type.
 This option type has a value stored in a hidden input. Advanced users can create some javascript functionality in html and store the value in that hidden input.
 :::
 
+<img src="/img/options/opt-html.png" alt="html option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_html'                      => [

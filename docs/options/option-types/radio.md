@@ -6,6 +6,8 @@ sidebar_position: 5
 
 A list of radio buttons.
 
+<img src="/img/options/opt-radio.png" alt="radio option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_radio'                     => [

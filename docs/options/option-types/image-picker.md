@@ -6,6 +6,8 @@ sidebar_position: 13
 
 Pick an image.
 
+<img src="/img/options/opt-image-picker.png" alt="image-picker option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_image_picker'              => [

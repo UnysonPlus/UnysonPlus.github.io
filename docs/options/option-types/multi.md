@@ -6,6 +6,8 @@ sidebar_position: 31
 
 Group any options database values under a single array key. This option has no design, inner options will look the same as other options (it's like the `group` container).
 
+<img src="/img/options/opt-multi.png" alt="multi option type — Theme Settings example" width="1040" />
+
 ```php
 // database value structure
 

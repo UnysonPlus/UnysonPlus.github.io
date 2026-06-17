@@ -8,6 +8,8 @@ Pick a choice, then complete options related to that choice.
 
 The `picker` parameter holds a valid option type with choices. Supported option types are `select`, `radio`, `image-picker` and `switch`.
 
+<img src="/img/options/opt-multi-picker.png" alt="multi-picker option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_multi_picker_select' => [

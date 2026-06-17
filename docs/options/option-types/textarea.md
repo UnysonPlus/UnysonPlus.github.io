@@ -6,6 +6,8 @@ sidebar_position: 2
 
 Regular textarea.
 
+<img src="/img/options/opt-textarea.png" alt="textarea option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_textarea'                  => [

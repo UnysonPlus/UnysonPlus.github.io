@@ -6,6 +6,8 @@ sidebar_position: 37
 
 Choose a [FontAwesome](http://fontawesome.io/) icon.
 
+<img src="/img/options/opt-icon.png" alt="icon option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_icon'                      => [

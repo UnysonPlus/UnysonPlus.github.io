@@ -6,6 +6,8 @@ sidebar_position: 17
 
 Set a datetime range.
 
+<img src="/img/options/opt-datetime-range.png" alt="datetime-range option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_datetime_range'            => [

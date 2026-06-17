@@ -6,6 +6,8 @@ sidebar_position: 12
 
 Pick gradient colors.
 
+<img src="/img/options/opt-gradient.png" alt="gradient option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_gradient' => [

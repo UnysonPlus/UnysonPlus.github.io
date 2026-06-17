@@ -6,6 +6,8 @@ sidebar_position: 1
 
 Regular text input.
 
+<img src="/img/options/opt-text.png" alt="text option type — Theme Settings example" width="1040" />
+
 ```php
 $options = [
 	'demo_text'                      => [

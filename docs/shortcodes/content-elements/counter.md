@@ -8,7 +8,11 @@ sidebar_position: 23
 A number that counts up when it scrolls into view, with optional prefix/suffix, label and
 full typography control. Tabs: **Content**, **Style**, **Animations**, **Advanced**.
 
+![Animated Counter on the Page Builder canvas](/img/shortcodes/counter-backend.png)
+
 ## Content
+
+![Animated Counter options panel — Content tab](/img/shortcodes/counter-content.png)
 
 | Option | Choices |
 | --- | --- |
@@ -23,21 +27,7 @@ full typography control. Tabs: **Content**, **Style**, **Animations**, **Advance
 
 ## Style
 
-**Alignment** (Left · Center · Right · Inherit), plus independent **Font** and **Color** for
-the **Number**, **Prefix** and **Suffix**.
-
-## Screenshots
-
-The element's **options panel** in the Page Builder:
-
-**Content tab:**
-
-![Animated Counter options panel — Content tab](/img/shortcodes/counter-content.png)
-
-**Style tab:**
-
 ![Animated Counter options panel — Style tab](/img/shortcodes/counter-style.png)
 
-**On the Page Builder canvas:**
-
-![Animated Counter with example content on the Page Builder canvas](/img/shortcodes/counter-backend.png)
+**Alignment** (Left · Center · Right · Inherit), plus independent **Font** and **Color** for
+the **Number**, **Prefix** and **Suffix**.

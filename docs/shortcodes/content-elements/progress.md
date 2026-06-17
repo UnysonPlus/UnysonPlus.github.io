@@ -10,6 +10,8 @@ scrolled into view. Tabs: **Bars**, **Style**, **Animations**, **Advanced**.
 
 ## Bars
 
+![Progress Bars options panel — Bars tab](/img/shortcodes/progress-bars.png)
+
 | Option | Choices |
 | --- | --- |
 | **Progress Style** | Horizontal Bar · Circle · Gauge (semi-circle) |
@@ -19,6 +21,8 @@ The **Circle** and **Gauge** styles add **Diameter / Width**, **Thickness** and 
 (1–6) options.
 
 ## Style
+
+![Progress Bars options panel — Style tab](/img/shortcodes/progress-style.png)
 
 | Option | Choices |
 | --- | --- |
@@ -33,16 +37,3 @@ The **Circle** and **Gauge** styles add **Diameter / Width**, **Thickness** and 
 
 Plus **Fill Color**, an optional **Gradient Color** (second color), **Track Color** (unfilled
 track) and **Label Color**.
-
-## Screenshots
-
-The element's **options panel** in the Page Builder:
-
-**Bars tab:**
-
-![Progress Bars options panel — Bars tab](/img/shortcodes/progress-bars.png)
-
-**Style tab:**
-
-![Progress Bars options panel — Style tab](/img/shortcodes/progress-style.png)
-

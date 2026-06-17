@@ -9,7 +9,11 @@ A heading where part of the text rotates through several words with a typewriter
 flip, zoom or clip animation. Tabs: **Content**, **Design**, **Styling**, **Animations**,
 **Advanced**.
 
+![Animated Heading on the Page Builder canvas](/img/shortcodes/animated-heading-backend.png)
+
 ## Content
+
+![Animated Heading options panel — Content tab](/img/shortcodes/animated-heading-content.png)
 
 | Option | Choices |
 | --- | --- |
@@ -20,6 +24,8 @@ flip, zoom or clip animation. Tabs: **Content**, **Design**, **Styling**, **Anim
 
 ## Design
 
+![Animated Heading options panel — Design tab](/img/shortcodes/animated-heading-design.png)
+
 | Option | Choices |
 | --- | --- |
 | **Animation** | Typewriter · Fade · Slide · Flip · Zoom · Clip |
@@ -29,24 +35,6 @@ flip, zoom or clip animation. Tabs: **Content**, **Design**, **Styling**, **Anim
 
 ## Styling
 
-**Text Color**, **Highlight / Accent Color**, a **Font Size Preset**, and **Margin & Padding**.
-
-## Screenshots
-
-The element's **options panel** in the Page Builder:
-
-**Content tab:**
-
-![Animated Heading options panel — Content tab](/img/shortcodes/animated-heading-content.png)
-
-**Design tab:**
-
-![Animated Heading options panel — Design tab](/img/shortcodes/animated-heading-design.png)
-
-**Styling tab:**
-
 ![Animated Heading options panel — Styling tab](/img/shortcodes/animated-heading-styling.png)
 
-**On the Page Builder canvas:**
-
-![Animated Heading with example content on the Page Builder canvas](/img/shortcodes/animated-heading-backend.png)
+**Text Color**, **Highlight / Accent Color**, a **Font Size Preset**, and **Margin & Padding**.

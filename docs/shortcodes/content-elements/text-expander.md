@@ -8,12 +8,18 @@ sidebar_position: 19
 An inline read-more / reveal toggle — hide part of a sentence or paragraph behind a
 **Show More** button. Tabs: **Content**, **Layout**, **Styling**, **Animations**, **Advanced**.
 
+![Text Expander on the Page Builder canvas](/img/shortcodes/text-expander-backend.png)
+
 ## Content
+
+![Text Expander options panel — Content tab](/img/shortcodes/text-expander-content.png)
 
 Visible Content, Hidden Content, **Button Text (Show)** (default "Show More"),
 **Button Text (Hide)** (default "Show Less").
 
 ## Layout
+
+![Text Expander options panel — Layout tab](/img/shortcodes/text-expander-layout.png)
 
 | Option | Choices |
 | --- | --- |
@@ -27,6 +33,8 @@ Visible Content, Hidden Content, **Button Text (Show)** (default "Show More"),
 
 ## Styling
 
+![Text Expander options panel — Styling tab](/img/shortcodes/text-expander-styling.png)
+
 | Option | Choices |
 | --- | --- |
 | **Toggle Icon** | None, Chevron (rotates), Plus / Minus |
@@ -37,23 +45,3 @@ Visible Content, Hidden Content, **Button Text (Show)** (default "Show More"),
 Capture the collapsed/expanded states and toggle icons: `text-expander-collapsed`,
 `text-expander-expanded`, `text-expander-chevron`.
 :::
-
-## Screenshots
-
-The element's **options panel** in the Page Builder:
-
-**Content tab:**
-
-![Text Expander options panel — Content tab](/img/shortcodes/text-expander-content.png)
-
-**Layout tab:**
-
-![Text Expander options panel — Layout tab](/img/shortcodes/text-expander-layout.png)
-
-**Styling tab:**
-
-![Text Expander options panel — Styling tab](/img/shortcodes/text-expander-styling.png)
-
-**On the Page Builder canvas:**
-
-![Text Expander with example content on the Page Builder canvas](/img/shortcodes/text-expander-backend.png)

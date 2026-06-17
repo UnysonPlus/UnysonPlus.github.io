@@ -10,10 +10,14 @@ Collapsible accordion panels. Tabs: **Content**, **Layout**, **Behaviour**, **St
 
 ## Content
 
+![Accordion options panel — Content tab](/img/shortcodes/accordion-content.png)
+
 - **Accordion Items** — a repeatable list; each item has a **Title**, **Content** (rich text),
   and an **Open by Default** switch.
 
 ## Layout
+
+![Accordion options panel — Layout tab](/img/shortcodes/accordion-layout.png)
 
 | Option | Choices |
 | --- | --- |
@@ -35,6 +39,8 @@ These two options have several visible variants worth a screenshot each. Suggest
 
 ## Behaviour
 
+![Accordion options panel — Behaviour tab](/img/shortcodes/accordion-behaviour.png)
+
 | Option | Choices |
 | --- | --- |
 | **Initially Open** | First Item, None (All Closed), All Open |
@@ -45,25 +51,6 @@ These two options have several visible variants worth a screenshot each. Suggest
 
 ## Styling
 
-Per-state Title, Content and Icon colors (closed/open), Background Color, and Margin & Padding.
-
-## Screenshots
-
-The element's **options panel** in the Page Builder:
-
-**Content tab:**
-
-![Accordion options panel — Content tab](/img/shortcodes/accordion-content.png)
-
-**Layout tab:**
-
-![Accordion options panel — Layout tab](/img/shortcodes/accordion-layout.png)
-
-**Behaviour tab:**
-
-![Accordion options panel — Behaviour tab](/img/shortcodes/accordion-behaviour.png)
-
-**Styling tab:**
-
 ![Accordion options panel — Styling tab](/img/shortcodes/accordion-styling.png)
 
+Per-state Title, Content and Icon colors (closed/open), Background Color, and Margin & Padding.

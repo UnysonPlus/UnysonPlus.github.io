@@ -35,6 +35,20 @@ Preset**, and **Margin & Padding**.
 
 ## Screenshots
 
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::
+The element's **options panel** in the Page Builder:
+
+**Content tab:**
+
+![Tooltip options panel — Content tab](/img/shortcodes/tooltip-content.png)
+
+**Design tab:**
+
+![Tooltip options panel — Design tab](/img/shortcodes/tooltip-design.png)
+
+**Styling tab:**
+
+![Tooltip options panel — Styling tab](/img/shortcodes/tooltip-styling.png)
+
+**On the Page Builder canvas:**
+
+![Tooltip with example content on the Page Builder canvas](/img/shortcodes/tooltip-backend.png)

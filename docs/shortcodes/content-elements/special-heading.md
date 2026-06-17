@@ -39,6 +39,20 @@ Capture the overline marker/container variants and a couple of display sizes:
 
 ## Screenshots
 
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::
+The element's **options panel** in the Page Builder:
+
+**Content tab:**
+
+![Special Heading options panel — Content tab](/img/shortcodes/special-heading-content.png)
+
+**Layout tab:**
+
+![Special Heading options panel — Layout tab](/img/shortcodes/special-heading-layout.png)
+
+**Styling tab:**
+
+![Special Heading options panel — Styling tab](/img/shortcodes/special-heading-styling.png)
+
+**On the Page Builder canvas:**
+
+![Special Heading with example content on the Page Builder canvas](/img/shortcodes/special-heading-backend.png)

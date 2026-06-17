@@ -8,11 +8,17 @@ sidebar_position: 9
 An image alongside text in a responsive two-column layout. Tabs: **Content**, **Layout**,
 **Styling**, **Animations**, **Advanced**.
 
+![Image Content on the Page Builder canvas](/img/shortcodes/image-content-backend.png)
+
 ## Content
+
+![Image Content options panel — Content tab](/img/shortcodes/image-content-content.png)
 
 Image, Content (rich text), Image Alt Text, Image Link, Open Link in New Window.
 
 ## Layout
+
+![Image Content options panel — Layout tab](/img/shortcodes/image-content-layout.png)
 
 | Option | Choices |
 | --- | --- |
@@ -24,6 +30,8 @@ Image, Content (rich text), Image Alt Text, Image Link, Open Link in New Window.
 
 ## Styling
 
+![Image Content options panel — Styling tab](/img/shortcodes/image-content-styling.png)
+
 | Option | Choices |
 | --- | --- |
 | **Image Fit** | Contain (show full image), Cover (fill column) |
@@ -34,10 +42,4 @@ Image, Content (rich text), Image Alt Text, Image Link, Open Link in New Window.
 :::note Screenshots — layouts & image treatments
 Capture both layouts plus the fit/radius/shadow variants: `image-content-left`,
 `image-content-right`, `image-content-cover`, `image-content-circle`.
-:::
-
-## Screenshots
-
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
 :::

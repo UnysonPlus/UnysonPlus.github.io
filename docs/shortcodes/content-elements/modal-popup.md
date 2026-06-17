@@ -9,7 +9,11 @@ A trigger (button, text, icon or image) that opens custom content in a modal —
 side drawer or fullscreen. Tabs: **Content**, **Design**, **Styling**, **Animations**,
 **Advanced**.
 
+![Modal / Popup on the Page Builder canvas](/img/shortcodes/modal-popup-backend.png)
+
 ## Content
+
+![Modal / Popup options panel — Content tab](/img/shortcodes/modal-popup-content.png)
 
 | Option | Choices |
 | --- | --- |
@@ -21,6 +25,8 @@ side drawer or fullscreen. Tabs: **Content**, **Design**, **Styling**, **Animati
 
 ## Design
 
+![Modal / Popup options panel — Design tab](/img/shortcodes/modal-popup-design.png)
+
 | Option | Choices |
 | --- | --- |
 | **Modal Style** | Center · Left drawer · Right drawer · Fullscreen · … |
@@ -31,11 +37,7 @@ side drawer or fullscreen. Tabs: **Content**, **Design**, **Styling**, **Animati
 
 ## Styling
 
+![Modal / Popup options panel — Styling tab](/img/shortcodes/modal-popup-styling.png)
+
 **Trigger / Accent Color**, **Overlay Color**, **Modal Background**, **Modal Text**, a **Font
 Size Preset**, and **Trigger Margin & Padding**.
-
-## Screenshots
-
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::

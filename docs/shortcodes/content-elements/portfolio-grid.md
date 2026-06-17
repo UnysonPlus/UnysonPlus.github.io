@@ -11,6 +11,8 @@ in the builder. Tabs: **Content**, **Layout**, **Styling**, **Animations**, **Ad
 
 ## Content
 
+![Portfolio Grid options panel — Content tab](/img/shortcodes/portfolio-grid-content.png)
+
 | Option | Choices |
 | --- | --- |
 | **Categories** | Limit to these portfolio categories (empty = all) |
@@ -20,6 +22,8 @@ in the builder. Tabs: **Content**, **Layout**, **Styling**, **Animations**, **Ad
 | **Order direction** | Descending · Ascending |
 
 ## Layout
+
+![Portfolio Grid options panel — Layout tab](/img/shortcodes/portfolio-grid-layout.png)
 
 | Option | Choices |
 | --- | --- |
@@ -31,10 +35,6 @@ in the builder. Tabs: **Content**, **Layout**, **Styling**, **Animations**, **Ad
 
 ## Styling
 
+![Portfolio Grid options panel — Styling tab](/img/shortcodes/portfolio-grid-styling.png)
+
 **Text Color**, **Background Color**, a **Font Size Preset**, and **Margin & Padding**.
-
-## Screenshots
-
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::

@@ -11,10 +11,14 @@ Tabs: **Slides**, **Layout**, **Behavior**, **Style**, **Animations**, **Advance
 
 ## Slides
 
+![Carousel / Slider options panel — Slides tab](/img/shortcodes/carousel-slides.png)
+
 - **Slides** — a repeatable list; each slide has an **Image**, **Heading**, **Text** and a
   **Button** (label + link).
 
 ## Layout
+
+![Carousel / Slider options panel — Layout tab](/img/shortcodes/carousel-layout.png)
 
 | Option | Choices |
 | --- | --- |
@@ -28,6 +32,8 @@ Tabs: **Slides**, **Layout**, **Behavior**, **Style**, **Animations**, **Advance
 
 ## Behavior
 
+![Carousel / Slider options panel — Behavior tab](/img/shortcodes/carousel-behavior.png)
+
 | Option | Choices |
 | --- | --- |
 | **Autoplay** | On/Off |
@@ -40,11 +46,7 @@ Tabs: **Slides**, **Layout**, **Behavior**, **Style**, **Animations**, **Advance
 
 ## Style
 
+![Carousel / Slider options panel — Style tab](/img/shortcodes/carousel-style.png)
+
 **Dark Overlay** (On/Off) and **Overlay Strength** (0–90%) for legibility over images, plus
 **Heading Color** and **Text Color**.
-
-## Screenshots
-
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::

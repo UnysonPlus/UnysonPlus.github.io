@@ -10,10 +10,14 @@ A flexible image gallery with seven layout designs, a built-in lightbox and capt
 
 ## Content
 
+![Gallery options panel — Content tab](/img/shortcodes/gallery-content.png)
+
 - **Title** — optional heading above the gallery.
 - **Images** — the gallery images (multi-upload).
 
 ## Design
+
+![Gallery options panel — Design tab](/img/shortcodes/gallery-design.png)
 
 | Option | Choices |
 | --- | --- |
@@ -31,6 +35,8 @@ Each design reveals its own options:
 
 ## Style
 
+![Gallery options panel — Style tab](/img/shortcodes/gallery-style.png)
+
 | Option | Choices |
 | --- | --- |
 | **Container** | None (full width) · Container · Fluid |
@@ -42,9 +48,3 @@ Each design reveals its own options:
 
 Plus **Text / Background / Title / Caption Color**, a **Font Size Preset**, and **Margin &
 Padding**.
-
-## Screenshots
-
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::

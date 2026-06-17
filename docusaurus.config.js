@@ -94,6 +94,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       image: 'img/unysonplus-banner.jpg',
+      metadata: [
+        { name: 'google-site-verification', content: 'RJWp7_zYZ1K3W8ybjbfGZ07kZrX2AZTGK5S-_STFMCw' },
+      ],
       colorMode: {
         respectPrefersColorScheme: true,
       },

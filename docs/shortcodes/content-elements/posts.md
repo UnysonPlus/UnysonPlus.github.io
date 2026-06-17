@@ -21,6 +21,8 @@ Add a screenshot of each Layout Mode to `static/img/shortcodes/` (e.g.
 
 ## Query
 
+![Posts options panel — Query tab](/img/shortcodes/posts-query.png)
+
 Post Type, Filter by Taxonomy/Terms, Term Relation, Include/Exclude IDs, Limit to Authors,
 Date Range, Posts per Page, Offset, Order By (incl. Custom Field Key), Order Direction,
 Exclude Current Post, Sticky Post Handling.
@@ -41,8 +43,18 @@ Format, Excerpt Source/Length/Suffix, Read-More style & text.
 Pagination Type/Position/Alignment, AJAX Filter Bar, slider controls (arrows, dots, autoplay,
 interval, loop), Transient Caching with a configurable lifespan, and an Empty-State Message.
 
-## Screenshots
+## Design
 
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::
+![Posts options panel — Design tab](/img/shortcodes/posts-design.png)
+
+## Elements
+
+![Posts options panel — Elements tab](/img/shortcodes/posts-elements.png)
+
+## Navigation & Cache
+
+![Posts options panel — Navigation & Cache tab](/img/shortcodes/posts-navigation-cache.png)
+
+## Styling
+
+![Posts options panel — Styling tab](/img/shortcodes/posts-styling.png)

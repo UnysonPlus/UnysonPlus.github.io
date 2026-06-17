@@ -9,6 +9,8 @@ An icon paired with a title and content — great for feature grids, service lis
 highlights. Options are organized into tabs: **Content**, **Layout**, **Link & SEO**,
 **Styling**, **Animations**, and **Advanced**.
 
+![Icon Box on the Page Builder canvas](/img/shortcodes/icon-box-backend.png)
+
 ## Layouts (Icon Position)
 
 The **Icon Position** option sets where the icon sits relative to the title and content.
@@ -86,8 +88,18 @@ preset or a one-off custom hex.
 Standard on every element: entrance **Animations** and an **Advanced** tab (custom CSS
 class/ID and visibility controls).
 
-## Screenshots
+## Content
 
-:::note
-Drop additional screenshots into `static/img/shortcodes/` and embed them here.
-:::
+![Icon Box options panel — Content tab](/img/shortcodes/icon-box-content.png)
+
+## Layout
+
+![Icon Box options panel — Layout tab](/img/shortcodes/icon-box-layout.png)
+
+## Link & SEO
+
+![Icon Box options panel — Link & SEO tab](/img/shortcodes/icon-box-link-seo.png)
+
+## Styling
+
+![Icon Box options panel — Styling tab](/img/shortcodes/icon-box-styling.png)

@@ -45,8 +45,10 @@ Capture a few representative tile styles: `map-osm-standard`, `map-carto-dark`,
 `map-esri-satellite`, `map-google-roadmap`.
 :::
 
-## Screenshots
+## Content
 
-:::note
-Drop screenshots into `static/img/shortcodes/` and embed them here.
-:::
+![Map options panel — Content tab](/img/shortcodes/map-content.png)
+
+## Styling
+
+![Map options panel — Styling tab](/img/shortcodes/map-styling.png)

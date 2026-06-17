@@ -12,6 +12,8 @@ Builder.
 
 ## Image
 
+![Image on the Page Builder canvas](/img/shortcodes/image-backend.png)
+
 A single image with sizing and an optional link.
 
 **Key options:** Choose Image, Width, Height, Image Link, Open Link in New Window.
@@ -35,6 +37,8 @@ Background/Text).
 
 ## Image Box
 
+![Image Box on the Page Builder canvas](/img/shortcodes/image-box-backend.png)
+
 An image paired with a heading, text and link, in many hover-overlay, caption, card and frame
 designs. Tabs: **Content**, **Design**, **Effects & Link**, **Styling**.
 
@@ -55,6 +59,8 @@ Tooltip On (Hover / Click), Pin Size, Image Corner Radius; plus Pin / Tooltip Ba
 Tooltip Text / Link colors.
 
 ## Video Popup
+
+![Video Popup on the Page Builder canvas](/img/shortcodes/video-popup-backend.png)
 
 A poster image with a play button that opens a YouTube / Vimeo / self-hosted video in a
 lightbox.

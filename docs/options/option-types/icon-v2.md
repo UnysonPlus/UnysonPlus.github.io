@@ -8,6 +8,11 @@ sidebar_position: 18
 $options = [
 	'demo_icon_v2' => [
 		'type'  => 'icon-v2',
+		// — Optional attributes you can add (commented) —
+		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
+		// 'desc'  => __( 'Short description', 'unysonplus' ),
+		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
+		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 
 		/**
 		 * small | medium | large | sauron

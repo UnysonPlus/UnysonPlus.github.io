@@ -13,6 +13,12 @@ $options = [
 	'demo_icon'                      => [
 		'label' => __( 'Icon', 'unysonplus' ),
 		'type'  => 'icon',
+		// — Optional attributes you can add (commented) —
+		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
+		// 'desc'  => __( 'Short description', 'unysonplus' ),
+		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
+		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
+		// 'set' => 'font-awesome',  // icon set
 		'value' => 'fa fa-linux',
 		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 			'unysonplus' ),

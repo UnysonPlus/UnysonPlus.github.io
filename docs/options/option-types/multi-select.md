@@ -12,6 +12,11 @@ Select multiple choices from different sources: posts, taxonomies, users or a cu
 $options = [
 	'demo_multi_select_array'      => [
 		'type'       => 'multi-select',
+		// — Optional attributes you can add (commented) —
+		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
+		// 'desc'  => __( 'Short description', 'unysonplus' ),
+		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
+		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 		'label'      => __( 'Multi-Select: Custom Array', 'unysonplus' ),
 		'population' => 'array',
 		'choices'    => [

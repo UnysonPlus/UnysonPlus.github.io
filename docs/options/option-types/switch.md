@@ -13,6 +13,13 @@ $options = [
 	'demo_switch'                    => [
 		'label'        => __( 'Switch', 'unysonplus' ),
 		'type'         => 'switch',
+		// — Optional attributes you can add (commented) —
+		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
+		// 'desc'  => __( 'Short description', 'unysonplus' ),
+		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
+		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
+		// 'left-choice'  => [ 'value' => false, 'label' => __( 'No', 'unysonplus' ),  'color' => '' /* #HEX */ ],
+		// 'right-choice' => [ 'value' => true,  'label' => __( 'Yes', 'unysonplus' ), 'color' => '' /* #HEX */ ],
 		'right-choice' => [
 			'value' => 'yes',
 			'label' => __( 'Yes', 'unysonplus' )

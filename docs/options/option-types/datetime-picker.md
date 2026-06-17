@@ -12,6 +12,12 @@ Pick a datetime in calendar.
 $options = [
 	'demo_datetime_picker'           => [
 		'type'            => 'datetime-picker',
+		// — Optional attributes you can add (commented) —
+		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
+		// 'desc'  => __( 'Short description', 'unysonplus' ),
+		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
+		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
+		// 'datetime-picker' => [ 'format' => 'Y/m/d H:i', 'timepicker' => true, 'datepicker' => true, 'minDate' => false, 'maxDate' => false ],
 		'value'           => '',
 		'attr'            => [ 'class' => 'custom-class', 'data-foo' => 'bar' ],
 		'label'           => __( 'Date & Time picker', 'unysonplus' ),

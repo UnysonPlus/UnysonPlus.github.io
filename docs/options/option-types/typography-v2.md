@@ -11,14 +11,8 @@ Choose font family, style, weight, size, line-height, letter-spacing and color.
 ```php
 $options = [
 	'demo_typography-v2' => [
-		'label' => __( 'Typography V2', 'unysonplus' ),
+		'label' => __( 'Typography V2', 'unysonplus' ),  // or false to hide the label column
 		'type'  => 'typography-v2',
-		// — Optional attributes you can add (commented) —
-		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
-		// 'desc'  => __( 'Short description', 'unysonplus' ),
-		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
-		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
-		// 'components' => [ 'family' => true, 'size' => true, 'line-height' => true, 'letter-spacing' => true, 'color' => true, 'weight' => true, 'style' => true, 'variation' => true ],
 		'value'      => [
 			'family'    => 'Amarante',
 //			For standard fonts, instead of subset and variation you should set 'style' and 'weight'.
@@ -47,6 +41,8 @@ $options = [
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
 				'unysonplus' )
 		),
+		// — Optional attributes you can add —
+		// 'attr' => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 	],
 ];
 ```

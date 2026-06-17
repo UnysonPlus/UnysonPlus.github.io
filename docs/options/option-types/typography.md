@@ -11,14 +11,8 @@ Choose font family, size, style and color.
 ```php
 $options = [
 	'demo_typography' => [
-		'label' => __( 'Typography', 'unysonplus' ),
+		'label' => __( 'Typography', 'unysonplus' ),  // or false to hide the label column
 		'type'  => 'typography',
-		// — Optional attributes you can add (commented) —
-		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
-		// 'desc'  => __( 'Short description', 'unysonplus' ),
-		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
-		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
-		// 'components' => [ 'family' => true, 'size' => true, 'color' => true ],  // which controls to show
 		'value' => [
 			'size'   => 17,
 			'family' => 'Verdana',
@@ -33,6 +27,9 @@ $options = [
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
 				'unysonplus' )
 		),
+		// — Optional attributes you can add —
+		// 'attr' => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
+		// 'components' => [ 'family' => true, 'size' => true, 'color' => true ],
 	],
 ];
 ```

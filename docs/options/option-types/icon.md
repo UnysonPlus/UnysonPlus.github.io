@@ -11,14 +11,8 @@ Choose a [FontAwesome](http://fontawesome.io/) icon.
 ```php
 $options = [
 	'demo_icon'                      => [
-		'label' => __( 'Icon', 'unysonplus' ),
+		'label' => __( 'Icon', 'unysonplus' ),  // or false to hide the label column
 		'type'  => 'icon',
-		// — Optional attributes you can add (commented) —
-		// 'label' => __( 'Label', 'unysonplus' ),  // or false to hide the label column
-		// 'desc'  => __( 'Short description', 'unysonplus' ),
-		// 'help'  => __( 'Help tip text', 'unysonplus' ),  // string, or [ 'icon' => 'video', 'html' => '…' ]
-		// 'attr'  => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
-		// 'set' => 'font-awesome',  // icon set
 		'value' => 'fa fa-linux',
 		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 			'unysonplus' ),
@@ -28,6 +22,9 @@ $options = [
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
 				'unysonplus' )
 		),
+		// — Optional attributes you can add —
+		// 'attr' => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
+		// 'set' => 'font-awesome',  // icon set
 	],
 ];
 ```

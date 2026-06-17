@@ -7,7 +7,11 @@ sidebar_position: 11
 
 A notification / alert box. Tabs: **Content**, **Styling**, **Animations**, **Advanced**.
 
+![Notification on the Page Builder canvas](/img/shortcodes/notification-backend.png)
+
 ## Content
+
+![Notification options panel — Content tab](/img/shortcodes/notification-content.png)
 
 | Option | Choices |
 | --- | --- |
@@ -28,20 +32,6 @@ Capture the 8 **Types**, 3 **Border Styles**, and 2 **Layout Styles**, e.g.
 
 ## Styling
 
-Text, Label, Message and Icon colors, Background Color, and Margin & Padding.
-
-## Screenshots
-
-The element's **options panel** in the Page Builder:
-
-**Content tab:**
-
-![Notification options panel — Content tab](/img/shortcodes/notification-content.png)
-
-**Styling tab:**
-
 ![Notification options panel — Styling tab](/img/shortcodes/notification-styling.png)
 
-**On the Page Builder canvas:**
-
-![Notification with example content on the Page Builder canvas](/img/shortcodes/notification-backend.png)
+Text, Label, Message and Icon colors, Background Color, and Margin & Padding.

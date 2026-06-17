@@ -7,7 +7,11 @@ sidebar_position: 2
 
 A styled, linkable button. Tabs: **Content**, **Styling**, **Animations**, **Advanced**.
 
+![Button on the Page Builder canvas](/img/shortcodes/button-backend.png)
+
 ## Content
+
+![Button options panel — Content tab](/img/shortcodes/button-content.png)
 
 | Option | Notes |
 | --- | --- |
@@ -18,6 +22,8 @@ A styled, linkable button. Tabs: **Content**, **Styling**, **Animations**, **Adv
 | **Icon Position** | Before Label, After Label |
 
 ## Styling
+
+![Button options panel — Styling tab](/img/shortcodes/button-styling.png)
 
 | Option | Choices |
 | --- | --- |
@@ -34,19 +40,3 @@ A styled, linkable button. Tabs: **Content**, **Styling**, **Animations**, **Adv
 Capture each **Button Style**, **Button Size**, and **Hover Animation** variant. Suggested
 files: `button-style-1`, `button-size-lg`, `button-hover-grow` in `static/img/shortcodes/`.
 :::
-
-## Screenshots
-
-The element's **options panel** in the Page Builder:
-
-**Content tab:**
-
-![Button options panel — Content tab](/img/shortcodes/button-content.png)
-
-**Styling tab:**
-
-![Button options panel — Styling tab](/img/shortcodes/button-styling.png)
-
-**On the Page Builder canvas:**
-
-![Button with example content on the Page Builder canvas](/img/shortcodes/button-backend.png)

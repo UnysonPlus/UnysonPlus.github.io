@@ -8,7 +8,11 @@ sidebar_position: 36
 A trigger (text, icon or button) that reveals a tooltip on hover, focus or click — four
 positions and themes. Tabs: **Content**, **Design**, **Styling**, **Animations**, **Advanced**.
 
+![Tooltip on the Page Builder canvas](/img/shortcodes/tooltip-backend.png)
+
 ## Content
+
+![Tooltip options panel — Content tab](/img/shortcodes/tooltip-content.png)
 
 | Option | Choices |
 | --- | --- |
@@ -20,6 +24,8 @@ positions and themes. Tabs: **Content**, **Design**, **Styling**, **Animations**
 
 ## Design
 
+![Tooltip options panel — Design tab](/img/shortcodes/tooltip-design.png)
+
 | Option | Choices |
 | --- | --- |
 | **Theme** | Dark · Light · Success · Error · Warning · Info |
@@ -30,25 +36,7 @@ positions and themes. Tabs: **Content**, **Design**, **Styling**, **Animations**
 
 ## Styling
 
-**Tooltip Background**, **Tooltip Text**, **Accent** (button/icon trigger), a **Font Size
-Preset**, and **Margin & Padding**.
-
-## Screenshots
-
-The element's **options panel** in the Page Builder:
-
-**Content tab:**
-
-![Tooltip options panel — Content tab](/img/shortcodes/tooltip-content.png)
-
-**Design tab:**
-
-![Tooltip options panel — Design tab](/img/shortcodes/tooltip-design.png)
-
-**Styling tab:**
-
 ![Tooltip options panel — Styling tab](/img/shortcodes/tooltip-styling.png)
 
-**On the Page Builder canvas:**
-
-![Tooltip with example content on the Page Builder canvas](/img/shortcodes/tooltip-backend.png)
+**Tooltip Background**, **Tooltip Text**, **Accent** (button/icon trigger), a **Font Size
+Preset**, and **Margin & Padding**.

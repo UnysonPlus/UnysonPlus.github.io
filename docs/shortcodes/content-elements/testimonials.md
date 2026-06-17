@@ -10,11 +10,15 @@ Display testimonials in a carousel, grid, or single layout. Tabs: **Content**, *
 
 ## Content
 
+![Testimonials options panel — Content tab](/img/shortcodes/testimonials-content.png)
+
 - **Title** — optional section title.
 - **Testimonials** — a repeatable list; each has: **Quote**, **Image** (avatar), **Name**,
   **Position**, **Website Name**, **Website Link**, **Rating**.
 
 ## Layout
+
+![Testimonials options panel — Design tab](/img/shortcodes/testimonials-design.png)
 
 | Option | Choices |
 | --- | --- |
@@ -30,6 +34,8 @@ Capture each layout: `testimonials-carousel`, `testimonials-grid`, `testimonials
 :::
 
 ## Style
+
+![Testimonials options panel — Style tab](/img/shortcodes/testimonials-style.png)
 
 | Option | Choices |
 | --- | --- |
@@ -48,20 +54,3 @@ Style, Wrap Around (loop).
 
 Colors for Section Title, Quote, Author Name, Author Job, Site Link, plus Background and
 Margin & Padding.
-
-## Screenshots
-
-The element's **options panel** in the Page Builder:
-
-**Content tab:**
-
-![Testimonials options panel — Content tab](/img/shortcodes/testimonials-content.png)
-
-**Design tab:**
-
-![Testimonials options panel — Design tab](/img/shortcodes/testimonials-design.png)
-
-**Style tab:**
-
-![Testimonials options panel — Style tab](/img/shortcodes/testimonials-style.png)
-

@@ -11,6 +11,8 @@ Comparable pricing plans with price, feature list, a "featured" highlight and a 
 
 ## Content
 
+![Pricing Table options panel — Content tab](/img/shortcodes/pricing-table-content.png)
+
 - **Heading** — optional section heading.
 - **Plans** — a repeatable list; each plan has:
 
@@ -27,6 +29,8 @@ Comparable pricing plans with price, feature list, a "featured" highlight and a 
 
 ## Design
 
+![Pricing Table options panel — Design tab](/img/shortcodes/pricing-table-design.png)
+
 | Option | Choices |
 | --- | --- |
 | **Design** | Classic · Minimal · Shadow · Flat · Gradient · Outline · … |
@@ -37,22 +41,7 @@ Comparable pricing plans with price, feature list, a "featured" highlight and a 
 
 ## Styling
 
-**Accent Color** (featured highlight, price, button), **Section / Card Background**, **Plan
-Name / Price / Features** colors, a **Font Size Preset**, and **Margin & Padding**.
-
-## Screenshots
-
-The element's **options panel** in the Page Builder:
-
-**Content tab:**
-
-![Pricing Table options panel — Content tab](/img/shortcodes/pricing-table-content.png)
-
-**Design tab:**
-
-![Pricing Table options panel — Design tab](/img/shortcodes/pricing-table-design.png)
-
-**Styling tab:**
-
 ![Pricing Table options panel — Styling tab](/img/shortcodes/pricing-table-styling.png)
 
+**Accent Color** (featured highlight, price, button), **Section / Card Background**, **Plan
+Name / Price / Features** colors, a **Font Size Preset**, and **Margin & Padding**.

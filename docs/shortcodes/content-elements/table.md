@@ -10,6 +10,8 @@ A data table with optional interactivity. Tabs: **Content**, **Table Options**, 
 
 ## Table Options
 
+![Table options panel — Table Options tab](/img/shortcodes/table-table-options.png)
+
 | Option | Choices |
 | --- | --- |
 | **Table Preset** | A named style preset (or none) |
@@ -33,21 +35,10 @@ Capture a couple of presets and the interactive features: `table-preset-1`,
 
 ## Styling
 
-Text Color, Background Color, and Margin & Padding.
-
-## Screenshots
-
-The element's **options panel** in the Page Builder:
-
-**Content tab:**
-
-![Table options panel — Content tab](/img/shortcodes/table-content.png)
-
-**Table Options tab:**
-
-![Table options panel — Table Options tab](/img/shortcodes/table-table-options.png)
-
-**Styling tab:**
-
 ![Table options panel — Styling tab](/img/shortcodes/table-styling.png)
 
+Text Color, Background Color, and Margin & Padding.
+
+## Content
+
+![Table options panel — Content tab](/img/shortcodes/table-content.png)

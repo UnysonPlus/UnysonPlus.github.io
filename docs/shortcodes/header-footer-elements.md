@@ -49,3 +49,13 @@ A hamburger button that opens an off-canvas drawer (for mobile navigation).
 
 **Key options:** Target Drawer ID (default `primary-navigation-drawer`), Accessible Label
 (default `Menu`), Icon Style (Bars `≡` · Dots `⋮`).
+
+## Cart
+
+A cart icon with a live item-count badge (and optional total), linking to the cart — for shop
+headers. The count and total update **without a page reload** when items are added via AJAX.
+Part of the **[WooCommerce extension](/docs/extensions/woocommerce)**; appears only when
+WooCommerce is active.
+
+**Key options:** Icon (Shopping Bag · Shopping Cart · Basket · No Icon), Label (optional text
+beside the icon), Item Count (on/off), Cart Total (on/off), Hide When Empty.

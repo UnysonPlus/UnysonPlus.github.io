@@ -28,13 +28,22 @@ you change them.
 
 ### Page-builder elements
 
-Available in the builder while WooCommerce is active:
+While WooCommerce is active, a dedicated **WooCommerce Elements** tab appears in the page builder
+with all of the elements below. See the full reference at
+**[WooCommerce Elements](/docs/shortcodes/woocommerce-elements)**.
 
-- **[Products](/docs/shortcodes/content-elements/products)** *(Content Elements)* — a product
-  grid by source (recent, featured, on-sale, best-selling, top-rated, or category) with column,
-  gap, image-ratio and alignment controls.
-- **Cart** *(Header / Footer Elements)* — a cart icon with a live item-count badge and optional
-  total, linking to the cart. See [Header / Footer Elements → Cart](/docs/shortcodes/header-footer-elements#cart).
+- **Catalog:** [Products](/docs/shortcodes/woocommerce-elements#products) (grid **or carousel**;
+  recent / featured / on-sale / best-selling / top-rated / by category / tag / attribute / specific
+  IDs), [Product Categories](/docs/shortcodes/woocommerce-elements#product-categories),
+  [Single Product](/docs/shortcodes/woocommerce-elements#single-product),
+  [Product Page](/docs/shortcodes/woocommerce-elements#product-page),
+  [Add to Cart Button](/docs/shortcodes/woocommerce-elements#add-to-cart-button).
+- **Cart & pages:** [Cart Icon](/docs/shortcodes/woocommerce-elements#cart-icon),
+  [Mini Cart](/docs/shortcodes/woocommerce-elements#mini-cart), and the classic
+  [Cart · Checkout · My Account · Order Tracking](/docs/shortcodes/woocommerce-elements#cart--checkout--my-account--order-tracking)
+  page elements.
+- **Utility:** [Product Search](/docs/shortcodes/woocommerce-elements#product-search) and
+  [Product Filters](/docs/shortcodes/woocommerce-elements#product-filters).
 
 ## Settings
 

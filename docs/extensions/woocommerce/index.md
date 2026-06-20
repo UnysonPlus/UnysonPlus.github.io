@@ -39,11 +39,16 @@ with all of the elements below. See the full reference at
   [Product Page](/docs/shortcodes/woocommerce-elements#product-page),
   [Add to Cart Button](/docs/shortcodes/woocommerce-elements#add-to-cart-button).
 - **Cart & pages:** [Cart Icon](/docs/shortcodes/woocommerce-elements#cart-icon),
-  [Mini Cart](/docs/shortcodes/woocommerce-elements#mini-cart), and the classic
+  [Mini Cart](/docs/shortcodes/woocommerce-elements#mini-cart),
+  [Account](/docs/shortcodes/woocommerce-elements#account),
+  [Free Shipping Bar](/docs/shortcodes/woocommerce-elements#free-shipping-bar), and the classic
   [Cart · Checkout · My Account · Order Tracking](/docs/shortcodes/woocommerce-elements#cart--checkout--my-account--order-tracking)
   page elements.
 - **Utility:** [Product Search](/docs/shortcodes/woocommerce-elements#product-search) and
   [Product Filters](/docs/shortcodes/woocommerce-elements#product-filters).
+
+The Products grid also supports **percentage / Featured / New / Out-of-stock badges**, low-stock
+notices, a **Quick View** modal, and **Load More** (AJAX) pagination.
 
 ## Settings
 
@@ -57,6 +62,16 @@ product** pages site-wide:
 | **Shop Sidebar** | None | Sidebar position on WooCommerce pages *(with a WooCommerce-aware theme)* |
 | **Gallery Thumbnail Columns** | 4 | Thumbnails below the main product image |
 | **Related Products** | 3 | Related products on a single product page (`0` hides them) |
+
+### Shop Behavior
+
+| Setting | Default | Controls |
+| --- | --- | --- |
+| **Catalog Mode** | Off | Hide prices + add-to-cart store-wide (lookbook mode) |
+| **Sale Badge Style** | Text | Native sale flash as “Sale” or a percentage (“-25%”) |
+| **AJAX Add to Cart** | On | Add simple products from shop archives without a reload |
+| **Shop Breadcrumb** | On | Show the WooCommerce breadcrumb above shop / product content |
+| **Gallery Zoom / Lightbox / Slider** | On | Toggle each product-gallery feature |
 
 ## For developers — the filter contract
 

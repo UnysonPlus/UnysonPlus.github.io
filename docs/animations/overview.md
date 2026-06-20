@@ -4,16 +4,15 @@ title: Overview
 slug: /animations
 ---
 
-# Animations
+# GSAP Animations
 
-Every element's **Animations** tab carries two independent engines:
+UnysonPlus ships a rich, **GSAP-powered motion platform** built right into the page builder. Every Section, Column and element has an **Animations** tab with a **Scroll Motion (GSAP)** block — choose an effect from a dropdown and you get scroll-driven motion powered by [GSAP](https://gsap.com/) + ScrollTrigger, the same engine behind countless award-winning sites. No code.
 
-- **Entrance Animation** — one-shot [Animate.css](https://animate.style/) effects ("appear with X") that play once as the element scrolls into view.
-- **Scroll Motion (GSAP)** — scroll-*driven* motion powered by [GSAP](https://gsap.com/) + ScrollTrigger. This is the "award-site" vocabulary that CSS keyframes can't express.
+:::note A separate entrance-animation engine
+The Animations tab also has an **Entrance Animation** block for one-shot [Animate.css](https://animate.style/) effects ("appear with X"). It's independent of GSAP and can be combined with a Scroll Motion effect on the same element.
+:::
 
-The two are separate and can be combined on the same element (a CSS entrance **and** a GSAP scroll effect).
-
-## The Scroll Motion effects
+## The effects
 
 | Effect | What it does |
 | --- | --- |
@@ -23,8 +22,7 @@ The two are separate and can be combined on the same element (a CSS entrance **a
 | [Parallax](./parallax.md) | Drifts an element against the scroll for depth |
 | [Pin](./pin.md) | Sticks an element in place while the page scrolls past |
 | [Scroll Scrub](./scroll-scrub.md) | Ties an animation's progress to the scrollbar |
-| [Smooth Scroll](./smooth-scroll.md) | Buttery inertia scrolling (Lenis), per-page or site-wide |
-| [Animated Counters](./counters.md) | Numbers that count up when scrolled into view |
+| [Smooth Scroll](./smooth-scroll.md) | Buttery inertia scrolling (Lenis), bridged into GSAP ScrollTrigger — per page or site-wide |
 
 ## Where to find it
 

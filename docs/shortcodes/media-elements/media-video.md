@@ -9,9 +9,8 @@ Embed a responsive YouTube, Vimeo, or other oEmbed-supported video from its page
 
 ## Content
 
-
-
 <img src="/img/shortcodes/media-video-content.png" alt="Video options panel — Content tab" width="1200" />
+
 - **Insert Video URL** — text field. Paste a YouTube, Vimeo, or other oEmbed-supported page URL (e.g. `https://youtu.be/xxxx`) — not the raw `.mp4` file or an iframe embed code.
 - **Video Max Width** — a unit-input (number + unit; choices `px`, `%`, `vw`, `rem`, `em`; default `600px`). `px` is a fixed cap; `%` / `vw` are relative to the container / viewport. The video stays centered and the height follows the aspect ratio.
 - **Aspect Ratio** — select (default `16x9`):
@@ -22,9 +21,8 @@ Embed a responsive YouTube, Vimeo, or other oEmbed-supported video from its page
 
 ## Styling
 
-
-
 <img src="/img/shortcodes/media-video-styling.png" alt="Video options panel — Styling tab" width="1200" />
+
 - **Background Color** — compact color picker (a `bg-*` preset or custom hex) applied to the wrapper.
 - **Margin & Padding** — spacing control. All Sides applies to every side at once; any per-side value (Top, Right, Bottom, Left) overrides it for that direction.
 

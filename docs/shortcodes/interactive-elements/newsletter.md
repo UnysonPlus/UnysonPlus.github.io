@@ -7,16 +7,12 @@ sidebar_position: 57
 
 An AJAX email-signup form wired to your site mailer (the Mailer extension) and to a `fw_newsletter_subscribe` hook for list integrations like Mailchimp. Configure it across the **Content**, **Design**, **Styling**, **Animations**, and **Advanced** tabs.
 
-
-
-
 <img src="/img/shortcodes/newsletter-backend.png" alt="Newsletter on the Page Builder canvas" width="936" />
 
 ## Content
 
-
-
 <img src="/img/shortcodes/newsletter-content.png" alt="Newsletter options panel — Content tab" width="1200" />
+
 - **Heading** — the form's title; leave blank to hide. Defaults to "Subscribe to our newsletter".
 - **Description** — supporting text under the heading. Defaults to "Get the latest updates straight to your inbox."
 - **Ask for Name** — switch to add a name field alongside the email field. Choices: Yes / No (default No).
@@ -30,18 +26,16 @@ An AJAX email-signup form wired to your site mailer (the Mailer extension) and t
 
 ## Design
 
-
-
 <img src="/img/shortcodes/newsletter-design.png" alt="Newsletter options panel — Design tab" width="1200" />
+
 - **Design** — image-picker selecting the form layout from the registered presets. Defaults to `inline`.
 - **Alignment** — horizontal alignment of the form. Defaults to left.
 - **Field Roundness** — corner style of the inputs and button. Choices: Square / Rounded / Pill (default Rounded).
 
 ## Styling
 
-
-
 <img src="/img/shortcodes/newsletter-styling.png" alt="Newsletter options panel — Styling tab" width="1200" />
+
 - **Button Color** — background color of the submit button.
 - **Field Background** — background color of the input fields.
 - **Box Background (Boxed)** — background color of the form box when a boxed design is used.

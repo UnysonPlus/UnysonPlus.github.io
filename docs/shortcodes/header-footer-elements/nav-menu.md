@@ -9,9 +9,8 @@ Display a WordPress menu — for headers, footers, or anywhere on the canvas. Th
 
 ## Content
 
-
-
 <img src="/img/shortcodes/nav-menu-content.png" alt="Navigation Menu options panel — Content tab" width="1200" />
+
 - **Menu Source** — choose where the menu comes from: **Theme Menu Location** (default) or **Specific Menu**. The picker reveals one field accordingly:
   - **Menu Location** — when the source is a theme location, pick a menu assigned to that location (Appearance → Menus). The list is populated from the theme's registered nav-menu locations.
   - **Menu** — when the source is a specific menu, pick any menu by name regardless of its assigned location.

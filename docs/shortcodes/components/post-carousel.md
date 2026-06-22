@@ -9,9 +9,8 @@ A touch-friendly slider of posts (or any public post type) — image, title, exc
 
 ## Query
 
-
-
 <img src="/img/shortcodes/post-carousel-query.png" alt="Post Carousel options panel — Query tab" width="1200" />
+
 - **Source** — the post type to pull from (any public post type; default `post`).
 - **Taxonomy** — the taxonomy to filter by, e.g. `category`, `post_tag`, or a custom taxonomy (default `category`).
 - **Terms** — comma-separated term slugs to include; blank = all.
@@ -21,9 +20,8 @@ A touch-friendly slider of posts (or any public post type) — image, title, exc
 
 ## Design
 
-
-
 <img src="/img/shortcodes/post-carousel-design.png" alt="Post Carousel options panel — Design tab" width="1200" />
+
 - **Card Design** — image-picker of card layouts (e.g. `standard`, default).
 - **Image Ratio** — `Original`, `16:9` (default), `4:3`, `1:1`, or `3:4 (portrait)`.
 - **Show Excerpt** — `Yes` (default) or `No`.
@@ -40,9 +38,8 @@ A touch-friendly slider of posts (or any public post type) — image, title, exc
 
 ## Styling
 
-
-
 <img src="/img/shortcodes/post-carousel-styling.png" alt="Post Carousel options panel — Styling tab" width="1200" />
+
 - **Accent (links / meta)** — accent color for links and meta.
 - **Card Background** — card background color.
 - **Title Color** — color of the post title.

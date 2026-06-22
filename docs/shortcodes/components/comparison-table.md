@@ -9,9 +9,8 @@ A feature comparison matrix — plans/products across the top, feature rows down
 
 ## Content
 
-
-
 <img src="/img/shortcodes/comparison-table-content.png" alt="Comparison Table options panel — Content tab" width="1200" />
+
 - **Feature Column Header** — the top-left header above the feature names. Default `Features`.
 - **Columns (Plans)** — a repeatable list; each column is a plan / product shown across the top:
   - **Name** — column name (default `Plan`).
@@ -29,9 +28,8 @@ A feature comparison matrix — plans/products across the top, feature rows down
 
 ## Design
 
-
-
 <img src="/img/shortcodes/comparison-table-design.png" alt="Comparison Table options panel — Design tab" width="1200" />
+
 - **Style** — `Bordered` (default), `Striped rows`, or `Minimal`.
 - **Highlight Featured Column** — Yes (default) / No.
 - **Sticky Header** — Yes / No (default) — keep the plan header visible while scrolling the page.
@@ -39,9 +37,8 @@ A feature comparison matrix — plans/products across the top, feature rows down
 
 ## Styling
 
-
-
 <img src="/img/shortcodes/comparison-table-styling.png" alt="Comparison Table options panel — Styling tab" width="1200" />
+
 - **Accent (checks / featured)** — accent color for checks and the featured column.
 - **Header Background** — background of the header row.
 - **Header Text** — header text color.

@@ -9,9 +9,8 @@ A numbered steps / process flow — horizontal, vertical timeline, alternating, 
 
 ## Content
 
-
-
 <img src="/img/shortcodes/steps-content.png" alt="Steps / Process options panel — Content tab" width="1200" />
+
 - **Steps** — an addable, repeatable list of steps. Each step opens an Add / Edit Step popup with these sub-fields:
   - **Title** — the step title (default "Step title").
   - **Description** — a textarea body; accepts HTML and shortcodes.
@@ -20,9 +19,8 @@ A numbered steps / process flow — horizontal, vertical timeline, alternating, 
 
 ## Design
 
-
-
 <img src="/img/shortcodes/steps-design.png" alt="Steps / Process options panel — Design tab" width="1200" />
+
 - **Design** — image-picker of layouts (horizontal, vertical timeline, alternating, cards, circles); default `horizontal`.
 - **Marker** — `Number` (default), `Icon`, or `None`.
 - **Marker Shape** — `Circle` (default), `Rounded square`, or `Square`.
@@ -31,9 +29,8 @@ A numbered steps / process flow — horizontal, vertical timeline, alternating, 
 
 ## Styling
 
-
-
 <img src="/img/shortcodes/steps-styling.png" alt="Steps / Process options panel — Styling tab" width="1200" />
+
 - **Marker / Connector** — color of the markers and connector line.
 - **Marker Text** — color of the marker number/text.
 - **Title Color** — color of the step title.

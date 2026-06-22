@@ -9,9 +9,8 @@ A row of social-profile links — either reused from your **Theme Settings → S
 
 ## Content
 
-
-
 <img src="/img/shortcodes/social-icons-content.png" alt="Social Icons options panel — Content tab" width="1200" />
+
 - **Source** — **Theme Settings (Social Profiles)** (default) reuses the profiles configured in the theme; **Manual list** lets you define links below.
 - **Profiles** — an addable list of links; used only when Source is **Manual list**. Each entry has:
   - **Icon** — the social glyph, picked from the icon library.

@@ -7,16 +7,12 @@ sidebar_position: 40
 
 A user avatar — single, or an overlapping group with a "+N" counter. Each face is an image (server-side cropped, retina-ready) or an initials fallback, with optional status dots, shapes and a px size. Tabs: **Content**, **Design**, **Style**, **Animations**, **Advanced**.
 
-
-
-
 <img src="/img/shortcodes/avatar-backend.png" alt="Avatar on the Page Builder canvas" width="936" />
 
 ## Content
 
-
-
 <img src="/img/shortcodes/avatar-content.png" alt="Avatar options panel — Content tab" width="1200" />
+
 The Content tab is driven by a **Mode** multi-picker that reveals the fields for the chosen mode.
 
 - **Mode** — `Single Avatar` (default) or `Avatar Group (stacked)` — one avatar, or an overlapping row of avatars with an optional "+N" counter.
@@ -46,9 +42,8 @@ The Content tab is driven by a **Mode** multi-picker that reveals the fields for
 
 ## Design
 
-
-
 <img src="/img/shortcodes/avatar-design.png" alt="Avatar options panel — Design tab" width="1200" />
+
 - **Design** — visual treatment applied in either mode: Plain (default), Bordered, Ring, Shadow, Soft. Bordered/Ring are especially useful in Group mode — the gap separates overlapping avatars cleanly.
 - **Shape** — Circle (default), Rounded, Square.
 - **Size (px)** — slider 24–240 (step 2), the rendered width & height of each avatar. Default `56`.
@@ -58,9 +53,8 @@ The Content tab is driven by a **Mode** multi-picker that reveals the fields for
 
 ## Style
 
-
-
 <img src="/img/shortcodes/avatar-style.png" alt="Avatar options panel — Style tab" width="1200" />
+
 - **Ring / Border Color** — color of the ring/border.
 - **Initials Background (Fixed mode)** — used when Initials Background is set to Fixed.
 - **Initials Text Color** — color of the initials glyphs.

@@ -9,9 +9,8 @@ A back-to-top button and/or a reading-progress bar tied to page scroll — place
 
 ## General
 
-
-
 <img src="/img/shortcodes/scroll-to-top-general.png" alt="Scroll to Top & Progress options panel — General tab" width="1200" />
+
 - **Back-to-Top Button** — switch to show the floating scroll-to-top button. Choices: On / Off (default On).
 - **Reading Progress Bar** — switch to show a scroll-progress bar. Choices: On / Off (default Off).
 - **Button Icon** — icon shown on the button; defaults to an up-arrow when empty.
@@ -23,9 +22,8 @@ A back-to-top button and/or a reading-progress bar tied to page scroll — place
 
 ## Styling
 
-
-
 <img src="/img/shortcodes/scroll-to-top-styling.png" alt="Scroll to Top & Progress options panel — Styling tab" width="1200" />
+
 - **Accent (button / bar)** — background color of the button and progress bar.
 - **Button Icon Color** — color of the button's icon.
 - **Button Size** — Small / Medium / Large (default Medium).

@@ -7,8 +7,16 @@ sidebar_position: 37
 
 A styled quote / pullquote with optional author and source, in several editorial designs. Tabs: **Content**, **Design**, **Styling**, **Animations**, **Advanced**.
 
+
+
+
+<img src="/img/shortcodes/blockquote-backend.png" alt="Blockquote on the Page Builder canvas" width="936" />
+
 ## Content
 
+
+
+<img src="/img/shortcodes/blockquote-content.png" alt="Blockquote options panel — Content tab" width="1200" />
 - **Quote** — the quotation text. Basic inline HTML (bold, italic, links) is allowed.
 - **Author** — who said it (optional).
 - **Author Role / Source** — e.g. "CEO, Acme" or a book title (optional).
@@ -17,6 +25,9 @@ A styled quote / pullquote with optional author and source, in several editorial
 
 ## Design
 
+
+
+<img src="/img/shortcodes/blockquote-design.png" alt="Blockquote options panel — Design tab" width="1200" />
 - **Design** — the visual style:
 
 | Design | Look |
@@ -33,6 +44,9 @@ A styled quote / pullquote with optional author and source, in several editorial
 
 ## Styling
 
+
+
+<img src="/img/shortcodes/blockquote-styling.png" alt="Blockquote options panel — Styling tab" width="1200" />
 - **Quote Color** — color of the quote text.
 - **Accent (border / mark)** — color of the accent border and quote mark.
 - **Author Color** — color of the author / source line.

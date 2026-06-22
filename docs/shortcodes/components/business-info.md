@@ -9,6 +9,9 @@ Opening hours (with a live Open/Closed status) plus contact details — address,
 
 ## Content
 
+
+
+<img src="/img/shortcodes/business-info-content.png" alt="Business Info options panel — Content tab" width="1200" />
 - **Business Name** — optional heading.
 - **Opening Hours** — a repeatable list, pre-filled Mon–Sun; each day has:
   - **Day** — Monday … Sunday.
@@ -26,11 +29,17 @@ Opening hours (with a live Open/Closed status) plus contact details — address,
 
 ## Design
 
+
+
+<img src="/img/shortcodes/business-info-design.png" alt="Business Info options panel — Design tab" width="1200" />
 - **Layout** — image-picker (registry-driven); default `Card`.
 - **Highlight Today** — Yes (default) / No — emphasize today's row in the hours list.
 
 ## Styling
 
+
+
+<img src="/img/shortcodes/business-info-styling.png" alt="Business Info options panel — Styling tab" width="1200" />
 - **Accent** — accent color.
 - **Card Background** — background of the card.
 - **Text Color** — body text color.

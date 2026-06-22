@@ -9,6 +9,9 @@ A grid, boxed grid, carousel or marquee of client / partner logos, with an optio
 
 ## Content
 
+
+
+<img src="/img/shortcodes/logo-grid-content.png" alt="Logo Grid options panel — Content tab" width="1200" />
 - **Logos** — a repeatable list of logos. Each entry opens an "Add / Edit Logo" popup with:
   - **Logo Image** — the logo to display.
   - **Name (alt text)** — alt text for the image.
@@ -17,6 +20,9 @@ A grid, boxed grid, carousel or marquee of client / partner logos, with an optio
 
 ## Design
 
+
+
+<img src="/img/shortcodes/logo-grid-design.png" alt="Logo Grid options panel — Design tab" width="1200" />
 - **Layout** — an image-picker of layouts (grid, boxed grid, carousel, marquee); defaults to **Grid**.
 - **Columns / Per View** — columns in a grid, or visible logos in a carousel/marquee: 2, 3, 4 (default), 5, or 6.
 - **Gap** — spacing between logos; defaults to `4`.
@@ -28,6 +34,9 @@ A grid, boxed grid, carousel or marquee of client / partner logos, with an optio
 
 ## Styling
 
+
+
+<img src="/img/shortcodes/logo-grid-styling.png" alt="Logo Grid options panel — Styling tab" width="1200" />
 - **Box Background (Boxed)** — background color of each box in the boxed layout.
 - **Font Size** — text size preset.
 - **Margin & Padding** — spacing around the element.

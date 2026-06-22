@@ -7,8 +7,16 @@ sidebar_position: 41
 
 An author / profile box — avatar, name, bio, social links and post count — for the current post author, a chosen user, or fully custom content. Tabs: **Content**, **Design**, **Styling**, **Animations**, **Advanced**.
 
+
+
+
+<img src="/img/shortcodes/author-box-backend.png" alt="Author Box on the Page Builder canvas" width="936" />
+
 ## Content
 
+
+
+<img src="/img/shortcodes/author-box-content.png" alt="Author Box options panel — Content tab" width="1200" />
 - **Author Source** — `Current post author` (default), `Specific user`, or `Custom (manual)`.
 - **User** — the user to pull from; used when Author Source is "Specific user".
 - **Name** — custom name, or overrides the user's name.
@@ -21,6 +29,9 @@ An author / profile box — avatar, name, bio, social links and post count — f
 
 ## Design
 
+
+
+<img src="/img/shortcodes/author-box-design.png" alt="Author Box options panel — Design tab" width="1200" />
 - **Design** — image-picker layout (registry-driven); default `Card`.
 - **Avatar Shape** — Circle (default), Rounded, Square.
 - **Avatar Size (px)** — slider 48–160 (step 4). Default `84`.
@@ -28,6 +39,9 @@ An author / profile box — avatar, name, bio, social links and post count — f
 
 ## Styling
 
+
+
+<img src="/img/shortcodes/author-box-styling.png" alt="Author Box options panel — Styling tab" width="1200" />
 - **Accent (links / socials)** — accent color for links and social icons.
 - **Card Background** — background of the box.
 - **Name Color** — color of the author name.

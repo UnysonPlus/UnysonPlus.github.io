@@ -11,9 +11,9 @@ them onto the page canvas and configuring them through their options panel — n
 required. They're grouped in the builder:
 
 - **[Content Elements](/docs/shortcodes/content-elements)** — text, buttons, media boxes, posts, tables, and more (36 elements, each with its own page).
-- **[Layout Elements](./layout-elements.md)** — sections, rows, columns and special section types (7 elements).
-- **[Media Elements](./media-elements.md)** — image, video and comparison/hotspot elements (6 elements).
-- **[Header / Footer Elements](./header-footer-elements.md)** — menus, logo, search, social icons and menu toggle (5 elements).
+- **[Layout Elements](/docs/shortcodes/layout-elements)** — sections, rows, columns and special section types.
+- **[Media Elements](/docs/shortcodes/media-elements)** — image, video, gallery, before/after, hotspots and more.
+- **[Header / Footer Elements](/docs/shortcodes/header-footer-elements)** — menus, logo, search, social icons and menu toggle.
 
 Some elements come from their own extensions — **Contact Form** (Forms), **Portfolio Grid** and
 **Project Gallery** (Portfolio) — and appear in the builder once that extension is active.

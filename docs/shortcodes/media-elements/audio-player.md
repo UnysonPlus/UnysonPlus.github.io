@@ -9,6 +9,9 @@ A custom audio player for self-hosted or remote tracks — single track or playl
 
 ## Content
 
+
+
+<img src="/img/shortcodes/audio-player-content.png" alt="Audio Player options panel — Content tab" width="1200" />
 - **Tracks** — a repeatable list of tracks (one track = one audio file; add several for a playlist). Each entry opens an "Add / Edit Track" popup with:
   - **Audio File** — upload or pick an audio file (mp3, m4a, ogg, wav, aac).
   - **Audio URL (fallback)** — a direct link to an audio file, used if no file is chosen above.
@@ -18,6 +21,9 @@ A custom audio player for self-hosted or remote tracks — single track or playl
 
 ## Design
 
+
+
+<img src="/img/shortcodes/audio-player-design.png" alt="Audio Player options panel — Design tab" width="1200" />
 - **Design** — an image-picker of player designs; defaults to **Classic**.
 - **Autoplay** — start playback on load (most browsers block autoplay with sound until the visitor interacts). Defaults to No.
 - **Loop** — repeat the track, or restart the playlist after the last track. Defaults to No.
@@ -27,6 +33,9 @@ A custom audio player for self-hosted or remote tracks — single track or playl
 
 ## Styling
 
+
+
+<img src="/img/shortcodes/audio-player-styling.png" alt="Audio Player options panel — Styling tab" width="1200" />
 - **Accent (controls / progress)** — color of the controls and progress bar.
 - **Player Background** — background color of the player.
 - **Text Color** — color of the title/artist text.

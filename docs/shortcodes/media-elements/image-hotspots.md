@@ -9,6 +9,9 @@ An image with interactive pins, where each pin reveals a tooltip card with a tit
 
 ## Content
 
+
+
+<img src="/img/shortcodes/image-hotspots-content.png" alt="Image Hotspots options panel — Content tab" width="1200" />
 - **Image** — upload for the base image the pins are placed on.
 - **Hotspots** — an addable-popup list of pins. Add as many as you need; each one opens an "Add / Edit Hotspot" popup with these sub-fields:
   - **Horizontal Position (%)** — slider (0–100, default `50`) for the pin's X position over the image.
@@ -22,6 +25,9 @@ An image with interactive pins, where each pin reveals a tooltip card with a tit
 
 ## Design
 
+
+
+<img src="/img/shortcodes/image-hotspots-design.png" alt="Image Hotspots options panel — Design tab" width="1200" />
 - **Pin Style** — image-picker of the pin appearance (default `pulse`). Choices come from the design registry.
 - **Open Tooltip On** — select for the trigger; choices `Hover` (default), `Click / tap`. Click is best for touch devices.
 - **Pin Size** — select; choices `Small`, `Medium` (default), `Large`.
@@ -29,6 +35,9 @@ An image with interactive pins, where each pin reveals a tooltip card with a tit
 
 ## Styling
 
+
+
+<img src="/img/shortcodes/image-hotspots-styling.png" alt="Image Hotspots options panel — Styling tab" width="1200" />
 - **Pin Color** — compact color picker for the pins.
 - **Tooltip Background** — compact color picker for the tooltip card background.
 - **Tooltip Text** — color of the tooltip text.

@@ -7,16 +7,12 @@ sidebar_position: 68
 
 A hamburger button that opens an off-canvas drawer — typically used for mobile navigation. Options live under the **Content** and **Advanced** tabs.
 
-
-
-
 <img src="/img/shortcodes/menu-toggle-backend.png" alt="Menu Toggle on the Page Builder canvas" width="936" />
 
 ## Content
 
-
-
 <img src="/img/shortcodes/menu-toggle-content.png" alt="Menu Toggle options panel — Content tab" width="1200" />
+
 - **Target Drawer ID** — the `id` of the off-canvas drawer to open; defaults to `primary-navigation-drawer`. Leave the default to use the theme's built-in drawer.
 - **Accessible Label** — screen-reader label for the button; defaults to `Menu`.
 - **Icon Style** — **Bars (≡)** (default) or **Dots (⋮)**.

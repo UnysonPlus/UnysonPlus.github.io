@@ -7,16 +7,10 @@ sidebar_position: 51
 
 An interactive before/after image comparison slider — drag, hover or click to reveal — in many handle styles, horizontal or vertical. Its options are organized across the **Content**, **Design**, **Styling**, **Animations**, and **Advanced** tabs.
 
-
-
-
-<img src="/img/shortcodes/before-after-backend.png" alt="Before / After on the Page Builder canvas" width="936" />
-
 ## Content
 
-
-
 <img src="/img/shortcodes/before-after-content.png" alt="Before / After options panel — Content tab" width="1200" />
+
 You supply two images that are stacked and revealed against each other as the divider moves:
 
 - **Before Image** — upload for the "before" side (shown on the left / top). For the cleanest comparison, use two images with the same dimensions and framing.
@@ -27,9 +21,8 @@ You supply two images that are stacked and revealed against each other as the di
 
 ## Design
 
-
-
 <img src="/img/shortcodes/before-after-design.png" alt="Before / After options panel — Design tab" width="1200" />
+
 - **Design** — image-picker of the handle / label look (default `classic`). Choices come from the design registry; all designs share the same slider engine, so the behavior below works with any design.
 - **Orientation** — select for the divider direction; choices `Horizontal (drag left ↔ right)` (default), `Vertical (drag up ↕ down)`.
 - **Interaction** — select for how visitors reveal the after image; choices `Drag the handle` (default), `Follow the cursor (hover)`, `Click to toggle (crossfade)`. Toggle crossfades the whole image on click/tap and hides the handle.
@@ -42,9 +35,8 @@ You supply two images that are stacked and revealed against each other as the di
 
 ## Styling
 
-
-
 <img src="/img/shortcodes/before-after-styling.png" alt="Before / After options panel — Styling tab" width="1200" />
+
 - **Background Color** — compact color picker for the wrapper background.
 - **Font Size** — base font size for the labels (a named size from the framework presets).
 - **Divider Color** — color of the divider line (custom color is honored; presets fall back to white).

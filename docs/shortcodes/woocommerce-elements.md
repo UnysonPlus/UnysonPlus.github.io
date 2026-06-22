@@ -34,6 +34,7 @@ Image Ratio (Natural · Square · Portrait · Landscape), Text Alignment, and **
 description, add-to-cart, and a full-details link) without leaving the page.
 
 <img src="/img/shortcodes/products-content.png" alt="Products options — Content tab" width="840" />
+
 <img src="/img/shortcodes/products-style.png" alt="Products options — Style tab" width="840" />
 
 ## Product Categories

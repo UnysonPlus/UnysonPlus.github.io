@@ -9,16 +9,14 @@ A list of short items rendered as pills, chips or an inline separated list — o
 
 ## Content
 
-
-
 <img src="/img/shortcodes/tag-list-content.png" alt="Tag List options panel — Content tab" width="1200" />
+
 - **Items** — one item per line. A line without a `|` is plain text; `Label | URL` turns that tag into a link (absolute or relative `/path/`). Blank lines are ignored. External links open in a new tab automatically.
 
 ## Design
 
-
-
 <img src="/img/shortcodes/tag-list-design.png" alt="Tag List options panel — Design tab" width="1200" />
+
 | Option | Choices |
 | --- | --- |
 | **Design** | Soft (tinted fill, default), Outline (bordered), Solid (filled), Subtle (light grey), Inline (no pill, dot-separated) |
@@ -31,9 +29,8 @@ A list of short items rendered as pills, chips or an inline separated list — o
 
 ## Styling
 
-
-
 <img src="/img/shortcodes/tag-list-styling.png" alt="Tag List options panel — Styling tab" width="1200" />
+
 - **Tag Color** — drives the fill / border / text of every tag. Pick a Color Preset (recommended — it follows your brand) or a custom color. Leave empty for a neutral grey.
 - **Margin & Padding** — spacing around the list. All Sides applies to every side; any per-side value overrides it for that direction.
 

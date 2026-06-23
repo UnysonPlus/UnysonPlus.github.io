@@ -65,7 +65,7 @@ The boot order is `fw_before_init` → `fw_extensions_before_init` → `fw_exten
 | `fw:backend-option-view:design-default:desc-under-label` | `false` | Fixes https://github.com/ThemeFuse/Unyson/issues/2143 (@since 2.6.9) |
 | `fw:backend-option-view:design-default:responsive-classes` | _see source_ | _unysonplus/framework/views/backend-option-design-default.php_ |
 | `fw:dynamic-content:permalink_choices_limit` | `200` | Max items listed per post type (keeps a huge type from making a giant dropdown). Filterable for sites that want more / fewer. |
-| `fw:dynamic-content:tags` | `array()` | Register Dynamic Content tags. @param array $tags  Keyed by tag id. Each value is an array: 'label'   => (string)   label shown in the picker 'group'   => (string)   picker group heading 'params'  => (array)    optional param descriptors, each: array('id'=>'key','label'=>'Fiel... |
+| `fw:dynamic-content:tags` | `array()` | Register Dynamic Content tags. @param array $tags  Keyed by tag id. Each value is an array: 'label'   =&gt; (string)   label shown in the picker 'group'   =&gt; (string)   picker group heading 'params'  =&gt; (array)    optional param descriptors, each: array('id'=&gt;'key','label'=&gt;'Fiel... |
 | `fw:form:nonce-name-data` | `'', $this, $render_data` | _unysonplus/framework/helpers/class-fw-form.php_ |
 | `fw:options-default-values:skip-types` | _see source_ | _unysonplus/framework/helpers/class-fw-db-options-model.php_ |
 | `unysonplus_border_presets` | `$saved` | _unysonplus/framework/includes/presets/border-presets.php_ |
@@ -84,7 +84,7 @@ The boot order is `fw_before_init` → `fw_extensions_before_init` → `fw_exten
 | `unysonplus_default_table_presets` | _see source_ | _unysonplus/framework/includes/presets/table-presets.php_ |
 | `unysonplus_font_size_presets` | `$saved` | _unysonplus/framework/includes/presets/font-size-presets.php_ |
 | `unysonplus_gap_scale` | `$saved` | _unysonplus/framework/includes/presets/spacing-presets.php_ |
-| `unysonplus_global_css` | `''` | Site-wide Custom CSS (the theme contributes its Theme Settings → Misc → Custom CSS through this filter). Folded into the presets file so it rides the same combiner-absorbed, cacheable handle and is no longer emitted as its own inline <style> block in wp_head. |
+| `unysonplus_global_css` | `''` | Site-wide Custom CSS (the theme contributes its Theme Settings → Misc → Custom CSS through this filter). Folded into the presets file so it rides the same combiner-absorbed, cacheable handle and is no longer emitted as its own inline &lt;style&gt; block in wp_head. |
 | `unysonplus_mobile_font_scale` | `$scale, $desktop_px, $context` | _unysonplus/framework/includes/presets/font-size-presets.php_ |
 | `unysonplus_page_css` | `'', $post_id` | 2. Page-level CSS contributed by the theme (page bg + page_custom_css). |
 | `unysonplus_preset_store_extension` | `'shortcodes'` | _unysonplus/framework/includes/presets/store.php_ |

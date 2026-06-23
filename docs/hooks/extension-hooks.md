@@ -114,7 +114,7 @@ _None._
 
 | Hook | Passes to your callback | What it does |
 | --- | --- | --- |
-| `fw:ext:asset-optimizer:css_exclude_handles` | `array(), $known` | Force-exclude CSS handles from combining (developer escape hatch). @param string[] $handles Extra handles to leave as separate requests. @param array    $known   The known handle => src map. |
+| `fw:ext:asset-optimizer:css_exclude_handles` | `array(), $known` | Force-exclude CSS handles from combining (developer escape hatch). @param string[] $handles Extra handles to leave as separate requests. @param array    $known   The known handle =&gt; src map. |
 | `fw:ext:asset-optimizer:js_exclude_handles` | `array()` | Force-exclude JS handles from combining (developer escape hatch). @param string[] $handles Handles to never fold into the bundle. |
 | `fw:ext:asset-optimizer:settings-options:after` | `array()` | _unysonplus/framework/extensions/asset-optimizer/settings-options.php_ |
 | `fw:ext:asset-optimizer:settings-options:before` | `array()` | _unysonplus/framework/extensions/asset-optimizer/settings-options.php_ |

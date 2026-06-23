@@ -36,7 +36,7 @@ add_filter( 'fw:ext:page-builder:item-corrector:column-width', function ( $width
 | `fw_page_builder_set_as_default` | `false` | _unysonplus/framework/extensions/shortcodes/extensions/page-builder/includes/page-builder/class-fw-option-type-page-builder.php_ |
 | `fw_page_builder_thumbs_before_display` | `$thumbs` | (@since 1.6.8) |
 | `fw_section_like_types` | `self::$types` | _unysonplus/framework/extensions/shortcodes/extensions/page-builder/includes/page-builder/includes/item-types/class-fw-section-like-registry.php_ |
-| `fw:ext:page-builder:generate-post-content-html` | `true, $post_id` | Just to create a revision if content was changed Also for SEO admin inspector and WP Search to work Note: Treat " because it create problems with slashes (" -> \") and duplicate revisions |
+| `fw:ext:page-builder:generate-post-content-html` | `true, $post_id` | Just to create a revision if content was changed Also for SEO admin inspector and WP Search to work Note: Treat " because it create problems with slashes (" -&gt; \") and duplicate revisions |
 | `fw:ext:page-builder:item-corrector:column-width` | `$section[ $i ]['width'], $section[ $i ]` | _unysonplus/framework/extensions/shortcodes/extensions/page-builder/includes/page-builder/includes/items-corrector/class-page-builder-items-corrector.php_ |
 
 

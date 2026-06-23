@@ -33,10 +33,10 @@ For how extensions are discovered, ordered by their requirements, and activated,
 | `fw_extensions_before_deactivation` | `$extensions_for_deactivation` | _unysonplus/framework/core/components/extensions/manager/class--fw-extensions-manager.php_ |
 | `fw_extensions_before_init` | — | Extensions are about to activate. You can add subclasses to FW_Extension at this point. |
 | `fw_extensions_deactivation_failed` | `$failed_extensions` | _unysonplus/framework/core/components/extensions/manager/class--fw-extensions-manager.php_ |
-| `fw_extensions_init` | — | Extensions are activated Now $this->get_children() inside extensions is available |
+| `fw_extensions_init` | — | Extensions are activated Now $this-&gt;get_children() inside extensions is available |
 | `fw_extensions_install` | `$result` | _unysonplus/framework/core/components/extensions/manager/class--fw-extensions-manager.php_ |
 | `fw_extensions_uninstall` | `$result` | _unysonplus/framework/core/components/extensions/manager/class--fw-extensions-manager.php_ |
-| `fw_register_ext_download_sources` | `$register` | Register download sources for extensions. Usage: $download_source = new FW_Ext_Download_Source(); $register->register($download_source); |
+| `fw_register_ext_download_sources` | `$register` | Register download sources for extensions. Usage: $download_source = new FW_Ext_Download_Source(); $register-&gt;register($download_source); |
 
 ### Filters (15)
 
@@ -51,7 +51,7 @@ For how extensions are discovered, ordered by their requirements, and activated,
 | `fw_ext_update_framework_complete_actions` | `$update_actions` | Filter the list of action links available following framework update. @param array $update_actions Array of plugin action links. |
 | `fw_ext_update_github_branches` | `array('master', 'main'), $user_slash_repo` | _unysonplus/framework/extensions/update/extensions/github-update/class-fw-extension-github-update.php_ |
 | `fw_ext_update_theme_complete_actions` | `$update_actions` | Filter the list of action links available following theme update. @param array $update_actions Array of plugin action links. |
-| `fw_extensions_locations` | `[]` | { '/hello/world/extensions' => 'https://hello.com/world/extensions' } |
+| `fw_extensions_locations` | `[]` | { '/hello/world/extensions' =&gt; 'https://hello.com/world/extensions' } |
 | `fw_extensions_locations_after` | `$locations` | (@since 2.6.9) |
 | `fw_extensions_page_show_other_extensions` | `true` | _unysonplus/framework/core/components/extensions/manager/views/extensions-page.php_ |
 | `fw_github_api_url` | `'https://api.github.com'` | _unysonplus/framework/core/components/extensions/manager/includes/download-source/types/class-fw-download-source-github.php_ |

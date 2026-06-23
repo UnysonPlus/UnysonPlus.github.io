@@ -139,5 +139,5 @@ backend Page Settings and apply when the page reloads.
 
 ## See also
 
-- [Page Builder](../page-builder.md)
+- [Page Builder](../page-builder/index.md)
 - [Shortcodes](./shortcodes/index.md)

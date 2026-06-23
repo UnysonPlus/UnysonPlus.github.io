@@ -18,11 +18,6 @@ required. They're grouped in the builder:
 Some elements come from their own extensions — **Contact Form** (Forms), **Portfolio Grid** and
 **Project Gallery** (Portfolio) — and appear in the builder once that extension is active.
 
-:::note Work in progress
-This reference is generated from the plugin source. Add screenshots and refine the prose as
-you go — the option lists below reflect what's actually configurable today.
-:::
-
 ## All elements at a glance
 
 | Element | Category | What it does |

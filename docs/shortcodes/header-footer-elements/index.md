@@ -5,7 +5,7 @@ title: Header / Footer Elements
 
 # Header / Footer Elements
 
-Site-chrome elements used mainly inside the [Header & Footer Builder](/docs/extensions/header-footer-builder),
+Site-chrome elements used mainly inside the [Theme Builder](/docs/extensions/theme-builder),
 though they work anywhere on the page canvas. They pull live data from WordPress — menus,
 Site Identity, Theme Settings social profiles — so a header you build stays in sync with the
 site's own settings.

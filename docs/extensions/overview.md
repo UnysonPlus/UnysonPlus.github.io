@@ -24,21 +24,15 @@ what a project needs.
 | **Portfolio** | A fully-featured portfolio module. → [docs](./portfolio/index.md) |
 | **Sidebars** | Add multiple/dynamic sidebars per page. → [docs](./sidebars/index.md) |
 | **Breadcrumbs** | Drop-in breadcrumb navigation. → [docs](./breadcrumbs/index.md) |
-| **SEO** | Meta titles, keywords and descriptions. → [docs](./seo/index.md) |
 | **Forms** | Drag &amp; drop contact form builder. → [docs](./forms/index.md) |
-| **Sliders** | Built-in jQuery sliders. → [docs](./slider/index.md) |
 | **Mega Menu** | Multi-column dropdown mega menus. → [docs](./megamenu/index.md) |
-| **Social** | Social profile links and sharing. → [docs](./social/index.md) |
 | **Builder** | The base builder option type to build custom builders on. → [docs](./builder/index.md) |
-| **Translation** | Multi-language helpers. → [docs](./translation/index.md) |
-| **Events** | An events / calendar module. → [docs](./events/index.md) |
-| **Feedback** | Reviews and feedback. → [docs](./feedback/index.md) |
-| **Learning** | Courses and quizzes. → [docs](./learning/index.md) |
-| **Backup &amp; Demo Content** | Scheduled backups and demo import/export. → [docs](./backups/index.md) |
 | **Asset Optimizer** | Combine enqueued assets to cut HTTP requests. → [docs](./asset-optimizer.md) |
 | **Snippets** | Save and embed reusable builder content. → [docs](./snippets.md) |
+| **WooCommerce** | Storefront elements + theme integration. → [docs](/docs/shortcodes/woocommerce-elements) |
+| **Blog** | Enhancements for the blog/post archive. |
 | **Mailer** | Global email settings used by other extensions. |
-| **Styling** | Control fonts and colors site-wide. |
+| **Update** | GitHub-based auto-updates for the plugin, theme and extensions. |
 
 ## Installing &amp; updating
 

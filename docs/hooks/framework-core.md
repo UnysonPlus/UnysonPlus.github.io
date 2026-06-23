@@ -44,7 +44,7 @@ The boot order is `fw_before_init` → `fw_extensions_before_init` → `fw_exten
 | `fw:option-storage-types:register` | `$register` | _unysonplus/framework/helpers/fw-storage.php_ |
 | `fw:settings-form:` | `$old_values, $new_values` | _unysonplus/framework/helpers/class-fw-settings-form.php_ |
 
-### Filters (42)
+### Filters (20)
 
 | Hook | Passes to your callback | What it does |
 | --- | --- | --- |
@@ -68,26 +68,4 @@ The boot order is `fw_before_init` → `fw_extensions_before_init` → `fw_exten
 | `fw:dynamic-content:tags` | `array()` | Register Dynamic Content tags. @param array $tags  Keyed by tag id. Each value is an array: 'label'   =&gt; (string)   label shown in the picker 'group'   =&gt; (string)   picker group heading 'params'  =&gt; (array)    optional param descriptors, each: array('id'=&gt;'key','label'=&gt;'Fiel... |
 | `fw:form:nonce-name-data` | `'', $this, $render_data` | _unysonplus/framework/helpers/class-fw-form.php_ |
 | `fw:options-default-values:skip-types` | _see source_ | _unysonplus/framework/helpers/class-fw-db-options-model.php_ |
-| `unysonplus_border_presets` | `$saved` | _unysonplus/framework/includes/presets/border-presets.php_ |
-| `unysonplus_button_color_presets` | `$saved` | _unysonplus/framework/includes/presets/button-presets.php_ |
-| `unysonplus_button_size_presets` | `$saved` | _unysonplus/framework/includes/presets/button-presets.php_ |
-| `unysonplus_color_presets` | `$saved` | _unysonplus/framework/includes/presets/color-presets.php_ |
-| `unysonplus_custom_hover_animations` | `$saved` | _unysonplus/framework/includes/presets/button-presets.php_ |
-| `unysonplus_default_border_presets` | _see source_ | _unysonplus/framework/includes/presets/border-presets.php_ |
-| `unysonplus_default_button_color_presets` | _see source_ | _unysonplus/framework/includes/presets/button-presets.php_ |
-| `unysonplus_default_button_size_presets` | _see source_ | _unysonplus/framework/includes/presets/button-presets.php_ |
-| `unysonplus_default_color_presets` | _see source_ | _unysonplus/framework/includes/presets/color-presets.php_ |
-| `unysonplus_default_custom_hover_animations` | _see source_ | _unysonplus/framework/includes/presets/button-presets.php_ |
-| `unysonplus_default_font_size_presets` | _see source_ | _unysonplus/framework/includes/presets/font-size-presets.php_ |
-| `unysonplus_default_gap_scale` | _see source_ | _unysonplus/framework/includes/presets/spacing-presets.php_ |
-| `unysonplus_default_spacing_scale` | _see source_ | _unysonplus/framework/includes/presets/spacing-presets.php_ |
-| `unysonplus_default_table_presets` | _see source_ | _unysonplus/framework/includes/presets/table-presets.php_ |
-| `unysonplus_font_size_presets` | `$saved` | _unysonplus/framework/includes/presets/font-size-presets.php_ |
-| `unysonplus_gap_scale` | `$saved` | _unysonplus/framework/includes/presets/spacing-presets.php_ |
-| `unysonplus_global_css` | `''` | Site-wide Custom CSS (the theme contributes its Theme Settings → Misc → Custom CSS through this filter). Folded into the presets file so it rides the same combiner-absorbed, cacheable handle and is no longer emitted as its own inline &lt;style&gt; block in wp_head. |
-| `unysonplus_mobile_font_scale` | `$scale, $desktop_px, $context` | _unysonplus/framework/includes/presets/font-size-presets.php_ |
-| `unysonplus_page_css` | `'', $post_id` | 2. Page-level CSS contributed by the theme (page bg + page_custom_css). |
-| `unysonplus_preset_store_extension` | `'shortcodes'` | _unysonplus/framework/includes/presets/store.php_ |
-| `unysonplus_spacing_scale` | `$migrated` | Phase 2.5 entry-array shape — return as-is |
-| `unysonplus_table_presets` | `$saved` | _unysonplus/framework/includes/presets/table-presets.php_ |
 

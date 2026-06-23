@@ -67,8 +67,9 @@ first one modified.
 
 | Subsystem | Hooks | What lives here |
 | --- | --- | --- |
-| **[Framework core](./framework-core.md)** | 63 | Boot lifecycle (`fw_init`, `fw_before_init`), forms, flash messages, dynamic content, CSS pipeline. |
+| **[Framework core](./framework-core.md)** | 41 | Boot lifecycle (`fw_init`, `fw_before_init`), forms, flash messages, dynamic content. |
 | **[Options & backend](./options-and-backend.md)** | 29 | Registering Theme Settings / Customizer / post / taxonomy options, option-type rendering, storage, admin enqueue. |
+| **[Presets & design tokens](./presets-and-tokens.md)** | 22 | Register color / typography / spacing / button / border / table presets and inject CSS into the generated stylesheet. |
 | **[Page Builder & builder](./page-builder.md)** | 21 | The builder JSON correction pipeline, column-width fitting, item types, editor enqueue/render. |
 | **[Shortcodes & elements](./shortcodes.md)** | 34 | Altering element options and atts, render-time HTML filters, dynamic-content tokens. |
 | **[Theme](./theme.md)** | 32 | Header / footer / blog-loop / entry template action points and the settings → CSS filters. |

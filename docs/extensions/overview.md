@@ -30,8 +30,8 @@ what a project needs.
 | **Asset Optimizer** | Combine enqueued assets to cut HTTP requests. → [docs](./asset-optimizer.md) |
 | **Snippets** | Save and embed reusable builder content. → [docs](./snippets.md) |
 | **WooCommerce** | Storefront elements + theme integration. → [docs](/docs/shortcodes/woocommerce-elements) |
-| **Blog** | Enhancements for the blog/post archive. |
-| **Mailer** | Global email settings used by other extensions. |
+| **Blog** | Relabels Posts as "Blog" across the admin and front end. → [docs](./blog.md) |
+| **Mailer** | Global email settings + send service used by other extensions. → [docs](./mailer.md) |
 | **Update** | GitHub-based auto-updates for the plugin, theme and extensions. |
 
 ## Installing &amp; updating

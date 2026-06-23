@@ -32,7 +32,23 @@ const FeatureList = [
     description: (
       <>
         Build pages visually with ready-made shortcodes. Lay out content with a true
-        drag &amp; drop builder — no code required.
+        drag &amp; drop builder, no code required.
+      </>
+    ),
+  },
+  {
+    title: 'Theme Builder',
+    Svg: (
+      <Icon>
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+        <line x1="3" y1="8" x2="21" y2="8" />
+        <line x1="3" y1="16" x2="21" y2="16" />
+      </Icon>
+    ),
+    description: (
+      <>
+        Design headers, footers and page templates with the same visual builder. Ship them
+        in a child theme, or override any template from the WordPress admin.
       </>
     ),
   },
@@ -53,7 +69,7 @@ const FeatureList = [
     ),
     description: (
       <>
-        Dozens of option types — typography, color, media, spacing, gradients and more —
+        Dozens of option types (typography, color, media, spacing, gradients and more)
         to build rich theme settings and meta boxes fast.
       </>
     ),

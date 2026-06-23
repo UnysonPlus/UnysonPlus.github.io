@@ -1,6 +1,6 @@
 ---
 title: "Extension system & update hooks"
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 # Extension system & update hooks

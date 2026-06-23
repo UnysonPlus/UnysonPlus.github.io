@@ -1,6 +1,6 @@
 ---
 title: "Per-extension hooks"
-sidebar_position: 8
+sidebar_position: 9
 ---
 
 # Per-extension hooks

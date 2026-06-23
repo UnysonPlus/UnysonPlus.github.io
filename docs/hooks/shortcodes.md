@@ -1,6 +1,6 @@
 ---
 title: "Shortcode & element hooks"
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Shortcode & element hooks

@@ -2,51 +2,63 @@
 title: "WordPress Shortcodes"
 ---
 
+# WordPress Shortcodes
 
-This extensions gives a way to insert and render correctly Unyson+ shortcodes inside WordPress editor.
+This extension lets you insert and correctly render **Unyson+ shortcodes inside the WordPress
+editor**, not just inside the Page Builder. It adds an **Insert Shortcode** button to the classic
+editor's toolbar that opens a picker of the available elements and drops the chosen shortcode into
+your content.
 
-## Understanding the purpose of this extension
+It's a focused helper, not a full visual builder: for laying out whole pages, use the
+[Page Builder](/docs/page-builder). Reach for this when you want a single element (a button, a
+notification, an icon box) inside otherwise-normal post content.
 
-At first, this extension is not a silver bullet for all of the use cases you may want to try, it is quite limited in what it can achieve. If you want to get more details you should really go and read the whole discussion on GitHub.
+## Using it
 
-:::warning
-This document is a work in process.
-:::
+Activate **WordPress Shortcodes** from **Unyson+ → Extensions**, then edit a post or page in the
+classic editor. The toolbar gains an **Insert Shortcode** button listing every enabled shortcode,
+**except** the layout containers `section`, `column`, and `row` (those only make sense inside the
+builder). Pick one, and its shortcode is inserted at the cursor.
 
-## The structure of a Unyson+ shortcode
+### Choosing which shortcodes appear
 
-At first, you should know that an Unyson+ shortcode consists of three parts that make him look the way it does:
-
-1.  HTML. Usually it is located in `view.php`
-2.  All of the static. Located in `static.php`
-3.  Dynamic CSS. Enqueueud with `wp_add_inline_style` on `'fw_ext_shortcodes_enqueue_static:{name}'`
-
-Depending on your use case, it may be easier or harder to get those components rendered correctly. I'll give a short table below that will make all of this clear.
-
-1.  Shortcode in Post Editor
-2.  Shortocde in `wp-editor` option type of any Page Builder Shortcode
-3.  Shortocde in `wp-editor` that is inserted anywhere else (like Theme Settings or any `OptionsModal`)
-
-| use case vs. what you get | HTML | `static.php` | dynamic css |
-|---------------------------|------|--------------|-------------|
-| 1 Post Editor             | yes  | yes          | yes         |
-| 2 Page Builder Shortcode  | yes  | yes          | no          |
-| 3 Any `wp-editor`         | yes  | no           | no          |
-
-### Shortcodes in main post editor
-
-By default, you'll a get a button in the main post editor with all of the shortcodes that are enabled, except the `section` and `column` ones. This is actually the most simple use-case and you have nothing to do in order to get them working. Everything should be out of the box here.
-
-You can in fact, customize which shortcodes are showed up using this snippet of code:
+Filter the list of shortcodes offered in the editor button with
+`fw:ext:wp-shortcodes:default-shortcodes`. Return an array of the shortcode tags you want:
 
 ```php
-<?php if (!defined('FW')) die('Forbidden');
+<?php if ( ! defined( 'FW' ) ) die( 'Forbidden' );
 
-add_filter('fw:ext:wp-shortcodes:default-shortcodes', _set_default_shortcodes);
+add_filter( 'fw:ext:wp-shortcodes:default-shortcodes', 'my_wp_shortcodes_list' );
 
-function _set_default_shortcodes($previous_shortcodes) {
-    return array( 'button', 'notification' );
+function my_wp_shortcodes_list( $shortcodes ) {
+    return array( 'button', 'notification' ); // only offer these two
 }
 ```
 
-### Shortcodes in another Page Builder Shortcode
+## What renders where (the contexts)
+
+A Unyson+ shortcode is made of three parts, and how many of them render depends on **where** the
+shortcode is inserted:
+
+- **HTML** — the markup from the element's `view.php`.
+- **Static assets** — CSS/JS enqueued from `static.php`.
+- **Dynamic CSS** — per-instance styles enqueued on
+  `fw_ext_shortcodes_enqueue_static:{name}` via `wp_add_inline_style`.
+
+| Where the shortcode is inserted | HTML | Static assets | Dynamic CSS |
+| --- | --- | --- | --- |
+| **The main post editor** (this extension's button) | ✅ | ✅ | ✅ |
+| **A `wp-editor` field inside a Page Builder element** | ✅ | ✅ | ❌ |
+| **A `wp-editor` field anywhere else** (Theme Settings, any options modal) | ✅ | ❌ | ❌ |
+
+In the **main post editor** everything works out of the box, this is the simplest case. In the other
+two contexts the HTML still renders, but the asset/dynamic-CSS layers may not be enqueued, so an
+element that relies on dynamic per-instance CSS (some styling presets, per-element custom CSS) can
+look unstyled. For those, build the element in the [Page Builder](/docs/page-builder) instead, where
+the full render pipeline runs.
+
+:::note A focused tool
+This extension is intentionally limited to inserting and rendering shortcodes in editor content. It
+doesn't provide the drag-and-drop layout, options modals, or live preview of the Page Builder, that's
+what the builder is for.
+:::

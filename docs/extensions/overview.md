@@ -32,7 +32,7 @@ what a project needs.
 | **WooCommerce** | Storefront elements + theme integration. → [docs](/docs/shortcodes/woocommerce-elements) |
 | **Blog** | Relabels Posts as "Blog" across the admin and front end. → [docs](./blog.md) |
 | **Mailer** | Global email settings + send service used by other extensions. → [docs](./mailer.md) |
-| **Update** | GitHub-based auto-updates for the plugin, theme and extensions. |
+| **Update** | GitHub-based auto-updates for the plugin, theme and extensions. → [docs](./updates.md) |
 
 ## Installing &amp; updating
 

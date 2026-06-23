@@ -3,6 +3,12 @@
   padding: 1rem 0 2rem;
 }
 
+/* Center the grid so an odd last row (e.g. 7 cards) balances instead of
+   leaving a left-aligned orphan. */
+.features :global(.row) {
+  justify-content: center;
+}
+
 .feature {
   text-align: center;
   padding: 1.5rem 1.25rem;

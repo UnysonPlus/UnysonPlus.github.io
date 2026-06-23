@@ -14,6 +14,8 @@ into HTML at render time by converting it to **shortcodes** and running them thr
 Understanding that pipeline is the key to everything else — the JSON format, the corrector, the
 migration traps and the clean-DOM rule are all stages of it.
 
+<img src="/img/page-builder.png" alt="The Page Builder — element palette and a populated section on the canvas" width="968" />
+
 ## The data flow at a glance
 
 ```

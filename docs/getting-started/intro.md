@@ -41,5 +41,5 @@ with the [WordPress documentation](https://wordpress.org/documentation/).
 ## Next steps
 
 - [Install Unyson+](./installation.md)
-- [Use the Page Builder](./page-builder/index.md)
-- [Browse the Extensions](./extensions/overview.md)
+- [Use the Page Builder](../page-builder/index.md)
+- [Browse the Extensions](../extensions/overview.md)

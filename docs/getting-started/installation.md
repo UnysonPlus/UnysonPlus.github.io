@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Installation
+slug: /installation
 ---
 
 # Installation
@@ -32,7 +33,7 @@ theme both reference that folder name.
 ## 3. Activate extensions
 
 Open **Unyson+ → Extensions**. Active extensions appear at the top; available ones can be
-downloaded with one click. See [Extensions](./extensions/overview.md) for the full list.
+downloaded with one click. See [Extensions](../extensions/overview.md) for the full list.
 
 ## Automatic updates
 

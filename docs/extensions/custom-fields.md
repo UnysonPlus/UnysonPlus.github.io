@@ -9,6 +9,8 @@ An ACF-style custom fields builder for Unyson+. Create **Field Groups**, choose 
 types they appear on, and add fields. Fields render as native meta boxes and save to post meta,
 no code to register them.
 
+<img src="/img/custom-fields-page.png" alt="The Custom Fields admin page — Field Groups and the JSON Export / Import tools" width="1260" />
+
 ## Field types
 
 Each field in a group has a label, a **name** (its meta key), an optional instruction, and a type:

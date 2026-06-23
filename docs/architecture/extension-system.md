@@ -11,6 +11,11 @@ requirement model orders their activation, what files get included (and in what 
 theme overrides extension code. The component that does all this is `_FW_Component_Extensions`
 (`framework/core/components/extensions.php`).
 
+The **Unyson+ → Extensions** screen is the user-facing front of this system: active extensions sit
+at the top, available ones can be enabled with one click, and each card shows its requirements.
+
+<img src="/img/extensions-page.png" alt="The Unyson+ Extensions manager — active extensions and available extensions" width="1260" />
+
 ## What an extension is
 
 An extension is a **directory containing a `manifest.php`**. The directory name is the extension's

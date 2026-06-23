@@ -12,6 +12,8 @@ settings; add taxonomies (like Categories or Tags) and attach them to one or mor
 Post types created here can also be targeted by the [Custom Fields](./custom-fields.md)
 extension.
 
+<img src="/img/post-types-page.png" alt="The Post Types & Taxonomies admin page" width="1260" />
+
 ## Post type options
 
 Each custom post type you add carries:

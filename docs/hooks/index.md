@@ -1,227 +1,136 @@
 ---
 title: "Hooks & Filters"
 slug: /hooks
+sidebar_position: 1
 ---
 
 # Hooks & Filters
 
-Unyson+ exposes WordPress actions and filters so themes and extensions can extend the
-framework.
+Unyson+ fires WordPress **actions** and **filters** throughout the framework, the theme, and every
+extension, so you can extend behavior without editing core files. This section is a complete,
+source-derived reference: **258 hooks** across the plugin and theme, grouped by subsystem.
 
-:::tip Auto-generating this reference
-Because hooks are defined in code with docblocks, you can auto-generate this page from the
-plugin source using a tool like
-[pronamic/wp-documentor](https://github.com/pronamic/wp-documentor) or
-[wp-hooks-generator](https://github.com/johnbillion/wp-hooks-generator), then paste the
-output here. The user-facing guide stays hand-written; only the reference is generated.
+- **Actions** let you *run code* at a point in time (`add_action`).
+- **Filters** let you *change a value* and return it (`add_filter`).
+
+:::tip This reference is generated from the source
+Every hook below is extracted directly from the plugin and theme PHP (`do_action()` /
+`apply_filters()` call sites), so it stays exhaustive and accurate. The **Passes to your callback**
+column is the real argument list from the call site; **What it does** is taken from the hook's
+docblock where one exists, otherwise the defining file is shown so you can read its context.
 :::
 
-## Actions
+## Naming conventions
 
-### General
+The prefix tells you where a hook comes from and how stable it is:
 
-- `fw_init` - The framework is fully loaded and you can safely access any of its components. Useful when you need to init some theme components only when the framework is installed.
+| Prefix | Origin | Notes |
+| --- | --- | --- |
+| `fw_…` | Framework core (Unyson heritage) | The stable, long-standing public API. |
+| `fw:…` | Framework / extensions (namespaced) | Newer, often subsystem-internal (e.g. `fw:ext:page-builder:…`). Powerful, but more advanced. |
+| `fw-…` | A few legacy hyphenated hooks | Equivalent to the above, kept for back-compat. |
+| `unysonplus_…` | The Unyson+ **theme** | Template / blog-loop / design-layer hooks for child themes. |
+| `sc_…` | Shortcodes & Site Converter helpers | Render-time helpers and converter hooks. |
+| `upwc_…` | The WooCommerce extension | Storefront element hooks. |
 
-  > ``` php
-  > add_action('fw_init', '_action_theme_fw_init');
-  > function _action_theme_fw_init() {
-  >     $value = fw_get_db_customizer_option('hello');
-  >     // fw()->...
-  > }
-  > ```
+:::note WordPress core and the bundled update library are excluded
+Hooks Unyson+ merely *calls* (WordPress core actions like `init`, `wp_enqueue_scripts`) and the
+bundled `plugin-update-checker` library's `puc_…` hooks are **not** listed here. This reference is
+only the hooks Unyson+ itself defines.
+:::
 
-- `fw_backend_add_custom_settings_menu` - Change **Theme Settings** menu. You can register the menu yourself as a top or sub menu, then the script will detect if it was registered (by slug) and will skip the default internal register.
+## How to use a hook
 
-  > ``` php
-  > add_action('fw_backend_add_custom_settings_menu', '_action_theme_custom_fw_settings_menu');
-  > function _action_theme_custom_fw_settings_menu($data) {
-  >     add_menu_page(
-  >         __( 'Awesome Settings', '{domain}' ),
-  >         __( 'Awesome Settings', '{domain}' ),
-  >         $data['capability'],
-  >         $data['slug'],
-  >         $data['content_callback']
-  >     );
-  > }
-  > ```
+```php
+// Action: run code when the framework finishes loading.
+add_action( 'fw_init', 'my_fw_ready' );
+function my_fw_ready() {
+    // fw() and all components are available here.
+}
 
-- `fw_backend_add_custom_extensions_menu` - Change **Unyson+** menu. Works the same as previous action.
+// Filter: change a value and RETURN it. The 4th arg is how many
+// values the hook passes (match the "Passes to your callback" column).
+add_filter( 'fw_post_options', 'my_post_options', 10, 2 );
+function my_post_options( $options, $post_type ) {
+    if ( $post_type === 'page' ) {
+        $options['subtitle'] = array( 'type' => 'text', 'label' => 'Subtitle' );
+    }
+    return $options; // filters MUST return
+}
+```
 
-### Assets Enqueue
+The number in `add_filter( …, 10, 2 )` is the **accepted-args** count. If a hook's *Passes to your
+callback* column lists two values, pass `2`, declare two parameters, and (for filters) return the
+first one modified.
 
-- `fw_admin_enqueue_scripts:settings` - Enqueue assets only in **Theme Settings** page.
+## The reference, by subsystem
 
-  > ``` php
-  > add_action('fw_admin_enqueue_scripts:settings', '_action_theme_enqueue_scripts_theme_settings');
-  > function _action_theme_enqueue_scripts_theme_settings() {
-  >     wp_enqueue_script(
-  >         'theme-settings-scripts',
-  >         get_template_directory_uri() .'/js/admin-theme-settings.js',
-  >         array('fw'),
-  >         fw()->theme->manifest->get_version(),
-  >         true
-  >     );
-  > }
-  > ```
+| Subsystem | Hooks | What lives here |
+| --- | --- | --- |
+| **[Framework core](./framework-core.md)** | 63 | Boot lifecycle (`fw_init`, `fw_before_init`), forms, flash messages, dynamic content, CSS pipeline. |
+| **[Options & backend](./options-and-backend.md)** | 29 | Registering Theme Settings / Customizer / post / taxonomy options, option-type rendering, storage, admin enqueue. |
+| **[Page Builder & builder](./page-builder.md)** | 21 | The builder JSON correction pipeline, column-width fitting, item types, editor enqueue/render. |
+| **[Shortcodes & elements](./shortcodes.md)** | 34 | Altering element options and atts, render-time HTML filters, dynamic-content tokens. |
+| **[Theme](./theme.md)** | 32 | Header / footer / blog-loop / entry template action points and the settings → CSS filters. |
+| **[Extension system & updates](./extensions-and-updates.md)** | 31 | Extension discovery/activation, the available-extensions registry, the GitHub auto-updater. |
+| **[Per-extension hooks](./extension-hooks.md)** | 48 | Breadcrumbs, Forms, Mega Menu, Portfolio, Sidebars, Asset Optimizer, Post Types, Mailer, and more. |
 
-- `fw_admin_enqueue_scripts:customizer` - Enqueue assets only in **Customizer** page.
+## Start here: the hooks you'll use most
 
-- `fw_admin_enqueue_scripts:post` - Enqueue assets only in **Post Edit** page.
+A few high-value hooks, with full examples, to get you going. Each links to its subsystem page for
+the rest.
 
-  > ``` php
-  > add_action('fw_admin_enqueue_scripts:post', '_action_theme_enqueue_scripts_post_edit');
-  > function _action_theme_enqueue_scripts_post_edit(WP_Post $post) {
-  >     if ($post->post_type == 'page') {
-  >         wp_enqueue_script(
-  >             'page-edit-scripts',
-  >             get_template_directory_uri() .'/js/admin-page-edit.js',
-  >             array('fw'),
-  >             fw()->theme->manifest->get_version(),
-  >             true
-  >         );
-  >     }
-  > }
-  > ```
+### `fw_settings_options` — add a Theme Settings tab
 
-- `fw_admin_enqueue_scripts:term` - Enqueue assets only in **Taxonomy Term Edit** page.
+```php
+add_filter( 'fw_settings_options', function ( $options ) {
+    $options['my_tab'] = array(
+        'type'    => 'tab',
+        'title'   => __( 'My Tab', 'my-domain' ),
+        'options' => array(
+            'my_field' => array( 'type' => 'text', 'label' => 'My field' ),
+        ),
+    );
+    return $options;
+} );
+```
 
-  > ``` php
-  > add_action('fw_admin_enqueue_scripts:term', '_action_theme_enqueue_scripts_term_edit');
-  > function _action_theme_enqueue_scripts_term_edit($taxonomy) {
-  >     if ($taxonomy == 'category') {
-  >         wp_enqueue_script(
-  >             'category-edit-scripts',
-  >             get_template_directory_uri() .'/js/admin-category-edit.js',
-  >             array('fw'),
-  >             fw()->theme->manifest->get_version(),
-  >             true
-  >         );
-  >     }
-  > }
-  > ```
+The siblings `fw_customizer_options`, `fw_post_options` (passed `$post_type`) and
+`fw_taxonomy_options` (passed `$taxonomy`) work the same way. See
+[Options & backend](./options-and-backend.md).
 
-### Database
+### `fw_shortcode_get_options` — extend an element's options
 
-- `fw_post_options_update` - After database post option or all options were updated. The description of parameters can be found here.
+```php
+add_filter( 'fw_shortcode_get_options', function ( $options, $shortcode ) {
+    if ( $shortcode === 'button' ) {
+        $options['my_extra'] = array( 'type' => 'text', 'label' => 'Extra' );
+    }
+    return $options;
+}, 10, 2 );
+```
 
-  > ``` php
-  > add_action('fw_post_options_update', '_action_theme_fw_post_options_update', 10, 4);
-  > function _action_theme_fw_post_options_update($post_id, $option_id, $sub_keys, $old_value) {
-  >     if ($option_id === 'hello' && empty($sub_keys)) {
-  >         // do something ...
-  >     }
-  > }
-  > ```
+More in [Shortcodes & elements](./shortcodes.md).
 
-## Filters
+### `unysonplus_entry_header` — inject into the blog loop (theme)
 
-### General
+```php
+add_action( 'unysonplus_entry_header', function () {
+    if ( is_single() ) {
+        echo '<p class="reading-time">' . esc_html( my_reading_time() ) . '</p>';
+    }
+} );
+```
 
-- `fw_framework_customizations_dir_rel_path` - Relative path of the customizations directory located in theme. By default it is `/framework-customizations`.
+The theme exposes the whole loop as hooks (`unysonplus_before_loop`, `unysonplus_entry_top`,
+`unysonplus_after_entry_content`, `unysonplus_after_entry`, …). See [Theme](./theme.md).
 
-  > ``` php
-  > add_filter(
-  >     'fw_framework_customizations_dir_rel_path',
-  >     '_filter_theme_fw_customizations_dir_rel_path'
-  > );
-  > function _filter_theme_fw_customizations_dir_rel_path($rel_path) {
-  >     /**
-  >      * Make the directory name shorter. Instead of
-  >      * {theme}/framework-customizations/theme/options/post.php
-  >      * will be
-  >      * {theme}/fw/theme/options/post.php
-  >      */
-  >     return '/fw';
-  > }
-  > ```
+### `fw_ext_mngr_github_branch` — change the auto-update branch
 
-- `fw_ext_mngr_github_branch` - The GitHub branch an extension is downloaded/updated from.
+```php
+add_filter( 'fw_ext_mngr_github_branch', function ( $branch, $user_repo ) {
+    return 'main';
+}, 10, 2 );
+```
 
-  > ``` php
-  > add_filter( 'fw_ext_mngr_github_branch', function ( $branch, $user_repo ) {
-  >     return 'main';
-  > }, 10, 2 );
-  > ```
-
-### Options
-
-- `fw_settings_options` - Theme **Settings Options**, which are loaded from `{theme}/framework-customizations/theme/options/settings.php`
-
-  > ``` php
-  > add_filter('fw_settings_options', '_filter_theme_fw_settings_options');
-  > function _filter_theme_fw_settings_options($options) {
-  >     $options['extra-tab'] = array(
-  >         'type' => 'tab',
-  >         'title' => __('Extra Tab', 'domain'),
-  >         'options' => array(
-  >             'test' => array('type' => 'text'),
-  >         ),
-  >     );
-  >
-  >     return $options;
-  > }
-  > ```
-
-- `fw_customizer_options` - Theme **Customizer Options**, which are loaded from `{theme}/framework-customizations/theme/options/customizer.php`
-
-  > ``` php
-  > add_filter('fw_customizer_options', '_filter_theme_fw_customizer_options');
-  > function _filter_theme_fw_customizer_options($options) {
-  >     $options['extra-option'] = array('type' => 'text');
-  >
-  >     return $options;
-  > }
-  > ```
-
-- `fw_post_options` - **Post Options**, which are loaded from `{theme}/framework-customizations/theme/options/posts/{post-type}.php`
-
-  > ``` php
-  > add_filter('fw_post_options', '_filter_theme_fw_post_options', 10, 2);
-  > function _filter_theme_fw_post_options($options, $post_type) {
-  >     if ($post_type == 'page') {
-  >         $options['extra-option'] = array('type' => 'text');
-  >     }
-  >
-  >     return $options;
-  > }
-  > ```
-
-- `fw_taxonomy_options` - **Taxonomy Term Options**, which are loaded from `{theme}/framework-customizations/theme/options/taxonomies/{taxonomy}.php`
-
-  > ``` php
-  > add_filter('fw_taxonomy_options', '_filter_theme_fw_taxonomy_options', 10, 2);
-  > function _filter_theme_fw_taxonomy_options($options, $taxonomy) {
-  >     if ($taxonomy == 'category') {
-  >         $options['extra-option'] = array('type' => 'text');
-  >     }
-  >
-  >     return $options;
-  > }
-  > ```
-
-- `fw_shortcode_get_options` - **Page builder shortcodes options**, can be loaded from anywhere functions.php, your php file but before wordpress hook `add_meta_boxes`
-
-  > ``` php
-  > add_action( 'fw_shortcode_get_options', '_filter_theme_fw_shortcode_get_options', 10, 2 );
-  > function _filter_theme_fw_shortcode_get_options( $options, $shortcode ) {
-  >
-  >     $options = array(
-  >         'default_options' => array(
-  >             'type'    => 'tab',
-  >             'options' => $options, // Add default options to the first tab.
-  >             'title'   => __( 'Tab with default shortcode options', '{domain}' ),
-  >             'attr'    => array( 'class' => 'custom-class', 'data-foo' => 'bar' ),
-  >         ),
-  >         'new_tab_options'          => array(
-  >             'type'    => 'tab',
-  >             'options' => array(
-  >                 'option_id' => array( 'type' => 'text' ),
-  >             ),
-  >             'title'   => __( 'Tab with our custom options', '{domain}' ),
-  >             'attr'    => array( 'class' => 'custom-class', 'data-foo' => 'bar' ),
-  >         )
-  >     );
-  >
-  >     return $options;
-  > }
-  > ```
+More in [Extension system & updates](./extensions-and-updates.md).

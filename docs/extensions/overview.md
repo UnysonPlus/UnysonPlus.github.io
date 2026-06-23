@@ -16,6 +16,7 @@ what a project needs.
 | **Page Builder** | Visual drag &amp; drop page building with shortcodes. → [docs](/docs/page-builder) |
 | **Shortcodes** | The shortcodes framework that powers the page builder. → [docs](./shortcodes/index.md) |
 | **WordPress Shortcodes** | Insert Unyson+ shortcodes in any editor. → [docs](./wp-shortcodes/index.md) |
+| **Theme Builder** | Divi-style global headers, bodies and footers with conditional assignment. → [docs](./theme-builder.md) |
 | **Header &amp; Footer Builder** | Build headers/footers with the page builder. → [docs](./header-footer-builder.md) |
 | **Live Page Editor** | Edit builder pages on the live front end. → [docs](./live-editor.md) |
 | **Site Converter** | Import an AI-generated website into WordPress. → [docs](./site-converter.md) |

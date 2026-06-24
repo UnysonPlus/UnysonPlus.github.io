@@ -24,7 +24,7 @@ Now any missing URL renders your custom body inside your normal header and foote
 :::tip Same pattern for other special pages
 The same approach builds custom **search results**, **author**, and **archive** pages, just change
 the Used On condition (`is_search`, author archive, a post-type archive, …). See
-[Theme Builder → conditional assignment](/docs/extensions/theme-builder#conditional-assignment).
+[Theme Builder → conditional assignment](/docs/extensions/theme-builder/conditional-assignment).
 :::
 
 ## See also

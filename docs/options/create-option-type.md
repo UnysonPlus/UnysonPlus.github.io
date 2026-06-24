@@ -4,7 +4,29 @@ sidebar_position: 6
 ---
 
 
-To define a new option type, create a class that extends the base option type class and register it.
+# Create an option type
+
+To define a new option type, create a class that extends `FW_Option_Type` and register it. An option
+type is responsible for **rendering** its control, **reading** a safe value back from the submitted
+form, and declaring its **defaults**.
+
+## The four methods you implement
+
+A custom option type overrides four methods (a fifth is optional):
+
+| Method | Runs when | Does |
+| --- | --- | --- |
+| `get_type()` | always | Returns the type id (the string you put in `'type' => '…'`). |
+| `_get_defaults()` | when an option is normalized | Returns default config merged into every option of this type, at minimum a `value`. |
+| `_render( $id, $option, $data )` | rendering the form | Returns the control's HTML. `$data['value']` is the current value; the wrapper element must carry the `.fw-option-type-{type}` class. |
+| `_get_value_from_input( $option, $input_value )` | saving | Returns a clean, safe value to store. `$input_value` is `null` when nothing was submitted, return the default then. |
+| `_enqueue_static( $id, $option, $data )` | rendering (optional) | Enqueue the type's CSS/JS. |
+
+The value round-trips through your type: `_get_value_from_input()` sanitizes what the form posts, the
+stored value comes back as `$data['value']` in `_render()`, and your CSS/JS are scoped to the
+`.fw-option-type-{type}` wrapper so they never collide with other options.
+
+Below is a complete worked example, a text input with a "Clear" button.
 
 :::note
 It doesn't matter where you place your new option type. If you use the Theme Includes directory structure, place it in the `{theme}/inc/includes/option-types/my-option/` directory and include it on `fw_option_types_init` action:
@@ -187,3 +209,20 @@ There are three width types:
 - **full** - full available width (100%).
 
 Every option has its own width type specified in `FW_Option_Type::_get_backend_width_type()`.
+
+## Going further
+
+Once the basics work, the base class offers more to override:
+
+- **Server-side validation** — implement `_get_value_error( $option, $input_value )` (return an error
+  string or `null`), or hook the `fw_option_value_error` filter, to reject invalid input on save.
+- **Dynamic Content** — add `'dynamic_content' => true` to `_get_defaults()` to give a text-like type
+  the `{{token}}` picker (see [Dynamic Content](/docs/dynamic-content)).
+- **Custom storage** — override `_storage_load()` / `_storage_save()` when the value needs to be
+  transformed on its way to/from the database (e.g. resolving an attachment id to a URL).
+
+:::danger
+Don't confuse `.fw-option-type-{type}` (your wrapper class, used by your CSS/JS) with
+`.fw-backend-option-type-{type}`, which is used internally by the framework and must not be targeted
+from an option type's scripts.
+:::

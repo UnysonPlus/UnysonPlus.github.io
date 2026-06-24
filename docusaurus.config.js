@@ -113,6 +113,7 @@ const config = {
             position: 'left',
             label: 'Manual',
           },
+          {to: '/docs/guides', label: 'Guides', position: 'left'},
           {to: '/blog', label: 'News', position: 'left'},
           {
             href: 'https://github.com/UnysonPlus',

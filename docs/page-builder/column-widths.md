@@ -11,6 +11,11 @@ to `type`/`atts`/`_items`), using an **`N_M` fraction string** with an underscor
 fifth-width special case, and how columns wrap (which differs between the default flex mode and
 legacy mode).
 
+The Layout Elements palette offers the widths as ready-made column thumbnails (`1/1`, `1/2`,
+`1/3`, …); the "beliefs" band below is a real three-column (`1_3`) row on the canvas.
+
+<img src="/img/builder-canvas.png" alt="The Page Builder canvas — Layout Elements width thumbnails and a three-column row" width="936" />
+
 ## Valid widths
 
 Widths are the usual **twelfths**, plus **one fifth**:

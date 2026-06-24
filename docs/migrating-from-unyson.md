@@ -1,6 +1,6 @@
 ---
 title: Migrating from Unyson
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Migrating from Unyson

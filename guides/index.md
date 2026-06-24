@@ -1,6 +1,6 @@
 ---
 title: Guides
-slug: /guides
+slug: /
 sidebar_position: 1
 description: Step-by-step how-to guides for building WordPress sites with the Unyson+ framework, page builder, theme, and extensions.
 ---

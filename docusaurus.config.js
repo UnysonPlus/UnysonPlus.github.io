@@ -90,6 +90,21 @@ const config = {
     ],
   ],
 
+  // Standalone "Guides" docs instance — its own section, route base, and sidebar,
+  // separate from the Manual (the docsSidebar). Surfaced in the navbar.
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'guides',
+        path: 'guides',
+        routeBasePath: 'guides',
+        sidebarPath: './sidebarsGuides.js',
+        editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
+      },
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -113,7 +128,13 @@ const config = {
             position: 'left',
             label: 'Manual',
           },
-          {to: '/docs/guides', label: 'Guides', position: 'left'},
+          {
+            type: 'docSidebar',
+            sidebarId: 'guidesSidebar',
+            docsPluginId: 'guides',
+            position: 'left',
+            label: 'Guides',
+          },
           {to: '/blog', label: 'News', position: 'left'},
           {
             href: 'https://github.com/UnysonPlus',

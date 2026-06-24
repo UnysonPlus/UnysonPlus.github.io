@@ -46,9 +46,9 @@ $heading = fw_get_field( 'heading' );
 ## Adding a new option type
 
 New option types live in `framework/includes/option-types/`. Each registers a class
-extending `FW_Option_Type`. See the existing option types in the plugin source for working
-examples, and the per-area `AGENTS.md` notes for conventions. When you build a custom option
-type, follow the conventions below.
+extending `FW_Option_Type`. For a **complete worked example** (the PHP class, the prefixed CSS, and
+the `fw:options:init` JS), see **[Create an option type](/docs/options/create-option-type)**. The
+conventions below are the rules that example follows.
 
 ### HTML
 

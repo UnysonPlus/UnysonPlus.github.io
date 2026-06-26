@@ -90,6 +90,15 @@ foreign theme the Theme Builder **enqueues each matched preset's shortcode CSS/J
 (reusing the framework's own per‑content asset enqueuer), so presets render fully styled in both the
 takeover and the surgical‑swap paths.
 
+### Header behavior & mobile menu under a foreign theme
+
+A header's **Scroll Behavior** (Sticky / Sticky‑shrink / Hide‑on‑scroll / Transparent‑overlay) and
+its **Menu Toggle / Off‑canvas / Fullscreen‑overlay** drawer are normally driven by the native
+theme's JS. So under a foreign theme the Theme Builder ships small **portable bundles** that
+reproduce them — keyed off the same `data-hf-behavior` / `data-hf-type` attributes and the
+`.menu-toggle` button. The result: a sticky header still sticks, and a mobile hamburger still opens a
+drawer, on **any** theme. (They stand down automatically when the theme already provides them.)
+
 ## Precedence at render time
 
 The body that actually renders is decided with one safety rule baked in: a **full‑replacement** body

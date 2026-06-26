@@ -114,6 +114,21 @@ inline. To make a child take a share of the row, give **that child** (when it's 
   attach your own styling. (Per the framework's clean‑DOM rule, prefer this over classes buried in
   WYSIWYG content.)
 
+### Responsive (per breakpoint)
+
+Direction and Justify can be **overridden per breakpoint** — the classic responsive header is a **Row**
+on desktop that becomes a **Column** on mobile:
+
+| Control | Applies |
+| --- | --- |
+| **Direction — Mobile** / **Justify — Mobile** | below 768px |
+| **Direction — Tablet** / **Justify — Tablet** | 768–991px |
+
+Leave a control as **Inherit** to keep the larger‑screen value. (These emit a tiny scoped stylesheet
+keyed to the flexbox, so there's no custom CSS to write.) Each **child** can also set its own
+**Align‑self** and **Order** (the Width section), so a single child can pull to the end or reorder
+without touching the markup.
+
 ## How children behave (the standard model)
 
 The Flexbox follows **standard CSS flexbox**, with no surprises:

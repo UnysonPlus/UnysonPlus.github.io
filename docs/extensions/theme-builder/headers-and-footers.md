@@ -17,7 +17,8 @@ builder, then assign with a [Template](./conditional-assignment.md). They live u
 You don't have to start from a blank canvas. The Header / Body / Footer Presets lists come **pre‑seeded
 with a few starter designs** — open one to customize it, or **duplicate** it (with the
 [Duplicate Post](https://wordpress.org/plugins/duplicate-post/) plugin, which works on the preset
-post types) to spin up a variant. Deleting the starters is fine; they're never re‑created.
+post types) to spin up a variant. Deleting the starters is fine; they're never re‑created. You can
+also **Import Preset** (the button next to *Add New*) to load a design from a JSON file.
 :::
 
 Add a new Header or Footer Preset and it **opens straight into the Unyson Builder** (no classic

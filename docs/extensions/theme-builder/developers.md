@@ -36,6 +36,7 @@ Read on the front end by the resolver; written by the admin grid (Templates) and
 | `tb_conditions` | `up_template` | `{ use_on: rule[], exclude_from: rule[] }` |
 | `hf_type` / `hf_behavior` | `up_header` | the Header Type / Scroll Behavior selects |
 | `tb_loop_columns` / `tb_loop_gap` | `up_body` | the archive Loop Layout settings |
+| `custom_css` / `custom_js` | any part | per‑preset Custom CSS / JS, output only when the preset renders |
 
 A **rule** is `{ type, sub_type, ids }`. Types: `df` (entire site), `ct` (conditional tag:
 `front_page`/`blog_index`/`search`/`error_404`/`archive`/`author`/`date`), `pt` (post type / specific

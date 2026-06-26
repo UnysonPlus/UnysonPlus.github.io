@@ -63,6 +63,22 @@ supplies the CSS/JS for each; your builder content fills it.
 | `hide-on-scroll` | Hides on scroll down, reveals on scroll up |
 | `transparent-overlay` | Transparent over the hero |
 
+## Custom CSS & JS
+
+Every preset — Header, Body, and Footer — has a **Custom CSS & JS** box (a code editor for each). It's
+the clean place to add styling or behavior that travels *with* the preset:
+
+- The code is stored in the **preset's own meta**, so it exports/imports with the preset and ships in
+  any bundled library — no separate "Additional CSS" to remember.
+- It's output **only when that preset renders**, and **on any theme** — Custom CSS in the `<head>`,
+  Custom JS just before `</body>`. So a preset designed for a third‑party theme can carry exactly the
+  CSS it needs to look right there. (No `<style>` / `<script>` tags to type — just the code.)
+- Target the CSS classes you used inside the preset; each preset's block is wrapped with a stable id
+  (`fw-tb-preset-{id}-css` / `-js`).
+
+This is the recommended way to finish a preset's look under a non‑Unyson theme — it keeps the styling
+attached to the design instead of scattered across the site's global CSS.
+
 ## How a header/footer renders
 
 A preset's builder content is rendered to its **inner HTML** only — the auto‑generated `<section>`

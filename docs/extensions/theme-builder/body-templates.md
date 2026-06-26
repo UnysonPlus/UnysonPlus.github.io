@@ -76,6 +76,13 @@ edit screen controls how the repeated cards are laid out:
 
 These are ignored for single‑post and 404/static bodies (which render the body once).
 
+:::tip Designed archive grids
+The loop above renders your whole body once per post. For a *designed* archive — a hero, intro, then
+a grid of the archive's posts — drop a **Posts** element into a normal (non‑loop) body and turn on
+its **"Posts for current page"** source: it renders the posts of whatever archive / category / tag /
+search the visitor is on, instead of a fixed query.
+:::
+
 ## Dynamic content in a body
 
 Body Templates are normal builder content, so [Dynamic Content](./dynamic-content.md) elements and

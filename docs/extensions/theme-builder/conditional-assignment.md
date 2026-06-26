@@ -84,6 +84,19 @@ front‑end only (it bails in wp‑admin, feeds, and oEmbed) and is request‑ca
 [the security model](./developers.md#security-model).
 :::
 
+## Previewing
+
+You don't have to publish a Template (or assign a preset) to see it. The Templates grid gives each row
+a **Preview** action, and the Header / Body / Footer preset lists each get a **Preview** row action
+too. Preview opens the front end with that Template — or that single preset — **forced onto the page**,
+rendered through the normal cascade (native or [theme‑independent](./rendering.md)), with a small
+fixed **"Theme Builder — Preview"** badge so it's clear you're looking at a preview and not the
+published result.
+
+Preview is **gated**: it only works for a logged‑in user who can `edit_theme_options`, and the link
+carries a nonce — a preview URL can't be shared to force a render for anyone else. Nothing is saved;
+close the tab and the live site is unchanged.
+
 ## See also
 
 - [Headers & Footers](./headers-and-footers.md) · [Body Templates](./body-templates.md)

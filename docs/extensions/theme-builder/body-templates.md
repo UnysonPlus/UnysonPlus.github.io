@@ -85,10 +85,9 @@ Content, Post Title, Post Excerpt, Featured Image, Author, Date, Terms, Meta) an
 with the semantic **[Flexbox](./flexbox.md)** container. These tabs appear only inside the Theme
 Builder part editors (they're hidden on normal Pages/Posts, where there's no queried post to bind to).
 
-:::note Still being finalized
-The dynamic single‑post elements are evolving. Static body layouts (404, landing, archive lists) and
-the Post Content pattern work today; the full set of dynamic single‑post body elements is being
-finalized, expect this page to gain detail as they land.
+:::tip Preview before you publish
+Use the [live preview](./conditional-assignment.md#previewing) to see a Body Template rendered against
+a real post — single, archive‑loop, or 404 — before you assign it.
 :::
 
 ## See also

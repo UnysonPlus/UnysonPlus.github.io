@@ -18,8 +18,8 @@ The Theme Builder ships as a **download‑only** extension — its own GitHub re
 (`UnysonPlus/UnysonPlus-Theme-Builder-Extension`), **not bundled** in the plugin. Install it from
 **Unyson+ → Extensions** (a **Download** card) and it appears as its own **Theme Builder** admin
 menu. The core — presets, the Flexbox, the full Dynamic Content element family, conditional
-assignment, theme‑independent rendering, live preview, per‑preset Custom CSS/JS, and a starter Preset
-Library — works today; one‑click child‑theme bundling is still landing.
+assignment, theme‑independent rendering, live preview, per‑preset Custom CSS/JS, and starter presets
+seeded into the lists — works today; one‑click child‑theme bundling is still landing.
 :::
 
 ## Philosophy
@@ -118,9 +118,8 @@ Activating the extension adds a **Theme Builder** menu (just under Appearance) w
   create Templates and set their conditions. It leads the menu (and is the menu's landing page)
   because it's the hub you'll revisit most.
 - **Header Presets**, **Body Presets**, **Footer Presets** — the page‑builder‑authored parts, each a
-  normal post list you edit straight in the builder.
-- **Preset Library** — a gallery of ready‑made designs. **Insert** one to create an editable copy and
-  start from a real layout instead of a blank canvas.
+  normal post list you edit straight in the builder. Each list comes **pre‑seeded with a few starter
+  designs** so you're never staring at a blank canvas — edit, duplicate, or delete them freely.
 
 A Template's three slots are independent: leave **Header** or **Footer** as *Inherit* to fall through
 to your existing header/footer, and leave **Body** as *None* to render the normal page content.

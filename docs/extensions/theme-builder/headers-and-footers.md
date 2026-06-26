@@ -13,9 +13,11 @@ builder, then assign with a [Template](./conditional-assignment.md). They live u
 
 ## Building a preset
 
-:::tip Start from the Preset Library
-You don't have to start from a blank canvas. **Theme Builder → Preset Library** has ready‑made Header,
-Body, and Footer designs — **Insert** one to get an editable copy, then customize it here.
+:::tip Starter designs are already in your lists
+You don't have to start from a blank canvas. The Header / Body / Footer Presets lists come **pre‑seeded
+with a few starter designs** — open one to customize it, or **duplicate** it (with the
+[Duplicate Post](https://wordpress.org/plugins/duplicate-post/) plugin, which works on the preset
+post types) to spin up a variant. Deleting the starters is fine; they're never re‑created.
 :::
 
 Add a new Header or Footer Preset and it **opens straight into the Unyson Builder** (no classic

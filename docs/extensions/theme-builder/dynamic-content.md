@@ -17,21 +17,26 @@ place a "current post, decided per request" makes sense.
 
 ## The element family
 
-| Element | Outputs |
-| --- | --- |
-| **Post Content** | The body content of the post/page being viewed (`the_content`). |
-| **Post Title** | The post/page title. |
-| **Post Excerpt** | The excerpt (or a trimmed content fallback). |
-| **Featured Image** | The post's featured image. |
-| **Author** | The post author (name / link / avatar, per options). |
-| **Date** | The published / modified date. |
-| **Terms** | The post's terms in a taxonomy (categories, tags, custom). |
-| **Meta** | A custom field value by key. |
+| Element | Outputs | Key options |
+| --- | --- | --- |
+| **Post Content** | The body content of the post/page being viewed (`the_content`). | Alignment |
+| **Post Title** | The post/page title. | Heading tag (`h1`–`h6`), Link to post |
+| **Post Excerpt** | The excerpt (or a trimmed‑content fallback). | Length, "read more" |
+| **Featured Image** | The post's featured image. | Image size, Link to (post / media / none) |
+| **Post Author** | The post author. | Prefix ("By"), Link to author, Show avatar, Avatar size |
+| **Post Date** | The published or modified date. | Date type (published / modified), Date format, Link to post |
+| **Post Terms** | The post's terms in a taxonomy. | Taxonomy (categories / tags / custom), Prefix, Separator, Link terms |
+| **Post Meta** | A custom field value by key. | Meta key, Before / After text |
 
-:::note Still being finalized
-The full set of dynamic single‑post elements is evolving. **Post Content** is solid today and is the
-keystone of the recommended workflow (below); the remaining elements are being finalized and this
-page will gain per‑element option detail as they land.
+Each renders a clean, single semantic wrapper (e.g. `<div class="post-author">…</div>`) and outputs
+**nothing** when its field is empty — so a missing excerpt, author avatar, or meta value simply
+leaves no markup. Every element carries the standard **Styling** (text color / font size / spacing),
+**Animations**, and **Advanced** (CSS id/class, visibility) tabs.
+
+:::tip Build it once, see it anywhere
+Because these resolve against *the current request's* post, a single body template renders correctly
+for every post it applies to. Use the [live preview](./conditional-assignment.md#previewing) to check
+one against a real post before you publish.
 :::
 
 ## Post Content — the keystone

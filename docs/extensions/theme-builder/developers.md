@@ -103,6 +103,13 @@ apply_filters( 'fw_theme_builder_native_theme', function_exists( 'unysonplus_get
 - **Asset enqueue** — under a foreign theme the matched presets' shortcode statics are enqueued for
   the head via the shortcodes extension's per‑content enqueuer, so presets render styled in both
   paths.
+- **Header behaviors** — under a foreign theme the `<header>` wrapper carries a
+  `fw-tb-header--<behavior>` class + `data-hf-behavior`, and a small `header-behaviors` CSS+JS bundle
+  is enqueued, so Sticky / Sticky‑shrink / Hide‑on‑scroll / Transparent‑overlay work off the native
+  theme.
+- **Live preview** — a nonce + `edit_theme_options`‑gated `?fw_tb_preview` request overrides the
+  resolver (via `fw_theme_builder_resolved`); `fw_tb_preview_url( array( 'template' => $id ) )` builds
+  the URL, and a fixed badge marks the page as a preview.
 - **Body classes** — `<body>` gets `up-tb-template` plus `up-tb-has-header` / `up-tb-has-body` /
   `up-tb-has-footer`, so themes/CSS/JS can target Theme‑Builder requests.
 - **Loop CSS** — `static/css/loop.css` is enqueued only for archive/list body requests.
@@ -111,6 +118,7 @@ apply_filters( 'fw_theme_builder_native_theme', function_exists( 'unysonplus_get
 
 | Filter | Purpose |
 | --- | --- |
+| `fw_theme_builder_resolved` | Filter the resolved `[template_id, header_id, body_id, footer_id]` (or `null`) for the request. The admin‑gated **live preview** uses this to force a Template/preset onto a real page. |
 | `fw_theme_builder_native_theme` | Override whether the active theme is treated as native (theme‑integrated) vs. foreign (plugin renders presets itself). |
 | `fw_theme_builder_swap_pattern` | The regex used to find the site `<header>` / `<footer>` to swap under a foreign theme — retarget for unconventional markup. Args: `$pattern, $tag, $last`. |
 | `fw_ext_hfbuilder_disabled_elements` | The elements hidden from the Header/Footer palette (name kept for back‑compat). |

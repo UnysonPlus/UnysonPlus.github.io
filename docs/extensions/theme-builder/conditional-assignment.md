@@ -50,6 +50,7 @@ Both sides share the same set of controls:
 | **Children of pages** | Every descendant page of the chosen pages (a closer parent wins when several apply) |
 | **Posts in categories** | Single posts that belong to the chosen categories |
 | **Category archives** | The category archive pages themselves |
+| **WooCommerce** *(when active)* | **Shop** · **Cart** · **Checkout** · **My Account** page scopes, plus **Products in product categories** and **Product category archives**. (All Products / specific products / the product archive come through the normal post‑type controls, since `product` is a post type.) |
 
 **Use On** is OR‑ed (the Template applies if *any* rule matches). **Exclude From** is also OR‑ed and
 **wins** (if any exclusion matches, the Template is suppressed for that request).
@@ -96,6 +97,25 @@ published result.
 Preview is **gated**: it only works for a logged‑in user who can `edit_theme_options`, and the link
 carries a nonce — a preview URL can't be shared to force a render for anyone else. Nothing is saved;
 close the tab and the live site is unchanged.
+
+## Debugging "what renders here?"
+
+When several Templates could apply, you don't have to guess which one wins. With a Template defined,
+the front end shows a **Theme Builder** node in the **admin bar** (for editors): it names the
+**resolved Template** for the page you're viewing, lists its Header / Body / Footer (with edit links),
+and lists **every matching or excluded Template with its specificity score** (`WINS` / `score N` /
+`excluded`). Browse the site and watch the winner change — overlapping rules become obvious.
+
+## Bundling & importing a design
+
+Each Template row has an **Export** action that downloads the whole design as one JSON file — the
+Template's conditions **and** the full Header / Body / Footer builder content **and** their settings
+(scroll behavior, per‑preset custom CSS/JS). It's the `up-templates/*.json` format, so dropping it in
+a theme's `up-templates/` folder auto‑imports it on activation.
+
+To load one back, use **Import Design** (next to *Add Template*): it recreates the Template and fresh
+Header/Body/Footer presets from the file. So a complete starter site travels as a single file — handy
+for shipping or selling demos.
 
 ## See also
 

@@ -18,8 +18,9 @@ The Theme Builder ships as a **download‑only** extension — its own GitHub re
 (`UnysonPlus/UnysonPlus-Theme-Builder-Extension`), **not bundled** in the plugin. Install it from
 **Unyson+ → Extensions** (a **Download** card) and it appears as its own **Theme Builder** admin
 menu. The core — presets, the Flexbox, the full Dynamic Content element family, conditional
-assignment, theme‑independent rendering, live preview, per‑preset Custom CSS/JS, and starter presets
-seeded into the lists — works today; one‑click child‑theme bundling is still landing.
+assignment (including WooCommerce pages), theme‑independent rendering, live preview, a front‑end
+"what renders here?" debugger, per‑preset Custom CSS/JS, starter presets, and one‑file design
+export/import — works today.
 :::
 
 ## Philosophy

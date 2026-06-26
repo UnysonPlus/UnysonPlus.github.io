@@ -39,9 +39,11 @@ Read on the front end by the resolver; written by the admin grid (Templates) and
 | `custom_css` / `custom_js` | any part | per‑preset Custom CSS / JS, output only when the preset renders |
 
 A **rule** is `{ type, sub_type, ids }`. Types: `df` (entire site), `ct` (conditional tag:
-`front_page`/`blog_index`/`search`/`error_404`/`archive`/`author`/`date`), `pt` (post type / specific
-post ids), `ptc` (children of pages), `tx` (singular in given terms), `tax` (term archive), `ar`
-(post‑type archive). Matching is via native WP conditionals only.
+`front_page`/`blog_index`/`search`/`error_404`/`archive`/`author`/`date`, plus
+`woo_shop`/`woo_cart`/`woo_checkout`/`woo_account` when WooCommerce is active), `pt` (post type /
+specific post ids), `ptc` (children of pages), `tx` (singular in given terms — `sub_type` is the
+taxonomy, e.g. `category` or `product_cat`), `tax` (term archive), `ar` (post‑type archive). Matching
+is via native WP conditionals only (the Woo tags are guarded so they're inert without Woo).
 
 ## Render helpers
 
@@ -76,6 +78,7 @@ FW_Theme_Builder_Resolver::header_id();  // int, 0 = inherit
 FW_Theme_Builder_Resolver::body_id();    // int, 0 = none
 FW_Theme_Builder_Resolver::footer_id();  // int, 0 = inherit
 FW_Theme_Builder_Resolver::flush();      // reset the request cache (tests / preview)
+FW_Theme_Builder_Resolver::debug();      // front-end only: [ resolved, candidates[] ] for the admin-bar tool
 ```
 
 It bails in `is_admin()`, `is_feed()`, and `is_embed()`, so a Template never hijacks a feed or oEmbed.

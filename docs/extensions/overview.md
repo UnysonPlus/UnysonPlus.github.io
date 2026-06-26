@@ -18,7 +18,7 @@ what a project needs.
 | **WordPress Shortcodes** | Insert Unyson+ shortcodes in any editor. → [docs](./wp-shortcodes/index.md) |
 | **Theme Builder** | Divi-style global headers, bodies and footers with conditional assignment (includes header/footer building). → [docs](./theme-builder/index.md) |
 | **Live Page Editor** | Edit builder pages on the live front end. → [docs](./live-editor.md) |
-| **Site Converter** | Import an AI-generated website into WordPress. → [docs](./site-converter.md) |
+| **Site Converter** | Import an AI-generated website into WordPress. → [docs](./site-converter/index.md) |
 | **Custom Fields** | ACF-style custom fields builder. → [docs](./custom-fields.md) |
 | **Post Types &amp; Taxonomies** | Register CPTs and taxonomies from the admin. → [docs](./post-types.md) |
 | **Portfolio** | A fully-featured portfolio module. → [docs](./portfolio/index.md) |

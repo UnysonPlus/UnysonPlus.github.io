@@ -113,10 +113,11 @@ fourth is pure assignment data.
 
 Activating the extension adds a **Theme Builder** menu (just under Appearance) with:
 
+- **Templates** — the management grid (Name / Header / Body / Footer / Used On). This is where you
+  create Templates and set their conditions. It leads the menu (and is the menu's landing page)
+  because it's the hub you'll revisit most.
 - **Header Presets**, **Body Presets**, **Footer Presets** — the page‑builder‑authored parts, each a
   normal post list you edit straight in the builder.
-- **Templates** — the management grid (Name / Header / Body / Footer / Used On). This is where you
-  create Templates and set their conditions.
 
 A Template's three slots are independent: leave **Header** or **Footer** as *Inherit* to fall through
 to your existing header/footer, and leave **Body** as *None* to render the normal page content.

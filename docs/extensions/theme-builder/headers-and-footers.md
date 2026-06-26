@@ -13,6 +13,11 @@ builder, then assign with a [Template](./conditional-assignment.md). They live u
 
 ## Building a preset
 
+:::tip Start from the Preset Library
+You don't have to start from a blank canvas. **Theme Builder → Preset Library** has ready‑made Header,
+Body, and Footer designs — **Insert** one to get an editable copy, then customize it here.
+:::
+
 Add a new Header or Footer Preset and it **opens straight into the Unyson Builder** (no classic
 editor). Lay out the chrome with a [**Flexbox**](./flexbox.md) — the semantic container that renders a
 real `<header>` / `<nav>` / `<footer>` — and fill it with the **Header/Footer Elements**: Site Logo,

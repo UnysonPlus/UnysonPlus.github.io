@@ -29,6 +29,25 @@ It runs entirely on your computer; your admin browser talks to it directly at `l
 nothing about your site is sent to a third party. See **[The capture service](./capture-service.md)**
 to install it.
 
+## The conversion engines — what runs, and when
+
+There are **two conversion engines**, plus an **optional AI layer** on top. Which one runs explains
+the speed, the fidelity, and the consistency you get:
+
+| Engine | When it runs | How it works | Trade‑off |
+|---|---|---|---|
+| **Deterministic (offline)** | A **file upload** with the capture service **off** | Pure PHP parses the static HTML, decomposes it into shortcodes, and reproduces the CSS — **no browser, no AI** | Fast and fully **repeatable** (same input → same output), works with zero setup. Lower fidelity on pages that build themselves with JavaScript after load. |
+| **Capture service** | **From a URL**, or a **file upload** while the service is **running** | A small Node program renders the page in **real Google Chrome** (via Playwright) and reads the **computed** CSS + DOM, then runs the same mapping | Highest fidelity — real colors, fonts, and layout, even for JavaScript‑rendered pages. Needs the one‑time service install. Still **deterministic**: no AI unless you turn it on. |
+| **AI assist** *(optional)* | "Use AI" checked, on either path above | After the capture, **Claude** refines the section→element mapping and authors an extra stylesheet layer that's merged in | A quality **refinement** on top — smarter element identification. It is **non‑deterministic** (the same page can map a little differently each run), so treat it as a polish step, **not** the foundation. |
+
+In short: the **deterministic** engine is the reliable baseline; the **capture service** is that same
+algorithm driven by a real browser for higher fidelity; and **AI** is an optional refinement layered
+on top of either. All three run **entirely on your machine** — nothing is sent to a third party.
+
+> **Tip:** if you need an identical, reproducible result every time (e.g. for a template you re‑import),
+> use the deterministic/offline path. If you need maximum visual fidelity from a live or JS‑heavy page,
+> use the capture service. Reach for AI only to clean up element roles after the fact.
+
 ## The pipeline
 
 ```
@@ -67,6 +86,12 @@ bands of the page) — not by relying on `<section>` tags (modern/AI pages use `
 structure: full‑width children of the main content root, each becoming one page‑builder *section*.
 
 ### Chrome vs content
+
+:::note What "chrome" means here
+**Chrome** is the site's *frame* — the **header, footer, and navigation** that wrap every page — **not
+Google Chrome the browser**. The term comes from UI design ("chrome" = the interface surrounding the
+content). The only browser involved is the one the *capture service* uses to render the page.
+:::
 
 The **header** and **footer** are *chrome*, handled by the generated child theme — **not**
 page‑builder content. The extractor:

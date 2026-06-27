@@ -9,21 +9,41 @@ By default the converter is **fully deterministic and offline** — no AI, no ac
 assist is an **optional** refinement that, when enabled, has **Claude** improve the conversion. It
 runs inside the **[capture service](./capture-service.md)** on your machine.
 
-## What it does
+## What it does — refine the mapping, not the design
 
-After the capture, the draft mapping (each section carries its source markup) is sent to the
-service's `POST /ai-convert`, where Claude returns:
+AI assist has a **deliberately narrow** job: make the **deterministic engine smarter**, never compete
+with it. The engine already reads the source's real classes and reproduces the exact look (colors,
+sizes, layout, header/footer). The AI only improves the **mapping** — the judgment calls a heuristic
+gets wrong.
 
-1. A **refined section→element mapping** — fixing mis‑detected roles and structure.
-2. A **higher‑fidelity stylesheet** — merged into the child theme **after** the deterministic
-   per‑section CSS, so it wins the cascade.
+After the capture, the draft mapping (each block carries its source content) is sent to the service's
+`POST /ai-convert`, where Claude returns **only a corrected mapping**:
 
-The header/footer keep the dynamic WordPress mirror (real nav menu + footer widgets). AI assist is
-**best‑effort**: any failure (no backend, a network error) falls back to the deterministic result
-with no AI CSS, so a conversion never breaks.
+1. **Fix mis‑detected roles** — e.g. "this block is a heading, not a paragraph; this is a button."
+2. **Mark decorative / chrome blocks** to skip.
+3. **Recognize custom widgets** (an audio player, an image‑with‑overlay) and flag them as one
+   verbatim `code` block so the engine keeps them pixel‑faithful.
 
-It's available on **both** the URL and the file paths — tick **AI assist** in the options. An
-"AI‑refined" badge marks the reviewed mapping.
+It does **not** write any CSS or header/footer markup — the deterministic engine produces all of that
+from the source. (Earlier versions had the AI author a whole stylesheet + chrome; that made the two
+engines *conflict* — both writing CSS, the AI's version overriding the faithful one — so the AI was
+scoped back to **mapping‑only**.)
+
+AI assist is **best‑effort**: any failure (no backend, a network error) falls back to the pure
+deterministic result, so a conversion never breaks. It's available on **both** the URL and the file
+paths — tick **AI assist** in the options. An "AI‑refined" badge marks the reviewed mapping.
+
+## It makes the engine smarter — locally, with no data collection
+
+Every AI refinement also teaches the **offline** engine for next time: the diff between the AI's
+mapping and the deterministic draft is distilled into **local learned rules** (`distill_from_ai()`),
+which the no‑AI path consults first on future conversions. So the engine gradually needs the AI less —
+which was the whole point of adding AI: to grow the deterministic engine's intelligence, not to fight it.
+
+This learning is **100% local** — nothing about your pages is ever collected or sent anywhere. We
+deliberately **rejected** any "collect samples from every user" telemetry: converted pages can contain
+real, private content, and harvesting it would raise serious privacy and legal problems. Improvements
+reach everyone only through the maintainer's reviewed, committed releases — never through harvested data.
 
 ## Backends — pick one
 
@@ -60,18 +80,19 @@ WordPress. The Convert screen shows the detected backend next to the AI checkbox
 
 ## Runtime & cost
 
-- The AI step authors a full stylesheet + refined mapping in one turn; it can take a few minutes for
-  design‑heavy pages. There is **no timeout** by default — set `AI_TIMEOUT_MS` (ms) to impose one.
-- A rotating progress message plays during the wait (named steps, then reassurances tied to the
-  progress bar), so a long run never looks stuck.
+- The AI step now returns **only a refined mapping** (no stylesheet/chrome authoring), so it's much
+  lighter and faster than before. A transient API hiccup is retried automatically; set `AI_TIMEOUT_MS`
+  (ms) to impose a cap if you want one.
+- A rotating progress message plays during the wait, so a longer run never looks stuck.
 
 ## When to use it (and when not)
 
-AI assist shines on **visually rich** pages where matching the exact look matters. For
-structurally‑simple pages, the deterministic result is already clean and instant. Because the AI
-authors a stylesheet on top of the page‑builder DOM, results vary with design complexity — if a
-conversion ever looks worse with AI on, convert with it **off** (the deterministic path matches the
-builder markup) and refine in the builder.
+Use AI assist when the source's **structure is ambiguous** and the heuristic mis‑identifies elements —
+unusual section layouts, custom widgets, decorative bands. For clean, conventional pages the
+deterministic mapping is already correct and instant, so AI adds little. Because the AI now only
+corrects the **mapping** (never the CSS or layout reproduction), turning it on no longer changes the
+*look* — only *what each element is mapped to* — so it can't make a conversion look worse than the
+deterministic baseline; at worst it's a no‑op.
 
 ## Troubleshooting
 

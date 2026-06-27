@@ -38,7 +38,7 @@ the speed, the fidelity, and the consistency you get:
 |---|---|---|---|
 | **Deterministic (offline)** | A **file upload** with the capture service **off** | Pure PHP parses the static HTML, decomposes it into shortcodes, and reproduces the CSS — **no browser, no AI** | Fast and fully **repeatable** (same input → same output), works with zero setup. Lower fidelity on pages that build themselves with JavaScript after load. |
 | **Capture service** | **From a URL**, or a **file upload** while the service is **running** | A small Node program renders the page in **real Google Chrome** (via Playwright) and reads the **computed** CSS + DOM, then runs the same mapping | Highest fidelity — real colors, fonts, and layout, even for JavaScript‑rendered pages. Needs the one‑time service install. Still **deterministic**: no AI unless you turn it on. |
-| **AI assist** *(optional)* | "Use AI" checked, on either path above | After the capture, **Claude** refines the section→element mapping and authors an extra stylesheet layer that's merged in | A quality **refinement** on top — smarter element identification. It is **non‑deterministic** (the same page can map a little differently each run), so treat it as a polish step, **not** the foundation. |
+| **AI assist** *(optional)* | "Use AI" checked, on either path above | After the capture, **Claude** corrects the **mapping only** (element roles, decorative blocks to skip, custom widgets to keep verbatim) — the deterministic engine still produces **all** CSS + chrome | Makes the engine's element identification smarter **without** touching the faithful output, and the correction also feeds back into the engine's **local** learned rules so the offline path improves. |
 
 In short: the **deterministic** engine is the reliable baseline; the **capture service** is that same
 algorithm driven by a real browser for higher fidelity; and **AI** is an optional refinement layered
@@ -176,7 +176,17 @@ offline PHP parser — so "works offline" still holds, just at lower fidelity. D
 
 ## Where AI fits (optional)
 
-AI assist is **off by default**. When on, after the capture, the draft mapping is sent to the
-capture service's `/ai-convert`, where **Claude** refines the section→element mapping and authors a
-higher‑fidelity stylesheet layer that's merged into the child theme. It's a *refinement* on top of
-the deterministic result, and it stays on your machine. See **[AI assist](./ai-assist.md)**.
+AI assist is **off by default**, and its role is deliberately narrow: **make the deterministic engine
+smarter, never compete with it**. When on, the draft mapping is sent to the capture service's
+`/ai-convert`, where **Claude** returns **only a corrected mapping** — fixing mis‑detected element
+roles, marking decorative blocks to skip, and flagging custom widgets to keep verbatim. It does **not**
+author any CSS or chrome (the engine does that). An earlier design that had the AI write a whole
+stylesheet made the two engines *conflict* — both producing CSS, the AI's overriding the faithful one —
+so it was scoped back to **mapping‑only**.
+
+Crucially, every AI correction also **teaches the offline engine**: the diff between the AI's mapping
+and the deterministic draft is distilled into **local learned rules** (`distill_from_ai()`), so the
+**no‑AI path gets better over time** — which is the whole point of adding AI. This learning is entirely
+on your machine: there is **no central data collection** (we deliberately rejected harvesting user
+pages — they can hold real, private content — over privacy and legal concerns). Improvements reach
+everyone only through the maintainer's reviewed, committed releases. See **[AI assist](./ai-assist.md)**.

@@ -10,7 +10,7 @@ A responsive column inside a row, with fine-grained control over width, offset, 
 ## Layout
 
 - **Full Height** — switch (default No). Stretches the column's inner content area to the full height of its row, so colored cards line up at equal heights next to siblings (adds Bootstrap `h-100`). No effect on a single-column row.
-- **Layout Direction** — *Stacked* (default, elements stacked vertically) or *Inline* (elements laid out in a row, wrapping if they don't fit).
+- **Content Direction** — an image-picker: *Stacked* (default — elements stack vertically) or *Inline* (elements sit side-by-side in a row, wrapping if they don't fit). Inline previews side-by-side in the builder canvas too, not just on the front end. In Inline mode the flex axes swap, so **Content Alignment** drives the horizontal distribution while **Content Vertical Alignment** works on the cross axis.
 - **Content Alignment** — align the whole column's content at once: *Default*, *Left*, *Center*, or *Right*. The simplest way to center a column, including a Special Heading's overline.
 - **Content Vertical Alignment** — position elements within the column height: *Top / Default*, *Middle*, *Bottom*, or *Space Between*. Middle / Bottom / Space Between only show when the column is taller than its content.
 - **Gap** — space between the column's elements, using the site Gap Scale. Works in both directions; takes effect once the column has 2+ elements. Default is *None*.

@@ -17,7 +17,7 @@ The Animations tab also has an **Entrance Animation** block for one-shot [Animat
 | Effect | What it does |
 | --- | --- |
 | [Reveal](./reveal.md) | Fades and moves an element in as it scrolls into view |
-| [Stagger children](./stagger.md) | Cascades an element's direct children in, one after another |
+| [Stagger children](./stagger.md) | Cascades a grid's or container's items in, one after another (auto-detects grid items) |
 | [Split Text](./split-text.md) | Splits headings into characters / words / lines and reveals them in sequence |
 | [Parallax](./parallax.md) | Drifts an element against the scroll for depth |
 | [Pin](./pin.md) | Sticks an element in place while the page scrolls past |

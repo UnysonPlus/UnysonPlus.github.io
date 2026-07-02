@@ -5,24 +5,39 @@ title: Scroll Progress
 
 # Scroll Progress
 
-A site-wide **reading-progress indicator** — a thin bar at the top or bottom of the page, or a circular ring in a corner — that fills as the visitor scrolls.
+A site-wide **reading-progress indicator** that fills as the visitor scrolls — with **16 styles**, from a simple bar to a corner ring, a battery, a reading-time chip, or section scroll-spy dots.
 
 ## Where to find it
 
-It's **site-wide**: **Theme Settings → Animations → Scroll Progress**. Turn on **Enable scroll progress** (off by default), pick a **Style**, and configure it. Front end only.
+It's **site-wide**: **Theme Settings → Animations → Scroll Progress**. Turn on **Enable scroll progress** (off by default), then pick a **Style** from the popover of animated tiles and configure it. Front end only.
 
-## Styles & options
+## The 16 styles
 
-| Style | Options |
+| Group | Styles |
 | --- | --- |
-| **Bar — top of page** | Color · Thickness · Hide at the top |
-| **Bar — bottom of page** | Color · Thickness · Hide at the top |
-| **Circle — corner** | Color · Size · Position (bottom-right / left) · **Click to scroll to top** · Hide at the top |
+| **Bars** (top or bottom) | **Bar** · **Gradient bar** (two colors) · **Glow edge** (a glowing leading dot) · **Segments** (notched, N segments) · **Pill** (inset, rounded) · **% label bar** (a percentage rides the edge) · **Under-nav bar** (offset below a fixed header) · **Liquid bar** (flowing sheen) |
+| **Edge** | **Side edge** — a vertical bar up the left or right of the viewport |
+| **Corner ring / gauge** | **Ring** (+ scroll-to-top) · **Ring + %** (percentage in the center) · **Gauge** (semicircle) · **Battery** (a filling capsule) |
+| **Text chips** | **% Counter** (a "45%" chip) · **Time left** (estimated reading time remaining, from a words-per-minute guess) |
+| **Navigation** | **Section dots** — a scroll-spy: one dot per Section that highlights the current one and doubles as jump-to-section nav |
 
-- **Hide at the top** fades the indicator in only once the visitor starts scrolling.
-- The **Circle** doubles as a **scroll-to-top** button when *Click to scroll to top* is on.
+## Options
+
+Each style reveals only its relevant controls:
+
+- **Color** (all) — and a second color for the **Gradient** bar.
+- **Thickness** (bars/edge), **Segments** count, **Top offset** (under-nav bar).
+- **Size** and **Position** (bottom-right / left) for the ring / gauge / battery; the four corners for the chips.
+- **Click to scroll to top** for the ring styles.
+- **Words per minute** for *Time left*.
+- **Hide at the top** (most styles) — fades the indicator in only once the visitor starts scrolling.
+
+:::note Section dots
+The dots use the page's `<section>` / `.fw-section` blocks (needs 2+). They highlight the section
+nearest the top of the viewport and jump to a section on click — so they act as a mini side-nav.
+:::
 
 ## Performance & accessibility
 
-- Tiny self-contained CSS/JS, enqueued **site-wide only when enabled**.
-- One passive scroll listener, RAF-throttled.
+- Tiny self-contained CSS/JS, enqueued **site-wide only when enabled** — one style at a time.
+- One passive scroll listener, RAF-throttled; respects reduced motion.

@@ -28,6 +28,7 @@ Open any Section, Column or element → **Animations** tab:
 | [Physics Effects](./physics.md) | Spring/verlet motion — drag & throw, float, gravity, jelly, and 22 others |
 | [Text Effects](./text-effects.md) | Kinetic typography — split reveals, scramble, typewriter, gradient, glitch, count-up, and dozens more |
 | [Parallax Depth Layers](./parallax.md) | Multi-layer pointer/scroll depth — mark a Scene, give each child a Depth |
+| [Marquee](./marquee.md) | A seamless ticker for any element's content — running text (incl. a true curved arc), logos, images; warp, drag, scroll-reactive |
 
 ### On Sections
 | Capability | What it does |
@@ -40,6 +41,7 @@ Open any Section, Column or element → **Animations** tab:
 | --- | --- |
 | [Custom Cursor](./cursor.md) | Replace the pointer with a custom cursor site-wide — 40+ styles |
 | [Page Transitions](./page-transitions.md) | Full-screen transitions between pages — fade, slide, curtain, iris, and 20 more |
+| [Scroll Progress](./scroll-progress.md) | A reading-progress bar (top/bottom) or a corner ring that fills as you scroll |
 
 ### New elements (builder palette → *Media Elements*)
 | Element | What it does |
@@ -47,6 +49,7 @@ Open any Section, Column or element → **Animations** tab:
 | [WebGL Object](./webgl-object.md) | Real-time WebGL — glass blob, liquid metal, shaders (Three.js) |
 | [Model Viewer](./model-viewer.md) | Interactive 3D glTF/GLB models, with AR |
 | [SVG Draw](./svg-draw.md) | Self-drawing line art that traces itself on scroll |
+| [Image Sequence](./image-sequence.md) | Scroll-scrubbed frame playback — the product-reveal effect |
 
 ## Performance & accessibility
 
@@ -59,5 +62,5 @@ The engine is built to stay out of the way:
 - **Editor-safe & flash-free.** Effects are suppressed in the builder canvas and use guards so there's no flash of un-animated content.
 
 :::tip Turn effects on/off in one place
-**Theme Settings → Animations → Effects** is a single panel of master switches — **Scroll Motion, Hover, Physics, Parallax, Text, Backgrounds, Infinite Scroll Loop**. Turning one **off removes its control from the element's Animations tab entirely** (no dead options) and loads nothing on the front end. The **Engine** sub-tab holds the engine-wide **Respect reduced motion** and **Disable on mobile** toggles; **Cursor** and **Page Transitions** keep their own config tabs.
+**Theme Settings → Animations → Effects** is a single panel of master switches — **Scroll Motion, Hover, Physics, Parallax, Marquee, Text, Backgrounds, Infinite Scroll Loop**. Turning one **off removes its control from the element's Animations tab entirely** (no dead options) and loads nothing on the front end. The **Engine** sub-tab holds the engine-wide **Respect reduced motion** and **Disable on mobile** toggles; **Cursor** and **Page Transitions** keep their own config tabs.
 :::

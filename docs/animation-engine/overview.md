@@ -41,7 +41,7 @@ Open any Section, Column or element → **Animations** tab:
 | --- | --- |
 | [Custom Cursor](./cursor.md) | Replace the pointer with a custom cursor site-wide — 40+ styles |
 | [Page Transitions](./page-transitions.md) | Full-screen transitions between pages — fade, slide, curtain, iris, and 20 more |
-| [Scroll Progress](./scroll-progress.md) | A reading-progress bar (top/bottom) or a corner ring that fills as you scroll |
+| [Scroll Progress](./scroll-progress.md) | A reading-progress indicator — 16 styles: bars, corner ring/gauge/battery, %-counter, reading-time, or section scroll-spy dots |
 
 ### New elements (builder palette → *Media Elements*)
 | Element | What it does |

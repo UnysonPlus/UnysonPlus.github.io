@@ -4,12 +4,16 @@ title: Overview
 slug: /animations
 ---
 
-# GSAP Animations
+# Scroll Motion (GSAP)
 
-UnysonPlus ships a rich, **GSAP-powered motion platform** built right into the page builder. Every Section, Column and element has an **Animations** tab with a **Scroll Motion (GSAP)** block — choose an effect from a dropdown and you get scroll-driven motion powered by [GSAP](https://gsap.com/) + ScrollTrigger, the same engine behind countless award-winning sites. No code.
+Every Section, Column and element has an **Animations** tab with a **Scroll Motion (GSAP)** block — pick an effect and you get scroll-driven motion powered by [GSAP](https://gsap.com/) + ScrollTrigger, the same engine behind countless award-winning sites. No code.
+
+:::info Part of the Animation Engine
+Scroll Motion is one module of the bundled **[Animation Engine](/docs/animation-engine)** extension — activate it (UnysonPlus → Extensions → Animation Engine) to get Scroll Motion plus Hover, Physics, Text Effects, Backgrounds, Cursor, Page Transitions and the 3D/WebGL/SVG elements.
+:::
 
 :::note A separate entrance-animation engine
-The Animations tab also has an **Entrance Animation** block for one-shot [Animate.css](https://animate.style/) effects ("appear with X"). It's independent of GSAP and can be combined with a Scroll Motion effect on the same element.
+The Animations tab also has an **[Entrance Animation](./entrance-animation.md)** block for one-shot [Animate.css](https://animate.style/) effects ("appear with X"). It's **always available** (part of core), independent of GSAP, and can be combined with a Scroll Motion effect on the same element.
 :::
 
 ## The effects

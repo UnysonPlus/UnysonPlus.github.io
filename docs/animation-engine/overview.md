@@ -27,11 +27,13 @@ Open any Section, Column or element → **Animations** tab:
 | [Hover Interactions](./hover.md) | Pointer-driven effects — magnetic pull, 3D tilt, spotlight, image reveal, and more |
 | [Physics Effects](./physics.md) | Spring/verlet motion — drag & throw, float, gravity, jelly, and 22 others |
 | [Text Effects](./text-effects.md) | Kinetic typography — split reveals, scramble, typewriter, gradient, glitch, count-up, and dozens more |
+| [Parallax Depth Layers](./parallax.md) | Multi-layer pointer/scroll depth — mark a Scene, give each child a Depth |
 
-### On containers (Sections / Rows) — *Styling* tab
+### On Sections
 | Capability | What it does |
 | --- | --- |
-| [Animated Backgrounds](./backgrounds.md) | A living background layered behind a container — aurora, particles, waves, mesh gradient, and 30+ more |
+| [Animated Backgrounds](./backgrounds.md) *(Styling tab)* | A living background layered behind a container — aurora, particles, waves, mesh gradient, and 30+ more |
+| [Infinite Scroll Loop](./scroll-loop.md) *(Animations tab)* | Loop full-height sections into a seamless, never-ending scroll (Lenis) |
 
 ### Site-wide — *Theme Settings → Animations*
 | Capability | What it does |
@@ -56,6 +58,6 @@ The engine is built to stay out of the way:
 - **Off-screen pause.** Continuous effects (backgrounds, ambient physics) pause when scrolled out of view and when the tab is hidden.
 - **Editor-safe & flash-free.** Effects are suppressed in the builder canvas and use guards so there's no flash of un-animated content.
 
-:::tip Global settings
-**Theme Settings → Animations** has a sub-tab per module (Physics, Interactions, Backgrounds, Text, Cursor, Page Transitions) with a master on/off, plus the engine-wide **Respect reduced motion** and **Disable on mobile** toggles.
+:::tip Turn effects on/off in one place
+**Theme Settings → Animations → Effects** is a single panel of master switches — **Scroll Motion, Hover, Physics, Parallax, Text, Backgrounds, Infinite Scroll Loop**. Turning one **off removes its control from the element's Animations tab entirely** (no dead options) and loads nothing on the front end. The **Engine** sub-tab holds the engine-wide **Respect reduced motion** and **Disable on mobile** toggles; **Cursor** and **Page Transitions** keep their own config tabs.
 :::

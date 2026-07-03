@@ -31,7 +31,7 @@ Open any Section, Column or element → **Animations** tab:
 | [Marquee](./marquee.md) | A seamless ticker for any element's content — running text (incl. a true curved arc), logos, images; warp, drag, scroll-reactive |
 
 :::tip Adding animations — the inserter
-The **Animations** tab is an **"Add Animation" inserter**. It starts empty with a **+ Add Animation** button — click it to browse a searchable, category-tabbed grid of effects (Entrance, Scroll, Pointer, Physics, Motion, Text) and pick one. It drops in as a configurable **card**, and you can **stack several** on one element (e.g. an Entrance *and* a Hover *and* a Scroll effect). Remove a card with its **×**. Effects you haven't added take no space, so the tab stays tidy no matter how many modules are installed.
+The **Animations** tab is an **"Add Animation" inserter**. It starts empty with a **+ Add Animation** button — click it to browse a searchable, category-tabbed grid of effects (Entrance, Scroll, Pointer, Physics, Motion, Text) and pick one. It drops in as a configurable **card**, and you can **stack several** on one element (e.g. an Entrance *and* a Hover *and* a Scroll effect). Some modules (like **Hover**) can even be added **more than once** to combine their effects — Lift *and* Ripple together. Remove a card with its **×**. Effects you haven't added take no space, so the tab stays tidy no matter how many modules are installed.
 :::
 
 ### On Sections
@@ -65,6 +65,10 @@ The engine is built to stay out of the way:
 - **Off-screen pause.** Continuous effects (backgrounds, ambient physics) pause when scrolled out of view and when the tab is hidden.
 - **Editor-safe & flash-free.** Effects are suppressed in the builder canvas and use guards so there's no flash of un-animated content.
 
-:::tip Turn effects on/off in one place
-**Theme Settings → Animations → Effects** is a single panel of master switches — **Scroll Motion, Hover, Physics, Parallax, Marquee, Text, Backgrounds, Infinite Scroll Loop**. Turning one **off removes its control from the element's Animations tab entirely** (no dead options) and loads nothing on the front end. The **Engine** sub-tab holds the engine-wide **Respect reduced motion** and **Disable on mobile** toggles; **Cursor** and **Page Transitions** keep their own config tabs.
+:::tip Control lives in the inserter
+Effects are added **per element** from the **Add Animation** inserter — there's no global on/off panel to keep in sync, and nothing loads on a page that doesn't use it. Theme Settings → Animations keeps only the engine-wide **Engine** sub-tab (**Respect reduced motion**, **Disable on mobile**) plus the site-wide config tabs (**Cursor**, **Page Transitions**, **Scroll Progress**).
+:::
+
+:::tip Build your own
+The engine is extensible — add your **own effect or module** from your child theme's `functions.php` and it shows up in the inserter automatically. See **[Add your own module / effect](./custom-modules.md)**.
 :::

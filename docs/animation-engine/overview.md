@@ -55,6 +55,24 @@ The **Animations** tab is an **"Add Animation" inserter**. It starts empty with 
 | [SVG Draw](./svg-draw.md) | Self-drawing line art that traces itself on scroll |
 | [Image Sequence](./image-sequence.md) | Scroll-scrubbed frame playback — the product-reveal effect |
 
+## Combining & stacking effects
+
+There are two different ways to layer motion on one element:
+
+**1. Combine *different* modules** — always available. Any element can carry several effects from different modules at once, each its own card: e.g. an **Entrance** animation *and* a **Hover** interaction *and* a **Scroll Reveal**. Just add each from the inserter.
+
+**2. Stack *the same* module** — add one module more than once to combine its own effects. Its inserter tile stays available after you add it, so clicking it again drops a second configurable card. This only exists where the effects genuinely layer without fighting:
+
+| Module | Stackable? | Notes |
+| --- | --- | --- |
+| **Hover Interaction** | ✅ Yes | Combine independent effects on one element — e.g. **Lift + Ripple + Glow Border**. Add Hover as many times as you like; each card picks a different effect and they all run together. One tip: two *motion* effects (Magnetic / 3D Tilt / Lift) fight over the element's transform, so pick one of those plus any number of decorations (Glow, Spotlight, Ripple, Underline, Color Shift, Image Reveal, Scramble). |
+| Entrance, Scroll Effect, Physics, Parallax, Marquee, Text Effect, Scroll Reveal, 3D Flip Card | ❌ One per element | A second instance would fight the first over the same CSS property (transform / clip-path) or rebuild the same content, so these are single by design — their tile leaves the grid once added. |
+| Sticky Card Stack, Horizontal Scroll, Infinite Scroll Loop | ❌ One per Section | Section-level — each targets the whole section's cards or scroll, so only one arrangement is possible. |
+
+:::note Why not stack everything?
+Stacking is offered only where it's genuinely useful. Forcing it on effects that share the same `transform`/`clip-path` or rebuild the same DOM would just make them clobber each other — so those stay one-per-element on purpose. **Hover** is the natural fit because its effects are independent layers.
+:::
+
 ## Performance & accessibility
 
 The engine is built to stay out of the way:

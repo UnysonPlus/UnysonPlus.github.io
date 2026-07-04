@@ -9,7 +9,7 @@ Show a **full-screen loading screen until the page is ready**, then animate it a
 
 ## Where to find it
 
-**Theme Settings → Animations → Preloader** → turn on **Enable preloader** and pick a style.
+**Theme Settings → Site-wide UX → Preloader** → turn on **Enable preloader** and pick a style.
 
 ## Styles
 
@@ -35,7 +35,7 @@ Sixteen to choose from:
 | **Logo pulse** | Your logo, gently pulsing (needs a logo below). |
 
 :::info Replaces the theme's preloader
-The UnysonPlus theme has its own basic preloader (Theme Settings → **General → Preloader**). When the Animation Engine is **active**, this richer one takes over and the theme's stands down automatically — so the two never stack. With the engine deactivated, the theme's preloader works as before.
+The UnysonPlus theme has its own basic preloader under the same **Site-wide UX** tab. When the Animation Engine is **active**, this richer one takes over and the theme's stands down automatically — so the two never stack. With the engine deactivated, the theme still provides its own "Site-wide UX" tab (Preloader · Scrolling · Scroll to Top), so nothing is lost.
 :::
 
 ## Options

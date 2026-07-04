@@ -9,7 +9,7 @@ A site-wide **reading-progress indicator** that fills as the visitor scrolls —
 
 ## Where to find it
 
-It's **site-wide**: **Theme Settings → Animations → Scroll Progress**. Turn on **Enable scroll progress** (off by default), then pick a **Style** from the popover of animated tiles and configure it. Front end only.
+It's **site-wide**: **Theme Settings → Site-wide UX → Scroll Progress**. Turn on **Enable scroll progress** (off by default), then pick a **Style** from the popover of animated tiles and configure it. Front end only.
 
 ## The 16 styles
 

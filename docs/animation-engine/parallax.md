@@ -17,7 +17,7 @@ Open any element → **Animations** tab → **Parallax Layers**. It's a role pic
 | **Scene** | the container (Section / Row / Column) | The tracking stage — pointer position is measured relative to it |
 | **Layer** | each moving element inside | Drifts by its **Depth** as the pointer/scroll moves |
 
-Global on/off: **Theme Settings → Animations → Effects → Enable parallax layers**.
+Global on/off: **Theme Settings → Site-wide UX → Effects → Enable parallax layers**.
 
 :::tip Scene is optional
 A **Layer** with no Scene ancestor tracks the **whole window** — so you can just drop a Depth on a few elements and get global mouse parallax. Mark a **Scene** when you want the effect scoped to one section (or several independent scenes on a page).

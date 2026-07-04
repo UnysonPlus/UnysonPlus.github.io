@@ -11,7 +11,7 @@ Turn any element's content into a **seamless, never-ending ticker** — running 
 
 Open any element → **Animations** tab → **Marquee** (a popover with direction tiles): **None · Left · Right · Up · Down**. Works best on a heading or text with large type, or a row of logos/images.
 
-Global on/off: **Theme Settings → Animations → Effects → Enable marquee**.
+Global on/off: **Theme Settings → Site-wide UX → Effects → Enable marquee**.
 
 ## Options
 

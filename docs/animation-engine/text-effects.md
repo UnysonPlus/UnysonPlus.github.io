@@ -11,7 +11,7 @@ Kinetic typography for any element's text — split-character reveals, scramble/
 
 Open any element with text → **Animations** tab → **Text Effect**. It's a **popover of animated tiles**; leave it on **None** for none.
 
-Global on/off: **Theme Settings → Animations → Text**.
+Global on/off: **Theme Settings → Site-wide UX → Text**.
 
 ## The effects
 

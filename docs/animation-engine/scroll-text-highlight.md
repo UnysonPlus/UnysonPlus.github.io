@@ -11,7 +11,7 @@ Light up a block of text **word-by-word as the reader scrolls through it** — t
 
 Open a text element (heading, Text Block, Special Heading…) → **Animations** tab → **Scroll Text Highlight** (a popover of style tiles). Best on a large, bold paragraph or headline.
 
-Global on/off: **Theme Settings → Animations → Effects → Enable Scroll Text Highlight**.
+Global on/off: **Theme Settings → Site-wide UX → Effects → Enable Scroll Text Highlight**.
 
 ## Styles
 

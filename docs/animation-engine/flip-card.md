@@ -11,7 +11,7 @@ Turn any element into a **3D flip card**: its existing content becomes the **fro
 
 Open any element → **Animations** tab → **3D Flip Card** (a popover of style tiles). Pick a flip style; the settings below reveal. Works great on an Icon Box, an Image, or a plain container.
 
-Global on/off: **Theme Settings → Animations → Effects → Enable 3D Flip Card**.
+Global on/off: **Theme Settings → Site-wide UX → Effects → Enable 3D Flip Card**.
 
 ## Flip styles
 

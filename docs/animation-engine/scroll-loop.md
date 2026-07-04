@@ -11,7 +11,7 @@ Loop a run of full-height **Sections** into a **seamless, never-ending scroll** 
 
 It's a **Section-only** control (an infinite loop only makes sense on full-height sections, not columns or leaf elements): open a **Section** → **Animations** tab → **Infinite Scroll Loop** → pick **Infinite Loop** (default **Off**).
 
-Global on/off: **Theme Settings → Animations → Effects → Enable Infinite Scroll Loop**.
+Global on/off: **Theme Settings → Site-wide UX → Effects → Enable Infinite Scroll Loop**.
 
 ## Options
 

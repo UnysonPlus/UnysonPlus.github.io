@@ -11,7 +11,7 @@ A living, animated background layered **behind a container's content** — auror
 
 Animated Backgrounds live on the **Styling tab**, right next to the normal **Background** control — on **container** elements only: **Section**, **Bleed Section**, **Masonry Section** and **Row**. Pick a **Background Effect** from the popover; leave it on **None** for none.
 
-Global on/off: **Theme Settings → Animations → Backgrounds**.
+Global on/off: **Theme Settings → Site-wide UX → Backgrounds**.
 
 ## The effects
 

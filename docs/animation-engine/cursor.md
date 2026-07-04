@@ -9,7 +9,7 @@ Replace the mouse pointer with a **custom cursor** across the whole site — fro
 
 ## Where to find it
 
-It's **site-wide**: **Theme Settings → Animations → Cursor**. Turn on **Enable custom cursor** (off by default) and pick a **Style**. There's no per-element cursor setting — but any element can override the *Contextual Label* text with a `data-cursor-label="…"` attribute (Advanced → CSS, or a Code Block).
+It's **site-wide**: **Theme Settings → Site-wide UX → Cursor**. Turn on **Enable custom cursor** (off by default) and pick a **Style**. There's no per-element cursor setting — but any element can override the *Contextual Label* text with a `data-cursor-label="…"` attribute (Advanced → CSS, or a Code Block).
 
 ## Styles
 

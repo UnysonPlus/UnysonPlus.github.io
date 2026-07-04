@@ -11,7 +11,7 @@ Give each **Section** a target colour, and the **page background smoothly morphs
 
 Open a **Section** → **Animations** tab → **Scroll Color Shift** (a popover). Set the section's page colour. Do the same on several sections down the page and the background glides between them as you scroll.
 
-Global on/off: **Theme Settings → Animations → Effects → Enable Scroll Color Shift**.
+Global on/off: **Theme Settings → Site-wide UX → Effects → Enable Scroll Color Shift**.
 
 ## Options
 

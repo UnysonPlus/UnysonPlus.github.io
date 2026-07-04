@@ -11,7 +11,7 @@ Physics-driven motion you can attach to **any element** — grab-and-throw, buoy
 
 Open any element → **Animations** tab → **Physics**. The picker is a **popover of animated tiles** (each previews its motion, with the effect name on it). Leave it on **None** for no physics.
 
-Global on/off: **Theme Settings → Animations → Physics**.
+Global on/off: **Theme Settings → Site-wide UX → Physics**.
 
 ## The effects
 

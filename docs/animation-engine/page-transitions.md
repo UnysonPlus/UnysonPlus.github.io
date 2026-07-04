@@ -9,7 +9,7 @@ Full-screen transitions between pages — a colored overlay reveals each page on
 
 ## Where to find it
 
-It's **site-wide**: **Theme Settings → Animations → Page Transitions**. Turn on **Enable page transitions** (off by default) and pick a **Transition**. Front-end only — nothing runs in the admin.
+It's **site-wide**: **Theme Settings → Site-wide UX → Page Transitions**. Turn on **Enable page transitions** (off by default) and pick a **Transition**. Front-end only — nothing runs in the admin.
 
 ## Transitions
 

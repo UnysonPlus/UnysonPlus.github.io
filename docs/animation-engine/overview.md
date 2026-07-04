@@ -44,7 +44,7 @@ The **Animations** tab is an **"Add Animation" inserter**. It starts empty with 
 | [Animated Backgrounds](./backgrounds.md) *(Styling tab)* | A living background layered behind a container — aurora, particles, waves, mesh gradient, and 30+ more |
 | [Infinite Scroll Loop](./scroll-loop.md) *(Animations tab)* | Loop full-height sections into a seamless, never-ending scroll (Lenis) |
 
-### Site-wide — *Theme Settings → Animations*
+### Site-wide — *Theme Settings → Site-wide UX*
 | Capability | What it does |
 | --- | --- |
 | [Custom Cursor](./cursor.md) | Replace the pointer with a custom cursor site-wide — 40+ styles |
@@ -82,13 +82,13 @@ Stacking is offered only where it's genuinely useful. Forcing it on effects that
 The engine is built to stay out of the way:
 
 - **Loads only where used.** Every effect's CSS/JS is enqueued **only on pages that actually use it** — a page with no effects ships zero of these bytes. Heavy libraries (GSAP, Three.js, model-viewer) are vendored and load only for the pages that need them.
-- **Reduced motion.** Everything respects `prefers-reduced-motion: reduce`, gated by the engine-wide **Respect reduced motion** setting (Theme Settings → Animations, default on). Effects fall back to a static frame or plain content.
+- **Reduced motion.** Everything respects `prefers-reduced-motion: reduce`, gated by the engine-wide **Respect reduced motion** setting (Theme Settings → Site-wide UX, default on). Effects fall back to a static frame or plain content.
 - **Touch aware.** Pointer-driven effects (Hover, Cursor, pointer-following Physics) are skipped on touch screens, and an engine-wide **Disable on mobile** setting can turn motion off on phones.
 - **Off-screen pause.** Continuous effects (backgrounds, ambient physics) pause when scrolled out of view and when the tab is hidden.
 - **Editor-safe & flash-free.** Effects are suppressed in the builder canvas and use guards so there's no flash of un-animated content.
 
 :::tip Control lives in the inserter
-Effects are added **per element** from the **Add Animation** inserter — there's no global on/off panel to keep in sync, and nothing loads on a page that doesn't use it. Theme Settings → Animations keeps only the engine-wide **Engine** sub-tab (**Respect reduced motion**, **Disable on mobile**) plus the site-wide config tabs (**Cursor**, **Page Transitions**, **Scroll Progress**).
+Effects are added **per element** from the **Add Animation** inserter — there's no global on/off panel to keep in sync, and nothing loads on a page that doesn't use it. Theme Settings → Site-wide UX keeps only the engine-wide **Engine** sub-tab (**Respect reduced motion**, **Disable on mobile**) plus the site-wide config tabs (**Cursor**, **Page Transitions**, **Scroll Progress**).
 :::
 
 :::tip Build your own

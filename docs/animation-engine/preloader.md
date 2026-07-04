@@ -13,14 +13,30 @@ Show a **full-screen loading screen until the page is ready**, then animate it a
 
 ## Styles
 
+Sixteen to choose from:
+
 | Style | What it shows |
 | --- | --- |
 | **Spinner** | A rotating ring. |
-| **Progress bar** | An indeterminate sweeping bar. |
+| **Dual ring** | Two counter-rotating rings. |
+| **Gradient ring** | A conic-gradient ring that spins. |
 | **Bouncing dots** | Three bouncing dots. |
-| **Counter (%)** | A number that counts up toward 100 as the page loads. |
+| **Fading dots** | Eight dots fading around a circle (the classic OS spinner). |
+| **Orbit** | A dot circling a track. |
+| **Equalizer bars** | Five bars pumping like an audio meter. |
+| **Pulsing grid** | A 3×3 grid pulsing in a wave. |
+| **Pulse** | A single disc growing and fading. |
+| **Ripple** | Expanding concentric rings. |
+| **Flip square** | A square flipping in 3D. |
+| **Progress bar** | An indeterminate sweeping bar. |
+| **Progress ring (%)** | A circular ring that fills toward 100 with the number inside. |
+| **Counter (%)** | A big number that counts up toward 100 as the page loads. |
 | **Curtain** | Two panels that slide apart to reveal the page. |
 | **Logo pulse** | Your logo, gently pulsing (needs a logo below). |
+
+:::info Replaces the theme's preloader
+The UnysonPlus theme has its own basic preloader (Theme Settings → **General → Preloader**). When the Animation Engine is **active**, this richer one takes over and the theme's stands down automatically — so the two never stack. With the engine deactivated, the theme's preloader works as before.
+:::
 
 ## Options
 

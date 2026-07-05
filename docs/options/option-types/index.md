@@ -199,6 +199,7 @@ copy-pasteable example.
 | --- | --- |
 | [`multi`](./multi.md) | Group several options into one stored value |
 | [`multi-picker`](./multi-picker.md) | Reveal different sub-options based on a picker choice |
+| [`responsive`](./responsive.md) | Wrap any control to make it per-device (Phone / Tablet / Desktop) |
 | [`popup`](./popup.md) | Edit a set of options inside a modal |
 | [`popover`](./popover.md) | Edit options inside an inline popover panel |
 | [`addable-option`](./addable-option.md) | A repeatable single option (add / remove rows) |

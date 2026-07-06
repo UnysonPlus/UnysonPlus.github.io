@@ -16,7 +16,7 @@ A responsive column inside a row, with fine-grained control over width, offset, 
 - **Gap** — space between the column's elements, using the site Gap Scale. Works in both directions; takes effect once the column has 2+ elements. Default is *None*.
 - **Column Vertical Alignment** — align this column against its row siblings: *Default* (stretch to match the tallest), *Top*, *Middle*, or *Bottom*. Only visible when the row has unequal-height columns.
 - **Mobile Order** — reorder this column on phones (under 576px): *Default*, *First*, a number `1`–`12`, or *Last*. Columns return to their normal order on larger screens.
-- **Width — Phone / Tablet / Desktop** — per-breakpoint width overrides (popover image-pickers). Each offers *Default*, `1/12`–`12/12`, or *Auto*; Phone targets under 576px, Tablet md (≥768px) and up, Desktop lg (≥992px) and up.
+- **Width — Phone / Tablet / Desktop** — per-breakpoint width overrides (popover image-pickers). Each offers *Default*, `1/12`–`12/12`, or *Auto*. Mobile-first: **Phone is the base** and applies at all widths, **Tablet** overrides from md (≥768px) up, **Desktop** from lg (≥992px) up; a device left on *Default* inherits the smaller one.
 - **Offset — Phone / Tablet / Desktop** — per-breakpoint indent (popover image-pickers). Each offers *None* or `1/12`–`11/12`, pushing the column right by that many twelfths at the matching breakpoint.
 - **Position** — CSS position: *Default*, *Static*, *Relative*, *Absolute*, *Sticky* (stays in view while scrolling, with an automatic top-0 offset), or *Fixed*.
 - **Z-Index** — stacking order; higher numbers sit on top. Only has effect with a Position other than Default.

@@ -53,9 +53,10 @@ rendered with that tag verbatim:
 | `aside` | A sidebar / secondary column |
 | `footer` | The site footer region |
 
-You can change the tag later from the element's options. In the canvas the box is **labeled by its
-tag** (a `nav` box reads "nav", a `div` reads "div"), so the structure you're building is legible at
-a glance.
+The tag is fixed by the **tile you drop** — there's no separate tag dropdown in the options (each
+tag is its own palette tile, so choosing the tile *is* choosing the tag). In the canvas the box is
+**labeled by its tag** (a `nav` box reads "nav", a `div` reads "div"), so the structure you're
+building is legible at a glance.
 
 ## The options
 
@@ -99,9 +100,11 @@ inline. To make a child take a share of the row, give **that child** (when it's 
 | Width | Renders as |
 | --- | --- |
 | **Auto** | Full width — the child spans the row (and wraps to its own line). The default for a nested flexbox. |
-| **1/12 … 12/12** | A twelfths column (`1_2` = 50%, `1_3` = 33%, `3_4` = 75%, …). |
-| **1/5** | One fifth (20%) — the one supported fifth; five `1_5` children make a clean 5‑across row. |
+| **1/12 … 1/1** | A twelfths fraction (`1/2` = 50%, `1/3` = 33%, `3/4` = 75%, … up to `1/1` = full). |
 | **Custom** | An exact value you type (e.g. `240px`, `30%`). |
+
+The Width control is a compact **popover of fraction tiles** and is itself per‑device — set a
+different width on the Phone / Tablet / Desktop tabs (see [Responsive](#responsive-per-breakpoint)).
 
 > **Plain elements vs. nested flexboxes.** A *content* element (text, button, image) in a Row is
 > always content‑sized and inline. The **Width** control applies to a nested **flexbox container** —
@@ -116,18 +119,34 @@ inline. To make a child take a share of the row, give **that child** (when it's 
 
 ### Responsive (per breakpoint)
 
-Direction and Justify can be **overridden per breakpoint** — the classic responsive header is a **Row**
-on desktop that becomes a **Column** on mobile:
+**Every** layout control is per‑device. Each one carries a small **Phone / Tablet / Desktop**
+switcher (the device icons that appear when you hover the option); pick a device tab, then set the
+value for that breakpoint. It's mobile‑first:
 
-| Control | Applies |
+| Tab | Applies at |
 | --- | --- |
-| **Direction — Mobile** / **Justify — Mobile** | below 768px |
-| **Direction — Tablet** / **Justify — Tablet** | 768–991px |
+| **Phone** (base) | all widths |
+| **Tablet** | ≥ 768px |
+| **Desktop** | ≥ 992px |
 
-Leave a control as **Inherit** to keep the larger‑screen value. (These emit a tiny scoped stylesheet
-keyed to the flexbox, so there's no custom CSS to write.) Each **child** can also set its own
-**Align‑self** and **Order** (the Width section), so a single child can pull to the end or reorder
-without touching the markup.
+**Phone is the base** and applies everywhere; **Tablet** overrides from 768px up, **Desktop** from
+992px up, and a device you leave **blank inherits the smaller one**. So the classic responsive
+header — a **Row** on desktop that becomes a **Column** on phones — is just Direction = *Column* on
+the Phone tab and *Row* on the Desktop tab. The same per‑device switcher is on **Direction, Reverse,
+Wrap, Gap, Justify, Align items, Align content, Width, Align‑self, Order, Grow to Fill, and Min
+height** — every layout control.
+
+Under the hood each device value becomes a **mobile‑first utility class** (`flex-lg-row`,
+`justify-content-md-center`, `sc-cgap-md-3`, `fw-col-lg-6`, …); the few values that can't be a class
+(a Custom width, a per‑device Min height) emit a tiny scoped stylesheet keyed to the flexbox, so
+there's still no custom CSS to write. See **[the `responsive` option
+type](/docs/options/option-types/responsive)** for the full per‑device model, the stored value shape,
+and the exact class output.
+
+The layout options are grouped by role: **Container** (Direction, Gap, Justify, Align items, Wrap,
+Reverse, Align content — how this box arranges its children) and **Placement** (Width, Grow to Fill,
+Align‑self, Order — how this box sits inside a parent flexbox). So a single child can pull to the end
+(**Align‑self**) or reorder (**Order**) per device without touching the markup.
 
 ## How children behave (the standard model)
 

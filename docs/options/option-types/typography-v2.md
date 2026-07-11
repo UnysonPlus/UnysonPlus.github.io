@@ -46,3 +46,23 @@ $options = [
 	],
 ];
 ```
+
+## Saved value
+
+The `fw_print()` output of what `fw_get_db_settings_option( 'demo_typography-v2_2' )` returns — so you can see the shape of this option type's stored value:
+
+```text
+Array
+(
+    [google_font] => 1
+    [subset] => latin-ext
+    [variation] => regular
+    [family] => Amarante
+    [style] => 
+    [weight] => 
+    [size] => 14
+    [line-height] => 13
+    [letter-spacing] => -2
+    [color] => #0000ff
+)
+```

@@ -17,3 +17,19 @@ $options = [
 	],
 ];
 ```
+
+## Saved value
+
+The `fw_print()` output of what `fw_get_db_settings_option( 'demo_box_shadow_2' )` returns — so you can see the shape of this option type's stored value:
+
+```text
+Array
+(
+    [x] => 0
+    [y] => 10
+    [blur] => 30
+    [spread] => -4
+    [color] => rgba(102,16,242,0.45)
+    [inset] => 
+)
+```

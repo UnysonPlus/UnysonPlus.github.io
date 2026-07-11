@@ -36,3 +36,13 @@ $options = [
 `fw:option-type:multi-upload:clear` - The value is cleared (all the selected items are removed).
 
 `fw:option-type:multi-upload:remove` - A thumb (selected item) is removed. Triggered only when `images_only` is set to `true`.
+
+## Saved value
+
+The `fw_print()` output of what `fw_get_db_settings_option( 'demo_multi_upload_2' )` returns — so you can see the shape of this option type's stored value:
+
+```text
+Array
+(
+)
+```

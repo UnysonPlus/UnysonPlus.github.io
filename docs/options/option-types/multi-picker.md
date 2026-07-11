@@ -499,3 +499,26 @@ You can even connect two (or three) multi pickers to the same picker.
 > ```
 
 Enjoy!
+
+## Saved value
+
+The `fw_print()` output of what `fw_get_db_settings_option( 'demo_multi_picker_select_2' )` returns — so you can see the shape of this option type's stored value:
+
+```text
+Array
+(
+    [gadget] => phone
+    [phone] => Array
+        (
+            [price] => 
+            [memory] => 16
+        )
+
+    [laptop] => Array
+        (
+            [price] => 
+            [webcam] => 
+        )
+
+)
+```

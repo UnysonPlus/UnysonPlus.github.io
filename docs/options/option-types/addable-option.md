@@ -36,3 +36,16 @@ $options = [
 **Custom Events**
 
 `fw:option-type:addable-option:option:init` - New option was added and initialized.
+
+## Saved value
+
+The `fw_print()` output of what `fw_get_db_settings_option( 'demo_addable_option_2' )` returns — so you can see the shape of this option type's stored value:
+
+```text
+Array
+(
+    [0] => Option 1
+    [1] => Option 2
+    [2] => Option 3
+)
+```

@@ -1,9 +1,16 @@
 ---
 sidebar_position: 4.8
 title: 3D Flip Card
+slug: /flip-card
 ---
 
 # 3D Flip Card
+
+:::tip Try it live
+Pick a style and flip it in the **[Flip Card playground](./playground.mdx)** — seven styles,
+hover / click / scroll / auto triggers, axis, depth, easing and the full back face — and copy
+the generated sample.
+:::
 
 Turn any element into a **3D flip card**: its existing content becomes the **front**, and a **back face** you define (heading, text, image, button, colours) is revealed with a 3D turn. Seven flip styles, four triggers, pure CSS 3D transforms — no library.
 

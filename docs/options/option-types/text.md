@@ -31,8 +31,27 @@ $options = [
 
 ## Saved value
 
-The `fw_print()` output of what `fw_get_db_settings_option( 'demo_text_2' )` returns — so you can see the shape of this option type's stored value:
+The `fw_print()` output of what `fw_get_db_settings_option( 'demo_text' )` returns — so you can see the shape of this option type's stored value:
 
 ```text
 Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium
+```
+
+## Reading the value
+
+`text` returns a plain **string**, so you can output it directly.
+
+**In a shortcode** — the option values reach the view (`view.php`) as `$atts`:
+
+```php
+echo esc_html( $atts['demo_text'] );
+```
+
+**In a page template** — read a per-page option (metabox) with `fw_get_db_post_option()`, or a global Theme Settings option with `fw_get_db_settings_option()`:
+
+```php
+$value = fw_get_db_post_option( get_the_ID(), 'demo_text' ); // per-page option
+// $value = fw_get_db_settings_option( 'demo_text' );        // Theme Settings option
+
+echo esc_html( $value );
 ```

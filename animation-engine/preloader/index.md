@@ -1,11 +1,17 @@
 ---
 sidebar_position: 8.8
 title: Preloader
+slug: /preloader
 ---
 
 # Preloader / Page Loader
 
-Show a **full-screen loading screen until the page is ready**, then animate it away. Six styles, configured once site-wide. The overlay is printed at the very top of the page so it covers content from the first paint, and it's removed on load (after a minimum display time). Distinct from [Page Transitions](./page-transitions.md), which animate *route changes* — this is the *first* load.
+:::tip Try it live
+Preview all 16 loader styles in the **[Preloader playground](./playground.mdx)** — pick a style,
+set the colours, logo and timing, and watch it fade away to reveal the page.
+:::
+
+Show a **full-screen loading screen until the page is ready**, then animate it away. Six styles, configured once site-wide. The overlay is printed at the very top of the page so it covers content from the first paint, and it's removed on load (after a minimum display time). Distinct from [Page Transitions](../page-transitions.md), which animate *route changes* — this is the *first* load.
 
 ## Where to find it
 

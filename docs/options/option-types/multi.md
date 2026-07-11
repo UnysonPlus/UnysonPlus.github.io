@@ -71,7 +71,7 @@ The parameter that contains options is named `inner-options` not `options` other
 The shortcode framework passes the option values into `view.php` as `$atts`:
 
 ```php
-$value = $atts['demo_multi_2'];
+$value = $atts['demo_multi'];
 echo esc_html( $value['demo_text'] ); // each key is a nested option id
 ```
 
@@ -80,7 +80,7 @@ echo esc_html( $value['demo_text'] ); // each key is a nested option id
 Options defined on a post/page (a metabox) are read with `fw_get_db_post_option()`:
 
 ```php
-$value = fw_get_db_post_option( get_the_ID(), 'demo_multi_2' );
+$value = fw_get_db_post_option( get_the_ID(), 'demo_multi' );
 echo esc_html( $value['demo_text'] ); // each key is a nested option id
 ```
 
@@ -88,7 +88,7 @@ When the field is one of several inside a **box/group**, read the whole group on
 
 ```php
 $book  = fw_get_db_post_option( get_the_ID(), 'book' );
-$value = $book['demo_multi_2'];
+$value = $book['demo_multi'];
 echo esc_html( $value['demo_text'] ); // each key is a nested option id
 ```
 
@@ -97,13 +97,13 @@ echo esc_html( $value['demo_text'] ); // each key is a nested option id
 Global options are read with `fw_get_db_settings_option()`:
 
 ```php
-$value = fw_get_db_settings_option( 'demo_multi_2' );
+$value = fw_get_db_settings_option( 'demo_multi' );
 echo esc_html( $value['demo_text'] ); // each key is a nested option id
 ```
 
 ## Saved value
 
-`fw_print( fw_get_db_settings_option( 'demo_multi_2' ) )` outputs — the shape of this option type's stored value:
+`fw_print( fw_get_db_settings_option( 'demo_multi' ) )` outputs — the shape of this option type's stored value:
 
 ```text
 Array

@@ -132,7 +132,7 @@ $options = [
 The shortcode framework passes the option values into `view.php` as `$atts`:
 
 ```php
-$value = $atts['demo_addable_popup_2'];
+$value = $atts['demo_addable_popup'];
 foreach ( (array) $value as $row ) {
 	// each $row is one added item (an array of its sub-option values)
 }
@@ -143,7 +143,7 @@ foreach ( (array) $value as $row ) {
 Options defined on a post/page (a metabox) are read with `fw_get_db_post_option()`:
 
 ```php
-$value = fw_get_db_post_option( get_the_ID(), 'demo_addable_popup_2' );
+$value = fw_get_db_post_option( get_the_ID(), 'demo_addable_popup' );
 foreach ( (array) $value as $row ) {
 	// each $row is one added item (an array of its sub-option values)
 }
@@ -153,7 +153,7 @@ When the field is one of several inside a **box/group**, read the whole group on
 
 ```php
 $book  = fw_get_db_post_option( get_the_ID(), 'book' );
-$value = $book['demo_addable_popup_2'];
+$value = $book['demo_addable_popup'];
 foreach ( (array) $value as $row ) {
 	// each $row is one added item (an array of its sub-option values)
 }
@@ -164,7 +164,7 @@ foreach ( (array) $value as $row ) {
 Global options are read with `fw_get_db_settings_option()`:
 
 ```php
-$value = fw_get_db_settings_option( 'demo_addable_popup_2' );
+$value = fw_get_db_settings_option( 'demo_addable_popup' );
 foreach ( (array) $value as $row ) {
 	// each $row is one added item (an array of its sub-option values)
 }
@@ -172,7 +172,7 @@ foreach ( (array) $value as $row ) {
 
 ## Saved value
 
-`fw_print( fw_get_db_settings_option( 'demo_addable_popup_2' ) )` outputs — the shape of this option type's stored value:
+`fw_print( fw_get_db_settings_option( 'demo_addable_popup' ) )` outputs — the shape of this option type's stored value:
 
 ```text
 Array

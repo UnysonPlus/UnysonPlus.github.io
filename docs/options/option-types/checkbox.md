@@ -38,7 +38,7 @@ $options = [
 The shortcode framework passes the option values into `view.php` as `$atts`:
 
 ```php
-echo $atts['demo_checkbox_2'] ? 'Yes' : 'No';
+echo $atts['demo_checkbox'] ? 'Yes' : 'No';
 ```
 
 ### In a page template — a per-page option
@@ -46,7 +46,7 @@ echo $atts['demo_checkbox_2'] ? 'Yes' : 'No';
 Options defined on a post/page (a metabox) are read with `fw_get_db_post_option()`:
 
 ```php
-$value = fw_get_db_post_option( get_the_ID(), 'demo_checkbox_2' );
+$value = fw_get_db_post_option( get_the_ID(), 'demo_checkbox' );
 echo $value ? 'Yes' : 'No';
 ```
 
@@ -54,7 +54,7 @@ When the field is one of several inside a **box/group**, read the whole group on
 
 ```php
 $book = fw_get_db_post_option( get_the_ID(), 'book' );
-echo $book['demo_checkbox_2'] ? 'Yes' : 'No';
+echo $book['demo_checkbox'] ? 'Yes' : 'No';
 ```
 
 ### In Theme Settings — a global option
@@ -62,13 +62,13 @@ echo $book['demo_checkbox_2'] ? 'Yes' : 'No';
 Global options are read with `fw_get_db_settings_option()`:
 
 ```php
-$value = fw_get_db_settings_option( 'demo_checkbox_2' );
+$value = fw_get_db_settings_option( 'demo_checkbox' );
 echo $value ? 'Yes' : 'No';
 ```
 
 ## Saved value
 
-`fw_print( fw_get_db_settings_option( 'demo_checkbox_2' ) )` outputs — the shape of this option type's stored value:
+`fw_print( fw_get_db_settings_option( 'demo_checkbox' ) )` outputs — the shape of this option type's stored value:
 
 ```text
 true

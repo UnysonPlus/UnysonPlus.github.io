@@ -35,7 +35,7 @@ $options = [
 The shortcode framework passes the option values into `view.php` as `$atts`:
 
 ```php
-echo (float) $atts['demo_slider_2'];
+echo (float) $atts['demo_slider'];
 ```
 
 ### In a page template — a per-page option
@@ -43,7 +43,7 @@ echo (float) $atts['demo_slider_2'];
 Options defined on a post/page (a metabox) are read with `fw_get_db_post_option()`:
 
 ```php
-$value = fw_get_db_post_option( get_the_ID(), 'demo_slider_2' );
+$value = fw_get_db_post_option( get_the_ID(), 'demo_slider' );
 echo (float) $value;
 ```
 
@@ -51,7 +51,7 @@ When the field is one of several inside a **box/group**, read the whole group on
 
 ```php
 $book = fw_get_db_post_option( get_the_ID(), 'book' );
-echo (float) $book['demo_slider_2'];
+echo (float) $book['demo_slider'];
 ```
 
 ### In Theme Settings — a global option
@@ -59,13 +59,13 @@ echo (float) $book['demo_slider_2'];
 Global options are read with `fw_get_db_settings_option()`:
 
 ```php
-$value = fw_get_db_settings_option( 'demo_slider_2' );
+$value = fw_get_db_settings_option( 'demo_slider' );
 echo (float) $value;
 ```
 
 ## Saved value
 
-`fw_print( fw_get_db_settings_option( 'demo_slider_2' ) )` outputs — the shape of this option type's stored value:
+`fw_print( fw_get_db_settings_option( 'demo_slider' ) )` outputs — the shape of this option type's stored value:
 
 ```text
 10

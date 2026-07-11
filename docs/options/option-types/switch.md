@@ -53,7 +53,7 @@ Switch value in html is json encoded to prevent issues with boolean values, so b
 The shortcode framework passes the option values into `view.php` as `$atts`:
 
 ```php
-echo $atts['demo_switch_2'] === 'yes' ? 'On' : 'Off';
+echo $atts['demo_switch'] === 'yes' ? 'On' : 'Off';
 ```
 
 ### In a page template — a per-page option
@@ -61,7 +61,7 @@ echo $atts['demo_switch_2'] === 'yes' ? 'On' : 'Off';
 Options defined on a post/page (a metabox) are read with `fw_get_db_post_option()`:
 
 ```php
-$value = fw_get_db_post_option( get_the_ID(), 'demo_switch_2' );
+$value = fw_get_db_post_option( get_the_ID(), 'demo_switch' );
 echo $value === 'yes' ? 'On' : 'Off';
 ```
 
@@ -69,7 +69,7 @@ When the field is one of several inside a **box/group**, read the whole group on
 
 ```php
 $book = fw_get_db_post_option( get_the_ID(), 'book' );
-echo $book['demo_switch_2'] === 'yes' ? 'On' : 'Off';
+echo $book['demo_switch'] === 'yes' ? 'On' : 'Off';
 ```
 
 ### In Theme Settings — a global option
@@ -77,13 +77,13 @@ echo $book['demo_switch_2'] === 'yes' ? 'On' : 'Off';
 Global options are read with `fw_get_db_settings_option()`:
 
 ```php
-$value = fw_get_db_settings_option( 'demo_switch_2' );
+$value = fw_get_db_settings_option( 'demo_switch' );
 echo $value === 'yes' ? 'On' : 'Off';
 ```
 
 ## Saved value
 
-`fw_print( fw_get_db_settings_option( 'demo_switch_2' ) )` outputs — the shape of this option type's stored value:
+`fw_print( fw_get_db_settings_option( 'demo_switch' ) )` outputs — the shape of this option type's stored value:
 
 ```text
 'yes'

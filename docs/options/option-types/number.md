@@ -49,7 +49,7 @@ $options = [
 The shortcode framework passes the option values into `view.php` as `$atts`:
 
 ```php
-echo (int) $atts['demo_number_2'];
+echo (int) $atts['demo_number'];
 ```
 
 ### In a page template — a per-page option
@@ -57,7 +57,7 @@ echo (int) $atts['demo_number_2'];
 Options defined on a post/page (a metabox) are read with `fw_get_db_post_option()`:
 
 ```php
-$value = fw_get_db_post_option( get_the_ID(), 'demo_number_2' );
+$value = fw_get_db_post_option( get_the_ID(), 'demo_number' );
 echo (int) $value;
 ```
 
@@ -65,7 +65,7 @@ When the field is one of several inside a **box/group**, read the whole group on
 
 ```php
 $book = fw_get_db_post_option( get_the_ID(), 'book' );
-echo (int) $book['demo_number_2'];
+echo (int) $book['demo_number'];
 ```
 
 ### In Theme Settings — a global option
@@ -73,13 +73,13 @@ echo (int) $book['demo_number_2'];
 Global options are read with `fw_get_db_settings_option()`:
 
 ```php
-$value = fw_get_db_settings_option( 'demo_number_2' );
+$value = fw_get_db_settings_option( 'demo_number' );
 echo (int) $value;
 ```
 
 ## Saved value
 
-`fw_print( fw_get_db_settings_option( 'demo_number_2' ) )` outputs — the shape of this option type's stored value:
+`fw_print( fw_get_db_settings_option( 'demo_number' ) )` outputs — the shape of this option type's stored value:
 
 ```text
 7

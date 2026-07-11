@@ -61,7 +61,7 @@ $options = [
 The shortcode framework passes the option values into `view.php` as `$atts`:
 
 ```php
-$value = $atts['demo_select_multiple_2'];
+$value = $atts['demo_select_multiple'];
 echo esc_html( implode( ', ', (array) $value ) );
 ```
 
@@ -70,7 +70,7 @@ echo esc_html( implode( ', ', (array) $value ) );
 Options defined on a post/page (a metabox) are read with `fw_get_db_post_option()`:
 
 ```php
-$value = fw_get_db_post_option( get_the_ID(), 'demo_select_multiple_2' );
+$value = fw_get_db_post_option( get_the_ID(), 'demo_select_multiple' );
 echo esc_html( implode( ', ', (array) $value ) );
 ```
 
@@ -78,7 +78,7 @@ When the field is one of several inside a **box/group**, read the whole group on
 
 ```php
 $book  = fw_get_db_post_option( get_the_ID(), 'book' );
-$value = $book['demo_select_multiple_2'];
+$value = $book['demo_select_multiple'];
 echo esc_html( implode( ', ', (array) $value ) );
 ```
 
@@ -87,13 +87,13 @@ echo esc_html( implode( ', ', (array) $value ) );
 Global options are read with `fw_get_db_settings_option()`:
 
 ```php
-$value = fw_get_db_settings_option( 'demo_select_multiple_2' );
+$value = fw_get_db_settings_option( 'demo_select_multiple' );
 echo esc_html( implode( ', ', (array) $value ) );
 ```
 
 ## Saved value
 
-`fw_print( fw_get_db_settings_option( 'demo_select_multiple_2' ) )` outputs — the shape of this option type's stored value:
+`fw_print( fw_get_db_settings_option( 'demo_select_multiple' ) )` outputs — the shape of this option type's stored value:
 
 ```text
 Array

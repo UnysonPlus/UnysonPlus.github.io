@@ -32,7 +32,7 @@ $options = [
 The shortcode framework passes the option values into `view.php` as `$atts`:
 
 ```php
-echo esc_attr( $atts['demo_predefined_colors_2'] );
+echo esc_attr( $atts['demo_predefined_colors'] );
 ```
 
 ### In a page template — a per-page option
@@ -40,7 +40,7 @@ echo esc_attr( $atts['demo_predefined_colors_2'] );
 Options defined on a post/page (a metabox) are read with `fw_get_db_post_option()`:
 
 ```php
-$value = fw_get_db_post_option( get_the_ID(), 'demo_predefined_colors_2' );
+$value = fw_get_db_post_option( get_the_ID(), 'demo_predefined_colors' );
 echo esc_attr( $value );
 ```
 
@@ -48,7 +48,7 @@ When the field is one of several inside a **box/group**, read the whole group on
 
 ```php
 $book = fw_get_db_post_option( get_the_ID(), 'book' );
-echo esc_attr( $book['demo_predefined_colors_2'] );
+echo esc_attr( $book['demo_predefined_colors'] );
 ```
 
 ### In Theme Settings — a global option
@@ -56,14 +56,14 @@ echo esc_attr( $book['demo_predefined_colors_2'] );
 Global options are read with `fw_get_db_settings_option()`:
 
 ```php
-$value = fw_get_db_settings_option( 'demo_predefined_colors_2' );
+$value = fw_get_db_settings_option( 'demo_predefined_colors' );
 echo esc_attr( $value );
 ```
 
 ## Saved value
 
-`fw_print( fw_get_db_settings_option( 'demo_predefined_colors_2' ) )` outputs — the shape of this option type's stored value:
+`fw_print( fw_get_db_settings_option( 'demo_predefined_colors' ) )` outputs — the shape of this option type's stored value:
 
 ```text
-'#3f51b5'
+''
 ```

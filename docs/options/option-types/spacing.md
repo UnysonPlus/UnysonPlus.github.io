@@ -58,7 +58,7 @@ $options = [
 The shortcode framework passes the option values into `view.php` as `$atts`:
 
 ```php
-$value = $atts['demo_spacing_2'];
+$value = $atts['demo_spacing'];
 // $value['padding'] and $value['margin'] hold the sides (see Saved value)
 $padding = $value['padding'];
 ```
@@ -68,7 +68,7 @@ $padding = $value['padding'];
 Options defined on a post/page (a metabox) are read with `fw_get_db_post_option()`:
 
 ```php
-$value = fw_get_db_post_option( get_the_ID(), 'demo_spacing_2' );
+$value = fw_get_db_post_option( get_the_ID(), 'demo_spacing' );
 // $value['padding'] and $value['margin'] hold the sides (see Saved value)
 $padding = $value['padding'];
 ```
@@ -77,7 +77,7 @@ When the field is one of several inside a **box/group**, read the whole group on
 
 ```php
 $book  = fw_get_db_post_option( get_the_ID(), 'book' );
-$value = $book['demo_spacing_2'];
+$value = $book['demo_spacing'];
 // $value['padding'] and $value['margin'] hold the sides (see Saved value)
 $padding = $value['padding'];
 ```
@@ -87,14 +87,14 @@ $padding = $value['padding'];
 Global options are read with `fw_get_db_settings_option()`:
 
 ```php
-$value = fw_get_db_settings_option( 'demo_spacing_2' );
+$value = fw_get_db_settings_option( 'demo_spacing' );
 // $value['padding'] and $value['margin'] hold the sides (see Saved value)
 $padding = $value['padding'];
 ```
 
 ## Saved value
 
-`fw_print( fw_get_db_settings_option( 'demo_spacing_2' ) )` outputs — the shape of this option type's stored value:
+`fw_print( fw_get_db_settings_option( 'demo_spacing' ) )` outputs — the shape of this option type's stored value:
 
 ```text
 Array

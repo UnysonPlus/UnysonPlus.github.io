@@ -46,7 +46,7 @@ There are `html-fixed` and `html-full` option types as well. They are the same a
 The shortcode framework passes the option values into `view.php` as `$atts`:
 
 ```php
-echo wp_kses_post( $atts['demo_html_2'] );
+echo wp_kses_post( $atts['demo_html'] );
 ```
 
 ### In a page template — a per-page option
@@ -54,7 +54,7 @@ echo wp_kses_post( $atts['demo_html_2'] );
 Options defined on a post/page (a metabox) are read with `fw_get_db_post_option()`:
 
 ```php
-$value = fw_get_db_post_option( get_the_ID(), 'demo_html_2' );
+$value = fw_get_db_post_option( get_the_ID(), 'demo_html' );
 echo wp_kses_post( $value );
 ```
 
@@ -62,7 +62,7 @@ When the field is one of several inside a **box/group**, read the whole group on
 
 ```php
 $book = fw_get_db_post_option( get_the_ID(), 'book' );
-echo wp_kses_post( $book['demo_html_2'] );
+echo wp_kses_post( $book['demo_html'] );
 ```
 
 ### In Theme Settings — a global option
@@ -70,13 +70,13 @@ echo wp_kses_post( $book['demo_html_2'] );
 Global options are read with `fw_get_db_settings_option()`:
 
 ```php
-$value = fw_get_db_settings_option( 'demo_html_2' );
+$value = fw_get_db_settings_option( 'demo_html' );
 echo wp_kses_post( $value );
 ```
 
 ## Saved value
 
-`fw_print( fw_get_db_settings_option( 'demo_html_2' ) )` outputs — the shape of this option type's stored value:
+`fw_print( fw_get_db_settings_option( 'demo_html' ) )` outputs — the shape of this option type's stored value:
 
 ```text
 '{some: "json"}'

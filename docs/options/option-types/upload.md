@@ -45,7 +45,7 @@ $options = [
 The shortcode framework passes the option values into `view.php` as `$atts`:
 
 ```php
-echo esc_url( $atts['demo_upload_2'] );
+echo esc_url( $atts['demo_upload'] );
 ```
 
 ### In a page template — a per-page option
@@ -53,7 +53,7 @@ echo esc_url( $atts['demo_upload_2'] );
 Options defined on a post/page (a metabox) are read with `fw_get_db_post_option()`:
 
 ```php
-$value = fw_get_db_post_option( get_the_ID(), 'demo_upload_2' );
+$value = fw_get_db_post_option( get_the_ID(), 'demo_upload' );
 echo esc_url( $value );
 ```
 
@@ -61,7 +61,7 @@ When the field is one of several inside a **box/group**, read the whole group on
 
 ```php
 $book = fw_get_db_post_option( get_the_ID(), 'book' );
-echo esc_url( $book['demo_upload_2'] );
+echo esc_url( $book['demo_upload'] );
 ```
 
 ### In Theme Settings — a global option
@@ -69,13 +69,13 @@ echo esc_url( $book['demo_upload_2'] );
 Global options are read with `fw_get_db_settings_option()`:
 
 ```php
-$value = fw_get_db_settings_option( 'demo_upload_2' );
+$value = fw_get_db_settings_option( 'demo_upload' );
 echo esc_url( $value );
 ```
 
 ## Saved value
 
-`fw_print( fw_get_db_settings_option( 'demo_upload_2' ) )` outputs — the shape of this option type's stored value:
+`fw_print( fw_get_db_settings_option( 'demo_upload' ) )` outputs — the shape of this option type's stored value:
 
 ```text
 ''

@@ -49,7 +49,7 @@ $options = [
 The shortcode framework passes the option values into `view.php` as `$atts`:
 
 ```php
-$value = $atts['demo_datetime_range_2'];
+$value = $atts['demo_datetime_range'];
 echo esc_html( $value['from'] ) . ' - ' . esc_html( $value['to'] );
 ```
 
@@ -58,7 +58,7 @@ echo esc_html( $value['from'] ) . ' - ' . esc_html( $value['to'] );
 Options defined on a post/page (a metabox) are read with `fw_get_db_post_option()`:
 
 ```php
-$value = fw_get_db_post_option( get_the_ID(), 'demo_datetime_range_2' );
+$value = fw_get_db_post_option( get_the_ID(), 'demo_datetime_range' );
 echo esc_html( $value['from'] ) . ' - ' . esc_html( $value['to'] );
 ```
 
@@ -66,7 +66,7 @@ When the field is one of several inside a **box/group**, read the whole group on
 
 ```php
 $book  = fw_get_db_post_option( get_the_ID(), 'book' );
-$value = $book['demo_datetime_range_2'];
+$value = $book['demo_datetime_range'];
 echo esc_html( $value['from'] ) . ' - ' . esc_html( $value['to'] );
 ```
 
@@ -75,13 +75,13 @@ echo esc_html( $value['from'] ) . ' - ' . esc_html( $value['to'] );
 Global options are read with `fw_get_db_settings_option()`:
 
 ```php
-$value = fw_get_db_settings_option( 'demo_datetime_range_2' );
+$value = fw_get_db_settings_option( 'demo_datetime_range' );
 echo esc_html( $value['from'] ) . ' - ' . esc_html( $value['to'] );
 ```
 
 ## Saved value
 
-`fw_print( fw_get_db_settings_option( 'demo_datetime_range_2' ) )` outputs — the shape of this option type's stored value:
+`fw_print( fw_get_db_settings_option( 'demo_datetime_range' ) )` outputs — the shape of this option type's stored value:
 
 ```text
 Array

@@ -10,13 +10,13 @@ Set a datetime range.
 
 ```php
 $options = [
-	'demo_datetime_range'            => [
-		'type'             => 'datetime-range',
-		'attr'             => [ 'class' => 'custom-class', 'data-foo' => 'bar' ],
-		'label'            => __( 'Demo date range', 'unysonplus' ),  // or false to hide the label column
-		'desc'             => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+	'demo_datetime_range' => [
+		'type' => 'datetime-range',
+		'attr' => [ 'class' => 'custom-class', 'data-foo' => 'bar' ],
+		'label' => __( 'Demo date range', 'unysonplus' ),  // or false to hide the label column
+		'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 			'unysonplus' ),
-		'help'             => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
+		'help' => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 				'unysonplus' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
@@ -27,14 +27,14 @@ $options = [
 				'timepicker' => false,
 				'datepicker' => true,
 			],
-			'to'   => [
+			'to' => [
 				'timepicker' => false,
 				'datepicker' => true,
 			]
 		],
-		'value'            => [
+		'value' => [
 			'from' => '',
-			'to'   => ''
+			'to' => ''
 		]
 	],
 ];

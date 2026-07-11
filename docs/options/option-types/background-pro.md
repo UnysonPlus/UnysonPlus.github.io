@@ -9,10 +9,10 @@ Composite background option with **Color / Gradient / Image / Video** tabs that 
 
 ```php
 $options = [
-	'demo_background_pro'            => [
+	'demo_background_pro' => [
 		'label' => __( 'Background Pro', 'unysonplus' ),
-		'type'  => 'background-pro',
-		'desc'  => __( 'Composite background option (v1). Four tabs: Color / Gradient / Image / Video. Values stack as CSS layers — color underneath, gradient over, image over, video on top. The dot on each tab indicates that layer has a value.', 'unysonplus' ),
+		'type' => 'background-pro',
+		'desc' => __( 'Composite background option (v1). Four tabs: Color / Gradient / Image / Video. Values stack as CSS layers — color underneath, gradient over, image over, video on top. The dot on each tab indicates that layer has a value.', 'unysonplus' ),
 	],
 ];
 ```

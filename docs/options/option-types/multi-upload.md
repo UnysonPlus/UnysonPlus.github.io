@@ -11,12 +11,12 @@ Upload multiple files.
 ```php
 $options = [
 	'demo_multi_upload' => [
-		'label'       => __( 'Multi Upload', 'unysonplus' ),  // or false to hide the label column
-		'desc'        => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		'label' => __( 'Multi Upload', 'unysonplus' ),  // or false to hide the label column
+		'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 			'unysonplus' ),
-		'type'        => 'multi-upload',
+		'type' => 'multi-upload',
 		'images_only' => false,
-		'help'        => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
+		'help' => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 				'unysonplus' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',

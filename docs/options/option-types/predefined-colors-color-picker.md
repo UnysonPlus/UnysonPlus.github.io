@@ -10,25 +10,25 @@ Hybrid control — a predefined swatch grid plus a custom color picker. Saved va
 ```php
 $options = [
 	'demo_predefined_colors_color_picker' => [
-		'label'  => __( 'Predefined Colors + Color Picker', 'unysonplus' ),
-		'type'   => 'predefined-colors-color-picker',
-		'value'  => [
+		'label' => __( 'Predefined Colors + Color Picker', 'unysonplus' ),
+		'type' => 'predefined-colors-color-picker',
+		'value' => [
 			'predefined' => '',
-			'custom'     => '',
+			'custom' => '',
 		],
 		'colors' => [
 			'predefined' => [
-				'type'    => 'predefined',
+				'type' => 'predefined',
 				'choices' => unysonplus_option_color_palette(),
 			],
-			'custom'     => [
-				'type'   => 'custom',
+			'custom' => [
+				'type' => 'custom',
 				'picker' => 'color-picker', // or 'rgba-color-picker' for alpha
 			],
 		],
-		'desc'   => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 			'unysonplus' ),
-		'help'   => __( 'Hybrid control. Saved value is a two-key array: <code>{ predefined: "", custom: "" }</code>. Only one half is meant to be live at a time — picking a swatch clears <code>custom</code>; opening the picker clears <code>predefined</code> (the JS handles this mutual exclusion automatically). Switch <code>picker</code> from <code>color-picker</code> to <code>rgba-color-picker</code> to allow alpha.',
+		'help' => __( 'Hybrid control. Saved value is a two-key array: <code>{ predefined: "", custom: "" }</code>. Only one half is meant to be live at a time — picking a swatch clears <code>custom</code>; opening the picker clears <code>predefined</code> (the JS handles this mutual exclusion automatically). Switch <code>picker</code> from <code>color-picker</code> to <code>rgba-color-picker</code> to allow alpha.',
 			'unysonplus' ),
 	],
 ];

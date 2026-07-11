@@ -16,7 +16,7 @@ $options = [
 			'option_2' => 'value 2',
 		],
 		'label' => __('Popup', 'unysonplus'),  // or false to hide the label column
-		'desc'  => __('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'unysonplus'),
+		'desc' => __('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'unysonplus'),
 		'popup-title' => __('Popup Title', 'unysonplus'),
 		'button' => __('Edit', 'unysonplus'),
 		'popup-title' => null,

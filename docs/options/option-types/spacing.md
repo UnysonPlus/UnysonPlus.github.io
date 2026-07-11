@@ -11,10 +11,10 @@ Composite Margin + Padding widget — each column has an *All Sides* select plus
 
 ```php
 $options = [
-	'demo_spacing'                   => [
+	'demo_spacing' => [
 		'label' => __( 'Spacing (Margin + Padding)', 'unysonplus' ),
-		'type'  => 'spacing',
-		'desc'  => __( 'Composite spacing option. Two columns side-by-side; each has an All Sides select plus a Top / Right / Bottom / Left quadrant arranged like a "+". Values are Bootstrap utility class names sourced from the live spacing scale.', 'unysonplus' ),
+		'type' => 'spacing',
+		'desc' => __( 'Composite spacing option. Two columns side-by-side; each has an All Sides select plus a Top / Right / Bottom / Left quadrant arranged like a "+". Values are Bootstrap utility class names sourced from the live spacing scale.', 'unysonplus' ),
 	],
 ];
 ```
@@ -25,11 +25,11 @@ $options = [
 
 ```php
 $options = [
-	'demo_spacing_margin_only'       => [
+	'demo_spacing_margin_only' => [
 		'label' => __( 'Spacing (Margin Only)', 'unysonplus' ),
-		'type'  => 'spacing',
-		'mode'  => 'margin',
-		'desc'  => __( 'Same composite, scoped to the margin column. The padding subtree is force-reset to defaults on save.', 'unysonplus' ),
+		'type' => 'spacing',
+		'mode' => 'margin',
+		'desc' => __( 'Same composite, scoped to the margin column. The padding subtree is force-reset to defaults on save.', 'unysonplus' ),
 	],
 ];
 ```
@@ -40,11 +40,11 @@ $options = [
 
 ```php
 $options = [
-	'demo_spacing_padding_only'      => [
+	'demo_spacing_padding_only' => [
 		'label' => __( 'Spacing (Padding Only)', 'unysonplus' ),
-		'type'  => 'spacing',
-		'mode'  => 'padding',
-		'desc'  => __( 'Same composite, scoped to the padding column.', 'unysonplus' ),
+		'type' => 'spacing',
+		'mode' => 'padding',
+		'desc' => __( 'Same composite, scoped to the padding column.', 'unysonplus' ),
 	],
 ];
 ```

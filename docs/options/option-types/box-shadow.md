@@ -9,11 +9,11 @@ Structured box-shadow builder: X / Y / blur / spread / color / inset, with a liv
 
 ```php
 $options = [
-	'demo_box_shadow'                => [
+	'demo_box_shadow' => [
 		'label' => __( 'Box Shadow', 'unysonplus' ),
-		'type'  => 'box-shadow',
+		'type' => 'box-shadow',
 		'value' => [ 'x' => 0, 'y' => 6, 'blur' => 18, 'spread' => 0, 'color' => 'rgba(0,0,0,0.25)', 'inset' => false ],
-		'desc'  => __( 'Structured box-shadow builder: X / Y / blur / spread / color / inset, with a 300px live preview on top and the generated CSS string below. Consume with <code>FW_Option_Type_Box_Shadow::to_css( $val )</code>.', 'unysonplus' ),
+		'desc' => __( 'Structured box-shadow builder: X / Y / blur / spread / color / inset, with a 300px live preview on top and the generated CSS string below. Consume with <code>FW_Option_Type_Box_Shadow::to_css( $val )</code>.', 'unysonplus' ),
 	],
 ];
 ```

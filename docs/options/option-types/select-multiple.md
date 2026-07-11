@@ -10,25 +10,25 @@ Select with multiple values.
 
 ```php
 $options = [
-	'demo_select_multiple'           => [
-		'label'   => __( 'Select Multiple', 'unysonplus' ),  // or false to hide the label column
-		'type'    => 'select-multiple',
-		'value'   => [ 'c', '2' ],
-		'desc'    => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+	'demo_select_multiple' => [
+		'label' => __( 'Select Multiple', 'unysonplus' ),  // or false to hide the label column
+		'type' => 'select-multiple',
+		'value' => [ 'c', '2' ],
+		'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 			'unysonplus' ),
 		'choices' => [
-			''  => '---',
+			'' => '---',
 			'a' => __( 'Lorem ipsum', 'unysonplus' ),
 			'b' => [
 				'text' => __( 'Consectetur', 'unysonplus' ),
 				'attr' => [
-					'label'         => 'Label overrides text',
+					'label' => 'Label overrides text',
 					'data-whatever' => 'some data',
 				],
 			],
 			[
-				'attr'    => [
-					'label'         => __( 'Optgroup Label', 'unysonplus' ),
+				'attr' => [
+					'label' => __( 'Optgroup Label', 'unysonplus' ),
 					'data-whatever' => 'some data',
 				],
 				'choices' => [
@@ -36,11 +36,11 @@ $options = [
 					'd' => __( 'Excepteur sint occaecat', 'unysonplus' ),
 				],
 			],
-			1   => __( 'One', 'unysonplus' ),
-			2   => __( 'Two', 'unysonplus' ),
-			3   => __( 'Three', 'unysonplus' ),
+			1 => __( 'One', 'unysonplus' ),
+			2 => __( 'Two', 'unysonplus' ),
+			3 => __( 'Three', 'unysonplus' ),
 		],
-		'help'    => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
+		'help' => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 				'unysonplus' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',

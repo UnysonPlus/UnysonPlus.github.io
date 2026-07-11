@@ -13,21 +13,21 @@ The `picker` parameter holds a valid option type with choices. Supported option 
 
 ```php
 $options = [
-	'demo_multi_picker_select'       => [
-		'type'         => 'multi-picker',
-		'label'        => false,
-		'desc'         => false,
-		'picker'       => [
+	'demo_multi_picker_select' => [
+		'type' => 'multi-picker',
+		'label' => false,
+		'desc' => false,
+		'picker' => [
 			'gadget' => [
-				'label'   => __( 'Multi Picker: Select', 'unysonplus' ),
-				'type'    => 'select',
+				'label' => __( 'Multi Picker: Select', 'unysonplus' ),
+				'type' => 'select',
 				'choices' => [
-					'phone'  => __( 'Phone', 'unysonplus' ),
+					'phone' => __( 'Phone', 'unysonplus' ),
 					'laptop' => __( 'Laptop', 'unysonplus' )
 				],
-				'desc'    => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+				'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 					'unysonplus' ),
-				'help'    => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
+				'help' => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 						'unysonplus' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
@@ -35,16 +35,16 @@ $options = [
 				)
 			]
 		],
-		'choices'      => [
-			'phone'  => [
-				'price'  => [
-					'type'  => 'text',
+		'choices' => [
+			'phone' => [
+				'price' => [
+					'type' => 'text',
 					'label' => __( 'Price', 'unysonplus' ),
 
 				],
 				'memory' => [
-					'type'    => 'select',
-					'label'   => __( 'Memory', 'unysonplus' ),
+					'type' => 'select',
+					'label' => __( 'Memory', 'unysonplus' ),
 					'choices' => [
 						'16' => __( '16Gb', 'unysonplus' ),
 						'32' => __( '32Gb', 'unysonplus' ),
@@ -53,12 +53,12 @@ $options = [
 				]
 			],
 			'laptop' => [
-				'price'  => [
-					'type'  => 'text',
+				'price' => [
+					'type' => 'text',
 					'label' => __( 'Price', 'unysonplus' ),
 				],
 				'webcam' => [
-					'type'  => 'switch',
+					'type' => 'switch',
 					'label' => __( 'Webcam', 'unysonplus' ),
 				]
 			],
@@ -74,24 +74,24 @@ $options = [
 
 ```php
 $options = [
-	'demo_multi_picker_radio'        => [
-		'type'         => 'multi-picker',
-		'label'        => false,
-		'desc'         => false,
-		'value'        => [
+	'demo_multi_picker_radio' => [
+		'type' => 'multi-picker',
+		'label' => false,
+		'desc' => false,
+		'value' => [
 			'gadget' => 'laptop',
 		],
-		'picker'       => [
+		'picker' => [
 			'gadget' => [
-				'label'   => __( 'Multi Picker: Radio', 'unysonplus' ),
-				'type'    => 'radio',
+				'label' => __( 'Multi Picker: Radio', 'unysonplus' ),
+				'type' => 'radio',
 				'choices' => [
-					'phone'  => __( 'Phone', 'unysonplus' ),
+					'phone' => __( 'Phone', 'unysonplus' ),
 					'laptop' => __( 'Laptop', 'unysonplus' )
 				],
-				'desc'    => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+				'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 					'unysonplus' ),
-				'help'    => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
+				'help' => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 						'unysonplus' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
@@ -99,15 +99,15 @@ $options = [
 				)
 			]
 		],
-		'choices'      => [
-			'phone'  => [
-				'price'  => [
-					'type'  => 'text',
+		'choices' => [
+			'phone' => [
+				'price' => [
+					'type' => 'text',
 					'label' => __( 'Price', 'unysonplus' ),
 				],
 				'memory' => [
-					'type'    => 'select',
-					'label'   => __( 'Memory', 'unysonplus' ),
+					'type' => 'select',
+					'label' => __( 'Memory', 'unysonplus' ),
 					'choices' => [
 						'16' => __( '16Gb', 'unysonplus' ),
 						'32' => __( '32Gb', 'unysonplus' ),
@@ -116,12 +116,12 @@ $options = [
 				]
 			],
 			'laptop' => [
-				'price'  => [
-					'type'  => 'text',
+				'price' => [
+					'type' => 'text',
 					'label' => __( 'Price', 'unysonplus' ),
 				],
 				'webcam' => [
-					'type'  => 'switch',
+					'type' => 'switch',
 					'label' => __( 'Webcam', 'unysonplus' ),
 				]
 			],
@@ -138,40 +138,40 @@ $options = [
 ```php
 $options = [
 	'demo_multi_picker_image_picker' => [
-		'type'         => 'multi-picker',
-		'label'        => false,
-		'desc'         => false,
-		'picker'       => [
+		'type' => 'multi-picker',
+		'label' => false,
+		'desc' => false,
+		'picker' => [
 			'gadget' => [
-				'label'   => __( 'Multi Picker: Image Picker', 'unysonplus' ),
-				'type'    => 'image-picker',
+				'label' => __( 'Multi Picker: Image Picker', 'unysonplus' ),
+				'type' => 'image-picker',
 				'choices' => [
-					'phone'  => [
+					'phone' => [
 						'label' => __( 'Phone', 'unysonplus' ),
 						'small' => [
 							'height' => 70,
-							'src'    => get_template_directory_uri() . '/images/image-picker-demo/thumb1.jpg'
+							'src' => get_template_directory_uri() . '/images/image-picker-demo/thumb1.jpg'
 						],
 						'large' => [
 							'height' => 214,
-							'src'    => get_template_directory_uri() . '/images/image-picker-demo/tooltip1.jpg'
+							'src' => get_template_directory_uri() . '/images/image-picker-demo/tooltip1.jpg'
 						],
 					],
 					'laptop' => [
 						'label' => __( 'Laptop', 'unysonplus' ),
 						'small' => [
 							'height' => 70,
-							'src'    => get_template_directory_uri() . '/images/image-picker-demo/thumb2.jpg'
+							'src' => get_template_directory_uri() . '/images/image-picker-demo/thumb2.jpg'
 						],
 						'large' => [
 							'height' => 214,
-							'src'    => get_template_directory_uri() . '/images/image-picker-demo/tooltip2.jpg'
+							'src' => get_template_directory_uri() . '/images/image-picker-demo/tooltip2.jpg'
 						],
 					]
 				],
-				'desc'    => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+				'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 					'unysonplus' ),
-				'help'    => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
+				'help' => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 						'unysonplus' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
@@ -179,15 +179,15 @@ $options = [
 				)
 			]
 		],
-		'choices'      => [
-			'phone'  => [
-				'price'  => [
-					'type'  => 'text',
+		'choices' => [
+			'phone' => [
+				'price' => [
+					'type' => 'text',
 					'label' => __( 'Price', 'unysonplus' ),
 				],
 				'memory' => [
-					'type'    => 'select',
-					'label'   => __( 'Memory', 'unysonplus' ),
+					'type' => 'select',
+					'label' => __( 'Memory', 'unysonplus' ),
 					'choices' => [
 						'16' => __( '16Gb', 'unysonplus' ),
 						'32' => __( '32Gb', 'unysonplus' ),
@@ -196,12 +196,12 @@ $options = [
 				]
 			],
 			'laptop' => [
-				'price'  => [
-					'type'  => 'text',
+				'price' => [
+					'type' => 'text',
 					'label' => __( 'Price', 'unysonplus' ),
 				],
 				'webcam' => [
-					'type'  => 'switch',
+					'type' => 'switch',
 					'label' => __( 'Webcam', 'unysonplus' ),
 				]
 			],
@@ -217,26 +217,26 @@ $options = [
 
 ```php
 $options = [
-	'demo_multi_picker_switch'       => [
-		'type'         => 'multi-picker',
-		'label'        => false,
-		'desc'         => false,
-		'picker'       => [
+	'demo_multi_picker_switch' => [
+		'type' => 'multi-picker',
+		'label' => false,
+		'desc' => false,
+		'picker' => [
 			'gadget' => [
-				'label'        => __( 'Switch', 'unysonplus' ),
-				'type'         => 'switch',
+				'label' => __( 'Switch', 'unysonplus' ),
+				'type' => 'switch',
 				'right-choice' => [
 					'value' => 'laptop',
 					'label' => __( 'Laptop', 'unysonplus' )
 				],
-				'left-choice'  => [
+				'left-choice' => [
 					'value' => 'phone',
 					'label' => __( 'Phone', 'unysonplus' )
 				],
-				'value'        => 'yes',
-				'desc'         => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+				'value' => 'yes',
+				'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 					'unysonplus' ),
-				'help'         => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
+				'help' => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 						'unysonplus' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
@@ -244,15 +244,15 @@ $options = [
 				),
 			]
 		],
-		'choices'      => [
-			'phone'  => [
-				'price'  => [
-					'type'  => 'text',
+		'choices' => [
+			'phone' => [
+				'price' => [
+					'type' => 'text',
 					'label' => __( 'Price', 'unysonplus' ),
 				],
 				'memory' => [
-					'type'    => 'select',
-					'label'   => __( 'Memory', 'unysonplus' ),
+					'type' => 'select',
+					'label' => __( 'Memory', 'unysonplus' ),
 					'choices' => [
 						'16' => __( '16Gb', 'unysonplus' ),
 						'32' => __( '32Gb', 'unysonplus' ),
@@ -261,12 +261,12 @@ $options = [
 				]
 			],
 			'laptop' => [
-				'price'  => [
-					'type'  => 'text',
+				'price' => [
+					'type' => 'text',
 					'label' => __( 'Price', 'unysonplus' ),
 				],
 				'webcam' => [
-					'type'  => 'switch',
+					'type' => 'switch',
 					'label' => __( 'Webcam', 'unysonplus' ),
 				]
 			],
@@ -347,27 +347,27 @@ If you want to use in `picker` an option type that is not supported by default (
     > $options = array(
     >
     >     'demo_multi_picker_icon' => array(
-    >         'type'         => 'multi-picker',
-    >         'label'        => false,
-    >         'desc'         => false,
-    >         'picker'       => array(
+    >         'type' => 'multi-picker',
+    >         'label' => false,
+    >         'desc' => false,
+    >         'picker' => array(
     >             'gadget' => array(
-    >                 'label'   => __( 'Multi Picker: Icon', 'unyson' ),
-    >                 'type'    => 'icon',
+    >                 'label' => __( 'Multi Picker: Icon', 'unyson' ),
+    >                 'type' => 'icon',
     >             )
     >         ),
     >         'choices' => array(
-    >             'fa fa-btc'  => array(
-    >                 'price'  => array(
+    >             'fa fa-btc' => array(
+    >                 'price' => array(
     >                     'label' => __( 'Price', 'unyson' ),
-    >                     'type'  => 'slider',
+    >                     'type' => 'slider',
     >                     'value' => 70,
     >                 ),
     >             ),
     >             'fa fa-viacoin' => array(
-    >                 'price'  => array(
+    >                 'price' => array(
     >                     'label' => __( 'Price', 'unyson' ),
-    >                     'type'  => 'slider',
+    >                     'type' => 'slider',
     >                     'value' => 30
     >                 ),
     >             ),
@@ -388,9 +388,9 @@ The first step is to define your picker somewhere in the same **form** (we name 
 > ``` php
 > $options = array(
 >     'gadget' => array(
->         'type'    => 'select',
+>         'type' => 'select',
 >         'choices' => array(
->             'phone'  => __('Phone', '{domain}'),
+>             'phone' => __('Phone', '{domain}'),
 >             'laptop' => __('Laptop', '{domain}')
 >         ),
 >     ),
@@ -405,9 +405,9 @@ Next, you would add the `multi-picker` body and **connect** it to that particula
 > ``` php
 > $options = array(
 >     'gadget' => array(
->         'type'    => 'select',
+>         'type' => 'select',
 >         'choices' => array(
->             'phone'  => __('Phone', '{domain}'),
+>             'phone' => __('Phone', '{domain}'),
 >             'laptop' => __('Laptop', '{domain}')
 >         ),
 >     ),
@@ -455,9 +455,9 @@ You can even connect two (or three) multi pickers to the same picker.
 > ``` php
 > $options = array(
 >     'gadget' => array(
->         'type'    => 'select',
+>         'type' => 'select',
 >         'choices' => array(
->             'phone'  => __('Phone', '{domain}'),
+>             'phone' => __('Phone', '{domain}'),
 >             'laptop' => __('Laptop', '{domain}')
 >         ),
 >     ),

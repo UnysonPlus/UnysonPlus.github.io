@@ -8,11 +8,11 @@ Simple hidden input.
 
 ```php
 $options = [
-	'demo_hidden'                    => [
+	'demo_hidden' => [
 		'label' => false,  // or false to hide the label column
-		'type'  => 'hidden',
+		'type' => 'hidden',
 		'value' => '{some: "json"}',
-		'desc'  => false,
+		'desc' => false,
 		// — Optional attributes you can add —
 		// 'attr' => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 	],

@@ -89,7 +89,7 @@ const EFFECTS = {
   spotlight: {
     label: 'Spotlight', target: 'card',
     css: scope(`.sc-hover--spotlight{position:relative}
-.sc-hover--spotlight::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:radial-gradient(circle var(--hover-glow-size,40%) at var(--mx,50%) var(--my,50%),var(--hover-glow,#6aa6ff),transparent 75%);opacity:0;transition:opacity .3s ease;mix-blend-mode:screen;z-index:0}
+.sc-hover--spotlight::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:radial-gradient(var(--hover-glow-size,40%) var(--hover-glow-size,40%) at var(--mx,50%) var(--my,50%),var(--hover-glow,#6aa6ff),transparent 75%);opacity:0;transition:opacity .3s ease;mix-blend-mode:screen;z-index:0}
 .sc-hover--spotlight:hover::before{opacity:.55}
 .sc-hover--spotlight > *{position:relative;z-index:1}`),
     controls: [

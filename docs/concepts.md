@@ -15,9 +15,9 @@ covered in depth. If a page assumes a word you don't recognize, it's probably he
   [Architecture](/docs/architecture).
 - **Plugin** — the Unyson+ WordPress plugin that carries the framework and the bundled extensions.
 - **Parent theme** — the **Unyson+ Theme**, a Bootstrap-5 theme built for the framework; it renders
-  the builder output and provides Theme Settings. See [The Theme](/docs/theme).
+  the builder output and provides Theme Settings. See [The Theme](/theme).
 - **Child theme** — what you actually ship: a theme that inherits everything from the parent and
-  overrides only your brand. See [Child themes](/docs/theme/child-themes).
+  overrides only your brand. See [Child themes](/theme/child-themes).
 - **Extension** — a modular feature (Forms, Portfolio, Theme Builder, …), a folder with a manifest
   that the framework discovers and activates on demand. See
   [The extension system](/docs/architecture/extension-system).
@@ -51,11 +51,11 @@ covered in depth. If a page assumes a word you don't recognize, it's probably he
   [Option types](/docs/options/option-types).
 - **Container** — an option type that holds other options (`box`, `group`, `tab`, `multi`, `popup`).
 - **Theme Settings** — the global design layer (colors, typography, header/footer, custom CSS). See
-  [Theme Settings](/docs/theme/theme-settings).
+  [Theme Settings](/theme/theme-settings).
 - **Preset** — a reusable, named design value (a color palette, a font-size scale, a button style).
   See [Presets & design tokens](/docs/hooks/presets-and-tokens).
 - **Design token** — a CSS custom property (`--color-primary`, `--radius`) the theme generates from
-  settings. See [How settings become CSS](/docs/theme/settings-to-css).
+  settings. See [How settings become CSS](/theme/settings-to-css).
 - **Generated stylesheet** — the single file the theme compiles all design into (no inline-style
   soup). See [Performance](/docs/performance).
 

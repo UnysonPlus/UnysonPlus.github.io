@@ -20,5 +20,5 @@ immediately, no other configuration.
 :::note Display vs. labels
 This extension only changes the *labels*. How your blog **looks** (list / grid / masonry layout,
 columns, featured images, excerpts, meta, the single-post layout, archives and search) is configured
-in **Theme Settings → Blog** in the Unyson+ Theme. See [The Theme](/docs/theme).
+in **Theme Settings → Blog** in the Unyson+ Theme. See [The Theme](/theme).
 :::

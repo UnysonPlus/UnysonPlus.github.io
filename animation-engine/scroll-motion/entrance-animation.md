@@ -61,5 +61,5 @@ Switching effects keeps the panel — the speed and advanced tweaks you set are 
 - **Editor-safe.** Entrance effects are suppressed inside the Page Builder canvas; they play on the front end.
 
 :::tip Entrance vs. Scroll Motion
-Use **Entrance Animation** for a quick one-shot "appear". Reach for **[Scroll Motion (GSAP)](./overview.md)** (part of the [Animation Engine](/docs/animation-engine)) when you want scroll-*linked* motion — staggered reveals, parallax, pinning or scrubbing.
+Use **Entrance Animation** for a quick one-shot "appear". Reach for **[Scroll Motion (GSAP)](./overview.md)** (part of the [Animation Engine](/animation-engine)) when you want scroll-*linked* motion — staggered reveals, parallax, pinning or scrubbing.
 :::

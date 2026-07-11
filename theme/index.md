@@ -1,6 +1,6 @@
 ---
 title: The Theme
-slug: /theme
+slug: /
 sidebar_position: 1
 ---
 

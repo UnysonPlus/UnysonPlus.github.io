@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: Overview
-slug: /animations
+slug: /scroll-motion
 ---
 
 # Scroll Motion (GSAP)
@@ -9,7 +9,7 @@ slug: /animations
 Every Section, Column and element has an **Animations** tab with a **Scroll Motion (GSAP)** block — pick an effect and you get scroll-driven motion powered by [GSAP](https://gsap.com/) + ScrollTrigger, the same engine behind countless award-winning sites. No code.
 
 :::info Part of the Animation Engine
-Scroll Motion is one module of the bundled **[Animation Engine](/docs/animation-engine)** extension — activate it (UnysonPlus → Extensions → Animation Engine) to get Scroll Motion plus Hover, Physics, Text Effects, Backgrounds, Cursor, Page Transitions and the 3D/WebGL/SVG elements.
+Scroll Motion is one module of the bundled **[Animation Engine](/animation-engine)** extension — activate it (UnysonPlus → Extensions → Animation Engine) to get Scroll Motion plus Hover, Physics, Text Effects, Backgrounds, Cursor, Page Transitions and the 3D/WebGL/SVG elements.
 :::
 
 :::note A separate entrance-animation engine

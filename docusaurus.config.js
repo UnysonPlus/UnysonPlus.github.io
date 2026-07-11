@@ -49,7 +49,7 @@ const config = {
         hashed: true,
         indexDocs: true,
         indexBlog: true,
-        docsRouteBasePath: '/docs',
+        docsRouteBasePath: ['/docs', '/animation-engine', '/theme', '/guides'],
         highlightSearchTermsOnTargetPage: true,
         explicitSearchResultPath: true,
       }),
@@ -90,9 +90,29 @@ const config = {
     ],
   ],
 
-  // Standalone "Guides" docs instance — its own section, route base, and sidebar,
-  // separate from the Manual (the docsSidebar). Surfaced in the navbar.
+  // Standalone docs instances — each its own section, route base, and sidebar,
+  // separate from the Manual (the docsSidebar). All surfaced in the navbar.
   plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'animationEngine',
+        path: 'animation-engine',
+        routeBasePath: 'animation-engine',
+        sidebarPath: './sidebarsAnimationEngine.js',
+        editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'theme',
+        path: 'theme',
+        routeBasePath: 'theme',
+        sidebarPath: './sidebarsTheme.js',
+        editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
+      },
+    ],
     [
       '@docusaurus/plugin-content-docs',
       {
@@ -127,6 +147,20 @@ const config = {
             sidebarId: 'docsSidebar',
             position: 'left',
             label: 'Manual',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'animationEngineSidebar',
+            docsPluginId: 'animationEngine',
+            position: 'left',
+            label: 'Animation Engine',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'themeSidebar',
+            docsPluginId: 'theme',
+            position: 'left',
+            label: 'The Theme',
           },
           {
             type: 'docSidebar',

@@ -22,9 +22,48 @@ $options = [
 ];
 ```
 
+## Reading the value
+
+`gradient-v2` returns an **array** — read a field by key (the full shape is in *Saved value* below).
+
+### In a shortcode
+
+The shortcode framework passes the option values into `view.php` as `$atts`:
+
+```php
+$value = $atts['demo_gradient_v2_2'];
+echo esc_attr( $value['type'] ); // + $value['angle'], $value['stops'] (see Saved value)
+```
+
+### In a page template — a per-page option
+
+Options defined on a post/page (a metabox) are read with `fw_get_db_post_option()`:
+
+```php
+$value = fw_get_db_post_option( get_the_ID(), 'demo_gradient_v2_2' );
+echo esc_attr( $value['type'] ); // + $value['angle'], $value['stops'] (see Saved value)
+```
+
+When the field is one of several inside a **box/group**, read the whole group once and pick fields by key — the common CPT pattern (e.g. a `review` or `book` box):
+
+```php
+$book  = fw_get_db_post_option( get_the_ID(), 'book' );
+$value = $book['demo_gradient_v2_2'];
+echo esc_attr( $value['type'] ); // + $value['angle'], $value['stops'] (see Saved value)
+```
+
+### In Theme Settings — a global option
+
+Global options are read with `fw_get_db_settings_option()`:
+
+```php
+$value = fw_get_db_settings_option( 'demo_gradient_v2_2' );
+echo esc_attr( $value['type'] ); // + $value['angle'], $value['stops'] (see Saved value)
+```
+
 ## Saved value
 
-The `fw_print()` output of what `fw_get_db_settings_option( 'demo_gradient_v2_2' )` returns — so you can see the shape of this option type's stored value:
+`fw_print( fw_get_db_settings_option( 'demo_gradient_v2_2' ) )` outputs — the shape of this option type's stored value:
 
 ```text
 Array

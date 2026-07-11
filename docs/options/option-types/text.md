@@ -31,20 +31,38 @@ $options = [
 
 ## Reading the value
 
-`text` returns a plain **string**, so you can output it directly.
+`text` returns a plain **string**, so you can output it directly. How you *get* it depends on where the option is registered — the three places are shown below.
 
-**In a shortcode** — the option values reach the view (`view.php`) as `$atts`:
+### In a shortcode
+
+The shortcode framework passes the option values into `view.php` as `$atts`:
 
 ```php
 echo esc_html( $atts['demo_text'] );
 ```
 
-**In a page template** — read a per-page option (metabox) with `fw_get_db_post_option()`, or a global Theme Settings option with `fw_get_db_settings_option()`:
+### In a page template — a per-page option
+
+Options defined on a post/page (a metabox) are read with `fw_get_db_post_option()`:
 
 ```php
-$value = fw_get_db_post_option( get_the_ID(), 'demo_text' ); // per-page option
-// $value = fw_get_db_settings_option( 'demo_text' );        // Theme Settings option
+$value = fw_get_db_post_option( get_the_ID(), 'demo_text' );
+echo esc_html( $value );
+```
 
+When the field is one of several inside a **box/group**, read the whole group once and pick fields by key — the common CPT pattern (e.g. a `review` or `book` box):
+
+```php
+$book = fw_get_db_post_option( get_the_ID(), 'book' ); // 'book' = the box/group id
+echo esc_html( $book['demo_text'] );
+```
+
+### In Theme Settings — a global option
+
+Global options are read with `fw_get_db_settings_option()`:
+
+```php
+$value = fw_get_db_settings_option( 'demo_text' );
 echo esc_html( $value );
 ```
 

@@ -1,0 +1,58 @@
+---
+sidebar_position: 4.1
+title: "Hover · Lift (playground)"
+sidebar_label: "Hover · Lift ⚡"
+---
+
+import HoverPlayground from '@site/src/components/HoverPlayground';
+
+# Lift — Hover Interaction
+
+Lifts an element up on hover, with an optional drop shadow. Try it live below — hover
+the card, drag the **Lift distance** slider, and toggle the **Shadow**. The sample
+option object at the bottom updates as you tweak, so you can copy the exact values.
+
+<HoverPlayground effect="lift" />
+
+:::info This is an interactive preview
+This is a proof-of-concept "playground" page. The demo runs the **real** Lift CSS
+(`.sc-hover--lift`, the `--hover-lift` custom property and the `data-hover-noshadow`
+attribute) exactly as the plugin outputs it — so what you see here is what renders on
+your site.
+:::
+
+## Where to find it
+
+Open any element → **Animations** tab → **Add Animation** → **Hover Interaction** →
+pick **Lift**.
+
+## Options
+
+| Option | Control | Default | Range |
+| --- | --- | --- | --- |
+| **Lift distance (px)** | Slider | `6` | `2`–`20` |
+| **Shadow** | Switch | `On` | On / Off |
+
+## How it renders
+
+Lift is a pure-CSS transform — no JavaScript, no library. The builder puts the effect
+class and a CSS custom property on the element's wrapper:
+
+```html
+<div class="sc-hover--lift" style="--hover-lift:6px;">…</div>
+```
+
+- `transform: translateY(calc(var(--hover-lift) * -1))` on `:hover` does the lift.
+- With **Shadow On**, a `box-shadow: 0 12px 28px rgba(0,0,0,.18)` is added on hover.
+- With **Shadow Off**, the element carries `data-hover-noshadow="1"` and the shadow rule
+  is skipped.
+- It respects `prefers-reduced-motion: reduce` — the transition and lift are dropped.
+
+## Stack it
+
+Lift is a **motion** effect (it uses `transform`), so pair it with *decoration* effects
+rather than another motion effect — e.g. **Lift + Glow Border + Ripple** all run together
+on one element. Avoid combining Lift with Magnetic or 3D Tilt, which also fight over
+`transform`.
+
+← Back to [Hover Interactions](./hover.md)

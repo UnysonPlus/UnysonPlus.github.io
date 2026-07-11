@@ -27,7 +27,7 @@ Hover Interaction is **stackable** — after you add it, its tile stays in **Add
 | **Glow Border** | A glowing border traces the element | Glow color |
 | **Underline Grow** | An underline grows in on hover | Line color · Grow from (left / center) |
 | **Ripple** | A ripple expands from the cursor | Ripple color |
-| **Lift** | Lifts up with an optional shadow | Lift distance · Shadow |
+| **[Lift](./hover-lift.mdx)** ⚡ | Lifts up with an optional shadow | Lift distance · Shadow |
 | **Color Shift** | Background fades to a new color | Hover background |
 
 Colors use the theme **color-preset picker**, so they stay tied to your palette (with an inline custom-color option).

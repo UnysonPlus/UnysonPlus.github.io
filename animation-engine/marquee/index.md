@@ -1,9 +1,15 @@
 ---
 sidebar_position: 4.7
 title: Marquee
+slug: /marquee
 ---
 
 # Marquee
+
+:::tip Try it live
+Pick a direction and tweak the ticker in the **[Marquee playground](./playground.mdx)** —
+speed, gap, separator, warp, curve, drag — and copy the generated sample.
+:::
 
 Turn any element's content into a **seamless, never-ending ticker** — running text, a logo band, scrolling cards. The content is cloned into a doubled track and translated by exactly one set, so the loop has no visible jump. Pure CSS/JS, no library.
 

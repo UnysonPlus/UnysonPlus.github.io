@@ -46,7 +46,7 @@ The `fw_print()` output of what `fw_get_db_settings_option( 'demo_unit_input_2' 
 ```text
 Array
 (
-    [value] => 1.5
-    [unit] => rem
+    [value] => '1.5'
+    [unit] => 'rem'
 )
 ```

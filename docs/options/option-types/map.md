@@ -32,18 +32,17 @@ The `fw_print()` output of what `fw_get_db_settings_option( 'demo_map' )` return
 ```text
 Array
 (
-    [location] => 
-    [venue] => 
-    [address] => 
-    [city] => 
-    [state] => 
-    [country] => 
-    [zip] => 
+    [location] => ''
+    [venue] => ''
+    [address] => ''
+    [city] => ''
+    [state] => ''
+    [country] => ''
+    [zip] => ''
     [coordinates] => Array
         (
             [lat] => -34
             [lng] => 150
         )
-
 )
 ```

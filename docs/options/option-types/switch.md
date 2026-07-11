@@ -49,5 +49,5 @@ Switch value in html is json encoded to prevent issues with boolean values, so b
 The `fw_print()` output of what `fw_get_db_settings_option( 'demo_switch_2' )` returns — so you can see the shape of this option type's stored value:
 
 ```text
-yes
+'yes'
 ```

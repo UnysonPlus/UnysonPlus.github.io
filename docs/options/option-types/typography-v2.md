@@ -54,15 +54,15 @@ The `fw_print()` output of what `fw_get_db_settings_option( 'demo_typography-v2_
 ```text
 Array
 (
-    [google_font] => 1
-    [subset] => latin-ext
-    [variation] => regular
-    [family] => Amarante
-    [style] => 
-    [weight] => 
-    [size] => 14
-    [line-height] => 13
-    [letter-spacing] => -2
-    [color] => #0000ff
+    [google_font] => true
+    [subset] => 'latin-ext'
+    [variation] => 'regular'
+    [family] => 'Amarante'
+    [style] => false
+    [weight] => false
+    [size] => '14'
+    [line-height] => '13'
+    [letter-spacing] => '-2'
+    [color] => '#0000ff'
 )
 ```

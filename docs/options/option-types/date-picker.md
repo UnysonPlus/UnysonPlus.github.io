@@ -28,5 +28,5 @@ $options = [
 The `fw_print()` output of what `fw_get_db_settings_option( 'demo_date_picker' )` returns — so you can see the shape of this option type's stored value:
 
 ```text
-2026-06-15
+'2026-06-15'
 ```

@@ -41,7 +41,7 @@ The `fw_print()` output of what `fw_get_db_settings_option( 'demo_predefined_col
 ```text
 Array
 (
-    [predefined] => 
-    [custom] => #0d3c54
+    [predefined] => ''
+    [custom] => '#0d3c54'
 )
 ```

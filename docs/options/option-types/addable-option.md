@@ -44,8 +44,8 @@ The `fw_print()` output of what `fw_get_db_settings_option( 'demo_addable_option
 ```text
 Array
 (
-    [0] => Option 1
-    [1] => Option 2
-    [2] => Option 3
+    [0] => 'Option 1'
+    [1] => 'Option 2'
+    [2] => 'Option 3'
 )
 ```

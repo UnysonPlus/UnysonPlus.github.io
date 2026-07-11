@@ -29,7 +29,7 @@ Array
     [y] => 10
     [blur] => 30
     [spread] => -4
-    [color] => rgba(102,16,242,0.45)
-    [inset] => 
+    [color] => 'rgba(102,16,242,0.45)'
+    [inset] => false
 )
 ```

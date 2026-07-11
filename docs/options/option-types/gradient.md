@@ -38,7 +38,7 @@ The `fw_print()` output of what `fw_get_db_settings_option( 'demo_gradient_2' )`
 ```text
 Array
 (
-    [primary] => #ffffff
-    [secondary] => #ffffff
+    [primary] => '#ffffff'
+    [secondary] => '#ffffff'
 )
 ```

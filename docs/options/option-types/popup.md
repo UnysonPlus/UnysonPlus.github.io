@@ -56,7 +56,7 @@ The `fw_print()` output of what `fw_get_db_settings_option( 'demo_popup' )` retu
 ```text
 Array
 (
-    [heading] => Our Team
+    [heading] => 'Our Team'
     [columns] => 3
 )
 ```

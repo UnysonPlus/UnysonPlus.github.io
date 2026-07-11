@@ -154,10 +154,10 @@ The `fw_print()` output of what `fw_get_db_settings_option( 'demo_icon_v2' )` re
 ```text
 Array
 (
-    [type] => icon-font
-    [icon-class] => fa fa-star
-    [icon-class-without-root] => fa-star
-    [pack-name] => font-awesome
-    [pack-css-uri] => http://localhost/testsite/wp-content/plugins/unysonplus/framework/static/libs/font-awesome/css/font-awesome.min.css
+    [type] => 'icon-font'
+    [icon-class] => 'fa fa-star'
+    [icon-class-without-root] => 'fa-star'
+    [pack-name] => 'font-awesome'
+    [pack-css-uri] => 'http://localhost/testsite/wp-content/plugins/unysonplus/framework/static/libs/font-awesome/css/font-awesome.min.css'
 )
 ```

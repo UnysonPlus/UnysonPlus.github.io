@@ -24,7 +24,7 @@ Open any Section, Column or element → **Animations** tab:
 | Capability | What it does |
 | --- | --- |
 | [Scroll Motion (GSAP)](/animation-engine/scroll-motion) | Reveal, stagger, split-text, parallax, pin, scrub and more — scroll-linked motion via GSAP + ScrollTrigger |
-| [Hover Interactions](./hover.md) | Pointer-driven effects — magnetic pull, 3D tilt, spotlight, image reveal, and more |
+| [Hover Interactions](./hover/index.md) | Pointer-driven effects — magnetic pull, 3D tilt, spotlight, image reveal, and more |
 | [Physics Effects](./physics.md) | Spring/verlet motion — drag & throw, float, gravity, jelly, and 22 others |
 | [Text Effects](./text-effects.md) | Kinetic typography — split reveals, scramble, typewriter, gradient, glitch, count-up, and dozens more |
 | [Parallax Depth Layers](./parallax.md) | Multi-layer pointer/scroll depth — mark a Scene, give each child a Depth |

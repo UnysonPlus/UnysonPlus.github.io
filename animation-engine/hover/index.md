@@ -1,9 +1,15 @@
 ---
 sidebar_position: 4
 title: Hover Interactions
+slug: /hover
 ---
 
 # Hover Interactions
+
+:::tip Try it live
+Every effect below is interactive in the **[Hover playground](./playground.mdx)** — pick an
+effect, tweak its options, and copy the generated sample.
+:::
 
 Pointer-driven effects that play **while hovering** an element — a magnetic pull toward the cursor, a 3D tilt, a spotlight glow, an image reveal, and more.
 
@@ -27,7 +33,7 @@ Hover Interaction is **stackable** — after you add it, its tile stays in **Add
 | **Glow Border** | A glowing border traces the element | Glow color |
 | **Underline Grow** | An underline grows in on hover | Line color · Grow from (left / center) |
 | **Ripple** | A ripple expands from the cursor | Ripple color |
-| **[Lift](./hover-lift.mdx)** ⚡ | Lifts up with an optional shadow | Lift distance · Shadow |
+| **Lift** ⚡ | Lifts up with an optional shadow | Lift distance · Shadow |
 | **Color Shift** | Background fades to a new color | Hover background |
 
 Colors use the theme **color-preset picker**, so they stay tied to your palette (with an inline custom-color option).

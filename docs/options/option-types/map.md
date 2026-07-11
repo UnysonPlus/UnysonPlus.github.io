@@ -75,17 +75,12 @@ printf( '%s (%s, %s)', esc_html( $value['address'] ), esc_attr( $c['lat'] ), esc
 ```text
 Array
 (
-    [location] => ''
-    [venue] => ''
-    [address] => ''
-    [city] => ''
-    [state] => ''
-    [country] => ''
-    [zip] => ''
     [coordinates] => Array
         (
-            [lat] => -34
-            [lng] => 150
+            [lat] => 40.7128
+            [lng] => -74.006
         )
+
+    [address] => New York, NY, USA
 )
 ```

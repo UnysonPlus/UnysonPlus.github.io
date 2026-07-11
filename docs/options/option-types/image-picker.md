@@ -99,5 +99,5 @@ echo esc_html( $value );
 `fw_print( fw_get_db_settings_option( 'demo_image_picker' ) )` outputs — the shape of this option type's stored value:
 
 ```text
-'choice-1'
+choice-1
 ```

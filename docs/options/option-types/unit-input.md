@@ -87,7 +87,7 @@ echo esc_attr( $value['value'] . $value['unit'] ); // e.g. "20px"
 ```text
 Array
 (
-    [value] => '24'
-    [unit] => 'px'
+    [value] => 24
+    [unit] => px
 )
 ```

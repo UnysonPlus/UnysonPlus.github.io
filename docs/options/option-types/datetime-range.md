@@ -86,7 +86,7 @@ echo esc_html( $value['from'] ) . ' - ' . esc_html( $value['to'] );
 ```text
 Array
 (
-    [from] => ''
-    [to] => ''
+    [from] => 2026-06-24 09:00
+    [to] => 2026-06-30 17:00
 )
 ```

@@ -69,10 +69,10 @@ printf( '%spx %spx %spx %spx %s',
 Array
 (
     [x] => 0
-    [y] => 6
-    [blur] => 18
+    [y] => 4
+    [blur] => 12
     [spread] => 0
-    [color] => 'rgba(0,0,0,0.25)'
-    [inset] => false
+    [color] => rgba(0,0,0,0.15)
+    [inset] => 
 )
 ```

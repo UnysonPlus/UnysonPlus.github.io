@@ -65,5 +65,5 @@ echo esc_html( $value );
 `fw_print( fw_get_db_settings_option( 'demo_medium_text' ) )` outputs — the shape of this option type's stored value:
 
 ```text
-'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
+A concise page subtitle
 ```

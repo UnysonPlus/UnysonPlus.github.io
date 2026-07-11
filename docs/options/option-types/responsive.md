@@ -364,8 +364,8 @@ echo esc_html( $value['base'] ); // + $value['md'], $value['lg']
 ```text
 Array
 (
-    [base] => '20px'
-    [md] => '32px'
-    [lg] => '48px'
+    [base] => show
+    [md] => 
+    [lg] => hide
 )
 ```

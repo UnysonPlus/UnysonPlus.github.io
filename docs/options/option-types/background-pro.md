@@ -70,71 +70,53 @@ Array
         (
             [value] => Array
                 (
-                    [predefined] => ''
-                    [custom] => ''
+                    [predefined] => 
+                    [custom] => #f8f9fa
                 )
+
         )
+
     [gradient] => Array
         (
             [data] => Array
                 (
-                    [type] => 'linear'
+                    [type] => linear
                     [angle] => 90
                     [stops] => Array
                         (
                         )
+
                 )
+
         )
+
     [image] => Array
         (
             [src] => Array
                 (
+                    [attachment_id] => 123
+                    [url] => https://example.com/wp-content/uploads/2026/06/hero.jpg
                 )
-            [position] => 'center center'
+
+            [position] => center center
             [size] => Array
                 (
-                    [selected] => 'cover'
-                    [custom] => ''
+                    [selected] => cover
+                    [custom] => 
                 )
-            [repeat] => 'no-repeat'
-            [attachment] => 'scroll'
+
+            [repeat] => no-repeat
+            [attachment] => scroll
         )
+
     [video] => Array
         (
-            [enabled] => 'no'
-            [external_url] => ''
-            [source_mp4] => Array
-                (
-                )
-            [source_webm] => Array
-                (
-                )
-            [poster] => Array
-                (
-                )
-            [fallback] => Array
-                (
-                )
-            [loop] => 'no'
-            [autoplay] => 'yes'
-            [mute] => 'yes'
-            [playsinline] => 'yes'
-            [allow_interaction] => 'no'
+            [enabled] => no
         )
-    [overlay] => Array
-        (
-            [color] => ''
-            [gradient] => Array
-                (
-                    [type] => 'linear'
-                    [angle] => 90
-                    [stops] => Array
-                        (
-                        )
-                )
-        )
+
     [advanced] => Array
         (
         )
+
 )
 ```

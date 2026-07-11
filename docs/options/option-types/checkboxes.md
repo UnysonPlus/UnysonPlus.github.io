@@ -83,6 +83,8 @@ echo esc_html( implode( ', ', array_keys( array_filter( $value ) ) ) ); // the t
 ```text
 Array
 (
-    [c2] => true
+    [choice_a] => 1
+    [choice_b] => 
+    [choice_c] => 1
 )
 ```

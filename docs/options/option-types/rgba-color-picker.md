@@ -71,5 +71,5 @@ echo esc_attr( $value );
 `fw_print( fw_get_db_settings_option( 'demo_rgba_color_picker' ) )` outputs — the shape of this option type's stored value:
 
 ```text
-'rgba(255, 0, 0, .5)'
+rgba(229,50,45,0.85)
 ```

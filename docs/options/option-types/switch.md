@@ -86,5 +86,5 @@ echo $value === 'yes' ? 'On' : 'Off';
 `fw_print( fw_get_db_settings_option( 'demo_switch' ) )` outputs — the shape of this option type's stored value:
 
 ```text
-'yes'
+yes
 ```

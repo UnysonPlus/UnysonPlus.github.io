@@ -103,60 +103,25 @@ Array
 (
     [margin] => Array
         (
-            [all] => ''
-            [top] => ''
-            [right] => ''
-            [bottom] => ''
-            [left] => ''
+            [all] => 
+            [top] => mt-4
+            [right] => 
+            [bottom] => mb-4
+            [left] => 
         )
+
     [padding] => Array
         (
-            [all] => ''
-            [top] => ''
-            [right] => ''
-            [bottom] => ''
-            [left] => ''
+            [all] => p-3
+            [top] => 
+            [right] => 
+            [bottom] => 
+            [left] => 
         )
+
     [advanced] => Array
         (
-            [md] => Array
-                (
-                    [margin] => Array
-                        (
-                            [all] => ''
-                            [top] => ''
-                            [right] => ''
-                            [bottom] => ''
-                            [left] => ''
-                        )
-                    [padding] => Array
-                        (
-                            [all] => ''
-                            [top] => ''
-                            [right] => ''
-                            [bottom] => ''
-                            [left] => ''
-                        )
-                )
-            [lg] => Array
-                (
-                    [margin] => Array
-                        (
-                            [all] => ''
-                            [top] => ''
-                            [right] => ''
-                            [bottom] => ''
-                            [left] => ''
-                        )
-                    [padding] => Array
-                        (
-                            [all] => ''
-                            [top] => ''
-                            [right] => ''
-                            [bottom] => ''
-                            [left] => ''
-                        )
-                )
         )
+
 )
 ```

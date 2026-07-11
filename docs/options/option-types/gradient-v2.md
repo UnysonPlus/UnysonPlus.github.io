@@ -68,10 +68,23 @@ echo esc_attr( $value['type'] ); // + $value['angle'], $value['stops'] (see Save
 ```text
 Array
 (
-    [type] => 'linear'
-    [angle] => 90
+    [type] => linear
+    [angle] => 135
     [stops] => Array
         (
+            [0] => Array
+                (
+                    [color] => #e5322d
+                    [position] => 0
+                )
+
+            [1] => Array
+                (
+                    [color] => #2f74e6
+                    [position] => 100
+                )
+
         )
+
 )
 ```

@@ -553,16 +553,16 @@ $fields = $value[ $picked ] ?? array(); // its revealed sub-options
 ```text
 Array
 (
-    [gadget] => 'phone'
-    [phone] => Array
+    [preset] => custom
+    [custom] => Array
         (
-            [price] => ''
-            [memory] => '16'
+            [custom_height] => Array
+                (
+                    [value] => 480
+                    [unit] => px
+                )
+
         )
-    [laptop] => Array
-        (
-            [price] => ''
-            [webcam] => false
-        )
+
 )
 ```

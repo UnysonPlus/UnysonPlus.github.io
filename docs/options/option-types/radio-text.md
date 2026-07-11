@@ -72,5 +72,5 @@ echo esc_html( $value );
 `fw_print( fw_get_db_settings_option( 'demo_radio_text' ) )` outputs — the shape of this option type's stored value:
 
 ```text
-'50'
+choice_2
 ```

@@ -139,16 +139,7 @@ echo esc_attr( $value['type'] ); // + predefined / custom / data (see Saved valu
 ```text
 Array
 (
-    [type] => 'predefined'
-    [predefined] => 'none'
-    [custom] => ''
-    [data] => Array
-        (
-            [icon] => 'http://localhost/testsite/wp-content/themes/unysonplus-theme/images/patterns/no_pattern.jpg'
-            [css] => Array
-                (
-                    [background-image] => 'none'
-                )
-        )
+    [attachment_id] => 123
+    [url] => https://example.com/wp-content/uploads/2026/06/background.jpg
 )
 ```

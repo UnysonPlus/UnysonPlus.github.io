@@ -97,15 +97,15 @@ printf( 'font-family:%s; font-size:%spx; color:%s;',
 ```text
 Array
 (
-    [google_font] => true
-    [subset] => 'latin-ext'
-    [variation] => 'regular'
-    [family] => 'Amarante'
-    [style] => false
-    [weight] => false
-    [size] => '14'
-    [line-height] => '13'
-    [letter-spacing] => '-2'
-    [color] => '#0000ff'
+    [google_font] => Roboto
+    [subset] => latin
+    [variation] => 400
+    [family] => Roboto
+    [style] => normal
+    [weight] => 400
+    [size] => 18
+    [line-height] => 28
+    [letter-spacing] => 0
+    [color] => #212529
 )
 ```

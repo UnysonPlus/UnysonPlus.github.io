@@ -94,5 +94,17 @@ foreach ( (array) $value as $item ) {
 ```text
 Array
 (
+    [0] => Array
+        (
+            [attachment_id] => 123
+            [url] => https://example.com/wp-content/uploads/2026/06/one.jpg
+        )
+
+    [1] => Array
+        (
+            [attachment_id] => 124
+            [url] => https://example.com/wp-content/uploads/2026/06/two.jpg
+        )
+
 )
 ```

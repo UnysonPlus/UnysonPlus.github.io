@@ -75,5 +75,5 @@ echo wp_kses_post( $value );
 `fw_print( fw_get_db_settings_option( 'demo_wp_editor' ) )` outputs — the shape of this option type's stored value:
 
 ```text
-'<p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>'
+<p>Rich text <strong>content</strong> from the editor.</p>
 ```

@@ -1,9 +1,15 @@
 ---
 sidebar_position: 8
 title: Page Transitions
+slug: /page-transitions
 ---
 
 # Page Transitions
+
+:::tip Try it live
+Preview all 23 transitions in the **[Page Transitions playground](./playground.mdx)** — pick a
+style, set its options, and watch it reveal on load and cover on navigate.
+:::
 
 Full-screen transitions between pages — a colored overlay reveals each page on load and covers the screen when the visitor navigates, so pages feel **connected** instead of a hard flash.
 

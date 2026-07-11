@@ -50,7 +50,7 @@ The **Animations** tab is an **"Add Animation" inserter**. It starts empty with 
 | Capability | What it does |
 | --- | --- |
 | [Custom Cursor](./cursor.md) | Replace the pointer with a custom cursor site-wide — 40+ styles |
-| [Page Transitions](./page-transitions.md) | Full-screen transitions between pages — fade, slide, curtain, iris, and 20 more |
+| [Page Transitions](./page-transitions/index.md) | Full-screen transitions between pages — fade, slide, curtain, iris, and 20 more |
 | [Scroll Progress](./scroll-progress.md) | A reading-progress indicator — 16 styles: bars, corner ring/gauge/battery, %-counter, reading-time, or section scroll-spy dots |
 
 ### New elements (builder palette → *Media Elements*)

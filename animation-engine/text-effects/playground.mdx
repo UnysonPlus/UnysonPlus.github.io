@@ -1,0 +1,52 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ Text Effects — pick an effect, tweak its options live, and copy the generated sample.
+---
+
+import TextPlayground from '@site/src/components/TextPlayground';
+
+# Text Effects — Playground
+
+Pick an effect and tweak its options. Everything here runs the **real module** — the same
+split engine (characters / words / lines), the `.sc-text--*` / `.upw-text-*` classes and
+`--text-*` variables the builder outputs — so what you see is what ships. **Reveal** and
+**Kinetic** effects play on load; hit **↻ Replay** to run them again. **On hover / scroll**
+effects trigger when you hover the text. The **Sample option** updates as you tweak.
+
+<TextPlayground />
+
+:::info What this covers
+The switcher includes every text effect, grouped by kind — **Reveal** (split/blur/mask/flip/
+scale/slide/bounce/random/skew), **Kinetic** (scramble, typewriter, count-up, split-flap,
+matrix, rotating words, magnetic), **Continuous** (shimmer, gradient, rainbow, neon, breathing,
+float, wave, jitter, chromatic), **On hover / scroll** (marker, strike/box, outline→fill, fill
+sweep, colour wave, letter jump, weight/width sweep, expand spacing) and **Special** (glitch,
+image mask). The one effect not previewed here is **Kinetic Scroll**, which reacts to scroll
+velocity — see **[Text Effects](./index.md)** for the full reference.
+:::
+
+:::note A couple of notes
+- **Variable-font effects** (Weight Sweep, Width Sweep) only move on a *variable* font. The docs
+  font may render them static — on a site with a variable font they animate smoothly.
+- **Colors** use the theme color-preset picker, so they actually store
+  `[ 'predefined' => '', 'custom' => '#hex' ]`. The playground shows the resolved color.
+:::
+
+## How the option is stored
+
+Text Effect is a **multi-picker** — the saved value carries the chosen `effect` plus a nested
+settings map keyed by that effect id:
+
+```php
+'text_effect' => [
+    'type'  => 'multi-picker',
+    'value' => [
+        'effect'  => 'shimmer',
+        'shimmer' => [ 'color_a' => '#8a8f98', 'color_b' => '#ffffff', 'speed' => 3 ],
+    ],
+],
+```
+
+← Back to [Text Effects](./index.md)

@@ -1,9 +1,15 @@
 ---
 sidebar_position: 7
 title: Text Effects
+slug: /text-effects
 ---
 
 # Text Effects
+
+:::tip Try it live
+Every effect below is interactive in the **[Text Effects playground](./playground.mdx)** —
+pick an effect, tweak its options, and copy the generated sample.
+:::
 
 Kinetic typography for any element's text — split-character reveals, scramble/decode, typewriter, gradient shimmer, glitch, count-up, rotating words, and dozens more. Self-contained vanilla JS, **no GSAP**.
 

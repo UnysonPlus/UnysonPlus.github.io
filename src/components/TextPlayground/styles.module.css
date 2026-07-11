@@ -1,0 +1,129 @@
+/* Interactive Text Effects playground. Theme-aware. */
+.playground {
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 1.5rem 0 2rem;
+  background: var(--ifm-card-background-color);
+}
+
+/* --- effect switcher tabs --- */
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+  background: var(--ifm-color-emphasis-100);
+}
+.tabGroup {
+  display: grid;
+  grid-template-columns: 116px 1fr;
+  align-items: start;
+  gap: 0.6rem;
+}
+@media (max-width: 600px) { .tabGroup { grid-template-columns: 1fr; gap: 0.3rem; } }
+.tabGroupLabel {
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ifm-color-emphasis-600);
+  padding-top: 0.35rem;
+}
+.tabPills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.tab, .tabActive {
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 999px;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-color-emphasis-700);
+}
+.tabActive { background: var(--ifm-color-primary); border-color: var(--ifm-color-primary); color: #fff; }
+
+.grid { display: grid; grid-template-columns: 1.3fr 1fr; }
+@media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+
+/* --- demo stage --- */
+.stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  padding: 2.5rem 1.5rem;
+  background: radial-gradient(circle at 1px 1px, var(--ifm-toc-border-color) 1px, transparent 0) 0 0 / 22px 22px;
+  border-right: 1px solid var(--ifm-toc-border-color);
+}
+@media (max-width: 768px) { .stage { border-right: none; border-bottom: 1px solid var(--ifm-toc-border-color); } }
+
+.stageInner { text-align: center; max-width: 90%; }
+.target {
+  font-size: 2.3rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--ifm-heading-color);
+  margin: 0;
+  cursor: default;
+}
+
+.replay {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  border: 1px solid var(--ifm-toc-border-color);
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-color-emphasis-800);
+  border-radius: 8px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.hint {
+  position: absolute;
+  bottom: 0.7rem;
+  width: 100%;
+  text-align: center;
+  font-size: 0.76rem;
+  color: var(--ifm-color-emphasis-500);
+}
+
+/* --- controls --- */
+.controls { padding: 1.5rem; }
+.controls h5 {
+  margin: 0 0 1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-600);
+}
+.control { margin-bottom: 1.15rem; }
+.control label { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.45rem; }
+.control label span { color: var(--ifm-color-primary); font-variant-numeric: tabular-nums; }
+.control input[type='range'] { width: 100%; accent-color: var(--ifm-color-primary); }
+.select, .text {
+  width: 100%; padding: 0.4rem 0.55rem;
+  border: 1px solid var(--ifm-toc-border-color); border-radius: 8px;
+  background: var(--ifm-background-surface-color); color: var(--ifm-font-color-base); font-size: 0.85rem;
+}
+.color {
+  width: 100%; height: 34px; padding: 2px;
+  border: 1px solid var(--ifm-toc-border-color); border-radius: 8px;
+  background: var(--ifm-background-surface-color); cursor: pointer;
+}
+.toggle { display: inline-flex; border: 1px solid var(--ifm-toc-border-color); border-radius: 8px; overflow: hidden; }
+.toggle button { border: 0; padding: 0.4rem 1rem; font-size: 0.82rem; font-weight: 600; background: transparent; color: var(--ifm-color-emphasis-700); cursor: pointer; }
+.toggle button.on { background: var(--ifm-color-primary); color: #fff; }
+
+/* --- generated code --- */
+.code { border-top: 1px solid var(--ifm-toc-border-color); }
+.code > div:first-child {
+  font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ifm-color-emphasis-600); padding: 0.75rem 1.5rem 0;
+}
+.code pre { margin: 0.5rem 1.5rem; background: var(--ifm-color-emphasis-100); border-radius: 8px; padding: 1rem; font-size: 0.82rem; overflow-x: auto; }
+.note { margin: 0 1.5rem 1.25rem; font-size: 0.78rem; color: var(--ifm-color-emphasis-600); }

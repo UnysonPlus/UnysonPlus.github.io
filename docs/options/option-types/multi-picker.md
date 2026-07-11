@@ -64,6 +64,9 @@ $options = [
 			],
 		],
 		'show_borders' => false,
+		// — Optional attributes you can add —
+		// 'hide_picker' => false,  // hide the picker control
+		// 'popover' => false,  // render the picker in a popover
 	],
 ];
 ```

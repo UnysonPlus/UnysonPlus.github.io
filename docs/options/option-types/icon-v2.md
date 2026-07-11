@@ -44,6 +44,8 @@ $options = [
 		'label' => __('Label', 'unysonplus'),  // or false to hide the label column
 		'desc' => __('Description', 'unysonplus'),
 		'help' => __('Help tip', 'unysonplus'),  // string, or [ 'icon' => 'video', 'html' => '…' ]
+		// — Optional attributes you can add —
+		// 'popup_size' => 'medium',
 	],
 ];
 ```

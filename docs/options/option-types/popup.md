@@ -44,6 +44,7 @@ $options = [
 			],
 		],
 		// — Optional attributes you can add —
+		// 'custom-events' => [],
 		// 'attr' => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 	],
 ];

@@ -24,6 +24,11 @@ $options = [
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
 						'unysonplus' )
 				),
+				// — Optional attributes you can add —
+				// 'value' => [],
+				// 'prepopulate' => 10,
+				// 'limit' => 100,
+				// 'show-type' => false,
 			],
 ];
 ```

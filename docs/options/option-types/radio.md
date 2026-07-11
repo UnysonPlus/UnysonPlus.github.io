@@ -28,6 +28,7 @@ $options = [
 				'unysonplus' )
 		),
 		// — Optional attributes you can add —
+		// 'inline' => false,
 		// 'attr' => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 	],
 ];

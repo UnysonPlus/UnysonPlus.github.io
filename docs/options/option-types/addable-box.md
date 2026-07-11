@@ -52,6 +52,8 @@ $options = [
 		'template' => '{{- demo_text }}',
 		'limit' => 3,
 		// — Optional attributes you can add —
+		// 'box-duplicate' => true,
+		// 'width' => 'fixed',  // fixed | auto | full
 		// 'attr' => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 		// 'add-button-text' => __( 'Add', 'unysonplus' ),
 		// 'sortable' => false,

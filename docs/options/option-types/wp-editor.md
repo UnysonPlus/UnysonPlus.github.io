@@ -22,6 +22,11 @@ $options = [
 		),
 		'reinit' => true,
 		// — Optional attributes you can add —
+		// 'size' => 'small',  // small, medium, large
+		// 'editor_height' => 160,
+		// 'wpautop' => true,
+		// 'editor_type' => false,
+		// 'shortcodes' => false,
 		// 'attr' => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 		// 'dynamic_content' => false,  // hide the Dynamic Content (database) picker
 	],

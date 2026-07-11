@@ -115,6 +115,8 @@ $options = [
 			],
 		],
 		// — Optional attributes you can add —
+		// 'popup-title' => null,
+		// 'size' => 'small',  // small, medium, large
 		// 'attr' => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 		// 'add-button-text' => __( 'Add', 'unysonplus' ),
 		// 'sortable' => false,

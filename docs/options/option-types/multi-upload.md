@@ -23,6 +23,9 @@ $options = [
 				'unysonplus' )
 		),
 		// — Optional attributes you can add —
+		// 'texts' => [],
+		// 'value' => [],
+		// 'extra_mime_types' => [],
 		// 'attr' => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 		// 'files_ext' => [ 'pdf', 'zip' ],
 	],

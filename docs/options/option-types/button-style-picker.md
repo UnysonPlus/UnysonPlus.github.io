@@ -15,6 +15,11 @@ $options = [
 		'choices' => sc_get_button_style_choices(),
 		'preview_text' => __( 'Button', 'unysonplus' ),
 		'desc' => __( 'A dropdown that previews each Button Preset as a real button (trigger + every row). Reused by the Button shortcode\'s Style and Size pickers. Stores the class string, e.g. <code>btn-primary</code>.', 'unysonplus' ),
+		// — Optional attributes you can add —
+		// 'value' => '',
+		// 'preview_base' => 'btn',
+		// 'placeholder' => '— Select —',
+		// 'allow_none' => true,
 	],
 ];
 ```

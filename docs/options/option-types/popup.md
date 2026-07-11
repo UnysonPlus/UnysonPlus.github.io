@@ -49,9 +49,48 @@ $options = [
 ];
 ```
 
+## Reading the value
+
+`popup` returns an **array** — read a field by key (the full shape is in *Saved value* below).
+
+### In a shortcode
+
+The shortcode framework passes the option values into `view.php` as `$atts`:
+
+```php
+$value = $atts['demo_popup'];
+echo esc_html( $value['heading'] ); // each key is an inner option id
+```
+
+### In a page template — a per-page option
+
+Options defined on a post/page (a metabox) are read with `fw_get_db_post_option()`:
+
+```php
+$value = fw_get_db_post_option( get_the_ID(), 'demo_popup' );
+echo esc_html( $value['heading'] ); // each key is an inner option id
+```
+
+When the field is one of several inside a **box/group**, read the whole group once and pick fields by key — the common CPT pattern (e.g. a `review` or `book` box):
+
+```php
+$book  = fw_get_db_post_option( get_the_ID(), 'book' );
+$value = $book['demo_popup'];
+echo esc_html( $value['heading'] ); // each key is an inner option id
+```
+
+### In Theme Settings — a global option
+
+Global options are read with `fw_get_db_settings_option()`:
+
+```php
+$value = fw_get_db_settings_option( 'demo_popup' );
+echo esc_html( $value['heading'] ); // each key is an inner option id
+```
+
 ## Saved value
 
-The `fw_print()` output of what `fw_get_db_settings_option( 'demo_popup' )` returns — so you can see the shape of this option type's stored value:
+`fw_print( fw_get_db_settings_option( 'demo_popup' ) )` outputs — the shape of this option type's stored value:
 
 ```text
 Array

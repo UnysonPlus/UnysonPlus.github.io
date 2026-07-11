@@ -112,49 +112,52 @@ export default function EntrancePlayground() {
     <div className={styles.playground}>
       <style>{'.sc-anim-pending{visibility:hidden}.sc-anim-pending.animate__animated{visibility:visible}'}</style>
 
-      <div className={styles.tabs}>
-        {GROUPS.map(([label, ks]) => (
-          <div className={styles.tabGroup} key={label}>
-            <span className={styles.tabGroupLabel}>{label}</span>
-            <div className={styles.tabPills}>
-              {ks.map(([k, l]) => (
-                <button key={k} type="button" className={k === s.effect ? styles.tabActive : styles.tab} onClick={() => pick(k)}>{l}</button>
-              ))}
+      <div className={styles.layout}>
+        <div className={styles.main}>
+          <div className={styles.stage}>
+            <button type="button" className={styles.replay} onClick={() => setNonce((n) => n + 1)}>↻ Replay</button>
+            <div className={`${styles.card} sc-anim-pending`} ref={ref}>
+              <div className={styles.icon}>✦</div>
+              <h4>{LABELS[s.effect] || 'Entrance'}</h4>
+              <p>Animate.css entrance</p>
             </div>
+            <div className={styles.hint}>plays on load — hit ↻ Replay, or tweak the options</div>
           </div>
-        ))}
-      </div>
 
-      <div className={styles.grid}>
-        <div className={styles.stage}>
-          <button type="button" className={styles.replay} onClick={() => setNonce((n) => n + 1)}>↻ Replay</button>
-          <div className={`${styles.card} sc-anim-pending`} ref={ref}>
-            <div className={styles.icon}>✦</div>
-            <h4>{LABELS[s.effect] || 'Entrance'}</h4>
-            <p>Animate.css entrance</p>
+          <div className={styles.controls}>
+            {CONTROLS.map((c) => (
+              <div className={styles.control} key={c.id}>
+                {c.type === 'slider' && (<><label>{c.label} <span>{s[c.id]}</span></label>
+                  <input type="range" min={c.min} max={c.max} step={c.step} value={s[c.id]} onChange={(e) => set(c.id, e.target.value)} /></>)}
+                {c.type === 'select' && (<><label>{c.label}</label>
+                  <select className={styles.select} value={s[c.id]} onChange={(e) => set(c.id, e.target.value)}>{c.choices.map(([v, l]) => <option key={v} value={v}>{l}</option>)}</select></>)}
+                {c.type === 'switch' && (<><label>{c.label}</label><div className={styles.toggle}>
+                  <button type="button" className={s[c.id] === c.off ? styles.on : ''} onClick={() => set(c.id, c.off)}>Off</button>
+                  <button type="button" className={s[c.id] === c.on ? styles.on : ''} onClick={() => set(c.id, c.on)}>On</button></div></>)}
+                {c.note && <div style={{fontSize: '0.72rem', color: 'var(--ifm-color-emphasis-500)', marginTop: '0.25rem'}}>{c.note}</div>}
+              </div>
+            ))}
           </div>
-          <div className={styles.hint}>plays on load — hit ↻ Replay, or tweak the options</div>
+
+          <div className={styles.code}>
+            <div>Sample option — updates as you tweak</div>
+            <pre><code>{buildPhp(s)}</code></pre>
+          </div>
         </div>
 
-        <div className={styles.controls}>
-          {CONTROLS.map((c) => (
-            <div className={styles.control} key={c.id}>
-              {c.type === 'slider' && (<><label>{c.label} <span>{s[c.id]}</span></label>
-                <input type="range" min={c.min} max={c.max} step={c.step} value={s[c.id]} onChange={(e) => set(c.id, e.target.value)} /></>)}
-              {c.type === 'select' && (<><label>{c.label}</label>
-                <select className={styles.select} value={s[c.id]} onChange={(e) => set(c.id, e.target.value)}>{c.choices.map(([v, l]) => <option key={v} value={v}>{l}</option>)}</select></>)}
-              {c.type === 'switch' && (<><label>{c.label}</label><div className={styles.toggle}>
-                <button type="button" className={s[c.id] === c.off ? styles.on : ''} onClick={() => set(c.id, c.off)}>Off</button>
-                <button type="button" className={s[c.id] === c.on ? styles.on : ''} onClick={() => set(c.id, c.on)}>On</button></div></>)}
-              {c.note && <div style={{fontSize: '0.72rem', color: 'var(--ifm-color-emphasis-500)', marginTop: '0.25rem'}}>{c.note}</div>}
+        <aside className={styles.sidebar}>
+          <div className={styles.sidebarTitle}>Effect</div>
+          {GROUPS.map(([label, ks]) => (
+            <div className={styles.tabGroup} key={label}>
+              <span className={styles.tabGroupLabel}>{label}</span>
+              <div className={styles.tabPills}>
+                {ks.map(([k, l]) => (
+                  <button key={k} type="button" className={k === s.effect ? styles.tabActive : styles.tab} onClick={() => pick(k)}>{l}</button>
+                ))}
+              </div>
             </div>
           ))}
-        </div>
-      </div>
-
-      <div className={styles.code}>
-        <div>Sample option — updates as you tweak</div>
-        <pre><code>{buildPhp(s)}</code></pre>
+        </aside>
       </div>
     </div>
   );

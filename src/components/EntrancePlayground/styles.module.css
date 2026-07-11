@@ -1,33 +1,49 @@
-/* Interactive Entrance Animation (Animate.css) playground. Theme-aware. */
+/* Interactive Entrance Animation (Animate.css) playground — two-pane: main + sticky effect list. */
 .playground { border: 1px solid var(--ifm-toc-border-color); border-radius: 12px; overflow: hidden; margin: 1.5rem 0 2rem; background: var(--ifm-card-background-color); }
 
-.tabs { display: flex; flex-direction: column; gap: 0.7rem; padding: 1rem; border-bottom: 1px solid var(--ifm-toc-border-color); background: var(--ifm-color-emphasis-100); }
-.tabGroup { display: grid; grid-template-columns: 130px 1fr; align-items: start; gap: 0.6rem; }
-@media (max-width: 600px) { .tabGroup { grid-template-columns: 1fr; gap: 0.3rem; } }
-.tabGroupLabel { font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--ifm-color-emphasis-600); padding-top: 0.35rem; }
-.tabPills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.tab, .tabActive { border: 1px solid var(--ifm-toc-border-color); border-radius: 999px; padding: 0.28rem 0.8rem; font-size: 0.8rem; font-weight: 600; cursor: pointer; background: var(--ifm-background-surface-color); color: var(--ifm-color-emphasis-700); }
+.layout { display: flex; align-items: stretch; }
+.main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
+
+/* --- effect list sidebar (where the TOC used to be) --- */
+.sidebar {
+  flex: 0 0 244px;
+  border-left: 1px solid var(--ifm-toc-border-color);
+  background: var(--ifm-color-emphasis-100);
+  padding: 1rem 1rem 1.25rem;
+  position: sticky;
+  top: calc(var(--ifm-navbar-height, 60px) + 0.5rem);
+  align-self: flex-start;
+  max-height: calc(100vh - var(--ifm-navbar-height, 60px) - 1rem);
+  overflow-y: auto;
+}
+.sidebarTitle { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--ifm-color-emphasis-700); margin-bottom: 0.75rem; }
+.tabGroup { margin-bottom: 0.85rem; }
+.tabGroupLabel { display: block; font-size: 0.64rem; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 700; color: var(--ifm-color-emphasis-600); margin-bottom: 0.4rem; }
+.tabPills { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.tab, .tabActive { border: 1px solid var(--ifm-toc-border-color); border-radius: 999px; padding: 0.22rem 0.6rem; font-size: 0.75rem; font-weight: 600; cursor: pointer; background: var(--ifm-background-surface-color); color: var(--ifm-color-emphasis-700); line-height: 1.3; }
 .tabActive { background: var(--ifm-color-primary); border-color: var(--ifm-color-primary); color: #fff; }
 
-.grid { display: grid; grid-template-columns: 1fr; }
+@media (max-width: 800px) {
+  .layout { flex-direction: column-reverse; }
+  .sidebar { flex-basis: auto; width: 100%; border-left: none; border-bottom: 1px solid var(--ifm-toc-border-color); position: static; max-height: 320px; }
+}
 
+/* --- stage --- */
 .stage {
   position: relative; display: flex; align-items: center; justify-content: center;
-  min-height: 320px; padding: 2.5rem 1.5rem; overflow: hidden;
+  min-height: 340px; padding: 2.5rem 1.5rem; overflow: hidden;
   background: radial-gradient(circle at 1px 1px, var(--ifm-toc-border-color) 1px, transparent 0) 0 0 / 22px 22px;
   border-bottom: 1px solid var(--ifm-toc-border-color);
 }
-.card {
-  width: 240px; padding: 1.75rem 1.5rem; border-radius: 14px; text-align: center;
-  background: var(--ifm-background-surface-color); border: 1px solid var(--ifm-toc-border-color);
-}
+.card { width: 240px; padding: 1.75rem 1.5rem; border-radius: 14px; text-align: center; background: var(--ifm-background-surface-color); border: 1px solid var(--ifm-toc-border-color); }
 .icon { width: 48px; height: 48px; margin: 0 auto 0.85rem; display: grid; place-items: center; border-radius: 12px; font-size: 1.5rem; background: linear-gradient(135deg, var(--ifm-color-primary), var(--ifm-color-primary-dark)); color: #fff; }
 .card h4 { margin: 0 0 0.35rem; font-size: 1.05rem; }
 .card p { margin: 0; font-size: 0.85rem; color: var(--ifm-color-emphasis-600); }
 .replay { position: absolute; top: 0.75rem; right: 0.75rem; z-index: 5; border: 1px solid var(--ifm-toc-border-color); background: var(--ifm-background-surface-color); color: var(--ifm-color-emphasis-800); border-radius: 8px; padding: 0.3rem 0.7rem; font-size: 0.78rem; font-weight: 600; cursor: pointer; }
 .hint { position: absolute; bottom: 0.7rem; width: 100%; text-align: center; font-size: 0.76rem; color: var(--ifm-color-emphasis-500); }
 
-.controls { padding: 1.25rem 1.5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0 2.2rem; align-items: start; }
+/* --- controls --- */
+.controls { padding: 1.25rem 1.5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0 2.2rem; align-items: start; border-bottom: 1px solid var(--ifm-toc-border-color); }
 .control { margin-bottom: 0.95rem; }
 .control label { display: flex; justify-content: space-between; font-size: 0.84rem; font-weight: 600; margin-bottom: 0.4rem; }
 .control label span { color: var(--ifm-color-primary); font-variant-numeric: tabular-nums; }
@@ -37,6 +53,6 @@
 .toggle button { border: 0; padding: 0.35rem 0.9rem; font-size: 0.82rem; font-weight: 600; background: transparent; color: var(--ifm-color-emphasis-700); cursor: pointer; }
 .toggle button.on { background: var(--ifm-color-primary); color: #fff; }
 
-.code { border-top: 1px solid var(--ifm-toc-border-color); }
+/* --- code --- */
 .code > div:first-child { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ifm-color-emphasis-600); padding: 0.75rem 1.5rem 0; }
 .code pre { margin: 0.5rem 1.5rem 1.25rem; background: var(--ifm-color-emphasis-100); border-radius: 8px; padding: 1rem; font-size: 0.82rem; overflow-x: auto; }

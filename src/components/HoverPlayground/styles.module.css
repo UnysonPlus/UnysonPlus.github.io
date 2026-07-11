@@ -77,6 +77,9 @@
 @media (max-width: 768px) {
   .stage { border-right: none; border-bottom: 1px solid var(--ifm-toc-border-color); }
 }
+/* Plain block wrapper so the effect element renders in normal flow, not as a
+   flex item (flex blockifies inline-block, which breaks the Text Swap clip). */
+.stageInner { text-align: center; line-height: 1; }
 
 .card {
   width: 230px;
@@ -106,6 +109,7 @@
 .textel {
   font-size: 2rem;
   font-weight: 800;
+  line-height: 1.2;
   color: var(--ifm-heading-color);
   cursor: pointer;
   user-select: none;

@@ -96,6 +96,10 @@ const EFFECTS = {
       {id: 'glow_color', label: 'Glow color', type: 'color', default: '#6aa6ff'},
       {id: 'glow_size', label: 'Glow size (%)', type: 'slider', min: 10, max: 90, step: 5, default: 40},
     ],
+    // The glow uses mix-blend-mode:screen — invisible over a light surface, so the
+    // demo card is dark (and isolated) to contain the blend. This is presentation
+    // only; the effect CSS is unchanged.
+    demoStyle: {background: '#1b2233', color: '#eaf0ff', isolation: 'isolate'},
     demo: (s) => ({cls: 'sc-hover--spotlight', style: {'--hover-glow': s.glow_color, '--hover-glow-size': `${s.glow_size}%`}, attrs: {}}),
     js: (el) => {
       const move = (e) => {const r = el.getBoundingClientRect(); el.style.setProperty('--mx', `${e.clientX - r.left}px`); el.style.setProperty('--my', `${e.clientY - r.top}px`);};
@@ -492,18 +496,19 @@ export default function HoverPlayground({only}) {
   }, [effect, state]);
 
   const fxClass = `upw-pg-fx ${demo.cls}`;
+  const fxStyle = {...demo.style, ...(cfg.demoStyle || {})};
 
   const renderTarget = () => {
     if (cfg.target === 'text') {
       return (
-        <span ref={fxRef} className={`${styles.textel} ${fxClass}`} style={demo.style} {...demo.attrs}>
+        <span ref={fxRef} className={`${styles.textel} ${fxClass}`} style={fxStyle} {...demo.attrs}>
           Hover me
         </span>
       );
     }
     if (cfg.target === 'text_swap') {
       return (
-        <span ref={fxRef} className={`${styles.textel} ${fxClass}`} style={demo.style} {...demo.attrs}>
+        <span ref={fxRef} className={`${styles.textel} ${fxClass}`} style={fxStyle} {...demo.attrs}>
           <span className="sc-hover-swap-a">Hover me</span>
           <span className="sc-hover-swap-b" aria-hidden="true">{state.swap_text || 'Hover me'}</span>
         </span>
@@ -511,13 +516,13 @@ export default function HoverPlayground({only}) {
     }
     if (cfg.target === 'image') {
       return (
-        <div ref={fxRef} className={`${styles.imgwrap} ${fxClass}`} style={demo.style} {...demo.attrs}>
+        <div ref={fxRef} className={`${styles.imgwrap} ${fxClass}`} style={fxStyle} {...demo.attrs}>
           <img className={styles.img} src={SAMPLE_IMG} alt="Sample" />
         </div>
       );
     }
     return (
-      <div ref={fxRef} className={`${styles.card} ${fxClass}`} style={demo.style} {...demo.attrs}>
+      <div ref={fxRef} className={`${styles.card} ${fxClass}`} style={fxStyle} {...demo.attrs}>
         <div className={styles.icon}>✦</div>
         <h4>{cfg.label}</h4>
         <p>Hover me to preview</p>
@@ -550,7 +555,7 @@ export default function HoverPlayground({only}) {
 
       <div className={styles.grid}>
         <div className={styles.stage}>
-          {renderTarget()}
+          <div className={styles.stageInner}>{renderTarget()}</div>
           <div className={styles.hint}>👆 hover — tweak the options on the right</div>
         </div>
 

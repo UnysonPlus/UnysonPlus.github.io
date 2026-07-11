@@ -1,0 +1,45 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for Unyson+ Entrance Animations (Animate.css) — preview all 56 effects and set speed, delay, repeat, loop and easing.
+---
+
+import EntrancePlayground from '@site/src/components/EntrancePlayground';
+
+# Entrance Animation — Playground
+
+Pick an **effect** and tweak it. This runs the **real** Animate.css v4.1.1 library the plugin
+ships, applied exactly as the runtime does — the element sits hidden (`sc-anim-pending`) until it
+enters view, then gets `animate__animated animate__<effect>` plus the speed / repeat / loop
+classes and the `--animate-*` custom properties. On a real page the entrance plays **once** when
+the element scrolls into view; here it's **looped** so you can watch it — hit **↻ Replay** to run
+it again. The **Sample option** updates as you tweak.
+
+<EntrancePlayground />
+
+:::info Where it lives
+Entrance Animation is **core** — open any Section, Column or element → **Animations** tab →
+**Entrance Animation**. It needs nothing switched on, and it honours *reduce motion* (the effect is
+skipped and content shows normally).
+:::
+
+## How the option is stored
+
+Entrance Animation is a **multi-picker** whose picker is the **effect**; each effect keeps its own
+speed and advanced tweaks in a nested group:
+
+```php
+'animation' => [
+    'effect' => 'animate__fadeInUp',
+    'animate__fadeInUp' => [
+        'group_animation_basic'    => [ 'speed_preset' => '' ],
+        'group_animation_advanced' => [
+            'delay' => 0, 'custom_duration' => 0, 'repeat_count' => 1,
+            'loop_forever' => 'no', 'replay_on_scroll' => 'no', 'easing' => '',
+        ],
+    ],
+],
+```
+
+← Back to [Entrance Animation](./index.md)

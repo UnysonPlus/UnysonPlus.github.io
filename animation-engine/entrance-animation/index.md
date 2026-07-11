@@ -1,11 +1,21 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 title: Entrance Animation
+slug: /entrance-animation
 ---
 
 # Entrance Animation
 
-A one-shot **"appear with…"** effect that plays when an element scrolls into view, powered by [Animate.css](https://animate.style/). Every Section, Column and element has it on the **Animations** tab. It's **always available** (part of core) — you don't need the Animation Engine for it, and it's independent of [Scroll Motion (GSAP)](./overview.md), so you can use both on the same element.
+A one-shot **"appear with…"** effect that plays when an element scrolls into view, powered by [Animate.css](https://animate.style/) v4.1.1. Every Section, Column and element has it on the **Animations** tab.
+
+:::info Core feature — not an Animation Engine module
+Entrance Animation is part of **core** (it ships with the shortcodes framework), so it's **always available** even when the [Animation Engine](/animation-engine) is switched off. That's why it lives on its own here rather than under an engine module.
+:::
+
+:::tip Try it live
+Preview all 56 effects in the **[Entrance Animation playground](./playground.mdx)** — pick an
+effect, set speed / delay / repeat / loop / easing, and copy the generated sample.
+:::
 
 ## Pick an effect
 
@@ -60,6 +70,8 @@ Switching effects keeps the panel — the speed and advanced tweaks you set are 
 - **Flash-free.** Elements that start hidden use a guard so there's no flash of un-animated content, and they stay visible if scripts fail to load.
 - **Editor-safe.** Entrance effects are suppressed inside the Page Builder canvas; they play on the front end.
 
-:::tip Entrance vs. Scroll Motion
-Use **Entrance Animation** for a quick one-shot "appear". Reach for **[Scroll Motion (GSAP)](./overview.md)** (part of the [Animation Engine](/animation-engine)) when you want scroll-*linked* motion — staggered reveals, parallax, pinning or scrubbing.
+:::tip Entrance vs. the Animation Engine
+Use **Entrance Animation** for a quick one-shot "appear" — it's core and needs nothing switched
+on. For scroll-*linked* motion (staggered reveals, parallax, pinning, kinetic text, hover, etc.),
+activate the **[Animation Engine](/animation-engine)** and reach for its modules.
 :::

@@ -5,7 +5,7 @@ title: Infinite Scroll Loop
 
 # Infinite Scroll Loop
 
-Loop a run of full-height **Sections** into a **seamless, never-ending scroll** — mark two or more in a row and the first re-appears seamlessly after the last, with optional section snapping. Smooth scrolling is powered by [Lenis](https://lenis.darkroom.engineering/); pair it with the [Parallax](/animation-engine/scroll-motion/parallax) scroll effect on the media inside for the classic depth look (the "[infinite scroll parallax](https://tympanus.net/Tutorials/InfiniteScrollParallax/)" experience).
+Loop a run of full-height **Sections** into a **seamless, never-ending scroll** — mark two or more in a row and the first re-appears seamlessly after the last, with optional section snapping. Smooth scrolling is powered by [Lenis](https://lenis.darkroom.engineering/); pair it with the [Parallax](/animation-engine/parallax) scroll effect on the media inside for the classic depth look (the "[infinite scroll parallax](https://tympanus.net/Tutorials/InfiniteScrollParallax/)" experience).
 
 ## Where to find it
 
@@ -26,7 +26,7 @@ Global on/off: **Theme Settings → Site-wide UX → Effects → Enable Infinite
 
 1. Build **2 or more full-height Sections** in a row (give each a min-height of 100vh).
 2. On **each** section → **Animations** tab → **Infinite Scroll Loop → Infinite Loop**.
-3. (Optional) For the depth effect, add media inside and give it the **[Scroll Motion](/animation-engine/scroll-motion) → Parallax** effect.
+3. (Optional) For the depth effect, add media inside and give it the **[Parallax](/animation-engine/parallax)** effect.
 4. Choose **Snap** on/off and **Save**.
 
 As you scroll past the last section, the first re-appears seamlessly — the scroll never ends.

@@ -8,13 +8,13 @@ Textarea with the WordPress Editor like the one you use on the blog posts edit p
 
 ```php
 $options = [
-	'demo_wp_editor'                 => [
+	'demo_wp_editor' => [
 		'label' => __( 'Rich Text Editor', 'unysonplus' ),  // or false to hide the label column
-		'type'  => 'wp-editor',
+		'type' => 'wp-editor',
 		'value' => 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 			'unysonplus' ),
-		'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
+		'help' => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 				'unysonplus' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',

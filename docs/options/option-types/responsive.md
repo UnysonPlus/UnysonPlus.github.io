@@ -65,12 +65,12 @@ the control repeated three times). Set the default under the wrapper's `value` a
 
 ```php
 'content_h' => array(
-    'type'  => 'responsive',
+    'type' => 'responsive',
     'label' => __( 'Content Alignment', 'fw' ),
-    'desc'  => __( 'Use the Phone / Tablet / Desktop tabs to set it per device.', 'fw' ),
+    'desc' => __( 'Use the Phone / Tablet / Desktop tabs to set it per device.', 'fw' ),
     'value' => array( 'base' => 'default', 'md' => '', 'lg' => '' ),
     'inner' => array(
-        'type'    => 'image-picker',
+        'type' => 'image-picker',
         'choices' => $halign_choices,
     ),
 ),
@@ -80,12 +80,12 @@ the control repeated three times). Set the default under the wrapper's `value` a
 
 ```php
 'reverse' => array(
-    'type'  => 'responsive',
+    'type' => 'responsive',
     'label' => __( 'Reverse Order', 'fw' ),
     'value' => array( 'base' => 'no', 'md' => '', 'lg' => '' ),
     'inner' => array(
-        'type'         => 'switch',
-        'left-choice'  => array( 'value' => 'no',  'label' => __( 'Default', 'fw' ) ),
+        'type' => 'switch',
+        'left-choice' => array( 'value' => 'no',  'label' => __( 'Default', 'fw' ) ),
         'right-choice' => array( 'value' => 'yes', 'label' => __( 'Reverse', 'fw' ) ),
     ),
 ),
@@ -95,15 +95,15 @@ the control repeated three times). Set the default under the wrapper's `value` a
 
 ```php
 'min_height' => array(
-    'type'  => 'responsive',
+    'type' => 'responsive',
     'label' => __( 'Min Height', 'fw' ),
     'value' => array(
         'base' => array( 'value' => '', 'unit' => 'vh' ),
-        'md'   => array( 'value' => '', 'unit' => 'vh' ),
-        'lg'   => array( 'value' => '', 'unit' => 'vh' ),
+        'md' => array( 'value' => '', 'unit' => 'vh' ),
+        'lg' => array( 'value' => '', 'unit' => 'vh' ),
     ),
     'inner' => array(
-        'type'  => 'unit-input',
+        'type' => 'unit-input',
         'units' => array( 'vh', 'px', 'rem', '%' ),
         'value' => array( 'value' => '', 'unit' => 'vh' ),
     ),
@@ -120,22 +120,22 @@ Override):
 
 ```php
 'width' => array(
-    'type'  => 'responsive',
+    'type' => 'responsive',
     'label' => __( 'Width Override', 'fw' ),
     'value' => array(
         'base' => array( 'preset' => 'none' ),
-        'md'   => array( 'preset' => 'none' ),
-        'lg'   => array( 'preset' => 'none' ),
+        'md' => array( 'preset' => 'none' ),
+        'lg' => array( 'preset' => 'none' ),
     ),
     'inner' => array(
-        'type'          => 'popover',
-        'summary'       => $width_summary,   // choice => trigger label
-        'summary_key'   => 'preset',         // which nested key drives the trigger
-        'autoclose'     => false,            // keep panel open while editing Custom
+        'type' => 'popover',
+        'summary' => $width_summary,   // choice => trigger label
+        'summary_key' => 'preset',         // which nested key drives the trigger
+        'autoclose' => false,            // keep panel open while editing Custom
         'inner-options' => array(
             'wpick' => array(
-                'type'    => 'multi-picker',
-                'picker'  => array( 'preset' => array( 'type' => 'image-picker', 'choices' => $width_choices ) ),
+                'type' => 'multi-picker',
+                'picker' => array( 'preset' => array( 'type' => 'image-picker', 'choices' => $width_choices ) ),
                 'choices' => array( 'custom' => array( 'width_custom' => array( 'type' => 'unit-input', /* … */ ) ) ),
             ),
         ),

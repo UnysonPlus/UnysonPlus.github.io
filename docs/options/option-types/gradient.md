@@ -12,14 +12,14 @@ Pick gradient colors.
 $options = [
 	'demo_gradient' => [
 		'label' => __( 'Gradient', 'unysonplus' ),  // or false to hide the label column
-		'type'  => 'gradient',
+		'type' => 'gradient',
 		'value' => [
-			'primary'   => '#ffffff',
+			'primary' => '#ffffff',
 			'secondary' => '#ffffff'
 		],
-		'desc'  => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 			'unysonplus' ),
-		'help'  => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
+		'help' => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 			__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 				'unysonplus' ),
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',

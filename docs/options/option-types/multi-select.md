@@ -11,14 +11,14 @@ Select multiple choices from different sources. The `population` key picks the s
 
 ```php
 $options = [
-			'demo_multi_select_posts'      => [
-				'type'       => 'multi-select',
-				'label'      => __( 'Multi-Select: Posts', 'unysonplus' ),
+			'demo_multi_select_posts' => [
+				'type' => 'multi-select',
+				'label' => __( 'Multi-Select: Posts', 'unysonplus' ),
 				'population' => 'posts',
-				'source'     => 'page',
-				'desc'       => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+				'source' => 'page',
+				'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 					'unysonplus' ),
-				'help'       => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
+				'help' => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 						'unysonplus' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
@@ -35,13 +35,13 @@ $options = [
 ```php
 $options = [
 			'demo_multi_select_taxonomies' => [
-				'type'       => 'multi-select',
-				'label'      => __( 'Multi-Select: Taxonomies', 'unysonplus' ),
+				'type' => 'multi-select',
+				'label' => __( 'Multi-Select: Taxonomies', 'unysonplus' ),
 				'population' => 'taxonomy',
-				'source'     => 'category',
-				'desc'       => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+				'source' => 'category',
+				'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 					'unysonplus' ),
-				'help'       => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
+				'help' => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 						'unysonplus' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
@@ -57,14 +57,14 @@ $options = [
 
 ```php
 $options = [
-			'demo_multi_select_users'      => [
-				'type'       => 'multi-select',
-				'label'      => __( 'Multi-Select: Users', 'unysonplus' ),
+			'demo_multi_select_users' => [
+				'type' => 'multi-select',
+				'label' => __( 'Multi-Select: Users', 'unysonplus' ),
 				'population' => 'users',
-				'source'     => 'administrator',
-				'desc'       => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+				'source' => 'administrator',
+				'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 					'unysonplus' ),
-				'help'       => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
+				'help' => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 						'unysonplus' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
@@ -80,17 +80,17 @@ $options = [
 
 ```php
 $options = [
-			'demo_multi_select_array'      => [
-				'type'       => 'multi-select',
-				'label'      => __( 'Multi-Select: Custom Array', 'unysonplus' ),
+			'demo_multi_select_array' => [
+				'type' => 'multi-select',
+				'label' => __( 'Multi-Select: Custom Array', 'unysonplus' ),
 				'population' => 'array',
-				'choices'    => [
+				'choices' => [
 					'hello' => __( 'Hello', 'unysonplus' ),
 					'world' => __( 'World', 'unysonplus' ),
 				],
-				'desc'       => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+				'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 					'unysonplus' ),
-				'help'       => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
+				'help' => sprintf( "%s \n\n'\"<br/><br/>\n\n <b>%s</b>",
 					__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 						'unysonplus' ),
 					__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',

@@ -8,7 +8,7 @@ sidebar_position: 18
 ```php
 $options = [
 	'demo_icon_v2' => [
-		'type'  => 'icon-v2',
+		'type' => 'icon-v2',
 
 		/**
 		 * small | medium | large | sauron
@@ -40,10 +40,10 @@ $options = [
 		 * ],
 		 */
 
-		'attr'  => [ 'class' => 'custom-class', 'data-foo' => 'bar' ],
+		'attr' => [ 'class' => 'custom-class', 'data-foo' => 'bar' ],
 		'label' => __('Label', 'unysonplus'),  // or false to hide the label column
-		'desc'  => __('Description', 'unysonplus'),
-		'help'  => __('Help tip', 'unysonplus'),  // string, or [ 'icon' => 'video', 'html' => '…' ]
+		'desc' => __('Description', 'unysonplus'),
+		'help' => __('Help tip', 'unysonplus'),  // string, or [ 'icon' => 'video', 'html' => '…' ]
 	],
 ];
 ```

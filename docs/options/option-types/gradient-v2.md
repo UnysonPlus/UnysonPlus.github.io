@@ -9,15 +9,15 @@ Advanced gradient picker: a read-only CSS output that opens a dropdown editor (u
 
 ```php
 $options = [
-	'demo_gradient_v2'               => [
+	'demo_gradient_v2' => [
 		'label' => __( 'Gradient V2', 'unysonplus' ),
-		'type'  => 'gradient-v2',
+		'type' => 'gradient-v2',
 		'value' => [
-			'type'  => 'linear',
+			'type' => 'linear',
 			'angle' => 90,
 			'stops' => [], // Blank by default: read-only output stays empty until you open the dropdown and add stops.
 		],
-		'desc'  => __( 'Advanced gradient picker: a read-only CSS output that opens a dropdown editor (unlimited stops, linear/radial, angle, RGBA, live preview). Blank = no gradient.', 'unysonplus' ),
+		'desc' => __( 'Advanced gradient picker: a read-only CSS output that opens a dropdown editor (unlimited stops, linear/radial, angle, RGBA, live preview). Blank = no gradient.', 'unysonplus' ),
 	],
 ];
 ```

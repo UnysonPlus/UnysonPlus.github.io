@@ -9,12 +9,12 @@ A syntax-highlighted code field (WordPress CodeMirror). The top-level `mode` key
 
 ```php
 $options = [
-	'demo_code_editor'               => [
-		'label'       => __( 'Code Editor', 'unysonplus' ),
-		'type'        => 'code-editor',
-		'mode'        => 'css',
-		'value'       => "selector {\n\tcolor: #2563eb;\n\tpadding: 2rem 0;\n}",
-		'desc'        => __( 'Syntax-highlighted code field (WordPress CodeMirror). The top-level "mode" key selects the language: css, javascript, htmlmixed, php, json or xml.', 'unysonplus' ),
+	'demo_code_editor' => [
+		'label' => __( 'Code Editor', 'unysonplus' ),
+		'type' => 'code-editor',
+		'mode' => 'css',
+		'value' => "selector {\n\tcolor: #2563eb;\n\tpadding: 2rem 0;\n}",
+		'desc' => __( 'Syntax-highlighted code field (WordPress CodeMirror). The top-level "mode" key selects the language: css, javascript, htmlmixed, php, json or xml.', 'unysonplus' ),
 		'placeholder' => "/* Write CSS here */\nselector { … }",
 	],
 ];

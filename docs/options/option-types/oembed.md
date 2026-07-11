@@ -10,13 +10,13 @@ Generate oembed preview of the inserted link, for more details see [Embeds](http
 ```php
 $options = [
 	'demo_oembed' => [
-		'type'  => 'oembed',
+		'type' => 'oembed',
 		'value' => 'https://vimeo.com/113078377',
 		'label' => __('Label', 'unysonplus'),  // or false to hide the label column
-		'desc'  => __('Description', 'unysonplus'),
-		'help'  => __('Help tip', 'unysonplus'),  // string, or [ 'icon' => 'video', 'html' => '…' ]
+		'desc' => __('Description', 'unysonplus'),
+		'help' => __('Help tip', 'unysonplus'),  // string, or [ 'icon' => 'video', 'html' => '…' ]
 		'preview' => [
-			'width'  => 300, // optional, if you want to set the fixed width to iframe
+			'width' => 300, // optional, if you want to set the fixed width to iframe
 			'height' => 300, // optional, if you want to set the fixed height to iframe
 			/**
 			 * if is set to false it will force to fit the dimensions,

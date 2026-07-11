@@ -20,12 +20,12 @@ Options are declared as a PHP array:
 <?php
 $options = array(
     'heading' => array(
-        'type'  => 'text',
+        'type' => 'text',
         'label' => __( 'Heading', 'fw' ),
         'value' => 'Hello world',
     ),
     'accent' => array(
-        'type'  => 'color-picker',
+        'type' => 'color-picker',
         'label' => __( 'Accent color', 'fw' ),
         'value' => '#ffcc00',
     ),

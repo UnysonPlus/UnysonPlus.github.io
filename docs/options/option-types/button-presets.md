@@ -9,12 +9,12 @@ The full button builder used by **Theme Settings → General → Buttons** — c
 
 ```php
 $options = [
-	'demo_button_presets'            => [
-		'label'         => __( 'Button Presets', 'unysonplus' ),
-		'type'          => 'button-presets',
+	'demo_button_presets' => [
+		'label' => __( 'Button Presets', 'unysonplus' ),
+		'type' => 'button-presets',
 		'color-choices' => unysonplus_demo_compact_choices( 'bg' ),
-		'value'         => [],
-		'desc'          => __( 'The full button builder used by Theme Settings → General → Buttons. Collapsible presets, each with Default / Hover / Active / Focus / Disabled state tabs (colors, spacing, border, box-shadow), a Font control, a transition, and a custom-CSS box. Each preset compiles to a <code>.btn-{slug}</code> class.', 'unysonplus' ),
+		'value' => [],
+		'desc' => __( 'The full button builder used by Theme Settings → General → Buttons. Collapsible presets, each with Default / Hover / Active / Focus / Disabled state tabs (colors, spacing, border, box-shadow), a Font control, a transition, and a custom-CSS box. Each preset compiles to a <code>.btn-{slug}</code> class.', 'unysonplus' ),
 	],
 ];
 ```

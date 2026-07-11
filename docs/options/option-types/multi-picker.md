@@ -507,18 +507,16 @@ The `fw_print()` output of what `fw_get_db_settings_option( 'demo_multi_picker_s
 ```text
 Array
 (
-    [gadget] => phone
+    [gadget] => 'phone'
     [phone] => Array
         (
-            [price] => 
-            [memory] => 16
+            [price] => ''
+            [memory] => '16'
         )
-
     [laptop] => Array
         (
-            [price] => 
-            [webcam] => 
+            [price] => ''
+            [webcam] => false
         )
-
 )
 ```

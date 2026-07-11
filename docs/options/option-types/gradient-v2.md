@@ -29,29 +29,25 @@ The `fw_print()` output of what `fw_get_db_settings_option( 'demo_gradient_v2_2'
 ```text
 Array
 (
-    [type] => radial
+    [type] => 'radial'
     [angle] => 90
     [stops] => Array
         (
             [0] => Array
                 (
-                    [color] => rgba(42, 123, 155, 1)
+                    [color] => 'rgba(42, 123, 155, 1)'
                     [position] => 0
                 )
-
             [1] => Array
                 (
-                    [color] => rgba(87, 199, 133, 1)
+                    [color] => 'rgba(87, 199, 133, 1)'
                     [position] => 50
                 )
-
             [2] => Array
                 (
-                    [color] => rgba(237, 221, 83, 1)
+                    [color] => 'rgba(237, 221, 83, 1)'
                     [position] => 100
                 )
-
         )
-
 )
 ```

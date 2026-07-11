@@ -44,6 +44,6 @@ The `fw_print()` output of what `fw_get_db_settings_option( 'demo_checkboxes_2' 
 ```text
 Array
 (
-    [c2] => 1
+    [c2] => true
 )
 ```

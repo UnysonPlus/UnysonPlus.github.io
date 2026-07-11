@@ -28,108 +28,88 @@ Array
         (
             [value] => Array
                 (
-                    [predefined] => 
-                    [custom] => #0d3c54
+                    [predefined] => ''
+                    [custom] => '#0d3c54'
                 )
-
         )
-
     [gradient] => Array
         (
             [data] => Array
                 (
-                    [type] => linear
+                    [type] => 'linear'
                     [angle] => 135
                     [stops] => Array
                         (
                             [0] => Array
                                 (
-                                    [color] => rgba(42, 123, 155, 1)
+                                    [color] => 'rgba(42, 123, 155, 1)'
                                     [position] => 0
                                 )
-
                             [1] => Array
                                 (
-                                    [color] => rgba(87, 199, 133, 1)
+                                    [color] => 'rgba(87, 199, 133, 1)'
                                     [position] => 50
                                 )
-
                             [2] => Array
                                 (
-                                    [color] => rgba(237, 221, 83, 1)
+                                    [color] => 'rgba(237, 221, 83, 1)'
                                     [position] => 100
                                 )
-
                         )
-
                 )
-
         )
-
     [image] => Array
         (
             [src] => Array
                 (
-                    [attachment_id] => 11
-                    [url] => //localhost/testsite/wp-content/uploads/2026/06/studio.jpg
+                    [attachment_id] => '11'
+                    [url] => '//localhost/testsite/wp-content/uploads/2026/06/studio.jpg'
                 )
-
-            [position] => center center
+            [position] => 'center center'
             [size] => Array
                 (
-                    [selected] => cover
-                    [custom] => 
+                    [selected] => 'cover'
+                    [custom] => ''
                 )
-
-            [repeat] => no-repeat
-            [attachment] => scroll
+            [repeat] => 'no-repeat'
+            [attachment] => 'scroll'
         )
-
     [video] => Array
         (
-            [enabled] => no
-            [external_url] => 
+            [enabled] => 'no'
+            [external_url] => ''
             [source_mp4] => Array
                 (
                 )
-
             [source_webm] => Array
                 (
                 )
-
             [poster] => Array
                 (
                 )
-
             [fallback] => Array
                 (
                 )
-
-            [loop] => no
-            [autoplay] => yes
-            [mute] => yes
-            [playsinline] => yes
-            [allow_interaction] => no
+            [loop] => 'no'
+            [autoplay] => 'yes'
+            [mute] => 'yes'
+            [playsinline] => 'yes'
+            [allow_interaction] => 'no'
         )
-
     [overlay] => Array
         (
-            [color] => 
+            [color] => ''
             [gradient] => Array
                 (
-                    [type] => linear
+                    [type] => 'linear'
                     [angle] => 90
                     [stops] => Array
                         (
                         )
-
                 )
-
         )
-
     [advanced] => Array
         (
         )
-
 )
 ```

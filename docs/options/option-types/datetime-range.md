@@ -47,7 +47,7 @@ The `fw_print()` output of what `fw_get_db_settings_option( 'demo_datetime_range
 ```text
 Array
 (
-    [from] => 
-    [to] => 
+    [from] => ''
+    [to] => ''
 )
 ```

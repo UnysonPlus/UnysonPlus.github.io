@@ -325,8 +325,8 @@ The `fw_print()` output of what `fw_get_db_settings_option( 'demo_responsive' )`
 ```text
 Array
 (
-    [base] => 20px
-    [md] => 32px
-    [lg] => 48px
+    [base] => '20px'
+    [md] => '32px'
+    [lg] => '48px'
 )
 ```

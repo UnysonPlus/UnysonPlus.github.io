@@ -25,8 +25,8 @@ $options = [
 The `fw_print()` output of what `fw_get_db_settings_option( 'demo_code_editor' )` returns — so you can see the shape of this option type's stored value:
 
 ```text
-selector {
+'selector {
 	color: #2563eb;
 	padding: 2rem 0;
-}
+}'
 ```

@@ -100,18 +100,16 @@ The `fw_print()` output of what `fw_get_db_settings_option( 'demo_background_ima
 ```text
 Array
 (
-    [type] => predefined
-    [predefined] => none
-    [custom] => 
+    [type] => 'predefined'
+    [predefined] => 'none'
+    [custom] => ''
     [data] => Array
         (
-            [icon] => http://localhost/testsite/wp-content/themes/unysonplus-theme/images/patterns/no_pattern.jpg
+            [icon] => 'http://localhost/testsite/wp-content/themes/unysonplus-theme/images/patterns/no_pattern.jpg'
             [css] => Array
                 (
-                    [background-image] => none
+                    [background-image] => 'none'
                 )
-
         )
-
 )
 ```

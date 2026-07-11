@@ -18,5 +18,5 @@ $options = [
 The `fw_print()` output of what `fw_get_db_settings_option( 'demo_medium_text' )` returns — so you can see the shape of this option type's stored value:
 
 ```text
-Lorem ipsum dolor sit amet, consectetur adipisicing elit
+'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
 ```

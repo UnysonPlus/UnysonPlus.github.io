@@ -33,7 +33,7 @@ The `fw_print()` output of what `fw_get_db_settings_option( 'demo_predefined_col
 ```text
 Array
 (
-    [predefined] => bg-primary
-    [custom] => 
+    [predefined] => 'bg-primary'
+    [custom] => ''
 )
 ```

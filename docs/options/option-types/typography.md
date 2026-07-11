@@ -42,8 +42,8 @@ The `fw_print()` output of what `fw_get_db_settings_option( 'demo_typography_2' 
 Array
 (
     [size] => 17
-    [family] => Verdana
-    [style] => 300italic
-    [color] => #0000ff
+    [family] => 'Verdana'
+    [style] => '300italic'
+    [color] => '#0000ff'
 )
 ```

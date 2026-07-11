@@ -59,7 +59,7 @@ The `fw_print()` output of what `fw_get_db_settings_option( 'demo_select_multipl
 ```text
 Array
 (
-    [0] => c
-    [1] => 2
+    [0] => 'c'
+    [1] => '2'
 )
 ```

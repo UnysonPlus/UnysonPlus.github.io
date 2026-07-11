@@ -38,6 +38,10 @@ $options = [
 				],
 			],
 		],
+		// — Optional attributes you can add —
+		// 'summary_key' => '',
+		// 'reflect' => null,
+		// 'autoclose' => null,
 	],
 ];
 ```

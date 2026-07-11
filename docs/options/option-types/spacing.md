@@ -15,6 +15,8 @@ $options = [
 		'label' => __( 'Spacing (Margin + Padding)', 'unysonplus' ),
 		'type' => 'spacing',
 		'desc' => __( 'Composite spacing option. Two columns side-by-side; each has an All Sides select plus a Top / Right / Bottom / Left quadrant arranged like a "+". Values are Bootstrap utility class names sourced from the live spacing scale.', 'unysonplus' ),
+		// — Optional attributes you can add —
+		// 'value' => [],
 	],
 ];
 ```

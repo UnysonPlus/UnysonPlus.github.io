@@ -9,7 +9,17 @@ A medium-width text input.
 
 ```php
 $options = [
-// (demo_medium_text not found)
+	'demo_medium_text' => [
+		'label' => __( 'Medium Text', 'unysonplus' ),  // or false to hide the label column
+		'type' => 'medium-text',
+		'value' => '',
+		'desc' => __( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+			'unysonplus' ),
+		'help' => __( 'Optional help tip shown next to the label.', 'unysonplus' ),
+		// — Optional attributes you can add —
+		// 'attr' => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
+		// 'dynamic_content' => false,  // hide the Dynamic Content (database) picker
+	],
 ];
 ```
 

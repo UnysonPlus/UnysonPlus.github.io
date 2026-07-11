@@ -21,6 +21,8 @@ $options = [
 			__( 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
 				'unysonplus' )
 		),
+		// — Optional attributes you can add —
+		// 'dynamic_content' => true,
 	],
 ];
 ```

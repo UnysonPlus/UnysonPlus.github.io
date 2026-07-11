@@ -16,6 +16,8 @@ $options = [
 		'type' => 'unit-input',
 		'value' => [ 'value' => '24', 'unit' => 'px' ],
 		'desc' => __( 'Numeric field + a configurable unit dropdown (defaults px / em / rem). Saved value is <code>{ value, unit }</code>; consume with <code>FW_Option_Type_Unit_Input::to_string( $val )</code> → "24px".', 'unysonplus' ),
+		// — Optional attributes you can add —
+		// 'max' => '',
 	],
 ];
 ```

@@ -13,6 +13,9 @@ $options = [
 		'label' => __( 'Background Pro', 'unysonplus' ),
 		'type' => 'background-pro',
 		'desc' => __( 'Composite background option (v1). Four tabs: Color / Gradient / Image / Video. Values stack as CSS layers — color underneath, gradient over, image over, video on top. The dot on each tab indicates that layer has a value.', 'unysonplus' ),
+		// — Optional attributes you can add —
+		// 'value' => [],
+		// 'disable' => [],
 	],
 ];
 ```

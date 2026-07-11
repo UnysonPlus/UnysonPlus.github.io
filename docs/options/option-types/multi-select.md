@@ -151,5 +151,7 @@ echo esc_html( implode( ', ', (array) $value ) );
 ```text
 Array
 (
+    [0] => 12
+    [1] => 45
 )
 ```

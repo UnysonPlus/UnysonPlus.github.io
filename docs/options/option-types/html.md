@@ -79,5 +79,5 @@ echo wp_kses_post( $value );
 `fw_print( fw_get_db_settings_option( 'demo_html' ) )` outputs — the shape of this option type's stored value:
 
 ```text
-'{some: "json"}'
+(This option type only renders HTML in the form — it stores no value.)
 ```

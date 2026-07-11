@@ -65,5 +65,5 @@ echo esc_attr( $value );
 `fw_print( fw_get_db_settings_option( 'demo_predefined_colors' ) )` outputs — the shape of this option type's stored value:
 
 ```text
-''
+primary
 ```

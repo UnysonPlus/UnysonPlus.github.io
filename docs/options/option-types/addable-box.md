@@ -121,5 +121,17 @@ foreach ( (array) $value as $row ) {
 ```text
 Array
 (
+    [0] => Array
+        (
+            [title] => First card
+            [text] => Some text for the first card.
+        )
+
+    [1] => Array
+        (
+            [title] => Second card
+            [text] => Some text for the second card.
+        )
+
 )
 ```

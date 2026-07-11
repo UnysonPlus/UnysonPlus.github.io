@@ -75,7 +75,7 @@ echo esc_html( $value['from'] ) . ' - ' . esc_html( $value['to'] );
 ```text
 Array
 (
-    [from] => 30
-    [to] => 50
+    [from] => 20
+    [to] => 80
 )
 ```

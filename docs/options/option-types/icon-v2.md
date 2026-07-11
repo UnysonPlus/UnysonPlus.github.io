@@ -195,10 +195,10 @@ echo '<i class="' . esc_attr( $value['icon-class'] ) . '"></i>';
 ```text
 Array
 (
-    [type] => 'icon-font'
-    [icon-class] => 'fa fa-star'
-    [icon-class-without-root] => 'fa-star'
-    [pack-name] => 'font-awesome'
-    [pack-css-uri] => 'http://localhost/testsite/wp-content/plugins/unysonplus/framework/static/libs/font-awesome/css/font-awesome.min.css'
+    [type] => icon-font
+    [icon-class] => fas fa-star
+    [icon-class-without-root] => fa-star
+    [pack-name] => font-awesome
+    [pack-css-uri] => 
 )
 ```

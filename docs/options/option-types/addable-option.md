@@ -91,8 +91,8 @@ foreach ( (array) $value as $row ) {
 ```text
 Array
 (
-    [0] => 'Option 1'
-    [1] => 'Option 2'
-    [2] => 'Option 3'
+    [0] => First item
+    [1] => Second item
+    [2] => Third item
 )
 ```

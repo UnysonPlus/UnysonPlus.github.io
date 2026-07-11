@@ -80,7 +80,7 @@ echo esc_attr( $value['custom'] !== '' ? $value['custom'] : $value['predefined']
 ```text
 Array
 (
-    [predefined] => ''
-    [custom] => ''
+    [predefined] => 
+    [custom] => #e5322d
 )
 ```

@@ -96,7 +96,7 @@ echo esc_html( $value['heading'] ); // each key is an inner option id
 ```text
 Array
 (
-    [heading] => 'Our Team'
-    [columns] => 3
+    [title] => Popup title
+    [enabled] => yes
 )
 ```

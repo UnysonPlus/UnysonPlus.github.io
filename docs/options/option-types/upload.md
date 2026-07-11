@@ -81,5 +81,9 @@ echo esc_url( $value );
 `fw_print( fw_get_db_settings_option( 'demo_upload' ) )` outputs — the shape of this option type's stored value:
 
 ```text
-''
+Array
+(
+    [attachment_id] => 123
+    [url] => https://example.com/wp-content/uploads/2026/06/photo.jpg
+)
 ```

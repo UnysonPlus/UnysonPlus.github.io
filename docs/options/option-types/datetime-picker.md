@@ -80,5 +80,5 @@ echo esc_html( $value );
 `fw_print( fw_get_db_settings_option( 'demo_datetime_picker' ) )` outputs — the shape of this option type's stored value:
 
 ```text
-''
+2026-06-24 14:30
 ```

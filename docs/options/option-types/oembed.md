@@ -72,5 +72,5 @@ echo wp_oembed_get( $value ); // renders the embed
 `fw_print( fw_get_db_settings_option( 'demo_oembed' ) )` outputs — the shape of this option type's stored value:
 
 ```text
-'https://www.youtube.com/watch?v=9bZkp7q19f0'
+https://www.youtube.com/watch?v=dQw4w9WgXcQ
 ```

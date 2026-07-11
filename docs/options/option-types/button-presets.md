@@ -73,5 +73,12 @@ foreach ( (array) $value as $preset ) {
 ```text
 Array
 (
+    [0] => Array
+        (
+            [name] => Primary
+            [normal_bg_color] => #e5322d
+            [normal_text_color] => #ffffff
+        )
+
 )
 ```

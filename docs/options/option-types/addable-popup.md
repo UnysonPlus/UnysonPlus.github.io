@@ -179,5 +179,15 @@ foreach ( (array) $value as $row ) {
 ```text
 Array
 (
+    [0] => Array
+        (
+            [demo_text] => Row one text
+        )
+
+    [1] => Array
+        (
+            [demo_text] => Row two text
+        )
+
 )
 ```

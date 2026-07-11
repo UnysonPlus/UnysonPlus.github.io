@@ -77,7 +77,7 @@ printf( 'linear-gradient(%s, %s)', esc_attr( $value['primary'] ), esc_attr( $val
 ```text
 Array
 (
-    [primary] => '#ffffff'
-    [secondary] => '#ffffff'
+    [primary] => #e5322d
+    [secondary] => #2f74e6
 )
 ```

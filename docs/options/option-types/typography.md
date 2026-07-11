@@ -84,9 +84,9 @@ printf( 'font-family:%s; font-size:%spx; color:%s;',
 ```text
 Array
 (
-    [size] => 17
-    [family] => 'Verdana'
-    [style] => '300italic'
-    [color] => '#0000ff'
+    [size] => 18
+    [family] => Roboto
+    [style] => 400
+    [color] => #212529
 )
 ```

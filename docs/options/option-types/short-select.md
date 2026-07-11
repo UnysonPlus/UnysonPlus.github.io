@@ -76,5 +76,5 @@ echo esc_html( $value );
 `fw_print( fw_get_db_settings_option( 'demo_short_select' ) )` outputs — the shape of this option type's stored value:
 
 ```text
-'7'
+choice_2
 ```

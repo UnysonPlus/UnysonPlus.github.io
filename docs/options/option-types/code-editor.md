@@ -64,8 +64,7 @@ echo esc_html( $value );
 `fw_print( fw_get_db_settings_option( 'demo_code_editor' ) )` outputs — the shape of this option type's stored value:
 
 ```text
-'selector {
-	color: #2563eb;
-	padding: 2rem 0;
-}'
+selector {
+    color: #e5322d;
+}
 ```

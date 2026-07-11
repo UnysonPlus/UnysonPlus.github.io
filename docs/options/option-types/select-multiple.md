@@ -98,7 +98,7 @@ echo esc_html( implode( ', ', (array) $value ) );
 ```text
 Array
 (
-    [0] => 'c'
-    [1] => '2'
+    [0] => choice_1
+    [1] => choice_3
 )
 ```

@@ -7,6 +7,32 @@
   background: var(--ifm-card-background-color);
 }
 
+/* --- effect switcher tabs --- */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+  background: var(--ifm-color-emphasis-100);
+}
+.tab,
+.tabActive {
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 999px;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-color-emphasis-700);
+}
+.tabActive {
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: #fff;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1.3fr 1fr;
@@ -83,6 +109,24 @@
 }
 .control label span { color: var(--ifm-color-primary); font-variant-numeric: tabular-nums; }
 .control input[type='range'] { width: 100%; accent-color: var(--ifm-color-primary); }
+.select {
+  width: 100%;
+  padding: 0.4rem 0.55rem;
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 8px;
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+  font-size: 0.85rem;
+}
+.color {
+  width: 100%;
+  height: 34px;
+  padding: 2px;
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 8px;
+  background: var(--ifm-background-surface-color);
+  cursor: pointer;
+}
 
 .toggle { display: inline-flex; border: 1px solid var(--ifm-toc-border-color); border-radius: 8px; overflow: hidden; }
 .toggle button {
@@ -117,10 +161,15 @@
   padding: 0.75rem 1.5rem 0;
 }
 .code pre {
-  margin: 0.5rem 1.5rem 1.25rem;
+  margin: 0.5rem 1.5rem 0.5rem;
   background: var(--ifm-color-emphasis-100);
   border-radius: 8px;
   padding: 1rem;
   font-size: 0.82rem;
   overflow-x: auto;
+}
+.note {
+  margin: 0 1.5rem 1.25rem;
+  font-size: 0.78rem;
+  color: var(--ifm-color-emphasis-600);
 }

@@ -1,0 +1,50 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ Hover Interaction effects — pick an effect, tweak its options live, and copy the generated sample.
+---
+
+import HoverPlayground from '@site/src/components/HoverPlayground';
+
+# Hover Interactions — Playground
+
+Pick an effect, hover the card, and tweak the options. Everything here runs the **real
+plugin CSS** — the same `.sc-hover--*` classes, `--hover-*` custom properties and
+`data-hover-*` attributes the builder outputs — so what you see is what ships. The
+**Sample option** block updates as you tweak, ready to copy.
+
+<HoverPlayground />
+
+:::info What this covers
+The switcher above includes the **pure-CSS** hover effects. The pointer-tracking effects
+(**Magnetic**, **3D Tilt**, **Spotlight**, **Ripple**, **Text Scramble**) and
+image-oriented ones (**Image Reveal**, **Grayscale**, **Blur**) run a small JavaScript
+driver in the plugin; they'll be added to this playground next. See
+**[Hover Interactions](./index.md)** for the full effect list and details.
+:::
+
+## How the option is stored
+
+Hover Interaction is **stackable**, so its saved value is an **array of instances** — each
+a `{ effect, …settings }` map. The playground shows a single instance; add more in the
+builder to combine effects (e.g. **Lift + Glow Border + Ripple**) and the array grows:
+
+```php
+'demo_hover' => [
+    'type'  => 'hover',
+    'value' => [
+        [ 'effect' => 'lift',        'distance' => 8, 'shadow' => 'yes' ],
+        [ 'effect' => 'glow_border', 'glow_color' => '#6aa6ff' ],
+    ],
+],
+```
+
+:::note Colors use the palette
+Color options use the theme **color-preset picker**, so they actually store
+`[ 'predefined' => 'bg-primary', 'custom' => '' ]` (a preset) or
+`[ 'predefined' => '', 'custom' => '#6aa6ff' ]` (a one-off). The playground shows the
+resolved color for clarity.
+:::
+
+← Back to [Hover Interactions](./index.md)

@@ -28,8 +28,10 @@ velocity — see **[Text Effects](./index.md)** for the full reference.
 :::
 
 :::note A couple of notes
-- **Variable-font effects** (Weight Sweep, Width Sweep) only move on a *variable* font. The docs
-  font may render them static — on a site with a variable font they animate smoothly.
+- **Weight Sweep** animates `font-weight` as well as the variable-font `wght` axis, so it works on
+  any multi-weight font (stepped) and smoothly on a variable one. **Width Sweep** uses the `wdth`
+  axis, which needs a *variable* font — this preview approximates it with a horizontal scale so you
+  can see it, but on a site with a variable font the true width axis is used.
 - **Colors** use the theme color-preset picker, so they actually store
   `[ 'predefined' => '', 'custom' => '#hex' ]`. The playground shows the resolved color.
 :::

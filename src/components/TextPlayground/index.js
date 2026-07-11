@@ -412,8 +412,8 @@ const EFFECT_CSS = `
 .upw-text-glitch:hover::after, .upw-text-glitch.is-always::after { opacity:.85; animation: upw-text-glitch-b .38s steps(2,end) infinite; }
 @keyframes upw-text-glitch-a { 0%{transform:translate(0);clip-path:inset(0 0 0 0);} 25%{transform:translate(calc(var(--text-glitch,3px)*-1),1px);clip-path:inset(18% 0 46% 0);} 50%{transform:translate(var(--text-glitch,3px),-1px);clip-path:inset(58% 0 12% 0);} 75%{transform:translate(calc(var(--text-glitch,3px)*-0.6),0);clip-path:inset(8% 0 70% 0);} 100%{transform:translate(0);clip-path:inset(0 0 0 0);} }
 @keyframes upw-text-glitch-b { 0%{transform:translate(0);clip-path:inset(0 0 0 0);} 25%{transform:translate(var(--text-glitch,3px),-1px);clip-path:inset(52% 0 20% 0);} 50%{transform:translate(calc(var(--text-glitch,3px)*-1),1px);clip-path:inset(10% 0 60% 0);} 75%{transform:translate(calc(var(--text-glitch,3px)*0.6),0);clip-path:inset(70% 0 8% 0);} 100%{transform:translate(0);clip-path:inset(0 0 0 0);} }
-.upw-text-vf { font-variation-settings: 'wght' var(--text-wght-from,300); transition: font-variation-settings .45s ease, font-weight .45s ease; }
-.sc-text--vf_weight:hover .upw-text-vf, .upw-text-vf.is-on { font-variation-settings: 'wght' var(--text-wght-to,800); }
+.upw-text-vf { font-variation-settings: 'wght' var(--text-wght-from,300); font-weight: var(--text-wght-from,300); transition: font-variation-settings .45s ease, font-weight .45s ease; }
+.sc-text--vf_weight:hover .upw-text-vf, .upw-text-vf.is-on { font-variation-settings: 'wght' var(--text-wght-to,800); font-weight: var(--text-wght-to,800); }
 .upw-text-gradflow, .upw-text-rainbow { background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; animation: upw-text-gradflow var(--text-speed,4s) linear infinite; }
 .upw-text-gradflow { background-image: linear-gradient(100deg, var(--text-c1,#ff6b6b), var(--text-c2,#6a8dff), var(--text-c3,#17c964), var(--text-c1,#ff6b6b)); }
 .upw-text-rainbow { background-image: linear-gradient(90deg,#ff004c,#ff8a00,#ffd500,#48ff00,#00b3ff,#7a00ff,#ff004c); }
@@ -438,8 +438,10 @@ const EFFECT_CSS = `
 .upw-text-outline { -webkit-text-stroke: 1px var(--text-fill, currentColor); text-stroke: 1px var(--text-fill, currentColor); -webkit-text-fill-color: transparent; color: transparent; transition: -webkit-text-fill-color .5s ease, color .5s ease; }
 .upw-text-outline.is-on, .sc-text--outline_fill:hover .upw-text-outline { -webkit-text-fill-color: var(--text-fill, currentColor); color: var(--text-fill, currentColor); }
 .upw-text-chromatic { text-shadow: var(--text-chroma,2px) 0 rgba(255,0,80,.6), calc(var(--text-chroma,2px)*-1) 0 rgba(0,200,255,.6); }
-.upw-text-width { font-variation-settings: 'wdth' var(--text-wdth-from,75); transition: font-variation-settings .5s ease; }
-.sc-text--width_sweep:hover .upw-text-width, .upw-text-width.is-on { font-variation-settings: 'wdth' var(--text-wdth-to,125); }
+/* Real effect uses the variable-font 'wdth' axis; this preview adds a scaleX
+   fallback so it's visible on a non-variable font. */
+.upw-text-width { font-variation-settings: 'wdth' var(--text-wdth-from,75); font-stretch: calc(var(--text-wdth-from,75) * 1%); display: inline-block; transform: scaleX(calc(var(--text-wdth-from,75) / 100)); transform-origin: center; transition: font-variation-settings .5s ease, font-stretch .5s ease, transform .5s ease; }
+.sc-text--width_sweep:hover .upw-text-width, .upw-text-width.is-on { font-variation-settings: 'wdth' var(--text-wdth-to,125); font-stretch: calc(var(--text-wdth-to,125) * 1%); transform: scaleX(calc(var(--text-wdth-to,125) / 100)); }
 .upw-text-expand { transition: letter-spacing .4s ease; }
 .sc-text--expand_spacing:hover .upw-text-expand { letter-spacing: var(--text-spacing,6px); }
 .upw-text-cwave-ch { transition: color .3s ease; }

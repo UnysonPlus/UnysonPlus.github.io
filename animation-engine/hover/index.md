@@ -23,20 +23,57 @@ Hover Interaction is **stackable** — after you add it, its tile stays in **Add
 
 ## The effects
 
+Every effect below is interactive in the **[playground](./playground.mdx)** ⚡. Grouped by kind:
+
+**Pointer** (follow the cursor)
+
 | Effect | What it does | Key options |
 | --- | --- | --- |
 | **Magnetic** | The element is pulled toward the cursor | Strength |
 | **3D Tilt** | Tilts in 3D following the pointer | Max tilt · Hover scale · Glare |
-| **Spotlight** | A glow follows the cursor across the element | Glow color · Glow size |
-| **Image Reveal** | Zoom / grayscale→color / shine sweep on an image | Style · Zoom |
-| **Text Scramble** | Letters scramble then resolve | Duration |
-| **Glow Border** | A glowing border traces the element | Glow color |
-| **Underline Grow** | An underline grows in on hover | Line color · Grow from (left / center) |
+| **Spotlight** | A glow — or a 2-colour gradient tint — follows the cursor | Style (glow / gradient) · Colors · Size |
 | **Ripple** | A ripple expands from the cursor | Ripple color |
-| **Lift** ⚡ | Lifts up with an optional shadow | Lift distance · Shadow |
-| **Color Shift** | Background fades to a new color | Hover background |
+| **Cursor Blob** | A soft colour blob follows the pointer | Blob color · Size |
+| **Cursor Trail** | Fading dots trail the pointer | Trail color · Dot size |
+| **Flashlight** | A dark overlay with a torch hole that follows the pointer | Torch size · Darkness |
+| **Depth Layers** | Inner children parallax at different rates | Depth |
 
-Colors use the theme **color-preset picker**, so they stay tied to your palette (with an inline custom-color option).
+**Motion**
+
+| Effect | What it does | Key options |
+| --- | --- | --- |
+| **Lift** ⚡ | Lifts up with an optional shadow | Lift distance · Shadow |
+| **Scale / Zoom**, **Push**, **Pulse**, **Bounce**, **Pop / Jelly**, **Skew**, **Rotate**, **Shake** | Transform-based motion on hover | (per effect) |
+| **Squash & Stretch** | Elastic squash-and-stretch | Bounciness |
+
+**Decoration**
+
+| Effect | What it does | Key options |
+| --- | --- | --- |
+| **Glow Border**, **Gradient Border**, **Corner Brackets**, **Border Draw**, **Outline Expand** | Borders / frames drawn on hover | Colors · sizes |
+| **Fill Sweep**, **Shine Sweep**, **Background Pan**, **Color Shift** | Colour sweeps & fills | Colors · speed |
+| **Marching Ants** | An animated dashed outline runs around the box | Line color · Speed |
+| **Shockwave** | An outline ring expands from the centre | Ring color |
+| **Peel Corner** | A top-right corner folds up (dog-ear) | Fold shadow · Size |
+| **Liquid Goo** | The element morphs its corners like a liquid blob | Morph speed |
+| **Arrow Slide** | A CTA arrow slides + fades in (for links/buttons) | Arrow color |
+
+**Text**
+
+| Effect | What it does | Key options |
+| --- | --- | --- |
+| **Underline Grow** | An underline grows in on hover | Line color · Grow from |
+| **Glitch**, **Letter Spacing**, **Text Scramble**, **Text Swap** | Type effects on hover | (per effect) |
+| **Magnetic Letters** | Each character pulls toward the pointer | Strength |
+
+**Image**
+
+| Effect | What it does | Key options |
+| --- | --- | --- |
+| **Image Reveal** | Zoom / grayscale→color / shine sweep on an image | Style · Zoom |
+| **Grayscale**, **Blur Focus**, **Brightness** | CSS filters on hover | Amount · direction |
+
+Colors use the theme **color-preset picker**, so they stay tied to your palette (with an inline custom-color option). There's also a **WebGL Refract** effect (chromatic/liquid displacement) that needs the engine's Three.js pipeline.
 
 ## Performance & accessibility
 

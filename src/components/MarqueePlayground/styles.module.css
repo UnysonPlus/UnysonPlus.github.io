@@ -28,8 +28,7 @@
 }
 .dirActive { background: var(--ifm-color-primary); border-color: var(--ifm-color-primary); color: #fff; }
 
-.grid { display: grid; grid-template-columns: 1.2fr 1fr; }
-@media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+.grid { display: grid; grid-template-columns: 1fr; }
 
 /* stage */
 .stage {
@@ -40,14 +39,13 @@
   padding: 2rem 0;
   overflow: hidden;
   background: radial-gradient(circle at 1px 1px, var(--ifm-toc-border-color) 1px, transparent 0) 0 0 / 22px 22px;
-  border-right: 1px solid var(--ifm-toc-border-color);
+  border-bottom: 1px solid var(--ifm-toc-border-color);
 }
-@media (max-width: 860px) { .stage { border-right: none; border-bottom: 1px solid var(--ifm-toc-border-color); } }
 .marquee { width: 100%; color: var(--ifm-heading-color); }
 .hint { position: absolute; bottom: 0.7rem; width: 100%; text-align: center; font-size: 0.76rem; color: var(--ifm-color-emphasis-500); }
 
 /* controls */
-.controls { padding: 1.25rem 1.5rem; max-height: 420px; overflow-y: auto; }
+.controls { padding: 1.25rem 1.5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0 2.2rem; align-items: start; }
 .groupLbl {
   font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700;
   color: var(--ifm-color-emphasis-600); margin: 1rem 0 0.6rem; padding-bottom: 0.3rem;

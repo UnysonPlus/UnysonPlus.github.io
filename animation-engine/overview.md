@@ -33,7 +33,7 @@ Open any Section, Column or element → **Animations** tab:
 | [Scroll Text Highlight](./scroll-text-highlight.md) | Light up text word-by-word as it scrolls through view — fill, fade, blur or marker sweep |
 | [Motion Path](./motion-path.md) | Send an element travelling along a path — 37 shapes (wave, loop, spiral, star, stairs…) or a custom SVG path; drive by scroll, loop or on-view, with align-to-path |
 | [Scroll Color Shift](./scroll-color-shift.md) | Section-level — the page background morphs section-to-section as you scroll |
-| [Preloader](./preloader.md) | Site-wide loading screen shown until the page is ready, then animated away — spinner, bar, dots, counter, curtain, logo |
+| [Preloader](./preloader/index.md) | Site-wide loading screen shown until the page is ready, then animated away — spinner, bar, dots, counter, curtain, logo |
 
 :::tip Adding animations — the inserter
 The **Animations** tab is an **"Add Animation" inserter**. It starts empty with a **+ Add Animation** button — click it to browse a searchable, category-tabbed grid of effects (Entrance, Scroll, Pointer, Physics, Motion, Text) and pick one. It drops in as a configurable **card**, and you can **stack several** on one element (e.g. an Entrance *and* a Hover *and* a Scroll effect). Some modules (like **Hover**) can even be added **more than once** to combine their effects — Lift *and* Ripple together. Remove a card with its **×**. Effects you haven't added take no space, so the tab stays tidy no matter how many modules are installed.

@@ -1,0 +1,41 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ Marquee — pick a direction, tweak the ticker, warp it, and copy the generated sample.
+---
+
+import MarqueePlayground from '@site/src/components/MarqueePlayground';
+
+# Marquee — Playground
+
+Pick a **direction**, then tweak the ticker. Everything here runs the **real module** — the
+same seamless cloned track, the SVG-arc curved-text mode, warp (skew / tilt / bend), wave,
+drag-with-momentum and scroll-reactive speed, plus the exact `.sc-marquee` / `.sc-mq-*`
+classes the builder outputs. Hover to pause; turn on **Draggable** to grab and flick it. The
+**Sample option** updates as you tweak.
+
+<MarqueePlayground />
+
+:::tip Curve makes a real arc
+Set **Curve** (with a horizontal direction) and the text is rendered on an SVG arc path — a
+true curve, not a skew — and scrolled along it. Curve is text-only and overrides **Bend** for
+text. **Skew**, **Tilt** and **Wave** combine freely with any direction.
+:::
+
+## How the option is stored
+
+Marquee is a **multi-picker** whose picker is the **direction** (`mode`); the settings live in a
+nested map keyed by that direction:
+
+```php
+'marquee' => [
+    'type'  => 'multi-picker',
+    'value' => [
+        'mode' => 'left',
+        'left' => [ 'speed' => 'fast', 'gap' => 40, 'separator' => '•', 'tilt' => 12 ],
+    ],
+],
+```
+
+← Back to [Marquee](./index.md)

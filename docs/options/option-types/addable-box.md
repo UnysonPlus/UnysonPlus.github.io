@@ -64,3 +64,13 @@ $options = [
 `fw:option-type:addable-box:box:init` - Box was initialized. Triggered for each existing box after page load, or when a box was added.
 
 `fw:option-type:addable-box:control:click` - A custom control was clicked.
+
+## Saved value
+
+The `fw_print()` output of what `fw_get_db_settings_option( 'demo_addable_box_2' )` returns — so you can see the shape of this option type's stored value:
+
+```text
+Array
+(
+)
+```

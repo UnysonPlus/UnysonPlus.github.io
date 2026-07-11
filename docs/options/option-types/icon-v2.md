@@ -146,3 +146,18 @@ Generally speaking, that's what an icon pack CSS file consist of:
 - some other general purpose helpers -- they're encountered not that often
 
 You can also completely stop this mechanism for one pack by specifying an array of icons for the `icons` option. A more complete pack definition can be found here.
+
+## Saved value
+
+The `fw_print()` output of what `fw_get_db_settings_option( 'demo_icon_v2' )` returns — so you can see the shape of this option type's stored value:
+
+```text
+Array
+(
+    [type] => icon-font
+    [icon-class] => fa fa-star
+    [icon-class-without-root] => fa-star
+    [pack-name] => font-awesome
+    [pack-css-uri] => http://localhost/testsite/wp-content/plugins/unysonplus/framework/static/libs/font-awesome/css/font-awesome.min.css
+)
+```

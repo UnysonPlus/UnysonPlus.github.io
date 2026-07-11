@@ -21,3 +21,37 @@ $options = [
 	],
 ];
 ```
+
+## Saved value
+
+The `fw_print()` output of what `fw_get_db_settings_option( 'demo_gradient_v2_2' )` returns — so you can see the shape of this option type's stored value:
+
+```text
+Array
+(
+    [type] => radial
+    [angle] => 90
+    [stops] => Array
+        (
+            [0] => Array
+                (
+                    [color] => rgba(42, 123, 155, 1)
+                    [position] => 0
+                )
+
+            [1] => Array
+                (
+                    [color] => rgba(87, 199, 133, 1)
+                    [position] => 50
+                )
+
+            [2] => Array
+                (
+                    [color] => rgba(237, 221, 83, 1)
+                    [position] => 100
+                )
+
+        )
+
+)
+```

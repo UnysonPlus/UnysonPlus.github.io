@@ -28,3 +28,15 @@ $options = [
 	],
 ];
 ```
+
+## Saved value
+
+The `fw_print()` output of what `fw_get_db_settings_option( 'demo_range_slider_2' )` returns — so you can see the shape of this option type's stored value:
+
+```text
+Array
+(
+    [from] => 30
+    [to] => 50
+)
+```

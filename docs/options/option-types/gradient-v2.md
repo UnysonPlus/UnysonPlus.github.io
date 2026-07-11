@@ -31,7 +31,7 @@ $options = [
 The shortcode framework passes the option values into `view.php` as `$atts`:
 
 ```php
-$value = $atts['demo_gradient_v2_2'];
+$value = $atts['demo_gradient_v2'];
 echo esc_attr( $value['type'] ); // + $value['angle'], $value['stops'] (see Saved value)
 ```
 
@@ -40,7 +40,7 @@ echo esc_attr( $value['type'] ); // + $value['angle'], $value['stops'] (see Save
 Options defined on a post/page (a metabox) are read with `fw_get_db_post_option()`:
 
 ```php
-$value = fw_get_db_post_option( get_the_ID(), 'demo_gradient_v2_2' );
+$value = fw_get_db_post_option( get_the_ID(), 'demo_gradient_v2' );
 echo esc_attr( $value['type'] ); // + $value['angle'], $value['stops'] (see Saved value)
 ```
 
@@ -48,7 +48,7 @@ When the field is one of several inside a **box/group**, read the whole group on
 
 ```php
 $book  = fw_get_db_post_option( get_the_ID(), 'book' );
-$value = $book['demo_gradient_v2_2'];
+$value = $book['demo_gradient_v2'];
 echo esc_attr( $value['type'] ); // + $value['angle'], $value['stops'] (see Saved value)
 ```
 
@@ -57,36 +57,21 @@ echo esc_attr( $value['type'] ); // + $value['angle'], $value['stops'] (see Save
 Global options are read with `fw_get_db_settings_option()`:
 
 ```php
-$value = fw_get_db_settings_option( 'demo_gradient_v2_2' );
+$value = fw_get_db_settings_option( 'demo_gradient_v2' );
 echo esc_attr( $value['type'] ); // + $value['angle'], $value['stops'] (see Saved value)
 ```
 
 ## Saved value
 
-`fw_print( fw_get_db_settings_option( 'demo_gradient_v2_2' ) )` outputs — the shape of this option type's stored value:
+`fw_print( fw_get_db_settings_option( 'demo_gradient_v2' ) )` outputs — the shape of this option type's stored value:
 
 ```text
 Array
 (
-    [type] => 'radial'
+    [type] => 'linear'
     [angle] => 90
     [stops] => Array
         (
-            [0] => Array
-                (
-                    [color] => 'rgba(42, 123, 155, 1)'
-                    [position] => 0
-                )
-            [1] => Array
-                (
-                    [color] => 'rgba(87, 199, 133, 1)'
-                    [position] => 50
-                )
-            [2] => Array
-                (
-                    [color] => 'rgba(237, 221, 83, 1)'
-                    [position] => 100
-                )
         )
 )
 ```

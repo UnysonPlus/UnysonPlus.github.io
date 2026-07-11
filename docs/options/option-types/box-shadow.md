@@ -27,7 +27,7 @@ $options = [
 The shortcode framework passes the option values into `view.php` as `$atts`:
 
 ```php
-$value = $atts['demo_box_shadow_2'];
+$value = $atts['demo_box_shadow'];
 printf( '%spx %spx %spx %spx %s',
 	(int) $value['x'], (int) $value['y'], (int) $value['blur'], (int) $value['spread'], esc_attr( $value['color'] ) );
 ```
@@ -37,7 +37,7 @@ printf( '%spx %spx %spx %spx %s',
 Options defined on a post/page (a metabox) are read with `fw_get_db_post_option()`:
 
 ```php
-$value = fw_get_db_post_option( get_the_ID(), 'demo_box_shadow_2' );
+$value = fw_get_db_post_option( get_the_ID(), 'demo_box_shadow' );
 printf( '%spx %spx %spx %spx %s',
 	(int) $value['x'], (int) $value['y'], (int) $value['blur'], (int) $value['spread'], esc_attr( $value['color'] ) );
 ```
@@ -46,7 +46,7 @@ When the field is one of several inside a **box/group**, read the whole group on
 
 ```php
 $book  = fw_get_db_post_option( get_the_ID(), 'book' );
-$value = $book['demo_box_shadow_2'];
+$value = $book['demo_box_shadow'];
 printf( '%spx %spx %spx %spx %s',
 	(int) $value['x'], (int) $value['y'], (int) $value['blur'], (int) $value['spread'], esc_attr( $value['color'] ) );
 ```
@@ -56,23 +56,23 @@ printf( '%spx %spx %spx %spx %s',
 Global options are read with `fw_get_db_settings_option()`:
 
 ```php
-$value = fw_get_db_settings_option( 'demo_box_shadow_2' );
+$value = fw_get_db_settings_option( 'demo_box_shadow' );
 printf( '%spx %spx %spx %spx %s',
 	(int) $value['x'], (int) $value['y'], (int) $value['blur'], (int) $value['spread'], esc_attr( $value['color'] ) );
 ```
 
 ## Saved value
 
-`fw_print( fw_get_db_settings_option( 'demo_box_shadow_2' ) )` outputs — the shape of this option type's stored value:
+`fw_print( fw_get_db_settings_option( 'demo_box_shadow' ) )` outputs — the shape of this option type's stored value:
 
 ```text
 Array
 (
     [x] => 0
-    [y] => 10
-    [blur] => 30
-    [spread] => -4
-    [color] => 'rgba(102,16,242,0.45)'
+    [y] => 6
+    [blur] => 18
+    [spread] => 0
+    [color] => 'rgba(0,0,0,0.25)'
     [inset] => false
 )
 ```

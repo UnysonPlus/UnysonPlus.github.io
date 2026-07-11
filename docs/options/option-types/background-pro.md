@@ -26,7 +26,7 @@ $options = [
 The shortcode framework passes the option values into `view.php` as `$atts`:
 
 ```php
-$value = $atts['demo_background_pro_2'];
+$value = $atts['demo_background_pro'];
 echo esc_attr( $value['color'] ); // + gradient / image / video / overlay (see Saved value)
 ```
 
@@ -35,7 +35,7 @@ echo esc_attr( $value['color'] ); // + gradient / image / video / overlay (see S
 Options defined on a post/page (a metabox) are read with `fw_get_db_post_option()`:
 
 ```php
-$value = fw_get_db_post_option( get_the_ID(), 'demo_background_pro_2' );
+$value = fw_get_db_post_option( get_the_ID(), 'demo_background_pro' );
 echo esc_attr( $value['color'] ); // + gradient / image / video / overlay (see Saved value)
 ```
 
@@ -43,7 +43,7 @@ When the field is one of several inside a **box/group**, read the whole group on
 
 ```php
 $book  = fw_get_db_post_option( get_the_ID(), 'book' );
-$value = $book['demo_background_pro_2'];
+$value = $book['demo_background_pro'];
 echo esc_attr( $value['color'] ); // + gradient / image / video / overlay (see Saved value)
 ```
 
@@ -52,13 +52,13 @@ echo esc_attr( $value['color'] ); // + gradient / image / video / overlay (see S
 Global options are read with `fw_get_db_settings_option()`:
 
 ```php
-$value = fw_get_db_settings_option( 'demo_background_pro_2' );
+$value = fw_get_db_settings_option( 'demo_background_pro' );
 echo esc_attr( $value['color'] ); // + gradient / image / video / overlay (see Saved value)
 ```
 
 ## Saved value
 
-`fw_print( fw_get_db_settings_option( 'demo_background_pro_2' ) )` outputs — the shape of this option type's stored value:
+`fw_print( fw_get_db_settings_option( 'demo_background_pro' ) )` outputs — the shape of this option type's stored value:
 
 ```text
 Array
@@ -68,7 +68,7 @@ Array
             [value] => Array
                 (
                     [predefined] => ''
-                    [custom] => '#0d3c54'
+                    [custom] => ''
                 )
         )
     [gradient] => Array
@@ -76,24 +76,9 @@ Array
             [data] => Array
                 (
                     [type] => 'linear'
-                    [angle] => 135
+                    [angle] => 90
                     [stops] => Array
                         (
-                            [0] => Array
-                                (
-                                    [color] => 'rgba(42, 123, 155, 1)'
-                                    [position] => 0
-                                )
-                            [1] => Array
-                                (
-                                    [color] => 'rgba(87, 199, 133, 1)'
-                                    [position] => 50
-                                )
-                            [2] => Array
-                                (
-                                    [color] => 'rgba(237, 221, 83, 1)'
-                                    [position] => 100
-                                )
                         )
                 )
         )
@@ -101,8 +86,6 @@ Array
         (
             [src] => Array
                 (
-                    [attachment_id] => '11'
-                    [url] => '//localhost/testsite/wp-content/uploads/2026/06/studio.jpg'
                 )
             [position] => 'center center'
             [size] => Array

@@ -28,7 +28,7 @@ $options = [
 The shortcode framework passes the option values into `view.php` as `$atts`:
 
 ```php
-$value = $atts['demo_button_presets_2'];
+$value = $atts['demo_button_presets'];
 foreach ( (array) $value as $preset ) {
 	// each entry is a chosen button preset
 }
@@ -39,7 +39,7 @@ foreach ( (array) $value as $preset ) {
 Options defined on a post/page (a metabox) are read with `fw_get_db_post_option()`:
 
 ```php
-$value = fw_get_db_post_option( get_the_ID(), 'demo_button_presets_2' );
+$value = fw_get_db_post_option( get_the_ID(), 'demo_button_presets' );
 foreach ( (array) $value as $preset ) {
 	// each entry is a chosen button preset
 }
@@ -49,7 +49,7 @@ When the field is one of several inside a **box/group**, read the whole group on
 
 ```php
 $book  = fw_get_db_post_option( get_the_ID(), 'book' );
-$value = $book['demo_button_presets_2'];
+$value = $book['demo_button_presets'];
 foreach ( (array) $value as $preset ) {
 	// each entry is a chosen button preset
 }
@@ -60,7 +60,7 @@ foreach ( (array) $value as $preset ) {
 Global options are read with `fw_get_db_settings_option()`:
 
 ```php
-$value = fw_get_db_settings_option( 'demo_button_presets_2' );
+$value = fw_get_db_settings_option( 'demo_button_presets' );
 foreach ( (array) $value as $preset ) {
 	// each entry is a chosen button preset
 }
@@ -68,7 +68,7 @@ foreach ( (array) $value as $preset ) {
 
 ## Saved value
 
-`fw_print( fw_get_db_settings_option( 'demo_button_presets_2' ) )` outputs — the shape of this option type's stored value:
+`fw_print( fw_get_db_settings_option( 'demo_button_presets' ) )` outputs — the shape of this option type's stored value:
 
 ```text
 Array

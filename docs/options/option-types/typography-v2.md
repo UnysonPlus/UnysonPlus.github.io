@@ -56,7 +56,7 @@ $options = [
 The shortcode framework passes the option values into `view.php` as `$atts`:
 
 ```php
-$value = $atts['demo_typography-v2_2'];
+$value = $atts['demo_typography-v2'];
 printf( 'font-family:%s; font-size:%spx; color:%s;',
 	esc_attr( $value['family'] ), esc_attr( $value['size'] ), esc_attr( $value['color'] ) );
 ```
@@ -66,7 +66,7 @@ printf( 'font-family:%s; font-size:%spx; color:%s;',
 Options defined on a post/page (a metabox) are read with `fw_get_db_post_option()`:
 
 ```php
-$value = fw_get_db_post_option( get_the_ID(), 'demo_typography-v2_2' );
+$value = fw_get_db_post_option( get_the_ID(), 'demo_typography-v2' );
 printf( 'font-family:%s; font-size:%spx; color:%s;',
 	esc_attr( $value['family'] ), esc_attr( $value['size'] ), esc_attr( $value['color'] ) );
 ```
@@ -75,7 +75,7 @@ When the field is one of several inside a **box/group**, read the whole group on
 
 ```php
 $book  = fw_get_db_post_option( get_the_ID(), 'book' );
-$value = $book['demo_typography-v2_2'];
+$value = $book['demo_typography-v2'];
 printf( 'font-family:%s; font-size:%spx; color:%s;',
 	esc_attr( $value['family'] ), esc_attr( $value['size'] ), esc_attr( $value['color'] ) );
 ```
@@ -85,14 +85,14 @@ printf( 'font-family:%s; font-size:%spx; color:%s;',
 Global options are read with `fw_get_db_settings_option()`:
 
 ```php
-$value = fw_get_db_settings_option( 'demo_typography-v2_2' );
+$value = fw_get_db_settings_option( 'demo_typography-v2' );
 printf( 'font-family:%s; font-size:%spx; color:%s;',
 	esc_attr( $value['family'] ), esc_attr( $value['size'] ), esc_attr( $value['color'] ) );
 ```
 
 ## Saved value
 
-`fw_print( fw_get_db_settings_option( 'demo_typography-v2_2' ) )` outputs — the shape of this option type's stored value:
+`fw_print( fw_get_db_settings_option( 'demo_typography-v2' ) )` outputs — the shape of this option type's stored value:
 
 ```text
 Array

@@ -28,7 +28,7 @@ add_filter( 'unysonplus_global_css', function ( $css ) {
 } );
 ```
 
-See [How settings become CSS](/docs/theme/settings-to-css) for where this output lands.
+See [How settings become CSS](/theme/settings-to-css) for where this output lands.
 
 ### Actions (0)
 

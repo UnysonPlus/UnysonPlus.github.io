@@ -58,7 +58,7 @@ Two switches tune the combined bundle:
    `?fw_asset_optimizer_discover=1` whenever your asset set changes.
 
 :::tip It pairs with the clean output
-Because the theme already compiles its design into [one generated stylesheet](/docs/theme/settings-to-css)
+Because the theme already compiles its design into [one generated stylesheet](/theme/settings-to-css)
 and the page builder emits [clean markup](/docs/page-builder/clean-dom), Asset Optimizer has little to
 clean up, it mostly folds the remaining plugin/element stylesheets and scripts into one request each.
 :::

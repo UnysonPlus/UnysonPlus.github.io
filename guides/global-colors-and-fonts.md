@@ -31,14 +31,14 @@ inputs, and images).
 
 Everything you set is compiled into a **single generated stylesheet** (no inline-style soup), built
 from CSS custom properties the theme generates from your settings. See
-[How settings become CSS](/docs/theme/settings-to-css).
+[How settings become CSS](/theme/settings-to-css).
 
 ## Move a design between sites
 
 Colors, fonts, header/footer, and custom CSS export as one file: **Theme Settings → Miscellaneous →
-Export / Import**. See [Child themes → moving a design](/docs/theme/child-themes#moving-a-design-between-sites).
+Export / Import**. See [Child themes → moving a design](/theme/child-themes#moving-a-design-between-sites).
 
 ## See also
 
-- [Theme Settings](/docs/theme/theme-settings)
+- [Theme Settings](/theme/theme-settings)
 - [Presets & design tokens](/docs/hooks/presets-and-tokens) — registering presets in code

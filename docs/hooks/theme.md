@@ -15,7 +15,7 @@ add_action( 'unysonplus_entry_header', function () {
 } );
 ```
 
-Common loop hooks include `unysonplus_before_loop` / `unysonplus_after_loop`, `unysonplus_entry_top`, `unysonplus_entry_header`, `unysonplus_after_entry_content`, and `unysonplus_after_entry`. See [The Theme](/docs/theme) for how the chrome and blog templates are assembled.
+Common loop hooks include `unysonplus_before_loop` / `unysonplus_after_loop`, `unysonplus_entry_top`, `unysonplus_entry_header`, `unysonplus_after_entry_content`, and `unysonplus_after_entry`. See [The Theme](/theme) for how the chrome and blog templates are assembled.
 
 ### Actions (25)
 

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: Overview
-slug: /animation-engine
+slug: /
 ---
 
 # Animation Engine
@@ -11,7 +11,7 @@ The **Animation Engine** is a bundled UnysonPlus extension that turns the page b
 :::info It ships **off** by default
 The engine is included with UnysonPlus but **inactive** until you switch it on: **WP Admin → UnysonPlus → Extensions → Animation Engine → Activate**. Keeping it off means none of its assets or options exist on sites that don't need them.
 
-The one exception is [Entrance Animation](/docs/animations/entrance-animation) (Animate.css) — that's part of core and always available, engine or not.
+The one exception is [Entrance Animation](/animation-engine/scroll-motion/entrance-animation) (Animate.css) — that's part of core and always available, engine or not.
 :::
 
 ## What it adds
@@ -23,7 +23,7 @@ Open any Section, Column or element → **Animations** tab:
 
 | Capability | What it does |
 | --- | --- |
-| [Scroll Motion (GSAP)](/docs/animations) | Reveal, stagger, split-text, parallax, pin, scrub and more — scroll-linked motion via GSAP + ScrollTrigger |
+| [Scroll Motion (GSAP)](/animation-engine/scroll-motion) | Reveal, stagger, split-text, parallax, pin, scrub and more — scroll-linked motion via GSAP + ScrollTrigger |
 | [Hover Interactions](./hover.md) | Pointer-driven effects — magnetic pull, 3D tilt, spotlight, image reveal, and more |
 | [Physics Effects](./physics.md) | Spring/verlet motion — drag & throw, float, gravity, jelly, and 22 others |
 | [Text Effects](./text-effects.md) | Kinetic typography — split reveals, scramble, typewriter, gradient, glitch, count-up, and dozens more |

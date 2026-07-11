@@ -27,7 +27,7 @@ with a `filemtime()` cache-buster.
 Per-element custom CSS and per-page styling are written to a **hashed, per-page stylesheet**, so
 view-source collapses to one global file plus one per-page file, both cacheable.
 
-See [How settings become CSS](/docs/theme/settings-to-css).
+See [How settings become CSS](/theme/settings-to-css).
 
 ## Assets load only when they're used
 
@@ -65,7 +65,7 @@ See [Asset Optimizer](/docs/extensions/asset-optimizer).
 | Lever | Where |
 | --- | --- |
 | Clean markup (automatic) | [Clean-DOM philosophy](/docs/page-builder/clean-dom) |
-| One generated stylesheet (automatic) | [Settings → CSS](/docs/theme/settings-to-css) |
+| One generated stylesheet (automatic) | [Settings → CSS](/theme/settings-to-css) |
 | Conditional element assets (automatic) | this page |
 | Minified production assets (`SCRIPT_DEBUG` off) | this page |
 | Responsive / CLS-safe images (automatic in the image elements) | this page |

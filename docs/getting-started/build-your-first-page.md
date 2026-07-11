@@ -73,6 +73,6 @@ it on the front end, no wrapper-div soup, one generated stylesheet. View the pag
 - **Understand the output** — [How the Page Builder works](/docs/page-builder/how-it-works) explains
   the edit → stored JSON → render pipeline.
 - **Brand the whole site** — set global colors, fonts, header and footer in
-  [Theme Settings](/docs/theme/theme-settings), then ship it as a
+  [Theme Settings](/theme/theme-settings), then ship it as a
   [child theme](./build-your-first-child-theme.md).
 - **Browse every element** — the [Elements reference](/docs/shortcodes/overview) documents all 54.

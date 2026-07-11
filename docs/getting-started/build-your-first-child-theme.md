@@ -54,7 +54,7 @@ page-builder elements) follow, no CSS required.
 <img src="/img/theme/theme-settings-general.png" alt="Theme Settings — General tab (site width, background, content density, border roundness)" width="1238" />
 
 Everything you change is compiled into a single generated stylesheet, see
-[How settings become CSS](/docs/theme/settings-to-css).
+[How settings become CSS](/theme/settings-to-css).
 
 ## 4. Override a template (optional)
 
@@ -77,11 +77,11 @@ There are two things you might distribute, and they travel separately:
   Miscellaneous → Export / Import).
 
 Full detail (overrides, the three customization layers, design export rules) is in
-[Child themes](/docs/theme/child-themes).
+[Child themes](/theme/child-themes).
 
 ## What's next
 
 - **Build pages** — [Build your first page](./build-your-first-page.md) with the visual builder.
-- **Understand the stack** — [The Theme](/docs/theme) covers the parent/child relationship in depth.
+- **Understand the stack** — [The Theme](/theme) covers the parent/child relationship in depth.
 - **Go deeper** — the [For Developers](/docs/developers) section covers adding shortcodes, option
   types, and extensions.

@@ -78,6 +78,6 @@ conditional rules. Your Theme Settings slot-based header/footer remains the alwa
 1. Install the **Unyson+ plugin** and the **Unyson+ Theme** (parent) from the
    [UnysonPlus org on GitHub](https://github.com/UnysonPlus). See [Installation](/docs/installation).
 2. Activate the extensions you need from **Unyson+ → Extensions**.
-3. Ship your work as a [child theme](/docs/theme/child-themes).
+3. Ship your work as a [child theme](/theme/child-themes).
 
 New to the terminology Unyson+ uses? The [Concepts & glossary](/docs/concepts) is a quick orientation.

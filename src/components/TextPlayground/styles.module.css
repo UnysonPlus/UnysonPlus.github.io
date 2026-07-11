@@ -44,8 +44,7 @@
 }
 .tabActive { background: var(--ifm-color-primary); border-color: var(--ifm-color-primary); color: #fff; }
 
-.grid { display: grid; grid-template-columns: 1.3fr 1fr; }
-@media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+.grid { display: grid; grid-template-columns: 1fr; }
 
 /* --- demo stage --- */
 .stage {
@@ -56,9 +55,8 @@
   min-height: 300px;
   padding: 2.5rem 1.5rem;
   background: radial-gradient(circle at 1px 1px, var(--ifm-toc-border-color) 1px, transparent 0) 0 0 / 22px 22px;
-  border-right: 1px solid var(--ifm-toc-border-color);
+  border-bottom: 1px solid var(--ifm-toc-border-color);
 }
-@media (max-width: 768px) { .stage { border-right: none; border-bottom: 1px solid var(--ifm-toc-border-color); } }
 
 .stageInner { text-align: center; max-width: 90%; }
 .target {
@@ -93,8 +91,9 @@
 }
 
 /* --- controls --- */
-.controls { padding: 1.5rem; }
+.controls { padding: 1.25rem 1.5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0.5rem 2.2rem; align-items: start; }
 .controls h5 {
+  grid-column: 1 / -1;
   margin: 0 0 1rem;
   font-size: 0.72rem;
   letter-spacing: 0.06em;

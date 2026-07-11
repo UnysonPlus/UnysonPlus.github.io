@@ -91,22 +91,28 @@ const EFFECTS = {
     css: scope(`.sc-hover--spotlight{position:relative}
 .sc-hover--spotlight::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:radial-gradient(var(--hover-glow-size,40%) var(--hover-glow-size,40%) at var(--mx,50%) var(--my,50%),var(--hover-glow,#6aa6ff),transparent 75%);opacity:0;transition:opacity .3s ease;mix-blend-mode:screen;z-index:0}
 .sc-hover--spotlight:hover::before{opacity:.55}
-.sc-hover--spotlight > *{position:relative;z-index:1}`),
+.sc-hover--spotlight > *{position:relative;z-index:1}
+.sc-hover--spotlight[data-hover-spot="gradient"]{overflow:hidden}
+.sc-hover--spotlight[data-hover-spot="gradient"]::before{background:radial-gradient(var(--hover-cg-size,55%) var(--hover-cg-size,55%) at var(--mx,50%) var(--my,50%),var(--hover-cg-a,#2f74e6),var(--hover-cg-b,#a06bff) 55%,transparent 100%);mix-blend-mode:overlay}
+.sc-hover--spotlight[data-hover-spot="gradient"]:hover::before{opacity:1}`),
     controls: [
-      {id: 'glow_color', label: 'Glow color', type: 'color', default: '#6aa6ff'},
-      {id: 'glow_size', label: 'Glow size (%)', type: 'slider', min: 10, max: 90, step: 5, default: 40},
+      {id: 'style', label: 'Style', type: 'select', default: 'glow', choices: [['glow', 'Glow'], ['gradient', 'Gradient tint']]},
+      {id: 'glow_color', label: 'Color', type: 'color', default: '#6aa6ff'},
+      {id: 'color_b', label: 'Second color', type: 'color', default: '#a06bff'},
+      {id: 'glow_size', label: 'Size (%)', type: 'slider', min: 10, max: 90, step: 5, default: 40},
     ],
-    // The glow uses mix-blend-mode:screen — invisible over a light surface, so the
-    // demo card is dark (and isolated) to contain the blend. This is presentation
-    // only; the effect CSS is unchanged.
+    // The glow/tint use mix-blend-mode (screen / overlay) — invisible over a light
+    // surface, so the demo card is dark (and isolated) to contain the blend.
     demoStyle: {background: '#1b2233', color: '#eaf0ff', isolation: 'isolate'},
-    demo: (s) => ({cls: 'sc-hover--spotlight', style: {'--hover-glow': s.glow_color, '--hover-glow-size': `${s.glow_size}%`}, attrs: {}}),
+    demo: (s) => (s.style === 'gradient'
+      ? {cls: 'sc-hover--spotlight', style: {'--hover-cg-a': s.glow_color, '--hover-cg-b': s.color_b, '--hover-cg-size': `${s.glow_size}%`}, attrs: {'data-hover-spot': 'gradient'}}
+      : {cls: 'sc-hover--spotlight', style: {'--hover-glow': s.glow_color, '--hover-glow-size': `${s.glow_size}%`}, attrs: {}}),
     js: (el) => {
       const move = (e) => {const r = el.getBoundingClientRect(); el.style.setProperty('--mx', `${e.clientX - r.left}px`); el.style.setProperty('--my', `${e.clientY - r.top}px`);};
       el.addEventListener('pointermove', move);
       return () => el.removeEventListener('pointermove', move);
     },
-    sample: (s) => ({effect: 'spotlight', glow_color: s.glow_color, glow_size: Number(s.glow_size)}),
+    sample: (s) => ({effect: 'spotlight', style: s.style, glow_color: s.glow_color, color_b: s.color_b, glow_size: Number(s.glow_size)}),
   },
   ripple: {
     label: 'Ripple', target: 'card',
@@ -456,13 +462,166 @@ const EFFECTS = {
     demo: (s) => ({cls: 'sc-hover--brightness', style: {'--hover-bright': s.mode === 'dim' ? 1 - s.amount / 100 : 1 + s.amount / 100}, attrs: {'data-hover-bright': s.mode}}),
     sample: (s) => ({effect: 'brightness', mode: s.mode, amount: Number(s.amount)}),
   },
+
+  // ---------------- Pointer (JS driven) — new ----------------
+  blob: {
+    label: 'Cursor Blob', target: 'card',
+    css: scope(`.sc-hover--blob{position:relative;overflow:hidden}
+.sc-hover--blob > *{position:relative;z-index:1}
+.sc-hover--blob::before{content:"";position:absolute;z-index:0;pointer-events:none;border-radius:50%;width:var(--hover-blob-size,70px);height:var(--hover-blob-size,70px);left:var(--bx,50%);top:var(--by,50%);margin:calc(var(--hover-blob-size,70px)/-2) 0 0 calc(var(--hover-blob-size,70px)/-2);background:var(--hover-blob,#6aa6ff);filter:blur(8px);opacity:0;transition:opacity .3s ease}
+.sc-hover--blob:hover::before{opacity:.8}`),
+    controls: [
+      {id: 'color', label: 'Blob color', type: 'color', default: '#6aa6ff'},
+      {id: 'size', label: 'Blob size (px)', type: 'slider', min: 30, max: 160, step: 5, default: 70},
+    ],
+    demo: (s) => ({cls: 'sc-hover--blob', style: {'--hover-blob': s.color, '--hover-blob-size': `${s.size}px`}, attrs: {}}),
+    js: (el) => { const move = (e) => { const r = el.getBoundingClientRect(); el.style.setProperty('--bx', `${e.clientX - r.left}px`); el.style.setProperty('--by', `${e.clientY - r.top}px`); }; el.addEventListener('pointermove', move); return () => el.removeEventListener('pointermove', move); },
+    sample: (s) => ({effect: 'blob', color: s.color, size: Number(s.size)}),
+  },
+  cursor_trail: {
+    label: 'Cursor Trail', target: 'card',
+    css: scope(`.sc-hover--cursor_trail{position:relative}
+.sc-hover--cursor_trail > *{position:relative;z-index:1}`) + `
+.sc-hover-trail-dot{position:absolute;z-index:0;pointer-events:none;border-radius:50%;width:var(--hover-trail-size,10px);height:var(--hover-trail-size,10px);margin:calc(var(--hover-trail-size,10px)/-2) 0 0 calc(var(--hover-trail-size,10px)/-2);background:var(--hover-trail,#6aa6ff);animation:sc-hover-trail .6s ease forwards}
+@keyframes sc-hover-trail{to{transform:scale(0);opacity:0}}`,
+    controls: [
+      {id: 'color', label: 'Trail color', type: 'color', default: '#6aa6ff'},
+      {id: 'size', label: 'Dot size (px)', type: 'slider', min: 4, max: 24, step: 1, default: 10},
+    ],
+    demo: (s) => ({cls: 'sc-hover--cursor_trail', style: {'--hover-trail': s.color, '--hover-trail-size': `${s.size}px`, overflow: 'hidden'}, attrs: {}}),
+    js: (el) => {
+      let last = 0;
+      const move = (e) => { const now = (window.performance && performance.now()) || Date.now(); if (now - last < 40) return; last = now; const r = el.getBoundingClientRect(); const d = document.createElement('span'); d.className = 'sc-hover-trail-dot'; d.style.left = `${e.clientX - r.left}px`; d.style.top = `${e.clientY - r.top}px`; el.appendChild(d); setTimeout(() => d.parentNode && d.parentNode.removeChild(d), 620); };
+      el.addEventListener('pointermove', move);
+      return () => el.removeEventListener('pointermove', move);
+    },
+    sample: (s) => ({effect: 'cursor_trail', color: s.color, size: Number(s.size)}),
+  },
+  flashlight: {
+    label: 'Flashlight', target: 'card',
+    css: scope(`.sc-hover--flashlight{position:relative}
+.sc-hover--flashlight::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .3s ease;background:radial-gradient(circle var(--hover-torch-size,90px) at var(--mx,50%) var(--my,50%),transparent 0,transparent 62%,rgba(0,0,0,var(--hover-torch-dark,.82)) 100%)}
+.sc-hover--flashlight:hover::after{opacity:1}`),
+    controls: [
+      {id: 'size', label: 'Torch size (px)', type: 'slider', min: 40, max: 200, step: 5, default: 90},
+      {id: 'darkness', label: 'Darkness (%)', type: 'slider', min: 30, max: 95, step: 5, default: 82},
+    ],
+    demo: (s) => ({cls: 'sc-hover--flashlight', style: {'--hover-torch-size': `${s.size}px`, '--hover-torch-dark': Math.max(30, Math.min(95, Number(s.darkness))) / 100}, attrs: {}}),
+    js: (el) => { const move = (e) => { const r = el.getBoundingClientRect(); el.style.setProperty('--mx', `${e.clientX - r.left}px`); el.style.setProperty('--my', `${e.clientY - r.top}px`); }; el.addEventListener('pointermove', move); return () => el.removeEventListener('pointermove', move); },
+    sample: (s) => ({effect: 'flashlight', size: Number(s.size), darkness: Number(s.darkness)}),
+  },
+  depth_layers: {
+    label: 'Depth Layers', target: 'card',
+    css: scope(`.sc-hover--depth_layers{transform-style:preserve-3d}
+.sc-hover--depth_layers > *{transition:transform .3s cubic-bezier(.22,1,.36,1);will-change:transform}`),
+    controls: [{id: 'strength', label: 'Depth', type: 'slider', min: 0.3, max: 3, step: 0.1, default: 1}],
+    demo: (s) => ({cls: 'sc-hover--depth_layers', style: {}, attrs: {}}),
+    js: (el, s) => {
+      const kids = Array.from(el.children).filter((k) => k.nodeType === 1 && getComputedStyle(k).position !== 'absolute');
+      if (!kids.length) return undefined;
+      const str = Number(s.strength) || 1;
+      const move = (e) => { const r = el.getBoundingClientRect(); const dx = (e.clientX - (r.left + r.width / 2)) / (r.width || 1); const dy = (e.clientY - (r.top + r.height / 2)) / (r.height || 1); kids.forEach((k, i) => { const d = (i + 1) * 4 * str; k.style.transform = `translate(${(dx * d).toFixed(1)}px,${(dy * d).toFixed(1)}px)`; }); };
+      const leave = () => kids.forEach((k) => (k.style.transform = ''));
+      el.addEventListener('pointermove', move); el.addEventListener('pointerleave', leave);
+      return () => { el.removeEventListener('pointermove', move); el.removeEventListener('pointerleave', leave); kids.forEach((k) => (k.style.transform = '')); };
+    },
+    sample: (s) => ({effect: 'depth_layers', strength: Number(s.strength)}),
+  },
+
+  // ---------------- Motion — new ----------------
+  squash: {
+    label: 'Squash & Stretch', target: 'card',
+    css: scope(`.sc-hover--squash{transform-origin:bottom center}
+.sc-hover--squash:hover{animation:sc-hover-squash .5s ease}`) + `
+@keyframes sc-hover-squash{0%{transform:scale(1,1)}30%{transform:scale(calc(1 + .12 * var(--hover-squash,1)),calc(1 - .12 * var(--hover-squash,1)))}55%{transform:scale(calc(1 - .08 * var(--hover-squash,1)),calc(1 + .08 * var(--hover-squash,1)))}75%{transform:scale(calc(1 + .04 * var(--hover-squash,1)),calc(1 - .04 * var(--hover-squash,1)))}100%{transform:scale(1,1)}}`,
+    controls: [{id: 'strength', label: 'Bounciness', type: 'slider', min: 0.3, max: 2, step: 0.1, default: 1}],
+    demo: (s) => ({cls: 'sc-hover--squash', style: {'--hover-squash': s.strength}, attrs: {}}),
+    sample: (s) => ({effect: 'squash', strength: Number(s.strength)}),
+  },
+
+  // ---------------- Decoration — new ----------------
+  arrow_slide: {
+    label: 'Arrow Slide', target: 'text',
+    css: scope(`.sc-hover--arrow_slide{position:relative}
+.sc-hover--arrow_slide::after{content:"\\2192";display:inline-block;margin-left:.1em;width:0;color:var(--hover-arrow,currentColor);opacity:0;transform:translateX(-.5em);transition:opacity .25s ease,transform .25s ease,margin-left .25s ease,width .25s ease}
+.sc-hover--arrow_slide:hover::after{opacity:1;transform:translateX(0);margin-left:.5em;width:auto}`),
+    controls: [{id: 'arrow_color', label: 'Arrow color', type: 'color', default: '#2f74e6'}],
+    demo: (s) => ({cls: 'sc-hover--arrow_slide', style: {'--hover-arrow': s.arrow_color}, attrs: {}}),
+    sample: (s) => ({effect: 'arrow_slide', arrow_color: s.arrow_color}),
+  },
+  marching_ants: {
+    label: 'Marching Ants', target: 'card',
+    css: scope(`.sc-hover--marching_ants{position:relative}
+.sc-hover--marching_ants::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .2s ease;background:linear-gradient(90deg,var(--hover-ants,#6aa6ff) 50%,transparent 50%) repeat-x,linear-gradient(90deg,var(--hover-ants,#6aa6ff) 50%,transparent 50%) repeat-x,linear-gradient(0deg,var(--hover-ants,#6aa6ff) 50%,transparent 50%) repeat-y,linear-gradient(0deg,var(--hover-ants,#6aa6ff) 50%,transparent 50%) repeat-y;background-size:12px 2px,12px 2px,2px 12px,2px 12px;background-position:0 0,0 100%,0 0,100% 0}
+.sc-hover--marching_ants:hover::after{opacity:1;animation:sc-hover-ants var(--hover-ants-speed,.5s) linear infinite}`) + `
+@keyframes sc-hover-ants{to{background-position:12px 0,-12px 100%,0 -12px,100% 12px}}`,
+    controls: [
+      {id: 'line_color', label: 'Line color', type: 'color', default: '#6aa6ff'},
+      {id: 'speed', label: 'Speed (s)', type: 'slider', min: 0.2, max: 2, step: 0.1, default: 0.5},
+    ],
+    demo: (s) => ({cls: 'sc-hover--marching_ants', style: {'--hover-ants': s.line_color, '--hover-ants-speed': `${s.speed}s`}, attrs: {}}),
+    sample: (s) => ({effect: 'marching_ants', line_color: s.line_color, speed: Number(s.speed)}),
+  },
+  shockwave: {
+    label: 'Shockwave', target: 'card',
+    css: scope(`.sc-hover--shockwave{position:relative}
+.sc-hover--shockwave::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;border-radius:inherit;border:2px solid var(--hover-shock,#6aa6ff);opacity:0}
+.sc-hover--shockwave:hover::after{animation:sc-hover-shock 1.1s ease-out infinite}`) + `
+@keyframes sc-hover-shock{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.5);opacity:0}}`,
+    controls: [{id: 'color', label: 'Ring color', type: 'color', default: '#6aa6ff'}],
+    demo: (s) => ({cls: 'sc-hover--shockwave', style: {'--hover-shock': s.color}, attrs: {}}),
+    sample: (s) => ({effect: 'shockwave', color: s.color}),
+  },
+  peel: {
+    label: 'Peel Corner', target: 'card',
+    css: scope(`.sc-hover--peel{position:relative}
+.sc-hover--peel::before{content:"";position:absolute;top:0;right:0;z-index:2;pointer-events:none;width:0;height:0;border-style:solid;border-width:0 0 0 0;border-color:transparent var(--hover-peel,rgba(0,0,0,.22)) transparent transparent;transition:border-width .25s ease}
+.sc-hover--peel:hover::before{border-width:0 var(--hover-peel-size,22px) var(--hover-peel-size,22px) 0}`),
+    controls: [
+      {id: 'color', label: 'Fold shadow', type: 'color', default: '#333333'},
+      {id: 'size', label: 'Fold size (px)', type: 'slider', min: 10, max: 50, step: 2, default: 22},
+    ],
+    demo: (s) => ({cls: 'sc-hover--peel', style: {'--hover-peel': s.color, '--hover-peel-size': `${s.size}px`}, attrs: {}}),
+    sample: (s) => ({effect: 'peel', color: s.color, size: Number(s.size)}),
+  },
+  goo: {
+    label: 'Liquid Goo', target: 'card',
+    css: scope(`.sc-hover--goo{transition:border-radius .5s ease}
+.sc-hover--goo:hover{animation:sc-hover-goo var(--hover-goo-speed,4s) ease-in-out infinite}`) + `
+@keyframes sc-hover-goo{0%,100%{border-radius:42% 58% 63% 37% / 41% 44% 56% 59%}33%{border-radius:63% 37% 41% 59% / 58% 63% 37% 42%}66%{border-radius:40% 60% 54% 46% / 49% 60% 40% 51%}}`,
+    controls: [{id: 'speed', label: 'Morph speed (s)', type: 'slider', min: 1.5, max: 10, step: 0.5, default: 4}],
+    demo: (s) => ({cls: 'sc-hover--goo', style: {'--hover-goo-speed': `${s.speed}s`}, attrs: {}}),
+    sample: (s) => ({effect: 'goo', speed: Number(s.speed)}),
+  },
+
+  // ---------------- Text — new ----------------
+  magnetic_letters: {
+    label: 'Magnetic Letters', target: 'text',
+    css: scope(`.sc-hover--magnetic_letters{display:inline-block}
+.sc-hover--magnetic_letters .sc-hover-ml-char{display:inline-block;white-space:pre;will-change:transform;transition:transform .25s cubic-bezier(.22,1,.36,1)}`),
+    controls: [{id: 'strength', label: 'Strength', type: 'slider', min: 0.3, max: 2, step: 0.1, default: 1}],
+    demo: (s) => ({cls: 'sc-hover--magnetic_letters', style: {}, attrs: {}}),
+    js: (el, s) => {
+      const orig = el.getAttribute('data-ml-orig') || el.textContent;
+      el.setAttribute('data-ml-orig', orig);
+      el.textContent = '';
+      const chars = [];
+      for (const ch of orig) { const sp = document.createElement('span'); sp.className = 'sc-hover-ml-char'; sp.textContent = ch; el.appendChild(sp); chars.push(sp); }
+      const str = Number(s.strength) || 1, MAX = 80;
+      const move = (e) => { chars.forEach((c) => { const r = c.getBoundingClientRect(); const dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2), dist = Math.hypot(dx, dy); if (dist < MAX) { const f = (1 - dist / MAX) * str * 0.4; c.style.transform = `translate(${(dx * f).toFixed(1)}px,${(dy * f).toFixed(1)}px)`; } else c.style.transform = ''; }); };
+      const leave = () => chars.forEach((c) => (c.style.transform = ''));
+      el.addEventListener('pointermove', move); el.addEventListener('pointerleave', leave);
+      return () => { el.removeEventListener('pointermove', move); el.removeEventListener('pointerleave', leave); el.textContent = orig; };
+    },
+    sample: (s) => ({effect: 'magnetic_letters', strength: Number(s.strength)}),
+  },
 };
 
 const GROUPS = [
-  ['Pointer', ['magnetic', 'tilt', 'spotlight', 'ripple']],
-  ['Motion', ['lift', 'scale', 'push', 'pulse', 'bounce', 'jelly', 'skew', 'rotate', 'shake']],
-  ['Decoration', ['glow_border', 'gradient_border', 'corner_brackets', 'fill_sweep', 'border_draw', 'outline', 'shine', 'bg_pan', 'color_shift']],
-  ['Text', ['underline_grow', 'glitch', 'letter_spacing', 'text_scramble', 'text_swap']],
+  ['Pointer', ['magnetic', 'tilt', 'spotlight', 'ripple', 'blob', 'cursor_trail', 'flashlight', 'depth_layers']],
+  ['Motion', ['lift', 'scale', 'push', 'pulse', 'bounce', 'jelly', 'skew', 'rotate', 'shake', 'squash']],
+  ['Decoration', ['glow_border', 'gradient_border', 'corner_brackets', 'fill_sweep', 'border_draw', 'outline', 'shine', 'bg_pan', 'color_shift', 'marching_ants', 'shockwave', 'peel', 'goo', 'arrow_slide']],
+  ['Text', ['underline_grow', 'glitch', 'letter_spacing', 'text_scramble', 'text_swap', 'magnetic_letters']],
   ['Image', ['image_reveal', 'grayscale', 'blur', 'brightness']],
 ];
 const ALL_KEYS = GROUPS.flatMap(([, ks]) => ks);
@@ -556,7 +715,7 @@ export default function HoverPlayground({only}) {
       <div className={styles.grid}>
         <div className={styles.stage}>
           <div className={styles.stageInner}>{renderTarget()}</div>
-          <div className={styles.hint}>👆 hover — tweak the options on the right</div>
+          <div className={styles.hint}>👆 hover — tweak the options below</div>
         </div>
 
         <div className={styles.controls}>

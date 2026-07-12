@@ -52,8 +52,8 @@ const EASES = [
   ['cubic-bezier(0.22, 1, 0.36, 1)', 'Smooth out (default)'], ['cubic-bezier(0.68, -0.55, 0.27, 1.55)', 'Overshoot'],
 ];
 
-const CLIP_DEFAULTS = {duration: 0.7, delay: 0, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', replay: 'no'};
-const PX_DEFAULTS = {coarseness: 100, steps: 5, speed: 80, replay: 'no'};
+const CLIP_DEFAULTS = {duration: 0.7, delay: 0, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', replay: 'yes'};
+const PX_DEFAULTS = {coarseness: 100, steps: 5, speed: 80, replay: 'yes'};
 
 const phpColorless = (mode, o) => {
   const body = Object.entries(o).map(([k, v]) => `        '${k}' => ${typeof v === 'number' ? v : `'${v}'`},`).join('\n');

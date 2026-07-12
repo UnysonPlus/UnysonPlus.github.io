@@ -1,0 +1,73 @@
+/* Interactive Motion Path playground — two-pane (main + shape-tile sidebar). */
+.playground { border: 1px solid var(--ifm-toc-border-color); border-radius: 12px; overflow: hidden; margin: 1.5rem 0 2rem; background: var(--ifm-card-background-color); }
+
+.layout { display: flex; align-items: stretch; }
+.main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
+.sidebar { flex: 0 0 268px; border-left: 1px solid var(--ifm-toc-border-color); background: var(--ifm-color-emphasis-100); position: relative; overflow: hidden; }
+.sidebarInner { position: absolute; inset: 0; overflow-y: auto; padding: 1rem 1rem 1.25rem; }
+.sidebarTitle { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--ifm-color-emphasis-700); margin-bottom: 0.75rem; }
+.tabGroup { margin-bottom: 0.85rem; }
+.tabGroupLabel { display: block; font-size: 0.64rem; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 700; color: var(--ifm-color-emphasis-600); margin-bottom: 0.45rem; }
+
+/* shape tiles: mini SVG preview + label */
+.tileGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
+.tile, .tileActive {
+  display: flex; flex-direction: column; align-items: center; gap: 0.2rem;
+  border: 1px solid var(--ifm-toc-border-color); border-radius: 8px; padding: 0.35rem 0.2rem 0.3rem;
+  background: var(--ifm-background-surface-color); color: var(--ifm-color-emphasis-700);
+  cursor: pointer; font-size: 0.62rem; font-weight: 600; line-height: 1.1; text-align: center;
+}
+.tile svg, .tileActive svg { width: 100%; height: 34px; }
+.tile svg path, .tileActive svg path { fill: none; stroke: var(--ifm-color-emphasis-600); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.tileActive { border-color: var(--ifm-color-primary); background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent); color: var(--ifm-color-primary); }
+.tileActive svg path { stroke: var(--ifm-color-primary); }
+.tile span, .tileActive span { display: block; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+@media (max-width: 800px) {
+  .layout { flex-direction: column-reverse; }
+  .sidebar { flex-basis: auto; width: 100%; border-left: none; border-bottom: 1px solid var(--ifm-toc-border-color); position: static; overflow: visible; }
+  .sidebarInner { position: static; inset: auto; overflow-y: auto; max-height: 320px; }
+}
+
+/* stage — the badge travels; the path is drawn faintly, centred on the badge origin */
+.stage {
+  position: relative; overflow: hidden; min-height: 380px; display: flex; align-items: center; justify-content: center;
+  background: #f1f1f1 radial-gradient(circle at 1px 1px, #d1d1d1 1px, transparent 0) 0 0 / 22px 22px;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+.pathSvg { position: absolute; pointer-events: none; overflow: visible; }
+.pathLine { fill: none; stroke: var(--ifm-color-primary); stroke-width: 0.8; stroke-dasharray: 2 2; opacity: 0.55; vector-effect: non-scaling-stroke; }
+.badge {
+  position: absolute; left: 50%; top: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px;
+  display: grid; place-items: center; border-radius: 13px; font-size: 1.5rem; z-index: 3;
+  background: linear-gradient(135deg, var(--ifm-color-primary), var(--ifm-color-primary-dark));
+  box-shadow: 0 6px 18px rgba(0,0,0,0.22); will-change: transform;
+}
+.err { position: absolute; top: 1rem; left: 0; right: 0; text-align: center; font-size: 0.82rem; color: #c0392b; }
+.hint { position: absolute; bottom: 0.7rem; width: 100%; text-align: center; font-size: 0.76rem; color: #777; z-index: 2; }
+
+/* driver row */
+.demoBar { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; border-bottom: 1px solid var(--ifm-toc-border-color); min-height: 56px; }
+.demoBar .lbl { font-size: 0.82rem; font-weight: 700; color: var(--ifm-color-emphasis-800); }
+.demoBar input[type='range'] { flex: 1; accent-color: var(--ifm-color-primary); }
+.demoBar .pct { font-size: 0.82rem; font-weight: 700; color: var(--ifm-color-primary); font-variant-numeric: tabular-nums; min-width: 3ch; text-align: right; }
+.replay { margin-left: auto; border: 1px solid var(--ifm-toc-border-color); background: var(--ifm-background-surface-color); color: var(--ifm-color-emphasis-800); border-radius: 8px; padding: 0.35rem 0.85rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; }
+
+/* controls */
+.controls { padding: 1.25rem 1.5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0 2.2rem; align-items: start; }
+.controls h5 { grid-column: 1 / -1; margin: 0 0 1rem; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ifm-color-emphasis-600); }
+.control { margin-bottom: 0.95rem; }
+.control label { display: flex; justify-content: space-between; font-size: 0.84rem; font-weight: 600; margin-bottom: 0.4rem; }
+.control label span { color: var(--ifm-color-primary); font-variant-numeric: tabular-nums; }
+.control input[type='range'] { width: 100%; accent-color: var(--ifm-color-primary); }
+.select { width: 100%; padding: 0.4rem 0.55rem; border: 1px solid var(--ifm-toc-border-color); border-radius: 8px; background: var(--ifm-background-surface-color); color: var(--ifm-font-color-base); font-size: 0.85rem; }
+.textarea { width: 100%; padding: 0.5rem 0.6rem; border: 1px solid var(--ifm-toc-border-color); border-radius: 8px; background: var(--ifm-background-surface-color); color: var(--ifm-font-color-base); font-size: 0.82rem; font-family: var(--ifm-font-family-monospace); resize: vertical; min-height: 46px; }
+.toggle { display: inline-flex; border: 1px solid var(--ifm-toc-border-color); border-radius: 8px; overflow: hidden; }
+.toggle button { border: 0; padding: 0.35rem 0.9rem; font-size: 0.82rem; font-weight: 600; background: transparent; color: var(--ifm-color-emphasis-700); cursor: pointer; }
+.toggle button.on { background: var(--ifm-color-primary); color: #fff; }
+
+/* code */
+.code { border-top: 1px solid var(--ifm-toc-border-color); }
+.code > div:first-child { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ifm-color-emphasis-600); padding: 0.75rem 1.5rem 0; }
+.code pre { margin: 0.5rem 1.5rem 0.5rem; background: var(--ifm-color-emphasis-100); border-radius: 8px; padding: 1rem; font-size: 0.82rem; overflow-x: auto; }
+.note { margin: 0 1.5rem 1.25rem; font-size: 0.78rem; color: var(--ifm-color-emphasis-600); }

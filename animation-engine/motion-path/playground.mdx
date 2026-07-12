@@ -1,0 +1,28 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ Motion Path effect — send a badge along any of the 37 preset shapes or your own SVG path.
+hide_table_of_contents: true
+---
+
+import MotionPathPlayground from '@site/src/components/MotionPathPlayground';
+
+# Motion Path — Playground
+
+<MotionPathPlayground />
+
+Pick a **shape on the right**, choose how it's driven — **Scroll (scrubbed)**, **Loop**, or **On
+view** — then tweak **Path size**, **Start offset**, **Duration / Easing**, **Reverse**, and
+**Align to path**. This runs the **real module**: the same normalized 0–100 SVG paths, the same
+`getPointAtLength` sampling, and the verbatim `apply()` transform math. The path is drawn faintly so
+you can see the route — on a live page only the element moves, relative to its own layout position.
+The **Sample option** updates as you tweak.
+
+:::info Where it lives
+Motion Path is a **per-element** control — open any element (Section, Column, heading, image, icon
+box…) → **Animations** tab → **Motion Path**. Pure SVG geometry and one runtime, loaded only on
+pages that use it; it honours **reduced motion** (the element stays at its layout position).
+:::
+
+← Back to [Motion Path](./index.md)

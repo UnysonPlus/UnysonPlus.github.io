@@ -1,9 +1,16 @@
 ---
 sidebar_position: 4.87
 title: Motion Path
+slug: /motion-path
 ---
 
 # Motion Path
+
+:::tip Try it live
+Send a badge along any of the **37 shapes** in the **[Motion Path playground](./playground.mdx)** —
+pick a shape, choose a drive (scroll / loop / on-view), tweak size, offset, easing and align-to-path,
+then copy the generated sample. It runs the real runtime's path-sampling and `apply()` math.
+:::
 
 Send any element **travelling along a path** instead of a straight line — a wave, a loop, a spiral, a staircase, a star, or your own SVG path. Drive it by **scroll**, on a **loop**, or **once when it enters view**, and optionally **rotate it to follow the curve** so it noses along like it's on rails. Per-element, pure SVG geometry, no library.
 

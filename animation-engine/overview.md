@@ -30,7 +30,7 @@ Open any Section, Column or element → **Animations** tab:
 | [Marquee](./marquee/index.md) | A seamless ticker for any element's content — running text (incl. a true curved arc), logos, images; warp, drag, scroll-reactive |
 | [3D Flip Card](./flip-card/index.md) | Flip any element in 3D to a back face — seven styles (flip, cube, fold, door, diagonal, pop, carousel); hover / click / scroll / auto |
 | [Scroll Text Highlight](./scroll-text-highlight.md) | Light up text word-by-word as it scrolls through view — fill, fade, blur or marker sweep |
-| [Motion Path](./motion-path.md) | Send an element travelling along a path — 37 shapes (wave, loop, spiral, star, stairs…) or a custom SVG path; drive by scroll, loop or on-view, with align-to-path |
+| [Motion Path](./motion-path/index.md) | Send an element travelling along a path — 37 shapes (wave, loop, spiral, star, stairs…) or a custom SVG path; drive by scroll, loop or on-view, with align-to-path |
 | [Scroll Color Shift](./scroll-color-shift.md) | Section-level — the page background morphs section-to-section as you scroll |
 | [Preloader](./preloader/index.md) | Site-wide loading screen shown until the page is ready, then animated away — spinner, bar, dots, counter, curtain, logo |
 

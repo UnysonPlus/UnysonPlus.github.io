@@ -1,0 +1,39 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive Three.js playground for the Unyson+ WebGL Object — glass, metal, sphere, particles and full-screen shaders.
+hide_table_of_contents: true
+---
+
+import BrowserOnly from '@docusaurus/BrowserOnly';
+
+# WebGL Object — Playground
+
+<BrowserOnly fallback={<div style={{height: 420, borderRadius: 12, background: '#0b0f1a'}} />}>
+  {() => {
+    const WebglObjectPlayground = require('@site/src/components/WebglObjectPlayground').default;
+    return <WebglObjectPlayground />;
+  }}
+</BrowserOnly>
+
+Pick a **style on the right** and **move your pointer over the canvas** — the 3D objects tilt and
+parallax, the shaders react to the pointer. This runs the **real Three.js runtime**: the physical
+materials (glass transmission, liquid metal, distorted sphere, additive points) and the verbatim GLSL
+shader presets, with a generated environment map and GPU noise displacement. Recolour, tune the
+material / shader params, and toggle **auto-rotate**, **pointer-follow**, **noise** and **scroll-link**
+(which reveals a vertical scroll slider). The **Sample option** updates as you tweak.
+
+:::note What's simulated
+The **procedural** presets are all here — they generate their geometry / pixels in code with no
+external asset. **Image Particles** and **Image Distortion** sample an uploaded image, so they aren't
+in this playground; they're documented on this page and work on a live site.
+:::
+
+:::info Where it lives
+WebGL Object is a **page-builder element** (builder palette → **Media Elements**). Three.js is
+vendored and loads **only** on pages that use it; the render loop pauses off-screen and when the tab
+is hidden, and honours **reduce motion** (a single static frame or poster).
+:::
+
+← Back to [WebGL Object](./index.md)

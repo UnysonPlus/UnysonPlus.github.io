@@ -1,0 +1,27 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ Scroll Progress indicator — preview all 16 styles by dragging the scroll position.
+hide_table_of_contents: true
+---
+
+import ScrollProgressPlayground from '@site/src/components/ScrollProgressPlayground';
+
+# Scroll Progress — Playground
+
+<ScrollProgressPlayground />
+
+Pick a **style on the right**, then drag **Scroll position** (or hit **Auto**) to simulate
+scrolling — the indicator fills exactly as it does on a real page. This runs the **real module** —
+each family's own builder and its `update(progress)` function, plus the verbatim `.upw-sp-*` CSS.
+On a live site the progress is the page-scroll fraction; here it's driven by the slider. The
+**Theme Settings** values update as you tweak.
+
+:::info Where it lives
+Scroll Progress is **site-wide** — configure it under **Theme Settings → Animations → Scroll
+Progress** (a page-level indicator, not a per-element effect). Pure self-contained JS/CSS, loaded
+only when enabled, and only the one family you pick.
+:::
+
+← Back to [Scroll Progress](./index.md)

@@ -1,9 +1,16 @@
 ---
 sidebar_position: 4.5
 title: Parallax Depth Layers
+slug: /parallax
 ---
 
 # Parallax Depth Layers
+
+:::tip Try it live
+Drift a layered hero in the **[Parallax playground](./playground.mdx)** — move your pointer over the
+scene, tweak the Scene's intensity / smoothing / source, and click any layer (sky → mountains → card
+→ accents) to change its depth, axis, direction, scale and depth-blur. It runs the real render loop.
+:::
 
 Give a scene a sense of **depth** — mark a few elements as *layers* with different depths and they drift at different speeds as the pointer moves (and/or as the page scrolls). Perfect for layered hero scenes, floating shapes, and illustrations. One shared render loop, **no library**.
 

@@ -1,0 +1,28 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ Parallax Depth Layers — a pointer-driven depth scene with per-layer depth, axis, direction, scale and blur.
+hide_table_of_contents: true
+---
+
+import ParallaxPlayground from '@site/src/components/ParallaxPlayground';
+
+# Parallax Depth Layers — Playground
+
+<ParallaxPlayground />
+
+**Move your pointer over the scene** — each layer drifts by its own depth. Tweak the **Scene**
+(intensity, smoothing, and whether it's driven by pointer, scroll, or both), then **click any layer**
+on the right to edit its **depth, axis, direction, scale-with-depth and depth-blur**. This runs the
+**real runtime**: one shared render loop with scene-level pointer smoothing, reading the same
+`data-pl-*` attributes the plugin stamps. The **Sample options** update as you tweak.
+
+:::info Where it lives
+Parallax is a **per-element** control — open a container → **Animations** tab → **Parallax Layers**
+→ set it to **Scene**, then give each child element the **Layer** role and a depth. One shared loop,
+no library; the pointer source is skipped on touch (scroll layers still move) and it honours **reduce
+motion**.
+:::
+
+← Back to [Parallax Depth Layers](./index.md)

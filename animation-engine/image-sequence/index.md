@@ -1,11 +1,16 @@
 ---
 sidebar_position: 11.5
 title: Image Sequence
+slug: /image-sequence
 ---
 
 # Image Sequence
 
 Scrub through a sequence of frames as the visitor scrolls — the **product-reveal** effect (a 3D object or product spinning/assembling as you scroll). Frames are preloaded and drawn to a `<canvas>`.
+
+:::tip Try it live
+Play with every option — frames, mode, scroll length, direction, fit and background — in the **[interactive playground ⚡](./playground.mdx)** (it scrubs a real preloaded frame set on a canvas, exactly like the runtime).
+:::
 
 ## Add it
 

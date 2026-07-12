@@ -1,0 +1,28 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ Image Sequence — scrub a preloaded frame set on a canvas with mode, scroll length, direction, fit and background.
+hide_table_of_contents: true
+---
+
+import ImageSequencePlayground from '@site/src/components/ImageSequencePlayground';
+
+# Image Sequence — Playground
+
+<ImageSequencePlayground />
+
+**Drag the scroll on the right** (or hit **Play**) to scrub through the sequence — the frames are
+**preloaded and drawn to a `<canvas>`**, exactly like the runtime. Pick a **subject** on the right,
+then tweak the **frame count, mode, scroll length, direction, fit and background**. The **Sample
+options** update as you go.
+
+:::info Where it lives
+Image Sequence is a **Media Element** — builder palette → **Media Elements** → **Image Sequence** →
+point it at your frames (uploaded, or a numbered `%d` URL pattern). **Pin & scrub** pins it
+full-screen and plays it across the **Scroll length**; **Scrub while in view** plays as it passes the
+viewport. Frames are preloaded for flicker-free scrubbing, and **reduce motion** shows a single
+static frame.
+:::
+
+← Back to [Image Sequence](./index.md)

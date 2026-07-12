@@ -44,6 +44,7 @@ The **Animations** tab is an **"Add Animation" inserter**. It starts empty with 
 | --- | --- |
 | [Animated Backgrounds](./backgrounds/index.md) *(Styling tab)* | A living background layered behind a container — aurora, particles, waves, mesh gradient, and 30+ more |
 | [Sticky Card Stack](./sticky-stack/index.md) *(Animations tab)* | Pin the Section's columns as a stacking "deck of cards" on scroll — 11 styles (stack, scale, fade, blur, tilt, fan, peel, push…) |
+| [Horizontal Scroll](./horizontal-scroll/index.md) *(Animations tab)* | Pin the Section and move its columns sideways as you scroll down — 15 styles (standard, snap, center-focus, 3D carousel, wall, skew, drag…) |
 | [Infinite Scroll Loop](./scroll-loop.md) *(Animations tab)* | Loop full-height sections into a seamless, never-ending scroll (Lenis) |
 | [Scrollytelling](./scrollytelling.md) *(Animations tab)* | Pin one column as a media panel while the other's steps scroll — the media transitions per step (29 styles) |
 

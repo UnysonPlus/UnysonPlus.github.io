@@ -1,0 +1,28 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ Horizontal Scroll Section — the pin-and-scroll-sideways strip in 15 styles.
+hide_table_of_contents: true
+---
+
+import HorizontalScrollPlayground from '@site/src/components/HorizontalScrollPlayground';
+
+# Horizontal Scroll — Playground
+
+<HorizontalScrollPlayground />
+
+Pick a **style on the right** and **drag the vertical scroll** on the stage's right edge — the pinned
+panel row travels sideways, exactly as on a real page (Drag / Flick instead lets you grab and throw
+the strip). This runs the **real runtime**: the same track transform for the track-level styles and
+the verbatim per-panel recipes (center focus, 3D carousel, parallax, fade, blur, arc, wave, zigzag,
+grow). Tune **panel width** and **intensity**. The **Sample option** updates as you tweak.
+
+:::info Where it lives
+Horizontal Scroll is a **Section-level** control — Section → **Animations** tab → **Horizontal
+Scroll**. Build the Section with 2+ columns as the panels. The Section pins and its row translates
+sideways as you scroll; pure sticky + one passive scroll listener, honours **reduce motion**, and
+loads only on pages that use it.
+:::
+
+← Back to [Horizontal Scroll](./index.md)

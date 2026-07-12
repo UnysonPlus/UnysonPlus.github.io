@@ -3,19 +3,20 @@ sidebar_position: 1
 title: Playground
 sidebar_label: "Playground ⚡"
 description: Interactive playground for the Unyson+ Page Transitions — preview all 23 styles revealing on load and covering on navigate.
+hide_table_of_contents: true
 ---
 
 import PageTransitionPlayground from '@site/src/components/PageTransitionPlayground';
 
 # Page Transitions — Playground
 
-Pick a **transition** and tweak its options. Everything here runs the **real module** — the same
-overlay markup, the `.upw-pt*` classes and `--pt-*` variables, and the reveal / cover animations
-the module ships. On a real site the overlay **reveals** each page on load and **covers** it when
-you navigate; here it's contained in the box and **loops** both phases so you can watch. Hit
-**↻ Replay** to run it again. The **Theme Settings** values update as you tweak.
-
 <PageTransitionPlayground />
+
+Pick a **transition** (on the right) and tweak its options. Everything here runs the **real
+module** — the same overlay markup, the `.upw-pt*` classes and `--pt-*` variables, and the reveal
+/ cover animations the module ships. On a real site the overlay **reveals** each page on load and
+**covers** it when you navigate; here it's contained in the box and **loops** both phases so you
+can watch. Hit **↻ Replay** to run it again. The **Theme Settings** values update as you tweak.
 
 :::info Reveal on load, cover on navigate
 The transition is a full-screen overlay: its **entrance** (reveal) plays automatically on page

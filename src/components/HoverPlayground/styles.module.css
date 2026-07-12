@@ -7,57 +7,21 @@
   background: var(--ifm-card-background-color);
 }
 
-/* --- effect switcher tabs --- */
-.tabs {
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  padding: 1rem;
-  border-bottom: 1px solid var(--ifm-toc-border-color);
-  background: var(--ifm-color-emphasis-100);
-}
-.tabGroup {
-  display: grid;
-  grid-template-columns: 92px 1fr;
-  align-items: start;
-  gap: 0.6rem;
-}
-@media (max-width: 600px) {
-  .tabGroup { grid-template-columns: 1fr; gap: 0.3rem; }
-}
-.tabGroupLabel {
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: var(--ifm-color-emphasis-600);
-  padding-top: 0.35rem;
-}
-.tabPills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-.tab,
-.tabActive {
-  border: 1px solid var(--ifm-toc-border-color);
-  border-radius: 999px;
-  padding: 0.3rem 0.85rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  background: var(--ifm-background-surface-color);
-  color: var(--ifm-color-emphasis-700);
-}
-.tabActive {
-  background: var(--ifm-color-primary);
-  border-color: var(--ifm-color-primary);
-  color: #fff;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
+/* --- two-pane layout: main (stage + controls) + effect sidebar --- */
+.layout { display: flex; align-items: stretch; }
+.main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
+.sidebar { flex: 0 0 244px; border-left: 1px solid var(--ifm-toc-border-color); background: var(--ifm-color-emphasis-100); position: relative; overflow: hidden; }
+.sidebarInner { position: absolute; inset: 0; overflow-y: auto; padding: 1rem 1rem 1.25rem; }
+.sidebarTitle { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--ifm-color-emphasis-700); margin-bottom: 0.75rem; }
+.tabGroup { margin-bottom: 0.85rem; }
+.tabGroupLabel { display: block; font-size: 0.64rem; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 700; color: var(--ifm-color-emphasis-600); margin-bottom: 0.4rem; }
+.tabPills { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.tab, .tabActive { border: 1px solid var(--ifm-toc-border-color); border-radius: 999px; padding: 0.22rem 0.6rem; font-size: 0.75rem; font-weight: 600; cursor: pointer; background: var(--ifm-background-surface-color); color: var(--ifm-color-emphasis-700); line-height: 1.3; }
+.tabActive { background: var(--ifm-color-primary); border-color: var(--ifm-color-primary); color: #fff; }
+@media (max-width: 800px) {
+  .layout { flex-direction: column-reverse; }
+  .sidebar { flex-basis: auto; width: 100%; border-left: none; border-bottom: 1px solid var(--ifm-toc-border-color); position: static; overflow: visible; }
+  .sidebarInner { position: static; inset: auto; overflow-y: auto; max-height: 300px; }
 }
 
 /* --- demo stage --- */

@@ -693,32 +693,14 @@ export default function HoverPlayground({only}) {
     <div className={styles.playground}>
       <style>{allCss}</style>
 
-      {!only && (
-        <div className={styles.tabs}>
-          {GROUPS.map(([label, ks]) => (
-            <div className={styles.tabGroup} key={label}>
-              <span className={styles.tabGroupLabel}>{label}</span>
-              <div className={styles.tabPills}>
-                {ks.map((k) => (
-                  <button key={k} type="button"
-                    className={k === effect ? styles.tabActive : styles.tab}
-                    onClick={() => pick(k)}>
-                    {EFFECTS[k].label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
+      <div className={styles.layout}>
+        <div className={styles.main}>
+          <div className={styles.stage}>
+            <div className={styles.stageInner}>{renderTarget()}</div>
+            <div className={styles.hint}>👆 hover the demo{only ? '' : ' — pick an effect on the right'}, tweak below</div>
+          </div>
 
-      <div className={styles.grid}>
-        <div className={styles.stage}>
-          <div className={styles.stageInner}>{renderTarget()}</div>
-          <div className={styles.hint}>👆 hover — tweak the options below</div>
-        </div>
-
-        <div className={styles.controls}>
+          <div className={styles.controls}>
           <h5>{cfg.label} — options</h5>
           {cfg.controls.map((c) => (
             <div className={styles.control} key={c.id}>
@@ -761,7 +743,26 @@ export default function HoverPlayground({only}) {
             </div>
           ))}
           <button type="button" className={styles.reset} onClick={() => setState(defaultsFor(effect))}>Reset</button>
+          </div>
         </div>
+
+        {!only && (
+          <aside className={styles.sidebar}>
+            <div className={styles.sidebarInner}>
+              <div className={styles.sidebarTitle}>Effect</div>
+              {GROUPS.map(([label, ks]) => (
+                <div className={styles.tabGroup} key={label}>
+                  <span className={styles.tabGroupLabel}>{label}</span>
+                  <div className={styles.tabPills}>
+                    {ks.map((k) => (
+                      <button key={k} type="button" className={k === effect ? styles.tabActive : styles.tab} onClick={() => pick(k)}>{EFFECTS[k].label}</button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </aside>
+        )}
       </div>
 
       <div className={styles.code}>

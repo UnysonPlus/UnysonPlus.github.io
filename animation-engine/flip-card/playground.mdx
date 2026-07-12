@@ -3,19 +3,20 @@ sidebar_position: 1
 title: Playground
 sidebar_label: "Playground ⚡"
 description: Interactive playground for the Unyson+ 3D Flip Card — pick a style, choose a trigger, design the back face, and copy the generated sample.
+hide_table_of_contents: true
 ---
 
 import FlipCardPlayground from '@site/src/components/FlipCardPlayground';
 
 # 3D Flip Card — Playground
 
-Pick a **style**, then tweak the flip. Everything here runs the **real module** — the same
-CSS 3D transforms, the JS-built back face, and the exact `.sc-flip*` classes / `--flip-*`
+<FlipCardPlayground />
+
+Pick a **style** (on the right), then tweak the flip. Everything here runs the **real module** —
+the same CSS 3D transforms, the JS-built back face, and the exact `.sc-flip*` classes / `--flip-*`
 variables the builder outputs. With **Hover** you flip by hovering; **Click** toggles on
 click/tap; **Scroll** flips once on load (hit **↻ Replay** to reset); **Auto** flips on a loop.
 The **Sample option** updates as you tweak.
-
-<FlipCardPlayground />
 
 :::info The front is your element, the back is built for you
 On a real page the element's own content becomes the **front** face; the **back** face is

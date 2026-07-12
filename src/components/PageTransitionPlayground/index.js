@@ -125,27 +125,21 @@ export default function PageTransitionPlayground() {
     <div className={styles.playground}>
       <style>{PT_CSS}</style>
 
-      <div className={styles.styles}>
-        <span className={styles.lbl}>Transition</span>
-        {TILES.map(([v, l]) => (
-          <button key={v} type="button" className={v === s.type ? styles.styleActive : styles.style} onClick={() => pickType(v)}>{l}</button>
-        ))}
-      </div>
-
-      <div className={styles.grid}>
-        <div className={`${styles.stage} pt-demo`}>
-          <button type="button" className={styles.replay} onClick={() => setNonce((n) => n + 1)}>↻ Replay</button>
-          <div className={styles.page}>
-            <div className={styles.pageTitle} />
-            <div className={styles.pageBar} style={{width: '90%'}} />
-            <div className={styles.pageBar} style={{width: '80%'}} />
-            <div className={styles.pageBar} style={{width: '60%'}} />
+      <div className={styles.layout}>
+        <div className={styles.main}>
+          <div className={`${styles.stage} pt-demo`}>
+            <button type="button" className={styles.replay} onClick={() => setNonce((n) => n + 1)}>↻ Replay</button>
+            <div className={styles.page}>
+              <div className={styles.pageTitle} />
+              <div className={styles.pageBar} style={{width: '90%'}} />
+              <div className={styles.pageBar} style={{width: '80%'}} />
+              <div className={styles.pageBar} style={{width: '60%'}} />
+            </div>
+            <div className="upw-pt" ref={ref} style={overlayStyle} aria-hidden="true" {...attrs} />
+            <div className={styles.phase}>{phase === 'covering' ? '← covering (navigate)' : 'revealing (page load) →'}</div>
           </div>
-          <div className="upw-pt" ref={ref} style={overlayStyle} aria-hidden="true" {...attrs} />
-          <div className={styles.phase}>{phase === 'covering' ? '← covering (navigate)' : 'revealing (page load) →'}</div>
-        </div>
 
-        <div className={styles.controls}>
+          <div className={styles.controls}>
           <div className={styles.groupLbl}>Transition</div>
           {cfg.dir && (
             <div className={styles.control}>
@@ -180,7 +174,19 @@ export default function PageTransitionPlayground() {
             <label>Duration (s) <span>{s.duration}</span></label>
             <input type="range" min={0.2} max={1.5} step={0.1} value={s.duration} onChange={(e) => set('duration', e.target.value)} />
           </div>
+          </div>
         </div>
+
+        <aside className={styles.sidebar}>
+          <div className={styles.sidebarInner}>
+            <div className={styles.sidebarTitle}>Transition</div>
+            <div className={styles.tabPills}>
+              {TILES.map(([v, l]) => (
+                <button key={v} type="button" className={v === s.type ? styles.styleActive : styles.style} onClick={() => pickType(v)}>{l}</button>
+              ))}
+            </div>
+          </div>
+        </aside>
       </div>
 
       <div className={styles.code}>

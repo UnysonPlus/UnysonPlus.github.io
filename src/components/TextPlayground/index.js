@@ -341,33 +341,17 @@ export default function TextPlayground({only}) {
     <div className={styles.playground}>
       <style>{EFFECT_CSS}</style>
 
-      {!only && (
-        <div className={styles.tabs}>
-          {GROUPS.map(([label, ks]) => (
-            <div className={styles.tabGroup} key={label}>
-              <span className={styles.tabGroupLabel}>{label}</span>
-              <div className={styles.tabPills}>
-                {ks.map((k) => (
-                  <button key={k} type="button" className={k === effect ? styles.tabActive : styles.tab} onClick={() => pick(k)}>
-                    {EFFECTS[k].label}
-                  </button>
-                ))}
-              </div>
+      <div className={styles.layout}>
+        <div className={styles.main}>
+          <div className={`sc-text sc-text--${effect} ${styles.stage}`} ref={wrapRef} data-text={effect}>
+            {cfg.replay && <button type="button" className={styles.replay} onClick={() => setNonce((n) => n + 1)}>↻ Replay</button>}
+            <div className={styles.stageInner}>
+              <div className={`sc-text-target ${styles.target}`} ref={targetRef}>{demoText}</div>
             </div>
-          ))}
-        </div>
-      )}
-
-      <div className={styles.grid}>
-        <div className={`sc-text sc-text--${effect} ${styles.stage}`} ref={wrapRef} data-text={effect}>
-          {cfg.replay && <button type="button" className={styles.replay} onClick={() => setNonce((n) => n + 1)}>↻ Replay</button>}
-          <div className={styles.stageInner}>
-            <div className={`sc-text-target ${styles.target}`} ref={targetRef}>{demoText}</div>
+            <div className={styles.hint}>{HOVER_HINT.has(effect) ? '👆 hover the text' : cfg.replay ? 'plays on load — hit ↻ Replay' : 'runs continuously'}</div>
           </div>
-          <div className={styles.hint}>{HOVER_HINT.has(effect) ? '👆 hover the text' : cfg.replay ? 'plays on load — hit ↻ Replay' : 'runs continuously'}</div>
-        </div>
 
-        <div className={styles.controls}>
+          <div className={styles.controls}>
           <h5>{cfg.label} — options</h5>
           {(cfg.controls || []).length === 0 && <p style={{fontSize: '0.85rem', color: 'var(--ifm-color-emphasis-600)'}}>No options — the text becomes a window onto an image.</p>}
           {(cfg.controls || []).map((c) => (
@@ -385,7 +369,26 @@ export default function TextPlayground({only}) {
                 <input type="text" className={styles.text} value={state[c.id]} onChange={(e) => set(c.id, e.target.value)} /></>)}
             </div>
           ))}
+          </div>
         </div>
+
+        {!only && (
+          <aside className={styles.sidebar}>
+            <div className={styles.sidebarInner}>
+              <div className={styles.sidebarTitle}>Effect</div>
+              {GROUPS.map(([label, ks]) => (
+                <div className={styles.tabGroup} key={label}>
+                  <span className={styles.tabGroupLabel}>{label}</span>
+                  <div className={styles.tabPills}>
+                    {ks.map((k) => (
+                      <button key={k} type="button" className={k === effect ? styles.tabActive : styles.tab} onClick={() => pick(k)}>{EFFECTS[k].label}</button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </aside>
+        )}
       </div>
 
       <div className={styles.code}>

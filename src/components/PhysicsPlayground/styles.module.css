@@ -21,14 +21,14 @@
 .stage {
   position: relative; display: flex; align-items: center; justify-content: center;
   min-height: 340px; padding: 2.5rem 1.5rem; overflow: hidden;
-  background: radial-gradient(circle at 1px 1px, var(--ifm-toc-border-color) 1px, transparent 0) 0 0 / 22px 22px;
+  background: #f1f1f1 radial-gradient(circle at 1px 1px, #d1d1d1 1px, transparent 0) 0 0 / 22px 22px;
   border-bottom: 1px solid var(--ifm-toc-border-color);
 }
 .card { width: 150px; padding: 1.4rem 1rem; border-radius: 14px; text-align: center; background: var(--ifm-background-surface-color); border: 1px solid var(--ifm-toc-border-color); }
 .icon { width: 46px; height: 46px; margin: 0 auto 0.6rem; display: grid; place-items: center; border-radius: 12px; font-size: 1.4rem; background: linear-gradient(135deg, var(--ifm-color-primary), var(--ifm-color-primary-dark)); color: #fff; }
 .card h4 { margin: 0; font-size: 0.95rem; }
 .replay { position: absolute; top: 0.75rem; right: 0.75rem; z-index: 5; border: 1px solid var(--ifm-toc-border-color); background: var(--ifm-background-surface-color); color: var(--ifm-color-emphasis-800); border-radius: 8px; padding: 0.3rem 0.7rem; font-size: 0.78rem; font-weight: 600; cursor: pointer; }
-.hint { position: absolute; bottom: 0.7rem; width: 100%; text-align: center; font-size: 0.76rem; color: var(--ifm-color-emphasis-500); }
+.hint { position: absolute; bottom: 0.7rem; width: 100%; text-align: center; font-size: 0.76rem; color: #777; }
 
 /* controls */
 .controls { padding: 1.25rem 1.5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0 2.2rem; align-items: start; }

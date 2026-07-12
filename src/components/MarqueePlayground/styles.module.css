@@ -34,11 +34,11 @@
   min-height: 300px;
   padding: 2rem 0;
   overflow: hidden;
-  background: radial-gradient(circle at 1px 1px, var(--ifm-toc-border-color) 1px, transparent 0) 0 0 / 22px 22px;
+  background: #f1f1f1 radial-gradient(circle at 1px 1px, #d1d1d1 1px, transparent 0) 0 0 / 22px 22px;
   border-bottom: 1px solid var(--ifm-toc-border-color);
 }
 .marquee { width: 100%; color: var(--ifm-heading-color); }
-.hint { position: absolute; bottom: 0.7rem; width: 100%; text-align: center; font-size: 0.76rem; color: var(--ifm-color-emphasis-500); }
+.hint { position: absolute; bottom: 0.7rem; width: 100%; text-align: center; font-size: 0.76rem; color: #777; }
 
 /* controls */
 .controls { padding: 1.25rem 1.5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0 2.2rem; align-items: start; }

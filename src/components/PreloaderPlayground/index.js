@@ -135,26 +135,20 @@ export default function PreloaderPlayground() {
     <div className={styles.playground}>
       <style>{PRELOADER_CSS}</style>
 
-      <div className={styles.styles}>
-        <span className={styles.lbl}>Style</span>
-        {STYLE_LIST.map(([v, l]) => (
-          <button key={v} type="button" className={v === s.style ? styles.styleActive : styles.style} onClick={() => { set('style', v); setNonce((n) => n + 1); }}>{l}</button>
-        ))}
-      </div>
-
-      <div className={styles.grid}>
-        <div className={`${styles.stage} pl-demo`}>
-          <button type="button" className={styles.replay} onClick={() => setNonce((n) => n + 1)}>↻ Replay</button>
-          <div className={styles.page}>
-            <div className={styles.pageTitle} />
-            <div className={styles.pageBar} style={{width: '90%'}} />
-            <div className={styles.pageBar} style={{width: '80%'}} />
-            <div className={styles.pageBar} style={{width: '60%'}} />
+      <div className={styles.layout}>
+        <div className={styles.main}>
+          <div className={`${styles.stage} pl-demo`}>
+            <button type="button" className={styles.replay} onClick={() => setNonce((n) => n + 1)}>↻ Replay</button>
+            <div className={styles.page}>
+              <div className={styles.pageTitle} />
+              <div className={styles.pageBar} style={{width: '90%'}} />
+              <div className={styles.pageBar} style={{width: '80%'}} />
+              <div className={styles.pageBar} style={{width: '60%'}} />
+            </div>
+            <div className={`upw-preloader upw-pl--${s.style}`} ref={ref} style={overlayStyle} role="status" aria-label="Loading" />
           </div>
-          <div className={`upw-preloader upw-pl--${s.style}`} ref={ref} style={overlayStyle} role="status" aria-label="Loading" />
-        </div>
 
-        <div className={styles.controls}>
+          <div className={styles.controls}>
           {GROUPS.map(([label, ctrls]) => (
             <div key={label}>
               <div className={styles.groupLbl}>{label}</div>
@@ -172,7 +166,19 @@ export default function PreloaderPlayground() {
               ))}
             </div>
           ))}
+          </div>
         </div>
+
+        <aside className={styles.sidebar}>
+          <div className={styles.sidebarInner}>
+            <div className={styles.sidebarTitle}>Style</div>
+            <div className={styles.tabPills}>
+              {STYLE_LIST.map(([v, l]) => (
+                <button key={v} type="button" className={v === s.style ? styles.styleActive : styles.style} onClick={() => { set('style', v); setNonce((n) => n + 1); }}>{l}</button>
+              ))}
+            </div>
+          </div>
+        </aside>
       </div>
 
       <div className={styles.code}>

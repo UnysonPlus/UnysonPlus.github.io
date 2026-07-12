@@ -179,23 +179,17 @@ export default function FlipCardPlayground() {
     <div className={styles.playground}>
       <style>{FLIP_CSS}</style>
 
-      <div className={styles.styles}>
-        <span className={styles.lbl}>Style</span>
-        {STYLE_LIST.map(([v, l]) => (
-          <button key={v} type="button" className={v === mode ? styles.styleActive : styles.style} onClick={() => { setMode(v); setNonce((n) => n + 1); }}>{l}</button>
-        ))}
-      </div>
-
-      <div className={styles.grid}>
-        <div className={styles.stage}>
-          <button type="button" className={styles.replay} onClick={() => setNonce((n) => n + 1)}>↻ Replay</button>
-          <div className={styles.cardWrap}>
-            <div className={`${cls} fc-demo`} ref={ref} style={style} {...attrs} dangerouslySetInnerHTML={{__html: FRONT_HTML}} />
+      <div className={styles.layout}>
+        <div className={styles.main}>
+          <div className={styles.stage}>
+            <button type="button" className={styles.replay} onClick={() => setNonce((n) => n + 1)}>↻ Replay</button>
+            <div className={styles.cardWrap}>
+              <div className={`${cls} fc-demo`} ref={ref} style={style} {...attrs} dangerouslySetInnerHTML={{__html: FRONT_HTML}} />
+            </div>
+            <div className={styles.hint}>{hint}</div>
           </div>
-          <div className={styles.hint}>{hint}</div>
-        </div>
 
-        <div className={styles.controls}>
+          <div className={styles.controls}>
           {GROUPS.map(([label, ctrls]) => (
             <div key={label}>
               <div className={styles.groupLbl}>{label}</div>
@@ -219,7 +213,19 @@ export default function FlipCardPlayground() {
               ))}
             </div>
           ))}
+          </div>
         </div>
+
+        <aside className={styles.sidebar}>
+          <div className={styles.sidebarInner}>
+            <div className={styles.sidebarTitle}>Style</div>
+            <div className={styles.tabPills}>
+              {STYLE_LIST.map(([v, l]) => (
+                <button key={v} type="button" className={v === mode ? styles.styleActive : styles.style} onClick={() => { setMode(v); setNonce((n) => n + 1); }}>{l}</button>
+              ))}
+            </div>
+          </div>
+        </aside>
       </div>
 
       <div className={styles.code}>

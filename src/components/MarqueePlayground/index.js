@@ -217,20 +217,14 @@ export default function MarqueePlayground() {
     <div className={styles.playground}>
       <style>{MARQUEE_CSS}</style>
 
-      <div className={styles.dirs}>
-        <span className={styles.lbl}>Direction</span>
-        {DIRS.map(([v, l]) => (
-          <button key={v} type="button" className={v === mode ? styles.dirActive : styles.dir} onClick={() => { setMode(v); setNonce((n) => n + 1); }}>{l}</button>
-        ))}
-      </div>
+      <div className={styles.layout}>
+        <div className={styles.main}>
+          <div className={styles.stage}>
+            <div className={`sc-marquee mq-demo ${styles.marquee}`} ref={ref} />
+            <div className={styles.hint}>hover to pause{s.draggable === 'yes' ? ' · drag to flick' : ''}</div>
+          </div>
 
-      <div className={styles.grid}>
-        <div className={styles.stage}>
-          <div className={`sc-marquee mq-demo ${styles.marquee}`} ref={ref} />
-          <div className={styles.hint}>hover to pause{s.draggable === 'yes' ? ' · drag to flick' : ''}</div>
-        </div>
-
-        <div className={styles.controls}>
+          <div className={styles.controls}>
           {GROUPS.map(([label, ctrls]) => (
             <div key={label}>
               <div className={styles.groupLbl}>{label}</div>
@@ -250,7 +244,19 @@ export default function MarqueePlayground() {
               ))}
             </div>
           ))}
+          </div>
         </div>
+
+        <aside className={styles.sidebar}>
+          <div className={styles.sidebarInner}>
+            <div className={styles.sidebarTitle}>Direction</div>
+            <div className={styles.tabPills}>
+              {DIRS.map(([v, l]) => (
+                <button key={v} type="button" className={v === mode ? styles.dirActive : styles.dir} onClick={() => { setMode(v); setNonce((n) => n + 1); }}>{l}</button>
+              ))}
+            </div>
+          </div>
+        </aside>
       </div>
 
       <div className={styles.code}>

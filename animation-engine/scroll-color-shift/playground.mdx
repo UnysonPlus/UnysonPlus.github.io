@@ -1,0 +1,28 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ Scroll Color Shift — the background morphs section-to-section as you scroll a palette of sections.
+hide_table_of_contents: true
+---
+
+import ColorShiftPlayground from '@site/src/components/ColorShiftPlayground';
+
+# Scroll Color Shift — Playground
+
+<ColorShiftPlayground />
+
+**Drag the vertical scroll** on the stage's right edge — the stage background morphs to whichever
+section is crossing the mid-line, exactly as the page background does on a real site. This runs the
+**real runtime**: the same "which section crosses the middle of the viewport" pick, smoothed by a CSS
+transition. Pick a **section on the right** to recolour its **page** and **text** colour, and tweak
+the **transition** length. The **Sample option** updates as you tweak.
+
+:::info Where it lives
+Scroll Color Shift is a **Section-level** control — Section → **Animations** tab → **Scroll Color
+Shift**. Give several sections their own colour and the page palette shifts as you scroll. Best on
+full-bleed, transparent sections so the morphing page colour shows through; it honours **reduce
+motion** and loads only on pages that use it.
+:::
+
+← Back to [Scroll Color Shift](./index.md)

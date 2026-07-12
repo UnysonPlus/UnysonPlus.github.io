@@ -1,9 +1,16 @@
 ---
 sidebar_position: 8.6
 title: Scroll Color Shift
+slug: /scroll-color-shift
 ---
 
 # Scroll Color Shift
+
+:::tip Try it live
+Scroll through the palette in the **[Scroll Color Shift playground](./playground.mdx)** — drag the
+vertical scroll and watch the background morph section-to-section; recolour any section and tweak the
+transition. It runs the real "which section crosses the middle" pick + CSS transition.
+:::
 
 Give each **Section** a target colour, and the **page background smoothly morphs** from one section's colour to the next as the visitor scrolls — the agency-site "scroll colour shift". One passive scroll check picks whichever section is crossing the middle of the screen and transitions the body colours. No library.
 

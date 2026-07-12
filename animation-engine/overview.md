@@ -32,7 +32,7 @@ Open any Section, Column or element → **Animations** tab:
 | [Scroll Text Highlight](./scroll-text-highlight/index.md) | Light up text word-by-word as it scrolls through view — fill, fade, blur or marker sweep |
 | [Motion Path](./motion-path/index.md) | Send an element travelling along a path — 37 shapes (wave, loop, spiral, star, stairs…) or a custom SVG path; drive by scroll, loop or on-view, with align-to-path |
 | [Scroll Reveal](./scroll-reveal/index.md) | Un-mask an element as it scrolls into view — a clip-path wipe (up/down/left/right/iris/diagonal) or a Canvas "Pixelate In" for images |
-| [Scroll Color Shift](./scroll-color-shift.md) | Section-level — the page background morphs section-to-section as you scroll |
+| [Scroll Color Shift](./scroll-color-shift/index.md) | Section-level — the page background morphs section-to-section as you scroll |
 | [Preloader](./preloader/index.md) | Site-wide loading screen shown until the page is ready, then animated away — spinner, bar, dots, counter, curtain, logo |
 
 :::tip Adding animations — the inserter

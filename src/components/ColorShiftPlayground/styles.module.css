@@ -1,0 +1,63 @@
+/* Interactive Scroll Color Shift playground — two-pane (main + section list). */
+.playground { border: 1px solid var(--ifm-toc-border-color); border-radius: 12px; overflow: hidden; margin: 1.5rem 0 2rem; background: var(--ifm-card-background-color); }
+
+.layout { display: flex; align-items: stretch; }
+.main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
+.sidebar { flex: 0 0 236px; border-left: 1px solid var(--ifm-toc-border-color); background: var(--ifm-color-emphasis-100); position: relative; overflow: hidden; }
+.sidebarInner { position: absolute; inset: 0; overflow-y: auto; padding: 1rem 1rem 1.25rem; }
+.sidebarTitle { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--ifm-color-emphasis-700); margin-bottom: 0.75rem; }
+.tabGroup { margin-bottom: 0.85rem; }
+.tabGroupLabel { display: block; font-size: 0.64rem; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 700; color: var(--ifm-color-emphasis-600); margin-bottom: 0.45rem; }
+.tabPills { display: flex; flex-direction: column; gap: 0.35rem; }
+.tab, .tabActive { display: flex; align-items: center; gap: 0.5rem; border: 1px solid var(--ifm-toc-border-color); border-radius: 8px; padding: 0.4rem 0.6rem; font-size: 0.8rem; font-weight: 600; cursor: pointer; background: var(--ifm-background-surface-color); color: var(--ifm-color-emphasis-800); text-align: left; }
+.tabActive { background: var(--ifm-color-primary); border-color: var(--ifm-color-primary); color: #fff; }
+.swatch { width: 16px; height: 16px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.2); flex: none; }
+.tip { margin: 0.75rem 0 0; font-size: 0.74rem; color: var(--ifm-color-emphasis-600); line-height: 1.4; }
+@media (max-width: 800px) {
+  .layout { flex-direction: column-reverse; }
+  .sidebar { flex-basis: auto; width: 100%; border-left: none; border-bottom: 1px solid var(--ifm-toc-border-color); position: static; overflow: visible; }
+  .sidebarInner { position: static; inset: auto; overflow-y: auto; max-height: 240px; }
+}
+
+/* stage — the morphing "page". The scroller inside is transparent so the wrap colour shows. */
+.stage {
+  position: relative; height: 440px; overflow: hidden; background: #0b1220; color: #c7d2fe;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+  transition: background-color var(--cs-dur, 0.6s) ease, color var(--cs-dur, 0.6s) ease;
+}
+.scroller { position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; }
+.section { height: 440px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; text-align: center; }
+.secNum { font-size: 0.9rem; font-weight: 700; letter-spacing: 0.3em; opacity: 0.6; }
+.secLabel { font-size: 2.6rem; font-weight: 800; line-height: 1; }
+.secHex { font-size: 0.9rem; font-family: var(--ifm-font-family-monospace); opacity: 0.7; }
+.sectionSel .secLabel { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; }
+
+.midline { position: absolute; left: 0; right: 0; top: 50%; height: 0; border-top: 1px dashed rgba(255,255,255,0.35); pointer-events: none; z-index: 20; }
+.midline span { position: absolute; left: 14px; top: 6px; font-size: 0.66rem; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 700; opacity: 0.55; }
+
+/* vertical "scroll" slider on the right edge */
+.vscroll {
+  position: absolute; top: 18px; bottom: 18px; right: 12px; z-index: 30;
+  writing-mode: vertical-lr; -webkit-appearance: slider-vertical; appearance: slider-vertical;
+  width: 10px; margin: 0; accent-color: #fff; cursor: ns-resize;
+  background: rgba(255,255,255,0.2); border-radius: 6px;
+}
+
+/* demo bar */
+.demoBar { display: flex; align-items: center; gap: 1rem; padding: 0.85rem 1.5rem; border-bottom: 1px solid var(--ifm-toc-border-color); }
+.demoBar .lbl { font-size: 0.82rem; font-weight: 600; color: var(--ifm-color-emphasis-700); }
+
+/* controls */
+.controls { padding: 1.25rem 1.5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 0 2.2rem; align-items: start; }
+.controls h5 { grid-column: 1 / -1; margin: 0 0 1rem; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ifm-color-emphasis-600); }
+.control { margin-bottom: 0.95rem; }
+.control label { display: flex; justify-content: space-between; font-size: 0.84rem; font-weight: 600; margin-bottom: 0.4rem; }
+.control label span { color: var(--ifm-color-primary); font-variant-numeric: tabular-nums; }
+.control input[type='range'] { width: 100%; accent-color: var(--ifm-color-primary); }
+.color { width: 100%; height: 34px; padding: 2px; border: 1px solid var(--ifm-toc-border-color); border-radius: 8px; background: var(--ifm-background-surface-color); cursor: pointer; }
+
+/* code */
+.code { border-top: 1px solid var(--ifm-toc-border-color); }
+.code > div:first-child { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ifm-color-emphasis-600); padding: 0.75rem 1.5rem 0; }
+.code pre { margin: 0.5rem 1.5rem 0.5rem; background: var(--ifm-color-emphasis-100); border-radius: 8px; padding: 1rem; font-size: 0.82rem; overflow-x: auto; }
+.note { margin: 0 1.5rem 1.25rem; font-size: 0.78rem; color: var(--ifm-color-emphasis-600); }

@@ -41,7 +41,7 @@ The **Animations** tab is an **"Add Animation" inserter**. It starts empty with 
 ### On Sections
 | Capability | What it does |
 | --- | --- |
-| [Animated Backgrounds](./backgrounds.md) *(Styling tab)* | A living background layered behind a container — aurora, particles, waves, mesh gradient, and 30+ more |
+| [Animated Backgrounds](./backgrounds/index.md) *(Styling tab)* | A living background layered behind a container — aurora, particles, waves, mesh gradient, and 30+ more |
 | [Infinite Scroll Loop](./scroll-loop.md) *(Animations tab)* | Loop full-height sections into a seamless, never-ending scroll (Lenis) |
 | [Scrollytelling](./scrollytelling.md) *(Animations tab)* | Pin one column as a media panel while the other's steps scroll — the media transitions per step (29 styles) |
 

@@ -1,0 +1,29 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ Animated Backgrounds — preview all 35 canvas & CSS effects and tweak their colors, density and speed.
+hide_table_of_contents: true
+---
+
+import BackgroundsPlayground from '@site/src/components/BackgroundsPlayground';
+
+# Animated Backgrounds — Playground
+
+<BackgroundsPlayground />
+
+Pick an **effect on the right**, then tweak its **colors / density / speed** — it renders behind the
+sample content exactly as it does behind a real section. This runs the **real module**: the shared
+canvas engine (the particle **field** and metaball **blob** sub-engines) plus each effect's own
+builder, and the verbatim CSS for the gradient/pattern effects. All **35 effects** are here — nothing
+is stubbed. The **Sample option** updates as you tweak. (The stage is dark so light particles and
+glows read clearly; on a real page the effect sits behind your section's own background.)
+
+:::info Where it lives
+Animated Backgrounds attach to a **container** — a **Section**, **Bleed Section**, **Masonry
+Section** or **Row** → **Style** tab → **Background Effect**. Only the one chosen effect's small
+JS/CSS ships, canvas effects pause off-screen and while the tab is hidden, and it honours **reduce
+motion**.
+:::
+
+← Back to [Animated Backgrounds](./index.md)

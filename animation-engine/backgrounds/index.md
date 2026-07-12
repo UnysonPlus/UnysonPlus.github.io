@@ -1,9 +1,17 @@
 ---
 sidebar_position: 6
 title: Animated Backgrounds
+slug: /backgrounds
 ---
 
 # Animated Backgrounds
+
+:::tip Try it live
+Preview all **35 effects** in the **[Animated Backgrounds playground](./playground.mdx)** — pick an
+effect, tweak its colors / density / speed, and watch it render behind sample content. It runs the
+real canvas engine (the shared particle & metaball fields, plus every per-effect builder) and the
+verbatim CSS effects, then copies the generated sample.
+:::
 
 A living, animated background layered **behind a container's content** — aurora, drifting particles, waves, a mesh gradient, a starfield, and 30+ more.
 

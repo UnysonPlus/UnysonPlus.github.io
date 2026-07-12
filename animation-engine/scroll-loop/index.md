@@ -1,9 +1,16 @@
 ---
 sidebar_position: 8.5
 title: Infinite Scroll Loop
+slug: /scroll-loop
 ---
 
 # Infinite Scroll Loop
+
+:::tip Try it live
+See the seamless wrap in the **[Infinite Scroll Loop playground](./playground.mdx)** — auto-scroll (or
+wheel over the stage) and watch it loop forever through the cloned first section, with optional
+section snapping. It demonstrates the exact clone-and-jump-back technique the real module uses.
+:::
 
 Loop a run of full-height **Sections** into a **seamless, never-ending scroll** — mark two or more in a row and the first re-appears seamlessly after the last, with optional section snapping. Smooth scrolling is powered by [Lenis](https://lenis.darkroom.engineering/); pair it with the [Parallax](/animation-engine/parallax) scroll effect on the media inside for the classic depth look (the "[infinite scroll parallax](https://tympanus.net/Tutorials/InfiniteScrollParallax/)" experience).
 

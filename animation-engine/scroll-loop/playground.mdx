@@ -1,0 +1,34 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ Infinite Scroll Loop — a seamless never-ending scroll via a cloned first section.
+hide_table_of_contents: true
+---
+
+import ScrollLoopPlayground from '@site/src/components/ScrollLoopPlayground';
+
+# Infinite Scroll Loop — Playground
+
+<ScrollLoopPlayground />
+
+Watch it **loop forever** — leave Auto-scroll running (or wheel-scroll over the stage). This
+demonstrates the exact technique the real module uses: a **clone of the first section** is appended
+after the last, and when the scroll reaches the clone (one full *cycle* past the top) it **jumps back
+by exactly one cycle**. The clone is pixel-identical to section 1, so the wrap is **invisible** —
+seamless infinite scroll. Toggle **section snapping** for the "one section per gesture" feel.
+
+:::note What's simulated
+On a live site the smooth scroll is driven by the **Lenis** smooth-scroll library and the loop sits at
+the bottom of the page (everything above it scrolls normally). This playground reproduces the
+**clone + wrap-by-one-cycle** loop and snapping inside a contained stage rather than embedding Lenis —
+the seam behaviour is identical.
+:::
+
+:::info Where it lives
+Infinite Scroll Loop is a **Section-level** control — mark each full-height Section of the run under
+its **Animations** tab → **Infinite Scroll Loop**. Smooth scroll is powered by Lenis (loaded only where
+used); it honours **reduce motion** (plain native scroll, no clone).
+:::
+
+← Back to [Infinite Scroll Loop](./index.md)

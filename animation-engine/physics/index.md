@@ -1,9 +1,16 @@
 ---
 sidebar_position: 3
 title: Physics Effects
+slug: /physics
 ---
 
 # Physics Effects
+
+:::tip Try it live
+Grab, fling and poke all 27 effects in the **[Physics playground](./playground.mdx)** — drag &
+throw, cursor spring/attract/repel, float/pendulum/orbit, gravity drop, jelly/recoil/spin — and
+copy the generated sample.
+:::
 
 Physics-driven motion you can attach to **any element** — grab-and-throw, buoyant floating, gravity drops, jelly wobbles and more. It runs on a tiny built-in spring/verlet integrator, **no library**.
 

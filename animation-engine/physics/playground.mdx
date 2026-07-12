@@ -1,0 +1,44 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ Physics Effects — drag, fling and poke all 27 spring/verlet motions.
+hide_table_of_contents: true
+---
+
+import PhysicsPlayground from '@site/src/components/PhysicsPlayground';
+
+# Physics Effects — Playground
+
+<PhysicsPlayground />
+
+Pick an effect **on the right**, then interact with the demo. This runs the **real module** — the
+same shared spring/verlet integrator, the pointer helpers (drag / follow / react) and every
+per-effect driver — reading its options from the `data-phys-*` attributes exactly as the builder
+emits them. **Drag** effects you grab and fling; **Pointer** effects follow your cursor; **Reaction**
+effects fire on hover / click; **Entrance** effects play in (looped here so you can watch, or hit
+**↻ Replay**); **Ambient** and **Bounce Box** run continuously. The **Sample option** updates as you
+tweak.
+
+:::info Where it lives
+Physics is on every element's **Animations** tab → **Physics** (activate the Animation Engine
+first). It's pure JS spring/verlet motion — no library — honours *reduce motion*, and the
+pointer-following effects are skipped on touch screens.
+:::
+
+## How the option is stored
+
+Physics is a **multi-picker** whose picker is the **effect**; each effect keeps its own options in
+a nested map:
+
+```php
+'physics' => [
+    'type'  => 'multi-picker',
+    'value' => [
+        'effect' => 'float',
+        'float'  => [ 'amount' => 12, 'speed' => 1, 'rotate' => 'yes' ],
+    ],
+],
+```
+
+← Back to [Physics Effects](./index.md)

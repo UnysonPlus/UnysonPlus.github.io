@@ -1,0 +1,35 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ Scrollytelling — a pinned media panel that transitions per step, in 23 CSS styles.
+hide_table_of_contents: true
+---
+
+import ScrollytellingPlayground from '@site/src/components/ScrollytellingPlayground';
+
+# Scrollytelling — Playground
+
+<ScrollytellingPlayground />
+
+Pick a **transition on the right** and **drag the vertical scroll** on the stage's right edge — the
+pinned media panel swaps to match each step, exactly as on a real page. This runs the **real
+runtime**: one column pins while the other's steps scroll, the matching media layer gets `.is-active`
+by index, and the verbatim per-style CSS runs the transition. Tune **media side**, **transition**,
+**intensity**, **direction** and the **progress indicator**. The **Sample option** updates as you tweak.
+
+:::note A few styles need real media
+The **23 CSS transitions** are all here. **Parallax Depth**, **Pixelate Resolve**, **Color Shift**,
+**Frame Sequence**, **Horizontal Track** and **Liquid (WebGL)** scrub real images or a canvas/WebGL
+context, so they aren't simulated in this playground — they're documented on this page and work on a
+live site.
+:::
+
+:::info Where it lives
+Scrollytelling is a **Section-level** control — Section → **Animations** tab → **Scrollytelling**.
+Build the Section with two columns: one holds N media layers, the other N step blocks. Step 1 shows
+media 1, step 2 shows media 2, and so on. Pure CSS sticky + IntersectionObserver; honours **reduce
+motion**.
+:::
+
+← Back to [Scrollytelling](./index.md)

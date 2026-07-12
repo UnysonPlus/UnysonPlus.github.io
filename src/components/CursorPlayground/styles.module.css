@@ -1,0 +1,50 @@
+/* Interactive Custom Cursor playground — two-pane (main + style sidebar). */
+.playground { border: 1px solid var(--ifm-toc-border-color); border-radius: 12px; overflow: hidden; margin: 1.5rem 0 2rem; background: var(--ifm-card-background-color); }
+
+.layout { display: flex; align-items: stretch; }
+.main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
+.sidebar { flex: 0 0 244px; border-left: 1px solid var(--ifm-toc-border-color); background: var(--ifm-color-emphasis-100); position: relative; overflow: hidden; }
+.sidebarInner { position: absolute; inset: 0; overflow-y: auto; padding: 1rem 1rem 1.25rem; }
+.sidebarTitle { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--ifm-color-emphasis-700); margin-bottom: 0.75rem; }
+.tabGroup { margin-bottom: 0.85rem; }
+.tabGroupLabel { display: block; font-size: 0.64rem; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 700; color: var(--ifm-color-emphasis-600); margin-bottom: 0.4rem; }
+.tabPills { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.tab, .tabActive { border: 1px solid var(--ifm-toc-border-color); border-radius: 999px; padding: 0.22rem 0.6rem; font-size: 0.75rem; font-weight: 600; cursor: pointer; background: var(--ifm-background-surface-color); color: var(--ifm-color-emphasis-700); line-height: 1.3; }
+.tabActive { background: var(--ifm-color-primary); border-color: var(--ifm-color-primary); color: #fff; }
+@media (max-width: 800px) {
+  .layout { flex-direction: column-reverse; }
+  .sidebar { flex-basis: auto; width: 100%; border-left: none; border-bottom: 1px solid var(--ifm-toc-border-color); position: static; overflow: visible; }
+  .sidebarInner { position: static; inset: auto; overflow-y: auto; max-height: 320px; }
+}
+
+/* stage — cursor elements live inside this box (position:absolute, scoped by .mpcur) */
+.stage {
+  position: relative; overflow: hidden; min-height: 400px; display: flex; align-items: center; justify-content: center;
+  background: #f1f1f1 radial-gradient(circle at 1px 1px, #d1d1d1 1px, transparent 0) 0 0 / 22px 22px;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+.demoRow { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; justify-content: center; z-index: 5; }
+.demoBtn { border: 1px solid var(--ifm-color-primary); background: var(--ifm-background-surface-color); color: var(--ifm-color-primary); border-radius: 10px; padding: 0.6rem 1.2rem; font-size: 0.9rem; font-weight: 700; }
+.demoCard { border: 1px solid var(--ifm-toc-border-color); background: var(--ifm-background-surface-color); color: #1c1e21; border-radius: 12px; padding: 0.9rem 1.3rem; font-size: 0.9rem; font-weight: 600; }
+.hint { position: absolute; bottom: 0.7rem; width: 100%; text-align: center; font-size: 0.76rem; color: #777; z-index: 2; pointer-events: none; }
+
+/* controls */
+.controls { padding: 1.25rem 1.5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 0 2.2rem; align-items: start; }
+.controls h5 { grid-column: 1 / -1; margin: 0 0 1rem; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ifm-color-emphasis-600); }
+.subhead { grid-column: 1 / -1; margin: 0.4rem 0 0.8rem; padding-top: 0.8rem; border-top: 1px solid var(--ifm-toc-border-color); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--ifm-color-emphasis-600); }
+.control { margin-bottom: 0.95rem; }
+.control label { display: flex; justify-content: space-between; font-size: 0.84rem; font-weight: 600; margin-bottom: 0.4rem; }
+.control label span { color: var(--ifm-color-primary); font-variant-numeric: tabular-nums; }
+.control input[type='range'] { width: 100%; accent-color: var(--ifm-color-primary); }
+.color { width: 100%; height: 34px; padding: 2px; border: 1px solid var(--ifm-toc-border-color); border-radius: 8px; background: var(--ifm-background-surface-color); cursor: pointer; }
+.text { width: 100%; padding: 0.4rem 0.55rem; border: 1px solid var(--ifm-toc-border-color); border-radius: 8px; background: var(--ifm-background-surface-color); color: var(--ifm-font-color-base); font-size: 0.95rem; }
+.toggle { display: inline-flex; border: 1px solid var(--ifm-toc-border-color); border-radius: 8px; overflow: hidden; }
+.toggle button { border: 0; padding: 0.35rem 0.9rem; font-size: 0.82rem; font-weight: 600; background: transparent; color: var(--ifm-color-emphasis-700); cursor: pointer; }
+.toggle button.on { background: var(--ifm-color-primary); color: #fff; }
+
+/* code */
+.code { border-top: 1px solid var(--ifm-toc-border-color); }
+.code > div:first-child { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ifm-color-emphasis-600); padding: 0.75rem 1.5rem 0; }
+.code pre { margin: 0.5rem 1.5rem 0.5rem; background: var(--ifm-color-emphasis-100); border-radius: 8px; padding: 1rem; font-size: 0.82rem; overflow-x: auto; }
+.note { margin: 0 1.5rem 1.25rem; font-size: 0.78rem; color: var(--ifm-color-emphasis-600); }
+.note code { font-size: 0.9em; }

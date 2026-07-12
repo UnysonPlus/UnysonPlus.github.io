@@ -88,9 +88,12 @@ export default function ParallaxPlayground() {
   const [layers, setLayers] = useState(layerDefaults);
   const [sel, setSel] = useState('card');
   const [scrollPos, setScrollPos] = useState(50);
+  const [auto, setAuto] = useState(true);
   const stageRef = useRef(null);
   const sceneRef = useRef(null);
   const scrRef = useRef(0);
+  const autoRef = useRef(true);
+  const sliderElRef = useRef(null);
 
   const setS = (k, v) => setScene((s) => ({...s, [k]: v}));
   const setL = (k, v) => setLayers((ls) => ({...ls, [sel]: {...ls[sel], [k]: v}}));
@@ -127,9 +130,14 @@ export default function ParallaxPlayground() {
     stage.addEventListener('pointermove', onMove, {passive: true});
     stage.addEventListener('pointerleave', onLeave);
 
-    const tick = () => {
+    const tick = (t) => {
       if (cancelled) return;
       mx += (tmx - mx) * ease; my += (tmy - my) * ease;
+      // Auto mode: continuously oscillate the scroll so the depth-differentiated drift is obvious.
+      if (source !== 'mouse' && autoRef.current) {
+        scrRef.current = Math.sin((t || 0) / 1400);
+        if (sliderElRef.current) sliderElRef.current.value = String(Math.round((scrRef.current / 2 + 0.5) * 100));
+      }
       const scr = source !== 'mouse' ? scrRef.current : 0;
       const useMx = source !== 'scroll' ? mx : 0;
       const useMy = source !== 'scroll' ? my : 0;
@@ -149,7 +157,8 @@ export default function ParallaxPlayground() {
     return () => { cancelled = true; cancelAnimationFrame(raf); stage.removeEventListener('pointermove', onMove); stage.removeEventListener('pointerleave', onLeave); };
   }, [scene, layers]);
 
-  const onScroll = (v) => { setScrollPos(v); scrRef.current = (v / 100 - 0.5) * 2; };
+  const onScroll = (v) => { setScrollPos(v); scrRef.current = (v / 100 - 0.5) * 2; setAuto(false); autoRef.current = false; };
+  const setAutoMode = (on) => { setAuto(on); autoRef.current = on; };
   useEffect(() => { scrRef.current = (scrollPos / 100 - 0.5) * 2; }, []); // seed
 
   const php = useMemo(() => buildPhp(scene, sel, lo), [scene, sel, lo]);
@@ -179,8 +188,8 @@ export default function ParallaxPlayground() {
               {scene.source === 'mouse'
                 ? 'Move your pointer over the scene — layers drift by depth.'
                 : scene.source === 'scroll'
-                  ? 'Drag Scroll position on the right — layers drift vertically by depth.'
-                  : 'Move your pointer, and drag Scroll position on the right.'}
+                  ? 'Auto-scrolling — layers drift vertically at different speeds by depth. Use the slider on the right for Manual.'
+                  : 'Move your pointer; scroll auto-drifts (or go Manual on the right).'}
             </span>
           </div>
 
@@ -244,8 +253,13 @@ export default function ParallaxPlayground() {
           <div className={styles.sidebarInner}>
             {scene.source !== 'mouse' && (
               <div className={styles.scrollBox}>
-                <label className={styles.scrollLabel}>Scroll position <span>{scrollPos}%</span></label>
-                <input type="range" min="0" max="100" step="1" value={scrollPos} onChange={(e) => onScroll(Number(e.target.value))} />
+                <label className={styles.scrollLabel}>Scroll position</label>
+                <input ref={sliderElRef} type="range" min="0" max="100" step="1"
+                  defaultValue={scrollPos} onChange={(e) => onScroll(Number(e.target.value))} />
+                <div className={styles.scrollToggle}>
+                  <button type="button" className={!auto ? styles.on : ''} onClick={() => setAutoMode(false)}>Manual</button>
+                  <button type="button" className={auto ? styles.on : ''} onClick={() => setAutoMode(true)}>Auto</button>
+                </div>
               </div>
             )}
             <div className={styles.sidebarTitle}>Layers</div>

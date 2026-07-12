@@ -17,6 +17,9 @@
 .scrollLabel { display: flex; justify-content: space-between; font-size: 0.76rem; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 700; color: var(--ifm-color-emphasis-700); margin-bottom: 0.5rem; }
 .scrollLabel span { color: var(--ifm-color-primary); font-variant-numeric: tabular-nums; }
 .scrollBox input[type='range'] { width: 100%; accent-color: var(--ifm-color-primary); }
+.scrollToggle { display: inline-flex; margin-top: 0.55rem; border: 1px solid var(--ifm-toc-border-color); border-radius: 8px; overflow: hidden; }
+.scrollToggle button { border: 0; padding: 0.3rem 0.8rem; font-size: 0.78rem; font-weight: 600; background: transparent; color: var(--ifm-color-emphasis-700); cursor: pointer; }
+.scrollToggle button.on { background: var(--ifm-color-primary); color: #fff; }
 @media (max-width: 800px) {
   .layout { flex-direction: column-reverse; }
   .sidebar { flex-basis: auto; width: 100%; border-left: none; border-bottom: 1px solid var(--ifm-toc-border-color); position: static; overflow: visible; }

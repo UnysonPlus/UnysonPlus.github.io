@@ -1,9 +1,17 @@
 ---
 sidebar_position: 11
 title: SVG Draw
+slug: /svg-draw
 ---
 
 # SVG Draw
+
+:::tip Try it live
+Watch line art trace itself in the **[SVG Draw playground](./playground.mdx)** — pick a preset,
+tweak duration / stagger / direction / loop, restyle the stroke and fill, then copy the generated
+sample. It runs the real runtime's `getTotalLength` measuring + staggered `stroke-dashoffset`
+animation.
+:::
 
 A **self-drawing SVG** — line art, a signature, an animated divider or icon — that traces itself on as it scrolls into view. No heavy 3D library.
 

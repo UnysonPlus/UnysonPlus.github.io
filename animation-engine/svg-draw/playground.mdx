@@ -1,0 +1,28 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ SVG Draw element — watch line-art presets trace themselves and tweak duration, stagger, stroke and fill.
+hide_table_of_contents: true
+---
+
+import SvgDrawPlayground from '@site/src/components/SvgDrawPlayground';
+
+# SVG Draw — Playground
+
+<SvgDrawPlayground />
+
+Pick a **preset on the right** (or paste your own SVG), then tweak how it draws — **duration**,
+**stagger**, **direction**, **loop**, plus **stroke width / color** and an optional **fill after**.
+This runs the **real runtime**: it measures each path with `getTotalLength`, sets a `stroke-dasharray`
+so the art starts hidden, then animates `stroke-dashoffset → 0` (staggered) exactly as on a live
+page. Hit **Replay** to redraw, or set the trigger to **hover**. The **Sample option** updates as you
+tweak.
+
+:::info Where it lives
+SVG Draw is a **page-builder element / shortcode** — add it, pick a built-in preset or paste/upload
+an SVG, and it self-draws on the front end. Outline (stroke) SVGs draw cleanest; colors use the theme
+color-preset picker. It honours **reduce motion** (shown fully drawn, no animation).
+:::
+
+← Back to [SVG Draw](./index.md)

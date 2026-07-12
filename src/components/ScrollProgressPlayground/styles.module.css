@@ -29,11 +29,15 @@
 .mockBar { height: 12px; border-radius: 6px; background: var(--ifm-color-emphasis-200); }
 .hint { position: absolute; bottom: 0.7rem; width: 100%; text-align: center; font-size: 0.76rem; color: #777; z-index: 2; }
 
+/* vertical "scroll" slider on the right edge of the stage (simulates the page scrollbar) */
+.vscroll {
+  position: absolute; top: 16px; bottom: 16px; right: 10px; z-index: 6;
+  writing-mode: vertical-lr; -webkit-appearance: slider-vertical; appearance: slider-vertical;
+  width: 10px; margin: 0; accent-color: var(--ifm-color-primary); cursor: ns-resize;
+  background: rgba(0,0,0,0.08); border-radius: 6px;
+}
+
 /* demo scroll-position control row */
-.demoBar { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; border-bottom: 1px solid var(--ifm-toc-border-color); }
-.demoBar .lbl { font-size: 0.8rem; font-weight: 700; color: var(--ifm-color-emphasis-800); white-space: nowrap; }
-.demoBar input[type='range'] { flex: 1; accent-color: var(--ifm-color-primary); }
-.demoBar .pct { font-size: 0.82rem; font-weight: 700; color: var(--ifm-color-primary); font-variant-numeric: tabular-nums; min-width: 3ch; text-align: right; }
 
 /* controls */
 .controls { padding: 1.25rem 1.5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0 2.2rem; align-items: start; }

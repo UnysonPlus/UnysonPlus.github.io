@@ -7,9 +7,9 @@ slug: /scroll-progress
 # Scroll Progress
 
 :::tip Try it live
-Preview all 16 styles in the **[Scroll Progress playground](./playground.mdx)** — drag the scroll
-position (or auto-scroll) and watch the bar / ring / gauge / battery / counter / dots respond, then
-copy the generated sample.
+Preview all 16 styles in the **[Scroll Progress playground](./playground.mdx)** — drag the vertical
+scroll and watch the bar / ring / gauge / battery / counter / dots respond, then copy the generated
+sample.
 :::
 
 A site-wide **reading-progress indicator** that fills as the visitor scrolls — with **16 styles**, from a simple bar to a corner ring, a battery, a reading-time chip, or section scroll-spy dots.

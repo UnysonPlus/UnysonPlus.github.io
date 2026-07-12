@@ -144,12 +144,10 @@ ${inner}
 export default function ScrollProgressPlayground() {
   const [kind, setKind] = useState('bar');
   const [o, setO] = useState(() => defaultsFor('bar'));
-  const [auto, setAuto] = useState('yes');
+  const [pos, setPos] = useState(35);
   const hostRef = useRef(null);
   const apiRef = useRef(null);
   const progRef = useRef(0.35);
-  const autoRef = useRef(true);
-  const sliderRef = useRef(null);
   const set = (id, v) => setO((p) => ({...p, [id]: v}));
   const pick = (k) => { setKind(k); setO(defaultsFor(k)); };
 
@@ -164,14 +162,11 @@ export default function ScrollProgressPlayground() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [kind, JSON.stringify(o)]);
 
-  // One rAF loop: advance progress when auto, and drive the indicator every frame.
+  // One rAF loop: keep the (possibly time-based) indicator in sync with the scroll fraction.
   useEffect(() => {
-    let raf = 0, last = 0, cancelled = false;
-    const tick = (t) => {
+    let raf = 0, cancelled = false;
+    const tick = () => {
       if (cancelled) return;
-      if (!last) last = t;
-      const dt = Math.min(0.05, (t - last) / 1000); last = t;
-      if (autoRef.current) { let n = progRef.current + dt * 0.16; if (n > 1) n = 0; progRef.current = n; if (sliderRef.current) sliderRef.current.value = Math.round(n * 100); }
       if (apiRef.current) apiRef.current.update(progRef.current);
       raf = requestAnimationFrame(tick);
     };
@@ -179,8 +174,7 @@ export default function ScrollProgressPlayground() {
     return () => { cancelled = true; cancelAnimationFrame(raf); };
   }, []);
 
-  const onScrub = (e) => { progRef.current = Number(e.target.value) / 100; autoRef.current = false; setAuto('no'); if (apiRef.current) apiRef.current.update(progRef.current); };
-  const setAutoMode = (v) => { setAuto(v); autoRef.current = v === 'yes'; };
+  const onScrub = (v) => { setPos(v); progRef.current = v / 100; if (apiRef.current) apiRef.current.update(progRef.current); };
 
   return (
     <div className={styles.playground}>
@@ -197,16 +191,9 @@ export default function ScrollProgressPlayground() {
               <div className={styles.mockBar} style={{width: '80%'}} />
             </div>
             <div className={`${styles.host} sp-demo`} ref={hostRef} />
-            <div className={styles.hint}>{kind === 'dots' ? 'section scroll-spy (5 sample sections)' : 'drag “Scroll position” below to simulate scrolling'}</div>
-          </div>
-
-          <div className={styles.demoBar}>
-            <span className={styles.lbl}>Scroll position</span>
-            <input type="range" min={0} max={100} step={1} defaultValue={35} ref={sliderRef} onInput={onScrub} onChange={onScrub} />
-            <div className={styles.toggle}>
-              <button type="button" className={auto === 'no' ? styles.on : ''} onClick={() => setAutoMode('no')}>Manual</button>
-              <button type="button" className={auto === 'yes' ? styles.on : ''} onClick={() => setAutoMode('yes')}>Auto</button>
-            </div>
+            <input type="range" className={styles.vscroll} min={0} max={100} step={1}
+              value={pos} onChange={(e) => onScrub(Number(e.target.value))} aria-label="Scroll position" />
+            <div className={styles.hint}>{kind === 'dots' ? 'section scroll-spy (5 sample sections)' : 'drag the scroll on the right to simulate scrolling'}</div>
           </div>
 
           <div className={styles.controls}>

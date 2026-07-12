@@ -1,9 +1,17 @@
 ---
 sidebar_position: 9
 title: WebGL Object
+slug: /webgl-object
 ---
 
 # WebGL Object
+
+:::tip Try it live
+Spin up real WebGL in the **[WebGL Object playground](./playground.mdx)** — switch between the glass
+blob, liquid metal, distorted sphere, particle field and the full-screen shaders (gradient mesh,
+plasma, aurora, fluid, dots); recolour them and tune the material / shader params, noise, auto-rotate,
+pointer-follow and scroll-link. It runs the real Three.js runtime.
+:::
 
 A real-time **WebGL** element — a glass blob, liquid metal, a distorted sphere, a particle field, or a full-screen shader — that reacts to the pointer and scroll. Built on **Three.js** (vendored, loaded only when the element is on the page).
 

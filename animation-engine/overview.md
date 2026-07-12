@@ -58,7 +58,7 @@ The **Animations** tab is an **"Add Animation" inserter**. It starts empty with 
 ### New elements (builder palette → *Media Elements*)
 | Element | What it does |
 | --- | --- |
-| [WebGL Object](./webgl-object.md) | Real-time WebGL — glass blob, liquid metal, shaders (Three.js) |
+| [WebGL Object](./webgl-object/index.md) | Real-time WebGL — glass blob, liquid metal, shaders (Three.js) |
 | [Model Viewer](./model-viewer.md) | Interactive 3D glTF/GLB models, with AR |
 | [SVG Draw](./svg-draw/index.md) | Self-drawing line art that traces itself on scroll |
 | [Image Sequence](./image-sequence.md) | Scroll-scrubbed frame playback — the product-reveal effect |

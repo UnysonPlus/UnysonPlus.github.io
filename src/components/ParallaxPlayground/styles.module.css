@@ -13,13 +13,6 @@
 .tabActive { background: var(--ifm-color-primary); border-color: var(--ifm-color-primary); color: #fff; }
 .tab em, .tabActive em { font-style: normal; font-size: 0.7rem; opacity: 0.7; font-variant-numeric: tabular-nums; }
 .tip { margin: 0.75rem 0 0; font-size: 0.74rem; color: var(--ifm-color-emphasis-600); line-height: 1.4; }
-.scrollBox { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--ifm-toc-border-color); }
-.scrollLabel { display: flex; justify-content: space-between; font-size: 0.76rem; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 700; color: var(--ifm-color-emphasis-700); margin-bottom: 0.5rem; }
-.scrollLabel span { color: var(--ifm-color-primary); font-variant-numeric: tabular-nums; }
-.scrollBox input[type='range'] { width: 100%; accent-color: var(--ifm-color-primary); }
-.scrollToggle { display: inline-flex; margin-top: 0.55rem; border: 1px solid var(--ifm-toc-border-color); border-radius: 8px; overflow: hidden; }
-.scrollToggle button { border: 0; padding: 0.3rem 0.8rem; font-size: 0.78rem; font-weight: 600; background: transparent; color: var(--ifm-color-emphasis-700); cursor: pointer; }
-.scrollToggle button.on { background: var(--ifm-color-primary); color: #fff; }
 @media (max-width: 800px) {
   .layout { flex-direction: column-reverse; }
   .sidebar { flex-basis: auto; width: 100%; border-left: none; border-bottom: 1px solid var(--ifm-toc-border-color); position: static; overflow: visible; }
@@ -30,6 +23,14 @@
 .stage { position: relative; overflow: hidden; height: 420px; background: #0e1116; border-bottom: 1px solid var(--ifm-toc-border-color); cursor: crosshair; }
 .scene { position: absolute; inset: 0; overflow: hidden; }
 .layer { position: absolute; inset: 0; will-change: transform; }
+
+/* vertical "scroll" slider on the right edge of the stage (simulates a scrollbar) */
+.vscroll {
+  position: absolute; top: 18px; bottom: 18px; right: 12px; z-index: 30;
+  writing-mode: vertical-lr; -webkit-appearance: slider-vertical; appearance: slider-vertical;
+  width: 10px; margin: 0; accent-color: var(--ifm-color-primary); cursor: ns-resize;
+  background: rgba(255,255,255,0.14); border-radius: 6px;
+}
 .layerSel { outline: 2px dashed rgba(255,255,255,0.65); outline-offset: -2px; z-index: 20; }
 
 /* layer art */

@@ -29,7 +29,7 @@ Open any Section, Column or element → **Animations** tab:
 | [Parallax Depth Layers](./parallax/index.md) | Multi-layer pointer/scroll depth — mark a Scene, give each child a Depth |
 | [Marquee](./marquee/index.md) | A seamless ticker for any element's content — running text (incl. a true curved arc), logos, images; warp, drag, scroll-reactive |
 | [3D Flip Card](./flip-card/index.md) | Flip any element in 3D to a back face — seven styles (flip, cube, fold, door, diagonal, pop, carousel); hover / click / scroll / auto |
-| [Scroll Text Highlight](./scroll-text-highlight.md) | Light up text word-by-word as it scrolls through view — fill, fade, blur or marker sweep |
+| [Scroll Text Highlight](./scroll-text-highlight/index.md) | Light up text word-by-word as it scrolls through view — fill, fade, blur or marker sweep |
 | [Motion Path](./motion-path/index.md) | Send an element travelling along a path — 37 shapes (wave, loop, spiral, star, stairs…) or a custom SVG path; drive by scroll, loop or on-view, with align-to-path |
 | [Scroll Reveal](./scroll-reveal/index.md) | Un-mask an element as it scrolls into view — a clip-path wipe (up/down/left/right/iris/diagonal) or a Canvas "Pixelate In" for images |
 | [Scroll Color Shift](./scroll-color-shift.md) | Section-level — the page background morphs section-to-section as you scroll |

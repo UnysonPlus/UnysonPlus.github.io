@@ -43,7 +43,7 @@
 .hint { position: absolute; bottom: 0.7rem; width: 100%; text-align: center; font-size: 0.76rem; color: var(--ifm-color-emphasis-500); }
 
 /* --- controls --- */
-.controls { padding: 1.25rem 1.5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0 2.2rem; align-items: start; border-bottom: 1px solid var(--ifm-toc-border-color); }
+.controls { padding: 1.25rem 1.5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0 2.2rem; align-items: start; }
 .control { margin-bottom: 0.95rem; }
 .control label { display: flex; justify-content: space-between; font-size: 0.84rem; font-weight: 600; margin-bottom: 0.4rem; }
 .control label span { color: var(--ifm-color-primary); font-variant-numeric: tabular-nums; }
@@ -53,6 +53,7 @@
 .toggle button { border: 0; padding: 0.35rem 0.9rem; font-size: 0.82rem; font-weight: 600; background: transparent; color: var(--ifm-color-emphasis-700); cursor: pointer; }
 .toggle button.on { background: var(--ifm-color-primary); color: #fff; }
 
-/* --- code --- */
+/* --- code (full width, below both panes) --- */
+.code { border-top: 1px solid var(--ifm-toc-border-color); }
 .code > div:first-child { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ifm-color-emphasis-600); padding: 0.75rem 1.5rem 0; }
 .code pre { margin: 0.5rem 1.5rem 1.25rem; background: var(--ifm-color-emphasis-100); border-radius: 8px; padding: 1rem; font-size: 0.82rem; overflow-x: auto; }

@@ -138,11 +138,6 @@ export default function EntrancePlayground() {
               </div>
             ))}
           </div>
-
-          <div className={styles.code}>
-            <div>Sample option — updates as you tweak</div>
-            <pre><code>{buildPhp(s)}</code></pre>
-          </div>
         </div>
 
         <aside className={styles.sidebar}>
@@ -158,6 +153,11 @@ export default function EntrancePlayground() {
             </div>
           ))}
         </aside>
+      </div>
+
+      <div className={styles.code}>
+        <div>Sample option — updates as you tweak</div>
+        <pre><code>{buildPhp(s)}</code></pre>
       </div>
     </div>
   );

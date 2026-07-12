@@ -87,16 +87,17 @@ export default function ParallaxPlayground() {
   const [scene, setScene] = useState(SCENE_DEFAULTS);
   const [layers, setLayers] = useState(layerDefaults);
   const [sel, setSel] = useState('card');
+  const [scrollPos, setScrollPos] = useState(50);
   const stageRef = useRef(null);
   const sceneRef = useRef(null);
+  const scrRef = useRef(0);
 
   const setS = (k, v) => setScene((s) => ({...s, [k]: v}));
   const setL = (k, v) => setLayers((ls) => ({...ls, [sel]: {...ls[sel], [k]: v}}));
   const lo = layers[sel];
 
-  // Runtime — ported from parallax.js. The scene sits inside a scroll viewport (the stage): the
-  // pointer drives mx/my, and real scrolling drives `scr` from the scene's position in the viewport
-  // (mirroring the plugin's updateScroll(): scr = (vh/2 - sceneCenter) / (vh/2 + sceneH/2)).
+  // Runtime — ported from parallax.js. The pointer drives mx/my (relative to the scene), and the
+  // "Scroll position" slider drives `scr` in [-1,1] for the scroll / both sources.
   useEffect(() => {
     const stage = stageRef.current, scene0 = sceneRef.current;
     if (!stage || !scene0) return undefined;
@@ -126,17 +127,10 @@ export default function ParallaxPlayground() {
     stage.addEventListener('pointermove', onMove, {passive: true});
     stage.addEventListener('pointerleave', onLeave);
 
-    function scrollFraction() {
-      if (source === 'mouse') return 0;
-      const s = stage.getBoundingClientRect(), sc = scene0.getBoundingClientRect();
-      const cy = sc.top + sc.height / 2 - s.top; // scene centre relative to the stage viewport top
-      return clamp((s.height / 2 - cy) / (s.height / 2 + sc.height / 2), -1, 1);
-    }
-
     const tick = () => {
       if (cancelled) return;
       mx += (tmx - mx) * ease; my += (tmy - my) * ease;
-      const scr = scrollFraction();
+      const scr = source !== 'mouse' ? scrRef.current : 0;
       const useMx = source !== 'scroll' ? mx : 0;
       const useMy = source !== 'scroll' ? my : 0;
       for (let i = 0; i < items.length; i++) {
@@ -155,12 +149,8 @@ export default function ParallaxPlayground() {
     return () => { cancelled = true; cancelAnimationFrame(raf); stage.removeEventListener('pointermove', onMove); stage.removeEventListener('pointerleave', onLeave); };
   }, [scene, layers]);
 
-  // Centre the scene in the scroll viewport on mount + whenever the source changes.
-  useEffect(() => {
-    const stage = stageRef.current, scene0 = sceneRef.current;
-    if (!stage || !scene0) return;
-    stage.scrollTop = Math.max(0, scene0.offsetTop - (stage.clientHeight - scene0.clientHeight) / 2);
-  }, [scene.source]);
+  const onScroll = (v) => { setScrollPos(v); scrRef.current = (v / 100 - 0.5) * 2; };
+  useEffect(() => { scrRef.current = (scrollPos / 100 - 0.5) * 2; }, []); // seed
 
   const php = useMemo(() => buildPhp(scene, sel, lo), [scene, sel, lo]);
 
@@ -168,23 +158,19 @@ export default function ParallaxPlayground() {
     <div className={styles.playground}>
       <div className={styles.layout}>
         <div className={styles.main}>
-          <div ref={stageRef} className={`${styles.stage} ${scene.source === 'mouse' ? styles.stageNoScroll : ''}`}>
-            <div className={styles.scrollInner}>
-              {scene.source !== 'mouse' && <div className={styles.pad}>↕ scroll</div>}
-              <div ref={sceneRef} className={styles.scene}
-                data-pl-scene={scene.source} data-pl-intensity={scene.intensity} data-pl-smooth={scene.smoothing}>
-                {LAYERS.map((l) => {
-                  const o = layers[l.id];
-                  return (
-                    <div key={l.id} className={`${styles.layer} ${sel === l.id ? styles.layerSel : ''}`}
-                      data-pl-depth={o.depth} data-pl-axis={o.axis} data-pl-dir={o.direction}
-                      data-pl-scale={o.scale_far === 'yes' ? '1' : '0'} data-pl-blur={o.blur_far === 'yes' ? '1' : '0'}>
-                      <LayerArt id={l.id} />
-                    </div>
-                  );
-                })}
-              </div>
-              {scene.source !== 'mouse' && <div className={styles.pad} />}
+          <div ref={stageRef} className={styles.stage}>
+            <div ref={sceneRef} className={styles.scene}
+              data-pl-scene={scene.source} data-pl-intensity={scene.intensity} data-pl-smooth={scene.smoothing}>
+              {LAYERS.map((l) => {
+                const o = layers[l.id];
+                return (
+                  <div key={l.id} className={`${styles.layer} ${sel === l.id ? styles.layerSel : ''}`}
+                    data-pl-depth={o.depth} data-pl-axis={o.axis} data-pl-dir={o.direction}
+                    data-pl-scale={o.scale_far === 'yes' ? '1' : '0'} data-pl-blur={o.blur_far === 'yes' ? '1' : '0'}>
+                    <LayerArt id={l.id} />
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -193,8 +179,8 @@ export default function ParallaxPlayground() {
               {scene.source === 'mouse'
                 ? 'Move your pointer over the scene — layers drift by depth.'
                 : scene.source === 'scroll'
-                  ? 'Scroll inside the stage — layers drift vertically by depth.'
-                  : 'Move your pointer and scroll inside the stage — layers drift by depth.'}
+                  ? 'Drag Scroll position on the right — layers drift vertically by depth.'
+                  : 'Move your pointer, and drag Scroll position on the right.'}
             </span>
           </div>
 
@@ -256,6 +242,12 @@ export default function ParallaxPlayground() {
 
         <aside className={styles.sidebar}>
           <div className={styles.sidebarInner}>
+            {scene.source !== 'mouse' && (
+              <div className={styles.scrollBox}>
+                <label className={styles.scrollLabel}>Scroll position <span>{scrollPos}%</span></label>
+                <input type="range" min="0" max="100" step="1" value={scrollPos} onChange={(e) => onScroll(Number(e.target.value))} />
+              </div>
+            )}
             <div className={styles.sidebarTitle}>Layers</div>
             <div className={styles.tabGroup}>
               <span className={styles.tabGroupLabel}>Front → back</span>

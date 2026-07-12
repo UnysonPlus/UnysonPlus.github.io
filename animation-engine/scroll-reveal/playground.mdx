@@ -1,0 +1,28 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ Scroll Reveal — the six clip-path wipes plus the Canvas Pixelate In, with live options.
+hide_table_of_contents: true
+---
+
+import ScrollRevealPlayground from '@site/src/components/ScrollRevealPlayground';
+
+# Scroll Reveal — Playground
+
+<ScrollRevealPlayground />
+
+Pick a **reveal on the right**, tweak its options, and hit **Replay** to watch the element un-mask.
+This runs the **real module**: the verbatim clip-path CSS for the six wipe directions (an element
+starts clipped and transitions to full when `is-in` is added) and the Canvas **Pixelate In** runtime
+(draw the image at a size fraction with smoothing off, then step the resolution up). On a live page
+the trigger is a passive scroll-into-view check; here the stage is always in view, so it plays on
+mount and on Replay. The **Sample option** updates as you tweak.
+
+:::info Where it lives
+Scroll Reveal is a **per-element** control — open any element (Section, Column, heading, image, icon
+box…) → **Animations** tab → **Scroll Reveal**. Only the one chosen style's CSS/JS ships, and it
+honours **reduce motion** (shown instantly, fully revealed).
+:::
+
+← Back to [Scroll Reveal](./index.md)

@@ -1,9 +1,17 @@
 ---
 sidebar_position: 4.85
 title: Scroll Text Highlight
+slug: /scroll-text-highlight
 ---
 
 # Scroll Text Highlight
+
+:::tip Try it live
+Scrub the reveal in the **[Scroll Text Highlight playground](./playground.mdx)** — drag the vertical
+scroll on the right to light the words up one at a time, switch between fill / fade / blur / marker,
+and tweak split (word/character), colour, ease and keep-highlighted. It runs the real word-splitter
+and scroll scrub.
+:::
 
 Light up a block of text **word-by-word as the reader scrolls through it** — the "scrollytelling" read where each word goes from muted to full as it passes. Four styles, pure CSS transitions + one passive scroll check, no library.
 

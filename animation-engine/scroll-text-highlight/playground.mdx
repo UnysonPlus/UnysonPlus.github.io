@@ -1,0 +1,29 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ Scroll Text Highlight — scrub words from muted to lit with fill, fade, blur or marker.
+hide_table_of_contents: true
+---
+
+import ScrollTextHighlightPlayground from '@site/src/components/ScrollTextHighlightPlayground';
+
+# Scroll Text Highlight — Playground
+
+<ScrollTextHighlightPlayground />
+
+Pick a **style on the right** and **drag the vertical scroll** on the stage's right edge — each word
+lights up as it passes, exactly as it does on a real page. This runs the **real runtime**: the text
+is split into word (or character) `.sth-w` spans and an `.is-on` class is scrubbed across them by
+scroll progress, with the verbatim per-style CSS (fill / fade / blur / marker). Tweak **split**,
+**highlight colour**, **per-word ease** and **keep-highlighted**. The **Sample option** updates as
+you tweak.
+
+:::info Where it lives
+Scroll Text Highlight is a **per-element** control — open a text element → **Animations** tab →
+**Scroll Text Highlight**. On a live page the progress is the element's passage through the viewport
+(a passive, rAF-throttled scroll check); here the vertical slider stands in for the scroll. It honours
+**reduce motion** (everything shown lit) and loads only on pages that use it.
+:::
+
+← Back to [Scroll Text Highlight](./index.md)

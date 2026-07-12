@@ -32,7 +32,7 @@
   min-height: 320px;
   padding: 2.5rem;
   background:
-    radial-gradient(circle at 1px 1px, var(--ifm-toc-border-color) 1px, transparent 0) 0 0 / 22px 22px;
+    #f1f1f1 radial-gradient(circle at 1px 1px, #d1d1d1 1px, transparent 0) 0 0 / 22px 22px;
   border-bottom: 1px solid var(--ifm-toc-border-color);
 }
 /* Plain block wrapper so the effect element renders in normal flow, not as a
@@ -85,7 +85,7 @@
 .hint {
   margin-top: 1.25rem;
   font-size: 0.78rem;
-  color: var(--ifm-color-emphasis-500);
+  color: #777;
   text-align: center;
   width: 100%;
   position: absolute;

@@ -129,8 +129,6 @@ export default function CursorPlayground() {
           <div ref={stageRef} className={`${styles.stage} mpcur`}>
             <div className={styles.demoRow}>
               <button type="button" className={styles.demoBtn} data-cursor-target>Hover me</button>
-              <button type="button" className={styles.demoBtn} data-cursor-target>Magnetic</button>
-              <span className={styles.demoCard} data-cursor-target>Sticky target</span>
             </div>
             <div className={styles.hint}>move your pointer here · click for ripple/burst · pick a style →</div>
           </div>

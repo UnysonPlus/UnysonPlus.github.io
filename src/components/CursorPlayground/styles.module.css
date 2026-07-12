@@ -25,7 +25,6 @@
 }
 .demoRow { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; justify-content: center; z-index: 5; }
 .demoBtn { border: 1px solid var(--ifm-color-primary); background: var(--ifm-background-surface-color); color: var(--ifm-color-primary); border-radius: 10px; padding: 0.6rem 1.2rem; font-size: 0.9rem; font-weight: 700; }
-.demoCard { border: 1px solid var(--ifm-toc-border-color); background: var(--ifm-background-surface-color); color: #1c1e21; border-radius: 12px; padding: 0.9rem 1.3rem; font-size: 0.9rem; font-weight: 600; }
 .hint { position: absolute; bottom: 0.7rem; width: 100%; text-align: center; font-size: 0.76rem; color: #777; z-index: 2; pointer-events: none; }
 
 /* controls */

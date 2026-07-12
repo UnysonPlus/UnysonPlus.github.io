@@ -31,7 +31,7 @@ particle style, and only the metaball blob engine for a metaball background.
 
 :::info Nothing on pages that don't use it
 A page with no animations ships none of the engine's CSS or JavaScript. The site-wide pieces —
-[custom cursor](./cursor.md), [page transitions](./page-transitions/index.md),
+[custom cursor](./cursor/index.md), [page transitions](./page-transitions/index.md),
 [scroll progress](./scroll-progress/index.md) — load only when you've switched them on, and only the one
 style you picked.
 :::

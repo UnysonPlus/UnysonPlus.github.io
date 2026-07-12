@@ -1,0 +1,34 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ Custom Cursor — try ~34 live cursor styles with size, color, trail, hover-grow, magnetic, blend and click effects.
+hide_table_of_contents: true
+---
+
+import CursorPlayground from '@site/src/components/CursorPlayground';
+
+# Custom Cursor — Playground
+
+<CursorPlayground />
+
+**Move your pointer over the stage** and pick a **style on the right**. This runs the **real
+runtime** — each style's own driver (the shared shape-follower, plus bespoke ones for spring,
+elastic, comet chains, particle pools, swarm trails, rope, sticky and spotlight) and the verbatim
+`.upw-cursor-*` CSS. Tweak **Size / Color / Trail**, toggle **Hover grow**, **Magnetic**, **Blend**
+and **Click ripple / burst**, and hover the demo targets to see grow / magnetic / sticky behaviour.
+The **Sample option** updates as you tweak.
+
+:::info Where it lives
+The Custom Cursor is **site-wide** — **Theme Settings → Site-wide UX → Custom Cursor**. Turn on
+**Enable cursor** (off by default), pick a **Style** and configure it. It auto-disables on touch /
+coarse-pointer devices and honours **reduce motion**, and ships only the one style's CSS + JS.
+:::
+
+:::note A few styles need a live page
+**Magnify Lens**, **Image Reveal**, **Gooey Metaball**, **Ink Brush / Fluid Smear / Ripple Trail**,
+**Word Trail** and **Contextual Label** rely on canvas, SVG filters, real page content or typography
+settings, so they aren't simulated here — they're documented on this page and work on a live site.
+:::
+
+← Back to [Custom Cursor](./index.md)

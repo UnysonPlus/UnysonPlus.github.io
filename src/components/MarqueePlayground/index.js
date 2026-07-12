@@ -102,6 +102,10 @@ function startMarquee(el, mode, s) {
   const curve = Number(s.curve) || 0, text = (el.textContent || '').trim();
   const m = {offset: 0, pxs, reverse, vertical, paused: false, dragging: false, momentum: 0, scrollReactive: s.scroll_reactive === 'yes', apply: () => {}};
   el.classList.add('sc-mq-live');
+  // Direction class (also drives the vertical container height) + vertical text orientation.
+  Array.from(el.classList).forEach((c) => { if (c.indexOf('sc-marquee--') === 0 || c.indexOf('sc-mq--orient-') === 0) el.classList.remove(c); });
+  el.classList.add(`sc-marquee--${mode}`);
+  if (vertical && (s.text_orientation === 'sideways' || s.text_orientation === 'upright')) el.classList.add(`sc-mq--orient-${s.text_orientation}`);
   if (curve !== 0 && !vertical && text) buildCurved(m, el, s);
   else buildStraight(m, el, s);
 
@@ -158,6 +162,7 @@ const GROUPS = [
     {id: 'speed', label: 'Speed', type: 'select', default: 'normal', choices: [['slow', 'Slow'], ['normal', 'Normal'], ['fast', 'Fast']]},
     sl('custom_speed', 'Custom speed (px/s)', 0, 400, 5, 0, '0 = use preset'),
     sl('gap', 'Gap (px)', 0, 200, 4, 40),
+    {id: 'text_orientation', label: 'Text orientation', type: 'select', default: 'horizontal', note: 'Up / Down only', choices: [['horizontal', 'Horizontal (stacked lines)'], ['sideways', 'Vertical — sideways'], ['upright', 'Vertical — upright letters']]},
     {id: 'separator', label: 'Separator', type: 'text', default: ''},
     {id: 'text_style', label: 'Text style', type: 'select', default: 'normal', choices: [['normal', 'Normal'], ['outline', 'Outline (hollow)']]},
   ]],
@@ -182,7 +187,8 @@ const isNum = (id) => (ALL_CONTROLS.find((c) => c.id === id) || {}).type === 'sl
 const defaults = () => Object.fromEntries(ALL_CONTROLS.map((c) => [c.id, c.default]));
 
 function buildPhp(mode, s) {
-  const rows = Object.keys(s).map((k) => {
+  const vertical = mode === 'up' || mode === 'down';
+  const rows = Object.keys(s).filter((k) => k !== 'text_orientation' || vertical).map((k) => {
     const v = isNum(k) ? Number(s[k]) : `'${s[k]}'`;
     return `            '${k}' => ${v},`;
   }).join('\n');
@@ -282,6 +288,11 @@ const MARQUEE_CSS = `
 .sc-marquee.sc-mq-grabbing { cursor: grabbing; user-select: none; }
 .sc-marquee.sc-mq--outline .sc-mq-unit { -webkit-text-fill-color: transparent; -webkit-text-stroke: 1px currentColor; }
 @keyframes sc-mq-bob { 0%,100% { transform: translateY(calc(-1 * var(--mq-amp,0px))); } 50% { transform: translateY(var(--mq-amp,0px)); } }
+/* Vertical text (Up / Down only) — turn the text inside each unit on its side. */
+.sc-marquee.sc-mq--orient-sideways .sc-mq-unit, .sc-marquee.sc-mq--orient-upright .sc-mq-unit { writing-mode: vertical-rl; line-height: 1.15; }
+.sc-marquee.sc-mq--orient-sideways .sc-mq-unit { text-orientation: mixed; }
+.sc-marquee.sc-mq--orient-upright .sc-mq-unit { text-orientation: upright; }
+.sc-marquee.sc-mq--orient-sideways .sc-mq-sep, .sc-marquee.sc-mq--orient-upright .sc-mq-sep { writing-mode: vertical-rl; }
 .mq-demo .mq-unit-text { font-size: 2.1rem; font-weight: 800; letter-spacing: -0.01em; }
 .mq-demo.sc-marquee--up, .mq-demo.sc-marquee--down { height: 220px; }
 `;

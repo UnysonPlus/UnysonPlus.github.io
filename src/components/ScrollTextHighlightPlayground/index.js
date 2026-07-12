@@ -3,7 +3,7 @@
  *
  * Ports the real runtime (modules/scroll-text-highlight): the text is split into word (or character)
  * `.sth-w` spans and an `.is-on` class is scrubbed across them by scroll progress — muted → full,
- * with four styles (fill / fade / blur / marker). On a live page the progress is the element's
+ * with 20 styles (fill, gradient, glow, neon, rise, pill…). On a live page the progress is the element's
  * passage through the viewport; here a vertical "scroll" slider on the right edge of the stage scrubs
  * it. Options map 1:1 to the shortcode atts and the sample updates as you tweak.
  */
@@ -30,16 +30,52 @@ const STH_CSS = `
   border-radius: 2px; padding: 0 1px;
 }
 .sthstage .sc-sth--marker .sth-w.is-on { background-size: 100% 34%; }
+.sthstage .sc-sth--dim .sth-w { opacity: .5; filter: brightness(.5); }
+.sthstage .sc-sth--dim .sth-w.is-on { opacity: 1; filter: brightness(1); }
+.sthstage .sc-sth--desaturate .sth-w { filter: grayscale(1); opacity: .55; }
+.sthstage .sc-sth--desaturate .sth-w.is-on { filter: grayscale(0); opacity: 1; }
+.sthstage .sc-sth--spotlight .sth-w { opacity: .35; filter: blur(1.6px); }
+.sthstage .sc-sth--spotlight .sth-w.is-on { opacity: 1; filter: blur(0); }
+.sthstage .sc-sth--gradient .sth-w { color: #c3ccd8; -webkit-text-fill-color: #c3ccd8; }
+.sthstage .sc-sth--gradient .sth-w.is-on { background: linear-gradient(90deg, var(--sth-active, #2f74e6), #a855f7); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+.sthstage .sc-sth--sweep .sth-w { background-image: linear-gradient(90deg, var(--sth-active, #2f74e6), var(--sth-active, #2f74e6)); background-repeat: no-repeat; background-size: 0% 100%; -webkit-background-clip: text; background-clip: text; color: #c3ccd8; -webkit-text-fill-color: #c3ccd8; }
+.sthstage .sc-sth--sweep .sth-w.is-on { background-size: 100% 100%; }
+.sthstage .sc-sth--glow .sth-w { opacity: .5; transition: text-shadow var(--sth-dur, .5s) ease, opacity var(--sth-dur, .5s) ease; }
+.sthstage .sc-sth--glow .sth-w.is-on { opacity: 1; text-shadow: 0 0 8px var(--sth-active, #4aa3ff), 0 0 2px var(--sth-active, #4aa3ff); }
+.sthstage .sc-sth--neon .sth-w { opacity: .4; }
+.sthstage .sc-sth--neon .sth-w.is-on { opacity: 1; animation: sth-neon .7s both; }
+@keyframes sth-neon { 0% { opacity: .4; text-shadow: none; } 10% { opacity: 1; } 16% { opacity: .5; } 26% { opacity: 1; text-shadow: 0 0 8px var(--sth-active, #4aa3ff); } 32% { opacity: .7; } 100% { opacity: 1; text-shadow: 0 0 8px var(--sth-active, #4aa3ff), 0 0 2px var(--sth-active, #4aa3ff); } }
+.sthstage .sc-sth--rise .sth-w { display: inline-block; opacity: 0; transform: translateY(.35em); transition: transform var(--sth-dur, .5s) ease, opacity var(--sth-dur, .5s) ease; }
+.sthstage .sc-sth--rise .sth-w.is-on { opacity: 1; transform: none; }
+.sthstage .sc-sth--scale .sth-w { display: inline-block; opacity: .3; transform: scale(.8); transition: transform var(--sth-dur, .5s) cubic-bezier(.34,1.56,.64,1), opacity var(--sth-dur, .5s) ease; }
+.sthstage .sc-sth--scale .sth-w.is-on { opacity: 1; transform: scale(1); }
+.sthstage .sc-sth--skew .sth-w { display: inline-block; opacity: .3; transform: skewX(-12deg) translateY(.08em); transition: transform var(--sth-dur, .5s) ease, opacity var(--sth-dur, .5s) ease; }
+.sthstage .sc-sth--skew .sth-w.is-on { opacity: 1; transform: none; }
+.sthstage .sc-sth--track .sth-w { opacity: .3; letter-spacing: .28em; transition: letter-spacing var(--sth-dur, .5s) ease, opacity var(--sth-dur, .5s) ease; }
+.sthstage .sc-sth--track .sth-w.is-on { opacity: 1; letter-spacing: normal; }
+.sthstage .sc-sth--underline .sth-w { background-image: linear-gradient(var(--sth-active, #2f74e6), var(--sth-active, #2f74e6)); background-repeat: no-repeat; background-position: 0 100%; background-size: 0% 2px; opacity: .65; }
+.sthstage .sc-sth--underline .sth-w.is-on { background-size: 100% 2px; opacity: 1; }
+.sthstage .sc-sth--pill .sth-w { border-radius: 6px; padding: 0 3px; opacity: .7; transition: background-color var(--sth-dur, .5s) ease, opacity var(--sth-dur, .5s) ease; }
+.sthstage .sc-sth--pill .sth-w.is-on { opacity: 1; background-color: var(--sth-active, #ffe08a); }
+.sthstage .sc-sth--outline .sth-w { -webkit-text-fill-color: transparent; -webkit-text-stroke: 1px var(--sth-active, #2f74e6); opacity: .8; transition: -webkit-text-fill-color var(--sth-dur, .5s) ease, opacity var(--sth-dur, .5s) ease; }
+.sthstage .sc-sth--outline .sth-w.is-on { -webkit-text-fill-color: var(--sth-active, #2f74e6); opacity: 1; }
+.sthstage .sc-sth--strike .sth-w { background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat; background-position: 100% 50%; background-size: 100% 2px; opacity: .6; }
+.sthstage .sc-sth--strike .sth-w.is-on { background-size: 0% 2px; opacity: 1; }
+.sthstage .sc-sth--shimmer .sth-w { opacity: .5; }
+.sthstage .sc-sth--shimmer .sth-w.is-on { opacity: 1; animation: sth-shimmer .9s ease; }
+@keyframes sth-shimmer { 0% { filter: brightness(1); } 50% { filter: brightness(1.65); } 100% { filter: brightness(1); } }
 `;
 
 const SAMPLE = 'Great typography guides the eye. As you scroll, each word lights up in turn — a simple, focused reading rhythm that keeps attention exactly where you want it.';
 
-const STYLES = [
-  ['fill', 'Fill (colour)'],
-  ['fade', 'Fade (opacity)'],
-  ['blur', 'Blur to sharp'],
-  ['marker', 'Marker sweep'],
+const GROUPS = [
+  ['Colour', [['fill', 'Fill'], ['gradient', 'Gradient fill'], ['sweep', 'Colour sweep'], ['desaturate', 'Greyscale → colour'], ['outline', 'Outline to fill']]],
+  ['Opacity & focus', [['fade', 'Fade'], ['dim', 'Dim to bright'], ['blur', 'Blur to sharp'], ['spotlight', 'Spotlight']]],
+  ['Glow', [['glow', 'Glow'], ['neon', 'Neon flicker'], ['shimmer', 'Shimmer']]],
+  ['Motion', [['rise', 'Rise up'], ['scale', 'Scale pop'], ['skew', 'Skew settle'], ['track', 'Track in']]],
+  ['Decoration', [['marker', 'Marker sweep'], ['pill', 'Highlight pill'], ['underline', 'Underline grow'], ['strike', 'Strike clear']]],
 ];
+const STYLES = GROUPS.flatMap(([, ks]) => ks);
 const DEFAULTS = {split: 'word', active_color: '#2f74e6', duration: 0.5, once: 'yes'};
 
 function buildPhp(mode, o) {
@@ -149,15 +185,17 @@ export default function ScrollTextHighlightPlayground() {
         <aside className={styles.sidebar}>
           <div className={styles.sidebarInner}>
             <div className={styles.sidebarTitle}>Style</div>
-            <div className={styles.tabGroup}>
-              <span className={styles.tabGroupLabel}>Highlight</span>
-              <div className={styles.tabPills}>
-                {STYLES.map(([k, label]) => (
-                  <button key={k} type="button" className={k === mode ? styles.tabActive : styles.tab} onClick={() => setMode(k)}>{label}</button>
-                ))}
+            {GROUPS.map(([label, keys]) => (
+              <div className={styles.tabGroup} key={label}>
+                <span className={styles.tabGroupLabel}>{label}</span>
+                <div className={styles.tabPills}>
+                  {keys.map(([k, l]) => (
+                    <button key={k} type="button" className={k === mode ? styles.tabActive : styles.tab} onClick={() => setMode(k)}>{l}</button>
+                  ))}
+                </div>
               </div>
-            </div>
-            <p className={styles.tip}>Marker &amp; Fill use the highlight colour; Fade &amp; Blur ignore it.</p>
+            ))}
+            <p className={styles.tip}>Colour / decoration styles use the highlight colour; opacity, focus &amp; motion styles ignore it.</p>
           </div>
         </aside>
       </div>

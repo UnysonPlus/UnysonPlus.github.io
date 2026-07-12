@@ -1,9 +1,16 @@
 ---
 sidebar_position: 10
 title: Model Viewer (3D)
+slug: /model-viewer
 ---
 
 # Model Viewer
+
+:::tip Try it live
+Orbit a real 3D model in the **[Model Viewer playground](./playground.mdx)** — drag to rotate a
+sample product model, toggle auto-rotate, pick a starting angle and field of view, and tune the
+lighting (environment, tone mapping, exposure, shadows). It runs Google's real `<model-viewer>`.
+:::
 
 An interactive **3D model** (glTF / GLB) visitors can orbit, zoom and inspect — with auto-rotate, image-based lighting, a ground shadow, a poster placeholder, hotspots and optional **AR**. Powered by Google's `<model-viewer>` (vendored, loaded only when used).
 

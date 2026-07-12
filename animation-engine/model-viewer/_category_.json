@@ -1,0 +1,8 @@
+{
+  "label": "Model Viewer (3D)",
+  "position": 10,
+  "link": {
+    "type": "doc",
+    "id": "model-viewer/index"
+  }
+}

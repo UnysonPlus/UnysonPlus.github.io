@@ -1,0 +1,33 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ Model Viewer — orbit a real 3D glTF/GLB model with camera and lighting controls.
+hide_table_of_contents: true
+---
+
+import BrowserOnly from '@docusaurus/BrowserOnly';
+
+# Model Viewer — Playground
+
+<BrowserOnly fallback={<div style={{height: 460, borderRadius: 12, background: '#dfe4ec'}} />}>
+  {() => {
+    const ModelViewerPlayground = require('@site/src/components/ModelViewerPlayground').default;
+    return <ModelViewerPlayground />;
+  }}
+</BrowserOnly>
+
+**Drag to orbit** the model (scroll / pinch to zoom). This runs the **real** Google `<model-viewer>`
+web component — the exact runtime the shortcode uses — on a bundled sample model. Toggle
+**auto-rotate**, pick a **starting angle** and **field of view**, and tune the **lighting**
+(environment, tone mapping, exposure, ground shadows). Every option maps 1:1 to a `<model-viewer>`
+attribute, so the **Sample option** below is what you'd set in the builder.
+
+:::info Where it lives
+Model Viewer is a **page-builder element** (builder palette → **Media Elements**) — paste a **.glb /
+.gltf** URL (or pick from Media). On a real device it also offers **AR** (view the model in your
+space). The web component is vendored and loads **only** on pages that use it; it honours **reduce
+motion** (no auto-spin) and shows a poster while the model streams in.
+:::
+
+← Back to [Model Viewer](./index.md)

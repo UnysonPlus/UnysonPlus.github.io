@@ -1,9 +1,17 @@
 ---
 sidebar_position: 8.7
 title: Scrollytelling
+slug: /scrollytelling
 ---
 
 # Scrollytelling
+
+:::tip Try it live
+Scrub a pinned-media story in the **[Scrollytelling playground](./playground.mdx)** — drag the
+vertical scroll and the pinned panel swaps to each step; try all 23 CSS transitions (crossfade, zoom,
+slide, flip, cube, iris, blinds, glitch…) and tune the side, transition, intensity, direction and
+progress. It runs the real pin + per-step layer transitions.
+:::
 
 The Apple / Stripe / Linear scroll pattern (also the classic Codrops "image pixel loading" reveal): **pin one column of a Section as a media panel** while the other column's **steps scroll past**, and the pinned media **transitions to match the active step**. It's the most recognizable "premium site" scroll device — a pinned visual that narrates as you read.
 

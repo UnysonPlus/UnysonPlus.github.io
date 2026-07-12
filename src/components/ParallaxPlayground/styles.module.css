@@ -19,8 +19,12 @@
   .sidebarInner { position: static; inset: auto; overflow-y: auto; max-height: 260px; }
 }
 
-/* scene stage */
-.stage { position: relative; overflow: hidden; height: 420px; background: #0e1116; border-bottom: 1px solid var(--ifm-toc-border-color); cursor: crosshair; }
+/* scene stage — a scroll viewport: the scene sits between spacers so it scrolls through the view */
+.stage { position: relative; overflow-y: auto; overflow-x: hidden; height: 420px; background: #0e1116; border-bottom: 1px solid var(--ifm-toc-border-color); cursor: crosshair; }
+.stageNoScroll { overflow: hidden; }
+.scrollInner { position: relative; }
+.pad { height: 260px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.35); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; }
+.scene { position: relative; height: 420px; overflow: hidden; }
 .layer { position: absolute; inset: 0; will-change: transform; }
 .layerSel { outline: 2px dashed rgba(255,255,255,0.65); outline-offset: -2px; z-index: 20; }
 

@@ -87,23 +87,23 @@ export default function ParallaxPlayground() {
   const [scene, setScene] = useState(SCENE_DEFAULTS);
   const [layers, setLayers] = useState(layerDefaults);
   const [sel, setSel] = useState('card');
-  const [scrollPos, setScrollPos] = useState(50);
   const stageRef = useRef(null);
-  const scrRef = useRef(0);
+  const sceneRef = useRef(null);
 
   const setS = (k, v) => setScene((s) => ({...s, [k]: v}));
   const setL = (k, v) => setLayers((ls) => ({...ls, [sel]: {...ls[sel], [k]: v}}));
   const lo = layers[sel];
 
-  // Runtime — ported from parallax.js, single scene = the stage.
+  // Runtime — ported from parallax.js. The scene sits inside a scroll viewport (the stage): the
+  // pointer drives mx/my, and real scrolling drives `scr` from the scene's position in the viewport
+  // (mirroring the plugin's updateScroll(): scr = (vh/2 - sceneCenter) / (vh/2 + sceneH/2)).
   useEffect(() => {
-    const stage = stageRef.current;
-    if (!stage) return undefined;
-    const els = Array.prototype.slice.call(stage.querySelectorAll('[data-pl-depth]'));
+    const stage = stageRef.current, scene0 = sceneRef.current;
+    if (!stage || !scene0) return undefined;
+    const els = Array.prototype.slice.call(scene0.querySelectorAll('[data-pl-depth]'));
     const source = scene.source;
     const intensity = scene.intensity;
     const ease = easeFrom(scene.smoothing);
-    let rect = stage.getBoundingClientRect();
     let tmx = 0, tmy = 0, mx = 0, my = 0;
     let raf = 0, cancelled = false;
 
@@ -118,18 +118,25 @@ export default function ParallaxPlayground() {
 
     const onMove = (e) => {
       if (source === 'scroll') return;
-      rect = stage.getBoundingClientRect();
-      tmx = clamp(((e.clientX - rect.left) / rect.width - 0.5) * 2, -1, 1);
-      tmy = clamp(((e.clientY - rect.top) / rect.height - 0.5) * 2, -1, 1);
+      const r = scene0.getBoundingClientRect();
+      tmx = clamp(((e.clientX - r.left) / r.width - 0.5) * 2, -1, 1);
+      tmy = clamp(((e.clientY - r.top) / r.height - 0.5) * 2, -1, 1);
     };
     const onLeave = () => { tmx = 0; tmy = 0; };
     stage.addEventListener('pointermove', onMove, {passive: true});
     stage.addEventListener('pointerleave', onLeave);
 
+    function scrollFraction() {
+      if (source === 'mouse') return 0;
+      const s = stage.getBoundingClientRect(), sc = scene0.getBoundingClientRect();
+      const cy = sc.top + sc.height / 2 - s.top; // scene centre relative to the stage viewport top
+      return clamp((s.height / 2 - cy) / (s.height / 2 + sc.height / 2), -1, 1);
+    }
+
     const tick = () => {
       if (cancelled) return;
       mx += (tmx - mx) * ease; my += (tmy - my) * ease;
-      const scr = source !== 'mouse' ? scrRef.current : 0;
+      const scr = scrollFraction();
       const useMx = source !== 'scroll' ? mx : 0;
       const useMy = source !== 'scroll' ? my : 0;
       for (let i = 0; i < items.length; i++) {
@@ -148,8 +155,12 @@ export default function ParallaxPlayground() {
     return () => { cancelled = true; cancelAnimationFrame(raf); stage.removeEventListener('pointermove', onMove); stage.removeEventListener('pointerleave', onLeave); };
   }, [scene, layers]);
 
-  const onScroll = (v) => { setScrollPos(v); scrRef.current = (v / 100 - 0.5) * 2; };
-  useEffect(() => { scrRef.current = (scrollPos / 100 - 0.5) * 2; }, []); // seed
+  // Centre the scene in the scroll viewport on mount + whenever the source changes.
+  useEffect(() => {
+    const stage = stageRef.current, scene0 = sceneRef.current;
+    if (!stage || !scene0) return;
+    stage.scrollTop = Math.max(0, scene0.offsetTop - (stage.clientHeight - scene0.clientHeight) / 2);
+  }, [scene.source]);
 
   const php = useMemo(() => buildPhp(scene, sel, lo), [scene, sel, lo]);
 
@@ -157,27 +168,34 @@ export default function ParallaxPlayground() {
     <div className={styles.playground}>
       <div className={styles.layout}>
         <div className={styles.main}>
-          <div ref={stageRef} className={styles.stage}
-            data-pl-scene={scene.source} data-pl-intensity={scene.intensity} data-pl-smooth={scene.smoothing}>
-            {LAYERS.map((l) => {
-              const o = layers[l.id];
-              return (
-                <div key={l.id} className={`${styles.layer} ${sel === l.id ? styles.layerSel : ''}`}
-                  data-pl-depth={o.depth} data-pl-axis={o.axis} data-pl-dir={o.direction}
-                  data-pl-scale={o.scale_far === 'yes' ? '1' : '0'} data-pl-blur={o.blur_far === 'yes' ? '1' : '0'}>
-                  <LayerArt id={l.id} />
-                </div>
-              );
-            })}
+          <div ref={stageRef} className={`${styles.stage} ${scene.source === 'mouse' ? styles.stageNoScroll : ''}`}>
+            <div className={styles.scrollInner}>
+              {scene.source !== 'mouse' && <div className={styles.pad}>↕ scroll</div>}
+              <div ref={sceneRef} className={styles.scene}
+                data-pl-scene={scene.source} data-pl-intensity={scene.intensity} data-pl-smooth={scene.smoothing}>
+                {LAYERS.map((l) => {
+                  const o = layers[l.id];
+                  return (
+                    <div key={l.id} className={`${styles.layer} ${sel === l.id ? styles.layerSel : ''}`}
+                      data-pl-depth={o.depth} data-pl-axis={o.axis} data-pl-dir={o.direction}
+                      data-pl-scale={o.scale_far === 'yes' ? '1' : '0'} data-pl-blur={o.blur_far === 'yes' ? '1' : '0'}>
+                      <LayerArt id={l.id} />
+                    </div>
+                  );
+                })}
+              </div>
+              {scene.source !== 'mouse' && <div className={styles.pad} />}
+            </div>
           </div>
 
           <div className={styles.demoBar}>
-            {scene.source === 'mouse' && <span className={styles.lbl}>Move your pointer over the scene — layers drift by depth.</span>}
-            {scene.source !== 'mouse' && (<>
-              <span className={styles.lbl}>Scroll position</span>
-              <input type="range" min="0" max="100" step="1" value={scrollPos} onChange={(e) => onScroll(Number(e.target.value))} />
-              <span className={styles.pct}>{scrollPos}%</span>
-            </>)}
+            <span className={styles.lbl}>
+              {scene.source === 'mouse'
+                ? 'Move your pointer over the scene — layers drift by depth.'
+                : scene.source === 'scroll'
+                  ? 'Scroll inside the stage — layers drift vertically by depth.'
+                  : 'Move your pointer and scroll inside the stage — layers drift by depth.'}
+            </span>
           </div>
 
           <div className={styles.controls}>

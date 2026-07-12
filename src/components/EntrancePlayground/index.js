@@ -141,17 +141,19 @@ export default function EntrancePlayground() {
         </div>
 
         <aside className={styles.sidebar}>
-          <div className={styles.sidebarTitle}>Effect</div>
-          {GROUPS.map(([label, ks]) => (
-            <div className={styles.tabGroup} key={label}>
-              <span className={styles.tabGroupLabel}>{label}</span>
-              <div className={styles.tabPills}>
-                {ks.map(([k, l]) => (
-                  <button key={k} type="button" className={k === s.effect ? styles.tabActive : styles.tab} onClick={() => pick(k)}>{l}</button>
-                ))}
+          <div className={styles.sidebarInner}>
+            <div className={styles.sidebarTitle}>Effect</div>
+            {GROUPS.map(([label, ks]) => (
+              <div className={styles.tabGroup} key={label}>
+                <span className={styles.tabGroupLabel}>{label}</span>
+                <div className={styles.tabPills}>
+                  {ks.map(([k, l]) => (
+                    <button key={k} type="button" className={k === s.effect ? styles.tabActive : styles.tab} onClick={() => pick(k)}>{l}</button>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </aside>
       </div>
 

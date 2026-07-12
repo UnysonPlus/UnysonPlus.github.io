@@ -8,12 +8,12 @@ slug: /scroll-text-highlight
 
 :::tip Try it live
 Scrub the reveal in the **[Scroll Text Highlight playground](./playground.mdx)** — drag the vertical
-scroll on the right to light the words up one at a time, switch between fill / fade / blur / marker,
-and tweak split (word/character), colour, ease and keep-highlighted. It runs the real word-splitter
-and scroll scrub.
+scroll on the right to light the words up one at a time, switch between all **20 styles** (fill,
+gradient, sweep, glow, neon, rise, scale, pill, underline…), and tweak split (word/character),
+colour, ease and keep-highlighted. It runs the real word-splitter and scroll scrub.
 :::
 
-Light up a block of text **word-by-word as the reader scrolls through it** — the "scrollytelling" read where each word goes from muted to full as it passes. Four styles, pure CSS transitions + one passive scroll check, no library.
+Light up a block of text **word-by-word as the reader scrolls through it** — the "scrollytelling" read where each word goes from muted to full as it passes. **20 styles**, pure CSS transitions + one passive scroll check, no library.
 
 ## Where to find it
 
@@ -23,19 +23,22 @@ Global on/off: **Theme Settings → Site-wide UX → Effects → Enable Scroll T
 
 ## Styles
 
-| Style | What it does |
+The **20 styles**, grouped by how they light a word up:
+
+| Group | Styles |
 | --- | --- |
-| **Fill** | Words go from a dimmed version of the text to full — optionally to a **highlight colour** you choose. |
-| **Fade** | Words fade up from low opacity to full. |
-| **Blur to sharp** | Words start blurred and come into focus. |
-| **Marker sweep** | A highlighter bar sweeps in behind each word (uses the highlight colour). |
+| **Colour** | **Fill** (dim → full, optionally to a highlight colour), **Gradient fill**, **Colour sweep** (a colour wipes across the letters), **Greyscale → colour**, **Outline to fill** (stroked → filled). |
+| **Opacity & focus** | **Fade** (opacity up), **Dim to bright**, **Blur to sharp**, **Spotlight** (a soft blur snaps into focus). |
+| **Glow** | **Glow**, **Neon flicker** (a neon-sign flicker-on), **Shimmer** (a brightness pulse). |
+| **Motion** | **Rise up**, **Scale pop**, **Skew settle**, **Track in** (letter-spacing tightens). |
+| **Decoration** | **Marker sweep** (highlighter bar), **Highlight pill** (rounded background), **Underline grow**, **Strike clear** (a strikethrough retracts as it lights). |
 
 ## Options
 
 | Option | Notes |
 | --- | --- |
 | **Reveal by** | Word (default) or Character — light up one word, or one letter, at a time. |
-| **Highlight colour** | Preset (theme palette) or custom — the lit colour for Fill and the marker for Marker. |
+| **Highlight colour** | Preset (theme palette) or custom — the lit colour used by the colour / decoration styles (Fill, Gradient, Sweep, Marker, Pill, Underline, Outline, Glow, Neon). The opacity, focus and motion styles ignore it. |
 | **Per-word ease** | How softly each word transitions on. |
 | **Keep highlighted** | Stay lit once revealed (off = re-dims when scrolled back up). |
 

@@ -17,20 +17,27 @@
   .sidebarInner { position: static; inset: auto; overflow-y: auto; max-height: 260px; }
 }
 
-/* stage */
+/* stage — a real scroll viewport: the card starts below the fold and reveals on scroll */
 .stage {
-  position: relative; overflow: hidden; min-height: 380px; display: flex; align-items: center; justify-content: center;
-  padding: 2.5rem 2rem;
+  position: relative; height: 440px; overflow-y: auto; overflow-x: hidden;
   background: #f1f1f1 radial-gradient(circle at 1px 1px, #d1d1d1 1px, transparent 0) 0 0 / 22px 22px;
-  border-bottom: 1px solid var(--ifm-toc-border-color);
+  border-bottom: 1px solid var(--ifm-toc-border-color); scroll-behavior: smooth;
 }
+.prompt { height: 440px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; color: #888; font-size: 0.95rem; font-weight: 600; }
+.arrow { font-size: 2rem; line-height: 1; animation: srbounce 1.4s ease-in-out infinite; }
+@keyframes srbounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+.cardWrap { display: flex; justify-content: center; padding: 1rem 2rem; }
+.spacer { height: 320px; }
 .card { position: relative; width: 340px; max-width: 100%; border-radius: 14px; overflow: hidden; background: var(--ifm-background-surface-color); border: 1px solid var(--ifm-toc-border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
 .cardImg { display: block; width: 100%; height: auto; }
 .cardBody { padding: 1rem 1.2rem 1.2rem; }
 .cardBody h4 { margin: 0 0 0.3rem; font-size: 1.1rem; color: #1c1e21; }
 .cardBody p { margin: 0; font-size: 0.88rem; color: #555; }
-.replay { position: absolute; top: 0.75rem; right: 0.75rem; border: 1px solid var(--ifm-toc-border-color); background: var(--ifm-background-surface-color); color: var(--ifm-color-emphasis-800); border-radius: 8px; padding: 0.3rem 0.7rem; font-size: 0.78rem; font-weight: 600; cursor: pointer; z-index: 5; }
-.hint { position: absolute; bottom: 0.7rem; width: 100%; left: 0; text-align: center; font-size: 0.76rem; color: #777; pointer-events: none; }
+
+/* demo bar under the stage */
+.demoBar { display: flex; align-items: center; gap: 1rem; padding: 0.85rem 1.5rem; border-bottom: 1px solid var(--ifm-toc-border-color); flex-wrap: wrap; }
+.demoBar .lbl { font-size: 0.82rem; font-weight: 600; color: var(--ifm-color-emphasis-700); }
+.replay { margin-left: auto; border: 1px solid var(--ifm-toc-border-color); background: var(--ifm-background-surface-color); color: var(--ifm-color-emphasis-800); border-radius: 8px; padding: 0.35rem 0.85rem; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
 
 /* controls */
 .controls { padding: 1.25rem 1.5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 0 2.2rem; align-items: start; }

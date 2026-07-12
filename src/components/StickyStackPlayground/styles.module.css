@@ -1,0 +1,62 @@
+/* Interactive Sticky Card Stack playground — two-pane (main + style sidebar). */
+.playground { border: 1px solid var(--ifm-toc-border-color); border-radius: 12px; overflow: hidden; margin: 1.5rem 0 2rem; background: var(--ifm-card-background-color); }
+
+.layout { display: flex; align-items: stretch; }
+.main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
+.sidebar { flex: 0 0 232px; border-left: 1px solid var(--ifm-toc-border-color); background: var(--ifm-color-emphasis-100); position: relative; overflow: hidden; }
+.sidebarInner { position: absolute; inset: 0; overflow-y: auto; padding: 1rem 1rem 1.25rem; }
+.sidebarTitle { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--ifm-color-emphasis-700); margin-bottom: 0.75rem; }
+.tabGroup { margin-bottom: 0.85rem; }
+.tabGroupLabel { display: block; font-size: 0.64rem; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 700; color: var(--ifm-color-emphasis-600); margin-bottom: 0.45rem; }
+.tabPills { display: flex; flex-direction: column; gap: 0.35rem; }
+.tab, .tabActive { border: 1px solid var(--ifm-toc-border-color); border-radius: 8px; padding: 0.4rem 0.7rem; font-size: 0.8rem; font-weight: 600; cursor: pointer; background: var(--ifm-background-surface-color); color: var(--ifm-color-emphasis-800); text-align: left; }
+.tabActive { background: var(--ifm-color-primary); border-color: var(--ifm-color-primary); color: #fff; }
+.tip { margin: 0.75rem 0 0; font-size: 0.74rem; color: var(--ifm-color-emphasis-600); line-height: 1.4; }
+@media (max-width: 800px) {
+  .layout { flex-direction: column-reverse; }
+  .sidebar { flex-basis: auto; width: 100%; border-left: none; border-bottom: 1px solid var(--ifm-toc-border-color); position: static; overflow: visible; }
+  .sidebarInner { position: static; inset: auto; overflow-y: auto; max-height: 260px; }
+}
+
+/* stage — a scroll viewport holding the sticky cards */
+.stage {
+  position: relative; height: 460px; overflow: hidden;
+  background: #f1f1f1 radial-gradient(circle at 1px 1px, #d1d1d1 1px, transparent 0) 0 0 / 22px 22px;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+.scroller { position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; padding: 0 3.5rem 0 2rem; }
+.card {
+  height: 180px; margin-bottom: 120px; border-radius: 16px; color: #fff;
+  display: flex; align-items: center; justify-content: center; gap: 1rem;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.28); border: 1px solid rgba(255,255,255,0.18);
+  transition: transform .12s linear, opacity .12s linear, filter .12s linear; will-change: transform, opacity, filter;
+}
+.cardNum { font-size: 1.6rem; font-weight: 800; opacity: 0.55; font-variant-numeric: tabular-nums; }
+.cardTitle { font-size: 2rem; font-weight: 800; }
+.spacer { height: 240px; }
+
+/* vertical "scroll" slider on the right edge */
+.vscroll {
+  position: absolute; top: 18px; bottom: 18px; right: 12px; z-index: 30;
+  writing-mode: vertical-lr; -webkit-appearance: slider-vertical; appearance: slider-vertical;
+  width: 10px; margin: 0; accent-color: var(--ifm-color-primary); cursor: ns-resize;
+  background: rgba(0,0,0,0.08); border-radius: 6px;
+}
+
+/* demo bar */
+.demoBar { display: flex; align-items: center; gap: 1rem; padding: 0.85rem 1.5rem; border-bottom: 1px solid var(--ifm-toc-border-color); }
+.demoBar .lbl { font-size: 0.82rem; font-weight: 600; color: var(--ifm-color-emphasis-700); }
+
+/* controls */
+.controls { padding: 1.25rem 1.5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 0 2.2rem; align-items: start; }
+.controls h5 { grid-column: 1 / -1; margin: 0 0 1rem; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ifm-color-emphasis-600); }
+.control { margin-bottom: 0.95rem; }
+.control label { display: flex; justify-content: space-between; font-size: 0.84rem; font-weight: 600; margin-bottom: 0.4rem; }
+.control label span { color: var(--ifm-color-primary); font-variant-numeric: tabular-nums; }
+.control input[type='range'] { width: 100%; accent-color: var(--ifm-color-primary); }
+
+/* code */
+.code { border-top: 1px solid var(--ifm-toc-border-color); }
+.code > div:first-child { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ifm-color-emphasis-600); padding: 0.75rem 1.5rem 0; }
+.code pre { margin: 0.5rem 1.5rem 0.5rem; background: var(--ifm-color-emphasis-100); border-radius: 8px; padding: 1rem; font-size: 0.82rem; overflow-x: auto; }
+.note { margin: 0 1.5rem 1.25rem; font-size: 0.78rem; color: var(--ifm-color-emphasis-600); }

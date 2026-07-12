@@ -1,0 +1,27 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ Sticky Card Stack — the deck-of-cards scroll effect in 11 styles.
+hide_table_of_contents: true
+---
+
+import StickyStackPlayground from '@site/src/components/StickyStackPlayground';
+
+# Sticky Card Stack — Playground
+
+<StickyStackPlayground />
+
+Pick a **style on the right** and **drag the vertical scroll** on the stage's right edge — each card
+pins in turn while the covered cards transform, exactly as on a real page. This runs the **real
+runtime**: the cards are `position: sticky` with staggered tops, and the same `cover(i)` measure
+(how far each card is covered by the next) drives the per-style transform. Tune **pin offset**,
+**stagger** and **intensity**. The **Sample option** updates as you tweak.
+
+:::info Where it lives
+Sticky Card Stack is a **Section-level** control — Section → **Animations** tab → **Sticky Card
+Stack**. Build the Section with 2+ full-width columns as the cards. Pure CSS + one passive scroll
+listener; it honours **reduce motion** (the cards just stack) and loads only on pages that use it.
+:::
+
+← Back to [Sticky Card Stack](./index.md)

@@ -26,7 +26,7 @@ Open any Section, Column or element → **Animations** tab:
 | [Hover Interactions](./hover/index.md) | Pointer-driven effects — magnetic pull, 3D tilt, spotlight, image reveal, and more |
 | [Physics Effects](./physics/index.md) | Spring/verlet motion — drag & throw, float, gravity, jelly, and 22 others |
 | [Text Effects](./text-effects/index.md) | Kinetic typography — split reveals, scramble, typewriter, gradient, glitch, count-up, and dozens more |
-| [Parallax Depth Layers](./parallax.md) | Multi-layer pointer/scroll depth — mark a Scene, give each child a Depth |
+| [Parallax Depth Layers](./parallax/index.md) | Multi-layer pointer/scroll depth — mark a Scene, give each child a Depth |
 | [Marquee](./marquee/index.md) | A seamless ticker for any element's content — running text (incl. a true curved arc), logos, images; warp, drag, scroll-reactive |
 | [3D Flip Card](./flip-card/index.md) | Flip any element in 3D to a back face — seven styles (flip, cube, fold, door, diagonal, pop, carousel); hover / click / scroll / auto |
 | [Scroll Text Highlight](./scroll-text-highlight.md) | Light up text word-by-word as it scrolls through view — fill, fade, blur or marker sweep |

@@ -55,6 +55,7 @@ The Convert screen has three tabs:
 
 ## Read next
 
+- **[Full conversion — start to finish](./full-conversion.md)** — the complete picture: what to install once, the inputs to gather, and both conversion lanes tied together. **Start here.**
 - **[How it works](./how-it-works.md)** — the architecture and the conversion algorithm.
 - **[Convert from a URL](./convert-from-url.md)** — the live‑site path, step by step.
 - **[Convert from a file](./convert-from-file.md)** — Google Stitch & other exports.

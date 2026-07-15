@@ -32,3 +32,18 @@ live-editor:
   label: Live editor
   permalink: /live-editor
   description: The front-end live page editor
+
+shortcodes:
+  label: Shortcodes
+  permalink: /shortcodes
+  description: The shortcode / element library and its rendering
+
+back-compat:
+  label: Back-compat
+  permalink: /back-compat
+  description: Preserving already-saved content across option changes
+
+performance:
+  label: Performance
+  permalink: /performance
+  description: Asset loading, output size and runtime cost

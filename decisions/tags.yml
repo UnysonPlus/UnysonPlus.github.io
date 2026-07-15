@@ -1,0 +1,24 @@
+option-types:
+  label: Option types
+  permalink: /option-types
+  description: Decisions about the framework's option-type controls
+
+color:
+  label: Color
+  permalink: /color
+  description: Color pickers, palettes and presets
+
+typography:
+  label: Typography
+  permalink: /typography
+  description: Fonts, sizing and the typography control
+
+architecture:
+  label: Architecture
+  permalink: /architecture
+  description: Framework-wide structure and conventions
+
+naming:
+  label: Naming
+  permalink: /naming
+  description: What we call things, and why

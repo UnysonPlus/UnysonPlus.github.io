@@ -123,6 +123,26 @@ const config = {
         editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
       },
     ],
+    // Design Decisions — a dated log of WHY the framework works the way it does
+    // (the reasoning behind key architecture/design choices). A second, separate
+    // blog instance so it stays distinct from the "News" release feed.
+    [
+      '@docusaurus/plugin-content-blog',
+      {
+        id: 'decisions',
+        path: 'decisions',
+        routeBasePath: 'decisions',
+        blogTitle: 'Design Decisions',
+        blogDescription: 'Why Unyson+ works the way it does — the reasoning behind key design and architecture decisions.',
+        blogSidebarTitle: 'All decisions',
+        blogSidebarCount: 'ALL',
+        showReadingTime: true,
+        onInlineTags: 'warn',
+        onInlineAuthors: 'warn',
+        onUntruncatedBlogPosts: 'ignore',
+        editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
+      },
+    ],
   ],
 
   themeConfig:
@@ -169,6 +189,7 @@ const config = {
             position: 'left',
             label: 'Guides',
           },
+          {to: '/decisions', label: 'Design Decisions', position: 'left'},
           {to: '/blog', label: 'News', position: 'left'},
           {
             href: 'https://github.com/UnysonPlus',

@@ -22,3 +22,13 @@ naming:
   label: Naming
   permalink: /naming
   description: What we call things, and why
+
+page-builder:
+  label: Page builder
+  permalink: /page-builder
+  description: The page builder, its items, and the shortcode grid
+
+live-editor:
+  label: Live editor
+  permalink: /live-editor
+  description: The front-end live page editor

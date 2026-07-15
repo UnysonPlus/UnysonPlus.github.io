@@ -50,6 +50,10 @@ const config = {
         indexDocs: true,
         indexBlog: true,
         docsRouteBasePath: ['/docs', '/animation-engine', '/theme', '/guides'],
+        // Index BOTH blog instances: the News blog (/blog) and the Design Decisions blog
+        // (/decisions). Without this the plugin only indexes the default /blog, so decisions
+        // posts never show up in search.
+        blogRouteBasePath: ['/blog', '/decisions'],
         highlightSearchTermsOnTargetPage: true,
         explicitSearchResultPath: true,
       }),

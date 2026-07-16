@@ -58,17 +58,22 @@ harmless back-compat and be retired later — the important thing is you can now
 
 ## Update — retiring the redundant None tiles
 
-Once deselect landed, the visible `None` tile became redundant clutter in every popover image-picker
-(Background Pattern plus ~11 Animation Engine effects). The obvious move was to delete the `none`/`off`
-choice from each module — but that's misleading: `none`/`off` is *also* the default value, the picker's
-`value`, the reveal-map key, and every consumer's off-check, so it never actually leaves the code. "Removing
-the choice" only ever meant removing the **tile**.
+Once deselect landed, the visible `None` tile became redundant clutter in the popover image-pickers. The key
+caution: `none`/`off` is *also* the default value, the picker's `value`, the reveal-map key, and every
+consumer's off-check — so it must **not** actually leave the code. "Removing the choice" only ever meant
+removing the **tile**, while keeping `none`/`off` as the referenced off-sentinel.
 
-So rather than 25-odd delicate edits across 11 differently-structured modules (each with its own picker/reveal
-shape), the tile is hidden in **one** place — the image-picker option type, in popover contexts, walks the
-library's own option objects and hides any tile whose value is `none`/`off`. One lever, group-agnostic (works
-with the tabbed/optgroup layouts), zero risk to module logic, and it keeps the value model intact: `none`/`off`
-stays the internal off-sentinel, so the default state, a deselect, and the (now hidden) tile all resolve to the
-same value. The result is exactly the ask — no redundant None tile in any popover — without scattering the
-change across the engine, and it's *more* internally consistent than a true removal would have been (a true
-removal would leave deselect yielding `''` while defaults still said `none`).
+Auditing first paid off: of the popover effect pickers, only **four** (Background Effect, Physics, Scroll
+Motion, Text Effects) plus the Background Pattern picker actually rendered an explicit `None`/`off` *tile*
+(a literal `'none' => $helper(...)` choice). The other seven (Confetti, Marquee, Motion Path, Parallax,
+Scroll Reveal, Scroll Text Highlight, Scrollytelling) build their tiles from a loop whose source has **no**
+`none`/`off` entry — they never had a None tile; `none`/`off` there is purely the sentinel. Deleting it would
+have *broken* the off-state, so those were left alone.
+
+For the five that did have a tile, the tile choice was deleted (and the value dropped from the picker's
+"ungrouped" list). The value model is untouched: the default is still `none`/`off`, so on load the image-picker
+falls back to its standard **hidden** value-holder tile (a 1×1 transparent gif the option type already hides) —
+no visible None tile, and deselect/clear resolves to that same `none` sentinel every consumer already handles.
+Because the delete makes it genuinely tile-less, the earlier stop-gap that *hid* the tile in JS was removed as
+dead code; the click-again-to-deselect logic stays. Net: no redundant None tile anywhere, the sentinel intact
+and never orphaned, and the fix sits in the picker definitions rather than a JS workaround.

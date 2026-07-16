@@ -47,3 +47,8 @@ performance:
   label: Performance
   permalink: /performance
   description: Asset loading, output size and runtime cost
+
+javascript:
+  label: JavaScript
+  permalink: /javascript
+  description: The admin/front-end JS stack — Backbone, React adoption and tooling

@@ -55,3 +55,20 @@ and matches what people already expect from a re-click. Clearing to the existing
 empty value) is what keeps the blast radius to a single JS file: consumers never learn a new "cleared" shape,
 they keep seeing the `none`/`off` they were already written for. The redundant `None` tiles can stay as
 harmless back-compat and be retired later — the important thing is you can now always get back to off.
+
+## Update — retiring the redundant None tiles
+
+Once deselect landed, the visible `None` tile became redundant clutter in every popover image-picker
+(Background Pattern plus ~11 Animation Engine effects). The obvious move was to delete the `none`/`off`
+choice from each module — but that's misleading: `none`/`off` is *also* the default value, the picker's
+`value`, the reveal-map key, and every consumer's off-check, so it never actually leaves the code. "Removing
+the choice" only ever meant removing the **tile**.
+
+So rather than 25-odd delicate edits across 11 differently-structured modules (each with its own picker/reveal
+shape), the tile is hidden in **one** place — the image-picker option type, in popover contexts, walks the
+library's own option objects and hides any tile whose value is `none`/`off`. One lever, group-agnostic (works
+with the tabbed/optgroup layouts), zero risk to module logic, and it keeps the value model intact: `none`/`off`
+stays the internal off-sentinel, so the default state, a deselect, and the (now hidden) tile all resolve to the
+same value. The result is exactly the ask — no redundant None tile in any popover — without scattering the
+change across the engine, and it's *more* internally consistent than a true removal would have been (a true
+removal would leave deselect yielding `''` while defaults still said `none`).

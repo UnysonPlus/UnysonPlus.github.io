@@ -1,0 +1,40 @@
+/* Interactive 3D Gallery playground — two-pane (main + design sidebar), matching the Backgrounds one. */
+.playground { border: 1px solid var(--ifm-toc-border-color); border-radius: 12px; overflow: hidden; margin: 1.5rem 0 2rem; background: var(--ifm-card-background-color); }
+
+.layout { display: flex; align-items: stretch; }
+.main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
+.sidebar { flex: 0 0 220px; border-left: 1px solid var(--ifm-toc-border-color); background: var(--ifm-color-emphasis-100); position: relative; overflow: hidden; }
+.sidebarInner { position: absolute; inset: 0; overflow-y: auto; padding: 1rem 1rem 1.25rem; }
+.sidebarTitle { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--ifm-color-emphasis-700); margin-bottom: 0.75rem; }
+.tabGroup { margin-bottom: 0.85rem; }
+.tabGroupLabel { display: block; font-size: 0.64rem; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 700; color: var(--ifm-color-emphasis-600); margin-bottom: 0.4rem; }
+.tabPills { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.tab, .tabActive { border: 1px solid var(--ifm-toc-border-color); border-radius: 999px; padding: 0.22rem 0.6rem; font-size: 0.75rem; font-weight: 600; cursor: pointer; background: var(--ifm-background-surface-color); color: var(--ifm-color-emphasis-700); line-height: 1.3; }
+.tabActive { background: var(--ifm-color-primary); border-color: var(--ifm-color-primary); color: #fff; }
+.blurb { margin: 1rem 0 0; font-size: 0.76rem; line-height: 1.5; color: var(--ifm-color-emphasis-600); }
+@media (max-width: 800px) {
+  .layout { flex-direction: column-reverse; }
+  .sidebar { flex-basis: auto; width: 100%; border-left: none; border-bottom: 1px solid var(--ifm-toc-border-color); position: static; overflow: visible; }
+  .sidebarInner { position: static; inset: auto; overflow-y: auto; max-height: 260px; }
+}
+
+/* stage — dark, so the cards and their shadows read the way they do on a real dark section */
+.stage { position: relative; overflow: hidden; height: 460px; background: #101014; border-bottom: 1px solid var(--ifm-toc-border-color); }
+.host { position: absolute; inset: 0; }
+
+/* controls */
+.controls { padding: 1.25rem 1.5rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 0 2.2rem; align-items: start; }
+.controls h5 { grid-column: 1 / -1; margin: 0 0 1rem; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ifm-color-emphasis-600); display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.derived { font-style: normal; text-transform: none; letter-spacing: 0; font-size: 0.72rem; color: var(--ifm-color-primary); font-variant-numeric: tabular-nums; }
+.control { margin-bottom: 0.95rem; }
+.control label { display: flex; justify-content: space-between; font-size: 0.84rem; font-weight: 600; margin-bottom: 0.4rem; }
+.control label span { color: var(--ifm-color-primary); font-variant-numeric: tabular-nums; }
+.control input[type='range'] { width: 100%; accent-color: var(--ifm-color-primary); }
+.select { width: 100%; padding: 0.4rem 0.55rem; border: 1px solid var(--ifm-toc-border-color); border-radius: 8px; background: var(--ifm-background-surface-color); color: var(--ifm-font-color-base); font-size: 0.85rem; }
+
+/* code */
+.code { border-top: 1px solid var(--ifm-toc-border-color); }
+.code > div:first-child { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ifm-color-emphasis-600); padding: 0.75rem 1.5rem 0; }
+.code pre { margin: 0.5rem 1.5rem 0.5rem; background: var(--ifm-color-emphasis-100); border-radius: 8px; padding: 1rem; font-size: 0.82rem; overflow-x: auto; }
+.note { margin: 0 1.5rem 1.25rem; font-size: 0.78rem; color: var(--ifm-color-emphasis-600); }
+.note code { font-size: 0.9em; }

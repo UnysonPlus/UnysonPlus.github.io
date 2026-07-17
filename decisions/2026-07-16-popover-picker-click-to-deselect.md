@@ -71,9 +71,22 @@ Scroll Reveal, Scroll Text Highlight, Scrollytelling) build their tiles from a l
 have *broken* the off-state, so those were left alone.
 
 For the five that did have a tile, the tile choice was deleted (and the value dropped from the picker's
-"ungrouped" list). The value model is untouched: the default is still `none`/`off`, so on load the image-picker
-falls back to its standard **hidden** value-holder tile (a 1×1 transparent gif the option type already hides) —
-no visible None tile, and deselect/clear resolves to that same `none` sentinel every consumer already handles.
-Because the delete makes it genuinely tile-less, the earlier stop-gap that *hid* the tile in JS was removed as
-dead code; the click-again-to-deselect logic stays. Net: no redundant None tile anywhere, the sentinel intact
-and never orphaned, and the fix sits in the picker definitions rather than a JS workaround.
+"ungrouped" list), relying on the image-picker's standard **off-tile** (a 1×1 transparent value-holder the
+option type emits for a value with no matching choice) to carry the `none` default.
+
+## Correction — the delete broke it; hide, don't delete
+
+That off-tile assumption was wrong, and it shipped a real bug: on a **new Section**, changing *any* option
+silently set the Background Pattern to the first tile ("Dots"). Root cause: the off-tile is only a *synthetic*
+value-holder emitted under specific conditions, so through the options modal's collect / re-render / lazy-tab
+cycles the popover `<select>` couldn't reliably hold `none` — and a `<select>` with no selected option falls
+back to its **first** `<option>`, which any save then persists. `none` deleted-as-a-choice was exactly the
+"not orphaned" risk: it isn't just a sentinel value, it's the only thing that lets the control *represent*
+"nothing selected" as a real, always-present option.
+
+So the five pickers were reverted to **keep `none`/`off` as a real choice** and **hide its tile in JS**
+(walk the image-picker library's own option objects, hide any `none`/`off` tile in a popover context). Same
+visible result the user wanted — no redundant None tile, 12 pattern tiles, deselect still clears to `none` —
+but now the value model is robust because `none` is a genuine, valid, always-present choice rather than a
+conditional synthetic tile. The lesson: a "redundant" tile that's also the default/off state is load-bearing;
+hide it, don't delete it.

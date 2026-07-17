@@ -57,3 +57,8 @@ header:
   label: Header
   permalink: /header
   description: The site header, off-canvas drawer and chrome
+
+documentation:
+  label: Documentation
+  permalink: /documentation
+  description: In-repo docs, AGENTS.md files and how we keep them from going stale

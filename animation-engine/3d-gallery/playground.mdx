@@ -1,0 +1,42 @@
+---
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ 3D Gallery — preview the Carousel Ring, Panorama Wall and Card Sphere designs and tweak their 3D geometry live.
+hide_table_of_contents: true
+---
+
+import BrowserOnly from '@docusaurus/BrowserOnly';
+
+# 3D Gallery — Playground
+
+<BrowserOnly fallback={<div style={{height: 460, borderRadius: 12, background: '#101014'}} />}>
+  {() => {
+    const Gallery3DPlayground = require('@site/src/components/Gallery3DPlayground').default;
+    return <Gallery3DPlayground />;
+  }}
+</BrowserOnly>
+
+Pick a **design on the right**, then tweak its **geometry** — it renders exactly as it does on a real
+page. This runs the **real module**: the element's verbatim CSS and its 3D driver, on the same
+`data-tdg-*` attributes the plugin emits, with the scene built the way the PHP builds it. Nothing is
+stubbed. The **Sample option** updates as you tweak.
+
+A few things worth playing with:
+
+- **Carousel Ring** — drop **Ring Opening** toward 0 and the loop flattens to edge-on; push
+  **Diagonal Tilt** and the whole ring rolls to a diagonal (something you can't get from Ring Tilt
+  alone).
+- **Panorama Wall** — **Curvature** is signed: drag it *negative* to wrap the wall toward you, or
+  *positive* to bulge it away.
+- **Card Sphere** — **Globe Size** is a pure zoom; **Card Size** is the density control. Watch the
+  *derived* readout above the sliders: smaller cards tile the sphere more finely, so it reads round
+  rather than faceted.
+
+:::info Where it lives
+3D Gallery is a **page-builder element** (builder palette → **Media Elements**) — add your images,
+then pick a **Design**. Its CSS/JS load **only** on pages that use it, the **lightbox** ships only if
+you turn the click action on, and it honours **reduce motion** (a static scene, no spin).
+:::
+
+← Back to [3D Gallery](./index.md)

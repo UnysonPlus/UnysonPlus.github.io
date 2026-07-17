@@ -55,6 +55,19 @@ Two rules keep them alive: **document the contract, not the code** (a prose rest
 what drifts), and the **cross-cutting rules stay in CLAUDE.md** — the folder docs are the local
 deep-dive and link back, so the two never disagree.
 
+### Follow-up: the USE vs BUILD split
+
+A natural next question — *should each folder also document how to **code** the option type?* — resolves
+the same way. There are two contracts: the **USE** contract (a schema author writing `'type' => '…'`
+and consumers reading the value) genuinely **differs per type**, so it earns per-folder docs. The
+**BUILD** contract (authoring the class itself — the `_render` / `_get_value_from_input` /
+`_enqueue_static` lifecycle, registration, the min-asset trap, the alias pattern) is **~95% identical
+across all 51 types**. Duplicating it into 51 folders would be the stub trap in its worst form —
+identical copies that drift. So the build contract lives **once** in a single `AUTHORING.md` at the
+option-types root, and per-folder deep-dives carry only the *implementation gotchas that are specific to
+that type* (e.g. multi-inline's render whitelist), right next to its USE notes. Shared knowledge
+centralized, per-type knowledge only where it earns its place — the same principle, one level down.
+
 ## Why
 
 A doc's value is the delta between what the code shows and what you need to know. For a `switch` that

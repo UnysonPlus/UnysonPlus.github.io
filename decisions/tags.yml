@@ -62,3 +62,8 @@ documentation:
   label: Documentation
   permalink: /documentation
   description: In-repo docs, AGENTS.md files and how we keep them from going stale
+
+conversion:
+  label: Conversion
+  permalink: /conversion
+  description: The Site Converter, the AI Dev Kit and turning existing sites into UnysonPlus

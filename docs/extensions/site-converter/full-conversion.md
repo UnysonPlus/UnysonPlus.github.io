@@ -25,13 +25,13 @@ You set these up a single time; then every conversion reuses them.
 | 1 | **Unyson+ plugin** | Install & activate the plugin in *Plugins → Add New → Upload* (the framework that powers everything). |
 | 2 | **Parent theme `unysonplus-theme`** | Install & activate under *Appearance → Themes*. A conversion builds a **child** of this theme. |
 | 3 | **Site Converter extension** | Enable it in *Unyson+ → Extensions*. The tool then appears at **Unyson+ → Convert**. |
-| 4 | **The capture service** (for URLs + full-fidelity file rendering) | Clone **[UnysonPlus-HTML-to-Wordpress-Conversion](https://github.com/UnysonPlus/UnysonPlus-HTML-to-Wordpress-Conversion)**, then run it (below). Needs **Node 20+** and **Google Chrome**. |
+| 4 | **The capture service** (for URLs + full-fidelity file rendering) | Clone **[UnysonPlus-Capture-Service](https://github.com/UnysonPlus/UnysonPlus-Capture-Service)**, then run it (below). Needs **Node 20+** and **Google Chrome**. |
 | 5 | **(Optional) AI** | Either the **Claude Code** CLI on your PATH *(uses your subscription — no key)*, **or** an `ANTHROPIC_API_KEY` env var *(pay-per-use API)*. Enables *AI assist* / the AI-assisted lane. |
 
 **Start the capture service** (leave the terminal open while converting):
 
 ```bash
-# inside the UnysonPlus-HTML-to-Wordpress-Conversion clone
+# inside the UnysonPlus-Capture-Service clone
 cd tools/design-capture
 npm install        # first time only
 node serve.mjs     # serves http://localhost:8787

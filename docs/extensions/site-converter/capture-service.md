@@ -17,7 +17,7 @@ from a file* too. It requires **no AI API and no account**; its only dependency 
    ```bash
    node -v
    ```
-2. **Go to the service folder** (in the `UnysonPlus-HTML-to-Wordpress-Conversion` clone):
+2. **Go to the service folder** (in the `UnysonPlus-Capture-Service` clone):
    ```bash
    cd tools/design-capture
    npm install   # first time only

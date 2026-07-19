@@ -1,6 +1,6 @@
 {
   "name": "unysonplus-site",
-  "version": "0.1.84",
+  "version": "0.1.85",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",

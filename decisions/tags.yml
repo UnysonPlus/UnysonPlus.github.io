@@ -67,3 +67,8 @@ conversion:
   label: Conversion
   permalink: /conversion
   description: The Site Converter, the AI Dev Kit and turning existing sites into UnysonPlus
+
+footer:
+  label: Footer
+  permalink: /footer
+  description: Footer builder — bars, columns and layout

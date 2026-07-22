@@ -83,6 +83,20 @@ const DESIGNS = {
         driveChoices: [['continuous', 'Continuous'], ['static', 'Static']]}),
     ],
   },
+  orbit_globe: {
+    group: '3D & Perspective',
+    label: 'Orbit Globe',
+    blurb: 'Cards float through a sphere VOLUME, each facing you, near ones big and far ones dim — a depth-of-field orbit (vs Card Sphere’s surface bands). Card Size is the density control.',
+    controls: [
+      sl('globe_size', 'Globe Size (%)', 50, 40, 95),
+      sl('card_size', 'Card Size (%)', 28, 8, 30),
+      sl('gap', 'Gap (%)', 2.5, 0.5, 8, 0.5),
+      sl('back_fade', 'Back Fade (%)', 55, 0, 90),
+      sl('tilt', 'Tilt (°)', 27, -45, 45),
+      ...SHARED({drive: 'continuous', speed: 20, ratio: '1-1', corner: 2,
+        driveChoices: [['continuous', 'Continuous'], ['static', 'Static']]}),
+    ],
+  },
 };
 
 const GROUP_ORDER = ['3D & Perspective'];

@@ -97,6 +97,19 @@ export function buildScene(design, o) {
     return `<div class="tdg tdg--panorama-wall" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__wall">${rows}</div></div></div>`;
   }
 
+  if (design === 'orbit_globe') {
+    // count mirrors orbit-globe.php: denser cloud when cards are smaller / gap tighter
+    const nCards = Math.max(14, Math.min(90, Math.round(5 / (o.card_size / 100) / (1 + o.gap / 100))));
+    const a = attr({
+      ...shared,
+      'data-tdg-globe': o.globe_size, 'data-tdg-backfade': o.back_fade, 'data-tdg-tilt': o.tilt,
+      'data-tdg-card': o.card_size, 'data-tdg-momentum': 1,
+    });
+    let cells = '';
+    for (let k = 0; k < nCards; k++) cells += cardHtml(SAMPLES[k % SAMPLES.length]);
+    return `<div class="tdg tdg--orbit-globe" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__orbit">${cells}</div></div></div>`;
+  }
+
   // card_sphere
   const {rows, bands} = sphereBands(o);
   const a = attr({

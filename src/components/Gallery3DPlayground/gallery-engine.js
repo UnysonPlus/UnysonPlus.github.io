@@ -7,7 +7,7 @@
  * bootstrap is replaced with the initEl() / bumpGen() exports below.
  */
 
-export const GALLERY_CSS = "/**\n * 3D Gallery — base + Carousel Ring. Pure CSS 3D scene; gallery-3d.js sets the per-card\n * transforms, the ring rotation and (for Back Fade) per-card opacity at runtime.\n */\n\n.tdg {\n\tposition: relative;\n\twidth: 100%;\n\toverflow: hidden;\n\tbackground: var(--tdg-bg, transparent);\n}\n\n.tdg__stage {\n\tposition: absolute;\n\tinset: 0;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\ttransform-style: preserve-3d;\n\tperspective-origin: 50% 50%;\n\t/* perspective set by JS from the Perspective control */\n}\n\n.tdg__ring {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n\t/* transform (rotateX tilt + rotateY spin) set by JS */\n}\n\n/* Panorama Wall — stacked rows, each a scrolling cylinder of cards. */\n.tdg__wall {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg__row {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg--panorama-wall .tdg__card { backface-visibility: hidden; }\n\n/* Card Sphere — bands (latitude rings) wrapped on a sphere. */\n.tdg__globe {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg__band {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg--card-sphere .tdg__card { backface-visibility: hidden; }\n\n.tdg__card {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\taspect-ratio: var(--tdg-ratio, 1 / 1);\n\ttransform-style: preserve-3d;\n\twill-change: transform, opacity;\n\tbackface-visibility: visible;\n\t/* width / margins / transform set by JS */\n}\n\n.tdg__inner {\n\twidth: 100%;\n\theight: 100%;\n\tbox-sizing: border-box;\n\tborder-radius: var(--tdg-radius, 14px);\n\tpadding: var(--tdg-pad, 0);\n\toverflow: hidden;\n\tbackground: #14161c;\n\tbox-shadow: var(--tdg-shadow, 0 14px 40px -8px rgba(0, 0, 0, 0.45));\n}\n\n.tdg__link {\n\tdisplay: block;\n\tposition: relative;\n\twidth: 100%;\n\theight: 100%;\n\tborder-radius: inherit;\n\toverflow: hidden;\n\ttext-decoration: none;\n}\n\n.tdg__img {\n\tdisplay: block;\n\twidth: 100%;\n\theight: 100%;\n\tobject-fit: cover;\n\tborder-radius: inherit;\n}\n\n.tdg__overlay {\n\tposition: absolute;\n\tinset: 0;\n\tdisplay: flex;\n\talign-items: flex-end;\n\tpadding: 10px 12px;\n\tbackground: linear-gradient(to top, rgba(0, 0, 0, 0.62), transparent 62%);\n\topacity: 0;\n\ttransition: opacity 0.3s ease;\n\tpointer-events: none;\n}\n.tdg__card:hover .tdg__overlay { opacity: 1; }\n.tdg__overlay-text { color: #fff; font-size: 13px; line-height: 1.3; }\n\n.tdg__caption {\n\tposition: absolute;\n\tleft: 0;\n\tright: 0;\n\tbottom: -1.6em;\n\ttext-align: center;\n\tfont-size: 12px;\n\topacity: 0.75;\n}\n\n.tdg--empty {\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\tmin-height: 180px;\n\tborder: 1px dashed rgba(127, 127, 127, 0.4);\n\tborder-radius: 10px;\n}\n.tdg__empty { margin: 0; opacity: 0.6; font-size: 14px; }\n\n@media (prefers-reduced-motion: reduce) {\n\t.tdg__ring { will-change: auto; }\n}\n";
+export const GALLERY_CSS = "/**\n * 3D Gallery — base + Carousel Ring. Pure CSS 3D scene; gallery-3d.js sets the per-card\n * transforms, the ring rotation and (for Back Fade) per-card opacity at runtime.\n */\n\n.tdg {\n\tposition: relative;\n\twidth: 100%;\n\toverflow: hidden;\n\tbackground: var(--tdg-bg, transparent);\n}\n\n.tdg__stage {\n\tposition: absolute;\n\tinset: 0;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\ttransform-style: preserve-3d;\n\tperspective-origin: 50% 50%;\n\t/* perspective set by JS from the Perspective control */\n}\n\n.tdg__ring {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n\t/* transform (rotateX tilt + rotateY spin) set by JS */\n}\n\n/* Panorama Wall — stacked rows, each a scrolling cylinder of cards. */\n.tdg__wall {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg__row {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg--panorama-wall .tdg__card { backface-visibility: hidden; }\n\n/* Card Sphere — bands (latitude rings) wrapped on a sphere. */\n.tdg__globe {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg__band {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg--card-sphere .tdg__card { backface-visibility: hidden; }\n\n/* Orbit Globe — billboarded cards distributed through a sphere volume (JS translate3d's each card;\n * the container itself does not rotate, so cards always face the camera). */\n.tdg__orbit {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n\n.tdg__card {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\taspect-ratio: var(--tdg-ratio, 1 / 1);\n\ttransform-style: preserve-3d;\n\twill-change: transform, opacity;\n\tbackface-visibility: visible;\n\t/* width / margins / transform set by JS */\n}\n\n.tdg__inner {\n\twidth: 100%;\n\theight: 100%;\n\tbox-sizing: border-box;\n\tborder-radius: var(--tdg-radius, 14px);\n\tpadding: var(--tdg-pad, 0);\n\toverflow: hidden;\n\tbackground: #14161c;\n\tbox-shadow: var(--tdg-shadow, 0 14px 40px -8px rgba(0, 0, 0, 0.45));\n}\n\n.tdg__link {\n\tdisplay: block;\n\tposition: relative;\n\twidth: 100%;\n\theight: 100%;\n\tborder-radius: inherit;\n\toverflow: hidden;\n\ttext-decoration: none;\n}\n\n.tdg__img {\n\tdisplay: block;\n\twidth: 100%;\n\theight: 100%;\n\tobject-fit: cover;\n\tborder-radius: inherit;\n}\n\n.tdg__overlay {\n\tposition: absolute;\n\tinset: 0;\n\tdisplay: flex;\n\talign-items: flex-end;\n\tpadding: 10px 12px;\n\tbackground: linear-gradient(to top, rgba(0, 0, 0, 0.62), transparent 62%);\n\topacity: 0;\n\ttransition: opacity 0.3s ease;\n\tpointer-events: none;\n}\n.tdg__card:hover .tdg__overlay { opacity: 1; }\n.tdg__overlay-text { color: #fff; font-size: 13px; line-height: 1.3; }\n\n.tdg__caption {\n\tposition: absolute;\n\tleft: 0;\n\tright: 0;\n\tbottom: -1.6em;\n\ttext-align: center;\n\tfont-size: 12px;\n\topacity: 0.75;\n}\n\n.tdg--empty {\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\tmin-height: 180px;\n\tborder: 1px dashed rgba(127, 127, 127, 0.4);\n\tborder-radius: 10px;\n}\n.tdg__empty { margin: 0; opacity: 0.6; font-size: 14px; }\n\n@media (prefers-reduced-motion: reduce) {\n\t.tdg__ring { will-change: auto; }\n}\n";
 
 // Reduced motion: the driver renders a static scene instead of animating.
 var reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -22,8 +22,7 @@ function requestAnimationFrame(fn) {
   return window.requestAnimationFrame(function (t) { if (g === GEN) { fn(t); } });
 }
 
-
-	function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); return isNaN( v ) ? dflt : v; }
+function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); return isNaN( v ) ? dflt : v; }
 	function clamp( v, a, b ) { return v < a ? a : ( v > b ? b : v ); }
 
 	// Hover behaviour for auto-rotating drives: 'none' keeps full speed, 'pause' stops on hover,
@@ -148,51 +147,70 @@ function requestAnimationFrame(fn) {
 		applyRing();
 		window.addEventListener( 'resize', function () { layout(); applyRing(); }, { passive: true } );
 
-		if ( reduce || drive === 'static' ) { return; }
+		// --- Motion: auto-rotate / scroll-scrub / static, with an independent "Drag to spin" layer ---
+		var hoverF = hoverFactor( el );
+		var allowDrag = num( el, 'data-tdg-allowdrag', 1 );
+		var dragging = false, px = 0, scrollAngle = null;
 
-		if ( drive === 'auto' ) {
-			var hoverF = hoverFactor( el );
-			var last = 0;
-			var loop = function ( t ) {
-				if ( ! last ) { last = t; }
-				var dt = ( t - last ) / 1000; last = t;
-				angle += dir * ( 360 / speed ) * dt * hoverF();
-				applyRing();
-				requestAnimationFrame( loop );
-			};
-			requestAnimationFrame( loop );
-
-		} else if ( drive === 'drag' ) {
-			var dragging = false, px = 0;
+		// Drag to spin layers over ANY base Motion: grabbing pauses the base drive, releasing flings (Drag
+		// Momentum), then the base resumes. Kept even under reduced motion (user-initiated) and when static
+		// (= pure drag). A Section background can't be grabbed (sc-bg-fill sets pointer-events:none).
+		if ( allowDrag ) {
 			el.style.cursor = 'grab';
-			var down = function ( x ) { dragging = true; px = x; vel = 0; el.style.cursor = 'grabbing'; };
-			var move = function ( x ) { if ( ! dragging ) { return; } var dx = x - px; px = x; angle += dx * 0.3; vel = dx * 0.3; applyRing(); };
+			var flipDrag = 1;
+			// Which half of the ring did you grab? A back card moves OPPOSITE a front card for the same spin,
+			// so dragging one with the front's mapping feels reversed. Back cards are NOT hit-testable (the
+			// stage plane sits over them), so the event target can't tell us — instead we find the card whose
+			// on-screen centre is nearest the grab point (back cards are rendered, so their rects exist) and
+			// use its facing (the same cos test the back-fade uses). Grab the back half → invert the delta for
+			// the whole gesture so the grabbed card follows the cursor. Locked per gesture.
+			var down = function ( x, y ) {
+				dragging = true; px = x; vel = 0; el.style.cursor = 'grabbing'; flipDrag = 1;
+				var best = null, bestD = Infinity;
+				for ( var i = 0; i < n; i++ ) {
+					var b = cards[ i ].getBoundingClientRect();
+					var ddx = x - ( b.left + b.width / 2 ), ddy = y - ( b.top + b.height / 2 ), d = ddx * ddx + ddy * ddy;
+					if ( d < bestD ) { bestD = d; best = cards[ i ]; }
+				}
+				if ( best && Math.cos( ( best.__rot + angle ) * Math.PI / 180 ) < 0 ) { flipDrag = -1; }
+			};
+			var move = function ( x ) { if ( ! dragging ) { return; } var dx = ( x - px ) * flipDrag; px = x; angle += dx * 0.3; vel = dx * 0.3; };
 			var up = function () { dragging = false; el.style.cursor = 'grab'; };
-			el.addEventListener( 'mousedown', function ( e ) { down( e.clientX ); e.preventDefault(); } );
+			el.addEventListener( 'mousedown', function ( e ) { down( e.clientX, e.clientY ); e.preventDefault(); } );
 			window.addEventListener( 'mousemove', function ( e ) { move( e.clientX ); } );
 			window.addEventListener( 'mouseup', up );
-			el.addEventListener( 'touchstart', function ( e ) { down( e.touches[ 0 ].clientX ); }, { passive: true } );
+			el.addEventListener( 'touchstart', function ( e ) { down( e.touches[ 0 ].clientX, e.touches[ 0 ].clientY ); }, { passive: true } );
 			window.addEventListener( 'touchmove', function ( e ) { move( e.touches[ 0 ].clientX ); }, { passive: true } );
 			window.addEventListener( 'touchend', up );
-			if ( momentum ) {
-				var inertia = function () {
-					if ( ! dragging && Math.abs( vel ) > 0.02 ) { angle += vel; vel *= 0.95; applyRing(); }
-					requestAnimationFrame( inertia );
-				};
-				requestAnimationFrame( inertia );
-			}
+		}
 
-		} else if ( drive === 'scroll' ) {
+		if ( drive === 'scroll' ) {
 			var onScroll = function () {
 				var r = el.getBoundingClientRect();
 				var vh = window.innerHeight || 1;
-				var prog = clamp( 1 - ( r.top + r.height / 2 ) / ( vh + r.height ), 0, 1 );
-				angle = dir * prog * 360;
-				applyRing();
+				scrollAngle = dir * clamp( 1 - ( r.top + r.height / 2 ) / ( vh + r.height ), 0, 1 ) * 360;
 			};
 			window.addEventListener( 'scroll', onScroll, { passive: true } );
 			onScroll();
 		}
+
+		var autoSpin = ( drive === 'auto' && ! reduce );
+		// A render loop is only needed when something moves without a DOM event: auto spin, a momentum
+		// fling, or scroll-scrub. Static with no drag is already rendered — nothing to loop.
+		if ( ! ( autoSpin || allowDrag || drive === 'scroll' ) ) { return; }
+		var last = 0;
+		var loop = function ( t ) {
+			if ( ! last ) { last = t; }
+			var dt = ( t - last ) / 1000; last = t;
+			if ( ! dragging ) {
+				if ( autoSpin ) { angle += dir * ( 360 / speed ) * dt * hoverF(); }             // auto-rotate
+				if ( momentum && Math.abs( vel ) > 0.02 ) { angle += vel; vel *= 0.95; }         // fling tail
+				else if ( drive === 'scroll' && scrollAngle !== null ) { angle = scrollAngle; }  // scroll drives when idle
+			}
+			applyRing();
+			requestAnimationFrame( loop );
+		};
+		requestAnimationFrame( loop );
 	}
 
 	/* ------------------------------------------------------------------ *
@@ -284,27 +302,18 @@ function requestAnimationFrame(fn) {
 		layout();
 		applyWall();
 		window.addEventListener( 'resize', function () { layout(); applyWall(); }, { passive: true } );
-		if ( reduce || drive === 'static' ) { return; }
-
 		var hoverF = hoverFactor( el );
+		var allowDrag = num( el, 'data-tdg-allowdrag', 1 );
+		var momentum = num( el, 'data-tdg-momentum', 1 );
+		var dragging = false, px = 0, vel = 0, scrollBase = null;
 		// One loop = scroll by the full span (one recycle); Loop Duration is the seconds for that.
 		var advance = function ( dt ) { base += dir * ( span / Math.max( 1, speed ) ) * dt * hoverF(); };
 
-		if ( drive === 'continuous' ) {
-			var last = 0;
-			var loop = function ( t ) {
-				if ( ! last ) { last = t; }
-				var dt = ( t - last ) / 1000; last = t;
-				advance( dt );
-				applyWall();
-				requestAnimationFrame( loop );
-			};
-			requestAnimationFrame( loop );
-		} else if ( drive === 'drag' ) {
-			var dragging = false, px = 0, vel = 0;
+		// Drag to spin — layers over the base Motion (grabbing pauses it, releasing flings, then it resumes).
+		if ( allowDrag ) {
 			el.style.cursor = 'grab';
 			var down = function ( x ) { dragging = true; px = x; vel = 0; el.style.cursor = 'grabbing'; };
-			var move = function ( x ) { if ( ! dragging ) { return; } var dx = x - px; px = x; base += dx * 0.12; vel = dx * 0.12; applyWall(); };
+			var move = function ( x ) { if ( ! dragging ) { return; } var dx = x - px; px = x; base -= dx * 0.12; vel = -dx * 0.12; };
 			var up = function () { dragging = false; el.style.cursor = 'grab'; };
 			el.addEventListener( 'mousedown', function ( e ) { down( e.clientX ); e.preventDefault(); } );
 			window.addEventListener( 'mousemove', function ( e ) { move( e.clientX ); } );
@@ -312,19 +321,34 @@ function requestAnimationFrame(fn) {
 			el.addEventListener( 'touchstart', function ( e ) { down( e.touches[ 0 ].clientX ); }, { passive: true } );
 			window.addEventListener( 'touchmove', function ( e ) { move( e.touches[ 0 ].clientX ); }, { passive: true } );
 			window.addEventListener( 'touchend', up );
-			var inertia = function () { if ( ! dragging && Math.abs( vel ) > 0.02 ) { base += vel; vel *= 0.95; applyWall(); } requestAnimationFrame( inertia ); };
-			requestAnimationFrame( inertia );
-		} else if ( drive === 'scroll' ) {
+		}
+
+		if ( drive === 'scroll' ) {
 			var onScroll = function () {
 				var r = el.getBoundingClientRect();
 				var vh = window.innerHeight || 1;
 				var prog = clamp( 1 - ( r.top + r.height / 2 ) / ( vh + r.height ), 0, 1 );
-				base = dir * prog * span * 2;
-				applyWall();
+				scrollBase = dir * prog * span * 2;
 			};
 			window.addEventListener( 'scroll', onScroll, { passive: true } );
 			onScroll();
 		}
+
+		var autoRun = ( drive === 'continuous' && ! reduce );
+		if ( ! ( autoRun || allowDrag || drive === 'scroll' ) ) { return; }
+		var last = 0;
+		var loop = function ( t ) {
+			if ( ! last ) { last = t; }
+			var dt = ( t - last ) / 1000; last = t;
+			if ( ! dragging ) {
+				if ( autoRun ) { advance( dt ); }
+				if ( momentum && Math.abs( vel ) > 0.02 ) { base += vel; vel *= 0.95; }
+				else if ( drive === 'scroll' && scrollBase !== null ) { base = scrollBase; }
+			}
+			applyWall();
+			requestAnimationFrame( loop );
+		};
+		requestAnimationFrame( loop );
 	}
 
 	/* ------------------------------------------------------------------ *
@@ -413,20 +437,16 @@ function requestAnimationFrame(fn) {
 		layout();
 		applyGlobe();
 		window.addEventListener( 'resize', function () { layout(); applyGlobe(); }, { passive: true } );
-		if ( reduce || drive === 'static' ) { return; }
-
 		var hoverF = hoverFactor( el );
+		var allowDrag = num( el, 'data-tdg-allowdrag', 1 );
+		var dragging = false, px = 0, vel = 0, scrollAngle = null;
 		var advance = function ( dt ) { var d = dir * ( 360 / speed ) * dt * hoverF(); bandData.forEach( function ( bd ) { bd.angle += d; } ); };
 
-		if ( drive === 'continuous' ) {
-			var last = 0;
-			var loop = function ( t ) { if ( ! last ) { last = t; } var dt = ( t - last ) / 1000; last = t; advance( dt ); applyGlobe(); requestAnimationFrame( loop ); };
-			requestAnimationFrame( loop );
-		} else if ( drive === 'drag' ) {
-			var dragging = false, px = 0, vel = 0;
+		// Drag to spin — layers over the base Motion (grabbing pauses it, releasing flings, then it resumes).
+		if ( allowDrag ) {
 			el.style.cursor = 'grab';
 			var down = function ( x ) { dragging = true; px = x; vel = 0; el.style.cursor = 'grabbing'; };
-			var move = function ( x ) { if ( ! dragging ) { return; } var dx = x - px; px = x; bandData.forEach( function ( bd ) { bd.angle += dx * 0.25; } ); vel = dx * 0.25; applyGlobe(); };
+			var move = function ( x ) { if ( ! dragging ) { return; } var dx = x - px; px = x; bandData.forEach( function ( bd ) { bd.angle += dx * 0.25; } ); vel = dx * 0.25; };
 			var up = function () { dragging = false; el.style.cursor = 'grab'; };
 			el.addEventListener( 'mousedown', function ( e ) { down( e.clientX ); e.preventDefault(); } );
 			window.addEventListener( 'mousemove', function ( e ) { move( e.clientX ); } );
@@ -434,16 +454,149 @@ function requestAnimationFrame(fn) {
 			el.addEventListener( 'touchstart', function ( e ) { down( e.touches[ 0 ].clientX ); }, { passive: true } );
 			window.addEventListener( 'touchmove', function ( e ) { move( e.touches[ 0 ].clientX ); }, { passive: true } );
 			window.addEventListener( 'touchend', up );
-			if ( momentum ) { var inertia = function () { if ( ! dragging && Math.abs( vel ) > 0.02 ) { bandData.forEach( function ( bd ) { bd.angle += vel; } ); vel *= 0.95; applyGlobe(); } requestAnimationFrame( inertia ); }; requestAnimationFrame( inertia ); }
-		} else if ( drive === 'scroll' ) {
-			var onScroll = function () { var r = el.getBoundingClientRect(); var vh = window.innerHeight || 1; var prog = clamp( 1 - ( r.top + r.height / 2 ) / ( vh + r.height ), 0, 1 ); bandData.forEach( function ( bd ) { bd.angle = dir * prog * 360; } ); applyGlobe(); };
+		}
+
+		if ( drive === 'scroll' ) {
+			var onScroll = function () { var r = el.getBoundingClientRect(); var vh = window.innerHeight || 1; scrollAngle = dir * clamp( 1 - ( r.top + r.height / 2 ) / ( vh + r.height ), 0, 1 ) * 360; };
 			window.addEventListener( 'scroll', onScroll, { passive: true } );
 			onScroll();
 		}
+
+		var autoRun = ( drive === 'continuous' && ! reduce );
+		if ( ! ( autoRun || allowDrag || drive === 'scroll' ) ) { return; }
+		var last = 0;
+		var loop = function ( t ) {
+			if ( ! last ) { last = t; }
+			var dt = ( t - last ) / 1000; last = t;
+			if ( ! dragging ) {
+				if ( autoRun ) { advance( dt ); }
+				if ( momentum && Math.abs( vel ) > 0.02 ) { bandData.forEach( function ( bd ) { bd.angle += vel; } ); vel *= 0.95; }
+				else if ( drive === 'scroll' && scrollAngle !== null ) { bandData.forEach( function ( bd ) { bd.angle = scrollAngle; } ); }
+			}
+			applyGlobe();
+			requestAnimationFrame( loop );
+		};
+		requestAnimationFrame( loop );
+	}
+
+	/* ------------------------------------------------------------------ *
+	 * Orbit Globe — cards distributed through a sphere VOLUME (Fibonacci points), each BILLBOARDED
+	 * (always facing the camera) rather than tangent to the surface like Card Sphere. The whole cloud
+	 * spins; the stage perspective makes near cards big + far cards small, and Back Fade dims the far
+	 * side — a depth-of-field orbit. Each card is positioned every frame from its rotated unit vector.
+	 * ------------------------------------------------------------------ */
+	function initOrbit( el ) {
+		if ( el.__tdg ) { return; }
+		el.__tdg = true;
+		var stage = el.querySelector( '.tdg__stage' );
+		var orbit = el.querySelector( '.tdg__orbit' );
+		if ( ! stage || ! orbit ) { return; }
+		var cards = Array.prototype.slice.call( orbit.querySelectorAll( '.tdg__card' ) );
+		if ( ! cards.length ) { return; }
+
+		var drive    = el.getAttribute( 'data-tdg-drive' ) || 'continuous';
+		var speed    = num( el, 'data-tdg-speed', 20 );
+		var dir      = num( el, 'data-tdg-dir', 1 );
+		var momentum = num( el, 'data-tdg-momentum', 1 );
+		var globePct = num( el, 'data-tdg-globe', 50 ) / 100;
+		var backFade = clamp( num( el, 'data-tdg-backfade', 55 ) / 100, 0, 1 );
+		var tilt     = num( el, 'data-tdg-tilt', 27 );
+		var cardPct  = num( el, 'data-tdg-card', 28 ) / 100;
+
+		var n = cards.length;
+		// Fibonacci sphere: an even spread of unit directions, one per card.
+		var GA = Math.PI * ( 3 - Math.sqrt( 5 ) ); // golden angle
+		cards.forEach( function ( c, i ) {
+			var uy = 1 - ( i / Math.max( 1, n - 1 ) ) * 2;      // 1 .. -1
+			var rr = Math.sqrt( Math.max( 0, 1 - uy * uy ) );
+			var th = i * GA;
+			c.__u = [ Math.cos( th ) * rr, uy, Math.sin( th ) * rr ];
+		} );
+		var R = 0, tiltR = tilt * Math.PI / 180;
+		var angle = 0, vel = 0;
+
+		function layout() {
+			var W = stage.clientWidth || el.clientWidth || 1;
+			var H = stage.clientHeight || el.clientHeight || W;
+			var base = Math.min( W, H );
+			R = base * globePct / 2;
+			var cardW = Math.max( 8, base * globePct * cardPct );
+			// Perspective IS the effect here (near big / far small); orbit has no perspective control, so
+			// it is fixed + width-relative to read the same at any stage size.
+			stage.style.perspective = ( W * 0.9 ) + 'px';
+			cards.forEach( function ( c ) {
+				c.style.width = cardW + 'px';
+				c.style.marginLeft = ( -cardW / 2 ) + 'px';
+			} );
+			requestAnimationFrame( function () {
+				cards.forEach( function ( c ) { c.style.marginTop = ( -( c.offsetHeight || cardW ) / 2 ) + 'px'; } );
+			} );
+		}
+
+		function applyOrbit() {
+			var ar = angle * Math.PI / 180, sa = Math.sin( ar ), ca = Math.cos( ar );
+			var st = Math.sin( tiltR ), ct = Math.cos( tiltR );
+			for ( var i = 0; i < n; i++ ) {
+				var u = cards[ i ].__u;
+				var x = u[ 0 ] * ca + u[ 2 ] * sa;      // spin around Y
+				var z = -u[ 0 ] * sa + u[ 2 ] * ca;
+				var y2 = u[ 1 ] * ct - z * st;          // then tilt around X
+				var z2 = u[ 1 ] * st + z * ct;
+				var c = cards[ i ];
+				c.style.transform = 'translate3d(' + ( x * R ).toFixed( 1 ) + 'px,' + ( y2 * R ).toFixed( 1 ) + 'px,' + ( z2 * R ).toFixed( 1 ) + 'px)';
+				// far side (z2 < 0) fades toward the back
+				c.style.opacity = backFade > 0 ? ( 1 - clamp( ( 1 - z2 ) / 2, 0, 1 ) * backFade ).toFixed( 3 ) : '1';
+			}
+		}
+
+		layout();
+		applyOrbit();
+		window.addEventListener( 'resize', function () { layout(); applyOrbit(); }, { passive: true } );
+		var hoverF = hoverFactor( el );
+		var allowDrag = num( el, 'data-tdg-allowdrag', 1 );
+		var dragging = false, px = 0, scrollAngle = null;
+		var advance = function ( dt ) { angle += dir * ( 360 / speed ) * dt * hoverF(); };
+
+		// Drag to spin — layers over the base Motion (grabbing pauses it, releasing flings, then resumes).
+		if ( allowDrag ) {
+			el.style.cursor = 'grab';
+			var down = function ( x ) { dragging = true; px = x; vel = 0; el.style.cursor = 'grabbing'; };
+			var move = function ( x ) { if ( ! dragging ) { return; } var dx = x - px; px = x; angle += dx * 0.25; vel = dx * 0.25; };
+			var up = function () { dragging = false; el.style.cursor = 'grab'; };
+			el.addEventListener( 'mousedown', function ( e ) { down( e.clientX ); e.preventDefault(); } );
+			window.addEventListener( 'mousemove', function ( e ) { move( e.clientX ); } );
+			window.addEventListener( 'mouseup', up );
+			el.addEventListener( 'touchstart', function ( e ) { down( e.touches[ 0 ].clientX ); }, { passive: true } );
+			window.addEventListener( 'touchmove', function ( e ) { move( e.touches[ 0 ].clientX ); }, { passive: true } );
+			window.addEventListener( 'touchend', up );
+		}
+
+		if ( drive === 'scroll' ) {
+			var onScroll = function () { var r = el.getBoundingClientRect(); var vh = window.innerHeight || 1; scrollAngle = dir * clamp( 1 - ( r.top + r.height / 2 ) / ( vh + r.height ), 0, 1 ) * 360; };
+			window.addEventListener( 'scroll', onScroll, { passive: true } );
+			onScroll();
+		}
+
+		var autoRun = ( drive === 'continuous' && ! reduce );
+		if ( ! ( autoRun || allowDrag || drive === 'scroll' ) ) { return; }
+		var last = 0;
+		var loop = function ( t ) {
+			if ( ! last ) { last = t; }
+			var dt = ( t - last ) / 1000; last = t;
+			if ( ! dragging ) {
+				if ( autoRun ) { advance( dt ); }
+				if ( momentum && Math.abs( vel ) > 0.02 ) { angle += vel; vel *= 0.95; }
+				else if ( drive === 'scroll' && scrollAngle !== null ) { angle = scrollAngle; }
+			}
+			applyOrbit();
+			requestAnimationFrame( loop );
+		};
+		requestAnimationFrame( loop );
 	}
 
 export function initEl(el) {
   if (el.classList.contains('tdg--carousel-ring')) { initRing(el); }
   else if (el.classList.contains('tdg--panorama-wall')) { initWall(el); }
   else if (el.classList.contains('tdg--card-sphere')) { initGlobe(el); }
+  else if (el.classList.contains('tdg--orbit-globe')) { initOrbit(el); }
 }

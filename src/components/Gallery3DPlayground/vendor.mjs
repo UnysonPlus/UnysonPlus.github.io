@@ -22,10 +22,11 @@ const OUT = path.join(HERE, 'gallery-engine.js');
 const css = fs.readFileSync(path.join(PLUGIN, 'css/gallery-3d.css'), 'utf8');
 let js = fs.readFileSync(path.join(PLUGIN, 'js/gallery-3d.js'), 'utf8');
 
-// --- strip the IIFE head (up to and including the reduced-motion probe) ---
-const headAt = js.indexOf('var reduce =');
-if (headAt < 0) throw new Error('vendor: could not find the IIFE head (var reduce =)');
-js = js.slice(js.indexOf('\n', headAt) + 1);
+// --- strip the IIFE head: everything before `function num(` (the reduced-motion probe AND the
+// generation-guard shim, both of which we re-provide below) so they aren't declared twice. ---
+const headAt = js.indexOf('function num(');
+if (headAt < 0) throw new Error('vendor: could not find the body head (function num()');
+js = js.slice(headAt);
 
 // --- strip the auto-scan bootstrap tail ---
 const tailAt = js.indexOf('function scan()');
@@ -62,6 +63,7 @@ export function initEl(el) {
   if (el.classList.contains('tdg--carousel-ring')) { initRing(el); }
   else if (el.classList.contains('tdg--panorama-wall')) { initWall(el); }
   else if (el.classList.contains('tdg--card-sphere')) { initGlobe(el); }
+  else if (el.classList.contains('tdg--orbit-globe')) { initOrbit(el); }
 }
 `;
 

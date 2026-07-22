@@ -72,3 +72,13 @@ footer:
   label: Footer
   permalink: /footer
   description: Footer builder — bars, columns and layout
+
+accessibility:
+  label: Accessibility
+  permalink: /accessibility
+  description: ARIA correctness, the accessibility tree, and assistive-tech support
+
+agentic-browsing:
+  label: Agentic browsing
+  permalink: /agentic-browsing
+  description: Making sites consumable by AI agents — structured data, crawl signals, WebMCP

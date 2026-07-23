@@ -5,7 +5,7 @@ sidebar_position: 50
 
 # Image Box
 
-An image paired with a heading, text and link, rendered in one of **five layout families** (Stacked, Side, Overlay, Card, Frame) — each with its own variations — plus universal **image size** and **shape mask** controls. Its options are organized across the **Content**, **Design**, **Effects & Link**, **Styling**, **Animations**, and **Advanced** tabs.
+An image paired with a heading, text and link, rendered in one of **five layout families** (Stacked, Side, Overlay, Card, Frame) — each with its own variations — plus a universal **image size** control and reusable **Image Style** presets. Its options are organized across the **Content**, **Design**, **Effects & Link**, **Styling**, **Animations**, and **Advanced** tabs.
 
 <img src="/img/shortcodes/image-box-backend.png" alt="Image Box on the Page Builder canvas" width="936" />
 
@@ -36,7 +36,6 @@ An image paired with a heading, text and link, rendered in one of **five layout 
   - **Frame** — reveals **Frame Style** (`Polaroid` / `Postcard` / `Bordered badge` / `Photo stack`).
 - **Image Crop Ratio** — select that forces the image into a fixed shape via `object-fit: cover`; choices `Original (uncropped)`, `Square 1:1`, `Landscape 4:3` (default), `Landscape 3:2`, `Widescreen 16:9`, `Portrait 3:4`, `Portrait 2:3`.
 - **Image Size** — compact select for how large the image renders on the image-top families (Stacked, Card, Frame); choices `Full` (default), `Large (75%)`, `Medium (55%)`, `Small (35%)`, `X-Small (140px)`. Small / X-Small centre the image — handy for a logo or avatar with a shape Mask. The Side family uses Media Width instead.
-- **Image Mask** — image-picker that clips the image to a shape. Shape masks (circle, hexagon, heart, …) force a square crop; Rounded / Arch keep the crop ratio. Choices: `None`, `Rounded`, `Rounded XL`, `Circle`, `Squircle`, `Arch`, `Hexagon`, `Octagon`, `Diamond`, `Triangle`, `Pentagon`, `Shield`, `Star`, `Chevron`, `Leaf`, `Heart`, `Flower`, `Brush`, `Water Splash`, `Grunge Frame`, `Blob 1`, `Blob 2`, and **Custom**. Picking **Custom** reveals three ways to supply your own: **Inline SVG or SVG URL** (paste `<svg>` markup or a hosted `.svg` URL), **Upload an SVG** (from the Media Library, if SVG uploads are enabled), or a **CSS clip-path** (e.g. `polygon(50% 0, 100% 100%, 0 100%)`). For a custom SVG, fill the shape solid on a transparent background — the filled area is where the photo shows.
 - **Content Alignment** — alignment control (with Inherit) for the horizontal alignment of the eyebrow, title, text and button. Leave on Inherit to use each design's default.
 
 ## Effects & Link
@@ -53,6 +52,7 @@ An image paired with a heading, text and link, rendered in one of **five layout 
 
 <img src="/img/shortcodes/image-box-styling.png" alt="Image Box options panel — Styling tab" width="1200" />
 
+- **Image Style** — a live-preview picker of the reusable **Image Style presets** (crop ratio, corner radius, shape mask, filter, scrim), managed in **Theme Settings → Components → Image Styles**. This replaces the old per-element *Image Mask* option — the full shape library (circle, hexagon, heart, blobs, custom SVG / clip-path, …) now lives on the preset, so a mask defined once applies consistently across every element. Legacy saved masks keep rendering unchanged.
 - **Background Color** — compact color picker for the box background.
 - **Font Size** — a named size from the framework presets (customizable in Theme Settings on the official Unyson+ theme).
 - **Title Color** — color applied to the title.

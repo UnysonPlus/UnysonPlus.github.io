@@ -23,6 +23,7 @@ A standalone image with optional click-through link and explicit width/height si
 
 <img src="/img/shortcodes/media-image-styling.png" alt="Image options panel — Styling tab" width="1200" />
 
+- **Image Style** — a live-preview picker of the reusable **Image Style presets** (crop ratio, corner radius, shape mask, filter, scrim), managed in **Theme Settings → Components → Image Styles**.
 - **Background Color** — compact color picker (a `bg-*` preset or a custom hex) applied to the wrapper. With padding, this renders a colored frame around the image.
 - **Margin & Padding** — spacing control. All Sides applies to every side at once; any per-side value (Top, Right, Bottom, Left) overrides it for that direction.
 

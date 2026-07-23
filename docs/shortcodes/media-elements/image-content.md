@@ -36,6 +36,7 @@ Image, Content (rich text), Image Alt Text, Image Link, Open Link in New Window.
 | Option | Choices |
 | --- | --- |
 | **Image Fit** | Contain (show full image), Cover (fill column) |
+| **Image Style** | Any Image Style preset — crop, corners, mask, filter, scrim (Theme Settings → Components → Image Styles) |
 | **Image Border Radius** | None, Small, Medium, Large, Circle |
 | **Image Shadow** | Small, Medium, Large |
 | **Content Color** | Body text color |

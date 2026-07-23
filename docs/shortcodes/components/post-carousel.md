@@ -40,6 +40,7 @@ A touch-friendly slider of posts (or any public post type) — image, title, exc
 
 <img src="/img/shortcodes/post-carousel-styling.png" alt="Post Carousel options panel — Styling tab" width="1200" />
 
+- **Image Style** — a live-preview picker of the reusable **Image Style presets** (crop ratio, corner radius, shape mask, filter, scrim), managed in **Theme Settings → Components → Image Styles**.
 - **Accent (links / meta)** — accent color for links and meta.
 - **Card Background** — card background color.
 - **Title Color** — color of the post title.

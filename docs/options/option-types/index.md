@@ -192,6 +192,7 @@ copy-pasteable example.
 | --- | --- |
 | [`button-presets`](./button-presets.md) | Manage reusable button-style presets |
 | [`button-style-picker`](./button-style-picker.md) | Pick a button preset with a live preview |
+| [`image-style-picker`](./image-style-picker.md) | Pick an Image Style preset with a live swatch preview |
 
 ### Composite & repeatable
 

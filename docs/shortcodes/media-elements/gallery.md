@@ -44,7 +44,7 @@ Each design reveals its own options:
 | **On Image Click** | Open Lightbox · Open Full Image · Go to Attachment Page · Do Nothing |
 | **Captions** | None · Overlay on Hover · Below the Image |
 | **Caption Source** | Image Caption · Image Title · Alt Text · Description |
-| **Corner Radius** | Square · Rounded · Large · Circle |
+| **Image Style** | Any Image Style preset — crop, corners, mask, filter, scrim (Theme Settings → Components → Image Styles) |
 | **Zoom on Hover** | On/Off |
 
 Plus **Text / Background / Title / Caption Color**, a **Font Size Preset**, and **Margin &

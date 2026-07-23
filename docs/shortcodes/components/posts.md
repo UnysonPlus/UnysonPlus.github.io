@@ -30,9 +30,13 @@ Exclude Current Post, Sticky Post Handling.
 
 ## Layout & cards
 
-Layout Mode, Card Style, Image/Content Width Ratio, Desktop/Tablet/Mobile Columns,
-Column/Row Gap, Card Padding (density), Equal Card Heights, Image Size & Crop Ratio, Fallback
-Image, Featured Post Treatment, Card Text Alignment, draggable Element Order.
+Layout Mode, Card Style (grouped into **Layouts** — structural arrangements like Side,
+Postcard, News List, Listicle — and **Decorated** treatments like Diagonal Split), an
+**Image Position** (Left / Right) for the horizontal card styles, Image/Content Width Ratio,
+Desktop/Tablet/Mobile Columns, Column/Row Gap, Card Padding (density), Equal Card Heights,
+Image Size & Crop Ratio, an **Image Style** preset (crop, corners, mask, filter, scrim —
+managed in Theme Settings → Components → Image Styles), Fallback Image, Featured Post
+Treatment, Card Text Alignment, draggable Element Order.
 
 ## Content & meta
 
@@ -59,5 +63,10 @@ interval, loop), Transient Caching with a configurable lifespan, and an Empty-St
 ## Styling
 
 <img src="/img/shortcodes/posts-styling.png" alt="Posts options panel — Styling tab" width="1200" />
+
+Per-part color controls (each a compact color-preset picker): **Title Color**, **Excerpt
+Color**, **Meta Color**, **Chip Background** & **Chip Text** (the category chips), and an
+**Accent Color** that tints links, read-more and the pagination pills. Leave any blank to
+inherit the theme.
 
 ![Posts options panel — Styling tab](/img/shortcodes/posts-styling.png)

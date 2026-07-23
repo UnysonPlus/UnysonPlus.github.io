@@ -105,13 +105,27 @@ const GROUPS = GROUP_ORDER.map((g) => [g, Object.keys(DESIGNS).filter((k) => DES
 const defaultsFor = (d) => Object.fromEntries(DESIGNS[d].controls.map((c) => [c.id, c.def]));
 
 function buildPhp(design, vals) {
-  const geo = DESIGNS[design].controls.map((c) => {
-    const v = vals[c.id];
-    return `            '${c.id}' => ${c.t === 'select' ? `'${v}'` : v},`;
-  }).join('\n');
+  // Motion is a NESTED multi-picker in the plugin (mode + that mode's own settings); everything else
+  // stays flat under the design. Mirror that shape here so the sample is copy-paste accurate.
+  const motionKeys = ['speed', 'direction', 'hover_behavior'];
+  const line = (c, ind) => `${ind}'${c.id}' => ${c.t === 'select' ? `'${vals[c.id]}'` : vals[c.id]},`;
+  const mode = vals.drive;
+  const msub = DESIGNS[design].controls.filter((c) => motionKeys.includes(c.id))
+    .map((c) => line(c, '                    ')).join('\n');
+  const motion = mode === 'static'
+    ? `            'motion' => [ 'mode' => 'static' ],`
+    : `            'motion' => [
+                'mode' => '${mode}',
+                '${mode}' => [
+${msub}
+                ],
+            ],`;
+  const geo = DESIGNS[design].controls.filter((c) => c.id !== 'drive' && !motionKeys.includes(c.id))
+    .map((c) => line(c, '            ')).join('\n');
   return `'design_settings' => [
     'design' => '${design}',
     '${design}' => [
+${motion}
 ${geo}
     ],
 ],`;

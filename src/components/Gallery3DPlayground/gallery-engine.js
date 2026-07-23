@@ -7,7 +7,7 @@
  * bootstrap is replaced with the initEl() / bumpGen() exports below.
  */
 
-export const GALLERY_CSS = "/**\n * 3D Gallery — base + Carousel Ring. Pure CSS 3D scene; gallery-3d.js sets the per-card\n * transforms, the ring rotation and (for Back Fade) per-card opacity at runtime.\n */\n\n.tdg {\n\tposition: relative;\n\twidth: 100%;\n\toverflow: hidden;\n\tbackground: var(--tdg-bg, transparent);\n}\n\n.tdg__stage {\n\tposition: absolute;\n\tinset: 0;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\ttransform-style: preserve-3d;\n\tperspective-origin: 50% 50%;\n\t/* perspective set by JS from the Perspective control */\n}\n\n.tdg__ring {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n\t/* transform (rotateX tilt + rotateY spin) set by JS */\n}\n\n/* Panorama Wall — stacked rows, each a scrolling cylinder of cards. */\n.tdg__wall {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg__row {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg--panorama-wall .tdg__card { backface-visibility: hidden; }\n\n/* Card Sphere — bands (latitude rings) wrapped on a sphere. */\n.tdg__globe {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg__band {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg--card-sphere .tdg__card { backface-visibility: hidden; }\n\n/* Orbit Globe — billboarded cards distributed through a sphere volume (JS translate3d's each card;\n * the container itself does not rotate, so cards always face the camera). */\n.tdg__orbit {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n\n.tdg__card {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\taspect-ratio: var(--tdg-ratio, 1 / 1);\n\ttransform-style: preserve-3d;\n\twill-change: transform, opacity;\n\tbackface-visibility: visible;\n\t/* width / margins / transform set by JS */\n}\n\n.tdg__inner {\n\twidth: 100%;\n\theight: 100%;\n\tbox-sizing: border-box;\n\tborder-radius: var(--tdg-radius, 14px);\n\tpadding: var(--tdg-pad, 0);\n\toverflow: hidden;\n\tbackground: #14161c;\n\tbox-shadow: var(--tdg-shadow, 0 14px 40px -8px rgba(0, 0, 0, 0.45));\n}\n\n.tdg__link {\n\tdisplay: block;\n\tposition: relative;\n\twidth: 100%;\n\theight: 100%;\n\tborder-radius: inherit;\n\toverflow: hidden;\n\ttext-decoration: none;\n}\n\n.tdg__img {\n\tdisplay: block;\n\twidth: 100%;\n\theight: 100%;\n\tobject-fit: cover;\n\tborder-radius: inherit;\n}\n\n.tdg__overlay {\n\tposition: absolute;\n\tinset: 0;\n\tdisplay: flex;\n\talign-items: flex-end;\n\tpadding: 10px 12px;\n\tbackground: linear-gradient(to top, rgba(0, 0, 0, 0.62), transparent 62%);\n\topacity: 0;\n\ttransition: opacity 0.3s ease;\n\tpointer-events: none;\n}\n.tdg__card:hover .tdg__overlay { opacity: 1; }\n.tdg__overlay-text { color: #fff; font-size: 13px; line-height: 1.3; }\n\n.tdg__caption {\n\tposition: absolute;\n\tleft: 0;\n\tright: 0;\n\tbottom: -1.6em;\n\ttext-align: center;\n\tfont-size: 12px;\n\topacity: 0.75;\n}\n\n.tdg--empty {\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\tmin-height: 180px;\n\tborder: 1px dashed rgba(127, 127, 127, 0.4);\n\tborder-radius: 10px;\n}\n.tdg__empty { margin: 0; opacity: 0.6; font-size: 14px; }\n\n@media (prefers-reduced-motion: reduce) {\n\t.tdg__ring { will-change: auto; }\n}\n";
+export const GALLERY_CSS = "/**\n * 3D Gallery — base + Carousel Ring. Pure CSS 3D scene; gallery-3d.js sets the per-card\n * transforms, the ring rotation and (for Back Fade) per-card opacity at runtime.\n */\n\n.tdg {\n\tposition: relative;\n\twidth: 100%;\n\toverflow: hidden;\n\tbackground: var(--tdg-bg, transparent);\n}\n\n.tdg__stage {\n\tposition: absolute;\n\tinset: 0;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\ttransform-style: preserve-3d;\n\tperspective-origin: 50% 50%;\n\t/* perspective set by JS from the Perspective control */\n}\n\n/* Pin while scrubbing (Motion: Scroll-scrub): the wrapper is stretched by Scroll Length (see\n * view.php — height: stage + N×100vh, with --tdg-stage-h carrying the stage height) and the stage\n * STICKS, viewport-centred, while the wrapper scrolls past — so the visitor's scroll drives the\n * scrub across the whole pinned stretch, then the stage releases with the page. position:sticky\n * dies inside an overflow:hidden ancestor, so the wrapper opens up and the scene clip moves onto\n * the stage instead. */\n.tdg--pinned { overflow: visible; }\n.tdg--pinned .tdg__stage {\n\tposition: sticky;\n\tinset: auto;\n\ttop: max(0px, calc((100vh - var(--tdg-stage-h, 730px)) / 2));\n\twidth: 100%;\n\theight: var(--tdg-stage-h, 730px);\n\toverflow: hidden;\n}\n\n.tdg__ring {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n\t/* transform (rotateX tilt + rotateY spin) set by JS */\n}\n\n/* Panorama Wall — stacked rows, each a scrolling cylinder of cards. */\n.tdg__wall {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg__row {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg--panorama-wall .tdg__card { backface-visibility: hidden; }\n\n/* Card Sphere — bands (latitude rings) wrapped on a sphere. */\n.tdg__globe {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg__band {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg--card-sphere .tdg__card { backface-visibility: hidden; }\n\n/* Orbit Globe — billboarded cards distributed through a sphere volume (JS translate3d's each card;\n * the container itself does not rotate, so cards always face the camera). */\n.tdg__orbit {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n\n.tdg__card {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\taspect-ratio: var(--tdg-ratio, 1 / 1);\n\ttransform-style: preserve-3d;\n\twill-change: transform, opacity;\n\tbackface-visibility: visible;\n\t/* width / margins / transform set by JS */\n}\n\n.tdg__inner {\n\twidth: 100%;\n\theight: 100%;\n\tbox-sizing: border-box;\n\tborder-radius: var(--tdg-radius, 14px);\n\tpadding: var(--tdg-pad, 0);\n\toverflow: hidden;\n\tbackground: #14161c;\n\tbox-shadow: var(--tdg-shadow, 0 14px 40px -8px rgba(0, 0, 0, 0.45));\n}\n\n.tdg__link {\n\tdisplay: block;\n\tposition: relative;\n\twidth: 100%;\n\theight: 100%;\n\tborder-radius: inherit;\n\toverflow: hidden;\n\ttext-decoration: none;\n}\n\n.tdg__img {\n\tdisplay: block;\n\twidth: 100%;\n\theight: 100%;\n\tobject-fit: cover;\n\tborder-radius: inherit;\n}\n\n.tdg__overlay {\n\tposition: absolute;\n\tinset: 0;\n\tdisplay: flex;\n\talign-items: flex-end;\n\tpadding: 10px 12px;\n\tbackground: linear-gradient(to top, rgba(0, 0, 0, 0.62), transparent 62%);\n\topacity: 0;\n\ttransition: opacity 0.3s ease;\n\tpointer-events: none;\n}\n.tdg__card:hover .tdg__overlay { opacity: 1; }\n.tdg__overlay-text { color: #fff; font-size: 13px; line-height: 1.3; }\n\n.tdg__caption {\n\tposition: absolute;\n\tleft: 0;\n\tright: 0;\n\tbottom: -1.6em;\n\ttext-align: center;\n\tfont-size: 12px;\n\topacity: 0.75;\n}\n\n.tdg--empty {\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\tmin-height: 180px;\n\tborder: 1px dashed rgba(127, 127, 127, 0.4);\n\tborder-radius: 10px;\n}\n.tdg__empty { margin: 0; opacity: 0.6; font-size: 14px; }\n\n@media (prefers-reduced-motion: reduce) {\n\t.tdg__ring { will-change: auto; }\n}\n";
 
 // Reduced motion: the driver renders a static scene instead of animating.
 var reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -24,6 +24,21 @@ function requestAnimationFrame(fn) {
 
 function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); return isNaN( v ) ? dflt : v; }
 	function clamp( v, a, b ) { return v < a ? a : ( v > b ? b : v ); }
+
+	// Scroll-scrub progress 0..1, shared by every design. Pass-through mode: the element's travel
+	// through the viewport. Pinned mode (.tdg--pinned, "Pin while scrubbing"): progress through the
+	// pinned stretch — the stage sticks while the stretched wrapper passes, so the span is
+	// wrapperH − stageH and the stick offset mirrors the CSS `top:` rule (viewport-centred stage).
+	function scrollProgress( el, stage ) {
+		var r = el.getBoundingClientRect();
+		var vh = window.innerHeight || 1;
+		if ( el.classList.contains( 'tdg--pinned' ) ) {
+			var sh = ( stage && stage.offsetHeight ) || 1;
+			var stick = Math.max( 0, ( vh - sh ) / 2 );
+			return clamp( ( stick - r.top ) / Math.max( 1, r.height - sh ), 0, 1 );
+		}
+		return clamp( 1 - ( r.top + r.height / 2 ) / ( vh + r.height ), 0, 1 );
+	}
 
 	// Hover behaviour for auto-rotating drives: 'none' keeps full speed, 'pause' stops on hover,
 	// 'slow' eases to a crawl. Returns a getter for the current speed multiplier so each driver can
@@ -185,11 +200,7 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 		}
 
 		if ( drive === 'scroll' ) {
-			var onScroll = function () {
-				var r = el.getBoundingClientRect();
-				var vh = window.innerHeight || 1;
-				scrollAngle = dir * clamp( 1 - ( r.top + r.height / 2 ) / ( vh + r.height ), 0, 1 ) * 360;
-			};
+			var onScroll = function () { scrollAngle = dir * scrollProgress( el, stage ) * 360; };
 			window.addEventListener( 'scroll', onScroll, { passive: true } );
 			onScroll();
 		}
@@ -324,12 +335,7 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 		}
 
 		if ( drive === 'scroll' ) {
-			var onScroll = function () {
-				var r = el.getBoundingClientRect();
-				var vh = window.innerHeight || 1;
-				var prog = clamp( 1 - ( r.top + r.height / 2 ) / ( vh + r.height ), 0, 1 );
-				scrollBase = dir * prog * span * 2;
-			};
+			var onScroll = function () { scrollBase = dir * scrollProgress( el, stage ) * span * 2; };
 			window.addEventListener( 'scroll', onScroll, { passive: true } );
 			onScroll();
 		}
@@ -457,7 +463,7 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 		}
 
 		if ( drive === 'scroll' ) {
-			var onScroll = function () { var r = el.getBoundingClientRect(); var vh = window.innerHeight || 1; scrollAngle = dir * clamp( 1 - ( r.top + r.height / 2 ) / ( vh + r.height ), 0, 1 ) * 360; };
+			var onScroll = function () { scrollAngle = dir * scrollProgress( el, stage ) * 360; };
 			window.addEventListener( 'scroll', onScroll, { passive: true } );
 			onScroll();
 		}
@@ -572,7 +578,7 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 		}
 
 		if ( drive === 'scroll' ) {
-			var onScroll = function () { var r = el.getBoundingClientRect(); var vh = window.innerHeight || 1; scrollAngle = dir * clamp( 1 - ( r.top + r.height / 2 ) / ( vh + r.height ), 0, 1 ) * 360; };
+			var onScroll = function () { scrollAngle = dir * scrollProgress( el, stage ) * 360; };
 			window.addEventListener( 'scroll', onScroll, { passive: true } );
 			onScroll();
 		}

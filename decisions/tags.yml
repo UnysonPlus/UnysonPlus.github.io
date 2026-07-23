@@ -82,3 +82,8 @@ agentic-browsing:
   label: Agentic browsing
   permalink: /agentic-browsing
   description: Making sites consumable by AI agents — structured data, crawl signals, WebMCP
+
+portfolio:
+  label: Portfolio
+  permalink: /portfolio
+  description: The portfolio extension, its templates and elements

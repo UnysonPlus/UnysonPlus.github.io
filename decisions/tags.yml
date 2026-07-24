@@ -92,3 +92,8 @@ security:
   label: Security
   permalink: /security
   description: Trust boundaries, capabilities, and safely handling author-supplied code
+
+animation:
+  label: Animation
+  permalink: /animation
+  description: The Animation Engine — scroll-driven motion, transitions and cinematic effects

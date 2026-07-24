@@ -121,9 +121,51 @@ $options = [
 		// 'add-button-text' => __( 'Add', 'unysonplus' ),
 		// 'sortable' => false,
 		// 'limit' => 5,
+		// 'connect_group' => 'my_group',  // cross-list drag-and-drop (see below)
 	],
 ];
 ```
+
+## Cross-list drag-and-drop — `connect_group`
+
+Set the **same non-empty `connect_group`** on two or more `addable-popup`s and their items can be
+dragged **between** them (not just reordered within one list). This is what powers dragging an
+element from one header/footer column to another. Empty (the default) keeps each list
+self-contained.
+
+```php
+// Two lists that share a group id → items drag across; a third, ungrouped list stays isolated.
+$options = [
+	'column_left' => [
+		'type'          => 'addable-popup',
+		'label'         => __( 'Left Column', 'unysonplus' ),
+		'connect_group' => 'my_bar',       // ← same id
+		'template'      => '{{- label }}',
+		'popup-options' => [ 'label' => [ 'type' => 'text', 'label' => __( 'Label', 'unysonplus' ) ] ],
+	],
+	'column_right' => [
+		'type'          => 'addable-popup',
+		'label'         => __( 'Right Column', 'unysonplus' ),
+		'connect_group' => 'my_bar',       // ← same id → interlinks with column_left
+		'template'      => '{{- label }}',
+		'popup-options' => [ 'label' => [ 'type' => 'text', 'label' => __( 'Label', 'unysonplus' ) ] ],
+	],
+];
+```
+
+**Scope the group id** per logical group (one bar's columns, one row + its column count) so
+**unrelated** `addable-popup`s on the same settings page don't interlink. The id is sanitized to a
+CSS-safe token and emitted as `.fw-ap-connect-<group>` on the wrapper.
+
+Notes:
+
+- **Empty connected lists stay visible** as a "Drag an item here" drop target (a `display:none`
+  list can't receive a drop).
+- **Moves persist automatically.** Under the hood the form saves by input name, so a dragged item
+  is re-keyed to the receiving list on drop — you don't need to do anything; just set the same
+  `connect_group`.
+- Try it live in **Theme Settings → (demo pages)**: the *Connected List A / B* pair, or the real
+  thing in **Header → Main** and **Footer → Main Footer** (drag an element between columns).
 
 ## Reading the value
 

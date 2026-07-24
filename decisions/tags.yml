@@ -87,3 +87,8 @@ portfolio:
   label: Portfolio
   permalink: /portfolio
   description: The portfolio extension, its templates and elements
+
+security:
+  label: Security
+  permalink: /security
+  description: Trust boundaries, capabilities, and safely handling author-supplied code

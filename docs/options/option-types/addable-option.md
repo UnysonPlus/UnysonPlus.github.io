@@ -29,9 +29,35 @@ $options = [
 		// 'attr' => [ 'class' => 'my-class', 'data-foo' => 'bar' ],  // extra HTML attributes
 		// 'add-button-text' => __( 'Add', 'unysonplus' ),
 		// 'sortable' => false,  // disable drag-to-reorder
+		// 'connect_group' => 'my_group',  // cross-list drag-and-drop (see below)
 	],
 ];
 ```
+
+## Cross-list drag-and-drop — `connect_group`
+
+Set the **same non-empty `connect_group`** on two or more `addable-option` fields and their rows can
+be dragged **between** them (not just reordered within one list). Empty (the default) keeps each list
+self-contained.
+
+```php
+// Two lists that share a group id → rows drag across; unrelated lists stay isolated.
+$options = [
+	'tags_left'  => [ 'type' => 'addable-option', 'label' => __( 'Left', 'unysonplus' ),
+		'connect_group' => 'my_tags', 'option' => [ 'type' => 'text' ] ],
+	'tags_right' => [ 'type' => 'addable-option', 'label' => __( 'Right', 'unysonplus' ),
+		'connect_group' => 'my_tags', 'option' => [ 'type' => 'text' ] ],  // ← same id → interlinks
+];
+```
+
+**Scope the group id** per logical group so unrelated `addable-option`s on the same page don't
+interlink. Notes:
+
+- **Empty connected lists stay visible** as a "Drag an item here" drop target.
+- **Moves persist automatically.** `addable-option` rows are stored under indexed names
+  (`[id][n]`), and the form saves by input name, so a dragged row is re-keyed to the receiving list
+  on drop — you don't need to do anything; just set the same `connect_group`.
+- Works best with a **leaf** inner `option` (text, select, …) — the common case.
 
 **Custom Events**
 

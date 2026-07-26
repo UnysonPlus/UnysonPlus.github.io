@@ -54,9 +54,9 @@ three things that define genuinely premium motion:
 ## About "camera-glide" background motion
 
 A popular effect right now is a slow cinematic drift on a hero background — a camera that seems to
-pan and push into a scene as you scroll. It looks 3D, but on most sites (tools like poly.app among
-them) it's actually **2.5D**: a flat image or video with a *faked* camera move over it. It reads as a
-nice drift, but never as depth you can travel *through*.
+pan and push into a scene as you scroll. It looks 3D, but on most sites it's actually **2.5D**: a
+flat image or video with a *faked* camera move over it. It reads as a nice drift, but never as depth
+you can travel *through*.
 
 The Animation Engine already produces this exact effect on purpose — see the **Backdrop Motion**
 (`pan` / `dolly` / `pan_dolly`) options in [Scroll Story](/animation-engine/scrollytelling). The

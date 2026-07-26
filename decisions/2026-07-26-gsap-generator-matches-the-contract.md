@@ -55,3 +55,10 @@ element) in lockstep, so it's a "change both sides together" follow-up, not a v1
   generator together, keeping the "what you see is what you paste" guarantee intact.
 
 *Status: Accepted. Lives at `/animation-engine/gsap-generator`.*
+
+*Update (same day): the deferred trigger controls were added **on both sides together** — the exact
+"change the runtime and the generator in lockstep" follow-up this decision anticipated. The Custom
+Code field gained **Trigger start** + **Scrub** options (the runtime `runSnippets` reads them off the
+element); the generator mirrors them as a preview mode (play vs. a scrub slider) and a "set these in
+the builder" hint. The guarantee still holds: the generated **snippet** is only the tween chain —
+trigger/scrub are field options, not code — so what you paste always works.*

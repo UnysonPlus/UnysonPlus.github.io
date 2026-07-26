@@ -131,3 +131,25 @@
 
 .note { font-size: 0.8rem; color: var(--ifm-color-emphasis-600); margin: 0.3rem 0 0; line-height: 1.5; }
 .note code { font-size: 0.9em; }
+
+.hint { font-size: 0.78rem; color: var(--ifm-color-emphasis-600); margin: 0.55rem 0 0; line-height: 1.4; }
+
+.scrubRow { display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; font-weight: 600; color: var(--ifm-color-emphasis-700); }
+.scrubSlider { flex: 1 1 auto; accent-color: var(--ifm-color-primary); }
+
+.builderNote {
+  border: 1px dashed var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  background: var(--ifm-background-surface-color);
+  padding: 0.6rem 0.75rem;
+  font-size: 0.82rem;
+  color: var(--ifm-color-emphasis-700);
+}
+.builderNote strong { color: var(--ifm-font-color-base); }
+.builderRow { display: flex; flex-wrap: wrap; gap: 0.3rem 1.2rem; margin-top: 0.35rem; }
+.builderRow code {
+  font-size: 0.85em;
+  background: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  padding: 0.05rem 0.35rem; border-radius: 5px;
+}

@@ -6,7 +6,7 @@ slug: /scroll-loop
 
 # Infinite Scroll Loop
 
-:::tip Try it live
+:::tip[Try it live]
 See the seamless wrap in the **[Infinite Scroll Loop playground](./playground.mdx)** — auto-scroll (or
 wheel over the stage) and watch it loop forever through the cloned first section, with optional
 section snapping. It demonstrates the exact clone-and-jump-back technique the real module uses.
@@ -38,7 +38,7 @@ Global on/off: **Theme Settings → Site-wide UX → Effects → Enable Infinite
 
 As you scroll past the last section, the first re-appears seamlessly — the scroll never ends.
 
-:::caution Where does the footer go?
+:::caution[Where does the footer go?]
 An infinite loop has no natural end, so a footer placed after the looped sections can't be reached by scrolling. Keep the loop to a self-contained set of sections (e.g. a hero/showcase), and put reachable content — including the footer — on a page **without** the loop, or outside the looped run.
 :::
 

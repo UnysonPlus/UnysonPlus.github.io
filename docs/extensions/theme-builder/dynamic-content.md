@@ -33,7 +33,7 @@ Each renders a clean, single semantic wrapper (e.g. `<div class="post-author">�
 leaves no markup. Every element carries the standard **Styling** (text color / font size / spacing),
 **Animations**, and **Advanced** (CSS id/class, visibility) tabs.
 
-:::tip Build it once, see it anywhere
+:::tip[Build it once, see it anywhere]
 Because these resolve against *the current request's* post, a single body template renders correctly
 for every post it applies to. Use the [live preview](./conditional-assignment.md#previewing) to check
 one against a real post before you publish.
@@ -66,7 +66,7 @@ At render time the body wraps the page: header → *(your page's own content via
 footer. The design stays in the page; the body is a thin, reusable layout shell. See
 [Body Templates → the Post Content pattern](./body-templates.md#the-post-content-pattern).
 
-:::tip Replace vs. wrap
+:::tip[Replace vs. wrap]
 A body that contains a **Post Content** element **wraps** the queried page (it renders the page's own
 content inside the template), so it's safe to apply even to a fully built page. A body **without**
 Post Content is a full **replacement** and deliberately never overrides a page you built yourself.
@@ -81,7 +81,7 @@ post the request is showing. A token can carry a **fallback** for when the value
 Tokens and elements draw from the **same registry**, so what you can insert as a `{{token}}` and what
 exists as a dedicated element stay in lockstep.
 
-:::note Scoped to where it has meaning
+:::note[Scoped to where it has meaning]
 The Dynamic Content tab (and the structure **Flexbox**) appear only inside the Theme Builder part
 editors. On a normal Page or Post there is no "queried post to bind to" that's different from the post
 you're editing, so the framework hides them there to keep the page‑builder palette focused. The

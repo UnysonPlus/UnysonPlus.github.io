@@ -12,7 +12,7 @@ This is the vision section for the Animation Engine — a plain-language guide t
 **roadmap** for where it's going next: real 3D scenes, motion timelines, and buttery site-wide
 scroll.
 
-:::info A living document
+:::info[A living document]
 This is a forward-looking roadmap, not a changelog. Priorities and sequencing may shift — but the
 direction below is where we're taking motion in UnysonPlus.
 :::

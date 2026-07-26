@@ -41,7 +41,7 @@ Overline, Title, Subtitle, Title Tag (H1–H6 / span / p).
 | **Subtitle Font Size** / **Subtitle Max Width** | Subtitle sizing |
 | Colors | Overline, Title, Subtitle, Background |
 
-:::note Screenshots — markers, containers & sizes
+:::note[Screenshots — markers, containers & sizes]
 Capture the overline marker/container variants and a couple of display sizes:
 `special-heading-pill`, `special-heading-underline`, `special-heading-display-1`.
 :::

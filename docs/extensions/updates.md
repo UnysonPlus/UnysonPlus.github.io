@@ -72,7 +72,7 @@ add_filter( 'fw_ext_update_github_branches', function ( $branches, $user_repo ) 
 }, 10, 2 );
 ```
 
-:::tip Themes ship the checker directly
+:::tip[Themes ship the checker directly]
 A theme doesn't use the Update extension, it wires the bundled update checker in its own
 `functions.php` (pointed at its repo + branch), exactly like the plugin. The Unyson+ Theme and the
 sample child theme both do this, so a generated child theme inherits a working auto-updater.

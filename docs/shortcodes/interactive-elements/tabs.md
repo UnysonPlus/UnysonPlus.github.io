@@ -9,7 +9,7 @@ sidebar_custom_props: { icon: '/img/shortcode-icons/tabs.svg' }
 Tabbed content panels — or, in the **Media panel** layout, a list-of-tabs beside a switching
 image (a feature/product showcase). Tabs: **Content**, **Styling**, **Animations**, **Advanced**.
 
-:::tip Click/hover showcase vs. scroll-pinned
+:::tip[Click/hover showcase vs. scroll-pinned]
 Set **Layout → Media panel** for a list on one side and an image that switches on **click** or
 **hover** (with optional **Auto-rotate**) on the other — each tab has its own image. For the
 *scroll-pinned cinematic* version (the image pins while steps scroll, Apple/Stripe style), use
@@ -39,7 +39,7 @@ instead.
 | **Auto-rotate** | On/Off, with an interval (seconds) — pauses on hover/focus |
 | **Fade Animation** | On/Off |
 
-:::note Screenshots — tab styles & orientation
+:::note[Screenshots — tab styles & orientation]
 Capture each style and orientation: `tabs-default`, `tabs-pills`, `tabs-underline`,
 `tabs-vertical`.
 :::

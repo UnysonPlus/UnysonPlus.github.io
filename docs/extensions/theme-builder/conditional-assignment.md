@@ -25,14 +25,14 @@ In the grid, click **Add Template**. The edit form is two simple steps:
 The grid lists each Template's parts and a short **Used On** summary. Rows can be **Edit**ed,
 **Duplicate**d, or **Delete**d (deleting a Template never deletes its header/body/footer designs).
 
-:::note No dynamic‑content picker here
+:::note[No dynamic‑content picker here]
 Every field on the Template form has the Dynamic Content picker turned **off**. A Template is global
 assignment data — a name and where/where‑not rules — not post‑contextual, so `{{tokens}}` would have
 no meaning. (Dynamic content belongs **inside** the parts; see
 [Dynamic Content](./dynamic-content.md).)
 :::
 
-:::tip The Default Website Template
+:::tip[The Default Website Template]
 A Template whose Use On is **Entire site** is your site‑wide default. The empty‑grid screen offers a
 one‑click **Create a Default Website Template** to seed it.
 :::
@@ -78,7 +78,7 @@ drive the render. A part left as *Inherit* (header/footer) or *None* (body) fall
 [How it renders](./rendering.md) and the
 [header/footer fallback chain](./headers-and-footers.md#the-headerfooter-fallback-chain).
 
-:::note Safe by construction
+:::note[Safe by construction]
 Matching uses **only native WordPress conditionals** (`is_singular`, `in_category`,
 `is_post_type_archive`, `is_404`, …), never `eval` or request‑derived includes. Resolution is
 front‑end only (it bails in wp‑admin, feeds, and oEmbed) and is request‑cached. See

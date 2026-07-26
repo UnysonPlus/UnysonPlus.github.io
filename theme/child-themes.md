@@ -41,7 +41,7 @@ add_action( 'wp_enqueue_scripts', function () {
 That's a working child theme. Activate it and you get the full parent theme; everything below is
 *optional* override.
 
-:::note Version is inherited from the parent
+:::note[Version is inherited from the parent]
 For a child theme, the framework forces the **version**, **author**, and **URI** from the *parent*
 theme's headers (`FW_Theme_Manifest`). So the child's own `Version:` header isn't what the
 framework reports — the parent's is.
@@ -61,7 +61,7 @@ The last two use the framework's three-location merge (framework → parent → 
 file supplements or replaces the parent's without editing the parent. See
 [The extension system → three locations](/docs/architecture/extension-system#three-locations).
 
-:::tip Document only the deltas
+:::tip[Document only the deltas]
 A child theme does **not** copy the parent's docs/`AGENTS.md`. If it adds or changes settings,
 templates, or CSS-token maps, give it its own *thin* `framework-customizations/theme/options/
 AGENTS.md` documenting **only those deltas**, linking back to the parent. Knowledge lives where the
@@ -109,7 +109,7 @@ Two rules are baked into the format:
 Import is an **overlay**: imported top-level keys replace their counterparts; keys the file doesn't
 carry are preserved.
 
-:::tip A full "design package" = settings + templates
+:::tip[A full "design package" = settings + templates]
 Pair a design settings `.json` with page-builder **section / full / column templates** (exported
 from the builder) and you've captured a complete site design — chrome *and* content — as portable
 files. See [the builder template format](/docs/page-builder/builder-json-format#distributable-template-envelope).

@@ -6,7 +6,7 @@ slug: /motion-path
 
 # Motion Path
 
-:::tip Try it live
+:::tip[Try it live]
 Send a badge along any of the **37 shapes** in the **[Motion Path playground](./playground.mdx)** —
 pick a shape, choose a drive (scroll / loop / on-view), tweak size, offset, easing and align-to-path,
 then copy the generated sample. It runs the real runtime's path-sampling and `apply()` math.

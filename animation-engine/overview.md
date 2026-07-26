@@ -8,7 +8,7 @@ slug: /
 
 The **Animation Engine** is a bundled UnysonPlus extension that turns the page builder into a full motion platform — scroll-driven animation, hover interactions, physics, a custom cursor, animated backgrounds, kinetic text, page transitions, and real-time 3D/WebGL/SVG elements. No code.
 
-:::info It ships **off** by default
+:::info[It ships **off** by default]
 The engine is included with UnysonPlus but **inactive** until you switch it on: **WP Admin → UnysonPlus → Extensions → Animation Engine → Activate**. Keeping it off means none of its assets or options exist on sites that don't need them.
 
 The one exception is [Entrance Animation](/animation-engine/entrance-animation) (Animate.css) — that's part of core and always available, engine or not.
@@ -35,7 +35,7 @@ Open any Section, Column or element → **Animations** tab:
 | [Scroll Color Shift](./scroll-color-shift/index.md) | Section-level — the page background morphs section-to-section as you scroll |
 | [Preloader](./preloader/index.md) | Site-wide loading screen shown until the page is ready, then animated away — spinner, bar, dots, counter, curtain, logo |
 
-:::tip Adding animations — the inserter
+:::tip[Adding animations — the inserter]
 The **Animations** tab is an **"Add Animation" inserter**. It starts empty with a **+ Add Animation** button — click it to browse a searchable, category-tabbed grid of effects (Entrance, Scroll, Pointer, Physics, Motion, Text) and pick one. It drops in as a configurable **card**, and you can **stack several** on one element (e.g. an Entrance *and* a Hover *and* a Scroll effect). Some modules (like **Hover**) can even be added **more than once** to combine their effects — Lift *and* Ripple together. Remove a card with its **×**. Effects you haven't added take no space, so the tab stays tidy no matter how many modules are installed.
 :::
 
@@ -77,7 +77,7 @@ There are two different ways to layer motion on one element:
 | Entrance, Scroll Effect, Physics, Parallax, Marquee, Text Effect, Scroll Reveal, 3D Flip Card | ❌ One per element | A second instance would fight the first over the same CSS property (transform / clip-path) or rebuild the same content, so these are single by design — their tile leaves the grid once added. |
 | Sticky Card Stack, Horizontal Scroll, Infinite Scroll Loop | ❌ One per Section | Section-level — each targets the whole section's cards or scroll, so only one arrangement is possible. |
 
-:::note Why not stack everything?
+:::note[Why not stack everything?]
 Stacking is offered only where it's genuinely useful. Forcing it on effects that share the same `transform`/`clip-path` or rebuild the same DOM would just make them clobber each other — so those stay one-per-element on purpose. **Hover** is the natural fit because its effects are independent layers.
 :::
 
@@ -91,10 +91,10 @@ The engine is built to stay out of the way:
 - **Off-screen pause.** Continuous effects (backgrounds, ambient physics) pause when scrolled out of view and when the tab is hidden.
 - **Editor-safe & flash-free.** Effects are suppressed in the builder canvas and use guards so there's no flash of un-animated content.
 
-:::tip Control lives in the inserter
+:::tip[Control lives in the inserter]
 Effects are added **per element** from the **Add Animation** inserter — there's no global on/off panel to keep in sync, and nothing loads on a page that doesn't use it. Theme Settings → Site-wide UX keeps only the engine-wide **Engine** sub-tab (**Respect reduced motion**, **Disable on mobile**) plus the site-wide config tabs (**Cursor**, **Page Transitions**, **Scroll Progress**).
 :::
 
-:::tip Build your own
+:::tip[Build your own]
 The engine is extensible — add your **own effect or module** from your child theme's `functions.php` and it shows up in the inserter automatically. See **[Add your own module / effect](./custom-modules.md)**.
 :::

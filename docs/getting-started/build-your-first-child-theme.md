@@ -9,7 +9,7 @@ The Unyson+ Theme is the parent; what you actually ship to a site is a **child t
 child inherits every template and design token from the parent and overrides only your brand. This
 guide gets a working child theme on screen in a few minutes.
 
-:::note Why a child theme?
+:::note[Why a child theme?]
 You could change Theme Settings on the parent directly, but a child theme keeps your brand (logo,
 colors, any template overrides) in your own package, so a parent-theme update never overwrites it.
 :::

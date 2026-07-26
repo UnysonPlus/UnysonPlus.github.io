@@ -6,7 +6,7 @@ slug: /cursor
 
 # Custom Cursor
 
-:::tip Try it live
+:::tip[Try it live]
 Move your pointer around the **[Custom Cursor playground](./playground.mdx)** — pick from ~34 live
 styles, tweak size / color / trail, toggle hover-grow, magnetic, blend and click FX, and copy the
 generated sample. It runs the real per-style runtimes (dot-ring, spring, elastic, comet, particle

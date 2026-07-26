@@ -6,7 +6,7 @@ slug: /preloader
 
 # Preloader / Page Loader
 
-:::tip Try it live
+:::tip[Try it live]
 Preview all 16 loader styles in the **[Preloader playground](./playground.mdx)** — pick a style,
 set the colours, logo and timing, and watch it fade away to reveal the page.
 :::
@@ -40,7 +40,7 @@ Sixteen to choose from:
 | **Curtain** | Two panels that slide apart to reveal the page. |
 | **Logo pulse** | Your logo, gently pulsing (needs a logo below). |
 
-:::info Replaces the theme's preloader
+:::info[Replaces the theme's preloader]
 The UnysonPlus theme has its own basic preloader under the same **Site-wide UX** tab. When the Animation Engine is **active**, this richer one takes over and the theme's stands down automatically — so the two never stack. With the engine deactivated, the theme still provides its own "Site-wide UX" tab (Preloader · Scrolling · Scroll to Top), so nothing is lost.
 :::
 
@@ -60,6 +60,6 @@ The UnysonPlus theme has its own basic preloader under the same **Site-wide UX**
 - Locks page scroll while visible and **always releases** — a safety timeout removes the loader even if a resource stalls, so it can never trap the page.
 - **Reduce motion** — the animated indicators hold still; the loader still appears and clears.
 
-:::tip Brand moment
+:::tip[Brand moment]
 Set the **Background** to your brand's dark colour, add your **Logo**, and pick **Curtain** — the page opens like a stage. Keep **Minimum display** around 0.4–0.6s so it reads as intentional, not slow.
 :::

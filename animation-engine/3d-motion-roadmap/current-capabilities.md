@@ -96,7 +96,7 @@ which is exactly why the [focus areas](./focus-areas) are so specific.
 - **[Image Sequence](/animation-engine/image-sequence)** (frame-scrub "video from stills"),
   **[SVG Draw](/animation-engine/svg-draw)** (self-drawing line art, scroll-scrub).
 
-:::note The takeaway
+:::note[The takeaway]
 This is a wide, capable base — more complete than most WordPress motion tools. That's *why* the
 roadmap can be narrow and specific: a few high-leverage moves, not a rebuild.
 :::

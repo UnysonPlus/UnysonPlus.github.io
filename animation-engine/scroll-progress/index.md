@@ -6,7 +6,7 @@ slug: /scroll-progress
 
 # Scroll Progress
 
-:::tip Try it live
+:::tip[Try it live]
 Preview all 16 styles in the **[Scroll Progress playground](./playground.mdx)** — drag the vertical
 scroll and watch the bar / ring / gauge / battery / counter / dots respond, then copy the generated
 sample.
@@ -39,7 +39,7 @@ Each style reveals only its relevant controls:
 - **Words per minute** for *Time left*.
 - **Hide at the top** (most styles) — fades the indicator in only once the visitor starts scrolling.
 
-:::note Section dots
+:::note[Section dots]
 The dots use the page's `<section>` / `.fw-section` blocks (needs 2+). They highlight the section
 nearest the top of the viewport and jump to a section on click — so they act as a mini side-nav.
 :::

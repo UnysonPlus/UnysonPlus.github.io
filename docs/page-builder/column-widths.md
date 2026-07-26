@@ -30,7 +30,7 @@ Widths are the usual **twelfths**, plus **one fifth**:
 | `5_12`, `7_12` | twelfths | |
 | **`1_5`** | **1/5 (20%)** | the **only** supported fifth |
 
-:::caution Fifths: only `1_5` exists
+:::caution[Fifths: only `1_5` exists]
 There is **no `2_5` / `3_5` / `4_5`** — those are not valid widths; don't emit them. A `1_5` column
 renders as **`fw-col-12 fw-col-sm-15`** (the grid's fifth class = 20%), so **five** `1_5` columns
 make a clean 5-across row with no CSS hacks. Don't use `width:"auto"` to fake equal columns — an

@@ -57,7 +57,7 @@ A page is **skipped** when:
 - its current builder JSON differs from the stored fingerprint (you edited it since the last import), **or**
 - it has no fingerprint yet (a pre-guard page, preserved to be safe).
 
-:::caution Overwriting is opt-in, and only after folding edits back to source
+:::caution[Overwriting is opt-in, and only after folding edits back to source]
 Set **`UPW_FORCE=1`** to overwrite anyway. But only do so **after** you've pulled the user's manual
 edits back into the source `pages/<slug>.json` (DB → source first), or the edits are lost. The guard
 exists precisely so a routine re-import is safe.
@@ -81,7 +81,7 @@ UPW_ONLY=features php import.php
 UPW_FORCE=1 php import.php
 ```
 
-:::note Give every new importer the same guard
+:::note[Give every new importer the same guard]
 This guard isn't only in `import.php`. The demos importers carry it too:
 `demos/7-shortcode-demos.php` (the per-shortcode demo pages) and `demos/6-demos-home.php` (the demos
 home). When you add **any** new importer, fingerprint `_upw_import_hash` and honor `UPW_FORCE` the
@@ -132,7 +132,7 @@ node build-demos-home.mjs          # regenerate demos-home.json
 php 6-demos-home.php                # import it to the demos main site
 ```
 
-:::tip Every demo gets a card
+:::tip[Every demo gets a card]
 Whenever you add a demo (a subsite or a standalone page), add its card to the `demos` array and
 rebuild the home, so the demo is discoverable and never orphaned behind a direct URL. A card with a
 `live` URL renders a "View demo" button; without one, a "Coming soon" card.

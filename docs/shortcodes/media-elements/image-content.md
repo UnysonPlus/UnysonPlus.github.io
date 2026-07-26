@@ -41,7 +41,7 @@ Image, Content (rich text), Image Alt Text, Image Link, Open Link in New Window.
 | **Image Shadow** | Small, Medium, Large |
 | **Content Color** | Body text color |
 
-:::note Screenshots — layouts & image treatments
+:::note[Screenshots — layouts & image treatments]
 Capture both layouts plus the fit/radius/shadow variants: `image-content-left`,
 `image-content-right`, `image-content-cover`, `image-content-circle`.
 :::

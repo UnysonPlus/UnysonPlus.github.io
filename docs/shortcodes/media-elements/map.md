@@ -41,7 +41,7 @@ Roadmap, Terrain, Satellite, Hybrid.
 
 Population Method, Map Height, Disable zoom on scroll, Background Color, Margin & Padding.
 
-:::note Screenshots — map styles
+:::note[Screenshots — map styles]
 Capture a few representative tile styles: `map-osm-standard`, `map-carto-dark`,
 `map-esri-satellite`, `map-google-roadmap`.
 :::

@@ -13,7 +13,7 @@ source-derived reference: **258 hooks** across the plugin and theme, grouped by 
 - **Actions** let you *run code* at a point in time (`add_action`).
 - **Filters** let you *change a value* and return it (`add_filter`).
 
-:::tip This reference is generated from the source
+:::tip[This reference is generated from the source]
 Every hook below is extracted directly from the plugin and theme PHP (`do_action()` /
 `apply_filters()` call sites), so it stays exhaustive and accurate. The **Passes to your callback**
 column is the real argument list from the call site; **What it does** is taken from the hook's
@@ -33,7 +33,7 @@ The prefix tells you where a hook comes from and how stable it is:
 | `sc_…` | Shortcodes & Site Converter helpers | Render-time helpers and converter hooks. |
 | `upwc_…` | The WooCommerce extension | Storefront element hooks. |
 
-:::note WordPress core and the bundled update library are excluded
+:::note[WordPress core and the bundled update library are excluded]
 Hooks Unyson+ merely *calls* (WordPress core actions like `init`, `wp_enqueue_scripts`) and the
 bundled `plugin-update-checker` library's `puc_…` hooks are **not** listed here. This reference is
 only the hooks Unyson+ itself defines.

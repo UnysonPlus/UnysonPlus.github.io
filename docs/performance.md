@@ -72,7 +72,7 @@ See [Asset Optimizer](/docs/extensions/asset-optimizer).
 | Combine remaining CSS/JS (one toggle) | [Asset Optimizer](/docs/extensions/asset-optimizer) |
 | Cache hosts can hide the asset scan | [Troubleshooting](/docs/troubleshooting#asset-optimizer-lists-no-cssjs-to-combine) |
 
-:::tip Disabling styling for a "bring your own CSS" build
+:::tip[Disabling styling for a "bring your own CSS" build]
 For a structure-only build (you supply all the CSS via each element's Advanced → CSS Class), the
 **Styling Presets** master switch (Page Builder settings) turns off the whole preset/styling layer at
 once, shipping a bare, unstyled DOM. Meant for non-Unyson themes that bring their own CSS.

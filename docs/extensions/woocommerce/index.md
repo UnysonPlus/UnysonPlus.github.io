@@ -95,7 +95,7 @@ add_filter( 'unysonplus_woocommerce_loop_columns', function () {
 } );
 ```
 
-:::note Cart & Checkout: blocks vs. classic
+:::note[Cart & Checkout: blocks vs. classic]
 WooCommerce 9+ ships **block-based** Cart and Checkout pages by default; those blocks carry their
 own styling and render cleanly inside the theme. The UnysonPlus Theme also polishes the **classic
 shortcode** Cart / Checkout (`[woocommerce_cart]` / `[woocommerce_checkout]`) and single-product

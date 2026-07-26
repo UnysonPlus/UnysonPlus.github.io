@@ -6,7 +6,7 @@ slug: /webgl-object
 
 # WebGL Object
 
-:::tip Try it live
+:::tip[Try it live]
 Spin up real WebGL in the **[WebGL Object playground](./playground.mdx)** — switch between the glass
 blob, liquid metal, distorted sphere, particle field and the full-screen shaders (gradient mesh,
 plasma, aurora, fluid, dots); recolour them and tune the material / shader params, noise, auto-rotate,

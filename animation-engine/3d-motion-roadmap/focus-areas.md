@@ -22,7 +22,7 @@ control) and route the scroll engine through it, so *everything* that scrolls sh
 result is that every scroll effect on the page suddenly feels like one polished system — and every
 future scroll feature inherits that quality for free.
 
-:::tip Biggest win, least work
+:::tip[Biggest win, least work]
 This is mostly wiring — the smooth-scroll library is already in the engine (it powers
 [Scroll Loop](/animation-engine/scroll-loop)). Making it global is the highest return for the least
 effort, which is why it's first.
@@ -61,7 +61,7 @@ scenes (for example: dolly through a floating gallery, orbit a product, fly thro
 images) whose camera is driven by scroll. You drop in your own media, pick a scene, and tune a few
 knobs — no 3D scene-building from scratch.
 
-:::warning Performance is part of the design
+:::warning[Performance is part of the design]
 Real WebGL is reserved for one hero moment per page, always with a static image fallback, reduced-
 motion support, and mobile throttling. See the [performance rules](./roadmap#guardrails).
 :::

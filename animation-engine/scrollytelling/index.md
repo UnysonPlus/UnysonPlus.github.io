@@ -6,7 +6,7 @@ slug: /scrollytelling
 
 # Scrollytelling
 
-:::tip Try it live
+:::tip[Try it live]
 Scrub a pinned-media story in the **[Scrollytelling playground](./playground.mdx)** — drag the
 vertical scroll and the pinned panel swaps to each step; try all 23 CSS transitions (crossfade, zoom,
 slide, flip, cube, iris, blinds, glitch…) and tune the side, transition, intensity, direction and
@@ -30,7 +30,7 @@ Scrollytelling rides your Section's existing **columns**. Build the Section with
 
 The mapping is **by index**: **step 1 shows media 1, step 2 shows media 2**, and so on. Just keep the counts aligned. The **Media side** option chooses which column is the pinned media (left / right / top).
 
-:::tip Keep each step to one element
+:::tip[Keep each step to one element]
 So the steps line up 1-to-1 with the media, make **each step a single element**. A **Special Heading** with a **CSS Class** set (Advanced tab) wraps its title + subtitle into one block — perfect for a step. If a caption renders as several sibling elements, the module still maps them proportionally, but one-element-per-step gives the cleanest pacing.
 :::
 

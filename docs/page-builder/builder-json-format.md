@@ -9,7 +9,7 @@ The builder stores its content as a JSON **tree** (encoded as a string under the
 key — see [How it works](./how-it-works.md#1-the-stored-value)). This page documents the shape of
 that tree: what a section, row, column and element look like, and the keys every item shares.
 
-:::note Who needs this
+:::note[Who needs this]
 You don't need any of this to *use* the builder. It matters when you **generate** builder content
 programmatically (importers, demo seeders, distributable templates) or **debug** a stored page.
 The authoritative, continuously-verified spec lives in the plugin at
@@ -41,7 +41,7 @@ directly under a section and the corrector inserts the rows. By kind:
 Containers (`section` / `column` / `row`) additionally carry **`_items`** (their children). A
 leaf is `{"type":"simple","shortcode":"<atom>","atts":{…},"_items":[]}`.
 
-:::caution `unique_id`s are not regenerated on import
+:::caution[`unique_id`s are not regenerated on import]
 The template importer does **not** re-roll `unique_id`s. When you generate a tree, emit a fresh
 32-hex id per item — duplicated ids across items cause rendering/anchor collisions.
 :::

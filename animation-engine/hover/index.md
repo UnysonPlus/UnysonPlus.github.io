@@ -6,7 +6,7 @@ slug: /hover
 
 # Hover Interactions
 
-:::tip Try it live
+:::tip[Try it live]
 Every effect below is interactive in the **[Hover playground](./playground.mdx)** — pick an
 effect, tweak its options, and copy the generated sample.
 :::
@@ -17,7 +17,7 @@ Pointer-driven effects that play **while hovering** an element — a magnetic pu
 
 Open any element → **Animations** tab → **Hover Interaction**. It's a **popover of animated tiles**; leave it on **None** for no hover effect.
 
-:::tip Stack several hover effects
+:::tip[Stack several hover effects]
 Hover Interaction is **stackable** — after you add it, its tile stays in **Add Animation**, so you can add it again to combine effects on one element (e.g. **Lift + Ripple + Glow Border**). Each card picks one effect and they all run together. Just avoid pairing two *motion* effects (Magnetic / 3D Tilt / Lift) — they share the element's transform — pick one of those plus any number of decorations.
 :::
 

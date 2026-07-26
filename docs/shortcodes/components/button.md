@@ -37,7 +37,7 @@ A styled, linkable button. Tabs: **Content**, **Styling**, **Animations**, **Adv
 | **Hover Animation** | A set of hover effects |
 | **Margin** | Spacing |
 
-:::note Screenshots — styles, sizes & hover
+:::note[Screenshots — styles, sizes & hover]
 Capture each **Button Style**, **Button Size**, and **Hover Animation** variant. Suggested
 files: `button-style-1`, `button-size-lg`, `button-hover-grow` in `static/img/shortcodes/`.
 :::

@@ -17,7 +17,7 @@ up the **GitHub plugin-update-checker** (the auto-updater pointed at
 `UnysonPlus/UnysonPlus`, branch `master`) and a few plugin-only conveniences (activation hooks, the
 Classic Editor recommendation notice, update pre/post hooks).
 
-:::note The framework is path-agnostic
+:::note[The framework is path-agnostic]
 `unysonplus.php` notes it explicitly: *"The framework doesn't know that it's used as a plugin. It
 can be located in the theme directory or any other directory. Only its path and uri is known."*
 This is why boot is deferred to `after_setup_theme` — the framework needs the theme's paths
@@ -83,7 +83,7 @@ PHP/WordPress version requirements aren't met.
 | `fw_extensions_init` | After extensions are activated | Safe point where `$extension->get_children()` works. |
 | `fw_init` | End of boot | The framework is fully loaded; everything is available. |
 
-:::tip Reading settings during boot is a trap
+:::tip[Reading settings during boot is a trap]
 Don't read extension/theme settings inside an extension's `_init()` — that can force the option
 types to initialize before the page-builder extension has registered its `page-builder` option
 type, producing *"Undefined option type: page-builder"*. Defer settings reads to `init` or later.

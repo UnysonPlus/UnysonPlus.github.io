@@ -87,7 +87,7 @@ structure: full‑width children of the main content root, each becoming one pag
 
 ### Chrome vs content
 
-:::note What "chrome" means here
+:::note[What "chrome" means here]
 **Chrome** is the site's *frame* — the **header, footer, and navigation** that wrap every page — **not
 Google Chrome the browser**. The term comes from UI design ("chrome" = the interface surrounding the
 content). The only browser involved is the one the *capture service* uses to render the page.

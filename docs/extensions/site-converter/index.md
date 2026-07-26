@@ -12,7 +12,7 @@ Media Library populated. Nothing is hand‑coded — every page stays editable i
 
 It lives at **Unyson+ → Convert** in wp‑admin.
 
-:::tip The one‑sentence mental model
+:::tip[The one‑sentence mental model]
 Point it at a **URL** or upload a design **file**; it renders the design, reads the real layout and
 styles, and rebuilds it as clean Unyson+ shortcodes + a matching child theme — pixel‑close, but
 *editable*, not a frozen copy.

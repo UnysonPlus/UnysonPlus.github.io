@@ -24,7 +24,7 @@ element:
 | **contains Post Content** | **Wraps** the queried page — it renders the page's own content inside the template layout. Safe to apply even to a fully built page. |
 | **has no Post Content** | **Replaces** the content area — a full body layout (404, landing, archive cards). It deliberately never overrides a page you built yourself. |
 
-:::caution A built page is never replaced
+:::caution[A built page is never replaced]
 If the queried post is itself a page‑builder page (you explicitly built it), a **replacement** Body
 does **not** override it. Use a **Post Content** body to wrap a built page; use a replacement Body for
 requests that don't have their own built content — 404, landing, and archive/list pages.
@@ -76,7 +76,7 @@ edit screen controls how the repeated cards are laid out:
 
 These are ignored for single‑post and 404/static bodies (which render the body once).
 
-:::tip Designed archive grids
+:::tip[Designed archive grids]
 The loop above renders your whole body once per post. For a *designed* archive — a hero, intro, then
 a grid of the archive's posts — drop a **Posts** element into a normal (non‑loop) body and turn on
 its **"Posts for current page"** source: it renders the posts of whatever archive / category / tag /
@@ -92,7 +92,7 @@ Content, Post Title, Post Excerpt, Featured Image, Author, Date, Terms, Meta) an
 with the semantic **[Flexbox](./flexbox.md)** container. These tabs appear only inside the Theme
 Builder part editors (they're hidden on normal Pages/Posts, where there's no queried post to bind to).
 
-:::tip Preview before you publish
+:::tip[Preview before you publish]
 Use the [live preview](./conditional-assignment.md#previewing) to see a Body Template rendered against
 a real post — single, archive‑loop, or 404 — before you assign it.
 :::

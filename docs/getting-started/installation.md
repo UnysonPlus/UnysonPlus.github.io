@@ -16,7 +16,7 @@ Unyson+ ships as a normal WordPress plugin plus an optional parent theme.
    copy the `unysonplus` folder into `wp-content/plugins/`.
 3. Activate **Unyson+** from the **Plugins** menu.
 
-:::tip Keep the folder name
+:::tip[Keep the folder name]
 Install the plugin into a folder named `unysonplus`. The GitHub auto-updater and the
 theme both reference that folder name.
 :::
@@ -40,7 +40,7 @@ downloaded with one click. See [Extensions](../extensions/overview.md) for the f
 Once installed, Unyson+ checks GitHub for new versions and offers updates from the
 WordPress dashboard — no manual re-uploads needed for routine updates.
 
-:::info Bootstrapping a very old install
+:::info[Bootstrapping a very old install]
 A site running a much older build may not yet have the updater pointing at the current
 repository. In that case, upload the current plugin once manually; after that, updates are
 automatic.

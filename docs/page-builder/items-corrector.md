@@ -75,7 +75,7 @@ corrupts → the modal shows a blank **"error:"**.
 
 The tell-tale symptom: **only old items error; newly-added ones are fine.**
 
-:::caution The fix is JS-side, in the item's `scripts.js`
+:::caution[The fix is JS-side, in the item's `scripts.js`]
 Because the modal renders raw atts, a PHP migration in `get_value_from_attributes()` alone does
 **not** fix the editor — you must migrate the value **in the item's `scripts.js` before the modal
 opens**, and `this.model.set('atts', migrated)` so a save persists the new shape. Keep the PHP
@@ -103,7 +103,7 @@ try {
 }
 ```
 
-:::note A safety net, not a substitute for migration
+:::note[A safety net, not a substitute for migration]
 The guard prevents data loss, but a mis-shaped value still **mis-renders** until you migrate it.
 Changing an existing option's type is a breaking value-shape change — add the JS + PHP migrators
 **and** keep the consuming `view.php` tolerant of the legacy value, so the field renders

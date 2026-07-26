@@ -53,7 +53,7 @@ entries are reserved for new features. The exact bump/rollover scheme, which fil
 and the changelog policy are documented in
 **[Manifests & versioning](/docs/architecture/manifests-and-versioning#versioning-rules)**.
 
-:::tip Read the nearest `AGENTS.md`
+:::tip[Read the nearest `AGENTS.md`]
 The plugin ships area-specific `AGENTS.md` guides next to the code (the shortcode recipe, the
 page-builder template format, the theme-settings guide, the dynamic-content reference). When you work
 in an area, the `AGENTS.md` nearest the code is the most detailed, continuously-verified reference.

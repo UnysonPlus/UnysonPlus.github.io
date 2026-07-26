@@ -15,7 +15,7 @@ The headline option. Choose how posts are arranged: **Grid**, **List**, **Masonr
 **Slider/Carousel**, **Overlay**, or **Hero**. Each mode pairs with a **Card Style** and
 responsive column controls.
 
-:::note Screenshots — one per layout mode
+:::note[Screenshots — one per layout mode]
 Add a screenshot of each Layout Mode to `static/img/shortcodes/` (e.g.
 `posts-grid`, `posts-list`, `posts-masonry`, `posts-slider`, `posts-overlay`, `posts-hero`).
 :::

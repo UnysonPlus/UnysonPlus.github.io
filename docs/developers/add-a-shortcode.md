@@ -72,7 +72,7 @@ $options = array(
 );
 ```
 
-:::note `options.php` is a contract
+:::note[`options.php` is a contract]
 The shape of `options.php` **is** the schema that the page-builder JSON (template export/import,
 demo importers, AI generators) must match when producing `atts` for this element. Keep it documented
 in the element's sibling `AGENTS.md`.
@@ -173,7 +173,7 @@ Extending `Page_Builder_Section_Like_Item` gives you the registry registration, 
 opt-outs, `_items` recursion, the Save-as-Template UI, export/import round-trip, and the hierarchy
 guards for free.
 
-:::caution The most-bitten trap
+:::caution[The most-bitten trap]
 Don't forget the **eager `fw_section_like_types` filter** (step 2). The `register_items` action only
 fires on the editor-render lifecycle; admin-ajax handlers (template save, import, the items corrector
 running on `wp_insert_post`) won't see your type as section-like without the filter, and will reject

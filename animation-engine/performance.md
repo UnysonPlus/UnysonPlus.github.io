@@ -29,7 +29,7 @@ number of effects that *exist* has no bearing on what a visitor *downloads*. Eve
 are split further — an animated background only pulls in the particle engine if you actually chose a
 particle style, and only the metaball blob engine for a metaball background.
 
-:::info Nothing on pages that don't use it
+:::info[Nothing on pages that don't use it]
 A page with no animations ships none of the engine's CSS or JavaScript. The site-wide pieces —
 [custom cursor](./cursor/index.md), [page transitions](./page-transitions/index.md),
 [scroll progress](./scroll-progress/index.md) — load only when you've switched them on, and only the one
@@ -62,7 +62,7 @@ modern HTTP/2 connections that's a non-issue — but if you'd rather combine the
 Optimizer** extension can concatenate a page's effect files into a single request, keeping the
 "only what you use" savings while collapsing them into one download.
 
-:::tip The short version
+:::tip[The short version]
 Turn on as many effects as you like across your whole site. Each visitor still downloads only the
 handful their page actually uses, and those animations quietly stop whenever the tab isn't on
 screen. Big library, light pages.

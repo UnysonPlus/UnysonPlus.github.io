@@ -10,6 +10,52 @@ description: The phased plan for 3D motion and timelines — what we build as pr
 The plan is phased so each stage ships value on its own, and the expensive work (real 3D) rides on
 foundations laid earlier. We're doing the three [focus areas](./focus-areas) **one at a time**.
 
+<figure role="group" aria-label="The motion roadmap in four phases" style="margin:1.75rem 0;">
+<svg viewBox="0 0 760 476" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="rm-t rm-d" style="width:100%;height:auto;max-width:760px;font-family:var(--ifm-font-family-base, system-ui, sans-serif);">
+<title id="rm-t">Motion roadmap — four phases</title>
+<desc id="rm-d">Phase 0 Foundation, very high impact. Phase 1 Motion timeline, high impact. Phase 2 Real 3D scenes, very high impact. Phase 3 Flourishes, medium to high impact.</desc>
+<line x1="46" y1="74" x2="46" y2="422" stroke="var(--ifm-color-emphasis-300)" stroke-width="3"/>
+<polygon points="46,438 39,425 53,425" fill="var(--ifm-color-emphasis-300)"/>
+<g>
+<circle cx="46" cy="74" r="19" fill="#0FA36B"/>
+<text x="46" y="79" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">0</text>
+<rect x="82" y="34" width="648" height="80" rx="12" fill="var(--ifm-color-emphasis-100)" stroke="var(--ifm-color-emphasis-200)"/>
+<text x="104" y="64" font-size="17" font-weight="700" fill="var(--ifm-font-color-base)">Phase 0 — Foundation</text>
+<text x="104" y="90" font-size="13" fill="var(--ifm-color-emphasis-700)">Site-wide smooth scroll + one scroll engine</text>
+<text x="708" y="58" text-anchor="end" font-size="10" font-weight="700" letter-spacing="1" fill="var(--ifm-color-emphasis-600)">IMPACT</text>
+<circle cx="654" cy="82" r="5" fill="#0FA36B"/><circle cx="672" cy="82" r="5" fill="#0FA36B"/><circle cx="690" cy="82" r="5" fill="#0FA36B"/><circle cx="708" cy="82" r="5" fill="#0FA36B"/>
+</g>
+<g>
+<circle cx="46" cy="190" r="19" fill="#2F74E6"/>
+<text x="46" y="195" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">1</text>
+<rect x="82" y="150" width="648" height="80" rx="12" fill="var(--ifm-color-emphasis-100)" stroke="var(--ifm-color-emphasis-200)"/>
+<text x="104" y="180" font-size="17" font-weight="700" fill="var(--ifm-font-color-base)">Phase 1 — Motion timeline</text>
+<text x="104" y="206" font-size="13" fill="var(--ifm-color-emphasis-700)">Beat keyframes across a pinned section</text>
+<text x="708" y="174" text-anchor="end" font-size="10" font-weight="700" letter-spacing="1" fill="var(--ifm-color-emphasis-600)">IMPACT</text>
+<circle cx="654" cy="198" r="5" fill="#2F74E6"/><circle cx="672" cy="198" r="5" fill="#2F74E6"/><circle cx="690" cy="198" r="5" fill="#2F74E6"/><circle cx="708" cy="198" r="5" fill="none" stroke="var(--ifm-color-emphasis-400)" stroke-width="1.5"/>
+</g>
+<g>
+<circle cx="46" cy="306" r="19" fill="#7C4DFF"/>
+<text x="46" y="311" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">2</text>
+<rect x="82" y="266" width="648" height="80" rx="12" fill="var(--ifm-color-emphasis-100)" stroke="var(--ifm-color-emphasis-200)"/>
+<text x="104" y="296" font-size="17" font-weight="700" fill="var(--ifm-font-color-base)">Phase 2 — Real 3D scenes</text>
+<text x="104" y="322" font-size="13" fill="var(--ifm-color-emphasis-700)">A scroll-driven camera through real depth</text>
+<text x="708" y="290" text-anchor="end" font-size="10" font-weight="700" letter-spacing="1" fill="var(--ifm-color-emphasis-600)">IMPACT</text>
+<circle cx="654" cy="314" r="5" fill="#7C4DFF"/><circle cx="672" cy="314" r="5" fill="#7C4DFF"/><circle cx="690" cy="314" r="5" fill="#7C4DFF"/><circle cx="708" cy="314" r="5" fill="#7C4DFF"/>
+</g>
+<g>
+<circle cx="46" cy="422" r="19" fill="#B26A00"/>
+<text x="46" y="427" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">3</text>
+<rect x="82" y="382" width="648" height="80" rx="12" fill="var(--ifm-color-emphasis-100)" stroke="var(--ifm-color-emphasis-200)"/>
+<text x="104" y="412" font-size="17" font-weight="700" fill="var(--ifm-font-color-base)">Phase 3 — Flourishes</text>
+<text x="104" y="438" font-size="13" fill="var(--ifm-color-emphasis-700)">Rive, WebGL image transitions, particles</text>
+<text x="708" y="406" text-anchor="end" font-size="10" font-weight="700" letter-spacing="1" fill="var(--ifm-color-emphasis-600)">IMPACT</text>
+<circle cx="654" cy="430" r="5" fill="#B26A00"/><circle cx="672" cy="430" r="5" fill="#B26A00"/><circle cx="690" cy="430" r="5" fill="#B26A00"/><circle cx="708" cy="430" r="5" fill="none" stroke="var(--ifm-color-emphasis-400)" stroke-width="1.5"/>
+</g>
+</svg>
+<figcaption style="text-align:center;font-size:.85rem;color:var(--ifm-color-emphasis-600);margin-top:.5rem;">The plan, in four phases — each ships value on its own; later phases build on earlier foundations.</figcaption>
+</figure>
+
 ## Phase 0 — Foundation
 
 The highest return for the least effort — and the base everything else builds on.

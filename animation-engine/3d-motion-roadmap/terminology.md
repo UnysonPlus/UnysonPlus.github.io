@@ -52,6 +52,39 @@ time axis** — like After Effects or a video editor — with an easing curve pe
   turntable-style rings — but they're flat planes in perspective, not a rendered scene. The
   [3D Gallery](/animation-engine/3d-gallery) and [Flip Card](/animation-engine/flip-card) live here.
 
+<figure role="group" aria-label="Real 3D versus CSS 3D, compared" style="margin:1.5rem 0;">
+<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cmp-t cmp-d" style="width:100%;height:auto;max-width:760px;font-family:var(--ifm-font-family-base, system-ui, sans-serif);">
+<title id="cmp-t">Real 3D versus CSS 3D</title>
+<desc id="cmp-d">CSS 3D is flat planes tilted in a perspective box — cheap and accessible, good for cards, tilt and rings. Real 3D (WebGL) is a camera moving through real geometry — true depth, lighting and reflections.</desc>
+<rect x="8" y="12" width="356" height="276" rx="14" fill="var(--ifm-color-emphasis-100)" stroke="var(--ifm-color-emphasis-200)"/>
+<rect x="396" y="12" width="356" height="276" rx="14" fill="var(--ifm-color-emphasis-100)" stroke="var(--ifm-color-emphasis-200)"/>
+<text x="186" y="46" text-anchor="middle" font-size="16" font-weight="700" fill="var(--ifm-font-color-base)">CSS 3D — "fake" depth</text>
+<polygon points="150,92 250,74 268,120 168,142" fill="#2F74E6" opacity="0.32"/>
+<polygon points="140,120 240,102 258,148 158,170" fill="#2F74E6" opacity="0.55"/>
+<polygon points="130,150 230,132 248,178 148,200" fill="#2F74E6" opacity="0.85"/>
+<text x="186" y="238" text-anchor="middle" font-size="12.5" fill="var(--ifm-color-emphasis-800)">Flat planes tilted in a perspective box</text>
+<text x="186" y="262" text-anchor="middle" font-size="11" fill="var(--ifm-color-emphasis-600)">Cheap · accessible · cards, tilt, rings</text>
+<text x="574" y="46" text-anchor="middle" font-size="16" font-weight="700" fill="var(--ifm-font-color-base)">Real 3D (WebGL)</text>
+<line x1="470" y1="188" x2="712" y2="188" stroke="var(--ifm-color-emphasis-300)" stroke-width="1.5" stroke-dasharray="4 5"/>
+<rect x="440" y="126" width="34" height="28" rx="4" fill="#7C4DFF"/>
+<polygon points="474,132 490,124 490,156 474,148" fill="#7C4DFF"/>
+<path d="M494,140 C540,116 585,176 632,150" fill="none" stroke="#7C4DFF" stroke-width="2.5" stroke-dasharray="5 5" marker-end="url(#cmp-arrow)"/>
+<polygon points="612,112 640,124 612,136 584,124" fill="#0FA36B" opacity="0.9"/>
+<polygon points="584,124 612,136 612,170 584,158" fill="#0FA36B" opacity="0.6"/>
+<polygon points="612,136 640,124 640,158 612,170" fill="#0FA36B" opacity="0.75"/>
+<circle cx="678" cy="152" r="22" fill="#0FA36B"/>
+<circle cx="670" cy="144" r="7" fill="#ffffff" opacity="0.4"/>
+<text x="574" y="238" text-anchor="middle" font-size="12.5" fill="var(--ifm-color-emphasis-800)">A camera moving through real geometry</text>
+<text x="574" y="262" text-anchor="middle" font-size="11" fill="var(--ifm-color-emphasis-600)">True depth · lighting · reflections</text>
+<circle cx="380" cy="150" r="19" fill="var(--ifm-background-color)" stroke="var(--ifm-color-emphasis-300)" stroke-width="1.5"/>
+<text x="380" y="155" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ifm-color-emphasis-700)">vs</text>
+<defs>
+<marker id="cmp-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#7C4DFF"/></marker>
+</defs>
+</svg>
+<figcaption style="text-align:center;font-size:.85rem;color:var(--ifm-color-emphasis-600);margin-top:.5rem;">Both are legitimate — CSS 3D gives lots of "depth" for almost no cost; real WebGL is reserved for the moments that truly need a rendered scene.</figcaption>
+</figure>
+
 Both are legitimate. CSS 3D delivers a lot of "depth" for almost no performance cost; real WebGL is
 reserved for the moments that truly need a rendered scene.
 

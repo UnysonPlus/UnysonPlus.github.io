@@ -4,13 +4,14 @@ title: "Per-batch scatter with synced text: one Stage of scenes, not five separa
 authors: [jon]
 tags: [animation, architecture]
 date: 2026-07-25
-description: "Poly.app's Discover section is a run of 'batches' — each a set of photos that scatters in and out with its own centered heading. Reproducing that raised a fork: use one cycling Photo Scatter gallery, five separate gallery shortcodes (one per batch), or make each batch a scene in one scrollytelling Stage. We chose scenes: each batch is one editable column (a centered heading + its OWN scatter), and the gallery reads its scene's scroll slice so text and images enter and leave together. This records why the single-gallery and separate-shortcode options lost, and the one framework change that made scenes work."
+description: "A reference site's scroll section is a run of 'batches' — each a set of photos that scatters in and out with its own centered heading. Reproducing that raised a fork: use one cycling Photo Scatter gallery, five separate gallery shortcodes (one per batch), or make each batch a scene in one scrollytelling Stage. We chose scenes: each batch is one editable column (a centered heading + its OWN scatter), and the gallery reads its scene's scroll slice so text and images enter and leave together. This records why the single-gallery and separate-shortcode options lost, and the one framework change that made scenes work."
 ---
 
-**The question:** Poly's Discover section plays as a sequence of *batches* — each batch is a set of
-photos that scatters onto the desk, holds around a centered line of text, then scatters away as the
-next batch (with different photos and a different line) arrives. How do we build that so each batch
-has its **own images, its own text, and its own entrance/exit** — and stays editable in the builder?
+**The question:** a reference site's scroll section plays as a sequence of *batches* — each batch is a
+set of photos that scatters onto the surface, holds around a centered line of text, then scatters away
+as the next batch (with different photos and a different line) arrives. How do we build that so each
+batch has its **own images, its own text, and its own entrance/exit** — and stays editable in the
+builder?
 
 <!-- truncate -->
 
@@ -18,7 +19,7 @@ has its **own images, its own text, and its own entrance/exit** — and stays ed
 
 We already had a single Photo Scatter gallery with a `scroll_cycle` mode that cycles image *batches*
 automatically (`batches = images ÷ cards-per-set`). That's great when you just want images cycling.
-But Poly pairs **text with each batch** — a centered heading that's synced to that batch's scatter.
+But the reference site pairs **text with each batch** — a centered heading that's synced to that batch's scatter.
 A single gallery has one set of options and no per-batch text, so it can't express "batch 2 has
 these images, this heading, and enters from the top." The user's instinct was to reach for one
 gallery shortcode per batch.

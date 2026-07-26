@@ -1,84 +1,95 @@
 ---
 sidebar_position: 2.8
-title: GSAP Snippet Generator
-sidebar_label: "GSAP Generator ⚡"
+title: GSAP Timeline Studio
+sidebar_label: "GSAP Studio ⚡"
 slug: /gsap-generator
-description: Build paste-ready GSAP for the Animation Engine's Custom Code (Motion Snippet) field — no GSAP experience needed. Pick options, preview it live, copy the code.
+description: Compose a scroll-tied GSAP timeline for the Custom Code (Motion Snippet) field — multi-target choreography, real 3D, keyframes, loops and advanced stagger. Things the built-in effects can't do. Preview live, copy the code.
+hide_table_of_contents: true
 ---
 
 import GsapSnippetGenerator from '@site/src/components/GsapSnippetGenerator';
 
-# GSAP Snippet Generator
+# GSAP Timeline Studio
 
-Every element's **Animations → Scroll Motion** has a **Custom Code** effect with a **Motion Snippet
-(GSAP)** editor — the power-user escape hatch when a preset isn't quite what you want. This tool
-writes that code for you: pick a few options, watch it run, and copy the result.
+Compose a **scroll-tied GSAP timeline** for the Custom Code (**Motion Snippet**) field — the things the
+built-in Scroll Motion effects *can't* do: choreograph several targets on one timeline, real 3D, full
+per-property control, keyframes, loops and advanced stagger. Build it below, watch it run, copy the code.
+
+<GsapSnippetGenerator />
 
 ## How the Custom Code field works
 
-Your snippet doesn't start from nothing — the engine hands you **three things already set up**:
+Your snippet runs with **three things already set up** — you just add tweens to the timeline:
 
 | You get | What it is |
 | --- | --- |
 | `el` | **This element.** Target its children with `el.querySelectorAll('.card')`. |
-| `tl` | A **`gsap.timeline()` already tied to a ScrollTrigger** on `el` (it starts when the element reaches `top 80%` of the viewport). You just add tweens to it. |
+| `tl` | A **`gsap.timeline()` already tied to a ScrollTrigger** on `el`. Add tweens to it. |
 | `gsap` | The GSAP object, if you need it directly. |
-
-So a snippet is usually just timeline calls — no `gsap.timeline()`, no `ScrollTrigger`, because `tl`
-already is one:
-
-```js
-tl.from(el, { y: 60, opacity: 0, duration: 0.8, ease: 'power2.out' })
-  .from(el.querySelectorAll('.card'), { opacity: 0, stagger: 0.1 }, '<');
-```
 
 :::note[Good to know]
 
 - **Admin-only by design.** Baked snippets execute only when the page author can use unfiltered HTML (an admin), so untrusted code never runs.
 - **Reduced motion & mobile** are respected automatically — snippets skip for visitors who ask for reduced motion, and can be disabled on phones.
-- **GSAP core + ScrollTrigger** are available; SplitText/MorphSVG and other plugins are **not** guaranteed, so this generator sticks to core tweens.
-- **Trigger start & scrub** are set with the options *next to the code field* (**Trigger start**, **Scrub**) — the snippet is *what* animates; those control *when*, and whether it scrubs with scroll. The generator mirrors both.
-
+- **GSAP core + ScrollTrigger only.** SplitText / MorphSVG / MotionPath and other plugins aren't guaranteed to be loaded for a snippet, so the Studio stays on core — which still covers everything here.
+- **Trigger start & scrub** are options *next to the code field* (the snippet is *what* animates; those control *when*). **Loop** is written into the snippet.
 :::
 
-## Build your snippet
+## Why use this over the built-in effects?
 
-Choose what to animate and add one or more timeline steps. The preview replays as you edit; the code
-box updates live — **copy it straight into the Motion Snippet field**.
+The Scroll Motion tiles apply **one effect to one target**. Custom Code lets you do what they can't — and
+the Studio writes it for you:
 
-<GsapSnippetGenerator />
+- **Choreograph a composition** — heading rises, then cards stagger in, then a button pops, all on one timeline.
+- **Real 3D** — `rotationX/Y` + `transformPerspective` for card flips, door-opens, cube turns.
+- **Keyframes** — multi-stage motion (bounce, wobble, shake, glitch) impossible with a single preset.
+- **Loops** — `repeat` / `yoyo` for float / pulse / breathe that never stops.
+- **Advanced stagger** — from center / edges / random, for grids and cascades.
 
-## Starter recipes
+## Advanced recipes
 
-Paste any of these directly (they use only `el` / `tl` / `gsap`):
+Paste-ready snippets that are flatly impossible in the options UI (all core GSAP):
 
-**Fade the element up, then stagger its cards in:**
+**Heading, then a 3D-flip card stagger:**
 ```js
-tl.from(el, { y: 60, opacity: 0, duration: 0.8, ease: 'power2.out' })
-  .from(el.querySelectorAll('.card'), { opacity: 0, y: 24, stagger: 0.12 }, '<0.2');
+tl.from(el.querySelector('h2'), { y: 40, opacity: 0, duration: 0.7, ease: 'power3.out' })
+  .from(el.querySelectorAll('.card'), {
+    rotationY: 60, opacity: 0, transformPerspective: 1000,
+    stagger: { each: 0.1, from: 'start' }, duration: 0.7, ease: 'power2.out'
+  }, '-=0.3');
 ```
 
-**Scale + fade in with a soft overshoot:**
+**Letter cascade** (wrap letters in `<span class="ch">` in your Text Block):
 ```js
-tl.from(el, { scale: 0.85, opacity: 0, duration: 0.7, ease: 'back.out(1.7)' });
+tl.from(el.querySelectorAll('.ch'), { yPercent: 120, opacity: 0, stagger: 0.04, ease: 'power4.out', duration: 0.7 });
 ```
 
-**Cards fly in from the edges:**
+**Grid-stagger reveal from the centre, with overshoot:**
 ```js
 tl.from(el.querySelectorAll('.card'), {
-  opacity: 0, y: 40, duration: 0.6, ease: 'power3.out',
-  stagger: { each: 0.1, from: 'edges' }
+  scale: 0, opacity: 0, transformOrigin: 'center',
+  stagger: { grid: 'auto', from: 'center', amount: 0.6 }, ease: 'back.out(1.7)'
 });
 ```
 
-**Line-by-line reveal (wrap each line in a `<span class="line">` in your Text Block):**
+**Ambient floating loop (never stops):**
 ```js
-tl.from(el.querySelectorAll('.line'), { yPercent: 120, opacity: 0, duration: 0.7, stagger: 0.08, ease: 'power4.out' });
+tl.to(el, { y: -12, duration: 1.6, ease: 'sine.inOut', repeat: -1, yoyo: true });
+```
+
+**Bounce-in with keyframes:**
+```js
+tl.to(el, { keyframes: { y: [60, 0, -18, 0], opacity: [0, 1, 1, 1] }, duration: 1, ease: 'power1.out' });
+```
+
+**Glitch (keyframed jitter):**
+```js
+tl.to(el, { keyframes: { x: [0, -6, 6, -4, 0], skewX: [0, 10, -8, 4, 0] }, duration: 0.5, ease: 'steps(5)' });
 ```
 
 ## Where to learn more
 
 The generated code is standard GSAP — the official [GSAP docs](https://gsap.com/docs/v3/) cover every
-tween property, [ease](https://gsap.com/docs/v3/Eases/), and the
-[timeline position parameter](https://gsap.com/resources/position-parameter/) if you want to go
-beyond what this tool exposes.
+tween property, [ease](https://gsap.com/docs/v3/Eases/), the
+[timeline position parameter](https://gsap.com/resources/position-parameter/), and
+[advanced stagger](https://gsap.com/resources/getting-started/Staggers/) if you want to go further.

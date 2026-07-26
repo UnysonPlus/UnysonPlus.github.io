@@ -98,3 +98,42 @@
 
 .note { font-size: 0.78rem; color: var(--ifm-color-emphasis-600); margin: 0.3rem 0 0; line-height: 1.5; }
 .note code { font-size: 0.9em; }
+
+/* topbar: templates + share */
+.topbar { display: flex; gap: 0.5rem; align-items: center; }
+.topbar .input { flex: 1 1 auto; }
+.share { flex: 0 0 auto; border: 1px solid var(--ifm-color-primary); background: transparent; color: var(--ifm-color-primary); border-radius: 8px; padding: 0.35rem 0.7rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.share:hover { background: var(--ifm-color-primary); color: #fff; }
+
+/* step header buttons */
+.stepBtns { display: flex; gap: 0.2rem; margin-left: auto; }
+.stepBtns button { border: 1px solid var(--ifm-color-emphasis-200); background: transparent; color: var(--ifm-color-emphasis-600); border-radius: 5px; width: 1.5rem; height: 1.5rem; cursor: pointer; font-size: 0.78rem; line-height: 1; padding: 0; }
+.stepBtns button:hover:not(:disabled) { border-color: var(--ifm-color-primary); color: var(--ifm-color-primary); }
+.stepBtns button:disabled { opacity: 0.35; cursor: default; }
+.rmX:hover { border-color: var(--ifm-color-danger, #d33) !important; color: var(--ifm-color-danger, #d33) !important; }
+
+/* random toggle + fromTo labels */
+.rand { border: none; background: transparent; cursor: pointer; font-size: 0.85rem; opacity: 0.4; padding: 0 0.1rem; filter: grayscale(1); }
+.randOn { opacity: 1; filter: none; }
+.propsLabel { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ifm-color-emphasis-500); font-weight: 700; margin-top: 0.15rem; }
+
+/* stage tools */
+.stageTools { display: flex; gap: 0.4rem; align-items: center; }
+.layoutSel { padding: 0.25rem 0.4rem; border-radius: 6px; border: 1px solid var(--ifm-color-emphasis-300); background: var(--ifm-background-color); color: var(--ifm-font-color-base); font-size: 0.78rem; }
+
+/* visual timeline strip */
+.tl { display: flex; align-items: center; gap: 0.5rem; }
+.playBtn { flex: 0 0 auto; width: 1.9rem; height: 1.9rem; border-radius: 6px; border: 1px solid var(--ifm-color-primary); background: transparent; color: var(--ifm-color-primary); cursor: pointer; font-size: 0.72rem; }
+.playBtn:hover { background: var(--ifm-color-primary); color: #fff; }
+.strip { position: relative; flex: 1 1 auto; height: 26px; background: var(--ifm-color-emphasis-100); border: 1px solid var(--ifm-color-emphasis-200); border-radius: 6px; cursor: pointer; overflow: hidden; touch-action: none; }
+.bar { position: absolute; top: 3px; bottom: 3px; background: var(--ifm-color-primary); opacity: 0.8; border-radius: 4px; color: #fff; font-size: 0.62rem; font-weight: 700; display: grid; place-items: center; overflow: hidden; }
+.head { position: absolute; top: 0; bottom: 0; width: 2px; background: #B26A00; left: 0; pointer-events: none; box-shadow: 0 0 0 1px rgba(178,106,0,.3); }
+.dur { flex: 0 0 auto; font-size: 0.72rem; color: var(--ifm-color-emphasis-500); font-variant-numeric: tabular-nums; }
+
+/* demo layouts */
+.demoHeading { font-size: 1.5rem; font-weight: 800; letter-spacing: 0.02em; margin: 0 0 0.6rem; color: var(--ifm-font-color-base); }
+.ch { display: inline-block; }
+.line { margin: 0.25rem 0; color: var(--ifm-color-emphasis-800); }
+.block { height: 150px; border-radius: 12px; background: linear-gradient(135deg, #2F74E6, #7C4DFF); }
+.device { display: grid; place-items: center; }
+.deviceScreen { width: 210px; border: 7px solid var(--ifm-color-emphasis-400); border-radius: 24px; padding: 0.75rem; background: var(--ifm-background-color); }

@@ -25,6 +25,41 @@ Any animation whose progress is tied to the **scroll position** rather than to a
   timeline plays across the pinned range, then releases. Almost every high-end scroll section is
   this.
 
+<figure role="group" aria-label="The premium scroll recipe: pin, scrub and a timeline" style="margin:1.5rem 0;">
+<svg viewBox="0 0 760 348" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="pr-t pr-d" style="width:100%;height:auto;max-width:760px;font-family:var(--ifm-font-family-base, system-ui, sans-serif);">
+<title id="pr-t">The premium scroll recipe</title>
+<desc id="pr-d">A section is pinned in place while a timeline scrubs with the scroll position, playing its beats across the pinned range, then releases.</desc>
+<rect x="236" y="16" width="52" height="24" rx="12" fill="#2F74E6"/><text x="262" y="33" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">PIN</text>
+<text x="300" y="34" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ifm-color-emphasis-500)">+</text>
+<rect x="312" y="16" width="78" height="24" rx="12" fill="#B26A00"/><text x="351" y="33" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">SCRUB</text>
+<text x="402" y="34" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ifm-color-emphasis-500)">+</text>
+<rect x="414" y="16" width="104" height="24" rx="12" fill="#7C4DFF"/><text x="466" y="33" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">TIMELINE</text>
+<text x="48" y="64" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1" fill="#B26A00">SCROLL</text>
+<rect x="40" y="74" width="16" height="196" rx="8" fill="var(--ifm-color-emphasis-200)"/>
+<rect x="40" y="152" width="16" height="60" rx="8" fill="#B26A00"/>
+<polygon points="48,288 40,274 56,274" fill="#B26A00"/>
+<rect x="120" y="78" width="350" height="180" rx="10" fill="var(--ifm-color-emphasis-100)" stroke="#2F74E6" stroke-width="2"/>
+<circle cx="138" cy="96" r="4" fill="var(--ifm-color-emphasis-400)"/><circle cx="152" cy="96" r="4" fill="var(--ifm-color-emphasis-400)"/><circle cx="166" cy="96" r="4" fill="var(--ifm-color-emphasis-400)"/>
+<text x="300" y="100" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1.5" fill="#2F74E6">PINNED — STAYS FIXED</text>
+<rect x="150" y="134" width="150" height="16" rx="4" fill="#7C4DFF" opacity="0.85"/>
+<rect x="150" y="162" width="210" height="10" rx="3" fill="var(--ifm-color-emphasis-400)"/>
+<rect x="150" y="182" width="168" height="10" rx="3" fill="var(--ifm-color-emphasis-300)"/>
+<circle cx="410" cy="182" r="28" fill="#0FA36B" opacity="0.85"/>
+<line x1="120" y1="300" x2="640" y2="300" stroke="#7C4DFF" stroke-width="2"/>
+<path d="M170,292 L178,300 L170,308 L162,300 Z" fill="#7C4DFF"/>
+<path d="M380,292 L388,300 L380,308 L372,300 Z" fill="#7C4DFF"/>
+<path d="M590,292 L598,300 L590,308 L582,300 Z" fill="#7C4DFF"/>
+<polygon points="380,286 373,276 387,276" fill="#B26A00"/>
+<text x="170" y="326" text-anchor="middle" font-size="10" fill="var(--ifm-color-emphasis-600)">beat 1</text>
+<text x="380" y="326" text-anchor="middle" font-size="10" fill="var(--ifm-color-emphasis-600)">beat 2</text>
+<text x="590" y="326" text-anchor="middle" font-size="10" fill="var(--ifm-color-emphasis-600)">beat 3</text>
+<path d="M474,122 C514,106 530,98 542,86" fill="none" stroke="var(--ifm-color-emphasis-500)" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#pr-rel)"/>
+<text x="560" y="98" font-size="10" fill="var(--ifm-color-emphasis-600)">releases</text>
+<defs><marker id="pr-rel" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="var(--ifm-color-emphasis-500)"/></marker></defs>
+</svg>
+<figcaption style="text-align:center;font-size:.85rem;color:var(--ifm-color-emphasis-600);margin-top:.5rem;">The section pins, a timeline scrubs with your scroll — its beats play across the pinned range — then it releases.</figcaption>
+</figure>
+
 :::tip You can already do this
 [Scroll Motion](/animation-engine/) gives you genuine pin + scrub, and
 [Scroll Story](/animation-engine/scrollytelling) gives you the pinned, beat-based cinematic stage.

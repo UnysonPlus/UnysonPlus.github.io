@@ -4,13 +4,13 @@ title: "\"Overlay on last section\" as a Footer Layout toggle — positioning on
 authors: [jon]
 tags: [footer, architecture]
 date: 2026-07-25
-description: "Cinematic sites (like poly.app) put the footer ON the last full-height scene instead of a separate band below it — which also removes the blank tail a pinned last section leaves behind. We graduated that from a one-off demo hack into a reusable Footer Layout toggle, 'Overlay on last section'. This records the three design calls that made it safe and generic: the option changes positioning only (the footer's own background/colours stay user-controlled), a tiny runtime measures the footer and only engages when the last section is tall enough to sit on, and the footer background defaults to transparent in overlay mode."
+description: "Cinematic sites put the footer ON the last full-height scene instead of a separate band below it — which also removes the blank tail a pinned last section leaves behind. We graduated that from a one-off demo hack into a reusable Footer Layout toggle, 'Overlay on last section'. This records the three design calls that made it safe and generic: the option changes positioning only (the footer's own background/colours stay user-controlled), a tiny runtime measures the footer and only engages when the last section is tall enough to sit on, and the footer background defaults to transparent in overlay mode."
 ---
 
-**The question:** poly.app's footer isn't a band below the page — its "Preserve human knowledge with
-Poly" line sits *on the bottom of the last full-height scene*, overlaid. That also removes the blank
-gap a pinned last section leaves after it fades out. Should this be a one-off per-site hack, or a
-first-class Footer option — and if an option, how do we make it generic and safe?
+**The question:** on a cinematic reference site the footer isn't a band below the page — its closing
+tagline sits *on the bottom of the last full-height scene*, overlaid. That also removes the blank gap a
+pinned last section leaves after it fades out. Should this be a one-off per-site hack, or a first-class
+Footer option — and if an option, how do we make it generic and safe?
 
 <!-- truncate -->
 

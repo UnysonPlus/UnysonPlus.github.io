@@ -1,0 +1,82 @@
+---
+sidebar_position: 2.8
+title: GSAP Snippet Generator
+sidebar_label: "GSAP Generator ⚡"
+slug: /gsap-generator
+description: Build paste-ready GSAP for the Animation Engine's Custom Code (Motion Snippet) field — no GSAP experience needed. Pick options, preview it live, copy the code.
+---
+
+import GsapSnippetGenerator from '@site/src/components/GsapSnippetGenerator';
+
+# GSAP Snippet Generator
+
+Every element's **Animations → Scroll Motion** has a **Custom Code** effect with a **Motion Snippet
+(GSAP)** editor — the power-user escape hatch when a preset isn't quite what you want. This tool
+writes that code for you: pick a few options, watch it run, and copy the result.
+
+## How the Custom Code field works
+
+Your snippet doesn't start from nothing — the engine hands you **three things already set up**:
+
+| You get | What it is |
+| --- | --- |
+| `el` | **This element.** Target its children with `el.querySelectorAll('.card')`. |
+| `tl` | A **`gsap.timeline()` already tied to a ScrollTrigger** on `el` (it starts when the element reaches `top 80%` of the viewport). You just add tweens to it. |
+| `gsap` | The GSAP object, if you need it directly. |
+
+So a snippet is usually just timeline calls — no `gsap.timeline()`, no `ScrollTrigger`, because `tl`
+already is one:
+
+```js
+tl.from(el, { y: 60, opacity: 0, duration: 0.8, ease: 'power2.out' })
+  .from(el.querySelectorAll('.card'), { opacity: 0, stagger: 0.1 }, '<');
+```
+
+:::note Good to know
+- **Admin-only by design.** Baked snippets execute only when the page author can use unfiltered HTML (an admin), so untrusted code never runs.
+- **Reduced motion & mobile** are respected automatically — snippets skip for visitors who ask for reduced motion, and can be disabled on phones.
+- **GSAP core + ScrollTrigger** are available; SplitText/MorphSVG and other plugins are **not** guaranteed, so this generator sticks to core tweens.
+- The **trigger is fixed** at `top 80%` — the field controls *what* animates; `tl` owns *when*.
+:::
+
+## Build your snippet
+
+Choose what to animate and add one or more timeline steps. The preview replays as you edit; the code
+box updates live — **copy it straight into the Motion Snippet field**.
+
+<GsapSnippetGenerator />
+
+## Starter recipes
+
+Paste any of these directly (they use only `el` / `tl` / `gsap`):
+
+**Fade the element up, then stagger its cards in:**
+```js
+tl.from(el, { y: 60, opacity: 0, duration: 0.8, ease: 'power2.out' })
+  .from(el.querySelectorAll('.card'), { opacity: 0, y: 24, stagger: 0.12 }, '<0.2');
+```
+
+**Scale + fade in with a soft overshoot:**
+```js
+tl.from(el, { scale: 0.85, opacity: 0, duration: 0.7, ease: 'back.out(1.7)' });
+```
+
+**Cards fly in from the edges:**
+```js
+tl.from(el.querySelectorAll('.card'), {
+  opacity: 0, y: 40, duration: 0.6, ease: 'power3.out',
+  stagger: { each: 0.1, from: 'edges' }
+});
+```
+
+**Line-by-line reveal (wrap each line in a `<span class="line">` in your Text Block):**
+```js
+tl.from(el.querySelectorAll('.line'), { yPercent: 120, opacity: 0, duration: 0.7, stagger: 0.08, ease: 'power4.out' });
+```
+
+## Where to learn more
+
+The generated code is standard GSAP — the official [GSAP docs](https://gsap.com/docs/v3/) cover every
+tween property, [ease](https://gsap.com/docs/v3/Eases/), and the
+[timeline position parameter](https://gsap.com/resources/position-parameter/) if you want to go
+beyond what this tool exposes.

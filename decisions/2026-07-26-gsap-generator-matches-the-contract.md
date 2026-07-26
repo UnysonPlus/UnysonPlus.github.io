@@ -62,3 +62,12 @@ Code field gained **Trigger start** + **Scrub** options (the runtime `runSnippet
 element); the generator mirrors them as a preview mode (play vs. a scrub slider) and a "set these in
 the builder" hint. The guarantee still holds: the generated **snippet** is only the tween chain —
 trigger/scrub are field options, not code — so what you paste always works.*
+
+*Update 2 (same day): v1 mirrored the built-in presets, which made it redundant with the module —
+there's no reason to hand-write an effect that's already a tile. So it grew into a **GSAP Timeline
+Studio** that does what the options can't: multi-target choreography on one timeline, a full
+per-property palette (2D + real 3D transforms, filters, clip-path, colour), keyframe steps, loop/yoyo,
+and advanced stagger. The core decision is unchanged and is exactly what keeps this safe — still
+**contract-faithful and core-only** (the provided `tl`, GSAP core, no plugins), so every composed
+snippet still pastes and runs. "Fuller tool" ≠ "full GSAP playground": it went deeper WITHIN the
+contract, not outside it.*

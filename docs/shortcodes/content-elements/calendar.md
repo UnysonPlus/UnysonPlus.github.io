@@ -18,7 +18,7 @@ A date / events calendar. Tabs: **Content**, **Styling**, **Animations**, **Adva
 | **Calendar Type** | Daily, Weekly, Monthly |
 | **Start Week On** | Monday, Sunday |
 
-:::note Screenshots — calendar types
+:::note[Screenshots — calendar types]
 Capture the Daily / Weekly / Monthly views: `calendar-daily`, `calendar-weekly`,
 `calendar-monthly`.
 :::

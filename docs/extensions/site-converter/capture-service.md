@@ -29,7 +29,7 @@ from a file* too. It requires **no AI API and no account**; its only dependency 
    It serves `http://localhost:8787`. The status next to the **Analyze & convert** button turns
    green once detected. Need a different port? Set `PORT` before starting.
 
-:::tip No Node?
+:::tip[No Node?]
 You can still convert a **file** offline (lower fidelity), and you can import a pre‑built bundle
 `.zip` under **Manual tools**. The capture service is only needed to render live URLs (and to
 render file uploads at full fidelity).

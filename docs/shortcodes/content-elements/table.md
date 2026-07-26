@@ -29,7 +29,7 @@ A data table with optional interactivity. Tabs: **Content**, **Table Options**, 
 | **Rows Per Page** / **Rows-Per-Page Selector** | Page size + selector |
 | **Info Line** | "Showing x–y of z" |
 
-:::note Screenshots — presets & interactive features
+:::note[Screenshots — presets & interactive features]
 Capture a couple of presets and the interactive features: `table-preset-1`,
 `table-bordered`, `table-with-search`, `table-paginated`.
 :::

@@ -6,7 +6,7 @@ slug: /parallax
 
 # Parallax Depth Layers
 
-:::tip Try it live
+:::tip[Try it live]
 Drift a layered hero in the **[Parallax playground](./playground.mdx)** — move your pointer over the
 scene, tweak the Scene's intensity / smoothing / source, and click any layer (sky → mountains → card
 → accents) to change its depth, axis, direction, scale and depth-blur. It runs the real render loop.
@@ -26,7 +26,7 @@ Open any element → **Animations** tab → **Parallax Layers**. It's a role pic
 
 Global on/off: **Theme Settings → Site-wide UX → Effects → Enable parallax layers**.
 
-:::tip Scene is optional
+:::tip[Scene is optional]
 A **Layer** with no Scene ancestor tracks the **whole window** — so you can just drop a Depth on a few elements and get global mouse parallax. Mark a **Scene** when you want the effect scoped to one section (or several independent scenes on a page).
 :::
 
@@ -64,6 +64,6 @@ For an overlapping hero scene, absolutely-position the layers inside the Scene (
 - **Reduced motion** and **Disable on mobile** skip it entirely (layers stay put).
 - The **Pointer** source is skipped on touch screens; a Scene set to **Scroll** still moves.
 
-:::note One transform per element
+:::note[One transform per element]
 The runtime sets each layer's `transform` every frame, so a parallax layer and an entrance/physics transform on the **same** element don't combine. Put them on different elements.
 :::

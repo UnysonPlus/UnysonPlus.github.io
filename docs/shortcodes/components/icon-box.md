@@ -26,7 +26,7 @@ There are **six layouts**:
 | Icon right of title & content | `stack-right` | Side layout, icon on the right |
 | Icon between title and content (divider) | `between-title-content` | Icon acting as a separator |
 
-:::note Screenshots — one per layout
+:::note[Screenshots — one per layout]
 Add a screenshot of each layout to `static/img/shortcodes/`, e.g.
 `![Icon above title](/img/shortcodes/icon-box-top-title.png)`. Suggested filenames:
 `icon-box-top-title`, `icon-box-inline-left`, `icon-box-inline-right`, `icon-box-stack-left`,

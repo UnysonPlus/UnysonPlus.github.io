@@ -185,7 +185,7 @@ A tag is `label`, `group`, optional `params` (each `array('id','label','type','d
 `resolve` callable `function( array $params, array $context ): scalar`. A param's `type` is `'text'`
 (default) or `'select'` (add an ordered `'choices'` array of `array('value'=>…, 'label'=>…)`).
 
-:::caution Resolver rules
+:::caution[Resolver rules]
 - Resolvers **must return a scalar** — arrays/objects are coerced to an empty string.
 - **Never echo HTML** from a resolver; return text and let the consuming view escape it.
 - Param values are stripped of `{`, `}`, `|` to protect the token grammar.

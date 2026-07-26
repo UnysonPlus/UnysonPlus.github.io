@@ -59,6 +59,6 @@ Standard entrance-animation controls (effect, duration, delay, offset).
 
 Custom CSS class/ID, responsive visibility toggles, custom attributes, and margin/padding.
 
-:::tip Site Converter
+:::tip[Site Converter]
 When you convert an AI-generated site, hero “what’s new” pills (a rounded chip with a coloured tag, a message and an arrow) are mapped straight to this element — editable, clean, and SEO-ready — instead of being pasted in as verbatim code.
 :::

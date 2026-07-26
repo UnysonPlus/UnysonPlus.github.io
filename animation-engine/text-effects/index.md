@@ -6,7 +6,7 @@ slug: /text-effects
 
 # Text Effects
 
-:::tip Try it live
+:::tip[Try it live]
 Every effect below is interactive in the **[Text Effects playground](./playground.mdx)** —
 pick an effect, tweak its options, and copy the generated sample.
 :::
@@ -51,6 +51,6 @@ Other effects have their own controls — e.g. **Typewriter** (speed, caret, loo
 - **Trigger-aware:** most effects fire *when scrolled into view* rather than off-screen.
 - **Touch:** honours the engine-wide **Disable on mobile** setting.
 
-:::tip Bold, large text reads best
+:::tip[Bold, large text reads best]
 Character-split and mask effects (Image Mask, Split Reveal, Fill Sweep) look best on short, bold headings.
 :::

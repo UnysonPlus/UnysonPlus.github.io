@@ -6,7 +6,7 @@ slug: /flip-card
 
 # 3D Flip Card
 
-:::tip Try it live
+:::tip[Try it live]
 Pick a style and flip it in the **[Flip Card playground](./playground.mdx)** — seven styles,
 hover / click / scroll / auto triggers, axis, depth, easing and the full back face — and copy
 the generated sample.
@@ -69,6 +69,6 @@ Each style (except Diagonal, which is fixed) turns on your chosen **Direction / 
 - **Auto** flips pause off-screen and in background tabs, so they never waste CPU.
 - **Reduced motion** — the turn transition is disabled for visitors who ask their OS to reduce motion.
 
-:::tip Feature-card grid
+:::tip[Feature-card grid]
 Put a **3D Flip Card** on each Icon Box in a row (style **Cube** or **Flip**, trigger **Hover**) and add a back heading + **button** — an instant interactive feature grid.
 :::

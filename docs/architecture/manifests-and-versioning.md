@@ -125,7 +125,7 @@ moves, diagnostics, dependency bumps, or internal performance tweaks — those b
 in doubt, skip the entry. The theme has no changelog block; bumping `style.css` `Version:` is its
 full record.
 
-:::caution `*/` inside changelog prose breaks the file
+:::caution[`*/` inside changelog prose breaks the file]
 Watch for a literal `*/` in changelog text (e.g. `normal_*/hover_*`) — it closes the PHP docblock
 early and is a syntax error. Rephrase to avoid it.
 :::

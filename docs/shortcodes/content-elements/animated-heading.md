@@ -11,7 +11,7 @@ typewriter, fade, slide, flip, zoom, clip, blur or 3D-rotate animation. It needs
 Engine** (the engine is off by default). Tabs: **Content**, **Design**, **Styling**,
 **Animations**, **Advanced**.
 
-:::tip This element vs. the Animation Engine Text Effects
+:::tip[This element vs. the Animation Engine Text Effects]
 Use **Animated Heading** for a rotating headline that works with the engine off. To apply
 typewriter / scramble / wave / glitch / 30+ effects to **any** text element, use the
 [Animation Engine → Text Effects](/docs/extensions/animation-engine) instead (the *Text Effect*

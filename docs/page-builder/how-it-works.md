@@ -64,7 +64,7 @@ The tree itself is a JSON **string** under `json`, stored in post meta as
 `fw:opt:ext:pb:page-builder:json`. See [The builder JSON tree format](./builder-json-format.md)
 for the anatomy of that tree.
 
-:::note Why a string, not nested JSON?
+:::note[Why a string, not nested JSON?]
 Keeping `json` as an opaque string means the builder value round-trips through forms, AJAX and
 the database without WordPress's meta handling trying to walk or "fix" the nested structure. The
 builder option can also gzip very large values (`compress_form_value`), though that's rarely
@@ -117,7 +117,7 @@ here too. Full detail: [The items corrector](./items-corrector.md).
 Each element's `atts` are JSON-encoded by the shortcodes extension's attribute coder, so complex
 nested option values survive the round-trip into a shortcode attribute.
 
-:::caution Nested-column aliasing
+:::caution[Nested-column aliasing]
 WordPress's shortcode parser is **non-recursive for the same tag** — a `[row]` inside a `[column]`
 inside another `[row]` would mis-match its closing tags. So a row synthesized *inside* a column
 (and that row's columns) are emitted as the alias tags **`fw_inner_row`** / **`fw_inner_column`**,

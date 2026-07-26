@@ -14,7 +14,7 @@ page; it then appears as a tile in that element's Design picker, exactly like a 
 This is how free and paid designs are distributed. A design pack is **executable PHP**, so it is
 admin-installed and trusted at the same level as installing a plugin.
 
-:::note Design pack vs. full shortcode vs. preset
+:::note[Design pack vs. full shortcode vs. preset]
 - **Design pack** (this page) — a new *layout* for an **existing** element. A render partial + its
   styles + an icon (+ optional extra options). Shows up in that element's Design picker.
 - **[Full shortcode](/docs/developers/add-a-shortcode)** — a brand-new element. Use that guide when
@@ -129,7 +129,7 @@ if ( empty( $testimonials ) ) {
 </div>
 ```
 
-:::caution Escape everything and keep the DOM clean
+:::caution[Escape everything and keep the DOM clean]
 `view.php` is trusted code, but still escape all output (`esc_html`, `esc_attr`, `esc_url`) and emit
 lean, semantic markup — no wrapper-div soup. See the [clean-DOM philosophy](/docs/page-builder/clean-dom).
 :::

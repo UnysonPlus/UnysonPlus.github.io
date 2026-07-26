@@ -6,7 +6,7 @@ slug: /physics
 
 # Physics Effects
 
-:::tip Try it live
+:::tip[Try it live]
 Grab, fling and poke all 27 effects in the **[Physics playground](./playground.mdx)** — drag &
 throw, cursor spring/attract/repel, float/pendulum/orbit, gravity drop, jelly/recoil/spin — and
 copy the generated sample.
@@ -50,6 +50,6 @@ Each effect reveals its own options (stiffness, damping, strength, distance, tri
 - **Touch:** pointer-following effects (Spring Follow, Repel, Orbit Cursor…) are skipped on touch screens; the engine-wide **Disable on mobile** honours phones.
 - **Off-screen pause:** continuous effects pause when scrolled out of view or the tab is hidden.
 
-:::note One effect per element
+:::note[One effect per element]
 Physics overwrites the element's transform each frame, so a physics effect and an entrance transform on the **same** element don't combine — physics wins. Put them on different elements if you need both.
 :::

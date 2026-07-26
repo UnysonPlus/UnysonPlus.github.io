@@ -42,7 +42,7 @@ Visible Content, Hidden Content, **Button Text (Show)** (default "Show More"),
 | **Initially Open** | On/Off |
 | Colors | Visible/Hidden content, Show More/Less buttons (custom hex/rgba) |
 
-:::note Screenshots — toggle icons & states
+:::note[Screenshots — toggle icons & states]
 Capture the collapsed/expanded states and toggle icons: `text-expander-collapsed`,
 `text-expander-expanded`, `text-expander-chevron`.
 :::

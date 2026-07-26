@@ -27,7 +27,7 @@ Components, Header/Footer) and the **canvas** where your page takes shape.
 Everything on a page lives inside a **Section** (a full-width band). From the **Layout Elements**
 tab, drag a **Section** onto the canvas.
 
-:::tip You can skip straight to an element
+:::tip[You can skip straight to an element]
 If you drag a content element (a heading, a button) directly onto the canvas, Unyson+ automatically
 wraps it in a column, a row, and a section for you when the page renders. The
 [items corrector](/docs/page-builder/items-corrector) handles that, so you never end up with an
@@ -49,7 +49,7 @@ canvas.
 
 <img src="/img/shortcodes/special-heading-content.png" alt="The Special Heading options panel — Content tab" width="840" />
 
-:::tip Reuse live values with Dynamic Content
+:::tip[Reuse live values with Dynamic Content]
 Any text field with the small database icon supports [Dynamic Content](/docs/dynamic-content): insert
 a token like `{{site_name}}` or `{{current_year}}` and it resolves to a live value at render time.
 :::

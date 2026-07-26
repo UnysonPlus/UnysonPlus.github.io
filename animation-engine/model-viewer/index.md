@@ -6,7 +6,7 @@ slug: /model-viewer
 
 # Model Viewer
 
-:::tip Try it live
+:::tip[Try it live]
 Orbit a real 3D model in the **[Model Viewer playground](./playground.mdx)** — drag to rotate a
 sample product model, toggle auto-rotate, pick a starting angle and field of view, and tune the
 lighting (environment, tone mapping, exposure, shadows). It runs Google's real `<model-viewer>`.
@@ -29,7 +29,7 @@ Builder palette → **Media Elements** → **Model Viewer**. Upload a `.glb` / `
 | **Hotspots** | Add labelled hotspots (label, detail, link, 3D position) · fade behind the model |
 | **Styling** | Background (transparent / solid) · Margin & Padding |
 
-:::tip Getting hotspot positions
+:::tip[Getting hotspot positions]
 Hotspot positions (and normals) are the `x y z` values from the free model editor at [modelviewer.dev/editor](https://modelviewer.dev/editor/) — load your model there, click a point, copy the position.
 :::
 

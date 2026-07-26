@@ -6,7 +6,7 @@ slug: /sticky-stack
 
 # Sticky Card Stack
 
-:::tip Try it live
+:::tip[Try it live]
 Scroll a deck of cards in the **[Sticky Card Stack playground](./playground.mdx)** — drag the vertical
 scroll and watch each card pin in turn while the covered ones transform. Switch between all 11 styles
 and tune the pin offset, stagger and intensity. It runs the real cover() + per-style transforms.

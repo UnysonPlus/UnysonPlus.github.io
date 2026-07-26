@@ -13,7 +13,7 @@ builder, then assign with a [Template](./conditional-assignment.md). They live u
 
 ## Building a preset
 
-:::tip Starter designs are already in your lists
+:::tip[Starter designs are already in your lists]
 You don't have to start from a blank canvas. The Header / Body / Footer Presets lists come **pre‑seeded
 with a few starter designs** — open one to customize it, or **duplicate** it (with the
 [Duplicate Post](https://wordpress.org/plugins/duplicate-post/) plugin, which works on the preset
@@ -33,7 +33,7 @@ A classic top bar is a single Flexbox: a `nav` (Direction: Row, Justify: Space b
 Logo on the left and a Navigation Menu on the right. A footer is a `footer` flexbox (Direction: Row)
 of column flexboxes. See [Flexbox](./flexbox.md) for the full layout model.
 
-:::note Builder‑only editing
+:::note[Builder‑only editing]
 Header/Footer/Body parts default to builder‑active and the "Default Editor" toggle is hidden on these
 screens, so a preset can't accidentally be switched to the classic editor.
 :::

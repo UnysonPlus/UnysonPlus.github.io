@@ -6,7 +6,7 @@ slug: /backgrounds
 
 # Animated Backgrounds
 
-:::tip Try it live
+:::tip[Try it live]
 Preview all **35 effects** in the **[Animated Backgrounds playground](./playground.mdx)** — pick an
 effect, tweak its colors / density / speed, and watch it render behind sample content. It runs the
 real canvas engine (the shared particle & metaball fields, plus every per-effect builder) and the

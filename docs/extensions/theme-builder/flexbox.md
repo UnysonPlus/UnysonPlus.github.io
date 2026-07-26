@@ -15,7 +15,7 @@ dropping it is also choosing its tag.
 
 <img src="/img/theme-builder/flexbox-canvas.png" alt="A Flexbox container in the builder canvas, labeled by its HTML tag with a width stepper and direction" width="900" />
 
-:::note Theme Builder only
+:::note[Theme Builder only]
 The Flexbox is intentionally available **only inside the Theme Builder part editors** (Header / Body /
 Footer presets). On normal Pages and Posts you build with **Sections, Rows, and Columns** — the
 Flexbox is the layout tool for *chrome and templates*, not page content. (Front‑end rendering of an

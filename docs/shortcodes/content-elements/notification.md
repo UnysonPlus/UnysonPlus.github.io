@@ -25,7 +25,7 @@ A notification / alert box. Tabs: **Content**, **Styling**, **Animations**, **Ad
 | **Dismissible** | On/Off |
 | **Auto-dismiss Seconds** | Auto-hide after N seconds |
 
-:::note Screenshots — types, borders & layouts
+:::note[Screenshots — types, borders & layouts]
 Capture the 8 **Types**, 3 **Border Styles**, and 2 **Layout Styles**, e.g.
 `notification-success-filled`, `notification-warning-outline`, `notification-danger-accent`,
 `notification-stacked`.

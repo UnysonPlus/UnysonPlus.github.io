@@ -13,7 +13,7 @@ Settings** header and footer remain as the baseline.
 
 <img src="/img/theme-builder-grid.png" alt="The Theme Builder admin grid — Templates with Header / Body / Footer / Used On columns" width="1260" />
 
-:::note Evolving extension
+:::note[Evolving extension]
 The Theme Builder ships as a **download‑only** extension — its own GitHub repo
 (`UnysonPlus/UnysonPlus-Theme-Builder-Extension`), **not bundled** in the plugin. Install it from
 **Unyson+ → Extensions** (a **Download** card) and it appears as its own **Theme Builder** admin

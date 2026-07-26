@@ -60,7 +60,7 @@ Any animation whose progress is tied to the **scroll position** rather than to a
 <figcaption style="text-align:center;font-size:.85rem;color:var(--ifm-color-emphasis-600);margin-top:.5rem;">The section pins, a timeline scrubs with your scroll — its beats play across the pinned range — then it releases.</figcaption>
 </figure>
 
-:::tip You can already do this
+:::tip[You can already do this]
 [Scroll Motion](/animation-engine/) gives you genuine pin + scrub, and
 [Scroll Story](/animation-engine/scrollytelling) gives you the pinned, beat-based cinematic stage.
 :::

@@ -20,7 +20,7 @@ converted depends on whether the **[capture service](./capture-service.md)** is 
 
 The Convert screen detects the service automatically and uses the rendered mode when available.
 
-:::tip Why rendered mode is so much better
+:::tip[Why rendered mode is so much better]
 A static parser sees Tailwind utility *classes* but not the *resolved* CSS. A browser sees the
 **computed styles** — the actual colors, spacing, fonts and layout — which is exactly what the URL
 path uses. Rendering the file closes the quality gap entirely.

@@ -25,7 +25,7 @@ A horizontal separator, optionally with text or an icon. Tabs: **Content**, **La
 | **Content Alignment** | Center, Left, Right |
 | **Height (px)** | Thickness / whitespace height |
 
-:::note Screenshots — line designs
+:::note[Screenshots — line designs]
 Capture each **Line Design** and the text/icon variants: `divider-solid`,
 `divider-gradient`, `divider-ornament`, `divider-shadow`, `divider-with-text`,
 `divider-with-icon`.

@@ -32,7 +32,7 @@ Collapsible accordion panels. Tabs: **Content**, **Layout**, **Behaviour**, **St
 | **Item Spacing** | Gap between items |
 | **Title Alignment** | Left (default), Center, Right |
 
-:::note Screenshots — icon styles & numbering
+:::note[Screenshots — icon styles & numbering]
 These two options have several visible variants worth a screenshot each. Suggested files:
 `accordion-icon-plus-minus`, `accordion-icon-chevron`, `accordion-icon-arrow`,
 `accordion-numbering-decimal`, `accordion-numbering-roman` in `static/img/shortcodes/`.

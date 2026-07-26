@@ -6,7 +6,7 @@ slug: /marquee
 
 # Marquee
 
-:::tip Try it live
+:::tip[Try it live]
 Pick a direction and tweak the ticker in the **[Marquee playground](./playground.mdx)** —
 speed, gap, separator, warp, curve, drag — and copy the generated sample.
 :::
@@ -54,6 +54,6 @@ Global on/off: **Theme Settings → Site-wide UX → Effects → Enable marquee*
 - **Loads only when used**; one shared render loop drives every marquee.
 - **Reduced motion** and **Disable on mobile** leave the content static (unclipped).
 
-:::tip Curved headline
+:::tip[Curved headline]
 For the demo-style curved headline, use a **Special Heading** with large, bold text → Marquee **Left** → **Curve** ~70. Bump it toward 100 for a rounder arc.
 :::

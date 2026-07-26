@@ -6,7 +6,7 @@ slug: /scroll-reveal
 
 # Scroll Reveal
 
-:::tip Try it live
+:::tip[Try it live]
 Play with every reveal in the **[Scroll Reveal playground](./playground.mdx)** — the six clip-path
 wipes and the Canvas **Pixelate In**, with live duration / delay / easing (and coarseness / steps /
 speed for Pixelate). Hit **Replay** to watch it un-mask again.

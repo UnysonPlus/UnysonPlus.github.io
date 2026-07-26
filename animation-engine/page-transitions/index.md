@@ -6,7 +6,7 @@ slug: /page-transitions
 
 # Page Transitions
 
-:::tip Try it live
+:::tip[Try it live]
 Preview all 23 transitions in the **[Page Transitions playground](./playground.mdx)** — pick a
 style, set its options, and watch it reveal on load and cover on navigate.
 :::

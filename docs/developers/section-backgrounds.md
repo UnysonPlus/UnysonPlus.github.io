@@ -22,7 +22,7 @@ When an element carries the class **`.sc-bg-fill`**, the shared script `window.s
 
 Elements without `data-sc-bg-managed` are lifted automatically on DOM ready. An element that needs the host for its own interaction adds `data-sc-bg-managed` and calls `window.scBgFill(el)` itself (it returns the host).
 
-:::info Give the Section a height
+:::info[Give the Section a height]
 The backdrop is absolutely positioned (`inset: 0`), so the Section needs a **min-height** (or other content) to fill.
 :::
 
@@ -115,7 +115,7 @@ document.querySelectorAll('.sc-bg-effect--starfield .starfield-canvas').forEach(
 });
 ```
 
-:::tip Pause off-screen / in background tabs
+:::tip[Pause off-screen / in background tabs]
 For continuous animations, drive them from the Animation Engine's shared frame loop when it's present — `window.upwAnimRaf?.add(fn)` — so they pause automatically in background tabs. Fall back to `requestAnimationFrame` when it isn't.
 :::
 

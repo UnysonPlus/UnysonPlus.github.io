@@ -126,7 +126,7 @@ Every motion feature ships with these — they're part of the design, not an aft
 - **Web Vitals first.** On content and conversion pages, the light path ships by default; spectacle
   is reserved for pages where it adds meaning.
 
-:::info Where this connects
+:::info[Where this connects]
 The engine is already built this way — see [Performance](/animation-engine/performance) for how a
 page loads only the effects it actually uses. The roadmap keeps that discipline as it grows.
 :::

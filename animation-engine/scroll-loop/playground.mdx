@@ -18,14 +18,14 @@ after the last, and when the scroll reaches the clone (one full *cycle* past the
 by exactly one cycle**. The clone is pixel-identical to section 1, so the wrap is **invisible** —
 seamless infinite scroll. Toggle **section snapping** for the "one section per gesture" feel.
 
-:::note What's simulated
+:::note[What's simulated]
 On a live site the smooth scroll is driven by the **Lenis** smooth-scroll library and the loop sits at
 the bottom of the page (everything above it scrolls normally). This playground reproduces the
 **clone + wrap-by-one-cycle** loop and snapping inside a contained stage rather than embedding Lenis —
 the seam behaviour is identical.
 :::
 
-:::info Where it lives
+:::info[Where it lives]
 Infinite Scroll Loop is a **Section-level** control — mark each full-height Section of the run under
 its **Animations** tab → **Infinite Scroll Loop**. Smooth scroll is powered by Lenis (loaded only where
 used); it honours **reduce motion** (plain native scroll, no clone).

@@ -45,7 +45,7 @@ extension's locations so a theme can override or supplement framework code:
 - Some includes use **theme-first** (`child → parent → framework`) and stop at the first found —
   e.g. `static.php` (so a theme's asset enqueue replaces the framework's).
 
-:::tip This is how child themes customize extensions
+:::tip[This is how child themes customize extensions]
 Drop a file at `<child-theme>/framework-customizations/extensions/breadcrumbs/views/view.php` and
 it overrides the framework's breadcrumbs view — without touching the plugin. Same mechanism the
 parent theme uses.

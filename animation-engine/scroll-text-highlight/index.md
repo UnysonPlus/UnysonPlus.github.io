@@ -6,7 +6,7 @@ slug: /scroll-text-highlight
 
 # Scroll Text Highlight
 
-:::tip Try it live
+:::tip[Try it live]
 Scrub the reveal in the **[Scroll Text Highlight playground](./playground.mdx)** — drag the vertical
 scroll on the right to light the words up one at a time, switch between all **20 styles** (fill,
 gradient, sweep, glow, neon, rise, scale, pill, underline…), and tweak split (word/character),
@@ -48,6 +48,6 @@ The **20 styles**, grouped by how they light a word up:
 - **Loads only on pages that use it.**
 - **Reduce motion** — everything is shown lit immediately, no scrubbing.
 
-:::tip Big statement paragraph
+:::tip[Big statement paragraph]
 Use a **Special Heading** or Text Block with large type, pick **Fill** with your brand colour, and keep "Reveal by = Word". As the reader scrolls, the sentence writes itself in colour.
 :::

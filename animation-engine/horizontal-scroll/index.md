@@ -6,7 +6,7 @@ slug: /horizontal-scroll
 
 # Horizontal Scroll Section
 
-:::tip Try it live
+:::tip[Try it live]
 Scrub a gallery strip in the **[Horizontal Scroll playground](./playground.mdx)** — drag the vertical
 scroll and the pinned panels travel sideways; switch between all 15 styles (standard, snap, center
 focus, 3D carousel, perspective wall, velocity skew, drag…) and tune panel width & intensity. It runs

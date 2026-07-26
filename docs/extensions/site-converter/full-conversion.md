@@ -10,7 +10,7 @@ the two ways to run a conversion — the **automated** Site Converter, and the h
 **AI-assisted** build. The other pages in this section go deep on each piece; this one ties them
 together so you know the whole flow before you start.
 
-:::tip Two lanes, one goal
+:::tip[Two lanes, one goal]
 Both lanes turn a source design into a **native, editable** Unyson+ site — a child theme + page-builder
 pages + real menus + populated Media Library. Nothing is hand-coded HTML; every page stays editable in
 the builder.
@@ -40,7 +40,7 @@ node serve.mjs     # serves http://localhost:8787
 The status next to **Analyze & convert** in wp-admin turns green once it's detected. Full detail —
 endpoints, ports, security, troubleshooting — is on **[The capture service](./capture-service.md)**.
 
-:::note No Node?
+:::note[No Node?]
 You can still convert a **file** offline (lower fidelity) and import a pre-built bundle under
 **Manual tools**. The capture service is only needed to render **live URLs** (and to render file
 uploads at full fidelity).

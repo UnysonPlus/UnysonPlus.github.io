@@ -6,7 +6,7 @@ slug: /3d-gallery
 
 # 3D Gallery
 
-:::tip Try it live
+:::tip[Try it live]
 Preview every design in the **[3D Gallery playground](./playground.mdx)** — pick a design, tweak its
 geometry, and watch it render with sample images. It runs the **real** module (the same CSS and 3D
 driver the element ships), then copies the generated sample option.

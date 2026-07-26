@@ -6,7 +6,7 @@ slug: /svg-draw
 
 # SVG Draw
 
-:::tip Try it live
+:::tip[Try it live]
 Watch line art trace itself in the **[SVG Draw playground](./playground.mdx)** — pick a preset,
 tweak duration / stagger / direction / loop, restyle the stroke and fill, then copy the generated
 sample. It runs the real runtime's `getTotalLength` measuring + staggered `stroke-dashoffset`

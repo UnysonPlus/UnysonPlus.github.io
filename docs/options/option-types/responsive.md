@@ -23,7 +23,7 @@ each value maps to.
 
 Source: `framework/includes/option-types/responsive/class-fw-option-type-responsive.php`.
 
-:::tip When to reach for it
+:::tip[When to reach for it]
 Any option whose value should be settable differently on phone, tablet, and desktop.
 The page-builder **Section**, **Column**, and **Flexbox** layout options are all built
 on it. If your option is a single `image-picker` / `select` / `switch` / `popover` /

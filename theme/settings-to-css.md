@@ -30,7 +30,7 @@ and no extra compute versus the old inline emit. It's also proactively rebuilt o
 `fw_settings_form_saved` / `customize_save_after`, with a `wp_add_inline_style` fallback if the
 uploads directory isn't writable.
 
-:::note Class-based styling isn't in the file
+:::note[Class-based styling isn't in the file]
 Some styling rides utility **classes** instead of generated CSS: `padding` uses the `spacing`
 Bootstrap utility classes, and the container width + a "Custom CSS Class" ride wrapper classes
 (`unysonplus_hf_section_render_attrs()`). The generated file is for the *computed* design tokens,

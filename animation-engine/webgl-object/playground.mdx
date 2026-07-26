@@ -24,13 +24,13 @@ shader presets, with a generated environment map and GPU noise displacement. Rec
 material / shader params, and toggle **auto-rotate**, **pointer-follow**, **noise** and **scroll-link**
 (which reveals a vertical scroll slider). The **Sample option** updates as you tweak.
 
-:::note What's simulated
+:::note[What's simulated]
 The **procedural** presets are all here — they generate their geometry / pixels in code with no
 external asset. **Image Particles** and **Image Distortion** sample an uploaded image, so they aren't
 in this playground; they're documented on this page and work on a live site.
 :::
 
-:::info Where it lives
+:::info[Where it lives]
 WebGL Object is a **page-builder element** (builder palette → **Media Elements**). Three.js is
 vendored and loads **only** on pages that use it; the render loop pauses off-screen and when the tab
 is hidden, and honours **reduce motion** (a single static frame or poster).

@@ -20,7 +20,7 @@ Configure Mailer from **Unyson+ → Extensions** (its settings form). You set:
   - **SMTP** — sends through an SMTP server you specify (host, port, encryption, and username /
     password), which is more reliable for deliverability than PHP mail.
 
-:::tip Activated on demand
+:::tip[Activated on demand]
 Mailer is a **dependency** extension: it's typically activated automatically when an extension that
 needs it (like Forms) is enabled. You can also activate it directly to set global sender details for
 the whole site.

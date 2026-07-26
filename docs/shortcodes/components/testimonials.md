@@ -30,7 +30,7 @@ Display testimonials in a carousel, grid, or single layout. Tabs: **Content**, *
 | **Container** | Container, Fluid |
 | **Items per Slide (Carousel)** | Slides shown at once |
 
-:::note Screenshots — layout types
+:::note[Screenshots — layout types]
 Capture each layout: `testimonials-carousel`, `testimonials-grid`, `testimonials-single`.
 :::
 

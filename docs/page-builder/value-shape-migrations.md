@@ -113,7 +113,7 @@ display correctly.
 3. **`view.php` tolerates the legacy value** (front-end render of un-re-saved pages).
 4. Idempotent: already-migrated values pass through unchanged (so re-running is safe).
 
-:::tip Non-destructive migration
+:::tip[Non-destructive migration]
 Migrate *on read*, don't rewrite the database. The Section background migration
 (`section_migrate_legacy_background()`) is a good model: it synthesizes the new
 background-pro-shaped value from the old `background_color` / `background_image` / `video` /

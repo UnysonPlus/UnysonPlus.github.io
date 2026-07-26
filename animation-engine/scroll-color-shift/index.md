@@ -6,7 +6,7 @@ slug: /scroll-color-shift
 
 # Scroll Color Shift
 
-:::tip Try it live
+:::tip[Try it live]
 Scroll through the palette in the **[Scroll Color Shift playground](./playground.mdx)** — drag the
 vertical scroll and watch the background morph section-to-section; recolour any section and tweak the
 transition. It runs the real "which section crosses the middle" pick + CSS transition.
@@ -28,7 +28,7 @@ Global on/off: **Theme Settings → Site-wide UX → Effects → Enable Scroll C
 | **Text colour** *(optional)* | Also shift the body text colour so it stays readable on the new background. |
 | **Transition** | How long the colour glide takes. |
 
-:::info Use transparent sections
+:::info[Use transparent sections]
 The effect colours the **page** behind your content, so it shows best on **full-bleed, transparent Sections** (no own background). A section with its own solid background will cover the shifting page colour.
 :::
 
@@ -38,6 +38,6 @@ The effect colours the **page** behind your content, so it shows best on **full-
 - **Loads only on pages that use it.**
 - **Reduce motion** — the colour still reflects the current section, but changes instantly instead of gliding.
 
-:::tip Palette journey
+:::tip[Palette journey]
 Give your hero a deep colour, the next section a light cream, the next a brand tint — scrolling becomes a guided palette journey. Set a matching **Text colour** on the dark sections so copy stays legible.
 :::

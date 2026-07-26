@@ -66,7 +66,7 @@ add_filter( 'sc_animation_fields', function ( $fields ) {
 
 The saved value shape is `my_glow = array( 'mode' => 'cyan', 'cyan' => array( 'speed' => 1.5 ) )`.
 
-:::tip Swatch convention
+:::tip[Swatch convention]
 Match the built-in tiles so yours look native: an SVG at **`viewBox="0 0 132 96"`** (landscape), **no background rect** (transparent), the motif on top, and a **baked label** near the bottom (`<text x="66" y="86" font-size="15" font-weight="600" fill="#475569">`). Set the tile `'height' => 66` (small) / `132` (large). Don't add a per-module tile-size CSS override.
 :::
 

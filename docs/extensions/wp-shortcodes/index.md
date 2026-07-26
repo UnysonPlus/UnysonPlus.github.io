@@ -57,7 +57,7 @@ element that relies on dynamic per-instance CSS (some styling presets, per-eleme
 look unstyled. For those, build the element in the [Page Builder](/docs/page-builder) instead, where
 the full render pipeline runs.
 
-:::note A focused tool
+:::note[A focused tool]
 This extension is intentionally limited to inserting and rendering shortcodes in editor content. It
 doesn't provide the drag-and-drop layout, options modals, or live preview of the Page Builder, that's
 what the builder is for.

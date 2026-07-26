@@ -27,7 +27,7 @@ tabs.
 | **WooCommerce** | A pointer tab (only when WooCommerce is active) — the real shop settings are owned by the WooCommerce *extension*. |
 | **Misc** | Scroll-to-top, dark mode, global Custom CSS, custom scripts, analytics, performance, 404, maintenance, and the design Export/Import control. |
 
-:::note Each tab is a `multi` container
+:::note[Each tab is a `multi` container]
 A tab or box is a `multi` container, so its top-level option id (`general_layout`, `header_logo`,
 `misc_custom_css`, …) stores a **nested array** of that group's fields. Reads use the same key path
 whether or not the option was later split across sub-tabs.
@@ -59,7 +59,7 @@ renders as a WordPress **postbox** (a bordered card with a title bar) inside a
 ],
 ```
 
-:::tip The `group` wrapper is an id-only container
+:::tip[The `group` wrapper is an id-only container]
 `group_layout` is **not stored** — it's a layout container, so the leaf field ids (and therefore
 saved values) are unchanged. Adding or removing the wrapper never loses data. Use a unique group
 key per box (`group_layout`, `group_identity`, …) and apply it to **every** box for consistency.
@@ -103,7 +103,7 @@ the fast path, the per-migration guards are the correctness backstop, so a re-ru
 install is a no-op. To add one: write the idempotent callback, register `<n> => 'callback'`, bump
 the constant to `<n>`.
 
-:::caution Don't read settings during framework boot
+:::caution[Don't read settings during framework boot]
 Reading Theme Settings inside an extension's `_init()` can force the option types to initialize
 before the page-builder extension registers its `page-builder` option type, producing *"Undefined
 option type: page-builder"*. Defer settings reads to `init` or later — see

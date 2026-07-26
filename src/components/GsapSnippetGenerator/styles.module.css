@@ -1,0 +1,133 @@
+.wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+@media (max-width: 996px) {
+  .wrap { grid-template-columns: 1fr; }
+}
+
+.controls { display: flex; flex-direction: column; gap: 1rem; }
+
+.group {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  background: var(--ifm-background-surface-color);
+  padding: 0.9rem 1rem 1rem;
+}
+.groupTitle {
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 0.7rem;
+}
+
+.row { display: flex; flex-wrap: wrap; gap: 0.6rem 0.9rem; align-items: flex-end; }
+
+.seg {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.9rem; cursor: pointer;
+  padding: 0.35rem 0.6rem; border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+.seg input { accent-color: var(--ifm-color-primary); }
+
+.field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; color: var(--ifm-color-emphasis-700); min-width: 0; flex: 1 1 8rem; }
+.field > span { font-weight: 600; }
+
+.input {
+  width: 100%;
+  padding: 0.4rem 0.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font-size: 0.9rem;
+}
+.input:focus { outline: 2px solid var(--ifm-color-primary); outline-offset: 1px; border-color: transparent; }
+
+.step {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  padding: 0.7rem; margin-bottom: 0.6rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 10px;
+  background: var(--ifm-background-color);
+}
+.stepNo {
+  flex: 0 0 1.6rem; height: 1.6rem; margin-top: 0.15rem;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--ifm-color-primary);
+  color: #fff; font-weight: 700; font-size: 0.85rem;
+}
+.stepBody { display: flex; flex-wrap: wrap; gap: 0.5rem 0.7rem; flex: 1 1 auto; min-width: 0; }
+.remove {
+  flex: 0 0 auto; border: none; background: transparent;
+  color: var(--ifm-color-emphasis-600); font-size: 1.3rem; line-height: 1;
+  cursor: pointer; padding: 0 0.2rem;
+}
+.remove:hover { color: var(--ifm-color-danger, #d33); }
+
+.addBtn, .replay, .copy {
+  border: 1px solid var(--ifm-color-primary);
+  background: transparent; color: var(--ifm-color-primary);
+  border-radius: 8px; padding: 0.35rem 0.8rem;
+  font-size: 0.85rem; font-weight: 600; cursor: pointer;
+}
+.addBtn:hover, .replay:hover, .copy:hover { background: var(--ifm-color-primary); color: #fff; }
+.addBtn { margin-top: 0.2rem; }
+
+.output { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.stageBar, .codeBar {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 0.85rem; font-weight: 600; color: var(--ifm-color-emphasis-700);
+}
+
+.stage {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  background:
+    linear-gradient(var(--ifm-color-emphasis-100) 1px, transparent 1px) 0 0 / 22px 22px,
+    linear-gradient(90deg, var(--ifm-color-emphasis-100) 1px, transparent 1px) 0 0 / 22px 22px,
+    var(--ifm-background-surface-color);
+  min-height: 260px;
+  display: grid; place-items: center;
+  padding: 1.5rem; overflow: hidden;
+}
+.demoEl {
+  width: 100%; max-width: 320px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 14px;
+  background: var(--ifm-background-color);
+  padding: 1rem;
+  box-shadow: 0 14px 40px -18px rgba(0,0,0,.4);
+}
+.demoTitle { font-weight: 700; margin-bottom: 0.7rem; color: var(--ifm-font-color-base); }
+.demoCards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+.card {
+  aspect-ratio: 3 / 4;
+  border-radius: 8px;
+  display: grid; place-items: center;
+  font-size: 0.75rem; font-weight: 600; color: #fff;
+  background: linear-gradient(135deg, #2F74E6, #7C4DFF);
+}
+
+.code {
+  margin: 0;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-left: 4px solid var(--ifm-color-primary);
+  border-radius: 8px;
+  background: var(--ifm-color-emphasis-100);
+  padding: 0.8rem 0.9rem;
+  font-size: 0.82rem; line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre;
+}
+.code code { background: transparent; border: none; padding: 0; color: var(--ifm-font-color-base); }
+
+.note { font-size: 0.8rem; color: var(--ifm-color-emphasis-600); margin: 0.3rem 0 0; line-height: 1.5; }
+.note code { font-size: 0.9em; }

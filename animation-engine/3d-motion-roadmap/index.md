@@ -58,6 +58,38 @@ pan and push into a scene as you scroll. It looks 3D, but on most sites it's act
 flat image or video with a *faked* camera move over it. It reads as a nice drift, but never as depth
 you can travel *through*.
 
+<figure role="group" aria-label="2.5D faked camera versus real depth" style="margin:1.5rem 0;">
+<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cg-t cg-d" style="width:100%;height:auto;max-width:760px;font-family:var(--ifm-font-family-base, system-ui, sans-serif);">
+<title id="cg-t">2.5D versus real depth</title>
+<desc id="cg-d">2.5D moves a flat image with a faked camera. Real depth is a camera travelling through multiple layers.</desc>
+<rect x="8" y="12" width="356" height="276" rx="14" fill="var(--ifm-color-emphasis-100)" stroke="var(--ifm-color-emphasis-200)"/>
+<rect x="396" y="12" width="356" height="276" rx="14" fill="var(--ifm-color-emphasis-100)" stroke="var(--ifm-color-emphasis-200)"/>
+<text x="186" y="46" text-anchor="middle" font-size="16" font-weight="700" fill="var(--ifm-font-color-base)">2.5D — a faked camera</text>
+<rect x="104" y="86" width="168" height="98" rx="6" fill="#2F74E6" opacity="0.28" stroke="#2F74E6" stroke-width="1.5"/>
+<line x1="104" y1="150" x2="272" y2="150" stroke="#2F74E6" stroke-width="1.5" opacity="0.5"/>
+<circle cx="242" cy="116" r="9" fill="#2F74E6" opacity="0.5"/>
+<polygon points="150,150 186,120 222,150" fill="#2F74E6" opacity="0.4"/>
+<rect x="172" y="200" width="30" height="22" rx="3" fill="#B26A00"/><polygon points="202,204 214,198 214,224 202,218" fill="#B26A00"/>
+<path d="M150,210 C168,197 204,197 224,208" fill="none" stroke="#B26A00" stroke-width="2" stroke-dasharray="4 4"/>
+<text x="186" y="250" text-anchor="middle" font-size="12" fill="var(--ifm-color-emphasis-800)">One flat layer — the image pans &amp; scales</text>
+<text x="186" y="272" text-anchor="middle" font-size="11" fill="var(--ifm-color-emphasis-600)">Looks 3D, but it's 2.5D</text>
+<text x="574" y="46" text-anchor="middle" font-size="16" font-weight="700" fill="var(--ifm-font-color-base)">Real depth</text>
+<line x1="500" y1="108" x2="636" y2="132" stroke="var(--ifm-color-emphasis-300)" stroke-width="1" stroke-dasharray="3 4"/>
+<line x1="500" y1="196" x2="636" y2="172" stroke="var(--ifm-color-emphasis-300)" stroke-width="1" stroke-dasharray="3 4"/>
+<polygon points="500,110 524,120 524,196 500,186" fill="#0FA36B" opacity="0.8"/>
+<polygon points="556,120 578,129 578,186 556,177" fill="#0FA36B" opacity="0.6"/>
+<polygon points="612,128 632,136 632,174 612,166" fill="#0FA36B" opacity="0.45"/>
+<rect x="440" y="139" width="30" height="26" rx="4" fill="#7C4DFF"/><polygon points="470,143 484,136 484,168 470,161" fill="#7C4DFF"/>
+<path d="M488,152 C540,150 580,148 634,145" fill="none" stroke="#7C4DFF" stroke-width="2.5" stroke-dasharray="5 5" marker-end="url(#cg-arrow)"/>
+<text x="574" y="250" text-anchor="middle" font-size="12" fill="var(--ifm-color-emphasis-800)">Many layers — a camera moves through</text>
+<text x="574" y="272" text-anchor="middle" font-size="11" fill="var(--ifm-color-emphasis-600)">Depth you travel through</text>
+<circle cx="380" cy="150" r="19" fill="var(--ifm-background-color)" stroke="var(--ifm-color-emphasis-300)" stroke-width="1.5"/>
+<text x="380" y="155" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ifm-color-emphasis-700)">vs</text>
+<defs><marker id="cg-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#7C4DFF"/></marker></defs>
+</svg>
+<figcaption style="text-align:center;font-size:.85rem;color:var(--ifm-color-emphasis-600);margin-top:.5rem;">The everyday "3D" hero is 2.5D — a faked camera over a flat image. Real 3D moves a camera through actual layers of depth.</figcaption>
+</figure>
+
 The Animation Engine already produces this exact effect on purpose — see the **Backdrop Motion**
 (`pan` / `dolly` / `pan_dolly`) options in [Scroll Story](/animation-engine/scrollytelling). The
 roadmap's 3D work is about going **beyond** it: a camera moving through a real rendered scene, which

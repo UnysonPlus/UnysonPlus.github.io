@@ -122,16 +122,21 @@ _None._
 
 ## Post Types extension
 
-### Actions (0)
+### Actions (1)
 
-_None._
+| Hook | Passes to your callback | What it does |
+| --- | --- | --- |
+| `fw_ext_post_types_saved` | `$post_types, $taxonomies, $prev_post_types, $prev_taxonomies` | Fires after the post type / taxonomy definitions are written. Use it to invalidate anything keyed on the set of registered post types. Both the new and previous definition arrays are passed, so you can diff them. |
 
-### Filters (3)
+### Filters (6)
 
 | Hook | Passes to your callback | What it does |
 | --- | --- | --- |
 | `fw_ext_post_types_args` | `$args, $slug, $def` | Filter the final register_post_type() args for a user-created post type. @param array  $args The arguments passed to register_post_type(). @param string $slug The post type key. @param array  $def  The raw saved definition row. |
 | `fw_ext_post_types_taxonomy_args` | `$args, $slug, $object_types, $def` | Filter the final register_taxonomy() args for a user-created taxonomy. @param array    $args         The arguments passed to register_taxonomy(). @param string   $slug         The taxonomy key. @param string[] $object_types Post type keys the taxonomy is bound to. @param array... |
+| `fw_ext_post_types_archive_query` | `$vars, $post_type, $def, $query` | Filter the query vars applied to a user-created post type's archive (from the row's Archive tab) before they are set on the main query. Return an empty array to leave the archive query untouched. |
+| `fw_ext_post_types_blueprints` | `$blueprints` | Filter the available Blueprints — ready-made content-type packs, keyed by slug, each with `title`, `desc`, `icon`, `post_types[]`, `taxonomies[]` and an optional `fields` group. Add your own to offer a one-click content type. |
+| `fw_upw_internal_post_types` | `$keys` | Post type keys treated as WordPress plumbing and hidden from every "pick a post type" chooser. Backs the shared `fw_upw_post_type_choices()` helper used by this extension and Custom Fields, so filtering it changes both. |
 | `fw_unysonplus_admin_submenu_order` | _see source_ | The leading order of the Unyson+ submenu, by page slug. The parent slug itself is the "Extensions" landing item and stays on top. @param string[] $order |
 
 

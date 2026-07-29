@@ -17,18 +17,62 @@ Each field in a group has a label, a **name** (its meta key), an optional instru
 
 | Group | Types |
 | --- | --- |
-| **Text** | `text`, `textarea`, `wysiwyg`, `number`, `url`, `email`, plus width variants `medium-text`, `short-text` |
-| **Choice** | `select`, `short-select`, `radio`, `checkbox`, `checkboxes`, `switch` |
-| **Media** | `image`, `file`, `gallery` |
-| **Other** | `color`, `date` |
-| **Repeater** | a repeating set of sub-fields (see below) |
+| **Text** | Text, Text Area, WYSIWYG Editor, URL, Email, Code / HTML, plus width variants (medium, short) |
+| **Numbers** | Number, Slider, Range (from - to), Measurement (value + unit) |
+| **Media** | Image, File, Gallery, Embed (video / media URL), Icon |
+| **Choice** | Select, Radio, Image choice (visual radio), Checkbox, Checkboxes, Switch |
+| **Relationships** | Related posts, Taxonomy terms, Users |
+| **Date & time** | Date, Date & time, Time, Date range |
+| **Color** | Color, Color (theme preset), Color with transparency |
+| **Location** | Location (map) |
+| **Repeating** | List (a repeating single value), Repeater (rows of sub-fields), Repeater with rows edited in a popup |
+
+### Relationship fields
+
+**Related posts**, **Taxonomy terms** and **Users** give you an AJAX-searched picker: start typing and
+select. Per field you choose which post types / taxonomies / roles can be picked and a maximum number
+of items — set that to **1** for a single relationship. The saved value is an array of IDs, so a
+single relationship is `$ids[0]`.
+
+This is how you link content together: a Property to its Agent, a Case Study to related Case Studies,
+a Team Member to their WordPress user account.
+
+:::tip
+Leaving the source empty means "anything of that kind" rather than "nothing", so a Related posts
+field with no post types set can pick any post type.
+:::
+
+### Embeds, icons and maps
+
+**Embed** takes a YouTube, Vimeo, Spotify or Twitter URL and previews it in the editor — render it on
+the front end with `wp_oembed_get()`. **Icon** opens the same icon picker (and icon packs) the rest of
+the builder uses. **Location** is a map picker that saves latitude and longitude together.
+
+:::caution
+The map field needs a Google Maps API key. Without one it falls back to a plain text input and says
+so, rather than rendering an empty grey box.
+:::
+
+### Color (theme preset)
+
+Alongside the plain **Color** picker there is **Color (theme preset)**, which offers your Theme
+Settings color presets with a custom-color fallback on the same row. Prefer it whenever the color
+should track the site's palette rather than being a one-off hex — the value is
+`{ predefined, custom }`, where a preset resolves to `var(--color-{slug})`.
 
 ### Repeater fields
 
 A **Repeater** holds a repeating row of sub-fields. You define the sub-fields with a simple
-`name | Label | type` line list (types: text, textarea, wysiwyg, number, url, image, file, gallery,
-color, date, switch, checkbox). On the edit screen it renders as an addable list of rows; the saved
-value is an array of rows, each keyed by sub-field name, which you loop over with `fw_get_field()`.
+`name | Label | type` line list (types: text, textarea, wysiwyg, number, url, email, image, file,
+gallery, oembed, icon, color, date, datetime, time, switch, checkbox). On the edit screen it renders
+as an addable list of rows; the saved value is an array of rows, each keyed by sub-field name, which
+you loop over with `fw_get_field()`.
+
+Two variants exist: the default edits rows **inline**, while **Repeater (rows edited in a popup)**
+opens each row in a modal — the better choice once a row has more than a few sub-fields.
+
+For a simple repeating *single* value — a list of features, ingredients or bullet points — use
+**List** instead. It saves a plain array of strings with no sub-field setup at all.
 
 ## Group settings
 

@@ -30,16 +30,16 @@ active) a matching field group, all wired together.
 
 | Blueprint | What you get |
 | --- | --- |
-| **Testimonials** | Quotes with author, role, company, URL and rating; a Testimonial Category taxonomy. |
-| **Team Members** | Profiles with job title, email, phone, LinkedIn and bio; a hierarchical Department taxonomy; ordered by menu order. |
-| **Case Studies** | Client, project URL, year, headline result and a gallery; Sector and Service taxonomies; Page Builder enabled. |
+| **Testimonials** | Quotes with author, role, company, URL and a 1-5 rating slider; a Testimonial Category taxonomy. |
+| **Team Members** | Profiles with job title, email, phone, LinkedIn, bio and an optional link to a WordPress user; a hierarchical Department taxonomy; ordered by menu order. |
+| **Case Studies** | Client, project URL, year, headline result, a gallery and related case studies; Sector and Service taxonomies; Page Builder enabled. |
 | **FAQ** | Manually ordered questions grouped by Topic. Non-public — designed to be pulled into a page. |
-| **Services** | Hierarchical, with summary, price and icon; Page Builder enabled. |
-| **Events** | Start/end date, time, venue, address and booking URL; single-select Event Type; sorted oldest first. |
-| **Properties** | Price, beds, baths, floor area, address and gallery; single-select Property Type, hierarchical Location with nested URLs, flat Features. |
-| **Job Listings** | Location, salary range, closing date and apply URL; Department and Contract Type. Kept out of site search. |
-| **Locations** | Address, phone, email, opening hours and map coordinates; hierarchical so a region can contain its sites. |
-| **Recipes** | Servings, prep/cook time, ingredients and method; Cuisine, Course and Dietary taxonomies. |
+| **Services** | Hierarchical, with summary, price and an icon picker; Page Builder enabled. |
+| **Events** | Start and end date-times, venue, address, booking URL and a video embed; single-select Event Type; sorted oldest first. |
+| **Properties** | Price, beds, baths, floor area with units, a map location, gallery and virtual tour; single-select Property Type, hierarchical Location with nested URLs, flat Features. |
+| **Job Listings** | Location, salary range, closing date, apply URL and a hiring manager; Department and Contract Type. Kept out of site search. |
+| **Locations** | Address, phone, email, opening hours and a map location; hierarchical so a region can contain its sites. |
+| **Recipes** | Servings, prep/cook time, repeating ingredient and step lists and a video; Cuisine, Course and Dietary taxonomies. |
 | **Downloads** | A resource library — file, version, size and a gated flag; Download Category. |
 
 :::tip

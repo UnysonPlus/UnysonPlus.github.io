@@ -9,8 +9,8 @@ import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
 const HIGHLIGHTS = [
-  {value: '54', label: 'Builder Elements'},
-  {value: '20+', label: 'Extensions'},
+  {value: '100+', label: 'Builder Elements'},
+  {value: '21', label: 'Extensions'},
   {value: 'Free', label: 'GPL Licensed'},
   {value: 'Auto', label: 'GitHub Updates'},
 ];

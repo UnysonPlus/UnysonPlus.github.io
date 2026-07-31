@@ -75,4 +75,4 @@ it on the front end, no wrapper-div soup, one generated stylesheet. View the pag
 - **Brand the whole site** — set global colors, fonts, header and footer in
   [Theme Settings](/theme/theme-settings), then ship it as a
   [child theme](./build-your-first-child-theme.md).
-- **Browse every element** — the [Elements reference](/docs/shortcodes/overview) documents all 54.
+- **Browse every element** — the [Elements reference](/docs/shortcodes/overview) documents them all.

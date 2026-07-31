@@ -1,16 +1,17 @@
 ---
-title: Announcement Pill
+title: Badge
 sidebar_position: 40
 ---
 
-# Announcement Pill
+# Badge
 
-A compact rounded **pill / badge** — an optional sub-tag (“New”), a message, optional leading + trailing icons, and an optional link. Perfect for “what’s new” hero chips, status badges and eyebrow labels. Tabs: **Content**, **Design**, **Styling**, **Link & SEO**, **Animations**, **Advanced**.
+A compact rounded **badge / pill / chip** — an optional sub-tag (“New”), a message, optional leading + trailing icons, and an optional link. Perfect for status badges, “what’s new” hero chips, eyebrow labels and announcement pills. Tabs: **Content**, **Design**, **Styling**, **Link & SEO**, **Animations**, **Advanced**.
 
 Markup stays clean and semantic: it renders a crawlable `<a>` when linked (a plain `<span>` otherwise — never a fake `role="alert"`), and every utility class lives in the element’s stylesheet rather than on the content.
 
 ## Content
 
+<img src="/img/shortcodes/badge-content.png" alt="Badge options panel — Content tab" width="1200" />
 
 - **Sub-tag** — the small leading badge inside the pill (e.g. `New`, `Beta`, `Pro`). Leave empty to omit it.
 - **Message** — the main pill text.
@@ -20,6 +21,7 @@ Markup stays clean and semantic: it renders a crawlable `<a>` when linked (a pla
 
 ## Design
 
+<img src="/img/shortcodes/badge-design.png" alt="Badge options panel — Design tab" width="1200" />
 
 | Option | Choices |
 | --- | --- |
@@ -32,6 +34,7 @@ Markup stays clean and semantic: it renders a crawlable `<a>` when linked (a pla
 
 ## Styling
 
+<img src="/img/shortcodes/badge-styling.png" alt="Badge options panel — Styling tab" width="1200" />
 
 - **Pill Color** — drives the fill / border / text of the pill. A Color Preset (recommended) follows your brand; or a custom colour. Empty = neutral grey.
 - **Message Color** — override the message text colour. Empty = derived from the Pill Color / style.
@@ -41,6 +44,7 @@ Markup stays clean and semantic: it renders a crawlable `<a>` when linked (a pla
 
 ## Link & SEO
 
+<img src="/img/shortcodes/badge-link-seo.png" alt="Badge options panel — Link & SEO tab" width="1200" />
 
 Everything you need for a search- and accessibility-friendly chip:
 

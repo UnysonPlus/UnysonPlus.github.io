@@ -7,7 +7,12 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--brand-green-1) 0%, var(--brand-green-2) 100%);
+  /* Green textured hero: the brand-green gradient tints (and adds a soft vignette to
+     the bottom for text contrast) over the textured background image. */
+  background:
+    linear-gradient(180deg, rgba(35, 59, 53, 0.2) 0%, rgba(30, 50, 45, 0.55) 100%),
+    url('./unysonplus-github-bg.jpg') center / cover no-repeat;
+  background-color: var(--brand-green-2);
   color: #fff;
 }
 

@@ -45,18 +45,27 @@ Two gaps surfaced in the audit:
   `N agent-findings` count for at-a-glance Sheet triage. **No new Google Form field is required** — the
   data is a new key in the opaque blob; an optional human-readable "findings" field is a Tier-2 ergonomics
   nice-to-have, not needed for the mechanism.
-- **Consent cadence (now explicit in `site-build-protocol.md`):**
-  - **Cumulative, once per site** — collect the whole conversion's systematic misses into one
-    `share-findings.json`; ask + send **once**, at the end (Phase 5). One capture run = one submission (the
-    salted host-hash dedupes). Never a separate `--share` per bug.
-  - **One "yes" covers this site's whole report** — don't re-ask for each subsequent miss. Consent is the
-    site *owner's*, so it does **not** carry to a different site; a new site = ask again.
-  - **A "no" is final for that site — never re-prompt.** At most one ask per site.
+- **Consent cadence: ASK ONCE → then auto-send each bug with a notification** (explicit in
+  `site-build-protocol.md`). The agent asks **exactly once, upfront**; a **yes** authorizes streaming for the
+  WHOLE site, and it then sends each finding immediately via a new `send-finding.mjs` (a lean
+  `{ hostHash, version, one finding }` ≈ a few hundred bytes, throttled ≥1s apart) and **notifies the user
+  concisely each time** (`⚑ reported: code_block → special_heading`). A stats-only `--summary` goes once per
+  site. **Never ask per bug; a "no" is final** (never re-prompt); consent is the site *owner's* so it does
+  not carry to a different site. A **batch** alternative (`share-findings.json` + `--share`, one report at the
+  end) remains for those who prefer it.
 
 ## Why
 The auto report is a good *aggregate* signal and a safe pipe, but it isn't a precise bug channel until the
 agent's got-vs-expected can travel — so we gave it a sanitized field inside the existing blob rather than
-restructuring the transport. On cadence: consent belongs to the *site/owner*, not the bug, so scoping one
-ask (and one send) per site is both less annoying and more correct; and re-asking after a "no" is a
-coercive dark pattern that would erode trust in an opt-in feature. Batching also keeps the Sheet clean (one
-contextful row per site) and lets us see a site's misses together.
+restructuring the transport.
+
+On cadence we iterated. A pure end-of-run **batch** keeps the Sheet clean, but (a) a very large page's full
+report can approach the 50k Google-Sheets cell limit, and (b) a single silent send is *less* transparent —
+the owner consents to an unseen blob. **Per-bug** sending fixes size but risks Sheet noise, burst
+rate-limiting, and the ask-per-bug dark pattern. The chosen **ask-once → stream + notify** takes the best of
+both: one informed yes (no nagging), **lean** per-bug payloads that can never hit the cell limit however many
+bugs a site has, and a **per-bug notification** that makes the single consent genuinely informed (the user
+watches what goes out and can stop it). Throttling neutralizes the rate-limit risk; a once-per-site `stats`
+summary preserves the aggregate signal without repeating the report. Consent still belongs to the
+site/owner, and a "no" is still final — re-asking would be a coercive dark pattern that erodes an opt-in
+feature. (Superseded the initial "batch once per site" conclusion after weighing size + transparency.)

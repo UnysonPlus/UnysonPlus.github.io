@@ -53,6 +53,12 @@ Two gaps surfaced in the audit:
   site. **Never ask per bug; a "no" is final** (never re-prompt); consent is the site *owner's* so it does
   not carry to a different site. A **batch** alternative (`share-findings.json` + `--share`, one report at the
   end) remains for those who prefer it.
+- **Framing: "improvement," not "bug."** The user-facing ask + per-item notification are worded as
+  *"a place the **Site Converter** could translate better"*, not *"a bug found"* — it's an accurate frame
+  (nothing broke; a translation gap was spotted) and a more inviting one (contributing to a better tool vs.
+  reporting a failure), attributed to the converter (the tool), not the Dev Kit (the docs). Crucially the
+  positive wording still states **what is sent** (anonymized, structural only, no content/URL) — a rosy
+  frame that hid the data-send would be a soft consent dark pattern.
 
 ## Why
 The auto report is a good *aggregate* signal and a safe pipe, but it isn't a precise bug channel until the

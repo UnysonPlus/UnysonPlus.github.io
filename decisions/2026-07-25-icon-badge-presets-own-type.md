@@ -61,3 +61,14 @@ they earn their place on the layouts that use them. Icon-heavy sites (features, 
 exactly where badges repeat, so the reuse pays off there.
 
 Status: **Accepted** — building it modeled on the `border-presets` pipeline.
+
+## Update — retiring the v1 per-element badge
+
+Once the preset shipped and rolled out to the icon-bearing shortcodes, the Icon Box's original
+per-element **"Icon Badge" shape** (a Layout-tab image-picker: solid/outline × square/rounded/circle)
+plus its **"Icon Badge Color"** became genuinely redundant: the preset is the reusable, fuller-featured
+version of exactly that, and four presets ship by default so there's always one to pick without creating
+anything. We **retired both from the UI** but kept the view rendering their saved values, so pages built
+before the switch don't break — they keep their badge until re-done with a preset. **Icon Color** and
+**Icon Size** stay: they style a plain (no-badge) icon, and the preset simply overrides them (via
+`!important`) when one is selected, so they're the base layer, not redundant. New work uses presets.

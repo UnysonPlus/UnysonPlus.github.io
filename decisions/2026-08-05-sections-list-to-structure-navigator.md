@@ -63,3 +63,25 @@ between sections). That's bundled with the canvas drag-to-reorder work rather th
 - **Deferring cross-tree drag keeps it honest.** Reordering elements across the tree is the same problem
   as canvas drag-to-reorder; doing it once, later, avoids two half-built implementations and keeps
   Phase 1 shippable now.
+
+## Update — the navigator grew up (shipped)
+
+Phase 1 landed, and the panel kept earning its keep, so the deferred **Phase 2** and a run of
+pro-navigator features shipped on top of it:
+
+- **Cross-container drag (Phase 2).** The grip now moves a node across the whole tree — an element
+  into another column, a column into another section — constrained by type so you can't build an
+  invalid structure, with the FLIP glide following the node and both affected subtrees re-rendering
+  live. Reorders (tree *and* canvas) animate via a shared FLIP helper instead of snapping.
+- **Right-click context menu** (copy / paste / duplicate / delete) and **hover quick-actions**
+  (visibility · duplicate · delete · lock · add-child) on every row.
+- **Visibility toggle** (per-device `responsive_hide`), **custom rename** for any node
+  (`atts._le_label`, round-tripped through `builder_json`), **lock** (excludes a node from canvas
+  select/edit + tree drag), **search/filter**, and a **collapse-all** header toggle.
+- **Keyboard navigation** — arrows to move/expand, Enter to rename, Delete to remove,
+  Ctrl+D/C/V — plus **hover-sync** (tree row ⇄ canvas outline) and **multi-select + bulk**
+  (Shift/Ctrl-click, bulk delete/duplicate).
+
+The throughline held: because the model + `parentId` index were already computed, each addition was
+mostly rendering + selection-sync + reusing the existing move/duplicate/delete engines — not new data
+plumbing. The navigator is now the primary way to move around and restructure a page.

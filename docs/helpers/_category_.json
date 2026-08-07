@@ -3,6 +3,7 @@
   "position": 19,
   "link": {
     "type": "generated-index",
-    "title": "Helpers"
+    "title": "Helpers",
+    "description": "The Unyson+ helper APIs you'll reach for most — PHP and JavaScript utilities, CSS helpers, caching, forms, settings forms, and flash messages. A reference for the framework's day-to-day building blocks."
   }
 }

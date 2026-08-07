@@ -3,6 +3,7 @@
   "position": 18,
   "link": {
     "type": "generated-index",
-    "title": "Components"
+    "title": "Components",
+    "description": "The core building blocks of the Unyson+ framework — the backend component, the theme and extensions components, and how they fit together. Start here to understand how the framework is structured."
   }
 }

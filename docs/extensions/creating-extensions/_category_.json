@@ -3,6 +3,7 @@
   "position": 26,
   "link": {
     "type": "generated-index",
-    "title": "Creating Extensions"
+    "title": "Creating Extensions",
+    "description": "How to build your own Unyson+ extension — an introduction to the extension model, a step-by-step create-an-extension guide, and a cookbook of common recipes."
   }
 }

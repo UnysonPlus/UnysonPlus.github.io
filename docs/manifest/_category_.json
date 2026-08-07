@@ -3,6 +3,7 @@
   "position": 20,
   "link": {
     "type": "generated-index",
-    "title": "Manifest"
+    "title": "Manifest",
+    "description": "The manifest.php reference for Unyson+ — how the framework, theme, and extension manifests declare metadata, versions, and dependencies that the framework reads at load time."
   }
 }

@@ -49,7 +49,7 @@ const config = {
         hashed: true,
         indexDocs: true,
         indexBlog: true,
-        docsRouteBasePath: ['/docs', '/animation-engine', '/theme', '/guides'],
+        docsRouteBasePath: ['/docs', '/animation-engine', '/theme', '/guides', '/ai-dev-kit'],
         // Index BOTH blog instances: the News blog (/blog) and the Design Decisions blog
         // (/decisions). Without this the plugin only indexes the default /blog, so decisions
         // posts never show up in search.
@@ -127,6 +127,16 @@ const config = {
         editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'aiDevKit',
+        path: 'ai-dev-kit',
+        routeBasePath: 'ai-dev-kit',
+        sidebarPath: './sidebarsAiDevKit.js',
+        editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
+      },
+    ],
     // Design Decisions — a dated log of WHY the framework works the way it does
     // (the reasoning behind key architecture/design choices). A second, separate
     // blog instance so it stays distinct from the "News" release feed.
@@ -192,6 +202,13 @@ const config = {
             docsPluginId: 'guides',
             position: 'left',
             label: 'Guides',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'aiDevKitSidebar',
+            docsPluginId: 'aiDevKit',
+            position: 'left',
+            label: 'AI Dev Kit',
           },
           {to: '/decisions', label: 'Design Decisions', position: 'left'},
           {to: '/blog', label: 'News', position: 'left'},

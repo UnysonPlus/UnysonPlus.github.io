@@ -1,0 +1,47 @@
+{
+  "_comment": "SOURCE OF TRUTH for the Theme Settings mapping docs. Hand-curated from the Site Converter's design-system extraction (class-fw-site-converter-stitch.php build_color_presets / typography / button logic + class-fw-site-converter-theme-settings.php importer) cross-referenced against the theme's option groups (unysonplus-theme/framework-customizations/theme/options/*.php, documented in theme-settings-reference.md). Edit THIS file, then run `node scripts/gen-theme-settings-mapping.mjs` to regenerate ai-dev-kit/theme-settings-mapping/*.md. Do NOT hand-edit the generated .md. Option 'status': native = derived from a source signal; via-css = reproduced via generated CSS, native option empty; unmapped = left at default (no source signal / manual); auto = plumbing. Tab 'coverage': populated = the converter writes this tab; partial = only some keys; manual = not converter-populated (set by hand or by the generated child theme).",
+  "sourceOfTruth": "unysonplus/framework/extensions/site-converter — stitch.php (design-system extraction) + theme-settings.php (importer); options from unysonplus-theme/framework-customizations/theme/options/*.php",
+  "statuses": {
+    "native": { "emoji": "✅", "label": "Native", "blurb": "Derived and written from a source signal." },
+    "via-css": { "emoji": "🟡", "label": "Via CSS", "blurb": "Reproduced via generated CSS; the native option is left empty (candidate to promote)." },
+    "unmapped": { "emoji": "⚪", "label": "Unmapped", "blurb": "Left at default — no source signal, or set by hand." },
+    "auto": { "emoji": "⚙️", "label": "Auto", "blurb": "Plumbing. Excluded from the coverage percentage." }
+  },
+  "tabCoverage": {
+    "populated": { "emoji": "✅", "label": "Populated" },
+    "partial": { "emoji": "🟡", "label": "Partial" },
+    "manual": { "emoji": "⚪", "label": "Manual" }
+  },
+  "tabs": [
+    {
+      "group": "General",
+      "tab": "Colors",
+      "slug": "colors",
+      "storageKey": "theme_colors",
+      "location": "Theme Settings → General → Colors",
+      "coverage": "populated",
+      "intro": "The Colors tab is the site **palette** — the `theme_colors` addable list of `{ name, color }` rows. Each row's name becomes a slug that drives a `.text-{slug}` / `.bg-{slug}` utility and a `--color-{slug}` CSS variable (e.g. **Primary** drives `btn-primary` + `--color-primary`). The converter derives the source's **brand palette** and writes these rows, then merges the plugin's default presets after them (de-duped by hex) so bundled Box / Icon-Badge presets that reference default slugs still resolve.",
+      "recognizerNotes": "Brand colours are pulled from the captured design tokens (a real `tailwind.config`) first, then from each element's computed `getComputedStyle` semantic colours, then a markup accent scan / the primary button's real fill. A brand role only appears when a real colour was found — otherwise the default palette stands. The brand `Primary` is prepended before the default `Primary`, so it wins the `primary` slug and the default button/box presets adopt the brand colour.",
+      "options": [
+        { "key": "Primary", "type": "palette role", "status": "native", "source": "Brand action colour, in priority order: `tailwind.config` accent/primary token → computed semantic primary/accent → vivid markup accent scan → the primary button's real fill → tertiary/secondary/ink → neutral fallback. Wins the `primary` slug (drives `btn-primary` + `--color-primary`)." },
+        { "key": "Ink", "type": "palette role", "status": "native", "source": "Source text / foreground colour (`text`, `on-background`, `foreground`). Falls back to `#1a1a1a`." },
+        { "key": "Secondary", "type": "palette role", "status": "native", "source": "`secondary` / `tertiary` token, or the computed semantic `secondary`. Only when found." },
+        { "key": "Accent", "type": "palette role", "status": "native", "source": "Computed semantic `accent`. Only when found." },
+        { "key": "Dark", "type": "palette role", "status": "native", "source": "`deep-black` / `black` / `surface-container-lowest` token, or semantic `dark`. Only when found." },
+        { "key": "Muted", "type": "palette role", "status": "native", "source": "`muted` / `on-surface-variant`. Only when found." },
+        { "key": "Light", "type": "palette role", "status": "native", "source": "`page-bg` / `background` / `surface` / `white-soft`. Only when found." },
+        { "key": "Default presets (White, Gray, Red, Green, …)", "type": "palette rows", "status": "unmapped", "source": "The plugin's ~20 default color presets, merged in after the brand roles and de-duped by hex — kept (not derived) so bundled Box / Icon-Badge presets that reference their slugs keep resolving." }
+      ]
+    }
+  ],
+  "otherTabs": [
+    { "group": "General", "tab": "Typography & Fonts", "coverage": "populated", "note": "Heading + body font families and the Display / body type scale are derived from the source. Detail page coming next." },
+    { "group": "General", "tab": "Layout", "coverage": "partial", "note": "Container / content width may be carried; most layout options are set by hand." },
+    { "group": "General", "tab": "Base", "coverage": "manual", "note": "Selection / scrollbar / focus colours — opt-in, set by hand." },
+    { "group": "General", "tab": "Settings · Pages · Sidebar · Social", "coverage": "manual", "note": "Behavioural / structural defaults — not derived from a source design." },
+    { "group": "Header", "tab": "Header (Identity, Layout, Top/Bottom bar, Menu, Mega Menu…)", "coverage": "manual", "note": "The header chrome comes from the generated child theme + captured menus, not Theme Settings design keys." },
+    { "group": "Footer", "tab": "Footer (Layout, Pre / Main / Post / Copyright, Widgets…)", "coverage": "manual", "note": "The footer chrome comes from the generated child theme + captured menus." },
+    { "group": "Content", "tab": "Blog · Single · Archives · Pages", "coverage": "manual", "note": "Post/archive layout defaults — not part of a page conversion." },
+    { "group": "Misc", "tab": "Misc", "coverage": "manual", "note": "Miscellaneous toggles — set by hand." }
+  ]
+}

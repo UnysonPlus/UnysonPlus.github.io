@@ -29,7 +29,8 @@ How to read it:
 
 > Generated from the converter's recognizer + block-builder registries (with a PHP↔JS parity twin in
 > the to-pages path). This set is **expanding** — more shortcodes are added as they're documented.
-> Converting a source? See also [How It Works](../how-it-works.md).
+> Converting a source? See also [Theme Settings Mapping](../theme-settings-mapping/index.md) (the
+> design system side) and [How It Works](../how-it-works.md).
 
 ## Coverage at a glance
 

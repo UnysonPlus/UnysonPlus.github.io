@@ -18,6 +18,11 @@ required. They're grouped in the builder:
 Some elements come from their own extensions — **Contact Form** (Forms), **Portfolio Grid** and
 **Project Gallery** (Portfolio) — and appear in the builder once that extension is active.
 
+:::tip[Converting a site?]
+The Site Converter auto-detects source blocks and rebuilds them as these native elements. See the
+[Element Mapping Reference](/ai-dev-kit/element-mapping) for what each source pattern becomes.
+:::
+
 ## All elements at a glance
 
 | Element | Category | What it does |

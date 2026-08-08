@@ -1,0 +1,42 @@
+{
+  "_comment": "SOURCE OF TRUTH for the converter element-mapping table. Hand-curated from the Site Converter's recognizer registry (class-fw-site-converter-stitch.php) + block-builder registry (class-fw-site-converter-mapper.php, register_builder / n_* node builders), which have a PHP<->JS parity twin in the to-pages path. Edit THIS file, then run `node scripts/gen-element-mapping.mjs` to regenerate ai-dev-kit/element-mapping.md. Do NOT hand-edit the generated .md. Priority = relative evaluation order (lower runs first); specialized structural recognizers take the low numbers, these text primitives run later, and code_block (priority 99) is the universal fallback for anything unmapped.",
+  "sourceOfTruth": "unysonplus/framework/extensions/site-converter — class-fw-site-converter-stitch.php (recognizers) + class-fw-site-converter-mapper.php (builders)",
+  "elements": [
+    {
+      "priority": 60,
+      "recognizer": "heading",
+      "matchesWhen": "A semantic heading tag (`<h1>`–`<h6>`), or a text node the heuristics score as a heading. Level ≤ 2 is treated as a page **Title** (larger Display type); level ≥ 3 as a section heading.",
+      "becomes": "special_heading",
+      "becomesLabel": "Special Heading",
+      "becomesDoc": "/docs/shortcodes/content-elements/special-heading",
+      "nativeOptions": [
+        "`title` (rich text)",
+        "`level` (h1–h6)",
+        "`align`",
+        "`title_weight` (font-weight)",
+        "`css_class`",
+        "native **spacing** (top/bottom margins)"
+      ],
+      "blockShape": "{ t:'heading', html|text, level, align, cls, wrapCls, cs }",
+      "fallback": "Degrades to `text_block`, then `code_block`.",
+      "notes": "Font family / size / weight / line-height / letter-spacing / color / transform / alignment are re-asserted at specificity 0 (the \"hi-fi base\"), so it looks identical out of the box while staying editable through Theme Settings and the heading's own options."
+    },
+    {
+      "priority": 70,
+      "recognizer": "text",
+      "matchesWhen": "A paragraph / body-copy block (typically `<p>` or a text container) that isn't a heading, button, or other recognized primitive. Short ALL-CAPS or eyebrow/kicker-classed text is refined to an **overline** instead.",
+      "becomes": "text_block",
+      "becomesLabel": "Text Block",
+      "becomesDoc": "/docs/shortcodes/content-elements/text-block",
+      "nativeOptions": [
+        "`content` (rich HTML)",
+        "`max_width`",
+        "`align`",
+        "**Text Style preset** (`font_size_preset`) when a body role is matched"
+      ],
+      "blockShape": "{ t:'text', html|text, maxWidth, align, cs }",
+      "fallback": "Degrades to `code_block`.",
+      "notes": "Vertical margins ride the unified styler; font / color / line-height re-assert at specificity 0. When a Text Style preset is assigned, `font-size` is dropped from the base so the editable preset owns the size instead of a frozen per-node value."
+    }
+  ]
+}

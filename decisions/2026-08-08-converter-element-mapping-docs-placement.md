@@ -59,3 +59,15 @@ primitives (`heading → special_heading`, `text → text_block`) and expands fr
   when the converter changes.
 - **It sells the converter.** A single "look how many source patterns we translate natively" table is
   genuine marketing for the AI Dev Kit and Site Converter.
+
+## Update (same day) — refined to per-shortcode pages with option-level coverage
+
+A new requirement landed immediately: we want to **monitor which of a shortcode's options are not
+mapped, or only reproduced via CSS**. A single flat table can't show that. So the structure became an
+**Element Mapping** category — an **index** (coverage-at-a-glance + the recognizer table) plus **one
+page per shortcode** carrying a full option-by-option coverage table. Each option is classified
+`native` / `via-css` (reproduced through scoped CSS, native option left empty — a promote candidate) /
+`unmapped` / `auto`, with a coverage percentage per shortcode. Same generator, same single JSON source
+of truth — the JSON just gained an `options[]` array per shortcode, cross-referenced against each
+shortcode's `options.php`. This keeps the "one generated source of truth, no drift" spirit of the
+original decision while making the docs a real coverage-monitoring tool.

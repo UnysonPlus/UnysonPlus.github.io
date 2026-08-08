@@ -1,101 +1,172 @@
 #!/usr/bin/env node
 /**
- * gen-element-mapping.mjs — regenerate the AI Dev Kit "Element Mapping Reference" page.
+ * gen-element-mapping.mjs — regenerate the AI Dev Kit "Element Mapping" docs.
  *
  * Reads ai-dev-kit/_data/element-mapping.json (the hand-curated mirror of the Site
- * Converter's recognizer + block-builder registries) and emits ai-dev-kit/element-mapping.md.
+ * Converter's recognizer + block-builder registries, cross-referenced against each
+ * shortcode's options.php) and emits:
  *
- * The .md is GENERATED — never hand-edit it. Edit the JSON, then re-run:
+ *   ai-dev-kit/element-mapping/index.md            — overview + coverage summary + recognizer table
+ *   ai-dev-kit/element-mapping/<shortcode>.md      — one page per shortcode, full options coverage
+ *   ai-dev-kit/element-mapping/_category_.json     — sidebar category
+ *
+ * The .md files are GENERATED — never hand-edit them. Edit the JSON, then re-run:
  *     node scripts/gen-element-mapping.mjs
- *
- * When the converter gains/loses a recognizer, update the JSON in the same change so the
- * public table can't drift from the code (mirrors this project's docs-sync discipline).
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const DATA = join(ROOT, 'ai-dev-kit', '_data', 'element-mapping.json');
-const OUT = join(ROOT, 'ai-dev-kit', 'element-mapping.md');
+const OUTDIR = join(ROOT, 'ai-dev-kit', 'element-mapping');
 
 const data = JSON.parse(readFileSync(DATA, 'utf8'));
-const rows = [...data.elements].sort((a, b) => a.priority - b.priority);
+const ST = data.statuses;
+const elements = [...data.elements].sort((a, b) => a.priority - b.priority);
 
-const becomesCell = (e) =>
-  e.becomesDoc ? `[\`${e.becomes}\`](${e.becomesDoc})` : `\`${e.becomes}\``;
-const optsCell = (e) => (e.nativeOptions || []).join(', ');
+const GENERATED = '<!-- ⚠️ GENERATED FILE — do not edit by hand. Edit ai-dev-kit/_data/element-mapping.json, then run: node scripts/gen-element-mapping.mjs -->';
+const slugOf = (e) => e.shortcode.replace(/_/g, '-');
+const becomesLink = (e) => (e.doc ? `[\`${e.shortcode}\`](${e.doc})` : `\`${e.shortcode}\``);
+const statusCell = (s) => `${ST[s].emoji} ${ST[s].label}`;
 
-// --- Summary table -------------------------------------------------------------
-const tableHead =
-  '| Priority | Recognizer | Matches when | Becomes | Native options set | Fallback |\n' +
-  '| --- | --- | --- | --- | --- | --- |';
-const tableRows = rows
+function coverage(e) {
+  const c = { native: 0, 'via-css': 0, unmapped: 0, auto: 0 };
+  for (const o of e.options) c[o.status] = (c[o.status] || 0) + 1;
+  const denom = c.native + c['via-css'] + c.unmapped;
+  const pct = denom ? Math.round((c.native / denom) * 100) : 0;
+  return { ...c, denom, pct };
+}
+
+// --- fresh output dir ----------------------------------------------------------
+if (existsSync(OUTDIR)) rmSync(OUTDIR, { recursive: true, force: true });
+mkdirSync(OUTDIR, { recursive: true });
+
+// --- _category_.json -----------------------------------------------------------
+writeFileSync(
+  join(OUTDIR, '_category_.json'),
+  JSON.stringify(
+    {
+      label: 'Element Mapping',
+      position: 4.5,
+      link: {
+        type: 'doc',
+        id: 'element-mapping/index',
+      },
+    },
+    null,
+    2
+  ) + '\n'
+);
+
+// --- per-shortcode pages -------------------------------------------------------
+for (const e of elements) {
+  const cov = coverage(e);
+  const rows = e.options
+    .map((o) => `| \`${o.key}\` | ${o.tab} | \`${o.type}\` | ${statusCell(o.status)} | ${o.source || '—'} |`)
+    .join('\n');
+
+  const md = `---
+title: ${e.label} — converter mapping
+sidebar_label: ${e.label}
+slug: /element-mapping/${slugOf(e)}
+description: How the UnysonPlus Site Converter maps a source ${e.recognizer} into the ${e.label} (\`${e.shortcode}\`) shortcode — the recognizer rule and a full option-by-option coverage table.
+---
+
+${GENERATED}
+
+# ${e.label} — converter mapping
+
+Source \`${e.recognizer}\` → ${becomesLink(e)}. This page shows the recognizer rule and **every**
+option on the shortcode, with how the converter fills it — so you can see at a glance which options
+are mapped, which are reproduced via CSS, and which are left for manual editing.
+
+## Recognizer
+
+| | |
+| --- | --- |
+| **Priority** | ${e.priority} |
+| **Recognizer** | \`${e.recognizer}\` |
+| **Matches when** | ${e.matchesWhen} |
+| **Becomes** | ${becomesLink(e)} |
+| **Recognizer block shape** | \`${e.blockShape}\` |
+| **Fallback** | ${e.fallback} |
+${e.recognizerNotes ? `\n${e.recognizerNotes}\n` : ''}
+## Option coverage
+
+**${cov.native}/${cov.denom} options mapped natively** (${cov.pct}%) — ${ST['via-css'].emoji} ${cov['via-css']} via CSS · ${ST.unmapped.emoji} ${cov.unmapped} unmapped · ${ST.auto.emoji} ${cov.auto} auto.
+
+| Option | Tab | Type | Status | Mapped from / note |
+| --- | --- | --- | --- | --- |
+${rows}
+
+### Status legend
+
+${Object.values(ST).map((s) => `- ${s.emoji} **${s.label}** — ${s.blurb}`).join('\n')}
+
+← Back to [Element Mapping](./index.md)
+`;
+  writeFileSync(join(OUTDIR, `${slugOf(e)}.md`), md);
+}
+
+// --- index page ----------------------------------------------------------------
+const recogRows = elements
   .map(
     (e) =>
-      `| ${e.priority} | \`${e.recognizer}\` | ${e.matchesWhen} | ${becomesCell(e)} | ${optsCell(e)} | ${e.fallback} |`
+      `| ${e.priority} | \`${e.recognizer}\` | ${e.matchesWhen} | [${e.label}](./${slugOf(e)}.md) → ${becomesLink(e)} | ${e.fallback} |`
   )
   .join('\n');
 
-// --- Per-element detail ---------------------------------------------------------
-const detail = rows
+const covRows = elements
   .map((e) => {
-    const lines = [];
-    lines.push(`### ${e.becomesLabel || e.becomes} — \`${e.becomes}\``);
-    lines.push('');
-    lines.push(`- **Recognizer:** \`${e.recognizer}\` (priority ${e.priority})`);
-    lines.push(`- **Matches when:** ${e.matchesWhen}`);
-    lines.push(`- **Becomes:** ${becomesCell(e)}`);
-    lines.push(`- **Native options set:** ${optsCell(e)}`);
-    lines.push(`- **Recognizer block shape:** \`${e.blockShape}\``);
-    lines.push(`- **Fallback:** ${e.fallback}`);
-    if (e.notes) lines.push(`- **Notes:** ${e.notes}`);
-    return lines.join('\n');
+    const c = coverage(e);
+    return `| [${e.label}](./${slugOf(e)}.md) | ${becomesLink(e)} | ${ST.native.emoji} ${c.native} | ${ST['via-css'].emoji} ${c['via-css']} | ${ST.unmapped.emoji} ${c.unmapped} | **${c.pct}%** |`;
   })
-  .join('\n\n');
+  .join('\n');
 
-const md = `---
+const indexMd = `---
 title: Element Mapping Reference
-sidebar_label: Element Mapping
-sidebar_position: 4.5
+sidebar_label: Overview
 slug: /element-mapping
-description: How the UnysonPlus Site Converter deterministically recognizes a source element and translates it into a native page-builder shortcode — recognizer, match rule, and the options it sets.
+description: How the UnysonPlus Site Converter recognizes each source element and maps it to a native page-builder shortcode — with per-shortcode, option-by-option coverage so you can see what's mapped, reproduced via CSS, or unmapped.
 ---
 
-<!-- ⚠️ GENERATED FILE — do not edit by hand. Edit ai-dev-kit/_data/element-mapping.json,
-     then run: node scripts/gen-element-mapping.mjs -->
+${GENERATED}
 
 # Element Mapping Reference
 
-When you convert a site, the **Site Converter** doesn't screenshot the source — it **recognizes**
-each block and rebuilds it as a **native UnysonPlus shortcode** with real, editable options. This page
-lists what the deterministic converter recognizes and what each pattern becomes.
+When you convert a site, the **Site Converter** doesn't screenshot the source — it **recognizes** each
+block and rebuilds it as a **native UnysonPlus shortcode**. This section documents what the
+deterministic converter recognizes, what it becomes, and — per shortcode — **how each option is
+filled**, so you can spot options that aren't mapped or are only reproduced via CSS.
 
 How to read it:
 
-- **Priority** — relative evaluation order (lower runs first). Specialized structural recognizers
-  (tables, pricing grids, accordions…) take the low numbers; the text primitives below run later; and
-  \`code_block\` is the **universal fallback** for anything unmapped, so nothing is ever lost.
-- **Matches when** — the signal the recognizer keys on.
-- **Becomes** — the page-builder shortcode it produces (links to its reference).
-- **Native options set** — the actual options populated, proving it's editable native output, not a
-  frozen copy.
-- **Fallback** — what it degrades to when it can't build the ideal element.
+- **Priority** — relative evaluation order (lower runs first). Specialized structural recognizers take
+  the low numbers; text primitives run later; \`code_block\` is the **universal fallback**, so nothing
+  is ever lost.
+- Each shortcode has its **own page** with a full option-by-option coverage table.
+- **Coverage** counts only design options (\`native + via-css + unmapped\`); auto plumbing is excluded.
 
-> This table is generated from the converter's recognizer + block-builder registries (with a PHP↔JS
-> parity twin in the to-pages path). It's **expanding** — more elements are documented here as the set
-> is filled in. Converting a source? See also [How It Works](./how-it-works.md).
+${Object.values(ST).map((s) => `- ${s.emoji} **${s.label}** — ${s.blurb}`).join('\n')}
 
-## Supported mappings
+> Generated from the converter's recognizer + block-builder registries (with a PHP↔JS parity twin in
+> the to-pages path). This set is **expanding** — more shortcodes are added as they're documented.
+> Converting a source? See also [How It Works](../how-it-works.md).
 
-${tableHead}
-${tableRows}
+## Coverage at a glance
 
-## Details
+| Shortcode | Becomes | Native | Via CSS | Unmapped | Coverage |
+| --- | --- | --- | --- | --- | --- |
+${covRows}
 
-${detail}
+## Recognizers
+
+| Priority | Recognizer | Matches when | Becomes | Fallback |
+| --- | --- | --- | --- | --- |
+${recogRows}
 `;
+writeFileSync(join(OUTDIR, 'index.md'), indexMd);
 
-writeFileSync(OUT, md);
-console.log(`Wrote ${OUT} (${rows.length} element${rows.length === 1 ? '' : 's'}).`);
+console.log(`Wrote ${OUTDIR}\\{index, ${elements.map(slugOf).join(', ')}}.md (${elements.length} shortcode${elements.length === 1 ? '' : 's'}).`);

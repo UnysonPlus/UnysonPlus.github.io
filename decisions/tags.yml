@@ -97,3 +97,8 @@ animation:
   label: Animation
   permalink: /animation
   description: The Animation Engine — scroll-driven motion, transitions and cinematic effects
+
+extensions:
+  label: Extensions
+  permalink: /extensions
+  description: Decisions about individual plugin extensions and how they are structured

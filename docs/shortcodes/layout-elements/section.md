@@ -19,16 +19,16 @@ The **Animations** and **Advanced** tabs are the shared, cross-shortcode control
 
 ## Layout
 
-| Option | What it emits on render | Stylesheet the CSS is printed to |
-|---|---|---|
-| **Section Variant** | class `section--{variant}` on `<section>` | Generated `uploads/unysonplus/css/presets-{hash}.css` (from the Section Styles library, by `css-tokens.php`) · built-in `alt/light/dark` fallbacks in section `styles.css` |
-| **Full Width** | swaps the inner wrapper class: `fw-container` ↔ `fw-container-fluid` | Grid CSS — builder `frontend-grid.css` + theme `style.css` |
-| **Container Width** | scoped `.u{hash} .fw-container{max-width:calc(<w> + 2×gutter)}` | Per-page `uploads/unysonplus/css/page-{id}.css` (widths come from a user-extensible named-width library + Custom, so no fixed class set) |
-| **Min Height** (preset) | predefined class `.section--minh-{40\|60\|80\|100}` on `<section>` | Section `styles.css` |
-| **Min Height** (Custom) | scoped `.u{hash}{min-height:<value>}` | Per-page `uploads/unysonplus/css/page-{id}.css` |
-| **Columns Horizontal Alignment** | class `section--cols{-md\|-lg}-{center\|right\|between\|around\|evenly}` (sets `justify-content` on inner `.row`/`.fw-row`) | Section `styles.css` |
-| **Columns Vertical Alignment** | predefined class `section--valign-{stretch\|center\|bottom}` (Top emits none) | Section `styles.css` |
-| **Column Order** (reverse) | classes `section--rev`, `section--rev-{md\|lg}-{on\|off}` (`flex-direction:row-reverse`/`column-reverse`) | Section `styles.css` |
+| Option | Option ID (`atts` key) | Control | Default | Responsive | What it emits on render | Stylesheet the CSS is printed to |
+|---|---|---|---|---|---|---|
+| **Section Variant** | `variant` | Section-style select | Default | No | class `section--{variant}` on `<section>` | Generated `uploads/unysonplus/css/presets-{hash}.css` (Section Styles library, by `css-tokens.php`) · `alt/light/dark` fallbacks in section `styles.css` |
+| **Full Width** | `is_fullwidth` | switch | No | No | swaps inner wrapper class `fw-container` ↔ `fw-container-fluid` | Grid CSS — builder `frontend-grid.css` + theme `style.css` |
+| **Container Width** | `container_width` | multi-picker (preset / Custom) | Inherit | No | scoped `.u{hash} .fw-container{max-width:calc(<w> + 2×gutter)}` | Per-page `uploads/unysonplus/css/page-{id}.css` |
+| **Min Height** (preset) | `min_height` | multi-picker (preset / Custom) | Auto | No | predefined class `.section--minh-{40\|60\|80\|100}` | Section `styles.css` |
+| **Min Height** (Custom) | `min_height` | multi-picker → Custom unit-input | Auto (`600px` when Custom) | No | scoped `.u{hash}{min-height:<value>}` | Per-page `uploads/unysonplus/css/page-{id}.css` |
+| **Columns Horizontal Alignment** | `column_halign` | responsive image-picker | Default (left) | Yes (base/md/lg) | class `section--cols{-md\|-lg}-{center\|right\|between\|around\|evenly}` | Section `styles.css` |
+| **Columns Vertical Alignment** | `column_valign` | image-picker | **Stretch** | No | predefined class `section--valign-{stretch\|center\|bottom}` (Top emits none) | Section `styles.css` |
+| **Column Order** (reverse) | `reverse_columns` | responsive switch | No | Yes (base/md/lg) | classes `section--rev`, `section--rev-{md\|lg}-{on\|off}` | Section `styles.css` |
 
 - **Section Variant** — named visual preset for the band: *Default*, *Alt* (subtle off-white, for an alternating banded rhythm down the page), *Light* (force a light background + dark text), or *Dark* (force a dark background + light text). Pairs with Background on the Styling tab.
 - **Full Width** — switch. On, the background spans edge-to-edge while the content stays in the container; off, the whole section is constrained to the container width.
@@ -40,15 +40,15 @@ The **Animations** and **Advanced** tabs are the shared, cross-shortcode control
 
 ## Styling
 
-| Option | What it emits on render | Stylesheet the CSS is printed to |
-|---|---|---|
-| **Text Alignment** | Bootstrap utility class `text-{start\|center\|end}` on `<section>` (cascades to nested content) | Bootstrap utilities — theme `assets/css/bootstrap.min.css` |
-| **Background** — color / gradient / image / overlay | **inline** `background-*` on `<section>` (overlay ▸ image ▸ gradient ▸ color) via `sc_bg_pro_style()` | Inline `style=` — no stylesheet (genuinely per-instance) |
-| **Background** — video | class `background-video` + `data-background-options` (JSON) on `<section>`; injected video layer | Section `background.css` (Formstone) + `styles.css` |
-| **Background Pattern** | injected `.pattern-layer` markup + flag class `upw-has-pattern` | Theme pattern-library CSS (Components → Background Patterns) |
-| **Top / Bottom Shape Divider** | injected `.sc-shape-divider--{top\|bottom}` SVG + flag class `section--has-divider` | Section `styles.css` (positioning) + inline `style=` (per-divider height/transform/fill) |
-| **Top / Bottom Spacing** | responsive spacing utility classes (`pt-*` / `pb-*`) | Bootstrap-scale spacing utilities in `bootstrap.min.css`; arbitrary values → per-page `page-{id}.css` |
-| **Gap** / **Gap X** / **Gap Y** | classes `section--gap{-md\|-lg}-{slug}`, `section--gap-x…`, `section--gap-y…` (`--bs-gutter-x/-y` on inner `.row`s) | Generated `uploads/unysonplus/css/presets-{hash}.css` (by `css-tokens.php`) |
+| Option | Option ID (`atts` key) | Control | Default | Responsive | What it emits on render | Stylesheet the CSS is printed to |
+|---|---|---|---|---|---|---|
+| **Text Alignment** | `text_align` | alignment buttons | Inherit | No | Bootstrap class `text-{start\|center\|end}` (cascades to nested content) | Bootstrap utilities — theme `assets/css/bootstrap.min.css` |
+| **Background** — color / gradient / image / overlay | `background` | `background-pro` | None | No | **inline** `background-*` (overlay ▸ image ▸ gradient ▸ color) via `sc_bg_pro_style()` | Inline `style=` — no stylesheet (genuinely per-instance) |
+| **Background** — video | `background` | `background-pro` (video layer) | None | No | class `background-video` + `data-background-options` (JSON); injected video layer | Section `background.css` (Formstone) + `styles.css` |
+| **Background Pattern** | `background_pattern` | multi-picker | None | No | injected `.pattern-layer` markup + flag class `upw-has-pattern` | Theme pattern-library CSS (Components → Background Patterns) |
+| **Top / Bottom Shape Divider** | `divider_top` / `divider_bottom` | multi-picker (shape/color/height/flip) | None | No | injected `.sc-shape-divider--{top\|bottom}` SVG + flag class `section--has-divider` | Section `styles.css` (positioning) + inline `style=` (per-divider height/transform/fill) |
+| **Top / Bottom Spacing** | `padding_top` / `padding_bottom` | spacing field | None | Yes | responsive spacing utility classes (`pt-*` / `pb-*`) | Bootstrap-scale utilities in `bootstrap.min.css`; arbitrary values → per-page `page-{id}.css` |
+| **Gap** / **Gap X** / **Gap Y** | `gap` / `gap_x` / `gap_y` | responsive short-select | Use Default Gap / inherit | Yes | classes `section--gap{-md\|-lg}-{slug}`, `section--gap-x…`, `section--gap-y…` | Generated `uploads/unysonplus/css/presets-{hash}.css` (by `css-tokens.php`) |
 
 - **Text Alignment** — sets the CSS `text-align` for all content in this section — headings, paragraphs and buttons inherit it together. *Inherit* forces nothing.
 - **Background** — a `background-pro` control with stacking color, gradient, image and video layers (overlay over image over gradient over color). Image attachment *Fixed* gives a parallax effect; video renders muted and looping with an optional poster/fallback.

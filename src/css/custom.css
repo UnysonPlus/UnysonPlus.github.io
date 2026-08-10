@@ -95,32 +95,29 @@ html.blog-authors-list-page article header h2 {
  * Scoped to .opt-table so it never affects normal markdown tables.
  * ============================================================ */
 .opt-table { width: 100%; border-collapse: collapse; table-layout: fixed; margin: 1rem 0; font-size: 13px; }
+.opt-table th, .opt-table td, .opt-table code { font-size: 13px; }
 .opt-table th, .opt-table td { border: 1px solid var(--ifm-table-border-color); padding: 0.5rem 0.6rem; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
 .opt-table thead th { background: var(--ifm-table-head-background); font-weight: 600; vertical-align: bottom; }
-.opt-table tbody tr:nth-child(2n) { background: var(--ifm-table-stripe-background); }
-.opt-table code { font-size: 0.86em; white-space: pre-wrap; }
+.opt-table code { white-space: pre-wrap; }
 .opt-table .opt { font-weight: 600; }
 .opt-table .opt small, .opt-table .def small { display: block; font-weight: 400; color: var(--ifm-color-emphasis-600); font-size: 0.85em; }
-.opt-table .resp-yes { color: #1a7f37; font-weight: 600; }
-.opt-table .resp-no  { color: var(--ifm-color-emphasis-600); font-weight: 500; }
-[data-theme='dark'] .opt-table .resp-yes { color: #4ade80; }
 
-/* hover tooltip for any element carrying data-tip */
-.opt-table [data-tip] { position: relative; cursor: help; border-bottom: 1px dotted var(--ifm-color-primary); }
-.opt-table th[data-tip] { border-bottom-color: var(--ifm-color-emphasis-500); }
-.opt-table [data-tip]:hover::after {
+/* whole-cell hover tooltip — data-tip sits on the <td>/<th>, so hovering anywhere in the cell shows it.
+   No underline or row shading, so the text stays clean and readable. */
+.opt-table td[data-tip], .opt-table th[data-tip] { position: relative; cursor: help; }
+.opt-table td[data-tip]:hover::after, .opt-table th[data-tip]:hover::after {
   content: attr(data-tip); position: absolute; left: 0; bottom: calc(100% + 8px);
   background: #1f2430; color: #f4f6fb; padding: 0.5rem 0.65rem; border-radius: 7px;
-  font-size: 0.75rem; line-height: 1.45; font-weight: 400; white-space: normal;
+  font-size: 12px; line-height: 1.45; font-weight: 400; white-space: normal;
   width: max-content; max-width: 300px; box-shadow: 0 6px 22px rgba(0, 0, 0, 0.3);
   z-index: 20; pointer-events: none;
 }
-.opt-table [data-tip]:hover::before {
-  content: ""; position: absolute; left: 14px; bottom: calc(100% + 3px);
+.opt-table td[data-tip]:hover::before, .opt-table th[data-tip]:hover::before {
+  content: ""; position: absolute; left: 16px; bottom: calc(100% + 3px);
   border: 5px solid transparent; border-top-color: #1f2430; z-index: 20;
 }
-.opt-table .tip-r[data-tip]:hover::after  { left: auto; right: 0; }
-.opt-table .tip-r[data-tip]:hover::before { left: auto; right: 14px; }
+.opt-table td.tip-r[data-tip]:hover::after, .opt-table th.tip-r[data-tip]:hover::after { left: auto; right: 0; }
+.opt-table td.tip-r[data-tip]:hover::before, .opt-table th.tip-r[data-tip]:hover::before { left: auto; right: 16px; }
 
 /* option-table column widths */
 .opt-table col.c-opt    { width: 15%; }

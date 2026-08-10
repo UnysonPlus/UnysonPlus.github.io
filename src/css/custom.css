@@ -94,7 +94,10 @@ html.blog-authors-list-page article header h2 {
  * Shortcode option-reference tables (docs/shortcodes/…)
  * Scoped to .opt-table so it never affects normal markdown tables.
  * ============================================================ */
-.opt-table { width: 100%; border-collapse: collapse; table-layout: fixed; margin: 1rem 0; font-size: 13px; }
+.opt-table { width: 100%; border-collapse: collapse; table-layout: fixed; margin: 1rem 0; font-size: 13px;
+  /* override Docusaurus's global `table{display:block;overflow:auto}` — that overflow clips the
+     tooltips. display:table + overflow:visible lets them escape (content wraps, so no h-scroll needed). */
+  display: table; overflow: visible; }
 .opt-table th, .opt-table td, .opt-table code { font-size: 13px; }
 .opt-table th, .opt-table td { border: 1px solid var(--ifm-table-border-color); padding: 0.5rem 0.6rem; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
 .opt-table thead th { background: var(--ifm-table-head-background); font-weight: 600; vertical-align: bottom; }

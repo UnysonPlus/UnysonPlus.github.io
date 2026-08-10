@@ -58,11 +58,17 @@ rule, not a lazy holdout.
 - **Editability** favors inline: the live editor updates `style` directly; a file-based background
   needs regeneration to preview.
 
-So the placement rule, stated in full: **fixed enum → predefined class; user-library or
-arbitrary-but-reusable → a `.u{hash}` rule in `page-{id}.css`; genuinely per-instance, per-URL,
-performance-sensitive appearance (the background) → inline `style=`.** Background is the one value the
-rule deliberately *sends* to inline — which is why it was the last thing standing after the cleanup,
-and why it should stay there.
+So the placement rule, stated in full: **fixed enum → predefined class; a reusable library value →
+a generated `.section--…` class in `presets-{hash}.css` (shared + cached, like Gap / Section Variant /
+Container Width presets); a one-off arbitrary value → a `.u{hash}` rule in `page-{id}.css`; genuinely
+per-instance, per-URL, performance-sensitive appearance (the background) → inline `style=`.** Background
+is the one value the rule deliberately *sends* to inline — which is why it was the last thing standing
+after the cleanup, and why it should stay there.
+
+*(Refinement, 2026-08-11: Container Width's **named library presets** were subsequently moved from
+per-instance `page-{id}.css` rules to generated `.section--cw-{slug}` classes in `presets-{hash}.css` —
+matching Gap and Section Variant — so only a **Custom** width still routes to the page file. That's the
+"reusable library value → generated class" clause above in action.)*
 
 *(Related: [container widths as a converter-populated preset family](/decisions/container-widths-as-a-converter-populated-preset-family)
 and the [never-drop CSS placement rule](/decisions/never-drop-css-placement-rule).)*

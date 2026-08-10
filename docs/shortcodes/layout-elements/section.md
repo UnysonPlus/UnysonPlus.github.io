@@ -19,7 +19,7 @@ The **Animations** and **Advanced** tabs are the shared, cross-shortcode control
 
 ## Layout
 
-| Option | Option ID (`atts` key) | Control | Default | Responsive | What it emits on render | Stylesheet the CSS is printed to |
+| Option | `atts` key | Control | Default | Responsive | Renders as | Stylesheet |
 |---|---|---|---|---|---|---|
 | **Section Variant** | `variant` | Section-style select | Default | No | class `section--{variant}` on `<section>` | Generated `uploads/unysonplus/css/presets-{hash}.css` (Section Styles library, by `css-tokens.php`) · `alt/light/dark` fallbacks in section `styles.css` |
 | **Full Width** | `is_fullwidth` | switch | No | No | swaps inner wrapper class `fw-container` ↔ `fw-container-fluid` | Grid CSS — builder `frontend-grid.css` + theme `style.css` |
@@ -40,7 +40,7 @@ The **Animations** and **Advanced** tabs are the shared, cross-shortcode control
 
 ## Styling
 
-| Option | Option ID (`atts` key) | Control | Default | Responsive | What it emits on render | Stylesheet the CSS is printed to |
+| Option | `atts` key | Control | Default | Responsive | Renders as | Stylesheet |
 |---|---|---|---|---|---|---|
 | **Text Alignment** | `text_align` | alignment buttons | Inherit | No | Bootstrap class `text-{start\|center\|end}` (cascades to nested content) | Bootstrap utilities — theme `assets/css/bootstrap.min.css` |
 | **Background** — color / gradient / image / overlay | `background` | `background-pro` | None | No | **inline** `background-*` (overlay ▸ image ▸ gradient ▸ color) via `sc_bg_pro_style()` | Inline `style=` — no stylesheet (genuinely per-instance) |

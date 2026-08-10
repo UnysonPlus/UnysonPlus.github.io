@@ -90,6 +90,13 @@ html.blog-authors-list-page article header h2 {
   line-height: 1.25;
 }
 
+/* Design Decisions ONLY (blog instance id "decisions") — smaller post-title h1.
+ * `.plugin-id-decisions` is on <html> for this blog alone, so the main /blog is untouched. */
+html.plugin-id-decisions article header h1 {
+  font-size: 1.75rem; /* 28px */
+  line-height: 1.3;
+}
+
 /* ============================================================
  * Shortcode option-reference tables (docs/shortcodes/…)
  * Scoped to .opt-table so it never affects normal markdown tables.

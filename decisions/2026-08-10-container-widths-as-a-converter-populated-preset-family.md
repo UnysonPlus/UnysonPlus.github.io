@@ -4,7 +4,7 @@ title: "When a source constrains its content to a max-width the theme has no pre
 authors: [jon]
 tags: [architecture, page-builder, shortcodes]
 date: 2026-08-10
-description: A converted section used the source's `container-narrow` (64rem) but the section shortcode's Container Width presets were fixed (narrow 768 / medium 896 / wide 1024 / custom). Decision — make Container Widths the sixth converter-populated preset family: a named library (Theme Settings → Components → Section Styles → Container Widths) that the converter gathers from the source's distinct widths, clustered and standard-named, with every constrained section referencing a shared named width. Rejected — snap-to-fixed-preset (no reuse for non-standard widths) and per-section custom (repeats a value site-wide, no single edit point).
+description: "A converted section used the source's `container-narrow` (64rem) but the section shortcode's Container Width presets were fixed (narrow 768 / medium 896 / wide 1024 / custom). Decision — make Container Widths the sixth converter-populated preset family: a named library (Theme Settings → Components → Section Styles → Container Widths) that the converter gathers from the source's distinct widths, clustered and standard-named, with every constrained section referencing a shared named width. Rejected — snap-to-fixed-preset (no reuse for non-standard widths) and per-section custom (repeats a value site-wide, no single edit point)."
 ---
 
 **The question:** A converted "About" section used the source's `container-narrow` class

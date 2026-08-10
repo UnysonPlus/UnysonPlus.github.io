@@ -70,3 +70,11 @@ keep the generated library tidy (verified on a real convert: three defaults plus
 Prose 672 / wide bands, with only the two sections that truly narrow their content pinned to a named
 width). The upfront cost is bounded because the machinery — a Theme-Settings addable-box, a slug map,
 a dynamic dropdown, a converter cluster pass — already existed five times over.
+
+**Update (2026-08-11) — where the preset CSS lives.** The named-library widths are now generated
+**once** as reusable `.section--cw-{slug}` classes in `presets-{hash}.css` (by `css-tokens.php`, keyed
+into the preset hash so editing a width regenerates it) — exactly like Gap and Section Variant. The
+section view adds the class for a preset; only a one-off **Custom** width is written per-instance into
+`page-{id}.css`. Earlier the whole control routed through the per-page file, which duplicated a shared
+width (e.g. "Narrow") into every page; the class form defines it a single time and caches it site-wide,
+so this slots the library into the same generated-preset mechanism the other families already use.

@@ -147,7 +147,7 @@ The **Animations** and **Advanced** tabs are the shared, cross-shortcode control
 <td data-tip="background-pro control (Color, Gradient, Image, Overlay, Video tabs).">background-pro</td>
 <td className="def" data-tip="No background emitted.">None</td>
 <td data-tip="Single value — not per-breakpoint.">No</td>
-<td data-tip="Inline on the section: overlay over image over gradient over color, via sc_bg_pro_style()."><code>&lt;section style="background-image:…"&gt;</code></td>
+<td data-tip="Full example — background-color:#1a1a1a; background-image:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)), url(photo.jpg), linear-gradient(135deg,#2e6e5e 0%,#56c0a4 100%); background-position:center center; background-repeat:no-repeat; background-attachment:fixed; background-size:cover;  —  background-image layers paint topmost-first: overlay tint, image, base gradient; background-color is the base. Position/repeat/attachment/size are only added when there is an image."><code>&lt;section style="background-color:#1a1a1a;background-image:linear-gradient(rgba(0,0,0,.45),…), url(…), linear-gradient(135deg,…);background-size:cover"&gt;</code></td>
 <td className="tip-r" data-tip="Rendered inline — there is no stylesheet for the per-instance background.">Inline style</td>
 </tr>
 <tr>

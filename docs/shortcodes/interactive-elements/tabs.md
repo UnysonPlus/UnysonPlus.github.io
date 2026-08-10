@@ -13,7 +13,7 @@ image (a feature/product showcase). Tabs: **Content**, **Styling**, **Animations
 Set **Layout → Media panel** for a list on one side and an image that switches on **click** or
 **hover** (with optional **Auto-rotate**) on the other — each tab has its own image. For the
 *scroll-pinned cinematic* version (the image pins while steps scroll, Apple/Stripe style), use
-the [Animation Engine → Scrollytelling](/docs/extensions/animation-engine) module on a Section
+the [Animation Engine → Scrollytelling](/animation-engine) module on a Section
 instead.
 :::
 

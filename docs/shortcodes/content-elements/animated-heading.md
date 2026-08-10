@@ -14,7 +14,7 @@ Engine** (the engine is off by default). Tabs: **Content**, **Design**, **Stylin
 :::tip[This element vs. the Animation Engine Text Effects]
 Use **Animated Heading** for a rotating headline that works with the engine off. To apply
 typewriter / scramble / wave / glitch / 30+ effects to **any** text element, use the
-[Animation Engine → Text Effects](/docs/extensions/animation-engine) instead (the *Text Effect*
+[Animation Engine → Text Effects](/animation-engine) instead (the *Text Effect*
 option on any element's Animations tab). Don't apply an Engine text effect to this element as
 well — the two animations will conflict.
 :::

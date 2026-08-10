@@ -215,14 +215,16 @@ The **Animations** and **Advanced** tabs are the shared, cross-shortcode control
 - **Gap** — overrides the site-wide Default Gap for every Bootstrap row inside this section, setting both horizontal and vertical column gap. Default is *Use Default Gap*.
 - **Gap X (override) / Gap Y (override)** — override Gap on just the horizontal / vertical axis. Each inherits from Gap unless set.
 
-:::note Why some values are classes and others go to the page file
+:::note[Why some values are classes and others go to the page file]
+
 **Min Height** and **Vertical Alignment** are fixed enums — a small, unchanging set of values — so each is a reusable predefined class in the section stylesheet. **Container Width** draws from a *user-extensible* named-width library: each named width is generated **once** as a reusable `.section--cw-{slug}` class in `presets-{hash}.css` (exactly like **Gap** and **Section Variant**), so a width reused across many sections is defined a single time and cached site-wide. Only a one-off **Custom** width — which has no shared class — is written per-section into that page's `page-{id}.css`. Either way the value stays fully editable from the option; the difference is only *where the CSS is written*, never inline on the element.
+
 :::
 
 ## Animations
 
-Standard entrance-animation controls (effect, duration, delay, offset).
+Standard entrance-animation controls (Effect, Duration, Delay, Offset), shared across all elements — see **[Common controls → Animations](/docs/shortcodes/common-controls#animations)**.
 
 ## Advanced
 
-Custom CSS class/ID, responsive visibility toggles, custom attributes, and margin/padding.
+Shared per-element controls — Custom CSS Class / ID, Custom CSS, responsive visibility, custom attributes, Position / Z-Index, and Margin & Padding. See **[Common controls → Advanced](/docs/shortcodes/common-controls#advanced)**.

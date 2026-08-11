@@ -17,7 +17,7 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 
 | | |
 | --- | --- |
-| **Priority** | 60 |
+| **Priority** | 80 |
 | **Recognizer** | `heading` |
 | **Matches when** | A semantic heading tag (`<h1>`–`<h6>`), or a text node the heuristics score as a heading. Level ≤ 2 becomes a page **Title** (larger Display type); level ≥ 3 a section heading. |
 | **Becomes** | [`special_heading`](/docs/shortcodes/content-elements/special-heading) |

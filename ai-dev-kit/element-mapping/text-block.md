@@ -17,7 +17,7 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 
 | | |
 | --- | --- |
-| **Priority** | 70 |
+| **Priority** | 50 |
 | **Recognizer** | `text` |
 | **Matches when** | A paragraph / body-copy block (typically `<p>` or a text container) that isn't a heading, button, or other recognized primitive. Short ALL-CAPS or eyebrow-classed text is refined to an **overline** instead. |
 | **Becomes** | [`text_block`](/docs/shortcodes/content-elements/text-block) |

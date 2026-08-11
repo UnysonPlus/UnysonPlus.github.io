@@ -20,15 +20,15 @@ The Colors tab is the site **palette** — the `theme_colors` addable list of `{
 | Option | Type | Status | Derived from / note |
 | --- | --- | --- | --- |
 | `Primary` | `palette role` | ✅ Native | Brand action colour, in priority order: `tailwind.config` accent/primary token → computed semantic primary/accent → vivid markup accent scan → the primary button's real fill → tertiary/secondary/ink → neutral fallback. Wins the `primary` slug (drives `btn-primary` + `--color-primary`). |
-| `Ink` | `palette role` | ✅ Native | Source text / foreground colour (`text`, `on-background`, `foreground`). Falls back to `#1a1a1a`. |
+| `Ink` | `palette role` | ✅ Native | Source text / foreground colour (`text`, `on-background`, `foreground`), or — when no token exists — **sampled from the real rendered body-copy colour** (`sample_ink`). Falls back to `#1a1a1a`. |
 | `Secondary` | `palette role` | ✅ Native | `secondary` / `tertiary` token, or the computed semantic `secondary`. Only when found. |
-| `Accent` | `palette role` | ✅ Native | Computed semantic `accent`. Only when found. |
+| `Accent` | `palette role` | ✅ Native | Computed semantic `accent`, or — when the design has no named accent — an accent colour **lifted from a source gradient** (`scan_gradient_accent`, e.g. the vivid stop in a hero gradient). Only when found. |
 | `Dark` | `palette role` | ✅ Native | `deep-black` / `black` / `surface-container-lowest` token, or semantic `dark`. Only when found. |
 | `Muted` | `palette role` | ✅ Native | `muted` / `on-surface-variant`. Only when found. |
 | `Light` | `palette role` | ✅ Native | `page-bg` / `background` / `surface` / `white-soft`. Only when found. |
 | `Default presets (White, Gray, Red, Green, …)` | `palette rows` | ⚪ Unmapped | The plugin's ~20 default color presets, merged in after the brand roles and de-duped by hex — kept (not derived) so bundled Box / Icon-Badge presets that reference their slugs keep resolving. |
 
-Brand colours are pulled from the captured design tokens (a real `tailwind.config`) first, then from each element's computed `getComputedStyle` semantic colours, then a markup accent scan / the primary button's real fill. A brand role only appears when a real colour was found — otherwise the default palette stands. The brand `Primary` is prepended before the default `Primary`, so it wins the `primary` slug and the default button/box presets adopt the brand colour.
+Brand colours are pulled from the captured design tokens (a real `tailwind.config`) first, then from each element's computed `getComputedStyle` semantic colours, then a markup accent scan / a gradient-accent scan / the primary button's real fill; body text falls back to a sampled ink colour. A brand role only appears when a real colour was found — otherwise the default palette stands. The brand `Primary` is prepended before the default `Primary`, so it wins the `primary` slug and the default button/box presets adopt the brand colour.
 
 ### Status legend
 

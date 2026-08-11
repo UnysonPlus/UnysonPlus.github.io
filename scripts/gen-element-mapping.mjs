@@ -24,7 +24,9 @@ const OUTDIR = join(ROOT, 'ai-dev-kit', 'element-mapping');
 
 const data = JSON.parse(readFileSync(DATA, 'utf8'));
 const ST = data.statuses;
-const elements = [...data.elements].sort((a, b) => a.priority - b.priority);
+// Higher priority runs FIRST in the converter, so present everything high→low (eval order).
+const elements = [...data.elements].sort((a, b) => b.priority - a.priority);
+const recognizersExtra = data.recognizersExtra || [];
 
 const GENERATED = '<!-- ⚠️ GENERATED FILE — do not edit by hand. Edit ai-dev-kit/_data/element-mapping.json, then run: node scripts/gen-element-mapping.mjs -->';
 const slugOf = (e) => e.shortcode.replace(/_/g, '-');
@@ -111,11 +113,27 @@ ${Object.values(ST).map((s) => `- ${s.emoji} **${s.label}** — ${s.blurb}`).joi
 }
 
 // --- index page ----------------------------------------------------------------
-const recogRows = elements
-  .map(
-    (e) =>
-      `| ${e.priority} | \`${e.recognizer}\` | ${e.matchesWhen} | [${e.label}](./${slugOf(e)}.md) → ${becomesLink(e)} | ${e.fallback} |`
-  )
+// The Recognizers table lists the WHOLE registry (eval order, high→low): the curated elements above
+// (which link to a full per-option page) plus the metadata-only `recognizersExtra`.
+const extraBecomes = (e) => (e.doc ? `[\`${e.becomes}\`](${e.doc})` : `\`${e.becomes}\``);
+const recogRows = [
+  ...elements.map((e) => ({
+    priority: e.priority,
+    recognizer: e.recognizer,
+    matchesWhen: e.matchesWhen,
+    becomes: `[${e.label}](./${slugOf(e)}.md) → ${becomesLink(e)}`,
+    fallback: e.fallback,
+  })),
+  ...recognizersExtra.map((e) => ({
+    priority: e.priority,
+    recognizer: e.recognizer,
+    matchesWhen: e.matchesWhen,
+    becomes: extraBecomes(e),
+    fallback: e.fallback,
+  })),
+]
+  .sort((a, b) => b.priority - a.priority)
+  .map((r) => `| ${r.priority} | \`${r.recognizer}\` | ${r.matchesWhen} | ${r.becomes} | ${r.fallback} |`)
   .join('\n');
 
 const covRows = elements
@@ -143,13 +161,26 @@ filled**, so you can spot options that aren't mapped or are only reproduced via 
 
 How to read it:
 
-- **Priority** — relative evaluation order (lower runs first). Specialized structural recognizers take
-  the low numbers; text primitives run later; \`code_block\` is the **universal fallback**, so nothing
-  is ever lost.
-- Each shortcode has its **own page** with a full option-by-option coverage table.
+- **Priority** — relative evaluation order (**higher runs first**). Specialized structural recognizers
+  take the **high** numbers and are tried first; text primitives run later (lower numbers); anything no
+  recognizer claims falls back to \`code_block\`, the **universal fallback**, so nothing is ever lost.
+- The curated shortcodes below have their **own page** with a full option-by-option coverage table; the
+  rest of the registry is listed in the [Recognizers](#recognizers) table with its rule and target.
 - **Coverage** counts only design options (\`native + via-css + unmapped\`); auto plumbing is excluded.
 
 ${Object.values(ST).map((s) => `- ${s.emoji} **${s.label}** — ${s.blurb}`).join('\n')}
+
+### Nothing is dropped silently
+
+Two backstops guarantee no source content is lost:
+
+- **\`code_block\` fallback** — anything no recognizer claims is preserved verbatim as a \`code_block\`, so
+  it still renders while staying hand-editable.
+- **Safety net + drop report** — after mapping, a salvage pass (\`salvage_dropped()\`) rescues any real
+  text node that fell through, and the converter writes a **\`conversion-drops.json\`** coverage report
+  into the bundle: what was *rescued* (real content the net had to recover) vs. *decorative* (safely
+  skipped). The golden-fixture regression tests assert a **drop budget** so a recognizer change can't
+  quietly start losing content.
 
 > Generated from the converter's recognizer + block-builder registries (with a PHP↔JS parity twin in
 > the to-pages path). This set is **expanding** — more shortcodes are added as they're documented.
@@ -163,6 +194,9 @@ ${Object.values(ST).map((s) => `- ${s.emoji} **${s.label}** — ${s.blurb}`).joi
 ${covRows}
 
 ## Recognizers
+
+The **complete** recognizer registry, in evaluation order (higher runs first). Linked rows have a full
+per-option coverage page; the rest document the recognizer rule and its target shortcode.
 
 | Priority | Recognizer | Matches when | Becomes | Fallback |
 | --- | --- | --- | --- | --- |

@@ -9,7 +9,7 @@
   },
   "elements": [
     {
-      "priority": 60,
+      "priority": 80,
       "shortcode": "special_heading",
       "label": "Special Heading",
       "doc": "/docs/shortcodes/content-elements/special-heading",
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "priority": 70,
+      "priority": 50,
       "shortcode": "text_block",
       "label": "Text Block",
       "doc": "/docs/shortcodes/content-elements/text-block",
@@ -94,5 +94,37 @@
         { "key": "custom_attrs", "tab": "Advanced", "type": "group", "status": "auto", "source": "Not set" }
       ]
     }
+  ],
+  "_recognizersExtraComment": "The rest of the recognizer registry (class-fw-site-converter-stitch.php `register_recognizer(id, priority, …)`), listed in the Recognizers table for a complete picture of eval order. These don't yet have a full per-option coverage page (the curated set above does) — but the recognizer rule, priority, and target shortcode are documented here. HIGHER priority runs first. Keep in sync with the code when priorities or targets change.",
+  "recognizersExtra": [
+    { "priority": 99, "recognizer": "pricing_table", "matchesWhen": "A row of ≥2 price cards (each with a plan name, a currency-prefixed amount, and a feature list / CTA).", "becomes": "pricing_table", "fallback": "Degrades to a `card_grid` of columns, then `code_block`." },
+    { "priority": 98, "recognizer": "steps", "matchesWhen": "An ordered how-it-works / process sequence (numbered badges + title + blurb per step).", "becomes": "steps", "fallback": "Degrades to `card_grid`, then `code_block`." },
+    { "priority": 97, "recognizer": "timeline", "matchesWhen": "A vertical timeline (dated / connector-line entries down a spine).", "becomes": "timeline", "fallback": "Degrades to `card_grid`, then `code_block`." },
+    { "priority": 96, "recognizer": "progress", "matchesWhen": "Labeled progress / skill bars (a track with a percentage-width fill).", "becomes": "progress", "fallback": "Degrades to `text_block`, then `code_block`." },
+    { "priority": 95, "recognizer": "tabs", "matchesWhen": "A tabbed panel (a tab strip whose buttons toggle sibling panels).", "becomes": "tabs", "fallback": "Degrades to stacked sections, then `code_block`." },
+    { "priority": 94, "recognizer": "lottie", "matchesWhen": "A `<lottie-player>` / `dotlottie` element or a `.json`/`.lottie` animation source.", "becomes": "lottie", "fallback": "Degrades to `media_image` (poster), then `code_block`." },
+    { "priority": 94, "recognizer": "instagram_feed", "matchesWhen": "An Instagram feed embed / grid of Instagram post tiles.", "becomes": "instagram", "fallback": "Degrades to a `gallery`, then `code_block`." },
+    { "priority": 93, "recognizer": "svg_draw", "matchesWhen": "An inline `<svg>` with strokeable paths meant to draw-on (line-art / signature / illustration).", "becomes": "svg_draw", "fallback": "Degrades to `media_image`, then `code_block`." },
+    { "priority": 92, "recognizer": "testimonials", "matchesWhen": "A group of ≥2 quote/review cards (quote text + author, often an avatar or star rating).", "becomes": "testimonials", "fallback": "Degrades to `card_grid`, then `code_block`." },
+    { "priority": 91, "recognizer": "image_grid", "matchesWhen": "A grid of ≥3 image tiles with no per-tile text (a photo gallery / masonry). Recovers a 25/50/25-style column ratio from the tile widths.", "becomes": "gallery", "fallback": "Degrades to stacked `media_image`, then `code_block`." },
+    { "priority": 91, "recognizer": "counter_grid", "matchesWhen": "A stats row of ≥2 big-number + label pairs (animated counters).", "becomes": "counter", "fallback": "Degrades to `card_grid`, then `code_block`." },
+    { "priority": 90, "recognizer": "card_grid", "matchesWhen": "A row of ≥2 feature cards (icon + title + copy). Each cell becomes an `icon_box`, carrying its per-card icon colour + badge.", "becomes": "icon_box", "fallback": "Degrades to stacked `text_block`s, then `code_block`." },
+    { "priority": 89, "recognizer": "accordion", "matchesWhen": "An FAQ / disclosure list (clickable summary rows revealing collapsible panels).", "becomes": "accordion", "fallback": "Degrades to stacked heading + text, then `code_block`." },
+    { "priority": 88, "recognizer": "table", "matchesWhen": "A real `<table>` (or an ARIA grid) of rows and cells.", "becomes": "table", "fallback": "Degrades to `code_block` (markup preserved)." },
+    { "priority": 85, "recognizer": "card_grid_cs", "matchesWhen": "A card grid detected from computed styles rather than utility classes (CSS-first sites).", "becomes": "icon_box", "fallback": "Degrades to stacked `text_block`s, then `code_block`." },
+    { "priority": 84, "recognizer": "avatar_group", "matchesWhen": "A cluster of overlapping/adjacent avatar images (a people / social-proof row).", "becomes": "avatar", "fallback": "Degrades to a `gallery`, then `code_block`." },
+    { "priority": 82, "recognizer": "layout_row", "matchesWhen": "A generic multi-column flex/grid row that no specialized recognizer claimed — split into native columns.", "becomes": "row / columns", "fallback": "Degrades to stacked blocks, then `code_block`." },
+    { "priority": 81, "recognizer": "call_to_action", "matchesWhen": "A CTA band (heading + supporting line + one or more buttons on a distinct background).", "becomes": "call_to_action", "fallback": "Degrades to heading + button blocks, then `code_block`." },
+    { "priority": 79, "recognizer": "text_list", "matchesWhen": "A `<ul>`/`<ol>` of text items (often check/tick-marked) — a feature / benefit list.", "becomes": "feature_list", "fallback": "Degrades to `text_block`, then `code_block`." },
+    { "priority": 76, "recognizer": "badge", "matchesWhen": "A small pill/label chip (padded, rounded-full, short text — a tag or status badge).", "becomes": "badge", "fallback": "Degrades to `text_block`, then `code_block`." },
+    { "priority": 75, "recognizer": "badge_verbatim", "matchesWhen": "A compound chip (inline + inner span) or an unusually-styled chip best preserved exactly as authored.", "becomes": "code_block", "fallback": "Kept verbatim (this IS the preservation path)." },
+    { "priority": 70, "recognizer": "pill", "matchesWhen": "A short eyebrow/kicker pill that sits above a heading — pulled in as the heading's overline where possible.", "becomes": "special_heading (overline)", "fallback": "Degrades to `text_block`, then `code_block`." },
+    { "priority": 60, "recognizer": "button", "matchesWhen": "An `<a>`/`<button>` styled as a call-to-action (utility-class button).", "becomes": "button", "fallback": "Degrades to a text link inside `text_block`, then `code_block`." },
+    { "priority": 55, "recognizer": "button_cs", "matchesWhen": "A button detected from computed styles (padding + background + radius) rather than classes.", "becomes": "button", "fallback": "Degrades to a text link, then `code_block`." },
+    { "priority": 45, "recognizer": "video", "matchesWhen": "A `<video>` / `<source>` (mp4/webm/ogv/mov) or a section whose background is a video. Backgrounds are sideloaded to the media library so the source stays editable in the Background → Video picker.", "becomes": "media_video / section background video", "fallback": "Degrades to a poster `media_image`, then `code_block`." },
+    { "priority": 40, "recognizer": "image", "matchesWhen": "An `<img>` / `<picture>` / a CSS `background-image` on a content block.", "becomes": "media_image", "fallback": "Degrades to `code_block`." },
+    { "priority": 35, "recognizer": "image_wrapper", "matchesWhen": "An image wrapped in a link / figure / decorative frame — unwrapped to the image with its frame preserved.", "becomes": "media_image", "fallback": "Degrades to `code_block`." },
+    { "priority": 30, "recognizer": "image_overlay", "matchesWhen": "An image with text/controls overlaid (a captioned hero tile / media card).", "becomes": "media_image + icon_box", "fallback": "Degrades to stacked image + text, then `code_block`." },
+    { "priority": 25, "recognizer": "logo_strip", "matchesWhen": "A row of ≥2 brand marks — `<img>` logos, inline `<svg>` logos, OR icon-font + label pairs (as-seen-in / partner strip).", "becomes": "logo_grid", "fallback": "Degrades to a `gallery`, then `code_block`." }
   ]
 }

@@ -11,14 +11,61 @@ Composite background option with **Color / Gradient / Image / Video** tabs that 
 $options = [
 	'demo_background_pro' => [
 		'label' => __( 'Background Pro', 'unysonplus' ),
-		'type' => 'background-pro',
-		'desc' => __( 'Composite background option (v1). Four tabs: Color / Gradient / Image / Video. Values stack as CSS layers — color underneath, gradient over, image over, video on top. The dot on each tab indicates that layer has a value.', 'unysonplus' ),
-		// — Optional attributes you can add —
-		// 'value' => [],
-		// 'disable' => [],
+		'type'  => 'background-pro',
+		'desc'  => __( 'Composite background. Color / Gradient / Image / Overlay / Video tabs stack as CSS layers — color underneath, video on top. A dot on a tab marks a layer that has a value.', 'unysonplus' ),
+		'help'  => __( 'Optional longer tooltip, shown on the (?) icon next to the label.', 'unysonplus' ),
+
+		// — Optional attributes —
+
+		// disable: hide one or more layer tabs. Array OR comma-string of:
+		// color | gradient | image | overlay | video. Handy when a layer makes no
+		// sense in context (e.g. a CSS-class fill can't host a <video>).
+		'disable' => [ 'video' ],            // also accepts 'gradient,video'
+
+		// value: the DEFAULT value (same shape as *Saved value* below). Every key is
+		// optional — omit a layer and it falls back to the type's own default, so set
+		// only what you want pre-filled.
+		'value' => [
+			'color' => [ 'value' => [ 'predefined' => '', 'custom' => '#f8f9fa' ] ],
+			'image' => [
+				'src'        => [ 'attachment_id' => 0, 'url' => '' ],
+				'position'   => 'center center',
+				'size'       => [ 'selected' => 'cover', 'custom' => '' ], // selected: auto|cover|contain|custom
+				'repeat'     => 'no-repeat',
+				'attachment' => 'scroll',                                   // scroll|fixed|local
+			],
+			// 'gradient' => [ 'data' => [ 'type' => 'linear', 'angle' => 90, 'stops' => [] ] ],
+			// 'overlay'  => [ 'color' => 'rgba(0,0,0,.35)', 'gradient' => [] ],
+			// 'video'    => [ 'enabled' => 'yes', 'external_url' => '', 'loop' => 'yes', 'autoplay' => 'yes', 'mute' => 'yes' ],
+		],
 	],
 ];
 ```
+
+## Optional attributes
+
+Beyond the standard `label` / `desc` / `help`, `background-pro` adds two of its own:
+
+| attribute | type | what it does |
+|---|---|---|
+| `disable` | array or comma-string | Removes layer tabs. Valid keys: `color`, `gradient`, `image`, `overlay`, `video`. The first remaining tab becomes the initially-active one. |
+| `value` | array | The default value — the same array shape as *Saved value* below. Partial values are fine; any omitted layer/key uses the type default. |
+
+### Setting a default value
+
+Set `value` to pre-fill the option. It merges over the type defaults, so include **only** the layers you care about — the example above defaults the Color layer to `#f8f9fa` and the Image size to `cover`, and leaves gradient / overlay / video untouched. A layer "turns on" purely by having a value: a non-empty gradient `stops` array renders the gradient, an image `src` renders the image, `video.enabled = 'yes'` renders the video — there are no separate enable switches (except video's `enabled`).
+
+### Disabling layers
+
+Pass `disable` to hide tabs you don't want authors to use:
+
+```php
+'disable' => [ 'gradient', 'video' ],   // Color / Image / Overlay only
+// or, equivalently:
+'disable' => 'gradient,video',
+```
+
+This is exactly how the Box-Preset / Icon-Badge fills use `'disable' => 'video'` — they render as a CSS class and so can't host a `<video>` layer.
 
 ## Reading the value
 

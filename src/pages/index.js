@@ -50,8 +50,10 @@ function HomepageHeader() {
         />
         <p className={styles.heroTagline}>{siteConfig.tagline}</p>
         <p className={styles.heroSubtitle}>
-          Custom fields, theme settings, a page builder, a theme builder. Take one piece
-          or the whole thing. Free, no license keys.
+          Custom fields, theme settings, a page builder, a theme builder.{' '}
+          <span className={styles.heroSubtitleLine}>
+            Take one piece or the whole thing. Free, no license keys.
+          </span>
         </p>
 
         <ul className={styles.highlights}>

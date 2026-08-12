@@ -43,9 +43,15 @@
 
 .heroSubtitle {
   color: rgba(255, 255, 255, 0.82);
-  max-width: 680px;
+  max-width: 760px;
   margin: 0 auto 2rem;
   font-size: 1.1rem;
+}
+
+/* Second sentence gets its own line so the subtitle reads as two clean rows
+   instead of wrapping mid-thought. */
+.heroSubtitleLine {
+  display: block;
 }
 
 @media (max-width: 600px) {

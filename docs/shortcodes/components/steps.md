@@ -14,7 +14,7 @@ A numbered steps / process flow — horizontal, vertical timeline, alternating, 
 - **Steps** — an addable, repeatable list of steps. Each step opens an Add / Edit Step popup with these sub-fields:
   - **Title** — the step title (default "Step title").
   - **Description** — a textarea body; accepts HTML and shortcodes.
-  - **Icon** — an icon (icon-v2 picker) used when Marker is set to Icon.
+  - **Icon** — an icon (icon picker) used when Marker is set to Icon.
   - **Number / Label override** — optional; defaults to the step position (1, 2, 3…).
 
 ## Design

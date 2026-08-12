@@ -158,8 +158,7 @@ copy-pasteable example.
 | [`background-image`](./background-image.md) | An image with position / repeat / size |
 | [`background-pro`](./background-pro.md) | Full background: color + gradient + image + video layers |
 | [`oembed`](./oembed.md) | Embed by URL (YouTube, Vimeo, …) |
-| [`icon`](./icon.md) | Pick an icon (Font Awesome) |
-| [`icon-v2`](./icon-v2.md) | Pick an icon from multiple packs, or upload a custom SVG |
+| [`icon`](./icon.md) | Pick an icon from multiple packs, upload an image, or use an emoji / SVG |
 | [`map`](./map.md) | A location picker returning coordinates + address |
 
 ### Typography, spacing & effects

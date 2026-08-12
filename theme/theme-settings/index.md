@@ -1,6 +1,8 @@
 ---
 title: Theme Settings
 sidebar_position: 2
+slug: /theme-settings
+description: The Unyson+ Theme Settings — the global design layer (colors, typography, layout, header, footer) built on the options framework, with per-area guides.
 ---
 
 # Theme Settings
@@ -9,6 +11,19 @@ sidebar_position: 2
 the header and footer, layout, and custom CSS. Page *content* lives in the page builder; this panel
 is the **site chrome and design tokens**. Together, a theme-settings file + a set of builder
 templates make up a complete "design package" for a site.
+
+Every control here is rendered by the same [Options Framework](/docs/options/introduction) that powers
+the rest of Unyson+, so Theme Settings, page-builder options, and custom fields all behave the same way.
+
+## By area
+
+- **[Colors](./colors.md)** — the site palette (`theme_colors`) that drives every `.text-*` / `.bg-*`
+  utility and `--color-*` variable.
+- **[Typography](./typography.md)** — body and heading fonts, the type scale, and link styling.
+- **[Layout](./layout.md)** — site width, background, container width, spacing density, and roundness.
+- **[Header](./header.md)** — logo/identity, header modes (top / vertical / off-canvas / overlay), and
+  header designs (classic / pill / card / centered).
+- **[Footer](./footer.md)** — footer background, the Pre / Main / Post rows, and the copyright bar.
 
 The schema lives in `framework-customizations/theme/options/`, where `settings.php` aggregates the
 tabs.

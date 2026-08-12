@@ -72,7 +72,7 @@ forces the parent's version/author headers — see
 
 ## In this section
 
-- **[Theme Settings](./theme-settings.md)** — the global design panel: its tabs, the
+- **[Theme Settings](/theme/theme-settings)** — the global design panel: its tabs, the
   `multi` / `box` → `group` layout convention, and the storage + read/write API.
 - **[How settings become CSS](./settings-to-css.md)** — the single generated stylesheet, the
   design-token pipeline, and where bespoke CSS goes.

@@ -171,6 +171,17 @@ const config = {
   plugins: [
     sitemapDataPlugin,
     [
+      '@docusaurus/plugin-client-redirects',
+      {
+        // Pages that moved when Custom Fields + Post Types were promoted out of
+        // Extensions into the Data & Content Modeling section.
+        redirects: [
+          {from: '/docs/extensions/custom-fields', to: '/docs/data-modeling/custom-fields'},
+          {from: '/docs/extensions/post-types', to: '/docs/data-modeling/post-types'},
+        ],
+      },
+    ],
+    [
       '@docusaurus/plugin-content-docs',
       {
         id: 'animationEngine',

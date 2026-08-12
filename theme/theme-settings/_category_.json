@@ -1,0 +1,8 @@
+{
+  "label": "Theme Settings",
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "theme-settings/index"
+  }
+}

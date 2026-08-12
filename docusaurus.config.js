@@ -7,7 +7,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Unyson+',
-  tagline: 'A free drag & drop framework for building premium WordPress themes — fast.',
+  tagline: 'The WordPress framework you build sites on.',
   favicon: 'img/unysonplus-logo.jpg',
 
   future: {

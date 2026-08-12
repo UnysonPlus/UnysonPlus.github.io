@@ -1,6 +1,6 @@
 ---
 title: "Button Set"
-sidebar_position: 5.5
+sidebar_position: 45.5
 ---
 
 A segmented control: every choice is visible on one row, as connected buttons. It covers

@@ -19,8 +19,8 @@ what a project needs.
 | **Theme Builder** | Divi-style global headers, bodies and footers with conditional assignment (includes header/footer building). → [docs](./theme-builder/index.md) |
 | **Live Page Editor** | Edit builder pages on the live front end. → [docs](./live-editor.md) |
 | **Site Converter** | Import an AI-generated website into WordPress. → [docs](./site-converter/index.md) |
-| **Custom Fields** | ACF-style custom fields builder. → [docs](./custom-fields.md) |
-| **Post Types &amp; Taxonomies** | Register CPTs and taxonomies from the admin. → [docs](./post-types.md) |
+| **Custom Fields** | ACF-style custom fields builder. → [docs](/docs/data-modeling/custom-fields) |
+| **Post Types &amp; Taxonomies** | Register CPTs and taxonomies from the admin. → [docs](/docs/data-modeling/post-types) |
 | **Portfolio** | A fully-featured portfolio module. → [docs](./portfolio/index.md) |
 | **Sidebars** | Add multiple/dynamic sidebars per page. → [docs](./sidebars/index.md) |
 | **Breadcrumbs** | Drop-in breadcrumb navigation. → [docs](./breadcrumbs/index.md) |

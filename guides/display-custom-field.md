@@ -39,7 +39,7 @@ if ( $subtitle ) {
 
 Custom Fields supports many field types (text, WYSIWYG, image, gallery, select, date, color, a
 **Repeater** for repeating rows, and more), plus per-group rules (post types, page templates, post
-statuses) and JSON import/export. See [Custom Fields](/docs/extensions/custom-fields).
+statuses) and JSON import/export. See [Custom Fields](/docs/data-modeling/custom-fields).
 
 ## See also
 

@@ -32,11 +32,26 @@
   border-radius: 12px;
 }
 
+.heroTagline {
+  color: #fff;
+  max-width: 720px;
+  margin: 0 auto 0.75rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
 .heroSubtitle {
   color: rgba(255, 255, 255, 0.82);
   max-width: 680px;
   margin: 0 auto 2rem;
   font-size: 1.1rem;
+}
+
+@media (max-width: 600px) {
+  .heroTagline {
+    font-size: 1.3rem;
+  }
 }
 
 /* ---- Highlights (stat-style row) ---- */

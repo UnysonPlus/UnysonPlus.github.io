@@ -42,13 +42,17 @@ function HomepageHeader() {
         <Heading as="h1" className="sr-only">
           {siteConfig.title}
         </Heading>
-        <p className={styles.eyebrow}>Ready to build premium WordPress themes?</p>
+        <p className={styles.eyebrow}>For WordPress developers</p>
         <img
           src={bannerUrl}
           alt="Unyson+ Framework Plugin"
           className={styles.heroBannerImg}
         />
-        <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
+        <p className={styles.heroTagline}>{siteConfig.tagline}</p>
+        <p className={styles.heroSubtitle}>
+          Custom fields, theme settings, a page builder, a theme builder. Take one piece
+          or the whole thing. Free, no license keys.
+        </p>
 
         <ul className={styles.highlights}>
           {HIGHLIGHTS.map((h) => (
@@ -151,13 +155,13 @@ function ClosingCTA() {
   return (
     <section className={styles.cta}>
       <div className="container">
-        <p className={styles.sectionEyebrow}>Start building your premium WordPress theme</p>
+        <p className={styles.sectionEyebrow}>Start building</p>
         <Heading as="h2" className={styles.sectionTitle}>
           Get Unyson+ for Free
         </Heading>
         <p className={styles.ctaText}>
-          Free and GPL-licensed, forever. Install the plugin and start theming with the
-          drag &amp; drop builder, options framework, and extensions.
+          Free and GPL-licensed, forever. Install the plugin and turn on only what you
+          need, from custom fields to the full page builder.
         </p>
         <Link
           className="button button--brand-orange button--lg"
@@ -174,7 +178,7 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title} — WordPress theme framework`}
-      description="Unyson+ is a free drag & drop framework for WordPress that helps you build premium themes fast, with a visual page builder, an options framework, and modular extensions.">
+      description="Unyson+ is a free, modular WordPress framework for developers: custom fields, theme settings, a page builder, and a theme builder. Take one piece or the whole thing. GPL licensed, no license keys.">
       <HomepageHeader />
       <main>
         <CleanDomBand />

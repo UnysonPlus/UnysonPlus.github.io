@@ -103,7 +103,7 @@ is used internally by the framework and should not be used in option type script
 
 ## Built-in option types
 
-All 54 built-in types, grouped by what they're for. Click any type for its reference and a
+The built-in types (60+), grouped by what they're for. Click any type for its reference and a
 copy-pasteable example.
 
 ### Text & rich input
@@ -168,6 +168,7 @@ copy-pasteable example.
 | [`typography`](./typography.md) | Font family / size / weight / style / line-height / color |
 | [`typography-v2`](./typography-v2.md) | The modern typography control (+ Google Fonts) |
 | [`spacing`](./spacing.md) | Margin / padding per side, with per-device overrides |
+| [`position-box`](./position-box.md) | Top / Right / Bottom / Left offsets with units |
 | [`box-shadow`](./box-shadow.md) | A box-shadow builder |
 
 ### Sliders & ranges
@@ -176,6 +177,8 @@ copy-pasteable example.
 | --- | --- |
 | [`slider`](./slider.md) | A single-value slider |
 | [`range-slider`](./range-slider.md) | A min / max range slider |
+| [`split-slider`](./split-slider.md) | A draggable ratio that divides 100% across N parts |
+| [`column-split`](./column-split.md) | Pick a column width as a fraction (1/2, 1/3, …) |
 
 ### Date & time
 
@@ -184,6 +187,7 @@ copy-pasteable example.
 | [`date-picker`](./date-picker.md) | Pick a date |
 | [`datetime-picker`](./datetime-picker.md) | Pick a date and time |
 | [`datetime-range`](./datetime-range.md) | Pick a start / end date-time range |
+| [`time-picker`](./time-picker.md) | Pick a time of day |
 
 ### Presets & pickers
 
@@ -192,6 +196,9 @@ copy-pasteable example.
 | [`button-presets`](./button-presets.md) | Manage reusable button-style presets |
 | [`button-style-picker`](./button-style-picker.md) | Pick a button preset with a live preview |
 | [`image-style-picker`](./image-style-picker.md) | Pick an Image Style preset with a live swatch preview |
+| [`button-hover-animation`](./button-hover-animation.md) | Pick a button hover effect with a live preview |
+| [`border-style-picker`](./border-style-picker.md) | Pick a border-style preset |
+| [`table-style-picker`](./table-style-picker.md) | Pick a table-style preset |
 
 ### Composite & repeatable
 
@@ -199,6 +206,7 @@ copy-pasteable example.
 | --- | --- |
 | [`multi`](./multi.md) | Group several options into one stored value |
 | [`multi-picker`](./multi-picker.md) | Reveal different sub-options based on a picker choice |
+| [`multi-inline`](./multi-inline.md) | Several small controls side-by-side on one row |
 | [`responsive`](./responsive.md) | Wrap any control to make it per-device (Phone / Tablet / Desktop) |
 | [`popup`](./popup.md) | Edit a set of options inside a modal |
 | [`popover`](./popover.md) | Edit options inside an inline popover panel |

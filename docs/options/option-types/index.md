@@ -131,6 +131,7 @@ copy-pasteable example.
 | [`select-multiple`](./select-multiple.md) | A multi-choice dropdown |
 | [`multi-select`](./multi-select.md) | A tag-style multi-select (posts, terms, users, …) |
 | [`radio`](./radio.md) | A single choice as radio buttons |
+| [`button-set`](./button-set.md) | A segmented control — single or multiple choice, on one row |
 | [`radio-text`](./radio-text.md) | Radio buttons rendered as a segmented control |
 | [`checkbox`](./checkbox.md) | A single on/off checkbox |
 | [`checkboxes`](./checkboxes.md) | Multiple checkboxes |

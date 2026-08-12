@@ -1,6 +1,6 @@
 ---
 title: Performance
-sidebar_position: 11
+sidebar_position: 8
 ---
 
 # Performance
@@ -70,7 +70,7 @@ See [Asset Optimizer](/docs/extensions/asset-optimizer).
 | Minified production assets (`SCRIPT_DEBUG` off) | this page |
 | Responsive / CLS-safe images (automatic in the image elements) | this page |
 | Combine remaining CSS/JS (one toggle) | [Asset Optimizer](/docs/extensions/asset-optimizer) |
-| Cache hosts can hide the asset scan | [Troubleshooting](/docs/troubleshooting#asset-optimizer-lists-no-cssjs-to-combine) |
+| Cache hosts can hide the asset scan | [Troubleshooting](/docs/troubleshooting/performance-and-assets#asset-optimizer-lists-no-cssjs-to-combine) |
 
 :::tip[Disabling styling for a "bring your own CSS" build]
 For a structure-only build (you supply all the CSS via each element's Advanced → CSS Class), the

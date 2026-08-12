@@ -4,6 +4,78 @@
 
 import {themes as prismThemes} from 'prism-react-renderer';
 
+// Local plugin: collects every page (all docs instances + both blogs + the home page)
+// at build time and exposes them as global data, so the HTML sitemap page at /sitemap
+// auto-populates — new docs/blog pages appear with no manual edits. Titles + real
+// permalinks only, grouped + ordered for a human-readable, Google-crawlable index.
+function sitemapDataPlugin() {
+  // Section id → display label + sort order (unknown instances fall to the end).
+  const DOCS_LABELS = {
+    default: 'Manual',
+    animationEngine: 'Animation Engine',
+    theme: 'The Theme',
+    guides: 'Guides',
+    aiDevKit: 'AI Dev Kit',
+  };
+  const BLOG_LABELS = {default: 'News', decisions: 'Design Decisions'};
+  const ORDER = [
+    'Main',
+    'Manual',
+    'Animation Engine',
+    'The Theme',
+    'Guides',
+    'AI Dev Kit',
+    'News',
+    'Design Decisions',
+  ];
+  return {
+    name: 'sitemap-data',
+    async allContentLoaded({allContent, actions}) {
+      const groups = new Map();
+      const push = (label, title, permalink) => {
+        if (!permalink || !title) return;
+        if (!groups.has(label)) groups.set(label, []);
+        groups.get(label).push({title: String(title), permalink});
+      };
+
+      // Standalone pages we want listed (the home page).
+      push('Main', 'Home', '/');
+
+      // All docs instances.
+      const docs = allContent['docusaurus-plugin-content-docs'] || {};
+      for (const [instanceId, content] of Object.entries(docs)) {
+        const versions = content?.loadedVersions || [];
+        const version = versions.find((v) => v.isLast) || versions[0];
+        if (!version) continue;
+        const label = DOCS_LABELS[instanceId] || instanceId;
+        for (const d of version.docs || []) push(label, d.title, d.permalink);
+      }
+
+      // Both blog instances.
+      const blogs = allContent['docusaurus-plugin-content-blog'] || {};
+      for (const [instanceId, content] of Object.entries(blogs)) {
+        const label = BLOG_LABELS[instanceId] || `Blog (${instanceId})`;
+        for (const p of content?.blogPosts || [])
+          push(label, p.metadata?.title, p.metadata?.permalink);
+      }
+
+      // Order groups, sort items within each group by title.
+      const ordered = [...groups.entries()]
+        .sort((a, b) => {
+          const ia = ORDER.indexOf(a[0]);
+          const ib = ORDER.indexOf(b[0]);
+          return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+        })
+        .map(([label, items]) => ({
+          label,
+          items: items.sort((x, y) => x.title.localeCompare(y.title)),
+        }));
+
+      actions.setGlobalData({groups: ordered});
+    },
+  };
+}
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Unyson+',
@@ -97,6 +169,7 @@ const config = {
   // Standalone docs instances — each its own section, route base, and sidebar,
   // separate from the Manual (the docsSidebar). All surfaced in the navbar.
   plugins: [
+    sitemapDataPlugin,
     [
       '@docusaurus/plugin-content-docs',
       {
@@ -242,6 +315,7 @@ const config = {
             title: 'More',
             items: [
               {label: 'News', to: '/blog'},
+              {label: 'Sitemap', to: '/sitemap'},
             ],
           },
         ],

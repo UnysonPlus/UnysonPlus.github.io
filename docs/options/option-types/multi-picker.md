@@ -430,7 +430,7 @@ Next, you would add the `multi-picker` body and **connect** it to that particula
 >
 >             'laptop' => array(
 >                 'text' => array(
->                     'type' => 'icon-v2'
+>                     'type' => 'icon'
 >                 )
 >             )
 >         )

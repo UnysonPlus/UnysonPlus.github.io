@@ -43,7 +43,7 @@ Your Unyson knowledge transfers directly:
 - **Live Page Editor**, **Snippets / Global Templates**, **Asset Optimizer**, **Site Converter**,
   **Custom Fields**, **Post Types**, **Mega Menu**, all bundled or one-click installable.
 - **Modernized option types** — `background-pro`, `spacing` (with per-device overrides),
-  `typography-v2`, `gradient-v2`, `icon-v2`, `unit-input`, `box-shadow`, `multi-picker`, and more.
+  `typography-v2`, `gradient-v2`, `icon`, `unit-input`, `box-shadow`, `multi-picker`, and more.
 
 ## What to watch when migrating
 

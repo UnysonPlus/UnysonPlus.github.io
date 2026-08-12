@@ -15,7 +15,7 @@ An image with interactive pins, where each pin reveals a tooltip card with a tit
 - **Hotspots** — an addable-popup list of pins. Add as many as you need; each one opens an "Add / Edit Hotspot" popup with these sub-fields:
   - **Horizontal Position (%)** — slider (0–100, default `50`) for the pin's X position over the image.
   - **Vertical Position (%)** — slider (0–100, default `50`) for the pin's Y position.
-  - **Pin Icon** — icon-v2 picker used by the "Icon" pin design (defaults to `+`).
+  - **Pin Icon** — icon picker used by the "Icon" pin design (defaults to `+`).
   - **Title** — text for the tooltip card heading.
   - **Text** — textarea for the tooltip body.
   - **Link Label** — text for the optional link shown in the tooltip.

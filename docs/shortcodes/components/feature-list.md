@@ -15,7 +15,7 @@ An icon-led list — checklist, cross/mixed, numbered or per-item icons — with
   - **Text** — the main line of the item (default "Feature item").
   - **Sub-text** — an optional smaller line beneath the text.
   - **Value** — an optional right-aligned value on the same row (e.g. "96%", "24h") — great for spec / stat rows.
-  - **Icon** — an icon (icon-v2 picker). **Setting an icon always overrides the Default Marker for that item** — so add an icon and it shows, whatever the marker is set to. The item row preview in the builder shows the chosen icon inline.
+  - **Icon** — an icon (icon picker). **Setting an icon always overrides the Default Marker for that item** — so add an icon and it shows, whatever the marker is set to. The item row preview in the builder shows the chosen icon inline.
   - **Marker Color** — override the marker color for this item only (e.g. a single red cross); blank inherits the list Marker Color.
   - **Check State** — `Available (check)` (default) or `Unavailable (cross)`; used by the Checklist design.
   - **Link URL** — optional; makes the item a link.

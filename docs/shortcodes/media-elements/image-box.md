@@ -19,7 +19,7 @@ An image paired with a heading, text and link, rendered in one of **five layout 
 - **Title** — the main heading. Leave blank to render an image-only box.
 - **Title HTML Tag** — semantic tag for the title; choices `H2`, `H3` (default), `H4`, `H5`, `H6`, `Span (decorative, not a heading)`, `Paragraph`.
 - **Text** — optional textarea description shown below the title. On hover-overlay designs this is revealed over the image.
-- **Icon** — optional icon (icon-v2 picker). Shown over the image on the Overlay family, or above the title on the Stacked family. Recolor it via Icon Color in Styling.
+- **Icon** — optional icon (icon picker). Shown over the image on the Overlay family, or above the title on the Stacked family. Recolor it via Icon Color in Styling.
 - **Custom Icon (Emoji / SVG)** — optional text. If filled, overrides the Icon picker; accepts an emoji or inline SVG markup (whose colors are fixed, so Icon Color won't affect them).
 - **Button / Link Style** — select for the call-to-action under the text; choices `None` (default), `Button`, `Text link`, `Arrow link`.
 - **Button Label** — text shown on the button / link (default `Read More`). Ignored when Button / Link Style is None.

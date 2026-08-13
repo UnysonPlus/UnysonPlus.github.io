@@ -210,7 +210,7 @@ copy-pasteable example.
 | [`multi-inline`](./multi-inline.md) | Several small controls side-by-side on one row |
 | [`responsive`](./responsive.md) | Wrap any control to make it per-device (Phone / Tablet / Desktop) |
 | [`popup`](./popup.md) | Edit a set of options inside a modal |
-| [`popover`](./popover.md) | Edit options inside an inline popover panel |
+| [`popover`](./popover/index.md) | Edit options inside an inline popover panel |
 | [`addable-option`](./addable-option.md) | A repeatable single option (add / remove rows) |
 | [`addable-box`](./addable-box.md) | A repeatable group of options (add / remove boxes) |
 | [`addable-popup`](./addable-popup.md) | Repeatable items, each edited in a popup |

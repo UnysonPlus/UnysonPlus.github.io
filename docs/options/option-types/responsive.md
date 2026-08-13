@@ -113,7 +113,7 @@ the control repeated three times). Set the default under the wrapper's `value` a
 ### A popover (compact tiles + a Custom reveal)
 
 For a control with many/large tiles (e.g. width fractions), wrap a
-[`popover`](./popover.md) so each device tab stays compact. A single-inner popover
+[`popover`](./popover/index.md) so each device tab stays compact. A single-inner popover
 **passes through** to the inner value, and `summary_key` + `autoclose: false` let it
 host a [`multi-picker`](./multi-picker.md) with a Custom reveal (see the Flexbox Width
 Override):
@@ -313,7 +313,7 @@ no-op when already loaded.
 
 - [`spacing`](./spacing.md) — the per-side Margin/Padding control this type is modelled on
   (also per-device).
-- [`multi-picker`](./multi-picker.md) · [`popover`](./popover.md) — common inner controls.
+- [`multi-picker`](./multi-picker.md) · [`popover`](./popover/index.md) — common inner controls.
 - [Migrating an option's value shape](/docs/page-builder/value-shape-migrations) — the
   two-sided migration pattern.
 - [Column widths](/docs/page-builder/column-widths) — the grid fractions the width controls emit.

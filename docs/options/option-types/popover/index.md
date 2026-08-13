@@ -1,9 +1,14 @@
 ---
 title: "Popover"
 sidebar_position: 46
+slug: /options/option-types/popover
 ---
 
 Collapses an option into a compact trigger that expands an in-flow panel on click. With a **single** inner option the value passes straight through; with **tabs** the value is a hash keyed by inner-option id.
+
+:::tip[Building a preset preview picker?]
+To make a compact popover that previews **presets** (like the Section’s Background Pattern), see [Preset preview pickers](./preset-preview-pickers.md).
+:::
 
 ## Popover
 

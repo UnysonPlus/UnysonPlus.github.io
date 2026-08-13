@@ -2,6 +2,10 @@
 title: "Multi-Picker"
 sidebar_position: 29
 ---
+:::tip[Popover preset pickers]
+A `multi-picker` with `popover: true` plus an [image-picker](./image-picker.md) is how compact **preset preview** popovers are built (e.g. the Section’s Background Pattern). See [Preset preview pickers](./popover/preset-preview-pickers.md).
+:::
+
 
 Pick a choice, then complete options related to that choice.
 

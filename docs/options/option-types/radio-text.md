@@ -3,7 +3,13 @@ title: "Radio Text"
 sidebar_position: 45
 ---
 
-Radio buttons rendered as a connected button group.
+Radio buttons for a set of preset choices, **plus a text input for a custom value** — so the user
+can pick one of the presets or type their own.
+
+:::note Not a segmented control
+Despite the name, this is not a button group. If you want preset choices rendered as connected
+buttons, use [`button-set`](./button-set.md).
+:::
 
 <img src="/img/options/opt-demo_radio_text.png" alt="Option type — Theme Settings example" width="1040" />
 

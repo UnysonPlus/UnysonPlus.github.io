@@ -11,6 +11,9 @@ description: The Unyson+ Shape Dividers library — reusable SVG edge shapes pic
 slants, curves…) you pick for a Section's **Top** or **Bottom** edge. The shape is defined once here;
 its **Color / Height / Flip** are set per Section.
 
+
+![Theme Settings → Components → Shape Dividers](/img/theme/components/shape-dividers.png)
+
 ## How it's coded
 
 An [`addable-box`](/docs/options/option-types/addable-box) (`components-shape-dividers.php`). Each row

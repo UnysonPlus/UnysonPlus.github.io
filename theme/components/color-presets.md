@@ -12,6 +12,9 @@ colors. Every color dropdown across the framework (a shortcode's Text Color / Ba
 button / border / table preset's color fields) picks from this list, and each color becomes a CSS
 variable plus a pair of utility classes. Recolor a preset and everything that references it updates.
 
+
+![Theme Settings → Components → Color Presets](/img/theme/components/color-presets.png)
+
 ## How it's coded
 
 The library is an [`addable-box`](/docs/options/option-types/addable-box) option named

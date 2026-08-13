@@ -12,6 +12,9 @@ patterns**. Each becomes a `.pattern-{id}` you draw as a decorative layer behind
 **Container**, or the **site background**. (JavaScript-driven backgrounds aren't supported here — those
 are the Animation Engine's job; this library is CSS + HTML only.)
 
+
+![Theme Settings → Components → Background Patterns](/img/theme/components/background-patterns.png)
+
 ## How it's coded
 
 An [`addable-box`](/docs/options/option-types/addable-box) stored under **`background_patterns`**

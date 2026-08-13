@@ -12,6 +12,9 @@ utilities**. Each entry in the scale produces a complete set of Bootstrap-style 
 site's spacing rhythm is editable in one place and every element's Spacing control offers the same
 named steps.
 
+
+![Theme Settings → Components → Spacing](/img/theme/components/spacing.png)
+
 ## How it's coded
 
 An [`addable-box`](/docs/options/option-types/addable-box) stored under **`spacing_scale`**

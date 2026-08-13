@@ -24,13 +24,13 @@ and **where that output lives**.
 | **Buttons** | `.btn-{slug}` / `.btn-outline-{slug}` + sizes | [Buttons](./buttons.md) |
 | **Box Presets** | `.boxp-{slug}` | [Box Presets](./box-presets.md) |
 | **Image Styles** | `.imgs-{slug}` token bundle | [Image Styles](./image-styles.md) |
-| **Background Patterns** | `.pattern-{id}` | *(coming)* |
-| **Section Styles** | container-width + section skins | *(coming)* |
-| **Shape Dividers** | SVG edge presets | *(coming)* |
-| **Icon Badges** | `.iconbadge-{slug}` | *(coming)* |
-| **Table Presets** | `.tbl-{slug}` | *(coming)* |
-| **Spacing** | the spacing scale | *(coming)* |
-| **Element Designs** | per-element design variants | *(coming)* |
+| **Background Patterns** | `.pattern-{id}` | [Background Patterns](./background-patterns.md) |
+| **Section Styles** | `.section--{slug}` | [Section Styles](./section-styles.md) |
+| **Shape Dividers** | SVG edge shapes | [Shape Dividers](./shape-dividers.md) |
+| **Icon Badges** | `.iconb-{slug}` | [Icon Badges](./icon-badges.md) |
+| **Table Presets** | `.tbl-{slug}` | [Table Presets](./table-presets.md) |
+| **Spacing** | `.m-*` / `.p-*` utilities | [Spacing](./spacing.md) |
+| **Element Designs** | design packs (per-element) | [Element Designs](./element-designs.md) |
 
 ## How the whole system works (shared pipeline)
 
@@ -52,7 +52,7 @@ them into a single CSS string with `unysonplus_build_presets_css_string()`. It e
 
 - **`:root` custom properties** — `--color-{slug}`, `--font-size-{slug}`, … (the tokens), and
 - **utility rules** — `.text-{slug}`, `.bg-{slug}`, `.font-{slug}`, `.btn-{id}`, `.boxp-{slug}`,
-  `.imgs-{slug}`, `.tbl-{slug}`, `.iconbadge-{slug}`, `.pattern-{id}`, and so on.
+  `.imgs-{slug}`, `.tbl-{slug}`, `.iconb-{slug}`, `.pattern-{id}`, and so on.
 
 A second `:root` block under `@media (max-width: 767.98px)` provides mobile auto-scaling.
 

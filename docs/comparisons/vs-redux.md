@@ -25,13 +25,13 @@ Extendify since 2021; check its current release state before making a long-term 
 Unyson+ ships **72 option types in core** — 53 as their own folders under
 `framework/includes/option-types/`, plus 19 simple types — and **6 more contributed by extensions**
 (including the page builder and form builder). Redux ships roughly 40 field types, several of them
-historically gated behind its premium extensions.
+delivered by its bundled extensions, all of which ship free with Redux Core.
 
 | Category | Unyson+ | Redux |
 | --- | --- | --- |
 | **Primitives** | `text`, `short-text`, `medium-text`, `textarea`, `number`, `password`, `hidden`, `checkbox`, `checkboxes`, `radio`, `radio-text`, `select`, `short-select`, `medium-select`, `multi-select`, `switch`, `unique`, `html`, `html-fixed`, `html-full` | `text`, `textarea`, `spinner`, `password`, `checkbox`, `radio`, `select`, `button_set`, `switch`, `raw`, `info`, `divide`, `section` |
 | **Color** | `color-picker`, `rgba-color-picker`, `gradient`, `gradient-v2`, `predefined-colors`, `predefined-colors-color-picker`, `predefined-colors-color-picker-compact` | `color`, `color_rgba`, `color_gradient`, `link_color`, `palette` |
-| **Typography** | `typography`, `typography-v2` | `typography` (custom fonts via an extension) |
+| **Typography** | `typography`, `typography-v2` | `typography` (custom fonts via a bundled extension) |
 | **Layout & box model** | `spacing`, `position-box`, `box-shadow`, `border-style-picker`, `border-presets`, `column-split`, `responsive`, `unit-input` | `spacing`, `dimensions`, `border`, `box_shadow` |
 | **Media** | `upload`, `multi-upload`, `image-picker`, `background-image`, `background-pro`, `icon`, `icon-badge-presets`, `oembed`, `svg-code` | `media`, `gallery`, `image_select`, `background`, `slides` |
 | **Repeatable & composite** | `addable-box`, `addable-option`, `addable-popup`, `multi`, `multi-inline`, `fw-multi-inline`, `multi-picker`, `popup`, `popover` | `repeater`, `sortable`, `sorter`, `multi_text` |
@@ -40,7 +40,7 @@ historically gated behind its premium extensions.
 | **Ranges** | `slider`, `range-slider`, `split-slider` | `slider` |
 | **Style presets** | `button-presets`, `button-style-picker`, `button-hover-animation`, `table-presets`, `table-style-picker`, `image-style-picker`, `easing-picker` | — |
 | **Embedded builders** | `builder` (the full page builder), `form-builder`, `gallery-3d-preview` | — |
-| **Other** | `map`, `gmap-key` | Google Maps (extension), `import_export`, Customizer integration |
+| **Other** | `map`, `gmap-key` | Google Maps (bundled extension), `import_export`, Customizer integration |
 
 Two rows deserve attention because they have no Redux counterpart at all:
 
@@ -60,12 +60,12 @@ Redux, where `repeater` is the deepest nesting available.
 | **What it is** | Site-building framework (options + extensions + page builder + shortcodes + forms + post types) | Options framework |
 | **Config** | PHP arrays in `framework-customizations/` | PHP config array |
 | **Storage** | Per-context: settings, post, term, customizer — see [Storage](/docs/options/storage) | One serialized option array (plus extensions) |
-| **Meta boxes** | Core | Extension |
-| **Repeatable fields** | Core (`addable-box`, `addable-popup`) | Extension |
+| **Meta boxes** | Core | Bundled extension |
+| **Repeatable fields** | Core (`addable-box`, `addable-popup`) | Bundled extension |
 | **Customizer** | Supported — see [Customizer](/docs/options/customizer) | Supported, a long-standing strength |
 | **Import / export** | Via the Preset Library and template JSON | Built-in `import_export` field |
 | **Custom field types** | Documented API — see [Create an option type](/docs/options/create-option-type) | Custom field API |
-| **Cost** | Free, GitHub-hosted | Free core; several extensions historically premium |
+| **Cost** | Free, GitHub-hosted | Free — core and all 17 bundled extensions |
 
 ## Where Redux is the better choice
 
@@ -88,8 +88,11 @@ Redux, where `repeater` is the deepest nesting available.
 - **It's not just options.** The [extension system](/docs/architecture/extension-system),
   [page builder](../page-builder/index.md), shortcodes, [Theme Builder](/docs/extensions/theme-builder),
   and [Dynamic Content](/docs/dynamic-content) are part of the same framework.
-- **Everything is free.** The Unyson+ equivalents of Redux's premium extensions — repeaters, meta
-  boxes, taxonomy and user options, maps — are core.
+- **Everything is free — but so is Redux.** Redux bundles all 17 extensions free, so cost is *not* a
+  differentiator here. It is against ACF, where repeaters, options pages and gallery fields are Pro.
+  For reference, the Unyson+ equivalents of those — repeaters, meta boxes, taxonomy options and
+  maps — are core. (User-profile options are the one context Unyson+ does not cover; Redux has a
+  User Metaboxes extension for it.)
 
 ## The honest trade-off
 

@@ -1,7 +1,7 @@
 ---
 title: Components (Preset Libraries)
 sidebar_position: 1
-slug: /theme/components
+slug: /components
 description: The Unyson+ Theme Settings → Components preset libraries — reusable design tokens (colors, text styles, buttons, boxes, image styles, patterns and more) compiled into one cached stylesheet.
 ---
 

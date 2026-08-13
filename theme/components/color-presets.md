@@ -1,7 +1,7 @@
 ---
 title: Color Presets
 sidebar_position: 2
-slug: /theme/components/color-presets
+slug: /components/color-presets
 description: The Unyson+ Color Presets library (theme_colors) — how the palette is coded, the .text-/.bg-/--color- CSS it emits, and where that output lives.
 ---
 

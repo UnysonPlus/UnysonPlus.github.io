@@ -20,10 +20,10 @@ and **where that output lives**.
 | Library | Emits | Detail |
 | --- | --- | --- |
 | **Color Presets** | `.text-{slug}` / `.bg-{slug}` + `--color-{slug}` | [Color Presets](./color-presets.md) |
-| **Text Styles** | `.font-{slug}` + `--font-size-{slug}` | *(coming)* |
-| **Buttons** | `.btn-{id}` / `.btn-outline-{id}` + sizes | *(coming)* |
-| **Box Presets** | `.boxp-{slug}` | *(coming)* |
-| **Image Styles** | `.imgs-{slug}` token bundle | *(coming)* |
+| **Text Styles** | `.font-{slug}` + `--font-size-{slug}` | [Text Styles](./text-styles.md) |
+| **Buttons** | `.btn-{slug}` / `.btn-outline-{slug}` + sizes | [Buttons](./buttons.md) |
+| **Box Presets** | `.boxp-{slug}` | [Box Presets](./box-presets.md) |
+| **Image Styles** | `.imgs-{slug}` token bundle | [Image Styles](./image-styles.md) |
 | **Background Patterns** | `.pattern-{id}` | *(coming)* |
 | **Section Styles** | container-width + section skins | *(coming)* |
 | **Shape Dividers** | SVG edge presets | *(coming)* |

@@ -12,6 +12,9 @@ tile (circle / rounded / square / hexagon) at a set size, with a tile fill, a ce
 color + size), a border and a box-shadow. Each preset produces a **`.iconb-{slug}`** class you pick on
 an **Icon Box** (Styling → Icon Badge Preset), with **Default** and **Hover** states.
 
+
+![Theme Settings → Components → Icon Badges](/img/theme/components/icon-badges.png)
+
 ## How it's coded
 
 Stored under **`icon_badge_presets`**, an

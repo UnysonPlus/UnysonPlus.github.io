@@ -13,6 +13,9 @@ crop, corner radius / circle, a clip or SVG **mask** (arch, blob, hexagon, custo
 an image (Styling → **Image Style**) — galleries, image boxes, post cards, and so on. Defining a mask
 once applies it consistently everywhere (this replaced the old per-element *Image Mask* option).
 
+
+![Theme Settings → Components → Image Styles](/img/theme/components/image-styles.png)
+
 ## How it's coded
 
 Stored under **`image_styles`**, an [`addable-box`](/docs/options/option-types/addable-box)

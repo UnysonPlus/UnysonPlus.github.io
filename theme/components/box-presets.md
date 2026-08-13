@@ -12,6 +12,9 @@ radius, padding, box-shadow and an optional background fill (color / gradient / 
 **Default** and **Hover** state. You pick one on a **Column** (Styling → Box Preset), a **Table** (Frame),
 a **Countdown**, and similar.
 
+
+![Theme Settings → Components → Box Presets](/img/theme/components/box-presets.png)
+
 ## How it's coded
 
 Stored under the key **`border_presets`**, a [`border-presets`](/docs/options/option-types/border-style-picker)

@@ -12,6 +12,9 @@ backgrounds + text/heading/link colors). Each produces a **`.section--{slug}`** 
 Section via **Layout → Section Variant**. The three defaults — **Alt / Light / Dark** — match the
 built-in variants; retint them or add your own branded bands.
 
+
+![Theme Settings → Components → Section Styles](/img/theme/components/section-styles.png)
+
 ## How it's coded
 
 An [`addable-box`](/docs/options/option-types/addable-box) stored under **`section_style_presets`**

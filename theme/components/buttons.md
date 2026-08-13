@@ -11,6 +11,9 @@ description: The Unyson+ Buttons library — Button Presets (.btn-{slug} with st
 skin on the site: **Button Presets** (the color/skin), **Sizes** (the dimensions), and **Hover
 Animations** (custom hover CSS). A button combines one of each, e.g. `class="btn btn-primary btn-lg"`.
 
+
+![Theme Settings → Components → Buttons](/img/theme/components/buttons.png)
+
 ## 1. Button Presets — the skin
 
 `button_colors`, a [`button-presets`](/docs/options/option-types/button-presets) option

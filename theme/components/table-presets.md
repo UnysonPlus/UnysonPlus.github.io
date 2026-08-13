@@ -12,6 +12,9 @@ produces a **`.tbl-{slug}`** class you pick on a **Table** (Table Options → Ta
 **Header / Body / Striped / Hover / Footer / Caption** skins plus grid lines, frame, corner radius and
 cell padding.
 
+
+![Theme Settings → Components → Table Presets](/img/theme/components/table-presets.png)
+
 ## How it's coded
 
 Stored under **`table_presets`**, a [`table-presets`](/docs/options/option-types/table-style-picker)

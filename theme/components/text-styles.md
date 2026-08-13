@@ -15,6 +15,9 @@ element's own tag. (A blank weight keeps the heading's weight; it does *not* thi
 They're offered by the **Text Style** dropdown in a shortcode's Styling tab (and by controls like a
 Special Heading's *Subtitle Text Style*).
 
+
+![Theme Settings → Components → Text Styles](/img/theme/components/text-styles.png)
+
 ## How it's coded
 
 An [`addable-box`](/docs/options/option-types/addable-box) stored under the (legacy) key

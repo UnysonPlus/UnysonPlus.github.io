@@ -12,6 +12,9 @@ variants an element offers in its **Design** option (the same picker where you c
 Member card layout). Unlike the other Components tabs, this isn't an `addable-box` preset library; it's
 a **management dashboard** for installed packs.
 
+
+![Theme Settings → Components → Element Designs](/img/theme/components/element-designs.png)
+
 ## How it's coded
 
 The tab is a bespoke UI: a single **`sc_eldesigns_manager`** option of type

@@ -66,6 +66,8 @@ plugin load — see [How the framework boots](./framework-boot.md).
   content, tying the pieces together (and linking into the Page Builder deep-dive).
 - **[Technology &amp; modernization](./technology.md)** — what the framework is built on today, layer
   by layer.
+- **[Storage model: JSON, not shortcodes](./storage-model.md)** — what actually gets written to the
+  database, and an honest answer to the "shortcode soup" criticism.
 - **[The admin JavaScript layer](./admin-js-layer.md)** — how the options UI really works: PHP renders,
   JavaScript enhances on `fw:options:init`, and where Backbone and Underscore actually appear.
 - **[The modernization plan](./modernization-plan.md)** — the measured audit, why the option *schema*

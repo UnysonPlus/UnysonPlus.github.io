@@ -180,6 +180,8 @@ const config = {
           {from: '/docs/extensions/post-types', to: '/docs/data-modeling/post-types'},
           // The icon-v2 / icon-v3 option-type ids were consolidated into one `icon` type.
           {from: '/docs/options/option-types/icon-v2', to: '/docs/options/option-types/icon'},
+          // Post Carousel was dropped (a duplicate of the Posts element).
+          {from: '/docs/shortcodes/components/post-carousel', to: '/docs/shortcodes/components/posts'},
         ],
       },
     ],

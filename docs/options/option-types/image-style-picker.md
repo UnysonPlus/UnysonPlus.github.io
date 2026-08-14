@@ -3,7 +3,7 @@ title: "Image Style Picker"
 sidebar_position: 57
 ---
 
-A dropdown that previews each **Image Style preset** as a live thumbnail swatch — the sample image is rendered with the preset's real CSS (crop ratio, corner radius, mask, filter, scrim), so you see the treatment before picking it. Reused by every shortcode that offers an Image Style (Posts, Gallery, Image Box, Image, Image Content, Post Carousel, Featured Image). Stores the class string, e.g. `imgs-rounded`.
+A dropdown that previews each **Image Style preset** as a live thumbnail swatch — the sample image is rendered with the preset's real CSS (crop ratio, corner radius, mask, filter, scrim), so you see the treatment before picking it. Reused by every shortcode that offers an Image Style (Posts, Gallery, Image Box, Image, Image Content, Featured Image). Stores the class string, e.g. `imgs-rounded`.
 
 Presets are managed in **Theme Settings → Components → Image Styles**; each preset emits a `.imgs-{slug}` token bundle consumed by the shared `.imgs-wrap` base rule.
 

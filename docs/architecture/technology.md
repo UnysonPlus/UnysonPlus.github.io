@@ -43,8 +43,13 @@ The bundled front-end libraries are on their current major lines:
 
 The whole framework (1,200+ PHP files) is clean under **PHP 8.2** — none of the PHP-4/5-era patterns
 that plague old forks (`create_function`, `ereg`, `each()`, `mysql_*`, `eval`, `FILTER_SANITIZE_STRING`,
-…) appear anywhere. And modern PHP is genuinely in use, not just tolerated: dozens of namespaced files
-and hundreds of files with typed signatures / return types across the newer code.
+…) appear anywhere.
+
+Being precise about the rest, because a claim you can `grep` should survive being `grep`ed: the
+codebase is **procedural and convention-loaded**, not namespaced — typed signatures and
+`declare(strict_types=1)` appear only in the newest files, and there is no Composer autoloader yet.
+Adopting PSR-4 and namespaces for new code is the first item on
+[the modernization plan](./modernization-plan.md).
 
 ### CSS is layout-modern
 
@@ -59,7 +64,10 @@ by default.
 | --- | --- |
 | **Front end (visitor)** | Vanilla JS, Bootstrap 5 CSS, CSS custom properties; Splide / Leaflet / noUiSlider; GSAP / Lenis / three.js / Lottie / Rive for motion |
 | **PHP core** | The options-framework engine, the extension system, the manifest/updater — PHP 7.4+ (8.2-clean), typed & namespaced in the newer code |
-| **Admin builder / options UI** | Backbone + Underscore templates + jQuery UI — the one layer still on an older stack, and the focus of the roadmap below |
+| **Admin builder / options UI** | Server-rendered PHP enhanced with jQuery; Backbone at two call sites and Underscore templates in the builder items — the one layer still on an older stack, and the focus of the roadmap below |
+
+For exactly how that layer works — the `_render()` + `fw:options:init` contract, and the measured
+footprint of Backbone and Underscore — see [The admin JavaScript layer](./admin-js-layer.md).
 
 ## Modernization roadmap
 
@@ -81,3 +89,7 @@ the work now is the admin UI. We ship these as they're ready rather than on fixe
 
 The principle throughout: modernize where it changes the experience, keep what already works, and never
 break saved content or a live site to do it.
+
+The detailed, measured version of this roadmap — what the audit found, why React is adopted as a
+*second renderer* rather than a rewrite, and the order the work happens in — is
+[The modernization plan](./modernization-plan.md).

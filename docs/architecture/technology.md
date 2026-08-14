@@ -51,6 +51,13 @@ codebase is **procedural and convention-loaded**, not namespaced — typed signa
 Adopting PSR-4 and namespaces for new code is the first item on
 [the modernization plan](./modernization-plan.md).
 
+### Layouts are stored as structured data
+
+Builder content is saved as a **JSON tree in post meta**, not as nested shortcodes in `post_content`
+— so deactivating the plugin leaves no bracket residue, and rendering starts from parsed data rather
+than by scanning markup. This is the criterion usually used to define a modern builder, and it is
+measurable on any install: see [Storage model: JSON, not shortcodes](./storage-model.md).
+
 ### CSS is layout-modern
 
 Styling is **flex/grid-first** with CSS custom properties — the Components preset system compiles into

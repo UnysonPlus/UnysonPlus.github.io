@@ -38,3 +38,7 @@ slider that sums to 100%), and fill each column with page-builder elements.
 control. Column one is pre-filled with a copyright line —
 `© {{current_year}} <site>. All rights reserved.` — using [Dynamic Content](/docs/dynamic-content) for
 the year, so it stays current on its own.
+
+:::tip[Element reference]
+For each element type you can place in a bar/column (logo, menu, CTA, text, search, social icons, spacer…), see [Header & Footer Elements](/theme/header-footer-elements) — full detail, generated HTML, and examples.
+:::

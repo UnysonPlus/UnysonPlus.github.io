@@ -45,3 +45,7 @@ In Top mode, a **Header Design** picker gives the bar its structural treatment:
 
 The remaining sub-tabs (Menu, Top Bar, Main Header, Bottom Bar) configure the rows and the navigation
 inside the chosen mode.
+
+:::tip[Element reference]
+For each element type you can place in a bar/column (logo, menu, CTA, text, search, social icons, spacer…), see [Header & Footer Elements](/theme/header-footer-elements) — full detail, generated HTML, and examples.
+:::

@@ -64,3 +64,9 @@ plugin load — see [How the framework boots](./framework-boot.md).
   framework, theme and every extension, and the project's version-bump rules.
 - **[Data flow: edit → stored JSON → render](./data-flow.md)** — the end-to-end path of builder
   content, tying the pieces together (and linking into the Page Builder deep-dive).
+- **[Technology &amp; modernization](./technology.md)** — what the framework is built on today, layer
+  by layer.
+- **[The admin JavaScript layer](./admin-js-layer.md)** — how the options UI really works: PHP renders,
+  JavaScript enhances on `fw:options:init`, and where Backbone and Underscore actually appear.
+- **[The modernization plan](./modernization-plan.md)** — the measured audit, why the option *schema*
+  is the thing to protect, React as a second renderer, and the order of work.

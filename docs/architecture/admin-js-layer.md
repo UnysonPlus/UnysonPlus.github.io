@@ -66,32 +66,37 @@ Two implications follow, and they matter for everything below:
 
 ## Where Backbone actually is
 
-Backbone is often described as pervasive here. Measured across the plugin, it appears in **12 files**,
-one of which is the vendored `backbone-relational` library:
+Backbone is often described as pervasive here. It never was — and as of **2.16.11 the framework core
+does not use it at all**.
+
+`fw.js` used it in exactly two places: `fw.Modal = Backbone.Model.extend(…)` and its
+`ContentView: Backbone.View.extend(…)`. Those are now `fw.Class` and `fw.View`, from
+`framework/static/js/fw-oo.js` — plain-JavaScript equivalents with the same signatures. The `fw`
+script handle no longer declares `backbone` as a dependency. See
+[why the media frame was replaced](/decisions/replacing-the-wp-media-modal-frame).
+
+What still uses Backbone:
 
 | File | Role |
 | --- | --- |
-| `framework/static/js/fw.js` | `fw.Modal` + its content view |
 | `builder/…/builder.js`, `helpers.js` | The base builder option type |
 | `page-builder/…/editor_integration.js`, `section-like-factory.js`, `section-sorter.js` | The page-builder canvas |
 | `shortcodes/{section,column,flexbox}/…/scripts.js` | The three structural builder items |
 | `megamenu/static/js/admin.js`, `template-library/…/builder-panel.js` | Two admin panels |
 | `libs/backbone-relational/…` | Vendored library |
 
-And inside `fw.js` — 3,051 lines, the framework's central admin script — Backbone is used in exactly
-**two places**:
+Two things worth being precise about, because they are easy to overstate:
 
-```js
-fw.Modal = Backbone.Model.extend( { … } );          // line 929
-    ContentView: Backbone.View.extend( { … } );     // line 944
-```
+- **Backbone still loads on many admin pages.** WordPress's own media library is Backbone, and
+  `wp_enqueue_media()` runs wherever an upload-style option appears. The framework deliberately keeps
+  using that picker — it is WordPress's, and reimplementing it would be a mistake. What changed is
+  that the framework's *own* code no longer requires Backbone.
+- **The builder items are unconverted**, and they are the larger share. They move with the builder
+  canvas work, not before it.
 
-That is the whole of it. `fw.Modal` is a state container (is the modal open? what is its title?) with
-a view that renders a shell. Everything else in `fw.js` — `fw.OptionsModal`, the loading indicator,
-notifications, form validation, `fw.opg`/`fw.ops` for nested value access, the confirm/soleModal
-helpers — is plain JavaScript and jQuery.
-
-So Backbone is a **thin dependency at two points**, not a framework the code is built inside.
+Everything else in `fw.js` — `fw.OptionsModal`, the loading indicator, notifications, form validation,
+`fw.opg`/`fw.ops` for nested value access, the confirm/soleModal helpers — was always plain JavaScript
+and jQuery.
 
 ## Where Underscore templates actually are
 

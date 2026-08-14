@@ -64,7 +64,7 @@ by default.
 | --- | --- |
 | **Front end (visitor)** | Vanilla JS, Bootstrap 5 CSS, CSS custom properties; Splide / Leaflet / noUiSlider; GSAP / Lenis / three.js / Lottie / Rive for motion |
 | **PHP core** | The options-framework engine, the extension system, the manifest/updater — PHP 7.4+ (8.2-clean), typed & namespaced in the newer code |
-| **Admin builder / options UI** | Server-rendered PHP enhanced with jQuery; Backbone at two call sites and Underscore templates in the builder items — the one layer still on an older stack, and the focus of the roadmap below |
+| **Admin builder / options UI** | Server-rendered PHP enhanced with jQuery. The **core is Backbone-free** as of 2.16.11 — the options modal runs on the framework's own `fw.Class` / `fw.View` / `fw.ModalFrame`. Backbone and Underscore templates remain in the **page-builder items**, which is where the roadmap goes next |
 
 For exactly how that layer works — the `_render()` + `fw:options:init` contract, and the measured
 footprint of Backbone and Underscore — see [The admin JavaScript layer](./admin-js-layer.md).
@@ -74,9 +74,11 @@ footprint of Backbone and Underscore — see [The admin JavaScript layer](./admi
 Modernization is **actively underway**, layer by layer. The front end and PHP core are already there;
 the work now is the admin UI. We ship these as they're ready rather than on fixed dates.
 
-- **A React admin UI.** The builder and options interface runs today on Backbone + Underscore. The
-  direction is to rebuild that layer on **React**, for a faster, more maintainable, component-based
-  editor.
+- **A React admin UI.** New admin surfaces are built on **React**, using the copy WordPress already
+  ships in wp-admin (`wp.element`) rather than bundling another. The same React controls drive
+  UnysonPlus's Gutenberg block inspectors, so the two efforts compound instead of duplicating.
+- **Retiring Backbone.** Done for the framework core in 2.16.11 — the options modal now runs on the
+  framework's own primitives. The page-builder items are next.
 - **Native ES6+ instead of Underscore templating.** The admin's Underscore `_.template` rendering
   moves to **modern native JavaScript** as the UI migrates.
 - **Vanilla admin controls.** The remaining jQuery-based admin widgets (tooltips, enhanced dropdowns)

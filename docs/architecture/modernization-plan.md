@@ -128,11 +128,22 @@ Being specific about the non-goals is what keeps this from becoming a rewrite:
 
 Because Backbone is 12 files and 2 call sites, this is a bounded piece of work rather than a migration.
 
-**Backbone.** `fw.Modal` uses `Backbone.Model` for a handful of attributes plus `on`/`set`, and
-`Backbone.View` for a render shell. Both are a small class with an event emitter — replaceable with
-~60 lines of plain ES6 and no behaviour change. The builder items are the larger share: they use
-models, collections and events more genuinely, and should be migrated with the canvas work rather than
-ahead of it.
+**Backbone — core done in 2.16.11.** `fw.Modal` used `Backbone.Model` for attributes plus `on`/`set`,
+and `Backbone.View` for a render shell. Both are now `fw.Class` / `fw.View` in
+`framework/static/js/fw-oo.js`, and the options modal's frame is `fw.ModalFrame` rather than
+`wp.media.view.MediaFrame`. The `fw` handle no longer declares `backbone`.
+
+The estimate above ("~60 lines, no behaviour change") turned out to be wrong in an instructive way. The
+modal was built on WordPress's media frame, so removing Backbone meant reimplementing that frame's DOM,
+its regions and its toolbar — and reproducing the parts of Backbone that callers relied on
+*implicitly*: the `events` hash a view expects its base class to delegate, and the event-map form
+`listenTo(obj, {event: handler})` that eight call sites use. Neither appears in the code you are
+replacing; both surface only when something silently stops working. The full account, including the
+three bugs it shook out, is in
+[replacing the media frame](/decisions/replacing-the-wp-media-modal-frame).
+
+The builder items are the larger remaining share: they use models, collections and events more
+genuinely, and move with the canvas work rather than ahead of it.
 
 **Underscore templates.** `_.template` is string interpolation with `<%= %>` delimiters. Native template
 literals cover the same ground. The 29 files are mechanical conversions, individually testable, with

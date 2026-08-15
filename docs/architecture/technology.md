@@ -71,10 +71,15 @@ by default.
 | --- | --- |
 | **Front end (visitor)** | Vanilla JS, Bootstrap 5 CSS, CSS custom properties; Splide / Leaflet / noUiSlider; GSAP / Lenis / three.js / Lottie / Rive for motion |
 | **PHP core** | The options-framework engine, the extension system, the manifest/updater — PHP 7.4+ (8.2-clean), typed & namespaced in the newer code |
-| **Admin builder / options UI** | Server-rendered PHP enhanced with jQuery. The **core is Backbone-free** as of 2.16.11 — the options modal runs on the framework's own `fw.Class` / `fw.View` / `fw.ModalFrame`. Backbone and Underscore templates remain in the **page-builder items**, which is where the roadmap goes next |
+| **Admin builder / options UI** | Server-rendered PHP enhanced with jQuery. The **core is Backbone-free** (2.16.11) **and Underscore-free** (2.16.13) — the options modal runs on the framework's own `fw.Class` / `fw.View` / `fw.ModalFrame`, and core ships `fw.template` / `fw.escapeHtml` / `fw.throttle` / `fw.debounce`. Backbone and Underscore remain only in the **page-builder items** and the form builder, which is where the roadmap goes next |
 
 For exactly how that layer works — the `_render()` + `fw:options:init` contract, and the measured
 footprint of Backbone and Underscore — see [The admin JavaScript layer](./admin-js-layer.md).
+
+:::caution Extension authors
+`'fw'` no longer declares `'underscore'`. Any script that uses `_` must list `'underscore'` in its own
+`wp_enqueue_script` dependency array — it is no longer inherited.
+:::
 
 ## Modernization roadmap
 
@@ -86,8 +91,9 @@ the work now is the admin UI. We ship these as they're ready rather than on fixe
   UnysonPlus's Gutenberg block inspectors, so the two efforts compound instead of duplicating.
 - **Retiring Backbone.** Done for the framework core in 2.16.11 — the options modal now runs on the
   framework's own primitives. The page-builder items are next.
-- **Native ES6+ instead of Underscore templating.** The admin's Underscore `_.template` rendering
-  moves to **modern native JavaScript** as the UI migrates.
+- **Retiring Underscore.** Done for the framework core in 2.16.13 — every `_.*` call in core is now
+  native, and the `fw` handle no longer depends on `underscore`. The builder canvas and form builder
+  still use it and move with the canvas work.
 - **Vanilla admin controls.** The remaining jQuery-based admin widgets (tooltips, enhanced dropdowns)
   are being replaced with dependency-free equivalents, continuing the front end's jQuery-free story
   into wp-admin.

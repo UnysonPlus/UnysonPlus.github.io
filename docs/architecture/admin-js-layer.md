@@ -100,18 +100,50 @@ and jQuery.
 
 ## Where Underscore templates actually are
 
-`_.template` appears in **29 files**, and they cluster tightly:
+:::info Core no longer uses Underscore (2.16.13)
+The framework **core** — `fw.js`, `fw-reactive-options*.js` and the twelve core option types that used
+Underscore — is Underscore-free, and the `fw` script handle no longer declares `underscore`. Core ships
+`fw.template()`, `fw.escapeHtml()`, `fw.throttle()` and `fw.debounce()` instead (see
+[the core helpers](#the-core-helpers-that-replaced-underscore) below).
+
+**If you write an extension: any script that uses `_` must declare `'underscore'` in its own
+`wp_enqueue_script` dependency array.** It is no longer inherited through `'fw'`.
+
+The clustering described below still holds for the *remaining* users — the builder canvas, the form
+builder, newsletter-crm — which keep Underscore and declare it themselves.
+:::
+
+Outside core, `_.template` clusters tightly:
 
 - **Builder items** (`section`, `column`, `flexbox`, `container`, `global-section`, the page-builder
   `simple` item type) — these render the item's *preview inside the canvas*, which is the one place
   the client genuinely renders markup.
 - **Form-builder items** (14 files under `forms/includes/option-types/form-builder/items/`) — same
   pattern for the drag-and-drop form designer.
-- A few one-offs: `addable-box`, `addable-popup`, `multi-upload`, `upload`, the email builder, the map
-  option type.
+- The email builder.
+
+`addable-box`, `addable-popup`, `multi-upload`, `upload` and the map option type were on this list and
+have been converted; the two addable types now compile their user-authored item-title templates with
+`fw.template()`.
 
 The pattern is consistent: **wherever the client has to draw something that PHP did not render, it uses
-an Underscore template.** Everywhere else, PHP already drew it.
+a template.** Everywhere else, PHP already drew it.
+
+## The core helpers that replaced Underscore
+
+Four helpers cover the Underscore functions with no one-line native equivalent. They are public — use
+them instead of adding an `underscore` dependency:
+
+| Helper | Replaces | Notes |
+| --- | --- | --- |
+| `fw.template(text, settings)` | `_.template` | Custom delimiters, the `variable` option, `with`-scoped bare identifiers, and `print()`. Signature drops Underscore's unused middle argument: `fw.template(text, settings)`, not `_.template(text, undefined, settings)`. |
+| `fw.escapeHtml(value)` | `_.escape` | Same character set (`& < > " ' \``); `null`/`undefined` render as `''`. |
+| `fw.throttle(fn, wait)` | `_.throttle` | Leading **and** trailing edge, matching Underscore's default. |
+| `fw.debounce(fn, wait, immediate)` | `_.debounce` | Trailing by default; pass `immediate` for the leading-edge variant. |
+
+`fw.template()` is a real compiler rather than a template-literal shim on purpose: the addable-box and
+addable-popup item-title templates are **authored by users and stored in the database**, so their
+syntax had to keep working exactly as it did.
 
 ## The builder canvas
 
@@ -171,8 +203,8 @@ former. Moving to the latter is a real project — see
 
 Read together, the measurements say something specific:
 
-- The admin is **server-rendered HTML with jQuery enhancement**, using Backbone at two points and
-  Underscore where the client must draw.
+- The admin is **server-rendered HTML with jQuery enhancement**. Core uses neither Backbone nor
+  Underscore; both remain only in the builder canvas and the form builder, where the client must draw.
 - The **contract that matters** is `_render()` + `fw:options:init`, not any JavaScript framework.
 - Therefore "replace Backbone with React" is a much smaller job than it sounds — and "make the option
   types React components" is a much larger one, because it means moving rendering out of PHP.

@@ -25,7 +25,7 @@ Counted across the plugin as it stands:
 | Typed PHP signatures | ~23 files with parameter types, ~15 with return types, 4 with `strict_types` |
 | Legacy PHP-4/5 patterns (`create_function`, `ereg`, `each`, `mysql_*`) | **None** |
 | Backbone | **12 files**; exactly **2 call sites** inside `fw.js` |
-| Underscore `_.template` | **29 files**, clustered in builder items + form-builder items |
+| Underscore `_.template` | **29 files**, clustered in builder items + form-builder items — core's share removed in 2.16.13 |
 | Files hooking `fw:options:init` | **131** |
 | Core option types | 54 (45 with their own JS, ~11,700 lines total) |
 | Front-end jQuery dependency | **None** — no builder element enqueues `jquery` |
@@ -145,11 +145,23 @@ three bugs it shook out, is in
 The builder items are the larger remaining share: they use models, collections and events more
 genuinely, and move with the canvas work rather than ahead of it.
 
-**Underscore templates.** `_.template` is string interpolation with `<%= %>` delimiters. Native template
-literals cover the same ground. The 29 files are mechanical conversions, individually testable, with
-the builder-item previews being the only ones where the output is visually load-bearing.
+**Underscore — core done in 2.16.13.** Every `_.*` call in `fw.js`, `fw-reactive-options*.js` and the
+twelve core option types that used them is now native, and the `fw` handle no longer declares
+`underscore`.
 
-Neither is urgent on its own — nothing is broken and WordPress still ships both. Their real value is
+The "mechanical conversion" framing held for most of it, but not for `_.template`. Template literals
+were the wrong tool: the addable-box and addable-popup item-title templates are **authored by users and
+stored in the database**, with `{{= }}` / `{{- }}` / `{{ }}` delimiters and arbitrary JS in the
+evaluate blocks. Their syntax had to keep working, so core gained a real `_.template`-compatible
+compiler — `fw.template()` — verified output-identical to Underscore across the delimiter forms,
+`with`-scoped bare identifiers, `print()`, escaping and null handling. `fw.escapeHtml()`,
+`fw.throttle()` and `fw.debounce()` cover the other non-trivial helpers.
+
+The second lesson was about the dependency itself. Dropping `'underscore'` from the `fw` handle breaks
+any script that used `_` while relying on inheriting it — and five did, three of which had *never*
+declared it. The rule now enforced: **a script that uses `_` declares `'underscore'` itself.**
+
+Nothing here was urgent on its own — nothing was broken and WordPress still ships both. The value is
 **removing the reason people call the framework legacy**, and clearing the ground so the builder work
 isn't happening on top of a stack nobody wants to learn.
 
@@ -190,9 +202,10 @@ Small, concrete, worth doing early:
    shortcode, its inspector built from the step-2 controls plus core `supports`. Proves the bridge end
    to end. `before-after` is a good first candidate — the shortcode already exists, so the render side
    is free.
-4. **Retire Backbone from `fw.js`.** Replace the two call sites with plain ES6. Small, isolated,
-   independently shippable.
-5. **Underscore templates → template literals.** File by file, starting with the least visual.
+4. **Retire Backbone from `fw.js`.** ✅ Done in 2.16.11. Replace the two call sites with plain ES6.
+   Small, isolated, independently shippable.
+5. **Retire Underscore from core.** ✅ Done in 2.16.13. Native equivalents file by file, plus
+   `fw.template()` for the user-authored templates that template literals could not cover.
 6. **The builder canvas.** Only after 1–5 have established the patterns, and only if there is a
    concrete reason — a feature it blocks, a bug class it causes. Not on principle.
 

@@ -71,6 +71,23 @@ Being straight about this matters more than winning the argument, and these are 
   modern; the editing surface is the older layer.
 - **The Live Editor re-renders over the network.** It uses AJAX and an iframe rather than a
   client-side state engine, so it behaves like the "legacy live editing" the criticism describes.
+
+:::note Editing latency: measured, and it wasn't architectural
+
+An earlier version of this page listed editing performance as a structural weakness. Measuring it
+showed otherwise, and the correction is worth keeping visible.
+
+Opening an element's options modal cost **~6.7 MB and ~873 ms** — but almost none of that was the
+framework's design. One tab (Animations) was 95% of it, because a picker control rendered *every*
+choice's sub-options eagerly, including the ~40 the user hadn't selected and that the save path
+never reads.
+
+Deferring those unread variants took it to **~2.1 MB / ~137 ms** — the same architecture, 6× faster,
+and 13× on the offending tab. It was a bug in one control, not a limit of server-rendered options.
+
+The general lesson generalises past this framework: *"the admin feels slow"* gets attributed to a
+stack's age far more often than anyone profiles it.
+:::
 - **The builder mounts on the Classic Editor screen.** A real coupling to a WordPress surface being
   de-emphasised over time.
 - **DOM depth is middling.** A section renders roughly `section > .fw-container > .fw-row > …` —
@@ -88,7 +105,7 @@ One further criterion already met: generated CSS is written to **static files** 
 | --- | --- |
 | **Storage model** | Structured JSON in post meta — strong |
 | **Output quality** | Clean semantic HTML, static generated CSS, jQuery-free front end — good |
-| **Editing performance** | Imperative canvas, network-backed live editor — the weak axis |
+| **Editing performance** | Imperative canvas and a network-backed live editor; modal render is ~137 ms after profiling — the least modern axis, but not the bottleneck it looked like |
 | **Coupling to core** | Mounted on the Classic Editor screen — a real dependency |
 
 Those axes are not equally reversible, which is the point. **An editing canvas can be replaced;

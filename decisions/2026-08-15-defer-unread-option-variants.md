@@ -85,11 +85,40 @@ before fetching** and **restored on failure**, so a choice can retry rather than
   by not rendering things nobody asked for. Editing latency had been filed as a structural weakness
   of the framework; it was a bug in one control.
 - **The rule generalises.** Auditing all 75 elements with the same method found the pattern again in
-  the `table` option type — 11 MB, rendering every row type's options *per cell*, with the save path
-  again reading only the active one.
+  the `table` option type, and the rule resolved it the same way — see below.
 - **It is measurable, so it can be governed.** A healthy element modal is ~2 MB / ~130 ms. That
   number is now in the option-type and shortcode authoring guides with a snippet to check it, so a
   new element or animation module that regresses it is caught by its author rather than by users.
 
-Status: **Accepted**, shipped in core 2.16.12 / Shortcodes 1.13.35. The `table` option type is the
-known remaining case.
+## Addendum: the same rule, a differently-shaped case
+
+Auditing all 75 elements found one outlier left — `table`, at **16,435 KB / 532 ms** against a ~2 MB
+median. The cause was the legacy **pricing editor**, which renders a full option set *per cell, per row
+type* (~11 MB) and was rendered on every table modal, including tabular tables (the default).
+
+The rule applied unchanged: for a tabular table that markup isn't merely hidden, it's **unreadable** —
+`_get_value_from_input()` returns `get_value_from_json()` unless the purpose is `pricing`, so those
+inputs are never collected.
+
+Two things differed from the multi-picker case, and they're the reason this is worth recording
+separately:
+
+- **The unit deferred is a whole editor, not a variant within a control.** That sounds like the
+  forbidden "defer a whole field" — but it isn't, because the *selector* here is the purpose dropdown,
+  which is always rendered. The boundary is about what the save path reads, not about how big the
+  deferred thing is.
+- **Nothing extra is shipped to enable it.** The multi-picker inlines each unselected choice's schema
+  (~5% of its HTML). Here even that was avoidable: the element declares only `type/label/desc/help` on
+  its table option, so the whole ~600 KB schema is rebuilt server-side by `replace_with_defaults()`.
+  Only the option's id, input name and current value travel with the page.
+
+| | Before | After |
+| --- | --- | --- |
+| Tabular table modal | 16,435 KB · 532 ms | **3,227 KB · 335 ms** |
+
+A pricing table still renders its editor eagerly; switching the purpose fetches it on demand, gated by
+the same `fw.lazyChoices.pending` check so a fast Save can't serialize a form without it.
+
+With that, no element is an outlier: the whole library sits in a **~2–3 MB / ~130–335 ms** band.
+
+Status: **Accepted**, shipped in core 2.16.12, Shortcodes 1.13.35 (multi-picker) and 1.13.36 (table).

@@ -87,3 +87,71 @@ Array
     [url] => https://example.com/wp-content/uploads/2026/06/photo.jpg
 )
 ```
+
+## In Gutenberg blocks (the React control)
+
+`upload` is one of five option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+### Why this exists
+
+Everything above is rendered by **PHP** — `_render()` builds the HTML and jQuery wires up the media button. That works on ordinary admin screens like the page builder and Theme Settings.
+
+A Gutenberg block's settings sidebar is a **React app**. React draws that panel itself and will not accept ready-made HTML from PHP, so a PHP-only option type cannot appear there.
+
+Rather than rewrite the option type, it gets a **second renderer**. Both read the same schema you write in `options.php`, and — crucially for this type — both save the **same value shape**:
+
+| | Renders | Used by |
+| --- | --- | --- |
+| PHP `_render()` | HTML | Page builder, Theme Settings, metaboxes |
+| React control | a React component | Gutenberg block sidebars |
+
+React handles *editing* only. The front end is still rendered by PHP.
+
+### What the `upload` control does
+
+It uses WordPress's own `MediaUpload` component to open the **standard media library modal** — the same one you get from the PHP version, and the same one core blocks use. There is no custom uploader.
+
+Around it, the control renders a thumbnail of the current image and Select / Replace / Remove buttons using WordPress's `Button` and `BaseControl` components, so it matches native block settings.
+
+### The value shape is the contract
+
+This is the part that matters most for `upload`. As shown under **Saved value** above, the stored value is an array:
+
+```text
+Array
+(
+    [attachment_id] => 123
+    [url] => //example.com/wp-content/uploads/2026/06/photo.jpg
+)
+```
+
+The React control writes **exactly that shape**:
+
+```js
+onChange( {
+    attachment_id: media.id,
+    url: toProtocolRelative( media.url ),
+} );
+```
+
+That is what makes the two renderers interchangeable. An image picked in a block sidebar and an image picked in the page builder produce identical stored data, so the same PHP reads both, and switching a value between contexts never corrupts it.
+
+### Why the URL loses its `https:`
+
+Note `toProtocolRelative()` — it strips `https://` down to `//`. This is a **protocol-relative URL**, and it matches what the PHP renderer has always stored.
+
+The reason is portability: a site that later moves between `http` and `https`, or is cloned to a staging domain, would otherwise carry hard-coded schemes into every saved option. A `//` URL simply adopts whatever the page is using.
+
+For display inside the editor the control converts it back (`toDisplayUrl()`), because an `<img src="//…">` is fine in a browser but awkward to reason about while debugging.
+
+### Graceful degradation
+
+The media library is not available on every admin screen. If `wp.mediaUtils` and `wp.blockEditor` are both absent, the control renders a plain message rather than throwing — the option stays visible and the rest of the sidebar keeps working.
+
+### No second copy of React
+
+The bundle contains **no React**. JSX compiles to `wp.element.createElement`, and `wp.element` is the React WordPress already loads in wp-admin — so the control uses React without shipping it.
+
+:::tip For option-type authors
+Most option types have no React control yet. That is a coverage gap, not an error — such an option shows a clear notice in a block sidebar and works normally everywhere else. Controls get ported when a block actually needs them.
+:::

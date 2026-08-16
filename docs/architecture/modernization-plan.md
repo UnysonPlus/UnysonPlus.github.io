@@ -24,10 +24,10 @@ Counted across the plugin as it stands:
 | Composer / PSR-4 autoloading | **Present** — `composer.json` maps `UnysonPlus\` → `framework/src/`, loaded by `framework/autoload.php`, which degrades gracefully when `vendor/` is absent |
 | Typed PHP signatures | ~23 files with parameter types, ~15 with return types, 4 with `strict_types` |
 | Legacy PHP-4/5 patterns (`create_function`, `ereg`, `each`, `mysql_*`) | **None** |
-| Backbone | **3 files**, all builder-canvas (`builder.js`, `helpers.js`, the flexbox item). None in core — removed 2.16.11 (`fw.js`), 2.16.16 (megamenu, editor integration) |
-| Underscore | **36 files**, of which **24** use `_.template`; clustered in builder items + form-builder items. None in core — removed 2.16.13 |
+| Backbone | **0 files.** Removed in stages — 2.16.11 (`fw.js`), 2.16.16 (megamenu + editor integration), 2.16.18 (the builder canvas). The vendored `backbone-relational` library is deleted and its script handle unregistered |
+| Underscore | **0 files.** Core cleared in 2.16.13; the remaining 36 files (24 using `_.template`) followed in 2.16.18. No script handle declares `underscore` |
 | Files hooking `fw:options:init` | **131** |
-| Core option types | **58** (4 of which now also have a React control) |
+| Core option types | **58** (5 registrations now also have a React control: `text`, `switch`, `select`, `short-select`, `upload`) |
 | Front-end jQuery dependency | **None** — verified: the only front-end reference is `wc_products`, which guards on WooCommerce's own jQuery |
 | Admin jQuery dependency | **92 script handles** declare `jquery`; ~116 admin JS files use it |
 | jQuery UI dependency | `sortable` × 14, `draggable` × 3, `tabs` × 2, `autocomplete` × 2, `slider` × 1, `widget` × 1 |
@@ -128,7 +128,8 @@ Being specific about the non-goals is what keeps this from becoming a rewrite:
 
 ## Removing Backbone and Underscore
 
-Because Backbone is 12 files and 2 call sites, this is a bounded piece of work rather than a migration.
+**Both are now gone** — Backbone in 2.16.18, Underscore in 2.16.18. What follows is the account of how,
+because the surprises are the useful part.
 
 **Backbone — core done in 2.16.11.** `fw.Modal` used `Backbone.Model` for attributes plus `on`/`set`,
 and `Backbone.View` for a render shell. Both are now `fw.Class` / `fw.View` in
@@ -144,12 +145,32 @@ replacing; both surface only when something silently stops working. The full acc
 three bugs it shook out, is in
 [replacing the media frame](/decisions/replacing-the-wp-media-modal-frame).
 
-The builder items are the larger remaining share: they use models, collections and events more
-genuinely, and move with the canvas work rather than ahead of it.
+**Backbone — finished in 2.16.18.** Two files depended on it for a single line each (an event mixin in
+`editor_integration.js`, an empty model used as an event bus in megamenu's `admin.js`) and moved to
+`fw.Events` in 2.16.16. The builder canvas followed: `fw.Collection` was added to `fw-oo.js`, and the
+one `backbone-relational` `HasMany` relation became a declarative `nested` option on `fw.Class`. The
+vendored library is deleted and its script handle unregistered.
 
-**Underscore — core done in 2.16.13.** Every `_.*` call in `fw.js`, `fw-reactive-options*.js` and the
-twelve core option types that used them is now native, and the `fw` handle no longer declares
-`underscore`.
+Three undocumented behaviours broke things, and none was visible in the code being replaced:
+
+- **`fw.View` had no `this.$()`** — Backbone's scoped selector, used in 26 places. Every builder item
+  threw mid-render and vanished from the canvas.
+- **Backbone collections have no `cid`; only models do.** `builder.js` duck-types on exactly that to
+  tell one from the other, because a single handler serves both `add` (model, collection) and `reset`
+  (collection). Giving collections a `cid` made every reset look like a model and the canvas failed to
+  load.
+- **`backbone-relational` defers the constructor's `change` events until after `initialize()`.** That
+  deferred event is the *only* thing that performs an item's first render, because item view
+  subclasses override `initialize` without calling `render()`. Without it, items were created, added
+  to the canvas, and stayed empty.
+
+The lesson generalises: what breaks is never the code being replaced, it is the implicit contract its
+consumers depend on. The fix was to write that contract down first — a catalogue of what all 23 files
+extending `builder.classes.*` actually call — and to verify every replacement against the real library
+rather than against expectation.
+
+**Underscore — core in 2.16.13, the rest in 2.16.18.** Every `_.*` call across the framework is now
+native or one of the `fw.*` helpers. No script handle declares `underscore`.
 
 The "mechanical conversion" framing held for most of it, but not for `_.template`. Template literals
 were the wrong tool: the addable-box and addable-popup item-title templates are **authored by users and
@@ -163,14 +184,20 @@ The second lesson was about the dependency itself. Dropping `'underscore'` from 
 any script that used `_` while relying on inheriting it — and five did, three of which had *never*
 declared it. The rule now enforced: **a script that uses `_` declares `'underscore'` itself.**
 
+Two conversion traps worth recording. Underscore's `_.each` yields `(value, key)` over an object but
+`(value, index)` over an array, so a blind rewrite silently reverses the arguments — every ambiguous
+receiver had to be read rather than pattern-matched. And rewriting `_.findWhere(list, {id: this.x})`
+into `list.filter(function (o) { return o.id === this.x; })[0]` moves `this` inside the callback,
+where it is no longer the view; the value has to be hoisted first.
+
 Nothing here was urgent on its own — nothing was broken and WordPress still ships both. The value is
 **removing the reason people call the framework legacy**, and clearing the ground so the builder work
 isn't happening on top of a stack nobody wants to learn.
 
 ## jQuery: the largest dependency, and the one worth *not* rushing
 
-With Backbone at three files and Underscore at thirty-six, jQuery is now by a wide margin the biggest
-legacy dependency in the admin — and until this baseline it was the least measured.
+With Backbone and Underscore both at zero, jQuery is now the only large legacy dependency left in the
+admin — and until this baseline it was the least measured.
 
 | Measure | Value |
 | --- | --- |
@@ -264,17 +291,26 @@ Small, concrete, worth doing early:
    in megamenu's `admin.js` — both replaced with `fw.Events`, which had shipped in 2.16.11 for exactly
    this shape. Backbone went from five files to three. Neither is canvas code, which is why this could
    run ahead of step 6 rather than inside it.
-6. **The builder canvas.** Only after 1–5 have established the patterns, and only if there is a
-   concrete reason — a feature it blocks, a bug class it causes. Not on principle. Scoped to three
-   files: `builder.js`, `helpers.js` and the flexbox page-builder item — plus the `jquery-ui-sortable`
-   / `draggable` drag-drop model they sit on.
+6. **The builder canvas.** ✅ Done in 2.16.18. `builder.js`, `helpers.js` and the flexbox
+   page-builder item moved onto `fw.Class` / `fw.Collection` / `fw.View`, keeping every
+   `builder.classes.*` name and signature so the 23 files extending them needed no changes.
+   `jquery-ui-sortable` / `draggable` were deliberately left in place — replacing them is an
+   interaction-model rewrite, not a dependency swap, and belongs to its own decision.
+
+   The original rule was "only if there is a concrete reason." That rule existed to protect live
+   sites from a canvas rewrite; UnysonPlus has not been marketed, so the premise did not hold. The
+   23-consumer surface is the cost driver and only grows, breaking changes are near-free pre-launch,
+   and the canvas is the product while Gutenberg blocks are additive. See
+   [why step 6 moved from deferred to priority](/decisions/builder-canvas-now-not-later).
 
 **jQuery is deliberately not a step.** See the jQuery section above: `wp-admin` loads it regardless, so
 converting admin code buys nothing measurable. It is opportunistic work, done while a file is open for
 another reason.
 
-Steps 1–5 are all individually shippable and individually reversible. None of them changes a saved
-value, a stored option, or a rendered page. That is the test each step has to pass.
+Every step here was individually shippable and individually reversible, and none changed a saved
+value, a stored option, or a rendered page. That is the test each step had to pass — and for step 6
+it was enforced by asserting `JSON.stringify(rootItems)` stayed byte-identical against the real
+`backbone-relational`, since that string *is* the page-builder storage format.
 
 ## The standard applied throughout
 

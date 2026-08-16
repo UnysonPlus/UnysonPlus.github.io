@@ -69,6 +69,6 @@ plugin load — see [How the framework boots](./framework-boot.md).
 - **[Storage model: JSON, not shortcodes](./storage-model.md)** — what actually gets written to the
   database, and an honest answer to the "shortcode soup" criticism.
 - **[The admin JavaScript layer](./admin-js-layer.md)** — how the options UI really works: PHP renders,
-  JavaScript enhances on `fw:options:init`, and where Backbone and Underscore actually appear.
+  JavaScript enhances on `fw:options:init`, and why the framework needs neither Backbone nor Underscore.
 - **[The modernization plan](./modernization-plan.md)** — the measured audit, why the option *schema*
   is the thing to protect, React as a second renderer, and the order of work.

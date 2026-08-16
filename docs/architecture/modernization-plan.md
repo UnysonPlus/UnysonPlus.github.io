@@ -20,15 +20,17 @@ Counted across the plugin as it stands:
 | Area | Finding |
 | --- | --- |
 | PHP files | 1,212 · 365 classes · 132 global `fw_*` functions |
-| First-party namespaced PHP | **0** — the only namespaced files are the vendored Plugin Update Checker |
-| Composer / PSR-4 autoloading | **None** — loading is by convention and explicit `require` |
+| First-party namespaced PHP | **1 class** (`UnysonPlus\Admin\Controls\Registry`) since the foundations step; the rest of the namespaced files are the vendored Plugin Update Checker |
+| Composer / PSR-4 autoloading | **Present** — `composer.json` maps `UnysonPlus\` → `framework/src/`, loaded by `framework/autoload.php`, which degrades gracefully when `vendor/` is absent |
 | Typed PHP signatures | ~23 files with parameter types, ~15 with return types, 4 with `strict_types` |
 | Legacy PHP-4/5 patterns (`create_function`, `ereg`, `each`, `mysql_*`) | **None** |
-| Backbone | **12 files**; exactly **2 call sites** inside `fw.js` |
-| Underscore `_.template` | **29 files**, clustered in builder items + form-builder items — core's share removed in 2.16.13 |
+| Backbone | **3 files**, all builder-canvas (`builder.js`, `helpers.js`, the flexbox item). None in core — removed 2.16.11 (`fw.js`), 2.16.16 (megamenu, editor integration) |
+| Underscore | **36 files**, of which **24** use `_.template`; clustered in builder items + form-builder items. None in core — removed 2.16.13 |
 | Files hooking `fw:options:init` | **131** |
-| Core option types | 54 (45 with their own JS, ~11,700 lines total) |
-| Front-end jQuery dependency | **None** — no builder element enqueues `jquery` |
+| Core option types | **58** (4 of which now also have a React control) |
+| Front-end jQuery dependency | **None** — verified: the only front-end reference is `wc_products`, which guards on WooCommerce's own jQuery |
+| Admin jQuery dependency | **92 script handles** declare `jquery`; ~116 admin JS files use it |
+| jQuery UI dependency | `sortable` × 14, `draggable` × 3, `tabs` × 2, `autocomplete` × 2, `slider` × 1, `widget` × 1 |
 | Asset build | Exists — esbuild transform-only + PostCSS, `.min` siblings, not a bundler |
 
 Two of these deserve emphasis because they cut against the received wisdom in *both* directions.
@@ -165,6 +167,57 @@ Nothing here was urgent on its own — nothing was broken and WordPress still sh
 **removing the reason people call the framework legacy**, and clearing the ground so the builder work
 isn't happening on top of a stack nobody wants to learn.
 
+## jQuery: the largest dependency, and the one worth *not* rushing
+
+With Backbone at three files and Underscore at thirty-six, jQuery is now by a wide margin the biggest
+legacy dependency in the admin — and until this baseline it was the least measured.
+
+| Measure | Value |
+| --- | --- |
+| Script handles declaring `jquery` | **92** |
+| Admin JS files using it | **~116** |
+| Front-end files using it | **0** |
+| jQuery UI | `sortable` × 14, `draggable` × 3, `tabs` × 2, `autocomplete` × 2, `slider` × 1, `widget` × 1 |
+
+The API surface is overwhelmingly ordinary DOM work. Counting call sites across all admin JS:
+
+```
+.find  1252    .on   721    .attr 524    .closest 367    .val  349
+.addClass 334  .remove 303  .trigger 301 .each    297    .data 231
+```
+
+Almost all of that has a direct native equivalent. `.data()` is the one to watch — jQuery keeps its own
+cache separate from `dataset`, so a naive swap changes behaviour where values are objects.
+
+### The finding that should govern priority
+
+**WordPress loads jQuery in `wp-admin` unconditionally.** Core admin scripts depend on it, so it is on
+the page whether or not UnysonPlus asks for it. Removing jQuery from admin code therefore saves the
+user **nothing** — not a byte of payload, not a millisecond of parse.
+
+This is the opposite of the front end, where removing jQuery was worth real money and was done. It is
+also unlike Backbone and Underscore: those were removed from *core* so that the framework's own
+foundation carried no dependency it did not need — a coherence argument that stops applying once you
+reach leaf scripts on a page that already loads jQuery for other reasons.
+
+And full removal is not available anyway. `jquery-ui-sortable` and `jquery-ui-draggable` power the
+builder's drag-and-drop across 17 handles. Replacing those is not a jQuery migration; it is rewriting
+the canvas interaction model, which is step 6.
+
+### What follows from that
+
+Treat admin jQuery as **opportunistic, not a project**. Convert a file when you are already editing it
+for another reason — which is what has been happening organically (`$.trim()` → native in Live Editor,
+Mailer and Snippets; `.bind()` → `.on()` in the form builder). That work is real and worth continuing;
+it does not warrant a migration plan of its own, and it should never be the reason to touch a file that
+is otherwise working.
+
+The honest ranking of remaining legacy debt, by value rather than by size:
+
+1. **Underscore in non-canvas files** (~4 in shortcodes, one of which is dead code) — small, isolated
+2. **jQuery, opportunistically** — no payload win, so quality only
+3. **The builder canvas** — Backbone, jQuery UI and the drag-drop model, together, when forced
+
 ## The PHP side
 
 This is the debt the audit found that the outside world doesn't see, and it is cheap to start:
@@ -206,8 +259,19 @@ Small, concrete, worth doing early:
    Small, isolated, independently shippable.
 5. **Retire Underscore from core.** ✅ Done in 2.16.13. Native equivalents file by file, plus
    `fw.template()` for the user-authored templates that template literals could not cover.
+5.5. **Retire the trivial Backbone users.** ✅ Done in 2.16.16. Two files depended on Backbone for a
+   single line each — an event mixin in `editor_integration.js` and an empty model used as an event bus
+   in megamenu's `admin.js` — both replaced with `fw.Events`, which had shipped in 2.16.11 for exactly
+   this shape. Backbone went from five files to three. Neither is canvas code, which is why this could
+   run ahead of step 6 rather than inside it.
 6. **The builder canvas.** Only after 1–5 have established the patterns, and only if there is a
-   concrete reason — a feature it blocks, a bug class it causes. Not on principle.
+   concrete reason — a feature it blocks, a bug class it causes. Not on principle. Scoped to three
+   files: `builder.js`, `helpers.js` and the flexbox page-builder item — plus the `jquery-ui-sortable`
+   / `draggable` drag-drop model they sit on.
+
+**jQuery is deliberately not a step.** See the jQuery section above: `wp-admin` loads it regardless, so
+converting admin code buys nothing measurable. It is opportunistic work, done while a file is open for
+another reason.
 
 Steps 1–5 are all individually shippable and individually reversible. None of them changes a saved
 value, a stored option, or a rendered page. That is the test each step has to pass.

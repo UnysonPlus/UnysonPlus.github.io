@@ -4,7 +4,7 @@ title: "Should a pasted CodePen become native shortcodes, and where should that 
 authors: [jon]
 tags: [conversion, extensions, page-builder, architecture]
 date: 2026-08-16
-description: Users wanted to paste a pen's HTML/CSS/JS and get a proper UnysonPlus block rather than a raw Code Block. Decision — treat a pen as just another conversion source, run it through the same deterministic converter to produce a native page-builder TEMPLATE, surface it as a "Pen" tab in the AI Dev Kit dashboard, and detect behavioral pens to degrade honestly instead of force-mapping them.
+description: Users wanted to paste a pen's HTML/CSS/JS and get a proper UnysonPlus block rather than a raw Code Block. Decision — treat a pen as just another conversion source, convert it LOCALLY in the capture service (no WordPress) into a native page-builder template the user DOWNLOADS and imports, surface it as a "Pen" tab in the AI Dev Kit dashboard, and detect behavioral pens to degrade honestly instead of force-mapping them.
 ---
 
 **The question:** Can we let a user paste a pen (separate HTML, CSS, and optional JS panels) and
@@ -43,23 +43,27 @@ The honest complication is the JS panel. A pen splits into two very different ki
    shortcodes; detect behavioral pens up front and tell the user plainly that runtime JS can't become
    native shortcodes (use a Code Block / iframe, where the animation stays live).
 
-For the *output artifact* we also weighed: a whole child theme (wrong — a pen is a component, not a
-site), an install onto a specific page, a downloadable bundle, or an **importable page-builder
-template** that shows up in the builder's Templates picker.
+For the *output artifact* — and, just as importantly, *how the user receives it* — we weighed: a
+whole child theme (wrong — a pen is a component, not a site); a push-install onto a configured
+destination WordPress (the URL converter's model); a downloadable full-site bundle; or a single,
+**downloadable page-builder template file** the user imports themselves. A first cut pushed the
+result to a destination WordPress via a REST route — which was wrong: it demanded a destination URL
+and token the user never set (a pen has nothing to do with any particular site), offered no download,
+and turned a "paste code, get a file" task into a configuration chore.
 
 ## Decision
 
-- **A pen is just another conversion source.** Assemble the three panels into one HTML document and
-  run it through the *same* deterministic `build_from_html` path a captured URL uses — so a pen gets
-  the same native-shortcode mapping quality, with zero new converter logic.
-- **Output = an importable page-builder template**, saved into the Template Library exactly like an
-  installed template (`template.json` envelope + `meta.json` under
-  `uploads/unysonplus/templates/<slug>/`), so it appears in the builder's **Templates** picker with
-  no extra wiring. One section → a `section` template; multiple → a `full` template.
-- **Home = a new "Pen" tab in the AI Dev Kit dashboard.** It reuses the dashboard's existing
-  `data-view` shell and its `/api/*` → capture-service → WordPress relay. A new
-  `POST /fw-sc/v1/pen-template` REST route (token-authed, localhost-only, alongside `/convert`) does
-  the convert-and-save.
+- **A pen is just another conversion source, converted LOCALLY.** Assemble the three panels into one
+  HTML document and run it through the capture service's *own* JS converter (`capture.mjs` render →
+  `toPages`) — the same deterministic pipeline a captured URL uses, but entirely in Node. **No
+  WordPress, no destination, no token.**
+- **Output = a downloadable template `.json`** (the `_fw_template_export` envelope). The dashboard
+  hands the browser a Blob download; the user imports it on *any* site via the page builder →
+  **Templates → My templates → Import template**, which already exists. One section → a `section`
+  template; multiple → a `full` template.
+- **Home = a new "Pen" tab in the AI Dev Kit dashboard**, reusing the existing `data-view` shell. Its
+  `/api/pen-convert` is a thin pass-through to a local capture-service route (`/pen-template`) — no
+  cross-site relay, no auth surface.
 - **Classify first; degrade honestly.** A behavioral detector (canvas / `getContext` / WebGL /
   `requestAnimationFrame` / known animation libs / large JS bodies) short-circuits with a clear
   message rather than emitting a dead template. Native mapping is the sweet spot; behavioral pens are
@@ -67,13 +71,14 @@ template** that shows up in the builder's Templates picker.
 
 ## Why
 
-Routing a pen through the existing converter means the "proper shortcode, not a Code Block" outcome
-comes for free wherever it's *meaningful* — and the one case where it isn't meaningful (runtime JS)
-is exactly where forcing it would produce garbage. Detecting that case and saying so is more useful
-than a converter that appears to succeed and hands back nothing. Emitting a Template Library template
-(rather than a theme or a one-off page) matches what a pen actually is: a reusable component you drop
-onto any page. And putting it in the dashboard keeps it visible next to the URL converter it shares
-almost all its plumbing with, instead of hiding a second entry point.
+Converting locally and handing back a file matches the mental model exactly — *paste code, get a
+template you can import anywhere* — and keeps the feature self-contained in the standalone capture
+service (which already ships the JS converter), so it works with zero setup and no WordPress
+connection. Pushing to a configured site was a category error: it coupled a code-snippet tool to
+site credentials it had no reason to need, and it's why the first attempt felt broken. Emitting a
+Template Library envelope (rather than a theme or a one-off page) matches what a pen actually is: a
+reusable component you drop onto any page. And the one case where "native shortcode" isn't meaningful
+(runtime JS) is detected and named, instead of silently producing an empty template.
 
 *Behavioral pens as a first-class "preserve" output (a hand-crafted, fully-defaulted Code Block /
 iframe shortcode node saved as a template) is a natural follow-up; for now they are detected and

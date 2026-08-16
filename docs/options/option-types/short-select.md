@@ -78,3 +78,34 @@ echo esc_html( $value );
 ```text
 choice_2
 ```
+
+## In Gutenberg blocks (the React control)
+
+`short-select` has a **React version**, so it can appear inside a Gutenberg block's sidebar — and it is served by the **same React component as [`select`](./select.md)**.
+
+### Why this exists
+
+Everything above is rendered by **PHP** — `_render()` builds the HTML and jQuery makes it interactive, which is fine on ordinary admin screens like the page builder and Theme Settings.
+
+A Gutenberg block's settings sidebar is a **React app**. React draws that panel itself and will not accept ready-made HTML from PHP, so a PHP-only option type cannot appear there.
+
+So the option type gains a **second renderer** — a React component reading the same schema and saving the same value. Your option definition does not change, and the front end is still rendered by PHP.
+
+### Why it shares `select`'s control
+
+`short-select` differs from `select` in exactly one way: **width**. It is the same dropdown with the same `choices` array and the same saved value, rendered narrower on PHP-driven admin screens where the field sits in a wide two-column layout.
+
+A Gutenberg sidebar has no such layout. The panel is already narrow and WordPress owns the spacing, so "short" has nothing left to express there. Registering one component for both option types reflects that the difference is purely presentational:
+
+```js
+register( 'select', Select );
+register( 'short-select', Select );
+```
+
+This is worth understanding as a general principle: **a React control is registered per option *type*, but two types can share one implementation** when their difference does not survive the move. Should `short-select` ever gain behaviour of its own, it would get its own component — the registry makes that a one-line change.
+
+For what the control does with `choices`, and how it handles both the `key => label` and `key => array` shapes, see [`select`](./select.md#in-gutenberg-blocks-the-react-control).
+
+:::tip For option-type authors
+Most option types have no React control yet. That is a coverage gap, not an error — such an option shows a clear notice in a block sidebar and works normally everywhere else. Controls get ported when a block actually needs them.
+:::

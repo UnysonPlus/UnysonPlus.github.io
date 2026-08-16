@@ -107,7 +107,63 @@ fw()->backend->enqueue_options_static($modal_options);
 
 ## Confirmation
 
-General purpose confirmation mechanism that operates with `jQuery.Deferred`.
+A styled replacement for the browser's blocking `confirm()`, used to guard destructive
+actions. There are two entry points: **`fw.confirm()`** for almost everything, and
+`fw.soleConfirm` underneath it when you need queueing or a promise.
+
+### `fw.confirm()` — the one to reach for
+
+```javascript
+fw.confirm( 'Delete this shortcode for good? This removes its files from the server.', function () {
+    // runs only if the user accepts
+} );
+```
+
+Because the styled dialog is asynchronous, the guarded action goes **inside the callback** —
+there is no return value to branch on, unlike native `confirm()`.
+
+Third argument is optional:
+
+```javascript
+fw.confirm( message, onConfirm, {
+    severity:    'warning', // 'warning' (default, red icon) | 'info' (green icon)
+    okHTML:      'Delete',  // button labels, HTML allowed
+    cancelHTML:  'Keep it',
+    customClass: 'my-dialog',
+    onCancel:    function () { /* runs if the user declines */ }
+} );
+```
+
+If the styled modal is somehow unavailable, `fw.confirm()` falls back to the native
+`window.confirm()` rather than doing nothing. That is deliberate: a guard on a destructive
+action must never silently no-op and let the action through unconfirmed.
+
+:::caution[Declare `fw` in **both** your script and style dependencies]
+The dialog renders WordPress's own `.media-modal` markup and takes its appearance from the
+`fw` **style** handle. Declaring only the script is the trap: `fw.confirm()` runs fine, but
+with no `fw.css` the dialog renders as unstyled text in normal document flow at the bottom
+of the page instead of a modal — so the action can't be confirmed.
+
+```php
+wp_enqueue_style(  'my-admin-page', $css_uri, array( 'fw' ), $ver );
+wp_enqueue_script( 'my-admin-page', $js_uri,  array( 'jquery', 'fw' ), $ver, true );
+```
+
+`fw.css` pulls in core's `media-views` stylesheet itself, so you do **not** need to call
+`wp_enqueue_media()` just to get a working confirm. (You still do for `fw.OptionsModal`,
+which needs the media *JavaScript* — see the note in the Options Modal section above.)
+:::
+
+The dialog sizes itself to its message — never add height for longer text. It measures its
+own content, with a floor of 200px so short messages keep familiar proportions and a ceiling
+of 85% of the viewport, beyond which the message scrolls inside the dialog. A one-line
+confirm and a six-line confirm both come out correct with no work from the caller, at any
+font size, zoom level or translated string length.
+
+### `fw.soleConfirm` — queueing and promises
+
+The lower-level mechanism `fw.confirm()` is built on. Reach for it directly when you need a
+`jQuery.Deferred`, or several confirms queued one behind another.
 
 ```javascript
 var confirm = fw.soleConfirm.create({
@@ -131,7 +187,7 @@ confirm.result.fail(function (confirm_instance) {
 confirm.show();
 ```
 
-### Queueing confirms
+#### Queueing confirms
 
 Confirm is actually using `fw.soleModal` under the hood, which is queued one after the other.
 
@@ -145,7 +201,7 @@ confirm2.show();
 confirm1.hide(); // That's when the confirm2 will actually pop in, results are buffered
 ```
 
-### Same confirm multiple times
+#### Same confirm multiple times
 
 Because of the way `jQuery.Deferred` works, one single confirm instance will resolve it's promise exactly one time. If you really need to use the same confirm once again - just reset it.
 

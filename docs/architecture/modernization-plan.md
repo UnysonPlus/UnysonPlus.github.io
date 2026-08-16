@@ -24,8 +24,8 @@ Counted across the plugin as it stands:
 | Composer / PSR-4 autoloading | **Present** — `composer.json` maps `UnysonPlus\` → `framework/src/`, loaded by `framework/autoload.php`, which degrades gracefully when `vendor/` is absent |
 | Typed PHP signatures | ~23 files with parameter types, ~15 with return types, 4 with `strict_types` |
 | Legacy PHP-4/5 patterns (`create_function`, `ereg`, `each`, `mysql_*`) | **None** |
-| Backbone | **0 files.** Removed in stages — 2.16.11 (`fw.js`), 2.16.16 (megamenu + editor integration), 2.16.18 (the builder canvas). The vendored `backbone-relational` library is deleted and its script handle unregistered |
-| Underscore | **0 files.** Core cleared in 2.16.13; the remaining 36 files (24 using `_.template`) followed in 2.16.18. No script handle declares `underscore` |
+| Backbone | **0 files.** Removed in stages — 2.16.11 (`fw.js`), 2.16.16 (megamenu + editor integration), 2.16.19 (the builder canvas). The vendored `backbone-relational` library is deleted and its script handle unregistered |
+| Underscore | **0 files.** Core cleared in 2.16.13; the remaining 36 files (24 using `_.template`) followed in 2.16.19. No script handle declares `underscore` |
 | Files hooking `fw:options:init` | **131** |
 | Core option types | **58** (5 registrations now also have a React control: `text`, `switch`, `select`, `short-select`, `upload`) |
 | Front-end jQuery dependency | **None** — verified: the only front-end reference is `wc_products`, which guards on WooCommerce's own jQuery |
@@ -128,7 +128,7 @@ Being specific about the non-goals is what keeps this from becoming a rewrite:
 
 ## Removing Backbone and Underscore
 
-**Both are now gone** — Backbone in 2.16.18, Underscore in 2.16.18. What follows is the account of how,
+**Both are now gone** — Backbone in 2.16.19, Underscore in 2.16.19. What follows is the account of how,
 because the surprises are the useful part.
 
 **Backbone — core done in 2.16.11.** `fw.Modal` used `Backbone.Model` for attributes plus `on`/`set`,
@@ -145,7 +145,7 @@ replacing; both surface only when something silently stops working. The full acc
 three bugs it shook out, is in
 [replacing the media frame](/decisions/replacing-the-wp-media-modal-frame).
 
-**Backbone — finished in 2.16.18.** Two files depended on it for a single line each (an event mixin in
+**Backbone — finished in 2.16.19.** Two files depended on it for a single line each (an event mixin in
 `editor_integration.js`, an empty model used as an event bus in megamenu's `admin.js`) and moved to
 `fw.Events` in 2.16.16. The builder canvas followed: `fw.Collection` was added to `fw-oo.js`, and the
 one `backbone-relational` `HasMany` relation became a declarative `nested` option on `fw.Class`. The
@@ -169,7 +169,7 @@ consumers depend on. The fix was to write that contract down first — a catalog
 extending `builder.classes.*` actually call — and to verify every replacement against the real library
 rather than against expectation.
 
-**Underscore — core in 2.16.13, the rest in 2.16.18.** Every `_.*` call across the framework is now
+**Underscore — core in 2.16.13, the rest in 2.16.19.** Every `_.*` call across the framework is now
 native or one of the `fw.*` helpers. No script handle declares `underscore`.
 
 The "mechanical conversion" framing held for most of it, but not for `_.template`. Template literals
@@ -291,7 +291,7 @@ Small, concrete, worth doing early:
    in megamenu's `admin.js` — both replaced with `fw.Events`, which had shipped in 2.16.11 for exactly
    this shape. Backbone went from five files to three. Neither is canvas code, which is why this could
    run ahead of step 6 rather than inside it.
-6. **The builder canvas.** ✅ Done in 2.16.18. `builder.js`, `helpers.js` and the flexbox
+6. **The builder canvas.** ✅ Done in 2.16.19. `builder.js`, `helpers.js` and the flexbox
    page-builder item moved onto `fw.Class` / `fw.Collection` / `fw.View`, keeping every
    `builder.classes.*` name and signature so the 23 files extending them needed no changes.
    `jquery-ui-sortable` / `draggable` were deliberately left in place — replacing them is an

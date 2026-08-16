@@ -76,7 +76,7 @@ by default.
 For exactly how that layer works — the `_render()` + `fw:options:init` contract, and the measured
 footprint of what was removed — see [The admin JavaScript layer](./admin-js-layer.md).
 
-:::caution Extension authors
+:::caution[Extension authors]
 `'fw'` no longer declares `'underscore'`. Any script that uses `_` must list `'underscore'` in its own
 `wp_enqueue_script` dependency array — it is no longer inherited.
 :::

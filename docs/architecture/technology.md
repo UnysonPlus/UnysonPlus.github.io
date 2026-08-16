@@ -71,10 +71,10 @@ by default.
 | --- | --- |
 | **Front end (visitor)** | Vanilla JS, Bootstrap 5 CSS, CSS custom properties; Splide / Leaflet / noUiSlider; GSAP / Lenis / three.js / Lottie / Rive for motion |
 | **PHP core** | The options-framework engine, the extension system, the manifest/updater — PHP 7.4+ (8.2-clean), typed & namespaced in the newer code |
-| **Admin builder / options UI** | Server-rendered PHP enhanced with jQuery. The **core is Backbone-free** (2.16.11) **and Underscore-free** (2.16.13) — the options modal runs on the framework's own `fw.Class` / `fw.View` / `fw.ModalFrame`, and core ships `fw.template` / `fw.escapeHtml` / `fw.throttle` / `fw.debounce`. Backbone and Underscore remain only in the **page-builder items** and the form builder, which is where the roadmap goes next |
+| **Admin builder / options UI** | Server-rendered PHP enhanced with jQuery. **No Backbone and no Underscore anywhere in the framework** as of 2.16.18 — the options modal and the page-builder canvas both run on the framework's own `fw.Class` / `fw.Collection` / `fw.View` / `fw.ModalFrame`, and core ships `fw.template` / `fw.escapeHtml` / `fw.throttle` / `fw.debounce` / `fw.clone` / `fw.isObject` / `fw.isEmpty`. jQuery remains, deliberately — see the roadmap below |
 
 For exactly how that layer works — the `_render()` + `fw:options:init` contract, and the measured
-footprint of Backbone and Underscore — see [The admin JavaScript layer](./admin-js-layer.md).
+footprint of what was removed — see [The admin JavaScript layer](./admin-js-layer.md).
 
 :::caution Extension authors
 `'fw'` no longer declares `'underscore'`. Any script that uses `_` must list `'underscore'` in its own
@@ -89,11 +89,15 @@ the work now is the admin UI. We ship these as they're ready rather than on fixe
 - **A React admin UI.** New admin surfaces are built on **React**, using the copy WordPress already
   ships in wp-admin (`wp.element`) rather than bundling another. The same React controls drive
   UnysonPlus's Gutenberg block inspectors, so the two efforts compound instead of duplicating.
-- **Retiring Backbone.** Done for the framework core in 2.16.11 — the options modal now runs on the
-  framework's own primitives. The page-builder items are next.
-- **Retiring Underscore.** Done for the framework core in 2.16.13 — every `_.*` call in core is now
-  native, and the `fw` handle no longer depends on `underscore`. The builder canvas and form builder
-  still use it and move with the canvas work.
+- **Retiring Backbone.** ✅ Complete. Core in 2.16.11, two stragglers in 2.16.16, the builder canvas
+  in 2.16.18. The vendored `backbone-relational` library is deleted and its script handle
+  unregistered. Backbone still *loads* on admin pages because WordPress's media library uses it —
+  but nothing in UnysonPlus asks for it.
+- **Retiring Underscore.** ✅ Complete. Core in 2.16.13, the remaining 36 files in 2.16.18. No script
+  handle declares `underscore`.
+- **jQuery: deliberately not next.** It is now the largest legacy dependency (92 handles, ~116 admin
+  files), but `wp-admin` loads jQuery unconditionally, so converting admin code saves users nothing.
+  It is opportunistic work — done while a file is open for another reason — not a project.
 - **Vanilla admin controls.** The remaining jQuery-based admin widgets (tooltips, enhanced dropdowns)
   are being replaced with dependency-free equivalents, continuing the front end's jQuery-free story
   into wp-admin.

@@ -1,7 +1,7 @@
 ---
 title: The admin JavaScript layer
 sidebar_position: 7
-description: How the options UI actually works — PHP renders every option, JavaScript enhances it on the fw:options:init event, and Backbone appears in only a handful of files. The measured shape of the admin stack, and which parts are load-bearing.
+description: How the options UI actually works — PHP renders every option, JavaScript enhances it on the fw:options:init event, and the framework's own code uses neither Backbone nor Underscore. The measured shape of the admin stack, and which parts are load-bearing.
 ---
 
 # The admin JavaScript layer
@@ -75,64 +75,52 @@ does not use it at all**.
 script handle no longer declares `backbone` as a dependency. See
 [why the media frame was replaced](/decisions/replacing-the-wp-media-modal-frame).
 
-What still uses Backbone:
+**Nothing in the framework uses Backbone any more.** The last of it — the builder canvas
+(`builder.js`, `helpers.js`, the flexbox item) — moved to `fw.Class` / `fw.Collection` / `fw.View` in
+2.16.18, and the vendored `backbone-relational` library is deleted with its script handle
+unregistered.
 
-| File | Role |
-| --- | --- |
-| `builder/…/builder.js`, `helpers.js` | The base builder option type |
-| `page-builder/…/editor_integration.js`, `section-like-factory.js`, `section-sorter.js` | The page-builder canvas |
-| `shortcodes/{section,column,flexbox}/…/scripts.js` | The three structural builder items |
-| `megamenu/static/js/admin.js`, `template-library/…/builder-panel.js` | Two admin panels |
-| `libs/backbone-relational/…` | Vendored library |
-
-Two things worth being precise about, because they are easy to overstate:
+One thing worth being precise about, because it is easy to misread:
 
 - **Backbone still loads on many admin pages.** WordPress's own media library is Backbone, and
   `wp_enqueue_media()` runs wherever an upload-style option appears. The framework deliberately keeps
   using that picker — it is WordPress's, and reimplementing it would be a mistake. What changed is
-  that the framework's *own* code no longer requires Backbone.
-- **The builder items are unconverted**, and they are the larger share. They move with the builder
-  canvas work, not before it.
+  that the framework's *own* code no longer asks for Backbone anywhere.
 
 Everything else in `fw.js` — `fw.OptionsModal`, the loading indicator, notifications, form validation,
 `fw.opg`/`fw.ops` for nested value access, the confirm/soleModal helpers — was always plain JavaScript
 and jQuery.
 
-## Where Underscore templates actually are
+## Where Underscore templates were
 
-:::info Core no longer uses Underscore (2.16.13)
-The framework **core** — `fw.js`, `fw-reactive-options*.js` and the twelve core option types that used
-Underscore — is Underscore-free, and the `fw` script handle no longer declares `underscore`. Core ships
-`fw.template()`, `fw.escapeHtml()`, `fw.throttle()` and `fw.debounce()` instead (see
-[the core helpers](#the-core-helpers-that-replaced-underscore) below).
+:::info Underscore is gone (core 2.16.13, the rest 2.16.18)
+No file in the framework uses `_` any more, and **no script handle declares `underscore`**. Core ships
+`fw.template()`, `fw.escapeHtml()`, `fw.throttle()`, `fw.debounce()`, `fw.clone()`, `fw.isObject()`
+and `fw.isEmpty()` instead (see [the core helpers](#the-core-helpers-that-replaced-underscore) below).
 
-**If you write an extension: any script that uses `_` must declare `'underscore'` in its own
-`wp_enqueue_script` dependency array.** It is no longer inherited through `'fw'`.
-
-The clustering described below still holds for the *remaining* users — the builder canvas, the form
-builder, newsletter-crm — which keep Underscore and declare it themselves.
+**If you write an extension and use `_`, declare `'underscore'` in your own `wp_enqueue_script`
+dependency array.** It is not inherited through `'fw'`, and nothing in the framework pulls it in for
+you any more.
 :::
 
-Outside core, `_.template` clusters tightly:
+Templating clustered tightly, and that shape is still worth knowing because it explains where the
+client genuinely renders markup at all:
 
 - **Builder items** (`section`, `column`, `flexbox`, `container`, `global-section`, the page-builder
-  `simple` item type) — these render the item's *preview inside the canvas*, which is the one place
-  the client genuinely renders markup.
-- **Form-builder items** (14 files under `forms/includes/option-types/form-builder/items/`) — same
+  `simple` item type) — these render the item's *preview inside the canvas*.
+- **Form-builder items** (13 files under `forms/includes/option-types/form-builder/items/`) — same
   pattern for the drag-and-drop form designer.
-- The email builder.
+- The email builder, and the addable-box / addable-popup item titles.
 
-`addable-box`, `addable-popup`, `multi-upload`, `upload` and the map option type were on this list and
-have been converted; the two addable types now compile their user-authored item-title templates with
-`fw.template()`.
+All of them now compile through `fw.template()`.
 
 The pattern is consistent: **wherever the client has to draw something that PHP did not render, it uses
 a template.** Everywhere else, PHP already drew it.
 
 ## The core helpers that replaced Underscore
 
-Four helpers cover the Underscore functions with no one-line native equivalent. They are public — use
-them instead of adding an `underscore` dependency:
+Seven helpers cover the Underscore functions with no one-line native equivalent. They are public —
+use them instead of adding an `underscore` dependency:
 
 | Helper | Replaces | Notes |
 | --- | --- | --- |
@@ -140,6 +128,9 @@ them instead of adding an `underscore` dependency:
 | `fw.escapeHtml(value)` | `_.escape` | Same character set (`& < > " ' \``); `null`/`undefined` render as `''`. |
 | `fw.throttle(fn, wait)` | `_.throttle` | Leading **and** trailing edge, matching Underscore's default. |
 | `fw.debounce(fn, wait, immediate)` | `_.debounce` | Trailing by default; pass `immediate` for the leading-edge variant. |
+| `fw.clone(value)` | `_.clone` | Shallow: arrays sliced, objects copied one level, primitives returned as-is. |
+| `fw.isObject(value)` | `_.isObject` | Underscore's definition — **functions count**, `null` does not. |
+| `fw.isEmpty(value)` | `_.isEmpty` | Length check for arrays/strings/`arguments` only; everything else by own keys — so `fw.isEmpty({length: 0})` is `false`, matching Underscore. |
 
 `fw.template()` is a real compiler rather than a template-literal shim on purpose: the addable-box and
 addable-popup item-title templates are **authored by users and stored in the database**, so their

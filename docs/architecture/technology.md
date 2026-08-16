@@ -71,7 +71,7 @@ by default.
 | --- | --- |
 | **Front end (visitor)** | Vanilla JS, Bootstrap 5 CSS, CSS custom properties; Splide / Leaflet / noUiSlider; GSAP / Lenis / three.js / Lottie / Rive for motion |
 | **PHP core** | The options-framework engine, the extension system, the manifest/updater — PHP 7.4+ (8.2-clean), typed & namespaced in the newer code |
-| **Admin builder / options UI** | Server-rendered PHP enhanced with jQuery. **No Backbone and no Underscore anywhere in the framework** as of 2.16.18 — the options modal and the page-builder canvas both run on the framework's own `fw.Class` / `fw.Collection` / `fw.View` / `fw.ModalFrame`, and core ships `fw.template` / `fw.escapeHtml` / `fw.throttle` / `fw.debounce` / `fw.clone` / `fw.isObject` / `fw.isEmpty`. jQuery remains, deliberately — see the roadmap below |
+| **Admin builder / options UI** | Server-rendered PHP enhanced with jQuery. **No Backbone and no Underscore anywhere in the framework** as of 2.16.19 — the options modal and the page-builder canvas both run on the framework's own `fw.Class` / `fw.Collection` / `fw.View` / `fw.ModalFrame`, and core ships `fw.template` / `fw.escapeHtml` / `fw.throttle` / `fw.debounce` / `fw.clone` / `fw.isObject` / `fw.isEmpty`. jQuery remains, deliberately — see the roadmap below |
 
 For exactly how that layer works — the `_render()` + `fw:options:init` contract, and the measured
 footprint of what was removed — see [The admin JavaScript layer](./admin-js-layer.md).
@@ -90,10 +90,10 @@ the work now is the admin UI. We ship these as they're ready rather than on fixe
   ships in wp-admin (`wp.element`) rather than bundling another. The same React controls drive
   UnysonPlus's Gutenberg block inspectors, so the two efforts compound instead of duplicating.
 - **Retiring Backbone.** ✅ Complete. Core in 2.16.11, two stragglers in 2.16.16, the builder canvas
-  in 2.16.18. The vendored `backbone-relational` library is deleted and its script handle
+  in 2.16.19. The vendored `backbone-relational` library is deleted and its script handle
   unregistered. Backbone still *loads* on admin pages because WordPress's media library uses it —
   but nothing in UnysonPlus asks for it.
-- **Retiring Underscore.** ✅ Complete. Core in 2.16.13, the remaining 36 files in 2.16.18. No script
+- **Retiring Underscore.** ✅ Complete. Core in 2.16.13, the remaining 36 files in 2.16.19. No script
   handle declares `underscore`.
 - **jQuery: deliberately not next.** It is now the largest legacy dependency (92 handles, ~116 admin
   files), but `wp-admin` loads jQuery unconditionally, so converting admin code saves users nothing.

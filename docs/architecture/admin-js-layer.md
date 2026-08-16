@@ -77,7 +77,7 @@ script handle no longer declares `backbone` as a dependency. See
 
 **Nothing in the framework uses Backbone any more.** The last of it — the builder canvas
 (`builder.js`, `helpers.js`, the flexbox item) — moved to `fw.Class` / `fw.Collection` / `fw.View` in
-2.16.18, and the vendored `backbone-relational` library is deleted with its script handle
+2.16.19, and the vendored `backbone-relational` library is deleted with its script handle
 unregistered.
 
 One thing worth being precise about, because it is easy to misread:
@@ -93,7 +93,7 @@ and jQuery.
 
 ## Where Underscore templates were
 
-:::info Underscore is gone (core 2.16.13, the rest 2.16.18)
+:::info Underscore is gone (core 2.16.13, the rest 2.16.19)
 No file in the framework uses `_` any more, and **no script handle declares `underscore`**. Core ships
 `fw.template()`, `fw.escapeHtml()`, `fw.throttle()`, `fw.debounce()`, `fw.clone()`, `fw.isObject()`
 and `fw.isEmpty()` instead (see [the core helpers](#the-core-helpers-that-replaced-underscore) below).

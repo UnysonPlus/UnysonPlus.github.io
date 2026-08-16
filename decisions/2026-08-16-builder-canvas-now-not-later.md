@@ -100,7 +100,7 @@ real library, not against your model of it.
 
 ## Status
 
-Accepted, and complete in 2.16.18. Backbone and Underscore are both at zero files across the
+Accepted, and complete in 2.16.19. Backbone and Underscore are both at zero files across the
 framework; the `backbone-relational` library is deleted and its script handle unregistered.
 `jquery-ui-sortable` / `draggable` were deliberately left in place — replacing the drag-drop model
 is an interaction rewrite, not a dependency swap, and deserves its own decision.

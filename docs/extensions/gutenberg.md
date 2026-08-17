@@ -16,6 +16,7 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| **Icon Box** | `icon_box` | An icon above a heading and text — the standard feature or service card |
 | **Video Popup** | `video_popup` | A poster image with a play button that opens the video in a lightbox |
 | **Star Rating** | `star_rating` | A star rating with optional score, label and review count |
 | **Counter** | `counter` | An animated number that counts up when scrolled into view |
@@ -74,4 +75,4 @@ Visitors get the fully interactive element on the front end.
 
 ## Requirements
 
-Core 2.16.24 or later, with the **Shortcodes** extension active — the blocks render through it.
+Core 2.16.26 or later, with the **Shortcodes** extension active — the blocks render through it.

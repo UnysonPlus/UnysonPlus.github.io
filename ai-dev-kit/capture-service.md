@@ -33,9 +33,31 @@ The service lives in the kit under the assembled capture pipeline and is a small
 node capture.mjs "https://example.com" capture-out/
 ```
 
-It also runs as a local service exposing `/health`, `/capture`, and `/ai-convert` endpoints that the
-WordPress **Site Converter** extension talks to, so you can capture and convert straight from the
-*Unyson+ → Convert* screen.
+It also runs as a local HTTP service that the WordPress **Site Converter** extension talks to, so you can
+capture and convert straight from the *Unyson+ → Convert* screen. Its main endpoints:
+
+| Endpoint | What it does |
+|---|---|
+| `/health` | Service status + version + which AI backend is active. |
+| `/capture` | Render a live URL and return the converted bundle (or, with `?html=1`, the rendered HTML). |
+| `/capture-screenshot` | The reference screenshot for a captured URL. |
+| `/capture-file` | Upload a Stitch `.zip` or raw HTML and run it through the same engine as a live URL. |
+| `/ai-convert` | Optional AI refinement of a draft mapping (uses your local AI backend). |
+| `/pen-shortcode` | Turn a pasted pen (HTML/CSS/JS) into an installable UnysonPlus **shortcode** `.zip` — see [What It Can Build](./what-it-can-build.md#turn-a-pen-into-a-shortcode). |
+| `/local-ai/chat*` | The dashboard's built-in chat (history / send / clear) against a local model. |
+
+## The dashboard
+
+Starting the capture service (`start-converter.bat` on Windows, `start-converter.sh` / `.command` on
+macOS/Linux) also opens a **browser dashboard** at `http://localhost:4600`. It's the visual face of the
+service, with these tabs:
+
+- **Convert** — run and watch a URL → WordPress conversion live, with design tokens, section mapping, and
+  a source-vs-result comparison.
+- **Pen (Alpha)** — paste a pen's HTML/CSS/JS and download an installable shortcode `.zip` (see below).
+- **Chat** — a chat panel backed by a local AI model (no key needed).
+- **Benchmarks** — local-AI model benchmarks for conversion quality.
+- **Settings** — the destination WordPress + token, and the local-AI model picker.
 
 ## The two ways to feed a source
 

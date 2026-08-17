@@ -1,6 +1,6 @@
 ---
-sidebar_position: 9
-title: Gutenberg Blocks
+sidebar_position: 1
+title: Overview
 ---
 
 # Gutenberg Blocks
@@ -16,11 +16,11 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
-| **Icon Box** | `icon_box` | An icon above a heading and text — the standard feature or service card |
-| **Video Popup** | `video_popup` | A poster image with a play button that opens the video in a lightbox |
-| **Star Rating** | `star_rating` | A star rating with optional score, label and review count |
-| **Counter** | `counter` | An animated number that counts up when scrolled into view |
-| **Before / After** | `before_after` | An image comparison slider — drag, hover or click to reveal |
+| [**Icon Box**](./icon-box.md) | `icon_box` | An icon above a heading and text — the standard feature or service card |
+| [**Video Popup**](./video-popup.md) | `video_popup` | A poster image with a play button that opens the video in a lightbox |
+| [**Star Rating**](./star-rating.md) | `star_rating` | A star rating with optional score, label and review count |
+| [**Counter**](./counter.md) | `counter` | An animated number that counts up when scrolled into view |
+| [**Before / After**](./before-after.md) | `before_after` | An image comparison slider — drag, hover or click to reveal |
 
 They appear under a **UnysonPlus** category in the block inserter.
 
@@ -76,3 +76,13 @@ Visitors get the fully interactive element on the front end.
 ## Requirements
 
 Core 2.16.26 or later, with the **Shortcodes** extension active — the blocks render through it.
+
+## Every block has a page
+
+Each block above links to its own page listing **exactly which options its sidebar exposes**, and
+anything block-specific worth knowing — an inert preview, an empty state, a setting that stays
+page-builder-only.
+
+That is a rule rather than a nicety: a block exposes a *curated subset* of its element's options, so
+without a page there is no way to know what you get in the sidebar short of inserting one and
+looking. Any new block ships with its page in the same change.

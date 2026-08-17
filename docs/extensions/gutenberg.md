@@ -16,6 +16,7 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| **Video Popup** | `video_popup` | A poster image with a play button that opens the video in a lightbox |
 | **Star Rating** | `star_rating` | A star rating with optional score, label and review count |
 | **Counter** | `counter` | An animated number that counts up when scrolled into view |
 | **Before / After** | `before_after` | An image comparison slider — drag, hover or click to reveal |
@@ -73,4 +74,4 @@ Visitors get the fully interactive element on the front end.
 
 ## Requirements
 
-Core 2.16.22 or later, with the **Shortcodes** extension active — the blocks render through it.
+Core 2.16.24 or later, with the **Shortcodes** extension active — the blocks render through it.

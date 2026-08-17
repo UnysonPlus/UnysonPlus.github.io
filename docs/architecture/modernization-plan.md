@@ -27,7 +27,7 @@ Counted across the plugin as it stands:
 | Backbone | **0 files.** Removed in stages — 2.16.11 (`fw.js`), 2.16.16 (megamenu + editor integration), 2.16.19 (the builder canvas). The vendored `backbone-relational` library is deleted and its script handle unregistered |
 | Underscore | **0 files.** Core cleared in 2.16.13; the remaining 36 files (24 using `_.template`) followed in 2.16.19. No script handle declares `underscore` |
 | Files hooking `fw:options:init` | **131** |
-| Core option types | **58** (5 registrations now also have a React control: `text`, `switch`, `select`, `short-select`, `upload`) |
+| Core option types | **58**, of which **18 registrations also have a React control** — `text`, `textarea`, `select`, `short-select`, `switch`, `radio`, `checkbox`, `color-picker`, `slider`, `short-slider`, `unit-input`, `upload`, `multi-select`, `image-picker`, `spacing`, `icon`, `typography`, `typography-v2` |
 | Front-end jQuery dependency | **None** — verified: the only front-end reference is `wc_products`, which guards on WooCommerce's own jQuery |
 | Admin jQuery dependency | **92 script handles** declare `jquery`; ~116 admin JS files use it |
 | jQuery UI dependency | `sortable` × 14, `draggable` × 3, `tabs` × 2, `autocomplete` × 2, `slider` × 1, `widget` × 1 |
@@ -272,16 +272,28 @@ Small, concrete, worth doing early:
 
 ## The order of work
 
-1. **Foundations.** Composer + PSR-4 for new PHP. A `wp.element`-external build config for admin React.
-   Delete the dead Formstone files. Nothing user-visible; everything downstream depends on it.
-2. **The React control layer.** Port the ~15 most common option types (`text`, `textarea`, `select`,
-   `switch`, `radio`, `checkbox`, `color-picker`, `slider`, `unit-input`, `upload`, `icon`, `spacing`,
-   `multi-select`, `image-picker`, `typography`) to React components consuming `wp.element`, driven by
-   the same schema. This is the shared deliverable.
-3. **First Gutenberg block.** One dynamic block, `block.json` + `render.php` delegating to an existing
-   shortcode, its inspector built from the step-2 controls plus core `supports`. Proves the bridge end
-   to end. `before-after` is a good first candidate — the shortcode already exists, so the render side
-   is free.
+1. **Foundations.** ✅ Done. Composer + PSR-4 is in place for first-party PHP under the `UnysonPlus\`
+   namespace, `build/build-controls.mjs` provides the `wp.element`-external bundling (kept separate
+   from the transform-only `build.mjs`, which must never bundle), and the Formstone files are gone —
+   the vanilla `background.init.js` replaced them, keeping the `fs-background-*` class names the CSS
+   still depends on.
+2. **The React control layer.** ✅ Done in 2.16.21 — **18 registered types**, covering every type this
+   step named plus the `short-select`, `short-slider` and `typography-v2` aliases. All consume
+   `wp.element`; the bundle contains no React of its own (18 KB total).
+
+   The work that mattered was not the components — it was proving each one saves a value byte-identical
+   to the PHP renderer's. Every control has parity cases in `framework/tests/core-contracts-test.php`
+   (103 assertions), and that discipline caught three defects that would each have silently corrupted
+   saved values: `color-picker` emitting `rgba()` where the server accepts hex only, `typography`
+   needing a *stricter* hex rule than `color-picker`, and `icon` needing the *opposite* URL treatment
+   from `upload`. See [what the parity tests caught](/decisions/react-control-parity).
+3. **First Gutenberg block.** ✅ Done. `before-after` ships as a dynamic block — `block.json` +
+   a render callback delegating to the existing shortcode, with its inspector built from the step-2
+   controls. It proves the bridge end to end: the option schema is JSON-encoded into the page,
+   `fw.controls.Option` picks the matching React control by `type`, and the front end still renders
+   through PHP. React handles *editing*; PHP still handles *rendering*, so a block cannot drift away
+   from what the shortcode outputs.
+
 4. **Retire Backbone from `fw.js`.** ✅ Done in 2.16.11. Replace the two call sites with plain ES6.
    Small, isolated, independently shippable.
 5. **Retire Underscore from core.** ✅ Done in 2.16.13. Native equivalents file by file, plus

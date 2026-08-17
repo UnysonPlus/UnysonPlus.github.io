@@ -90,7 +90,7 @@ Array
 
 ## In Gutenberg blocks (the React control)
 
-`upload` is one of five option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+`upload` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
 
 ### Why this exists
 

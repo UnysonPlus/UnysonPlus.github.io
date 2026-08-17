@@ -91,3 +91,28 @@ Array
     [unit] => px
 )
 ```
+
+## In Gutenberg blocks (the React control)
+
+`unit-input` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP** — `_render()` builds the HTML and jQuery makes it interactive. That works in the page builder and on Theme Settings, which are ordinary admin pages. A block's settings sidebar is a **React app**, which draws the whole panel itself and will not accept ready-made HTML from PHP.
+
+So the option type gets a **second renderer**. Both read the same schema — the array you write in `options.php` — and both produce the **same saved value**. The PHP path stays authoritative; the React path is additive. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation of how the two fit together.
+
+### What the `unit-input` control does
+
+A number field paired with a unit dropdown, built from WordPress's `NumberControl` and `SelectControl`.
+
+| Schema key | Becomes |
+| --- | --- |
+| `label` | the field label |
+| `desc` | the help text |
+| `units` | the dropdown options |
+| `min` / `max` / `step` | the number field's bounds |
+
+:::caution[The number half is a string, deliberately]
+The stored shape is `{ value: '12', unit: 'px' }`, and `value` is a **string** — that is what keeps an empty value distinguishable from `'0'`. A control emitting a real number would save an empty field as `0` and apply a `0px` where the option meant "inherit".
+:::
+
+`units` may be declared as a sequential list (`['px','em']`) or a value to label map (`['px' => 'PX']`); the control normalises both exactly as the server does, so the dropdown offers only units the server will accept. A unit outside that set is rewritten server-side to the first configured one.

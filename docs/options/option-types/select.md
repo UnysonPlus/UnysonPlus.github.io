@@ -99,7 +99,7 @@ choice_2
 
 ## In Gutenberg blocks (the React control)
 
-`select` is one of five option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar. The same control also serves [`short-select`](./short-select.md) — the two share one implementation.
+`select` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar. The same control also serves [`short-select`](./short-select.md) — the two share one implementation.
 
 ### Why this exists
 

@@ -91,7 +91,7 @@ yes
 
 ## In Gutenberg blocks (the React control)
 
-`switch` is one of five option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+`switch` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
 
 ### Why this exists
 

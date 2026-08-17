@@ -101,3 +101,29 @@ echo esc_html( $value );
 ```text
 choice-1
 ```
+
+## In Gutenberg blocks (the React control)
+
+`image-picker` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP** — `_render()` builds the HTML and jQuery makes it interactive. That works in the page builder and on Theme Settings, which are ordinary admin pages. A block's settings sidebar is a **React app**, which draws the whole panel itself and will not accept ready-made HTML from PHP.
+
+So the option type gets a **second renderer**. Both read the same schema — the array you write in `options.php` — and both produce the **same saved value**. The PHP path stays authoritative; the React path is additive. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation of how the two fit together.
+
+### What the `image-picker` control does
+
+A grid of image tiles built from `choices`, with the selected tile outlined in the admin accent colour.
+
+Three parts of the schema change how it behaves:
+
+| Schema key | Effect |
+| --- | --- |
+| `choices` | the tiles — a choice carrying its own `choices` is a **category group**, flattened recursively |
+| `multiple` | changes the value **type**: a key string when off, an **array of keys** when on |
+| `blank` | whether clicking the selected tile clears it |
+
+A tile's image can be declared three ways, and all three are read: a plain src string, a `small` / `large` / `data` object, or a `small` object carrying `src` and `alt`.
+
+:::note[blank and deselection]
+When `blank` is off, PHP refuses an empty key and restores the default — so the control does not offer a deselect the server would immediately undo. Turn `blank` on if you want the tile to be clearable.
+:::

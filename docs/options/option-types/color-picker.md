@@ -73,3 +73,21 @@ echo esc_attr( $value );
 ```text
 #e5322d
 ```
+
+## In Gutenberg blocks (the React control)
+
+`color-picker` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP** — `_render()` builds the HTML and jQuery makes it interactive. That works in the page builder and on Theme Settings, which are ordinary admin pages. A block's settings sidebar is a **React app**, which draws the whole panel itself and will not accept ready-made HTML from PHP.
+
+So the option type gets a **second renderer**. Both read the same schema — the array you write in `options.php` — and both produce the **same saved value**. The PHP path stays authoritative; the React path is additive. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation of how the two fit together.
+
+### What the `color-picker` control does
+
+It wraps WordPress's [`ColorPicker`](https://developer.wordpress.org/block-editor/reference-guides/components/color-picker/), behind a swatch button so the panel stays compact. `alpha` enables the opacity slider; a **Clear** button appears once a colour is set.
+
+:::caution[The stored value is always hex — never rgba()]
+`_get_value_from_input()` accepts only 3, 4, 6 or 8-digit hex and **silently falls back to the option default** on anything else. Alpha is therefore expressed as **8-digit hex** (`#rrggbbaa`), not as an `rgba()` string.
+
+This matters because `ColorPicker` will hand back an `rgba()` string once alpha is enabled. The React control normalises everything to hex before saving, so the user's colour is never quietly replaced by the default. If you write your own control for this option type, do the same.
+:::

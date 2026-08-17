@@ -70,3 +70,27 @@ echo (float) $value;
 ```text
 7
 ```
+
+## In Gutenberg blocks (the React control)
+
+`slider` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP** — `_render()` builds the HTML and jQuery makes it interactive. That works in the page builder and on Theme Settings, which are ordinary admin pages. A block's settings sidebar is a **React app**, which draws the whole panel itself and will not accept ready-made HTML from PHP.
+
+So the option type gets a **second renderer**. Both read the same schema — the array you write in `options.php` — and both produce the **same saved value**. The PHP path stays authoritative; the React path is additive. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation of how the two fit together.
+
+### What the `slider` control does
+
+It wraps WordPress's [`RangeControl`](https://developer.wordpress.org/block-editor/reference-guides/components/range-control/), reading its bounds from `properties`:
+
+| Schema key | Becomes |
+| --- | --- |
+| `label` | the field label |
+| `desc` | the help text |
+| `properties.min` | the range minimum |
+| `properties.max` | the range maximum |
+| `properties.step` | the step increment |
+
+The stored value is a **number** — `_get_value_from_input()` ends in `floatval()`, so the control emits `40`, never the string `"40"` an input element would otherwise give. Storing the wrong one makes a value compare unequal to itself across the two renderers.
+
+The same control also serves `short-slider`, which differs only in rendered width on PHP-driven admin screens — a distinction a block sidebar has nothing to express.

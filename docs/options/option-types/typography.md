@@ -90,3 +90,42 @@ Array
     [color] => #212529
 )
 ```
+
+## In Gutenberg blocks (the React control)
+
+`typography` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar. The same control serves [`typography-v2`](./typography-v2.md), which is a pure deprecation alias.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app**, which draws the whole panel itself and will not accept ready-made HTML from PHP — so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `typography` control does
+
+It renders one field per enabled component — family, size, line height, letter spacing, weight, style and colour — and emits the **whole value** on every edit.
+
+:::caution[Most of this value is derived by the server, not submitted]
+`_get_value_from_input()` rewrites several keys itself, based on `family`:
+
+| Condition | What the server sets |
+| --- | --- |
+| `family` is `false` | `google_font`, `style`, `weight`, `subset`, `variation` all become `false` |
+| `family` is a Google font | `google_font` becomes `true`; `style` and `weight` become `false` |
+| otherwise | `google_font`, `subset`, `variation` all become `false` |
+
+So the React control edits what a user actually sets and lets the server derive the rest. Guessing at `google_font` would simply be overwritten — and guessing it *wrong* would be silently corrected, which is worse than not guessing.
+:::
+
+:::caution[Colour here is stricter than the color-picker option type]
+Typography validates with `/^#([a-f0-9]{3}){1,2}$/i` — **3 or 6 digits only**. The 4- and 8-digit alpha forms that [`color-picker`](./color-picker.md) accepts are rejected here and replaced with the option default.
+
+The React control therefore strips alpha before saving and never offers an opacity slider. If you write your own control for this option type, do not reuse a colour normaliser that emits 8-digit hex.
+:::
+
+:::note[Two format switches change field types]
+- `size_format: 'unit'` (default) stores `{ value, unit }`; `'number'` stores a **bare pixel number**. They are not interchangeable — a consumer that feeds size into JS needs the number form.
+- `color_format: 'picker'` stores a hex string.
+:::
+
+:::note[`components` gates which fields exist]
+A component switched off is stored as `false`, not omitted — and the control renders no field for it, because offering an edit the server discards is worse than offering nothing.
+:::
+
+**The font family field is a text input with suggestions, not the full Google Fonts picker.** That list is resolved server-side from `google-fonts.json` and is not part of the option schema, so a React control cannot read it. Typing a Google family name still works exactly as it should — the server recognises it and sets `google_font` itself. For browsing the full catalogue, use the page builder.

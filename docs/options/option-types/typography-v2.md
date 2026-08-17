@@ -109,3 +109,11 @@ Array
     [color] => #212529
 )
 ```
+
+## In Gutenberg blocks (the React control)
+
+`typography-v2` is a **deprecation alias** for [`typography`](./typography.md) — it overrides only `get_type()` and inherits rendering, assets, parsing and defaults unchanged.
+
+Because the value shape is identical, the **same React control is registered for both**, exactly as `select` serves `short-select`. Anything documented in [the `typography` React section](./typography.md#in-gutenberg-blocks-the-react-control) applies here without modification.
+
+Prefer `'type' => 'typography'` in new code.

@@ -212,3 +212,40 @@ Array
     [pack-css-uri] => 
 )
 ```
+
+## In Gutenberg blocks (the React control)
+
+`icon` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `icon` control does
+
+A type dropdown, then the fields that type needs:
+
+| Type | Fields |
+| --- | --- |
+| `none` | — |
+| `icon-font` | the icon class (e.g. `fa fa-star`) |
+| `emoji` | the character |
+| `custom-upload` | the WordPress media picker, with a preview and Remove |
+
+:::caution[Three keys are derived by the server]
+For an `icon-font` value, the server resolves `icon-class-without-root`, `pack-name` and `pack-css-uri` from the class using its packs loader. Those depend on **which icon packs are installed**, which is not knowable in the browser — so the control emits only `icon-class` and lets the server derive the rest.
+:::
+
+:::note[The legacy bare-string shape still works]
+`normalize_value()` accepts a plain string: `'fa fa-star'` becomes `{ type: 'icon-font', 'icon-class': 'fa fa-star' }`, and `''` becomes `{ type: 'none' }`. That older shape is still present in saved values, so the React control **reads** it and writes back the canonical object form.
+:::
+
+:::caution[Unlike `upload`, the URL is stored verbatim]
+The [`upload`](./upload.md) option type stores its URL **protocol-relative** (`//example.com/…`). `icon` does not — a `custom-upload` URL is kept exactly as given. A control must not apply the same normalisation to both, or values written through React will differ from identical values written in the page builder.
+:::
+
+:::note[SVG values are preserved, not edited]
+The SVG library browser is server-side — icon packs, uploads, and pasted markup that is sanitised on the way in. Rather than offer a partial editor that could drop `svg-id` or unsanitised markup, an existing `svg` value is shown **read-only** with a pointer to the page builder, and is left completely untouched.
+
+Destroying a value the control cannot fully represent would be the worst outcome, so it emits nothing at all for this type.
+:::
+
+**The icon pack browser is PHP-only.** Choosing from thousands of icons across installed packs is a server-driven modal; the React control takes a class name instead. Type a class you know, or pick the icon in the page builder.

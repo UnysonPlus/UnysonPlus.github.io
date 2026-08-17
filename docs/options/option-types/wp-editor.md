@@ -77,3 +77,29 @@ echo wp_kses_post( $value );
 ```text
 <p>Rich text <strong>content</strong> from the editor.</p>
 ```
+
+## In Gutenberg blocks (the React control)
+
+`wp-editor` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `wp-editor` control does
+
+It edits the **markup directly**, in a plain code field — not a WYSIWYG.
+
+:::caution[Why it is not a rich-text field]
+The obvious choice is Gutenberg's `RichText`, and it is the wrong one here.
+
+`RichText` edits the contents of **one** block-level element. This option stores a whole HTML fragment, which routinely contains several — `<p>a</p><p>b</p>`, a `<ul>`, a heading. There is no lossless way to hand that to a single `RichText`: you either strip the outer tag (mangling anything with more than one block) or nest tags that were not nested. Both silently corrupt content authored in the page builder, and neither failure is visible until someone opens the page again.
+
+Editing the markup is plainer and **lossless** — the right trade for a second authoring surface whose whole justification is that it agrees with the first. Rich editing stays in the page builder.
+:::
+
+:::note[The save transforms your value — and that is safe]
+With `wpautop` on (the default), saving runs the value through `wpautop()` and strips newlines, so typing `Hello` stores `<p>Hello</p>`.
+
+A transforming save is the shape most likely to corrupt content a little more on each edit, so it is asserted in the test suite: the transform is **idempotent** for plain text, blank-line paragraphs, already-wrapped `<p>`, inline markup, lists and empty values. Saving repeatedly does not drift the markup.
+
+Set `'wpautop' => false` to store exactly what is written.
+:::

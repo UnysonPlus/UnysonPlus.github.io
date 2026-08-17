@@ -155,3 +155,23 @@ Array
     [1] => 45
 )
 ```
+
+## In Gutenberg blocks (the React control)
+
+`multi-select` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP** — `_render()` builds the HTML and jQuery makes it interactive. That works in the page builder and on Theme Settings, which are ordinary admin pages. A block's settings sidebar is a **React app**, which draws the whole panel itself and will not accept ready-made HTML from PHP.
+
+So the option type gets a **second renderer**. Both read the same schema — the array you write in `options.php` — and both produce the **same saved value**. The PHP path stays authoritative; the React path is additive. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation of how the two fit together.
+
+### What the `multi-select` control does
+
+It wraps WordPress's [`FormTokenField`](https://developer.wordpress.org/block-editor/reference-guides/components/form-token-field/), so selections appear as removable tokens with autocomplete.
+
+:::caution[Only population 'array' works in a block sidebar]
+The `posts`, `taxonomy` and `users` populations are built server-side from a query. The React control does not make that round trip — instead of rendering an empty picker that looks like "there is nothing to choose", it shows a short notice and points you at the page builder, where the option remains fully editable.
+:::
+
+:::note[Wire format vs stored value]
+The stored value is an **array of keys**, but `_get_value_from_input()` calls `explode()` on the submitted value — so what is *submitted* is a delimited **string**. Passing a real array raises a TypeError on PHP 8 rather than degrading gracefully, which is why the control joins the keys before saving.
+:::

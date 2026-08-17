@@ -72,3 +72,26 @@ echo esc_html( $value );
 First line of the description.
 Second line with more detail.
 ```
+
+## In Gutenberg blocks (the React control)
+
+`textarea` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP** — `_render()` builds the HTML and jQuery makes it interactive. That works in the page builder and on Theme Settings, which are ordinary admin pages. A block's settings sidebar is a **React app**, which draws the whole panel itself and will not accept ready-made HTML from PHP.
+
+So the option type gets a **second renderer**. Both read the same schema — the array you write in `options.php` — and both produce the **same saved value**. The PHP path stays authoritative; the React path is additive. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation of how the two fit together.
+
+### What the `textarea` control does
+
+It wraps WordPress's [`TextareaControl`](https://developer.wordpress.org/block-editor/reference-guides/components/textarea-control/):
+
+| Schema key | Becomes |
+| --- | --- |
+| `label` | the field label |
+| `desc` | the help text under the field |
+| `attr.placeholder` | the textarea's placeholder |
+| `attr.rows` | the visible row count |
+
+:::note[Dynamic Content is PHP-only]
+The `dynamic_content` picker beside the field in wp-admin is server-rendered jQuery UI, so it is not reproduced in a block sidebar — you get a plain textarea. The **stored value is identical either way**, because dynamic content is a token inside the same string. A value authored in the page builder round-trips through the React control untouched.
+:::

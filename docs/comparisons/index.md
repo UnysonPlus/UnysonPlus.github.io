@@ -10,7 +10,7 @@ Most people arrive at Unyson+ already using something else, and the first honest
 "what does it do" but **"why isn't this just ACF, or Elementor, or Redux?"** This page answers that
 directly, including the cases where the answer is *"it isn't — go use the other one."*
 
-:::note Scope of these comparisons
+:::note[Scope of these comparisons]
 Written against **Unyson+ 2.15**, ACF 6.x, Elementor 3.x, and Redux Framework 4.x. They stick to
 **architectural** differences (how a tool is configured, what it stores, what's free) rather than
 feature checklists, because architecture ages in years and feature tables age in weeks.

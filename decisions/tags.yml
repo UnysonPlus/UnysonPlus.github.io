@@ -102,3 +102,8 @@ extensions:
   label: Extensions
   permalink: /extensions
   description: Decisions about individual plugin extensions and how they are structured
+
+storage-model:
+  label: Storage model
+  permalink: /storage-model
+  description: How values are stored, cached and bounded in the database

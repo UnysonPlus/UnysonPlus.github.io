@@ -137,6 +137,38 @@ builder stores them. Page-chrome options that aren't part of the builder content
 (header/footer, sidebar, page background, and so on) are still edited from the
 backend Page Settings and apply when the page reloads.
 
+## Revision history
+
+Every save snapshots the page's builder content, so you can step back to an earlier
+version. History is bounded on two axes, because each revision holds the *full* builder
+model — around 1 MB on a rich page:
+
+- **Count** — at most 20 revisions per page.
+- **Size** — at most 3 MB of stored history per page, with a floor of 2 revisions so a
+  heavy page always keeps something to step back to.
+
+Revisions are stored compressed (real builder JSON deflates around 27x), and older
+uncompressed revisions from before 2.16.20 still read back unchanged.
+
+:::info[Why the size cap matters more than the count]
+WordPress caches post meta **per post**, not per key — the first `get_post_meta()` call
+for any key loads every row that post owns. Before the byte cap, one measured page held
+11.5 MB of revisions, and a single unrelated meta read pulled 42 MB into memory on any
+request that touched it. A count-only cap of 20 permitted roughly 20 MB per page.
+:::
+
+Raise or lower the budget with the `fw_le_revisions_max_bytes` filter:
+
+```php
+// 8 MB of revision history per page instead of 3.
+add_filter( 'fw_le_revisions_max_bytes', function ( $bytes, $post_id ) {
+    return 8 * 1024 * 1024;
+}, 10, 2 );
+```
+
+Sites upgrading from an earlier version are pruned and compressed once, automatically, on
+the next admin page load.
+
 ## See also
 
 - [Page Builder](../page-builder/index.md)

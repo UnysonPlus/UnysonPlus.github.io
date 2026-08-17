@@ -106,6 +106,6 @@ This is worth understanding as a general principle: **a React control is registe
 
 For what the control does with `choices`, and how it handles both the `key => label` and `key => array` shapes, see [`select`](./select.md#in-gutenberg-blocks-the-react-control).
 
-:::tip For option-type authors
+:::tip[For option-type authors]
 Most option types have no React control yet. That is a coverage gap, not an error — such an option shows a clear notice in a block sidebar and works normally everywhere else. Controls get ported when a block actually needs them.
 :::

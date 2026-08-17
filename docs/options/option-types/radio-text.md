@@ -6,7 +6,7 @@ sidebar_position: 45
 Radio buttons for a set of preset choices, **plus a text input for a custom value** — so the user
 can pick one of the presets or type their own.
 
-:::note Not a segmented control
+:::note[Not a segmented control]
 Despite the name, this is not a button group. If you want preset choices rendered as connected
 buttons, use [`button-set`](./button-set.md).
 :::

@@ -72,8 +72,7 @@ Being straight about this matters more than winning the argument, and these are 
 - **The Live Editor re-renders over the network.** It uses AJAX and an iframe rather than a
   client-side state engine, so it behaves like the "legacy live editing" the criticism describes.
 
-:::note Editing latency: measured, and it wasn't architectural
-
+:::note[Editing latency: measured, and it wasn't architectural]
 An earlier version of this page listed editing performance as a structural weakness. Measuring it
 showed otherwise, and the correction is worth keeping visible.
 

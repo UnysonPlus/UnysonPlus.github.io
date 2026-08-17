@@ -30,8 +30,10 @@ maintainable site instead of a rough approximation.
 - A **child-theme starter** to copy per site.
 - The **build playbook** the agent follows (design tokens → chrome → sections → motion → verify).
 - The **capture + conversion pipeline** (the Capture Service + Site Converter) that turns a source into
-  native builder content.
+  native builder content, plus a **browser dashboard** (`localhost:4600`) to run and watch conversions.
 - A **parity harness** that measures how close the build is to the source.
+- **Pen → Shortcode** (Alpha) — paste a pen's HTML/CSS/JS in the dashboard and get an installable
+  UnysonPlus shortcode `.zip` with editable text/image options.
 
 ## Who it's for
 
@@ -43,5 +45,6 @@ maintainable site instead of a rough approximation.
 
 - **[Quick Start](./quick-start.md)** — set up WordPress and run your first build.
 - **[How It Works](./how-it-works.md)** — the capture-first, measure-don't-eyeball method.
-- **[What It Can Build](./what-it-can-build.md)** — conversions, demos, and from-scratch sites.
+- **[What It Can Build](./what-it-can-build.md)** — conversions, demos, from-scratch sites, and pens → shortcodes.
+- **[The Capture Service](./capture-service.md)** — the capture pipeline and its browser dashboard.
 - **[Get the Kit](./get-the-kit.md)** — requirements and the download.

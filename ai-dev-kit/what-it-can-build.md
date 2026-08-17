@@ -42,11 +42,28 @@ outside-in order (tokens → chrome → sections → motion) and verifying as it
 that skips the capture step — here the agent legitimately chooses values, then measures the render to
 confirm them.
 
+## Turn a pen into a shortcode 🧪 Alpha {#turn-a-pen-into-a-shortcode}
+
+Beyond whole sites, the kit can package a **single component** into a reusable UnysonPlus shortcode.
+Open the capture-service **dashboard** (`http://localhost:4600`), go to the **Pen** tab, and paste a
+CodePen-style **HTML / CSS / (optional) JS** snippet. It generates an **installable shortcode `.zip`**
+that renders your pen verbatim — effects intact — with its content turned into editable options:
+
+- the pen's **text** becomes editable text fields, and its **images** become swappable Media uploads;
+- the CSS is scoped to the element so it can't leak into the rest of the site;
+- you upload the `.zip` at **wp-admin → Unyson → Shortcodes** (*Add a shortcode or design pack*), and the
+  new element appears in the page builder under **Content Elements**.
+
+This is an **Alpha** feature and still evolving — it handles structural, CSS-driven pens best; heavily
+JS-driven canvas/WebGL pens are outside its scope for now.
+
 ## What it produces
 
 - A **child theme** carrying the site's scoped styling.
 - **Theme Settings** design tokens (colors, type, buttons, boxes, spacing).
 - **Page-builder pages** made of native shortcodes — editable like any UnysonPlus page.
 - A **header and footer** locked to the design.
+- An **installable shortcode `.zip`** from a pen (Alpha) — a self-contained element with editable
+  text/image options.
 
 Ready to try it? Head to **[Quick Start](./quick-start.md)**, or **[Get the Kit](./get-the-kit.md)**.

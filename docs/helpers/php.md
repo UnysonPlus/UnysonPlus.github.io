@@ -403,3 +403,75 @@ Functions for working with options:
 - `fw_set_db_ext_settings_option($extension_name, $option_id, $value)` - update extension settings option value in the database.
 - `fw_get_db_extension_data($extension_name, $key, $default_value = null)` - get a value from the database of some private data stored by an extension.
 - `fw_set_db_extension_data($extension_name, $key, $value)` - extensions uses this function to store private values in the database.
+
+## Rate limiting
+
+:::info[Added in core 2.16.20]
+Use these on any endpoint reachable by logged-out visitors — anything registered with
+`wp_ajax_nopriv_*`.
+:::
+
+A nonce is not a secret on a public page. It is printed into the HTML every visitor
+receives, so anyone can read it and replay the endpoint as fast as they can open
+connections. `check_ajax_referer()` proves a request came from a page you rendered; it
+says nothing about how many times.
+
+That matters wherever a request costs the site something — sending mail, running an
+unbounded `WP_Query`, rendering a template.
+
+```php
+public function _ajax_subscribe() {
+    check_ajax_referer( 'my_form', 'nonce' );
+
+    // 5 requests per 10 minutes, per visitor. Ends the request with a 429
+    // and a JSON error when exceeded.
+    fw_rate_limit_ajax( 'my_form_subscribe', 5, 600 );
+
+    // … the expensive part …
+}
+```
+
+| Helper | Purpose |
+| --- | --- |
+| `fw_rate_limit_ajax( $action, $limit, $window )` | One-line guard for an AJAX handler. Ends the request with HTTP **429** and a JSON error when the limit is passed. |
+| `fw_rate_limit_exceeded( $action, $limit, $window )` | Counts a hit and returns `true` when the caller is over budget. Use when you want to handle the refusal yourself. |
+| `fw_rate_limit_id()` | The salted-hash identity a limit is counted against. |
+
+`$window` is in seconds. Pick limits from what a request *costs*, not from what feels
+strict: the framework uses 5 per 10 minutes for newsletter signup (it sends mail on every
+call) and 40–90 per minute for the query-backed endpoints.
+
+### Behaviour worth knowing
+
+- **The client IP is never stored in cleartext.** It is salted and hashed before use.
+  Without a persistent object cache these counters live in the options table, and a
+  throttle should not quietly accumulate a log of visitor IP addresses.
+- **`REMOTE_ADDR` only.** `X-Forwarded-For` is caller-controlled unless a known proxy sets
+  it, so trusting it by default would let anyone bypass every limit by varying one header.
+  Behind a load balancer or CDN, supply the real address through
+  `fw_rate_limit_client_ip` — and validate the proxy before trusting it.
+- **Users who can `edit_posts` are exempt.** They are authenticated, already trusted with
+  far more damaging capabilities, and are the people most likely to trip a limit while
+  legitimately testing a form.
+- **It fails open.** If the transient layer misbehaves, visitors keep working and the site
+  loses throttling. The opposite choice would let a cache problem take the front end down.
+
+### Filters
+
+```php
+// Loosen, tighten, or switch a limit off entirely (return 0 to disable).
+add_filter( 'fw_rate_limit', function ( $limit, $action, $window ) {
+    return 'my_form_subscribe' === $action ? 20 : $limit;
+}, 10, 3 );
+
+// Behind a reverse proxy you control:
+add_filter( 'fw_rate_limit_client_ip', function ( $ip ) {
+    return $my_validated_forwarded_ip ?: $ip;
+} );
+```
+
+:::caution[This is a courtesy limiter, not a DDoS defence]
+It runs inside PHP, so WordPress has already booted by the time it says no. Anything at
+that scale belongs in front of the application — a CDN, a WAF, fail2ban. The goal here is
+narrower: stop one visitor with a loop from flooding a mailbox or hammering the database.
+:::

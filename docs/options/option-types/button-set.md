@@ -62,7 +62,7 @@ With `'show_labels' => false` the buttons show only the icon, and the label beco
 tooltip **and** its accessible name — so nothing is lost for screen readers. This is the usual
 setup for alignment, heading-tag and layout pickers.
 
-:::note Colors are not configurable
+:::note[Colors are not configurable]
 The control inherits `--wp-admin-theme-color` through the framework's `--fw-accent` token, so it
 follows the admin color scheme **the user chose**. A per-option color would override that
 preference and break consistency with the rest of the panel. If a theme genuinely needs a

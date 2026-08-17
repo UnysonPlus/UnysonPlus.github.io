@@ -93,7 +93,7 @@ and jQuery.
 
 ## Where Underscore templates were
 
-:::info Underscore is gone (core 2.16.13, the rest 2.16.19)
+:::info[Underscore is gone (core 2.16.13, the rest 2.16.19)]
 No file in the framework uses `_` any more, and **no script handle declares `underscore`**. Core ships
 `fw.template()`, `fw.escapeHtml()`, `fw.throttle()`, `fw.debounce()`, `fw.clone()`, `fw.isObject()`
 and `fw.isEmpty()` instead (see [the core helpers](#the-core-helpers-that-replaced-underscore) below).

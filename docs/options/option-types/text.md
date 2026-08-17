@@ -119,6 +119,6 @@ Because it is WordPress's own component, it looks identical to every native bloc
 
 The bundle contains **no React**. JSX is compiled to `wp.element.createElement`, and `wp.element` *is* the React that WordPress already loads in wp-admin. So the control uses React without shipping it — the whole bundle is a few kilobytes.
 
-:::tip For option-type authors
+:::tip[For option-type authors]
 Not every option type needs a React control, and most do not have one yet. That is a coverage gap, not an error — an option type with no React renderer shows a clear "no React control yet" notice in a block sidebar and remains fully usable everywhere else. Controls get ported when a block actually needs them.
 :::

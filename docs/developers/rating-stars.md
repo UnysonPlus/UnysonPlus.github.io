@@ -51,7 +51,7 @@ Now `sc_rating_stars( 4, array( 'symbol' => 'sparkle' ) )` uses it. To also offe
 **Symbol** dropdown, add the choice to a shortcode's `rating_symbol` option (filter
 `sc_rating_style_field`'s output where you consume it, or extend the element's options).
 
-:::tip Use a *filled* shape
+:::tip[Use a *filled* shape]
 The two-tone fill works by coloring a solid shape and clipping it by width. Outline/stroked
 icons and emoji don't fill cleanly — supply a closed, filled `path` (like the built-in star).
 :::

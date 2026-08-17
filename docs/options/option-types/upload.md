@@ -152,6 +152,6 @@ The media library is not available on every admin screen. If `wp.mediaUtils` and
 
 The bundle contains **no React**. JSX compiles to `wp.element.createElement`, and `wp.element` is the React WordPress already loads in wp-admin — so the control uses React without shipping it.
 
-:::tip For option-type authors
+:::tip[For option-type authors]
 Most option types have no React control yet. That is a coverage gap, not an error — such an option shows a clear notice in a block sidebar and works normally everywhere else. Controls get ported when a block actually needs them.
 :::

@@ -475,3 +475,31 @@ It runs inside PHP, so WordPress has already booted by the time it says no. Anyt
 that scale belongs in front of the application — a CDN, a WAF, fail2ban. The goal here is
 narrower: stop one visitor with a loop from flooding a mailbox or hammering the database.
 :::
+
+## Editor context
+
+`fw_is_editor_context()` — whether the current request is an **editing surface** rather than a visitor page view.
+
+Shortcode views use it to show authoring guidance that a visitor must never see — an empty-state hint, a "choose an image" placeholder, a warning that a required field is unset:
+
+```php
+if ( $poster === '' && $video === '' ) {
+    if ( fw_is_editor_context() ) {
+        return '<div class="fw-vp__empty">' . esc_html__( 'Add a poster image and a video URL.', 'fw' ) . '</div>';
+    }
+
+    return ''; // visitors get nothing
+}
+```
+
+:::caution[Use this instead of `is_admin() || DOING_AJAX`]
+That older test has a blind spot that only appears once an element is available as a **Gutenberg block**: `ServerSideRender` renders through the **REST API**, which is neither `is_admin()` nor `DOING_AJAX`.
+
+A view guarded the old way returns nothing in a block preview, so the block shows Gutenberg's bare *"Block rendered as empty"* instead of the element's own guidance — which reads as a broken block.
+:::
+
+:::note[REST is narrowed, on purpose]
+Only the block-renderer route counts as an editor. A public REST consumer fetching post content is a **visitor**, and must not receive editor-only markup — so accepting every `REST_REQUEST` would leak authoring hints into API output.
+:::
+
+Added in core 2.16.23.

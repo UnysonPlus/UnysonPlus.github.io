@@ -76,3 +76,29 @@ Array
     [custom] => 
 )
 ```
+
+## In Gutenberg blocks (the React control)
+
+`predefined-colors-color-picker-compact` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+This one matters more than most: it is the **shared colour field across the shortcode set** — 73 shortcodes declare it through `sc_color_field_compact()`. Without a React control, colour could not be edited in any block sidebar at all.
+
+### What the control does
+
+A preset dropdown (from the theme's Color Presets) plus a swatch that opens a custom colour picker, with **Clear custom** once one is set.
+
+:::caution[The value is a pair, and both halves are kept]
+The stored shape is `{ predefined: 'text-red', custom: '#ff0000' }`. `_get_value_from_input()` stores **both**, casting each to a string — it never clears one because the other is set.
+
+The control follows that: choosing a preset leaves any custom colour intact underneath, which is what makes switching back and forth non-destructive.
+:::
+
+:::note[The custom value is NOT validated]
+Unlike the plain [`color-picker`](./color-picker.md) option type — which accepts hex only and silently falls back to the default on anything else — this type casts the custom value to a string and stores it **verbatim**.
+
+So `rgba()` is legitimate here when `picker` is `'rgba-color-picker'`, and a control must **not** reuse the `color-picker`'s hex normaliser: doing so would discard alpha the schema explicitly allows.
+:::
+
+:::note[Legacy bare strings]
+A shortcode migrated from the older `sc_color_field()` may carry a plain string default like `'text-red'`. PHP rescues that to `{ predefined: 'text-red', custom: '' }` on first save, and the React control reads the same shape — so a value that has not been re-saved yet still renders correctly.
+:::

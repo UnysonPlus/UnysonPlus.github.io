@@ -16,6 +16,18 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Post Title**](./post-title.md) | `post_title` | The current post's title |
+| [**Post Content**](./post-content.md) | `post_content` | The current post's content, for templates |
+| [**Post Date**](./post-date.md) | `post_date` | The published or modified date |
+| [**Post Excerpt**](./post-excerpt.md) | `post_excerpt` | The current post's excerpt |
+| [**Post Meta Field**](./post-meta.md) | `post_meta` | A custom field value |
+| [**Post Terms**](./post-terms.md) | `post_terms` | Terms from any taxonomy |
+| [**Post Author**](./post-author.md) | `post_author` | The author byline |
+| [**Site Logo**](./site-logo.md) | `site_logo` | The site logo |
+| [**Navigation Menu**](./nav-menu.md) | `nav_menu` | A WordPress menu |
+| [**Menu Toggle**](./menu-toggle.md) | `menu_toggle` | A hamburger button |
+| [**Widget Area**](./widget-area.md) | `widget_area` | A registered sidebar |
+| [**Scroll to Top**](./scroll-to-top.md) | `scroll_to_top` | A back-to-top button and progress bar |
 | [**Call to Action**](./call-to-action.md) | `call_to_action` | A heading, message and button band |
 | [**Image + Content**](./image-content.md) | `image_content` | An image beside rich text |
 | [**Countdown**](./countdown.md) | `countdown` | A countdown to a date and time |

@@ -68,3 +68,26 @@ selector {
     color: #e5322d;
 }
 ```
+
+## In Gutenberg blocks (the React control)
+
+``code-editor`` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `code-editor` control does
+
+A plain monospace textarea, with spellcheck, autocapitalise and autocorrect switched off.
+
+:::caution[No syntax highlighting here, deliberately]
+The PHP renderer loads CodeMirror. The React control does not, for two reasons in order of weight:
+
+1. WordPress's bundled editor (`wp.codeEditor`) initialises against a real textarea and manages its own DOM. Wrapping that in a React component means two things believing they own the same node — the class of integration that works until an unrelated re-render wipes the buffer. For a code field, that is **losing what you typed**.
+2. A sidebar column is the wrong shape for code anyway. Highlighting a line that wraps four times buys very little.
+
+Real code editing stays in the page builder, where the editor has room and a stable host. The rendered output is identical from either surface.
+:::
+
+:::note[Browser "help" is switched off on purpose]
+Autocapitalising a variable name is a genuine hazard in a code field, not a cosmetic annoyance.
+:::

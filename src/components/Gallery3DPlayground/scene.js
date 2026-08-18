@@ -196,6 +196,19 @@ export function buildScene(design, o) {
     return `<div class="tdg tdg--depth-stack" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__depth">${cells}</div></div></div>`;
   }
 
+  if (design === 'card_reel') {
+    // vertical cover-flow carousel — mirror card-reel.php (a loop of cards on a cylinder).
+    const n = 9;
+    const a = attr({
+      ...shared,
+      'data-tdg-dir': o.direction === 'down' ? -1 : 1,
+      'data-tdg-curve': o.curve_3d, 'data-tdg-card': o.card_size, 'data-tdg-gap': o.gap, 'data-tdg-snap': o.snap,
+    });
+    let cells = '';
+    for (let k = 0; k < n; k++) cells += cardHtml(SAMPLES[k % SAMPLES.length]);
+    return `<div class="tdg tdg--card-reel" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__reel">${cells}</div></div></div>`;
+  }
+
   // card_sphere
   const {rows, bands} = sphereBands(o);
   const a = attr({

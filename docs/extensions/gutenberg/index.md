@@ -16,6 +16,7 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Special Heading**](./special-heading.md) | `special_heading` | An overline, title and subtitle — the standard way to open a section |
 | [**Icon Box**](./icon-box.md) | `icon_box` | An icon above a heading and text — the standard feature or service card |
 | [**Video Popup**](./video-popup.md) | `video_popup` | A poster image with a play button that opens the video in a lightbox |
 | [**Star Rating**](./star-rating.md) | `star_rating` | A star rating with optional score, label and review count |
@@ -75,7 +76,7 @@ Visitors get the fully interactive element on the front end.
 
 ## Requirements
 
-Core 2.16.26 or later, with the **Shortcodes** extension active — the blocks render through it.
+Core 2.16.27 or later, with the **Shortcodes** extension active — the blocks render through it.
 
 ## Every block has a page
 

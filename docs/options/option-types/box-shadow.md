@@ -76,3 +76,23 @@ Array
     [inset] => 
 )
 ```
+
+## In Gutenberg blocks (the React control)
+
+``box-shadow`` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `box-shadow` control does
+
+Four number fields, a colour picker with alpha, an inset toggle — and a sample box carrying the shadow itself, because four numbers describing a shadow are almost impossible to picture.
+
+:::caution[The offsets are stored as INTEGERS]
+`sanitize()` casts each with `(int) round( (float) $v )`. A control emitting `'4'` where the option stores `4` round-trips to a different value than the page builder saves for the same shadow.
+
+`blur` and `spread` are floored at 0; `x` and `y` are not, because negative offsets are legitimate there.
+:::
+
+:::note[The colour is a free string, not hex]
+Unlike the colour pickers that accept hex only, this option stores whatever string it is given — which is what lets a shadow carry alpha, the thing that makes it look like a shadow rather than a smear.
+:::

@@ -150,3 +150,32 @@ Array
 
 )
 ```
+
+## In Gutenberg blocks (the React control)
+
+`popover` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](../text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `popover` control does
+
+The inner options, rendered **inline** rather than behind a trigger — the same reasoning as the repeaters: a floating panel launched from a narrow sidebar covers the very preview you are editing against.
+
+:::caution[The stored shape depends on how many inner options there are]
+This is the detail that decides whether a popover works at all:
+
+- **One** inner option — the popover's value **is** that option's value, stored unwrapped. A schema declaring `[ 'fx' => … ]` stores `'left'`, not `[ 'fx' => 'left' ]`.
+- **Two or more** — a hash keyed by inner id, like `multi`.
+
+`_get_value_from_input()` branches on exactly that count. A control that always wrapped — or never did — would produce a value the element's view cannot read, and for the single-option case, which is most of them, the symptom is a setting that silently reverts.
+
+Both shapes are asserted in the parity suite so the branch cannot be tidied away.
+:::
+
+:::note[Inner options come from two places]
+`inner-options` and `tabs[].options` are merged, in that order, exactly as `collect_definitions()` does. A schema may use either or both.
+:::
+
+:::note[The label is borrowed when the inner option has none]
+A popover usually carries the human-readable label while its lone inner option sets `label => false`. The control uses the popover's label in that case, rather than rendering a field with no name.
+:::

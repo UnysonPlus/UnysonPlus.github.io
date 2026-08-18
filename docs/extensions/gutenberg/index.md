@@ -16,6 +16,8 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Flip Box**](./flip-box.md) | `flip_box` | A two-faced card that flips on hover or click |
+| [**3D Gallery**](./gallery-3d.md) | `gallery_3d` | Images in a WebGL 3D scene |
 | [**Post Title**](./post-title.md) | `post_title` | The current post's title |
 | [**Post Content**](./post-content.md) | `post_content` | The current post's content, for templates |
 | [**Post Date**](./post-date.md) | `post_date` | The published or modified date |

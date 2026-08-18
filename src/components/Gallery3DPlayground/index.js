@@ -18,7 +18,7 @@ import {buildScene, sphereInfo} from './scene';
 const sl = (id, label, def, min, max, step = 1) => ({id, label, t: 'slider', def, min, max, step});
 const se = (id, label, def, choices) => ({id, label, t: 'select', def, choices});
 
-const RATIO_CHOICES = [['1-1', 'Square (1:1)'], ['4-3', 'Landscape (4:3)'], ['3-4', 'Portrait (3:4)'], ['16-9', 'Wide (16:9)'], ['9-16', 'Tall (9:16)']];
+const RATIO_CHOICES = [['1-1', 'Square (1:1)'], ['4-3', 'Landscape (4:3)'], ['3-4', 'Portrait (3:4)'], ['4-5', 'Portrait (4:5)'], ['16-9', 'Wide (16:9)'], ['9-16', 'Tall (9:16)']];
 const HOVER_CHOICES = [['none', 'Keep rotating'], ['pause', 'Pause'], ['slow', 'Slow down']];
 const DIR_CHOICES = [['left', 'Left'], ['right', 'Right']];
 
@@ -162,6 +162,25 @@ const DESIGNS = {
       sl('scale_pulse', 'Scale Pulse (%)', 0, 0, 100),
       sl('card_size', 'Card Size (%)', 12, 4, 60),
       ...SHARED({drive: 'continuous', speed: 20, ratio: '3-4', corner: 0, dir: 'forward',
+        driveChoices: [['continuous', 'Continuous'], ['static', 'Static']],
+        dirChoices: [['forward', 'Forward'], ['backward', 'Backward']]}),
+    ],
+  },
+  depth_stack: {
+    group: '3D & Perspective',
+    label: 'Depth Stack',
+    blurb: 'A deck of cards receding into depth (front card the hero) that streams toward the camera — the front flies out and fades as the next comes forward. Spread/Scatter fans the deck out; Depth Fade + Depth Blur give a depth-of-field falloff. Best on Scroll-scrub.',
+    controls: [
+      sl('card_count', 'Card Count', 4, 3, 50, 1),
+      sl('depth_gap', 'Depth Gap (%)', 18, 0, 80),
+      sl('spread', 'Spread (%)', 0, 0, 120),
+      sl('spread_angle', 'Spread Angle (°)', -180, -180, 180),
+      sl('wobble', 'Wobble (%)', 0, 0, 100),
+      sl('depth_fade', 'Depth Fade (%)', 0, 0, 100),
+      sl('depth_blur', 'Depth Blur (%)', 0, 0, 100, 0.5),
+      se('layout', 'Layout', 'fan', [['fan', 'Fan (angle)'], ['scatter', 'Scatter (random)']]),
+      sl('card_size', 'Card Size (%)', 20, 4, 80),
+      ...SHARED({drive: 'continuous', speed: 20, ratio: '4-5', corner: 0, dir: 'forward',
         driveChoices: [['continuous', 'Continuous'], ['static', 'Static']],
         dirChoices: [['forward', 'Forward'], ['backward', 'Backward']]}),
     ],

@@ -10,7 +10,7 @@
  *   - card-sphere.php    → bands + per-band counts DERIVED from Globe/Card/Gap (see the ratio note)
  */
 
-const RATIOS = {'1-1': [1, 1], '4-3': [4, 3], '3-4': [3, 4], '16-9': [16, 9], '9-16': [9, 16]};
+const RATIOS = {'1-1': [1, 1], '4-3': [4, 3], '3-4': [3, 4], '4-5': [4, 5], '16-9': [16, 9], '9-16': [9, 16]};
 const MAXLAT = 80; // must match card-sphere.php
 const rad = (d) => (d * Math.PI) / 180;
 
@@ -179,6 +179,21 @@ export function buildScene(design, o) {
     let cells = '';
     for (let k = 0; k < n; k++) cells += cardHtml(SAMPLES[k % SAMPLES.length]);
     return `<div class="tdg tdg--spiral-stream" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__spiral">${cells}</div></div></div>`;
+  }
+
+  if (design === 'depth_stack') {
+    // a deck receding into depth — mirror depth-stack.php (Card Count cards).
+    const n = Math.max(3, Math.min(50, o.card_count));
+    const a = attr({
+      ...shared,
+      'data-tdg-dir': o.direction === 'backward' ? -1 : 1,
+      'data-tdg-gap': o.depth_gap, 'data-tdg-card': o.card_size, 'data-tdg-spread': o.spread,
+      'data-tdg-angle': o.spread_angle, 'data-tdg-wobble': o.wobble, 'data-tdg-dfade': o.depth_fade,
+      'data-tdg-dblur': o.depth_blur, 'data-tdg-layout': o.layout,
+    });
+    let cells = '';
+    for (let k = 0; k < n; k++) cells += cardHtml(SAMPLES[k % SAMPLES.length]);
+    return `<div class="tdg tdg--depth-stack" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__depth">${cells}</div></div></div>`;
   }
 
   // card_sphere

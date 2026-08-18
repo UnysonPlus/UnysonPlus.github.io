@@ -16,6 +16,9 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Image Sequence**](./image-sequence.md) | `image_sequence` | Frames scrubbed by scroll — a product spin |
+| [**SVG Morph**](./svg-morph.md) | `svg_morph` | One SVG shape morphing into the next |
+| [**WebGL Object**](./webgl-object.md) | `webgl_object` | A generated 3D object rendered with WebGL |
 | [**Global Section**](./global-section.md) | `global_section` | A saved section placed by reference |
 | [**Snippet**](./snippet.md) | `snippet` | A saved snippet, output by name |
 | [**Scroll Indicator**](./scroll-indicator.md) | `scroll_indicator` | A scroll-down cue for a hero |

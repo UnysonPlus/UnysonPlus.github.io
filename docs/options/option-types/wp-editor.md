@@ -96,10 +96,20 @@ The obvious choice is Gutenberg's `RichText`, and it is the wrong one here.
 Editing the markup is plainer and **lossless** — the right trade for a second authoring surface whose whole justification is that it agrees with the first. Rich editing stays in the page builder.
 :::
 
-:::note[The save transforms your value — and that is safe]
-With `wpautop` on (the default), saving runs the value through `wpautop()` and strips newlines, so typing `Hello` stores `<p>Hello</p>`.
+:::note[The page builder's save transforms your value — and that is safe]
+With `wpautop` on (the default), saving **through the page builder** runs the value through `wpautop()` and strips newlines, so typing `Hello` stores `<p>Hello</p>`.
 
 A transforming save is the shape most likely to corrupt content a little more on each edit, so it is asserted in the test suite: the transform is **idempotent** for plain text, blank-line paragraphs, already-wrapped `<p>`, inline markup, lists and empty values. Saving repeatedly does not drift the markup.
 
 Set `'wpautop' => false` to store exactly what is written.
+:::
+
+:::caution[A block does NOT apply that transform]
+A block's attributes go from the editor straight to the element's PHP view — `_get_value_from_input()` never runs on that path, so `wpautop()` never runs either.
+
+The practical difference: type `Hello` into this field **in a block** and the element receives `Hello`, unwrapped. Type it in the **page builder** and the element receives `<p>Hello</p>`. Same input, different markup, and the unwrapped version inherits none of the paragraph styling.
+
+So write real markup here — `<p>Hello</p>` — rather than relying on a transform that only one of the two surfaces performs. The field edits HTML directly for exactly this kind of reason.
+
+Making the two agree means validating block attributes at render time. That was measured against every block's output: two blocks improved, and one lost a working control, because `switch` requires its JSON-encoded wire format and every block already saved holds the raw value. It is a deliberate migration rather than a flag, and it has not been done — the reasoning is recorded in `class-fw-extension-gutenberg.php`.
 :::

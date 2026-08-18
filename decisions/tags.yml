@@ -107,3 +107,8 @@ storage-model:
   label: Storage model
   permalink: /storage-model
   description: How values are stored, cached and bounded in the database
+
+gutenberg:
+  label: Gutenberg
+  permalink: /gutenberg
+  description: The block editor bridge — blocks, the React control layer, and how they meet the option schema

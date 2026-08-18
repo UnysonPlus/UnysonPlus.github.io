@@ -16,6 +16,11 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Image Box**](./image-box.md) | `image_box` | An image with a heading, text and a button |
+| [**Gallery**](./gallery.md) | `gallery` | An image gallery with captions and a lightbox |
+| [**Team Member**](./team-member.md) | `team_member` | A person card — photo, name, role and links |
+| [**Progress**](./progress.md) | `progress` | Progress bars or circular meters |
+| [**Business Info**](./business-info.md) | `business_info` | Opening hours, contact details and a live open/closed status |
 | [**Carousel**](./carousel.md) | `carousel` | A slider of image or content slides |
 | [**Feature List**](./feature-list.md) | `feature_list` | A list of features with icons or markers |
 | [**Comparison Table**](./comparison-table.md) | `comparison_table` | A feature-comparison table with a highlighted column |

@@ -185,9 +185,23 @@ const DESIGNS = {
         dirChoices: [['forward', 'Forward'], ['backward', 'Backward']]}),
     ],
   },
+  card_reel: {
+    group: 'Carousel & Flow',
+    label: 'Card Reel',
+    blurb: 'A vertical cover-flow carousel — a single column of cards wraps around a horizontal cylinder, the centre card flat and forward (the focus) while the neighbours tilt back. Flows up/down, or Stop at Centre snaps each card to the middle. 3D Curve bends the cylinder.',
+    controls: [
+      sl('curve_3d', '3D Curve (%)', -100, -100, 100),
+      sl('card_size', 'Card Size (%)', 22, 6, 60),
+      sl('gap', 'Gap (%)', 1, 0, 20, 0.5),
+      se('snap', 'Stop at Centre', 'no', [['no', 'No'], ['yes', 'Yes']]),
+      ...SHARED({drive: 'continuous', speed: 20, ratio: '1-1', corner: 0, dir: 'up',
+        driveChoices: [['continuous', 'Continuous'], ['static', 'Static']],
+        dirChoices: [['up', 'Up'], ['down', 'Down']]}),
+    ],
+  },
 };
 
-const GROUP_ORDER = ['3D & Perspective'];
+const GROUP_ORDER = ['3D & Perspective', 'Carousel & Flow'];
 const GROUPS = GROUP_ORDER.map((g) => [g, Object.keys(DESIGNS).filter((k) => DESIGNS[k].group === g)]);
 
 const defaultsFor = (d) => Object.fromEntries(DESIGNS[d].controls.map((c) => [c.id, c.def]));

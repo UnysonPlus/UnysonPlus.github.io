@@ -60,6 +60,13 @@ don't see it.
   **Wobble** jitters the tilt, and **Depth Fade** + **Depth Blur** give a depth-of-field falloff.
   Pair it with **Motion → Scroll-scrub** so the visitor's scroll advances the stack.
 
+**Carousel & Flow**
+
+- **Card Reel** — a vertical cover-flow carousel. A single column of cards wraps around a horizontal
+  cylinder: the centre card sits flat and forward (the focus) while the ones above and below tilt back
+  along the curve. It flows up/down, or **Stop at Centre** snaps each card to the middle. **3D Curve**
+  bends the cylinder from a flat vertical strip to a tight barrel.
+
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.
 

@@ -39,6 +39,12 @@ laid out, and what happens when one is clicked. Each reveals a different set of 
 chosen branch is saved.
 :::
 
+:::note[The images are chosen here]
+The media picker inside `source` is a [`multi-upload`](/docs/options/option-types/multi-upload):
+thumbnails with reorder and remove controls, and WordPress's own media modal behind an **Add media**
+button. Everything a gallery needs is in the sidebar.
+:::
+
 :::note[An empty canvas usually means an empty source]
 With the source set to a post's attached media, the preview shows what **this** post has attached —
 which for a new draft is nothing. The element says so in place of rendering a broken grid.

@@ -16,6 +16,10 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Global Section**](./global-section.md) | `global_section` | A saved section placed by reference |
+| [**Snippet**](./snippet.md) | `snippet` | A saved snippet, output by name |
+| [**Scroll Indicator**](./scroll-indicator.md) | `scroll_indicator` | A scroll-down cue for a hero |
+| [**Site Search**](./site-search.md) | `site_search` | A site search field |
 | [**Lottie**](./lottie.md) | `lottie` | A Lottie JSON animation with playback triggers |
 | [**SVG Draw**](./svg-draw.md) | `svg_draw` | An SVG whose strokes draw themselves |
 | [**3D Model**](./model-viewer.md) | `model_viewer` | An interactive glTF / GLB model with AR |

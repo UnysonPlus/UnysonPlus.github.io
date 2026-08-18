@@ -7,7 +7,7 @@
  * bootstrap is replaced with the initEl() / bumpGen() exports below.
  */
 
-export const GALLERY_CSS = "/**\n * 3D Gallery — base + Carousel Ring. Pure CSS 3D scene; gallery-3d.js sets the per-card\n * transforms, the ring rotation and (for Back Fade) per-card opacity at runtime.\n */\n\n.tdg {\n\tposition: relative;\n\twidth: 100%;\n\toverflow: hidden;\n\tbackground: var(--tdg-bg, transparent);\n}\n\n.tdg__stage {\n\tposition: absolute;\n\tinset: 0;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\ttransform-style: preserve-3d;\n\tperspective-origin: 50% 50%;\n\t/* perspective set by JS from the Perspective control */\n}\n\n/* Pin while scrubbing (Motion: Scroll-scrub): the wrapper is stretched by Scroll Length (see\n * view.php — height: stage + N×100vh, with --tdg-stage-h carrying the stage height) and the stage\n * STICKS, viewport-centred, while the wrapper scrolls past — so the visitor's scroll drives the\n * scrub across the whole pinned stretch, then the stage releases with the page. position:sticky\n * dies inside an overflow:hidden ancestor, so the wrapper opens up and the scene clip moves onto\n * the stage instead. */\n.tdg--pinned { overflow: visible; }\n.tdg--pinned .tdg__stage {\n\tposition: sticky;\n\tinset: auto;\n\ttop: max(0px, calc((100vh - var(--tdg-stage-h, 730px)) / 2));\n\twidth: 100%;\n\theight: var(--tdg-stage-h, 730px);\n\toverflow: hidden;\n}\n\n.tdg__ring {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n\t/* transform (rotateX tilt + rotateY spin) set by JS */\n}\n\n/* Panorama Wall — stacked rows, each a scrolling cylinder of cards. */\n.tdg__wall {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg__row {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg--panorama-wall .tdg__card { backface-visibility: hidden; }\n\n/* Card Sphere — bands (latitude rings) wrapped on a sphere. */\n.tdg__globe {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg__band {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg--card-sphere .tdg__card { backface-visibility: hidden; }\n\n/* Orbit Globe — billboarded cards distributed through a sphere volume (JS translate3d's each card;\n * the container itself does not rotate, so cards always face the camera). */\n.tdg__orbit {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n\n.tdg__card {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\taspect-ratio: var(--tdg-ratio, 1 / 1);\n\ttransform-style: preserve-3d;\n\twill-change: transform, opacity;\n\tbackface-visibility: visible;\n\t/* width / margins / transform set by JS */\n}\n\n.tdg__inner {\n\twidth: 100%;\n\theight: 100%;\n\tbox-sizing: border-box;\n\tborder-radius: var(--tdg-radius, 14px);\n\tpadding: var(--tdg-pad, 0);\n\toverflow: hidden;\n\tbackground: #14161c;\n\tbox-shadow: var(--tdg-shadow, 0 14px 40px -8px rgba(0, 0, 0, 0.45));\n}\n\n.tdg__link {\n\tdisplay: block;\n\tposition: relative;\n\twidth: 100%;\n\theight: 100%;\n\tborder-radius: inherit;\n\toverflow: hidden;\n\ttext-decoration: none;\n}\n\n.tdg__img {\n\tdisplay: block;\n\twidth: 100%;\n\theight: 100%;\n\tobject-fit: cover;\n\tborder-radius: inherit;\n}\n\n.tdg__overlay {\n\tposition: absolute;\n\tinset: 0;\n\tdisplay: flex;\n\talign-items: flex-end;\n\tpadding: 10px 12px;\n\tbackground: linear-gradient(to top, rgba(0, 0, 0, 0.62), transparent 62%);\n\topacity: 0;\n\ttransition: opacity 0.3s ease;\n\tpointer-events: none;\n}\n.tdg__card:hover .tdg__overlay { opacity: 1; }\n.tdg__overlay-text { color: #fff; font-size: 13px; line-height: 1.3; }\n\n.tdg__caption {\n\tposition: absolute;\n\tleft: 0;\n\tright: 0;\n\tbottom: -1.6em;\n\ttext-align: center;\n\tfont-size: 12px;\n\topacity: 0.75;\n}\n\n.tdg--empty {\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\tmin-height: 180px;\n\tborder: 1px dashed rgba(127, 127, 127, 0.4);\n\tborder-radius: 10px;\n}\n.tdg__empty { margin: 0; opacity: 0.6; font-size: 14px; }\n\n@media (prefers-reduced-motion: reduce) {\n\t.tdg__ring { will-change: auto; }\n}\n";
+export const GALLERY_CSS = "/**\n * 3D Gallery — base + Carousel Ring. Pure CSS 3D scene; gallery-3d.js sets the per-card\n * transforms, the ring rotation and (for Back Fade) per-card opacity at runtime.\n */\n\n.tdg {\n\tposition: relative;\n\twidth: 100%;\n\toverflow: hidden;\n\tbackground: var(--tdg-bg, transparent);\n}\n\n.tdg__stage {\n\tposition: absolute;\n\tinset: 0;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\ttransform-style: preserve-3d;\n\tperspective-origin: 50% 50%;\n\t/* perspective set by JS from the Perspective control */\n}\n\n/* Pin while scrubbing (Motion: Scroll-scrub): the wrapper is stretched by Scroll Length (see\n * view.php — height: stage + N×100vh, with --tdg-stage-h carrying the stage height) and the stage\n * STICKS, viewport-centred, while the wrapper scrolls past — so the visitor's scroll drives the\n * scrub across the whole pinned stretch, then the stage releases with the page. position:sticky\n * dies inside an overflow:hidden ancestor, so the wrapper opens up and the scene clip moves onto\n * the stage instead. */\n.tdg--pinned { overflow: visible; }\n.tdg--pinned .tdg__stage {\n\tposition: sticky;\n\tinset: auto;\n\ttop: max(0px, calc((100vh - var(--tdg-stage-h, 730px)) / 2));\n\twidth: 100%;\n\theight: var(--tdg-stage-h, 730px);\n\toverflow: hidden;\n}\n\n.tdg__ring {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n\t/* transform (rotateX tilt + rotateY spin) set by JS */\n}\n\n/* Panorama Wall — stacked rows, each a scrolling cylinder of cards. */\n.tdg__wall {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg__row {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg--panorama-wall .tdg__card { backface-visibility: hidden; }\n\n/* Card Sphere — bands (latitude rings) wrapped on a sphere. */\n.tdg__globe {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg__band {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg--card-sphere .tdg__card { backface-visibility: hidden; }\n\n/* Orbit Globe — billboarded cards distributed through a sphere volume (JS translate3d's each card;\n * the container itself does not rotate, so cards always face the camera). */\n.tdg__orbit {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n\n.tdg__card {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\taspect-ratio: var(--tdg-ratio, 1 / 1);\n\ttransform-style: preserve-3d;\n\twill-change: transform, opacity;\n\tbackface-visibility: visible;\n\t/* width / margins / transform set by JS */\n}\n\n.tdg__inner {\n\twidth: 100%;\n\theight: 100%;\n\tbox-sizing: border-box;\n\tborder-radius: var(--tdg-radius, 14px);\n\tpadding: var(--tdg-pad, 0);\n\toverflow: hidden;\n\t/* Card backing is TRANSPARENT so opaque photos sit flush and a thumbnail with a transparent\n\t * margin (documents / logos / alpha PNGs) shows the STAGE through it instead of a dark fill\n\t * reading as an unwanted black border. Set a Card Background / Box Preset (or Card Padding for the\n\t * polaroid frame) if you WANT a card colour behind the image. */\n}\n\n.tdg__link {\n\tdisplay: block;\n\tposition: relative;\n\twidth: 100%;\n\theight: 100%;\n\tborder-radius: inherit;\n\toverflow: hidden;\n\ttext-decoration: none;\n}\n\n.tdg__img {\n\tdisplay: block;\n\twidth: 100%;\n\theight: 100%;\n\tobject-fit: cover;\n\tborder-radius: inherit;\n}\n\n.tdg__overlay {\n\tposition: absolute;\n\tinset: 0;\n\tdisplay: flex;\n\talign-items: flex-end;\n\tpadding: 10px 12px;\n\tbackground: linear-gradient(to top, rgba(0, 0, 0, 0.62), transparent 62%);\n\topacity: 0;\n\ttransition: opacity 0.3s ease;\n\tpointer-events: none;\n}\n.tdg__card:hover .tdg__overlay { opacity: 1; }\n.tdg__overlay-text { color: #fff; font-size: 13px; line-height: 1.3; }\n\n.tdg__caption {\n\tposition: absolute;\n\tleft: 0;\n\tright: 0;\n\tbottom: -1.6em;\n\ttext-align: center;\n\tfont-size: 12px;\n\topacity: 0.75;\n}\n\n.tdg--empty {\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\tmin-height: 180px;\n\tborder: 1px dashed rgba(127, 127, 127, 0.4);\n\tborder-radius: 10px;\n}\n.tdg__empty { margin: 0; opacity: 0.6; font-size: 14px; }\n\n/* ---- Photo Scatter — photos scattered flat on a tabletop ---- */\n/* Clip to the stage: edge cards (and cards flying in from off-stage) bleed to the frame edge and are\n * cut there — a true edge-to-edge scatter — instead of pushing the page wider (horizontal scrollbar). */\n.tdg--photo-scatter { overflow: hidden; }\n.tdg--photo-scatter .tdg__stage { overflow: hidden; }\n/* Photos lie on a surface, so the card backing is TRANSPARENT — a document/logo thumbnail with a\n * transparent margin then shows the desk/stage through it (a page resting on the table) instead of\n * the dark default card fill reading as an unwanted black border. Opaque photos fill the card as\n * usual. (The generic dark `.tdg__inner` fill still applies to the 3D designs on dark stages.) */\n.tdg--photo-scatter .tdg__inner { background: transparent; box-shadow: none; }\n.tdg--photo-scatter .tdg__plane {\n\tposition: absolute;\n\tinset: 0;\n}\n.tdg--photo-scatter .tdg__card {\n\tposition: absolute;\n\tleft: -200%; /* parked off-stage until the driver seats it */\n\ttop: 50%;\n\topacity: 0;\n\ttransition:\n\t\ttransform 0.95s cubic-bezier(0.22, 0.9, 0.24, 1),\n\t\topacity 0.6s ease;\n\twill-change: transform, opacity;\n\tbox-shadow: var(--tdg-shadow, 0 6px 16px rgba(0, 0, 0, 0.35));\n}\n.tdg--photo-scatter .tdg__card.is-set { pointer-events: auto; }\n.tdg--photo-scatter .tdg__card:not(.is-set) { pointer-events: none; }\n\n@media (prefers-reduced-motion: reduce) {\n\t.tdg__ring { will-change: auto; }\n\t.tdg--photo-scatter .tdg__card { transition: none; will-change: auto; }\n}\n\n/* =====================================================================================\n   Device Cycler — a device frame whose SCREEN cross-fades through the images (view modes).\n   ===================================================================================== */\n.tdg--device-cycler .tdg__stage { display: flex; align-items: center; justify-content: center; }\n.tdg--device-cycler .tdg__device { position: relative; width: var(--tdg-dev-w, 62%); max-width: 100%; }\n.tdg--device-cycler .tdg__screen {\n\tposition: relative; width: 100%; aspect-ratio: var(--tdg-ratio, 16 / 9);\n\toverflow: hidden; border-radius: var(--tdg-radius, 4px); background: #0b0b0d;\n}\n.tdg--device-cycler .tdg__plane { position: absolute; inset: 0; }\n.tdg--device-cycler .tdg__card { position: absolute; inset: 0; opacity: 0; transition: opacity .55s ease, transform .55s ease; }\n.tdg--device-cycler .tdg__card.is-active { opacity: 1; }\n.tdg--device-cycler .tdg__inner, .tdg--device-cycler .tdg__link { position: absolute; inset: 0; display: block; padding: 0; border-radius: 0; }\n.tdg--device-cycler .tdg__img { width: 100%; height: 100%; object-fit: cover; display: block; }\n\n/* Transition variants */\n.tdg--device-cycler[data-tdg-transition=\"slide_up\"] .tdg__card { transform: translateY(7%); }\n.tdg--device-cycler[data-tdg-transition=\"slide_up\"] .tdg__card.is-active { transform: translateY(0); }\n.tdg--device-cycler[data-tdg-transition=\"slide_up\"] .tdg__card.is-past { transform: translateY(-7%); }\n.tdg--device-cycler[data-tdg-transition=\"none\"] .tdg__card { transition: none; }\n\n/* Laptop — screen bezel + a base bar below */\n.tdg--device-cycler .tdg__device--laptop .tdg__screen { border: 10px solid #1c1c1f; border-radius: 14px; box-shadow: 0 22px 50px rgba(0,0,0,.35); }\n.tdg--device-cycler .tdg__device--laptop::after { content: \"\"; display: block; width: 116%; margin: -1px 0 0 -8%; height: 15px; background: linear-gradient(#cbced4, #a7abb4); border-radius: 0 0 13px 13px; box-shadow: 0 9px 18px rgba(0,0,0,.22); }\n.tdg--device-cycler .tdg__device--laptop::before { content: \"\"; position: absolute; left: 50%; bottom: 4px; transform: translateX(-50%); width: 11%; height: 6px; background: rgba(0,0,0,.22); border-radius: 0 0 7px 7px; z-index: 3; }\n\n/* Tablet */\n.tdg--device-cycler .tdg__device--tablet .tdg__screen { border: 12px solid #16161a; border-radius: 24px; box-shadow: 0 22px 50px rgba(0,0,0,.35); }\n\n/* Phone — rounded body + notch */\n.tdg--device-cycler .tdg__device--phone .tdg__screen { border: 10px solid #101012; border-radius: 36px; box-shadow: 0 18px 44px rgba(0,0,0,.4); }\n.tdg--device-cycler .tdg__device--phone::before { content: \"\"; position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 34%; height: 16px; background: #101012; border-radius: 0 0 13px 13px; z-index: 4; }\n\n/* Browser window — title bar with traffic-light dots */\n.tdg--device-cycler .tdg__device--browser .tdg__screen { border: 1px solid rgba(0,0,0,.14); border-top: 32px solid #e8e8ec; border-radius: 10px; box-shadow: 0 18px 44px rgba(0,0,0,.22); }\n.tdg--device-cycler .tdg__device--browser::before { content: \"\"; position: absolute; top: 11px; left: 14px; width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; box-shadow: 18px 0 0 #febc2e, 36px 0 0 #28c840; z-index: 4; }\n\n@media (prefers-reduced-motion: reduce) { .tdg--device-cycler .tdg__card { transition: none; } }\n\n/* Sphere Cascade — columns of cards on a sphere, cascading vertically (JS positions each card;\n * cards sit tangent to the surface, so the back hemisphere is hidden by backface-visibility). */\n.tdg__cascade {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg__col {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n}\n.tdg--sphere-cascade .tdg__card { backface-visibility: hidden; }\n/* Totem Wall — reuses the cascade DOM (.tdg__cascade > .tdg__col > .tdg__card); each column is an\n   independent vertical cylinder, so hide the card backs as they wrap around behind the totem. */\n.tdg--totem-wall .tdg__card { backface-visibility: hidden; }\n\n/* =====================================================================================\n   Card Stack — a deck of image cards; the top is featured, the rest peek behind it, and the\n   deck advances (top peels away, next comes forward) on scroll / a dwell timer. gallery-3d.js\n   sets each card's transform + opacity + z-index every frame from its depth in the deck.\n   ===================================================================================== */\n.tdg--card-stack .tdg__stage { display: flex; align-items: center; justify-content: center; overflow: hidden; }\n.tdg--card-stack .tdg__deck {\n\tposition: relative;\n\twidth: var(--tdg-card-w, 52%);\n\taspect-ratio: var(--tdg-ratio, 4 / 3);\n\ttransform-style: preserve-3d;\n}\n.tdg--card-stack .tdg__card {\n\tposition: absolute;\n\tleft: 0; top: 0;\n\twidth: 100%; height: 100%;\n\taspect-ratio: auto;            /* override the base 50%/50% + ratio positioning */\n\ttransform-origin: 50% 50%;\n\twill-change: transform, opacity;\n}\n\n@media (prefers-reduced-motion: reduce) {\n\t.tdg--card-stack .tdg__card { will-change: auto; }\n}\n";
 
 // Reduced motion: the driver renders a static scene instead of animating.
 var reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -24,6 +24,18 @@ function requestAnimationFrame(fn) {
 
 function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); return isNaN( v ) ? dflt : v; }
 	function clamp( v, a, b ) { return v < a ? a : ( v > b ? b : v ); }
+
+	// Shared drag wiring (mouse + touch) — extracted from the 5 designs that each repeated it verbatim.
+	// Passes BOTH (clientX, clientY) to the design's down/move callbacks; each uses the coordinate it
+	// needs (X for the horizontal designs, Y for the vertical cascade, both for the ring's hit-test).
+	function attachDrag( el, down, move, up ) {
+		el.addEventListener( 'mousedown', function ( e ) { down( e.clientX, e.clientY ); e.preventDefault(); } );
+		window.addEventListener( 'mousemove', function ( e ) { move( e.clientX, e.clientY ); } );
+		window.addEventListener( 'mouseup', up );
+		el.addEventListener( 'touchstart', function ( e ) { down( e.touches[ 0 ].clientX, e.touches[ 0 ].clientY ); }, { passive: true } );
+		window.addEventListener( 'touchmove', function ( e ) { move( e.touches[ 0 ].clientX, e.touches[ 0 ].clientY ); }, { passive: true } );
+		window.addEventListener( 'touchend', up );
+	}
 
 	// Scroll-scrub progress 0..1, shared by every design. Pass-through mode: the element's travel
 	// through the viewport. Pinned mode (.tdg--pinned, "Pin while scrubbing"): progress through the
@@ -191,12 +203,7 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 			};
 			var move = function ( x ) { if ( ! dragging ) { return; } var dx = ( x - px ) * flipDrag; px = x; angle += dx * 0.3; vel = dx * 0.3; };
 			var up = function () { dragging = false; el.style.cursor = 'grab'; };
-			el.addEventListener( 'mousedown', function ( e ) { down( e.clientX, e.clientY ); e.preventDefault(); } );
-			window.addEventListener( 'mousemove', function ( e ) { move( e.clientX ); } );
-			window.addEventListener( 'mouseup', up );
-			el.addEventListener( 'touchstart', function ( e ) { down( e.touches[ 0 ].clientX, e.touches[ 0 ].clientY ); }, { passive: true } );
-			window.addEventListener( 'touchmove', function ( e ) { move( e.touches[ 0 ].clientX ); }, { passive: true } );
-			window.addEventListener( 'touchend', up );
+			attachDrag( el, down, move, up );
 		}
 
 		if ( drive === 'scroll' ) {
@@ -326,12 +333,7 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 			var down = function ( x ) { dragging = true; px = x; vel = 0; el.style.cursor = 'grabbing'; };
 			var move = function ( x ) { if ( ! dragging ) { return; } var dx = x - px; px = x; base -= dx * 0.12; vel = -dx * 0.12; };
 			var up = function () { dragging = false; el.style.cursor = 'grab'; };
-			el.addEventListener( 'mousedown', function ( e ) { down( e.clientX ); e.preventDefault(); } );
-			window.addEventListener( 'mousemove', function ( e ) { move( e.clientX ); } );
-			window.addEventListener( 'mouseup', up );
-			el.addEventListener( 'touchstart', function ( e ) { down( e.touches[ 0 ].clientX ); }, { passive: true } );
-			window.addEventListener( 'touchmove', function ( e ) { move( e.touches[ 0 ].clientX ); }, { passive: true } );
-			window.addEventListener( 'touchend', up );
+			attachDrag( el, down, move, up );
 		}
 
 		if ( drive === 'scroll' ) {
@@ -454,12 +456,7 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 			var down = function ( x ) { dragging = true; px = x; vel = 0; el.style.cursor = 'grabbing'; };
 			var move = function ( x ) { if ( ! dragging ) { return; } var dx = x - px; px = x; bandData.forEach( function ( bd ) { bd.angle += dx * 0.25; } ); vel = dx * 0.25; };
 			var up = function () { dragging = false; el.style.cursor = 'grab'; };
-			el.addEventListener( 'mousedown', function ( e ) { down( e.clientX ); e.preventDefault(); } );
-			window.addEventListener( 'mousemove', function ( e ) { move( e.clientX ); } );
-			window.addEventListener( 'mouseup', up );
-			el.addEventListener( 'touchstart', function ( e ) { down( e.touches[ 0 ].clientX ); }, { passive: true } );
-			window.addEventListener( 'touchmove', function ( e ) { move( e.touches[ 0 ].clientX ); }, { passive: true } );
-			window.addEventListener( 'touchend', up );
+			attachDrag( el, down, move, up );
 		}
 
 		if ( drive === 'scroll' ) {
@@ -569,12 +566,7 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 			var down = function ( x ) { dragging = true; px = x; vel = 0; el.style.cursor = 'grabbing'; };
 			var move = function ( x ) { if ( ! dragging ) { return; } var dx = x - px; px = x; angle += dx * 0.25; vel = dx * 0.25; };
 			var up = function () { dragging = false; el.style.cursor = 'grab'; };
-			el.addEventListener( 'mousedown', function ( e ) { down( e.clientX ); e.preventDefault(); } );
-			window.addEventListener( 'mousemove', function ( e ) { move( e.clientX ); } );
-			window.addEventListener( 'mouseup', up );
-			el.addEventListener( 'touchstart', function ( e ) { down( e.touches[ 0 ].clientX ); }, { passive: true } );
-			window.addEventListener( 'touchmove', function ( e ) { move( e.touches[ 0 ].clientX ); }, { passive: true } );
-			window.addEventListener( 'touchend', up );
+			attachDrag( el, down, move, up );
 		}
 
 		if ( drive === 'scroll' ) {
@@ -600,9 +592,770 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 		requestAnimationFrame( loop );
 	}
 
+	/**
+	 * Photo Scatter — photos scattered flat on a tabletop. The pool is server-rendered; the driver
+	 * picks which cards are "on the table", places them on a jittered grid (desk-like, no heavy
+	 * collision maths), glides them in from the chosen edge with a stagger, dwells, sweeps them out
+	 * and slides the next set in. Auto / click / off cycling; hover-pause; reduced-motion = static.
+	 */
+	function initScatter( el ) {
+		if ( el.__tdgInit ) { return; } el.__tdgInit = true;
+		var cards   = el.querySelectorAll( '.tdg__plane > .tdg__card' );
+		var pool    = cards.length;
+		if ( ! pool ) { return; }
+		var visible = clamp( num( el, 'data-tdg-visible', 9 ), 3, 50 );
+		var N       = Math.min( visible, pool );
+		var sets    = Math.max( 1, Math.ceil( pool / N ) );
+		var cycleMd = el.getAttribute( 'data-tdg-cycle' ) || 'auto';
+		var dwell   = clamp( num( el, 'data-tdg-dwell', 6 ), 2, 20 ) * 1000;
+		var hpause  = !! num( el, 'data-tdg-hpause', 1 );
+		var from    = el.getAttribute( 'data-tdg-from' ) || 'edges';
+		var rotMax  = clamp( num( el, 'data-tdg-rot', 12 ), 0, 35 );
+		var sizeVar = clamp( num( el, 'data-tdg-sizevar', 30 ), 0, 60 ) / 100;
+		var spread  = clamp( num( el, 'data-tdg-spread', 90 ), 50, 100 ) / 100;
+		var cardPct = clamp( num( el, 'data-tdg-card', 18 ), 8, 40 );
+		var exitStyle = el.getAttribute( 'data-tdg-exit' ) || 'sweep'; // sweep | gather | fade
+		var centerClear = !! num( el, 'data-tdg-center-clear', 0 ); // ring the cards around a centered heading
+		var stage   = el.querySelector( '.tdg__stage' );
+		// One-set galleries still animate in the scroll modes (a single set scatters in→out, or the
+		// scroll_cycle final grid resolves); only the timed/click cyclers have nothing to shuffle to.
+		if ( pool <= N && cycleMd !== 'scroll' && cycleMd !== 'scroll_cycle' ) { cycleMd = 'off'; }
+
+		var setIdx = 0, hovering = false, timer = 0, inView = true, entered = false;
+
+		// One scattered placement for the N slots: a jittered ceil(√N) grid, shuffled so neighbours
+		// don't correlate — a natural pile without collision maths. The grid is mapped EDGE-TO-EDGE
+		// (the outer rows/cols sit at the frame edges) and `spread` expands the field around centre —
+		// ≥ ~95 lets edge cards BLEED off-frame (clipped by the stage's overflow:hidden) for a true
+		// edge-to-edge fill instead of an inset island in the middle.
+		function placements() {
+			var g = Math.ceil( Math.sqrt( N ) ), cells = [], i;
+			for ( i = 0; i < g * g; i++ ) { cells.push( i ); }
+			for ( i = cells.length - 1; i > 0; i-- ) { var j = ( Math.random() * ( i + 1 ) ) | 0, t = cells[ i ]; cells[ i ] = cells[ j ]; cells[ j ] = t; }
+			var out = [], denom = ( g > 1 ) ? ( g - 1 ) : 1, reach = spread * 106;   // spread is already 0–1
+			for ( i = 0; i < N; i++ ) {
+				var c  = cells[ i ], nx = ( c % g ) / denom, ny = ( ( c / g ) | 0 ) / denom;   // 0..1 edge-to-edge
+				var jx = ( Math.random() - 0.5 ) * ( 1 / g ), jy = ( Math.random() - 0.5 ) * ( 1 / g );
+				var px = 50 + ( ( nx + jx ) - 0.5 ) * reach, py = 50 + ( ( ny + jy ) - 0.5 ) * reach;
+				if ( centerClear ) {
+					// Push any card that lands in a central ellipse outward so a centered heading stays
+					// readable — the cards "ring" the text. The zone is wider than tall (headings are wide).
+					var nx = ( px - 50 ) / 30, ny = ( py - 50 ) / 22;
+					if ( nx * nx + ny * ny < 1 ) {
+						var ang = Math.atan2( py - 50, px - 50 ); if ( isNaN( ang ) ) { ang = Math.random() * Math.PI * 2; }
+						px = 50 + Math.cos( ang ) * ( 30 + Math.random() * 16 );
+						py = 50 + Math.sin( ang ) * ( 24 + Math.random() * 14 );
+					}
+				}
+				out.push( {
+					x: px, y: py,
+					r: ( Math.random() * 2 - 1 ) * rotMax,
+					s: 1 + ( Math.random() * 2 - 1 ) * sizeVar / 2,
+					z: 1 + ( ( Math.random() * N ) | 0 ),
+				} );
+			}
+			return out;
+		}
+
+		// The TIDY target for the scroll-driven "scatter -> organize" morph: N cards in an even,
+		// upright grid (no rotation, uniform size), rows centred. Cards lerp from the scattered
+		// placement to this as the visitor scrolls through the scene.
+		function organized() {
+			var cols = Math.max( 2, Math.min( N, Math.round( Math.sqrt( N ) * 1.4 ) ) );
+			var rows = Math.ceil( N / cols );
+			var out = [], padx = 0.06, pady = 0.10, i;
+			for ( i = 0; i < N; i++ ) {
+				var col = i % cols, row = ( i / cols ) | 0;
+				var inRow = Math.min( cols, N - row * cols );   // centre a short final row
+				var rowPad = ( cols - inRow ) / 2;
+				out.push( {
+					x: ( padx + ( ( col + rowPad + 0.5 ) / cols ) * ( 1 - padx * 2 ) ) * 100,
+					y: ( pady + ( ( row + 0.5 ) / rows ) * ( 1 - pady * 2 ) ) * 100,
+					r: 0, s: 1, z: i + 1,
+				} );
+			}
+			return out;
+		}
+
+		function applySet( idx, animateIn ) {
+			var start = idx * N, i, k = 0;
+			for ( i = 0; i < pool; i++ ) {
+				var card = cards[ i ];
+				var active = ( i >= start && i < start + N ) || ( start + N > pool && i < ( start + N ) % pool );
+				if ( ! active ) { card.classList.remove( 'is-set' ); card.style.transitionDelay = '0ms'; card.style.opacity = ''; continue; }
+				var p = pts[ k ], off = offDir( p, from );
+				card.classList.add( 'is-set' );
+				card.style.width  = ( cardPct * p.s ) + '%';
+				card.style.zIndex = p.z;
+				if ( animateIn ) {
+					card.style.transitionDuration = '0ms';
+					card.style.transform = 'translate(-50%,-50%) translate(' + off.dx + '%,' + off.dy + '%) rotate(' + ( p.r * 2 ) + 'deg)';
+					card.style.left = p.x + '%'; card.style.top = p.y + '%';
+					card.style.opacity = '0';
+					void card.offsetWidth; // reflow → transition from the off-stage pose
+					card.style.transitionDuration = '';
+					card.style.transitionDelay = ( k * 90 ) + 'ms';
+				} else {
+					card.style.left = p.x + '%'; card.style.top = p.y + '%';
+				}
+				card.style.transform = 'translate(-50%,-50%) rotate(' + p.r + 'deg)';
+				card.style.opacity = '1';
+				k++;
+			}
+		}
+
+		function sweepOut( done ) {
+			var start = setIdx * N, i, k = 0;
+			for ( i = 0; i < pool; i++ ) {
+				var card = cards[ i ];
+				if ( ! card.classList.contains( 'is-set' ) ) { continue; }
+				var p = pts[ k ] || pts[ 0 ];
+				if ( exitStyle === 'gather' ) {
+					// Converge to a loose stack at the centre (the poly "collect into a pile" moment):
+					// each card slides to ~centre with a small residual offset + a lean, then fades.
+					var jx = ( Math.random() * 2 - 1 ) * 6, jy = ( Math.random() * 2 - 1 ) * 6;
+					card.style.transitionDelay = ( k * 45 ) + 'ms';
+					card.style.left = ( 50 + jx ) + '%'; card.style.top = ( 50 + jy ) + '%';
+					card.style.transform = 'translate(-50%,-50%) rotate(' + ( ( Math.random() * 2 - 1 ) * 10 ) + 'deg) scale(0.92)';
+					card.style.opacity = '0';
+				} else if ( exitStyle === 'fade' ) {
+					card.style.transitionDelay = ( k * 40 ) + 'ms';
+					card.style.opacity = '0';
+				} else { // directional sweep — fly out per "Photos exit toward" (nearest edge by default)
+					var off = offDir( p, exitStyle );
+					card.style.transitionDelay = ( k * 60 ) + 'ms';
+					card.style.transform = 'translate(-50%,-50%) translate(' + off.dx + '%,' + off.dy + '%) rotate(' + ( p.r * 1.6 ) + 'deg)';
+					card.style.opacity = '0';
+				}
+				k++;
+			}
+			setTimeout( done, 700 + N * 60 );
+		}
+
+		function shuffle() {
+			if ( sets < 2 ) { return; }
+			sweepOut( function () {
+				setIdx = ( setIdx + 1 ) % sets;
+				pts = placements();
+				applySet( setIdx, true );
+				schedule();
+			} );
+		}
+
+		function schedule() {
+			if ( cycleMd !== 'auto' ) { return; }
+			clearTimeout( timer );
+			timer = setTimeout( function tick() {
+				if ( ! inView || ( hpause && hovering ) ) { timer = setTimeout( tick, 600 ); return; }
+				shuffle();
+			}, dwell );
+		}
+
+		var pts = placements();
+
+		// Shared progress reader for the scroll-driven modes. Resolves the parent scrollytelling
+		// Stage LAZILY — the module adds `.upw-story--stage` AFTER this gallery inits, so caching it
+		// once would miss it and fall back to the gallery's own progress (frozen while the Stage is
+		// pinned → no motion). A RANGED persist layer remaps the story's 0→1 to its own beat slice so
+		// the effect completes within its beats. Re-checks each frame until found, then caches.
+		var storyEl = null, scene = null;
+		function progOf() {
+			if ( ! storyEl && el.closest ) { storyEl = el.closest( '.upw-story--stage' ); }
+			if ( storyEl && typeof storyEl.__storyProgress === 'number' ) {
+				var pr = storyEl.__storyProgress;
+				if ( scene === null ) { scene = ( el.closest && el.closest( '.upw-story-scene' ) ) || false; }
+				if ( scene && storyEl.__storyBeats ) {
+					// Remap the story's 0→1 to THIS scene's beat slice so the effect completes within its
+					// own scroll span: a ranged persist layer uses [__pFrom, __pTo]; a normal beat scene
+					// (a gallery placed inside one) uses its single [__beatIndex, __beatIndex].
+					var from, to;
+					if ( typeof scene.__pFrom === 'number' ) { from = scene.__pFrom; to = scene.__pTo; }
+					else if ( typeof scene.__beatIndex === 'number' ) { from = scene.__beatIndex; to = scene.__beatIndex; }
+					if ( from !== undefined ) {
+						var lo = from / storyEl.__storyBeats, hi = ( to + 1 ) / storyEl.__storyBeats;
+						if ( hi > lo ) { pr = Math.max( 0, Math.min( 1, ( pr - lo ) / ( hi - lo ) ) ); }
+					}
+				}
+				return pr;
+			}
+			return scrollProgress( el, stage );
+		}
+		function clamp01( t ) { return t < 0 ? 0 : t > 1 ? 1 : t; }
+		function ease( t ) { t = clamp01( t ); return t * t * ( 3 - 2 * t ); }
+		function lerp( a, b, t ) { return a + ( b - a ) * t; }
+
+		// Off-stage displacement (dx,dy in %) for a resting position, per an enter/exit direction.
+		// 'random' is resolved ONCE at setup (stable across frames); 'gather'/'fade' are non-directional
+		// (0,0 — those exits are handled specially in the render).
+		function offDir( p, mode ) {
+			if ( mode === 'random' ) { mode = [ 'up', 'right', 'down', 'left' ][ ( Math.random() * 4 ) | 0 ]; }
+			if ( mode === 'top' || mode === 'up' ) { return { dx: 0, dy: -130 }; }
+			if ( mode === 'bottom' || mode === 'down' ) { return { dx: 0, dy: 130 }; }
+			if ( mode === 'left' ) { return { dx: -130, dy: 0 }; }
+			if ( mode === 'right' ) { return { dx: 130, dy: 0 }; }
+			if ( mode === 'sides' ) { return { dx: p.x < 50 ? -130 : 130, dy: 0 }; }
+			if ( mode === 'gather' || mode === 'fade' ) { return { dx: 0, dy: 0 }; }
+			var dl = p.x, dr = 100 - p.x, dt = p.y, db = 100 - p.y, m = Math.min( dl, dr, dt, db ); // edges/sweep — nearest
+			if ( m === dt ) { return { dx: 0, dy: -130 }; }
+			if ( m === db ) { return { dx: 0, dy: 130 }; }
+			if ( m === dl ) { return { dx: -130, dy: 0 }; }
+			return { dx: 130, dy: 0 };
+		}
+
+		// SCROLL mode: the pile organizes itself as you scroll. Cards lerp from the scattered
+		// placement to the tidy grid by scroll progress (0 = scattered pile, 1 = organized grid) —
+		// the poly "find your files -> your search results" moment. Content stays live, editable cards.
+		if ( cycleMd === 'scroll' ) {
+			var scat = pts, org = organized(), setEls = [], i2;
+			for ( i2 = 0; i2 < pool; i2++ ) {
+				var c2 = cards[ i2 ];
+				if ( i2 < N ) {
+					c2.classList.add( 'is-set' );
+					c2.style.transition = 'none';      // scroll-driven — no CSS transition lag
+					c2.style.transitionDelay = '0ms';
+					c2.style.opacity = '1';
+					setEls.push( c2 );
+				} else { c2.classList.remove( 'is-set' ); c2.style.opacity = ''; }
+			}
+			var renderScroll = function () {
+				var t = ease( progOf() );   // smoothstep for a soft settle
+				for ( var k = 0; k < setEls.length; k++ ) {
+					var a = scat[ k ], b = org[ k ], card = setEls[ k ];
+					if ( ! a || ! b || ! card ) { continue; }
+					card.style.width  = ( cardPct * ( a.s + ( b.s - a.s ) * t ) ) + '%';
+					card.style.left   = ( a.x + ( b.x - a.x ) * t ) + '%';
+					card.style.top    = ( a.y + ( b.y - a.y ) * t ) + '%';
+					card.style.transform = 'translate(-50%,-50%) rotate(' + ( a.r + ( b.r - a.r ) * t ) + 'deg)';
+					card.style.zIndex = Math.round( a.z + ( b.z - a.z ) * t );
+				}
+			};
+			// Drive with a rAF loop WHILE IN VIEW (not just scroll events): inside a pinned Stage the
+			// element's own position is frozen but story progress keeps advancing, and smooth-scroll
+			// libraries don't always emit a 'scroll' per frame — rAF reads the freshest progress.
+			var sraf = 0, sInView = true;
+			var loop = function () { if ( ! sInView ) { sraf = 0; return; } renderScroll(); sraf = requestAnimationFrame( loop ); };
+			if ( 'IntersectionObserver' in window ) {
+				new IntersectionObserver( function ( es ) {
+					sInView = es[ 0 ].isIntersecting;
+					if ( sInView && ! sraf ) { sraf = requestAnimationFrame( loop ); }
+				}, { threshold: 0 } ).observe( storyEl || el );
+			} else { sraf = requestAnimationFrame( loop ); }
+			window.addEventListener( 'resize', renderScroll, { passive: true } );
+			renderScroll();
+			return;   // scroll mode fully handles placement + motion
+		}
+
+		// SCROLL-CYCLE mode (Poly's cinematic pile): as the visitor scrolls, each SET of photos flies
+		// in from the chosen edge, holds scattered, then flies back out — one set after the next.
+		// Optionally the LAST set arrives as a tidy grid (entering from the bottom, the "search
+		// results" resolution) with a couple of corner stragglers from the previous set. Fully
+		// scroll-scrubbed; content stays live, editable cards — no baked footage.
+		if ( cycleMd === 'scroll_cycle' ) {
+			var setsN    = Math.max( 1, Math.ceil( pool / N ) );
+			var finalOrg = !! num( el, 'data-tdg-final-org', 1 );
+			var corners  = !! num( el, 'data-tdg-corners', 0 );
+			var orgG     = organized();
+			// Per-set, per-slot poses (scatter target, resting target, enter/exit offsets), computed
+			// ONCE so positions are stable frame to frame.
+			var setData = [], s, k;
+			for ( s = 0; s < setsN; s++ ) {
+				var placeS = placements(), isFin = ( s === setsN - 1 ), poses = [];
+				for ( k = 0; k < placeS.length; k++ ) {
+					var scatP = placeS[ k ];
+					var orgP  = ( isFin && finalOrg && orgG[ k ] ) ? orgG[ k ] : null;
+					var restP = orgP || scatP;
+					poses.push( {
+						scat: scatP, rest: restP, org: !! orgP,
+						enterOff: offDir( restP, ( isFin && finalOrg ) ? 'bottom' : from ),
+						exitOff:  offDir( scatP, exitStyle ),
+						gJx: ( Math.random() * 2 - 1 ) * 15, gJy: ( Math.random() * 2 - 1 ) * 12, gR: ( Math.random() * 2 - 1 ) * 17,
+						corner: null,
+					} );
+				}
+				setData.push( { isFin: isFin, poses: poses } );
+			}
+			// Corner stragglers: pin two cards of the set JUST BEFORE the final one to the corners so
+			// they linger as the grid enters (bounded — never accumulates across the whole scroll).
+			if ( corners && setsN >= 2 ) {
+				var pen = setData[ setsN - 2 ].poses, spots = [ { x: 9, y: 12 }, { x: 91, y: 14 } ];
+				for ( var ci = 0; ci < Math.min( 2, pen.length ); ci++ ) { pen[ ci ].corner = spots[ ci ]; }
+			}
+			function setCard( card, L, T, tx, ty, r, w, z, op ) {
+				card.style.left = L + '%'; card.style.top = T + '%';
+				card.style.transform = 'translate(-50%,-50%) translate(' + tx + '%,' + ty + '%) rotate(' + r + 'deg)';
+				card.style.width = w + '%'; card.style.zIndex = z; card.style.opacity = op;
+			}
+			// Position ONE card given its set-local progress u (may be <0 before its turn, >1 after).
+			function placeCard( card, po, u, isFin ) {
+				var scatP = po.scat, restP = po.rest, w0 = cardPct * scatP.s, wR = cardPct * restP.s, e, x;
+				if ( u <= 0 ) { // not entered yet — parked at its enter-offstage, hidden
+					setCard( card, restP.x, restP.y, po.enterOff.dx, po.enterOff.dy, restP.r, wR, scatP.z, 0 ); return;
+				}
+				if ( isFin && po.org ) { // final organized set: enter once, then rest forever (no exit)
+					e = ease( u / 0.5 );
+					setCard( card, restP.x, restP.y, po.enterOff.dx * ( 1 - e ), po.enterOff.dy * ( 1 - e ), restP.r, wR, 30 + scatP.z, clamp01( u / 0.12 ) ); return;
+				}
+				if ( u < 0.28 ) { // ENTER: slide from the enter edge to the scatter pose
+					e = ease( u / 0.28 );
+					setCard( card, scatP.x, scatP.y, po.enterOff.dx * ( 1 - e ), po.enterOff.dy * ( 1 - e ), scatP.r, w0, scatP.z, clamp01( u / 0.09 ) );
+				} else if ( u <= 0.72 ) { // HOLD: resting scatter (a long dwell so the set reads clearly)
+					setCard( card, scatP.x, scatP.y, 0, 0, scatP.r, w0, scatP.z, 1 );
+				} else if ( u < 1 ) { // EXIT: clear per the exit direction/style
+					x = ease( ( u - 0.72 ) / 0.28 );
+					if ( exitStyle === 'gather' ) {
+						// Gather into a centred OVERLAPPING PILE (poly's "all your files" stack): converge to
+						// centre with a loose stack spread + natural lean, keeping FULL size so the cards
+						// overlap into a visible pile (not a shrinking cluster). It forms over the first ~70%
+						// and HOLDS, then fades only at the very end so the next set can enter; later cards
+						// stack on top (raised z).
+						var pileT = ease( clamp01( x / 0.7 ) );
+						setCard( card, lerp( scatP.x, 50 + po.gJx, pileT ), lerp( scatP.y, 50 + po.gJy, pileT ), 0, 0, lerp( scatP.r, po.gR, pileT ), w0, 30 + scatP.z, x < 0.86 ? 1 : ( 1 - ( x - 0.86 ) / 0.14 ) );
+					} else if ( exitStyle === 'fade' ) {
+						setCard( card, scatP.x, scatP.y, 0, 0, scatP.r, w0, scatP.z, 1 - x );
+					} else { // directional sweep (nearest/up/down/sides)
+						setCard( card, scatP.x, scatP.y, po.exitOff.dx * x, po.exitOff.dy * x, scatP.r * ( 1 + 0.6 * x ), w0, scatP.z, 1 - clamp01( ( x - 0.2 ) / 0.8 ) );
+					}
+				} else { // PAST exit — corner straggler stays; everyone else is gone
+					if ( po.corner ) { setCard( card, po.corner.x, po.corner.y, 0, 0, scatP.r * 0.6, w0 * 0.9, 5, 0.5 ); }
+					else { setCard( card, scatP.x, scatP.y, po.exitOff.dx, po.exitOff.dy, scatP.r, w0, scatP.z, 0 ); }
+				}
+			}
+			for ( var ii = 0; ii < pool; ii++ ) { cards[ ii ].classList.add( 'is-set' ); cards[ ii ].style.transition = 'none'; cards[ ii ].style.transitionDelay = '0ms'; }
+
+			if ( reduce ) { // reduced motion: show each set's resting layout (final grid visible), no scrub
+				for ( var sr = 0; sr < setsN; sr++ ) {
+					for ( var kr = 0; kr < setData[ sr ].poses.length; kr++ ) {
+						var ir = sr * N + kr; if ( ir >= pool ) { break; }
+						var pr2 = setData[ sr ].poses[ kr ];
+						setCard( cards[ ir ], pr2.rest.x, pr2.rest.y, 0, 0, pr2.rest.r, cardPct * pr2.rest.s, pr2.scat.z, setData[ sr ].isFin ? 1 : 0 );
+					}
+				}
+				return;
+			}
+			var renderCycle = function () {
+				var p = progOf();
+				for ( var s2 = 0; s2 < setsN; s2++ ) {
+					var sd = setData[ s2 ], u = ( p - s2 / setsN ) * setsN;
+					for ( var k2 = 0; k2 < sd.poses.length; k2++ ) {
+						var idx = s2 * N + k2; if ( idx >= pool ) { break; }
+						placeCard( cards[ idx ], sd.poses[ k2 ], u, sd.isFin );
+					}
+				}
+			};
+			var craf = 0, cInView = true;
+			var cloop = function () { if ( ! cInView ) { craf = 0; return; } renderCycle(); craf = requestAnimationFrame( cloop ); };
+			if ( 'IntersectionObserver' in window ) {
+				new IntersectionObserver( function ( es ) { cInView = es[ 0 ].isIntersecting; if ( cInView && ! craf ) { craf = requestAnimationFrame( cloop ); } }, { threshold: 0 } ).observe( storyEl || el );
+			} else { craf = requestAnimationFrame( cloop ); }
+			window.addEventListener( 'resize', renderCycle, { passive: true } );
+			renderCycle();
+			return;   // scroll-cycle mode fully handles placement + motion
+		}
+
+		if ( reduce ) { applySet( 0, false ); return; } // reduced motion: static scatter, no cycling
+
+		// Enter once the scatter is actually in view (and pause auto-cycling off-screen).
+		if ( 'IntersectionObserver' in window ) {
+			var io = new IntersectionObserver( function ( es ) {
+				inView = es[ 0 ].isIntersecting;
+				if ( inView && ! entered ) { entered = true; applySet( 0, true ); schedule(); }
+			}, { threshold: 0.15 } );
+			io.observe( el );
+		} else { entered = true; applySet( 0, true ); schedule(); }
+
+		el.addEventListener( 'mouseenter', function () { hovering = true; } );
+		el.addEventListener( 'mouseleave', function () { hovering = false; } );
+		if ( cycleMd === 'click' ) {
+			el.addEventListener( 'click', function ( e ) {
+				if ( e.target && e.target.closest && e.target.closest( 'a' ) ) { return; } // links keep their job
+				shuffle();
+			} );
+		}
+	}
+
+	/* Device Cycler — a device frame whose SCREEN steps through the images one at a time. The active
+	 * screen index comes from scroll progress (parent Scroll Story Stage when present, else the
+	 * gallery's own viewport travel) or an automatic dwell timer; CSS cross-fades / slides between
+	 * them. Every screen is a live editable image. */
+	function initDeviceCycler( el ) {
+		if ( el.__tdgInit ) { return; } el.__tdgInit = true;
+		var cards = el.querySelectorAll( '.tdg__screen .tdg__card' );
+		var N = cards.length;
+		if ( ! N ) { return; }
+		var mode  = el.getAttribute( 'data-tdg-cycle' ) || 'scroll';
+		var dwell = clamp( num( el, 'data-tdg-dwell', 3 ), 1, 12 ) * 1000;
+		var stage = el.querySelector( '.tdg__stage' );
+		var cur = -1;
+		function activate( i ) {
+			i = Math.max( 0, Math.min( N - 1, i ) );
+			if ( i === cur ) { return; } cur = i;
+			for ( var k = 0; k < N; k++ ) { cards[ k ].classList.toggle( 'is-active', k === i ); cards[ k ].classList.toggle( 'is-past', k < i ); }
+		}
+		activate( 0 );
+		if ( reduce || mode === 'off' || N < 2 ) { return; }
+
+		if ( mode === 'scroll' ) {
+			var storyEl = null, pScene = null;
+			var progOf = function () {
+				if ( ! storyEl && el.closest ) { storyEl = el.closest( '.upw-story--stage' ); }
+				if ( storyEl && typeof storyEl.__storyProgress === 'number' ) {
+					var pr = storyEl.__storyProgress;
+					if ( pScene === null ) { pScene = ( el.closest && el.closest( '.upw-story-scene--persist' ) ) || false; }
+					if ( pScene && storyEl.__storyBeats && typeof pScene.__pFrom === 'number' ) {
+						var lo = pScene.__pFrom / storyEl.__storyBeats, hi = ( pScene.__pTo + 1 ) / storyEl.__storyBeats;
+						if ( hi > lo ) { pr = Math.max( 0, Math.min( 1, ( pr - lo ) / ( hi - lo ) ) ); }
+					}
+					return pr;
+				}
+				return scrollProgress( el, stage );
+			};
+			var raf = 0, inView = true;
+			var loop = function () { if ( ! inView ) { raf = 0; return; } activate( Math.floor( progOf() * N ) ); raf = requestAnimationFrame( loop ); };
+			if ( 'IntersectionObserver' in window ) {
+				new IntersectionObserver( function ( es ) { inView = es[ 0 ].isIntersecting; if ( inView && ! raf ) { raf = requestAnimationFrame( loop ); } }, { threshold: 0 } ).observe( el );
+			} else { raf = requestAnimationFrame( loop ); }
+			return;
+		}
+
+		// auto — dwell timer, paused while off-screen.
+		var idx = 0, timer = 0, vis = true;
+		function tick() { if ( vis ) { idx = ( idx + 1 ) % N; activate( idx ); } timer = setTimeout( tick, dwell ); }
+		if ( 'IntersectionObserver' in window ) {
+			new IntersectionObserver( function ( es ) { vis = es[ 0 ].isIntersecting; }, { threshold: 0.2 } ).observe( el );
+		}
+		timer = setTimeout( tick, dwell );
+	}
+
+	/* ------------------------------------------------------------------ *
+	 * Sphere Cascade — the vertical, spherical sibling of Panorama Wall. A grid of Columns × K cards is
+	 * mapped onto a sphere (column = longitude, card = latitude) and CASCADES vertically: each column's
+	 * cards scroll along latitude and recycle. Signed Curvature bends BOTH axes from a concave bowl
+	 * (viewer inside) through flat to a full convex sphere. Edge Fade dims toward the rim; the latitude
+	 * wrap edge fades to hide the recycle. Cards sit tangent to the surface (like Card Sphere).
+	 * ------------------------------------------------------------------ */
+	function initCascade( el ) {
+		if ( el.__tdg ) { return; }
+		el.__tdg = true;
+		var stage   = el.querySelector( '.tdg__stage' );
+		var cascade = el.querySelector( '.tdg__cascade' );
+		if ( ! stage || ! cascade ) { return; }
+		var cols = Array.prototype.slice.call( cascade.querySelectorAll( '.tdg__col' ) );
+		if ( ! cols.length ) { return; }
+
+		var drive    = el.getAttribute( 'data-tdg-drive' ) || 'continuous';
+		var speed    = num( el, 'data-tdg-speed', 20 );
+		var dir      = num( el, 'data-tdg-dir', 1 );   // +1 up, -1 down
+		var alt      = num( el, 'data-tdg-alt', 0 );   // alternate: odd columns cascade the other way
+		var curv     = num( el, 'data-tdg-curv', -100 ); // signed: -concave .. +convex
+		var tilt     = num( el, 'data-tdg-tilt', 0 );
+		var gap      = num( el, 'data-tdg-gap', 5 ) / 100;
+		var edge     = clamp( num( el, 'data-tdg-edge', 0 ) / 100, 0, 1 );
+		var cardPct  = num( el, 'data-tdg-card', 18 ) / 100;
+
+		var colData = cols.map( function ( cw ) { return { col: cw, cards: Array.prototype.slice.call( cw.querySelectorAll( '.tdg__card' ) ) }; } );
+		var C = colData.length;                 // columns
+		var K = colData[ 0 ].cards.length;      // cards per column
+		if ( ! K ) { return; }
+		var zSign = curv >= 0 ? 1 : -1;
+		var R = 0, dPhi = 0, dTheta = 0, lonSpan = 0, latSpan = 0, Y = 0, vel = 0;
+
+		function layout() {
+			var W = stage.clientWidth || el.clientWidth || 1;
+			var cardW = Math.max( 30, W * cardPct );
+			var cardH = ( colData[ 0 ].cards[ 0 ] && colData[ 0 ].cards[ 0 ].offsetHeight ) ? colData[ 0 ].cards[ 0 ].offsetHeight : cardW * 0.5625;
+			var gapPx = cardW * gap;
+			// Radius from |curvature| (inverse: tighter curve = smaller R = more wrap). Same mapping as
+			// the Panorama Wall so the two read as siblings.
+			var amt = clamp( Math.abs( curv ) / 150, 0.08, 1 );
+			R = cardW * 2.87 / amt;
+			// Angular steps so neighbours sit edge-to-edge with the gap, on each axis.
+			dPhi   = 2 * Math.asin( clamp( ( cardW + gapPx ) / ( 2 * R ), 0, 0.5 ) ) * 180 / Math.PI;
+			dTheta = 2 * Math.asin( clamp( ( cardH + gapPx ) / ( 2 * R ), 0, 0.5 ) ) * 180 / Math.PI;
+			lonSpan = C * dPhi;
+			latSpan = K * dTheta;
+			stage.style.perspective = ( W * 1.2 ) + 'px';
+			colData.forEach( function ( cd ) {
+				cd.cards.forEach( function ( c ) { c.style.width = cardW + 'px'; c.style.marginLeft = ( -cardW / 2 ) + 'px'; c.style.marginTop = ( -cardH / 2 ) + 'px'; } );
+			} );
+		}
+
+		function applyCascade() {
+			// Centre the sphere so its NEAR pole sits at the working depth (z≈0) for ANY radius: cards are
+			// at translateZ(zSign·R), so translate the container by -zSign·R. Concave (curv<0) → edges bow
+			// TOWARD the viewer (a bowl); convex (curv>0) → centre bulges toward the viewer (a ball). At
+			// low |curvature| R is huge, angles tiny → a flat grid filling the frame (no runaway depth).
+			cascade.style.transform = 'rotateX(' + tilt + 'deg) translateZ(' + ( -zSign * R ) + 'px)';
+			var lonHalf = lonSpan / 2, latHalf = latSpan / 2;
+			for ( var j = 0; j < C; j++ ) {
+				var cd  = colData[ j ];
+				var phi = ( j - ( C - 1 ) / 2 ) * dPhi;                 // fixed column longitude
+				var nph = lonHalf > 0 ? Math.abs( phi ) / lonHalf : 0;
+				var sdir = alt ? ( j % 2 ? -1 : 1 ) : 1;               // alternate columns cascade opposite
+				for ( var k = 0; k < K; k++ ) {
+					var c = cd.cards[ k ];
+					var raw = ( k - ( K - 1 ) / 2 ) * dTheta + Y * sdir;
+					var theta = ( ( raw + latHalf ) % latSpan + latSpan ) % latSpan - latHalf; // wrap into [-latHalf,latHalf)
+					var nth = latHalf > 0 ? Math.abs( theta ) / latHalf : 0;
+					c.style.transform = 'rotateY(' + phi + 'deg) rotateX(' + ( -theta ) + 'deg) translateZ(' + ( zSign * R ) + 'px)';
+					// radial rim fade (both axes) + a hard fade at the latitude wrap edge to hide the recycle
+					var af  = Math.min( 1, Math.sqrt( nph * nph + nth * nth ) );
+					var vis = nth > 0.86 ? Math.max( 0, ( 1 - nth ) / 0.14 ) : 1;
+					c.style.opacity = ( vis * ( 1 - af * af * edge ) ).toFixed( 3 );
+					c.style.zIndex = String( 1000 - Math.round( af * 1000 ) );
+				}
+			}
+		}
+
+		layout();
+		applyCascade();
+		window.addEventListener( 'resize', function () { layout(); applyCascade(); }, { passive: true } );
+		var hoverF = hoverFactor( el );
+		var allowDrag = num( el, 'data-tdg-allowdrag', 1 );
+		var momentum = num( el, 'data-tdg-momentum', 1 );
+		var dragging = false, py = 0, scrollY = null;
+		var advance = function ( dt ) { Y += dir * ( latSpan / Math.max( 1, speed ) ) * dt * hoverF(); }; // one loop = one full latitude span
+
+		if ( allowDrag ) {
+			el.style.cursor = 'grab';
+			var down = function ( x, y ) { dragging = true; py = y; vel = 0; el.style.cursor = 'grabbing'; };
+			var move = function ( x, y ) { if ( ! dragging ) { return; } var dy = y - py; py = y; Y += dy * 0.15; vel = dy * 0.15; };
+			var up = function () { dragging = false; el.style.cursor = 'grab'; };
+			attachDrag( el, down, move, up );
+		}
+
+		if ( drive === 'scroll' ) {
+			var onScroll = function () { scrollY = dir * scrollProgress( el, stage ) * latSpan * 2; };
+			window.addEventListener( 'scroll', onScroll, { passive: true } );
+			onScroll();
+		}
+
+		var autoRun = ( drive === 'continuous' && ! reduce );
+		if ( ! ( autoRun || allowDrag || drive === 'scroll' ) ) { return; }
+		var last = 0;
+		var loop = function ( t ) {
+			if ( ! last ) { last = t; }
+			var dt = ( t - last ) / 1000; last = t;
+			if ( ! dragging ) {
+				if ( autoRun ) { advance( dt ); }
+				if ( momentum && Math.abs( vel ) > 0.02 ) { Y += vel; vel *= 0.95; }
+				else if ( drive === 'scroll' && scrollY !== null ) { Y = scrollY; }
+			}
+			applyCascade();
+			requestAnimationFrame( loop );
+		};
+		requestAnimationFrame( loop );
+	}
+
+	/* Totem Wall — a flat row of INDEPENDENT vertical cylinders ("totems"). Where Sphere Cascade maps
+	 * every column onto ONE shared sphere, here each column is its own vertical barrel: the column sits
+	 * at a fixed X and its cards wrap around that column's own horizontal axis (rotateX) into a rounded
+	 * pillar. The columns cascade vertically (up / down / alternate) and the cards recycle at the wrap.
+	 * Signed Curvature curls each column: negative concave (curves away) → near-flat → positive convex
+	 * (bulges toward you into a rounded totem). Zoom sets totem size (fewer, larger totems as it rises).
+	 * Shares the cascade DOM (.tdg__cascade > .tdg__col > .tdg__card) and driver shape. */
+	function initTotem( el ) {
+		if ( el.__tdg ) { return; }
+		el.__tdg = true;
+		var stage   = el.querySelector( '.tdg__stage' );
+		var cascade = el.querySelector( '.tdg__cascade' );
+		if ( ! stage || ! cascade ) { return; }
+		var cols = Array.prototype.slice.call( cascade.querySelectorAll( '.tdg__col' ) );
+		if ( ! cols.length ) { return; }
+
+		var drive = el.getAttribute( 'data-tdg-drive' ) || 'continuous';
+		var speed = num( el, 'data-tdg-speed', 20 );
+		var dir   = num( el, 'data-tdg-dir', 1 );   // +1 up, -1 down
+		var alt   = num( el, 'data-tdg-alt', 0 );   // alternate: odd columns cascade the other way
+		var curv  = num( el, 'data-tdg-curv', -150 ); // signed: -concave .. +convex
+		var tilt  = num( el, 'data-tdg-tilt', -45 );
+		var gap   = num( el, 'data-tdg-gap', 0.5 ) / 100;
+		var edge  = clamp( num( el, 'data-tdg-edge', 0 ) / 100, 0, 1 );
+		var zoom  = clamp( num( el, 'data-tdg-zoom', 10 ), 0, 100 );
+
+		var colData = cols.map( function ( cw ) { return { col: cw, cards: Array.prototype.slice.call( cw.querySelectorAll( '.tdg__card' ) ) }; } );
+		var C = colData.length;                 // totems (columns)
+		var K = colData[ 0 ].cards.length;      // cards per totem
+		if ( ! K ) { return; }
+		var zSign = curv >= 0 ? 1 : -1;
+		var R = 0, dTheta = 0, latSpan = 0, pitchX = 0, cardW = 0, cardH = 0, Y = 0, vel = 0;
+
+		function layout() {
+			var W = stage.clientWidth || el.clientWidth || 1;
+			// Zoom → card width as a fraction of the stage: higher zoom = larger totems, fewer visible
+			// (the rim totems fall off the sides and fade). Matches the animos "Zoom" behaviour.
+			var cardPct = 0.10 + ( zoom / 100 ) * 0.30;
+			cardW = Math.max( 30, W * cardPct );
+			cardH = ( colData[ 0 ].cards[ 0 ] && colData[ 0 ].cards[ 0 ].offsetHeight ) ? colData[ 0 ].cards[ 0 ].offsetHeight : cardW * 0.5625;
+			var gapPx = cardW * gap;
+			// Radius from |curvature| (inverse: tighter curve = smaller R = more wrap), keyed to card
+			// HEIGHT because the totem wraps vertically. Same 2.87 constant as its horizontal sibling
+			// (Panorama Wall) so the two curves read alike.
+			var amt = clamp( Math.abs( curv ) / 150, 0.08, 1 );
+			R = cardH * 2.87 / amt;
+			dTheta = 2 * Math.asin( clamp( ( cardH + gapPx ) / ( 2 * R ), 0, 0.5 ) ) * 180 / Math.PI;
+			latSpan = K * dTheta;
+			pitchX  = cardW + gapPx;                // horizontal spacing between totems
+			stage.style.perspective = ( W * 1.2 ) + 'px';
+			colData.forEach( function ( cd ) {
+				cd.cards.forEach( function ( c ) { c.style.width = cardW + 'px'; c.style.marginLeft = ( -cardW / 2 ) + 'px'; c.style.marginTop = ( -cardH / 2 ) + 'px'; } );
+			} );
+		}
+
+		function applyTotem() {
+			// The whole wall only tips (Tilt). Each column is centred at the stage origin, then pushed to
+			// its X slot and depth-centred so its NEAR face sits at z≈0 for ANY radius (cards translateZ
+			// (zSign·R); the column translates by -zSign·R). So concave (curv<0) curls the totem away, and
+			// convex (curv>0) bulges it toward the viewer — each column independent, in a flat row.
+			cascade.style.transform = 'rotateX(' + tilt + 'deg)';
+			var latHalf = latSpan / 2;
+			var xHalf   = ( C - 1 ) / 2;
+			for ( var j = 0; j < C; j++ ) {
+				var cd = colData[ j ];
+				var x  = ( j - xHalf ) * pitchX;
+				cd.col.style.transform = 'translateX(' + x + 'px) translateZ(' + ( -zSign * R ) + 'px)';
+				var nx   = xHalf > 0 ? Math.abs( j - xHalf ) / xHalf : 0; // 0 centre column .. 1 rim column
+				var sdir = alt ? ( j % 2 ? -1 : 1 ) : 1;                  // alternate columns cascade opposite
+				for ( var k = 0; k < K; k++ ) {
+					var c   = cd.cards[ k ];
+					var raw = ( k - ( K - 1 ) / 2 ) * dTheta + Y * sdir;
+					var theta = ( ( raw + latHalf ) % latSpan + latSpan ) % latSpan - latHalf; // wrap into [-latHalf,latHalf)
+					var nth = latHalf > 0 ? Math.abs( theta ) / latHalf : 0;
+					c.style.transform = 'rotateX(' + ( -theta ) + 'deg) translateZ(' + ( zSign * R ) + 'px)';
+					// hard fade at the wrap edge hides the recycle; Edge Fade dims the rim totems (left/right).
+					var vis = nth > 0.86 ? Math.max( 0, ( 1 - nth ) / 0.14 ) : 1;
+					c.style.opacity = ( vis * ( 1 - nx * nx * edge ) ).toFixed( 3 );
+					c.style.zIndex = String( 1000 - Math.round( nth * 1000 ) );
+				}
+			}
+		}
+
+		layout();
+		applyTotem();
+		window.addEventListener( 'resize', function () { layout(); applyTotem(); }, { passive: true } );
+		var hoverF = hoverFactor( el );
+		var allowDrag = num( el, 'data-tdg-allowdrag', 1 );
+		var momentum = num( el, 'data-tdg-momentum', 1 );
+		var dragging = false, py = 0, scrollY = null;
+		var advance = function ( dt ) { Y += dir * ( latSpan / Math.max( 1, speed ) ) * dt * hoverF(); }; // one loop = one latitude span
+
+		if ( allowDrag ) {
+			el.style.cursor = 'grab';
+			var down = function ( x, y ) { dragging = true; py = y; vel = 0; el.style.cursor = 'grabbing'; };
+			var move = function ( x, y ) { if ( ! dragging ) { return; } var dy = y - py; py = y; Y += dy * 0.15; vel = dy * 0.15; };
+			var up = function () { dragging = false; el.style.cursor = 'grab'; };
+			attachDrag( el, down, move, up );
+		}
+
+		if ( drive === 'scroll' ) {
+			var onScroll = function () { scrollY = dir * scrollProgress( el, stage ) * latSpan * 2; };
+			window.addEventListener( 'scroll', onScroll, { passive: true } );
+			onScroll();
+		}
+
+		var autoRun = ( drive === 'continuous' && ! reduce );
+		if ( ! ( autoRun || allowDrag || drive === 'scroll' ) ) { return; }
+		var last = 0;
+		var loop = function ( t ) {
+			if ( ! last ) { last = t; }
+			var dt = ( t - last ) / 1000; last = t;
+			if ( ! dragging ) {
+				if ( autoRun ) { advance( dt ); }
+				if ( momentum && Math.abs( vel ) > 0.02 ) { Y += vel; vel *= 0.95; }
+				else if ( drive === 'scroll' && scrollY !== null ) { Y = scrollY; }
+			}
+			applyTotem();
+			requestAnimationFrame( loop );
+		};
+		requestAnimationFrame( loop );
+	}
+
+	/* Card Stack — a deck of image cards. The top card is featured; the rest peek behind it (offset up,
+	 * shrunk) forming a stack. A continuous "position" (0 = card 0 on top … N-1 = last on top) advances
+	 * the deck: as position passes a card it PEELS OFF (translates out the exit edge + fades) while the
+	 * next rises to the top. Driven by a parent Scroll Story stage's progress (scrubs with the scene),
+	 * else the gallery's own travel; or an auto dwell timer. Content stays live, editable cards. */
+	function initCardStack( el ) {
+		if ( el.__tdgInit ) { return; } el.__tdgInit = true;
+		var cards = el.querySelectorAll( '.tdg__deck > .tdg__card' );
+		var N = cards.length;
+		if ( ! N ) { return; }
+		var mode      = el.getAttribute( 'data-tdg-cycle' ) || 'scroll';
+		var dwell     = clamp( num( el, 'data-tdg-dwell', 2.5 ), 1, 12 ) * 1000;
+		var exit      = el.getAttribute( 'data-tdg-exit' ) || 'down';
+		var behind    = clamp( num( el, 'data-tdg-behind', 3 ), 1, 6 );
+		var offset    = clamp( num( el, 'data-tdg-offset', 5 ), 0, 14 );
+		var scaleStep = clamp( num( el, 'data-tdg-scale', 6 ), 0, 18 ) / 100;
+		var stage     = el.querySelector( '.tdg__stage' );
+		var ev = ( exit === 'up' ) ? { x: 0, y: -1, r: 0 } : ( exit === 'left' ) ? { x: -1, y: 0, r: -1 }
+			: ( exit === 'right' ) ? { x: 1, y: 0, r: 1 } : { x: 0, y: 1, r: 0 };
+
+		function place( card, d ) {
+			var tf, op, z;
+			if ( d >= 0 ) {
+				// on top (d≈0) or waiting BEHIND: nudge up + shrink per depth; only `behind` peek out.
+				var dd = Math.min( d, behind + 1 );
+				var sc = Math.max( 0.4, 1 - dd * scaleStep );
+				tf = 'translate3d(0,' + ( -dd * offset ).toFixed(2) + '%,0) scale(' + sc.toFixed(3) + ')';
+				op = d > behind ? 0 : Math.max( 0, 1 - dd * 0.14 );
+				z  = 1000 - Math.round( d * 20 );
+			} else {
+				// already PASSED — peel off the exit edge, fade, sit above the new top while leaving.
+				var e = -d, k = Math.min( 1.25, e );
+				tf = 'translate3d(' + ( ev.x * k * 120 ).toFixed(1) + '%,' + ( ev.y * k * 120 ).toFixed(1) + '%,0) rotate(' + ( ev.r * -7 * k ).toFixed(1) + 'deg) scale(' + ( 1 + k * 0.06 ).toFixed(3) + ')';
+				op = Math.max( 0, 1 - e * 1.5 );
+				z  = 1000 + Math.round( e * 8 );
+			}
+			card.style.transform = tf; card.style.opacity = op; card.style.zIndex = z;
+		}
+		function render( pos ) { for ( var i = 0; i < N; i++ ) { place( cards[ i ], i - pos ); } }
+		render( 0 );
+		if ( reduce || mode === 'off' || N < 2 ) { return; }
+
+		if ( mode === 'scroll' ) {
+			// progress from a parent Scroll Story stage (remapped to a ranged-persist slice if present),
+			// else the gallery's own travel through the viewport — matches the other scroll designs.
+			var storyEl = null, pScene = null;
+			var progOf = function () {
+				if ( ! storyEl && el.closest ) { storyEl = el.closest( '.upw-story--stage' ); }
+				if ( storyEl && typeof storyEl.__storyProgress === 'number' ) {
+					var pr = storyEl.__storyProgress;
+					if ( pScene === null ) { pScene = ( el.closest && el.closest( '.upw-story-scene' ) ) || false; }
+					if ( pScene && storyEl.__storyBeats ) {
+						var from, to;
+						if ( typeof pScene.__pFrom === 'number' ) { from = pScene.__pFrom; to = pScene.__pTo; }
+						else if ( typeof pScene.__beatIndex === 'number' ) { from = pScene.__beatIndex; to = pScene.__beatIndex; }
+						if ( from !== undefined ) { var lo = from / storyEl.__storyBeats, hi = ( to + 1 ) / storyEl.__storyBeats; if ( hi > lo ) { pr = Math.max( 0, Math.min( 1, ( pr - lo ) / ( hi - lo ) ) ); } }
+					}
+					return pr;
+				}
+				return scrollProgress( el, stage );
+			};
+			var raf = 0, inView = true;
+			var loop = function () { if ( ! inView ) { raf = 0; return; } render( progOf() * ( N - 1 ) ); raf = requestAnimationFrame( loop ); };
+			if ( 'IntersectionObserver' in window ) {
+				new IntersectionObserver( function ( es ) { inView = es[ 0 ].isIntersecting; if ( inView && ! raf ) { raf = requestAnimationFrame( loop ); } }, { threshold: 0 } ).observe( storyEl || el );
+			} else { raf = requestAnimationFrame( loop ); }
+			return;
+		}
+
+		// auto — ease a continuous position toward an advancing integer target; on wrap, re-stack at 0.
+		var pos = 0, target = 0, vis = true, araf = 0;
+		var frame = function () { pos += ( target - pos ) * 0.12; render( pos ); araf = requestAnimationFrame( frame ); };
+		var timer = setInterval( function () {
+			if ( ! vis ) { return; }
+			if ( target >= N - 1 ) { target = 0; pos = 0; } else { target += 1; }
+		}, dwell );
+		if ( 'IntersectionObserver' in window ) {
+			new IntersectionObserver( function ( es ) { vis = es[ 0 ].isIntersecting; }, { threshold: 0.2 } ).observe( el );
+		}
+		araf = requestAnimationFrame( frame );
+		void timer;
+	}
+
 export function initEl(el) {
   if (el.classList.contains('tdg--carousel-ring')) { initRing(el); }
   else if (el.classList.contains('tdg--panorama-wall')) { initWall(el); }
   else if (el.classList.contains('tdg--card-sphere')) { initGlobe(el); }
   else if (el.classList.contains('tdg--orbit-globe')) { initOrbit(el); }
+  else if (el.classList.contains('tdg--totem-wall')) { initTotem(el); }
 }

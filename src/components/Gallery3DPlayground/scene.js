@@ -110,6 +110,25 @@ export function buildScene(design, o) {
     return `<div class="tdg tdg--orbit-globe" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__orbit">${cells}</div></div></div>`;
   }
 
+  if (design === 'totem_wall') {
+    // mirror totem-wall.php: a generous 9×14 grid; Zoom (not a count) drives density, dir is vertical.
+    const a = attr({
+      ...shared,
+      'data-tdg-dir': o.direction === 'down' ? -1 : 1,
+      'data-tdg-alt': o.direction === 'alternate' ? 1 : 0,
+      'data-tdg-curv': o.curvature, 'data-tdg-tilt': o.tilt, 'data-tdg-gap': o.gap,
+      'data-tdg-edge': o.edge_fade, 'data-tdg-zoom': o.zoom, 'data-tdg-momentum': 1,
+    });
+    const cols = 9, per = 14;
+    let colsHtml = '';
+    for (let c = 0; c < cols; c++) {
+      let cells = '';
+      for (let k = 0; k < per; k++) cells += cardHtml(SAMPLES[(k * cols + c) % SAMPLES.length]);
+      colsHtml += `<div class="tdg__col">${cells}</div>`;
+    }
+    return `<div class="tdg tdg--totem-wall" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__cascade">${colsHtml}</div></div></div>`;
+  }
+
   // card_sphere
   const {rows, bands} = sphereBands(o);
   const a = attr({

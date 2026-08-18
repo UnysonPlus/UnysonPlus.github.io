@@ -36,6 +36,11 @@ don't see it.
   wraps the wall *toward* you (concave), positive bulges it *away* (convex).
 - **Card Sphere** — a spinning disco-ball of images. **Globe Size** zooms the sphere; **Card Size**
   sets how finely it tiles (the bands and card counts are derived to cover it).
+- **Totem Wall** — a flat row of *independent* vertical totems: each column wraps its cards around
+  its own axis into a rounded pillar and cascades vertically (up / down / alternate). **Curvature**
+  is signed — negative curls each column away (concave), positive bulges it toward you into a full
+  pill; **Zoom** sets the totem size (fewer, larger totems as it rises), and a steep **Tilt** gives
+  the diagonal, diamond-lattice look.
 
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.

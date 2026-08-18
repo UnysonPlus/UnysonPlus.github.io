@@ -60,3 +60,27 @@ echo esc_html( $value );
 ```text
 imgs-rounded
 ```
+
+## In Gutenberg blocks (the React control)
+
+`image-style-picker` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `image-style-picker` control does
+
+A grid of tiles, each showing the sample photo with that preset's treatment actually applied, plus a **None** tile when `allow_none` is on.
+
+:::note[Why this control previews and `border-style-picker` does not]
+Both are "pick a preset", and the two controls deliberately look different.
+
+[`border-style-picker`](./border-style-picker.md) previews a choice by applying the preset's class to a sample box, and those classes live in the **theme's compiled stylesheet** — which loads into the editor's canvas iframe, not the sidebar. Tiles there would be a grid of identical unstyled boxes: a preview that previews nothing.
+
+The Image Style presets ship in `unysonplus-presets`, enqueued on `admin_enqueue_scripts`, so they **are** present in the outer admin document the sidebar renders into. The swatches really are treated, and a picture of the treatment beats its name.
+:::
+
+:::caution[An unknown key reads as unselected]
+`_get_value_from_input()` accepts a key present in `choices` — plus `''` when `allow_none` is on — and silently substitutes the option default for anything else. So a preset that has since been renamed or removed does not error; it quietly becomes something else on the next save.
+
+The control shows such a value as **unselected** rather than displaying a selection the server would refuse. Better to see that nothing is chosen than to believe something is.
+:::

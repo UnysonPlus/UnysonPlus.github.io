@@ -67,6 +67,7 @@ export function initEl(el) {
   else if (el.classList.contains('tdg--totem-wall')) { initTotem(el); }
   else if (el.classList.contains('tdg--parallax-totem')) { initParallax(el); }
   else if (el.classList.contains('tdg--card-tunnel')) { initTunnel(el); }
+  else if (el.classList.contains('tdg--spiral-stream')) { initSpiral(el); }
 }
 `;
 

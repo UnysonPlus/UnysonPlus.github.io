@@ -146,6 +146,26 @@ const DESIGNS = {
       se('hover_behavior', 'On Hover', 'slow', HOVER_CHOICES),
     ],
   },
+  spiral_stream: {
+    group: '3D & Perspective',
+    label: 'Spiral Stream',
+    blurb: 'Cards threaded along a 3D helix that streams past the camera — each rotates around its own vertical axis (fronts, edge-on slivers, mirrored backs). Taper narrows the coil into a vortex or flares it out; Card Count fills it.',
+    controls: [
+      sl('card_count', 'Card Count', 8, 3, 48, 1),
+      sl('spiral_turns', 'Spiral Turns', 1, 0.25, 6, 0.25),
+      sl('spiral_size', 'Spiral Size (%)', 35, 0, 100),
+      sl('taper', 'Taper (%)', -90, -100, 100),
+      sl('card_gap', 'Card Gap (%)', 0, 0, 100),
+      sl('ring_tilt', 'Ring Tilt (°)', -45, -45, 45),
+      sl('perspective', 'Perspective (%)', 0, 0, 100),
+      sl('back_fade', 'Back Fade (%)', 10, 0, 100),
+      sl('scale_pulse', 'Scale Pulse (%)', 0, 0, 100),
+      sl('card_size', 'Card Size (%)', 12, 4, 60),
+      ...SHARED({drive: 'continuous', speed: 20, ratio: '3-4', corner: 0, dir: 'forward',
+        driveChoices: [['continuous', 'Continuous'], ['static', 'Static']],
+        dirChoices: [['forward', 'Forward'], ['backward', 'Backward']]}),
+    ],
+  },
 };
 
 const GROUP_ORDER = ['3D & Perspective'];

@@ -54,6 +54,11 @@ don't see it.
   around its own vertical axis so you see fronts, edge-on slivers and mirrored backs. **Spiral Turns**
   sets the revolutions, **Taper** narrows the coil into a vortex or flares it out, **Card Count** fills
   it, and **Scale Pulse** breathes the sizes for a living stream.
+- **Depth Stack** — a deck of cards receding straight into depth (the front card the hero) that
+  streams toward the camera: the front flies out and fades while the next comes forward and a new one
+  fades in at the back. **Spread** (Fan, along **Spread Angle**) or **Scatter** fans the deck out,
+  **Wobble** jitters the tilt, and **Depth Fade** + **Depth Blur** give a depth-of-field falloff.
+  Pair it with **Motion → Scroll-scrub** so the visitor's scroll advances the stack.
 
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.

@@ -16,6 +16,10 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Posts**](./posts.md) | `posts` | A query-driven grid or list of posts |
+| [**Table of Contents**](./toc.md) | `toc` | A contents list built from the page headings |
+| [**Button**](./button.md) | `button` | A link button with presets, icons and hover effects |
+| [**Pricing Table**](./pricing-table.md) | `pricing_table` | Pricing plans with a billing toggle |
 | [**Image Sequence**](./image-sequence.md) | `image_sequence` | Frames scrubbed by scroll — a product spin |
 | [**SVG Morph**](./svg-morph.md) | `svg_morph` | One SVG shape morphing into the next |
 | [**WebGL Object**](./webgl-object.md) | `webgl_object` | A generated 3D object rendered with WebGL |

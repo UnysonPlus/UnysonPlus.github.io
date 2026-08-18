@@ -68,3 +68,23 @@ echo esc_html( $value );
 ```text
 btn-primary
 ```
+
+## In Gutenberg blocks (the React control)
+
+``button-style-picker`` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `button-style-picker` control does
+
+A list of rows, each rendering a **real button** with that preset's classes applied, plus a **— Select —** row when `allow_none` is on.
+
+:::note[Real previews here, a plain dropdown for `border-style-picker`]
+The difference is which document the CSS is in, not a style choice.
+
+These presets ship in `unysonplus-presets`, enqueued on `admin_enqueue_scripts`, so they are present in the **outer admin document** a block sidebar renders into — the buttons really paint. [`border-style-picker`](./border-style-picker.md)'s classes live in the theme's compiled stylesheet, which loads into the canvas iframe only, so drawing tiles there would produce a grid of identical unstyled boxes.
+:::
+
+:::caution[`allow_none => false` means an empty value is refused]
+Some fields require a real preset — a button always has *some* style. With `allow_none` off, an empty value is replaced by the option default on save, so the control offers no empty row.
+:::

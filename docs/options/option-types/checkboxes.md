@@ -88,3 +88,25 @@ Array
     [choice_c] => 1
 )
 ```
+
+## In Gutenberg blocks (the React control)
+
+``checkboxes`` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `checkboxes` control does
+
+A list of independent toggles, laid out inline when the schema sets `inline`.
+
+:::caution[Unchecked boxes are omitted, never sent as `false`]
+`_get_value_from_input()` keeps every submitted entry whose value is not the **empty string**, and stores it as `true`. It never tests truthiness.
+
+So sending `{ author: false }` for an unchecked box would store `author => true` — the box would come back **checked**. The control therefore omits unchecked keys entirely, and the parity suite asserts both halves: that omitting works, and that `false` really does round-trip to `true`.
+
+That second assertion looks strange in a test file. It is there so a later "simplification" that sends both states fails loudly instead of quietly re-checking boxes people unticked.
+:::
+
+:::note[Stale keys disappear on their own]
+A saved key that is no longer in `choices` is dropped server-side. The control does not render a box for it either — better to show nothing than a control the server will refuse.
+:::

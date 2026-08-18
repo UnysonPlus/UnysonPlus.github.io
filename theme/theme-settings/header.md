@@ -2,161 +2,133 @@
 title: Header
 sidebar_position: 4
 slug: /theme-settings/header
-description: The Unyson+ theme header — the Layout tab in full (modes, designs, dimensions, scroll behavior, and exactly how the Header Background / Behavior / Glass / Border / Shadow options combine at rest and on scroll), plus the Identity logo builder.
+description: The Unyson+ theme header - the Layout tab in full. The two-state model (Behavior/position + a composable At-top and On-scroll appearance) makes every header setup expressible, including transparent-over-hero that frosts and shrinks on scroll. Plus the Identity logo builder.
 ---
 
 # Header
 
 The **Header** tab builds the site header across several sub-tabs: **Identity**, **Layout**, **Menu**,
-**Top Bar**, **Main Header**, and **Bottom Bar**. This page documents the **Layout** tab in full — it is
-where the header's *chrome* (background, behavior, borders, shadow, glass) lives, and where the option
-combinations are easiest to misread.
+**Top Bar**, **Main Header**, and **Bottom Bar**. This page documents the **Layout** tab in full - it is
+where the header's *chrome* (position, background, borders, shadow, glass) lives.
 
 :::tip[Element reference]
-For each element you place in a bar/column (logo, menu, CTA, text, search, social icons, spacer…), see
-[Header & Footer Elements](/theme/header-footer-elements) — full detail, generated HTML, and examples.
+For each element you place in a bar/column (logo, menu, CTA, text, search, social icons, spacer...), see
+[Header & Footer Elements](/theme/header-footer-elements) - full detail, generated HTML, and examples.
 :::
 
-## Identity (logo) — in brief
+## Identity (logo) - in brief
 
-**Header → Identity** (`header_logo`) offers two logo builders via a **Logo Type** picker: a **Simple**
-uploaded image (with retina/sticky/mobile/transparent variants, a width, and alt text — synced with
+**Header -> Identity** (`header_logo`) offers two logo builders via a **Logo Type** picker: a **Simple**
+uploaded image (with retina/sticky/mobile/transparent variants, a width, and alt text - synced with
 WordPress's Custom Logo), or a **Custom** text wordmark (**Site Title** + size/weight/color, an optional
 **tagline**, and an optional **logo icon** with a frame and a layout arrangement). The **Favicon / Site
-Icon** is always available and syncs with WordPress's Site Icon. A dedicated Identity page follows later.
+Icon** is always available. A dedicated Identity page follows later.
 
 ---
 
-# Layout
+# Layout - the two-state model
 
-**Header → Layout** (`header_layout`) is a single grouped panel. It reads top-to-bottom as: **Mode →
-Design → Structure & dimensions → Scroll behavior → Appearance/chrome → Row alignment → Mobile.**
+A header only ever has **two visual states**: how it looks **at the top** of the page, and how it looks
+**once you scroll** (when it "sticks"). The Layout tab models exactly those, plus an orthogonal
+**position** control - so any setup is possible, including the tricky ones (transparent over the hero that
+frosts *and* shrinks on scroll).
 
-## 1. Header Layout Mode
+The panel reads: **Mode -> Design -> Structure -> Behavior (position + hide) -> Appearance: At top ->
+Appearance: On scroll -> Row alignment -> Mobile.**
 
-The **Header Layout Mode** picker (`header_mode`) chooses the whole shape of the header:
+## 1. Mode & Design
 
-| Mode | What it is |
-| --- | --- |
-| **Top** | The standard horizontal bar (the common case). Reveals **Header Design** below. |
-| **Vertical** | A fixed side rail — choose **Rail Side** (left/right) and **Vertical Header Width**. |
-| **Off-canvas only** | A hamburger that opens a slide-in panel, with *no* persistent bar. |
-| **Overlay** | A fullscreen overlay menu — choose an **Overlay Style** (panel / radial / concentric), color mode, opacity, and backdrop. |
-
-Every mode also shares the **Off-Canvas** drawer settings (its content list + open/close trigger icons)
-for the mobile/hamburger panel.
-
-### Header Design (Top mode)
-
-In **Top** mode, **Header Design** gives the bar its structural treatment. Each choice reveals its own
-sub-controls:
-
-| Design | Sub-controls |
-| --- | --- |
-| **Classic** | A full-width bar (no extra controls). |
-| **Pill** | A rounded floating bar — **Roundness**, **Side Inset**, **Shadow**. |
-| **Card** | A floating elevated card — **Corner Radius**, **Shadow**. |
-| **Centered** | Logo centered above the menu — **Spacing**. |
+The **Header Layout Mode** picker (`header_mode`) chooses the overall shape: **Top** (the standard bar),
+**Vertical** (a fixed side rail), **Off-canvas only** (hamburger, no bar), or **Overlay** (a fullscreen
+menu). In **Top** mode, **Header Design** gives the bar its structure: **Classic**, **Pill** (radius /
+inset / shadow), **Card** (radius / shadow), or **Centered** (spacing).
 
 ## 2. Structure & dimensions
 
-| Option | Effect |
-| --- | --- |
-| **Container** | `Fixed Width` caps the header content to the site container; `Full Width` runs edge-to-edge. |
-| **Container Width** | The fixed content width (when Container = Fixed Width). |
-| **Main Header Height** (`min_height`) | Minimum height of the main row (default `5rem`). |
-| **Mobile Header Height** | Main-row height below 768px. |
-| **Collapse to Mobile Menu At** (`mobile_breakpoint`) | Where the inline menu becomes a hamburger — `lg` (&lt;992px) or `md` (&lt;768px). |
+**Container** (Fixed / Full width) + **Container Width**, **Main Header Height** (`min_height`), **Mobile
+Header Height**, and **Collapse to Mobile Menu At** (`mobile_breakpoint`, `lg` <992px / `md` <768px).
 
-## 3. Scroll behavior
+## 3. Behavior - position + motion
 
-**Header Behavior** (`header_behavior`) sets what the header does as the page scrolls. This is the option
-that most affects the **background**, because most behaviors add a **stuck** state once the header reaches
-the top edge (the theme toggles an `.is-stuck` class):
+**Header Position** (`header_position`) is *just* how the header is positioned - shrink, hide, and a
+different look on scroll are separate options, so they compose freely:
 
-| Behavior | At rest (top of page) | On scroll |
+| Position | At the top | On scroll |
 | --- | --- | --- |
-| **Static** | In flow; scrolls away with the page. | — (no stuck state) |
-| **Sticky** | Pinned; shows **Main Header Background**. | Repaints to the **sticky fill** (near-opaque header color) + a soft shadow. |
-| **Sticky + Shrink** | Same as Sticky. | Same repaint, **plus** the padding tightens and the logo shrinks to **Shrunk Logo Height**. |
-| **Sticky, hide/reveal** | Pinned. | Slides **up out of view** on scroll-down, reveals on scroll-up (respects reduced-motion; never hides while focused/open). |
-| **Transparent over the first section** | **Transparent** — overlays the hero, no fill. | Becomes **stuck & solid** (see the background table below). |
+| **Static** | In flow; scrolls away with the page. | - |
+| **Sticky** | Pinned to the top. | Stays pinned (its look is set by the appearance sections below). |
+| **Transparent overlay** | Sits **over** the first section (clear). | Pins to the top (its scrolled look is set below). |
 
-## 4. Appearance / chrome
+Plus one motion toggle:
 
-These compose **on top of** any mode/design/behavior. They are the crux of the "why does my header look
-like that" confusion, so read them together with the [background matrix](#how-the-header-background-actually-behaves) below.
+- **Hide on scroll down** (`header_hide_on_scroll`) - slides the header up out of view on scroll-down,
+  reveals it on scroll-up. Works with Sticky or Overlay. (Respects reduced-motion; never hides while a
+  menu is open or the header has keyboard focus.)
 
-| Toggle | Effect |
-| --- | --- |
-| **Main Header Background** (`bg_color`) | The header fill → the `--header-bg` variable. **Leave empty for a transparent header** (the page shows behind). A set color fills it — and also **tints the glass** and drives the stuck/scrolled repaint. |
-| **Header Border** | A hairline rule under the header (an inset shadow — no layout shift). Slightly stronger when stuck. |
-| **Header Shadow** | A soft drop shadow lifting the header off the page. Slightly stronger when stuck. |
-| **Translucent / Glass** (`header_glass`) | A frosted, semi-transparent background: `72%` of **Main Header Background** + a `blur(10px)`. **See the important note below.** |
-| **Uppercase Navigation** | Uppercases the primary menu links with a touch of letter-spacing. |
+## 4. Appearance - At top
 
-:::warning[Glass is ALWAYS on — it does not wait for scroll]
-**Translucent / Glass is a *constant* look.** When it's on, the header is frosted **from first page load
-AND on scroll — identically.** It intentionally overrides the transparent-at-top state, so a
-**Transparent-over-first-section header with Glass is *frosted* over the hero, not fully clear.** There is
-currently **no "transparent at top, glass only on scroll"** mode. The frost **tint** comes from **Main
-Header Background** — set it dark for a dark frost, light for a light frost. If you want the header fully
-clear over the hero and only frosting on scroll, use **Transparent over the first section *without* Glass**
-and set **Main Header Background** to your scrolled color (see below).
-:::
-
-## How the header background actually behaves
-
-The header has **two visual states** and the background is decided by **Main Header Background +
-Behavior + Glass** together. Think of it as: *the base fill*, *what the stuck state repaints to*, and
-*whether Glass overrides both with a constant frost*.
-
-**The base fill** is **Main Header Background** (`--header-bg`): empty = transparent, a color = solid.
-
-**Common combinations (Top mode):**
-
-| Main Header Background | Behavior | Glass | At top | On scroll |
-| --- | --- | --- | --- | --- |
-| *(empty)* | Static | off | Transparent | — |
-| A color | Sticky | off | That solid color | Near-opaque header color + shadow |
-| *(empty)* | Transparent-overlay | off | **Fully transparent** over hero | **Solid** (repaints to the sticky fill — set a color to control it) |
-| A **dark** color | Transparent-overlay | off | Transparent over hero | **Solid dark** bar (matches a dark site) |
-| A color | *any sticky/overlay* | **on** | **Frosted** (72% color + blur) | **Frosted** — *the same*, no repaint |
-| A **dark** color | Transparent-overlay | **on** | **Dark frosted** (not clear) | **Dark frosted** — the same |
-
-**Reading the table:**
-
-- **Transparent-overlay + no Glass** is the "clear over the hero, solid on scroll" pattern. Its scrolled
-  bar color follows **Main Header Background** (leave it empty and it repaints to a near-white default;
-  set it dark for a dark scrolled bar).
-- **Glass (any behavior)** makes the header a **constant frost** — it looks the same at the top and on
-  scroll, and it is *never* fully transparent, so it does **not** produce the "clear hero → frost on
-  scroll" effect on its own.
-- **Border/Shadow** layer on top of any of the above and only intensify slightly when stuck.
-
-:::info[Reproducing a "clear → frosted on scroll" header (e.g. a glassy dark hero header)]
-Today the closest native combination is **Transparent over the first section + Glass + a dark Main Header
-Background** — the header reads dark-frosted over the hero and stays dark-frosted on scroll. A *true*
-"fully clear at top, frost only after scrolling" behavior is a planned enhancement (a scroll-triggered
-glass), not a current option.
-:::
-
-## 5. Row alignment & spacing
+The resting look. These also apply *on scroll* unless you turn on **Change appearance on scroll** (next
+section).
 
 | Option | Effect |
 | --- | --- |
-| **Vertical Alignment** (`header_valign`) | Aligns elements within each row — top / center / bottom. |
-| **Element Gap** (`header_element_gap`) | Space between elements in a column. |
+| **Main Header Background** (`bg_color`) | The header fill -> `--header-bg`. **Empty = transparent.** Also tints Glass. |
+| **Translucent / Glass** (`header_glass`) | A frosted, blurred background (`72%` of the background + `blur`). |
+| **Header Border** | A hairline rule under the header. |
+| **Header Shadow** | A soft drop shadow. |
+| **Uppercase Navigation** | Uppercases the primary menu links. |
 
-## 6. Mobile
+## 5. Appearance - On scroll
 
-| Option | Effect |
+Turn on **Change appearance on scroll** (`header_scroll_change`) to give the header a **different** look
+once it sticks. Leave it off and the scrolled header simply keeps the At-top look. Every field composes
+independently:
+
+| Option | Effect while stuck |
 | --- | --- |
-| **Mobile Menu Side** | Which side the drawer slides in from (left / right). |
-| **Scroll Spy** (`nav_scrollspy`) | One-page nav: highlights the active section + smooth-scrolls to anchors. |
-| **Hide Top Bar on Mobile** / **Hide Bottom Bar on Mobile** | Hide those rows below 768px. |
+| **Scrolled Background** (`scroll_bg_color`) | The fill once stuck -> `--header-scroll-bg`. Empty = keep the At-top background. |
+| **Glass on scroll** (`scroll_glass`) | Frost once stuck - e.g. a **clear header over the hero that frosts on scroll**. |
+| **Border on scroll** / **Shadow on scroll** | Add the rule / drop shadow once stuck. |
+| **Shrink logo on scroll** (`scroll_shrink`) + **Shrunk Logo Height** | Tighten the padding and shrink the logo once stuck. |
+
+:::tip[This is what makes every setup possible]
+Because position and the two appearance states are separate, combinations that used to be impossible now
+just work: **transparent overlay + shrink on scroll**, **clear at top then frosted glass on scroll**,
+**solid bar that shrinks**, and so on. Glass is no longer forced to be constant - it can be an at-top
+look, an on-scroll look, or both.
+:::
+
+## How the two states combine
+
+- **At top** = the Appearance -> At top options.
+- **On scroll** = if **Change appearance on scroll** is **off**, the header keeps its At-top look; if
+  **on**, the On-scroll options take over while stuck (and any On-scroll option you leave off falls back
+  to a neutral default, not the At-top value).
+
+**Common setups:**
+
+| Goal | Position | At top | Change on scroll -> On scroll |
+| --- | --- | --- | --- |
+| Static solid bar | Static | a background color | off |
+| Sticky bar, constant glass | Sticky | Glass on | off (inherits) |
+| Clear over hero -> solid on scroll | Overlay | transparent | on -> Scrolled Background = a color |
+| **Clear over hero -> frosted glass on scroll** | Overlay | transparent, Glass **off** | on -> **Glass on scroll** (+ a dark Scrolled Background for a dark frost) |
+| **Transparent + shrink on scroll** | Overlay | transparent | on -> **Shrink on scroll** (+ optional bg/glass) |
+| Solid bar that shrinks | Sticky | a background color | on -> Shrink on scroll |
+
+:::info[Reproducing the OBSIDIAN-style header]
+Overlay position, **At top:** transparent with Glass off; **On scroll:** Change-on-scroll on, Glass on
+scroll on, Shrink on scroll on, Scrolled Background a dark colour. Result: clear over the hero, then a
+dark frosted bar that shrinks as you scroll.
+:::
+
+## 6. Row alignment & Mobile
+
+**Vertical Alignment** (`header_valign`) and **Element Gap** (`header_element_gap`) control how elements
+sit within each row. **Mobile Menu Side**, **Scroll Spy** (`nav_scrollspy`, one-page highlight +
+smooth-scroll), and **Hide Top / Bottom Bar on Mobile** round out the tab.
 
 ---
 
-The remaining sub-tabs — **Menu**, **Top Bar**, **Main Header**, **Bottom Bar** — configure the rows and
+The remaining sub-tabs - **Menu**, **Top Bar**, **Main Header**, **Bottom Bar** - configure the rows and
 navigation inside the chosen layout, and are documented separately.

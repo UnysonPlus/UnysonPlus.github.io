@@ -570,3 +570,31 @@ Array
 
 )
 ```
+
+## In Gutenberg blocks (the React control)
+
+`multi-picker` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `multi-picker` control does
+
+The picker, and beneath it — indented behind a rule — the options that picker reveals. `hide_picker` hides the picker but keeps the revealed fields, because a schema hides the picker when the choice is decided elsewhere, not to hide the fields it controls.
+
+:::caution[Only the selected branch is saved]
+`_get_value_from_input()` stores the pick plus **the selected choice's sub-values only**. Values belonging to the branch you switched away from are dropped on save.
+
+That is not tidiness for its own sake. Before the pruning existed, the Entrance picker's value carried a settings block for **all ~56 Animate.css effects** — around 70KB — which was enough to exhaust memory when the page builder processed the value on the edit screen.
+
+The practical consequence: switch choices, switch back, and the fields you filled in the first branch are blank. Both renderers behave this way.
+:::
+
+:::note[Revealed fields must emit the wire format, and do]
+Unlike [`addable-popup`](./addable-popup.md), this option type **runs each child option's `_get_value_from_input()`** — the picker's and the revealed fields' alike. So the children have to emit what PHP expects to *receive* (`'true'` for a switch, a delimited string for a multi-select) rather than what it stores.
+
+Rendering them through the shared control registry is what guarantees that: those controls already emit the wire format for the sidebar's top level, and there is no second implementation to fall out of step.
+:::
+
+:::note[The `for` / `options` shorthand is expanded the same way]
+A schema can declare one block of options shared by several choices instead of repeating it. PHP expands that shorthand before it validates anything, so the React control expands it identically — otherwise it would render a set of fields the server does not accept.
+:::

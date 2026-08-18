@@ -50,6 +50,10 @@ don't see it.
   seamlessly. **Tunnel Size** widens the corridor (100%+ opens the walls past the frame for an
   immersive fly-through), **Card Length** streaks the panels, and **Depth Fade** dissolves the far
   end into the dark.
+- **Spiral Stream** — cards threaded along a 3D helix that streams past the camera, each rotating
+  around its own vertical axis so you see fronts, edge-on slivers and mirrored backs. **Spiral Turns**
+  sets the revolutions, **Taper** narrows the coil into a vortex or flares it out, **Card Count** fills
+  it, and **Scale Pulse** breathes the sizes for a living stream.
 
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.

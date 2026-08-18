@@ -166,6 +166,21 @@ export function buildScene(design, o) {
     return `<div class="tdg tdg--card-tunnel" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__tunnel">${tHtml}</div></div></div>`;
   }
 
+  if (design === 'spiral_stream') {
+    // cards threaded on a tapering helix — mirror spiral-stream.php (Card Count cards).
+    const n = Math.max(3, Math.min(48, o.card_count));
+    const a = attr({
+      ...shared,
+      'data-tdg-dir': o.direction === 'backward' ? -1 : 1,
+      'data-tdg-turns': o.spiral_turns, 'data-tdg-size': o.spiral_size, 'data-tdg-taper': o.taper,
+      'data-tdg-card': o.card_size, 'data-tdg-backfade': o.back_fade, 'data-tdg-persp': o.perspective,
+      'data-tdg-tilt': o.ring_tilt, 'data-tdg-gap': o.card_gap, 'data-tdg-pulse': o.scale_pulse,
+    });
+    let cells = '';
+    for (let k = 0; k < n; k++) cells += cardHtml(SAMPLES[k % SAMPLES.length]);
+    return `<div class="tdg tdg--spiral-stream" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__spiral">${cells}</div></div></div>`;
+  }
+
   // card_sphere
   const {rows, bands} = sphereBands(o);
   const a = attr({

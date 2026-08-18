@@ -16,6 +16,11 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Audio Player**](./audio-player.md) | `audio_player` | An audio player with a playlist |
+| [**Author Box**](./author-box.md) | `author_box` | An author card with avatar, bio and links |
+| [**Calendar**](./calendar.md) | `calendar` | A month calendar with events |
+| [**Image Hotspots**](./image-hotspots.md) | `image_hotspots` | An image with pins that reveal text |
+| [**Map**](./map.md) | `map` | An embedded map with markers |
 | [**Image Box**](./image-box.md) | `image_box` | An image with a heading, text and a button |
 | [**Gallery**](./gallery.md) | `gallery` | An image gallery with captions and a lightbox |
 | [**Team Member**](./team-member.md) | `team_member` | A person card — photo, name, role and links |

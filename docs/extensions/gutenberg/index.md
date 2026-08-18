@@ -16,6 +16,12 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Section**](./section.md) | `section` | A full-width band holding other blocks |
+| [**Column**](./column.md) | `column` | A column with a responsive width |
+| [**Container**](./container.md) | `container` | A width-constrained wrapper |
+| [**Flexbox**](./flexbox.md) | `flexbox` | A flex container |
+| [**Bleed Section**](./bleed-section.md) | `bleed_section` | A section with an image bleeding off one edge |
+| [**Masonry Section**](./masonry-section.md) | `masonry_section` | A staggered masonry layout |
 | [**Flip Box**](./flip-box.md) | `flip_box` | A two-faced card that flips on hover or click |
 | [**3D Gallery**](./gallery-3d.md) | `gallery_3d` | Images in a WebGL 3D scene |
 | [**Post Title**](./post-title.md) | `post_title` | The current post's title |

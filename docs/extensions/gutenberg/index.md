@@ -16,6 +16,13 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Portfolio Grid**](./portfolio.md) | `portfolio` | A filterable grid of projects |
+| [**Project Details**](./project-details.md) | `project_details` | A project's detail fields |
+| [**Project Gallery**](./project-gallery.md) | `project_gallery` | A project's image gallery |
+| [**Project Navigation**](./project-nav.md) | `project_nav` | Previous / next between projects |
+| [**Project Results**](./project-results.md) | `project_results` | A project's outcome figures |
+| [**Project Testimonial**](./project-testimonial.md) | `project_testimonial` | The client quote on a project |
+| [**Related Projects**](./related-projects.md) | `related_projects` | Other projects like this one |
 | [**Table**](./table.md) | `table` | A data table with sorting, search and pagination |
 | [**Contact Form**](./contact-form.md) | `contact_form` | A contact form with your own fields |
 | [**Section**](./section.md) | `section` | A full-width band holding other blocks |

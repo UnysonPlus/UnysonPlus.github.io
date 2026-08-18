@@ -182,6 +182,8 @@ const config = {
           {from: '/docs/options/option-types/icon-v2', to: '/docs/options/option-types/icon'},
           // Post Carousel was dropped (a duplicate of the Posts element).
           {from: '/docs/shortcodes/components/post-carousel', to: '/docs/shortcodes/components/posts'},
+          // Options Framework category given a clean slug (was the generated-index /docs/category/… URL).
+          {from: '/docs/category/options-framework', to: '/docs/options-framework'},
         ],
       },
     ],

@@ -233,3 +233,35 @@ Array
 
 )
 ```
+
+## In Gutenberg blocks (the React control)
+
+`addable-popup` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `addable-popup` control does
+
+A list of items, each expandable in place, with buttons to reorder, duplicate and remove. Item labels come from the same `template` string the page builder uses. `add-button-text` labels the Add button, and `limit` disables it at the cap.
+
+:::note[The name says popup; the block sidebar does not use one]
+The page builder opens each item in a modal, and it has a whole options panel's width to do it in.
+
+A block inspector is a narrow column, and a modal launched from one covers the very preview you are editing against. So items expand **inline** here instead. The stored value is byte-identical either way — this is a presentation choice, and it is the only one of the two that fits the space.
+:::
+
+:::caution[`limit` is enforced on save, so the control enforces it too]
+`_get_value_from_input()` truncates the array to `limit` items. A control that let you add a seventh item to a list capped at six would be showing you work that is discarded the moment it is stored — so the Add button is disabled at the cap, and says why.
+:::
+
+:::note[Child options render through the same registry as the rest of the sidebar]
+PHP does **not** run each sub-option's `_get_value_from_input()` on the item objects — it stores what it is handed. That means the values these child controls produce are the values that get stored, which is precisely why they are rendered by the shared control registry rather than re-implemented inside the repeater.
+
+An option type with no React control yet says so in place of that one field, and the rest of the item stays editable.
+:::
+
+:::note[Item labels are compiled from the schema's template]
+`template` is an Underscore-style string — `{{= title || "Track" }}` — and the React control compiles those expressions into a function, which is what a template library would do anyway.
+
+This evaluates code that comes from a theme's or plugin's own PHP, the same trust boundary the PHP renderer already sits behind. It is not a path for anything a **visitor** supplied, and must not become one. A template that throws falls back to `Item 3` rather than breaking the sidebar.
+:::

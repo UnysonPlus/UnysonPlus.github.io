@@ -36,3 +36,27 @@ Array
     [1] => Array ( [w] => 40, [name] => Aside )
 )
 ```
+
+## In Gutenberg blocks (the React control)
+
+``split-slider`` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `split-slider` control does
+
+A number field per pane, with a proportional bar above them, plus **Equal columns** for the AUTO state.
+
+:::note[An empty value is a real value: AUTO]
+It means equal columns, not "unset". `_get_value_from_input()` returns an empty array for empty input and never expands it into explicit halves, so the control keeps the distinction rather than helpfully filling it in.
+
+Switching *off* Equal columns materialises the split that was already on screen, so the first explicit value matches what you were just looking at.
+:::
+
+:::note[Widths normalise as you type]
+`normalize()` scales the widths to sum 100 and clamps each to `min_width`. On the page-builder path that happens on save; on the block path nothing runs at all — so the control normalises immediately, and the numbers in the sidebar are the numbers that render.
+:::
+
+:::note[No drag handles here]
+The page builder offers a drag splitter. A three-handle splitter inside a 280px column is fiddlier than typing a number, and dragging in a block sidebar competes with the editor's own gestures.
+:::

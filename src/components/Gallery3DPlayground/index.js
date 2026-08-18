@@ -129,6 +129,23 @@ const DESIGNS = {
         dirChoices: [['up', 'Up'], ['down', 'Down']]}),
     ],
   },
+  card_tunnel: {
+    group: '3D & Perspective',
+    label: 'Card Tunnel',
+    blurb: 'An infinite perspective corridor — four walls of cards recede to a vanishing point and fly forward or backward. Tunnel Size widens the corridor; Card Length streaks the panels; Depth Fade dissolves the far end.',
+    // Own control set (no card_ratio / card_size / padding — cards are sized to their wall).
+    controls: [
+      sl('tunnel_size', 'Tunnel Size (%)', 60, 20, 120),
+      sl('card_length', 'Card Length (%)', 30, 5, 120),
+      sl('gap', 'Gap (%)', 2, 0, 20, 0.5),
+      sl('depth_fade', 'Depth Fade (%)', 0, 0, 100),
+      sl('corner_radius', 'Corner Radius (px)', 0, 0, 60),
+      se('drive', 'Motion', 'continuous', [['continuous', 'Continuous'], ['static', 'Static']]),
+      sl('speed', 'Loop Duration (s)', 20, 3, 60),
+      se('direction', 'Direction', 'forward', [['forward', 'Forward'], ['backward', 'Backward']]),
+      se('hover_behavior', 'On Hover', 'slow', HOVER_CHOICES),
+    ],
+  },
 };
 
 const GROUP_ORDER = ['3D & Perspective'];

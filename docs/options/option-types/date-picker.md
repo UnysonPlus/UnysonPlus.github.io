@@ -67,3 +67,25 @@ echo esc_html( $value );
 ```text
 2026-06-24
 ```
+
+## In Gutenberg blocks (the React control)
+
+``date-picker`` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `date-picker` control does
+
+A native date input that reads and writes the stored format, **`dd-MM-yyyy`** — `01-09-2026`.
+
+:::caution[The validator accepts anything, so the control has to be right]
+`_get_value_from_input()` only casts to string. A wrong format is not rejected — it is **misread later**.
+
+Emit ISO (`2026-09-01`) and it saves happily. Then PHP reads it, and `strtotime()` treats a dash-separated date as **d-m-Y** — so `2026-09-01` parses as day 2026 of month 09. The symptom is an event on a nonsensical date, months from where it belongs, with no error anywhere.
+
+The format is not a guess: the option type's own script sets `dateFormat: 'dd-MM-yyyy'` and parses values back with `/^(\d{2})-(\d{2})-(\d{4})/`.
+:::
+
+:::note[`min-date` / `max-date` are converted for the input]
+They are declared in the same `dd-MM-yyyy` form, so the browser enforces the range the schema intends instead of leaving it to the server.
+:::

@@ -101,3 +101,19 @@ stored value:
 preset library (Theme Settings → Components → Shape Dividers), where each edge shape is authored by
 pasting or uploading an SVG. Reach for it whenever you need a user to supply raw SVG that you render
 into your own trusted wrapper.
+
+## In Gutenberg blocks (the React control)
+
+``svg-code`` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `svg-code` control does
+
+It is the [`code-editor`](./code-editor.md) control: a monospace field with spellcheck, autocapitalise and autocorrect switched off, and the schema's `placeholder` shown while empty.
+
+:::caution[The PHP sanitiser does not run on the block path]
+`_get_value_from_input()` rejects anything without an `<svg` and then runs it through `sc_icon_sanitize_svg()`. Blocks never reach that validator — their attributes go straight to the element's view.
+
+So paste SVG you trust. Markup from an unknown source gets sanitised when saved through the page builder and does not when saved through a block.
+:::

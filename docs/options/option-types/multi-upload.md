@@ -108,3 +108,23 @@ Array
 
 )
 ```
+
+## In Gutenberg blocks (the React control)
+
+``multi-upload`` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `multi-upload` control does
+
+A thumbnail grid with reorder and remove controls, and WordPress's own media modal behind an **Add media** button.
+
+:::caution[The URL is stored protocol-relative]
+`get_attachments_info()` runs `preg_replace( '/^https?:\/\//', '//', $url )` on every attachment, so a stored value carries `//example.com/…` rather than `https://example.com/…`.
+
+The control does the same. A value carrying an absolute scheme differs from what the page builder saves and pins one scheme on a site served over both.
+:::
+
+:::note[The key is `attachment_id`, not `id`]
+Element views read that name. It is the sort of detail that produces an empty gallery rather than an error, so it is worth stating plainly.
+:::

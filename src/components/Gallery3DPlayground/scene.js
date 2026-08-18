@@ -51,7 +51,7 @@ function sphereBands(o) {
 function wrapStyle(o) {
   const [rw, rh] = RATIOS[o.card_ratio] || RATIOS['1-1'];
   return (
-    `height:100%;--tdg-radius:${o.corner_radius}px;--tdg-pad:${o.padding}%;` +
+    `height:100%;--tdg-radius:${o.corner_radius || 0}px;--tdg-pad:${o.padding || 0}%;` +
     `--tdg-ratio:${rw} / ${rh};--tdg-bg:transparent;` +
     `--tdg-shadow:0 14px 40px -8px rgba(0,0,0,.45);`
   );
@@ -146,6 +146,24 @@ export function buildScene(design, o) {
       colsHtml += `<div class="tdg__col">${cells}</div>`;
     }
     return `<div class="tdg tdg--parallax-totem" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__cascade">${colsHtml}</div></div></div>`;
+  }
+
+  if (design === 'card_tunnel') {
+    // four walls of cards receding to a vanishing point — mirror card-tunnel.php DOM (18/wall).
+    const a = attr({
+      ...shared,
+      'data-tdg-dir': o.direction === 'backward' ? -1 : 1,
+      'data-tdg-tsize': o.tunnel_size, 'data-tdg-clen': o.card_length, 'data-tdg-gap': o.gap,
+      'data-tdg-dfade': o.depth_fade, 'data-tdg-momentum': 1,
+    });
+    const per = 18, wallNames = ['top', 'bottom', 'left', 'right'];
+    let tHtml = '';
+    for (let w = 0; w < 4; w++) {
+      let cells = '';
+      for (let k = 0; k < per; k++) cells += cardHtml(SAMPLES[(k * 4 + w) % SAMPLES.length]);
+      tHtml += `<div class="tdg__wall tdg__wall--${wallNames[w]}">${cells}</div>`;
+    }
+    return `<div class="tdg tdg--card-tunnel" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__tunnel">${tHtml}</div></div></div>`;
   }
 
   // card_sphere

@@ -45,6 +45,11 @@ don't see it.
   card floats at a *seeded* depth and size and drifts at a depth-varied speed — near cards faster
   than far ones (the parallax). Leave **Scatter**, **Size Variance** and **Parallax Depth** at 0 for
   a clean grid; raise them for a loose, floating depth field.
+- **Card Tunnel** — an infinite perspective corridor. Four walls (ceiling, floor, left, right) of
+  cards recede to a central vanishing point and fly **Forward** or **Backward**, recycling
+  seamlessly. **Tunnel Size** widens the corridor (100%+ opens the walls past the frame for an
+  immersive fly-through), **Card Length** streaks the panels, and **Depth Fade** dissolves the far
+  end into the dark.
 
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.

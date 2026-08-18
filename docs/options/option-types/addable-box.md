@@ -135,3 +135,21 @@ Array
 
 )
 ```
+
+## In Gutenberg blocks (the React control)
+
+``addable-box`` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `addable-box` control does
+
+The same repeater as [`addable-popup`](./addable-popup.md) — items expand in place rather than opening a modal — reading its children from **`box-options`**.
+
+:::note[One component, two option types]
+The React control wraps the addable-popup component with the child-options key remapped, rather than being a second copy of a repeater. Two copies would drift on the first fix that only one of them received.
+:::
+
+:::note[This type DOES validate its children]
+Unlike `addable-popup`, `_get_value_from_input()` runs each child option's validator. That changes nothing on the block path, where no validation runs at all, but it is why the children must emit the **wire** format for the page-builder path to agree — which rendering them through the shared registry provides.
+:::

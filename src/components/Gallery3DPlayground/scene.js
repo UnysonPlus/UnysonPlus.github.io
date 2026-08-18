@@ -129,6 +129,25 @@ export function buildScene(design, o) {
     return `<div class="tdg tdg--totem-wall" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__cascade">${colsHtml}</div></div></div>`;
   }
 
+  if (design === 'parallax_totem') {
+    // depth-scatter sibling of Totem Wall — same 9×14 grid; initParallax adds the depth/scatter/parallax.
+    const a = attr({
+      ...shared,
+      'data-tdg-dir': o.direction === 'down' ? -1 : 1,
+      'data-tdg-curv': o.curvature, 'data-tdg-gap': o.gap, 'data-tdg-edge': o.edge_fade,
+      'data-tdg-zoom': o.zoom, 'data-tdg-scatter': o.scatter, 'data-tdg-sizevar': o.size_variance,
+      'data-tdg-parallax': o.parallax_depth, 'data-tdg-momentum': 1,
+    });
+    const cols = 9, per = 14;
+    let colsHtml = '';
+    for (let c = 0; c < cols; c++) {
+      let cells = '';
+      for (let k = 0; k < per; k++) cells += cardHtml(SAMPLES[(k * cols + c) % SAMPLES.length]);
+      colsHtml += `<div class="tdg__col">${cells}</div>`;
+    }
+    return `<div class="tdg tdg--parallax-totem" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__cascade">${colsHtml}</div></div></div>`;
+  }
+
   // card_sphere
   const {rows, bands} = sphereBands(o);
   const a = attr({

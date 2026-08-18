@@ -16,6 +16,10 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Notification**](./notification.md) | `notification` | A notice, announcement bar or floating toast |
+| [**Highlight Text**](./highlight-text.md) | `highlight_text` | Text with an animated marker, underline or circle highlight |
+| [**Tooltip**](./tooltip.md) | `tooltip` | Text or an icon that reveals a tooltip on hover, focus or click |
+| [**Social Share**](./social-share.md) | `social_share` | Share buttons for the current page |
 | [**Modal Popup**](./modal-popup.md) | `modal_popup` | A button, link, icon or image that opens content in a modal dialog |
 | [**Animated Heading**](./animated-heading.md) | `animated_heading` | A heading whose last words rotate through a list — typewriter, slide, flip |
 | [**Newsletter**](./newsletter.md) | `newsletter` | An email signup form — heading, fields, consent line and a subscribe button |

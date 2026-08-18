@@ -67,3 +67,17 @@ echo esc_html( $value );
 ```text
 A concise page subtitle
 ```
+
+## In Gutenberg blocks (the React control)
+
+``medium-text`` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `medium-text` control does
+
+It is the [`text`](./text.md) control. ``medium-text`` subclasses `FW_Option_Type_Text` and changes only the **width** of the input, and width has no meaning in a block sidebar where every control is the width of the panel.
+
+:::note[Sharing a control is a claim that has to be true]
+"Close enough" is not the standard — a shared renderer has to produce the **same stored value**, or two option types quietly disagree about what they saved. The parity test suite asserts that for these types specifically, rather than leaving it as a reasonable-sounding assumption.
+:::

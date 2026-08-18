@@ -16,6 +16,10 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Tabs**](./tabs.md) | `tabs` | Tabbed panels with optional media, autoplay and deep links |
+| [**Steps**](./steps.md) | `steps` | A numbered sequence with markers and connectors |
+| [**Timeline**](./timeline.md) | `timeline` | A vertical timeline of dated entries |
+| [**Logo Grid**](./logo-grid.md) | `logo_grid` | A grid or scrolling row of client logos |
 | [**Notification**](./notification.md) | `notification` | A notice, announcement bar or floating toast |
 | [**Highlight Text**](./highlight-text.md) | `highlight_text` | Text with an animated marker, underline or circle highlight |
 | [**Tooltip**](./tooltip.md) | `tooltip` | Text or an icon that reveals a tooltip on hover, focus or click |

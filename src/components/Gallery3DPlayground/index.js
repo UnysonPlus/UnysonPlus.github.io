@@ -26,7 +26,7 @@ const DIR_CHOICES = [['left', 'Left'], ['right', 'Right']];
 const SHARED = (opts = {}) => [
   se('drive', 'Motion', opts.drive || 'auto', opts.driveChoices || [['auto', 'Auto-rotate'], ['static', 'Static']]),
   sl('speed', 'Loop Duration (s)', opts.speed || 16, 3, 60, 1),
-  se('direction', 'Direction', 'left', opts.dirChoices || DIR_CHOICES),
+  se('direction', 'Direction', opts.dir || 'left', opts.dirChoices || DIR_CHOICES),
   se('hover_behavior', 'On Hover', 'slow', HOVER_CHOICES),
   se('card_ratio', 'Card Ratio', opts.ratio || '1-1', RATIO_CHOICES),
   sl('corner_radius', 'Corner Radius (px)', opts.corner ?? 6, 0, 40, 1),
@@ -95,6 +95,21 @@ const DESIGNS = {
       sl('tilt', 'Tilt (°)', 27, -45, 45),
       ...SHARED({drive: 'continuous', speed: 20, ratio: '1-1', corner: 2,
         driveChoices: [['continuous', 'Continuous'], ['static', 'Static']]}),
+    ],
+  },
+  totem_wall: {
+    group: '3D & Perspective',
+    label: 'Totem Wall',
+    blurb: 'A flat row of INDEPENDENT vertical totems — each column wraps its cards around its own axis into a rounded pillar and cascades vertically. Curvature curls concave↔convex; Zoom sets totem size (fewer, larger totems as it rises).',
+    controls: [
+      sl('zoom', 'Zoom (%)', 10, 0, 100),
+      sl('curvature', 'Curvature (%)', -150, -150, 150),
+      sl('tilt', 'Tilt (°)', -45, -45, 45),
+      sl('gap', 'Gap (%)', 0.5, 0, 20, 0.5),
+      sl('edge_fade', 'Edge Fade (%)', 0, 0, 100),
+      ...SHARED({drive: 'continuous', speed: 20, ratio: '16-9', corner: 0, dir: 'up',
+        driveChoices: [['continuous', 'Continuous'], ['static', 'Static']],
+        dirChoices: [['up', 'Up'], ['down', 'Down'], ['alternate', 'Alternate columns']]}),
     ],
   },
 };

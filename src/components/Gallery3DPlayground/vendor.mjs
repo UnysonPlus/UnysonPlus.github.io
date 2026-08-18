@@ -64,6 +64,7 @@ export function initEl(el) {
   else if (el.classList.contains('tdg--panorama-wall')) { initWall(el); }
   else if (el.classList.contains('tdg--card-sphere')) { initGlobe(el); }
   else if (el.classList.contains('tdg--orbit-globe')) { initOrbit(el); }
+  else if (el.classList.contains('tdg--totem-wall')) { initTotem(el); }
 }
 `;
 

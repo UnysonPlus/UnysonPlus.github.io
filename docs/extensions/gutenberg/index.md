@@ -16,6 +16,7 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Animated Heading**](./animated-heading.md) | `animated_heading` | A heading whose last words rotate through a list — typewriter, slide, flip |
 | [**Newsletter**](./newsletter.md) | `newsletter` | An email signup form — heading, fields, consent line and a subscribe button |
 | [**Blockquote**](./blockquote.md) | `blockquote` | A pull quote with author, role and source link |
 | [**Badge**](./badge.md) | `badge` | A small pill of text — label, announcement or status marker |

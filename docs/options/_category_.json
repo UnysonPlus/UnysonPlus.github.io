@@ -3,6 +3,7 @@
   "position": 3,
   "link": {
     "type": "generated-index",
+    "slug": "/options-framework",
     "title": "Options",
     "description": "The Unyson+ options framework — how to define option arrays, integrate them into themes and extensions, choose a storage location, work with the Customizer, and create your own option types."
   }

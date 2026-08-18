@@ -82,3 +82,28 @@ echo esc_html( $value );
 ```text
 2026-06-24 14:30
 ```
+
+## In Gutenberg blocks (the React control)
+
+``datetime-picker`` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `datetime-picker` control does
+
+A native date / time / datetime input, matched to the schema's `datepicker` and `timepicker` flags — and it writes the value back in the schema's **PHP `date()` format**.
+
+:::caution[The server validates the FORMATTING, not just the date]
+`_fw_validate_date_format()` re-formats the value it parsed and compares it back to the input. A perfectly valid date in the **wrong shape** is therefore discarded and replaced by the option default.
+
+An ISO string (`2026-09-01T14:30`) into a `Y/m/d H:i` field is the exact mistake a React control is likely to make, and it fails silently: the picker looks like it worked, and the countdown quietly counts to nothing. That case is asserted in the parity suite as a *rejection*.
+:::
+
+:::note[An unsupported format falls back to a text field]
+The control renders the tokens this codebase's schemas actually use (`Y y m n d j H G i s`, plus backslash escapes). Meet anything else and it degrades to a plain text input **showing the expected format**, rather than emitting a string built from a partial understanding of it.
+
+A text field that says `Y/m/d H:i` is mildly annoying. A picker that writes an unparseable string is a bug someone debugs on launch day.
+:::
+
+:::note[`minDate` / `maxDate` are passed to the input]
+They are enforced server-side regardless; giving them to the browser means an out-of-range value is refused up front instead of being discarded on save without explanation.

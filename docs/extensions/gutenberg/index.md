@@ -16,6 +16,10 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Call to Action**](./call-to-action.md) | `call_to_action` | A heading, message and button band |
+| [**Image + Content**](./image-content.md) | `image_content` | An image beside rich text |
+| [**Countdown**](./countdown.md) | `countdown` | A countdown to a date and time |
+| [**Code Block**](./code-block.md) | `code_block` | A code sample, or raw HTML |
 | [**Posts**](./posts.md) | `posts` | A query-driven grid or list of posts |
 | [**Table of Contents**](./toc.md) | `toc` | A contents list built from the page headings |
 | [**Button**](./button.md) | `button` | A link button with presets, icons and hover effects |

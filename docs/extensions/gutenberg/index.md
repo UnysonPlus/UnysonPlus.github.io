@@ -16,6 +16,8 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Table**](./table.md) | `table` | A data table with sorting, search and pagination |
+| [**Contact Form**](./contact-form.md) | `contact_form` | A contact form with your own fields |
 | [**Section**](./section.md) | `section` | A full-width band holding other blocks |
 | [**Column**](./column.md) | `column` | A column with a responsive width |
 | [**Container**](./container.md) | `container` | A width-constrained wrapper |

@@ -16,6 +16,11 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Avatar**](./avatar.md) | `avatar` | A user avatar — photo, initials or icon |
+| [**Image**](./media-image.md) | `media_image` | A single image with a style treatment and priority hint |
+| [**Video**](./media-video.md) | `media_video` | A video — self-hosted or embedded |
+| [**Text Block**](./text-block.md) | `text_block` | Rich text with columns, drop caps and measure |
+| [**Featured Image**](./featured-image.md) | `featured_image` | The current post's featured image |
 | [**Audio Player**](./audio-player.md) | `audio_player` | An audio player with a playlist |
 | [**Author Box**](./author-box.md) | `author_box` | An author card with avatar, bio and links |
 | [**Calendar**](./calendar.md) | `calendar` | A month calendar with events |

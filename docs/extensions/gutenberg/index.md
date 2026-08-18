@@ -16,6 +16,10 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Carousel**](./carousel.md) | `carousel` | A slider of image or content slides |
+| [**Feature List**](./feature-list.md) | `feature_list` | A list of features with icons or markers |
+| [**Comparison Table**](./comparison-table.md) | `comparison_table` | A feature-comparison table with a highlighted column |
+| [**Icon**](./icon.md) | `icon` | A single icon with an optional title and badge |
 | [**Accordion**](./accordion.md) | `accordion` | Collapsible panels with icons, numbering and FAQ schema |
 | [**Testimonials**](./testimonials.md) | `testimonials` | Customer quotes with avatars, ratings and an optional carousel |
 | [**Social Icons**](./social-icons.md) | `social_icons` | A row of social profile links |

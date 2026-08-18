@@ -112,6 +112,23 @@ const DESIGNS = {
         dirChoices: [['up', 'Up'], ['down', 'Down'], ['alternate', 'Alternate columns']]}),
     ],
   },
+  parallax_totem: {
+    group: '3D & Perspective',
+    label: 'Parallax Totem',
+    blurb: 'The depth-scatter sibling of Totem Wall — cards float at seeded depths & sizes and drift at depth-varied speeds (near ones faster: the parallax). All-variance-0 is a clean grid; raise Scatter / Size Variance / Parallax Depth for a floating depth field.',
+    controls: [
+      sl('zoom', 'Zoom (%)', 10, 0, 100),
+      sl('scatter', 'Scatter (%)', 0, 0, 100),
+      sl('size_variance', 'Size Variance (%)', 0, 0, 100),
+      sl('parallax_depth', 'Parallax Depth (%)', 0, 0, 100),
+      sl('curvature', 'Curvature (%)', -150, -150, 150),
+      sl('gap', 'Gap (%)', 0.5, 0, 20, 0.5),
+      sl('edge_fade', 'Edge Fade (%)', 0, 0, 100),
+      ...SHARED({drive: 'continuous', speed: 20, ratio: '16-9', corner: 0, dir: 'up',
+        driveChoices: [['continuous', 'Continuous'], ['static', 'Static']],
+        dirChoices: [['up', 'Up'], ['down', 'Down']]}),
+    ],
+  },
 };
 
 const GROUP_ORDER = ['3D & Perspective'];

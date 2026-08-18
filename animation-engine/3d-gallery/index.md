@@ -41,6 +41,10 @@ don't see it.
   is signed — negative curls each column away (concave), positive bulges it toward you into a full
   pill; **Zoom** sets the totem size (fewer, larger totems as it rises), and a steep **Tilt** gives
   the diagonal, diamond-lattice look.
+- **Parallax Totem** — the depth-scatter sibling of Totem Wall. The same vertical totems, but each
+  card floats at a *seeded* depth and size and drifts at a depth-varied speed — near cards faster
+  than far ones (the parallax). Leave **Scatter**, **Size Variance** and **Parallax Depth** at 0 for
+  a clean grid; raise them for a loose, floating depth field.
 
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.

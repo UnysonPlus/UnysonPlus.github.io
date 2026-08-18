@@ -167,3 +167,31 @@ Array
 
 )
 ```
+
+## In Gutenberg blocks (the React control)
+
+``background-pro`` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `background-pro` control does
+
+Five collapsible panels — Colour, Gradient, Image, Video, Overlay — each delegating to the control for its own option type.
+
+:::note[Layers stack, and none has an enable switch]
+A layer is on when it has a value. Gradient is on at two or more stops; image is on when a file is chosen.
+:::
+
+:::caution[Video `enabled` is DERIVED, not chosen]
+There is no enable toggle for video, deliberately. PHP recomputes `enabled` from whether a playable source is set, precisely because a stored `enabled: 'no'` sitting next to a real video "looks broken in exports and the Site Converter".
+
+Blocks never reach that recompute, so this control derives the flag on every change. Without that, the block path would produce exactly the dishonest value the PHP goes out of its way to prevent.
+:::
+
+:::note[Every write spreads over the complete default shape]
+Element views read deep paths like `image/size/selected` directly, so a value missing a branch renders wrongly rather than erroring. The control merges over the full defaults on every change rather than patching in place.
+:::
+
+:::note[`disable` hides layers a schema cannot support]
+A box-preset fill renders as CSS and so disables `video`, which has no DOM to hook. Accepts a string or an array; named layers are not rendered at all.
+:::

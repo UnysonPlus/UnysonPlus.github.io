@@ -73,3 +73,23 @@ echo esc_attr( $value );
 ```text
 rgba(229,50,45,0.85)
 ```
+
+## In Gutenberg blocks (the React control)
+
+``rgba-color-picker`` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `rgba-color-picker` control does
+
+A colour button with a chequerboard behind the swatch — so a transparent colour reads as transparent rather than as white — and a Clear button.
+
+:::note[Looser than `color-picker`, on purpose]
+This validator accepts hex of 3, 4, 6 or 8 digits **or** `rgb()`/`rgba()`. [`color-picker`](./color-picker.md) accepts hex only and silently substitutes the default for anything else, which is why *its* React control normalises to hex.
+
+Doing the same here would be a quiet downgrade: this type exists precisely where alpha is the point — an overlay tint over a hero image — so the string the picker produces is stored as given.
+:::
+
+:::note[The empty string is a real value]
+It means "no colour", not "unset", which is why the control offers an explicit Clear rather than leaving you to delete characters.
+:::

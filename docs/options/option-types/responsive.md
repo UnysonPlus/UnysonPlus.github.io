@@ -369,3 +369,27 @@ Array
     [lg] => hide
 )
 ```
+
+## In Gutenberg blocks (the React control)
+
+``responsive`` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `responsive` control does
+
+Three device buttons — Mobile, Tablet, Desktop — above the inner control. Switching a tab changes **which device you are editing**, not the value. A device carrying its own value is marked, so the inherited ones are visible at a glance.
+
+:::note[The full `{ base, md, lg }` shape is always stored]
+An empty string means "inherit the smaller width" — it is not the same as unset, which is why `_get_value_from_input()` starts from all three keys and fills in what was submitted. A control that omitted untouched devices would drop keys the element reads.
+:::
+
+:::caution[Whether blank SURVIVES depends on the inner type]
+Each device's value is validated by the inner option type. A `select` with no blank entry in its `choices` does not accept `''` — it falls through to the **first choice**. So on the page-builder path, a blank Tablet on such an option comes back as the first choice rather than as "inherit".
+
+Schemas that want an inheriting device declare a blank or `default` choice, and then blank round-trips intact. The control only promises "leave blank to inherit" when the inner type can actually represent blank — promising it otherwise would be describing behaviour the save undoes.
+:::
+
+:::note[Per-device values may be scalars or objects]
+The inner control can be anything — a `short-select` storing `'left'`, a `unit-input` storing `{ value, unit }`. Nothing inspects the shape; each device's value is handed to the inner control and taken back unexamined.
+:::

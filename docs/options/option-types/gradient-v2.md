@@ -88,3 +88,23 @@ Array
 
 )
 ```
+
+## In Gutenberg blocks (the React control)
+
+``gradient-v2`` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.
+
+Everything above is rendered by **PHP**. A block's settings sidebar is a **React app** and will not accept ready-made HTML from PHP, so the option type gets a **second renderer**. Both read the same schema and both produce the **same saved value**. See [`text`](./text.md#in-gutenberg-blocks-the-react-control) for the full explanation.
+
+### What the `gradient-v2` control does
+
+A live swatch, a linear/radial switch, an angle slider, and a colour-plus-position row per stop.
+
+:::caution[Fewer than two stops means NO gradient]
+`_get_value_from_input()` discards the stops array entirely when fewer than two survive validation, and stores the empty form rather than restoring a default. That empty array is what turns the layer **off** — there is no enable switch.
+
+So removing the second-to-last stop clears the gradient outright, which is what the server would have done anyway. The alternative is a picker showing one stop while the page renders nothing.
+:::
+
+:::note[What the validator accepts]
+`type` is `linear` or `radial` (anything else becomes linear); `angle` is an integer clamped 0–360; stop colours must be hex (3 or 6) **or** `rgb()`/`rgba()`, and a stop whose colour matches neither is dropped **silently**; positions are floats clamped 0–100.
+:::

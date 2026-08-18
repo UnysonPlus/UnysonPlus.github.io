@@ -16,6 +16,10 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Accordion**](./accordion.md) | `accordion` | Collapsible panels with icons, numbering and FAQ schema |
+| [**Testimonials**](./testimonials.md) | `testimonials` | Customer quotes with avatars, ratings and an optional carousel |
+| [**Social Icons**](./social-icons.md) | `social_icons` | A row of social profile links |
+| [**Divider**](./divider.md) | `divider` | A separator — a line, an icon, text or a shape |
 | [**Tabs**](./tabs.md) | `tabs` | Tabbed panels with optional media, autoplay and deep links |
 | [**Steps**](./steps.md) | `steps` | A numbered sequence with markers and connectors |
 | [**Timeline**](./timeline.md) | `timeline` | A vertical timeline of dated entries |

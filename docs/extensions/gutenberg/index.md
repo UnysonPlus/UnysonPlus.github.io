@@ -16,6 +16,9 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Lottie**](./lottie.md) | `lottie` | A Lottie JSON animation with playback triggers |
+| [**SVG Draw**](./svg-draw.md) | `svg_draw` | An SVG whose strokes draw themselves |
+| [**3D Model**](./model-viewer.md) | `model_viewer` | An interactive glTF / GLB model with AR |
 | [**Avatar**](./avatar.md) | `avatar` | A user avatar — photo, initials or icon |
 | [**Image**](./media-image.md) | `media_image` | A single image with a style treatment and priority hint |
 | [**Video**](./media-video.md) | `media_video` | A video — self-hosted or embedded |

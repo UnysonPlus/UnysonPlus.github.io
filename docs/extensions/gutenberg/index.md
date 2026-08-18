@@ -16,6 +16,9 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Blockquote**](./blockquote.md) | `blockquote` | A pull quote with author, role and source link |
+| [**Badge**](./badge.md) | `badge` | A small pill of text — label, announcement or status marker |
+| [**Tag List**](./tag-list.md) | `tag_list` | A row of small tags from a list of lines |
 | [**Text Expander**](./text-expander.md) | `text_expander` | A short excerpt with a Read more toggle that reveals the rest |
 | [**Special Heading**](./special-heading.md) | `special_heading` | An overline, title and subtitle — the standard way to open a section |
 | [**Icon Box**](./icon-box.md) | `icon_box` | An icon above a heading and text — the standard feature or service card |
@@ -77,7 +80,7 @@ Visitors get the fully interactive element on the front end.
 
 ## Requirements
 
-Core 2.16.28 or later, with the **Shortcodes** extension active — the blocks render through it.
+Core 2.16.29 or later, with the **Shortcodes** extension active — the blocks render through it.
 
 ## Every block has a page
 

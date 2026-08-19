@@ -126,11 +126,15 @@ There are 4 built-in container types:
   > ),
   > ```
 
-- `group` - Group options into a wrapper div. Has no design. Usually used to show/hide a group of options from javascript
+- `group` - Group options into a wrapper div. Usually used to visually box related options (and to show/hide a group from javascript). Supports two optional presentational parameters, rendered only when set:
+  - `title` — a heading shown at the top of the group box (plain text, escaped).
+  - `desc` — a short note under the title (limited inline HTML allowed, e.g. `<strong>`).
 
   > ``` php
   > 'group_id' => array(
-  >     'type' => 'group',
+  >     'type'    => 'group',
+  >     'title'   => __( 'Section Title', 'your-textdomain' ), // optional heading
+  >     'desc'    => __( 'A short note for this section.', 'your-textdomain' ), // optional note
   >     'options' => array(
   >         'option_id'  => array( 'type' => 'text' ),
   >     ),

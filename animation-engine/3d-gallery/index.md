@@ -75,6 +75,12 @@ don't see it.
   tilting away at the sides) and the wheel steps around card by card. **Overshoot** lets a step sail
   past and settle, **Anticipation** winds it back first, and **Hold** pauses on each card; **Wheel
   Size** sets the radius.
+- **Cover Flow** — the classic album cover flow: the centre card faces you, the immediate neighbours
+  tilt to **Side Tilt** and recede, and further cards stack compressed behind. **One design covers
+  both orientations** — set **Orientation** to Horizontal or Vertical (no need for two separate
+  designs). **Stop at Centre** gives the snappy album-flick step.
+- **Carousel Flow** — a flat focus carousel: the centre card is full size while the side cards scale
+  down (**Side Card Scale**) and fade as they slide past. No tilt; Horizontal or Vertical.
 
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.

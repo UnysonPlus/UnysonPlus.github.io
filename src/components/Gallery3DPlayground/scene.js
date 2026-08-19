@@ -237,6 +237,22 @@ export function buildScene(design, o) {
     return `<div class="tdg tdg--wheel-carousel" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__wheel">${cells}</div></div></div>`;
   }
 
+  if (design === 'cover_flow' || design === 'carousel_flow') {
+    // center-focus carousels — mirror the *-flow.php DOM (a loop of cards).
+    const n = 9, cover = design === 'cover_flow';
+    const a = attr({
+      ...shared,
+      'data-tdg-dir': o.direction === 'backward' ? -1 : 1,
+      'data-tdg-flow': cover ? 'cover' : 'carousel',
+      'data-tdg-axis': o.orientation === 'vertical' ? 'v' : 'h',
+      'data-tdg-card': o.card_size, 'data-tdg-gap': o.gap, 'data-tdg-snap': o.snap,
+      'data-tdg-tilt': o.side_tilt, 'data-tdg-sidescale': o.side_scale,
+    });
+    let cells = '';
+    for (let k = 0; k < n; k++) cells += cardHtml(SAMPLES[k % SAMPLES.length]);
+    return `<div class="tdg tdg--${cover ? 'cover' : 'carousel'}-flow" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__flow">${cells}</div></div></div>`;
+  }
+
   // card_sphere
   const {rows, bands} = sphereBands(o);
   const a = attr({

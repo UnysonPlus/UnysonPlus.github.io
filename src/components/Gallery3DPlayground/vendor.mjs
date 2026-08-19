@@ -72,6 +72,7 @@ export function initEl(el) {
   else if (el.classList.contains('tdg--card-reel')) { initReel(el); }
   else if (el.classList.contains('tdg--film-strip')) { initReel(el); }
   else if (el.classList.contains('tdg--wheel-carousel')) { initWheel(el); }
+  else if (el.classList.contains('tdg--cover-flow') || el.classList.contains('tdg--carousel-flow')) { initFlow(el); }
 }
 `;
 

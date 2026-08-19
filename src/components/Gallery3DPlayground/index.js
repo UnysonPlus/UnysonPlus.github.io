@@ -228,6 +228,36 @@ const DESIGNS = {
         dirChoices: [['cw', 'Clockwise'], ['ccw', 'Counter-clockwise']]}),
     ],
   },
+  cover_flow: {
+    group: 'Carousel & Flow',
+    label: 'Cover Flow',
+    blurb: 'The classic album cover flow — the centre card faces you, the immediate neighbours tilt to Side Tilt and recede, further cards stack behind. One design for both orientations: Horizontal and Vertical.',
+    controls: [
+      se('orientation', 'Orientation', 'horizontal', [['horizontal', 'Horizontal'], ['vertical', 'Vertical']]),
+      sl('side_tilt', 'Side Tilt (°)', 40, 0, 90),
+      sl('card_size', 'Card Size (%)', 46, 6, 90),
+      sl('gap', 'Gap (%)', 4, 0, 40, 0.5),
+      se('snap', 'Stop at Centre', 'yes', [['yes', 'Yes'], ['no', 'No']]),
+      ...SHARED({drive: 'continuous', speed: 20, ratio: '1-1', corner: 0, dir: 'forward',
+        driveChoices: [['continuous', 'Continuous'], ['static', 'Static']],
+        dirChoices: [['forward', 'Forward'], ['backward', 'Backward']]}),
+    ],
+  },
+  carousel_flow: {
+    group: 'Carousel & Flow',
+    label: 'Carousel Flow',
+    blurb: 'A flat focus carousel — the centre card is full size, the side cards scale down (Side Card Scale) and fade as they slide past. No tilt. Horizontal or Vertical.',
+    controls: [
+      se('orientation', 'Orientation', 'horizontal', [['horizontal', 'Horizontal'], ['vertical', 'Vertical']]),
+      sl('side_scale', 'Side Card Scale (%)', 82, 20, 100),
+      sl('card_size', 'Card Size (%)', 50, 6, 90),
+      sl('gap', 'Gap (%)', 5, 0, 40, 0.5),
+      se('snap', 'Stop at Centre', 'yes', [['yes', 'Yes'], ['no', 'No']]),
+      ...SHARED({drive: 'continuous', speed: 20, ratio: '1-1', corner: 0, dir: 'forward',
+        driveChoices: [['continuous', 'Continuous'], ['static', 'Static']],
+        dirChoices: [['forward', 'Forward'], ['backward', 'Backward']]}),
+    ],
+  },
 };
 
 const GROUP_ORDER = ['3D & Perspective', 'Carousel & Flow'];

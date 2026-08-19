@@ -48,5 +48,11 @@ compatibility shim. "v3" is a **staging label**, not a permanent versioned contr
 
 ## Status
 
-Accepted — Phases 0–4 shipped against the existing surface with matching CSS tokens; the dedicated
-`typography-v3` control and its promotion to canonical are the remaining step.
+**Superseded.** The dedicated `typography-v3` *option type* was built as a composite (fonts + the scale
+in one control) and then removed: a single control bundling the whole scale read as bulky and confusing,
+and it duplicated what the General → Typography tab already does. The correct home for the fluid scale is
+a **group of ordinary options on the Typography tab** (the Phase 2 "Type Scale" group), not a bespoke
+option type. So there is no v3 control to promote — the fluid engine (Phases 0–1), the tab controls
+(Phase 2), the font-CLS layer (Phase 3) and the role/`theme.json` work (Phase 4) all stay; only the
+option-type packaging was dropped. The lesson kept: reach for a new option *type* only when a control is
+genuinely reusable across many contexts — not to bundle one tab's settings.

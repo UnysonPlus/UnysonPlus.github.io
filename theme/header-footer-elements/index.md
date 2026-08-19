@@ -49,9 +49,9 @@ array(
 - **`visibility`** is the **Hide On** control (per-device checkboxes).
 - **`element_css_class`** is the **CSS Class** field.
 
-## The wrapper every element shares
+## The wrapper elements share {#the-wrapper-every-element-shares}
 
-The column renderer wraps each element in a `<div>` and applies the two shared controls to it:
+Most elements are wrapped in a `<div>` that applies the two shared controls:
 
 ```html
 <div class="header-element header-element--{type} {hide classes} {your css classes}">
@@ -61,10 +61,29 @@ The column renderer wraps each element in a `<div>` and applies the two shared c
 
 (Footer elements use `footer-element footer-element--{type}` instead.)
 
+:::note Clean DOM — self-wrapped elements
+To keep the markup lean, **Heading**, **Text**, and **List Item** elements skip the extra wrapper `<div>`
+altogether — their own tag (the `<h4>`, the text `<div>`, or the list `<li>`) carries the shared classes
+directly. Those classes are added **only when a control is actually used**: with no *Hide On* and no *CSS
+Class*, the tag stays clean, e.g.
+
+```html
+<h4 class="footer-links-title hf-heading">Quick Links</h4>
+<ul class="footer-links footer-links-list">
+  <li><a class="footer-link hf-link list-item" href="/services"><span class="list-item__text">Services</span></a></li>
+</ul>
+```
+
+When you *do* set a control, the base `footer-element`/`header-element` class is added alongside the
+`hide-*` class — because visibility is applied via `.footer-element.hide-xs { display: none }` — e.g.
+`<h4 class="footer-links-title hf-heading footer-element hide-xs">`.
+:::
+
 ### Hide On → responsive `hide-*` classes
 
 The **Hide On** checkboxes map through `unysonplus_element_visibility_classes()` to the theme's
-responsive utilities, added to the wrapper:
+responsive utilities, added to the element (its wrapper, or its own tag for the self-wrapped elements
+above):
 
 | Checkbox | Class | Hides on |
 | --- | --- | --- |
@@ -75,13 +94,13 @@ responsive utilities, added to the wrapper:
 ### CSS Class → sanitized wrapper classes
 
 The **CSS Class** field (`element_css_class`) is split on whitespace, each token run through
-`sanitize_html_class()`, and appended to the wrapper — so you can safely target one element instance
-from Custom CSS (e.g. `.my-utility { … }`).
+`sanitize_html_class()`, and appended to the element (the wrapper, or its own tag for self-wrapped
+elements) — so you can safely target one element instance from Custom CSS (e.g. `.my-utility { … }`).
 
 ## The elements
 
 **Header:** [Logo](./logo.md) · [Menu](./menu.md) · [Menu Area](./menu-area.md) ·
-[CTA Button](./cta-button.md) · [Icon Text](./icon-text.md) · [Search](./search.md) ·
+[CTA Button](./cta-button.md) · [List Item](./list-item.md) · [Search](./search.md) ·
 [Social Icons](./social-icons.md) · [Text](./text.md) · [Custom HTML](./custom-html.md) ·
 [Widget Area](./widget-area.md) · [Builder Section](./builder-section.md) · [Spacer](./spacer.md) ·
 [Divider](./divider.md)

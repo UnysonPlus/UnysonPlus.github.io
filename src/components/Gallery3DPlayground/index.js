@@ -213,6 +213,21 @@ const DESIGNS = {
         dirChoices: [['left', 'Left'], ['right', 'Right']]}),
     ],
   },
+  wheel_carousel: {
+    group: 'Carousel & Flow',
+    label: 'Wheel Carousel',
+    blurb: 'Cards fanned on a big Ferris-style wheel whose hub sits below the frame — only the top arc shows. Each card rotates tangent to the wheel (upright at the top = the focus) and the wheel steps around card by card. Overshoot sails past and settles, Anticipation winds back first, Hold pauses on each card.',
+    controls: [
+      sl('wheel_size', 'Wheel Size (%)', 70, 20, 160),
+      sl('card_size', 'Card Size (%)', 40, 6, 90),
+      sl('anticipation', 'Anticipation (%)', 0, 0, 40),
+      sl('overshoot', 'Overshoot (%)', 0, 0, 30),
+      sl('hold', 'Hold (%)', 0, 0, 60),
+      ...SHARED({drive: 'continuous', speed: 20, ratio: '1-1', corner: 0, dir: 'cw',
+        driveChoices: [['continuous', 'Continuous'], ['static', 'Static']],
+        dirChoices: [['cw', 'Clockwise'], ['ccw', 'Counter-clockwise']]}),
+    ],
+  },
 };
 
 const GROUP_ORDER = ['3D & Perspective', 'Carousel & Flow'];

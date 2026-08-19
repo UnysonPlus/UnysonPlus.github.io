@@ -70,6 +70,11 @@ don't see it.
   cylinder: the centre card sits flat and forward (the focus) while the ones to the left and right
   tilt back. It flows left/right, or **Stop at Centre** snaps each card to the middle; **3D Curve**
   bends the cylinder from a flat horizontal row to a tight barrel.
+- **Wheel Carousel** — cards fanned on a big Ferris-style wheel whose hub sits below the frame, so
+  only the top arc shows. Each card rotates tangent to the wheel (upright at the top = the focus,
+  tilting away at the sides) and the wheel steps around card by card. **Overshoot** lets a step sail
+  past and settle, **Anticipation** winds it back first, and **Hold** pauses on each card; **Wheel
+  Size** sets the radius.
 
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.

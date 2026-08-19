@@ -223,6 +223,20 @@ export function buildScene(design, o) {
     return `<div class="tdg tdg--film-strip" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__reel">${cells}</div></div></div>`;
   }
 
+  if (design === 'wheel_carousel') {
+    // cards fanned on a Ferris wheel — mirror wheel-carousel.php (a loop of cards on the arc).
+    const n = 11;
+    const a = attr({
+      ...shared,
+      'data-tdg-dir': o.direction === 'ccw' ? -1 : 1,
+      'data-tdg-card': o.card_size, 'data-tdg-wheel': o.wheel_size, 'data-tdg-antic': o.anticipation,
+      'data-tdg-over': o.overshoot, 'data-tdg-hold': o.hold,
+    });
+    let cells = '';
+    for (let k = 0; k < n; k++) cells += cardHtml(SAMPLES[k % SAMPLES.length]);
+    return `<div class="tdg tdg--wheel-carousel" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__wheel">${cells}</div></div></div>`;
+  }
+
   // card_sphere
   const {rows, bands} = sphereBands(o);
   const a = attr({

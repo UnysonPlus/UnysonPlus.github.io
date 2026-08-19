@@ -40,9 +40,12 @@ The control is a **composite** — it stacks proven inner controls, so it inheri
 |---|---|---|
 | **Heading Font** | [`typography`](./typography.md) (family only) | Family for all headings; empty inherits the body font |
 | **Body Font & Text** | [`typography`](./typography.md) (full) | Family, size, line-height, letter-spacing, colour. **The Body size is the scale's base.** |
-| **Fluid Heading Scale** | `switch` | When on, H1–H6 come from the scale instead of fixed per-heading sizes |
-| **Scale Ratio — Desktop** | `select` | Step-to-step multiplier on large screens (Minor Third → Golden) |
+| **Scale Ratio — Desktop** | `select` | Step-to-step multiplier on large screens (Minor Third → Golden). Drives H1–H6 as fluid `clamp()` sizes. |
 | **Scale Ratio — Mobile** | `select` | Gentler multiplier at the small end, so big headings shrink more than body text on phones |
+
+The control is *always* fluid — there is no on/off switch. It is, by definition, a fluid type-scale
+control; if you want a single fixed size for one element, use [`typography`](./typography.md) /
+[`typography-v2`](./typography-v2.md) instead.
 
 ## How the fluid scale works
 
@@ -60,10 +63,10 @@ them:
 --fs-n1: 0.8rem;                                          /* caption — fixed small */
 ```
 
-When **Fluid Heading Scale** is on, H1–H6 map to steps 6→1 (`--h1-font-size` = `--fs-6`, and so on); their
-line-height, letter-spacing and colour still come from the per-heading settings. The theme also emits
-matching `--lh-*` line-heights and **semantic aliases** (`--fs-display`, `--fs-lead`, `--fs-body`,
-`--fs-caption`) that shortcodes and custom CSS can reference.
+H1–H6 map to steps 6→1 (`--h1-font-size` = `--fs-6`, and so on); their line-height, letter-spacing and
+colour still come from the per-heading settings. The theme also emits matching `--lh-*` line-heights and
+**semantic aliases** (`--fs-display`, `--fs-lead`, `--fs-body`, `--fs-caption`) that shortcodes and custom
+CSS can reference.
 
 ### Accessibility (why `rem + vw`, never `vw` alone)
 
@@ -122,7 +125,6 @@ Array
             [letter-spacing] => 0
             [color] =>
         )
-    [scale_enable] => yes
     [ratio] => 1.25
     [ratio_mobile] => 1.2
 )

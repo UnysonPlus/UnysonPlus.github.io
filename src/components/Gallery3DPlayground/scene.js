@@ -209,6 +209,20 @@ export function buildScene(design, o) {
     return `<div class="tdg tdg--card-reel" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__reel">${cells}</div></div></div>`;
   }
 
+  if (design === 'film_strip') {
+    // horizontal cover-flow strip — mirror film-strip.php (Card Reel runtime, axis = horizontal).
+    const n = 9;
+    const a = attr({
+      ...shared,
+      'data-tdg-dir': o.direction === 'right' ? -1 : 1,
+      'data-tdg-curve': o.curve_3d, 'data-tdg-card': o.card_size, 'data-tdg-gap': o.gap,
+      'data-tdg-snap': o.snap, 'data-tdg-axis': 'h',
+    });
+    let cells = '';
+    for (let k = 0; k < n; k++) cells += cardHtml(SAMPLES[k % SAMPLES.length]);
+    return `<div class="tdg tdg--film-strip" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__reel">${cells}</div></div></div>`;
+  }
+
   // card_sphere
   const {rows, bands} = sphereBands(o);
   const a = attr({

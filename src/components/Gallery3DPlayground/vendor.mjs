@@ -70,6 +70,7 @@ export function initEl(el) {
   else if (el.classList.contains('tdg--spiral-stream')) { initSpiral(el); }
   else if (el.classList.contains('tdg--depth-stack')) { initDepthStack(el); }
   else if (el.classList.contains('tdg--card-reel')) { initReel(el); }
+  else if (el.classList.contains('tdg--film-strip')) { initReel(el); }
 }
 `;
 

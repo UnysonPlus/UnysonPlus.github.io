@@ -66,6 +66,10 @@ don't see it.
   cylinder: the centre card sits flat and forward (the focus) while the ones above and below tilt back
   along the curve. It flows up/down, or **Stop at Centre** snaps each card to the middle. **3D Curve**
   bends the cylinder from a flat vertical strip to a tight barrel.
+- **Film Strip** — the horizontal sibling of Card Reel. A single row of cards wraps around a vertical
+  cylinder: the centre card sits flat and forward (the focus) while the ones to the left and right
+  tilt back. It flows left/right, or **Stop at Centre** snaps each card to the middle; **3D Curve**
+  bends the cylinder from a flat horizontal row to a tight barrel.
 
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.

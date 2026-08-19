@@ -16,6 +16,21 @@ or any existing page.
 
 | Block | Element | What it is |
 | --- | --- | --- |
+| [**Products**](./wc-products.md) | `wc_products` | A grid or carousel of products |
+| [**Single Product**](./wc-product.md) | `wc_product` | One product as a card |
+| [**Product Page**](./wc-product-page.md) | `wc_product_page` | A product's full page |
+| [**Product Categories**](./wc-product-categories.md) | `wc_product_categories` | A grid of product categories |
+| [**Product Filters**](./wc-product-filters.md) | `wc_product_filters` | Filter controls for a product grid |
+| [**Product Search**](./wc-product-search.md) | `wc_product_search` | A search field scoped to products |
+| [**Add to Cart**](./wc-add-to-cart.md) | `wc_add_to_cart` | An add-to-cart button for one product |
+| [**Cart Link**](./wc-cart-link.md) | `wc_cart_link` | A cart link with count and total |
+| [**Mini Cart**](./wc-mini-cart.md) | `wc_mini_cart` | A cart drawer with contents and checkout |
+| [**Account Link**](./wc-account.md) | `wc_account` | A link to the account page |
+| [**Free Shipping Bar**](./wc-free-shipping.md) | `wc_free_shipping` | Progress toward free shipping |
+| [**Cart**](./wc-cart.md) | `wc_cart` | WooCommerce's cart page |
+| [**Checkout**](./wc-checkout.md) | `wc_checkout` | WooCommerce's checkout |
+| [**My Account**](./wc-my-account.md) | `wc_my_account` | WooCommerce's account area |
+| [**Order Tracking**](./wc-order-tracking.md) | `wc_order_tracking` | An order lookup form |
 | [**Portfolio Grid**](./portfolio.md) | `portfolio` | A filterable grid of projects |
 | [**Project Details**](./project-details.md) | `project_details` | A project's detail fields |
 | [**Project Gallery**](./project-gallery.md) | `project_gallery` | A project's image gallery |

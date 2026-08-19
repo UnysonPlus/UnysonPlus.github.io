@@ -41,14 +41,16 @@ array(
 ```
 
 ```html
-<div class="footer-element footer-element--text">
-  <div class="builder-text-element"><p>© 2026 Acme Inc.</p></div>
-</div>
+<div class="builder-text-element"><p>© 2026 Acme Inc.</p></div>
 ```
+
+Text is a [self-wrapped](./index.md) element — a **single** `<div class="builder-text-element">` with no
+extra wrapper `<div>` (clean DOM).
 
 ## Example 2 — with Hide On + CSS Class
 
-**Hide On: phones**, **CSS Class: `copyright`**.
+**Hide On: phones**, **CSS Class: `copyright`**. The visibility + custom classes ride on that same div,
+and `footer-element` is added so the `.footer-element.hide-xs` rule matches:
 
 ```php
 array(
@@ -59,9 +61,7 @@ array(
 ```
 
 ```html
-<div class="footer-element footer-element--text hide-xs copyright">
-  <div class="builder-text-element"><p>© 2026 Acme Inc.</p></div>
-</div>
+<div class="builder-text-element footer-element hide-xs copyright"><p>© 2026 Acme Inc.</p></div>
 ```
 
 ## Related

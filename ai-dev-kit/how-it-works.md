@@ -49,4 +49,6 @@ converter itself, so the next build needs even less hand-work.
 A real, **fully-editable** UnysonPlus site — pages in the page builder, styling in Theme Settings — not
 a static export. You can keep editing it in WordPress like any other UnysonPlus site.
 
-See **[What It Can Build](./what-it-can-build.md)** for the kinds of projects this covers.
+See **[What It Can Build](./what-it-can-build.md)** for the kinds of projects this covers, and
+**[Conversion Architecture](./conversion-architecture.md)** for the full pipeline underneath — how the
+source is captured, mapped to shortcodes, and turned into a child theme + builder pages.

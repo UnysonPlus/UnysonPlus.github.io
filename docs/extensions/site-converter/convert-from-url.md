@@ -29,7 +29,7 @@ the **Analyze & convert** button shows green when it's detected.
    **Style Guide** page.
 5. **Review the mapping** — for each section, set every element's role (or uncheck/omit it), give
    the section a CSS id, or keep a section as a verbatim code block. (See
-   [How it works → role mapping](./how-it-works.md#role-mapping--shortcodes).)
+   [Conversion Architecture → role mapping](https://unysonplus.github.io/ai-dev-kit/conversion-architecture#role-mapping--shortcodes).)
 6. Click **Build the page from this mapping**. The pages are created and the per‑section CSS is
    merged into the child stylesheet. You're redirected to the result.
 

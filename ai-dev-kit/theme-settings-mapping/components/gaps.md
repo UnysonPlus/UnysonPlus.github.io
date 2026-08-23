@@ -12,18 +12,38 @@ hide_table_of_contents: true
 
 **Theme Settings → Components → Gaps** · ✅ Populated
 
-The source’s column / grid gutters → an editable gap scale (`build_gap_scale`) — mirrors the extended default and appends any off-scale gutter **exactly** (a `gap-[20px]` gets an exact entry, no snap).
+Gap Scale holds the values every column-gap dropdown offers — the per-section Gap field and the site-wide Default Gap. The converter keeps the default scale and appends the source’s column / grid gutters, keeping off-scale ones **exact**.
 
 Full reference: **[Gaps](/theme/components/spacing)** (how it’s coded + examples).
 
+## Where it lives
+
+| | |
+| --- | --- |
+| **Option schema** | `framework/extensions/shortcodes/includes/theme-settings/components-spacing.php (Gaps group)` |
+| **Converter method** | `FW_Site_Converter_Stitch::build_gap_scale()` |
+| **Storage key** | `gap_scale · default_gap` |
+| **Produces** | the gap values offered in every column-gap dropdown (Section Gap + Default Gap) |
+
+The converter starts from the extended default gap scale (0–6 plus `[32px]` / `[40px]`) and appends any off-scale gutter the source uses — Tailwind arbitrary gap classes (`gap-[20px]`, `gap-x-[18px]`, `space-x-[Npx]`) and measured gutters — as exact `[NNpx]` entries (**no snap-to-nearest**), deduped. The site-wide **Default Gap** selects are left at the theme default.
+
 ## Coverage
 
-**2/2 fields derived from the source** (100%) — 🟡 0 via CSS · ⚪ 0 default/manual · ⚙️ 0 auto.
+**2/5 fields derived from the source** (40%) — 🟡 0 via CSS · ⚪ 3 default/manual · ⚙️ 0 auto.
 
-| Aspect | Type | Status | Derived from / note |
+| Group / field | Type | Status | Derived from / note |
 | --- | --- | --- | --- |
-| `gap steps` | `scale` | ✅ Native | The default scale plus the source’s gutters |
-| `off-scale gutter` | `exact` | ✅ Native | Non-standard gutters kept exact (no snap-to-nearest) |
+| **Gap (`gap_scale` box)** | | | |
+| `name` | `text` | ✅ Native | Base slugs plus off-scale gutters as exact `[NNpx]` |
+| `size` | `text` | ✅ Native | The default gap scale plus the source’s column / grid gutters, off-scale kept exact |
+| **Default Gap (`group_gaps`)** | | | |
+| `default_gap` | `short-select` | ⚪ Unmapped | Site-wide row gap — left at the theme default |
+| `default_gap_x` | `short-select` | ⚪ Unmapped | Left default |
+| `default_gap_y` | `short-select` | ⚪ Unmapped | Left default |
+
+:::note[Off-scale gutters stay exact]
+A source `gap-[20px]` lands as a `[20px]` entry — not snapped to the nearest scale step — so the converted layout matches the source’s spacing precisely. The named steps (0–6) still cover the common gutters.
+:::
 
 ### Status legend
 

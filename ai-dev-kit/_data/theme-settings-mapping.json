@@ -884,19 +884,48 @@
           "slug": "background-patterns",
           "ref": "/theme/components/background-patterns",
           "coverage": "populated",
-          "intro": "Captured SVG / gradient decorative tiles (`build_background_patterns`, the PHP parity of the JS `backgroundPatterns()`); the mapper injects the matching overlay onto its section.",
+          "storageKey": "background_patterns",
+          "optionFile": "framework/extensions/shortcodes/includes/theme-settings/components-patterns.php",
+          "builderFn": "FW_Site_Converter_Stitch::build_background_patterns()",
+          "outputClass": "a `.pattern-{slug}` class per preset — applied to a Section, Container, or the site background",
+          "intro": "Background Patterns is a reusable library of **CSS/HTML** background patterns — each becomes a `.pattern-{slug}` you can apply to a Section, Container or the site background. The converter captures the source’s decorative gradient / SVG tiles and rebuilds them as scoped, editable pattern presets (the PHP parity of the capture service’s JS `backgroundPatterns()`).",
+          "wiringNote": "The converter scans the source for decorative background layers (gradients, inline / data-URI SVG tiles), extracts each as a scoped preset — a `<div>` carrying a root class + the captured declarations namespaced to that class — and records the section background it sat over as the editor **preview** colour. The mapper then injects the matching `.pattern-{slug}` overlay onto the section that used it. **JavaScript-driven** backgrounds are out of scope — those are the Animation Engine’s job.",
+          "notes": ":::note[Captured as editable code, not a screenshot]\nEach pattern is rebuilt as real, scoped **HTML + CSS** you can open and edit — the class names are kept exactly and namespaced to the preset (and its `@keyframes` too), so nothing leaks into the rest of the site. The `preview_bg` is editor-only metadata (the section colour the pattern sat over) and never enters the output CSS.\n:::",
           "options": [
             {
-              "key": "captured tile",
-              "type": "svg / gradient",
-              "status": "native",
-              "source": "The decorative pattern lifted from the source"
+              "group": "Pattern (`background_patterns` box)",
+              "key": "pattern_name",
+              "type": "text",
+              "status": "auto",
+              "source": "Named sequentially — `Captured Pattern N`"
             },
             {
-              "key": "placement",
-              "type": "overlay",
-              "status": "auto",
-              "source": "The mapper wires the pattern onto the section that used it"
+              "group": "Pattern (`background_patterns` box)",
+              "key": "root_class",
+              "type": "text",
+              "status": "native",
+              "source": "The scoping class for the pattern → `.pattern-{slug}`"
+            },
+            {
+              "group": "Pattern (`background_patterns` box)",
+              "key": "html",
+              "type": "code-editor (htmlmixed)",
+              "status": "native",
+              "source": "The pattern markup — a `<div>` carrying the root class"
+            },
+            {
+              "group": "Pattern (`background_patterns` box)",
+              "key": "css",
+              "type": "code-editor (css)",
+              "status": "native",
+              "source": "The captured background declarations (gradient / SVG tile) scoped to the root class"
+            },
+            {
+              "group": "Pattern (`background_patterns` box)",
+              "key": "preview_bg",
+              "type": "color-picker",
+              "status": "native",
+              "source": "The captured section background the pattern sits over (editor preview only — not in output)"
             }
           ]
         },
@@ -905,13 +934,26 @@
           "slug": "spacing",
           "ref": "/theme/components/spacing",
           "coverage": "populated",
-          "intro": "The source’s spacing steps → an editable scale (`build_spacing_scale`), so the converted site carries a real scale instead of the theme default.",
+          "storageKey": "spacing_scale",
+          "optionFile": "framework/extensions/shortcodes/includes/theme-settings/components-spacing.php",
+          "builderFn": "FW_Site_Converter_Stitch::build_spacing_scale()",
+          "outputClass": "a full set of utilities per entry — `.m-{name}`, `.p-{name}`, `.mt-{name}`, `.mx-{name}`, etc.",
+          "intro": "Spacing Scale holds the values behind the Bootstrap-style margin / padding utilities. The converter keeps the default scale and appends the source’s own meaningful off-scale spacing, so a converted site carries a real spacing rhythm instead of the theme default.",
+          "wiringNote": "The converter starts from the Bootstrap-aligned default scale (kept in sync here so it’s self-contained in the capture / bundle path) and harvests the source’s arbitrary spacing tokens — the `p-*` / `m-*` families and the measured fold — appending only **meaningful** off-scale values (≥ 2.5rem / 40px, to avoid a flood of 1px odds) as exact `[NNpx]` entries, deduped and sorted. Small gutters are excluded here — they feed the dedicated **[Gaps](./gaps.md)** scale instead.",
           "options": [
             {
-              "key": "spacing steps",
-              "type": "scale",
+              "group": "Spacer (`spacing_scale` box)",
+              "key": "name",
+              "type": "text",
               "status": "native",
-              "source": "The distinct spacing values the source uses"
+              "source": "Base scale slugs (`0`–`6`…) plus off-scale source values as `[NNpx]`"
+            },
+            {
+              "group": "Spacer (`spacing_scale` box)",
+              "key": "size",
+              "type": "text",
+              "status": "native",
+              "source": "The default scale, plus meaningful off-scale spacing (≥ 2.5rem / 40px) harvested from the markup + measured fold (exact `[NNpx]`)"
             }
           ]
         },
@@ -920,19 +962,48 @@
           "slug": "gaps",
           "ref": "/theme/components/spacing",
           "coverage": "populated",
-          "intro": "The source’s column / grid gutters → an editable gap scale (`build_gap_scale`) — mirrors the extended default and appends any off-scale gutter **exactly** (a `gap-[20px]` gets an exact entry, no snap).",
+          "storageKey": "gap_scale · default_gap",
+          "optionFile": "framework/extensions/shortcodes/includes/theme-settings/components-spacing.php (Gaps group)",
+          "builderFn": "FW_Site_Converter_Stitch::build_gap_scale()",
+          "outputClass": "the gap values offered in every column-gap dropdown (Section Gap + Default Gap)",
+          "intro": "Gap Scale holds the values every column-gap dropdown offers — the per-section Gap field and the site-wide Default Gap. The converter keeps the default scale and appends the source’s column / grid gutters, keeping off-scale ones **exact**.",
+          "wiringNote": "The converter starts from the extended default gap scale (0–6 plus `[32px]` / `[40px]`) and appends any off-scale gutter the source uses — Tailwind arbitrary gap classes (`gap-[20px]`, `gap-x-[18px]`, `space-x-[Npx]`) and measured gutters — as exact `[NNpx]` entries (**no snap-to-nearest**), deduped. The site-wide **Default Gap** selects are left at the theme default.",
+          "notes": ":::note[Off-scale gutters stay exact]\nA source `gap-[20px]` lands as a `[20px]` entry — not snapped to the nearest scale step — so the converted layout matches the source’s spacing precisely. The named steps (0–6) still cover the common gutters.\n:::",
           "options": [
             {
-              "key": "gap steps",
-              "type": "scale",
+              "group": "Gap (`gap_scale` box)",
+              "key": "name",
+              "type": "text",
               "status": "native",
-              "source": "The default scale plus the source’s gutters"
+              "source": "Base slugs plus off-scale gutters as exact `[NNpx]`"
             },
             {
-              "key": "off-scale gutter",
-              "type": "exact",
+              "group": "Gap (`gap_scale` box)",
+              "key": "size",
+              "type": "text",
               "status": "native",
-              "source": "Non-standard gutters kept exact (no snap-to-nearest)"
+              "source": "The default gap scale plus the source’s column / grid gutters, off-scale kept exact"
+            },
+            {
+              "group": "Default Gap (`group_gaps`)",
+              "key": "default_gap",
+              "type": "short-select",
+              "status": "unmapped",
+              "source": "Site-wide row gap — left at the theme default"
+            },
+            {
+              "group": "Default Gap (`group_gaps`)",
+              "key": "default_gap_x",
+              "type": "short-select",
+              "status": "unmapped",
+              "source": "Left default"
+            },
+            {
+              "group": "Default Gap (`group_gaps`)",
+              "key": "default_gap_y",
+              "type": "short-select",
+              "status": "unmapped",
+              "source": "Left default"
             }
           ]
         }

@@ -16,7 +16,7 @@ Components is where the converter reproduces the source’s **design system** mo
 
 ## Coverage
 
-**64/84 derived from the source** (76%) across 11 preset libraries — 🟡 0 via CSS · ⚪ 20 default/manual · ⚙️ 14 auto.
+**68/91 derived from the source** (75%) across 11 preset libraries — 🟡 0 via CSS · ⚪ 23 default/manual · ⚙️ 14 auto.
 
 | Preset library | Coverage | Derived | Full reference |
 | --- | --- | --- | --- |
@@ -28,9 +28,9 @@ Components is where the converter reproduces the source’s **design system** mo
 | [Image Styles](./image-styles.md) | ✅ Populated | ✅ 5 native · 56% | [reference](/theme/components/image-styles) |
 | [Section Styles](./section-styles.md) | ✅ Populated | ✅ 6 native · 75% | [reference](/theme/components/section-styles) |
 | [Container Widths](./container-widths.md) | ✅ Populated | ✅ 2 native · 100% | [reference](/theme/components/section-styles) |
-| [Background Patterns](./background-patterns.md) | ✅ Populated | ✅ 1 native · 100% | [reference](/theme/components/background-patterns) |
-| [Spacing](./spacing.md) | ✅ Populated | ✅ 1 native · 100% | [reference](/theme/components/spacing) |
-| [Gaps](./gaps.md) | ✅ Populated | ✅ 2 native · 100% | [reference](/theme/components/spacing) |
+| [Background Patterns](./background-patterns.md) | ✅ Populated | ✅ 4 native · 100% | [reference](/theme/components/background-patterns) |
+| [Spacing](./spacing.md) | ✅ Populated | ✅ 2 native · 100% | [reference](/theme/components/spacing) |
+| [Gaps](./gaps.md) | ✅ Populated | ✅ 2 native · 40% | [reference](/theme/components/spacing) |
 
 These presets are what the converted **elements** then consume — a button points at a derived Button preset, a card at a derived Box preset, a heading at a derived Text Style — so editing one preset restyles every element that uses it, site-wide. Each library below has its own page here (what the converter fills) and a full reference under **[The Theme → Components](/theme/components)** (how it’s coded + examples).
 

@@ -105,92 +105,347 @@
       "storageKey": "button_presets · box_presets · text_styles · theme_colors · image_styles · section_style_presets · …",
       "location": "Theme Settings → Components",
       "coverage": "populated",
-      "intro": "Components is where the converter reproduces the source’s **design system** most heavily. Almost every preset library is **derived** from the captured DOM + computed styles and written as a fully-editable **addable-box** (not baked CSS), so the converted site carries real, reusable presets instead of the theme defaults.",
-      "recognizerNotes": "Each library links to its full reference under **[The Theme → Components](/components)**. These presets are what the converted **elements** then consume — a button on a page points at a derived Button preset, a card at a derived Box preset, a heading at a derived Text Style — so editing the preset restyles every element that uses it, site-wide.",
-      "options": [
+      "intro": "Components is where the converter reproduces the source’s **design system** most heavily. It’s a single Theme Settings tab, but it holds many **preset libraries** — buttons, boxes, text styles, colours, badges, image styles, section skins, spacing — and the converter **derives almost all of them** from the captured DOM + computed styles, writing each as a fully-editable **addable-box** (not baked CSS).",
+      "recognizerNotes": "These presets are what the converted **elements** then consume — a button points at a derived Button preset, a card at a derived Box preset, a heading at a derived Text Style — so editing one preset restyles every element that uses it, site-wide. Each library below has its own page here (what the converter fills) and a full reference under **[The Theme → Components](/theme/components)** (how it’s coded + examples).",
+      "presets": [
         {
-          "key": "button_presets",
-          "type": "addable-box",
-          "status": "native",
-          "source": "Button skin — fill, radius, padding, size — from the source’s real buttons (`build_button_presets`); a Large size preset also repoints the header CTA → [Buttons](/components/buttons)"
+          "name": "Buttons",
+          "slug": "buttons",
+          "ref": "/theme/components/buttons",
+          "coverage": "populated",
+          "intro": "From the source’s real button skin (`build_button_presets`) — the fill, text colour, border, radius, padding and shadow of the actual buttons, plus S / M / L **size** presets. A Large size preset also repoints the header CTA so it matches the source’s chunky button.",
+          "options": [
+            {
+              "key": "fill / background",
+              "type": "colour",
+              "status": "native",
+              "source": "The button’s computed background"
+            },
+            {
+              "key": "text colour",
+              "type": "colour",
+              "status": "native",
+              "source": "The button’s computed text colour"
+            },
+            {
+              "key": "border",
+              "type": "border",
+              "status": "native",
+              "source": "Width / style / colour when the source button has one"
+            },
+            {
+              "key": "radius",
+              "type": "unit",
+              "status": "native",
+              "source": "Corner radius"
+            },
+            {
+              "key": "padding",
+              "type": "box",
+              "status": "native",
+              "source": "X / Y padding → informs the size presets"
+            },
+            {
+              "key": "shadow",
+              "type": "box-shadow",
+              "status": "native",
+              "source": "Drop shadow when present"
+            },
+            {
+              "key": "font-family",
+              "type": "typography",
+              "status": "via-css",
+              "source": "Only carried when it **deviates** from the body base font; otherwise inherited for free"
+            },
+            {
+              "key": "size presets (S/M/L)",
+              "type": "button_sizes",
+              "status": "native",
+              "source": "Distinct button sizes clustered from the source"
+            },
+            {
+              "key": "hover / focus state",
+              "type": "state",
+              "status": "unmapped",
+              "source": "Left at the theme default"
+            }
+          ]
         },
         {
-          "key": "box_presets",
-          "type": "addable-box",
-          "status": "native",
-          "source": "Card / box skins clustered from the source (`build_box_presets`) → [Box Presets](/components/box-presets)"
+          "name": "Box Presets",
+          "slug": "box-presets",
+          "ref": "/theme/components/box-presets",
+          "coverage": "populated",
+          "intro": "Reusable card / box skins clustered from the source (`build_box_presets`) — every repeated “card” look becomes one editable Box preset.",
+          "options": [
+            {
+              "key": "background",
+              "type": "colour",
+              "status": "native",
+              "source": "Card background fill"
+            },
+            {
+              "key": "border",
+              "type": "border",
+              "status": "native",
+              "source": "Width / style / colour"
+            },
+            {
+              "key": "radius",
+              "type": "unit",
+              "status": "native",
+              "source": "Corner radius"
+            },
+            {
+              "key": "shadow",
+              "type": "box-shadow",
+              "status": "native",
+              "source": "Drop shadow"
+            },
+            {
+              "key": "padding",
+              "type": "box",
+              "status": "native",
+              "source": "Inner padding"
+            }
+          ]
         },
         {
-          "key": "text_styles · font_sizes",
-          "type": "addable-box",
-          "status": "native",
-          "source": "Display scale + eyebrow distilled from the source headings (`build_text_styles`) → [Text Styles](/components/text-styles)"
+          "name": "Text Styles",
+          "slug": "text-styles",
+          "ref": "/theme/components/text-styles",
+          "coverage": "populated",
+          "intro": "The **display scale** + eyebrow distilled from the source’s headings and paragraphs (`build_text_styles`) — the Display / Lead / Small roles the elements consume (this is where the type scale lands, not the Typography tab’s per-heading overrides).",
+          "options": [
+            {
+              "key": "size scale",
+              "type": "unit",
+              "status": "native",
+              "source": "Distinct heading / display sizes from the source"
+            },
+            {
+              "key": "weight",
+              "type": "select",
+              "status": "native",
+              "source": "Measured font-weight per role"
+            },
+            {
+              "key": "line-height",
+              "type": "unit",
+              "status": "native",
+              "source": "Measured line-height"
+            },
+            {
+              "key": "letter-spacing",
+              "type": "unit",
+              "status": "native",
+              "source": "Measured tracking"
+            },
+            {
+              "key": "eyebrow style",
+              "type": "preset",
+              "status": "native",
+              "source": "The small uppercase label pattern when the source uses one"
+            },
+            {
+              "key": "colour",
+              "type": "colour",
+              "status": "unmapped",
+              "source": "Left to the palette / element"
+            }
+          ]
         },
         {
-          "key": "theme_colors",
-          "type": "addable-box",
-          "status": "native",
-          "source": "The source’s brand palette → editable [Color Presets](/components/color-presets)"
+          "name": "Color Presets",
+          "slug": "color-presets",
+          "ref": "/theme/components/color-presets",
+          "coverage": "populated",
+          "intro": "The source’s brand palette (`build_color_presets`, from the extracted tokens + the DOM) → editable Components colours the whole site references by name.",
+          "options": [
+            {
+              "key": "brand swatches",
+              "type": "colour",
+              "status": "native",
+              "source": "The distinct brand colours found in the source"
+            },
+            {
+              "key": "preset names",
+              "type": "label",
+              "status": "auto",
+              "source": "Named automatically (Primary, Accent…)"
+            }
+          ]
         },
         {
-          "key": "icon_badge_presets",
-          "type": "addable-box",
-          "status": "native",
-          "source": "The source’s icon-in-a-tile pattern → [Icon Badges](/components/icon-badges)"
+          "name": "Icon Badges",
+          "slug": "icon-badges",
+          "ref": "/theme/components/icon-badges",
+          "coverage": "populated",
+          "intro": "The source’s icon-in-a-tile pattern (`build_icon_badge_presets`) → editable badge presets (the coloured square/circle behind a feature icon).",
+          "options": [
+            {
+              "key": "tile background",
+              "type": "colour",
+              "status": "native",
+              "source": "The badge fill"
+            },
+            {
+              "key": "size",
+              "type": "unit",
+              "status": "native",
+              "source": "Tile size"
+            },
+            {
+              "key": "radius",
+              "type": "unit",
+              "status": "native",
+              "source": "Square / rounded / circle"
+            },
+            {
+              "key": "icon colour",
+              "type": "colour",
+              "status": "native",
+              "source": "The glyph colour"
+            }
+          ]
         },
         {
-          "key": "image_styles",
-          "type": "addable-box",
-          "status": "native",
-          "source": "Radius / circle / aspect / filter from the source’s images → [Image Styles](/components/image-styles)"
+          "name": "Image Styles",
+          "slug": "image-styles",
+          "ref": "/theme/components/image-styles",
+          "coverage": "populated",
+          "intro": "Radius / circle / aspect / filter from the source’s images (`build_image_styles`) → reusable image treatments.",
+          "options": [
+            {
+              "key": "radius",
+              "type": "unit",
+              "status": "native",
+              "source": "Corner radius"
+            },
+            {
+              "key": "circle",
+              "type": "toggle",
+              "status": "native",
+              "source": "Fully-round crop when the source uses it"
+            },
+            {
+              "key": "aspect ratio",
+              "type": "ratio",
+              "status": "native",
+              "source": "Fixed aspect when detected"
+            },
+            {
+              "key": "filter",
+              "type": "css-filter",
+              "status": "native",
+              "source": "Grayscale / brightness etc. when present"
+            }
+          ]
         },
         {
-          "key": "section_style_presets",
-          "type": "addable-box",
-          "status": "native",
-          "source": "Reusable band skins clustered from the source’s sections → [Section Styles](/components/section-styles)"
+          "name": "Section Styles",
+          "slug": "section-styles",
+          "ref": "/theme/components/section-styles",
+          "coverage": "populated",
+          "intro": "Reusable band skins clustered from the source’s sections (`build_section_style_presets`) — a repeated section look becomes one editable Section Style.",
+          "options": [
+            {
+              "key": "band background",
+              "type": "background",
+              "status": "native",
+              "source": "The section fill (colour / gradient)"
+            },
+            {
+              "key": "padding",
+              "type": "box",
+              "status": "native",
+              "source": "Vertical band padding"
+            },
+            {
+              "key": "text colour",
+              "type": "colour",
+              "status": "native",
+              "source": "On-band text colour (for dark bands)"
+            }
+          ]
         },
         {
-          "key": "container_width_presets",
-          "type": "addable-box",
-          "status": "native",
-          "source": "Named content-band widths (Narrow / Medium / Wide + any distinct widths the source uses) so sections share named widths"
+          "name": "Container Widths",
+          "slug": "container-widths",
+          "ref": "",
+          "coverage": "populated",
+          "intro": "Named content-band widths gathered from the source (`build_container_width_presets`) — Narrow / Medium / Wide plus any distinct widths the site uses, so converted sections reference **shared named widths** instead of one-off numbers.",
+          "options": [
+            {
+              "key": "Narrow / Medium / Wide",
+              "type": "unit",
+              "status": "native",
+              "source": "The recurring content widths, named"
+            },
+            {
+              "key": "distinct source widths",
+              "type": "unit",
+              "status": "native",
+              "source": "Any extra widths the source uses, added as named presets"
+            }
+          ]
         },
         {
-          "key": "background_patterns",
-          "type": "addable-box",
-          "status": "native",
-          "source": "Captured SVG / gradient decorative tiles (`build_background_patterns`) → [Background Patterns](/components/background-patterns)"
+          "name": "Background Patterns",
+          "slug": "background-patterns",
+          "ref": "/theme/components/background-patterns",
+          "coverage": "populated",
+          "intro": "Captured SVG / gradient decorative tiles (`build_background_patterns`, the PHP parity of the JS `backgroundPatterns()`); the mapper injects the matching overlay onto its section.",
+          "options": [
+            {
+              "key": "captured tile",
+              "type": "svg / gradient",
+              "status": "native",
+              "source": "The decorative pattern lifted from the source"
+            },
+            {
+              "key": "placement",
+              "type": "overlay",
+              "status": "auto",
+              "source": "The mapper wires the pattern onto the section that used it"
+            }
+          ]
         },
         {
-          "key": "spacing_scale",
-          "type": "scale",
-          "status": "native",
-          "source": "The source’s spacing steps → an editable scale (`build_spacing_scale`) → [Spacing](/components/spacing)"
+          "name": "Spacing",
+          "slug": "spacing",
+          "ref": "/theme/components/spacing",
+          "coverage": "populated",
+          "intro": "The source’s spacing steps → an editable scale (`build_spacing_scale`), so the converted site carries a real scale instead of the theme default.",
+          "options": [
+            {
+              "key": "spacing steps",
+              "type": "scale",
+              "status": "native",
+              "source": "The distinct spacing values the source uses"
+            }
+          ]
         },
         {
-          "key": "gap_scale",
-          "type": "scale",
-          "status": "native",
-          "source": "The source’s column / grid gutters → editable gap scale, off-scale gutters kept exact → [Spacing → Gaps](/components/spacing)"
-        },
-        {
-          "key": "table_presets",
-          "type": "addable-box",
-          "status": "unmapped",
-          "source": "Default — set by hand → [Table Presets](/components/table-presets)"
-        },
-        {
-          "key": "shape_dividers",
-          "type": "addable-box",
-          "status": "unmapped",
-          "source": "Decorative — set by hand → [Shape Dividers](/components/shape-dividers)"
-        },
-        {
-          "key": "element_designs",
-          "type": "addable-box",
-          "status": "unmapped",
-          "source": "Saved element skins — created in the builder → [Element Designs](/components/element-designs)"
+          "name": "Gaps",
+          "slug": "gaps",
+          "ref": "/theme/components/spacing",
+          "coverage": "populated",
+          "intro": "The source’s column / grid gutters → an editable gap scale (`build_gap_scale`) — mirrors the extended default and appends any off-scale gutter **exactly** (a `gap-[20px]` gets an exact entry, no snap).",
+          "options": [
+            {
+              "key": "gap steps",
+              "type": "scale",
+              "status": "native",
+              "source": "The default scale plus the source’s gutters"
+            },
+            {
+              "key": "off-scale gutter",
+              "type": "exact",
+              "status": "native",
+              "source": "Non-standard gutters kept exact (no snap-to-nearest)"
+            }
+          ]
         }
       ]
     },

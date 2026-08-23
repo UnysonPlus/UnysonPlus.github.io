@@ -2849,6 +2849,590 @@
           "source": "Not set"
         }
       ]
+    },
+    {
+      "priority": 55,
+      "shortcode": "newsletter",
+      "label": "Newsletter",
+      "doc": "/docs/shortcodes/interactive-elements/newsletter",
+      "recognizer": "newsletter",
+      "matchesWhen": "An email sign-up form — an email field + a subscribe button (often with a name field, on a call-to-action band).",
+      "blockShape": "{ placeholder, button_label, name_placeholder, align, rounded, button_bg }",
+      "fallback": "Degrades to `code_block`.",
+      "recognizerNotes": "The visible copy maps — the email (and name) placeholder, the button label, alignment, corner rounding, and the button colour. The list binding and the surrounding colours/messages are left for you to set.",
+      "options": [
+        {
+          "key": "email_placeholder",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "Source email field placeholder"
+        },
+        {
+          "key": "button_label",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "Subscribe button label"
+        },
+        {
+          "key": "name_placeholder",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "Name field placeholder (when present)"
+        },
+        {
+          "key": "show_name",
+          "tab": "Content",
+          "type": "switch",
+          "status": "native",
+          "source": "On when the source form has a name field"
+        },
+        {
+          "key": "align",
+          "tab": "Layout",
+          "type": "select",
+          "status": "native",
+          "source": "Source alignment"
+        },
+        {
+          "key": "rounded",
+          "tab": "Design",
+          "type": "select",
+          "status": "native",
+          "source": "Corner rounding from the source"
+        },
+        {
+          "key": "accent_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "native",
+          "source": "Button colour from the source"
+        },
+        {
+          "key": "list_id",
+          "tab": "Content",
+          "type": "text",
+          "status": "unmapped",
+          "source": "You bind the list"
+        },
+        {
+          "key": "title",
+          "tab": "Content",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "consent_text",
+          "tab": "Content",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "success_message",
+          "tab": "Content",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "error_message",
+          "tab": "Content",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "bg_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "text_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "field_bg",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "font_size_preset",
+          "tab": "Styling",
+          "type": "font-size",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "spacing",
+          "tab": "Styling",
+          "type": "spacing",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "animation",
+          "tab": "Animations",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "css_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "css_id",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "unique_id",
+          "tab": "Advanced",
+          "type": "hidden",
+          "status": "auto",
+          "source": "Generated"
+        },
+        {
+          "key": "responsive_hide",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        },
+        {
+          "key": "custom_attrs",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        }
+      ]
+    },
+    {
+      "priority": 70,
+      "shortcode": "instagram",
+      "label": "Instagram",
+      "doc": "",
+      "recognizer": "instagram",
+      "matchesWhen": "An Instagram feed embed — a grid of Instagram posts tied to a @username.",
+      "blockShape": "{ username, count, columns }",
+      "fallback": "Degrades to `code_block`.",
+      "recognizerNotes": "The @handle, the number of posts, and the column count are carried from the source embed. The access token is left blank — you add your own so the live feed can load.",
+      "options": [
+        {
+          "key": "username",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "The @handle (stripped of the @)"
+        },
+        {
+          "key": "count",
+          "tab": "Content",
+          "type": "number",
+          "status": "native",
+          "source": "Number of posts (clamped 1–18)"
+        },
+        {
+          "key": "columns",
+          "tab": "Layout",
+          "type": "number",
+          "status": "native",
+          "source": "Columns (clamped 1–6)"
+        },
+        {
+          "key": "access_token",
+          "tab": "Content",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Left blank — you add your token"
+        },
+        {
+          "key": "spacing",
+          "tab": "Styling",
+          "type": "spacing",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "animation",
+          "tab": "Animations",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "css_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "css_id",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "custom_css",
+          "tab": "Advanced",
+          "type": "textarea",
+          "status": "unmapped",
+          "source": "Not populated"
+        },
+        {
+          "key": "unique_id",
+          "tab": "Advanced",
+          "type": "hidden",
+          "status": "auto",
+          "source": "Generated"
+        },
+        {
+          "key": "responsive_hide",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        },
+        {
+          "key": "custom_attrs",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        }
+      ]
+    },
+    {
+      "priority": 66,
+      "shortcode": "posts",
+      "label": "Posts",
+      "doc": "/docs/shortcodes/components/posts",
+      "recognizer": "posts",
+      "matchesWhen": "A blog/post grid — repeating cards each with an image, title, and meta (a \"latest articles\" section).",
+      "blockShape": "{ count, design:{ layout_mode, card_style, columns }, meta:{ date, author } }",
+      "fallback": "Degrades to `code_block`.",
+      "recognizerNotes": "A placeholder post grid, configured to *match the source layout* — post count, layout mode, card style, column count, and which meta (date / author) shows. The cards then pull live posts; the per-card styling, filters and colours use defaults.",
+      "options": [
+        {
+          "key": "posts_per_page",
+          "tab": "Content",
+          "type": "number",
+          "status": "native",
+          "source": "Post count (from the source grid)"
+        },
+        {
+          "key": "layout_mode",
+          "tab": "Layout",
+          "type": "select",
+          "status": "native",
+          "source": "grid / list / masonry, from the source"
+        },
+        {
+          "key": "card_style",
+          "tab": "Design",
+          "type": "select",
+          "status": "native",
+          "source": "Matched card style"
+        },
+        {
+          "key": "columns_desktop",
+          "tab": "Layout",
+          "type": "select",
+          "status": "native",
+          "source": "Column count"
+        },
+        {
+          "key": "meta_items",
+          "tab": "Content",
+          "type": "checkboxes",
+          "status": "native",
+          "source": "Which meta shows (date / author)"
+        },
+        {
+          "key": "post_type",
+          "tab": "Content",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default (post)"
+        },
+        {
+          "key": "taxonomy_filter",
+          "tab": "Content",
+          "type": "multi-select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "image_style",
+          "tab": "Design",
+          "type": "image-style-picker",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "image_ratio",
+          "tab": "Design",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "excerpt_length",
+          "tab": "Content",
+          "type": "number",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "readmore",
+          "tab": "Content",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "live_filters",
+          "tab": "Behavior",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "pagination",
+          "tab": "Behavior",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "title_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "meta_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "bg_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "spacing",
+          "tab": "Styling",
+          "type": "spacing",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "animation",
+          "tab": "Animations",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "css_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "css_id",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "unique_id",
+          "tab": "Advanced",
+          "type": "hidden",
+          "status": "auto",
+          "source": "Generated"
+        },
+        {
+          "key": "responsive_hide",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        },
+        {
+          "key": "custom_attrs",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        }
+      ]
+    },
+    {
+      "priority": 68,
+      "shortcode": "wc_products",
+      "label": "WooCommerce Products",
+      "doc": "",
+      "recognizer": "wc_products",
+      "matchesWhen": "A product grid on a WooCommerce-style page — repeating product cards (image, title, price, add-to-cart).",
+      "blockShape": "{ cols, count, has_ribbon }",
+      "fallback": "Degrades to `code_block`.",
+      "recognizerNotes": "A placeholder product grid, set to show recent products in the source’s column count, with a matched card slot layout (badges/wishlist row, media+title+excerpt, rating row). You point Source at the real products/category; the source can’t carry per-product data.",
+      "options": [
+        {
+          "key": "source",
+          "tab": "Content",
+          "type": "select",
+          "status": "native",
+          "source": "Set to `recent` — you point it at your products / category"
+        },
+        {
+          "key": "columns",
+          "tab": "Layout",
+          "type": "select",
+          "status": "native",
+          "source": "Column count from the source grid"
+        },
+        {
+          "key": "posts_per_page",
+          "tab": "Content",
+          "type": "number",
+          "status": "native",
+          "source": "How many products to show"
+        },
+        {
+          "key": "slots",
+          "tab": "Design",
+          "type": "group",
+          "status": "native",
+          "source": "Matched card slot layout (badges, media+title+excerpt, rating)"
+        },
+        {
+          "key": "category",
+          "tab": "Content",
+          "type": "multi-select",
+          "status": "unmapped",
+          "source": "You choose the category"
+        },
+        {
+          "key": "tags",
+          "tab": "Content",
+          "type": "multi-select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "order",
+          "tab": "Content",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "orderby",
+          "tab": "Content",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "gap",
+          "tab": "Layout",
+          "type": "unit-input",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "pagination",
+          "tab": "Behavior",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "carousel",
+          "tab": "Layout",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "spacing",
+          "tab": "Styling",
+          "type": "spacing",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "animation",
+          "tab": "Animations",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "css_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "css_id",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "unique_id",
+          "tab": "Advanced",
+          "type": "hidden",
+          "status": "auto",
+          "source": "Generated"
+        },
+        {
+          "key": "responsive_hide",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        },
+        {
+          "key": "custom_attrs",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        }
+      ]
     }
   ],
   "_recognizersExtraComment": "The rest of the recognizer registry (class-fw-site-converter-stitch.php `register_recognizer(id, priority, …)`), listed in the Recognizers table for a complete picture of eval order. These don't yet have a full per-option coverage page (the curated set above does) — but the recognizer rule, priority, and target shortcode are documented here. HIGHER priority runs first. Keep in sync with the code when priorities or targets change.",

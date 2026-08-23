@@ -51,12 +51,16 @@ Two backstops guarantee no source content is lost:
 | --- | --- | --- | --- | --- | --- |
 | [Code Block](./code-block.md) | [`code_block`](/docs/shortcodes/content-elements/code-block) | ✅ 1 | 🟡 0 | ⚪ 11 | **8%** |
 | [Special Heading](./special-heading.md) | [`special_heading`](/docs/shortcodes/content-elements/special-heading) | ✅ 19 | 🟡 3 | ⚪ 13 | **54%** |
+| [Instagram](./instagram.md) | `instagram` | ✅ 3 | 🟡 0 | ⚪ 6 | **33%** |
+| [WooCommerce Products](./wc-products.md) | `wc_products` | ✅ 4 | 🟡 0 | ⚪ 11 | **27%** |
+| [Posts](./posts.md) | [`posts`](/docs/shortcodes/components/posts) | ✅ 5 | 🟡 0 | ⚪ 15 | **25%** |
 | [Avatar](./avatar.md) | [`avatar`](/docs/shortcodes/components/avatar) | ✅ 4 | 🟡 0 | ⚪ 13 | **24%** |
 | [Gallery](./gallery.md) | [`gallery`](/docs/shortcodes/media-elements/gallery) | ✅ 1 | 🟡 0 | ⚪ 14 | **7%** |
 | [Media Video](./media-video.md) | [`media_video`](/docs/shortcodes/media-elements/media-video) | ✅ 5 | 🟡 0 | ⚪ 16 | **24%** |
 | [Media Image](./media-image.md) | [`media_image`](/docs/shortcodes/media-elements/media-image) | ✅ 1 | 🟡 1 | ⚪ 13 | **7%** |
 | [Image Box](./image-box.md) | [`image_box`](/docs/shortcodes/media-elements/image-box) | ✅ 5 | 🟡 0 | ⚪ 18 | **22%** |
 | [Icon Box](./icon-box.md) | [`icon_box`](/docs/shortcodes/components/icon-box) | ✅ 5 | 🟡 1 | ⚪ 18 | **21%** |
+| [Newsletter](./newsletter.md) | [`newsletter`](/docs/shortcodes/interactive-elements/newsletter) | ✅ 7 | 🟡 0 | ⚪ 13 | **35%** |
 | [Text Block](./text-block.md) | [`text_block`](/docs/shortcodes/content-elements/text-block) | ✅ 4 | 🟡 4 | ⚪ 11 | **21%** |
 | [Counter](./counter.md) | [`counter`](/docs/shortcodes/interactive-elements/counter) | ✅ 12 | 🟡 0 | ⚪ 7 | **63%** |
 | [Feature List](./feature-list.md) | [`feature_list`](/docs/shortcodes/components/feature-list) | ✅ 2 | 🟡 1 | ⚪ 13 | **13%** |
@@ -96,7 +100,10 @@ per-option coverage page; the rest document the recognizer rule and its target s
 | 79 | `text_list` | A `<ul>`/`<ol>` of text items (often check/tick-marked) — a feature / benefit list. | `feature_list` | Degrades to `text_block`, then `code_block`. |
 | 76 | `badge` | A small pill/label chip (padded, rounded-full, short text — a tag or status badge). | `badge` | Degrades to `text_block`, then `code_block`. |
 | 75 | `badge_verbatim` | A compound chip (inline + inner span) or an unusually-styled chip best preserved exactly as authored. | `code_block` | Kept verbatim (this IS the preservation path). |
+| 70 | `instagram` | An Instagram feed embed — a grid of Instagram posts tied to a @username. | [Instagram](./instagram.md) → `instagram` | Degrades to `code_block`. |
 | 70 | `pill` | A short eyebrow/kicker pill that sits above a heading — pulled in as the heading's overline where possible. | `special_heading (overline)` | Degrades to `text_block`, then `code_block`. |
+| 68 | `wc_products` | A product grid on a WooCommerce-style page — repeating product cards (image, title, price, add-to-cart). | [WooCommerce Products](./wc-products.md) → `wc_products` | Degrades to `code_block`. |
+| 66 | `posts` | A blog/post grid — repeating cards each with an image, title, and meta (a "latest articles" section). | [Posts](./posts.md) → [`posts`](/docs/shortcodes/components/posts) | Degrades to `code_block`. |
 | 65 | `avatar` | An overlapping avatar stack — a row of small round profile images with a "+N" counter (a "trusted by" / "join N customers" cluster). | [Avatar](./avatar.md) → [`avatar`](/docs/shortcodes/components/avatar) | Degrades to `code_block`. |
 | 64 | `gallery` | An image gallery / grid — three or more images in a repeating grid or collage (fewer than three falls back to code). | [Gallery](./gallery.md) → [`gallery`](/docs/shortcodes/media-elements/gallery) | Degrades to `code_block` (fewer than 3 images). |
 | 62 | `video` | A `<video>` or a video embed (YouTube / Vimeo) that isn’t a full-screen section background. | [Media Video](./media-video.md) → [`media_video`](/docs/shortcodes/media-elements/media-video) | Degrades to `code_block`. |
@@ -104,6 +111,7 @@ per-option coverage page; the rest document the recognizer rule and its target s
 | 60 | `button` | An `<a>`/`<button>` styled as a call-to-action (utility-class button). | `button` | Degrades to a text link inside `text_block`, then `code_block`. |
 | 58 | `image_box` | An image paired with a title + text (a media card / feature block — image beside or above a heading and copy). | [Image Box](./image-box.md) → [`image_box`](/docs/shortcodes/media-elements/image-box) | Degrades to `code_block`. |
 | 55 | `floating_card` | A floating badge/card overlaid on a hero image (an icon + title + subtitle chip), or an icon + title + text card. | [Icon Box](./icon-box.md) → [`icon_box`](/docs/shortcodes/components/icon-box) | Degrades to `code_block`. |
+| 55 | `newsletter` | An email sign-up form — an email field + a subscribe button (often with a name field, on a call-to-action band). | [Newsletter](./newsletter.md) → [`newsletter`](/docs/shortcodes/interactive-elements/newsletter) | Degrades to `code_block`. |
 | 55 | `button_cs` | A button detected from computed styles (padding + background + radius) rather than classes. | `button` | Degrades to a text link, then `code_block`. |
 | 50 | `text` | A paragraph / body-copy block (typically `<p>` or a text container) that isn't a heading, button, or other recognized primitive. Short ALL-CAPS or eyebrow-classed text is refined to an **overline** instead. | [Text Block](./text-block.md) → [`text_block`](/docs/shortcodes/content-elements/text-block) | Degrades to `code_block`. |
 | 50 | `counter` | A big animated stat — a number (often with a prefix/suffix like $ or %) shown as a "count-up" figure with a small label. | [Counter](./counter.md) → [`counter`](/docs/shortcodes/interactive-elements/counter) | Degrades to `code_block`. |

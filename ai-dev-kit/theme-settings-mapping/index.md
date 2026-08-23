@@ -33,12 +33,12 @@ option-by-option coverage table.
 | Group | Tab | Coverage | Detail / note |
 | --- | --- | --- | --- |
 | **General** | [Colors](./colors.md) | ✅ Populated | ✅ 7 native · 88% |
-| General | Typography & Fonts | ✅ Populated | Heading + body font families and the Display / body type scale are derived from the source. Detail page coming next. |
-| General | Backgrounds (Site / Section / Footer) | ✅ Populated | The converter runs a background detector across body / sections / footer and writes the site background (`site_background`) + per-section band fills — colour, gradient, photo, OR video (background videos are sideloaded to the media library so they stay editable in the Background → Video picker). The body background is written once as a global Theme Setting so the whole site inherits it. The theme-generator emits `body { background-color: var(--site-bg-color, …) }` (no `!important`) so a later edit still wins. |
-| General | Layout | 🟡 Partial | Container / content width may be carried; most layout options are set by hand. |
+| **General** | [Typography & Fonts](./typography.md) | ✅ Populated | ✅ 1 native · 14% |
+| **General** | [Backgrounds (Site / Section / Footer)](./backgrounds.md) | ✅ Populated | ✅ 4 native · 80% |
+| **General** | [Layout](./layout.md) | 🟡 Partial | ✅ 1 native · 14% |
+| **Footer** | [Footer](./footer.md) | 🟡 Partial | ✅ 2 native · 29% |
 | General | Base | ⚪ Manual | Selection / scrollbar / focus colours — opt-in, set by hand. |
 | General | Settings · Pages · Sidebar · Social | ⚪ Manual | Behavioural / structural defaults — not derived from a source design. |
 | Header | Header (Identity, Layout, Top/Bottom bar, Menu, Mega Menu…) | ⚪ Manual | The header chrome comes from the generated child theme + captured menus, not Theme Settings design keys. |
-| Footer | Footer (Layout, Pre / Main / Post / Copyright, Widgets…) | 🟡 Partial | The footer chrome (columns, menus, widgets) comes from the generated child theme + captured menus. The footer **background fill and muted text colour ARE derived** from the source footer (`detect_footer_style` / `footer_background`). |
 | Content | Blog · Single · Archives · Pages | ⚪ Manual | Post/archive layout defaults — not part of a page conversion. |
 | Misc | Misc | ⚪ Manual | Miscellaneous toggles — set by hand. |

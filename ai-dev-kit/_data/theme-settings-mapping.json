@@ -2,15 +2,40 @@
   "_comment": "SOURCE OF TRUTH for the Theme Settings mapping docs. Hand-curated from the Site Converter's design-system extraction (class-fw-site-converter-stitch.php build_color_presets / typography / button logic + class-fw-site-converter-theme-settings.php importer) cross-referenced against the theme's option groups (unysonplus-theme/framework-customizations/theme/options/*.php, documented in theme-settings-reference.md). Edit THIS file, then run `node scripts/gen-theme-settings-mapping.mjs` to regenerate ai-dev-kit/theme-settings-mapping/*.md. Do NOT hand-edit the generated .md. Option 'status': native = derived from a source signal; via-css = reproduced via generated CSS, native option empty; unmapped = left at default (no source signal / manual); auto = plumbing. Tab 'coverage': populated = the converter writes this tab; partial = only some keys; manual = not converter-populated (set by hand or by the generated child theme).",
   "sourceOfTruth": "unysonplus/framework/extensions/site-converter — stitch.php (design-system extraction) + theme-settings.php (importer); options from unysonplus-theme/framework-customizations/theme/options/*.php",
   "statuses": {
-    "native": { "emoji": "✅", "label": "Native", "blurb": "Derived and written from a source signal." },
-    "via-css": { "emoji": "🟡", "label": "Via CSS", "blurb": "Reproduced via generated CSS; the native option is left empty (candidate to promote)." },
-    "unmapped": { "emoji": "⚪", "label": "Unmapped", "blurb": "Left at default — no source signal, or set by hand." },
-    "auto": { "emoji": "⚙️", "label": "Auto", "blurb": "Plumbing. Excluded from the coverage percentage." }
+    "native": {
+      "emoji": "✅",
+      "label": "Native",
+      "blurb": "Derived and written from a source signal."
+    },
+    "via-css": {
+      "emoji": "🟡",
+      "label": "Via CSS",
+      "blurb": "Reproduced via generated CSS; the native option is left empty (candidate to promote)."
+    },
+    "unmapped": {
+      "emoji": "⚪",
+      "label": "Unmapped",
+      "blurb": "Left at default — no source signal, or set by hand."
+    },
+    "auto": {
+      "emoji": "⚙️",
+      "label": "Auto",
+      "blurb": "Plumbing. Excluded from the coverage percentage."
+    }
   },
   "tabCoverage": {
-    "populated": { "emoji": "✅", "label": "Populated" },
-    "partial": { "emoji": "🟡", "label": "Partial" },
-    "manual": { "emoji": "⚪", "label": "Manual" }
+    "populated": {
+      "emoji": "✅",
+      "label": "Populated"
+    },
+    "partial": {
+      "emoji": "🟡",
+      "label": "Partial"
+    },
+    "manual": {
+      "emoji": "⚪",
+      "label": "Manual"
+    }
   },
   "tabs": [
     {
@@ -23,26 +48,291 @@
       "intro": "The Colors tab is the site **palette** — the `theme_colors` addable list of `{ name, color }` rows. Each row's name becomes a slug that drives a `.text-{slug}` / `.bg-{slug}` utility and a `--color-{slug}` CSS variable (e.g. **Primary** drives `btn-primary` + `--color-primary`). The converter derives the source's **brand palette** and writes these rows, then merges the plugin's default presets after them (de-duped by hex) so bundled Box / Icon-Badge presets that reference default slugs still resolve.",
       "recognizerNotes": "Brand colours are pulled from the captured design tokens (a real `tailwind.config`) first, then from each element's computed `getComputedStyle` semantic colours, then a markup accent scan / a gradient-accent scan / the primary button's real fill; body text falls back to a sampled ink colour. A brand role only appears when a real colour was found — otherwise the default palette stands. The brand `Primary` is prepended before the default `Primary`, so it wins the `primary` slug and the default button/box presets adopt the brand colour.",
       "options": [
-        { "key": "Primary", "type": "palette role", "status": "native", "source": "Brand action colour, in priority order: `tailwind.config` accent/primary token → computed semantic primary/accent → vivid markup accent scan → the primary button's real fill → tertiary/secondary/ink → neutral fallback. Wins the `primary` slug (drives `btn-primary` + `--color-primary`)." },
-        { "key": "Ink", "type": "palette role", "status": "native", "source": "Source text / foreground colour (`text`, `on-background`, `foreground`), or — when no token exists — **sampled from the real rendered body-copy colour** (`sample_ink`). Falls back to `#1a1a1a`." },
-        { "key": "Secondary", "type": "palette role", "status": "native", "source": "`secondary` / `tertiary` token, or the computed semantic `secondary`. Only when found." },
-        { "key": "Accent", "type": "palette role", "status": "native", "source": "Computed semantic `accent`, or — when the design has no named accent — an accent colour **lifted from a source gradient** (`scan_gradient_accent`, e.g. the vivid stop in a hero gradient). Only when found." },
-        { "key": "Dark", "type": "palette role", "status": "native", "source": "`deep-black` / `black` / `surface-container-lowest` token, or semantic `dark`. Only when found." },
-        { "key": "Muted", "type": "palette role", "status": "native", "source": "`muted` / `on-surface-variant`. Only when found." },
-        { "key": "Light", "type": "palette role", "status": "native", "source": "`page-bg` / `background` / `surface` / `white-soft`. Only when found." },
-        { "key": "Default presets (White, Gray, Red, Green, …)", "type": "palette rows", "status": "unmapped", "source": "The plugin's ~20 default color presets, merged in after the brand roles and de-duped by hex — kept (not derived) so bundled Box / Icon-Badge presets that reference their slugs keep resolving." }
+        {
+          "key": "Primary",
+          "type": "palette role",
+          "status": "native",
+          "source": "Brand action colour, in priority order: `tailwind.config` accent/primary token → computed semantic primary/accent → vivid markup accent scan → the primary button's real fill → tertiary/secondary/ink → neutral fallback. Wins the `primary` slug (drives `btn-primary` + `--color-primary`)."
+        },
+        {
+          "key": "Ink",
+          "type": "palette role",
+          "status": "native",
+          "source": "Source text / foreground colour (`text`, `on-background`, `foreground`), or — when no token exists — **sampled from the real rendered body-copy colour** (`sample_ink`). Falls back to `#1a1a1a`."
+        },
+        {
+          "key": "Secondary",
+          "type": "palette role",
+          "status": "native",
+          "source": "`secondary` / `tertiary` token, or the computed semantic `secondary`. Only when found."
+        },
+        {
+          "key": "Accent",
+          "type": "palette role",
+          "status": "native",
+          "source": "Computed semantic `accent`, or — when the design has no named accent — an accent colour **lifted from a source gradient** (`scan_gradient_accent`, e.g. the vivid stop in a hero gradient). Only when found."
+        },
+        {
+          "key": "Dark",
+          "type": "palette role",
+          "status": "native",
+          "source": "`deep-black` / `black` / `surface-container-lowest` token, or semantic `dark`. Only when found."
+        },
+        {
+          "key": "Muted",
+          "type": "palette role",
+          "status": "native",
+          "source": "`muted` / `on-surface-variant`. Only when found."
+        },
+        {
+          "key": "Light",
+          "type": "palette role",
+          "status": "native",
+          "source": "`page-bg` / `background` / `surface` / `white-soft`. Only when found."
+        },
+        {
+          "key": "Default presets (White, Gray, Red, Green, …)",
+          "type": "palette rows",
+          "status": "unmapped",
+          "source": "The plugin's ~20 default color presets, merged in after the brand roles and de-duped by hex — kept (not derived) so bundled Box / Icon-Badge presets that reference their slugs keep resolving."
+        }
+      ]
+    },
+    {
+      "group": "General",
+      "tab": "Typography & Fonts",
+      "slug": "typography",
+      "storageKey": "typography",
+      "location": "Theme Settings → General → Typography",
+      "coverage": "populated",
+      "intro": "The Typography tab sets the site fonts and type scale. The converter derives the **heading font family** and writes it to `typography.heading_font`; the **body font** is enforced by the generated child theme’s scoped CSS.",
+      "recognizerNotes": "The type **scale** the converter distils from the source headings and paragraphs is written to the shortcodes’ **[Text Styles](/theme/components/text-styles)** component (the Display / Lead / Small roles), **not** the per-heading overrides on this tab. Link colours and per-heading size overrides are left at the theme defaults.",
+      "options": [
+        {
+          "key": "heading_font",
+          "type": "typography",
+          "status": "native",
+          "source": "Heading font family, from the source headings → `typography.heading_font`"
+        },
+        {
+          "key": "body",
+          "type": "typography",
+          "status": "via-css",
+          "source": "Body font enforced by the generated child-theme CSS (`body { font-family … }`); the native family may stay “inherit”"
+        },
+        {
+          "key": "h1–h6",
+          "type": "typography",
+          "status": "unmapped",
+          "source": "Per-heading size overrides — the type scale goes to Components → Text Styles instead"
+        },
+        {
+          "key": "body_link",
+          "type": "compact color",
+          "status": "unmapped",
+          "source": "Default (uses the palette)"
+        },
+        {
+          "key": "body_link_hover",
+          "type": "compact color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "body_link_underline",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default (hover)"
+        },
+        {
+          "key": "custom_fonts",
+          "type": "addable-box",
+          "status": "unmapped",
+          "source": "Non-Google fonts are not registered here automatically"
+        }
+      ]
+    },
+    {
+      "group": "General",
+      "tab": "Backgrounds (Site / Section / Footer)",
+      "slug": "backgrounds",
+      "storageKey": "general_layout.site_background · footer_background",
+      "location": "Theme Settings → General → Layout (Site Background) · per-Section · Footer",
+      "coverage": "populated",
+      "intro": "A background detector runs across the **body**, each **section**, and the **footer**, and writes the fills it finds — colour, gradient, photo, or video.",
+      "recognizerNotes": "The body background is written **once** as a global Theme Setting (`general_layout.site_background`) so the whole site inherits it, and the theme-generator emits `body { background-color: var(--site-bg-color, …) }` **without** `!important` so a later edit still wins. Background **videos** are side-loaded to the Media Library so they stay editable in the Background → Video picker. Per-section band fills live on each **Section** element, not on a Theme Setting.",
+      "options": [
+        {
+          "key": "general_layout.site_background",
+          "type": "background-pro",
+          "status": "native",
+          "source": "The body background — colour / gradient / image, written once as a global setting"
+        },
+        {
+          "key": "(section band fills)",
+          "type": "background-pro",
+          "status": "native",
+          "source": "Per-section colour / gradient / photo / video — stored on each Section, not Theme Settings"
+        },
+        {
+          "key": "footer_background",
+          "type": "background-pro",
+          "status": "native",
+          "source": "The footer band’s background fill"
+        },
+        {
+          "key": "footer_text_color",
+          "type": "compact color",
+          "status": "native",
+          "source": "The footer’s muted text colour"
+        },
+        {
+          "key": "site_background_pattern",
+          "type": "multi-picker",
+          "status": "unmapped",
+          "source": "Not derived — set by hand"
+        }
+      ]
+    },
+    {
+      "group": "General",
+      "tab": "Layout",
+      "slug": "layout",
+      "storageKey": "general_layout",
+      "location": "Theme Settings → General → Layout",
+      "coverage": "partial",
+      "intro": "The Layout tab controls the overall canvas — site width, container width, spacing density, roundness. The converter carries the **content container width** so body sections match the source; the rest is left for you to tune.",
+      "recognizerNotes": "The source’s content max-width is written to `general_layout.layout_container_width` (the desktop value) so converted body sections finally line up with the source. Width mode, gutter, content density and roundness are left at the theme defaults.",
+      "options": [
+        {
+          "key": "layout_container_width",
+          "type": "responsive → unit-input",
+          "status": "native",
+          "source": "Source content max-width → the desktop container width"
+        },
+        {
+          "key": "site_width_mode",
+          "type": "multi-picker",
+          "status": "unmapped",
+          "source": "Default (full)"
+        },
+        {
+          "key": "layout_container_gutter",
+          "type": "unit-input",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "layout_section_spacing",
+          "type": "radio",
+          "status": "unmapped",
+          "source": "Default (cozy)"
+        },
+        {
+          "key": "layout_roundness",
+          "type": "radio",
+          "status": "unmapped",
+          "source": "Default (subtle)"
+        },
+        {
+          "key": "layout_prose_width",
+          "type": "unit-input",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "site_background",
+          "type": "background-pro",
+          "status": "via-css",
+          "source": "Written by the background detector — see the Backgrounds tab"
+        }
+      ]
+    },
+    {
+      "group": "Footer",
+      "tab": "Footer",
+      "slug": "footer",
+      "storageKey": "footer_background · footer_text_color",
+      "location": "Theme Settings → Footer → Layout",
+      "coverage": "partial",
+      "intro": "The Footer tab styles the footer band. The converter derives the footer’s **background fill** and **muted text colour**; the structural chrome (columns, menus, widgets) comes from the generated child theme + captured menus.",
+      "recognizerNotes": "The footer background and text colour come from `detect_footer_style()`. The footer’s rows / columns / menus are built by the generated child theme and the captured menus (see [Header & Footer Elements](/theme/header-footer-elements)), not these design keys.",
+      "options": [
+        {
+          "key": "footer_background",
+          "type": "background-pro",
+          "status": "native",
+          "source": "Footer band background fill (from `detect_footer_style`)"
+        },
+        {
+          "key": "footer_text_color",
+          "type": "compact color",
+          "status": "native",
+          "source": "Muted footer text colour"
+        },
+        {
+          "key": "footer_link_color",
+          "type": "compact color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "footer_border_top",
+          "type": "multi-inline",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "footer_padding_top",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "footer_padding_bottom",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "(columns / menus / widgets)",
+          "type": "Footer Columns",
+          "status": "unmapped",
+          "source": "Built by the generated child theme + captured menus, not these keys"
+        }
       ]
     }
   ],
   "otherTabs": [
-    { "group": "General", "tab": "Typography & Fonts", "coverage": "populated", "note": "Heading + body font families and the Display / body type scale are derived from the source. Detail page coming next." },
-    { "group": "General", "tab": "Backgrounds (Site / Section / Footer)", "coverage": "populated", "note": "The converter runs a background detector across body / sections / footer and writes the site background (`site_background`) + per-section band fills — colour, gradient, photo, OR video (background videos are sideloaded to the media library so they stay editable in the Background → Video picker). The body background is written once as a global Theme Setting so the whole site inherits it. The theme-generator emits `body { background-color: var(--site-bg-color, …) }` (no `!important`) so a later edit still wins." },
-    { "group": "General", "tab": "Layout", "coverage": "partial", "note": "Container / content width may be carried; most layout options are set by hand." },
-    { "group": "General", "tab": "Base", "coverage": "manual", "note": "Selection / scrollbar / focus colours — opt-in, set by hand." },
-    { "group": "General", "tab": "Settings · Pages · Sidebar · Social", "coverage": "manual", "note": "Behavioural / structural defaults — not derived from a source design." },
-    { "group": "Header", "tab": "Header (Identity, Layout, Top/Bottom bar, Menu, Mega Menu…)", "coverage": "manual", "note": "The header chrome comes from the generated child theme + captured menus, not Theme Settings design keys." },
-    { "group": "Footer", "tab": "Footer (Layout, Pre / Main / Post / Copyright, Widgets…)", "coverage": "partial", "note": "The footer chrome (columns, menus, widgets) comes from the generated child theme + captured menus. The footer **background fill and muted text colour ARE derived** from the source footer (`detect_footer_style` / `footer_background`)." },
-    { "group": "Content", "tab": "Blog · Single · Archives · Pages", "coverage": "manual", "note": "Post/archive layout defaults — not part of a page conversion." },
-    { "group": "Misc", "tab": "Misc", "coverage": "manual", "note": "Miscellaneous toggles — set by hand." }
+    {
+      "group": "General",
+      "tab": "Base",
+      "coverage": "manual",
+      "note": "Selection / scrollbar / focus colours — opt-in, set by hand."
+    },
+    {
+      "group": "General",
+      "tab": "Settings · Pages · Sidebar · Social",
+      "coverage": "manual",
+      "note": "Behavioural / structural defaults — not derived from a source design."
+    },
+    {
+      "group": "Header",
+      "tab": "Header (Identity, Layout, Top/Bottom bar, Menu, Mega Menu…)",
+      "coverage": "manual",
+      "note": "The header chrome comes from the generated child theme + captured menus, not Theme Settings design keys."
+    },
+    {
+      "group": "Content",
+      "tab": "Blog · Single · Archives · Pages",
+      "coverage": "manual",
+      "note": "Post/archive layout defaults — not part of a page conversion."
+    },
+    {
+      "group": "Misc",
+      "tab": "Misc",
+      "coverage": "manual",
+      "note": "Miscellaneous toggles — set by hand."
+    }
   ]
 }

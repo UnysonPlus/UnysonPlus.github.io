@@ -12,18 +12,34 @@ hide_table_of_contents: true
 
 **Theme Settings → Components → Color Presets** · ✅ Populated
 
-The source’s brand palette (`build_color_presets`, from the extracted tokens + the DOM) → editable Components colours the whole site references by name.
+Color Presets is the site **palette** — the swatches every Text Color / Background Color dropdown offers, and the colours the Button / Box / Table presets reference. The converter extracts the source’s **brand palette** and names each role (Primary / Secondary / Accent, plus Ink / Dark / Light), then merges in any non-colliding default swatches.
 
 Full reference: **[Color Presets](/theme/components/color-presets)** (how it’s coded + examples).
+
+## Where it lives
+
+| | |
+| --- | --- |
+| **Option schema** | `framework/extensions/shortcodes/includes/theme-settings/components-color.php` |
+| **Converter method** | `FW_Site_Converter_Stitch::build_color_presets()` |
+| **Storage key** | `theme_colors` |
+| **Produces** | `.text-{slug}` / `.bg-{slug}` classes and a `--color-{slug}` CSS variable per swatch |
+
+The converter reads the brand colours from the extracted design **tokens** and the **DOM** — including a distinct **Accent** lifted from hero gradients (e.g. the yellow half of a green→yellow gradient) so the Accent role isn’t defaulted to a stock colour the source never used. It assigns the role names, then prepends the default palette **minus** any default whose slug collides with a brand role — so there is exactly one Primary, one Secondary, and so on.
 
 ## Coverage
 
 **1/1 fields derived from the source** (100%) — 🟡 0 via CSS · ⚪ 0 default/manual · ⚙️ 1 auto.
 
-| Aspect | Type | Status | Derived from / note |
+| Group / field | Type | Status | Derived from / note |
 | --- | --- | --- | --- |
-| `brand swatches` | `colour` | ✅ Native | The distinct brand colours found in the source |
-| `preset names` | `label` | ⚙️ Auto | Named automatically (Primary, Accent…) |
+| **Swatch (`theme_colors` box)** | | | |
+| `name` | `text` | ⚙️ Auto | Role-named automatically — Primary / Secondary / Accent (from brand tokens + hero gradients) plus Ink / Dark / Light |
+| `color` | `color-picker` | ✅ Native | The brand hex extracted from the source (design tokens + DOM) |
+
+:::note[Why the swatch value is “native” but the name is “auto”]
+The **colour** of each swatch is a real signal — the brand hex pulled from the source. The **name** is assigned by the converter (Primary / Secondary / Accent / Ink …) rather than read from the source, so it’s marked *auto*. The slug that names the output class + CSS variable is derived from that name the same way `css-tokens.php` does, so `.text-primary` / `--color-primary` line up across the whole site.
+:::
 
 ### Status legend
 

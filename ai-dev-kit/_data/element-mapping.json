@@ -963,6 +963,626 @@
           "source": "Not set"
         }
       ]
+    },
+    {
+      "priority": 30,
+      "shortcode": "badge",
+      "label": "Badge",
+      "doc": "/docs/shortcodes/content-elements/badge",
+      "recognizer": "badge",
+      "matchesWhen": "A small pill / chip / label — a short rounded element with sub-tag text, a leading/trailing icon, and an optional link (an eyebrow, a status badge, a \"what’s new\" chip).",
+      "blockShape": "{ t:'badge', tag_text, message, link, icon, align, cs }",
+      "fallback": "Degrades to `code_block`.",
+      "recognizerNotes": "The text, message, link, a trailing inline icon, and alignment map to native options. The badge then renders in a neutral default look (soft / pill / md) — the source colours are **not** reproduced (no hi-fi base for badges), so the colour options stay empty.",
+      "options": [
+        {
+          "key": "tag_text",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "Source sub-tag text"
+        },
+        {
+          "key": "message",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "The main label text"
+        },
+        {
+          "key": "link",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "Optional href"
+        },
+        {
+          "key": "trailing_icon",
+          "tab": "Icons",
+          "type": "icon",
+          "status": "native",
+          "source": "A trailing inline `<svg>` in the source chip"
+        },
+        {
+          "key": "leading_icon",
+          "tab": "Icons",
+          "type": "icon",
+          "status": "unmapped",
+          "source": "Default none"
+        },
+        {
+          "key": "leading",
+          "tab": "Icons",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default none"
+        },
+        {
+          "key": "align",
+          "tab": "Layout",
+          "type": "select",
+          "status": "native",
+          "source": "Source alignment"
+        },
+        {
+          "key": "style",
+          "tab": "Design",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default `soft`"
+        },
+        {
+          "key": "shape",
+          "tab": "Design",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default `pill`"
+        },
+        {
+          "key": "size",
+          "tab": "Design",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default `md`"
+        },
+        {
+          "key": "tag_style",
+          "tab": "Design",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default `filled`"
+        },
+        {
+          "key": "hover",
+          "tab": "Design",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default `lift`"
+        },
+        {
+          "key": "pill_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Left neutral — source fill not reproduced"
+        },
+        {
+          "key": "text_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Left neutral"
+        },
+        {
+          "key": "tag_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Left neutral"
+        },
+        {
+          "key": "gradient_from",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "gradient_to",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "spacing",
+          "tab": "Styling",
+          "type": "spacing",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "link_target",
+          "tab": "Link",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default `auto`"
+        },
+        {
+          "key": "rel_nofollow",
+          "tab": "Link",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "rel_sponsored",
+          "tab": "Link",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "rel_ugc",
+          "tab": "Link",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "aria_label",
+          "tab": "SEO",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "title_attr",
+          "tab": "SEO",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "dismissible",
+          "tab": "Design",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "dismiss_id",
+          "tab": "Design",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "schema_enable",
+          "tab": "SEO",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "schema_name",
+          "tab": "SEO",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "schema_date",
+          "tab": "SEO",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "animation",
+          "tab": "Animations",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "css_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "css_id",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "unique_id",
+          "tab": "Advanced",
+          "type": "hidden",
+          "status": "auto",
+          "source": "Generated"
+        },
+        {
+          "key": "responsive_hide",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        },
+        {
+          "key": "custom_attrs",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        }
+      ]
+    },
+    {
+      "priority": 25,
+      "shortcode": "accordion",
+      "label": "Accordion",
+      "doc": "/docs/shortcodes/interactive-elements/accordion",
+      "recognizer": "accordion",
+      "matchesWhen": "A toggle / disclosure group — a set of clickable headers each revealing a panel of content (an FAQ, a details list).",
+      "blockShape": "{ items:[{ title, content }] }",
+      "fallback": "Degrades to `code_block`.",
+      "recognizerNotes": "Each source toggle becomes an accordion panel (its header → the tab title, its body → the tab content, closed by default). The accordion’s look (style, icons, numbering, colours) is left at the theme defaults.",
+      "options": [
+        {
+          "key": "tabs",
+          "tab": "Content",
+          "type": "addable-popup",
+          "status": "native",
+          "source": "One panel per source toggle — title + content"
+        },
+        {
+          "key": "is_open",
+          "tab": "Content",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Panels closed by default"
+        },
+        {
+          "key": "style",
+          "tab": "Design",
+          "type": "multi-picker",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "accordion_style",
+          "tab": "Design",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "icon_style",
+          "tab": "Design",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "icon_position",
+          "tab": "Design",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "numbering",
+          "tab": "Design",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "title_tag",
+          "tab": "Content",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "title_alignment",
+          "tab": "Design",
+          "type": "alignment",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "multiple_open",
+          "tab": "Behavior",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "collapsible",
+          "tab": "Behavior",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "faq_schema",
+          "tab": "SEO",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "font_size_preset",
+          "tab": "Styling",
+          "type": "font-size",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "title_bg_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "content_bg_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "spacing",
+          "tab": "Styling",
+          "type": "spacing",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "animation",
+          "tab": "Animations",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "css_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "css_id",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "unique_id",
+          "tab": "Advanced",
+          "type": "hidden",
+          "status": "auto",
+          "source": "Generated"
+        },
+        {
+          "key": "responsive_hide",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        },
+        {
+          "key": "custom_attrs",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        }
+      ]
+    },
+    {
+      "priority": 20,
+      "shortcode": "table",
+      "label": "Table",
+      "doc": "/docs/shortcodes/content-elements/table",
+      "recognizer": "table",
+      "matchesWhen": "A `<table>` with at least one row and column.",
+      "blockShape": "{ rows:[[{ html, header }, …], …] }",
+      "fallback": "Degrades to `code_block`.",
+      "recognizerNotes": "The full cell grid is rebuilt natively — columns are counted, leading all-`<th>` rows are detected as the header, and each cell’s HTML is preserved. Table styling (stripes, borders, frame preset, colours) and the interactive features (search, sort, pagination) are left at defaults.",
+      "options": [
+        {
+          "key": "content",
+          "tab": "Content",
+          "type": "table",
+          "status": "native",
+          "source": "The captured `<table>` cells, row by row"
+        },
+        {
+          "key": "header_options",
+          "tab": "Content",
+          "type": "group",
+          "status": "native",
+          "source": "Leading all-`<th>` rows detected as the header"
+        },
+        {
+          "key": "caption",
+          "tab": "Content",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "caption_position",
+          "tab": "Content",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "frame_preset",
+          "tab": "Style",
+          "type": "table-style-picker",
+          "status": "unmapped",
+          "source": "Default — not matched to a Table preset"
+        },
+        {
+          "key": "style_striped",
+          "tab": "Style",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "style_bordered",
+          "tab": "Style",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "style_hover",
+          "tab": "Style",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "style_condensed",
+          "tab": "Style",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "sticky_header",
+          "tab": "Style",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "bg_color",
+          "tab": "Style",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "text_color",
+          "tab": "Style",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "font_size_preset",
+          "tab": "Style",
+          "type": "font-size",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "enable_search",
+          "tab": "Features",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "enable_sort",
+          "tab": "Features",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "enable_pagination",
+          "tab": "Features",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "pagination_length",
+          "tab": "Features",
+          "type": "number",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "enable_length_change",
+          "tab": "Features",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "enable_info",
+          "tab": "Features",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "spacing",
+          "tab": "Style",
+          "type": "spacing",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "animation",
+          "tab": "Animations",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "css_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "css_id",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "unique_id",
+          "tab": "Advanced",
+          "type": "hidden",
+          "status": "auto",
+          "source": "Generated"
+        },
+        {
+          "key": "responsive_hide",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        },
+        {
+          "key": "custom_attrs",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        }
+      ]
     }
   ],
   "_recognizersExtraComment": "The rest of the recognizer registry (class-fw-site-converter-stitch.php `register_recognizer(id, priority, …)`), listed in the Recognizers table for a complete picture of eval order. These don't yet have a full per-option coverage page (the curated set above does) — but the recognizer rule, priority, and target shortcode are documented here. HIGHER priority runs first. Keep in sync with the code when priorities or targets change.",

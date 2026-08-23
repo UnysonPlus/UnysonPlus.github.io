@@ -74,6 +74,7 @@ title: ${e.label} — converter mapping
 sidebar_label: ${e.label}
 slug: /element-mapping/${slugOf(e)}
 description: How the UnysonPlus Site Converter maps a source ${e.recognizer} into the ${e.label} (\`${e.shortcode}\`) shortcode — the recognizer rule and a full option-by-option coverage table.
+hide_table_of_contents: true
 ---
 
 ${GENERATED}

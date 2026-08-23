@@ -3,6 +3,7 @@ title: Special Heading — converter mapping
 sidebar_label: Special Heading
 slug: /element-mapping/special-heading
 description: How the UnysonPlus Site Converter maps a source heading into the Special Heading (`special_heading`) shortcode — the recognizer rule and a full option-by-option coverage table.
+hide_table_of_contents: true
 ---
 
 <!-- ⚠️ GENERATED FILE — do not edit by hand. Edit ai-dev-kit/_data/element-mapping.json, then run: node scripts/gen-element-mapping.mjs -->

@@ -3,6 +3,7 @@ title: Text Block — converter mapping
 sidebar_label: Text Block
 slug: /element-mapping/text-block
 description: How the UnysonPlus Site Converter maps a source text into the Text Block (`text_block`) shortcode — the recognizer rule and a full option-by-option coverage table.
+hide_table_of_contents: true
 ---
 
 <!-- ⚠️ GENERATED FILE — do not edit by hand. Edit ai-dev-kit/_data/element-mapping.json, then run: node scripts/gen-element-mapping.mjs -->

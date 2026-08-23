@@ -50,7 +50,10 @@ Two backstops guarantee no source content is lost:
 | Shortcode | Becomes | Native | Via CSS | Unmapped | Coverage |
 | --- | --- | --- | --- | --- | --- |
 | [Special Heading](./special-heading.md) | [`special_heading`](/docs/shortcodes/content-elements/special-heading) | ✅ 19 | 🟡 3 | ⚪ 13 | **54%** |
+| [Icon Box](./icon-box.md) | [`icon_box`](/docs/shortcodes/components/icon-box) | ✅ 5 | 🟡 1 | ⚪ 18 | **21%** |
 | [Text Block](./text-block.md) | [`text_block`](/docs/shortcodes/content-elements/text-block) | ✅ 4 | 🟡 4 | ⚪ 11 | **21%** |
+| [Feature List](./feature-list.md) | [`feature_list`](/docs/shortcodes/components/feature-list) | ✅ 2 | 🟡 1 | ⚪ 13 | **13%** |
+| [Button](./button.md) | [`button`](/docs/shortcodes/components/button) | ✅ 6 | 🟡 1 | ⚪ 9 | **38%** |
 
 ## Recognizers
 
@@ -83,9 +86,12 @@ per-option coverage page; the rest document the recognizer rule and its target s
 | 75 | `badge_verbatim` | A compound chip (inline + inner span) or an unusually-styled chip best preserved exactly as authored. | `code_block` | Kept verbatim (this IS the preservation path). |
 | 70 | `pill` | A short eyebrow/kicker pill that sits above a heading — pulled in as the heading's overline where possible. | `special_heading (overline)` | Degrades to `text_block`, then `code_block`. |
 | 60 | `button` | An `<a>`/`<button>` styled as a call-to-action (utility-class button). | `button` | Degrades to a text link inside `text_block`, then `code_block`. |
+| 55 | `floating_card` | A floating badge/card overlaid on a hero image (an icon + title + subtitle chip), or an icon + title + text card. | [Icon Box](./icon-box.md) → [`icon_box`](/docs/shortcodes/components/icon-box) | Degrades to `code_block`. |
 | 55 | `button_cs` | A button detected from computed styles (padding + background + radius) rather than classes. | `button` | Degrades to a text link, then `code_block`. |
 | 50 | `text` | A paragraph / body-copy block (typically `<p>` or a text container) that isn't a heading, button, or other recognized primitive. Short ALL-CAPS or eyebrow-classed text is refined to an **overline** instead. | [Text Block](./text-block.md) → [`text_block`](/docs/shortcodes/content-elements/text-block) | Degrades to `code_block`. |
+| 45 | `list` | A `<ul>` or `<ol>` list — bulleted, numbered, or an icon list. | [Feature List](./feature-list.md) → [`feature_list`](/docs/shortcodes/components/feature-list) | Degrades to `code_block` (an empty list). |
 | 45 | `video` | A `<video>` / `<source>` (mp4/webm/ogv/mov) or a section whose background is a video. Backgrounds are sideloaded to the media library so the source stays editable in the Background → Video picker. | `media_video / section background video` | Degrades to a poster `media_image`, then `code_block`. |
+| 40 | `button` | A `<button>`, or an `<a>` styled as a button (a `btn` / `button` / `cta` class, or button-like padding + fill). | [Button](./button.md) → [`button`](/docs/shortcodes/components/button) | Degrades to `code_block`. |
 | 40 | `image` | An `<img>` / `<picture>` / a CSS `background-image` on a content block. | `media_image` | Degrades to `code_block`. |
 | 35 | `image_wrapper` | An image wrapped in a link / figure / decorative frame — unwrapped to the image with its frame preserved. | `media_image` | Degrades to `code_block`. |
 | 30 | `image_overlay` | An image with text/controls overlaid (a captioned hero tile / media card). | `media_image + icon_box` | Degrades to stacked image + text, then `code_block`. |

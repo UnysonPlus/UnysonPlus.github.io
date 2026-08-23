@@ -565,31 +565,125 @@
           "slug": "icon-badges",
           "ref": "/theme/components/icon-badges",
           "coverage": "populated",
-          "intro": "The source’s icon-in-a-tile pattern (`build_icon_badge_presets`) → editable badge presets (the coloured square/circle behind a feature icon).",
+          "storageKey": "icon_badge_presets",
+          "optionFile": "framework/extensions/shortcodes/includes/theme-settings/components-icon-badges.php (schema in framework/includes/option-types/icon-badge-presets/)",
+          "builderFn": "FW_Site_Converter_Stitch::build_icon_badge_presets()",
+          "outputClass": "a `.iconb-{slug}` class per preset — pick it on an Icon Box (Styling → Icon Badge Preset)",
+          "intro": "An Icon Badge is a reusable **shaped tile for an icon** — a circle / rounded / square / hexagon at a set size, with a tile fill, a centred glyph (its own colour + size), border and box-shadow. The converter detects the source’s icon-in-a-tile pattern, clusters the distinct tiles, and rebuilds the Default-state skin plus the geometry.",
+          "wiringNote": "The converter finds the source’s icon-in-a-tile pattern and fills the **Default** state (tile fill, glyph colour, border) plus the geometry — **shape**, **tile size**, **icon size** (derived as ≈ 50% of the tile), and a **corner radius** for the Rounded shape (Circle is always 50%). The **Hover** state, box-shadow and hover effects are left at the theme default.",
+          "notes": ":::note[Icon size follows the tile]\nThe converter sets the glyph **Icon Size** to about **half** the tile’s **Badge Size** (a common, safe ratio) rather than measuring the source glyph separately — so a 48px tile gets a 24px icon. Adjust it on the preset if the source uses a different ratio.\n:::",
           "options": [
             {
-              "key": "tile background",
-              "type": "colour",
+              "group": "Preset · Identity (`shared_top`)",
+              "key": "preset_name",
+              "type": "text",
               "status": "native",
-              "source": "The badge fill"
+              "source": "The badge name — from the clustered tile → the `.iconb-{slug}` class"
             },
             {
-              "key": "size",
-              "type": "unit",
-              "status": "native",
-              "source": "Tile size"
+              "group": "Preset · Identity (`shared_top`)",
+              "key": "slug",
+              "type": "unique",
+              "status": "auto",
+              "source": "Auto from the name → the `.iconb-{slug}` class suffix"
             },
             {
-              "key": "radius",
-              "type": "unit",
+              "group": "Preset · State: Default",
+              "key": "background",
+              "type": "background-pro",
               "status": "native",
-              "source": "Square / rounded / circle"
+              "source": "The tile fill"
             },
             {
-              "key": "icon colour",
-              "type": "colour",
+              "group": "Preset · State: Default",
+              "key": "icon_color",
+              "type": "compact color",
               "status": "native",
-              "source": "The glyph colour"
+              "source": "The centred glyph colour"
+            },
+            {
+              "group": "Preset · State: Default",
+              "key": "border_style",
+              "type": "short-select",
+              "status": "native",
+              "source": "`solid` when the source tile has a border"
+            },
+            {
+              "group": "Preset · State: Default",
+              "key": "border_width",
+              "type": "unit-input",
+              "status": "native",
+              "source": "Carried when the source tile has a border"
+            },
+            {
+              "group": "Preset · State: Default",
+              "key": "border_color",
+              "type": "compact color",
+              "status": "native",
+              "source": "Carried when the source tile has a border"
+            },
+            {
+              "group": "Preset · State: Default",
+              "key": "box_shadow",
+              "type": "box-shadow",
+              "status": "unmapped",
+              "source": "Left at the theme default"
+            },
+            {
+              "group": "Preset · State: Hover",
+              "key": "(all fields)",
+              "type": "—",
+              "status": "unmapped",
+              "source": "Left empty → inherit Default"
+            },
+            {
+              "group": "Preset · Shared (`shared_bottom`)",
+              "key": "badge_shape",
+              "type": "short-select",
+              "status": "native",
+              "source": "circle / rounded / square / hexagon — from the source tile"
+            },
+            {
+              "group": "Preset · Shared (`shared_bottom`)",
+              "key": "badge_size",
+              "type": "unit-input",
+              "status": "native",
+              "source": "The tile’s width & height"
+            },
+            {
+              "group": "Preset · Shared (`shared_bottom`)",
+              "key": "icon_size",
+              "type": "unit-input",
+              "status": "native",
+              "source": "Derived as ≈ 50% of the tile size"
+            },
+            {
+              "group": "Preset · Shared (`shared_bottom`)",
+              "key": "border_radius",
+              "type": "unit-input",
+              "status": "native",
+              "source": "For the Rounded shape (Circle is always 50%)"
+            },
+            {
+              "group": "Preset · Shared (`shared_bottom`)",
+              "key": "transition",
+              "type": "short-text (ms)",
+              "status": "auto",
+              "source": "Fixed at `200` ms"
+            },
+            {
+              "group": "Preset · Shared (`shared_bottom`)",
+              "key": "hover_fx",
+              "type": "multi-select",
+              "status": "unmapped",
+              "source": "Not derived"
+            },
+            {
+              "group": "Preset · Shared (`shared_bottom`)",
+              "key": "custom_css",
+              "type": "code-editor ({{SELECTOR}})",
+              "status": "unmapped",
+              "source": "Not derived"
             }
           ]
         },

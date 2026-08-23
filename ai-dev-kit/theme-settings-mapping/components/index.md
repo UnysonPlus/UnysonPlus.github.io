@@ -16,7 +16,7 @@ Components is where the converter reproduces the source’s **design system** mo
 
 ## Coverage
 
-**54/64 derived from the source** (84%) across 11 preset libraries — 🟡 0 via CSS · ⚪ 10 default/manual · ⚙️ 10 auto.
+**60/74 derived from the source** (81%) across 11 preset libraries — 🟡 0 via CSS · ⚪ 14 default/manual · ⚙️ 12 auto.
 
 | Preset library | Coverage | Derived | Full reference |
 | --- | --- | --- | --- |
@@ -24,7 +24,7 @@ Components is where the converter reproduces the source’s **design system** mo
 | [Box Presets](./box-presets.md) | ✅ Populated | ✅ 11 native · 85% | [reference](/theme/components/box-presets) |
 | [Text Styles](./text-styles.md) | ✅ Populated | ✅ 7 native · 88% | [reference](/theme/components/text-styles) |
 | [Color Presets](./color-presets.md) | ✅ Populated | ✅ 1 native · 100% | [reference](/theme/components/color-presets) |
-| [Icon Badges](./icon-badges.md) | ✅ Populated | ✅ 4 native · 100% | [reference](/theme/components/icon-badges) |
+| [Icon Badges](./icon-badges.md) | ✅ Populated | ✅ 10 native · 71% | [reference](/theme/components/icon-badges) |
 | [Image Styles](./image-styles.md) | ✅ Populated | ✅ 4 native · 100% | [reference](/theme/components/image-styles) |
 | [Section Styles](./section-styles.md) | ✅ Populated | ✅ 3 native · 100% | [reference](/theme/components/section-styles) |
 | [Container Widths](./container-widths.md) | ✅ Populated | ✅ 2 native · 100% | — |

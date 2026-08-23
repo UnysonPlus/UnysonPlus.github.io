@@ -2,7 +2,7 @@
 title: Section Styles — converter mapping
 sidebar_label: Section Styles
 slug: /theme-settings-mapping/components/section-styles
-description: How the UnysonPlus Site Converter derives the Section Styles preset library in Theme Settings → Components from a source design.
+description: How the UnysonPlus Site Converter derives the Section Styles preset library in Theme Settings → Components from a source design — every field, with coverage.
 hide_table_of_contents: true
 ---
 
@@ -18,12 +18,19 @@ Full reference: **[Section Styles](/theme/components/section-styles)** (how it�
 
 ## Coverage
 
-**3/3 derived from the source** (100%) — 🟡 0 via CSS · ⚪ 0 default/manual · ⚙️ 0 auto.
+**3/3 fields derived from the source** (100%) — 🟡 0 via CSS · ⚪ 0 default/manual · ⚙️ 0 auto.
 
 | Aspect | Type | Status | Derived from / note |
 | --- | --- | --- | --- |
 | `band background` | `background` | ✅ Native | The section fill (colour / gradient) |
 | `padding` | `box` | ✅ Native | Vertical band padding |
 | `text colour` | `colour` | ✅ Native | On-band text colour (for dark bands) |
+
+### Status legend
+
+- ✅ **Native** — Derived and written from a source signal.
+- 🟡 **Via CSS** — Reproduced via generated CSS; the native option is left empty (candidate to promote).
+- ⚪ **Unmapped** — Left at default — no source signal, or set by hand.
+- ⚙️ **Auto** — Plumbing. Excluded from the coverage percentage.
 
 ← Back to [Components](./index.md)

@@ -2,7 +2,7 @@
 title: Text Styles — converter mapping
 sidebar_label: Text Styles
 slug: /theme-settings-mapping/components/text-styles
-description: How the UnysonPlus Site Converter derives the Text Styles preset library in Theme Settings → Components from a source design.
+description: How the UnysonPlus Site Converter derives the Text Styles preset library in Theme Settings → Components from a source design — every field, with coverage.
 hide_table_of_contents: true
 ---
 
@@ -18,7 +18,7 @@ Full reference: **[Text Styles](/theme/components/text-styles)** (how it’s cod
 
 ## Coverage
 
-**5/6 derived from the source** (83%) — 🟡 0 via CSS · ⚪ 1 default/manual · ⚙️ 0 auto.
+**5/6 fields derived from the source** (83%) — 🟡 0 via CSS · ⚪ 1 default/manual · ⚙️ 0 auto.
 
 | Aspect | Type | Status | Derived from / note |
 | --- | --- | --- | --- |
@@ -28,5 +28,12 @@ Full reference: **[Text Styles](/theme/components/text-styles)** (how it’s cod
 | `letter-spacing` | `unit` | ✅ Native | Measured tracking |
 | `eyebrow style` | `preset` | ✅ Native | The small uppercase label pattern when the source uses one |
 | `colour` | `colour` | ⚪ Unmapped | Left to the palette / element |
+
+### Status legend
+
+- ✅ **Native** — Derived and written from a source signal.
+- 🟡 **Via CSS** — Reproduced via generated CSS; the native option is left empty (candidate to promote).
+- ⚪ **Unmapped** — Left at default — no source signal, or set by hand.
+- ⚙️ **Auto** — Plumbing. Excluded from the coverage percentage.
 
 ← Back to [Components](./index.md)

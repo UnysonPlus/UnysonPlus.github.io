@@ -2,7 +2,7 @@
 title: Icon Badges — converter mapping
 sidebar_label: Icon Badges
 slug: /theme-settings-mapping/components/icon-badges
-description: How the UnysonPlus Site Converter derives the Icon Badges preset library in Theme Settings → Components from a source design.
+description: How the UnysonPlus Site Converter derives the Icon Badges preset library in Theme Settings → Components from a source design — every field, with coverage.
 hide_table_of_contents: true
 ---
 
@@ -18,7 +18,7 @@ Full reference: **[Icon Badges](/theme/components/icon-badges)** (how it’s cod
 
 ## Coverage
 
-**4/4 derived from the source** (100%) — 🟡 0 via CSS · ⚪ 0 default/manual · ⚙️ 0 auto.
+**4/4 fields derived from the source** (100%) — 🟡 0 via CSS · ⚪ 0 default/manual · ⚙️ 0 auto.
 
 | Aspect | Type | Status | Derived from / note |
 | --- | --- | --- | --- |
@@ -26,5 +26,12 @@ Full reference: **[Icon Badges](/theme/components/icon-badges)** (how it’s cod
 | `size` | `unit` | ✅ Native | Tile size |
 | `radius` | `unit` | ✅ Native | Square / rounded / circle |
 | `icon colour` | `colour` | ✅ Native | The glyph colour |
+
+### Status legend
+
+- ✅ **Native** — Derived and written from a source signal.
+- 🟡 **Via CSS** — Reproduced via generated CSS; the native option is left empty (candidate to promote).
+- ⚪ **Unmapped** — Left at default — no source signal, or set by hand.
+- ⚙️ **Auto** — Plumbing. Excluded from the coverage percentage.
 
 ← Back to [Components](./index.md)

@@ -113,61 +113,209 @@
           "slug": "buttons",
           "ref": "/theme/components/buttons",
           "coverage": "populated",
-          "intro": "From the source’s real button skin (`build_button_presets`) — the fill, text colour, border, radius, padding and shadow of the actual buttons, plus S / M / L **size** presets. A Large size preset also repoints the header CTA so it matches the source’s chunky button.",
+          "storageKey": "button_colors · button_sizes · button_animations",
+          "optionFile": "framework/extensions/shortcodes/includes/theme-settings/components-buttons.php (schema in framework/includes/option-types/button-presets/)",
+          "builderFn": "FW_Site_Converter_Stitch::build_button_presets()",
+          "outputClass": "a `.btn-{slug}` class per preset (e.g. `.btn-primary`) + a `.btn-{size}` per size",
+          "intro": "The Buttons library holds three axes: **Button Presets** (the *skin* — colour, gradient, border, shadow, font, per state), **Sizes** (the *dimensions* — font-size, padding, radius, height), and **Hover Animations** (CSS effects). The converter reads the source’s real buttons and rebuilds the skin + size axes; each preset renders a live preview and produces a `.btn-{slug}` class the Button shortcode points at.",
+          "wiringNote": "The skin axis carries **colour-family properties only** (bg / text / border / shadow / transform); dimensional properties (font-size, padding, radius, height) deliberately live on the **Sizes** axis, so a colour and a size compose independently. The converter clusters the source’s button variants into named presets (Primary / Secondary / Accent…) and its distinct sizes into S / M / L.",
+          "notes": ":::note[How the states work]\nEach preset has **five state tabs** — **Default / Hover / Active / Focus / Disabled** — sharing one `transition` and one `{{SELECTOR}}`-aware Custom CSS block. The converter fills **Default** fully and **Hover** partially (bg / text / border); **Active / Focus / Disabled** are left empty so they inherit Default, and you set them by hand only if the source distinguishes them. A source button that **animates on hover** (e.g. a transform) gets a matching `transition: transform …` rule injected into **Custom CSS** rather than the `transition` field.\n:::\n\n:::info[Gradients]\nA source button background that’s a **gradient** is flattened into the `bg_color` fill (for hover, to an `rgba()`), so the native `gradient` field is left blank — the button still looks right, and you can promote it back to a real gradient by hand.\n:::",
           "options": [
             {
-              "key": "fill / background",
-              "type": "colour",
+              "group": "Preset · Identity (`shared_top`)",
+              "key": "color_name",
+              "type": "text",
               "status": "native",
-              "source": "The button’s computed background"
+              "source": "The preset name — clustered from the source’s button variants (Primary / Secondary / Accent…)"
             },
             {
-              "key": "text colour",
-              "type": "colour",
+              "group": "Preset · Identity (`shared_top`)",
+              "key": "slug",
+              "type": "unique",
+              "status": "auto",
+              "source": "Auto from the name (`sanitize_title_with_dashes`) → the `.btn-{slug}` class suffix"
+            },
+            {
+              "group": "Preset · Identity (`shared_top`)",
+              "key": "font",
+              "type": "typography",
+              "status": "native",
+              "source": "The button font — **identity only** (family / variation / script / letter-spacing). Carried when it **deviates** from the body base; otherwise left to inherit"
+            },
+            {
+              "group": "Preset · State: Default",
+              "key": "bg_color",
+              "type": "compact color",
+              "status": "native",
+              "source": "The button’s computed background fill"
+            },
+            {
+              "group": "Preset · State: Default",
+              "key": "text_color",
+              "type": "compact color",
               "status": "native",
               "source": "The button’s computed text colour"
             },
             {
-              "key": "border",
-              "type": "border",
-              "status": "native",
-              "source": "Width / style / colour when the source button has one"
-            },
-            {
-              "key": "radius",
-              "type": "unit",
-              "status": "native",
-              "source": "Corner radius"
-            },
-            {
-              "key": "padding",
-              "type": "box",
-              "status": "native",
-              "source": "X / Y padding → informs the size presets"
-            },
-            {
-              "key": "shadow",
-              "type": "box-shadow",
-              "status": "native",
-              "source": "Drop shadow when present"
-            },
-            {
-              "key": "font-family",
-              "type": "typography",
-              "status": "via-css",
-              "source": "Only carried when it **deviates** from the body base font; otherwise inherited for free"
-            },
-            {
-              "key": "size presets (S/M/L)",
-              "type": "button_sizes",
-              "status": "native",
-              "source": "Distinct button sizes clustered from the source"
-            },
-            {
-              "key": "hover / focus state",
-              "type": "state",
+              "group": "Preset · State: Default",
+              "key": "gradient",
+              "type": "gradient-v2",
               "status": "unmapped",
-              "source": "Left at the theme default"
+              "source": "Gradients are flattened into `bg_color`; this field is left blank"
+            },
+            {
+              "group": "Preset · State: Default",
+              "key": "text_transform",
+              "type": "short-select",
+              "status": "native",
+              "source": "e.g. `uppercase` — carried so Theme Settings shows the real casing (not baked into CSS)"
+            },
+            {
+              "group": "Preset · State: Default",
+              "key": "border_style",
+              "type": "select",
+              "status": "native",
+              "source": "Carried when the source button has a border"
+            },
+            {
+              "group": "Preset · State: Default",
+              "key": "border_color",
+              "type": "compact color",
+              "status": "native",
+              "source": "Carried when the source button has a border"
+            },
+            {
+              "group": "Preset · State: Default",
+              "key": "border_width",
+              "type": "unit-input",
+              "status": "native",
+              "source": "Carried when the source button has a border"
+            },
+            {
+              "group": "Preset · State: Default",
+              "key": "box_shadow",
+              "type": "box-shadow (X/Y/blur/spread/color/inset)",
+              "status": "native",
+              "source": "Carried when the source button has a drop shadow"
+            },
+            {
+              "group": "Preset · State: Hover",
+              "key": "bg_color",
+              "type": "compact color",
+              "status": "native",
+              "source": "The hover background (a gradient hover is flattened to an `rgba()` fill)"
+            },
+            {
+              "group": "Preset · State: Hover",
+              "key": "text_color",
+              "type": "compact color",
+              "status": "native",
+              "source": "The hover text colour, when it changes"
+            },
+            {
+              "group": "Preset · State: Hover",
+              "key": "border_color",
+              "type": "compact color",
+              "status": "native",
+              "source": "The hover border colour, when present"
+            },
+            {
+              "group": "Preset · State: Hover",
+              "key": "gradient · text_transform · border_* · box_shadow",
+              "type": "—",
+              "status": "unmapped",
+              "source": "Left at the Default/theme value on hover"
+            },
+            {
+              "group": "Preset · States: Active / Focus / Disabled",
+              "key": "(all fields)",
+              "type": "—",
+              "status": "unmapped",
+              "source": "Left empty → inherit Default. Set by hand only if the source distinguishes these states"
+            },
+            {
+              "group": "Preset · Shared (`shared_bottom`)",
+              "key": "transition",
+              "type": "short-text (ms)",
+              "status": "unmapped",
+              "source": "Theme default — a transform ease is injected into Custom CSS instead when the source button animates"
+            },
+            {
+              "group": "Preset · Shared (`shared_bottom`)",
+              "key": "custom_css",
+              "type": "code-editor",
+              "status": "auto",
+              "source": "The converter injects a hover-transform rule here when the source button animates on hover"
+            },
+            {
+              "group": "Sizes (`button_sizes`)",
+              "key": "size_name",
+              "type": "text",
+              "status": "native",
+              "source": "Named from the clustered sizes (S / M / L, or the distinct sizes found)"
+            },
+            {
+              "group": "Sizes (`button_sizes`)",
+              "key": "slug",
+              "type": "text",
+              "status": "auto",
+              "source": "The `.btn-{slug}` size-class suffix"
+            },
+            {
+              "group": "Sizes (`button_sizes`)",
+              "key": "font_size",
+              "type": "unit-input",
+              "status": "native",
+              "source": "Per-size text size"
+            },
+            {
+              "group": "Sizes (`button_sizes`)",
+              "key": "line_height",
+              "type": "short-text",
+              "status": "unmapped",
+              "source": "Left default"
+            },
+            {
+              "group": "Sizes (`button_sizes`)",
+              "key": "padding_y",
+              "type": "unit-input",
+              "status": "native",
+              "source": "Top / bottom padding"
+            },
+            {
+              "group": "Sizes (`button_sizes`)",
+              "key": "padding_x",
+              "type": "unit-input",
+              "status": "native",
+              "source": "Left / right padding"
+            },
+            {
+              "group": "Sizes (`button_sizes`)",
+              "key": "border_radius",
+              "type": "unit-input",
+              "status": "native",
+              "source": "Corner radius (`9999px` = pill)"
+            },
+            {
+              "group": "Sizes (`button_sizes`)",
+              "key": "min_height",
+              "type": "unit-input",
+              "status": "native",
+              "source": "A **fixed** source height (e.g. `h-11` = 44px) → Min Height; content centres to it via inline-flex"
+            },
+            {
+              "group": "Sizes (`button_sizes`)",
+              "key": "min_width · max_width",
+              "type": "unit-input",
+              "status": "unmapped",
+              "source": "Left default"
+            },
+            {
+              "group": "Hover Animations (`button_animations`)",
+              "key": "name · css",
+              "type": "addable-box + code-editor",
+              "status": "unmapped",
+              "source": "Not derived — the theme ships default hover animations (`{{BTN}}` / `{{ANIM}}`); add source-specific ones by hand"
             }
           ]
         },

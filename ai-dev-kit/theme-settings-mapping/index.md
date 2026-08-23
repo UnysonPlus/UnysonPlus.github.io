@@ -33,7 +33,7 @@ option-by-option coverage table.
 | Group | Tab | Coverage | Detail / note |
 | --- | --- | --- | --- |
 | **General** | [Colors](./colors.md) | ✅ Populated | ✅ 7 native · 88% |
-| **Design System** | [Components](./components/index.md) | ✅ Populated | ✅ 35 native · 92% · 11 libraries |
+| **Design System** | [Components](./components/index.md) | ✅ Populated | ✅ 46 native · 85% · 11 libraries |
 | **General** | [Typography & Fonts](./typography.md) | ✅ Populated | ✅ 1 native · 14% |
 | **General** | [Backgrounds (Site / Section / Footer)](./backgrounds.md) | ✅ Populated | ✅ 4 native · 80% |
 | **General** | [Layout](./layout.md) | 🟡 Partial | ✅ 1 native · 14% |

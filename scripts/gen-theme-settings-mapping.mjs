@@ -63,6 +63,7 @@ title: ${tab.tab} — Theme Settings mapping
 sidebar_label: ${tab.tab}
 slug: /theme-settings-mapping/${tab.slug}
 description: How the UnysonPlus Site Converter fills the Theme Settings ${tab.tab} tab (\`${tab.storageKey}\`) from a source design — option by option, with coverage.
+hide_table_of_contents: true
 ---
 
 ${GENERATED}

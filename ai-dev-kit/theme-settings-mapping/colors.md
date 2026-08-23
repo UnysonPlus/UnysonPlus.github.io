@@ -3,6 +3,7 @@ title: Colors — Theme Settings mapping
 sidebar_label: Colors
 slug: /theme-settings-mapping/colors
 description: How the UnysonPlus Site Converter fills the Theme Settings Colors tab (`theme_colors`) from a source design — option by option, with coverage.
+hide_table_of_contents: true
 ---
 
 <!-- ⚠️ GENERATED FILE — do not edit by hand. Edit ai-dev-kit/_data/theme-settings-mapping.json, then run: node scripts/gen-theme-settings-mapping.mjs -->

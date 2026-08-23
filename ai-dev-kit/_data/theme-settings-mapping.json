@@ -770,46 +770,112 @@
           "slug": "section-styles",
           "ref": "/theme/components/section-styles",
           "coverage": "populated",
-          "intro": "Reusable band skins clustered from the source’s sections (`build_section_style_presets`) — a repeated section look becomes one editable Section Style.",
+          "storageKey": "section_style_presets",
+          "optionFile": "framework/extensions/shortcodes/includes/theme-settings/components-section-styles.php",
+          "builderFn": "FW_Site_Converter_Stitch::build_section_style_presets()",
+          "outputClass": "a `.section--{slug}` class per preset — pick it on a Section (Layout → Section Variant)",
+          "intro": "A Section Style is a reusable band **skin** — background, on-band text / heading / link colours, border and corner radius — that produces a `.section--{slug}` class you pick on a Section (Layout → Section Variant). The converter clusters the source’s distinctive bands into presets, filling the fill + colours + border + radius.",
+          "wiringNote": "Only a band that **deviates** from the page base (its own fill, border, radius, or on-dark text) becomes a preset; near-identical bands cluster into one. A text or heading colour is carried **only** when the band is dark or the colour differs from the page base — so a light band that just matches the page stays clean. Per-section **padding** stays a native Section option, so presets leave it empty.",
+          "notes": ":::note[Presets are the skin; padding stays on the Section]\nA Section Style carries the reusable *look* (fill, colours, border, radius). The band’s **vertical spacing** is deliberately a per-Section control (Layout → Top/Bottom Spacing) — it varies section to section even within one skin — so the converter leaves the preset’s Padding empty and sets spacing on each Section instead.\n:::",
           "options": [
             {
-              "key": "band background",
-              "type": "background",
+              "group": "Skin (`section_style_presets` box)",
+              "key": "style_name",
+              "type": "text",
               "status": "native",
-              "source": "The section fill (colour / gradient)"
+              "source": "Name → `.section--{slug}`, shown in the Section Variant dropdown"
             },
             {
+              "group": "Skin (`section_style_presets` box)",
+              "key": "background",
+              "type": "background-pro",
+              "status": "native",
+              "source": "The band fill (colour / gradient / image)"
+            },
+            {
+              "group": "Skin (`section_style_presets` box)",
+              "key": "text_color",
+              "type": "compact color",
+              "status": "native",
+              "source": "Carried when the band is dark, or its text differs from the page base"
+            },
+            {
+              "group": "Skin (`section_style_presets` box)",
+              "key": "heading_color",
+              "type": "compact color",
+              "status": "native",
+              "source": "Carried when the band is dark, or its headings differ from base"
+            },
+            {
+              "group": "Skin (`section_style_presets` box)",
+              "key": "link_color",
+              "type": "compact color",
+              "status": "unmapped",
+              "source": "Left default"
+            },
+            {
+              "group": "Skin (`section_style_presets` box)",
+              "key": "border",
+              "type": "multi-inline (width / style / color)",
+              "status": "native",
+              "source": "Carried when the band has a border edge"
+            },
+            {
+              "group": "Skin (`section_style_presets` box)",
+              "key": "border_sides",
+              "type": "image-picker (multi)",
+              "status": "auto",
+              "source": "Always all four edges"
+            },
+            {
+              "group": "Skin (`section_style_presets` box)",
+              "key": "border_extent",
+              "type": "multi-picker",
+              "status": "auto",
+              "source": "Always Full width"
+            },
+            {
+              "group": "Skin (`section_style_presets` box)",
+              "key": "border_radius",
+              "type": "unit-input",
+              "status": "native",
+              "source": "Carried when the band has a corner radius"
+            },
+            {
+              "group": "Skin (`section_style_presets` box)",
               "key": "padding",
-              "type": "box",
-              "status": "native",
-              "source": "Vertical band padding"
-            },
-            {
-              "key": "text colour",
-              "type": "colour",
-              "status": "native",
-              "source": "On-band text colour (for dark bands)"
+              "type": "spacing (per-side)",
+              "status": "unmapped",
+              "source": "Left empty — a Section’s own Top/Bottom Spacing controls it (see note)"
             }
           ]
         },
         {
           "name": "Container Widths",
           "slug": "container-widths",
-          "ref": "",
+          "ref": "/theme/components/section-styles",
           "coverage": "populated",
-          "intro": "Named content-band widths gathered from the source (`build_container_width_presets`) — Narrow / Medium / Wide plus any distinct widths the site uses, so converted sections reference **shared named widths** instead of one-off numbers.",
+          "storageKey": "container_width_presets",
+          "optionFile": "framework/extensions/shortcodes/includes/theme-settings/components-section-styles.php (below Section Styles)",
+          "builderFn": "FW_Site_Converter_Stitch::build_container_width_presets()",
+          "outputClass": "a named content-band width per preset — pick it on a Section (Layout → Container Width)",
+          "intro": "Container Widths is a library of reusable **named content-band widths** you pick on a Section (Layout → Container Width) to constrain its content narrower than the global width. The converter gathers the source’s distinct content max-widths and adds them here, so a whole converted site shares **named** widths instead of repeating a raw number.",
+          "wiringNote": "The converter collects every distinct content max-width the source uses, snaps each to the nearest **standard** step within ±10px — Small 640 / Prose 672 / Narrow 768 / Medium 896 / Wide 1024 / Wide L 1152 / Wide XL 1280 / Wide XXL 1440 — and names it accordingly; a width that isn’t standard becomes a `Content NNN` preset. Sections then reference the shared named width, so changing it once updates every section that uses it.",
+          "notes": ":::info[Why named widths matter]\nReusing **named** widths (rather than a one-off px value per section) means a converted site behaves like a hand-built one: adjust “Medium” once in Theme Settings and every Medium section re-flows. The three defaults (Narrow / Medium / Wide) match the built-ins, so sections that resolve to those render unchanged.\n:::",
           "options": [
             {
-              "key": "Narrow / Medium / Wide",
-              "type": "unit",
+              "group": "Width (`container_width_presets` box)",
+              "key": "width_name",
+              "type": "text",
               "status": "native",
-              "source": "The recurring content widths, named"
+              "source": "Named from the source width — the standard map (Small / Prose / Narrow / Medium / Wide / …) or `Content NNN` for a non-standard width"
             },
             {
-              "key": "distinct source widths",
-              "type": "unit",
+              "group": "Width (`container_width_presets` box)",
+              "key": "width",
+              "type": "unit-input",
               "status": "native",
-              "source": "Any extra widths the source uses, added as named presets"
+              "source": "The source’s distinct content max-width"
             }
           ]
         },

@@ -2,10 +2,26 @@
   "_comment": "SOURCE OF TRUTH for the converter element-mapping docs. Hand-curated from the Site Converter's recognizer registry (class-fw-site-converter-stitch.php) + block-builder node methods (class-fw-site-converter-mapper.php: n_heading, n_text, register_builder), cross-referenced against each shortcode's full options.php. Edit THIS file, then run `node scripts/gen-element-mapping.mjs` to regenerate ai-dev-kit/element-mapping/*.md. Do NOT hand-edit the generated .md files. Option 'status' vocabulary: native = the converter sets this native option from a source signal; via-css = the look is reproduced via scoped CSS / the unified styler / hi-fi base, but the NATIVE option is left empty (a candidate to promote to a native mapping); unmapped = left at default (no source signal, or a decorative choice with nothing to translate); auto = plumbing (unique id, custom attrs) — excluded from the coverage percentage. Coverage% = native / (native + via-css + unmapped).",
   "sourceOfTruth": "unysonplus/framework/extensions/site-converter — class-fw-site-converter-stitch.php (recognizers) + class-fw-site-converter-mapper.php (n_* builders); options from framework/extensions/shortcodes/shortcodes/<slug>/options.php",
   "statuses": {
-    "native": { "emoji": "✅", "label": "Native", "blurb": "Set as the native option from the source." },
-    "via-css": { "emoji": "🟡", "label": "Via CSS", "blurb": "Reproduced via scoped CSS / the styler; the native option is left empty (candidate to promote to a native mapping)." },
-    "unmapped": { "emoji": "⚪", "label": "Unmapped", "blurb": "Left at default — no source signal, or a decorative choice with nothing to translate." },
-    "auto": { "emoji": "⚙️", "label": "Auto", "blurb": "Plumbing (unique id, custom attrs). Excluded from the coverage percentage." }
+    "native": {
+      "emoji": "✅",
+      "label": "Native",
+      "blurb": "Set as the native option from the source."
+    },
+    "via-css": {
+      "emoji": "🟡",
+      "label": "Via CSS",
+      "blurb": "Reproduced via scoped CSS / the styler; the native option is left empty (candidate to promote to a native mapping)."
+    },
+    "unmapped": {
+      "emoji": "⚪",
+      "label": "Unmapped",
+      "blurb": "Left at default — no source signal, or a decorative choice with nothing to translate."
+    },
+    "auto": {
+      "emoji": "⚙️",
+      "label": "Auto",
+      "blurb": "Plumbing (unique id, custom attrs). Excluded from the coverage percentage."
+    }
   },
   "elements": [
     {
@@ -19,44 +35,272 @@
       "fallback": "Degrades to `text_block`, then `code_block`.",
       "recognizerNotes": "A chip/badge sitting directly above the heading is pulled in as its overline (with the chip's inline SVG → `overline_icon`, rendered as a filled pill). Typography/size/color are re-asserted at specificity 0 (the hi-fi base) so it looks identical while staying editable.",
       "options": [
-        { "key": "overline", "tab": "Content", "type": "text", "status": "native", "source": "Source eyebrow / kicker text above the title" },
-        { "key": "title", "tab": "Content", "type": "text", "status": "native", "source": "The heading text (inline HTML accents preserved)" },
-        { "key": "subtitle", "tab": "Content", "type": "text", "status": "native", "source": "A supporting line captured right after the heading" },
-        { "key": "heading", "tab": "Content", "type": "select", "status": "native", "source": "Source heading level (`<h1>`–`<h6>`)" },
-        { "key": "overline_icon", "tab": "Icons", "type": "icon", "status": "native", "source": "Inline `<svg>` inside the source overline / preceding chip" },
-        { "key": "overline_icon_position", "tab": "Icons", "type": "select", "status": "native", "source": "Where the SVG sat relative to the overline text" },
-        { "key": "icon", "tab": "Icons", "type": "icon", "status": "unmapped", "source": "Source title icons aren't extracted to this field" },
-        { "key": "title_icon_position", "tab": "Icons", "type": "select", "status": "unmapped", "source": "—" },
-        { "key": "icon_badge_preset", "tab": "Icons", "type": "icon-badge", "status": "unmapped", "source": "Decorative preset — no source signal" },
-        { "key": "overline_uppercase", "tab": "Layout", "type": "switch", "status": "native", "source": "Source `text-transform:uppercase` or all-caps text" },
-        { "key": "overline_marker", "tab": "Layout", "type": "select", "status": "unmapped", "source": "Decorative marker — not inferred" },
-        { "key": "overline_marker_position", "tab": "Layout", "type": "select", "status": "unmapped", "source": "—" },
-        { "key": "overline_container", "tab": "Layout", "type": "select", "status": "native", "source": "A chip-before-heading → `pill`; else none" },
-        { "key": "element_spacing", "tab": "Layout", "type": "select", "status": "native", "source": "Wrapper spacing utility classes" },
-        { "key": "block_max_width", "tab": "Layout", "type": "unit-input", "status": "native", "source": "Wrapper `max-w-* mx-auto` measure" },
-        { "key": "alignment", "tab": "Styling", "type": "alignment", "status": "native", "source": "Wrapper `text-center` / `text-*` alignment" },
-        { "key": "overline_align", "tab": "Styling", "type": "alignment", "status": "unmapped", "source": "Only the master alignment is mapped" },
-        { "key": "title_align", "tab": "Styling", "type": "alignment", "status": "unmapped", "source": "—" },
-        { "key": "subtitle_align", "tab": "Styling", "type": "alignment", "status": "unmapped", "source": "—" },
-        { "key": "display_size", "tab": "Styling", "type": "select", "status": "via-css", "source": "Title size reproduced via the hi-fi base + heading tag, not this option" },
-        { "key": "title_max_width", "tab": "Styling", "type": "unit-input", "status": "unmapped", "source": "`block_max_width` is mapped instead" },
-        { "key": "subtitle_size", "tab": "Styling", "type": "font-size", "status": "native", "source": "Subtitle's computed font-size → nearest Text Style preset" },
-        { "key": "subtitle_max_width", "tab": "Styling", "type": "unit-input", "status": "unmapped", "source": "—" },
-        { "key": "bg_color", "tab": "Styling", "type": "color", "status": "unmapped", "source": "Section background handles band colour" },
-        { "key": "overline_color", "tab": "Styling", "type": "color", "status": "native", "source": "Source overline text colour" },
-        { "key": "title_color", "tab": "Styling", "type": "color", "status": "via-css", "source": "Reproduced at specificity 0 via the hi-fi base; native option left empty" },
-        { "key": "subtitle_color", "tab": "Styling", "type": "color", "status": "via-css", "source": "Same as title colour" },
-        { "key": "spacing", "tab": "Styling", "type": "spacing", "status": "native", "source": "Source vertical margins → native margin option" },
-        { "key": "animation", "tab": "Animations", "type": "group", "status": "unmapped", "source": "Entrance animations default off (no source signal)" },
-        { "key": "css_class", "tab": "Advanced", "type": "text", "status": "native", "source": "Unmapped source utility classes preserved" },
-        { "key": "overline_class", "tab": "Advanced", "type": "text", "status": "native", "source": "Source overline utility classes" },
-        { "key": "title_class", "tab": "Advanced", "type": "text", "status": "native", "source": "Source title utility classes" },
-        { "key": "subtitle_class", "tab": "Advanced", "type": "text", "status": "native", "source": "Source subtitle utility classes" },
-        { "key": "custom_css", "tab": "Advanced", "type": "textarea", "status": "native", "source": "Carries the source font-weight + the hi-fi appearance base" },
-        { "key": "css_id", "tab": "Advanced", "type": "text", "status": "unmapped", "source": "Default empty" },
-        { "key": "unique_id", "tab": "Advanced", "type": "hidden", "status": "auto", "source": "Generated" },
-        { "key": "responsive_hide", "tab": "Advanced", "type": "group", "status": "auto", "source": "Not set" },
-        { "key": "custom_attrs", "tab": "Advanced", "type": "group", "status": "auto", "source": "Not set" }
+        {
+          "key": "overline",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "Source eyebrow / kicker text above the title"
+        },
+        {
+          "key": "title",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "The heading text (inline HTML accents preserved)"
+        },
+        {
+          "key": "subtitle",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "A supporting line captured right after the heading"
+        },
+        {
+          "key": "heading",
+          "tab": "Content",
+          "type": "select",
+          "status": "native",
+          "source": "Source heading level (`<h1>`–`<h6>`)"
+        },
+        {
+          "key": "overline_icon",
+          "tab": "Icons",
+          "type": "icon",
+          "status": "native",
+          "source": "Inline `<svg>` inside the source overline / preceding chip"
+        },
+        {
+          "key": "overline_icon_position",
+          "tab": "Icons",
+          "type": "select",
+          "status": "native",
+          "source": "Where the SVG sat relative to the overline text"
+        },
+        {
+          "key": "icon",
+          "tab": "Icons",
+          "type": "icon",
+          "status": "unmapped",
+          "source": "Source title icons aren't extracted to this field"
+        },
+        {
+          "key": "title_icon_position",
+          "tab": "Icons",
+          "type": "select",
+          "status": "unmapped",
+          "source": "—"
+        },
+        {
+          "key": "icon_badge_preset",
+          "tab": "Icons",
+          "type": "icon-badge",
+          "status": "unmapped",
+          "source": "Decorative preset — no source signal"
+        },
+        {
+          "key": "overline_uppercase",
+          "tab": "Layout",
+          "type": "switch",
+          "status": "native",
+          "source": "Source `text-transform:uppercase` or all-caps text"
+        },
+        {
+          "key": "overline_marker",
+          "tab": "Layout",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Decorative marker — not inferred"
+        },
+        {
+          "key": "overline_marker_position",
+          "tab": "Layout",
+          "type": "select",
+          "status": "unmapped",
+          "source": "—"
+        },
+        {
+          "key": "overline_container",
+          "tab": "Layout",
+          "type": "select",
+          "status": "native",
+          "source": "A chip-before-heading → `pill`; else none"
+        },
+        {
+          "key": "element_spacing",
+          "tab": "Layout",
+          "type": "select",
+          "status": "native",
+          "source": "Wrapper spacing utility classes"
+        },
+        {
+          "key": "block_max_width",
+          "tab": "Layout",
+          "type": "unit-input",
+          "status": "native",
+          "source": "Wrapper `max-w-* mx-auto` measure"
+        },
+        {
+          "key": "alignment",
+          "tab": "Styling",
+          "type": "alignment",
+          "status": "native",
+          "source": "Wrapper `text-center` / `text-*` alignment"
+        },
+        {
+          "key": "overline_align",
+          "tab": "Styling",
+          "type": "alignment",
+          "status": "unmapped",
+          "source": "Only the master alignment is mapped"
+        },
+        {
+          "key": "title_align",
+          "tab": "Styling",
+          "type": "alignment",
+          "status": "unmapped",
+          "source": "—"
+        },
+        {
+          "key": "subtitle_align",
+          "tab": "Styling",
+          "type": "alignment",
+          "status": "unmapped",
+          "source": "—"
+        },
+        {
+          "key": "display_size",
+          "tab": "Styling",
+          "type": "select",
+          "status": "via-css",
+          "source": "Title size reproduced via the hi-fi base + heading tag, not this option"
+        },
+        {
+          "key": "title_max_width",
+          "tab": "Styling",
+          "type": "unit-input",
+          "status": "unmapped",
+          "source": "`block_max_width` is mapped instead"
+        },
+        {
+          "key": "subtitle_size",
+          "tab": "Styling",
+          "type": "font-size",
+          "status": "native",
+          "source": "Subtitle's computed font-size → nearest Text Style preset"
+        },
+        {
+          "key": "subtitle_max_width",
+          "tab": "Styling",
+          "type": "unit-input",
+          "status": "unmapped",
+          "source": "—"
+        },
+        {
+          "key": "bg_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Section background handles band colour"
+        },
+        {
+          "key": "overline_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "native",
+          "source": "Source overline text colour"
+        },
+        {
+          "key": "title_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "via-css",
+          "source": "Reproduced at specificity 0 via the hi-fi base; native option left empty"
+        },
+        {
+          "key": "subtitle_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "via-css",
+          "source": "Same as title colour"
+        },
+        {
+          "key": "spacing",
+          "tab": "Styling",
+          "type": "spacing",
+          "status": "native",
+          "source": "Source vertical margins → native margin option"
+        },
+        {
+          "key": "animation",
+          "tab": "Animations",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Entrance animations default off (no source signal)"
+        },
+        {
+          "key": "css_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "native",
+          "source": "Unmapped source utility classes preserved"
+        },
+        {
+          "key": "overline_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "native",
+          "source": "Source overline utility classes"
+        },
+        {
+          "key": "title_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "native",
+          "source": "Source title utility classes"
+        },
+        {
+          "key": "subtitle_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "native",
+          "source": "Source subtitle utility classes"
+        },
+        {
+          "key": "custom_css",
+          "tab": "Advanced",
+          "type": "textarea",
+          "status": "native",
+          "source": "Carries the source font-weight + the hi-fi appearance base"
+        },
+        {
+          "key": "css_id",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "unique_id",
+          "tab": "Advanced",
+          "type": "hidden",
+          "status": "auto",
+          "source": "Generated"
+        },
+        {
+          "key": "responsive_hide",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        },
+        {
+          "key": "custom_attrs",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        }
       ]
     },
     {
@@ -70,61 +314,861 @@
       "fallback": "Degrades to `code_block`.",
       "recognizerNotes": "A centered paragraph that also carries a source max-width keeps a proven inline `mx-auto` wrapper; a pure centered/right paragraph uses the native `text_align` option instead. Font / colour / line-height re-assert via the styler.",
       "options": [
-        { "key": "text", "tab": "Content", "type": "wp-editor", "status": "native", "source": "The source paragraph's rich HTML" },
-        { "key": "text_color", "tab": "Styling", "type": "color", "status": "via-css", "source": "Body text colour reproduced via the section / preset styler; native option empty" },
-        { "key": "bg_color", "tab": "Styling", "type": "color", "status": "unmapped", "source": "Block background rarely set (section handles it)" },
-        { "key": "link_color", "tab": "Styling", "type": "color", "status": "via-css", "source": "Link colour via the styler; native option empty" },
-        { "key": "font_size_preset", "tab": "Styling", "type": "font-size", "status": "native", "source": "Source computed font-size → nearest body Text Style preset" },
-        { "key": "spacing", "tab": "Styling", "type": "spacing", "status": "via-css", "source": "Vertical margins ride the unified styler; native margin option left empty" },
-        { "key": "text_align", "tab": "Styling", "type": "alignment", "status": "native", "source": "Explicit source center / right alignment (a `text-*` class)" },
-        { "key": "max_width", "tab": "Styling", "type": "multi-picker", "status": "native", "source": "Source max-width (class, inline style, or stylesheet rule)" },
-        { "key": "columns", "tab": "Styling", "type": "select", "status": "unmapped", "source": "Newspaper columns — no source signal" },
-        { "key": "balance", "tab": "Styling", "type": "switch", "status": "unmapped", "source": "Decorative — no source signal" },
-        { "key": "line_height", "tab": "Styling", "type": "select", "status": "via-css", "source": "Reproduced via the styler; native option empty" },
-        { "key": "para_spacing", "tab": "Styling", "type": "select", "status": "unmapped", "source": "—" },
-        { "key": "lead", "tab": "Styling", "type": "switch", "status": "unmapped", "source": "Decorative lead-in — no source signal" },
-        { "key": "link_underline", "tab": "Styling", "type": "select", "status": "unmapped", "source": "—" },
-        { "key": "dropcap", "tab": "Styling", "type": "multi-picker", "status": "unmapped", "source": "Decorative drop-cap (+ style/font/lines/chars/gap/colour) — no source signal" },
-        { "key": "animation", "tab": "Animations", "type": "group", "status": "unmapped", "source": "Entrance animations default off" },
-        { "key": "css_class", "tab": "Advanced", "type": "text", "status": "unmapped", "source": "Left empty — the block carries no source classes here" },
-        { "key": "custom_css", "tab": "Advanced", "type": "textarea", "status": "unmapped", "source": "Not populated for text_block" },
-        { "key": "css_id", "tab": "Advanced", "type": "text", "status": "unmapped", "source": "Default empty" },
-        { "key": "unique_id", "tab": "Advanced", "type": "hidden", "status": "auto", "source": "Generated" },
-        { "key": "responsive_hide", "tab": "Advanced", "type": "group", "status": "auto", "source": "Not set" },
-        { "key": "custom_attrs", "tab": "Advanced", "type": "group", "status": "auto", "source": "Not set" }
+        {
+          "key": "text",
+          "tab": "Content",
+          "type": "wp-editor",
+          "status": "native",
+          "source": "The source paragraph's rich HTML"
+        },
+        {
+          "key": "text_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "via-css",
+          "source": "Body text colour reproduced via the section / preset styler; native option empty"
+        },
+        {
+          "key": "bg_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Block background rarely set (section handles it)"
+        },
+        {
+          "key": "link_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "via-css",
+          "source": "Link colour via the styler; native option empty"
+        },
+        {
+          "key": "font_size_preset",
+          "tab": "Styling",
+          "type": "font-size",
+          "status": "native",
+          "source": "Source computed font-size → nearest body Text Style preset"
+        },
+        {
+          "key": "spacing",
+          "tab": "Styling",
+          "type": "spacing",
+          "status": "via-css",
+          "source": "Vertical margins ride the unified styler; native margin option left empty"
+        },
+        {
+          "key": "text_align",
+          "tab": "Styling",
+          "type": "alignment",
+          "status": "native",
+          "source": "Explicit source center / right alignment (a `text-*` class)"
+        },
+        {
+          "key": "max_width",
+          "tab": "Styling",
+          "type": "multi-picker",
+          "status": "native",
+          "source": "Source max-width (class, inline style, or stylesheet rule)"
+        },
+        {
+          "key": "columns",
+          "tab": "Styling",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Newspaper columns — no source signal"
+        },
+        {
+          "key": "balance",
+          "tab": "Styling",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Decorative — no source signal"
+        },
+        {
+          "key": "line_height",
+          "tab": "Styling",
+          "type": "select",
+          "status": "via-css",
+          "source": "Reproduced via the styler; native option empty"
+        },
+        {
+          "key": "para_spacing",
+          "tab": "Styling",
+          "type": "select",
+          "status": "unmapped",
+          "source": "—"
+        },
+        {
+          "key": "lead",
+          "tab": "Styling",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Decorative lead-in — no source signal"
+        },
+        {
+          "key": "link_underline",
+          "tab": "Styling",
+          "type": "select",
+          "status": "unmapped",
+          "source": "—"
+        },
+        {
+          "key": "dropcap",
+          "tab": "Styling",
+          "type": "multi-picker",
+          "status": "unmapped",
+          "source": "Decorative drop-cap (+ style/font/lines/chars/gap/colour) — no source signal"
+        },
+        {
+          "key": "animation",
+          "tab": "Animations",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Entrance animations default off"
+        },
+        {
+          "key": "css_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Left empty — the block carries no source classes here"
+        },
+        {
+          "key": "custom_css",
+          "tab": "Advanced",
+          "type": "textarea",
+          "status": "unmapped",
+          "source": "Not populated for text_block"
+        },
+        {
+          "key": "css_id",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "unique_id",
+          "tab": "Advanced",
+          "type": "hidden",
+          "status": "auto",
+          "source": "Generated"
+        },
+        {
+          "key": "responsive_hide",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        },
+        {
+          "key": "custom_attrs",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        }
+      ]
+    },
+    {
+      "priority": 40,
+      "shortcode": "button",
+      "label": "Button",
+      "doc": "/docs/shortcodes/components/button",
+      "recognizer": "button",
+      "matchesWhen": "A `<button>`, or an `<a>` styled as a button (a `btn` / `button` / `cta` class, or button-like padding + fill).",
+      "blockShape": "{ t:'button', label|text, href, cls, icon, iconPos, cs, groupCls, groupCs, align }",
+      "fallback": "Degrades to `code_block`.",
+      "recognizerNotes": "Text, link, alignment and any inline icon map to native options. The button’s **look** (fill / text / border / radius / shadow / typography) is reproduced via a scoped hi-fi `custom_css` base rather than by matching one of your Button presets — so the native `style` preset stays empty (a candidate to promote).",
+      "options": [
+        {
+          "key": "label",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "Source button text"
+        },
+        {
+          "key": "link",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "The href"
+        },
+        {
+          "key": "target",
+          "tab": "Content",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default `_self`"
+        },
+        {
+          "key": "icon",
+          "tab": "Icons",
+          "type": "icon",
+          "status": "native",
+          "source": "An inline `<svg>` / icon in the source button"
+        },
+        {
+          "key": "icon_position",
+          "tab": "Icons",
+          "type": "select",
+          "status": "native",
+          "source": "Before / after the label, from the source"
+        },
+        {
+          "key": "style",
+          "tab": "Styling",
+          "type": "button-style-picker",
+          "status": "via-css",
+          "source": "Look reproduced via the hi-fi `custom_css` base, not a matched Button preset"
+        },
+        {
+          "key": "size",
+          "tab": "Styling",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default — not inferred"
+        },
+        {
+          "key": "width",
+          "tab": "Styling",
+          "type": "multi-picker",
+          "status": "unmapped",
+          "source": "Default (auto)"
+        },
+        {
+          "key": "alignment",
+          "tab": "Styling",
+          "type": "alignment",
+          "status": "native",
+          "source": "Source alignment"
+        },
+        {
+          "key": "state",
+          "tab": "Styling",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Editor state selector — no stored value"
+        },
+        {
+          "key": "hover_animation",
+          "tab": "Styling",
+          "type": "select",
+          "status": "unmapped",
+          "source": "No source signal"
+        },
+        {
+          "key": "spacing",
+          "tab": "Styling",
+          "type": "spacing",
+          "status": "unmapped",
+          "source": "Default spacing"
+        },
+        {
+          "key": "animation",
+          "tab": "Animations",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Entrance animations default off"
+        },
+        {
+          "key": "custom_css",
+          "tab": "Advanced",
+          "type": "textarea",
+          "status": "native",
+          "source": "Carries the hi-fi appearance base that reproduces the button’s look"
+        },
+        {
+          "key": "css_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Left empty"
+        },
+        {
+          "key": "css_id",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "unique_id",
+          "tab": "Advanced",
+          "type": "hidden",
+          "status": "auto",
+          "source": "Generated"
+        },
+        {
+          "key": "responsive_hide",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        },
+        {
+          "key": "custom_attrs",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        }
+      ]
+    },
+    {
+      "priority": 45,
+      "shortcode": "feature_list",
+      "label": "Feature List",
+      "doc": "/docs/shortcodes/components/feature-list",
+      "recognizer": "list",
+      "matchesWhen": "A `<ul>` or `<ol>` list — bulleted, numbered, or an icon list.",
+      "blockShape": "{ ordered, items:[{ text, icon_svg, icon_cls, icon_cs }] }",
+      "fallback": "Degrades to `code_block` (an empty list).",
+      "recognizerNotes": "Each `<li>`’s text becomes an item row; an inline `<svg>` on the item becomes its icon, and the icon’s source colour is carried as the item’s marker colour. List-level styling (columns, dividers, zebra, box style) is left at defaults.",
+      "options": [
+        {
+          "key": "items",
+          "tab": "Content",
+          "type": "addable-popup",
+          "status": "native",
+          "source": "One row per source `<li>` — text + inline-SVG icon + marker colour"
+        },
+        {
+          "key": "icon",
+          "tab": "Content",
+          "type": "icon",
+          "status": "native",
+          "source": "Per item: an inline `<svg>` on the list item"
+        },
+        {
+          "key": "marker_color",
+          "tab": "Design",
+          "type": "color",
+          "status": "via-css",
+          "source": "Per item: carried from the source icon’s colour"
+        },
+        {
+          "key": "icon_style",
+          "tab": "Design",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "icon_position",
+          "tab": "Design",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "columns",
+          "tab": "Layout",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default (1)"
+        },
+        {
+          "key": "dividers",
+          "tab": "Layout",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "zebra",
+          "tab": "Layout",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "box_style",
+          "tab": "Design",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "font_size_preset",
+          "tab": "Styling",
+          "type": "font-size",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "text_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "spacing",
+          "tab": "Styling",
+          "type": "spacing",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "animation",
+          "tab": "Animations",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "css_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "custom_css",
+          "tab": "Advanced",
+          "type": "textarea",
+          "status": "unmapped",
+          "source": "Not populated"
+        },
+        {
+          "key": "css_id",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "unique_id",
+          "tab": "Advanced",
+          "type": "hidden",
+          "status": "auto",
+          "source": "Generated"
+        },
+        {
+          "key": "responsive_hide",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        },
+        {
+          "key": "custom_attrs",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        }
+      ]
+    },
+    {
+      "priority": 55,
+      "shortcode": "icon_box",
+      "label": "Icon Box",
+      "doc": "/docs/shortcodes/components/icon-box",
+      "recognizer": "floating_card",
+      "matchesWhen": "A floating badge/card overlaid on a hero image (an icon + title + subtitle chip), or an icon + title + text card.",
+      "blockShape": "{ card:{ title, titleTag, text, imgIcon, link }, posCss }",
+      "fallback": "Degrades to `code_block`.",
+      "recognizerNotes": "Title, heading tag, text (and any link) map to native options; a source SVG / image icon becomes the icon with its size. For a floating card over an image, its absolute position + skin ride a scoped `custom_css` (`posCss`). Colour / layout options stay at defaults.",
+      "options": [
+        {
+          "key": "icon",
+          "tab": "Content",
+          "type": "icon",
+          "status": "native",
+          "source": "Source SVG / image icon"
+        },
+        {
+          "key": "icon_size",
+          "tab": "Layout",
+          "type": "unit-input",
+          "status": "native",
+          "source": "From the source icon’s rendered size (image icons)"
+        },
+        {
+          "key": "title",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "Card title"
+        },
+        {
+          "key": "title_tag",
+          "tab": "Content",
+          "type": "select",
+          "status": "native",
+          "source": "Source heading tag (h3–h6 / span / p)"
+        },
+        {
+          "key": "content",
+          "tab": "Content",
+          "type": "wp-editor",
+          "status": "native",
+          "source": "Card text (+ an optional link)"
+        },
+        {
+          "key": "icon_badge_preset",
+          "tab": "Content",
+          "type": "icon-badge",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "icon_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "title_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "content_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "bg_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "font_size_preset",
+          "tab": "Styling",
+          "type": "font-size",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "icon_align",
+          "tab": "Layout",
+          "type": "alignment",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "title_align",
+          "tab": "Layout",
+          "type": "alignment",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "content_align",
+          "tab": "Layout",
+          "type": "alignment",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "box_style",
+          "tab": "Styling",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "box_link",
+          "tab": "Link",
+          "type": "text",
+          "status": "unmapped",
+          "source": "The link rides in the content instead"
+        },
+        {
+          "key": "link_target",
+          "tab": "Link",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "link_rel",
+          "tab": "Link",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "mobile_stack",
+          "tab": "Layout",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "spacing",
+          "tab": "Styling",
+          "type": "spacing",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "custom_css",
+          "tab": "Advanced",
+          "type": "textarea",
+          "status": "via-css",
+          "source": "Floating card: the absolute position + skin (`posCss`)"
+        },
+        {
+          "key": "animation",
+          "tab": "Animations",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "css_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "css_id",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "unique_id",
+          "tab": "Advanced",
+          "type": "hidden",
+          "status": "auto",
+          "source": "Generated"
+        },
+        {
+          "key": "responsive_hide",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        },
+        {
+          "key": "custom_attrs",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        }
       ]
     }
   ],
   "_recognizersExtraComment": "The rest of the recognizer registry (class-fw-site-converter-stitch.php `register_recognizer(id, priority, …)`), listed in the Recognizers table for a complete picture of eval order. These don't yet have a full per-option coverage page (the curated set above does) — but the recognizer rule, priority, and target shortcode are documented here. HIGHER priority runs first. Keep in sync with the code when priorities or targets change.",
   "recognizersExtra": [
-    { "priority": 99, "recognizer": "pricing_table", "matchesWhen": "A row of ≥2 price cards (each with a plan name, a currency-prefixed amount, and a feature list / CTA).", "becomes": "pricing_table", "fallback": "Degrades to a `card_grid` of columns, then `code_block`." },
-    { "priority": 98, "recognizer": "steps", "matchesWhen": "An ordered how-it-works / process sequence (numbered badges + title + blurb per step).", "becomes": "steps", "fallback": "Degrades to `card_grid`, then `code_block`." },
-    { "priority": 97, "recognizer": "timeline", "matchesWhen": "A vertical timeline (dated / connector-line entries down a spine).", "becomes": "timeline", "fallback": "Degrades to `card_grid`, then `code_block`." },
-    { "priority": 96, "recognizer": "progress", "matchesWhen": "Labeled progress / skill bars (a track with a percentage-width fill).", "becomes": "progress", "fallback": "Degrades to `text_block`, then `code_block`." },
-    { "priority": 95, "recognizer": "tabs", "matchesWhen": "A tabbed panel (a tab strip whose buttons toggle sibling panels).", "becomes": "tabs", "fallback": "Degrades to stacked sections, then `code_block`." },
-    { "priority": 94, "recognizer": "lottie", "matchesWhen": "A `<lottie-player>` / `dotlottie` element or a `.json`/`.lottie` animation source.", "becomes": "lottie", "fallback": "Degrades to `media_image` (poster), then `code_block`." },
-    { "priority": 94, "recognizer": "instagram_feed", "matchesWhen": "An Instagram feed embed / grid of Instagram post tiles.", "becomes": "instagram", "fallback": "Degrades to a `gallery`, then `code_block`." },
-    { "priority": 93, "recognizer": "svg_draw", "matchesWhen": "An inline `<svg>` with strokeable paths meant to draw-on (line-art / signature / illustration).", "becomes": "svg_draw", "fallback": "Degrades to `media_image`, then `code_block`." },
-    { "priority": 92, "recognizer": "testimonials", "matchesWhen": "A group of ≥2 quote/review cards (quote text + author, often an avatar or star rating).", "becomes": "testimonials", "fallback": "Degrades to `card_grid`, then `code_block`." },
-    { "priority": 91, "recognizer": "image_grid", "matchesWhen": "A grid of ≥3 image tiles with no per-tile text (a photo gallery / masonry). Recovers a 25/50/25-style column ratio from the tile widths.", "becomes": "gallery", "fallback": "Degrades to stacked `media_image`, then `code_block`." },
-    { "priority": 91, "recognizer": "counter_grid", "matchesWhen": "A stats row of ≥2 big-number + label pairs (animated counters).", "becomes": "counter", "fallback": "Degrades to `card_grid`, then `code_block`." },
-    { "priority": 90, "recognizer": "card_grid", "matchesWhen": "A row of ≥2 feature cards (icon + title + copy). Each cell becomes an `icon_box`, carrying its per-card icon colour + badge.", "becomes": "icon_box", "fallback": "Degrades to stacked `text_block`s, then `code_block`." },
-    { "priority": 89, "recognizer": "accordion", "matchesWhen": "An FAQ / disclosure list (clickable summary rows revealing collapsible panels).", "becomes": "accordion", "fallback": "Degrades to stacked heading + text, then `code_block`." },
-    { "priority": 88, "recognizer": "table", "matchesWhen": "A real `<table>` (or an ARIA grid) of rows and cells.", "becomes": "table", "fallback": "Degrades to `code_block` (markup preserved)." },
-    { "priority": 85, "recognizer": "card_grid_cs", "matchesWhen": "A card grid detected from computed styles rather than utility classes (CSS-first sites).", "becomes": "icon_box", "fallback": "Degrades to stacked `text_block`s, then `code_block`." },
-    { "priority": 84, "recognizer": "avatar_group", "matchesWhen": "A cluster of overlapping/adjacent avatar images (a people / social-proof row).", "becomes": "avatar", "fallback": "Degrades to a `gallery`, then `code_block`." },
-    { "priority": 82, "recognizer": "layout_row", "matchesWhen": "A generic multi-column flex/grid row that no specialized recognizer claimed — split into native columns.", "becomes": "row / columns", "fallback": "Degrades to stacked blocks, then `code_block`." },
-    { "priority": 81, "recognizer": "call_to_action", "matchesWhen": "A CTA band (heading + supporting line + one or more buttons on a distinct background).", "becomes": "call_to_action", "fallback": "Degrades to heading + button blocks, then `code_block`." },
-    { "priority": 79, "recognizer": "text_list", "matchesWhen": "A `<ul>`/`<ol>` of text items (often check/tick-marked) — a feature / benefit list.", "becomes": "feature_list", "fallback": "Degrades to `text_block`, then `code_block`." },
-    { "priority": 76, "recognizer": "badge", "matchesWhen": "A small pill/label chip (padded, rounded-full, short text — a tag or status badge).", "becomes": "badge", "fallback": "Degrades to `text_block`, then `code_block`." },
-    { "priority": 75, "recognizer": "badge_verbatim", "matchesWhen": "A compound chip (inline + inner span) or an unusually-styled chip best preserved exactly as authored.", "becomes": "code_block", "fallback": "Kept verbatim (this IS the preservation path)." },
-    { "priority": 70, "recognizer": "pill", "matchesWhen": "A short eyebrow/kicker pill that sits above a heading — pulled in as the heading's overline where possible.", "becomes": "special_heading (overline)", "fallback": "Degrades to `text_block`, then `code_block`." },
-    { "priority": 60, "recognizer": "button", "matchesWhen": "An `<a>`/`<button>` styled as a call-to-action (utility-class button).", "becomes": "button", "fallback": "Degrades to a text link inside `text_block`, then `code_block`." },
-    { "priority": 55, "recognizer": "button_cs", "matchesWhen": "A button detected from computed styles (padding + background + radius) rather than classes.", "becomes": "button", "fallback": "Degrades to a text link, then `code_block`." },
-    { "priority": 45, "recognizer": "video", "matchesWhen": "A `<video>` / `<source>` (mp4/webm/ogv/mov) or a section whose background is a video. Backgrounds are sideloaded to the media library so the source stays editable in the Background → Video picker.", "becomes": "media_video / section background video", "fallback": "Degrades to a poster `media_image`, then `code_block`." },
-    { "priority": 40, "recognizer": "image", "matchesWhen": "An `<img>` / `<picture>` / a CSS `background-image` on a content block.", "becomes": "media_image", "fallback": "Degrades to `code_block`." },
-    { "priority": 35, "recognizer": "image_wrapper", "matchesWhen": "An image wrapped in a link / figure / decorative frame — unwrapped to the image with its frame preserved.", "becomes": "media_image", "fallback": "Degrades to `code_block`." },
-    { "priority": 30, "recognizer": "image_overlay", "matchesWhen": "An image with text/controls overlaid (a captioned hero tile / media card).", "becomes": "media_image + icon_box", "fallback": "Degrades to stacked image + text, then `code_block`." },
-    { "priority": 25, "recognizer": "logo_strip", "matchesWhen": "A row of ≥2 brand marks — `<img>` logos, inline `<svg>` logos, OR icon-font + label pairs (as-seen-in / partner strip).", "becomes": "logo_grid", "fallback": "Degrades to a `gallery`, then `code_block`." }
+    {
+      "priority": 99,
+      "recognizer": "pricing_table",
+      "matchesWhen": "A row of ≥2 price cards (each with a plan name, a currency-prefixed amount, and a feature list / CTA).",
+      "becomes": "pricing_table",
+      "fallback": "Degrades to a `card_grid` of columns, then `code_block`."
+    },
+    {
+      "priority": 98,
+      "recognizer": "steps",
+      "matchesWhen": "An ordered how-it-works / process sequence (numbered badges + title + blurb per step).",
+      "becomes": "steps",
+      "fallback": "Degrades to `card_grid`, then `code_block`."
+    },
+    {
+      "priority": 97,
+      "recognizer": "timeline",
+      "matchesWhen": "A vertical timeline (dated / connector-line entries down a spine).",
+      "becomes": "timeline",
+      "fallback": "Degrades to `card_grid`, then `code_block`."
+    },
+    {
+      "priority": 96,
+      "recognizer": "progress",
+      "matchesWhen": "Labeled progress / skill bars (a track with a percentage-width fill).",
+      "becomes": "progress",
+      "fallback": "Degrades to `text_block`, then `code_block`."
+    },
+    {
+      "priority": 95,
+      "recognizer": "tabs",
+      "matchesWhen": "A tabbed panel (a tab strip whose buttons toggle sibling panels).",
+      "becomes": "tabs",
+      "fallback": "Degrades to stacked sections, then `code_block`."
+    },
+    {
+      "priority": 94,
+      "recognizer": "lottie",
+      "matchesWhen": "A `<lottie-player>` / `dotlottie` element or a `.json`/`.lottie` animation source.",
+      "becomes": "lottie",
+      "fallback": "Degrades to `media_image` (poster), then `code_block`."
+    },
+    {
+      "priority": 94,
+      "recognizer": "instagram_feed",
+      "matchesWhen": "An Instagram feed embed / grid of Instagram post tiles.",
+      "becomes": "instagram",
+      "fallback": "Degrades to a `gallery`, then `code_block`."
+    },
+    {
+      "priority": 93,
+      "recognizer": "svg_draw",
+      "matchesWhen": "An inline `<svg>` with strokeable paths meant to draw-on (line-art / signature / illustration).",
+      "becomes": "svg_draw",
+      "fallback": "Degrades to `media_image`, then `code_block`."
+    },
+    {
+      "priority": 92,
+      "recognizer": "testimonials",
+      "matchesWhen": "A group of ≥2 quote/review cards (quote text + author, often an avatar or star rating).",
+      "becomes": "testimonials",
+      "fallback": "Degrades to `card_grid`, then `code_block`."
+    },
+    {
+      "priority": 91,
+      "recognizer": "image_grid",
+      "matchesWhen": "A grid of ≥3 image tiles with no per-tile text (a photo gallery / masonry). Recovers a 25/50/25-style column ratio from the tile widths.",
+      "becomes": "gallery",
+      "fallback": "Degrades to stacked `media_image`, then `code_block`."
+    },
+    {
+      "priority": 91,
+      "recognizer": "counter_grid",
+      "matchesWhen": "A stats row of ≥2 big-number + label pairs (animated counters).",
+      "becomes": "counter",
+      "fallback": "Degrades to `card_grid`, then `code_block`."
+    },
+    {
+      "priority": 90,
+      "recognizer": "card_grid",
+      "matchesWhen": "A row of ≥2 feature cards (icon + title + copy). Each cell becomes an `icon_box`, carrying its per-card icon colour + badge.",
+      "becomes": "icon_box",
+      "fallback": "Degrades to stacked `text_block`s, then `code_block`."
+    },
+    {
+      "priority": 89,
+      "recognizer": "accordion",
+      "matchesWhen": "An FAQ / disclosure list (clickable summary rows revealing collapsible panels).",
+      "becomes": "accordion",
+      "fallback": "Degrades to stacked heading + text, then `code_block`."
+    },
+    {
+      "priority": 88,
+      "recognizer": "table",
+      "matchesWhen": "A real `<table>` (or an ARIA grid) of rows and cells.",
+      "becomes": "table",
+      "fallback": "Degrades to `code_block` (markup preserved)."
+    },
+    {
+      "priority": 85,
+      "recognizer": "card_grid_cs",
+      "matchesWhen": "A card grid detected from computed styles rather than utility classes (CSS-first sites).",
+      "becomes": "icon_box",
+      "fallback": "Degrades to stacked `text_block`s, then `code_block`."
+    },
+    {
+      "priority": 84,
+      "recognizer": "avatar_group",
+      "matchesWhen": "A cluster of overlapping/adjacent avatar images (a people / social-proof row).",
+      "becomes": "avatar",
+      "fallback": "Degrades to a `gallery`, then `code_block`."
+    },
+    {
+      "priority": 82,
+      "recognizer": "layout_row",
+      "matchesWhen": "A generic multi-column flex/grid row that no specialized recognizer claimed — split into native columns.",
+      "becomes": "row / columns",
+      "fallback": "Degrades to stacked blocks, then `code_block`."
+    },
+    {
+      "priority": 81,
+      "recognizer": "call_to_action",
+      "matchesWhen": "A CTA band (heading + supporting line + one or more buttons on a distinct background).",
+      "becomes": "call_to_action",
+      "fallback": "Degrades to heading + button blocks, then `code_block`."
+    },
+    {
+      "priority": 79,
+      "recognizer": "text_list",
+      "matchesWhen": "A `<ul>`/`<ol>` of text items (often check/tick-marked) — a feature / benefit list.",
+      "becomes": "feature_list",
+      "fallback": "Degrades to `text_block`, then `code_block`."
+    },
+    {
+      "priority": 76,
+      "recognizer": "badge",
+      "matchesWhen": "A small pill/label chip (padded, rounded-full, short text — a tag or status badge).",
+      "becomes": "badge",
+      "fallback": "Degrades to `text_block`, then `code_block`."
+    },
+    {
+      "priority": 75,
+      "recognizer": "badge_verbatim",
+      "matchesWhen": "A compound chip (inline + inner span) or an unusually-styled chip best preserved exactly as authored.",
+      "becomes": "code_block",
+      "fallback": "Kept verbatim (this IS the preservation path)."
+    },
+    {
+      "priority": 70,
+      "recognizer": "pill",
+      "matchesWhen": "A short eyebrow/kicker pill that sits above a heading — pulled in as the heading's overline where possible.",
+      "becomes": "special_heading (overline)",
+      "fallback": "Degrades to `text_block`, then `code_block`."
+    },
+    {
+      "priority": 60,
+      "recognizer": "button",
+      "matchesWhen": "An `<a>`/`<button>` styled as a call-to-action (utility-class button).",
+      "becomes": "button",
+      "fallback": "Degrades to a text link inside `text_block`, then `code_block`."
+    },
+    {
+      "priority": 55,
+      "recognizer": "button_cs",
+      "matchesWhen": "A button detected from computed styles (padding + background + radius) rather than classes.",
+      "becomes": "button",
+      "fallback": "Degrades to a text link, then `code_block`."
+    },
+    {
+      "priority": 45,
+      "recognizer": "video",
+      "matchesWhen": "A `<video>` / `<source>` (mp4/webm/ogv/mov) or a section whose background is a video. Backgrounds are sideloaded to the media library so the source stays editable in the Background → Video picker.",
+      "becomes": "media_video / section background video",
+      "fallback": "Degrades to a poster `media_image`, then `code_block`."
+    },
+    {
+      "priority": 40,
+      "recognizer": "image",
+      "matchesWhen": "An `<img>` / `<picture>` / a CSS `background-image` on a content block.",
+      "becomes": "media_image",
+      "fallback": "Degrades to `code_block`."
+    },
+    {
+      "priority": 35,
+      "recognizer": "image_wrapper",
+      "matchesWhen": "An image wrapped in a link / figure / decorative frame — unwrapped to the image with its frame preserved.",
+      "becomes": "media_image",
+      "fallback": "Degrades to `code_block`."
+    },
+    {
+      "priority": 30,
+      "recognizer": "image_overlay",
+      "matchesWhen": "An image with text/controls overlaid (a captioned hero tile / media card).",
+      "becomes": "media_image + icon_box",
+      "fallback": "Degrades to stacked image + text, then `code_block`."
+    },
+    {
+      "priority": 25,
+      "recognizer": "logo_strip",
+      "matchesWhen": "A row of ≥2 brand marks — `<img>` logos, inline `<svg>` logos, OR icon-font + label pairs (as-seen-in / partner strip).",
+      "becomes": "logo_grid",
+      "fallback": "Degrades to a `gallery`, then `code_block`."
+    }
   ]
 }

@@ -458,43 +458,76 @@
           "slug": "text-styles",
           "ref": "/theme/components/text-styles",
           "coverage": "populated",
-          "intro": "The **display scale** + eyebrow distilled from the source’s headings and paragraphs (`build_text_styles`) — the Display / Lead / Small roles the elements consume (this is where the type scale lands, not the Typography tab’s per-heading overrides).",
+          "storageKey": "font_sizes",
+          "optionFile": "framework/extensions/shortcodes/includes/theme-settings/components-typography.php",
+          "builderFn": "FW_Site_Converter_Stitch::build_text_styles()",
+          "outputClass": "a `.font-{slug}` (or your literal Class) per style — offered in every shortcode’s Styling → Text Style dropdown",
+          "intro": "A Text Style is a named, reusable typographic token — a size **plus** optional weight / line-height / letter-spacing / transform / colour, every field opt-in (a blank field inherits the element’s own tag). The converter distils the source’s heading + paragraph scale into a set of named styles — **Display 1…N**, **Lead**, body **buckets**, and an **Eyebrow** — each becoming a `.font-{slug}` utility. This is where the source’s type *scale* lands (not the Typography tab’s per-heading overrides).",
+          "wiringNote": "The converter measures the computed styles (`data-sc-cs`) of the source’s real h1–h6 and paragraphs, clusters them by size (largest first), and emits the distinct roles: **Display 1…N** (the big headings), **Lead** (the intro paragraph), body-size **buckets**, and an **Eyebrow** (the small uppercase label → `.font-eyebrow`). Stored under the legacy `font_sizes` key for wiring compatibility.",
+          "notes": ":::note[Every field is opt-in — blank inherits]\nA Text Style emits **only** the fields that are filled, scoped to its own class, so a blank property inherits from the element’s tag token (a blank weight is **not** thin — it keeps the heading’s weight). The converter follows the same rule: a measured weight of `400` is left **blank** (inherit), and a colour is carried **only** when it isn’t near-black/white — so a converted style overrides just what actually deviates from the source’s tag defaults.\n:::",
           "options": [
             {
-              "key": "size scale",
-              "type": "unit",
+              "group": "Style (`font_sizes` box)",
+              "key": "name",
+              "type": "text",
               "status": "native",
-              "source": "Distinct heading / display sizes from the source"
+              "source": "The role name shown in the dropdown — Display 1…N / Lead / (body bucket) / Eyebrow"
             },
             {
+              "group": "Style (`font_sizes` box)",
+              "key": "size",
+              "type": "unit-input",
+              "status": "native",
+              "source": "The measured size for that role (largest headings first)"
+            },
+            {
+              "group": "Style (`font_sizes` box)",
               "key": "weight",
               "type": "select",
               "status": "native",
-              "source": "Measured font-weight per role"
+              "source": "Measured font-weight; `400` is left blank (inherit the tag)"
             },
             {
-              "key": "line-height",
-              "type": "unit",
+              "group": "Style (`font_sizes` box)",
+              "key": "line_height",
+              "type": "text",
               "status": "native",
-              "source": "Measured line-height"
+              "source": "Measured line-height (unitless or length)"
             },
             {
-              "key": "letter-spacing",
-              "type": "unit",
+              "group": "Style (`font_sizes` box)",
+              "key": "letter_spacing",
+              "type": "unit-input",
               "status": "native",
-              "source": "Measured tracking"
+              "source": "Measured tracking (em / px)"
             },
             {
-              "key": "eyebrow style",
-              "type": "preset",
+              "group": "Style (`font_sizes` box)",
+              "key": "transform",
+              "type": "select",
               "status": "native",
-              "source": "The small uppercase label pattern when the source uses one"
+              "source": "Only the **Eyebrow** gets `uppercase`; other roles inherit"
             },
             {
-              "key": "colour",
-              "type": "colour",
+              "group": "Style (`font_sizes` box)",
+              "key": "color",
+              "type": "compact color",
+              "status": "native",
+              "source": "Carried **only** when it isn’t near-black/white"
+            },
+            {
+              "group": "Style (`font_sizes` box)",
+              "key": "class",
+              "type": "text",
+              "status": "auto",
+              "source": "Auto `.font-{slug}` (or `display-1` / `lead` / `font-eyebrow`) — the output utility class"
+            },
+            {
+              "group": "Style (`font_sizes` box)",
+              "key": "custom_css",
+              "type": "textarea (`selector`)",
               "status": "unmapped",
-              "source": "Left to the palette / element"
+              "source": "Not derived — add text-shadow / gradient-text etc. by hand"
             }
           ]
         },

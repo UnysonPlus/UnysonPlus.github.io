@@ -2188,6 +2188,667 @@
           "source": "Not set"
         }
       ]
+    },
+    {
+      "priority": 35,
+      "shortcode": "testimonials",
+      "label": "Testimonials",
+      "doc": "/docs/shortcodes/components/testimonials",
+      "recognizer": "testimonials",
+      "matchesWhen": "A review / quote block — a customer quote with a name, role, avatar, and often a star rating; one or several as a set.",
+      "blockShape": "{ rows:[{ quote, name, position, image, siteName, siteUrl, rating }] }",
+      "fallback": "Degrades to `code_block`.",
+      "recognizerNotes": "Each review becomes an item — quote, author name, role, avatar, site name/URL and star rating all map. The author/role text colour, when the source sets it, rides a scoped `custom_css`. Layout (grid / marquee / spotlight) and skin are left at defaults.",
+      "options": [
+        {
+          "key": "testimonials",
+          "tab": "Content",
+          "type": "addable-popup",
+          "status": "native",
+          "source": "One item per review — quote, author, role, avatar, rating"
+        },
+        {
+          "key": "rating",
+          "tab": "Content",
+          "type": "number",
+          "status": "native",
+          "source": "Per item: star rating (defaults to 5)"
+        },
+        {
+          "key": "author_name_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "via-css",
+          "source": "Carried via a scoped custom_css when the source sets it"
+        },
+        {
+          "key": "author_job_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "via-css",
+          "source": "Same as author name"
+        },
+        {
+          "key": "design",
+          "tab": "Design",
+          "type": "image-picker",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "layout_type",
+          "tab": "Layout",
+          "type": "multi-picker",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "grid_columns",
+          "tab": "Layout",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "avatar_shape",
+          "tab": "Design",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "avatar_size",
+          "tab": "Design",
+          "type": "unit-input",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "quote_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "bg_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "text_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "box_style",
+          "tab": "Styling",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "font_size_preset",
+          "tab": "Styling",
+          "type": "font-size",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "reviews_schema",
+          "tab": "SEO",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "spacing",
+          "tab": "Styling",
+          "type": "spacing",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "custom_css",
+          "tab": "Advanced",
+          "type": "textarea",
+          "status": "via-css",
+          "source": "Author/role colour when set on the source"
+        },
+        {
+          "key": "animation",
+          "tab": "Animations",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "css_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "css_id",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "unique_id",
+          "tab": "Advanced",
+          "type": "hidden",
+          "status": "auto",
+          "source": "Generated"
+        },
+        {
+          "key": "responsive_hide",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        },
+        {
+          "key": "custom_attrs",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        }
+      ]
+    },
+    {
+      "priority": 65,
+      "shortcode": "avatar",
+      "label": "Avatar",
+      "doc": "/docs/shortcodes/components/avatar",
+      "recognizer": "avatar",
+      "matchesWhen": "An overlapping avatar stack — a row of small round profile images with a \"+N\" counter (a \"trusted by\" / \"join N customers\" cluster).",
+      "blockShape": "{ urls:[…], extra_count }",
+      "fallback": "Degrades to `code_block`.",
+      "recognizerNotes": "Built in group mode: each source image becomes a person in the stack, and a \"+N\" more count is carried. Names are placeholders (the source rarely names each face), and shape / size / colours use defaults.",
+      "options": [
+        {
+          "key": "mode",
+          "tab": "Content",
+          "type": "multi-picker",
+          "status": "native",
+          "source": "Set to `group` (the overlapping stack)"
+        },
+        {
+          "key": "people",
+          "tab": "Content",
+          "type": "addable-popup",
+          "status": "native",
+          "source": "One entry per source avatar image"
+        },
+        {
+          "key": "extra_count",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "The \"+N\" overflow count"
+        },
+        {
+          "key": "max_visible",
+          "tab": "Content",
+          "type": "number",
+          "status": "native",
+          "source": "How many show before the \"+N\""
+        },
+        {
+          "key": "overlap",
+          "tab": "Design",
+          "type": "number",
+          "status": "unmapped",
+          "source": "Default 35%"
+        },
+        {
+          "key": "stack_order",
+          "tab": "Design",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "shape",
+          "tab": "Design",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "size",
+          "tab": "Design",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "design",
+          "tab": "Design",
+          "type": "image-picker",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "ring_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "show_status",
+          "tab": "Content",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "show_label",
+          "tab": "Content",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "spacing",
+          "tab": "Styling",
+          "type": "spacing",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "animation",
+          "tab": "Animations",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "css_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "css_id",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "custom_css",
+          "tab": "Advanced",
+          "type": "textarea",
+          "status": "unmapped",
+          "source": "Not populated"
+        },
+        {
+          "key": "unique_id",
+          "tab": "Advanced",
+          "type": "hidden",
+          "status": "auto",
+          "source": "Generated"
+        },
+        {
+          "key": "responsive_hide",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        },
+        {
+          "key": "custom_attrs",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        }
+      ]
+    },
+    {
+      "priority": 58,
+      "shortcode": "image_box",
+      "label": "Image Box",
+      "doc": "/docs/shortcodes/media-elements/image-box",
+      "recognizer": "image_box",
+      "matchesWhen": "An image paired with a title + text (a media card / feature block — image beside or above a heading and copy).",
+      "blockShape": "{ img:{ src, alt, cls }, card:{ title, titleTag, text, link } }",
+      "fallback": "Degrades to `code_block`.",
+      "recognizerNotes": "The image (with its alt), the title + heading tag, and the body text map natively. Skin (frame, overlay, hover, colours, image side/ratio) is left at defaults.",
+      "options": [
+        {
+          "key": "image",
+          "tab": "Content",
+          "type": "upload",
+          "status": "native",
+          "source": "The source image (side-loaded)"
+        },
+        {
+          "key": "image_alt",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "Alt text from the source `<img>`"
+        },
+        {
+          "key": "title",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "Card title"
+        },
+        {
+          "key": "title_tag",
+          "tab": "Content",
+          "type": "select",
+          "status": "native",
+          "source": "Source heading tag"
+        },
+        {
+          "key": "text",
+          "tab": "Content",
+          "type": "wp-editor",
+          "status": "native",
+          "source": "Card body text"
+        },
+        {
+          "key": "icon",
+          "tab": "Content",
+          "type": "icon",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "button_label",
+          "tab": "Content",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "image_style",
+          "tab": "Styling",
+          "type": "image-style-picker",
+          "status": "unmapped",
+          "source": "Not matched to an Image Style preset"
+        },
+        {
+          "key": "image_side",
+          "tab": "Layout",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "image_ratio",
+          "tab": "Layout",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "frame",
+          "tab": "Styling",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "overlay",
+          "tab": "Styling",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "hover_effect",
+          "tab": "Styling",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "box_style",
+          "tab": "Styling",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "title_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "content_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "bg_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "link_url",
+          "tab": "Link",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "spacing",
+          "tab": "Styling",
+          "type": "spacing",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "animation",
+          "tab": "Animations",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "css_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "css_id",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "custom_css",
+          "tab": "Advanced",
+          "type": "textarea",
+          "status": "unmapped",
+          "source": "Not populated"
+        },
+        {
+          "key": "unique_id",
+          "tab": "Advanced",
+          "type": "hidden",
+          "status": "auto",
+          "source": "Generated"
+        },
+        {
+          "key": "responsive_hide",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        },
+        {
+          "key": "custom_attrs",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        }
+      ]
+    },
+    {
+      "priority": 64,
+      "shortcode": "gallery",
+      "label": "Gallery",
+      "doc": "/docs/shortcodes/media-elements/gallery",
+      "recognizer": "gallery",
+      "matchesWhen": "An image gallery / grid — three or more images in a repeating grid or collage (fewer than three falls back to code).",
+      "blockShape": "{ images:[{ url, span }] }",
+      "fallback": "Degrades to `code_block` (fewer than 3 images).",
+      "recognizerNotes": "The images are mapped as the gallery’s media source (side-loaded), and each image’s column span becomes a width ratio so an uneven collage keeps its proportions. The gallery design (masonry / carousel / justified …), captions and colours use defaults.",
+      "options": [
+        {
+          "key": "source",
+          "tab": "Content",
+          "type": "multi-picker",
+          "status": "native",
+          "source": "Set to Media, holding the side-loaded images + per-image width ratio"
+        },
+        {
+          "key": "design",
+          "tab": "Design",
+          "type": "image-picker",
+          "status": "unmapped",
+          "source": "Default layout (masonry / grid / carousel…)"
+        },
+        {
+          "key": "grid",
+          "tab": "Layout",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "captions",
+          "tab": "Content",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "caption_source",
+          "tab": "Content",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "hover_zoom",
+          "tab": "Design",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "ken_burns",
+          "tab": "Design",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "bg_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "caption_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "font_size_preset",
+          "tab": "Styling",
+          "type": "font-size",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "spacing",
+          "tab": "Styling",
+          "type": "spacing",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "animation",
+          "tab": "Animations",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "css_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "css_id",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "custom_css",
+          "tab": "Advanced",
+          "type": "textarea",
+          "status": "unmapped",
+          "source": "Not populated"
+        },
+        {
+          "key": "unique_id",
+          "tab": "Advanced",
+          "type": "hidden",
+          "status": "auto",
+          "source": "Generated"
+        },
+        {
+          "key": "responsive_hide",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        },
+        {
+          "key": "custom_attrs",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        }
+      ]
     }
   ],
   "_recognizersExtraComment": "The rest of the recognizer registry (class-fw-site-converter-stitch.php `register_recognizer(id, priority, …)`), listed in the Recognizers table for a complete picture of eval order. These don't yet have a full per-option coverage page (the curated set above does) — but the recognizer rule, priority, and target shortcode are documented here. HIGHER priority runs first. Keep in sync with the code when priorities or targets change.",

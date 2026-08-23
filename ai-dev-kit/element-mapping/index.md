@@ -51,13 +51,17 @@ Two backstops guarantee no source content is lost:
 | --- | --- | --- | --- | --- | --- |
 | [Code Block](./code-block.md) | [`code_block`](/docs/shortcodes/content-elements/code-block) | ✅ 1 | 🟡 0 | ⚪ 11 | **8%** |
 | [Special Heading](./special-heading.md) | [`special_heading`](/docs/shortcodes/content-elements/special-heading) | ✅ 19 | 🟡 3 | ⚪ 13 | **54%** |
+| [Avatar](./avatar.md) | [`avatar`](/docs/shortcodes/components/avatar) | ✅ 4 | 🟡 0 | ⚪ 13 | **24%** |
+| [Gallery](./gallery.md) | [`gallery`](/docs/shortcodes/media-elements/gallery) | ✅ 1 | 🟡 0 | ⚪ 14 | **7%** |
 | [Media Video](./media-video.md) | [`media_video`](/docs/shortcodes/media-elements/media-video) | ✅ 5 | 🟡 0 | ⚪ 16 | **24%** |
 | [Media Image](./media-image.md) | [`media_image`](/docs/shortcodes/media-elements/media-image) | ✅ 1 | 🟡 1 | ⚪ 13 | **7%** |
+| [Image Box](./image-box.md) | [`image_box`](/docs/shortcodes/media-elements/image-box) | ✅ 5 | 🟡 0 | ⚪ 18 | **22%** |
 | [Icon Box](./icon-box.md) | [`icon_box`](/docs/shortcodes/components/icon-box) | ✅ 5 | 🟡 1 | ⚪ 18 | **21%** |
 | [Text Block](./text-block.md) | [`text_block`](/docs/shortcodes/content-elements/text-block) | ✅ 4 | 🟡 4 | ⚪ 11 | **21%** |
 | [Counter](./counter.md) | [`counter`](/docs/shortcodes/interactive-elements/counter) | ✅ 12 | 🟡 0 | ⚪ 7 | **63%** |
 | [Feature List](./feature-list.md) | [`feature_list`](/docs/shortcodes/components/feature-list) | ✅ 2 | 🟡 1 | ⚪ 13 | **13%** |
 | [Button](./button.md) | [`button`](/docs/shortcodes/components/button) | ✅ 6 | 🟡 1 | ⚪ 9 | **38%** |
+| [Testimonials](./testimonials.md) | [`testimonials`](/docs/shortcodes/components/testimonials) | ✅ 2 | 🟡 3 | ⚪ 15 | **10%** |
 | [Badge](./badge.md) | [`badge`](/docs/shortcodes/content-elements/badge) | ✅ 5 | 🟡 0 | ⚪ 27 | **16%** |
 | [Accordion](./accordion.md) | [`accordion`](/docs/shortcodes/interactive-elements/accordion) | ✅ 1 | 🟡 0 | ⚪ 18 | **5%** |
 | [Table](./table.md) | [`table`](/docs/shortcodes/content-elements/table) | ✅ 2 | 🟡 0 | ⚪ 21 | **9%** |
@@ -93,9 +97,12 @@ per-option coverage page; the rest document the recognizer rule and its target s
 | 76 | `badge` | A small pill/label chip (padded, rounded-full, short text — a tag or status badge). | `badge` | Degrades to `text_block`, then `code_block`. |
 | 75 | `badge_verbatim` | A compound chip (inline + inner span) or an unusually-styled chip best preserved exactly as authored. | `code_block` | Kept verbatim (this IS the preservation path). |
 | 70 | `pill` | A short eyebrow/kicker pill that sits above a heading — pulled in as the heading's overline where possible. | `special_heading (overline)` | Degrades to `text_block`, then `code_block`. |
+| 65 | `avatar` | An overlapping avatar stack — a row of small round profile images with a "+N" counter (a "trusted by" / "join N customers" cluster). | [Avatar](./avatar.md) → [`avatar`](/docs/shortcodes/components/avatar) | Degrades to `code_block`. |
+| 64 | `gallery` | An image gallery / grid — three or more images in a repeating grid or collage (fewer than three falls back to code). | [Gallery](./gallery.md) → [`gallery`](/docs/shortcodes/media-elements/gallery) | Degrades to `code_block` (fewer than 3 images). |
 | 62 | `video` | A `<video>` or a video embed (YouTube / Vimeo) that isn’t a full-screen section background. | [Media Video](./media-video.md) → [`media_video`](/docs/shortcodes/media-elements/media-video) | Degrades to `code_block`. |
 | 60 | `image` | A content `<img>` (not a background image, an icon, or part of a decomposed composite). | [Media Image](./media-image.md) → [`media_image`](/docs/shortcodes/media-elements/media-image) | Degrades to `code_block`. |
 | 60 | `button` | An `<a>`/`<button>` styled as a call-to-action (utility-class button). | `button` | Degrades to a text link inside `text_block`, then `code_block`. |
+| 58 | `image_box` | An image paired with a title + text (a media card / feature block — image beside or above a heading and copy). | [Image Box](./image-box.md) → [`image_box`](/docs/shortcodes/media-elements/image-box) | Degrades to `code_block`. |
 | 55 | `floating_card` | A floating badge/card overlaid on a hero image (an icon + title + subtitle chip), or an icon + title + text card. | [Icon Box](./icon-box.md) → [`icon_box`](/docs/shortcodes/components/icon-box) | Degrades to `code_block`. |
 | 55 | `button_cs` | A button detected from computed styles (padding + background + radius) rather than classes. | `button` | Degrades to a text link, then `code_block`. |
 | 50 | `text` | A paragraph / body-copy block (typically `<p>` or a text container) that isn't a heading, button, or other recognized primitive. Short ALL-CAPS or eyebrow-classed text is refined to an **overline** instead. | [Text Block](./text-block.md) → [`text_block`](/docs/shortcodes/content-elements/text-block) | Degrades to `code_block`. |
@@ -104,6 +111,7 @@ per-option coverage page; the rest document the recognizer rule and its target s
 | 45 | `video` | A `<video>` / `<source>` (mp4/webm/ogv/mov) or a section whose background is a video. Backgrounds are sideloaded to the media library so the source stays editable in the Background → Video picker. | `media_video / section background video` | Degrades to a poster `media_image`, then `code_block`. |
 | 40 | `button` | A `<button>`, or an `<a>` styled as a button (a `btn` / `button` / `cta` class, or button-like padding + fill). | [Button](./button.md) → [`button`](/docs/shortcodes/components/button) | Degrades to `code_block`. |
 | 40 | `image` | An `<img>` / `<picture>` / a CSS `background-image` on a content block. | `media_image` | Degrades to `code_block`. |
+| 35 | `testimonials` | A review / quote block — a customer quote with a name, role, avatar, and often a star rating; one or several as a set. | [Testimonials](./testimonials.md) → [`testimonials`](/docs/shortcodes/components/testimonials) | Degrades to `code_block`. |
 | 35 | `image_wrapper` | An image wrapped in a link / figure / decorative frame — unwrapped to the image with its frame preserved. | `media_image` | Degrades to `code_block`. |
 | 30 | `badge` | A small pill / chip / label — a short rounded element with sub-tag text, a leading/trailing icon, and an optional link (an eyebrow, a status badge, a "what’s new" chip). | [Badge](./badge.md) → [`badge`](/docs/shortcodes/content-elements/badge) | Degrades to `code_block`. |
 | 30 | `image_overlay` | An image with text/controls overlaid (a captioned hero tile / media card). | `media_image + icon_box` | Degrades to stacked image + text, then `code_block`. |

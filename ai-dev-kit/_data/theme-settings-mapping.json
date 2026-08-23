@@ -99,6 +99,102 @@
       ]
     },
     {
+      "group": "Design System",
+      "tab": "Components",
+      "slug": "components",
+      "storageKey": "button_presets · box_presets · text_styles · theme_colors · image_styles · section_style_presets · …",
+      "location": "Theme Settings → Components",
+      "coverage": "populated",
+      "intro": "Components is where the converter reproduces the source’s **design system** most heavily. Almost every preset library is **derived** from the captured DOM + computed styles and written as a fully-editable **addable-box** (not baked CSS), so the converted site carries real, reusable presets instead of the theme defaults.",
+      "recognizerNotes": "Each library links to its full reference under **[The Theme → Components](/components)**. These presets are what the converted **elements** then consume — a button on a page points at a derived Button preset, a card at a derived Box preset, a heading at a derived Text Style — so editing the preset restyles every element that uses it, site-wide.",
+      "options": [
+        {
+          "key": "button_presets",
+          "type": "addable-box",
+          "status": "native",
+          "source": "Button skin — fill, radius, padding, size — from the source’s real buttons (`build_button_presets`); a Large size preset also repoints the header CTA → [Buttons](/components/buttons)"
+        },
+        {
+          "key": "box_presets",
+          "type": "addable-box",
+          "status": "native",
+          "source": "Card / box skins clustered from the source (`build_box_presets`) → [Box Presets](/components/box-presets)"
+        },
+        {
+          "key": "text_styles · font_sizes",
+          "type": "addable-box",
+          "status": "native",
+          "source": "Display scale + eyebrow distilled from the source headings (`build_text_styles`) → [Text Styles](/components/text-styles)"
+        },
+        {
+          "key": "theme_colors",
+          "type": "addable-box",
+          "status": "native",
+          "source": "The source’s brand palette → editable [Color Presets](/components/color-presets)"
+        },
+        {
+          "key": "icon_badge_presets",
+          "type": "addable-box",
+          "status": "native",
+          "source": "The source’s icon-in-a-tile pattern → [Icon Badges](/components/icon-badges)"
+        },
+        {
+          "key": "image_styles",
+          "type": "addable-box",
+          "status": "native",
+          "source": "Radius / circle / aspect / filter from the source’s images → [Image Styles](/components/image-styles)"
+        },
+        {
+          "key": "section_style_presets",
+          "type": "addable-box",
+          "status": "native",
+          "source": "Reusable band skins clustered from the source’s sections → [Section Styles](/components/section-styles)"
+        },
+        {
+          "key": "container_width_presets",
+          "type": "addable-box",
+          "status": "native",
+          "source": "Named content-band widths (Narrow / Medium / Wide + any distinct widths the source uses) so sections share named widths"
+        },
+        {
+          "key": "background_patterns",
+          "type": "addable-box",
+          "status": "native",
+          "source": "Captured SVG / gradient decorative tiles (`build_background_patterns`) → [Background Patterns](/components/background-patterns)"
+        },
+        {
+          "key": "spacing_scale",
+          "type": "scale",
+          "status": "native",
+          "source": "The source’s spacing steps → an editable scale (`build_spacing_scale`) → [Spacing](/components/spacing)"
+        },
+        {
+          "key": "gap_scale",
+          "type": "scale",
+          "status": "native",
+          "source": "The source’s column / grid gutters → editable gap scale, off-scale gutters kept exact → [Spacing → Gaps](/components/spacing)"
+        },
+        {
+          "key": "table_presets",
+          "type": "addable-box",
+          "status": "unmapped",
+          "source": "Default — set by hand → [Table Presets](/components/table-presets)"
+        },
+        {
+          "key": "shape_dividers",
+          "type": "addable-box",
+          "status": "unmapped",
+          "source": "Decorative — set by hand → [Shape Dividers](/components/shape-dividers)"
+        },
+        {
+          "key": "element_designs",
+          "type": "addable-box",
+          "status": "unmapped",
+          "source": "Saved element skins — created in the builder → [Element Designs](/components/element-designs)"
+        }
+      ]
+    },
+    {
       "group": "General",
       "tab": "Typography & Fonts",
       "slug": "typography",

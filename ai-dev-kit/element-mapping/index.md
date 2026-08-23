@@ -54,6 +54,9 @@ Two backstops guarantee no source content is lost:
 | [Text Block](./text-block.md) | [`text_block`](/docs/shortcodes/content-elements/text-block) | ✅ 4 | 🟡 4 | ⚪ 11 | **21%** |
 | [Feature List](./feature-list.md) | [`feature_list`](/docs/shortcodes/components/feature-list) | ✅ 2 | 🟡 1 | ⚪ 13 | **13%** |
 | [Button](./button.md) | [`button`](/docs/shortcodes/components/button) | ✅ 6 | 🟡 1 | ⚪ 9 | **38%** |
+| [Badge](./badge.md) | [`badge`](/docs/shortcodes/content-elements/badge) | ✅ 5 | 🟡 0 | ⚪ 27 | **16%** |
+| [Accordion](./accordion.md) | [`accordion`](/docs/shortcodes/interactive-elements/accordion) | ✅ 1 | 🟡 0 | ⚪ 18 | **5%** |
+| [Table](./table.md) | [`table`](/docs/shortcodes/content-elements/table) | ✅ 2 | 🟡 0 | ⚪ 21 | **9%** |
 
 ## Recognizers
 
@@ -94,5 +97,8 @@ per-option coverage page; the rest document the recognizer rule and its target s
 | 40 | `button` | A `<button>`, or an `<a>` styled as a button (a `btn` / `button` / `cta` class, or button-like padding + fill). | [Button](./button.md) → [`button`](/docs/shortcodes/components/button) | Degrades to `code_block`. |
 | 40 | `image` | An `<img>` / `<picture>` / a CSS `background-image` on a content block. | `media_image` | Degrades to `code_block`. |
 | 35 | `image_wrapper` | An image wrapped in a link / figure / decorative frame — unwrapped to the image with its frame preserved. | `media_image` | Degrades to `code_block`. |
+| 30 | `badge` | A small pill / chip / label — a short rounded element with sub-tag text, a leading/trailing icon, and an optional link (an eyebrow, a status badge, a "what’s new" chip). | [Badge](./badge.md) → [`badge`](/docs/shortcodes/content-elements/badge) | Degrades to `code_block`. |
 | 30 | `image_overlay` | An image with text/controls overlaid (a captioned hero tile / media card). | `media_image + icon_box` | Degrades to stacked image + text, then `code_block`. |
+| 25 | `accordion` | A toggle / disclosure group — a set of clickable headers each revealing a panel of content (an FAQ, a details list). | [Accordion](./accordion.md) → [`accordion`](/docs/shortcodes/interactive-elements/accordion) | Degrades to `code_block`. |
 | 25 | `logo_strip` | A row of ≥2 brand marks — `<img>` logos, inline `<svg>` logos, OR icon-font + label pairs (as-seen-in / partner strip). | `logo_grid` | Degrades to a `gallery`, then `code_block`. |
+| 20 | `table` | A `<table>` with at least one row and column. | [Table](./table.md) → [`table`](/docs/shortcodes/content-elements/table) | Degrades to `code_block`. |

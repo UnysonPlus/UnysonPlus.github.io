@@ -2,7 +2,7 @@
 title: Box Presets — converter mapping
 sidebar_label: Box Presets
 slug: /theme-settings-mapping/components/box-presets
-description: How the UnysonPlus Site Converter derives the Box Presets preset library in Theme Settings → Components from a source design.
+description: How the UnysonPlus Site Converter derives the Box Presets preset library in Theme Settings → Components from a source design — every field, with coverage.
 hide_table_of_contents: true
 ---
 
@@ -18,7 +18,7 @@ Full reference: **[Box Presets](/theme/components/box-presets)** (how it’s cod
 
 ## Coverage
 
-**5/5 derived from the source** (100%) — 🟡 0 via CSS · ⚪ 0 default/manual · ⚙️ 0 auto.
+**5/5 fields derived from the source** (100%) — 🟡 0 via CSS · ⚪ 0 default/manual · ⚙️ 0 auto.
 
 | Aspect | Type | Status | Derived from / note |
 | --- | --- | --- | --- |
@@ -27,5 +27,12 @@ Full reference: **[Box Presets](/theme/components/box-presets)** (how it’s cod
 | `radius` | `unit` | ✅ Native | Corner radius |
 | `shadow` | `box-shadow` | ✅ Native | Drop shadow |
 | `padding` | `box` | ✅ Native | Inner padding |
+
+### Status legend
+
+- ✅ **Native** — Derived and written from a source signal.
+- 🟡 **Via CSS** — Reproduced via generated CSS; the native option is left empty (candidate to promote).
+- ⚪ **Unmapped** — Left at default — no source signal, or set by hand.
+- ⚙️ **Auto** — Plumbing. Excluded from the coverage percentage.
 
 ← Back to [Components](./index.md)

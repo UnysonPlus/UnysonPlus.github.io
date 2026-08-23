@@ -72,15 +72,44 @@ function writePresetsTab(tab) {
   // per-preset pages
   for (const p of tab.presets) {
     const cov = coverage(p);
-    const rows = p.options
-      .map((o) => `| \`${o.key}\` | \`${o.type}\` | ${statusCell(o.status)} | ${o.source || '—'} |`)
-      .join('\n');
+    const grouped = p.options.some((o) => o.group);
+    // Build the coverage table. When any option carries a `group`, render a Group column and
+    // insert a spanning sub-header row whenever the group label changes (reads as sections).
+    let rows;
+    if (grouped) {
+      let last = null;
+      rows = p.options
+        .map((o) => {
+          const head = o.group !== last ? ((last = o.group), `| **${o.group}** | | | |\n`) : '';
+          return `${head}| ${o.subhead ? '↳ ' : ''}\`${o.key}\` | \`${o.type}\` | ${statusCell(o.status)} | ${o.source || '—'} |`;
+        })
+        .join('\n');
+    } else {
+      rows = p.options
+        .map((o) => `| \`${o.key}\` | \`${o.type}\` | ${statusCell(o.status)} | ${o.source || '—'} |`)
+        .join('\n');
+    }
+    const tableHead = grouped
+      ? `| Group / field | Type | Status | Derived from / note |\n| --- | --- | --- | --- |`
+      : `| Aspect | Type | Status | Derived from / note |\n| --- | --- | --- | --- |`;
+
     const refLine = p.ref ? `Full reference: **[${p.name}](${p.ref})** (how it’s coded + examples).\n\n` : '';
+    // "Where it lives" table — only when the preset supplies the wiring facts.
+    const wiring = [];
+    if (p.optionFile) wiring.push(`| **Option schema** | \`${p.optionFile}\` |`);
+    if (p.builderFn) wiring.push(`| **Converter method** | \`${p.builderFn}\` |`);
+    if (p.storageKey) wiring.push(`| **Storage key** | \`${p.storageKey}\` |`);
+    if (p.outputClass) wiring.push(`| **Produces** | ${p.outputClass} |`);
+    const wiringBlock = wiring.length
+      ? `## Where it lives\n\n| | |\n| --- | --- |\n${wiring.join('\n')}\n\n${p.wiringNote ? `${p.wiringNote}\n\n` : ''}`
+      : '';
+    const notesBlock = p.notes ? `\n${p.notes}\n` : '';
+
     const md = `---
 title: ${p.name} — converter mapping
 sidebar_label: ${p.name}
 slug: /theme-settings-mapping/${tab.slug}/${p.slug}
-description: How the UnysonPlus Site Converter derives the ${p.name} preset library in Theme Settings → Components from a source design.
+description: How the UnysonPlus Site Converter derives the ${p.name} preset library in Theme Settings → Components from a source design — every field, with coverage.
 hide_table_of_contents: true
 ---
 
@@ -92,13 +121,16 @@ ${GENERATED}
 
 ${p.intro}
 
-${refLine}## Coverage
+${refLine}${wiringBlock}## Coverage
 
-**${cov.native}/${cov.denom} derived from the source** (${cov.pct}%) — ${ST['via-css'].emoji} ${cov['via-css']} via CSS · ${ST.unmapped.emoji} ${cov.unmapped} default/manual · ${ST.auto.emoji} ${cov.auto} auto.
+**${cov.native}/${cov.denom} fields derived from the source** (${cov.pct}%) — ${ST['via-css'].emoji} ${cov['via-css']} via CSS · ${ST.unmapped.emoji} ${cov.unmapped} default/manual · ${ST.auto.emoji} ${cov.auto} auto.
 
-| Aspect | Type | Status | Derived from / note |
-| --- | --- | --- | --- |
+${tableHead}
 ${rows}
+${notesBlock}
+### Status legend
+
+${Object.values(ST).map((s) => `- ${s.emoji} **${s.label}** — ${s.blurb}`).join('\n')}
 
 ← Back to [${tab.tab}](./index.md)
 `;

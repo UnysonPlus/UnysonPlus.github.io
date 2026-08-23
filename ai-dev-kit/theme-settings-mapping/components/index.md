@@ -16,11 +16,11 @@ Components is where the converter reproduces the source’s **design system** mo
 
 ## Coverage
 
-**35/38 derived from the source** (92%) across 11 preset libraries — 🟡 1 via CSS · ⚪ 2 default/manual · ⚙️ 2 auto.
+**46/54 derived from the source** (85%) across 11 preset libraries — 🟡 0 via CSS · ⚪ 8 default/manual · ⚙️ 5 auto.
 
 | Preset library | Coverage | Derived | Full reference |
 | --- | --- | --- | --- |
-| [Buttons](./buttons.md) | ✅ Populated | ✅ 7 native · 78% | [reference](/theme/components/buttons) |
+| [Buttons](./buttons.md) | ✅ Populated | ✅ 18 native · 72% | [reference](/theme/components/buttons) |
 | [Box Presets](./box-presets.md) | ✅ Populated | ✅ 5 native · 100% | [reference](/theme/components/box-presets) |
 | [Text Styles](./text-styles.md) | ✅ Populated | ✅ 5 native · 83% | [reference](/theme/components/text-styles) |
 | [Color Presets](./color-presets.md) | ✅ Populated | ✅ 1 native · 100% | [reference](/theme/components/color-presets) |

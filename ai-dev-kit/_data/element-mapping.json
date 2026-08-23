@@ -1583,6 +1583,611 @@
           "source": "Not set"
         }
       ]
+    },
+    {
+      "priority": 50,
+      "shortcode": "counter",
+      "label": "Counter",
+      "doc": "/docs/shortcodes/interactive-elements/counter",
+      "recognizer": "counter",
+      "matchesWhen": "A big animated stat — a number (often with a prefix/suffix like $ or %) shown as a \"count-up\" figure with a small label.",
+      "blockShape": "{ number, start, prefix, suffix, decimals, align, numberWeight, numberSize, numberColor, prefixSize, suffixSize, … }",
+      "fallback": "Degrades to `code_block`.",
+      "recognizerNotes": "One of the best-mapped elements: the number, start, prefix, suffix, decimals and alignment map natively, and the number/prefix/suffix typography (weight + size) and colours are carried from the source too. Only the animation timing (duration, easing, separator) is left at defaults.",
+      "options": [
+        {
+          "key": "number",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "The target figure"
+        },
+        {
+          "key": "start",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "Count-up start value"
+        },
+        {
+          "key": "prefix",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "Leading text (e.g. $)"
+        },
+        {
+          "key": "suffix",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "Trailing text (e.g. %, +)"
+        },
+        {
+          "key": "decimals",
+          "tab": "Content",
+          "type": "number",
+          "status": "native",
+          "source": "Decimal places"
+        },
+        {
+          "key": "alignment",
+          "tab": "Styling",
+          "type": "alignment",
+          "status": "native",
+          "source": "Source alignment"
+        },
+        {
+          "key": "number_font",
+          "tab": "Styling",
+          "type": "typography",
+          "status": "native",
+          "source": "Number weight + size, from the source"
+        },
+        {
+          "key": "number_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "native",
+          "source": "Number colour, from the source"
+        },
+        {
+          "key": "prefix_font",
+          "tab": "Styling",
+          "type": "typography",
+          "status": "native",
+          "source": "Prefix weight + size"
+        },
+        {
+          "key": "prefix_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "native",
+          "source": "Prefix colour"
+        },
+        {
+          "key": "suffix_font",
+          "tab": "Styling",
+          "type": "typography",
+          "status": "native",
+          "source": "Suffix weight + size"
+        },
+        {
+          "key": "suffix_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "native",
+          "source": "Suffix colour"
+        },
+        {
+          "key": "separator",
+          "tab": "Content",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default (thousands separator on)"
+        },
+        {
+          "key": "duration",
+          "tab": "Behavior",
+          "type": "number",
+          "status": "unmapped",
+          "source": "Default 2000ms"
+        },
+        {
+          "key": "easing",
+          "tab": "Behavior",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default ease-out"
+        },
+        {
+          "key": "animation",
+          "tab": "Animations",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Entrance animations default off"
+        },
+        {
+          "key": "css_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "css_id",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "custom_css",
+          "tab": "Advanced",
+          "type": "textarea",
+          "status": "unmapped",
+          "source": "Not populated"
+        },
+        {
+          "key": "unique_id",
+          "tab": "Advanced",
+          "type": "hidden",
+          "status": "auto",
+          "source": "Generated"
+        },
+        {
+          "key": "responsive_hide",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        },
+        {
+          "key": "custom_attrs",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        }
+      ]
+    },
+    {
+      "priority": 60,
+      "shortcode": "media_image",
+      "label": "Media Image",
+      "doc": "/docs/shortcodes/media-elements/media-image",
+      "recognizer": "image",
+      "matchesWhen": "A content `<img>` (not a background image, an icon, or part of a decomposed composite).",
+      "blockShape": "{ html, skinCss }",
+      "fallback": "Degrades to `code_block`.",
+      "recognizerNotes": "The image itself maps natively. When the source image has an organic radius / white border / shadow (or a blob backdrop), those ride a scoped `custom_css` (`skinCss`) so the look is reproduced without a matched Image Style preset.",
+      "options": [
+        {
+          "key": "image",
+          "tab": "Content",
+          "type": "upload",
+          "status": "native",
+          "source": "The source image (side-loaded to the Media Library)"
+        },
+        {
+          "key": "link",
+          "tab": "Content",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default — a wrapping link is not carried here"
+        },
+        {
+          "key": "target",
+          "tab": "Content",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "image_style",
+          "tab": "Styling",
+          "type": "image-style-picker",
+          "status": "unmapped",
+          "source": "Not matched to an Image Style preset"
+        },
+        {
+          "key": "width",
+          "tab": "Styling",
+          "type": "unit-input",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "height",
+          "tab": "Styling",
+          "type": "unit-input",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "size",
+          "tab": "Styling",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "bg_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "loading",
+          "tab": "Advanced",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "fetchpriority",
+          "tab": "Advanced",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "spacing",
+          "tab": "Styling",
+          "type": "spacing",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "custom_css",
+          "tab": "Advanced",
+          "type": "textarea",
+          "status": "via-css",
+          "source": "Carries the image skin (`skinCss`) — organic radius / border / shadow / blob backdrop"
+        },
+        {
+          "key": "animation",
+          "tab": "Animations",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "css_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "css_id",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "unique_id",
+          "tab": "Advanced",
+          "type": "hidden",
+          "status": "auto",
+          "source": "Generated"
+        },
+        {
+          "key": "responsive_hide",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        },
+        {
+          "key": "custom_attrs",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        }
+      ]
+    },
+    {
+      "priority": 62,
+      "shortcode": "media_video",
+      "label": "Media Video",
+      "doc": "/docs/shortcodes/media-elements/media-video",
+      "recognizer": "video",
+      "matchesWhen": "A `<video>` or a video embed (YouTube / Vimeo) that isn’t a full-screen section background.",
+      "blockShape": "{ mode:embed|self_hosted, url, poster, sources }",
+      "fallback": "Degrades to `code_block`.",
+      "recognizerNotes": "The video source is mapped — an embed URL (YouTube/Vimeo) or the self-hosted file(s) — plus the poster image. Playback options (autoplay, loop, controls, ratio) are left at defaults.",
+      "options": [
+        {
+          "key": "source",
+          "tab": "Content",
+          "type": "multi-picker",
+          "status": "native",
+          "source": "Detected mode: embed vs self-hosted"
+        },
+        {
+          "key": "url",
+          "tab": "Content",
+          "type": "text",
+          "status": "native",
+          "source": "Embed URL (YouTube / Vimeo)"
+        },
+        {
+          "key": "video_file",
+          "tab": "Content",
+          "type": "upload",
+          "status": "native",
+          "source": "Self-hosted MP4 (when not an embed)"
+        },
+        {
+          "key": "video_webm",
+          "tab": "Content",
+          "type": "upload",
+          "status": "native",
+          "source": "Self-hosted WebM (when present)"
+        },
+        {
+          "key": "poster",
+          "tab": "Content",
+          "type": "upload",
+          "status": "native",
+          "source": "Poster / thumbnail image"
+        },
+        {
+          "key": "ratio",
+          "tab": "Styling",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "object_fit",
+          "tab": "Styling",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "controls",
+          "tab": "Behavior",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "autoplay",
+          "tab": "Behavior",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "loop",
+          "tab": "Behavior",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "muted",
+          "tab": "Behavior",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "playsinline",
+          "tab": "Behavior",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "preload",
+          "tab": "Behavior",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "youtube_nocookie",
+          "tab": "Behavior",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "lazy_facade",
+          "tab": "Behavior",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "bg_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "spacing",
+          "tab": "Styling",
+          "type": "spacing",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "animation",
+          "tab": "Animations",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "css_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "css_id",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "custom_css",
+          "tab": "Advanced",
+          "type": "textarea",
+          "status": "unmapped",
+          "source": "Not populated"
+        },
+        {
+          "key": "unique_id",
+          "tab": "Advanced",
+          "type": "hidden",
+          "status": "auto",
+          "source": "Generated"
+        },
+        {
+          "key": "responsive_hide",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        },
+        {
+          "key": "custom_attrs",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        }
+      ]
+    },
+    {
+      "priority": 99,
+      "shortcode": "code_block",
+      "label": "Code Block",
+      "doc": "/docs/shortcodes/content-elements/code-block",
+      "recognizer": "code (universal fallback)",
+      "matchesWhen": "Anything the converter can’t map to a more specific element — the genuinely bespoke markup. This is the **universal fallback**, so nothing is ever lost.",
+      "blockShape": "{ html }",
+      "fallback": "— (this is the fallback).",
+      "recognizerNotes": "Holds the source markup verbatim in the `code` field (rendered as HTML, not shown as source). Everything a hand-fix would touch lands here; a systematic fallback is a signal to teach the converter a new recognizer so it becomes a native element next time.",
+      "options": [
+        {
+          "key": "code",
+          "tab": "Content",
+          "type": "textarea",
+          "status": "native",
+          "source": "The verbatim source markup"
+        },
+        {
+          "key": "render_as_code",
+          "tab": "Content",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default off — rendered as HTML"
+        },
+        {
+          "key": "code_language",
+          "tab": "Content",
+          "type": "select",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "beautify",
+          "tab": "Content",
+          "type": "switch",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "bg_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "text_color",
+          "tab": "Styling",
+          "type": "color",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "font_size_preset",
+          "tab": "Styling",
+          "type": "font-size",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "spacing",
+          "tab": "Styling",
+          "type": "spacing",
+          "status": "unmapped",
+          "source": "Default"
+        },
+        {
+          "key": "animation",
+          "tab": "Animations",
+          "type": "group",
+          "status": "unmapped",
+          "source": "Default off"
+        },
+        {
+          "key": "css_class",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "css_id",
+          "tab": "Advanced",
+          "type": "text",
+          "status": "unmapped",
+          "source": "Default empty"
+        },
+        {
+          "key": "custom_css",
+          "tab": "Advanced",
+          "type": "textarea",
+          "status": "unmapped",
+          "source": "Not populated"
+        },
+        {
+          "key": "unique_id",
+          "tab": "Advanced",
+          "type": "hidden",
+          "status": "auto",
+          "source": "Generated"
+        },
+        {
+          "key": "responsive_hide",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        },
+        {
+          "key": "custom_attrs",
+          "tab": "Advanced",
+          "type": "group",
+          "status": "auto",
+          "source": "Not set"
+        }
+      ]
     }
   ],
   "_recognizersExtraComment": "The rest of the recognizer registry (class-fw-site-converter-stitch.php `register_recognizer(id, priority, …)`), listed in the Recognizers table for a complete picture of eval order. These don't yet have a full per-option coverage page (the curated set above does) — but the recognizer rule, priority, and target shortcode are documented here. HIGHER priority runs first. Keep in sync with the code when priorities or targets change.",

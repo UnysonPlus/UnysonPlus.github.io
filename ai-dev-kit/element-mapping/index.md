@@ -49,9 +49,13 @@ Two backstops guarantee no source content is lost:
 
 | Shortcode | Becomes | Native | Via CSS | Unmapped | Coverage |
 | --- | --- | --- | --- | --- | --- |
+| [Code Block](./code-block.md) | [`code_block`](/docs/shortcodes/content-elements/code-block) | ✅ 1 | 🟡 0 | ⚪ 11 | **8%** |
 | [Special Heading](./special-heading.md) | [`special_heading`](/docs/shortcodes/content-elements/special-heading) | ✅ 19 | 🟡 3 | ⚪ 13 | **54%** |
+| [Media Video](./media-video.md) | [`media_video`](/docs/shortcodes/media-elements/media-video) | ✅ 5 | 🟡 0 | ⚪ 16 | **24%** |
+| [Media Image](./media-image.md) | [`media_image`](/docs/shortcodes/media-elements/media-image) | ✅ 1 | 🟡 1 | ⚪ 13 | **7%** |
 | [Icon Box](./icon-box.md) | [`icon_box`](/docs/shortcodes/components/icon-box) | ✅ 5 | 🟡 1 | ⚪ 18 | **21%** |
 | [Text Block](./text-block.md) | [`text_block`](/docs/shortcodes/content-elements/text-block) | ✅ 4 | 🟡 4 | ⚪ 11 | **21%** |
+| [Counter](./counter.md) | [`counter`](/docs/shortcodes/interactive-elements/counter) | ✅ 12 | 🟡 0 | ⚪ 7 | **63%** |
 | [Feature List](./feature-list.md) | [`feature_list`](/docs/shortcodes/components/feature-list) | ✅ 2 | 🟡 1 | ⚪ 13 | **13%** |
 | [Button](./button.md) | [`button`](/docs/shortcodes/components/button) | ✅ 6 | 🟡 1 | ⚪ 9 | **38%** |
 | [Badge](./badge.md) | [`badge`](/docs/shortcodes/content-elements/badge) | ✅ 5 | 🟡 0 | ⚪ 27 | **16%** |
@@ -65,6 +69,7 @@ per-option coverage page; the rest document the recognizer rule and its target s
 
 | Priority | Recognizer | Matches when | Becomes | Fallback |
 | --- | --- | --- | --- | --- |
+| 99 | `code (universal fallback)` | Anything the converter can’t map to a more specific element — the genuinely bespoke markup. This is the **universal fallback**, so nothing is ever lost. | [Code Block](./code-block.md) → [`code_block`](/docs/shortcodes/content-elements/code-block) | — (this is the fallback). |
 | 99 | `pricing_table` | A row of ≥2 price cards (each with a plan name, a currency-prefixed amount, and a feature list / CTA). | `pricing_table` | Degrades to a `card_grid` of columns, then `code_block`. |
 | 98 | `steps` | An ordered how-it-works / process sequence (numbered badges + title + blurb per step). | `steps` | Degrades to `card_grid`, then `code_block`. |
 | 97 | `timeline` | A vertical timeline (dated / connector-line entries down a spine). | `timeline` | Degrades to `card_grid`, then `code_block`. |
@@ -88,10 +93,13 @@ per-option coverage page; the rest document the recognizer rule and its target s
 | 76 | `badge` | A small pill/label chip (padded, rounded-full, short text — a tag or status badge). | `badge` | Degrades to `text_block`, then `code_block`. |
 | 75 | `badge_verbatim` | A compound chip (inline + inner span) or an unusually-styled chip best preserved exactly as authored. | `code_block` | Kept verbatim (this IS the preservation path). |
 | 70 | `pill` | A short eyebrow/kicker pill that sits above a heading — pulled in as the heading's overline where possible. | `special_heading (overline)` | Degrades to `text_block`, then `code_block`. |
+| 62 | `video` | A `<video>` or a video embed (YouTube / Vimeo) that isn’t a full-screen section background. | [Media Video](./media-video.md) → [`media_video`](/docs/shortcodes/media-elements/media-video) | Degrades to `code_block`. |
+| 60 | `image` | A content `<img>` (not a background image, an icon, or part of a decomposed composite). | [Media Image](./media-image.md) → [`media_image`](/docs/shortcodes/media-elements/media-image) | Degrades to `code_block`. |
 | 60 | `button` | An `<a>`/`<button>` styled as a call-to-action (utility-class button). | `button` | Degrades to a text link inside `text_block`, then `code_block`. |
 | 55 | `floating_card` | A floating badge/card overlaid on a hero image (an icon + title + subtitle chip), or an icon + title + text card. | [Icon Box](./icon-box.md) → [`icon_box`](/docs/shortcodes/components/icon-box) | Degrades to `code_block`. |
 | 55 | `button_cs` | A button detected from computed styles (padding + background + radius) rather than classes. | `button` | Degrades to a text link, then `code_block`. |
 | 50 | `text` | A paragraph / body-copy block (typically `<p>` or a text container) that isn't a heading, button, or other recognized primitive. Short ALL-CAPS or eyebrow-classed text is refined to an **overline** instead. | [Text Block](./text-block.md) → [`text_block`](/docs/shortcodes/content-elements/text-block) | Degrades to `code_block`. |
+| 50 | `counter` | A big animated stat — a number (often with a prefix/suffix like $ or %) shown as a "count-up" figure with a small label. | [Counter](./counter.md) → [`counter`](/docs/shortcodes/interactive-elements/counter) | Degrades to `code_block`. |
 | 45 | `list` | A `<ul>` or `<ol>` list — bulleted, numbered, or an icon list. | [Feature List](./feature-list.md) → [`feature_list`](/docs/shortcodes/components/feature-list) | Degrades to `code_block` (an empty list). |
 | 45 | `video` | A `<video>` / `<source>` (mp4/webm/ogv/mov) or a section whose background is a video. Backgrounds are sideloaded to the media library so the source stays editable in the Background → Video picker. | `media_video / section background video` | Degrades to a poster `media_image`, then `code_block`. |
 | 40 | `button` | A `<button>`, or an `<a>` styled as a button (a `btn` / `button` / `cta` class, or button-like padding + fill). | [Button](./button.md) → [`button`](/docs/shortcodes/components/button) | Degrades to `code_block`. |

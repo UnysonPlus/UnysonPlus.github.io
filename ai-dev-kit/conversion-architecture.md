@@ -133,6 +133,10 @@ Inside each kept section, every block is assigned a **role**, which maps to a sh
 The mapper learns from your review corrections, so repeated conversions get better at the
 auto‑detected roles.
 
+Once a block is a shortcode, its **options** are filled in through two reusable frameworks — a
+**preset registry** for preset-backed options and a **declarative table** for intrinsic scalars —
+rather than a detector per option. See **[How Options Map](./option-mapping.md)**.
+
 ### The navigation mapper
 
 Rather than emit a framework‑specific menu, the converter extracts the source nav into a neutral

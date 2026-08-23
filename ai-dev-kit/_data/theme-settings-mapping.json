@@ -692,31 +692,76 @@
           "slug": "image-styles",
           "ref": "/theme/components/image-styles",
           "coverage": "populated",
-          "intro": "Radius / circle / aspect / filter from the source’s images (`build_image_styles`) → reusable image treatments.",
+          "storageKey": "image_styles",
+          "optionFile": "framework/extensions/shortcodes/includes/theme-settings/components-image-styles.php",
+          "builderFn": "FW_Site_Converter_Stitch::build_image_styles()",
+          "outputClass": "a `.imgs-{slug}` class per style — pick it on any element with an image (Styling → Image Style)",
+          "intro": "An Image Style is a reusable image treatment applied as a scoped `.imgs-{slug}` class — crop / aspect, corner radius or circle, shape masks, a CSS filter (incl. a duotone tint), and a legibility scrim. The converter reads the source’s images, clusters them by shape + crop + filter, and derives named styles.",
+          "wiringNote": "The converter clusters the source images by **(radius-or-circle · aspect · filter)**, names each cluster by its dominant trait (Circle / Monochrome / Square / Wide / Portrait / Rounded), and fills the crop + radius/circle + filter. Decorative **masks** (hexagon / blob / arch…), the **duotone tint**, the **scrim** and one-off CSS are left for you to add — they’re rarely reproducible from a photo alone.",
+          "notes": ":::note[What’s detected vs. left manual]\nThe converter reproduces the treatments it can read off the rendered image — the **crop ratio**, a **circle / rounded** corner, and a **CSS filter** (grayscale, sepia, etc.). It does **not** guess decorative **shape masks**, a **duotone** tint colour, or a caption **scrim**, since those aren’t reliably inferable — pick them on the preset if the source uses them.\n:::",
           "options": [
             {
+              "group": "Style (`image_styles` box)",
+              "key": "style_name",
+              "type": "text",
+              "status": "native",
+              "source": "Auto-named by the dominant trait — Circle / Monochrome / Square / Wide / Portrait / Rounded"
+            },
+            {
+              "group": "Style (`image_styles` box)",
+              "key": "aspect",
+              "type": "select",
+              "status": "native",
+              "source": "The source crop ratio (object-fit: cover); Auto keeps native"
+            },
+            {
+              "group": "Style (`image_styles` box)",
               "key": "radius",
-              "type": "unit",
+              "type": "text",
               "status": "native",
-              "source": "Corner radius"
+              "source": "Corner radius (blank when the image is a circle)"
             },
             {
-              "key": "circle",
-              "type": "toggle",
+              "group": "Style (`image_styles` box)",
+              "key": "mask",
+              "type": "multi-picker",
               "status": "native",
-              "source": "Fully-round crop when the source uses it"
+              "source": "`circle` when the source image is round, else `none`; decorative masks (hexagon / blob / arch…) aren’t auto-detected"
             },
             {
-              "key": "aspect ratio",
-              "type": "ratio",
-              "status": "native",
-              "source": "Fixed aspect when detected"
-            },
-            {
+              "group": "Style (`image_styles` box)",
               "key": "filter",
-              "type": "css-filter",
+              "type": "select",
               "status": "native",
-              "source": "Grayscale / brightness etc. when present"
+              "source": "grayscale / sepia / contrast / saturate / blur, from the source"
+            },
+            {
+              "group": "Style (`image_styles` box)",
+              "key": "duo_color",
+              "type": "compact color",
+              "status": "unmapped",
+              "source": "Only used by the Duotone filter — set by hand"
+            },
+            {
+              "group": "Style (`image_styles` box)",
+              "key": "scrim",
+              "type": "select",
+              "status": "unmapped",
+              "source": "Legibility scrim — set by hand (default none)"
+            },
+            {
+              "group": "Style (`image_styles` box)",
+              "key": "scrim_color",
+              "type": "compact color",
+              "status": "unmapped",
+              "source": "Set by hand"
+            },
+            {
+              "group": "Style (`image_styles` box)",
+              "key": "custom_css",
+              "type": "code-editor ({{SELECTOR}})",
+              "status": "unmapped",
+              "source": "Not derived — one-off image CSS by hand"
             }
           ]
         },

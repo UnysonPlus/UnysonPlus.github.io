@@ -12,16 +12,34 @@ hide_table_of_contents: true
 
 **Theme Settings → Components → Container Widths** · ✅ Populated
 
-Named content-band widths gathered from the source (`build_container_width_presets`) — Narrow / Medium / Wide plus any distinct widths the site uses, so converted sections reference **shared named widths** instead of one-off numbers.
+Container Widths is a library of reusable **named content-band widths** you pick on a Section (Layout → Container Width) to constrain its content narrower than the global width. The converter gathers the source’s distinct content max-widths and adds them here, so a whole converted site shares **named** widths instead of repeating a raw number.
+
+Full reference: **[Container Widths](/theme/components/section-styles)** (how it’s coded + examples).
+
+## Where it lives
+
+| | |
+| --- | --- |
+| **Option schema** | `framework/extensions/shortcodes/includes/theme-settings/components-section-styles.php (below Section Styles)` |
+| **Converter method** | `FW_Site_Converter_Stitch::build_container_width_presets()` |
+| **Storage key** | `container_width_presets` |
+| **Produces** | a named content-band width per preset — pick it on a Section (Layout → Container Width) |
+
+The converter collects every distinct content max-width the source uses, snaps each to the nearest **standard** step within ±10px — Small 640 / Prose 672 / Narrow 768 / Medium 896 / Wide 1024 / Wide L 1152 / Wide XL 1280 / Wide XXL 1440 — and names it accordingly; a width that isn’t standard becomes a `Content NNN` preset. Sections then reference the shared named width, so changing it once updates every section that uses it.
 
 ## Coverage
 
 **2/2 fields derived from the source** (100%) — 🟡 0 via CSS · ⚪ 0 default/manual · ⚙️ 0 auto.
 
-| Aspect | Type | Status | Derived from / note |
+| Group / field | Type | Status | Derived from / note |
 | --- | --- | --- | --- |
-| `Narrow / Medium / Wide` | `unit` | ✅ Native | The recurring content widths, named |
-| `distinct source widths` | `unit` | ✅ Native | Any extra widths the source uses, added as named presets |
+| **Width (`container_width_presets` box)** | | | |
+| `width_name` | `text` | ✅ Native | Named from the source width — the standard map (Small / Prose / Narrow / Medium / Wide / …) or `Content NNN` for a non-standard width |
+| `width` | `unit-input` | ✅ Native | The source’s distinct content max-width |
+
+:::info[Why named widths matter]
+Reusing **named** widths (rather than a one-off px value per section) means a converted site behaves like a hand-built one: adjust “Medium” once in Theme Settings and every Medium section re-flows. The three defaults (Narrow / Medium / Wide) match the built-ins, so sections that resolve to those render unchanged.
+:::
 
 ### Status legend
 

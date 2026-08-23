@@ -16,7 +16,7 @@ Components is where the converter reproduces the source’s **design system** mo
 
 ## Coverage
 
-**61/79 derived from the source** (77%) across 11 preset libraries — 🟡 0 via CSS · ⚪ 18 default/manual · ⚙️ 12 auto.
+**64/84 derived from the source** (76%) across 11 preset libraries — 🟡 0 via CSS · ⚪ 20 default/manual · ⚙️ 14 auto.
 
 | Preset library | Coverage | Derived | Full reference |
 | --- | --- | --- | --- |
@@ -26,8 +26,8 @@ Components is where the converter reproduces the source’s **design system** mo
 | [Color Presets](./color-presets.md) | ✅ Populated | ✅ 1 native · 100% | [reference](/theme/components/color-presets) |
 | [Icon Badges](./icon-badges.md) | ✅ Populated | ✅ 10 native · 71% | [reference](/theme/components/icon-badges) |
 | [Image Styles](./image-styles.md) | ✅ Populated | ✅ 5 native · 56% | [reference](/theme/components/image-styles) |
-| [Section Styles](./section-styles.md) | ✅ Populated | ✅ 3 native · 100% | [reference](/theme/components/section-styles) |
-| [Container Widths](./container-widths.md) | ✅ Populated | ✅ 2 native · 100% | — |
+| [Section Styles](./section-styles.md) | ✅ Populated | ✅ 6 native · 75% | [reference](/theme/components/section-styles) |
+| [Container Widths](./container-widths.md) | ✅ Populated | ✅ 2 native · 100% | [reference](/theme/components/section-styles) |
 | [Background Patterns](./background-patterns.md) | ✅ Populated | ✅ 1 native · 100% | [reference](/theme/components/background-patterns) |
 | [Spacing](./spacing.md) | ✅ Populated | ✅ 1 native · 100% | [reference](/theme/components/spacing) |
 | [Gaps](./gaps.md) | ✅ Populated | ✅ 2 native · 100% | [reference](/theme/components/spacing) |

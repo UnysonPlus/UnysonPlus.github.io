@@ -3,6 +3,11 @@ option-types:
   permalink: /option-types
   description: Decisions about the framework's option-type controls
 
+spacing:
+  label: Spacing
+  permalink: /spacing
+  description: The spacing / gap scales and the margin-padding rhythm
+
 color:
   label: Color
   permalink: /color

@@ -324,37 +324,132 @@
           "slug": "box-presets",
           "ref": "/theme/components/box-presets",
           "coverage": "populated",
-          "intro": "Reusable card / box skins clustered from the source (`build_box_presets`) — every repeated “card” look becomes one editable Box preset.",
+          "storageKey": "border_presets",
+          "optionFile": "framework/extensions/shortcodes/includes/theme-settings/components-box.php (schema in framework/includes/option-types/border-presets/)",
+          "builderFn": "FW_Site_Converter_Stitch::build_box_presets()",
+          "outputClass": "a `.boxp-{slug}` class per preset — pick it on a Column (Styling → Box Preset), a Table (Table Options → Frame), or a Countdown",
+          "intro": "A Box Preset is a reusable **card skin** — background fill, border, corner radius, padding, box-shadow, and a hover treatment — that any Column, Table frame or Countdown can point at. The converter clusters the source’s repeated “card” looks into named presets and fills the fill + border + radius + shadow, plus the hover skin and hover effects.",
+          "wiringNote": "Each preset carries a **Default** and a **Hover** state (the fill + border skin), shared geometry (corner radius, sides, padding), a transition, and a hover-effects list. The converter only makes a preset for a card that **deviates** from the page base; near-identical cards cluster into one, so you get a handful of named card styles instead of dozens of one-offs.",
+          "notes": ":::note[Padding is intentionally left to the Column]\nThe converter leaves the preset’s **Padding** empty. A card’s inner padding is usually set by the Column it’s on (Styling → Margin & Padding), which overrides the preset — so filling it here would fight the column. The preset stays a pure *skin*.\n:::\n\n:::info[Tier-3 effects go to Custom CSS]\nA native `hover_fx` covers the common hovers — **`lift`** (a translate-Y) and **`glow`** (a shadow). Effects the native fields can’t express — a frosted `backdrop-filter`, or a hover **`scale`** — are injected into the preset’s **Custom CSS** instead, so the look is reproduced without a bespoke field.\n:::",
           "options": [
             {
+              "group": "Preset · Identity (`shared_top`)",
+              "key": "preset_name",
+              "type": "text",
+              "status": "native",
+              "source": "The card name — clustered from the source’s repeated card looks (or `Box <hash>`) → the `.boxp-{slug}` class"
+            },
+            {
+              "group": "Preset · Identity (`shared_top`)",
+              "key": "slug",
+              "type": "unique",
+              "status": "auto",
+              "source": "Auto from the name → the `.boxp-{slug}` class suffix"
+            },
+            {
+              "group": "Preset · State: Default",
               "key": "background",
-              "type": "colour",
+              "type": "background-pro (color / gradient / image)",
               "status": "native",
-              "source": "Card background fill"
+              "source": "The card’s background fill"
             },
             {
-              "key": "border",
-              "type": "border",
+              "group": "Preset · State: Default",
+              "key": "border_style",
+              "type": "short-select",
               "status": "native",
-              "source": "Width / style / colour"
+              "source": "`solid` when the source card has a border"
             },
             {
-              "key": "radius",
-              "type": "unit",
+              "group": "Preset · State: Default",
+              "key": "border_width",
+              "type": "unit-input",
               "status": "native",
-              "source": "Corner radius"
+              "source": "Carried when the source card has a border"
             },
             {
-              "key": "shadow",
+              "group": "Preset · State: Default",
+              "key": "border_color",
+              "type": "compact color",
+              "status": "native",
+              "source": "Carried when the source card has a border"
+            },
+            {
+              "group": "Preset · State: Default",
+              "key": "box_shadow",
+              "type": "box-shadow (X/Y/blur/spread/color/inset)",
+              "status": "native",
+              "source": "Carried when the source card has a drop shadow"
+            },
+            {
+              "group": "Preset · State: Hover",
+              "key": "background",
+              "type": "background-pro",
+              "status": "native",
+              "source": "The hover fill, when the card changes on hover"
+            },
+            {
+              "group": "Preset · State: Hover",
+              "key": "border_color",
+              "type": "compact color",
+              "status": "native",
+              "source": "The hover border colour, when present"
+            },
+            {
+              "group": "Preset · State: Hover",
+              "key": "box_shadow",
               "type": "box-shadow",
               "status": "native",
-              "source": "Drop shadow"
+              "source": "The hover shadow, when present"
             },
             {
-              "key": "padding",
-              "type": "box",
+              "group": "Preset · State: Hover",
+              "key": "border_style · border_width",
+              "type": "—",
+              "status": "unmapped",
+              "source": "Left at the Default value on hover"
+            },
+            {
+              "group": "Preset · Shared (`shared_bottom`)",
+              "key": "border_radius",
+              "type": "unit-input",
               "status": "native",
-              "source": "Inner padding"
+              "source": "Corner radius from the source card"
+            },
+            {
+              "group": "Preset · Shared (`shared_bottom`)",
+              "key": "border_sides",
+              "type": "short-select",
+              "status": "auto",
+              "source": "Always `all` — the converter doesn’t infer per-side borders"
+            },
+            {
+              "group": "Preset · Shared (`shared_bottom`)",
+              "key": "padding",
+              "type": "spacing (per-side)",
+              "status": "unmapped",
+              "source": "Left empty — the Column’s own Margin & Padding controls it (see note)"
+            },
+            {
+              "group": "Preset · Shared (`shared_bottom`)",
+              "key": "transition",
+              "type": "short-text (ms)",
+              "status": "auto",
+              "source": "Fixed at `200` ms"
+            },
+            {
+              "group": "Preset · Shared (`shared_bottom`)",
+              "key": "hover_fx",
+              "type": "multi-select",
+              "status": "native",
+              "source": "Derived: `lift` (translate-Y) and/or `glow` (shadow) from the source’s hover"
+            },
+            {
+              "group": "Preset · Shared (`shared_bottom`)",
+              "key": "custom_css",
+              "type": "code-editor ({{SELECTOR}})",
+              "status": "auto",
+              "source": "Tier-3 effects the native fields can’t express — a frosted `backdrop-filter`, a hover `scale` — are injected here"
             }
           ]
         },

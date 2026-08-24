@@ -29,9 +29,9 @@ Each source toggle becomes an accordion panel (its header → the tab title, its
 
 ## Option coverage
 
-**12/28 options mapped natively** (43%) — 🟡 0 via CSS · ⚠️ 6 gaps (derivable, not yet) · ⚪ 10 default · ⚙️ 3 auto.
+**17/28 options mapped natively** (61%) — 🟡 0 via CSS · ⚠️ 1 gap (derivable, not yet) · ⚪ 10 default · ⚙️ 3 auto.
 
-:::tip[6 derivable gaps]
+:::tip[1 derivable gap]
 The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
 :::
 
@@ -50,12 +50,12 @@ The ⚠️ rows below are options a source realistically expresses that the conv
 | `faq_schema` | SEO | `switch` | ✅ Native | Enabled when a schema.org FAQPage covers the questions — re-emits the FAQ structured data |
 | `initially_open` | Content | `select` | ✅ Native | Initial open state — details[open] / aria-expanded="true" on the open panel (per-tab is_open + initially_open) |
 | `title_tag` | Content | `select` | ✅ Native | The header heading level (h2–h6) when the toggle is wrapped in a real heading |
-| `content_bg_color` | Styling | `compact color` | ⚠️ Gap | Derivable — computed panel background |
-| `multiple_open` | Behavior | `switch` | ⚠️ Gap | Derivable — Bootstrap data-bs-parent (single-open vs independent) |
-| `collapsible` | Behavior | `switch` | ⚠️ Gap | Derivable — data-bs-parent / whether all panels can close |
-| `tab_title_color` | Styling | `compact color` | ⚠️ Gap | Derivable — computed header text colour → nearest preset |
-| `tab_content_color` | Styling | `compact color` | ⚠️ Gap | Derivable — computed panel text colour → nearest preset |
-| `icon_closed_color` | Styling | `compact color` | ⚠️ Gap | Derivable — computed marker colour |
+| `content_bg_color` | Styling | `compact color` | ✅ Native | Computed panel (content) background fill |
+| `multiple_open` | Behavior | `switch` | ✅ Native | <details> group opens independently (yes) vs Bootstrap data-bs-parent single-open (no) |
+| `collapsible` | Behavior | `switch` | ⚠️ Gap | No reliable static signal (Bootstrap panels are collapsible by default) — left as a gap |
+| `tab_title_color` | Styling | `compact color` | ✅ Native | Computed header text colour (when not the default near-black) |
+| `tab_content_color` | Styling | `compact color` | ✅ Native | Computed panel text colour (when not the default near-black) |
+| `icon_closed_color` | Styling | `compact color` | ✅ Native | Computed marker/icon colour |
 | `numbering` | Design | `multi-picker` | ⚪ Unmapped | Default — UnysonPlus item numbering, not a source signal |
 | `hash_linking` | Behavior | `switch` | ⚪ Unmapped | Default |
 | `show_expand_collapse_all` | Behavior | `switch` | ⚪ Unmapped | Default |

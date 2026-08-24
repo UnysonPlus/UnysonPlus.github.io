@@ -1186,43 +1186,43 @@
      "key": "content_bg_color",
      "tab": "Styling",
      "type": "compact color",
-     "status": "gap",
-     "source": "Derivable — computed panel background"
+     "status": "native",
+     "source": "Computed panel (content) background fill"
     },
     {
      "key": "multiple_open",
      "tab": "Behavior",
      "type": "switch",
-     "status": "gap",
-     "source": "Derivable — Bootstrap data-bs-parent (single-open vs independent)"
+     "status": "native",
+     "source": "<details> group opens independently (yes) vs Bootstrap data-bs-parent single-open (no)"
     },
     {
      "key": "collapsible",
      "tab": "Behavior",
      "type": "switch",
      "status": "gap",
-     "source": "Derivable — data-bs-parent / whether all panels can close"
+     "source": "No reliable static signal (Bootstrap panels are collapsible by default) — left as a gap"
     },
     {
      "key": "tab_title_color",
      "tab": "Styling",
      "type": "compact color",
-     "status": "gap",
-     "source": "Derivable — computed header text colour → nearest preset"
+     "status": "native",
+     "source": "Computed header text colour (when not the default near-black)"
     },
     {
      "key": "tab_content_color",
      "tab": "Styling",
      "type": "compact color",
-     "status": "gap",
-     "source": "Derivable — computed panel text colour → nearest preset"
+     "status": "native",
+     "source": "Computed panel text colour (when not the default near-black)"
     },
     {
      "key": "icon_closed_color",
      "tab": "Styling",
      "type": "compact color",
-     "status": "gap",
-     "source": "Derivable — computed marker colour"
+     "status": "native",
+     "source": "Computed marker/icon colour"
     },
     {
      "key": "numbering",

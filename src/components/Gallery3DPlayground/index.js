@@ -275,6 +275,23 @@ const DESIGNS = {
       sl('padding', 'Padding (%)', 6, 0, 20, 0.5),
     ],
   },
+  hero_reel: {
+    group: 'Carousel & Flow',
+    label: 'Hero Reel',
+    blurb: 'A reel of thumbnail cards over a full-bleed hero background. The card stepping through the centre is the active one — it scales up and lifts, and its image fills the whole stage as a dimmed, slowly-zooming (Ken Burns) hero behind the reel, cross-fading as the reel advances.',
+    controls: [
+      sl('card_size', 'Card Size (%)', 18, 8, 40),
+      sl('card_spacing', 'Card Spacing (%)', 4, 0, 20, 0.5),
+      sl('active_scale', 'Active Scale (%)', 112, 100, 160),
+      sl('active_lift', 'Active Lift (%)', 8, 0, 30),
+      sl('hero_opacity', 'Hero Opacity (%)', 55, 0, 100),
+      sl('ken_burns', 'Ken Burns (%)', 60, 0, 100),
+      sl('hold', 'Hold (%)', 55, 0, 100),
+      ...SHARED({drive: 'continuous', speed: 24, ratio: '4-3', corner: 8, dir: 'left',
+        driveChoices: [['continuous', 'Continuous'], ['static', 'Static']],
+        dirChoices: [['left', 'Left'], ['right', 'Right']]}),
+    ],
+  },
 };
 
 const GROUP_ORDER = ['3D & Perspective', 'Carousel & Flow'];

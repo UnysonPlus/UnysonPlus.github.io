@@ -15,7 +15,7 @@ hide_table_of_contents: true
 | Function | Summary |
 | --- | --- |
 | [`fw_ext_portfolio`](#fw_ext_portfolio) | Convenience accessor for the portfolio extension instance. |
-| [`fw_ext_portfolio_get_gallery_images`](#fw_ext_portfolio_get_gallery_images) | — |
+| [`fw_ext_portfolio_get_gallery_images`](#fw_ext_portfolio_get_gallery_images) | Returns the saved project-gallery images for a portfolio post, or an empty array. |
 | [`fw_ext_portfolio_get_project_meta`](#fw_ext_portfolio_get_project_meta) | Read a project's "Project Details" meta (client, URL, date, services, summary, featured). Returns raw saved values; rendering helpers escape. |
 | [`fw_ext_portfolio_get_related`](#fw_ext_portfolio_get_related) | Query projects related to the given one (sharing a portfolio category). Falls back to the most recent projects when none share a category. |
 | [`fw_ext_portfolio_grid_attrs`](#fw_ext_portfolio_grid_attrs) | Compute the class list + inline custom-property style for a portfolio card grid from its display args. Shared by the [portfolio] element's grid and the archive views so both speak the same CSS contract. |
@@ -25,8 +25,8 @@ hide_table_of_contents: true
 | [`fw_ext_portfolio_render_archive_filter_links`](#fw_ext_portfolio_render_archive_filter_links) | Render the archive filter bar as REAL taxonomy links (not JS show/hide) — each category filter is its own crawlable taxonomy archive URL, so the bar stays correct alongside pagination and is SEO-visible. Used by the extension's archive/taxonomy views. Returns '' with fewer than 2 terms. |
 | [`fw_ext_portfolio_render_card`](#fw_ext_portfolio_render_card) | Render a single project card (thumbnail + title + optional summary). Shared by the related row and the [portfolio] grid so they stay identical. |
 | [`fw_ext_portfolio_render_cards`](#fw_ext_portfolio_render_cards) | Render just the cards for a set of projects (the grid inner HTML) — used by the initial render and by the AJAX filter / load-more responses. |
-| [`fw_ext_portfolio_render_gallery`](#fw_ext_portfolio_render_gallery) | — |
-| [`fw_ext_portfolio_render_grid`](#fw_ext_portfolio_render_grid) | — |
+| [`fw_ext_portfolio_render_gallery`](#fw_ext_portfolio_render_gallery) | Renders the gallery HTML for a portfolio project, or an empty string when it has no gallery images. |
+| [`fw_ext_portfolio_render_grid`](#fw_ext_portfolio_render_grid) | Renders a grid of portfolio projects from the given query and layout arguments. |
 | [`fw_ext_portfolio_render_prevnext`](#fw_ext_portfolio_render_prevnext) | Render previous / next project navigation for the single view — thumbnail + direction label + project title (the title keeps the link text descriptive per the house link-text rule). Adjacency follows publish order; optionally constrained to projects sharing a portfolio category. |
 | [`fw_ext_portfolio_render_project_meta`](#fw_ext_portfolio_render_project_meta) | Render a project's details as a definition list. Empty fields are skipped; returns '' when there is nothing to show. |
 | [`fw_ext_portfolio_render_related`](#fw_ext_portfolio_render_related) | Render a row of related-project cards. |
@@ -47,7 +47,7 @@ Convenience accessor for the portfolio extension instance.
 
 **Returns** `FW_Extension_Portfolio\|null`
 
-<small>Source: `framework/extensions/portfolio/helpers.php:40`</small>
+<small>Source: `framework/extensions/portfolio/helpers.php:41`</small>
 
 ### `fw_ext_portfolio_get_gallery_images` {#fw_ext_portfolio_get_gallery_images}
 
@@ -55,7 +55,9 @@ Convenience accessor for the portfolio extension instance.
 fw_ext_portfolio_get_gallery_images( $post_id = 0 )
 ```
 
-<small>Source: `framework/extensions/portfolio/helpers.php:5`</small>
+Returns the saved project-gallery images for a portfolio post, or an empty array.
+
+<small>Source: `framework/extensions/portfolio/helpers.php:6`</small>
 
 ### `fw_ext_portfolio_get_project_meta` {#fw_ext_portfolio_get_project_meta}
 
@@ -71,7 +73,7 @@ Read a project's "Project Details" meta (client, URL, date, services, summary, f
 
 **Returns** `array&#123;client:string,url:string,date:string,services:string,summary:string,featured:bool&#125;`
 
-<small>Source: `framework/extensions/portfolio/helpers.php:52`</small>
+<small>Source: `framework/extensions/portfolio/helpers.php:53`</small>
 
 ### `fw_ext_portfolio_get_related` {#fw_ext_portfolio_get_related}
 
@@ -88,7 +90,7 @@ Query projects related to the given one (sharing a portfolio category). Falls ba
 
 **Returns** `WP_Post[]`
 
-<small>Source: `framework/extensions/portfolio/helpers.php:283`</small>
+<small>Source: `framework/extensions/portfolio/helpers.php:284`</small>
 
 ### `fw_ext_portfolio_grid_attrs` {#fw_ext_portfolio_grid_attrs}
 
@@ -104,7 +106,7 @@ Compute the class list + inline custom-property style for a portfolio card grid 
 
 **Returns** `array&#123;class:string,style:string&#125;`
 
-<small>Source: `framework/extensions/portfolio/helpers.php:489`</small>
+<small>Source: `framework/extensions/portfolio/helpers.php:490`</small>
 
 ### `fw_ext_portfolio_grid_query_export` {#fw_ext_portfolio_grid_query_export}
 
@@ -120,7 +122,7 @@ The subset of grid args the AJAX endpoint needs to re-run the query and re-rende
 
 **Returns** `array`
 
-<small>Source: `framework/extensions/portfolio/helpers.php:692`</small>
+<small>Source: `framework/extensions/portfolio/helpers.php:695`</small>
 
 ### `fw_ext_portfolio_is_featured` {#fw_ext_portfolio_is_featured}
 
@@ -136,7 +138,7 @@ Whether a project is flagged as featured.
 
 **Returns** `bool`
 
-<small>Source: `framework/extensions/portfolio/helpers.php:103`</small>
+<small>Source: `framework/extensions/portfolio/helpers.php:104`</small>
 
 ### `fw_ext_portfolio_query_projects` {#fw_ext_portfolio_query_projects}
 
@@ -153,7 +155,7 @@ Query one page of projects for the grid.
 
 **Returns** `array&#123;posts:WP_Post[],max:int&#125;`
 
-<small>Source: `framework/extensions/portfolio/helpers.php:715`</small>
+<small>Source: `framework/extensions/portfolio/helpers.php:718`</small>
 
 ### `fw_ext_portfolio_render_archive_filter_links` {#fw_ext_portfolio_render_archive_filter_links}
 
@@ -165,7 +167,7 @@ Render the archive filter bar as REAL taxonomy links (not JS show/hide) — each
 
 **Returns** `string`
 
-<small>Source: `framework/extensions/portfolio/helpers.php:813`</small>
+<small>Source: `framework/extensions/portfolio/helpers.php:816`</small>
 
 ### `fw_ext_portfolio_render_card` {#fw_ext_portfolio_render_card}
 
@@ -182,7 +184,7 @@ Render a single project card (thumbnail + title + optional summary). Shared by t
 
 **Returns** `string`
 
-<small>Source: `framework/extensions/portfolio/helpers.php:387`</small>
+<small>Source: `framework/extensions/portfolio/helpers.php:388`</small>
 
 ### `fw_ext_portfolio_render_cards` {#fw_ext_portfolio_render_cards}
 
@@ -199,7 +201,7 @@ Render just the cards for a set of projects (the grid inner HTML) — used by th
 
 **Returns** `string`
 
-<small>Source: `framework/extensions/portfolio/helpers.php:768`</small>
+<small>Source: `framework/extensions/portfolio/helpers.php:771`</small>
 
 ### `fw_ext_portfolio_render_gallery` {#fw_ext_portfolio_render_gallery}
 
@@ -207,7 +209,34 @@ Render just the cards for a set of projects (the grid inner HTML) — used by th
 fw_ext_portfolio_render_gallery( $post_id = 0, $args = array() )
 ```
 
-<small>Source: `framework/extensions/portfolio/helpers.php:931`</small>
+Renders the gallery HTML for a portfolio project, or an empty string when it has no gallery images.
+
+Render a project's image gallery as a responsive grid that opens in the
+built-in accessible lightbox. Shared by the single-project view
+(views/content.php) and the [project_gallery] shortcode — the single source
+of truth for gallery markup so both stay visually identical.
+
+Assets are enqueued by the caller (static.php / the shortcode's static.php);
+this function only emits markup.
+
+    @type int    $columns        Desktop columns (1-6).        Default 3.
+    @type int    $columns_tablet Tablet columns (1-4).         Default 2.
+    @type int    $columns_mobile Mobile columns (1-2).         Default 1.
+    @type int    $gap            Grid gap in px.               Default 16.
+    @type string $ratio          Aspect ratio: '16-9','4-3','3-2','1-1','2-3','auto'. Default '4-3'.
+    @type bool   $lightbox       Enable click-to-zoom lightbox. Default true.
+    @type bool   $captions       Show caption under each thumb. Default false.
+    @type string $image_size     Registered WP image size for the thumb. Default 'large'.
+&#125;
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$post_id` | `int` | Project (fw-portfolio) post ID. 0 = current post. |
+| `$args` | `array` | &#123; |
+
+**Returns** `string` Gallery HTML, or '' when the project has no gallery images.
+
+<small>Source: `framework/extensions/portfolio/helpers.php:936`</small>
 
 ### `fw_ext_portfolio_render_grid` {#fw_ext_portfolio_render_grid}
 
@@ -215,7 +244,30 @@ fw_ext_portfolio_render_gallery( $post_id = 0, $args = array() )
 fw_ext_portfolio_render_grid( $args = array() )
 ```
 
-<small>Source: `framework/extensions/portfolio/helpers.php:543`</small>
+Renders a grid of portfolio projects from the given query and layout arguments.
+
+Render a filterable grid of portfolio projects (category filter buttons +
+a CSS grid). Filtering is dependency-free (handled by portfolio-grid.js).
+
+    @type int|int[] $categories   Restrict to these category term IDs. Empty = all.
+    @type int       $count        Max projects (-1 = all).               Default -1.
+    @type int       $columns      Desktop columns (1-6).                  Default 3.
+    @type int       $gap          Grid gap (px).                          Default 24.
+    @type bool      $show_filters Show category filter buttons.           Default true.
+    @type bool      $show_summary Show each project's summary.            Default false.
+    @type bool      $featured_only Only featured projects.               Default false.
+    @type string    $orderby      WP_Query orderby.                       Default 'date'.
+    @type string    $order        ASC|DESC.                               Default 'DESC'.
+    @type string    $image_size   Card thumbnail size.                    Default 'large'.
+&#125;
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$args` | `array` | &#123; |
+
+**Returns** `string`
+
+<small>Source: `framework/extensions/portfolio/helpers.php:546`</small>
 
 ### `fw_ext_portfolio_render_prevnext` {#fw_ext_portfolio_render_prevnext}
 
@@ -234,7 +286,7 @@ for signature symmetry with the other renderers.
 
 **Returns** `string`
 
-<small>Source: `framework/extensions/portfolio/helpers.php:864`</small>
+<small>Source: `framework/extensions/portfolio/helpers.php:867`</small>
 
 ### `fw_ext_portfolio_render_project_meta` {#fw_ext_portfolio_render_project_meta}
 
@@ -251,7 +303,7 @@ Render a project's details as a definition list. Empty fields are skipped; retur
 
 **Returns** `string`
 
-<small>Source: `framework/extensions/portfolio/helpers.php:118`</small>
+<small>Source: `framework/extensions/portfolio/helpers.php:119`</small>
 
 ### `fw_ext_portfolio_render_related` {#fw_ext_portfolio_render_related}
 
@@ -268,7 +320,7 @@ Render a row of related-project cards.
 
 **Returns** `string`
 
-<small>Source: `framework/extensions/portfolio/helpers.php:350`</small>
+<small>Source: `framework/extensions/portfolio/helpers.php:351`</small>
 
 ### `fw_ext_portfolio_render_results` {#fw_ext_portfolio_render_results}
 
@@ -284,7 +336,7 @@ Render a project's Results / metrics band. Returns '' when no metrics are filled
 
 **Returns** `string`
 
-<small>Source: `framework/extensions/portfolio/helpers.php:208`</small>
+<small>Source: `framework/extensions/portfolio/helpers.php:209`</small>
 
 ### `fw_ext_portfolio_render_testimonial` {#fw_ext_portfolio_render_testimonial}
 
@@ -300,7 +352,7 @@ Render a project's client testimonial (quote + author + company). Returns '' whe
 
 **Returns** `string`
 
-<small>Source: `framework/extensions/portfolio/helpers.php:244`</small>
+<small>Source: `framework/extensions/portfolio/helpers.php:245`</small>
 
 ### `fw_ext_portfolio_sanitize_grid_args` {#fw_ext_portfolio_sanitize_grid_args}
 
@@ -316,7 +368,7 @@ Whitelist-sanitize the grid args (shared by render time and the AJAX endpoint, w
 
 **Returns** `array`
 
-<small>Source: `framework/extensions/portfolio/helpers.php:631`</small>
+<small>Source: `framework/extensions/portfolio/helpers.php:634`</small>
 
 ### `fw_ext_portfolio_sanitize_heading_tag` {#fw_ext_portfolio_sanitize_heading_tag}
 
@@ -333,6 +385,6 @@ Sanitize a heading-tag choice for the rendering helpers. Levels are chosen by ou
 
 **Returns** `string`
 
-<small>Source: `framework/extensions/portfolio/helpers.php:27`</small>
+<small>Source: `framework/extensions/portfolio/helpers.php:28`</small>
 
 ← Back to [Functions overview](./index.md)

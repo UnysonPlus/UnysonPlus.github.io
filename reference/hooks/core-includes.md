@@ -59,7 +59,7 @@ hide_table_of_contents: true
 ```php
 add_filter( 'fw_rate_limit', $callback );
 ```
-<small>Fired in: `framework/includes/rate-limit.php:106`</small>
+<small>Fired in: `framework/includes/rate-limit.php:108`</small>
 
 ### `fw_rate_limit_client_ip` {#h-fw-rate-limit-client-ip}
 *🧪 filter*
@@ -75,7 +75,7 @@ add_filter( 'fw_rate_limit_client_ip', $callback );
 ```php
 add_filter( 'fw_update_guard_message', $callback );
 ```
-<small>Fired in: `framework/includes/update-guard/update-guard.php:53`</small>
+<small>Fired in: `framework/includes/update-guard/update-guard.php:54`</small>
 
 ### `fw_update_guard_title` {#h-fw-update-guard-title}
 *🧪 filter*
@@ -83,7 +83,7 @@ add_filter( 'fw_update_guard_message', $callback );
 ```php
 add_filter( 'fw_update_guard_title', $callback );
 ```
-<small>Fired in: `framework/includes/update-guard/update-guard.php:52`</small>
+<small>Fired in: `framework/includes/update-guard/update-guard.php:53`</small>
 
 ### `fw_upw_internal_post_types` {#h-fw-upw-internal-post-types}
 *🧪 filter*
@@ -139,7 +139,7 @@ add_filter( 'unysonplus_button_size_presets', $callback );
 ```php
 add_filter( 'unysonplus_color_presets', $callback );
 ```
-<small>Fired in: `framework/includes/presets/color-presets.php:49`</small>
+<small>Fired in: `framework/includes/presets/color-presets.php:51`</small>
 
 ### `unysonplus_container_width_presets` {#h-unysonplus-container-width-presets}
 *🧪 filter · 2 call sites*
@@ -187,7 +187,7 @@ add_filter( 'unysonplus_default_button_size_presets', $callback );
 ```php
 add_filter( 'unysonplus_default_color_presets', $callback );
 ```
-<small>Fired in: `framework/includes/presets/color-presets.php:7`</small>
+<small>Fired in: `framework/includes/presets/color-presets.php:8`</small>
 
 ### `unysonplus_default_custom_hover_animations` {#h-unysonplus-default-custom-hover-animations}
 *🧪 filter*
@@ -203,7 +203,7 @@ add_filter( 'unysonplus_default_custom_hover_animations', $callback );
 ```php
 add_filter( 'unysonplus_default_font_size_presets', $callback );
 ```
-<small>Fired in: `framework/includes/presets/font-size-presets.php:7`</small>
+<small>Fired in: `framework/includes/presets/font-size-presets.php:8`</small>
 
 ### `unysonplus_default_gap_scale` {#h-unysonplus-default-gap-scale}
 *🧪 filter*
@@ -243,7 +243,7 @@ add_filter( 'unysonplus_default_spacing_scale', $callback );
 ```php
 add_filter( 'unysonplus_default_table_presets', $callback );
 ```
-<small>Fired in: `framework/includes/presets/table-presets.php:63`</small>
+<small>Fired in: `framework/includes/presets/table-presets.php:65`</small>
 
 ### `unysonplus_fluid_type_viewport` {#h-unysonplus-fluid-type-viewport}
 *🧪 filter*
@@ -251,7 +251,7 @@ add_filter( 'unysonplus_default_table_presets', $callback );
 ```php
 add_filter( 'unysonplus_fluid_type_viewport', $callback );
 ```
-<small>Fired in: `framework/includes/presets/font-size-presets.php:61`</small>
+<small>Fired in: `framework/includes/presets/font-size-presets.php:63`</small>
 
 ### `unysonplus_font_size_presets` {#h-unysonplus-font-size-presets}
 *🧪 filter · 2 call sites*
@@ -259,7 +259,7 @@ add_filter( 'unysonplus_fluid_type_viewport', $callback );
 ```php
 add_filter( 'unysonplus_font_size_presets', $callback );
 ```
-<small>Fired in: `framework/includes/presets/font-size-presets.php:23`</small>
+<small>Fired in: `framework/includes/presets/font-size-presets.php:25`</small>
 
 ### `unysonplus_gap_scale` {#h-unysonplus-gap-scale}
 *🧪 filter · 2 call sites*
@@ -291,7 +291,7 @@ add_filter( 'unysonplus_icon_badge_presets', $callback );
 ```php
 add_filter( 'unysonplus_mobile_font_scale', $callback );
 ```
-<small>Fired in: `framework/includes/presets/font-size-presets.php:49`</small>
+<small>Fired in: `framework/includes/presets/font-size-presets.php:51`</small>
 
 ### `unysonplus_page_css` {#h-unysonplus-page-css}
 *🧪 filter*
@@ -331,7 +331,7 @@ add_filter( 'unysonplus_spacing_scale', $callback );
 ```php
 add_filter( 'unysonplus_table_presets', $callback );
 ```
-<small>Fired in: `framework/includes/presets/table-presets.php:217`</small>
+<small>Fired in: `framework/includes/presets/table-presets.php:219`</small>
 
 ### `unysonplus_type_scale_config` {#h-unysonplus-type-scale-config}
 *🧪 filter*
@@ -339,6 +339,6 @@ add_filter( 'unysonplus_table_presets', $callback );
 ```php
 add_filter( 'unysonplus_type_scale_config', $callback );
 ```
-<small>Fired in: `framework/includes/presets/font-size-presets.php:144`</small>
+<small>Fired in: `framework/includes/presets/font-size-presets.php:146`</small>
 
 ← Back to [Hooks overview](./index.md)

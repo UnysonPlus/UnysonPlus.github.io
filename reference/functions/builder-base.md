@@ -14,9 +14,9 @@ hide_table_of_contents: true
 
 | Function | Summary |
 | --- | --- |
-| [`fw_ext_builder_get_item_width`](#fw_ext_builder_get_item_width) | — |
+| [`fw_ext_builder_get_item_width`](#fw_ext_builder_get_item_width) | Returns the builder's item-width definitions for a builder type, or a single width by id. |
 | [`fw_ext_builder_get_item_widths_for_js`](#fw_ext_builder_get_item_widths_for_js) | Get builder item widths for using in js (wp_localize_script() or json_encode()) |
-| [`fw_ext_builder_string_to_icon_html`](#fw_ext_builder_string_to_icon_html) | — |
+| [`fw_ext_builder_string_to_icon_html`](#fw_ext_builder_string_to_icon_html) | Renders an icon string as HTML, detecting an image URL, a font-icon class, or raw HTML. |
 
 ---
 
@@ -26,7 +26,9 @@ hide_table_of_contents: true
 fw_ext_builder_get_item_width($builder_type, $width_id = null, $default_value = null)
 ```
 
-<small>Source: `framework/extensions/builder/helpers.php:16`</small>
+Returns the builder's item-width definitions for a builder type, or a single width by id.
+
+<small>Source: `framework/extensions/builder/helpers.php:19`</small>
 
 ### `fw_ext_builder_get_item_widths_for_js` {#fw_ext_builder_get_item_widths_for_js}
 
@@ -42,7 +44,7 @@ Get builder item widths for using in js (wp_localize_script() or json_encode())
 
 **Returns** `array`
 
-<small>Source: `framework/extensions/builder/helpers.php:46`</small>
+<small>Source: `framework/extensions/builder/helpers.php:49`</small>
 
 ### `fw_ext_builder_string_to_icon_html` {#fw_ext_builder_string_to_icon_html}
 
@@ -50,12 +52,14 @@ Get builder item widths for using in js (wp_localize_script() or json_encode())
 fw_ext_builder_string_to_icon_html($icon)
 ```
 
+Renders an icon string as HTML, detecting an image URL, a font-icon class, or raw HTML.
+
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `$icon` | `string` | A string that is meant to be an icon (an image, a font icon class, or something else) |
 
 **Returns** `string`
 
-<small>Source: `framework/extensions/builder/helpers.php:62`</small>
+<small>Source: `framework/extensions/builder/helpers.php:67`</small>
 
 ← Back to [Functions overview](./index.md)

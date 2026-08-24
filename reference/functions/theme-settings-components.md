@@ -16,27 +16,27 @@ hide_table_of_contents: true
 | --- | --- |
 | [`fw_admin_safe_custom_css`](#fw_admin_safe_custom_css) | Make site Custom CSS wp-admin-safe. misc_custom_css is folded into the shared presets stylesheet, which the page builder ALSO loads in wp-admin (canvas WYSIWYG) — so an unscoped top-level `body` / `html` rule (background, overflow, …) would repaint the EDITOR chrome ("the front end leaked into the backend"). This rewrites those global selectors to front-end-only variants (`body:not(.wp-admin)`, `html:not(:has(.wp-admin))`) so a global rule can never leak into the admin, while class/id/descendant rules (`.pb-*`, `.upwc-*`, `#x`) are left untouched so they still skin the builder canvas. Applies to ALL Custom CSS — hand-written OR emitted by the Site Converter — so this cannot recur regardless of who wrote the CSS. Already-scoped selectors are left alone (idempotent). |
 | [`unysonplus_collect_preset_leaf_keys`](#unysonplus_collect_preset_leaf_keys) | Walk an options schema and collect the LEAF option ids (the keys that actually store a value). Containers (tab / box / group) hold no value of their own, so we recurse through them. Used by the preset migration to copy exactly the preset keys — and nothing else — out of the legacy extension store. |
-| [`unysonplus_icons_settings_options`](#unysonplus_icons_settings_options) | — |
+| [`unysonplus_icons_settings_options`](#unysonplus_icons_settings_options) | Builds the Icons theme-settings options tree (Library/Browse/Upload installer sub-tabs). |
 | [`unysonplus_migrate_presets_to_theme_store`](#unysonplus_migrate_presets_to_theme_store) | One-time move of saved presets from the legacy theme-INDEPENDENT store (fw_ext_settings_options:shortcodes) into the CURRENT theme's theme-scoped settings (fw_theme_settings_options:&#123;theme-id&#125;). Runs once; the legacy store is left intact as a backup. Only seeds keys not already present in the theme store, and only the preset leaf keys (the Smooth Scroll toggle stays put). |
 | [`unysonplus_presets_in_theme_settings_enabled`](#unysonplus_presets_in_theme_settings_enabled) | Presets are surfaced unless the page builder's "bare" mode (Styling Presets off) is active — matching the old dedicated page's gate. |
-| [`unysonplus_settings_io_can`](#unysonplus_settings_io_can) | — |
-| [`unysonplus_settings_io_exclude_keys`](#unysonplus_settings_io_exclude_keys) | — |
-| [`unysonplus_settings_io_export`](#unysonplus_settings_io_export) | — |
-| [`unysonplus_settings_io_import`](#unysonplus_settings_io_import) | — |
-| [`unysonplus_settings_io_misc_field_html`](#unysonplus_settings_io_misc_field_html) | — |
-| [`unysonplus_settings_io_page_slug`](#unysonplus_settings_io_page_slug) | — |
-| [`unysonplus_settings_io_page_url`](#unysonplus_settings_io_page_url) | — |
-| [`unysonplus_settings_io_redirect`](#unysonplus_settings_io_redirect) | — |
-| [`unysonplus_settings_io_result_notice`](#unysonplus_settings_io_result_notice) | — |
-| [`unysonplus_settings_io_strip_media`](#unysonplus_settings_io_strip_media) | — |
-| [`unysonplus_settings_io_theme_meta`](#unysonplus_settings_io_theme_meta) | — |
-| [`upw_ts_custom_css`](#upw_ts_custom_css) | — |
+| [`unysonplus_settings_io_can`](#unysonplus_settings_io_can) | Returns whether the current user may export or import theme settings. |
+| [`unysonplus_settings_io_exclude_keys`](#unysonplus_settings_io_exclude_keys) | Returns the filterable list of operational setting keys excluded from a design export/import. |
+| [`unysonplus_settings_io_export`](#unysonplus_settings_io_export) | Handles the theme-settings export request, emitting a JSON design envelope as a file download. |
+| [`unysonplus_settings_io_import`](#unysonplus_settings_io_import) | Handles the theme-settings import request, validating the uploaded design file and merging its values. |
+| [`unysonplus_settings_io_misc_field_html`](#unysonplus_settings_io_misc_field_html) | Renders the Export/Import design control (buttons plus file picker) for the Misc settings tab. |
+| [`unysonplus_settings_io_page_slug`](#unysonplus_settings_io_page_slug) | Returns the Theme Settings admin page slug. |
+| [`unysonplus_settings_io_page_url`](#unysonplus_settings_io_page_url) | Returns the admin URL of the Theme Settings page. |
+| [`unysonplus_settings_io_redirect`](#unysonplus_settings_io_redirect) | Redirects back to the Theme Settings page with the given result code, then exits. |
+| [`unysonplus_settings_io_result_notice`](#unysonplus_settings_io_result_notice) | Prints the admin notice reflecting the outcome of a theme-settings import redirect. |
+| [`unysonplus_settings_io_strip_media`](#unysonplus_settings_io_strip_media) | Recursively strips media/attachment values from a settings array so exports carry no uploaded images. |
+| [`unysonplus_settings_io_theme_meta`](#unysonplus_settings_io_theme_meta) | Returns the active theme's id and version for the export envelope. |
+| [`upw_ts_custom_css`](#upw_ts_custom_css) | Returns the site-wide custom CSS from Theme Settings, sanitized, or an empty string. |
 | [`upw_ts_get_options`](#upw_ts_get_options) | Load a built-in Theme Settings section file and return its `$options` array. |
 | [`upw_ts_image_size_crop_map`](#upw_ts_image_size_crop_map) | Saved crop value → add_image_size() $crop argument. |
-| [`upw_ts_maintenance_user_is_allowed`](#upw_ts_maintenance_user_is_allowed) | — |
+| [`upw_ts_maintenance_user_is_allowed`](#upw_ts_maintenance_user_is_allowed) | Returns whether the current logged-in user has a role allowed to bypass maintenance mode. |
 | [`upw_ts_merge_into_misc`](#upw_ts_merge_into_misc) | Merge built-in sub-tabs into the Miscellaneous section of the Theme Settings options (the section keyed `misc_container`, whose sub-tabs live inside its `box` container). If the active theme provides no Miscellaneous section (e.g. a non-Unyson theme), a Miscellaneous section is created to host them. |
 | [`upw_ts_misc_subtabs`](#upw_ts_misc_subtabs) | Built-in Miscellaneous sub-tabs (ported from the theme so they work under any theme). Each is a tab -&gt; box wrapping the feature's schema file. Merged into the theme's Miscellaneous section by the fw_settings_options filter below. |
-| [`upw_ts_register_image_sizes`](#upw_ts_register_image_sizes) | — |
+| [`upw_ts_register_image_sizes`](#upw_ts_register_image_sizes) | Registers custom image sizes defined in Theme Settings via add_image_size, skipping reserved or invalid entries. |
 | [`upw_ts_selectable_image_sizes`](#upw_ts_selectable_image_sizes) | Expose custom sizes (with "Show in editor" on) in the media / block-editor size dropdown. Without this a registered size is usable only from template code. |
 | [`upw_ts_setting`](#upw_ts_setting) | Read a leaf value out of a `multi` container saved in the Theme Settings store (fw_theme_settings_options:&#123;theme-id&#125;). Mirrors the theme's unysonplus_misc_get() read path so the plugin's built-in Miscellaneous features reuse the SAME storage keys (zero migration) and work under any theme. |
 
@@ -82,7 +82,9 @@ Walk an options schema and collect the LEAF option ids (the keys that actually s
 unysonplus_icons_settings_options()
 ```
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/icons.php:16`</small>
+Builds the Icons theme-settings options tree (Library/Browse/Upload installer sub-tabs).
+
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/icons.php:17`</small>
 
 ### `unysonplus_migrate_presets_to_theme_store` {#unysonplus_migrate_presets_to_theme_store}
 *🔌 pluggable*
@@ -113,7 +115,9 @@ Presets are surfaced unless the page builder's "bare" mode (Styling Presets off)
 unysonplus_settings_io_can()
 ```
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:49`</small>
+Returns whether the current user may export or import theme settings.
+
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:52`</small>
 
 ### `unysonplus_settings_io_exclude_keys` {#unysonplus_settings_io_exclude_keys}
 *🔌 pluggable*
@@ -122,7 +126,9 @@ unysonplus_settings_io_can()
 unysonplus_settings_io_exclude_keys()
 ```
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:23`</small>
+Returns the filterable list of operational setting keys excluded from a design export/import.
+
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:24`</small>
 
 ### `unysonplus_settings_io_export` {#unysonplus_settings_io_export}
 *🔌 pluggable*
@@ -131,7 +137,9 @@ unysonplus_settings_io_exclude_keys()
 unysonplus_settings_io_export()
 ```
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:87`</small>
+Handles the theme-settings export request, emitting a JSON design envelope as a file download.
+
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:95`</small>
 
 ### `unysonplus_settings_io_import` {#unysonplus_settings_io_import}
 *🔌 pluggable*
@@ -140,7 +148,9 @@ unysonplus_settings_io_export()
 unysonplus_settings_io_import()
 ```
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:134`</small>
+Handles the theme-settings import request, validating the uploaded design file and merging its values.
+
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:143`</small>
 
 ### `unysonplus_settings_io_misc_field_html` {#unysonplus_settings_io_misc_field_html}
 *🔌 pluggable*
@@ -149,7 +159,9 @@ unysonplus_settings_io_import()
 unysonplus_settings_io_misc_field_html()
 ```
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:239`</small>
+Renders the Export/Import design control (buttons plus file picker) for the Misc settings tab.
+
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:250`</small>
 
 ### `unysonplus_settings_io_page_slug` {#unysonplus_settings_io_page_slug}
 *🔌 pluggable*
@@ -158,7 +170,9 @@ unysonplus_settings_io_misc_field_html()
 unysonplus_settings_io_page_slug()
 ```
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:55`</small>
+Returns the Theme Settings admin page slug.
+
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:59`</small>
 
 ### `unysonplus_settings_io_page_url` {#unysonplus_settings_io_page_url}
 *🔌 pluggable*
@@ -167,7 +181,9 @@ unysonplus_settings_io_page_slug()
 unysonplus_settings_io_page_url()
 ```
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:64`</small>
+Returns the admin URL of the Theme Settings page.
+
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:69`</small>
 
 ### `unysonplus_settings_io_redirect` {#unysonplus_settings_io_redirect}
 *🔌 pluggable*
@@ -176,7 +192,9 @@ unysonplus_settings_io_page_url()
 unysonplus_settings_io_redirect( $code )
 ```
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:79`</small>
+Redirects back to the Theme Settings page with the given result code, then exits.
+
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:86`</small>
 
 ### `unysonplus_settings_io_result_notice` {#unysonplus_settings_io_result_notice}
 *🔌 pluggable*
@@ -185,7 +203,9 @@ unysonplus_settings_io_redirect( $code )
 unysonplus_settings_io_result_notice()
 ```
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:205`</small>
+Prints the admin notice reflecting the outcome of a theme-settings import redirect.
+
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:215`</small>
 
 ### `unysonplus_settings_io_strip_media` {#unysonplus_settings_io_strip_media}
 *🔌 pluggable*
@@ -194,7 +214,9 @@ unysonplus_settings_io_result_notice()
 unysonplus_settings_io_strip_media( $value )
 ```
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:35`</small>
+Recursively strips media/attachment values from a settings array so exports carry no uploaded images.
+
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:37`</small>
 
 ### `unysonplus_settings_io_theme_meta` {#unysonplus_settings_io_theme_meta}
 *🔌 pluggable*
@@ -203,7 +225,9 @@ unysonplus_settings_io_strip_media( $value )
 unysonplus_settings_io_theme_meta()
 ```
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:70`</small>
+Returns the active theme's id and version for the export envelope.
+
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:76`</small>
 
 ### `upw_ts_custom_css` {#upw_ts_custom_css}
 *🔌 pluggable*
@@ -212,7 +236,9 @@ unysonplus_settings_io_theme_meta()
 upw_ts_custom_css()
 ```
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/miscellaneous-handlers.php:68`</small>
+Returns the site-wide custom CSS from Theme Settings, sanitized, or an empty string.
+
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/miscellaneous-handlers.php:69`</small>
 
 ### `upw_ts_get_options` {#upw_ts_get_options}
 *🔌 pluggable*
@@ -245,7 +271,7 @@ upw_ts_image_size_crop_map()
 
 Saved crop value → add_image_size() $crop argument.
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/miscellaneous-handlers.php:335`</small>
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/miscellaneous-handlers.php:337`</small>
 
 ### `upw_ts_maintenance_user_is_allowed` {#upw_ts_maintenance_user_is_allowed}
 *🔌 pluggable*
@@ -254,7 +280,9 @@ Saved crop value → add_image_size() $crop argument.
 upw_ts_maintenance_user_is_allowed()
 ```
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/miscellaneous-handlers.php:227`</small>
+Returns whether the current logged-in user has a role allowed to bypass maintenance mode.
+
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/miscellaneous-handlers.php:229`</small>
 
 ### `upw_ts_merge_into_misc` {#upw_ts_merge_into_misc}
 *🔌 pluggable*
@@ -294,7 +322,9 @@ Built-in Miscellaneous sub-tabs (ported from the theme so they work under any th
 upw_ts_register_image_sizes()
 ```
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/miscellaneous-handlers.php:353`</small>
+Registers custom image sizes defined in Theme Settings via add_image_size, skipping reserved or invalid entries.
+
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/miscellaneous-handlers.php:356`</small>
 
 ### `upw_ts_selectable_image_sizes` {#upw_ts_selectable_image_sizes}
 *🔌 pluggable*
@@ -311,7 +341,7 @@ Expose custom sizes (with "Show in editor" on) in the media / block-editor size 
 
 **Returns** `array`
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/miscellaneous-handlers.php:383`</small>
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/miscellaneous-handlers.php:386`</small>
 
 ### `upw_ts_setting` {#upw_ts_setting}
 *🔌 pluggable*

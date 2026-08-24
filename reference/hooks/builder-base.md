@@ -58,7 +58,7 @@ add_filter( 'fw_builder_has_template_saving_feature', $callback );
 ```php
 add_filter( 'fw_builder_item_widths:', $callback );
 ```
-<small>Fired in: `framework/extensions/builder/helpers.php:28`</small>
+<small>Fired in: `framework/extensions/builder/helpers.php:31`</small>
 
 ### `fw_builder:` {#h-fw-builder}
 *🎬 action*

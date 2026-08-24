@@ -75,7 +75,7 @@ add_filter( 'fw_ext_page_builder_settings_options_post_types_default_value', $ca
 ```php
 add_filter( 'fw_ext_page_builder_supported_post_types', $callback );
 ```
-<small>Fired in: `framework/extensions/shortcodes/extensions/page-builder/helpers.php:28`</small>
+<small>Fired in: `framework/extensions/shortcodes/extensions/page-builder/helpers.php:31`</small>
 
 ### `fw_ext_page_builder_templates` {#h-fw-ext-page-builder-templates}
 *🧪 filter*

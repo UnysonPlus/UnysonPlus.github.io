@@ -29,9 +29,9 @@ Each source toggle becomes an accordion panel (its header → the tab title, its
 
 ## Option coverage
 
-**10/28 options mapped natively** (36%) — 🟡 0 via CSS · ⚠️ 8 gaps (derivable, not yet) · ⚪ 10 default · ⚙️ 3 auto.
+**12/28 options mapped natively** (43%) — 🟡 0 via CSS · ⚠️ 6 gaps (derivable, not yet) · ⚪ 10 default · ⚙️ 3 auto.
 
-:::tip[8 derivable gaps]
+:::tip[6 derivable gaps]
 The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
 :::
 
@@ -48,8 +48,8 @@ The ⚠️ rows below are options a source realistically expresses that the conv
 | `elevation` | Design | `select` | ✅ Native | Item box-shadow presence → subtle / raised |
 | `title_bg_color` | Styling | `compact color` | ✅ Native | Computed header background fill |
 | `faq_schema` | SEO | `switch` | ✅ Native | Enabled when a schema.org FAQPage covers the questions — re-emits the FAQ structured data |
-| `initially_open` | Content | `select` | ⚠️ Gap | Derivable — details[open] / aria-expanded="true" / .active / .show on the open panel |
-| `title_tag` | Content | `select` | ⚠️ Gap | Derivable — the header element (h2–h6) |
+| `initially_open` | Content | `select` | ✅ Native | Initial open state — details[open] / aria-expanded="true" on the open panel (per-tab is_open + initially_open) |
+| `title_tag` | Content | `select` | ✅ Native | The header heading level (h2–h6) when the toggle is wrapped in a real heading |
 | `content_bg_color` | Styling | `compact color` | ⚠️ Gap | Derivable — computed panel background |
 | `multiple_open` | Behavior | `switch` | ⚠️ Gap | Derivable — Bootstrap data-bs-parent (single-open vs independent) |
 | `collapsible` | Behavior | `switch` | ⚠️ Gap | Derivable — data-bs-parent / whether all panels can close |

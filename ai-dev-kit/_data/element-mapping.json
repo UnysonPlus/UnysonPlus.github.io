@@ -1172,15 +1172,15 @@
      "key": "initially_open",
      "tab": "Content",
      "type": "select",
-     "status": "gap",
-     "source": "Derivable — details[open] / aria-expanded=\"true\" / .active / .show on the open panel"
+     "status": "native",
+     "source": "Initial open state — details[open] / aria-expanded=\"true\" on the open panel (per-tab is_open + initially_open)"
     },
     {
      "key": "title_tag",
      "tab": "Content",
      "type": "select",
-     "status": "gap",
-     "source": "Derivable — the header element (h2–h6)"
+     "status": "native",
+     "source": "The header heading level (h2–h6) when the toggle is wrapped in a real heading"
     },
     {
      "key": "content_bg_color",

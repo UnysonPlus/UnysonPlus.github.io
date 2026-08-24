@@ -266,8 +266,8 @@ export function buildScene(design, o) {
     });
     let one = '';
     for (let k = 0; k < 12; k++) one += cardHtml(SAMPLES[k % SAMPLES.length]);
-    const mmBg = o.background && String(o.background).trim() ? o.background : '#101014';
-    return `<div class="tdg tdg--mosaic-marquee" style="${style}" ${a}><div class="tdg__stage" style="background:${mmBg}"><div class="tdg__mosaic-track"><div class="tdg__mosaic">${one}</div></div></div></div>`;
+    const mmStyle = o.background && String(o.background).trim() ? ` style="background:${o.background}"` : '';
+    return `<div class="tdg tdg--mosaic-marquee" style="${style}" ${a}><div class="tdg__stage"${mmStyle}><div class="tdg__mosaic-track"><div class="tdg__mosaic">${one}</div></div></div></div>`;
   }
 
   // card_sphere

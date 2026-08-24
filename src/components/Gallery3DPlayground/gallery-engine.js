@@ -2086,25 +2086,46 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 		if ( ! pool.length ) { return; }
 		var R = 2;
 		var cellH = 0, colW = 0, gapPx = 0, setW = 0;
-		// Weighted pick of a column KIND that is never the same family as the previous column (so a full
-		// square is never directly followed by another full square, a stack never by a stack, etc.).
-		var FAMS = [ [ 'big', 0.18 ], [ 'tall', 0.24 ], [ 'stack', 0.32 ], [ 'single', 0.26 ] ];
-		function pickFamily( ci, last ) {
-			var fams = FAMS.filter( function ( f ) { return f[ 0 ] !== last; } );
-			var tot = fams.reduce( function ( a, f ) { return a + f[ 1 ]; }, 0 );
+		// Column KINDS split into two categories: FULL-height (big 2×2, tall 1×2) and PARTIAL (stack of two
+		// squares, or a single square + empty cell). Rules: (1) two PARTIAL columns are never adjacent — a
+		// full-height column always sits between any two halves, so the grid never reads as "too many
+		// halves"; (2) never the same family twice in a row. Deterministic per column ⇒ copies match ⇒
+		// seamless loop.
+		var CAT = { big: 'full', tall: 'full', stack: 'partial', single: 'partial' };
+		var FREE = [ [ 'big', 0.26 ], [ 'tall', 0.24 ], [ 'stack', 0.28 ], [ 'single', 0.22 ] ];
+		var FULLS = [ [ 'big', 0.55 ], [ 'tall', 0.45 ] ];
+		function pickW( list, ci ) {
+			var tot = list.reduce( function ( a, f ) { return a + f[ 1 ]; }, 0 );
 			var r = rnd( ci * 11 + 5, 1 ) * tot, acc = 0;
-			for ( var i = 0; i < fams.length; i++ ) { acc += fams[ i ][ 1 ]; if ( r < acc ) { return fams[ i ][ 0 ]; } }
-			return fams[ fams.length - 1 ][ 0 ];
+			for ( var i = 0; i < list.length; i++ ) { acc += list[ i ][ 1 ]; if ( r < acc ) { return list[ i ][ 0 ]; } }
+			return list[ list.length - 1 ][ 0 ];
+		}
+		function nextFamily( ci, lastFam, lastCat ) {
+			// The FIRST column of a set (lastCat '') and any column after a PARTIAL one MUST be full-height —
+			// the former keeps the wrap seam (…partial | full…) clean, the latter guarantees a full-height
+			// column between any two halves. Otherwise choose freely. Always exclude the previous family so
+			// no style repeats back-to-back.
+			var forceFull = ( lastCat === 'partial' || lastCat === '' );
+			var list = ( forceFull ? FULLS : FREE ).filter( function ( f ) { return f[ 0 ] !== lastFam; } );
+			return pickW( list, ci );
 		}
 		function buildSet( grid, hidden ) {
 			grid.innerHTML = '';
-			var idx = 0, ci = 0, last = '';
+			var idx = 0, ci = 0, lastFam = '', lastCat = '', lastSrc = '';
+			var srcOf = function ( c ) { var im = c.querySelector( 'img' ); return im ? ( im.getAttribute( 'src' ) || '' ) : ''; };
 			var addCard = function ( rs, cs ) {
-				var c = pool[ idx % pool.length ].cloneNode( true );
+				// Skip an image identical to the previously placed one (the pool may repeat to pad small sets).
+				if ( pool.length > 1 && srcOf( pool[ idx % pool.length ] ) === lastSrc ) { idx++; }
+				var src0 = pool[ idx % pool.length ];
+				var c = src0.cloneNode( true );
 				c.setAttribute( 'aria-hidden', hidden ? 'true' : 'false' );
-				if ( corner ) { c.style.borderRadius = corner + 'px'; c.style.overflow = 'hidden'; }
+				c.style.borderRadius = corner + 'px'; c.style.overflow = 'hidden';
 				c.style.gridRow = 'span ' + rs; c.style.gridColumn = 'span ' + cs;
-				grid.appendChild( c ); idx++;
+				// Force the image to cover its cell inline so a stale cached stylesheet can't leave the
+				// tile mis-sized (the whole card is one square/rect cell regardless of the image's ratio).
+				var im = c.querySelector( 'img' );
+				if ( im ) { im.style.width = '100%'; im.style.height = '100%'; im.style.objectFit = 'cover'; im.style.display = 'block'; }
+				lastSrc = srcOf( src0 ); grid.appendChild( c ); idx++;
 			};
 			var addGap = function ( rs, cs ) {
 				var s = document.createElement( 'div' ); s.setAttribute( 'aria-hidden', 'true' );
@@ -2112,7 +2133,7 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 			};
 			do {
 				if ( R === 2 ) {
-					var fam = pickFamily( ci, last ); last = fam;
+					var fam = nextFamily( ci, lastFam, lastCat ); lastFam = fam; lastCat = CAT[ fam ];
 					if ( fam === 'big' ) { addCard( 2, 2 ); }                              // BIG 2×2
 					else if ( fam === 'tall' ) { addCard( 2, 1 ); }                        // TALL 1×2
 					else if ( fam === 'stack' ) { addCard( 1, 1 ); addCard( 1, 1 ); }      // STACK two squares

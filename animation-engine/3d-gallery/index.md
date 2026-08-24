@@ -84,6 +84,10 @@ don't see it.
 - **Mosaic Marquee** — a horizontal marquee of cards packed masonry-style (varied sizes) that scrolls
   sideways forever. **Card Height** sets the tile scale (fewer, bigger rows as it rises) and **Layout
   1/2/3** pick three different mosaic patterns. Two identical grid copies wrap seamlessly.
+- **Hero Reel** — a reel of thumbnail cards over a full-bleed hero background. The card stepping through
+  the centre is the active one: it scales up (**Active Scale**) and lifts (**Active Lift**), and its
+  image fills the whole stage as a dimmed (**Hero Opacity**), slowly-zooming (**Ken Burns**) hero behind
+  the reel, cross-fading as the reel advances (**Hold** sets the dwell per card).
 
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.

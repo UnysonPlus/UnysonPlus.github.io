@@ -44,7 +44,7 @@ Get builder item widths for using in js (wp_localize_script() or json_encode())
 
 **Returns** `array`
 
-<small>Source: `framework/extensions/builder/helpers.php:49`</small>
+<small>Source: `framework/extensions/builder/helpers.php:50`</small>
 
 ### `fw_ext_builder_string_to_icon_html` {#fw_ext_builder_string_to_icon_html}
 
@@ -60,6 +60,6 @@ Renders an icon string as HTML, detecting an image URL, a font-icon class, or ra
 
 **Returns** `string`
 
-<small>Source: `framework/extensions/builder/helpers.php:67`</small>
+<small>Source: `framework/extensions/builder/helpers.php:68`</small>
 
 ← Back to [Functions overview](./index.md)

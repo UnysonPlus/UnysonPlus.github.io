@@ -14,25 +14,29 @@ hide_table_of_contents: true
 
 | Hook | Type | Summary |
 | --- | --- | --- |
-| [`fw_ext_mailer_before_send`](#h-fw-ext-mailer-before-send) | filter | — |
-| [`fw_ext_mailer_send_methods`](#h-fw-ext-mailer-send-methods) | filter | — |
+| [`fw_ext_mailer_before_send`](#h-fw-ext-mailer-before-send) | filter | Filters the email object just before it is dispatched by the mailer send method. |
+| [`fw_ext_mailer_send_methods`](#h-fw-ext-mailer-send-methods) | filter | Filters the available mailer send methods, letting listeners register additional delivery backends. |
 
 ---
 
 ### `fw_ext_mailer_before_send` {#h-fw-ext-mailer-before-send}
 *🧪 filter*
 
+Filters the email object just before it is dispatched by the mailer send method.
+
 ```php
 add_filter( 'fw_ext_mailer_before_send', $callback );
 ```
-<small>Fired in: `framework/extensions/mailer/class-fw-extension-mailer.php:100`</small>
+<small>Fired in: `framework/extensions/mailer/class-fw-extension-mailer.php:104`</small>
 
 ### `fw_ext_mailer_send_methods` {#h-fw-ext-mailer-send-methods}
 *🧪 filter*
 
+Filters the available mailer send methods, letting listeners register additional delivery backends.
+
 ```php
 add_filter( 'fw_ext_mailer_send_methods', $callback );
 ```
-<small>Fired in: `framework/extensions/mailer/class-fw-extension-mailer.php:151`</small>
+<small>Fired in: `framework/extensions/mailer/class-fw-extension-mailer.php:156`</small>
 
 ← Back to [Hooks overview](./index.md)

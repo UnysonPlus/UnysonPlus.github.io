@@ -181,8 +181,12 @@ foreach ($rii as $file) {
                         // Only the framework's OWN hooks (exclude WP-core / third-party hooks the
                         // framework merely fires or handles).
                         $isOwn = preg_match('/^(fw[-:_]|unysonplus_|upwc?_|sc_)/', $hook);
-                        if ($isOwn && strpos($hook, '$') === false && strpos($hook, '{') === false && $hook !== '') {
-                            $doc = ($lastDocLine >= 0 && ($hline - $lastDocLine) <= 4) ? parse_docblock($lastDoc) : parse_docblock('');
+                        // Skip dynamic-prefix hook names (built by concatenation, e.g. do_action("fw_builder:" . $x)):
+                        // the captured literal ends in ':' or '_' and is an incomplete name, not a real hook.
+                        $isDynamicPrefix = (bool) preg_match('/[:_]$/', $hook);
+                        if ($isOwn && ! $isDynamicPrefix && strpos($hook, '$') === false && strpos($hook, '{') === false && $hook !== '') {
+                            // Measure from the docblock END line (a long @param block ends right above the call).
+                            $doc = ($lastDocEndLine >= 0 && ($hline - $lastDocEndLine) <= 2) ? parse_docblock($lastDoc) : parse_docblock('');
                             $hooks[] = array(
                                 'name'    => $hook,
                                 'type'    => $type,

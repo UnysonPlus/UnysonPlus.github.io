@@ -117,7 +117,7 @@ unysonplus_settings_io_can()
 
 Returns whether the current user may export or import theme settings.
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:52`</small>
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:53`</small>
 
 ### `unysonplus_settings_io_exclude_keys` {#unysonplus_settings_io_exclude_keys}
 *🔌 pluggable*
@@ -139,7 +139,7 @@ unysonplus_settings_io_export()
 
 Handles the theme-settings export request, emitting a JSON design envelope as a file download.
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:95`</small>
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:96`</small>
 
 ### `unysonplus_settings_io_import` {#unysonplus_settings_io_import}
 *🔌 pluggable*
@@ -150,7 +150,7 @@ unysonplus_settings_io_import()
 
 Handles the theme-settings import request, validating the uploaded design file and merging its values.
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:143`</small>
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:144`</small>
 
 ### `unysonplus_settings_io_misc_field_html` {#unysonplus_settings_io_misc_field_html}
 *🔌 pluggable*
@@ -161,7 +161,7 @@ unysonplus_settings_io_misc_field_html()
 
 Renders the Export/Import design control (buttons plus file picker) for the Misc settings tab.
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:250`</small>
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:252`</small>
 
 ### `unysonplus_settings_io_page_slug` {#unysonplus_settings_io_page_slug}
 *🔌 pluggable*
@@ -172,7 +172,7 @@ unysonplus_settings_io_page_slug()
 
 Returns the Theme Settings admin page slug.
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:59`</small>
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:60`</small>
 
 ### `unysonplus_settings_io_page_url` {#unysonplus_settings_io_page_url}
 *🔌 pluggable*
@@ -183,7 +183,7 @@ unysonplus_settings_io_page_url()
 
 Returns the admin URL of the Theme Settings page.
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:69`</small>
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:70`</small>
 
 ### `unysonplus_settings_io_redirect` {#unysonplus_settings_io_redirect}
 *🔌 pluggable*
@@ -194,7 +194,7 @@ unysonplus_settings_io_redirect( $code )
 
 Redirects back to the Theme Settings page with the given result code, then exits.
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:86`</small>
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:87`</small>
 
 ### `unysonplus_settings_io_result_notice` {#unysonplus_settings_io_result_notice}
 *🔌 pluggable*
@@ -205,7 +205,7 @@ unysonplus_settings_io_result_notice()
 
 Prints the admin notice reflecting the outcome of a theme-settings import redirect.
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:215`</small>
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:217`</small>
 
 ### `unysonplus_settings_io_strip_media` {#unysonplus_settings_io_strip_media}
 *🔌 pluggable*
@@ -216,7 +216,7 @@ unysonplus_settings_io_strip_media( $value )
 
 Recursively strips media/attachment values from a settings array so exports carry no uploaded images.
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:37`</small>
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:38`</small>
 
 ### `unysonplus_settings_io_theme_meta` {#unysonplus_settings_io_theme_meta}
 *🔌 pluggable*
@@ -227,7 +227,7 @@ unysonplus_settings_io_theme_meta()
 
 Returns the active theme's id and version for the export envelope.
 
-<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:76`</small>
+<small>Source: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:77`</small>
 
 ### `upw_ts_custom_css` {#upw_ts_custom_css}
 *🔌 pluggable*

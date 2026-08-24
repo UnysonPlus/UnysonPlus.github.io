@@ -44,7 +44,7 @@ disappears from every page that places it, with nothing anywhere saying why.
 
 **Returns** `string` HTML, or '' outside an editor.
 
-<small>Source: `framework/extensions/snippets/helpers.php:104`</small>
+<small>Source: `framework/extensions/snippets/helpers.php:105`</small>
 
 ### `fw_ext_snippets_render` {#fw_ext_snippets_render}
 
@@ -84,6 +84,6 @@ and are preserved.
 
 **Returns** `string`
 
-<small>Source: `framework/extensions/snippets/helpers.php:74`</small>
+<small>Source: `framework/extensions/snippets/helpers.php:75`</small>
 
 ← Back to [Functions overview](./index.md)

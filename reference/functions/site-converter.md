@@ -49,7 +49,7 @@ sc_cs_bg( $cs )
 
 A non-transparent `background-color` value from a data-sc-cs string, or '' (transparent / absent).
 
-<small>Source: `framework/extensions/site-converter/includes/class-fw-site-converter-stitch.php:5512`</small>
+<small>Source: `framework/extensions/site-converter/includes/class-fw-site-converter-stitch.php:5526`</small>
 
 ### `sc_css` {#sc_css}
 
@@ -59,7 +59,7 @@ sc_css( $el, $prop )
 
 Read a single CSS property value from an element's captured `data-sc-cs` computed-style attribute. '' if absent.
 
-<small>Source: `framework/extensions/site-converter/includes/class-fw-site-converter-stitch.php:4156`</small>
+<small>Source: `framework/extensions/site-converter/includes/class-fw-site-converter-stitch.php:4170`</small>
 
 ### `sc_hifi_opt` {#sc_hifi_opt}
 
@@ -101,7 +101,7 @@ sc_pad( $el, $side )
 
 Read a padding side ('top'|'bottom') from an element's computed style, handling BOTH the `padding-top` longhand AND the `padding` shorthand (`padding:T R B L` / `T V` / `T RL B` — the capture often emits the shorthand, e.g. the golden fixture footer `padding:64px 0px 32px`). Returns the length string or ''.
 
-<small>Source: `framework/extensions/site-converter/includes/class-fw-site-converter-stitch.php:5667`</small>
+<small>Source: `framework/extensions/site-converter/includes/class-fw-site-converter-stitch.php:5681`</small>
 
 ### `sc_wc_opt` {#sc_wc_opt}
 

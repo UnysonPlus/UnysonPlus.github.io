@@ -157,7 +157,7 @@ Dynamic Content registry/resolver accessor.
 
 **Returns** `FW_Dynamic_Content`
 
-<small>Source: `framework/includes/dynamic-content/class-fw-dynamic-content.php:247`</small>
+<small>Source: `framework/includes/dynamic-content/class-fw-dynamic-content.php:249`</small>
 
 ### `fw_rate_limit_ajax` {#fw_rate_limit_ajax}
 *🔌 pluggable*
@@ -181,7 +181,7 @@ difference between "never do this" and "not so fast".
 | `$limit` | `int` | Allowed hits per window. |
 | `$window` | `int` | Window length in seconds. |
 
-<small>Source: `framework/includes/rate-limit.php:169`</small>
+<small>Source: `framework/includes/rate-limit.php:173`</small>
 
 ### `fw_rate_limit_exceeded` {#fw_rate_limit_exceeded}
 *🔌 pluggable*
@@ -215,7 +215,7 @@ prevented.
 
 **Returns** `bool` True when the request should be refused.
 
-<small>Source: `framework/includes/rate-limit.php:94`</small>
+<small>Source: `framework/includes/rate-limit.php:96`</small>
 
 ### `fw_rate_limit_id` {#fw_rate_limit_id}
 *🔌 pluggable*
@@ -347,7 +347,7 @@ Choices for any "pick a post type" option, keyed by slug and labelled "Singular 
 
 **Returns** `array`
 
-<small>Source: `framework/includes/post-type-choices.php:56`</small>
+<small>Source: `framework/includes/post-type-choices.php:57`</small>
 
 ### `fw_upw_update_guard_assets` {#fw_upw_update_guard_assets}
 *🔌 pluggable*
@@ -386,7 +386,7 @@ unysonplus_arbitrary_spacing_rule( $cls )
 
 Turn one arbitrary spacing class (base `pt-[40px]` or infixed `pt-md-[40px]`) into a CSS rule, wrapping md/lg/… in the matching min-width media query. Returns '' for anything that isn't a recognised arbitrary spacing token.
 
-<small>Source: `framework/includes/dynamic-css.php:270`</small>
+<small>Source: `framework/includes/dynamic-css.php:271`</small>
 
 ### `unysonplus_border_preset_slug_map` {#unysonplus_border_preset_slug_map}
 *🔌 pluggable*
@@ -408,7 +408,7 @@ unysonplus_build_arbitrary_spacing_css( $items )
 
 Walk a page's builder JSON and emit one rule per DISTINCT arbitrary spacing token used. Responsive spacing options (&#123;base,md,lg&#125; under a padding- or margin- key) are handled breakpoint-aware (the layer key supplies the infix, mirroring sc_apply_styling_classes); every other arbitrary token found on a leaf is a base-level rule (covers composite `spacing` + raw css_class tokens).
 
-<small>Source: `framework/includes/dynamic-css.php:307`</small>
+<small>Source: `framework/includes/dynamic-css.php:308`</small>
 
 ### `unysonplus_build_page_css_string` {#unysonplus_build_page_css_string}
 *🔌 pluggable*
@@ -490,7 +490,7 @@ unysonplus_color_preset_slug_map()
 
 Returns a flat [ slug =&gt; hex ] lookup of the current Color Presets. Slug is derived from the preset name the same way css-tokens.php emits `:root --color-&#123;slug&#125;` (lower, strip non-alnum, join with '-').
 
-<small>Source: `framework/includes/presets/color-presets.php:64`</small>
+<small>Source: `framework/includes/presets/color-presets.php:66`</small>
 
 ### `unysonplus_container_width_choices` {#unysonplus_container_width_choices}
 *🔌 pluggable*
@@ -501,7 +501,7 @@ unysonplus_container_width_choices()
 
 Choices for the Section "Container Width" dropdown: Inherit (global width) → one entry per named width (keyed by SLUG, the stored value) → Custom. Defaults reproduce narrow/medium/wide, so a section that stored `preset: narrow` still resolves.
 
-<small>Source: `framework/includes/presets/container-width-presets.php:84`</small>
+<small>Source: `framework/includes/presets/container-width-presets.php:85`</small>
 
 ### `unysonplus_container_width_map` {#unysonplus_container_width_map}
 *🔌 pluggable*
@@ -512,7 +512,7 @@ unysonplus_container_width_map()
 
 [ slug =&gt; "1024px" ] for the section view's inline max-width resolution.
 
-<small>Source: `framework/includes/presets/container-width-presets.php:115`</small>
+<small>Source: `framework/includes/presets/container-width-presets.php:116`</small>
 
 ### `unysonplus_container_width_preset_slug_map` {#unysonplus_container_width_preset_slug_map}
 *🔌 pluggable*
@@ -534,7 +534,7 @@ unysonplus_css_escape_selector( $cls )
 
 Escape a class name for a CSS selector (Tailwind escapes [ ] . % / : # ( ) ! ,).
 
-<small>Source: `framework/includes/dynamic-css.php:259`</small>
+<small>Source: `framework/includes/dynamic-css.php:260`</small>
 
 ### `unysonplus_custom_hover_animation_slug_map` {#unysonplus_custom_hover_animation_slug_map}
 *🔌 pluggable*
@@ -545,7 +545,7 @@ unysonplus_custom_hover_animation_slug_map()
 
 id =&gt; slug map for custom hover animations (name → slug, with -2/-3 dedupe), mirroring unysonplus_button_preset_slug_map(). Shared by the CSS generator (css-tokens) and the shortcode dropdown choices so they always agree.
 
-<small>Source: `framework/includes/presets/button-presets.php:330`</small>
+<small>Source: `framework/includes/presets/button-presets.php:336`</small>
 
 ### `unysonplus_default_border_presets` {#unysonplus_default_border_presets}
 *🔌 pluggable*
@@ -578,7 +578,7 @@ unysonplus_default_button_size_presets()
 
 Default button size presets. Each entry produces a `.btn-&#123;slug&#125;` class on the frontend (emitted by the bridge in css-tokens.php). Mirrors the theme's `unysonplus_option_button_size_defaults()` so behaviour is unchanged on the official theme, but lives in the plugin so any theme benefits from sensible defaults.
 
-<small>Source: `framework/includes/presets/button-presets.php:206`</small>
+<small>Source: `framework/includes/presets/button-presets.php:208`</small>
 
 ### `unysonplus_default_color_presets` {#unysonplus_default_color_presets}
 *🔌 pluggable*
@@ -611,7 +611,7 @@ unysonplus_default_custom_hover_animations()
 
 Sample custom hover animations seeded into Theme Settings → Buttons → Hover Animations, so users start with working references to learn from / duplicate (rather than a blank list). Each entry: &#123; id, name, css &#125;. The CSS uses the editor tokens: &#123;&#123;BTN&#125;&#125; = this button (.btnfx-c-&#123;slug&#125;), &#123;&#123;ANIM&#125;&#125; = a unique @keyframes name. All motion-only (transform / box-shadow) so they layer over any button preset. These are SAMPLES — the 22 built-in effects live in hover-fx.css and are not duplicated here.
 
-<small>Source: `framework/includes/presets/button-presets.php:251`</small>
+<small>Source: `framework/includes/presets/button-presets.php:255`</small>
 
 ### `unysonplus_default_font_size_presets` {#unysonplus_default_font_size_presets}
 *🔌 pluggable*
@@ -633,7 +633,7 @@ unysonplus_default_gap_scale()
 
 Default gap scale — Bootstrap 5's `$spacers` verbatim. Caps at 3rem because gaps beyond that are section-level spacing in disguise; users who really want a 4rem gutter can add it via Theme Settings.
 
-<small>Source: `framework/includes/presets/spacing-presets.php:94`</small>
+<small>Source: `framework/includes/presets/spacing-presets.php:96`</small>
 
 ### `unysonplus_default_icon_badge_presets` {#unysonplus_default_icon_badge_presets}
 *🔌 pluggable*
@@ -737,7 +737,7 @@ unysonplus_enqueue_page_css()
 
 Enqueue the generated per-page CSS file under `unysonplus-dynamic`. Priority 36 keeps it right after presets (35), so it wins source order over them and the Asset Optimizer absorbs the handle at its later pass.
 
-<small>Source: `framework/includes/dynamic-css.php:205`</small>
+<small>Source: `framework/includes/dynamic-css.php:206`</small>
 
 ### `unysonplus_enqueue_preset_css` {#unysonplus_enqueue_preset_css}
 *🔌 pluggable*
@@ -750,7 +750,7 @@ Enqueues the generated preset CSS file under the handle `unysonplus-presets`. Ho
 
 If the file write fails, the inline fallback below handles emission.
 
-<small>Source: `framework/includes/css-tokens.php:1633`</small>
+<small>Source: `framework/includes/css-tokens.php:1651`</small>
 
 ### `unysonplus_ensure_page_css_file` {#unysonplus_ensure_page_css_file}
 *🔌 pluggable*
@@ -767,7 +767,7 @@ Ensure `uploads/unysonplus/page-&#123;id&#125;-&#123;hash&#125;.css` exists for 
 
 **Returns** `array\|false` ['url','path','hash'] or false to fall back to inline.
 
-<small>Source: `framework/includes/dynamic-css.php:156`</small>
+<small>Source: `framework/includes/dynamic-css.php:157`</small>
 
 ### `unysonplus_ensure_preset_css_file` {#unysonplus_ensure_preset_css_file}
 *🔌 pluggable*
@@ -782,7 +782,7 @@ false on any filesystem failure (caller should fall back to inline).
 
 **Returns** `array\|false` ['url' =&gt; string, 'path' =&gt; string, 'hash' =&gt; string] on success,
 
-<small>Source: `framework/includes/css-tokens.php:1559`</small>
+<small>Source: `framework/includes/css-tokens.php:1577`</small>
 
 ### `unysonplus_fluid_font_clamp` {#unysonplus_fluid_font_clamp}
 *🔌 pluggable*
@@ -801,7 +801,7 @@ Build an accessibility-safe fluid clamp() that scales a font size from a mobile 
 
 **Returns** `string\|null` clamp(...) or null.
 
-<small>Source: `framework/includes/presets/font-size-presets.php:99`</small>
+<small>Source: `framework/includes/presets/font-size-presets.php:103`</small>
 
 ### `unysonplus_fluid_type_a11y_report` {#unysonplus_fluid_type_a11y_report}
 *🔌 pluggable*
@@ -820,7 +820,7 @@ the tell of an over-steep curve (max far larger than min over a wide
 viewport range). We flag that so the UI can warn "widen the range or
 lower the ratio". Returns &#123; ok, intercept_px, zoom_ratio, note &#125;.
 
-<small>Source: `framework/includes/presets/font-size-presets.php:171`</small>
+<small>Source: `framework/includes/presets/font-size-presets.php:176`</small>
 
 ### `unysonplus_fluid_type_range` {#unysonplus_fluid_type_range}
 *🔌 pluggable*
@@ -831,7 +831,7 @@ unysonplus_fluid_type_range()
 
 Viewport range (px) over which fluid type interpolates: at/below `min` the mobile floor applies, at/above `max` the authored size applies. Filterable.
 
-<small>Source: `framework/includes/presets/font-size-presets.php:62`</small>
+<small>Source: `framework/includes/presets/font-size-presets.php:65`</small>
 
 ### `unysonplus_font_size_to_px` {#unysonplus_font_size_to_px}
 *🔌 pluggable*
@@ -842,7 +842,7 @@ unysonplus_font_size_to_px( $value, $root_px = 16 )
 
 Parse a CSS length expressed in px / rem / em into a px number (rem/em use the 16px root assumption). Returns null for anything else — calc(), clamp(), %, vw, unitless — so those values are left untouched by the fluid rewriter.
 
-<small>Source: `framework/includes/presets/font-size-presets.php:77`</small>
+<small>Source: `framework/includes/presets/font-size-presets.php:81`</small>
 
 ### `unysonplus_generate_type_scale` {#unysonplus_generate_type_scale}
 *🔌 pluggable*
@@ -857,7 +857,7 @@ Build the modular scale. Returns an ordered map of step-key =&gt; info: &#123; n
 | --- | --- | --- |
 | `$opts` | `array` | Overrides merged over unysonplus_type_scale_config(). |
 
-<small>Source: `framework/includes/presets/font-size-presets.php:200`</small>
+<small>Source: `framework/includes/presets/font-size-presets.php:205`</small>
 
 ### `unysonplus_get_border_presets` {#unysonplus_get_border_presets}
 *🔌 pluggable*
@@ -868,7 +868,7 @@ unysonplus_get_border_presets()
 
 The user's saved column Border Presets (Theme Settings → General → Borders) or the plugin defaults.
 
-<small>Source: `framework/includes/presets/border-presets.php:132`</small>
+<small>Source: `framework/includes/presets/border-presets.php:133`</small>
 
 ### `unysonplus_get_button_color_presets` {#unysonplus_get_button_color_presets}
 *🔌 pluggable*
@@ -879,7 +879,7 @@ unysonplus_get_button_color_presets()
 
 Returns the user's saved button color presets (from Theme Settings → Buttons → Button Color Presets) or the slug-based plugin defaults. Each entry: &#123; id, color_name, normal_text_color, normal_bg_color, hover_text_color, hover_bg_color &#125; where color fields hold Color Preset slugs (the frontend bridge resolves slug → hex). Empty hover fields fall back to the normal value at render time.
 
-<small>Source: `framework/includes/presets/button-presets.php:187`</small>
+<small>Source: `framework/includes/presets/button-presets.php:188`</small>
 
 ### `unysonplus_get_button_size_presets` {#unysonplus_get_button_size_presets}
 *🔌 pluggable*
@@ -890,7 +890,7 @@ unysonplus_get_button_size_presets()
 
 Returns the user's saved button size presets (Theme Settings → Buttons → Sizes) or the plugin defaults. Each entry: &#123; id, size_name, slug, font_size, line_height, padding&#123;top,right,bottom,left&#125;, border_width, border_radius &#125;. Slug becomes the CSS class suffix `.btn-&#123;slug&#125;`.
 
-<small>Source: `framework/includes/presets/button-presets.php:230`</small>
+<small>Source: `framework/includes/presets/button-presets.php:233`</small>
 
 ### `unysonplus_get_color_presets` {#unysonplus_get_color_presets}
 *🔌 pluggable*
@@ -901,7 +901,7 @@ unysonplus_get_color_presets()
 
 Returns the current color presets, preferring saved Theme Settings values over the defaults.
 
-<small>Source: `framework/includes/presets/color-presets.php:47`</small>
+<small>Source: `framework/includes/presets/color-presets.php:48`</small>
 
 ### `unysonplus_get_container_width_presets` {#unysonplus_get_container_width_presets}
 *🔌 pluggable*
@@ -923,7 +923,7 @@ unysonplus_get_custom_hover_animations()
 
 Returns the user's saved custom hover animations (Theme Settings → Buttons → Hover Animations) or the seeded samples. Each entry: &#123; id, name, css &#125;. Slug (from name) becomes the class suffix `.btnfx-c-&#123;slug&#125;`.
 
-<small>Source: `framework/includes/presets/button-presets.php:313`</small>
+<small>Source: `framework/includes/presets/button-presets.php:318`</small>
 
 ### `unysonplus_get_default_gap` {#unysonplus_get_default_gap}
 *🔌 pluggable*
@@ -934,7 +934,7 @@ unysonplus_get_default_gap()
 
 Slug picked as the site-wide default column gap. `''` means "no override — let Bootstrap's stock `.row` gutter behaviour stand."
 
-<small>Source: `framework/includes/presets/spacing-presets.php:142`</small>
+<small>Source: `framework/includes/presets/spacing-presets.php:146`</small>
 
 ### `unysonplus_get_default_gap_x` {#unysonplus_get_default_gap_x}
 *🔌 pluggable*
@@ -945,7 +945,7 @@ unysonplus_get_default_gap_x()
 
 Optional horizontal-axis override on top of `default_gap`. `''` means "inherit from Default Gap." Honoured even when Default Gap is itself blank — useful for "horizontal-only" tweaks against Bootstrap stock.
 
-<small>Source: `framework/includes/presets/spacing-presets.php:159`</small>
+<small>Source: `framework/includes/presets/spacing-presets.php:163`</small>
 
 ### `unysonplus_get_default_gap_y` {#unysonplus_get_default_gap_y}
 *🔌 pluggable*
@@ -956,7 +956,7 @@ unysonplus_get_default_gap_y()
 
 Vertical counterpart to `unysonplus_get_default_gap_x()`.
 
-<small>Source: `framework/includes/presets/spacing-presets.php:174`</small>
+<small>Source: `framework/includes/presets/spacing-presets.php:178`</small>
 
 ### `unysonplus_get_font_size_presets` {#unysonplus_get_font_size_presets}
 *🔌 pluggable*
@@ -967,7 +967,7 @@ unysonplus_get_font_size_presets()
 
 Returns the current font-size presets, preferring saved Theme Settings values over the defaults.
 
-<small>Source: `framework/includes/presets/font-size-presets.php:21`</small>
+<small>Source: `framework/includes/presets/font-size-presets.php:22`</small>
 
 ### `unysonplus_get_gap_scale` {#unysonplus_get_gap_scale}
 *🔌 pluggable*
@@ -978,7 +978,7 @@ unysonplus_get_gap_scale()
 
 Returns the live gap scale (&#123;name, size&#125; entries). Theme Settings override takes precedence over plugin defaults — same pattern as `unysonplus_get_spacing_scale()`.
 
-<small>Source: `framework/includes/presets/spacing-presets.php:126`</small>
+<small>Source: `framework/includes/presets/spacing-presets.php:129`</small>
 
 ### `unysonplus_get_icon_badge_presets` {#unysonplus_get_icon_badge_presets}
 *🔌 pluggable*
@@ -989,7 +989,7 @@ unysonplus_get_icon_badge_presets()
 
 The user's saved Icon Badge presets (Theme Settings → Components → Icon Badges) or the plugin defaults.
 
-<small>Source: `framework/includes/presets/icon-badge-presets.php:132`</small>
+<small>Source: `framework/includes/presets/icon-badge-presets.php:133`</small>
 
 ### `unysonplus_get_image_style_presets` {#unysonplus_get_image_style_presets}
 *🔌 pluggable*
@@ -1022,7 +1022,7 @@ unysonplus_get_section_style_by_slug( $slug )
 
 Resolve a slug (a section's stored `variant`) back to its full preset, or null.
 
-<small>Source: `framework/includes/presets/section-style-presets.php:207`</small>
+<small>Source: `framework/includes/presets/section-style-presets.php:209`</small>
 
 ### `unysonplus_get_section_style_presets` {#unysonplus_get_section_style_presets}
 *🔌 pluggable*
@@ -1033,7 +1033,7 @@ unysonplus_get_section_style_presets()
 
 The user's saved Section Styles (Theme Settings → Components → Section Styles) or the plugin defaults. Border shape is normalized to the combined row so consumers only read `$sp['border']`.
 
-<small>Source: `framework/includes/presets/section-style-presets.php:137`</small>
+<small>Source: `framework/includes/presets/section-style-presets.php:138`</small>
 
 ### `unysonplus_get_shape_divider_presets` {#unysonplus_get_shape_divider_presets}
 *🔌 pluggable*
@@ -1070,7 +1070,7 @@ Defensive migration: if a site has Phase-1-era flat-dict data saved
 (&#123;sp_0 =&gt; '...', sp_1 =&gt; '...'&#125;), this getter transparently converts it
 to the entry-array shape on read.
 
-<small>Source: `framework/includes/presets/spacing-presets.php:45`</small>
+<small>Source: `framework/includes/presets/spacing-presets.php:46`</small>
 
 ### `unysonplus_get_table_presets` {#unysonplus_get_table_presets}
 *🔌 pluggable*
@@ -1081,7 +1081,7 @@ unysonplus_get_table_presets()
 
 The user's saved Table Presets (Theme Settings → Components → Tables) or the plugin defaults.
 
-<small>Source: `framework/includes/presets/table-presets.php:215`</small>
+<small>Source: `framework/includes/presets/table-presets.php:216`</small>
 
 ### `unysonplus_icon_badge_preset_slug_map` {#unysonplus_icon_badge_preset_slug_map}
 *🔌 pluggable*
@@ -1114,7 +1114,7 @@ unysonplus_inline_page_css_fallback()
 
 Inline &lt;style id="unysonplus-dynamic-css"&gt; fallback, fired only when the file-based enqueue didn't take (read-only uploads dir, etc.).
 
-<small>Source: `framework/includes/dynamic-css.php:231`</small>
+<small>Source: `framework/includes/dynamic-css.php:232`</small>
 
 ### `unysonplus_inline_preset_css_fallback` {#unysonplus_inline_preset_css_fallback}
 *🔌 pluggable*
@@ -1128,7 +1128,7 @@ Inline `&lt;style id="unysonplus-presets"&gt;` fallback that only fires when the
 Hooked at wp_head / admin_head priority 2 — after wp_enqueue_scripts
 has run at priority 1 — so wp_style_is( 'enqueued' ) is reliable here.
 
-<small>Source: `framework/includes/css-tokens.php:1655`</small>
+<small>Source: `framework/includes/css-tokens.php:1673`</small>
 
 ### `unysonplus_maybe_migrate_button_colors` {#unysonplus_maybe_migrate_button_colors}
 *🔌 pluggable*
@@ -1141,7 +1141,7 @@ One-shot DB migration for `button_colors`: 1. Convert any hex value (`#abc123`) 
 
 Runs once on `admin_init`, guarded by `unysonplus_button_colors_migrated_v3`.
 
-<small>Source: `framework/includes/presets/button-presets.php:378`</small>
+<small>Source: `framework/includes/presets/button-presets.php:384`</small>
 
 ### `unysonplus_migrate_section_style_border_row` {#unysonplus_migrate_section_style_border_row}
 *🔌 pluggable*
@@ -1152,7 +1152,7 @@ unysonplus_migrate_section_style_border_row()
 
 One-time migration: fold each saved Section Style's legacy flat border leaves (border_style / border_width / border_color) into the combined `border` row, so the editor reflects the value and a re-save doesn't drop it. Writes the theme- scoped settings blob directly (same seam as the preset store), gated by a flag. Runs after the theme-store migration (priority 20) so it sees the moved presets.
 
-<small>Source: `framework/includes/presets/section-style-presets.php:157`</small>
+<small>Source: `framework/includes/presets/section-style-presets.php:159`</small>
 
 ### `unysonplus_mobile_font_size_scale` {#unysonplus_mobile_font_size_scale}
 *🔌 pluggable*
@@ -1168,7 +1168,7 @@ Tiered auto-reducer for mobile font sizes. Returns the mobile px value for a giv
 | `$desktop_px` | `int\|float` | Desktop pixel value (number, no unit). |
 | `$context` | `string` | Optional tag for filter consumers (e.g. 'h1', 'body'). |
 
-<small>Source: `framework/includes/presets/font-size-presets.php:41`</small>
+<small>Source: `framework/includes/presets/font-size-presets.php:43`</small>
 
 ### `unysonplus_pattern_detect_root_class` {#unysonplus_pattern_detect_root_class}
 *🔌 pluggable*
@@ -1305,7 +1305,7 @@ unysonplus_preset_css_hash()
 
 Stable content hash of every input that drives the preset CSS. Used as the filename suffix so a preset change yields a new URL (auto cache-bust for browsers, CDN, and the Asset Optimizer combiner).
 
-<small>Source: `framework/includes/css-tokens.php:1525`</small>
+<small>Source: `framework/includes/css-tokens.php:1543`</small>
 
 ### `unysonplus_preset_store_get` {#unysonplus_preset_store_get}
 *🔌 pluggable*
@@ -1341,7 +1341,7 @@ Write a preset value to the SAME store unysonplus_preset_store_get() reads — t
 
 **Returns** `bool` True on write attempt, false when storage is unavailable.
 
-<small>Source: `framework/includes/presets/store.php:70`</small>
+<small>Source: `framework/includes/presets/store.php:71`</small>
 
 ### `unysonplus_register_arbitrary_spacing_scale` {#unysonplus_register_arbitrary_spacing_scale}
 *🔌 pluggable*
@@ -1358,7 +1358,7 @@ Register the Tailwind-style ARBITRARY spacing values found in a page-builder JSO
 
 **Returns** `int` Number of new scale entries added.
 
-<small>Source: `framework/includes/presets/spacing-presets.php:197`</small>
+<small>Source: `framework/includes/presets/spacing-presets.php:201`</small>
 
 ### `unysonplus_render_site_background_pattern` {#unysonplus_render_site_background_pattern}
 *🔌 pluggable*
@@ -1408,7 +1408,7 @@ unysonplus_section_style_choices()
 
 Choices for the Section's "Section Variant" dropdown: '' =&gt; Default, then one entry per style keyed by its SLUG (the stored value — scalar, so converting the old hardcoded select to this is not a value-shape change).
 
-<small>Source: `framework/includes/presets/section-style-presets.php:188`</small>
+<small>Source: `framework/includes/presets/section-style-presets.php:190`</small>
 
 ### `unysonplus_section_style_normalize_border` {#unysonplus_section_style_normalize_border}
 *🔌 pluggable*
@@ -1419,7 +1419,7 @@ unysonplus_section_style_normalize_border( $sp )
 
 Fold a preset's legacy flat border leaves (border_style / border_width / border_color) into the combined `border` =&gt; &#123; width, style, color &#125; shape used by the multi-inline Border row. A no-op once `border` is already present. Keeps the reader/consumer working on presets saved before the combine.
 
-<small>Source: `framework/includes/presets/section-style-presets.php:110`</small>
+<small>Source: `framework/includes/presets/section-style-presets.php:111`</small>
 
 ### `unysonplus_section_style_preset_slug_map` {#unysonplus_section_style_preset_slug_map}
 *🔌 pluggable*
@@ -1513,7 +1513,7 @@ unysonplus_styling_presets_enabled()
 
 Master switch for the whole styling layer (Styling tab + preset pickers + Component Presets editor + this preset stylesheet). Default ON. Off = the "bare, structure-only page builder" mode (Page Builder settings → Styling Presets). A non-null default short-circuits the ext-settings read so it never loads the settings schema (avoids firing fw_option_types_init early).
 
-<small>Source: `framework/includes/css-tokens.php:1615`</small>
+<small>Source: `framework/includes/css-tokens.php:1633`</small>
 
 ### `unysonplus_table_preset_slug_map` {#unysonplus_table_preset_slug_map}
 *🔌 pluggable*
@@ -1535,6 +1535,6 @@ unysonplus_type_scale_config()
 
 Default type-scale configuration, filterable. `ratio` is the step multiplier at the max viewport (desktop); `ratio_mobile` is the gentler multiplier at the min viewport (so headings shrink more than body on small screens). Viewport range comes from unysonplus_fluid_type_range().
 
-<small>Source: `framework/includes/presets/font-size-presets.php:144`</small>
+<small>Source: `framework/includes/presets/font-size-presets.php:148`</small>
 
 ← Back to [Functions overview](./index.md)

@@ -1,0 +1,1479 @@
+---
+title: Core Includes — functions
+sidebar_label: Core Includes
+slug: /functions/core-includes
+description: Public PHP helper functions in the UnysonPlus Core Includes subsystem — signatures, parameters, and return values.
+hide_table_of_contents: true
+---
+
+<!-- ⚠️ GENERATED — do not edit by hand. Edit the framework docblocks, then run: php scripts/extract-php-api.php … && node scripts/gen-php-api.mjs -->
+
+# Core Includes — functions
+
+**105 public functions.** 105 are 🔌 pluggable (`function_exists()`-guarded, so a theme/child can override them).
+
+| Function | Summary |
+| --- | --- |
+| [`fw_delete_resized_thumbnails`](#fw_delete_resized_thumbnails) | — |
+| [`fw_device_tabs_definition`](#fw_device_tabs_definition) | The three device tabs, displayed Desktop → Tablet → Phone (the familiar Elementor order). This is display order only — the cascade stays mobile- first / Bootstrap-native: `key` 'base' (Phone) is the min-width:0 layer that applies at all widths, 'md'/'lg' are the ≥768 / ≥992 overrides. `device` is the builder's global device slug this tab maps to. |
+| [`fw_dynamic_content`](#fw_dynamic_content) | Dynamic Content registry/resolver accessor. |
+| [`fw_rate_limit_ajax`](#fw_rate_limit_ajax) | Rate-limit guard for an AJAX handler. |
+| [`fw_rate_limit_exceeded`](#fw_rate_limit_exceeded) | — |
+| [`fw_rate_limit_id`](#fw_rate_limit_id) | The identity a limit is counted against. |
+| [`fw_render_device_tabs`](#fw_render_device_tabs) | Markup for the device switcher. The base (phone) tab is marked active by default; fw-device-tabs.js re-syncs the active tab to window.fwPbDevice on init and on every `fw:builder:device-preview` event. |
+| [`fw_upw_extract_svg_path`](#fw_upw_extract_svg_path) | Pull the geometry out of an &lt;svg&gt; string for path-only consumers (shape dividers). Returns array( 'path' =&gt; &lt;concatenated d of every top-level &lt;path&gt;&gt;, 'viewBox' =&gt; &lt;vb&gt; ). Multiple &lt;path&gt; elements are joined (a single fill covers them all — fine for a silhouette edge). Falls back to the shape-divider convention viewBox 0 0 1200 120 when none is declared. The input is admin-authored + already sanitised on save (svg-code's _get_value_from_input), so this only parses; it does not re-sanitise. |
+| [`fw_upw_internal_post_types`](#fw_upw_internal_post_types) | Post type keys that are WordPress plumbing, never user content. |
+| [`fw_upw_migrate_uploads`](#fw_upw_migrate_uploads) | One-time migration: consolidate the legacy sibling uploads/unysonplus-* folders — and the loose preset/page CSS that used to sit directly in uploads/unysonplus/ — into uploads/unysonplus/&lt;subdir&gt;/. Guarded by an option flag; runs once on admin_init. Best-effort @rename: a folder that can't move is left in place and the new code simply writes fresh files at the new location (most of these are regenerable caches or re-downloadable content). |
+| [`fw_upw_normalize_divider_svg`](#fw_upw_normalize_divider_svg) | Prepare a divider's stored SVG for rendering: pull the viewBox, keep the INNER content — every &lt;g&gt;/&lt;path&gt;, so multi-layer + opacity dividers (the shapedividers.com / svgbackgrounds style) survive intact — and rewrite every fill to `currentColor` so the per-section Colour drives every layer while each layer's opacity is preserved. Input is already sanitised on save (svg-code) or a trusted built-in. |
+| [`fw_upw_normalize_legacy_upload_url`](#fw_upw_normalize_legacy_upload_url) | Rewrite a legacy `/uploads/unysonplus-&lt;x&gt;/…` URL to the consolidated `/uploads/unysonplus/&lt;x&gt;/…` location, so URLs stored in the DB before the consolidation (Lottie / Rive `src` values) still resolve after the folder move. Applied on read (render + editor prefill). A non-matching URL is returned unchanged. |
+| [`fw_upw_post_type_choices`](#fw_upw_post_type_choices) | Choices for any "pick a post type" option, keyed by slug and labelled "Singular (slug)" so an ambiguous label is still identifiable. |
+| [`fw_upw_update_guard_assets`](#fw_upw_update_guard_assets) | — |
+| [`fw_upw_uploads_dir`](#fw_upw_uploads_dir) | &#123; path, url &#125; of uploads/unysonplus[/&lt;subdir&gt;] (NO trailing slash on the returned path/url). Sub-dirs are created lazily by the caller (wp_mkdir_p). |
+| [`unysonplus_arbitrary_spacing_rule`](#unysonplus_arbitrary_spacing_rule) | Turn one arbitrary spacing class (base `pt-[40px]` or infixed `pt-md-[40px]`) into a CSS rule, wrapping md/lg/… in the matching min-width media query. Returns '' for anything that isn't a recognised arbitrary spacing token. |
+| [`unysonplus_border_preset_slug_map`](#unysonplus_border_preset_slug_map) | Returns [ preset-id =&gt; css-slug ] for the current column Border Presets, so the generated class is readable: a preset named "Card" → `.boxp-card`. Mirrors unysonplus_button_preset_slug_map() (collisions get -2/-3, empty names fall back to the id). Shared by css-tokens.php (rule generation) and the column's Border Preset dropdown so class + value + render agree. |
+| [`unysonplus_build_arbitrary_spacing_css`](#unysonplus_build_arbitrary_spacing_css) | Walk a page's builder JSON and emit one rule per DISTINCT arbitrary spacing token used. Responsive spacing options (&#123;base,md,lg&#125; under a padding- or margin- key) are handled breakpoint-aware (the layer key supplies the infix, mirroring sc_apply_styling_classes); every other arbitrary token found on a leaf is a base-level rule (covers composite `spacing` + raw css_class tokens). |
+| [`unysonplus_build_page_css_string`](#unysonplus_build_page_css_string) | Build the consolidated per-page CSS body (no &lt;style&gt; tag). |
+| [`unysonplus_build_presets_css_string`](#unysonplus_build_presets_css_string) | Builds the preset CSS as a string (no echo, no file write). |
+| [`unysonplus_button_preset_slug_map`](#unysonplus_button_preset_slug_map) | Returns [ preset-id =&gt; css-slug ] for the current Button Presets, so the generated CSS class is readable and override-friendly: a preset named "Primary" → `.btn-primary` (overrides Bootstrap's own `.btn-primary`), "Primary Outline" → `.btn-primary-outline`. |
+| [`unysonplus_collect_element_css`](#unysonplus_collect_element_css) | Recursively walk builder JSON nodes, collecting each element's scoped Custom CSS into $parts. A node is `&#123; type, atts:&#123; …optionValues &#125;, _items &#125;` — the page-builder item layer stores every option value (including `custom_css` and `unique_id`) under `atts` (see class-page-builder-item.php). We read from `atts` and fall back to the node top level for any flattened / legacy shape. |
+| [`unysonplus_color_preset_slug_map`](#unysonplus_color_preset_slug_map) | Returns a flat [ slug =&gt; hex ] lookup of the current Color Presets. Slug is derived from the preset name the same way css-tokens.php emits `:root --color-&#123;slug&#125;` (lower, strip non-alnum, join with '-'). |
+| [`unysonplus_container_width_choices`](#unysonplus_container_width_choices) | Choices for the Section "Container Width" dropdown: Inherit (global width) → one entry per named width (keyed by SLUG, the stored value) → Custom. Defaults reproduce narrow/medium/wide, so a section that stored `preset: narrow` still resolves. |
+| [`unysonplus_container_width_map`](#unysonplus_container_width_map) | [ slug =&gt; "1024px" ] for the section view's inline max-width resolution. |
+| [`unysonplus_container_width_preset_slug_map`](#unysonplus_container_width_preset_slug_map) | [ preset-id =&gt; css-slug ] for the current Container Widths, so the stored value is a readable slug ("Wide" → `wide`). Collisions get -2/-3; an empty name falls back to the id. Shared by the Container Width dropdown, the width map and the view resolver so value + render agree. |
+| [`unysonplus_css_escape_selector`](#unysonplus_css_escape_selector) | Escape a class name for a CSS selector (Tailwind escapes [ ] . % / : # ( ) ! ,). |
+| [`unysonplus_custom_hover_animation_slug_map`](#unysonplus_custom_hover_animation_slug_map) | id =&gt; slug map for custom hover animations (name → slug, with -2/-3 dedupe), mirroring unysonplus_button_preset_slug_map(). Shared by the CSS generator (css-tokens) and the shortcode dropdown choices so they always agree. |
+| [`unysonplus_default_border_presets`](#unysonplus_default_border_presets) | Default column Border Presets, in the shape consumed by the `border-presets` option type: border_color is a compact-picker value &#123; predefined: &lt;color- preset-slug&gt;, custom: '' &#125;; border_width / border_radius are unit-input &#123; value, unit &#125;; box_shadow is &#123; x, y, blur, spread, color, inset &#125;. Empty hover fields inherit the default look at render time. |
+| [`unysonplus_default_button_color_presets`](#unysonplus_default_button_color_presets) | Default button color presets, in the SKIN shape consumed by the `button-presets` option type: each preset has a nested `states` map (default / hover / active / focus / disabled) whose color fields are compact-picker values &#123; predefined: &lt;color-preset-slug&gt;, custom: '' &#125;. Empty states (active/focus/disabled) inherit the default look at render time. Slugs reference Color Presets (see unysonplus_default_color_presets): white/gray/light-gray/blue/green/cyan/amber/red/black are always present. |
+| [`unysonplus_default_button_size_presets`](#unysonplus_default_button_size_presets) | Default button size presets. Each entry produces a `.btn-&#123;slug&#125;` class on the frontend (emitted by the bridge in css-tokens.php). Mirrors the theme's `unysonplus_option_button_size_defaults()` so behaviour is unchanged on the official theme, but lives in the plugin so any theme benefits from sensible defaults. |
+| [`unysonplus_default_color_presets`](#unysonplus_default_color_presets) | — |
+| [`unysonplus_default_container_width_presets`](#unysonplus_default_container_width_presets) | The three built-in Container Widths, in the shape the `addable-box` schema saves: width is a unit-input value &#123; value, unit &#125;. Slugs derive from the names → narrow / medium / wide, matching the old hardcoded section container_width map. |
+| [`unysonplus_default_custom_hover_animations`](#unysonplus_default_custom_hover_animations) | Sample custom hover animations seeded into Theme Settings → Buttons → Hover Animations, so users start with working references to learn from / duplicate (rather than a blank list). Each entry: &#123; id, name, css &#125;. The CSS uses the editor tokens: &#123;&#123;BTN&#125;&#125; = this button (.btnfx-c-&#123;slug&#125;), &#123;&#123;ANIM&#125;&#125; = a unique @keyframes name. All motion-only (transform / box-shadow) so they layer over any button preset. These are SAMPLES — the 22 built-in effects live in hover-fx.css and are not duplicated here. |
+| [`unysonplus_default_font_size_presets`](#unysonplus_default_font_size_presets) | — |
+| [`unysonplus_default_gap_scale`](#unysonplus_default_gap_scale) | Default gap scale — Bootstrap 5's `$spacers` verbatim. Caps at 3rem because gaps beyond that are section-level spacing in disguise; users who really want a 4rem gutter can add it via Theme Settings. |
+| [`unysonplus_default_icon_badge_presets`](#unysonplus_default_icon_badge_presets) | Default Icon Badge presets, in the shape consumed by the `icon-badge-presets` option type. icon_color / border_color are compact-picker values &#123; predefined: &lt;color-preset-slug&gt;, custom: '' &#125; (palette-linked); badge_size / icon_size / border_width / border_radius are unit-input &#123; value, unit &#125;; the tile fill is a background-pro value (&#123; color: &#123; value: &#123; predefined, custom &#125; &#125; &#125;); box_shadow is &#123; x, y, blur, spread, color, inset &#125;. Empty hover fields inherit the default. |
+| [`unysonplus_default_image_style_presets`](#unysonplus_default_image_style_presets) | — |
+| [`unysonplus_default_pattern_presets`](#unysonplus_default_pattern_presets) | — |
+| [`unysonplus_default_section_style_presets`](#unysonplus_default_section_style_presets) | The three built-in Section Styles, in the shape the `addable-box` schema saves: background is a background-pro value; text/heading/link colors are compact-picker values &#123; predefined, custom &#125;; border_* are scalar/unit-input; padding is a spacing value (mode 'padding'). Colours reproduce the previous hardcoded `.section--alt\|light\|dark` CSS exactly, so nothing changes on upgrade. |
+| [`unysonplus_default_shape_divider_presets`](#unysonplus_default_shape_divider_presets) | — |
+| [`unysonplus_default_spacing_scale`](#unysonplus_default_spacing_scale) | Returns the default spacing scale as an array of &#123;name, size&#125; entries. Names 0–5 match Bootstrap's stock spacer scale; sites can extend beyond via Theme Settings → General → Spacing. |
+| [`unysonplus_default_table_presets`](#unysonplus_default_table_presets) | — |
+| [`unysonplus_enqueue_page_css`](#unysonplus_enqueue_page_css) | Enqueue the generated per-page CSS file under `unysonplus-dynamic`. Priority 36 keeps it right after presets (35), so it wins source order over them and the Asset Optimizer absorbs the handle at its later pass. |
+| [`unysonplus_enqueue_preset_css`](#unysonplus_enqueue_preset_css) | Enqueues the generated preset CSS file under the handle `unysonplus-presets`. Hooked early on wp_enqueue_scripts / admin_enqueue_scripts so the Asset Optimizer absorbs the handle at its priority-9999 pass. |
+| [`unysonplus_ensure_page_css_file`](#unysonplus_ensure_page_css_file) | Ensure `uploads/unysonplus/page-&#123;id&#125;-&#123;hash&#125;.css` exists for the current page CSS. Hash is taken over the built string so the URL changes whenever the page's dynamic CSS does (auto cache-bust). Stale generations for the same post are purged best-effort. |
+| [`unysonplus_ensure_preset_css_file`](#unysonplus_ensure_preset_css_file) | Ensures `wp-content/uploads/unysonplus/presets-&#123;hash&#125;.css` exists for the current preset state. Lazily purges stale `presets-*.css` files in the same directory whenever a new hash is generated. |
+| [`unysonplus_fluid_font_clamp`](#unysonplus_fluid_font_clamp) | Build an accessibility-safe fluid clamp() that scales a font size from a mobile floor (`$min_px`) up to the authored size (`$max_px`) across the fluid viewport range. The preferred value is `rem + vw` — NOT vw alone — so browser zoom and the user's font-size preference still scale the text (WCAG 2.1 SC 1.4.4). The clamp max is in rem for the same reason. Returns null when there is nothing to interpolate (min &gt;= max, e.g. body text). |
+| [`unysonplus_fluid_type_a11y_report`](#unysonplus_fluid_type_a11y_report) | WCAG 1.4.4 (resize text to 200%) guardrail / readout for one fluid step. |
+| [`unysonplus_fluid_type_range`](#unysonplus_fluid_type_range) | Viewport range (px) over which fluid type interpolates: at/below `min` the mobile floor applies, at/above `max` the authored size applies. Filterable. |
+| [`unysonplus_font_size_to_px`](#unysonplus_font_size_to_px) | Parse a CSS length expressed in px / rem / em into a px number (rem/em use the 16px root assumption). Returns null for anything else — calc(), clamp(), %, vw, unitless — so those values are left untouched by the fluid rewriter. |
+| [`unysonplus_generate_type_scale`](#unysonplus_generate_type_scale) | Build the modular scale. Returns an ordered map of step-key =&gt; info: &#123; n, max_px, min_px, value (clamp string or rem for a fixed step), a11y &#125;. Step keys: 'n2','n1' (below base), '0' (base), '1'..'N' (above base). |
+| [`unysonplus_get_border_presets`](#unysonplus_get_border_presets) | The user's saved column Border Presets (Theme Settings → General → Borders) or the plugin defaults. |
+| [`unysonplus_get_button_color_presets`](#unysonplus_get_button_color_presets) | Returns the user's saved button color presets (from Theme Settings → Buttons → Button Color Presets) or the slug-based plugin defaults. Each entry: &#123; id, color_name, normal_text_color, normal_bg_color, hover_text_color, hover_bg_color &#125; where color fields hold Color Preset slugs (the frontend bridge resolves slug → hex). Empty hover fields fall back to the normal value at render time. |
+| [`unysonplus_get_button_size_presets`](#unysonplus_get_button_size_presets) | Returns the user's saved button size presets (Theme Settings → Buttons → Sizes) or the plugin defaults. Each entry: &#123; id, size_name, slug, font_size, line_height, padding&#123;top,right,bottom,left&#125;, border_width, border_radius &#125;. Slug becomes the CSS class suffix `.btn-&#123;slug&#125;`. |
+| [`unysonplus_get_color_presets`](#unysonplus_get_color_presets) | — |
+| [`unysonplus_get_container_width_presets`](#unysonplus_get_container_width_presets) | Saved Container Widths (theme-scoped preset store), else the built-in defaults. |
+| [`unysonplus_get_custom_hover_animations`](#unysonplus_get_custom_hover_animations) | Returns the user's saved custom hover animations (Theme Settings → Buttons → Hover Animations) or the seeded samples. Each entry: &#123; id, name, css &#125;. Slug (from name) becomes the class suffix `.btnfx-c-&#123;slug&#125;`. |
+| [`unysonplus_get_default_gap`](#unysonplus_get_default_gap) | Slug picked as the site-wide default column gap. `''` means "no override — let Bootstrap's stock `.row` gutter behaviour stand." |
+| [`unysonplus_get_default_gap_x`](#unysonplus_get_default_gap_x) | Optional horizontal-axis override on top of `default_gap`. `''` means "inherit from Default Gap." Honoured even when Default Gap is itself blank — useful for "horizontal-only" tweaks against Bootstrap stock. |
+| [`unysonplus_get_default_gap_y`](#unysonplus_get_default_gap_y) | Vertical counterpart to `unysonplus_get_default_gap_x()`. |
+| [`unysonplus_get_font_size_presets`](#unysonplus_get_font_size_presets) | — |
+| [`unysonplus_get_gap_scale`](#unysonplus_get_gap_scale) | Returns the live gap scale (&#123;name, size&#125; entries). Theme Settings override takes precedence over plugin defaults — same pattern as `unysonplus_get_spacing_scale()`. |
+| [`unysonplus_get_icon_badge_presets`](#unysonplus_get_icon_badge_presets) | The user's saved Icon Badge presets (Theme Settings → Components → Icon Badges) or the plugin defaults. |
+| [`unysonplus_get_image_style_presets`](#unysonplus_get_image_style_presets) | Saved image styles (theme-scoped) or the defaults when nothing is saved yet. |
+| [`unysonplus_get_pattern_presets`](#unysonplus_get_pattern_presets) | Saved patterns (theme-scoped) or the defaults when nothing is saved yet. |
+| [`unysonplus_get_section_style_by_slug`](#unysonplus_get_section_style_by_slug) | Resolve a slug (a section's stored `variant`) back to its full preset, or null. |
+| [`unysonplus_get_section_style_presets`](#unysonplus_get_section_style_presets) | The user's saved Section Styles (Theme Settings → Components → Section Styles) or the plugin defaults. Border shape is normalized to the combined row so consumers only read `$sp['border']`. |
+| [`unysonplus_get_shape_divider_presets`](#unysonplus_get_shape_divider_presets) | Saved shape dividers (theme-scoped) or the built-in four when nothing is saved yet. |
+| [`unysonplus_get_site_background_pattern`](#unysonplus_get_site_background_pattern) | The pattern id chosen for the whole-site background (Theme Settings → Components → Background Patterns → Site Background Pattern), or '' when none. Theme-scoped. |
+| [`unysonplus_get_spacing_scale`](#unysonplus_get_spacing_scale) | Returns the spacing scale as an array of &#123;name, size&#125; entries. Each entry's name slug becomes the suffix of Bootstrap-style utility classes (.m-&#123;slug&#125;, .p-&#123;slug&#125;, .mt-&#123;slug&#125;, etc.) emitted by the bridge. Theme override (Theme Settings → General → Spacing) takes precedence over plugin defaults. |
+| [`unysonplus_get_table_presets`](#unysonplus_get_table_presets) | The user's saved Table Presets (Theme Settings → Components → Tables) or the plugin defaults. |
+| [`unysonplus_icon_badge_preset_slug_map`](#unysonplus_icon_badge_preset_slug_map) | Returns [ preset-id =&gt; css-slug ] for the current Icon Badge presets, so the generated class is readable: a preset named "Circle" → `.iconb-circle`. Mirrors unysonplus_border_preset_slug_map() (collisions get -2/-3, empty names fall back to the id). Shared by css-tokens.php (rule generation) and the icon_box's Icon Badge Preset dropdown so class + value + render agree. |
+| [`unysonplus_image_style_preset_slug_map`](#unysonplus_image_style_preset_slug_map) | [ preset-id =&gt; css-slug ] so a style named "Portrait Card" → `.imgs-portrait-card`. Slug = lower-case, non-alphanumerics → '-', trimmed; collisions get a numeric suffix in preset order; empty/symbol-only names fall back to the sanitized id. Single source of truth for the `.imgs-&#123;slug&#125;` class — shared by the css-tokens generation and the consumption picker (sc_get_image_style_choices()). |
+| [`unysonplus_inline_page_css_fallback`](#unysonplus_inline_page_css_fallback) | Inline &lt;style id="unysonplus-dynamic-css"&gt; fallback, fired only when the file-based enqueue didn't take (read-only uploads dir, etc.). |
+| [`unysonplus_inline_preset_css_fallback`](#unysonplus_inline_preset_css_fallback) | Inline `&lt;style id="unysonplus-presets"&gt;` fallback that only fires when the file-based enqueue didn't take (read-only filesystem, etc.). |
+| [`unysonplus_maybe_migrate_button_colors`](#unysonplus_maybe_migrate_button_colors) | One-shot DB migration for `button_colors`: 1. Convert any hex value (`#abc123`) into the matching Color Preset slug via hex-equality lookup. 2. Detect any value that's a slug NOT present in the current Color Presets (e.g. legacy `primary`/`info`/`danger` left over from an earlier defaults version where Bootstrap semantic colors were assumed available). Treat those as empty for the next step. 3. Fill any empty field with the slug from the plugin's default button preset whose `color_name` matches this entry's (case- insensitive). Restores working defaults for entries whose old slugs / hexes can't be resolved. |
+| [`unysonplus_migrate_section_style_border_row`](#unysonplus_migrate_section_style_border_row) | One-time migration: fold each saved Section Style's legacy flat border leaves (border_style / border_width / border_color) into the combined `border` row, so the editor reflects the value and a re-save doesn't drop it. Writes the theme- scoped settings blob directly (same seam as the preset store), gated by a flag. Runs after the theme-store migration (priority 20) so it sees the moved presets. |
+| [`unysonplus_mobile_font_size_scale`](#unysonplus_mobile_font_size_scale) | Tiered auto-reducer for mobile font sizes. Returns the mobile px value for a given desktop px size. Display text shrinks aggressively; body text stays at desktop size. Floors at 14px for a11y. |
+| [`unysonplus_pattern_detect_root_class`](#unysonplus_pattern_detect_root_class) | The outermost element's first CSS class in a pasted HTML snippet — used as the pattern's "root class" when the author didn't name it. Returns '' if none. |
+| [`unysonplus_pattern_imagepicker_choices`](#unysonplus_pattern_imagepicker_choices) | image-picker `choices` for a popover Background Pattern picker — a `none` choice plus one generated thumbnail per preset (keyed by preset id; the sentinel `none` = no pattern). Consumed by the Section / Container / Site pickers (multi-picker, popover). |
+| [`unysonplus_pattern_namespace`](#unysonplus_pattern_namespace) | The per-pattern namespace token (keyframes + filter ids), e.g. `pattern-neon`. |
+| [`unysonplus_pattern_preset_slug_map`](#unysonplus_pattern_preset_slug_map) | [ preset-id =&gt; css-slug ] so a pattern named "Dots" → `.pattern-dots`. Slug = lower-case, non-alphanumerics → '-', trimmed; collisions get a numeric suffix (-2, -3, …) in preset order; empty/symbol-only names fall back to the sanitized id. Single source of truth for the `.pattern-&#123;slug&#125;` class, shared by the (later) css-tokens generation and the Section/Body pattern picker. |
+| [`unysonplus_pattern_render_layer`](#unysonplus_pattern_render_layer) | The decorative background-pattern LAYER for a preset id — an `aria-hidden`, non-interactive wrapper carrying the pattern's (scoped, id-namespaced) markup, meant to sit behind a host's content (`.upw-has-pattern &gt; .pattern-layer` at z-index 0; content above). Returns '' for an empty/unknown id. |
+| [`unysonplus_pattern_scope`](#unysonplus_pattern_scope) | Scope a pattern's HTML + CSS to `.pattern-&#123;slug&#125;`. Returns array( 'html' =&gt; &lt;html with filter ids namespaced&gt;, 'css' =&gt; &lt;scoped css&gt; ). |
+| [`unysonplus_pattern_select_choices`](#unysonplus_pattern_select_choices) | Choices for a Background Pattern picker: `[ '' =&gt; 'None', &lt;preset-id&gt; =&gt; &lt;name&gt;, … ]`. The stored value is the preset ID (stable across renames); the render layer maps it to the current `.pattern-&#123;slug&#125;` via the slug map. |
+| [`unysonplus_pattern_thumb_datauri`](#unysonplus_pattern_thumb_datauri) | A static thumbnail of a pattern as a `data:image/svg+xml` URI — the pattern's HTML + CSS embedded in an SVG `&lt;foreignObject&gt;` (the html-to-image technique). Renders inside an `&lt;img&gt;` (so the framework image-picker can use it): gradients / layout / colors show; CSS animations show frame 0 and SVG filters may not apply (fine for a swatch). Self- contained + inline, so no external fetch happens in the `&lt;img&gt;` sandbox. |
+| [`unysonplus_preset_css_hash`](#unysonplus_preset_css_hash) | Stable content hash of every input that drives the preset CSS. Used as the filename suffix so a preset change yields a new URL (auto cache-bust for browsers, CDN, and the Asset Optimizer combiner). |
+| [`unysonplus_preset_store_get`](#unysonplus_preset_store_get) | Read a saved preset value from the THEME-SCOPED Theme Settings store (fw_theme_settings_options:&#123;theme-id&#125;). The presets are injected into the Theme Settings page (see extensions/shortcodes/includes/theme-settings-presets.php) and saved there by the framework, so each theme keeps its own presets and a theme switch resets/restores them. Centralized so the storage location is a single, filterable seam. |
+| [`unysonplus_preset_store_set`](#unysonplus_preset_store_set) | Write a preset value to the SAME store unysonplus_preset_store_get() reads — the theme-scoped Theme Settings store once the one-time migration has run, else the legacy theme-independent extension store (so a pre-migration site is still consistent). This is the write-seam the Site Converter's preset importer must use: writing straight to the extension store leaves imported presets invisible on any already-migrated site (the getter no longer looks there). |
+| [`unysonplus_register_arbitrary_spacing_scale`](#unysonplus_register_arbitrary_spacing_scale) | Register the Tailwind-style ARBITRARY spacing values found in a page-builder JSON string (e.g. `pt-[40px]`, `mb-[3.5rem]`) as NAMED entries in the site's Spacing Scale. This surfaces them in Theme Settings → Components → Spacing AND makes each section's spacing dropdown show the value as a selected option (durable on a manual builder re-save). The tokens already RENDER via the per-page dynamic CSS regardless — this only registers the preset. Idempotent (skips values already present). Used by the Site Converter's page import and the demo importers. |
+| [`unysonplus_render_site_background_pattern`](#unysonplus_render_site_background_pattern) | Front-end: draw the chosen site background pattern as a FIXED, full-viewport decorative layer behind the whole page (`.pattern-layer--fixed`, z-index -1). Shows through wherever the theme's content is transparent — same behaviour as any body background. Hooked on wp_footer; position:fixed makes the DOM position irrelevant. |
+| [`unysonplus_repair_pattern_base64`](#unysonplus_repair_pattern_base64) | One-time self-heal for base64 SVG data-URIs in the Background Patterns library that were lowercased by an older Site Converter build (its `cls()` helper lowercased the whole class attribute, corrupting the case-sensitive base64 inside Tailwind `bg-[url('data:...')]` classes). The correct-case base64 still lives verbatim in the captured section's own stored post content, so we rebuild a lowercase→correct map from site content and swap any corrupt pattern base64 back. Guarded by an option so the (content-scanning) pass runs at most once, and only if a corrupt entry is actually detected. The current converter no longer corrupts (it reads base64 from the raw class attr), so this only heals sites captured before that fix. |
+| [`unysonplus_scrub_element_css`](#unysonplus_scrub_element_css) | Defense-in-depth scrub for author-provided element CSS. Mirrors the custom hover-animation scrub in css-tokens.php: no markup, no script/style tags, no @import / javascript: / expression() tricks. |
+| [`unysonplus_section_style_choices`](#unysonplus_section_style_choices) | Choices for the Section's "Section Variant" dropdown: '' =&gt; Default, then one entry per style keyed by its SLUG (the stored value — scalar, so converting the old hardcoded select to this is not a value-shape change). |
+| [`unysonplus_section_style_normalize_border`](#unysonplus_section_style_normalize_border) | Fold a preset's legacy flat border leaves (border_style / border_width / border_color) into the combined `border` =&gt; &#123; width, style, color &#125; shape used by the multi-inline Border row. A no-op once `border` is already present. Keeps the reader/consumer working on presets saved before the combine. |
+| [`unysonplus_section_style_preset_slug_map`](#unysonplus_section_style_preset_slug_map) | [ preset-id =&gt; css-slug ] for the current Section Styles, so the generated class is readable ("Dark" → `.section--dark`). Mirrors unysonplus_border_preset_slug_map() (collisions get -2/-3; an empty name falls back to the id). Shared by css-tokens.php (rule generation), the Section Variant dropdown and the view resolver so class + value + render always agree. |
+| [`unysonplus_shape_divider_imagepicker_choices`](#unysonplus_shape_divider_imagepicker_choices) | image-picker `choices` for a visual Shape Divider picker — a `none` tile plus one generated silhouette thumbnail per preset (keyed by preset id; `none` = no divider). |
+| [`unysonplus_shape_divider_markup`](#unysonplus_shape_divider_markup) | Full render geometry for a divider preset id: array( 'inner' =&gt; &lt;svg children&gt;, 'viewBox' ). Empty inner for 'none'/unknown. The consumer wraps `inner` in its own &lt;svg&gt; and sets `color`. |
+| [`unysonplus_shape_divider_path`](#unysonplus_shape_divider_path) | Resolve a shape-divider preset id to its geometry for the Section render. Returns array( 'path' =&gt; d, 'viewBox' =&gt; vb ), or an empty path for 'none'/unknown ids. |
+| [`unysonplus_shape_divider_select_choices`](#unysonplus_shape_divider_select_choices) | `[ 'none' =&gt; 'None', &lt;id&gt; =&gt; &lt;name&gt;, … ]` for a plain divider &lt;select&gt;. Stored value is the preset id (stable across renames). Feeds the Section Top/Bottom Shape Divider selects so user-added shapes appear automatically. |
+| [`unysonplus_shape_divider_thumb_datauri`](#unysonplus_shape_divider_thumb_datauri) | A `data:image/svg+xml` thumbnail of a divider shape — the silhouette filled over a light card, scaled edge-to-edge (preserveAspectRatio=none, the same way the Section draws it) so the picker tile reads as the actual edge. Self-contained (no external fetch in the &lt;img&gt;). |
+| [`unysonplus_styling_presets_enabled`](#unysonplus_styling_presets_enabled) | Master switch for the whole styling layer (Styling tab + preset pickers + Component Presets editor + this preset stylesheet). Default ON. Off = the "bare, structure-only page builder" mode (Page Builder settings → Styling Presets). A non-null default short-circuits the ext-settings read so it never loads the settings schema (avoids firing fw_option_types_init early). |
+| [`unysonplus_table_preset_slug_map`](#unysonplus_table_preset_slug_map) | Returns [ preset-id =&gt; css-slug ] for the current Table Presets, so the generated class is readable: a preset named "Striped" → `.tbl-striped`. Mirrors unysonplus_border_preset_slug_map() (collisions get -2/-3, empty names fall back to the id). Shared by css-tokens.php (rule generation) and the Table shortcode's preset dropdown so class + value + render agree. |
+| [`unysonplus_type_scale_config`](#unysonplus_type_scale_config) | Default type-scale configuration, filterable. `ratio` is the step multiplier at the max viewport (desktop); `ratio_mobile` is the gentler multiplier at the min viewport (so headings shrink more than body on small screens). Viewport range comes from unysonplus_fluid_type_range(). |
+
+---
+
+### `fw_delete_resized_thumbnails` {#fw_delete_resized_thumbnails}
+*🔌 pluggable*
+
+```php
+fw_delete_resized_thumbnails( $id )
+```
+
+<small>Source: `framework/includes/hooks.php:377`</small>
+
+### `fw_device_tabs_definition` {#fw_device_tabs_definition}
+*🔌 pluggable*
+
+```php
+fw_device_tabs_definition()
+```
+
+The three device tabs, displayed Desktop → Tablet → Phone (the familiar Elementor order). This is display order only — the cascade stays mobile- first / Bootstrap-native: `key` 'base' (Phone) is the min-width:0 layer that applies at all widths, 'md'/'lg' are the ≥768 / ≥992 overrides. `device` is the builder's global device slug this tab maps to.
+
+**Returns** `array`
+
+<small>Source: `framework/includes/device-tabs.php:36`</small>
+
+### `fw_dynamic_content` {#fw_dynamic_content}
+*🔌 pluggable*
+
+```php
+fw_dynamic_content()
+```
+
+Dynamic Content registry/resolver accessor.
+
+**Returns** `FW_Dynamic_Content`
+
+<small>Source: `framework/includes/dynamic-content/class-fw-dynamic-content.php:247`</small>
+
+### `fw_rate_limit_ajax` {#fw_rate_limit_ajax}
+*🔌 pluggable*
+
+```php
+fw_rate_limit_ajax( $action, $limit = 30, $window = 60 )
+```
+
+Rate-limit guard for an AJAX handler.
+
+Ends the request with a 429 and a JSON error when the limit is passed, so a
+caller can use it as a one-line guard directly after its nonce check.
+
+429 (not 403) because the request was well-formed and authorized — it was
+simply too frequent, and a client that reads status codes should know the
+difference between "never do this" and "not so fast".
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$action` | `string` | Identifier for the endpoint being limited. |
+| `$limit` | `int` | Allowed hits per window. |
+| `$window` | `int` | Window length in seconds. |
+
+<small>Source: `framework/includes/rate-limit.php:167`</small>
+
+### `fw_rate_limit_exceeded` {#fw_rate_limit_exceeded}
+*🔌 pluggable*
+
+```php
+fw_rate_limit_exceeded( $action, $limit = 30, $window = 60 )
+```
+
+<small>Source: `framework/includes/rate-limit.php:92`</small>
+
+### `fw_rate_limit_id` {#fw_rate_limit_id}
+*🔌 pluggable*
+
+```php
+fw_rate_limit_id()
+```
+
+The identity a limit is counted against.
+
+The client IP, hashed. Hashed because this lands in the options table on
+sites with no persistent object cache, and a plugin should not quietly
+accumulate a log of visitor IP addresses to solve a throttling problem.
+A salted hash counts just as well and is not personal data at rest.
+
+REMOTE_ADDR only, deliberately. `X-Forwarded-For` is attacker-controlled
+unless a known proxy sets it, so trusting it by default would let anyone
+bypass every limit by varying one header. Sites genuinely behind a proxy
+can supply the real address through the filter.
+
+**Returns** `string`
+
+<small>Source: `framework/includes/rate-limit.php:53`</small>
+
+### `fw_render_device_tabs` {#fw_render_device_tabs}
+*🔌 pluggable*
+
+```php
+fw_render_device_tabs( $id = '' )
+```
+
+Markup for the device switcher. The base (phone) tab is marked active by default; fw-device-tabs.js re-syncs the active tab to window.fwPbDevice on init and on every `fw:builder:device-preview` event.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$id` | `string` | A unique-ish id for the host (used only for data-attr). |
+
+**Returns** `string`
+
+<small>Source: `framework/includes/device-tabs.php:54`</small>
+
+### `fw_upw_extract_svg_path` {#fw_upw_extract_svg_path}
+*🔌 pluggable*
+
+```php
+fw_upw_extract_svg_path( $svg )
+```
+
+Pull the geometry out of an &lt;svg&gt; string for path-only consumers (shape dividers). Returns array( 'path' =&gt; &lt;concatenated d of every top-level &lt;path&gt;&gt;, 'viewBox' =&gt; &lt;vb&gt; ). Multiple &lt;path&gt; elements are joined (a single fill covers them all — fine for a silhouette edge). Falls back to the shape-divider convention viewBox 0 0 1200 120 when none is declared. The input is admin-authored + already sanitised on save (svg-code's _get_value_from_input), so this only parses; it does not re-sanitise.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$svg` | `string` | — |
+
+**Returns** `array&#123;path:string,viewBox:string&#125;`
+
+<small>Source: `framework/includes/presets/shape-divider-presets.php:88`</small>
+
+### `fw_upw_internal_post_types` {#fw_upw_internal_post_types}
+*🔌 pluggable*
+
+```php
+fw_upw_internal_post_types()
+```
+
+Post type keys that are WordPress plumbing, never user content.
+
+**Returns** `string[]`
+
+<small>Source: `framework/includes/post-type-choices.php:22`</small>
+
+### `fw_upw_migrate_uploads` {#fw_upw_migrate_uploads}
+*🔌 pluggable*
+
+```php
+fw_upw_migrate_uploads()
+```
+
+One-time migration: consolidate the legacy sibling uploads/unysonplus-* folders — and the loose preset/page CSS that used to sit directly in uploads/unysonplus/ — into uploads/unysonplus/&lt;subdir&gt;/. Guarded by an option flag; runs once on admin_init. Best-effort @rename: a folder that can't move is left in place and the new code simply writes fresh files at the new location (most of these are regenerable caches or re-downloadable content).
+
+<small>Source: `framework/includes/uploads-dir.php:59`</small>
+
+### `fw_upw_normalize_divider_svg` {#fw_upw_normalize_divider_svg}
+*🔌 pluggable*
+
+```php
+fw_upw_normalize_divider_svg( $svg )
+```
+
+Prepare a divider's stored SVG for rendering: pull the viewBox, keep the INNER content — every &lt;g&gt;/&lt;path&gt;, so multi-layer + opacity dividers (the shapedividers.com / svgbackgrounds style) survive intact — and rewrite every fill to `currentColor` so the per-section Colour drives every layer while each layer's opacity is preserved. Input is already sanitised on save (svg-code) or a trusted built-in.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$svg` | `string` | — |
+
+**Returns** `array&#123;inner:string,viewBox:string&#125;`
+
+<small>Source: `framework/includes/presets/shape-divider-presets.php:114`</small>
+
+### `fw_upw_normalize_legacy_upload_url` {#fw_upw_normalize_legacy_upload_url}
+*🔌 pluggable*
+
+```php
+fw_upw_normalize_legacy_upload_url( $url )
+```
+
+Rewrite a legacy `/uploads/unysonplus-&lt;x&gt;/…` URL to the consolidated `/uploads/unysonplus/&lt;x&gt;/…` location, so URLs stored in the DB before the consolidation (Lottie / Rive `src` values) still resolve after the folder move. Applied on read (render + editor prefill). A non-matching URL is returned unchanged.
+
+<small>Source: `framework/includes/uploads-dir.php:40`</small>
+
+### `fw_upw_post_type_choices` {#fw_upw_post_type_choices}
+*🔌 pluggable*
+
+```php
+fw_upw_post_type_choices( $args = array() )
+```
+
+Choices for any "pick a post type" option, keyed by slug and labelled "Singular (slug)" so an ambiguous label is still identifiable.
+
+@type bool  $public_only Only public post types. Default false.
+    @type array $extra       slug =&gt; label pairs to append if not already
+                             present — used to surface definitions that are
+                             saved but not yet registered.
+&#125;
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$args` | `array` | &#123; |
+
+**Returns** `array`
+
+<small>Source: `framework/includes/post-type-choices.php:56`</small>
+
+### `fw_upw_update_guard_assets` {#fw_upw_update_guard_assets}
+*🔌 pluggable*
+
+```php
+fw_upw_update_guard_assets( $hook )
+```
+
+<small>Source: `framework/includes/update-guard/update-guard.php:21`</small>
+
+### `fw_upw_uploads_dir` {#fw_upw_uploads_dir}
+*🔌 pluggable*
+
+```php
+fw_upw_uploads_dir( $subdir = '' )
+```
+
+&#123; path, url &#125; of uploads/unysonplus[/&lt;subdir&gt;] (NO trailing slash on the returned path/url). Sub-dirs are created lazily by the caller (wp_mkdir_p).
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$subdir` | `string` | Sub-directory under the unysonplus parent, e.g. 'lottie'. |
+
+**Returns** `array&#123;path:string,url:string&#125;`
+
+<small>Source: `framework/includes/uploads-dir.php:22`</small>
+
+### `unysonplus_arbitrary_spacing_rule` {#unysonplus_arbitrary_spacing_rule}
+*🔌 pluggable*
+
+```php
+unysonplus_arbitrary_spacing_rule( $cls )
+```
+
+Turn one arbitrary spacing class (base `pt-[40px]` or infixed `pt-md-[40px]`) into a CSS rule, wrapping md/lg/… in the matching min-width media query. Returns '' for anything that isn't a recognised arbitrary spacing token.
+
+<small>Source: `framework/includes/dynamic-css.php:270`</small>
+
+### `unysonplus_border_preset_slug_map` {#unysonplus_border_preset_slug_map}
+*🔌 pluggable*
+
+```php
+unysonplus_border_preset_slug_map()
+```
+
+Returns [ preset-id =&gt; css-slug ] for the current column Border Presets, so the generated class is readable: a preset named "Card" → `.boxp-card`. Mirrors unysonplus_button_preset_slug_map() (collisions get -2/-3, empty names fall back to the id). Shared by css-tokens.php (rule generation) and the column's Border Preset dropdown so class + value + render agree.
+
+<small>Source: `framework/includes/presets/border-presets.php:13`</small>
+
+### `unysonplus_build_arbitrary_spacing_css` {#unysonplus_build_arbitrary_spacing_css}
+*🔌 pluggable*
+
+```php
+unysonplus_build_arbitrary_spacing_css( $items )
+```
+
+Walk a page's builder JSON and emit one rule per DISTINCT arbitrary spacing token used. Responsive spacing options (&#123;base,md,lg&#125; under a padding- or margin- key) are handled breakpoint-aware (the layer key supplies the infix, mirroring sc_apply_styling_classes); every other arbitrary token found on a leaf is a base-level rule (covers composite `spacing` + raw css_class tokens).
+
+<small>Source: `framework/includes/dynamic-css.php:307`</small>
+
+### `unysonplus_build_page_css_string` {#unysonplus_build_page_css_string}
+*🔌 pluggable*
+
+```php
+unysonplus_build_page_css_string( $post_id, $pretty = null )
+```
+
+Build the consolidated per-page CSS body (no &lt;style&gt; tag).
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$post_id` | `int` | — |
+| `$pretty` | `bool` | When true, newline-separate the blocks. Defaults to WP_DEBUG. |
+
+**Returns** `string` CSS body, or '' when the page has no dynamic CSS.
+
+<small>Source: `framework/includes/dynamic-css.php:109`</small>
+
+### `unysonplus_build_presets_css_string` {#unysonplus_build_presets_css_string}
+*🔌 pluggable*
+
+```php
+unysonplus_build_presets_css_string( $pretty = null )
+```
+
+Builds the preset CSS as a string (no echo, no file write).
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$pretty` | `bool` | When true emits indented/multi-line CSS. Defaults to WP_DEBUG. |
+
+**Returns** `string` CSS body without the surrounding &lt;style&gt; tag. Empty string if no presets.
+
+<small>Source: `framework/includes/css-tokens.php:28`</small>
+
+### `unysonplus_button_preset_slug_map` {#unysonplus_button_preset_slug_map}
+*🔌 pluggable*
+
+```php
+unysonplus_button_preset_slug_map()
+```
+
+Returns [ preset-id =&gt; css-slug ] for the current Button Presets, so the generated CSS class is readable and override-friendly: a preset named "Primary" → `.btn-primary` (overrides Bootstrap's own `.btn-primary`), "Primary Outline" → `.btn-primary-outline`.
+
+Slug = lower-case, non-alphanumerics → '-', trimmed. Collisions get a
+numeric suffix (-2, -3, …) in preset order. Empty/symbol-only names fall
+back to the sanitized numeric id so every preset still gets a stable class.
+
+Single source of truth shared by css-tokens.php (rule generation), the
+Button shortcode's Style dropdown (`sc_get_button_style_choices`), and the
+admin dropdown-preview emitters — so the class, the saved option value, and
+the preview always agree.
+
+<small>Source: `framework/includes/presets/button-presets.php:21`</small>
+
+### `unysonplus_collect_element_css` {#unysonplus_collect_element_css}
+*🔌 pluggable*
+
+```php
+unysonplus_collect_element_css( $nodes, &$parts )
+```
+
+Recursively walk builder JSON nodes, collecting each element's scoped Custom CSS into $parts. A node is `&#123; type, atts:&#123; …optionValues &#125;, _items &#125;` — the page-builder item layer stores every option value (including `custom_css` and `unique_id`) under `atts` (see class-page-builder-item.php). We read from `atts` and fall back to the node top level for any flattened / legacy shape.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$nodes` | `array` | Builder items (decoded JSON). |
+| `$parts` | `array` | Accumulator passed by reference. |
+
+<small>Source: `framework/includes/dynamic-css.php:64`</small>
+
+### `unysonplus_color_preset_slug_map` {#unysonplus_color_preset_slug_map}
+*🔌 pluggable*
+
+```php
+unysonplus_color_preset_slug_map()
+```
+
+Returns a flat [ slug =&gt; hex ] lookup of the current Color Presets. Slug is derived from the preset name the same way css-tokens.php emits `:root --color-&#123;slug&#125;` (lower, strip non-alnum, join with '-').
+
+<small>Source: `framework/includes/presets/color-presets.php:62`</small>
+
+### `unysonplus_container_width_choices` {#unysonplus_container_width_choices}
+*🔌 pluggable*
+
+```php
+unysonplus_container_width_choices()
+```
+
+Choices for the Section "Container Width" dropdown: Inherit (global width) → one entry per named width (keyed by SLUG, the stored value) → Custom. Defaults reproduce narrow/medium/wide, so a section that stored `preset: narrow` still resolves.
+
+<small>Source: `framework/includes/presets/container-width-presets.php:84`</small>
+
+### `unysonplus_container_width_map` {#unysonplus_container_width_map}
+*🔌 pluggable*
+
+```php
+unysonplus_container_width_map()
+```
+
+[ slug =&gt; "1024px" ] for the section view's inline max-width resolution.
+
+<small>Source: `framework/includes/presets/container-width-presets.php:115`</small>
+
+### `unysonplus_container_width_preset_slug_map` {#unysonplus_container_width_preset_slug_map}
+*🔌 pluggable*
+
+```php
+unysonplus_container_width_preset_slug_map()
+```
+
+[ preset-id =&gt; css-slug ] for the current Container Widths, so the stored value is a readable slug ("Wide" → `wide`). Collisions get -2/-3; an empty name falls back to the id. Shared by the Container Width dropdown, the width map and the view resolver so value + render agree.
+
+<small>Source: `framework/includes/presets/container-width-presets.php:45`</small>
+
+### `unysonplus_css_escape_selector` {#unysonplus_css_escape_selector}
+*🔌 pluggable*
+
+```php
+unysonplus_css_escape_selector( $cls )
+```
+
+Escape a class name for a CSS selector (Tailwind escapes [ ] . % / : # ( ) ! ,).
+
+<small>Source: `framework/includes/dynamic-css.php:259`</small>
+
+### `unysonplus_custom_hover_animation_slug_map` {#unysonplus_custom_hover_animation_slug_map}
+*🔌 pluggable*
+
+```php
+unysonplus_custom_hover_animation_slug_map()
+```
+
+id =&gt; slug map for custom hover animations (name → slug, with -2/-3 dedupe), mirroring unysonplus_button_preset_slug_map(). Shared by the CSS generator (css-tokens) and the shortcode dropdown choices so they always agree.
+
+<small>Source: `framework/includes/presets/button-presets.php:330`</small>
+
+### `unysonplus_default_border_presets` {#unysonplus_default_border_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_default_border_presets()
+```
+
+Default column Border Presets, in the shape consumed by the `border-presets` option type: border_color is a compact-picker value &#123; predefined: &lt;color- preset-slug&gt;, custom: '' &#125;; border_width / border_radius are unit-input &#123; value, unit &#125;; box_shadow is &#123; x, y, blur, spread, color, inset &#125;. Empty hover fields inherit the default look at render time.
+
+<small>Source: `framework/includes/presets/border-presets.php:47`</small>
+
+### `unysonplus_default_button_color_presets` {#unysonplus_default_button_color_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_default_button_color_presets()
+```
+
+Default button color presets, in the SKIN shape consumed by the `button-presets` option type: each preset has a nested `states` map (default / hover / active / focus / disabled) whose color fields are compact-picker values &#123; predefined: &lt;color-preset-slug&gt;, custom: '' &#125;. Empty states (active/focus/disabled) inherit the default look at render time. Slugs reference Color Presets (see unysonplus_default_color_presets): white/gray/light-gray/blue/green/cyan/amber/red/black are always present.
+
+<small>Source: `framework/includes/presets/button-presets.php:63`</small>
+
+### `unysonplus_default_button_size_presets` {#unysonplus_default_button_size_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_default_button_size_presets()
+```
+
+Default button size presets. Each entry produces a `.btn-&#123;slug&#125;` class on the frontend (emitted by the bridge in css-tokens.php). Mirrors the theme's `unysonplus_option_button_size_defaults()` so behaviour is unchanged on the official theme, but lives in the plugin so any theme benefits from sensible defaults.
+
+<small>Source: `framework/includes/presets/button-presets.php:206`</small>
+
+### `unysonplus_default_color_presets` {#unysonplus_default_color_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_default_color_presets()
+```
+
+<small>Source: `framework/includes/presets/color-presets.php:6`</small>
+
+### `unysonplus_default_container_width_presets` {#unysonplus_default_container_width_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_default_container_width_presets()
+```
+
+The three built-in Container Widths, in the shape the `addable-box` schema saves: width is a unit-input value &#123; value, unit &#125;. Slugs derive from the names → narrow / medium / wide, matching the old hardcoded section container_width map.
+
+<small>Source: `framework/includes/presets/container-width-presets.php:27`</small>
+
+### `unysonplus_default_custom_hover_animations` {#unysonplus_default_custom_hover_animations}
+*🔌 pluggable*
+
+```php
+unysonplus_default_custom_hover_animations()
+```
+
+Sample custom hover animations seeded into Theme Settings → Buttons → Hover Animations, so users start with working references to learn from / duplicate (rather than a blank list). Each entry: &#123; id, name, css &#125;. The CSS uses the editor tokens: &#123;&#123;BTN&#125;&#125; = this button (.btnfx-c-&#123;slug&#125;), &#123;&#123;ANIM&#125;&#125; = a unique @keyframes name. All motion-only (transform / box-shadow) so they layer over any button preset. These are SAMPLES — the 22 built-in effects live in hover-fx.css and are not duplicated here.
+
+<small>Source: `framework/includes/presets/button-presets.php:251`</small>
+
+### `unysonplus_default_font_size_presets` {#unysonplus_default_font_size_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_default_font_size_presets()
+```
+
+<small>Source: `framework/includes/presets/font-size-presets.php:6`</small>
+
+### `unysonplus_default_gap_scale` {#unysonplus_default_gap_scale}
+*🔌 pluggable*
+
+```php
+unysonplus_default_gap_scale()
+```
+
+Default gap scale — Bootstrap 5's `$spacers` verbatim. Caps at 3rem because gaps beyond that are section-level spacing in disguise; users who really want a 4rem gutter can add it via Theme Settings.
+
+<small>Source: `framework/includes/presets/spacing-presets.php:94`</small>
+
+### `unysonplus_default_icon_badge_presets` {#unysonplus_default_icon_badge_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_default_icon_badge_presets()
+```
+
+Default Icon Badge presets, in the shape consumed by the `icon-badge-presets` option type. icon_color / border_color are compact-picker values &#123; predefined: &lt;color-preset-slug&gt;, custom: '' &#125; (palette-linked); badge_size / icon_size / border_width / border_radius are unit-input &#123; value, unit &#125;; the tile fill is a background-pro value (&#123; color: &#123; value: &#123; predefined, custom &#125; &#125; &#125;); box_shadow is &#123; x, y, blur, spread, color, inset &#125;. Empty hover fields inherit the default.
+
+<small>Source: `framework/includes/presets/icon-badge-presets.php:48`</small>
+
+### `unysonplus_default_image_style_presets` {#unysonplus_default_image_style_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_default_image_style_presets()
+```
+
+<small>Source: `framework/includes/presets/image-style-presets.php:36`</small>
+
+### `unysonplus_default_pattern_presets` {#unysonplus_default_pattern_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_default_pattern_presets()
+```
+
+<small>Source: `framework/includes/presets/pattern-presets.php:24`</small>
+
+### `unysonplus_default_section_style_presets` {#unysonplus_default_section_style_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_default_section_style_presets()
+```
+
+The three built-in Section Styles, in the shape the `addable-box` schema saves: background is a background-pro value; text/heading/link colors are compact-picker values &#123; predefined, custom &#125;; border_* are scalar/unit-input; padding is a spacing value (mode 'padding'). Colours reproduce the previous hardcoded `.section--alt|light|dark` CSS exactly, so nothing changes on upgrade.
+
+<small>Source: `framework/includes/presets/section-style-presets.php:63`</small>
+
+### `unysonplus_default_shape_divider_presets` {#unysonplus_default_shape_divider_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_default_shape_divider_presets()
+```
+
+<small>Source: `framework/includes/presets/shape-divider-presets.php:26`</small>
+
+### `unysonplus_default_spacing_scale` {#unysonplus_default_spacing_scale}
+*🔌 pluggable*
+
+```php
+unysonplus_default_spacing_scale()
+```
+
+Returns the default spacing scale as an array of &#123;name, size&#125; entries. Names 0–5 match Bootstrap's stock spacer scale; sites can extend beyond via Theme Settings → General → Spacing.
+
+<small>Source: `framework/includes/presets/spacing-presets.php:11`</small>
+
+### `unysonplus_default_table_presets` {#unysonplus_default_table_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_default_table_presets()
+```
+
+<small>Source: `framework/includes/presets/table-presets.php:57`</small>
+
+### `unysonplus_enqueue_page_css` {#unysonplus_enqueue_page_css}
+*🔌 pluggable*
+
+```php
+unysonplus_enqueue_page_css()
+```
+
+Enqueue the generated per-page CSS file under `unysonplus-dynamic`. Priority 36 keeps it right after presets (35), so it wins source order over them and the Asset Optimizer absorbs the handle at its later pass.
+
+<small>Source: `framework/includes/dynamic-css.php:205`</small>
+
+### `unysonplus_enqueue_preset_css` {#unysonplus_enqueue_preset_css}
+*🔌 pluggable*
+
+```php
+unysonplus_enqueue_preset_css()
+```
+
+Enqueues the generated preset CSS file under the handle `unysonplus-presets`. Hooked early on wp_enqueue_scripts / admin_enqueue_scripts so the Asset Optimizer absorbs the handle at its priority-9999 pass.
+
+If the file write fails, the inline fallback below handles emission.
+
+<small>Source: `framework/includes/css-tokens.php:1633`</small>
+
+### `unysonplus_ensure_page_css_file` {#unysonplus_ensure_page_css_file}
+*🔌 pluggable*
+
+```php
+unysonplus_ensure_page_css_file( $post_id )
+```
+
+Ensure `uploads/unysonplus/page-&#123;id&#125;-&#123;hash&#125;.css` exists for the current page CSS. Hash is taken over the built string so the URL changes whenever the page's dynamic CSS does (auto cache-bust). Stale generations for the same post are purged best-effort.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$post_id` | `int` | — |
+
+**Returns** `array\|false` ['url','path','hash'] or false to fall back to inline.
+
+<small>Source: `framework/includes/dynamic-css.php:156`</small>
+
+### `unysonplus_ensure_preset_css_file` {#unysonplus_ensure_preset_css_file}
+*🔌 pluggable*
+
+```php
+unysonplus_ensure_preset_css_file()
+```
+
+Ensures `wp-content/uploads/unysonplus/presets-&#123;hash&#125;.css` exists for the current preset state. Lazily purges stale `presets-*.css` files in the same directory whenever a new hash is generated.
+
+false on any filesystem failure (caller should fall back to inline).
+
+**Returns** `array\|false` ['url' =&gt; string, 'path' =&gt; string, 'hash' =&gt; string] on success,
+
+<small>Source: `framework/includes/css-tokens.php:1559`</small>
+
+### `unysonplus_fluid_font_clamp` {#unysonplus_fluid_font_clamp}
+*🔌 pluggable*
+
+```php
+unysonplus_fluid_font_clamp( $max_px, $min_px, $root_px = 16 )
+```
+
+Build an accessibility-safe fluid clamp() that scales a font size from a mobile floor (`$min_px`) up to the authored size (`$max_px`) across the fluid viewport range. The preferred value is `rem + vw` — NOT vw alone — so browser zoom and the user's font-size preference still scale the text (WCAG 2.1 SC 1.4.4). The clamp max is in rem for the same reason. Returns null when there is nothing to interpolate (min &gt;= max, e.g. body text).
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$max_px` | `int\|float` | Authored (desktop) size in px. |
+| `$min_px` | `int\|float` | Mobile floor in px. |
+| `$root_px` | `int` | Root font-size assumption for px→rem (default 16). |
+
+**Returns** `string\|null` clamp(...) or null.
+
+<small>Source: `framework/includes/presets/font-size-presets.php:97`</small>
+
+### `unysonplus_fluid_type_a11y_report` {#unysonplus_fluid_type_a11y_report}
+*🔌 pluggable*
+
+```php
+unysonplus_fluid_type_a11y_report( $max_px, $min_px, $root_px = 16 )
+```
+
+WCAG 1.4.4 (resize text to 200%) guardrail / readout for one fluid step.
+
+Because the clamp min AND max are rem-anchored, browser zoom always
+doubles both endpoints, so the size can reach 200%. The residual risk is
+a strongly negative rem intercept in the preferred value: that means the
+rem term fights the vw term and mid-range sizes barely respond to zoom —
+the tell of an over-steep curve (max far larger than min over a wide
+viewport range). We flag that so the UI can warn "widen the range or
+lower the ratio". Returns &#123; ok, intercept_px, zoom_ratio, note &#125;.
+
+<small>Source: `framework/includes/presets/font-size-presets.php:169`</small>
+
+### `unysonplus_fluid_type_range` {#unysonplus_fluid_type_range}
+*🔌 pluggable*
+
+```php
+unysonplus_fluid_type_range()
+```
+
+Viewport range (px) over which fluid type interpolates: at/below `min` the mobile floor applies, at/above `max` the authored size applies. Filterable.
+
+<small>Source: `framework/includes/presets/font-size-presets.php:60`</small>
+
+### `unysonplus_font_size_to_px` {#unysonplus_font_size_to_px}
+*🔌 pluggable*
+
+```php
+unysonplus_font_size_to_px( $value, $root_px = 16 )
+```
+
+Parse a CSS length expressed in px / rem / em into a px number (rem/em use the 16px root assumption). Returns null for anything else — calc(), clamp(), %, vw, unitless — so those values are left untouched by the fluid rewriter.
+
+<small>Source: `framework/includes/presets/font-size-presets.php:75`</small>
+
+### `unysonplus_generate_type_scale` {#unysonplus_generate_type_scale}
+*🔌 pluggable*
+
+```php
+unysonplus_generate_type_scale( $opts = array() )
+```
+
+Build the modular scale. Returns an ordered map of step-key =&gt; info: &#123; n, max_px, min_px, value (clamp string or rem for a fixed step), a11y &#125;. Step keys: 'n2','n1' (below base), '0' (base), '1'..'N' (above base).
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$opts` | `array` | Overrides merged over unysonplus_type_scale_config(). |
+
+<small>Source: `framework/includes/presets/font-size-presets.php:198`</small>
+
+### `unysonplus_get_border_presets` {#unysonplus_get_border_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_get_border_presets()
+```
+
+The user's saved column Border Presets (Theme Settings → General → Borders) or the plugin defaults.
+
+<small>Source: `framework/includes/presets/border-presets.php:132`</small>
+
+### `unysonplus_get_button_color_presets` {#unysonplus_get_button_color_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_get_button_color_presets()
+```
+
+Returns the user's saved button color presets (from Theme Settings → Buttons → Button Color Presets) or the slug-based plugin defaults. Each entry: &#123; id, color_name, normal_text_color, normal_bg_color, hover_text_color, hover_bg_color &#125; where color fields hold Color Preset slugs (the frontend bridge resolves slug → hex). Empty hover fields fall back to the normal value at render time.
+
+<small>Source: `framework/includes/presets/button-presets.php:187`</small>
+
+### `unysonplus_get_button_size_presets` {#unysonplus_get_button_size_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_get_button_size_presets()
+```
+
+Returns the user's saved button size presets (Theme Settings → Buttons → Sizes) or the plugin defaults. Each entry: &#123; id, size_name, slug, font_size, line_height, padding&#123;top,right,bottom,left&#125;, border_width, border_radius &#125;. Slug becomes the CSS class suffix `.btn-&#123;slug&#125;`.
+
+<small>Source: `framework/includes/presets/button-presets.php:230`</small>
+
+### `unysonplus_get_color_presets` {#unysonplus_get_color_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_get_color_presets()
+```
+
+<small>Source: `framework/includes/presets/color-presets.php:45`</small>
+
+### `unysonplus_get_container_width_presets` {#unysonplus_get_container_width_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_get_container_width_presets()
+```
+
+Saved Container Widths (theme-scoped preset store), else the built-in defaults.
+
+<small>Source: `framework/includes/presets/container-width-presets.php:67`</small>
+
+### `unysonplus_get_custom_hover_animations` {#unysonplus_get_custom_hover_animations}
+*🔌 pluggable*
+
+```php
+unysonplus_get_custom_hover_animations()
+```
+
+Returns the user's saved custom hover animations (Theme Settings → Buttons → Hover Animations) or the seeded samples. Each entry: &#123; id, name, css &#125;. Slug (from name) becomes the class suffix `.btnfx-c-&#123;slug&#125;`.
+
+<small>Source: `framework/includes/presets/button-presets.php:313`</small>
+
+### `unysonplus_get_default_gap` {#unysonplus_get_default_gap}
+*🔌 pluggable*
+
+```php
+unysonplus_get_default_gap()
+```
+
+Slug picked as the site-wide default column gap. `''` means "no override — let Bootstrap's stock `.row` gutter behaviour stand."
+
+<small>Source: `framework/includes/presets/spacing-presets.php:142`</small>
+
+### `unysonplus_get_default_gap_x` {#unysonplus_get_default_gap_x}
+*🔌 pluggable*
+
+```php
+unysonplus_get_default_gap_x()
+```
+
+Optional horizontal-axis override on top of `default_gap`. `''` means "inherit from Default Gap." Honoured even when Default Gap is itself blank — useful for "horizontal-only" tweaks against Bootstrap stock.
+
+<small>Source: `framework/includes/presets/spacing-presets.php:159`</small>
+
+### `unysonplus_get_default_gap_y` {#unysonplus_get_default_gap_y}
+*🔌 pluggable*
+
+```php
+unysonplus_get_default_gap_y()
+```
+
+Vertical counterpart to `unysonplus_get_default_gap_x()`.
+
+<small>Source: `framework/includes/presets/spacing-presets.php:174`</small>
+
+### `unysonplus_get_font_size_presets` {#unysonplus_get_font_size_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_get_font_size_presets()
+```
+
+<small>Source: `framework/includes/presets/font-size-presets.php:19`</small>
+
+### `unysonplus_get_gap_scale` {#unysonplus_get_gap_scale}
+*🔌 pluggable*
+
+```php
+unysonplus_get_gap_scale()
+```
+
+Returns the live gap scale (&#123;name, size&#125; entries). Theme Settings override takes precedence over plugin defaults — same pattern as `unysonplus_get_spacing_scale()`.
+
+<small>Source: `framework/includes/presets/spacing-presets.php:126`</small>
+
+### `unysonplus_get_icon_badge_presets` {#unysonplus_get_icon_badge_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_get_icon_badge_presets()
+```
+
+The user's saved Icon Badge presets (Theme Settings → Components → Icon Badges) or the plugin defaults.
+
+<small>Source: `framework/includes/presets/icon-badge-presets.php:132`</small>
+
+### `unysonplus_get_image_style_presets` {#unysonplus_get_image_style_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_get_image_style_presets()
+```
+
+Saved image styles (theme-scoped) or the defaults when nothing is saved yet.
+
+<small>Source: `framework/includes/presets/image-style-presets.php:72`</small>
+
+### `unysonplus_get_pattern_presets` {#unysonplus_get_pattern_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_get_pattern_presets()
+```
+
+Saved patterns (theme-scoped) or the defaults when nothing is saved yet.
+
+<small>Source: `framework/includes/presets/pattern-presets.php:70`</small>
+
+### `unysonplus_get_section_style_by_slug` {#unysonplus_get_section_style_by_slug}
+*🔌 pluggable*
+
+```php
+unysonplus_get_section_style_by_slug( $slug )
+```
+
+Resolve a slug (a section's stored `variant`) back to its full preset, or null.
+
+<small>Source: `framework/includes/presets/section-style-presets.php:207`</small>
+
+### `unysonplus_get_section_style_presets` {#unysonplus_get_section_style_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_get_section_style_presets()
+```
+
+The user's saved Section Styles (Theme Settings → Components → Section Styles) or the plugin defaults. Border shape is normalized to the combined row so consumers only read `$sp['border']`.
+
+<small>Source: `framework/includes/presets/section-style-presets.php:137`</small>
+
+### `unysonplus_get_shape_divider_presets` {#unysonplus_get_shape_divider_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_get_shape_divider_presets()
+```
+
+Saved shape dividers (theme-scoped) or the built-in four when nothing is saved yet.
+
+<small>Source: `framework/includes/presets/shape-divider-presets.php:65`</small>
+
+### `unysonplus_get_site_background_pattern` {#unysonplus_get_site_background_pattern}
+*🔌 pluggable*
+
+```php
+unysonplus_get_site_background_pattern()
+```
+
+The pattern id chosen for the whole-site background (Theme Settings → Components → Background Patterns → Site Background Pattern), or '' when none. Theme-scoped.
+
+<small>Source: `framework/includes/presets/pattern-presets.php:255`</small>
+
+### `unysonplus_get_spacing_scale` {#unysonplus_get_spacing_scale}
+*🔌 pluggable*
+
+```php
+unysonplus_get_spacing_scale()
+```
+
+Returns the spacing scale as an array of &#123;name, size&#125; entries. Each entry's name slug becomes the suffix of Bootstrap-style utility classes (.m-&#123;slug&#125;, .p-&#123;slug&#125;, .mt-&#123;slug&#125;, etc.) emitted by the bridge. Theme override (Theme Settings → General → Spacing) takes precedence over plugin defaults.
+
+Defensive migration: if a site has Phase-1-era flat-dict data saved
+(&#123;sp_0 =&gt; '...', sp_1 =&gt; '...'&#125;), this getter transparently converts it
+to the entry-array shape on read.
+
+<small>Source: `framework/includes/presets/spacing-presets.php:45`</small>
+
+### `unysonplus_get_table_presets` {#unysonplus_get_table_presets}
+*🔌 pluggable*
+
+```php
+unysonplus_get_table_presets()
+```
+
+The user's saved Table Presets (Theme Settings → Components → Tables) or the plugin defaults.
+
+<small>Source: `framework/includes/presets/table-presets.php:213`</small>
+
+### `unysonplus_icon_badge_preset_slug_map` {#unysonplus_icon_badge_preset_slug_map}
+*🔌 pluggable*
+
+```php
+unysonplus_icon_badge_preset_slug_map()
+```
+
+Returns [ preset-id =&gt; css-slug ] for the current Icon Badge presets, so the generated class is readable: a preset named "Circle" → `.iconb-circle`. Mirrors unysonplus_border_preset_slug_map() (collisions get -2/-3, empty names fall back to the id). Shared by css-tokens.php (rule generation) and the icon_box's Icon Badge Preset dropdown so class + value + render agree.
+
+<small>Source: `framework/includes/presets/icon-badge-presets.php:13`</small>
+
+### `unysonplus_image_style_preset_slug_map` {#unysonplus_image_style_preset_slug_map}
+*🔌 pluggable*
+
+```php
+unysonplus_image_style_preset_slug_map()
+```
+
+[ preset-id =&gt; css-slug ] so a style named "Portrait Card" → `.imgs-portrait-card`. Slug = lower-case, non-alphanumerics → '-', trimmed; collisions get a numeric suffix in preset order; empty/symbol-only names fall back to the sanitized id. Single source of truth for the `.imgs-&#123;slug&#125;` class — shared by the css-tokens generation and the consumption picker (sc_get_image_style_choices()).
+
+<small>Source: `framework/includes/presets/image-style-presets.php:91`</small>
+
+### `unysonplus_inline_page_css_fallback` {#unysonplus_inline_page_css_fallback}
+*🔌 pluggable*
+
+```php
+unysonplus_inline_page_css_fallback()
+```
+
+Inline &lt;style id="unysonplus-dynamic-css"&gt; fallback, fired only when the file-based enqueue didn't take (read-only uploads dir, etc.).
+
+<small>Source: `framework/includes/dynamic-css.php:231`</small>
+
+### `unysonplus_inline_preset_css_fallback` {#unysonplus_inline_preset_css_fallback}
+*🔌 pluggable*
+
+```php
+unysonplus_inline_preset_css_fallback()
+```
+
+Inline `&lt;style id="unysonplus-presets"&gt;` fallback that only fires when the file-based enqueue didn't take (read-only filesystem, etc.).
+
+Hooked at wp_head / admin_head priority 2 — after wp_enqueue_scripts
+has run at priority 1 — so wp_style_is( 'enqueued' ) is reliable here.
+
+<small>Source: `framework/includes/css-tokens.php:1655`</small>
+
+### `unysonplus_maybe_migrate_button_colors` {#unysonplus_maybe_migrate_button_colors}
+*🔌 pluggable*
+
+```php
+unysonplus_maybe_migrate_button_colors()
+```
+
+One-shot DB migration for `button_colors`: 1. Convert any hex value (`#abc123`) into the matching Color Preset slug via hex-equality lookup. 2. Detect any value that's a slug NOT present in the current Color Presets (e.g. legacy `primary`/`info`/`danger` left over from an earlier defaults version where Bootstrap semantic colors were assumed available). Treat those as empty for the next step. 3. Fill any empty field with the slug from the plugin's default button preset whose `color_name` matches this entry's (case- insensitive). Restores working defaults for entries whose old slugs / hexes can't be resolved.
+
+Runs once on `admin_init`, guarded by `unysonplus_button_colors_migrated_v3`.
+
+<small>Source: `framework/includes/presets/button-presets.php:378`</small>
+
+### `unysonplus_migrate_section_style_border_row` {#unysonplus_migrate_section_style_border_row}
+*🔌 pluggable*
+
+```php
+unysonplus_migrate_section_style_border_row()
+```
+
+One-time migration: fold each saved Section Style's legacy flat border leaves (border_style / border_width / border_color) into the combined `border` row, so the editor reflects the value and a re-save doesn't drop it. Writes the theme- scoped settings blob directly (same seam as the preset store), gated by a flag. Runs after the theme-store migration (priority 20) so it sees the moved presets.
+
+<small>Source: `framework/includes/presets/section-style-presets.php:157`</small>
+
+### `unysonplus_mobile_font_size_scale` {#unysonplus_mobile_font_size_scale}
+*🔌 pluggable*
+
+```php
+unysonplus_mobile_font_size_scale( $desktop_px, $context = '' )
+```
+
+Tiered auto-reducer for mobile font sizes. Returns the mobile px value for a given desktop px size. Display text shrinks aggressively; body text stays at desktop size. Floors at 14px for a11y.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$desktop_px` | `int\|float` | Desktop pixel value (number, no unit). |
+| `$context` | `string` | Optional tag for filter consumers (e.g. 'h1', 'body'). |
+
+<small>Source: `framework/includes/presets/font-size-presets.php:39`</small>
+
+### `unysonplus_pattern_detect_root_class` {#unysonplus_pattern_detect_root_class}
+*🔌 pluggable*
+
+```php
+unysonplus_pattern_detect_root_class( $html )
+```
+
+The outermost element's first CSS class in a pasted HTML snippet — used as the pattern's "root class" when the author didn't name it. Returns '' if none.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$html` | `string` | — |
+
+**Returns** `string`
+
+<small>Source: `framework/includes/presets/pattern-scope.php:35`</small>
+
+### `unysonplus_pattern_imagepicker_choices` {#unysonplus_pattern_imagepicker_choices}
+*🔌 pluggable*
+
+```php
+unysonplus_pattern_imagepicker_choices( $thumb_h = null )
+```
+
+image-picker `choices` for a popover Background Pattern picker — a `none` choice plus one generated thumbnail per preset (keyed by preset id; the sentinel `none` = no pattern). Consumed by the Section / Container / Site pickers (multi-picker, popover).
+
+`none` MUST stay a real choice (not a deleted one): it's the default value, and it's the only
+way the &lt;select&gt; can reliably hold "no pattern" through the options modal's collect / re-render
+/ lazy-tab cycles. Without it the picker falls back to its FIRST tile and any save silently
+stores that (the "Dots gets set when I change any option" bug). Its TILE is hidden from popover
+pickers by the image-picker option type (see its scripts.js) — so it never shows as a redundant
+pickable tile, but the value model stays intact and robust.
+
+**Returns** `array`
+
+<small>Source: `framework/includes/presets/pattern-presets.php:165`</small>
+
+### `unysonplus_pattern_namespace` {#unysonplus_pattern_namespace}
+*🔌 pluggable*
+
+```php
+unysonplus_pattern_namespace( $slug )
+```
+
+The per-pattern namespace token (keyframes + filter ids), e.g. `pattern-neon`.
+
+<small>Source: `framework/includes/presets/pattern-scope.php:51`</small>
+
+### `unysonplus_pattern_preset_slug_map` {#unysonplus_pattern_preset_slug_map}
+*🔌 pluggable*
+
+```php
+unysonplus_pattern_preset_slug_map()
+```
+
+[ preset-id =&gt; css-slug ] so a pattern named "Dots" → `.pattern-dots`. Slug = lower-case, non-alphanumerics → '-', trimmed; collisions get a numeric suffix (-2, -3, …) in preset order; empty/symbol-only names fall back to the sanitized id. Single source of truth for the `.pattern-&#123;slug&#125;` class, shared by the (later) css-tokens generation and the Section/Body pattern picker.
+
+<small>Source: `framework/includes/presets/pattern-presets.php:89`</small>
+
+### `unysonplus_pattern_render_layer` {#unysonplus_pattern_render_layer}
+*🔌 pluggable*
+
+```php
+unysonplus_pattern_render_layer( $id, $fixed = false )
+```
+
+The decorative background-pattern LAYER for a preset id — an `aria-hidden`, non-interactive wrapper carrying the pattern's (scoped, id-namespaced) markup, meant to sit behind a host's content (`.upw-has-pattern &gt; .pattern-layer` at z-index 0; content above). Returns '' for an empty/unknown id.
+
+The markup is admin-authored (Theme Settings, manage_options) so it is trusted, but any
+`&lt;script&gt;` is stripped since JavaScript patterns are unsupported. The filter ids are
+namespaced to match the generated `.pattern-&#123;slug&#125;` CSS (see unysonplus_pattern_scope()).
+
+                     default absolute layer that fills its host (Section / Container).
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$id` | `string` | preset id (the Background Pattern picker's saved value). |
+| `$fixed` | `bool` | true → a FIXED full-viewport layer (site background) instead of the |
+
+**Returns** `string`
+
+<small>Source: `framework/includes/presets/pattern-presets.php:218`</small>
+
+### `unysonplus_pattern_scope` {#unysonplus_pattern_scope}
+*🔌 pluggable*
+
+```php
+unysonplus_pattern_scope( $html, $css, $slug )
+```
+
+Scope a pattern's HTML + CSS to `.pattern-&#123;slug&#125;`. Returns array( 'html' =&gt; &lt;html with filter ids namespaced&gt;, 'css' =&gt; &lt;scoped css&gt; ).
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$html` | `string` | — |
+| `$css` | `string` | — |
+| `$slug` | `string` | the pattern's css slug (see unysonplus_pattern_preset_slug_map()). |
+
+**Returns** `array`
+
+<small>Source: `framework/includes/presets/pattern-scope.php:148`</small>
+
+### `unysonplus_pattern_select_choices` {#unysonplus_pattern_select_choices}
+*🔌 pluggable*
+
+```php
+unysonplus_pattern_select_choices()
+```
+
+Choices for a Background Pattern picker: `[ '' =&gt; 'None', &lt;preset-id&gt; =&gt; &lt;name&gt;, … ]`. The stored value is the preset ID (stable across renames); the render layer maps it to the current `.pattern-&#123;slug&#125;` via the slug map.
+
+**Returns** `array`
+
+<small>Source: `framework/includes/presets/pattern-presets.php:120`</small>
+
+### `unysonplus_pattern_thumb_datauri` {#unysonplus_pattern_thumb_datauri}
+*🔌 pluggable*
+
+```php
+unysonplus_pattern_thumb_datauri( $html, $css, $w = 200, $h = 120 )
+```
+
+A static thumbnail of a pattern as a `data:image/svg+xml` URI — the pattern's HTML + CSS embedded in an SVG `&lt;foreignObject&gt;` (the html-to-image technique). Renders inside an `&lt;img&gt;` (so the framework image-picker can use it): gradients / layout / colors show; CSS animations show frame 0 and SVG filters may not apply (fine for a swatch). Self- contained + inline, so no external fetch happens in the `&lt;img&gt;` sandbox.
+
+<small>Source: `framework/includes/presets/pattern-presets.php:141`</small>
+
+### `unysonplus_preset_css_hash` {#unysonplus_preset_css_hash}
+*🔌 pluggable*
+
+```php
+unysonplus_preset_css_hash()
+```
+
+Stable content hash of every input that drives the preset CSS. Used as the filename suffix so a preset change yields a new URL (auto cache-bust for browsers, CDN, and the Asset Optimizer combiner).
+
+<small>Source: `framework/includes/css-tokens.php:1525`</small>
+
+### `unysonplus_preset_store_get` {#unysonplus_preset_store_get}
+*🔌 pluggable*
+
+```php
+unysonplus_preset_store_get( $key, $default_value = null )
+```
+
+Read a saved preset value from the THEME-SCOPED Theme Settings store (fw_theme_settings_options:&#123;theme-id&#125;). The presets are injected into the Theme Settings page (see extensions/shortcodes/includes/theme-settings-presets.php) and saved there by the framework, so each theme keeps its own presets and a theme switch resets/restores them. Centralized so the storage location is a single, filterable seam.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$key` | `string` | Option key (e.g. 'button_colors', 'theme_colors'). |
+| `$default_value` | `mixed` | Returned when the key isn't saved. |
+
+**Returns** `mixed`
+
+<small>Source: `framework/includes/presets/store.php:18`</small>
+
+### `unysonplus_preset_store_set` {#unysonplus_preset_store_set}
+*🔌 pluggable*
+
+```php
+unysonplus_preset_store_set( $key, $value )
+```
+
+Write a preset value to the SAME store unysonplus_preset_store_get() reads — the theme-scoped Theme Settings store once the one-time migration has run, else the legacy theme-independent extension store (so a pre-migration site is still consistent). This is the write-seam the Site Converter's preset importer must use: writing straight to the extension store leaves imported presets invisible on any already-migrated site (the getter no longer looks there).
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$key` | `string` | Option key (e.g. 'button_colors', 'section_style_presets'). |
+| `$value` | `mixed` | Plain data (scalars / arrays). |
+
+**Returns** `bool` True on write attempt, false when storage is unavailable.
+
+<small>Source: `framework/includes/presets/store.php:70`</small>
+
+### `unysonplus_register_arbitrary_spacing_scale` {#unysonplus_register_arbitrary_spacing_scale}
+*🔌 pluggable*
+
+```php
+unysonplus_register_arbitrary_spacing_scale( $json )
+```
+
+Register the Tailwind-style ARBITRARY spacing values found in a page-builder JSON string (e.g. `pt-[40px]`, `mb-[3.5rem]`) as NAMED entries in the site's Spacing Scale. This surfaces them in Theme Settings → Components → Spacing AND makes each section's spacing dropdown show the value as a selected option (durable on a manual builder re-save). The tokens already RENDER via the per-page dynamic CSS regardless — this only registers the preset. Idempotent (skips values already present). Used by the Site Converter's page import and the demo importers.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$json` | `string` | Page-builder JSON (or any string) to scan for arbitrary spacing tokens. |
+
+**Returns** `int` Number of new scale entries added.
+
+<small>Source: `framework/includes/presets/spacing-presets.php:197`</small>
+
+### `unysonplus_render_site_background_pattern` {#unysonplus_render_site_background_pattern}
+*🔌 pluggable*
+
+```php
+unysonplus_render_site_background_pattern()
+```
+
+Front-end: draw the chosen site background pattern as a FIXED, full-viewport decorative layer behind the whole page (`.pattern-layer--fixed`, z-index -1). Shows through wherever the theme's content is transparent — same behaviour as any body background. Hooked on wp_footer; position:fixed makes the DOM position irrelevant.
+
+<small>Source: `framework/includes/presets/pattern-presets.php:286`</small>
+
+### `unysonplus_repair_pattern_base64` {#unysonplus_repair_pattern_base64}
+*🔌 pluggable*
+
+```php
+unysonplus_repair_pattern_base64()
+```
+
+One-time self-heal for base64 SVG data-URIs in the Background Patterns library that were lowercased by an older Site Converter build (its `cls()` helper lowercased the whole class attribute, corrupting the case-sensitive base64 inside Tailwind `bg-[url('data:...')]` classes). The correct-case base64 still lives verbatim in the captured section's own stored post content, so we rebuild a lowercase→correct map from site content and swap any corrupt pattern base64 back. Guarded by an option so the (content-scanning) pass runs at most once, and only if a corrupt entry is actually detected. The current converter no longer corrupts (it reads base64 from the raw class attr), so this only heals sites captured before that fix.
+
+<small>Source: `framework/includes/presets/pattern-presets.php:308`</small>
+
+### `unysonplus_scrub_element_css` {#unysonplus_scrub_element_css}
+*🔌 pluggable*
+
+```php
+unysonplus_scrub_element_css( $css )
+```
+
+Defense-in-depth scrub for author-provided element CSS. Mirrors the custom hover-animation scrub in css-tokens.php: no markup, no script/style tags, no @import / javascript: / expression() tricks.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$css` | `string` | Raw CSS from the element's custom_css field. |
+
+**Returns** `string` Scrubbed CSS.
+
+<small>Source: `framework/includes/dynamic-css.php:38`</small>
+
+### `unysonplus_section_style_choices` {#unysonplus_section_style_choices}
+*🔌 pluggable*
+
+```php
+unysonplus_section_style_choices()
+```
+
+Choices for the Section's "Section Variant" dropdown: '' =&gt; Default, then one entry per style keyed by its SLUG (the stored value — scalar, so converting the old hardcoded select to this is not a value-shape change).
+
+<small>Source: `framework/includes/presets/section-style-presets.php:188`</small>
+
+### `unysonplus_section_style_normalize_border` {#unysonplus_section_style_normalize_border}
+*🔌 pluggable*
+
+```php
+unysonplus_section_style_normalize_border( $sp )
+```
+
+Fold a preset's legacy flat border leaves (border_style / border_width / border_color) into the combined `border` =&gt; &#123; width, style, color &#125; shape used by the multi-inline Border row. A no-op once `border` is already present. Keeps the reader/consumer working on presets saved before the combine.
+
+<small>Source: `framework/includes/presets/section-style-presets.php:110`</small>
+
+### `unysonplus_section_style_preset_slug_map` {#unysonplus_section_style_preset_slug_map}
+*🔌 pluggable*
+
+```php
+unysonplus_section_style_preset_slug_map()
+```
+
+[ preset-id =&gt; css-slug ] for the current Section Styles, so the generated class is readable ("Dark" → `.section--dark`). Mirrors unysonplus_border_preset_slug_map() (collisions get -2/-3; an empty name falls back to the id). Shared by css-tokens.php (rule generation), the Section Variant dropdown and the view resolver so class + value + render always agree.
+
+<small>Source: `framework/includes/presets/section-style-presets.php:29`</small>
+
+### `unysonplus_shape_divider_imagepicker_choices` {#unysonplus_shape_divider_imagepicker_choices}
+*🔌 pluggable*
+
+```php
+unysonplus_shape_divider_imagepicker_choices( $placement = 'bottom', $thumb_h = null )
+```
+
+image-picker `choices` for a visual Shape Divider picker — a `none` tile plus one generated silhouette thumbnail per preset (keyed by preset id; `none` = no divider).
+
+`none` MUST stay a real choice (it is the default value and the only reliable "no divider"
+the multi-picker can hold through the modal's collect / re-render / lazy-tab cycles). Its
+TILE is hidden from popover pickers by the image-picker option type — same design as the
+Background Pattern picker.
+
+<small>Source: `framework/includes/presets/shape-divider-presets.php:230`</small>
+
+### `unysonplus_shape_divider_markup` {#unysonplus_shape_divider_markup}
+*🔌 pluggable*
+
+```php
+unysonplus_shape_divider_markup( $id )
+```
+
+Full render geometry for a divider preset id: array( 'inner' =&gt; &lt;svg children&gt;, 'viewBox' ). Empty inner for 'none'/unknown. The consumer wraps `inner` in its own &lt;svg&gt; and sets `color`.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$id` | `string` | — |
+
+**Returns** `array&#123;inner:string,viewBox:string&#125;`
+
+<small>Source: `framework/includes/presets/shape-divider-presets.php:140`</small>
+
+### `unysonplus_shape_divider_path` {#unysonplus_shape_divider_path}
+*🔌 pluggable*
+
+```php
+unysonplus_shape_divider_path( $id )
+```
+
+Resolve a shape-divider preset id to its geometry for the Section render. Returns array( 'path' =&gt; d, 'viewBox' =&gt; vb ), or an empty path for 'none'/unknown ids.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$id` | `string` | — |
+
+**Returns** `array&#123;path:string,viewBox:string&#125;`
+
+<small>Source: `framework/includes/presets/shape-divider-presets.php:162`</small>
+
+### `unysonplus_shape_divider_select_choices` {#unysonplus_shape_divider_select_choices}
+*🔌 pluggable*
+
+```php
+unysonplus_shape_divider_select_choices()
+```
+
+`[ 'none' =&gt; 'None', &lt;id&gt; =&gt; &lt;name&gt;, … ]` for a plain divider &lt;select&gt;. Stored value is the preset id (stable across renames). Feeds the Section Top/Bottom Shape Divider selects so user-added shapes appear automatically.
+
+<small>Source: `framework/includes/presets/shape-divider-presets.php:182`</small>
+
+### `unysonplus_shape_divider_thumb_datauri` {#unysonplus_shape_divider_thumb_datauri}
+*🔌 pluggable*
+
+```php
+unysonplus_shape_divider_thumb_datauri( $inner, $viewbox = '0 0 1200 120', $placement = 'bottom', $w = 200, $h = 60 )
+```
+
+A `data:image/svg+xml` thumbnail of a divider shape — the silhouette filled over a light card, scaled edge-to-edge (preserveAspectRatio=none, the same way the Section draws it) so the picker tile reads as the actual edge. Self-contained (no external fetch in the &lt;img&gt;).
+
+<small>Source: `framework/includes/presets/shape-divider-presets.php:201`</small>
+
+### `unysonplus_styling_presets_enabled` {#unysonplus_styling_presets_enabled}
+*🔌 pluggable*
+
+```php
+unysonplus_styling_presets_enabled()
+```
+
+Master switch for the whole styling layer (Styling tab + preset pickers + Component Presets editor + this preset stylesheet). Default ON. Off = the "bare, structure-only page builder" mode (Page Builder settings → Styling Presets). A non-null default short-circuits the ext-settings read so it never loads the settings schema (avoids firing fw_option_types_init early).
+
+<small>Source: `framework/includes/css-tokens.php:1615`</small>
+
+### `unysonplus_table_preset_slug_map` {#unysonplus_table_preset_slug_map}
+*🔌 pluggable*
+
+```php
+unysonplus_table_preset_slug_map()
+```
+
+Returns [ preset-id =&gt; css-slug ] for the current Table Presets, so the generated class is readable: a preset named "Striped" → `.tbl-striped`. Mirrors unysonplus_border_preset_slug_map() (collisions get -2/-3, empty names fall back to the id). Shared by css-tokens.php (rule generation) and the Table shortcode's preset dropdown so class + value + render agree.
+
+<small>Source: `framework/includes/presets/table-presets.php:13`</small>
+
+### `unysonplus_type_scale_config` {#unysonplus_type_scale_config}
+*🔌 pluggable*
+
+```php
+unysonplus_type_scale_config()
+```
+
+Default type-scale configuration, filterable. `ratio` is the step multiplier at the max viewport (desktop); `ratio_mobile` is the gentler multiplier at the min viewport (so headings shrink more than body on small screens). Viewport range comes from unysonplus_fluid_type_range().
+
+<small>Source: `framework/includes/presets/font-size-presets.php:142`</small>
+
+← Back to [Functions overview](./index.md)

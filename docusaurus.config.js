@@ -227,6 +227,19 @@ const config = {
         editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
       },
     ],
+    // API Reference — the framework's public PHP functions + hooks, GENERATED from the
+    // source (scripts/extract-php-api.php → scripts/gen-php-api.mjs). Its own instance so
+    // it stays a distinct "Reference" section, separate from the how-to Manual.
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'phpApi',
+        path: 'reference',
+        routeBasePath: 'reference',
+        sidebarPath: './sidebarsReference.js',
+        editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
+      },
+    ],
     // Design Decisions — a dated log of WHY the framework works the way it does
     // (the reasoning behind key architecture/design choices). A second, separate
     // blog instance so it stays distinct from the "News" release feed.
@@ -299,6 +312,13 @@ const config = {
             docsPluginId: 'aiDevKit',
             position: 'left',
             label: 'AI Dev Kit',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'referenceSidebar',
+            docsPluginId: 'phpApi',
+            position: 'left',
+            label: 'API Reference',
           },
           {to: '/decisions', label: 'Design Decisions', position: 'left'},
           {to: '/blog', label: 'News', position: 'left'},

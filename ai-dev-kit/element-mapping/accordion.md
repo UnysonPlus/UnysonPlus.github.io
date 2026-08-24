@@ -29,37 +29,46 @@ Each source toggle becomes an accordion panel (its header → the tab title, its
 
 ## Option coverage
 
-**1/19 options mapped natively** (5%) — 🟡 0 via CSS · ⚠️ 11 gaps (derivable, not yet) · ⚪ 7 default · ⚙️ 3 auto.
+**10/28 options mapped natively** (36%) — 🟡 0 via CSS · ⚠️ 8 gaps (derivable, not yet) · ⚪ 10 default · ⚙️ 3 auto.
 
-:::tip[11 derivable gaps]
+:::tip[8 derivable gaps]
 The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
 :::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
-| `tabs` | Content | `addable-popup` | ✅ Native | One panel per source toggle — title + content |
-| `is_open` | Content | `switch` | ⚠️ Gap | Derivable — aria-expanded="true" / .show / .active on the open panel |
-| `style` | Design | `multi-picker` | ⚪ Unmapped | Default |
-| `accordion_style` | Design | `select` | ⚪ Unmapped | Default |
-| `icon_style` | Design | `select` | ⚠️ Gap | Derivable — chevron vs plus/minus glyph from the marker |
-| `icon_position` | Design | `select` | ⚠️ Gap | Derivable — the marker/chevron side from the toggle CSS |
-| `numbering` | Design | `select` | ⚪ Unmapped | Default |
-| `title_tag` | Content | `select` | ⚠️ Gap | Derivable — the header element (h2–h4 vs button) |
-| `title_alignment` | Design | `alignment` | ⚠️ Gap | Derivable — computed text-align of the header |
-| `multiple_open` | Behavior | `switch` | ⚠️ Gap | Derivable — Bootstrap data-bs-parent (single-open) vs independent toggles |
-| `collapsible` | Behavior | `switch` | ⚠️ Gap | Derivable — data-bs-parent / whether panels can all close |
-| `faq_schema` | SEO | `switch` | ⚠️ Gap | Derivable — a schema.org FAQPage JSON-LD block on the page |
-| `font_size_preset` | Styling | `font-size` | ⚪ Unmapped | Default |
-| `title_bg_color` | Styling | `color` | ⚠️ Gap | Derivable — computed background of the header row |
-| `content_bg_color` | Styling | `color` | ⚠️ Gap | Derivable — computed background of the panel |
-| `spacing` | Styling | `spacing` | ⚠️ Gap | Derivable — the margin/gap between items |
-| `animation` | Animations | `group` | ⚪ Unmapped | Default off |
-| `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `css_id` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `unique_id` | Advanced | `hidden` | ⚙️ Auto | Generated |
-| `responsive_hide` | Advanced | `group` | ⚙️ Auto | Not set |
-| `custom_attrs` | Advanced | `group` | ⚙️ Auto | Not set |
+| `tabs` | Content | `addable-popup` | ✅ Native | One panel per source toggle — title + content (with FAQ JSON-LD answer recovery) |
+| `accordion_style` | Design | `image-picker` | ✅ Native | Family (bordered / separated / flush / filled / ghost) from item background / border / gap |
+| `icon_style` | Design | `select` | ✅ Native | chevron / arrow / plus-minus / plus-x / none, from the marker glyph |
+| `icon_position` | Design | `select` | ✅ Native | left / right from justify-content / the icon placement in the bar |
+| `title_alignment` | Design | `select` | ✅ Native | Computed text-align of the header |
+| `item_spacing` | Design | `short-select` | ✅ Native | Gap between items (space-y / gap / margin), snapped to the nearest mb-N |
+| `corner_radius` | Design | `select` | ✅ Native | Item border-radius → none / sm / md / lg |
+| `elevation` | Design | `select` | ✅ Native | Item box-shadow presence → subtle / raised |
+| `title_bg_color` | Styling | `compact color` | ✅ Native | Computed header background fill |
+| `faq_schema` | SEO | `switch` | ✅ Native | Enabled when a schema.org FAQPage covers the questions — re-emits the FAQ structured data |
+| `initially_open` | Content | `select` | ⚠️ Gap | Derivable — details[open] / aria-expanded="true" / .active / .show on the open panel |
+| `title_tag` | Content | `select` | ⚠️ Gap | Derivable — the header element (h2–h6) |
+| `content_bg_color` | Styling | `compact color` | ⚠️ Gap | Derivable — computed panel background |
+| `multiple_open` | Behavior | `switch` | ⚠️ Gap | Derivable — Bootstrap data-bs-parent (single-open vs independent) |
+| `collapsible` | Behavior | `switch` | ⚠️ Gap | Derivable — data-bs-parent / whether all panels can close |
+| `tab_title_color` | Styling | `compact color` | ⚠️ Gap | Derivable — computed header text colour → nearest preset |
+| `tab_content_color` | Styling | `compact color` | ⚠️ Gap | Derivable — computed panel text colour → nearest preset |
+| `icon_closed_color` | Styling | `compact color` | ⚠️ Gap | Derivable — computed marker colour |
+| `numbering` | Design | `multi-picker` | ⚪ Unmapped | Default — UnysonPlus item numbering, not a source signal |
+| `hash_linking` | Behavior | `switch` | ⚪ Unmapped | Default |
+| `show_expand_collapse_all` | Behavior | `switch` | ⚪ Unmapped | Default |
+| `active_accent` | Styling | `compact color` | ⚪ Unmapped | Default — UnysonPlus accent colour |
+| `title_hover` | Styling | `switch` | ⚪ Unmapped | Default |
+| `font_size_preset` | Styling | `select` | ⚪ Unmapped | Default — maps to a Text Style; overlaps the design system |
+| `icon_closed_image · icon_open_image · icon_*_text` | Design | `upload / short-text` | ⚪ Unmapped | Default — custom marker images / text |
+| `spacing` | Advanced | `spacing` | ⚪ Unmapped | Default — the element’s outer margin/padding |
+| `animation · gsap_motion · interaction · text_effect · scroll_* · …` | Animations | `multi-picker` | ⚪ Unmapped | Default — Animation Engine effects (no source mapping) |
+| `css_id · css_class · custom_css` | Advanced | `text / code-editor` | ⚪ Unmapped | Default — per-instance, set by hand |
+| `unique_id` | Advanced | `unique` | ⚙️ Auto | Generated |
+| `responsive_hide · dc_* · element_position · element_overflow` | Advanced | `group` | ⚙️ Auto | Not set |
+| `custom_attrs` | Advanced | `addable-box` | ⚙️ Auto | Not set |
 
 ### Status legend
 

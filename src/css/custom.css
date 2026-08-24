@@ -137,3 +137,14 @@ html.plugin-id-decisions article header h1 {
 .opt-table col.c-resp   { width: 7%; }
 .opt-table col.c-render { width: 26%; }
 .opt-table col.c-ss     { width: 17%; }
+
+/* Compact content tables — 13px. The docs (esp. the API Reference + mapping pages)
+ * are table-dense; a slightly smaller table type fits more per row and reads better.
+ * Scoped to markdown content so navbar / UI tables are untouched. */
+.markdown table {
+  border-collapse: collapse;
+  margin-bottom: var(--ifm-spacing-vertical);
+  display: block;
+  overflow: auto;
+  font-size: 13px;
+}

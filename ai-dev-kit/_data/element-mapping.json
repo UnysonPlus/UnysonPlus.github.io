@@ -86,15 +86,15 @@
      "key": "icon",
      "tab": "Icons",
      "type": "icon",
-     "status": "unmapped",
-     "source": "Source title icons aren't extracted to this field"
+     "status": "gap",
+     "source": "leading <svg>/<i> icon element beside the heading text"
     },
     {
      "key": "title_icon_position",
      "tab": "Icons",
      "type": "select",
-     "status": "unmapped",
-     "source": "—"
+     "status": "gap",
+     "source": "DOM order of the icon relative to the heading text (before/after)"
     },
     {
      "key": "icon_badge_preset",
@@ -156,22 +156,22 @@
      "key": "overline_align",
      "tab": "Styling",
      "type": "alignment",
-     "status": "unmapped",
-     "source": "Only the master alignment is mapped"
+     "status": "gap",
+     "source": "computed text-align of the overline/eyebrow element"
     },
     {
      "key": "title_align",
      "tab": "Styling",
      "type": "alignment",
-     "status": "unmapped",
-     "source": "—"
+     "status": "gap",
+     "source": "computed text-align of the heading element"
     },
     {
      "key": "subtitle_align",
      "tab": "Styling",
      "type": "alignment",
-     "status": "unmapped",
-     "source": "—"
+     "status": "gap",
+     "source": "computed text-align of the subtitle element"
     },
     {
      "key": "display_size",
@@ -184,8 +184,8 @@
      "key": "title_max_width",
      "tab": "Styling",
      "type": "unit-input",
-     "status": "unmapped",
-     "source": "`block_max_width` is mapped instead"
+     "status": "gap",
+     "source": "computed max-width of the heading element"
     },
     {
      "key": "subtitle_size",
@@ -198,15 +198,15 @@
      "key": "subtitle_max_width",
      "tab": "Styling",
      "type": "unit-input",
-     "status": "unmapped",
-     "source": "—"
+     "status": "gap",
+     "source": "computed max-width of the subtitle element"
     },
     {
      "key": "bg_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Section background handles band colour"
+     "status": "gap",
+     "source": "computed background-color of the heading container"
     },
     {
      "key": "overline_color",
@@ -337,8 +337,8 @@
      "key": "bg_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Block background rarely set (section handles it)"
+     "status": "gap",
+     "source": "computed background-color of the text container"
     },
     {
      "key": "link_color",
@@ -379,8 +379,8 @@
      "key": "columns",
      "tab": "Styling",
      "type": "select",
-     "status": "unmapped",
-     "source": "Newspaper columns — no source signal"
+     "status": "gap",
+     "source": "computed CSS column-count of the text container"
     },
     {
      "key": "balance",
@@ -414,8 +414,8 @@
      "key": "link_underline",
      "tab": "Styling",
      "type": "select",
-     "status": "unmapped",
-     "source": "—"
+     "status": "gap",
+     "source": "computed text-decoration-line on anchor links within the text"
     },
     {
      "key": "dropcap",
@@ -504,8 +504,8 @@
      "key": "target",
      "tab": "Content",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default `_self`"
+     "status": "gap",
+     "source": "target attribute of the anchor (_blank vs _self)"
     },
     {
      "key": "icon",
@@ -539,8 +539,8 @@
      "key": "width",
      "tab": "Styling",
      "type": "multi-picker",
-     "status": "unmapped",
-     "source": "Default (auto)"
+     "status": "gap",
+     "source": "computed display/width of the button (full-width block vs auto)"
     },
     {
      "key": "alignment",
@@ -567,8 +567,8 @@
      "key": "spacing",
      "tab": "Styling",
      "type": "spacing",
-     "status": "unmapped",
-     "source": "Default spacing"
+     "status": "gap",
+     "source": "computed margin around the button element"
     },
     {
      "key": "animation",
@@ -664,29 +664,29 @@
      "key": "icon_position",
      "tab": "Design",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "DOM order of each item's icon relative to its text (left/top)"
     },
     {
      "key": "columns",
      "tab": "Layout",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default (1)"
+     "status": "gap",
+     "source": "column count from the list's grid/flex layout (items per row)"
     },
     {
      "key": "dividers",
      "tab": "Layout",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default off"
+     "status": "gap",
+     "source": "computed border between adjacent list items"
     },
     {
      "key": "zebra",
      "tab": "Layout",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default off"
+     "status": "gap",
+     "source": "alternating background-color across list rows"
     },
     {
      "key": "box_style",
@@ -699,22 +699,22 @@
      "key": "font_size_preset",
      "tab": "Styling",
      "type": "font-size",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed font-size of the list item text"
     },
     {
      "key": "text_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed color of the list item text"
     },
     {
      "key": "spacing",
      "tab": "Styling",
      "type": "spacing",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed margin/gap between list items"
     },
     {
      "key": "animation",
@@ -824,57 +824,57 @@
      "key": "icon_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed color of the icon element (svg fill / <i> color)"
     },
     {
      "key": "title_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed color of the title/heading element"
     },
     {
      "key": "content_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed color of the body text element"
     },
     {
      "key": "bg_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed background-color of the card container"
     },
     {
      "key": "font_size_preset",
      "tab": "Styling",
      "type": "font-size",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed font-size of the title/body text"
     },
     {
      "key": "icon_align",
      "tab": "Layout",
      "type": "alignment",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "text-align / flex justify of the icon container"
     },
     {
      "key": "title_align",
      "tab": "Layout",
      "type": "alignment",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "text-align of the title element"
     },
     {
      "key": "content_align",
      "tab": "Layout",
      "type": "alignment",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "text-align of the content element"
     },
     {
      "key": "box_style",
@@ -887,22 +887,22 @@
      "key": "box_link",
      "tab": "Link",
      "type": "text",
-     "status": "unmapped",
-     "source": "The link rides in the content instead"
+     "status": "gap",
+     "source": "href of the wrapping/CTA anchor"
     },
     {
      "key": "link_target",
      "tab": "Link",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "target attribute of the anchor (_blank vs _self)"
     },
     {
      "key": "link_rel",
      "tab": "Link",
      "type": "text",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "rel attribute of the anchor"
     },
     {
      "key": "mobile_stack",
@@ -1012,15 +1012,15 @@
      "key": "leading_icon",
      "tab": "Icons",
      "type": "icon",
-     "status": "unmapped",
-     "source": "Default none"
+     "status": "gap",
+     "source": "presence + glyph of a leading <svg>/<i> icon inside the badge"
     },
     {
      "key": "leading",
      "tab": "Icons",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default none"
+     "status": "gap",
+     "source": "DOM order of icon vs text (icon before or after the label)"
     },
     {
      "key": "align",
@@ -1040,8 +1040,8 @@
      "key": "shape",
      "tab": "Design",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default `pill`"
+     "status": "gap",
+     "source": "computed border-radius (pill vs rounded vs square)"
     },
     {
      "key": "size",
@@ -1068,36 +1068,36 @@
      "key": "pill_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Left neutral — source fill not reproduced"
+     "status": "gap",
+     "source": "computed background-color of the badge"
     },
     {
      "key": "text_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Left neutral"
+     "status": "gap",
+     "source": "computed color of the badge label"
     },
     {
      "key": "tag_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Left neutral"
+     "status": "gap",
+     "source": "computed border/accent color when rendered as a tag"
     },
     {
      "key": "gradient_from",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "first color stop of a computed background linear-gradient"
     },
     {
      "key": "gradient_to",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "last color stop of a computed background linear-gradient"
     },
     {
      "key": "spacing",
@@ -1110,43 +1110,43 @@
      "key": "link_target",
      "tab": "Link",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default `auto`"
+     "status": "gap",
+     "source": "target attribute of the badge anchor"
     },
     {
      "key": "rel_nofollow",
      "tab": "Link",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default off"
+     "status": "gap",
+     "source": "rel attribute of the anchor contains 'nofollow'"
     },
     {
      "key": "rel_sponsored",
      "tab": "Link",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default off"
+     "status": "gap",
+     "source": "rel attribute of the anchor contains 'sponsored'"
     },
     {
      "key": "rel_ugc",
      "tab": "Link",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default off"
+     "status": "gap",
+     "source": "rel attribute of the anchor contains 'ugc'"
     },
     {
      "key": "aria_label",
      "tab": "SEO",
      "type": "text",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "aria-label attribute on the badge element"
     },
     {
      "key": "title_attr",
      "tab": "SEO",
      "type": "text",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "title attribute on the badge element"
     },
     {
      "key": "dismissible",
@@ -1166,22 +1166,22 @@
      "key": "schema_enable",
      "tab": "SEO",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default off"
+     "status": "gap",
+     "source": "presence of schema.org itemtype/itemprop microdata in the markup"
     },
     {
      "key": "schema_name",
      "tab": "SEO",
      "type": "text",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "schema.org name itemprop value"
     },
     {
      "key": "schema_date",
      "tab": "SEO",
      "type": "text",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "schema.org date itemprop value"
     },
     {
      "key": "animation",
@@ -1423,15 +1423,15 @@
      "key": "caption",
      "tab": "Content",
      "type": "text",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "text of the <caption> element"
     },
     {
      "key": "caption_position",
      "tab": "Content",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed caption-side (top/bottom) of the caption"
     },
     {
      "key": "frame_preset",
@@ -1444,15 +1444,15 @@
      "key": "style_striped",
      "tab": "Style",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "alternating row background-color across tbody rows"
     },
     {
      "key": "style_bordered",
      "tab": "Style",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "presence of border on cells (computed border-width > 0)"
     },
     {
      "key": "style_hover",
@@ -1472,29 +1472,29 @@
      "key": "sticky_header",
      "tab": "Style",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed position:sticky on the header row/cells"
     },
     {
      "key": "bg_color",
      "tab": "Style",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed background-color of the table/cells"
     },
     {
      "key": "text_color",
      "tab": "Style",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed color of the cell text"
     },
     {
      "key": "font_size_preset",
      "tab": "Style",
      "type": "font-size",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed font-size of cell text"
     },
     {
      "key": "enable_search",
@@ -1688,8 +1688,8 @@
      "key": "separator",
      "tab": "Content",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default (thousands separator on)"
+     "status": "gap",
+     "source": "thousands separator present in the rendered number text (e.g. '1,000')"
     },
     {
      "key": "duration",
@@ -1778,15 +1778,15 @@
      "key": "link",
      "tab": "Content",
      "type": "text",
-     "status": "unmapped",
-     "source": "Default — a wrapping link is not carried here"
+     "status": "gap",
+     "source": "href of the anchor wrapping the <img> (a > img)"
     },
     {
      "key": "target",
      "tab": "Content",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "target attribute of the wrapping <a>"
     },
     {
      "key": "image_style",
@@ -1799,15 +1799,15 @@
      "key": "width",
      "tab": "Styling",
      "type": "unit-input",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed/attribute width of the <img>"
     },
     {
      "key": "height",
      "tab": "Styling",
      "type": "unit-input",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed/attribute height of the <img>"
     },
     {
      "key": "size",
@@ -1820,29 +1820,29 @@
      "key": "bg_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed background-color of the <img> or its container"
     },
     {
      "key": "loading",
      "tab": "Advanced",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "loading attribute on the <img> (lazy/eager)"
     },
     {
      "key": "fetchpriority",
      "tab": "Advanced",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "fetchpriority attribute on the <img>"
     },
     {
      "key": "spacing",
      "tab": "Styling",
      "type": "spacing",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed margin/padding of the image element"
     },
     {
      "key": "custom_css",
@@ -1945,64 +1945,64 @@
      "key": "ratio",
      "tab": "Styling",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "aspect ratio from width/height attributes or computed aspect-ratio"
     },
     {
      "key": "object_fit",
      "tab": "Styling",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed object-fit of the <video>"
     },
     {
      "key": "controls",
      "tab": "Behavior",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "controls attribute on the <video>"
     },
     {
      "key": "autoplay",
      "tab": "Behavior",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default off"
+     "status": "gap",
+     "source": "autoplay attribute on the <video>"
     },
     {
      "key": "loop",
      "tab": "Behavior",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default off"
+     "status": "gap",
+     "source": "loop attribute on the <video>"
     },
     {
      "key": "muted",
      "tab": "Behavior",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "muted attribute on the <video>"
     },
     {
      "key": "playsinline",
      "tab": "Behavior",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "playsinline attribute on the <video>"
     },
     {
      "key": "preload",
      "tab": "Behavior",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "preload attribute on the <video>"
     },
     {
      "key": "youtube_nocookie",
      "tab": "Behavior",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default off"
+     "status": "gap",
+     "source": "iframe src host is youtube-nocookie.com"
     },
     {
      "key": "lazy_facade",
@@ -2015,15 +2015,15 @@
      "key": "bg_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed background-color of the video container"
     },
     {
      "key": "spacing",
      "tab": "Styling",
      "type": "spacing",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed margin/padding of the video element"
     },
     {
      "key": "animation",
@@ -2098,15 +2098,15 @@
      "key": "render_as_code",
      "tab": "Content",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default off — rendered as HTML"
+     "status": "gap",
+     "source": "presence of a <pre>/<code> wrapper in the source"
     },
     {
      "key": "code_language",
      "tab": "Content",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "language-* / lang-* class on the <code> element"
     },
     {
      "key": "beautify",
@@ -2119,29 +2119,29 @@
      "key": "bg_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed background-color of the <pre>/<code>"
     },
     {
      "key": "text_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed color of the <pre>/<code>"
     },
     {
      "key": "font_size_preset",
      "tab": "Styling",
      "type": "font-size",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed font-size of the code text"
     },
     {
      "key": "spacing",
      "tab": "Styling",
      "type": "spacing",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed margin/padding of the code block"
     },
     {
      "key": "animation",
@@ -2244,50 +2244,50 @@
      "key": "layout_type",
      "tab": "Layout",
      "type": "multi-picker",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "grid vs carousel/slider from DOM structure (slider wrapper vs grid)"
     },
     {
      "key": "grid_columns",
      "tab": "Layout",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "column count from grid template / items per row"
     },
     {
      "key": "avatar_shape",
      "tab": "Design",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "border-radius of the avatar image (round vs square)"
     },
     {
      "key": "avatar_size",
      "tab": "Design",
      "type": "unit-input",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed width/height of the avatar image"
     },
     {
      "key": "quote_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed color of the quote text"
     },
     {
      "key": "bg_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed background-color of the testimonial card"
     },
     {
      "key": "text_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed color of the testimonial text"
     },
     {
      "key": "box_style",
@@ -2300,22 +2300,22 @@
      "key": "font_size_preset",
      "tab": "Styling",
      "type": "font-size",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed font-size of the testimonial text"
     },
     {
      "key": "reviews_schema",
      "tab": "SEO",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default off"
+     "status": "gap",
+     "source": "presence of schema.org Review/AggregateRating markup"
     },
     {
      "key": "spacing",
      "tab": "Styling",
      "type": "spacing",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed margin/padding of the card/section"
     },
     {
      "key": "custom_css",
@@ -2411,8 +2411,8 @@
      "key": "overlap",
      "tab": "Design",
      "type": "number",
-     "status": "unmapped",
-     "source": "Default 35%"
+     "status": "gap",
+     "source": "negative margin-left/right between adjacent stacked avatar images"
     },
     {
      "key": "stack_order",
@@ -2425,15 +2425,15 @@
      "key": "shape",
      "tab": "Design",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "border-radius of the avatar image (0=square, 50%=circle, else rounded)"
     },
     {
      "key": "size",
      "tab": "Design",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed width/height of the avatar image"
     },
     {
      "key": "design",
@@ -2446,8 +2446,8 @@
      "key": "ring_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed border-color or ring box-shadow color around the avatar"
     },
     {
      "key": "show_status",
@@ -2460,8 +2460,8 @@
      "key": "show_label",
      "tab": "Content",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default off"
+     "status": "gap",
+     "source": "presence of an adjacent name/label text node beside the avatar"
     },
     {
      "key": "spacing",
@@ -2571,15 +2571,15 @@
      "key": "icon",
      "tab": "Content",
      "type": "icon",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "presence and class of an <i>/svg icon element inside the box"
     },
     {
      "key": "button_label",
      "tab": "Content",
      "type": "text",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "text content of the box's button/anchor CTA"
     },
     {
      "key": "image_style",
@@ -2592,15 +2592,15 @@
      "key": "image_side",
      "tab": "Layout",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "DOM order / flex-direction of image vs text block (left/right/top)"
     },
     {
      "key": "image_ratio",
      "tab": "Layout",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed width:height aspect-ratio of the image element"
     },
     {
      "key": "frame",
@@ -2613,8 +2613,8 @@
      "key": "overlay",
      "tab": "Styling",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "presence of a semi-transparent color layer stacked over the image"
     },
     {
      "key": "hover_effect",
@@ -2634,29 +2634,29 @@
      "key": "title_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed color of the title element"
     },
     {
      "key": "content_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed color of the body/description text"
     },
     {
      "key": "bg_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed background-color of the box container"
     },
     {
      "key": "link_url",
      "tab": "Link",
      "type": "text",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "href of the wrapping/CTA anchor"
     },
     {
      "key": "spacing",
@@ -2745,15 +2745,15 @@
      "key": "grid",
      "tab": "Layout",
      "type": "group",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "column count from grid-template-columns / items-per-row in the DOM"
     },
     {
      "key": "captions",
      "tab": "Content",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default off"
+     "status": "gap",
+     "source": "presence of <figcaption>/caption elements on gallery items"
     },
     {
      "key": "caption_source",
@@ -2780,22 +2780,22 @@
      "key": "bg_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed background-color of the gallery/item container"
     },
     {
      "key": "caption_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed color of the caption text"
     },
     {
      "key": "font_size_preset",
      "tab": "Styling",
      "type": "font-size",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed font-size of the caption text"
     },
     {
      "key": "spacing",
@@ -2926,15 +2926,15 @@
      "key": "title",
      "tab": "Content",
      "type": "text",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "heading text content within the newsletter form block"
     },
     {
      "key": "consent_text",
      "tab": "Content",
      "type": "text",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "label text of the consent checkbox"
     },
     {
      "key": "success_message",
@@ -2954,29 +2954,29 @@
      "key": "bg_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed background-color of the form container"
     },
     {
      "key": "text_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed color of the form text"
     },
     {
      "key": "field_bg",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed background-color of the input field(s)"
     },
     {
      "key": "font_size_preset",
      "tab": "Styling",
      "type": "font-size",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "computed font-size of the form body text"
     },
     {
      "key": "spacing",
@@ -3197,8 +3197,8 @@
      "key": "image_ratio",
      "tab": "Design",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "Aspect ratio of post-card thumbnail <img> from its computed/intrinsic width:height"
     },
     {
      "key": "excerpt_length",
@@ -3211,8 +3211,8 @@
      "key": "readmore",
      "tab": "Content",
      "type": "switch",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "Presence of a 'Read more'/continue-reading anchor within each post card"
     },
     {
      "key": "live_filters",
@@ -3225,29 +3225,29 @@
      "key": "pagination",
      "tab": "Behavior",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "Presence and kind of pager markup (numbered .page-numbers links, prev/next, or infinite-scroll hooks)"
     },
     {
      "key": "title_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "Computed color of the post title link/heading"
     },
     {
      "key": "meta_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "Computed color of the post meta text (date/author/category)"
     },
     {
      "key": "bg_color",
      "tab": "Styling",
      "type": "color",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "Computed background-color of the post card container"
     },
     {
      "key": "spacing",
@@ -3371,15 +3371,15 @@
      "key": "gap",
      "tab": "Layout",
      "type": "unit-input",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "Computed grid/flex gap (column-gap) between product-card items"
     },
     {
      "key": "pagination",
      "tab": "Behavior",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "gap",
+     "source": "Presence and kind of pager markup (.page-numbers/next links) below the product grid"
     },
     {
      "key": "carousel",

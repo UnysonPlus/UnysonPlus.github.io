@@ -29,22 +29,26 @@ The image itself maps natively. When the source image has an organic radius / wh
 
 ## Option coverage
 
-**1/15 options mapped natively** (7%) — 🟡 1 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 13 default · ⚙️ 3 auto.
+**1/15 options mapped natively** (7%) — 🟡 1 via CSS · ⚠️ 8 gaps (derivable, not yet) · ⚪ 5 default · ⚙️ 3 auto.
+
+:::tip[8 derivable gaps]
+The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
+:::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
 | `image` | Content | `upload` | ✅ Native | The source image (side-loaded to the Media Library) |
-| `link` | Content | `text` | ⚪ Unmapped | Default — a wrapping link is not carried here |
-| `target` | Content | `select` | ⚪ Unmapped | Default |
+| `link` | Content | `text` | ⚠️ Gap | href of the anchor wrapping the <img> (a > img) |
+| `target` | Content | `select` | ⚠️ Gap | target attribute of the wrapping <a> |
 | `image_style` | Styling | `image-style-picker` | ⚪ Unmapped | Not matched to an Image Style preset |
-| `width` | Styling | `unit-input` | ⚪ Unmapped | Default |
-| `height` | Styling | `unit-input` | ⚪ Unmapped | Default |
+| `width` | Styling | `unit-input` | ⚠️ Gap | computed/attribute width of the <img> |
+| `height` | Styling | `unit-input` | ⚠️ Gap | computed/attribute height of the <img> |
 | `size` | Styling | `select` | ⚪ Unmapped | Default |
-| `bg_color` | Styling | `color` | ⚪ Unmapped | Default |
-| `loading` | Advanced | `select` | ⚪ Unmapped | Default |
-| `fetchpriority` | Advanced | `select` | ⚪ Unmapped | Default |
-| `spacing` | Styling | `spacing` | ⚪ Unmapped | Default |
+| `bg_color` | Styling | `color` | ⚠️ Gap | computed background-color of the <img> or its container |
+| `loading` | Advanced | `select` | ⚠️ Gap | loading attribute on the <img> (lazy/eager) |
+| `fetchpriority` | Advanced | `select` | ⚠️ Gap | fetchpriority attribute on the <img> |
+| `spacing` | Styling | `spacing` | ⚠️ Gap | computed margin/padding of the image element |
 | `custom_css` | Advanced | `textarea` | 🟡 Via CSS | Carries the image skin (`skinCss`) — organic radius / border / shadow / blob backdrop |
 | `animation` | Animations | `group` | ⚪ Unmapped | Default off |
 | `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |

@@ -29,21 +29,25 @@ The images are mapped as the gallery’s media source (side-loaded), and each im
 
 ## Option coverage
 
-**1/15 options mapped natively** (7%) — 🟡 0 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 14 default · ⚙️ 3 auto.
+**1/15 options mapped natively** (7%) — 🟡 0 via CSS · ⚠️ 5 gaps (derivable, not yet) · ⚪ 9 default · ⚙️ 3 auto.
+
+:::tip[5 derivable gaps]
+The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
+:::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
 | `source` | Content | `multi-picker` | ✅ Native | Set to Media, holding the side-loaded images + per-image width ratio |
 | `design` | Design | `image-picker` | ⚪ Unmapped | Default layout (masonry / grid / carousel…) |
-| `grid` | Layout | `group` | ⚪ Unmapped | Default |
-| `captions` | Content | `switch` | ⚪ Unmapped | Default off |
+| `grid` | Layout | `group` | ⚠️ Gap | column count from grid-template-columns / items-per-row in the DOM |
+| `captions` | Content | `switch` | ⚠️ Gap | presence of <figcaption>/caption elements on gallery items |
 | `caption_source` | Content | `select` | ⚪ Unmapped | Default |
 | `hover_zoom` | Design | `switch` | ⚪ Unmapped | Default |
 | `ken_burns` | Design | `switch` | ⚪ Unmapped | Default |
-| `bg_color` | Styling | `color` | ⚪ Unmapped | Default |
-| `caption_color` | Styling | `color` | ⚪ Unmapped | Default |
-| `font_size_preset` | Styling | `font-size` | ⚪ Unmapped | Default |
+| `bg_color` | Styling | `color` | ⚠️ Gap | computed background-color of the gallery/item container |
+| `caption_color` | Styling | `color` | ⚠️ Gap | computed color of the caption text |
+| `font_size_preset` | Styling | `font-size` | ⚠️ Gap | computed font-size of the caption text |
 | `spacing` | Styling | `spacing` | ⚪ Unmapped | Default |
 | `animation` | Animations | `group` | ⚪ Unmapped | Default off |
 | `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |

@@ -29,7 +29,11 @@ A placeholder product grid, set to show recent products in the source’s column
 
 ## Option coverage
 
-**4/15 options mapped natively** (27%) — 🟡 0 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 11 default · ⚙️ 3 auto.
+**4/15 options mapped natively** (27%) — 🟡 0 via CSS · ⚠️ 2 gaps (derivable, not yet) · ⚪ 9 default · ⚙️ 3 auto.
+
+:::tip[2 derivable gaps]
+The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
+:::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
@@ -42,8 +46,8 @@ A placeholder product grid, set to show recent products in the source’s column
 | `tags` | Content | `multi-select` | ⚪ Unmapped | Default |
 | `order` | Content | `select` | ⚪ Unmapped | Default |
 | `orderby` | Content | `select` | ⚪ Unmapped | Default |
-| `gap` | Layout | `unit-input` | ⚪ Unmapped | Default |
-| `pagination` | Behavior | `select` | ⚪ Unmapped | Default |
+| `gap` | Layout | `unit-input` | ⚠️ Gap | Computed grid/flex gap (column-gap) between product-card items |
+| `pagination` | Behavior | `select` | ⚠️ Gap | Presence and kind of pager markup (.page-numbers/next links) below the product grid |
 | `carousel` | Layout | `switch` | ⚪ Unmapped | Default |
 | `spacing` | Styling | `spacing` | ⚪ Unmapped | Default |
 | `animation` | Animations | `group` | ⚪ Unmapped | Default off |

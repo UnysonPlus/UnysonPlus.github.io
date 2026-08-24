@@ -51,26 +51,26 @@ Two backstops guarantee no source content is lost:
 
 | Shortcode | Becomes | Native | Via CSS | Gaps | Default | Coverage |
 | --- | --- | --- | --- | --- | --- | --- |
-| [Code Block](./code-block.md) | [`code_block`](/docs/shortcodes/content-elements/code-block) | ✅ 1 | 🟡 0 | ⚠️ 0 | ⚪ 11 | **8%** |
-| [Special Heading](./special-heading.md) | [`special_heading`](/docs/shortcodes/content-elements/special-heading) | ✅ 19 | 🟡 3 | ⚠️ 0 | ⚪ 13 | **54%** |
+| [Code Block](./code-block.md) | [`code_block`](/docs/shortcodes/content-elements/code-block) | ✅ 1 | 🟡 0 | ⚠️ 6 | ⚪ 5 | **8%** |
+| [Special Heading](./special-heading.md) | [`special_heading`](/docs/shortcodes/content-elements/special-heading) | ✅ 19 | 🟡 3 | ⚠️ 8 | ⚪ 5 | **54%** |
 | [Instagram](./instagram.md) | `instagram` | ✅ 3 | 🟡 0 | ⚠️ 0 | ⚪ 6 | **33%** |
-| [WooCommerce Products](./wc-products.md) | `wc_products` | ✅ 4 | 🟡 0 | ⚠️ 0 | ⚪ 11 | **27%** |
-| [Posts](./posts.md) | [`posts`](/docs/shortcodes/components/posts) | ✅ 5 | 🟡 0 | ⚠️ 0 | ⚪ 15 | **25%** |
-| [Avatar](./avatar.md) | [`avatar`](/docs/shortcodes/components/avatar) | ✅ 4 | 🟡 0 | ⚠️ 0 | ⚪ 13 | **24%** |
-| [Gallery](./gallery.md) | [`gallery`](/docs/shortcodes/media-elements/gallery) | ✅ 1 | 🟡 0 | ⚠️ 0 | ⚪ 14 | **7%** |
-| [Media Video](./media-video.md) | [`media_video`](/docs/shortcodes/media-elements/media-video) | ✅ 5 | 🟡 0 | ⚠️ 0 | ⚪ 16 | **24%** |
-| [Media Image](./media-image.md) | [`media_image`](/docs/shortcodes/media-elements/media-image) | ✅ 1 | 🟡 1 | ⚠️ 0 | ⚪ 13 | **7%** |
-| [Image Box](./image-box.md) | [`image_box`](/docs/shortcodes/media-elements/image-box) | ✅ 5 | 🟡 0 | ⚠️ 0 | ⚪ 18 | **22%** |
-| [Icon Box](./icon-box.md) | [`icon_box`](/docs/shortcodes/components/icon-box) | ✅ 5 | 🟡 1 | ⚠️ 0 | ⚪ 18 | **21%** |
-| [Newsletter](./newsletter.md) | [`newsletter`](/docs/shortcodes/interactive-elements/newsletter) | ✅ 7 | 🟡 0 | ⚠️ 0 | ⚪ 13 | **35%** |
-| [Text Block](./text-block.md) | [`text_block`](/docs/shortcodes/content-elements/text-block) | ✅ 4 | 🟡 4 | ⚠️ 0 | ⚪ 11 | **21%** |
-| [Counter](./counter.md) | [`counter`](/docs/shortcodes/interactive-elements/counter) | ✅ 12 | 🟡 0 | ⚠️ 0 | ⚪ 7 | **63%** |
-| [Feature List](./feature-list.md) | [`feature_list`](/docs/shortcodes/components/feature-list) | ✅ 2 | 🟡 1 | ⚠️ 0 | ⚪ 13 | **13%** |
-| [Button](./button.md) | [`button`](/docs/shortcodes/components/button) | ✅ 6 | 🟡 1 | ⚠️ 0 | ⚪ 9 | **38%** |
-| [Testimonials](./testimonials.md) | [`testimonials`](/docs/shortcodes/components/testimonials) | ✅ 2 | 🟡 3 | ⚠️ 0 | ⚪ 15 | **10%** |
-| [Badge](./badge.md) | [`badge`](/docs/shortcodes/content-elements/badge) | ✅ 5 | 🟡 0 | ⚠️ 0 | ⚪ 27 | **16%** |
+| [WooCommerce Products](./wc-products.md) | `wc_products` | ✅ 4 | 🟡 0 | ⚠️ 2 | ⚪ 9 | **27%** |
+| [Posts](./posts.md) | [`posts`](/docs/shortcodes/components/posts) | ✅ 5 | 🟡 0 | ⚠️ 6 | ⚪ 9 | **25%** |
+| [Avatar](./avatar.md) | [`avatar`](/docs/shortcodes/components/avatar) | ✅ 4 | 🟡 0 | ⚠️ 5 | ⚪ 8 | **24%** |
+| [Gallery](./gallery.md) | [`gallery`](/docs/shortcodes/media-elements/gallery) | ✅ 1 | 🟡 0 | ⚠️ 5 | ⚪ 9 | **7%** |
+| [Media Video](./media-video.md) | [`media_video`](/docs/shortcodes/media-elements/media-video) | ✅ 5 | 🟡 0 | ⚠️ 11 | ⚪ 5 | **24%** |
+| [Media Image](./media-image.md) | [`media_image`](/docs/shortcodes/media-elements/media-image) | ✅ 1 | 🟡 1 | ⚠️ 8 | ⚪ 5 | **7%** |
+| [Image Box](./image-box.md) | [`image_box`](/docs/shortcodes/media-elements/image-box) | ✅ 5 | 🟡 0 | ⚠️ 9 | ⚪ 9 | **22%** |
+| [Icon Box](./icon-box.md) | [`icon_box`](/docs/shortcodes/components/icon-box) | ✅ 5 | 🟡 1 | ⚠️ 11 | ⚪ 7 | **21%** |
+| [Newsletter](./newsletter.md) | [`newsletter`](/docs/shortcodes/interactive-elements/newsletter) | ✅ 7 | 🟡 0 | ⚠️ 6 | ⚪ 7 | **35%** |
+| [Text Block](./text-block.md) | [`text_block`](/docs/shortcodes/content-elements/text-block) | ✅ 4 | 🟡 4 | ⚠️ 3 | ⚪ 8 | **21%** |
+| [Counter](./counter.md) | [`counter`](/docs/shortcodes/interactive-elements/counter) | ✅ 12 | 🟡 0 | ⚠️ 1 | ⚪ 6 | **63%** |
+| [Feature List](./feature-list.md) | [`feature_list`](/docs/shortcodes/components/feature-list) | ✅ 2 | 🟡 1 | ⚠️ 7 | ⚪ 6 | **13%** |
+| [Button](./button.md) | [`button`](/docs/shortcodes/components/button) | ✅ 6 | 🟡 1 | ⚠️ 3 | ⚪ 6 | **38%** |
+| [Testimonials](./testimonials.md) | [`testimonials`](/docs/shortcodes/components/testimonials) | ✅ 2 | 🟡 3 | ⚠️ 10 | ⚪ 5 | **10%** |
+| [Badge](./badge.md) | [`badge`](/docs/shortcodes/content-elements/badge) | ✅ 5 | 🟡 0 | ⚠️ 17 | ⚪ 10 | **16%** |
 | [Accordion](./accordion.md) | [`accordion`](/docs/shortcodes/interactive-elements/accordion) | ✅ 1 | 🟡 0 | ⚠️ 11 | ⚪ 7 | **5%** |
-| [Table](./table.md) | [`table`](/docs/shortcodes/content-elements/table) | ✅ 2 | 🟡 0 | ⚠️ 0 | ⚪ 21 | **9%** |
+| [Table](./table.md) | [`table`](/docs/shortcodes/content-elements/table) | ✅ 2 | 🟡 0 | ⚠️ 8 | ⚪ 13 | **9%** |
 
 ## Recognizers
 

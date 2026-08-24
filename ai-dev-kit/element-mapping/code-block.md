@@ -29,19 +29,23 @@ Holds the source markup verbatim in the `code` field (rendered as HTML, not show
 
 ## Option coverage
 
-**1/12 options mapped natively** (8%) — 🟡 0 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 11 default · ⚙️ 3 auto.
+**1/12 options mapped natively** (8%) — 🟡 0 via CSS · ⚠️ 6 gaps (derivable, not yet) · ⚪ 5 default · ⚙️ 3 auto.
+
+:::tip[6 derivable gaps]
+The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
+:::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
 | `code` | Content | `textarea` | ✅ Native | The verbatim source markup |
-| `render_as_code` | Content | `switch` | ⚪ Unmapped | Default off — rendered as HTML |
-| `code_language` | Content | `select` | ⚪ Unmapped | Default |
+| `render_as_code` | Content | `switch` | ⚠️ Gap | presence of a <pre>/<code> wrapper in the source |
+| `code_language` | Content | `select` | ⚠️ Gap | language-* / lang-* class on the <code> element |
 | `beautify` | Content | `switch` | ⚪ Unmapped | Default |
-| `bg_color` | Styling | `color` | ⚪ Unmapped | Default |
-| `text_color` | Styling | `color` | ⚪ Unmapped | Default |
-| `font_size_preset` | Styling | `font-size` | ⚪ Unmapped | Default |
-| `spacing` | Styling | `spacing` | ⚪ Unmapped | Default |
+| `bg_color` | Styling | `color` | ⚠️ Gap | computed background-color of the <pre>/<code> |
+| `text_color` | Styling | `color` | ⚠️ Gap | computed color of the <pre>/<code> |
+| `font_size_preset` | Styling | `font-size` | ⚠️ Gap | computed font-size of the code text |
+| `spacing` | Styling | `spacing` | ⚠️ Gap | computed margin/padding of the code block |
 | `animation` | Animations | `group` | ⚪ Unmapped | Default off |
 | `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |
 | `css_id` | Advanced | `text` | ⚪ Unmapped | Default empty |

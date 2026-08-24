@@ -29,7 +29,11 @@ The visible copy maps — the email (and name) placeholder, the button label, al
 
 ## Option coverage
 
-**7/20 options mapped natively** (35%) — 🟡 0 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 13 default · ⚙️ 3 auto.
+**7/20 options mapped natively** (35%) — 🟡 0 via CSS · ⚠️ 6 gaps (derivable, not yet) · ⚪ 7 default · ⚙️ 3 auto.
+
+:::tip[6 derivable gaps]
+The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
+:::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
@@ -42,14 +46,14 @@ The visible copy maps — the email (and name) placeholder, the button label, al
 | `rounded` | Design | `select` | ✅ Native | Corner rounding from the source |
 | `accent_color` | Styling | `color` | ✅ Native | Button colour from the source |
 | `list_id` | Content | `text` | ⚪ Unmapped | You bind the list |
-| `title` | Content | `text` | ⚪ Unmapped | Default |
-| `consent_text` | Content | `text` | ⚪ Unmapped | Default |
+| `title` | Content | `text` | ⚠️ Gap | heading text content within the newsletter form block |
+| `consent_text` | Content | `text` | ⚠️ Gap | label text of the consent checkbox |
 | `success_message` | Content | `text` | ⚪ Unmapped | Default |
 | `error_message` | Content | `text` | ⚪ Unmapped | Default |
-| `bg_color` | Styling | `color` | ⚪ Unmapped | Default |
-| `text_color` | Styling | `color` | ⚪ Unmapped | Default |
-| `field_bg` | Styling | `color` | ⚪ Unmapped | Default |
-| `font_size_preset` | Styling | `font-size` | ⚪ Unmapped | Default |
+| `bg_color` | Styling | `color` | ⚠️ Gap | computed background-color of the form container |
+| `text_color` | Styling | `color` | ⚠️ Gap | computed color of the form text |
+| `field_bg` | Styling | `color` | ⚠️ Gap | computed background-color of the input field(s) |
+| `font_size_preset` | Styling | `font-size` | ⚠️ Gap | computed font-size of the form body text |
 | `spacing` | Styling | `spacing` | ⚪ Unmapped | Default |
 | `animation` | Animations | `group` | ⚪ Unmapped | Default off |
 | `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |

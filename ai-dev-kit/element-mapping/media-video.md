@@ -29,7 +29,11 @@ The video source is mapped — an embed URL (YouTube/Vimeo) or the self-hosted f
 
 ## Option coverage
 
-**5/21 options mapped natively** (24%) — 🟡 0 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 16 default · ⚙️ 3 auto.
+**5/21 options mapped natively** (24%) — 🟡 0 via CSS · ⚠️ 11 gaps (derivable, not yet) · ⚪ 5 default · ⚙️ 3 auto.
+
+:::tip[11 derivable gaps]
+The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
+:::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
@@ -39,18 +43,18 @@ The video source is mapped — an embed URL (YouTube/Vimeo) or the self-hosted f
 | `video_file` | Content | `upload` | ✅ Native | Self-hosted MP4 (when not an embed) |
 | `video_webm` | Content | `upload` | ✅ Native | Self-hosted WebM (when present) |
 | `poster` | Content | `upload` | ✅ Native | Poster / thumbnail image |
-| `ratio` | Styling | `select` | ⚪ Unmapped | Default |
-| `object_fit` | Styling | `select` | ⚪ Unmapped | Default |
-| `controls` | Behavior | `switch` | ⚪ Unmapped | Default |
-| `autoplay` | Behavior | `switch` | ⚪ Unmapped | Default off |
-| `loop` | Behavior | `switch` | ⚪ Unmapped | Default off |
-| `muted` | Behavior | `switch` | ⚪ Unmapped | Default |
-| `playsinline` | Behavior | `switch` | ⚪ Unmapped | Default |
-| `preload` | Behavior | `select` | ⚪ Unmapped | Default |
-| `youtube_nocookie` | Behavior | `switch` | ⚪ Unmapped | Default off |
+| `ratio` | Styling | `select` | ⚠️ Gap | aspect ratio from width/height attributes or computed aspect-ratio |
+| `object_fit` | Styling | `select` | ⚠️ Gap | computed object-fit of the <video> |
+| `controls` | Behavior | `switch` | ⚠️ Gap | controls attribute on the <video> |
+| `autoplay` | Behavior | `switch` | ⚠️ Gap | autoplay attribute on the <video> |
+| `loop` | Behavior | `switch` | ⚠️ Gap | loop attribute on the <video> |
+| `muted` | Behavior | `switch` | ⚠️ Gap | muted attribute on the <video> |
+| `playsinline` | Behavior | `switch` | ⚠️ Gap | playsinline attribute on the <video> |
+| `preload` | Behavior | `select` | ⚠️ Gap | preload attribute on the <video> |
+| `youtube_nocookie` | Behavior | `switch` | ⚠️ Gap | iframe src host is youtube-nocookie.com |
 | `lazy_facade` | Behavior | `switch` | ⚪ Unmapped | Default off |
-| `bg_color` | Styling | `color` | ⚪ Unmapped | Default |
-| `spacing` | Styling | `spacing` | ⚪ Unmapped | Default |
+| `bg_color` | Styling | `color` | ⚠️ Gap | computed background-color of the video container |
+| `spacing` | Styling | `spacing` | ⚠️ Gap | computed margin/padding of the video element |
 | `animation` | Animations | `group` | ⚪ Unmapped | Default off |
 | `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |
 | `css_id` | Advanced | `text` | ⚪ Unmapped | Default empty |

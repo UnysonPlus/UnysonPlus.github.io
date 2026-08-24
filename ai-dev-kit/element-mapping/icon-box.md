@@ -29,7 +29,11 @@ Title, heading tag, text (and any link) map to native options; a source SVG / im
 
 ## Option coverage
 
-**5/24 options mapped natively** (21%) — 🟡 1 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 18 default · ⚙️ 3 auto.
+**5/24 options mapped natively** (21%) — 🟡 1 via CSS · ⚠️ 11 gaps (derivable, not yet) · ⚪ 7 default · ⚙️ 3 auto.
+
+:::tip[11 derivable gaps]
+The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
+:::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
@@ -40,18 +44,18 @@ Title, heading tag, text (and any link) map to native options; a source SVG / im
 | `title_tag` | Content | `select` | ✅ Native | Source heading tag (h3–h6 / span / p) |
 | `content` | Content | `wp-editor` | ✅ Native | Card text (+ an optional link) |
 | `icon_badge_preset` | Content | `icon-badge` | ⚪ Unmapped | Default |
-| `icon_color` | Styling | `color` | ⚪ Unmapped | Default |
-| `title_color` | Styling | `color` | ⚪ Unmapped | Default |
-| `content_color` | Styling | `color` | ⚪ Unmapped | Default |
-| `bg_color` | Styling | `color` | ⚪ Unmapped | Default |
-| `font_size_preset` | Styling | `font-size` | ⚪ Unmapped | Default |
-| `icon_align` | Layout | `alignment` | ⚪ Unmapped | Default |
-| `title_align` | Layout | `alignment` | ⚪ Unmapped | Default |
-| `content_align` | Layout | `alignment` | ⚪ Unmapped | Default |
+| `icon_color` | Styling | `color` | ⚠️ Gap | computed color of the icon element (svg fill / <i> color) |
+| `title_color` | Styling | `color` | ⚠️ Gap | computed color of the title/heading element |
+| `content_color` | Styling | `color` | ⚠️ Gap | computed color of the body text element |
+| `bg_color` | Styling | `color` | ⚠️ Gap | computed background-color of the card container |
+| `font_size_preset` | Styling | `font-size` | ⚠️ Gap | computed font-size of the title/body text |
+| `icon_align` | Layout | `alignment` | ⚠️ Gap | text-align / flex justify of the icon container |
+| `title_align` | Layout | `alignment` | ⚠️ Gap | text-align of the title element |
+| `content_align` | Layout | `alignment` | ⚠️ Gap | text-align of the content element |
 | `box_style` | Styling | `select` | ⚪ Unmapped | Default |
-| `box_link` | Link | `text` | ⚪ Unmapped | The link rides in the content instead |
-| `link_target` | Link | `select` | ⚪ Unmapped | Default |
-| `link_rel` | Link | `text` | ⚪ Unmapped | Default |
+| `box_link` | Link | `text` | ⚠️ Gap | href of the wrapping/CTA anchor |
+| `link_target` | Link | `select` | ⚠️ Gap | target attribute of the anchor (_blank vs _self) |
+| `link_rel` | Link | `text` | ⚠️ Gap | rel attribute of the anchor |
 | `mobile_stack` | Layout | `switch` | ⚪ Unmapped | Default |
 | `spacing` | Styling | `spacing` | ⚪ Unmapped | Default |
 | `custom_css` | Advanced | `textarea` | 🟡 Via CSS | Floating card: the absolute position + skin (`posCss`) |

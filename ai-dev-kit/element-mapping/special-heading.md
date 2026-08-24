@@ -29,7 +29,11 @@ A chip/badge sitting directly above the heading is pulled in as its overline (wi
 
 ## Option coverage
 
-**19/35 options mapped natively** (54%) — 🟡 3 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 13 default · ⚙️ 3 auto.
+**19/35 options mapped natively** (54%) — 🟡 3 via CSS · ⚠️ 8 gaps (derivable, not yet) · ⚪ 5 default · ⚙️ 3 auto.
+
+:::tip[8 derivable gaps]
+The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
+:::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
@@ -40,8 +44,8 @@ A chip/badge sitting directly above the heading is pulled in as its overline (wi
 | `heading` | Content | `select` | ✅ Native | Source heading level (`<h1>`–`<h6>`) |
 | `overline_icon` | Icons | `icon` | ✅ Native | Inline `<svg>` inside the source overline / preceding chip |
 | `overline_icon_position` | Icons | `select` | ✅ Native | Where the SVG sat relative to the overline text |
-| `icon` | Icons | `icon` | ⚪ Unmapped | Source title icons aren't extracted to this field |
-| `title_icon_position` | Icons | `select` | ⚪ Unmapped | — |
+| `icon` | Icons | `icon` | ⚠️ Gap | leading <svg>/<i> icon element beside the heading text |
+| `title_icon_position` | Icons | `select` | ⚠️ Gap | DOM order of the icon relative to the heading text (before/after) |
 | `icon_badge_preset` | Icons | `icon-badge` | ⚪ Unmapped | Decorative preset — no source signal |
 | `overline_uppercase` | Layout | `switch` | ✅ Native | Source `text-transform:uppercase` or all-caps text |
 | `overline_marker` | Layout | `select` | ⚪ Unmapped | Decorative marker — not inferred |
@@ -50,14 +54,14 @@ A chip/badge sitting directly above the heading is pulled in as its overline (wi
 | `element_spacing` | Layout | `select` | ✅ Native | Wrapper spacing utility classes |
 | `block_max_width` | Layout | `unit-input` | ✅ Native | Wrapper `max-w-* mx-auto` measure |
 | `alignment` | Styling | `alignment` | ✅ Native | Wrapper `text-center` / `text-*` alignment |
-| `overline_align` | Styling | `alignment` | ⚪ Unmapped | Only the master alignment is mapped |
-| `title_align` | Styling | `alignment` | ⚪ Unmapped | — |
-| `subtitle_align` | Styling | `alignment` | ⚪ Unmapped | — |
+| `overline_align` | Styling | `alignment` | ⚠️ Gap | computed text-align of the overline/eyebrow element |
+| `title_align` | Styling | `alignment` | ⚠️ Gap | computed text-align of the heading element |
+| `subtitle_align` | Styling | `alignment` | ⚠️ Gap | computed text-align of the subtitle element |
 | `display_size` | Styling | `select` | 🟡 Via CSS | Title size reproduced via the hi-fi base + heading tag, not this option |
-| `title_max_width` | Styling | `unit-input` | ⚪ Unmapped | `block_max_width` is mapped instead |
+| `title_max_width` | Styling | `unit-input` | ⚠️ Gap | computed max-width of the heading element |
 | `subtitle_size` | Styling | `font-size` | ✅ Native | Subtitle's computed font-size → nearest Text Style preset |
-| `subtitle_max_width` | Styling | `unit-input` | ⚪ Unmapped | — |
-| `bg_color` | Styling | `color` | ⚪ Unmapped | Section background handles band colour |
+| `subtitle_max_width` | Styling | `unit-input` | ⚠️ Gap | computed max-width of the subtitle element |
+| `bg_color` | Styling | `color` | ⚠️ Gap | computed background-color of the heading container |
 | `overline_color` | Styling | `color` | ✅ Native | Source overline text colour |
 | `title_color` | Styling | `color` | 🟡 Via CSS | Reproduced at specificity 0 via the hi-fi base; native option left empty |
 | `subtitle_color` | Styling | `color` | 🟡 Via CSS | Same as title colour |

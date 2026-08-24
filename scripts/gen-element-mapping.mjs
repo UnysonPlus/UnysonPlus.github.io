@@ -34,9 +34,9 @@ const becomesLink = (e) => (e.doc ? `[\`${e.shortcode}\`](${e.doc})` : `\`${e.sh
 const statusCell = (s) => `${ST[s].emoji} ${ST[s].label}`;
 
 function coverage(e) {
-  const c = { native: 0, 'via-css': 0, unmapped: 0, auto: 0 };
+  const c = { native: 0, 'via-css': 0, gap: 0, unmapped: 0, auto: 0 };
   for (const o of e.options) c[o.status] = (c[o.status] || 0) + 1;
-  const denom = c.native + c['via-css'] + c.unmapped;
+  const denom = c.native + c['via-css'] + c.gap + c.unmapped;
   const pct = denom ? Math.round((c.native / denom) * 100) : 0;
   return { ...c, denom, pct };
 }
@@ -98,7 +98,8 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 ${e.recognizerNotes ? `\n${e.recognizerNotes}\n` : ''}
 ## Option coverage
 
-**${cov.native}/${cov.denom} options mapped natively** (${cov.pct}%) — ${ST['via-css'].emoji} ${cov['via-css']} via CSS · ${ST.unmapped.emoji} ${cov.unmapped} unmapped · ${ST.auto.emoji} ${cov.auto} auto.
+**${cov.native}/${cov.denom} options mapped natively** (${cov.pct}%) — ${ST['via-css'].emoji} ${cov['via-css']} via CSS · ${ST.gap.emoji} ${cov.gap} gap${cov.gap === 1 ? '' : 's'} (derivable, not yet) · ${ST.unmapped.emoji} ${cov.unmapped} default · ${ST.auto.emoji} ${cov.auto} auto.
+${cov.gap ? `\n:::tip[${cov.gap} derivable gap${cov.gap === 1 ? '' : 's'}]\nThe ${ST.gap.emoji} rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ${ST.unmapped.emoji} default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).\n:::\n` : ''}
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
@@ -140,7 +141,7 @@ const recogRows = [
 const covRows = elements
   .map((e) => {
     const c = coverage(e);
-    return `| [${e.label}](./${slugOf(e)}.md) | ${becomesLink(e)} | ${ST.native.emoji} ${c.native} | ${ST['via-css'].emoji} ${c['via-css']} | ${ST.unmapped.emoji} ${c.unmapped} | **${c.pct}%** |`;
+    return `| [${e.label}](./${slugOf(e)}.md) | ${becomesLink(e)} | ${ST.native.emoji} ${c.native} | ${ST["via-css"].emoji} ${c["via-css"]} | ${ST.gap.emoji} ${c.gap} | ${ST.unmapped.emoji} ${c.unmapped} | **${c.pct}%** |`;
   })
   .join('\n');
 
@@ -167,7 +168,8 @@ How to read it:
   recognizer claims falls back to \`code_block\`, the **universal fallback**, so nothing is ever lost.
 - The curated shortcodes below have their **own page** with a full option-by-option coverage table; the
   rest of the registry is listed in the [Recognizers](#recognizers) table with its rule and target.
-- **Coverage** counts only design options (\`native + via-css + unmapped\`); auto plumbing is excluded.
+- **Coverage** counts only design options (\`native + via-css + gap + unmapped\`); auto plumbing is excluded.
+- **${ST.gap.emoji} Gaps vs ${ST.unmapped.emoji} Default** — a *gap* is an option a source realistically expresses that the converter doesn't derive **yet** (a real to-do). *Default* means there's no reliable source signal, or it's an intentional UnysonPlus-specific choice — those are **correct** left unmapped. The goal is **faithful reproduction**, not maxing the native %.
 
 ${Object.values(ST).map((s) => `- ${s.emoji} **${s.label}** — ${s.blurb}`).join('\n')}
 
@@ -190,8 +192,8 @@ Two backstops guarantee no source content is lost:
 
 ## Coverage at a glance
 
-| Shortcode | Becomes | Native | Via CSS | Unmapped | Coverage |
-| --- | --- | --- | --- | --- | --- |
+| Shortcode | Becomes | Native | Via CSS | Gaps | Default | Coverage |
+| --- | --- | --- | --- | --- | --- | --- |
 ${covRows}
 
 ## Recognizers

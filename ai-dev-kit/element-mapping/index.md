@@ -21,11 +21,13 @@ How to read it:
   recognizer claims falls back to `code_block`, the **universal fallback**, so nothing is ever lost.
 - The curated shortcodes below have their **own page** with a full option-by-option coverage table; the
   rest of the registry is listed in the [Recognizers](#recognizers) table with its rule and target.
-- **Coverage** counts only design options (`native + via-css + unmapped`); auto plumbing is excluded.
+- **Coverage** counts only design options (`native + via-css + gap + unmapped`); auto plumbing is excluded.
+- **⚠️ Gaps vs ⚪ Default** — a *gap* is an option a source realistically expresses that the converter doesn't derive **yet** (a real to-do). *Default* means there's no reliable source signal, or it's an intentional UnysonPlus-specific choice — those are **correct** left unmapped. The goal is **faithful reproduction**, not maxing the native %.
 
 - ✅ **Native** — Set as the native option from the source.
 - 🟡 **Via CSS** — Reproduced via scoped CSS / the styler; the native option is left empty (candidate to promote to a native mapping).
-- ⚪ **Unmapped** — Left at default — no source signal, or a decorative choice with nothing to translate.
+- ⚠️ **Gap** — A source signal exists, but the converter does not derive this yet — a mapping worth adding (a real TODO, not a limitation).
+- ⚪ **Unmapped** — Left at default — no reliable source signal, or an intentional/UnysonPlus-specific choice with nothing to translate.
 - ⚙️ **Auto** — Plumbing (unique id, custom attrs). Excluded from the coverage percentage.
 
 ### Nothing is dropped silently
@@ -47,28 +49,28 @@ Two backstops guarantee no source content is lost:
 
 ## Coverage at a glance
 
-| Shortcode | Becomes | Native | Via CSS | Unmapped | Coverage |
-| --- | --- | --- | --- | --- | --- |
-| [Code Block](./code-block.md) | [`code_block`](/docs/shortcodes/content-elements/code-block) | ✅ 1 | 🟡 0 | ⚪ 11 | **8%** |
-| [Special Heading](./special-heading.md) | [`special_heading`](/docs/shortcodes/content-elements/special-heading) | ✅ 19 | 🟡 3 | ⚪ 13 | **54%** |
-| [Instagram](./instagram.md) | `instagram` | ✅ 3 | 🟡 0 | ⚪ 6 | **33%** |
-| [WooCommerce Products](./wc-products.md) | `wc_products` | ✅ 4 | 🟡 0 | ⚪ 11 | **27%** |
-| [Posts](./posts.md) | [`posts`](/docs/shortcodes/components/posts) | ✅ 5 | 🟡 0 | ⚪ 15 | **25%** |
-| [Avatar](./avatar.md) | [`avatar`](/docs/shortcodes/components/avatar) | ✅ 4 | 🟡 0 | ⚪ 13 | **24%** |
-| [Gallery](./gallery.md) | [`gallery`](/docs/shortcodes/media-elements/gallery) | ✅ 1 | 🟡 0 | ⚪ 14 | **7%** |
-| [Media Video](./media-video.md) | [`media_video`](/docs/shortcodes/media-elements/media-video) | ✅ 5 | 🟡 0 | ⚪ 16 | **24%** |
-| [Media Image](./media-image.md) | [`media_image`](/docs/shortcodes/media-elements/media-image) | ✅ 1 | 🟡 1 | ⚪ 13 | **7%** |
-| [Image Box](./image-box.md) | [`image_box`](/docs/shortcodes/media-elements/image-box) | ✅ 5 | 🟡 0 | ⚪ 18 | **22%** |
-| [Icon Box](./icon-box.md) | [`icon_box`](/docs/shortcodes/components/icon-box) | ✅ 5 | 🟡 1 | ⚪ 18 | **21%** |
-| [Newsletter](./newsletter.md) | [`newsletter`](/docs/shortcodes/interactive-elements/newsletter) | ✅ 7 | 🟡 0 | ⚪ 13 | **35%** |
-| [Text Block](./text-block.md) | [`text_block`](/docs/shortcodes/content-elements/text-block) | ✅ 4 | 🟡 4 | ⚪ 11 | **21%** |
-| [Counter](./counter.md) | [`counter`](/docs/shortcodes/interactive-elements/counter) | ✅ 12 | 🟡 0 | ⚪ 7 | **63%** |
-| [Feature List](./feature-list.md) | [`feature_list`](/docs/shortcodes/components/feature-list) | ✅ 2 | 🟡 1 | ⚪ 13 | **13%** |
-| [Button](./button.md) | [`button`](/docs/shortcodes/components/button) | ✅ 6 | 🟡 1 | ⚪ 9 | **38%** |
-| [Testimonials](./testimonials.md) | [`testimonials`](/docs/shortcodes/components/testimonials) | ✅ 2 | 🟡 3 | ⚪ 15 | **10%** |
-| [Badge](./badge.md) | [`badge`](/docs/shortcodes/content-elements/badge) | ✅ 5 | 🟡 0 | ⚪ 27 | **16%** |
-| [Accordion](./accordion.md) | [`accordion`](/docs/shortcodes/interactive-elements/accordion) | ✅ 1 | 🟡 0 | ⚪ 18 | **5%** |
-| [Table](./table.md) | [`table`](/docs/shortcodes/content-elements/table) | ✅ 2 | 🟡 0 | ⚪ 21 | **9%** |
+| Shortcode | Becomes | Native | Via CSS | Gaps | Default | Coverage |
+| --- | --- | --- | --- | --- | --- | --- |
+| [Code Block](./code-block.md) | [`code_block`](/docs/shortcodes/content-elements/code-block) | ✅ 1 | 🟡 0 | ⚠️ 0 | ⚪ 11 | **8%** |
+| [Special Heading](./special-heading.md) | [`special_heading`](/docs/shortcodes/content-elements/special-heading) | ✅ 19 | 🟡 3 | ⚠️ 0 | ⚪ 13 | **54%** |
+| [Instagram](./instagram.md) | `instagram` | ✅ 3 | 🟡 0 | ⚠️ 0 | ⚪ 6 | **33%** |
+| [WooCommerce Products](./wc-products.md) | `wc_products` | ✅ 4 | 🟡 0 | ⚠️ 0 | ⚪ 11 | **27%** |
+| [Posts](./posts.md) | [`posts`](/docs/shortcodes/components/posts) | ✅ 5 | 🟡 0 | ⚠️ 0 | ⚪ 15 | **25%** |
+| [Avatar](./avatar.md) | [`avatar`](/docs/shortcodes/components/avatar) | ✅ 4 | 🟡 0 | ⚠️ 0 | ⚪ 13 | **24%** |
+| [Gallery](./gallery.md) | [`gallery`](/docs/shortcodes/media-elements/gallery) | ✅ 1 | 🟡 0 | ⚠️ 0 | ⚪ 14 | **7%** |
+| [Media Video](./media-video.md) | [`media_video`](/docs/shortcodes/media-elements/media-video) | ✅ 5 | 🟡 0 | ⚠️ 0 | ⚪ 16 | **24%** |
+| [Media Image](./media-image.md) | [`media_image`](/docs/shortcodes/media-elements/media-image) | ✅ 1 | 🟡 1 | ⚠️ 0 | ⚪ 13 | **7%** |
+| [Image Box](./image-box.md) | [`image_box`](/docs/shortcodes/media-elements/image-box) | ✅ 5 | 🟡 0 | ⚠️ 0 | ⚪ 18 | **22%** |
+| [Icon Box](./icon-box.md) | [`icon_box`](/docs/shortcodes/components/icon-box) | ✅ 5 | 🟡 1 | ⚠️ 0 | ⚪ 18 | **21%** |
+| [Newsletter](./newsletter.md) | [`newsletter`](/docs/shortcodes/interactive-elements/newsletter) | ✅ 7 | 🟡 0 | ⚠️ 0 | ⚪ 13 | **35%** |
+| [Text Block](./text-block.md) | [`text_block`](/docs/shortcodes/content-elements/text-block) | ✅ 4 | 🟡 4 | ⚠️ 0 | ⚪ 11 | **21%** |
+| [Counter](./counter.md) | [`counter`](/docs/shortcodes/interactive-elements/counter) | ✅ 12 | 🟡 0 | ⚠️ 0 | ⚪ 7 | **63%** |
+| [Feature List](./feature-list.md) | [`feature_list`](/docs/shortcodes/components/feature-list) | ✅ 2 | 🟡 1 | ⚠️ 0 | ⚪ 13 | **13%** |
+| [Button](./button.md) | [`button`](/docs/shortcodes/components/button) | ✅ 6 | 🟡 1 | ⚠️ 0 | ⚪ 9 | **38%** |
+| [Testimonials](./testimonials.md) | [`testimonials`](/docs/shortcodes/components/testimonials) | ✅ 2 | 🟡 3 | ⚠️ 0 | ⚪ 15 | **10%** |
+| [Badge](./badge.md) | [`badge`](/docs/shortcodes/content-elements/badge) | ✅ 5 | 🟡 0 | ⚠️ 0 | ⚪ 27 | **16%** |
+| [Accordion](./accordion.md) | [`accordion`](/docs/shortcodes/interactive-elements/accordion) | ✅ 1 | 🟡 0 | ⚠️ 11 | ⚪ 7 | **5%** |
+| [Table](./table.md) | [`table`](/docs/shortcodes/content-elements/table) | ✅ 2 | 🟡 0 | ⚠️ 0 | ⚪ 21 | **9%** |
 
 ## Recognizers
 

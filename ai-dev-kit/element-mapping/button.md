@@ -29,7 +29,8 @@ Text, link, alignment and any inline icon map to native options. The button’s 
 
 ## Option coverage
 
-**6/16 options mapped natively** (38%) — 🟡 1 via CSS · ⚪ 9 unmapped · ⚙️ 3 auto.
+**6/16 options mapped natively** (38%) — 🟡 1 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 9 default · ⚙️ 3 auto.
+
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
@@ -57,7 +58,8 @@ Text, link, alignment and any inline icon map to native options. The button’s 
 
 - ✅ **Native** — Set as the native option from the source.
 - 🟡 **Via CSS** — Reproduced via scoped CSS / the styler; the native option is left empty (candidate to promote to a native mapping).
-- ⚪ **Unmapped** — Left at default — no source signal, or a decorative choice with nothing to translate.
+- ⚠️ **Gap** — A source signal exists, but the converter does not derive this yet — a mapping worth adding (a real TODO, not a limitation).
+- ⚪ **Unmapped** — Left at default — no reliable source signal, or an intentional/UnysonPlus-specific choice with nothing to translate.
 - ⚙️ **Auto** — Plumbing (unique id, custom attrs). Excluded from the coverage percentage.
 
 ← Back to [Element Mapping](./index.md)

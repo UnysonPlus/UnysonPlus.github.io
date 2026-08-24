@@ -29,7 +29,11 @@ One of the best-mapped elements: the number, start, prefix, suffix, decimals and
 
 ## Option coverage
 
-**12/19 options mapped natively** (63%) — 🟡 0 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 7 default · ⚙️ 3 auto.
+**12/19 options mapped natively** (63%) — 🟡 0 via CSS · ⚠️ 1 gap (derivable, not yet) · ⚪ 6 default · ⚙️ 3 auto.
+
+:::tip[1 derivable gap]
+The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
+:::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
@@ -46,7 +50,7 @@ One of the best-mapped elements: the number, start, prefix, suffix, decimals and
 | `prefix_color` | Styling | `color` | ✅ Native | Prefix colour |
 | `suffix_font` | Styling | `typography` | ✅ Native | Suffix weight + size |
 | `suffix_color` | Styling | `color` | ✅ Native | Suffix colour |
-| `separator` | Content | `switch` | ⚪ Unmapped | Default (thousands separator on) |
+| `separator` | Content | `switch` | ⚠️ Gap | thousands separator present in the rendered number text (e.g. '1,000') |
 | `duration` | Behavior | `number` | ⚪ Unmapped | Default 2000ms |
 | `easing` | Behavior | `select` | ⚪ Unmapped | Default ease-out |
 | `animation` | Animations | `group` | ⚪ Unmapped | Entrance animations default off |

@@ -29,7 +29,11 @@ Built in group mode: each source image becomes a person in the stack, and a "+N"
 
 ## Option coverage
 
-**4/17 options mapped natively** (24%) — 🟡 0 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 13 default · ⚙️ 3 auto.
+**4/17 options mapped natively** (24%) — 🟡 0 via CSS · ⚠️ 5 gaps (derivable, not yet) · ⚪ 8 default · ⚙️ 3 auto.
+
+:::tip[5 derivable gaps]
+The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
+:::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
@@ -38,14 +42,14 @@ Built in group mode: each source image becomes a person in the stack, and a "+N"
 | `people` | Content | `addable-popup` | ✅ Native | One entry per source avatar image |
 | `extra_count` | Content | `text` | ✅ Native | The "+N" overflow count |
 | `max_visible` | Content | `number` | ✅ Native | How many show before the "+N" |
-| `overlap` | Design | `number` | ⚪ Unmapped | Default 35% |
+| `overlap` | Design | `number` | ⚠️ Gap | negative margin-left/right between adjacent stacked avatar images |
 | `stack_order` | Design | `select` | ⚪ Unmapped | Default |
-| `shape` | Design | `select` | ⚪ Unmapped | Default |
-| `size` | Design | `select` | ⚪ Unmapped | Default |
+| `shape` | Design | `select` | ⚠️ Gap | border-radius of the avatar image (0=square, 50%=circle, else rounded) |
+| `size` | Design | `select` | ⚠️ Gap | computed width/height of the avatar image |
 | `design` | Design | `image-picker` | ⚪ Unmapped | Default |
-| `ring_color` | Styling | `color` | ⚪ Unmapped | Default |
+| `ring_color` | Styling | `color` | ⚠️ Gap | computed border-color or ring box-shadow color around the avatar |
 | `show_status` | Content | `switch` | ⚪ Unmapped | Default off |
-| `show_label` | Content | `switch` | ⚪ Unmapped | Default off |
+| `show_label` | Content | `switch` | ⚠️ Gap | presence of an adjacent name/label text node beside the avatar |
 | `spacing` | Styling | `spacing` | ⚪ Unmapped | Default |
 | `animation` | Animations | `group` | ⚪ Unmapped | Default off |
 | `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |

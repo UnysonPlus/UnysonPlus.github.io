@@ -29,7 +29,11 @@ The image (with its alt), the title + heading tag, and the body text map nativel
 
 ## Option coverage
 
-**5/23 options mapped natively** (22%) — 🟡 0 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 18 default · ⚙️ 3 auto.
+**5/23 options mapped natively** (22%) — 🟡 0 via CSS · ⚠️ 9 gaps (derivable, not yet) · ⚪ 9 default · ⚙️ 3 auto.
+
+:::tip[9 derivable gaps]
+The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
+:::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
@@ -39,19 +43,19 @@ The image (with its alt), the title + heading tag, and the body text map nativel
 | `title` | Content | `text` | ✅ Native | Card title |
 | `title_tag` | Content | `select` | ✅ Native | Source heading tag |
 | `text` | Content | `wp-editor` | ✅ Native | Card body text |
-| `icon` | Content | `icon` | ⚪ Unmapped | Default |
-| `button_label` | Content | `text` | ⚪ Unmapped | Default |
+| `icon` | Content | `icon` | ⚠️ Gap | presence and class of an <i>/svg icon element inside the box |
+| `button_label` | Content | `text` | ⚠️ Gap | text content of the box's button/anchor CTA |
 | `image_style` | Styling | `image-style-picker` | ⚪ Unmapped | Not matched to an Image Style preset |
-| `image_side` | Layout | `select` | ⚪ Unmapped | Default |
-| `image_ratio` | Layout | `select` | ⚪ Unmapped | Default |
+| `image_side` | Layout | `select` | ⚠️ Gap | DOM order / flex-direction of image vs text block (left/right/top) |
+| `image_ratio` | Layout | `select` | ⚠️ Gap | computed width:height aspect-ratio of the image element |
 | `frame` | Styling | `select` | ⚪ Unmapped | Default |
-| `overlay` | Styling | `switch` | ⚪ Unmapped | Default |
+| `overlay` | Styling | `switch` | ⚠️ Gap | presence of a semi-transparent color layer stacked over the image |
 | `hover_effect` | Styling | `select` | ⚪ Unmapped | Default |
 | `box_style` | Styling | `select` | ⚪ Unmapped | Default |
-| `title_color` | Styling | `color` | ⚪ Unmapped | Default |
-| `content_color` | Styling | `color` | ⚪ Unmapped | Default |
-| `bg_color` | Styling | `color` | ⚪ Unmapped | Default |
-| `link_url` | Link | `text` | ⚪ Unmapped | Default |
+| `title_color` | Styling | `color` | ⚠️ Gap | computed color of the title element |
+| `content_color` | Styling | `color` | ⚠️ Gap | computed color of the body/description text |
+| `bg_color` | Styling | `color` | ⚠️ Gap | computed background-color of the box container |
+| `link_url` | Link | `text` | ⚠️ Gap | href of the wrapping/CTA anchor |
 | `spacing` | Styling | `spacing` | ⚪ Unmapped | Default |
 | `animation` | Animations | `group` | ⚪ Unmapped | Default off |
 | `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |

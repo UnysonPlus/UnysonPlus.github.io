@@ -29,7 +29,11 @@ Each review becomes an item — quote, author name, role, avatar, site name/URL 
 
 ## Option coverage
 
-**2/20 options mapped natively** (10%) — 🟡 3 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 15 default · ⚙️ 3 auto.
+**2/20 options mapped natively** (10%) — 🟡 3 via CSS · ⚠️ 10 gaps (derivable, not yet) · ⚪ 5 default · ⚙️ 3 auto.
+
+:::tip[10 derivable gaps]
+The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
+:::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
@@ -39,17 +43,17 @@ Each review becomes an item — quote, author name, role, avatar, site name/URL 
 | `author_name_color` | Styling | `color` | 🟡 Via CSS | Carried via a scoped custom_css when the source sets it |
 | `author_job_color` | Styling | `color` | 🟡 Via CSS | Same as author name |
 | `design` | Design | `image-picker` | ⚪ Unmapped | Default |
-| `layout_type` | Layout | `multi-picker` | ⚪ Unmapped | Default |
-| `grid_columns` | Layout | `select` | ⚪ Unmapped | Default |
-| `avatar_shape` | Design | `select` | ⚪ Unmapped | Default |
-| `avatar_size` | Design | `unit-input` | ⚪ Unmapped | Default |
-| `quote_color` | Styling | `color` | ⚪ Unmapped | Default |
-| `bg_color` | Styling | `color` | ⚪ Unmapped | Default |
-| `text_color` | Styling | `color` | ⚪ Unmapped | Default |
+| `layout_type` | Layout | `multi-picker` | ⚠️ Gap | grid vs carousel/slider from DOM structure (slider wrapper vs grid) |
+| `grid_columns` | Layout | `select` | ⚠️ Gap | column count from grid template / items per row |
+| `avatar_shape` | Design | `select` | ⚠️ Gap | border-radius of the avatar image (round vs square) |
+| `avatar_size` | Design | `unit-input` | ⚠️ Gap | computed width/height of the avatar image |
+| `quote_color` | Styling | `color` | ⚠️ Gap | computed color of the quote text |
+| `bg_color` | Styling | `color` | ⚠️ Gap | computed background-color of the testimonial card |
+| `text_color` | Styling | `color` | ⚠️ Gap | computed color of the testimonial text |
 | `box_style` | Styling | `select` | ⚪ Unmapped | Default |
-| `font_size_preset` | Styling | `font-size` | ⚪ Unmapped | Default |
-| `reviews_schema` | SEO | `switch` | ⚪ Unmapped | Default off |
-| `spacing` | Styling | `spacing` | ⚪ Unmapped | Default |
+| `font_size_preset` | Styling | `font-size` | ⚠️ Gap | computed font-size of the testimonial text |
+| `reviews_schema` | SEO | `switch` | ⚠️ Gap | presence of schema.org Review/AggregateRating markup |
+| `spacing` | Styling | `spacing` | ⚠️ Gap | computed margin/padding of the card/section |
 | `custom_css` | Advanced | `textarea` | 🟡 Via CSS | Author/role colour when set on the source |
 | `animation` | Animations | `group` | ⚪ Unmapped | Default off |
 | `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |

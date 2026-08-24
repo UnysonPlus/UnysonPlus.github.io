@@ -29,7 +29,11 @@ A placeholder post grid, configured to *match the source layout* — post count,
 
 ## Option coverage
 
-**5/20 options mapped natively** (25%) — 🟡 0 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 15 default · ⚙️ 3 auto.
+**5/20 options mapped natively** (25%) — 🟡 0 via CSS · ⚠️ 6 gaps (derivable, not yet) · ⚪ 9 default · ⚙️ 3 auto.
+
+:::tip[6 derivable gaps]
+The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
+:::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
@@ -42,14 +46,14 @@ A placeholder post grid, configured to *match the source layout* — post count,
 | `post_type` | Content | `select` | ⚪ Unmapped | Default (post) |
 | `taxonomy_filter` | Content | `multi-select` | ⚪ Unmapped | Default |
 | `image_style` | Design | `image-style-picker` | ⚪ Unmapped | Default |
-| `image_ratio` | Design | `select` | ⚪ Unmapped | Default |
+| `image_ratio` | Design | `select` | ⚠️ Gap | Aspect ratio of post-card thumbnail <img> from its computed/intrinsic width:height |
 | `excerpt_length` | Content | `number` | ⚪ Unmapped | Default |
-| `readmore` | Content | `switch` | ⚪ Unmapped | Default |
+| `readmore` | Content | `switch` | ⚠️ Gap | Presence of a 'Read more'/continue-reading anchor within each post card |
 | `live_filters` | Behavior | `switch` | ⚪ Unmapped | Default off |
-| `pagination` | Behavior | `select` | ⚪ Unmapped | Default |
-| `title_color` | Styling | `color` | ⚪ Unmapped | Default |
-| `meta_color` | Styling | `color` | ⚪ Unmapped | Default |
-| `bg_color` | Styling | `color` | ⚪ Unmapped | Default |
+| `pagination` | Behavior | `select` | ⚠️ Gap | Presence and kind of pager markup (numbered .page-numbers links, prev/next, or infinite-scroll hooks) |
+| `title_color` | Styling | `color` | ⚠️ Gap | Computed color of the post title link/heading |
+| `meta_color` | Styling | `color` | ⚠️ Gap | Computed color of the post meta text (date/author/category) |
+| `bg_color` | Styling | `color` | ⚠️ Gap | Computed background-color of the post card container |
 | `spacing` | Styling | `spacing` | ⚪ Unmapped | Default |
 | `animation` | Animations | `group` | ⚪ Unmapped | Default off |
 | `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |

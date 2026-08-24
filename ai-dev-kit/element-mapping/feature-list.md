@@ -29,7 +29,11 @@ Each `<li>`’s text becomes an item row; an inline `<svg>` on the item becomes 
 
 ## Option coverage
 
-**2/16 options mapped natively** (13%) — 🟡 1 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 13 default · ⚙️ 3 auto.
+**2/16 options mapped natively** (13%) — 🟡 1 via CSS · ⚠️ 7 gaps (derivable, not yet) · ⚪ 6 default · ⚙️ 3 auto.
+
+:::tip[7 derivable gaps]
+The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
+:::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
@@ -38,14 +42,14 @@ Each `<li>`’s text becomes an item row; an inline `<svg>` on the item becomes 
 | `icon` | Content | `icon` | ✅ Native | Per item: an inline `<svg>` on the list item |
 | `marker_color` | Design | `color` | 🟡 Via CSS | Per item: carried from the source icon’s colour |
 | `icon_style` | Design | `select` | ⚪ Unmapped | Default |
-| `icon_position` | Design | `select` | ⚪ Unmapped | Default |
-| `columns` | Layout | `select` | ⚪ Unmapped | Default (1) |
-| `dividers` | Layout | `switch` | ⚪ Unmapped | Default off |
-| `zebra` | Layout | `switch` | ⚪ Unmapped | Default off |
+| `icon_position` | Design | `select` | ⚠️ Gap | DOM order of each item's icon relative to its text (left/top) |
+| `columns` | Layout | `select` | ⚠️ Gap | column count from the list's grid/flex layout (items per row) |
+| `dividers` | Layout | `switch` | ⚠️ Gap | computed border between adjacent list items |
+| `zebra` | Layout | `switch` | ⚠️ Gap | alternating background-color across list rows |
 | `box_style` | Design | `select` | ⚪ Unmapped | Default |
-| `font_size_preset` | Styling | `font-size` | ⚪ Unmapped | Default |
-| `text_color` | Styling | `color` | ⚪ Unmapped | Default |
-| `spacing` | Styling | `spacing` | ⚪ Unmapped | Default |
+| `font_size_preset` | Styling | `font-size` | ⚠️ Gap | computed font-size of the list item text |
+| `text_color` | Styling | `color` | ⚠️ Gap | computed color of the list item text |
+| `spacing` | Styling | `spacing` | ⚠️ Gap | computed margin/gap between list items |
 | `animation` | Animations | `group` | ⚪ Unmapped | Default off |
 | `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |
 | `custom_css` | Advanced | `textarea` | ⚪ Unmapped | Not populated |

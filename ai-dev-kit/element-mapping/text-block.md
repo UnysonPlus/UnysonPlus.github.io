@@ -29,25 +29,29 @@ A centered paragraph that also carries a source max-width keeps a proven inline 
 
 ## Option coverage
 
-**4/19 options mapped natively** (21%) — 🟡 4 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 11 default · ⚙️ 3 auto.
+**4/19 options mapped natively** (21%) — 🟡 4 via CSS · ⚠️ 3 gaps (derivable, not yet) · ⚪ 8 default · ⚙️ 3 auto.
+
+:::tip[3 derivable gaps]
+The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
+:::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
 | `text` | Content | `wp-editor` | ✅ Native | The source paragraph's rich HTML |
 | `text_color` | Styling | `color` | 🟡 Via CSS | Body text colour reproduced via the section / preset styler; native option empty |
-| `bg_color` | Styling | `color` | ⚪ Unmapped | Block background rarely set (section handles it) |
+| `bg_color` | Styling | `color` | ⚠️ Gap | computed background-color of the text container |
 | `link_color` | Styling | `color` | 🟡 Via CSS | Link colour via the styler; native option empty |
 | `font_size_preset` | Styling | `font-size` | ✅ Native | Source computed font-size → nearest body Text Style preset |
 | `spacing` | Styling | `spacing` | 🟡 Via CSS | Vertical margins ride the unified styler; native margin option left empty |
 | `text_align` | Styling | `alignment` | ✅ Native | Explicit source center / right alignment (a `text-*` class) |
 | `max_width` | Styling | `multi-picker` | ✅ Native | Source max-width (class, inline style, or stylesheet rule) |
-| `columns` | Styling | `select` | ⚪ Unmapped | Newspaper columns — no source signal |
+| `columns` | Styling | `select` | ⚠️ Gap | computed CSS column-count of the text container |
 | `balance` | Styling | `switch` | ⚪ Unmapped | Decorative — no source signal |
 | `line_height` | Styling | `select` | 🟡 Via CSS | Reproduced via the styler; native option empty |
 | `para_spacing` | Styling | `select` | ⚪ Unmapped | — |
 | `lead` | Styling | `switch` | ⚪ Unmapped | Decorative lead-in — no source signal |
-| `link_underline` | Styling | `select` | ⚪ Unmapped | — |
+| `link_underline` | Styling | `select` | ⚠️ Gap | computed text-decoration-line on anchor links within the text |
 | `dropcap` | Styling | `multi-picker` | ⚪ Unmapped | Decorative drop-cap (+ style/font/lines/chars/gap/colour) — no source signal |
 | `animation` | Animations | `group` | ⚪ Unmapped | Entrance animations default off |
 | `css_class` | Advanced | `text` | ⚪ Unmapped | Left empty — the block carries no source classes here |

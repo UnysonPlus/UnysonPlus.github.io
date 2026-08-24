@@ -29,7 +29,11 @@ The text, message, link, a trailing inline icon, and alignment map to native opt
 
 ## Option coverage
 
-**5/32 options mapped natively** (16%) — 🟡 0 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 27 default · ⚙️ 3 auto.
+**5/32 options mapped natively** (16%) — 🟡 0 via CSS · ⚠️ 17 gaps (derivable, not yet) · ⚪ 10 default · ⚙️ 3 auto.
+
+:::tip[17 derivable gaps]
+The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
+:::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
@@ -38,31 +42,31 @@ The text, message, link, a trailing inline icon, and alignment map to native opt
 | `message` | Content | `text` | ✅ Native | The main label text |
 | `link` | Content | `text` | ✅ Native | Optional href |
 | `trailing_icon` | Icons | `icon` | ✅ Native | A trailing inline `<svg>` in the source chip |
-| `leading_icon` | Icons | `icon` | ⚪ Unmapped | Default none |
-| `leading` | Icons | `select` | ⚪ Unmapped | Default none |
+| `leading_icon` | Icons | `icon` | ⚠️ Gap | presence + glyph of a leading <svg>/<i> icon inside the badge |
+| `leading` | Icons | `select` | ⚠️ Gap | DOM order of icon vs text (icon before or after the label) |
 | `align` | Layout | `select` | ✅ Native | Source alignment |
 | `style` | Design | `select` | ⚪ Unmapped | Default `soft` |
-| `shape` | Design | `select` | ⚪ Unmapped | Default `pill` |
+| `shape` | Design | `select` | ⚠️ Gap | computed border-radius (pill vs rounded vs square) |
 | `size` | Design | `select` | ⚪ Unmapped | Default `md` |
 | `tag_style` | Design | `select` | ⚪ Unmapped | Default `filled` |
 | `hover` | Design | `select` | ⚪ Unmapped | Default `lift` |
-| `pill_color` | Styling | `color` | ⚪ Unmapped | Left neutral — source fill not reproduced |
-| `text_color` | Styling | `color` | ⚪ Unmapped | Left neutral |
-| `tag_color` | Styling | `color` | ⚪ Unmapped | Left neutral |
-| `gradient_from` | Styling | `color` | ⚪ Unmapped | Default |
-| `gradient_to` | Styling | `color` | ⚪ Unmapped | Default |
+| `pill_color` | Styling | `color` | ⚠️ Gap | computed background-color of the badge |
+| `text_color` | Styling | `color` | ⚠️ Gap | computed color of the badge label |
+| `tag_color` | Styling | `color` | ⚠️ Gap | computed border/accent color when rendered as a tag |
+| `gradient_from` | Styling | `color` | ⚠️ Gap | first color stop of a computed background linear-gradient |
+| `gradient_to` | Styling | `color` | ⚠️ Gap | last color stop of a computed background linear-gradient |
 | `spacing` | Styling | `spacing` | ⚪ Unmapped | Default |
-| `link_target` | Link | `select` | ⚪ Unmapped | Default `auto` |
-| `rel_nofollow` | Link | `switch` | ⚪ Unmapped | Default off |
-| `rel_sponsored` | Link | `switch` | ⚪ Unmapped | Default off |
-| `rel_ugc` | Link | `switch` | ⚪ Unmapped | Default off |
-| `aria_label` | SEO | `text` | ⚪ Unmapped | Default |
-| `title_attr` | SEO | `text` | ⚪ Unmapped | Default |
+| `link_target` | Link | `select` | ⚠️ Gap | target attribute of the badge anchor |
+| `rel_nofollow` | Link | `switch` | ⚠️ Gap | rel attribute of the anchor contains 'nofollow' |
+| `rel_sponsored` | Link | `switch` | ⚠️ Gap | rel attribute of the anchor contains 'sponsored' |
+| `rel_ugc` | Link | `switch` | ⚠️ Gap | rel attribute of the anchor contains 'ugc' |
+| `aria_label` | SEO | `text` | ⚠️ Gap | aria-label attribute on the badge element |
+| `title_attr` | SEO | `text` | ⚠️ Gap | title attribute on the badge element |
 | `dismissible` | Design | `switch` | ⚪ Unmapped | Default off |
 | `dismiss_id` | Design | `text` | ⚪ Unmapped | Default |
-| `schema_enable` | SEO | `switch` | ⚪ Unmapped | Default off |
-| `schema_name` | SEO | `text` | ⚪ Unmapped | Default |
-| `schema_date` | SEO | `text` | ⚪ Unmapped | Default |
+| `schema_enable` | SEO | `switch` | ⚠️ Gap | presence of schema.org itemtype/itemprop microdata in the markup |
+| `schema_name` | SEO | `text` | ⚠️ Gap | schema.org name itemprop value |
+| `schema_date` | SEO | `text` | ⚠️ Gap | schema.org date itemprop value |
 | `animation` | Animations | `group` | ⚪ Unmapped | Default off |
 | `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |
 | `css_id` | Advanced | `text` | ⚪ Unmapped | Default empty |

@@ -29,24 +29,28 @@ The full cell grid is rebuilt natively — columns are counted, leading all-`<th
 
 ## Option coverage
 
-**2/23 options mapped natively** (9%) — 🟡 0 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 21 default · ⚙️ 3 auto.
+**2/23 options mapped natively** (9%) — 🟡 0 via CSS · ⚠️ 8 gaps (derivable, not yet) · ⚪ 13 default · ⚙️ 3 auto.
+
+:::tip[8 derivable gaps]
+The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
+:::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
 | `content` | Content | `table` | ✅ Native | The captured `<table>` cells, row by row |
 | `header_options` | Content | `group` | ✅ Native | Leading all-`<th>` rows detected as the header |
-| `caption` | Content | `text` | ⚪ Unmapped | Default |
-| `caption_position` | Content | `select` | ⚪ Unmapped | Default |
+| `caption` | Content | `text` | ⚠️ Gap | text of the <caption> element |
+| `caption_position` | Content | `select` | ⚠️ Gap | computed caption-side (top/bottom) of the caption |
 | `frame_preset` | Style | `table-style-picker` | ⚪ Unmapped | Default — not matched to a Table preset |
-| `style_striped` | Style | `switch` | ⚪ Unmapped | Default |
-| `style_bordered` | Style | `switch` | ⚪ Unmapped | Default |
+| `style_striped` | Style | `switch` | ⚠️ Gap | alternating row background-color across tbody rows |
+| `style_bordered` | Style | `switch` | ⚠️ Gap | presence of border on cells (computed border-width > 0) |
 | `style_hover` | Style | `switch` | ⚪ Unmapped | Default |
 | `style_condensed` | Style | `switch` | ⚪ Unmapped | Default |
-| `sticky_header` | Style | `switch` | ⚪ Unmapped | Default |
-| `bg_color` | Style | `color` | ⚪ Unmapped | Default |
-| `text_color` | Style | `color` | ⚪ Unmapped | Default |
-| `font_size_preset` | Style | `font-size` | ⚪ Unmapped | Default |
+| `sticky_header` | Style | `switch` | ⚠️ Gap | computed position:sticky on the header row/cells |
+| `bg_color` | Style | `color` | ⚠️ Gap | computed background-color of the table/cells |
+| `text_color` | Style | `color` | ⚠️ Gap | computed color of the cell text |
+| `font_size_preset` | Style | `font-size` | ⚠️ Gap | computed font-size of cell text |
 | `enable_search` | Features | `switch` | ⚪ Unmapped | Default off |
 | `enable_sort` | Features | `switch` | ⚪ Unmapped | Default off |
 | `enable_pagination` | Features | `switch` | ⚪ Unmapped | Default off |

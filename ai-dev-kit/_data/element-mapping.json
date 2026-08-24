@@ -1243,143 +1243,206 @@
      "tab": "Content",
      "type": "addable-popup",
      "status": "native",
-     "source": "One panel per source toggle — title + content"
-    },
-    {
-     "key": "is_open",
-     "tab": "Content",
-     "type": "switch",
-     "status": "gap",
-     "source": "Derivable — aria-expanded=\"true\" / .show / .active on the open panel"
-    },
-    {
-     "key": "style",
-     "tab": "Design",
-     "type": "multi-picker",
-     "status": "unmapped",
-     "source": "Default"
+     "source": "One panel per source toggle — title + content (with FAQ JSON-LD answer recovery)"
     },
     {
      "key": "accordion_style",
      "tab": "Design",
-     "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "type": "image-picker",
+     "status": "native",
+     "source": "Family (bordered / separated / flush / filled / ghost) from item background / border / gap"
     },
     {
      "key": "icon_style",
      "tab": "Design",
      "type": "select",
-     "status": "gap",
-     "source": "Derivable — chevron vs plus/minus glyph from the marker"
+     "status": "native",
+     "source": "chevron / arrow / plus-minus / plus-x / none, from the marker glyph"
     },
     {
      "key": "icon_position",
      "tab": "Design",
      "type": "select",
-     "status": "gap",
-     "source": "Derivable — the marker/chevron side from the toggle CSS"
+     "status": "native",
+     "source": "left / right from justify-content / the icon placement in the bar"
     },
     {
-     "key": "numbering",
+     "key": "title_alignment",
      "tab": "Design",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "status": "native",
+     "source": "Computed text-align of the header"
+    },
+    {
+     "key": "item_spacing",
+     "tab": "Design",
+     "type": "short-select",
+     "status": "native",
+     "source": "Gap between items (space-y / gap / margin), snapped to the nearest mb-N"
+    },
+    {
+     "key": "corner_radius",
+     "tab": "Design",
+     "type": "select",
+     "status": "native",
+     "source": "Item border-radius → none / sm / md / lg"
+    },
+    {
+     "key": "elevation",
+     "tab": "Design",
+     "type": "select",
+     "status": "native",
+     "source": "Item box-shadow presence → subtle / raised"
+    },
+    {
+     "key": "title_bg_color",
+     "tab": "Styling",
+     "type": "compact color",
+     "status": "native",
+     "source": "Computed header background fill"
+    },
+    {
+     "key": "faq_schema",
+     "tab": "SEO",
+     "type": "switch",
+     "status": "native",
+     "source": "Enabled when a schema.org FAQPage covers the questions — re-emits the FAQ structured data"
+    },
+    {
+     "key": "initially_open",
+     "tab": "Content",
+     "type": "select",
+     "status": "gap",
+     "source": "Derivable — details[open] / aria-expanded=\"true\" / .active / .show on the open panel"
     },
     {
      "key": "title_tag",
      "tab": "Content",
      "type": "select",
      "status": "gap",
-     "source": "Derivable — the header element (h2–h4 vs button)"
+     "source": "Derivable — the header element (h2–h6)"
     },
     {
-     "key": "title_alignment",
-     "tab": "Design",
-     "type": "alignment",
+     "key": "content_bg_color",
+     "tab": "Styling",
+     "type": "compact color",
      "status": "gap",
-     "source": "Derivable — computed text-align of the header"
+     "source": "Derivable — computed panel background"
     },
     {
      "key": "multiple_open",
      "tab": "Behavior",
      "type": "switch",
      "status": "gap",
-     "source": "Derivable — Bootstrap data-bs-parent (single-open) vs independent toggles"
+     "source": "Derivable — Bootstrap data-bs-parent (single-open vs independent)"
     },
     {
      "key": "collapsible",
      "tab": "Behavior",
      "type": "switch",
      "status": "gap",
-     "source": "Derivable — data-bs-parent / whether panels can all close"
+     "source": "Derivable — data-bs-parent / whether all panels can close"
     },
     {
-     "key": "faq_schema",
-     "tab": "SEO",
-     "type": "switch",
-     "status": "gap",
-     "source": "Derivable — a schema.org FAQPage JSON-LD block on the page"
-    },
-    {
-     "key": "font_size_preset",
+     "key": "tab_title_color",
      "tab": "Styling",
-     "type": "font-size",
+     "type": "compact color",
+     "status": "gap",
+     "source": "Derivable — computed header text colour → nearest preset"
+    },
+    {
+     "key": "tab_content_color",
+     "tab": "Styling",
+     "type": "compact color",
+     "status": "gap",
+     "source": "Derivable — computed panel text colour → nearest preset"
+    },
+    {
+     "key": "icon_closed_color",
+     "tab": "Styling",
+     "type": "compact color",
+     "status": "gap",
+     "source": "Derivable — computed marker colour"
+    },
+    {
+     "key": "numbering",
+     "tab": "Design",
+     "type": "multi-picker",
+     "status": "unmapped",
+     "source": "Default — UnysonPlus item numbering, not a source signal"
+    },
+    {
+     "key": "hash_linking",
+     "tab": "Behavior",
+     "type": "switch",
      "status": "unmapped",
      "source": "Default"
     },
     {
-     "key": "title_bg_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "Derivable — computed background of the header row"
+     "key": "show_expand_collapse_all",
+     "tab": "Behavior",
+     "type": "switch",
+     "status": "unmapped",
+     "source": "Default"
     },
     {
-     "key": "content_bg_color",
+     "key": "active_accent",
      "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "Derivable — computed background of the panel"
+     "type": "compact color",
+     "status": "unmapped",
+     "source": "Default — UnysonPlus accent colour"
+    },
+    {
+     "key": "title_hover",
+     "tab": "Styling",
+     "type": "switch",
+     "status": "unmapped",
+     "source": "Default"
+    },
+    {
+     "key": "font_size_preset",
+     "tab": "Styling",
+     "type": "select",
+     "status": "unmapped",
+     "source": "Default — maps to a Text Style; overlaps the design system"
+    },
+    {
+     "key": "icon_closed_image · icon_open_image · icon_*_text",
+     "tab": "Design",
+     "type": "upload / short-text",
+     "status": "unmapped",
+     "source": "Default — custom marker images / text"
     },
     {
      "key": "spacing",
-     "tab": "Styling",
+     "tab": "Advanced",
      "type": "spacing",
-     "status": "gap",
-     "source": "Derivable — the margin/gap between items"
+     "status": "unmapped",
+     "source": "Default — the element’s outer margin/padding"
     },
     {
-     "key": "animation",
+     "key": "animation · gsap_motion · interaction · text_effect · scroll_* · …",
      "tab": "Animations",
-     "type": "group",
+     "type": "multi-picker",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "Default — Animation Engine effects (no source mapping)"
     },
     {
-     "key": "css_class",
+     "key": "css_id · css_class · custom_css",
      "tab": "Advanced",
-     "type": "text",
+     "type": "text / code-editor",
      "status": "unmapped",
-     "source": "Default empty"
-    },
-    {
-     "key": "css_id",
-     "tab": "Advanced",
-     "type": "text",
-     "status": "unmapped",
-     "source": "Default empty"
+     "source": "Default — per-instance, set by hand"
     },
     {
      "key": "unique_id",
      "tab": "Advanced",
-     "type": "hidden",
+     "type": "unique",
      "status": "auto",
      "source": "Generated"
     },
     {
-     "key": "responsive_hide",
+     "key": "responsive_hide · dc_* · element_position · element_overflow",
      "tab": "Advanced",
      "type": "group",
      "status": "auto",
@@ -1388,7 +1451,7 @@
     {
      "key": "custom_attrs",
      "tab": "Advanced",
-     "type": "group",
+     "type": "addable-box",
      "status": "auto",
      "source": "Not set"
     }

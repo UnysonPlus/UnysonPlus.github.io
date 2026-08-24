@@ -69,7 +69,7 @@ Two backstops guarantee no source content is lost:
 | [Button](./button.md) | [`button`](/docs/shortcodes/components/button) | ✅ 6 | 🟡 1 | ⚠️ 3 | ⚪ 6 | **38%** |
 | [Testimonials](./testimonials.md) | [`testimonials`](/docs/shortcodes/components/testimonials) | ✅ 2 | 🟡 3 | ⚠️ 10 | ⚪ 5 | **10%** |
 | [Badge](./badge.md) | [`badge`](/docs/shortcodes/content-elements/badge) | ✅ 5 | 🟡 0 | ⚠️ 17 | ⚪ 10 | **16%** |
-| [Accordion](./accordion.md) | [`accordion`](/docs/shortcodes/interactive-elements/accordion) | ✅ 1 | 🟡 0 | ⚠️ 11 | ⚪ 7 | **5%** |
+| [Accordion](./accordion.md) | [`accordion`](/docs/shortcodes/interactive-elements/accordion) | ✅ 10 | 🟡 0 | ⚠️ 8 | ⚪ 10 | **36%** |
 | [Table](./table.md) | [`table`](/docs/shortcodes/content-elements/table) | ✅ 2 | 🟡 0 | ⚠️ 8 | ⚪ 13 | **9%** |
 
 ## Recognizers

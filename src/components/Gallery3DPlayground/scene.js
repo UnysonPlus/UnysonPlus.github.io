@@ -254,18 +254,20 @@ export function buildScene(design, o) {
   }
 
   if (design === 'mosaic_marquee') {
-    // masonry marquee — mirror mosaic-marquee.php (two grid copies on a track), 12 tiles per copy.
+    // airy bento marquee — mirror mosaic-marquee.php: one seed grid (initMosaic rebuilds the bento from
+    // its cards and clones copies to fill), dark stage background so gaps + empty cells show through.
     const rp = /^(\d+)-(\d+)$/.exec(o.card_ratio || '1-1');
     const a = attr({
       ...shared,
       'data-tdg-dir': o.direction === 'right' ? -1 : 1,
       'data-tdg-card': o.card_height, 'data-tdg-gap': o.gap, 'data-tdg-layout': o.layout,
       'data-tdg-rw': rp ? rp[1] : 1, 'data-tdg-rh': rp ? rp[2] : 1,
+      'data-tdg-corner': o.corner_radius, 'data-tdg-pad': o.padding,
     });
     let one = '';
     for (let k = 0; k < 12; k++) one += cardHtml(SAMPLES[k % SAMPLES.length]);
-    const mm = `<div class="tdg__mosaic">${one}</div><div class="tdg__mosaic" aria-hidden="true">${one}</div>`;
-    return `<div class="tdg tdg--mosaic-marquee" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__mosaic-track">${mm}</div></div></div>`;
+    const mmBg = o.background && String(o.background).trim() ? o.background : '#101014';
+    return `<div class="tdg tdg--mosaic-marquee" style="${style}" ${a}><div class="tdg__stage" style="background:${mmBg}"><div class="tdg__mosaic-track"><div class="tdg__mosaic">${one}</div></div></div></div>`;
   }
 
   // card_sphere

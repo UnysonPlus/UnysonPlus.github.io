@@ -2077,39 +2077,50 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 
 		function rnd( i, s ) { var x = Math.sin( ( i + 1 ) * 63.7 + s * 17.3 + seed * 41.2 ) * 43758.5453; return x - Math.floor( x ); }
 		var curR = 3;
-		// Fill columns EXACTLY (each column's row-spans sum to R) so the grid is a clean rectangle with no
-		// ragged edge — essential for a seamless marquee. Occasional 2-col full-height "hero" tiles for
-		// variety; the last tile is stretched to complete its column.
+		// Fill every column EXACTLY (each column's row-spans sum to R) so the grid is a clean rectangle
+		// with no ragged edge or interior holes — essential for a seamless marquee. All tiles are one
+		// column wide (a 2-col tile would break grid-auto-flow:column accounting and leave gaps); height
+		// varies 1–2 rows. The last tile in each grid is stretched to close its final column.
 		function buildSpans( N ) {
 			var out = [], col = 0, i = 0;
-			while ( i < N ) {
-				if ( col === 0 && i < N - 1 && rnd( i, 3 ) < 0.16 ) { out.push( [ curR, 2 ] ); i++; continue; } // hero: 2 cols × full height
+			for ( i = 0; i < N; i++ ) {
 				var rem = curR - col;
 				var rs = rem <= 1 ? 1 : ( rnd( i, 2 ) < 0.42 ? Math.min( 2, rem ) : 1 );
-				out.push( [ rs, 1 ] ); col += rs; if ( col >= curR ) { col = 0; }
-				i++;
+				out.push( rs ); col += rs; if ( col >= curR ) { col = 0; }
 			}
-			if ( col > 0 && out.length ) { out[ out.length - 1 ][ 0 ] += ( curR - col ); } // stretch the last tile to close the column
+			if ( col > 0 && out.length ) { out[ out.length - 1 ] += ( curR - col ); } // stretch last tile to close its column
 			return out;
 		}
 
+		// The template ships ONE seed grid; keep a pristine clone so resize rebuilds cleanly.
+		var seed = grids[ 0 ];
+		var seedClone = seed.cloneNode( true );
 		var cellH = 0, cellW = 0, gapPx = 0, setW = 0;
+		function styleGrid( g ) {
+			g.style.gridTemplateRows = 'repeat(' + curR + ',' + cellH.toFixed( 1 ) + 'px)';
+			g.style.gridAutoColumns = cellW.toFixed( 1 ) + 'px';
+			g.style.gap = gapPx.toFixed( 1 ) + 'px';
+			var cards = g.querySelectorAll( '.tdg__card' );
+			var spans = buildSpans( cards.length );
+			for ( var i = 0; i < cards.length; i++ ) { cards[ i ].style.gridRow = 'span ' + spans[ i ]; cards[ i ].style.gridColumn = 'span 1'; }
+		}
 		function layoutFn() {
 			var H = stage.clientHeight || el.clientHeight || 1;
+			var W = stage.clientWidth || el.clientWidth || 1;
 			curR = Math.max( 2, Math.min( 5, Math.round( 180 / ( cardH * 100 ) ) ) ); // taller cards → fewer rows
 			cellH = H / curR;
 			cellW = cellH * ( ratioW / ratioH );
 			gapPx = cellH * gap;
-			grids.forEach( function ( g ) {
-				g.style.gridTemplateRows = 'repeat(' + curR + ',' + cellH.toFixed( 1 ) + 'px)';
-				g.style.gridAutoColumns = cellW.toFixed( 1 ) + 'px';
-				g.style.gap = gapPx.toFixed( 1 ) + 'px';
-				var cards = g.querySelectorAll( '.tdg__card' );
-				var spans = buildSpans( cards.length );
-				for ( var i = 0; i < cards.length; i++ ) { cards[ i ].style.gridRow = 'span ' + spans[ i ][ 0 ]; cards[ i ].style.gridColumn = 'span ' + spans[ i ][ 1 ]; }
-			} );
 			track.style.gap = gapPx.toFixed( 1 ) + 'px';
-			setW = grids[ 0 ].getBoundingClientRect().width + gapPx; // one copy → the seamless wrap distance
+			// Reset the track to a single freshly-styled seed, measure one copy, then clone enough
+			// identical copies to always cover the viewport (+1) so wrapping by one copy is seamless.
+			track.innerHTML = '';
+			var first = seedClone.cloneNode( true );
+			track.appendChild( first ); styleGrid( first );
+			setW = first.getBoundingClientRect().width + gapPx; // one copy → the seamless wrap distance
+			var need = Math.max( 2, Math.ceil( W / Math.max( 1, setW ) ) + 1 );
+			for ( var c = 1; c < need; c++ ) { var cl = first.cloneNode( true ); track.appendChild( cl ); }
+			grids = Array.prototype.slice.call( track.querySelectorAll( '.tdg__mosaic' ) );
 		}
 
 		var pos = 0, vel = 0;

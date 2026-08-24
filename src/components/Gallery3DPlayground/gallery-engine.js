@@ -2111,7 +2111,7 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 		}
 		function buildSet( grid, hidden ) {
 			grid.innerHTML = '';
-			var idx = 0, ci = 0, lastFam = '', lastCat = '', lastSrc = '';
+			var idx = 0, ci = 0, lastFam = '', lastCat = '', lastSrc = '', singleAlt = false;
 			var srcOf = function ( c ) { var im = c.querySelector( 'img' ); return im ? ( im.getAttribute( 'src' ) || '' ) : ''; };
 			var addCard = function ( rs, cs ) {
 				// Skip an image identical to the previously placed one (the pool may repeat to pad small sets).
@@ -2136,8 +2136,9 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 					if ( fam === 'big' ) { addCard( 2, 2 ); }                              // BIG 2×2
 					else if ( fam === 'tall' ) { addCard( 2, 1 ); }                        // TALL 1×2
 					else if ( fam === 'stack' ) { addCard( 1, 1 ); addCard( 1, 1 ); }      // STACK two squares
-					else if ( rnd( ci * 7 + 2, 3 ) < 0.5 ) { addCard( 1, 1 ); addGap( 1, 1 ); } // SINGLE top
-					else { addGap( 1, 1 ); addCard( 1, 1 ); }                              // SINGLE bottom
+					// SINGLE — alternate top-aligned / bottom-aligned each time so both variants reliably
+					// appear (a lone square with space below, and a lone square with space above).
+					else { if ( singleAlt ) { addCard( 1, 1 ); addGap( 1, 1 ); } else { addGap( 1, 1 ); addCard( 1, 1 ); } singleAlt = ! singleAlt; }
 				} else {
 					var sum = 0, k = ci * 13 + 4, has = false, seq = [];
 					while ( sum < R ) { var rem = R - sum; var sp = ( rem >= 2 && rnd( k++, 1 ) < 0.45 ) ? 2 : 1; var em = ( sp === 1 && rnd( k++, 4 ) < 0.2 ); seq.push( [ sp, em ] ); if ( ! em ) { has = true; } sum += sp; }

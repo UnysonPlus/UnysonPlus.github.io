@@ -2076,50 +2076,61 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 		var seed = ( layout === '2' ) ? 3.3 : ( layout === '3' ) ? 7.1 : 0.5;
 
 		function rnd( i, s ) { var x = Math.sin( ( i + 1 ) * 63.7 + s * 17.3 + seed * 41.2 ) * 43758.5453; return x - Math.floor( x ); }
-		var curR = 3;
-		// Fill every column EXACTLY (each column's row-spans sum to R) so the grid is a clean rectangle
-		// with no ragged edge or interior holes — essential for a seamless marquee. All tiles are one
-		// column wide (a 2-col tile would break grid-auto-flow:column accounting and leave gaps); height
-		// varies 1–2 rows. The last tile in each grid is stretched to close its final column.
-		function buildSpans( N ) {
-			var out = [], col = 0, i = 0;
-			for ( i = 0; i < N; i++ ) {
-				var rem = curR - col;
-				var rs = rem <= 1 ? 1 : ( rnd( i, 2 ) < 0.42 ? Math.min( 2, rem ) : 1 );
-				out.push( rs ); col += rs; if ( col >= curR ) { col = 0; }
-			}
-			if ( col > 0 && out.length ) { out[ out.length - 1 ] += ( curR - col ); } // stretch last tile to close its column
-			return out;
+		// The grid is measured in HALF-UNITS: a "full square" tile is 2 half-units tall and (being one
+		// column wide) exactly as wide as it is tall; a "half" tile is 1 half-unit tall → a 2:1 landscape.
+		// Each column is a random partition of R half-units into parts of {2 = square, 1 = half} biased to
+		// squares — yielding the varied stacks the design calls for (square · half+square · half+square+half
+		// · two-halves+square, top- or bottom-weighted). A partition ALWAYS sums to R, so every column is a
+		// complete stack and the whole set is a clean rectangle — no ragged edge, no interior holes.
+		var pool = Array.prototype.slice.call( grids[ 0 ].querySelectorAll( '.tdg__card' ) ).map( function ( c ) { return c.cloneNode( true ); } );
+		if ( ! pool.length ) { return; }
+		var R = 6;
+		function buildColumn( ci ) {
+			var parts = [], sum = 0, k = ci * 7 + 3;
+			while ( sum < R ) { var rem = R - sum; var p = ( rem === 1 ) ? 1 : ( rnd( k++, 2 ) < 0.62 ? 2 : 1 ); parts.push( p ); sum += p; }
+			return parts;
 		}
 
-		// The template ships ONE seed grid; keep a pristine clone so resize rebuilds cleanly.
-		var seed = grids[ 0 ];
-		var seedClone = seed.cloneNode( true );
-		var cellH = 0, cellW = 0, gapPx = 0, setW = 0;
+		var cellH = 0, colW = 0, gapPx = 0, setW = 0;
+		// Build ONE set from the pool: whole columns only (stop at a column boundary once every image has
+		// been placed at least once) so the set is a full rectangle and shows the whole gallery.
+		function buildSet( grid, hidden ) {
+			grid.innerHTML = '';
+			var idx = 0, ci = 0;
+			do {
+				var parts = buildColumn( ci );
+				for ( var j = 0; j < parts.length; j++ ) {
+					var c = pool[ idx % pool.length ].cloneNode( true );
+					c.style.gridRow = 'span ' + parts[ j ];
+					c.style.gridColumn = 'span 1';
+					c.setAttribute( 'aria-hidden', hidden ? 'true' : 'false' );
+					grid.appendChild( c ); idx++;
+				}
+				ci++;
+			} while ( idx < pool.length );
+		}
 		function styleGrid( g ) {
-			g.style.gridTemplateRows = 'repeat(' + curR + ',' + cellH.toFixed( 1 ) + 'px)';
-			g.style.gridAutoColumns = cellW.toFixed( 1 ) + 'px';
+			g.style.gridTemplateRows = 'repeat(' + R + ',' + cellH.toFixed( 1 ) + 'px)';
+			g.style.gridAutoColumns = colW.toFixed( 1 ) + 'px';
 			g.style.gap = gapPx.toFixed( 1 ) + 'px';
-			var cards = g.querySelectorAll( '.tdg__card' );
-			var spans = buildSpans( cards.length );
-			for ( var i = 0; i < cards.length; i++ ) { cards[ i ].style.gridRow = 'span ' + spans[ i ]; cards[ i ].style.gridColumn = 'span 1'; }
 		}
 		function layoutFn() {
 			var H = stage.clientHeight || el.clientHeight || 1;
 			var W = stage.clientWidth || el.clientWidth || 1;
-			curR = Math.max( 2, Math.min( 5, Math.round( 180 / ( cardH * 100 ) ) ) ); // taller cards → fewer rows
-			cellH = H / curR;
-			cellW = cellH * ( ratioW / ratioH );
+			var sq = Math.max( 1, Math.min( 6, Math.round( 1 / cardH ) ) ); // squares tall ≈ 1/cardH; R half-units = 2·sq
+			R = sq * 2;
+			cellH = H / R;                                // one half-unit
+			colW = ( cellH * 2 ) * ( ratioW / ratioH );   // column width = one square (2 half-units · aspect)
 			gapPx = cellH * gap;
 			track.style.gap = gapPx.toFixed( 1 ) + 'px';
-			// Reset the track to a single freshly-styled seed, measure one copy, then clone enough
-			// identical copies to always cover the viewport (+1) so wrapping by one copy is seamless.
 			track.innerHTML = '';
-			var first = seedClone.cloneNode( true );
-			track.appendChild( first ); styleGrid( first );
-			setW = first.getBoundingClientRect().width + gapPx; // one copy → the seamless wrap distance
+			// Build one real set, style + measure it, then clone identical copies to cover the viewport (+1)
+			// so wrapping by exactly one set width is seamless.
+			var first = document.createElement( 'div' ); first.className = 'tdg__mosaic';
+			track.appendChild( first ); buildSet( first, false ); styleGrid( first );
+			setW = first.getBoundingClientRect().width + gapPx;
 			var need = Math.max( 2, Math.ceil( W / Math.max( 1, setW ) ) + 1 );
-			for ( var c = 1; c < need; c++ ) { var cl = first.cloneNode( true ); track.appendChild( cl ); }
+			for ( var c = 1; c < need; c++ ) { var cl = first.cloneNode( true ); cl.setAttribute( 'aria-hidden', 'true' ); track.appendChild( cl ); }
 			grids = Array.prototype.slice.call( track.querySelectorAll( '.tdg__mosaic' ) );
 		}
 

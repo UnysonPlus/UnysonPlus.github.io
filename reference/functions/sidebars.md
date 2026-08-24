@@ -16,7 +16,7 @@ hide_table_of_contents: true
 | --- | --- |
 | [`fw_ext_sidebars_get_current_position`](#fw_ext_sidebars_get_current_position) | Returns string (position-id) if DB has preset for current page else return false |
 | [`fw_ext_sidebars_get_current_preset`](#fw_ext_sidebars_get_current_preset) | Returns array if DB has preset for current page else return null |
-| [`fw_ext_sidebars_show`](#fw_ext_sidebars_show) | — |
+| [`fw_ext_sidebars_show`](#fw_ext_sidebars_show) | Returns the rendered sidebar HTML for the given sidebar color, or a warning message. |
 
 ---
 
@@ -28,7 +28,7 @@ fw_ext_sidebars_get_current_position()
 
 Returns string (position-id) if DB has preset for current page else return false
 
-<small>Source: `framework/extensions/sidebars/helpers.php:17`</small>
+<small>Source: `framework/extensions/sidebars/helpers.php:20`</small>
 
 ### `fw_ext_sidebars_get_current_preset` {#fw_ext_sidebars_get_current_preset}
 
@@ -38,7 +38,7 @@ fw_ext_sidebars_get_current_preset()
 
 Returns array if DB has preset for current page else return null
 
-<small>Source: `framework/extensions/sidebars/helpers.php:25`</small>
+<small>Source: `framework/extensions/sidebars/helpers.php:28`</small>
 
 ### `fw_ext_sidebars_show` {#fw_ext_sidebars_show}
 
@@ -46,6 +46,8 @@ Returns array if DB has preset for current page else return null
 fw_ext_sidebars_show($color)
 ```
 
-<small>Source: `framework/extensions/sidebars/helpers.php:8`</small>
+Returns the rendered sidebar HTML for the given sidebar color, or a warning message.
+
+<small>Source: `framework/extensions/sidebars/helpers.php:11`</small>
 
 ← Back to [Functions overview](./index.md)

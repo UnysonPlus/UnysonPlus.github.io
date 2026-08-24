@@ -43,7 +43,7 @@ hide_table_of_contents: true
 ```php
 add_filter( 'fw_icon_lottie_enabled', $callback );
 ```
-<small>Fired in: `framework/includes/option-types/icon/includes/pack-installer.php:886`</small>
+<small>Fired in: `framework/includes/option-types/icon/includes/pack-installer.php:889`</small>
 
 ### `fw_icon_pack_catalog_url` {#h-fw-icon-pack-catalog-url}
 *🧪 filter*
@@ -59,7 +59,7 @@ add_filter( 'fw_icon_pack_catalog_url', $callback );
 ```php
 add_filter( 'fw_icon_raster_enabled', $callback );
 ```
-<small>Fired in: `framework/includes/option-types/icon/includes/pack-installer.php:940`</small>
+<small>Fired in: `framework/includes/option-types/icon/includes/pack-installer.php:943`</small>
 
 ### `fw_icon_rive_enabled` {#h-fw-icon-rive-enabled}
 *🧪 filter*
@@ -67,7 +67,7 @@ add_filter( 'fw_icon_raster_enabled', $callback );
 ```php
 add_filter( 'fw_icon_rive_enabled', $callback );
 ```
-<small>Fired in: `framework/includes/option-types/icon/includes/pack-installer.php:897`</small>
+<small>Fired in: `framework/includes/option-types/icon/includes/pack-installer.php:900`</small>
 
 ### `fw_icon_svg_animation_enabled` {#h-fw-icon-svg-animation-enabled}
 *🧪 filter*
@@ -75,7 +75,7 @@ add_filter( 'fw_icon_rive_enabled', $callback );
 ```php
 add_filter( 'fw_icon_svg_animation_enabled', $callback );
 ```
-<small>Fired in: `framework/includes/option-types/icon/includes/pack-installer.php:926`</small>
+<small>Fired in: `framework/includes/option-types/icon/includes/pack-installer.php:929`</small>
 
 ### `fw_icon_svg_pack_install_dir` {#h-fw-icon-svg-pack-install-dir}
 *🧪 filter*

@@ -132,7 +132,7 @@ add_filter( 'fw_get_db_post_option:fw-storage-enabled', $callback );
 ```php
 add_filter( 'fw_google_fonts', $callback );
 ```
-<small>Fired in: `framework/helpers/general.php:1513`</small>
+<small>Fired in: `framework/helpers/general.php:1528`</small>
 
 ### `fw_googleapis_webfonts_url` {#h-fw-googleapis-webfonts-url}
 *🧪 filter*
@@ -140,7 +140,7 @@ add_filter( 'fw_google_fonts', $callback );
 ```php
 add_filter( 'fw_googleapis_webfonts_url', $callback );
 ```
-<small>Fired in: `framework/helpers/general.php:1548`</small>
+<small>Fired in: `framework/helpers/general.php:1565`</small>
 
 ### `fw_option_value_error` {#h-fw-option-value-error}
 *🧪 filter*
@@ -148,7 +148,7 @@ add_filter( 'fw_googleapis_webfonts_url', $callback );
 ```php
 add_filter( 'fw_option_value_error', $callback );
 ```
-<small>Fired in: `framework/helpers/general.php:1355`</small>
+<small>Fired in: `framework/helpers/general.php:1362`</small>
 
 ### `fw_post_options_update` {#h-fw-post-options-update}
 *🎬 action*
@@ -228,7 +228,7 @@ add_filter( 'fw:form:nonce-name-data', $callback );
 ```php
 add_filter( 'fw:get_options_values_from_input:before', $callback );
 ```
-<small>Fired in: `framework/helpers/general.php:1286`</small>
+<small>Fired in: `framework/helpers/general.php:1291`</small>
 
 ### `fw:option-storage-types:register` {#h-fw-option-storage-types-register}
 *🎬 action*
@@ -236,7 +236,7 @@ add_filter( 'fw:get_options_values_from_input:before', $callback );
 ```php
 add_action( 'fw:option-storage-types:register', $callback );
 ```
-<small>Fired in: `framework/helpers/fw-storage.php:108`</small>
+<small>Fired in: `framework/helpers/fw-storage.php:114`</small>
 
 ### `fw:options-default-values:skip-types` {#h-fw-options-default-values-skip-types}
 *🧪 filter*

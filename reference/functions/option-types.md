@@ -14,7 +14,7 @@ hide_table_of_contents: true
 
 | Function | Summary |
 | --- | --- |
-| [`fw_fa4_to_fa6`](#fw_fa4_to_fa6) | — |
+| [`fw_fa4_to_fa6`](#fw_fa4_to_fa6) | Rewrites a legacy Font Awesome 4 class string to its FA6 equivalent, leaving non-FA4 classes untouched. |
 | [`fw_icon_animated_enabled`](#fw_icon_animated_enabled) | Whether the "Animated" tab shows at all — i.e. at least one player-based technology (Lottie or Rive) is enabled. Derived from the per-technology gates, so the tab appears when either is on and hides when both are off. Core ships the tab, JS handlers and bundled players but keeps them OFF by default; the opt-in Animated Icons extension flips the per-technology gates. The FRONTEND render of already-saved animated values is intentionally NOT gated, so toggling the extension never breaks pages that already use one. |
 | [`fw_icon_lottie_dir`](#fw_icon_lottie_dir) | &#123; path, url &#125; of the Lottie upload dir (uploads/unysonplus/lottie). |
 | [`fw_icon_lottie_enabled`](#fw_icon_lottie_enabled) | Whether the Lottie technology is enabled (its Animated-tab panel, admin player runtime and .json upload endpoint). Default OFF; the Animated Icons extension flips it on from its "Lottie" toggle. |
@@ -30,18 +30,18 @@ hide_table_of_contents: true
 | [`fw_icon_pack__rrmdir`](#fw_icon_pack__rrmdir) | Recursively delete a directory (used for temp + uninstall). |
 | [`fw_icon_pack__unique_slug`](#fw_icon_pack__unique_slug) | A slug not already used by a bundled/installed/font/catalog pack. |
 | [`fw_icon_pack__write_pack`](#fw_icon_pack__write_pack) | Atomically write a pack's three JSON files into the install dir. |
-| [`fw_icon_pack_ajax_nonce`](#fw_icon_pack_ajax_nonce) | — |
+| [`fw_icon_pack_ajax_nonce`](#fw_icon_pack_ajax_nonce) | Returns the nonce action name used for icon-pack management AJAX requests. |
 | [`fw_icon_pack_catalog`](#fw_icon_pack_catalog) | Fetch + decode the remote catalog, cached in a transient (12h) so the installer UI is snappy and we don't hammer the CDN. Returns the decoded catalog array, or an empty shape on failure. |
 | [`fw_icon_pack_catalog_url`](#fw_icon_pack_catalog_url) | URL of the catalog.json describing installable packs. Filterable so the host can point at a mirror/CDN. Default: the raw GitHub content of the icon-packs repo. |
 | [`fw_icon_pack_counts`](#fw_icon_pack_counts) | Glyph counts for the ALWAYS-PRESENT libraries: the webfont packs and the bundled SVG sets (Lucide/Tabler). Both are static (they don't change between plugin versions), and computing them is costly — font counts parse each pack's CSS, bundled-SVG counts decode a multi-MB JSON — so the result is cached in a per-version transient and a per-request static. Installed packs are excluded (their count is read cheaply from meta.json in the payload). |
 | [`fw_icon_pack_enabled_map`](#fw_icon_pack_enabled_map) | &#123; pack_id =&gt; bool &#125; saved map. Empty array = never curated (all enabled). |
-| [`fw_icon_pack_enabled_option_key`](#fw_icon_pack_enabled_option_key) | — |
+| [`fw_icon_pack_enabled_option_key`](#fw_icon_pack_enabled_option_key) | Returns the per-theme option key storing which icon packs are enabled for the picker. |
 | [`fw_icon_pack_install`](#fw_icon_pack_install) | Download one pack from the catalog into the uploads install dir. Fetches the two data JSONs (icons + search) from the catalog base_url and writes them plus a meta.json. Atomic-ish: writes into a temp dir, then renames into place, so a half-downloaded pack never registers as installed. |
 | [`fw_icon_pack_install_from_json`](#fw_icon_pack_install_from_json) | Install a user-uploaded icon pack from a JSON string. Accepts either a flat map &#123; name =&gt; markup &#125; or a self-describing &#123; title, svg_open, icons:&#123;…&#125; &#125;. Each icon's markup may be a full &lt;svg&gt;…&lt;/svg&gt; or just the inner paths; both are sanitised (wp_kses SVG allowlist — strips &lt;script&gt;, on* handlers, etc.), reduced to inner markup, and stripped of hardcoded colours so they inherit currentColor. Writes the same three-file pack shape as a catalog install, tagged origin:"custom". |
 | [`fw_icon_pack_installed_meta`](#fw_icon_pack_installed_meta) | Decoded meta.json for one installed pack, or null. |
 | [`fw_icon_pack_installed_slugs`](#fw_icon_pack_installed_slugs) | Slugs of packs installed under uploads (each a dir with a valid meta.json + icons.json). |
 | [`fw_icon_pack_installer_packs`](#fw_icon_pack_installer_packs) | Data the unified installer panel needs. One flat `packs` list, each entry: &#123; slug, title, type:'font'\|'svg', state:'bundled'\|'installed'\|'available', enabled:bool, count:int &#125; covering the bundled webfonts (toggle only), bundled + installed SVG libraries (toggle + Remove for installed), and catalog packs available to install. Bundled icon counts are omitted (counting them would decode the multi-MB bundles on a settings-page load); installed/available counts are cheap. |
-| [`fw_icon_pack_installer_payload`](#fw_icon_pack_installer_payload) | — |
+| [`fw_icon_pack_installer_payload`](#fw_icon_pack_installer_payload) | Builds the data payload (AJAX URL, nonce, packs, i18n) for the icon-pack installer UI. |
 | [`fw_icon_pack_set_enabled`](#fw_icon_pack_set_enabled) | Flip one pack on/off and persist. Seeds an all-enabled map on first write. |
 | [`fw_icon_pack_uninstall`](#fw_icon_pack_uninstall) | Remove an installed pack. Bundled packs (lucide/tabler) can't be uninstalled — they have no dir under uploads, so this is a no-op error for them. |
 | [`fw_icon_raster_enabled`](#fw_icon_raster_enabled) | Whether animated raster icons (GIF / APNG / WebP) are surfaced as a supported technology. These already upload + render through the normal image path (an &lt;img&gt; the browser animates natively), so this flag does NOT gate functionality — it only controls the picker hint that points authors at the capability. Default OFF; the Animated Icons extension turns it on from its "Animated raster" toggle. |
@@ -56,16 +56,16 @@ hide_table_of_contents: true
 | [`fw_icon_svg_pack_markup`](#fw_icon_svg_pack_markup) | Resolve a 'pack/name' id (e.g. 'lucide/star', 'tabler/home') to full inline &lt;svg&gt; markup with currentColor. Returns '' for an unknown pack/name. The markup still passes through sc_icon_sanitize_svg() at render. |
 | [`fw_icon_svg_pack_registry`](#fw_icon_svg_pack_registry) | id =&gt; &#123; title, slug, svg_open &#125;. Filterable so more packs can be added. |
 | [`fw_icon_svg_pack_search`](#fw_icon_svg_pack_search) | Names in a pack matching a query (name + keywords). Empty query → first slice. |
-| [`fw_icon_svg_pack_search_data`](#fw_icon_svg_pack_search_data) | — |
+| [`fw_icon_svg_pack_search_data`](#fw_icon_svg_pack_search_data) | Returns the cached search index data for an SVG icon pack, loaded from its bundled JSON file. |
 | [`fw_option_type_background_pro_force_admin_enqueue`](#fw_option_type_background_pro_force_admin_enqueue) | Force-load the background-pro assets on post-edit screens. |
 | [`fw_option_type_responsive_force_admin_enqueue`](#fw_option_type_responsive_force_admin_enqueue) | Force-load the device-tabs + responsive assets on post-edit screens. |
 | [`fw_option_type_spacing_force_admin_enqueue`](#fw_option_type_spacing_force_admin_enqueue) | Force-load the spacing assets on post-edit screens. |
-| [`unysonplus_all_icon_pack_ids`](#unysonplus_all_icon_pack_ids) | — |
+| [`unysonplus_all_icon_pack_ids`](#unysonplus_all_icon_pack_ids) | Returns the ids of all available icon packs. |
 | [`unysonplus_any_font_pack_enabled`](#unysonplus_any_font_pack_enabled) | True if at least one webfont pack is enabled (gates the Icon Fonts tab). |
 | [`unysonplus_enabled_icon_packs`](#unysonplus_enabled_icon_packs) | Ids of the enabled packs. Defaults to ALL when the setting was never saved (existing sites are unchanged) and never returns empty (falls back to all), so a stray "uncheck everything" can't blank the picker entirely. |
 | [`unysonplus_font_icon_pack_ids`](#unysonplus_font_icon_pack_ids) | Ids of the webfont packs (Dashicons, Font Awesome, Entypo, …). |
 | [`unysonplus_icon_pack_choices`](#unysonplus_icon_pack_choices) | Every selectable pack: id =&gt; label (font packs first, then SVG libraries). |
-| [`unysonplus_icon_pack_enabled`](#unysonplus_icon_pack_enabled) | — |
+| [`unysonplus_icon_pack_enabled`](#unysonplus_icon_pack_enabled) | Returns whether the given icon pack id is currently enabled. |
 | [`unysonplus_svg_icon_pack_ids`](#unysonplus_svg_icon_pack_ids) | Ids of the bundled inline-SVG libraries that actually have data present. Derived from the multi-pack registry so a new pack (Tabler, …) appears everywhere just by dropping in its JSON + a registry entry. |
 
 ---
@@ -77,7 +77,9 @@ hide_table_of_contents: true
 fw_fa4_to_fa6( $class )
 ```
 
-<small>Source: `framework/includes/option-types/icon/includes/fa-migrate.php:19`</small>
+Rewrites a legacy Font Awesome 4 class string to its FA6 equivalent, leaving non-FA4 classes untouched.
+
+<small>Source: `framework/includes/option-types/icon/includes/fa-migrate.php:20`</small>
 
 ### `fw_icon_animated_enabled` {#fw_icon_animated_enabled}
 *🔌 pluggable*
@@ -88,7 +90,7 @@ fw_icon_animated_enabled()
 
 Whether the "Animated" tab shows at all — i.e. at least one player-based technology (Lottie or Rive) is enabled. Derived from the per-technology gates, so the tab appears when either is on and hides when both are off. Core ships the tab, JS handlers and bundled players but keeps them OFF by default; the opt-in Animated Icons extension flips the per-technology gates. The FRONTEND render of already-saved animated values is intentionally NOT gated, so toggling the extension never breaks pages that already use one.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:911`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:914`</small>
 
 ### `fw_icon_lottie_dir` {#fw_icon_lottie_dir}
 *🔌 pluggable*
@@ -99,7 +101,7 @@ fw_icon_lottie_dir()
 
 &#123; path, url &#125; of the Lottie upload dir (uploads/unysonplus/lottie).
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:946`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:949`</small>
 
 ### `fw_icon_lottie_enabled` {#fw_icon_lottie_enabled}
 *🔌 pluggable*
@@ -110,7 +112,7 @@ fw_icon_lottie_enabled()
 
 Whether the Lottie technology is enabled (its Animated-tab panel, admin player runtime and .json upload endpoint). Default OFF; the Animated Icons extension flips it on from its "Lottie" toggle.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:885`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:888`</small>
 
 ### `fw_icon_lucide_all` {#fw_icon_lucide_all}
 *🔌 pluggable*
@@ -268,7 +270,9 @@ Atomically write a pack's three JSON files into the install dir.
 fw_icon_pack_ajax_nonce()
 ```
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:610`</small>
+Returns the nonce action name used for icon-pack management AJAX requests.
+
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:611`</small>
 
 ### `fw_icon_pack_catalog` {#fw_icon_pack_catalog}
 *🔌 pluggable*
@@ -320,7 +324,7 @@ fw_icon_pack_enabled_map()
 
 &#123; pack_id =&gt; bool &#125; saved map. Empty array = never curated (all enabled).
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:634`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:636`</small>
 
 ### `fw_icon_pack_enabled_option_key` {#fw_icon_pack_enabled_option_key}
 *🔌 pluggable*
@@ -329,7 +333,9 @@ fw_icon_pack_enabled_map()
 fw_icon_pack_enabled_option_key()
 ```
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:625`</small>
+Returns the per-theme option key storing which icon packs are enabled for the picker.
+
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:627`</small>
 
 ### `fw_icon_pack_install` {#fw_icon_pack_install}
 *🔌 pluggable*
@@ -397,7 +403,7 @@ fw_icon_pack_installer_packs()
 
 Data the unified installer panel needs. One flat `packs` list, each entry: &#123; slug, title, type:'font'|'svg', state:'bundled'|'installed'|'available', enabled:bool, count:int &#125; covering the bundled webfonts (toggle only), bundled + installed SVG libraries (toggle + Remove for installed), and catalog packs available to install. Bundled icon counts are omitted (counting them would decode the multi-MB bundles on a settings-page load); installed/available counts are cheap.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:727`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:729`</small>
 
 ### `fw_icon_pack_installer_payload` {#fw_icon_pack_installer_payload}
 *🔌 pluggable*
@@ -406,7 +412,9 @@ Data the unified installer panel needs. One flat `packs` list, each entry: &#123
 fw_icon_pack_installer_payload()
 ```
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:800`</small>
+Builds the data payload (AJAX URL, nonce, packs, i18n) for the icon-pack installer UI.
+
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:803`</small>
 
 ### `fw_icon_pack_set_enabled` {#fw_icon_pack_set_enabled}
 *🔌 pluggable*
@@ -417,7 +425,7 @@ fw_icon_pack_set_enabled( $slug, $on )
 
 Flip one pack on/off and persist. Seeds an all-enabled map on first write.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:652`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:654`</small>
 
 ### `fw_icon_pack_uninstall` {#fw_icon_pack_uninstall}
 *🔌 pluggable*
@@ -445,7 +453,7 @@ fw_icon_raster_enabled()
 
 Whether animated raster icons (GIF / APNG / WebP) are surfaced as a supported technology. These already upload + render through the normal image path (an &lt;img&gt; the browser animates natively), so this flag does NOT gate functionality — it only controls the picker hint that points authors at the capability. Default OFF; the Animated Icons extension turns it on from its "Animated raster" toggle.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:939`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:942`</small>
 
 ### `fw_icon_rive_dir` {#fw_icon_rive_dir}
 *🔌 pluggable*
@@ -456,7 +464,7 @@ fw_icon_rive_dir()
 
 &#123; path, url &#125; of the Rive upload dir (uploads/unysonplus/rive).
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:998`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:1001`</small>
 
 ### `fw_icon_rive_enabled` {#fw_icon_rive_enabled}
 *🔌 pluggable*
@@ -467,7 +475,7 @@ fw_icon_rive_enabled()
 
 Whether the Rive technology is enabled (its Animated-tab panel, admin canvas runtime and .riv upload endpoint). Default OFF; the Animated Icons extension flips it on from its "Rive" toggle.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:896`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:899`</small>
 
 ### `fw_icon_svg_animation_enabled` {#fw_icon_svg_animation_enabled}
 *🔌 pluggable*
@@ -478,7 +486,7 @@ fw_icon_svg_animation_enabled()
 
 Whether SVG icons may keep their SMIL animation (`&lt;animate&gt;`, `&lt;animateTransform&gt;`, …). Default OFF — the SVG sanitizer strips animation tags, so an animated SVG still renders but static. The Animated Icons extension flips this on from its "Animated SVG" toggle. SMIL is declarative (it cannot run JavaScript), and the XSS surface — scripts, event handlers, &lt;foreignObject&gt;, external refs — stays excluded either way.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:925`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:928`</small>
 
 ### `fw_icon_svg_pack_all` {#fw_icon_svg_pack_all}
 *🔌 pluggable*
@@ -489,7 +497,7 @@ fw_icon_svg_pack_all( $pack, $limit = 0 )
 
 All icon names in a pack (sorted).
 
-<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:167`</small>
+<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:168`</small>
 
 ### `fw_icon_svg_pack_available` {#fw_icon_svg_pack_available}
 *🔌 pluggable*
@@ -500,7 +508,7 @@ fw_icon_svg_pack_available( $pack )
 
 True when a pack has bundled data (used to gate the settings + picker). Checks the data file's presence + non-emptiness on disk rather than json-decoding it — availability is queried on every builder page load, so decoding a multi-megabyte set (e.g. Tabler ~1.2 MB) here would be wasteful.
 
-<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:123`</small>
+<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:124`</small>
 
 ### `fw_icon_svg_pack_data` {#fw_icon_svg_pack_data}
 *🔌 pluggable*
@@ -551,7 +559,7 @@ fw_icon_svg_pack_markup( $id )
 
 Resolve a 'pack/name' id (e.g. 'lucide/star', 'tabler/home') to full inline &lt;svg&gt; markup with currentColor. Returns '' for an unknown pack/name. The markup still passes through sc_icon_sanitize_svg() at render.
 
-<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:143`</small>
+<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:144`</small>
 
 ### `fw_icon_svg_pack_registry` {#fw_icon_svg_pack_registry}
 *🔌 pluggable*
@@ -579,7 +587,7 @@ Names in a pack matching a query (name + keywords). Empty query → first slice.
 | `$query` | `string` | — |
 | `$limit` | `int` | Max results (0 = no limit). |
 
-<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:181`</small>
+<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:182`</small>
 
 ### `fw_icon_svg_pack_search_data` {#fw_icon_svg_pack_search_data}
 *🔌 pluggable*
@@ -588,7 +596,9 @@ Names in a pack matching a query (name + keywords). Empty query → first slice.
 fw_icon_svg_pack_search_data( $pack )
 ```
 
-<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:98`</small>
+Returns the cached search index data for an SVG icon pack, loaded from its bundled JSON file.
+
+<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:99`</small>
 
 ### `fw_option_type_background_pro_force_admin_enqueue` {#fw_option_type_background_pro_force_admin_enqueue}
 *🔌 pluggable*
@@ -657,7 +667,9 @@ the assets are on the page before any modal opens. The option type's own
 unysonplus_all_icon_pack_ids()
 ```
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-settings.php:73`</small>
+Returns the ids of all available icon packs.
+
+<small>Source: `framework/includes/option-types/icon/includes/pack-settings.php:74`</small>
 
 ### `unysonplus_any_font_pack_enabled` {#unysonplus_any_font_pack_enabled}
 *🔌 pluggable*
@@ -668,7 +680,7 @@ unysonplus_any_font_pack_enabled()
 
 True if at least one webfont pack is enabled (gates the Icon Fonts tab).
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-settings.php:119`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-settings.php:121`</small>
 
 ### `unysonplus_enabled_icon_packs` {#unysonplus_enabled_icon_packs}
 *🔌 pluggable*
@@ -684,7 +696,7 @@ last saved (e.g. Tabler, added in a later release) is absent from the saved
 value and defaults ON — a new library is opt-out, not silently hidden.
 Only a pack explicitly present-and-false in the saved value is disabled.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-settings.php:89`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-settings.php:90`</small>
 
 ### `unysonplus_font_icon_pack_ids` {#unysonplus_font_icon_pack_ids}
 *🔌 pluggable*
@@ -715,7 +727,9 @@ Every selectable pack: id =&gt; label (font packs first, then SVG libraries).
 unysonplus_icon_pack_enabled( $id )
 ```
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-settings.php:112`</small>
+Returns whether the given icon pack id is currently enabled.
+
+<small>Source: `framework/includes/option-types/icon/includes/pack-settings.php:114`</small>
 
 ### `unysonplus_svg_icon_pack_ids` {#unysonplus_svg_icon_pack_ids}
 *🔌 pluggable*

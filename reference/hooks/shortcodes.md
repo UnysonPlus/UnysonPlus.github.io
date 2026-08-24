@@ -85,7 +85,7 @@ hide_table_of_contents: true
 ```php
 add_filter( 'fw_design_lib_catalog_url', $callback );
 ```
-<small>Fired in: `framework/extensions/shortcodes/includes/design-presets/design-library.php:330`</small>
+<small>Fired in: `framework/extensions/shortcodes/includes/design-presets/design-library.php:331`</small>
 
 ### `fw_design_lib_dir` {#h-fw-design-lib-dir}
 *🧪 filter*
@@ -273,7 +273,7 @@ add_filter( 'fw_sc_display_conditions', $callback );
 ```php
 add_filter( 'fw_sc_svg_upload_allowed', $callback );
 ```
-<small>Fired in: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3359`</small>
+<small>Fired in: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3379`</small>
 
 ### `fw_shortcode_atts` {#h-fw-shortcode-atts}
 *🧪 filter*
@@ -369,7 +369,7 @@ add_action( 'fw:ext:shortcodes:enqueue_shortcodes_static:before', $callback );
 ```php
 add_action( 'fw:ext:shortcodes:enqueue-shortcodes-admin-scripts', $callback );
 ```
-<small>Fired in: `framework/extensions/shortcodes/helpers.php:61`</small>
+<small>Fired in: `framework/extensions/shortcodes/helpers.php:64`</small>
 
 ### `fw:ext:shortcodes:table:button-shortcode-name` {#h-fw-ext-shortcodes-table-button-shortcode-name}
 *🧪 filter*
@@ -429,7 +429,7 @@ add_filter( 'sc_animation_fields', $callback );
 ```php
 add_filter( 'sc_build_wrapper_attr', $callback );
 ```
-<small>Fired in: `framework/extensions/shortcodes/includes/shortcode-build-helper.php:273`</small>
+<small>Fired in: `framework/extensions/shortcodes/includes/shortcode-build-helper.php:276`</small>
 
 ### `sc_hover_collection_items` {#h-sc-hover-collection-items}
 *🧪 filter*
@@ -447,7 +447,7 @@ Let themes/extensions add their own recovery ids for an icon id. Return an array
 ```php
 add_filter( 'sc_icon_svg_library_fallback_ids', $callback );
 ```
-<small>Fired in: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3328`</small>
+<small>Fired in: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3347`</small>
 
 ### `sc_icon_svg_library_markup` {#h-sc-icon-svg-library-markup}
 *🧪 filter*
@@ -455,7 +455,7 @@ add_filter( 'sc_icon_svg_library_fallback_ids', $callback );
 ```php
 add_filter( 'sc_icon_svg_library_markup', $callback );
 ```
-<small>Fired in: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3282`</small>
+<small>Fired in: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3299`</small>
 
 ### `sc_needs_wrapper` {#h-sc-needs-wrapper}
 *🧪 filter*
@@ -463,7 +463,7 @@ add_filter( 'sc_icon_svg_library_markup', $callback );
 ```php
 add_filter( 'sc_needs_wrapper', $callback );
 ```
-<small>Fired in: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1863`</small>
+<small>Fired in: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1876`</small>
 
 ### `sc_notification_default_icons` {#h-sc-notification-default-icons}
 *🧪 filter*
@@ -487,7 +487,7 @@ add_filter( 'sc_notification_default_labels', $callback );
 ```php
 add_filter( 'sc_posts_query_args', $callback );
 ```
-<small>Fired in: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:297`</small>
+<small>Fired in: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:303`</small>
 
 ### `sc_rating_star_paths` {#h-sc-rating-star-paths}
 *🧪 filter*
@@ -495,7 +495,7 @@ add_filter( 'sc_posts_query_args', $callback );
 ```php
 add_filter( 'sc_rating_star_paths', $callback );
 ```
-<small>Fired in: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3514`</small>
+<small>Fired in: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3537`</small>
 
 ### `sc_rating_star_svg` {#h-sc-rating-star-svg}
 *🧪 filter*
@@ -503,7 +503,7 @@ add_filter( 'sc_rating_star_paths', $callback );
 ```php
 add_filter( 'sc_rating_star_svg', $callback );
 ```
-<small>Fired in: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3567`</small>
+<small>Fired in: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3590`</small>
 
 ### `sc_section_background_effects` {#h-sc-section-background-effects}
 *🧪 filter*
@@ -511,7 +511,7 @@ add_filter( 'sc_rating_star_svg', $callback );
 ```php
 add_filter( 'sc_section_background_effects', $callback );
 ```
-<small>Fired in: `framework/extensions/shortcodes/includes/shortcode-background-helper.php:144`</small>
+<small>Fired in: `framework/extensions/shortcodes/includes/shortcode-background-helper.php:147`</small>
 
 ### `sc_smooth_scroll_post_types` {#h-sc-smooth-scroll-post-types}
 *🧪 filter*
@@ -543,7 +543,7 @@ add_filter( 'sc_theme_settings_url', $callback );
 ```php
 add_filter( 'unysonplus_components_settings_options', $callback );
 ```
-<small>Fired in: `framework/extensions/shortcodes/includes/components-options.php:64`</small>
+<small>Fired in: `framework/extensions/shortcodes/includes/components-options.php:65`</small>
 
 ### `unysonplus_design_enabled_shortcodes` {#h-unysonplus-design-enabled-shortcodes}
 *🧪 filter · 2 call sites*

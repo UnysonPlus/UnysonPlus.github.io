@@ -18,7 +18,7 @@ hide_table_of_contents: true
 | [`fw_ext_mega_menu_column_style`](#fw_ext_mega_menu_column_style) | Build the inline style for a MegaMenu column &lt;li&gt; (background color + image). Per-part escaped, concatenated raw (matches the row helper's usage). |
 | [`fw_ext_mega_menu_get_db_item_option`](#fw_ext_mega_menu_get_db_item_option) | Get item option value from the database |
 | [`fw_ext_mega_menu_get_item_option`](#fw_ext_mega_menu_get_item_option) | Read a single per-item option value (defined in options/&#123;row,column,item,default&#125;.php) saved through the "Settings" modal (FW_Db_Options_Model_MegaMenu). |
-| [`fw_ext_mega_menu_get_meta`](#fw_ext_mega_menu_get_meta) | — |
+| [`fw_ext_mega_menu_get_meta`](#fw_ext_mega_menu_get_meta) | Returns a mega menu meta value for a post, falling back to the given default. |
 | [`fw_ext_mega_menu_group`](#fw_ext_mega_menu_group) | Wrap a set of options in a border-less group container (house style), keyed by a distinct group id. Container-only — leaf ids and saved values are unchanged. |
 | [`fw_ext_mega_menu_icon_is_set`](#fw_ext_mega_menu_icon_is_set) | Is an icon value (icon-v2 array, or a legacy class string) actually set? |
 | [`fw_ext_mega_menu_icon_options`](#fw_ext_mega_menu_icon_options) | The shared Icon + Icon Position options, added to every per-item options set (row / column / item / default) so the icon is edited inside the "Settings" modal instead of the old standalone control. |
@@ -30,11 +30,11 @@ hide_table_of_contents: true
 | [`fw_ext_mega_menu_render_icon`](#fw_ext_mega_menu_render_icon) | Render a menu item's icon to HTML. Prefers the shortcodes extension's sc_icon_render() (font / emoji / svg / image, FA4→FA6 normalized); falls back to a plain font &lt;i&gt; for a class string when that extension is inactive. |
 | [`fw_ext_mega_menu_row_container_style`](#fw_ext_mega_menu_row_container_style) | Build the inline style string for a MegaMenu row (dropdown panel) container. |
 | [`fw_ext_mega_menu_set_db_item_option`](#fw_ext_mega_menu_set_db_item_option) | Set item option value in database |
-| [`fw_ext_mega_menu_update_meta`](#fw_ext_mega_menu_update_meta) | — |
-| [`fw_mega_menu_get_meta`](#fw_mega_menu_get_meta) | — |
-| [`fw_mega_menu_name_meta`](#fw_mega_menu_name_meta) | — |
-| [`fw_mega_menu_request_meta`](#fw_mega_menu_request_meta) | — |
-| [`fw_mega_menu_update_meta`](#fw_mega_menu_update_meta) | — |
+| [`fw_ext_mega_menu_update_meta`](#fw_ext_mega_menu_update_meta) | Updates mega menu meta for a post from the given key-value array. |
+| [`fw_mega_menu_get_meta`](#fw_mega_menu_get_meta) | Deprecated alias for fw_ext_mega_menu_get_meta(); reads a mega-menu meta value with a fallback default. |
+| [`fw_mega_menu_name_meta`](#fw_mega_menu_name_meta) | Deprecated alias building the admin input name attribute for a mega-menu meta key. |
+| [`fw_mega_menu_request_meta`](#fw_mega_menu_request_meta) | Deprecated alias returning the submitted POST values for a mega-menu item. |
+| [`fw_mega_menu_update_meta`](#fw_mega_menu_update_meta) | Deprecated alias for fw_ext_mega_menu_update_meta(); writes mega-menu meta from the given array. |
 
 ---
 
@@ -53,7 +53,7 @@ Resolve a color value to a CSS color string. Prefers the shortcodes extension's 
 
 **Returns** `string`
 
-<small>Source: `framework/extensions/megamenu/helpers.php:251`</small>
+<small>Source: `framework/extensions/megamenu/helpers.php:255`</small>
 
 ### `fw_ext_mega_menu_column_style` {#fw_ext_mega_menu_column_style}
 
@@ -69,7 +69,7 @@ Build the inline style for a MegaMenu column &lt;li&gt; (background color + imag
 
 **Returns** `string` '' when nothing to apply
 
-<small>Source: `framework/extensions/megamenu/helpers.php:276`</small>
+<small>Source: `framework/extensions/megamenu/helpers.php:280`</small>
 
 ### `fw_ext_mega_menu_get_db_item_option` {#fw_ext_mega_menu_get_db_item_option}
 *🔌 pluggable*
@@ -88,7 +88,7 @@ Get item option value from the database
 
 **Returns** `mixed\|null`
 
-<small>Source: `framework/extensions/megamenu/helpers.php:521`</small>
+<small>Source: `framework/extensions/megamenu/helpers.php:525`</small>
 
 ### `fw_ext_mega_menu_get_item_option` {#fw_ext_mega_menu_get_item_option}
 
@@ -107,7 +107,7 @@ Read a single per-item option value (defined in options/&#123;row,column,item,de
 
 **Returns** `mixed`
 
-<small>Source: `framework/extensions/megamenu/helpers.php:27`</small>
+<small>Source: `framework/extensions/megamenu/helpers.php:31`</small>
 
 ### `fw_ext_mega_menu_get_meta` {#fw_ext_mega_menu_get_meta}
 
@@ -115,7 +115,9 @@ Read a single per-item option value (defined in options/&#123;row,column,item,de
 fw_ext_mega_menu_get_meta($post, $key, $default = null)
 ```
 
-<small>Source: `framework/extensions/megamenu/helpers.php:9`</small>
+Returns a mega menu meta value for a post, falling back to the given default.
+
+<small>Source: `framework/extensions/megamenu/helpers.php:12`</small>
 
 ### `fw_ext_mega_menu_group` {#fw_ext_mega_menu_group}
 
@@ -132,7 +134,7 @@ Wrap a set of options in a border-less group container (house style), keyed by a
 
 **Returns** `array` single-entry array: &#123; &lt;group_id&gt;: &#123; type:group, options &#125; &#125;
 
-<small>Source: `framework/extensions/megamenu/helpers.php:236`</small>
+<small>Source: `framework/extensions/megamenu/helpers.php:240`</small>
 
 ### `fw_ext_mega_menu_icon_is_set` {#fw_ext_mega_menu_icon_is_set}
 
@@ -148,7 +150,7 @@ Is an icon value (icon-v2 array, or a legacy class string) actually set?
 
 **Returns** `bool`
 
-<small>Source: `framework/extensions/megamenu/helpers.php:92`</small>
+<small>Source: `framework/extensions/megamenu/helpers.php:96`</small>
 
 ### `fw_ext_mega_menu_icon_options` {#fw_ext_mega_menu_icon_options}
 
@@ -160,7 +162,7 @@ The shared Icon + Icon Position options, added to every per-item options set (ro
 
 **Returns** `array`
 
-<small>Source: `framework/extensions/megamenu/helpers.php:168`</small>
+<small>Source: `framework/extensions/megamenu/helpers.php:172`</small>
 
 ### `fw_ext_mega_menu_is_mm_item` {#fw_ext_mega_menu_is_mm_item}
 
@@ -176,7 +178,7 @@ Check if menu item is a MegaMenu item or is inside a MegaMenu item
 
 **Returns** `bool`
 
-<small>Source: `framework/extensions/megamenu/helpers.php:381`</small>
+<small>Source: `framework/extensions/megamenu/helpers.php:385`</small>
 
 ### `fw_ext_mega_menu_item_icon` {#fw_ext_mega_menu_item_icon}
 
@@ -195,7 +197,7 @@ icon-v2 array and a legacy string), so no per-type branching is needed here.
 
 **Returns** `array\|string\|null`
 
-<small>Source: `framework/extensions/megamenu/helpers.php:120`</small>
+<small>Source: `framework/extensions/megamenu/helpers.php:124`</small>
 
 ### `fw_ext_mega_menu_item_type` {#fw_ext_mega_menu_item_type}
 
@@ -211,7 +213,7 @@ The per-item options type for a menu item, by its MegaMenu level: 1 = row (top t
 
 **Returns** `string` one of 'row' \| 'column' \| 'item' \| 'default'
 
-<small>Source: `framework/extensions/megamenu/helpers.php:78`</small>
+<small>Source: `framework/extensions/megamenu/helpers.php:82`</small>
 
 ### `fw_ext_mega_menu_link_target_attr` {#fw_ext_mega_menu_link_target_attr}
 
@@ -227,7 +229,7 @@ New-tab attributes for a URL that points off-site (mirrors the tag_list shortcod
 
 **Returns** `string`
 
-<small>Source: `framework/extensions/megamenu/helpers.php:304`</small>
+<small>Source: `framework/extensions/megamenu/helpers.php:308`</small>
 
 ### `fw_ext_mega_menu_render_column_content` {#fw_ext_mega_menu_render_column_content}
 
@@ -244,7 +246,7 @@ Render a MegaMenu column's custom content (Column Content = image / content / wi
 
 **Returns** `string`
 
-<small>Source: `framework/extensions/megamenu/helpers.php:325`</small>
+<small>Source: `framework/extensions/megamenu/helpers.php:329`</small>
 
 ### `fw_ext_mega_menu_render_icon` {#fw_ext_mega_menu_render_icon}
 
@@ -261,7 +263,7 @@ Render a menu item's icon to HTML. Prefers the shortcodes extension's sc_icon_re
 
 **Returns** `string`
 
-<small>Source: `framework/extensions/megamenu/helpers.php:138`</small>
+<small>Source: `framework/extensions/megamenu/helpers.php:142`</small>
 
 ### `fw_ext_mega_menu_row_container_style` {#fw_ext_mega_menu_row_container_style}
 
@@ -277,7 +279,7 @@ Build the inline style string for a MegaMenu row (dropdown panel) container.
 
 **Returns** `string` Escaped CSS, or '' when nothing to apply
 
-<small>Source: `framework/extensions/megamenu/helpers.php:45`</small>
+<small>Source: `framework/extensions/megamenu/helpers.php:49`</small>
 
 ### `fw_ext_mega_menu_set_db_item_option` {#fw_ext_mega_menu_set_db_item_option}
 
@@ -293,7 +295,7 @@ Set item option value in database
 | `$option_id` | `string\|null` | 'type/option_id' (accepts multikey). null - all options |
 | `$value` | — | — |
 
-<small>Source: `framework/extensions/megamenu/helpers.php:552`</small>
+<small>Source: `framework/extensions/megamenu/helpers.php:556`</small>
 
 ### `fw_ext_mega_menu_update_meta` {#fw_ext_mega_menu_update_meta}
 
@@ -301,7 +303,9 @@ Set item option value in database
 fw_ext_mega_menu_update_meta($post, array $array)
 ```
 
-<small>Source: `framework/extensions/megamenu/helpers.php:13`</small>
+Updates mega menu meta for a post from the given key-value array.
+
+<small>Source: `framework/extensions/megamenu/helpers.php:17`</small>
 
 ### `fw_mega_menu_get_meta` {#fw_mega_menu_get_meta}
 
@@ -309,7 +313,9 @@ fw_ext_mega_menu_update_meta($post, array $array)
 fw_mega_menu_get_meta($post, $key, $default = null)
 ```
 
-<small>Source: `framework/extensions/megamenu/includes/deprecated-functions.php:10`</small>
+Deprecated alias for fw_ext_mega_menu_get_meta(); reads a mega-menu meta value with a fallback default.
+
+<small>Source: `framework/extensions/megamenu/includes/deprecated-functions.php:13`</small>
 
 ### `fw_mega_menu_name_meta` {#fw_mega_menu_name_meta}
 *⚠️ deprecated*
@@ -318,6 +324,8 @@ fw_mega_menu_get_meta($post, $key, $default = null)
 fw_mega_menu_name_meta($post, $key)
 ```
 
+Deprecated alias building the admin input name attribute for a mega-menu meta key.
+
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `$post` | — | — |
@@ -325,7 +333,7 @@ fw_mega_menu_name_meta($post, $key)
 
 **Returns** `string`
 
-<small>Source: `framework/extensions/megamenu/includes/deprecated-functions.php:30`</small>
+<small>Source: `framework/extensions/megamenu/includes/deprecated-functions.php:37`</small>
 
 ### `fw_mega_menu_request_meta` {#fw_mega_menu_request_meta}
 *⚠️ deprecated*
@@ -334,13 +342,15 @@ fw_mega_menu_name_meta($post, $key)
 fw_mega_menu_request_meta($post)
 ```
 
+Deprecated alias returning the submitted POST values for a mega-menu item.
+
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `$post` | — | — |
 
 **Returns** `array`
 
-<small>Source: `framework/extensions/megamenu/includes/deprecated-functions.php:39`</small>
+<small>Source: `framework/extensions/megamenu/includes/deprecated-functions.php:48`</small>
 
 ### `fw_mega_menu_update_meta` {#fw_mega_menu_update_meta}
 *⚠️ deprecated*
@@ -349,6 +359,8 @@ fw_mega_menu_request_meta($post)
 fw_mega_menu_update_meta($post, array $array)
 ```
 
+Deprecated alias for fw_ext_mega_menu_update_meta(); writes mega-menu meta from the given array.
+
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `$post` | — | — |
@@ -356,6 +368,6 @@ fw_mega_menu_update_meta($post, array $array)
 
 **Returns** `mixed`
 
-<small>Source: `framework/extensions/megamenu/includes/deprecated-functions.php:20`</small>
+<small>Source: `framework/extensions/megamenu/includes/deprecated-functions.php:25`</small>
 
 ← Back to [Functions overview](./index.md)

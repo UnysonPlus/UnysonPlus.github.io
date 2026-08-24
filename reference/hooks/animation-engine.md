@@ -27,7 +27,7 @@ hide_table_of_contents: true
 ```php
 add_filter( 'fw_model_allow_uploads', $callback );
 ```
-<small>Fired in: `framework/extensions/animation-engine/includes/glb-upload.php:59`</small>
+<small>Fired in: `framework/extensions/animation-engine/includes/glb-upload.php:60`</small>
 
 ### `fw_shortcode_model_viewer_src` {#h-fw-shortcode-model-viewer-src}
 *🧪 filter*

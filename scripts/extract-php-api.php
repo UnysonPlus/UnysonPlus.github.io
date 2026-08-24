@@ -105,12 +105,12 @@ foreach ($rii as $file) {
 
     $tokens = token_get_all($src);
     $n = count($tokens);
-    $lastDoc = null; $lastDocLine = -10;
+    $lastDoc = null; $lastDocLine = -10; $lastDocEndLine = -10;
     // precompute line numbers are in tokens
     for ($i = 0; $i < $n; $i++) {
         $t = $tokens[$i];
         if (is_array($t)) {
-            if ($t[0] === T_DOC_COMMENT) { $lastDoc = $t[1]; $lastDocLine = $t[2]; }
+            if ($t[0] === T_DOC_COMMENT) { $lastDoc = $t[1]; $lastDocLine = $t[2]; $lastDocEndLine = $t[2] + substr_count($t[1], "\n"); }
             elseif ($t[0] === T_FUNCTION) {
                 // find the function name (next T_STRING), skip if it's a closure (next non-ws is '(')
                 $j = $i + 1; while ($j < $n && is_array($tokens[$j]) && in_array($tokens[$j][0], array(T_WHITESPACE), true)) $j++;
@@ -144,8 +144,13 @@ foreach ($rii as $file) {
                         // `if ( ! function_exists('x') ) : /** … */ function x(){` guard pattern.
                         // Skip obvious file-header / view-file docblocks so they don't bleed onto
                         // the first function.
-                        $isHeader = $lastDoc && ($lastDocLine <= 4 || strpos($lastDoc, '@package') !== false || strpos($lastDoc, '@var') !== false);
-                        $doc = ($lastDocLine >= 0 && !$isHeader && ($fline - $lastDocLine) <= 15) ? parse_docblock($lastDoc) : parse_docblock('');
+                        // A file-header docblock (has @package, or is a multi-line block sitting at
+                        // the very top of the file) should not bleed onto the first function. A short
+                        // single-/two-line docblock right above a function is its own — keep it even
+                        // near line 1 (small helper files put a one-line /** … */ above the function).
+                        $docIsMultiline = $lastDoc && substr_count($lastDoc, "\n") >= 2;
+                        $isHeader = $lastDoc && (strpos($lastDoc, '@package') !== false || ($lastDocLine <= 4 && $docIsMultiline));
+                        $doc = ($lastDocLine >= 0 && !$isHeader && ($fline - $lastDocEndLine) <= 3) ? parse_docblock($lastDoc) : parse_docblock('');
                         $functions[] = array(
                             'name'       => $fname,
                             'signature'  => $fname . $sig . ($ret ? ' ' . $ret : ''),

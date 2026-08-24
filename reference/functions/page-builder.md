@@ -14,9 +14,9 @@ hide_table_of_contents: true
 
 | Function | Summary |
 | --- | --- |
-| [`fw_ext_page_builder_get_post_content`](#fw_ext_page_builder_get_post_content) | — |
+| [`fw_ext_page_builder_get_post_content`](#fw_ext_page_builder_get_post_content) | Returns the shortcodes generated from a post's page-builder JSON builder value. |
 | [`fw_ext_page_builder_get_supported_post_types`](#fw_ext_page_builder_get_supported_post_types) | Returns all post types that can be integrated with the page builder |
-| [`fw_ext_page_builder_is_builder_post`](#fw_ext_page_builder_is_builder_post) | — |
+| [`fw_ext_page_builder_is_builder_post`](#fw_ext_page_builder_is_builder_post) | Returns whether the given post was built with the page builder. |
 
 ---
 
@@ -27,13 +27,15 @@ hide_table_of_contents: true
 fw_ext_page_builder_get_post_content($post)
 ```
 
+Returns the shortcodes generated from a post's page-builder JSON builder value.
+
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `$post` | `int\|WP_Post` | — |
 
 **Returns** `string` Shortcodes generated from post meta json builder value
 
-<small>Source: `framework/extensions/shortcodes/extensions/page-builder/helpers.php:41`</small>
+<small>Source: `framework/extensions/shortcodes/extensions/page-builder/helpers.php:46`</small>
 
 ### `fw_ext_page_builder_get_supported_post_types` {#fw_ext_page_builder_get_supported_post_types}
 
@@ -43,7 +45,7 @@ fw_ext_page_builder_get_supported_post_types()
 
 Returns all post types that can be integrated with the page builder
 
-<small>Source: `framework/extensions/shortcodes/extensions/page-builder/helpers.php:13`</small>
+<small>Source: `framework/extensions/shortcodes/extensions/page-builder/helpers.php:16`</small>
 
 ### `fw_ext_page_builder_is_builder_post` {#fw_ext_page_builder_is_builder_post}
 
@@ -51,6 +53,8 @@ Returns all post types that can be integrated with the page builder
 fw_ext_page_builder_is_builder_post($post_id = '')
 ```
 
-<small>Source: `framework/extensions/shortcodes/extensions/page-builder/helpers.php:6`</small>
+Returns whether the given post was built with the page builder.
+
+<small>Source: `framework/extensions/shortcodes/extensions/page-builder/helpers.php:9`</small>
 
 ← Back to [Functions overview](./index.md)

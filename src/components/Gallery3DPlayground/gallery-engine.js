@@ -2086,9 +2086,19 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 		if ( ! pool.length ) { return; }
 		var R = 2;
 		var cellH = 0, colW = 0, gapPx = 0, setW = 0;
+		// Weighted pick of a column KIND that is never the same family as the previous column (so a full
+		// square is never directly followed by another full square, a stack never by a stack, etc.).
+		var FAMS = [ [ 'big', 0.18 ], [ 'tall', 0.24 ], [ 'stack', 0.32 ], [ 'single', 0.26 ] ];
+		function pickFamily( ci, last ) {
+			var fams = FAMS.filter( function ( f ) { return f[ 0 ] !== last; } );
+			var tot = fams.reduce( function ( a, f ) { return a + f[ 1 ]; }, 0 );
+			var r = rnd( ci * 11 + 5, 1 ) * tot, acc = 0;
+			for ( var i = 0; i < fams.length; i++ ) { acc += fams[ i ][ 1 ]; if ( r < acc ) { return fams[ i ][ 0 ]; } }
+			return fams[ fams.length - 1 ][ 0 ];
+		}
 		function buildSet( grid, hidden ) {
 			grid.innerHTML = '';
-			var idx = 0, ci = 0;
+			var idx = 0, ci = 0, last = '';
 			var addCard = function ( rs, cs ) {
 				var c = pool[ idx % pool.length ].cloneNode( true );
 				c.setAttribute( 'aria-hidden', hidden ? 'true' : 'false' );
@@ -2102,10 +2112,10 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 			};
 			do {
 				if ( R === 2 ) {
-					var r = rnd( ci * 11 + 5, 1 );
-					if ( r < 0.16 ) { addCard( 2, 2 ); }                                   // BIG 2×2
-					else if ( r < 0.46 ) { addCard( 2, 1 ); }                              // TALL 1×2
-					else if ( r < 0.78 ) { addCard( 1, 1 ); addCard( 1, 1 ); }             // STACK two squares
+					var fam = pickFamily( ci, last ); last = fam;
+					if ( fam === 'big' ) { addCard( 2, 2 ); }                              // BIG 2×2
+					else if ( fam === 'tall' ) { addCard( 2, 1 ); }                        // TALL 1×2
+					else if ( fam === 'stack' ) { addCard( 1, 1 ); addCard( 1, 1 ); }      // STACK two squares
 					else if ( rnd( ci * 7 + 2, 3 ) < 0.5 ) { addCard( 1, 1 ); addGap( 1, 1 ); } // SINGLE top
 					else { addGap( 1, 1 ); addCard( 1, 1 ); }                              // SINGLE bottom
 				} else {

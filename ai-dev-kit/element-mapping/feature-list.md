@@ -29,34 +29,30 @@ Each `<li>`’s text becomes an item row; an inline `<svg>` on the item becomes 
 
 ## Option coverage
 
-**2/16 options mapped natively** (13%) — 🟡 1 via CSS · ⚠️ 7 gaps (derivable, not yet) · ⚪ 6 default · ⚙️ 3 auto.
-
-:::tip[7 derivable gaps]
-The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
-:::
+**9/18 options mapped natively** (50%) — 🟡 0 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 9 default · ⚙️ 1 auto.
 
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
-| `items` | Content | `addable-popup` | ✅ Native | One row per source `<li>` — text + inline-SVG icon + marker colour |
-| `icon` | Content | `icon` | ✅ Native | Per item: an inline `<svg>` on the list item |
-| `marker_color` | Design | `color` | 🟡 Via CSS | Per item: carried from the source icon’s colour |
-| `icon_style` | Design | `select` | ⚪ Unmapped | Default |
-| `icon_position` | Design | `select` | ⚠️ Gap | DOM order of each item's icon relative to its text (left/top) |
-| `columns` | Layout | `select` | ⚠️ Gap | column count from the list's grid/flex layout (items per row) |
-| `dividers` | Layout | `switch` | ⚠️ Gap | computed border between adjacent list items |
-| `zebra` | Layout | `switch` | ⚠️ Gap | alternating background-color across list rows |
-| `box_style` | Design | `select` | ⚪ Unmapped | Default |
-| `font_size_preset` | Styling | `font-size` | ⚠️ Gap | computed font-size of the list item text |
-| `text_color` | Styling | `color` | ⚠️ Gap | computed color of the list item text |
-| `spacing` | Styling | `spacing` | ⚠️ Gap | computed margin/gap between list items |
-| `animation` | Animations | `group` | ⚪ Unmapped | Default off |
-| `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `custom_css` | Advanced | `textarea` | ⚪ Unmapped | Not populated |
-| `css_id` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `unique_id` | Advanced | `hidden` | ⚙️ Auto | Generated |
-| `responsive_hide` | Advanced | `group` | ⚙️ Auto | Not set |
-| `custom_attrs` | Advanced | `group` | ⚙️ Auto | Not set |
+| `items` | Content | `addable-popup` | ✅ Native | built from source rows (text + per-item svg icon + marker_color) |
+| `design` | Design | `image-picker` | ✅ Native | 'numbered' when ordered list else 'check' |
+| `orientation` | Design | `image-picker` | ✅ Native | 'horizontal' when source flex-wrap strip detected |
+| `icon_position` | Design | `select` | ⚪ Unmapped | left/top not derived by the mapper |
+| `icon_style` | Design | `select` | ⚪ Unmapped | plain/tint/circle/... marker style not derived |
+| `columns` | Design | `select` | ✅ Native | from grid-cols-N on list_cls |
+| `dividers` | Design | `switch` | ⚪ Unmapped | row dividers not derived |
+| `zebra` | Design | `switch` | ⚪ Unmapped | zebra striping not derived |
+| `spacing_size` | Design | `select` | ✅ Native | sm/md/lg from list gap px |
+| `box_style` | Styling | `border-style-picker` | ⚪ Unmapped | item box preset not derived |
+| `icon_badge_preset` | Styling | `border-style-picker` | ⚪ Unmapped | not registered in n_feature_list |
+| `marker_color` | Styling | `predefined-colors-color-picker-compact` | ✅ Native | dominant per-item icon color across rows |
+| `marker_size` | Styling | `unit-input` | ✅ Native | from icon width (e.g. w-5=20px) |
+| `text_color` | Styling | `predefined-colors-color-picker-compact` | ✅ Native | from label span computed/class color |
+| `sub_color` | Styling | `predefined-colors-color-picker-compact` | ⚪ Unmapped | subtext always empty, so sub color unset |
+| `font_size_preset` | Styling | `select` | ✅ Native | text_preset_for(label font-size) else scoped CSS |
+| `animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …` | Animations | `multi-picker` | ⚪ Unmapped | Default — Animation Engine effects (no source mapping) |
+| `spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*` | Advanced | `text / code-editor` | ⚪ Unmapped | Default — outer spacing + per-instance advanced fields, set by hand |
+| `unique_id · custom_attrs · responsive_hide` | Advanced | `group` | ⚙️ Auto | Plumbing — generated / not set |
 
 ### Status legend
 

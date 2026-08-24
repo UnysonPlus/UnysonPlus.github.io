@@ -29,35 +29,28 @@ Built in group mode: each source image becomes a person in the stack, and a "+N"
 
 ## Option coverage
 
-**4/17 options mapped natively** (24%) — 🟡 0 via CSS · ⚠️ 5 gaps (derivable, not yet) · ⚪ 8 default · ⚙️ 3 auto.
-
-:::tip[5 derivable gaps]
-The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
-:::
+**1/16 options mapped natively** (6%) — 🟡 0 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 15 default · ⚙️ 1 auto.
 
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
-| `mode` | Content | `multi-picker` | ✅ Native | Set to `group` (the overlapping stack) |
-| `people` | Content | `addable-popup` | ✅ Native | One entry per source avatar image |
-| `extra_count` | Content | `text` | ✅ Native | The "+N" overflow count |
-| `max_visible` | Content | `number` | ✅ Native | How many show before the "+N" |
-| `overlap` | Design | `number` | ⚠️ Gap | negative margin-left/right between adjacent stacked avatar images |
-| `stack_order` | Design | `select` | ⚪ Unmapped | Default |
-| `shape` | Design | `select` | ⚠️ Gap | border-radius of the avatar image (0=square, 50%=circle, else rounded) |
-| `size` | Design | `select` | ⚠️ Gap | computed width/height of the avatar image |
-| `design` | Design | `image-picker` | ⚪ Unmapped | Default |
-| `ring_color` | Styling | `color` | ⚠️ Gap | computed border-color or ring box-shadow color around the avatar |
-| `show_status` | Content | `switch` | ⚪ Unmapped | Default off |
-| `show_label` | Content | `switch` | ⚠️ Gap | presence of an adjacent name/label text node beside the avatar |
-| `spacing` | Styling | `spacing` | ⚪ Unmapped | Default |
-| `animation` | Animations | `group` | ⚪ Unmapped | Default off |
-| `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `css_id` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `custom_css` | Advanced | `textarea` | ⚪ Unmapped | Not populated |
-| `unique_id` | Advanced | `hidden` | ⚙️ Auto | Generated |
-| `responsive_hide` | Advanced | `group` | ⚙️ Auto | Not set |
-| `custom_attrs` | Advanced | `group` | ⚙️ Auto | Not set |
+| `mode_settings` | Content | `multi-picker` | ✅ Native | derived-from captured avatar image URLs → group.people[] (image/url), max_visible + extra_count |
+| `design` | Design | `image-picker` | ⚪ Unmapped | hardcoded 'bordered'; not derived from source |
+| `shape` | Design | `select` | ⚪ Unmapped | hardcoded 'circle'; not derived |
+| `size` | Design | `slider` | ⚪ Unmapped | hardcoded 40px; not derived |
+| `show_status` | Design | `switch` | ⚪ Unmapped | no source signal; UnysonPlus-specific status dot |
+| `show_label` | Design | `switch` | ⚪ Unmapped | hardcoded 'no'; not derived |
+| `initials_color_mode` | Design | `select` | ⚪ Unmapped | not set; UnysonPlus-specific |
+| `ring_color` | Style | `predefined-colors-color-picker-compact` | ⚪ Unmapped | not set |
+| `initials_bg` | Style | `predefined-colors-color-picker-compact` | ⚪ Unmapped | not set |
+| `initials_color` | Style | `predefined-colors-color-picker-compact` | ⚪ Unmapped | not set |
+| `label_color` | Style | `predefined-colors-color-picker-compact` | ⚪ Unmapped | not set |
+| `counter_bg` | Style | `predefined-colors-color-picker-compact` | ⚪ Unmapped | not set |
+| `counter_color` | Style | `predefined-colors-color-picker-compact` | ⚪ Unmapped | not set |
+| `font_size_preset` | Style | `select` | ⚪ Unmapped | not set |
+| `animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …` | Animations | `multi-picker` | ⚪ Unmapped | Default — Animation Engine effects (no source mapping) |
+| `spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*` | Advanced | `text / code-editor` | ⚪ Unmapped | Default — outer spacing + per-instance advanced fields, set by hand |
+| `unique_id · custom_attrs · responsive_hide` | Advanced | `group` | ⚙️ Auto | Plumbing — generated / not set |
 
 ### Status legend
 

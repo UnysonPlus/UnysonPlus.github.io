@@ -29,38 +29,72 @@ A placeholder post grid, configured to *match the source layout* — post count,
 
 ## Option coverage
 
-**5/20 options mapped natively** (25%) — 🟡 0 via CSS · ⚠️ 6 gaps (derivable, not yet) · ⚪ 9 default · ⚙️ 3 auto.
+**7/56 options mapped natively** (13%) — 🟡 0 via CSS · ⚠️ 2 gaps (derivable, not yet) · ⚪ 47 default · ⚙️ 1 auto.
 
-:::tip[6 derivable gaps]
+:::tip[2 derivable gaps]
 The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
 :::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
-| `posts_per_page` | Content | `number` | ✅ Native | Post count (from the source grid) |
-| `layout_mode` | Layout | `select` | ✅ Native | grid / list / masonry, from the source |
-| `card_style` | Design | `select` | ✅ Native | Matched card style |
-| `columns_desktop` | Layout | `select` | ✅ Native | Column count |
-| `meta_items` | Content | `checkboxes` | ✅ Native | Which meta shows (date / author) |
-| `post_type` | Content | `select` | ⚪ Unmapped | Default (post) |
-| `taxonomy_filter` | Content | `multi-select` | ⚪ Unmapped | Default |
-| `image_style` | Design | `image-style-picker` | ⚪ Unmapped | Default |
-| `image_ratio` | Design | `select` | ⚠️ Gap | Aspect ratio of post-card thumbnail <img> from its computed/intrinsic width:height |
-| `excerpt_length` | Content | `number` | ⚪ Unmapped | Default |
-| `readmore` | Content | `switch` | ⚠️ Gap | Presence of a 'Read more'/continue-reading anchor within each post card |
-| `live_filters` | Behavior | `switch` | ⚪ Unmapped | Default off |
-| `pagination` | Behavior | `select` | ⚠️ Gap | Presence and kind of pager markup (numbered .page-numbers links, prev/next, or infinite-scroll hooks) |
-| `title_color` | Styling | `color` | ⚠️ Gap | Computed color of the post title link/heading |
-| `meta_color` | Styling | `color` | ⚠️ Gap | Computed color of the post meta text (date/author/category) |
-| `bg_color` | Styling | `color` | ⚠️ Gap | Computed background-color of the post card container |
-| `spacing` | Styling | `spacing` | ⚪ Unmapped | Default |
-| `animation` | Animations | `group` | ⚪ Unmapped | Default off |
-| `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `css_id` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `unique_id` | Advanced | `hidden` | ⚙️ Auto | Generated |
-| `responsive_hide` | Advanced | `group` | ⚙️ Auto | Not set |
-| `custom_attrs` | Advanced | `group` | ⚙️ Auto | Not set |
+| `use_current_query` | Query | `switch` | ⚪ Unmapped | converter always builds an explicit post_type=post query; no signal |
+| `post_type` | Query | `select` | ✅ Native | derived-from: hardcoded to 'post' by n_posts |
+| `taxonomy_filter` | Query | `text` | ⚪ Unmapped | not set; taxonomy filtering not derived from source |
+| `taxonomy_relation` | Query | `radio` | ⚪ Unmapped | not set |
+| `include_ids` | Query | `text` | ⚪ Unmapped | not set; dynamic feed, no specific IDs |
+| `exclude_ids` | Query | `text` | ⚪ Unmapped | not set |
+| `author_ids` | Query | `text` | ⚪ Unmapped | not set |
+| `date_range` | Query | `select` | ⚪ Unmapped | not set |
+| `posts_per_page` | Query | `short-text` | ✅ Native | derived-from: count of card headings in source listing (max 3) |
+| `offset` | Query | `short-text` | ⚪ Unmapped | not set |
+| `orderby` | Query | `select` | ✅ Native | derived-from: hardcoded 'date' by n_posts |
+| `meta_key` | Query | `text` | ⚪ Unmapped | not set |
+| `order` | Query | `radio` | ✅ Native | derived-from: hardcoded 'DESC' by n_posts |
+| `exclude_current` | Query | `switch` | ⚪ Unmapped | not set |
+| `sticky_handling` | Query | `select` | ⚪ Unmapped | not set |
+| `design` | Design | `multi-picker` | ✅ Native | derived-from: detect_posts_design layout_mode (grid/masonry/list/slider) from source container classes + slider/marquee markers |
+| `card` | Design | `multi-picker` | ✅ Native | derived-from: detect_posts_design card_style from first card image placement (standard/side-left/overlay/minimal) |
+| `box_style` | Design | `border-style-picker` | ⚪ Unmapped | not set; card box treatment not derived |
+| `image_style` | Design | `image-style-picker` | ⚪ Unmapped | not set; feed images come from WP, source card image styling not carried |
+| `image_size` | Design | `select` | ⚪ Unmapped | not set |
+| `image_ratio` | Design | `select` | ⚠️ Gap | signal: computed aspect-ratio of source card featured images |
+| `fallback_image_url` | Design | `text` | ⚪ Unmapped | not set |
+| `card_padding` | Design | `select` | ⚪ Unmapped | not set |
+| `text_align` | Design | `image-picker` | ⚪ Unmapped | not set |
+| `mobile_layout_override` | Design | `select` | ⚪ Unmapped | not set |
+| `card_preview` | Elements | `html-full` | ⚪ Unmapped | not set; UnysonPlus-specific card designer |
+| `card_rows` | Elements | `addable-popup` | ⚪ Unmapped | not set; UnysonPlus-specific card row composer |
+| `title_tag` | Elements | `select` | ⚠️ Gap | signal: heading tag level (h2-h5) used on source cards |
+| `cat_position` | Elements | `select` | ⚪ Unmapped | not set |
+| `cat_taxonomy` | Elements | `text` | ⚪ Unmapped | not set |
+| `cat_max` | Elements | `short-text` | ⚪ Unmapped | not set |
+| `meta_items` | Elements | `checkboxes` | ✅ Native | derived-from: date + author signals detected in source (has_date_signal, 'by <Name>' pattern); comments/reading_time not detected |
+| `meta_layout` | Elements | `select` | ⚪ Unmapped | not set |
+| `date_format` | Elements | `select` | ⚪ Unmapped | not set |
+| `excerpt_source` | Elements | `select` | ⚪ Unmapped | not set; content comes from live WP query |
+| `excerpt_length` | Elements | `short-text` | ⚪ Unmapped | not set |
+| `excerpt_suffix` | Elements | `short-text` | ⚪ Unmapped | not set |
+| `readmore` | Elements | `multi-picker` | ⚪ Unmapped | not set |
+| `readmore_text` | Elements | `text` | ⚪ Unmapped | not set |
+| `pagination` | Navigation & Cache | `multi-picker` | ⚪ Unmapped | converter forces pagination off (pagination_type=none); not detected from source |
+| `live_filters` | Navigation & Cache | `switch` | ⚪ Unmapped | not set; UnysonPlus feature |
+| `filters_position` | Navigation & Cache | `select` | ⚪ Unmapped | not set |
+| `cache_output` | Navigation & Cache | `switch` | ⚪ Unmapped | not set; UnysonPlus feature |
+| `cache_hours` | Navigation & Cache | `select` | ⚪ Unmapped | not set |
+| `no_results_text` | Navigation & Cache | `text` | ⚪ Unmapped | not set |
+| `text_color` | Styling | `predefined-colors-color-picker-compact` | ⚪ Unmapped | not set; UnysonPlus predefined palette |
+| `bg_color` | Styling | `predefined-colors-color-picker-compact` | ⚪ Unmapped | not set; UnysonPlus predefined palette |
+| `title_color` | Styling | `predefined-colors-color-picker-compact` | ⚪ Unmapped | not set; UnysonPlus predefined palette |
+| `excerpt_color` | Styling | `predefined-colors-color-picker-compact` | ⚪ Unmapped | not set; UnysonPlus predefined palette |
+| `meta_color` | Styling | `predefined-colors-color-picker-compact` | ⚪ Unmapped | not set; UnysonPlus predefined palette |
+| `chip_bg` | Styling | `predefined-colors-color-picker-compact` | ⚪ Unmapped | not set; UnysonPlus predefined palette |
+| `chip_color` | Styling | `predefined-colors-color-picker-compact` | ⚪ Unmapped | not set; UnysonPlus predefined palette |
+| `accent_color` | Styling | `predefined-colors-color-picker-compact` | ⚪ Unmapped | not set; UnysonPlus predefined palette |
+| `font_size_preset` | Styling | `select` | ⚪ Unmapped | not set |
+| `animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …` | Animations | `multi-picker` | ⚪ Unmapped | Default — Animation Engine effects (no source mapping) |
+| `spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*` | Advanced | `text / code-editor` | ⚪ Unmapped | Default — outer spacing + per-instance advanced fields, set by hand |
+| `unique_id · custom_attrs · responsive_hide` | Advanced | `group` | ⚙️ Auto | Plumbing — generated / not set |
 
 ### Status legend
 

@@ -29,39 +29,22 @@ The video source is mapped — an embed URL (YouTube/Vimeo) or the self-hosted f
 
 ## Option coverage
 
-**5/21 options mapped natively** (24%) — 🟡 0 via CSS · ⚠️ 11 gaps (derivable, not yet) · ⚪ 5 default · ⚙️ 3 auto.
+**1/6 options mapped natively** (17%) — 🟡 0 via CSS · ⚠️ 1 gap (derivable, not yet) · ⚪ 4 default · ⚙️ 1 auto.
 
-:::tip[11 derivable gaps]
+:::tip[1 derivable gap]
 The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
 :::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
-| `source` | Content | `multi-picker` | ✅ Native | Detected mode: embed vs self-hosted |
-| `url` | Content | `text` | ✅ Native | Embed URL (YouTube / Vimeo) |
-| `video_file` | Content | `upload` | ✅ Native | Self-hosted MP4 (when not an embed) |
-| `video_webm` | Content | `upload` | ✅ Native | Self-hosted WebM (when present) |
-| `poster` | Content | `upload` | ✅ Native | Poster / thumbnail image |
-| `ratio` | Styling | `select` | ⚠️ Gap | aspect ratio from width/height attributes or computed aspect-ratio |
-| `object_fit` | Styling | `select` | ⚠️ Gap | computed object-fit of the <video> |
-| `controls` | Behavior | `switch` | ⚠️ Gap | controls attribute on the <video> |
-| `autoplay` | Behavior | `switch` | ⚠️ Gap | autoplay attribute on the <video> |
-| `loop` | Behavior | `switch` | ⚠️ Gap | loop attribute on the <video> |
-| `muted` | Behavior | `switch` | ⚠️ Gap | muted attribute on the <video> |
-| `playsinline` | Behavior | `switch` | ⚠️ Gap | playsinline attribute on the <video> |
-| `preload` | Behavior | `select` | ⚠️ Gap | preload attribute on the <video> |
-| `youtube_nocookie` | Behavior | `switch` | ⚠️ Gap | iframe src host is youtube-nocookie.com |
-| `lazy_facade` | Behavior | `switch` | ⚪ Unmapped | Default off |
-| `bg_color` | Styling | `color` | ⚠️ Gap | computed background-color of the video container |
-| `spacing` | Styling | `spacing` | ⚠️ Gap | computed margin/padding of the video element |
-| `animation` | Animations | `group` | ⚪ Unmapped | Default off |
-| `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `css_id` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `custom_css` | Advanced | `textarea` | ⚪ Unmapped | Not populated |
-| `unique_id` | Advanced | `hidden` | ⚙️ Auto | Generated |
-| `responsive_hide` | Advanced | `group` | ⚙️ Auto | Not set |
-| `custom_attrs` | Advanced | `group` | ⚙️ Auto | Not set |
+| `source_type` | Content | `multi-picker` | ✅ Native | derived-from captured video/iframe block: mode (self_hosted/embed), src/webm/embedUrl/poster and playback flags autoplay/muted/loop/controls/playsinline |
+| `width` | Content | `unit-input` | ⚪ Unmapped | hardcoded {value:600,unit:'px'} |
+| `ratio` | Content | `select` | ⚠️ Gap | signal: source <video> intrinsic width/height or iframe aspect-ratio is detectable, but converter hardcodes '16x9' |
+| `bg_color` | Styling | `predefined-colors-color-picker-compact` | ⚪ Unmapped | empty_color() |
+| `animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …` | Animations | `multi-picker` | ⚪ Unmapped | Default — Animation Engine effects (no source mapping) |
+| `spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*` | Advanced | `text / code-editor` | ⚪ Unmapped | Default — outer spacing + per-instance advanced fields, set by hand |
+| `unique_id · custom_attrs · responsive_hide` | Advanced | `group` | ⚙️ Auto | Plumbing — generated / not set |
 
 ### Status legend
 

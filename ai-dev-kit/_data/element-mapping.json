@@ -45,266 +45,231 @@
      "tab": "Content",
      "type": "text",
      "status": "native",
-     "source": "Source eyebrow / kicker text above the title"
+     "source": "set from $h['overline'] (kicker text, svg stripped out)"
     },
     {
      "key": "title",
      "tab": "Content",
      "type": "text",
      "status": "native",
-     "source": "The heading text (inline HTML accents preserved)"
+     "source": "set from $h['title'] via map_accent_classes"
     },
     {
      "key": "subtitle",
      "tab": "Content",
-     "type": "text",
+     "type": "wp-editor",
      "status": "native",
-     "source": "A supporting line captured right after the heading"
+     "source": "set from $h['subtitle'] via map_accent_classes"
     },
     {
      "key": "heading",
      "tab": "Content",
      "type": "select",
      "status": "native",
-     "source": "Source heading level (`<h1>`–`<h6>`)"
+     "source": "'h'.$lvl from captured $h['level'] (1-6, default h2)"
     },
     {
      "key": "overline_icon",
      "tab": "Icons",
      "type": "icon",
      "status": "native",
-     "source": "Inline `<svg>` inside the source overline / preceding chip"
+     "source": "inline <svg> extracted from overline / overline_svg chip"
     },
     {
      "key": "overline_icon_position",
      "tab": "Icons",
      "type": "select",
      "status": "native",
-     "source": "Where the SVG sat relative to the overline text"
+     "source": "before/after computed from svg position in overline markup"
     },
     {
      "key": "icon",
      "tab": "Icons",
      "type": "icon",
-     "status": "gap",
-     "source": "leading <svg>/<i> icon element beside the heading text"
+     "status": "unmapped",
+     "source": "title icon never set by n_heading; only overline icons are extracted"
     },
     {
      "key": "title_icon_position",
      "tab": "Icons",
      "type": "select",
-     "status": "gap",
-     "source": "DOM order of the icon relative to the heading text (before/after)"
+     "status": "unmapped",
+     "source": "no title icon handled, so position never set"
     },
     {
      "key": "icon_badge_preset",
      "tab": "Icons",
-     "type": "icon-badge",
+     "type": "border-style-picker",
      "status": "unmapped",
-     "source": "Decorative preset — no source signal"
+     "source": "not set in n_heading (overline chip uses overline_container pill instead)"
     },
     {
      "key": "overline_uppercase",
      "tab": "Layout",
      "type": "switch",
      "status": "native",
-     "source": "Source `text-transform:uppercase` or all-caps text"
+     "source": "yes/no from overline_transform:uppercase or all-caps text"
     },
     {
      "key": "overline_marker",
      "tab": "Layout",
      "type": "select",
      "status": "unmapped",
-     "source": "Decorative marker — not inferred"
+     "source": "rule/dot/lines/bar marker never derived by the mapper"
     },
     {
      "key": "overline_marker_position",
      "tab": "Layout",
      "type": "select",
      "status": "unmapped",
-     "source": "—"
+     "source": "no marker derived, so position unset"
     },
     {
      "key": "overline_container",
      "tab": "Layout",
      "type": "select",
      "status": "native",
-     "source": "A chip-before-heading → `pill`; else none"
+     "source": "'pill' when $h['overline_pill'] (chip-before-heading badge)"
     },
     {
      "key": "element_spacing",
      "tab": "Layout",
      "type": "select",
      "status": "native",
-     "source": "Wrapper spacing utility classes"
+     "source": "from space-y-* class or title mb px snapped tight/relaxed"
     },
     {
      "key": "block_max_width",
      "tab": "Layout",
      "type": "unit-input",
      "status": "native",
-     "source": "Wrapper `max-w-* mx-auto` measure"
+     "source": "from wrapper max-w-* / wrapMaxW measure (heading_layout)"
     },
     {
      "key": "alignment",
      "tab": "Styling",
-     "type": "alignment",
+     "type": "image-picker",
      "status": "native",
-     "source": "Wrapper `text-center` / `text-*` alignment"
+     "source": "from text-center/right class or captured $h['align']"
     },
     {
      "key": "overline_align",
      "tab": "Styling",
-     "type": "alignment",
-     "status": "gap",
-     "source": "computed text-align of the overline/eyebrow element"
+     "type": "image-picker",
+     "status": "unmapped",
+     "source": "per-part align not set; only block alignment derived"
     },
     {
      "key": "title_align",
      "tab": "Styling",
-     "type": "alignment",
-     "status": "gap",
-     "source": "computed text-align of the heading element"
+     "type": "image-picker",
+     "status": "unmapped",
+     "source": "per-part align not set; only block alignment derived"
     },
     {
      "key": "subtitle_align",
      "tab": "Styling",
-     "type": "alignment",
-     "status": "gap",
-     "source": "computed text-align of the subtitle element"
+     "type": "image-picker",
+     "status": "unmapped",
+     "source": "per-part align not set; only block alignment derived"
     },
     {
      "key": "display_size",
      "tab": "Styling",
      "type": "select",
-     "status": "via-css",
-     "source": "Title size reproduced via the hi-fi base + heading tag, not this option"
+     "status": "gap",
+     "source": "title font-size is captured (title_fs / computed) but reproduced via custom CSS, not mapped to this size preset option"
     },
     {
      "key": "title_max_width",
      "tab": "Styling",
      "type": "unit-input",
      "status": "gap",
-     "source": "computed max-width of the heading element"
+     "source": "title constrained measure captured but emitted as scoped CSS (heading_measures), not this option"
     },
     {
      "key": "subtitle_size",
      "tab": "Styling",
-     "type": "font-size",
+     "type": "select",
      "status": "native",
-     "source": "Subtitle's computed font-size → nearest Text Style preset"
+     "source": "text_preset_for($h['subtitle_fs']) → subtitle Text Style preset"
     },
     {
      "key": "subtitle_max_width",
      "tab": "Styling",
      "type": "unit-input",
      "status": "gap",
-     "source": "computed max-width of the subtitle element"
+     "source": "subtitle constrained measure captured but emitted as scoped CSS, not this option"
     },
     {
      "key": "bg_color",
      "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed background-color of the heading container"
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "heading background not set; section owns background"
     },
     {
      "key": "overline_color",
      "tab": "Styling",
-     "type": "color",
+     "type": "predefined-colors-color-picker-compact",
      "status": "native",
-     "source": "Source overline text colour"
+     "source": "from $h['overline_color'] captured computed color"
     },
     {
      "key": "title_color",
      "tab": "Styling",
-     "type": "color",
-     "status": "via-css",
-     "source": "Reproduced at specificity 0 via the hi-fi base; native option left empty"
+     "type": "predefined-colors-color-picker-compact",
+     "status": "native",
+     "source": "from title_color_src when a real non-default ink"
     },
     {
      "key": "subtitle_color",
      "tab": "Styling",
-     "type": "color",
-     "status": "via-css",
-     "source": "Same as title colour"
-    },
-    {
-     "key": "spacing",
-     "tab": "Styling",
-     "type": "spacing",
+     "type": "predefined-colors-color-picker-compact",
      "status": "native",
-     "source": "Source vertical margins → native margin option"
-    },
-    {
-     "key": "animation",
-     "tab": "Animations",
-     "type": "group",
-     "status": "unmapped",
-     "source": "Entrance animations default off (no source signal)"
-    },
-    {
-     "key": "css_class",
-     "tab": "Advanced",
-     "type": "text",
-     "status": "native",
-     "source": "Unmapped source utility classes preserved"
+     "source": "from subtitle_color_src (e.g. muted text-foreground/70)"
     },
     {
      "key": "overline_class",
      "tab": "Advanced",
      "type": "text",
      "status": "native",
-     "source": "Source overline utility classes"
+     "source": "source overline classes carried (strip_inert_utilities)"
     },
     {
      "key": "title_class",
      "tab": "Advanced",
      "type": "text",
      "status": "native",
-     "source": "Source title utility classes"
+     "source": "source title classes carried (strip_inert_utilities)"
     },
     {
      "key": "subtitle_class",
      "tab": "Advanced",
      "type": "text",
      "status": "native",
-     "source": "Source subtitle utility classes"
+     "source": "source subtitle classes carried (strip_inert_utilities)"
     },
     {
-     "key": "custom_css",
-     "tab": "Advanced",
-     "type": "textarea",
-     "status": "native",
-     "source": "Carries the source font-weight + the hi-fi appearance base"
-    },
-    {
-     "key": "css_id",
-     "tab": "Advanced",
-     "type": "text",
+     "key": "animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …",
+     "tab": "Animations",
+     "type": "multi-picker",
      "status": "unmapped",
-     "source": "Default empty"
+     "source": "Default — Animation Engine effects (no source mapping)"
     },
     {
-     "key": "unique_id",
+     "key": "spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*",
      "tab": "Advanced",
-     "type": "hidden",
-     "status": "auto",
-     "source": "Generated"
+     "type": "text / code-editor",
+     "status": "unmapped",
+     "source": "Default — outer spacing + per-instance advanced fields, set by hand"
     },
     {
-     "key": "responsive_hide",
-     "tab": "Advanced",
-     "type": "group",
-     "status": "auto",
-     "source": "Not set"
-    },
-    {
-     "key": "custom_attrs",
+     "key": "unique_id · custom_attrs · responsive_hide",
      "tab": "Advanced",
      "type": "group",
      "status": "auto",
-     "source": "Not set"
+     "source": "Plumbing — generated / not set"
     }
    ]
   },
@@ -324,154 +289,119 @@
      "tab": "Content",
      "type": "wp-editor",
      "status": "native",
-     "source": "The source paragraph's rich HTML"
+     "source": "html body via map_accent_classes"
     },
     {
      "key": "text_color",
      "tab": "Styling",
-     "type": "color",
-     "status": "via-css",
-     "source": "Body text colour reproduced via the section / preset styler; native option empty"
+     "type": "predefined-colors-color-picker-compact",
+     "status": "native",
+     "source": "computed color from $cs when non-default ink"
     },
     {
      "key": "bg_color",
      "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed background-color of the text container"
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "not set; paragraph bg rare, section owns background"
     },
     {
      "key": "link_color",
      "tab": "Styling",
-     "type": "color",
-     "status": "via-css",
-     "source": "Link colour via the styler; native option empty"
+     "type": "predefined-colors-color-picker-compact",
+     "status": "gap",
+     "source": "anchor computed color is detectable in captured DOM but the mapper doesn't inspect links"
     },
     {
      "key": "font_size_preset",
      "tab": "Styling",
-     "type": "font-size",
+     "type": "select",
      "status": "native",
-     "source": "Source computed font-size → nearest body Text Style preset"
-    },
-    {
-     "key": "spacing",
-     "tab": "Styling",
-     "type": "spacing",
-     "status": "via-css",
-     "source": "Vertical margins ride the unified styler; native margin option left empty"
+     "source": "text_preset_for(computed font-size from $cs)"
     },
     {
      "key": "text_align",
      "tab": "Styling",
-     "type": "alignment",
+     "type": "image-picker",
      "status": "native",
-     "source": "Explicit source center / right alignment (a `text-*` class)"
+     "source": "center/right from $align (native option path)"
     },
     {
      "key": "max_width",
      "tab": "Styling",
      "type": "multi-picker",
      "status": "native",
-     "source": "Source max-width (class, inline style, or stylesheet rule)"
+     "source": "from source max-width (class/inline/stylesheet) via max_width_att"
     },
     {
      "key": "columns",
      "tab": "Styling",
      "type": "select",
      "status": "gap",
-     "source": "computed CSS column-count of the text container"
+     "source": "computed column-count is detectable but the mapper doesn't map multi-column text"
     },
     {
      "key": "balance",
      "tab": "Styling",
      "type": "switch",
      "status": "unmapped",
-     "source": "Decorative — no source signal"
+     "source": "text-wrap:balance niche and not read"
     },
     {
      "key": "line_height",
      "tab": "Styling",
      "type": "select",
-     "status": "via-css",
-     "source": "Reproduced via the styler; native option empty"
+     "status": "gap",
+     "source": "computed line-height is a strong reliable signal but not mapped to this select"
     },
     {
      "key": "para_spacing",
      "tab": "Styling",
      "type": "select",
-     "status": "unmapped",
-     "source": "—"
+     "status": "gap",
+     "source": "inter-paragraph <p> margins detectable but not mapped (only block margin → spacing)"
     },
     {
      "key": "lead",
      "tab": "Styling",
      "type": "switch",
      "status": "unmapped",
-     "source": "Decorative lead-in — no source signal"
+     "source": "lead handled via font_size_preset='lead'; the lead switch itself unset"
     },
     {
      "key": "link_underline",
      "tab": "Styling",
      "type": "select",
-     "status": "gap",
-     "source": "computed text-decoration-line on anchor links within the text"
+     "status": "unmapped",
+     "source": "anchor text-decoration not inspected; UnysonPlus preset choice"
     },
     {
      "key": "dropcap",
      "tab": "Styling",
      "type": "multi-picker",
      "status": "unmapped",
-     "source": "Decorative drop-cap (+ style/font/lines/chars/gap/colour) — no source signal"
+     "source": "::first-letter drop-cap detection unreliable; not read"
     },
     {
-     "key": "animation",
+     "key": "animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …",
      "tab": "Animations",
-     "type": "group",
+     "type": "multi-picker",
      "status": "unmapped",
-     "source": "Entrance animations default off"
+     "source": "Default — Animation Engine effects (no source mapping)"
     },
     {
-     "key": "css_class",
+     "key": "spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*",
      "tab": "Advanced",
-     "type": "text",
+     "type": "text / code-editor",
      "status": "unmapped",
-     "source": "Left empty — the block carries no source classes here"
+     "source": "Default — outer spacing + per-instance advanced fields, set by hand"
     },
     {
-     "key": "custom_css",
-     "tab": "Advanced",
-     "type": "textarea",
-     "status": "unmapped",
-     "source": "Not populated for text_block"
-    },
-    {
-     "key": "css_id",
-     "tab": "Advanced",
-     "type": "text",
-     "status": "unmapped",
-     "source": "Default empty"
-    },
-    {
-     "key": "unique_id",
-     "tab": "Advanced",
-     "type": "hidden",
-     "status": "auto",
-     "source": "Generated"
-    },
-    {
-     "key": "responsive_hide",
+     "key": "unique_id · custom_attrs · responsive_hide",
      "tab": "Advanced",
      "type": "group",
      "status": "auto",
-     "source": "Not set"
-    },
-    {
-     "key": "custom_attrs",
-     "tab": "Advanced",
-     "type": "group",
-     "status": "auto",
-     "source": "Not set"
+     "source": "Plumbing — generated / not set"
     }
    ]
   },
@@ -491,133 +421,105 @@
      "tab": "Content",
      "type": "text",
      "status": "native",
-     "source": "Source button text"
+     "source": "set from $label"
     },
     {
      "key": "link",
      "tab": "Content",
      "type": "text",
      "status": "native",
-     "source": "The href"
+     "source": "set from $link (href)"
     },
     {
      "key": "target",
      "tab": "Content",
-     "type": "select",
+     "type": "switch",
      "status": "gap",
-     "source": "target attribute of the anchor (_blank vs _self)"
+     "source": "hardcoded '_self'; source anchor target=_blank is trivially detectable but not read"
     },
     {
      "key": "icon",
-     "tab": "Icons",
+     "tab": "Content",
      "type": "icon",
      "status": "native",
-     "source": "An inline `<svg>` / icon in the source button"
+     "source": "inline svg icon_svg or icon-font class via icon_value"
     },
     {
      "key": "icon_position",
-     "tab": "Icons",
+     "tab": "Content",
      "type": "select",
      "status": "native",
-     "source": "Before / after the label, from the source"
+     "source": "before/after from $icon_pos"
     },
     {
      "key": "style",
      "tab": "Styling",
      "type": "button-style-picker",
-     "status": "via-css",
-     "source": "Look reproduced via the hi-fi `custom_css` base, not a matched Button preset"
+     "status": "native",
+     "source": "button_preset_for (color preset) or btn-link for text links"
     },
     {
      "key": "size",
      "tab": "Styling",
-     "type": "select",
-     "status": "unmapped",
-     "source": "Default — not inferred"
+     "type": "button-style-picker",
+     "status": "native",
+     "source": "button_preset_for size slug"
+    },
+    {
+     "key": "shape",
+     "tab": "Styling",
+     "type": "image-picker",
+     "status": "gap",
+     "source": "border-radius is captured/reproduced via CSS but not mapped to this shape option"
     },
     {
      "key": "width",
      "tab": "Styling",
      "type": "multi-picker",
-     "status": "gap",
-     "source": "computed display/width of the button (full-width block vs auto)"
+     "status": "native",
+     "source": "w-100 full-width when w-full/block width:100% detected"
     },
     {
      "key": "alignment",
      "tab": "Styling",
-     "type": "alignment",
+     "type": "select",
      "status": "native",
-     "source": "Source alignment"
+     "source": "from climbed $align or group wrapper resolve_style_options"
     },
     {
      "key": "state",
      "tab": "Styling",
      "type": "select",
      "status": "unmapped",
-     "source": "Editor state selector — no stored value"
+     "source": "always ''; active/disabled state not derived"
     },
     {
      "key": "hover_animation",
      "tab": "Styling",
-     "type": "select",
-     "status": "unmapped",
-     "source": "No source signal"
-    },
-    {
-     "key": "spacing",
-     "tab": "Styling",
-     "type": "spacing",
-     "status": "gap",
-     "source": "computed margin around the button element"
-    },
-    {
-     "key": "animation",
-     "tab": "Animations",
-     "type": "group",
-     "status": "unmapped",
-     "source": "Entrance animations default off"
-    },
-    {
-     "key": "custom_css",
-     "tab": "Advanced",
-     "type": "textarea",
+     "type": "button-hover-animation",
      "status": "native",
-     "source": "Carries the hi-fi appearance base that reproduces the button’s look"
+     "source": "classify_hover_animation → .btnfx-* preset from captured hover"
     },
     {
-     "key": "css_class",
-     "tab": "Advanced",
-     "type": "text",
+     "key": "animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …",
+     "tab": "Animations",
+     "type": "multi-picker",
      "status": "unmapped",
-     "source": "Left empty"
+     "source": "Default — Animation Engine effects (no source mapping)"
     },
     {
-     "key": "css_id",
+     "key": "spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*",
      "tab": "Advanced",
-     "type": "text",
+     "type": "text / code-editor",
      "status": "unmapped",
-     "source": "Default empty"
+     "source": "Default — outer spacing + per-instance advanced fields, set by hand"
     },
     {
-     "key": "unique_id",
-     "tab": "Advanced",
-     "type": "hidden",
-     "status": "auto",
-     "source": "Generated"
-    },
-    {
-     "key": "responsive_hide",
+     "key": "unique_id · custom_attrs · responsive_hide",
      "tab": "Advanced",
      "type": "group",
      "status": "auto",
-     "source": "Not set"
-    },
-    {
-     "key": "custom_attrs",
-     "tab": "Advanced",
-     "type": "group",
-     "status": "auto",
-     "source": "Not set"
+     "source": "Plumbing — generated / not set"
     }
    ]
   },
@@ -637,133 +539,133 @@
      "tab": "Content",
      "type": "addable-popup",
      "status": "native",
-     "source": "One row per source `<li>` — text + inline-SVG icon + marker colour"
+     "source": "built from source rows (text + per-item svg icon + marker_color)"
     },
     {
-     "key": "icon",
-     "tab": "Content",
-     "type": "icon",
-     "status": "native",
-     "source": "Per item: an inline `<svg>` on the list item"
-    },
-    {
-     "key": "marker_color",
+     "key": "design",
      "tab": "Design",
-     "type": "color",
-     "status": "via-css",
-     "source": "Per item: carried from the source icon’s colour"
+     "type": "image-picker",
+     "status": "native",
+     "source": "'numbered' when ordered list else 'check'"
+    },
+    {
+     "key": "orientation",
+     "tab": "Design",
+     "type": "image-picker",
+     "status": "native",
+     "source": "'horizontal' when source flex-wrap strip detected"
+    },
+    {
+     "key": "icon_position",
+     "tab": "Design",
+     "type": "select",
+     "status": "unmapped",
+     "source": "left/top not derived by the mapper"
     },
     {
      "key": "icon_style",
      "tab": "Design",
      "type": "select",
      "status": "unmapped",
-     "source": "Default"
-    },
-    {
-     "key": "icon_position",
-     "tab": "Design",
-     "type": "select",
-     "status": "gap",
-     "source": "DOM order of each item's icon relative to its text (left/top)"
+     "source": "plain/tint/circle/... marker style not derived"
     },
     {
      "key": "columns",
-     "tab": "Layout",
+     "tab": "Design",
      "type": "select",
-     "status": "gap",
-     "source": "column count from the list's grid/flex layout (items per row)"
+     "status": "native",
+     "source": "from grid-cols-N on list_cls"
     },
     {
      "key": "dividers",
-     "tab": "Layout",
+     "tab": "Design",
      "type": "switch",
-     "status": "gap",
-     "source": "computed border between adjacent list items"
+     "status": "unmapped",
+     "source": "row dividers not derived"
     },
     {
      "key": "zebra",
-     "tab": "Layout",
+     "tab": "Design",
      "type": "switch",
-     "status": "gap",
-     "source": "alternating background-color across list rows"
+     "status": "unmapped",
+     "source": "zebra striping not derived"
+    },
+    {
+     "key": "spacing_size",
+     "tab": "Design",
+     "type": "select",
+     "status": "native",
+     "source": "sm/md/lg from list gap px"
     },
     {
      "key": "box_style",
-     "tab": "Design",
-     "type": "select",
+     "tab": "Styling",
+     "type": "border-style-picker",
      "status": "unmapped",
-     "source": "Default"
+     "source": "item box preset not derived"
     },
     {
-     "key": "font_size_preset",
+     "key": "icon_badge_preset",
      "tab": "Styling",
-     "type": "font-size",
-     "status": "gap",
-     "source": "computed font-size of the list item text"
+     "type": "border-style-picker",
+     "status": "unmapped",
+     "source": "not registered in n_feature_list"
+    },
+    {
+     "key": "marker_color",
+     "tab": "Styling",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "native",
+     "source": "dominant per-item icon color across rows"
+    },
+    {
+     "key": "marker_size",
+     "tab": "Styling",
+     "type": "unit-input",
+     "status": "native",
+     "source": "from icon width (e.g. w-5=20px)"
     },
     {
      "key": "text_color",
      "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed color of the list item text"
+     "type": "predefined-colors-color-picker-compact",
+     "status": "native",
+     "source": "from label span computed/class color"
     },
     {
-     "key": "spacing",
+     "key": "sub_color",
      "tab": "Styling",
-     "type": "spacing",
-     "status": "gap",
-     "source": "computed margin/gap between list items"
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "subtext always empty, so sub color unset"
     },
     {
-     "key": "animation",
+     "key": "font_size_preset",
+     "tab": "Styling",
+     "type": "select",
+     "status": "native",
+     "source": "text_preset_for(label font-size) else scoped CSS"
+    },
+    {
+     "key": "animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …",
      "tab": "Animations",
-     "type": "group",
+     "type": "multi-picker",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "Default — Animation Engine effects (no source mapping)"
     },
     {
-     "key": "css_class",
+     "key": "spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*",
      "tab": "Advanced",
-     "type": "text",
+     "type": "text / code-editor",
      "status": "unmapped",
-     "source": "Default empty"
+     "source": "Default — outer spacing + per-instance advanced fields, set by hand"
     },
     {
-     "key": "custom_css",
-     "tab": "Advanced",
-     "type": "textarea",
-     "status": "unmapped",
-     "source": "Not populated"
-    },
-    {
-     "key": "css_id",
-     "tab": "Advanced",
-     "type": "text",
-     "status": "unmapped",
-     "source": "Default empty"
-    },
-    {
-     "key": "unique_id",
-     "tab": "Advanced",
-     "type": "hidden",
-     "status": "auto",
-     "source": "Generated"
-    },
-    {
-     "key": "responsive_hide",
+     "key": "unique_id · custom_attrs · responsive_hide",
      "tab": "Advanced",
      "type": "group",
      "status": "auto",
-     "source": "Not set"
-    },
-    {
-     "key": "custom_attrs",
-     "tab": "Advanced",
-     "type": "group",
-     "status": "auto",
-     "source": "Not set"
+     "source": "Plumbing — generated / not set"
     }
    ]
   },
@@ -783,189 +685,175 @@
      "tab": "Content",
      "type": "icon",
      "status": "native",
-     "source": "Source SVG / image icon"
+     "source": "set from card icon/lucide/imgIcon(svg inline)/font icon"
     },
     {
-     "key": "icon_size",
-     "tab": "Layout",
-     "type": "unit-input",
+     "key": "custom_icon",
+     "tab": "Content",
+     "type": "hidden",
      "status": "native",
-     "source": "From the source icon’s rendered size (image icons)"
+     "source": "set from card customIcon"
     },
     {
      "key": "title",
      "tab": "Content",
      "type": "text",
      "status": "native",
-     "source": "Card title"
+     "source": "set from card title"
     },
     {
      "key": "title_tag",
      "tab": "Content",
      "type": "select",
      "status": "native",
-     "source": "Source heading tag (h3–h6 / span / p)"
+     "source": "set from card titleTag (h3-h6/span/p)"
     },
     {
      "key": "content",
      "tab": "Content",
      "type": "wp-editor",
      "status": "native",
-     "source": "Card text (+ an optional link)"
+     "source": "set from card text + read-more link paragraph"
     },
     {
-     "key": "icon_badge_preset",
-     "tab": "Content",
-     "type": "icon-badge",
-     "status": "unmapped",
-     "source": "Default"
-    },
-    {
-     "key": "icon_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed color of the icon element (svg fill / <i> color)"
-    },
-    {
-     "key": "title_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed color of the title/heading element"
-    },
-    {
-     "key": "content_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed color of the body text element"
-    },
-    {
-     "key": "bg_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed background-color of the card container"
-    },
-    {
-     "key": "font_size_preset",
-     "tab": "Styling",
-     "type": "font-size",
-     "status": "gap",
-     "source": "computed font-size of the title/body text"
+     "key": "style",
+     "tab": "Layout",
+     "type": "image-picker",
+     "status": "native",
+     "source": "set from card iconLayout (geometric icon position)"
     },
     {
      "key": "icon_align",
      "tab": "Layout",
-     "type": "alignment",
-     "status": "gap",
-     "source": "text-align / flex justify of the icon container"
+     "type": "image-picker",
+     "status": "native",
+     "source": "set from card center flag (left/center)"
     },
     {
      "key": "title_align",
      "tab": "Layout",
-     "type": "alignment",
-     "status": "gap",
-     "source": "text-align of the title element"
+     "type": "image-picker",
+     "status": "native",
+     "source": "set from card center flag"
     },
     {
      "key": "content_align",
      "tab": "Layout",
-     "type": "alignment",
-     "status": "gap",
-     "source": "text-align of the content element"
-    },
-    {
-     "key": "box_style",
-     "tab": "Styling",
-     "type": "select",
-     "status": "unmapped",
-     "source": "Default"
-    },
-    {
-     "key": "box_link",
-     "tab": "Link",
-     "type": "text",
-     "status": "gap",
-     "source": "href of the wrapping/CTA anchor"
-    },
-    {
-     "key": "link_target",
-     "tab": "Link",
-     "type": "select",
-     "status": "gap",
-     "source": "target attribute of the anchor (_blank vs _self)"
-    },
-    {
-     "key": "link_rel",
-     "tab": "Link",
-     "type": "text",
-     "status": "gap",
-     "source": "rel attribute of the anchor"
+     "type": "image-picker",
+     "status": "native",
+     "source": "set from card center flag"
     },
     {
      "key": "mobile_stack",
      "tab": "Layout",
      "type": "switch",
      "status": "unmapped",
-     "source": "Default"
+     "source": "not set by mapper; UnysonPlus responsive default"
     },
     {
-     "key": "spacing",
+     "key": "full_height",
+     "tab": "Layout",
+     "type": "switch",
+     "status": "native",
+     "source": "set unconditionally to true (grid equal-height)"
+    },
+    {
+     "key": "box_link",
+     "tab": "Link & SEO",
+     "type": "text",
+     "status": "gap",
+     "source": "whole-card <a> wrapper href detectable in DOM; mapper only maps link into content read-more, not box_link"
+    },
+    {
+     "key": "link_target",
+     "tab": "Link & SEO",
+     "type": "switch",
+     "status": "unmapped",
+     "source": "box_link unused; not set"
+    },
+    {
+     "key": "link_rel",
+     "tab": "Link & SEO",
+     "type": "select",
+     "status": "unmapped",
+     "source": "box_link unused; not set"
+    },
+    {
+     "key": "box_style",
      "tab": "Styling",
-     "type": "spacing",
+     "type": "border-style-picker",
      "status": "unmapped",
-     "source": "Default"
+     "source": "not set; card box skin reproduced via column inner-wrapper class + hifi base CSS, not this preset"
     },
     {
-     "key": "custom_css",
-     "tab": "Advanced",
-     "type": "textarea",
-     "status": "via-css",
-     "source": "Floating card: the absolute position + skin (`posCss`)"
+     "key": "bg_color",
+     "tab": "Styling",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "not set; card fill reproduced via hifi base CSS, not preset color"
     },
     {
-     "key": "animation",
+     "key": "font_size_preset",
+     "tab": "Styling",
+     "type": "select",
+     "status": "unmapped",
+     "source": "not set by mapper"
+    },
+    {
+     "key": "title_color",
+     "tab": "Styling",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "gap",
+     "source": "title computed color detectable; mapper routes color to hifi base scoped CSS, not this option"
+    },
+    {
+     "key": "content_color",
+     "tab": "Styling",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "gap",
+     "source": "body computed color detectable; not set as this option"
+    },
+    {
+     "key": "icon_color",
+     "tab": "Styling",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "native",
+     "source": "set from captured iconColor computed style / Tailwind token"
+    },
+    {
+     "key": "icon_size",
+     "tab": "Styling",
+     "type": "unit-input",
+     "status": "native",
+     "source": "set from imgIcon container height for inline-SVG illustrations"
+    },
+    {
+     "key": "icon_badge_preset",
+     "tab": "Styling",
+     "type": "border-style-picker",
+     "status": "native",
+     "source": "registered + set from captured icon-chip skin (shape/size/fill/border/shadow)"
+    },
+    {
+     "key": "animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …",
      "tab": "Animations",
-     "type": "group",
+     "type": "multi-picker",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "Default — Animation Engine effects (no source mapping)"
     },
     {
-     "key": "css_class",
+     "key": "spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*",
      "tab": "Advanced",
-     "type": "text",
+     "type": "text / code-editor",
      "status": "unmapped",
-     "source": "Default empty"
+     "source": "Default — outer spacing + per-instance advanced fields, set by hand"
     },
     {
-     "key": "css_id",
-     "tab": "Advanced",
-     "type": "text",
-     "status": "unmapped",
-     "source": "Default empty"
-    },
-    {
-     "key": "unique_id",
-     "tab": "Advanced",
-     "type": "hidden",
-     "status": "auto",
-     "source": "Generated"
-    },
-    {
-     "key": "responsive_hide",
+     "key": "unique_id · custom_attrs · responsive_hide",
      "tab": "Advanced",
      "type": "group",
      "status": "auto",
-     "source": "Not set"
-    },
-    {
-     "key": "custom_attrs",
-     "tab": "Advanced",
-     "type": "group",
-     "status": "auto",
-     "source": "Not set"
+     "source": "Plumbing — generated / not set"
     }
    ]
   },
@@ -985,245 +873,217 @@
      "tab": "Content",
      "type": "text",
      "status": "native",
-     "source": "Source sub-tag text"
+     "source": "set from b.tag_text"
     },
     {
      "key": "message",
      "tab": "Content",
      "type": "text",
      "status": "native",
-     "source": "The main label text"
+     "source": "set from b.message"
     },
     {
      "key": "link",
      "tab": "Content",
      "type": "text",
      "status": "native",
-     "source": "Optional href"
-    },
-    {
-     "key": "trailing_icon",
-     "tab": "Icons",
-     "type": "icon",
-     "status": "native",
-     "source": "A trailing inline `<svg>` in the source chip"
-    },
-    {
-     "key": "leading_icon",
-     "tab": "Icons",
-     "type": "icon",
-     "status": "gap",
-     "source": "presence + glyph of a leading <svg>/<i> icon inside the badge"
+     "source": "set from b.link href"
     },
     {
      "key": "leading",
-     "tab": "Icons",
-     "type": "select",
-     "status": "gap",
-     "source": "DOM order of icon vs text (icon before or after the label)"
-    },
-    {
-     "key": "align",
-     "tab": "Layout",
+     "tab": "Content",
      "type": "select",
      "status": "native",
-     "source": "Source alignment"
+     "source": "set to 'icon' when a leading inline SVG captured, else 'none'"
+    },
+    {
+     "key": "leading_icon",
+     "tab": "Content",
+     "type": "icon",
+     "status": "native",
+     "source": "set from captured leading inline SVG markup"
+    },
+    {
+     "key": "trailing_icon",
+     "tab": "Content",
+     "type": "icon",
+     "status": "native",
+     "source": "set from b.icon via icon_value"
     },
     {
      "key": "style",
      "tab": "Design",
-     "type": "select",
-     "status": "unmapped",
-     "source": "Default `soft`"
+     "type": "image-picker",
+     "status": "native",
+     "source": "derived: outline when pill border present, subtle when fill present, else soft default"
     },
     {
      "key": "shape",
      "tab": "Design",
      "type": "select",
-     "status": "gap",
-     "source": "computed border-radius (pill vs rounded vs square)"
+     "status": "unmapped",
+     "source": "hardcoded 'pill'; source border-radius not mapped to shape buckets"
     },
     {
      "key": "size",
      "tab": "Design",
      "type": "select",
      "status": "unmapped",
-     "source": "Default `md`"
+     "source": "hardcoded 'md'"
+    },
+    {
+     "key": "align",
+     "tab": "Design",
+     "type": "select",
+     "status": "native",
+     "source": "set from b.align (start/center/end)"
     },
     {
      "key": "tag_style",
      "tab": "Design",
      "type": "select",
      "status": "unmapped",
-     "source": "Default `filled`"
+     "source": "hardcoded 'filled'"
     },
     {
      "key": "hover",
      "tab": "Design",
      "type": "select",
      "status": "unmapped",
-     "source": "Default `lift`"
+     "source": "hardcoded 'lift'"
     },
     {
      "key": "pill_color",
      "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed background-color of the badge"
+     "type": "predefined-colors-color-picker-compact",
+     "status": "native",
+     "source": "set from resolved pill border/fill (Tailwind + computed style)"
     },
     {
      "key": "text_color",
      "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed color of the badge label"
+     "type": "predefined-colors-color-picker-compact",
+     "status": "native",
+     "source": "set from resolved message text color (msgCls)"
     },
     {
      "key": "tag_color",
      "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed border/accent color when rendered as a tag"
+     "type": "predefined-colors-color-picker-compact",
+     "status": "native",
+     "source": "set from resolved tag fill (tagCls), when a real non-black color"
     },
     {
      "key": "gradient_from",
      "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "first color stop of a computed background linear-gradient"
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "always none_color; gradient style never selected by mapper"
     },
     {
      "key": "gradient_to",
      "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "last color stop of a computed background linear-gradient"
-    },
-    {
-     "key": "spacing",
-     "tab": "Styling",
-     "type": "spacing",
+     "type": "predefined-colors-color-picker-compact",
      "status": "unmapped",
-     "source": "Default"
+     "source": "always none_color"
     },
     {
      "key": "link_target",
-     "tab": "Link",
+     "tab": "Link & SEO",
      "type": "select",
-     "status": "gap",
-     "source": "target attribute of the badge anchor"
+     "status": "unmapped",
+     "source": "hardcoded 'auto'"
     },
     {
      "key": "rel_nofollow",
-     "tab": "Link",
+     "tab": "Link & SEO",
      "type": "switch",
      "status": "gap",
-     "source": "rel attribute of the anchor contains 'nofollow'"
+     "source": "source anchor rel attribute detectable; mapper hardcodes 'no'"
     },
     {
      "key": "rel_sponsored",
-     "tab": "Link",
+     "tab": "Link & SEO",
      "type": "switch",
      "status": "gap",
-     "source": "rel attribute of the anchor contains 'sponsored'"
+     "source": "source anchor rel attribute detectable; hardcoded 'no'"
     },
     {
      "key": "rel_ugc",
-     "tab": "Link",
+     "tab": "Link & SEO",
      "type": "switch",
      "status": "gap",
-     "source": "rel attribute of the anchor contains 'ugc'"
+     "source": "source anchor rel attribute detectable; hardcoded 'no'"
     },
     {
      "key": "aria_label",
-     "tab": "SEO",
+     "tab": "Link & SEO",
      "type": "text",
      "status": "gap",
-     "source": "aria-label attribute on the badge element"
+     "source": "source element aria-label attribute detectable; mapper leaves blank"
     },
     {
      "key": "title_attr",
-     "tab": "SEO",
+     "tab": "Link & SEO",
      "type": "text",
      "status": "gap",
-     "source": "title attribute on the badge element"
+     "source": "source element title attribute detectable; mapper leaves blank"
     },
     {
      "key": "dismissible",
-     "tab": "Design",
+     "tab": "Link & SEO",
      "type": "switch",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "UnysonPlus behavior; no reliable static-DOM signal"
     },
     {
      "key": "dismiss_id",
-     "tab": "Design",
+     "tab": "Link & SEO",
      "type": "text",
      "status": "unmapped",
-     "source": "Default"
+     "source": "UnysonPlus-specific; not derived"
     },
     {
      "key": "schema_enable",
-     "tab": "SEO",
+     "tab": "Link & SEO",
      "type": "switch",
-     "status": "gap",
-     "source": "presence of schema.org itemtype/itemprop microdata in the markup"
+     "status": "unmapped",
+     "source": "not derived; hardcoded 'no'"
     },
     {
      "key": "schema_name",
-     "tab": "SEO",
+     "tab": "Link & SEO",
      "type": "text",
-     "status": "gap",
-     "source": "schema.org name itemprop value"
+     "status": "unmapped",
+     "source": "not derived"
     },
     {
      "key": "schema_date",
-     "tab": "SEO",
+     "tab": "Link & SEO",
      "type": "text",
-     "status": "gap",
-     "source": "schema.org date itemprop value"
+     "status": "unmapped",
+     "source": "not derived"
     },
     {
-     "key": "animation",
+     "key": "animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …",
      "tab": "Animations",
-     "type": "group",
+     "type": "multi-picker",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "Default — Animation Engine effects (no source mapping)"
     },
     {
-     "key": "css_class",
+     "key": "spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*",
      "tab": "Advanced",
-     "type": "text",
+     "type": "text / code-editor",
      "status": "unmapped",
-     "source": "Default empty"
+     "source": "Default — outer spacing + per-instance advanced fields, set by hand"
     },
     {
-     "key": "css_id",
-     "tab": "Advanced",
-     "type": "text",
-     "status": "unmapped",
-     "source": "Default empty"
-    },
-    {
-     "key": "unique_id",
-     "tab": "Advanced",
-     "type": "hidden",
-     "status": "auto",
-     "source": "Generated"
-    },
-    {
-     "key": "responsive_hide",
+     "key": "unique_id · custom_attrs · responsive_hide",
      "tab": "Advanced",
      "type": "group",
      "status": "auto",
-     "source": "Not set"
-    },
-    {
-     "key": "custom_attrs",
-     "tab": "Advanced",
-     "type": "group",
-     "status": "auto",
-     "source": "Not set"
+     "source": "Plumbing — generated / not set"
     }
    ]
   },
@@ -1469,186 +1329,158 @@
    "recognizerNotes": "The full cell grid is rebuilt natively — columns are counted, leading all-`<th>` rows are detected as the header, and each cell’s HTML is preserved. Table styling (stripes, borders, frame preset, colours) and the interactive features (search, sort, pagination) are left at defaults.",
    "options": [
     {
-     "key": "content",
+     "key": "table",
      "tab": "Content",
      "type": "table",
      "status": "native",
-     "source": "The captured `<table>` cells, row by row"
+     "source": "built from captured rows/cols/content + thead header_rows"
     },
     {
-     "key": "header_options",
-     "tab": "Content",
-     "type": "group",
+     "key": "table_preset",
+     "tab": "Table Options",
+     "type": "table-style-picker",
      "status": "native",
-     "source": "Leading all-`<th>` rows detected as the header"
-    },
-    {
-     "key": "caption",
-     "tab": "Content",
-     "type": "text",
-     "status": "gap",
-     "source": "text of the <caption> element"
-    },
-    {
-     "key": "caption_position",
-     "tab": "Content",
-     "type": "select",
-     "status": "gap",
-     "source": "computed caption-side (top/bottom) of the caption"
+     "source": "derived via table_preset_for from captured header fill / striped styling"
     },
     {
      "key": "frame_preset",
-     "tab": "Style",
-     "type": "table-style-picker",
+     "tab": "Table Options",
+     "type": "border-style-picker",
      "status": "unmapped",
-     "source": "Default — not matched to a Table preset"
+     "source": "not set by mapper"
     },
     {
      "key": "style_striped",
-     "tab": "Style",
+     "tab": "Table Options",
      "type": "switch",
      "status": "gap",
-     "source": "alternating row background-color across tbody rows"
-    },
-    {
-     "key": "style_bordered",
-     "tab": "Style",
-     "type": "switch",
-     "status": "gap",
-     "source": "presence of border on cells (computed border-width > 0)"
+     "source": "alternating row background detectable (captured in style.striped) but the switch option itself not set"
     },
     {
      "key": "style_hover",
-     "tab": "Style",
+     "tab": "Table Options",
      "type": "switch",
      "status": "unmapped",
-     "source": "Default"
+     "source": "row hover state not captured from static DOM"
+    },
+    {
+     "key": "style_bordered",
+     "tab": "Table Options",
+     "type": "switch",
+     "status": "gap",
+     "source": "cell border computed style detectable; option not set"
     },
     {
      "key": "style_condensed",
-     "tab": "Style",
+     "tab": "Table Options",
      "type": "switch",
      "status": "unmapped",
-     "source": "Default"
+     "source": "cell padding varies; not reliably mapped, not set"
     },
     {
      "key": "sticky_header",
-     "tab": "Style",
-     "type": "switch",
-     "status": "gap",
-     "source": "computed position:sticky on the header row/cells"
-    },
-    {
-     "key": "bg_color",
-     "tab": "Style",
-     "type": "color",
-     "status": "gap",
-     "source": "computed background-color of the table/cells"
-    },
-    {
-     "key": "text_color",
-     "tab": "Style",
-     "type": "color",
-     "status": "gap",
-     "source": "computed color of the cell text"
-    },
-    {
-     "key": "font_size_preset",
-     "tab": "Style",
-     "type": "font-size",
-     "status": "gap",
-     "source": "computed font-size of cell text"
-    },
-    {
-     "key": "enable_search",
-     "tab": "Features",
+     "tab": "Table Options",
      "type": "switch",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "scroll behavior; not derived"
+    },
+    {
+     "key": "caption",
+     "tab": "Table Options",
+     "type": "text",
+     "status": "native",
+     "source": "set from captured b.caption text"
+    },
+    {
+     "key": "caption_position",
+     "tab": "Table Options",
+     "type": "select",
+     "status": "gap",
+     "source": "caption-side / DOM order of <caption> detectable; not set"
     },
     {
      "key": "enable_sort",
-     "tab": "Features",
+     "tab": "Table Options",
      "type": "switch",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "interactive behavior not present in static DOM"
+    },
+    {
+     "key": "enable_search",
+     "tab": "Table Options",
+     "type": "switch",
+     "status": "unmapped",
+     "source": "interactive behavior; not derived"
     },
     {
      "key": "enable_pagination",
-     "tab": "Features",
+     "tab": "Table Options",
      "type": "switch",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "interactive behavior; not derived"
     },
     {
      "key": "pagination_length",
-     "tab": "Features",
-     "type": "number",
+     "tab": "Table Options",
+     "type": "text",
      "status": "unmapped",
-     "source": "Default"
+     "source": "not derived"
     },
     {
      "key": "enable_length_change",
-     "tab": "Features",
+     "tab": "Table Options",
      "type": "switch",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "not derived"
     },
     {
      "key": "enable_info",
-     "tab": "Features",
+     "tab": "Table Options",
      "type": "switch",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "not derived"
     },
     {
-     "key": "spacing",
-     "tab": "Style",
-     "type": "spacing",
+     "key": "text_color",
+     "tab": "Styling",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "gap",
+     "source": "cell text computed color detectable; option not set (styling goes to table_preset)"
+    },
+    {
+     "key": "bg_color",
+     "tab": "Styling",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "gap",
+     "source": "table background computed color detectable; option not set"
+    },
+    {
+     "key": "font_size_preset",
+     "tab": "Styling",
+     "type": "select",
      "status": "unmapped",
-     "source": "Default"
+     "source": "not set by mapper"
     },
     {
-     "key": "animation",
+     "key": "animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …",
      "tab": "Animations",
-     "type": "group",
+     "type": "multi-picker",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "Default — Animation Engine effects (no source mapping)"
     },
     {
-     "key": "css_class",
+     "key": "spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*",
      "tab": "Advanced",
-     "type": "text",
+     "type": "text / code-editor",
      "status": "unmapped",
-     "source": "Default empty"
+     "source": "Default — outer spacing + per-instance advanced fields, set by hand"
     },
     {
-     "key": "css_id",
-     "tab": "Advanced",
-     "type": "text",
-     "status": "unmapped",
-     "source": "Default empty"
-    },
-    {
-     "key": "unique_id",
-     "tab": "Advanced",
-     "type": "hidden",
-     "status": "auto",
-     "source": "Generated"
-    },
-    {
-     "key": "responsive_hide",
+     "key": "unique_id · custom_attrs · responsive_hide",
      "tab": "Advanced",
      "type": "group",
      "status": "auto",
-     "source": "Not set"
-    },
-    {
-     "key": "custom_attrs",
-     "tab": "Advanced",
-     "type": "group",
-     "status": "auto",
-     "source": "Not set"
+     "source": "Plumbing — generated / not set"
     }
    ]
   },
@@ -1668,154 +1500,126 @@
      "tab": "Content",
      "type": "text",
      "status": "native",
-     "source": "The target figure"
+     "source": "set from c.number"
     },
     {
      "key": "start",
      "tab": "Content",
      "type": "text",
      "status": "native",
-     "source": "Count-up start value"
+     "source": "set from c.start"
     },
     {
      "key": "prefix",
      "tab": "Content",
      "type": "text",
      "status": "native",
-     "source": "Leading text (e.g. $)"
+     "source": "set from c.prefix"
     },
     {
      "key": "suffix",
      "tab": "Content",
      "type": "text",
      "status": "native",
-     "source": "Trailing text (e.g. %, +)"
+     "source": "set from c.suffix"
     },
     {
      "key": "decimals",
      "tab": "Content",
-     "type": "number",
+     "type": "select",
      "status": "native",
-     "source": "Decimal places"
-    },
-    {
-     "key": "alignment",
-     "tab": "Styling",
-     "type": "alignment",
-     "status": "native",
-     "source": "Source alignment"
-    },
-    {
-     "key": "number_font",
-     "tab": "Styling",
-     "type": "typography",
-     "status": "native",
-     "source": "Number weight + size, from the source"
-    },
-    {
-     "key": "number_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "native",
-     "source": "Number colour, from the source"
-    },
-    {
-     "key": "prefix_font",
-     "tab": "Styling",
-     "type": "typography",
-     "status": "native",
-     "source": "Prefix weight + size"
-    },
-    {
-     "key": "prefix_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "native",
-     "source": "Prefix colour"
-    },
-    {
-     "key": "suffix_font",
-     "tab": "Styling",
-     "type": "typography",
-     "status": "native",
-     "source": "Suffix weight + size"
-    },
-    {
-     "key": "suffix_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "native",
-     "source": "Suffix colour"
+     "source": "set from c.decimals"
     },
     {
      "key": "separator",
      "tab": "Content",
-     "type": "switch",
+     "type": "select",
      "status": "gap",
-     "source": "thousands separator present in the rendered number text (e.g. '1,000')"
+     "source": "thousands separator present in source number text detectable; mapper hardcodes 'yes'"
     },
     {
      "key": "duration",
-     "tab": "Behavior",
-     "type": "number",
+     "tab": "Content",
+     "type": "text",
      "status": "unmapped",
-     "source": "Default 2000ms"
+     "source": "animation timing; hardcoded '2000', no source signal"
     },
     {
      "key": "easing",
-     "tab": "Behavior",
+     "tab": "Content",
      "type": "select",
      "status": "unmapped",
-     "source": "Default ease-out"
+     "source": "hardcoded 'ease-out'"
     },
     {
-     "key": "animation",
+     "key": "alignment",
+     "tab": "Style",
+     "type": "image-picker",
+     "status": "native",
+     "source": "set from c.align (center/right)"
+    },
+    {
+     "key": "number_font",
+     "tab": "Style",
+     "type": "typography",
+     "status": "native",
+     "source": "set from captured numberWeight/numberSize"
+    },
+    {
+     "key": "number_color",
+     "tab": "Style",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "native",
+     "source": "set from captured numberColor"
+    },
+    {
+     "key": "prefix_font",
+     "tab": "Style",
+     "type": "typography",
+     "status": "native",
+     "source": "set from captured numberWeight/prefixSize"
+    },
+    {
+     "key": "prefix_color",
+     "tab": "Style",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "native",
+     "source": "set from captured prefixColor"
+    },
+    {
+     "key": "suffix_font",
+     "tab": "Style",
+     "type": "typography",
+     "status": "native",
+     "source": "set from captured suffixWeight/suffixSize"
+    },
+    {
+     "key": "suffix_color",
+     "tab": "Style",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "native",
+     "source": "set from captured suffixColor"
+    },
+    {
+     "key": "animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …",
      "tab": "Animations",
-     "type": "group",
+     "type": "multi-picker",
      "status": "unmapped",
-     "source": "Entrance animations default off"
+     "source": "Default — Animation Engine effects (no source mapping)"
     },
     {
-     "key": "css_class",
+     "key": "spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*",
      "tab": "Advanced",
-     "type": "text",
+     "type": "text / code-editor",
      "status": "unmapped",
-     "source": "Default empty"
+     "source": "Default — outer spacing + per-instance advanced fields, set by hand"
     },
     {
-     "key": "css_id",
-     "tab": "Advanced",
-     "type": "text",
-     "status": "unmapped",
-     "source": "Default empty"
-    },
-    {
-     "key": "custom_css",
-     "tab": "Advanced",
-     "type": "textarea",
-     "status": "unmapped",
-     "source": "Not populated"
-    },
-    {
-     "key": "unique_id",
-     "tab": "Advanced",
-     "type": "hidden",
-     "status": "auto",
-     "source": "Generated"
-    },
-    {
-     "key": "responsive_hide",
+     "key": "unique_id · custom_attrs · responsive_hide",
      "tab": "Advanced",
      "type": "group",
      "status": "auto",
-     "source": "Not set"
-    },
-    {
-     "key": "custom_attrs",
-     "tab": "Advanced",
-     "type": "group",
-     "status": "auto",
-     "source": "Not set"
+     "source": "Plumbing — generated / not set"
     }
    ]
   },
@@ -1835,126 +1639,77 @@
      "tab": "Content",
      "type": "upload",
      "status": "native",
-     "source": "The source image (side-loaded to the Media Library)"
+     "source": "derived-from <img> src/alt; upload_val sideloads to attachment_id/url"
+    },
+    {
+     "key": "width",
+     "tab": "Content",
+     "type": "unit-input",
+     "status": "unmapped",
+     "source": "mapper always emits empty {value:'',unit:'px'}"
+    },
+    {
+     "key": "height",
+     "tab": "Content",
+     "type": "unit-input",
+     "status": "unmapped",
+     "source": "mapper always emits empty {value:'',unit:'px'}"
+    },
+    {
+     "key": "fetchpriority",
+     "tab": "Content",
+     "type": "select",
+     "status": "unmapped",
+     "source": "hardcoded 'auto'"
     },
     {
      "key": "link",
      "tab": "Content",
      "type": "text",
-     "status": "gap",
-     "source": "href of the anchor wrapping the <img> (a > img)"
+     "status": "unmapped",
+     "source": "hardcoded '' (a wrapping <a> is not carried into link)"
     },
     {
      "key": "target",
      "tab": "Content",
-     "type": "select",
-     "status": "gap",
-     "source": "target attribute of the wrapping <a>"
+     "type": "switch",
+     "status": "unmapped",
+     "source": "hardcoded '_self'"
     },
     {
      "key": "image_style",
      "tab": "Styling",
      "type": "image-style-picker",
      "status": "unmapped",
-     "source": "Not matched to an Image Style preset"
-    },
-    {
-     "key": "width",
-     "tab": "Styling",
-     "type": "unit-input",
-     "status": "gap",
-     "source": "computed/attribute width of the <img>"
-    },
-    {
-     "key": "height",
-     "tab": "Styling",
-     "type": "unit-input",
-     "status": "gap",
-     "source": "computed/attribute height of the <img>"
-    },
-    {
-     "key": "size",
-     "tab": "Styling",
-     "type": "select",
-     "status": "unmapped",
-     "source": "Default"
+     "source": "no image_style att emitted; a skinned <img> (border/shadow/rounded/blob) is instead routed to a verbatim code_block or carried via custom_css, never mapped to this preset picker"
     },
     {
      "key": "bg_color",
      "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed background-color of the <img> or its container"
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "empty_color()"
     },
     {
-     "key": "loading",
-     "tab": "Advanced",
-     "type": "select",
-     "status": "gap",
-     "source": "loading attribute on the <img> (lazy/eager)"
-    },
-    {
-     "key": "fetchpriority",
-     "tab": "Advanced",
-     "type": "select",
-     "status": "gap",
-     "source": "fetchpriority attribute on the <img>"
-    },
-    {
-     "key": "spacing",
-     "tab": "Styling",
-     "type": "spacing",
-     "status": "gap",
-     "source": "computed margin/padding of the image element"
-    },
-    {
-     "key": "custom_css",
-     "tab": "Advanced",
-     "type": "textarea",
-     "status": "via-css",
-     "source": "Carries the image skin (`skinCss`) — organic radius / border / shadow / blob backdrop"
-    },
-    {
-     "key": "animation",
+     "key": "animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …",
      "tab": "Animations",
-     "type": "group",
+     "type": "multi-picker",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "Default — Animation Engine effects (no source mapping)"
     },
     {
-     "key": "css_class",
+     "key": "spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*",
      "tab": "Advanced",
-     "type": "text",
+     "type": "text / code-editor",
      "status": "unmapped",
-     "source": "Default empty"
+     "source": "Default — outer spacing + per-instance advanced fields, set by hand"
     },
     {
-     "key": "css_id",
-     "tab": "Advanced",
-     "type": "text",
-     "status": "unmapped",
-     "source": "Default empty"
-    },
-    {
-     "key": "unique_id",
-     "tab": "Advanced",
-     "type": "hidden",
-     "status": "auto",
-     "source": "Generated"
-    },
-    {
-     "key": "responsive_hide",
+     "key": "unique_id · custom_attrs · responsive_hide",
      "tab": "Advanced",
      "type": "group",
      "status": "auto",
-     "source": "Not set"
-    },
-    {
-     "key": "custom_attrs",
-     "tab": "Advanced",
-     "type": "group",
-     "status": "auto",
-     "source": "Not set"
+     "source": "Plumbing — generated / not set"
     }
    ]
   },
@@ -1970,172 +1725,53 @@
    "recognizerNotes": "The video source is mapped — an embed URL (YouTube/Vimeo) or the self-hosted file(s) — plus the poster image. Playback options (autoplay, loop, controls, ratio) are left at defaults.",
    "options": [
     {
-     "key": "source",
+     "key": "source_type",
      "tab": "Content",
      "type": "multi-picker",
      "status": "native",
-     "source": "Detected mode: embed vs self-hosted"
+     "source": "derived-from captured video/iframe block: mode (self_hosted/embed), src/webm/embedUrl/poster and playback flags autoplay/muted/loop/controls/playsinline"
     },
     {
-     "key": "url",
+     "key": "width",
      "tab": "Content",
-     "type": "text",
-     "status": "native",
-     "source": "Embed URL (YouTube / Vimeo)"
-    },
-    {
-     "key": "video_file",
-     "tab": "Content",
-     "type": "upload",
-     "status": "native",
-     "source": "Self-hosted MP4 (when not an embed)"
-    },
-    {
-     "key": "video_webm",
-     "tab": "Content",
-     "type": "upload",
-     "status": "native",
-     "source": "Self-hosted WebM (when present)"
-    },
-    {
-     "key": "poster",
-     "tab": "Content",
-     "type": "upload",
-     "status": "native",
-     "source": "Poster / thumbnail image"
+     "type": "unit-input",
+     "status": "unmapped",
+     "source": "hardcoded {value:600,unit:'px'}"
     },
     {
      "key": "ratio",
-     "tab": "Styling",
+     "tab": "Content",
      "type": "select",
      "status": "gap",
-     "source": "aspect ratio from width/height attributes or computed aspect-ratio"
-    },
-    {
-     "key": "object_fit",
-     "tab": "Styling",
-     "type": "select",
-     "status": "gap",
-     "source": "computed object-fit of the <video>"
-    },
-    {
-     "key": "controls",
-     "tab": "Behavior",
-     "type": "switch",
-     "status": "gap",
-     "source": "controls attribute on the <video>"
-    },
-    {
-     "key": "autoplay",
-     "tab": "Behavior",
-     "type": "switch",
-     "status": "gap",
-     "source": "autoplay attribute on the <video>"
-    },
-    {
-     "key": "loop",
-     "tab": "Behavior",
-     "type": "switch",
-     "status": "gap",
-     "source": "loop attribute on the <video>"
-    },
-    {
-     "key": "muted",
-     "tab": "Behavior",
-     "type": "switch",
-     "status": "gap",
-     "source": "muted attribute on the <video>"
-    },
-    {
-     "key": "playsinline",
-     "tab": "Behavior",
-     "type": "switch",
-     "status": "gap",
-     "source": "playsinline attribute on the <video>"
-    },
-    {
-     "key": "preload",
-     "tab": "Behavior",
-     "type": "select",
-     "status": "gap",
-     "source": "preload attribute on the <video>"
-    },
-    {
-     "key": "youtube_nocookie",
-     "tab": "Behavior",
-     "type": "switch",
-     "status": "gap",
-     "source": "iframe src host is youtube-nocookie.com"
-    },
-    {
-     "key": "lazy_facade",
-     "tab": "Behavior",
-     "type": "switch",
-     "status": "unmapped",
-     "source": "Default off"
+     "source": "signal: source <video> intrinsic width/height or iframe aspect-ratio is detectable, but converter hardcodes '16x9'"
     },
     {
      "key": "bg_color",
      "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed background-color of the video container"
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "empty_color()"
     },
     {
-     "key": "spacing",
-     "tab": "Styling",
-     "type": "spacing",
-     "status": "gap",
-     "source": "computed margin/padding of the video element"
-    },
-    {
-     "key": "animation",
+     "key": "animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …",
      "tab": "Animations",
-     "type": "group",
+     "type": "multi-picker",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "Default — Animation Engine effects (no source mapping)"
     },
     {
-     "key": "css_class",
+     "key": "spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*",
      "tab": "Advanced",
-     "type": "text",
+     "type": "text / code-editor",
      "status": "unmapped",
-     "source": "Default empty"
+     "source": "Default — outer spacing + per-instance advanced fields, set by hand"
     },
     {
-     "key": "css_id",
-     "tab": "Advanced",
-     "type": "text",
-     "status": "unmapped",
-     "source": "Default empty"
-    },
-    {
-     "key": "custom_css",
-     "tab": "Advanced",
-     "type": "textarea",
-     "status": "unmapped",
-     "source": "Not populated"
-    },
-    {
-     "key": "unique_id",
-     "tab": "Advanced",
-     "type": "hidden",
-     "status": "auto",
-     "source": "Generated"
-    },
-    {
-     "key": "responsive_hide",
+     "key": "unique_id · custom_attrs · responsive_hide",
      "tab": "Advanced",
      "type": "group",
      "status": "auto",
-     "source": "Not set"
-    },
-    {
-     "key": "custom_attrs",
-     "tab": "Advanced",
-     "type": "group",
-     "status": "auto",
-     "source": "Not set"
+     "source": "Plumbing — generated / not set"
     }
    ]
   },
@@ -2153,107 +1789,72 @@
     {
      "key": "code",
      "tab": "Content",
-     "type": "textarea",
+     "type": "code-editor",
      "status": "native",
-     "source": "The verbatim source markup"
+     "source": "derived-from verbatim source HTML (SVG-inlined, RWD-shimmed, table-preset-wrapped)"
     },
     {
      "key": "render_as_code",
      "tab": "Content",
      "type": "switch",
-     "status": "gap",
-     "source": "presence of a <pre>/<code> wrapper in the source"
-    },
-    {
-     "key": "code_language",
-     "tab": "Content",
-     "type": "select",
-     "status": "gap",
-     "source": "language-* / lang-* class on the <code> element"
+     "status": "unmapped",
+     "source": "not set by mapper (verbatim-HTML block, not a code snippet)"
     },
     {
      "key": "beautify",
      "tab": "Content",
      "type": "switch",
      "status": "unmapped",
-     "source": "Default"
+     "source": "not set by mapper"
     },
     {
-     "key": "bg_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed background-color of the <pre>/<code>"
+     "key": "code_language",
+     "tab": "Content",
+     "type": "select",
+     "status": "unmapped",
+     "source": "not set; this node is used for verbatim HTML rendering, not syntax-highlighted code, so a source language-* class is not consulted"
     },
     {
      "key": "text_color",
      "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed color of the <pre>/<code>"
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "not set by mapper"
+    },
+    {
+     "key": "bg_color",
+     "tab": "Styling",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "not set by mapper"
     },
     {
      "key": "font_size_preset",
      "tab": "Styling",
-     "type": "font-size",
-     "status": "gap",
-     "source": "computed font-size of the code text"
+     "type": "select",
+     "status": "unmapped",
+     "source": "not set by mapper"
     },
     {
-     "key": "spacing",
-     "tab": "Styling",
-     "type": "spacing",
-     "status": "gap",
-     "source": "computed margin/padding of the code block"
-    },
-    {
-     "key": "animation",
+     "key": "animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …",
      "tab": "Animations",
-     "type": "group",
+     "type": "multi-picker",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "Default — Animation Engine effects (no source mapping)"
     },
     {
-     "key": "css_class",
+     "key": "spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*",
      "tab": "Advanced",
-     "type": "text",
+     "type": "text / code-editor",
      "status": "unmapped",
-     "source": "Default empty"
+     "source": "Default — outer spacing + per-instance advanced fields, set by hand"
     },
     {
-     "key": "css_id",
-     "tab": "Advanced",
-     "type": "text",
-     "status": "unmapped",
-     "source": "Default empty"
-    },
-    {
-     "key": "custom_css",
-     "tab": "Advanced",
-     "type": "textarea",
-     "status": "unmapped",
-     "source": "Not populated"
-    },
-    {
-     "key": "unique_id",
-     "tab": "Advanced",
-     "type": "hidden",
-     "status": "auto",
-     "source": "Generated"
-    },
-    {
-     "key": "responsive_hide",
+     "key": "unique_id · custom_attrs · responsive_hide",
      "tab": "Advanced",
      "type": "group",
      "status": "auto",
-     "source": "Not set"
-    },
-    {
-     "key": "custom_attrs",
-     "tab": "Advanced",
-     "type": "group",
-     "status": "auto",
-     "source": "Not set"
+     "source": "Plumbing — generated / not set"
     }
    ]
   },
@@ -2273,161 +1874,168 @@
      "tab": "Content",
      "type": "addable-popup",
      "status": "native",
-     "source": "One item per review — quote, author, role, avatar, rating"
+     "source": "derived-from captured rows: quote, author_name, author_job, avatar url, rating, site_name/url, and repeatable extra stat rows"
     },
     {
-     "key": "rating",
-     "tab": "Content",
-     "type": "number",
-     "status": "native",
-     "source": "Per item: star rating (defaults to 5)"
-    },
-    {
-     "key": "author_name_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "via-css",
-     "source": "Carried via a scoped custom_css when the source sets it"
-    },
-    {
-     "key": "author_job_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "via-css",
-     "source": "Same as author name"
-    },
-    {
-     "key": "design",
+     "key": "design_settings",
      "tab": "Design",
-     "type": "image-picker",
-     "status": "unmapped",
-     "source": "Default"
-    },
-    {
-     "key": "layout_type",
-     "tab": "Layout",
      "type": "multi-picker",
-     "status": "gap",
-     "source": "grid vs carousel/slider from DOM structure (slider wrapper vs grid)"
+     "status": "native",
+     "source": "derived-from detect_testimonial_design (marquee/carousel/masonry/bento/split/stacked/classic grid + layout_choice/grid_columns/sub-columns)"
     },
     {
-     "key": "grid_columns",
-     "tab": "Layout",
-     "type": "select",
-     "status": "gap",
-     "source": "column count from grid template / items per row"
+     "key": "card_preview",
+     "tab": "Card",
+     "type": "html-full",
+     "status": "unmapped",
+     "source": "not set by mapper"
     },
     {
-     "key": "avatar_shape",
-     "tab": "Design",
-     "type": "select",
-     "status": "gap",
-     "source": "border-radius of the avatar image (round vs square)"
-    },
-    {
-     "key": "avatar_size",
-     "tab": "Design",
-     "type": "unit-input",
-     "status": "gap",
-     "source": "computed width/height of the avatar image"
-    },
-    {
-     "key": "quote_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed color of the quote text"
-    },
-    {
-     "key": "bg_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed background-color of the testimonial card"
-    },
-    {
-     "key": "text_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed color of the testimonial text"
+     "key": "card_rows",
+     "tab": "Card",
+     "type": "addable-popup",
+     "status": "native",
+     "source": "derived-from presence of per-testimonial extra stat rows; mapper pins the rating/quote/avatar-author/extra card_rows layout only when a footer stat exists"
     },
     {
      "key": "box_style",
-     "tab": "Styling",
-     "type": "select",
+     "tab": "Card",
+     "type": "border-style-picker",
      "status": "unmapped",
-     "source": "Default"
+     "source": "not set by mapper"
     },
     {
-     "key": "font_size_preset",
-     "tab": "Styling",
-     "type": "font-size",
-     "status": "gap",
-     "source": "computed font-size of the testimonial text"
+     "key": "rating_symbol",
+     "tab": "Card",
+     "type": "image-picker",
+     "status": "unmapped",
+     "source": "not set by mapper"
+    },
+    {
+     "key": "rating_fill_color",
+     "tab": "Card",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "not set by mapper"
+    },
+    {
+     "key": "rating_empty_color",
+     "tab": "Card",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "not set by mapper"
+    },
+    {
+     "key": "rating_size",
+     "tab": "Card",
+     "type": "select",
+     "status": "unmapped",
+     "source": "not set by mapper"
+    },
+    {
+     "key": "container_type",
+     "tab": "Style",
+     "type": "select",
+     "status": "unmapped",
+     "source": "hardcoded 'container'"
+    },
+    {
+     "key": "text_align",
+     "tab": "Style",
+     "type": "image-picker",
+     "status": "unmapped",
+     "source": "hardcoded 'text-center'"
+    },
+    {
+     "key": "avatar_shape",
+     "tab": "Style",
+     "type": "select",
+     "status": "unmapped",
+     "source": "hardcoded 'rounded-circle'"
+    },
+    {
+     "key": "avatar_size",
+     "tab": "Style",
+     "type": "select",
+     "status": "unmapped",
+     "source": "hardcoded 'avatar-lg'"
     },
     {
      "key": "reviews_schema",
-     "tab": "SEO",
+     "tab": "Style",
      "type": "switch",
-     "status": "gap",
-     "source": "presence of schema.org Review/AggregateRating markup"
+     "status": "unmapped",
+     "source": "not set (only show_rating is set); reviews_schema left at option default"
     },
     {
-     "key": "spacing",
-     "tab": "Styling",
-     "type": "spacing",
-     "status": "gap",
-     "source": "computed margin/padding of the card/section"
+     "key": "text_color",
+     "tab": "Style",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "empty_color()"
     },
     {
-     "key": "custom_css",
-     "tab": "Advanced",
-     "type": "textarea",
-     "status": "via-css",
-     "source": "Author/role colour when set on the source"
+     "key": "bg_color",
+     "tab": "Style",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "empty_color()"
     },
     {
-     "key": "animation",
+     "key": "font_size_preset",
+     "tab": "Style",
+     "type": "select",
+     "status": "unmapped",
+     "source": "hardcoded ''"
+    },
+    {
+     "key": "quote_color",
+     "tab": "Style",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "empty_color()"
+    },
+    {
+     "key": "author_name_color",
+     "tab": "Style",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "empty_color(); source uppercase/letter-spacing kicker rides as scoped custom_css, not this color option"
+    },
+    {
+     "key": "author_job_color",
+     "tab": "Style",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "empty_color()"
+    },
+    {
+     "key": "site_link_color",
+     "tab": "Style",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "empty_color()"
+    },
+    {
+     "key": "animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …",
      "tab": "Animations",
-     "type": "group",
+     "type": "multi-picker",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "Default — Animation Engine effects (no source mapping)"
     },
     {
-     "key": "css_class",
+     "key": "spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*",
      "tab": "Advanced",
-     "type": "text",
+     "type": "text / code-editor",
      "status": "unmapped",
-     "source": "Default empty"
+     "source": "Default — outer spacing + per-instance advanced fields, set by hand"
     },
     {
-     "key": "css_id",
-     "tab": "Advanced",
-     "type": "text",
-     "status": "unmapped",
-     "source": "Default empty"
-    },
-    {
-     "key": "unique_id",
-     "tab": "Advanced",
-     "type": "hidden",
-     "status": "auto",
-     "source": "Generated"
-    },
-    {
-     "key": "responsive_hide",
+     "key": "unique_id · custom_attrs · responsive_hide",
      "tab": "Advanced",
      "type": "group",
      "status": "auto",
-     "source": "Not set"
-    },
-    {
-     "key": "custom_attrs",
-     "tab": "Advanced",
-     "type": "group",
-     "status": "auto",
-     "source": "Not set"
+     "source": "Plumbing — generated / not set"
     }
    ]
   },
@@ -2443,144 +2051,123 @@
    "recognizerNotes": "Built in group mode: each source image becomes a person in the stack, and a \"+N\" more count is carried. Names are placeholders (the source rarely names each face), and shape / size / colours use defaults.",
    "options": [
     {
-     "key": "mode",
+     "key": "mode_settings",
      "tab": "Content",
      "type": "multi-picker",
      "status": "native",
-     "source": "Set to `group` (the overlapping stack)"
-    },
-    {
-     "key": "people",
-     "tab": "Content",
-     "type": "addable-popup",
-     "status": "native",
-     "source": "One entry per source avatar image"
-    },
-    {
-     "key": "extra_count",
-     "tab": "Content",
-     "type": "text",
-     "status": "native",
-     "source": "The \"+N\" overflow count"
-    },
-    {
-     "key": "max_visible",
-     "tab": "Content",
-     "type": "number",
-     "status": "native",
-     "source": "How many show before the \"+N\""
-    },
-    {
-     "key": "overlap",
-     "tab": "Design",
-     "type": "number",
-     "status": "gap",
-     "source": "negative margin-left/right between adjacent stacked avatar images"
-    },
-    {
-     "key": "stack_order",
-     "tab": "Design",
-     "type": "select",
-     "status": "unmapped",
-     "source": "Default"
-    },
-    {
-     "key": "shape",
-     "tab": "Design",
-     "type": "select",
-     "status": "gap",
-     "source": "border-radius of the avatar image (0=square, 50%=circle, else rounded)"
-    },
-    {
-     "key": "size",
-     "tab": "Design",
-     "type": "select",
-     "status": "gap",
-     "source": "computed width/height of the avatar image"
+     "source": "derived-from captured avatar image URLs → group.people[] (image/url), max_visible + extra_count"
     },
     {
      "key": "design",
      "tab": "Design",
      "type": "image-picker",
      "status": "unmapped",
-     "source": "Default"
+     "source": "hardcoded 'bordered'; not derived from source"
     },
     {
-     "key": "ring_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed border-color or ring box-shadow color around the avatar"
+     "key": "shape",
+     "tab": "Design",
+     "type": "select",
+     "status": "unmapped",
+     "source": "hardcoded 'circle'; not derived"
+    },
+    {
+     "key": "size",
+     "tab": "Design",
+     "type": "slider",
+     "status": "unmapped",
+     "source": "hardcoded 40px; not derived"
     },
     {
      "key": "show_status",
-     "tab": "Content",
+     "tab": "Design",
      "type": "switch",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "no source signal; UnysonPlus-specific status dot"
     },
     {
      "key": "show_label",
-     "tab": "Content",
+     "tab": "Design",
      "type": "switch",
-     "status": "gap",
-     "source": "presence of an adjacent name/label text node beside the avatar"
-    },
-    {
-     "key": "spacing",
-     "tab": "Styling",
-     "type": "spacing",
      "status": "unmapped",
-     "source": "Default"
+     "source": "hardcoded 'no'; not derived"
     },
     {
-     "key": "animation",
+     "key": "initials_color_mode",
+     "tab": "Design",
+     "type": "select",
+     "status": "unmapped",
+     "source": "not set; UnysonPlus-specific"
+    },
+    {
+     "key": "ring_color",
+     "tab": "Style",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "initials_bg",
+     "tab": "Style",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "initials_color",
+     "tab": "Style",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "label_color",
+     "tab": "Style",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "counter_bg",
+     "tab": "Style",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "counter_color",
+     "tab": "Style",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "font_size_preset",
+     "tab": "Style",
+     "type": "select",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …",
      "tab": "Animations",
-     "type": "group",
+     "type": "multi-picker",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "Default — Animation Engine effects (no source mapping)"
     },
     {
-     "key": "css_class",
+     "key": "spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*",
      "tab": "Advanced",
-     "type": "text",
+     "type": "text / code-editor",
      "status": "unmapped",
-     "source": "Default empty"
+     "source": "Default — outer spacing + per-instance advanced fields, set by hand"
     },
     {
-     "key": "css_id",
-     "tab": "Advanced",
-     "type": "text",
-     "status": "unmapped",
-     "source": "Default empty"
-    },
-    {
-     "key": "custom_css",
-     "tab": "Advanced",
-     "type": "textarea",
-     "status": "unmapped",
-     "source": "Not populated"
-    },
-    {
-     "key": "unique_id",
-     "tab": "Advanced",
-     "type": "hidden",
-     "status": "auto",
-     "source": "Generated"
-    },
-    {
-     "key": "responsive_hide",
+     "key": "unique_id · custom_attrs · responsive_hide",
      "tab": "Advanced",
      "type": "group",
      "status": "auto",
-     "source": "Not set"
-    },
-    {
-     "key": "custom_attrs",
-     "tab": "Advanced",
-     "type": "group",
-     "status": "auto",
-     "source": "Not set"
+     "source": "Plumbing — generated / not set"
     }
    ]
   },
@@ -2600,182 +2187,231 @@
      "tab": "Content",
      "type": "upload",
      "status": "native",
-     "source": "The source image (side-loaded)"
+     "source": "derived-from source card image src (sideloaded upload value)"
     },
     {
      "key": "image_alt",
      "tab": "Content",
      "type": "text",
      "status": "native",
-     "source": "Alt text from the source `<img>`"
+     "source": "derived-from source img alt attribute"
+    },
+    {
+     "key": "subtitle",
+     "tab": "Content",
+     "type": "text",
+     "status": "unmapped",
+     "source": "not set; no subtitle captured"
     },
     {
      "key": "title",
      "tab": "Content",
      "type": "text",
      "status": "native",
-     "source": "Card title"
+     "source": "derived-from card title (stripped tags)"
     },
     {
      "key": "title_tag",
      "tab": "Content",
      "type": "select",
      "status": "native",
-     "source": "Source heading tag"
+     "source": "derived-from card titleTag (validated h2-h6)"
     },
     {
      "key": "text",
      "tab": "Content",
      "type": "wp-editor",
      "status": "native",
-     "source": "Card body text"
+     "source": "derived-from card text/body HTML"
     },
     {
      "key": "icon",
      "tab": "Content",
      "type": "icon",
-     "status": "gap",
-     "source": "presence and class of an <i>/svg icon element inside the box"
+     "status": "unmapped",
+     "source": "not set; image_box path has no icon"
+    },
+    {
+     "key": "custom_icon",
+     "tab": "Content",
+     "type": "hidden",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "button_style",
+     "tab": "Content",
+     "type": "select",
+     "status": "native",
+     "source": "derived-from detected CTA (arrow glyph → 'arrow', else 'link')"
     },
     {
      "key": "button_label",
      "tab": "Content",
      "type": "text",
+     "status": "native",
+     "source": "derived-from CTA/link label"
+    },
+    {
+     "key": "sc_design_panel",
+     "tab": "Presets",
+     "type": "html-full",
+     "status": "unmapped",
+     "source": "display-only html panel; not a stored value"
+    },
+    {
+     "key": "design_settings",
+     "tab": "Design",
+     "type": "multi-picker",
+     "status": "unmapped",
+     "source": "hardcoded family 'stacked' (img-title-text); overlay/side not auto-detected"
+    },
+    {
+     "key": "image_ratio",
+     "tab": "Design",
+     "type": "select",
+     "status": "native",
+     "source": "derived-from source frame aspect (aspect-square/video/[x/y]/img aspect) → ratio slug"
+    },
+    {
+     "key": "content_align",
+     "tab": "Design",
+     "type": "image-picker",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "image_size",
+     "tab": "Design",
+     "type": "short-select",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "hover_effect",
+     "tab": "Effects & Link",
+     "type": "select",
+     "status": "unmapped",
+     "source": "not set; UnysonPlus-specific"
+    },
+    {
+     "key": "transition_speed",
+     "tab": "Effects & Link",
+     "type": "select",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "link_behavior",
+     "tab": "Effects & Link",
+     "type": "select",
+     "status": "native",
+     "source": "derived-from card/CTA href → 'url' when a real link exists"
+    },
+    {
+     "key": "link_url",
+     "tab": "Effects & Link",
+     "type": "text",
+     "status": "native",
+     "source": "derived-from CTA/card href"
+    },
+    {
+     "key": "link_target",
+     "tab": "Effects & Link",
+     "type": "switch",
+     "status": "native",
+     "source": "set '_self' when a link is present (source target not read → effectively default target)"
+    },
+    {
+     "key": "box_style",
+     "tab": "Styling",
+     "type": "border-style-picker",
      "status": "gap",
-     "source": "text content of the box's button/anchor CTA"
+     "source": "signal: computed border / box-shadow on card wrapper maps to boxp-outline/soft-shadow"
     },
     {
      "key": "image_style",
      "tab": "Styling",
      "type": "image-style-picker",
-     "status": "unmapped",
-     "source": "Not matched to an Image Style preset"
-    },
-    {
-     "key": "image_side",
-     "tab": "Layout",
-     "type": "select",
      "status": "gap",
-     "source": "DOM order / flex-direction of image vs text block (left/right/top)"
-    },
-    {
-     "key": "image_ratio",
-     "tab": "Layout",
-     "type": "select",
-     "status": "gap",
-     "source": "computed width:height aspect-ratio of the image element"
-    },
-    {
-     "key": "frame",
-     "tab": "Styling",
-     "type": "select",
-     "status": "unmapped",
-     "source": "Default"
-    },
-    {
-     "key": "overlay",
-     "tab": "Styling",
-     "type": "switch",
-     "status": "gap",
-     "source": "presence of a semi-transparent color layer stacked over the image"
-    },
-    {
-     "key": "hover_effect",
-     "tab": "Styling",
-     "type": "select",
-     "status": "unmapped",
-     "source": "Default"
-    },
-    {
-     "key": "box_style",
-     "tab": "Styling",
-     "type": "select",
-     "status": "unmapped",
-     "source": "Default"
-    },
-    {
-     "key": "title_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed color of the title element"
-    },
-    {
-     "key": "content_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed color of the body/description text"
+     "source": "signal: computed border-radius (rounded/circle) and grayscale filter (monochrome) on image"
     },
     {
      "key": "bg_color",
      "tab": "Styling",
-     "type": "color",
+     "type": "predefined-colors-color-picker-compact",
      "status": "gap",
-     "source": "computed background-color of the box container"
+     "source": "signal: computed background-color of card"
     },
     {
-     "key": "link_url",
-     "tab": "Link",
-     "type": "text",
-     "status": "gap",
-     "source": "href of the wrapping/CTA anchor"
-    },
-    {
-     "key": "spacing",
+     "key": "font_size_preset",
      "tab": "Styling",
-     "type": "spacing",
+     "type": "select",
      "status": "unmapped",
-     "source": "Default"
+     "source": "not set"
     },
     {
-     "key": "animation",
+     "key": "title_color",
+     "tab": "Styling",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "gap",
+     "source": "signal: computed color of title element"
+    },
+    {
+     "key": "subtitle_color",
+     "tab": "Styling",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "no subtitle captured"
+    },
+    {
+     "key": "content_color",
+     "tab": "Styling",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "gap",
+     "source": "signal: computed color of body text"
+    },
+    {
+     "key": "icon_color",
+     "tab": "Styling",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "no icon in image_box path"
+    },
+    {
+     "key": "icon_badge_preset",
+     "tab": "Styling",
+     "type": "border-style-picker",
+     "status": "unmapped",
+     "source": "not set; no icon"
+    },
+    {
+     "key": "accent_color",
+     "tab": "Styling",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …",
      "tab": "Animations",
-     "type": "group",
+     "type": "multi-picker",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "Default — Animation Engine effects (no source mapping)"
     },
     {
-     "key": "css_class",
+     "key": "spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*",
      "tab": "Advanced",
-     "type": "text",
+     "type": "text / code-editor",
      "status": "unmapped",
-     "source": "Default empty"
+     "source": "Default — outer spacing + per-instance advanced fields, set by hand"
     },
     {
-     "key": "css_id",
-     "tab": "Advanced",
-     "type": "text",
-     "status": "unmapped",
-     "source": "Default empty"
-    },
-    {
-     "key": "custom_css",
-     "tab": "Advanced",
-     "type": "textarea",
-     "status": "unmapped",
-     "source": "Not populated"
-    },
-    {
-     "key": "unique_id",
-     "tab": "Advanced",
-     "type": "hidden",
-     "status": "auto",
-     "source": "Generated"
-    },
-    {
-     "key": "responsive_hide",
+     "key": "unique_id · custom_attrs · responsive_hide",
      "tab": "Advanced",
      "type": "group",
      "status": "auto",
-     "source": "Not set"
-    },
-    {
-     "key": "custom_attrs",
-     "tab": "Advanced",
-     "type": "group",
-     "status": "auto",
-     "source": "Not set"
+     "source": "Plumbing — generated / not set"
     }
    ]
   },
@@ -2795,126 +2431,112 @@
      "tab": "Content",
      "type": "multi-picker",
      "status": "native",
-     "source": "Set to Media, holding the side-loaded images + per-image width ratio"
+     "source": "derived-from captured images → source.kind=media, source.media.images[]"
     },
     {
-     "key": "design",
+     "key": "design_settings",
      "tab": "Design",
-     "type": "image-picker",
-     "status": "unmapped",
-     "source": "Default layout (masonry / grid / carousel…)"
+     "type": "multi-picker",
+     "status": "native",
+     "source": "derived-from detect_gallery_design (marquee/carousel/masonry/metro columns/grid col-ratio)"
     },
     {
-     "key": "grid",
-     "tab": "Layout",
-     "type": "group",
-     "status": "gap",
-     "source": "column count from grid-template-columns / items-per-row in the DOM"
+     "key": "container_type",
+     "tab": "Style",
+     "type": "select",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "click",
+     "tab": "Style",
+     "type": "multi-picker",
+     "status": "unmapped",
+     "source": "click_action hardcoded 'lightbox'; not derived"
     },
     {
      "key": "captions",
-     "tab": "Content",
-     "type": "switch",
+     "tab": "Style",
+     "type": "select",
      "status": "gap",
-     "source": "presence of <figcaption>/caption elements on gallery items"
+     "source": "signal: presence of figcaption/caption elements in source gallery"
     },
     {
      "key": "caption_source",
-     "tab": "Content",
+     "tab": "Style",
      "type": "select",
      "status": "unmapped",
-     "source": "Default"
+     "source": "not set; UnysonPlus-specific source selector"
     },
     {
      "key": "hover_zoom",
-     "tab": "Design",
+     "tab": "Style",
      "type": "switch",
      "status": "unmapped",
-     "source": "Default"
+     "source": "hardcoded 'yes'; not derived"
     },
     {
-     "key": "ken_burns",
-     "tab": "Design",
-     "type": "switch",
-     "status": "unmapped",
-     "source": "Default"
+     "key": "box_style",
+     "tab": "Style",
+     "type": "border-style-picker",
+     "status": "gap",
+     "source": "signal: computed border / box-shadow on tiles"
+    },
+    {
+     "key": "image_style",
+     "tab": "Style",
+     "type": "image-style-picker",
+     "status": "gap",
+     "source": "signal: computed border-radius / filter on images (converter only forces flat 'rounded')"
+    },
+    {
+     "key": "text_color",
+     "tab": "Style",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "gap",
+     "source": "signal: computed text color"
     },
     {
      "key": "bg_color",
-     "tab": "Styling",
-     "type": "color",
+     "tab": "Style",
+     "type": "predefined-colors-color-picker-compact",
      "status": "gap",
-     "source": "computed background-color of the gallery/item container"
-    },
-    {
-     "key": "caption_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed color of the caption text"
+     "source": "signal: computed background-color of gallery container"
     },
     {
      "key": "font_size_preset",
-     "tab": "Styling",
-     "type": "font-size",
-     "status": "gap",
-     "source": "computed font-size of the caption text"
-    },
-    {
-     "key": "spacing",
-     "tab": "Styling",
-     "type": "spacing",
+     "tab": "Style",
+     "type": "select",
      "status": "unmapped",
-     "source": "Default"
+     "source": "not set"
     },
     {
-     "key": "animation",
+     "key": "caption_color",
+     "tab": "Style",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "no caption text reliably captured"
+    },
+    {
+     "key": "animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …",
      "tab": "Animations",
-     "type": "group",
+     "type": "multi-picker",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "Default — Animation Engine effects (no source mapping)"
     },
     {
-     "key": "css_class",
+     "key": "spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*",
      "tab": "Advanced",
-     "type": "text",
+     "type": "text / code-editor",
      "status": "unmapped",
-     "source": "Default empty"
+     "source": "Default — outer spacing + per-instance advanced fields, set by hand"
     },
     {
-     "key": "css_id",
-     "tab": "Advanced",
-     "type": "text",
-     "status": "unmapped",
-     "source": "Default empty"
-    },
-    {
-     "key": "custom_css",
-     "tab": "Advanced",
-     "type": "textarea",
-     "status": "unmapped",
-     "source": "Not populated"
-    },
-    {
-     "key": "unique_id",
-     "tab": "Advanced",
-     "type": "hidden",
-     "status": "auto",
-     "source": "Generated"
-    },
-    {
-     "key": "responsive_hide",
+     "key": "unique_id · custom_attrs · responsive_hide",
      "tab": "Advanced",
      "type": "group",
      "status": "auto",
-     "source": "Not set"
-    },
-    {
-     "key": "custom_attrs",
-     "tab": "Advanced",
-     "type": "group",
-     "status": "auto",
-     "source": "Not set"
+     "source": "Plumbing — generated / not set"
     }
    ]
   },
@@ -2930,165 +2552,151 @@
    "recognizerNotes": "The visible copy maps — the email (and name) placeholder, the button label, alignment, corner rounding, and the button colour. The list binding and the surrounding colours/messages are left for you to set.",
    "options": [
     {
-     "key": "email_placeholder",
+     "key": "title",
      "tab": "Content",
      "type": "text",
-     "status": "native",
-     "source": "Source email field placeholder"
+     "status": "unmapped",
+     "source": "explicitly cleared to '' by mapper"
     },
     {
-     "key": "button_label",
+     "key": "description",
      "tab": "Content",
-     "type": "text",
-     "status": "native",
-     "source": "Subscribe button label"
-    },
-    {
-     "key": "name_placeholder",
-     "tab": "Content",
-     "type": "text",
-     "status": "native",
-     "source": "Name field placeholder (when present)"
+     "type": "textarea",
+     "status": "unmapped",
+     "source": "explicitly cleared to '' by mapper"
     },
     {
      "key": "show_name",
      "tab": "Content",
      "type": "switch",
      "status": "native",
-     "source": "On when the source form has a name field"
+     "source": "derived-from captured show_name flag"
     },
     {
-     "key": "align",
-     "tab": "Layout",
-     "type": "select",
-     "status": "native",
-     "source": "Source alignment"
-    },
-    {
-     "key": "rounded",
-     "tab": "Design",
-     "type": "select",
-     "status": "native",
-     "source": "Corner rounding from the source"
-    },
-    {
-     "key": "accent_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "native",
-     "source": "Button colour from the source"
-    },
-    {
-     "key": "list_id",
+     "key": "name_placeholder",
      "tab": "Content",
      "type": "text",
-     "status": "unmapped",
-     "source": "You bind the list"
+     "status": "native",
+     "source": "derived-from source name field placeholder (when show_name)"
     },
     {
-     "key": "title",
+     "key": "email_placeholder",
      "tab": "Content",
      "type": "text",
-     "status": "gap",
-     "source": "heading text content within the newsletter form block"
+     "status": "native",
+     "source": "derived-from source email input placeholder"
+    },
+    {
+     "key": "button_label",
+     "tab": "Content",
+     "type": "text",
+     "status": "native",
+     "source": "derived-from source submit button label"
     },
     {
      "key": "consent_text",
      "tab": "Content",
-     "type": "text",
-     "status": "gap",
-     "source": "label text of the consent checkbox"
+     "type": "textarea",
+     "status": "unmapped",
+     "source": "not set"
     },
     {
      "key": "success_message",
      "tab": "Content",
      "type": "text",
      "status": "unmapped",
-     "source": "Default"
+     "source": "not set"
     },
     {
      "key": "error_message",
      "tab": "Content",
      "type": "text",
      "status": "unmapped",
-     "source": "Default"
+     "source": "not set"
     },
     {
-     "key": "bg_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed background-color of the form container"
+     "key": "list_id",
+     "tab": "Content",
+     "type": "text",
+     "status": "unmapped",
+     "source": "not set; UnysonPlus/integration-specific"
     },
     {
-     "key": "text_color",
+     "key": "design",
+     "tab": "Design",
+     "type": "image-picker",
+     "status": "unmapped",
+     "source": "hardcoded 'inline'; not derived"
+    },
+    {
+     "key": "align",
+     "tab": "Design",
+     "type": "image-picker",
+     "status": "native",
+     "source": "derived-from source align (left/center/right)"
+    },
+    {
+     "key": "rounded",
+     "tab": "Design",
+     "type": "select",
+     "status": "native",
+     "source": "derived-from source rounded (rounded-0/rounded/pill)"
+    },
+    {
+     "key": "accent_color",
      "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "computed color of the form text"
+     "type": "predefined-colors-color-picker-compact",
+     "status": "native",
+     "source": "derived-from computed submit button background (custom color)"
     },
     {
      "key": "field_bg",
      "tab": "Styling",
-     "type": "color",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "native",
+     "source": "derived-from computed input field background (custom color)"
+    },
+    {
+     "key": "bg_color",
+     "tab": "Styling",
+     "type": "predefined-colors-color-picker-compact",
      "status": "gap",
-     "source": "computed background-color of the input field(s)"
+     "source": "signal: computed background-color of newsletter block"
+    },
+    {
+     "key": "text_color",
+     "tab": "Styling",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "gap",
+     "source": "signal: computed text color (button fg is captured for custom_css but bg_color/text_color not mapped)"
     },
     {
      "key": "font_size_preset",
      "tab": "Styling",
-     "type": "font-size",
-     "status": "gap",
-     "source": "computed font-size of the form body text"
-    },
-    {
-     "key": "spacing",
-     "tab": "Styling",
-     "type": "spacing",
+     "type": "select",
      "status": "unmapped",
-     "source": "Default"
+     "source": "not set"
     },
     {
-     "key": "animation",
+     "key": "animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …",
      "tab": "Animations",
-     "type": "group",
+     "type": "multi-picker",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "Default — Animation Engine effects (no source mapping)"
     },
     {
-     "key": "css_class",
+     "key": "spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*",
      "tab": "Advanced",
-     "type": "text",
+     "type": "text / code-editor",
      "status": "unmapped",
-     "source": "Default empty"
+     "source": "Default — outer spacing + per-instance advanced fields, set by hand"
     },
     {
-     "key": "css_id",
-     "tab": "Advanced",
-     "type": "text",
-     "status": "unmapped",
-     "source": "Default empty"
-    },
-    {
-     "key": "unique_id",
-     "tab": "Advanced",
-     "type": "hidden",
-     "status": "auto",
-     "source": "Generated"
-    },
-    {
-     "key": "responsive_hide",
+     "key": "unique_id · custom_attrs · responsive_hide",
      "tab": "Advanced",
      "type": "group",
      "status": "auto",
-     "source": "Not set"
-    },
-    {
-     "key": "custom_attrs",
-     "tab": "Advanced",
-     "type": "group",
-     "status": "auto",
-     "source": "Not set"
+     "source": "Plumbing — generated / not set"
     }
    ]
   },
@@ -3201,165 +2809,403 @@
    "recognizerNotes": "A placeholder post grid, configured to *match the source layout* — post count, layout mode, card style, column count, and which meta (date / author) shows. The cards then pull live posts; the per-card styling, filters and colours use defaults.",
    "options": [
     {
-     "key": "posts_per_page",
-     "tab": "Content",
-     "type": "number",
-     "status": "native",
-     "source": "Post count (from the source grid)"
-    },
-    {
-     "key": "layout_mode",
-     "tab": "Layout",
-     "type": "select",
-     "status": "native",
-     "source": "grid / list / masonry, from the source"
-    },
-    {
-     "key": "card_style",
-     "tab": "Design",
-     "type": "select",
-     "status": "native",
-     "source": "Matched card style"
-    },
-    {
-     "key": "columns_desktop",
-     "tab": "Layout",
-     "type": "select",
-     "status": "native",
-     "source": "Column count"
-    },
-    {
-     "key": "meta_items",
-     "tab": "Content",
-     "type": "checkboxes",
-     "status": "native",
-     "source": "Which meta shows (date / author)"
+     "key": "use_current_query",
+     "tab": "Query",
+     "type": "switch",
+     "status": "unmapped",
+     "source": "converter always builds an explicit post_type=post query; no signal"
     },
     {
      "key": "post_type",
-     "tab": "Content",
+     "tab": "Query",
      "type": "select",
-     "status": "unmapped",
-     "source": "Default (post)"
+     "status": "native",
+     "source": "derived-from: hardcoded to 'post' by n_posts"
     },
     {
      "key": "taxonomy_filter",
-     "tab": "Content",
-     "type": "multi-select",
+     "tab": "Query",
+     "type": "text",
      "status": "unmapped",
-     "source": "Default"
+     "source": "not set; taxonomy filtering not derived from source"
+    },
+    {
+     "key": "taxonomy_relation",
+     "tab": "Query",
+     "type": "radio",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "include_ids",
+     "tab": "Query",
+     "type": "text",
+     "status": "unmapped",
+     "source": "not set; dynamic feed, no specific IDs"
+    },
+    {
+     "key": "exclude_ids",
+     "tab": "Query",
+     "type": "text",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "author_ids",
+     "tab": "Query",
+     "type": "text",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "date_range",
+     "tab": "Query",
+     "type": "select",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "posts_per_page",
+     "tab": "Query",
+     "type": "short-text",
+     "status": "native",
+     "source": "derived-from: count of card headings in source listing (max 3)"
+    },
+    {
+     "key": "offset",
+     "tab": "Query",
+     "type": "short-text",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "orderby",
+     "tab": "Query",
+     "type": "select",
+     "status": "native",
+     "source": "derived-from: hardcoded 'date' by n_posts"
+    },
+    {
+     "key": "meta_key",
+     "tab": "Query",
+     "type": "text",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "order",
+     "tab": "Query",
+     "type": "radio",
+     "status": "native",
+     "source": "derived-from: hardcoded 'DESC' by n_posts"
+    },
+    {
+     "key": "exclude_current",
+     "tab": "Query",
+     "type": "switch",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "sticky_handling",
+     "tab": "Query",
+     "type": "select",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "design",
+     "tab": "Design",
+     "type": "multi-picker",
+     "status": "native",
+     "source": "derived-from: detect_posts_design layout_mode (grid/masonry/list/slider) from source container classes + slider/marquee markers"
+    },
+    {
+     "key": "card",
+     "tab": "Design",
+     "type": "multi-picker",
+     "status": "native",
+     "source": "derived-from: detect_posts_design card_style from first card image placement (standard/side-left/overlay/minimal)"
+    },
+    {
+     "key": "box_style",
+     "tab": "Design",
+     "type": "border-style-picker",
+     "status": "unmapped",
+     "source": "not set; card box treatment not derived"
     },
     {
      "key": "image_style",
      "tab": "Design",
      "type": "image-style-picker",
      "status": "unmapped",
-     "source": "Default"
+     "source": "not set; feed images come from WP, source card image styling not carried"
+    },
+    {
+     "key": "image_size",
+     "tab": "Design",
+     "type": "select",
+     "status": "unmapped",
+     "source": "not set"
     },
     {
      "key": "image_ratio",
      "tab": "Design",
      "type": "select",
      "status": "gap",
-     "source": "Aspect ratio of post-card thumbnail <img> from its computed/intrinsic width:height"
+     "source": "signal: computed aspect-ratio of source card featured images"
+    },
+    {
+     "key": "fallback_image_url",
+     "tab": "Design",
+     "type": "text",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "card_padding",
+     "tab": "Design",
+     "type": "select",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "text_align",
+     "tab": "Design",
+     "type": "image-picker",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "mobile_layout_override",
+     "tab": "Design",
+     "type": "select",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "card_preview",
+     "tab": "Elements",
+     "type": "html-full",
+     "status": "unmapped",
+     "source": "not set; UnysonPlus-specific card designer"
+    },
+    {
+     "key": "card_rows",
+     "tab": "Elements",
+     "type": "addable-popup",
+     "status": "unmapped",
+     "source": "not set; UnysonPlus-specific card row composer"
+    },
+    {
+     "key": "title_tag",
+     "tab": "Elements",
+     "type": "select",
+     "status": "gap",
+     "source": "signal: heading tag level (h2-h5) used on source cards"
+    },
+    {
+     "key": "cat_position",
+     "tab": "Elements",
+     "type": "select",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "cat_taxonomy",
+     "tab": "Elements",
+     "type": "text",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "cat_max",
+     "tab": "Elements",
+     "type": "short-text",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "meta_items",
+     "tab": "Elements",
+     "type": "checkboxes",
+     "status": "native",
+     "source": "derived-from: date + author signals detected in source (has_date_signal, 'by <Name>' pattern); comments/reading_time not detected"
+    },
+    {
+     "key": "meta_layout",
+     "tab": "Elements",
+     "type": "select",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "date_format",
+     "tab": "Elements",
+     "type": "select",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "excerpt_source",
+     "tab": "Elements",
+     "type": "select",
+     "status": "unmapped",
+     "source": "not set; content comes from live WP query"
     },
     {
      "key": "excerpt_length",
-     "tab": "Content",
-     "type": "number",
+     "tab": "Elements",
+     "type": "short-text",
      "status": "unmapped",
-     "source": "Default"
+     "source": "not set"
+    },
+    {
+     "key": "excerpt_suffix",
+     "tab": "Elements",
+     "type": "short-text",
+     "status": "unmapped",
+     "source": "not set"
     },
     {
      "key": "readmore",
-     "tab": "Content",
-     "type": "switch",
-     "status": "gap",
-     "source": "Presence of a 'Read more'/continue-reading anchor within each post card"
+     "tab": "Elements",
+     "type": "multi-picker",
+     "status": "unmapped",
+     "source": "not set"
     },
     {
-     "key": "live_filters",
-     "tab": "Behavior",
-     "type": "switch",
+     "key": "readmore_text",
+     "tab": "Elements",
+     "type": "text",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "not set"
     },
     {
      "key": "pagination",
-     "tab": "Behavior",
+     "tab": "Navigation & Cache",
+     "type": "multi-picker",
+     "status": "unmapped",
+     "source": "converter forces pagination off (pagination_type=none); not detected from source"
+    },
+    {
+     "key": "live_filters",
+     "tab": "Navigation & Cache",
+     "type": "switch",
+     "status": "unmapped",
+     "source": "not set; UnysonPlus feature"
+    },
+    {
+     "key": "filters_position",
+     "tab": "Navigation & Cache",
      "type": "select",
-     "status": "gap",
-     "source": "Presence and kind of pager markup (numbered .page-numbers links, prev/next, or infinite-scroll hooks)"
+     "status": "unmapped",
+     "source": "not set"
     },
     {
-     "key": "title_color",
-     "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "Computed color of the post title link/heading"
+     "key": "cache_output",
+     "tab": "Navigation & Cache",
+     "type": "switch",
+     "status": "unmapped",
+     "source": "not set; UnysonPlus feature"
     },
     {
-     "key": "meta_color",
+     "key": "cache_hours",
+     "tab": "Navigation & Cache",
+     "type": "select",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "no_results_text",
+     "tab": "Navigation & Cache",
+     "type": "text",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "text_color",
      "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "Computed color of the post meta text (date/author/category)"
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "not set; UnysonPlus predefined palette"
     },
     {
      "key": "bg_color",
      "tab": "Styling",
-     "type": "color",
-     "status": "gap",
-     "source": "Computed background-color of the post card container"
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "not set; UnysonPlus predefined palette"
     },
     {
-     "key": "spacing",
+     "key": "title_color",
      "tab": "Styling",
-     "type": "spacing",
+     "type": "predefined-colors-color-picker-compact",
      "status": "unmapped",
-     "source": "Default"
+     "source": "not set; UnysonPlus predefined palette"
     },
     {
-     "key": "animation",
+     "key": "excerpt_color",
+     "tab": "Styling",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "not set; UnysonPlus predefined palette"
+    },
+    {
+     "key": "meta_color",
+     "tab": "Styling",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "not set; UnysonPlus predefined palette"
+    },
+    {
+     "key": "chip_bg",
+     "tab": "Styling",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "not set; UnysonPlus predefined palette"
+    },
+    {
+     "key": "chip_color",
+     "tab": "Styling",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "not set; UnysonPlus predefined palette"
+    },
+    {
+     "key": "accent_color",
+     "tab": "Styling",
+     "type": "predefined-colors-color-picker-compact",
+     "status": "unmapped",
+     "source": "not set; UnysonPlus predefined palette"
+    },
+    {
+     "key": "font_size_preset",
+     "tab": "Styling",
+     "type": "select",
+     "status": "unmapped",
+     "source": "not set"
+    },
+    {
+     "key": "animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …",
      "tab": "Animations",
-     "type": "group",
+     "type": "multi-picker",
      "status": "unmapped",
-     "source": "Default off"
+     "source": "Default — Animation Engine effects (no source mapping)"
     },
     {
-     "key": "css_class",
+     "key": "spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*",
      "tab": "Advanced",
-     "type": "text",
+     "type": "text / code-editor",
      "status": "unmapped",
-     "source": "Default empty"
+     "source": "Default — outer spacing + per-instance advanced fields, set by hand"
     },
     {
-     "key": "css_id",
-     "tab": "Advanced",
-     "type": "text",
-     "status": "unmapped",
-     "source": "Default empty"
-    },
-    {
-     "key": "unique_id",
-     "tab": "Advanced",
-     "type": "hidden",
-     "status": "auto",
-     "source": "Generated"
-    },
-    {
-     "key": "responsive_hide",
+     "key": "unique_id · custom_attrs · responsive_hide",
      "tab": "Advanced",
      "type": "group",
      "status": "auto",
-     "source": "Not set"
-    },
-    {
-     "key": "custom_attrs",
-     "tab": "Advanced",
-     "type": "group",
-     "status": "auto",
-     "source": "Not set"
+     "source": "Plumbing — generated / not set"
     }
    ]
   },

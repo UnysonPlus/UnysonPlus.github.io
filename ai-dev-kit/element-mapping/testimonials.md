@@ -29,38 +29,35 @@ Each review becomes an item — quote, author name, role, avatar, site name/URL 
 
 ## Option coverage
 
-**2/20 options mapped natively** (10%) — 🟡 3 via CSS · ⚠️ 10 gaps (derivable, not yet) · ⚪ 5 default · ⚙️ 3 auto.
-
-:::tip[10 derivable gaps]
-The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
-:::
+**3/23 options mapped natively** (13%) — 🟡 0 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 20 default · ⚙️ 1 auto.
 
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
-| `testimonials` | Content | `addable-popup` | ✅ Native | One item per review — quote, author, role, avatar, rating |
-| `rating` | Content | `number` | ✅ Native | Per item: star rating (defaults to 5) |
-| `author_name_color` | Styling | `color` | 🟡 Via CSS | Carried via a scoped custom_css when the source sets it |
-| `author_job_color` | Styling | `color` | 🟡 Via CSS | Same as author name |
-| `design` | Design | `image-picker` | ⚪ Unmapped | Default |
-| `layout_type` | Layout | `multi-picker` | ⚠️ Gap | grid vs carousel/slider from DOM structure (slider wrapper vs grid) |
-| `grid_columns` | Layout | `select` | ⚠️ Gap | column count from grid template / items per row |
-| `avatar_shape` | Design | `select` | ⚠️ Gap | border-radius of the avatar image (round vs square) |
-| `avatar_size` | Design | `unit-input` | ⚠️ Gap | computed width/height of the avatar image |
-| `quote_color` | Styling | `color` | ⚠️ Gap | computed color of the quote text |
-| `bg_color` | Styling | `color` | ⚠️ Gap | computed background-color of the testimonial card |
-| `text_color` | Styling | `color` | ⚠️ Gap | computed color of the testimonial text |
-| `box_style` | Styling | `select` | ⚪ Unmapped | Default |
-| `font_size_preset` | Styling | `font-size` | ⚠️ Gap | computed font-size of the testimonial text |
-| `reviews_schema` | SEO | `switch` | ⚠️ Gap | presence of schema.org Review/AggregateRating markup |
-| `spacing` | Styling | `spacing` | ⚠️ Gap | computed margin/padding of the card/section |
-| `custom_css` | Advanced | `textarea` | 🟡 Via CSS | Author/role colour when set on the source |
-| `animation` | Animations | `group` | ⚪ Unmapped | Default off |
-| `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `css_id` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `unique_id` | Advanced | `hidden` | ⚙️ Auto | Generated |
-| `responsive_hide` | Advanced | `group` | ⚙️ Auto | Not set |
-| `custom_attrs` | Advanced | `group` | ⚙️ Auto | Not set |
+| `testimonials` | Content | `addable-popup` | ✅ Native | derived-from captured rows: quote, author_name, author_job, avatar url, rating, site_name/url, and repeatable extra stat rows |
+| `design_settings` | Design | `multi-picker` | ✅ Native | derived-from detect_testimonial_design (marquee/carousel/masonry/bento/split/stacked/classic grid + layout_choice/grid_columns/sub-columns) |
+| `card_preview` | Card | `html-full` | ⚪ Unmapped | not set by mapper |
+| `card_rows` | Card | `addable-popup` | ✅ Native | derived-from presence of per-testimonial extra stat rows; mapper pins the rating/quote/avatar-author/extra card_rows layout only when a footer stat exists |
+| `box_style` | Card | `border-style-picker` | ⚪ Unmapped | not set by mapper |
+| `rating_symbol` | Card | `image-picker` | ⚪ Unmapped | not set by mapper |
+| `rating_fill_color` | Card | `predefined-colors-color-picker-compact` | ⚪ Unmapped | not set by mapper |
+| `rating_empty_color` | Card | `predefined-colors-color-picker-compact` | ⚪ Unmapped | not set by mapper |
+| `rating_size` | Card | `select` | ⚪ Unmapped | not set by mapper |
+| `container_type` | Style | `select` | ⚪ Unmapped | hardcoded 'container' |
+| `text_align` | Style | `image-picker` | ⚪ Unmapped | hardcoded 'text-center' |
+| `avatar_shape` | Style | `select` | ⚪ Unmapped | hardcoded 'rounded-circle' |
+| `avatar_size` | Style | `select` | ⚪ Unmapped | hardcoded 'avatar-lg' |
+| `reviews_schema` | Style | `switch` | ⚪ Unmapped | not set (only show_rating is set); reviews_schema left at option default |
+| `text_color` | Style | `predefined-colors-color-picker-compact` | ⚪ Unmapped | empty_color() |
+| `bg_color` | Style | `predefined-colors-color-picker-compact` | ⚪ Unmapped | empty_color() |
+| `font_size_preset` | Style | `select` | ⚪ Unmapped | hardcoded '' |
+| `quote_color` | Style | `predefined-colors-color-picker-compact` | ⚪ Unmapped | empty_color() |
+| `author_name_color` | Style | `predefined-colors-color-picker-compact` | ⚪ Unmapped | empty_color(); source uppercase/letter-spacing kicker rides as scoped custom_css, not this color option |
+| `author_job_color` | Style | `predefined-colors-color-picker-compact` | ⚪ Unmapped | empty_color() |
+| `site_link_color` | Style | `predefined-colors-color-picker-compact` | ⚪ Unmapped | empty_color() |
+| `animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …` | Animations | `multi-picker` | ⚪ Unmapped | Default — Animation Engine effects (no source mapping) |
+| `spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*` | Advanced | `text / code-editor` | ⚪ Unmapped | Default — outer spacing + per-instance advanced fields, set by hand |
+| `unique_id · custom_attrs · responsive_hide` | Advanced | `group` | ⚙️ Auto | Plumbing — generated / not set |
 
 ### Status legend
 

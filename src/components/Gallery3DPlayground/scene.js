@@ -253,6 +253,21 @@ export function buildScene(design, o) {
     return `<div class="tdg tdg--${cover ? 'cover' : 'carousel'}-flow" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__flow">${cells}</div></div></div>`;
   }
 
+  if (design === 'mosaic_marquee') {
+    // masonry marquee — mirror mosaic-marquee.php (two grid copies on a track), 12 tiles per copy.
+    const rp = /^(\d+)-(\d+)$/.exec(o.card_ratio || '1-1');
+    const a = attr({
+      ...shared,
+      'data-tdg-dir': o.direction === 'right' ? -1 : 1,
+      'data-tdg-card': o.card_height, 'data-tdg-gap': o.gap, 'data-tdg-layout': o.layout,
+      'data-tdg-rw': rp ? rp[1] : 1, 'data-tdg-rh': rp ? rp[2] : 1,
+    });
+    let one = '';
+    for (let k = 0; k < 12; k++) one += cardHtml(SAMPLES[k % SAMPLES.length]);
+    const mm = `<div class="tdg__mosaic">${one}</div><div class="tdg__mosaic" aria-hidden="true">${one}</div>`;
+    return `<div class="tdg tdg--mosaic-marquee" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__mosaic-track">${mm}</div></div></div>`;
+  }
+
   // card_sphere
   const {rows, bands} = sphereBands(o);
   const a = attr({

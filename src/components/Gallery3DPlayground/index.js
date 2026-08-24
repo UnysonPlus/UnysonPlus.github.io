@@ -258,6 +258,19 @@ const DESIGNS = {
         dirChoices: [['forward', 'Forward'], ['backward', 'Backward']]}),
     ],
   },
+  mosaic_marquee: {
+    group: 'Carousel & Flow',
+    label: 'Mosaic Marquee',
+    blurb: 'A horizontal marquee of cards packed masonry-style (varied sizes) that scrolls sideways forever. Card Height sets the tile scale; Layout 1/2/3 are three mosaic patterns. Two grid copies wrap seamlessly.',
+    controls: [
+      se('layout', 'Layout', '1', [['1', 'Layout 1'], ['2', 'Layout 2'], ['3', 'Layout 3']]),
+      sl('card_height', 'Card Height (%)', 30, 10, 90),
+      sl('gap', 'Gap (%)', 0.5, 0, 8, 0.5),
+      ...SHARED({drive: 'continuous', speed: 24, ratio: '1-1', corner: 0, dir: 'left',
+        driveChoices: [['continuous', 'Continuous'], ['static', 'Static']],
+        dirChoices: [['left', 'Left'], ['right', 'Right']]}),
+    ],
+  },
 };
 
 const GROUP_ORDER = ['3D & Perspective', 'Carousel & Flow'];

@@ -81,6 +81,9 @@ don't see it.
   designs). **Stop at Centre** gives the snappy album-flick step.
 - **Carousel Flow** — a flat focus carousel: the centre card is full size while the side cards scale
   down (**Side Card Scale**) and fade as they slide past. No tilt; Horizontal or Vertical.
+- **Mosaic Marquee** — a horizontal marquee of cards packed masonry-style (varied sizes) that scrolls
+  sideways forever. **Card Height** sets the tile scale (fewer, bigger rows as it rises) and **Layout
+  1/2/3** pick three different mosaic patterns. Two identical grid copies wrap seamlessly.
 
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.

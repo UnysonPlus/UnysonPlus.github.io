@@ -14,16 +14,18 @@ hide_table_of_contents: true
 
 | Hook | Type | Summary |
 | --- | --- | --- |
-| [`fw_site_converter_sources`](#h-fw-site-converter-sources) | filter | — |
+| [`fw_site_converter_sources`](#h-fw-site-converter-sources) | filter | Filters the Site Converter's source adapters, letting other extensions register support for new site builders/exports. |
 
 ---
 
 ### `fw_site_converter_sources` {#h-fw-site-converter-sources}
 *🧪 filter*
 
+Filters the Site Converter's source adapters, letting other extensions register support for new site builders/exports.
+
 ```php
 add_filter( 'fw_site_converter_sources', $callback );
 ```
-<small>Fired in: `framework/extensions/site-converter/includes/class-fw-site-converter-sources.php:47`</small>
+<small>Fired in: `framework/extensions/site-converter/includes/class-fw-site-converter-sources.php:49`</small>
 
 ← Back to [Hooks overview](./index.md)

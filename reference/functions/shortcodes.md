@@ -469,7 +469,7 @@ fw_design_lib__decode_thumb( $data_uri, $dir )
 
 Decode a `data:image/&lt;type&gt;;base64,…` thumbnail into $dir. Raster types only (webp/png/jpg/gif) — no SVG (defence in depth). Returns the written filename (e.g. 'thumb.webp') or '' when absent/invalid.
 
-<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:106`</small>
+<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:109`</small>
 
 ### `fw_design_lib__fetch_json` {#fw_design_lib__fetch_json}
 *🔌 pluggable*
@@ -480,7 +480,7 @@ fw_design_lib__fetch_json( $url )
 
 GET a URL and json_decode it. Returns array|WP_Error.
 
-<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:141`</small>
+<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:144`</small>
 
 ### `fw_design_lib__rrmdir` {#fw_design_lib__rrmdir}
 *🔌 pluggable*
@@ -491,7 +491,7 @@ fw_design_lib__rrmdir( $dir )
 
 Recursively delete a directory (temp + uninstall).
 
-<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:91`</small>
+<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:94`</small>
 
 ### `fw_design_lib__slugify` {#fw_design_lib__slugify}
 *🔌 pluggable*
@@ -502,7 +502,7 @@ fw_design_lib__slugify( $name )
 
 name → url-safe slug (lowercase, non-alnum → '-').
 
-<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:73`</small>
+<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:76`</small>
 
 ### `fw_design_lib__unique_slug` {#fw_design_lib__unique_slug}
 *🔌 pluggable*
@@ -513,7 +513,7 @@ fw_design_lib__unique_slug( $shortcode, $slug )
 
 Ensure the slug is free under &lt;root&gt;/&lt;shortcode&gt;/; append -2, -3… on clash.
 
-<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:81`</small>
+<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:84`</small>
 
 ### `fw_design_lib_catalog` {#fw_design_lib_catalog}
 *🔌 pluggable*
@@ -524,7 +524,7 @@ fw_design_lib_catalog( $force = false )
 
 Remote catalog, transient-cached (12h ok / 5min fail). Normalized to &#123; version, base_url, designs:&#123; "&lt;shortcode&gt;/&lt;slug&gt;" =&gt; &#123;shortcode,slug,name,category,thumb,description&#125; &#125; &#125;.
 
-<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:343`</small>
+<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:347`</small>
 
 ### `fw_design_lib_catalog_url` {#fw_design_lib_catalog_url}
 *🔌 pluggable*
@@ -535,7 +535,7 @@ fw_design_lib_catalog_url()
 
 Returns the filterable remote URL of the design library's catalog.json in UnysonPlus-Library.
 
-<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:330`</small>
+<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:333`</small>
 
 ### `fw_design_lib_dir` {#fw_design_lib_dir}
 *🔌 pluggable*
@@ -563,7 +563,7 @@ fw_design_lib_enabled()
 
 Shortcodes allowed to carry designs (mirrors the modal enabled-list).
 
-<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:59`</small>
+<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:61`</small>
 
 ### `fw_design_lib_install` {#fw_design_lib_install}
 *🔌 pluggable*
@@ -576,7 +576,7 @@ Download + install one catalog design ( &lt;base&gt;/&lt;shortcode&gt;/&lt;slug&
 
 **Returns** `array\|WP_Error` &#123; shortcode, slug &#125;
 
-<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:388`</small>
+<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:392`</small>
 
 ### `fw_design_lib_install_from_json` {#fw_design_lib_install_from_json}
 *🔌 pluggable*
@@ -593,7 +593,7 @@ Import a user-supplied design JSON (string or decoded array) into the catalog.
 
 **Returns** `array\|WP_Error` &#123; shortcode, slug &#125;
 
-<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:226`</small>
+<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:229`</small>
 
 ### `fw_design_lib_installed_items` {#fw_design_lib_installed_items}
 *🔌 pluggable*
@@ -610,7 +610,7 @@ Flat list of installed designs (optionally for one shortcode), each: &#123; id, 
 
 **Returns** `array`
 
-<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:248`</small>
+<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:251`</small>
 
 ### `fw_design_lib_store_envelope` {#fw_design_lib_store_envelope}
 *🔌 pluggable*
@@ -628,7 +628,7 @@ Persist a validated envelope into the catalog. Atomic (temp dir → rename). Dec
 
 **Returns** `array\|WP_Error` &#123; shortcode, slug &#125; on success.
 
-<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:166`</small>
+<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:169`</small>
 
 ### `fw_design_lib_uninstall` {#fw_design_lib_uninstall}
 *🔌 pluggable*
@@ -639,7 +639,7 @@ fw_design_lib_uninstall( $shortcode, $slug )
 
 Remove an installed design. @return true|WP_Error
 
-<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:280`</small>
+<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:283`</small>
 
 ### `fw_design_lib_update_meta` {#fw_design_lib_update_meta}
 *🔌 pluggable*
@@ -650,7 +650,7 @@ fw_design_lib_update_meta( $shortcode, $slug, $fields )
 
 Edit an installed design's name and/or scoped CSS (atts.custom_css). Values-only; used by the Theme Settings manager. @return true|WP_Error
 
-<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:297`</small>
+<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:300`</small>
 
 ### `fw_design_lib_url` {#fw_design_lib_url}
 *🔌 pluggable*
@@ -661,7 +661,7 @@ fw_design_lib_url( $shortcode )
 
 Public URL of a shortcode's designs folder (for thumbnails).
 
-<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:50`</small>
+<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:51`</small>
 
 ### `fw_design_lib_validate_envelope` {#fw_design_lib_validate_envelope}
 *🔌 pluggable*
@@ -674,7 +674,7 @@ Validate a design envelope: correct marker, an enabled shortcode, a name, and an
 
 **Returns** `true\|WP_Error`
 
-<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:124`</small>
+<small>Source: `framework/extensions/shortcodes/includes/design-presets/design-library.php:127`</small>
 
 ### `fw_ext_shortcodes_decode_attr` {#fw_ext_shortcodes_decode_attr}
 
@@ -727,7 +727,7 @@ Pick the inner-flexbox alias for a given nesting depth (depth 1 = first flexbox 
 
 **Returns** `string`
 
-<small>Source: `framework/extensions/shortcodes/helpers.php:104`</small>
+<small>Source: `framework/extensions/shortcodes/helpers.php:105`</small>
 
 ### `fw_flexbox_inner_alias_pool` {#fw_flexbox_inner_alias_pool}
 *since 2.10.x*
@@ -752,7 +752,7 @@ instance (FW_Shortcode::render keys off $this, not the passed $tag).
 
 **Returns** `string[]`
 
-<small>Source: `framework/extensions/shortcodes/helpers.php:85`</small>
+<small>Source: `framework/extensions/shortcodes/helpers.php:86`</small>
 
 ### `fw_progress_color` {#fw_progress_color}
 *🔌 pluggable*
@@ -840,7 +840,7 @@ Discovered shortcodes that have designs to manage — a built-in views/designs/r
 
 **Returns** `array` tag =&gt; title (sorted by title).
 
-<small>Source: `framework/extensions/shortcodes/includes/pluggable-designs.php:308`</small>
+<small>Source: `framework/extensions/shortcodes/includes/pluggable-designs.php:310`</small>
 
 ### `fw_sc_design_enqueue` {#fw_sc_design_enqueue}
 *🔌 pluggable*
@@ -851,7 +851,7 @@ fw_sc_design_enqueue( $tag, $key )
 
 Enqueue a design's CSS/JS (origin-agnostic), with the shortcode's base handle as a dependency + any declared vendor deps (e.g. 'splide'). Safe to call for built-in designs too. Call from the `fw_ext_shortcodes_enqueue_static:&lt;tag&gt;` handler after resolving the active design.
 
-<small>Source: `framework/extensions/shortcodes/includes/pluggable-designs.php:234`</small>
+<small>Source: `framework/extensions/shortcodes/includes/pluggable-designs.php:236`</small>
 
 ### `fw_sc_design_pack_count` {#fw_sc_design_pack_count}
 *🔌 pluggable*
@@ -862,7 +862,7 @@ fw_sc_design_pack_count( $tag )
 
 Number of INSTALLED design packs (origin=uploads) for a shortcode.
 
-<small>Source: `framework/extensions/shortcodes/includes/pluggable-designs.php:292`</small>
+<small>Source: `framework/extensions/shortcodes/includes/pluggable-designs.php:294`</small>
 
 ### `fw_sc_design_pack_enabled` {#fw_sc_design_pack_enabled}
 *🔌 pluggable*
@@ -873,7 +873,7 @@ fw_sc_design_pack_enabled( $tag, $key )
 
 Whether an installed design pack is enabled. Default true; a disabled map is stored per shortcode (mirrors icon-v3's per-pack toggle). Filterable.
 
-<small>Source: `framework/extensions/shortcodes/includes/pluggable-designs.php:170`</small>
+<small>Source: `framework/extensions/shortcodes/includes/pluggable-designs.php:171`</small>
 
 ### `fw_sc_design_pack_option_fragments` {#fw_sc_design_pack_option_fragments}
 *🔌 pluggable*
@@ -884,7 +884,7 @@ fw_sc_design_pack_option_fragments( $tag )
 
 Collect installed design PACKS' option fragments for a shortcode: key =&gt; options-array (the pack's options.php returns $options). The host shortcode merges these into its `design_settings` multi-picker `choices[&lt;key&gt;]` so a pack's controls appear (design-scoped) when selected.
 
-<small>Source: `framework/extensions/shortcodes/includes/pluggable-designs.php:260`</small>
+<small>Source: `framework/extensions/shortcodes/includes/pluggable-designs.php:262`</small>
 
 ### `fw_sc_design_partial` {#fw_sc_design_partial}
 *🔌 pluggable*
@@ -895,7 +895,7 @@ fw_sc_design_partial( $tag, $key )
 
 Absolute path of the design's render partial (built-in or pack), or '' if the key is unknown / has no partial. Callers keep their own file_exists guard.
 
-<small>Source: `framework/extensions/shortcodes/includes/pluggable-designs.php:218`</small>
+<small>Source: `framework/extensions/shortcodes/includes/pluggable-designs.php:220`</small>
 
 ### `fw_sc_design_picker_choices` {#fw_sc_design_picker_choices}
 *🔌 pluggable*
@@ -906,7 +906,7 @@ fw_sc_design_picker_choices( $tag )
 
 image-picker `choices` for a shortcode's Design option (built-in + packs). Each: key =&gt; [ 'small' =&gt; ['src'=&gt;thumb, 'alt'=&gt;label, 'height'=&gt;60], 'label'=&gt;label ].
 
-<small>Source: `framework/extensions/shortcodes/includes/pluggable-designs.php:200`</small>
+<small>Source: `framework/extensions/shortcodes/includes/pluggable-designs.php:202`</small>
 
 ### `fw_sc_design_resolve` {#fw_sc_design_resolve}
 *🔌 pluggable*
@@ -917,7 +917,7 @@ fw_sc_design_resolve( $tag, $atts, $default = 'default' )
 
 Resolve the selected design key from an element's atts, whitelisted to the merged registry, falling back to 'default'. Mirrors the testimonials view: new multi-picker path `design_settings/design` → legacy scalar `design` → 'default'.
 
-<small>Source: `framework/extensions/shortcodes/includes/pluggable-designs.php:184`</small>
+<small>Source: `framework/extensions/shortcodes/includes/pluggable-designs.php:186`</small>
 
 ### `fw_sc_design_set_enabled` {#fw_sc_design_set_enabled}
 *🔌 pluggable*
@@ -928,7 +928,7 @@ fw_sc_design_set_enabled( $tag, $key, $enabled )
 
 Enable/disable a design (built-in or pack) for a shortcode by updating the shared `fw_sc_design_packs_disabled` option map (tag =&gt; [disabled keys]). 'default' can never be disabled. Returns true on success.
 
-<small>Source: `framework/extensions/shortcodes/includes/pluggable-designs.php:338`</small>
+<small>Source: `framework/extensions/shortcodes/includes/pluggable-designs.php:340`</small>
 
 ### `fw_sc_designs` {#fw_sc_designs}
 *🔌 pluggable*
@@ -962,7 +962,7 @@ fw_sc_designs_manage( $tag )
 
 Every design for a shortcode INCLUDING disabled ones (each with an `enabled` flag), for the management UI. Thin wrapper over fw_sc_designs( $tag, true ).
 
-<small>Source: `framework/extensions/shortcodes/includes/pluggable-designs.php:285`</small>
+<small>Source: `framework/extensions/shortcodes/includes/pluggable-designs.php:287`</small>
 
 ### `fw_text_expander_add_class` {#fw_text_expander_add_class}
 *🔌 pluggable*
@@ -1081,7 +1081,7 @@ Map a stored alignment value to its Bootstrap text-* utility class. `''` (inheri
 
 **Returns** `string` text-start \| text-center \| text-end \| ''
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:820`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:822`</small>
 
 ### `sc_alignment_field` {#sc_alignment_field}
 *🔌 pluggable*
@@ -1104,7 +1104,7 @@ duplicate the left→text-start / center→text-center / right→text-end mappin
 | --- | --- | --- |
 | `$args` | `array` | label, value (default 'left'), desc, inherit (bool — when |
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:769`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:771`</small>
 
 ### `sc_anim_collection_items` {#sc_anim_collection_items}
 *🔌 pluggable*
@@ -1121,7 +1121,7 @@ NOT change its hover behavior.
 
 **Returns** `array&lt;string,string&gt;` base_class =&gt; descendant CSS selector for its items.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-animation-helper.php:679`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-animation-helper.php:681`</small>
 
 ### `sc_animation_flag` {#sc_animation_flag}
 *🔌 pluggable*
@@ -1132,7 +1132,7 @@ sc_animation_flag( $set = false )
 
 Marks/queries a per-request flag that says "at least one animated shortcode has rendered on this page". Used to gate the wp_footer enqueue.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-animation-helper.php:526`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-animation-helper.php:528`</small>
 
 ### `sc_animation_use` {#sc_animation_use}
 *🔌 pluggable*
@@ -1143,7 +1143,7 @@ sc_animation_use( $effect = null )
 
 On-demand asset registry for entrance animations — records which Animate.css effect classes actually rendered this request, so wp_footer enqueues ONLY those effects' CSS partials (+ the shared base) instead of the whole 72 KB bundle. Pass an 'animate__&lt;name&gt;' class to record it; call with no arg to read the set.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-animation-helper.php:540`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-animation-helper.php:542`</small>
 
 ### `sc_announce_color` {#sc_announce_color}
 *🔌 pluggable*
@@ -1198,7 +1198,7 @@ Both flow through the same sc_sanitize_class() filter and end up in the
 same flat class list. Existing posts saved before the composite migration
 keep rendering correctly.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1924`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1927`</small>
 
 ### `sc_attr_to_html` {#sc_attr_to_html}
 *🔌 pluggable*
@@ -1344,7 +1344,7 @@ Shared by the Section, Masonry Section and Bleed Section shortcodes.
 
 **Returns** `string` Inline style declarations (may be '').
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2507`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2510`</small>
 
 ### `sc_bg_pro_video_attr` {#sc_bg_pro_video_attr}
 *🔌 pluggable*
@@ -1361,7 +1361,7 @@ Compile a `background-pro` value's video layer into the Formstone `data-backgrou
 
 **Returns** `array` data-attr name =&gt; JSON string (or empty array).
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2584`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2587`</small>
 
 ### `sc_bi_fmt` {#sc_bi_fmt}
 *🔌 pluggable*
@@ -1455,7 +1455,7 @@ Turn saved sc_button_style_field() values into button classes + inline width + a
 
 **Returns** `array` &#123; classes: string[], style: string (inline, e.g. "width: 200px;"), align: '' \| left \| center \| right &#125;
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3808`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3815`</small>
 
 ### `sc_button_style_field` {#sc_button_style_field}
 *🔌 pluggable*
@@ -1472,7 +1472,7 @@ The shared Button STYLE option group — Button Style preset, Size, Shape, Width
 
 **Returns** `array` Option definitions keyed style / size / shape / width / alignment / hover_animation.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3690`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3697`</small>
 
 ### `sc_cal_color` {#sc_cal_color}
 *🔌 pluggable*
@@ -1545,7 +1545,7 @@ Read + validate a card element's saved Box Style value into a safe `boxp-&#123;s
 
 **Returns** `string` a `boxp-&#123;slug&#125;` class, or '' .
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1530`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1532`</small>
 
 ### `sc_card_box_style_field` {#sc_card_box_style_field}
 *🔌 pluggable*
@@ -1562,7 +1562,7 @@ The shared "Box Style" card control — a `border-style-picker` of the saved Box
 
 **Returns** `array` option field.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1502`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1504`</small>
 
 ### `sc_card_preview_mount_html` {#sc_card_preview_mount_html}
 *🔌 pluggable*
@@ -1592,7 +1592,7 @@ The shared "Card Rows" slot designer — an addable, drag-sortable list of ROWS,
 | --- | --- | --- |
 | `$args` | `array` | 'label','desc','slots'=&gt;[slug=&gt;Label], 'value'=&gt;[ …seed rows… ] |
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1546`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1548`</small>
 
 ### `sc_card_rows_render` {#sc_card_rows_render}
 *🔌 pluggable*
@@ -1603,7 +1603,7 @@ sc_card_rows_render( $rows, $slot_map, $prefix )
 
 Assemble Card Rows → HTML. $slot_map = [ slug =&gt; html ]; empty slots (and empty rows) collapse. CSS classes: "&#123;prefix&#125;__row &#123;prefix&#125;-row--&#123;dir&#125; &#123;prefix&#125;-j-&#123;justify&#125; &#123;prefix&#125;-a-&#123;align&#125;".
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1645`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1647`</small>
 
 ### `sc_card_rows_value` {#sc_card_rows_value}
 *🔌 pluggable*
@@ -1614,7 +1614,7 @@ sc_card_rows_value( $atts, $key = 'card_rows' )
 
 Normalise a saved Card Rows value → a clean list of &#123; slots[], dir, justify, align &#125;. '' rows drop.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1620`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1622`</small>
 
 ### `sc_code_block_beautify_html` {#sc_code_block_beautify_html}
 *🔌 pluggable*
@@ -1668,7 +1668,7 @@ The rendered &lt;select&gt; gets class="sc-color-text" or class="sc-color-bg" so
 admin-CSS emitter can scope its option-coloring rules consistently regardless
 of what field name the shortcode chose.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:499`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:501`</small>
 
 ### `sc_color_field_compact` {#sc_color_field_compact}
 *🔌 pluggable*
@@ -1701,7 +1701,7 @@ Usage: shortcodes call this directly when composing their Styling-tab
 field. `sc_color_field()` (plain &lt;select&gt;, no custom picker) remains
 available for fields that don't want the inline custom-color sidekick.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:550`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:552`</small>
 
 ### `sc_color_is_light` {#sc_color_is_light}
 *🔌 pluggable*
@@ -1715,7 +1715,7 @@ Returns true if a hex color is essentially white — luminance so high its text 
 Threshold 0.95 chosen so White (1.0) and Light (0.976) trigger the
 backdrop, but Yellow (0.87) does not.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:246`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:248`</small>
 
 ### `sc_color_to_css` {#sc_color_to_css}
 *🔌 pluggable*
@@ -1746,7 +1746,7 @@ property, an inline `color:`/`background:`, a JS/canvas color), not a class.
 
 **Returns** `string` a CSS color token (possibly empty if $fallback is '')
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:680`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:682`</small>
 
 ### `sc_ct_cell` {#sc_ct_cell}
 *🔌 pluggable*
@@ -1900,7 +1900,7 @@ markup, so a caller can decide to show it in other contexts too.
 
 **Returns** `string` HTML.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-build-helper.php:302`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-build-helper.php:303`</small>
 
 ### `sc_element_scope_class` {#sc_element_scope_class}
 *🔌 pluggable*
@@ -1955,7 +1955,7 @@ Scoped to `.btn-preview-` only (not `btn-size-preview-`) so size previews
 can express their own font-size / padding / border-radius without being
 forced into a uniform 4px×14px/13px shape.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2408`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2411`</small>
 
 ### `sc_emit_button_hover_animation_preview_css` {#sc_emit_button_hover_animation_preview_css}
 *🔌 pluggable*
@@ -1966,7 +1966,7 @@ sc_emit_button_hover_animation_preview_css()
 
 Theme Settings → Buttons → Hover Animations row previews. Each row's template renders `&lt;span class="btn btn-primary btnfx-preview-&#123;id&#125;"&gt;`; this admin_head emitter replays the saved CSS for that row with &#123;&#123;BTN&#125;&#125; -&gt; .btnfx-preview-&#123;id&#125; and &#123;&#123;ANIM&#125;&#125; -&gt; a per-id keyframes name, so hovering the row's button plays the effect. Mirrors the front-end generation in css-tokens.php (same scrub), but keyed by the box id (the template has the id, not the name-derived slug).
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2361`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2364`</small>
 
 ### `sc_emit_button_preview_saved_css` {#sc_emit_button_preview_saved_css}
 *🔌 pluggable*
@@ -1977,7 +1977,7 @@ sc_emit_button_preview_saved_css()
 
 Saved-state colour rules for Theme Settings → Buttons preview spans. The addable-box template's inline `&lt;style&gt;` provides live-edit updates, but it gets re-rendered (and briefly cleared for siblings) when postbox toggles fire. This admin_head emitter gives every `.btn-preview-&#123;id&#125;` a stable baseline so toggling one row doesn't blank another row's preview. No `!important` — the inline rule still wins (DOM-late source order, same specificity) when present.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2254`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2257`</small>
 
 ### `sc_emit_button_size_preview_saved_css` {#sc_emit_button_size_preview_saved_css}
 *🔌 pluggable*
@@ -1988,7 +1988,7 @@ sc_emit_button_size_preview_saved_css()
 
 Saved-state rules for Theme Settings → Buttons → Sizes preview spans. The addable-box template's inline `&lt;style&gt;` provides live-edit updates, but it gets re-rendered (and briefly cleared for siblings) when postbox toggles fire. This admin_head emitter gives every `.btn-size-preview-&#123;id&#125;` a stable baseline so toggling one row doesn't blank another row's preview. No `!important` — the inline rule still wins (DOM-late source order) when present, so live-edit isn't blocked.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2294`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2297`</small>
 
 ### `sc_emit_button_size_select_admin_css` {#sc_emit_button_size_select_admin_css}
 *🔌 pluggable*
@@ -2001,7 +2001,7 @@ Size each &lt;option&gt; in the Button shortcode's Size dropdown by the correspo
 
 Scoped by `select.sc-button-size`.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2220`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2223`</small>
 
 ### `sc_emit_button_style_select_admin_css` {#sc_emit_button_style_select_admin_css}
 *🔌 pluggable*
@@ -2018,7 +2018,7 @@ Resolves predefined slugs via the Color Presets lookup (custom hex wins).
 Outline / link presets (no background) preview as colored text on a neutral
 backdrop. Chrome/Firefox/Edge honor option styling; Safari plain-text falls back.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2141`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2144`</small>
 
 ### `sc_emit_color_preset_select_admin_css` {#sc_emit_color_preset_select_admin_css}
 *🔌 pluggable*
@@ -2031,7 +2031,7 @@ Colour each &lt;option&gt; in dropdowns whose value is a raw Color Preset slug (
 
 Used by Theme Settings → Buttons (each row has 4 such selects).
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2048`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2051`</small>
 
 ### `sc_emit_color_select_admin_css` {#sc_emit_color_select_admin_css}
 *🔌 pluggable*
@@ -2045,7 +2045,7 @@ Color each &lt;option&gt; in any Styling-tab color dropdown according to its pal
 Chrome / Firefox / Edge honor &lt;option&gt; coloring. Safari ignores it (plain
 text fallback) — same trade-off as any native-select-styling approach.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2009`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2012`</small>
 
 ### `sc_emit_font_size_select_admin_css` {#sc_emit_font_size_select_admin_css}
 *🔌 pluggable*
@@ -2056,7 +2056,7 @@ sc_emit_font_size_select_admin_css()
 
 Size each &lt;option&gt; in any Styling-tab font-size dropdown proportionally to its preset value. Linear-mapped to [12, 32]px so the dropdown stays usable while preserving relative ordering. Scoped by `select.sc-font-size`, which sc_font_size_field() adds automatically.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2081`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2084`</small>
 
 ### `sc_emit_styling_admin_css` {#sc_emit_styling_admin_css}
 *🔌 pluggable*
@@ -2067,7 +2067,7 @@ sc_emit_styling_admin_css()
 
 Admin-CSS for the Styling tab — flexes the nested per-side group (`.fw-backend-options-group.sc-spacing-row`) so the 4 Top/Right/Bottom/Left dropdowns share a single row, and overrides short-select's fixed 100px width so they fill the available cell.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2423`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2426`</small>
 
 ### `sc_eval_display_conditions` {#sc_eval_display_conditions}
 *🔌 pluggable*
@@ -2094,7 +2094,7 @@ sc_expand_multi_animation_fields( $fields, $max = 4 )
 
 Expand `anim_meta['multi']` module fields into up to $max instance slots (base + `&lt;key&gt;__2..__N`). Each field (base and slot) is tagged `anim_meta['multi_base']` (the base key) and `anim_meta['multi_index']` (1..N) so the container can group slots under one inserter tile and reveal the next empty one on "Add". Single-instance fields pass through untouched, order kept.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-animation-helper.php:485`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-animation-helper.php:487`</small>
 
 ### `sc_ext_page_builder_is_builder_post` {#sc_ext_page_builder_is_builder_post}
 *🔌 pluggable*
@@ -2135,7 +2135,7 @@ inner element instead of the outer wrapper (currently: `[column]`).
 
 **Returns** `string[]` Flat list of sanitized class names from the spacing tree.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:473`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:475`</small>
 
 ### `sc_extract_styling_atts` {#sc_extract_styling_atts}
 *🔌 pluggable*
@@ -2146,7 +2146,7 @@ sc_extract_styling_atts( &$atts, array $keys )
 
 Extracts the given styling keys from atts, returning their collected classes and inline styles.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:367`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:369`</small>
 
 ### `sc_extract_styling_classes` {#sc_extract_styling_classes}
 *🔌 pluggable*
@@ -2171,7 +2171,7 @@ Use in view.php when a shortcode wants to apply styling-tab picks to an inner el
 
 **Returns** `array` CSS-safe class names (one per non-empty extracted att).
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:276`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:278`</small>
 
 ### `sc_fb_icon` {#sc_fb_icon}
 *🔌 pluggable*
@@ -2204,7 +2204,7 @@ sc_filter_styling_options( $options, $tag = '' )
 
 Filters shortcode options, stripping the styling layer when styling presets are disabled.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2482`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2485`</small>
 
 ### `sc_fl_icon` {#sc_fl_icon}
 *🔌 pluggable*
@@ -2250,7 +2250,7 @@ same way the legacy flat keys (margin, margin_top, padding_bottom, …) do.
 
 **Returns** `string[]` Sanitized class names; never includes empty strings.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:405`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:407`</small>
 
 ### `sc_font_size_field` {#sc_font_size_field}
 *🔌 pluggable*
@@ -2268,7 +2268,7 @@ Build a single font-size-preset select field for the Styling tab.
 The rendered &lt;select&gt; gets class="sc-font-size" so the admin-CSS emitter
 can size its options proportionally.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:730`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:732`</small>
 
 ### `sc_gallery_caption_text` {#sc_gallery_caption_text}
 *🔌 pluggable*
@@ -2407,7 +2407,7 @@ sc_get_border_preset_choices()
 
 Dropdown choices for a column's Border Preset picker, sourced from the saved Border Presets (Theme Settings → General → Borders). Each preset's name-based slug becomes the option value `boxp-&#123;slug&#125;` (matching the generated CSS class in css-tokens.php). A blank "None" is prepended. Adding a preset in Theme Settings instantly shows up in every Column's Border Preset dropdown.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1319`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1321`</small>
 
 ### `sc_get_button_size_choices` {#sc_get_button_size_choices}
 *🔌 pluggable*
@@ -2418,7 +2418,7 @@ sc_get_button_size_choices()
 
 Returns dropdown choices for a button's size picker, sourced from the user's saved button size presets (Theme Settings → Buttons → Sizes). Each preset's `slug` becomes the option value `btn-&#123;slug&#125;`. Adding a row in Theme Settings instantly shows up in every Button shortcode's Size dropdown.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1153`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1155`</small>
 
 ### `sc_get_button_style_choices` {#sc_get_button_style_choices}
 *🔌 pluggable*
@@ -2435,7 +2435,7 @@ option prepended. false → `btn-&#123;id&#125;` keys.
 | --- | --- | --- |
 | `$outline` | `bool` | true → `btn-outline-&#123;id&#125;` keys + a blank "No Outline" |
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1267`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1269`</small>
 
 ### `sc_get_button_style_default` {#sc_get_button_style_default}
 *🔌 pluggable*
@@ -2446,7 +2446,7 @@ sc_get_button_style_default()
 
 The default Button Style for a freshly-added button: the first REAL preset (Primary, in the default order) — NOT the bare `.btn` base. `sc_get_button_style_choices()` prepends a `'' =&gt; Default` row, so the naive `key()` of the first choice is `''` (an unstyled button); this skips that leading blank and returns the first non-empty `btn-&#123;slug&#125;` key so a dropped-in CTA looks intentional out of the box. The blank "Default" row stays selectable (and the Site Converter still sets it explicitly). Returns '' only when no presets exist.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1302`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1304`</small>
 
 ### `sc_get_color_preset_slug_choices` {#sc_get_color_preset_slug_choices}
 *🔌 pluggable*
@@ -2457,7 +2457,7 @@ sc_get_color_preset_slug_choices()
 
 Slug-keyed choices for any select that picks a Color Preset by slug (e.g. Theme Settings → Buttons color fields). Returns `[ '' =&gt; 'Default', slug =&gt; display_name, … ]`. Pairs with `sc_emit_color_preset_select_admin_css` for option-level colouring.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1243`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1245`</small>
 
 ### `sc_get_color_select_choices` {#sc_get_color_select_choices}
 *🔌 pluggable*
@@ -2468,7 +2468,7 @@ sc_get_color_select_choices( $kind = 'text' )
 
 Builds select choices from the color presets, keyed by kind-slug, for a color-picker field.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1049`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1051`</small>
 
 ### `sc_get_font_size_preset_choices` {#sc_get_font_size_preset_choices}
 *🔌 pluggable*
@@ -2479,7 +2479,7 @@ sc_get_font_size_preset_choices()
 
 Builds select choices from font-size/text-style presets that set any typographic property.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1757`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1759`</small>
 
 ### `sc_get_gap_select_choices` {#sc_get_gap_select_choices}
 *🔌 pluggable*
@@ -2505,7 +2505,7 @@ class (`section--gap-&#123;slug&#125;`) or a utility class (`g-&#123;slug&#125;`
 
 **Returns** `array`
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1123`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1125`</small>
 
 ### `sc_get_hover_animation_choices` {#sc_get_hover_animation_choices}
 *🔌 pluggable*
@@ -2516,7 +2516,7 @@ sc_get_hover_animation_choices()
 
 Choices for a button's Hover Animation picker. The built-in values are CSS classes shipped in button/static/css/hover-fx.css — MOTION-ONLY effects (transform / shadow / radius / text) that layer over any button preset (solid, outline, gradient) without touching its colors. The user's Custom Hover Animations (Theme Settings → Buttons) are appended as `btnfx-c-&#123;slug&#125;` entries, generated into the preset stylesheet by css-tokens.php. (Flat map: no optgroups.)
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1176`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1178`</small>
 
 ### `sc_get_icon_badge_preset_choices` {#sc_get_icon_badge_preset_choices}
 *🔌 pluggable*
@@ -2527,7 +2527,7 @@ sc_get_icon_badge_preset_choices()
 
 Dropdown choices for an element's Icon Badge Preset picker, sourced from the saved Icon Badge presets (Theme Settings → Components → Icon Badges). Each preset's name-based slug becomes the option value `iconb-&#123;slug&#125;` (matching the generated CSS class in css-tokens.php). A blank "None" is prepended. Adding a preset in Theme Settings instantly shows up in every Icon Badge Preset dropdown.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1345`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1347`</small>
 
 ### `sc_get_image_style_choices` {#sc_get_image_style_choices}
 *🔌 pluggable*
@@ -2538,7 +2538,7 @@ sc_get_image_style_choices()
 
 Image Style choices for the `image_style` select: `imgs-&#123;slug&#125; =&gt; Name`, with a blank "None" prepended. The slug matches the generated `.imgs-&#123;slug&#125;` class in css-tokens.php. Adding a style in Theme Settings → Components → Image Styles instantly shows up here.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1671`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1673`</small>
 
 ### `sc_get_option` {#sc_get_option}
 *🔌 pluggable*
@@ -2605,7 +2605,7 @@ Returns the spacing-utility choices for a select field with the given prefix. Re
 Values are Bootstrap-style class names (e.g. m-0, m-1, m-3, m-huge).
 Labels show the underlying spacing value so users can see what they're picking.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1072`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1074`</small>
 
 ### `sc_get_table_preset_choices` {#sc_get_table_preset_choices}
 *🔌 pluggable*
@@ -2616,7 +2616,7 @@ sc_get_table_preset_choices()
 
 Table Preset choices for the Table shortcode's `table-style-picker` field: `tbl-&#123;slug&#125; =&gt; Name`, with a blank "None" prepended. The slug matches the generated CSS class in css-tokens.php. Adding a preset in Shortcode Settings → Components → Tables instantly shows up here.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1737`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1739`</small>
 
 ### `sc_hl_render` {#sc_hl_render}
 *🔌 pluggable*
@@ -2640,7 +2640,7 @@ The narrow registry of collections whose VIEW stamps the per-card HOVER attrs on
 
 **Returns** `array&lt;string,string&gt;` base_class =&gt; item selector.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-animation-helper.php:702`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-animation-helper.php:705`</small>
 
 ### `sc_hover_item_markup` {#sc_hover_item_markup}
 *🔌 pluggable*
@@ -2657,7 +2657,7 @@ Per-item hover markup pieces for a collection view. Returns array( 'class' =&gt;
 
 **Returns** `array&#123;class:string,attr:string&#125;`
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-animation-helper.php:726`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-animation-helper.php:730`</small>
 
 ### `sc_hs_icon` {#sc_hs_icon}
 *🔌 pluggable*
@@ -2708,7 +2708,7 @@ Read + validate an element's saved Icon Badge Preset value into a safe `iconb-&#
 
 **Returns** `string` an `iconb-&#123;slug&#125;` class, or '' .
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1485`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1487`</small>
 
 ### `sc_icon_badge_preset_field` {#sc_icon_badge_preset_field}
 *🔌 pluggable*
@@ -2725,7 +2725,7 @@ The shared "Icon Badge Preset" control — a `border-style-picker` of the saved 
 
 **Returns** `array` option field.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1376`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1378`</small>
 
 ### `sc_icon_badge_preset_previews` {#sc_icon_badge_preset_previews}
 *🔌 pluggable*
@@ -2736,7 +2736,7 @@ sc_icon_badge_preset_previews()
 
 Ready-to-use inline preview styles for each Icon Badge preset, keyed by its `iconb-&#123;slug&#125;` class: iconb-&#123;slug&#125; =&gt; array( 'tile_style' =&gt; '…', 'icon_style' =&gt; '…' ). Derived from each preset's DEFAULT state (shape + tile fill + border + icon colour, colours resolved against the Color Presets). Fed to the `border-style-picker` in badge mode so it draws a REAL mini tile per choice with inline styles — the preview is correct without depending on the generated front-end `.iconb-` CSS being present (and cached) in wp-admin. Preview tile SIZE is fixed by CSS (uniform rows), so the preset's own badge/icon size is intentionally not applied here.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1409`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1411`</small>
 
 ### `sc_icon_custom_markup` {#sc_icon_custom_markup}
 *🔌 pluggable*
@@ -2747,7 +2747,7 @@ sc_icon_custom_markup( $custom )
 
 Render a free-form "Custom Icon (emoji / SVG)" value: inline SVG is sanitised, anything else (an emoji or short text) is HTML-escaped.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3256`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3259`</small>
 
 ### `sc_icon_enqueue_lottie` {#sc_icon_enqueue_lottie}
 *🔌 pluggable*
@@ -2758,7 +2758,7 @@ sc_icon_enqueue_lottie()
 
 Enqueue the bundled lottie-web player + the UnysonPlus hydrator, once. Called from sc_icon_render() only when a Lottie icon is actually output, so pages without animated icons never load the ~168 KB player.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2931`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2934`</small>
 
 ### `sc_icon_enqueue_pack` {#sc_icon_enqueue_pack}
 *🔌 pluggable*
@@ -2769,7 +2769,7 @@ sc_icon_enqueue_pack( $value )
 
 Enqueue only the icon pack CSS a single icon-v2 value needs. Safe to call repeatedly (WP dedupes by handle). No-op for uploads / none / unknown.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2740`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2743`</small>
 
 ### `sc_icon_enqueue_rive` {#sc_icon_enqueue_rive}
 *🔌 pluggable*
@@ -2780,7 +2780,7 @@ sc_icon_enqueue_rive()
 
 Enqueue the bundled Rive canvas runtime (rive.js + rive.wasm) + the UnysonPlus hydrator, once. Called from sc_icon_render() only when a Rive icon is actually output, so pages without a Rive icon never load the heavy (~2 MB) WASM runtime. The hydrator pins the WASM URL to our bundled copy via the localized upwRiveWasm, so the runtime never reaches out to a CDN.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2955`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2958`</small>
 
 ### `sc_icon_flatten_svg_css` {#sc_icon_flatten_svg_css}
 *🔌 pluggable*
@@ -2791,7 +2791,7 @@ sc_icon_flatten_svg_css( $markup )
 
 Flatten an SVG's internal CSS into presentation attributes so the markup survives sanitisation intact. Adobe Illustrator exports style everything through a &lt;style&gt; block of `.stN&#123;...&#125;` classes (plus inline style="...") - wp_kses strips both, which used to turn AI exports black. This inlines: 1. every simple single-class rule (`.st0&#123;fill:#123&#125;`) onto the elements carrying that class, and 2. every inline style="prop:val" list, as plain attributes (fill="#123"), then drops the &lt;style&gt; block. Only a safe property allowlist is inlined - anything else is discarded.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3085`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3088`</small>
 
 ### `sc_icon_join_classes` {#sc_icon_join_classes}
 *🔌 pluggable*
@@ -2802,7 +2802,7 @@ sc_icon_join_classes( $parts )
 
 Join class fragments, dropping empties and collapsing internal gaps.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2751`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2754`</small>
 
 ### `sc_icon_render` {#sc_icon_render}
 *🔌 pluggable*
@@ -2813,7 +2813,7 @@ sc_icon_render( $value, $args = array() )
 
 Renders an icon value (font, SVG, emoji, or upload) into markup, the central single-source icon renderer.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2759`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2762`</small>
 
 ### `sc_icon_sanitize_svg` {#sc_icon_sanitize_svg}
 *🔌 pluggable*
@@ -2824,7 +2824,7 @@ sc_icon_sanitize_svg( $markup )
 
 Sanitise inline SVG markup against the shared allowlist. Returns '' if not SVG.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3200`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3203`</small>
 
 ### `sc_icon_svg_allowed` {#sc_icon_svg_allowed}
 *🔌 pluggable*
@@ -2835,7 +2835,7 @@ sc_icon_svg_allowed()
 
 wp_kses allowlist for inline icon SVG (scripts / handlers / external refs stripped).
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2986`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2989`</small>
 
 ### `sc_icon_svg_library_fallback` {#sc_icon_svg_library_fallback}
 *🔌 pluggable*
@@ -2861,7 +2861,7 @@ list to maintain as more brands come and go.
 
 **Returns** `string` markup, or '' if nothing equivalent exists
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3322`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3326`</small>
 
 ### `sc_icon_svg_library_markup` {#sc_icon_svg_library_markup}
 *🔌 pluggable*
@@ -2872,7 +2872,7 @@ sc_icon_svg_library_markup( $id )
 
 Resolve a library SVG id ('&lt;pack&gt;/&lt;name&gt;', e.g. 'lucide/star', 'tabler/home') to its raw inline-&lt;svg&gt; markup via the multi-pack engine. Filterable so extra libraries can be provided. Returns '' if unknown.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3271`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3274`</small>
 
 ### `sc_iconbox_render_icon_container` {#sc_iconbox_render_icon_container}
 *🔌 pluggable*
@@ -2960,7 +2960,7 @@ Read + validate a saved Image Style value into a safe `imgs-&#123;slug&#125;` cl
 
 **Returns** `string` a `imgs-&#123;slug&#125;` class, or ''.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1724`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1726`</small>
 
 ### `sc_image_style_field` {#sc_image_style_field}
 *🔌 pluggable*
@@ -2971,7 +2971,7 @@ sc_image_style_field( $args = array() )
 
 The shared "Image Style" preset picker any element with an image drops into its options (crop, corners, mask, filter, scrim). Consumes the Theme Settings → Components → Image Styles library. Saved value is a flat `imgs-&#123;slug&#125;` string.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1695`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1697`</small>
 
 ### `sc_imgbox_family_to_key` {#sc_imgbox_family_to_key}
 *🔌 pluggable*
@@ -3084,7 +3084,7 @@ sc_kses_svg( $html )
 
 wp_kses_post PLUS a safe inline-SVG element set. Headings / rich text can legitimately carry a decorative inline `&lt;svg&gt;` (a hand-drawn underline squiggle, a highlight stroke); wp_kses_post strips it, so the graphic vanishes. Allow the SHAPE + PRESENTATION element/attribute set only — never `&lt;script&gt;` / `&lt;foreignObject&gt;` / `on*` handlers, so no script surface is introduced. wp_kses also LOWERCASES attribute names, but a handful of SVG attrs are case-SENSITIVE (`viewBox`, `preserveAspectRatio`, gradient units) and break when lowercased — restore them.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:342`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:344`</small>
 
 ### `sc_lg_item` {#sc_lg_item}
 *🔌 pluggable*
@@ -3163,7 +3163,7 @@ A callback returning null leaves the att untouched (e.g. "no legacy data").
 
 **Returns** `array`
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2673`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2676`</small>
 
 ### `sc_mp_icon` {#sc_mp_icon}
 *🔌 pluggable*
@@ -3196,7 +3196,7 @@ sc_needs_wrapper( $atts )
 
 Decide whether a shortcode view.php should render its wrapper element. Returns true if any of the wrapper-affecting atts are set. Filter `sc_needs_wrapper` lets future tabs opt in without per-shortcode edits.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1827`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1829`</small>
 
 ### `sc_nl_render` {#sc_nl_render}
 *🔌 pluggable*
@@ -3239,7 +3239,7 @@ helper supports both option-types without branching.
 
 **Returns** `array&#123;` class: string, style: string &#125;
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:622`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:624`</small>
 
 ### `sc_notification_render_icon` {#sc_notification_render_icon}
 *🔌 pluggable*
@@ -3250,7 +3250,7 @@ sc_notification_render_icon( $custom_icon, $picked_icon, $type, $default_icons )
 
 Renders a notification icon, preferring the picked icon, then a legacy custom icon, then the per-type default.
 
-<small>Source: `framework/extensions/shortcodes/shortcodes/notification/views/view.php:86`</small>
+<small>Source: `framework/extensions/shortcodes/shortcodes/notification/views/view.php:88`</small>
 
 ### `sc_option_alignment` {#sc_option_alignment}
 *🔌 pluggable*
@@ -3701,7 +3701,7 @@ sc_plugin_provides_settings_ui()
 
 The plugin always provides the preset editor now — the Shortcodes extension Settings form (settings-options.php), stored theme-independently. So a Settings UI is always reachable regardless of the active theme. (Formerly defined in the now-removed shortcode-options/loader.php.)
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:126`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:128`</small>
 
 ### `sc_position_style` {#sc_position_style}
 *🔌 pluggable*
@@ -3773,7 +3773,7 @@ sc_posts_get_ordered_slugs( $atts, $exclude = [] )
 
 Returns the ordered, enabled card-block slugs (from the Card Rows designer, else element_order, else defaults), minus any excluded ones.
 
-<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:641`</small>
+<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:642`</small>
 
 ### `sc_posts_locate_part` {#sc_posts_locate_part}
 *🔌 pluggable*
@@ -3806,7 +3806,7 @@ sc_posts_render( $atts )
 
 Renders the full Posts shortcode markup from its atts (query, layout, cards, pagination, filters, slider).
 
-<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:791`</small>
+<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:792`</small>
 
 ### `sc_posts_render_block` {#sc_posts_render_block}
 *🔌 pluggable*
@@ -3817,7 +3817,7 @@ sc_posts_render_block( $slug, $atts, $post_id, $cat_overlay_html = '' )
 
 Renders a single card block by slug (image, cats, title, meta, excerpt, readmore).
 
-<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:584`</small>
+<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:585`</small>
 
 ### `sc_posts_render_body_rows` {#sc_posts_render_body_rows}
 *🔌 pluggable*
@@ -3828,7 +3828,7 @@ sc_posts_render_body_rows( $atts, $post_id, $exclude = [ 'image' ] )
 
 Renders a card's body blocks grouped into the designed Card Rows, excluding the image, with a flat-stack fallback.
 
-<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:607`</small>
+<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:608`</small>
 
 ### `sc_posts_render_card` {#sc_posts_render_card}
 *🔌 pluggable*
@@ -3839,7 +3839,7 @@ sc_posts_render_card( $atts, $post_id, $card_style, $index = 0 )
 
 Renders one post card by including the template part mapped to the given card style.
 
-<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:700`</small>
+<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:701`</small>
 
 ### `sc_posts_render_cards` {#sc_posts_render_cards}
 *🔌 pluggable*
@@ -3850,7 +3850,7 @@ sc_posts_render_cards( $atts, $posts_list, $start_index = 0 )
 
 Renders the inner card markup for a list of posts, applying first-post, alternate, and featured treatments.
 
-<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:729`</small>
+<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:730`</small>
 
 ### `sc_posts_render_cats` {#sc_posts_render_cats}
 *🔌 pluggable*
@@ -3861,7 +3861,7 @@ sc_posts_render_cats( $atts, $post_id )
 
 Renders category/taxonomy chip links for a post, honoring the block toggle, taxonomy, and max-count options.
 
-<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:409`</small>
+<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:410`</small>
 
 ### `sc_posts_render_excerpt` {#sc_posts_render_excerpt}
 *🔌 pluggable*
@@ -3872,7 +3872,7 @@ sc_posts_render_excerpt( $atts, $post_id )
 
 Renders a post's excerpt from the chosen source, trimmed to the configured word length and suffix.
 
-<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:491`</small>
+<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:492`</small>
 
 ### `sc_posts_render_filter_bar` {#sc_posts_render_filter_bar}
 *🔌 pluggable*
@@ -3883,7 +3883,7 @@ sc_posts_render_filter_bar( $atts )
 
 Renders the AJAX category filter bar of buttons for the chosen taxonomy's terms.
 
-<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:1057`</small>
+<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:1058`</small>
 
 ### `sc_posts_render_image` {#sc_posts_render_image}
 *🔌 pluggable*
@@ -3894,7 +3894,7 @@ sc_posts_render_image( $atts, $post_id, $cat_overlay_html = '' )
 
 Renders a post's featured image (or fallback) as a permalink anchor with ratio, image-style preset, and optional category overlay.
 
-<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:441`</small>
+<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:442`</small>
 
 ### `sc_posts_render_meta` {#sc_posts_render_meta}
 *🔌 pluggable*
@@ -3905,7 +3905,7 @@ sc_posts_render_meta( $atts, $post_id )
 
 Renders a post's meta bar (date, author, comments, reading time) in the chosen layout and separator style.
 
-<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:314`</small>
+<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:315`</small>
 
 ### `sc_posts_render_pagination` {#sc_posts_render_pagination}
 *🔌 pluggable*
@@ -3916,7 +3916,7 @@ sc_posts_render_pagination( $query, $align )
 
 Renders numbered pagination links for the query within an aligned nav wrapper.
 
-<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:1035`</small>
+<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:1036`</small>
 
 ### `sc_posts_render_readmore` {#sc_posts_render_readmore}
 *🔌 pluggable*
@@ -3927,7 +3927,7 @@ sc_posts_render_readmore( $atts, $post_id )
 
 Renders a post's read-more link in the chosen style with a visually-hidden title for accessible, crawlable link text.
 
-<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:518`</small>
+<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:519`</small>
 
 ### `sc_posts_render_title` {#sc_posts_render_title}
 *🔌 pluggable*
@@ -3938,7 +3938,7 @@ sc_posts_render_title( $atts, $post_id )
 
 Renders a post's title as a permalink-linked heading using the configured tag.
 
-<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:565`</small>
+<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:566`</small>
 
 ### `sc_posts_slug_enabled` {#sc_posts_slug_enabled}
 *🔌 pluggable*
@@ -3949,7 +3949,7 @@ sc_posts_slug_enabled( $atts, $slug )
 
 Is a card block explicitly enabled in the Elements → block list? Checks the raw `element_order` (independent of the self-heal in sc_posts_get_ordered_slugs) so a single block can be toggled off. Returns true when the list is empty (defaults = all on) or the slug is absent (forward-compatible with blocks added after a saved order).
 
-<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:394`</small>
+<small>Source: `framework/extensions/shortcodes/shortcodes/posts/views/view.php:395`</small>
 
 ### `sc_pt_icon` {#sc_pt_icon}
 *🔌 pluggable*
@@ -3982,7 +3982,7 @@ sc_rating_star_paths()
 
 Symbol key =&gt; &#123; vb: viewBox, d: filled path &#125;. Filterable to add shapes.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3536`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3541`</small>
 
 ### `sc_rating_stars` {#sc_rating_stars}
 *🔌 pluggable*
@@ -4000,7 +4000,7 @@ color value or CSS string), size (sm|md|lg|CSS length), label.
 | `$rating` | `float` | 0..max. |
 | `$args` | `array` | max (5), symbol (star\|heart\|circle\|…), fill/empty (compact |
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3555`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3561`</small>
 
 ### `sc_rating_style_field` {#sc_rating_style_field}
 *🔌 pluggable*
@@ -4011,7 +4011,7 @@ sc_rating_style_field( $args = array() )
 
 Reusable "Rating style" options (Symbol + Filled/Empty color + Size) for any star-showing element. Returns an option-id =&gt; option-def array to merge into a group. Read the saved values back with sc_rating_style_from_atts().
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3620`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3627`</small>
 
 ### `sc_rating_style_from_atts` {#sc_rating_style_from_atts}
 *🔌 pluggable*
@@ -4022,7 +4022,7 @@ sc_rating_style_from_atts( $atts, $prefix = 'rating_' )
 
 Pull the sc_rating_style_field values from an element's atts → sc_rating_stars() args.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3666`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3673`</small>
 
 ### `sc_remove_styling_options` {#sc_remove_styling_options}
 *🔌 pluggable*
@@ -4033,7 +4033,7 @@ sc_remove_styling_options( $options )
 
 Recursively drop the `tab_styling` tab and any preset-picker option (button-style-picker / border-style-picker / table-style-picker), and prune containers (tab/box/group) that become empty as a result.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2448`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:2451`</small>
 
 ### `sc_render_card` {#sc_render_card}
 *🔌 pluggable*
@@ -4107,7 +4107,7 @@ those classes onto a wrapper whose descendant `.fw-row`(s) should react.
 
 **Returns** `array` &#123; column_halign, column_valign, reverse_columns &#125; option defs.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:914`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:916`</small>
 
 ### `sc_section_background_effects` {#sc_section_background_effects}
 *🔌 pluggable*
@@ -4151,7 +4151,7 @@ sc_section_background_enqueue_runtime()
 
 On-demand enqueue of the shared runtime — only when a section background actually rendered on this page (mirrors the Animation helper's wp_footer/priority-5 model).
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-background-helper.php:196`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-background-helper.php:197`</small>
 
 ### `sc_section_background_field` {#sc_section_background_field}
 *🔌 pluggable*
@@ -4210,7 +4210,7 @@ Registers the flag + records the effect so its assets enqueue on demand.
 
 **Returns** `string` backdrop HTML (empty string if the effect isn't registered).
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-background-helper.php:166`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-background-helper.php:167`</small>
 
 ### `sc_section_background_use` {#sc_section_background_use}
 *🔌 pluggable*
@@ -4274,7 +4274,7 @@ sc_smooth_scroll_enqueue()
 
 Conditionally enqueue Lenis + the initializer when the current singular page has Smooth Scroll switched on.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-smooth-scroll.php:64`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-smooth-scroll.php:65`</small>
 
 ### `sc_smooth_scroll_post_option` {#sc_smooth_scroll_post_option}
 *🔌 pluggable*
@@ -4304,7 +4304,7 @@ Build a single Bootstrap-spacing select field for the Styling tab.
 names (e.g. 'm-3', 'py-2') which the spacing-override block in css-tokens.php
 makes site-customizable via Theme Settings → General → Spacing.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:842`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:844`</small>
 
 ### `sc_spacing_has_value` {#sc_spacing_has_value}
 *🔌 pluggable*
@@ -4317,7 +4317,7 @@ True iff a `spacing` att has at least one non-empty leaf — i.e. the user actua
 
 Used by sc_needs_wrapper.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:448`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:450`</small>
 
 ### `sc_sr_render` {#sc_sr_render}
 *🔌 pluggable*
@@ -4394,7 +4394,7 @@ sc_styling_att_keys()
 
 Single source of truth for the att keys that the Styling tab produces. Used by sc_needs_wrapper() and sc_apply_styling_classes() so adding a new field only requires updating one place.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1794`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:1796`</small>
 
 ### `sc_styling_help_text` {#sc_styling_help_text}
 *🔌 pluggable*
@@ -4413,7 +4413,7 @@ Returns the localised `help` tooltip string for a Styling-tab preset picker. Swi
 
 **Returns** `string` HTML-safe help string with a single anchor.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:142`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:144`</small>
 
 ### `sc_svg_attachment_metadata` {#sc_svg_attachment_metadata}
 
@@ -4423,7 +4423,7 @@ sc_svg_attachment_metadata( $metadata, $attachment_id )
 
 WordPress generates NO metadata for SVG attachments, which breaks the admin: the grid shows no thumbnail, Edit Media says "Image data does not exist", and image functions return no dimensions. Provide metadata from the SVG's own width/height/viewBox so SVGs behave like normal images.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3455`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3460`</small>
 
 ### `sc_svg_check_filetype` {#sc_svg_check_filetype}
 
@@ -4433,7 +4433,7 @@ sc_svg_check_filetype( $data, $file, $filename, $mimes )
 
 Filters WordPress filetype detection to accept .svg as image/svg+xml when SVG uploads are allowed.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3392`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3397`</small>
 
 ### `sc_svg_file_dimensions` {#sc_svg_file_dimensions}
 
@@ -4443,7 +4443,7 @@ sc_svg_file_dimensions( $file )
 
 Read an SVG file's intrinsic dimensions: width/height attributes first, else the viewBox, else the SVG default 300x150.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3433`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3438`</small>
 
 ### `sc_svg_image_downsize` {#sc_svg_image_downsize}
 
@@ -4453,7 +4453,7 @@ sc_svg_image_downsize( $out, $attachment_id, $size )
 
 wp_get_attachment_image()/image_downsize(): serve the SVG itself at its intrinsic size.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3493`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3498`</small>
 
 ### `sc_svg_mime_type_icon` {#sc_svg_mime_type_icon}
 
@@ -4463,7 +4463,7 @@ sc_svg_mime_type_icon( $icon, $mime, $post_id )
 
 The Edit-Media screen (and any other surface that falls back to a mime icon) gates its real preview on wp_attachment_is_image(), whose extension whitelist excludes svg. Serve the SVG itself as its own "icon" so those surfaces preview the actual artwork instead of a generic document glyph.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3515`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3520`</small>
 
 ### `sc_svg_prepare_attachment_js` {#sc_svg_prepare_attachment_js}
 
@@ -4473,7 +4473,7 @@ sc_svg_prepare_attachment_js( $response, $attachment )
 
 Media-modal / grid JS payload: give SVGs a usable preview + dimensions.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3474`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3479`</small>
 
 ### `sc_svg_sanitize_upload` {#sc_svg_sanitize_upload}
 
@@ -4483,7 +4483,7 @@ sc_svg_sanitize_upload( $file )
 
 Prefilters SVG uploads to enforce admin permission and sanitize the file, rejecting anything that fails.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3402`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3407`</small>
 
 ### `sc_svg_upload_allowed` {#sc_svg_upload_allowed}
 
@@ -4493,7 +4493,7 @@ sc_svg_upload_allowed()
 
 Returns whether the current context may upload SVGs (manage_options capability or the filter override).
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3378`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3382`</small>
 
 ### `sc_svg_upload_mimes` {#sc_svg_upload_mimes}
 *🔌 pluggable*
@@ -4504,7 +4504,7 @@ sc_svg_upload_mimes( $mimes )
 
 Adds the SVG MIME type to the allowed upload types when SVG uploads are permitted for the current context.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3383`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:3388`</small>
 
 ### `sc_testimonial_fields` {#sc_testimonial_fields}
 *🔌 pluggable*
@@ -4550,7 +4550,7 @@ True if the active theme (parent or directly active) ships the Unyson+-style The
 
 Cached per-request: theme can't change mid-request.
 
-<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:107`</small>
+<small>Source: `framework/extensions/shortcodes/includes/shortcode-styling-helper.php:108`</small>
 
 ### `sc_theme_settings_url` {#sc_theme_settings_url}
 *🔌 pluggable*
@@ -4668,7 +4668,7 @@ upw_sc_lib_ajax_manage()
 
 AJAX handler to install, uninstall, or refresh shortcode-library items, returning the updated item/installed lists.
 
-<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:254`</small>
+<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:256`</small>
 
 ### `upw_sc_lib_bundled_catalog` {#upw_sc_lib_bundled_catalog}
 
@@ -4678,7 +4678,7 @@ upw_sc_lib_bundled_catalog()
 
 Bundled fallback catalog shipped beside this installer, so the gallery works offline.
 
-<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:39`</small>
+<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:41`</small>
 
 ### `upw_sc_lib_catalog` {#upw_sc_lib_catalog}
 
@@ -4688,7 +4688,7 @@ upw_sc_lib_catalog( $force = false )
 
 The gallery catalog: remote fetch (12h transient) with the bundled catalog as fallback. Adds `_catalog_ok` = whether the remote (not just the fallback) was reachable.
 
-<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:88`</small>
+<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:90`</small>
 
 ### `upw_sc_lib_catalog_url` {#upw_sc_lib_catalog_url}
 
@@ -4708,7 +4708,7 @@ upw_sc_lib_install( $slug )
 
 Download + install ONE shortcode by slug: fetch its zip, verify sha256, extract into the theme's shortcodes customization tree (atomic). Returns true or WP_Error.
 
-<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:151`</small>
+<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:153`</small>
 
 ### `upw_sc_lib_install_dir` {#upw_sc_lib_install_dir}
 
@@ -4718,7 +4718,7 @@ upw_sc_lib_install_dir()
 
 Install target: the ACTIVE theme's shortcodes customization tree (loader auto-registers here).
 
-<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:29`</small>
+<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:30`</small>
 
 ### `upw_sc_lib_installed_slugs` {#upw_sc_lib_installed_slugs}
 
@@ -4728,7 +4728,7 @@ upw_sc_lib_installed_slugs()
 
 Slugs currently installed in the theme's shortcodes customization tree (folder + config.php).
 
-<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:118`</small>
+<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:120`</small>
 
 ### `upw_sc_lib_installer_payload` {#upw_sc_lib_installer_payload}
 
@@ -4738,7 +4738,7 @@ upw_sc_lib_installer_payload()
 
 Data localized to the gallery JS.
 
-<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:230`</small>
+<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:232`</small>
 
 ### `upw_sc_lib_items` {#upw_sc_lib_items}
 
@@ -4748,7 +4748,7 @@ upw_sc_lib_items()
 
 Merged gallery items, each tagged with state: installed | available.
 
-<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:129`</small>
+<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:131`</small>
 
 ### `upw_sc_lib_normalize_catalog` {#upw_sc_lib_normalize_catalog}
 
@@ -4758,7 +4758,7 @@ upw_sc_lib_normalize_catalog( $raw )
 
 Normalize a raw catalog into &#123; version, base_url, shortcodes:&#123; slug =&gt; &#123;...&#125; &#125; &#125;.
 
-<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:47`</small>
+<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:49`</small>
 
 ### `upw_sc_lib_resolve_url` {#upw_sc_lib_resolve_url}
 
@@ -4768,7 +4768,7 @@ upw_sc_lib_resolve_url( $catalog, $rel )
 
 Resolve a catalog-relative path (thumb / payload) against the catalog base_url.
 
-<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:76`</small>
+<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:78`</small>
 
 ### `upw_sc_lib_uninstall` {#upw_sc_lib_uninstall}
 
@@ -4778,6 +4778,6 @@ upw_sc_lib_uninstall( $slug )
 
 Remove ONE installed shortcode's folder (guarded to the install dir + a catalog slug).
 
-<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:208`</small>
+<small>Source: `framework/extensions/shortcodes/includes/library/installer.php:210`</small>
 
 ← Back to [Functions overview](./index.md)

@@ -14,34 +14,40 @@ hide_table_of_contents: true
 
 | Hook | Type | Summary |
 | --- | --- | --- |
-| [`fw_settings_form_saved`](#h-fw-settings-form-saved) | action | — |
-| [`unysonplus_icons_animated_settings`](#h-unysonplus-icons-animated-settings) | filter | — |
-| [`unysonplus_settings_io_exclude_keys`](#h-unysonplus-settings-io-exclude-keys) | filter | — |
+| [`fw_settings_form_saved`](#h-fw-settings-form-saved) | action | Fires after Theme Settings are saved from an import, passing the previous and merged values so listeners can react to the change. |
+| [`unysonplus_icons_animated_settings`](#h-unysonplus-icons-animated-settings) | filter | Filters an optional Animated sub-tab of options for the Icons settings page, added by the Animated Icons extension when active. |
+| [`unysonplus_settings_io_exclude_keys`](#h-unysonplus-settings-io-exclude-keys) | filter | Filters the operational setting keys excluded from a Theme Settings design export/import. |
 
 ---
 
 ### `fw_settings_form_saved` {#h-fw-settings-form-saved}
 *🎬 action · 2 call sites*
 
+Fires after Theme Settings are saved from an import, passing the previous and merged values so listeners can react to the change.
+
 ```php
 add_action( 'fw_settings_form_saved', $callback );
 ```
-<small>Fired in: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:202`</small>
+<small>Fired in: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:204`</small>
 
 ### `unysonplus_icons_animated_settings` {#h-unysonplus-icons-animated-settings}
 *🧪 filter*
 
+Filters an optional Animated sub-tab of options for the Icons settings page, added by the Animated Icons extension when active.
+
 ```php
 add_filter( 'unysonplus_icons_animated_settings', $callback );
 ```
-<small>Fired in: `framework/extensions/shortcodes/includes/theme-settings/icons.php:76`</small>
+<small>Fired in: `framework/extensions/shortcodes/includes/theme-settings/icons.php:77`</small>
 
 ### `unysonplus_settings_io_exclude_keys` {#h-unysonplus-settings-io-exclude-keys}
 *🧪 filter*
 
+Filters the operational setting keys excluded from a Theme Settings design export/import.
+
 ```php
 add_filter( 'unysonplus_settings_io_exclude_keys', $callback );
 ```
-<small>Fired in: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:25`</small>
+<small>Fired in: `framework/extensions/shortcodes/includes/theme-settings/settings-export-import.php:26`</small>
 
 ← Back to [Hooks overview](./index.md)

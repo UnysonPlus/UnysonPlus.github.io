@@ -48,7 +48,7 @@ fw_tpl_lib__fetch_json( $url )
 
 GET a URL and json_decode it. Returns array|WP_Error.
 
-<small>Source: `framework/extensions/template-library/includes/installer.php:298`</small>
+<small>Source: `framework/extensions/template-library/includes/installer.php:300`</small>
 
 ### `fw_tpl_lib__read_envelope_json` {#fw_tpl_lib__read_envelope_json}
 *🔌 pluggable*
@@ -70,7 +70,7 @@ fw_tpl_lib__rrmdir( $dir )
 
 Recursively delete a directory (temp + uninstall).
 
-<small>Source: `framework/extensions/template-library/includes/installer.php:315`</small>
+<small>Source: `framework/extensions/template-library/includes/installer.php:317`</small>
 
 ### `fw_tpl_lib__validate_envelope` {#fw_tpl_lib__validate_envelope}
 *🔌 pluggable*
@@ -88,7 +88,7 @@ Validate a downloaded/bundled export envelope: it must be an _fw_template_export
 
 **Returns** `true\|WP_Error`
 
-<small>Source: `framework/extensions/template-library/includes/installer.php:273`</small>
+<small>Source: `framework/extensions/template-library/includes/installer.php:275`</small>
 
 ### `fw_tpl_lib_allowed_kinds` {#fw_tpl_lib_allowed_kinds}
 *🔌 pluggable*
@@ -99,7 +99,7 @@ fw_tpl_lib_allowed_kinds()
 
 The template kinds the builder's predefined lists accept.
 
-<small>Source: `framework/extensions/template-library/includes/installer.php:50`</small>
+<small>Source: `framework/extensions/template-library/includes/installer.php:51`</small>
 
 ### `fw_tpl_lib_builder_payload` {#fw_tpl_lib_builder_payload}
 *🔌 pluggable*
@@ -134,7 +134,7 @@ fw_tpl_lib_bundled_dir()
 
 Absolute path of the bundled-templates folder shipped in the extension.
 
-<small>Source: `framework/extensions/template-library/includes/installer.php:34`</small>
+<small>Source: `framework/extensions/template-library/includes/installer.php:35`</small>
 
 ### `fw_tpl_lib_bundled_uri` {#fw_tpl_lib_bundled_uri}
 *🔌 pluggable*
@@ -145,7 +145,7 @@ fw_tpl_lib_bundled_uri()
 
 Public URI of the bundled-templates folder (for thumbnails).
 
-<small>Source: `framework/extensions/template-library/includes/installer.php:42`</small>
+<small>Source: `framework/extensions/template-library/includes/installer.php:43`</small>
 
 ### `fw_tpl_lib_catalog` {#fw_tpl_lib_catalog}
 *🔌 pluggable*
@@ -162,7 +162,7 @@ Fetch + decode the remote catalog, cached in a transient (12h). Returns a normal
 
 **Returns** `array` &#123; version:int, base_url:string, templates:&#123; slug =&gt; &#123;...&#125; &#125; &#125;
 
-<small>Source: `framework/extensions/template-library/includes/installer.php:78`</small>
+<small>Source: `framework/extensions/template-library/includes/installer.php:80`</small>
 
 ### `fw_tpl_lib_catalog_url` {#fw_tpl_lib_catalog_url}
 *🔌 pluggable*
@@ -173,7 +173,7 @@ fw_tpl_lib_catalog_url()
 
 URL of the catalog.json describing installable templates. Filterable.
 
-<small>Source: `framework/extensions/template-library/includes/installer.php:61`</small>
+<small>Source: `framework/extensions/template-library/includes/installer.php:62`</small>
 
 ### `fw_tpl_lib_feed_predefined` {#fw_tpl_lib_feed_predefined}
 *🔌 pluggable*
@@ -208,7 +208,7 @@ Download one template envelope from the catalog into the uploads install dir. At
 
 **Returns** `true\|WP_Error`
 
-<small>Source: `framework/extensions/template-library/includes/installer.php:178`</small>
+<small>Source: `framework/extensions/template-library/includes/installer.php:180`</small>
 
 ### `fw_tpl_lib_install_dir` {#fw_tpl_lib_install_dir}
 *🔌 pluggable*
@@ -230,7 +230,7 @@ fw_tpl_lib_installed_meta( $slug )
 
 Decoded meta.json for one installed template, or null.
 
-<small>Source: `framework/extensions/template-library/includes/installer.php:157`</small>
+<small>Source: `framework/extensions/template-library/includes/installer.php:159`</small>
 
 ### `fw_tpl_lib_installed_slugs` {#fw_tpl_lib_installed_slugs}
 *🔌 pluggable*
@@ -241,7 +241,7 @@ fw_tpl_lib_installed_slugs()
 
 Slugs of templates installed under uploads (a dir with template.json + meta.json).
 
-<small>Source: `framework/extensions/template-library/includes/installer.php:139`</small>
+<small>Source: `framework/extensions/template-library/includes/installer.php:141`</small>
 
 ### `fw_tpl_lib_installer_categories` {#fw_tpl_lib_installer_categories}
 *🔌 pluggable*
@@ -252,7 +252,7 @@ fw_tpl_lib_installer_categories( $items = null )
 
 Distinct category names across the current item list (sorted).
 
-<small>Source: `framework/extensions/template-library/includes/installer.php:398`</small>
+<small>Source: `framework/extensions/template-library/includes/installer.php:400`</small>
 
 ### `fw_tpl_lib_installer_items` {#fw_tpl_lib_installer_items}
 *🔌 pluggable*
@@ -267,7 +267,7 @@ Bundled templates (shipped in the extension) are always present and can't be
 removed. Installed templates were downloaded and can be removed. Catalog
 entries not present locally are available to install.
 
-<small>Source: `framework/extensions/template-library/includes/installer.php:338`</small>
+<small>Source: `framework/extensions/template-library/includes/installer.php:340`</small>
 
 ### `fw_tpl_lib_installer_payload` {#fw_tpl_lib_installer_payload}
 *🔌 pluggable*
@@ -278,7 +278,7 @@ fw_tpl_lib_installer_payload()
 
 Everything the admin grid JS needs, localized as `upwTemplateLibrary`.
 
-<small>Source: `framework/extensions/template-library/includes/installer.php:412`</small>
+<small>Source: `framework/extensions/template-library/includes/installer.php:414`</small>
 
 ### `fw_tpl_lib_registered_templates` {#fw_tpl_lib_registered_templates}
 *🔌 pluggable*
@@ -306,7 +306,7 @@ Remove an installed template. Bundled templates have no uploads dir, so this is 
 
 **Returns** `true\|WP_Error`
 
-<small>Source: `framework/extensions/template-library/includes/installer.php:248`</small>
+<small>Source: `framework/extensions/template-library/includes/installer.php:250`</small>
 
 ### `fw_tpl_lib_user_templates` {#fw_tpl_lib_user_templates}
 *🔌 pluggable*

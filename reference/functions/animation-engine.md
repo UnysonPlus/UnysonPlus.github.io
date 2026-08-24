@@ -508,7 +508,7 @@ Read a global Animation Engine setting (theme-scoped). Modules use this to honou
 
 **Returns** `mixed`
 
-<small>Source: `framework/extensions/animation-engine/includes/theme-settings.php:199`</small>
+<small>Source: `framework/extensions/animation-engine/includes/theme-settings.php:200`</small>
 
 ### `upw_anim_engine_settings_section` {#upw_anim_engine_settings_section}
 *🔌 pluggable*

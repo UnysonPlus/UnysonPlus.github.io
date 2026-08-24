@@ -35,7 +35,7 @@ Returns the shortcodes generated from a post's page-builder JSON builder value.
 
 **Returns** `string` Shortcodes generated from post meta json builder value
 
-<small>Source: `framework/extensions/shortcodes/extensions/page-builder/helpers.php:46`</small>
+<small>Source: `framework/extensions/shortcodes/extensions/page-builder/helpers.php:47`</small>
 
 ### `fw_ext_page_builder_get_supported_post_types` {#fw_ext_page_builder_get_supported_post_types}
 

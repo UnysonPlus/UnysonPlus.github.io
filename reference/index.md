@@ -19,7 +19,7 @@ scan, so it always matches the shipped code (never hand-written).
 - **[Functions](./functions/index.md)** — 844 public helper functions
   (`fw_` / `unysonplus_` / `upw_` / `sc_` / `fw_ext_`), grouped by subsystem, with signatures,
   parameters, return values and source locations. Pluggable (`function_exists`-guarded) functions are flagged.
-- **[Hooks](./hooks/index.md)** — 356 actions & filters, grouped by subsystem — the
+- **[Hooks](./hooks/index.md)** — 342 actions & filters, grouped by subsystem — the
   supported extension points.
 
 ## What's not here

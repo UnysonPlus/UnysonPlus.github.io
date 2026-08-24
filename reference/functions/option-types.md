@@ -90,7 +90,7 @@ fw_icon_animated_enabled()
 
 Whether the "Animated" tab shows at all — i.e. at least one player-based technology (Lottie or Rive) is enabled. Derived from the per-technology gates, so the tab appears when either is on and hides when both are off. Core ships the tab, JS handlers and bundled players but keeps them OFF by default; the opt-in Animated Icons extension flips the per-technology gates. The FRONTEND render of already-saved animated values is intentionally NOT gated, so toggling the extension never breaks pages that already use one.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:914`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:917`</small>
 
 ### `fw_icon_lottie_dir` {#fw_icon_lottie_dir}
 *🔌 pluggable*
@@ -101,7 +101,7 @@ fw_icon_lottie_dir()
 
 &#123; path, url &#125; of the Lottie upload dir (uploads/unysonplus/lottie).
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:949`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:954`</small>
 
 ### `fw_icon_lottie_enabled` {#fw_icon_lottie_enabled}
 *🔌 pluggable*
@@ -112,7 +112,7 @@ fw_icon_lottie_enabled()
 
 Whether the Lottie technology is enabled (its Animated-tab panel, admin player runtime and .json upload endpoint). Default OFF; the Animated Icons extension flips it on from its "Lottie" toggle.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:888`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:889`</small>
 
 ### `fw_icon_lucide_all` {#fw_icon_lucide_all}
 *🔌 pluggable*
@@ -183,7 +183,7 @@ fw_icon_pack__fetch_json( $url )
 
 GET a URL and json_decode it. Returns array|WP_Error.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:581`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:582`</small>
 
 ### `fw_icon_pack__from_icomoon` {#fw_icon_pack__from_icomoon}
 *🔌 pluggable*
@@ -206,7 +206,7 @@ translate so they sit correctly inside the square viewBox the pack declares.
 
 **Returns** `array\|null`
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:428`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:429`</small>
 
 ### `fw_icon_pack__keywords` {#fw_icon_pack__keywords}
 *🔌 pluggable*
@@ -217,7 +217,7 @@ fw_icon_pack__keywords( $name )
 
 Search keywords for an icon name: the name plus its tokens, deduped.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:486`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:487`</small>
 
 ### `fw_icon_pack__normalize_open` {#fw_icon_pack__normalize_open}
 *🔌 pluggable*
@@ -228,7 +228,7 @@ fw_icon_pack__normalize_open( $open )
 
 Clean an &lt;svg …&gt; opening tag: drop noise attrs, force colours to currentColor.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:498`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:499`</small>
 
 ### `fw_icon_pack__rrmdir` {#fw_icon_pack__rrmdir}
 *🔌 pluggable*
@@ -239,7 +239,7 @@ fw_icon_pack__rrmdir( $dir )
 
 Recursively delete a directory (used for temp + uninstall).
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:596`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:597`</small>
 
 ### `fw_icon_pack__unique_slug` {#fw_icon_pack__unique_slug}
 *🔌 pluggable*
@@ -250,7 +250,7 @@ fw_icon_pack__unique_slug( $base )
 
 A slug not already used by a bundled/installed/font/catalog pack.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:534`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:535`</small>
 
 ### `fw_icon_pack__write_pack` {#fw_icon_pack__write_pack}
 *🔌 pluggable*
@@ -261,7 +261,7 @@ fw_icon_pack__write_pack( $slug, $icons, $search, $meta )
 
 Atomically write a pack's three JSON files into the install dir.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:553`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:554`</small>
 
 ### `fw_icon_pack_ajax_nonce` {#fw_icon_pack_ajax_nonce}
 *🔌 pluggable*
@@ -272,7 +272,7 @@ fw_icon_pack_ajax_nonce()
 
 Returns the nonce action name used for icon-pack management AJAX requests.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:611`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:612`</small>
 
 ### `fw_icon_pack_catalog` {#fw_icon_pack_catalog}
 *🔌 pluggable*
@@ -289,7 +289,7 @@ Fetch + decode the remote catalog, cached in a transient (12h) so the installer 
 
 **Returns** `array` &#123; version:int, base_url:string, packs:&#123; slug =&gt; &#123;title,slug,svg_open,count&#125; &#125; &#125;
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:49`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:50`</small>
 
 ### `fw_icon_pack_catalog_url` {#fw_icon_pack_catalog_url}
 *🔌 pluggable*
@@ -313,7 +313,7 @@ Glyph counts for the ALWAYS-PRESENT libraries: the webfont packs and the bundled
 
 **Returns** `array` pack_id =&gt; int
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:148`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:149`</small>
 
 ### `fw_icon_pack_enabled_map` {#fw_icon_pack_enabled_map}
 *🔌 pluggable*
@@ -324,7 +324,7 @@ fw_icon_pack_enabled_map()
 
 &#123; pack_id =&gt; bool &#125; saved map. Empty array = never curated (all enabled).
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:636`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:637`</small>
 
 ### `fw_icon_pack_enabled_option_key` {#fw_icon_pack_enabled_option_key}
 *🔌 pluggable*
@@ -335,7 +335,7 @@ fw_icon_pack_enabled_option_key()
 
 Returns the per-theme option key storing which icon packs are enabled for the picker.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:627`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:628`</small>
 
 ### `fw_icon_pack_install` {#fw_icon_pack_install}
 *🔌 pluggable*
@@ -352,7 +352,7 @@ Download one pack from the catalog into the uploads install dir. Fetches the two
 
 **Returns** `true\|WP_Error`
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:222`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:223`</small>
 
 ### `fw_icon_pack_install_from_json` {#fw_icon_pack_install_from_json}
 *🔌 pluggable*
@@ -370,7 +370,7 @@ Install a user-uploaded icon pack from a JSON string. Accepts either a flat map 
 
 **Returns** `array\|WP_Error` &#123; slug, count &#125; on success.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:325`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:326`</small>
 
 ### `fw_icon_pack_installed_meta` {#fw_icon_pack_installed_meta}
 *🔌 pluggable*
@@ -381,7 +381,7 @@ fw_icon_pack_installed_meta( $slug )
 
 Decoded meta.json for one installed pack, or null.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:128`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:129`</small>
 
 ### `fw_icon_pack_installed_slugs` {#fw_icon_pack_installed_slugs}
 *🔌 pluggable*
@@ -392,7 +392,7 @@ fw_icon_pack_installed_slugs()
 
 Slugs of packs installed under uploads (each a dir with a valid meta.json + icons.json).
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:109`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:110`</small>
 
 ### `fw_icon_pack_installer_packs` {#fw_icon_pack_installer_packs}
 *🔌 pluggable*
@@ -403,7 +403,7 @@ fw_icon_pack_installer_packs()
 
 Data the unified installer panel needs. One flat `packs` list, each entry: &#123; slug, title, type:'font'|'svg', state:'bundled'|'installed'|'available', enabled:bool, count:int &#125; covering the bundled webfonts (toggle only), bundled + installed SVG libraries (toggle + Remove for installed), and catalog packs available to install. Bundled icon counts are omitted (counting them would decode the multi-MB bundles on a settings-page load); installed/available counts are cheap.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:729`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:730`</small>
 
 ### `fw_icon_pack_installer_payload` {#fw_icon_pack_installer_payload}
 *🔌 pluggable*
@@ -414,7 +414,7 @@ fw_icon_pack_installer_payload()
 
 Builds the data payload (AJAX URL, nonce, packs, i18n) for the icon-pack installer UI.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:803`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:804`</small>
 
 ### `fw_icon_pack_set_enabled` {#fw_icon_pack_set_enabled}
 *🔌 pluggable*
@@ -425,7 +425,7 @@ fw_icon_pack_set_enabled( $slug, $on )
 
 Flip one pack on/off and persist. Seeds an all-enabled map on first write.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:654`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:655`</small>
 
 ### `fw_icon_pack_uninstall` {#fw_icon_pack_uninstall}
 *🔌 pluggable*
@@ -442,7 +442,7 @@ Remove an installed pack. Bundled packs (lucide/tabler) can't be uninstalled —
 
 **Returns** `true\|WP_Error`
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:296`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:297`</small>
 
 ### `fw_icon_raster_enabled` {#fw_icon_raster_enabled}
 *🔌 pluggable*
@@ -453,7 +453,7 @@ fw_icon_raster_enabled()
 
 Whether animated raster icons (GIF / APNG / WebP) are surfaced as a supported technology. These already upload + render through the normal image path (an &lt;img&gt; the browser animates natively), so this flag does NOT gate functionality — it only controls the picker hint that points authors at the capability. Default OFF; the Animated Icons extension turns it on from its "Animated raster" toggle.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:942`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:946`</small>
 
 ### `fw_icon_rive_dir` {#fw_icon_rive_dir}
 *🔌 pluggable*
@@ -464,7 +464,7 @@ fw_icon_rive_dir()
 
 &#123; path, url &#125; of the Rive upload dir (uploads/unysonplus/rive).
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:1001`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:1006`</small>
 
 ### `fw_icon_rive_enabled` {#fw_icon_rive_enabled}
 *🔌 pluggable*
@@ -475,7 +475,7 @@ fw_icon_rive_enabled()
 
 Whether the Rive technology is enabled (its Animated-tab panel, admin canvas runtime and .riv upload endpoint). Default OFF; the Animated Icons extension flips it on from its "Rive" toggle.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:899`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:901`</small>
 
 ### `fw_icon_svg_animation_enabled` {#fw_icon_svg_animation_enabled}
 *🔌 pluggable*
@@ -486,7 +486,7 @@ fw_icon_svg_animation_enabled()
 
 Whether SVG icons may keep their SMIL animation (`&lt;animate&gt;`, `&lt;animateTransform&gt;`, …). Default OFF — the SVG sanitizer strips animation tags, so an animated SVG still renders but static. The Animated Icons extension flips this on from its "Animated SVG" toggle. SMIL is declarative (it cannot run JavaScript), and the XSS surface — scripts, event handlers, &lt;foreignObject&gt;, external refs — stays excluded either way.
 
-<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:928`</small>
+<small>Source: `framework/includes/option-types/icon/includes/pack-installer.php:931`</small>
 
 ### `fw_icon_svg_pack_all` {#fw_icon_svg_pack_all}
 *🔌 pluggable*
@@ -497,7 +497,7 @@ fw_icon_svg_pack_all( $pack, $limit = 0 )
 
 All icon names in a pack (sorted).
 
-<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:168`</small>
+<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:170`</small>
 
 ### `fw_icon_svg_pack_available` {#fw_icon_svg_pack_available}
 *🔌 pluggable*
@@ -508,7 +508,7 @@ fw_icon_svg_pack_available( $pack )
 
 True when a pack has bundled data (used to gate the settings + picker). Checks the data file's presence + non-emptiness on disk rather than json-decoding it — availability is queried on every builder page load, so decoding a multi-megabyte set (e.g. Tabler ~1.2 MB) here would be wasteful.
 
-<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:124`</small>
+<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:126`</small>
 
 ### `fw_icon_svg_pack_data` {#fw_icon_svg_pack_data}
 *🔌 pluggable*
@@ -519,7 +519,7 @@ fw_icon_svg_pack_data( $pack )
 
 name =&gt; inner-markup map for a pack (cached; empty if the file is absent).
 
-<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:79`</small>
+<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:81`</small>
 
 ### `fw_icon_svg_pack_file` {#fw_icon_svg_pack_file}
 *🔌 pluggable*
@@ -537,7 +537,7 @@ Resolve a pack data file to a readable path, checking the BUNDLED data/ dir firs
 
 **Returns** `string` Readable absolute path, or '' if the pack isn't present anywhere.
 
-<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:64`</small>
+<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:66`</small>
 
 ### `fw_icon_svg_pack_install_dir` {#fw_icon_svg_pack_install_dir}
 *🔌 pluggable*
@@ -548,7 +548,7 @@ fw_icon_svg_pack_install_dir()
 
 Absolute path of the on-demand icon-pack install root, where the installer writes packs fetched from the remote catalog (one sub-dir per pack: unysonplus-icon-packs/&lt;slug&gt;/&lt;slug&gt;-icons.json + -search.json). Lives under wp-content/uploads so it survives plugin updates and never bloats the plugin.
 
-<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:48`</small>
+<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:49`</small>
 
 ### `fw_icon_svg_pack_markup` {#fw_icon_svg_pack_markup}
 *🔌 pluggable*
@@ -559,7 +559,7 @@ fw_icon_svg_pack_markup( $id )
 
 Resolve a 'pack/name' id (e.g. 'lucide/star', 'tabler/home') to full inline &lt;svg&gt; markup with currentColor. Returns '' for an unknown pack/name. The markup still passes through sc_icon_sanitize_svg() at render.
 
-<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:144`</small>
+<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:146`</small>
 
 ### `fw_icon_svg_pack_registry` {#fw_icon_svg_pack_registry}
 *🔌 pluggable*
@@ -587,7 +587,7 @@ Names in a pack matching a query (name + keywords). Empty query → first slice.
 | `$query` | `string` | — |
 | `$limit` | `int` | Max results (0 = no limit). |
 
-<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:182`</small>
+<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:184`</small>
 
 ### `fw_icon_svg_pack_search_data` {#fw_icon_svg_pack_search_data}
 *🔌 pluggable*
@@ -598,7 +598,7 @@ fw_icon_svg_pack_search_data( $pack )
 
 Returns the cached search index data for an SVG icon pack, loaded from its bundled JSON file.
 
-<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:99`</small>
+<small>Source: `framework/includes/option-types/icon/includes/svg-packs.php:101`</small>
 
 ### `fw_option_type_background_pro_force_admin_enqueue` {#fw_option_type_background_pro_force_admin_enqueue}
 *🔌 pluggable*
@@ -618,7 +618,7 @@ Enqueuing here on every post-edit screen (where the builder + shortcode modals
 live) guarantees the assets are present before any modal opens. enqueue_static
 dedupes by handle, so this is a safe no-op when something already loaded them.
 
-<small>Source: `framework/includes/option-types/background-pro/class-fw-option-type-background-pro.php:713`</small>
+<small>Source: `framework/includes/option-types/background-pro/class-fw-option-type-background-pro.php:714`</small>
 
 ### `fw_option_type_responsive_force_admin_enqueue` {#fw_option_type_responsive_force_admin_enqueue}
 *🔌 pluggable*
@@ -658,7 +658,7 @@ every post-edit screen (where the builder and shortcode modals live) guarantees
 the assets are on the page before any modal opens. The option type's own
 `static_enqueued` guard makes this a no-op when something already enqueued it.
 
-<small>Source: `framework/includes/option-types/spacing/class-fw-option-type-spacing.php:471`</small>
+<small>Source: `framework/includes/option-types/spacing/class-fw-option-type-spacing.php:472`</small>
 
 ### `unysonplus_all_icon_pack_ids` {#unysonplus_all_icon_pack_ids}
 *🔌 pluggable*

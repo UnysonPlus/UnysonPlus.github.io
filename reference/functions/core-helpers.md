@@ -232,7 +232,7 @@ fw_addslashes_deep_keys( $value )
 
 Add slashes to values, and to keys if magic_quotes_gpc = On
 
-<small>Source: `framework/helpers/general.php:630`</small>
+<small>Source: `framework/helpers/general.php:633`</small>
 
 ### `fw_akg` {#fw_akg}
 
@@ -251,7 +251,7 @@ Recursively find a key's value in array
 
 **Returns** `null\|mixed`
 
-<small>Source: `framework/helpers/general.php:284`</small>
+<small>Source: `framework/helpers/general.php:287`</small>
 
 ### `fw_aks` {#fw_aks}
 
@@ -270,7 +270,7 @@ Set (or create if not exists) value for specified key in some array level
 
 **Returns** `array\|object`
 
-<small>Source: `framework/helpers/general.php:333`</small>
+<small>Source: `framework/helpers/general.php:336`</small>
 
 ### `fw_aku` {#fw_aku}
 
@@ -288,7 +288,7 @@ Unset specified key in some array level
 
 **Returns** `array\|object`
 
-<small>Source: `framework/helpers/general.php:403`</small>
+<small>Source: `framework/helpers/general.php:406`</small>
 
 ### `fw_attr_to_html` {#fw_attr_to_html}
 
@@ -304,7 +304,7 @@ Generate attributes string for html tag
 
 **Returns** `string` 'href="/" title="Test"'
 
-<small>Source: `framework/helpers/general.php:581`</small>
+<small>Source: `framework/helpers/general.php:584`</small>
 
 ### `fw_call` {#fw_call}
 *since 2.6.14*
@@ -321,7 +321,7 @@ In the value is instance of FW_Callback class then it is executed and returns th
 
 **Returns** `mixed`
 
-<small>Source: `framework/helpers/general.php:2349`</small>
+<small>Source: `framework/helpers/general.php:2357`</small>
 
 ### `fw_callback` {#fw_callback}
 *since 2.6.14*
@@ -340,7 +340,7 @@ Recommend when the function call may require many resources or time (database re
 
 **Returns** `FW_Callback`
 
-<small>Source: `framework/helpers/general.php:2335`</small>
+<small>Source: `framework/helpers/general.php:2343`</small>
 
 ### `fw_collect_first_level_options` {#fw_collect_first_level_options}
 *⚠️ deprecated*
@@ -360,7 +360,7 @@ Use fw_collect_options()
 | `$collected` | `array` | Will be filled with found correct options |
 | `$options` | `array` | — |
 
-<small>Source: `framework/helpers/general.php:960`</small>
+<small>Source: `framework/helpers/general.php:963`</small>
 
 ### `fw_collect_options` {#fw_collect_options}
 
@@ -377,7 +377,7 @@ Recursively walks an options array and collects every option and container into 
 | `$settings` | `array` | — |
 | `$_recursion_data` | `array` | (private) for internal use |
 
-<small>Source: `framework/helpers/general.php:1060`</small>
+<small>Source: `framework/helpers/general.php:1063`</small>
 
 ### `fw_current_screen_match` {#fw_current_screen_match}
 
@@ -393,7 +393,7 @@ Check if current screen pass/match give rules
 
 **Returns** `bool`
 
-<small>Source: `framework/helpers/general.php:666`</small>
+<small>Source: `framework/helpers/general.php:669`</small>
 
 ### `fw_current_url` {#fw_current_url}
 
@@ -405,7 +405,7 @@ Returns the full URL of the current request, resolved against the site home and 
 
 **Returns** `string` Current url
 
-<small>Source: `framework/helpers/general.php:1600`</small>
+<small>Source: `framework/helpers/general.php:1608`</small>
 
 ### `fw_current_user_can` {#fw_current_user_can}
 
@@ -426,7 +426,7 @@ Return first capability that user can.
 
 **Returns** `string\|bool\|mixed`
 
-<small>Source: `framework/helpers/general.php:1657`</small>
+<small>Source: `framework/helpers/general.php:1665`</small>
 
 ### `fw_db_option_storage_load` {#fw_db_option_storage_load}
 *since 2.5.0*
@@ -617,7 +617,7 @@ Converts a hyphenated directory name into an underscore-separated class name (e.
 
 **Returns** `string` 'Foo_Bar'
 
-<small>Source: `framework/helpers/general.php:1819`</small>
+<small>Source: `framework/helpers/general.php:1827`</small>
 
 ### `fw_ext` {#fw_ext}
 
@@ -635,7 +635,7 @@ Alias
 
 **Returns** `FW_Extension\|null`
 
-<small>Source: `framework/helpers/general.php:1924`</small>
+<small>Source: `framework/helpers/general.php:1932`</small>
 
 ### `fw_extract_only_options` {#fw_extract_only_options}
 
@@ -651,7 +651,7 @@ Extract only input options (without containers)
 
 **Returns** `array` &#123;option_id =&gt; option&#125;
 
-<small>Source: `framework/helpers/general.php:941`</small>
+<small>Source: `framework/helpers/general.php:944`</small>
 
 ### `fw_fix_path` {#fw_fix_path}
 
@@ -678,7 +678,7 @@ Get a customizer framework option value from the database
 
 **Returns** `mixed\|null`
 
-<small>Source: `framework/helpers/database.php:591`</small>
+<small>Source: `framework/helpers/database.php:600`</small>
 
 ### `fw_get_db_ext_settings_option` {#fw_get_db_ext_settings_option}
 
@@ -697,7 +697,7 @@ Get extension's settings option value from the database
 
 **Returns** `mixed\|null`
 
-<small>Source: `framework/helpers/database.php:497`</small>
+<small>Source: `framework/helpers/database.php:504`</small>
 
 ### `fw_get_db_extension_data` {#fw_get_db_extension_data}
 
@@ -716,7 +716,7 @@ Get extension's data from the database
 
 **Returns** `mixed\|null`
 
-<small>Source: `framework/helpers/database.php:688`</small>
+<small>Source: `framework/helpers/database.php:697`</small>
 
 ### `fw_get_db_extension_user_data` {#fw_get_db_extension_user_data}
 
@@ -737,7 +737,7 @@ else returns the meta key value
 
 **Returns** `mixed\|null`
 
-<small>Source: `framework/helpers/database.php:626`</small>
+<small>Source: `framework/helpers/database.php:635`</small>
 
 ### `fw_get_db_post_option` {#fw_get_db_post_option}
 
@@ -756,7 +756,7 @@ Get post option value from the database
 
 **Returns** `mixed\|null`
 
-<small>Source: `framework/helpers/database.php:229`</small>
+<small>Source: `framework/helpers/database.php:234`</small>
 
 ### `fw_get_db_settings_option` {#fw_get_db_settings_option}
 
@@ -774,7 +774,7 @@ Get a theme settings option value from the database
 
 **Returns** `mixed\|null`
 
-<small>Source: `framework/helpers/database.php:66`</small>
+<small>Source: `framework/helpers/database.php:68`</small>
 
 ### `fw_get_db_term_option` {#fw_get_db_term_option}
 
@@ -794,7 +794,7 @@ Get term option value from the database
 
 **Returns** `mixed\|null`
 
-<small>Source: `framework/helpers/database.php:426`</small>
+<small>Source: `framework/helpers/database.php:433`</small>
 
 ### `fw_get_framework_asset_uri` {#fw_get_framework_asset_uri}
 
@@ -815,7 +815,7 @@ otherwise falls back to the unminified source. So a missing/skipped build
 
 **Returns** `string`
 
-<small>Source: `framework/helpers/general.php:212`</small>
+<small>Source: `framework/helpers/general.php:215`</small>
 
 ### `fw_get_framework_customizations_dir_rel_path` {#fw_get_framework_customizations_dir_rel_path}
 
@@ -847,7 +847,7 @@ Full path to the parent-theme/framework directory
 
 **Returns** `string`
 
-<small>Source: `framework/helpers/general.php:135`</small>
+<small>Source: `framework/helpers/general.php:136`</small>
 
 ### `fw_get_framework_directory_uri` {#fw_get_framework_directory_uri}
 
@@ -863,7 +863,7 @@ URI to the parent-theme/framework directory
 
 **Returns** `string`
 
-<small>Source: `framework/helpers/general.php:158`</small>
+<small>Source: `framework/helpers/general.php:160`</small>
 
 ### `fw_get_google_fonts` {#fw_get_google_fonts}
 
@@ -875,7 +875,7 @@ Returns the cached list of Google fonts keyed by family, with position metadata.
 
 **Returns** `Array` with Google fonts
 
-<small>Source: `framework/helpers/general.php:1508`</small>
+<small>Source: `framework/helpers/general.php:1514`</small>
 
 ### `fw_get_google_fonts_v2` {#fw_get_google_fonts_v2}
 
@@ -887,7 +887,7 @@ Returns the Google fonts catalog as a JSON string, preferring the bundled static
 
 **Returns** `string` JSON encoded array with Google fonts
 
-<small>Source: `framework/helpers/general.php:1541`</small>
+<small>Source: `framework/helpers/general.php:1548`</small>
 
 ### `fw_get_image_sizes` {#fw_get_image_sizes}
 
@@ -903,7 +903,7 @@ Return all images sizes register by add_image_size() merged with WordPress defau
 
 **Returns** `array\|bool`
 
-<small>Source: `framework/helpers/general.php:2015`</small>
+<small>Source: `framework/helpers/general.php:2023`</small>
 
 ### `fw_get_json_last_error_message` {#fw_get_json_last_error_message}
 *since 2.4.10*
@@ -916,7 +916,7 @@ Returns a human-readable message for the last json_decode error, or null when th
 
 **Returns** `string\|null`
 
-<small>Source: `framework/helpers/general.php:2098`</small>
+<small>Source: `framework/helpers/general.php:2106`</small>
 
 ### `fw_get_mime_type_by_ext` {#fw_get_mime_type_by_ext}
 
@@ -932,7 +932,7 @@ Return mime_types by file extension ex : input : array( 'png', 'jpg', 'jpeg' ) =
 
 **Returns** `array`
 
-<small>Source: `framework/helpers/general.php:2131`</small>
+<small>Source: `framework/helpers/general.php:2139`</small>
 
 ### `fw_get_options_errors_from_input` {#fw_get_options_errors_from_input}
 
@@ -959,7 +959,7 @@ returns [] and the normal save proceeds unchanged.
 
 **Returns** `array` &#123; option_id =&gt; message &#125;
 
-<small>Source: `framework/helpers/general.php:1334`</small>
+<small>Source: `framework/helpers/general.php:1338`</small>
 
 ### `fw_get_options_values_from_input` {#fw_get_options_values_from_input}
 
@@ -976,7 +976,7 @@ Get correct values from input (POST) for given options This values can be saved 
 
 **Returns** `array` Values
 
-<small>Source: `framework/helpers/general.php:1284`</small>
+<small>Source: `framework/helpers/general.php:1287`</small>
 
 ### `fw_get_path_url` {#fw_get_path_url}
 *since 2.6.11*
@@ -993,7 +993,7 @@ fw_get_path_url( dirname(__FILE__) .'/test.css' ) --&gt; http://site.url/path/to
 
 **Returns** `string\|null`
 
-<small>Source: `framework/helpers/general.php:2294`</small>
+<small>Source: `framework/helpers/general.php:2302`</small>
 
 ### `fw_get_stylesheet_customizations_directory` {#fw_get_stylesheet_customizations_directory}
 
@@ -1009,7 +1009,7 @@ Full path to the child-theme framework customizations directory
 
 **Returns** `null\|string`
 
-<small>Source: `framework/helpers/general.php:57`</small>
+<small>Source: `framework/helpers/general.php:58`</small>
 
 ### `fw_get_stylesheet_customizations_directory_uri` {#fw_get_stylesheet_customizations_directory_uri}
 
@@ -1025,7 +1025,7 @@ URI to the child-theme framework customizations directory
 
 **Returns** `null\|string`
 
-<small>Source: `framework/helpers/general.php:73`</small>
+<small>Source: `framework/helpers/general.php:74`</small>
 
 ### `fw_get_template_customizations_directory` {#fw_get_template_customizations_directory}
 
@@ -1041,7 +1041,7 @@ Full path to the parent-theme framework customizations directory
 
 **Returns** `string`
 
-<small>Source: `framework/helpers/general.php:92`</small>
+<small>Source: `framework/helpers/general.php:93`</small>
 
 ### `fw_get_template_customizations_directory_uri` {#fw_get_template_customizations_directory_uri}
 
@@ -1057,7 +1057,7 @@ URI to the parent-theme framework customizations directory
 
 **Returns** `string`
 
-<small>Source: `framework/helpers/general.php:112`</small>
+<small>Source: `framework/helpers/general.php:113`</small>
 
 ### `fw_get_term_meta` {#fw_get_term_meta}
 
@@ -1087,7 +1087,7 @@ fw_get_url_without_scheme( $url )
 
 Returns the given URL with its scheme stripped down to a protocol-relative '//' prefix.
 
-<small>Source: `framework/helpers/general.php:1929`</small>
+<small>Source: `framework/helpers/general.php:1937`</small>
 
 ### `fw_get_variables_from_file` {#fw_get_variables_from_file}
 
@@ -1105,7 +1105,7 @@ Safe load variables from an file Use this function to not include files directly
 
 **Returns** `array`
 
-<small>Source: `framework/helpers/general.php:897`</small>
+<small>Source: `framework/helpers/general.php:900`</small>
 
 ### `fw_html_attr_name_to_array_multi_key` {#fw_html_attr_name_to_array_multi_key}
 
@@ -1122,7 +1122,7 @@ Converts an HTML array-attribute name like 'hello[world]' into a slash-separated
 
 **Returns** `mixed`
 
-<small>Source: `framework/helpers/general.php:1380`</small>
+<small>Source: `framework/helpers/general.php:1386`</small>
 
 ### `fw_html_tag` {#fw_html_tag}
 
@@ -1140,7 +1140,7 @@ Generate html tag
 
 **Returns** `string` The tag's html
 
-<small>Source: `framework/helpers/general.php:557`</small>
+<small>Source: `framework/helpers/general.php:560`</small>
 
 ### `fw_htmlspecialchars` {#fw_htmlspecialchars}
 
@@ -1156,7 +1156,7 @@ Use this id do not want to enter every time same last two parameters Info: Canno
 
 **Returns** `string`
 
-<small>Source: `framework/helpers/general.php:1642`</small>
+<small>Source: `framework/helpers/general.php:1650`</small>
 
 ### `fw_human_bytes` {#fw_human_bytes}
 *since 2.4.17*
@@ -1174,7 +1174,7 @@ Convert bytes to human readable format
 
 **Returns** `string`
 
-<small>Source: `framework/helpers/general.php:1736`</small>
+<small>Source: `framework/helpers/general.php:1744`</small>
 
 ### `fw_human_time` {#fw_human_time}
 
@@ -1193,7 +1193,7 @@ then you can use this string how you want, for e.g. append ' ago' =&gt; '2 minut
 
 **Returns** `string`
 
-<small>Source: `framework/helpers/general.php:1679`</small>
+<small>Source: `framework/helpers/general.php:1687`</small>
 
 ### `fw_id_to_title` {#fw_id_to_title}
 
@@ -1209,7 +1209,7 @@ Try to make user friendly title from an id
 
 **Returns** `string` 'Hello world'
 
-<small>Source: `framework/helpers/general.php:1901`</small>
+<small>Source: `framework/helpers/general.php:1909`</small>
 
 ### `fw_image_tag` {#fw_image_tag}
 *🔌 pluggable*
@@ -1242,7 +1242,7 @@ Improvements over hand-built &lt;img&gt; tags from the Unyson era:
 
 **Returns** `string`
 
-<small>Source: `framework/helpers/general.php:2199`</small>
+<small>Source: `framework/helpers/general.php:2207`</small>
 
 ### `fw_include_file_isolated` {#fw_include_file_isolated}
 
@@ -1259,7 +1259,7 @@ Use this function to not include files directly and to not give access to curren
 
 **Returns** `bool` If was included or not
 
-<small>Source: `framework/helpers/general.php:920`</small>
+<small>Source: `framework/helpers/general.php:923`</small>
 
 ### `fw_is_built_asset` {#fw_is_built_asset}
 
@@ -1280,7 +1280,7 @@ only ever serve a `.min` WE produced — never a stale, pre-shipped vendor
 
 **Returns** `bool`
 
-<small>Source: `framework/helpers/general.php:188`</small>
+<small>Source: `framework/helpers/general.php:191`</small>
 
 ### `fw_is_callback` {#fw_is_callback}
 
@@ -1296,7 +1296,7 @@ Check is the current value is instance of FW_Callback class
 
 **Returns** `bool`
 
-<small>Source: `framework/helpers/general.php:2366`</small>
+<small>Source: `framework/helpers/general.php:2374`</small>
 
 ### `fw_is_cli` {#fw_is_cli}
 *since 2.6.16*
@@ -1309,7 +1309,7 @@ Check for command line interface
 
 **Returns** `bool`
 
-<small>Source: `framework/helpers/general.php:2376`</small>
+<small>Source: `framework/helpers/general.php:2384`</small>
 
 ### `fw_is_editor_context` {#fw_is_editor_context}
 *since 2.16.23*
@@ -1337,7 +1337,7 @@ and must not receive editor-only markup.
 
 **Returns** `bool` True when the caller is rendering for an editor.
 
-<small>Source: `framework/helpers/general.php:1447`</small>
+<small>Source: `framework/helpers/general.php:1453`</small>
 
 ### `fw_is_post_edit` {#fw_is_post_edit}
 
@@ -1349,7 +1349,7 @@ If currently is a Post Edit page display/submit
 
 **Returns** `bool`
 
-<small>Source: `framework/helpers/general.php:1774`</small>
+<small>Source: `framework/helpers/general.php:1782`</small>
 
 ### `fw_is_real_post_save` {#fw_is_real_post_save}
 *⚠️ deprecated*
@@ -1378,7 +1378,7 @@ and handle different save cases in their scripts using wp functions
 
 **Returns** `bool`
 
-<small>Source: `framework/helpers/general.php:1491`</small>
+<small>Source: `framework/helpers/general.php:1497`</small>
 
 ### `fw_is_valid_domain_name` {#fw_is_valid_domain_name}
 
@@ -1388,7 +1388,7 @@ fw_is_valid_domain_name( $domain_name )
 
 Returns whether the given string is a syntactically valid domain name.
 
-<small>Source: `framework/helpers/general.php:1628`</small>
+<small>Source: `framework/helpers/general.php:1636`</small>
 
 ### `fw_locate_theme_path` {#fw_locate_theme_path}
 
@@ -1404,7 +1404,7 @@ Search relative path in child then in parent theme directory and return full pat
 
 **Returns** `string` URI
 
-<small>Source: `framework/helpers/general.php:820`</small>
+<small>Source: `framework/helpers/general.php:823`</small>
 
 ### `fw_locate_theme_path_uri` {#fw_locate_theme_path_uri}
 
@@ -1420,7 +1420,7 @@ Search relative path in child then in parent theme directory and return URI
 
 **Returns** `string` URI
 
-<small>Source: `framework/helpers/general.php:803`</small>
+<small>Source: `framework/helpers/general.php:806`</small>
 
 ### `fw_make_stylesheet_portable` {#fw_make_stylesheet_portable}
 
@@ -1437,7 +1437,7 @@ Make stylesheet contents (portable) independent of directory location For e.g. r
 
 **Returns** `bool\|string` false - on failure; string - stylesheet contents
 
-<small>Source: `framework/helpers/general.php:1975`</small>
+<small>Source: `framework/helpers/general.php:1983`</small>
 
 ### `fw_min_uri` {#fw_min_uri}
 *🔌 pluggable*
@@ -1466,7 +1466,7 @@ override, is returned untouched).
 
 **Returns** `string`
 
-<small>Source: `framework/helpers/general.php:245`</small>
+<small>Source: `framework/helpers/general.php:248`</small>
 
 ### `fw_multi_ext2type` {#fw_multi_ext2type}
 
@@ -1482,7 +1482,7 @@ Return types from file extensions ex : input array( 'png', 'jpg', 'zip' ) =&gt; 
 
 **Returns** `array`
 
-<small>Source: `framework/helpers/general.php:2155`</small>
+<small>Source: `framework/helpers/general.php:2163`</small>
 
 ### `fw_oembed_get` {#fw_oembed_get}
 
@@ -1499,7 +1499,7 @@ This function is a wrapper function that set correct width and height for iframe
 
 **Returns** `bool\|string`
 
-<small>Source: `framework/helpers/general.php:1835`</small>
+<small>Source: `framework/helpers/general.php:1843`</small>
 
 ### `fw_prepare_option_value` {#fw_prepare_option_value}
 
@@ -1515,7 +1515,7 @@ Used when getting some option value from serialized array saved in a custom plac
 
 **Returns** `array`
 
-<small>Source: `framework/helpers/general.php:1413`</small>
+<small>Source: `framework/helpers/general.php:1419`</small>
 
 ### `fw_print` {#fw_print}
 
@@ -1529,7 +1529,7 @@ print_r() alternative
 | --- | --- | --- |
 | `$value` | `mixed` | Value to debug |
 
-<small>Source: `framework/helpers/general.php:475`</small>
+<small>Source: `framework/helpers/general.php:478`</small>
 
 ### `fw_rand_md5` {#fw_rand_md5}
 
@@ -1546,7 +1546,7 @@ if this token ever ends up in a security-sensitive context.
 
 **Returns** `string` 32-character hexadecimal string.
 
-<small>Source: `framework/helpers/general.php:452`</small>
+<small>Source: `framework/helpers/general.php:455`</small>
 
 ### `fw_read_file_by_uri` {#fw_read_file_by_uri}
 
@@ -1562,7 +1562,7 @@ Try to find file path by its uri and read the file contents
 
 **Returns** `bool\|string` false or string - the file contents
 
-<small>Source: `framework/helpers/general.php:1940`</small>
+<small>Source: `framework/helpers/general.php:1948`</small>
 
 ### `fw_render_view` {#fw_render_view}
 *🔌 pluggable*
@@ -1581,7 +1581,7 @@ Safe render a view and return html In view will be accessible only passed variab
 
 **Returns** `string` HTML
 
-<small>Source: `framework/helpers/general.php:848`</small>
+<small>Source: `framework/helpers/general.php:851`</small>
 
 ### `fw_resize` {#fw_resize}
 *🔌 pluggable*
@@ -1592,7 +1592,7 @@ fw_resize( $url, $width = false, $height = false, $crop = false )
 
 Resizes an image URL to the given dimensions via FW_Resize, returning the original URL on failure.
 
-<small>Source: `framework/helpers/general.php:2169`</small>
+<small>Source: `framework/helpers/general.php:2177`</small>
 
 ### `fw_secure_rand` {#fw_secure_rand}
 
@@ -1608,7 +1608,7 @@ http://www.zimuel.it/en/strong-cryptography-in-php/
 
 **Returns** `string`
 
-<small>Source: `framework/helpers/general.php:1863`</small>
+<small>Source: `framework/helpers/general.php:1871`</small>
 
 ### `fw_set_db_customizer_option` {#fw_set_db_customizer_option}
 
@@ -1623,7 +1623,7 @@ Set a theme customizer option value in database
 | `$option_id` | `null` | Specific option id (accepts multikey). null - all options |
 | `$value` | `mixed` | — |
 
-<small>Source: `framework/helpers/database.php:601`</small>
+<small>Source: `framework/helpers/database.php:610`</small>
 
 ### `fw_set_db_ext_settings_option` {#fw_set_db_ext_settings_option}
 
@@ -1639,7 +1639,7 @@ Set extension's setting option value in database
 | `$option_id` | `string\|null` | — |
 | `$value` | `mixed` | — |
 
-<small>Source: `framework/helpers/database.php:513`</small>
+<small>Source: `framework/helpers/database.php:520`</small>
 
 ### `fw_set_db_extension_data` {#fw_set_db_extension_data}
 
@@ -1655,7 +1655,7 @@ Set some extension's data in database
 | `$multi_key` | `string\|null` | The key of the data you want to set. null - all data |
 | `$value` | `mixed` | — |
 
-<small>Source: `framework/helpers/database.php:711`</small>
+<small>Source: `framework/helpers/database.php:720`</small>
 
 ### `fw_set_db_extension_user_data` {#fw_set_db_extension_user_data}
 
@@ -1674,7 +1674,7 @@ In case the extension doesn't exist or is disabled, or the value is equal to pre
 
 **Returns** `bool\|int`
 
-<small>Source: `framework/helpers/database.php:651`</small>
+<small>Source: `framework/helpers/database.php:660`</small>
 
 ### `fw_set_db_post_option` {#fw_set_db_post_option}
 
@@ -1690,7 +1690,7 @@ Set post option value in database
 | `$option_id` | `string\|null` | Specific option id (accepts multikey). null - all options |
 | `$value` | — | — |
 
-<small>Source: `framework/helpers/database.php:240`</small>
+<small>Source: `framework/helpers/database.php:245`</small>
 
 ### `fw_set_db_settings_option` {#fw_set_db_settings_option}
 
@@ -1705,7 +1705,7 @@ Set a theme settings option value in database
 | `$option_id` | `null` | Specific option id (accepts multikey). null - all options |
 | `$value` | `mixed` | — |
 
-<small>Source: `framework/helpers/database.php:76`</small>
+<small>Source: `framework/helpers/database.php:78`</small>
 
 ### `fw_set_db_term_option` {#fw_set_db_term_option}
 
@@ -1724,7 +1724,7 @@ Set term option value in database
 
 **Returns** `null`
 
-<small>Source: `framework/helpers/database.php:446`</small>
+<small>Source: `framework/helpers/database.php:453`</small>
 
 ### `fw_string_to_icon_html` {#fw_string_to_icon_html}
 
@@ -1740,7 +1740,7 @@ fw_string_to_icon_html( $icon, array $attributes = array() )
 
 **Returns** `string`
 
-<small>Source: `framework/helpers/general.php:2054`</small>
+<small>Source: `framework/helpers/general.php:2062`</small>
 
 ### `fw_stripslashes_deep_keys` {#fw_stripslashes_deep_keys}
 
@@ -1750,7 +1750,7 @@ fw_stripslashes_deep_keys( $value )
 
 Strip slashes from values, and from keys if magic_quotes_gpc = On
 
-<small>Source: `framework/helpers/general.php:598`</small>
+<small>Source: `framework/helpers/general.php:601`</small>
 
 ### `fw_strlen` {#fw_strlen}
 
@@ -1760,7 +1760,7 @@ fw_strlen( $string )
 
 Returns the UTF-8 length of a string, using mb_strlen() when available.
 
-<small>Source: `framework/helpers/general.php:1762`</small>
+<small>Source: `framework/helpers/general.php:1770`</small>
 
 ### `fw_typography_size_css` {#fw_typography_size_css}
 *🔌 pluggable*
@@ -1778,7 +1778,7 @@ Resolve a typography `size` value to a CSS length string, tolerating every shape
 
 **Returns** `string` CSS length, or '' when there's nothing to emit.
 
-<small>Source: `framework/helpers/general.php:2396`</small>
+<small>Source: `framework/helpers/general.php:2404`</small>
 
 ### `fw_unique_increment` {#fw_unique_increment}
 
@@ -1788,7 +1788,7 @@ fw_unique_increment()
 
 Returns a per-request incrementing counter, unique within the current page load.
 
-<small>Source: `framework/helpers/general.php:464`</small>
+<small>Source: `framework/helpers/general.php:467`</small>
 
 ### `fw_update_comment_meta` {#fw_update_comment_meta}
 

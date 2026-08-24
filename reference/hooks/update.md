@@ -14,10 +14,10 @@ hide_table_of_contents: true
 
 | Hook | Type | Summary |
 | --- | --- | --- |
-| [`fw_custom_url_version`](#h-fw-custom-url-version) | filter | — |
+| [`fw_custom_url_version`](#h-fw-custom-url-version) | filter | Filters the remote URL queried for the latest version during a custom update check. |
 | [`fw_ext_update_extensions_complete_actions`](#h-fw-ext-update-extensions-complete-actions) | filter | Filter the list of action links available following extensions update. |
 | [`fw_ext_update_framework_complete_actions`](#h-fw-ext-update-framework-complete-actions) | filter | Filter the list of action links available following framework update. |
-| [`fw_ext_update_github_branches`](#h-fw-ext-update-github-branches) | filter | — |
+| [`fw_ext_update_github_branches`](#h-fw-ext-update-github-branches) | filter | Filters the ordered list of GitHub branches to try (default master, main) when no explicit branch is configured for an update source. |
 | [`fw_ext_update_theme_complete_actions`](#h-fw-ext-update-theme-complete-actions) | filter | Filter the list of action links available following theme update. |
 
 ---
@@ -25,10 +25,12 @@ hide_table_of_contents: true
 ### `fw_custom_url_version` {#h-fw-custom-url-version}
 *🧪 filter*
 
+Filters the remote URL queried for the latest version during a custom update check.
+
 ```php
 add_filter( 'fw_custom_url_version', $callback );
 ```
-<small>Fired in: `framework/extensions/update/extensions/custom-update/class-fw-extension-custom-update.php:90`</small>
+<small>Fired in: `framework/extensions/update/extensions/custom-update/class-fw-extension-custom-update.php:91`</small>
 
 ### `fw_ext_update_extensions_complete_actions` {#h-fw-ext-update-extensions-complete-actions}
 *🧪 filter*
@@ -53,10 +55,12 @@ add_filter( 'fw_ext_update_framework_complete_actions', $callback );
 ### `fw_ext_update_github_branches` {#h-fw-ext-update-github-branches}
 *🧪 filter*
 
+Filters the ordered list of GitHub branches to try (default master, main) when no explicit branch is configured for an update source.
+
 ```php
 add_filter( 'fw_ext_update_github_branches', $callback );
 ```
-<small>Fired in: `framework/extensions/update/extensions/github-update/class-fw-extension-github-update.php:57`</small>
+<small>Fired in: `framework/extensions/update/extensions/github-update/class-fw-extension-github-update.php:58`</small>
 
 ### `fw_ext_update_theme_complete_actions` {#h-fw-ext-update-theme-complete-actions}
 *🧪 filter*

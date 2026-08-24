@@ -14,43 +14,51 @@ hide_table_of_contents: true
 
 | Hook | Type | Summary |
 | --- | --- | --- |
-| [`fw_ext_sidebars_conditional_tags`](#h-fw-ext-sidebars-conditional-tags) | filter | — |
-| [`fw_ext_sidebars_post_types`](#h-fw-ext-sidebars-post-types) | filter | — |
-| [`fw_ext_sidebars_settings_options`](#h-fw-ext-sidebars-settings-options) | filter | — |
-| [`fw_ext_sidebars_taxonomies`](#h-fw-ext-sidebars-taxonomies) | filter | — |
+| [`fw_ext_sidebars_conditional_tags`](#h-fw-ext-sidebars-conditional-tags) | filter | Filters the list of conditional tags available for assigning dynamic sidebar replacement rules. |
+| [`fw_ext_sidebars_post_types`](#h-fw-ext-sidebars-post-types) | filter | Filters the public post types offered as targets when configuring sidebar replacement conditions. |
+| [`fw_ext_sidebars_settings_options`](#h-fw-ext-sidebars-settings-options) | filter | Filters the options array building the Sidebars extension settings form, starting empty for others to populate. |
+| [`fw_ext_sidebars_taxonomies`](#h-fw-ext-sidebars-taxonomies) | filter | Filters the public taxonomies offered as targets when configuring sidebar replacement conditions. |
 
 ---
 
 ### `fw_ext_sidebars_conditional_tags` {#h-fw-ext-sidebars-conditional-tags}
 *🧪 filter*
 
+Filters the list of conditional tags available for assigning dynamic sidebar replacement rules.
+
 ```php
 add_filter( 'fw_ext_sidebars_conditional_tags', $callback );
 ```
-<small>Fired in: `framework/extensions/sidebars/includes/class-fw-extension-sidebars-config.php:124`</small>
+<small>Fired in: `framework/extensions/sidebars/includes/class-fw-extension-sidebars-config.php:125`</small>
 
 ### `fw_ext_sidebars_post_types` {#h-fw-ext-sidebars-post-types}
 *🧪 filter*
 
+Filters the public post types offered as targets when configuring sidebar replacement conditions.
+
 ```php
 add_filter( 'fw_ext_sidebars_post_types', $callback );
 ```
-<small>Fired in: `framework/extensions/sidebars/includes/class-fw-extension-sidebars-config.php:236`</small>
+<small>Fired in: `framework/extensions/sidebars/includes/class-fw-extension-sidebars-config.php:239`</small>
 
 ### `fw_ext_sidebars_settings_options` {#h-fw-ext-sidebars-settings-options}
 *🧪 filter*
 
+Filters the options array building the Sidebars extension settings form, starting empty for others to populate.
+
 ```php
 add_filter( 'fw_ext_sidebars_settings_options', $callback );
 ```
-<small>Fired in: `framework/extensions/sidebars/settings-options.php:5`</small>
+<small>Fired in: `framework/extensions/sidebars/settings-options.php:6`</small>
 
 ### `fw_ext_sidebars_taxonomies` {#h-fw-ext-sidebars-taxonomies}
 *🧪 filter*
 
+Filters the public taxonomies offered as targets when configuring sidebar replacement conditions.
+
 ```php
 add_filter( 'fw_ext_sidebars_taxonomies', $callback );
 ```
-<small>Fired in: `framework/extensions/sidebars/includes/class-fw-extension-sidebars-config.php:228`</small>
+<small>Fired in: `framework/extensions/sidebars/includes/class-fw-extension-sidebars-config.php:230`</small>
 
 ← Back to [Hooks overview](./index.md)

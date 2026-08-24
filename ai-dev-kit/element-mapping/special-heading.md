@@ -29,53 +29,48 @@ A chip/badge sitting directly above the heading is pulled in as its overline (wi
 
 ## Option coverage
 
-**19/35 options mapped natively** (54%) — 🟡 3 via CSS · ⚠️ 8 gaps (derivable, not yet) · ⚪ 5 default · ⚙️ 3 auto.
+**18/32 options mapped natively** (56%) — 🟡 0 via CSS · ⚠️ 3 gaps (derivable, not yet) · ⚪ 11 default · ⚙️ 1 auto.
 
-:::tip[8 derivable gaps]
+:::tip[3 derivable gaps]
 The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
 :::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
-| `overline` | Content | `text` | ✅ Native | Source eyebrow / kicker text above the title |
-| `title` | Content | `text` | ✅ Native | The heading text (inline HTML accents preserved) |
-| `subtitle` | Content | `text` | ✅ Native | A supporting line captured right after the heading |
-| `heading` | Content | `select` | ✅ Native | Source heading level (`<h1>`–`<h6>`) |
-| `overline_icon` | Icons | `icon` | ✅ Native | Inline `<svg>` inside the source overline / preceding chip |
-| `overline_icon_position` | Icons | `select` | ✅ Native | Where the SVG sat relative to the overline text |
-| `icon` | Icons | `icon` | ⚠️ Gap | leading <svg>/<i> icon element beside the heading text |
-| `title_icon_position` | Icons | `select` | ⚠️ Gap | DOM order of the icon relative to the heading text (before/after) |
-| `icon_badge_preset` | Icons | `icon-badge` | ⚪ Unmapped | Decorative preset — no source signal |
-| `overline_uppercase` | Layout | `switch` | ✅ Native | Source `text-transform:uppercase` or all-caps text |
-| `overline_marker` | Layout | `select` | ⚪ Unmapped | Decorative marker — not inferred |
-| `overline_marker_position` | Layout | `select` | ⚪ Unmapped | — |
-| `overline_container` | Layout | `select` | ✅ Native | A chip-before-heading → `pill`; else none |
-| `element_spacing` | Layout | `select` | ✅ Native | Wrapper spacing utility classes |
-| `block_max_width` | Layout | `unit-input` | ✅ Native | Wrapper `max-w-* mx-auto` measure |
-| `alignment` | Styling | `alignment` | ✅ Native | Wrapper `text-center` / `text-*` alignment |
-| `overline_align` | Styling | `alignment` | ⚠️ Gap | computed text-align of the overline/eyebrow element |
-| `title_align` | Styling | `alignment` | ⚠️ Gap | computed text-align of the heading element |
-| `subtitle_align` | Styling | `alignment` | ⚠️ Gap | computed text-align of the subtitle element |
-| `display_size` | Styling | `select` | 🟡 Via CSS | Title size reproduced via the hi-fi base + heading tag, not this option |
-| `title_max_width` | Styling | `unit-input` | ⚠️ Gap | computed max-width of the heading element |
-| `subtitle_size` | Styling | `font-size` | ✅ Native | Subtitle's computed font-size → nearest Text Style preset |
-| `subtitle_max_width` | Styling | `unit-input` | ⚠️ Gap | computed max-width of the subtitle element |
-| `bg_color` | Styling | `color` | ⚠️ Gap | computed background-color of the heading container |
-| `overline_color` | Styling | `color` | ✅ Native | Source overline text colour |
-| `title_color` | Styling | `color` | 🟡 Via CSS | Reproduced at specificity 0 via the hi-fi base; native option left empty |
-| `subtitle_color` | Styling | `color` | 🟡 Via CSS | Same as title colour |
-| `spacing` | Styling | `spacing` | ✅ Native | Source vertical margins → native margin option |
-| `animation` | Animations | `group` | ⚪ Unmapped | Entrance animations default off (no source signal) |
-| `css_class` | Advanced | `text` | ✅ Native | Unmapped source utility classes preserved |
-| `overline_class` | Advanced | `text` | ✅ Native | Source overline utility classes |
-| `title_class` | Advanced | `text` | ✅ Native | Source title utility classes |
-| `subtitle_class` | Advanced | `text` | ✅ Native | Source subtitle utility classes |
-| `custom_css` | Advanced | `textarea` | ✅ Native | Carries the source font-weight + the hi-fi appearance base |
-| `css_id` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `unique_id` | Advanced | `hidden` | ⚙️ Auto | Generated |
-| `responsive_hide` | Advanced | `group` | ⚙️ Auto | Not set |
-| `custom_attrs` | Advanced | `group` | ⚙️ Auto | Not set |
+| `overline` | Content | `text` | ✅ Native | set from $h['overline'] (kicker text, svg stripped out) |
+| `title` | Content | `text` | ✅ Native | set from $h['title'] via map_accent_classes |
+| `subtitle` | Content | `wp-editor` | ✅ Native | set from $h['subtitle'] via map_accent_classes |
+| `heading` | Content | `select` | ✅ Native | 'h'.$lvl from captured $h['level'] (1-6, default h2) |
+| `overline_icon` | Icons | `icon` | ✅ Native | inline <svg> extracted from overline / overline_svg chip |
+| `overline_icon_position` | Icons | `select` | ✅ Native | before/after computed from svg position in overline markup |
+| `icon` | Icons | `icon` | ⚪ Unmapped | title icon never set by n_heading; only overline icons are extracted |
+| `title_icon_position` | Icons | `select` | ⚪ Unmapped | no title icon handled, so position never set |
+| `icon_badge_preset` | Icons | `border-style-picker` | ⚪ Unmapped | not set in n_heading (overline chip uses overline_container pill instead) |
+| `overline_uppercase` | Layout | `switch` | ✅ Native | yes/no from overline_transform:uppercase or all-caps text |
+| `overline_marker` | Layout | `select` | ⚪ Unmapped | rule/dot/lines/bar marker never derived by the mapper |
+| `overline_marker_position` | Layout | `select` | ⚪ Unmapped | no marker derived, so position unset |
+| `overline_container` | Layout | `select` | ✅ Native | 'pill' when $h['overline_pill'] (chip-before-heading badge) |
+| `element_spacing` | Layout | `select` | ✅ Native | from space-y-* class or title mb px snapped tight/relaxed |
+| `block_max_width` | Layout | `unit-input` | ✅ Native | from wrapper max-w-* / wrapMaxW measure (heading_layout) |
+| `alignment` | Styling | `image-picker` | ✅ Native | from text-center/right class or captured $h['align'] |
+| `overline_align` | Styling | `image-picker` | ⚪ Unmapped | per-part align not set; only block alignment derived |
+| `title_align` | Styling | `image-picker` | ⚪ Unmapped | per-part align not set; only block alignment derived |
+| `subtitle_align` | Styling | `image-picker` | ⚪ Unmapped | per-part align not set; only block alignment derived |
+| `display_size` | Styling | `select` | ⚠️ Gap | title font-size is captured (title_fs / computed) but reproduced via custom CSS, not mapped to this size preset option |
+| `title_max_width` | Styling | `unit-input` | ⚠️ Gap | title constrained measure captured but emitted as scoped CSS (heading_measures), not this option |
+| `subtitle_size` | Styling | `select` | ✅ Native | text_preset_for($h['subtitle_fs']) → subtitle Text Style preset |
+| `subtitle_max_width` | Styling | `unit-input` | ⚠️ Gap | subtitle constrained measure captured but emitted as scoped CSS, not this option |
+| `bg_color` | Styling | `predefined-colors-color-picker-compact` | ⚪ Unmapped | heading background not set; section owns background |
+| `overline_color` | Styling | `predefined-colors-color-picker-compact` | ✅ Native | from $h['overline_color'] captured computed color |
+| `title_color` | Styling | `predefined-colors-color-picker-compact` | ✅ Native | from title_color_src when a real non-default ink |
+| `subtitle_color` | Styling | `predefined-colors-color-picker-compact` | ✅ Native | from subtitle_color_src (e.g. muted text-foreground/70) |
+| `overline_class` | Advanced | `text` | ✅ Native | source overline classes carried (strip_inert_utilities) |
+| `title_class` | Advanced | `text` | ✅ Native | source title classes carried (strip_inert_utilities) |
+| `subtitle_class` | Advanced | `text` | ✅ Native | source subtitle classes carried (strip_inert_utilities) |
+| `animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …` | Animations | `multi-picker` | ⚪ Unmapped | Default — Animation Engine effects (no source mapping) |
+| `spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*` | Advanced | `text / code-editor` | ⚪ Unmapped | Default — outer spacing + per-instance advanced fields, set by hand |
+| `unique_id · custom_attrs · responsive_hide` | Advanced | `group` | ⚙️ Auto | Plumbing — generated / not set |
 
 ### Status legend
 

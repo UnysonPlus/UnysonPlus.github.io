@@ -29,7 +29,7 @@ The images are mapped as the gallery’s media source (side-loaded), and each im
 
 ## Option coverage
 
-**1/15 options mapped natively** (7%) — 🟡 0 via CSS · ⚠️ 5 gaps (derivable, not yet) · ⚪ 9 default · ⚙️ 3 auto.
+**2/15 options mapped natively** (13%) — 🟡 0 via CSS · ⚠️ 5 gaps (derivable, not yet) · ⚪ 8 default · ⚙️ 1 auto.
 
 :::tip[5 derivable gaps]
 The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
@@ -38,24 +38,22 @@ The ⚠️ rows below are options a source realistically expresses that the conv
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
-| `source` | Content | `multi-picker` | ✅ Native | Set to Media, holding the side-loaded images + per-image width ratio |
-| `design` | Design | `image-picker` | ⚪ Unmapped | Default layout (masonry / grid / carousel…) |
-| `grid` | Layout | `group` | ⚠️ Gap | column count from grid-template-columns / items-per-row in the DOM |
-| `captions` | Content | `switch` | ⚠️ Gap | presence of <figcaption>/caption elements on gallery items |
-| `caption_source` | Content | `select` | ⚪ Unmapped | Default |
-| `hover_zoom` | Design | `switch` | ⚪ Unmapped | Default |
-| `ken_burns` | Design | `switch` | ⚪ Unmapped | Default |
-| `bg_color` | Styling | `color` | ⚠️ Gap | computed background-color of the gallery/item container |
-| `caption_color` | Styling | `color` | ⚠️ Gap | computed color of the caption text |
-| `font_size_preset` | Styling | `font-size` | ⚠️ Gap | computed font-size of the caption text |
-| `spacing` | Styling | `spacing` | ⚪ Unmapped | Default |
-| `animation` | Animations | `group` | ⚪ Unmapped | Default off |
-| `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `css_id` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `custom_css` | Advanced | `textarea` | ⚪ Unmapped | Not populated |
-| `unique_id` | Advanced | `hidden` | ⚙️ Auto | Generated |
-| `responsive_hide` | Advanced | `group` | ⚙️ Auto | Not set |
-| `custom_attrs` | Advanced | `group` | ⚙️ Auto | Not set |
+| `source` | Content | `multi-picker` | ✅ Native | derived-from captured images → source.kind=media, source.media.images[] |
+| `design_settings` | Design | `multi-picker` | ✅ Native | derived-from detect_gallery_design (marquee/carousel/masonry/metro columns/grid col-ratio) |
+| `container_type` | Style | `select` | ⚪ Unmapped | not set |
+| `click` | Style | `multi-picker` | ⚪ Unmapped | click_action hardcoded 'lightbox'; not derived |
+| `captions` | Style | `select` | ⚠️ Gap | signal: presence of figcaption/caption elements in source gallery |
+| `caption_source` | Style | `select` | ⚪ Unmapped | not set; UnysonPlus-specific source selector |
+| `hover_zoom` | Style | `switch` | ⚪ Unmapped | hardcoded 'yes'; not derived |
+| `box_style` | Style | `border-style-picker` | ⚠️ Gap | signal: computed border / box-shadow on tiles |
+| `image_style` | Style | `image-style-picker` | ⚠️ Gap | signal: computed border-radius / filter on images (converter only forces flat 'rounded') |
+| `text_color` | Style | `predefined-colors-color-picker-compact` | ⚠️ Gap | signal: computed text color |
+| `bg_color` | Style | `predefined-colors-color-picker-compact` | ⚠️ Gap | signal: computed background-color of gallery container |
+| `font_size_preset` | Style | `select` | ⚪ Unmapped | not set |
+| `caption_color` | Style | `predefined-colors-color-picker-compact` | ⚪ Unmapped | no caption text reliably captured |
+| `animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …` | Animations | `multi-picker` | ⚪ Unmapped | Default — Animation Engine effects (no source mapping) |
+| `spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*` | Advanced | `text / code-editor` | ⚪ Unmapped | Default — outer spacing + per-instance advanced fields, set by hand |
+| `unique_id · custom_attrs · responsive_hide` | Advanced | `group` | ⚙️ Auto | Plumbing — generated / not set |
 
 ### Status legend
 

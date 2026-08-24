@@ -29,37 +29,32 @@ A centered paragraph that also carries a source max-width keeps a proven inline 
 
 ## Option coverage
 
-**4/19 options mapped natively** (21%) — 🟡 4 via CSS · ⚠️ 3 gaps (derivable, not yet) · ⚪ 8 default · ⚙️ 3 auto.
+**5/16 options mapped natively** (31%) — 🟡 0 via CSS · ⚠️ 4 gaps (derivable, not yet) · ⚪ 7 default · ⚙️ 1 auto.
 
-:::tip[3 derivable gaps]
+:::tip[4 derivable gaps]
 The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
 :::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
-| `text` | Content | `wp-editor` | ✅ Native | The source paragraph's rich HTML |
-| `text_color` | Styling | `color` | 🟡 Via CSS | Body text colour reproduced via the section / preset styler; native option empty |
-| `bg_color` | Styling | `color` | ⚠️ Gap | computed background-color of the text container |
-| `link_color` | Styling | `color` | 🟡 Via CSS | Link colour via the styler; native option empty |
-| `font_size_preset` | Styling | `font-size` | ✅ Native | Source computed font-size → nearest body Text Style preset |
-| `spacing` | Styling | `spacing` | 🟡 Via CSS | Vertical margins ride the unified styler; native margin option left empty |
-| `text_align` | Styling | `alignment` | ✅ Native | Explicit source center / right alignment (a `text-*` class) |
-| `max_width` | Styling | `multi-picker` | ✅ Native | Source max-width (class, inline style, or stylesheet rule) |
-| `columns` | Styling | `select` | ⚠️ Gap | computed CSS column-count of the text container |
-| `balance` | Styling | `switch` | ⚪ Unmapped | Decorative — no source signal |
-| `line_height` | Styling | `select` | 🟡 Via CSS | Reproduced via the styler; native option empty |
-| `para_spacing` | Styling | `select` | ⚪ Unmapped | — |
-| `lead` | Styling | `switch` | ⚪ Unmapped | Decorative lead-in — no source signal |
-| `link_underline` | Styling | `select` | ⚠️ Gap | computed text-decoration-line on anchor links within the text |
-| `dropcap` | Styling | `multi-picker` | ⚪ Unmapped | Decorative drop-cap (+ style/font/lines/chars/gap/colour) — no source signal |
-| `animation` | Animations | `group` | ⚪ Unmapped | Entrance animations default off |
-| `css_class` | Advanced | `text` | ⚪ Unmapped | Left empty — the block carries no source classes here |
-| `custom_css` | Advanced | `textarea` | ⚪ Unmapped | Not populated for text_block |
-| `css_id` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `unique_id` | Advanced | `hidden` | ⚙️ Auto | Generated |
-| `responsive_hide` | Advanced | `group` | ⚙️ Auto | Not set |
-| `custom_attrs` | Advanced | `group` | ⚙️ Auto | Not set |
+| `text` | Content | `wp-editor` | ✅ Native | html body via map_accent_classes |
+| `text_color` | Styling | `predefined-colors-color-picker-compact` | ✅ Native | computed color from $cs when non-default ink |
+| `bg_color` | Styling | `predefined-colors-color-picker-compact` | ⚪ Unmapped | not set; paragraph bg rare, section owns background |
+| `link_color` | Styling | `predefined-colors-color-picker-compact` | ⚠️ Gap | anchor computed color is detectable in captured DOM but the mapper doesn't inspect links |
+| `font_size_preset` | Styling | `select` | ✅ Native | text_preset_for(computed font-size from $cs) |
+| `text_align` | Styling | `image-picker` | ✅ Native | center/right from $align (native option path) |
+| `max_width` | Styling | `multi-picker` | ✅ Native | from source max-width (class/inline/stylesheet) via max_width_att |
+| `columns` | Styling | `select` | ⚠️ Gap | computed column-count is detectable but the mapper doesn't map multi-column text |
+| `balance` | Styling | `switch` | ⚪ Unmapped | text-wrap:balance niche and not read |
+| `line_height` | Styling | `select` | ⚠️ Gap | computed line-height is a strong reliable signal but not mapped to this select |
+| `para_spacing` | Styling | `select` | ⚠️ Gap | inter-paragraph <p> margins detectable but not mapped (only block margin → spacing) |
+| `lead` | Styling | `switch` | ⚪ Unmapped | lead handled via font_size_preset='lead'; the lead switch itself unset |
+| `link_underline` | Styling | `select` | ⚪ Unmapped | anchor text-decoration not inspected; UnysonPlus preset choice |
+| `dropcap` | Styling | `multi-picker` | ⚪ Unmapped | ::first-letter drop-cap detection unreliable; not read |
+| `animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …` | Animations | `multi-picker` | ⚪ Unmapped | Default — Animation Engine effects (no source mapping) |
+| `spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*` | Advanced | `text / code-editor` | ⚪ Unmapped | Default — outer spacing + per-instance advanced fields, set by hand |
+| `unique_id · custom_attrs · responsive_hide` | Advanced | `group` | ⚙️ Auto | Plumbing — generated / not set |
 
 ### Status legend
 

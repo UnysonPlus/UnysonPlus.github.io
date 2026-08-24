@@ -29,41 +29,37 @@ The full cell grid is rebuilt natively — columns are counted, leading all-`<th
 
 ## Option coverage
 
-**2/23 options mapped natively** (9%) — 🟡 0 via CSS · ⚠️ 8 gaps (derivable, not yet) · ⚪ 13 default · ⚙️ 3 auto.
+**3/21 options mapped natively** (14%) — 🟡 0 via CSS · ⚠️ 5 gaps (derivable, not yet) · ⚪ 13 default · ⚙️ 1 auto.
 
-:::tip[8 derivable gaps]
+:::tip[5 derivable gaps]
 The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
 :::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
-| `content` | Content | `table` | ✅ Native | The captured `<table>` cells, row by row |
-| `header_options` | Content | `group` | ✅ Native | Leading all-`<th>` rows detected as the header |
-| `caption` | Content | `text` | ⚠️ Gap | text of the <caption> element |
-| `caption_position` | Content | `select` | ⚠️ Gap | computed caption-side (top/bottom) of the caption |
-| `frame_preset` | Style | `table-style-picker` | ⚪ Unmapped | Default — not matched to a Table preset |
-| `style_striped` | Style | `switch` | ⚠️ Gap | alternating row background-color across tbody rows |
-| `style_bordered` | Style | `switch` | ⚠️ Gap | presence of border on cells (computed border-width > 0) |
-| `style_hover` | Style | `switch` | ⚪ Unmapped | Default |
-| `style_condensed` | Style | `switch` | ⚪ Unmapped | Default |
-| `sticky_header` | Style | `switch` | ⚠️ Gap | computed position:sticky on the header row/cells |
-| `bg_color` | Style | `color` | ⚠️ Gap | computed background-color of the table/cells |
-| `text_color` | Style | `color` | ⚠️ Gap | computed color of the cell text |
-| `font_size_preset` | Style | `font-size` | ⚠️ Gap | computed font-size of cell text |
-| `enable_search` | Features | `switch` | ⚪ Unmapped | Default off |
-| `enable_sort` | Features | `switch` | ⚪ Unmapped | Default off |
-| `enable_pagination` | Features | `switch` | ⚪ Unmapped | Default off |
-| `pagination_length` | Features | `number` | ⚪ Unmapped | Default |
-| `enable_length_change` | Features | `switch` | ⚪ Unmapped | Default off |
-| `enable_info` | Features | `switch` | ⚪ Unmapped | Default off |
-| `spacing` | Style | `spacing` | ⚪ Unmapped | Default |
-| `animation` | Animations | `group` | ⚪ Unmapped | Default off |
-| `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `css_id` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `unique_id` | Advanced | `hidden` | ⚙️ Auto | Generated |
-| `responsive_hide` | Advanced | `group` | ⚙️ Auto | Not set |
-| `custom_attrs` | Advanced | `group` | ⚙️ Auto | Not set |
+| `table` | Content | `table` | ✅ Native | built from captured rows/cols/content + thead header_rows |
+| `table_preset` | Table Options | `table-style-picker` | ✅ Native | derived via table_preset_for from captured header fill / striped styling |
+| `frame_preset` | Table Options | `border-style-picker` | ⚪ Unmapped | not set by mapper |
+| `style_striped` | Table Options | `switch` | ⚠️ Gap | alternating row background detectable (captured in style.striped) but the switch option itself not set |
+| `style_hover` | Table Options | `switch` | ⚪ Unmapped | row hover state not captured from static DOM |
+| `style_bordered` | Table Options | `switch` | ⚠️ Gap | cell border computed style detectable; option not set |
+| `style_condensed` | Table Options | `switch` | ⚪ Unmapped | cell padding varies; not reliably mapped, not set |
+| `sticky_header` | Table Options | `switch` | ⚪ Unmapped | scroll behavior; not derived |
+| `caption` | Table Options | `text` | ✅ Native | set from captured b.caption text |
+| `caption_position` | Table Options | `select` | ⚠️ Gap | caption-side / DOM order of <caption> detectable; not set |
+| `enable_sort` | Table Options | `switch` | ⚪ Unmapped | interactive behavior not present in static DOM |
+| `enable_search` | Table Options | `switch` | ⚪ Unmapped | interactive behavior; not derived |
+| `enable_pagination` | Table Options | `switch` | ⚪ Unmapped | interactive behavior; not derived |
+| `pagination_length` | Table Options | `text` | ⚪ Unmapped | not derived |
+| `enable_length_change` | Table Options | `switch` | ⚪ Unmapped | not derived |
+| `enable_info` | Table Options | `switch` | ⚪ Unmapped | not derived |
+| `text_color` | Styling | `predefined-colors-color-picker-compact` | ⚠️ Gap | cell text computed color detectable; option not set (styling goes to table_preset) |
+| `bg_color` | Styling | `predefined-colors-color-picker-compact` | ⚠️ Gap | table background computed color detectable; option not set |
+| `font_size_preset` | Styling | `select` | ⚪ Unmapped | not set by mapper |
+| `animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …` | Animations | `multi-picker` | ⚪ Unmapped | Default — Animation Engine effects (no source mapping) |
+| `spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*` | Advanced | `text / code-editor` | ⚪ Unmapped | Default — outer spacing + per-instance advanced fields, set by hand |
+| `unique_id · custom_attrs · responsive_hide` | Advanced | `group` | ⚙️ Auto | Plumbing — generated / not set |
 
 ### Status legend
 

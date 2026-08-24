@@ -29,33 +29,22 @@ The image itself maps natively. When the source image has an organic radius / wh
 
 ## Option coverage
 
-**1/15 options mapped natively** (7%) — 🟡 1 via CSS · ⚠️ 8 gaps (derivable, not yet) · ⚪ 5 default · ⚙️ 3 auto.
-
-:::tip[8 derivable gaps]
-The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
-:::
+**1/10 options mapped natively** (10%) — 🟡 0 via CSS · ⚠️ 0 gaps (derivable, not yet) · ⚪ 9 default · ⚙️ 1 auto.
 
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
-| `image` | Content | `upload` | ✅ Native | The source image (side-loaded to the Media Library) |
-| `link` | Content | `text` | ⚠️ Gap | href of the anchor wrapping the <img> (a > img) |
-| `target` | Content | `select` | ⚠️ Gap | target attribute of the wrapping <a> |
-| `image_style` | Styling | `image-style-picker` | ⚪ Unmapped | Not matched to an Image Style preset |
-| `width` | Styling | `unit-input` | ⚠️ Gap | computed/attribute width of the <img> |
-| `height` | Styling | `unit-input` | ⚠️ Gap | computed/attribute height of the <img> |
-| `size` | Styling | `select` | ⚪ Unmapped | Default |
-| `bg_color` | Styling | `color` | ⚠️ Gap | computed background-color of the <img> or its container |
-| `loading` | Advanced | `select` | ⚠️ Gap | loading attribute on the <img> (lazy/eager) |
-| `fetchpriority` | Advanced | `select` | ⚠️ Gap | fetchpriority attribute on the <img> |
-| `spacing` | Styling | `spacing` | ⚠️ Gap | computed margin/padding of the image element |
-| `custom_css` | Advanced | `textarea` | 🟡 Via CSS | Carries the image skin (`skinCss`) — organic radius / border / shadow / blob backdrop |
-| `animation` | Animations | `group` | ⚪ Unmapped | Default off |
-| `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `css_id` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `unique_id` | Advanced | `hidden` | ⚙️ Auto | Generated |
-| `responsive_hide` | Advanced | `group` | ⚙️ Auto | Not set |
-| `custom_attrs` | Advanced | `group` | ⚙️ Auto | Not set |
+| `image` | Content | `upload` | ✅ Native | derived-from <img> src/alt; upload_val sideloads to attachment_id/url |
+| `width` | Content | `unit-input` | ⚪ Unmapped | mapper always emits empty {value:'',unit:'px'} |
+| `height` | Content | `unit-input` | ⚪ Unmapped | mapper always emits empty {value:'',unit:'px'} |
+| `fetchpriority` | Content | `select` | ⚪ Unmapped | hardcoded 'auto' |
+| `link` | Content | `text` | ⚪ Unmapped | hardcoded '' (a wrapping <a> is not carried into link) |
+| `target` | Content | `switch` | ⚪ Unmapped | hardcoded '_self' |
+| `image_style` | Styling | `image-style-picker` | ⚪ Unmapped | no image_style att emitted; a skinned <img> (border/shadow/rounded/blob) is instead routed to a verbatim code_block or carried via custom_css, never mapped to this preset picker |
+| `bg_color` | Styling | `predefined-colors-color-picker-compact` | ⚪ Unmapped | empty_color() |
+| `animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …` | Animations | `multi-picker` | ⚪ Unmapped | Default — Animation Engine effects (no source mapping) |
+| `spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*` | Advanced | `text / code-editor` | ⚪ Unmapped | Default — outer spacing + per-instance advanced fields, set by hand |
+| `unique_id · custom_attrs · responsive_hide` | Advanced | `group` | ⚙️ Auto | Plumbing — generated / not set |
 
 ### Status legend
 

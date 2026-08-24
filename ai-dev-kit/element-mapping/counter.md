@@ -29,7 +29,7 @@ One of the best-mapped elements: the number, start, prefix, suffix, decimals and
 
 ## Option coverage
 
-**12/19 options mapped natively** (63%) — 🟡 0 via CSS · ⚠️ 1 gap (derivable, not yet) · ⚪ 6 default · ⚙️ 3 auto.
+**12/17 options mapped natively** (71%) — 🟡 0 via CSS · ⚠️ 1 gap (derivable, not yet) · ⚪ 4 default · ⚙️ 1 auto.
 
 :::tip[1 derivable gap]
 The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
@@ -38,28 +38,24 @@ The ⚠️ rows below are options a source realistically expresses that the conv
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
-| `number` | Content | `text` | ✅ Native | The target figure |
-| `start` | Content | `text` | ✅ Native | Count-up start value |
-| `prefix` | Content | `text` | ✅ Native | Leading text (e.g. $) |
-| `suffix` | Content | `text` | ✅ Native | Trailing text (e.g. %, +) |
-| `decimals` | Content | `number` | ✅ Native | Decimal places |
-| `alignment` | Styling | `alignment` | ✅ Native | Source alignment |
-| `number_font` | Styling | `typography` | ✅ Native | Number weight + size, from the source |
-| `number_color` | Styling | `color` | ✅ Native | Number colour, from the source |
-| `prefix_font` | Styling | `typography` | ✅ Native | Prefix weight + size |
-| `prefix_color` | Styling | `color` | ✅ Native | Prefix colour |
-| `suffix_font` | Styling | `typography` | ✅ Native | Suffix weight + size |
-| `suffix_color` | Styling | `color` | ✅ Native | Suffix colour |
-| `separator` | Content | `switch` | ⚠️ Gap | thousands separator present in the rendered number text (e.g. '1,000') |
-| `duration` | Behavior | `number` | ⚪ Unmapped | Default 2000ms |
-| `easing` | Behavior | `select` | ⚪ Unmapped | Default ease-out |
-| `animation` | Animations | `group` | ⚪ Unmapped | Entrance animations default off |
-| `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `css_id` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `custom_css` | Advanced | `textarea` | ⚪ Unmapped | Not populated |
-| `unique_id` | Advanced | `hidden` | ⚙️ Auto | Generated |
-| `responsive_hide` | Advanced | `group` | ⚙️ Auto | Not set |
-| `custom_attrs` | Advanced | `group` | ⚙️ Auto | Not set |
+| `number` | Content | `text` | ✅ Native | set from c.number |
+| `start` | Content | `text` | ✅ Native | set from c.start |
+| `prefix` | Content | `text` | ✅ Native | set from c.prefix |
+| `suffix` | Content | `text` | ✅ Native | set from c.suffix |
+| `decimals` | Content | `select` | ✅ Native | set from c.decimals |
+| `separator` | Content | `select` | ⚠️ Gap | thousands separator present in source number text detectable; mapper hardcodes 'yes' |
+| `duration` | Content | `text` | ⚪ Unmapped | animation timing; hardcoded '2000', no source signal |
+| `easing` | Content | `select` | ⚪ Unmapped | hardcoded 'ease-out' |
+| `alignment` | Style | `image-picker` | ✅ Native | set from c.align (center/right) |
+| `number_font` | Style | `typography` | ✅ Native | set from captured numberWeight/numberSize |
+| `number_color` | Style | `predefined-colors-color-picker-compact` | ✅ Native | set from captured numberColor |
+| `prefix_font` | Style | `typography` | ✅ Native | set from captured numberWeight/prefixSize |
+| `prefix_color` | Style | `predefined-colors-color-picker-compact` | ✅ Native | set from captured prefixColor |
+| `suffix_font` | Style | `typography` | ✅ Native | set from captured suffixWeight/suffixSize |
+| `suffix_color` | Style | `predefined-colors-color-picker-compact` | ✅ Native | set from captured suffixColor |
+| `animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …` | Animations | `multi-picker` | ⚪ Unmapped | Default — Animation Engine effects (no source mapping) |
+| `spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*` | Advanced | `text / code-editor` | ⚪ Unmapped | Default — outer spacing + per-instance advanced fields, set by hand |
+| `unique_id · custom_attrs · responsive_hide` | Advanced | `group` | ⚙️ Auto | Plumbing — generated / not set |
 
 ### Status legend
 

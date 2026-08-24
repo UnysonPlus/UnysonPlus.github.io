@@ -29,34 +29,30 @@ Text, link, alignment and any inline icon map to native options. The button’s 
 
 ## Option coverage
 
-**6/16 options mapped natively** (38%) — 🟡 1 via CSS · ⚠️ 3 gaps (derivable, not yet) · ⚪ 6 default · ⚙️ 3 auto.
+**9/14 options mapped natively** (64%) — 🟡 0 via CSS · ⚠️ 2 gaps (derivable, not yet) · ⚪ 3 default · ⚙️ 1 auto.
 
-:::tip[3 derivable gaps]
+:::tip[2 derivable gaps]
 The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
 :::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
-| `label` | Content | `text` | ✅ Native | Source button text |
-| `link` | Content | `text` | ✅ Native | The href |
-| `target` | Content | `select` | ⚠️ Gap | target attribute of the anchor (_blank vs _self) |
-| `icon` | Icons | `icon` | ✅ Native | An inline `<svg>` / icon in the source button |
-| `icon_position` | Icons | `select` | ✅ Native | Before / after the label, from the source |
-| `style` | Styling | `button-style-picker` | 🟡 Via CSS | Look reproduced via the hi-fi `custom_css` base, not a matched Button preset |
-| `size` | Styling | `select` | ⚪ Unmapped | Default — not inferred |
-| `width` | Styling | `multi-picker` | ⚠️ Gap | computed display/width of the button (full-width block vs auto) |
-| `alignment` | Styling | `alignment` | ✅ Native | Source alignment |
-| `state` | Styling | `select` | ⚪ Unmapped | Editor state selector — no stored value |
-| `hover_animation` | Styling | `select` | ⚪ Unmapped | No source signal |
-| `spacing` | Styling | `spacing` | ⚠️ Gap | computed margin around the button element |
-| `animation` | Animations | `group` | ⚪ Unmapped | Entrance animations default off |
-| `custom_css` | Advanced | `textarea` | ✅ Native | Carries the hi-fi appearance base that reproduces the button’s look |
-| `css_class` | Advanced | `text` | ⚪ Unmapped | Left empty |
-| `css_id` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `unique_id` | Advanced | `hidden` | ⚙️ Auto | Generated |
-| `responsive_hide` | Advanced | `group` | ⚙️ Auto | Not set |
-| `custom_attrs` | Advanced | `group` | ⚙️ Auto | Not set |
+| `label` | Content | `text` | ✅ Native | set from $label |
+| `link` | Content | `text` | ✅ Native | set from $link (href) |
+| `target` | Content | `switch` | ⚠️ Gap | hardcoded '_self'; source anchor target=_blank is trivially detectable but not read |
+| `icon` | Content | `icon` | ✅ Native | inline svg icon_svg or icon-font class via icon_value |
+| `icon_position` | Content | `select` | ✅ Native | before/after from $icon_pos |
+| `style` | Styling | `button-style-picker` | ✅ Native | button_preset_for (color preset) or btn-link for text links |
+| `size` | Styling | `button-style-picker` | ✅ Native | button_preset_for size slug |
+| `shape` | Styling | `image-picker` | ⚠️ Gap | border-radius is captured/reproduced via CSS but not mapped to this shape option |
+| `width` | Styling | `multi-picker` | ✅ Native | w-100 full-width when w-full/block width:100% detected |
+| `alignment` | Styling | `select` | ✅ Native | from climbed $align or group wrapper resolve_style_options |
+| `state` | Styling | `select` | ⚪ Unmapped | always ''; active/disabled state not derived |
+| `hover_animation` | Styling | `button-hover-animation` | ✅ Native | classify_hover_animation → .btnfx-* preset from captured hover |
+| `animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …` | Animations | `multi-picker` | ⚪ Unmapped | Default — Animation Engine effects (no source mapping) |
+| `spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*` | Advanced | `text / code-editor` | ⚪ Unmapped | Default — outer spacing + per-instance advanced fields, set by hand |
+| `unique_id · custom_attrs · responsive_hide` | Advanced | `group` | ⚙️ Auto | Plumbing — generated / not set |
 
 ### Status legend
 

@@ -29,38 +29,36 @@ The visible copy maps — the email (and name) placeholder, the button label, al
 
 ## Option coverage
 
-**7/20 options mapped natively** (35%) — 🟡 0 via CSS · ⚠️ 6 gaps (derivable, not yet) · ⚪ 7 default · ⚙️ 3 auto.
+**8/20 options mapped natively** (40%) — 🟡 0 via CSS · ⚠️ 2 gaps (derivable, not yet) · ⚪ 10 default · ⚙️ 1 auto.
 
-:::tip[6 derivable gaps]
+:::tip[2 derivable gaps]
 The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
 :::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
-| `email_placeholder` | Content | `text` | ✅ Native | Source email field placeholder |
-| `button_label` | Content | `text` | ✅ Native | Subscribe button label |
-| `name_placeholder` | Content | `text` | ✅ Native | Name field placeholder (when present) |
-| `show_name` | Content | `switch` | ✅ Native | On when the source form has a name field |
-| `align` | Layout | `select` | ✅ Native | Source alignment |
-| `rounded` | Design | `select` | ✅ Native | Corner rounding from the source |
-| `accent_color` | Styling | `color` | ✅ Native | Button colour from the source |
-| `list_id` | Content | `text` | ⚪ Unmapped | You bind the list |
-| `title` | Content | `text` | ⚠️ Gap | heading text content within the newsletter form block |
-| `consent_text` | Content | `text` | ⚠️ Gap | label text of the consent checkbox |
-| `success_message` | Content | `text` | ⚪ Unmapped | Default |
-| `error_message` | Content | `text` | ⚪ Unmapped | Default |
-| `bg_color` | Styling | `color` | ⚠️ Gap | computed background-color of the form container |
-| `text_color` | Styling | `color` | ⚠️ Gap | computed color of the form text |
-| `field_bg` | Styling | `color` | ⚠️ Gap | computed background-color of the input field(s) |
-| `font_size_preset` | Styling | `font-size` | ⚠️ Gap | computed font-size of the form body text |
-| `spacing` | Styling | `spacing` | ⚪ Unmapped | Default |
-| `animation` | Animations | `group` | ⚪ Unmapped | Default off |
-| `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `css_id` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `unique_id` | Advanced | `hidden` | ⚙️ Auto | Generated |
-| `responsive_hide` | Advanced | `group` | ⚙️ Auto | Not set |
-| `custom_attrs` | Advanced | `group` | ⚙️ Auto | Not set |
+| `title` | Content | `text` | ⚪ Unmapped | explicitly cleared to '' by mapper |
+| `description` | Content | `textarea` | ⚪ Unmapped | explicitly cleared to '' by mapper |
+| `show_name` | Content | `switch` | ✅ Native | derived-from captured show_name flag |
+| `name_placeholder` | Content | `text` | ✅ Native | derived-from source name field placeholder (when show_name) |
+| `email_placeholder` | Content | `text` | ✅ Native | derived-from source email input placeholder |
+| `button_label` | Content | `text` | ✅ Native | derived-from source submit button label |
+| `consent_text` | Content | `textarea` | ⚪ Unmapped | not set |
+| `success_message` | Content | `text` | ⚪ Unmapped | not set |
+| `error_message` | Content | `text` | ⚪ Unmapped | not set |
+| `list_id` | Content | `text` | ⚪ Unmapped | not set; UnysonPlus/integration-specific |
+| `design` | Design | `image-picker` | ⚪ Unmapped | hardcoded 'inline'; not derived |
+| `align` | Design | `image-picker` | ✅ Native | derived-from source align (left/center/right) |
+| `rounded` | Design | `select` | ✅ Native | derived-from source rounded (rounded-0/rounded/pill) |
+| `accent_color` | Styling | `predefined-colors-color-picker-compact` | ✅ Native | derived-from computed submit button background (custom color) |
+| `field_bg` | Styling | `predefined-colors-color-picker-compact` | ✅ Native | derived-from computed input field background (custom color) |
+| `bg_color` | Styling | `predefined-colors-color-picker-compact` | ⚠️ Gap | signal: computed background-color of newsletter block |
+| `text_color` | Styling | `predefined-colors-color-picker-compact` | ⚠️ Gap | signal: computed text color (button fg is captured for custom_css but bg_color/text_color not mapped) |
+| `font_size_preset` | Styling | `select` | ⚪ Unmapped | not set |
+| `animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …` | Animations | `multi-picker` | ⚪ Unmapped | Default — Animation Engine effects (no source mapping) |
+| `spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*` | Advanced | `text / code-editor` | ⚪ Unmapped | Default — outer spacing + per-instance advanced fields, set by hand |
+| `unique_id · custom_attrs · responsive_hide` | Advanced | `group` | ⚙️ Auto | Plumbing — generated / not set |
 
 ### Status legend
 

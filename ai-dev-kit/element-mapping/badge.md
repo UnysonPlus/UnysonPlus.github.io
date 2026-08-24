@@ -29,50 +29,46 @@ The text, message, link, a trailing inline icon, and alignment map to native opt
 
 ## Option coverage
 
-**5/32 options mapped natively** (16%) — 🟡 0 via CSS · ⚠️ 17 gaps (derivable, not yet) · ⚪ 10 default · ⚙️ 3 auto.
+**11/30 options mapped natively** (37%) — 🟡 0 via CSS · ⚠️ 5 gaps (derivable, not yet) · ⚪ 14 default · ⚙️ 1 auto.
 
-:::tip[17 derivable gaps]
+:::tip[5 derivable gaps]
 The ⚠️ rows below are options a source realistically expresses that the converter doesn't derive **yet** — the real to-do list for improving this element's fidelity. The ⚪ default rows are intentional (no reliable signal, or a UnysonPlus-specific choice).
 :::
 
 
 | Option | Tab | Type | Status | Mapped from / note |
 | --- | --- | --- | --- | --- |
-| `tag_text` | Content | `text` | ✅ Native | Source sub-tag text |
-| `message` | Content | `text` | ✅ Native | The main label text |
-| `link` | Content | `text` | ✅ Native | Optional href |
-| `trailing_icon` | Icons | `icon` | ✅ Native | A trailing inline `<svg>` in the source chip |
-| `leading_icon` | Icons | `icon` | ⚠️ Gap | presence + glyph of a leading <svg>/<i> icon inside the badge |
-| `leading` | Icons | `select` | ⚠️ Gap | DOM order of icon vs text (icon before or after the label) |
-| `align` | Layout | `select` | ✅ Native | Source alignment |
-| `style` | Design | `select` | ⚪ Unmapped | Default `soft` |
-| `shape` | Design | `select` | ⚠️ Gap | computed border-radius (pill vs rounded vs square) |
-| `size` | Design | `select` | ⚪ Unmapped | Default `md` |
-| `tag_style` | Design | `select` | ⚪ Unmapped | Default `filled` |
-| `hover` | Design | `select` | ⚪ Unmapped | Default `lift` |
-| `pill_color` | Styling | `color` | ⚠️ Gap | computed background-color of the badge |
-| `text_color` | Styling | `color` | ⚠️ Gap | computed color of the badge label |
-| `tag_color` | Styling | `color` | ⚠️ Gap | computed border/accent color when rendered as a tag |
-| `gradient_from` | Styling | `color` | ⚠️ Gap | first color stop of a computed background linear-gradient |
-| `gradient_to` | Styling | `color` | ⚠️ Gap | last color stop of a computed background linear-gradient |
-| `spacing` | Styling | `spacing` | ⚪ Unmapped | Default |
-| `link_target` | Link | `select` | ⚠️ Gap | target attribute of the badge anchor |
-| `rel_nofollow` | Link | `switch` | ⚠️ Gap | rel attribute of the anchor contains 'nofollow' |
-| `rel_sponsored` | Link | `switch` | ⚠️ Gap | rel attribute of the anchor contains 'sponsored' |
-| `rel_ugc` | Link | `switch` | ⚠️ Gap | rel attribute of the anchor contains 'ugc' |
-| `aria_label` | SEO | `text` | ⚠️ Gap | aria-label attribute on the badge element |
-| `title_attr` | SEO | `text` | ⚠️ Gap | title attribute on the badge element |
-| `dismissible` | Design | `switch` | ⚪ Unmapped | Default off |
-| `dismiss_id` | Design | `text` | ⚪ Unmapped | Default |
-| `schema_enable` | SEO | `switch` | ⚠️ Gap | presence of schema.org itemtype/itemprop microdata in the markup |
-| `schema_name` | SEO | `text` | ⚠️ Gap | schema.org name itemprop value |
-| `schema_date` | SEO | `text` | ⚠️ Gap | schema.org date itemprop value |
-| `animation` | Animations | `group` | ⚪ Unmapped | Default off |
-| `css_class` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `css_id` | Advanced | `text` | ⚪ Unmapped | Default empty |
-| `unique_id` | Advanced | `hidden` | ⚙️ Auto | Generated |
-| `responsive_hide` | Advanced | `group` | ⚙️ Auto | Not set |
-| `custom_attrs` | Advanced | `group` | ⚙️ Auto | Not set |
+| `tag_text` | Content | `text` | ✅ Native | set from b.tag_text |
+| `message` | Content | `text` | ✅ Native | set from b.message |
+| `link` | Content | `text` | ✅ Native | set from b.link href |
+| `leading` | Content | `select` | ✅ Native | set to 'icon' when a leading inline SVG captured, else 'none' |
+| `leading_icon` | Content | `icon` | ✅ Native | set from captured leading inline SVG markup |
+| `trailing_icon` | Content | `icon` | ✅ Native | set from b.icon via icon_value |
+| `style` | Design | `image-picker` | ✅ Native | derived: outline when pill border present, subtle when fill present, else soft default |
+| `shape` | Design | `select` | ⚪ Unmapped | hardcoded 'pill'; source border-radius not mapped to shape buckets |
+| `size` | Design | `select` | ⚪ Unmapped | hardcoded 'md' |
+| `align` | Design | `select` | ✅ Native | set from b.align (start/center/end) |
+| `tag_style` | Design | `select` | ⚪ Unmapped | hardcoded 'filled' |
+| `hover` | Design | `select` | ⚪ Unmapped | hardcoded 'lift' |
+| `pill_color` | Styling | `predefined-colors-color-picker-compact` | ✅ Native | set from resolved pill border/fill (Tailwind + computed style) |
+| `text_color` | Styling | `predefined-colors-color-picker-compact` | ✅ Native | set from resolved message text color (msgCls) |
+| `tag_color` | Styling | `predefined-colors-color-picker-compact` | ✅ Native | set from resolved tag fill (tagCls), when a real non-black color |
+| `gradient_from` | Styling | `predefined-colors-color-picker-compact` | ⚪ Unmapped | always none_color; gradient style never selected by mapper |
+| `gradient_to` | Styling | `predefined-colors-color-picker-compact` | ⚪ Unmapped | always none_color |
+| `link_target` | Link & SEO | `select` | ⚪ Unmapped | hardcoded 'auto' |
+| `rel_nofollow` | Link & SEO | `switch` | ⚠️ Gap | source anchor rel attribute detectable; mapper hardcodes 'no' |
+| `rel_sponsored` | Link & SEO | `switch` | ⚠️ Gap | source anchor rel attribute detectable; hardcoded 'no' |
+| `rel_ugc` | Link & SEO | `switch` | ⚠️ Gap | source anchor rel attribute detectable; hardcoded 'no' |
+| `aria_label` | Link & SEO | `text` | ⚠️ Gap | source element aria-label attribute detectable; mapper leaves blank |
+| `title_attr` | Link & SEO | `text` | ⚠️ Gap | source element title attribute detectable; mapper leaves blank |
+| `dismissible` | Link & SEO | `switch` | ⚪ Unmapped | UnysonPlus behavior; no reliable static-DOM signal |
+| `dismiss_id` | Link & SEO | `text` | ⚪ Unmapped | UnysonPlus-specific; not derived |
+| `schema_enable` | Link & SEO | `switch` | ⚪ Unmapped | not derived; hardcoded 'no' |
+| `schema_name` | Link & SEO | `text` | ⚪ Unmapped | not derived |
+| `schema_date` | Link & SEO | `text` | ⚪ Unmapped | not derived |
+| `animation · gsap_motion · interaction · text_effect · scroll_* · flip_card · motion_path · confetti · …` | Animations | `multi-picker` | ⚪ Unmapped | Default — Animation Engine effects (no source mapping) |
+| `spacing · css_id · css_class · custom_css · element_position · element_overflow · dc_*` | Advanced | `text / code-editor` | ⚪ Unmapped | Default — outer spacing + per-instance advanced fields, set by hand |
+| `unique_id · custom_attrs · responsive_hide` | Advanced | `group` | ⚙️ Auto | Plumbing — generated / not set |
 
 ### Status legend
 

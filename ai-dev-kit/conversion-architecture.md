@@ -137,6 +137,33 @@ Once a block is a shortcode, its **options** are filled in through two reusable 
 **preset registry** for preset-backed options and a **declarative table** for intrinsic scalars —
 rather than a detector per option. See **[How Options Map](./option-mapping.md)**.
 
+### Fidelity: native option first, child‑stylesheet override on top
+
+Every conversion is **high‑fidelity**: the source is mapped into the shortcode options and Theme
+Settings **as fully as possible**, and anything that can't be expressed as a native option is written
+to the child theme's stylesheet as an **editable, low‑priority base**. That gives every converted site
+a clean, native structure you keep editing in the builder — with the exact source look layered
+underneath.
+
+The important nuance is that native option and child CSS are **not either/or**. Some options are
+enums or presets — they carry an **intent** (Header → *Translucent / Glass*, a *Box Preset*, a card
+*hover*) but bake in one fixed look. When the source expresses the **same intent** with **different
+exact values** — say its glass is `rgba(24,24,27,.5)` + `backdrop-filter: blur(8px)`, not the theme's
+default frost — the converter does **both**:
+
+1. **Sets the native option** (`Translucent / Glass = on`, the matching Box Preset) — so the intent is
+   semantic, the Theme‑Settings / builder UI reflects it, and you can keep editing it natively.
+2. **Writes the source's exact CSS as a scoped, low‑specificity override** in the child stylesheet
+   (header CSS for chrome, the Box Preset's own CSS for a card, the section's CSS for a band). Because
+   it's scoped and low‑priority, it **nails the exact source look** while the option still wins the
+   moment you change it.
+
+So: **any override for one of our options lives in the child stylesheet, layered on top of the native
+option — never instead of it.** The option carries the meaning and the editability; the child CSS
+carries the last mile of pixel fidelity (a frosted‑glass card's blur, an exact padding, a
+`group-hover` scale). When a source look our option only *approximates*, this pairing is preferred
+over widening the option's schema — it's faithful today and stays fully editable.
+
 ### The navigation mapper
 
 Rather than emit a framework‑specific menu, the converter extracts the source nav into a neutral

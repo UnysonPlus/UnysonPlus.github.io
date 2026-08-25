@@ -8,6 +8,43 @@ slug: /installation
 
 Unyson+ ships as a normal WordPress plugin plus an optional parent theme.
 
+## Requirements
+
+Unyson+ runs on any standard WordPress host. You'll need:
+
+- **WordPress** — a currently supported version.
+- **PHP 7.4 or newer** (PHP 8.1–8.2 recommended).
+- **MySQL 5.7+** or **MariaDB 10.3+**.
+- The usual PHP extensions (normally already enabled): `zip`, `curl`, `mysqli`, `gd`,
+  `mbstring`, `dom`, `openssl`.
+
+### Recommended PHP settings
+
+Many shared hosts ship conservative defaults — a **2 MB** `upload_max_filesize` is common — that
+are too small to upload the plugin, media, or a backup archive. Raise them to:
+
+```ini
+upload_max_filesize = 128M
+post_max_size = 128M
+max_execution_time = 300
+max_input_time = 300
+memory_limit = 256M
+max_input_vars = 3000
+```
+
+On **cPanel**, set these in **MultiPHP INI Editor** (select your domain first), or add them to a
+**`.user.ini`** file in your site root (LiteSpeed's lsphp reads it; allow a few minutes to apply).
+The largest file you can upload is `min(upload_max_filesize, post_max_size)`, so raise **both**.
+
+:::tip[Why max_input_vars matters]
+The page builder and Theme Settings forms can post many fields in a single save. If
+`max_input_vars` is too low, PHP silently drops the extra fields and part of your layout or
+settings won't save. `3000` gives comfortable headroom.
+:::
+
+If backups stall on a **LiteSpeed** server, see the
+[Backup & Demo Content](../extensions/backups.md#litespeed-web-server) troubleshooting notes.
+
 ## 1. Install the plugin
 
 1. Download the latest **Unyson+** plugin from the

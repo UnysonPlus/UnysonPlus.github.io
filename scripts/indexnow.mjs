@@ -18,7 +18,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
-const HOST = 'unysonplus.github.io';
+const HOST = 'docs.unysonplus.com';
 const ORIGIN = 'https://' + HOST;
 const KEY = 'dd9dfa5bafd81d26d1d76b8951944b46';
 const KEY_LOCATION = `${ORIGIN}/${KEY}.txt`;

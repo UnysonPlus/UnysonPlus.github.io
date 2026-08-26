@@ -70,6 +70,39 @@ generic SEO plugins cannot do, since they only ever see the rendered markup.
 
 ---
 
+## Local business
+
+### `LocalBusiness` structured data <span className="badge badge--secondary">Exploring</span>
+
+For a business with a physical presence, search engines want the name, address, phone number,
+opening hours and business type as structured data — the thing that produces an opening-hours
+line, a map pin and a directions link next to a result.
+
+Worth being specific about what is actually missing here, because it is less than it looks.
+UnysonPlus already collects all of this. The
+[Business Info](../../shortcodes/components/business-info.md) element holds the name, address, phone,
+email, website and map link, plus a seven-day opening-hours grid with per-day open, close and
+closed states — and it already computes a live open/closed status from the site timezone. The
+[Map](../../shortcodes/media-elements/map.md) element already renders locations, with OpenStreetMap as well as
+Google, so no API key is needed to show a map at all.
+
+So the gap is not the data or the display. It is that none of it is currently expressed as
+`LocalBusiness` and `openingHoursSpecification` schema, which is the part search engines read.
+
+The open design question is where that data should live. Today it belongs to an element on a
+page, which is right for display and awkward for a site-wide claim about the business. The
+likely answer is site-level fields that the element can also read, so the two never disagree
+— but that is a decision to make deliberately rather than discover.
+
+### Multiple locations <span className="badge badge--secondary">Exploring</span>
+
+A business with several branches needs one entry per location, each with its own address,
+hours and map. The [Post Types](/docs/data-modeling/post-types) extension can already register
+a Locations content type; what it would need is the schema and a way to place a specific
+location on a page.
+
+---
+
 ## Crawl control
 
 These do not change what you say about a page. They reduce the number of low-value URLs a

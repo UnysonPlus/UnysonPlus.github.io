@@ -40,7 +40,7 @@ actually carry prose — headings, text blocks, accordions — rather than flatt
 rendered markup. That is why generated descriptions on builder pages read like sentences
 instead of a list of button labels.
 
-You can switch this off under **Settings → General → Auto-generate descriptions**, though a
+You can switch this off under **Unyson+ → SEO → General → Auto-generate descriptions**, though a
 page with no description at all is rarely what you want.
 
 :::note
@@ -76,6 +76,8 @@ than eight.
 ---
 
 ## Settings
+
+Six tabs under **Unyson+ → SEO**.
 
 ### General
 
@@ -283,7 +285,7 @@ and it is the one that gets believed.
 
 ### Site identity
 
-Under **Settings → Structured data**, say whether the site represents **an organisation** or
+Under **Unyson+ → SEO → Structured data**, say whether the site represents **an organisation** or
 **a person** — a freelancer, author or consultant. The whole graph is built around whichever
 you choose.
 

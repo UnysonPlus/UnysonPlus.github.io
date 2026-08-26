@@ -287,6 +287,12 @@ const config = {
           },
           {
             type: 'docSidebar',
+            sidebarId: 'extensionsSidebar',
+            position: 'left',
+            label: 'Extensions',
+          },
+          {
+            type: 'docSidebar',
             sidebarId: 'animationEngineSidebar',
             docsPluginId: 'animationEngine',
             position: 'left',

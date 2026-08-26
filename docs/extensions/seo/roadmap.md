@@ -126,6 +126,49 @@ by author.
 
 ---
 
+## More sitemaps
+
+The general sitemap ships today, images included. These are the specialised ones.
+
+### Video sitemap <span className="badge badge--secondary">Exploring</span>
+
+A separate sitemap listing video content with its title, description, thumbnail and duration,
+which is what search engines read to show a video thumbnail next to a result.
+
+The builder helps here in the same way it helps with descriptions: video elements are found
+by walking the builder tree, so the title and thumbnail are already known rather than being
+scraped out of an embed's markup.
+
+### News sitemap <span className="badge badge--secondary">Exploring</span>
+
+Google News accepts a sitemap of articles published in the last 48 hours. Genuinely useful if
+you are an approved publisher and worth nothing at all if you are not, so it belongs behind a
+switch rather than on by default.
+
+### HTML sitemap <span className="badge badge--secondary">Exploring</span>
+
+A human-readable page listing your content, for visitors rather than crawlers. Small and
+easy, and the one people actually ask for.
+
+---
+
+## Images
+
+### Global alt and title text <span className="badge badge--secondary">Exploring</span>
+
+Set what image `alt` and `title` attributes should contain site-wide, written with the same
+[template tags](./template-tags.md) as everything else — the attachment title, its caption,
+the post it appears in — so images uploaded with no alt text are still described rather than
+silent.
+
+Worth stating the limit honestly: generated alt text is a fallback, not a substitute for
+writing it. `alt` exists so that someone using a screen reader knows what the image shows,
+and a filled-in template is better than an empty attribute while being worse than a sentence
+someone wrote. Anything built here should make the hand-written case easy, not merely fill
+the gap.
+
+---
+
 ## Redirects
 
 ### Automatic redirects when a slug changes <span className="badge badge--warning">Coming soon</span>
@@ -246,6 +289,63 @@ or SEOPress, so moving does not mean retyping.
 
 ---
 
+## Tools
+
+### robots.txt editor <span className="badge badge--warning">Coming soon</span>
+
+WordPress generates `robots.txt` dynamically — there is no file on the server to edit — and
+the extension already appends your sitemap to it. What is missing is a way to add your own
+rules without writing a filter.
+
+The useful shape is a small table of *user agent → directive → value* rather than a raw text
+box, because the common mistakes here are syntax errors, and a preview of the finished file
+underneath so you can see what crawlers will actually receive.
+
+Two things worth having built in, since almost everyone wants them and almost nobody writes
+them correctly by hand:
+
+- **Blocking AI crawlers** — GPTBot, CCBot, Google-Extended and the rest, individually or all
+  at once. Whether to block them is a genuine editorial decision and not one this extension
+  should make for you, but making it a checkbox rather than a research project is fair.
+- **Blocking internal search URLs** — `/?s=` produces an unlimited number of thin, duplicate
+  pages, and it is one of the few crawl-budget problems that is both common and trivially
+  fixed.
+
+:::note
+`robots.txt` controls **crawling**, not indexing. A URL blocked there can still appear in
+results if something links to it — and because the page was never crawled, its `noindex` was
+never seen. To keep a page out of the index, use the noindex switch and leave it crawlable.
+:::
+
+### Import and export settings <span className="badge badge--secondary">Exploring</span>
+
+Export your SEO configuration to a file and import it into another site. The obvious use is
+an agency running the same setup across many sites; the less obvious one is having a copy
+before you change something.
+
+This pairs with **importing from other plugins** under *Editing at scale* above — same
+machinery, different source.
+
+### Reset settings <span className="badge badge--secondary">Exploring</span>
+
+Restore defaults, per settings group rather than all at once, for when a site has been
+configured into a corner.
+
+### SEO alerts <span className="badge badge--secondary">Exploring</span>
+
+A small set of checks that catch the failures nobody notices until traffic drops — the
+homepage left on noindex after a launch, a `robots.txt` returning an error, a sitemap that
+has stopped generating.
+
+These are worth doing precisely because they are dull. Every one of them is a site-wide
+outage of your search presence caused by a single switch, and the gap between it happening
+and somebody noticing is usually measured in weeks.
+
+Notification by email; anything more elaborate can wait until the checks themselves have
+proved reliable.
+
+---
+
 ## Search Console
 
 Everything in this section is **your own data from Google Search Console**, shown inside
@@ -350,3 +450,5 @@ deliberate omissions rather than gaps.
 | **Usage tracking** | The extension does not report anything about your site to us. |
 | **Competitor site analysis** | Crawling somebody else's site to score it needs a hosted crawler, which means an account, a subscription and your data leaving your server. Everything here is built to work with no account and no network connection, and that is worth more than the feature. |
 | **A single site score** | A number out of 100 is satisfying and not actionable. The site audit above lists the actual problems instead. |
+| **A system status screen** | WordPress ships **Tools → Site Health**, which already reports the server, PHP, database and plugin state. A second copy of it inside an SEO screen is duplication, not a feature. |
+| **A code snippet library** | Copy-paste PHP snippets to change plugin behaviour are a symptom: they exist because the setting they emulate is missing. Where a snippet is genuinely wanted often enough to publish, it should be a setting instead. |

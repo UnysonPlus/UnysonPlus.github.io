@@ -205,6 +205,49 @@ or SEOPress, so moving does not mean retyping.
 
 ---
 
+## AI and LLM search
+
+Last in the order deliberately. This is the least settled area in SEO, the conventions are
+changing month to month, and the fundamentals above matter more to a real site than anything
+here.
+
+That said, UnysonPlus is not starting from behind. The theme already publishes an
+[`llms.txt`](https://llmstxt.org) entry point so AI agents get a clean, plain-text map of
+your site, and the capture service already ships an AI companion that uses **your own** API
+key or local CLI rather than a metered credit balance.
+
+### Let an AI assistant work on your SEO (MCP) <span className="badge badge--secondary">Exploring</span>
+
+The most interesting item on this page. Model Context Protocol lets an AI client — Claude
+Desktop, Claude Code, Cursor, VS Code — connect directly to your site and work with its SEO
+data: *find posts missing meta descriptions*, *set titles across a section*, *create a
+redirect*.
+
+WordPress's Abilities API plus an MCP adapter makes this genuinely tractable rather than
+speculative, and it fits how UnysonPlus is already built and used. The honest caveats: it
+requires Application Passwords, it hands an AI client real write access to your content, and
+that trade deserves a deliberate decision rather than a default-on switch.
+
+### AI content suggestions <span className="badge badge--secondary">Exploring</span>
+
+Descriptions, titles, FAQs and key points suggested from the page you are editing, with
+defaults for tone and audience so suggestions sound like your site rather than like
+everyone's. Would use the existing AI companion — your key, your usage, no credits to buy.
+
+### Visibility in AI search <span className="badge badge--secondary">Exploring</span>
+
+Which sites get cited when someone asks an AI assistant a question is becoming a real
+channel, and there is a genuine case for reporting on it.
+
+Worth being clear-eyed about the limits, though. Answers from a language model are not a
+ranking — they vary between runs, between users and between model versions, and asking a
+model which brands rank is asking it to guess. Any report of this kind should be presented as
+a sample of what an assistant said on a given day, not as a position you can track. It also
+means real API calls to third-party providers on every query, so it will only ever work with
+your own key.
+
+---
+
 ## Not planned
 
 Some things are conspicuous by their absence in other SEO plugins' feature lists. These are

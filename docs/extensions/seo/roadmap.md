@@ -32,31 +32,31 @@ They are recorded but not yet emitted: their purpose is the `sameAs` property on
 
 ## Structured data
 
-### Organisation and site identity <span className="badge badge--warning">Coming soon</span>
-
-Editable fields for the `Organization` or `Person` your site represents — name, alternate
-name, logo, contact details, founding date — feeding the `Organization` and `WebSite` nodes
-that let Google show a proper site name and a sitelinks search box.
-
-The theme already emits a basic version of this graph derived from your site identity, with
-nothing to configure. This makes it explicit and editable, and the theme stands down when
-the extension takes over so a page never carries two competing graphs.
-
-### Per-type schema <span className="badge badge--warning">Coming soon</span>
-
-Choose what each content type is: *Article*, *Blog Post*, *News Article*, and so on.
+Site identity and per-type schema **shipped in 2.0.8** — see
+[Structured data](./index.md#structured-data).
 
 ### Author profiles and E-E-A-T <span className="badge badge--secondary">Exploring</span>
 
-Author expertise topics and profile links, expressed as `knowsAbout` and `sameAs` on the
-author's `Person` node — the signals Google's guidelines describe under Experience and
-Expertise.
+Authors already get their own `Person` node with a stable `@id`, so the same writer across
+twenty posts is one entity rather than twenty unrelated names. What is still missing is the
+part authors have to supply: expertise topics and profile links, expressed as `knowsAbout`
+and `sameAs` — the signals Google's guidelines describe under Experience and Expertise.
 
-### Element-level structured data <span className="badge badge--secondary">Exploring</span>
+### FAQ data in the graph <span className="badge badge--secondary">Exploring</span>
 
-Because the page builder tree is available, an FAQ or accordion element could contribute
-`FAQPage` data automatically, without anyone filling in a separate form. This is something
-generic SEO plugins cannot do, since they only ever see the rendered markup.
+The [accordion element](../../shortcodes/interactive-elements/accordion.md) can already emit `FAQPage`
+structured data — switch on its FAQ rich snippet option and the questions and answers are
+published for search engines to show as an expandable result.
+
+What is left is a smaller, tidier problem than it first appears: that block is emitted
+separately from the main graph, so nothing connects the FAQ to the page it is on. Linking
+them means one representation rather than two adjacent ones. Worth doing, and worth doing
+carefully — emitting the questions twice would be worse than the current arrangement.
+
+### Product, event and recipe types <span className="badge badge--secondary">Exploring</span>
+
+The types that produce the richest results, and the ones that need real per-page fields
+rather than a site-wide setting.
 
 ---
 

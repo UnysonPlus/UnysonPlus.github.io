@@ -252,11 +252,14 @@ are content and which are chrome.
 
 ## Editing at scale
 
-### List columns and bulk editing <span className="badge badge--warning">Coming soon</span>
+### List columns and inline editing
 
-Titles, descriptions and indexing status shown as columns in the posts list and editable
-without opening each page. Already possible because SEO values are stored as individual meta
-keys rather than a single blob.
+**Shipped in 2.0.7** — see [Editing from the list](./index.md#editing-from-the-list).
+
+A **site-wide audit** — "which of my 400 pages emit no description at all" — is still open,
+and is listed under [Content tools](#content-tools). It needs something the columns do not:
+an index of resolved values. A description is worked out at render time, so it cannot be
+queried until it has been stored somewhere.
 
 ### Importing from other plugins <span className="badge badge--secondary">Exploring</span>
 

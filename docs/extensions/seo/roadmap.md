@@ -246,6 +246,53 @@ or SEOPress, so moving does not mean retyping.
 
 ---
 
+## Search Console
+
+Everything in this section is **your own data from Google Search Console**, shown inside
+WordPress instead of in another tab.
+
+That is worth distinguishing from the vendor services listed under *Not planned*. Connecting
+Search Console means authorising your own Google account to read your own site's data — no
+subscription, no third-party crawler, and nothing about your site sent anywhere except
+between you and Google. It is the one case where connecting an external account genuinely
+earns its place.
+
+### Search performance <span className="badge badge--secondary">Exploring</span>
+
+Impressions, clicks, click-through rate and average position over time, per page — and more
+usefully, the change in each. Which pages are gaining, which are slipping, and which have
+impressions but no clicks (usually a title and description problem, which is precisely what
+this extension can fix).
+
+### Index coverage <span className="badge badge--secondary">Exploring</span>
+
+The most actionable part, and the one nothing else surfaces: how many of your pages Google
+has actually indexed, and for the rest, *why not* — crawled but not indexed, discovered but
+not crawled, or excluded. Per page it can also show when it was last crawled, whether it was
+seen as mobile or desktop, and which rich results it qualified for.
+
+"Twelve pages have been discovered and never crawled" is a specific problem with specific
+causes. A ranking chart is not.
+
+:::note
+Google's URL Inspection API is rate limited, so per-page index status has to be fetched
+gradually and cached rather than refreshed on demand. Any honest implementation is a
+background job, not a button.
+:::
+
+### Query reporting <span className="badge badge--secondary">Exploring</span>
+
+Which search terms bring people to each page, with impressions, clicks and position history.
+
+One clarification worth making, since competing plugins present this as a *rank tracker*:
+Search Console reports an **average position across everyone who saw the result**, which
+varies by location, device and personalisation. It is a useful trend and it is not your
+ranking. A genuine rank tracker requires scraping search results from many locations, which
+is a paid external service — not something this can honestly provide by reading Search
+Console.
+
+---
+
 ## AI and LLM search
 
 Last in the order deliberately. This is the least settled area in SEO, the conventions are

@@ -87,7 +87,7 @@ const config = {
   },
 
   // Production URL (org GitHub Pages site).
-  url: 'https://unysonplus.github.io',
+  url: 'https://docs.unysonplus.com',
   // Served from the domain root.
   baseUrl: '/',
 

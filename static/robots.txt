@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://unysonplus.github.io/sitemap.xml
+Sitemap: https://docs.unysonplus.com/sitemap.xml

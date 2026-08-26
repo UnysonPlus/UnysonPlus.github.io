@@ -174,11 +174,19 @@ first paragraph, a heading, the URL, the image alt text — along with readabili
 Deliberately unhurried. Scores are trusted by the people reading them, and a check that is
 wrong is worse than a check that is missing.
 
-### AI assistance <span className="badge badge--secondary">Exploring</span>
+### Site-wide audit <span className="badge badge--secondary">Exploring</span>
 
-Suggest a description or a title for the current page. UnysonPlus already ships an AI
-companion with the capture service, so this would use that rather than a metered third-party
-service.
+The same checks, run across every page rather than the one you are editing, listing what is
+wrong and where — pages with no description, a missing or duplicated title, no focus
+keyphrase, a heading structure that skips levels.
+
+The useful output here is **a list of specific, fixable problems per URL**, not a single
+number. A score out of 100 tells you nothing actionable and invites optimising the score
+rather than the site; "these eleven pages have no meta description" is a morning's work with
+a clear finish line.
+
+This only makes sense after the per-page checks above exist — it is the same engine pointed
+at the whole site.
 
 ---
 
@@ -293,3 +301,5 @@ deliberate omissions rather than gaps.
 | **Search engine pinging** | Google retired its sitemap ping endpoint in 2023 and Bing followed. Discovery happens through `robots.txt` and Search Console. IndexNow, above, is the live replacement. |
 | **The `noodp` directive** | It instructed engines not to use DMOZ descriptions. DMOZ closed in 2017. |
 | **Usage tracking** | The extension does not report anything about your site to us. |
+| **Competitor site analysis** | Crawling somebody else's site to score it needs a hosted crawler, which means an account, a subscription and your data leaving your server. Everything here is built to work with no account and no network connection, and that is worth more than the feature. |
+| **A single site score** | A number out of 100 is satisfying and not actionable. The site audit above lists the actual problems instead. |

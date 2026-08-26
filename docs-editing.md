@@ -6,7 +6,7 @@ files, kept in sync through git.
 
 | Way | Where | Internet? | Login? | Best for |
 |---|---|---|---|---|
-| **Decap CMS (online)** | `https://unysonplus.github.io/admin/` | yes | GitHub | Editing from anywhere; publishes itself |
+| **Decap CMS (online)** | `https://docs.unysonplus.com/admin/` | yes | GitHub | Editing from anywhere; publishes itself |
 | **Decap CMS (local)** | `http://localhost:3000/admin/` | no | none | Offline editing on this PC |
 | **Obsidian (desktop)** | the `docs/` folder | no | none | Offline writing in a desktop app |
 
@@ -31,7 +31,7 @@ in [`oauth-worker/`](./oauth-worker).
 
 1. **Create a GitHub OAuth App** — GitHub → *Settings → Developer settings → OAuth Apps →
    New OAuth App*:
-   - **Homepage URL:** `https://unysonplus.github.io`
+   - **Homepage URL:** `https://docs.unysonplus.com`
    - **Authorization callback URL:** `https://<your-worker>.workers.dev/callback`
    - Save, then copy the **Client ID** and generate a **Client Secret**.
 2. **Deploy the proxy** (free Cloudflare account):
@@ -48,7 +48,7 @@ in [`oauth-worker/`](./oauth-worker).
    base_url: https://unysonplus-cms-oauth.<you>.workers.dev
    auth_endpoint: /auth
    ```
-4. Commit + push. Visit **https://unysonplus.github.io/admin/**, click *Login with GitHub*,
+4. Commit + push. Visit **https://docs.unysonplus.com/admin/**, click *Login with GitHub*,
    and edit online.
 
 ## 3. Obsidian — offline desktop app

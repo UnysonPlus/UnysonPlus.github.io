@@ -21,22 +21,12 @@ below is a rough intent rather than a queue.
 
 ## Social sharing
 
-### Open Graph and Twitter cards <span className="badge badge--warning">Coming soon</span>
+Open Graph and Twitter cards **shipped in 2.0.6** — see
+[Sharing cards](./index.md#sharing-cards) in the main documentation.
 
-Control how a page looks when it is shared. Title, description and image per page, each
-falling back through the same template chain as everything else, with an image fallback of
-*your choice → featured image → first image in the content → a site-wide default*.
-
-Currently emitted by the UnysonPlus theme from its own calculation. Moving it into the
-extension means share cards follow your templates and per-page overrides instead of being
-derived separately.
-
-### Social profile URLs <span className="badge badge--warning">Coming soon</span>
-
-One place to record the profiles that belong to this site — Facebook, X, Instagram, LinkedIn,
-YouTube, TikTok, Pinterest and the rest. These are not decoration: they feed the `sameAs`
-property that tells search engines which accounts are genuinely yours, so they belong with
-the structured data below rather than in a separate social settings screen.
+Social profile URLs shipped alongside them, under **Settings → Social → Social profiles**.
+They are recorded but not yet emitted: their purpose is the `sameAs` property on your
+`Organization` node, which arrives with the structured data below.
 
 ---
 

@@ -24,6 +24,7 @@ what a project needs.
 | **Portfolio** | A fully-featured portfolio module. → [docs](./portfolio/index.md) |
 | **Sidebars** | Add multiple/dynamic sidebars per page. → [docs](./sidebars/index.md) |
 | **Breadcrumbs** | Drop-in breadcrumb navigation. → [docs](./breadcrumbs/index.md) |
+| **SEO** | Dynamic titles &amp; descriptions, canonical URLs, indexing control and XML sitemaps. → [docs](./seo/index.md) |
 | **Forms** | Drag &amp; drop contact form builder. → [docs](./forms/index.md) |
 | **Mega Menu** | Multi-column dropdown mega menus. → [docs](./megamenu/index.md) |
 | **Builder** | The base builder option type to build custom builders on. → [docs](./builder/index.md) |

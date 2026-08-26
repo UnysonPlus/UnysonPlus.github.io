@@ -6,7 +6,7 @@ sidebar_position: 2
 # Template tags
 
 Template tags are written `%%tag%%` and can be used in any title or description field —
-the site-wide templates in **Settings → Titles &amp; Meta**, and a single page's own SEO title
+the site-wide templates in **Unyson+ → SEO → Titles &amp; Meta**, and a single page's own SEO title
 or description.
 
 In the editor they appear as **chips** rather than raw text. Use the buttons above each

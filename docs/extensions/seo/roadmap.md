@@ -261,10 +261,13 @@ and is listed under [Content tools](#content-tools). It needs something the colu
 an index of resolved values. A description is worked out at render time, so it cannot be
 queried until it has been stored somewhere.
 
-### Importing from other plugins <span className="badge badge--secondary">Exploring</span>
+### Importing from other plugins
 
-Bring existing titles, descriptions and settings across from Yoast, All in One SEO, Rank Math
-or SEOPress, so moving does not mean retyping.
+**Shipped in 2.0.10** — see [Importing from another plugin](./index.md#importing-from-another-plugin).
+
+Site-wide settings (title templates per content type, social defaults) are not imported yet;
+only per-page values are. Templates are a handful of fields you set once, and getting them
+wrong site-wide is a bigger blast radius than getting one page wrong.
 
 ---
 

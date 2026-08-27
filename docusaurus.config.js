@@ -8,6 +8,22 @@ import {themes as prismThemes} from 'prism-react-renderer';
 // at build time and exposes them as global data, so the HTML sitemap page at /sitemap
 // auto-populates — new docs/blog pages appear with no manual edits. Titles + real
 // permalinks only, grouped + ordered for a human-readable, Google-crawlable index.
+// StatCounter analytics — injected just before </body> on every page.
+function statcounterPlugin() {
+  return {
+    name: 'statcounter',
+    injectHtmlTags() {
+      return {
+        postBodyTags: [
+          '<script type="text/javascript">var sc_project=13352020; var sc_invisible=1; var sc_security="8d837d06";</script>',
+          {tagName: 'script', attributes: {type: 'text/javascript', src: 'https://www.statcounter.com/counter/counter.js', async: true}},
+          '<noscript><div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/13352020/0/8d837d06/1/" alt="Web Analytics" referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>',
+        ],
+      };
+    },
+  };
+}
+
 function sitemapDataPlugin() {
   // Section id → display label + sort order (unknown instances fall to the end).
   const DOCS_LABELS = {
@@ -169,6 +185,7 @@ const config = {
   // Standalone docs instances — each its own section, route base, and sidebar,
   // separate from the Manual (the docsSidebar). All surfaced in the navbar.
   plugins: [
+    statcounterPlugin,
     sitemapDataPlugin,
     [
       '@docusaurus/plugin-client-redirects',

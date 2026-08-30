@@ -1,0 +1,12 @@
+{
+  "label": "Elements",
+  "position": 11,
+  "collapsible": true,
+  "collapsed": false,
+  "link": {
+    "type": "generated-index",
+    "title": "Animation Engine — Elements",
+    "slug": "/elements",
+    "description": "Media Elements you add from the builder palette — interactive visuals like Interactive Reveal, Image Sequence, Model Viewer, 3D Gallery, SVG Draw and WebGL Object."
+  }
+}

@@ -145,6 +145,37 @@ Each menu item that uses the **Item Image** thumbnail also has an **Image Alt Te
 empty for a purely decorative image (the link text already conveys the destination); fill it in when
 the image carries information a screen-reader user needs.
 
+## Content columns
+
+A column can hold more than sub-menu links. Set **Settings → Column Content** on a column (add it
+with no child menu items) to one of:
+
+- **Image** — an image, optionally linked.
+- **Rich content** — HTML + shortcodes.
+- **Call to action** — an eyebrow, heading, text, an optional image, and a button (external links open
+  in a new tab). Renders as `.mega-menu-content--cta` with `.mm-cta-eyebrow` / `.mm-cta-heading` /
+  `.mm-cta-text` / `.mm-cta-img` / `.mm-cta-btn`.
+- **Recent posts (dynamic)** — a live list of the most recent entries of any public post type, with a
+  count, an order (newest / title / random / menu order) and an optional thumbnail. Renders as
+  `.mega-menu-content--posts` → `ul.mm-posts > li.mm-post`.
+- **Widget area** — output a registered sidebar.
+- **Raw HTML** — output exactly as entered (trusted markup only).
+
+All content-column wrappers share the `.mega-menu-content` base class, so a theme can restyle them via
+its `--mm-*` tokens.
+
+## Per-device visibility
+
+Every item type — a whole mega item, a column, or a single link — has a **Settings → Hide On** control.
+Selecting *Desktop*, *Tablet*, or *Mobile* adds a class to the menu item that the baseline CSS hides at
+the matching screen size:
+
+| Class | Hidden at |
+| --- | --- |
+| `mm-hide-mobile` | `< 768px` |
+| `mm-hide-tablet` | `768 – 991px` |
+| `mm-hide-desktop` | `>= 992px` |
+
 ## Performance — conditional loading
 
 The front-end CSS/JS load **only when a mega menu is actually present on the page**. The extension

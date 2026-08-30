@@ -56,13 +56,21 @@ li.menu-item-has-mega-menu
 All other standard WordPress classes and HTML remains the same.
 :::
 
+It also emits accessibility attributes that link a trigger to its panel (the WAI-ARIA
+disclosure pattern):
+
+- the trigger `<a>` gets `aria-haspopup="true"`, `aria-expanded` (kept in sync as the
+  panel opens and closes), and `aria-controls` pointing at its panel;
+- the panel `<div class="mega-menu">` gets a matching `id="mega-menu-panel-{item-id}"`,
+  `role="region"`, and an `aria-label` derived from the trigger's text.
+
 ## Markup Example
 
 ```html
 <ul>
     <li class="menu-item-has-mega-menu menu-item-has-icon">
-        <a class="fa fa-exclamation" href="#">Mega Menu 1</a>
-        <div class="mega-menu">
+        <a class="fa fa-exclamation" href="#" aria-haspopup="true" aria-expanded="false" aria-controls="mega-menu-panel-42">Mega Menu 1</a>
+        <div id="mega-menu-panel-42" class="mega-menu" role="region" aria-label="Mega Menu 1">
             <ul class="sub-menu mega-menu-row">
                 <li class="mega-menu-col">
                     <a href="#">Just Links</a>
@@ -120,6 +128,70 @@ All other standard WordPress classes and HTML remains the same.
         </ul>
     </li>
 </ul>
+```
+
+## Accessibility
+
+The extension follows the WAI-ARIA **disclosure** pattern for a top-level trigger and its panel:
+
+- The trigger link is given `aria-haspopup="true"`, `aria-expanded` (kept in sync as the panel
+  opens/closes), and `aria-controls` referencing its panel.
+- The panel container is given a matching `id="mega-menu-panel-{item-id}"`, `role="region"`, and an
+  `aria-label` derived from the trigger's text, so screen readers announce what the trigger expands.
+- <kbd>Escape</kbd> closes an open panel and returns focus to its trigger.
+- Motion respects the visitor's `prefers-reduced-motion` setting.
+
+Each menu item that uses the **Item Image** thumbnail also has an **Image Alt Text** field. Leave it
+empty for a purely decorative image (the link text already conveys the destination); fill it in when
+the image carries information a screen-reader user needs.
+
+## Performance — conditional loading
+
+The front-end CSS/JS load **only when a mega menu is actually present on the page**. The extension
+scans the menus assigned to your theme's nav-menu **locations** for an enabled mega item; if none is
+found, the assets are skipped. Menus rendered another way — a raw `wp_nav_menu()` call with an explicit
+`menu` argument, or a nav-menu **widget** — are caught by a late fallback so their assets still load.
+
+Force the behavior with the `fw:ext:megamenu:force-enqueue` filter:
+
+```php
+// Always load the mega-menu assets (e.g. a menu placed in a way the location scan can't see):
+add_filter('fw:ext:megamenu:force-enqueue', '__return_true');
+
+// Never load them:
+add_filter('fw:ext:megamenu:force-enqueue', '__return_false');
+```
+
+## Filters
+
+| Filter | Purpose |
+| --- | --- |
+| `fw:ext:megamenu:force-enqueue` | `true` / `false` to force the front-end assets on or off. Default: auto-detect (see above). |
+| `fw:ext:megamenu:enqueue-frontend-css` | Opt out of the baseline front-end CSS/JS + behavior config. |
+| `fw:ext:megamenu:enqueue-icon-css` | Opt out of the icon-font CSS. |
+| `fw:ext:megamenu:frontend-config` | The behavior config localized to the script — `openOn` (`hover` / `click`), `drawerId`, and `i18n`. |
+| `fw:ext:megamenu:drawer-id` | Element id of the host theme's off-canvas nav drawer. Default `primary-navigation-drawer`. When that element is present the theme owns the mobile submenu behavior and the extension does not add its own toggle. |
+| `fw:ext:megamenu:label:item-options-btn` | Label of the admin **Settings** button. |
+| `fw_ext_mega_menu_container` | The panel container tag + attributes, before it is rendered. |
+
+### Open on hover or click
+
+```php
+add_filter('fw:ext:megamenu:frontend-config', function ($cfg) {
+    $cfg['openOn'] = 'click'; // default: 'hover'
+    return $cfg;
+});
+```
+
+### Point the extension at a custom mobile drawer
+
+If your theme's off-canvas drawer uses a different element id, tell the extension so it doesn't add a
+duplicate mobile toggle:
+
+```php
+add_filter('fw:ext:megamenu:drawer-id', function () {
+    return 'my-theme-mobile-drawer';
+});
 ```
 
 ## Change Item/Icon Markup

@@ -211,7 +211,7 @@ add_filter('fw:ext:megamenu:force-enqueue', '__return_false');
 | `fw:ext:megamenu:force-enqueue` | `true` / `false` to force the front-end assets on or off. Default: auto-detect (see above). |
 | `fw:ext:megamenu:enqueue-frontend-css` | Opt out of the baseline front-end CSS/JS + behavior config. |
 | `fw:ext:megamenu:enqueue-icon-css` | Opt out of the icon-font CSS. |
-| `fw:ext:megamenu:frontend-config` | The behavior config localized to the script — `openOn` (`hover` / `click`), `drawerId`, and `i18n`. |
+| `fw:ext:megamenu:frontend-config` | The behavior config localized to the script — `openOn` (`hover` / `click`), `drawerId`, `hoverIntent` / `openDelay` / `closeDelay`, and `i18n`. |
 | `fw:ext:megamenu:drawer-id` | Element id of the host theme's off-canvas nav drawer. Default `primary-navigation-drawer`. When that element is present the theme owns the mobile submenu behavior and the extension does not add its own toggle. |
 | `fw:ext:megamenu:label:item-options-btn` | Label of the admin **Settings** button. |
 | `fw_ext_mega_menu_container` | The panel container tag + attributes, before it is rendered. |
@@ -221,6 +221,22 @@ add_filter('fw:ext:megamenu:force-enqueue', '__return_false');
 ```php
 add_filter('fw:ext:megamenu:frontend-config', function ($cfg) {
     $cfg['openOn'] = 'click'; // default: 'hover'
+    return $cfg;
+});
+```
+
+### Hover intent
+
+In hover mode the panel opens only after a brief, deliberate hover and stays open through a short exit
+grace — so a quick pass across the menu bar doesn't flash panels open, and briefly leaving the panel
+doesn't snap it shut. It's **on by default**; tune or disable it:
+
+```php
+add_filter('fw:ext:megamenu:frontend-config', function ($cfg) {
+    $cfg['hoverIntent'] = false; // restore instant-hover open
+    // or tune the timing (ms):
+    // $cfg['openDelay']  = 100;
+    // $cfg['closeDelay'] = 250;
     return $cfg;
 });
 ```

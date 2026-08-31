@@ -1,0 +1,93 @@
+---
+sidebar_position: 2
+title: Roadmap
+description: What is built, what is in progress, and what is planned for POS Sync — verified automatically against the extension source tree.
+---
+
+import Roadmap, {RoadmapSummary} from '@site/src/components/Roadmap';
+import data from '@site/src/data/pos-roadmap.json';
+
+# Roadmap
+
+Seven milestones, built in order. Each one is useful on its own — the ledger is testable before any
+POS exists, the webhook API is usable before any vendor driver ships, and the Virtual Terminal
+makes the whole thing demonstrable without hardware.
+
+<RoadmapSummary data={data} />
+
+<Roadmap data={data} />
+
+## How this page stays current
+
+This page is not hand-maintained, because hand-maintained roadmaps drift from reality within a
+month. Status is **derived from the extension source tree**.
+
+`src/data/pos-roadmap.json` holds the milestones and, for each task, a `detect` block naming the
+files and code symbols that constitute "done":
+
+```json
+{
+  "id": "m3-hmac",
+  "title": "HMAC-SHA256 signing + replay window",
+  "detail": "Every request carries `X-UPOS-Signature` …",
+  "detect": { "files": ["includes/rest/class-fw-pos-signature.php"] }
+}
+```
+
+A `detect` block may name `files` (paths relative to the extension root) or `symbols`
+(a regex that must be found inside a given file — useful when a task adds a method to a file that
+already exists):
+
+```json
+"detect": {
+  "symbols": [
+    { "file": "includes/class-fw-pos-queue.php", "pattern": "occurred_at|order_by_timestamp" }
+  ]
+}
+```
+
+`scripts/gen-pos-roadmap.mjs` scans the real extension and rewrites each task's status:
+
+| Result | Status |
+| --- | --- |
+| Every file and symbol found | **Done** |
+| Some found, some missing | **In progress** |
+| None found | **Planned** |
+
+Run it after any work on the extension:
+
+```bash
+npm run roadmap:pos            # scan and rewrite the JSON
+npm run roadmap:pos -- --dry   # report only, write nothing
+npm run roadmap:pos -- --check # exit 1 if stale — for CI or a pre-push hook
+```
+
+It finds the extension automatically, trying `POS_EXT_DIR`, then the plugin working copy at
+`unysonplus/framework/extensions/pos-sync`, then the
+[push clone](https://github.com/UnysonPlus/Unysonplus-POS-Sync-Extension). Point it somewhere
+else with:
+
+```bash
+POS_EXT_DIR=/path/to/pos-sync npm run roadmap:pos
+```
+
+:::tip Why detection rather than a checkbox
+A checkbox records an intention; a file on disk records a fact. Writing the `detect` block *before*
+the code also forces the file layout to be decided up front — so the roadmap doubles as the
+implementation's structural contract. When a task genuinely has no file footprint (research, a
+docs pass), set `"pin": true` on it and the script leaves its status alone.
+:::
+
+## Not on the roadmap
+
+Worth stating explicitly, so nobody waits for them:
+
+- **Card payment processing.** POS Sync records what a till already sold. It never touches payment
+  capture — that stays with the POS.
+- **A WordPress-based till UI.** Running the register itself is a different product with hardware,
+  offline and PCI concerns of its own.
+- **Accounting integration.** Xero/QuickBooks sync belongs downstream of the ledger, not inside it.
+- **Ecwid as a store driver.** Ecwid is SaaS — its products and inventory live on Ecwid's servers,
+  not in WordPress, and it ships its own POS integrations. Connecting a till straight to Ecwid is
+  the better answer for that merchant; routing through WordPress adds a hop for nothing.
+  ([more](./store-drivers.md#ecwid-and-why-it-is-ranked-last))

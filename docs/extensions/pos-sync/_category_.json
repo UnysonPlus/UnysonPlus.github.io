@@ -1,0 +1,7 @@
+{
+  "label": "POS Sync",
+  "position": 20,
+  "collapsible": true,
+  "collapsed": true,
+  "link": { "type": "doc", "id": "extensions/pos-sync/index" }
+}

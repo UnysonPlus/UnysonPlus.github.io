@@ -197,6 +197,22 @@ $json = wp_json_encode( fw_ext_mega_menu_export_layout( $top_item_id ) );
 $created = fw_ext_mega_menu_import_layout( json_decode( $json, true ), $target_item_id );
 ```
 
+## Block editor / Full Site Editing
+
+For block themes and the Site Editor, the extension registers a **Mega Menu block**. Insert it (search
+"Mega Menu"), pick a menu in the block settings, and it renders that menu **through the mega walker** —
+so the block gets the full mega behaviour, the ARIA markup, and its CSS/JS automatically (loaded on
+demand). Use it to place a mega menu in a block-based header template, a page, or any block area — not
+only the classic theme header.
+
+The extension also keeps the classic **Appearance → Menus** screen reachable in block themes (where
+WordPress would otherwise hide it), since that's where mega menus are configured.
+
+:::note
+A block placed outside the site header uses the extension's baseline `--mm-*` styling; theme polish
+that's scoped to the header (e.g. `#masthead …`) naturally doesn't apply there.
+:::
+
 ## Performance — conditional loading
 
 The front-end CSS/JS load **only when a mega menu is actually present on the page**. The extension

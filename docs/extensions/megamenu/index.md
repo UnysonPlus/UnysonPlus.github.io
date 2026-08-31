@@ -157,9 +157,20 @@ with no child menu items) to one of:
   `.mm-cta-text` / `.mm-cta-img` / `.mm-cta-btn`.
 - **Recent posts (dynamic)** — a live list of the most recent entries of any public post type, with a
   count, an order (newest / title / random / menu order) and an optional thumbnail. Renders as
-  `.mega-menu-content--posts` → `ul.mm-posts > li.mm-post`.
+  `.mega-menu-content--posts` → `ul.mm-posts > li.mm-post`. (Set the post type to *Products* for a
+  live WooCommerce product list.)
+- **WooCommerce cart** — the WooCommerce mini-cart. Renders nothing when WooCommerce is inactive.
+  Wrapper `.mega-menu-content--woocart`.
 - **Widget area** — output a registered sidebar.
 - **Raw HTML** — output exactly as entered (trusted markup only).
+
+## Tabbed panels
+
+Set **Settings → Panel Layout = Tabs** on a mega item to turn its columns into tabs: each column's
+**title becomes the tab label** and its content becomes the tab panel (one shown at a time, switched on
+hover / focus / click). The panel gets the `.mega-menu--tabs` class and a `ul.mm-tab-rail` is built from
+the column titles. Tabs are a desktop layout — inside a host theme's mobile drawer the columns stack
+normally.
 
 All content-column wrappers share the `.mega-menu-content` base class, so a theme can restyle them via
 its `--mm-*` tokens.

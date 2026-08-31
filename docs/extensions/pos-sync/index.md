@@ -21,7 +21,7 @@ Nothing has shipped yet. This section is the **design of record**: the architect
 format, and the build order. The **[Roadmap](./roadmap.mdx)** tracks progress and updates itself
 from the extension source — see [How this page stays current](./roadmap.mdx#how-this-page-stays-current).
 
-Source: [`Unysonplus-POS-Sync-Extension`](https://github.com/UnysonPlus/Unysonplus-POS-Sync-Extension)
+Source: [`UnysonPlus-POS-Sync-Extension`](https://github.com/UnysonPlus/UnysonPlus-POS-Sync-Extension)
 :::
 
 ## Why it is its own extension

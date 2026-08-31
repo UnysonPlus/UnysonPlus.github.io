@@ -1,9 +1,9 @@
 {
   "_comment": "SOURCE OF TRUTH for the POS Sync roadmap rendered at /extensions/pos-sync/roadmap. Task `status` is maintained AUTOMATICALLY by `node scripts/gen-pos-roadmap.mjs`, which inspects the real extension source tree and flips a task to `done` when everything in its `detect` block exists. Hand-edit title/detail/detect freely; set `pin: true` on a task whose status the script should leave alone.",
   "extension": "pos-sync",
-  "repo": "https://github.com/UnysonPlus/Unysonplus-POS-Sync-Extension",
+  "repo": "https://github.com/UnysonPlus/UnysonPlus-POS-Sync-Extension",
   "extensionVersion": null,
-  "generatedAt": "2026-08-31T16:23:56.666Z",
+  "generatedAt": "2026-08-31T16:29:12.262Z",
   "detected": false,
   "milestones": [
     {

@@ -26,7 +26,7 @@
  * The extension lives OUTSIDE this repo (both under d:\Web Dev\). Resolution order:
  *   1. env POS_EXT_DIR
  *   2. <repo>/../../unysonplus/framework/extensions/pos-sync   (working copy)
- *   3. <repo>/../Unysonplus-POS-Sync-Extension                 (the push clone)
+ *   3. <repo>/../UnysonPlus-POS-Sync-Extension                 (the push clone)
  *   4. d:/Web Dev/unysonplus/framework/extensions/pos-sync
  *
  * Nothing here fails the build when the extension is missing — before any code exists
@@ -50,7 +50,6 @@ function findExtension() {
   const candidates = [
     process.env.POS_EXT_DIR,
     resolve(REPO, '..', '..', 'unysonplus', 'framework', 'extensions', 'pos-sync'),
-    resolve(REPO, '..', 'Unysonplus-POS-Sync-Extension'),
     resolve(REPO, '..', 'UnysonPlus-POS-Sync-Extension'),
     'd:/Web Dev/unysonplus/framework/extensions/pos-sync',
   ];

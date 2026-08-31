@@ -31,7 +31,7 @@ the role→shortcode map, the navigation and footer‑widget mappers, design‑t
 two kept‑in‑sync implementations, and exactly where AI fits — is documented once, canonically, in the
 AI Dev Kit:
 
-**→ [Conversion Architecture — pipeline & algorithm](https://unysonplus.github.io/ai-dev-kit/conversion-architecture)**
+**→ [Conversion Architecture — pipeline & algorithm](https://docs.unysonplus.com/ai-dev-kit/conversion-architecture)**
 
 That same engine powers both this plugin and the AI Dev Kit's agent‑driven builds, so the deep
 reference lives in one place. This page and the other Site Converter pages

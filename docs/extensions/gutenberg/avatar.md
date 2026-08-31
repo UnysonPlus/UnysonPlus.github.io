@@ -7,7 +7,7 @@ sidebar_position: 38
 
 A user avatar — an uploaded photo, a WordPress user's, initials or an icon — with an optional status dot and label.
 
-The block renders through the [`avatar`](/docs/shortcodes/components/avatar) element — the same PHP that runs in the page builder, so the
+The block renders through the [`avatar`](/shortcodes/components/avatar) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes
@@ -34,7 +34,7 @@ only writes the values you change, so an element styled in the builder keeps eve
 sidebar does not show.
 
 :::note[`mode_settings` is a picker that reveals its own options]
-It is a [`multi-picker`](/docs/options/option-types/multi-picker): choosing an option reveals the
+It is a [`multi-picker`](/options/option-types/multi-picker): choosing an option reveals the
 fields belonging to that choice, and **only the chosen branch is saved**.
 :::
 

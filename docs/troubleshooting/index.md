@@ -30,6 +30,6 @@ specific problem.
 
 - Read the **`AGENTS.md`** nearest the relevant code in the plugin — they're the most detailed,
   continuously-verified references.
-- Check the [Hooks reference](/docs/hooks) for a filter that lets you adjust the behavior you're
+- Check the [Hooks reference](/hooks) for a filter that lets you adjust the behavior you're
   fighting.
 - File an issue on the relevant [GitHub repo](https://github.com/UnysonPlus).

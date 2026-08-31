@@ -7,7 +7,7 @@ sidebar_position: 28
 
 An image with a heading, text and a button — the standard card, and probably the most-placed element in the library.
 
-The block renders through the [`image_box`](/docs/shortcodes/media-elements/image-box) element — the same PHP that runs in the page builder, so the
+The block renders through the [`image_box`](/shortcodes/media-elements/image-box) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes
@@ -48,7 +48,7 @@ only writes the values you change, so an element styled in the builder keeps eve
 sidebar does not show.
 
 :::note[`design_settings` is a picker that reveals its own options]
-It is a [`multi-picker`](/docs/options/option-types/multi-picker): choosing an option reveals the
+It is a [`multi-picker`](/options/option-types/multi-picker): choosing an option reveals the
 fields belonging to that choice, and **only the chosen branch is saved** — switch away and back, and
 the fields you filled in the branch you left are blank.
 :::
@@ -68,7 +68,7 @@ than the page.
 :::
 
 :::note[`image_style` uses the theme's Image Style presets]
-It is an [`image-style-picker`](/docs/options/option-types/image-style-picker), and its swatches
+It is an [`image-style-picker`](/options/option-types/image-style-picker), and its swatches
 really are styled in the block sidebar — the preset CSS is loaded in wp-admin, so the tiles show the
 actual treatment rather than its name.
 :::

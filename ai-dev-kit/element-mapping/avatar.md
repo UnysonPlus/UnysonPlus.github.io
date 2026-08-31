@@ -10,7 +10,7 @@ hide_table_of_contents: true
 
 # Avatar — converter mapping
 
-Source `avatar` → [`avatar`](/docs/shortcodes/components/avatar). This page shows the recognizer rule and **every**
+Source `avatar` → [`avatar`](/shortcodes/components/avatar). This page shows the recognizer rule and **every**
 option on the shortcode, with how the converter fills it — so you can see at a glance which options
 are mapped, which are reproduced via CSS, and which are left for manual editing.
 
@@ -21,7 +21,7 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 | **Priority** | 65 |
 | **Recognizer** | `avatar` |
 | **Matches when** | An overlapping avatar stack — a row of small round profile images with a "+N" counter (a "trusted by" / "join N customers" cluster). |
-| **Becomes** | [`avatar`](/docs/shortcodes/components/avatar) |
+| **Becomes** | [`avatar`](/shortcodes/components/avatar) |
 | **Recognizer block shape** | `{ urls:[…], extra_count }` |
 | **Fallback** | Degrades to `code_block`. |
 

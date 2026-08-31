@@ -59,12 +59,12 @@ Redux, where `repeater` is the deepest nesting available.
 | --- | --- | --- |
 | **What it is** | Site-building framework (options + extensions + page builder + shortcodes + forms + post types) | Options framework |
 | **Config** | PHP arrays in `framework-customizations/` | PHP config array |
-| **Storage** | Per-context: settings, post, term, customizer — see [Storage](/docs/options/storage) | One serialized option array (plus extensions) |
+| **Storage** | Per-context: settings, post, term, customizer — see [Storage](/options/storage) | One serialized option array (plus extensions) |
 | **Meta boxes** | Core | Bundled extension |
 | **Repeatable fields** | Core (`addable-box`, `addable-popup`) | Bundled extension |
-| **Customizer** | Supported — see [Customizer](/docs/options/customizer) | Supported, a long-standing strength |
+| **Customizer** | Supported — see [Customizer](/options/customizer) | Supported, a long-standing strength |
 | **Import / export** | Via the Preset Library and template JSON | Built-in `import_export` field |
-| **Custom field types** | Documented API — see [Create an option type](/docs/options/create-option-type) | Custom field API |
+| **Custom field types** | Documented API — see [Create an option type](/options/create-option-type) | Custom field API |
 | **Cost** | Free, GitHub-hosted | Free — core and all 17 bundled extensions |
 
 ## Where Redux is the better choice
@@ -85,9 +85,9 @@ Redux, where `repeater` is the deepest nesting available.
   hold an entire nested structure.
 - **Design-system tooling.** The preset and style-picker families, palette-bound color pickers,
   `responsive`, and `unit-input` are a category Redux doesn't cover.
-- **It's not just options.** The [extension system](/docs/architecture/extension-system),
-  [page builder](../page-builder/index.md), shortcodes, [Theme Builder](/docs/extensions/theme-builder),
-  and [Dynamic Content](/docs/dynamic-content) are part of the same framework.
+- **It's not just options.** The [extension system](/architecture/extension-system),
+  [page builder](../page-builder/index.md), shortcodes, [Theme Builder](/extensions/theme-builder),
+  and [Dynamic Content](/dynamic-content) are part of the same framework.
 - **Everything is free — but so is Redux.** Redux bundles all 17 extensions free, so cost is *not* a
   differentiator here. It is against ACF, where repeaters, options pages and gallery fields are Pro.
   For reference, the Unyson+ equivalents of those — repeaters, meta boxes, taxonomy options and

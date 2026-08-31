@@ -10,7 +10,7 @@ hide_table_of_contents: true
 
 # Table — converter mapping
 
-Source `table` → [`table`](/docs/shortcodes/content-elements/table). This page shows the recognizer rule and **every**
+Source `table` → [`table`](/shortcodes/content-elements/table). This page shows the recognizer rule and **every**
 option on the shortcode, with how the converter fills it — so you can see at a glance which options
 are mapped, which are reproduced via CSS, and which are left for manual editing.
 
@@ -21,7 +21,7 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 | **Priority** | 20 |
 | **Recognizer** | `table` |
 | **Matches when** | A `<table>` with at least one row and column. |
-| **Becomes** | [`table`](/docs/shortcodes/content-elements/table) |
+| **Becomes** | [`table`](/shortcodes/content-elements/table) |
 | **Recognizer block shape** | `{ rows:[[{ html, header }, …], …] }` |
 | **Fallback** | Degrades to `code_block`. |
 

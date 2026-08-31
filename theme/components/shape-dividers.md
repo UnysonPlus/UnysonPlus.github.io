@@ -16,8 +16,8 @@ its **Color / Height / Flip** are set per Section.
 
 ## How it's coded
 
-An [`addable-box`](/docs/options/option-types/addable-box) (`components-shape-dividers.php`). Each row
-is a **Name** plus an **SVG** (an [`svg-code`](/docs/options/option-types/code-editor) field — paste
+An [`addable-box`](/options/option-types/addable-box) (`components-shape-dividers.php`). Each row
+is a **Name** plus an **SVG** (an [`svg-code`](/options/option-types/code-editor) field — paste
 markup or upload a `.svg`). Follow the shape-divider convention: `viewBox="0 0 1200 120"` with a single
 `<path>`. **Scripts are stripped for safety.** Each collapsed row shows a live preview.
 
@@ -34,4 +34,4 @@ saved divider; picking one reveals its Color / Height / Flip.
 
 ## Related
 
-- [Section shortcode](/docs/shortcodes/layout-elements/section) · [Components overview](./index.md)
+- [Section shortcode](/shortcodes/layout-elements/section) · [Components overview](./index.md)

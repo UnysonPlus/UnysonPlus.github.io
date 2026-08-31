@@ -7,7 +7,7 @@ sidebar_position: 82
 
 A contact form with your own fields, validation and email delivery.
 
-The block renders through the [`contact_form`](/docs/shortcodes/components/contact-form) element — the
+The block renders through the [`contact_form`](/shortcodes/components/contact-form) element — the
 same PHP that runs in the page builder, so the front end is identical either way.
 
 ## What the sidebar exposes
@@ -40,7 +40,7 @@ same PHP that runs in the page builder, so the front end is identical either way
 Anything not listed stays available in the page builder, and **round-trips untouched**.
 
 :::note[Fields are edited here, as a list]
-`form` is a [`form-builder`](/docs/options/option-types/form-builder). Add a field from the dropdown,
+`form` is a [`form-builder`](/options/option-types/form-builder). Add a field from the dropdown,
 expand it to edit its own settings — a text field offers its constraints, a select its choices —
 reorder with the arrows, duplicate or remove.
 

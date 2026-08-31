@@ -7,7 +7,7 @@ sidebar_position: 2
 
 An icon above a heading and text — the standard feature, service and benefit card, and the most-used marketing pattern in the element set.
 
-The block renders through the [`icon_box`](/docs/shortcodes/components/icon-box) element — the same PHP that runs in the page builder, so
+The block renders through the [`icon_box`](/shortcodes/components/icon-box) element — the same PHP that runs in the page builder, so
 the front end is identical either way.
 
 ## What the sidebar exposes
@@ -34,7 +34,7 @@ only writes the values you change, so an element styled in the builder keeps eve
 sidebar does not show.
 
 :::note[The content field edits markup, not rich text]
-`content` is a [`wp-editor`](/docs/options/option-types/wp-editor) option, and in a block sidebar it
+`content` is a [`wp-editor`](/options/option-types/wp-editor) option, and in a block sidebar it
 edits the **HTML directly** rather than showing a WYSIWYG. That is deliberate — the reasoning is on
 that option type's page. Plain text you type is wrapped in paragraphs when saved.
 :::

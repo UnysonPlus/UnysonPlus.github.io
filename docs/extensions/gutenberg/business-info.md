@@ -7,7 +7,7 @@ sidebar_position: 32
 
 Opening hours, address and contact details, with a live open/closed status — for a local business page, a footer or a contact section.
 
-The block renders through the [`business_info`](/docs/shortcodes/components/business-info) element — the same PHP that runs in the page builder, so the
+The block renders through the [`business_info`](/shortcodes/components/business-info) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes
@@ -34,7 +34,7 @@ only writes the values you change, so an element styled in the builder keeps eve
 sidebar does not show.
 
 :::note[`hours` is a repeater]
-It is an [`addable-popup`](/docs/options/option-types/addable-popup): items expand in place in the
+It is an [`addable-popup`](/options/option-types/addable-popup): items expand in place in the
 block sidebar rather than opening a modal, and store exactly the value the page builder stores.
 :::
 

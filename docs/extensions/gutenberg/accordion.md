@@ -7,7 +7,7 @@ sidebar_position: 20
 
 Collapsible panels — an FAQ, a spec sheet, a set of long answers. Core has a Details block; this is the version with icons, numbering, deep links, expand-all and FAQ structured data.
 
-The block renders through the [`accordion`](/docs/shortcodes/interactive-elements/accordion) element — the same PHP that runs in the page builder, so the
+The block renders through the [`accordion`](/shortcodes/interactive-elements/accordion) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes
@@ -48,12 +48,12 @@ only writes the values you change, so an element styled in the builder keeps eve
 sidebar does not show.
 
 :::note[`tabs` is a repeater]
-It is an [`addable-popup`](/docs/options/option-types/addable-popup): items expand in place in the
+It is an [`addable-popup`](/options/option-types/addable-popup): items expand in place in the
 block sidebar rather than opening a modal, and store exactly the value the page builder stores.
 :::
 
 :::note[`numbering` is a picker that reveals its own options]
-It is a [`multi-picker`](/docs/options/option-types/multi-picker): choosing an option reveals the
+It is a [`multi-picker`](/options/option-types/multi-picker): choosing an option reveals the
 fields that belong to that choice, and **only the chosen branch's values are saved**. Switching
 choices and switching back does not preserve what you typed in the branch you left — that is how the
 option type has always behaved, and it is what keeps the saved value small.

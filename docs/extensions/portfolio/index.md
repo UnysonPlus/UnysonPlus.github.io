@@ -7,7 +7,7 @@ The Portfolio extension allows you to create Portfolio section on your site.
 
 ## Configuration
 
-In the [config.php](/docs/extensions/creating-extensions/introduction) file, you can set the portfolio Gallery and Featured Image sizes.
+In the [config.php](/extensions/creating-extensions/introduction) file, you can set the portfolio Gallery and Featured Image sizes.
 
 ```php
 $cfg['image_sizes'] = array(
@@ -119,7 +119,7 @@ $cfg['has-gallery'] = true;
 <iframe src="https://player.vimeo.com/video/115245789?title=0&amp;byline=0&amp;portrait=0" width="100%" height="384" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 <br><br>
 
-Templates are located in the [views/](/docs/extensions/creating-extensions/introduction) directory. Here is the list of templates that you can customize:
+Templates are located in the [views/](/extensions/creating-extensions/introduction) directory. Here is the list of templates that you can customize:
 
 - `single.php` - Portfolio course single post template. By default is used `single.php` from the theme root directory, you can overwrite it by creating `framework-customizations/extensions/portfolio/views/single.php`.
 - `taxonomy.php` - Portfolio category template. By default is used `taxonomy.php` from the theme root directory, you can overwrite it by creating `framework-customizations/extensions/portfolio/views/taxonomy.php`.

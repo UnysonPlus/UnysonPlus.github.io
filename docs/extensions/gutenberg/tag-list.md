@@ -7,7 +7,7 @@ sidebar_position: 10
 
 A row of small tags built from a list of lines — keywords, categories, skills or filters.
 
-The block renders through the [`tag_list`](/docs/shortcodes/content-elements/tag-list) element — the
+The block renders through the [`tag_list`](/shortcodes/content-elements/tag-list) element — the
 same PHP that runs in the page builder, so the front end is identical either way.
 
 ## What the sidebar exposes

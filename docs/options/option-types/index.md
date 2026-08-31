@@ -47,7 +47,7 @@ $heading = fw_get_field( 'heading' );
 
 New option types live in `framework/includes/option-types/`. Each registers a class
 extending `FW_Option_Type`. For a **complete worked example** (the PHP class, the prefixed CSS, and
-the `fw:options:init` JS), see **[Create an option type](/docs/options/create-option-type)**. The
+the `fw:options:init` JS), see **[Create an option type](/options/create-option-type)**. The
 conventions below are the rules that example follows.
 
 ### HTML

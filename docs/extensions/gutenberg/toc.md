@@ -7,7 +7,7 @@ sidebar_position: 54
 
 A contents list built from the page's headings, with scrollspy, sticky positioning and collapsible sections.
 
-The block renders through the [`toc`](/docs/shortcodes/content-elements/toc) element — the same PHP that runs in the page builder, so the
+The block renders through the [`toc`](/shortcodes/content-elements/toc) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes
@@ -56,7 +56,7 @@ normally.
 :::
 
 :::note[`levels` is a checkbox list]
-It is a [`checkboxes`](/docs/options/option-types/checkboxes) option. Collecting `h2` and `h3` is the
+It is a [`checkboxes`](/options/option-types/checkboxes) option. Collecting `h2` and `h3` is the
 usual answer; collecting everything down to `h6` produces a contents list longer than some of the
 sections it indexes.
 :::

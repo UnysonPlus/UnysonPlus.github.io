@@ -217,7 +217,7 @@ Once the basics work, the base class offers more to override:
 - **Server-side validation** — implement `_get_value_error( $option, $input_value )` (return an error
   string or `null`), or hook the `fw_option_value_error` filter, to reject invalid input on save.
 - **Dynamic Content** — add `'dynamic_content' => true` to `_get_defaults()` to give a text-like type
-  the `{{token}}` picker (see [Dynamic Content](/docs/dynamic-content)).
+  the `{{token}}` picker (see [Dynamic Content](/dynamic-content)).
 - **Custom storage** — override `_storage_load()` / `_storage_save()` when the value needs to be
   transformed on its way to/from the database (e.g. resolving an attachment id to a URL).
 

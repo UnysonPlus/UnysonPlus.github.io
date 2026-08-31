@@ -7,7 +7,7 @@ sidebar_position: 16
 
 Tabbed panels, optionally with media beside the text, autoplay and deep links. Core has no tabs block, and the ones bundled with page-builder plugins rarely survive a theme change.
 
-The block renders through the [`tabs`](/docs/shortcodes/interactive-elements/tabs) element — the same PHP that runs in the page builder, so the
+The block renders through the [`tabs`](/shortcodes/interactive-elements/tabs) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes
@@ -40,7 +40,7 @@ only writes the values you change, so an element styled in the builder keeps eve
 sidebar does not show.
 
 :::note[The list is edited in the sidebar, not in a modal]
-`tabs` is an [`addable-popup`](/docs/options/option-types/addable-popup) — a repeater. In the page
+`tabs` is an [`addable-popup`](/options/option-types/addable-popup) — a repeater. In the page
 builder each item opens in a modal; in a block sidebar the items expand **in place**, so the canvas
 preview stays visible while you type.
 

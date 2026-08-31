@@ -94,4 +94,4 @@ would be meaningless.
 
 - [Body Templates](./body-templates.md) — where Dynamic Content elements live
 - [Flexbox](./flexbox.md) — laying the elements out
-- [Dynamic Content (framework)](/docs/dynamic-content) — the `{{token}}` system in full
+- [Dynamic Content (framework)](/dynamic-content) — the `{{token}}` system in full

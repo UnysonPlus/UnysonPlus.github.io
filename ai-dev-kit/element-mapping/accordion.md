@@ -10,7 +10,7 @@ hide_table_of_contents: true
 
 # Accordion — converter mapping
 
-Source `accordion` → [`accordion`](/docs/shortcodes/interactive-elements/accordion). This page shows the recognizer rule and **every**
+Source `accordion` → [`accordion`](/shortcodes/interactive-elements/accordion). This page shows the recognizer rule and **every**
 option on the shortcode, with how the converter fills it — so you can see at a glance which options
 are mapped, which are reproduced via CSS, and which are left for manual editing.
 
@@ -21,7 +21,7 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 | **Priority** | 25 |
 | **Recognizer** | `accordion` |
 | **Matches when** | A toggle / disclosure group — a set of clickable headers each revealing a panel of content (an FAQ, a details list). |
-| **Becomes** | [`accordion`](/docs/shortcodes/interactive-elements/accordion) |
+| **Becomes** | [`accordion`](/shortcodes/interactive-elements/accordion) |
 | **Recognizer block shape** | `{ items:[{ title, content }] }` |
 | **Fallback** | Degrades to `code_block`. |
 

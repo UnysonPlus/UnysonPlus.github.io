@@ -7,7 +7,7 @@ sidebar_position: 12
 
 A notice with an icon, an optional label and a message — inline in the content, pinned as an announcement bar, or floating as a toast. Core has an equivalent only in the sense that a coloured paragraph is an equivalent.
 
-The block renders through the [`notification`](/docs/shortcodes/content-elements/notification) element — the same PHP that runs in the page builder, so the
+The block renders through the [`notification`](/shortcodes/content-elements/notification) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes

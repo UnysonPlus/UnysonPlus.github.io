@@ -7,7 +7,7 @@ sidebar_position: 73
 
 A card with two faces that flips on hover or click — a feature on the front, the detail on the back.
 
-The block renders through the [`flip_box`](/docs/shortcodes/interactive-elements/flip-box) element —
+The block renders through the [`flip_box`](/shortcodes/interactive-elements/flip-box) element —
 the same PHP that runs in the page builder, so the front end is identical either way.
 
 ## What the sidebar exposes
@@ -59,7 +59,7 @@ Both faces are edited in the sidebar regardless of which one the canvas shows.
 :::
 
 :::note[`design_settings` is a popover]
-It is a [`popover`](/docs/options/option-types/popover): its inner options are rendered inline here
+It is a [`popover`](/options/option-types/popover): its inner options are rendered inline here
 rather than in a floating panel, and stored exactly as the page builder stores them.
 :::
 

@@ -10,7 +10,7 @@ hide_table_of_contents: true
 
 # Gallery — converter mapping
 
-Source `gallery` → [`gallery`](/docs/shortcodes/media-elements/gallery). This page shows the recognizer rule and **every**
+Source `gallery` → [`gallery`](/shortcodes/media-elements/gallery). This page shows the recognizer rule and **every**
 option on the shortcode, with how the converter fills it — so you can see at a glance which options
 are mapped, which are reproduced via CSS, and which are left for manual editing.
 
@@ -21,7 +21,7 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 | **Priority** | 64 |
 | **Recognizer** | `gallery` |
 | **Matches when** | An image gallery / grid — three or more images in a repeating grid or collage (fewer than three falls back to code). |
-| **Becomes** | [`gallery`](/docs/shortcodes/media-elements/gallery) |
+| **Becomes** | [`gallery`](/shortcodes/media-elements/gallery) |
 | **Recognizer block shape** | `{ images:[{ url, span }] }` |
 | **Fallback** | Degrades to `code_block` (fewer than 3 images). |
 

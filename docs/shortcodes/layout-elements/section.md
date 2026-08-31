@@ -223,8 +223,8 @@ The **Animations** and **Advanced** tabs are the shared, cross-shortcode control
 
 ## Animations
 
-Standard entrance-animation controls (Effect, Duration, Delay, Offset), shared across all elements — see **[Common controls → Animations](/docs/shortcodes/common-controls#animations)**.
+Standard entrance-animation controls (Effect, Duration, Delay, Offset), shared across all elements — see **[Common controls → Animations](/shortcodes/common-controls#animations)**.
 
 ## Advanced
 
-Shared per-element controls — Custom CSS Class / ID, Custom CSS, responsive visibility, custom attributes, Position / Z-Index, and Margin & Padding. See **[Common controls → Advanced](/docs/shortcodes/common-controls#advanced)**.
+Shared per-element controls — Custom CSS Class / ID, Custom CSS, responsive visibility, custom attributes, Position / Z-Index, and Margin & Padding. See **[Common controls → Advanced](/shortcodes/common-controls#advanced)**.

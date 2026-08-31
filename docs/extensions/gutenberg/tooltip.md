@@ -7,7 +7,7 @@ sidebar_position: 14
 
 Text or an icon that reveals a tooltip on hover, focus or click — for definitions, footnotes and the small print that would otherwise interrupt a sentence.
 
-The block renders through the [`tooltip`](/docs/shortcodes/interactive-elements/tooltip) element — the same PHP that runs in the page builder, so the
+The block renders through the [`tooltip`](/shortcodes/interactive-elements/tooltip) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes

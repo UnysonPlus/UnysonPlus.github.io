@@ -140,7 +140,7 @@ Under the hood each device value becomes a **mobile‑first utility class** (`fl
 `justify-content-md-center`, `sc-cgap-md-3`, `fw-col-lg-6`, …); the few values that can't be a class
 (a Custom width, a per‑device Min height) emit a tiny scoped stylesheet keyed to the flexbox, so
 there's still no custom CSS to write. See **[the `responsive` option
-type](/docs/options/option-types/responsive)** for the full per‑device model, the stored value shape,
+type](/options/option-types/responsive)** for the full per‑device model, the stored value shape,
 and the exact class output.
 
 The layout options are grouped by role: **Container** (Direction, Gap, Justify, Align items, Wrap,

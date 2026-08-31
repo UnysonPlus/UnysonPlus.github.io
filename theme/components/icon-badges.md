@@ -18,7 +18,7 @@ an **Icon Box** (Styling → Icon Badge Preset), with **Default** and **Hover** 
 ## How it's coded
 
 Stored under **`icon_badge_presets`**, an
-[`icon-badge-presets`](/docs/options/option-types/addable-box)-style option
+[`icon-badge-presets`](/options/option-types/addable-box)-style option
 (`components-icon-badges.php`). Each preset carries the tile shape, size, fill, glyph color/size,
 border and shadow, per Default / Hover.
 

@@ -9,7 +9,7 @@ A section heading with an **overline**, **title** and **subtitle** — the stand
 section. More capable than core's Heading block: it is one element that lays out all three parts
 together, with their own sizes, colours and spacing.
 
-The block renders through the [`special_heading`](/docs/shortcodes/content-elements/special-heading)
+The block renders through the [`special_heading`](/shortcodes/content-elements/special-heading)
 element — the same PHP that runs in the page builder, so the front end is identical either way.
 
 ## What the sidebar exposes
@@ -45,7 +45,7 @@ disagrees. The per-part overrides remain in the page builder for layouts that ne
 :::
 
 :::note[The subtitle edits markup, not rich text]
-`subtitle` is a [`wp-editor`](/docs/options/option-types/wp-editor) option, so in a block sidebar it
+`subtitle` is a [`wp-editor`](/options/option-types/wp-editor) option, so in a block sidebar it
 edits **HTML directly** rather than showing a WYSIWYG — the reasoning is on that option type's page.
 Plain text you type is wrapped in paragraphs when saved.
 :::

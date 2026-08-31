@@ -54,6 +54,6 @@ container built in the page builder.
 :::
 
 :::note[`background` is five layers in one option]
-It is a [`background-pro`](/docs/options/option-types/background-pro) value: colour, gradient, image,
+It is a [`background-pro`](/options/option-types/background-pro) value: colour, gradient, image,
 video and overlay, stacked. A layer is on when it has a value — there is no enable switch.
 :::

@@ -33,8 +33,8 @@ Two facts drive everything else:
 In the builder, each item (section / row / column / leaf element) is a Backbone model. Adding,
 sorting and editing happen client-side. Option modals are constructed from the model's **raw saved
 `atts`** — no PHP runs first. This is the source of the editor-load value-shape trap covered in
-[the items-corrector & editor-load gotcha](/docs/page-builder/items-corrector) and the
-[migration pattern](/docs/page-builder/value-shape-migrations).
+[the items-corrector & editor-load gotcha](/page-builder/items-corrector) and the
+[migration pattern](/page-builder/value-shape-migrations).
 
 ### 2. Storage
 
@@ -51,7 +51,7 @@ option's value:
 It's persisted to post meta as `fw:opt:ext:pb:page-builder:json`. The framework's **option-storage**
 layer (`framework/includes/option-storage/`) is the general mechanism here — option types declare a
 storage type and the framework reads/writes the value transparently (post meta, term meta, or
-wp_option). See [The builder JSON tree format](/docs/page-builder/builder-json-format).
+wp_option). See [The builder JSON tree format](/page-builder/builder-json-format).
 
 ### 3. Rendering
 
@@ -67,7 +67,7 @@ json_to_shortcodes(json)
 ```
 
 The full mechanics — the corrector's grid rules, the `fw_inner_*` aliasing, the resilience guard —
-are in [How the Page Builder works](/docs/page-builder/how-it-works).
+are in [How the Page Builder works](/page-builder/how-it-works).
 
 ## Where each layer owns a stage
 
@@ -84,4 +84,4 @@ The same option-storage + option-types machinery powers **Theme Settings** and *
 — they're just different option arrays stored against a wp_option or post, rendered by the backend
 component and read back with helpers like `fw_get_db_settings_option()` / `fw_get_db_post_option()`.
 The page builder is the most elaborate consumer of that machinery, not a separate system. For the
-options layer itself, see [Option types](/docs/options/option-types).
+options layer itself, see [Option types](/options/option-types).

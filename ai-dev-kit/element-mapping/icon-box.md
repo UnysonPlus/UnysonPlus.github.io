@@ -10,7 +10,7 @@ hide_table_of_contents: true
 
 # Icon Box — converter mapping
 
-Source `floating_card` → [`icon_box`](/docs/shortcodes/components/icon-box). This page shows the recognizer rule and **every**
+Source `floating_card` → [`icon_box`](/shortcodes/components/icon-box). This page shows the recognizer rule and **every**
 option on the shortcode, with how the converter fills it — so you can see at a glance which options
 are mapped, which are reproduced via CSS, and which are left for manual editing.
 
@@ -21,7 +21,7 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 | **Priority** | 55 |
 | **Recognizer** | `floating_card` |
 | **Matches when** | A floating badge/card overlaid on a hero image (an icon + title + subtitle chip), or an icon + title + text card. |
-| **Becomes** | [`icon_box`](/docs/shortcodes/components/icon-box) |
+| **Becomes** | [`icon_box`](/shortcodes/components/icon-box) |
 | **Recognizer block shape** | `{ card:{ title, titleTag, text, imgIcon, link }, posCss }` |
 | **Fallback** | Degrades to `code_block`. |
 

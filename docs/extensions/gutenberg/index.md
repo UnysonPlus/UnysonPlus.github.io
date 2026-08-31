@@ -140,7 +140,7 @@ in sync — fix the shortcode and the block is fixed too.
 
 :::note[The inspector is generated, not hand-built]
 A block's sidebar is produced from the same option schema an `options.php` file declares, rendered
-by the [React control layer](/docs/options/option-types/text#in-gutenberg-blocks-the-react-control).
+by the [React control layer](/options/option-types/text#in-gutenberg-blocks-the-react-control).
 Adding a block is therefore mostly a matter of choosing *which* options to expose — not writing a
 settings UI.
 :::

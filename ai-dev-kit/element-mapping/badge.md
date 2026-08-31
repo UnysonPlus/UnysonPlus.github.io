@@ -10,7 +10,7 @@ hide_table_of_contents: true
 
 # Badge — converter mapping
 
-Source `badge` → [`badge`](/docs/shortcodes/content-elements/badge). This page shows the recognizer rule and **every**
+Source `badge` → [`badge`](/shortcodes/content-elements/badge). This page shows the recognizer rule and **every**
 option on the shortcode, with how the converter fills it — so you can see at a glance which options
 are mapped, which are reproduced via CSS, and which are left for manual editing.
 
@@ -21,7 +21,7 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 | **Priority** | 30 |
 | **Recognizer** | `badge` |
 | **Matches when** | A small pill / chip / label — a short rounded element with sub-tag text, a leading/trailing icon, and an optional link (an eyebrow, a status badge, a "what’s new" chip). |
-| **Becomes** | [`badge`](/docs/shortcodes/content-elements/badge) |
+| **Becomes** | [`badge`](/shortcodes/content-elements/badge) |
 | **Recognizer block shape** | `{ t:'badge', tag_text, message, link, icon, align, cs }` |
 | **Fallback** | Degrades to `code_block`. |
 

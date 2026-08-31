@@ -7,7 +7,7 @@ sidebar_position: 18
 
 A vertical timeline of dated entries — company history, a roadmap, a set of milestones.
 
-The block renders through the [`timeline`](/docs/shortcodes/interactive-elements/timeline) element — the same PHP that runs in the page builder, so the
+The block renders through the [`timeline`](/shortcodes/interactive-elements/timeline) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes
@@ -33,7 +33,7 @@ only writes the values you change, so an element styled in the builder keeps eve
 sidebar does not show.
 
 :::note[The list is edited in the sidebar, not in a modal]
-`items` is an [`addable-popup`](/docs/options/option-types/addable-popup) — a repeater. In the page
+`items` is an [`addable-popup`](/options/option-types/addable-popup) — a repeater. In the page
 builder each item opens in a modal; in a block sidebar the items expand **in place**, so the canvas
 preview stays visible while you type.
 

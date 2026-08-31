@@ -7,7 +7,7 @@ sidebar_position: 55
 
 A link button — presets, sizes, shapes, icons and hover effects. Core has a Buttons block; this one uses your theme's button presets, so it matches everything else on the site.
 
-The block renders through the [`button`](/docs/shortcodes/components/button) element — the same PHP that runs in the page builder, so the
+The block renders through the [`button`](/shortcodes/components/button) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes

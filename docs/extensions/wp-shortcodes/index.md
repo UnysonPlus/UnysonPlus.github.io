@@ -10,7 +10,7 @@ editor's toolbar that opens a picker of the available elements and drops the cho
 your content.
 
 It's a focused helper, not a full visual builder: for laying out whole pages, use the
-[Page Builder](/docs/page-builder). Reach for this when you want a single element (a button, a
+[Page Builder](/page-builder). Reach for this when you want a single element (a button, a
 notification, an icon box) inside otherwise-normal post content.
 
 ## Using it
@@ -54,7 +54,7 @@ shortcode is inserted:
 In the **main post editor** everything works out of the box, this is the simplest case. In the other
 two contexts the HTML still renders, but the asset/dynamic-CSS layers may not be enqueued, so an
 element that relies on dynamic per-instance CSS (some styling presets, per-element custom CSS) can
-look unstyled. For those, build the element in the [Page Builder](/docs/page-builder) instead, where
+look unstyled. For those, build the element in the [Page Builder](/page-builder) instead, where
 the full render pipeline runs.
 
 :::note[A focused tool]

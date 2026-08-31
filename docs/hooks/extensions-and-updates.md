@@ -15,7 +15,7 @@ add_filter( 'fw_ext_mngr_github_branch', function ( $branch, $user_repo ) {
 }, 10, 2 );
 ```
 
-For how extensions are discovered, ordered by their requirements, and activated, see [The extension system](/docs/architecture/extension-system).
+For how extensions are discovered, ordered by their requirements, and activated, see [The extension system](/architecture/extension-system).
 
 ### Actions (16)
 

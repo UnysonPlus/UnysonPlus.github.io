@@ -30,22 +30,22 @@ you change them.
 
 While WooCommerce is active, a dedicated **WooCommerce Elements** tab appears in the page builder
 with all of the elements below. See the full reference at
-**[WooCommerce Elements](/docs/shortcodes/woocommerce-elements)**.
+**[WooCommerce Elements](/shortcodes/woocommerce-elements)**.
 
-- **Catalog:** [Products](/docs/shortcodes/woocommerce-elements#products) (grid **or carousel**;
+- **Catalog:** [Products](/shortcodes/woocommerce-elements#products) (grid **or carousel**;
   recent / featured / on-sale / best-selling / top-rated / by category / tag / attribute / specific
-  IDs), [Product Categories](/docs/shortcodes/woocommerce-elements#product-categories),
-  [Single Product](/docs/shortcodes/woocommerce-elements#single-product),
-  [Product Page](/docs/shortcodes/woocommerce-elements#product-page),
-  [Add to Cart Button](/docs/shortcodes/woocommerce-elements#add-to-cart-button).
-- **Cart & pages:** [Cart Icon](/docs/shortcodes/woocommerce-elements#cart-icon),
-  [Mini Cart](/docs/shortcodes/woocommerce-elements#mini-cart),
-  [Account](/docs/shortcodes/woocommerce-elements#account),
-  [Free Shipping Bar](/docs/shortcodes/woocommerce-elements#free-shipping-bar), and the classic
-  [Cart · Checkout · My Account · Order Tracking](/docs/shortcodes/woocommerce-elements#cart--checkout--my-account--order-tracking)
+  IDs), [Product Categories](/shortcodes/woocommerce-elements#product-categories),
+  [Single Product](/shortcodes/woocommerce-elements#single-product),
+  [Product Page](/shortcodes/woocommerce-elements#product-page),
+  [Add to Cart Button](/shortcodes/woocommerce-elements#add-to-cart-button).
+- **Cart & pages:** [Cart Icon](/shortcodes/woocommerce-elements#cart-icon),
+  [Mini Cart](/shortcodes/woocommerce-elements#mini-cart),
+  [Account](/shortcodes/woocommerce-elements#account),
+  [Free Shipping Bar](/shortcodes/woocommerce-elements#free-shipping-bar), and the classic
+  [Cart · Checkout · My Account · Order Tracking](/shortcodes/woocommerce-elements#cart--checkout--my-account--order-tracking)
   page elements.
-- **Utility:** [Product Search](/docs/shortcodes/woocommerce-elements#product-search) and
-  [Product Filters](/docs/shortcodes/woocommerce-elements#product-filters).
+- **Utility:** [Product Search](/shortcodes/woocommerce-elements#product-search) and
+  [Product Filters](/shortcodes/woocommerce-elements#product-filters).
 
 The Products grid also supports **percentage / Featured / New / Out-of-stock badges**, low-stock
 notices, a **Quick View** modal, and **Load More** (AJAX) pagination.

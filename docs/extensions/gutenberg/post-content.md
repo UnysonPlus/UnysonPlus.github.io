@@ -26,7 +26,7 @@ sidebar does not show.
 It renders whatever post it finds itself in, at render time. In the editor that is the post you are
 editing — so the canvas shows *this* post's value, which on a new draft is often empty, correctly.
 
-In a [Theme Builder](/docs/extensions/theme-builder/body-templates) template it stands for every post
+In a [Theme Builder](/extensions/theme-builder/body-templates) template it stands for every post
 the template serves.
 :::
 

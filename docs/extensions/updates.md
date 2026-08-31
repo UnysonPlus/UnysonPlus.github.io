@@ -37,7 +37,7 @@ $checker->getVcsApi()->enableReleaseAssets(); // use a release ZIP when present
 ## Updates are version-driven
 
 An update is offered when the version in the repo is **higher** than the installed one. That's why
-the project's [versioning rules](/docs/architecture/manifests-and-versioning#versioning-rules) matter:
+the project's [versioning rules](/architecture/manifests-and-versioning#versioning-rules) matter:
 every meaningful change bumps a version, and **you never downgrade a version** (it breaks the
 updater's cached state). Bump → push → the update appears.
 
@@ -80,7 +80,7 @@ sample child theme both do this, so a generated child theme inherits a working a
 
 ## See also
 
-- [Manifests & versioning](/docs/architecture/manifests-and-versioning) — the version model the
+- [Manifests & versioning](/architecture/manifests-and-versioning) — the version model the
   updater depends on.
-- [Update / extension-manager hooks](/docs/hooks/extensions-and-updates) — including
+- [Update / extension-manager hooks](/hooks/extensions-and-updates) — including
   `fw_ext_mngr_github_branch` to change the branch a download/update uses.

@@ -9,7 +9,7 @@ A trigger — button, text link, icon or image — that opens content in a modal
 modal block, and the usual substitute is a popup plugin that loads on every page whether or not one
 is used.
 
-The block renders through the [`modal_popup`](/docs/shortcodes/interactive-elements/modal-popup)
+The block renders through the [`modal_popup`](/shortcodes/interactive-elements/modal-popup)
 element — the same PHP that runs in the page builder, so the front end is identical either way.
 
 ## What the sidebar exposes

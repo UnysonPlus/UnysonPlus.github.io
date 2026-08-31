@@ -7,7 +7,7 @@ sidebar_position: 13
 
 A run of text with an animated highlight drawn behind or under it — marker sweep, underline, circle and more. The usual alternative is a background colour on a `<span>`, which is not the same thing at all.
 
-The block renders through the [`highlight_text`](/docs/shortcodes/content-elements/highlight-text) element — the same PHP that runs in the page builder, so the
+The block renders through the [`highlight_text`](/shortcodes/content-elements/highlight-text) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes

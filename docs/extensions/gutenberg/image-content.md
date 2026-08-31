@@ -7,7 +7,7 @@ sidebar_position: 58
 
 An image beside rich text, with a split ratio and full control over how the pair stacks on small screens.
 
-The block renders through the [`image_content`](/docs/shortcodes/media-elements/image-content) element — the same PHP that runs in the page builder, so the
+The block renders through the [`image_content`](/shortcodes/media-elements/image-content) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes

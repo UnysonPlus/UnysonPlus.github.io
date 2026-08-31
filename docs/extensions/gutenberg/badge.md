@@ -8,7 +8,7 @@ sidebar_position: 9
 A small pill of text — a label, announcement or status marker, optionally linked and optionally
 prefixed with a sub-tag ("NEW · We just shipped v2.0").
 
-The block renders through the [`badge`](/docs/shortcodes/content-elements/badge) element — the same
+The block renders through the [`badge`](/shortcodes/content-elements/badge) element — the same
 PHP that runs in the page builder, so the front end is identical either way.
 
 ## What the sidebar exposes

@@ -40,7 +40,7 @@ Anything not listed stays available in the page builder, and **round-trips untou
 
 :::note[It reads the current project]
 Leave `project_id` empty and the element reads whichever project it finds itself in — which is what a
-[Theme Builder](/docs/extensions/theme-builder/body-templates) project template wants. Set it, and the
+[Theme Builder](/extensions/theme-builder/body-templates) project template wants. Set it, and the
 element pins that one project, which is what a landing page wants.
 
 In an ordinary page with neither, there is no project to read, and the block says so rather than

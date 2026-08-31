@@ -69,7 +69,7 @@ function _filter_theme_custom_page_builder_columns($columns) {
 
 ## The Builder
 
-The builder is just an [option type](/docs/options/option-types). But you can't use it right away, because it's too abstract and doesn't have any concrete purpose. You can only extend it and create new builders based on it.
+The builder is just an [option type](/options/option-types). But you can't use it right away, because it's too abstract and doesn't have any concrete purpose. You can only extend it and create new builders based on it.
 
 ### Data Structure
 
@@ -99,7 +99,7 @@ The same data structure is used on the php side, this collection is simply trans
 
 ### Creating a Builder
 
-This tutorial will explain you how to create a simple demo builder for html `<ul>` and `<ol>` lists. First, [create an option type](/docs/options/create-option-type) that extends the builder option type:
+This tutorial will explain you how to create a simple demo builder for html `<ul>` and `<ol>` lists. First, [create an option type](/options/create-option-type) that extends the builder option type:
 
 ```php
 // file: theme/inc/includes/option-types/lists-builder/class-fw-option-type-lists-builder.php

@@ -20,7 +20,7 @@ This extension adds the possibility to create a forms (for e.g. a contact form).
 
 ## Create Form Builder Item Type
 
-First, make sure you understand [how the base builder works](/docs/extensions/builder).
+First, make sure you understand [how the base builder works](/extensions/builder).
 
 The Forms extension have a built-in `form-builder` option type (that can be found in the `framework-customizations/extensions/forms/form-builder/` directory) which is used by the Contact Forms sub-extension. To create an item type for `form-builder` you have to look in its method called `item_type_is_valid()` to see what class you must extend in order to be accepted by the builder.
 
@@ -437,7 +437,7 @@ function _action_theme_fw_ext_forms_include_custom_builder_items() {
 add_action('fw_option_type_form_builder_init', '_action_theme_fw_ext_forms_include_custom_builder_items');
 ```
 
-At this point the item is working only in backend. If you save the form, add it in a page (or post) using [Page Builder](/docs/extensions/shortcodes) and open that page in frontend, you will see the item attributes array.
+At this point the item is working only in backend. If you save the form, add it in a page (or post) using [Page Builder](/extensions/shortcodes) and open that page in frontend, you will see the item attributes array.
 
 To make item working in frontend, follow the instructions below:
 

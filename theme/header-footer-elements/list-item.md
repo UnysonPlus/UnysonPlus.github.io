@@ -18,12 +18,12 @@ Footer.
 | | |
 | --- | --- |
 | **Type key** | `list_item` |
-| **Fields** | `li_text`, `li_icon` ([icon](/docs/options/option-types/icon)), `li_link_type` (`none`/`url`/`email`/`phone`), `li_link`, `li_target` (`_self`/`_blank`) |
+| **Fields** | `li_text`, `li_icon` ([icon](/options/option-types/icon)), `li_link_type` (`none`/`url`/`email`/`phone`), `li_link`, `li_target` (`_self`/`_blank`) |
 | **Rendered by** | `unysonplus_render_list_item_element()` in `inc/includes/header-builder.php` |
 
 ## How it works
 
-The optional icon renders from the full [icon](/docs/options/option-types/icon) value (inline SVG,
+The optional icon renders from the full [icon](/options/option-types/icon) value (inline SVG,
 library glyph, or a Font Awesome class) as `<span class="list-item__icon">`; the text is
 `<span class="list-item__text">`. The **link type** decides the `href`: a `url` may open in a new tab
 (explicit *Open in* = New tab, or an external host) with `rel="noopener noreferrer"`; `email` becomes an
@@ -110,4 +110,4 @@ array(
 
 ## Related
 
-- [`icon` option type](/docs/options/option-types/icon) · [Overview](./index.md)
+- [`icon` option type](/options/option-types/icon) · [Overview](./index.md)

@@ -38,7 +38,7 @@ Let's take a closer look at each directory and file, and understand how it works
 
 - `framework-customizations/theme/` - Contains options, views, helpers, and all bunch of theme stuff, we'll take a closer look at every file below.
 
-- `framework-customizations/theme/manifest.php` - Contains an array with information about theme, accessible through `fw()->theme->manifest->get('key');`. More details about the [theme manifest](/docs/manifest/theme).
+- `framework-customizations/theme/manifest.php` - Contains an array with information about theme, accessible through `fw()->theme->manifest->get('key');`. More details about the [theme manifest](/manifest/theme).
 
 - `framework-customizations/theme/config.php` - Theme configuration array, accessible through `fw()->theme->get_config('key');`. Here are the default values.
 
@@ -51,7 +51,7 @@ Let's take a closer look at each directory and file, and understand how it works
   > );
   > ```
 
-- `framework-customizations/theme/options/` - A directory containing option files: post types, taxonomies, customizer and theme settings page options. The framework will automatically pick them, display in admin pages and save the values in the database. Also you can add custom options files in it, for e.g. `framework-customizations/theme/options/my-options.php` and access them through `fw()->theme->get_options('my-options')`. Use the `fw_get_db_..._option()` [functions](/docs/helpers/php) to get the settings, customizer, posts and taxonomies options values from the database.
+- `framework-customizations/theme/options/` - A directory containing option files: post types, taxonomies, customizer and theme settings page options. The framework will automatically pick them, display in admin pages and save the values in the database. Also you can add custom options files in it, for e.g. `framework-customizations/theme/options/my-options.php` and access them through `fw()->theme->get_options('my-options')`. Use the `fw_get_db_..._option()` [functions](/helpers/php) to get the settings, customizer, posts and taxonomies options values from the database.
 
   > For e.g. you can add options in Customizer in two steps:
   >
@@ -81,11 +81,11 @@ Let's take a closer look at each directory and file, and understand how it works
   >     > $value = fw_get_db_customizer_option('option_1');
   >     > ```
 
-- `framework-customizations/extensions/` - Contains customizations for the framework extensions. You can overwrite options, views and configuration files of the extensions located in the framework or [custom locations](/docs/extensions/creating-extensions/introduction) like other plugins. You can also store there theme extensions and create sub-extensions for extensions located in the framework or custom locations. Extension is identified by its relative path, for e.g. an extension can be located in:
+- `framework-customizations/extensions/` - Contains customizations for the framework extensions. You can overwrite options, views and configuration files of the extensions located in the framework or [custom locations](/extensions/creating-extensions/introduction) like other plugins. You can also store there theme extensions and create sub-extensions for extensions located in the framework or custom locations. Extension is identified by its relative path, for e.g. an extension can be located in:
 
   > - Framework `wp-content/plugins/unyson/framework/extensions/{extension-name}`
   > - Plugin `wp-content/plugins/whaterever-plugin/custom-dir/extensions/{extension-name}`
   >
-  > that extension can be customized in `{theme}/framework-customizations/extensions/{extension-name}`. Also you can [create a sub-extension](/docs/extensions/creating-extensions/create-extension) in `{theme}/framework-customizations/extensions/{extension-name}/extensions/{sub-extension-name}`.
+  > that extension can be customized in `{theme}/framework-customizations/extensions/{extension-name}`. Also you can [create a sub-extension](/extensions/creating-extensions/create-extension) in `{theme}/framework-customizations/extensions/{extension-name}/extensions/{sub-extension-name}`.
 
 You can also create a `framework-customizations/` directory in the child theme. There you can do the same things as in parent theme, and also you can overwrite some files from the parent theme, like options and configuration files. Keep in mind that some files from the child theme are included before the parent theme files (or the other way around, it depends on the case) to give you the ability to customize some parent theme behavior.

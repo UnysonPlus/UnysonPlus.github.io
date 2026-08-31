@@ -23,7 +23,7 @@ Unyson+ plugin
 └── hooks                 actions + filters you extend behavior with      → Hooks reference
 ```
 
-If you haven't yet, read **[Architecture](/docs/architecture)** first: how the framework boots, how
+If you haven't yet, read **[Architecture](/architecture)** first: how the framework boots, how
 extensions are discovered and ordered by their requirements, and the data flow from a builder edit to
 rendered HTML. It's the map everything below hangs on.
 
@@ -32,26 +32,26 @@ rendered HTML. It's the map everything below hangs on.
 | Task | Guide |
 | --- | --- |
 | **Add a page-builder element** (shortcode) | [Add a shortcode](./add-a-shortcode.md) |
-| **Add an option type** | [Create an option type](/docs/options/create-option-type) |
-| **Create an extension** | [Creating extensions](/docs/category/creating-extensions) |
-| **Add dynamic tags** | [Dynamic Content → add a provider](/docs/dynamic-content#add-your-own-tags-acf-pods-a-custom-value) |
-| **Hook into the framework / theme** | [Hooks & Filters](/docs/hooks) (258 hooks, by subsystem) |
+| **Add an option type** | [Create an option type](/options/create-option-type) |
+| **Create an extension** | [Creating extensions](/category/creating-extensions) |
+| **Add dynamic tags** | [Dynamic Content → add a provider](/dynamic-content#add-your-own-tags-acf-pods-a-custom-value) |
+| **Hook into the framework / theme** | [Hooks & Filters](/hooks) (258 hooks, by subsystem) |
 
 ## Work with options & storage
 
 The options framework powers Theme Settings, the Customizer, meta boxes, and every element's panel.
 
-- [Option types](/docs/options/option-types) — the full catalog.
-- [Integrating options](/docs/options/integrate) and [storage](/docs/options/storage) — where values
+- [Option types](/options/option-types) — the full catalog.
+- [Integrating options](/options/integrate) and [storage](/options/storage) — where values
   live and how to read/write them (`fw_get_db_settings_option()`, `fw_get_db_post_option()`, …).
-- [Customizer](/docs/options/customizer) — exposing options in the WordPress Customizer.
+- [Customizer](/options/customizer) — exposing options in the WordPress Customizer.
 
 ## Ship & version your work
 
 Every meaningful change **bumps a version** (the GitHub auto-updater keys off it), and changelog
 entries are reserved for new features. The exact bump/rollover scheme, which file to bump per project,
 and the changelog policy are documented in
-**[Manifests & versioning](/docs/architecture/manifests-and-versioning#versioning-rules)**.
+**[Manifests & versioning](/architecture/manifests-and-versioning#versioning-rules)**.
 
 :::tip[Read the nearest `AGENTS.md`]
 The plugin ships area-specific `AGENTS.md` guides next to the code (the shortcode recipe, the

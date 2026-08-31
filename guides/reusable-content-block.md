@@ -28,9 +28,9 @@ To reuse an entire **Section** or **Column** at the root of a page (not inside a
 snippet's **Template Kind** to **Section** or **Column** and insert it from the Page Builder's
 **Templates** manager.
 
-See [Snippets](/docs/extensions/snippets) and [Global Templates](/docs/extensions/global-templates).
+See [Snippets](/extensions/snippets) and [Global Templates](/extensions/global-templates).
 
 ## See also
 
 - [Build a call-to-action section](./call-to-action-section.md) — a great candidate to make reusable
-- [Theme Builder](/docs/extensions/theme-builder) — for reusable headers, footers, and body templates
+- [Theme Builder](/extensions/theme-builder) — for reusable headers, footers, and body templates

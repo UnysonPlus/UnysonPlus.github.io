@@ -7,7 +7,7 @@ sidebar_position: 31
 
 Progress bars or circular meters — skills, capacity, completion, funding.
 
-The block renders through the [`progress`](/docs/shortcodes/interactive-elements/progress) element — the same PHP that runs in the page builder, so the
+The block renders through the [`progress`](/shortcodes/interactive-elements/progress) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes
@@ -34,12 +34,12 @@ only writes the values you change, so an element styled in the builder keeps eve
 sidebar does not show.
 
 :::note[`bars` is a repeater]
-It is an [`addable-popup`](/docs/options/option-types/addable-popup): items expand in place in the
+It is an [`addable-popup`](/options/option-types/addable-popup): items expand in place in the
 block sidebar rather than opening a modal, and store exactly the value the page builder stores.
 :::
 
 :::note[`layout` is a picker that reveals its own options]
-It is a [`multi-picker`](/docs/options/option-types/multi-picker): choosing an option reveals the
+It is a [`multi-picker`](/options/option-types/multi-picker): choosing an option reveals the
 fields belonging to that choice, and **only the chosen branch is saved** — switch away and back, and
 the fields you filled in the branch you left are blank.
 :::

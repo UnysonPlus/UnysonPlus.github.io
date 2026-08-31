@@ -16,15 +16,15 @@ Your Unyson knowledge transfers directly:
 
 - **The options system.** Options are still PHP arrays with a `type`; the same option types you know
   (`text`, `select`, `switch`, `color-picker`, `typography`, `upload`, …) work the same way. See
-  [Option types](/docs/options/option-types).
+  [Option types](/options/option-types).
 - **`framework-customizations/`.** Theme settings, customizer, post, and taxonomy options still live
   in `framework-customizations/theme/options/*.php`.
 - **The read/write API.** `fw_get_db_settings_option()`, `fw_get_db_post_option()`,
   `fw_get_db_customizer_option()`, and friends are unchanged.
 - **Extensions.** Still a folder with a `manifest.php` extending `FW_Extension`, discovered and
-  activated the same way. See [The extension system](/docs/architecture/extension-system).
+  activated the same way. See [The extension system](/architecture/extension-system).
 - **Hooks.** The `fw_*` actions and filters you used (`fw_init`, `fw_settings_options`,
-  `fw_post_options`, …) are still here. See [Hooks & Filters](/docs/hooks).
+  `fw_post_options`, …) are still here. See [Hooks & Filters](/hooks).
 - **The page builder model.** Section → row → column → element, stored as builder JSON.
 
 ## What's new and improved
@@ -33,13 +33,13 @@ Your Unyson knowledge transfers directly:
   modernized throughout.
 - **GitHub auto-updates.** The plugin, theme, and every extension update **straight from GitHub**
   (the [UnysonPlus org](https://github.com/UnysonPlus)), no marketplace or license server. See
-  [Updates & auto-updates](/docs/extensions/updates).
+  [Updates & auto-updates](/extensions/updates).
 - **A Bootstrap 5 theme** with a clean, flexbox grid and a single generated stylesheet, the front
-  end ships **no inline-style soup**. See [Performance](/docs/performance).
+  end ships **no inline-style soup**. See [Performance](/performance).
 - **Dynamic Content** — Elementor-style `{{token}}` dynamic tags. See
-  [Dynamic Content](/docs/dynamic-content).
+  [Dynamic Content](/dynamic-content).
 - **Theme Builder** — Divi-style global headers, bodies, and footers with conditional assignment.
-  See [Theme Builder](/docs/extensions/theme-builder).
+  See [Theme Builder](/extensions/theme-builder).
 - **Live Page Editor**, **Snippets / Global Templates**, **Asset Optimizer**, **Site Converter**,
   **Custom Fields**, **Post Types**, **Mega Menu**, all bundled or one-click installable.
 - **Modernized option types** — `background-pro`, `spacing` (with per-device overrides),
@@ -52,7 +52,7 @@ Your Unyson knowledge transfers directly:
 The theme and grid moved to **Bootstrap 5** (flexbox). Most content just works, but if a page relied
 on the old Bootstrap-3 column-wrapping behavior, enable **Bootstrap 3 Legacy Mode** in the **Page
 Builder settings**, it restores the legacy auto-split wrapping and loads the legacy grid CSS. See
-[Column widths & the grid](/docs/page-builder/column-widths).
+[Column widths & the grid](/page-builder/column-widths).
 
 ### Updates come from GitHub
 
@@ -65,19 +65,19 @@ the plugin/theme current from the dashboard.
 Some extensions from the original Unyson (Backups, Events, Feedback, Learning, SEO, Sliders, Social,
 Translation) are **not bundled** in Unyson+. Use a dedicated WordPress plugin for those needs
 (e.g. a backup plugin, an SEO plugin). The extensions that *are* included are listed in the
-[Extensions overview](/docs/extensions/overview).
+[Extensions overview](/extensions/overview).
 
 ### Header/footer presets are now the Theme Builder
 
 The old per-page header/footer preset idea is generalized into the
-[Theme Builder](/docs/extensions/theme-builder), build header/footer/body parts and assign them with
+[Theme Builder](/extensions/theme-builder), build header/footer/body parts and assign them with
 conditional rules. Your Theme Settings slot-based header/footer remains the always-present fallback.
 
 ## Getting started
 
 1. Install the **Unyson+ plugin** and the **Unyson+ Theme** (parent) from the
-   [UnysonPlus org on GitHub](https://github.com/UnysonPlus). See [Installation](/docs/installation).
+   [UnysonPlus org on GitHub](https://github.com/UnysonPlus). See [Installation](/installation).
 2. Activate the extensions you need from **Unyson+ → Extensions**.
 3. Ship your work as a [child theme](/theme/child-themes).
 
-New to the terminology Unyson+ uses? The [Concepts & glossary](/docs/concepts) is a quick orientation.
+New to the terminology Unyson+ uses? The [Concepts & glossary](/concepts) is a quick orientation.

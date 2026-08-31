@@ -17,7 +17,7 @@ admin-installed and trusted at the same level as installing a plugin.
 :::note[Design pack vs. full shortcode vs. preset]
 - **Design pack** (this page) — a new *layout* for an **existing** element. A render partial + its
   styles + an icon (+ optional extra options). Shows up in that element's Design picker.
-- **[Full shortcode](/docs/developers/add-a-shortcode)** — a brand-new element. Use that guide when
+- **[Full shortcode](/developers/add-a-shortcode)** — a brand-new element. Use that guide when
   you're adding a new page-builder block, not restyling an existing one.
 - **Preset** — a saved *set of option values* applied to one element instance (content, colors,
   spacing). No code, no new layout. That's a different feature.
@@ -131,7 +131,7 @@ if ( empty( $testimonials ) ) {
 
 :::caution[Escape everything and keep the DOM clean]
 `view.php` is trusted code, but still escape all output (`esc_html`, `esc_attr`, `esc_url`) and emit
-lean, semantic markup — no wrapper-div soup. See the [clean-DOM philosophy](/docs/page-builder/clean-dom).
+lean, semantic markup — no wrapper-div soup. See the [clean-DOM philosophy](/page-builder/clean-dom).
 :::
 
 ## `static/css/styles.css` — scoped styles
@@ -168,7 +168,7 @@ design is active, after the element's base script and after any handles you list
 ## `options.php` — extra design-scoped options (optional)
 
 A design can add its own fields to the element's edit modal. Return an `$options` array of standard
-[option types](/docs/options/option-types); they appear (design-scoped) only when your design is
+[option types](/options/option-types); they appear (design-scoped) only when your design is
 selected, and their saved values live under `design_settings/<design_key>/<field_id>`.
 
 ```php

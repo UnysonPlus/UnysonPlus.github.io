@@ -7,7 +7,7 @@ sidebar_position: 39
 
 A single image with an explicit size, an optional link and a style treatment.
 
-The block renders through the [`media_image`](/docs/shortcodes/media-elements/media-image) element — the same PHP that runs in the page builder, so the
+The block renders through the [`media_image`](/shortcodes/media-elements/media-image) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes
@@ -29,7 +29,7 @@ sidebar does not show.
 
 :::note[Core has an Image block, and for a plain image it is the better choice]
 This one exists for two things core does not offer: `image_style`, the theme's
-[Image Style presets](/docs/options/option-types/image-style-picker), and `fetchpriority`.
+[Image Style presets](/options/option-types/image-style-picker), and `fetchpriority`.
 
 If you need neither, use core's Image block — it has better media-library integration and inline
 editing.

@@ -7,7 +7,7 @@ sidebar_position: 43
 
 A Lottie animation — vector motion exported as JSON — with playback triggers and speed control. Small files, sharp at any size.
 
-The block renders through the [`lottie`](/docs/shortcodes/media-elements/lottie) element — the same PHP that runs in the page builder, so the front end is identical either way.
+The block renders through the [`lottie`](/shortcodes/media-elements/lottie) element — the same PHP that runs in the page builder, so the front end is identical either way.
 
 
 ## What the sidebar exposes

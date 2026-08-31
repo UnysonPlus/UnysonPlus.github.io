@@ -7,7 +7,7 @@ sidebar_position: 5
 
 Hooks fired by the **Page Builder** and the generic **builder** option type it extends. These let you alter the builder JSON correction pipeline (how loose items are wrapped into section → row → column), tweak column-width fitting, register custom item types, and hook the editor's enqueue/render points.
 
-Most of these are advanced and fire during the shortcode-conversion / render pass. For the data flow they sit in, see [How the Page Builder works](/docs/page-builder/how-it-works). Example — adjust a column's effective width during correction:
+Most of these are advanced and fire during the shortcode-conversion / render pass. For the data flow they sit in, see [How the Page Builder works](/page-builder/how-it-works). Example — adjust a column's effective width during correction:
 
 ```php
 add_filter( 'fw:ext:page-builder:item-corrector:column-width', function ( $width, $column ) {

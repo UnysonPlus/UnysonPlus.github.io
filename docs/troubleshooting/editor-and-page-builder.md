@@ -32,7 +32,7 @@ legacy value reaching the new renderer throws.
 through a working modal usually clears it. If one element stays stuck, note which one and report it.
 
 **Fix (for developers):** ship a JS-side migrator in the element's `scripts.js` that runs before the
-modal opens. See [Migrating an option's value shape](/docs/page-builder/value-shape-migrations).
+modal opens. See [Migrating an option's value shape](/page-builder/value-shape-migrations).
 
 ## My builder layout doesn't render on the front end
 
@@ -53,13 +53,13 @@ Two things to know:
   wrapping. **Bootstrap 3 Legacy Mode** (Page Builder settings) instead auto-splits columns into
   separate rows once they exceed 12/12.
 
-See [Column widths & the grid](/docs/page-builder/column-widths).
+See [Column widths & the grid](/page-builder/column-widths).
 
 ## A `{{token}}` shows literally on the page
 
 **Symptom:** a dynamic-content tag renders as literal `{{token}}` text.
 
-**Cause:** [Dynamic Content](/docs/dynamic-content) leaves **unknown tags literal** on purpose — it
+**Cause:** [Dynamic Content](/dynamic-content) leaves **unknown tags literal** on purpose — it
 never fatals or blanks the page. A misspelled or missing tag id simply passes through.
 
 **Fix:** check the tag id is spelled correctly and exists in the catalog. Resolution is scoped to the

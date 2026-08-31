@@ -16,7 +16,7 @@ add_action( 'fw_init', function () {
 } );
 ```
 
-The boot order is `fw_before_init` → `fw_extensions_before_init` → `fw_extensions_init` → `fw_init`; see [How the framework boots](/docs/architecture/framework-boot) for the full sequence.
+The boot order is `fw_before_init` → `fw_extensions_before_init` → `fw_extensions_init` → `fw_init`; see [How the framework boots](/architecture/framework-boot) for the full sequence.
 
 ### Actions (21)
 

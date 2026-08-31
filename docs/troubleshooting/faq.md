@@ -20,7 +20,7 @@ the parent theme, and every extension. Download it, use it on as many sites as y
 
 No. Unyson+ is a **framework**, so you can take one piece or the whole thing. Use just the options
 framework for a theme's settings, just custom fields and post types to model content, or just the page
-builder for layout, and leave the rest turned off. The [Extensions](/docs/extensions/overview) screen
+builder for layout, and leave the rest turned off. The [Extensions](/extensions/overview) screen
 is where you turn capabilities on and off.
 
 ## Does it work with any theme?
@@ -49,7 +49,7 @@ you use. See [Editor & Page Builder](./editor-and-page-builder.md).
 Updates come straight from GitHub and are **version-driven**: the plugin, theme, and each extension
 show an update only when the version in the repo is higher than the one installed. Push a new,
 higher-versioned release and your sites pick it up through the normal WordPress Updates screen. See
-[Updates & auto-updates](/docs/extensions/updates) and the
+[Updates & auto-updates](/extensions/updates) and the
 [updates troubleshooting](./updates-and-versions.md).
 
 ## How do I get the other extensions?
@@ -62,7 +62,7 @@ only what a site needs and the base stays small. Downloaded extensions live unde
 ## Is this the same as Unyson? Can I migrate?
 
 Unyson+ builds on the original **Unyson** framework and modernizes it. If you're coming from Unyson,
-see [Migrating from Unyson](/docs/migrating-from-unyson) for what changed and how to move across.
+see [Migrating from Unyson](/migrating-from-unyson) for what changed and how to move across.
 
 ## Where does it store the files it generates?
 

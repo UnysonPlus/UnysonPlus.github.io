@@ -17,7 +17,7 @@ are the Animation Engine's job; this library is CSS + HTML only.)
 
 ## How it's coded
 
-An [`addable-box`](/docs/options/option-types/addable-box) stored under **`background_patterns`**
+An [`addable-box`](/options/option-types/addable-box) stored under **`background_patterns`**
 (`components-patterns.php`). Each preset is `{ id, pattern_name, root_class, html, css }` — the user
 pastes the HTML + CSS. The collapsed row renders a **live, isolated `<iframe srcdoc>` thumbnail** so
 the pattern's CSS can't leak into wp-admin. Defaults come from `unysonplus_default_pattern_presets()`
@@ -35,9 +35,9 @@ pattern CSS rides in the shared cached stylesheet — see the
 
 Via a **popover preview picker** — a `multi-picker` (`popover: true`) whose `image-picker` choices come
 from `unysonplus_pattern_imagepicker_choices()`. The Section/Container store `{ pattern: '<id>' }`. See
-the full recipe in [Preset preview pickers](/docs/options/option-types/popover/preset-preview-pickers).
+the full recipe in [Preset preview pickers](/options/option-types/popover/preset-preview-pickers).
 
 ## Related
 
-- [Preset preview pickers](/docs/options/option-types/popover/preset-preview-pickers) — how the picker is built.
+- [Preset preview pickers](/options/option-types/popover/preset-preview-pickers) — how the picker is built.
 - [Components overview](./index.md) — the shared pipeline.

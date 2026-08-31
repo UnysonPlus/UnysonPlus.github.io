@@ -63,7 +63,7 @@ content, or the page builder for layout, and leave the rest turned off.
 ## Next steps
 
 - [Install Unyson+](./installation.md)
-- [Understand the core concepts](/docs/concepts)
-- [Explore the options framework](/docs/options/introduction)
+- [Understand the core concepts](/concepts)
+- [Explore the options framework](/options/introduction)
 - [Browse the extensions](../extensions/overview.md)
 - [Build your first page](./build-your-first-page.md)

@@ -7,7 +7,7 @@ description: The Unyson+ table option type — a tabular editor storing columns,
 
 # Table
 
-A tabular editor: columns, rows, and a cell per intersection. Used by the [`table`](/docs/shortcodes/content-elements/table) element.
+A tabular editor: columns, rows, and a cell per intersection. Used by the [`table`](/shortcodes/content-elements/table) element.
 
 ## Stored value
 

@@ -7,7 +7,7 @@ sidebar_position: 37
 
 An embedded map with markers — Google Maps or OpenStreetMap, your choice of provider.
 
-The block renders through the [`map`](/docs/shortcodes/media-elements/map) element — the same PHP that runs in the page builder, so the
+The block renders through the [`map`](/shortcodes/media-elements/map) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes
@@ -33,7 +33,7 @@ To see the real map, preview the page.
 :::
 
 :::caution[The API key is shown here, but not editable here]
-`map_engine` is a [`multi-picker`](/docs/options/option-types/multi-picker) that reveals the settings
+`map_engine` is a [`multi-picker`](/options/option-types/multi-picker) that reveals the settings
 its chosen service needs, and the Google key is one of them — but in a block it is **read-only**, and
 deliberately so.
 

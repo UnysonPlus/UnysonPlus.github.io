@@ -8,7 +8,7 @@ sidebar_position: 42
 The current post's featured image, at a chosen size and with an optional style treatment.
 
 The block renders through the `featured_image` element — the same PHP that runs in the page builder
-and in [Theme Builder body templates](/docs/extensions/theme-builder/body-templates), so the front
+and in [Theme Builder body templates](/extensions/theme-builder/body-templates), so the front
 end is identical whichever surface places it.
 
 ## What the sidebar exposes

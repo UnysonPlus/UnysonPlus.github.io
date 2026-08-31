@@ -10,7 +10,7 @@ hide_table_of_contents: true
 
 # Newsletter — converter mapping
 
-Source `newsletter` → [`newsletter`](/docs/shortcodes/interactive-elements/newsletter). This page shows the recognizer rule and **every**
+Source `newsletter` → [`newsletter`](/shortcodes/interactive-elements/newsletter). This page shows the recognizer rule and **every**
 option on the shortcode, with how the converter fills it — so you can see at a glance which options
 are mapped, which are reproduced via CSS, and which are left for manual editing.
 
@@ -21,7 +21,7 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 | **Priority** | 55 |
 | **Recognizer** | `newsletter` |
 | **Matches when** | An email sign-up form — an email field + a subscribe button (often with a name field, on a call-to-action band). |
-| **Becomes** | [`newsletter`](/docs/shortcodes/interactive-elements/newsletter) |
+| **Becomes** | [`newsletter`](/shortcodes/interactive-elements/newsletter) |
 | **Recognizer block shape** | `{ placeholder, button_label, name_placeholder, align, rounded, button_bg }` |
 | **Fallback** | Degrades to `code_block`. |
 

@@ -9,7 +9,7 @@ A heading with static text and a run of words that rotate through a list — typ
 and a dozen more. The usual way to get this in Gutenberg is a plugin that ships its own typing
 library; here it is the element you already have.
 
-The block renders through the [`animated_heading`](/docs/shortcodes/content-elements/animated-heading)
+The block renders through the [`animated_heading`](/shortcodes/content-elements/animated-heading)
 element — the same PHP that runs in the page builder, so the front end is identical either way.
 
 ## What the sidebar exposes

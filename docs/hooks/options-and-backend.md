@@ -22,7 +22,7 @@ add_filter( 'fw_settings_options', function ( $options ) {
 } );
 ```
 
-The same pattern applies to `fw_customizer_options`, `fw_post_options` (passed `$post_type`), and `fw_taxonomy_options` (passed `$taxonomy`). Read saved values back with `fw_get_db_settings_option()` — see [Option types](/docs/options/option-types).
+The same pattern applies to `fw_customizer_options`, `fw_post_options` (passed `$post_type`), and `fw_taxonomy_options` (passed `$taxonomy`). Read saved values back with `fw_get_db_settings_option()` — see [Option types](/options/option-types).
 
 ### Actions (12)
 

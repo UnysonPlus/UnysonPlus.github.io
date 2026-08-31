@@ -5,14 +5,14 @@ title: WooCommerce Elements
 
 # WooCommerce Elements
 
-Shop building blocks added by the **[WooCommerce extension](/docs/extensions/woocommerce)**. They
+Shop building blocks added by the **[WooCommerce extension](/extensions/woocommerce)**. They
 appear in their own **WooCommerce Elements** tab in the page builder and only show when
 WooCommerce is active. Each is a friendly wrapper around WooCommerce's own data/shortcodes, so
 output stays compatible with WooCommerce and any extensions.
 
 > Most elements also expose an **Advanced** tab (visibility, custom class/ID); omitted below for
 > brevity. Catalog grids inherit the shop columns / related counts from
-> [WooCommerce → Settings](/docs/extensions/woocommerce#settings).
+> [WooCommerce → Settings](/extensions/woocommerce#settings).
 
 ## Products
 

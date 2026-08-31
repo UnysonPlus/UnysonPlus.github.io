@@ -9,7 +9,7 @@ description: Step-by-step how-to guides for building WordPress sites with the Un
 
 Practical, step-by-step how-tos for common tasks. Each is self-contained and grounded in real
 features, do it in a few minutes, no code unless noted. New to the builder? Start with
-[Build your first page](/docs/getting-started/build-your-first-page).
+[Build your first page](/getting-started/build-your-first-page).
 
 ## Building pages
 
@@ -36,6 +36,6 @@ features, do it in a few minutes, no code unless noted. New to the builder? Star
 
 ---
 
-Stuck on something? See [Troubleshooting & FAQ](/docs/troubleshooting). Looking for a feature
-reference instead of a task? Browse the [Extensions](/docs/extensions/overview) and
-[Elements](/docs/shortcodes/overview).
+Stuck on something? See [Troubleshooting & FAQ](/troubleshooting). Looking for a feature
+reference instead of a task? Browse the [Extensions](/extensions/overview) and
+[Elements](/shortcodes/overview).

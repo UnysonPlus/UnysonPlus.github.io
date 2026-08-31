@@ -10,7 +10,7 @@ hide_table_of_contents: true
 
 # Feature List — converter mapping
 
-Source `list` → [`feature_list`](/docs/shortcodes/components/feature-list). This page shows the recognizer rule and **every**
+Source `list` → [`feature_list`](/shortcodes/components/feature-list). This page shows the recognizer rule and **every**
 option on the shortcode, with how the converter fills it — so you can see at a glance which options
 are mapped, which are reproduced via CSS, and which are left for manual editing.
 
@@ -21,7 +21,7 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 | **Priority** | 45 |
 | **Recognizer** | `list` |
 | **Matches when** | A `<ul>` or `<ol>` list — bulleted, numbered, or an icon list. |
-| **Becomes** | [`feature_list`](/docs/shortcodes/components/feature-list) |
+| **Becomes** | [`feature_list`](/shortcodes/components/feature-list) |
 | **Recognizer block shape** | `{ ordered, items:[{ text, icon_svg, icon_cls, icon_cs }] }` |
 | **Fallback** | Degrades to `code_block` (an empty list). |
 

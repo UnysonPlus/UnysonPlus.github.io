@@ -10,7 +10,7 @@ hide_table_of_contents: true
 
 # Testimonials — converter mapping
 
-Source `testimonials` → [`testimonials`](/docs/shortcodes/components/testimonials). This page shows the recognizer rule and **every**
+Source `testimonials` → [`testimonials`](/shortcodes/components/testimonials). This page shows the recognizer rule and **every**
 option on the shortcode, with how the converter fills it — so you can see at a glance which options
 are mapped, which are reproduced via CSS, and which are left for manual editing.
 
@@ -21,7 +21,7 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 | **Priority** | 35 |
 | **Recognizer** | `testimonials` |
 | **Matches when** | A review / quote block — a customer quote with a name, role, avatar, and often a star rating; one or several as a set. |
-| **Becomes** | [`testimonials`](/docs/shortcodes/components/testimonials) |
+| **Becomes** | [`testimonials`](/shortcodes/components/testimonials) |
 | **Recognizer block shape** | `{ rows:[{ quote, name, position, image, siteName, siteUrl, rating }] }` |
 | **Fallback** | Degrades to `code_block`. |
 

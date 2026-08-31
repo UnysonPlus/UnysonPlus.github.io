@@ -168,7 +168,7 @@ function FrameworkStory() {
             lead="Theme Settings, page-builder element options, and post meta boxes are all built from the same option types. Define a control panel for color, typography, layout, and chrome as a plain array, and the framework renders, validates, and saves it."
             points={OPTIONS_POINTS}
             linkText="Explore the options framework"
-            linkTo="/docs/options/introduction"
+            linkTo="/options/introduction"
             visual={
               <CodeCard
                 name="theme-settings.php"
@@ -183,7 +183,7 @@ function FrameworkStory() {
             lead="Structure content the way a project needs. Build field groups and register custom post types and taxonomies right in the WordPress admin, then read the values in a template or bind them to a builder element."
             points={FIELD_POINTS}
             linkText="See custom fields and post types"
-            linkTo="/docs/extensions/overview"
+            linkTo="/extensions/overview"
             visual={<FieldPanel />}
           />
         </div>
@@ -232,7 +232,7 @@ function HomepageHeader() {
           </Link>
           <Link
             className={clsx('button button--outline button--lg', styles.ghostButton)}
-            to="/docs/intro">
+            to="/intro">
             Read the Manual
           </Link>
         </div>
@@ -276,7 +276,7 @@ function CleanDomBand() {
               </li>
             ))}
           </ul>
-          <Link className={styles.cleanLink} to="/docs/page-builder/clean-dom">
+          <Link className={styles.cleanLink} to="/page-builder/clean-dom">
             See the clean-DOM philosophy
             <span aria-hidden="true"> →</span>
           </Link>

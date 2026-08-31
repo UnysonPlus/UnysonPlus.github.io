@@ -7,7 +7,7 @@ sidebar_position: 56
 
 Pricing plans side by side, with a monthly / yearly toggle, a featured column and per-plan feature lists.
 
-The block renders through the [`pricing_table`](/docs/shortcodes/components/pricing-table) element — the same PHP that runs in the page builder, so the
+The block renders through the [`pricing_table`](/shortcodes/components/pricing-table) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes
@@ -42,7 +42,7 @@ only writes the values you change, so an element styled in the builder keeps eve
 sidebar does not show.
 
 :::note[`plans` is a repeater]
-It is an [`addable-popup`](/docs/options/option-types/addable-popup): each plan expands in place in
+It is an [`addable-popup`](/options/option-types/addable-popup): each plan expands in place in
 the sidebar, with its own name, prices, feature list and button.
 :::
 

@@ -20,7 +20,7 @@ Special Heading's *Subtitle Text Style*).
 
 ## How it's coded
 
-An [`addable-box`](/docs/options/option-types/addable-box) stored under the (legacy) key
+An [`addable-box`](/options/option-types/addable-box) stored under the (legacy) key
 **`font_sizes`**, defined in `components-typography.php`. Each row:
 
 ```php

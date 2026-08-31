@@ -25,7 +25,7 @@ The framework already has the pieces to avoid that. Every shortcode declares opt
 path. WordPress supports **dynamic blocks**, which render on the server at display time rather than
 serializing markup into post content. And the option schema is data, so it can drive controls in more
 than one renderer — the position already taken in
-[the modernization plan](/docs/architecture/modernization-plan).
+[the modernization plan](/architecture/modernization-plan).
 
 ## Options considered
 

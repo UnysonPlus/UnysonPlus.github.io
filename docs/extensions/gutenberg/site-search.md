@@ -7,7 +7,7 @@ sidebar_position: 49
 
 A site search field. Results are handled by WordPress's own search page.
 
-The block renders through the [`site_search`](/docs/shortcodes/header-footer-elements/site-search) element — the same PHP that runs in the page builder, so the front end is identical either way.
+The block renders through the [`site_search`](/shortcodes/header-footer-elements/site-search) element — the same PHP that runs in the page builder, so the front end is identical either way.
 
 ## What the sidebar exposes
 

@@ -35,7 +35,7 @@ only writes the values you change, so an element styled in the builder keeps eve
 sidebar does not show.
 
 :::note[`frames_source` is a picker]
-It is a [`multi-picker`](/docs/options/option-types/multi-picker): a numbered URL pattern and a
+It is a [`multi-picker`](/options/option-types/multi-picker): a numbered URL pattern and a
 media-library selection need genuinely different fields, and only the chosen branch is saved.
 :::
 

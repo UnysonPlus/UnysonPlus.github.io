@@ -59,7 +59,7 @@ A child can override three different layers, each by mirroring a path:
 
 The last two use the framework's three-location merge (framework → parent → child), so a child
 file supplements or replaces the parent's without editing the parent. See
-[The extension system → three locations](/docs/architecture/extension-system#three-locations).
+[The extension system → three locations](/architecture/extension-system#three-locations).
 
 :::tip[Document only the deltas]
 A child theme does **not** copy the parent's docs/`AGENTS.md`. If it adds or changes settings,
@@ -112,5 +112,5 @@ carry are preserved.
 :::tip[A full "design package" = settings + templates]
 Pair a design settings `.json` with page-builder **section / full / column templates** (exported
 from the builder) and you've captured a complete site design — chrome *and* content — as portable
-files. See [the builder template format](/docs/page-builder/builder-json-format#distributable-template-envelope).
+files. See [the builder template format](/page-builder/builder-json-format#distributable-template-envelope).
 :::

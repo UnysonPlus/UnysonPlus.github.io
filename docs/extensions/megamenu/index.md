@@ -187,7 +187,8 @@ to its **Settings** button:
   columns and items (titles, links, and every mega option).
 - **Import layout** — uploads a previously exported JSON and **re-creates** those columns and items
   beneath the current item, applying all their options. Use it to duplicate a configured panel onto
-  another menu item, or to move a layout between sites.
+  another menu item, or to move a layout between sites. Real **Page / Post / term** links are preserved
+  when the linked object still exists on the target site; otherwise the item falls back to a custom URL.
 
 Programmatic equivalents are available for scripts / migrations:
 

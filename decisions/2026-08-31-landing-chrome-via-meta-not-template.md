@@ -65,10 +65,13 @@ Do **both** meta and hook, and treat the template as optional sugar:
 The wider principle this lands on: a **pure-layout template** — one whose whole body is a
 `unysonplus_set_layout_override(...)` call (`page-full-width.php`, `page-no-header.php`,
 `page-no-footer.php`, `page-boxed-narrow.php`, `page-sidebar-left/right.php`, and `page-landing.php`
-itself) — is redundant with the per-page Page Settings that set the same keys, and is worth retiring
-in favour of them. Retiring the *files* is a separate migration (existing pages that reference a
-template must first have the equivalent meta written, or they'd fall back to default and lose the
-layout), so it's deliberately not bundled into this change.
+itself) — is redundant with the per-page Page Settings that set the same keys. All seven were
+**retired from the theme**, leaving only `page-demo-options.php` (which prints demo options, not a
+layout). Retiring the files needed no migration in practice: a usage scan turned up only landing
+pages (already covered by the forced-override hook) plus one orphaned meta row, so nothing fell back
+to a broken layout. The Template dropdown is now shorter, and "how this page is laid out" lives in one
+place — Page Settings — instead of being split between a template file and the settings that could
+already override it.
 
 ## Why
 

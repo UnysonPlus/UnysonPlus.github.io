@@ -1,6 +1,6 @@
 {
   "name": "unysonplus-site",
-  "version": "0.3.60",
+  "version": "0.3.61",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
@@ -13,7 +13,8 @@
     "cms": "decap-server",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "indexnow": "node scripts/indexnow.mjs"
+    "indexnow": "node scripts/indexnow.mjs",
+    "roadmap:pos": "node scripts/gen-pos-roadmap.mjs"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.1",

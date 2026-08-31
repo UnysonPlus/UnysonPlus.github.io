@@ -1,0 +1,432 @@
+{
+  "_comment": "SOURCE OF TRUTH for the POS Sync roadmap rendered at /extensions/pos-sync/roadmap. Task `status` is maintained AUTOMATICALLY by `node scripts/gen-pos-roadmap.mjs`, which inspects the real extension source tree and flips a task to `done` when everything in its `detect` block exists. Hand-edit title/detail/detect freely; set `pin: true` on a task whose status the script should leave alone.",
+  "extension": "pos-sync",
+  "repo": "https://github.com/UnysonPlus/Unysonplus-POS-Sync-Extension",
+  "extensionVersion": null,
+  "generatedAt": "2026-08-31T16:23:56.666Z",
+  "detected": false,
+  "milestones": [
+    {
+      "id": "m1",
+      "title": "Foundation — the ledger",
+      "goal": "A provider-agnostic core that can record, queue and replay commerce events safely. Nothing here talks to a POS or to a cart; it is the neutral middle that makes the whole system N+M instead of N×M.",
+      "tasks": [
+        {
+          "id": "m1-scaffold",
+          "title": "Extension scaffold",
+          "detail": "`manifest.php`, the extension class, and a Settings screen under Unyson+ → POS Sync. Ships inactive by default, like the Animation Engine.",
+          "detect": {
+            "files": [
+              "manifest.php",
+              "class-fw-extension-pos-sync.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "m1-schema",
+          "title": "Ledger schema + migrations",
+          "detail": "Three custom tables — `pos_items` (canonical item + external ids), `pos_events` (immutable sale / refund / stock-movement log), `pos_map` (external id ↔ local id, per connection). Versioned migrations run on activation and upgrade.",
+          "detect": {
+            "files": [
+              "includes/class-fw-pos-schema.php",
+              "includes/class-fw-pos-ledger.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "m1-idempotency",
+          "title": "Idempotency ledger",
+          "detail": "Every inbound event carries an external transaction id, stored behind a UNIQUE index. A replayed webhook is recorded as a duplicate and dropped — never applied twice. This is the single most important correctness guarantee in the extension.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/class-fw-pos-ledger.php",
+                "pattern": "record_event|is_duplicate"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "m1-queue",
+          "title": "Job queue on Action Scheduler",
+          "detail": "Inbound events are acknowledged fast and applied asynchronously with retry + exponential backoff, so a slow cart write never times out a POS webhook. Uses Action Scheduler when present (every WooCommerce install has it), with a WP-Cron fallback.",
+          "detect": {
+            "files": [
+              "includes/class-fw-pos-queue.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "m1-log",
+          "title": "Audit log + viewer",
+          "detail": "A readable, filterable record of every event: what arrived, what was applied, what was skipped and why. The first thing anyone opens when a stock number looks wrong.",
+          "detect": {
+            "files": [
+              "includes/class-fw-pos-log.php",
+              "views/log.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        }
+      ]
+    },
+    {
+      "id": "m2",
+      "title": "Store driver seam",
+      "goal": "One interface between the ledger and whatever e-commerce plugin is installed — designed against two implementations from day one so it cannot leak WooCommerce assumptions.",
+      "tasks": [
+        {
+          "id": "m2-interface",
+          "title": "`FW_POS_Store` interface",
+          "detail": "The abstract contract: `find_by_sku()`, `set_stock()`, `adjust_stock()`, `create_order()`, `refund_order()`, `get_capabilities()`. Deliberately written while sketching both the Woo and FluentCart implementations.",
+          "detect": {
+            "files": [
+              "includes/stores/class-fw-pos-store.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "m2-woo",
+          "title": "WooCommerce store driver",
+          "detail": "The shipping implementation — stock writes through `wc_update_product_stock()`, order creation with the POS sale recorded as the payment method, refund restocking, variation-aware SKU lookup.",
+          "detect": {
+            "files": [
+              "includes/stores/class-fw-pos-store-woocommerce.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "m2-matcher",
+          "title": "SKU / GTIN matcher + unmatched queue",
+          "detail": "Matching is by **SKU first, GTIN second, never by title**. Items that match nothing land in an *Unmatched* queue for one-click mapping or product creation, instead of silently vanishing.",
+          "detect": {
+            "files": [
+              "includes/class-fw-pos-matcher.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "m2-capabilities",
+          "title": "Capability negotiation",
+          "detail": "Carts differ — not all support partial refunds or per-location stock. Drivers declare what they can do, and the ledger degrades gracefully instead of throwing.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/stores/class-fw-pos-store.php",
+                "pattern": "get_capabilities"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "m3",
+      "title": "Generic webhook API",
+      "goal": "The headline feature. A documented, signed, normalized endpoint any POS — or any middleware, or a shop's own till software — can push to. No vendor SDK, nothing to break when someone else's API changes.",
+      "tasks": [
+        {
+          "id": "m3-rest",
+          "title": "REST namespace `unysonplus-pos/v1`",
+          "detail": "`POST /sale`, `POST /refund`, `POST /inventory`, `GET /ping`. Fast acknowledgement (`202 Accepted`) with the event handed to the queue.",
+          "detect": {
+            "files": [
+              "includes/rest/class-fw-pos-rest-controller.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "m3-hmac",
+          "title": "HMAC-SHA256 signing + replay window",
+          "detail": "Every request carries `X-UPOS-Signature` and `X-UPOS-Timestamp`. Signatures are compared with `hash_equals()`, timestamps outside a ±5-minute window are rejected, and seen nonces are cached for the window length.",
+          "detect": {
+            "files": [
+              "includes/rest/class-fw-pos-signature.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "m3-schema",
+          "title": "Normalized payload schema v1",
+          "detail": "A published, versioned JSON Schema for sale / refund / inventory payloads, validated on ingest so a malformed till can never corrupt the ledger.",
+          "detect": {
+            "files": [
+              "includes/rest/schema/sale.v1.json",
+              "includes/rest/schema/refund.v1.json",
+              "includes/rest/schema/inventory.v1.json"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/3"
+        },
+        {
+          "id": "m3-connections",
+          "title": "Connections: keys, scopes, rotation",
+          "detail": "Each till or integration is a named *connection* with its own key/secret pair, scopes, location mapping and last-seen timestamp. Rotate or revoke one without touching the others.",
+          "detect": {
+            "files": [
+              "includes/class-fw-pos-connections.php",
+              "views/connections.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        }
+      ]
+    },
+    {
+      "id": "m4",
+      "title": "Virtual Terminal",
+      "goal": "The answer to “I don't own a POS machine.” A shipping feature that fires realistic synthetic events at your own endpoint — the development test rig, the customer's pre-launch check, and the demo for these docs, all at once.",
+      "tasks": [
+        {
+          "id": "m4-terminal",
+          "title": "Virtual Terminal screen",
+          "detail": "Pick products, quantities and a location; fire a signed sale, refund or stock adjustment and watch it land in the log and move real stock.",
+          "detect": {
+            "files": [
+              "views/virtual-terminal.php",
+              "includes/class-fw-pos-simulator.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "m4-scenarios",
+          "title": "Adversarial scenario presets",
+          "detail": "One click each for the cases that break naive integrations: **duplicate webhook**, **out-of-order offline batch**, **partial refund**, **unknown SKU**, **stock below zero**, **expired signature**. These double as the automated test suite.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/class-fw-pos-simulator.php",
+                "pattern": "scenario"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "m4-curl",
+          "title": "Signed request / cURL export",
+          "detail": "Copy a correctly-signed example request for any scenario, so an integrator can reproduce it from their own till software or Postman.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "views/virtual-terminal.php",
+                "pattern": "curl"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "m5",
+      "title": "Square driver (first-party)",
+      "goal": "One polished vendor driver, chosen for the best free sandbox and the largest small-retail footprint. Proves the provider seam without committing to five vendor APIs.",
+      "tasks": [
+        {
+          "id": "m5-provider",
+          "title": "`FW_POS_Provider` interface",
+          "detail": "The mirror of the store seam, on the POS side: connect, subscribe, normalize, backfill.",
+          "detect": {
+            "files": [
+              "includes/providers/class-fw-pos-provider.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "m5-oauth",
+          "title": "Square OAuth connect + token refresh",
+          "detail": "Connect a Square account without pasting tokens; refresh before expiry and surface a clear re-connect prompt when a grant is revoked.",
+          "detect": {
+            "files": [
+              "includes/providers/square/class-fw-pos-square-oauth.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "m5-webhooks",
+          "title": "Webhook subscription + signature verification",
+          "detail": "Subscribes to `payment.created`, `order.updated`, `refund.created` and `inventory.count.updated`, verifying Square's own signature before normalizing into the ledger.",
+          "detect": {
+            "files": [
+              "includes/providers/square/class-fw-pos-square-webhooks.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "m5-catalog",
+          "title": "Catalog import + mapping",
+          "detail": "Pull the Square catalog, match to products by SKU, and present the unmatched remainder for mapping or creation.",
+          "detect": {
+            "files": [
+              "includes/providers/square/class-fw-pos-square-catalog.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "m5-locations",
+          "title": "Location → stock source mapping",
+          "detail": "Map each Square location to a stock source, or run in explicit single-store mode. Never left implicit.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/providers/square/class-fw-pos-provider-square.php",
+                "pattern": "location"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "m6",
+      "title": "Reconciliation & operations",
+      "goal": "The difference between a demo and something a shop can open the doors with. Assume events will be missed, and make drift visible and fixable.",
+      "tasks": [
+        {
+          "id": "m6-policy",
+          "title": "Authority policy engine",
+          "detail": "Per-field source of truth — the POS owns **stock**, the store owns **content** (title, description, images, SEO) — with a per-product override. Symmetric two-way sync with no declared authority is exactly what produces drift and oversells.",
+          "detect": {
+            "files": [
+              "includes/class-fw-pos-policy.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "m6-reconciler",
+          "title": "Nightly reconciliation sweep",
+          "detail": "Compares POS counts against store stock, reports every divergence, and offers a one-click resync. Catches whatever the event stream dropped.",
+          "detect": {
+            "files": [
+              "includes/class-fw-pos-reconciler.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "m6-ordering",
+          "title": "Timestamp-ordered application",
+          "detail": "Offline tills dump batches late and out of order. Events are applied by **event timestamp, not arrival order**, so a late batch cannot rewind newer stock.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/class-fw-pos-queue.php",
+                "pattern": "occurred_at|order_by_timestamp"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "m6-health",
+          "title": "Health dashboard + alerts",
+          "detail": "Queue depth, last event per connection, failure rate, and an email when a connection stalls or the queue backs up past a threshold.",
+          "detect": {
+            "files": [
+              "views/health.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "m7",
+      "title": "Expansion (post-1.0)",
+      "goal": "Only once the seams have proven themselves against real installs. Deliberately not launch scope.",
+      "tasks": [
+        {
+          "id": "m7-fluentcart",
+          "title": "FluentCart store driver",
+          "detail": "The genuine second target — WP-native, custom tables, no first-party POS story of its own.",
+          "detect": {
+            "files": [
+              "includes/stores/class-fw-pos-store-fluentcart.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "m7-surecart",
+          "title": "SureCart / EDD drivers",
+          "detail": "Cheap to add once the seam has been proven by a second real implementation.",
+          "detect": {
+            "files": [
+              "includes/stores/class-fw-pos-store-surecart.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "m7-providers",
+          "title": "Clover / Zettle / Lightspeed drivers",
+          "detail": "Added on demonstrated demand, in that order. Each is bespoke and maintenance-heavy — the generic webhook already covers them adequately.",
+          "detect": {
+            "files": [
+              "includes/providers/clover/class-fw-pos-provider-clover.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "m7-batch",
+          "title": "Offline CSV / batch importer",
+          "detail": "For tills with no network integration at all: a scheduled CSV drop reconciled through the same ledger.",
+          "detect": {
+            "files": [
+              "includes/class-fw-pos-batch-importer.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    }
+  ]
+}

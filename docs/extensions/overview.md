@@ -42,6 +42,7 @@ page (where you activate and deactivate it yourself):
 | **Asset Optimizer** | Combine enqueued assets to cut HTTP requests. → [docs](./asset-optimizer.md) | Yes |
 | **Snippets** | Save and embed reusable builder content. → [docs](./snippets.md) | Yes |
 | **WooCommerce** | Storefront elements + theme integration. → [docs](/shortcodes/woocommerce-elements) | Yes |
+| **POS Sync** *(in design)* | Keeps the store in step with sales rung up on a physical till — any POS, any cart. → [docs](./pos-sync/index.md) | Not yet released |
 | **Animation Engine** | WebGL objects, scroll/hover/cursor/text motion and page-transition modules. → [docs](/animation-engine/) | Yes — off by default |
 | **Animated Icons** | Adds an "Animated" tab to the icon picker (Lottie, Rive, animated SVG, GIF/APNG/WebP). | Yes — off by default |
 | **Chat** | A floating multi-channel contact button (WhatsApp, Messenger, Telegram, SMS, Email…). | Yes — off by default |

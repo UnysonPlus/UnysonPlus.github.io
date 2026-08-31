@@ -2,9 +2,9 @@
   "_comment": "SOURCE OF TRUTH for the POS Sync roadmap rendered at /extensions/pos-sync/roadmap. Task `status` is maintained AUTOMATICALLY by `node scripts/gen-pos-roadmap.mjs`, which inspects the real extension source tree and flips a task to `done` when everything in its `detect` block exists. Hand-edit title/detail/detect freely; set `pin: true` on a task whose status the script should leave alone.",
   "extension": "pos-sync",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-POS-Sync-Extension",
-  "extensionVersion": null,
-  "generatedAt": "2026-08-31T16:29:12.262Z",
-  "detected": false,
+  "extensionVersion": "1.0.0",
+  "generatedAt": "2026-08-31T16:54:42.663Z",
+  "detected": true,
   "milestones": [
     {
       "id": "m1",
@@ -21,8 +21,8 @@
               "class-fw-extension-pos-sync.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "m1-schema",
@@ -34,8 +34,8 @@
               "includes/class-fw-pos-ledger.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "m1-idempotency",
@@ -49,8 +49,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "m1-queue",
@@ -61,8 +61,8 @@
               "includes/class-fw-pos-queue.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "m1-log",
@@ -74,8 +74,8 @@
               "views/log.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         }
       ]
     },
@@ -356,8 +356,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "m6-health",

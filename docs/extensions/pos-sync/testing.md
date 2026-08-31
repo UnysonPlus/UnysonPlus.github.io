@@ -12,7 +12,7 @@ You do not need a card terminal to build or verify this. Three layers cover ever
 | --- | --- | --- |
 | **[Virtual Terminal](#the-virtual-terminal)** | Everyday flows, and every adversarial case a sandbox makes awkward | Nothing |
 | **[Vendor sandbox](#vendor-sandboxes)** | Real vendor payloads, real webhook delivery, real OAuth | A free developer account |
-| **[Automated suite](#the-automated-suite)** | Regressions, CI | Recorded fixtures — runs offline |
+| **[Automated suite](#the-automated-suite)** | Regressions, CI | Nothing — the ledger suite runs today |
 
 Between them, the only thing left untested is the physical card reader, which is the POS vendor's
 concern and not something this extension touches.
@@ -133,23 +133,40 @@ with Access in front is the better option if you need one running for days.
 
 ## The automated suite
 
-Network calls in tests make them slow and flaky, so vendor responses are recorded once and replayed
-afterwards.
+### What exists today
+
+Milestone 1's ledger and queue ship with a runnable suite — **36 assertions** across
+idempotency, ordering, staleness, retry policy and the log helpers. It needs no POS and no cart,
+which is precisely why that layer was built first. It installs the tables, exercises them and drops
+them again, so it is safe to re-run and leaves the site as it found it.
+
+```bash
+php wp-cli.phar --path='<a WordPress install>' \
+  eval-file wp-content/plugins/unysonplus/framework/extensions/pos-sync/tests/milestone-1.php
+```
+
+Two of its cases look like the same rule and are not — worth understanding before editing the
+queue:
+
+- **Same batch.** Two stock counts waiting together are applied oldest-first, so the newer value
+  simply lands last. That is the *ordering* rule.
+- **Across batches.** The newer count was already applied when the offline till finally delivers
+  the older one, so ordering cannot help and the older count must be refused on its own merits.
+  That is the *staleness* rule.
+
+Both are needed, and a suite that only covers the first appears to prove the second. Ours did,
+briefly.
+
+### What comes with the later milestones
+
+Network calls make tests slow and flaky, so vendor responses get recorded once and replayed after:
 
 - **Fixtures.** Every sandbox interaction is captured to `tests/fixtures/<vendor>/*.json` on first
-  run and replayed thereafter. `POS_RECORD=1` re-records when a vendor changes their payloads.
-- **Ledger tests** need no cart at all — a fake store driver asserts which calls the ledger *would*
-  make, which is where ordering and idempotency are actually verified.
-- **Driver tests** run against a real WooCommerce install in CI, replaying the
+  run and replayed thereafter, with `POS_RECORD=1` to re-record when a vendor changes payloads.
+- **Driver tests** run against a real WooCommerce install, replaying the
   [adversarial scenarios](#adversarial-scenarios) end to end.
 - **Signature tests** cover the [signing string](./webhook-api.md#authentication) in PHP, Node and
   Python, because cross-language signing mismatches are the most common integration failure.
-
-```bash
-composer test              # unit + ledger, no network, no cart
-composer test:integration  # against a WooCommerce install
-POS_RECORD=1 composer test:vendor   # re-record sandbox fixtures
-```
 
 ## A realistic pre-launch checklist
 

@@ -58,7 +58,17 @@ Do **both** meta and hook, and treat the template as optional sugar:
   correct from the start.
 - On `wp`, force `unysonplus_set_layout_override(hide_header/hide_footer/width/title)` for any
   `_upw_landing_*` page — the reliable guarantee, keyed off *our* meta, not the template.
-- Still assign `page-landing.php` when it exists (a nice label), but nothing depends on it.
+- **Assign no template at all** — the page uses the DEFAULT template and gets its chrome-less,
+  full-width layout entirely from the two mechanisms above. A caller can still opt into a specific
+  template via `$opts['template']`, but the importer no longer picks one.
+
+The wider principle this lands on: a **pure-layout template** — one whose whole body is a
+`unysonplus_set_layout_override(...)` call (`page-full-width.php`, `page-no-header.php`,
+`page-no-footer.php`, `page-boxed-narrow.php`, `page-sidebar-left/right.php`, and `page-landing.php`
+itself) — is redundant with the per-page Page Settings that set the same keys, and is worth retiring
+in favour of them. Retiring the *files* is a separate migration (existing pages that reference a
+template must first have the equivalent meta written, or they'd fall back to default and lose the
+layout), so it's deliberately not bundled into this change.
 
 ## Why
 

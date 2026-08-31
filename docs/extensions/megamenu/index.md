@@ -187,6 +187,24 @@ the matching screen size:
 | `mm-hide-tablet` | `768 – 991px` |
 | `mm-hide-desktop` | `>= 992px` |
 
+## Import / export a layout
+
+On an **enabled top-level mega item** in the menu editor (Appearance → Menus), two controls appear next
+to its **Settings** button:
+
+- **Export layout** — downloads a JSON file containing the item's row options plus the full tree of its
+  columns and items (titles, links, and every mega option).
+- **Import layout** — uploads a previously exported JSON and **re-creates** those columns and items
+  beneath the current item, applying all their options. Use it to duplicate a configured panel onto
+  another menu item, or to move a layout between sites.
+
+Programmatic equivalents are available for scripts / migrations:
+
+```php
+$json = wp_json_encode( fw_ext_mega_menu_export_layout( $top_item_id ) );
+$created = fw_ext_mega_menu_import_layout( json_decode( $json, true ), $target_item_id );
+```
+
 ## Performance — conditional loading
 
 The front-end CSS/JS load **only when a mega menu is actually present on the page**. The extension

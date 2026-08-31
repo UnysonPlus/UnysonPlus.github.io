@@ -7,7 +7,7 @@ sidebar_position: 29
 
 An image gallery — grid, masonry or carousel — with captions and a lightbox. Core has a Gallery block; this is the one with layout families, image treatments and caption sources.
 
-The block renders through the [`gallery`](/docs/shortcodes/media-elements/gallery) element — the same PHP that runs in the page builder, so the
+The block renders through the [`gallery`](/shortcodes/media-elements/gallery) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes
@@ -34,13 +34,13 @@ sidebar does not show.
 
 :::note[Three pickers, because that is what a gallery is]
 `source`, `design_settings` and `click` are all
-[`multi-picker`](/docs/options/option-types/multi-picker)s: where the images come from, how they are
+[`multi-picker`](/options/option-types/multi-picker)s: where the images come from, how they are
 laid out, and what happens when one is clicked. Each reveals a different set of fields, and only the
 chosen branch is saved.
 :::
 
 :::note[The images are chosen here]
-The media picker inside `source` is a [`multi-upload`](/docs/options/option-types/multi-upload):
+The media picker inside `source` is a [`multi-upload`](/options/option-types/multi-upload):
 thumbnails with reorder and remove controls, and WordPress's own media modal behind an **Add media**
 button. Everything a gallery needs is in the sidebar.
 :::

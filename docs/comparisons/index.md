@@ -125,12 +125,12 @@ Stated plainly, because a comparison page that only argues one direction isn't w
   JSON.
 - You want a **design-system layer** — presets, palette-bound color pickers, responsive and spacing
   types — instead of raw values you wire up yourself. See
-  [Option types](/docs/options/option-types).
+  [Option types](/options/option-types).
 - You want **no license server**: everything is free and updates from GitHub.
 
 ## Where to go next
 
-- [Introduction](/docs/intro) — what ships in the box
-- [Concepts & glossary](/docs/concepts) — the terminology Unyson+ uses
-- [Option types](/docs/options/option-types) — the full catalogue
-- [Extensions overview](/docs/extensions/overview) — what you can turn on
+- [Introduction](/intro) — what ships in the box
+- [Concepts & glossary](/concepts) — the terminology Unyson+ uses
+- [Option types](/options/option-types) — the full catalogue
+- [Extensions overview](/extensions/overview) — what you can turn on

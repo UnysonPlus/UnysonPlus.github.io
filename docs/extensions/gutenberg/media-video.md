@@ -7,7 +7,7 @@ sidebar_position: 40
 
 A video at a fixed aspect ratio — self-hosted files, or an embed from YouTube, Vimeo and other oEmbed providers.
 
-The block renders through the [`media_video`](/docs/shortcodes/media-elements/media-video) element — the same PHP that runs in the page builder, so the
+The block renders through the [`media_video`](/shortcodes/media-elements/media-video) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes
@@ -24,7 +24,7 @@ only writes the values you change, so an element styled in the builder keeps eve
 sidebar does not show.
 
 :::note[`source_type` is a picker that reveals its own options]
-It is a [`multi-picker`](/docs/options/option-types/multi-picker): choosing an option reveals the
+It is a [`multi-picker`](/options/option-types/multi-picker): choosing an option reveals the
 fields belonging to that choice, and **only the chosen branch is saved**.
 :::
 

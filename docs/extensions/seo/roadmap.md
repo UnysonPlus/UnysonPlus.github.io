@@ -87,7 +87,7 @@ likely answer is site-level fields that the element can also read, so the two ne
 ### Multiple locations <span className="badge badge--secondary">Exploring</span>
 
 A business with several branches needs one entry per location, each with its own address,
-hours and map. The [Post Types](/docs/data-modeling/post-types) extension can already register
+hours and map. The [Post Types](/data-modeling/post-types) extension can already register
 a Locations content type; what it would need is the schema and a way to place a specific
 location on a page.
 

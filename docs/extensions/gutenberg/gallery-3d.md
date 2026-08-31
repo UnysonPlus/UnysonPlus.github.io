@@ -55,5 +55,5 @@ the real PHP; a second approximate scene beside it would only be one more thing 
 
 :::note[`shadow` is a box-shadow control]
 Four offsets, a colour and an inset toggle, with a live sample — see
-[`box-shadow`](/docs/options/option-types/box-shadow).
+[`box-shadow`](/options/option-types/box-shadow).
 :::

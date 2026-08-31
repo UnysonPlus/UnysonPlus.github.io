@@ -64,7 +64,7 @@ standard WordPress child-theme override. For example, to customize the footer, c
 
 You can also override **extension** files and add Theme Settings through
 `acme/framework-customizations/`, the same mechanism the parent uses (see
-[the extension system](/docs/architecture/extension-system#three-locations)).
+[the extension system](/architecture/extension-system#three-locations)).
 
 ## 5. Ship it
 
@@ -83,5 +83,5 @@ Full detail (overrides, the three customization layers, design export rules) is 
 
 - **Build pages** — [Build your first page](./build-your-first-page.md) with the visual builder.
 - **Understand the stack** — [The Theme](/theme) covers the parent/child relationship in depth.
-- **Go deeper** — the [For Developers](/docs/developers) section covers adding shortcodes, option
+- **Go deeper** — the [For Developers](/developers) section covers adding shortcodes, option
   types, and extensions.

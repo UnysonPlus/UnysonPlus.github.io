@@ -7,7 +7,7 @@ sidebar_position: 27
 
 A single icon, with an optional title and badge — from an icon font, an SVG, an image or an emoji.
 
-The block renders through the [`icon`](/docs/shortcodes/media-elements/icon) element — the same PHP that runs in the page builder, so the
+The block renders through the [`icon`](/shortcodes/media-elements/icon) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes

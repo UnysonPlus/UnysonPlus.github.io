@@ -21,7 +21,7 @@ higher than the installed one.
 - For your own extension or theme, confirm the `github_update` manifest key (and `github_branch`) point
   at the right repo.
 
-See [Updates & auto-updates](/docs/extensions/updates).
+See [Updates & auto-updates](/extensions/updates).
 
 ## How the bundle version relates to extensions
 

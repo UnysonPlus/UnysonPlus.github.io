@@ -14,7 +14,7 @@ works, its fields, and the **exact HTML it generates**.
 
 :::note[Not the page-builder header/footer shortcodes]
 These are the theme's **Theme Settings** header/footer builder elements, rendered by the theme.
-They're different from the page-builder [Header / Footer Elements](/docs/shortcodes/header-footer-elements)
+They're different from the page-builder [Header / Footer Elements](/shortcodes/header-footer-elements)
 (shortcodes you drop on the canvas). This section is the Theme Settings set.
 :::
 

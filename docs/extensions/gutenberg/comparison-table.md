@@ -7,7 +7,7 @@ sidebar_position: 26
 
 A feature-comparison table — plans, tiers, or this product against the alternatives. With a highlighted column and a sticky header.
 
-The block renders through the [`comparison_table`](/docs/shortcodes/components/comparison-table) element — the same PHP that runs in the page builder, so the
+The block renders through the [`comparison_table`](/shortcodes/components/comparison-table) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes

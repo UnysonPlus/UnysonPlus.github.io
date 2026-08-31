@@ -23,14 +23,14 @@ page (where you activate and deactivate it yourself):
 
 | Extension | What it does | In manager? |
 | --- | --- | --- |
-| **Page Builder** | Visual drag &amp; drop page building with shortcodes. → [docs](/docs/page-builder) | Yes |
+| **Page Builder** | Visual drag &amp; drop page building with shortcodes. → [docs](/page-builder) | Yes |
 | **WordPress Shortcodes** | Insert Unyson+ shortcodes in any editor. → [docs](./wp-shortcodes/index.md) | Yes |
 | **Live Page Editor** | Edit builder pages on the live front end. → [docs](./live-editor.md) | Yes |
 | **Site Converter** | Import an AI-generated / captured website into WordPress. → [docs](./site-converter/index.md) | Yes |
 | **Site Migration** | Move a whole site (DB, uploads, themes, plugins) to another install in resumable background slices. | Yes |
 | **Template Library** | A browsable catalog of premade section / page templates, downloaded on demand into uploads. | Yes |
-| **Custom Fields** | ACF-style custom fields builder. → [docs](/docs/data-modeling/custom-fields) | Yes |
-| **Post Types &amp; Taxonomies** | Register CPTs and taxonomies from the admin. → [docs](/docs/data-modeling/post-types) | Yes |
+| **Custom Fields** | ACF-style custom fields builder. → [docs](/data-modeling/custom-fields) | Yes |
+| **Post Types &amp; Taxonomies** | Register CPTs and taxonomies from the admin. → [docs](/data-modeling/post-types) | Yes |
 | **Portfolio** | A fully-featured portfolio module. → [docs](./portfolio/index.md) | Yes |
 | **Sidebars** | Add multiple/dynamic sidebars per page. → [docs](./sidebars/index.md) | Yes |
 | **Breadcrumbs** | Drop-in breadcrumb navigation. → [docs](./breadcrumbs/index.md) | Yes |
@@ -41,7 +41,7 @@ page (where you activate and deactivate it yourself):
 | **Mailer** *(hidden)* | Global email settings + send service used by Forms / Newsletter. → [docs](./mailer.md) | Dependency |
 | **Asset Optimizer** | Combine enqueued assets to cut HTTP requests. → [docs](./asset-optimizer.md) | Yes |
 | **Snippets** | Save and embed reusable builder content. → [docs](./snippets.md) | Yes |
-| **WooCommerce** | Storefront elements + theme integration. → [docs](/docs/shortcodes/woocommerce-elements) | Yes |
+| **WooCommerce** | Storefront elements + theme integration. → [docs](/shortcodes/woocommerce-elements) | Yes |
 | **Animation Engine** | WebGL objects, scroll/hover/cursor/text motion and page-transition modules. → [docs](/animation-engine/) | Yes — off by default |
 | **Animated Icons** | Adds an "Animated" tab to the icon picker (Lottie, Rive, animated SVG, GIF/APNG/WebP). | Yes — off by default |
 | **Chat** | A floating multi-channel contact button (WhatsApp, Messenger, Telegram, SMS, Email…). | Yes — off by default |
@@ -67,6 +67,6 @@ it automatically.
 ## Developer note
 
 Extensions live in `framework/extensions/`. See
-[Creating Extensions](/docs/category/creating-extensions) for how to build your own,
-[Option types](/docs/options/option-types) for how options and shortcodes are
+[Creating Extensions](/category/creating-extensions) for how to build your own,
+[Option types](/options/option-types) for how options and shortcodes are
 built, and the per-area `AGENTS.md` files in the plugin source for recipes.

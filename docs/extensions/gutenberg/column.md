@@ -58,7 +58,7 @@ a column's width from the row it sits in, and a block has no row.
 :::
 
 :::note[`col_width` and its siblings are responsive]
-They are [`responsive`](/docs/options/option-types/responsive) options: one value per breakpoint,
+They are [`responsive`](/options/option-types/responsive) options: one value per breakpoint,
 edited through the device tabs. A blank device inherits the smaller one — where the inner control
 offers a blank choice, which these do.
 :::

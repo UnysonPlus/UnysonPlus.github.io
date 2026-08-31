@@ -38,7 +38,7 @@ only writes the values you change, so an element styled in the builder keeps eve
 sidebar does not show.
 
 :::note[The order of `shapes_list` *is* the animation]
-It is an [`addable-popup`](/docs/options/option-types/addable-popup) repeater, and the shapes morph in
+It is an [`addable-popup`](/options/option-types/addable-popup) repeater, and the shapes morph in
 the order they are listed. Reordering the list rewrites the sequence.
 :::
 

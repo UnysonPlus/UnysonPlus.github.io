@@ -10,7 +10,7 @@ hide_table_of_contents: true
 
 # Media Image — converter mapping
 
-Source `image` → [`media_image`](/docs/shortcodes/media-elements/media-image). This page shows the recognizer rule and **every**
+Source `image` → [`media_image`](/shortcodes/media-elements/media-image). This page shows the recognizer rule and **every**
 option on the shortcode, with how the converter fills it — so you can see at a glance which options
 are mapped, which are reproduced via CSS, and which are left for manual editing.
 
@@ -21,7 +21,7 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 | **Priority** | 60 |
 | **Recognizer** | `image` |
 | **Matches when** | A content `<img>` (not a background image, an icon, or part of a decomposed composite). |
-| **Becomes** | [`media_image`](/docs/shortcodes/media-elements/media-image) |
+| **Becomes** | [`media_image`](/shortcodes/media-elements/media-image) |
 | **Recognizer block shape** | `{ html, skinCss }` |
 | **Fallback** | Degrades to `code_block`. |
 

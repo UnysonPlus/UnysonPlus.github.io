@@ -18,7 +18,7 @@ a **management dashboard** for installed packs.
 ## How it's coded
 
 The tab is a bespoke UI: a single **`sc_eldesigns_manager`** option of type
-[`html-full`](/docs/options/option-types/html) (a full-width custom HTML/CSS/JS control), not a
+[`html-full`](/options/option-types/html) (a full-width custom HTML/CSS/JS control), not a
 postbox-wrapped option group. It lists the design packs installed for each element, and lets you
 install / remove / manage them.
 
@@ -30,7 +30,7 @@ A **design** is a self-contained folder an element loads for one Design choice �
 is its **own scoped CSS/markup**, not a class in the shared `presets-{hash}.css` — each pack styles its
 own variant.
 
-Building one is documented in **[Create a shortcode design (design pack)](/docs/developers/create-a-design-pack)**.
+Building one is documented in **[Create a shortcode design (design pack)](/developers/create-a-design-pack)**.
 
 ## How it's picked
 
@@ -40,5 +40,5 @@ where one is chosen.
 
 ## Related
 
-- [Create a shortcode design (design pack)](/docs/developers/create-a-design-pack) — build your own.
+- [Create a shortcode design (design pack)](/developers/create-a-design-pack) — build your own.
 - [Components overview](./index.md)

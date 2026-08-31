@@ -7,7 +7,7 @@ sidebar_position: 6
 
 An image comparison slider — drag, hover or click to reveal the second image. Useful for retouching, renovations and product comparisons.
 
-The block renders through the [`before_after`](/docs/shortcodes/media-elements/before-after) element — the same PHP that runs in the page builder, so
+The block renders through the [`before_after`](/shortcodes/media-elements/before-after) element — the same PHP that runs in the page builder, so
 the front end is identical either way.
 
 ## What the sidebar exposes

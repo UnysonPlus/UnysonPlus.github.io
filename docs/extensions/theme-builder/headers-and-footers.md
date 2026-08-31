@@ -116,5 +116,5 @@ working header and footer even if no Template matches (or the extension is disab
 - [Flexbox](./flexbox.md) — the layout engine you build chrome with
 - [Conditional assignment](./conditional-assignment.md) — assign a preset with a Template
 - [How it renders](./rendering.md) — native vs. theme‑independent header/footer rendering
-- [Header / Footer Elements](/docs/shortcodes/header-footer-elements) — the building blocks
+- [Header / Footer Elements](/shortcodes/header-footer-elements) — the building blocks
 - [Guide: Build a sticky site header](/guides/sticky-header)

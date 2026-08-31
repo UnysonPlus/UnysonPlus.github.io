@@ -5,7 +5,7 @@ description: Design a global header with the Unyson+ Theme Builder and make it s
 
 # Build a sticky site header
 
-A sticky header stays visible as visitors scroll. With the [Theme Builder](/docs/extensions/theme-builder)
+A sticky header stays visible as visitors scroll. With the [Theme Builder](/extensions/theme-builder)
 you design the header visually and assign it site-wide, with a sticky scroll behavior.
 
 ## Steps
@@ -25,6 +25,6 @@ Settings** header is the fallback, so the site always has a working header.
 
 ## See also
 
-- [Theme Builder](/docs/extensions/theme-builder) — templates, conditions, and the fallback chain
-- [Header / Footer Elements](/docs/shortcodes/header-footer-elements) — the building blocks
+- [Theme Builder](/extensions/theme-builder) — templates, conditions, and the fallback chain
+- [Header / Footer Elements](/shortcodes/header-footer-elements) — the building blocks
 - [Design a custom 404 page](./custom-404-page.md) — another Theme Builder template

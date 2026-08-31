@@ -48,7 +48,7 @@ The extension directory has the following structure:
 
 Let's take a closer look at each directory and file, and understand how it works.
 
-- `manifest.php` - The only required file, all other files are optional. It contains the base information about extension. More details about the [extension manifest](/docs/manifest/extension).
+- `manifest.php` - The only required file, all other files are optional. It contains the base information about extension. More details about the [extension manifest](/manifest/extension).
 - `class-fw-extension-{extension-name}.php` - If the extension has some advanced functionality, it can define a class that will be the instance of the extension returned by `fw()->extensions->get('{extension-name}')`. By default an instance of default class will be created, which is an empty class that just extends the `FW_Extension` class. This file can't be overwritten.
 - `config.php` - Configuration array, which is accessible through the `$ext->get_config('key')` method. Users can customize it by creating the same file in `{theme-name}/framework-customizations/extension/{extension-name}/config.php` and overwrite only some keys (internally is made `array_merge($extension_config, $theme_customized_config)`).
 - `static.php` - Enqueue extension scripts and styles. It is included automatically on the `wp_enqueue_scripts` and `admin_enqueue_scripts` actions, so you can enqueue both admin and frontend scripts and styles from it, but you will have to use the `is_admin()` function. This file can be overwritten from theme by creating `{theme-name}/framework-customizations/extension/{extension-name}/static.php`.

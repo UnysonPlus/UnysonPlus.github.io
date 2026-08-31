@@ -40,7 +40,7 @@ you when the page renders. That wrapping is done by the [items corrector](./item
 Elements are grouped into tabs in a deliberate order — **Layout**, **Content**, **Media**,
 **Interactive**, **Components**, **Header/Footer** — rather than alphabetically (see
 `FW_Option_Type_Page_Builder::sort_thumbnails_helper()`). Every element has its own reference
-page under [Shortcodes / Elements](/docs/shortcodes/overview).
+page under [Shortcodes / Elements](/shortcodes/overview).
 
 ## Reusable content
 
@@ -72,4 +72,4 @@ embeddable block (`[snippet id="123"]`) or as a global **Section** / **Column** 
 ## See also
 
 - [Extensions overview](../extensions/overview.md)
-- [Option types](/docs/options/option-types) — the building blocks of every element's options
+- [Option types](/options/option-types) — the building blocks of every element's options

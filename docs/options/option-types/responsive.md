@@ -242,7 +242,7 @@ But if the old option had *flat per-device companions* (e.g. a legacy `direction
 **before the modal reads them** — otherwise the user re-saves and loses them. Do that in the
 element item's `scripts.js`, mirroring the frontend fallback, and `model.set('atts', migrated)`
 so the first save persists the new shape. See
-[Migrating an option's value shape](/docs/page-builder/value-shape-migrations).
+[Migrating an option's value shape](/page-builder/value-shape-migrations).
 
 ### 4. Frontend render (`view.php`)
 
@@ -314,9 +314,9 @@ no-op when already loaded.
 - [`spacing`](./spacing.md) — the per-side Margin/Padding control this type is modelled on
   (also per-device).
 - [`multi-picker`](./multi-picker.md) · [`popover`](./popover/index.md) — common inner controls.
-- [Migrating an option's value shape](/docs/page-builder/value-shape-migrations) — the
+- [Migrating an option's value shape](/page-builder/value-shape-migrations) — the
   two-sided migration pattern.
-- [Column widths](/docs/page-builder/column-widths) — the grid fractions the width controls emit.
+- [Column widths](/page-builder/column-widths) — the grid fractions the width controls emit.
 
 ## Reading the value
 

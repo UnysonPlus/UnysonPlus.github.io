@@ -16,7 +16,7 @@ Animations** (custom hover CSS). A button combines one of each, e.g. `class="btn
 
 ## 1. Button Presets — the skin
 
-`button_colors`, a [`button-presets`](/docs/options/option-types/button-presets) option
+`button_colors`, a [`button-presets`](/options/option-types/button-presets) option
 (`components-buttons.php`). Each preset produces a **`.btn-{slug}`** class with a live preview, and its
 colors **reference your [Color Presets](./color-presets.md)** (so a re-brand flows through). Each
 preset supports full **Default / Hover / Active / Focus / Disabled** states, plus typography, box,
@@ -50,16 +50,16 @@ un-overridable.
 
 ## 2. Sizes — the dimensions
 
-`button_sizes`, an [`addable-box`](/docs/options/option-types/addable-box). Each entry produces a
+`button_sizes`, an [`addable-box`](/options/option-types/addable-box). Each entry produces a
 **`.btn-{slug}`** class controlling **only** dimensions: `font_size`, `line_height`, `padding_y`,
 `padding_x`, `border_radius`, and optional `min_width` / `max_width`. The **Slug** field is the class
 suffix (`sm` → `.btn-sm`). Pair a size with a preset: `btn btn-primary btn-lg`.
 
 ## 3. Hover Animations
 
-`button_animations`, an [`addable-box`](/docs/options/option-types/addable-box) of name + raw **CSS**
-(a [`code-editor`](/docs/options/option-types/code-editor)). Selected via the
-[`button-hover-animation`](/docs/options/option-types/button-hover-animation) picker on a button.
+`button_animations`, an [`addable-box`](/options/option-types/addable-box) of name + raw **CSS**
+(a [`code-editor`](/options/option-types/code-editor)). Selected via the
+[`button-hover-animation`](/options/option-types/button-hover-animation) picker on a button.
 
 ## Where the output lives
 
@@ -71,12 +71,12 @@ wp-admin), inline `<style>` fallback. See the
 ## How it's picked
 
 A button element's **Preset** control is the
-[`button-style-picker`](/docs/options/option-types/button-style-picker) (live preview of every
+[`button-style-picker`](/options/option-types/button-style-picker) (live preview of every
 `.btn-{slug}`); the Size and Hover Animation are their own dropdowns. The element outputs
 `class="btn btn-{preset} btn-{size}"`.
 
 ## Related
 
-- [`button-presets`](/docs/options/option-types/button-presets) · [`button-style-picker`](/docs/options/option-types/button-style-picker) · [`button-hover-animation`](/docs/options/option-types/button-hover-animation)
+- [`button-presets`](/options/option-types/button-presets) · [`button-style-picker`](/options/option-types/button-style-picker) · [`button-hover-animation`](/options/option-types/button-hover-animation)
 - [Color Presets](./color-presets.md) — the colors buttons reference.
 - [Components overview](./index.md) — the shared pipeline.

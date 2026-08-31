@@ -6,9 +6,9 @@ sidebar_position: 1
 
 The Unyson+ framework core has three components:
 
-- [Theme](/docs/components/theme)
-- [Backend](/docs/components/backend)
-- [Extensions](/docs/components/extensions)
+- [Theme](/components/theme)
+- [Backend](/components/backend)
+- [Extensions](/components/extensions)
 
 Accessing one of the core's component is done in this way:
 

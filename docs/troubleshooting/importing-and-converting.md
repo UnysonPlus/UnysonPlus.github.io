@@ -20,7 +20,7 @@ differs (which means you edited it), so your work is never clobbered.
 - Re-import a single page: `UPW_ONLY=<slug>`.
 - Force-overwrite: `UPW_FORCE=1` — but only after folding your manual edits back into the source JSON.
 
-See [Importers & demo system](/docs/importers-and-demos).
+See [Importers & demo system](/importers-and-demos).
 
 ## Site Converter imported no images
 

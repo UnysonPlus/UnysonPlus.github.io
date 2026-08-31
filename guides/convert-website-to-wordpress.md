@@ -35,6 +35,6 @@ lets the plugin regenerate the markup, so you can keep editing in the visual bui
 
 ## See also
 
-- [Site Converter](/docs/extensions/site-converter) — the full reference, the bundle format, and the
+- [Site Converter](/extensions/site-converter) — the full reference, the bundle format, and the
   theme generator
 - [The Theme](/theme) — what the generated theme is built on

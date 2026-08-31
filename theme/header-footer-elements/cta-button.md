@@ -24,7 +24,7 @@ Settings button presets. Available in both the **Header** and **Footer** builder
 | --- | --- | --- | --- |
 | `cta_text` | text | `Get Started` | The button label |
 | `cta_link` | text | `#` | The href |
-| `cta_style` | [button-style-picker](/docs/options/option-types/button-style-picker) | `primary` | A [Button preset](/theme/components/buttons) → `btn-{preset}` |
+| `cta_style` | [button-style-picker](/options/option-types/button-style-picker) | `primary` | A [Button preset](/theme/components/buttons) → `btn-{preset}` |
 | `cta_size` | select | — | A button size → `btn-{size}` |
 
 ## How it works

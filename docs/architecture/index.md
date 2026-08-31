@@ -10,7 +10,7 @@ UnysonPlus is not a single product but **three cooperating pieces**: a framework
 theme, and the child themes you build on top. This section explains how they fit together, how the
 framework boots, how the extension system discovers and activates modules, and how a page travels
 from a builder edit to rendered HTML. It's written for developers extending the framework — if you
-only want to *use* the builder, start with the [Page Builder](/docs/page-builder) section instead.
+only want to *use* the builder, start with the [Page Builder](/page-builder) section instead.
 
 ## The three pieces
 

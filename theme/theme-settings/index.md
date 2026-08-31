@@ -12,7 +12,7 @@ the header and footer, layout, and custom CSS. Page *content* lives in the page 
 is the **site chrome and design tokens**. Together, a theme-settings file + a set of builder
 templates make up a complete "design package" for a site.
 
-Every control here is rendered by the same [Options Framework](/docs/options/introduction) that powers
+Every control here is rendered by the same [Options Framework](/options/introduction) that powers
 the rest of Unyson+, so Theme Settings, page-builder options, and custom fields all behave the same way.
 
 ## By area
@@ -122,5 +122,5 @@ the constant to `<n>`.
 Reading Theme Settings inside an extension's `_init()` can force the option types to initialize
 before the page-builder extension registers its `page-builder` option type, producing *"Undefined
 option type: page-builder"*. Defer settings reads to `init` or later — see
-[the boot guide](/docs/architecture/framework-boot).
+[the boot guide](/architecture/framework-boot).
 :::

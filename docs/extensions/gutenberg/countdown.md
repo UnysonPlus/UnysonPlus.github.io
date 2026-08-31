@@ -7,7 +7,7 @@ sidebar_position: 59
 
 A countdown to a date and time — a launch, a deadline, the end of a sale — with per-unit labels and a completed state.
 
-The block renders through the [`countdown`](/docs/shortcodes/interactive-elements/countdown) element — the same PHP that runs in the page builder, so the
+The block renders through the [`countdown`](/shortcodes/interactive-elements/countdown) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes

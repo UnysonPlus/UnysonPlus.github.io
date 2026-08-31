@@ -6,7 +6,7 @@ sidebar_position: 3
 # Build your first page
 
 This walkthrough takes you from a blank page to a published one using the **Page Builder**. It
-assumes you've [installed Unyson+](/docs/installation) and activated the **Shortcodes** and **Page
+assumes you've [installed Unyson+](/installation) and activated the **Shortcodes** and **Page
 Builder** extensions (Unyson+ → Extensions).
 
 By the end you'll have placed a section, added an element, configured it, and seen it render on the
@@ -30,7 +30,7 @@ tab, drag a **Section** onto the canvas.
 :::tip[You can skip straight to an element]
 If you drag a content element (a heading, a button) directly onto the canvas, Unyson+ automatically
 wraps it in a column, a row, and a section for you when the page renders. The
-[items corrector](/docs/page-builder/items-corrector) handles that, so you never end up with an
+[items corrector](/page-builder/items-corrector) handles that, so you never end up with an
 invalid grid.
 :::
 
@@ -50,7 +50,7 @@ canvas.
 <img src="/img/shortcodes/special-heading-content.png" alt="The Special Heading options panel — Content tab" width="840" />
 
 :::tip[Reuse live values with Dynamic Content]
-Any text field with the small database icon supports [Dynamic Content](/docs/dynamic-content): insert
+Any text field with the small database icon supports [Dynamic Content](/dynamic-content): insert
 a token like `{{site_name}}` or `{{current_year}}` and it resolves to a live value at render time.
 :::
 
@@ -58,7 +58,7 @@ a token like `{{site_name}}` or `{{current_year}}` and it resolves to a live val
 
 Add a **Row**, split it into **Columns**, and drop elements into each. Column widths use simple
 fractions (`1_2`, `1_3`, the single `1_5` fifth, …) and wrap responsively, see
-[Column widths](/docs/page-builder/column-widths). Use the **Desktop / Tablet / Phone** toggle to
+[Column widths](/page-builder/column-widths). Use the **Desktop / Tablet / Phone** toggle to
 preview each breakpoint while you edit.
 
 ## 6. Save and view
@@ -68,11 +68,11 @@ it on the front end, no wrapper-div soup, one generated stylesheet. View the pag
 
 ## What's next
 
-- **Reuse a layout** — save a section as a template, or build a [Snippet](/docs/extensions/snippets)
+- **Reuse a layout** — save a section as a template, or build a [Snippet](/extensions/snippets)
   you can embed anywhere.
-- **Understand the output** — [How the Page Builder works](/docs/page-builder/how-it-works) explains
+- **Understand the output** — [How the Page Builder works](/page-builder/how-it-works) explains
   the edit → stored JSON → render pipeline.
 - **Brand the whole site** — set global colors, fonts, header and footer in
   [Theme Settings](/theme/theme-settings), then ship it as a
   [child theme](./build-your-first-child-theme.md).
-- **Browse every element** — the [Elements reference](/docs/shortcodes/overview) documents them all.
+- **Browse every element** — the [Elements reference](/shortcodes/overview) documents them all.

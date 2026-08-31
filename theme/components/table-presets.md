@@ -17,7 +17,7 @@ cell padding.
 
 ## How it's coded
 
-Stored under **`table_presets`**, a [`table-presets`](/docs/options/option-types/table-style-picker)
+Stored under **`table_presets`**, a [`table-presets`](/options/option-types/table-style-picker)
 option (`components-table.php`). Each preset groups the per-region color/skin fields (header fill + text,
 body, stripe tint, row hover, footer, caption) and the structural fields (grid, frame, radius, padding).
 Colors reference your [Color Presets](./color-presets.md).
@@ -37,9 +37,9 @@ imported table renders styled instead of bare.
 ## How it's picked
 
 A Table's **Table Preset** control is the
-[`table-style-picker`](/docs/options/option-types/table-style-picker) (live preview of every
+[`table-style-picker`](/options/option-types/table-style-picker) (live preview of every
 `.tbl-{slug}`).
 
 ## Related
 
-- [Page Builder Elements](/docs/shortcodes/overview) · [`table-style-picker`](/docs/options/option-types/table-style-picker) · [Components overview](./index.md)
+- [Page Builder Elements](/shortcodes/overview) · [`table-style-picker`](/options/option-types/table-style-picker) · [Components overview](./index.md)

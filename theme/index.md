@@ -46,7 +46,7 @@ your-child-theme  (CHILD — what you ship)
 A child theme inherits **everything** from the parent and overrides only what it declares. That
 includes the ability to override **extension** files and add Theme Settings — through the same
 `framework-customizations/` mechanism the parent uses (see
-[The extension system](/docs/architecture/extension-system#three-locations)). How to build and
+[The extension system](/architecture/extension-system#three-locations)). How to build and
 distribute one is covered in [Child themes](./child-themes.md).
 
 ## The theme's manifest
@@ -68,7 +68,7 @@ $manifest['supported_extensions'] = array(
 The **`id`** is important: Theme Settings are stored under
 `fw_theme_settings_options:{id}`, so the id namespaces a theme's settings (and a child theme
 forces the parent's version/author headers — see
-[the manifest model](/docs/architecture/manifests-and-versioning#the-manifest-model)).
+[the manifest model](/architecture/manifests-and-versioning#the-manifest-model)).
 
 ## In this section
 

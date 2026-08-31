@@ -36,7 +36,7 @@ slider that sums to 100%), and fill each column with page-builder elements.
 
 **Footer → Copyright** (`copyright_settings`) is a toggle (on by default) that reveals a small columns
 control. Column one is pre-filled with a copyright line —
-`© {{current_year}} <site>. All rights reserved.` — using [Dynamic Content](/docs/dynamic-content) for
+`© {{current_year}} <site>. All rights reserved.` — using [Dynamic Content](/dynamic-content) for
 the year, so it stays current on its own.
 
 :::tip[Element reference]

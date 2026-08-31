@@ -15,7 +15,7 @@ The Page Builder emits **lean, semantic HTML**, just the section → container �
 your content, with no extra per-element wrapper `<div>`s and **no inline styles** scattered through
 the markup. Less DOM means less for the browser to parse, style, and lay out.
 
-See [The clean-DOM philosophy](/docs/page-builder/clean-dom).
+See [The clean-DOM philosophy](/page-builder/clean-dom).
 
 ## One generated stylesheet, not inline soup
 
@@ -58,19 +58,19 @@ After the above, a page already has few stylesheets and scripts. The optional **
 folds the remaining CSS and JS into one combined, cached file each, cutting HTTP requests further. It
 keeps the cascade correct (theme styles last) and only merges scripts that are safe to combine.
 
-See [Asset Optimizer](/docs/extensions/asset-optimizer).
+See [Asset Optimizer](/extensions/asset-optimizer).
 
 ## A quick checklist
 
 | Lever | Where |
 | --- | --- |
-| Clean markup (automatic) | [Clean-DOM philosophy](/docs/page-builder/clean-dom) |
+| Clean markup (automatic) | [Clean-DOM philosophy](/page-builder/clean-dom) |
 | One generated stylesheet (automatic) | [Settings → CSS](/theme/settings-to-css) |
 | Conditional element assets (automatic) | this page |
 | Minified production assets (`SCRIPT_DEBUG` off) | this page |
 | Responsive / CLS-safe images (automatic in the image elements) | this page |
-| Combine remaining CSS/JS (one toggle) | [Asset Optimizer](/docs/extensions/asset-optimizer) |
-| Cache hosts can hide the asset scan | [Troubleshooting](/docs/troubleshooting/performance-and-assets#asset-optimizer-lists-no-cssjs-to-combine) |
+| Combine remaining CSS/JS (one toggle) | [Asset Optimizer](/extensions/asset-optimizer) |
+| Cache hosts can hide the asset scan | [Troubleshooting](/troubleshooting/performance-and-assets#asset-optimizer-lists-no-cssjs-to-combine) |
 
 :::tip[Disabling styling for a "bring your own CSS" build]
 For a structure-only build (you supply all the CSS via each element's Advanced → CSS Class), the

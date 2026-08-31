@@ -42,7 +42,7 @@ Re-saving an entity-escaped block in the builder decodes it and the markup then 
 exact bug the toggle fixes). With **Render as Code** on, the Code Block stores **raw** markup,
 then at render time it beautifies (re-indents), HTML-escapes, and wraps it in a Prism-ready
 `<pre><code>` — so visitors see the code and the builder modal still shows editable raw markup.
-See the [Code Block](/docs/shortcodes/content-elements/code-block) reference.
+See the [Code Block](/shortcodes/content-elements/code-block) reference.
 
 ## Builder rule: hand-write lean `view.php`
 

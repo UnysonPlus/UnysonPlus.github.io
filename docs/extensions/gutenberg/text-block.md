@@ -7,7 +7,7 @@ sidebar_position: 41
 
 Rich text with typographic controls core does not have — columns, drop caps, a lead paragraph, measure and balance.
 
-The block renders through the [`text_block`](/docs/shortcodes/content-elements/text-block) element — the same PHP that runs in the page builder, so the
+The block renders through the [`text_block`](/shortcodes/content-elements/text-block) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes
@@ -46,7 +46,7 @@ cap, a controlled measure, a lead paragraph. Core has none of those.
 :::
 
 :::note[`max_width` and `dropcap` are pickers]
-Both are [`multi-picker`](/docs/options/option-types/multi-picker)s: a measure can be a preset or a
+Both are [`multi-picker`](/options/option-types/multi-picker)s: a measure can be a preset or a
 custom value, and a drop cap has its own settings once switched on. Only the chosen branch is saved.
 :::
 

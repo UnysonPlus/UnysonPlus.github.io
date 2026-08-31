@@ -17,7 +17,7 @@ automatically).
 
 Open **Mailer** settings (Unyson+ → Extensions) and set the **From Name** and **From Email**. For
 reliable delivery, choose the **SMTP** send method and enter your SMTP host/port/credentials instead
-of PHP mail. See [Mailer](/docs/extensions/mailer).
+of PHP mail. See [Mailer](/extensions/mailer).
 
 ## 3. Build the form
 
@@ -29,5 +29,5 @@ of PHP mail. See [Mailer](/docs/extensions/mailer).
 
 ## See also
 
-- [Forms](/docs/extensions/forms) — the full Contact Form reference
-- [Mailer](/docs/extensions/mailer) — global email + SMTP setup
+- [Forms](/extensions/forms) — the full Contact Form reference
+- [Mailer](/extensions/mailer) — global email + SMTP setup

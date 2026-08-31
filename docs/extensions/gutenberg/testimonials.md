@@ -7,7 +7,7 @@ sidebar_position: 21
 
 Customer quotes with avatars, star ratings and an optional carousel — the standard social-proof section, with review structured data if you want it.
 
-The block renders through the [`testimonials`](/docs/shortcodes/components/testimonials) element — the same PHP that runs in the page builder, so the
+The block renders through the [`testimonials`](/shortcodes/components/testimonials) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes
@@ -40,12 +40,12 @@ only writes the values you change, so an element styled in the builder keeps eve
 sidebar does not show.
 
 :::note[`testimonials` is a repeater]
-It is an [`addable-popup`](/docs/options/option-types/addable-popup): items expand in place in the
+It is an [`addable-popup`](/options/option-types/addable-popup): items expand in place in the
 block sidebar rather than opening a modal, and store exactly the value the page builder stores.
 :::
 
 :::note[`design_settings` is a picker that reveals its own options]
-It is a [`multi-picker`](/docs/options/option-types/multi-picker): choosing an option reveals the
+It is a [`multi-picker`](/options/option-types/multi-picker): choosing an option reveals the
 fields that belong to that choice, and **only the chosen branch's values are saved**. Switching
 choices and switching back does not preserve what you typed in the branch you left — that is how the
 option type has always behaved, and it is what keeps the saved value small.

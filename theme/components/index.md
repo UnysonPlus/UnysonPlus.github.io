@@ -39,7 +39,7 @@ all of them.
 
 ### 1. Storage — an `addable-box` in Theme Settings
 
-Each library is an [`addable-box`](/docs/options/option-types/addable-box) option defined in
+Each library is an [`addable-box`](/options/option-types/addable-box) option defined in
 `framework/extensions/shortcodes/includes/theme-settings/components-*.php` (e.g.
 `components-color.php`). The user adds / removes / reorders rows; each row is a small options group
 (a name + the style fields). The whole array is saved to the Theme Settings store under one key
@@ -83,7 +83,7 @@ no preset stylesheet, no preset pickers.
 ## Where each library is picked
 
 Presets are consumed through the option-type pickers documented under
-[Option Types → Presets & pickers](/docs/options/option-types#presets--pickers) — for example the
-compact color dropdowns, the [button-style-picker](/docs/options/option-types/button-style-picker),
-[image-style-picker](/docs/options/option-types/image-style-picker), and the popover
-[preset preview pickers](/docs/options/option-types/popover/preset-preview-pickers).
+[Option Types → Presets & pickers](/options/option-types#presets--pickers) — for example the
+compact color dropdowns, the [button-style-picker](/options/option-types/button-style-picker),
+[image-style-picker](/options/option-types/image-style-picker), and the popover
+[preset preview pickers](/options/option-types/popover/preset-preview-pickers).

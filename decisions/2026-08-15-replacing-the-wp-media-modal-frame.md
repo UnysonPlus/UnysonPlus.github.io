@@ -18,7 +18,7 @@ loads for anyway. Is removing it worth the risk?
 
 The measured position was encouraging: Backbone appeared in 12 files, and inside `fw.js` — the
 framework's central admin script — in only two call sites. See
-[the admin JavaScript layer](/docs/architecture/admin-js-layer).
+[the admin JavaScript layer](/architecture/admin-js-layer).
 
 Three facts complicated it:
 

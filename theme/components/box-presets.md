@@ -17,7 +17,7 @@ a **Countdown**, and similar.
 
 ## How it's coded
 
-Stored under the key **`border_presets`**, a [`border-presets`](/docs/options/option-types/border-style-picker)
+Stored under the key **`border_presets`**, a [`border-presets`](/options/option-types/border-style-picker)
 option (`components-box.php`). Each preset has an id, a name, and Default / Hover state groups holding
 the border, radius, padding, shadow and background-fill fields. Colors reference your
 [Color Presets](./color-presets.md).

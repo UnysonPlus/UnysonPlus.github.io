@@ -7,7 +7,7 @@ sidebar_position: 15
 
 Share buttons for the current page. No third-party script, no tracking pixel — the links are plain share URLs rendered server-side.
 
-The block renders through the [`social_share`](/docs/shortcodes/components/social-share) element — the same PHP that runs in the page builder, so the
+The block renders through the [`social_share`](/shortcodes/components/social-share) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes

@@ -7,7 +7,7 @@ sidebar_position: 5
 
 An animated number that counts up when it scrolls into view — for stats, milestones and results.
 
-The block renders through the [`counter`](/docs/shortcodes/interactive-elements/counter) element — the same PHP that runs in the page builder, so
+The block renders through the [`counter`](/shortcodes/interactive-elements/counter) element — the same PHP that runs in the page builder, so
 the front end is identical either way.
 
 ## What the sidebar exposes

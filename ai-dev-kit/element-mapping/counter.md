@@ -10,7 +10,7 @@ hide_table_of_contents: true
 
 # Counter — converter mapping
 
-Source `counter` → [`counter`](/docs/shortcodes/interactive-elements/counter). This page shows the recognizer rule and **every**
+Source `counter` → [`counter`](/shortcodes/interactive-elements/counter). This page shows the recognizer rule and **every**
 option on the shortcode, with how the converter fills it — so you can see at a glance which options
 are mapped, which are reproduced via CSS, and which are left for manual editing.
 
@@ -21,7 +21,7 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 | **Priority** | 50 |
 | **Recognizer** | `counter` |
 | **Matches when** | A big animated stat — a number (often with a prefix/suffix like $ or %) shown as a "count-up" figure with a small label. |
-| **Becomes** | [`counter`](/docs/shortcodes/interactive-elements/counter) |
+| **Becomes** | [`counter`](/shortcodes/interactive-elements/counter) |
 | **Recognizer block shape** | `{ number, start, prefix, suffix, decimals, align, numberWeight, numberSize, numberColor, prefixSize, suffixSize, … }` |
 | **Fallback** | Degrades to `code_block`. |
 

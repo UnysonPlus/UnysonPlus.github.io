@@ -17,7 +17,7 @@ named steps.
 
 ## How it's coded
 
-An [`addable-box`](/docs/options/option-types/addable-box) stored under **`spacing_scale`**
+An [`addable-box`](/options/option-types/addable-box) stored under **`spacing_scale`**
 (`components-spacing.php`), plus a `gap_scale` group for flex/grid gaps. Each row:
 
 - **Name** — the slot suffix (e.g. `3` → `.m-3` / `.p-3`). Avoid Bootstrap-reserved names
@@ -42,9 +42,9 @@ Written to the shared cached `presets-{hash}.css` — see the
 
 ## How it's picked
 
-Every element's **Spacing** control (the [`spacing`](/docs/options/option-types/spacing) option type)
+Every element's **Spacing** control (the [`spacing`](/options/option-types/spacing) option type)
 offers the named steps; the element renders `.m{side}-{name}` / `.p{side}-{name}` classes.
 
 ## Related
 
-- [`spacing`](/docs/options/option-types/spacing) option type · [Components overview](./index.md)
+- [`spacing`](/options/option-types/spacing) option type · [Components overview](./index.md)

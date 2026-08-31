@@ -13,11 +13,11 @@ The same engine powers **both** conversion paths:
 
 - the **[AI Dev Kit](./how-it-works.md)** — an agent drives the whole capture → build → verify loop
   and improves the converter as it goes; and
-- the **[Site Converter plugin](/docs/extensions/site-converter/)** — the standalone WordPress
+- the **[Site Converter plugin](/extensions/site-converter/)** — the standalone WordPress
   extension a user runs in `wp-admin` (deterministic, with an optional AI-assist).
 
 If you just want the *task* pages ("convert from a file", "convert from a URL", "install the capture
-service"), those live in the **[Site Converter extension docs](/docs/extensions/site-converter/)**.
+service"), those live in the **[Site Converter extension docs](/extensions/site-converter/)**.
 This page explains what runs underneath all of them.
 
 ## Why a local capture service?
@@ -38,7 +38,7 @@ Your browser (wp-admin)  ──►  Capture service (localhost, Node + Chrome)  
 ```
 
 It runs entirely on your computer; your admin browser talks to it directly at `localhost`, and
-nothing about your site is sent to a third party. See **[The capture service](/docs/extensions/site-converter/capture-service)**
+nothing about your site is sent to a third party. See **[The capture service](/extensions/site-converter/capture-service)**
 to install it.
 
 ## The conversion engines — what runs, and when
@@ -215,7 +215,7 @@ Stitch .zip ──► POST /capture-file ──► unzip → open code.html in C
 That yields the full‑fidelity result (real computed CSS, dynamic header/footer, real colors/fonts)
 instead of the weaker static parse. When the service is **off**, the upload falls back to the
 offline PHP parser — so "works offline" still holds, just at lower fidelity. Details in
-**[Convert from a file](/docs/extensions/site-converter/convert-from-file)**.
+**[Convert from a file](/extensions/site-converter/convert-from-file)**.
 
 ## Where AI fits (optional)
 
@@ -233,12 +233,12 @@ and the deterministic draft is distilled into **local learned rules** (`distill_
 on your machine: there is **no central data collection** (we deliberately rejected harvesting user
 pages — they can hold real, private content — over privacy and legal concerns). Improvements reach
 everyone only through the maintainer's reviewed, committed releases. See
-**[AI assist](/docs/extensions/site-converter/ai-assist)**.
+**[AI assist](/extensions/site-converter/ai-assist)**.
 
 ---
 
 **Where to next:**
 - The kit's **[method](./how-it-works.md)** — capture-first, build outside-in, measure parity.
 - **[Quick start](./quick-start.md)** — run an AI-driven conversion end to end.
-- The plugin's task pages — **[Convert from a URL](/docs/extensions/site-converter/convert-from-url)**,
-  **[Convert from a file](/docs/extensions/site-converter/convert-from-file)**.
+- The plugin's task pages — **[Convert from a URL](/extensions/site-converter/convert-from-url)**,
+  **[Convert from a file](/extensions/site-converter/convert-from-file)**.

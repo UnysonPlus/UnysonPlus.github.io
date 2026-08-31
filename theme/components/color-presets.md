@@ -17,7 +17,7 @@ variable plus a pair of utility classes. Recolor a preset and everything that re
 
 ## How it's coded
 
-The library is an [`addable-box`](/docs/options/option-types/addable-box) option named
+The library is an [`addable-box`](/options/option-types/addable-box) option named
 **`theme_colors`**, defined in
 `framework/extensions/shortcodes/includes/theme-settings/components-color.php`:
 
@@ -137,4 +137,4 @@ fw_set_db_settings_option( 'theme_colors', $presets ); // --color-primary + btn-
 
 - [Colors (Theme Settings tab)](/theme/theme-settings/colors) — the user-facing overview.
 - [Components overview](./index.md) — the shared preset pipeline.
-- [`color-picker`](/docs/options/option-types/color-picker) · [`predefined-colors`](/docs/options/option-types/predefined-colors) — the underlying controls.
+- [`color-picker`](/options/option-types/color-picker) · [`predefined-colors`](/options/option-types/predefined-colors) — the underlying controls.

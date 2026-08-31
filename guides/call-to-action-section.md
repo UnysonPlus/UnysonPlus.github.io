@@ -6,7 +6,7 @@ description: Add a full-width call-to-action band with a heading, text, and butt
 # Build a call-to-action section
 
 A call-to-action (CTA) is a full-width band with a heading, a line of supporting text, and a button.
-Here's how to build one with the [Page Builder](/docs/page-builder).
+Here's how to build one with the [Page Builder](/page-builder).
 
 ## Steps
 
@@ -34,5 +34,5 @@ every page.
 
 ## See also
 
-- [Elements reference](/docs/shortcodes/overview) — every builder element
-- [Build your first page](/docs/getting-started/build-your-first-page)
+- [Elements reference](/shortcodes/overview) — every builder element
+- [Build your first page](/getting-started/build-your-first-page)

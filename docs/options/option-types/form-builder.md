@@ -7,7 +7,7 @@ description: The Unyson+ form-builder option type — a form's fields, stored as
 
 # Form Builder
 
-The fields of a form. Extends the base builder option type, and is used by the [`contact_form`](/docs/shortcodes/components/contact-form) element.
+The fields of a form. Extends the base builder option type, and is used by the [`contact_form`](/shortcodes/components/contact-form) element.
 
 ## Stored value
 

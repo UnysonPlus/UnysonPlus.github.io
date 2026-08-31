@@ -6,7 +6,7 @@ description: Create responsive columns and rows in the Unyson+ Page Builder, wit
 # Build a responsive multi-column layout
 
 Columns let you place content side by side, a three-up feature row, a two-column "image + text", a
-pricing grid. The Unyson+ [Page Builder](/docs/page-builder) makes them responsive by default.
+pricing grid. The Unyson+ [Page Builder](/page-builder) makes them responsive by default.
 
 ## Steps
 
@@ -30,9 +30,9 @@ By default the columns flex-wrap on smaller screens. Use the **Desktop / Tablet 
 the builder to preview each breakpoint, and the column's **per-device width** options to change how a
 column behaves on tablet or mobile.
 
-Full detail: [Column widths & the grid](/docs/page-builder/column-widths).
+Full detail: [Column widths & the grid](/page-builder/column-widths).
 
 ## See also
 
-- [How the Page Builder works](/docs/page-builder/how-it-works)
+- [How the Page Builder works](/page-builder/how-it-works)
 - [Build a call-to-action section](./call-to-action-section.md)

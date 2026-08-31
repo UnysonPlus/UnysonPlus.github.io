@@ -15,7 +15,7 @@ description: Fixes for the Unyson+ Asset Optimizer — an empty asset list behin
 Engine) can serve from cache — hiding the real asset list.
 
 **Fix:** visit any page with **`?fw_asset_optimizer_discover=1`** appended to force a fresh render, then
-return to the settings and refresh. See [Asset Optimizer](/docs/extensions/asset-optimizer).
+return to the settings and refresh. See [Asset Optimizer](/extensions/asset-optimizer).
 
 ## A script broke after I combined it
 

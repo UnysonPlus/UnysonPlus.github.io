@@ -8,7 +8,7 @@ sidebar_position: 8
 A pull quote with an author, role and source link — for testimonials, press quotes and callouts.
 Core's Quote block gives you the text; this gives you the attribution and the designs.
 
-The block renders through the [`blockquote`](/docs/shortcodes/content-elements/blockquote) element —
+The block renders through the [`blockquote`](/shortcodes/content-elements/blockquote) element —
 the same PHP that runs in the page builder, so the front end is identical either way.
 
 ## What the sidebar exposes

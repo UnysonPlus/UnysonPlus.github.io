@@ -7,7 +7,7 @@ sidebar_position: 3
 
 A poster image with a play button that opens the video in a lightbox — YouTube, Vimeo or a self-hosted file. Core has no equivalent block.
 
-The block renders through the [`video_popup`](/docs/shortcodes/media-elements/video-popup) element — the same PHP that runs in the page builder, so
+The block renders through the [`video_popup`](/shortcodes/media-elements/video-popup) element — the same PHP that runs in the page builder, so
 the front end is identical either way.
 
 ## What the sidebar exposes

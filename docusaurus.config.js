@@ -137,7 +137,7 @@ const config = {
         hashed: true,
         indexDocs: true,
         indexBlog: true,
-        docsRouteBasePath: ['/docs', '/animation-engine', '/theme', '/guides', '/ai-dev-kit'],
+        docsRouteBasePath: ['/', '/animation-engine', '/theme', '/guides', '/ai-dev-kit'],
         // Index BOTH blog instances: the News blog (/blog) and the Design Decisions blog
         // (/decisions). Without this the plugin only indexes the default /blog, so decisions
         // posts never show up in search.
@@ -159,6 +159,12 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          // The Manual is the primary section and lives at the site root (no
+          // "/docs" prefix — the domain is already docs.unysonplus.com). The
+          // custom homepage (src/pages/index.js) still owns "/"; docs pages get
+          // their own slugs (/intro, /extensions/overview, …). Old /docs/* URLs
+          // are 301'd to the new roots by the client-redirects plugin below.
+          routeBasePath: '/',
           sidebarPath: './sidebars.js',
           editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
         },
@@ -193,15 +199,34 @@ const config = {
         // Pages that moved when Custom Fields + Post Types were promoted out of
         // Extensions into the Data & Content Modeling section.
         redirects: [
-          {from: '/docs/extensions/custom-fields', to: '/docs/data-modeling/custom-fields'},
-          {from: '/docs/extensions/post-types', to: '/docs/data-modeling/post-types'},
+          {from: '/docs/extensions/custom-fields', to: '/data-modeling/custom-fields'},
+          {from: '/docs/extensions/post-types', to: '/data-modeling/post-types'},
           // The icon-v2 / icon-v3 option-type ids were consolidated into one `icon` type.
-          {from: '/docs/options/option-types/icon-v2', to: '/docs/options/option-types/icon'},
+          {from: '/docs/options/option-types/icon-v2', to: '/options/option-types/icon'},
           // Post Carousel was dropped (a duplicate of the Posts element).
-          {from: '/docs/shortcodes/components/post-carousel', to: '/docs/shortcodes/components/posts'},
+          {from: '/docs/shortcodes/components/post-carousel', to: '/shortcodes/components/posts'},
           // Options Framework category given a clean slug (was the generated-index /docs/category/… URL).
-          {from: '/docs/category/options-framework', to: '/docs/options-framework'},
+          {from: '/docs/category/options-framework', to: '/options-framework'},
+          // The Manual moved off the "/docs" prefix; keep the old landing working.
+          {from: '/docs', to: '/intro'},
         ],
+        // The Manual moved from /docs/* to /* — 301 every old Manual URL to its
+        // new root path. Only Manual pages are remapped; the other doc instances
+        // (animation-engine, theme, guides, ai-dev-kit, reference, decisions),
+        // the News blog, the homepage and standalone pages are left alone.
+        createRedirects(existingPath) {
+          const OTHER = [
+            '/animation-engine', '/theme', '/guides', '/ai-dev-kit',
+            '/reference', '/decisions', '/blog',
+          ];
+          if (existingPath === '/' || existingPath === '/sitemap' || existingPath === '/markdown-page') {
+            return undefined;
+          }
+          if (OTHER.some((p) => existingPath === p || existingPath.startsWith(p + '/'))) {
+            return undefined;
+          }
+          return ['/docs' + existingPath];
+        },
       },
     ],
     [
@@ -358,9 +383,9 @@ const config = {
           {
             title: 'Manual',
             items: [
-              {label: 'Introduction', to: '/docs/intro'},
-              {label: 'Installation', to: '/docs/installation'},
-              {label: 'Extensions', to: '/docs/extensions/overview'},
+              {label: 'Introduction', to: '/intro'},
+              {label: 'Installation', to: '/installation'},
+              {label: 'Extensions', to: '/extensions/overview'},
             ],
           },
           {

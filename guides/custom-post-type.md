@@ -34,5 +34,5 @@ them, or build a dedicated archive with a [Theme Builder body template](./custom
 
 ## See also
 
-- [Post Types &amp; Taxonomies](/docs/data-modeling/post-types)
-- [Custom Fields](/docs/data-modeling/custom-fields)
+- [Post Types &amp; Taxonomies](/data-modeling/post-types)
+- [Custom Fields](/data-modeling/custom-fields)

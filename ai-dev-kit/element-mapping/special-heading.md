@@ -10,7 +10,7 @@ hide_table_of_contents: true
 
 # Special Heading — converter mapping
 
-Source `heading` → [`special_heading`](/docs/shortcodes/content-elements/special-heading). This page shows the recognizer rule and **every**
+Source `heading` → [`special_heading`](/shortcodes/content-elements/special-heading). This page shows the recognizer rule and **every**
 option on the shortcode, with how the converter fills it — so you can see at a glance which options
 are mapped, which are reproduced via CSS, and which are left for manual editing.
 
@@ -21,7 +21,7 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 | **Priority** | 80 |
 | **Recognizer** | `heading` |
 | **Matches when** | A semantic heading tag (`<h1>`–`<h6>`), or a text node the heuristics score as a heading. Level ≤ 2 becomes a page **Title** (larger Display type); level ≥ 3 a section heading. |
-| **Becomes** | [`special_heading`](/docs/shortcodes/content-elements/special-heading) |
+| **Becomes** | [`special_heading`](/shortcodes/content-elements/special-heading) |
 | **Recognizer block shape** | `{ t:'heading', html|text, level, align, cls, wrapCls, cs, overline, subtitle, wrapMaxW }` |
 | **Fallback** | Degrades to `text_block`, then `code_block`. |
 

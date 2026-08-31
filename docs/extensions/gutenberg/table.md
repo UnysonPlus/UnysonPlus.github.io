@@ -7,7 +7,7 @@ sidebar_position: 81
 
 A data table with sorting, search, pagination and a sticky header.
 
-The block renders through the [`table`](/docs/shortcodes/content-elements/table) element — the same
+The block renders through the [`table`](/shortcodes/content-elements/table) element — the same
 PHP that runs in the page builder, so the front end is identical either way.
 
 ## What the sidebar exposes
@@ -37,7 +37,7 @@ PHP that runs in the page builder, so the front end is identical either way.
 Anything not listed stays available in the page builder, and **round-trips untouched**.
 
 :::note[Cells are edited in the sidebar, as a list of rows]
-The [`table`](/docs/options/option-types/table) control lists each row's cells rather than drawing a
+The [`table`](/options/option-types/table) control lists each row's cells rather than drawing a
 grid — a sidebar column is not a grid. Column alignment and width, and the header and footer row
 counts, are here.
 

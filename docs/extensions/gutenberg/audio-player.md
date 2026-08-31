@@ -7,7 +7,7 @@ sidebar_position: 33
 
 An audio player with a playlist, volume and an optional download link — for podcasts, tracks and recorded talks.
 
-The block renders through the [`audio_player`](/docs/shortcodes/media-elements/audio-player) element — the same PHP that runs in the page builder, so the
+The block renders through the [`audio_player`](/shortcodes/media-elements/audio-player) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes
@@ -31,7 +31,7 @@ only writes the values you change, so an element styled in the builder keeps eve
 sidebar does not show.
 
 :::note[`tracks` is a repeater]
-It is an [`addable-popup`](/docs/options/option-types/addable-popup): items expand in place in the
+It is an [`addable-popup`](/options/option-types/addable-popup): items expand in place in the
 block sidebar rather than opening a modal, and store exactly the value the page builder stores.
 :::
 

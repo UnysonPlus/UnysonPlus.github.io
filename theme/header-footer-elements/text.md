@@ -16,7 +16,7 @@ the **`{{current_year}}`** token — ideal for a self-updating copyright. Availa
 | | |
 | --- | --- |
 | **Type key** | `text` |
-| **Fields** | `text_content` ([wp-editor](/docs/options/option-types/wp-editor)) |
+| **Fields** | `text_content` ([wp-editor](/options/option-types/wp-editor)) |
 | **Rendered by** | `unysonplus_render_text_element()` (`inc/includes/footer-builder.php`) |
 
 ## How it works

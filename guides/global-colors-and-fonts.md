@@ -41,4 +41,4 @@ Export / Import**. See [Child themes → moving a design](/theme/child-themes#mo
 ## See also
 
 - [Theme Settings](/theme/theme-settings)
-- [Presets & design tokens](/docs/hooks/presets-and-tokens) — registering presets in code
+- [Presets & design tokens](/hooks/presets-and-tokens) — registering presets in code

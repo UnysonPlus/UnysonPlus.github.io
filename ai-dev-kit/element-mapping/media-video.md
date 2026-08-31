@@ -10,7 +10,7 @@ hide_table_of_contents: true
 
 # Media Video — converter mapping
 
-Source `video` → [`media_video`](/docs/shortcodes/media-elements/media-video). This page shows the recognizer rule and **every**
+Source `video` → [`media_video`](/shortcodes/media-elements/media-video). This page shows the recognizer rule and **every**
 option on the shortcode, with how the converter fills it — so you can see at a glance which options
 are mapped, which are reproduced via CSS, and which are left for manual editing.
 
@@ -21,7 +21,7 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 | **Priority** | 62 |
 | **Recognizer** | `video` |
 | **Matches when** | A `<video>` or a video embed (YouTube / Vimeo) that isn’t a full-screen section background. |
-| **Becomes** | [`media_video`](/docs/shortcodes/media-elements/media-video) |
+| **Becomes** | [`media_video`](/shortcodes/media-elements/media-video) |
 | **Recognizer block shape** | `{ mode:embed|self_hosted, url, poster, sources }` |
 | **Fallback** | Degrades to `code_block`. |
 

@@ -18,7 +18,7 @@ once applies it consistently everywhere (this replaced the old per-element *Imag
 
 ## How it's coded
 
-Stored under **`image_styles`**, an [`addable-box`](/docs/options/option-types/addable-box)
+Stored under **`image_styles`**, an [`addable-box`](/options/option-types/addable-box)
 (`components-image-styles.php`). Each row is a `style_name` plus the treatment fields (aspect, radius,
 shape/mask, filter, duotone color, scrim + scrim color). The collapsed row renders a **live, isolated
 `<iframe>` thumbnail** (CSP-safe) approximating the treatment.
@@ -68,11 +68,11 @@ Compiled into the single cached `wp-content/uploads/unysonplus/css/presets-{hash
 ## How it's picked
 
 The Styling tab's **Image Style** control is the
-[`image-style-picker`](/docs/options/option-types/image-style-picker) (a live swatch preview of every
+[`image-style-picker`](/options/option-types/image-style-picker) (a live swatch preview of every
 `.imgs-{slug}`). Advanced one-offs go in the element's own Custom CSS; animated hover treatments live in
 the Animation Engine.
 
 ## Related
 
-- [`image-style-picker`](/docs/options/option-types/image-style-picker) — the picker control.
+- [`image-style-picker`](/options/option-types/image-style-picker) — the picker control.
 - [Components overview](./index.md) — the shared pipeline.

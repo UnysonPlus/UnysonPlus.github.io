@@ -59,6 +59,6 @@ Two switches tune the combined bundle:
 
 :::tip[It pairs with the clean output]
 Because the theme already compiles its design into [one generated stylesheet](/theme/settings-to-css)
-and the page builder emits [clean markup](/docs/page-builder/clean-dom), Asset Optimizer has little to
+and the page builder emits [clean markup](/page-builder/clean-dom), Asset Optimizer has little to
 clean up, it mostly folds the remaining plugin/element stylesheets and scripts into one request each.
 :::

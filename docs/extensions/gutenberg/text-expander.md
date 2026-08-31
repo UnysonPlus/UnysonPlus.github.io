@@ -8,7 +8,7 @@ sidebar_position: 7
 Show a short excerpt with a **Read more** toggle that reveals the rest — for long copy, FAQs,
 disclosures and specification lists. Core has no equivalent block.
 
-The block renders through the [`text_expander`](/docs/shortcodes/content-elements/text-expander)
+The block renders through the [`text_expander`](/shortcodes/content-elements/text-expander)
 element — the same PHP that runs in the page builder, so the front end is identical either way.
 
 ## What the sidebar exposes
@@ -45,7 +45,7 @@ would silently expand it instead. Visitors get the real toggle.
 :::
 
 :::note[Both content fields edit markup, not rich text]
-`visible_content` and `hidden_content` are [`wp-editor`](/docs/options/option-types/wp-editor)
+`visible_content` and `hidden_content` are [`wp-editor`](/options/option-types/wp-editor)
 options, so in a block sidebar they edit **HTML directly** rather than showing a WYSIWYG — the
 reasoning is on that option type's page.
 :::

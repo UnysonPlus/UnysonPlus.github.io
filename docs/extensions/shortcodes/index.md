@@ -51,7 +51,7 @@ add_filter('fw_ext_shortcodes_disable_shortcodes', '_filter_theme_disable_defaul
 
 If overwriting a built-in shortcode does not suit your needs then you might want to create a new shortcode. For that you will first have to decide where to place it:
 
-- If you are developing a [unyson extension](/docs/extensions/creating-extensions/create-extension) and you want to offer some functionality from the extension via a shortcode you should create the it at `framework-customizations/extensions/{your-extension}/shortcodes/{your-shortcode}`. One such example from the built-in extensions is the slider extension and it's shortcode.
+- If you are developing a [unyson extension](/extensions/creating-extensions/create-extension) and you want to offer some functionality from the extension via a shortcode you should create the it at `framework-customizations/extensions/{your-extension}/shortcodes/{your-shortcode}`. One such example from the built-in extensions is the slider extension and it's shortcode.
 - If the shortcode that you want to create is not extension specific but more generalist (like the `button`, `tabs` ones are) than you should place it the shortcodes extensions (`framework-customizations/extensions/shortcodes/shortcodes/{your-shortcodes}`).
 
 ### Directory structure
@@ -150,7 +150,7 @@ To set an icon for the shortcode box, put an image named `page_builder.png` insi
 
 ### Options file
 
-The shortcode directory can contain a file named `options.php` with correctly formed [options](/docs/options/introduction):
+The shortcode directory can contain a file named `options.php` with correctly formed [options](/options/introduction):
 
 ```php
 $options = array(
@@ -262,7 +262,7 @@ The new class inherits some usefull methods like:
 
 The methods that are most prone to be overwritten are:
 
-- `_init()` - is called when the `FW_Shortcode` instance for the shortcode is created. Useful for loading other php files (custom [option types](/docs/options/introduction), libraries, etc.).
+- `_init()` - is called when the `FW_Shortcode` instance for the shortcode is created. Useful for loading other php files (custom [option types](/options/introduction), libraries, etc.).
 - `_render($atts, $content, $tag)` - returns the html that will be displayed when the shortcode will be executed by WordPress. Useful for changing the default behavior with a custom one.
 
 :::tip
@@ -448,7 +448,7 @@ This ex will go through creating a `[table_builder]` shortcode, it will make use
     > > [!TIP]
     > > To add an icon to the shortcode see the icon section
 
-3.  A custom [option type](/docs/options/introduction) is needed for the shortcode to be created, because the ones that exist in the framework do not suit our needs.
+3.  A custom [option type](/options/introduction) is needed for the shortcode to be created, because the ones that exist in the framework do not suit our needs.
 
     > 1.  Create an includes folder and a `table-builder` option type inside it.
     >

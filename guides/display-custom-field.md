@@ -20,7 +20,7 @@ without touching code. This guide adds an editable **Subtitle** field to pages a
 
 Two ways, pick whichever fits.
 
-**No code, in a builder text field** using [Dynamic Content](/docs/dynamic-content):
+**No code, in a builder text field** using [Dynamic Content](/dynamic-content):
 
 ```text
 {{post_meta|key=subtitle|fallback=}}
@@ -39,9 +39,9 @@ if ( $subtitle ) {
 
 Custom Fields supports many field types (text, WYSIWYG, image, gallery, select, date, color, a
 **Repeater** for repeating rows, and more), plus per-group rules (post types, page templates, post
-statuses) and JSON import/export. See [Custom Fields](/docs/data-modeling/custom-fields).
+statuses) and JSON import/export. See [Custom Fields](/data-modeling/custom-fields).
 
 ## See also
 
-- [Dynamic Content](/docs/dynamic-content) — the `{{token}}` system
+- [Dynamic Content](/dynamic-content) — the `{{token}}` system
 - [Create a custom post type](./custom-post-type.md)

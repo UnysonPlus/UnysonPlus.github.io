@@ -9,7 +9,7 @@ An email signup form — heading, description, name and email fields, a consent 
 button. Core has no equivalent block, and the usual alternative is embedding a third-party form that
 arrives with its own stylesheet and ignores your theme.
 
-The block renders through the [`newsletter`](/docs/shortcodes/interactive-elements/newsletter) element — the same PHP
+The block renders through the [`newsletter`](/shortcodes/interactive-elements/newsletter) element — the same PHP
 that runs in the page builder, so the front end is identical either way.
 
 ## What the sidebar exposes

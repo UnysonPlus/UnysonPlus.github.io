@@ -10,7 +10,7 @@ hide_table_of_contents: true
 
 # Code Block — converter mapping
 
-Source `code (universal fallback)` → [`code_block`](/docs/shortcodes/content-elements/code-block). This page shows the recognizer rule and **every**
+Source `code (universal fallback)` → [`code_block`](/shortcodes/content-elements/code-block). This page shows the recognizer rule and **every**
 option on the shortcode, with how the converter fills it — so you can see at a glance which options
 are mapped, which are reproduced via CSS, and which are left for manual editing.
 
@@ -21,7 +21,7 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 | **Priority** | 99 |
 | **Recognizer** | `code (universal fallback)` |
 | **Matches when** | Anything the converter can’t map to a more specific element — the genuinely bespoke markup. This is the **universal fallback**, so nothing is ever lost. |
-| **Becomes** | [`code_block`](/docs/shortcodes/content-elements/code-block) |
+| **Becomes** | [`code_block`](/shortcodes/content-elements/code-block) |
 | **Recognizer block shape** | `{ html }` |
 | **Fallback** | — (this is the fallback). |
 

@@ -10,7 +10,7 @@ hide_table_of_contents: true
 
 # Posts — converter mapping
 
-Source `posts` → [`posts`](/docs/shortcodes/components/posts). This page shows the recognizer rule and **every**
+Source `posts` → [`posts`](/shortcodes/components/posts). This page shows the recognizer rule and **every**
 option on the shortcode, with how the converter fills it — so you can see at a glance which options
 are mapped, which are reproduced via CSS, and which are left for manual editing.
 
@@ -21,7 +21,7 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 | **Priority** | 66 |
 | **Recognizer** | `posts` |
 | **Matches when** | A blog/post grid — repeating cards each with an image, title, and meta (a "latest articles" section). |
-| **Becomes** | [`posts`](/docs/shortcodes/components/posts) |
+| **Becomes** | [`posts`](/shortcodes/components/posts) |
 | **Recognizer block shape** | `{ count, design:{ layout_mode, card_style, columns }, meta:{ date, author } }` |
 | **Fallback** | Degrades to `code_block`. |
 

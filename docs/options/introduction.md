@@ -9,7 +9,7 @@ sidebar_position: 1
 
 ## Introduction
 
-**Options** are intended for creating form fields representing different kind of data e.g. rich and plain text, icons, media content, fonts and more. With options you can easily create tabs, boxes and form inputs for the admin pages. You just build an array and it will be transformed to html. On form submit, values will be saved into the database, and you will be able to access them anywhere you want using `fw_get_db_..._option()` [helper functions](/docs/helpers/php).
+**Options** are intended for creating form fields representing different kind of data e.g. rich and plain text, icons, media content, fonts and more. With options you can easily create tabs, boxes and form inputs for the admin pages. You just build an array and it will be transformed to html. On form submit, values will be saved into the database, and you will be able to access them anywhere you want using `fw_get_db_..._option()` [helper functions](/helpers/php).
 
 For advanced users, this is an easy way to create form inputs and use them for various purposes. The simplest options array looks something like this:
 

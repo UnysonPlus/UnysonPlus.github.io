@@ -6,7 +6,7 @@ description: Show the current year automatically in your WordPress footer using 
 # Add a dynamic copyright year to your footer
 
 A footer copyright line that always shows the current year, with no January edits, using
-[Dynamic Content](/docs/dynamic-content) tokens.
+[Dynamic Content](/dynamic-content) tokens.
 
 ## Steps
 
@@ -24,5 +24,5 @@ the line also stays correct if you rename the site.
 
 ## See also
 
-- [Dynamic Content](/docs/dynamic-content) — the full tag catalog (post, site, author, date, …)
+- [Dynamic Content](/dynamic-content) — the full tag catalog (post, site, author, date, …)
 - [Build a sticky site header](./sticky-header.md)

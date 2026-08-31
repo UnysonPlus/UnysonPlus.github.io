@@ -10,7 +10,7 @@ hide_table_of_contents: true
 
 # Image Box — converter mapping
 
-Source `image_box` → [`image_box`](/docs/shortcodes/media-elements/image-box). This page shows the recognizer rule and **every**
+Source `image_box` → [`image_box`](/shortcodes/media-elements/image-box). This page shows the recognizer rule and **every**
 option on the shortcode, with how the converter fills it — so you can see at a glance which options
 are mapped, which are reproduced via CSS, and which are left for manual editing.
 
@@ -21,7 +21,7 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 | **Priority** | 58 |
 | **Recognizer** | `image_box` |
 | **Matches when** | An image paired with a title + text (a media card / feature block — image beside or above a heading and copy). |
-| **Becomes** | [`image_box`](/docs/shortcodes/media-elements/image-box) |
+| **Becomes** | [`image_box`](/shortcodes/media-elements/image-box) |
 | **Recognizer block shape** | `{ img:{ src, alt, cls }, card:{ title, titleTag, text, link } }` |
 | **Fallback** | Degrades to `code_block`. |
 

@@ -7,7 +7,7 @@ sidebar_position: 60
 
 A formatted code sample — or raw HTML rendered straight into the page.
 
-The block renders through the [`code_block`](/docs/shortcodes/content-elements/code-block) element — the same PHP that runs in the page builder, so the
+The block renders through the [`code_block`](/shortcodes/content-elements/code-block) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes
@@ -34,7 +34,7 @@ into the field.
 
 :::note[The sidebar field is a plain monospace textarea]
 The page builder gives this option a syntax-highlighting editor; the block sidebar does not. The
-reasoning is on the [`code-editor`](/docs/options/option-types/code-editor) page — briefly, wrapping
+reasoning is on the [`code-editor`](/options/option-types/code-editor) page — briefly, wrapping
 WordPress's CodeMirror in a React component risks an unrelated re-render wiping the buffer, and for a
 code field that means losing what you typed.
 

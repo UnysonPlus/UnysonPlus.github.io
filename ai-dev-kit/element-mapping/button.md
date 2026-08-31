@@ -10,7 +10,7 @@ hide_table_of_contents: true
 
 # Button — converter mapping
 
-Source `button` → [`button`](/docs/shortcodes/components/button). This page shows the recognizer rule and **every**
+Source `button` → [`button`](/shortcodes/components/button). This page shows the recognizer rule and **every**
 option on the shortcode, with how the converter fills it — so you can see at a glance which options
 are mapped, which are reproduced via CSS, and which are left for manual editing.
 
@@ -21,7 +21,7 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 | **Priority** | 40 |
 | **Recognizer** | `button` |
 | **Matches when** | A `<button>`, or an `<a>` styled as a button (a `btn` / `button` / `cta` class, or button-like padding + fill). |
-| **Becomes** | [`button`](/docs/shortcodes/components/button) |
+| **Becomes** | [`button`](/shortcodes/components/button) |
 | **Recognizer block shape** | `{ t:'button', label|text, href, cls, icon, iconPos, cs, groupCls, groupCs, align }` |
 | **Fallback** | Degrades to `code_block`. |
 

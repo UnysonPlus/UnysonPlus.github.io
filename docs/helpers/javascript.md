@@ -39,7 +39,7 @@ General javaScript helpers:
 
 - `fw.capitalizeFirstLetter(text)` - capitalizes the first letter of a string.
 
-- `fw.ops(properties, value, obj, delimiter)` - same as `fw_aks(...)` from [PHP Helpers](/docs/helpers/php), but for javascript objects.
+- `fw.ops(properties, value, obj, delimiter)` - same as `fw_aks(...)` from [PHP Helpers](/helpers/php), but for javascript objects.
 
   > ``` javascript
   > var obj = {foo: {}};
@@ -49,7 +49,7 @@ General javaScript helpers:
   > console.log(obj); // {foo: {bar: 'demo'}}
   > ```
 
-- `fw.opg(properties, obj, defaultValue, delimiter)` - same as `fw_akg(...)` from [PHP Helpers](/docs/helpers/php), but for javascript objects.
+- `fw.opg(properties, obj, defaultValue, delimiter)` - same as `fw_akg(...)` from [PHP Helpers](/helpers/php), but for javascript objects.
 
   > ``` javascript
   > var obj = {foo: {bar: 'hello'}};
@@ -61,7 +61,7 @@ General javaScript helpers:
 
 ## Options Modal
 
-Modal with [options](/docs/options/introduction). Display html generated from a given options array. After the user completes the form and presses "Save", values are available as a javascript object.
+Modal with [options](/options/introduction). Display html generated from a given options array. After the user completes the form and presses "Save", values are available as a javascript object.
 
 ```javascript
 var modal = new fw.OptionsModal({

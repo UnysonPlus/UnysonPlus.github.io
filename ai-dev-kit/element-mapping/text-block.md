@@ -10,7 +10,7 @@ hide_table_of_contents: true
 
 # Text Block — converter mapping
 
-Source `text` → [`text_block`](/docs/shortcodes/content-elements/text-block). This page shows the recognizer rule and **every**
+Source `text` → [`text_block`](/shortcodes/content-elements/text-block). This page shows the recognizer rule and **every**
 option on the shortcode, with how the converter fills it — so you can see at a glance which options
 are mapped, which are reproduced via CSS, and which are left for manual editing.
 
@@ -21,7 +21,7 @@ are mapped, which are reproduced via CSS, and which are left for manual editing.
 | **Priority** | 50 |
 | **Recognizer** | `text` |
 | **Matches when** | A paragraph / body-copy block (typically `<p>` or a text container) that isn't a heading, button, or other recognized primitive. Short ALL-CAPS or eyebrow-classed text is refined to an **overline** instead. |
-| **Becomes** | [`text_block`](/docs/shortcodes/content-elements/text-block) |
+| **Becomes** | [`text_block`](/shortcodes/content-elements/text-block) |
 | **Recognizer block shape** | `{ t:'text', html|text, maxWidth, align, cs }` |
 | **Fallback** | Degrades to `code_block`. |
 

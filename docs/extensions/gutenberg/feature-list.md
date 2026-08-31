@@ -7,7 +7,7 @@ sidebar_position: 25
 
 A list of features with icons or markers — what is included, what a plan covers, why to choose this one. One column or several.
 
-The block renders through the [`feature_list`](/docs/shortcodes/components/feature-list) element — the same PHP that runs in the page builder, so the
+The block renders through the [`feature_list`](/shortcodes/components/feature-list) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes
@@ -36,12 +36,12 @@ only writes the values you change, so an element styled in the builder keeps eve
 sidebar does not show.
 
 :::note[`items` is a repeater]
-It is an [`addable-popup`](/docs/options/option-types/addable-popup): items expand in place in the
+It is an [`addable-popup`](/options/option-types/addable-popup): items expand in place in the
 block sidebar rather than opening a modal, and store exactly the value the page builder stores.
 :::
 
 :::note[`marker_size` carries a unit]
-It is a [`unit-input`](/docs/options/option-types/unit-input): a number *and* a unit, where the number
+It is a [`unit-input`](/options/option-types/unit-input): a number *and* a unit, where the number
 half is stored as a string so an unset size stays distinguishable from a zero one. Clearing the field
 means "use the design's own size", not "make it 0".
 :::

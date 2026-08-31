@@ -7,7 +7,7 @@ sidebar_position: 53
 
 A query-driven grid or list of posts — a blog index, a related-articles strip, a filtered archive. Core has Query Loop; this is the one with card layouts, live filters and image treatments.
 
-The block renders through the [`posts`](/docs/shortcodes/components/posts) element — the same PHP that runs in the page builder, so the
+The block renders through the [`posts`](/shortcodes/components/posts) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes
@@ -75,7 +75,7 @@ looking at.
 :::
 
 :::note[`meta_items` is a checkbox list]
-It is a [`checkboxes`](/docs/options/option-types/checkboxes) option — tick the meta you want. Only
+It is a [`checkboxes`](/options/option-types/checkboxes) option — tick the meta you want. Only
 ticked entries are stored.
 :::
 

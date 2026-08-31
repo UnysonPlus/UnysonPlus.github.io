@@ -7,7 +7,7 @@ sidebar_position: 34
 
 An author card — avatar, name, role, bio and social links — pulled from a WordPress user or typed in directly.
 
-The block renders through the [`author_box`](/docs/shortcodes/components/author-box) element — the same PHP that runs in the page builder, so the
+The block renders through the [`author_box`](/shortcodes/components/author-box) element — the same PHP that runs in the page builder, so the
 front end is identical either way.
 
 ## What the sidebar exposes
@@ -36,7 +36,7 @@ only writes the values you change, so an element styled in the builder keeps eve
 sidebar does not show.
 
 :::note[`socials` is a repeater]
-It is an [`addable-popup`](/docs/options/option-types/addable-popup): items expand in place in the
+It is an [`addable-popup`](/options/option-types/addable-popup): items expand in place in the
 block sidebar rather than opening a modal, and store exactly the value the page builder stores.
 :::
 

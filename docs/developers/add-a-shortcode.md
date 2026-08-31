@@ -51,7 +51,7 @@ Header-Footer Elements).
 
 ### `options.php` — the fields (and the atts schema)
 
-`options.php` returns an array of [option types](/docs/options/option-types). Each becomes a field in
+`options.php` returns an array of [option types](/options/option-types). Each becomes a field in
 the element's edit modal, and each field's saved value becomes a key in the element's `atts`.
 
 ```php
@@ -82,7 +82,7 @@ in the element's sibling `AGENTS.md`.
 
 `$atts` (the resolved option values) and `$content` (rendered inner content, for container elements)
 are in scope. Output lean, semantic markup, no wrapper-div soup, per the
-[clean-DOM philosophy](/docs/page-builder/clean-dom):
+[clean-DOM philosophy](/page-builder/clean-dom):
 
 ```php
 <?php if ( ! defined( 'FW' ) ) die( 'Forbidden' );

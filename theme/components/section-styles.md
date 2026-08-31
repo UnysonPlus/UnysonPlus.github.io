@@ -17,7 +17,7 @@ built-in variants; retint them or add your own branded bands.
 
 ## How it's coded
 
-An [`addable-box`](/docs/options/option-types/addable-box) stored under **`section_style_presets`**
+An [`addable-box`](/options/option-types/addable-box) stored under **`section_style_presets`**
 (`components-section-styles.php`). Each row has a **Name** (the class suffix and dropdown label, e.g.
 `Dark` → `.section--dark`) plus the skin fields (background, text/heading/link colors, border…). This
 tab also hosts the **Container Widths** library used by a Section's per-section width preset.
@@ -35,4 +35,4 @@ on the `<section>`. Because it stores the slug, editing the preset restyles ever
 
 ## Related
 
-- [Section shortcode](/docs/shortcodes/layout-elements/section) · [Components overview](./index.md)
+- [Section shortcode](/shortcodes/layout-elements/section) · [Components overview](./index.md)

@@ -137,7 +137,7 @@ const config = {
         hashed: true,
         indexDocs: true,
         indexBlog: true,
-        docsRouteBasePath: ['/', '/animation-engine', '/theme', '/guides', '/ai-dev-kit'],
+        docsRouteBasePath: ['/', '/animation-engine', '/theme', '/guides', '/ai-dev-kit', '/blocks'],
         // Index BOTH blog instances: the News blog (/blog) and the Design Decisions blog
         // (/decisions). Without this the plugin only indexes the default /blog, so decisions
         // posts never show up in search.
@@ -217,7 +217,7 @@ const config = {
         createRedirects(existingPath) {
           const OTHER = [
             '/animation-engine', '/theme', '/guides', '/ai-dev-kit',
-            '/reference', '/decisions', '/blog',
+            '/reference', '/decisions', '/blog', '/blocks',
           ];
           if (existingPath === '/' || existingPath === '/sitemap' || existingPath === '/markdown-page') {
             return undefined;
@@ -266,6 +266,19 @@ const config = {
         path: 'ai-dev-kit',
         routeBasePath: 'ai-dev-kit',
         sidebarPath: './sidebarsAiDevKit.js',
+        editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
+      },
+    ],
+    // Blocks — how Unyson+ works with the WordPress block editor, plus the roadmap
+    // that tracks each phase as it lands. Its own instance so block-editor support is
+    // discoverable on its own terms rather than buried inside the Manual.
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'blocks',
+        path: 'blocks',
+        routeBasePath: 'blocks',
+        sidebarPath: './sidebarsBlocks.js',
         editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
       },
     ],
@@ -332,6 +345,13 @@ const config = {
             sidebarId: 'extensionsSidebar',
             position: 'left',
             label: 'Extensions',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'blocksSidebar',
+            docsPluginId: 'blocks',
+            position: 'left',
+            label: 'Blocks',
           },
           {
             type: 'docSidebar',

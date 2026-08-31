@@ -180,9 +180,12 @@ the matching screen size:
 
 ## Import / export a layout
 
-On an **enabled top-level mega item** in the menu editor (Appearance → Menus), two controls appear next
+On an **enabled top-level mega item** in the menu editor (Appearance → Menus), three controls appear next
 to its **Settings** button:
 
+- **Preview** — opens the assembled panel (its columns and items, from the saved settings) in an overlay,
+  so you can see the whole mega dropdown without leaving the editor. The preview uses the extension's
+  baseline styling; theme-specific header polish is applied on the live site.
 - **Export layout** — downloads a JSON file containing the item's row options plus the full tree of its
   columns and items (titles, links, and every mega option).
 - **Import layout** — uploads a previously exported JSON and **re-creates** those columns and items

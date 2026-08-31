@@ -6,17 +6,8 @@ title: "Mega Menu"
 The Mega Menu extension gives the end-user the ability to construct advanced navigation menus.
 
 :::info
-This extensions is not be visible by default in Unyson+ Extensions page. To make it appear in that list, you have to:
-
-- Add the extension name in [theme manifest](/docs/manifest/theme)
-
-  > ``` php
-  > $manifest['supported_extensions'] = array(
-  >     'megamenu' => array(),
-  > );
-  > ```
-
-- Or set the `WP_DEBUG` constant to `true`
+Mega Menu is listed in the Unyson+ **Extensions** manager by default — just activate it there
+(*Unyson+ → Extensions → Mega Menu → Activate*). No theme-manifest opt-in or `WP_DEBUG` is needed.
 :::
 
 ## Overview

@@ -135,9 +135,17 @@ installable bundle — `{ theme:{ slug, files }, page:{ title, content } }` — 
   slug-collision guard installs to a `-blocks` slug rather than overwriting a same-named classic theme.
 
 Proven end to end on a live Jukebox capture: `capture --target=block-theme` → `import_dir` → an FSE site
-(`wp_is_block_theme()` → true) with the captured nav, social icons and hero — then fully restored. The
-CLI/env flag **is** the target selector; a GUI toggle in the dashboard/admin is the one remaining
-cosmetic surface.
+(`wp_is_block_theme()` → true) with the captured nav, social icons and hero — then fully restored.
+
+**The admin GUI toggle is built.** ✅ The WP-admin Site Converter now has an **Output** control —
+*Page Builder* (default, unchanged) vs. *Block Theme (standalone FSE, no plugin)*, with a *Core blocks
+/ UnysonPlus blocks* vocabulary sub-choice (the C6 toggle). Choosing **Block Theme** for a URL routes
+the conversion through `run_block_theme_conversion()` — which runs `capture.mjs <url> --target=block-theme
+--vocab=<v>` locally, then installs the result via `import_dir` → `install_block_theme` and lands on a
+success page with *View site* / *Open the Site Editor*. The option is threaded through both the admin
+`convert_prepare` flow and the dashboard REST `/convert` endpoint (`target` + `vocabulary` params), and
+it grays out when the **Classic Editor** is enforced (a block theme needs the block editor). The default
+page-builder path is byte-for-byte unchanged (additive only).
 
 **Media is localized on install.** ✅ The emitters deliberately hotlink the source's image URLs
 (portable, plugin-free output with no WP dependency at emit time). At install, `install_block_theme()`

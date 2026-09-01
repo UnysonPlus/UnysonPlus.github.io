@@ -9,7 +9,7 @@ description: "Free WooCommerce integration for UnysonPlus — storefront element
 
 <div class="ext-hero">
   <span class="ext-hero__badge">FREE!</span>
-  <p class="ext-hero__title">Design your WooCommerce store — FREE!</p>
+  <p class="ext-hero__title">Design a premium store in minutes.</p>
   <p class="ext-hero__sub">Storefront elements, product grids and deep theme integration to build and style your WooCommerce shop visually — the store-design tools other builders sell as add-ons, free.</p>
 </div>
 

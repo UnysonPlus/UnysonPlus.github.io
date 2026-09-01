@@ -9,7 +9,7 @@ description: "Free WordPress custom fields plugin — build custom field groups 
 
 <div class="ext-hero">
   <span class="ext-hero__badge">FREE!</span>
-  <p class="ext-hero__title">Every custom-field type — no pro license.</p>
+  <p class="ext-hero__title">Build premium custom fields in minutes.</p>
   <p class="ext-hero__sub">Build custom field groups — text, image, repeater, relationship, flexible content and more — with an intuitive admin UI. The fields ACF locks in its Pro tier, free.</p>
 </div>
 

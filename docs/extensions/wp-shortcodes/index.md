@@ -8,7 +8,7 @@ description: "Free WordPress shortcodes — insert UnysonPlus elements (buttons,
 
 <div class="ext-hero">
   <span class="ext-hero__badge">FREE!</span>
-  <p class="ext-hero__title">Every UnysonPlus element — in any editor, FREE!</p>
+  <p class="ext-hero__title">Drop premium elements anywhere, in seconds.</p>
   <p class="ext-hero__sub">Insert buttons, galleries, accordions, tabs and dozens of other UnysonPlus elements into any post, page or widget — no page builder required, no cost.</p>
 </div>
 

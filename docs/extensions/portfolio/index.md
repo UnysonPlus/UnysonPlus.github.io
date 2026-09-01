@@ -8,7 +8,7 @@ description: "Free WordPress portfolio plugin — a dedicated portfolio post typ
 
 <div class="ext-hero">
   <span class="ext-hero__badge">FREE!</span>
-  <p class="ext-hero__title">A premium portfolio — none of the premium cost.</p>
+  <p class="ext-hero__title">Build a premium portfolio in minutes.</p>
   <p class="ext-hero__sub">A dedicated portfolio post type with categories, tags, galleries and flexible project layouts to showcase your work — a full portfolio builder, free.</p>
 </div>
 

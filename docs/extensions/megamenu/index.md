@@ -8,7 +8,7 @@ description: "Free WordPress mega menu plugin — multi-column dropdown menus wi
 
 <div class="ext-hero">
   <span class="ext-hero__badge">FREE!</span>
-  <p class="ext-hero__title">Premium mega menus — no premium upgrade.</p>
+  <p class="ext-hero__title">Build premium mega menus in minutes.</p>
   <p class="ext-hero__sub">Multi-column dropdown menus with icons, images, calls to action, tabbed panels and per-device visibility — every mega-menu feature others charge for, included and free.</p>
 </div>
 

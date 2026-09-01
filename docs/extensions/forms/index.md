@@ -8,7 +8,7 @@ description: "Free WordPress drag-and-drop contact form builder — conditional 
 
 <div class="ext-hero">
   <span class="ext-hero__badge">FREE!</span>
-  <p class="ext-hero__title">Premium forms in minutes — without the premium price.</p>
+  <p class="ext-hero__title">Build premium forms in minutes.</p>
   <p class="ext-hero__sub">A free WordPress <strong>drag-and-drop contact form builder</strong> with conditional logic, multi-step forms, spam protection and email notifications — no coding, and every premium feature Gravity Forms and WPForms charge for is included and unlimited.</p>
 </div>
 

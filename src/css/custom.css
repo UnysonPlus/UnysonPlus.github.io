@@ -160,3 +160,37 @@ html.plugin-id-decisions article header h1 {
   max-width: 100%;
   height: auto;
 }
+
+/* ── AI Dev Kit landing hero callout ────────────────────────────────────────
+ * A fixed dark-green gradient (not the theme primary, which lightens in dark
+ * mode) so the white headline stays readable in both light and dark. */
+.adk-hero {
+  margin: 0 0 2rem;
+  padding: 2rem 2.25rem;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #204c41 0%, #2e6e5e 60%, #337966 100%);
+  color: #fff;
+  box-shadow: 0 14px 34px -16px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.adk-hero__title {
+  margin: 0 0 0.7rem;
+  font-size: clamp(1.55rem, 3.4vw, 2.35rem);
+  line-height: 1.16;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: #fff;
+}
+.adk-hero__sub {
+  margin: 0;
+  font-size: clamp(1rem, 1.5vw, 1.12rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.9);
+}
+.adk-hero__sub strong { color: #fff; }
+.adk-hero__kicker {
+  display: inline-block;
+  margin-top: 0.15rem;
+  font-weight: 700;
+  color: #eafff7;
+}

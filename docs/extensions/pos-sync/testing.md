@@ -177,12 +177,12 @@ with Access in front is the better option if you need one running for days.
 
 ### What exists today
 
-Six runnable suites, **282 assertions** between them. Both install the tables, exercise them and drop
+Seven runnable suites, **346 assertions** between them. Both install the tables, exercise them and drop
 them again, so they are safe to re-run and leave the site as they found it.
 
 ```bash
 cd wp-content/plugins/unysonplus/framework/extensions/pos-sync
-for m in 1 2 3 4 5 6; do
+for m in 1 2 3 4 5 6 7; do
   php wp-cli.phar --path='<a WordPress install>' eval-file "tests/milestone-$m.php"
 done
 ```
@@ -213,7 +213,12 @@ done
   is not drift, corrections going *through* the ledger (including a stale one being refused by the
   ordering rule), the silence alarm, and retention never pruning failures.
 
-:::tip Run all six
+- **`milestone-7.php`** (64) — the expansion drivers, the CSV importer, maturity badges and the
+  diagnostic report. It deliberately does **not** claim FluentCart, SureCart or Clover work: it
+  proves they cannot do harm while unproven, which is the property that actually protects a shop.
+  It also asserts the diagnostic report leaks no secrets, by value.
+
+:::tip Run all seven
 This keeps paying. Milestone 3's suite caught a `class_exists()` guard in Milestone 2's applier that
 wrapped only half a branch; Milestone 4's duplicate scenario caught the nonce cache rejecting
 legitimate re-deliveries. Cross-milestone runs are where that kind of thing surfaces.

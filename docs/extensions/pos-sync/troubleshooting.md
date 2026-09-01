@@ -137,9 +137,59 @@ key must be stable across retries.
 Search the log for two `applied` events with the same total and `occurred_at` but different
 `external_id` values to confirm.
 
+## The diagnostic report
+
+**Unyson+ → POS Sync → Health → Diagnostic report.**
+
+Three drivers — FluentCart, SureCart and Clover — plus the CSV importer were written against
+documented APIs and have never run against a live install. They are labelled **experimental**
+wherever they appear. If one does not work for you, this report is what turns a five-message
+conversation into a five-minute fix.
+
+It collects, automatically:
+
+- POS Sync, WordPress, PHP and MySQL versions, and the schema version against the expected one
+- every store driver and provider, whether each is available, and **exactly which expected function
+  was missing** when one is not
+- the capabilities each available driver declares
+- connections by number — type, mode, event count, clock skew, when each was last heard from
+- the last failures and skips, with their reasons
+
+### It is safe to paste in public
+
+That is a design constraint, not a hope. Never included:
+
+- API keys, secrets, OAuth tokens or webhook signature keys — **not even truncated**, since a prefix
+  plus a merchant id often identifies an account
+- customer names, emails or addresses
+- connection names, which are frequently a shop or a person ("Priya's till") — they are numbered
+- your site URL, unless you tick the box
+
+Event payloads are the awkward case: they are the most useful thing in a bug report and the most
+likely place for personal data. So they are **summarised structurally** — types, counts, SKUs and
+error reasons — rather than included verbatim. The test suite asserts the absence of each secret by
+value, so this cannot quietly regress.
+
+Select the box, copy it, and open an issue on the
+[extension's tracker](https://github.com/UnysonPlus/UnysonPlus-POS-Sync-Extension/issues) with what
+you expected to happen.
+
+## "This driver is installed but unavailable"
+
+That is the experimental-driver safety net doing its job, and the message names the specific
+functions it expected and did not find.
+
+It means the cart is present but its API is not the one the driver was written against — a version
+difference, most likely. Nothing is broken and nothing is lost: events keep being recorded and
+resolve to `no_store_driver`, so once a working driver exists they can be re-queued from the Log
+tab. Send the diagnostic report; the missing-function list is usually the whole fix.
+
 ## Getting help
 
-When reporting a problem, include:
+The fastest route is the [diagnostic report](#the-diagnostic-report) — it already contains
+everything below and cannot forget any of it.
+
+If you would rather write it by hand, include:
 
 - The **event id** from the log (not a screenshot of stock).
 - The connection type and mode.

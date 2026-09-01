@@ -16,12 +16,12 @@ follows from keeping them apart:
 - **Which till?** Square, Clover, Zettle, Lightspeed, or a shop's own bespoke software.
 - **Which store?** WooCommerce, FluentCart, SureCart, Easy Digital Downloads, Ecwid.
 
-:::info Status — feature-complete for 1.0
+:::info Status — 1.1.0, roadmap complete
 The **ledger** is built (schema, idempotency, the event-time-ordered queue, retries, the audit log),
 so is the **store driver seam** with WooCommerce on the end of it, and so is the
 **[signed webhook API](./webhook-api.md)** — which means a real till can feed the ledger today. Any
 POS with outbound webhooks, any middleware, or a shop's own software can post to it.
-[282 assertions](./testing.md#the-automated-suite) cover them, needing neither hardware, a Square
+[346 assertions](./testing.md#the-automated-suite) cover them, needing neither hardware, a Square
 account, nor — for most of them — a cart.
 
 The **[Virtual Terminal](./testing.md#the-virtual-terminal)** is built, so all of it can be
@@ -34,8 +34,12 @@ it thinks the numbers are, an authority policy for who owns which field, and a h
 whose alarm is *silence* — because a till that stops sending does not throw, it just goes quiet
 while stock drifts.
 
-Everything left on the [roadmap](./roadmap.mdx) is deliberately post-1.0: more store drivers, more
-vendor drivers, and a batch importer.
+The [roadmap](./roadmap.mdx) is complete. Three of the expansion drivers — **FluentCart**,
+**SureCart** and **Clover** — are marked **experimental**: they were written against documented
+APIs with no live install to verify against, so each refuses to activate unless every function it
+calls is actually present. A wrong assumption disables the driver; it cannot quietly write wrong
+stock. If one does not work for you, the **Health** screen produces a
+[diagnostic report](./troubleshooting.md#the-diagnostic-report) that is safe to paste in public.
 
 The rest of this section is the **design of record**: the architecture, the wire format, and the
 build order. The **[Roadmap](./roadmap.mdx)** tracks progress and updates itself from the extension

@@ -1,99 +1,92 @@
 ---
-title: "WooCommerce"
+sidebar_position: 1
+title: WooCommerce
 ---
 
 # WooCommerce
 
 Integrates **[WooCommerce](https://woocommerce.com/)** with the Unyson+ framework. It makes any
-active theme WooCommerce-aware, adds shop **page-builder elements**, and centralises the catalog
-layout in one settings page. The extension is completely **inert until WooCommerce is installed
-and active** — enabling it on a site without WooCommerce changes nothing.
+active theme WooCommerce-aware, adds a full set of shop **page-builder elements**, and puts the
+catalog layout and shop behavior on **one settings page** in the Unyson+ menu.
+
+The extension is completely **inert until WooCommerce is installed and active** — enabling it on a
+site without WooCommerce changes nothing at all.
+
+![The shop archive rendered by the extension](/img/extensions/woocommerce/shop-archive.png)
+
+:::tip[The one-sentence mental model]
+WooCommerce keeps running the store; this extension decides how it **looks** (grid, gallery,
+sidebar), how it **behaves** (catalog mode, AJAX cart, badges), and gives you shop **blocks for the
+page builder** so a product grid can live on any page — not just the shop archive.
+:::
+
+## In this section
+
+| Page | What's in it |
+| --- | --- |
+| **[Settings](./settings.md)** | Every field on the settings page — catalog layout, single product, shop behavior |
+| **[Catalog Mode](./catalog-mode.md)** | Turning the store into a lookbook, disabling purchasing, enquiry buttons, closing the shop |
+| **[Page-builder elements](./elements.md)** | The WooCommerce Elements tab — what each element is for |
+| **[For developers](./developers.md)** | Filters, helper functions, the settings store, recipes |
 
 ## Activation
 
-Install and activate **WooCommerce**, then enable **WooCommerce** under **Unyson → Extensions**.
-That's it — no configuration is required to get a working shop; the defaults below apply until
-you change them.
+1. Install and activate the **WooCommerce** plugin.
+2. Enable **WooCommerce** under **Unyson+ → Extensions**.
+
+That's it — no configuration is required to get a working shop. Every setting has a working default,
+so you only change what you want to differ from what WooCommerce already does.
+
+Once both are active, a **WooCommerce** entry appears in the Unyson+ admin menu, and a
+**WooCommerce Elements** tab appears in the page builder.
+
+![The WooCommerce entry in the Unyson+ menu](/img/extensions/woocommerce/settings-menu.png)
+
+:::note[Why the menu entry can be missing]
+The entry only registers when the **WooCommerce plugin itself** is active. If you've enabled the
+extension but don't see the menu item, WooCommerce is either not installed or not activated — the
+extension will say so in an admin notice, with a one-click Install or Activate button.
+:::
 
 ## What it does
 
 ### Theme-aware, with a universal fallback
 
+The extension checks whether your active theme has declared WooCommerce support itself, and then
+gets out of the way or steps in accordingly:
+
 - **With a WooCommerce-aware theme** (e.g. the **UnysonPlus Theme**, which ships its own shop
-  wrappers, sidebar handling and styles), the extension steps aside and feeds its settings into
-  the theme's `unysonplus_woocommerce_*` filters.
+  wrappers, sidebar handling and styles), the extension steps aside and feeds its settings into the
+  theme's `unysonplus_woocommerce_*` filters. The theme owns the markup.
 - **With any other theme**, the extension declares WooCommerce support itself (including the
   product-gallery zoom / lightbox / slider), ships a small baseline stylesheet, and drives
   WooCommerce's own layout filters — so the shop looks reasonable out of the box anywhere.
 
-### Page-builder elements
+You don't choose between these; the extension detects which case applies at
+`after_setup_theme` and wires the right one. See **[For developers](./developers.md)** for the
+filter contract behind it.
+
+### One settings page
+
+**Unyson+ → WooCommerce** carries three groups — **Shop Catalog** (grid columns, products per
+page, sidebar), **Single Product** (gallery columns, related count, zoom / lightbox / slider), and
+**Shop Behavior** (catalog mode, sale badges, AJAX cart, breadcrumb). Full field-by-field reference
+in **[Settings](./settings.md)**.
+
+### Shop elements for the page builder
 
 While WooCommerce is active, a dedicated **WooCommerce Elements** tab appears in the page builder
-with all of the elements below. See the full reference at
+with product grids and carousels, categories, single products, cart and mini-cart, the classic
+commerce pages, product search and filters. See **[Page-builder elements](./elements.md)** for what
+each one is for, and the full option reference at
 **[WooCommerce Elements](/shortcodes/woocommerce-elements)**.
 
-- **Catalog:** [Products](/shortcodes/woocommerce-elements#products) (grid **or carousel**;
-  recent / featured / on-sale / best-selling / top-rated / by category / tag / attribute / specific
-  IDs), [Product Categories](/shortcodes/woocommerce-elements#product-categories),
-  [Single Product](/shortcodes/woocommerce-elements#single-product),
-  [Product Page](/shortcodes/woocommerce-elements#product-page),
-  [Add to Cart Button](/shortcodes/woocommerce-elements#add-to-cart-button).
-- **Cart & pages:** [Cart Icon](/shortcodes/woocommerce-elements#cart-icon),
-  [Mini Cart](/shortcodes/woocommerce-elements#mini-cart),
-  [Account](/shortcodes/woocommerce-elements#account),
-  [Free Shipping Bar](/shortcodes/woocommerce-elements#free-shipping-bar), and the classic
-  [Cart · Checkout · My Account · Order Tracking](/shortcodes/woocommerce-elements#cart--checkout--my-account--order-tracking)
-  page elements.
-- **Utility:** [Product Search](/shortcodes/woocommerce-elements#product-search) and
-  [Product Filters](/shortcodes/woocommerce-elements#product-filters).
+### A lookbook mode that actually closes the store
 
-The Products grid also supports **percentage / Featured / New / Out-of-stock badges**, low-stock
-notices, a **Quick View** modal, and **Load More** (AJAX) pagination.
-
-## Settings
-
-**Unyson → Settings → WooCommerce.** These control the **shop / category archive** and **single
-product** pages site-wide:
-
-| Setting | Default | Controls |
-| --- | --- | --- |
-| **Products per Row** | 3 | Columns in the shop / category product grid |
-| **Products per Page** | 12 | Products shown before pagination |
-| **Shop Sidebar** | None | Sidebar position on WooCommerce pages *(with a WooCommerce-aware theme)* |
-| **Gallery Thumbnail Columns** | 4 | Thumbnails below the main product image |
-| **Related Products** | 3 | Related products on a single product page (`0` hides them) |
-
-### Shop Behavior
-
-| Setting | Default | Controls |
-| --- | --- | --- |
-| **Catalog Mode** | Off | Hide prices + add-to-cart store-wide (lookbook mode) |
-| **Sale Badge Style** | Text | Native sale flash as “Sale” or a percentage (“-25%”) |
-| **AJAX Add to Cart** | On | Add simple products from shop archives without a reload |
-| **Shop Breadcrumb** | On | Show the WooCommerce breadcrumb above shop / product content |
-| **Gallery Zoom / Lightbox / Slider** | On | Toggle each product-gallery feature |
-
-## For developers — the filter contract
-
-A WooCommerce-aware theme exposes these filters; the extension's settings feed them, and a theme
-can also override them directly. (Under a non-aware theme the extension applies the same values
-through WooCommerce's own filters — `loop_shop_columns`, `loop_shop_per_page`,
-`woocommerce_product_thumbnails_columns`, `woocommerce_output_related_products_args`.)
-
-| Filter | Default | Purpose |
-| --- | --- | --- |
-| `unysonplus_woocommerce_loop_columns` | `3` | Shop grid columns |
-| `unysonplus_woocommerce_products_per_page` | `12` | Products per page |
-| `unysonplus_woocommerce_sidebar` | `none` | Shop sidebar (`none` \| `left` \| `right`) |
-| `unysonplus_woocommerce_thumbnail_columns` | `4` | Gallery thumbnail columns |
-| `unysonplus_woocommerce_related_count` | `3` | Related-products count |
-
-```php
-// Example: force a 4-column shop grid regardless of the saved setting.
-add_filter( 'unysonplus_woocommerce_loop_columns', function () {
-    return 4;
-} );
-```
+**Catalog Mode** hides prices and add-to-cart buttons; **Disable Purchasing** goes further and makes
+the store genuinely un-buyable, with an optional **enquiry button** in place of add-to-cart and a
+**closed-shop message** on the cart. That's a topic of its own —
+see **[Catalog Mode](./catalog-mode.md)**.
 
 :::note[Cart & Checkout: blocks vs. classic]
 WooCommerce 9+ ships **block-based** Cart and Checkout pages by default; those blocks carry their

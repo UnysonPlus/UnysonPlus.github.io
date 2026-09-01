@@ -203,7 +203,7 @@ freeform blocks) and by fixture (empty sections skipped; every pattern header-co
 Title / Slug / Categories / Inserter). Patterns honour the vocabulary toggle (C6), so an enriched
 conversion's patterns carry the UnysonPlus blocks too.
 
-### Tier C6 — UnysonPlus-block enrichment 🚧 *(foundation + first mapping built)*
+### Tier C6 — UnysonPlus-block enrichment ✅ *(built — core mappings; more are incremental)*
 
 Where core blocks can't express a region faithfully, emit the matching **UnysonPlus block** instead of
 `core/html` — richer output, at the cost of a plugin dependency. The upsell path, and the bridge back
@@ -249,9 +249,20 @@ option and its URL would live inside block-JSON (which the install-time media lo
 worse than `core/image`, which keeps alt and is localized. Per principle #6 (*faithful degradation over
 fake nativeness*), image is intentionally left on the core block even in enriched mode.
 
-*Remaining:* the `row`/columns container (there is no single "columns" UnysonPlus block — it maps to the
-section/column model, so it needs its own shape). Enriched output **requires the plugin's `blocks`
-extension active** (106 blocks); that dependency is the whole point of the tier.
+**Deliberate non-enrichment — `row`/columns keeps `core/columns`.** There is **no UnysonPlus `row`
+block**: the `.fw-row` Bootstrap-grid parent that `unysonplus/column` needs isn't exposed as a block
+(verified — a bare `unysonplus/column` renders `fw-col-12` and stacks). `core/columns` → `core/column`
+is the superior responsive, plugin-free layout, so the columns **wrapper stays core** while the column
+**content still enriches** (the emitter threads the vocabulary into the columns, so an enriched row is
+`core/columns → core/column → unysonplus/*` inside). Verified end to end: renders as
+`wp-block-columns` with the enriched inner blocks, fully parsed. Fixture-locked.
+
+**So the tier is functionally complete:** the vocabulary toggle, the leaf mappings (button / heading /
+text), and the `section` container all ship and are proven; `image` and the columns `wrapper`
+deliberately stay core (each strictly better there). What remains is **optional incremental breadth** —
+more leaf types (`overline`, `video`) and richer `upOptions` (reusing more of the Mapper's atts) — each
+a fixture-guarded add on the shipped foundation, not a blocker. Enriched output **requires the plugin's
+`blocks` extension active** (106 blocks); that dependency is the whole point of the tier.
 
 ### Tier C7 — Block Bindings tie-in 🔍
 

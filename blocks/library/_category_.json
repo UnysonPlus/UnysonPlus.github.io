@@ -1,0 +1,10 @@
+{
+  "label": "Block library",
+  "position": 4,
+  "collapsed": false,
+  "link": {
+    "type": "generated-index",
+    "title": "Block library",
+    "description": "Every Unyson+ element, as a native block. Each block is a second authoring surface onto an element that already exists — configured in the block editor, rendered by the same server-side code as the page builder."
+  }
+}

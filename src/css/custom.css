@@ -148,3 +148,15 @@ html.plugin-id-decisions article header h1 {
   overflow: auto;
   font-size: 13px;
 }
+
+/* ---------------------------------------------------------------------------
+ * Documentation screenshots are captured at 2x device pixel ratio, so they stay
+ * sharp on HiDPI displays. Their intrinsic pixel width is therefore double the
+ * size they should be shown at — each one carries an explicit `width` attribute
+ * (half the file's pixel width) to correct that. This keeps them from
+ * overflowing the content column on narrow viewports regardless.
+ * ------------------------------------------------------------------------- */
+.markdown img {
+  max-width: 100%;
+  height: auto;
+}

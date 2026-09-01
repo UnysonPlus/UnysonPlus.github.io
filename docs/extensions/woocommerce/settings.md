@@ -7,7 +7,7 @@ title: Settings
 
 Everything the extension controls lives on one page: **Unyson+ → WooCommerce**.
 
-![The WooCommerce settings page](/img/extensions/woocommerce/settings-page.png)
+<img src="/img/extensions/woocommerce/settings-page.png" alt="The WooCommerce settings page" width="1758" />
 
 The settings are grouped into three boxes. Only the first is expanded when the page loads — click a
 box title to open the others (that's the framework's standard behavior for option boxes, not
@@ -23,7 +23,7 @@ deliberately store-wide and reaches the elements too.
 
 ## Shop Catalog
 
-![The Shop Catalog settings](/img/extensions/woocommerce/settings-shop-catalog.png)
+<img src="/img/extensions/woocommerce/settings-shop-catalog.png" alt="The Shop Catalog settings" width="1758" />
 
 | Setting | Default | What it controls |
 | --- | --- | --- |
@@ -39,7 +39,7 @@ expect. Under any other theme the setting is ignored and the theme's own sidebar
 
 ## Single Product
 
-![The Single Product settings](/img/extensions/woocommerce/settings-single-product.png)
+<img src="/img/extensions/woocommerce/settings-single-product.png" alt="The Single Product settings" width="1758" />
 
 | Setting | Default | What it controls |
 | --- | --- | --- |
@@ -62,7 +62,7 @@ feature the theme explicitly asked for unless the corresponding setting is off.
 
 ## Shop Behavior
 
-![The Shop Behavior settings](/img/extensions/woocommerce/settings-shop-behavior.png)
+<img src="/img/extensions/woocommerce/settings-shop-behavior.png" alt="The Shop Behavior settings" width="1758" />
 
 | Setting | Default | What it controls |
 | --- | --- | --- |

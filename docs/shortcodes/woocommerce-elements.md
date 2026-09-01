@@ -12,7 +12,7 @@ output stays compatible with WooCommerce and any extensions.
 
 > Most elements also expose an **Advanced** tab (visibility, custom class/ID); omitted below for
 > brevity. Catalog grids inherit the shop columns / related counts from
-> [WooCommerce → Settings](/extensions/woocommerce#settings).
+> [WooCommerce → Settings](/extensions/woocommerce/settings).
 
 ## Products
 

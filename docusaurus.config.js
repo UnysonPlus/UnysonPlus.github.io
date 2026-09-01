@@ -221,12 +221,20 @@ const config = {
           {from: '/docs/category/options-framework', to: '/options-framework'},
           // The Manual moved off the "/docs" prefix; keep the old landing working.
           {from: '/docs', to: '/intro'},
+          // The Gutenberg Blocks docs merged into the Blocks section.
+          {from: '/extensions/gutenberg', to: '/blocks/intro'},
         ],
         // The Manual moved from /docs/* to /* — 301 every old Manual URL to its
         // new root path. Only Manual pages are remapped; the other doc instances
         // (animation-engine, theme, guides, ai-dev-kit, reference, decisions),
         // the News blog, the homepage and standalone pages are left alone.
         createRedirects(existingPath) {
+          // Per-block docs moved from /extensions/gutenberg/<name> to the Blocks
+          // library at /blocks/library/<name> — 301 the old block URLs.
+          if (existingPath.startsWith('/blocks/library/')) {
+            const name = existingPath.slice('/blocks/library/'.length);
+            return name ? ['/extensions/gutenberg/' + name] : undefined;
+          }
           const OTHER = [
             '/animation-engine', '/theme', '/guides', '/ai-dev-kit',
             '/reference', '/decisions', '/blog', '/blocks',

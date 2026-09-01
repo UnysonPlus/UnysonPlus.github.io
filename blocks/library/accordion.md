@@ -1,6 +1,5 @@
 ---
 title: Accordion
-sidebar_position: 1
 description: The Unyson+ Accordion block — collapsible FAQ panels with icons, numbering, deep-links, expand/collapse-all and FAQ schema, authored in the block editor and rendered by the accordion element.
 ---
 

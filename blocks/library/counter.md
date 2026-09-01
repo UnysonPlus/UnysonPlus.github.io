@@ -1,71 +1,42 @@
 ---
 title: Counter
-sidebar_position: 3
-description: The Unyson+ Counter block — an animated count-up stat with prefix/suffix, decimals, thousands separator and easing, authored in the block editor and rendered by the counter element.
+description: The Unyson+ Counter block — An animated number that counts up when it scrolls into view — for stats, milestones and results, authored in the block editor and rendered by the counter element.
 ---
 
 # Counter
 
-An animated statistic that counts up when it scrolls into view — “1,200+ sites”,
-“99.9% uptime”, “$4.2M raised”. Set the target number, a prefix or suffix, and how it
-animates.
+An animated number that counts up when it scrolls into view — for stats, milestones and results. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [counter element](/shortcodes/interactive-elements/counter) — the same server-side code as the page builder — so the output is identical either way.
 
-Like every block in the library, it is a second *authoring* surface onto the
-[counter element](/shortcodes/interactive-elements/counter): the editor preview and the
-front end are the same server-rendered output.
+<img src="/img/blocks/counter/front.png" alt="The Counter block rendered on the front end — an animated 1,200+ figure" width="161" />
 
-<img src="/img/blocks/counter/front.png" alt="A Counter block showing 1,200+" width="161" />
+## Configure it
 
-Add it from the inserter (**+** → search *Counter* → the one under **Unyson+**), then set
-the number and format in the block settings.
+Select the block and open the **Settings** (block) tab. The whole sidebar is generated from the element’s option schema, so it stays in step with the page builder.
 
-<img src="/img/blocks/counter/inspector.png" alt="The Counter block settings — number, prefix, suffix and format" width="300" />
+<img src="/img/blocks/counter/inspector.png" alt="The Counter block settings sidebar" width="300" />
 
 ## Options
 
-### Content
-
 | Option | What it does |
 | --- | --- |
-| **Number** (`number`) | The value to count up to — e.g. `45280`, `96`, `4.2`. Commas are ignored. |
-| **Start From** (`start`) | The value the count begins at (default `0`). |
-| **Prefix** (`prefix`) | Text before the number (e.g. `$`) — doubles as a left-hand caption. |
-| **Suffix** (`suffix`) | Text after the number (e.g. `+`, `%`, `k`) — doubles as a right-hand caption. |
+| Number (`number`) | The target value it counts up to. |
+| Start (`start`) | The value it counts from (default 0). |
+| Prefix / Suffix (`prefix`, `suffix`) | Text before / after the number — e.g. `$`, `+`, `%`. |
+| Decimals (`decimals`) + Separator (`separator`) | Decimal places, and whether to group thousands (1,200). |
+| Duration (`duration`) + Easing (`easing`) | How long the count-up runs, and its animation curve. |
+| Alignment (`alignment`) | Left, Center, or Right. |
+| Number Typography (`number_font`) + Colour (`number_color`) | Font and colour for the figure. |
 
-### Format
-
-| Option | What it does |
-| --- | --- |
-| **Decimal Places** (`decimals`) | Digits after the decimal point — `0`–`3`. |
-| **Thousands Separator** (`separator`) | Insert commas in large numbers (`45,280`). |
-| **Duration (ms)** (`duration`) | Length of the count-up animation in milliseconds. |
-| **Easing** (`easing`) | **Ease Out** (fast → slow), **Linear**, or **Ease In-Out**. |
-
-### Style
-
-| Option | What it does |
-| --- | --- |
-| **Alignment** (`alignment`) | Left / Center / Right — or **Inherit** to follow the parent. |
-| **Number Font** (`number_font`) | Typography for the number. |
-| **Number Color** (`number_color`) | Colour of the number. |
-
-### WordPress block supports
-
-- **Alignment** — Wide / Full.  •  **Dimensions** — Margin and Padding.  •  Inherits the theme’s design system from `theme.json`.
+The block also opts into WordPress **alignment** (Wide / Full) and **Margin / Padding**, which inherit the site’s design system from `theme.json`.
 
 ## Sample content
 
-The demo above counts to `1,200+`, centered:
+A block stores only what you change as one `upOptions` object (keyed by the same paths the page builder uses); the element’s declared defaults fill in the rest at render time. The demo above is:
 
 ```html
 <!-- wp:unysonplus/counter {"upOptions":{"number":"1200","suffix":"+","alignment":"center"}} /-->
 ```
 
-A freshly inserted block stores only what you change; the element’s declared defaults
-(duration, easing, separator) fill in the rest at render time.
+## The counter element
 
-## Relationship to the counter element
-
-The block and the page builder’s [counter element](/shortcodes/interactive-elements/counter)
-are two doors onto the same code — every option and behaviour documented there is true
-here; the block simply exposes those options as a generated inspector.
+The block and the page builder’s [Counter element](/shortcodes/interactive-elements/counter) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

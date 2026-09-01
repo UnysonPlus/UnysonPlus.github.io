@@ -46,7 +46,7 @@ page (where you activate and deactivate it yourself):
 | **Animation Engine** | WebGL objects, scroll/hover/cursor/text motion and page-transition modules. → [docs](/animation-engine/) | Yes — off by default |
 | **Animated Icons** | Adds an "Animated" tab to the icon picker (Lottie, Rive, animated SVG, GIF/APNG/WebP). | Yes — off by default |
 | **Chat** | A floating multi-channel contact button (WhatsApp, Messenger, Telegram, SMS, Email…). | Yes — off by default |
-| **Gutenberg Blocks** | Exposes Unyson+ elements as native, server-rendered Gutenberg blocks. | Yes |
+| **Gutenberg Blocks** | Exposes Unyson+ elements as native, server-rendered Gutenberg blocks. → [docs](/blocks/intro) | Yes |
 | **Shortcodes** *(hidden)* | The shortcodes framework that powers the page builder. → [docs](./shortcodes/index.md) | Auto |
 | **Blog** *(hidden)* | Relabels Posts as "Blog" across the admin and front end. → [docs](./blog.md) | Auto |
 | **Update** *(hidden)* | GitHub-based auto-updates for the plugin, theme and extensions. → [docs](./updates.md) | Auto |

@@ -16,20 +16,20 @@ follows from keeping them apart:
 - **Which till?** Square, Clover, Zettle, Lightspeed, or a shop's own bespoke software.
 - **Which store?** WooCommerce, FluentCart, SureCart, Easy Digital Downloads, Ecwid.
 
-:::info Status — Milestones 1–4 shipped
+:::info Status — Milestones 1–5 shipped
 The **ledger** is built (schema, idempotency, the event-time-ordered queue, retries, the audit log),
 so is the **store driver seam** with WooCommerce on the end of it, and so is the
 **[signed webhook API](./webhook-api.md)** — which means a real till can feed the ledger today. Any
 POS with outbound webhooks, any middleware, or a shop's own software can post to it.
-[187 assertions](./testing.md#the-automated-suite) cover them, needing neither hardware nor, for
-most of them, a cart.
+[236 assertions](./testing.md#the-automated-suite) cover them, needing neither hardware, a Square
+account, nor — for most of them — a cart.
 
-The **[Virtual Terminal](./testing.md#the-virtual-terminal)** is built too, so all of it can be
-exercised and demonstrated with no hardware at all — twelve adversarial scenarios, each checking
-its own expectation.
+The **[Virtual Terminal](./testing.md#the-virtual-terminal)** is built, so all of it can be
+exercised and demonstrated with no hardware at all — twelve adversarial scenarios, each checking its
+own expectation. And the first-party **[Square driver](./square.md)** now ships: OAuth, webhooks,
+catalog import and location mapping.
 
-Still to come: the first-party [Square driver](./square.md) (M5) and
-[reconciliation](./roadmap.mdx) (M6).
+Still to come: [reconciliation and operations](./roadmap.mdx) (M6).
 
 The rest of this section is the **design of record**: the architecture, the wire format, and the
 build order. The **[Roadmap](./roadmap.mdx)** tracks progress and updates itself from the extension
@@ -80,10 +80,10 @@ APIs move — so version 1 is one generic surface plus one polished driver, not 
 
 | | What | Why first |
 | --- | --- | --- |
-| **1** | **[Generic webhook API](./webhook-api.md)** | Any POS with outbound webhooks, any middleware (Zapier / Make / n8n), or a shop's own till software can push to it. You ship a *spec*, not an integration — nothing to break when a vendor changes their API. |
-| **2** | **[Virtual Terminal](./testing.md#the-virtual-terminal)** | Fires realistic synthetic sales at your own endpoint. Development test rig, customer pre-launch check, and live demo, all in one screen. |
-| **3** | **[WooCommerce store driver](./store-drivers.md#woocommerce)** | The largest install base, and the reference implementation of the store seam. |
-| **4** | **[Square provider driver](./square.md)** | Best free sandbox, cleanest API, biggest small-retail share. Proves the provider seam. |
+| **1** ✅ | **[Generic webhook API](./webhook-api.md)** ✅ | Any POS with outbound webhooks, any middleware (Zapier / Make / n8n), or a shop's own till software can push to it. You ship a *spec*, not an integration — nothing to break when a vendor changes their API. |
+| **2** ✅ | **[Virtual Terminal](./testing.md#the-virtual-terminal)** ✅ | Fires realistic synthetic sales at your own endpoint. Development test rig, customer pre-launch check, and live demo, all in one screen. |
+| **3** ✅ | **[WooCommerce store driver](./store-drivers.md#woocommerce)** ✅ | The largest install base, and the reference implementation of the store seam. |
+| **4** | **[Square provider driver](./square.md)** ✅ | Best free sandbox, cleanest API, biggest small-retail share. Proves the provider seam. |
 
 Everything else — FluentCart, SureCart, Clover, Zettle, Lightspeed — is
 [post-1.0](./roadmap.mdx), added on demonstrated demand.

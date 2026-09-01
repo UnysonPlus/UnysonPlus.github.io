@@ -91,15 +91,22 @@ which emitter runs.
 
 Phased so each tier is shippable and testable on its own. Statuses reflect build order, not a calendar.
 
-### Tier C1 — Block content MVP (core vocabulary) 📋
+### Tier C1 — Block content MVP (core vocabulary) 🚧
 
 The intermediate tree → **core block markup**: `section`→`core/group`, `columns`→`core/columns`,
-heading/text/button→`core/heading`\|`paragraph`\|`buttons`, image→`core/image`, hero→`core/cover`,
+heading/text/button→`core/heading`\|`paragraph`\|`buttons`, image→`core/image`, video→`core/video`\|`embed`,
 verbatim→scoped `core/html`. Output **body only**, into a minimal generated block theme so it renders.
 Reuse the media/font localizers as-is.
 
-*Deliverables:* `to-blocks` (+ PHP twin), a bare block-theme scaffold, and the first block-emitter
-golden fixtures. **Lowest-risk, highest-signal tier — it proves the whole idea.**
+**Built now: the emitter (`to-blocks.mjs`).** It consumes the same intermediate as `to-pages`
+(`capture.sections[]` / `sec.blocks[]`), core-first, with a `core/html` fallback for anything not yet
+mapped so nothing is dropped. Validated against WordPress `parse_blocks()` on both a synthetic tree
+and a real live capture: **zero unparsed/freeform blocks, every block a registered core type, and a
+stable parse → serialize → parse round-trip.**
+
+*Remaining in this tier:* the PHP twin (for the plugin's `run_url_conversion` path), a bare
+block-theme scaffold (`style.css` + `theme.json` + `templates/` + `parts/`) so the markup renders as
+a page, and the first block-emitter golden fixtures.
 
 ### Tier C2 — `theme.json` global styles 📋
 

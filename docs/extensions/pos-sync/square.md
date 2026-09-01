@@ -9,16 +9,17 @@ description: Connecting Square to WordPress — sandbox setup with no hardware, 
 Square is the first-party provider driver: the best free sandbox of any POS vendor, a clean API, and
 the largest share of the small-retail market POS Sync is aimed at.
 
-:::info Status — planned
-Milestone 5 on the [roadmap](./roadmap.mdx). Until it ships, Square can already be connected through
-the [generic webhook API](./webhook-api.md) plus a small middleware step.
+:::info Shipped in 1.0.4
+OAuth, webhook verification, catalog import, location mapping and a seven-day backfill are all
+built. Set it up at **Unyson+ → POS Sync → Connections**, choosing **Square** as the connection type.
 :::
 
 ## What the driver does
 
 - **Connects by OAuth** — no pasting access tokens, and refresh is handled before expiry.
-- **Subscribes to webhooks** — `payment.created`, `order.updated`, `refund.created`,
-  `inventory.count.updated` — verifying Square's own signature before anything enters the ledger.
+- **Handles webhooks** — `payment.created`, `payment.updated`, `refund.created`, `refund.updated`
+  and `inventory.count.updated` — verifying Square's own signature before anything enters the
+  ledger, and ignoring every other event type with a `200` so Square stops retrying it.
 - **Imports the catalog** and matches to store products by SKU, presenting the remainder for
   mapping.
 - **Maps locations** to stock sources.
@@ -63,19 +64,32 @@ define( 'FW_POS_PUBLIC_URL', 'https://random-words-1234.trycloudflare.com/testsi
 
 ### 4. Connect in WordPress
 
-1. **Unyson+ → POS Sync → Connections → Add connection → Square**.
-2. Set environment to **Sandbox** and paste the Application ID + OAuth secret.
-3. **Connect with Square** → authorize the sandbox seller → you land back on the connection.
-4. The connection now shows the sandbox seller name and available locations.
+1. **Unyson+ → POS Sync → Connections → Add connection**, type **Square**, mode **test**.
+2. On the new connection's Square panel, set environment to **Sandbox**, paste the Application ID
+   and OAuth secret, and save.
+3. Register the **OAuth redirect URL** shown on that panel in your Square application's settings.
+4. **Connect with Square** → authorize the sandbox seller → you land back on the connection, which
+   now reads *Connected*.
 
 ### 5. Subscribe to webhooks
 
-The driver registers its own subscription. To do it by hand, in the developer dashboard under
-**Webhooks → Subscriptions → Add**:
+In the developer dashboard under **Webhooks → Subscriptions → Add**, using the **exact** values the
+Square panel prints:
 
-- **URL** — `https://<your-tunnel>/testsite/wp-json/unysonplus-pos/v1/square`
-- **Events** — `payment.created`, `order.updated`, `refund.created`, `inventory.count.updated`
+- **URL** — the panel's *Webhook URL*, copied verbatim
+- **Events** — `payment.created`, `payment.updated`, `refund.created`, `refund.updated`,
+  `inventory.count.updated`
 - **API version** — the current one
+
+Square then shows you a **signature key**. Paste it into the panel's *Webhook signature key* field;
+without it every delivery fails verification.
+
+:::danger Copy the webhook URL exactly
+Square includes the notification URL **in the signature it computes**. A trailing slash, `http`
+instead of `https`, or a proxy-rewritten host makes every single delivery fail — and it fails
+looking exactly like a wrong signature key, which is a genuinely miserable hour. Copy the URL the
+panel prints; do not retype it.
+:::
 
 Use **Send test event** and confirm it appears in **POS Sync → Log**. Do this before pushing a real
 sale — it isolates delivery problems from payload problems.
@@ -83,8 +97,12 @@ sale — it isolates delivery problems from payload problems.
 ### 6. Import and map the catalog
 
 1. On the connection, **Import catalog**.
-2. Items matching a product by SKU are mapped automatically.
-3. The rest land in the **Unmatched queue**: map to an existing product, create a draft, or ignore.
+2. Variations whose SKU matches a product are mapped automatically.
+3. The rest land in the **Unmatched** tab: map to an existing product, or mark as not a stock item.
+
+The import is what builds the **variation → SKU map** that webhooks read. Order lines and inventory
+counts reference Square *variation* ids, not SKUs, so a sale arriving before the catalog has been
+imported cannot resolve its lines and is skipped as unmatched. Import first.
 
 :::tip Fix SKUs first, not later
 Most first-run mismatches are missing or inconsistent SKUs on the WordPress side. Sorting them out
@@ -143,7 +161,15 @@ Within a second or two the sale appears in **POS Sync → Log** and stock decrem
 
 Square's dashboard lists delivered webhooks with a **Resend** button. Resending one is the single
 best test of [idempotency](./architecture.md#1-idempotency): the event must be recorded as
-`duplicate` and stock must **not** move again.
+`duplicate` and stock must **not** move again — and it must come back `200`, not an error. (This is
+also why there is [no nonce cache](./webhook-api.md#authentication): a re-delivery is legitimate
+traffic, not an attack.)
+
+### 10. Backfill
+
+**Backfill last 7 days** pulls recent payments through the same normalizer the webhooks use, so a
+backfilled sale and a live one are byte-identical in the ledger. Running it twice is harmless —
+idempotency means nothing applies a second time.
 
 ## Going live
 
@@ -170,5 +196,12 @@ best test of [idempotency](./architecture.md#1-idempotency): the event must be r
   exists alongside the physical one). Map deliberately; taking "the first location" is a common
   source of phantom stock movements.
 - **Amounts are already in minor units**, matching [this API's convention](./webhook-api.md#post-sale).
-- **Sandbox and production ids are disjoint.** A sandbox catalog id means nothing in production —
-  the catalog must be re-imported after going live.
+- **Sandbox and production ids are disjoint.** A sandbox catalog id means nothing in production, so
+  create a **separate connection** for production rather than switching the sandbox one over.
+  Keeping both lets you reproduce a problem in sandbox while the shop trades.
+- **Tokens refresh a day before expiry, not after a failure.** Square access tokens last about 30
+  days. Waiting for a 401 means the first sale after expiry is the one that fails, with a customer
+  at the counter.
+- **A revoked grant is not retried.** If the merchant withdraws access, the connection is flagged
+  as needing reconnection and says so — no amount of retrying fixes a withdrawn grant. A 5xx from
+  Square, by contrast, stays transient and does not burn the connection.

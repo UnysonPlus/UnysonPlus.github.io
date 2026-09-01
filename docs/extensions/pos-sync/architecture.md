@@ -212,7 +212,13 @@ framework/extensions/pos-sync/
 │   │   └── class-fw-pos-store-fluentcart.php    # post-1.0
 │   └── providers/
 │       ├── class-fw-pos-provider.php            # the interface
-│       └── square/…
+│       ├── class-fw-pos-providers.php           # registry
+│       └── square/
+│           ├── class-fw-pos-provider-square.php
+│           ├── class-fw-pos-square-api.php      # thin wp_remote_* client
+│           ├── class-fw-pos-square-oauth.php    # connect + refresh
+│           ├── class-fw-pos-square-webhooks.php # verify + normalize
+│           └── class-fw-pos-square-catalog.php  # variation → SKU map
 └── views/{settings,connections,virtual-terminal,log,health}.php
 ```
 

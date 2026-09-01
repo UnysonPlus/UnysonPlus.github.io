@@ -120,7 +120,7 @@ physical reader would send.
 
 | Vendor | Sandbox | Notes |
 | --- | --- | --- |
-| **Square** | Free, no application review | Best of the group. Sandbox seller accounts, full catalog + inventory + webhooks, and **webhook replay** from the dashboard. |
+| **Square** ✅ | Free, no application review | Best of the group, and the one with a first-party driver. Sandbox seller accounts, full catalog + inventory + webhooks, and **webhook replay** from the dashboard. |
 | **Clover** | `sandbox.dev.clover.com` | Free developer account; a virtual merchant with test devices. |
 | **Zettle (PayPal)** | Developer account | Adequate; a smaller sandbox surface. |
 | **Lightspeed** | On request | Demo account, slower to obtain. |
@@ -177,12 +177,12 @@ with Access in front is the better option if you need one running for days.
 
 ### What exists today
 
-Four runnable suites, **187 assertions** between them. Both install the tables, exercise them and drop
+Five runnable suites, **236 assertions** between them. Both install the tables, exercise them and drop
 them again, so they are safe to re-run and leave the site as they found it.
 
 ```bash
 cd wp-content/plugins/unysonplus/framework/extensions/pos-sync
-for m in 1 2 3 4; do
+for m in 1 2 3 4 5; do
   php wp-cli.phar --path='<a WordPress install>' eval-file "tests/milestone-$m.php"
 done
 ```
@@ -203,7 +203,12 @@ done
   scenario, and the cURL export. It also proves the scenarios *check something*, by breaking a
   behaviour and asserting the scenario notices — a self-test that always passes is worse than none.
 
-:::tip Run all four
+- **`milestone-5.php`** (49) — the Square driver: its signature scheme, catalog import, event
+  normalization, token refresh, location mapping and the provider endpoint. **No Square account and
+  no network** — every call is answered from a canned response, and an unmocked one fails loudly
+  rather than reaching the internet. This is how the driver was written in the first place.
+
+:::tip Run all five
 This keeps paying. Milestone 3's suite caught a `class_exists()` guard in Milestone 2's applier that
 wrapped only half a branch; Milestone 4's duplicate scenario caught the nonce cache rejecting
 legitimate re-deliveries. Cross-milestone runs are where that kind of thing surfaces.

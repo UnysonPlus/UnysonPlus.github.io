@@ -91,7 +91,7 @@ which emitter runs.
 
 Phased so each tier is shippable and testable on its own. Statuses reflect build order, not a calendar.
 
-### Tier C1 — Block content MVP (core vocabulary) 🚧
+### Tier C1 — Block content MVP (core vocabulary) ✅ *(built)*
 
 The intermediate tree → **core block markup**: `section`→`core/group`, `columns`→`core/columns`,
 heading/text/button→`core/heading`\|`paragraph`\|`buttons`, image→`core/image`, video→`core/video`\|`embed`,
@@ -112,12 +112,19 @@ Reuse the media/font localizers as-is.
   font, and text coloured by the captured brand palette — with **no plugin dependency**. (The install
   was snapshotted and fully restored afterward.)
 
-**Golden fixtures** (`to-blocks.test.mjs`) now lock the emitter — a framework-free block tokenizer
-asserts block counts, nesting/balance, content, attribute escaping and edge-case skipping (empty
-blocks, out-of-range heading levels, source-less images) across five synthetic captures. All pass.
+**Golden fixtures** (`to-blocks.test.mjs`) lock the emitter — a framework-free block tokenizer asserts
+block counts, nesting/balance, content, attribute escaping and edge-case skipping (empty blocks,
+out-of-range heading levels, source-less images) across five synthetic captures. All pass.
 
-*Remaining in this tier:* the PHP twin, so the plugin's own `run_url_conversion` path emits blocks
-too (parity with the JS emitter).
+**PHP twin** (`FW_Site_Converter_Blocks::to_blocks()`) is a faithful port that emits **byte-identical**
+markup to the JS `toBlocks()` for the same input — verified against it directly, and its output parses
+in WordPress with zero freeform blocks. That gives the plugin's own `run_url_conversion` path the same
+emitter as the capture service, the way `Mapper`/`Stitch` mirror `to-pages`/`capture-extract`.
+
+The tier's build deliverables — emitter (JS + PHP), block-theme scaffold, `theme.json`, and golden
+fixtures — are all done, and proven end to end. What remains to *ship* block output is the pipeline
+wiring: a `target` selector in the Site Converter that runs the block emitter instead of the
+page-builder mapper — carried under the tiers that follow (chrome, templates) since it needs them too.
 
 ### Tier C2 — `theme.json` global styles 🚧
 

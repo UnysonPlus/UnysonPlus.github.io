@@ -68,8 +68,8 @@ ready-to-run cURL command — the correct signing, already assembled, with a pla
 secret goes. Run it and watch the event land in **POS Sync → Log**, then hand the same shape to
 whoever is configuring the till.
 
-(The [Virtual Terminal](./testing.md#the-virtual-terminal), which composes and fires events for you
-from the admin, arrives in Milestone 4.)
+The [Virtual Terminal](./testing.md#the-virtual-terminal) tab will also compose and fire events for
+you, including twelve adversarial scenarios that each check their own expectation.
 
 ## Authentication
 
@@ -139,19 +139,25 @@ undecryptable and every connection must be re-issued. Requests then fail closed 
 `secret_unavailable` rather than being silently accepted.
 :::
 
-Server-side, three things are checked in order:
+Server-side, two things are checked, in order:
 
-1. **Timestamp window** — more than 5 minutes from server time is rejected `401`. Guards against
-   captured requests being replayed indefinitely.
+1. **Timestamp window** — more than 5 minutes from server time is rejected `401`. Bounds how long a
+   captured request stays acceptable at all.
 2. **Signature** — compared with `hash_equals()`, which is constant-time; a naive `===` leaks
    information through response timing.
-3. **Nonce cache** — the exact signature is cached for the window length, so a request cannot even
-   be replayed inside its own 5 minutes.
 
-:::note Idempotency is separate from replay protection
-Replay protection stops an *attacker* re-sending a captured request. Idempotency stops a *legitimate*
-retry from applying twice — and legitimate retries are common and expected. The
-`UNIQUE(connection_id, external_id)` index handles that, independently.
+:::note There is no nonce cache, on purpose
+An earlier version of this page described a third check: the exact signature cached for the window's
+length, so a request could not be replayed even inside its own five minutes. That has been removed.
+
+Every route here is **idempotent by construction** — the `UNIQUE(connection_id, external_id)` index
+means a repeat changes nothing — so replaying a captured request achieves precisely nothing. The
+cache added no protection. What it *did* add was a `401` for senders that sign a delivery once and
+re-send the identical bytes when they do not get a 2xx, which is how a great many webhook systems
+retry. Turning a working retry into an authentication error is a worse outcome than the one the
+cache was guarding against.
+
+Repeats are handled where they should be: at the ledger, which answers `200 duplicate: true`.
 See [Architecture → Idempotency](./architecture.md#1-idempotency).
 :::
 
@@ -266,7 +272,7 @@ Key only, no signature. Returns connection name, mode and schema version.
 | `202` | Accepted, queued | Nothing. Success. |
 | `200` + `duplicate: true` | Already seen | Stop retrying. Success. |
 | `400` | Schema validation failed | Fix the payload. The response body names the offending field. Do not retry unchanged. |
-| `401` | Bad key, bad signature, timestamp outside the window, or a replay | The response `code` says which: `unknown_key`, `revoked_key`, `signature_mismatch`, `timestamp_outside_window` (with `skew_seconds`), `replayed_request`, `secret_unavailable`. |
+| `401` | Bad key, bad signature, or timestamp outside the window | The response `code` says which: `unknown_key`, `revoked_key`, `signature_mismatch`, `timestamp_outside_window` (with `skew_seconds`), `secret_unavailable`. A repeated delivery is **not** a 401 — it is a `200`. |
 | `403` | Key valid, scope missing | Grant the scope on the connection. |
 | `409` | Conflicting event (stale absolute count) | Expected; not an error condition. Do not retry. |
 | `429` | Rate limited | Honour `Retry-After`. |

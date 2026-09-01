@@ -16,16 +16,20 @@ follows from keeping them apart:
 - **Which till?** Square, Clover, Zettle, Lightspeed, or a shop's own bespoke software.
 - **Which store?** WooCommerce, FluentCart, SureCart, Easy Digital Downloads, Ecwid.
 
-:::info Status — Milestones 1–3 shipped
+:::info Status — Milestones 1–4 shipped
 The **ledger** is built (schema, idempotency, the event-time-ordered queue, retries, the audit log),
 so is the **store driver seam** with WooCommerce on the end of it, and so is the
 **[signed webhook API](./webhook-api.md)** — which means a real till can feed the ledger today. Any
 POS with outbound webhooks, any middleware, or a shop's own software can post to it.
-[142 assertions](./testing.md#the-automated-suite) cover the three, needing neither hardware nor,
-for most of them, a cart.
+[187 assertions](./testing.md#the-automated-suite) cover them, needing neither hardware nor, for
+most of them, a cart.
 
-Still to come: the [Virtual Terminal](./testing.md#the-virtual-terminal) (M4) and the first-party
-[Square driver](./square.md) (M5).
+The **[Virtual Terminal](./testing.md#the-virtual-terminal)** is built too, so all of it can be
+exercised and demonstrated with no hardware at all — twelve adversarial scenarios, each checking
+its own expectation.
+
+Still to come: the first-party [Square driver](./square.md) (M5) and
+[reconciliation](./roadmap.mdx) (M6).
 
 The rest of this section is the **design of record**: the architecture, the wire format, and the
 build order. The **[Roadmap](./roadmap.mdx)** tracks progress and updates itself from the extension

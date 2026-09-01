@@ -13,6 +13,10 @@ middleware platform like Zapier / Make / n8n, or a shop's own till software.
 
 Base URL: `https://example.com/wp-json/unysonplus-pos/v1`
 
+:::info Shipped in 1.0.2
+The endpoints, signing, connections and schema validation described here are all built and tested.
+:::
+
 ## Setup, step by step
 
 ### 1. Activate and create a connection
@@ -22,8 +26,9 @@ Base URL: `https://example.com/wp-json/unysonplus-pos/v1`
 3. Name it after the physical till (`Front counter`, `Market stall`) — this name appears on every
    log line, and one connection per till is what makes a misbehaving terminal identifiable.
 4. Choose **Generic webhook** as the type.
-5. Save. You are shown a **key** (`upos_live_a1b2c3…`) and a **secret**, once. The secret is stored
-   hashed and cannot be retrieved again — only rotated.
+5. Save. You are shown a **key** (`upos_live_a1b2c3…`) and a **secret**, once. Copy the secret now
+   — it is never displayed again. If you lose it, rotate: that changes the secret but not the key,
+   so it is one field to update at the till.
 
 ### 2. Set the connection's scopes and location
 
@@ -41,17 +46,30 @@ curl https://example.com/wp-json/unysonplus-pos/v1/ping \
 ```
 
 ```json
-{ "ok": true, "connection": "Front counter", "mode": "test", "schema": "v1" }
+{
+  "ok": true,
+  "connection": "Front counter",
+  "mode": "test",
+  "schema": "v1",
+  "server_time": 1788000000
+}
 ```
+
+`server_time` is there so a sender can check its own clock against the server's before spending an
+afternoon on a `timestamp_outside_window` that is really a wrong clock on the till.
 
 `/ping` requires only the key, not a signature, so it isolates "can I reach the site" from "is my
 signing correct".
 
 ### 4. Send a signed test sale
 
-Use the [Virtual Terminal](./testing.md#the-virtual-terminal) to generate a correctly-signed cURL
-command for any scenario, run it, and watch the event land in **POS Sync → Log**. Once that works
-end to end, hand the same shape to whoever is configuring the till.
+Every connection on the **Connections** tab has a *Show an example signed request* panel with a
+ready-to-run cURL command — the correct signing, already assembled, with a placeholder where your
+secret goes. Run it and watch the event land in **POS Sync → Log**, then hand the same shape to
+whoever is configuring the till.
+
+(The [Virtual Terminal](./testing.md#the-virtual-terminal), which composes and fires events for you
+from the admin, arrives in Milestone 4.)
 
 ## Authentication
 
@@ -104,6 +122,22 @@ signature = "sha256=" + hmac.new(
 ```
 
 </details>
+
+:::note How the secret is stored — a correction
+An earlier version of this page said the secret was stored **hashed**. That was wrong, and it could
+not have worked: verifying an HMAC means *recomputing* it, which needs the original bytes, so a
+hashed secret would make every request fail.
+
+It is stored **encrypted**, with a key derived from the site's WordPress salts — which live in
+`wp-config.php`, not the database. That protects the realistic case: a leaked backup, an SQL
+injection, a DB dump handed to a contractor. It does **not** protect against filesystem compromise,
+because anyone who can read `wp-config.php` can decrypt everything. That is a real boundary and a
+useful one, but it is a boundary, not a vault.
+
+One consequence worth knowing: if the site's salts are rotated, existing secrets become
+undecryptable and every connection must be re-issued. Requests then fail closed with
+`secret_unavailable` rather than being silently accepted.
+:::
 
 Server-side, three things are checked in order:
 
@@ -232,10 +266,11 @@ Key only, no signature. Returns connection name, mode and schema version.
 | `202` | Accepted, queued | Nothing. Success. |
 | `200` + `duplicate: true` | Already seen | Stop retrying. Success. |
 | `400` | Schema validation failed | Fix the payload. The response body names the offending field. Do not retry unchanged. |
-| `401` | Bad key, bad signature, or timestamp outside the window | Check the [signing string](#authentication) and the sender's clock. |
+| `401` | Bad key, bad signature, timestamp outside the window, or a replay | The response `code` says which: `unknown_key`, `revoked_key`, `signature_mismatch`, `timestamp_outside_window` (with `skew_seconds`), `replayed_request`, `secret_unavailable`. |
 | `403` | Key valid, scope missing | Grant the scope on the connection. |
 | `409` | Conflicting event (stale absolute count) | Expected; not an error condition. Do not retry. |
 | `429` | Rate limited | Honour `Retry-After`. |
+| `503` | POS Sync is not ready (tables missing) | Retry. The admin screen offers to create them. |
 | `5xx` | Server side | Retry with exponential backoff. The endpoint is idempotent, so retrying is always safe. |
 
 A `400` body:
@@ -256,8 +291,9 @@ made — new optional fields, new enum members. A breaking change means `v2`, se
 at least twelve months.
 
 The JSON Schemas are published at
-`/wp-json/unysonplus-pos/v1/schema/{sale,refund,inventory}` so integrators can validate before
-sending.
+`/wp-json/unysonplus-pos/v1/schema/{sale,refund,inventory}` — no authentication required — so
+integrators can validate before sending. They are the same documents the endpoint validates
+against, not a copy that can drift.
 
 ## Connecting a POS with no driver
 

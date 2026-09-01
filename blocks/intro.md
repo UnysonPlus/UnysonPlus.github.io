@@ -47,7 +47,7 @@ deprecated, or rewritten.
 |---|---|
 | Design system published to `theme.json` | Shipped |
 | Blocks extension (block library) | Built, not yet released |
-| Block Bindings for custom fields | Planned |
+| Block Bindings for custom fields | Binding source built |
 | Page-builder → block markup export | Exploring |
 
 See the [roadmap](./roadmap) for detail and for what changes next.

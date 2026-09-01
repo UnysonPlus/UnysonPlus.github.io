@@ -11,7 +11,7 @@ updated as each phase lands, so it doubles as the progress log.
 
 **Status key** — ✅ Shipped · 🚧 In progress · 📋 Planned · 🔍 Exploring
 
-*Last updated: 31 August 2026*
+*Last updated: 1 September 2026*
 
 ---
 
@@ -83,7 +83,9 @@ documentation of the block library.
 
 ---
 
-## Phase 3 — Block Bindings for custom fields 📋
+## Phase 3 — Block Bindings for custom fields 🚧
+
+**Binding source built.**
 
 Register an Unyson+ binding source so core blocks — Paragraph, Heading, Image,
 Button — can pull their content from Unyson+ custom fields.
@@ -91,6 +93,16 @@ Button — can pull their content from Unyson+ custom fields.
 The prerequisite is already in place: the Custom Fields extension registers its meta
 with `show_in_rest`. This makes dynamic content possible with **zero custom blocks**,
 and makes the framework's data layer a first-class citizen of the block editor.
+
+What is built now: an `unysonplus/field` binding source (WP 6.5+). A core block binds an
+attribute to a field with `source: unysonplus/field` and `args.key: <field name>`; the
+resolver reads the value with the same `fw_get_db_post_option()` the REST field uses,
+keyed off the block's post context, and coerces it to what the attribute needs (an
+image/file field binds its URL). Only fields of an **active group targeting the post's
+type** resolve — an unknown key returns nothing rather than exposing an arbitrary option.
+
+Remaining before release: an editor picker so a field can be bound from the block
+sidebar (today a binding is set in block markup), plus release wiring.
 
 ---
 

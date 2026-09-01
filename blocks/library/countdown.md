@@ -1,58 +1,42 @@
 ---
 title: Countdown
+description: The Unyson+ Countdown block — A countdown to a date and time, with per-unit labels and a completed state, authored in the block editor and rendered by the countdown element.
 ---
 
 # Countdown
 
-A countdown to a date and time — a launch, a deadline, the end of a sale — with per-unit labels and a completed state.
+A countdown to a date and time, with per-unit labels and a completed state. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [countdown element](/shortcodes/interactive-elements/countdown) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`countdown`](/shortcodes/interactive-elements/countdown) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/countdown/front.png" alt="The Countdown block — days, hours, minutes and seconds counting down" width="1210" />
 
-## What the sidebar exposes
+## Configure it
+
+Select the block and open the **Settings** (block) tab. The whole sidebar is generated from the element’s option schema, so it stays in step with the page builder.
+
+<img src="/img/blocks/countdown/inspector.png" alt="The Countdown block settings sidebar" width="300" />
+
+## Options
 
 | Option | What it does |
 | --- | --- |
-| `target` | The moment it counts down to |
-| `show_days` | Show the days unit |
-| `show_hours` | Show the hours unit |
-| `show_minutes` | Show the minutes unit |
-| `show_seconds` | Show the seconds unit |
-| `label_days` | Label under the days |
-| `label_hours` | Label under the hours |
-| `label_minutes` | Label under the minutes |
-| `label_seconds` | Label under the seconds |
-| `on_complete` | What happens when it reaches zero |
-| `complete_text` | What it says then |
-| `alignment` | Horizontal alignment |
-| `number_font` | Typography for the numbers |
-| `number_color` | Number colour |
-| `label_font` | Typography for the labels |
-| `label_color` | Label colour |
-| `box_preset` | Box style around each unit |
+| Target (`target`) | The date and time it counts down to. |
+| Units (`show_days`, `show_hours`, `show_minutes`, `show_seconds`) | Which units to display. |
+| Unit labels (`label_days` … `label_seconds`) | The wording under each number. |
+| On complete (`on_complete`) + Completed text (`complete_text`) | What happens at zero — hide the timer, or show a message. |
+| Alignment (`alignment`) | Left, Center, or Right. |
+| Box preset (`box_preset`) | An optional card around each unit. |
+| Typography + colours (`number_font`, `label_font`, `number_color`, `label_color`) | Fonts and colours for the digits and labels. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site’s design system from `theme.json`.
 
-:::note[`target` is interpreted in the site's timezone]
-Not the visitor's, and not the editor's. A sale that ends "at midnight" ends at midnight where the
-site says it lives — check *Settings → General* if the countdown seems an hour out.
-:::
+## Sample content
 
-:::note[The timer does not tick in the editor]
-It shows the remaining time as of the moment it rendered. A target already in the past previews as
-**completed**, which is the honest answer rather than a placeholder.
+A block stores only what you change as one `upOptions` object; the element’s declared defaults fill in the rest at render time. The demo above is:
 
-A ticking preview would also mean a repaint every second for as long as the sidebar is open.
-:::
+```html
+<!-- wp:unysonplus/countdown {"upOptions":{"target":"2026-12-31 23:59:59","alignment":"center"}} /-->
+```
 
-:::caution[Decide `on_complete` before the date arrives]
-It is the setting nobody tests, because testing it means waiting. A countdown that reaches zero and
-keeps showing zeros looks broken; one that hides itself can leave a hole in the layout.
-:::
+## The countdown element
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+The block and the page builder’s [Countdown element](/shortcodes/interactive-elements/countdown) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

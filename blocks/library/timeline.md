@@ -1,61 +1,41 @@
 ---
 title: Timeline
+description: The Unyson+ Timeline block — A vertical timeline of dated entries with markers and cards, authored in the block editor and rendered by the timeline element.
 ---
 
 # Timeline
 
-A vertical timeline of dated entries — company history, a roadmap, a set of milestones.
+A vertical timeline of dated entries with markers and cards. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [timeline element](/shortcodes/interactive-elements/timeline) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`timeline`](/shortcodes/interactive-elements/timeline) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/timeline/front.png" alt="The Timeline block — three dated entries in alternating cards" width="1210" />
 
-## What the sidebar exposes
+## Configure it
+
+Select the block and open the **Settings** (block) tab. The whole sidebar is generated from the element’s option schema, so it stays in step with the page builder.
+
+<img src="/img/blocks/timeline/inspector.png" alt="The Timeline block settings sidebar" width="300" />
+
+## Options
 
 | Option | What it does |
 | --- | --- |
-| `items` | The entries — date, title, text and icon |
-| `design` | Timeline layout preset |
-| `marker` | What each marker shows |
-| `card_style` | How each entry is boxed |
-| `howto_schema` | Emit HowTo structured data for the entries |
-| `accent_color` | Marker colour |
-| `icon_badge_preset` | Badge style behind an icon marker |
-| `line_color` | The vertical line |
-| `card_bg` | Entry background |
-| `date_color` | Date colour |
-| `title_color` | Entry title colour |
-| `text_color` | Entry body colour |
-| `font_size_preset` | Text size preset |
+| Items (`items`) | Each with a **Date**, a **Title**, **Text**, and an optional **Icon**. |
+| Design (`design`) | Alternating sides, or all on one side. |
+| Marker (`marker`) + Card style (`card_style`) | The dot/icon on the line, and the entry-card look. |
+| HowTo schema (`howto_schema`) | Emit `HowTo` structured data when the timeline is a how-to. |
+| Icon badge (`icon_badge_preset`) + Accent (`accent_color`) + Line (`line_color`) | Marker badge, accent, and the spine colour. |
+| Colours (`date_color`, `title_color`, `text_color`, `card_bg`) + Font size (`font_size_preset`) | Per-part colours and a preset size. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site’s design system from `theme.json`.
 
-:::note[The list is edited in the sidebar, not in a modal]
-`items` is an [`addable-popup`](/options/option-types/addable-popup) — a repeater. In the page
-builder each item opens in a modal; in a block sidebar the items expand **in place**, so the canvas
-preview stays visible while you type.
+## Sample content
 
-The stored value is identical either way, and an item added here shows up in the page builder exactly
-as if it had been added there.
-:::
+A block stores only what you change as one `upOptions` object; the element’s declared defaults fill in the rest at render time. The demo above is:
 
-:::note[The preview shows every entry revealed]
-Entries reveal themselves as they scroll into view on the front end. The canvas shows them all
-already revealed — a preview that hid half its content until you scrolled the editor past it would be
-showing you less than you are editing.
-:::
+```html
+<!-- wp:unysonplus/timeline {"upOptions":{"items":[{"date":"2015","title":"Unyson released","text":"<p>The original free framework ships.</p>"},{"date":"2024","title":"UnysonPlus","text":"<p>A modern rewrite — page builder, blocks and 100+ elements.</p>"},{"date":"2026","title":"Native blocks","text":"<p>Every element as a Gutenberg block — all free.</p>"}]}} /-->
+```
 
-:::caution[`howto_schema` is only right for instructions]
-It tells search engines these entries are the steps of a how-to. That is true of a setup guide and
-false of a company history, and structured data that does not match the page is worth less than none.
+## The timeline element
 
-Unlike Star Rating's review schema, this one is exposed in the sidebar: wrong HowTo markup is
-generally ignored, while wrong review markup invites a penalty — a different level of risk deserves a
-different level of friction.
-:::
-
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+The block and the page builder’s [Timeline element](/shortcodes/interactive-elements/timeline) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

@@ -98,23 +98,35 @@ heading/text/button→`core/heading`\|`paragraph`\|`buttons`, image→`core/imag
 verbatim→scoped `core/html`. Output **body only**, into a minimal generated block theme so it renders.
 Reuse the media/font localizers as-is.
 
-**Built now: the emitter (`to-blocks.mjs`).** It consumes the same intermediate as `to-pages`
-(`capture.sections[]` / `sec.blocks[]`), core-first, with a `core/html` fallback for anything not yet
-mapped so nothing is dropped. Validated against WordPress `parse_blocks()` on both a synthetic tree
-and a real live capture: **zero unparsed/freeform blocks, every block a registered core type, and a
-stable parse → serialize → parse round-trip.**
+**Built now: the emitter + a block-theme scaffold — proven end to end.**
 
-*Remaining in this tier:* the PHP twin (for the plugin's `run_url_conversion` path), a bare
-block-theme scaffold (`style.css` + `theme.json` + `templates/` + `parts/`) so the markup renders as
-a page, and the first block-emitter golden fixtures.
+- `to-blocks.mjs` consumes the same intermediate as `to-pages` (`capture.sections[]` / `sec.blocks[]`),
+  core-first, with a `core/html` fallback so nothing is dropped. Validated against WordPress
+  `parse_blocks()` on a synthetic tree *and* a real live capture: zero unparsed/freeform blocks, every
+  block a registered core type, stable parse → serialize → parse round-trip.
+- `to-block-theme.mjs` generates a minimal, **valid FSE block theme** — `style.css`, `theme.json`
+  (design system, see C2), `templates/` and `parts/`.
+- **End-to-end proof:** a real captured site (Jukebox) was emitted to block markup, wrapped in the
+  generated theme, installed and activated on a WordPress install (`wp_is_block_theme()` → true), and
+  rendered as the front page — header (site title + navigation), the hero, headings in the captured
+  font, and text coloured by the captured brand palette — with **no plugin dependency**. (The install
+  was snapshotted and fully restored afterward.)
 
-### Tier C2 — `theme.json` global styles 📋
+*Remaining in this tier:* the PHP twin (for the plugin's `run_url_conversion` path) and the first
+block-emitter golden fixtures.
+
+### Tier C2 — `theme.json` global styles 🚧
 
 Design tokens → a static `theme.json`: palette → `settings.color.palette`, fonts →
-`typography.fontFamilies` / `fontSizes`, spacing → `spacing.spacingSizes`, plus layout content/wide
-widths. The theme's runtime Theme-Settings → `theme.json` bridge (already shipped, see the
-[block roadmap Phase 1](/blocks/roadmap)) is the reference implementation; adapt it to emit a **static
-file** for a generated theme. Core blocks in the output then inherit the captured design system for free.
+`typography.fontFamilies`, plus layout content/wide widths. The theme's runtime Theme-Settings →
+`theme.json` bridge (already shipped, see the [block roadmap Phase 1](/blocks/roadmap)) is the
+reference implementation.
+
+**Built now (with C1's scaffold):** `to-block-theme.mjs` emits a static `theme.json` from the captured
+design config — semantic colours (primary / background / foreground) plus the source's brand tokens
+(`--brand-red`, `--dark`, …, resolved to real colours), heading + body font families, and the content
+width. Core blocks in the generated theme inherit it for free (verified: the rendered proof used the
+captured palette and fonts). *Remaining:* a spacing scale (`spacing.spacingSizes`) and fluid font sizes.
 
 ### Tier C3 — Chrome as template parts 📋 *(the gating milestone)*
 

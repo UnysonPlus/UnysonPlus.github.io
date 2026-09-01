@@ -48,3 +48,4 @@ maintainable site instead of a rough approximation.
 - **[What It Can Build](./what-it-can-build.md)** — conversions, demos, from-scratch sites, and pens → shortcodes.
 - **[The Capture Service](./capture-service.md)** — the capture pipeline and its browser dashboard.
 - **[Get the Kit](./get-the-kit.md)** — requirements and the download.
+- **[Block Theme Roadmap](./block-theme-roadmap.md)** — where a second output target is headed: generating standalone WordPress **block themes**, tier by tier.

@@ -10,7 +10,7 @@ You do not need a card terminal to build or verify this. Three layers cover ever
 
 | Layer | Covers | Needs |
 | --- | --- | --- |
-| **[Virtual Terminal](#the-virtual-terminal)** | Everyday flows, and every adversarial case a sandbox makes awkward | Nothing |
+| **[Virtual Terminal](#the-virtual-terminal)** | Everyday flows, and every adversarial case a sandbox makes awkward | Nothing — it ships with the extension |
 | **[Vendor sandbox](#vendor-sandboxes)** | Real vendor payloads, real webhook delivery, real OAuth | A free developer account |
 | **[Automated suite](#the-automated-suite)** | Regressions, CI | Nothing — the ledger suite runs today |
 
@@ -21,9 +21,12 @@ concern and not something this extension touches.
 
 **Unyson+ → POS Sync → Virtual Terminal.**
 
+:::info Shipped in 1.0.3
+:::
+
 A screen that composes a correctly-signed event and posts it to your own endpoint, exactly as a till
-would. Pick products, quantities and a location, then fire a sale, refund or stock adjustment and
-watch it move real stock.
+would. Pick a product and a quantity, then fire a sale, refund or stocktake and watch it move real
+stock.
 
 It is a shipping feature, not a dev tool. It is also:
 
@@ -31,44 +34,83 @@ It is a shipping feature, not a dev tool. It is also:
 - the **support tool** for reproducing a merchant's problem on your own site,
 - the **demo** — a sale visibly decrementing stock is the whole product in one screen.
 
+### Two transports, and why it matters which one you use
+
+The terminal can send its request two ways, and they are **not** interchangeable:
+
+| | What it proves | What it misses |
+| --- | --- | --- |
+| **Real HTTP request** *(default)* | The whole path — web server, security plugins, rewrite rules, the handler | Nothing |
+| **In-process** | The handler is correct | Everything in front of it |
+
+In-process dispatch passes happily on a site where a security plugin blocks `/wp-json/`, the web
+server strips headers, or loopback requests are firewalled — which are the three usual reasons a
+real till's events never arrive. Use it to *isolate* a problem ("is it the handler or the network?"),
+never to sign off.
+
 ### Firing your first event
 
 1. **Unyson+ → Extensions** → activate **POS Sync**.
-2. **Connections** → **Add connection** → type **Generic webhook**, name it `Virtual Terminal`,
-   mode **test**. ([details](./webhook-api.md#setup-step-by-step))
-3. **Virtual Terminal** → select the connection.
-4. Add a line item — the product picker searches by SKU, so anything missing a SKU shows up
-   immediately as a real problem, not a test artefact.
-5. **Fire sale.**
-6. **POS Sync → Log** shows the event: received, matched, applied, with the resulting stock level.
+2. **Connections** → **Add connection**, name it after the till, mode **test**.
+   ([details](./webhook-api.md#setup-step-by-step))
+3. **Virtual Terminal** → pick that connection, leave the transport on **Real HTTP request**.
+4. Choose a product — only products **with a SKU** are listed, because one without a SKU cannot be
+   matched to a till line and offering it would only waste your time.
+5. **Fire event.**
+6. The result appears immediately (the queue is drained synchronously, so you get an answer rather
+   than "pending"), and the full record is on **POS Sync → Log**.
 
-In **test** mode the full pipeline runs — signature, schema, matching, ordering, policy — but the
-store write is skipped and logged as `skipped: test_mode`. Switch to **live** to move real stock.
+In **test** mode the whole pipeline runs — signature, schema, matching, ordering, policy — and stops
+only at the store write, which is recorded as what *would* have happened. Both the site-wide setting
+and the connection's own must say live before anything moves real stock.
 
 ### Adversarial scenarios
 
-The everyday path is the easy part. These presets fire the cases that break naive integrations, one
-click each:
+The happy path is the easy part. These are the cases that break naive integrations — one click
+each, and **each one checks its own expectation** rather than leaving you to squint at the log:
 
-| Scenario | What it sends | Correct behaviour |
-| --- | --- | --- |
-| **Duplicate webhook** | The same `external_id` twice | Second recorded `duplicate`, `200`, stock moves **once** |
-| **Out-of-order batch** | Three sales with descending `occurred_at`, delivered ascending | Applied by event time; a stale absolute count is `skipped` |
-| **Partial refund** | Refund of one line from a two-line sale | Only that line restocks |
-| **Refund before sale** | Refund whose `sale_external_id` has not arrived | Held, then applied when the sale lands |
-| **Unknown SKU** | A line item matching nothing | Event `skipped`, item in the Unmatched queue, **no partial application** |
-| **Stock below zero** | Sells more than is on hand | Honours the cart's backorder setting; never silently clamps |
-| **Expired signature** | Timestamp 10 minutes old | `401`, nothing written |
-| **Tampered body** | Valid signature, mutated body | `401`, nothing written |
-| **Clock skew** | `occurred_at` 30 minutes in the future | Accepted, skew warning raised on the connection |
+| Scenario | What should happen |
+| --- | --- |
+| **A normal sale** | Accepted (202) and queued. The baseline. |
+| **Duplicate delivery** | Second delivery returns `200` with `duplicate: true`, and only **one** event exists. |
+| **Offline till reconnects** | Three sales delivered newest-first are applied oldest-first. |
+| **Stale stocktake** | A count older than one already applied is skipped, with a reason. |
+| **Unknown SKU** | Accepted, then skipped **whole** — the item waits on the Unmatched screen, nothing is partially applied. |
+| **Partial refund** | A refund of one line from a two-line sale is accepted. |
+| **Expired signature** | `401 timestamp_outside_window`. Nothing written. |
+| **Tampered body** | `401 signature_mismatch`. Nothing written. |
+| **Byte-identical re-delivery** | Accepted and de-duplicated — **not** rejected. See below. |
+| **Till clock drifting** | Accepted while inside the window, and the drift is recorded against the connection. |
+| **Malformed payload** | `400` naming the exact field. Not retryable. |
+| **Timestamp with no offset** | `400` — the schema requires an explicit UTC offset. |
 
-Each preset also exports a **signed cURL command**, so an integrator can reproduce the exact request
-from their own environment.
+:::note Byte-identical re-delivery is accepted, and that is deliberate
+An earlier design cached each accepted signature and rejected a repeat as `replayed_request`. That
+has been removed.
 
-:::tip These are the test suite
-The scenario definitions are the same fixtures the [automated suite](#the-automated-suite) runs. A
-scenario added here is a regression test everywhere.
+Every ingest route is **idempotent by construction** — the unique index means a repeat changes
+nothing — so an attacker replaying a captured request achieves precisely nothing, and the cache
+bought no protection. What it *did* do was break legitimate traffic: plenty of senders sign a
+delivery once and re-send the identical bytes when they do not get a 2xx (GitHub's redelivery works
+exactly this way), and against a nonce cache that retry came back `401`. An auth error is the sort
+of thing that makes a POS stop retrying, or pages someone at 6am about a shop that is working fine.
+
+The Virtual Terminal's own duplicate scenario is what surfaced this.
 :::
+
+:::tip Clock skew is measured on the *signing* timestamp
+Not on `occurred_at`. The two are different clocks doing different jobs: `occurred_at` orders
+events, `X-UPOS-Timestamp` bounds the request's lifetime. A till whose clock drifts corrupts the
+first and trips the second, which is why the drift is recorded against the connection rather than
+merely logged in passing.
+:::
+
+### Copy it as cURL
+
+Every connection has a ready-to-run signed request you can hand to whoever is configuring the till.
+It carries a **placeholder** secret, not the live one — copyable text ends up in chat logs — and it
+is generated from the same signing code the endpoint verifies with, so it cannot drift from what is
+actually accepted.
 
 ## Vendor sandboxes
 
@@ -135,12 +177,12 @@ with Access in front is the better option if you need one running for days.
 
 ### What exists today
 
-Three runnable suites, **142 assertions** between them. Both install the tables, exercise them and drop
+Four runnable suites, **187 assertions** between them. Both install the tables, exercise them and drop
 them again, so they are safe to re-run and leave the site as they found it.
 
 ```bash
 cd wp-content/plugins/unysonplus/framework/extensions/pos-sync
-for m in 1 2 3; do
+for m in 1 2 3 4; do
   php wp-cli.phar --path='<a WordPress install>' eval-file "tests/milestone-$m.php"
 done
 ```
@@ -157,10 +199,14 @@ done
   that calls the callback by hand proves the callback works and nothing about whether the endpoint
   does.
 
-:::tip Run all three
-Milestone 3's suite caught a real bug in Milestone 2's applier: a `class_exists()` guard wrapped
-only half a branch, so it fataled in exactly the situation the guard existed for. Cross-milestone
-runs are where that kind of thing surfaces.
+- **`milestone-4.php`** (44) — the Virtual Terminal: signing parity, both transports, every
+  scenario, and the cURL export. It also proves the scenarios *check something*, by breaking a
+  behaviour and asserting the scenario notices — a self-test that always passes is worse than none.
+
+:::tip Run all four
+This keeps paying. Milestone 3's suite caught a `class_exists()` guard in Milestone 2's applier that
+wrapped only half a branch; Milestone 4's duplicate scenario caught the nonce cache rejecting
+legitimate re-deliveries. Cross-milestone runs are where that kind of thing surfaces.
 :::
 
 Two of the first suite's cases look like the same rule and are not — worth understanding before

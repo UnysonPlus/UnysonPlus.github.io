@@ -154,15 +154,24 @@ rendered with its actual menu (Menu / Locations / About / Franchise), "Book a Ta
 icons — as **editable template parts** in the Site Editor. *Remaining:* the source logo as
 `core/site-logo` (today the site title stands in) and richer footer layouts.
 
-### Tier C4 — Templates 📋
+### Tier C4 — Templates ✅ *(built)*
 
-`templates/index.html`, `page.html`, `single.html`, `404.html`, `archive.html`, wiring the parts + a
-post-content / query loop. Small once C3 exists. The result is a valid, Site-Editor-editable FSE theme.
+`templates/index.html` (query loop), `page.html`, `single.html`, `404.html`, each wiring the header +
+`main` + footer parts. Delivered by the scaffold in C1 and proven in the end-to-end render
+(`wp_is_block_theme()` → true, front page rendered). A wider set (`archive.html`, `search.html`) is a
+trivial add when needed.
 
-### Tier C5 — Block patterns 📋
+### Tier C5 — Block patterns 🚧
 
 Register each converted section as a **block pattern** so a user can re-insert "the pricing section,"
 "the hero," etc. Turns a one-shot conversion into a reusable kit.
+
+**Built now:** `to-block-theme.mjs` emits one auto-registered `patterns/section-N.php` per converted
+section (WordPress registers every PHP file in a block theme's `patterns/` dir) — each with a Title
+taken from the section's own heading, a Slug, the theme's pattern Category, and the section's block
+markup. A `functions.php` registers that category so the patterns group under the theme in the
+inserter. Verified on Jukebox: four valid patterns (empty sections skipped), each header-complete and
+parsing with zero freeform blocks.
 
 ### Tier C6 — UnysonPlus-block enrichment 📋 *(optional toggle)*
 

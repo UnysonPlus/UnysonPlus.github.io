@@ -144,8 +144,7 @@ cosmetic surface.
 now sideloads every referenced image — from the page body **and** the theme files (logo/hero in parts
 and patterns) — into the media library and rewrites both to the local attachment URLs, so the
 installed theme carries no external image dependencies. Verified end to end (page body + on-disk part
-both rewritten, source-URL dedup, clean restore). *Remaining follow-up:* the source logo as
-`core/site-logo`.
+both rewritten, source-URL dedup, clean restore).
 
 ### Tier C2 — `theme.json` global styles ✅ *(built)*
 
@@ -160,7 +159,7 @@ design config — semantic colours (primary / background / foreground) plus the 
 width. Core blocks in the generated theme inherit it for free (verified: the rendered proof used the
 captured palette and fonts). A **spacing scale** (`spacing.spacingSizes`) and **fluid font sizes** (`typography.fontSizes`) are emitted too — the whole `theme.json` validated through WordPress's `WP_Theme_JSON`.
 
-### Tier C3 — Chrome as template parts 🚧 *(the gating milestone)*
+### Tier C3 — Chrome as template parts ✅ *(built — the gating milestone, now met)*
 
 Header/footer → `parts/header.html` + `parts/footer.html` built from core blocks: `core/navigation`
 (from the captured menu), `core/site-logo`, `core/social-links`, buttons. This is the genuinely new,
@@ -168,12 +167,20 @@ harder piece — the block world's answer to the Theme-Settings header builder �
 block theme" vs. "block content in an empty shell."**
 
 **Built now:** `to-block-theme.mjs` builds both parts from the captured chrome — the **header** carries
-the site title, the real nav as inline `core/navigation-link`s (deduped), and the CTA as a
+the brand (see below), the real nav as inline `core/navigation-link`s (deduped), and the CTA as a
 `core/button`; the **footer** carries the captured link columns, `core/social-links` (each service
 mapped to its WP slug), and a cleaned copyright line. Proven end to end: a generated Jukebox theme
 rendered with its actual menu (Menu / Locations / About / Franchise), "Book a Table" CTA, and social
-icons — as **editable template parts** in the Site Editor. *Remaining:* the source logo as
-`core/site-logo` (today the site title stands in) and richer footer layouts.
+icons — as **editable template parts** in the Site Editor.
+
+**Source logo → `core/site-logo`.** ✅ When the capture has an **image** logo the header emits
+`core/site-logo`; otherwise `core/site-title` stands in (text logos). The bundle carries the logo URL
+and site title on a `site` field; at install, `install_block_theme()` sideloads the logo and writes
+`custom_logo` **directly into the generated theme's own mods** (`theme_mods_<slug>`) — deterministic
+regardless of switch-theme timing, and it can never clobber the active theme's logo — and sets
+`blogname` for the `core/site-title` fallback + browser chrome. Verified end to end: image logo →
+`core/site-logo`, logo localized, mod written to the new theme (`matches: YES`), active theme
+untouched, clean restore. *Remaining (minor):* richer footer layouts.
 
 ### Tier C4 — Templates ✅ *(built)*
 

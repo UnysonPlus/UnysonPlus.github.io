@@ -189,7 +189,7 @@ untouched, clean restore. *Remaining (minor):* richer footer layouts.
 (`wp_is_block_theme()` → true, front page rendered). A wider set (`archive.html`, `search.html`) is a
 trivial add when needed.
 
-### Tier C5 — Block patterns 🚧
+### Tier C5 — Block patterns ✅ *(built)*
 
 Register each converted section as a **block pattern** so a user can re-insert "the pricing section,"
 "the hero," etc. Turns a one-shot conversion into a reusable kit.
@@ -198,14 +198,37 @@ Register each converted section as a **block pattern** so a user can re-insert "
 section (WordPress registers every PHP file in a block theme's `patterns/` dir) — each with a Title
 taken from the section's own heading, a Slug, the theme's pattern Category, and the section's block
 markup. A `functions.php` registers that category so the patterns group under the theme in the
-inserter. Verified on Jukebox: four valid patterns (empty sections skipped), each header-complete and
-parsing with zero freeform blocks.
+inserter. Verified on Jukebox (four valid patterns registered end to end, each parsing with zero
+freeform blocks) and by fixture (empty sections skipped; every pattern header-complete —
+Title / Slug / Categories / Inserter). Patterns honour the vocabulary toggle (C6), so an enriched
+conversion's patterns carry the UnysonPlus blocks too.
 
-### Tier C6 — UnysonPlus-block enrichment 📋 *(optional toggle)*
+### Tier C6 — UnysonPlus-block enrichment 🚧 *(foundation + first mapping built)*
 
 Where core blocks can't express a region faithfully, emit the matching **UnysonPlus block** instead of
 `core/html` — richer output, at the cost of a plugin dependency. The upsell path, and the bridge back
 to the framework.
+
+**The vocabulary toggle is shipped end to end.** `toBlocks(capture, { vocabulary })` (JS) and
+`FW_Site_Converter_Blocks::to_blocks($sections, ['vocabulary' => …])` (PHP) both take `core` (default,
+plugin-independent) or `enriched`. It threads from a `--vocab=enriched` / `VOCAB` capture flag through
+the bundle **and** the section patterns, so one capture replays into either vocabulary. This realises
+futureproofing principle #3 — *one emitter with a swappable vocabulary, never two pipelines*.
+
+**How enrichment works.** Each `unysonplus/*` block is a **dynamic** block that delegates its render to
+the matching Unyson+ shortcode, carrying `upOptions` = that shortcode's saved atts. So an enriched
+block is a self-closing comment — e.g. `<!-- wp:unysonplus/button {"upOptions":{…}} /-->` — and further
+mappings are mostly a matter of shaping `upOptions` (ideally by reusing the page-builder Mapper's atts,
+the way `to_blocks` mirrors `to-pages`). Anything without an enricher **falls back to the core mapper**
+(never `core/html`), so enriched output degrades faithfully.
+
+**First mapping — `button` → `unysonplus/button`.** ✅ Proven end to end: PHP and JS emit
+**byte-identical** enriched markup; the block is registered by the blocks extension; and `do_blocks()`
+renders it as the real button (`<a href=… class="btn btn-primary …">Book a Table</a>`). Golden fixtures
+lock the toggle (core vs. enriched, upOptions shape, faithful degradation of unmapped types, label-less
+skip). *Remaining:* map more leaf/section types (heading, image, section→container, columns) — each an
+incremental, fixture-guarded add on the shipped foundation. Enriched output **requires the plugin's
+`blocks` extension active** (106 blocks); that dependency is the whole point of the tier.
 
 ### Tier C7 — Block Bindings tie-in 🔍
 

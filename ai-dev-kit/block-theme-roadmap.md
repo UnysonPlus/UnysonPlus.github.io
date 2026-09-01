@@ -139,12 +139,20 @@ design config — semantic colours (primary / background / foreground) plus the 
 width. Core blocks in the generated theme inherit it for free (verified: the rendered proof used the
 captured palette and fonts). *Remaining:* a spacing scale (`spacing.spacingSizes`) and fluid font sizes.
 
-### Tier C3 — Chrome as template parts 📋 *(the gating milestone)*
+### Tier C3 — Chrome as template parts 🚧 *(the gating milestone)*
 
 Header/footer → `parts/header.html` + `parts/footer.html` built from core blocks: `core/navigation`
-(from the captured menu), `core/site-logo`, `core/social-icons`, buttons. This is the genuinely new,
+(from the captured menu), `core/site-logo`, `core/social-links`, buttons. This is the genuinely new,
 harder piece — the block world's answer to the Theme-Settings header builder — and it **gates "real
 block theme" vs. "block content in an empty shell."**
+
+**Built now:** `to-block-theme.mjs` builds both parts from the captured chrome — the **header** carries
+the site title, the real nav as inline `core/navigation-link`s (deduped), and the CTA as a
+`core/button`; the **footer** carries the captured link columns, `core/social-links` (each service
+mapped to its WP slug), and a cleaned copyright line. Proven end to end: a generated Jukebox theme
+rendered with its actual menu (Menu / Locations / About / Franchise), "Book a Table" CTA, and social
+icons — as **editable template parts** in the Site Editor. *Remaining:* the source logo as
+`core/site-logo` (today the site title stands in) and richer footer layouts.
 
 ### Tier C4 — Templates 📋
 

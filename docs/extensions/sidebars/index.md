@@ -1,7 +1,16 @@
 ---
-title: "Sidebars"
+title: "Free WordPress Custom Sidebars Plugin"
+sidebar_label: "Sidebars"
+description: "Free WordPress custom sidebars plugin — create unlimited dynamic sidebars and widget areas and assign them per page, post or template. A free alternative to Custom Sidebars and Content Aware Sidebars."
 ---
 
+<div class="ext-hero">
+  <span class="ext-hero__badge">Free — no pro tier</span>
+  <p class="ext-hero__title">Unlimited custom sidebars — free.</p>
+  <p class="ext-hero__sub">Create as many dynamic sidebars and widget areas as you need and assign them per page, post or template — no limits, no paid tier.</p>
+</div>
+
+# Sidebars
 
 Brings another layer of customization freedom to your website by letting you add more than one sidebar to a page, or different sidebars on different pages.
 

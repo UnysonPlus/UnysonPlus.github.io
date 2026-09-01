@@ -1,7 +1,15 @@
 ---
 sidebar_position: 2
-title: Custom Fields
+title: "Free ACF Alternative — Custom Fields for WordPress"
+sidebar_label: "Custom Fields"
+description: "Free WordPress custom fields plugin — build custom field groups (text, image, repeater, relationship, flexible content and more) with an intuitive admin UI. A free alternative to ACF (Advanced Custom Fields) Pro."
 ---
+
+<div class="ext-hero">
+  <span class="ext-hero__badge">Free — no pro tier</span>
+  <p class="ext-hero__title">Every custom-field type — no pro license.</p>
+  <p class="ext-hero__sub">Build custom field groups — text, image, repeater, relationship, flexible content and more — with an intuitive admin UI. The fields ACF locks in its Pro tier, free.</p>
+</div>
 
 # Custom Fields
 

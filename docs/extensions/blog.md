@@ -1,6 +1,14 @@
 ---
-title: Blog
+title: "Free WordPress Blog Posts Extension"
+sidebar_label: "Blog"
+description: "Free UnysonPlus Blog extension — relabels the WordPress Posts section as \"Blog\" across the admin and front end for a clearer content structure."
 ---
+
+<div class="ext-hero">
+  <span class="ext-hero__badge">Free — no pro tier</span>
+  <p class="ext-hero__title">A cleaner blog — free.</p>
+  <p class="ext-hero__sub">Relabels the Posts section as "Blog" across the admin and front end, so your content structure reads the way visitors expect. Free, no setup.</p>
+</div>
 
 # Blog
 

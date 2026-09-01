@@ -1,7 +1,15 @@
 ---
 sidebar_position: 7
-title: Asset Optimizer
+title: "Free WordPress Asset Optimizer — Combine CSS and JS"
+sidebar_label: "Asset Optimizer"
+description: "Free WordPress performance plugin — combine and minify CSS and JavaScript to cut HTTP requests and speed up page loads. The asset optimization premium performance plugins charge for."
 ---
+
+<div class="ext-hero">
+  <span class="ext-hero__badge">Free — no pro tier</span>
+  <p class="ext-hero__title">Faster pages — without a premium performance plugin.</p>
+  <p class="ext-hero__sub">Combine and minify enqueued CSS and JavaScript to cut HTTP requests and speed up load times — the asset optimization premium performance plugins charge for, free.</p>
+</div>
 
 # Asset Optimizer
 

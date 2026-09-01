@@ -1,7 +1,15 @@
 ---
 sidebar_position: 1
-title: Site Converter
+title: "Convert HTML to WordPress — Free Site Converter"
+sidebar_label: "Site Converter"
+description: "Free WordPress site converter — turn any static or AI-generated HTML site into native, editable WordPress pages. Import a URL, an HTML file or a mockup. No coding."
 ---
+
+<div class="ext-hero">
+  <span class="ext-hero__badge">Free — no pro tier</span>
+  <p class="ext-hero__title">Turn any HTML site into WordPress — free.</p>
+  <p class="ext-hero__sub">Point it at a URL, an HTML file, or an AI-generated export and it rebuilds the design as native, editable UnysonPlus pages — not a static import, and completely free.</p>
+</div>
 
 # Site Converter
 

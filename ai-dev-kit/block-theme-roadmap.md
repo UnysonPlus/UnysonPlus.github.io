@@ -137,8 +137,15 @@ installable bundle — `{ theme:{ slug, files }, page:{ title, content } }` — 
 Proven end to end on a live Jukebox capture: `capture --target=block-theme` → `import_dir` → an FSE site
 (`wp_is_block_theme()` → true) with the captured nav, social icons and hero — then fully restored. The
 CLI/env flag **is** the target selector; a GUI toggle in the dashboard/admin is the one remaining
-cosmetic surface. *Follow-ups:* media localization for the block path (images currently hotlink), and
-the source logo as `core/site-logo`.
+cosmetic surface.
+
+**Media is localized on install.** ✅ The emitters deliberately hotlink the source's image URLs
+(portable, plugin-free output with no WP dependency at emit time). At install, `install_block_theme()`
+now sideloads every referenced image — from the page body **and** the theme files (logo/hero in parts
+and patterns) — into the media library and rewrites both to the local attachment URLs, so the
+installed theme carries no external image dependencies. Verified end to end (page body + on-disk part
+both rewritten, source-URL dedup, clean restore). *Remaining follow-up:* the source logo as
+`core/site-logo`.
 
 ### Tier C2 — `theme.json` global styles ✅ *(built)*
 

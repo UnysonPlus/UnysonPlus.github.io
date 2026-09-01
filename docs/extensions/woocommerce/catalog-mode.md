@@ -30,7 +30,7 @@ around it.
 
 Turning it on hides the commerce affordances everywhere:
 
-![The shop archive in Catalog Mode](/img/extensions/woocommerce/catalog-mode.png)
+<img src="/img/extensions/woocommerce/catalog-mode.png" alt="The shop archive in Catalog Mode" width="1210" />
 
 Specifically, it unhooks the four WooCommerce templates that print prices and cart buttons:
 
@@ -86,7 +86,7 @@ page, or a `mailto:` address) and optionally change the **Text**, and a button a
 slot the hidden add-to-cart vacated — on shop archives, on single products, and in the extension's
 own product cards.
 
-![A product card with an enquiry button in place of add-to-cart](/img/extensions/woocommerce/enquiry-button.png)
+<img src="/img/extensions/woocommerce/enquiry-button.png" alt="A product card with an enquiry button in place of add-to-cart" width="411" />
 
 The product comes along with the click, so the form on the other end knows what the enquiry is
 about:
@@ -126,7 +126,7 @@ mute: someone who followed a link to the cart lands on the shop wondering whethe
 
 Put text in **Closed-Shop Message** and they get told instead, with a way back:
 
-![The closed-shop message on the cart page](/img/extensions/woocommerce/closed-shop-message.png)
+<img src="/img/extensions/woocommerce/closed-shop-message.png" alt="The closed-shop message on the cart page" width="1210" />
 
 The message replaces the Cart / Checkout page content (at `the_content` priority 0, so it pre-empts
 the cart shortcode or block that would otherwise render), followed by a **Continue browsing** link

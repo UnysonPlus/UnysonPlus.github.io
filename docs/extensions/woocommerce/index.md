@@ -12,7 +12,7 @@ catalog layout and shop behavior on **one settings page** in the Unyson+ menu.
 The extension is completely **inert until WooCommerce is installed and active** — enabling it on a
 site without WooCommerce changes nothing at all.
 
-![The shop archive rendered by the extension](/img/extensions/woocommerce/shop-archive.png)
+<img src="/img/extensions/woocommerce/shop-archive.png" alt="The shop archive rendered by the extension" width="1210" />
 
 :::tip[The one-sentence mental model]
 WooCommerce keeps running the store; this extension decides how it **looks** (grid, gallery,
@@ -40,7 +40,7 @@ so you only change what you want to differ from what WooCommerce already does.
 Once both are active, a **WooCommerce** entry appears in the Unyson+ admin menu, and a
 **WooCommerce Elements** tab appears in the page builder.
 
-![The WooCommerce entry in the Unyson+ menu](/img/extensions/woocommerce/settings-menu.png)
+<img src="/img/extensions/woocommerce/settings-menu.png" alt="The WooCommerce entry in the Unyson+ menu" width="200" />
 
 :::note[Why the menu entry can be missing]
 The entry only registers when the **WooCommerce plugin itself** is active. If you've enabled the

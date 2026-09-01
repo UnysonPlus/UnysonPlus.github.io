@@ -222,12 +222,20 @@ mappings are mostly a matter of shaping `upOptions` (ideally by reusing the page
 the way `to_blocks` mirrors `to-pages`). Anything without an enricher **falls back to the core mapper**
 (never `core/html`), so enriched output degrades faithfully.
 
-**First mapping — `button` → `unysonplus/button`.** ✅ Proven end to end: PHP and JS emit
-**byte-identical** enriched markup; the block is registered by the blocks extension; and `do_blocks()`
-renders it as the real button (`<a href=… class="btn btn-primary …">Book a Table</a>`). Golden fixtures
-lock the toggle (core vs. enriched, upOptions shape, faithful degradation of unmapped types, label-less
-skip). *Remaining:* map more leaf/section types (heading, image, section→container, columns) — each an
-incremental, fixture-guarded add on the shipped foundation. Enriched output **requires the plugin's
+**Mappings built so far** — each proven end to end (PHP and JS emit **byte-identical** markup, the block
+is registered by the blocks extension, and `do_blocks()` renders the real output), each fixture-guarded:
+
+| Intermediate | UnysonPlus block | `upOptions` | Renders as |
+|---|---|---|---|
+| `button` | `unysonplus/button` | `label, link, target` | `<a class="btn btn-primary …">Book a Table</a>` |
+| `heading` | `unysonplus/special-heading` | `title, heading (h1–h6), [alignment]` | the real `<h2>…</h2>` special heading |
+| `text` | `unysonplus/text-block` | `text (HTML), [text_align]` | the rich text block |
+
+Golden fixtures lock the toggle (core vs. enriched, the `upOptions` shape of each, faithful degradation
+of unmapped types, and the "can't enrich → core fallback" cases — e.g. a label-less button or a
+text-less heading degrade to the core block). *Remaining:* map the container types (`section`→
+`unysonplus/section`, `row`/columns) and `image`→`unysonplus/media-image` — structured options, so each
+is a careful, fixture-guarded add on the shipped foundation. Enriched output **requires the plugin's
 `blocks` extension active** (106 blocks); that dependency is the whole point of the tier.
 
 ### Tier C7 — Block Bindings tie-in 🔍

@@ -110,15 +110,33 @@ Remaining before release: release wiring.
 
 ---
 
-## Phase 4 — Section styles 📋
+## Phase 4 — Section styles 🚧
 
-Publish the Preset Library as `styles.blocks.variations`, so Unyson+ section presets
-appear as a style dropdown on any core Group block.
+**Built.**
 
-This is the natural bridge between the framework's preset system and how block themes
-express sections: a section in the block editor is a Group block with full-width
-alignment and constrained layout, and section styles are how a design system attaches
-to it.
+The Section Styles preset library — Alt, Light, Dark and any the site adds — is now
+registered as **block style variations**, so the same named band skins appear in the Styles
+panel of a core Group or Columns block. This is the bridge between the framework's preset
+system and how block themes express sections.
+
+Registered with `register_block_style()`'s `style_data` (WP 6.6+), which takes a
+theme.json-like style object, so **WordPress generates the CSS** and the variation stays
+editable through Global Styles — rather than the theme shipping a second hardcoded
+stylesheet. WordPress merges each one into the resolved theme.json at
+`styles.blocks.core/group.variations.<name>`, and emits the rules when the block renders.
+
+What a preset maps to: background, text, heading and link colour (including link hover),
+border style / width / colour / radius, and padding. Border **sides** are deliberately not
+mapped — theme.json's border shorthand is all-round, so a partial border stays the job of
+the `.section--{slug}` rule.
+
+Colours resolve through `unysonplus_resolve_preset_color()`, the same helper the CSS
+pipeline uses to build `.section--{slug}`, so a variation and its shortcode counterpart
+cannot drift apart. That helper was extracted from a closure inside the CSS builder; the
+generated presets CSS was verified byte-identical afterwards, so nothing about the existing
+front end changed.
+
+Remaining before release: release wiring.
 
 ---
 

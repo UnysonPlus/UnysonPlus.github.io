@@ -6,7 +6,7 @@ description: "Free WordPress custom sidebars plugin — create unlimited dynamic
 
 <div class="ext-hero">
   <span class="ext-hero__badge">Free — no pro tier</span>
-  <p class="ext-hero__title">Unlimited custom sidebars — free.</p>
+  <p class="ext-hero__title">Unlimited custom sidebars — FREE!</p>
   <p class="ext-hero__sub">Create as many dynamic sidebars and widget areas as you need and assign them per page, post or template — no limits, no paid tier.</p>
 </div>
 

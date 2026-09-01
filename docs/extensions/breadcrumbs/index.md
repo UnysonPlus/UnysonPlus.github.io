@@ -6,7 +6,7 @@ description: "Free WordPress breadcrumbs plugin — drop-in, SEO-friendly breadc
 
 <div class="ext-hero">
   <span class="ext-hero__badge">Free — no pro tier</span>
-  <p class="ext-hero__title">SEO breadcrumbs — drop-in and free.</p>
+  <p class="ext-hero__title">SEO breadcrumbs — drop-in and FREE!</p>
   <p class="ext-hero__sub">Drop-in breadcrumb navigation with structured-data (schema) markup for richer search snippets — no configuration, no cost.</p>
 </div>
 

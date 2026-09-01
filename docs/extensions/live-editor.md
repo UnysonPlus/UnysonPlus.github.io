@@ -7,7 +7,7 @@ description: "Free WordPress live editor — edit your page-builder pages visual
 
 <div class="ext-hero">
   <span class="ext-hero__badge">Free — no pro tier</span>
-  <p class="ext-hero__title">Edit pages live on the front end — free.</p>
+  <p class="ext-hero__title">Edit pages live on the front end — FREE!</p>
   <p class="ext-hero__sub">Build and tweak your pages visually on the real front end, seeing every change in context and in real time — front-end editing without a premium page-builder license.</p>
 </div>
 

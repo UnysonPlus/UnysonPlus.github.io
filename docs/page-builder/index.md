@@ -8,7 +8,7 @@ description: "Free WordPress drag-and-drop page builder — build any layout vis
 
 <div class="ext-hero">
   <span class="ext-hero__badge">Free — no pro tier</span>
-  <p class="ext-hero__title">Premium page building — free forever.</p>
+  <p class="ext-hero__title">Premium page building — FREE forever!</p>
   <p class="ext-hero__sub">A visual drag-and-drop builder with sections, columns and 100+ content elements to build any layout — the page-building power Elementor Pro, Divi and WPBakery charge for, free.</p>
 </div>
 

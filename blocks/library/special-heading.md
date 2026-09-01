@@ -1,79 +1,42 @@
 ---
 title: Special Heading
-sidebar_position: 4
-description: The Unyson+ Special Heading block — an overline (eyebrow), title and subtitle as one composed section header, with icons, sizing and colours, rendered by the special heading element.
+description: The Unyson+ Special Heading block — A section heading with an overline, title and subtitle — the standard way to open a section, authored in the block editor and rendered by the special-heading element.
 ---
 
 # Special Heading
 
-A section header as one composed unit — an **overline** (eyebrow), a **title**, and a
-**subtitle** — instead of three separate blocks you have to align by hand. Set the
-heading level for SEO independently of the visual size.
+A section heading with an overline, title and subtitle — the standard way to open a section. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [special-heading element](/shortcodes/content-elements/special-heading) — the same server-side code as the page builder — so the output is identical either way.
 
-Like every block in the library, it is a second *authoring* surface onto the
-[special heading element](/shortcodes/content-elements/special-heading): the editor
-preview and the front end are the same server-rendered output.
+<img src="/img/blocks/special-heading/front.png" alt="The Special Heading block — an overline, title and subtitle, centred" width="1210" />
 
-<img src="/img/blocks/special-heading/front.png" alt="A centered Special Heading — overline “UNYSONPLUS”, a title, and a subtitle" width="1210" />
+## Configure it
 
-Add it from the inserter (**+** → search *Special Heading* → the one under **Unyson+**),
-then write the three lines in the block settings.
+Select the block and open the **Settings** (block) tab. The whole sidebar is generated from the element’s option schema, so it stays in step with the page builder.
 
-<img src="/img/blocks/special-heading/inspector.png" alt="The Special Heading block settings — overline, title, subtitle and title tag" width="300" />
+<img src="/img/blocks/special-heading/inspector.png" alt="The Special Heading block settings sidebar" width="300" />
 
 ## Options
 
-### Content
-
 | Option | What it does |
 | --- | --- |
-| **Overline** (`overline`) | The small eyebrow label above the title. Leave empty to hide. |
-| **Title** (`title`) | The heading text. You can wrap part of it in inline HTML (an `<em>` or a coloured `<span>`) to emphasise a word. |
-| **Subtitle** (`subtitle`) | A short supporting line under the title. For longer copy use a Text Block. |
-| **Title Tag** (`heading`) | The semantic level `H1`–`H6` — SEO/structure only, not size. One `H1` per page. |
+| Overline (`overline`) | A small eyebrow line above the title — with Uppercase (`overline_uppercase`), a Marker (`overline_marker`) and an Icon (`overline_icon`). |
+| Title (`title`) + Heading level (`heading`) | The main heading text and its semantic level (H1–H6). |
+| Subtitle (`subtitle`) | A supporting line below the title. |
+| Alignment (`alignment`) | Left, Center, or Right. |
+| Title / Subtitle size (`display_size`, `subtitle_size`) | Independent sizes for the two lines. |
+| Element Spacing (`element_spacing`) + Max width (`block_max_width`) | Gap between the parts, and a readable max width. |
+| Colours (`overline_color`, `title_color`, `subtitle_color`, `bg_color`) | Per-part colour pickers. |
 
-### Icons
-
-| Option | What it does |
-| --- | --- |
-| **Overline Icon** (`overline_icon`) | An icon beside the overline (icon font, emoji, SVG or image), before or after the text. |
-| **Title Icon** (`icon`) | An icon beside the title, kept as a separate field so the heading text stays clean and semantic. |
-
-### Layout & Styling
-
-| Option | What it does |
-| --- | --- |
-| **Alignment** (`alignment`) | Left / Center / Right for the whole unit. |
-| **Title Display Size** (`display_size`) | The visual size of the title, independent of its tag. |
-| **Subtitle Size** (`subtitle_size`) | The visual size of the subtitle. |
-| **Element Spacing** (`element_spacing`) | The gap between overline, title and subtitle. |
-| **Overline Uppercase** (`overline_uppercase`) | Force the overline to uppercase. |
-| **Overline Marker** (`overline_marker`) | A rule / kicker mark on the overline. |
-| **Max Width** (`block_max_width`) | Constrain the heading’s width for tidy line-lengths. |
-| **Colours** (`bg_color`, `overline_color`, `title_color`, `subtitle_color`) | Background and per-line text colours. |
-
-### WordPress block supports
-
-- **Alignment** — Wide / Full.  •  **Dimensions** — Margin and Padding.  •  Inherits the theme’s design system from `theme.json`.
+The block also opts into WordPress **alignment** (Wide / Full) and **Margin / Padding**, which inherit the site’s design system from `theme.json`.
 
 ## Sample content
 
-The demo above is a centered overline / title / subtitle:
+A block stores only what you change as one `upOptions` object (keyed by the same paths the page builder uses); the element’s declared defaults fill in the rest at render time. The demo above is:
 
 ```html
-<!-- wp:unysonplus/special-heading {"upOptions":{
-  "overline":"UNYSONPLUS",
-  "title":"Premium features — none of the premium price",
-  "subtitle":"A free WordPress framework with no pro tier.",
-  "alignment":"center"
-}} /-->
+<!-- wp:unysonplus/special-heading {"upOptions":{"overline":"UNYSONPLUS","title":"Premium features — none of the premium price","subtitle":"A free WordPress framework with no pro tier.","alignment":"center"}} /-->
 ```
 
-A freshly inserted block stores only what you change; the element’s declared defaults
-fill in the rest at render time.
+## The special-heading element
 
-## Relationship to the special heading element
-
-The block and the page builder’s [special heading element](/shortcodes/content-elements/special-heading)
-are two doors onto the same code — every option and class documented there is true here;
-the block simply exposes those options as a generated inspector.
+The block and the page builder’s [Special Heading element](/shortcodes/content-elements/special-heading) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

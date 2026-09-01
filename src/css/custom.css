@@ -194,3 +194,43 @@ html.plugin-id-decisions article header h1 {
   font-weight: 700;
   color: #eafff7;
 }
+
+/* ── Extension landing hero (shared signature across all extension pages) ────
+ * Same fixed dark-green gradient as the AI Dev Kit hero (readable in both
+ * themes), plus a gold "FREE" badge — the throughline: premium plugins, free. */
+.ext-hero {
+  margin: 0 0 2rem;
+  padding: 1.9rem 2.25rem 2rem;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #204c41 0%, #2e6e5e 60%, #337966 100%);
+  color: #fff;
+  box-shadow: 0 14px 34px -16px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.ext-hero__badge {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+  padding: 0.28rem 0.72rem;
+  border-radius: 999px;
+  background: #ffd666;
+  color: #1b3a2c;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.ext-hero__title {
+  margin: 0 0 0.7rem;
+  font-size: clamp(1.5rem, 3.3vw, 2.25rem);
+  line-height: 1.16;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: #fff;
+}
+.ext-hero__sub {
+  margin: 0;
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.9);
+}
+.ext-hero__sub strong { color: #fff; }

@@ -7,7 +7,7 @@ description: "Free WordPress snippets — save reusable page-builder content and
 
 <div class="ext-hero">
   <span class="ext-hero__badge">Free — no pro tier</span>
-  <p class="ext-hero__title">Reusable content blocks — save once, use everywhere. Free.</p>
+  <p class="ext-hero__title">Reusable content blocks — save once, use everywhere. FREE!</p>
   <p class="ext-hero__sub">Save any page-builder section as a reusable snippet and embed it across your site — edit it once and every instance updates. Global content blocks, free.</p>
 </div>
 

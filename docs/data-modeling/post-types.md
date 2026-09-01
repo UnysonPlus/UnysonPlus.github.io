@@ -7,7 +7,7 @@ description: "Free WordPress custom post types and taxonomies plugin — registe
 
 <div class="ext-hero">
   <span class="ext-hero__badge">Free — no pro tier</span>
-  <p class="ext-hero__title">Custom post types and taxonomies — no code, free.</p>
+  <p class="ext-hero__title">Custom post types and taxonomies — no code, FREE!</p>
   <p class="ext-hero__sub">Register custom post types and taxonomies straight from the WordPress admin — labels, supports, rewrite rules and more, with no code and no cost.</p>
 </div>
 

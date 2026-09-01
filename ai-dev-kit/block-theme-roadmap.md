@@ -126,7 +126,7 @@ fixtures — are all done, and proven end to end. What remains to *ship* block o
 wiring: a `target` selector in the Site Converter that runs the block emitter instead of the
 page-builder mapper — carried under the tiers that follow (chrome, templates) since it needs them too.
 
-### Tier C2 — `theme.json` global styles 🚧
+### Tier C2 — `theme.json` global styles ✅ *(built)*
 
 Design tokens → a static `theme.json`: palette → `settings.color.palette`, fonts →
 `typography.fontFamilies`, plus layout content/wide widths. The theme's runtime Theme-Settings →
@@ -137,7 +137,7 @@ reference implementation.
 design config — semantic colours (primary / background / foreground) plus the source's brand tokens
 (`--brand-red`, `--dark`, …, resolved to real colours), heading + body font families, and the content
 width. Core blocks in the generated theme inherit it for free (verified: the rendered proof used the
-captured palette and fonts). *Remaining:* a spacing scale (`spacing.spacingSizes`) and fluid font sizes.
+captured palette and fonts). A **spacing scale** (`spacing.spacingSizes`) and **fluid font sizes** (`typography.fontSizes`) are emitted too — the whole `theme.json` validated through WordPress's `WP_Theme_JSON`.
 
 ### Tier C3 — Chrome as template parts 🚧 *(the gating milestone)*
 

@@ -1,56 +1,41 @@
 ---
 title: Steps
+description: The Unyson+ Steps block — A numbered sequence of steps with markers and connectors, authored in the block editor and rendered by the steps element.
 ---
 
 # Steps
 
-A numbered sequence — onboarding, a recipe, a process. Markers, connectors and per-step icons.
+A numbered sequence of steps with markers and connectors. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [steps element](/shortcodes/components/steps) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`steps`](/shortcodes/components/steps) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/steps/front.png" alt="The Steps block — three numbered / icon steps joined by connectors" width="1210" />
 
-## What the sidebar exposes
+## Configure it
+
+Select the block and open the **Settings** (block) tab. The whole sidebar is generated from the element’s option schema, so it stays in step with the page builder.
+
+<img src="/img/blocks/steps/inspector.png" alt="The Steps block settings sidebar" width="300" />
+
+## Options
 
 | Option | What it does |
 | --- | --- |
-| `steps` | The steps themselves |
-| `design` | Layout preset |
-| `marker` | What each marker shows — a number, an icon, a dot |
-| `marker_shape` | Marker shape |
-| `connector` | The line drawn between markers |
-| `title_tag` | Which heading level step titles use |
-| `accent_color` | Marker and connector colour |
-| `icon_badge_preset` | Badge style behind an icon marker |
-| `marker_text_color` | Number / icon colour |
-| `title_color` | Step title colour |
-| `text_color` | Step body colour |
-| `font_size_preset` | Text size preset |
+| Steps (`steps`) | Each with a **Title**, rich-text **Content**, and an optional **Icon**. |
+| Design (`design`) + Marker (`marker`, `marker_shape`) | Numbers or icons in a circle or square. |
+| Connector (`connector`) | The line that joins one step to the next. |
+| Title tag (`title_tag`) | Heading level for each step title. |
+| Icon badge (`icon_badge_preset`) + Accent (`accent_color`) | A badge behind the marker, and the accent colour. |
+| Colours (`marker_text_color`, `title_color`, `text_color`) + Font size (`font_size_preset`) | Per-part colours and a preset size. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site’s design system from `theme.json`.
 
-:::note[The list is edited in the sidebar, not in a modal]
-`steps` is an [`addable-popup`](/options/option-types/addable-popup) — a repeater. In the page
-builder each item opens in a modal; in a block sidebar the items expand **in place**, so the canvas
-preview stays visible while you type.
+## Sample content
 
-The stored value is identical either way, and an item added here shows up in the page builder exactly
-as if it had been added there.
-:::
+A block stores only what you change as one `upOptions` object; the element’s declared defaults fill in the rest at render time. The demo above is:
 
-:::note[Numbers come from position, not from anything you type]
-Step numbers are derived from where a step sits in the list, so reordering the repeater renumbers the
-element. There is no stored number that can disagree with the order on screen.
-:::
+```html
+<!-- wp:unysonplus/steps {"upOptions":{"steps":[{"title":"Install the plugin","content":"<p>Upload the free plugin and activate it.</p>","icon":{"type":"icon-font","icon-class":"fa-solid fa-download"}},{"title":"Convert or build","content":"<p>Point the Site Converter at a URL, or build from scratch.</p>","icon":{"type":"icon-font","icon-class":"fa-solid fa-wand-magic-sparkles"}},{"title":"Publish","content":"<p>Your editable WordPress site is ready.</p>","icon":{"type":"icon-font","icon-class":"fa-solid fa-rocket"}}]}} /-->
+```
 
-:::note[`title_tag` is a structure choice, not a size one]
-Use it to keep the page's heading order sensible — steps under an `h2` section should usually be
-`h3`. To make the titles bigger or smaller, use `font_size_preset`; changing the tag to get a size is
-how a page ends up with an `h1` in the middle of it.
-:::
+## The steps element
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+The block and the page builder’s [Steps element](/shortcodes/components/steps) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

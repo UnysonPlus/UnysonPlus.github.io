@@ -1,55 +1,42 @@
 ---
 title: Progress
+description: The Unyson+ Progress block — Progress bars or circles for skills, capacity and completion, authored in the block editor and rendered by the progress element.
 ---
 
 # Progress
 
-Progress bars or circular meters — skills, capacity, completion, funding.
+Progress bars or circles for skills, capacity and completion. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [progress element](/shortcodes/interactive-elements/progress) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`progress`](/shortcodes/interactive-elements/progress) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/progress/front.png" alt="The Progress block — three labelled bars, animating on scroll" width="1210" />
 
-## What the sidebar exposes
+## Configure it
+
+Select the block and open the **Settings** (block) tab. The whole sidebar is generated from the element’s option schema, so it stays in step with the page builder.
+
+<img src="/img/blocks/progress/inspector.png" alt="The Progress block settings sidebar" width="300" />
+
+## Options
 
 | Option | What it does |
 | --- | --- |
-| `layout` | Bars or circles, and the settings that shape needs |
-| `bars` | The entries — label and value |
-| `height` | Bar thickness |
-| `value_position` | Where the number sits |
-| `rounded` | Round the bar ends |
-| `striped` | Striped fill |
-| `show_value` | Print the number |
-| `animate` | Animate the fill on scroll |
-| `count_up` | Count the number up as it fills |
-| `gap` | Space between entries |
-| `fill_color` | Fill colour |
-| `fill_color_2` | Second fill colour, for gradient fills |
-| `track_color` | The unfilled track |
-| `label_color` | Label colour |
+| Bars (`bars`) | Each with a **Label**, a **Percent** (0–100), and an optional icon and colour. |
+| Layout (`layout`) | Horizontal bars or circular meters. |
+| Height (`height`) + Rounded (`rounded`) + Striped (`striped`) | Bar thickness and style. |
+| Value (`show_value`, `value_position`) | Whether the percentage shows, and where. |
+| Animate (`animate`) + Count up (`count_up`) | Fill and count the number up when it scrolls into view. |
+| Gap (`gap`) | Space between bars. |
+| Colours (`fill_color`, `track_color`, `label_color`) | Fill, track and label colours. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site’s design system from `theme.json`.
 
-:::note[`bars` is a repeater]
-It is an [`addable-popup`](/options/option-types/addable-popup): items expand in place in the
-block sidebar rather than opening a modal, and store exactly the value the page builder stores.
-:::
+## Sample content
 
-:::note[`layout` is a picker that reveals its own options]
-It is a [`multi-picker`](/options/option-types/multi-picker): choosing an option reveals the
-fields belonging to that choice, and **only the chosen branch is saved** — switch away and back, and
-the fields you filled in the branch you left are blank.
-:::
+A block stores only what you change as one `upOptions` object; the element’s declared defaults fill in the rest at render time. The demo above is:
 
-:::note[Bars are drawn at their final value, not animating up to it]
-Replaying the fill would restart on every option change — so the number you were trying to set would
-be the one thing the preview never held still long enough to show. Visitors see the animation, if
-`animate` is on.
-:::
+```html
+<!-- wp:unysonplus/progress {"upOptions":{"bars":[{"label":"Free, forever","percent":"100"},{"label":"Extensions included","percent":"100"},{"label":"Pro tier","percent":"0"}]}} /-->
+```
 
-:::note[`count_up` needs `animate`]
-The number counts up *as the bar fills*. With no fill animation there is nothing for it to keep pace
-with.
-:::
+## The progress element
+
+The block and the page builder’s [Progress element](/shortcodes/interactive-elements/progress) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

@@ -5,13 +5,13 @@ sidebar_label: "Site Converter"
 description: "Free WordPress site converter — turn any static or AI-generated HTML site into native, editable WordPress pages. Import a URL, an HTML file or a mockup. No coding."
 ---
 
+# Site Converter
+
 <div class="ext-hero">
-  <span class="ext-hero__badge">Free — no pro tier</span>
+  <span class="ext-hero__badge">FREE!</span>
   <p class="ext-hero__title">Turn any HTML site into WordPress — FREE!</p>
   <p class="ext-hero__sub">Point it at a URL, an HTML file, or an AI-generated export and it rebuilds the design as native, editable UnysonPlus pages — not a static import, and completely free.</p>
 </div>
-
-# Site Converter
 
 **Site Converter** turns an existing website — especially an **AI‑generated design** (Lovable, v0,
 Bolt, Google Stitch, any Tailwind/Bootstrap page) — into a **native, fully‑editable Unyson+

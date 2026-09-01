@@ -5,13 +5,13 @@ sidebar_label: "Post Types & Taxonomies"
 description: "Free WordPress custom post types and taxonomies plugin — register CPTs and custom taxonomies from the admin with no code. A free alternative to Custom Post Type UI (CPT UI) and Pods."
 ---
 
+# Post Types &amp; Taxonomies
+
 <div class="ext-hero">
-  <span class="ext-hero__badge">Free — no pro tier</span>
+  <span class="ext-hero__badge">FREE!</span>
   <p class="ext-hero__title">Custom post types and taxonomies — no code, FREE!</p>
   <p class="ext-hero__sub">Register custom post types and taxonomies straight from the WordPress admin — labels, supports, rewrite rules and more, with no code and no cost.</p>
 </div>
-
-# Post Types &amp; Taxonomies
 
 Create custom post types and taxonomies from the WordPress admin — no code required. Start from a
 **blueprint** for a common content type, or build one row by row: labels, key, supported editor

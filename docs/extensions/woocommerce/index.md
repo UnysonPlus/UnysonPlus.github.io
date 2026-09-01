@@ -5,13 +5,13 @@ sidebar_label: "WooCommerce"
 description: "Free WooCommerce integration for UnysonPlus — storefront elements, product grids and full theme integration to design your shop visually. No paid add-ons."
 ---
 
+# WooCommerce
+
 <div class="ext-hero">
-  <span class="ext-hero__badge">Free — no pro tier</span>
+  <span class="ext-hero__badge">FREE!</span>
   <p class="ext-hero__title">Design your WooCommerce store — FREE!</p>
   <p class="ext-hero__sub">Storefront elements, product grids and deep theme integration to build and style your WooCommerce shop visually — the store-design tools other builders sell as add-ons, free.</p>
 </div>
-
-# WooCommerce
 
 Integrates **[WooCommerce](https://woocommerce.com/)** with the Unyson+ framework. It makes any
 active theme WooCommerce-aware, adds a full set of shop **page-builder elements**, and puts the

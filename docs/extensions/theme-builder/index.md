@@ -5,13 +5,13 @@ sidebar_label: "Theme Builder"
 description: "Free WordPress theme builder — design global headers, footers and body templates with conditional display rules. A free alternative to Elementor Theme Builder and Divi."
 ---
 
+# Theme Builder
+
 <div class="ext-hero">
-  <span class="ext-hero__badge">Free — no pro tier</span>
+  <span class="ext-hero__badge">FREE!</span>
   <p class="ext-hero__title">Build headers, footers and templates — FREE!</p>
   <p class="ext-hero__sub">Design global headers, footers and body templates visually, with conditional rules for where each one appears — theme building without a premium builder license.</p>
 </div>
-
-# Theme Builder
 
 **Theme Builder** lets you design your site's global **Header**, **Footer**, and full‑page **Body**
 layouts with the visual page builder, bundle them into a **Template**, and assign each Template to

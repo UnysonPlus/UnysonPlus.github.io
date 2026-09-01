@@ -4,13 +4,13 @@ sidebar_label: "Shortcodes"
 description: "The UnysonPlus shortcodes framework — 100+ content elements that power the page builder, from headings and buttons to galleries, sliders and pricing tables. Free and unlimited."
 ---
 
+# Shortcodes
+
 <div class="ext-hero">
-  <span class="ext-hero__badge">Free — no pro tier</span>
+  <span class="ext-hero__badge">FREE!</span>
   <p class="ext-hero__title">100+ premium content elements — FREE!</p>
   <p class="ext-hero__sub">The library behind the page builder: headings, buttons, galleries, sliders, accordions, pricing tables and dozens more — every element, free and unlimited.</p>
 </div>
-
-# Shortcodes
 
 The shortcodes extension makes possible the easy creation of [WordPress Shortcodes](http://codex.wordpress.org/Shortcode_API) and their optional integration with the framework's page builder.
 

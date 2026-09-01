@@ -4,13 +4,13 @@ sidebar_label: "SEO"
 description: "Free WordPress SEO plugin — dynamic titles and meta descriptions, canonical URLs, XML sitemaps, Open Graph and indexing control. A free alternative to Yoast SEO and Rank Math."
 ---
 
+# SEO
+
 <div class="ext-hero">
-  <span class="ext-hero__badge">Free — no pro tier</span>
+  <span class="ext-hero__badge">FREE!</span>
   <p class="ext-hero__title">Premium SEO — none of the premium fees.</p>
   <p class="ext-hero__sub">Dynamic titles and meta descriptions, canonical URLs, XML sitemaps, Open Graph tags and indexing control — the SEO toolkit Yoast and Rank Math gate behind a paid plan, built in and free.</p>
 </div>
-
-# SEO
 
 Dynamic titles and meta descriptions, generated automatically and overridable per page,
 with canonical URLs, indexing control and XML sitemaps.

@@ -5,13 +5,13 @@ sidebar_label: "Snippets"
 description: "Free WordPress snippets — save reusable page-builder content and global sections and embed them anywhere. Edit once, update everywhere. No pro tier."
 ---
 
+# Snippets
+
 <div class="ext-hero">
-  <span class="ext-hero__badge">Free — no pro tier</span>
+  <span class="ext-hero__badge">FREE!</span>
   <p class="ext-hero__title">Reusable content blocks — save once, use everywhere. FREE!</p>
   <p class="ext-hero__sub">Save any page-builder section as a reusable snippet and embed it across your site — edit it once and every instance updates. Global content blocks, free.</p>
 </div>
-
-# Snippets
 
 Build reusable Page Builder content once, then reuse it anywhere — and edit it from a single
 place. A **Snippet** is a small piece of builder content (a CTA, a stats band, a feature card,

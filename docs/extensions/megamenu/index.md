@@ -4,13 +4,13 @@ sidebar_label: "Mega Menu"
 description: "Free WordPress mega menu plugin — multi-column dropdown menus with icons, images, calls to action, tabbed panels and per-device visibility. A free alternative to Max Mega Menu Pro and UberMenu."
 ---
 
+# Mega Menu
+
 <div class="ext-hero">
-  <span class="ext-hero__badge">Free — no pro tier</span>
+  <span class="ext-hero__badge">FREE!</span>
   <p class="ext-hero__title">Premium mega menus — no premium upgrade.</p>
   <p class="ext-hero__sub">Multi-column dropdown menus with icons, images, calls to action, tabbed panels and per-device visibility — every mega-menu feature others charge for, included and free.</p>
 </div>
-
-# Mega Menu
 
 The Mega Menu extension gives the end-user the ability to construct advanced navigation menus.
 

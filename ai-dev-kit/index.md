@@ -6,6 +6,11 @@ slug: /
 description: The UnysonPlus AI Dev Kit lets an AI agent build a full, editable WordPress site on UnysonPlus from a URL, screenshot, or mockup — matching the source 95–100% on the first pass.
 ---
 
+<div class="adk-hero">
+  <p class="adk-hero__title">Turn static or AI-generated HTML into a real WordPress site — in minutes, not weeks.</p>
+  <p class="adk-hero__sub">Point the kit at any static site — a URL, an HTML file, or a v0/Lovable/Stitch export — and it's rebuilt as a full, <strong>editable</strong> UnysonPlus site, matched on the first pass. <span class="adk-hero__kicker">Not a static export. Not a theme demo.</span></p>
+</div>
+
 # The UnysonPlus AI Dev Kit
 
 The **AI Dev Kit** is a ready-made workspace that lets an **AI coding agent** (Claude Code, Cursor,

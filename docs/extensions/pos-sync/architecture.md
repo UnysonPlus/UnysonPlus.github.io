@@ -142,8 +142,16 @@ field:
 | SEO fields, categories | **Store** | No POS models these. |
 | SKU, GTIN | **POS** | The POS is where they are printed and scanned. |
 
-A per-product override exists for the awkward cases (an online-only bundle whose stock the POS
-shouldn't touch).
+A per-product override exists for the awkward cases — an online-only bundle or a made-to-order item
+whose stock the POS shouldn't touch. Refusing one line does **not** fail the event: it is a
+configuration choice, not an error, and the rest of the sale still applies.
+
+:::note Declared versus enforced
+Only rules with an actual code path are enforced. POS Sync writes **stock** and nothing else, so
+stock authority is live and the rest of the table is a statement of intent for when a content sync
+exists. The Health screen labels which is which — a policy UI that implies it is protecting your
+product titles while nothing writes them would be a lie told by a checkbox.
+:::
 
 ### 4. Matching
 
@@ -183,8 +191,12 @@ Sketching a second driver is not the same as building one. Only WooCommerce ship
    Stale events are recorded as `skipped`.
 6. **Apply.** The active store driver performs the write. Failures retry with exponential backoff;
    after the final attempt the event is `failed` and surfaces on the health dashboard.
-7. **Reconcile.** A nightly sweep compares POS counts to store stock and reports divergence,
-   catching anything the event stream dropped entirely — because it will, eventually.
+7. **Reconcile.** A nightly sweep compares POS counts to store stock and *reports* divergence,
+   catching anything the event stream dropped entirely — because it will, eventually. It does not
+   silently correct: a sweep that quietly fixed differences would hide the fact that events are
+   being lost, which is the more important problem. Applying a report queues ordinary absolute-count
+   events, so the correction passes through ordering and policy like any real stocktake — and a
+   reconciliation older than a count that has since landed is refused rather than undoing it.
 
 ## Where the code lives
 

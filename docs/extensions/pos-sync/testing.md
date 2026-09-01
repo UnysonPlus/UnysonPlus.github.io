@@ -177,12 +177,12 @@ with Access in front is the better option if you need one running for days.
 
 ### What exists today
 
-Five runnable suites, **236 assertions** between them. Both install the tables, exercise them and drop
+Six runnable suites, **282 assertions** between them. Both install the tables, exercise them and drop
 them again, so they are safe to re-run and leave the site as they found it.
 
 ```bash
 cd wp-content/plugins/unysonplus/framework/extensions/pos-sync
-for m in 1 2 3 4 5; do
+for m in 1 2 3 4 5 6; do
   php wp-cli.phar --path='<a WordPress install>' eval-file "tests/milestone-$m.php"
 done
 ```
@@ -208,7 +208,12 @@ done
   no network** — every call is answered from a canned response, and an unmocked one fails loudly
   rather than reaching the internet. This is how the driver was written in the first place.
 
-:::tip Run all five
+- **`milestone-6.php`** (46) — reconciliation and operations: the authority policy and its
+  per-item override actually refusing a write, the sweep finding drift and correctly ignoring what
+  is not drift, corrections going *through* the ledger (including a stale one being refused by the
+  ordering rule), the silence alarm, and retention never pruning failures.
+
+:::tip Run all six
 This keeps paying. Milestone 3's suite caught a `class_exists()` guard in Milestone 2's applier that
 wrapped only half a branch; Milestone 4's duplicate scenario caught the nonce cache rejecting
 legitimate re-deliveries. Cross-milestone runs are where that kind of thing surfaces.
@@ -242,12 +247,16 @@ Network calls make tests slow and flaky, so vendor responses get recorded once a
 Before a shop opens the doors:
 
 1. Fire every [adversarial scenario](#adversarial-scenarios) against the live configuration in test
-   mode. All pass.
-2. Run a **catalog match report** — every product that will be sold at the counter resolves by SKU.
-   Unmatched items are mapped or explicitly ignored.
+   mode, on the **Real HTTP request** transport. All pass.
+2. Clear the **Unmatched** tab — every product that will be sold at the counter resolves by SKU, and
+   anything that is not a stock item is marked as such.
 3. Confirm the **location mapping**, or that single-store mode is deliberate.
-4. Ring up a real £0.01 sale on the actual till and refund it. This is the one step no sandbox
+4. Set any online-only or made-to-order products to **store-owned stock**, so the till cannot touch
+   them.
+5. Ring up a real £0.01 sale on the actual till and refund it. This is the one step no sandbox
    replaces — it proves the merchant's own hardware, network and account are configured.
-5. Check the **reconciliation report** the next morning. Zero divergence.
-6. Turn on **stalled-connection alerts** so a till that silently stops reporting is noticed the same
-   day, not at the next stocktake.
+6. Switch the connection to **live**.
+7. Check **Health → Reconciliation** the next morning. Zero drift.
+
+The health check runs hourly by itself and emails when a till that normally reports goes quiet —
+which is the failure nothing else can notice, because silence looks exactly like a slow day.

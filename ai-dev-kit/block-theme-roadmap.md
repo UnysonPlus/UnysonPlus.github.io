@@ -124,15 +124,21 @@ emitter as the capture service, the way `Mapper`/`Stitch` mirror `to-pages`/`cap
 The tier's build deliverables — emitter (JS + PHP), block-theme scaffold, `theme.json`, and golden
 fixtures — are all done, and proven end to end.
 
-**The output target mechanism is built too.** `to-block-bundle.mjs` ties the emitters into one
-installable bundle — `{ theme:{ slug, files }, page:{ title, content } }` — and the PHP
-`FW_Site_Converter_Blocks::install_block_theme()` installs it: it writes the generated theme's files
-(path-safe), creates the page from its block markup, then activates the theme and sets it as the front
-page. Verified end to end: a JS-built Jukebox bundle was installed by the PHP side and rendered as an
-FSE site (`wp_is_block_theme()` → true) with the captured nav, social icons and hero — then fully
-restored. *What remains to expose it:* a "Convert to: Page Builder | Block Theme" **setting** in the
-Site Converter and the capture-service emit that honours it — the user-facing surface, done
-deliberately since it touches the production conversion flow.
+**The output target is now selectable end to end.** `to-block-bundle.mjs` ties the emitters into one
+installable bundle — `{ theme:{ slug, files }, page:{ title, content } }` — and:
+
+- **Capture side:** `capture.mjs --target=block-theme` (or `TARGET=block-theme`) additionally writes
+  `block-bundle.json` into the capture output. Additive — the default `page-builder` target is untouched.
+- **Plugin side:** `FW_Site_Converter_Bundle::import_dir()` auto-detects a `block-bundle.json` and installs
+  it via `FW_Site_Converter_Blocks::install_block_theme()` — which writes the theme files (path-safe),
+  creates the page from its block markup, activates the theme and sets it as the front page. A
+  slug-collision guard installs to a `-blocks` slug rather than overwriting a same-named classic theme.
+
+Proven end to end on a live Jukebox capture: `capture --target=block-theme` → `import_dir` → an FSE site
+(`wp_is_block_theme()` → true) with the captured nav, social icons and hero — then fully restored. The
+CLI/env flag **is** the target selector; a GUI toggle in the dashboard/admin is the one remaining
+cosmetic surface. *Follow-ups:* media localization for the block path (images currently hotlink), and
+the source logo as `core/site-logo`.
 
 ### Tier C2 — `theme.json` global styles ✅ *(built)*
 

@@ -135,14 +135,14 @@ with Access in front is the better option if you need one running for days.
 
 ### What exists today
 
-Two runnable suites, **80 assertions** between them. Both install the tables, exercise them and drop
+Three runnable suites, **142 assertions** between them. Both install the tables, exercise them and drop
 them again, so they are safe to re-run and leave the site as they found it.
 
 ```bash
-php wp-cli.phar --path='<a WordPress install>' \
-  eval-file wp-content/plugins/unysonplus/framework/extensions/pos-sync/tests/milestone-1.php
-php wp-cli.phar --path='<a WordPress install>' \
-  eval-file wp-content/plugins/unysonplus/framework/extensions/pos-sync/tests/milestone-2.php
+cd wp-content/plugins/unysonplus/framework/extensions/pos-sync
+for m in 1 2 3; do
+  php wp-cli.phar --path='<a WordPress install>' eval-file "tests/milestone-$m.php"
+done
 ```
 
 - **`milestone-1.php`** (36) — the ledger: idempotency, ordering, staleness, retry policy, log
@@ -151,6 +151,17 @@ php wp-cli.phar --path='<a WordPress install>' \
   mode, recovery. It runs against a **fake in-memory driver rather than WooCommerce**, which is the
   point — everything above the seam is cart-agnostic, so its tests must not need a cart. The fake
   also makes capability negotiation and store-write failures producible on demand.
+- **`milestone-3.php`** (62) — the webhook API: secrets, signing, authentication, validation,
+  ingest, modes, connection management. Requests go through `rest_do_request()` rather than calling
+  the controller directly, so routing, headers and status codes are genuinely under test — a suite
+  that calls the callback by hand proves the callback works and nothing about whether the endpoint
+  does.
+
+:::tip Run all three
+Milestone 3's suite caught a real bug in Milestone 2's applier: a `class_exists()` guard wrapped
+only half a branch, so it fataled in exactly the situation the guard existed for. Cross-milestone
+runs are where that kind of thing surfaces.
+:::
 
 Two of the first suite's cases look like the same rule and are not — worth understanding before
 editing the queue:

@@ -9,6 +9,12 @@ description: The FW_POS_Store interface, the WooCommerce implementation, and how
 A store driver translates ledger events into one e-commerce plugin's API. It is the only part of
 POS Sync that knows WooCommerce (or FluentCart, or SureCart) exists.
 
+:::info Shipped in 1.0.1
+The seam and the WooCommerce driver are built. Exactly one driver is active at a time — with a
+single cart installed it is chosen for you; with several, you pick on the Settings tab, because
+guessing which cart owns a shop's stock is not a decision code should make silently.
+:::
+
 ## The interface
 
 ```php
@@ -16,6 +22,9 @@ abstract class FW_POS_Store {
 
     /** Machine id: 'woocommerce', 'fluentcart', … */
     abstract public function get_id();
+
+    /** Human label for the settings screen. */
+    abstract public function get_label();
 
     /** Is this cart present and usable right now? */
     abstract public function is_available();
@@ -41,14 +50,17 @@ abstract class FW_POS_Store {
      */
     abstract public function find_by_sku( $sku, $gtin = null );
 
+    /** Human-readable name for a reference, for the admin screens. */
+    abstract public function describe( $store_ref );
+
     /** Set an absolute stock level. */
     abstract public function set_stock( $store_ref, $quantity, $location_ref = null );
 
-    /** Apply a relative delta. Returns the resulting level. */
+    /** Apply a relative delta. */
     abstract public function adjust_stock( $store_ref, $delta, $location_ref = null );
 
     /** Record a completed till sale as an order, when the cart supports it. */
-    abstract public function create_order( array $event );
+    abstract public function create_order( array $event, array $payload );
 
     /** Refund an order, restocking unless $restock is false. */
     abstract public function refund_order( $order_ref, array $lines, $restock = true );
@@ -80,7 +92,7 @@ Sketching is not shipping. Only WooCommerce ships in v1.
 
 ## WooCommerce
 
-The reference implementation.
+The reference implementation, shipped.
 
 - **Stock** goes through `wc_update_product_stock()` rather than direct meta writes, so Woo's own
   hooks, low-stock notifications and status transitions fire normally.
@@ -136,10 +148,25 @@ add_filter( 'fw_pos_store_driver', function ( $driver_id ) {
 } );
 ```
 
+## What the applier guarantees
+
+These rules live above the seam, in `FW_POS_Applier`, so every driver gets them for free — and no
+driver should work around them:
+
+- **`retry: true` means transient; `retry: false` means a decision.** "The cart is down" is worth
+  retrying. "This SKU does not exist" will be just as true in five minutes, and retrying it five
+  times only fills the log.
+- **`stock_not_managed` is not a failure.** Plenty of catalogs deliberately do not track stock on
+  some products; treating that as an error would retry forever.
+- **An event with any unresolvable line is skipped whole.** Half a sale leaves stock wrong in a way
+  nobody can see.
+- **Test mode runs the entire pipeline** — matching included, so the unmatched queue still fills and
+  a shop can fix its SKUs before going live — and stops only at the write.
+
 ## Writing your own
 
 1. Extend `FW_POS_Store` in your own plugin.
-2. Implement all eight methods. Declare capabilities honestly — claiming `partial_refunds` you
+2. Implement all nine methods. Declare capabilities honestly — claiming `partial_refunds` you
    cannot deliver produces silently wrong refunds, which is worse than declaring `false`.
 3. Register it:
 
@@ -150,6 +177,5 @@ add_filter( 'fw_pos_store_driver', function ( $driver_id ) {
    } );
    ```
 
-4. Run the [Virtual Terminal's adversarial scenarios](./testing.md#adversarial-scenarios) against
-   it. They exist for exactly this — a driver that survives duplicate webhooks, out-of-order
-   batches and partial refunds is a driver that works in a shop.
+4. Run `tests/milestone-2.php` against it. It exercises the seam with a fake in-memory driver, so
+   the assertions it makes are exactly the ones your driver has to satisfy.

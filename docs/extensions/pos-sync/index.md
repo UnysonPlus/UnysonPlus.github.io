@@ -16,11 +16,15 @@ follows from keeping them apart:
 - **Which till?** Square, Clover, Zettle, Lightspeed, or a shop's own bespoke software.
 - **Which store?** WooCommerce, FluentCart, SureCart, Easy Digital Downloads, Ecwid.
 
-:::info Status — Milestone 1 shipped
-The **ledger** is built: schema, idempotency, the event-time-ordered queue, retries and the audit
-log, with a [36-assertion test suite](./testing.md#the-automated-suite) that needs neither a POS nor
-a cart. No store driver exists yet, so events are recorded and then skipped with a visible reason
-rather than applied — the WooCommerce driver is Milestone 2.
+:::info Status — Milestones 1 and 2 shipped
+The **ledger** is built (schema, idempotency, the event-time-ordered queue, retries, the audit log)
+and so is the **store driver seam**, with WooCommerce on the end of it: stock moves, refunds
+restock, stocktakes apply, and unmatched SKUs queue for one-click mapping. Together they carry
+[80 assertions](./testing.md#the-automated-suite) that need neither a POS nor, for most of them, a
+cart.
+
+No POS driver exists yet, so events reach the ledger only through code — the signed webhook
+endpoint is Milestone 3.
 
 The rest of this section is the **design of record**: the architecture, the wire format, and the
 build order. The **[Roadmap](./roadmap.mdx)** tracks progress and updates itself from the extension

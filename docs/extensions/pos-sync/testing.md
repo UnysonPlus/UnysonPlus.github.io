@@ -135,18 +135,25 @@ with Access in front is the better option if you need one running for days.
 
 ### What exists today
 
-Milestone 1's ledger and queue ship with a runnable suite — **36 assertions** across
-idempotency, ordering, staleness, retry policy and the log helpers. It needs no POS and no cart,
-which is precisely why that layer was built first. It installs the tables, exercises them and drops
-them again, so it is safe to re-run and leaves the site as it found it.
+Two runnable suites, **80 assertions** between them. Both install the tables, exercise them and drop
+them again, so they are safe to re-run and leave the site as they found it.
 
 ```bash
 php wp-cli.phar --path='<a WordPress install>' \
   eval-file wp-content/plugins/unysonplus/framework/extensions/pos-sync/tests/milestone-1.php
+php wp-cli.phar --path='<a WordPress install>' \
+  eval-file wp-content/plugins/unysonplus/framework/extensions/pos-sync/tests/milestone-2.php
 ```
 
-Two of its cases look like the same rule and are not — worth understanding before editing the
-queue:
+- **`milestone-1.php`** (36) — the ledger: idempotency, ordering, staleness, retry policy, log
+  helpers. Needs no POS and no cart, which is precisely why that layer was built first.
+- **`milestone-2.php`** (44) — the seam: matching, applying, atomicity, retry classification, test
+  mode, recovery. It runs against a **fake in-memory driver rather than WooCommerce**, which is the
+  point — everything above the seam is cart-agnostic, so its tests must not need a cart. The fake
+  also makes capability negotiation and store-write failures producible on demand.
+
+Two of the first suite's cases look like the same rule and are not — worth understanding before
+editing the queue:
 
 - **Same batch.** Two stock counts waiting together are applied oldest-first, so the newer value
   simply lands last. That is the *ordering* rule.

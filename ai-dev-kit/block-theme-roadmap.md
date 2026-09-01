@@ -230,13 +230,28 @@ is registered by the blocks extension, and `do_blocks()` renders the real output
 | `button` | `unysonplus/button` | `label, link, target` | `<a class="btn btn-primary …">Book a Table</a>` |
 | `heading` | `unysonplus/special-heading` | `title, heading (h1–h6), [alignment]` | the real `<h2>…</h2>` special heading |
 | `text` | `unysonplus/text-block` | `text (HTML), [text_align]` | the rich text block |
+| `section` (the band wrapper) | `unysonplus/section` | `align:full` (no `upOptions` → shortcode defaults) | `<section><div class="fw-container">…inner…</div></section>` |
 
-Golden fixtures lock the toggle (core vs. enriched, the `upOptions` shape of each, faithful degradation
-of unmapped types, and the "can't enrich → core fallback" cases — e.g. a label-less button or a
-text-less heading degrade to the core block). *Remaining:* map the container types (`section`→
-`unysonplus/section`, `row`/columns) and `image`→`unysonplus/media-image` — structured options, so each
-is a careful, fixture-guarded add on the shipped foundation. Enriched output **requires the plugin's
-`blocks` extension active** (106 blocks); that dependency is the whole point of the tier.
+`unysonplus/section` is a **container** block — a dynamic block that renders its **inner blocks** as the
+`section` shortcode's `$content`. So an enriched conversion nests the enriched leaf blocks inside the
+framework's own section (with its section controls) instead of a `core/group`. Verified end to end: the
+whole `section → special-heading + text-block + button` tree renders fully-parsed, byte-identical
+PHP == JS.
+
+Golden fixtures (8 in total) lock the toggle (core vs. enriched, the `upOptions` shape of each, the
+section wrapper, faithful degradation, and the "can't enrich → core fallback" cases — e.g. a label-less
+button, a text-less heading, or a verbatim section whose content degrades to `core/html` inside the
+enriched section wrapper).
+
+**Deliberate non-enrichment — `image` stays `core/image`.** `unysonplus/media-image` has no `alt`
+option and its URL would live inside block-JSON (which the install-time media localizer scans as
+`<img src>`, not as JSON), so enriching images would **lose alt text and skip localization** — strictly
+worse than `core/image`, which keeps alt and is localized. Per principle #6 (*faithful degradation over
+fake nativeness*), image is intentionally left on the core block even in enriched mode.
+
+*Remaining:* the `row`/columns container (there is no single "columns" UnysonPlus block — it maps to the
+section/column model, so it needs its own shape). Enriched output **requires the plugin's `blocks`
+extension active** (106 blocks); that dependency is the whole point of the tier.
 
 ### Tier C7 — Block Bindings tie-in 🔍
 

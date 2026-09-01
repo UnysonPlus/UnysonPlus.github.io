@@ -1,10 +1,17 @@
 ---
 sidebar_position: 1
-title: POS Sync
-description: Keep an online store in step with sales rung up on a physical till — a provider-agnostic sync bridge between any point-of-sale system and any WordPress e-commerce plugin.
+title: "Free WordPress POS Sync — Square, Clover & WooCommerce"
+sidebar_label: "POS Sync"
+description: "Free WordPress POS sync plugin — keep WooCommerce (or FluentCart, SureCart, EDD, Ecwid) inventory in step with in-store sales from Square, Clover, Zettle or Lightspeed. Provider-agnostic, no paid tier."
 ---
 
 # POS Sync
+
+<div class="ext-hero">
+  <span class="ext-hero__badge">FREE!</span>
+  <p class="ext-hero__title">Sync your POS with WordPress — FREE!</p>
+  <p class="ext-hero__sub">Keep your online store's inventory in step with sales rung up at the till — a provider-agnostic bridge between any point-of-sale (Square, Clover, Zettle, Lightspeed) and any WordPress store (WooCommerce, FluentCart, SureCart, Easy Digital Downloads, Ecwid). Real-time stock sync, free.</p>
+</div>
 
 **POS Sync** keeps an online store in step with the physical shop. When a customer buys the last
 blue hoodie at the counter, the website should stop selling it — within seconds, without anyone

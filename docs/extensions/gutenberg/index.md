@@ -5,13 +5,13 @@ sidebar_label: "Gutenberg Blocks"
 description: "Free WordPress Gutenberg blocks — 100+ native block-editor blocks (buttons, galleries, sliders, forms and more), server-rendered by the UnysonPlus framework. No pro tier."
 ---
 
+# Gutenberg Blocks
+
 <div class="ext-hero">
-  <span class="ext-hero__badge">Free — no pro tier</span>
+  <span class="ext-hero__badge">FREE!</span>
   <p class="ext-hero__title">Premium Gutenberg blocks — FREE!</p>
   <p class="ext-hero__sub">100+ native block-editor blocks — buttons, galleries, sliders, accordions, forms and more — server-rendered by the same engine as the page builder. The block library others sell, free.</p>
 </div>
-
-# Gutenberg Blocks
 
 UnysonPlus elements normally live in the **Page Builder**. This extension makes the element
 library — over 100 elements — available as native **Gutenberg blocks** as well, so they can be

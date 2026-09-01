@@ -199,6 +199,8 @@ html.plugin-id-decisions article header h1 {
  * Same fixed dark-green gradient as the AI Dev Kit hero (readable in both
  * themes), plus a gold "FREE" badge — the throughline: premium plugins, free. */
 .ext-hero {
+  position: relative;
+  overflow: hidden;
   margin: 0 0 2rem;
   padding: 1.9rem 2.25rem 2rem;
   border-radius: 16px;
@@ -207,20 +209,25 @@ html.plugin-id-decisions article header h1 {
   box-shadow: 0 14px 34px -16px rgba(0, 0, 0, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
+/* Slanted "FREE!" sticker pinned to the hero's upper-right corner. */
 .ext-hero__badge {
-  display: inline-block;
-  margin-bottom: 0.9rem;
-  padding: 0.28rem 0.72rem;
+  position: absolute;
+  top: 1rem;
+  right: 0.6rem;
+  transform: rotate(9deg);
+  padding: 0.34rem 0.95rem;
   border-radius: 999px;
   background: #ffd666;
   color: #1b3a2c;
-  font-size: 0.74rem;
+  font-size: 0.82rem;
   font-weight: 800;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+  box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.5);
 }
 .ext-hero__title {
   margin: 0 0 0.7rem;
+  padding-right: 4.5rem;
   font-size: clamp(1.5rem, 3.3vw, 2.25rem);
   line-height: 1.16;
   font-weight: 800;

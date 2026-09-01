@@ -1,8 +1,16 @@
 ---
-title: Backups & Demo Content
+title: "Free WordPress Backup Plugin"
+sidebar_label: "Backups & Demo Content"
+description: "Free WordPress backup plugin — scheduled or on-demand full and content backups, one-click restore, and site migration (restore on another server). A free alternative to UpdraftPlus & Duplicator."
 ---
 
 # Backups & Demo Content
+
+<div class="ext-hero">
+  <span class="ext-hero__badge">FREE!</span>
+  <p class="ext-hero__title">Scheduled backups and one-click restore — FREE!</p>
+  <p class="ext-hero__sub">Full or content-only backups on a schedule or on demand, one-click restore, and built-in site migration — restore on another server to move your whole site. The backup and migration toolkit others charge for, free.</p>
+</div>
 
 The **Backups & Demo Content** extension creates full or content-only archives of your site — on a
 schedule or on demand — restores them, and packages **demo content** so a theme can ship a

@@ -4,13 +4,13 @@ sidebar_label: "WordPress Shortcodes"
 description: "Free WordPress shortcodes — insert UnysonPlus elements (buttons, galleries, accordions, tabs and more) into any post, page or widget with the classic editor. No coding."
 ---
 
+# WordPress Shortcodes
+
 <div class="ext-hero">
-  <span class="ext-hero__badge">Free — no pro tier</span>
+  <span class="ext-hero__badge">FREE!</span>
   <p class="ext-hero__title">Every UnysonPlus element — in any editor, FREE!</p>
   <p class="ext-hero__sub">Insert buttons, galleries, accordions, tabs and dozens of other UnysonPlus elements into any post, page or widget — no page builder required, no cost.</p>
 </div>
-
-# WordPress Shortcodes
 
 This extension lets you insert and correctly render **Unyson+ shortcodes inside the WordPress
 editor**, not just inside the Page Builder. It adds an **Insert Shortcode** button to the classic

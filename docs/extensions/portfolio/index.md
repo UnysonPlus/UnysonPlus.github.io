@@ -4,13 +4,13 @@ sidebar_label: "Portfolio"
 description: "Free WordPress portfolio plugin — a dedicated portfolio post type with categories, tags, galleries and flexible project layouts to showcase your work. No pro add-ons."
 ---
 
+# Portfolio
+
 <div class="ext-hero">
-  <span class="ext-hero__badge">Free — no pro tier</span>
+  <span class="ext-hero__badge">FREE!</span>
   <p class="ext-hero__title">A premium portfolio — none of the premium cost.</p>
   <p class="ext-hero__sub">A dedicated portfolio post type with categories, tags, galleries and flexible project layouts to showcase your work — a full portfolio builder, free.</p>
 </div>
-
-# Portfolio
 
 The Portfolio extension allows you to create Portfolio section on your site.
 

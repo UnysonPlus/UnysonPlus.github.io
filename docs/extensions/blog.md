@@ -4,13 +4,13 @@ sidebar_label: "Blog"
 description: "Free UnysonPlus Blog extension — relabels the WordPress Posts section as \"Blog\" across the admin and front end for a clearer content structure."
 ---
 
+# Blog
+
 <div class="ext-hero">
-  <span class="ext-hero__badge">Free — no pro tier</span>
+  <span class="ext-hero__badge">FREE!</span>
   <p class="ext-hero__title">A cleaner blog — FREE!</p>
   <p class="ext-hero__sub">Relabels the Posts section as "Blog" across the admin and front end, so your content structure reads the way visitors expect. Free, no setup.</p>
 </div>
-
-# Blog
 
 The **Blog** extension relabels WordPress's default **Posts** as **Blog** throughout the admin and
 the front end. On a site where "Posts" really means the blog, this makes the dashboard read the way

@@ -82,13 +82,25 @@ Sketching is not shipping. Only WooCommerce ships in v1.
 
 ## Ranking the targets
 
-| Cart | Priority | Reasoning |
+| Cart | Status | Notes |
 | --- | --- | --- |
-| **WooCommerce** | **v1** | Largest install base by an order of magnitude. Mature stock API, Action Scheduler already present, well-understood variation model. |
-| **FluentCart** | **Next** | The genuine second target: WP-native, actively developed, growing fast, and with no first-party POS story of its own. Custom tables rather than post meta — which is exactly why it makes a good honesty check on the interface. |
-| **SureCart** | Later | Hybrid — catalog and orders are hosted, so it behaves partly like the Ecwid case below. Cheap once the seam is proven. |
-| **Easy Digital Downloads** | Later | Mostly digital goods, so physical stock sync is a niche need. Trivial to add. |
-| **Ecwid** | Last / probably never | See below. |
+| **WooCommerce** | **Stable** | Largest install base by an order of magnitude. Mature stock API, Action Scheduler already present, well-understood variation model. |
+| **FluentCart** | **Experimental** | WP-native, custom tables rather than post meta — which is exactly why the interface was drafted against it. Written against a documented API; not verified against a live install. |
+| **SureCart** | **Experimental** | Hybrid: catalog and inventory are hosted, so every write is a remote call with somebody else's latency and rate limits. Written against a documented API; not verified. |
+| **Easy Digital Downloads** | **Shipped, limited** | EDD has **no core inventory** — digital goods have no finite quantity. The driver honours the `_edd_stock` meta that inventory add-ons use and otherwise reports `stock_not_managed`. |
+| **Ecwid** | Not planned | See below. |
+
+:::warning What "experimental" means here
+FluentCart, SureCart and Clover were written against documented APIs with no live install to check
+against. Each one **refuses to activate unless every function it calls is actually present** — so a
+wrong assumption disables the driver rather than writing wrong numbers into a shop. Events keep
+being recorded, resolve to `no_store_driver`, and stay re-queueable.
+
+The badge travels with the driver name everywhere it is offered, and the Settings screen
+distinguishes "not installed" from "installed but this driver does not fit it". The second is a bug
+report, and the [diagnostic report](./troubleshooting.md#the-diagnostic-report) contains exactly
+which function was missing.
+:::
 
 ## WooCommerce
 
@@ -109,13 +121,32 @@ The reference implementation, shipped.
 
 ## FluentCart
 
-Sketched to validate the interface; shipped post-1.0.
+Shipped, experimental.
 
 The useful difference is structural: FluentCart stores products and orders in **custom tables**, not
 the post/meta model. A driver interface that quietly assumes `get_post_meta()` breaks immediately —
-which is precisely why it is the right second target. Its variant model also differs enough from
+which is precisely why it was the right second target. Its variant model also differs enough from
 Woo's variations to test whether `find_by_sku()` returning an opaque string was the right call.
 (It was. Returning a post ID would not have survived.)
+
+`is_available()` requires the specific functions the driver calls, and that list *is* the
+compatibility contract. If FluentCart's API differs, the Settings screen names the missing
+functions rather than the driver half-working.
+
+## Easy Digital Downloads
+
+Shipped, and honest about its limits.
+
+**EDD has no core inventory.** It sells digital goods, where the whole point is that there is no
+finite quantity. There is an optional per-download *purchase limit*, but that is a cap on how many
+times a file may be sold — not a stock level, and decrementing it from till sales would be a
+different thing wearing the same word.
+
+So the driver honours the `_edd_stock` meta that the common inventory add-ons use, and otherwise
+reports `stock_not_managed`, which the applier already treats as a correct outcome rather than a
+failure. An EDD shop selling only downloads will see events recorded, logged and skipped with a
+legible reason. That is the right answer — a driver that invented stock for digital goods would
+have been worse than none.
 
 ## Ecwid, and why it is ranked last
 

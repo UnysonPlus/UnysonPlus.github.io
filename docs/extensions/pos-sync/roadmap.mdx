@@ -13,8 +13,10 @@ Seven milestones, built in order. Each one is useful on its own — the ledger i
 POS exists, the webhook API is usable before any vendor driver ships, and the Virtual Terminal makes
 the whole thing demonstrable without hardware.
 
-**Milestones 1–6 are complete**, which is everything in 1.0. Milestone 7 is expansion, deliberately
-held back until the seams have proven themselves against real installs.
+**All seven are complete.** The expansion drivers in Milestone 7 ship marked **experimental** —
+written against documented APIs with no live install to verify against, and built to refuse to
+activate rather than risk writing wrong stock. See
+[what that means](./store-drivers.md#ranking-the-targets).
 
 <RoadmapSummary data={data} />
 
@@ -90,6 +92,7 @@ Worth stating explicitly, so nobody waits for them:
 - **A WordPress-based till UI.** Running the register itself is a different product with hardware,
   offline and PCI concerns of its own.
 - **Accounting integration.** Xero/QuickBooks sync belongs downstream of the ledger, not inside it.
+- **A card-terminal UI in WordPress.** Running the register itself is a different product.
 - **Ecwid as a store driver.** Ecwid is SaaS — its products and inventory live on Ecwid's servers,
   not in WordPress, and it ships its own POS integrations. Connecting a till straight to Ecwid is
   the better answer for that merchant; routing through WordPress adds a hop for nothing.

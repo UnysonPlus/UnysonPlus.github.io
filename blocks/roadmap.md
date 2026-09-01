@@ -101,8 +101,11 @@ keyed off the block's post context, and coerces it to what the attribute needs (
 image/file field binds its URL). Only fields of an **active group targeting the post's
 type** resolve — an unknown key returns nothing rather than exposing an arbitrary option.
 
-Remaining before release: an editor picker so a field can be bound from the block
-sidebar (today a binding is set in block markup), plus release wiring.
+A **block-editor picker** is also built: a "Unyson+ Field Binding" panel on Paragraph,
+Heading, Image and Button lets an editor bind a field from the sidebar (rather than
+hand-editing block markup), listing the fields whose group targets the post being edited.
+
+Remaining before release: release wiring (and coverage for more block attributes over time).
 
 ---
 

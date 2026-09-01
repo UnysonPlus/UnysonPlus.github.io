@@ -405,7 +405,6 @@ const config = {
             items: [
               {label: 'Introduction', to: '/intro'},
               {label: 'Installation', to: '/installation'},
-              {label: 'Extensions', to: '/extensions/overview'},
             ],
           },
           {

@@ -5,9 +5,9 @@ title: Overview
 
 # Gutenberg Blocks
 
-UnysonPlus elements normally live in the **Page Builder**. This extension makes a selected few
-available as native **Gutenberg blocks** as well, so they can be used on sites — or by editors —
-that work in the block editor.
+UnysonPlus elements normally live in the **Page Builder**. This extension makes the element
+library — over 100 elements — available as native **Gutenberg blocks** as well, so they can be
+used on sites, or by editors, that work in the block editor.
 
 It is deliberately additive. Activating it changes nothing about the page builder, the shortcodes
 or any existing page.
@@ -160,7 +160,8 @@ An option type with no React control shows a short "no React control yet" notice
 broken field, and stays fully editable in the page builder. That is a coverage gap, not an error.
 
 The composite types — repeaters (`addable-popup`), `multi-picker`, `wp-editor`, `code-editor` — are
-the main ones, which is why blocks exist for elements whose interesting options are simple.
+the main ones, so an element whose most interesting options are composite is, for now, better
+configured in the page builder even though a block for it exists.
 :::
 
 ## Previews are inert on purpose

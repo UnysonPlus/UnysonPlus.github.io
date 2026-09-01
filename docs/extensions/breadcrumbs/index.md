@@ -1,7 +1,16 @@
 ---
-title: "Breadcrumbs"
+title: "Free WordPress Breadcrumbs Plugin"
+sidebar_label: "Breadcrumbs"
+description: "Free WordPress breadcrumbs plugin — drop-in, SEO-friendly breadcrumb navigation with schema structured-data markup. A free alternative to Breadcrumb NavXT."
 ---
 
+<div class="ext-hero">
+  <span class="ext-hero__badge">Free — no pro tier</span>
+  <p class="ext-hero__title">SEO breadcrumbs — drop-in and free.</p>
+  <p class="ext-hero__sub">Drop-in breadcrumb navigation with structured-data (schema) markup for richer search snippets — no configuration, no cost.</p>
+</div>
+
+# Breadcrumbs
 
 <iframe src="https://player.vimeo.com/video/115155401?title=0&amp;byline=0&amp;portrait=0" width="100%" height="384" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 <br><br>

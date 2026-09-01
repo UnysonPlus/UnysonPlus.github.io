@@ -1,6 +1,14 @@
 ---
-title: "WordPress Shortcodes"
+title: "Free WordPress Shortcodes — Use Any Element Anywhere"
+sidebar_label: "WordPress Shortcodes"
+description: "Free WordPress shortcodes — insert UnysonPlus elements (buttons, galleries, accordions, tabs and more) into any post, page or widget with the classic editor. No coding."
 ---
+
+<div class="ext-hero">
+  <span class="ext-hero__badge">Free — no pro tier</span>
+  <p class="ext-hero__title">Every UnysonPlus element — in any editor, free.</p>
+  <p class="ext-hero__sub">Insert buttons, galleries, accordions, tabs and dozens of other UnysonPlus elements into any post, page or widget — no page builder required, no cost.</p>
+</div>
 
 # WordPress Shortcodes
 

@@ -122,9 +122,17 @@ in WordPress with zero freeform blocks. That gives the plugin's own `run_url_con
 emitter as the capture service, the way `Mapper`/`Stitch` mirror `to-pages`/`capture-extract`.
 
 The tier's build deliverables — emitter (JS + PHP), block-theme scaffold, `theme.json`, and golden
-fixtures — are all done, and proven end to end. What remains to *ship* block output is the pipeline
-wiring: a `target` selector in the Site Converter that runs the block emitter instead of the
-page-builder mapper — carried under the tiers that follow (chrome, templates) since it needs them too.
+fixtures — are all done, and proven end to end.
+
+**The output target mechanism is built too.** `to-block-bundle.mjs` ties the emitters into one
+installable bundle — `{ theme:{ slug, files }, page:{ title, content } }` — and the PHP
+`FW_Site_Converter_Blocks::install_block_theme()` installs it: it writes the generated theme's files
+(path-safe), creates the page from its block markup, then activates the theme and sets it as the front
+page. Verified end to end: a JS-built Jukebox bundle was installed by the PHP side and rendered as an
+FSE site (`wp_is_block_theme()` → true) with the captured nav, social icons and hero — then fully
+restored. *What remains to expose it:* a "Convert to: Page Builder | Block Theme" **setting** in the
+Site Converter and the capture-service emit that honours it — the user-facing surface, done
+deliberately since it touches the production conversion flow.
 
 ### Tier C2 — `theme.json` global styles ✅ *(built)*
 

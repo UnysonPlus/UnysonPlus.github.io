@@ -2,8 +2,8 @@
   "_comment": "SOURCE OF TRUTH for the POS Sync roadmap rendered at /extensions/pos-sync/roadmap. Task `status` is maintained AUTOMATICALLY by `node scripts/gen-pos-roadmap.mjs`, which inspects the real extension source tree and flips a task to `done` when everything in its `detect` block exists. Hand-edit title/detail/detect freely; set `pin: true` on a task whose status the script should leave alone.",
   "extension": "pos-sync",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-POS-Sync-Extension",
-  "extensionVersion": "1.0.0",
-  "generatedAt": "2026-08-31T16:54:42.663Z",
+  "extensionVersion": "1.0.1",
+  "generatedAt": "2026-09-01T04:00:30.557Z",
   "detected": true,
   "milestones": [
     {
@@ -93,8 +93,8 @@
               "includes/stores/class-fw-pos-store.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "m2-woo",
@@ -105,8 +105,8 @@
               "includes/stores/class-fw-pos-store-woocommerce.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "m2-matcher",
@@ -117,8 +117,8 @@
               "includes/class-fw-pos-matcher.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "m2-capabilities",
@@ -132,8 +132,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },

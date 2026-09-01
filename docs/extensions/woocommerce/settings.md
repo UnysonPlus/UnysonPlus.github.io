@@ -9,9 +9,21 @@ Everything the extension controls lives on one page: **Unyson+ → WooCommerce**
 
 <img src="/img/extensions/woocommerce/settings-page.png" alt="The WooCommerce settings page" width="1758" />
 
-The settings are grouped into three boxes. Only the first is expanded when the page loads — click a
-box title to open the others (that's the framework's standard behavior for option boxes, not
-something specific to this page).
+The settings are grouped into **four tabs**:
+
+| Tab | What's in it |
+| --- | --- |
+| **Catalog** | Shop grid, sidebar, and the single-product gallery |
+| **Behavior** | Sale badges, AJAX cart, breadcrumb, sticky add-to-cart |
+| **Catalog Mode** | The lookbook / closed-shop switches — see [Catalog Mode](./catalog-mode.md) |
+| **Shopper Tools** | Wishlist, compare, back-in-stock, swatches, size guide — see [Shopper tools](./shopper-tools.md) |
+
+Every tab is part of **one form**, so switching tabs never loses an edit and **Save Changes** covers
+the whole page. The open tab is written to the URL hash, so a particular tab can be linked or
+bookmarked.
+
+Within a tab, only the first box is expanded on load — click a box title to open the others (that's
+the framework's standard behavior for option boxes, not something specific to this page).
 
 :::tip[Where these apply]
 These settings drive the **shop / category archives** and **single product** pages site-wide. They
@@ -66,19 +78,21 @@ feature the theme explicitly asked for unless the corresponding setting is off.
 
 | Setting | Default | What it controls |
 | --- | --- | --- |
-| **Catalog Mode** | Off | Hide prices and add-to-cart buttons across the shop — the lookbook switch. |
-| **Disable Purchasing** | Off | With Catalog Mode on: makes the store genuinely un-buyable. |
-| **Closed-Shop Message** | *(empty)* | With Disable Purchasing on: shown in place of the Cart / Checkout content. Empty = redirect to the shop instead. |
-| **Enquiry Button** | Off | With Catalog Mode on: a link where the add-to-cart button used to be. |
-| **Enquiry Button Text** | `Request a Quote` | The enquiry button's label. |
-| **Enquiry Link** | *(empty)* | Where the enquiry button goes. Required — without it, no button is shown. |
 | **Sale Badge Style** | `Text ("Sale")` | Whether the sale flash reads “Sale” or a percentage (“-25%”). |
 | **AJAX Add to Cart** | On | Add simple products to the cart from shop archives without a page reload. |
 | **Shop Breadcrumb** | On | Show the WooCommerce breadcrumb above shop / product content. |
 
-The first five settings are one feature with several dials —
-**[Catalog Mode](./catalog-mode.md)** covers them properly, including what each one blocks and what
-it deliberately leaves working.
+### Sticky Add to Cart
+
+Also on the Behavior tab. A compact buy bar that slides in on single products once the real
+add-to-cart has scrolled away — see
+**[Shopper tools → Sticky add-to-cart](./shopper-tools.md#sticky-add-to-cart)**.
+
+| Setting | Default | What it controls |
+| --- | --- | --- |
+| **Sticky Add to Cart Bar** | Off | The feature switch. |
+| **Bar Position** | `Bottom` | Where the bar appears once it slides in. |
+| **Show Product Image** | On | Include a thumbnail in the bar. |
 
 ### Sale Badge Style
 
@@ -97,6 +111,42 @@ loop button. It has no effect on single product pages, which always post the for
 Off removes `woocommerce_breadcrumb` from `woocommerce_before_main_content`. If your theme renders
 its own breadcrumb (the UnysonPlus Theme does, via the
 **[Breadcrumbs](/extensions/breadcrumbs)** extension), turning this off avoids showing two.
+
+## Catalog Mode
+
+The lookbook and closed-shop switches, plus the enquiry button. They are one feature with several
+dials, so they have a page of their own: **[Catalog Mode](./catalog-mode.md)**.
+
+| Setting | Default |
+| --- | --- |
+| **Catalog Mode** | Off |
+| **Disable Purchasing** | Off |
+| **Closed-Shop Message** | *(empty)* |
+| **Enquiry Button** | Off |
+| **Enquiry Button Text** | `Request a Quote` |
+| **Enquiry Link** | *(empty)* |
+
+## Shopper Tools
+
+Wishlist, compare, back-in-stock notifications, variation swatches and the size guide. Each is
+covered in **[Shopper tools](./shopper-tools.md)**.
+
+| Setting | Default | What it controls |
+| --- | --- | --- |
+| **Wishlist** | Off | The heart button and saved lists. |
+| **Wishlist Page** | *(empty)* | URL of the page holding your Wishlist element. |
+| **Compare** | Off | The compare toggle, bar and table. |
+| **Compare Page** | *(empty)* | URL of the page holding your Compare element. |
+| **Maximum Products** | `4` | How many products can be compared at once (2–6). |
+| **Back-in-Stock Notifications** | Off | Email sign-up on out-of-stock products. |
+| **Sign-up Heading** | `Email me when this is back` | Above the email field. |
+| **Notification Subject** | `{product} is back in stock` | `{product}` is replaced with the name. |
+| **Variation Swatches** | Off | Swatches in place of the variation dropdowns. |
+| **Swatches on Product Cards** | Off | Also show them on shop / grid cards. |
+| **Swatch Shape** | `Circle` | Circle or square colour / image swatches. |
+| **Size Guide** | Off | A size-guide link and modal on single products. |
+| **Link Text** | `Size guide` | The link's label. |
+| **Default Size Guide** | *(empty)* | Used for any product without its own. |
 
 ## Saving
 

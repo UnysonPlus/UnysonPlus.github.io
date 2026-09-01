@@ -87,6 +87,88 @@ Returns the [enquiry button](./catalog-mode.md#enquiry-button) markup for one pr
 string. Already escaped. Use it if you are rendering your own product card and want the same button
 the archives get.
 
+### Wishlist
+
+```php
+upwc_wishlist_enabled();               // bool  — feature on (and not catalog-locked)
+upwc_wishlist_ids();                   // int[] — this visitor's list, newest first
+upwc_wishlist_has( $product_id );      // bool
+upwc_wishlist_toggle( $product_id );   // [ 'ids' => int[], 'active' => bool ]
+upwc_wishlist_save( $ids );            // int[] as stored
+upwc_wishlist_button_html( $id );      // string — the heart, or '' when off
+```
+
+Signed-in visitors are stored in the `upwc_wishlist` user meta; guests in the `upwc_wishlist`
+cookie. `upwc_wishlist_ids()` reads whichever applies, so you rarely need to know which.
+
+```php
+add_action( 'upwc_wishlist_saved', function ( $ids ) {
+    // Fires on every add, remove and login-merge.
+} );
+
+// Cap the list (default 200).
+add_filter( 'upwc_wishlist_max_items', fn() => 50 );
+```
+
+### Compare
+
+```php
+upwc_compare_enabled();                // bool
+upwc_compare_ids();                    // int[]
+upwc_compare_max();                    // int (2–6)
+upwc_compare_button_html( $id );       // string
+upwc_compare_table_html( $ids );       // string — the side-by-side table
+```
+
+### Back in stock
+
+```php
+upwc_bis_enabled();                        // bool
+upwc_bis_emails( $product_id );            // string[] — who is waiting
+upwc_bis_subscribe( $product_id, $email ); // bool
+```
+
+```php
+// Rewrite the restock email.
+add_filter( 'upwc_bis_notification', function ( $mail, $product, $emails ) {
+    $mail['message'] = my_template( $product );
+    $mail['headers'] = [ 'Content-Type: text/html; charset=UTF-8' ];
+    return $mail;
+}, 10, 3 );
+
+// Cap sign-ups per product (default 2000).
+add_filter( 'upwc_bis_max_subscribers', fn() => 500 );
+```
+
+### Swatches
+
+```php
+upwc_swatches_enabled();               // bool
+upwc_swatches_on_cards();              // bool
+upwc_swatches_card_html( $product );   // string — the card swatches
+upwc_swatch_term_visual( $term );      // [ 'type' => color|image|label, 'value' => … ]
+```
+
+```php
+// Where a term's colour / image is read from — add your own plugin's keys.
+add_filter( 'upwc_swatch_color_meta_keys', fn( $keys ) => [ ...$keys, 'my_swatch_hex' ] );
+add_filter( 'upwc_swatch_image_meta_keys', fn( $keys ) => [ ...$keys, 'my_swatch_img' ] );
+
+// Above this many options an attribute keeps its dropdown (default 15).
+add_filter( 'upwc_swatches_max_options', fn() => 24 );
+```
+
+### Sticky add-to-cart and size guide
+
+```php
+upwc_sticky_atc_enabled();             // bool
+upwc_size_guide_enabled();             // bool
+upwc_size_guide_content( $product_id ); // string — product's own, else the store default
+```
+
+The per-product size guide is the `_upwc_size_guide` post meta; back-in-stock sign-ups are
+`_upwc_bis_emails`.
+
 ### `upwc_wc_truthy( $value )`
 
 Normalizes a stored switch value (`'yes'`, `'1'`, `true`, …) to a boolean. Settings are stored as
@@ -120,6 +202,23 @@ $mode    = upwc_wc_truthy( fw_get_db_ext_settings_option( 'woocommerce', 'catalo
 | `catalog_enquiry_label` | text | `Request a Quote` |
 | `catalog_enquiry_url` | text | *(empty)* |
 | `sale_badge_style` | `text` \| `percent` | `text` |
+| `sticky_atc` | `yes` \| `no` | `no` |
+| `sticky_atc_position` | `bottom` \| `top` | `bottom` |
+| `sticky_atc_image` | `yes` \| `no` | `yes` |
+| `wishlist` | `yes` \| `no` | `no` |
+| `wishlist_page` | text (URL) | *(empty)* |
+| `compare` | `yes` \| `no` | `no` |
+| `compare_page` | text (URL) | *(empty)* |
+| `compare_max` | text (number) | `4` |
+| `back_in_stock` | `yes` \| `no` | `no` |
+| `back_in_stock_label` | text | `Email me when this is back` |
+| `back_in_stock_subject` | text | `{product} is back in stock` |
+| `swatches` | `yes` \| `no` | `no` |
+| `swatches_cards` | `yes` \| `no` | `no` |
+| `swatches_shape` | `circle` \| `square` | `circle` |
+| `size_guide` | `yes` \| `no` | `no` |
+| `size_guide_label` | text | `Size guide` |
+| `size_guide_content` | wp-editor | *(empty)* |
 | `ajax_add_to_cart` | `yes` \| `no` | `yes` |
 | `show_breadcrumb` | `yes` \| `no` | `yes` |
 
@@ -155,6 +254,35 @@ add-to-cart form handler runs on `wp_loaded` — waiting for the query would be 
 
 To exempt something, run at a later priority than 99, or turn the setting off and implement your own
 policy.
+
+## AJAX endpoints
+
+All of them are `admin-ajax.php` actions, nonce `upwc_wc_storefront` (localized to the front end as
+`upwcStorefront.nonce`), available to signed-in visitors and guests alike.
+
+| Action | Body | Returns |
+| --- | --- | --- |
+| `upwc_wc_wishlist_toggle` | `product_id` | `ids`, `active`, `count` |
+| `upwc_wc_wishlist_get` | — | `ids`, `count` |
+| `upwc_wc_compare_toggle` | `product_id` | `ids`, `items`, `active`, `full`, `max`, `message` |
+| `upwc_wc_compare_get` | — | `ids`, `items`, `max` |
+| `upwc_wc_compare_clear` | — | empty `ids` / `items` |
+| `upwc_wc_bis_subscribe` | `product_id`, `email` | `message` |
+
+All are rate-limited (`fw_rate_limit_ajax`); the back-in-stock one hardest, since it writes an
+address someone else will be emailed at.
+
+### The repaint event
+
+Wishlist and compare controls are rendered "off" and switched on in the browser, so anything that
+injects product cards after load must say so:
+
+```js
+document.dispatchEvent( new CustomEvent( 'upwc:products:updated' ) );
+```
+
+Load More, Quick View and AJAX filtering already do. Dispatch it from your own code if you inject
+cards another way.
 
 ## The settings page
 

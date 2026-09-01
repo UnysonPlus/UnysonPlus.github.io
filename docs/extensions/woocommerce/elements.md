@@ -87,6 +87,11 @@ behaves identically whether it lives in page content or in your site chrome.
 The classic commerce pages as builder elements, so those pages can carry your normal header, footer
 and section styling.
 
+:::caution[Wishlist and Compare pages must not be full-page cached]
+Both render the current visitor's own selection on the server, exactly like a cart page. Exclude
+those pages from any whole-page cache, or one visitor will be shown another's list.
+:::
+
 :::note[These go quiet when purchasing is disabled]
 Cart Icon, Mini Cart, Add to Cart Button, Cart and Checkout all render nothing on the front end when
 the store is in [Catalog Mode with Disable Purchasing](./catalog-mode.md). In the builder they show
@@ -107,10 +112,38 @@ Filters, and one block per product attribute (Color, Size, …) — each with it
 wrapped in a styled panel with a Card Box Style skin, optional dividers and optional collapsible
 blocks.
 
-:::caution[Filters need a shop context]
-WooCommerce's filter widgets only *do* anything on shop / product-category pages, where there is a
-product listing to filter. On an ordinary page the panel renders but filters nothing.
+**AJAX Filtering** (on by default) applies a filter without a full page reload: the product list and
+the panel are swapped in place, so the visitor keeps their scroll position. The browser URL still
+updates, so a filtered view can be linked, bookmarked, and stepped through with back/forward. If
+anything goes wrong it falls back to an ordinary page load, so a filter can never end up doing
+nothing.
+
+Because it works by fetching the page the filter links to, it behaves identically on a shop archive,
+a product category, and a builder page carrying a Products grid.
+
+:::caution[Filters need a product listing]
+WooCommerce's filter widgets only *do* anything where there is a product listing to filter — a shop
+or category archive, or a page carrying a Products grid. On a page with neither, the panel renders
+but filters nothing.
 :::
+
+### Wishlist
+
+The products this visitor has saved, as a grid of cards — each with its heart, so removing something
+happens where you are looking at it. Put it on the page you set as the **Wishlist Page**. See
+**[Shopper tools → Wishlist](./shopper-tools.md#wishlist)**.
+
+### Compare
+
+The products this visitor picked, side by side with their price, availability, rating and every
+attribute any of them declares. Put it on the page you set as the **Compare Page**. See
+**[Shopper tools → Compare](./shopper-tools.md#compare)**.
+
+### Upsells
+
+The upsells — or cross-sells — of the product being viewed, so a single-product layout built in the
+builder can place them deliberately rather than accepting wherever the template drops them. Renders
+nothing off a product page, and says so in the editor.
 
 ### Free Shipping Bar
 

@@ -26,6 +26,7 @@ page builder** so a product grid can live on any page — not just the shop arch
 | --- | --- |
 | **[Settings](./settings.md)** | Every field on the settings page — catalog layout, single product, shop behavior |
 | **[Catalog Mode](./catalog-mode.md)** | Turning the store into a lookbook, disabling purchasing, enquiry buttons, closing the shop |
+| **[Shopper tools](./shopper-tools.md)** | Wishlist, compare, back-in-stock, variation swatches, sticky add-to-cart, size guide |
 | **[Page-builder elements](./elements.md)** | The WooCommerce Elements tab — what each element is for |
 | **[For developers](./developers.md)** | Filters, helper functions, the settings store, recipes |
 
@@ -80,6 +81,18 @@ with product grids and carousels, categories, single products, cart and mini-car
 commerce pages, product search and filters. See **[Page-builder elements](./elements.md)** for what
 each one is for, and the full option reference at
 **[WooCommerce Elements](/shortcodes/woocommerce-elements)**.
+
+### Shopper tools
+
+A **wishlist**, **compare**, **back-in-stock notifications**, **variation swatches**, a **sticky
+add-to-cart bar** and a **size guide** — all off by default, each independent. See
+**[Shopper tools](./shopper-tools.md)**.
+
+### Widgets
+
+Three classic widgets for themes with real sidebars: **Mini Cart**, **Products** and **Wishlist**.
+Each wraps the same renderer its page-builder element uses, so a widget and an element cannot drift
+apart.
 
 ### A lookbook mode that actually closes the store
 

@@ -8,7 +8,7 @@ description: "Free WordPress SEO plugin — dynamic titles and meta descriptions
 
 <div class="ext-hero">
   <span class="ext-hero__badge">FREE!</span>
-  <p class="ext-hero__title">Premium SEO — none of the premium fees.</p>
+  <p class="ext-hero__title">Premium SEO, ready in minutes.</p>
   <p class="ext-hero__sub">Dynamic titles and meta descriptions, canonical URLs, XML sitemaps, Open Graph tags and indexing control — the SEO toolkit Yoast and Rank Math gate behind a paid plan, built in and free.</p>
 </div>
 

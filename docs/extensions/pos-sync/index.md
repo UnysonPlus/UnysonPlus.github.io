@@ -9,7 +9,7 @@ description: "Free WordPress POS sync plugin — keep WooCommerce (or FluentCart
 
 <div class="ext-hero">
   <span class="ext-hero__badge">FREE!</span>
-  <p class="ext-hero__title">Sync your POS with WordPress — FREE!</p>
+  <p class="ext-hero__title">Real-time POS sync in minutes.</p>
   <p class="ext-hero__sub">Keep your online store's inventory in step with sales rung up at the till — a provider-agnostic bridge between any point-of-sale (Square, Clover, Zettle, Lightspeed) and any WordPress store (WooCommerce, FluentCart, SureCart, Easy Digital Downloads, Ecwid). Real-time stock sync, free.</p>
 </div>
 

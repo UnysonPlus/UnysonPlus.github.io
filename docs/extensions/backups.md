@@ -8,7 +8,7 @@ description: "Free WordPress backup plugin — scheduled or on-demand full and c
 
 <div class="ext-hero">
   <span class="ext-hero__badge">FREE!</span>
-  <p class="ext-hero__title">Scheduled backups and one-click restore — FREE!</p>
+  <p class="ext-hero__title">Premium backups, restored in one click.</p>
   <p class="ext-hero__sub">Full or content-only backups on a schedule or on demand, one-click restore, and built-in site migration — restore on another server to move your whole site. The backup and migration toolkit others charge for, free.</p>
 </div>
 

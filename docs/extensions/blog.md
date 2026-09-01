@@ -8,7 +8,7 @@ description: "Free UnysonPlus Blog extension — relabels the WordPress Posts se
 
 <div class="ext-hero">
   <span class="ext-hero__badge">FREE!</span>
-  <p class="ext-hero__title">A cleaner blog — FREE!</p>
+  <p class="ext-hero__title">A polished blog in minutes.</p>
   <p class="ext-hero__sub">Relabels the Posts section as "Blog" across the admin and front end, so your content structure reads the way visitors expect. Free, no setup.</p>
 </div>
 

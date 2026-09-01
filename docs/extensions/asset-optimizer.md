@@ -9,7 +9,7 @@ description: "Free WordPress performance plugin — combine and minify CSS and J
 
 <div class="ext-hero">
   <span class="ext-hero__badge">FREE!</span>
-  <p class="ext-hero__title">Faster pages — without a premium performance plugin.</p>
+  <p class="ext-hero__title">Premium performance — faster pages in minutes.</p>
   <p class="ext-hero__sub">Combine and minify enqueued CSS and JavaScript to cut HTTP requests and speed up load times — the asset optimization premium performance plugins charge for, free.</p>
 </div>
 

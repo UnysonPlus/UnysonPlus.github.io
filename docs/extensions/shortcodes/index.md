@@ -8,7 +8,7 @@ description: "The UnysonPlus shortcodes framework — 100+ content elements that
 
 <div class="ext-hero">
   <span class="ext-hero__badge">FREE!</span>
-  <p class="ext-hero__title">100+ premium content elements — FREE!</p>
+  <p class="ext-hero__title">100+ premium elements, ready in seconds.</p>
   <p class="ext-hero__sub">The library behind the page builder: headings, buttons, galleries, sliders, accordions, pricing tables and dozens more — every element, free and unlimited.</p>
 </div>
 

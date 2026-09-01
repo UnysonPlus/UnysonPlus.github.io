@@ -112,8 +112,12 @@ Reuse the media/font localizers as-is.
   font, and text coloured by the captured brand palette — with **no plugin dependency**. (The install
   was snapshotted and fully restored afterward.)
 
-*Remaining in this tier:* the PHP twin (for the plugin's `run_url_conversion` path) and the first
-block-emitter golden fixtures.
+**Golden fixtures** (`to-blocks.test.mjs`) now lock the emitter — a framework-free block tokenizer
+asserts block counts, nesting/balance, content, attribute escaping and edge-case skipping (empty
+blocks, out-of-range heading levels, source-less images) across five synthetic captures. All pass.
+
+*Remaining in this tier:* the PHP twin, so the plugin's own `run_url_conversion` path emits blocks
+too (parity with the JS emitter).
 
 ### Tier C2 — `theme.json` global styles 🚧
 

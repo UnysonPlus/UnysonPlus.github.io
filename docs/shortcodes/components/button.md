@@ -10,6 +10,10 @@ A styled, linkable button. Tabs: **Content**, **Styling**, **Animations**, **Adv
 
 <img src="/img/shortcodes/button-backend.png" alt="Button on the Page Builder canvas" width="936" />
 
+:::tip[💡 Web dev tip: a link goes somewhere, a button does something]
+Use a **link** (`<a href>`) to navigate to another page or section, and a **button** (`<button>`) to trigger an action such as submit, open or toggle. Choosing the right one gives you correct keyboard behaviour, screen-reader semantics and SEO for free — a `<div>` dressed up as a button has none of that. Give this element a link to make it an anchor, or leave it empty for a real button. [MDN: the button element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/button-content.png" alt="Button options panel — Content tab" width="1200" />

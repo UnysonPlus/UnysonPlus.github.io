@@ -7,6 +7,10 @@ sidebar_position: 42
 
 Opening hours (with a live Open/Closed status) plus contact details — address, phone, email and links — in several layouts. Tabs: **Content**, **Design**, **Styling**, **Animations**, **Advanced**.
 
+:::tip[💡 Web dev tip: mark up a business with structured data]
+Name, address, phone and opening hours are exactly what search engines want as **structured data** (schema.org LocalBusiness) — it can earn a rich result in Google. Make the phone a `tel:` link and the email a `mailto:` link so a tap dials or composes on mobile. [schema.org: LocalBusiness](https://schema.org/LocalBusiness)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/business-info-content.png" alt="Business Info options panel — Content tab" width="1200" />

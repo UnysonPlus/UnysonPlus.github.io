@@ -9,6 +9,10 @@ sidebar_custom_props: { icon: '/img/shortcode-icons/map.svg' }
 An interactive map with multiple engines and tile styles. Tabs: **Content**, **Styling**,
 **Animations**, **Advanced**.
 
+:::tip[💡 Web dev tip: give an embedded map a title]
+An embedded map is an `<iframe>`, and every iframe needs a `title` (e.g. "Map to our office") so screen-reader users know what it is before diving in. Embeds are heavy, too — loading the map only when it scrolls into view keeps the page fast. [MDN: the iframe element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)
+:::
+
 ## Map Engine
 
 | Engine | Notes |

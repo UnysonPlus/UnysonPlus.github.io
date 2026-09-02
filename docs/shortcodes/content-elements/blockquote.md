@@ -9,6 +9,10 @@ A styled quote / pullquote with optional author and source, in several editorial
 
 <img src="/img/shortcodes/blockquote-backend.png" alt="Blockquote on the Page Builder canvas" width="936" />
 
+:::tip[💡 Web dev tip: quote with real blockquote markup]
+An actual quotation belongs in a `<blockquote>`, with its attribution in a `<cite>` — semantic HTML that assistive tech and search engines understand, not just indented text. Don't reach for a blockquote only to indent or emphasise; use it when you're genuinely quoting a source. [MDN: blockquote](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/blockquote-content.png" alt="Blockquote options panel — Content tab" width="1200" />

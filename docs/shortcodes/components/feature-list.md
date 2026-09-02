@@ -7,6 +7,10 @@ sidebar_position: 44
 
 An icon-led list — checklist, cross/mixed, numbered or per-item icons — with optional sub-text, a right-aligned value, and links, laid out as a vertical column grid **or** a horizontal strip. Tabs: **Content**, **Design**, **Styling**, **Animations**, **Advanced**.
 
+:::tip[💡 Web dev tip: real lists are real HTML lists]
+A list of features should render as a `<ul>` of `<li>`s, not a stack of `<div>`s — then a screen reader announces "list, 5 items" so users know how much there is. UnysonPlus outputs proper list markup, so keep genuinely list-like content in a list. [MDN: the ul element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/feature-list-content.png" alt="Feature List options panel — Content tab" width="1200" />

@@ -11,6 +11,10 @@ A title + content + button block to drive an action. Tabs: **Content**, **Stylin
 
 <img src="/img/shortcodes/call-to-action-backend.png" alt="Call To Action on the Page Builder canvas" width="936" />
 
+:::tip[💡 Web dev tip: write link text that makes sense alone]
+Avoid "click here" or a bare "read more" as the whole link — screen-reader users often pull up a list of just the links, and "read more" ten times tells them nothing. Make the button text describe the destination or action, like "Get UnysonPlus" or "See pricing". [MDN: creating good links](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/call-to-action-content.png" alt="Call To Action options panel — Content tab" width="1200" />

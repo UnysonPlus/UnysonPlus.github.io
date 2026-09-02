@@ -17,6 +17,8 @@ Create custom post types and taxonomies from the WordPress admin — no code req
 **blueprint** for a common content type, or build one row by row: labels, key, supported editor
 features, URLs, visibility and archive behaviour.
 
+New to the terms? A **post type** is a *kind* of content — Posts and Pages are WordPress's built-in ones, and a **custom post type** adds your own (Products, Events, Recipes…). A **taxonomy** is a way to *group* that content — the familiar **Categories** and **Tags** are taxonomies, and you can add your own (a *Cuisine* taxonomy for recipes, say). In short: post types are the *things*, taxonomies are the *labels* you sort them by.
+
 Post types created here can also be targeted by the [Custom Fields](./custom-fields.md) extension,
 displayed with the `[posts]` element, and edited with the Page Builder.
 

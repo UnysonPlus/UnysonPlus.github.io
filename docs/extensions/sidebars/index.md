@@ -14,6 +14,8 @@ description: "Free WordPress custom sidebars plugin — create unlimited dynamic
 
 Brings another layer of customization freedom to your website by letting you add more than one sidebar to a page, or different sidebars on different pages.
 
+In WordPress, a **sidebar** doesn't have to be a column down the side of the page — it just means a **widget area**: a named region you can drop widgets (a search box, recent posts, a menu, an ad) into. It might appear beside your content, in the footer, or anywhere the theme places it. This extension lets you create several of these areas and choose which one shows on which page.
+
 ## Configuration
 
 ```php

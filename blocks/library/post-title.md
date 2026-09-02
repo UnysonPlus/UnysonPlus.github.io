@@ -1,51 +1,33 @@
 ---
 title: Post Title
+description: The Unyson+ Post Title block — The current post's title, with a heading level and optional link, authored in the block editor and rendered server-side.
 ---
 
 # Post Title
 
-The current post's title, at the heading level you choose, optionally linked to the post.
+The current post’s title, with a heading level and optional link. It is a **dynamic content** block: the value comes from whichever post it sits in, so it works in a single post and in a [Theme Builder](/extensions/theme-builder) template alike. The editor preview and the front end are produced by the same server-side [dynamic content system](/extensions/theme-builder/dynamic-content) the page builder uses.
 
-The block renders through the `post_title` element — the same PHP that runs in the page builder, so the front
-end is identical either way.
+<img src="/img/blocks/post-title/front.png" alt="The Post Title block — the current post’s title as a heading" width="1210" />
 
-## What the sidebar exposes
+## Options
 
 | Option | What it does |
 | --- | --- |
-| `heading_tag` | Which heading level it renders as |
-| `link_to_post` | Link the title to the post |
-| `text_align` | Alignment |
-| `text_color` | Title colour |
-| `font_size_preset` | Text size preset |
+| Heading tag (`heading_tag`) | The level the title renders at — `H1`–`H6`. |
+| Link to post (`link_to_post`) | Wrap the title in a link to the post. |
+| Alignment (`text_align`) | Left, Center, or Right. |
+| Colour (`text_color`) + Font size (`font_size_preset`) | Text colour and a preset size. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site’s design system from `theme.json`.
 
-:::note[This block is dynamic]
-It renders whatever post it finds itself in, at render time. In the editor that is the post you are
-editing — so the canvas shows *this* post's value, which on a new draft is often empty, correctly.
+## Sample content
 
-In a [Theme Builder](/extensions/theme-builder/body-templates) template it stands for every post
-the template serves.
-:::
+A block stores only what you change as one `upOptions` object; the element’s declared defaults fill in the rest at render time. The demo above is:
 
-:::note[Core has a block for this too]
-WordPress ships its own Post Title block, and in an ordinary post it does the same job.
+```html
+<!-- wp:unysonplus/post-title {"upOptions":{"heading_tag":"h1","link_to_post":"yes"}} /-->
+```
 
-This one renders through **your theme's** type scale and colour tokens — `font_size_preset` is the
-theme's preset list rather than an arbitrary size — so it matches the rest of an UnysonPlus page
-without hand-tuning. Use whichever fits: core's for a plain post, this one where the page is built
-from UnysonPlus elements.
-:::
+## Dynamic content
 
-:::caution[Link it in a template, not on the post itself]
-`link_to_post` is for a template — an archive or a card — where the title links to the post it names.
-On the single post, it links to the page the reader is already on.
-:::
-
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+This is one of the post-field blocks that read the current post. See [Dynamic content](/extensions/theme-builder/dynamic-content) for the full set and how they resolve inside templates.

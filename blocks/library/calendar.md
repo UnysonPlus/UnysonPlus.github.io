@@ -1,47 +1,39 @@
 ---
 title: Calendar
+description: The Unyson+ Calendar block — A month calendar with events, and an optional upcoming list, authored in the block editor and rendered server-side.
 ---
 
 # Calendar
 
-A month calendar with events, and an optional list of what is coming up.
+A month calendar with events, and an optional upcoming list. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [calendar element](/shortcodes/content-elements/calendar) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`calendar`](/shortcodes/content-elements/calendar) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/calendar/front.png" alt="The Calendar block — a month grid with navigation" width="1210" />
 
-## What the sidebar exposes
+## Configure it
+
+Select the block and open the **Settings** (block) tab. The whole sidebar is generated from the element’s option schema, so it stays in step with the page builder.
+
+<img src="/img/blocks/calendar/inspector.png" alt="The Calendar block settings sidebar" width="300" />
+
+## Options
 
 | Option | What it does |
 | --- | --- |
-| `events` | The events — title, date and link |
-| `design` | Calendar design preset |
-| `start_week` | Which day the week starts on |
-| `show_list` | Show an upcoming-events list beneath |
-| `list_limit` | How many entries that list holds |
-| `accent_color` | Accent colour |
-| `text_color` | Text colour |
-| `font_size_preset` | Text size preset |
+| Events (`events`) | Dated entries to mark on the calendar, each with a title and link. |
+| Design (`design`) + Start of week (`start_week`) | The calendar style, and whether weeks start on Sunday or Monday. |
+| Upcoming list (`show_list`, `list_limit`) | Show a list of the next events under the grid, capped to a count. |
+| Colours (`accent_color`, `text_color`) + Font size (`font_size_preset`) | Accent and text colours, and a preset size. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site’s design system from `theme.json`.
 
-:::note[`events` is a repeater]
-It is an [`addable-popup`](/options/option-types/addable-popup): items expand in place in the
-block sidebar rather than opening a modal, and store exactly the value the page builder stores.
-:::
+## Sample content
 
-:::caution[This block's output changes on its own]
-The month rendered is the **current** month, and today's cell is marked at render time. Like Business
-Info, it produces different output on different days with nobody editing it — so an event added for
-last month simply stops appearing.
-:::
+A block stores only what you change as one `upOptions` object; the element’s declared defaults fill in the rest at render time. The demo above is:
 
-:::note[`list_limit` only applies with `show_list` on]
-It caps the upcoming list. With the list hidden there is nothing to cap.
-:::
+```html
+<!-- wp:unysonplus/calendar {"upOptions":{}} /-->
+```
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+## The calendar element
+
+The block and the page builder’s [Calendar element](/shortcodes/content-elements/calendar) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

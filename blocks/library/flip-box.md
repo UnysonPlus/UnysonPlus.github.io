@@ -1,67 +1,41 @@
 ---
 title: Flip Box
+description: The Unyson+ Flip Box block — A card with two faces that flips on hover or click, authored in the block editor and rendered by the flip-box element.
 ---
 
 # Flip Box
 
-A card with two faces that flips on hover or click — a feature on the front, the detail on the back.
+A card with two faces that flips on hover or click. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [flip-box element](/shortcodes/interactive-elements/flip-box) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`flip_box`](/shortcodes/interactive-elements/flip-box) element —
-the same PHP that runs in the page builder, so the front end is identical either way.
+<img src="/img/blocks/flip-box/front.png" alt="The Flip Box block — a front face with an icon, title and text" width="1210" />
 
-## What the sidebar exposes
+## Configure it
+
+Select the block and open the **Settings** (block) tab. The whole sidebar is generated from the element’s option schema, so it stays in step with the page builder.
+
+<img src="/img/blocks/flip-box/inspector.png" alt="The Flip Box block settings sidebar" width="300" />
+
+## Options
 
 | Option | What it does |
 | --- | --- |
-| `front_icon` | Icon on the front face |
-| `front_title` | Front heading |
-| `front_title_tag` | Its heading level |
-| `front_text` | Front body copy |
-| `front_button_label` | A label on the front, if you want one |
-| `back_icon` | Icon on the back face |
-| `back_title` | Back heading |
-| `back_title_tag` | Its heading level |
-| `back_text` | Back body copy |
-| `button_label` | Button on the back |
-| `button_url` | Where it goes |
-| `button_target` | Open in a new tab |
-| `design_settings` | Design family, and the settings it needs |
-| `flip_direction` | Which way it turns |
-| `trigger` | Hover or click |
-| `parallax` | Slight parallax as it turns |
-| `flip_speed` | How fast |
-| `flip_easing` | The easing curve |
-| `height` | Card height |
-| `rounded` | Corner rounding |
-| `box_style` | Box / border preset |
-| `icon_badge_preset` | Badge behind an icon |
-| `front_bg` / `back_bg` | Face backgrounds |
-| `front_image` / `back_image` | Face background images |
-| `front_color` / `back_color` | Face text colours |
-| `button_style` | Button preset |
-| `button_size` | Button size |
-| `font_size_preset` | Text size preset |
+| Front (`front_icon`, `front_title`, `front_text`) | The resting face — icon, heading and text. |
+| Back (`back_icon`, `back_title`, `back_text`) | The revealed face, plus a **Button** (`button_label`, `button_url`). |
+| Trigger (`trigger`) + Direction (`flip_direction`) | Flip on hover or click, and which way it turns. |
+| Motion (`flip_speed`, `flip_easing`, `parallax`) | Flip speed, easing, and an optional parallax tilt. |
+| Height (`height`) + Rounded (`rounded`) + Box Style (`box_style`) | Card height, corner rounding and preset. |
+| Faces (`front_bg`, `front_image`, `back_bg`, `back_image`) + Colours | Per-face background, image and text colours. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched**.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site’s design system from `theme.json`.
 
-:::caution[Set `height` — both faces share one box]
-The card is a single box showing one face at a time, so it is as tall as its **longer** face. Leave
-the height unset and a short front sits in a card sized by the back, with a gap under the text that
-appears for no visible reason.
-:::
+## Sample content
 
-:::note[The canvas shows the front, and does not flip]
-With `trigger` set to hover, a live preview would flip every time the pointer crossed the block on
-its way to something else — and the back would be showing exactly when you clicked to select it.
+A block stores only what you change as one `upOptions` object; the element’s declared defaults fill in the rest at render time. The demo above is:
 
-Both faces are edited in the sidebar regardless of which one the canvas shows.
-:::
+```html
+<!-- wp:unysonplus/flip-box {"upOptions":{"front_icon":{"type":"icon-font","icon-class":"fa-solid fa-gift"},"front_title":"Free, forever","front_text":"<p>Every extension is included — no pro tier.</p>","back_title":"Download what you need","back_text":"<p>Add only the extensions a project uses.</p>","button_label":"Learn more","button_url":"#"}} /-->
+```
 
-:::note[`design_settings` is a popover]
-It is a [`popover`](/options/option-types/popover): its inner options are rendered inline here
-rather than in a floating panel, and stored exactly as the page builder stores them.
-:::
+## The flip-box element
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so use the Dimensions panel at the top of the sidebar.
-:::
+The block and the page builder’s [Flip Box element](/shortcodes/interactive-elements/flip-box) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

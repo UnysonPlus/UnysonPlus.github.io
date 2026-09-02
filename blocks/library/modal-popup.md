@@ -1,58 +1,41 @@
 ---
 title: Modal Popup
+description: The Unyson+ Modal Popup block — A button, link, icon or image that opens content in a modal dialog, authored in the block editor and rendered by the modal-popup element.
 ---
 
 # Modal Popup
 
-A trigger — button, text link, icon or image — that opens content in a modal dialog. Core has no
-modal block, and the usual substitute is a popup plugin that loads on every page whether or not one
-is used.
+A button, link, icon or image that opens content in a modal dialog. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [modal-popup element](/shortcodes/interactive-elements/modal-popup) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`modal_popup`](/shortcodes/interactive-elements/modal-popup)
-element — the same PHP that runs in the page builder, so the front end is identical either way.
+<img src="/img/blocks/modal-popup/front.png" alt="The Modal Popup block — an "Open the modal" trigger button" width="234" />
 
-## What the sidebar exposes
+## Configure it
+
+Select the block and open the **Settings** (block) tab. The whole sidebar is generated from the element’s option schema, so it stays in step with the page builder.
+
+<img src="/img/blocks/modal-popup/inspector.png" alt="The Modal Popup block settings sidebar" width="300" />
+
+## Options
 
 | Option | What it does |
 | --- | --- |
-| `trigger_type` | What opens the modal — button, link, icon or image |
-| `trigger_label` | Text on the trigger |
-| `trigger_icon` | Icon for the trigger (icon and button triggers) |
-| `trigger_image` | Image used as the trigger |
-| `modal_title` | Heading at the top of the dialog |
-| `modal_content` | The dialog body — basic HTML allowed |
-| `design` | Dialog design preset |
-| `size` | Dialog width — small, medium, large |
-| `open_animation` | How the dialog appears — zoom, fade, slide up |
-| `open_on_load` | Open the modal automatically on page load |
-| `open_delay` | Milliseconds to wait before auto-opening |
-| `close_overlay` | Close when the backdrop is clicked |
-| `accent_color` | Trigger / accent colour |
-| `overlay_color` | Backdrop colour |
-| `modal_bg` | Dialog background |
-| `modal_color` | Dialog text colour |
-| `font_size_preset` | Text size preset |
+| Trigger (`trigger_type`, `trigger_label`, `trigger_icon`, `trigger_image`) | What opens the modal — a button, link, icon or image. |
+| Modal (`modal_title`, `modal_content`) | The dialog’s heading and rich-text body. |
+| Design (`design`) + Size (`size`) + Animation (`open_animation`) | The dialog style, width, and how it opens. |
+| Auto-open (`open_on_load`, `open_delay`) | Open the modal automatically after a delay — e.g. a welcome or offer. |
+| Close on overlay (`close_overlay`) | Let a click on the dimmed background close it. |
+| Colours (`accent_color`, `overlay_color`, `modal_bg`, `modal_color`) | Accent, overlay and dialog colours. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site’s design system from `theme.json`.
 
-:::note[The canvas shows the trigger, not the modal]
-The dialog markup is rendered, but hidden — exactly as it is on a real page before anyone clicks. To
-see the dialog itself, preview the page.
+## Sample content
 
-`open_on_load` is also why the preview must stay inert: a live preview of a popup set to open
-automatically would cover the editor with a dialog every time the block re-rendered, which is to say
-on every keystroke in the sidebar.
-:::
+A block stores only what you change as one `upOptions` object; the element’s declared defaults fill in the rest at render time. The demo above is:
 
-:::caution[`open_delay` only does something with `open_on_load` on]
-The two are one setting in two parts. A delay with nothing to trigger does nothing at all, and
-auto-open with no delay fires the instant the page paints — which visitors experience as a popup
-ambush. Set them together, and give people a second or two to see the page first.
-:::
+```html
+<!-- wp:unysonplus/modal-popup {"upOptions":{"trigger_label":"Open the modal","modal_title":"Welcome to UnysonPlus","modal_content":"<p>A free WordPress framework…</p>"}} /-->
+```
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+## The modal-popup element
+
+The block and the page builder’s [Modal Popup element](/shortcodes/interactive-elements/modal-popup) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

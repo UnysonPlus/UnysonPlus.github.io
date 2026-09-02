@@ -1,36 +1,40 @@
 ---
 title: Star Rating
+description: The Unyson+ Star Rating block — A star rating with optional score, label and review count — for reviews, testimonials and comparison tables, authored in the block editor and rendered by the star-rating element.
 ---
 
 # Star Rating
 
-A star rating with an optional score, label and review count — for reviews, testimonials and comparison tables.
+A star rating with optional score, label and review count — for reviews, testimonials and comparison tables. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [star-rating element](/shortcodes/components/star-rating) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`star_rating`](/shortcodes/components/star-rating) element — the same PHP that runs in the page builder, so
-the front end is identical either way.
+<img src="/img/blocks/star-rating/front.png" alt="The Star Rating block — five filled stars with a score and review count" width="139" />
 
-## What the sidebar exposes
+## Configure it
+
+Select the block and open the **Settings** (block) tab. The whole sidebar is generated from the element’s option schema, so it stays in step with the page builder.
+
+<img src="/img/blocks/star-rating/inspector.png" alt="The Star Rating block settings sidebar" width="300" />
+
+## Options
 
 | Option | What it does |
 | --- | --- |
-| `rating` | The score, as a slider |
-| `max` | How many stars the scale runs to |
-| `label` | Text shown beside the stars |
-| `show_value` | Print the numeric score (e.g. 4.5/5) |
-| `count_text` | Review-count text, e.g. “128 reviews” |
-| `design` | Star style |
-| `size` | Star size |
-| `align` | Horizontal alignment |
-| `fill_color` | Filled star colour |
-| `empty_color` | Empty star colour |
-| `text_color` | Label and score colour |
+| Rating (`rating`) + Max (`max`) | The score, out of a maximum (default 5). Supports halves. |
+| Label (`label`) + Count text (`count_text`) | A leading label and a trailing “based on N reviews”. |
+| Show value (`show_value`) | Print the numeric score beside the stars. |
+| Design (`design`) + Size (`size`) + Alignment (`align`) | The symbol style, size, and alignment. |
+| Colours (`fill_color`, `empty_color`, `text_color`) | Filled / empty star and text colours. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site’s design system from `theme.json`.
 
-:::note[Structured data stays in the page builder]
-The element can emit review schema markup (`rating_schema`). That is not exposed here, because
-search engines penalise review markup on content that is not a genuine review — it is a decision to
-make deliberately, in the page builder, rather than to toggle casually in a sidebar.
-:::
+## Sample content
+
+A block stores only what you change as one `upOptions` object; the element’s declared defaults fill in the rest at render time. The demo above is:
+
+```html
+<!-- wp:unysonplus/star-rating {"upOptions":{"rating":"5","show_value":"yes","count_text":"based on 128 reviews","align":"center"}} /-->
+```
+
+## The star-rating element
+
+The block and the page builder’s [Star Rating element](/shortcodes/components/star-rating) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

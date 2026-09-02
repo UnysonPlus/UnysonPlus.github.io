@@ -1,57 +1,42 @@
 ---
 title: Text Expander
+description: The Unyson+ Text Expander block — Show a short excerpt with a Read more toggle that reveals the rest — for long copy, FAQs and disclosures, authored in the block editor and rendered by the text-expander element.
 ---
 
 # Text Expander
 
-Show a short excerpt with a **Read more** toggle that reveals the rest — for long copy, FAQs,
-disclosures and specification lists. Core has no equivalent block.
+Show a short excerpt with a Read more toggle that reveals the rest — for long copy, FAQs and disclosures. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [text-expander element](/shortcodes/content-elements/text-expander) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`text_expander`](/shortcodes/content-elements/text-expander)
-element — the same PHP that runs in the page builder, so the front end is identical either way.
+<img src="/img/blocks/text-expander/front.png" alt="The Text Expander block — an excerpt with a Read more button" width="1210" />
 
-## What the sidebar exposes
+## Configure it
+
+Select the block and open the **Settings** (block) tab. The whole sidebar is generated from the element’s option schema, so it stays in step with the page builder.
+
+<img src="/img/blocks/text-expander/inspector.png" alt="The Text Expander block settings sidebar" width="300" />
+
+## Options
 
 | Option | What it does |
 | --- | --- |
-| `visible_content` | The excerpt shown before expanding — edits markup, see below |
-| `hidden_content` | The rest, revealed on toggle — edits markup, see below |
-| `btn_show` | Label for the expand button |
-| `btn_hide` | Label for the collapse button |
-| `toggle_icon` | Icon shown on the toggle |
-| `show_btn_position` | Where the expand button sits |
-| `hide_btn_position` | Where the collapse button sits |
-| `count_mode` | How the truncation length is measured |
-| `show_ellipsis` | Print an ellipsis at the cut |
-| `merge_boundary` | Join the two halves cleanly mid-sentence |
-| `click_anywhere` | Let a click anywhere in the block toggle it |
-| `initially_open` | Start expanded |
-| `visible_color` | Excerpt text colour |
-| `hidden_color` | Revealed text colour |
-| `btn_color` | Toggle button colour |
+| Visible content (`visible_content`) | The excerpt shown up front. |
+| Hidden content (`hidden_content`) | The rest, revealed on toggle. |
+| Buttons (`btn_show`, `btn_hide`) + Icon (`toggle_icon`) | The show / hide labels and an optional caret. |
+| Button position (`show_btn_position`, `hide_btn_position`) | Where each button sits. |
+| Merge (`merge_boundary`) + Ellipsis (`show_ellipsis`) | Flow the hidden text inline after the excerpt, with a trailing “…”. |
+| Click anywhere (`click_anywhere`) + Initially open (`initially_open`) | Toggle by clicking the text, and start expanded. |
+| Colours (`visible_color`, `hidden_color`, `btn_color`) | Per-part colour pickers. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site’s design system from `theme.json`.
 
-:::note[The preview shows both halves, expanded]
-The collapse is applied by the element's front-end script, which the block deliberately does not
-replay. So the canvas shows the excerpt **and** the hidden content, with both button labels — not
-the collapsed state a visitor first sees.
+## Sample content
 
-That is the better preview while editing: you are writing both halves and want to see both.
-Replaying the runtime would hide the text you just typed, and a click meant to select the block
-would silently expand it instead. Visitors get the real toggle.
-:::
+A block stores only what you change as one `upOptions` object; the element’s declared defaults fill in the rest at render time. The demo above is:
 
-:::note[Both content fields edit markup, not rich text]
-`visible_content` and `hidden_content` are [`wp-editor`](/options/option-types/wp-editor)
-options, so in a block sidebar they edit **HTML directly** rather than showing a WYSIWYG — the
-reasoning is on that option type's page.
-:::
+```html
+<!-- wp:unysonplus/text-expander {"upOptions":{"visible_content":"<p>UnysonPlus is a free WordPress framework…</p>","hidden_content":"<p>Every extension is free — no pro tier…</p>","btn_show":"Read more","btn_hide":"Read less"}} /-->
+```
 
-:::note[`native_details` is page-builder only]
-The element can render as a native `<details>` / `<summary>` pair instead. That swaps the markup,
-the styling hooks and the keyboard behaviour all at once — a structural choice worth making in the
-page builder where the result sits next to everything else, rather than a switch to flip in a narrow
-sidebar.
-:::
+## The text-expander element
+
+The block and the page builder’s [Text Expander element](/shortcodes/content-elements/text-expander) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

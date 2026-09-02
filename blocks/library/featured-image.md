@@ -1,46 +1,35 @@
 ---
 title: Featured Image
+description: The Unyson+ Featured Image block — the current post's featured image, sized, styled and optionally linked, authored in the block editor and rendered by the page builder.
 ---
 
 # Featured Image
 
-The current post's featured image, at a chosen size and with an optional style treatment.
+The **current post's featured image** (its "thumbnail") — sized, styled and optionally linked to the post or the full-size file. Most useful inside a post or archive template, where it pulls whatever image that entry has set. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are produced by the same server-side code as the page builder, so the output is identical either way.
 
-The block renders through the `featured_image` element — the same PHP that runs in the page builder
-and in [Theme Builder body templates](/extensions/theme-builder/body-templates), so the front
-end is identical whichever surface places it.
+<img src="/img/blocks/featured-image/front.png" alt="The Featured Image block — a post's featured image" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `image_size` | Which registered size to render |
-| `link_to` | Link to the post, the full file, or nothing |
-| `text_align` | Alignment |
-| `image_style` | Image treatment preset |
+| Image size (`image_size`) | Which registered size to output — thumbnail, medium, large or full. |
+| Image style (`image_style`) | Apply a saved Image Style — crop, corners, mask, filter — from Theme Settings. |
+| Link to (`link_to`) | Link the image to the post, to the full-size file, or nowhere. |
+| Alignment (`text_align`) | Left, center or right. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[It renders whichever post it is in]
-This is a dynamic element: it shows **this** post's featured image, resolved at render time. It is
-most at home in a Theme Builder template, where it stands for every post that uses that template.
-
-In a single post it works too, and the canvas previews that post's own image.
+:::note Needs a featured image
+This block outputs the **current entry's** featured image, so it renders only where a post is in context (a single post, or a post inside a query loop) and that post has a featured image set.
 :::
 
-:::note[A draft with no featured image says so]
-Rather than rendering nothing — which in a block preview is indistinguishable from a broken block —
-the element prints a short editor-only note. Visitors never see it.
-:::
+## Sample content
 
-:::note[No stylesheet of its own]
-Drawn by the theme's rules and the Image Style presets, so nothing is pushed into the editor canvas
-for it.
-:::
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above uses the defaults:
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+```html
+<!-- wp:unysonplus/featured-image {"upOptions":{}} /-->
+```

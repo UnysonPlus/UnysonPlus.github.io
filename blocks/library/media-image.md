@@ -1,54 +1,38 @@
 ---
-title: Image
+title: Media Image
+description: The Unyson+ Media Image block — A single image with control over size, link, corners and loading, authored in the block editor and rendered by the media-image element.
 ---
 
-# Image
+# Media Image
 
-A single image with an explicit size, an optional link and a style treatment.
+A single image with control over size, link, corners and loading. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Media Image element](/shortcodes/media-elements/media-image) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`media_image`](/shortcodes/media-elements/media-image) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/media-image/front.png" alt="The Media Image block — a single responsive image" width="340" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `image` | The image |
-| `width` | Width, with a unit |
-| `height` | Height, with a unit |
-| `fetchpriority` | Loading priority hint for the browser |
-| `link` | Where clicking it goes |
-| `target` | Open that link in a new tab |
-| `image_style` | Image treatment preset |
-| `bg_color` | Background behind the image |
+| Image (`image`) | The picture to show. |
+| Link (`link`, `target`) | Wrap the image in a link, optionally opening in a new tab. |
+| Size (`size`, `width`, `height`) | The registered image size, and an explicit width/height if you need one. |
+| Loading (`loading`, `fetchpriority`) | Lazy-load off-screen images, or prioritise a hero image that is above the fold. |
+| Image style (`group_image_style`) | Apply a saved Image Style — crop, corners, mask, filter — from Theme Settings. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[Core has an Image block, and for a plain image it is the better choice]
-This one exists for two things core does not offer: `image_style`, the theme's
-[Image Style presets](/options/option-types/image-style-picker), and `fetchpriority`.
+## Sample content
 
-If you need neither, use core's Image block — it has better media-library integration and inline
-editing.
-:::
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above is:
 
-:::note[`fetchpriority` is the hero-image setting]
-Set it to high on the one image above the fold that the page is about, and leave everything else
-alone. It tells the browser to fetch that image before other resources, which is usually the single
-biggest Largest Contentful Paint win available.
+```html
+<!-- wp:unysonplus/media-image {"upOptions":{"image":{...}}} /-->
+```
 
-Setting it high on several images defeats the purpose — priority is only meaningful relative to
-everything else.
-:::
+The `image` value is a media reference (`{"attachment_id":123,"url":"…"}`), so use the block's image picker rather than typing it by hand.
 
-:::note[No stylesheet of its own]
-This element is drawn by the theme's rules and the Image Style presets, so nothing is pushed into the
-editor canvas for it.
-:::
+## The media image element
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+The block and the page builder's [Media Image element](/shortcodes/media-elements/media-image) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

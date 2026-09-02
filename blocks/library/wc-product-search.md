@@ -1,38 +1,35 @@
 ---
 title: Product Search
+description: The Unyson+ Product Search WooCommerce block — A search form scoped to products only (not posts or pages), authored in the block editor and rendered by the WooCommerce integration.
 ---
 
 # Product Search
 
-A search field scoped to products.
+A search form scoped to products only (not posts or pages). It's part of the **[WooCommerce integration](/extensions/woocommerce)** — like every block in the library it's a second *authoring* surface, rendered server-side by the same code as the page builder, so the store output is identical either way.
 
-The block renders through the `wc_product_search` element — the same PHP that runs in the page builder, so the front
-end is identical either way.
-
-:::caution[Needs the WooCommerce extension *and* the WooCommerce plugin]
-This element ships with the **WooCommerce** extension, which is inactive by default, and it needs the
-**WooCommerce plugin** installed and active.
-
-With either missing the block does not register at all — so it appears in the inserter exactly when it
-can actually work, rather than as an entry that renders nothing.
+:::note Requires WooCommerce
+This block renders live store data, so it only appears (and only works) when the **WooCommerce** plugin is active.
 :::
 
-## What the sidebar exposes
+<img src="/img/blocks/wc-product-search/front.png" alt="The Product Search block — a product-only search field" width="392" />
+
+## Options
 
 | Option | What it does |
 | --- | --- |
-| `placeholder` | What it says before anyone types |
-| `button_text` | Button text |
-| `button_icon` | Button icon |
-| `layout` | Field and button arrangement |
-| `field_shape` | Field shape |
-| `size` | Field size |
-| `button_style` | Button preset |
-| `width` | Width |
-| `alignment` | Alignment |
+| Field + submit | A search field wired to WooCommerce product results. |
+| Placeholder + shape | The prompt text and the field shape (attached button, pill, and so on). |
 
-Anything not listed stays available in the page builder, and **round-trips untouched**.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[Products only]
-Unlike [Site Search](./site-search.md), which searches everything.
-:::
+## Sample content
+
+The demo above uses the block's defaults on a store with sample products:
+
+```html
+<!-- wp:unysonplus/wc-product-search {"upOptions":{}} /-->
+```
+
+## WooCommerce elements
+
+These blocks mirror the page builder's WooCommerce elements. Their full option and behaviour reference lives on the [WooCommerce elements](/shortcodes/woocommerce-elements) page.

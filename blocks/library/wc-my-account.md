@@ -1,35 +1,35 @@
 ---
 title: My Account
+description: The Unyson+ My Account WooCommerce block — The customer account area — a login / register form when logged out, and the account dashboard when logged in, authored in the block editor and rendered by the WooCommerce integration.
 ---
 
 # My Account
 
-WooCommerce's account area — orders, addresses, details.
+The customer account area — a login / register form when logged out, and the account dashboard when logged in. It's part of the **[WooCommerce integration](/extensions/woocommerce)** — like every block in the library it's a second *authoring* surface, rendered server-side by the same code as the page builder, so the store output is identical either way.
 
-The block renders through the `wc_my_account` element — the same PHP that runs in the page builder, so the front
-end is identical either way.
-
-:::caution[Needs the WooCommerce extension *and* the WooCommerce plugin]
-This element ships with the **WooCommerce** extension, which is inactive by default, and it needs the
-**WooCommerce plugin** installed and active.
-
-With either missing the block does not register at all — so it appears in the inserter exactly when it
-can actually work, rather than as an entry that renders nothing.
+:::note Requires WooCommerce
+This block renders live store data, so it only appears (and only works) when the **WooCommerce** plugin is active.
 :::
 
-:::caution[A page-level element — placement matters]
-WooCommerce routes real behaviour through the pages configured under *WooCommerce → Settings →
-Advanced*. Placing this block on some other page renders something that **looks** right without being
-the page the shop is configured to use.
+<img src="/img/blocks/wc-my-account/front.png" alt="The My Account block — the WooCommerce login / register form" width="1210" />
 
-Use it to rebuild the configured page with UnysonPlus elements around it — not to create a second one.
-:::
+## Options
 
-## Settings
+| Option | What it does |
+| --- | --- |
+| Logged out | The login and registration forms. |
+| Logged in | The account dashboard — orders, addresses, downloads and details. |
 
-This element has **no settings of its own** — it renders WooCommerce's own template, and its appearance comes from WooCommerce settings and your theme. The block says so in the sidebar rather than showing an empty panel.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[Logged-out visitors see the login form]
-The canvas shows whichever state the editing user is in, which is always logged in — so the login form
-is the one state you cannot preview here.
-:::
+## Sample content
+
+The demo above uses the block's defaults on a store with sample products:
+
+```html
+<!-- wp:unysonplus/wc-my-account {"upOptions":{}} /-->
+```
+
+## WooCommerce elements
+
+These blocks mirror the page builder's WooCommerce elements. Their full option and behaviour reference lives on the [WooCommerce elements](/shortcodes/woocommerce-elements) page.

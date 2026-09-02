@@ -7,6 +7,10 @@ sidebar_position: 49
 
 Embed a responsive YouTube, Vimeo, or other oEmbed-supported video from its page URL, sized by max width and aspect ratio. Its options are organized across the **Content**, **Styling**, **Animations**, and **Advanced** tabs.
 
+:::tip[💡 Web dev tip: caption videos, don't autoplay sound]
+Videos need **captions** (a `<track>`) for deaf and hard-of-hearing viewers — and they help everyone watching muted. If a video autoplays, keep it muted; sound that starts on its own is jarring and disrupts screen-reader use. A poster image avoids an ugly blank first frame. [MDN: the track element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/media-video-content.png" alt="Video options panel — Content tab" width="1200" />

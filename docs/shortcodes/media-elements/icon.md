@@ -11,6 +11,10 @@ A single icon with an optional title. Tabs: **Content**, **Styling**, **Animatio
 
 <img src="/img/shortcodes/icon-backend.png" alt="Icon on the Page Builder canvas" width="936" />
 
+:::tip[💡 Web dev tip: is your icon decorative or meaningful?]
+An icon that merely decorates the text beside it should be hidden from screen readers (`aria-hidden="true"`) so it isn't announced twice. An icon that stands alone and *means* something — a lone phone icon that is a call link — needs an accessible name instead. Decide which, every time. [MDN: aria-hidden](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/icon-content.png" alt="Icon options panel — Content tab" width="750" />

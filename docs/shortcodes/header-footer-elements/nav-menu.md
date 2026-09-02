@@ -7,6 +7,10 @@ sidebar_position: 64
 
 Display a WordPress menu — for headers, footers, or anywhere on the canvas. The menu's items, structure, and sub-menus come straight from **Appearance → Menus**, so it stays in sync with the site. Options live under the **Content** and **Advanced** tabs.
 
+:::tip[💡 Web dev tip: navigation goes in a `<nav>`]
+Put your main menu in a `<nav>` so assistive tech offers it as a landmark to jump to, and mark the current page's link with `aria-current="page"` so it's announced as "current". Menus must be fully keyboard-operable — every link reachable by Tab, submenus openable without a mouse. [MDN: the nav element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/nav-menu-content.png" alt="Navigation Menu options panel — Content tab" width="1200" />

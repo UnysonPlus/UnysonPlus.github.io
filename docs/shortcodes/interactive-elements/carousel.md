@@ -10,6 +10,10 @@ A flexible, touch-friendly carousel/slider. Each slide can carry an image, headi
 button. Supports multiple slides per view, autoplay, loop, arrows and dots (built on Splide).
 Tabs: **Slides**, **Layout**, **Behavior**, **Style**, **Animations**, **Advanced**.
 
+:::tip[💡 Web dev tip: use carousels sparingly]
+Studies repeatedly find most visitors only ever see the first slide, so don't bury anything important on slide three. If it auto-plays, give people a visible pause control and don't advance too fast — and make sure the arrows and dots work with a keyboard. [W3C: carousel pattern](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/)
+:::
+
 ## Slides
 
 <img src="/img/shortcodes/carousel-slides.png" alt="Carousel / Slider options panel — Slides tab" width="1200" />

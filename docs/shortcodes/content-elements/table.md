@@ -9,6 +9,10 @@ sidebar_custom_props: { icon: '/img/shortcode-icons/table.svg' }
 A data table with optional interactivity. Tabs: **Content**, **Table Options**, **Styling**,
 **Animations**, **Advanced**.
 
+:::tip[💡 Web dev tip: tables are for data, not layout]
+A `<table>` should hold **tabular data** — rows and columns that relate to each other — never page layout (use CSS grid or flexbox to arrange a page). For accessibility, each column needs a header cell marked `scope="col"` (and row headers `scope="row"`) so a screen reader can announce *which* header a value belongs to, plus a `<caption>` naming the table. UnysonPlus outputs a real `<table>`, so these semantics carry straight through to the page. [MDN: HTML tables](https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Basics)
+:::
+
 ## Table Options
 
 <img src="/img/shortcodes/table-table-options.png" alt="Table options panel — Table Options tab" width="1200" />

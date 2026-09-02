@@ -12,6 +12,10 @@ side drawer or fullscreen. Tabs: **Content**, **Design**, **Styling**, **Animati
 
 <img src="/img/shortcodes/modal-popup-backend.png" alt="Modal / Popup on the Page Builder canvas" width="936" />
 
+:::tip[💡 Web dev tip: a modal must manage focus]
+When a dialog opens, keyboard focus should move into it, stay trapped while it's open, close on <kbd>Esc</kbd>, and return to the trigger afterwards — otherwise keyboard and screen-reader users get lost behind the overlay. Mark it up as `role="dialog"` with `aria-modal="true"`. UnysonPlus' modal does this. [W3C: dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/modal-popup-content.png" alt="Modal / Popup options panel — Content tab" width="1200" />

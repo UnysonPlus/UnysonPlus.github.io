@@ -9,6 +9,10 @@ sidebar_custom_props: { icon: '/img/shortcode-icons/accordion.svg' }
 Collapsible accordion panels. Tabs: **Content**, **Layout**, **Behaviour**, **Styling**,
 **Animations**, **Advanced**.
 
+:::tip[💡 Web dev tip: accordions are the "disclosure" pattern]
+An accordion is a set of show/hide panels. Each header should be a real `<button>` carrying `aria-expanded="true"/"false"` so screen readers know the state, and it must toggle with the keyboard (Enter or Space). UnysonPlus follows this WAI-ARIA pattern for you. [W3C: disclosure pattern](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/accordion-content.png" alt="Accordion options panel — Content tab" width="1200" />

@@ -9,6 +9,10 @@ sidebar_custom_props: { icon: '/img/shortcode-icons/progress.svg' }
 Animated skill / progress indicators (label + percentage) that fill to their value when
 scrolled into view. Tabs: **Bars**, **Style**, **Animations**, **Advanced**.
 
+:::tip[💡 Web dev tip: a progress bar has a real element]
+HTML has a native `<progress>` element (and `<meter>` for a static measurement like disk usage). Using them — or ARIA's `role="progressbar"` with `aria-valuenow` — means assistive tech announces the value, not just a coloured bar. [MDN: the progress element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress)
+:::
+
 ## Bars
 
 <img src="/img/shortcodes/progress-bars.png" alt="Progress Bars options panel — Bars tab" width="1200" />

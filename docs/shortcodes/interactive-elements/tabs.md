@@ -17,6 +17,10 @@ the [Animation Engine → Scrollytelling](/animation-engine) module on a Section
 instead.
 :::
 
+:::tip[💡 Web dev tip: tabbed content is still on the page]
+Tabs organise content neatly, but all of it still loads in the page — so don't tab away anything that must be seen, and note that search engines still index the hidden panels. A proper tab set moves between tabs with the arrow keys, which UnysonPlus handles. [W3C: tabs pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/tabs-content.png" alt="Tabs options panel — Content tab" width="750" />

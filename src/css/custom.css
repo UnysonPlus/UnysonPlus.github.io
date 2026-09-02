@@ -239,3 +239,10 @@ html.plugin-id-decisions article header h1 {
   color: rgba(255, 255, 255, 0.9);
 }
 .ext-hero__sub strong { color: #fff; }
+
+/* Web dev tip callouts put a 💡 emoji in their title, which doubled up with the
+   theme's default lightbulb SVG on tip admonitions. Hide that SVG icon on tips
+   so the 💡 is the single bulb; other tip boxes simply read icon-free. */
+.theme-admonition-tip > div:first-child > :first-child {
+  display: none;
+}

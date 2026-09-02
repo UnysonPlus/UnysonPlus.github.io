@@ -10,7 +10,7 @@ An overline + title + subtitle heading block. Tabs: **Content**, **Layout**, **S
 **Animations**, **Advanced**.
 
 :::tip[💡 Web dev tip: headings are an outline, not just big text]
-The **Title Tag** option sets a real `<h1>`–`<h6>`, and those tags form your page's outline. Use **one `<h1>` per page** (usually the page title), and don't skip levels — the sub-parts of an `<h2>` section should be `<h3>`, not `<h4>`. Choose the level for *structure*, then size it with the design controls. Screen-reader users jump between headings to scan a page, and search engines read them to understand what it's about. [MDN: heading elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
+The **Title Tag** option sets a real `<h1>`–`<h6>`, and those tags form your page's outline. Use **one `<h1>` per page** (usually the page title), and don't skip levels — the sub-parts of an `<h2>` section should be `<h3>`, not `<h4>`. Choose the level for *structure*, then size it with the design controls. Screen-reader users jump between headings to scan a page, and search engines read them to understand what it's about. [MDN: heading elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements) · [Web Dev Basics: Semantic HTML](/learn/semantic-html)
 :::
 
 <img src="/img/shortcodes/special-heading-backend.png" alt="Special Heading on the Page Builder canvas" width="936" />

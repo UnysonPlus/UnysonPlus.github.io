@@ -11,7 +11,7 @@ with optional numbering, scrollspy highlighting and a sticky/floating layout. Ta
 **Content**, **Behavior**, **Styling**, **Animations**, **Advanced**.
 
 :::tip[💡 Web dev tip: in-page links need heading IDs]
-A table of contents jumps to a heading using its `id` and a `#hash` link — so every target heading needs a stable, unique `id`. UnysonPlus adds these automatically, which also lets people deep-link straight to a section. Clear heading structure is what makes both the TOC and the browser's find-on-page useful. [MDN: the id attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id)
+A table of contents jumps to a heading using its `id` and a `#hash` link — so every target heading needs a stable, unique `id`. UnysonPlus adds these automatically, which also lets people deep-link straight to a section. Clear heading structure is what makes both the TOC and the browser's find-on-page useful. [MDN: the id attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id) · [Web Dev Basics: SEO Basics](/learn/seo)
 :::
 
 ## Content

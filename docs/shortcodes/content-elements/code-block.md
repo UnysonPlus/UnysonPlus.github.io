@@ -10,7 +10,7 @@ Insert raw **HTML, CSS, or JavaScript**. Tabs: **Content**, **Styling**, **Anima
 **Advanced**.
 
 :::tip[💡 Web dev tip: code belongs in pre + code]
-Code samples use `<pre><code>` so spacing is preserved and the text isn't parsed as HTML — the characters `<`, `>` and `&` must be escaped (`&lt;`, `&gt;`, `&amp;`) or the browser tries to render them. This block handles that for you. And never paste a real password or API key into a public example. [MDN: the pre element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre)
+Code samples use `<pre><code>` so spacing is preserved and the text isn't parsed as HTML — the characters `<`, `>` and `&` must be escaped (`&lt;`, `&gt;`, `&amp;`) or the browser tries to render them. This block handles that for you. And never paste a real password or API key into a public example. [MDN: the pre element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre) · [Web Dev Basics: Semantic HTML](/learn/semantic-html)
 :::
 
 ## Content

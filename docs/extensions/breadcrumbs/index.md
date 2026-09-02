@@ -18,7 +18,7 @@ description: "Free WordPress breadcrumbs plugin — drop-in, SEO-friendly breadc
 Creates a simplified navigation menu for the pages that can be placed anywhere in the theme. This will make navigating around the website much easier.
 
 :::tip[💡 Web dev tip: breadcrumbs are navigation *and* SEO]
-Breadcrumbs help visitors see where they are and climb back up — put them in a `<nav aria-label="Breadcrumb">`. Adding **BreadcrumbList structured data** also lets Google show the trail in search results instead of a bare URL. This extension emits both. [Google: breadcrumb structured data](https://developers.google.com/search/docs/appearance/structured-data/breadcrumb)
+Breadcrumbs help visitors see where they are and climb back up — put them in a `<nav aria-label="Breadcrumb">`. Adding **BreadcrumbList structured data** also lets Google show the trail in search results instead of a bare URL. This extension emits both. [Google: breadcrumb structured data](https://developers.google.com/search/docs/appearance/structured-data/breadcrumb) · [Web Dev Basics: SEO Basics](/learn/seo)
 :::
 
 ## Helpers

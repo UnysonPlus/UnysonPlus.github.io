@@ -13,7 +13,7 @@ link) in several styles and shapes. Tabs: **Content**, **Design**, **Styling**,
 <img src="/img/shortcodes/social-share-backend.png" alt="Social Share on the Page Builder canvas" width="936" />
 
 :::tip[💡 Web dev tip: icon-only links need an accessible name]
-A share or social button that shows only an icon is silent to a screen reader unless you give it a text name — via visually-hidden text or an `aria-label` like "Share on Facebook". UnysonPlus adds these, so a blind user hears the destination, not just "link". [MDN: aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+A share or social button that shows only an icon is silent to a screen reader unless you give it a text name — via visually-hidden text or an `aria-label` like "Share on Facebook". UnysonPlus adds these, so a blind user hears the destination, not just "link". [MDN: aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) · [Web Dev Basics: Accessibility](/learn/accessibility)
 :::
 
 ## Content

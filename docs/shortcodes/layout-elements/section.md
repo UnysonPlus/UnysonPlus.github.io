@@ -18,7 +18,7 @@ Each setting is routed to the leanest layer that fits it — never a raw inline 
 The **Animations** and **Advanced** tabs are the shared, cross-shortcode controls and are omitted below. Hover any cell for more detail.
 
 :::tip[💡 Web dev tip: build pages from landmarks]
-Browsers and screen readers understand a page through **landmark** elements — `<header>`, `<nav>`, `<main>` (exactly one), `<footer>` — plus `<section>`s that each begin with a heading. Reaching for these instead of nothing-but-`<div>` lets people jump straight to the main content and gives search engines the structure too. [MDN: the section element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section)
+Browsers and screen readers understand a page through **landmark** elements — `<header>`, `<nav>`, `<main>` (exactly one), `<footer>` — plus `<section>`s that each begin with a heading. Reaching for these instead of nothing-but-`<div>` lets people jump straight to the main content and gives search engines the structure too. [MDN: the section element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section) · [Web Dev Basics: Semantic HTML](/learn/semantic-html)
 :::
 
 ## Layout

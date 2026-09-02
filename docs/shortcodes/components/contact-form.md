@@ -12,7 +12,7 @@ builder.
 The options open in a modal with a **Form Fields** builder and a **Settings** section.
 
 :::tip[💡 Web dev tip: every input needs a label]
-Every form field must have a real `<label>` tied to it — that's what a screen reader announces, and tapping the label focuses the field (a bigger target on mobile). Placeholder text is **not** a label: it disappears the moment someone types. Mark required fields, and describe any error in text, not colour alone. [MDN: the label element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label)
+Every form field must have a real `<label>` tied to it — that's what a screen reader announces, and tapping the label focuses the field (a bigger target on mobile). Placeholder text is **not** a label: it disappears the moment someone types. Mark required fields, and describe any error in text, not colour alone. [MDN: the label element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) · [Web Dev Basics: Accessibility](/learn/accessibility)
 :::
 
 ## Form Fields

@@ -8,7 +8,7 @@ sidebar_position: 55
 A custom audio player for self-hosted or remote tracks — single track or playlist, with cover art, in several designs. Its options are organized across the **Content**, **Design**, **Styling**, **Animations** and **Advanced** tabs.
 
 :::tip[💡 Web dev tip: give audio controls and a transcript]
-Always expose play/pause controls and don't autoplay audio. Provide a **transcript** too — it makes the content usable for deaf users, searchable by Google, and skimmable for anyone who'd rather read than listen. [MDN: the audio element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio)
+Always expose play/pause controls and don't autoplay audio. Provide a **transcript** too — it makes the content usable for deaf users, searchable by Google, and skimmable for anyone who'd rather read than listen. [MDN: the audio element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio) · [Web Dev Basics: Performance](/learn/performance)
 :::
 
 ## Content

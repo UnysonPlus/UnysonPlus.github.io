@@ -22,7 +22,7 @@ well — the two animations will conflict.
 <img src="/img/shortcodes/animated-heading-backend.png" alt="Animated Heading on the Page Builder canvas" width="936" />
 
 :::tip[💡 Web dev tip: respect "reduced motion"]
-Big animations can make some people dizzy or nauseous, so browsers expose a **prefers-reduced-motion** setting — good sites honour it by cutting non-essential movement. UnysonPlus' animations already respect it, so keep decorative motion tasteful and never tie essential meaning to movement alone. [MDN: prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
+Big animations can make some people dizzy or nauseous, so browsers expose a **prefers-reduced-motion** setting — good sites honour it by cutting non-essential movement. UnysonPlus' animations already respect it, so keep decorative motion tasteful and never tie essential meaning to movement alone. [MDN: prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) · [Web Dev Basics: Performance](/learn/performance)
 :::
 
 ## Content

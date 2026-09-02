@@ -11,7 +11,7 @@ A **call to action** (CTA) is the one thing you want a visitor to do next — *B
 <img src="/img/shortcodes/call-to-action-backend.png" alt="Call To Action on the Page Builder canvas" width="936" />
 
 :::tip[💡 Web dev tip: write link text that makes sense alone]
-Avoid "click here" or a bare "read more" as the whole link — screen-reader users often pull up a list of just the links, and "read more" ten times tells them nothing. Make the button text describe the destination or action, like "Get UnysonPlus" or "See pricing". [MDN: creating good links](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a)
+Avoid "click here" or a bare "read more" as the whole link — screen-reader users often pull up a list of just the links, and "read more" ten times tells them nothing. Make the button text describe the destination or action, like "Get UnysonPlus" or "See pricing". [MDN: creating good links](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) · [Web Dev Basics: Accessibility](/learn/accessibility)
 :::
 
 ## Content

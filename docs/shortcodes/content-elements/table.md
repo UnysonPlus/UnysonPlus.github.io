@@ -10,7 +10,7 @@ A data table with optional interactivity. Tabs: **Content**, **Table Options**, 
 **Animations**, **Advanced**.
 
 :::tip[💡 Web dev tip: tables are for data, not layout]
-A `<table>` should hold **tabular data** — rows and columns that relate to each other — never page layout (use CSS grid or flexbox to arrange a page). For accessibility, each column needs a header cell marked `scope="col"` (and row headers `scope="row"`) so a screen reader can announce *which* header a value belongs to, plus a `<caption>` naming the table. UnysonPlus outputs a real `<table>`, so these semantics carry straight through to the page. [MDN: HTML tables](https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Basics)
+A `<table>` should hold **tabular data** — rows and columns that relate to each other — never page layout (use CSS grid or flexbox to arrange a page). For accessibility, each column needs a header cell marked `scope="col"` (and row headers `scope="row"`) so a screen reader can announce *which* header a value belongs to, plus a `<caption>` naming the table. UnysonPlus outputs a real `<table>`, so these semantics carry straight through to the page. [MDN: HTML tables](https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Basics) · [Web Dev Basics: Semantic HTML](/learn/semantic-html)
 :::
 
 ## Table Options

@@ -13,7 +13,7 @@ By the end you'll have placed a section, added an element, configured it, and se
 front end. Five minutes, no code.
 
 :::tip[💡 Web dev tip: structure before style]
-Before choosing colours, plan the **content and its outline** — the one main heading, the sections beneath it, the order they read in. Build that with real headings and sections, design it *mobile-first* (most visitors are on a phone), then style. A well-structured page is automatically more accessible and easier for search engines to understand. [MDN: HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+Before choosing colours, plan the **content and its outline** — the one main heading, the sections beneath it, the order they read in. Build that with real headings and sections, design it *mobile-first* (most visitors are on a phone), then style. A well-structured page is automatically more accessible and easier for search engines to understand. [MDN: HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) · [Web Dev Basics: Semantic HTML](/learn/semantic-html)
 :::
 
 ## 1. Open a page in the builder

@@ -7,7 +7,7 @@ sidebar_position: 2
 In the framework everything is prefixed to prevent naming conflicts and to give a meaning to functions, classes and methods names.
 
 :::tip[💡 Web dev tip: name things clearly and consistently]
-Good names are documentation. Pick a naming convention and stick to it, and **prefix** anything that shares a global space (CSS classes, functions, option keys) so it can't collide with WordPress core or another plugin. Future-you — and everyone after — will read the code far faster.
+Good names are documentation. Pick a naming convention and stick to it, and **prefix** anything that shares a global space (CSS classes, functions, option keys) so it can't collide with WordPress core or another plugin. Future-you — and everyone after — will read the code far faster. · [Web Dev Basics: Clean Code](/learn/clean-code)
 :::
 
 ## Core

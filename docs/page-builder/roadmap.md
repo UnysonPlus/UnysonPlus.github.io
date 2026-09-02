@@ -78,11 +78,11 @@ So the *feel* is the same — familiar fractions — while the *output* is clean
 |---|---|---|
 | Content Width on the Div | A container option so a full-width `section` Div centres its content to a max-width (no accidental full-bleed). | 🟡 In progress |
 | Converter → flex/grid | The **Site Converter** rebuilds a source's content rows as flex/grid **Div** rows instead of Bootstrap columns. | 🟡 In progress |
-| Div = default wrapper | Dropping an element on an empty canvas wraps it in a **Div** (tagged `section` at the root, `div` when nested) — not Section → Column. | ⚪ Planned |
-| Modern palette | **Section** (modern Div) / **Grid** / **Flexbox** lead the Layout tab; Bootstrap moves to **Classic**. | ⚪ Planned |
-| Columns as Grid | Drop cells into a Grid Div; fractions become grid spans (`1/3` → `span 4`). | ⚪ Planned |
+| Div = default wrapper | Dropping an element on an empty canvas wraps it in a **Div** (tagged `section` at the root, `div` when nested) — not Section → Column. | 🟡 In progress |
+| Modern palette | **Section** (modern Div) / **Grid** / **Flexbox** lead the Layout tab; Bootstrap moves to **Classic**. | 🟡 In progress |
+| Columns as Grid | Drop cells into a Grid Div; fractions become grid spans (`1/3` → `span 4`). | 🟡 In progress |
 | Convert to Grid | An opt-in action to modernise an existing Bootstrap row into a Grid Div — using the same translation the converter uses. | ⚪ Planned |
-| Live Editor parity | Every new behaviour works identically in the backend builder and the front-end **Live Page Editor**. | ⚪ Planned |
+| Live Editor parity | The modern layout tiles + Div inserts now work in the front-end **Live Page Editor** too, matching the backend builder. | 🟡 In progress |
 
 ## Your existing pages {#your-existing-pages}
 

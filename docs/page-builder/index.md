@@ -24,6 +24,12 @@ builder does under the hood — the stored JSON, how loose elements become a val
 front end renders, and the value-shape traps to avoid when you extend it — read the deep-dive
 pages linked at the bottom.
 
+:::tip[Where the builder is heading]
+The layout system is evolving toward one simple primitive (the **Div**, with Flex &amp; Grid) while
+the classic Section/Row/Column grid stays fully supported. See the
+**[Page Builder Roadmap](./roadmap.md)** for what's coming and why.
+:::
+
 ## Enabling the builder
 
 The Page Builder ships as the **Page Builder** extension (it lives inside the **Shortcodes**

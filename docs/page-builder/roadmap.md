@@ -81,7 +81,6 @@ So the *feel* is the same — familiar fractions — while the *output* is clean
 | Div = default wrapper | Dropping an element on an empty canvas wraps it in a **Div** (tagged `section` at the root, `div` when nested) — not Section → Column. | 🟡 In progress |
 | Modern palette | **Section** (modern Div) / **Grid** / **Flexbox** lead the Layout tab; Bootstrap moves to **Classic**. | 🟡 In progress |
 | Columns as Grid | Drop cells into a Grid Div; fractions become grid spans (`1/3` → `span 4`). | 🟡 In progress |
-| Convert to Grid | An opt-in action to modernise an existing Bootstrap row into a Grid Div — using the same translation the converter uses. | ⚪ Planned |
 | Live Editor parity | The modern layout tiles + Div inserts now work in the front-end **Live Page Editor** too, matching the backend builder. | 🟡 In progress |
 
 ## Your existing pages {#your-existing-pages}
@@ -90,11 +89,9 @@ This is an evolution, not a rip-out:
 
 - Every existing **Section / Row / Column** page keeps rendering and editing — the Bootstrap
   shortcodes are **not** removed, only demoted to the **Classic** palette group.
-- The two models **coexist**. New pages lead with the Div; old pages stay classic until you choose
-  otherwise.
-- A **"Convert to Grid"** action (planned) modernises a classic row on demand — opt-in, per row,
-  never automatic. It reuses the Site Converter's existing `col → grid span` translation.
-- Nothing forces a big-bang rewrite. Migrate a page when it suits you, or leave it.
+- The two models **coexist**. New pages lead with the Div; existing pages stay Classic — **no
+  migration is needed and nothing is forced**. Rebuild a page on the Div model whenever you want, or
+  simply leave it as it is.
 
 ## Principles
 

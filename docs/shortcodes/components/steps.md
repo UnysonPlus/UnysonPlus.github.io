@@ -7,6 +7,10 @@ sidebar_position: 47
 
 A numbered steps / process flow — horizontal, vertical timeline, alternating, cards or circles — with icons or numbers and connectors. Tabs: **Content**, **Design**, **Styling**, **Animations**, **Advanced**.
 
+:::tip[💡 Web dev tip: sequences are ordered lists]
+When order matters — step 1, then 2, then 3 — the right element is an **ordered list** (`<ol>`), not a set of headings or divs. The numbering becomes real content that assistive tech announces in sequence, and it stays correct if you reorder the steps. [MDN: the ol element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/steps-content.png" alt="Steps / Process options panel — Content tab" width="1200" />

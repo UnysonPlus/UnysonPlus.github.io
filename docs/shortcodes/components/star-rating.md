@@ -9,6 +9,10 @@ A rating display — stars, hearts, circles or a bar — with an optional label 
 
 <img src="/img/shortcodes/star-rating-backend.png" alt="Star Rating on the Page Builder canvas" width="936" />
 
+:::tip[💡 Web dev tip: a rating must be readable, not just visible]
+Five drawn stars mean nothing to a screen reader. Always express the value as text too — "4.5 out of 5" — so it is announced and understood. Only add Review or AggregateRating structured data for **genuine** customer reviews; faking it breaks Google's guidelines. [Google: review snippet](https://developers.google.com/search/docs/appearance/structured-data/review-snippet)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/star-rating-content.png" alt="Star Rating options panel — Content tab" width="1200" />

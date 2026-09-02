@@ -1,54 +1,38 @@
 ---
 title: SVG Morph
+description: The Unyson+ SVG Morph block — an SVG shape that smoothly morphs into another, authored in the block editor and rendered by the Animation Engine.
 ---
 
 # SVG Morph
 
-One SVG shape morphing into the next — a blob that shifts behind a hero, an icon that becomes another icon, a logo that resolves.
+An **SVG shape that morphs** smoothly into another — one path fluidly reshaping into the next, looping or triggered on scroll. A playful accent for icons, blobs and logos. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are produced by the same server-side code as the page builder, so the output is identical either way.
 
-The block renders through the `svg_morph` element — the same PHP that runs in the page builder, so the front
-end is identical either way.
+<img src="/img/blocks/svg-morph/front.png" alt="The SVG Morph block — a morphing SVG shape" width="240" />
 
-:::caution[Needs the Animation Engine extension]
-This element ships with the **Animation Engine**, which is **inactive by default**. Activate it under
-*Unyson+ → Extensions* and the block appears in the inserter.
+## Options
 
-With the extension off the block does not register at all — deliberately, so it cannot appear as an
-entry with an empty sidebar that renders nothing.
-:::
-
-## What the sidebar exposes
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `shapes_list` | The shapes, in the order they morph |
-| `loopback` | Return to the first shape at the end |
-| `render_mode` | How the shape is drawn |
-| `trigger` | What starts the morph |
-| `easing` | The easing curve |
-| `fill_color` | Fill colour |
-| `stroke_color` | Stroke colour |
-| `stroke_width` | Stroke thickness |
-| `max_width` | Maximum rendered width |
-| `align` | Horizontal alignment |
+| Source (`source`, `library`, `custom`) | Choose shapes from the built-in **library** or provide your own **custom** paths. |
+| Shapes (`shapes_list`, `shape`, `d`, `markup`) | The sequence of shapes/paths to morph between. |
+| Morph duration + Hold (`morph_dur`, `hold`) | How long each morph takes, and the pause on each shape. |
+| Easing (`easing`) + Loopback (`loopback`) | The motion curve, and whether it reverses back through the sequence. |
+| Render mode (`render_mode`, `stroke_width`) | Fill or stroke the shape, and the stroke thickness. |
+| Trigger (`trigger`) | What starts the animation — on scroll into view, on load, or on hover. |
+| Alignment (`align`) + Max width (`max_width`) | Position and size within the column. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[The order of `shapes_list` *is* the animation]
-It is an [`addable-popup`](/options/option-types/addable-popup) repeater, and the shapes morph in
-the order they are listed. Reordering the list rewrites the sequence.
+:::note Part of the Animation Engine
+SVG Morph is an **Animation Engine** element. Activate the Animation Engine extension to use it.
 :::
 
-:::caution[Shapes need compatible path data]
-A clean morph needs paths with comparable point counts. Mismatched ones lurch rather than flow —
-which is a property of the SVGs themselves, not something a setting can fix, which is why there is no
-option for it. If a transition looks wrong, the fix is in the artwork.
-:::
+## Sample content
 
-:::note[The preview holds the first shape]
-Replaying the morph would restart on every option change — so `easing` and the shape order, the two
-things you would be trying to judge, are exactly what the preview would never settle on long enough
-to show.
-:::
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above uses the default shape sequence:
+
+```html
+<!-- wp:unysonplus/svg-morph {"upOptions":{"align":"center"}} /-->
+```

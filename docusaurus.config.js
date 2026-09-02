@@ -32,6 +32,7 @@ function sitemapDataPlugin() {
     theme: 'The Theme',
     guides: 'Guides',
     aiDevKit: 'AI Dev Kit',
+    learn: 'Web Dev Basics',
   };
   const BLOG_LABELS = {default: 'News', decisions: 'Design Decisions'};
   const ORDER = [
@@ -41,6 +42,7 @@ function sitemapDataPlugin() {
     'The Theme',
     'Guides',
     'AI Dev Kit',
+    'Web Dev Basics',
     'News',
     'Design Decisions',
   ];
@@ -137,7 +139,7 @@ const config = {
         hashed: true,
         indexDocs: true,
         indexBlog: true,
-        docsRouteBasePath: ['/', '/animation-engine', '/theme', '/guides', '/ai-dev-kit', '/blocks'],
+        docsRouteBasePath: ['/', '/animation-engine', '/theme', '/guides', '/ai-dev-kit', '/blocks', '/learn'],
         // Index BOTH blog instances: the News blog (/blog) and the Design Decisions blog
         // (/decisions). Without this the plugin only indexes the default /blog, so decisions
         // posts never show up in search.
@@ -302,6 +304,20 @@ const config = {
         editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
       },
     ],
+    // Web Dev Basics — a short, beginner-friendly primer on building websites the
+    // right way (semantic HTML, a11y, responsive, performance, SEO, clean code).
+    // Its own instance so the docs double as a learning resource; the inline
+    // "💡 Web dev tip" callouts across the manual link into it.
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'learn',
+        path: 'learn',
+        routeBasePath: 'learn',
+        sidebarPath: './sidebarsLearn.js',
+        editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
+      },
+    ],
     // API Reference — the framework's public PHP functions + hooks, GENERATED from the
     // source (scripts/extract-php-api.php → scripts/gen-php-api.mjs). Its own instance so
     // it stays a distinct "Reference" section, separate from the how-to Manual.
@@ -372,6 +388,13 @@ const config = {
             docsPluginId: 'blocks',
             position: 'left',
             label: 'Blocks',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'learnSidebar',
+            docsPluginId: 'learn',
+            position: 'left',
+            label: 'Learn',
           },
           {
             type: 'docSidebar',

@@ -7,6 +7,8 @@ sidebar_position: 38
 
 A short piece of text styled with a typographic effect — marker highlight, gradient fill, underline, outline, glow or a drop-cap. Tabs: **Content**, **Design**, **Styling**, **Animations**, **Advanced**.
 
+A *drop-cap* is the oversized first letter that begins a paragraph, like in an old storybook. These effects are for **emphasis** — a word or two in a heading — so use them sparingly; if everything is highlighted, nothing stands out.
+
 <img src="/img/shortcodes/highlight-text-backend.png" alt="Highlight Text on the Page Builder canvas" width="936" />
 
 ## Content

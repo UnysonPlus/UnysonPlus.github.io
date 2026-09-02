@@ -6,8 +6,7 @@ sidebar_custom_props: { icon: '/img/shortcode-icons/call-to-action.svg' }
 
 # Call To Action
 
-A title + content + button block to drive an action. Tabs: **Content**, **Styling**,
-**Animations**, **Advanced**.
+A **call to action** (CTA) is the one thing you want a visitor to do next — *Buy now*, *Sign up*, *Get a quote*. This block pairs a short title and message with a prominent button so that action stands out. Give each page one clear primary CTA: too many competing buttons and people choose none. Tabs: **Content**, **Styling**, **Animations**, **Advanced**.
 
 <img src="/img/shortcodes/call-to-action-backend.png" alt="Call To Action on the Page Builder canvas" width="936" />
 

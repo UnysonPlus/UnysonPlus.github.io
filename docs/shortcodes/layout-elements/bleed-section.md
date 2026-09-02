@@ -7,6 +7,8 @@ sidebar_position: 60
 
 A split section with content on one side and a full-bleed image on the other, extending to the viewport edge and stacking on mobile. Its options live across the **Layout**, **Styling**, **Animations**, and **Advanced** tabs.
 
+*"Full-bleed"* is a print term for artwork that runs right off the edge of the page. On the web it means an image (or colour) that touches the screen edge with no surrounding margin — a bold, immersive look, versus the usual content that sits inside the page's padding.
+
 ## Layout
 
 - **Bleed Image** — the image that fills one half and bleeds to the viewport edge. Use a high-resolution image; it's cropped to fill (cover), so edge detail may be trimmed depending on the ratio. Picked from the Media Library it's served responsively (`srcset`).

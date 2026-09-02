@@ -1,44 +1,38 @@
 ---
 title: Before / After
+description: The Unyson+ Before / After block — a draggable slider that reveals one image over another, authored in the block editor and rendered by the before-after element.
 ---
 
 # Before / After
 
-An image comparison slider — drag, hover or click to reveal the second image. Useful for retouching, renovations and product comparisons.
+A **draggable comparison slider** that wipes between two images — the classic "before and after" for edits, renovations or product states. Drag the handle to reveal more of either side. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Before / After element](/shortcodes/media-elements/before-after) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`before_after`](/shortcodes/media-elements/before-after) element — the same PHP that runs in the page builder, so
-the front end is identical either way.
+<img src="/img/blocks/before-after/front.png" alt="The Before / After block — a slider handle between two images" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `before_image` | The base image |
-| `after_image` | The revealed image — use the same dimensions |
-| `type/comparison/design` | Handle and label look |
-| `type/comparison/orientation` | Split horizontally or vertically |
-| `type/comparison/interaction` | Drag, hover or click to reveal |
-| `type/comparison/handle_size` | Size of the drag handle |
-| `type/comparison/show_labels` | Show the Before / After labels |
-| `type/comparison/auto_intro` | Sweep the handle once on first view |
+| Before / After image (`before_image`, `after_image`) | The two pictures to compare. |
+| Ratio (`ratio`) + Max width (`max_width`) | The aspect ratio of the frame and its maximum width. |
+| Labels (`label_text`, `label_bg`) | Show "Before" / "After" tags on the images. |
+| Handle (`handle_color`, `handle_icon_color`, `divider_color`) | The look of the drag handle and divider line. |
+| Rounded / Borders (`rounded`, `show_borders`) | Corner radius and an optional border. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[Both images are required]
-Until a Before and an After image are set, the block shows a placeholder rather than a broken
-slider.
-:::
+## Sample content
 
-:::caution[The preview is inert, and must be]
-Left interactive, the slider's own pointer handlers would swallow the click that selects the block,
-and dragging the handle would become a Gutenberg **block** drag — the element and the editor
-fighting over the same gesture. The slider works normally on the front end.
-:::
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above is:
 
-:::note[Option paths look different here]
-This block's options are nested (`type/comparison/design`) rather than flat. That mirrors how the
-element stores them; the block reads and writes the same paths, so values are shared with the page
-builder either way.
-:::
+```html
+<!-- wp:unysonplus/before-after {"upOptions":{"before_image":{...},"after_image":{...},"label_text":"yes"}} /-->
+```
+
+Each image value is a media reference (`{"attachment_id":123,"url":"…"}`), so use the block's image pickers rather than typing them by hand.
+
+## The before-after element
+
+The block and the page builder's [Before / After element](/shortcodes/media-elements/before-after) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

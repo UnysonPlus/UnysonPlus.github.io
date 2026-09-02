@@ -1,58 +1,39 @@
 ---
 title: Animated Heading
+description: The Unyson+ Animated Heading block — a headline whose keyword rotates through a list with a typewriter or slide animation, authored in the block editor and rendered by the animated-heading element.
 ---
 
 # Animated Heading
 
-A heading with static text and a run of words that rotate through a list — typewriter, slide, flip
-and a dozen more. The usual way to get this in Gutenberg is a plugin that ships its own typing
-library; here it is the element you already have.
+A headline with one word that **animates through a list** — "Build *websites* / *landing pages* / *blogs*" — using a typewriter, slide or fade effect, with an optional blinking caret. Great for a hero that needs to say several things at once. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Animated Heading element](/shortcodes/content-elements/animated-heading) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`animated_heading`](/shortcodes/content-elements/animated-heading)
-element — the same PHP that runs in the page builder, so the front end is identical either way.
+<img src="/img/blocks/animated-heading/front.png" alt="The Animated Heading block — 'Build websites — fast.' with a rotating keyword" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
+
 
 | Option | What it does |
 | --- | --- |
-| `before_text` | Static text before the rotating words |
-| `words` | The rotating words — **one per line** |
-| `after_text` | Static text after the rotating words |
-| `tag` | Which heading level it renders as (`h1`…`h6`, `p`, `div`) |
-| `anim` | The rotation animation |
-| `speed` | How fast it cycles |
-| `highlight` | How the rotating word is set apart — accent colour, underline, marker |
-| `loop` | Rotate forever, or stop after one pass |
-| `pause_hover` | Pause the rotation while the pointer is over it |
-| `randomize` | Shuffle the word order rather than cycling in sequence |
-| `caret_show` | Show the typing caret |
-| `caret_style` | Caret shape — bar, block, underscore |
-| `caret_color` | Caret colour (blank inherits the text colour) |
-| `align` | Horizontal alignment |
-| `text_color` | Text colour |
-| `accent_color` | Highlight colour for the rotating word |
-| `font_size_preset` | Text size preset |
+| Before / Words / After (`before_text`, `words`, `after_text`) | The static lead-in, the list of rotating words (one per line), and the static tail. |
+| Tag (`tag`) + Alignment (`align`) | The wrapping element — a heading level or paragraph — and left / center / right. |
+| Animation (`anim`, `speed`) | The effect — typewriter, slide, fade — and its speed. |
+| Loop / Pause on hover / Randomize (`loop`, `pause_hover`, `randomize`) | Whether the list repeats, pauses on hover, and shuffles order. |
+| Highlight (`highlight`, `accent_color`) | Emphasise the rotating word with an accent colour. |
+| Caret (`caret_show`, `caret_style`, `caret_color`) | Show a blinking cursor after the word, and its look. |
+| Colours (`text_color`) + Font size (`font_size_preset`) | Base text colour and a preset size. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[Margin and padding come from Gutenberg, not the element]
-The block declares core spacing support, so margin and padding are edited by Gutenberg's own controls
-at the top of the sidebar. The element's own `spacing` option is deliberately **not** exposed, because
-two controls for one thing in one sidebar — writing to two different places — is how a heading ends up
-with spacing nobody can find the source of.
-:::
+## Sample content
 
-:::note[The preview does not rotate, on purpose]
-The canvas shows the first word, held. A headline that retyped itself every few seconds would move
-while you were reading the sidebar, and because every option change re-renders the preview, the
-animation would restart from the beginning each time — which reads as the editor stuttering rather
-than as a preview of anything. Visitors see the full rotation.
-:::
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above is:
 
-:::caution[Do not stack a Text Effect on top of it]
-This element runs its own rotation and does not need the Animation Engine. If you also apply an
-Animation Engine **Text Effect** to it, the two animate the same characters and fight. Use one or the
-other: this block for a rotating headline, a Text Effect for animating any other text.
-:::
+```html
+<!-- wp:unysonplus/animated-heading {"upOptions":{"before_text":"Build ","words":"websites\nlanding pages\nblogs","after_text":" — fast.","align":"center"}} /-->
+```
+
+## The animated-heading element
+
+The block and the page builder's [Animated Heading element](/shortcodes/content-elements/animated-heading) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

@@ -1,52 +1,40 @@
 ---
 title: Business Info
+description: The Unyson+ Business Info block — Opening hours, address and contact details, with a live open/closed status, authored in the block editor and rendered by the business-info element.
 ---
 
 # Business Info
 
-Opening hours, address and contact details, with a live open/closed status — for a local business page, a footer or a contact section.
+Opening hours, address and contact details, with a live open/closed status. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [business-info element](/shortcodes/components/business-info) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`business_info`](/shortcodes/components/business-info) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/business-info/front.png" alt="The Business Info block — a card of hours, address and contact details" width="1210" />
 
-## What the sidebar exposes
+## Configure it
+
+Select the block and open the **Settings** (block) tab. The whole sidebar is generated from the element’s option schema, so it stays in step with the page builder.
+
+<img src="/img/blocks/business-info/inspector.png" alt="The Business Info block settings sidebar" width="300" />
+
+## Options
 
 | Option | What it does |
 | --- | --- |
-| `biz_name` | The business name |
-| `hours` | Opening hours, one row per day |
-| `show_status` | Show an Open now / Closed badge |
-| `time_format` | 12- or 24-hour times |
-| `address` | Street address |
-| `phone` | Phone number |
-| `email` | Email address |
-| `website` | Website URL |
-| `map_link` | A link to the location on a map |
-| `design` | Card design preset |
-| `highlight_today` | Emphasise the current day's row |
-| `accent_color` | Accent colour |
-| `card_bg` | Card background |
-| `text_color` | Text colour |
+| Name (`biz_name`) | The business name. |
+| Hours (`hours`) | Per-day opening times (or closed). Defaults to a Mon–Sun set you edit. |
+| Live status (`show_status`, `time_format`, `highlight_today`) | Show a live **Open / Closed** badge from the hours, in 12- or 24-hour time, and highlight today’s row. |
+| Contact (`address`, `phone`, `email`, `website`, `map_link`) | The address, phone, email, site and a map link. |
+| Design (`design`) + Colours (`accent_color`, `card_bg`, `text_color`) | The card look and its colours. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site’s design system from `theme.json`.
 
-:::note[`hours` is a repeater]
-It is an [`addable-popup`](/options/option-types/addable-popup): items expand in place in the
-block sidebar rather than opening a modal, and store exactly the value the page builder stores.
-:::
+## Sample content
 
-:::caution[This block's output changes on its own]
-`show_status` and `highlight_today` are computed from the **current time**, in the site's timezone,
-every time the page renders. It is the one element in the library whose output can differ between two
-loads that nobody edited in between.
+A block stores only what you change as one `upOptions` object; the element’s declared defaults fill in the rest at render time. The demo above is:
 
-Worth knowing before wondering why two screenshots disagree — and worth checking that the site's
-timezone is actually set, since the status is only as right as that.
-:::
+```html
+<!-- wp:unysonplus/business-info {"upOptions":{"biz_name":"UnysonPlus Studio","address":"123 Market Street, San Francisco, CA","phone":"+1 (555) 010-0100","email":"hello@example.com","website":"https://example.com"}} /-->
+```
 
-:::note[The preview's status is real, just not of any particular time]
-The canvas shows Open or Closed as of the moment it rendered. It is not a fixed sample value, and it
-is not the state a visitor will necessarily see.
-:::
+## The business-info element
+
+The block and the page builder’s [Business Info element](/shortcodes/components/business-info) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

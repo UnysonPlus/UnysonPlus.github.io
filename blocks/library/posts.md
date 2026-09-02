@@ -1,90 +1,41 @@
 ---
 title: Posts
+description: The Unyson+ Posts block — A query-driven grid or list of posts, with filters, pagination and card layouts, authored in the block editor and rendered by the posts element.
 ---
 
 # Posts
 
-A query-driven grid or list of posts — a blog index, a related-articles strip, a filtered archive. Core has Query Loop; this is the one with card layouts, live filters and image treatments.
+A query-driven grid or list of posts, with filters, pagination and card layouts. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [posts element](/shortcodes/components/posts) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`posts`](/shortcodes/components/posts) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/posts/front.png" alt="The Posts block — a three-column grid of post cards" width="1210" />
 
-## What the sidebar exposes
+## Configure it
+
+Select the block and open the **Settings** (block) tab. The whole sidebar is generated from the element’s option schema, so it stays in step with the page builder.
+
+<img src="/img/blocks/posts/inspector.png" alt="The Posts block settings sidebar" width="300" />
+
+## Options
 
 | Option | What it does |
 | --- | --- |
-| `use_current_query` | Use the page's own query instead of building one |
-| `post_type` | Which post type |
-| `taxonomy_filter` | Restrict by taxonomy terms |
-| `taxonomy_relation` | AND or OR across those terms |
-| `include_ids` | Only these posts |
-| `exclude_ids` | Never these posts |
-| `author_ids` | Restrict by author |
-| `date_range` | Restrict by date |
-| `posts_per_page` | How many to show |
-| `offset` | Skip this many first |
-| `orderby` | Sort field |
-| `order` | Ascending or descending |
-| `exclude_current` | Leave out the post being viewed |
-| `sticky_handling` | What to do with sticky posts |
-| `design` | Layout family, and its settings |
-| `card` | Card style, and its settings |
-| `card_rows` | Which rows a card shows, and in what order |
-| `box_style` | Card box / border preset |
-| `image_style` | Image treatment preset |
-| `image_size` | Which registered image size |
-| `image_ratio` | Crop ratio |
-| `card_padding` | Card padding |
-| `text_align` | Text alignment |
-| `mobile_layout_override` | A different layout on small screens |
-| `title_tag` | Heading level for card titles |
-| `cat_position` | Where the category chip sits |
-| `cat_max` | How many categories to show |
-| `meta_items` | Which meta to print — date, author, comments |
-| `meta_layout` | How that meta is arranged |
-| `date_format` | Date format |
-| `excerpt_source` | Where the excerpt comes from |
-| `excerpt_length` | Excerpt length |
-| `excerpt_suffix` | What follows a trimmed excerpt |
-| `readmore` | Read-more link style, and its settings |
-| `readmore_text` | Read-more text |
-| `pagination` | Pagination style, and its settings |
-| `live_filters` | Show filter controls to visitors |
-| `filters_position` | Where those filters sit |
-| `no_results_text` | What to say when nothing matches |
-| `text_color` | Body text colour |
-| `bg_color` | Background |
-| `title_color` | Title colour |
-| `excerpt_color` | Excerpt colour |
-| `meta_color` | Meta colour |
-| `accent_color` | Accent colour |
-| `font_size_preset` | Text size preset |
+| Query (`post_type`, `posts_per_page`, `orderby`, `order`) | Which post type, how many, and in what order. Or reuse the page’s main query with `use_current_query`. |
+| Filter (`taxonomy_filter`, `include_ids`, `exclude_ids`, `author_ids`, `date_range`) | Narrow the query by category/tag, specific posts, author or date. |
+| Layout (`design`, `card`, `card_rows`, `image_ratio`, `image_style`, `text_align`) | Grid or list, the card style, columns, and the image treatment. |
+| Card content (`meta_items`, `title_tag`, `cat_position`, `excerpt_source`, `excerpt_length`, `readmore`) | What each card shows — meta, category, excerpt and a read-more link. |
+| Pagination (`pagination`) + Live filters (`live_filters`, `filters_position`) | Numbered / load-more paging, and front-end category filter buttons. |
+| Colours (`title_color`, `excerpt_color`, `meta_color`, `accent_color`) + Font size | Per-part colour pickers and a preset size. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site’s design system from `theme.json`.
 
-:::note[The query runs for real in the editor]
-The canvas shows actual posts from this site, not a mock. That is the whole reason this block is
-worth having over a placeholder — you can see whether the query returns what you meant.
+## Sample content
 
-What it does **not** do: pagination does not paginate, and live filters do not filter. Both would
-swap the preview's contents for a different set of posts, leaving you unsure which query you were
-looking at.
-:::
+A block stores only what you change as one `upOptions` object; the element’s declared defaults fill in the rest at render time. The demo above is:
 
-:::note[`meta_items` is a checkbox list]
-It is a [`checkboxes`](/options/option-types/checkboxes) option — tick the meta you want. Only
-ticked entries are stored.
-:::
+```html
+<!-- wp:unysonplus/posts {"upOptions":{}} /-->
+```
 
-:::note[Caching stays in the page builder]
-`cache_output` and `cache_hours` are not exposed here. A cached block previewing a stale query in the
-editor is a confusing first encounter with caching, and the setting is better made once, deliberately,
-where the whole page is in view.
-:::
+## The posts element
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+The block and the page builder’s [Posts element](/shortcodes/components/posts) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

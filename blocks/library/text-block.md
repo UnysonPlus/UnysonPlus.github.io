@@ -1,55 +1,40 @@
 ---
 title: Text Block
+description: The Unyson+ Text Block — a rich paragraph of body copy with drop cap, lead style, multi-column and colour controls, authored in the block editor and rendered by the text-block element.
 ---
 
 # Text Block
 
-Rich text with typographic controls core does not have — columns, drop caps, a lead paragraph, measure and balance.
+A rich block of body copy — a paragraph or several — with typographic controls the core Paragraph block doesn't have: a **drop cap**, a **lead** style, multiple **columns**, measured line length, and design-system colours. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Text Block element](/shortcodes/content-elements/text-block) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`text_block`](/shortcodes/content-elements/text-block) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/text-block/front.png" alt="The Text Block — a paragraph with a drop cap and lead styling" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
+
 
 | Option | What it does |
 | --- | --- |
-| `text` | The content |
-| `text_align` | Alignment |
-| `max_width` | Measure — how wide a line is allowed to run |
-| `columns` | Split into columns |
-| `balance` | Balance the last lines of headings and short paragraphs |
-| `line_height` | Line height |
-| `para_spacing` | Space between paragraphs |
-| `lead` | Style the first paragraph as a lead |
-| `link_underline` | How links are underlined |
-| `dropcap` | A drop cap, and how it is styled |
-| `text_color` | Text colour |
-| `link_color` | Link colour |
-| `bg_color` | Background |
-| `font_size_preset` | Text size preset |
+| Text (`text`) | The body copy — a rich-text field, so links, bold and italics are allowed. |
+| Alignment (`text_align`) + Max width (`max_width`) | Left / center / right / justify, and an optional measure so long lines stay readable. |
+| Columns (`columns`) + Balance (`balance`) | Flow the text into 1–4 newspaper-style columns, optionally balanced to even heights. |
+| Line height (`line_height`) + Paragraph spacing (`para_spacing`) | Vertical rhythm — space within and between paragraphs. |
+| Lead (`lead`) | Render the copy at a larger "intro paragraph" size. |
+| Drop cap (`dropcap`) | Enlarge the first letter as a decorative drop cap. |
+| Link underline (`link_underline`) | Whether links inside the text are underlined. |
+| Colours (`text_color`, `link_color`, `bg_color`) + Font size (`font_size_preset`) | Text, link and background colours, and a preset size. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::caution[The text is edited in the sidebar, not in the canvas]
-This is the block where the shared-renderer trade-off is felt most directly. The canvas preview is
-server-rendered markup, not an editable surface, so writing happens in the sidebar's content field
-and the canvas shows the result.
+## Sample content
 
-That is a real cost, and the honest advice is: **for ordinary prose, use core's Paragraph block.** It
-edits in place and it is what the block editor is best at.
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above is:
 
-This element earns its place when the typographic options are the point — a two-column body, a drop
-cap, a controlled measure, a lead paragraph. Core has none of those.
-:::
+```html
+<!-- wp:unysonplus/text-block {"upOptions":{"text":"<p>UnysonPlus is a free WordPress framework — a drag-and-drop page builder, block-editor support and 100+ content elements, with no pro tier.</p>","dropcap":"yes","lead":"yes"}} /-->
+```
 
-:::note[`max_width` and `dropcap` are pickers]
-Both are [`multi-picker`](/options/option-types/multi-picker)s: a measure can be a preset or a
-custom value, and a drop cap has its own settings once switched on. Only the chosen branch is saved.
-:::
+## The text-block element
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+The block and the page builder's [Text Block element](/shortcodes/content-elements/text-block) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

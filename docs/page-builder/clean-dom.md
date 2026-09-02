@@ -15,7 +15,7 @@ This page collects the rules that keep it that way. They matter both when you **
 (authoring content) and when you **build** an element (writing its `view.php`).
 
 :::tip[💡 Web dev tip: fewer wrappers make a better page]
-Every extra nested `<div>` is more for the browser to lay out, more for a screen reader to wade through, and more CSS to keep straight — "div soup" is slow and hard to maintain. Favour semantic elements and the least nesting that does the job. A clean DOM loads faster, reads better, and is far easier to style and change later.
+Every extra nested `<div>` is more for the browser to lay out, more for a screen reader to wade through, and more CSS to keep straight — "div soup" is slow and hard to maintain. Favour semantic elements and the least nesting that does the job. A clean DOM loads faster, reads better, and is far easier to style and change later. · [Web Dev Basics: Performance](/learn/performance)
 :::
 
 ## Authoring rule: no classes on `<p>` / `<li>` inside the WYSIWYG

@@ -10,7 +10,7 @@ A standalone image with optional click-through link and explicit width/height si
 <img src="/img/shortcodes/media-image-backend.png" alt="Image on the Page Builder canvas" width="936" />
 
 :::tip[💡 Web dev tip: size images to stop "layout shift"]
-Give every image its real width and height (or an aspect ratio) so the browser reserves the space **before** it loads — otherwise text jumps around as images pop in, which annoys readers and hurts your Core Web Vitals (CLS) score. UnysonPlus sets these and lazy-loads off-screen images. [MDN: the img element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)
+Give every image its real width and height (or an aspect ratio) so the browser reserves the space **before** it loads — otherwise text jumps around as images pop in, which annoys readers and hurts your Core Web Vitals (CLS) score. UnysonPlus sets these and lazy-loads off-screen images. [MDN: the img element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) · [Web Dev Basics: Performance](/learn/performance)
 :::
 
 ## Content

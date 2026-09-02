@@ -11,7 +11,7 @@ A notification / alert box. Tabs: **Content**, **Styling**, **Animations**, **Ad
 <img src="/img/shortcodes/notification-backend.png" alt="Notification on the Page Builder canvas" width="936" />
 
 :::tip[💡 Web dev tip: don't rely on colour alone]
-A green or red bar says "success" or "error" to most people — but not to colour-blind users or screen readers. Always pair colour with **text or an icon** that states the meaning. For a message that appears dynamically, a live region (`role="status"` for info, `role="alert"` for errors) makes assistive tech announce it. [MDN: ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions)
+A green or red bar says "success" or "error" to most people — but not to colour-blind users or screen readers. Always pair colour with **text or an icon** that states the meaning. For a message that appears dynamically, a live region (`role="status"` for info, `role="alert"` for errors) makes assistive tech announce it. [MDN: ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) · [Web Dev Basics: Accessibility](/learn/accessibility)
 :::
 
 ## Content

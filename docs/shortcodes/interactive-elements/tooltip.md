@@ -12,7 +12,7 @@ positions and themes. Tabs: **Content**, **Design**, **Styling**, **Animations**
 <img src="/img/shortcodes/tooltip-backend.png" alt="Tooltip on the Page Builder canvas" width="936" />
 
 :::tip[💡 Web dev tip: tooltips only supplement]
-Never put essential information only in a tooltip — many people never hover, and touch users can't. Use it for a helpful extra, make it appear on **keyboard focus** as well as hover, and let it stay on screen long enough to read. [W3C: tooltip pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/)
+Never put essential information only in a tooltip — many people never hover, and touch users can't. Use it for a helpful extra, make it appear on **keyboard focus** as well as hover, and let it stay on screen long enough to read. [W3C: tooltip pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/) · [Web Dev Basics: Accessibility](/learn/accessibility)
 :::
 
 ## Content

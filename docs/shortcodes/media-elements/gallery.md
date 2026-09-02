@@ -12,7 +12,7 @@ A flexible image gallery with seven layout designs, a built-in lightbox and capt
 A *lightbox* is the overlay that opens an image at full size, dimming the page behind it, so visitors can look closely and step through photos without leaving the page.
 
 :::tip[💡 Web dev tip: give images good alt text]
-Write descriptive **alt text** for every image that carries meaning — it's what screen-reader users hear, and what shows if the image fails to load. Purely decorative images should use empty alt (`alt=""`) so assistive tech skips them. Also keep source files reasonably sized: the browser lazy-loads off-screen images and picks a fitting size from `srcset`, but it can't rescue a 4000px photo you never needed — a lighter page loads faster and ranks better. [MDN: image alt](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt) · [MDN: responsive images](https://developer.mozilla.org/en-US/docs/Web/HTML/Responsive_images)
+Write descriptive **alt text** for every image that carries meaning — it's what screen-reader users hear, and what shows if the image fails to load. Purely decorative images should use empty alt (`alt=""`) so assistive tech skips them. Also keep source files reasonably sized: the browser lazy-loads off-screen images and picks a fitting size from `srcset`, but it can't rescue a 4000px photo you never needed — a lighter page loads faster and ranks better. [MDN: image alt](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt) · [MDN: responsive images](https://developer.mozilla.org/en-US/docs/Web/HTML/Responsive_images) · [Web Dev Basics: Accessibility](/learn/accessibility)
 :::
 
 ## Content

@@ -17,7 +17,7 @@ A column renders as an **outer `<div>`** (the grid column, carrying width / offs
 The **Animations** and **Advanced** tabs are shared, cross-shortcode controls and are covered on the [Common controls](/shortcodes/common-controls) page. Rows below are in the same order as the actual **Layout** and **Styling** tabs. Hover any cell for more detail.
 
 :::tip[💡 Web dev tip: design mobile-first and let columns wrap]
-Most visitors are on a phone, so design the narrow layout first, then add columns for wider screens. Use the responsive controls (which set CSS media queries) rather than fixed pixel widths, so columns **reflow** to a single column on mobile instead of overflowing. [MDN: media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/@media)
+Most visitors are on a phone, so design the narrow layout first, then add columns for wider screens. Use the responsive controls (which set CSS media queries) rather than fixed pixel widths, so columns **reflow** to a single column on mobile instead of overflowing. [MDN: media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/@media) · [Web Dev Basics: Responsive Layout](/learn/responsive)
 :::
 
 ## Layout

@@ -21,7 +21,7 @@ Activate it from **Unyson+ → Extensions**, then open its settings, which has a
 **JavaScript** tab.
 
 :::tip[💡 Web dev tip: fewer, smaller requests — but measure]
-Combining and minifying CSS/JS cuts the number and size of downloads, which speeds up loading — but always **measure** before and after with real tools, because aggressive combining can occasionally backfire. Pair it with browser caching and right-sized images for the biggest wins. See [Performance](/performance).
+Combining and minifying CSS/JS cuts the number and size of downloads, which speeds up loading — but always **measure** before and after with real tools, because aggressive combining can occasionally backfire. Pair it with browser caching and right-sized images for the biggest wins. See [Performance](/performance). · [Web Dev Basics: Performance](/learn/performance)
 :::
 
 ## How it discovers assets

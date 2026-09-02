@@ -10,7 +10,7 @@ Display testimonials in a carousel, grid, or single layout. Tabs: **Content**, *
 **Style**, **Carousel**, **Animations**, **Advanced**.
 
 :::tip[💡 Web dev tip: only mark up real reviews]
-Genuine testimonials can use Review or AggregateRating structured data to show star ratings in search — but only when they are real and visible on the page. Present each quote in a `<blockquote>` with a `<cite>` for the author. Inventing reviews or ratings for schema breaks Google's rules and can get a site penalised. [Google: review snippet](https://developers.google.com/search/docs/appearance/structured-data/review-snippet)
+Genuine testimonials can use Review or AggregateRating structured data to show star ratings in search — but only when they are real and visible on the page. Present each quote in a `<blockquote>` with a `<cite>` for the author. Inventing reviews or ratings for schema breaks Google's rules and can get a site penalised. [Google: review snippet](https://developers.google.com/search/docs/appearance/structured-data/review-snippet) · [Web Dev Basics: SEO Basics](/learn/seo)
 :::
 
 ## Content

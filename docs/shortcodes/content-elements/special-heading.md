@@ -19,7 +19,13 @@ The **Title Tag** option sets a real `<h1>`–`<h6>`, and those tags form your p
 
 <img src="/img/shortcodes/special-heading-content.png" alt="Special Heading options panel — Content tab" width="840" />
 
-Overline, Title, Subtitle, Title Tag (H1–H6 / span / p).
+The heading has three text parts, top to bottom:
+
+- **Overline** — a small line *above* the title, also called an *eyebrow* or *kicker*. Use it to label or categorise the section (e.g. a small "FEATURES" tag over a features heading) — it gives context at a glance without competing with the title.
+- **Title** — the main heading; the one line you want the reader to take away.
+- **Subtitle** — a supporting line *below* the title that expands on it or adds a short hook.
+
+**Title Tag** chooses which HTML element the title becomes: `H1`–`H6` for a real heading that joins the page outline, or `span` / `p` when the text is purely decorative and shouldn't affect the outline (see the heading tip above for how to pick the level).
 
 ## Layout
 

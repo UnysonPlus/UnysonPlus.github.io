@@ -3,86 +3,106 @@ title: "Page Builder Roadmap"
 slug: /page-builder/roadmap
 sidebar_position: 2
 sidebar_label: "Roadmap"
-description: "Where the Unyson+ Page Builder is heading — a simpler, modern layout model built on one primitive (the Div), while every page you've already built keeps working."
+description: "Where the Unyson+ Page Builder is heading — one simple layout model built on the Div (Flex, Grid, Block), with columns done as CSS Grid, the familiar fractions kept as presets, and the classic Bootstrap grid still supported."
+keywords:
+  - unysonplus page builder roadmap
+  - css grid page builder
+  - flexbox page builder
+  - modern wordpress layout builder
+  - bootstrap to css grid migration
 ---
 
 # Page Builder Roadmap
 
-This page is a living roadmap for the Page Builder's layout system. It's here so you can **see
-what's coming and why**. Nothing below changes how your existing pages work — backward
-compatibility is a hard rule (see [Bootstrap stays](#bootstrap-stays)).
+This is a living roadmap for the Page Builder's **layout system**. It's here so you can see what's
+coming and why. Backward compatibility is a hard rule — see
+[Your existing pages](#your-existing-pages) — so nothing here breaks what you've already built.
 
 :::note[Status legend]
 🟢 **Shipped** &nbsp;·&nbsp; 🟡 **In progress** &nbsp;·&nbsp; ⚪ **Planned** &nbsp;·&nbsp; 🔵 **Exploring**
 :::
 
-## The direction: one simple layout primitive
+## The direction: one simple layout model
 
-Today the builder has **two** ways to lay things out side by side:
+The layout system is moving from the classic **Section → Row → Column** (Bootstrap) grid to **one
+primitive — the Div** — a container you set to **Flex**, **Grid**, or **Block**. That's the whole
+model. It maps directly to real, modern HTML/CSS, and it means there's *one* way to lay out a page
+instead of two.
 
-- the classic **Section → Row → Column** grid (you pick a column width — 1/2, 1/3, …), and
-- the newer **Div** (a flexbox/grid container).
+```
+Section    → a full-width band (a <section>)        ← start here
+  Grid     → columns inside it                       ← "I want columns"
+  Flexbox  → a row or a stack inside it              ← "I want things in a row"
+      ↳ your content
+```
 
-Two systems that both "do columns" is confusing — especially for new users. The direction is to
-make the **Div the one layout primitive** for new work, and let the classic grid live on as a
-fully-supported **legacy** option. The Div already does both modern layout modes:
+That structure is exactly how a developer writes it by hand — `<section><div class="grid">…</div></section>` —
+so the builder now teaches good structure instead of hiding it behind a grid framework. If you're
+new to this, the [Bootstrap columns → CSS Grid &amp; Flexbox](./bootstrap-columns-to-css-grid-flexbox)
+guide explains Flex vs Grid vs Block from scratch.
 
-- **Flex** — a one-dimensional row or stack (great for toolbars, button groups, cards that wrap).
-- **Grid** — a two-dimensional column layout (the modern way to do "columns").
+## What you'll see in the palette
 
-## How modern builders do columns (and what we're keeping)
+The **Layout** tab leads with the modern primitives; the classic Bootstrap elements move into a
+**Classic** group (still fully supported):
 
-You've probably noticed that newer builders stopped shipping a palette of fixed column
-structures. Instead of picking "1/3 + 1/3 + 1/3" up front, you:
+| Tile | Creates | For |
+|---|---|---|
+| **Section** | a modern Div, tagged `<section>`, with contained content | the root band of a page — where you start |
+| **Grid** | a Div set to `display: grid` | columns (a card grid, an even split, a hero) |
+| **Flexbox** | a Div set to `display: flex` | a one-dimensional row or stack that can wrap |
+| *Classic ▸* | Section (Bootstrap) · Row · Column | existing pages &amp; anyone who prefers the old grid |
 
-- **Elementor** → drop a **Flexbox/Grid Container**, set it to Grid, choose a column count.
-- **Webflow / Framer** → a **Grid** or **Stack**, size each child (fill / fixed / span).
-- **Gutenberg** → a **Group** block with a Flex or Grid layout.
+A beginner's instinct — *"click Section, it's the main content area"* — now lands on the **modern**
+primitive, not the legacy one. No one has to understand "flex" or "grid" to start a page; they
+discover Grid the moment they want columns.
 
-The common thread: **the container is the layout; you set "how many columns," and children fill
-the tracks** — no fraction math to learn. UnysonPlus is adopting that model with the Div's Grid
-mode, while keeping what makes us different: **clean vanilla-CSS output (no utility-class bloat),
-responsive by default, and the classic grid still available** for anyone who wants it.
+## Columns without the math (but the fractions stay)
 
-The plan for columns, kept deliberately straightforward:
+Modern builders dropped the palette of fixed column structures. Instead of picking "1/3 + 1/3 +
+1/3" up front, you set a **Grid** and say how many columns — children fill the tracks. But the
+fractions you know aren't going anywhere:
 
-- Drop a **Div**, choose **Columns (Grid)**, pick **how many** (2, 3, 4…). Equal, responsive
-  columns — done.
-- Need an uneven split? Set one child's **span** (e.g. 8 / 4) — the twelfths are still there when
-  you want them, just not required to get started.
-- **Auto** columns fill the remaining space (the grid equivalent of "flex: 1").
+- They live on as **Width presets** on a cell — `1/2, 1/3, 1/4, 2/3, 5/6…` are all still one click.
+- Under the hood a `1/3` cell becomes `grid-column: span 4`, a `2/3` cell becomes `span 8` — modern
+  CSS Grid instead of a Bootstrap `col-*` class.
+- An **uneven split** like 1/3 + 2/3 is a Grid with `grid-template-columns: 1fr 2fr`, or two cells
+  at span 4 and span 8.
+- **Auto** columns fill the remaining space (the grid equivalent of `flex: 1`).
+
+So the *feel* is the same — familiar fractions — while the *output* is clean, responsive CSS Grid.
 
 ## What's coming
 
 | Phase | What | Status |
 |---|---|---|
-| Converter → flex layout | The **Site Converter** now rebuilds a source's content rows as flex **Div** rows instead of Bootstrap columns (sections/containers unchanged). | 🟡 In progress |
-| Div = default wrapper | Dropping an element on an **empty canvas** wraps it in a **Div** (not Section → Column). Its HTML tag is set by context — `section` at the root, `div` when nested. | ⚪ Planned |
-| Columns as Grid | Drop a Column into a Div and it becomes a **Grid** — the Div flips to `display:grid` and the column becomes a grid cell (`grid-column: span N`). "How many columns" replaces fraction-picking. | ⚪ Planned |
-| Content width on the Div | A **Content Width** option so a full-width `section` Div can centre its content to a max-width — no extra wrapper, no accidental full-bleed. | ⚪ Planned |
-| Live Editor parity | Every new behaviour works identically in the **backend builder** and the front-end **Live Page Editor**. | ⚪ Planned |
-| Uneven / advanced grids | Per-child span, `auto-fit` responsive grids, and gap controls surfaced simply. | 🔵 Exploring |
+| Content Width on the Div | A container option so a full-width `section` Div centres its content to a max-width (no accidental full-bleed). | 🟡 In progress |
+| Converter → flex/grid | The **Site Converter** rebuilds a source's content rows as flex/grid **Div** rows instead of Bootstrap columns. | 🟡 In progress |
+| Div = default wrapper | Dropping an element on an empty canvas wraps it in a **Div** (tagged `section` at the root, `div` when nested) — not Section → Column. | ⚪ Planned |
+| Modern palette | **Section** (modern Div) / **Grid** / **Flexbox** lead the Layout tab; Bootstrap moves to **Classic**. | ⚪ Planned |
+| Columns as Grid | Drop cells into a Grid Div; fractions become grid spans (`1/3` → `span 4`). | ⚪ Planned |
+| Convert to Grid | An opt-in action to modernise an existing Bootstrap row into a Grid Div — using the same translation the converter uses. | ⚪ Planned |
+| Live Editor parity | Every new behaviour works identically in the backend builder and the front-end **Live Page Editor**. | ⚪ Planned |
 
-## Bootstrap stays — nothing you built breaks {#bootstrap-stays}
+## Your existing pages {#your-existing-pages}
 
-This is not a migration you're forced into:
+This is an evolution, not a rip-out:
 
-- Every existing **Section / Row / Column** page keeps rendering and editing exactly as it does
-  today. The classic grid is **not** being removed.
-- The two models **coexist**. New pages lead with the Div; older pages stay classic.
-- A **"Convert to Grid Div"** action is planned for when you *want* to modernise a classic row —
-  opt-in, never automatic.
-- Column widths still work the way [Column widths &amp; the grid](./column-widths.md) describes;
-  inside a Div they simply render as grid spans instead of Bootstrap grid classes.
+- Every existing **Section / Row / Column** page keeps rendering and editing — the Bootstrap
+  shortcodes are **not** removed, only demoted to the **Classic** palette group.
+- The two models **coexist**. New pages lead with the Div; old pages stay classic until you choose
+  otherwise.
+- A **"Convert to Grid"** action (planned) modernises a classic row on demand — opt-in, per row,
+  never automatic. It reuses the Site Converter's existing `col → grid span` translation.
+- Nothing forces a big-bang rewrite. Migrate a page when it suits you, or leave it.
 
-## Principles guiding this
+## Principles
 
-- **Straightforward for new users** — one obvious way to lay out a page, no dual systems in your face.
+- **Straightforward for newcomers** — one obvious way to lay out a page; no dual systems in your face.
 - **Nothing breaks** — backward compatibility is non-negotiable.
-- **Clean output** — semantic HTML and vanilla CSS, not a wall of utility classes.
-- **We can still be different** — adopt the good ideas from modern builders without copying their bloat.
+- **Clean output** — semantic HTML and vanilla CSS (grid spans, not a wall of utility classes).
+- **Teaches good structure** — the builder mirrors how a developer hand-writes a modern layout.
 
-:::info[Have an opinion?]
-This roadmap will shift as the work lands and as feedback comes in. The order and scope of the
-planned phases can change.
+:::info[This roadmap will move]
+Scope and order can change as the work lands and as feedback comes in.
 :::

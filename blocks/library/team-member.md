@@ -1,50 +1,38 @@
 ---
 title: Team Member
+description: The Unyson+ Team Member block — a photo, name, role and links card for a person, authored in the block editor and rendered by the team-member element.
 ---
 
 # Team Member
 
-A person card — photo, name, role, a short bio and links.
+A **person card** — a photo, name, job title and optional links (email, social, bio) — the building block of a "meet the team" or "about us" grid. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Team Member element](/shortcodes/components/team-member) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`team_member`](/shortcodes/components/team-member) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/team-member/front.png" alt="The Team Member block — a photo above a name and job title" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `image` | The photo |
-| `name` | Their name |
-| `job` | Role or job title |
-| `desc` | A short bio |
-| `card_rows` | Which rows appear on the card, and in what order |
-| `box_style` | Box / border preset |
-| `image_style` | Photo treatment preset |
-| `text_color` | Text colour |
-| `bg_color` | Card background |
-| `font_size_preset` | Text size preset |
+| Image (`image`) | The person's photo. |
+| Name (`name`) + Job (`job`) | Their name and role. |
+| Slots (`slots`) | Extra rows — a short bio, email, phone or social links. |
+| Card (`group_card`, `card_preview`) | The card layout and its live preview. |
+| Colours (`group_colors`) | Text and background colours for the card. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[`card_rows` is a repeater]
-It is an [`addable-popup`](/options/option-types/addable-popup): items expand in place in the
-block sidebar rather than opening a modal, and store exactly the value the page builder stores.
-:::
+## Sample content
 
-:::note[`card_rows` is a list, not a set of switches]
-It decides which rows appear **and in what order** — and order is part of the answer, which is why it
-is a repeater. Reordering it in the sidebar reorders the card.
-:::
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above is:
 
-:::note[The page builder's card preview is not repeated here]
-`card_preview` draws a small sample inside the page builder's options panel. The block already
-previews the real card in the canvas, so a second approximation would only be one more thing that can
-disagree.
-:::
+```html
+<!-- wp:unysonplus/team-member {"upOptions":{"image":{...},"name":"Jordan Avery","job":"Lead Developer"}} /-->
+```
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+The `image` value is a media reference (`{"attachment_id":123,"url":"…"}`), so use the block's image picker rather than typing it by hand.
+
+## The team-member element
+
+The block and the page builder's [Team Member element](/shortcodes/components/team-member) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

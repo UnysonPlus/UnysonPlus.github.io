@@ -1,78 +1,39 @@
 ---
 title: Image Box
+description: The Unyson+ Image Box block — an image, heading, text and button in one card, authored in the block editor and rendered by the image-box element.
 ---
 
 # Image Box
 
-An image with a heading, text and a button — the standard card, and probably the most-placed element in the library.
+An **image card** — a picture stacked over a heading, a short line of copy and an optional button — the workhorse of a feature grid or a "what you get" row. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Image Box element](/shortcodes/media-elements/image-box) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`image_box`](/shortcodes/media-elements/image-box) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/image-box/front.png" alt="The Image Box block — a photo above a heading, text and a button" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `image` | The image |
-| `image_alt` | Alt text for it |
-| `subtitle` | Small text above the title |
-| `title` | Heading |
-| `title_tag` | Which heading level the title uses |
-| `text` | Body copy |
-| `icon` | An optional icon |
-| `button_style` | Button design |
-| `button_label` | Button text |
-| `design_settings` | Card layout family, and the settings it needs |
-| `image_ratio` | Aspect ratio the image is cropped to |
-| `content_align` | Text alignment |
-| `image_size` | Which registered image size to request |
-| `hover_effect` | What happens on hover |
-| `transition_speed` | How fast that effect runs |
-| `link_behavior` | What is clickable — the button, the whole card, nothing |
-| `link_url` | Where it goes |
-| `link_target` | Open in a new tab |
-| `box_style` | Box / border preset |
-| `image_style` | Image treatment preset |
-| `icon_badge_preset` | Badge behind the icon |
-| `bg_color` | Card background |
-| `title_color` | Title colour |
-| `subtitle_color` | Subtitle colour |
-| `content_color` | Body colour |
-| `icon_color` | Icon colour |
-| `accent_color` | Accent colour |
-| `font_size_preset` | Text size preset |
+| Image (`image`) + Alt text (`image_alt`) | The picture, and its alt text — describe what it shows for screen readers and when it fails to load. |
+| Image ratio (`image_ratio`) | Crop the image to a consistent aspect ratio across a grid. |
+| Title (`title`, `title_tag`) + Subtitle (`subtitle`) | The heading, its HTML tag, and an eyebrow line. |
+| Text (`text`) | The supporting copy. |
+| Button (`button_label`, `button_style`) + Link (`link_url`, `link_target`, `link_behavior`) | An optional button, or make the whole card a link. |
+| Hover effect (`hover_effect`, `transition_speed`) | The image's motion on hover. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[`design_settings` is a picker that reveals its own options]
-It is a [`multi-picker`](/options/option-types/multi-picker): choosing an option reveals the
-fields belonging to that choice, and **only the chosen branch is saved** — switch away and back, and
-the fields you filled in the branch you left are blank.
-:::
+## Sample content
 
-:::note[`image_alt` is here, next to the image, on purpose]
-Alt text written at the moment the image is chosen gets written. Alt text one surface away stays
-empty — which is how a page ends up with a dozen images and no descriptions.
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above is:
 
-Leave it blank only when the image is genuinely decorative and the card's text already says
-everything.
-:::
+```html
+<!-- wp:unysonplus/image-box {"upOptions":{"image":{...},"title":"Fast by default","subtitle":"FREE","text":"<p>An image, a heading and a short line of copy in one card.</p>","button_label":"Learn more","link_url":"#"}} /-->
+```
 
-:::note[The preview shows the resting state, never the hover]
-`hover_effect` is the one thing the canvas cannot show you. The pointer has to land on the block to
-select it, so a live effect would mean the preview spent most of its life showing the hover rather
-than the page.
-:::
+The `image` value is a media reference (`{"attachment_id":123,"url":"…"}`), so use the block's image picker rather than typing it by hand.
 
-:::note[`image_style` uses the theme's Image Style presets]
-It is an [`image-style-picker`](/options/option-types/image-style-picker), and its swatches
-really are styled in the block sidebar — the preset CSS is loaded in wp-admin, so the tiles show the
-actual treatment rather than its name.
-:::
+## The image-box element
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+The block and the page builder's [Image Box element](/shortcodes/media-elements/image-box) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

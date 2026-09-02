@@ -1,57 +1,39 @@
 ---
-title: Image + Content
+title: Image Content
+description: The Unyson+ Image Content block — a two-column image-and-text row that stacks on mobile, authored in the block editor and rendered by the image-content element.
 ---
 
-# Image + Content
+# Image Content
 
-An image beside rich text, with a split ratio and full control over how the pair stacks on small screens.
+A **two-column row** — an image on one side, rich text on the other — that stacks cleanly on mobile. The go-to layout for an "about" section, a feature explainer, or any image-beside-copy pairing. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Image Content element](/shortcodes/media-elements/image-content) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`image_content`](/shortcodes/media-elements/image-content) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/image-content/front.png" alt="The Image Content block — an image beside a heading and paragraph" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `image` | The image |
-| `content` | The text |
-| `image_link` | Where the image links |
-| `image_link_target` | Open in a new tab |
-| `layout` | Image left or right |
-| `column_ratio` | How the two divide the row |
-| `vertical_align` | How they align vertically |
-| `content_align` | Text alignment |
-| `gap` | Space between them |
-| `mobile_order` | Which comes first once stacked |
-| `breakpoint` | The width at which they stack |
-| `stack_image_width` | Image width once stacked |
-| `stack_image_align` | Image alignment once stacked |
-| `image_fit` | How the image fills its box |
-| `image_ratio` | Crop ratio |
-| `image_radius` | Corner rounding |
-| `image_shadow` | Shadow depth |
-| `image_style` | Image treatment preset |
-| `content_max_width` | Maximum text measure |
-| `content_color` | Text colour |
-| `content_bg` | Text background |
+| Image (`image`) | The picture for the media column. |
+| Content (`content`) | The rich text for the other column. |
+| Layout (`layout`, `column_ratio`, `gap`) | Image left or right, the split between columns, and the gap. |
+| Vertical align (`vertical_align`) + Breakpoint (`breakpoint`) | How the columns line up, and the width at which they stack. |
+| Image styling (`image_ratio`, `image_fit`, `image_radius`, `image_shadow`, `image_style`) | Crop, fit, corners, shadow and a saved image style. |
+| Content styling (`content_align`, `content_bg`, `content_color`, `content_padding`, `content_max_width`) | Alignment, colours, padding and measure for the text side. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::caution[`mobile_order` is the setting people forget]
-When an image-left row stacks, the image lands **above** the text by default. For a row whose text
-introduces the image, that is the wrong order — and it is completely invisible at desktop width.
+## Sample content
 
-Set it deliberately, then check it narrow.
-:::
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above is:
 
-:::note[`breakpoint` and `mobile_order` cannot be judged in the canvas]
-They describe what happens at widths the canvas is not currently at. That is a limitation of any
-single-width view, not of this preview specifically — use a page preview and resize.
-:::
+```html
+<!-- wp:unysonplus/image-content {"upOptions":{"image":{...},"title":"Text beside an image","content":"<p>A two-column layout that stacks on mobile.</p>"}} /-->
+```
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+The `image` value is a media reference (`{"attachment_id":123,"url":"…"}`), so use the block's image picker rather than typing it by hand.
+
+## The image-content element
+
+The block and the page builder's [Image Content element](/shortcodes/media-elements/image-content) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

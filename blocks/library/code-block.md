@@ -1,46 +1,40 @@
 ---
 title: Code Block
+description: The Unyson+ Code Block block — A formatted code sample, or raw HTML rendered into the page, authored in the block editor and rendered by the code-block element.
 ---
 
 # Code Block
 
-A formatted code sample — or raw HTML rendered straight into the page.
+A formatted code sample, or raw HTML rendered into the page. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [code-block element](/shortcodes/content-elements/code-block) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`code_block`](/shortcodes/content-elements/code-block) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/code-block/front.png" alt="The Code Block block — a syntax-highlighted PHP snippet" width="1210" />
 
-## What the sidebar exposes
+## Configure it
+
+Select the block and open the **Settings** (block) tab. The whole sidebar is generated from the element’s option schema, so it stays in step with the page builder.
+
+<img src="/img/blocks/code-block/inspector.png" alt="The Code Block block settings sidebar" width="300" />
+
+## Options
 
 | Option | What it does |
 | --- | --- |
-| `code` | The code |
-| `render_as_code` | Show it as code, or execute it as markup |
-| `beautify` | Reformat it before display |
-| `code_language` | Which language to highlight as |
-| `text_color` | Text colour |
-| `bg_color` | Background |
-| `font_size_preset` | Text size preset |
+| Code (`code`) | The code (or HTML) to show. |
+| Render as code (`render_as_code`) | On = a formatted, highlighted code block; off = the HTML is rendered live into the page. |
+| Language (`code_language`) | The syntax-highlighting language. |
+| Beautify (`beautify`) | Auto-format the code before display. |
+| Colours (`text_color`, `bg_color`) + Font size (`font_size_preset`) | Code colours and a preset size. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site’s design system from `theme.json`.
 
-:::caution[`render_as_code` decides whether the value is *shown* or *executed*]
-Off, the field's contents are rendered into the page as markup. That is the point of the element for
-embeds and one-off HTML — and it is worth knowing which way the switch is set before pasting anything
-into the field.
-:::
+## Sample content
 
-:::note[The sidebar field is a plain monospace textarea]
-The page builder gives this option a syntax-highlighting editor; the block sidebar does not. The
-reasoning is on the [`code-editor`](/options/option-types/code-editor) page — briefly, wrapping
-WordPress's CodeMirror in a React component risks an unrelated re-render wiping the buffer, and for a
-code field that means losing what you typed.
+A block stores only what you change as one `upOptions` object; the element’s declared defaults fill in the rest at render time. The demo above is:
 
-The rendered output in the canvas is identical either way.
-:::
+```html
+<!-- wp:unysonplus/code-block {"upOptions":{"code":"add_filter( 'fw_ext_backups_locations', function ( $locations ) {\n\treturn $locations;\n} );","code_language":"php","render_as_code":"yes"}} /-->
+```
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+## The code-block element
+
+The block and the page builder’s [Code Block element](/shortcodes/content-elements/code-block) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

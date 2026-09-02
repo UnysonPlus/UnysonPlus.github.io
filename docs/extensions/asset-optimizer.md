@@ -20,6 +20,10 @@ on your site and lets you pick exactly which ones to merge, so you stay in contr
 Activate it from **Unyson+ → Extensions**, then open its settings, which has a **CSS** tab and a
 **JavaScript** tab.
 
+:::tip[💡 Web dev tip: fewer, smaller requests — but measure]
+Combining and minifying CSS/JS cuts the number and size of downloads, which speeds up loading — but always **measure** before and after with real tools, because aggressive combining can occasionally backfire. Pair it with browser caching and right-sized images for the biggest wins. See [Performance](/performance).
+:::
+
 ## How it discovers assets
 
 To know what to combine, Asset Optimizer needs to see your front end render. It does a one-time

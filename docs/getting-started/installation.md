@@ -8,6 +8,10 @@ slug: /installation
 
 Unyson+ ships as a normal WordPress plugin plus an optional parent theme.
 
+:::tip[💡 Web dev tip: keep everything updated]
+Out-of-date software is the most common way sites get hacked, so keep **WordPress core, PHP, your theme and plugins** current — updates are mostly security and bug fixes. UnysonPlus updates itself from GitHub; for everything else, enable auto-updates or check regularly. [WordPress: updating](https://wordpress.org/documentation/article/updating-wordpress/)
+:::
+
 ## Requirements
 
 Unyson+ runs on any standard WordPress host. You'll need:

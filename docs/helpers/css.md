@@ -10,6 +10,10 @@ Useful css classes for admin side. To use these helpers, add `fw` to your style 
 wp_register_style(..., ..., array('fw'));
 ```
 
+:::tip[💡 Web dev tip: style with classes, and mind specificity]
+Style with **classes**, not IDs or inline styles — classes are reusable and keep specificity low, so your rules stay easy to override. When two rules conflict, the more *specific* selector wins (IDs beat classes beat elements); understanding that saves hours of "why won't this style apply". [MDN: specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity)
+:::
+
 ## General
 
 ### Alignment classes

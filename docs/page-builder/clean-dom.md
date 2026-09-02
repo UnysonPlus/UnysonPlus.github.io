@@ -14,6 +14,10 @@ wrapper or class is visible — keeping the output lean is part of the pitch, no
 This page collects the rules that keep it that way. They matter both when you **use** the builder
 (authoring content) and when you **build** an element (writing its `view.php`).
 
+:::tip[💡 Web dev tip: fewer wrappers make a better page]
+Every extra nested `<div>` is more for the browser to lay out, more for a screen reader to wade through, and more CSS to keep straight — "div soup" is slow and hard to maintain. Favour semantic elements and the least nesting that does the job. A clean DOM loads faster, reads better, and is far easier to style and change later.
+:::
+
 ## Authoring rule: no classes on `<p>` / `<li>` inside the WYSIWYG
 
 **Never add `class="…"` to `<p>`, `<li>`, or other tags inside a Text Block (WYSIWYG) editor.**

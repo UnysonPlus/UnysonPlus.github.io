@@ -24,6 +24,10 @@ Activate it under **Unyson+ → Extensions**, then find its settings under **Uny
 
 ---
 
+:::tip[💡 Web dev tip: the two SEO basics come first]
+Before any plugin trickery, get the fundamentals right: a **unique, descriptive `<title>` and meta description** on every page, and **one clear topic per page** written for humans. Search engines reward pages that genuinely answer a query; this extension just makes those signals easy to set. [Google: SEO starter guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
+:::
+
 ## How it decides what to output
 
 Every field resolves the same way. The first step that produces something wins.

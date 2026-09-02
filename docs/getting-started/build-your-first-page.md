@@ -12,6 +12,10 @@ Builder** extensions (Unyson+ → Extensions).
 By the end you'll have placed a section, added an element, configured it, and seen it render on the
 front end. Five minutes, no code.
 
+:::tip[💡 Web dev tip: structure before style]
+Before choosing colours, plan the **content and its outline** — the one main heading, the sections beneath it, the order they read in. Build that with real headings and sections, design it *mobile-first* (most visitors are on a phone), then style. A well-structured page is automatically more accessible and easier for search engines to understand. [MDN: HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+:::
+
 ## 1. Open a page in the builder
 
 Create or edit a page (Pages → Add New), then click the **Unyson Builder** button above the content

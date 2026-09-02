@@ -19,6 +19,10 @@ no code to register them.
 
 <img src="/img/custom-fields-page.png" alt="The Custom Fields admin page — Field Groups and the JSON Export / Import tools" width="1260" />
 
+:::tip[💡 Web dev tip: give data real structure]
+Instead of burying a price, date or rating inside the main text, store each as its own **typed field**. Structured data is reusable across templates, queryable and filterable, and far easier to keep consistent — the difference between a spreadsheet and a paragraph.
+:::
+
 ## Field types
 
 Each field in a group has a label, a **name** (its meta key), an optional instruction, and a type:

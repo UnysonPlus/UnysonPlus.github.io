@@ -10,6 +10,10 @@ Useful javascript functions and classes. The main helper is `fw`, an object cont
 wp_register_script(..., ..., array('fw'));
 ```
 
+:::tip[💡 Web dev tip: enhance with JS, don't depend on it]
+**Progressive enhancement** means the core content and links work as plain HTML, and JavaScript layers extra behaviour on top. That keeps a page usable if a script fails or is slow, and keeps content visible to search engines. Avoid render-blocking scripts, and never hide essential content behind JS that might not run. [MDN: progressive enhancement](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement)
+:::
+
 ## General
 
 General javaScript helpers:

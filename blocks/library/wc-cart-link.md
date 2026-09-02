@@ -1,40 +1,35 @@
 ---
 title: Cart Link
+description: The Unyson+ Cart Link WooCommerce block — A compact cart icon showing the current item count and total — for a header or menu bar, authored in the block editor and rendered by the WooCommerce integration.
 ---
 
 # Cart Link
 
-A link to the cart, with an item count and total — for a header.
+A compact cart icon showing the current item count and total — for a header or menu bar. It's part of the **[WooCommerce integration](/extensions/woocommerce)** — like every block in the library it's a second *authoring* surface, rendered server-side by the same code as the page builder, so the store output is identical either way.
 
-The block renders through the `wc_cart_link` element — the same PHP that runs in the page builder, so the front
-end is identical either way.
-
-:::caution[Needs the WooCommerce extension *and* the WooCommerce plugin]
-This element ships with the **WooCommerce** extension, which is inactive by default, and it needs the
-**WooCommerce plugin** installed and active.
-
-With either missing the block does not register at all — so it appears in the inserter exactly when it
-can actually work, rather than as an entry that renders nothing.
+:::note Requires WooCommerce
+This block renders live store data, so it only appears (and only works) when the **WooCommerce** plugin is active.
 :::
 
-## What the sidebar exposes
+<img src="/img/blocks/wc-cart-link/front.png" alt="The Cart Link block — a cart icon with an item count" width="62" />
+
+## Options
 
 | Option | What it does |
 | --- | --- |
-| `icon` | The cart icon |
-| `label` | Text beside it |
-| `show_count` | Show the item count |
-| `show_total` | Show the cart total |
-| `hide_when_empty` | Hide it when the cart is empty |
+| Icon + counter | A cart glyph with a live item-count badge. |
+| Total | Optionally show the running cart total beside the icon. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched**.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[The canvas shows YOUR cart]
-This element renders the cart of the session it is rendered for, so an empty cart in the editor is
-your cart being empty — not a placeholder.
-:::
+## Sample content
 
-:::note[`hide_when_empty` is a small judgement call]
-Hiding an empty cart is tidier; showing it tells a returning visitor their cart really is empty rather
-than missing.
-:::
+The demo above uses the block's defaults on a store with sample products:
+
+```html
+<!-- wp:unysonplus/wc-cart-link {"upOptions":{}} /-->
+```
+
+## WooCommerce elements
+
+These blocks mirror the page builder's WooCommerce elements. Their full option and behaviour reference lives on the [WooCommerce elements](/shortcodes/woocommerce-elements) page.

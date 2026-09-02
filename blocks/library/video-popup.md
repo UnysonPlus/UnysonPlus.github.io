@@ -1,44 +1,39 @@
 ---
 title: Video Popup
+description: The Unyson+ Video Popup block — A poster image with a play button that opens a video in a lightbox, authored in the block editor and rendered by the video-popup element.
 ---
 
 # Video Popup
 
-A poster image with a play button that opens the video in a lightbox — YouTube, Vimeo or a self-hosted file. Core has no equivalent block.
+A poster image with a play button that opens a video in a lightbox. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Video Popup element](/shortcodes/media-elements/video-popup) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`video_popup`](/shortcodes/media-elements/video-popup) element — the same PHP that runs in the page builder, so
-the front end is identical either way.
+<img src="/img/blocks/video-popup/front.png" alt="The Video Popup block — a poster image with a play button" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `poster` | The still image shown before play |
-| `video_url` | YouTube, Vimeo or direct file URL |
-| `play_label` | Optional text beside the play button |
-| `caption` | Accessible label for the play control |
-| `design` | Play button / overlay design preset |
-| `ratio` | Aspect ratio of the poster area |
-| `play_size` | Play button size |
-| `rounded` | Corner rounding |
-| `overlay` | Darkening overlay over the poster |
-| `hover_zoom` | Zoom the poster slightly on hover |
-| `accent_color` | Play button accent |
-| `icon_color` | Play icon colour |
-| `overlay_color` | Overlay colour |
-| `label_color` | Label text colour |
+| Poster (`poster`, `image`) | The still image shown before play, with an alt-describable subject. |
+| Video URL (`video_url`) | A YouTube, Vimeo or self-hosted video URL to open in the lightbox. |
+| Play button (`play_label`, `play_size`) | The accessible label and size of the play button. |
+| Ratio (`ratio`) + Rounded (`rounded`) | The aspect ratio of the poster and its corner radius. |
+| Overlay (`overlay`) + Hover zoom (`hover_zoom`) | A scrim over the poster, and a subtle zoom on hover. |
+| Caption (`caption`) | An optional caption beneath the video. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[Before it is configured]
-With neither a poster nor a video URL set, the preview shows the element's own prompt —
-*"Add a poster image and a video URL."* That message comes from the shortcode itself, so there is
-only one empty state to keep correct rather than a separate one in the editor.
-:::
+## Sample content
 
-:::note[The preview is inert]
-Clicking in the canvas selects the block rather than opening the lightbox. The video plays on the
-front end.
-:::
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above is:
+
+```html
+<!-- wp:unysonplus/video-popup {"upOptions":{"image":{...},"video_url":"https://www.youtube.com/watch?v=…"}} /-->
+```
+
+The `image`/`poster` value is a media reference (`{"attachment_id":123,"url":"…"}`), so use the block's image picker rather than typing it by hand.
+
+## The video popup element
+
+The block and the page builder's [Video Popup element](/shortcodes/media-elements/video-popup) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

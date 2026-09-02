@@ -1,50 +1,35 @@
 ---
 title: Mini Cart
+description: The Unyson+ Mini Cart WooCommerce block — A cart icon that opens a slide-out panel listing what's in the cart, with a checkout link, authored in the block editor and rendered by the WooCommerce integration.
 ---
 
 # Mini Cart
 
-A cart drawer or dropdown with its contents and a checkout button.
+A cart icon that opens a slide-out panel listing what's in the cart, with a checkout link. It's part of the **[WooCommerce integration](/extensions/woocommerce)** — like every block in the library it's a second *authoring* surface, rendered server-side by the same code as the page builder, so the store output is identical either way.
 
-The block renders through the `wc_mini_cart` element — the same PHP that runs in the page builder, so the front
-end is identical either way.
-
-:::caution[Needs the WooCommerce extension *and* the WooCommerce plugin]
-This element ships with the **WooCommerce** extension, which is inactive by default, and it needs the
-**WooCommerce plugin** installed and active.
-
-With either missing the block does not register at all — so it appears in the inserter exactly when it
-can actually work, rather than as an entry that renders nothing.
+:::note Requires WooCommerce
+This block renders live store data, so it only appears (and only works) when the **WooCommerce** plugin is active.
 :::
 
-## What the sidebar exposes
+<img src="/img/blocks/wc-mini-cart/front.png" alt="The Mini Cart block — a cart icon that opens a slide-out panel" width="62" />
+
+## Options
 
 | Option | What it does |
 | --- | --- |
-| `icon` | The trigger icon |
-| `panel_style` | Drawer or dropdown |
-| `drawer_backdrop` | Dim the page behind it |
-| `drawer_backdrop_blur` | Blur it too |
-| `trigger` | What opens the panel |
-| `show_count` | Show the item count |
-| `panel_title` | Heading inside the panel |
-| `subtotal_label` | Label for the subtotal |
-| `checkout_text` | Checkout button text |
-| `footnote` | Small print under the button |
-| `empty_icon` | Icon for the empty state |
-| `empty_heading` | Its heading |
-| `empty_text` | Its message |
-| `empty_button_label` | Its button |
-| `empty_button_url` | Where that button goes |
+| Trigger icon | A cart glyph with an item-count badge. |
+| Slide-out panel | Opens a panel with line items, subtotal and links to the cart and checkout. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched**.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[Five options describe the EMPTY state]
-Which is the state most visitors see first, and the one least often designed. They are grouped here so
-it is obvious it *can* be designed — an empty cart that says "Nothing here yet — browse the shop" with
-a button is worth more than one that says nothing.
-:::
+## Sample content
 
-:::note[The panel does not open in the canvas]
-And its contents are the editing user's cart, not a sample.
-:::
+The demo above uses the block's defaults on a store with sample products:
+
+```html
+<!-- wp:unysonplus/wc-mini-cart {"upOptions":{}} /-->
+```
+
+## WooCommerce elements
+
+These blocks mirror the page builder's WooCommerce elements. Their full option and behaviour reference lives on the [WooCommerce elements](/shortcodes/woocommerce-elements) page.

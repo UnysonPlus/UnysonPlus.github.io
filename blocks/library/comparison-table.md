@@ -1,52 +1,43 @@
 ---
 title: Comparison Table
+description: The Unyson+ Comparison Table block — a feature-by-feature grid comparing plans or products with checks, crosses and text, authored in the block editor and rendered by the comparison-table element.
 ---
 
 # Comparison Table
 
-A feature-comparison table — plans, tiers, or this product against the alternatives. With a highlighted column and a sticky header.
+A **feature-by-feature grid** comparing plans or products across the top, with a check, a cross, a dash or a literal value in each cell — the "how do we stack up" table. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Comparison Table element](/shortcodes/components/comparison-table) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`comparison_table`](/shortcodes/components/comparison-table) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/comparison-table/front.png" alt="The Comparison Table block — features compared across two columns" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `columns` | The things being compared — one per column |
-| `rows` | The features compared, and each column's value for them |
-| `style` | Table design preset |
-| `highlight_featured` | Emphasise the column marked featured |
-| `sticky_header` | Keep the header row visible while scrolling |
-| `center_cells` | Centre cell contents |
-| `product_schema` | Emit product structured data |
-| `accent_color` | Accent colour |
-| `header_bg` | Header background |
-| `header_text` | Header text colour |
-| `text_color` | Cell text colour |
-| `border_color` | Table borders |
-| `font_size_preset` | Text size preset |
+| Columns (`columns`) | The plans/products across the top. Each has a **name**, a **price/subtitle**, an optional **badge**, a **featured** flag, and a **button**. |
+| Rows (`rows`) | The feature rows. Each has a **label**, an optional **tooltip**, and **cell values** — one line per column: `yes` for a check, `no` for a cross, `-` for a dash, or any text for a literal value. A row can also be a **heading** to group features. |
+| Style (`style`, `center_cells`, `highlight_featured`) | The table look, cell alignment, and whether the featured column is emphasised. |
+| Header (`header_bg`, `header_text`, `sticky_header`) | The header row's colours, and whether it sticks while scrolling. |
+| Colours (`accent_color`, `border_color`, `text_color`) + Font size (`font_size_preset`) | The palette and type scale. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[Fill the repeaters in order: columns first, then rows]
-This is the only block with **two** repeaters, and they are not independent. Row values are defined
-per column, so a row added before its columns exist has nowhere to put them.
-:::
+## Sample content
 
-:::note[`sticky_header` sticks to the canvas, not the page]
-The header pins itself to whatever is scrolling. In the editor that is the canvas iframe, so the
-behaviour is real but the frame of reference is not the visitor's — check it in a page preview.
-:::
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above is:
 
-:::caution[`product_schema` describes products, not plans in general]
-It is right for a table comparing things you sell, with real prices and availability. On a
-feature-matrix that is not a product listing, the markup describes something that is not there.
-:::
+```html
+<!-- wp:unysonplus/comparison-table {"upOptions":{
+  "columns":[{"name":"UnysonPlus","price":"Free","badge":"Best value","featured":"yes"},{"name":"Typical premium","price":"$59/yr"}],
+  "rows":[
+    {"label":"Drag-and-drop builder","values":"yes\nyes"},
+    {"label":"100+ content elements","values":"yes\nno"},
+    {"label":"Price","values":"Free\n$59/yr"}
+  ]
+}} /-->
+```
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+## The comparison-table element
+
+The block and the page builder's [Comparison Table element](/shortcodes/components/comparison-table) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

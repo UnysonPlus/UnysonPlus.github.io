@@ -1,67 +1,39 @@
 ---
 title: Products
+description: The Unyson+ Products WooCommerce block — A grid or carousel of products, from a query you build, authored in the block editor and rendered by the WooCommerce integration.
 ---
 
 # Products
 
-A grid or carousel of products, from a query you build — the shop's main display element.
+A grid or carousel of products, from a query you build. It's part of the **[WooCommerce integration](/extensions/woocommerce)** — like every block in the library it's a second *authoring* surface, rendered server-side by the same code as the page builder, so the store output is identical either way.
 
-The block renders through the `wc_products` element — the same PHP that runs in the page builder, so the front
-end is identical either way.
-
-:::caution[Needs the WooCommerce extension *and* the WooCommerce plugin]
-This element ships with the **WooCommerce** extension, which is inactive by default, and it needs the
-**WooCommerce plugin** installed and active.
-
-With either missing the block does not register at all — so it appears in the inserter exactly when it
-can actually work, rather than as an entry that renders nothing.
+:::note Requires WooCommerce
+This block renders live store data, so it only appears (and only works) when the **WooCommerce** plugin is active.
 :::
 
-## What the sidebar exposes
+<img src="/img/blocks/wc-products/front.png" alt="The Products block — a four-column grid of WooCommerce products" width="1210" />
+
+## Options
 
 | Option | What it does |
 | --- | --- |
-| `source` | Where products come from |
-| `category` | Restrict to categories |
-| `tags` | Restrict to tags |
-| `attribute` | Restrict by attribute |
-| `attribute_terms` | Which terms of it |
-| `product_ids` | Specific products |
-| `posts_per_page` | How many to show |
-| `orderby` | Sort field |
-| `order` | Ascending or descending |
-| `layout` | Grid or carousel |
-| `columns` | How many per row |
-| `gap` | Space between cards |
-| `alignment` | Alignment |
-| `pagination` | Paginate the grid |
-| `carousel_arrows` | Show carousel arrows |
-| `card_rows` | Which rows a card shows, and in what order |
-| `box_style` | Card box preset |
-| `image_ratio` | Thumbnail crop ratio |
-| `image_size` | Which registered image size |
-| `rating_symbol` | Star, heart or another mark |
-| `rating_fill_color` | Filled symbol colour |
-| `rating_empty_color` | Empty symbol colour |
-| `rating_size` | Symbol size |
-| `show_ribbon` | Show the corner ribbon |
-| `show_sale_badge` | Show a sale badge |
-| `badge_style` | Badge design |
-| `show_featured_badge` | Badge featured products |
-| `show_new_badge` | Badge recent products |
-| `new_days` | How recent counts as new |
-| `add_to_cart_text` | Button text |
+| Which products (`source`, `category`, `tags`, `attribute`, `product_ids`) | Show a live query, a specific category or tag, an attribute, or hand-pick products by ID. |
+| Order (`orderby`, `order`, `posts_per_page`) | Sort by date, price, popularity, etc., and how many to show. |
+| Layout (`layout`, `columns`, `gap`, `card_rows`, `image_ratio`, `box_style`) | A grid or a carousel, the number of columns, and the product-card look. |
+| Badges (`show_sale_badge`, `show_new_badge`, `show_featured_badge`, `show_ribbon`, `badge_style`) | Flag products as on sale, new or featured. |
+| Rating (`rating_symbol`, `rating_fill_color`, `rating_size`) | How the star rating is drawn. |
+| Add to cart (`add_to_cart_text`) + Pagination (`pagination`, `carousel_arrows`) | The button label, and paging / carousel controls. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched**.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[The query runs for real in the editor]
-The canvas shows this shop's actual products, so you can see whether the query returns what you meant.
+## Sample content
 
-**Add-to-cart is inert.** Live, a click would add a product to the *editor's* session cart — a real
-cart belonging to whoever is logged in.
-:::
+The demo above uses the block's defaults on a store with sample products:
 
-:::note[Two ways to be empty, and the block says which]
-No published products at all is a different problem from a query that excluded everything, and the fix
-differs. The block names the one you have.
-:::
+```html
+<!-- wp:unysonplus/wc-products {"upOptions":{}} /-->
+```
+
+## WooCommerce elements
+
+These blocks mirror the page builder's WooCommerce elements. Their full option and behaviour reference lives on the [WooCommerce elements](/shortcodes/woocommerce-elements) page.

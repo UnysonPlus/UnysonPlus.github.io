@@ -1,44 +1,37 @@
 ---
 title: Product Categories
+description: The Unyson+ Product Categories WooCommerce block — A grid of product categories, authored in the block editor and rendered by the WooCommerce integration.
 ---
 
 # Product Categories
 
-A grid of product categories, for browsing into the shop.
+A grid of product categories. It's part of the **[WooCommerce integration](/extensions/woocommerce)** — like every block in the library it's a second *authoring* surface, rendered server-side by the same code as the page builder, so the store output is identical either way.
 
-The block renders through the `wc_product_categories` element — the same PHP that runs in the page builder, so the front
-end is identical either way.
-
-:::caution[Needs the WooCommerce extension *and* the WooCommerce plugin]
-This element ships with the **WooCommerce** extension, which is inactive by default, and it needs the
-**WooCommerce plugin** installed and active.
-
-With either missing the block does not register at all — so it appears in the inserter exactly when it
-can actually work, rather than as an entry that renders nothing.
+:::note Requires WooCommerce
+This block renders live store data, so it only appears (and only works) when the **WooCommerce** plugin is active.
 :::
 
-## What the sidebar exposes
+<img src="/img/blocks/wc-product-categories/front.png" alt="The Product Categories block — a grid of WooCommerce category cards" width="1210" />
+
+## Options
 
 | Option | What it does |
 | --- | --- |
-| `number` | How many to show |
-| `orderby` | Sort field |
-| `order` | Ascending or descending |
-| `parent` | Only children of this category |
-| `ids` | Specific categories |
-| `hide_empty` | Skip categories with no products |
-| `columns` | How many per row |
-| `gap` | Space between them |
-| `alignment` | Alignment |
-| `card_rows` | Which rows a card shows |
-| `box_style` | Card box preset |
-| `image_ratio` | Crop ratio |
-| `image_size` | Which registered image size |
-| `button_text` | Button text |
+| Which categories (`number`, `parent`, `ids`, `hide_empty`) | How many, from which parent, specific ones by ID, and whether to skip empty categories. |
+| Order (`orderby`, `order`) | Sort by name, count, and so on. |
+| Layout (`columns`, `gap`, `card_rows`, `image_ratio`, `box_style`) | Columns, spacing and the category-card style. |
+| Button (`button_text`) | The label on each category link. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched**.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[`hide_empty` is worth a deliberate answer on a new shop]
-With it off, a category created before its products still shows — either a useful placeholder or a
-dead end, depending on how far along the shop is.
-:::
+## Sample content
+
+The demo above uses the block's defaults on a store with sample products:
+
+```html
+<!-- wp:unysonplus/wc-product-categories {"upOptions":{}} /-->
+```
+
+## WooCommerce elements
+
+These blocks mirror the page builder's WooCommerce elements. Their full option and behaviour reference lives on the [WooCommerce elements](/shortcodes/woocommerce-elements) page.

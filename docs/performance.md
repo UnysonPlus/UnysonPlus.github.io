@@ -9,6 +9,10 @@ Speed isn't a plugin you bolt on afterward in Unyson+, it's how the framework re
 This page collects the mechanisms that keep pages light, with links to where each is documented in
 depth. Most of it is automatic; the rest is one toggle.
 
+:::tip[💡 Web dev tip: learn the Core Web Vitals]
+Google grades real-user experience with three **Core Web Vitals**: **LCP** (how fast the main content appears), **CLS** (how much the layout jumps), and **INP** (how quickly the page responds to input). Big images, custom fonts and heavy JavaScript are the usual culprits — fix those and both users and rankings benefit. [web.dev: Core Web Vitals](https://web.dev/articles/vitals)
+:::
+
 ## Clean, un-bloated markup
 
 The Page Builder emits **lean, semantic HTML**, just the section → container → row → column grid plus

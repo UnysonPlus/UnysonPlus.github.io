@@ -30,6 +30,10 @@ The screen has three tabs:
 | **Blueprints** | One-click packs — post type, its taxonomies, and a matching field group. |
 | **Tools** | JSON export / import (including Custom Post Type UI imports), PHP code export, and the key-rename migration. |
 
+:::tip[💡 Web dev tip: model content with the right type]
+When content is genuinely a different *kind* of thing — Products, Events, Team Members — give it its own **custom post type** rather than forcing it into Posts or Pages. You get cleaner data, purpose-built fields, tidier URLs and templates that target exactly that content — which pays off in both maintenance and SEO.
+:::
+
 ## Blueprints
 
 The fastest way to get a working content type. Pick a blueprint and click **Install** — it creates

@@ -14,6 +14,10 @@ You could change Theme Settings on the parent directly, but a child theme keeps 
 colors, any template overrides) in your own package, so a parent-theme update never overwrites it.
 :::
 
+:::tip[💡 Web dev tip: never edit the parent theme]
+Customisations belong in a **child theme**, not the parent — a parent-theme update overwrites its files and wipes your changes. A child theme overrides only what you need while still receiving the parent's updates and security fixes. It's the maintainable way to customise any WordPress theme. [Child themes](/theme/child-themes)
+:::
+
 ## 1. Create two files
 
 In `wp-content/themes/`, make a folder (e.g. `acme/`) with two files.

@@ -1,64 +1,40 @@
 ---
 title: Pricing Table
+description: The Unyson+ Pricing Table block — side-by-side plan cards with prices, feature lists, a featured plan and a monthly/yearly toggle, authored in the block editor and rendered by the pricing-table element.
 ---
 
 # Pricing Table
 
-Pricing plans side by side, with a monthly / yearly toggle, a featured column and per-plan feature lists.
+Side-by-side **plan cards** — each with a price, a feature list, an optional "most popular" highlight and a call-to-action button, plus an optional monthly/yearly billing toggle. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Pricing Table element](/shortcodes/components/pricing-table) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`pricing_table`](/shortcodes/components/pricing-table) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/pricing-table/front.png" alt="The Pricing Table block — two plan cards, one highlighted" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `plans` | The plans — name, price, features and button |
-| `billing_toggle` | Offer a monthly / yearly switch |
-| `billing_default` | Which period is shown first |
-| `billing_monthly_label` | Label for the monthly option |
-| `billing_yearly_label` | Label for the yearly option |
-| `billing_note` | Small print under the toggle |
-| `design` | Table design preset |
-| `columns` | How many plans per row |
-| `gap` | Space between plans |
-| `featured_style` | How the featured plan is emphasised |
-| `button_preset` | Button style for every plan |
-| `align` | Text alignment |
-| `product_schema` | Emit product structured data |
-| `box_style` | Card box / border preset |
-| `icon_badge_preset` | Badge behind feature icons |
-| `accent_color` | Accent colour |
-| `bg_color` | Section background |
-| `card_bg` | Plan background |
-| `title_color` | Plan name colour |
-| `price_color` | Price colour |
-| `text_color` | Feature text colour |
-| `font_size_preset` | Text size preset |
+| Plans (`plans`) | The list of plan columns. Each has a **name**, **subtitle**, **price** (monthly + yearly), a **features** list (one per line; prefix a line with `-` to show it crossed out), a **featured** flag with an optional **ribbon**, and a **button**. |
+| Billing toggle (`billing_toggle`, `billing_monthly_label`, `billing_yearly_label`) | Show a monthly/yearly switch that swaps each plan's two prices. |
+| Layout (`columns`, `gap`, `design`, `box_style`) | Number of columns, spacing, and the card style. |
+| Featured style (`featured_style`, `icon_badge_preset`) | How the highlighted plan stands out. |
+| Colours (`accent_color`, `price_color`, `card_bg`, `text_color`) + Font size (`font_size_preset`) | The card palette and type scale. |
+| Product schema (`product_schema`) | Emit structured data so search engines can read your prices. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[`plans` is a repeater]
-It is an [`addable-popup`](/options/option-types/addable-popup): each plan expands in place in
-the sidebar, with its own name, prices, feature list and button.
-:::
+## Sample content
 
-:::caution[`billing_default` decides what people see first]
-A yearly default advertises the lower monthly-equivalent figure. Whether that is the honest framing or
-the misleading one depends on what the plans actually charge — and it is the setting most likely to be
-left at whatever it happened to be.
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above is:
 
-Use `billing_note` to say plainly what a yearly price bills as.
-:::
+```html
+<!-- wp:unysonplus/pricing-table {"upOptions":{"plans":[
+  {"plan_title":"UnysonPlus","subtitle":"Everything, free","price":{"monthly":"0"},"features":"Drag-and-drop builder\n100+ content elements\nAll extensions included","featured":"yes","ribbon":"Best value","button_label":"Get UnysonPlus"},
+  {"plan_title":"Typical premium","price":{"monthly":"59"},"features":"Limited elements\n- Locked add-ons","button_label":"Pay yearly"}
+]}} /-->
+```
 
-:::note[The toggle does not switch in the canvas]
-It is a real control on the front end. Here it would change which prices are displayed, so the preview
-would be showing one set of numbers while the sidebar edited the other.
-:::
+## The pricing-table element
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+The block and the page builder's [Pricing Table element](/shortcodes/components/pricing-table) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

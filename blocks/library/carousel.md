@@ -1,59 +1,41 @@
 ---
 title: Carousel
+description: The Unyson+ Carousel block — a full-width image slider with headings, text and buttons per slide, authored in the block editor and rendered by the carousel element.
 ---
 
 # Carousel
 
-A slider of image or content slides, with arrows, dots, autoplay and per-breakpoint slide counts.
+A **slideshow** — full-width image slides, each with an optional heading, line of text and button, with autoplay and transition effects. A hero slider or a rotating feature banner. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Carousel element](/shortcodes/interactive-elements/carousel) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`carousel`](/shortcodes/interactive-elements/carousel) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/carousel/front.png" alt="The Carousel block — an image slide with a heading and text" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `slides` | The slides — image, heading, text and link |
-| `per_page` | Slides visible at once on desktop |
-| `per_page_tablet` | Slides visible on tablet |
-| `per_page_mobile` | Slides visible on mobile |
-| `gap` | Space between slides |
-| `height` | Fixed slide height, if you want one |
-| `arrows` | Show previous / next arrows |
-| `pagination` | Show the dots |
-| `autoplay` | Advance by itself |
-| `interval` | How long each slide is held |
-| `speed` | Transition duration |
-| `pause_hover` | Pause autoplay while hovered |
-| `loop` | Wrap around at the ends |
-| `drag` | Allow dragging / swiping |
-| `effect` | Slide or fade |
-| `overlay` | Darken slides behind their text |
-| `overlay_opacity` | How dark that overlay is |
-| `heading_color` | Slide heading colour |
-| `text_color` | Slide text colour |
+| Slides (`slides`) | The list of slides. Each has an **image**, a **heading**, **text**, and an optional **button** (`button_label`, `button_link`). |
+| Height (`height`) + Image mode (`image_mode`) | The slider height, and whether the image fills as a background or sits inline. |
+| Effect (`effect`, `speed`) | The transition style and its speed. |
+| Autoplay (`interval`) | Advance slides automatically at this interval. |
+| Overlay (`overlay_opacity`) | A scrim over the image so text stays readable. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[`slides` is a repeater]
-It is an [`addable-popup`](/options/option-types/addable-popup): items expand in place in the
-block sidebar rather than opening a modal, and store exactly the value the page builder stores.
-:::
+## Sample content
 
-:::note[The carousel does not move in the canvas]
-It shows the first slide, held, and dragging does not scroll it. Both would collide with the editor's
-own gestures for selecting and moving a block — and holding it still means an option change does not
-restart a rotation you were half-way through watching.
-:::
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above is:
 
-:::caution[Set all three `per_page` values, not just the desktop one]
-They are one responsive decision in three parts. A carousel that shows four slides on a phone because
-only `per_page` was set is exactly the failure the tablet and mobile values exist to prevent — and it
-is not visible in a desktop-width canvas.
-:::
+```html
+<!-- wp:unysonplus/carousel {"upOptions":{"slides":[
+  {"image":{...},"heading":"Fast","text":"Build in minutes."},
+  {"image":{...},"heading":"Free","text":"No pro tier — ever."}
+]}} /-->
+```
 
-:::note[`pause_hover` does nothing without `autoplay`]
-There is nothing to pause on a carousel that only moves when the visitor moves it.
-:::
+Each slide's `image` is a media reference (`{"attachment_id":123,"url":"…"}`), so add slides with the block's picker rather than typing them by hand.
+
+## The carousel element
+
+The block and the page builder's [Carousel element](/shortcodes/interactive-elements/carousel) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

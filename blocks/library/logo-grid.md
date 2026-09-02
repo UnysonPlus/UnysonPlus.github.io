@@ -1,61 +1,42 @@
 ---
 title: Logo Grid
+description: The Unyson+ Logo Grid block — a tidy grid or marquee of client/partner logos with optional grayscale, authored in the block editor and rendered by the logo-grid element.
 ---
 
 # Logo Grid
 
-A grid — or a continuously scrolling row — of client and partner logos.
+A grid (or scrolling marquee) of **client, partner or sponsor logos** — each optionally linked, with a grayscale-until-hover treatment that keeps a mixed set of logos looking uniform. The classic "trusted by" strip. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Logo Grid element](/shortcodes/media-elements/logo-grid) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`logo_grid`](/shortcodes/media-elements/logo-grid) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/logo-grid/front.png" alt="The Logo Grid block — a row of logos" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `logos` | The logos, each with an image or SVG and a name |
-| `design` | Grid or marquee |
-| `columns` | How many per row |
-| `gap` | Space between logos |
-| `logo_height` | Rendered logo height |
-| `grayscale` | Desaturate the logos |
-| `show_labels` | Print each logo's name beneath it |
-| `autoplay` | Scroll the row continuously |
-| `speed` | Marquee speed |
-| `direction` | Marquee direction |
-| `text_color` | Label colour |
-| `box_bg` | Tile background |
-| `font_size_preset` | Label size preset |
+| Logos (`logos`) | The list of logos. Each has an **image** (or inline **SVG**), a **name** (used as the alt text / label), and an optional **link**. |
+| Columns (`columns`) + Gap (`gap`) | How many logos per row, and the spacing between them. |
+| Logo height (`logo_height`) | A uniform height so mismatched logos line up. |
+| Grayscale (`grayscale`) | Desaturate logos until hovered. |
+| Labels (`show_labels`, `no_label`) | Show each logo's name beneath it. |
+| Marquee (`autoplay`, `direction`, `speed`) | Scroll the logos continuously instead of a static grid. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[The list is edited in the sidebar, not in a modal]
-`logos` is an [`addable-popup`](/options/option-types/addable-popup) — a repeater. In the page
-builder each item opens in a modal; in a block sidebar the items expand **in place**, so the canvas
-preview stays visible while you type.
+## Sample content
 
-The stored value is identical either way, and an item added here shows up in the page builder exactly
-as if it had been added there.
-:::
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above is:
 
-:::note[A logo needs an image, an SVG or a name]
-Entries with none of the three are dropped rather than rendered as a gap. If the grid looks shorter
-than your list, that is why.
-:::
+```html
+<!-- wp:unysonplus/logo-grid {"upOptions":{"logos":[
+  {"image":{...},"name":"Acme"},
+  {"image":{...},"name":"Globex"}
+]}} /-->
+```
 
-:::note[The marquee is held still in the canvas]
-With `autoplay` on the row scrolls continuously on the front end. It is static here: a marquee
-running behind the sidebar you are typing in is a distraction rather than a preview, and it would
-restart on every option change anyway.
-:::
+Each logo's `image` is a media reference (`{"attachment_id":123,"url":"…"}`), so add logos with the block's picker rather than typing them by hand.
 
-:::caution[`speed` and `direction` need `autoplay`]
-They configure the marquee. A static grid has neither, so setting them alone changes nothing.
-:::
+## The logo-grid element
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+The block and the page builder's [Logo Grid element](/shortcodes/media-elements/logo-grid) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

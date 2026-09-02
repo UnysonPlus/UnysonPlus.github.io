@@ -13,6 +13,9 @@ keywords:
   - css grid column span
   - translate bootstrap grid
   - responsive columns css
+  - css display flex grid block
+  - difference between flexbox and grid
+  - when to use flexbox vs grid vs block
 image: /img/page-builder.png
 ---
 
@@ -95,6 +98,32 @@ The most common question when leaving Bootstrap behind is *"flexbox or grid?"* A
 
 **Rule of thumb:** Flexbox is for **one-dimensional** flows (a row or a stack). CSS Grid is for
 **two-dimensional** layouts and for real "columns."
+
+## The `display` property: flex, grid, or block?
+
+Bootstrap hides one CSS property behind its grid: **`display`**. It is the single most important
+layout property in CSS — it decides *how an element arranges its children*. When you build with a
+container (like the UnysonPlus **Div**) you choose it directly. There are three values you will
+reach for:
+
+| `display` | What it does | Reach for it when… | Related properties |
+|---|---|---|---|
+| **`flex`** | Lays children along **one axis** — a row (side by side) or a column (stacked). They can wrap, grow and shrink. | You want a **row or a stack**: nav bars, button groups, cards that wrap. | `flex-direction`, `flex-wrap`, `justify-content`, `align-items`, `gap` |
+| **`grid`** | Arranges children into a **two-dimensional grid** of columns (and rows). | You want **real columns**: a card grid, a gallery, N aligned columns. | `grid-template-columns`, `gap`, `justify-content`, `align-items` |
+| **`block`** | **Normal document flow** — each child stacks top-to-bottom on its own line (the default for a `<div>`). | You just want a **plain wrapper** and will let content flow normally. | *(none — children simply flow)* |
+
+**The mental model:**
+
+- **`flex`** = one-dimensional → *"a row **or** a stack."*
+- **`grid`** = two-dimensional → *"N aligned columns."* — the modern answer to "I want columns."
+- **`block`** = no layout → *"just flow, top to bottom."*
+
+:::tip[In the UnysonPlus Div]
+The Div's **Display** option is exactly this CSS `display` property — **Flex**, **Grid** or
+**Block**. Choose **Grid** and set **Grid Columns** for a column layout; **Flex** for a
+one-dimensional row or stack; **Block** for a plain content wrapper. For an uneven split like
+**1/3 + 2/3**, use **Grid** with `grid-template-columns: 1fr 2fr`.
+:::
 
 ## Quick answers
 

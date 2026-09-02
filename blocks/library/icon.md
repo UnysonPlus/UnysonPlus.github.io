@@ -1,47 +1,35 @@
 ---
 title: Icon
+description: The Unyson+ Icon block — a single icon from any icon pack, sized and coloured, authored in the block editor and rendered by the icon element.
 ---
 
 # Icon
 
-A single icon, with an optional title and badge — from an icon font, an SVG, an image or an emoji.
+A single **icon** — from Font Awesome or any installed icon pack — sized, coloured and optionally linked. Handy on its own, or as a building block in a heading or list. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Icon element](/shortcodes/media-elements/icon) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`icon`](/shortcodes/media-elements/icon) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/icon/front.png" alt="The Icon block — a bolt glyph" width="64" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `icon` | The icon itself |
-| `title` | Optional text beneath it |
-| `aria_label` | What a screen reader announces |
-| `icon_size` | Icon size, with a unit |
-| `icon_badge_preset` | Badge shape and style behind the icon |
-| `icon_color` | Icon colour |
-| `title_color` | Title colour |
-| `bg_color` | Background |
+| Icon (`icon`) | Pick the glyph from any installed icon pack. |
+| Accessible label (`aria_label`) | Screen-reader text when the icon conveys meaning; leave empty for a purely decorative icon so assistive tech skips it. |
+| Size (`size`) | The glyph size. |
+| Colours (`bg_color`, `title_color`, …) | Icon and background colours. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::caution[Set `aria_label` when there is no title]
-An icon with no text is invisible to a screen reader — a lock icon that means "secure" conveys
-nothing at all to someone who cannot see it.
+## Sample content
 
-That is why the field is in the sidebar rather than one surface away: the setting that fixes the
-problem should not be harder to reach than the setting that creates it. With a `title` set, the icon
-is decorative and the label can be left blank.
-:::
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above is:
 
-:::note[A blank square in the editor means a missing icon pack]
-The icon font is loaded into the canvas along with the element's stylesheet. If an icon renders as an
-empty box here but fine on the front end, the pack it belongs to has not been loaded — not a broken
-block.
-:::
+```html
+<!-- wp:unysonplus/icon {"upOptions":{"icon":{"type":"icon-font","icon-class":"fa-solid fa-bolt"},"aria_label":"Speed"}} /-->
+```
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+## The icon element
+
+The block and the page builder's [Icon element](/shortcodes/media-elements/icon) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

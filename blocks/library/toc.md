@@ -1,71 +1,42 @@
 ---
 title: Table of Contents
+description: The Unyson+ Table of Contents block — an auto-built, linked outline of a page's headings with scroll-spy, authored in the block editor and rendered by the toc element.
 ---
 
 # Table of Contents
 
-A contents list built from the page's headings, with scrollspy, sticky positioning and collapsible sections.
+An **auto-built table of contents** — it scans the page's headings and lists them as smooth-scrolling links, with an optional scroll-spy that highlights the section you're reading. Drop it at the top of a long article or in a sticky sidebar. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Table of Contents element](/shortcodes/content-elements/toc) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`toc`](/shortcodes/content-elements/toc) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/toc/front.png" alt="The Table of Contents block — a linked outline of page headings" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `title` | Heading above the list |
-| `levels` | Which heading levels to collect |
-| `hierarchical` | Nest sub-headings |
-| `min_headings` | Do not render below this many headings |
-| `numeration` | Number the entries |
-| `numeration_suffix` | What follows each number |
-| `collapsible` | Let visitors collapse it |
-| `collapsed_default` | Start collapsed |
-| `label_show` | Text for the expand control |
-| `label_hide` | Text for the collapse control |
-| `scope` | Which part of the page to scan |
-| `scope_selector` | A custom selector for that scope |
-| `smooth_scroll` | Animate the jump |
-| `scroll_offset` | Offset for a fixed header |
-| `scrollspy` | Highlight the section being read |
-| `nofollow` | Mark the links nofollow |
-| `noindex` | Keep the list out of search results |
-| `width` | How wide the list runs |
-| `custom_width` | A specific width |
-| `float` | Float it beside the content |
-| `sticky` | Keep it visible while scrolling |
-| `sticky_offset` | Offset when stuck |
-| `title_size` | Title size |
-| `items_size` | Entry size |
-| `bg_color` | Background |
-| `border_color` | Border |
-| `title_color` | Title colour |
+| Scope (`scope`, `scope_selector`, `min_headings`) | Which headings to include — the whole page or a container — and a minimum count before the TOC shows. |
+| Levels (`levels`, `hierarchical`) | Which heading levels to list, and whether to nest them. |
+| Numbering (`numeration`, `bullets`, `decimal`, `roman`, `upper_alpha`) | Numbered, lettered or bulleted items. |
+| Behavior (`collapsible`, `collapsed_default`, `sticky`, `scrollspy`, `smooth_scroll`, `scroll_offset`) | Collapse, stick while scrolling, highlight the active section, and scroll smoothly. |
+| Header (`label_show`, `label_hide`) | The "Contents" title and show/hide toggle labels. |
+| Colours + Typography (`link_color`, `link_active_color`, `bg_color`, `title_color`, `items_size`) | The palette and type scale. |
+| SEO (`noindex`, `nofollow`) | Keep the on-page anchors out of search where you need to. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::caution[This is the one block whose preview cannot be accurate]
-A table of contents is built from the headings of the page it sits on — and in the block editor those
-headings live in **other blocks**, which the server does not see while rendering this one.
-
-So the canvas shows the element's own placeholder rather than a list that would be wrong. Preview the
-page to see the real contents. Everything else about the block — styling, position, options — previews
-normally.
+:::tip[💡 Web dev tip: a table of contents is built from your headings]
+A good TOC is only as good as your heading structure. Use one `<h1>` per page, then nest `<h2>`/`<h3>` in order without skipping levels — the TOC (and screen-reader users navigating by heading) rely on that hierarchy. [MDN: heading elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements) · [Web Dev Basics: Semantic HTML](/learn/semantic-html)
 :::
 
-:::note[`levels` is a checkbox list]
-It is a [`checkboxes`](/options/option-types/checkboxes) option. Collecting `h2` and `h3` is the
-usual answer; collecting everything down to `h6` produces a contents list longer than some of the
-sections it indexes.
-:::
+## Sample content
 
-:::note[Set `scroll_offset` if the theme has a fixed header]
-Without it, jumping to a heading puts that heading underneath the header. It is the most common
-complaint about any in-page jump link.
-:::
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above lists the page's headings with the defaults:
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+```html
+<!-- wp:unysonplus/toc {"upOptions":{}} /-->
+```
+
+## The table-of-contents element
+
+The block and the page builder's [Table of Contents element](/shortcodes/content-elements/toc) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

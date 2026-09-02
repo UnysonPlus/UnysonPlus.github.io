@@ -1,52 +1,40 @@
 ---
 title: Tooltip
+description: The Unyson+ Tooltip block — Text or an icon that reveals a tooltip on hover, focus or click, authored in the block editor and rendered by the tooltip element.
 ---
 
 # Tooltip
 
-Text or an icon that reveals a tooltip on hover, focus or click — for definitions, footnotes and the small print that would otherwise interrupt a sentence.
+Text or an icon that reveals a tooltip on hover, focus or click. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [tooltip element](/shortcodes/interactive-elements/tooltip) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`tooltip`](/shortcodes/interactive-elements/tooltip) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/tooltip/front.png" alt="The Tooltip block — a text trigger that reveals a tip" width="187" />
 
-## What the sidebar exposes
+## Configure it
+
+Select the block and open the **Settings** (block) tab. The whole sidebar is generated from the element’s option schema, so it stays in step with the page builder.
+
+<img src="/img/blocks/tooltip/inspector.png" alt="The Tooltip block settings sidebar" width="300" />
+
+## Options
 
 | Option | What it does |
 | --- | --- |
-| `trigger_type` | What carries the tooltip — text or an icon |
-| `trigger_text` | The visible text |
-| `trigger_icon` | The icon, for icon triggers |
-| `tip_title` | Optional heading inside the tip |
-| `tip_content` | The tip body |
-| `design` | Tip design preset |
-| `position` | Which side the tip appears on |
-| `event` | What reveals it — hover, click or focus |
-| `arrow` | Show the little pointer |
-| `max_width` | Maximum tip width |
-| `tip_bg` | Tip background |
-| `tip_color` | Tip text colour |
-| `accent_color` | Trigger accent colour |
-| `font_size_preset` | Text size preset |
+| Trigger (`trigger_type`, `trigger_text`, `trigger_icon`) | The visible text or icon that reveals the tip. |
+| Tip (`tip_title`, `tip_content`) | The tooltip’s heading and rich-text body. |
+| Event (`event`) | Reveal on hover, focus or click. |
+| Position (`position`) + Arrow (`arrow`) + Max width (`max_width`) | Where the tip appears, its pointer, and its width. |
+| Design (`design`) + Colours (`tip_bg`, `tip_color`, `accent_color`) | Light / dark preset and colours. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site’s design system from `theme.json`.
 
-:::note[The canvas shows the trigger, not the tip]
-The tooltip markup is rendered but stays hidden, exactly as it is on a real page before anyone
-hovers. To check the tip's wording and where it sits, preview the page.
+## Sample content
 
-A live preview would be worse than no preview here: with `event` set to hover, the tip would open
-every time the pointer crossed the block on its way to something else.
-:::
+A block stores only what you change as one `upOptions` object; the element’s declared defaults fill in the rest at render time. The demo above is:
 
-:::caution[`position` is a preference, not a guarantee]
-A tip placed on a side with no room flips to the opposite side so it stays on screen. That is
-deliberate, and it means a tip near the edge of a narrow column may not appear where you set it —
-check it at the width your visitors actually use.
-:::
+```html
+<!-- wp:unysonplus/tooltip {"upOptions":{"trigger_text":"a free framework","tip_content":"<p>Every UnysonPlus extension is free — there is no pro tier.</p>"}} /-->
+```
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+## The tooltip element
+
+The block and the page builder’s [Tooltip element](/shortcodes/interactive-elements/tooltip) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

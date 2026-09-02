@@ -1,61 +1,42 @@
 ---
 title: Newsletter
+description: The Unyson+ Newsletter block — An email capture form with optional name field, consent text and success message, authored in the block editor and rendered by the newsletter element.
 ---
 
 # Newsletter
 
-An email signup form — heading, description, name and email fields, a consent line and a subscribe
-button. Core has no equivalent block, and the usual alternative is embedding a third-party form that
-arrives with its own stylesheet and ignores your theme.
+An email capture form with optional name field, consent text and success message. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [newsletter element](/shortcodes/interactive-elements/newsletter) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`newsletter`](/shortcodes/interactive-elements/newsletter) element — the same PHP
-that runs in the page builder, so the front end is identical either way.
+<img src="/img/blocks/newsletter/front.png" alt="The Newsletter block — a heading, description and an email field with a Subscribe button" width="1210" />
 
-## What the sidebar exposes
+## Configure it
+
+Select the block and open the **Settings** (block) tab. The whole sidebar is generated from the element’s option schema, so it stays in step with the page builder.
+
+<img src="/img/blocks/newsletter/inspector.png" alt="The Newsletter block settings sidebar" width="300" />
+
+## Options
 
 | Option | What it does |
 | --- | --- |
-| `title` | Heading above the form |
-| `description` | Supporting text — paragraphs are added on save |
-| `show_name` | Add a name field before the email field |
-| `name_placeholder` | Placeholder for the name field |
-| `email_placeholder` | Placeholder for the email field |
-| `button_label` | Text on the submit button |
-| `consent_text` | The consent / privacy line under the form |
-| `success_message` | Shown in place of the form after a successful subscribe |
-| `error_message` | Shown when the request fails |
-| `list_id` | Which list the address is added to, for the configured integration |
-| `design` | Form layout preset — inline, stacked, boxed |
-| `align` | Horizontal alignment |
-| `rounded` | Corner rounding on fields and button |
-| `accent_color` | Button and focus colour |
-| `field_bg` | Field background |
-| `bg_color` | Form background |
-| `text_color` | Text colour |
+| Title (`title`) + Description (`description`) | The heading and supporting line above the form. |
+| Name field (`show_name`, `name_placeholder`) | Optionally collect a name alongside the email. |
+| Email placeholder (`email_placeholder`) + Button (`button_label`) | The email field prompt and the submit button text. |
+| Consent (`consent_text`) | A GDPR-style consent line under the field. |
+| Messages (`success_message`, `error_message`) | What shows after a successful or failed sign-up. |
+| List (`list_id`) | The subscriber list the sign-up is stored in (see the Newsletter / Subscriber CRM extension). |
+| Design (`design`) + Alignment (`align`) + Rounded (`rounded`) + Colours | Inline or stacked layout, alignment, corner rounding and colours. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site’s design system from `theme.json`.
 
-:::note[`consent_text` and `list_id` are exposed on purpose]
-Both are easy to leave out of a curated sidebar and both are costly to get wrong.
+## Sample content
 
-A capture form with no consent line is a compliance problem in several jurisdictions, so the field is
-in the sidebar rather than one surface away — the safe thing should not be the harder thing.
+A block stores only what you change as one `upOptions` object; the element’s declared defaults fill in the rest at render time. The demo above is:
 
-`list_id` is here because a form pointed at the wrong list **fails silently**: subscribers are
-accepted, stored, and nobody ever reads them. That is worse than an error.
-:::
+```html
+<!-- wp:unysonplus/newsletter {"upOptions":{"title":"Get the newsletter","description":"<p>Product updates and release notes — no spam.</p>","button_label":"Subscribe","align":"center"}} /-->
+```
 
-:::caution[The preview is inert, and here it matters more than usual]
-Every block preview is non-interactive, but this is the only block whose element is a **real form with
-a real submit handler**. Left live, a stray Enter in the canvas would fire an actual subscribe
-request — against the rate limiter, from the editor, on behalf of whoever is logged in. The form
-works normally on the front end.
-:::
+## The newsletter element
 
-:::note[The nonce is not stored in the post]
-The form's security token is minted when the page is rendered, not when the block is saved, so a
-block sitting in a draft for a month still posts a fresh token on the day a visitor loads the page.
-There is no such thing as a stale nonce baked into this block's saved content.
-:::
+The block and the page builder’s [Newsletter element](/shortcodes/interactive-elements/newsletter) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

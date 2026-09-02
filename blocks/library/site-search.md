@@ -1,30 +1,33 @@
 ---
 title: Site Search
+description: The Unyson+ Site Search block — a WordPress search form styled to the site, authored in the block editor and rendered by the site-search element.
 ---
 
 # Site Search
 
-A site search field. Results are handled by WordPress's own search page.
+A **search form** wired to WordPress's built-in search, styled to match the site — as an inline field or an icon that expands. Most useful in a header or footer, but it works anywhere. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Site Search element](/shortcodes/header-footer-elements/site-search) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`site_search`](/shortcodes/header-footer-elements/site-search) element — the same PHP that runs in the page builder, so the front end is identical either way.
+<img src="/img/blocks/site-search/front.png" alt="The Site Search block — an inline search field" width="273" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `style` | How the field looks |
-| `placeholder` | What it says before anyone types |
+| Style (`style`) | Inline field, or an icon that expands into a field. |
+| Placeholder (`placeholder`) | The prompt text shown in the empty field. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[The field is inert in the editor]
-It does not accept typing and the form does not submit — a search run from inside the editor would
-navigate away from the post you are writing.
-:::
+## Sample content
 
-:::note[Write a placeholder that says what is searchable]
-"Search" is the default and it is fine. "Search 200+ recipes" is better, because it tells someone
-what they will get. It is the cheapest copy improvement on most sites.
-:::
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above is:
+
+```html
+<!-- wp:unysonplus/site-search {"upOptions":{"placeholder":"Search the docs…"}} /-->
+```
+
+## The site-search element
+
+The block and the page builder's [Site Search element](/shortcodes/header-footer-elements/site-search) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

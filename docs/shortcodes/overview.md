@@ -10,6 +10,10 @@ The Page Builder ships with **54 built-in elements** (shortcodes). You add them 
 them onto the page canvas and configuring them through their options panel — no code
 required. They're grouped in the builder:
 
+:::note[What's a "shortcode"?]
+A **shortcode** is a small WordPress tag in square brackets — like `[button]` — that stands in for a piece of dynamic content. WordPress swaps it for the real HTML when the page loads. You rarely type them here: the Page Builder inserts and configures each element visually, and the shortcode is just what it saves behind the scenes.
+:::
+
 - **[Content Elements](/shortcodes/content-elements)** — text, buttons, media boxes, posts, tables, and more (36 elements, each with its own page).
 - **[Layout Elements](/shortcodes/layout-elements)** — sections, rows, columns and special section types.
 - **[Media Elements](/shortcodes/media-elements)** — image, video, gallery, before/after, hotspots and more.

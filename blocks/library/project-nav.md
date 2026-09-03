@@ -1,36 +1,36 @@
 ---
 title: Project Navigation
+description: The Unyson+ Project Navigation block — previous/next links between projects, authored in the block editor and rendered by the Portfolio extension.
 ---
 
 # Project Navigation
 
-Previous and next links between projects.
+**Previous / next links** between projects — so a visitor reading one project can step straight to the one before or after it. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are produced by the same server-side code as the page builder, so the output is identical either way.
 
-The block renders through the `project_nav` element — the same PHP that runs in the page builder, so the front
-end is identical either way.
+<img src="/img/blocks/project-nav/front.png" alt="The Project Navigation block — previous and next project links" width="1210" />
 
-:::caution[Needs the Portfolio extension]
-This element ships with the **Portfolio** extension, which is **inactive by default**. Activate it
-under *Unyson+ → Extensions* and the block appears in the inserter.
+## Options
 
-With the extension off the block does not register at all — deliberately, so it cannot appear as an
-inserter entry with an empty sidebar that renders nothing.
-:::
-
-## What the sidebar exposes
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `same_category` | Stay within the current project's category |
+| Same category (`same_category`) | Restrict prev/next to projects in the same portfolio category. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched**.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[One option, and it is the whole decision]
-Whether "next" means the next project overall, or the next in the same category. On a portfolio
-spanning unrelated kinds of work, the second is almost always what a visitor expects.
+:::note Reads the current project
+This block navigates from the **project in context**, so it renders on a single-project page (or a project template), where a "previous" and "next" project exist.
 :::
 
-:::caution[Only renders on a single project]
-It needs a current project to have neighbours, so it belongs in a project template. Anywhere else it
-says so rather than rendering nothing.
-:::
+## Sample content
+
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above uses the defaults:
+
+```html
+<!-- wp:unysonplus/project-nav {"upOptions":{}} /-->
+```
+
+## Part of the Portfolio extension
+
+This block reads **Projects** — the custom post type the **[Portfolio](/extensions/portfolio)** extension registers. See also **[Related Projects](/blocks/library/related-projects)** and the **[Portfolio](/blocks/library/portfolio)** grid.

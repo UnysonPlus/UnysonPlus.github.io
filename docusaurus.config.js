@@ -194,9 +194,34 @@ const config = {
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
+          // SEO housekeeping: the auto-generated archive + pagination pages are
+          // thin, near-duplicate index pages with no unique content. Drop the
+          // archive entirely, and show every post on one listing page so no
+          // `/page/N` pagination URLs are produced. (Tag/author list pages are
+          // kept for on-site browsing but noindex'd via src/theme/Root.js and
+          // excluded from the XML sitemap below.)
+          archiveBasePath: null,
+          postsPerPage: 'ALL',
         },
         theme: {
           customCss: './src/css/custom.css',
+        },
+        // Configure the (otherwise default) sitemap plugin the classic preset
+        // ships. Keep thin, low-value index pages OUT of the sitemap so Google
+        // stops discovering/queuing them (they showed up as ~76 "Discovered –
+        // currently not indexed" URLs): tag lists, author lists, pagination,
+        // archives, the search page and the stray markdown-page.
+        sitemap: {
+          ignorePatterns: [
+            '/**/tags/**',
+            '/**/authors/**',
+            '/**/page/**',
+            '/**/archive',
+            '/search',
+            '/search/**',
+            '/markdown-page',
+          ],
+          filename: 'sitemap.xml',
         },
       }),
     ],
@@ -348,6 +373,12 @@ const config = {
         onInlineTags: 'warn',
         onInlineAuthors: 'warn',
         onUntruncatedBlogPosts: 'ignore',
+        // Same SEO housekeeping as the News blog: no archive page, and no
+        // `/page/N` pagination (this instance produced the bulk of the thin
+        // pagination URLs). Tag/author lists stay for browsing but are
+        // noindex'd (src/theme/Root.js) and kept out of the sitemap.
+        archiveBasePath: null,
+        postsPerPage: 'ALL',
         editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
       },
     ],

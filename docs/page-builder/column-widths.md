@@ -30,11 +30,18 @@ Widths are the usual **twelfths**, plus **one fifth**:
 | `5_12`, `7_12` | twelfths | |
 | **`1_5`** | **1/5 (20%)** | the **only** supported fifth |
 
-:::caution[Fifths: only `1_5` exists]
-There is **no `2_5` / `3_5` / `4_5`** — those are not valid widths; don't emit them. A `1_5` column
-renders as **`fw-col-12 fw-col-sm-15`** (the grid's fifth class = 20%), so **five** `1_5` columns
-make a clean 5-across row with no CSS hacks. Don't use `width:"auto"` to fake equal columns — an
-unrecognized width makes the corrector drop the column wrapper entirely.
+:::caution[Fifths on the classic column: only `1_5` exists]
+On the **classic** column, there is **no `2_5` / `3_5` / `4_5`** — those are not valid widths; don't
+emit them. A `1_5` column renders as **`fw-col-12 fw-col-sm-15`** (the grid's fifth class = 20%), so
+**five** `1_5` columns make a clean 5-across row with no CSS hacks. Don't use `width:"auto"` to fake
+equal columns — an unrecognized width makes the corrector drop the column wrapper entirely.
+:::
+
+:::tip[The modern Div supports the full `1/5 – 4/5` set]
+This restriction is specific to the classic Bootstrap column. The modern
+**[Div element](./the-div-element.md#fifths)** offers `1/5`, `2/5`, `3/5` **and** `4/5` as Width
+tiles — they render as exact percentages (20 / 40 / 60 / 80%) via scoped CSS, plus content-sizing
+keywords (Fit / Max / Min). Prefer the Div for any layout the twelfths grid can't express cleanly.
 :::
 
 ### Auto-flex (`col`) columns

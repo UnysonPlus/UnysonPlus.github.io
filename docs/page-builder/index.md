@@ -77,6 +77,8 @@ embeddable block (`[snippet id="123"]`) or as a global **Section** / **Column** 
 
 ## Going deeper
 
+- **[The Div element (Flex, Grid, Block)](./the-div-element.md)** — the modern layout primitive
+  and its responsive Width control (twelfths, fifths, content-sizing, custom).
 - **[How the Page Builder works](./how-it-works.md)** — the full data flow from a builder edit
   to rendered HTML.
 - **[The builder JSON tree format](./builder-json-format.md)** — how a section / row / column /
@@ -85,8 +87,8 @@ embeddable block (`[snippet id="123"]`) or as a global **Section** / **Column** 
   `get_value_from_attributes()` runs (and when it does *not*).
 - **[Migrating an option's value shape](./value-shape-migrations.md)** — the JS-side migration
   pattern that keeps old pages from breaking.
-- **[Column widths &amp; the grid](./column-widths.md)** — twelfths, the single `1_5` fifth, and
-  flex vs legacy wrapping.
+- **[Column widths &amp; the grid](./column-widths.md)** — twelfths, the classic column's single
+  `1_5` fifth, and flex vs legacy wrapping (the Div's fuller Width control is in its own page above).
 - **[The clean-DOM philosophy](./clean-dom.md)** — why UnysonPlus output stays un-bloated.
 
 ## See also

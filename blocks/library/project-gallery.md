@@ -1,52 +1,38 @@
 ---
 title: Project Gallery
+description: The Unyson+ Project Gallery block — A single project's image gallery, with a lightbox, authored in the block editor and rendered by the Portfolio extension.
 ---
 
 # Project Gallery
 
-A project's image gallery, with a lightbox and per-breakpoint columns.
+A single project's image gallery, with a lightbox. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Project Gallery element](/shortcodes/media-elements/project-gallery) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the `project_gallery` element — the same PHP that runs in the page builder, so the front
-end is identical either way.
+<img src="/img/blocks/project-gallery/front.png" alt="The Project Gallery block — a two-column gallery of project images" width="1210" />
 
-:::caution[Needs the Portfolio extension]
-This element ships with the **Portfolio** extension, which is **inactive by default**. Activate it
-under *Unyson+ → Extensions* and the block appears in the inserter.
+## Options
 
-With the extension off the block does not register at all — deliberately, so it cannot appear as an
-inserter entry with an empty sidebar that renders nothing.
-:::
-
-## What the sidebar exposes
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `project_id` | Which project (empty = the current one) |
-| `columns` | Columns on desktop |
-| `columns_tablet` | Columns on tablet |
-| `columns_mobile` | Columns on mobile |
-| `gap` | Space between images |
-| `ratio` | Crop ratio |
-| `image_size` | Which registered image size |
-| `lightbox` | Open images in a lightbox |
-| `captions` | Show captions |
-| `no_results_text` | What to say when the project has no images |
-| `text_color` | Text colour |
-| `bg_color` | Background |
-| `font_size_preset` | Text size preset |
+| Project (`project_id`) | Which project's gallery to show (defaults to the current project in a single-project template). |
+| Layout (`columns`, `columns_tablet`, `columns_mobile`, `gap`, `ratio`, `image_size`) | Responsive columns, spacing and image crop. |
+| Lightbox + Captions (`lightbox`, `captions`) | Open images full-size, and show captions. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched**.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[It reads the current project]
-Leave `project_id` empty and the element reads whichever project it finds itself in — which is what a
-[Theme Builder](/extensions/theme-builder/body-templates) project template wants. Set it, and the
-element pins that one project, which is what a landing page wants.
-
-In an ordinary page with neither, there is no project to read, and the block says so rather than
-rendering nothing.
+:::note Needs the Portfolio extension
+This block reads **Projects** — the custom post type the **Portfolio** extension registers. Activate it, add a project or two, and fill in their details.
 :::
 
-:::note[Set all three column counts]
-They are one responsive decision in three parts, and only the desktop one is visible while editing —
-the same trap as the carousel's.
-:::
+## Sample content
+
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above is:
+
+```html
+<!-- wp:unysonplus/project-gallery {"upOptions":{"project_id":"272","columns":"2"}} /-->
+```
+
+## The project gallery element
+
+The block and the page builder's [Project Gallery element](/shortcodes/media-elements/project-gallery) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

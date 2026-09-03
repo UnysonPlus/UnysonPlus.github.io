@@ -1,57 +1,38 @@
 ---
 title: Audio Player
+description: The Unyson+ Audio Player block — a styled multi-track audio player with artwork, playlist and volume controls, authored in the block editor and rendered by the audio-player element.
 ---
 
 # Audio Player
 
-An audio player with a playlist, volume and an optional download link — for podcasts, tracks and recorded talks.
+A **styled audio player** — one track or a whole playlist, each with a title, artist and optional cover art, plus volume and download controls. A tidy alternative to the bare browser `<audio>` element for podcasts, mixes or samples. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Audio Player element](/shortcodes/media-elements/audio-player) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`audio_player`](/shortcodes/media-elements/audio-player) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/audio-player/front.png" alt="The Audio Player block — a player with a track list" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `tracks` | The tracks — title, artist and the audio file |
-| `design` | Player design preset |
-| `autoplay` | Start playing on load |
-| `loop` | Repeat at the end |
-| `show_volume` | Show the volume control |
-| `show_download` | Offer a download link |
-| `rounded` | Corner rounding |
-| `accent_color` | Controls and progress colour |
-| `bg_color` | Player background |
-| `text_color` | Text colour |
-| `font_size_preset` | Text size preset |
+| Tracks (`tracks`) | The playlist. Each track has an **audio file/URL**, a **title**, an **artist** and optional **cover art**. |
+| Design (`design`, `rounded`, `height`) | The player layout and shape. |
+| Controls (`show_volume`, `show_download`, `autoplay`, `loop`) | Which controls to show and how it plays. |
+| Colours (`accent_color`, `bg_color`, `text_color`) + Font size (`font_size_preset`) | The player palette and type scale. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[`tracks` is a repeater]
-It is an [`addable-popup`](/options/option-types/addable-popup): items expand in place in the
-block sidebar rather than opening a modal, and store exactly the value the page builder stores.
-:::
+## Sample content
 
-:::note[Nothing plays in the editor]
-The preview is inert, and `autoplay` in particular is neutralised: a player that started by itself
-would start again on every re-render — which, in a block editor, means on every keystroke in the
-sidebar.
-:::
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above is a two-track playlist:
 
-:::caution[Think twice before using `autoplay`]
-Browsers block unmuted autoplay, and audio that starts on its own is the reason they added the block.
-The option is here because it exists and hiding it would not stop anyone — not because it is a good
-default.
-:::
+```html
+<!-- wp:unysonplus/audio-player {"upOptions":{"tracks":[
+  {"title":"Opening Theme","artist":"UnysonPlus","audio_url":"https://…/song-1.mp3"},
+  {"title":"Second Track","artist":"UnysonPlus","audio_url":"https://…/song-2.mp3"}
+]}} /-->
+```
 
-:::note[A track needs a file]
-Entries with no audio file or URL are why an otherwise-configured player shows "Add at least one
-track" instead of rendering.
-:::
+## The audio-player element
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+The block and the page builder's [Audio Player element](/shortcodes/media-elements/audio-player) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

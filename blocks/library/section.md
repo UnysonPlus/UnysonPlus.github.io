@@ -1,58 +1,46 @@
 ---
 title: Section
+description: The Unyson+ Section block — A full-width band of content — the top-level building block of a page, with its own background, padding, columns and dividers, authored in the block editor and rendered by the section element.
 ---
 
 # Section
 
-A full-width band that holds other blocks — the outermost layer of most pages, with backgrounds, shape dividers and effects.
+A full-width band of content — the top-level building block of a page, with its own background, padding, columns and dividers. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Section element](/shortcodes/layout-elements/section) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the `section` element — the same PHP that runs in the page builder, so the front
-end is identical either way.
+<img src="/img/blocks/section/front.png" alt="The Section block — a full-width band with a tinted background" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `variant` | Section design variant |
-| `is_fullwidth` | Run edge to edge |
-| `container_width` | Inner content width |
-| `min_height` | Minimum height |
-| `column_halign` | Horizontal alignment of the columns |
-| `column_valign` | Vertical alignment of the columns |
-| `reverse_columns` | Reverse the column order |
-| `background` | The full background stack |
-| `background_pattern` | An overlaid pattern |
-| `bg_effect` | A background effect |
-| `divider_top` | Shape divider at the top |
-| `divider_bottom` | Shape divider at the bottom |
-| `text_align` | Text alignment |
-| `padding_top` | Space above |
-| `padding_bottom` | Space below |
-| `gap` | Space between columns |
-| `gap_x` | Horizontal gap |
-| `gap_y` | Vertical gap |
+| Background (`background`) | A solid colour, gradient, image or video behind the whole band. |
+| Width (`is_fullwidth`, `container_width`) | A contained width or edge-to-edge full width. |
+| Padding + Gap (`padding_top`, `padding_bottom`, `gap`) | Vertical space around and between the content. |
+| Columns (`column_halign`, `column_valign`, `reverse_columns`) | How the blocks inside line up. |
+| Dividers (`divider_top`, `divider_bottom`) | Shape dividers at the top and bottom edges. |
+| Min height (`min_height`) | A minimum height — handy for hero bands. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched**.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::caution[A container previews as an outline, not as itself]
-Every other Unyson+ block previews with a server-rendered picture of the finished element. A container
-cannot: its purpose is to hold **other blocks**, and those have to stay editable in place.
+## Inner content
 
-So the canvas shows a neutral dashed outline with the real, editable children inside — **not** the
-element's background, padding, width or design preset. Those are applied by PHP on the front end.
+Section is a **container**: you nest other blocks inside it in the editor, and it wraps them. The `upOptions` object stores the section's own styling; the content comes from the blocks you place within.
 
-That is deliberate. Approximating the wrapper's styling in JavaScript would be a second implementation
-of the element's CSS, guaranteed to disagree with the first the moment either changes. An outline that
-is honestly neutral beats a preview that is subtly wrong. Preview the page to see the real thing.
-:::
+## Sample content
 
-:::note[The children reach PHP the same way the page builder's do]
-`save()` stores the children's markup in post content, the render callback receives it as `$content`,
-and the element renders it inside its wrapper with `do_shortcode()` — exactly as it does for a
-container built in the page builder.
-:::
+The demo above is a full-width band with a tinted background, holding a heading and a paragraph:
 
-:::note[`background` is five layers in one option]
-It is a [`background-pro`](/options/option-types/background-pro) value: colour, gradient, image,
-video and overlay, stacked. A layer is on when it has a value — there is no enable switch.
-:::
+```html
+<!-- wp:unysonplus/section {"upOptions":{"background":{"color":{"value":{"custom":"#eef2ff"}}}}} -->
+  <!-- wp:heading --> … <!-- /wp:heading -->
+  <!-- wp:paragraph --> … <!-- /wp:paragraph -->
+<!-- /wp:unysonplus/section -->
+```
+
+Set the background with the block's background picker rather than typing the object by hand.
+
+## The section element
+
+The block and the page builder's [Section element](/shortcodes/layout-elements/section) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

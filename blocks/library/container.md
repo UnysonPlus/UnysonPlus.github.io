@@ -1,52 +1,44 @@
 ---
 title: Container
+description: The Unyson+ Container block — A centered content box that constrains its content to a comfortable reading width, authored in the block editor and rendered by the container element.
 ---
 
 # Container
 
-A width-constrained wrapper around other blocks — Section without the dividers and effects.
+A centered content box that constrains its content to a comfortable reading width. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Container element](/shortcodes/layout-elements/container) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the `container` element — the same PHP that runs in the page builder, so the front
-end is identical either way.
+<img src="/img/blocks/container/front.png" alt="The Container block — a centered, width-constrained content box" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `is_fullwidth` | Run edge to edge |
-| `min_height` | Minimum height |
-| `column_halign` | Horizontal alignment of the columns |
-| `column_valign` | Vertical alignment of the columns |
-| `reverse_columns` | Reverse the column order |
-| `background` | The full background stack |
-| `background_pattern` | An overlaid pattern |
-| `padding_top` | Space above |
-| `padding_bottom` | Space below |
-| `gap` | Space between columns |
-| `gap_x` | Horizontal gap |
-| `gap_y` | Vertical gap |
+| Background (`background`) | A solid colour, gradient or image behind the box. |
+| Width (`container_width`) | The maximum width the content is constrained to. |
+| Padding (`padding_top`, `padding_bottom`) | Vertical space inside the box. |
+| Min height (`min_height`) | A minimum height for the box. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched**.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::caution[A container previews as an outline, not as itself]
-Every other Unyson+ block previews with a server-rendered picture of the finished element. A container
-cannot: its purpose is to hold **other blocks**, and those have to stay editable in place.
+## Inner content
 
-So the canvas shows a neutral dashed outline with the real, editable children inside — **not** the
-element's background, padding, width or design preset. Those are applied by PHP on the front end.
+Container is a **container**: you nest other blocks inside it in the editor, and it wraps them. The `upOptions` object stores the container's own styling; the content comes from the blocks you place within.
 
-That is deliberate. Approximating the wrapper's styling in JavaScript would be a second implementation
-of the element's CSS, guaranteed to disagree with the first the moment either changes. An outline that
-is honestly neutral beats a preview that is subtly wrong. Preview the page to see the real thing.
-:::
+## Sample content
 
-:::note[The children reach PHP the same way the page builder's do]
-`save()` stores the children's markup in post content, the render callback receives it as `$content`,
-and the element renders it inside its wrapper with `do_shortcode()` — exactly as it does for a
-container built in the page builder.
-:::
+The demo above is a centered box with a tinted background, holding a heading and a paragraph:
 
-:::note[Section or Container?]
-Reach for Container when the band needs a width and a background and nothing else. Section adds shape
-dividers, background effects and a design variant — worth its extra options only when you use them.
-:::
+```html
+<!-- wp:unysonplus/container {"upOptions":{"background":{"color":{"value":{"custom":"#ecfeff"}}}}} -->
+  <!-- wp:heading --> … <!-- /wp:heading -->
+  <!-- wp:paragraph --> … <!-- /wp:paragraph -->
+<!-- /wp:unysonplus/container -->
+```
+
+Set the background with the block's background picker rather than typing the object by hand.
+
+## The container element
+
+The block and the page builder's [Container element](/shortcodes/layout-elements/container) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

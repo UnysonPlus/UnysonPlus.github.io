@@ -1,62 +1,43 @@
 ---
 title: Bleed Section
+description: The Unyson+ Bleed Section block — A section whose background breaks out of the content column to span the full browser width, while the content stays aligned, authored in the block editor and rendered by the bleed-section element.
 ---
 
 # Bleed Section
 
-A section with an image bleeding off one edge and content on the other — the split hero.
+A section whose background breaks out of the content column to span the full browser width, while the content stays aligned. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Bleed Section element](/shortcodes/layout-elements/bleed-section) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the `bleed_section` element — the same PHP that runs in the page builder, so the front
-end is identical either way.
+<img src="/img/blocks/bleed-section/front.png" alt="The Bleed Section block — a full-bleed background with aligned content" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `bleed_image` | The bleeding image |
-| `bleed_image_alt` | Alt text for it |
-| `bleed_image_side` | Which edge it bleeds off |
-| `bleed_image_ratio` | How much width it takes |
-| `bleed_image_position` | How the image is anchored |
-| `bleed_image_lazy` | Lazy-load it |
-| `bleed_mobile_stacking` | Which comes first once stacked |
-| `bleed_min_height` | Minimum height |
-| `is_fullwidth` | Run edge to edge |
-| `background` | The full background stack |
-| `bleed_overlay_color` | Tint over the image |
-| `bleed_overlay_opacity` | How strong that tint is |
-| `bleed_vertical_align` | Vertical alignment of the content |
-| `bleed_content_padding` | Padding around the content |
+| Background (`background`) | The full-bleed background — colour, gradient, image or video, edge to edge. |
+| Overlay (`bleed_overlay_color`, `bleed_overlay_opacity`) | A scrim over the background so overlaid text stays readable. |
+| Content alignment | The inner content stays aligned to your layout while the background bleeds full width. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched**.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::caution[A container previews as an outline, not as itself]
-Every other Unyson+ block previews with a server-rendered picture of the finished element. A container
-cannot: its purpose is to hold **other blocks**, and those have to stay editable in place.
+## Inner content
 
-So the canvas shows a neutral dashed outline with the real, editable children inside — **not** the
-element's background, padding, width or design preset. Those are applied by PHP on the front end.
+Bleed Section is a **container**: you nest other blocks inside it in the editor, and it wraps them. The `upOptions` object stores the bleed section's own styling; the content comes from the blocks you place within.
 
-That is deliberate. Approximating the wrapper's styling in JavaScript would be a second implementation
-of the element's CSS, guaranteed to disagree with the first the moment either changes. An outline that
-is honestly neutral beats a preview that is subtly wrong. Preview the page to see the real thing.
-:::
+## Sample content
 
-:::note[The children reach PHP the same way the page builder's do]
-`save()` stores the children's markup in post content, the render callback receives it as `$content`,
-and the element renders it inside its wrapper with `do_shortcode()` — exactly as it does for a
-container built in the page builder.
-:::
+The demo above is a full-bleed band with a tinted background, holding a heading and a paragraph:
 
-:::caution[`bleed_mobile_stacking` is invisible until it matters]
-Once the image and content stack, one of them comes first — and the default is not always the one you
-want. A section whose text introduces its image reads backwards if the image lands on top.
+```html
+<!-- wp:unysonplus/bleed-section {"upOptions":{"background":{"color":{"value":{"custom":"#eef2ff"}}}}} -->
+  <!-- wp:heading --> … <!-- /wp:heading -->
+  <!-- wp:paragraph --> … <!-- /wp:paragraph -->
+<!-- /wp:unysonplus/bleed-section -->
+```
 
-Set it deliberately, then check it narrow.
-:::
+Set the background with the block's background picker rather than typing the object by hand.
 
-:::note[The bleed image is not drawn in the canvas]
-Only the editable content side appears, inside the outline. `bleed_image_alt` sits beside the image
-for the same reason Image Box's does: alt text written when the image is chosen is alt text that gets
-written.
-:::
+## The bleed section element
+
+The block and the page builder's [Bleed Section element](/shortcodes/layout-elements/bleed-section) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

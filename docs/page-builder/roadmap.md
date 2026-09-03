@@ -51,12 +51,13 @@ in a **Classic** tab that always sorts **last** (still fully supported):
 | **Section** | a modern Div, tagged `<section>`, full-width with contained content | the root band of a page — where you start |
 | **Flexbox (div)** | a Div set to `display: flex` (a `<div>`) | a one-dimensional row or stack that can wrap |
 | **Grid (div)** | a Div set to `display: grid` (a `<div>`) | columns — a card grid, an even split, a hero |
-| *Classic tab ▸* | Section · Container · Bleed Section · Masonry Section (Bootstrap) | existing pages &amp; anyone who prefers the old grid |
+| *Classic tab ▸* | the column-width tiles (`1/1`…`7/12`, fifths `1/5`–`4/5`, Auto Column) · Section · Container · Bleed Section · Masonry Section | existing pages &amp; anyone who prefers the old grid |
 
 A beginner's instinct — *"click Section, it's the main content area"* — now lands on the **modern**
 primitive, not the legacy one. No one has to understand "flex" or "grid" to start a page; they
-discover Grid the moment they want columns. (**Row** and **Column** are no longer standalone tiles —
-they're the internal children the classic containers build from.)
+discover Grid the moment they want columns. Everything Bootstrap — the classic containers **and** the
+column-width tiles — sits together in the **Classic** tab, so the modern Layout Elements tab stays to
+just three tiles.
 
 ## Columns without the math (but the fractions stay)
 

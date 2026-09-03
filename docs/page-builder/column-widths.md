@@ -7,18 +7,19 @@ sidebar_position: 6
 
 A page-builder **column** stores its width as a top-level `width` key on the column item (sibling
 to `type`/`atts`/`_items`), using an **`N_M` fraction string** with an underscore — `"1_2"`,
-`"1_3"`, `"2_3"`, `"3_4"` — not a slash. This page covers which widths are valid, the single
-fifth-width special case, and how columns wrap (which differs between the default flex mode and
-legacy mode).
+`"1_3"`, `"2_3"`, `"3_4"` — not a slash. This page covers which widths are valid (twelfths and
+fifths), and how columns wrap (which differs between the default flex mode and legacy mode). These
+column tiles live in the **Classic** palette tab; new layouts use the modern
+[Div](./the-div-element.md) instead.
 
-The Layout Elements palette offers the widths as ready-made column thumbnails (`1/1`, `1/2`,
+The **Classic** palette tab offers the widths as ready-made column thumbnails (`1/1`, `1/2`,
 `1/3`, …); the "beliefs" band below is a real three-column (`1_3`) row on the canvas.
 
 <img src="/img/builder-canvas.png" alt="The Page Builder canvas — Layout Elements width thumbnails and a three-column row" width="936" />
 
 ## Valid widths
 
-Widths are the usual **twelfths**, plus **one fifth**:
+Widths are the usual **twelfths**, plus the full set of **fifths**:
 
 | Width key | Fraction | Notes |
 | --- | --- | --- |
@@ -27,21 +28,24 @@ Widths are the usual **twelfths**, plus **one fifth**:
 | `1_3`, `2_3` | thirds | |
 | `1_4`, `3_4` | quarters | |
 | `1_6`, `5_6` | sixths | |
-| `5_12`, `7_12` | twelfths | |
-| **`1_5`** | **1/5 (20%)** | the **only** supported fifth |
+| `5_12`, `7_12`, `11_12`, `1_12` | twelfths | |
+| **`1_5`, `2_5`, `3_5`, `4_5`** | **fifths (20 / 40 / 60 / 80%)** | rendered via the `fw-col-*-{15,25,35,45}` classes |
 
-:::caution[Fifths on the classic column: only `1_5` exists]
-On the **classic** column, there is **no `2_5` / `3_5` / `4_5`** — those are not valid widths; don't
-emit them. A `1_5` column renders as **`fw-col-12 fw-col-sm-15`** (the grid's fifth class = 20%), so
-**five** `1_5` columns make a clean 5-across row with no CSS hacks. Don't use `width:"auto"` to fake
-equal columns — an unrecognized width makes the corrector drop the column wrapper entirely.
+The palette also offers an **Auto Column** (fills the remaining space).
+
+:::note[Fifths now render on the Classic column too]
+The classic column supports **all** fifths — `1/5`, `2/5`, `3/5`, `4/5` — via the grid's
+`fw-col-sm-{15,25,35,45}` classes (20 / 40 / 60 / 80%), so e.g. a `2_5` + `3_5` pair makes a clean
+40/60 split. (Earlier builds only had `1_5`.) Don't use `width:"auto"` to fake a width — an
+unrecognized width makes the corrector drop the column wrapper entirely; use **Auto Column** when you
+want a cell to take the leftover space.
 :::
 
-:::tip[The modern Div supports the full `1/5 – 4/5` set]
-This restriction is specific to the classic Bootstrap column. The modern
-**[Div element](./the-div-element.md#fifths)** offers `1/5`, `2/5`, `3/5` **and** `4/5` as Width
-tiles — they render as exact percentages (20 / 40 / 60 / 80%) via scoped CSS, plus content-sizing
-keywords (Fit / Max / Min). Prefer the Div for any layout the twelfths grid can't express cleanly.
+:::tip[These tiles live in the Classic tab]
+The column-width tiles are part of the **Classic** palette tab, alongside the Bootstrap containers.
+For a new layout, reach for the modern **[Div element](./the-div-element.md#width)** instead — its
+Width control offers the same fractions (twelfths **and** fifths) plus content-sizing (Fit / Max /
+Min) and a custom px/%/rem/vw value, on a clean flex/grid Div.
 :::
 
 ### Auto-flex (`col`) columns

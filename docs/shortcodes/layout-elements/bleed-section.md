@@ -5,6 +5,10 @@ sidebar_position: 60
 
 # Bleed Section
 
+:::note[Classic layout element]
+Bleed Section is part of the **Classic** palette tab. For new layouts you can achieve the same full-bleed effect with a full-width **[Div](/page-builder/the-div-element)** (a `section`-tag Div spans edge-to-edge). This element stays fully supported for existing pages.
+:::
+
 A split section with content on one side and a full-bleed image on the other, extending to the viewport edge and stacking on mobile. Its options live across the **Layout**, **Styling**, **Animations**, and **Advanced** tabs.
 
 *"Full-bleed"* is a print term for artwork that runs right off the edge of the page. On the web it means an image (or colour) that touches the screen edge with no surrounding margin — a bold, immersive look, versus the usual content that sits inside the page's padding.

@@ -29,8 +29,12 @@ covered in depth. If a page assumes a word you don't recognize, it's probably he
 - **Element** (a.k.a. **shortcode**) — a building block you drop on the canvas (a Button, a Heading,
   an Accordion). Every element is a WordPress shortcode under the hood. See
   [Elements](/shortcodes/overview).
-- **Section / Row / Column** — the layout containers. A page nests **section → row → column →
-  element**. See [Column widths](/page-builder/column-widths).
+- **Div (Flex · Grid · Block)** — the modern layout primitive: one container you set to Flex, Grid
+  or Block that outputs a semantic HTML tag. It leads the palette (as Section / Flexbox / Grid) and
+  is the recommended way to lay out a page. See [The Div element](/page-builder/the-div-element).
+- **Section / Row / Column (Classic)** — the original Bootstrap-grid containers, where a page nests
+  **section → row → column → element**. Still fully supported, now grouped under the **Classic**
+  palette tab. See [Column widths](/page-builder/column-widths).
 - **Container element** — a second boxed/full-width wrapper you can place inside a section.
 - **Builder JSON** — the stored representation of a built page: a JSON tree of items. See
   [The builder JSON tree format](/page-builder/builder-json-format).

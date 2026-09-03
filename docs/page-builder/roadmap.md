@@ -43,19 +43,20 @@ guide explains Flex vs Grid vs Block from scratch.
 
 ## What you'll see in the palette
 
-The **Layout** tab leads with the modern primitives; the classic Bootstrap elements move into a
-**Classic** group (still fully supported):
+The **Layout Elements** tab leads with the modern primitives; the classic Bootstrap containers live
+in a **Classic** tab that always sorts **last** (still fully supported):
 
 | Tile | Creates | For |
 |---|---|---|
-| **Section** | a modern Div, tagged `<section>`, with contained content | the root band of a page — where you start |
-| **Grid** | a Div set to `display: grid` | columns (a card grid, an even split, a hero) |
-| **Flexbox** | a Div set to `display: flex` | a one-dimensional row or stack that can wrap |
-| *Classic ▸* | Section (Bootstrap) · Row · Column | existing pages &amp; anyone who prefers the old grid |
+| **Section** | a modern Div, tagged `<section>`, full-width with contained content | the root band of a page — where you start |
+| **Flexbox (div)** | a Div set to `display: flex` (a `<div>`) | a one-dimensional row or stack that can wrap |
+| **Grid (div)** | a Div set to `display: grid` (a `<div>`) | columns — a card grid, an even split, a hero |
+| *Classic tab ▸* | Section · Container · Bleed Section · Masonry Section (Bootstrap) | existing pages &amp; anyone who prefers the old grid |
 
 A beginner's instinct — *"click Section, it's the main content area"* — now lands on the **modern**
 primitive, not the legacy one. No one has to understand "flex" or "grid" to start a page; they
-discover Grid the moment they want columns.
+discover Grid the moment they want columns. (**Row** and **Column** are no longer standalone tiles —
+they're the internal children the classic containers build from.)
 
 ## Columns without the math (but the fractions stay)
 
@@ -85,7 +86,8 @@ So the *feel* is the same — familiar fractions — while the *output* is clean
 | Content Width on the Div | A container option so a full-width `section` Div centres its content to a max-width (no accidental full-bleed). | 🟡 In progress |
 | Converter → flex/grid | The **Site Converter** rebuilds a source's content rows as flex/grid **Div** rows instead of Bootstrap columns. | 🟡 In progress |
 | Div = default wrapper | Dropping an element on an empty canvas wraps it in a **Div** (tagged `section` at the root, `div` when nested) — not Section → Column. | 🟡 In progress |
-| Modern palette | **Section** (modern Div) / **Grid** / **Flexbox** lead the Layout tab; Bootstrap moves to **Classic**. | 🟡 In progress |
+| Modern palette | **Section** (modern Div) / **Flexbox** / **Grid** lead the **Layout Elements** tab; the Bootstrap **Section / Container / Bleed Section / Masonry Section** move to a **Classic** tab that always sorts last. | 🟢 Shipped |
+| Insert Section → Flexbox | The header **Insert Section** picker now builds modern **Flexbox** layouts (Equal Columns, Offset & Sidebar, Multi-Row, Multi-Column); only its **Masonry** tab still inserts a classic `masonry_section`. | 🟢 Shipped |
 | Columns as Grid | Drop cells into a Grid Div; fractions become grid spans (`1/3` → `span 4`). | 🟡 In progress |
 | Live Editor parity | The modern layout tiles + Div inserts now work in the front-end **Live Page Editor** too, matching the backend builder. | 🟡 In progress |
 

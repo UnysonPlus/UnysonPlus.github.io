@@ -49,6 +49,12 @@ You don't have to build the full Section → Column → element nesting by hand:
 element straight onto the canvas and the builder wraps it in a column, a row, and a section for
 you when the page renders. That wrapping is done by the [items corrector](./items-corrector.md).
 
+:::tip[Start with a prebuilt layout]
+To skip building columns one by one, use **[Insert Section](./insert-section.md)** in the builder
+header — pick a ready-made column layout (equal columns, offset & sidebar, multi-row, nested
+multi-column, or masonry) and it drops a fully-formed section onto the page.
+:::
+
 ## The element palette
 
 Elements are grouped into tabs in a deliberate order — **Layout**, **Content**, **Media**,

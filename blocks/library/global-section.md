@@ -1,36 +1,38 @@
 ---
 title: Global Section
+description: The Unyson+ Global Section block — embeds a saved Global Section (a reusable header/body/footer band) by reference, authored in the block editor and rendered by the Snippets extension.
 ---
 
 # Global Section
 
-A saved section placed by reference — define it once, use it on many pages, edit it in one place. Core has reusable blocks (patterns); this is the page-builder equivalent, and the two sets of saved content stay separate.
+Embeds a **saved Global Section** — a reusable band (a promo bar, a shared footer CTA, a header strip) you build once and reuse across the site. Change it in one place and every reference updates. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are produced by the same server-side code as the page builder, so the output is identical either way.
 
-The block renders through the `global_section` element — the same PHP that runs in the page builder, so the front end is identical either way.
+<img src="/img/blocks/global-section/front.png" alt="The Global Section block — a reusable call-to-action bar embedded by reference" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `snippet_id` | Which saved section to place |
+| Global Section (`snippet_id`) | Which saved Global Section to embed — pick it by name in the block. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[One option, because that is the whole element]
-The content lives in the saved section, not in this block. Editing it there updates every page that
-places it — which is the difference between this and copying a block.
+:::note Needs the Snippets extension
+This block embeds a **Global Section** — a reusable band the **[Snippets](/extensions/snippets)** extension adds. Create one first, then reference it here.
 :::
 
-:::note[The preview can change without the block changing]
-The canvas renders the chosen section's **current** content. Edit the section elsewhere and every
-block pointing at it shows the new version next time it renders. That is the point of the element,
-and it is worth knowing before wondering why a page looks different from when you left it.
-:::
+## Sample content
 
-:::caution[An unpublished section renders nothing — and now says so]
-Moving a saved section back to draft removes it from every page that places it. On the front end that
-is silent, by design. In the editor the block now names the reason, including the section's title, so
-a page that has quietly lost a chunk is diagnosable rather than mysterious.
-:::
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above embeds a saved global section by its ID:
+
+```html
+<!-- wp:unysonplus/global-section {"upOptions":{"snippet_id":"299"}} /-->
+```
+
+Pick the section in the block's inspector rather than typing an ID by hand.
+
+## Part of the Snippets extension
+
+The Global Section block is the companion of **[Snippet](/blocks/library/snippet)**, both powered by the **[Snippets](/extensions/snippets)** extension. Use a Global Section for a shared header/body/footer band, and a Snippet for a reusable content block.

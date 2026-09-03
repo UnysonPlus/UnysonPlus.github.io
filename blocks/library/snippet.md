@@ -1,36 +1,38 @@
 ---
 title: Snippet
+description: The Unyson+ Snippet block — embeds a saved, reusable content Snippet by reference, authored in the block editor and rendered by the Snippets extension.
 ---
 
 # Snippet
 
-Output a saved snippet by name.
+Embeds a **saved Snippet** — a reusable piece of content you build once and drop in anywhere. Edit the snippet in one place and every block that references it updates. Great for a shared CTA, a promo bar, or any block of markup you repeat across pages. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are produced by the same server-side code as the page builder, so the output is identical either way.
 
-The block renders through the `snippet` element — the same PHP that runs in the page builder, so the front end is identical either way.
+<img src="/img/blocks/snippet/front.png" alt="The Snippet block — a reusable content card embedded by reference" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `id` | Which snippet to output |
+| Snippet (`id`) | Which saved Snippet to embed — pick it by name in the block. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[The same reference model as Global Section]
-The content lives in the snippet. This block places it, and the editor preview shows the snippet's
-current content.
+:::note Needs the Snippets extension
+This block embeds a **Snippet** — a reusable content item the **[Snippets](/extensions/snippets)** extension adds. Create a snippet first, then reference it here.
 :::
 
-:::caution[A snippet can contain saved code]
-What this renders is whatever the snippet renders — in the editor as well as on the front end.
-Snippets are authored by administrators, and that is the boundary that makes it acceptable. It is not
-a place to paste code from somewhere else and see what happens.
-:::
+## Sample content
 
-:::note[Empty for a reason, and it tells you which]
-No snippet chosen, a snippet deleted, a snippet unpublished, and a snippet that is genuinely empty are
-four different situations. The editor names which one you have instead of showing four identical
-blank blocks.
-:::
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above embeds a saved snippet by its ID:
+
+```html
+<!-- wp:unysonplus/snippet {"upOptions":{"id":"296"}} /-->
+```
+
+Pick the snippet in the block's inspector rather than typing an ID by hand.
+
+## Part of the Snippets extension
+
+The Snippet block is the companion of **[Global Section](/blocks/library/global-section)**, both powered by the **[Snippets](/extensions/snippets)** extension. Use a Snippet for a reusable content block, and a Global Section for a shared header/body/footer band.

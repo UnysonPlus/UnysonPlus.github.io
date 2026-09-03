@@ -1,51 +1,34 @@
 ---
 title: Table
+description: The Unyson+ Table block — a responsive data table with header rows, striping and cell formatting, authored in the block editor and rendered by the table element.
 ---
 
 # Table
 
-A data table with sorting, search, pagination and a sticky header.
+A **data table** — rows and columns of content with a header row, striping, hover highlighting and per-cell formatting. Build a spec sheet, a schedule or a simple comparison, and it stays readable on mobile. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Table element](/shortcodes/content-elements/table) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`table`](/shortcodes/content-elements/table) element — the same
-PHP that runs in the page builder, so the front end is identical either way.
+<img src="/img/blocks/table/front.png" alt="The Table block — a striped three-column comparison table" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `table` | The table itself — columns, rows and cells |
-| `table_preset` | Table style preset |
-| `frame_preset` | Frame around the table |
-| `style_striped` | Alternate row shading |
-| `style_hover` | Highlight the row under the pointer |
-| `style_bordered` | Cell borders |
-| `style_condensed` | Tighter rows |
-| `sticky_header` | Keep the header visible while scrolling |
-| `caption` | Caption text |
-| `caption_position` | Above or below |
-| `enable_sort` | Let visitors sort by column |
-| `enable_search` | Add a search box |
-| `enable_pagination` | Paginate long tables |
-| `pagination_length` | Rows per page |
-| `enable_length_change` | Let visitors change that |
-| `enable_info` | Show the "showing X of Y" line |
-| `text_color` | Cell text colour |
-| `bg_color` | Background |
-| `font_size_preset` | Text size preset |
+| Table (`table`) | The grid itself — add and remove rows and columns from the toolbar; the first row is the header. Each cell holds rich text, and can carry a colspan/rowspan merge. |
+| Header / footer rows (`header_options`) | How many rows at the top (and bottom) are treated as `<thead>` / `<tfoot>`. |
+| Style (`table-style-picker`) | The visual treatment — striping, borders, hover highlighting. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched**.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[Cells are edited in the sidebar, as a list of rows]
-The [`table`](/options/option-types/table) control lists each row's cells rather than drawing a
-grid — a sidebar column is not a grid. Column alignment and width, and the header and footer row
-counts, are here.
-
-**Merging cells stays in the page builder**, where there is a grid to merge across. Merges made there
-survive editing here untouched: the control spreads a cell when its text changes rather than
-rebuilding it.
+:::tip[💡 Web dev tip: use a real table for tabular data]
+Reach for a `<table>` only for genuine rows-and-columns *data* — not for page layout. A real table gives screen-reader users row/column navigation and a header association that a grid of `<div>`s can't. Keep cell text short so the table wraps gracefully on small screens. [MDN: table accessibility](https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Advanced) · [Web Dev Basics: Accessibility](/learn/accessibility)
 :::
 
-:::note[Sorting, search and pagination do not work in the canvas]
-All three replace what the table is showing, which in an editor means the preview stops being a
-preview of the rows you are editing.
-:::
+## Sample content
+
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. Build the grid in the block's table editor rather than by hand — each cell is an object, and the rows and columns carry structural metadata. The demo above is a four-row, three-column comparison with a header row.
+
+## The table element
+
+The block and the page builder's [Table element](/shortcodes/content-elements/table) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

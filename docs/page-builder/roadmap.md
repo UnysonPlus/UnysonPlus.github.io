@@ -77,7 +77,11 @@ So the *feel* is the same — familiar fractions — while the *output* is clean
 | Phase | What | Status |
 |---|---|---|
 | The Div element | The **[Div](./the-div-element.md)** (Flex / Grid / Block) ships as a Page-Builder element, with Direction, Wrap, Justify, Align, Gap, Grid tracks + Auto-fit, and the full item toolkit (Grow, Shrink, Align Self, Order). | 🟢 Shipped |
-| Responsive Width control | A per-device **[Width](./the-div-element.md#width)** picker: the twelfths grid (as `fw-span-*`) **plus fifths `1/5–4/5`**, **content-sizing** (Fit / Max / Min), and a Custom px/%/rem/vw value — the last three via per-element scoped CSS. | 🟢 Shipped |
+| Responsive Width control | A per-device **[Width](./the-div-element.md#width)** picker: the twelfths grid (as `fw-span-*`) **plus fifths `1/5–4/5`** and **content-sizing** (Fit / Max / Min), plus a Custom px/%/rem/vw value. | 🟢 Shipped |
+| Responsive Collapse | A multi-column Grid / Flex row steps down on its own — 2 columns on tablets, one stacked column on phones — with an opt-out. Emitted as shared `fw-grid-collapse` / `fw-collapse` classes. | 🟢 Shipped |
+| Section = full-width band | A `section`-tag Div is always full-width (its Width control is hidden); use **Content Width** to constrain the content. Matches the classic Section. | 🟢 Shipped |
+| Insert Grid picker | The palette **Grid** tile opens a grouped picker (Equal / 2- / 3- / 4-column, ~22 layouts incl. fifths); every tile in both the Insert Grid and Insert Section pickers is captioned with its fraction sum (`1/3 + 2/3`). | 🟢 Shipped |
+| **[Clean output](./clean-output-plan.md)** | Route **every** standard Width through a shared `frontend-grid.css` class (like Bootstrap) instead of a per-element `<style>` block; grid cells carry no width; only a hand-typed custom value gets an inline variable. | 🟡 In progress |
 | Content Width on the Div | A container option so a full-width `section` Div centres its content to a max-width (no accidental full-bleed). | 🟡 In progress |
 | Converter → flex/grid | The **Site Converter** rebuilds a source's content rows as flex/grid **Div** rows instead of Bootstrap columns. | 🟡 In progress |
 | Div = default wrapper | Dropping an element on an empty canvas wraps it in a **Div** (tagged `section` at the root, `div` when nested) — not Section → Column. | 🟡 In progress |

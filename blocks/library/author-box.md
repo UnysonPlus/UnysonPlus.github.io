@@ -1,56 +1,38 @@
 ---
 title: Author Box
+description: The Unyson+ Author Box block — A rich author card — avatar, name, bio and a link to all their posts, authored in the block editor and rendered by the page builder.
 ---
 
 # Author Box
 
-An author card — avatar, name, role, bio and social links — pulled from a WordPress user or typed in directly.
+A rich author card — avatar, name, bio and a link to all their posts. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Author Box element](/shortcodes/components/author-box) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`author_box`](/shortcodes/components/author-box) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/author-box/front.png" alt="The Author Box block — an author card with avatar, name and bio" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `source` | Read from a user, or use the fields below |
-| `user_id` | Which user, when reading from one |
-| `name` | Name |
-| `role` | Role or title |
-| `bio` | Short bio |
-| `avatar` | Photo |
-| `socials` | Social links |
-| `design` | Card design preset |
-| `avatar_shape` | Avatar shape |
-| `avatar_size` | Avatar size |
-| `show_posts` | List their recent posts |
-| `accent_color` | Accent colour |
-| `card_bg` | Card background |
-| `name_color` | Name colour |
-| `text_color` | Text colour |
-| `font_size_preset` | Text size preset |
+| Source (`source`) | The current post's author, or a specific user. |
+| Design (`design`, avatar shape, card style) | The card layout and avatar treatment. |
+| Colours + Typography | Palette and type scale for the card. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[`socials` is a repeater]
-It is an [`addable-popup`](/options/option-types/addable-popup): items expand in place in the
-block sidebar rather than opening a modal, and store exactly the value the page builder stores.
+:::note Reads the current post
+This block outputs data from the **post in context**, so it renders where a post is being viewed — a single post, or a post inside a query loop or template. On a plain page there is no post for it to read.
 :::
 
-:::note[Both sets of fields are shown, whichever source you pick]
-`source` decides whether the card reads from a WordPress user or from the fields typed beneath it.
-Both are exposed rather than hidden by the choice, because a card set to read from a user would
-otherwise present fields that silently do nothing — and the reverse is worse.
-:::
+## Sample content
 
-:::note[On a draft, the post author is whoever is logged in]
-With `source` set to the current post's author, the canvas shows that author as of now — which on a
-new draft is you, not necessarily who it will be attributed to when it publishes.
-:::
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above is:
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+```html
+<!-- wp:unysonplus/author-box {"upOptions":{}} /-->
+```
+
+## The author box element
+
+The block and the page builder's [Author Box element](/shortcodes/components/author-box) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

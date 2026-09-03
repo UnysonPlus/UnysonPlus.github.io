@@ -1,56 +1,47 @@
 ---
 title: Map
+description: The Unyson+ Map block — an interactive map with custom markers, on free OpenStreetMap or Google Maps, authored in the block editor and rendered by the map element.
 ---
 
 # Map
 
-An embedded map with markers — Google Maps or OpenStreetMap, your choice of provider.
+An **interactive map** with your own markers — on **OpenStreetMap** (free, no API key) or **Google Maps**. Drop pins with a title and description, set the height, and let visitors pan and zoom. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Map element](/shortcodes/media-elements/map) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`map`](/shortcodes/media-elements/map) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/map/front.png" alt="The Map block — an OpenStreetMap of Lower Manhattan with a location marker" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `data_provider` | Where the markers come from |
-| `map_engine` | Which mapping service renders it, and its API key |
-| `map_height` | Map height, with a unit |
-| `disable_scrolling` | Stop the wheel zooming the map as you scroll past |
-| `bg_color` | Background behind the map |
+| Engine (`map_engine`) | **OpenStreetMap** (free, no API key) or **Google Maps** (needs an API key). |
+| Locations (`data_provider`) | The markers. Each has a **location** (an address with coordinates), a **title** and a **description**. |
+| Height (`map_height`) | The map's height. |
+| Scrolling (`disable_scrolling`) | Turn off scroll-wheel zoom so the page scrolls past the map cleanly. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[The map does not load in the editor, and that is the point]
-A live embed would pull the provider's script and map tiles into the editor, count against your API
-quota, and do it again on every re-render. The canvas shows the element's own placeholder frame
-instead.
-
-To see the real map, preview the page.
+:::note OpenStreetMap needs no key
+Choose the **OpenStreetMap** engine and the map works immediately — no account, no API key, no billing. Google Maps needs an API key with billing enabled in Google Cloud.
 :::
 
-:::caution[The API key is shown here, but not editable here]
-`map_engine` is a [`multi-picker`](/options/option-types/multi-picker) that reveals the settings
-its chosen service needs, and the Google key is one of them — but in a block it is **read-only**, and
-deliberately so.
+## Sample content
 
-The key is a **site-wide** setting: the option type stores it in a `wp_option`, not on the element. A
-block's attributes never pass through that storage layer, so an editable field here would write the
-key into this one block, where nothing reads it. The map would go on using the site-wide key, the
-field would look saved, and the two would disagree permanently.
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above places one marker on OpenStreetMap:
 
-The block tells you whether a key is set and where to change it — the page builder or Theme Settings.
-:::
+```html
+<!-- wp:unysonplus/map {"upOptions":{
+  "map_engine":{"engine":"osm"},
+  "data_provider":{"population_method":"custom","custom":{"locations":[
+    {"location":{"location":"New York, NY","coordinates":{"lat":40.7128,"lng":-74.006}},"title":"Our HQ"}
+  ]}},
+  "map_height":{"value":"420","unit":"px"}
+}} /-->
+```
 
-:::note[Custom marker locations stay in the page builder]
-The `location` field inside a custom locations list is a map-with-a-marker picker: choosing a point
-means seeing a map. That is not something a sidebar column does well, and it is the one field in the
-whole block set with no React control — the rest of this block is editable here.
-:::
+Place markers with the block's map picker rather than typing coordinates by hand.
 
-:::caution[Leave `disable_scrolling` on for a map inside a page]
-Otherwise the wheel zooms the map when a visitor scrolls past it, and the page stops moving. It is
-the single most common complaint about embedded maps.
-:::
+## The map element
+
+The block and the page builder's [Map element](/shortcodes/media-elements/map) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

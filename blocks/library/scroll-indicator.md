@@ -1,39 +1,36 @@
 ---
 title: Scroll Indicator
+description: The Unyson+ Scroll Indicator block — an animated "scroll down" cue with a label and chevron that invites visitors to keep scrolling, authored in the block editor and rendered by the page builder.
 ---
 
 # Scroll Indicator
 
-A scroll-down cue — text and an animated icon that jumps further down the page. The thing at the bottom of a full-height hero.
+An animated **"scroll down" cue** — a short label and a bouncing chevron that invites visitors to keep going, usually at the bottom of a hero. Click it to smooth-scroll to the next section. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are produced by the same server-side code as the page builder, so the output is identical either way.
 
-The block renders through the `scroll_indicator` element — the same PHP that runs in the page builder, so the front end is identical either way.
+<img src="/img/blocks/scroll-indicator/front.png" alt="The Scroll Indicator block — a Scroll to descend label above an animated chevron" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `text` | The label, e.g. “Scroll” |
-| `icon` | The icon |
-| `target` | Where clicking it scrolls to |
-| `layout` | Icon above, below or beside the text |
-| `animation` | How the icon moves |
-| `text_color` | Label colour |
-| `icon_color` | Icon colour |
-| `icon_size` | Icon size, with a unit |
+| Text (`text`, `title`) | The label above the icon (e.g. "Scroll to descend"). |
+| Icon (`icon`, `icon_color`, `icon_size`) | The cue glyph — a chevron by default. |
+| Layout (`layout`, `stacked`, `inline`) | Stack the label above the icon, or place them inline. |
+| Animation (`animation`, `bounce`, `pulse`, `nudge`) | The motion that draws the eye. |
+| Target (`target`) | The section to smooth-scroll to when clicked. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::caution[`target` is easy to get wrong and hard to notice]
-It points at an anchor or selector further down the **same** page. An indicator aimed at nothing still
-animates invitingly and then does nothing when clicked — a failure with no visible symptom until
-someone tries it.
-
-Set the target, and check it in a page preview rather than in the canvas.
+:::tip[💡 Web dev tip: motion should respect user preferences]
+Some people set "reduce motion" at the OS level because animation makes them dizzy. Wrap non-essential motion in a `@media (prefers-reduced-motion: reduce)` query and dial it down — the browser exposes that preference so you can honour it. A gentle cue is helpful; a relentless bounce for someone who asked for calm is not. [MDN: prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) · [Web Dev Basics: Accessibility](/learn/accessibility)
 :::
 
-:::note[The preview is still, and does not scroll]
-The bounce is held, and clicking does not jump: in the canvas that would scroll the **editor**, to an
-element the editor may not have rendered yet.
-:::
+## Sample content
+
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above uses the defaults:
+
+```html
+<!-- wp:unysonplus/scroll-indicator {"upOptions":{}} /-->
+```

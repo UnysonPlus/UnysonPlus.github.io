@@ -1,50 +1,40 @@
 ---
-title: Video
+title: Media Video
+description: The Unyson+ Media Video block — a YouTube/Vimeo or self-hosted video with a lazy-loaded poster facade, authored in the block editor and rendered by the media-video element.
 ---
 
-# Video
+# Media Video
 
-A video at a fixed aspect ratio — self-hosted files, or an embed from YouTube, Vimeo and other oEmbed providers.
+A **video player** — embed a YouTube or Vimeo URL, or a self-hosted MP4/WebM — with a lightweight **poster facade** that loads the heavy player only when the visitor clicks. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [Media Video element](/shortcodes/media-elements/media-video) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the [`media_video`](/shortcodes/media-elements/media-video) element — the same PHP that runs in the page builder, so the
-front end is identical either way.
+<img src="/img/blocks/media-video/front.png" alt="The Media Video block — a poster image with a play button over an embedded video" width="640" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `source_type` | Self-hosted or embedded, and the settings that source needs |
-| `width` | Width, with a unit |
-| `ratio` | Aspect ratio |
-| `bg_color` | Background behind the video |
+| Source (`source_type`) | **Embed** a YouTube/Vimeo URL, or use a **self-hosted** MP4/WebM file. |
+| Poster (`poster`) | The still image shown before play — describe its subject for accessibility. |
+| Ratio (`ratio`) + Object fit (`object_fit`) | The aspect ratio and how the video fills its frame. |
+| Playback (`autoplay`, `loop`, `muted`, `controls`, `playsinline`) | Standard playback behaviour. |
+| Performance (`lazy_facade`, `preload`, `youtube_nocookie`) | Load the player only on click, and use YouTube's privacy-friendly domain. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[`source_type` is a picker that reveals its own options]
-It is a [`multi-picker`](/options/option-types/multi-picker): choosing an option reveals the
-fields belonging to that choice, and **only the chosen branch is saved**.
+:::tip[💡 Web dev tip: don't autoplay video with sound]
+Autoplaying audio surprises people, drains data and hurts accessibility — most browsers block it anyway. If you must autoplay, keep it **muted** and give a visible control to unmute. A lazy-loaded poster (like this block's facade) also keeps a heavy embed from slowing your page's initial load. [web.dev: autoplay policy](https://developer.chrome.com/blog/autoplay/) · [Web Dev Basics: Performance](/learn/performance)
 :::
 
-:::note[The video does not load in the editor]
-For an embedded source it is not fetched at all: a live embed would pull the provider's player into
-the editor and reload it on every re-render. The canvas shows the element's frame at the chosen
-ratio.
-:::
+## Sample content
 
-:::note[Two different "nothing here" messages, on purpose]
-An empty URL and a URL that **cannot be embedded** are different problems, and the element says which
-one you have. An unresolvable URL is usually a watch-page variant, a private video, or a provider
-WordPress does not support — knowing that saves re-pasting the same address.
-:::
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above embeds a YouTube video with a poster:
 
-:::note[The privacy and performance switches are on the source branch]
-YouTube-nocookie and the lazy-load facade live inside the embed branch of `source_type`, alongside
-the URL they apply to.
-:::
+```html
+<!-- wp:unysonplus/media-video {"upOptions":{"source_type":{"source":"embed","embed":{"url":"https://www.youtube.com/watch?v=…"}},"poster":{...},"ratio":"16-9"}} /-->
+```
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+## The media-video element
+
+The block and the page builder's [Media Video element](/shortcodes/media-elements/media-video) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

@@ -2,7 +2,7 @@
 title: "Plan: clean flexbox output"
 slug: /page-builder/clean-output-plan
 sidebar_position: 9
-description: "The plan for making the flexbox Div emit clean, Bootstrap-style shared utility classes instead of per-element <style> blocks — what's wrong today, the target output, and the phased fix."
+description: "The plan for making the flexbox Div emit only shared utility classes — no style attributes, no per-element <style> blocks. A 60-base span-class system plus grid-template classes, exactly like the Bootstrap grid."
 keywords:
   - unysonplus clean html output
   - flexbox utility classes
@@ -12,118 +12,120 @@ keywords:
 
 # Plan: clean flexbox output
 
-The flexbox **Div** should emit output as clean as the classic Bootstrap grid did — **shared,
-cacheable utility classes**, not a `<style>` block glued to every cell. Today it does this for
-*some* widths and falls back to per-element `<style>` for the rest. This page is the plan to close
+The flexbox **Div** should emit output as clean as the classic Bootstrap grid — **only shared,
+cacheable utility classes.** No `style` attributes, no per-element `<style>` blocks. Today it does
+this for twelfths and falls back to per-element CSS for everything else. This is the plan to close
 that gap.
+
+## The rule
+
+> **Every width is a class.** No `style=""`, no `<style>` block, ever. If a value has no matching
+> class, the control **snaps** it to the nearest one — it never falls back to inline CSS.
+
+That's the Bootstrap contract (`col-md-6` is a class, full stop), applied to the Div's whole width
+vocabulary.
 
 ## The problem, concretely
 
-A six-column grid currently renders like this — a scoped `<style>` block before **every** cell:
+A six-column grid renders like this today — a scoped `<style>` block before **every** cell:
 
 ```html
 <div class="fw-flexbox fx-parent fw-grid" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));">
   <style>.fx-a{flex:0 0 16.66% !important;max-width:16.66% !important;}</style>
   <div class="fw-flexbox fx-a fw-flex …"><p>Test</p></div>
-  <style>.fx-b{flex:0 0 16.66% !important;max-width:16.66% !important;}</style>
-  <div class="fw-flexbox fx-b fw-flex …"><p>Test</p></div>
   … ×6
 </div>
 ```
 
-Two things are wrong:
-
-1. **Per-element `<style>` blocks.** Six identical rules, none cacheable, interleaved with the DOM.
-2. **Redundant width inside a grid.** The parent is already `display:grid; grid-template-columns:
-   repeat(6,…)` — the tracks size the cells. The `flex:0 0 16.66%` is inert in a grid and the
-   `max-width` fights the track. The cell needs **no** width at all.
+Two problems: (1) per-element `<style>` blocks, none cacheable; (2) the widths are redundant — the
+grid tracks already size the cells.
 
 ## Why it happens
 
-There **is** a Bootstrap-style shared-class layer — `frontend-grid.css` in the `builder`
-extension. It already carries:
+There **is** a Bootstrap-style shared-class layer — `frontend-grid.css` in the `builder` extension.
+It already carries `fw-span-1…12` (twelfths), `fw-flex-*` / `fw-justify-*` / gap utilities, and the
+`fw-grid-collapse` / `fw-collapse` responsive classes. So twelfths, container props, and collapse
+are **already clean shared classes.** The bloat is the widths with **no class**: fifths, grid-cell
+percentages, content-sizing, and arbitrary custom values.
 
-- `fw-span-1 … fw-span-12` — the twelfths widths (gap-aware in a flex row, `grid-column: span N` in a grid),
-- `fw-flex-*`, `fw-justify-*`, `fw-items-*`, gap utilities — the flex/grid container properties,
-- `fw-grid-collapse` / `fw-collapse` — the responsive-collapse behaviour.
+## The class vocabulary
 
-So **twelfths widths, container props, and collapse are already clean, shared classes.** The bloat
-comes from the widths that *aren't* twelfths and therefore have no class to use:
+Two families of shared class, both defined once in `frontend-grid.css`.
 
-| Width kind | Today | Should be |
-|---|---|---|
-| Twelfths (1/2, 1/3, 2/3, …) | `fw-span-*` class ✅ | unchanged |
-| **Cell inside an equal Grid** | scoped `<style>` (16.66% …) | **no width** — the grid tracks size it |
-| **Fifths (1/5–4/5)** | scoped `<style>` (20/40/60/80%) | a **shared class** (`fw-fifths-*`) |
-| **Content-sizing (fit/max/min)** | scoped `<style>` | a **shared class** (`fw-w-fit` …) |
-| **Arbitrary custom** (37.3%, 220px) | scoped `<style>` | **one inline var** + one shared rule, no `<style>` block |
-| Responsive collapse | shared class ✅ | unchanged |
+### 1. Span classes — `fw-col-N`, base 60
 
-## The principle
+**LCM(12, 5) = 60**, so every twelfth *and* every fifth is an exact integer span of 60 — one
+vocabulary covers both, with no percentages:
 
-> Anything a **preset** can express is a **shared class** in `frontend-grid.css`. A per-element rule
-> exists **only** for a value the user typed by hand that no preset covers — and even then it rides
-> on the element inline (a CSS variable), never in its own `<style>` block.
+| Fraction | class | | Fraction | class |
+|---|---|---|---|---|
+| 1/12 | `fw-col-5` | | 1/5 | `fw-col-12` |
+| 1/6 | `fw-col-10` | | 2/5 | `fw-col-24` |
+| 1/4 | `fw-col-15` | | 3/5 | `fw-col-36` |
+| 1/3 | `fw-col-20` | | 4/5 | `fw-col-48` |
+| 1/2 | `fw-col-30` | | 2/3 | `fw-col-40` |
 
-That's exactly the Bootstrap contract (`col-md-6` is a class; only a bespoke value needs bespoke
-CSS), applied to the Div's full width vocabulary.
+Each class works in **both** contexts (extending the existing `fw-span-*` mechanism):
+
+```css
+.fw-flex > .fw-col-24{ flex:0 0 auto; width:calc(40% - var(--fw-flex-gap,0px)) }  /* flex: gap-aware width */
+.fw-grid > .fw-col-24{ grid-column:span 24 }                                       /* grid: track span */
+```
+
+Because a span reduces back to a fraction, the width **stepper shows `1/6`** again — not `16.66%`.
+
+### 2. Grid-template classes — one class on the parent, bare children
+
+A 60-track grid would leak gaps *inside* a span, so grid **rows** name their template on the parent
+and leave children bare. The Insert Grid layouts are a fixed set (~23 classes):
+
+```css
+.fw-grid-6{ grid-template-columns:repeat(6,minmax(0,1fr)) }   /* equal */
+.fw-gt-1-2{ grid-template-columns:1fr 2fr }                   /* 1/3 + 2/3 */
+.fw-gt-2-3{ grid-template-columns:2fr 3fr }                   /* 2/5 + 3/5 */
+.fw-gt-1-2-1{ grid-template-columns:1fr 2fr 1fr }             /* 1/4 + 1/2 + 1/4 */
+```
+
+Content-sizing keeps three tiny classes (`fw-w-fit` / `fw-w-max` / `fw-w-min`); collapse is already
+`fw-grid-collapse` / `fw-collapse`.
 
 ## The target output
 
-The same six-column grid, after the plan:
-
 ```html
-<div class="fw-flexbox fx-parent fw-grid fw-grid-collapse" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));">
+<div class="fw-flexbox fx-parent fw-grid fw-grid-6 fw-grid-collapse">
   <div class="fw-flexbox fx-a fw-flex fw-collapse"><p>Test</p></div>
   … ×6
 </div>
 ```
 
-A fifths row (20 / 60 / 20):
+A 2/5 + 3/5 row is just `fw-grid fw-gt-2-3` with two bare children. **Zero** `style` attributes,
+**zero** `<style>` blocks — only shared, cached classes.
 
-```html
-<div class="fw-flexbox fx-row fw-flex fw-collapse">
-  <div class="fw-flexbox fx-a fw-flex fw-fifths-1"><p>Test</p></div>
-  <div class="fw-flexbox fx-b fw-flex fw-fifths-3"><p>Test</p></div>
-  <div class="fw-flexbox fx-c fw-flex fw-fifths-1"><p>Test</p></div>
-</div>
-```
+## The one trade-off
 
-**Zero per-element `<style>` blocks.** Only shared, cached classes plus the one inline
-`grid-template-columns` the dynamic track count genuinely needs.
+A width that matches no token — a hand-typed `37.3%`, or a free drag-resize to an odd ratio — has no
+class. To keep the rule absolute, the Width control **snaps to the nearest 1/60** (≈1.67% steps,
+visually imperceptible) so it always lands on a `fw-col-N`. Pristine output in exchange for widths
+quantized to 60ths — the right trade for a layout builder, but a deliberate one.
 
 ## The phased fix
 
-Each phase is independent and shippable on its own.
+1. **Grid-template classes.** Add `fw-grid-2…12` + the `fw-gt-*` set to `frontend-grid.css`; the Grid
+   view emits the class (not an inline template) and its children carry no width. Existing grids
+   clean up at render time — no data migration. *(Highest priority — this is what the test pages need.)*
+2. **`fw-col-N` span classes (base 60).** Add the class set; the width resolver emits `fw-col-N`
+   (snapping to the nearest 60th) instead of a scoped percentage, for both flex and grid cells.
+   Retire the per-element width `<style>` path. Update the stepper to show the reduced fraction.
+3. **Content-sizing classes.** `fw-w-fit` / `fw-w-max` / `fw-w-min`.
+4. **Remove the last inline styling.** Audit for any remaining `style=""` the Div emits (background,
+   min-height, aspect-ratio, content-width) and move each to a class or a small consolidated rule
+   where a class genuinely can't express it (e.g. a truly dynamic value stays the documented exception).
 
-1. **Grid cells carry no width.** *(done for newly inserted grids.)* The Insert Grid inserter no
-   longer stores a percentage on equal-grid cells. Remaining: at render time, when a cell's **parent
-   is a Grid**, skip its custom width (the tracks size it) so **existing** pages clean up too, with
-   no data migration. Twelfths cells keep their `fw-span-*` class — in a grid it becomes the
-   `grid-column: span N`, which is correct and already shared.
-2. **Fifths → shared classes.** Add `fw-fifths-1 … fw-fifths-4` (20/40/60/80%, gap-aware in a flex
-   row) to `frontend-grid.css`. The width resolver emits the class for a fifth preset instead of a
-   scoped rule.
-3. **Content-sizing → shared classes.** Add `fw-w-fit` / `fw-w-max` / `fw-w-min` (fit/max/min-content)
-   the same way.
-4. **Arbitrary custom → inline variable.** For a value no preset covers, set `style="--fw-w:37.3%"`
-   on the element and let one shared rule (`.fw-w-custom{flex:0 0 var(--fw-w);max-width:var(--fw-w)}`)
-   apply it — no per-element `<style>` block. Per-device custom values (which need `@media`) remain
-   the one case that emits a scoped rule, and even there it's **one** consolidated block per element,
-   not one per breakpoint.
-5. **Responsive collapse → shared classes.** *(done.)* `fw-grid-collapse` / `fw-grid-collapse-1` /
-   `fw-collapse`, defined once, replace the per-element `@media` blocks.
+## Already done
 
-## What's already done
+- ✅ **Collapse is a shared class** — per-element `@media` blocks gone.
+- ✅ **New equal grids store no cell width** — the inserter stopped emitting the percentage.
+- ✅ Twelfths, container props, and gaps were already shared classes.
 
-- ✅ **Collapse is a shared class** — the per-element `@media` blocks are gone (phase 5).
-- ✅ **New equal grids store no cell width** — the inserter stopped emitting the percentage (phase 1a).
-- ✅ **Twelfths, container props, gaps** were already shared classes.
-
-## What's left
-
-- Phase 1b (render-time skip for existing grid cells), phases 2–4 (fifths, content-sizing, and
-  arbitrary-custom as classes / inline variable).
-
-When all phases land, the Div's output is what the classic grid promised — a lean, semantic DOM with
-a **shared, cached** stylesheet — with none of the per-element `<style>` noise.
+When all phases land, the Div's output is what the classic grid promised: a lean, semantic DOM with a
+**shared, cached** stylesheet and not a single per-element style.

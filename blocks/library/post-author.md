@@ -1,44 +1,33 @@
 ---
 title: Post Author
+description: The Unyson+ Post Author block — The current post's author — name and avatar, linked to their archive, authored in the block editor and rendered by the page builder.
 ---
 
 # Post Author
 
-The current post's author — a byline, with an optional avatar.
+The current post's author — name and avatar, linked to their archive. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are produced by the same server-side code as the page builder, so the output is identical either way.
 
-The block renders through the `post_author` element — the same PHP that runs in the page builder, so the front
-end is identical either way.
+<img src="/img/blocks/post-author/front.png" alt="The Post Author block — the article's author name and avatar" width="1210" />
 
-## What the sidebar exposes
+## Options
+
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `author_prefix` | Text before the name, e.g. “By” |
-| `link_to_author` | Link to the author archive |
-| `show_avatar` | Show their avatar |
-| `avatar_size` | Avatar size |
-| `text_align` | Alignment |
-| `text_color` | Text colour |
-| `font_size_preset` | Text size preset |
+| Avatar + Name | Shows the author's avatar and display name, linked to their post archive. |
+| Styling (`text_color`, `font_size_preset`, alignment) | Colour, size and alignment. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[This block is dynamic]
-It renders whatever post it finds itself in, at render time. In the editor that is the post you are
-editing — so the canvas shows *this* post's value, which on a new draft is often empty, correctly.
-
-In a [Theme Builder](/extensions/theme-builder/body-templates) template it stands for every post
-the template serves.
+:::note Reads the current post
+This block outputs data from the **post in context**, so it renders where a post is being viewed — a single post, or a post inside a query loop or template. On a plain page there is no post for it to read.
 :::
 
-:::note[A byline, not a bio]
-For the card with a description, avatar and social links, use the
-[Author Box](./author-box.md) block instead.
-:::
+## Sample content
 
-:::note[Margin and padding come from Gutenberg]
-The block declares core spacing support, so the element's own `spacing` option is not exposed here —
-use the Dimensions panel at the top of the sidebar.
-:::
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above is:
+
+```html
+<!-- wp:unysonplus/post-author {"upOptions":{}} /-->
+```

@@ -1,38 +1,35 @@
 ---
 title: Checkout
+description: The Unyson+ Checkout WooCommerce block — the full checkout form with billing, shipping, order review and payment, authored in the block editor and rendered by the WooCommerce integration.
 ---
 
 # Checkout
 
-WooCommerce's checkout.
+The **checkout form** — billing and shipping details, an order review, and payment — so you can place the checkout anywhere, not just on the default WooCommerce page. It's part of the **[WooCommerce integration](/extensions/woocommerce)** — like every block in the library it's a second *authoring* surface, rendered server-side by the same code as the page builder, so the store output is identical either way.
 
-The block renders through the `wc_checkout` element — the same PHP that runs in the page builder, so the front
-end is identical either way.
-
-:::caution[Needs the WooCommerce extension *and* the WooCommerce plugin]
-This element ships with the **WooCommerce** extension, which is inactive by default, and it needs the
-**WooCommerce plugin** installed and active.
-
-With either missing the block does not register at all — so it appears in the inserter exactly when it
-can actually work, rather than as an entry that renders nothing.
+:::note Requires WooCommerce
+This block renders live store data, so it only appears (and only works) when the **WooCommerce** plugin is active. With an empty cart it shows a "your cart is empty" notice instead of the form.
 :::
 
-:::caution[A page-level element — placement matters]
-WooCommerce routes real behaviour through the pages configured under *WooCommerce → Settings →
-Advanced*. Placing this block on some other page renders something that **looks** right without being
-the page the shop is configured to use.
+<img src="/img/blocks/wc-checkout/front.png" alt="The Checkout block — billing, shipping and payment form" width="1210" />
 
-Use it to rebuild the configured page with UnysonPlus elements around it — not to create a second one.
-:::
+## Options
 
-## Settings
+| Option | What it does |
+| --- | --- |
+| Checkout form | The standard WooCommerce billing / shipping fields, order review and payment methods. |
+| Empty state | A notice with a link back to the shop when the cart has no items. |
 
-This element has **no settings of its own** — it renders WooCommerce's own template, and its appearance comes from WooCommerce settings and your theme. The block says so in the sidebar rather than showing an empty panel.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::caution[This is the placement that matters most]
-WooCommerce routes payment gateways and order handling through the page configured as the checkout.
-A checkout block on a different page produces a form that looks right and is **not** the one the shop
-is configured to use — which surfaces as payments that do not complete.
+## Sample content
 
-Rebuild the configured checkout page with this block; do not make a second one.
-:::
+The demo above shows the checkout with an item in the cart:
+
+```html
+<!-- wp:unysonplus/wc-checkout {"upOptions":{}} /-->
+```
+
+## WooCommerce elements
+
+These blocks mirror the page builder's WooCommerce elements. Their full option and behaviour reference lives on the [WooCommerce elements](/shortcodes/woocommerce-elements) page.

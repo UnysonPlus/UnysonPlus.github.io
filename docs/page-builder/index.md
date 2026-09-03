@@ -3,7 +3,7 @@ title: "Free WordPress Page Builder"
 slug: /page-builder
 sidebar_position: 3
 sidebar_label: "Page Builder"
-description: "Free WordPress drag-and-drop page builder — build any layout visually with sections, columns and 100+ content elements. A free alternative to Elementor Pro, Divi and WPBakery."
+description: "Free WordPress drag-and-drop page builder — build any layout visually with a modern Flexbox & CSS Grid Div and 100+ content elements. A free alternative to Elementor Pro, Divi and WPBakery."
 ---
 
 # Page Builder
@@ -11,7 +11,7 @@ description: "Free WordPress drag-and-drop page builder — build any layout vis
 <div class="ext-hero">
   <span class="ext-hero__badge">FREE!</span>
   <p class="ext-hero__title">Build premium pages in minutes.</p>
-  <p class="ext-hero__sub">A visual drag-and-drop builder with sections, columns and 100+ content elements to build any layout — the page-building power Elementor Pro, Divi and WPBakery charge for, free.</p>
+  <p class="ext-hero__sub">A visual drag-and-drop builder on one modern layout primitive — a Flexbox &amp; CSS Grid Div — plus 100+ content elements to build any layout. The page-building power Elementor Pro, Divi and WPBakery charge for, free.</p>
 </div>
 
 The Page Builder lets you compose pages visually from **shortcodes** (called *elements* in the
@@ -24,10 +24,12 @@ builder does under the hood — the stored JSON, how loose elements become a val
 front end renders, and the value-shape traps to avoid when you extend it — read the deep-dive
 pages linked at the bottom.
 
-:::tip[Where the builder is heading]
-The layout system is evolving toward one simple primitive (the **Div**, with Flex &amp; Grid) while
-the classic Section/Row/Column grid stays fully supported. See the
-**[Page Builder Roadmap](./roadmap.md)** for what's coming and why.
+:::tip[One layout primitive: the Div]
+The builder is built on **one** layout primitive — the **[Div](./the-div-element.md)**, a container
+you set to **Flex**, **Grid** or **Block** that outputs a semantic HTML tag. On a page it leads the
+palette as three tiles — **Section**, **Flexbox (div)** and **Grid (div)**. The classic
+**Section → Row → Column** (Bootstrap) grid is still fully supported, just moved to a **Classic**
+palette group. Nothing you've built changes; see the **[Roadmap](./roadmap.md)** for what's next.
 :::
 
 ## Enabling the builder
@@ -40,27 +42,38 @@ content area.
 ## Basic workflow
 
 1. Open a page in the editor and click **Unyson Builder**.
-2. Drag an element from the palette — a **Section**, **Column**, or any content element — onto
-   the canvas.
+2. From the **Layout Elements** tab, drag a **Section** onto the canvas to start a band, then a
+   **Flexbox (div)** for a row or a **Grid (div)** for columns — or drop any content element
+   straight in.
 3. Configure it through its **options panel** (the modal that opens when you click the element).
 4. **Save / Update** — the layout renders on the front end.
 
-You don't have to build the full Section → Column → element nesting by hand: drop a content
-element straight onto the canvas and the builder wraps it in a column, a row, and a section for
-you when the page renders. That wrapping is done by the [items corrector](./items-corrector.md).
+You don't have to build the nesting by hand: drop a content element straight onto the canvas and
+the builder wraps it in a valid layout for you when the page renders. That wrapping is done by the
+[items corrector](./items-corrector.md).
 
 :::tip[Start with a prebuilt layout]
 To skip building columns one by one, use **[Insert Section](./insert-section.md)** in the builder
-header — pick a ready-made column layout (equal columns, offset & sidebar, multi-row, nested
-multi-column, or masonry) and it drops a fully-formed section onto the page.
+header — pick a ready-made layout (equal columns, offset & sidebar, multi-row, nested multi-column,
+or masonry) and it drops a fully-formed **Flexbox** layout onto the page.
 :::
 
 ## The element palette
 
-Elements are grouped into tabs in a deliberate order — **Layout**, **Content**, **Media**,
-**Interactive**, **Components**, **Header/Footer** — rather than alphabetically (see
-`FW_Option_Type_Page_Builder::sort_thumbnails_helper()`). Every element has its own reference
-page under [Shortcodes / Elements](/shortcodes/overview).
+Elements are grouped into tabs in a deliberate order — not alphabetically (see
+`FW_Option_Type_Page_Builder::sort_thumbnails_helper()`):
+
+**Layout Elements** · Content · Media · Interactive · Components · Header/Footer · WooCommerce ·
+**Classic**
+
+The **Layout Elements** tab leads with the modern Div primitives — **Section**, **Flexbox (div)**
+and **Grid (div)** — followed by the column-width tiles. The old Bootstrap grid containers
+(**Section**, **Container**, **Bleed Section**, **Masonry Section**) are still available but moved
+to the **Classic** tab, which always sorts **last**. So a newcomer's first instinct — *"click
+Section to start"* — lands on the modern primitive, not the legacy grid.
+
+Every element has its own reference page under [Shortcodes / Elements](/shortcodes/overview); the
+layout primitive is documented on **[The Div element](./the-div-element.md)**.
 
 ## Reusable content
 

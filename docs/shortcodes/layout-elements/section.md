@@ -8,6 +8,10 @@ hide_table_of_contents: true
 
 The top-level band of content — a Section wraps rows, holds your columns, and carries the background, height and spacing for a strip of the page. Its options live across the **Layout**, **Styling**, **Animations**, and **Advanced** tabs.
 
+:::note[Classic layout element]
+Section is now part of the **Classic** palette tab. New layouts are best started with the modern **[Div](/page-builder/the-div-element)** — a **Section**, **Flexbox (div)** or **Grid (div)** that outputs clean, semantic HTML. This Bootstrap Section stays fully supported for existing pages and anyone who prefers the classic grid.
+:::
+
 Each setting is routed to the leanest layer that fits it — never a raw inline style unless the value is genuinely per-instance. The four output mechanisms used below:
 
 - **Predefined utility class** — a fixed-enum option (a small, unchanging set of values) toggles a class defined once in a static stylesheet. Reusable, cacheable, zero per-instance CSS.

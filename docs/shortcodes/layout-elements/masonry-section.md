@@ -7,6 +7,10 @@ sidebar_position: 61
 
 A section that packs its columns into a masonry grid — drop in columns at any width and they stack vertically like tetris blocks to fill the gaps, with no fixed column count. Its options live across the **Layout**, **Styling**, **Animations**, and **Advanced** tabs.
 
+:::note[The Classic masonry option]
+Masonry Section lives in the **Classic** palette tab, but it's still the way to build a staggered masonry grid — the modern **[Div](/page-builder/the-div-element)** doesn't do masonry packing. The **[Insert Section](/page-builder/insert-section)** picker's **Masonry** tab inserts this element (the one tab that still builds a Classic container).
+:::
+
 ## Layout
 
 - **How it packs** — an informational note: columns keep their own width (1/2, 1/3, 2/3, 1/4 …) and stack to fill the gaps automatically.

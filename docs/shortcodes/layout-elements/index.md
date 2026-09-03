@@ -5,8 +5,17 @@ title: Layout Elements
 
 # Layout Elements
 
-The structural elements that hold your content. Sections wrap rows, rows hold columns, and
-columns hold content elements. Specialized section types add backgrounds and effects.
+The structural elements that hold your content.
+
+:::note[These are the Classic containers]
+Section, Container, Bleed Section and Masonry Section are the **Classic** (Bootstrap-grid) layout
+containers — still fully supported, now grouped under the palette's **Classic** tab. For new
+layouts, the modern **[Div](/page-builder/the-div-element)** (Flex · Grid · Block) leads the palette
+and outputs cleaner, semantic HTML. These pages document the Classic elements.
+:::
+
+In the classic model, sections wrap rows, rows hold columns, and columns hold content elements.
+Specialized section types add backgrounds and effects.
 
 - **[Section](/shortcodes/layout-elements/section)** — a full-width-capable band; the
   top-level container for a row of content, with background color/image/video, bleed layout,

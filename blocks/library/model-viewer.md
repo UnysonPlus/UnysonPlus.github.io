@@ -1,72 +1,42 @@
 ---
-title: 3D Model
+title: 3D Model Viewer
+description: The Unyson+ 3D Model Viewer block — an interactive glTF/GLB 3D model with orbit controls, auto-rotate and AR, authored in the block editor and rendered by the model-viewer element.
 ---
 
-# 3D Model
+# 3D Model Viewer
 
-An interactive 3D model — glTF or GLB — with camera controls, lighting, animation and AR on supported phones.
+An **interactive 3D model** — load a `.glb`/`.gltf` file and visitors can orbit, zoom and (on supported devices) view it in **augmented reality**. Perfect for product showcases, characters and 3D art. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are both produced by the [3D Model Viewer element](/animation-engine/model-viewer) — the same server-side code as the page builder — so the output is identical either way.
 
-The block renders through the `model_viewer` element — the same PHP that runs in the page builder, so the front end is identical either way.
+<img src="/img/blocks/model-viewer/front.png" alt="The 3D Model Viewer block — an interactive 3D astronaut model" width="1210" />
 
-:::caution[Needs the Animation Engine extension]
-This element ships with the **Animation Engine**, which is **inactive by default**. Activate it under
-*Unyson+ → Extensions* and the block appears in the inserter.
+## Options
 
-With the extension off the block does not register at all — deliberately. A block that appeared but
-had an empty sidebar and rendered nothing would be indistinguishable from one that is broken.
-:::
-
-## What the sidebar exposes
+Select the block and open the **Settings** (block) tab; the whole sidebar is generated from the element's option schema, so it stays in step with the page builder.
 
 | Option | What it does |
 | --- | --- |
-| `model_url` | Model URL |
-| `model_file` | Uploaded model file |
-| `alt` | What a screen reader announces |
-| `poster` | Image shown while the model loads |
-| `height` | Viewer height |
-| `camera_controls` | Let visitors rotate it |
-| `disable_zoom` | Stop the wheel zooming the model |
-| `auto_rotate` | Spin it slowly by itself |
-| `rotation_speed` | How fast |
-| `auto_rotate_delay` | How long to wait before spinning |
-| `environment` | Lighting environment |
-| `exposure` | Brightness |
-| `shadow_intensity` | Shadow strength |
-| `animation_autoplay` | Play the model's own animation |
-| `animation_name` | Which animation, when it has several |
-| `ar` | Offer View in your space on supported devices |
-| `ar_placement` | Floor or wall |
-| `hotspots` | Labelled points on the model |
+| Model (`model_url`, `model_file`) | The `.glb`/`.gltf` model to load, by URL or upload. |
+| Camera (`camera_controls`, `camera_orbit`, `auto_rotate`, `min_orbit`/`max_orbit`, `field_of_view`) | Orbit/zoom controls, the starting angle, auto-rotation and limits. |
+| Lighting (`environment`, `env_image`, `exposure`, `shadow_intensity`, `tone_mapping`) | Image-based lighting, exposure and contact shadow. |
+| Background (`background`, `bg_color`, `skybox`) | Transparent, a solid colour, or a skybox. |
+| AR (`ar`, `ar_placement`, `ar_scale`) | Enable "view in your space" on supported devices. |
+| Playback (`animation_name`, `animation_autoplay`) | Play a named animation baked into the model. |
+| Hotspots (`hotspots`) | Pin annotations to points on the model. |
 
-Anything not listed stays available in the page builder, and **round-trips untouched** — the block
-only writes the values you change, so an element styled in the builder keeps every setting this
-sidebar does not show.
+The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
-:::note[The model is not loaded in the editor]
-This is the expensive kind of inert: a live viewer would download the model file and spin up WebGL in
-the editor, and do it again on every re-render. The canvas shows the **poster** — which is what a
-visitor sees before the model loads anyway.
-
-Set a poster. Without one, the viewer is a blank box until the file arrives, and model files are not
-small.
+:::note Part of the Animation Engine
+The 3D Model Viewer is an **Animation Engine** element. Activate the Animation Engine extension to use it.
 :::
 
-:::caution[`alt` is not optional in practice]
-A 3D viewer is completely opaque to a screen reader. Without alt text, the element conveys nothing at
-all to someone who cannot see it — describe the object, not the widget.
-:::
+## Sample content
 
-:::note[Camera limits stay in the page builder]
-`min_fov`/`max_fov`, `min_orbit`/`max_orbit` and `disable_pan` are not exposed here. A badly chosen
-pair can leave a model that cannot be rotated to its own front, and the only way to find that out is
-to try every angle — which is a page-builder job, not a sidebar one.
+A block stores only what you change as one `upOptions` object; the element's declared defaults fill in the rest at render time. The demo above loads a `.glb` with orbit controls:
 
-`variants_show` and `variant_default` are also left out: they depend on what the model file itself
-defines, so a variant name typed without the file open is a guess.
-:::
+```html
+<!-- wp:unysonplus/model-viewer {"upOptions":{"source":"url","model_url":"https://…/model.glb","camera_controls":"yes","camera_orbit":"-25deg 80deg 105%"}} /-->
+```
 
-:::note[`disable_zoom` is usually right for a model inside a page]
-Otherwise the wheel zooms the model when a visitor scrolls past it, and the page stops moving — the
-same complaint people have about embedded maps.
-:::
+## The 3D Model Viewer element
+
+The block and the page builder's [3D Model Viewer element](/animation-engine/model-viewer) are two doors onto the same code. Its full option, markup and behaviour reference is documented there.

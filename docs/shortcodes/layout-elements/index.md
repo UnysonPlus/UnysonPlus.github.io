@@ -9,14 +9,14 @@ The structural elements that hold your content.
 
 ## The modern layout primitive
 
-The Page Builder now leads with **one** layout element — the **Div** — so most new layouts use this
-rather than the Classic containers below:
+The Page Builder now leads with **one** layout element — the **Flexbox (Div)** — so most new layouts
+use this rather than the Classic containers below:
 
-- **[The Div (Flex · Grid · Block)](/page-builder/the-div-element)** — one container you set to
-  **Flex**, **Grid** or **Block** that outputs a semantic HTML tag. It appears in the palette's
-  **Layout Elements** tab as three tiles — **Section** (a full-width `<section>` band),
-  **Flexbox (div)** (a row or stack), and **Grid (div)** (a CSS-grid column layout) — with a
-  responsive **[Width](/page-builder/the-div-element#width)** control and clean, semantic output.
+- **[Flexbox (Div)](/shortcodes/layout-elements/flexbox)** — one container you set to **Flex**,
+  **Grid** or **Block** that outputs a semantic HTML tag. It appears in the palette's **Layout
+  Elements** tab as three tiles — **Section** (a full-width `<section>` band), **Flexbox (div)** (a
+  row or stack), and **Grid (div)** (a CSS-grid column layout) — with a responsive
+  **[Width](/page-builder/the-div-element#width)** control and clean, semantic output.
 
 ## Classic containers
 

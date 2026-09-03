@@ -66,11 +66,12 @@ Elements are grouped into tabs in a deliberate order — not alphabetically (see
 **Layout Elements** · Content · Media · Interactive · Components · Header/Footer · WooCommerce ·
 **Classic**
 
-The **Layout Elements** tab leads with the modern Div primitives — **Section**, **Flexbox (div)**
-and **Grid (div)** — followed by the column-width tiles. The old Bootstrap grid containers
-(**Section**, **Container**, **Bleed Section**, **Masonry Section**) are still available but moved
-to the **Classic** tab, which always sorts **last**. So a newcomer's first instinct — *"click
-Section to start"* — lands on the modern primitive, not the legacy grid.
+The **Layout Elements** tab holds exactly the modern Div primitives — **Section**, **Flexbox (div)**
+and **Grid (div)**. Everything Bootstrap moves to the **Classic** tab, which always sorts **last**:
+the **column-width tiles** (`1/1`, `1/2`, `1/3` … including the fifths `1/5`–`4/5`, and **Auto
+Column**) *and* the classic containers (**Section**, **Container**, **Bleed Section**, **Masonry
+Section**). So a newcomer's first instinct — *"click Section to start"* — lands on the modern
+primitive, and the whole legacy grid sits together in one clearly-labelled place.
 
 Every element has its own reference page under [Shortcodes / Elements](/shortcodes/overview); the
 layout primitive is documented on **[The Div element](./the-div-element.md)**.

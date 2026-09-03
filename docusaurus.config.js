@@ -421,6 +421,11 @@ const config = {
             label: 'Blocks',
           },
           {
+            href: 'https://demos.unysonplus.com/',
+            label: 'Demos',
+            position: 'left',
+          },
+          {
             type: 'docSidebar',
             sidebarId: 'learnSidebar',
             docsPluginId: 'learn',

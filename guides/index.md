@@ -32,7 +32,11 @@ features, do it in a few minutes, no code unless noted. New to the builder? Star
 
 - [Set global colors and fonts](./global-colors-and-fonts.md)
 - [Create a custom post type without code](./custom-post-type.md)
-- [Convert an existing website to WordPress](./convert-website-to-wordpress.md)
+- [Convert an existing website to WordPress](/guides/convert-website-to-wordpress)
+- [Convert an AI-generated static HTML site to WordPress](/guides/convert-ai-generated-html-to-wordpress)
+  — the pillar guide, plus tool-specific paths:
+  [Google Stitch →](/guides/convert-google-stitch-to-wordpress) ·
+  [Lovable →](/guides/convert-lovable-to-wordpress)
 
 ---
 

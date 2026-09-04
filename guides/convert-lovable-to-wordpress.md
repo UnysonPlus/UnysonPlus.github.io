@@ -38,6 +38,8 @@ reachable.
 
 ## Step 3 — Convert from the URL
 
+<img src="/img/guides/site-converter-convert.png" alt="The Unyson+ Convert screen — choose From a URL and paste your published Lovable link, then convert" width="1758" />
+
 1. **Unyson+ → Convert** → **Convert** tab → **From a URL**.
 2. Paste your **published Lovable URL**.
 3. Set options — **Create child theme**, **Capture header/footer**, **Import images**, optional

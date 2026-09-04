@@ -35,6 +35,11 @@ export (or paste its URL) → **Convert to WordPress**. Every page comes out edi
 builder.
 :::
 
+:::note[The Site Converter is in beta]
+It converts most sites well, but results vary by source — always review the generated theme and
+pages, and keep a backup before going live. Fidelity is actively being improved.
+:::
+
 ## Why move an AI site to WordPress at all?
 
 | AI tool output (static HTML) | The same site on WordPress |
@@ -81,6 +86,8 @@ setup and it's what makes AI/Tailwind conversions look right. See
 mode, but fidelity is lower (details [below](#fidelity)).
 
 ## Step 4 — Convert to WordPress
+
+<img src="/img/guides/site-converter-convert.png" alt="The Unyson+ Convert screen — the AI Site Importer, with URL/file inputs and the child-theme, header/footer, images and AI-refine options" width="1758" />
 
 1. Open **Unyson+ → Convert**.
 2. Choose your input:

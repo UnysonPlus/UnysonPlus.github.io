@@ -40,6 +40,8 @@ exported frame or a multi-screen project; the converter handles both (each scree
 
 ## Step 3 — Convert to WordPress
 
+<img src="/img/guides/site-converter-convert.png" alt="The Unyson+ Convert screen — choose Upload a file (.zip) for a Stitch export, set the options, and convert" width="1758" />
+
 1. **Unyson+ → Convert** → **Convert** tab → **Upload a file (.zip)**.
 2. **Choose File** — your Stitch `.zip`. (Or paste one screen's `code.html` under **Advanced
    options**.)

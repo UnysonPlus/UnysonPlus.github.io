@@ -1,7 +1,7 @@
 ---
 title: "How to convert an AI-generated static HTML site to WordPress"
 sidebar_label: "AI-generated HTML → WordPress"
-description: "Step-by-step: turn an AI-generated static HTML site (v0, Lovable, Bolt, Google Stitch, Claude, ChatGPT) into a native, editable WordPress site — free, no coding — with the Unyson+ Site Converter."
+description: "Step-by-step: turn an AI-generated static HTML site (v0, Lovable, Bolt, Google Stitch, Claude, ChatGPT) into a native, editable WordPress site quickly and for free — no coding — with the Unyson+ Site Converter."
 keywords:
   - convert ai generated html to wordpress
   - convert static html site to wordpress
@@ -24,10 +24,11 @@ they *don't* give you is a real website you can run: no CMS, no editing UI for a
 no forms, no SEO plugins — and hand-porting that markup into WordPress by rebuilding every section
 is slow and brittle.
 
-This guide shows the fast, free way: use the **[Site Converter](/extensions/site-converter)** (a
-free Unyson+ extension) to turn that AI-generated HTML into a **native, fully editable WordPress
-site** — real page-builder pages, a matching theme, menus and Media Library — in a few clicks. It's
-a *rebuild into editable content*, not a static screenshot import.
+This guide shows how to do it **quickly and for free**: use the
+**[Site Converter](/extensions/site-converter)** (a free Unyson+ extension) to turn that
+AI-generated HTML into a **native, fully editable WordPress site** — real page-builder pages, a
+matching theme, menus and Media Library — in **just a few clicks, in minutes, with no cost and no
+coding**. It's a *rebuild into editable content*, not a static screenshot import.
 
 :::tip[TL;DR]
 Install **Unyson+** (free) → activate **Site Converter** → **Unyson+ → Convert** → upload your AI

@@ -27,16 +27,19 @@ Posts**. The controls below are shared.
 
 ## Getting one
 
-The **Layout** tab leads with three Div presets — each is the *same* Div with a different starting
-`Display` and HTML tag:
+The **Layout Elements** tab leads with four Div presets — each is the *same* Div with a different
+starting `Display` and HTML tag:
 
 | Tile | Creates | Reach for it when… |
 |---|---|---|
-| **Section** | a Div tagged `<section>`, content auto-contained to the site width | you're starting the root band of a page |
-| **Grid** | a Div set to `display: grid` | you want columns — a card grid, an even split, a hero |
-| **Flexbox** | a Div set to `display: flex` | you want a one-dimensional row or stack that can wrap |
+| **Section** | a Div tagged `<section>`, a full-width band by default | you're starting the root band of a page |
+| **Block (div)** | a Div set to `display: block` | you just need a wrapper — grouping, spacing or a background around one thing |
+| **Flexbox (div)** | a Div set to `display: flex` | you want a one-dimensional row or stack that can wrap |
+| **Grid (div)** | a Div set to `display: grid` | you want columns — a card grid, an even split, a hero |
 
-Everything after this is just options on that one element.
+Everything after this is just options on that one element. In the **live editor**, the page root
+holds only Sections — dropping a Block / Flexbox / Grid nests it into the last section (or makes one
+to hold it).
 
 ## Display — how it arranges its children
 
@@ -124,35 +127,41 @@ row. They emit `flex: 0 0 auto` with a CSS keyword width:
 Because fifths, content-sizing and custom values are per-element scoped CSS (keyed to the Div's
 unique id), they never leak to siblings and cost no global stylesheet weight.
 
-## How this Div behaves as a flex item
+## How this Div behaves as a flex / grid item
 
-When the Div's **parent** is a Flex container, these fine-tune how it participates:
+When the Div's **parent** is a Flex or Grid container, these fine-tune how it participates:
 
 | Option | Effect |
 |---|---|
-| **Grow to Fill** | `flex-grow: 1` — expand to eat leftover space. |
-| **Prevent Shrinking** | `flex-shrink: 0` — never squeeze below its width. |
+| **Grow to Fill** | `flex-grow: 1` — expand to eat leftover space (flex). |
+| **Prevent Shrinking** | `flex-shrink: 0` — never squeeze below its width (flex). |
 | **Align Self** | Override the parent's cross-axis alignment for just this child. |
-| **Order** | Move this child earlier/later visually without changing the DOM order. |
+| **Order** | Move this child earlier/later visually without changing the DOM order (flex). |
+| **Grid Column Start** | Inside a **Grid** parent, place this cell at an exact column (1–12) — position one item precisely **without empty spacer cells**. Combine with Width for the span. |
 
 ## Container & styling
 
 | Option | Notes |
 |---|---|
-| **HTML Tag** | The semantic element emitted — `div` (plain), `section` (a titled band), `article` (self-contained/repeatable, e.g. cards), `aside` (complementary). You pick the tag, you get that tag. |
-| **Content Width** | Constrain the Div's content to a centred max-width (like a container). A `section`-tag Div does this automatically at the site width; for a full-bleed band with contained content, nest a contained Div inside a full-width one. |
+| **HTML Tag** | The semantic element emitted — `div` (plain), `section` (a full-width band), `article` (self-contained/repeatable, e.g. cards), `aside` (complementary). You pick the tag, you get that tag. |
+| **Content Width** | Cap the Div's content to a centred max-width — pick a **named width** from the Container Width library (Narrow / Medium / Wide / …), a **Custom** value, or **Inherit** (full). |
+| **Full-Width Band** *(sections)* | A `section` is a full-width band by default: background edge-to-edge, content inset to the Content Width. Turn this off for a fully-contained band. |
 | **Background** | The shared background-pro control (colour / gradient / image / video overlay). |
+| **Background Pattern / Section Variant** *(sections)* | A decorative SVG **pattern** layer over the background, and a named **Section Style** (Alt / Light / Dark / your own) that themes background + text together. |
+| **Shape Dividers** *(sections)* | An angled/curved SVG shape on the top and/or bottom edge (colour, height, flip). |
 | **Border / Box Style** | Border, radius and shadow presets. |
 | **Min Height** | Responsive minimum height (e.g. a `100vh` hero). |
 | **Aspect Ratio** | Lock the box to a ratio (16:9, 1:1, …). |
+| **Text Alignment** | Horizontal alignment of the inline/text content (any tag). |
 | **Margin & Padding** | Per-side spacing, responsive. |
 
 ## Clean output
 
 The Div exists to produce **semantic, framework-free HTML**: you choose `nav`, you get a `<nav>`;
 you set three equal columns, you get a real CSS Grid — not `div.row > div.col-md-4` scaffolding and
-a wall of utility classes. That's the same [clean-DOM philosophy](./clean-dom.md) the whole builder
-is moving toward.
+a wall of utility classes. An **empty** Div (a blank grid cell, say) even sheds the layout classes it
+isn't using — while keeping its width/placement so it still holds its spot. That's the same
+[clean-DOM philosophy](./clean-dom.md) the whole builder is moving toward.
 
 ## See also
 

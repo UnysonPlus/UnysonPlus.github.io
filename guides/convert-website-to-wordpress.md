@@ -35,6 +35,8 @@ lets the plugin regenerate the markup, so you can keep editing in the visual bui
 
 ## See also
 
+- [Convert an AI-generated static HTML site to WordPress](/guides/convert-ai-generated-html-to-wordpress)
+  — the step-by-step for v0 / Lovable / Bolt / Stitch / Claude exports
 - [Site Converter](/extensions/site-converter) — the full reference, the bundle format, and the
   theme generator
 - [The Theme](/theme) — what the generated theme is built on

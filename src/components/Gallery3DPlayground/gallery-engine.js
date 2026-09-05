@@ -2464,7 +2464,7 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 		var cardPct  = clamp( num( el, 'data-tdg-card', 78 ), 20, 100 ) / 100;
 		var gap      = clamp( num( el, 'data-tdg-gap', 6 ), 0, 40 ) / 100;
 		var cscale   = clamp( num( el, 'data-tdg-cscale', 200 ), 100, 300 ) / 100;
-		var zig      = clamp( num( el, 'data-tdg-zig', 0 ), 0, 100 ) / 100;
+		var zig      = clamp( num( el, 'data-tdg-zig', 100 ), 0, 100 ) / 100;
 		var zigFixed = ( el.getAttribute( 'data-tdg-zigmode' ) === 'fixed' );
 		var slide    = clamp( num( el, 'data-tdg-slide', 60 ), 20, 100 ) / 100;
 		var hold     = clamp( num( el, 'data-tdg-hold', 50 ), 0, 100 ) / 100;
@@ -2505,21 +2505,16 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 				var d = Math.abs( p );
 				var act = Math.max( 0, 1 - d );              // 1 at centre → 0 one step away
 				var sc = inv + ( 1 - inv ) * act;            // focused (centre) = full size; neighbours shrink to 1/cscale
-				// Perpendicular position. Everything below is a CONTINUOUS function of the card's
-				// position p, so nothing ever jumps as the reel scrolls.
-				var perp;
-				if ( vertical ) {
-					// Centre-aligned; Zigzag eases cards left/right in a smooth wave (0 at the centre).
-					var waveV = 0.5 - 0.5 * Math.cos( p * Math.PI );          // 0 at centre → 1 one step out
-					perp = ( zigFixed ? ( i % 2 ? 1 : -1 ) : ( p < 0 ? -1 : 1 ) ) * zig * cross * 0.5 * waveV;
-				} else {
-					// Bottom-align every card to the focused card's bottom edge (bottoms flush — a shrunk
-					// neighbour is pushed DOWN so its base meets the focus base), then Zigzag lifts cards
-					// UP off that baseline in a smooth cosine wave. A card is never below the focus.
-					var baseline = ( cross / 2 ) * ( 1 - sc );
-					var wave = zigFixed ? ( i % 2 ) * ( 1 - act ) : ( 0.5 - 0.5 * Math.cos( p * Math.PI ) );
-					perp = baseline - zig * cross * 0.5 * wave;
-				}
+				// Bottom-align every card to a FIXED baseline (the focus's full-scale bottom edge), so no
+				// card is ever below the focus — not even mid-transition when the focus is briefly smaller.
+				// Zigzag then raises the FAR cards on one side up to top-align, in a smooth slash; a ramp
+				// holds the centre cards on the baseline so the growing/shrinking focus never dips. Fixed
+				// raises alternate cards instead of one side. `cross` = focus height (width when vertical).
+				var edge = ( cross / 2 ) * ( 1 - sc );                 // 0 for the focus → grows for neighbours
+				var r = ( Math.abs( p ) - 0.35 ) / 0.65;              // ramp: 0 near the centre → 1 a card out
+				r = r < 0 ? 0 : ( r > 1 ? 1 : r ); r = r * r * ( 3 - 2 * r );
+				var lift = zigFixed ? ( i % 2 ) * r : ( p > 0 ? r : 0 );
+				var perp = edge - zig * lift * cross * ( 1 - sc );
 				var tx = vertical ? perp : main;
 				var ty = vertical ? main : perp;
 				c.style.transform = 'translate3d(' + tx.toFixed( 1 ) + 'px,' + ty.toFixed( 1 ) + 'px,0) scale(' + sc.toFixed( 3 ) + ')';

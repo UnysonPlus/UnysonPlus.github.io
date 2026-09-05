@@ -2461,9 +2461,9 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 		var speed    = num( el, 'data-tdg-speed', 24 );
 		var dir      = num( el, 'data-tdg-dir', 1 );
 		var vertical = ( el.getAttribute( 'data-tdg-axis' ) === 'vertical' );
-		var cardPct  = clamp( num( el, 'data-tdg-card', 60 ), 20, 100 ) / 100;
+		var cardPct  = clamp( num( el, 'data-tdg-card', 78 ), 20, 100 ) / 100;
 		var gap      = clamp( num( el, 'data-tdg-gap', 6 ), 0, 40 ) / 100;
-		var cscale   = clamp( num( el, 'data-tdg-cscale', 180 ), 100, 300 ) / 100;
+		var cscale   = clamp( num( el, 'data-tdg-cscale', 200 ), 100, 300 ) / 100;
 		var zig      = clamp( num( el, 'data-tdg-zig', 0 ), 0, 100 ) / 100;
 		var zigFixed = ( el.getAttribute( 'data-tdg-zigmode' ) === 'fixed' );
 		var slide    = clamp( num( el, 'data-tdg-slide', 60 ), 20, 100 ) / 100;
@@ -2486,11 +2486,17 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 			cardW = ( cards[ 0 ] && cards[ 0 ].offsetWidth ) || 100;
 			cardH = ( cards[ 0 ] && cards[ 0 ].offsetHeight ) || 100;
 			cards.forEach( function ( c ) { c.style.marginLeft = ( -cardW / 2 ) + 'px'; c.style.marginTop = ( -cardH / 2 ) + 'px'; } );
-			var lead = vertical ? cardH : cardW;             // extent along the slide axis
-			step  = lead * slide + lead * gap;               // centre-to-centre spacing
-			cross = vertical ? cardW : cardH;                // perpendicular extent (for zigzag)
+			// The rendered card IS the focused size; neighbours shrink to 1/cscale. Space the cards from
+			// where the enlarged focus and a shrunk neighbour would just touch, so they never overlap —
+			// Slide Portion opens the gap up (or, low, pulls them into a deliberate overlap).
+			var lead     = vertical ? cardH : cardW;         // focused extent along the slide axis
+			var neighbor = lead / cscale;                    // a shrunk neighbour's extent
+			var touch    = ( lead + neighbor ) / 2;          // centre-to-centre where their edges meet
+			step  = touch * ( 0.55 + slide * 0.9 ) + lead * gap;
+			cross = vertical ? cardW : cardH;                // focused perpendicular extent (for zigzag)
 		}
 		function apply() {
+			var inv = 1 / cscale;                            // a neighbour's scale relative to the focus
 			for ( var i = 0; i < N; i++ ) {
 				var c = cards[ i ];
 				var p = ( ( i - pos ) % N + N ) % N;
@@ -2498,10 +2504,13 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 				var main = p * step;
 				var d = Math.abs( p );
 				var act = Math.max( 0, 1 - d );              // 1 at centre → 0 one step away
-				var sc = 1 + ( cscale - 1 ) * act;           // the focused card grows
+				var sc = inv + ( 1 - inv ) * act;            // focused (centre) = full size; neighbours shrink to 1/cscale
 				// Zigzag: off-centre cards shift perpendicular; the focused card stays clean (fade by 1-act).
-				var par = zigFixed ? ( i % 2 ) : ( ( ( Math.round( p ) % 2 ) + 2 ) % 2 );
-				var off = ( par ? -1 : 1 ) * zig * cross * 0.5 * ( 1 - act );
+				// Fixed ties the up/down to each card; Alternate is a slash (one side up, the other down)
+				// that flips each step — so the neighbours sit on opposite sides, as in the reference.
+				var sgn = zigFixed ? ( i % 2 ? -1 : 1 )
+					: ( p < 0 ? -1 : 1 ) * ( ( ( Math.round( pos ) % 2 ) + 2 ) % 2 ? -1 : 1 );
+				var off = sgn * zig * cross * 0.5 * ( 1 - act );
 				var tx = vertical ? off : main;
 				var ty = vertical ? main : off;
 				c.style.transform = 'translate3d(' + tx.toFixed( 1 ) + 'px,' + ty.toFixed( 1 ) + 'px,0) scale(' + sc.toFixed( 3 ) + ')';

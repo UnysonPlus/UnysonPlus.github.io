@@ -292,6 +292,24 @@ const DESIGNS = {
         dirChoices: [['left', 'Left'], ['right', 'Right']]}),
     ],
   },
+  focus_slider: {
+    group: 'Carousel & Flow',
+    label: 'Focus Slider',
+    blurb: 'A centred-focus slider — the card passing through the centre scales up (Center Scale) and sits clean while its neighbours peek past on either side. Slide Portion sets the spacing (low = a cinematic overlap, high = spread apart); Zigzag pushes off-centre cards alternately up/down (left/right when vertical). Horizontal or vertical.',
+    controls: [
+      se('axis', 'Orientation', 'horizontal', [['horizontal', 'Horizontal'], ['vertical', 'Vertical']]),
+      sl('card_size', 'Card Size (%)', 60, 20, 100),
+      sl('center_scale', 'Center Scale (%)', 180, 100, 300),
+      sl('slide_portion', 'Slide Portion (%)', 60, 20, 100),
+      sl('card_spacing', 'Gap (%)', 6, 0, 40, 0.5),
+      sl('hold', 'Hold (%)', 50, 0, 100),
+      sl('zigzag', 'Zigzag Offset (%)', 0, 0, 100),
+      se('zigzag_mode', 'Zigzag Mode', 'alternate', [['alternate', 'Alternate'], ['fixed', 'Fixed']]),
+      ...SHARED({drive: 'continuous', speed: 24, ratio: '3-4', corner: 8, dir: 'left',
+        driveChoices: [['continuous', 'Continuous'], ['static', 'Static']],
+        dirChoices: [['left', 'Left / Up'], ['right', 'Right / Down']]}),
+    ],
+  },
 };
 
 const GROUP_ORDER = ['3D & Perspective', 'Carousel & Flow'];

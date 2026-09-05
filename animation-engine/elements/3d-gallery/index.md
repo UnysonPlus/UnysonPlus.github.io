@@ -88,6 +88,11 @@ don't see it.
   the centre is the active one: it scales up (**Active Scale**) and lifts (**Active Lift**), and its
   image fills the whole stage as a dimmed (**Hero Opacity**), slowly-zooming (**Ken Burns**) hero behind
   the reel, cross-fading as the reel advances (**Hold** sets the dwell per card).
+- **Focus Slider** — a centred-focus slider, horizontal or vertical. The card passing through the centre
+  is focused: it scales up (**Center Scale**) and sits clean while its neighbours peek past on either
+  side. **Slide Portion** sets the card spacing — low pulls them into a cinematic overlap, high spreads
+  them apart — and **Zigzag Offset** pushes the off-centre cards alternately up and down (left/right when
+  vertical), in an **Alternate** or **Fixed** pattern.
 
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.

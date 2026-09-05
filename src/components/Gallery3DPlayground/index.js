@@ -305,7 +305,7 @@ const DESIGNS = {
       sl('hold', 'Hold (%)', 50, 0, 100),
       sl('zigzag', 'Zigzag Offset (%)', 0, 0, 100),
       se('zigzag_mode', 'Zigzag Mode', 'alternate', [['alternate', 'Alternate'], ['fixed', 'Fixed']]),
-      ...SHARED({drive: 'continuous', speed: 24, ratio: '3-4', corner: 8, dir: 'left',
+      ...SHARED({drive: 'continuous', speed: 24, ratio: '1-1', corner: 8, dir: 'left',
         driveChoices: [['continuous', 'Continuous'], ['static', 'Static']],
         dirChoices: [['left', 'Left / Up'], ['right', 'Right / Down']]}),
     ],

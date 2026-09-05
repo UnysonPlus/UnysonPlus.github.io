@@ -1,4 +1,4 @@
-/* Interactive 3D Gallery playground — two-pane (main + design sidebar), matching the Backgrounds one. */
+/* Interactive Motion Gallery playground — two-pane (main + design sidebar), matching the Backgrounds one. */
 .playground { border: 1px solid var(--ifm-toc-border-color); border-radius: 12px; overflow: hidden; margin: 1.5rem 0 2rem; background: var(--ifm-card-background-color); }
 
 .layout { display: flex; align-items: stretch; }

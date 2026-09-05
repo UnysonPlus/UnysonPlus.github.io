@@ -1,5 +1,5 @@
 /*
- * Re-vendors the REAL 3D Gallery runtime (CSS + driver) from the plugin into gallery-engine.js.
+ * Re-vendors the REAL Motion Gallery runtime (CSS + driver) from the plugin into gallery-engine.js.
  *
  *   node src/components/Gallery3DPlayground/vendor.mjs
  *
@@ -37,7 +37,7 @@ const out = `/* eslint-disable */
 /**
  * GENERATED — do not edit. Re-run: node src/components/Gallery3DPlayground/vendor.mjs
  *
- * The REAL 3D Gallery runtime (CSS + driver), vendored verbatim from the plugin
+ * The REAL Motion Gallery runtime (CSS + driver), vendored verbatim from the plugin
  * (framework/extensions/animation-engine/shortcodes/gallery-3d/static/). Only the auto-scan
  * bootstrap is replaced with the initEl() / bumpGen() exports below.
  */

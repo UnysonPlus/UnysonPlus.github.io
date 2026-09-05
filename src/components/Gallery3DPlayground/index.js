@@ -298,8 +298,8 @@ const DESIGNS = {
     blurb: 'A centred-focus slider — the card passing through the centre scales up (Center Scale) and sits clean while its neighbours peek past on either side. Slide Portion sets the spacing (low = a cinematic overlap, high = spread apart); Zigzag pushes off-centre cards alternately up/down (left/right when vertical). Horizontal or vertical.',
     controls: [
       se('axis', 'Orientation', 'horizontal', [['horizontal', 'Horizontal'], ['vertical', 'Vertical']]),
-      sl('card_size', 'Card Size (%)', 60, 20, 100),
-      sl('center_scale', 'Center Scale (%)', 180, 100, 300),
+      sl('card_size', 'Card Size (%)', 78, 20, 100),
+      sl('center_scale', 'Center Scale (%)', 200, 100, 300),
       sl('slide_portion', 'Slide Portion (%)', 60, 20, 100),
       sl('card_spacing', 'Gap (%)', 6, 0, 40, 0.5),
       sl('hold', 'Hold (%)', 50, 0, 100),

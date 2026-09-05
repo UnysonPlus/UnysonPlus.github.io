@@ -31,7 +31,7 @@ So the real gap versus Bricks was never *safety* or *native support* — both al
 - **Keep the one existing SVG-upload pipeline; make it per-role configurable.** A `svg_upload_roles` checklist (Shortcodes settings) drives `sc_svg_upload_allowed()`.
 - **Default = Administrator only**, so the default is byte-for-byte the historical behaviour (no regression for sites already relying on admin SVG uploads or the Site Converter's sideloading). Checking Administrator covers every `manage_options`-capable user (custom admin-like roles included); other roles extend by role name; **unchecking every role switches SVG uploads off entirely.**
 - **No plugin dependency, no second pipeline.** The trusted-flow filter (`fw_sc_svg_upload_allowed`) and the on-upload sanitiser are unchanged.
-- **Home:** the Shortcodes extension settings, because that is where the SVG-upload code lives — reading the setting from the same extension, rather than coupling it to the page-builder child extension (where it was first drafted).
+- **Home:** the **Page Builder settings** page. The SVG-upload *code* lives in the shortcodes extension, so the tidy choice would be to read the setting from there too — and it was first placed there for exactly that reason. But a builder capability belongs on the builder's own settings page, where people actually look for it (it's where Bricks puts it, and where it was requested), and that page is far more discoverable than the shortcodes extension's settings screen. So the reader takes one guarded cross-extension read (`fw_get_db_ext_settings_option('page-builder', 'svg_upload_roles', …)`, defaulting to Administrator if the value is unavailable): discoverability and user expectation won over avoiding the mild parent-reads-child coupling.
 
 ## Why
 

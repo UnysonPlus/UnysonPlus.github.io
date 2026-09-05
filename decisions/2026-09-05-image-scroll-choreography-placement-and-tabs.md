@@ -30,7 +30,7 @@ Two facts pull in opposite directions on placement:
 **2. What we call it**
 
 - **"Scroll Choreography."** Short, but generic and namespace-greedy — it collides conceptually with Model Viewer's feature of the same name and leaves no room to name a future non-image choreography element.
-- **"Image Scroll Choreography."** Qualifies *what* it choreographs, parallels Model Viewer's "Scroll Choreography" while disambiguating, and future-proofs the namespace. Slightly longer. *Chosen.* (The internal shortcode tag stays `scroll_choreo` — tag ≠ display title, so nothing saved in existing pages breaks.)
+- **"Image Scroll Choreography."** Qualifies *what* it choreographs, parallels Model Viewer's "Scroll Choreography" while disambiguating, and future-proofs the namespace. Slightly longer. *Chosen* — and made **fully consistent**: the folder (`image-scroll-choreography`) and the auto-derived shortcode tag (`image_scroll_choreography`) match the display title too, not just the label. We initially kept the short internal tag `scroll_choreo` (tag ≠ title, so nothing breaks), but a half-renamed element — pretty label over a `scroll-choreo` folder — is exactly the kind of mismatch that confuses a future reader, and because the element is brand-new and unshipped (used only by the one demo page we control), aligning the folder + tag now is free. The one thing that *stays* short is the CSS block prefix (`fw-choreo`), which follows the established codebase convention that a folder maps to an abbreviated BEM block — Model Viewer's folder is `model-viewer` but its class block is `fw-model`, not `fw-model-viewer`.
 
 **3. Which builder tabs**
 

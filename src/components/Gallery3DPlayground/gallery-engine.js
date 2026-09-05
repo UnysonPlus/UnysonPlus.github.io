@@ -117,7 +117,7 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 		var spacing  = num( el, 'data-tdg-spacing', 100 ) / 100;
 		var perspVal = num( el, 'data-tdg-persp', 40 );
 		var backFade = clamp( num( el, 'data-tdg-backfade', 65 ) / 100, 0, 1 );
-		// Card Size is % of the stage width, but scaled ×0.5 so the numbers line up with the animos
+		// Card Size is % of the stage width, but scaled ×0.5 so the numbers line up with the reference
 		// control (their 21% default = our card that fits the frame). Keeps the value portable.
 		var cardPct  = num( el, 'data-tdg-card', 21 ) / 100 * 0.5;
 
@@ -135,11 +135,11 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 			if ( R < chordFit * 1.03 ) { R = chordFit * 1.03; }
 			// Perspective is WIDTH-RELATIVE so the depth reads the same at any stage size (a fixed px
 			// value looked strong on a wide screen and flat on a narrow one). HIGHER value = STRONGER
-			// perspective (closer camera, bigger px→smaller distance), matching the animos control.
+			// perspective (closer camera, bigger px→smaller distance), matching the reference control.
 			var pDist = W * Math.max( 0.35, Math.min( 1.25, 1.35 - perspVal * 0.013 ) );
 			stage.style.perspective = pDist + 'px';
 			// Eye sits below the ring centre so the near cards render lower with margin beneath them and
-			// the whole loop lifts slightly above centre — the animos framing.
+			// the whole loop lifts slightly above centre — the reference framing.
 			stage.style.perspectiveOrigin = '50% 60%';
 			cards.forEach( function ( c, i ) {
 				c.__rot = i * step;
@@ -1196,7 +1196,7 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 		function layout() {
 			var W = stage.clientWidth || el.clientWidth || 1;
 			// Zoom → card width as a fraction of the stage: higher zoom = larger totems, fewer visible
-			// (the rim totems fall off the sides and fade). Matches the animos "Zoom" behaviour.
+			// (the rim totems fall off the sides and fade). Matches the reference "Zoom" behaviour.
 			var cardPct = 0.10 + ( zoom / 100 ) * 0.30;
 			cardW = Math.max( 30, W * cardPct );
 			cardH = ( colData[ 0 ].cards[ 0 ] && colData[ 0 ].cards[ 0 ].offsetHeight ) ? colData[ 0 ].cards[ 0 ].offsetHeight : cardW * 0.5625;

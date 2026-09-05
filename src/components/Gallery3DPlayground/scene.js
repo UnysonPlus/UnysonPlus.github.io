@@ -237,6 +237,21 @@ export function buildScene(design, o) {
     return `<div class="tdg tdg--hero-reel" style="${style}" ${a}><div class="tdg__stage" style="background:${bg}"><div class="tdg__hero"><span class="tdg__hero-layer"></span><span class="tdg__hero-layer"></span></div><div class="tdg__reel">${cells}</div></div></div>`;
   }
 
+  if (design === 'focus_slider') {
+    // centred-focus slider — mirror focus-slider.php (initFocusSlider).
+    const a = attr({
+      ...shared,
+      'data-tdg-dir': o.direction === 'right' ? -1 : 1,
+      'data-tdg-axis': o.axis === 'vertical' ? 'vertical' : 'horizontal',
+      'data-tdg-card': o.card_size, 'data-tdg-cscale': o.center_scale, 'data-tdg-slide': o.slide_portion,
+      'data-tdg-gap': o.card_spacing, 'data-tdg-zig': o.zigzag, 'data-tdg-zigmode': o.zigzag_mode, 'data-tdg-hold': o.hold,
+    });
+    let cells = '';
+    for (let k = 0; k < 9; k++) cells += cardHtml(SAMPLES[k % SAMPLES.length]);
+    const bg = o.background && String(o.background).trim() ? o.background : '#101014';
+    return `<div class="tdg tdg--focus-slider" style="${style}" ${a}><div class="tdg__stage" style="background:${bg}"><div class="tdg__reel">${cells}</div></div></div>`;
+  }
+
   if (design === 'wheel_carousel') {
     // cards fanned on a Ferris wheel — mirror wheel-carousel.php (a loop of cards on the arc).
     const n = 11;

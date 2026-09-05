@@ -2497,6 +2497,7 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 		}
 		function apply() {
 			var inv = 1 / cscale;                            // a neighbour's scale relative to the focus
+			var stepEven = ( ( ( Math.round( pos ) % 2 ) + 2 ) % 2 ) === 0;
 			for ( var i = 0; i < N; i++ ) {
 				var c = cards[ i ];
 				var p = ( ( i - pos ) % N + N ) % N;
@@ -2505,14 +2506,22 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 				var d = Math.abs( p );
 				var act = Math.max( 0, 1 - d );              // 1 at centre → 0 one step away
 				var sc = inv + ( 1 - inv ) * act;            // focused (centre) = full size; neighbours shrink to 1/cscale
-				// Zigzag: off-centre cards shift perpendicular; the focused card stays clean (fade by 1-act).
-				// Fixed ties the up/down to each card; Alternate is a slash (one side up, the other down)
-				// that flips each step — so the neighbours sit on opposite sides, as in the reference.
-				var sgn = zigFixed ? ( i % 2 ? -1 : 1 )
-					: ( p < 0 ? -1 : 1 ) * ( ( ( Math.round( pos ) % 2 ) + 2 ) % 2 ? -1 : 1 );
-				var off = sgn * zig * cross * 0.5 * ( 1 - act );
-				var tx = vertical ? off : main;
-				var ty = vertical ? main : off;
+				var perp;
+				if ( vertical ) {
+					// Centre-aligned; Zigzag pushes alternate cards left/right — a slash that flips each step.
+					var sgn = zigFixed ? ( i % 2 ? -1 : 1 ) : ( p < 0 ? -1 : 1 ) * ( stepEven ? 1 : -1 );
+					perp = sgn * zig * cross * 0.5 * ( 1 - act );
+				} else {
+					// Bottom-align every card to the focused card's bottom edge (bottoms flush — a shrunk
+					// neighbour is pushed DOWN so its base meets the focus base), then Zigzag lifts
+					// alternate cards UP off that baseline. A neighbour is never below the focus, as in
+					// the reference; Fixed ties the lift to each card, Alternate flips the lifted side each step.
+					var baseline = ( cross / 2 ) * ( 1 - sc );
+					var lifted = zigFixed ? ( i % 2 === 1 ) : ( ( ( p < 0 ? 0 : 1 ) + ( stepEven ? 0 : 1 ) ) % 2 === 1 );
+					perp = baseline - ( lifted ? zig * cross * 0.7 * ( 1 - act ) : 0 );
+				}
+				var tx = vertical ? perp : main;
+				var ty = vertical ? main : perp;
 				c.style.transform = 'translate3d(' + tx.toFixed( 1 ) + 'px,' + ty.toFixed( 1 ) + 'px,0) scale(' + sc.toFixed( 3 ) + ')';
 				c.style.zIndex = String( 1000 - Math.round( d * 10 ) );
 				c.style.opacity = ( d > N / 2 - 0.6 ? Math.max( 0, ( N / 2 - d ) / 0.6 ) : 1 ).toFixed( 3 );

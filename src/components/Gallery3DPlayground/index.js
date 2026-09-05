@@ -303,7 +303,7 @@ const DESIGNS = {
       sl('slide_portion', 'Slide Portion (%)', 60, 20, 100),
       sl('card_spacing', 'Gap (%)', 6, 0, 40, 0.5),
       sl('hold', 'Hold (%)', 50, 0, 100),
-      sl('zigzag', 'Zigzag Offset (%)', 100, 0, 100),
+      sl('zigzag', 'Zigzag Offset (%)', 0, 0, 100),
       se('zigzag_mode', 'Zigzag Mode', 'alternate', [['alternate', 'Alternate'], ['fixed', 'Fixed']]),
       ...SHARED({drive: 'continuous', speed: 24, ratio: '3-4', corner: 8, dir: 'left',
         driveChoices: [['continuous', 'Continuous'], ['static', 'Static']],

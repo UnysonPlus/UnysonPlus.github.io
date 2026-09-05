@@ -2464,7 +2464,7 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 		var cardPct  = clamp( num( el, 'data-tdg-card', 78 ), 20, 100 ) / 100;
 		var gap      = clamp( num( el, 'data-tdg-gap', 6 ), 0, 40 ) / 100;
 		var cscale   = clamp( num( el, 'data-tdg-cscale', 200 ), 100, 300 ) / 100;
-		var zig      = clamp( num( el, 'data-tdg-zig', 100 ), 0, 100 ) / 100;
+		var zig      = clamp( num( el, 'data-tdg-zig', 0 ), 0, 100 ) / 100;
 		var zigFixed = ( el.getAttribute( 'data-tdg-zigmode' ) === 'fixed' );
 		var slide    = clamp( num( el, 'data-tdg-slide', 60 ), 20, 100 ) / 100;
 		var hold     = clamp( num( el, 'data-tdg-hold', 50 ), 0, 100 ) / 100;
@@ -2505,18 +2505,14 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 				var d = Math.abs( p );
 				var act = Math.max( 0, 1 - d );              // 1 at centre → 0 one step away
 				var sc = inv + ( 1 - inv ) * act;            // focused (centre) = full size; neighbours shrink to 1/cscale
-				// Bottom-align every card to a FIXED baseline (the focus's full-scale bottom edge), so no
-				// card is ever below the focus — not even mid-transition when the focus is briefly smaller.
-				// Zigzag then raises the FAR cards on one side up to top-align, in a smooth slash; a ramp
-				// holds the centre cards on the baseline so the growing/shrinking focus never dips. Fixed
-				// raises alternate cards instead of one side. `cross` = focus height (width when vertical).
-				var edge = ( cross / 2 ) * ( 1 - sc );                 // 0 for the focus → grows for neighbours
-				var r = ( Math.abs( p ) - 0.35 ) / 0.65;              // ramp: 0 near the centre → 1 a card out
-				r = r < 0 ? 0 : ( r > 1 ? 1 : r ); r = r * r * ( 3 - 2 * r );
-				var lift = zigFixed ? ( i % 2 ) * r : ( p > 0 ? r : 0 );
-				var perp = edge - zig * lift * cross * ( 1 - sc );
-				var tx = vertical ? perp : main;
-				var ty = vertical ? main : perp;
+				// Zigzag: off-centre cards shift perpendicular; the focused card stays clean (fade by 1-act).
+				// Fixed ties the up/down to each card; Alternate is a slash (one side up, the other down)
+				// that flips each step — so the neighbours sit on opposite sides, as in the reference.
+				var sgn = zigFixed ? ( i % 2 ? -1 : 1 )
+					: ( p < 0 ? -1 : 1 ) * ( ( ( Math.round( pos ) % 2 ) + 2 ) % 2 ? -1 : 1 );
+				var off = sgn * zig * cross * 0.5 * ( 1 - act );
+				var tx = vertical ? off : main;
+				var ty = vertical ? main : off;
 				c.style.transform = 'translate3d(' + tx.toFixed( 1 ) + 'px,' + ty.toFixed( 1 ) + 'px,0) scale(' + sc.toFixed( 3 ) + ')';
 				c.style.zIndex = String( 1000 - Math.round( d * 10 ) );
 				c.style.opacity = ( d > N / 2 - 0.6 ? Math.max( 0, ( N / 2 - d ) / 0.6 ) : 1 ).toFixed( 3 );

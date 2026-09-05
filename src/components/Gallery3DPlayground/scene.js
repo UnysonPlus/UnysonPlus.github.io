@@ -1,5 +1,5 @@
 /*
- * Builds the 3D Gallery's DOM exactly as the plugin's PHP views do, so the vendored driver
+ * Builds the Motion Gallery's DOM exactly as the plugin's PHP views do, so the vendored driver
  * (gallery-engine.js) can lay it out for real.
  *
  * ⚠ KEEP IN SYNC with the plugin's views/designs/*.php. The card COUNTS are not cosmetic — the driver

@@ -1,5 +1,5 @@
 /*
- * 3D Gallery — interactive playground.
+ * Motion Gallery — interactive playground.
  *
  * Pick a design on the right: the scene is built exactly as the plugin's PHP emits it (scene.js) and
  * driven by the REAL runtime (gallery-engine.js — vendored verbatim from the plugin, see vendor.mjs).
@@ -419,7 +419,7 @@ export default function Gallery3DPlayground() {
         <div>Sample option — updates as you tweak</div>
         <pre><code>{php}</code></pre>
         <p className={styles.note}>
-          The 3D Gallery is a <strong>page-builder element</strong> (builder palette → <strong>Media
+          The Motion Gallery is a <strong>page-builder element</strong> (builder palette → <strong>Media
           Elements</strong>). <code>design_settings</code> is a multi-picker — the chosen design plus its
           own geometry options — while the shared card controls (Box Style, shadow, captions, lightbox,
           Use as Section Background) live on the <strong>Style</strong> tab. Only this element's small

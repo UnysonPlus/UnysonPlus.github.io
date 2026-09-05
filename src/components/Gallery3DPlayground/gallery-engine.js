@@ -2497,7 +2497,6 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 		}
 		function apply() {
 			var inv = 1 / cscale;                            // a neighbour's scale relative to the focus
-			var stepEven = ( ( ( Math.round( pos ) % 2 ) + 2 ) % 2 ) === 0;
 			for ( var i = 0; i < N; i++ ) {
 				var c = cards[ i ];
 				var p = ( ( i - pos ) % N + N ) % N;
@@ -2506,19 +2505,20 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 				var d = Math.abs( p );
 				var act = Math.max( 0, 1 - d );              // 1 at centre → 0 one step away
 				var sc = inv + ( 1 - inv ) * act;            // focused (centre) = full size; neighbours shrink to 1/cscale
+				// Perpendicular position. Everything below is a CONTINUOUS function of the card's
+				// position p, so nothing ever jumps as the reel scrolls.
 				var perp;
 				if ( vertical ) {
-					// Centre-aligned; Zigzag pushes alternate cards left/right — a slash that flips each step.
-					var sgn = zigFixed ? ( i % 2 ? -1 : 1 ) : ( p < 0 ? -1 : 1 ) * ( stepEven ? 1 : -1 );
-					perp = sgn * zig * cross * 0.5 * ( 1 - act );
+					// Centre-aligned; Zigzag eases cards left/right in a smooth wave (0 at the centre).
+					var waveV = 0.5 - 0.5 * Math.cos( p * Math.PI );          // 0 at centre → 1 one step out
+					perp = ( zigFixed ? ( i % 2 ? 1 : -1 ) : ( p < 0 ? -1 : 1 ) ) * zig * cross * 0.5 * waveV;
 				} else {
 					// Bottom-align every card to the focused card's bottom edge (bottoms flush — a shrunk
-					// neighbour is pushed DOWN so its base meets the focus base), then Zigzag lifts
-					// alternate cards UP off that baseline. A neighbour is never below the focus, as in
-					// the reference; Fixed ties the lift to each card, Alternate flips the lifted side each step.
+					// neighbour is pushed DOWN so its base meets the focus base), then Zigzag lifts cards
+					// UP off that baseline in a smooth cosine wave. A card is never below the focus.
 					var baseline = ( cross / 2 ) * ( 1 - sc );
-					var lifted = zigFixed ? ( i % 2 === 1 ) : ( ( ( p < 0 ? 0 : 1 ) + ( stepEven ? 0 : 1 ) ) % 2 === 1 );
-					perp = baseline - ( lifted ? zig * cross * 0.7 * ( 1 - act ) : 0 );
+					var wave = zigFixed ? ( i % 2 ) * ( 1 - act ) : ( 0.5 - 0.5 * Math.cos( p * Math.PI ) );
+					perp = baseline - zig * cross * 0.5 * wave;
 				}
 				var tx = vertical ? perp : main;
 				var ty = vertical ? main : perp;

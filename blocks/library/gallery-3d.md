@@ -1,13 +1,13 @@
 ---
-title: Gallery 3D
-description: The Unyson+ Gallery 3D block — images arranged on a rotating 3D ring or carousel, authored in the block editor and rendered by the page builder's 3D gallery engine.
+title: Motion Gallery
+description: The Unyson+ Motion Gallery block — images arranged on a rotating 3D ring or carousel, authored in the block editor and rendered by the page builder's Motion Gallery engine.
 ---
 
-# Gallery 3D
+# Motion Gallery
 
 Images arranged on a **rotating 3D ring** — a coverflow-style carousel that turns in perspective as visitors drag or it auto-rotates. A showy way to present a small, curated set of photos. Like every block in the library, it is a second *authoring* surface, not a second *renderer*: the canvas preview and the front end are produced by the same server-side code as the page builder, so the output is identical either way.
 
-<img src="/img/blocks/gallery-3d/front.png" alt="The Gallery 3D block — images on a rotating 3D ring" width="1210" />
+<img src="/img/blocks/gallery-3d/front.png" alt="The Motion Gallery block — images on a rotating 3D ring" width="1210" />
 
 ## Options
 

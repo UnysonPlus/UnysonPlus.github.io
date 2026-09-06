@@ -32,7 +32,7 @@ which is exactly why the [focus areas](./focus-areas) are so specific.
 <rect x="530" y="165" width="210" height="90" rx="12" fill="var(--ifm-color-emphasis-100)" stroke="var(--ifm-color-emphasis-200)"/>
 <text x="544" y="193" font-size="12" font-weight="700" fill="#B26A00">3D &amp; SPECIAL</text>
 <text x="544" y="217" font-size="11" fill="var(--ifm-color-emphasis-700)">WebGL Object · Model Viewer</text>
-<text x="544" y="236" font-size="11" fill="var(--ifm-color-emphasis-700)">3D Gallery · Image Sequence</text>
+<text x="544" y="236" font-size="11" fill="var(--ifm-color-emphasis-700)">Motion Gallery · Image Sequence</text>
 <rect x="250" y="310" width="260" height="90" rx="12" fill="var(--ifm-color-emphasis-100)" stroke="var(--ifm-color-emphasis-200)"/>
 <text x="270" y="340" font-size="12" font-weight="700" fill="#0FA36B">SITE-WIDE</text>
 <text x="270" y="364" font-size="11.5" fill="var(--ifm-color-emphasis-700)">Cursor · Page Transitions</text>
@@ -91,7 +91,7 @@ which is exactly why the [focus areas](./focus-areas) are so specific.
   with automatic quality drop and a poster fallback.
 - **[Model Viewer](/animation-engine/model-viewer)** — glTF/GLB with orbit, HDR lighting, baked
   animation clips, **AR ("view in your space")**, hotspots and material variants.
-- **[3D Gallery](/animation-engine/3d-gallery)** — CSS-3D ring / wall / sphere / orbit / scatter /
+- **[Motion Gallery](/animation-engine/3d-gallery)** — CSS-3D ring / wall / sphere / orbit / scatter /
   stack / device layouts, scroll-scrubbable and able to sync to a Scroll Story beat.
 - **[Image Sequence](/animation-engine/image-sequence)** (frame-scrub "video from stills"),
   **[SVG Draw](/animation-engine/svg-draw)** (self-drawing line art, scroll-scrub).

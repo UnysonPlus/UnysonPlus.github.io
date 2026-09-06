@@ -1,13 +1,13 @@
 ---
 sidebar_position: 12
-title: 3D Gallery
+title: Motion Gallery
 slug: /3d-gallery
 ---
 
-# 3D Gallery
+# Motion Gallery
 
 :::tip[Try it live]
-Preview every design in the **[3D Gallery playground](./playground.mdx)** — pick a design, tweak its
+Preview every design in the **[Motion Gallery playground](./playground.mdx)** — pick a design, tweak its
 geometry, and watch it render with sample images. It runs the **real** module (the same CSS and 3D
 driver the element ships), then copies the generated sample option.
 :::
@@ -18,7 +18,7 @@ pure-CSS 3D scene driven by a single rAF loop (no library).
 
 ## Where to find it
 
-Add **3D Gallery** from the builder palette → **Media Elements**. Drop your images into the
+Add **Motion Gallery** from the builder palette → **Media Elements**. Drop your images into the
 **Content** tab, then pick a **Design** on the **Design** tab — each design reveals its own geometry
 controls. The shared card controls (Box Style, shadow, captions, click action) live on the **Style**
 tab.
@@ -112,7 +112,7 @@ Every design shares the same surrounding controls, so switching design keeps you
 
 ## Set it up
 
-1. Add a **3D Gallery** (builder palette → **Media Elements**) and add your **images**.
+1. Add a **Motion Gallery** (builder palette → **Media Elements**) and add your **images**.
 2. **Design** tab → pick a design, then tune its geometry.
 3. Set **Loop Duration** and **On Hover** to taste.
 4. **Save** — the scene renders and loops on the front end.

@@ -1,0 +1,9 @@
+{
+  "label": "Flexbox (Div)",
+  "position": 58,
+  "collapsible": true,
+  "collapsed": false,
+  "customProps": {
+    "description": "The modern layout primitive — one Div you set to Flex, Grid or Block. Its four palette tiles (Section, Block, Flexbox, Grid) each get a detailed page."
+  }
+}

@@ -17,6 +17,8 @@ them.
 
 ## Layout — the Flex options
 
+<img src="/img/shortcodes/flexbox-flex-layout.png" alt="Flexbox (Div) options — the Layout tab, with Display set to Flex and the Direction control" width="840" />
+
 | Option | What it does |
 | --- | --- |
 | **HTML Tag** (`html_tag`) | `div` for this tile (`section` / `article` / `aside` also available). |

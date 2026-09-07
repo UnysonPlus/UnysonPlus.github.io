@@ -22,6 +22,8 @@ pre-set for the job you're starting. **Each has its own detailed page:**
 | **[Flexbox (div)](./flex.md)** | `div` tag · `display: flex` | `<div>` | a one-dimensional row or stack that can wrap |
 | **[Grid (div)](./grid.md)** | `div` tag · `display: grid` | `<div>` | a two-dimensional column layout (CSS Grid) |
 
+<img src="/img/shortcodes/flexbox-palette.png" alt="The four Flexbox tiles in the Layout Elements tab — Section, Block (div), Flexbox (div) and Grid (div)" width="332" />
+
 The tiles differ only in their starting **HTML Tag** and **Display** — you can change either on any
 of them, so a "Block" can become a Flex row and a "Grid" can become a Section. The builder just
 hides the options that don't apply to the current Display (Flex-only, Grid-only) and to the current

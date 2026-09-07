@@ -16,6 +16,8 @@ set it unlocks the **band-only** controls below (revealed because the HTML Tag i
 
 ## Layout
 
+<img src="/img/shortcodes/flexbox-section-layout.png" alt="Section (Div) options — the Layout tab, with HTML Tag set to section, Full-Width Band and Content Width" width="840" />
+
 | Option | What it does |
 | --- | --- |
 | **HTML Tag** (`html_tag`) | `section` for this tile (a titled content band). You can switch it to `div` / `article` / `aside` if you don't want a `<section>` landmark. |

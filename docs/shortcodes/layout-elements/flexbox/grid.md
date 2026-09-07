@@ -20,6 +20,8 @@ Two ways to define the columns:
 
 ## Layout — the Grid options
 
+<img src="/img/shortcodes/flexbox-grid-layout.png" alt="Grid (Div) options — the Layout tab, with Display set to Grid, Grid Columns, Auto-fit, Min Column Width and Dense Packing" width="840" />
+
 | Option | What it does |
 | --- | --- |
 | **HTML Tag** (`html_tag`) | `div` for this tile (`section` / `article` / `aside` also available). |

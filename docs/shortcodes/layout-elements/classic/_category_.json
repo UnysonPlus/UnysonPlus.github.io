@@ -1,0 +1,9 @@
+{
+  "label": "Classic Layout",
+  "position": 59,
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "The original Bootstrap-grid containers — still fully supported, grouped here to match the builder's Classic Layout palette tab. New layouts use the modern Flexbox (Div)."
+  }
+}

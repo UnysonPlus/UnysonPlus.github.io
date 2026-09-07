@@ -1,4 +1,5 @@
 ---
+slug: /shortcodes/layout-elements/section
 title: Section
 sidebar_position: 59
 hide_table_of_contents: true

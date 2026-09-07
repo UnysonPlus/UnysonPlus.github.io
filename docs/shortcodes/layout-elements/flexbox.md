@@ -66,8 +66,8 @@ band-only controls appear only when the HTML tag is `section`.
 ## Where it lives
 
 The Flexbox leads the **Layout Elements** palette tab. The classic Bootstrap containers
-([Section](./section.md), [Container](./container.md), [Bleed Section](./bleed-section.md),
-[Masonry Section](./masonry-section.md)) and the [column-width tiles](/page-builder/column-widths)
+([Section](/shortcodes/layout-elements/section), [Container](/shortcodes/layout-elements/container), [Bleed Section](/shortcodes/layout-elements/bleed-section),
+[Masonry Section](/shortcodes/layout-elements/masonry-section)) and the [column-width tiles](/page-builder/column-widths)
 now sit together in the **Classic Layout** tab.
 
 The same primitive also powers the Theme Builder's

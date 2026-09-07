@@ -13,6 +13,8 @@ background** around one thing, or wrap content you'll style as a unit.
 
 ## Layout
 
+<img src="/img/shortcodes/flexbox-block-layout.png" alt="Block (Div) options — the Layout tab, with HTML Tag div and Display set to Block" width="840" />
+
 | Option | What it does |
 | --- | --- |
 | **HTML Tag** (`html_tag`) | `div` for this tile. Switch to `section` / `article` / `aside` if the wrapper is semantically one of those. |

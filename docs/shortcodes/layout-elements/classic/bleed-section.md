@@ -1,4 +1,5 @@
 ---
+slug: /shortcodes/layout-elements/bleed-section
 title: Bleed Section
 sidebar_position: 60
 ---

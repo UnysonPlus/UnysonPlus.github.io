@@ -1,4 +1,5 @@
 ---
+slug: /shortcodes/layout-elements/column
 title: Column
 sidebar_position: 63
 hide_table_of_contents: true

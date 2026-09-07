@@ -1,4 +1,5 @@
 ---
+slug: /shortcodes/layout-elements/masonry-section
 title: Masonry Section
 sidebar_position: 61
 ---

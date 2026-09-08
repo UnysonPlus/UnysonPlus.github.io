@@ -24,7 +24,7 @@ Select the block and open the **Settings** (block) tab; the whole sidebar is gen
 The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
 :::tip[💡 Web dev tip: motion should respect user preferences]
-Some people set "reduce motion" at the OS level because animation makes them dizzy. Wrap non-essential motion in a `@media (prefers-reduced-motion: reduce)` query and dial it down — the browser exposes that preference so you can honour it. A gentle cue is helpful; a relentless bounce for someone who asked for calm is not. [MDN: prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) · [Web Dev Basics: Accessibility](/learn/accessibility)
+Some people set "reduce motion" at the OS level because animation makes them dizzy. Wrap non-essential motion in a `@media (prefers-reduced-motion: reduce)` query and dial it down — the browser exposes that preference so you can honour it. A gentle cue is helpful; a relentless bounce for someone who asked for calm is not. [MDN: prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
 :::
 
 ## Sample content

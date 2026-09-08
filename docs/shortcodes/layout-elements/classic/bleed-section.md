@@ -14,6 +14,10 @@ A split section with content on one side and a full-bleed image on the other, ex
 
 *"Full-bleed"* is a print term for artwork that runs right off the edge of the page. On the web it means an image (or colour) that touches the screen edge with no surrounding margin — a bold, immersive look, versus the usual content that sits inside the page's padding.
 
+:::tip[💡 Web dev tip: a full-bleed image still has to reflow on a phone]
+A split layout that puts an image edge-to-edge on one side works well on a wide screen, but the same proportions squeezed onto a phone can crush the content or the image unreadably — that's why a responsive design stacks the two halves vertically below a breakpoint instead of shrinking them side by side forever. Bleed Section's Mobile Stacking Order does exactly that, and its Lazy-load Image switch keeps a below-the-fold bleed image from competing with content the visitor sees first. [MDN: Responsive design](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design)
+:::
+
 ## Layout
 
 - **Bleed Image** — the image that fills one half and bleeds to the viewport edge. Use a high-resolution image; it's cropped to fill (cover), so edge detail may be trimmed depending on the ratio. Picked from the Media Library it's served responsively (`srcset`).

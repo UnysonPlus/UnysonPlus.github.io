@@ -18,6 +18,10 @@ Two ways to define the columns:
   Column Start**.
 - **Auto-fit** — let the grid fit as many equal columns as the width allows, with no breakpoints.
 
+:::tip[💡 Web dev tip: CSS Grid handles rows and columns together]
+Where flexbox is one-dimensional, CSS Grid lays items out on both axes at once, which is what makes a feature grid or card layout that needs items to actually align in rows *and* columns straightforward instead of fought-for. Auto-fit is worth leaning on for a responsive grid — it reflows the column count to the available width with no manual breakpoints — but if you ever visually reorder grid items, remember the reading and tab order still follows the source order, so keep the two in sync for keyboard and screen-reader visitors. [MDN: CSS Grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout)
+:::
+
 ## Layout — the Grid options
 
 <img src="/img/shortcodes/flexbox-grid-layout.png" alt="Grid (Div) options — the Layout tab, with Display set to Grid, Grid Columns, Auto-fit, Min Column Width and Dense Packing" width="840" />

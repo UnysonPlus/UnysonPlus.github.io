@@ -11,6 +11,10 @@ full typography control. Tabs: **Content**, **Style**, **Animations**, **Advance
 
 <img src="/img/shortcodes/counter-backend.png" alt="Animated Counter on the Page Builder canvas" width="936" />
 
+:::tip[💡 Web dev tip: the count-up motion should honour "reduced motion"]
+Rapidly ticking numbers are exactly the kind of movement that can bother visitors who've told their operating system they prefer reduced motion, even though the number itself is harmless. UnysonPlus's Animated Counter respects that `prefers-reduced-motion` setting and shows the final value right away instead of forcing the animation, and the number is rendered as real text either way so it's never lost to a screen reader. [MDN: prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/counter-content.png" alt="Animated Counter options panel — Content tab" width="840" />

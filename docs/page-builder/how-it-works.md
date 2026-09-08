@@ -16,6 +16,14 @@ migration traps and the clean-DOM rule are all stages of it.
 
 <img src="/img/page-builder.png" alt="The Page Builder — element palette and a populated section on the canvas" width="968" />
 
+:::tip[💡 Web dev tip: markup you hand-write beats markup you auto-generate]
+Notice the last step of this pipeline is a per-element `view.php` — real, hand-written HTML, not a
+generic wrapper templated out for every possible shape. That's why the builder's output stays lean
+instead of turning into "div soup": each element only ever emits the markup it actually needs.
+Writing your own templates the same way — purpose-built rather than one-size-fits-all — is what
+keeps a codebase's DOM small and fast to parse. [web.dev: Improve page performance with the PageSpeed Insights report](https://web.dev/articles/pagespeed-insights)
+:::
+
 ## The data flow at a glance
 
 ```

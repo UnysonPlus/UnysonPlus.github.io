@@ -9,6 +9,10 @@ A compact rounded **badge / pill / chip** — an optional sub-tag (“New”), a
 
 Markup stays clean and semantic: it renders a crawlable `<a>` when linked (a plain `<span>` otherwise — never a fake `role="alert"`), and every utility class lives in the element’s stylesheet rather than on the content.
 
+:::tip[💡 Web dev tip: a pill's colour is a hint, its text is the message]
+A red "Sold out" badge and a green "In stock" badge both need to make sense if colour disappears entirely — printed in grayscale, viewed by someone colour-blind, or read aloud by a screen reader — so the wording itself, not the tint, should carry the actual status. This element's Message field is what does that job; colour is only ever the reinforcement on top. [W3C WAI: use of color](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/badge-content.png" alt="Badge options panel — Content tab" width="1200" />

@@ -24,7 +24,7 @@ Select the block and open the **Settings** (block) tab; the whole sidebar is gen
 The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
 :::tip[💡 Web dev tip: don't autoplay video with sound]
-Autoplaying audio surprises people, drains data and hurts accessibility — most browsers block it anyway. If you must autoplay, keep it **muted** and give a visible control to unmute. A lazy-loaded poster (like this block's facade) also keeps a heavy embed from slowing your page's initial load. [web.dev: autoplay policy](https://developer.chrome.com/blog/autoplay/) · [Web Dev Basics: Performance](/learn/performance)
+Autoplaying audio surprises people, drains data and hurts accessibility — most browsers block it anyway. If you must autoplay, keep it **muted** and give a visible control to unmute. A lazy-loaded poster (like this block's facade) also keeps a heavy embed from slowing your page's initial load. [web.dev: autoplay policy](https://developer.chrome.com/blog/autoplay/)
 :::
 
 ## Sample content

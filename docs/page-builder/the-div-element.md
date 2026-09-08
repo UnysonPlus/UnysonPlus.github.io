@@ -19,6 +19,15 @@ single element that maps directly to how a developer writes a layout by hand
 (`<section><div class="grid">…</div></section>`), so the DOM stays clean and semantic. The classic
 grid is still fully supported — see the [Roadmap](./roadmap.md) for how the two models coexist.
 
+:::tip[💡 Web dev tip: pick the HTML tag for what it means, not how it looks]
+`<div>`, `<section>`, `<article>` and `<nav>` can all be styled identically, so it's tempting to
+reach for whichever one you're used to. But the tag itself is what a screen reader announces and
+what a search engine uses to understand your page's outline — a repeatable card is an `<article>`,
+an in-page menu is a `<nav>`, and a wrapper with no inherent meaning is a plain `<div>`. Choosing
+correctly costs nothing visually and gives assistive tech real structure to work with.
+[MDN: Using semantic HTML elements](https://developer.mozilla.org/en-US/docs/Glossary/Semantics)
+:::
+
 :::note[Two flexboxes, one engine]
 The same primitive powers the Theme Builder's [Flexbox](../extensions/theme-builder/flexbox.md)
 (scoped to header/body/footer parts). This page documents the Div as it appears on **Pages and

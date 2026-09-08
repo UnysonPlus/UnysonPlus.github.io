@@ -26,6 +26,15 @@ A practical cheat sheet for translating **Bootstrap grid columns** — `col-md-6
 layout, to understand what a Bootstrap class actually does, or to rebuild a page with the
 UnysonPlus **Div** (which outputs clean flex/grid CSS instead of grid classes).
 
+:::tip[💡 Web dev tip: reordering visually can scramble the reading order]
+`order` (or the Div's Reverse Order) changes what a sighted mouse user sees first without moving
+anything in the actual markup — but screen readers and keyboard `Tab` navigation still follow the
+underlying **source order**. If a card's "Read more" link visually sits before its heading, someone
+navigating by keyboard hears them in the opposite sequence. Keep visual order and DOM order aligned
+whenever you can, and reserve `order`/reverse for cosmetic tweaks that don't change meaning.
+[MDN: CSS Flexbox and accessibility](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Flexbox_and_accessibility)
+:::
+
 :::tip[The one thing to understand first]
 **Bootstrap's grid IS flexbox underneath.** A `.row` is `display:flex; flex-wrap:wrap`, and each
 `col-*` is just a `flex-basis` percentage. So most of this page is simply *recognising* what a

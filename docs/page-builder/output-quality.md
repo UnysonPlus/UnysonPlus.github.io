@@ -16,6 +16,15 @@ A fair question about any page builder: **how clean is the HTML/CSS it actually 
 records where the UnysonPlus flexbox **[Div](./the-div-element.md)** lands, how that compares to the
 big builders, and — honestly — why a page builder's ceiling is about **9.5/10**, not 10.
 
+:::tip[💡 Web dev tip: clean output means meaningful tags, not just fewer of them]
+"Clean HTML" isn't only about trimming wrapper divs — it's about whether the tags you kept actually
+describe the content. A lean `<div>`-only page can still be meaningless to a screen reader or
+search engine if nothing distinguishes a card from a nav from a footer. As this page argues,
+utility classes and generated stylesheets are a fine trade-off for a builder; the one thing you
+should never trade away is choosing `<article>`, `<nav>` or `<aside>` where they actually apply.
+[W3C WAI: HTML and accessibility](https://www.w3.org/WAI/tips/writing/#use-headings-to-convey-meaning-and-structure)
+:::
+
 ## Where the output stands
 
 The [clean-output work](./clean-output-plan.md) took the Div from "a `<style>` block glued to every

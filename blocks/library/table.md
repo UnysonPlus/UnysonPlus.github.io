@@ -22,7 +22,7 @@ Select the block and open the **Settings** (block) tab; the whole sidebar is gen
 The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
 :::tip[💡 Web dev tip: use a real table for tabular data]
-Reach for a `<table>` only for genuine rows-and-columns *data* — not for page layout. A real table gives screen-reader users row/column navigation and a header association that a grid of `<div>`s can't. Keep cell text short so the table wraps gracefully on small screens. [MDN: table accessibility](https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Advanced) · [Web Dev Basics: Accessibility](/learn/accessibility)
+Reach for a `<table>` only for genuine rows-and-columns *data* — not for page layout. A real table gives screen-reader users row/column navigation and a header association that a grid of `<div>`s can't. Keep cell text short so the table wraps gracefully on small screens. [MDN: table accessibility](https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Advanced)
 :::
 
 ## Sample content

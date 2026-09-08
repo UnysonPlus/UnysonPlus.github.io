@@ -7,6 +7,10 @@ sidebar_position: 43
 
 A feature comparison matrix — plans/products across the top, feature rows down the side, with checks, crosses, text values, a highlighted column and section headings. Tabs: **Content**, **Design**, **Styling**, **Animations**, **Advanced**.
 
+:::tip[💡 Web dev tip: a grid of plans vs. features is tabular data]
+Rows and columns that relate a set of plans to a set of features are exactly what the `<table>` element — with `<th scope="col">` on the plan headers and `<th scope="row">` on the feature labels — is for, so assistive tech can announce "column: Pro, row: Unlimited storage" instead of reading a wall of unrelated text. UnysonPlus renders this element as real table markup rather than a grid of styled `<div>`s, so the relationships stay intact for every visitor. [MDN: HTML tables](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/HTML_table_basics)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/comparison-table-content.png" alt="Comparison Table options panel — Content tab" width="1200" />

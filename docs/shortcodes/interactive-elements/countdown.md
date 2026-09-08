@@ -11,6 +11,10 @@ typography control. Tabs: **Content**, **Style**, **Animations**, **Advanced**.
 
 <img src="/img/shortcodes/countdown-backend.png" alt="Countdown Timer on the Page Builder canvas" width="936" />
 
+:::tip[💡 Web dev tip: a countdown's numbers should be real, readable text]
+A countdown driven purely by an image or canvas gives search engines and screen readers nothing to read, and it can't be selected or copied like normal text. Rendering the days/hours/minutes/seconds as plain text nodes — which is how UnysonPlus outputs this timer — keeps the number accessible and indexable even though JavaScript is what keeps it ticking. [MDN: the time element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/countdown-content.png" alt="Countdown Timer options panel — Content tab" width="840" />

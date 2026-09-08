@@ -21,6 +21,14 @@ You'll find the **Insert Section** link in the **builder header toolbar** (just 
 
 <img src="/img/page-builder/insert-section.png" alt="The Insert Section modal — the Equal Columns tab showing 1- to 12-column layouts" width="940" />
 
+:::tip[💡 Web dev tip: a section is one idea, not a grab-bag]
+Treat each section of a page the way you'd treat a paragraph in an essay — one clear topic, usually
+introduced by its own heading. Stacking unrelated content into a single band makes a page harder to
+scan for a visitor and harder to outline for a search engine, which reads your heading structure as
+a table of contents. Reaching for a fresh section (and heading) per idea keeps both readable.
+[Google Search Central: Header tags](https://developers.google.com/search/docs/appearance/structured-data/article#heading-structure)
+:::
+
 ## How it works
 
 1. Open a page in the builder (**Unyson Builder**) and click **Insert Section** in the header.

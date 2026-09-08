@@ -9,6 +9,10 @@ Play an animated Lottie vector (a `.json` from After Effects / LottieFiles) with
 
 <img src="/img/shortcodes/lottie-backend.png" alt="Lottie Animation on the Page Builder canvas" width="936" />
 
+:::tip[💡 Web dev tip: a Lottie file is still a download]
+A vector animation avoids the file weight of a video, but a large or complex `.json` can still slow the page and drain battery while it plays continuously — so keep the source lean and prefer a trigger like "play when scrolled into view" over autoplay when the animation sits low on the page. Good sites also cut non-essential motion for visitors who've asked for less of it, something to keep in mind alongside Lottie's own Trigger and Speed controls. [MDN: prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/lottie-content.png" alt="Lottie Animation options panel — Content tab" width="1200" />

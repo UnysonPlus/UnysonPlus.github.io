@@ -7,6 +7,14 @@ description: Fixes for the Unyson+ Asset Optimizer — an empty asset list behin
 
 # Performance & assets
 
+:::tip[💡 Web dev tip: measure before you optimize]
+Combining and minifying assets only helps if it's actually solving a real bottleneck — the right
+first step is always to measure, not guess. Run a page through a tool like Lighthouse or PageSpeed
+Insights to see which requests are actually slow before deciding what to merge, defer or minify;
+otherwise you can spend effort "optimizing" something that was never the problem.
+[web.dev: Measure performance](https://web.dev/articles/vitals-measurement-getting-started)
+:::
+
 ## Asset Optimizer lists no CSS/JS to combine
 
 **Symptom:** the Asset Optimizer shows nothing to combine, even though the site loads assets.

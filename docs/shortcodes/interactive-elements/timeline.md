@@ -10,6 +10,10 @@ A sequence of milestones with date, title, text, icon and image — vertical (al
 / right) or horizontal. Tabs: **Content**, **Design**, **Styling**, **Animations**,
 **Advanced**.
 
+:::tip[💡 Web dev tip: a sequence of events is structured content, not just visuals]
+A timeline is inherently ordered, so each milestone's Title deserves a real heading tag rather than styled paragraph text — that gives screen-reader users and search engines a navigable outline of the same structure sighted visitors see at a glance. UnysonPlus renders each milestone as its own heading-and-content block so the visual timeline and the underlying document outline actually match. [MDN: Heading elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/timeline-content.png" alt="Timeline options panel — Content tab" width="1200" />

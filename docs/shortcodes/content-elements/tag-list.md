@@ -7,6 +7,10 @@ sidebar_position: 39
 
 A list of short items rendered as pills, chips or an inline separated list — one item per line, with optional links. Tabs: **Content**, **Design**, **Styling**, **Animations**, **Advanced**.
 
+:::tip[💡 Web dev tip: tags are a list, and link text should say where it goes]
+A row of related keywords or categories is still a list semantically, so it should render as `<li>`s inside a `<ul>` (with each linked tag an `<a>` around real, descriptive text) rather than a row of bare `<span>`s — that's what lets a screen reader announce "list, 6 items" and lets a search engine follow each tag to its destination. Avoid vague link text like "click here" for a tag; the tag's own label is already the descriptive text, which is exactly what this element uses. [MDN: the ul element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/tag-list-content.png" alt="Tag List options panel — Content tab" width="1200" />

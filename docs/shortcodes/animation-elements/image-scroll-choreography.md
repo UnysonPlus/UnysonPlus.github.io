@@ -15,6 +15,10 @@ sibling is [Text Scroll Choreography](./text-scroll-choreography.md), and they s
 
 Tabs: **Images**, **Scene**, **Advanced**. Lives under the **Animation Engine** tab in the page builder.
 
+:::tip[💡 Web dev tip: scroll-tied motion should still respect reduced motion]
+A whole chapter choreographed to scroll position is a lot of movement, and some visitors have told their operating system they'd rather not see large parallax-style effects — that's what the `prefers-reduced-motion` media feature is for, and good sites read it before adding this kind of motion. UnysonPlus's Animation Engine already checks it for you, easing back the choreography instead of forcing it on everyone. [MDN: prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
+:::
+
 :::tip[💡 Transparent PNG/WebP works best]
 The images float over your page, so cut-out subjects on a transparent background look best. The whole
 foreground is a **click-through** layer, so it never blocks the content beneath it.

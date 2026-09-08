@@ -26,7 +26,7 @@ Select the block and open the **Settings** (block) tab; the whole sidebar is gen
 The block also opts into WordPress **Margin / Padding** (and, where it makes sense, alignment), which inherit the site's design system from `theme.json`.
 
 :::tip[💡 Web dev tip: a table of contents is built from your headings]
-A good TOC is only as good as your heading structure. Use one `<h1>` per page, then nest `<h2>`/`<h3>` in order without skipping levels — the TOC (and screen-reader users navigating by heading) rely on that hierarchy. [MDN: heading elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements) · [Web Dev Basics: Semantic HTML](/learn/semantic-html)
+A good TOC is only as good as your heading structure. Use one `<h1>` per page, then nest `<h2>`/`<h3>` in order without skipping levels — the TOC (and screen-reader users navigating by heading) rely on that hierarchy. [MDN: heading elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
 :::
 
 ## Sample content

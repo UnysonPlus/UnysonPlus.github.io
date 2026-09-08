@@ -13,6 +13,14 @@ templates.
 This page is the *map*: what each element is for, and when to reach for it. For the full option
 reference of every element, see **[WooCommerce Elements](/shortcodes/woocommerce-elements)**.
 
+:::tip[💡 Web dev tip: product images still need real alt text]
+A product grid can render dozens of images on one page, and it's tempting to leave their alt text
+blank or auto-filled with the filename. A screen-reader shopper relies on that text to know what
+they're looking at before they can decide whether to buy it, so it's worth writing (or checking) a
+short, real description per product — "Navy wool overcoat", not "IMG_2041" or nothing at all.
+[MDN: The img element — the alt attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt)
+:::
+
 :::note[Two families of element]
 The **commerce-page** elements (Cart, Checkout, My Account, Order Tracking, Product Page) are
 friendly wrappers around WooCommerce's matching classic shortcode — they exist so those pages can be

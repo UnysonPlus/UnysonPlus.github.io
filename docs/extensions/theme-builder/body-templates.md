@@ -14,6 +14,14 @@ When a Template assigns a Body to the current request, Theme Builder takes over 
 produces: the **header**, the body content, then the **footer** — see [How it renders](./rendering.md)
 for the exact mechanism (it differs slightly on native vs. foreign themes).
 
+:::tip[💡 Web dev tip: one document, one outline, one `<h1>`]
+Every rendered page — however it's assembled from header, body and footer pieces — is still a single
+HTML document to a browser or screen reader, and it reads best when it has exactly one top-level
+heading and a logical `h1 → h2 → h3` outline. Mixing a Body's own heading with one buried in wrapped
+Post Content is an easy way to end up with two `<h1>`s or a skipped level, so it's worth checking the
+rendered outline, not just how the page looks. [MDN: Heading elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
+:::
+
 ## Replace vs. wrap
 
 A Body behaves one of two ways depending on whether it contains a **[Post Content](./dynamic-content.md#post-content--the-keystone)**

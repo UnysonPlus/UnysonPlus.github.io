@@ -10,6 +10,13 @@ hide_table_of_contents: true
 Extensions are modular features you manage from **Unyson+ → Extensions**. Install only
 what a project needs.
 
+:::tip[💡 Web dev tip: unused code still costs load time]
+Every active extension can enqueue its own CSS and JavaScript, and a browser has to download, parse
+and run all of it before the page is fully interactive — whether or not a visitor ever touches that
+feature. This is why several extensions here ship **off by default**: a lean site that turns on only
+what it uses loads faster than one running every feature "just in case". [web.dev: Reduce JavaScript payloads with code splitting](https://web.dev/articles/reduce-javascript-payloads-with-code-splitting)
+:::
+
 ## Available extensions
 
 The **In manager?** column shows whether an extension appears on the *Unyson+ → Extensions*

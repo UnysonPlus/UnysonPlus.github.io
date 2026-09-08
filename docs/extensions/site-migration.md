@@ -20,6 +20,13 @@ timeout costs one slice rather than the migration.
 Enable it under **Unyson+ → Extensions → Site Migration** **on both sites**, then open
 **Unyson+ → Site Migration**.
 
+:::tip[💡 Web dev tip: a site move can quietly break every link that pointed at it]
+Moving a site to a new domain or URL structure doesn't just move files — every bookmark, backlink and
+search-result entry still points at the old address. Set up permanent (301) redirects from old URLs
+to their new equivalents so visitors and search engines land in the right place instead of a 404,
+and keep the redirects in place for a good while after the move. [Google: Site moves with URL changes](https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes)
+:::
+
 :::info Backups extension vs. Site Migration
 The [Backups extension](./backups.md) can also move a site — back up here, restore there — and that
 is the right tool when you want a **file** you can keep, inspect or restore later. Site Migration is

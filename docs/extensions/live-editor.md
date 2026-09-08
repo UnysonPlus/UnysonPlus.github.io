@@ -21,6 +21,14 @@ It edits the **same content** as the classic backend builder (it's the one
 builder model under the hood), so anything you do in one editor shows up in the
 other. You can switch between them at any time.
 
+:::tip[💡 Web dev tip: what you see isn't all a visitor gets]
+Editing live and watching the page update in real time is great for layout and color, but it can
+tempt you to judge a page purely by how it looks. A screen reader visitor and a search-engine crawler
+both work from the underlying HTML — heading order, alt text, link text — not the visual result. Use
+the Live Editor for the visuals, but still glance at heading structure and image alt text the way a
+non-sighted user or a crawler would. [W3C WAI: Introduction to Web Accessibility](https://www.w3.org/WAI/fundamentals/accessibility-intro/)
+:::
+
 ## Opening the Live Editor
 
 There are several entry points, all of which appear only for **Page Builder

@@ -8,6 +8,14 @@ title: Convert from a file
 Upload an export from your design tool and convert it. **Google Stitch** is fully supported (export
 → `.zip`), and any other plain‑HTML export converts too.
 
+:::tip[💡 Web dev tip: a design export rarely comes with real semantics]
+Design-tool exports are optimized for looking right, not for meaning right — a "heading" is often
+just a `<div>` styled large and bold, with no `alt` text on images and no real heading hierarchy
+underneath. Whichever fidelity mode you use, it's worth checking the imported page's actual heading
+tags and image alt text once it lands in the builder, the same way you'd review any imported content.
+[MDN: Heading elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
+:::
+
 ## Two fidelity modes
 
 A Stitch export is just self‑contained HTML (it loads Tailwind + fonts from a CDN). So how it's

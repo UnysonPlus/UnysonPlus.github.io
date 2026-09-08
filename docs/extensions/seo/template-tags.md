@@ -20,6 +20,14 @@ renders *My Post | My Site* — not *My Post |  | My Site*.
 An unrecognised tag renders as nothing rather than printing itself, so a typo never leaks
 `%%titel%%` into a search result.
 
+:::tip[💡 Web dev tip: the title tag is the headline of your search result]
+The `<title>` element is usually the clickable blue link a searcher sees first, so a generic title
+repeated across every page ("Home | My Site") wastes the chance to tell them what's actually on that
+page. Template tags like `%%title%%` and `%%primary_category%%` exist so each page can build a
+unique, descriptive title automatically instead of one being typed — or forgotten — by hand.
+[Google: Influencing title links](https://developers.google.com/search/docs/appearance/title-link)
+:::
+
 ---
 
 ## Site

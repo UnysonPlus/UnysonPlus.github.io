@@ -20,6 +20,14 @@ content editors expect: *Blog → Add blog post*, *All blog posts*, *Search blog
 It's a labeling and UX convenience, it doesn't change how posts work or where they're stored, so it's
 completely safe to turn on or off.
 
+:::tip[💡 Web dev tip: the label is cosmetic, the markup is what matters]
+Renaming "Posts" to "Blog" only changes what editors see in `wp-admin` — it doesn't touch the actual
+HTML a post renders as. What search engines index and screen readers announce comes from the
+underlying markup: one `<h1>` per post, a real `<article>` wrapper, and a machine-readable publish
+date. Whatever theme renders your blog (the Unyson+ Theme included) should still get those basics
+right, regardless of what the admin menu calls it. [MDN: The Article element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article)
+:::
+
 ## Activate
 
 Enable **Blog** from **Unyson+ → Extensions**. The *Posts* admin menu becomes *Blog Post*

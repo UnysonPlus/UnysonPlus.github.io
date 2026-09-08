@@ -15,6 +15,10 @@ Give each child a **[Width](./index.md#child-placement)** to
 split the row (`1/2 + 1/2`, `2/3 + 1/3`), or let them size to content and use Justify/Align to place
 them.
 
+:::tip[💡 Web dev tip: flexbox arranges one dimension at a time]
+Flexbox is built for a single row or a single column — it's the right tool for a nav bar, a card row, or a stack of form fields, but once you need items to line up in both rows and columns simultaneously, that's a two-dimensional job for [Grid](./grid.md) instead. Reverse Order is also worth a second look: it flips what visitors *see* without touching the underlying markup order, so make sure the reading order still makes sense for keyboard and screen-reader navigation, which follows the DOM, not the visual flip. [MDN: Basic concepts of flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox)
+:::
+
 ## Layout — the Flex options
 
 <img src="/img/shortcodes/flexbox-flex-layout.png" alt="Flexbox (Div) options — the Layout tab, with Display set to Flex and the Direction control" width="840" />

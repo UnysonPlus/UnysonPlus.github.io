@@ -16,6 +16,10 @@ on its letters (split reveal, typewriter, scramble, gradient, neon…). It's the
 Tabs: **Text**, **Scene**, **Advanced**. The element lives under the **Animation Engine** tab in the page
 builder (it needs the Animation Engine extension active).
 
+:::tip[💡 Web dev tip: warped, animated text must stay real, selectable text]
+It's tempting to turn headlines into images once they start tilting, curving or splitting into letters, but that trades away something real text gives you for free: it's selectable, searchable, resizable, and readable by a screen reader. UnysonPlus applies every pose, warp and Text Effect with CSS/JS transforms on top of genuine HTML text, so the choreography never costs you the actual words. [MDN: prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
+:::
+
 :::tip[💡 Three layers that never fight]
 Under the hood every line is three nested elements, each owned by a different system: the **pose** (translate /
 scale / rotate / opacity from your scroll keyframes) is on the outer wrapper, the **warp** (a static

@@ -11,6 +11,10 @@ An image alongside text in a responsive two-column layout. Tabs: **Content**, **
 
 <img src="/img/shortcodes/image-content-backend.png" alt="Image Content on the Page Builder canvas" width="936" />
 
+:::tip[💡 Web dev tip: images need real alt text, not a filename]
+A screen reader announces an image's alt attribute in place of the picture, so it should describe what the image shows or means — not repeat "image1.jpg" or stay blank on a meaningful photo. That's why Image Content gives you a dedicated Image Alt Text field alongside the image itself, so the two-column layout stays accessible, not just visually balanced. [W3C WAI: An alt Decision Tree](https://www.w3.org/WAI/tutorials/images/decision-tree/)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/image-content-content.png" alt="Image Content options panel — Content tab" width="1200" />

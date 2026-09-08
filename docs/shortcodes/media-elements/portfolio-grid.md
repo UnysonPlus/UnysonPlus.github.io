@@ -10,6 +10,10 @@ A filterable grid of portfolio projects with category filter buttons. Provided b
 **Portfolio** extension — activate it from **Unyson+ → Extensions** for this element to appear
 in the builder. Tabs: **Content**, **Layout**, **Styling**, **Animations**, **Advanced**.
 
+:::tip[💡 Web dev tip: reserve space so a loading grid doesn't jump]
+When a grid of thumbnails loads in, images that arrive without a known width and height push the rest of the page down as they pop in — a layout shift that's jarring and actively hurts a page's Core Web Vitals score. UnysonPlus renders each project thumbnail with its dimensions and a fixed image ratio up front, so the grid holds its shape while images load rather than reflowing under you. [web.dev: Cumulative Layout Shift](https://web.dev/articles/cls)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/portfolio-grid-content.png" alt="Portfolio Grid options panel — Content tab" width="1200" />

@@ -12,6 +12,14 @@ parts a real project needs — a settings/options framework, custom fields, cust
 page builder, a theme builder, and modular extensions — built on one consistent foundation. Take one
 piece or the whole thing.
 
+:::tip[💡 Web dev tip: plan structure before you touch design]
+Before you drag a single element, sketch what the page actually needs — one `h1`, a logical
+heading order below it, and the sections a visitor reads top to bottom. Content structure is what
+search engines and screen readers rely on, and it's far easier to get right first than to retrofit
+later. A framework like Unyson+ can hand you clean semantic markup, but it can't decide your
+outline for you. [MDN: HTML basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics)
+:::
+
 It is a modernized continuation of the Unyson framework, updated for **PHP 7.4+** and current
 WordPress, GPL-licensed with no license keys, and maintained by
 [Unyson+](https://github.com/UnysonPlus).

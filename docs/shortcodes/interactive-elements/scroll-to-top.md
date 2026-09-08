@@ -7,6 +7,10 @@ sidebar_position: 58
 
 A back-to-top button and/or a reading-progress bar tied to page scroll — place it once per page. Configure it across the **General**, **Styling**, and **Advanced** tabs.
 
+:::tip[💡 Web dev tip: an icon-only button still needs an accessible name]
+A round button with just an arrow icon and no visible text has nothing for a screen reader to announce unless it carries an accessible name behind the scenes — visually it reads fine, but to assistive tech it's a mystery button. UnysonPlus gives this button a built-in accessible label ("Scroll to top") regardless of which icon you pick, so it stays a real, keyboard-operable control and not just a clickable shape. [MDN: ARIA aria-label attribute](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label)
+:::
+
 ## General
 
 <img src="/img/shortcodes/scroll-to-top-general.png" alt="Scroll to Top & Progress options panel — General tab" width="1200" />

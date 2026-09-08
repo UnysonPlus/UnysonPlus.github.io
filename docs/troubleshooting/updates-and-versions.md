@@ -7,6 +7,13 @@ description: Fixes for Unyson+ updates — why an update isn't showing up, the v
 
 # Updates & versions
 
+:::tip[💡 Web dev tip: staying updated is a security practice, not a chore]
+Outdated software — a plugin, a theme, a JS library — is one of the most common ways a website gets
+compromised, because known vulnerabilities in old versions are public and easy to scan for.
+Treating updates as routine maintenance rather than something to defer indefinitely is one of the
+cheapest ways to keep a site safe. [OWASP: Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/)
+:::
+
 ## Updates aren't showing up
 
 **Symptom:** a new release exists but WordPress doesn't offer the update.

@@ -7,6 +7,10 @@ sidebar_position: 67
 
 A row of social-profile links — either reused from your **Theme Settings → Social Profiles** or defined manually right here. Options live under the **Content** and **Advanced** tabs.
 
+:::tip[💡 Web dev tip: an icon-only link still needs an accessible name]
+A link that's just a glyph — a Facebook "f", a bird, a camera outline — has no visible text for a screen reader to read, so without an accessible name it announces as a bare, meaningless link. That's exactly why Social Icons asks for an Accessible Label on every profile, so "Facebook" or "Instagram" is announced even though only the icon shows. [MDN: ARIA aria-label attribute](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/social-icons-content.png" alt="Social Icons options panel — Content tab" width="1200" />

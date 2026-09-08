@@ -8,6 +8,13 @@ sidebar_position: 2
 A quick orientation to the terms you'll meet throughout this manual, with a link to where each is
 covered in depth. If a page assumes a word you don't recognize, it's probably here.
 
+:::tip[💡 Web dev tip: HTML is a vocabulary, not just boxes]
+Every tag in HTML carries meaning, not just a shape — a `<nav>`, an `<article>`, an `<aside>` tell
+browsers, screen readers and search engines what a region of the page *is*, not merely how it
+looks. That's why the Div element below can emit `section`, `article`, `nav` or a plain `div`
+depending on what you're actually building. [MDN: HTML elements reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+:::
+
 ## The big picture
 
 - **Framework** — the Unyson+ core runtime (`fw()`): the options system, the backend UI, the

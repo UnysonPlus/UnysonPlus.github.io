@@ -32,7 +32,6 @@ function sitemapDataPlugin() {
     theme: 'The Theme',
     guides: 'Guides',
     aiDevKit: 'AI Dev Kit',
-    learn: 'Web Dev Basics',
   };
   const BLOG_LABELS = {default: 'News', decisions: 'Design Decisions'};
   const ORDER = [
@@ -42,7 +41,6 @@ function sitemapDataPlugin() {
     'The Theme',
     'Guides',
     'AI Dev Kit',
-    'Web Dev Basics',
     'News',
     'Design Decisions',
   ];
@@ -139,7 +137,7 @@ const config = {
         hashed: true,
         indexDocs: true,
         indexBlog: true,
-        docsRouteBasePath: ['/', '/animation-engine', '/theme', '/guides', '/ai-dev-kit', '/blocks', '/learn'],
+        docsRouteBasePath: ['/', '/animation-engine', '/theme', '/guides', '/ai-dev-kit', '/blocks'],
         // Index BOTH blog instances: the News blog (/blog) and the Design Decisions blog
         // (/decisions). Without this the plugin only indexes the default /blog, so decisions
         // posts never show up in search.
@@ -250,6 +248,16 @@ const config = {
           {from: '/docs', to: '/intro'},
           // The Gutenberg Blocks docs merged into the Blocks section.
           {from: '/extensions/gutenberg', to: '/blocks/intro'},
+          // The "Web Dev Basics" (/learn) hub was retired — its lessons now live
+          // inline as "💡 Web dev tip" callouts across the manual. 301 the old
+          // pages to the nearest page that carries the matching guidance.
+          {from: '/learn', to: '/'},
+          {from: '/learn/semantic-html', to: '/page-builder/clean-dom'},
+          {from: '/learn/clean-code', to: '/page-builder/clean-dom'},
+          {from: '/learn/responsive', to: '/page-builder/column-widths'},
+          {from: '/learn/performance', to: '/performance'},
+          {from: '/learn/seo', to: '/extensions/seo'},
+          {from: '/learn/accessibility', to: '/'},
         ],
         // The Manual moved from /docs/* to /* — 301 every old Manual URL to its
         // new root path. Only Manual pages are remapped; the other doc instances
@@ -326,20 +334,6 @@ const config = {
         path: 'blocks',
         routeBasePath: 'blocks',
         sidebarPath: './sidebarsBlocks.js',
-        editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
-      },
-    ],
-    // Web Dev Basics — a short, beginner-friendly primer on building websites the
-    // right way (semantic HTML, a11y, responsive, performance, SEO, clean code).
-    // Its own instance so the docs double as a learning resource; the inline
-    // "💡 Web dev tip" callouts across the manual link into it.
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'learn',
-        path: 'learn',
-        routeBasePath: 'learn',
-        sidebarPath: './sidebarsLearn.js',
         editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
       },
     ],
@@ -424,13 +418,6 @@ const config = {
             href: 'https://demos.unysonplus.com/',
             label: 'Demos',
             position: 'left',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'learnSidebar',
-            docsPluginId: 'learn',
-            position: 'left',
-            label: 'Learn',
           },
           {
             type: 'docSidebar',

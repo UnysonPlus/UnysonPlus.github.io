@@ -13,6 +13,14 @@ once (or let WordPress supply it) and every place that uses the token stays corr
 It's available wherever you type into a **Text**, **Short Text**, **Textarea**, or **Rich Editor**
 field (the page builder, element options, theme settings, meta boxes) and in the classic post editor.
 
+:::tip[💡 Web dev tip: keep dynamic content resolvable at render time, not just in a browser]
+Because `{{tokens}}` resolve to plain text on the **server**, before the page ever reaches a
+browser, the final HTML a search engine crawls already contains real values — not a placeholder
+that only fills in after client-side JavaScript runs. Content that depends entirely on JS to appear
+risks being missed or delayed by crawlers and is invisible if a script fails to load; resolving
+dynamic values server-side avoids that risk entirely. [Google Search Central: JavaScript SEO basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
+:::
+
 ## Token syntax
 
 ```text

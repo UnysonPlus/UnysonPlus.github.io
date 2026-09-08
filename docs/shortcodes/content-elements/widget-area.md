@@ -11,6 +11,10 @@ Render a registered sidebar / widget area inside the page. Tabs: **Content**, **
 
 A **widget** is a small self-contained block WordPress can place in a **widget area** — a search box, a list of recent posts, a menu, a bit of custom HTML. A widget area (WordPress also calls it a *sidebar*) is *registered* by your theme or the [Sidebars extension](/extensions/sidebars), then this element drops that whole area into your page wherever you want it.
 
+:::tip[💡 Web dev tip: secondary content deserves its own landmark]
+Content that supports the main content but isn't the main content — a sidebar of recent posts, a related-links box — is exactly what the `<aside>` element (or an ARIA `complementary` landmark) is for, letting assistive-tech users jump straight past it to the primary content, or straight to it, instead of reading everything in one undifferentiated stream. UnysonPlus renders a widget area with that landmark role rather than a bare unlabelled `<div>`, keeping the page's structure meaningful. [MDN: the aside element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/widget-area-content.png" alt="Widget Area options panel — Content tab" width="750" />

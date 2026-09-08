@@ -12,6 +12,10 @@ highlights. Options are organized into tabs: **Content**, **Layout**, **Link & S
 
 <img src="/img/shortcodes/icon-box-backend.png" alt="Icon Box on the Page Builder canvas" width="936" />
 
+:::tip[💡 Web dev tip: a decorative icon shouldn't be announced twice]
+When an icon sits right next to a title that already says the same thing, a screen reader reading both is redundant noise — the icon should be hidden from assistive tech (`aria-hidden="true"`) rather than given its own label. UnysonPlus treats icon-font and SVG icons here as decorative by default, since the adjacent title already carries the meaning, so the accessible name comes from your text, not the glyph. [MDN: ARIA aria-hidden attribute](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-hidden)
+:::
+
 ## Layouts (Icon Position)
 
 The **Icon Position** option sets where the icon sits relative to the title and content.

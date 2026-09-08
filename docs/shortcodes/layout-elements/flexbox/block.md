@@ -11,6 +11,10 @@ The **Block** tile is a Flexbox Div pre-set to the **`div`** tag with **`display
 document flow, so it's the piece you reach for to **group** a few blocks, put **padding or a
 background** around one thing, or wrap content you'll style as a unit.
 
+:::tip[💡 Web dev tip: a `<div>` is a wrapper, not a substitute for meaning]
+`<div>` (and this Block tile, which renders as one) carries no semantic meaning of its own — it's there purely to group things for spacing or styling, which is exactly why it's the right choice here instead of forcing a `<section>` or `<article>` onto content that isn't really a distinct region. The habit worth keeping as you nest Blocks inside Blocks is to reach for the least amount of wrapping that gets the layout you need — a flatter DOM is lighter for the browser to parse and easier for anyone (including a screen reader) to make sense of. [MDN: the div element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div)
+:::
+
 ## Layout
 
 <img src="/img/shortcodes/flexbox-block-layout.png" alt="Block (Div) options — the Layout tab, with HTML Tag div and Display set to Block" width="840" />

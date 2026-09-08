@@ -7,6 +7,10 @@ sidebar_position: 52
 
 An image with interactive pins, where each pin reveals a tooltip card with a title, text and link. Its options are organized across the **Content**, **Design**, **Styling**, **Animations**, and **Advanced** tabs.
 
+:::tip[💡 Web dev tip: a hotspot pin is a control, not just a decoration]
+A tiny pin sitting on top of an image is easy to make mouse-only by accident, but a visitor tabbing through the page needs to reach it and trigger it too — that means it has to be a real focusable element with a visible focus state, not a plain `<div>` with a click handler. UnysonPlus renders each hotspot as a focusable, keyboard-operable button so its tooltip opens for keyboard and screen-reader users, not only for a hovering mouse. [W3C WAI: Keyboard accessibility](https://www.w3.org/WAI/perspective-videos/keyboard/)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/image-hotspots-content.png" alt="Image Hotspots options panel — Content tab" width="1200" />

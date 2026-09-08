@@ -10,6 +10,10 @@ Show a portfolio project's image gallery as a responsive grid with a built-in li
 Provided by the **Portfolio** extension. Tabs: **Content**, **Layout**, **Styling**,
 **Animations**, **Advanced**.
 
+:::tip[💡 Web dev tip: lazy-load images that start off-screen]
+A gallery can hold dozens of photos, and downloading every one on page load wastes bandwidth and slows down the images a visitor can actually see first. The native `loading="lazy"` attribute tells the browser to defer an off-screen image until the visitor scrolls near it, which is exactly the behavior a gallery like this benefits from — and it's why UnysonPlus fixes each tile's Image Ratio up front, so the grid doesn't jump as those deferred images arrive. [MDN: Lazy loading](https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/Lazy_loading)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/project-gallery-content.png" alt="Project Gallery options panel — Content tab" width="840" />

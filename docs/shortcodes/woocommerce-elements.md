@@ -14,6 +14,10 @@ output stays compatible with WooCommerce and any extensions.
 > brevity. Catalog grids inherit the shop columns / related counts from
 > [WooCommerce → Settings](/extensions/woocommerce/settings).
 
+:::tip[💡 Web dev tip: structured product data is what earns rich results]
+A product's price, availability and rating can show up directly in Google's search results — a star rating, a price, "in stock" — but only if the page marks that data up as structured data search engines recognize, not just styled text. WooCommerce (and UnysonPlus's product elements on top of it) already outputs this Product structured data automatically, so shop pages qualify for those rich results without extra work. [Google Search Central: Product structured data](https://developers.google.com/search/docs/appearance/structured-data/product)
+:::
+
 ## Products
 
 A product grid (or carousel) by source, with clean self-contained cards and native add-to-cart.

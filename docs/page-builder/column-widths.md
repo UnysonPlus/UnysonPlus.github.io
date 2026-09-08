@@ -17,6 +17,14 @@ The **Classic** palette tab offers the widths as ready-made column thumbnails (`
 
 <img src="/img/builder-canvas.png" alt="The Page Builder canvas — Layout Elements width thumbnails and a three-column row" width="936" />
 
+:::tip[💡 Web dev tip: design layouts for the smallest screen first]
+A column that's `1/3` on desktop usually needs to become `1/1` on a phone — there's rarely room for
+three narrow slivers on a small screen. The per-device width overrides here exist for exactly that
+reason: mobile-first design starts by asking what a layout needs at its narrowest, then adds columns
+back as the viewport grows, rather than shrinking a desktop layout down and hoping it survives.
+[MDN: Responsive design](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
+:::
+
 ## Valid widths
 
 Widths are the usual **twelfths**, plus the full set of **fifths**:

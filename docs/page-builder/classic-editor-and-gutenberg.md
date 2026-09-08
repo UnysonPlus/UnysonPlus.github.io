@@ -23,6 +23,14 @@ Short answer: **yes, the classic editor is part of WordPress core, and the Class
 barely contains any editor code at all.** Understanding why is genuinely useful — it's the
 mechanism the UnysonPlus **Page Editor** uses to drop the plugin dependency entirely.
 
+:::tip[💡 Web dev tip: prefer flipping a switch over adding a dependency]
+When the capability you need already exists somewhere in the system, turning it on with a small
+filter is more robust than installing a whole plugin to reimplement it — fewer moving parts to
+update, conflict, or break. This is the same instinct behind progressive enhancement on the front
+end: build on what the platform already gives you (plain HTML forms, native browser behavior)
+before reaching for extra scripts to bolt on. [MDN: Progressive enhancement](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement)
+:::
+
 ## The classic editor never left core
 
 When the block editor (Gutenberg) shipped in **WordPress 5.0 (December 2018)**, the old editor

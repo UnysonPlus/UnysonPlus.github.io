@@ -7,6 +7,10 @@ sidebar_position: 51
 
 An interactive two-image element with two **Types**: a classic **Comparison** slider (drag, hover or click to reveal, in many handle styles) and a cursor-following **Spotlight** reveal. Either type can also **fill its Section as a background**, with the Section's own content sitting on top — ideal for a hero whose backdrop wipes or reveals under the cursor. Its options are organized across the **Content**, **Design**, **Styling**, **Animations**, and **Advanced** tabs.
 
+:::tip[💡 Web dev tip: a drag interaction still needs a keyboard]
+Not every visitor can drag a slider with a mouse or finger, so a comparison widget should also respond to arrow keys once it has focus — that's what makes it a real control instead of a mouse-only toy. UnysonPlus renders its Comparison handle as a focusable, keyboard-operable slider under the hood, so dragging is a convenience, not the only way in. [W3C WAI: Keyboard accessibility](https://www.w3.org/WAI/perspective-videos/keyboard/)
+:::
+
 ## Content
 
 <img src="/img/shortcodes/before-after-content.png" alt="Before / After options panel — Content tab" width="1200" />

@@ -8,6 +8,13 @@ title: Convert from a URL
 The highest‑fidelity path. Point it at a live site and it's rendered + converted in one step. Best
 for AI builders that render in the browser (Lovable, v0, Bolt, React/Vite apps).
 
+:::tip[💡 Web dev tip: check what got carried over, not just how it looks]
+An AI-builder preview often skips things a real site needs — meaningful image alt text, a sensible
+heading order, enough color contrast. Since the converter reproduces the source as-is, those gaps
+come along for the ride. After a conversion, skim the result for missing alt text and heading levels
+before you consider the page done. [MDN: The img element — the alt attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt)
+:::
+
 ## Prerequisite
 
 The **[capture service](./capture-service.md)** must be running on your machine. The status next to

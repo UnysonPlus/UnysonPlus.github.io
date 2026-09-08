@@ -15,6 +15,14 @@ place a "current post, decided per request" makes sense.
 
 <img src="/img/theme-builder/dynamic-content-tab.png" alt="The Dynamic Content tab in the element palette — Post Content, Post Title, Featured Image and more" width="900" />
 
+:::tip[💡 Web dev tip: real content in the HTML beats content injected later]
+Because Dynamic Content elements resolve on the server at render time, the post title, date and
+content are already sitting in the page's HTML when it arrives in the browser — not fetched
+afterward with JavaScript. That matters for both search engines (which index what's in the initial
+HTML far more reliably than content injected client-side) and screen readers (which don't have to
+wait for a script to run before there's anything to read). [Google: SEO fundamentals](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
+:::
+
 ## The element family
 
 | Element | Outputs | Key options |

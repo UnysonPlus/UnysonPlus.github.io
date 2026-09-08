@@ -12,6 +12,13 @@ you like, and editing it once updates every page that uses it — because each i
 This is different from a local **Template** (the existing *Save as Template* → *Load Template*),
 which inserts an independent copy each time.
 
+:::tip[💡 Web dev tip: one source of truth beats copy-paste]
+Copying the same section onto twenty pages means twenty places to fix later when a phone number or
+CTA changes — and it's easy to miss one. Developers solve the same problem in CSS with custom
+properties (`--brand-color: …`): define a value once, reference it everywhere, and one edit updates
+every use. A Global Template does that for content instead of a single value. [MDN: Using CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties)
+:::
+
 ## Save a Section or Column as a Global Template
 
 In the Page Builder, hover a **Section** or **Column** and click its **Save as Template** icon.

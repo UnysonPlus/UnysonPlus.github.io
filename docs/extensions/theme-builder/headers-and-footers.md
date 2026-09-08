@@ -11,6 +11,14 @@ builder, then assign with a [Template](./conditional-assignment.md). They live u
 
 <img src="/img/theme-builder/header-presets.png" alt="The Header Presets list under the Theme Builder menu" width="1100" />
 
+:::tip[💡 Web dev tip: a header is boilerplate to a repeat visitor — let them skip it]
+The header and its navigation repeat on every single page, so a keyboard or screen-reader user has to
+tab or listen through it before reaching the actual content, over and over. A "skip to content" link
+— the first focusable thing on the page, visible at least on focus — lets them jump straight past it.
+It's a small addition to a Header Preset that saves real time for anyone not using a mouse.
+[W3C WAI: Skip navigation link (G1)](https://www.w3.org/WAI/WCAG21/Techniques/general/G1)
+:::
+
 ## Building a preset
 
 :::tip[Starter designs are already in your lists]

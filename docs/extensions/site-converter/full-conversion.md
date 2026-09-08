@@ -10,6 +10,14 @@ the two ways to run a conversion — the **automated** Site Converter, and the h
 **AI-assisted** build. The other pages in this section go deep on each piece; this one ties them
 together so you know the whole flow before you start.
 
+:::tip[💡 Web dev tip: re-measure performance after the import, don't assume it]
+A source site's speed doesn't automatically transfer to the converted copy — new markup, a different
+theme's CSS/JS, and freshly imported (often unoptimized) images can all shift your Largest
+Contentful Paint, Interaction to Next Paint and Cumulative Layout Shift. Run a Core Web Vitals check
+once the conversion is done rather than assuming "it matched the source" also means "it's fast."
+[web.dev: Web Vitals](https://web.dev/articles/vitals)
+:::
+
 :::tip[Two lanes, one goal]
 Both lanes turn a source design into a **native, editable** Unyson+ site — a child theme + page-builder
 pages + real menus + populated Media Library. Nothing is hand-coded HTML; every page stays editable in

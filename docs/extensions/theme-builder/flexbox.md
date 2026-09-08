@@ -15,6 +15,14 @@ dropping it is also choosing its tag.
 
 <img src="/img/theme-builder/flexbox-canvas.png" alt="A Flexbox container in the builder canvas, labeled by its HTML tag with a width stepper and direction" width="900" />
 
+:::tip[💡 Web dev tip: the tag you choose is a landmark for assistive tech]
+Picking `<nav>` for a menu or `<footer>` for the bottom of the page isn't just tidier markup — screen
+readers expose these landmark elements as a navigable list, so a keyboard or screen-reader visitor
+can jump straight to "navigation" or "footer" instead of tabbing through the whole page to find them.
+A `<div>` styled to look like a nav bar gives sighted users the same visual, but none of that jump-to
+navigation. [MDN: The nav element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav)
+:::
+
 :::note[Theme Builder only]
 The Flexbox is intentionally available **only inside the Theme Builder part editors** (Header / Body /
 Footer presets). On normal Pages and Posts you build with **Sections, Rows, and Columns** — the

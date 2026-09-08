@@ -21,6 +21,13 @@ every page updates automatically.
 Snippets double as the **Template Library** behind [Global Templates](./global-templates.md):
 each snippet has a **kind** that decides how it's reused.
 
+:::tip[💡 Web dev tip: build the piece once, not on every page]
+Whenever the same chunk of markup shows up in more than one place — a CTA band, a contact block, a
+pricing card — that's a signal to extract it into a single reusable piece rather than rebuild it by
+hand each time. It's the same instinct behind reusable functions and components in code: define the
+behavior once, call it wherever it's needed, and fix bugs in exactly one place. [MDN: Using CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties)
+:::
+
 ## Template kinds
 
 When you create or edit a snippet, pick its **Template Kind** (right-hand box on the snippet

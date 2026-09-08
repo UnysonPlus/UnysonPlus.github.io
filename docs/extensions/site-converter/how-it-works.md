@@ -10,6 +10,13 @@ computed CSS**, and rebuilds it as a **native UnysonPlus site** — a child them
 pages, real menus, footer widget areas, and a populated Media Library. Nothing is hand‑coded; every
 page stays editable in the builder.
 
+:::tip[💡 Web dev tip: a faithful clone can still inherit the original's problems]
+Reproducing a source's DOM and computed CSS gets you a pixel-accurate copy — including any missing
+alt text, skipped heading levels, or low-contrast text the original already had. A conversion is a
+great starting point, not a finished, accessible page; give the result a quick pass afterward rather
+than assuming fidelity to the source means it's already correct. [W3C WAI: Introduction to Web Accessibility](https://www.w3.org/WAI/fundamentals/accessibility-intro/)
+:::
+
 ## Two engines, plus optional AI
 
 | Engine | When it runs | Trade‑off |

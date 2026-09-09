@@ -290,7 +290,7 @@ as **transparent** and reassemble their text WITH the inter-span spaces/separato
 | P4 | Multi-field contact form (`<div class="contact-form">` / `<form>`) → `newsletter` shortcode, not a lone button | stitch.php `is_newsletter_form` | A | **DONE + verified** (1.8.70; structure unchanged, contrast net-0) |
 | P5 | Capture stamp enrichment: `object-fit` + rect-coverage flag for positioned media (makes P1 bulletproof) | capture.mjs | B | proposed to B |
 | P6 | Header/menu excludes the logo anchor + trailing CTA button | stitch.php header/menu detection | B | flagged to B |
-| P7 | Gradient-placeholder card contrast (`.project-bg` radial-gradient) | mapper box/section preset | A | low priority |
+| P7 | Dark timeline/project cards keep their fill + light title (contrast) | stitch `detect_timeline_design` + mapper `n_timeline` | A | **DONE + verified** (1.8.71) |
 
 ## Fragility Register
 
@@ -358,6 +358,19 @@ backdrop.
 
 Newest first. Each entry = one structural change to the deterministic converter.
 
+- **2026-09-09 — P7: dark timeline/project cards keep their fill + light title (site-converter 1.8.71).** openhero's
+  Selected Works is a carousel of dark `.project-card`s (fill oklch(0.15), near-white title). It maps to the
+  `timeline` shortcode, which defaults to a LIGHT card — so on the converted dark-theme site the near-white heading
+  colour landed on a white card and the titles rendered white-on-white (invisible; the descriptions, on the
+  shortcode's dark default text colour, stayed readable — hence only the titles vanished). `detect_timeline_design`
+  now reads the FIRST entry card's own computed `background-color` (descending one boxed level if the entry wrapper
+  is bare); when it is a real DARK solid fill it carries `card_bg` plus the entry heading's `title_color` and first
+  paragraph's `text_color` (only the LIGHT ones), and `n_timeline` emits them into the timeline Styling group as
+  compact `{predefined,custom}` colours. Gated on a dark card fill, so an ordinary light-card timeline is untouched
+  (no default change) — e.g. the-line's OWN `.phil-line-item` philosophy timeline (transparent entries) is
+  unaffected. Verified: the four Selected Works cards render dark with legible near-white titles (The Verdant Tower
+  / Dune Meridian / Aquifer House / The Hollow City); 19-site regression unchanged vs baseline (structure 100, no
+  per-site change ≥3).
 - **2026-09-09 — P4: non-`<form>` contact forms recognised (site-converter 1.8.70).** AI builders (openhero) build
   the contact block as a `<div class="contact-form">` holding `<input>`/`<textarea>` + a submit `<button>`, with NO
   `<form>` wrapper. `is_newsletter_form` required `$tag === 'form'`, so the whole block was dropped and only its

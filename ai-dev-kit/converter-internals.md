@@ -300,14 +300,23 @@ Newest first. Each entry = one structural change to the deterministic converter.
   (`el_is_page_fixed_layer`) so a page-fixed video is never also promoted to a section background. Verified:
   a full-viewport fixed site-bg video renders as `.site-bg-video{position:fixed;inset:0;z-index:-1}` with
   the `<video>` behind content.
-- **Open — case B: fixed FLOATING video portals (lumina-arctic).** Not every "fixed video" is a
-  full-viewport backdrop. lumina-arctic's `.video-portal` is `position:fixed; top:50%; right:5%;
-  width:clamp(280px,35vw,520px); height:clamp(380px,55vh,720px); border-radius:28px 8px 28px 8px;
-  mask-image:radial-gradient(...)` — a masked, positioned floating video that stays fixed on scroll but
-  is NOT a background. Option A's detector CORRECTLY skips it (not full-viewport). Handling it needs a
-  **fixed-positioned `media_video`** that preserves the portal's exact geometry (top/right/transform/
-  clamp size) + border-radius + mask as scoped `position:fixed` custom CSS — a per-element floating layer,
-  not a site background. Deferred (distinct, narrower feature).
+- **2026-09-09 — Case B: fixed FLOATING video portals (lumina-arctic) → fixed-positioned media_video (shipped).**
+  Not every "fixed video" is a full-viewport backdrop. lumina-arctic's `.video-portal` is `position:fixed;
+  top:50%; right:5%; width:clamp(280px,35vw,520px); height:clamp(380px,55vh,720px); border-radius; radial
+  mask` — a masked, positioned floating video that stays fixed on scroll but is NOT a background. Previously
+  `detect_page_bg_video` claimed it and made it the first section's **full-bleed** 100vh background (blowing
+  it up and dropping the mask/geometry). Now `fixed_layer_geometry($el)` (reading the portal's geometry from
+  the `.video-portal` **stylesheet rule** via `el_style_props`, not just data-sc-cs) distinguishes a FLOATING
+  portal (has offsets / non-full size) from a full-bleed backdrop: a floating one is emitted as a
+  fixed-positioned `media_video` CONTENT block (prepended to section 0, `position:fixed` scoped Custom CSS
+  carrying top/right/transform/clamp-size/border-radius/mask/filter) instead of a section background; a
+  full-bleed video still becomes the section bg as before. **Gated on a FRAMED portal** (`border-radius`
+  present): a floating video is only pinned as a portal when it is a defined CARD — lumina's rounded
+  `.video-portal`. A large, UNFRAMED, softly-masked decorative layer (autonomous-supply-chain's
+  `.visual-breach`: 55vw×80vh, z-index:0, pointer-events:none, radial fade, no radius) stays on the
+  full-bleed section-bg path, where the harness reads its hero as a media-hero — without the gate it
+  regressed that site's spacing (spc 100→0, a `media=true` hero lost). Verified: lumina-arctic's portal
+  renders `position:fixed` at the top-right (~35vw), radial-masked, over the dark page; autonomous unchanged.
 - **2026-09-09 — Lone-video column cell → contained `media_video` with carried shape (shipped, regression-clean).**
   `layout_cols` (stitch.php) now decomposes a **lone-video cell** (`cell_is_lone_video` — one
   self-hosted `<video>`, no heading/prose, no content image) into a real, editable `media_video`

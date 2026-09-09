@@ -284,10 +284,10 @@ as **transparent** and reassemble their text WITH the inter-span spaces/separato
 
 | # | Pattern fix | Where | Lane | Status |
 |--:|---|---|---|---|
-| P1 | Structural full-bleed backdrop media recogniser (geometry, not name); exclude blob/transform/orb decorative layers | stitch.php `detect_section_bg_video`/`detect_page_bg_video` + a new decorative-exclusion helper | A | designed; needs corpus regression before ship |
-| P2 | Animation-span (`.breeze-word`) text reassembly preserving spaces + separators | stitch.php text extraction | A | designed |
-| P3 | Reconversion purges previous conversion's nav menus | menus.php + bundle.php | A | **DONE + verified** (site-converter 1.8.68) |
-| P4 | Multi-field contact `<form>` (name/email/textarea) → contact-form/newsletter, not a lone button | stitch.php recogniser + mapper | A | designed |
+| P1 | Structural full-bleed backdrop media recogniser (geometry, not name) + same-src duplicate-parallax drop | stitch.php `detect_section_bg_video` PASS 1 | A | **DONE + verified** (site-converter 1.8.69; corpus +1, 0 regressions) |
+| P2 | Animation-span (`.breeze-word`) split-text reassembly | stitch.php `collapse_word_split_spans` pre-pass | A | **DONE + verified** (1.8.69) |
+| P3 | Reconversion purges previous conversion's nav menus | menus.php + bundle.php | A | **DONE + verified** (1.8.68) |
+| P4 | Multi-field contact `<form>` (name/email/textarea) → contact-form/newsletter, not a lone button | stitch.php recogniser + mapper | A | designed (next) |
 | P5 | Capture stamp enrichment: `object-fit` + rect-coverage flag for positioned media (makes P1 bulletproof) | capture.mjs | B | proposed to B |
 | P6 | Header/menu excludes the logo anchor + trailing CTA button | stitch.php header/menu detection | B | flagged to B |
 | P7 | Gradient-placeholder card contrast (`.project-bg` radial-gradient) | mapper box/section preset | A | low priority |
@@ -358,6 +358,31 @@ backdrop.
 
 Newest first. Each entry = one structural change to the deterministic converter.
 
+- **2026-09-09 — P1: structural (geometry-based) full-bleed backdrop-video recogniser + duplicate-parallax drop
+  (site-converter 1.8.69).** openhero wraps the hero background video in `.video-portal` — the SAME class it uses
+  for its decorative lens — with only computed `position:absolute` (inset comes from the stylesheet, not the
+  `data-sc-cs` stamp) and NO bleed utility class, so `detect_section_bg_video`'s class/name tests never fired and
+  BOTH videos fell through to inline tiles (the-line's hero rendered as two black boxes). Because a `*-portal`
+  NAME exclusion was already tried and reverted (Fragility Register), the fix is STRUCTURAL: PASS 1 now also
+  accepts a `$geom_bleed` layer — an `absolute/fixed`, text-free, LONE `autoplay muted` video wrapper with SQUARE
+  corners (`border-radius < 24px`, matching the PASS-2 rounded-content threshold) and NO `transform` — as a
+  backdrop regardless of class name. The blob lens (`%`-radius + `transform:matrix`) is excluded by shape; this is
+  the same idiom lovable/wegic/jiro express as `absolute inset-0 object-cover` (already caught by the class test).
+  A second pass then drops any remaining same-`src` absolute lone-video layer in the section (openhero stamps the
+  clip twice for a parallax copy) so the hero shows just the one background. Verified: the-line hero renders the
+  full-bleed video with content over it; **19-site video-corpus regression = corpus overall +1 (99→100), every
+  bg-video-sensitive site (anime, apple-vision, autonomous, colosseum, orbital, lumina-arctic, nox, terraform, …)
+  100 with bgv 100, zero regressions (no per-site change ≥3).**
+- **2026-09-09 — P2: de-animate word/char SPLIT-TEXT before mapping (site-converter 1.8.69).** Animation builders
+  shatter a heading/eyebrow into per-word `<span>`s so each word can be tweened (openhero `.breeze-word`;
+  GSAP/Framer SplitText `.word`/`.char`). Those inline-block spans read to the converter as SEPARATE blocks and
+  stacked vertically (the-line's eyebrow `Atmospheric / Equilibrium / · / Biophilic …`). New `collapse_word_split_spans`
+  pre-pass (run in `html_to_mapping` right after `load_dom`) unwraps them back to text — STRUCTURAL, not
+  name-based: it fires only on a container that DIRECTLY holds ≥3 short (≤24-char) single-token `<span>`s and NO
+  other element child, so a real mixed line with `<em>`/`<a>`/`<br>` is never touched. The inter-word whitespace
+  and `·` separators are already text nodes, so they survive → one overline `Atmospheric Equilibrium · Biophilic
+  Integration · Est. 2024`. Verified on the-line; same 19-site regression stayed at corpus overall 100, 0
+  regressions (headings/eyebrows across the sample unaffected).
 - **2026-09-09 — Reconversion now purges the previous conversion's NAV MENUS (site-converter 1.8.68).** Every
   conversion builds a `"<Title> Header"` nav menu and assigns it to the theme's `primary` location; nothing ever
   removed the previous site's menu, so a shared install had accumulated **46** menus and the front page (the-line)

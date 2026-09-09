@@ -15,16 +15,10 @@ const HIGHLIGHTS = [
   {value: 'Auto', label: 'GitHub Updates'},
 ];
 
-const CLEAN_MARKUP = `<section>
-  <div class="fw-container">
-    <div class="fw-row">
-      <div class="fw-col-12">
-        <h2>Fast by default</h2>
-        <p>Clean markup. One stylesheet. No div soup.</p>
-        <a class="btn btn-primary" href="/start">Get started</a>
-      </div>
-    </div>
-  </div>
+const CLEAN_MARKUP = `<section class="fw-flexbox fw-contained">
+  <h2>Fast by default</h2>
+  <p>Clean markup. One stylesheet. No div soup.</p>
+  <a class="btn btn-primary" href="/start">Get started</a>
 </section>`;
 
 const CLEAN_POINTS = [
@@ -293,7 +287,7 @@ function CleanDomBand() {
             <code>{CLEAN_MARKUP}</code>
           </pre>
           <figcaption className={styles.codeCaption}>
-            Real Unyson+ output: just the grid and your content. No per-element wrapper soup, no inline styles.
+            Real Unyson+ output: the semantic tag <em>is</em> the layout — your content sits right inside it. No container/row/column wrapper soup, no inline styles.
           </figcaption>
         </figure>
       </div>

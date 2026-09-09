@@ -66,6 +66,9 @@ Add one **image** per layer. Each has:
 With the guide on, **signed-in** editors get an **Edit (✎)** button on the guide HUD — a live,
 scrub-and-tweak timeline editor:
 
+<img src="/img/shortcodes/image-scroll-choreography-editor.png" alt="The Scroll Choreography guide in edit mode — a scrub playhead at 34%, each layer's X / Y / scale / turn / fade with minus and plus steppers, and a Copy keys button" width="270" />
+
+
 - **Scrub** — a playhead that **freezes the scene at any %** without scrolling, so you can inspect the
   exact pose at, say, 50%.
 - **± steppers** — nudge the frozen layer's **X / Y / scale / turn / fade** and watch the pose change

@@ -73,7 +73,7 @@ With a keyframe selected, use the **± steppers** to nudge its **X / Y** (positi
 
 ## Move the panel out of the way
 
-Grab the **⠿ grip** at the top-left of the header and **drag the panel anywhere** on screen — so it never covers the corner you're posing into. Each panel moves independently. (It returns to its docked spot on the next page load.)
+Grab the **⠿ grip** at the top-left of the header and **drag the panel anywhere** on screen — so it never covers the corner you're posing into. Each panel moves independently, and it **remembers where you parked it** (per browser) across page loads. Clear your browser's site data to reset it to the docked bottom-right.
 
 ## Save your work — the round-trip {#save-round-trip}
 

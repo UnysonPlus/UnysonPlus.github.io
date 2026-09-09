@@ -32,6 +32,15 @@ element is a zero-height anchor and its images sit in a fixed layer your section
 
 ## Images tab
 
+### Recipe — one-click composition
+
+At the top of the tab, a **Recipe** picker turns the whole thing into one click: choose a ready-made
+composition, add your images, and the recipe **poses and staggers every image for you** — spreading their
+appear / hold / exit across the whole scroll automatically, for any number of images. The recipes are
+**Parallax Rise**, **Corner Peek-a-boo**, **Zoom Focus**, **Diagonal Sweep** and **Alternating Sides**.
+Your own images (and inset / z-index / flip) are kept. Leave it on **Custom** to hand-author each image
+with the controls below.
+
 Add one **image** per layer. Each has:
 
 | Group | Options |
@@ -41,6 +50,7 @@ Add one **image** per layer. Each has:
 
 *Appear by* / *Exit by* are directions (slide up / down / from a side), a fade, or a scale — and Exit can be
 **Stay to the end**. The image slides from off its mark, holds fully-opaque on its anchor, then leaves.
+*(A recipe fills all of these in for you.)*
 
 ## Scene tab
 
@@ -50,6 +60,20 @@ Add one **image** per layer. Each has:
 | **Scroll length (screens)** | How many screen-heights the choreography spans. |
 | **Scroll smoothing** | 0 = frame-perfect; higher adds glide. |
 | **Show choreography guide** | On-page authoring aid (markers + a live readout of scroll % and each image's state). Turn it off before publishing. |
+
+### Live editor (in the guide)
+
+With the guide on, **signed-in** editors get an **Edit (✎)** button on the guide HUD — a live,
+scrub-and-tweak timeline editor:
+
+- **Scrub** — a playhead that **freezes the scene at any %** without scrolling, so you can inspect the
+  exact pose at, say, 50%.
+- **± steppers** — nudge the frozen layer's **X / Y / scale / turn / fade** and watch the pose change
+  live (it edits the nearest keyframe).
+- **Copy keys** — copies the edited keyframes as JSON to paste back, then **Live** releases the playhead
+  to follow the real scroll again.
+
+It's author-only (it rides on the logged-in-only guide) and never affects what visitors see.
 
 ## Advanced tab
 

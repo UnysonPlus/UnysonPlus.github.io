@@ -208,6 +208,90 @@ CSS with no per-node home goes to `main_style` → `#main` (mapper.php:8852). Bo
 `apply_card_box` / `apply_card_box_inner` (mapper.php:1931 / 1952), or the preferred portable path
 `register_box_preset` → `boxp-<slug>` (mapper.php:172).
 
+## Structural Pattern Catalog — AI generators
+
+**Premise (validated by a corpus audit, 2026-09-09):** AI website builders are *template engines*, so
+their output is formulaic. The same section skeleton repeats within a generator and many archetypes are
+universal across generators. **Therefore every converter fix must key off a structural PATTERN, not the
+site in front of you** — a fix that recognises "a section whose backdrop is a viewport-covering `<video>`"
+covers the-line *and* every future hero-video site; a fix that special-cases the-line is a band-aid.
+Corpus sampled: openhero (the-line, lumina-ai), lovable ×4, wegic ×6, jiro.build, threeui ×4.
+
+### What is UNIVERSAL vs GENERATOR-SPECIFIC
+
+| Pattern | Families | Deterministic DOM signature | Verdict |
+|---|---|---|---|
+| Semantic band = `<section>` (often `id=`) | openhero, lovable, wegic, jiro | `<section>` stamp `padding:*px 0px`/`py-*` | UNIVERSAL (threeui excepted) |
+| **Full-bleed backdrop** = positioned wrapper holding a lone `object-cover` `<img>`/`<video>` | openhero, lovable, wegic, jiro | child is `absolute inset-0`/computed `position:absolute` + lone `object-cover` media, stamp **`border-radius:0px` and NO `transform`**, text-free; sibling gradient overlay | UNIVERSAL — **key recogniser to build by GEOMETRY not name** |
+| Card / feature grid | openhero, lovable, wegic, jiro | container computed `display:grid` + `grid-cols-N` | UNIVERSAL (handled: `card_grid`/`card_grid_cs`) |
+| Decorative absolute layer (NOT a background) | openhero, wegic, lovable | `position:absolute|fixed` + blob/`rounded-*`/`blur-*`/`rotate-*`/`transform:matrix` or `border-radius:50%` orb, empty/short | must be EXCLUDED from bg + dropped/→bg_effect |
+| Single desktop nav; mobile menu is React state (not in DOM) | lovable, wegic(pinky), jiro | one `<nav class="hidden (md|lg):flex">` + a `(md|lg):hidden` hamburger button | UNIVERSAL default — **nav duplication is NOT a universal hazard** |
+| Split/duplicated desktop nav in DOM | wegic (my_website variant) | **two** `<nav class="hidden md:flex … flex-1">` in one `<header>` | GENERATOR-SPECIFIC |
+| Colours are `oklch()`/`oklab()` | **openhero only** | stamp `oklch(L C H / A)` fills | GENERATOR-SPECIFIC (all others resolve to `rgb()`; `hsl()` only in the stylesheet). Confirms the oklch normalisers in `norm_box_color`/`rgb_triplet`/`build_box_presets $norm` are an openhero need, harmless elsewhere. |
+| Bespoke canvas/parallax art page | threeui | custom `.par`/`mask` classes, `<canvas>`, `transform:matrix3d`; no `<section>/<ul>/<form>` | GENERATOR-SPECIFIC — treat as non-mappable |
+
+### openhero skeleton (the target generator)
+
+Delivery: the real site is the **`/api/preview?category=&slug=`** document; an openhero `/preview/...` page is
+just a Next.js shell that iframes that endpoint (capture the `/api/preview` URL). Ordered sections the
+generator emits, with the vocabulary the recogniser can key on:
+
+1. **Fixed decorative stack** (body-level, pre-nav): `.preloader` · `.grain-overlay` (SVG-noise data-URI,
+   `position:fixed`) · `.ambient-orbs` → N× `.amb-orb` (`border-radius:50%`, `position:absolute`,
+   `transform:matrix`) · `.cursor`/`.cursor-trail`. → **drop.**
+2. **`<nav id="mainNav">`** — fixed flex bar: `.nav-logo` + one `<ul class="nav-links">` (the ONLY real menu) +
+   one `.btn-liquid` CTA ("Inquire"). Source labels are correct (Philosophy/Pillars/Projects/Contact).
+3. **hero** (`.hero`, `display:flex;center;height:100vh`) — `.video-portal` (`position:absolute`, `border-radius:0`,
+   lone `<video object-fit:cover>`) = **the true full-bleed background**; `.atmospheric-mask` (blob radius +
+   `transform:matrix` + a *second copy* of the video) = decorative lens; `.light-corridor` gradient wash;
+   `.hero-content` (eyebrow / `<h1>` with `<em>` / subtitle / `.btn-liquid`+`.btn-ghost`).
+4. **manifesto** — 2-col grid (text | `.manifesto-metrics` = 4× `.metric-orb` blob cards) + `.ecology-ticker` marquee.
+5. **pillars** — `grid repeat(4,1fr)` of `.pillar-card` blob cards + `.data-strip`/`.data-row` (`repeat(5,1fr)`) stats.
+6. **projects** — `.projects-track` flex carousel of `.project-card`; each card's "image" is a
+   `background-image:radial-gradient(oklch…)` on `.project-bg` (`absolute inset-0`), **not real media**.
+7. **philosophy** — grid `2fr 3fr`: `position:sticky` left column + numbered `.phil-line-item` timeline.
+8. **contact-section** — a REAL `.contact-form` (`display:grid`) with 3 `.input-shell` (`text`/`email`/`textarea`)
+   + submit `.btn-liquid` — NOT a lone CTA button.
+9. **footer** — logo + copy + `.footer-links`. `.section-divider` (radial-gradient hairline) sits between most bands.
+
+**Signature idioms:** (a) the openhero **blob shape** — a 4-value slash `border-radius: X% X% X% X% / X% …` —
+marks buttons, metric-orbs, pillar-cards, project-cards AND the decorative lens (a deterministic fingerprint);
+(b) text is shattered into per-word `<span class="breeze-word">` (a JS animation artifact) — treat these spans
+as **transparent** and reassemble their text WITH the inter-span spaces/separators.
+
+### Confirmed defect roots (the-line, all pattern-level)
+
+1. **Hero backdrop video → two inline tiles.** `detect_section_bg_video` (stitch.php:9647) requires an
+   `inset-0`/`w-full h-full`/bg-name class OR self-`absolute` position, and its name test *excludes* `portal`.
+   openhero's backdrop is `.video-portal` with only computed `position:absolute` (inset via stylesheet, not the
+   stamp) → no bleed signal fires → falls to inline tiles. **Fix must be structural** (the name exclusion was
+   already tried and reverted — see Fragility Register): promote an absolute/fixed, text-free, lone
+   `autoplay muted` video wrapper with `border-radius≈0` and no `transform` to the section background, regardless
+   of class name; keep the multicol-grid gate and the page-fixed gate. (Capture enrichment — stamp `object-fit`
+   + a rect-coverage flag — would make it bulletproof; capture.mjs is Session B's lane.)
+2. **Duplicated / mislabeled nav — FIXED (menu accumulation).** Not a detection bug: 46 stale converter menus had
+   accumulated and the last-converted site (Sushima) held the `primary` location. Fixed by tagging converter
+   menus (`FW_Site_Converter_Menus::MENU_META`) and purging the previous conversion's menus in
+   `cleanup_previous_conversion` (see Change Log). Residual (header lane): the-line's own menu still includes the
+   LOGO anchor + the INQUIRE CTA as items (source nav has 6 anchors) — exclude logo + trailing CTA.
+3. **Mashed eyebrow** (`EQUILIBRIUMBIOPHILIC INTEGRATIONEST.`) — `.breeze-word` per-word spans reassembled without
+   the inter-span whitespace and `·` separators. Pattern fix: when joining inline animation-span text, preserve a
+   single separating space and any separator glyph.
+4. **Selected Works dark-on-dark titles** — the project cards' "images" are `radial-gradient` placeholders on
+   `.project-bg`; the card renders dark and the title text is also dark. Contrast handling, not a dropped image.
+
+### Prioritized pattern-based fix plan
+
+| # | Pattern fix | Where | Lane | Status |
+|--:|---|---|---|---|
+| P1 | Structural full-bleed backdrop media recogniser (geometry, not name); exclude blob/transform/orb decorative layers | stitch.php `detect_section_bg_video`/`detect_page_bg_video` + a new decorative-exclusion helper | A | designed; needs corpus regression before ship |
+| P2 | Animation-span (`.breeze-word`) text reassembly preserving spaces + separators | stitch.php text extraction | A | designed |
+| P3 | Reconversion purges previous conversion's nav menus | menus.php + bundle.php | A | **DONE + verified** (site-converter 1.8.68) |
+| P4 | Multi-field contact `<form>` (name/email/textarea) → contact-form/newsletter, not a lone button | stitch.php recogniser + mapper | A | designed |
+| P5 | Capture stamp enrichment: `object-fit` + rect-coverage flag for positioned media (makes P1 bulletproof) | capture.mjs | B | proposed to B |
+| P6 | Header/menu excludes the logo anchor + trailing CTA button | stitch.php header/menu detection | B | flagged to B |
+| P7 | Gradient-placeholder card contrast (`.project-bg` radial-gradient) | mapper box/section preset | A | low priority |
+
 ## Fragility Register
 
 The parts most likely to break site-to-site or bite a future change. **Read this before touching a
@@ -274,6 +358,19 @@ backdrop.
 
 Newest first. Each entry = one structural change to the deterministic converter.
 
+- **2026-09-09 — Reconversion now purges the previous conversion's NAV MENUS (site-converter 1.8.68).** Every
+  conversion builds a `"<Title> Header"` nav menu and assigns it to the theme's `primary` location; nothing ever
+  removed the previous site's menu, so a shared install had accumulated **46** menus and the front page (the-line)
+  was rendering **Sushima's** doubled `CHRONICLES/STANCES/LANDSCAPES/ARMORY` menu — the last-converted site had
+  quietly stolen the `primary` slot. This was mis-read as a nav *detection* bug; it was menu accumulation, the same
+  class of leak as the revision/attachment/child-theme bloat already handled by `cleanup_previous_conversion`. Fix:
+  `FW_Site_Converter_Menus` stamps every menu it creates/reuses with term-meta `MENU_META` (`_fw_sc_menu`);
+  `FW_Site_Converter_Bundle::cleanup_previous_conversion` purges all tagged menus on a DIFFERENT-site conversion
+  (via `wp_delete_nav_menu`, which also clears the stale `nav_menu_locations` theme_mod), before the current import
+  rebuilds its own — mirroring the deferred prev-theme purge. Same-site reconvert is untouched (menu reused by
+  name). One-time cleanup of the 44 legacy menus done on localhost root; `primary` rebound to The Line Header — the
+  nav now renders the correct PHILOSOPHY/PILLARS/PROJECTS/CONTACT. (Residual, header lane: the-line's own menu still
+  includes the logo anchor + INQUIRE CTA as items — the builder captured all 6 header anchors.)
 - **2026-09-09 — Converted DARK sites rendered WHITE — root-caused + fixed at two layers.** A converted
   dark site stored its dark `--site-bg-color` correctly, but the rendered `body` was white. Root cause: the
   mapper's `cs_decls` (mapper.php) split a computed-style string on `;` with a naive `explode(';')`, which

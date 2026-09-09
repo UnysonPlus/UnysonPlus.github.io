@@ -119,18 +119,21 @@ The shared timeline for the whole group of lines.
 
 ### Live editor (in the guide)
 
-With the guide on, **signed-in** editors get an **Edit (✎)** button on the guide HUD: **scrub** a playhead
-to freeze the scene at any % without scrolling; each line gets a **keyframe track** — drag a diamond to
-retime a keyframe, click it to select it, double-click the track to add one, **Delete key** to remove it;
-nudge the selected keyframe's **X / Y / scale / turn / fade** with the **± steppers** to see the pose change
-live; then **Copy keys** to paste the result back (or **Live** to release the playhead). Drag the **⠿ grip**
-to move the panel off the corner you're posing into. Author-only — it never affects what visitors see. See [Image Scroll Choreography](./image-scroll-choreography.md#live-editor-in-the-guide)
-for a screenshot.
+With the guide on, **signed-in** editors get an **Edit (✎)** button on the guide HUD: **scrub** the scroll,
+retime keyframes on each line's **track** (drag / click / double-click to add / **Delete key**), tweak the
+selected keyframe's **X / Y / scale / turn / fade** with the **± steppers**, then **Copy keys** and paste them
+into **Custom keyframes** (Advanced tab) to lock it in. Drag the **⠿ grip** to move the panel out of the way.
+Author-only — it never affects what visitors see.
+
+**→ Full walkthrough with screenshots: [Live Editor & Keyframe Timeline](./scroll-choreography-editor.md).**
 
 ## Advanced tab
 
-**CSS ID**, **CSS Class** (lands on the scene wrapper — target its lines with `.your-class .fw-choreo__layer`),
-and scoped **Custom CSS** (use the keyword `selector` for the scene).
+- **CSS ID**, **CSS Class** (lands on the scene wrapper — target its lines with `.your-class .fw-choreo__layer`),
+  and scoped **Custom CSS** (use the keyword `selector` for the scene).
+- **Custom keyframes (from the live editor)** — paste the JSON from the editor's **Copy keys** to drive the
+  lines from exact keyframes, **overriding the Recipe and each line's Appear / Hold / Exit**. One entry per
+  line, in order; leave empty to use the settings.
 
 ## Accessibility & performance
 

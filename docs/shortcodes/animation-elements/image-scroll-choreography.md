@@ -63,29 +63,23 @@ Add one **image** per layer. Each has:
 
 ### Live editor (in the guide)
 
-With the guide on, **signed-in** editors get an **Edit (✎)** button on the guide HUD — a live,
-scrub-tweak-and-retime timeline editor:
+With the guide on, **signed-in** editors get an **Edit (✎)** button on the guide HUD — a live editor that
+lets you **scrub the scroll, retime keyframes on a per-layer track, tweak every value by eye**, then **Copy
+keys** and paste them into the **Custom keyframes** field (Advanced tab) to lock the composition in.
 
 <img src="/img/shortcodes/image-scroll-choreography-editor.png" alt="The Scroll Choreography guide in edit mode — a scrub playhead at 34%, per-layer keyframe tracks with draggable diamond markers, each layer's X / Y / scale / turn / fade with minus and plus steppers, and Delete key / Copy keys buttons" width="334" />
 
-- **Scrub** — a playhead that **freezes the scene at any %** without scrolling, so you can inspect the
-  exact pose at, say, 50%.
-- **Keyframe track** — each layer gets a **0–100% track with a diamond per keyframe**. **Drag** a diamond
-  to retime that keyframe, **click** it to select it (and scrub the scene to it), **double-click** an empty
-  spot on the track to **add** a keyframe there, and **Delete key** to remove the selected one.
-- **± steppers** — nudge the selected keyframe's **X / Y / scale / turn / fade** and watch the pose change
-  live.
-- **Copy keys / Live** — copy the edited keyframes as JSON to paste back into the element, or **Live** to
-  release the playhead and follow the real scroll again.
-- **Drag it out of the way** — grab the **⠿ grip** at the top-left of the panel to move it anywhere on
-  screen, so it never covers the corner you're posing into.
+**→ Full walkthrough with screenshots: [Live Editor & Keyframe Timeline](./scroll-choreography-editor.md).**
 
 It's author-only (it rides on the logged-in-only guide) and never affects what visitors see.
 
 ## Advanced tab
 
-**CSS ID**, **CSS Class** (target images with `.your-class .fw-choreo__layer`), and scoped **Custom CSS**
-(`selector` = the scene).
+- **CSS ID**, **CSS Class** (target images with `.your-class .fw-choreo__layer`), and scoped **Custom CSS**
+  (`selector` = the scene).
+- **Custom keyframes (from the live editor)** — paste the JSON from the editor's **Copy keys** to drive the
+  images from exact keyframes, **overriding the Recipe and each image's Appear / Hold / Exit**. One entry per
+  image, in order; leave empty to use the settings. See the [Live Editor guide](./scroll-choreography-editor.md#save-round-trip).
 
 ## Accessibility & performance
 

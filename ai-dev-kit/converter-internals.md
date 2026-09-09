@@ -254,11 +254,13 @@ Instrumentation the author left to find where these drop look-carrying classes:
   section, content scrolling over it — lumina-arctic's `div.video-portal`). UnysonPlus backgrounds are
   **per-section**, and the Background-Pro **video** layer has **no fixed mode** (only IMAGE has
   `attachment: fixed` → `background-attachment:fixed`; CSS can't pin a `<video>`). Today
-  `detect_section_bg_video` treats `position:fixed` like `absolute` and promotes the video to the FIRST
-  section's (scrolling) background, so the backdrop covers only the hero and scrolls away. The fix is
-  **Option A** (see Change Log, in progress): detect the page-wide fixed video and emit it ONCE as a
-  site-level fixed layer with transparent sections over it — plus a deferral gate so the section
-  detector doesn't also claim it.
+  `detect_section_bg_video` treated `position:fixed` like `absolute` and promoted the video to the FIRST
+  section's (scrolling) background. **Resolved for the full-viewport case (Option A, shipped):** a
+  full-viewport `position:fixed` video is detected (`detect_page_fixed_video`) and routed to the Site
+  Background's fixed video layer, rendered once by the theme, with a deferral gate
+  (`el_is_page_fixed_layer`) so the section detector no longer claims it. **Still open (case B):** a
+  fixed FLOATING video *portal* (positioned/sized/masked, not full-viewport — lumina-arctic) needs a
+  fixed-positioned `media_video` preserving its geometry + mask (see Change Log).
 
 ### Scorer blind-spots corrected (context for regressions)
 
@@ -287,14 +289,25 @@ Newest first. Each entry = one structural change to the deterministic converter.
   `rgb(255,255,255)` → `rgb(3,6,9)`, `--site-bg-color` now `#030609`. Also: the converter now calls
   `unysonplus_hf_regenerate_css()` after a programmatic Theme-Settings import (else the cached generated CSS
   kept stale defaults), and stops emitting a fragile prose `/* … */` comment into generated CSS.
-- **In progress — Option A: page-wide fixed video → site-level fixed background layer.** For a single
-  `position:fixed` full-viewport video behind all sections (lumina-arctic): (1) add a **Fixed** mode to
-  the Background-Pro **video** layer (`position:fixed` full-viewport player, behind content); (2) render
-  it at the **site background** level in the parent theme (one backdrop for the whole scrolling page);
-  (3) a converter **detector** that recognises the page-wide fixed video and routes it to
-  `general_layout/site_background` (fixed video) with the sections it spans made transparent; (4) a
-  **deferral gate** in `detect_section_bg_video` so the section detector no longer promotes it to the
-  hero. Spans the parent theme + Background-Pro option type + converter — scoped before coding.
+- **2026-09-09 — Option A: page-wide fixed video → site-level fixed background layer (shipped).** For a
+  genuine `position:fixed` FULL-VIEWPORT video behind all content: (1) Background-Pro's **video** layer
+  gained a `position` key (`scroll`|`fixed`); (2) the parent theme renders a fixed full-viewport `<video>`
+  once on `wp_body_open` — `unysonplus_render_site_bg_video` (theme `layout.php`), self-contained inline
+  markup (deliberately NOT via the generated/combined CSS, so it can't be lost to CSS caching); (3) the
+  converter **detector** `detect_page_fixed_video` (stitch.php) recognises a full-viewport `position:fixed`
+  video wrapper and writes it to `general_layout/site_background.video` (fixed) in the `{url,attachment_id}`
+  shape so `localize_media()` sideloads it; (4) a **deferral gate** in `detect_section_bg_video`
+  (`el_is_page_fixed_layer`) so a page-fixed video is never also promoted to a section background. Verified:
+  a full-viewport fixed site-bg video renders as `.site-bg-video{position:fixed;inset:0;z-index:-1}` with
+  the `<video>` behind content.
+- **Open — case B: fixed FLOATING video portals (lumina-arctic).** Not every "fixed video" is a
+  full-viewport backdrop. lumina-arctic's `.video-portal` is `position:fixed; top:50%; right:5%;
+  width:clamp(280px,35vw,520px); height:clamp(380px,55vh,720px); border-radius:28px 8px 28px 8px;
+  mask-image:radial-gradient(...)` — a masked, positioned floating video that stays fixed on scroll but
+  is NOT a background. Option A's detector CORRECTLY skips it (not full-viewport). Handling it needs a
+  **fixed-positioned `media_video`** that preserves the portal's exact geometry (top/right/transform/
+  clamp size) + border-radius + mask as scoped `position:fixed` custom CSS — a per-element floating layer,
+  not a site background. Deferred (distinct, narrower feature).
 - **2026-09-09 — Lone-video column cell → contained `media_video` with carried shape (shipped, regression-clean).**
   `layout_cols` (stitch.php) now decomposes a **lone-video cell** (`cell_is_lone_video` — one
   self-hosted `<video>`, no heading/prose, no content image) into a real, editable `media_video`

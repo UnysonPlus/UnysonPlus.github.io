@@ -250,6 +250,15 @@ Instrumentation the author left to find where these drop look-carrying classes:
   the AI tier.
 - **`grid-cols-1` with no wider responsive override** must be rejected as a stack, else
   `grid_col_count`'s card-cell fallback over-claims columns (hardening note at stitch.php:12790).
+- **Page-wide FIXED VIDEO backdrops** (a single `position:fixed` full-viewport `<video>` behind every
+  section, content scrolling over it — lumina-arctic's `div.video-portal`). UnysonPlus backgrounds are
+  **per-section**, and the Background-Pro **video** layer has **no fixed mode** (only IMAGE has
+  `attachment: fixed` → `background-attachment:fixed`; CSS can't pin a `<video>`). Today
+  `detect_section_bg_video` treats `position:fixed` like `absolute` and promotes the video to the FIRST
+  section's (scrolling) background, so the backdrop covers only the hero and scrolls away. The fix is
+  **Option A** (see Change Log, in progress): detect the page-wide fixed video and emit it ONCE as a
+  site-level fixed layer with transparent sections over it — plus a deferral gate so the section
+  detector doesn't also claim it.
 
 ### Scorer blind-spots corrected (context for regressions)
 
@@ -263,15 +272,40 @@ backdrop.
 
 Newest first. Each entry = one structural change to the deterministic converter.
 
+- **In progress — Option A: page-wide fixed video → site-level fixed background layer.** For a single
+  `position:fixed` full-viewport video behind all sections (lumina-arctic): (1) add a **Fixed** mode to
+  the Background-Pro **video** layer (`position:fixed` full-viewport player, behind content); (2) render
+  it at the **site background** level in the parent theme (one backdrop for the whole scrolling page);
+  (3) a converter **detector** that recognises the page-wide fixed video and routes it to
+  `general_layout/site_background` (fixed video) with the sections it spans made transparent; (4) a
+  **deferral gate** in `detect_section_bg_video` so the section detector no longer promotes it to the
+  hero. Spans the parent theme + Background-Pro option type + converter — scoped before coding.
+- **2026-09-09 — Lone-video column cell → contained `media_video` with carried shape (shipped, regression-clean).**
+  `layout_cols` (stitch.php) now decomposes a **lone-video cell** (`cell_is_lone_video` — one
+  self-hosted `<video>`, no heading/prose, no content image) into a real, editable `media_video`
+  instead of a verbatim `.sc-tw` code block the offline path can't size. The clip's shape is carried as
+  scoped `card_css` by `media_shape_css` — border-radius (+overflow), clip-path, mask, opacity, scale,
+  and a filter COMPOSED from Tailwind utilities (`tw_filter_from_classes`: `contrast-125 saturate-50`
+  → `contrast(1.25) saturate(.5)`, replacing Tailwind's unresolved `var(--tw-…)` form). Stylesheet-
+  defined effects (a custom `.radial-portal` mask, `mix-blend-screen`) are read by reusing
+  `bg_video_effect_css` against the cached source HTML (`self::$cur_html`). The video is forced `bg`=off
+  (a grid-column clip is never the section backdrop). Verified: colosseum 100 (was rendering a blank
+  code_block); every shaped-video content site (build-products, human-centric, kinetic-fashion,
+  national-geographic, nox-liquid, reactive-forest, terraform, lumina-arctic) stayed 100; corpus
+  `overall 99`, `bg_media`/`structure`/`verbatim`/`media_retention` all 100.
+- **2026-09-09 — `classify_display` + `collapse_transparent_wrappers` primitives (added, not yet wired).**
+  `classify_display($el, &$meta)` (stitch.php, near `section_is_multicol_grid`) returns
+  `leaf | grid | flex-row | flex-col | block` from the CAPTURED computed `display` /
+  `grid-template-columns` / `flex-direction` first, Tailwind tokens second; `$meta` carries `cols`,
+  `regular` (a grid with template-areas / col-span / dense auto-flow is IRREGULAR), `gap`.
+  `collapse_transparent_wrappers($el)` descends single-child, box-free wrappers (div-soup) to the first
+  meaningful node (`wrapper_has_own_box` guards against skipping a card or a real layout band). Verified
+  on real DOMs: colosseum/orbital → `grid cols=2`; apple-vision → `flex-col` stack; anime → `block`; no
+  false collapse on 2-child bands. These are the reusable structure-detector primitives; the generic
+  recursive walker will consume them next.
 - **2026-09-09 — Grid-structure gate for hero videos (shipped, regression-clean).**
   `section_is_multicol_grid($el)` (stitch.php:9008) + an early gate in `detect_section_bg_video`
   (stitch.php:9034): a `grid-cols-[2-9]` / computed-2-track hero no longer promotes its video to a
   full-bleed section background — the video is column *content*. Matching `$is_grid2` exclusion in the
   scorer's `srcHeroVideo` (`import-site.php:87`). Verified: colosseum / orbital-horizon /
   apple-vision-pro / anime all 100, no regressions across the 58-site corpus (avg ~99.2).
-- **In progress — media-only column cells → contained `media_video` / `media_image`.** Teaching
-  `layout_cols` (stitch.php:12876) to decompose a media-only cell (lone video/image, no heading/prose)
-  into a real shortcode carrying its mask/shape as scoped CSS, instead of the verbatim `.sc-tw` code
-  block. Plus a `classify_display($el)` primitive (grid / flex-row / flex-col / block / leaf) and a
-  `collapse_transparent_wrappers` helper for div-soup. Target: colosseum's video column renders as an
-  editable `media_video`.

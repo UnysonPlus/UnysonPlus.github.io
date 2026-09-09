@@ -37,6 +37,13 @@ scroll % (0–100) maps onto it.
 
 ## Text tab
 
+### Recipe — one-click composition
+
+At the top of the tab, a **Recipe** picker poses and staggers your lines for you: choose a composition —
+**Stacked Rise**, **Alternating Sides**, **Center Focus** or **Diagonal Sweep** — add your lines, and it
+spreads their appear / hold / exit across the whole scroll automatically (any number of lines). Your own
+words, warp and Text Effect settings ride along. Leave it on **Custom** to hand-author each line below.
+
 Add one **line** per foreground phrase (keep each short — a phrase, not a paragraph). Each line has:
 
 ### The words
@@ -109,6 +116,13 @@ The shared timeline for the whole group of lines.
 | **Scroll length (screens)** | How many screen-heights the choreography spans, measured from where the element sits. |
 | **Scroll smoothing** | 0 = locked to the scrollbar (frame-perfect); higher adds glide toward the scroll target. |
 | **Show choreography guide** | An on-page authoring aid — a dashed marker at each line's appear / hold / exit point plus a live readout of the scroll % and each line's state. **Turn it off before publishing.** |
+
+### Live editor (in the guide)
+
+With the guide on, **signed-in** editors get an **Edit (✎)** button on the guide HUD: **scrub** a playhead
+to freeze the scene at any % without scrolling, nudge each line's **X / Y / scale / turn / fade** with the
+**± steppers** to see the pose change live, then **Copy keys** to paste the tweaked keyframes back (or
+**Live** to release the playhead). Author-only — it never affects what visitors see.
 
 ## Advanced tab
 

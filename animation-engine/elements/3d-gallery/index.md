@@ -101,7 +101,15 @@ element changing.
 
 Every design shares the same surrounding controls, so switching design keeps your setup:
 
-- **Motion** — Auto-rotate / Continuous, plus **Drag**, **Scroll-scrub** and **Static**.
+- **Motion** — Auto-rotate / Continuous, plus **Drag**, **Scroll-scrub** and **Static**. Under
+  **Scroll-scrub** a **Rounds per scroll** control sets how far your scroll drives the deck across the
+  pin: on a *rotating* design (Ring, Sphere, Orbit) it's **full turns**; on a *flowing* design (walls,
+  tunnels, reels, strips) it reads as **passes** — the deck travels its whole length that many times.
+- **Entrance** (Style tab) — reveal the cards one-by-one as the gallery scrolls in: **Fade + Rise**,
+  **Scale**, **Blur**, **Slide** or **Flip**, with a stagger and distance. Combine it with a pinned
+  **Scroll-scrub** for a full **scroll choreography** — the images fade in one by one at the start, the
+  design scrubs (spins its Rounds / sweeps its passes) through the middle, then they dissolve one by one
+  on the way out, all driven by the visitor's scroll.
 - **Loop Duration (s)** — seconds for one full loop; *lower is faster*.
 - **On Hover** — **Slow down** (default), **Pause**, or **Keep rotating**. It reacts to the gallery
   itself, not the empty stage around it.

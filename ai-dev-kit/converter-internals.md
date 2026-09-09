@@ -354,6 +354,17 @@ missing, and only ever flagged a *missing* backdrop (never a *wrongly-added* one
 panel); `srcHeroVideo` gated by `$is_grid2` so a 2-column grid hero is never scored as a missed
 backdrop.
 
+**Real-Chrome render + lazy images (2026-09-10).** When the harness moved to REAL Chrome (so H.264 hero
+videos decode instead of reading as black — the `channel:'chrome'` fix), a latent scorer gap surfaced: real
+Chrome STRICTLY honours `loading="lazy"`, but `score.mjs` measured after a fixed ~1.3s settle **without
+scrolling**, so below-the-fold lazy `<img>`s never loaded and `media_retention` FALSE-dropped to 0
+(contemplative-realms: 4 lazy section images, 0 loaded at 1.3s, 3/4 loaded after one scroll pass — the
+bundled Chromium the baseline was first captured with had loaded them eagerly, hiding the gap). Fix:
+`score.mjs` now scrolls the page top-to-bottom-and-back to trigger lazy images before `measure()`. Lesson
+for any renderer swap: **re-save the baseline under the new engine** — a diff across two different render
+engines conflates converter changes with rendering-behaviour changes (this produced one false
+`media_retention −100` in the P1–P7 corpus run that was a pure scorer artifact, not a converter regression).
+
 ## Change Log
 
 Newest first. Each entry = one structural change to the deterministic converter.

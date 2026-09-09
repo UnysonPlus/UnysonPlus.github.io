@@ -287,7 +287,7 @@ as **transparent** and reassemble their text WITH the inter-span spaces/separato
 | P1 | Structural full-bleed backdrop media recogniser (geometry, not name) + same-src duplicate-parallax drop | stitch.php `detect_section_bg_video` PASS 1 | A | **DONE + verified** (site-converter 1.8.69; corpus +1, 0 regressions) |
 | P2 | Animation-span (`.breeze-word`) split-text reassembly | stitch.php `collapse_word_split_spans` pre-pass | A | **DONE + verified** (1.8.69) |
 | P3 | Reconversion purges previous conversion's nav menus | menus.php + bundle.php | A | **DONE + verified** (1.8.68) |
-| P4 | Multi-field contact `<form>` (name/email/textarea) → contact-form/newsletter, not a lone button | stitch.php recogniser + mapper | A | designed (next) |
+| P4 | Multi-field contact form (`<div class="contact-form">` / `<form>`) → `newsletter` shortcode, not a lone button | stitch.php `is_newsletter_form` | A | **DONE + verified** (1.8.70; structure unchanged, contrast net-0) |
 | P5 | Capture stamp enrichment: `object-fit` + rect-coverage flag for positioned media (makes P1 bulletproof) | capture.mjs | B | proposed to B |
 | P6 | Header/menu excludes the logo anchor + trailing CTA button | stitch.php header/menu detection | B | flagged to B |
 | P7 | Gradient-placeholder card contrast (`.project-bg` radial-gradient) | mapper box/section preset | A | low priority |
@@ -358,6 +358,25 @@ backdrop.
 
 Newest first. Each entry = one structural change to the deterministic converter.
 
+- **2026-09-09 — P4: non-`<form>` contact forms recognised (site-converter 1.8.70).** AI builders (openhero) build
+  the contact block as a `<div class="contact-form">` holding `<input>`/`<textarea>` + a submit `<button>`, with NO
+  `<form>` wrapper. `is_newsletter_form` required `$tag === 'form'`, so the whole block was dropped and only its
+  submit BUTTON kept (the-line's contact section rendered as a lone "Transmit Inquiry" button). It now also accepts
+  a NON-form container that is FORM-NAMED (`contact-form`/`signup-form`/… class) or holds ≥2 controls together
+  with a submit control (login/`password` + `search` still rejected; a `textarea`-only message box counts). The
+  existing `newsletter_build` (already container-agnostic) then carries name/email placeholders, `show_name`, and
+  the submit label/colours. The block maps to the always-available core `newsletter` shortcode — chosen over the
+  `forms`/`contact-forms` `contact_form` (a `form-builder` value shape that is fragile to emit and whose extension
+  isn't active by default). **Limitation:** `newsletter` has no free-text field, so the message `<textarea>` is
+  dropped (name + email + button render — a large improvement over a dropped form; upgrading to `contact_form`
+  once the form-builder value shape is safe is a follow-up). Verified: the-line contact renders Your Name + Email
+  Address + Transmit Inquiry; **19-site regression: structure/container/spacing/media/height all 100 (no structural
+  regression), contrast net-0 vs baseline** (the small per-site contrast dips faithfully reproduce the source's
+  subtle placeholder-on-dark fields). NOTE for whoever runs the harness: the score harness's `import-site.php`
+  imports pages WITHOUT `import_dir`'s `cleanup_previous_conversion`, so nav menus ACCUMULATE across a multi-site
+  regression run and the last site's menu can show on an earlier site — a TEST-HARNESS artifact only (the real
+  admin Convert path runs `import_dir` and purges correctly, verified). Consider having the harness reset menus
+  between sites.
 - **2026-09-09 — P1: structural (geometry-based) full-bleed backdrop-video recogniser + duplicate-parallax drop
   (site-converter 1.8.69).** openhero wraps the hero background video in `.video-portal` — the SAME class it uses
   for its decorative lens — with only computed `position:absolute` (inset comes from the stylesheet, not the

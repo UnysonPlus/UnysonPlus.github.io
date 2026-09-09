@@ -272,6 +272,21 @@ backdrop.
 
 Newest first. Each entry = one structural change to the deterministic converter.
 
+- **2026-09-09 — Converted DARK sites rendered WHITE — root-caused + fixed at two layers.** A converted
+  dark site stored its dark `--site-bg-color` correctly, but the rendered `body` was white. Root cause: the
+  mapper's `cs_decls` (mapper.php) split a computed-style string on `;` with a naive `explode(';')`, which
+  **truncated a `background-image:url("data:image/svg+xml;base64,…")` data-URI at the `;` inside it** and
+  mashed the following `transform`/`transition` declarations into an **unterminated `url("…` with a
+  dangling `(`**. Once the asset-optimizer combined the stylesheets, that dangling `(` made the CSS
+  tokenizer swallow every following `{`/`}` — including the theme's `:root{--site-bg-color:…}` block — so the
+  var was present in the file but dropped by the browser (body fell back to white). Fixed at BOTH layers:
+  (1) **generation** — new `cs_split()` (mapper.php) splits declarations `;`-safely, never inside quotes or
+  `url(...)`/`calc(...)` parens, so the data-URI stays whole; (2) **defence** — `FW_AO_Minifier::close_unbalanced()`
+  (asset-optimizer) closes a dangling string/paren/bracket PER FILE before combining, so one malformed source
+  can never corrupt the whole bundle (with a 17-assertion regression test). Verified: colosseum `body`
+  `rgb(255,255,255)` → `rgb(3,6,9)`, `--site-bg-color` now `#030609`. Also: the converter now calls
+  `unysonplus_hf_regenerate_css()` after a programmatic Theme-Settings import (else the cached generated CSS
+  kept stale defaults), and stops emitting a fragile prose `/* … */` comment into generated CSS.
 - **In progress — Option A: page-wide fixed video → site-level fixed background layer.** For a single
   `position:fixed` full-viewport video behind all sections (lumina-arctic): (1) add a **Fixed** mode to
   the Background-Pro **video** layer (`position:fixed` full-viewport player, behind content); (2) render

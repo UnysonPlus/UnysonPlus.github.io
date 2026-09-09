@@ -77,6 +77,8 @@ scrub-tweak-and-retime timeline editor:
   live.
 - **Copy keys / Live** — copy the edited keyframes as JSON to paste back into the element, or **Live** to
   release the playhead and follow the real scroll again.
+- **Drag it out of the way** — grab the **⠿ grip** at the top-left of the panel to move it anywhere on
+  screen, so it never covers the corner you're posing into.
 
 It's author-only (it rides on the logged-in-only guide) and never affects what visitors see.
 

@@ -123,8 +123,8 @@ With the guide on, **signed-in** editors get an **Edit (✎)** button on the gui
 to freeze the scene at any % without scrolling; each line gets a **keyframe track** — drag a diamond to
 retime a keyframe, click it to select it, double-click the track to add one, **Delete key** to remove it;
 nudge the selected keyframe's **X / Y / scale / turn / fade** with the **± steppers** to see the pose change
-live; then **Copy keys** to paste the result back (or **Live** to release the playhead). Author-only — it
-never affects what visitors see. See [Image Scroll Choreography](./image-scroll-choreography.md#live-editor-in-the-guide)
+live; then **Copy keys** to paste the result back (or **Live** to release the playhead). Drag the **⠿ grip**
+to move the panel off the corner you're posing into. Author-only — it never affects what visitors see. See [Image Scroll Choreography](./image-scroll-choreography.md#live-editor-in-the-guide)
 for a screenshot.
 
 ## Advanced tab

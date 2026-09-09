@@ -64,17 +64,19 @@ Add one **image** per layer. Each has:
 ### Live editor (in the guide)
 
 With the guide on, **signed-in** editors get an **Edit (✎)** button on the guide HUD — a live,
-scrub-and-tweak timeline editor:
+scrub-tweak-and-retime timeline editor:
 
-<img src="/img/shortcodes/image-scroll-choreography-editor.png" alt="The Scroll Choreography guide in edit mode — a scrub playhead at 34%, each layer's X / Y / scale / turn / fade with minus and plus steppers, and a Copy keys button" width="270" />
-
+<img src="/img/shortcodes/image-scroll-choreography-editor.png" alt="The Scroll Choreography guide in edit mode — a scrub playhead at 34%, per-layer keyframe tracks with draggable diamond markers, each layer's X / Y / scale / turn / fade with minus and plus steppers, and Delete key / Copy keys buttons" width="334" />
 
 - **Scrub** — a playhead that **freezes the scene at any %** without scrolling, so you can inspect the
   exact pose at, say, 50%.
-- **± steppers** — nudge the frozen layer's **X / Y / scale / turn / fade** and watch the pose change
-  live (it edits the nearest keyframe).
-- **Copy keys** — copies the edited keyframes as JSON to paste back, then **Live** releases the playhead
-  to follow the real scroll again.
+- **Keyframe track** — each layer gets a **0–100% track with a diamond per keyframe**. **Drag** a diamond
+  to retime that keyframe, **click** it to select it (and scrub the scene to it), **double-click** an empty
+  spot on the track to **add** a keyframe there, and **Delete key** to remove the selected one.
+- **± steppers** — nudge the selected keyframe's **X / Y / scale / turn / fade** and watch the pose change
+  live.
+- **Copy keys / Live** — copy the edited keyframes as JSON to paste back into the element, or **Live** to
+  release the playhead and follow the real scroll again.
 
 It's author-only (it rides on the logged-in-only guide) and never affects what visitors see.
 

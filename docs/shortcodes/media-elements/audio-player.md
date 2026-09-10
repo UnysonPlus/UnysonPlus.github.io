@@ -11,6 +11,10 @@ A custom audio player for self-hosted or remote tracks — single track or playl
 Always expose play/pause controls and don't autoplay audio. Provide a **transcript** too — it makes the content usable for deaf users, searchable by Google, and skimmable for anyone who'd rather read than listen. [MDN: the audio element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio)
 :::
 
+## Live demo
+
+**▶ [See the Audio Player live on the demos site](https://demos.unysonplus.com/shortcodes/audio-player/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/audio-player-content.png" alt="Audio Player options panel — Content tab" width="1200" />

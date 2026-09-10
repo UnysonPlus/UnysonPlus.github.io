@@ -13,6 +13,10 @@ Insert raw **HTML, CSS, or JavaScript**. Tabs: **Content**, **Styling**, **Anima
 Code samples use `<pre><code>` so spacing is preserved and the text isn't parsed as HTML — the characters `<`, `>` and `&` must be escaped (`&lt;`, `&gt;`, `&amp;`) or the browser tries to render them. This block handles that for you. And never paste a real password or API key into a public example. [MDN: the pre element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre)
 :::
 
+## Live demo
+
+**▶ [See the Code Block live on the demos site](https://demos.unysonplus.com/shortcodes/code-block/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/code-block-content.png" alt="Code Block options panel — Content tab" width="1200" />

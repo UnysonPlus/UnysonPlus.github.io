@@ -12,6 +12,10 @@ A team member card. Tabs: **Content**, **Styling**, **Animations**, **Advanced**
 A team photo's alt text should read like an introduction — the person's name, and their role if it adds context — not "team-photo-3.jpg" or a generic "person smiling," so a screen-reader user gets the same information a sighted visitor gets from the card. UnysonPlus builds the alt text from the Name field you enter here, so a clear, real name is what visitors actually hear. [MDN: alt text](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt)
 :::
 
+## Live demo
+
+**▶ [See the Team Member live on the demos site](https://demos.unysonplus.com/shortcodes/team-member/)** — an interactive example you can click through.
+
 ## Content
 
 | Option | Notes |

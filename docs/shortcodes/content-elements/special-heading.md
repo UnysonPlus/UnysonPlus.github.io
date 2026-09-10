@@ -15,6 +15,10 @@ The **Title Tag** option sets a real `<h1>`–`<h6>`, and those tags form your p
 
 <img src="/img/shortcodes/special-heading-backend.png" alt="Special Heading on the Page Builder canvas" width="936" />
 
+## Live demo
+
+**▶ [See the Special Heading live on the demos site](https://demos.unysonplus.com/shortcodes/special-heading/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/special-heading-content.png" alt="Special Heading options panel — Content tab" width="840" />

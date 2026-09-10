@@ -13,6 +13,10 @@ A styled quote / pullquote with optional author and source, in several editorial
 An actual quotation belongs in a `<blockquote>`, with its attribution in a `<cite>` — semantic HTML that assistive tech and search engines understand, not just indented text. Don't reach for a blockquote only to indent or emphasise; use it when you're genuinely quoting a source. [MDN: blockquote](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote)
 :::
 
+## Live demo
+
+**▶ [See the Blockquote live on the demos site](https://demos.unysonplus.com/shortcodes/blockquote/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/blockquote-content.png" alt="Blockquote options panel — Content tab" width="1200" />

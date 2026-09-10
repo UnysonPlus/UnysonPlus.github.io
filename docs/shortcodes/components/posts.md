@@ -13,6 +13,10 @@ or hero** layouts with full element-positioning control.
 A repeating post preview — its own heading, excerpt and link — is a natural `<article>`: a piece of content that would make sense standing on its own, which is also how search engines and screen readers segment a page into distinct items. Wrapping the whole card in one giant `<a>` while keeping a real `<h2>`/`<h3>` for the title (rather than a styled `<span>`) keeps both the semantics and the SEO value of the heading intact. UnysonPlus outputs each card this way regardless of which layout mode you pick. [MDN: the article element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article)
 :::
 
+## Live demo
+
+**▶ [See the Posts live on the demos site](https://demos.unysonplus.com/shortcodes/posts/)** — an interactive example you can click through.
+
 ## Layout Mode
 
 The headline option. Choose how posts are arranged: **Grid**, **List**, **Masonry**,

@@ -11,6 +11,10 @@ A row of social-profile links — either reused from your **Theme Settings → S
 A link that's just a glyph — a Facebook "f", a bird, a camera outline — has no visible text for a screen reader to read, so without an accessible name it announces as a bare, meaningless link. That's exactly why Social Icons asks for an Accessible Label on every profile, so "Facebook" or "Instagram" is announced even though only the icon shows. [MDN: ARIA aria-label attribute](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label)
 :::
 
+## Live demo
+
+**▶ [See the Social Icons live on the demos site](https://demos.unysonplus.com/shortcodes/social-icons/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/social-icons-content.png" alt="Social Icons options panel — Content tab" width="1200" />

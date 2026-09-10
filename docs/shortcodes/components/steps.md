@@ -11,6 +11,10 @@ A numbered steps / process flow — horizontal, vertical timeline, alternating, 
 When order matters — step 1, then 2, then 3 — the right element is an **ordered list** (`<ol>`), not a set of headings or divs. The numbering becomes real content that assistive tech announces in sequence, and it stays correct if you reorder the steps. [MDN: the ol element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol)
 :::
 
+## Live demo
+
+**▶ [See the Steps / Process live on the demos site](https://demos.unysonplus.com/shortcodes/steps/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/steps-content.png" alt="Steps / Process options panel — Content tab" width="1200" />

@@ -16,6 +16,10 @@ Masonry Section lives in the **Classic** palette tab, but it's still the way to 
 Tiles packing themselves into gaps only works once the browser knows each item's real size, so images without their own width and height tend to jump around and re-pack as they finish loading — a visible, disorienting shift for anyone reading the page as it settles. Giving every column's image a known ratio (or explicit dimensions) up front is what keeps a masonry grid stable, which is worth checking on the images you drop into these columns. [web.dev: Cumulative Layout Shift](https://web.dev/articles/cls)
 :::
 
+## Live demo
+
+**▶ [See the Masonry Section live on the demos site](https://demos.unysonplus.com/shortcodes/masonry-section/)** — an interactive example you can click through.
+
 ## Layout
 
 - **How it packs** — an informational note: columns keep their own width (1/2, 1/3, 2/3, 1/4 …) and stack to fill the gaps automatically.

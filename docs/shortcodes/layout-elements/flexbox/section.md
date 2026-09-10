@@ -18,6 +18,10 @@ set it unlocks the **band-only** controls below (revealed because the HTML Tag i
 The HTML `<section>` element tells assistive technology and search engines "here's a distinct, self-contained region of the page" — that's real semantic information a generic `<div>` doesn't carry, and it's what lets a screen reader user jump between the page's regions instead of reading it top to bottom as one blob. This tile defaults its HTML Tag to `section` for exactly that reason, so a page built from a stack of them ends up with a genuinely structured document, not just visually separated bands. [MDN: the section element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section)
 :::
 
+## Live demo
+
+**▶ [See the Section live on the demos site](https://demos.unysonplus.com/shortcodes/section/)** — an interactive example you can click through.
+
 ## Layout
 
 <img src="/img/shortcodes/flexbox-section-layout.png" alt="Section (Div) options — the Layout tab, with HTML Tag set to section, Full-Width Band and Content Width" width="840" />

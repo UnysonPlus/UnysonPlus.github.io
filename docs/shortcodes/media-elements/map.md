@@ -13,6 +13,10 @@ An interactive map with multiple engines and tile styles. Tabs: **Content**, **S
 An embedded map is an `<iframe>`, and every iframe needs a `title` (e.g. "Map to our office") so screen-reader users know what it is before diving in. Embeds are heavy, too — loading the map only when it scrolls into view keeps the page fast. [MDN: the iframe element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)
 :::
 
+## Live demo
+
+**▶ [See the Map live on the demos site](https://demos.unysonplus.com/shortcodes/map/)** — an interactive example you can click through.
+
 ## Map Engine
 
 | Engine | Notes |

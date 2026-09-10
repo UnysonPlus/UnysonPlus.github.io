@@ -18,6 +18,10 @@ A split section with content on one side and a full-bleed image on the other, ex
 A split layout that puts an image edge-to-edge on one side works well on a wide screen, but the same proportions squeezed onto a phone can crush the content or the image unreadably — that's why a responsive design stacks the two halves vertically below a breakpoint instead of shrinking them side by side forever. Bleed Section's Mobile Stacking Order does exactly that, and its Lazy-load Image switch keeps a below-the-fold bleed image from competing with content the visitor sees first. [MDN: Responsive design](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design)
 :::
 
+## Live demo
+
+**▶ [See the Bleed Section live on the demos site](https://demos.unysonplus.com/shortcodes/bleed-section/)** — an interactive example you can click through.
+
 ## Layout
 
 - **Bleed Image** — the image that fills one half and bleeds to the viewport edge. Use a high-resolution image; it's cropped to fill (cover), so edge detail may be trimmed depending on the ratio. Picked from the Media Library it's served responsively (`srcset`).

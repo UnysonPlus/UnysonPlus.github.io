@@ -13,6 +13,10 @@ A hamburger button that opens an off-canvas drawer — typically used for mobile
 That ☰ toggle must be a real `<button>` with an accessible name ("Menu") and `aria-expanded="true"/"false"` so screen-reader users know whether the menu is open. An icon alone, or a non-button `<div>`, leaves them guessing. [MDN: aria-expanded](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 :::
 
+## Live demo
+
+**▶ [See the Menu Toggle live on the demos site](https://demos.unysonplus.com/shortcodes/menu-toggle/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/menu-toggle-content.png" alt="Menu Toggle options panel — Content tab" width="1200" />

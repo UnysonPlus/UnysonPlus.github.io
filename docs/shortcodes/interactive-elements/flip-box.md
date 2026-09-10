@@ -16,6 +16,10 @@ back — with four flip directions and several designs. Tabs: **Content**, **Des
 A flip box that reveals its back only on hover leaves that content unreachable on touchscreens and by keyboard. It's lovely for a bit of delight — but if the back holds something people must read or click, make sure it's reachable another way (a tap/focus flip, or the same info elsewhere). [W3C: content on hover or focus](https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html)
 :::
 
+## Live demo
+
+**▶ [See the Flip Box live on the demos site](https://demos.unysonplus.com/shortcodes/flip-box/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/flip-box-content.png" alt="Flip Box options panel — Content tab" width="1200" />

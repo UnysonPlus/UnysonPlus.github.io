@@ -13,6 +13,10 @@ A poster image with a play button that opens a YouTube, Vimeo or self-hosted vid
 A video that starts playing with audio the moment a page loads is one of the most disruptive things a website can do to a visitor — it's why every major browser now blocks autoplaying sound outright. A poster image with an explicit play button, like this element uses, keeps the visitor in control of when audio starts, and loading the video itself only on click also keeps the page's initial load light. [MDN: Autoplay guide for media and Web Audio APIs](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Autoplay)
 :::
 
+## Live demo
+
+**▶ [See the Video Popup live on the demos site](https://demos.unysonplus.com/shortcodes/video-popup/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/video-popup-content.png" alt="Video Popup options panel — Content tab" width="1200" />

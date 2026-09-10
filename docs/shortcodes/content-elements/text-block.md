@@ -14,6 +14,10 @@ A rich-text (WYSIWYG) block. Tabs: **Content**, **Styling**, **Animations**, **A
 Over-long lines are tiring to read — the eye loses its place returning to the start. Aim for roughly **45–75 characters per line** for body text (a sensible `max-width` on wide sections does it), and split real paragraphs into separate blocks instead of one wall of text. [MDN: max-width](https://developer.mozilla.org/en-US/docs/Web/CSS/max-width)
 :::
 
+## Live demo
+
+**▶ [See the Text Block live on the demos site](https://demos.unysonplus.com/shortcodes/text-block/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/text-block-content.png" alt="Text Block options panel — Content tab" width="1200" />

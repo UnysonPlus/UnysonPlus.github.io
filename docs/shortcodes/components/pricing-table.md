@@ -14,6 +14,10 @@ Comparable pricing plans with price, feature list, a "featured" highlight and a 
 Roughly 1 in 12 men has some form of colour vision deficiency, so a "Most Popular" plan that stands out purely through a different background or border colour is invisible to a chunk of your visitors — pair the highlight with a visible **Badge** label so the meaning survives even if the colour doesn't register. That's why this element's highlight styling always ships alongside a text badge field rather than colour alone. [W3C WAI: use of color](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html)
 :::
 
+## Live demo
+
+**▶ [See the Pricing Table live on the demos site](https://demos.unysonplus.com/shortcodes/pricing-table/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/pricing-table-content.png" alt="Pricing Table options panel — Content tab" width="1200" />

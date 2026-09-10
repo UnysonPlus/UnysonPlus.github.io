@@ -15,6 +15,10 @@ An image alongside text in a responsive two-column layout. Tabs: **Content**, **
 A screen reader announces an image's alt attribute in place of the picture, so it should describe what the image shows or means — not repeat "image1.jpg" or stay blank on a meaningful photo. That's why Image Content gives you a dedicated Image Alt Text field alongside the image itself, so the two-column layout stays accessible, not just visually balanced. [W3C WAI: An alt Decision Tree](https://www.w3.org/WAI/tutorials/images/decision-tree/)
 :::
 
+## Live demo
+
+**▶ [See the Image Content live on the demos site](https://demos.unysonplus.com/shortcodes/image-content/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/image-content-content.png" alt="Image Content options panel — Content tab" width="1200" />

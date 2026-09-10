@@ -11,6 +11,10 @@ A back-to-top button and/or a reading-progress bar tied to page scroll — place
 A round button with just an arrow icon and no visible text has nothing for a screen reader to announce unless it carries an accessible name behind the scenes — visually it reads fine, but to assistive tech it's a mystery button. UnysonPlus gives this button a built-in accessible label ("Scroll to top") regardless of which icon you pick, so it stays a real, keyboard-operable control and not just a clickable shape. [MDN: ARIA aria-label attribute](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label)
 :::
 
+## Live demo
+
+**▶ [See the Scroll to Top & Progress live on the demos site](https://demos.unysonplus.com/shortcodes/scroll-to-top/)** — an interactive example you can click through.
+
 ## General
 
 <img src="/img/shortcodes/scroll-to-top-general.png" alt="Scroll to Top & Progress options panel — General tab" width="1200" />

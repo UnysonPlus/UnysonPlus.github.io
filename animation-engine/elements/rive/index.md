@@ -136,7 +136,7 @@ A Rive-specific **fallback poster** (shown if the runtime can't load, and as the
 
 ## Live demo
 
-**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/rive/)** — an interactive State-Machine car (click to fire its trigger), play-on-hover and play-on-view examples, a **Rive button whose event your page handles** (the `fwRiveEvent` JS hook, live), a **data-bound card** whose name/age/colour are set from the builder, a **live control panel** that drives that card from plain HTML via `window.fwRive`, and a **pointer-driven** card whose age tracks your mouse (no code).
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/rive/)** — an interactive State-Machine car (click to fire its trigger), play-on-hover and play-on-view examples, a **Rive button whose event your page handles** (the `fwRiveEvent` JS hook, live), a **data-bound dashboard** whose title, tickers and figures come from bound values (one file, any data), a **"push new figures"** button that updates it live via `window.fwRive`, and a **scroll gauge** whose bar tracks your scroll — no code.
 
 ## Steps
 

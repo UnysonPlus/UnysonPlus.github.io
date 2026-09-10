@@ -248,6 +248,10 @@ const config = {
           {from: '/docs', to: '/intro'},
           // The Gutenberg Blocks docs merged into the Blocks section.
           {from: '/extensions/gutenberg', to: '/blocks/intro'},
+          // "3D Gallery" was renamed to "Motion Gallery" (element + docs). Keep the old
+          // slug + the pre-slug playground URL (which carried the /elements/ segment) working.
+          {from: '/animation-engine/3d-gallery', to: '/animation-engine/motion-gallery'},
+          {from: '/animation-engine/elements/3d-gallery/playground', to: '/animation-engine/motion-gallery/playground'},
           // The "Web Dev Basics" (/learn) hub was retired — its lessons now live
           // inline as "💡 Web dev tip" callouts across the manual. 301 the old
           // pages to the nearest page that carries the matching guidance.

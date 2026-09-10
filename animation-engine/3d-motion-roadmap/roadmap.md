@@ -80,7 +80,7 @@ The highest return for the least effort — and the base everything else builds 
 - **A parametric "3D Scene" element** — a few pre-built, scroll-scrubbed camera scenes (gallery
   dolly, product orbit, image tunnel). You supply the media and tune a few knobs; the scene and its
   camera choreography are built in.
-- **Stretch:** a real-WebGL variant of the [Motion Gallery](/animation-engine/3d-gallery) for true depth,
+- **Stretch:** a real-WebGL variant of the [Motion Gallery](/animation-engine/motion-gallery) for true depth,
   lighting and reflection.
 
 ## Phase 3 — Flourishes

@@ -85,7 +85,7 @@ time axis** — like After Effects or a video editor — with an easing curve pe
 - **CSS 3D ("fake 3D")** — DOM elements tilted in a perspective box with `transform: rotate3d /
   translateZ`. Cheap, accessible, perfect for card flips, tilt, layered parallax depth and
   turntable-style rings — but they're flat planes in perspective, not a rendered scene. The
-  [Motion Gallery](/animation-engine/3d-gallery) and [Flip Card](/animation-engine/flip-card) live here.
+  [Motion Gallery](/animation-engine/motion-gallery) and [Flip Card](/animation-engine/flip-card) live here.
 
 <figure role="group" aria-label="Real 3D versus CSS 3D, compared" style="margin:1.5rem 0;">
 <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cmp-t cmp-d" style="width:100%;height:auto;max-width:760px;font-family:var(--ifm-font-family-base, system-ui, sans-serif);">

@@ -31,6 +31,8 @@ On the element's **Animation** tab, open **Live inputs (pointer / scroll)** and 
 
 The scroll-gauge demo uses one row: **`apple/stockChange`**, driven by **Scroll**, mapped **−40 → 200**, smoothing **0.12**.
 
+<img src="/img/rive/live-inputs.png" alt="The Live inputs list with one row — apple/stockChange ← scroll — and an Add button." width="840" />
+
 ## Recipes
 
 **Cursor-follow character** — a file with `lookX` / `lookY` number inputs the artboard rotates the head/eyes on:

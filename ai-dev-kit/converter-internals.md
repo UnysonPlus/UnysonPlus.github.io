@@ -145,7 +145,7 @@ wrapper collapse** (no "fold this meaningless wrapper's bg/border/padding onto i
 **The gap:** a **media-only cell** — a column whose sole content is a `<video>` / lone `<img>` / SVG
 with *no heading and no real prose* — fails the `cell_is_decomposable` gate and falls to the
 **verbatim `.sc-tw` code block** path (stitch.php:12947–12950). That is why a two-column hero like
-**colosseum** / **orbital-horizon** (text left, shaped video right) renders its video column as a
+**a 2-column-grid hero capture** / **a 2-column-grid hero capture** (text left, shaped video right) renders its video column as a
 `code_block(<video>)` instead of a proper, editable `media_video` carrying its mask/shape as scoped
 CSS. Closing this is the current work (see [Change Log](#change-log)).
 
@@ -214,25 +214,25 @@ CSS with no per-node home goes to `main_style` → `#main` (mapper.php:8852). Bo
 their output is formulaic. The same section skeleton repeats within a generator and many archetypes are
 universal across generators. **Therefore every converter fix must key off a structural PATTERN, not the
 site in front of you** — a fix that recognises "a section whose backdrop is a viewport-covering `<video>`"
-covers the-line *and* every future hero-video site; a fix that special-cases the-line is a band-aid.
-Corpus sampled: openhero (the-line, lumina-ai), lovable ×4, wegic ×6, jiro.build, threeui ×4.
+covers the primary capture *and* every future hero-video site; a fix that special-cases the primary capture is a band-aid.
+Corpus sampled: Generator A (the primary capture, a second capture), Generator B ×4, Generator C ×6, Generator D, Generator E ×4.
 
 ### What is UNIVERSAL vs GENERATOR-SPECIFIC
 
 | Pattern | Families | Deterministic DOM signature | Verdict |
 |---|---|---|---|
-| Semantic band = `<section>` (often `id=`) | openhero, lovable, wegic, jiro | `<section>` stamp `padding:*px 0px`/`py-*` | UNIVERSAL (threeui excepted) |
-| **Full-bleed backdrop** = positioned wrapper holding a lone `object-cover` `<img>`/`<video>` | openhero, lovable, wegic, jiro | child is `absolute inset-0`/computed `position:absolute` + lone `object-cover` media, stamp **`border-radius:0px` and NO `transform`**, text-free; sibling gradient overlay | UNIVERSAL — **key recogniser to build by GEOMETRY not name** |
-| Card / feature grid | openhero, lovable, wegic, jiro | container computed `display:grid` + `grid-cols-N` | UNIVERSAL (handled: `card_grid`/`card_grid_cs`) |
-| Decorative absolute layer (NOT a background) | openhero, wegic, lovable | `position:absolute|fixed` + blob/`rounded-*`/`blur-*`/`rotate-*`/`transform:matrix` or `border-radius:50%` orb, empty/short | must be EXCLUDED from bg + dropped/→bg_effect |
-| Single desktop nav; mobile menu is React state (not in DOM) | lovable, wegic(pinky), jiro | one `<nav class="hidden (md|lg):flex">` + a `(md|lg):hidden` hamburger button | UNIVERSAL default — **nav duplication is NOT a universal hazard** |
-| Split/duplicated desktop nav in DOM | wegic (my_website variant) | **two** `<nav class="hidden md:flex … flex-1">` in one `<header>` | GENERATOR-SPECIFIC |
-| Colours are `oklch()`/`oklab()` | **openhero only** | stamp `oklch(L C H / A)` fills | GENERATOR-SPECIFIC (all others resolve to `rgb()`; `hsl()` only in the stylesheet). Confirms the oklch normalisers in `norm_box_color`/`rgb_triplet`/`build_box_presets $norm` are an openhero need, harmless elsewhere. |
-| Bespoke canvas/parallax art page | threeui | custom `.par`/`mask` classes, `<canvas>`, `transform:matrix3d`; no `<section>/<ul>/<form>` | GENERATOR-SPECIFIC — treat as non-mappable |
+| Semantic band = `<section>` (often `id=`) | Generator A, Generator B, Generator C, Generator D | `<section>` stamp `padding:*px 0px`/`py-*` | UNIVERSAL (Generator E excepted) |
+| **Full-bleed backdrop** = positioned wrapper holding a lone `object-cover` `<img>`/`<video>` | Generator A, Generator B, Generator C, Generator D | child is `absolute inset-0`/computed `position:absolute` + lone `object-cover` media, stamp **`border-radius:0px` and NO `transform`**, text-free; sibling gradient overlay | UNIVERSAL — **key recogniser to build by GEOMETRY not name** |
+| Card / feature grid | Generator A, Generator B, Generator C, Generator D | container computed `display:grid` + `grid-cols-N` | UNIVERSAL (handled: `card_grid`/`card_grid_cs`) |
+| Decorative absolute layer (NOT a background) | Generator A, Generator C, Generator B | `position:absolute|fixed` + blob/`rounded-*`/`blur-*`/`rotate-*`/`transform:matrix` or `border-radius:50%` orb, empty/short | must be EXCLUDED from bg + dropped/→bg_effect |
+| Single desktop nav; mobile menu is React state (not in DOM) | Generator B, Generator C, Generator D | one `<nav class="hidden (md|lg):flex">` + a `(md|lg):hidden` hamburger button | UNIVERSAL default — **nav duplication is NOT a universal hazard** |
+| Split/duplicated desktop nav in DOM | Generator C (a split-nav variant) | **two** `<nav class="hidden md:flex … flex-1">` in one `<header>` | GENERATOR-SPECIFIC |
+| Colours are `oklch()`/`oklab()` | **Generator A only** | stamp `oklch(L C H / A)` fills | GENERATOR-SPECIFIC (all others resolve to `rgb()`; `hsl()` only in the stylesheet). Confirms the oklch normalisers in `norm_box_color`/`rgb_triplet`/`build_box_presets $norm` are an Generator A need, harmless elsewhere. |
+| Bespoke canvas/parallax art page | Generator E | custom `.par`/`mask` classes, `<canvas>`, `transform:matrix3d`; no `<section>/<ul>/<form>` | GENERATOR-SPECIFIC — treat as non-mappable |
 
-### openhero skeleton (the target generator)
+### Generator A skeleton (the target generator)
 
-Delivery: the real site is the **`/api/preview?category=&slug=`** document; an openhero `/preview/...` page is
+Delivery: the real site is the **`/api/preview?category=&slug=`** document; an Generator A `/preview/...` page is
 just a Next.js shell that iframes that endpoint (capture the `/api/preview` URL). Ordered sections the
 generator emits, with the vocabulary the recogniser can key on:
 
@@ -254,27 +254,27 @@ generator emits, with the vocabulary the recogniser can key on:
    + submit `.btn-liquid` — NOT a lone CTA button.
 9. **footer** — logo + copy + `.footer-links`. `.section-divider` (radial-gradient hairline) sits between most bands.
 
-**Signature idioms:** (a) the openhero **blob shape** — a 4-value slash `border-radius: X% X% X% X% / X% …` —
+**Signature idioms:** (a) the Generator A **blob shape** — a 4-value slash `border-radius: X% X% X% X% / X% …` —
 marks buttons, metric-orbs, pillar-cards, project-cards AND the decorative lens (a deterministic fingerprint);
 (b) text is shattered into per-word `<span class="breeze-word">` (a JS animation artifact) — treat these spans
 as **transparent** and reassemble their text WITH the inter-span spaces/separators.
 
-### Confirmed defect roots (the-line, all pattern-level)
+### Confirmed defect roots (the primary capture, all pattern-level)
 
 1. **Hero backdrop video → two inline tiles.** `detect_section_bg_video` (stitch.php:9647) requires an
    `inset-0`/`w-full h-full`/bg-name class OR self-`absolute` position, and its name test *excludes* `portal`.
-   openhero's backdrop is `.video-portal` with only computed `position:absolute` (inset via stylesheet, not the
+   Generator A's backdrop is `.video-portal` with only computed `position:absolute` (inset via stylesheet, not the
    stamp) → no bleed signal fires → falls to inline tiles. **Fix must be structural** (the name exclusion was
    already tried and reverted — see Fragility Register): promote an absolute/fixed, text-free, lone
    `autoplay muted` video wrapper with `border-radius≈0` and no `transform` to the section background, regardless
    of class name; keep the multicol-grid gate and the page-fixed gate. (Capture enrichment — stamp `object-fit`
    + a rect-coverage flag — would make it bulletproof; capture.mjs is Session B's lane.)
 2. **Duplicated / mislabeled nav — FIXED (menu accumulation).** Not a detection bug: 46 stale converter menus had
-   accumulated and the last-converted site (Sushima) held the `primary` location. Fixed by tagging converter
+   accumulated and the last-converted site (another site) held the `primary` location. Fixed by tagging converter
    menus (`FW_Site_Converter_Menus::MENU_META`) and purging the previous conversion's menus in
-   `cleanup_previous_conversion` (see Change Log). Residual (header lane): the-line's own menu still includes the
+   `cleanup_previous_conversion` (see Change Log). Residual (header lane): the primary capture's own menu still includes the
    LOGO anchor + the INQUIRE CTA as items (source nav has 6 anchors) — exclude logo + trailing CTA.
-3. **Mashed eyebrow** (`EQUILIBRIUMBIOPHILIC INTEGRATIONEST.`) — `.breeze-word` per-word spans reassembled without
+3. **Mashed eyebrow** (`WORDTWOWORDTHREE WORDFOURWORDFIVE` (words + separators run together)) — `.breeze-word` per-word spans reassembled without
    the inter-span whitespace and `·` separators. Pattern fix: when joining inline animation-span text, preserve a
    single separating space and any separator glyph.
 4. **Selected Works dark-on-dark titles** — the project cards' "images" are `radial-gradient` placeholders on
@@ -314,11 +314,11 @@ Instrumentation the author left to find where these drop look-carrying classes:
 ### Reverted experiments (do not re-attempt without reading the note)
 
 - **Routing a `layout_row` cell through `section_root_row`** — tried and **reverted**
-  (08-render-audit §8.34): claiming a cell as a row made *hygge_haus* 2,255px shorter but **dropped
+  (08-render-audit §8.34): claiming a cell as a row made *a photo-grid capture* 2,255px shorter but **dropped
   two images** including the hero background photo (16→12 images). The height "gain" was content loss.
   The note lives inline at stitch.php:12916. The section-**root** row case (§8.30) is unaffected and stays.
-- **Portal/shell name-based exclusion of bg videos** — regressed *orbital-horizon* (bgv 0) because
-  `portal` was too broad and anime uses `[mask-image]`. Replaced with the `section_is_multicol_grid`
+- **Portal/shell name-based exclusion of bg videos** — regressed *a 2-column-grid hero capture* (bgv 0) because
+  `portal` was too broad and a bespoke capture uses `[mask-image]`. Replaced with the `section_is_multicol_grid`
   structural gate.
 - **AI writing a whole stylesheet** — made the two engines conflict (both producing CSS). Scoped the
   AI back to **mapping-only**; the deterministic engine authors all CSS.
@@ -335,7 +335,7 @@ Instrumentation the author left to find where these drop look-carrying classes:
 - **`grid-cols-1` with no wider responsive override** must be rejected as a stack, else
   `grid_col_count`'s card-cell fallback over-claims columns (hardening note at stitch.php:12790).
 - **Page-wide FIXED VIDEO backdrops** (a single `position:fixed` full-viewport `<video>` behind every
-  section, content scrolling over it — lumina-arctic's `div.video-portal`). UnysonPlus backgrounds are
+  section, content scrolling over it — a fixed-video capture's `div.video-portal`). UnysonPlus backgrounds are
   **per-section**, and the Background-Pro **video** layer has **no fixed mode** (only IMAGE has
   `attachment: fixed` → `background-attachment:fixed`; CSS can't pin a `<video>`). Today
   `detect_section_bg_video` treated `position:fixed` like `absolute` and promoted the video to the FIRST
@@ -343,7 +343,7 @@ Instrumentation the author left to find where these drop look-carrying classes:
   full-viewport `position:fixed` video is detected (`detect_page_fixed_video`) and routed to the Site
   Background's fixed video layer, rendered once by the theme, with a deferral gate
   (`el_is_page_fixed_layer`) so the section detector no longer claims it. **Still open (case B):** a
-  fixed FLOATING video *portal* (positioned/sized/masked, not full-viewport — lumina-arctic) needs a
+  fixed FLOATING video *portal* (positioned/sized/masked, not full-viewport — a fixed-video capture) needs a
   fixed-positioned `media_video` preserving its geometry + mask (see Change Log).
 
 ### Scorer blind-spots corrected (context for regressions)
@@ -358,7 +358,7 @@ backdrop.
 videos decode instead of reading as black — the `channel:'chrome'` fix), a latent scorer gap surfaced: real
 Chrome STRICTLY honours `loading="lazy"`, but `score.mjs` measured after a fixed ~1.3s settle **without
 scrolling**, so below-the-fold lazy `<img>`s never loaded and `media_retention` FALSE-dropped to 0
-(contemplative-realms: 4 lazy section images, 0 loaded at 1.3s, 3/4 loaded after one scroll pass — the
+(a lazy-image capture: 4 lazy section images, 0 loaded at 1.3s, 3/4 loaded after one scroll pass — the
 bundled Chromium the baseline was first captured with had loaded them eagerly, hiding the gap). Fix:
 `score.mjs` now scrolls the page top-to-bottom-and-back to trigger lazy images before `measure()`. Lesson
 for any renderer swap: **re-save the baseline under the new engine** — a diff across two different render
@@ -369,7 +369,7 @@ engines conflates converter changes with rendering-behaviour changes (this produ
 
 Newest first. Each entry = one structural change to the deterministic converter.
 
-- **2026-09-09 — P7: dark timeline/project cards keep their fill + light title (site-converter 1.8.71).** openhero's
+- **2026-09-09 — P7: dark timeline/project cards keep their fill + light title (site-converter 1.8.71).** Generator A's
   Selected Works is a carousel of dark `.project-card`s (fill oklch(0.15), near-white title). It maps to the
   `timeline` shortcode, which defaults to a LIGHT card — so on the converted dark-theme site the near-white heading
   colour landed on a white card and the titles rendered white-on-white (invisible; the descriptions, on the
@@ -378,14 +378,14 @@ Newest first. Each entry = one structural change to the deterministic converter.
   is bare); when it is a real DARK solid fill it carries `card_bg` plus the entry heading's `title_color` and first
   paragraph's `text_color` (only the LIGHT ones), and `n_timeline` emits them into the timeline Styling group as
   compact `{predefined,custom}` colours. Gated on a dark card fill, so an ordinary light-card timeline is untouched
-  (no default change) — e.g. the-line's OWN `.phil-line-item` philosophy timeline (transparent entries) is
+  (no default change) — e.g. the primary capture's OWN `.phil-line-item` philosophy timeline (transparent entries) is
   unaffected. Verified: the four Selected Works cards render dark with legible near-white titles (The Verdant Tower
   / Dune Meridian / Aquifer House / The Hollow City); 19-site regression unchanged vs baseline (structure 100, no
   per-site change ≥3).
-- **2026-09-09 — P4: non-`<form>` contact forms recognised (site-converter 1.8.70).** AI builders (openhero) build
+- **2026-09-09 — P4: non-`<form>` contact forms recognised (site-converter 1.8.70).** AI builders (Generator A) build
   the contact block as a `<div class="contact-form">` holding `<input>`/`<textarea>` + a submit `<button>`, with NO
   `<form>` wrapper. `is_newsletter_form` required `$tag === 'form'`, so the whole block was dropped and only its
-  submit BUTTON kept (the-line's contact section rendered as a lone "Transmit Inquiry" button). It now also accepts
+  submit BUTTON kept (the primary capture's contact section rendered as a lone "Transmit Inquiry" button). It now also accepts
   a NON-form container that is FORM-NAMED (`contact-form`/`signup-form`/… class) or holds ≥2 controls together
   with a submit control (login/`password` + `search` still rejected; a `textarea`-only message box counts). The
   existing `newsletter_build` (already container-agnostic) then carries name/email placeholders, `show_name`, and
@@ -393,7 +393,7 @@ Newest first. Each entry = one structural change to the deterministic converter.
   `forms`/`contact-forms` `contact_form` (a `form-builder` value shape that is fragile to emit and whose extension
   isn't active by default). **Limitation:** `newsletter` has no free-text field, so the message `<textarea>` is
   dropped (name + email + button render — a large improvement over a dropped form; upgrading to `contact_form`
-  once the form-builder value shape is safe is a follow-up). Verified: the-line contact renders Your Name + Email
+  once the form-builder value shape is safe is a follow-up). Verified: the primary capture contact renders Your Name + Email
   Address + Transmit Inquiry; **19-site regression: structure/container/spacing/media/height all 100 (no structural
   regression), contrast net-0 vs baseline** (the small per-site contrast dips faithfully reproduce the source's
   subtle placeholder-on-dark fields). NOTE for whoever runs the harness: the score harness's `import-site.php`
@@ -402,34 +402,33 @@ Newest first. Each entry = one structural change to the deterministic converter.
   admin Convert path runs `import_dir` and purges correctly, verified). Consider having the harness reset menus
   between sites.
 - **2026-09-09 — P1: structural (geometry-based) full-bleed backdrop-video recogniser + duplicate-parallax drop
-  (site-converter 1.8.69).** openhero wraps the hero background video in `.video-portal` — the SAME class it uses
+  (site-converter 1.8.69).** Generator A wraps the hero background video in `.video-portal` — the SAME class it uses
   for its decorative lens — with only computed `position:absolute` (inset comes from the stylesheet, not the
   `data-sc-cs` stamp) and NO bleed utility class, so `detect_section_bg_video`'s class/name tests never fired and
-  BOTH videos fell through to inline tiles (the-line's hero rendered as two black boxes). Because a `*-portal`
+  BOTH videos fell through to inline tiles (the primary capture's hero rendered as two black boxes). Because a `*-portal`
   NAME exclusion was already tried and reverted (Fragility Register), the fix is STRUCTURAL: PASS 1 now also
   accepts a `$geom_bleed` layer — an `absolute/fixed`, text-free, LONE `autoplay muted` video wrapper with SQUARE
   corners (`border-radius < 24px`, matching the PASS-2 rounded-content threshold) and NO `transform` — as a
   backdrop regardless of class name. The blob lens (`%`-radius + `transform:matrix`) is excluded by shape; this is
-  the same idiom lovable/wegic/jiro express as `absolute inset-0 object-cover` (already caught by the class test).
-  A second pass then drops any remaining same-`src` absolute lone-video layer in the section (openhero stamps the
-  clip twice for a parallax copy) so the hero shows just the one background. Verified: the-line hero renders the
+  the same idiom Generator B/Generator C/Generator D express as `absolute inset-0 object-cover` (already caught by the class test).
+  A second pass then drops any remaining same-`src` absolute lone-video layer in the section (Generator A stamps the
+  clip twice for a parallax copy) so the hero shows just the one background. Verified: the primary capture hero renders the
   full-bleed video with content over it; **19-site video-corpus regression = corpus overall +1 (99→100), every
-  bg-video-sensitive site (anime, apple-vision, autonomous, colosseum, orbital, lumina-arctic, nox, terraform, …)
+  bg-video-sensitive site (a bespoke capture, a capped-width hero capture, the soft-masked-layer capture, a 2-column-grid hero capture, a 2-column-grid hero capture, a fixed-video capture, nox, a shaped-video capture, …)
   100 with bgv 100, zero regressions (no per-site change ≥3).**
 - **2026-09-09 — P2: de-animate word/char SPLIT-TEXT before mapping (site-converter 1.8.69).** Animation builders
-  shatter a heading/eyebrow into per-word `<span>`s so each word can be tweened (openhero `.breeze-word`;
+  shatter a heading/eyebrow into per-word `<span>`s so each word can be tweened (Generator A `.breeze-word`;
   GSAP/Framer SplitText `.word`/`.char`). Those inline-block spans read to the converter as SEPARATE blocks and
-  stacked vertically (the-line's eyebrow `Atmospheric / Equilibrium / · / Biophilic …`). New `collapse_word_split_spans`
+  stacked vertically (the primary capture's eyebrow rendered one word per line: `Word / Word / · / Word …`). New `collapse_word_split_spans`
   pre-pass (run in `html_to_mapping` right after `load_dom`) unwraps them back to text — STRUCTURAL, not
   name-based: it fires only on a container that DIRECTLY holds ≥3 short (≤24-char) single-token `<span>`s and NO
   other element child, so a real mixed line with `<em>`/`<a>`/`<br>` is never touched. The inter-word whitespace
-  and `·` separators are already text nodes, so they survive → one overline `Atmospheric Equilibrium · Biophilic
-  Integration · Est. 2024`. Verified on the-line; same 19-site regression stayed at corpus overall 100, 0
+  and `·` separators are already text nodes, so they survive → one overline (`Word One · Word Two · Word Three`). Verified on the primary capture; same 19-site regression stayed at corpus overall 100, 0
   regressions (headings/eyebrows across the sample unaffected).
 - **2026-09-09 — Reconversion now purges the previous conversion's NAV MENUS (site-converter 1.8.68).** Every
   conversion builds a `"<Title> Header"` nav menu and assigns it to the theme's `primary` location; nothing ever
-  removed the previous site's menu, so a shared install had accumulated **46** menus and the front page (the-line)
-  was rendering **Sushima's** doubled `CHRONICLES/STANCES/LANDSCAPES/ARMORY` menu — the last-converted site had
+  removed the previous site's menu, so a shared install had accumulated **46** menus and the front page (the primary capture)
+  was rendering **another site's** doubled `CHRONICLES/STANCES/LANDSCAPES/ARMORY` menu — the last-converted site had
   quietly stolen the `primary` slot. This was mis-read as a nav *detection* bug; it was menu accumulation, the same
   class of leak as the revision/attachment/child-theme bloat already handled by `cleanup_previous_conversion`. Fix:
   `FW_Site_Converter_Menus` stamps every menu it creates/reuses with term-meta `MENU_META` (`_fw_sc_menu`);
@@ -437,7 +436,7 @@ Newest first. Each entry = one structural change to the deterministic converter.
   (via `wp_delete_nav_menu`, which also clears the stale `nav_menu_locations` theme_mod), before the current import
   rebuilds its own — mirroring the deferred prev-theme purge. Same-site reconvert is untouched (menu reused by
   name). One-time cleanup of the 44 legacy menus done on localhost root; `primary` rebound to The Line Header — the
-  nav now renders the correct PHILOSOPHY/PILLARS/PROJECTS/CONTACT. (Residual, header lane: the-line's own menu still
+  nav now renders the correct PHILOSOPHY/PILLARS/PROJECTS/CONTACT. (Residual, header lane: the primary capture's own menu still
   includes the logo anchor + INQUIRE CTA as items — the builder captured all 6 header anchors.)
 - **2026-09-09 — Converted DARK sites rendered WHITE — root-caused + fixed at two layers.** A converted
   dark site stored its dark `--site-bg-color` correctly, but the rendered `body` was white. Root cause: the
@@ -450,7 +449,7 @@ Newest first. Each entry = one structural change to the deterministic converter.
   (1) **generation** — new `cs_split()` (mapper.php) splits declarations `;`-safely, never inside quotes or
   `url(...)`/`calc(...)` parens, so the data-URI stays whole; (2) **defence** — `FW_AO_Minifier::close_unbalanced()`
   (asset-optimizer) closes a dangling string/paren/bracket PER FILE before combining, so one malformed source
-  can never corrupt the whole bundle (with a 17-assertion regression test). Verified: colosseum `body`
+  can never corrupt the whole bundle (with a 17-assertion regression test). Verified: a 2-column-grid hero capture `body`
   `rgb(255,255,255)` → `rgb(3,6,9)`, `--site-bg-color` now `#030609`. Also: the converter now calls
   `unysonplus_hf_regenerate_css()` after a programmatic Theme-Settings import (else the cached generated CSS
   kept stale defaults), and stops emitting a fragile prose `/* … */` comment into generated CSS.
@@ -465,8 +464,8 @@ Newest first. Each entry = one structural change to the deterministic converter.
   (`el_is_page_fixed_layer`) so a page-fixed video is never also promoted to a section background. Verified:
   a full-viewport fixed site-bg video renders as `.site-bg-video{position:fixed;inset:0;z-index:-1}` with
   the `<video>` behind content.
-- **2026-09-09 — Case B: fixed FLOATING video portals (lumina-arctic) → fixed-positioned media_video (shipped).**
-  Not every "fixed video" is a full-viewport backdrop. lumina-arctic's `.video-portal` is `position:fixed;
+- **2026-09-09 — Case B: fixed FLOATING video portals (a fixed-video capture) → fixed-positioned media_video (shipped).**
+  Not every "fixed video" is a full-viewport backdrop. a fixed-video capture's `.video-portal` is `position:fixed;
   top:50%; right:5%; width:clamp(280px,35vw,520px); height:clamp(380px,55vh,720px); border-radius; radial
   mask` — a masked, positioned floating video that stays fixed on scroll but is NOT a background. Previously
   `detect_page_bg_video` claimed it and made it the first section's **full-bleed** 100vh background (blowing
@@ -476,12 +475,12 @@ Newest first. Each entry = one structural change to the deterministic converter.
   fixed-positioned `media_video` CONTENT block (prepended to section 0, `position:fixed` scoped Custom CSS
   carrying top/right/transform/clamp-size/border-radius/mask/filter) instead of a section background; a
   full-bleed video still becomes the section bg as before. **Gated on a FRAMED portal** (`border-radius`
-  present): a floating video is only pinned as a portal when it is a defined CARD — lumina's rounded
-  `.video-portal`. A large, UNFRAMED, softly-masked decorative layer (autonomous-supply-chain's
+  present): a floating video is only pinned as a portal when it is a defined CARD — the fixed-video capture's rounded
+  `.video-portal`. A large, UNFRAMED, softly-masked decorative layer (a soft-masked-layer capture's
   `.visual-breach`: 55vw×80vh, z-index:0, pointer-events:none, radial fade, no radius) stays on the
   full-bleed section-bg path, where the harness reads its hero as a media-hero — without the gate it
-  regressed that site's spacing (spc 100→0, a `media=true` hero lost). Verified: lumina-arctic's portal
-  renders `position:fixed` at the top-right (~35vw), radial-masked, over the dark page; autonomous unchanged.
+  regressed that site's spacing (spc 100→0, a `media=true` hero lost). Verified: a fixed-video capture's portal
+  renders `position:fixed` at the top-right (~35vw), radial-masked, over the dark page; the soft-masked-layer capture unchanged.
 - **2026-09-09 — Lone-video column cell → contained `media_video` with carried shape (shipped, regression-clean).**
   `layout_cols` (stitch.php) now decomposes a **lone-video cell** (`cell_is_lone_video` — one
   self-hosted `<video>`, no heading/prose, no content image) into a real, editable `media_video`
@@ -491,9 +490,9 @@ Newest first. Each entry = one structural change to the deterministic converter.
   → `contrast(1.25) saturate(.5)`, replacing Tailwind's unresolved `var(--tw-…)` form). Stylesheet-
   defined effects (a custom `.radial-portal` mask, `mix-blend-screen`) are read by reusing
   `bg_video_effect_css` against the cached source HTML (`self::$cur_html`). The video is forced `bg`=off
-  (a grid-column clip is never the section backdrop). Verified: colosseum 100 (was rendering a blank
+  (a grid-column clip is never the section backdrop). Verified: a 2-column-grid hero capture 100 (was rendering a blank
   code_block); every shaped-video content site (build-products, human-centric, kinetic-fashion,
-  national-geographic, nox-liquid, reactive-forest, terraform, lumina-arctic) stayed 100; corpus
+  a photo-content capture, a rounded-video-card capture, a shaped-video capture, a shaped-video capture, a fixed-video capture) stayed 100; corpus
   `overall 99`, `bg_media`/`structure`/`verbatim`/`media_retention` all 100.
 - **2026-09-09 — `classify_display` + `collapse_transparent_wrappers` primitives (added, not yet wired).**
   `classify_display($el, &$meta)` (stitch.php, near `section_is_multicol_grid`) returns
@@ -502,12 +501,12 @@ Newest first. Each entry = one structural change to the deterministic converter.
   `regular` (a grid with template-areas / col-span / dense auto-flow is IRREGULAR), `gap`.
   `collapse_transparent_wrappers($el)` descends single-child, box-free wrappers (div-soup) to the first
   meaningful node (`wrapper_has_own_box` guards against skipping a card or a real layout band). Verified
-  on real DOMs: colosseum/orbital → `grid cols=2`; apple-vision → `flex-col` stack; anime → `block`; no
+  on real DOMs: the 2-column-grid hero captures → `grid cols=2`; a capped-width hero capture → `flex-col` stack; a bespoke capture → `block`; no
   false collapse on 2-child bands. These are the reusable structure-detector primitives; the generic
   recursive walker will consume them next.
 - **2026-09-09 — Grid-structure gate for hero videos (shipped, regression-clean).**
   `section_is_multicol_grid($el)` (stitch.php:9008) + an early gate in `detect_section_bg_video`
   (stitch.php:9034): a `grid-cols-[2-9]` / computed-2-track hero no longer promotes its video to a
   full-bleed section background — the video is column *content*. Matching `$is_grid2` exclusion in the
-  scorer's `srcHeroVideo` (`import-site.php:87`). Verified: colosseum / orbital-horizon /
-  apple-vision-pro / anime all 100, no regressions across the 58-site corpus (avg ~99.2).
+  scorer's `srcHeroVideo` (`import-site.php:87`). Verified: the 2-column-grid hero captures /
+  a capped-width hero capture / a bespoke capture all 100, no regressions across the 58-site corpus (avg ~99.2).

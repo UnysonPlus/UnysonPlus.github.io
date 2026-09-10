@@ -20,10 +20,11 @@ Rendered on a **canvas** (no WebGL required), loaded **only on pages that use it
 | **State Machine** | The State Machine to run — **recommended**, since it's what makes Rive interactive (hover / click responses you design in Rive). Copy the name exactly. |
 | **Animation** | Used only when no State Machine is set — a specific timeline to play (empty = the file's default). |
 | **Artboard** | Optional — a specific artboard by name. |
+| **Click fires trigger** | Optional — the name of a State Machine **Trigger** input to fire on click (a "bump", a button press…). For files whose State Machine doesn't carry its own pointer listeners. |
 | **Plays** | **Autoplay** (pauses off-screen) · **On view** · **On hover** · **On click** · **Scroll-scrub**. |
 | **Scroll input** (scroll-scrub) | The name of a **Number** input in your State Machine — the scroll position (0–100) is written to it, so you design the SM to blend on that input as the visitor scrolls. |
 
-Interactive State Machines still react to the pointer *on top of* whatever trigger you choose.
+State Machines that carry their own pointer **listeners** react to hover/click automatically. For a State Machine that only exposes a **trigger** input, use **Click fires trigger** to fire it on click.
 
 ## Style tab
 

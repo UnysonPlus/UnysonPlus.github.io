@@ -13,6 +13,10 @@ A standalone image with optional click-through link and explicit width/height si
 Give every image its real width and height (or an aspect ratio) so the browser reserves the space **before** it loads — otherwise text jumps around as images pop in, which annoys readers and hurts your Core Web Vitals (CLS) score. UnysonPlus sets these and lazy-loads off-screen images. [MDN: the img element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)
 :::
 
+## Live demo
+
+**▶ [See the Image live on the demos site](https://demos.unysonplus.com/shortcodes/media-image/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/media-image-content.png" alt="Image options panel — Content tab" width="1200" />

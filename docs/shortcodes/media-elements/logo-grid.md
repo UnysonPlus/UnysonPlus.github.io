@@ -11,6 +11,10 @@ A grid, boxed grid, carousel or marquee of client / partner logos, with an optio
 A logo image is meaningful, not decorative, so it still needs alt text — but the right value is just the company or product name ("Acme Inc"), not a visual description like "blue swirly circle icon". UnysonPlus asks for exactly that with its Name (alt text) field on every logo entry. [W3C WAI: An alt Decision Tree](https://www.w3.org/WAI/tutorials/images/decision-tree/)
 :::
 
+## Live demo
+
+**▶ [See the Logo Grid live on the demos site](https://demos.unysonplus.com/shortcodes/logo-grid/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/logo-grid-content.png" alt="Logo Grid options panel — Content tab" width="1200" />

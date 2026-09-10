@@ -11,6 +11,10 @@ Display a WordPress menu — for headers, footers, or anywhere on the canvas. Th
 Put your main menu in a `<nav>` so assistive tech offers it as a landmark to jump to, and mark the current page's link with `aria-current="page"` so it's announced as "current". Menus must be fully keyboard-operable — every link reachable by Tab, submenus openable without a mouse. [MDN: the nav element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav)
 :::
 
+## Live demo
+
+**▶ [See the Navigation Menu live on the demos site](https://demos.unysonplus.com/shortcodes/nav-menu/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/nav-menu-content.png" alt="Navigation Menu options panel — Content tab" width="1200" />

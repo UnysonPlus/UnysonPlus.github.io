@@ -13,6 +13,10 @@ The site logo or title — pulled from **Site Identity** (the Customizer logo/ti
 Visitors expect the site logo in the header to link back to the home page — a long-standing convention worth keeping. If the logo is an image, its `alt` should be the site name (e.g. "UnysonPlus — home"), not the word "logo". [MDN: the img element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)
 :::
 
+## Live demo
+
+**▶ [See the Site Logo live on the demos site](https://demos.unysonplus.com/shortcodes/site-logo/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/site-logo-content.png" alt="Site Logo options panel — Content tab" width="1200" />

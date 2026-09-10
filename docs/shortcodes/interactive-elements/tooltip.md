@@ -15,6 +15,10 @@ positions and themes. Tabs: **Content**, **Design**, **Styling**, **Animations**
 Never put essential information only in a tooltip — many people never hover, and touch users can't. Use it for a helpful extra, make it appear on **keyboard focus** as well as hover, and let it stay on screen long enough to read. [W3C: tooltip pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/)
 :::
 
+## Live demo
+
+**▶ [See the Tooltip live on the demos site](https://demos.unysonplus.com/shortcodes/tooltip/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/tooltip-content.png" alt="Tooltip options panel — Content tab" width="840" />

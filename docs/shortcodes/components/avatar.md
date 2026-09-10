@@ -13,6 +13,10 @@ A user avatar — single, or an overlapping group with a "+N" counter. Each face
 When an image conveys who someone is, its `alt` text should say so ("Jane Lee", not "avatar" or "photo") so a screen-reader user gets the same information a sighted user gets at a glance. Purely decorative avatars (a generic placeholder with no identity) are the rare exception where an empty `alt=""` is correct. UnysonPlus derives the alt text from the Name field automatically, and falls back to initials when there's no image at all — so filling in Name does double duty for both. [MDN: alt text](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt)
 :::
 
+## Live demo
+
+**▶ [See the Avatar live on the demos site](https://demos.unysonplus.com/shortcodes/avatar/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/avatar-content.png" alt="Avatar options panel — Content tab" width="1200" />

@@ -11,6 +11,10 @@ An interactive two-image element with two **Types**: a classic **Comparison** sl
 Not every visitor can drag a slider with a mouse or finger, so a comparison widget should also respond to arrow keys once it has focus — that's what makes it a real control instead of a mouse-only toy. UnysonPlus renders its Comparison handle as a focusable, keyboard-operable slider under the hood, so dragging is a convenience, not the only way in. [W3C WAI: Keyboard accessibility](https://www.w3.org/WAI/perspective-videos/keyboard/)
 :::
 
+## Live demo
+
+**▶ [See the Before / After live on the demos site](https://demos.unysonplus.com/shortcodes/before-after/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/before-after-content.png" alt="Before / After options panel — Content tab" width="1200" />

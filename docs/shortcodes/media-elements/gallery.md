@@ -15,6 +15,10 @@ A *lightbox* is the overlay that opens an image at full size, dimming the page b
 Write descriptive **alt text** for every image that carries meaning — it's what screen-reader users hear, and what shows if the image fails to load. Purely decorative images should use empty alt (`alt=""`) so assistive tech skips them. Also keep source files reasonably sized: the browser lazy-loads off-screen images and picks a fitting size from `srcset`, but it can't rescue a 4000px photo you never needed — a lighter page loads faster and ranks better. [MDN: image alt](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt) · [MDN: responsive images](https://developer.mozilla.org/en-US/docs/Web/HTML/Responsive_images)
 :::
 
+## Live demo
+
+**▶ [See the Gallery live on the demos site](https://demos.unysonplus.com/shortcodes/gallery/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/gallery-content.png" alt="Gallery options panel — Content tab" width="1200" />

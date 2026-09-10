@@ -11,6 +11,10 @@ Embed a responsive YouTube, Vimeo, or other oEmbed-supported video from its page
 Videos need **captions** (a `<track>`) for deaf and hard-of-hearing viewers — and they help everyone watching muted. If a video autoplays, keep it muted; sound that starts on its own is jarring and disrupts screen-reader use. A poster image avoids an ugly blank first frame. [MDN: the track element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track)
 :::
 
+## Live demo
+
+**▶ [See the Video live on the demos site](https://demos.unysonplus.com/shortcodes/media-video/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/media-video-content.png" alt="Video options panel — Content tab" width="1200" />

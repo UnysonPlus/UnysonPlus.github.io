@@ -13,6 +13,10 @@ scrolled into view. Tabs: **Bars**, **Style**, **Animations**, **Advanced**.
 HTML has a native `<progress>` element (and `<meter>` for a static measurement like disk usage). Using them — or ARIA's `role="progressbar"` with `aria-valuenow` — means assistive tech announces the value, not just a coloured bar. [MDN: the progress element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress)
 :::
 
+## Live demo
+
+**▶ [See the Progress Bars live on the demos site](https://demos.unysonplus.com/shortcodes/progress/)** — an interactive example you can click through.
+
 ## Bars
 
 <img src="/img/shortcodes/progress-bars.png" alt="Progress Bars options panel — Bars tab" width="1200" />

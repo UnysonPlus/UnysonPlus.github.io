@@ -11,6 +11,10 @@ An icon-led list — checklist, cross/mixed, numbered or per-item icons — with
 A list of features should render as a `<ul>` of `<li>`s, not a stack of `<div>`s — then a screen reader announces "list, 5 items" so users know how much there is. UnysonPlus outputs proper list markup, so keep genuinely list-like content in a list. [MDN: the ul element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul)
 :::
 
+## Live demo
+
+**▶ [See the Feature List live on the demos site](https://demos.unysonplus.com/shortcodes/feature-list/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/feature-list-content.png" alt="Feature List options panel — Content tab" width="1200" />

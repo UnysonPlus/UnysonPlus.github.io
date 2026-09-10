@@ -14,6 +14,10 @@ A **call to action** (CTA) is the one thing you want a visitor to do next — *B
 Avoid "click here" or a bare "read more" as the whole link — screen-reader users often pull up a list of just the links, and "read more" ten times tells them nothing. Make the button text describe the destination or action, like "Get UnysonPlus" or "See pricing". [MDN: creating good links](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a)
 :::
 
+## Live demo
+
+**▶ [See the Call To Action live on the demos site](https://demos.unysonplus.com/shortcodes/call-to-action/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/call-to-action-content.png" alt="Call To Action options panel — Content tab" width="1200" />

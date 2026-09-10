@@ -15,6 +15,10 @@ An inline read-more / reveal toggle — hide part of a sentence or paragraph beh
 A button that reveals hidden content should carry `aria-expanded="false"` (flipping to `"true"` once opened) so assistive tech announces whether the content is currently collapsed or open — without it, a screen-reader user has no way to know what pressing it will do. It's also worth keeping the hidden text present in the page's HTML rather than loaded in later, since search engines generally index content that exists in the markup even if it's visually collapsed. UnysonPlus wires up that ARIA state and keyboard support automatically, so both are covered the moment you use this element. [MDN: ARIA aria-expanded attribute](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded)
 :::
 
+## Live demo
+
+**▶ [See the Text Expander live on the demos site](https://demos.unysonplus.com/shortcodes/text-expander/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/text-expander-content.png" alt="Text Expander options panel — Content tab" width="1200" />

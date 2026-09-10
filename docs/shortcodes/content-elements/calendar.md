@@ -12,6 +12,10 @@ A date / events calendar. Tabs: **Content**, **Styling**, **Animations**, **Adva
 A date printed as "Sat" or "12/9" is ambiguous to software and to visitors from a different locale, so dates and times are best marked up with a `<time datetime="2026-09-12">` element carrying the unambiguous ISO value alongside whatever friendly text you display. Search engines and calendar-aware browser features rely on that machine-readable form to understand event dates correctly. [MDN: the time element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time)
 :::
 
+## Live demo
+
+**▶ [See the Calendar live on the demos site](https://demos.unysonplus.com/shortcodes/calendar/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/calendar-content.png" alt="Calendar options panel — Content tab" width="750" />

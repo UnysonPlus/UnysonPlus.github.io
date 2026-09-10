@@ -43,6 +43,26 @@ State Machines can carry their own **pointer listeners**, so a well-built file r
 State Machines that carry their own pointer **listeners** react to hover/click automatically. For a State Machine that only exposes a **trigger** input (no built-in listener), use **Click fires trigger** to fire it on click.
 :::
 
+### Events → page actions
+
+A State Machine can **emit events** at runtime (Rive editor → **Events** tab) — for example an *Open URL* event on a button, or a named event when an animation reaches a milestone. The **Events** group (Animation tab) lets those drive the page. Both are **off by default**, so a `.riv` can't navigate or fire hooks unless you allow it:
+
+| Option | What it does |
+| --- | --- |
+| **Follow "Open URL" events** | When the animation fires a Rive **Open URL** event, navigate to that URL — turning a Rive graphic into a real link/menu/button. Only `http` / `https` / `mailto` / `tel` links are followed (`javascript:` / `data:` are ignored); `_blank` opens with `noopener`. |
+| **Open link in** | How to open a followed Open-URL event — the event's own target, the same tab, or a new tab. |
+| **Emit a JS event** | Dispatch a DOM **`fwRiveEvent`** CustomEvent for every Rive event, so your own JavaScript can react — fire analytics, open a modal, and so on. |
+
+The **JS hook** is the safe way to wire custom behaviour (it dispatches data, never runs code from the file). Listen for it anywhere on the page:
+
+```js
+document.addEventListener('fwRiveEvent', function (e) {
+  // e.detail = { name, type, properties, url, target, element }
+  if (e.detail.name === 'purchase') openCart();
+  console.log('Rive event:', e.detail.name, e.detail.properties);
+});
+```
+
 ## Style tab
 
 **Fit** (contain / cover / fill / fit-width / fit-height / none), **Alignment**, **Height**, **Trim empty space**, and a **Background** (transparent by default — Rive files usually are).

@@ -14,6 +14,10 @@ A notification / alert box. Tabs: **Content**, **Styling**, **Animations**, **Ad
 A green or red bar says "success" or "error" to most people — but not to colour-blind users or screen readers. Always pair colour with **text or an icon** that states the meaning. For a message that appears dynamically, a live region (`role="status"` for info, `role="alert"` for errors) makes assistive tech announce it. [MDN: ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions)
 :::
 
+## Live demo
+
+**▶ [See the Notification live on the demos site](https://demos.unysonplus.com/shortcodes/notification/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/notification-content.png" alt="Notification options panel — Content tab" width="750" />

@@ -15,6 +15,10 @@ A **widget** is a small self-contained block WordPress can place in a **widget a
 Content that supports the main content but isn't the main content — a sidebar of recent posts, a related-links box — is exactly what the `<aside>` element (or an ARIA `complementary` landmark) is for, letting assistive-tech users jump straight past it to the primary content, or straight to it, instead of reading everything in one undifferentiated stream. UnysonPlus renders a widget area with that landmark role rather than a bare unlabelled `<div>`, keeping the page's structure meaningful. [MDN: the aside element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside)
 :::
 
+## Live demo
+
+**▶ [See the Widget Area live on the demos site](https://demos.unysonplus.com/shortcodes/widget-area/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/widget-area-content.png" alt="Widget Area options panel — Content tab" width="750" />

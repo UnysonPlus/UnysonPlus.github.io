@@ -14,6 +14,10 @@ Tabs: **Slides**, **Layout**, **Behavior**, **Style**, **Animations**, **Advance
 Studies repeatedly find most visitors only ever see the first slide, so don't bury anything important on slide three. If it auto-plays, give people a visible pause control and don't advance too fast — and make sure the arrows and dots work with a keyboard. [W3C: carousel pattern](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/)
 :::
 
+## Live demo
+
+**▶ [See the Carousel / Slider live on the demos site](https://demos.unysonplus.com/shortcodes/carousel/)** — an interactive example you can click through.
+
 ## Slides
 
 <img src="/img/shortcodes/carousel-slides.png" alt="Carousel / Slider options panel — Slides tab" width="1200" />

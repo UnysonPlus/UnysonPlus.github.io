@@ -13,6 +13,10 @@ An AJAX email-signup form wired to your site mailer (the Mailer extension) and t
 A placeholder disappears the moment someone starts typing, so it's not a substitute for a `<label>` — without one, a screen-reader user has no idea what an empty field is asking for. UnysonPlus pairs each Newsletter field with a proper associated label behind the scenes, so the Placeholder text you set is a hint on top of real accessible labelling, not the only clue to what the field is for. [MDN: the label element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label)
 :::
 
+## Live demo
+
+**▶ [See the Newsletter live on the demos site](https://demos.unysonplus.com/shortcodes/newsletter/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/newsletter-content.png" alt="Newsletter options panel — Content tab" width="1200" />

@@ -21,6 +21,10 @@ The **Animations** and **Advanced** tabs are shared, cross-shortcode controls an
 Most visitors are on a phone, so design the narrow layout first, then add columns for wider screens. Use the responsive controls (which set CSS media queries) rather than fixed pixel widths, so columns **reflow** to a single column on mobile instead of overflowing. [MDN: media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/@media)
 :::
 
+## Live demo
+
+**▶ [See the Column live on the demos site](https://demos.unysonplus.com/shortcodes/column/)** — an interactive example you can click through.
+
 ## Layout
 
 <table className="opt-table">

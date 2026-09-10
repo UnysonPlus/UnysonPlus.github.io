@@ -13,6 +13,10 @@ An author / profile box — avatar, name, bio, social links and post count — f
 An author box is a natural fit for `schema.org`'s **Person** structured data — name, image, job title and social profiles — which lets search engines show a richer author card and helps establish E-E-A-T (experience, expertise, authoritativeness, trust) for the content. Since UnysonPlus already pulls the name, avatar, bio and social links from the WordPress user, this is exactly the kind of block worth annotating rather than leaving as plain divs. [Schema.org: Person](https://schema.org/Person)
 :::
 
+## Live demo
+
+**▶ [See the Author Box live on the demos site](https://demos.unysonplus.com/shortcodes/author-box/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/author-box-content.png" alt="Author Box options panel — Content tab" width="1200" />

@@ -18,6 +18,10 @@ A **container** simply controls how wide the stuff inside it is allowed to run. 
 Typographers generally put comfortable reading around 45–75 characters per line — much narrower than a wide desktop monitor — because eyes struggle to track back to the start of a very long line. A boxed container caps text at a sane width for this reason, which is exactly the role Container's Full Width switch controls: off for readable copy, on only when a band (an image, a colour field) benefits from spanning edge-to-edge. [W3C WAI: Line length](https://www.w3.org/WAI/WCAG21/Understanding/visual-presentation.html)
 :::
 
+## Live demo
+
+**▶ [See the Container live on the demos site](https://demos.unysonplus.com/shortcodes/container/)** — an interactive example you can click through.
+
 ## General
 
 - **Full Width** — switch (default off). Off renders *Boxed* — the container is constrained to the site width (`.fw-container`). On renders *Full-width* — it spans edge-to-edge (`.fw-container-fluid`).

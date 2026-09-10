@@ -15,6 +15,10 @@ A *drop-cap* is the oversized first letter that begins a paragraph, like in an o
 The `<mark>` element carries real semantic meaning — "this text is relevant right now," like a highlighter run over a search result — so a screen reader can announce it distinctly, unlike a plain `<span>` with a yellow background. It also shouldn't be the only cue: if the text underneath still makes sense without the highlight, the highlight is decoration; if the highlight is doing the communicating, back it up with wording too. Choose the HTML Tag here with that in mind rather than for visual effect alone. [MDN: the mark element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark)
 :::
 
+## Live demo
+
+**▶ [See the Highlight Text live on the demos site](https://demos.unysonplus.com/shortcodes/highlight-text/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/highlight-text-content.png" alt="Highlight Text options panel — Content tab" width="1200" />

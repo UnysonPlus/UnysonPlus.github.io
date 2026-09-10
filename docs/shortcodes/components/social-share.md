@@ -16,6 +16,10 @@ link) in several styles and shapes. Tabs: **Content**, **Design**, **Styling**,
 A share or social button that shows only an icon is silent to a screen reader unless you give it a text name — via visually-hidden text or an `aria-label` like "Share on Facebook". UnysonPlus adds these, so a blind user hears the destination, not just "link". [MDN: aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
 :::
 
+## Live demo
+
+**▶ [See the Social Share live on the demos site](https://demos.unysonplus.com/shortcodes/social-share/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/social-share-content.png" alt="Social Share options panel — Content tab" width="840" />

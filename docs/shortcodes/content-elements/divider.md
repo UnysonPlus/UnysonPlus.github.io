@@ -15,6 +15,10 @@ A horizontal separator, optionally with text or an icon. Tabs: **Content**, **La
 An `<hr>` means "here is a real thematic break in the content" (like a scene change in a story), so a purely decorative rule drawn just for visual spacing shouldn't be one — it should carry `aria-hidden="true"` (or be plain CSS) so screen readers don't announce a break that isn't really there. UnysonPlus renders this element as presentational markup with the appropriate hidden state, so decorative dividers don't clutter the accessibility tree. [MDN: the hr element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr)
 :::
 
+## Live demo
+
+**▶ [See the Divider live on the demos site](https://demos.unysonplus.com/shortcodes/divider/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/divider-content.png" alt="Divider options panel — Content tab" width="750" />

@@ -13,6 +13,10 @@ An image paired with a heading, text and link, rendered in one of **five layout 
 An image that conveys information (a product, a portrait, a diagram) needs alt text describing what it shows; an image that's purely decorative should have an empty `alt=""` so screen readers skip it instead of reading a distracting filename. That's exactly the choice Image Box gives you — fill in Alt Text Override for a meaningful image, or leave it blank on a decorative one. [W3C WAI: An alt Decision Tree](https://www.w3.org/WAI/tutorials/images/decision-tree/)
 :::
 
+## Live demo
+
+**▶ [See the Image Box live on the demos site](https://demos.unysonplus.com/shortcodes/image-box/)** — an interactive example you can click through.
+
 ## Content
 
 <img src="/img/shortcodes/image-box-content.png" alt="Image Box options panel — Content tab" width="1200" />

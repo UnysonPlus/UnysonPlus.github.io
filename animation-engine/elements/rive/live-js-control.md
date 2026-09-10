@@ -47,6 +47,8 @@ document.addEventListener('fwRiveReady', function (e) {
 
 On the element's **Advanced** tab set a **CSS ID** (e.g. `dashboard`) or **CSS Class** so your script can find it — `window.fwRive.get('#dashboard')`.
 
+<img src="/img/rive/css-id.png" alt="The CSS ID field on the element's Advanced tab." width="840" />
+
 ## Step 2 — Add your script
 
 Drop a **Code Block** element on the same page (its *Render as code* option **off**, so the markup runs), or add the script through your theme. This is the demo's “push new figures” button, verbatim:

@@ -37,6 +37,8 @@ You need two things from the file: the **exact property names** and their **type
 
 Builder palette → **Animation Engine → Rive Animation**. On the **Animation** tab, upload the `.riv` (or paste a URL), and enter the **State Machine** name so the file runs.
 
+<img src="/img/rive/element-modal.png" alt="The Rive Animation element's option modal — the Animation tab, with the Data bindings list below the play settings, and the Style / Animations / Advanced tabs alongside." width="840" />
+
 ## Step 3 — Add the Data bindings
 
 Still on the **Animation** tab, open **Data bindings** and add one row per property you want to set:
@@ -62,6 +64,8 @@ For the dashboard demo, the rows are:
 :::note[Internal keys vs. what shows]
 `apple` / `microsoft` / `tesla` are just the file's **internal slot names** for the three items — they're not shown to visitors. The *displayed* label is the `name` string you bind, which is why the demo can show **NOVA / ORBIT / ATLAS**. Point the same slots at your own rows.
 :::
+
+<img src="/img/rive/data-bindings.png" alt="The Data bindings list — one row per property (title, apple/name, apple/stockChange, …), with an Add button to add more." width="840" />
 
 ## Step 4 — Save and view
 

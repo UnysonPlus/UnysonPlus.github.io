@@ -75,6 +75,19 @@ Rive's **data binding** (a file's *View Model*) exposes named properties you can
 
 Missing properties are skipped silently, so a binding that doesn't match hurts nothing. Needs a `.riv` built with data binding.
 
+### Live inputs (pointer / scroll)
+
+Wire a **Number input** (or a View-Model number property) to a live page signal — the **pointer** or **scroll** — so the animation reacts continuously, no code: a character that follows the cursor, a gauge that tracks scroll, a value that sweeps with the mouse. Add a row per input:
+
+| Field | What it does |
+| --- | --- |
+| **Number input / property** | The State-Machine Number input to drive (falls back to a View-Model number property of the same name). |
+| **Driven by** | **Pointer X** (left→right) · **Pointer Y** (top→bottom) · **Pointer distance** (near→far) · **Scroll** (through the element). |
+| **Maps to — min / max** | The output range: the value at signal 0 and at signal 1. |
+| **Smoothing** | How much to ease toward the target each frame — 0 is instant, higher is floatier. |
+
+It pauses off-screen and when the tab is hidden, and is skipped under *reduce motion*.
+
 ### Live control from JavaScript
 
 Every Rive element exposes a control handle so your own scripts can drive it at runtime — the same one that makes bindings **live** (a real counter, a colour picker, data from your app or a REST call), not just static builder values. Reach an instance two ways:
@@ -123,7 +136,7 @@ A Rive-specific **fallback poster** (shown if the runtime can't load, and as the
 
 ## Live demo
 
-**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/rive/)** — an interactive State-Machine car (click to fire its trigger), play-on-hover and play-on-view examples, a **Rive button whose event your page handles** (the `fwRiveEvent` JS hook, live), a **data-bound card** whose name/age/colour are set from the builder, and a **live control panel** that drives that card from plain HTML via `window.fwRive`.
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/rive/)** — an interactive State-Machine car (click to fire its trigger), play-on-hover and play-on-view examples, a **Rive button whose event your page handles** (the `fwRiveEvent` JS hook, live), a **data-bound card** whose name/age/colour are set from the builder, a **live control panel** that drives that card from plain HTML via `window.fwRive`, and a **pointer-driven** card whose age tracks your mouse (no code).
 
 ## Steps
 

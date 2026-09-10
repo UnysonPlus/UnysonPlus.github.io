@@ -15,6 +15,10 @@ colour, ease and keep-highlighted. It runs the real word-splitter and scroll scr
 
 Light up a block of text **word-by-word as the reader scrolls through it** — the "scrollytelling" read where each word goes from muted to full as it passes. **20 styles**, pure CSS transitions + one passive scroll check, no library.
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/scroll-text-highlight/)** — an interactive showcase you can explore.
+
 ## Where to find it
 
 Open a text element (heading, Text Block, Special Heading…) → **Animations** tab → **Scroll Text Highlight** (a popover of style tiles). Best on a large, bold paragraph or headline.

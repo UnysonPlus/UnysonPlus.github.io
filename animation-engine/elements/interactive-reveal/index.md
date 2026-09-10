@@ -8,6 +8,10 @@ slug: /interactive-reveal
 
 Stack transparent image **layers** and animate them apart — an **exploded / peel / assemble** product reveal — driven by **scroll, hover, drag or click**, with labelled **hotspots** pinned to the parts. The sibling to [Image Sequence](../image-sequence/index.md) (frame scrub) and [Model Viewer](../model-viewer/index.md) (3D): this is the lightweight **layered-2D** technique — a few PNGs and no library.
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/interactive-reveal/)** — an interactive showcase you can explore.
+
 ## Add it
 
 Builder palette → **Media Elements** → **Interactive Reveal**.

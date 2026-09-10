@@ -14,6 +14,10 @@ speed for Pixelate). Hit **Replay** to watch it un-mask again.
 
 **Un-mask an element as it scrolls into view** — an animated **clip-path wipe** (up, down, left, right, an **iris** circle, or a **diagonal**), or a Canvas **Pixelate In** that resolves an image from chunky pixel blocks to sharp. Per-element, no library.
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/scroll-reveal/)** — an interactive showcase you can explore.
+
 ## Where to find it
 
 It's a **per-element** control: open any element (Section, Column, or a leaf like a heading, image or icon box) → **Animations** tab → **Scroll Reveal** → pick a style (default **None**).

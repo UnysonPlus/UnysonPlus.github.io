@@ -15,6 +15,10 @@ the real pin + per-panel transforms.
 
 Pin a Section and move its cards **sideways as the visitor scrolls down** — a gallery / timeline strip. **15 styles**, from a plain track to center-focus, a 3D carousel, a perspective wall, a velocity-driven skew, and a free drag-through. Pure sticky + one passive scroll listener, **no library**.
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/horizontal-scroll/)** — an interactive showcase you can explore.
+
 ## Where to find it
 
 It's a **Section-level** control: build a Section with **2+ columns** as the panels, then open the Section → **Animations** tab → **Horizontal Scroll** → pick a style (default **Off**).

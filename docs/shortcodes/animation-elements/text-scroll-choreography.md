@@ -147,8 +147,7 @@ Author-only — it never affects what visitors see.
 ## Live demo
 
 See it in action — four lines on one timeline (split-reveal headline, a warped gradient line, a curved arc, and
-a read-along), with the authoring guide on. In your local demos network:
-`animation-engine/text-scroll-choreography/`.
+a read-along), with the authoring guide on. **→ [Open it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/text-scroll-choreography/).**
 
 ## Steps
 

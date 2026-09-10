@@ -14,6 +14,10 @@ and tune the pin offset, stagger and intensity. It runs the real cover() + per-s
 
 The Apple / Stripe **"deck of cards" scroll effect** — pin a Section's columns one after another as you scroll, so each card sticks and the ones beneath it transform. **11 styles**, pure CSS + one passive scroll listener, **no library**.
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/sticky-stack/)** — an interactive showcase you can explore.
+
 ## Where to find it
 
 It's a **Section-level** control: build a Section with **2+ full-width columns** as the cards, then open the Section → **Animations** tab → **Sticky Card Stack** → pick a style (default **Off**).

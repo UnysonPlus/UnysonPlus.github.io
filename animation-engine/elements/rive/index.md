@@ -82,7 +82,7 @@ A **fallback poster** (shown if the runtime can't load, and as the still image u
 
 ## Live demo
 
-**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/rive/)** — an interactive State-Machine car (click to fire its trigger), plus play-on-hover and play-on-view examples.
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/rive/)** — an interactive State-Machine car (click to fire its trigger), play-on-hover and play-on-view examples, and a **Rive button whose event your page handles** (the `fwRiveEvent` JS hook, live).
 
 ## Steps
 

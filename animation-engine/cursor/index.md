@@ -15,6 +15,10 @@ pools, swarm trails, rope, sticky, spotlight…).
 
 Replace the mouse pointer with a **custom cursor** across the whole site — from a simple dot-and-ring to trailing comets, gooey metaballs, image-reveal lenses and contextual labels.
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/cursor/)** — an interactive showcase you can explore.
+
 ## Where to find it
 
 It's **site-wide**: **Theme Settings → Site-wide UX → Cursor**. Turn on **Enable custom cursor** (off by default) and pick a **Style**. There's no per-element cursor setting — but any element can override the *Contextual Label* text with a `data-cursor-label="…"` attribute (Advanced → CSS, or a Code Block).

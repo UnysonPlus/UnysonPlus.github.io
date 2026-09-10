@@ -88,4 +88,4 @@ GSAP). The fixed layer is click-through.
 
 ## Live demo
 
-In your local demos network: `animation-engine/image-scroll-choreography/`.
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/image-scroll-choreography/)** — the fixed-layer image scroll choreography, running live.

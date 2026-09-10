@@ -14,6 +14,10 @@ transition. It runs the real "which section crosses the middle" pick + CSS trans
 
 Give each **Section** a target colour, and the **page background smoothly morphs** from one section's colour to the next as the visitor scrolls — the agency-site "scroll colour shift". One passive scroll check picks whichever section is crossing the middle of the screen and transitions the body colours. No library.
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/scroll-color-shift/)** — an interactive showcase you can explore.
+
 ## Where to find it
 
 Open a **Section** → **Animations** tab → **Scroll Color Shift** (a popover). Set the section's page colour. Do the same on several sections down the page and the background glides between them as you scroll.

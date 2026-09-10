@@ -14,6 +14,10 @@ lighting (environment, tone mapping, exposure, shadows). It runs Google's real `
 
 An interactive **3D model** (glTF / GLB) visitors can orbit, zoom and inspect — with auto-rotate, image-based lighting, a ground shadow, a poster placeholder, hotspots and optional **AR**. Powered by Google's `<model-viewer>` (vendored, loaded only when used).
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/model-viewer/)** — an interactive showcase you can explore.
+
 ## Add it
 
 Builder palette → **Media Elements** → **Model Viewer**. Upload a `.glb` / `.gltf` in the Media Library (the engine enables those file types) or paste a model URL.

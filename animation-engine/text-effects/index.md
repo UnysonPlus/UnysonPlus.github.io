@@ -13,6 +13,10 @@ pick an effect, tweak its options, and copy the generated sample.
 
 Kinetic typography for any element's text — split-character reveals, scramble/decode, typewriter, gradient shimmer, glitch, count-up, rotating words, and dozens more. Self-contained vanilla JS, **no GSAP**.
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/text-effects/)** — an interactive showcase you can explore.
+
 ## Where to find it
 
 Open any element with text → **Animations** tab → **Text Effect**. It's a **popover of animated tiles**; leave it on **None** for none.

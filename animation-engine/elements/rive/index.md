@@ -70,20 +70,49 @@ Rive's **data binding** (a file's *View Model*) exposes named properties you can
 | Field | What it does |
 | --- | --- |
 | **Property name / path** | The View-Model property, e.g. `score`. A nested one uses `/` — `card/title`. Names come from the Rive editor's **Data** panel. |
-| **Type** | **Text** · **Number** · **Boolean** (`yes`/`no`) · **Colour** (a hex like `#00b295`) · **Trigger** (fires once on load, after the other bindings — handy to set an initial state). |
+| **Type** | **Text** · **Number** · **Boolean** (`yes`/`no`) · **Colour** (a hex like `#00b295`) · **Enum** (a value name) · **Trigger** (fires once on load, after the other bindings — handy to set an initial state). |
 | **Value** | The value to set (empty for a Trigger). |
 
 Missing properties are skipped silently, so a binding that doesn't match hurts nothing. Needs a `.riv` built with data binding.
 
+### Live control from JavaScript
+
+Every Rive element exposes a control handle so your own scripts can drive it at runtime — the same one that makes bindings **live** (a real counter, a colour picker, data from your app or a REST call), not just static builder values. Reach an instance two ways:
+
+- `el.fwRive` — the handle on the element's wrapper (`document.querySelector('#my-rive').fwRive`).
+- `window.fwRive.get(target)` — where `target` is the element, a CSS id, or a selector.
+
+A **`fwRiveReady`** event (bubbles) fires when an instance becomes drivable. The handle's methods:
+
+| Method | Does |
+| --- | --- |
+| `play()` · `pause()` · `stop()` | Playback. |
+| `fireTrigger(name)` | Fire a State-Machine **trigger** input. |
+| `setInput(name, value)` · `getInput(name)` | Set / read a State-Machine **number/boolean** input. |
+| `setBinding(prop, value, type?)` · `getBinding(prop, type?)` | Set / read a **data-binding** (View-Model) property. `type` is `text` / `number` / `boolean` / `color` / `enum` (inferred for text/number/boolean). |
+| `.rive` | The raw Rive instance (escape hatch). |
+
+```js
+document.addEventListener('fwRiveReady', function (e) {
+  var r = e.detail.api;            // or window.fwRive.get('#hero-rive')
+  r.setBinding('score', 42, 'number');
+  r.setBinding('theme', '#00b295', 'color');
+});
+```
+
 ## Style tab
 
-**Fit** (contain / cover / fill / fit-width / fit-height / none), **Alignment**, **Height**, **Trim empty space**, and a **Background** (transparent by default — Rive files usually are).
+**Fit** (contain / cover / fill / fit-width / fit-height / none), **Alignment**, **Height**, **Trim empty space**, a **Background** (transparent by default — Rive files usually are), and **Margin & Padding**.
 
 **Trim empty space** (on by default) shrinks the element to the animation's own aspect ratio, centered, so a *contained* artboard leaves no empty canvas around it — the hover/click area then matches the artwork instead of the full column width. Turn it off to let the canvas fill the whole column.
 
+## Animations tab
+
+Like every element, Rive carries the shared **Animations** tab — an **entrance animation**, **scroll motion** / parallax, hover effects and the rest — applied to the element wrapper. Use it to fade or reveal the Rive element as it scrolls in, or to move it with the page. (This is separate from the animation *inside* the `.riv`, which the Animation tab configures.)
+
 ## Advanced tab
 
-A **fallback poster** (shown if the runtime can't load, and as the still image under *reduce motion*), plus **CSS ID / Class / Custom CSS**.
+A Rive-specific **fallback poster** (shown if the runtime can't load, and as the still image under *reduce motion*), then the standard element controls: **CSS ID / Class / Custom CSS**, **position + z-index**, **responsive visibility**, **display conditions** and **custom attributes**.
 
 ## Performance & accessibility
 
@@ -94,7 +123,7 @@ A **fallback poster** (shown if the runtime can't load, and as the still image u
 
 ## Live demo
 
-**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/rive/)** — an interactive State-Machine car (click to fire its trigger), play-on-hover and play-on-view examples, a **Rive button whose event your page handles** (the `fwRiveEvent` JS hook, live), and a **data-bound card** whose name/age/colour are set from the builder.
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/rive/)** — an interactive State-Machine car (click to fire its trigger), play-on-hover and play-on-view examples, a **Rive button whose event your page handles** (the `fwRiveEvent` JS hook, live), a **data-bound card** whose name/age/colour are set from the builder, and a **live control panel** that drives that card from plain HTML via `window.fwRive`.
 
 ## Steps
 

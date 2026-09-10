@@ -134,6 +134,14 @@ A Rive-specific **fallback poster** (shown if the runtime can't load, and as the
 - **Pauses off-screen and when the tab is hidden**; the runtime + WASM load **only on pages that use the element** and are shared across every Rive element on the page.
 - **Vector + tiny** — resolution-independent and usually a few KB; real content stays in the page, the animation is an enhancement layer.
 
+## Step-by-step guides
+
+Setting up data-driven Rive — where the property names come from and how values are passed:
+
+- **[Data binding](./data-binding.md)** — drive a file's title / labels / numbers / colours from the builder (the live-dashboard demo, built from scratch).
+- **[Drive Rive from JavaScript](./live-js-control.md)** — reach an instance with `window.fwRive` and push **live** data (a REST poll / WebSocket) into it.
+- **[Pointer & scroll inputs](./live-inputs.md)** — wire a Number input to the pointer or scroll, no code (cursor-follow characters, scroll gauges).
+
 ## Live demo
 
 **→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/rive/)** — an interactive State-Machine car (click to fire its trigger), play-on-hover and play-on-view examples, a **Rive button whose event your page handles** (the `fwRiveEvent` JS hook, live), a **data-bound dashboard** whose title, tickers and figures come from bound values (one file, any data), a **"push new figures"** button that updates it live via `window.fwRive`, and a **scroll gauge** whose bar tracks your scroll — no code.

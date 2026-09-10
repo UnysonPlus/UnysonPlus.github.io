@@ -127,9 +127,11 @@ document.addEventListener('fwRiveReady', function (e) {
 
 ## Style tab
 
-**Fit** (contain / cover / fill / fit-width / fit-height / none), **Alignment**, **Height**, **Trim empty space**, a **Background** (transparent by default — Rive files usually are), and **Margin & Padding**.
+**Fit** (contain / cover / fill / fit-width / fit-height / none / **responsive layout**), **Alignment**, **Height**, **Layout scale**, **Trim empty space**, a **Background** (transparent by default — Rive files usually are), and **Margin & Padding**.
 
-**Trim empty space** (on by default) shrinks the element to the animation's own aspect ratio, centered, so a *contained* artboard leaves no empty canvas around it — the hover/click area then matches the artwork instead of the full column width. Turn it off to let the canvas fill the whole column.
+**Fit → Responsive layout** uses the file's own **Rive Layout** to *reflow* to the element's width — content rearranges (a button column becomes a row, a bar stretches, panels resize) instead of the whole artboard scaling uniformly. Use it for Rive **UI** built with layouts / N-slicing (buttons, cards, backgrounds); the **Layout scale** slider sets the density/zoom of the reflowed content. The other Fit modes scale the artboard as a whole.
+
+**Trim empty space** (on by default) shrinks the element to the animation's own aspect ratio, centered, so a *contained* artboard leaves no empty canvas around it — the hover/click area then matches the artwork instead of the full column width. Turn it off to let the canvas fill the whole column. (It's ignored under *Responsive layout*, which fills the element by design.)
 
 ## Animations tab
 
@@ -157,7 +159,7 @@ Setting up data-driven Rive — where the property names come from and how value
 
 ## Live demo
 
-**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/rive/)** — an interactive State-Machine car (click to fire its trigger), play-on-hover and play-on-view examples, a **Rive button whose event your page handles** (the `fwRiveEvent` JS hook, live), a **data-bound dashboard** whose title, tickers and figures come from bound values (one file, any data), a **"push new figures"** button that updates it live via `window.fwRive`, a **scroll gauge** whose bar tracks your scroll — no code, and an **asset-swap** card whose three images are all swapped in from outside the `.riv`.
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/rive/)** — an interactive State-Machine car (click to fire its trigger), play-on-hover and play-on-view examples, a **Rive button whose event your page handles** (the `fwRiveEvent` JS hook, live), a **data-bound dashboard** whose title, tickers and figures come from bound values (one file, any data), a **"push new figures"** button that updates it live via `window.fwRive`, a **scroll gauge** whose bar tracks your scroll — no code, an **asset-swap** card whose three images are all swapped in from outside the `.riv`, and a **responsive-layout** comparison where the same file reflows to fit vs. just scaling.
 
 ## Steps
 

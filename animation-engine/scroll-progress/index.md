@@ -14,6 +14,10 @@ sample.
 
 A site-wide **reading-progress indicator** that fills as the visitor scrolls — with **16 styles**, from a simple bar to a corner ring, a battery, a reading-time chip, or section scroll-spy dots.
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/scroll-progress/)** — an interactive showcase you can explore.
+
 ## Where to find it
 
 It's **site-wide**: **Theme Settings → Site-wide UX → Scroll Progress**. Turn on **Enable scroll progress** (off by default), then pick a **Style** from the popover of animated tiles and configure it. Front end only.

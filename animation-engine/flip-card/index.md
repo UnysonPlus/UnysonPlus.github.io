@@ -14,6 +14,10 @@ the generated sample.
 
 Turn any element into a **3D flip card**: its existing content becomes the **front**, and a **back face** you define (heading, text, image, button, colours) is revealed with a 3D turn. Seven flip styles, four triggers, pure CSS 3D transforms — no library.
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/flip-card/)** — an interactive showcase you can explore.
+
 ## Where to find it
 
 Open any element → **Animations** tab → **3D Flip Card** (a popover of style tiles). Pick a flip style; the settings below reveal. Works great on an Icon Box, an Image, or a plain container.

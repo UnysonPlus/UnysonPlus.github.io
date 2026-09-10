@@ -20,6 +20,10 @@ Browsers run scroll-linked effects slightly out of sync with native scroll, whic
 lockstep, frame-for-frame, so the whole site feels like one polished system.
 :::
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animations/smooth-scroll/)** — an interactive showcase you can explore.
+
 ## Where to find it
 
 **Theme Settings → Site-wide UX → Smooth Scroll → Smooth (inertia) scrolling → Yes.**

@@ -14,6 +14,10 @@ copy the generated sample.
 
 Physics-driven motion you can attach to **any element** — grab-and-throw, buoyant floating, gravity drops, jelly wobbles and more. It runs on a tiny built-in spring/verlet integrator, **no library**.
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/physics/)** — an interactive showcase you can explore.
+
 ## Where to find it
 
 Open any element → **Animations** tab → **Physics**. The picker is a **popover of animated tiles** (each previews its motion, with the effect name on it). Leave it on **None** for no physics.

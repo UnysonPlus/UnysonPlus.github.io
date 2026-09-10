@@ -13,6 +13,10 @@ speed, gap, separator, warp, curve, drag — and copy the generated sample.
 
 Turn any element's content into a **seamless, never-ending ticker** — running text, a logo band, scrolling cards. The content is cloned into a doubled track and translated by exactly one set, so the loop has no visible jump. Pure CSS/JS, no library.
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/marquee/)** — an interactive showcase you can explore.
+
 ## Where to find it
 
 Open any element → **Animations** tab → **Marquee** (a popover with direction tiles): **None · Left · Right · Up · Down**. Works best on a heading or text with large type, or a row of logos/images.

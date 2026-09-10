@@ -13,6 +13,10 @@ style, set its options, and watch it reveal on load and cover on navigate.
 
 Full-screen transitions between pages — a colored overlay reveals each page on load and covers the screen when the visitor navigates, so pages feel **connected** instead of a hard flash.
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/page-transitions/)** — an interactive showcase you can explore.
+
 ## Where to find it
 
 It's **site-wide**: **Theme Settings → Site-wide UX → Page Transitions**. Turn on **Enable page transitions** (off by default) and pick a **Transition**. Front-end only — nothing runs in the admin.

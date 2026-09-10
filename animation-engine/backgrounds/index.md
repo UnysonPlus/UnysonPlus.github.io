@@ -15,6 +15,10 @@ verbatim CSS effects, then copies the generated sample.
 
 A living, animated background layered **behind a container's content** — aurora, drifting particles, waves, a mesh gradient, a starfield, and 30+ more.
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/backgrounds/)** — an interactive showcase you can explore.
+
 ## Where to find it
 
 Animated Backgrounds live on the **Styling tab**, right next to the normal **Background** control — on **container** elements only: **Section**, **Bleed Section**, **Masonry Section** and **Row**. Pick a **Background Effect** from the popover; leave it on **None** for none.

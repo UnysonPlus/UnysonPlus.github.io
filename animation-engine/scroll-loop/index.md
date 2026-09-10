@@ -14,6 +14,10 @@ section snapping. It demonstrates the exact clone-and-jump-back technique the re
 
 Loop a run of full-height **Sections** into a **seamless, never-ending scroll** — mark two or more in a row and the first re-appears seamlessly after the last, with optional section snapping. Smooth scrolling is powered by [Lenis](https://lenis.darkroom.engineering/); pair it with the [Parallax](/animation-engine/parallax) scroll effect on the media inside for the classic depth look (the "[infinite scroll parallax](https://tympanus.net/Tutorials/InfiniteScrollParallax/)" experience).
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/scroll-loop/)** — an interactive showcase you can explore.
+
 ## Where to find it
 
 It's a **Section-only** control (an infinite loop only makes sense on full-height sections, not columns or leaf elements): open a **Section** → **Animations** tab → **Infinite Scroll Loop** → pick **Infinite Loop** (default **Off**).

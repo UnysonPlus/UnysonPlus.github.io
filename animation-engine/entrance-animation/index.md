@@ -17,6 +17,10 @@ Preview all 56 effects in the **[Entrance Animation playground](./playground.mdx
 effect, set speed / delay / repeat / loop / easing, and copy the generated sample.
 :::
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/entrance/)** — an interactive showcase you can explore.
+
 ## Pick an effect
 
 Open any element → **Animations** tab → **Entrance Animation**. The picker is a **popover of animated tiles** — each tile previews its motion with the effect name on it. Leave it on **None** for no entrance (nothing loads).

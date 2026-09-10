@@ -14,6 +14,10 @@ then copy the generated sample. It runs the real runtime's path-sampling and `ap
 
 Send any element **travelling along a path** instead of a straight line — a wave, a loop, a spiral, a staircase, a star, or your own SVG path. Drive it by **scroll**, on a **loop**, or **once when it enters view**, and optionally **rotate it to follow the curve** so it noses along like it's on rails. Per-element, pure SVG geometry, no library.
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/motion-path/)** — an interactive showcase you can explore.
+
 ## Where to find it
 
 It's a **per-element** control: open any element (Section, Column, or a leaf like a heading, image or icon box) → **Animations** tab → **Motion Path** → pick a shape (default **None**).

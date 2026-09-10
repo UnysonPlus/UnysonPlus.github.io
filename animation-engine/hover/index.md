@@ -13,6 +13,10 @@ effect, tweak its options, and copy the generated sample.
 
 Pointer-driven effects that play **while hovering** an element — a magnetic pull toward the cursor, a 3D tilt, a spotlight glow, an image reveal, and more.
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/hover/)** — an interactive showcase you can explore.
+
 ## Where to find it
 
 Open any element → **Animations** tab → **Hover Interaction**. It's a **popover of animated tiles**; leave it on **None** for no hover effect.

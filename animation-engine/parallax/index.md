@@ -14,6 +14,10 @@ scene, tweak the Scene's intensity / smoothing / source, and click any layer (sk
 
 Give a scene a sense of **depth** — mark a few elements as *layers* with different depths and they drift at different speeds as the pointer moves (and/or as the page scrolls). Perfect for layered hero scenes, floating shapes, and illustrations. One shared render loop, **no library**.
 
+## Live demo
+
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/parallax/)** — an interactive showcase you can explore.
+
 ## Where to find it
 
 Open any element → **Animations** tab → **Parallax Layers**. It's a role picker:

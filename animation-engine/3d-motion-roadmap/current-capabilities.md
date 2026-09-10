@@ -91,7 +91,7 @@ which is exactly why the [focus areas](./focus-areas) are so specific.
   with automatic quality drop and a poster fallback.
 - **[Model Viewer](/animation-engine/model-viewer)** — glTF/GLB with orbit, HDR lighting, baked
   animation clips, **AR ("view in your space")**, hotspots and material variants.
-- **[Motion Gallery](/animation-engine/3d-gallery)** — CSS-3D ring / wall / sphere / orbit / scatter /
+- **[Motion Gallery](/animation-engine/motion-gallery)** — CSS-3D ring / wall / sphere / orbit / scatter /
   stack / device layouts, scroll-scrubbable and able to sync to a Scroll Story beat.
 - **[Image Sequence](/animation-engine/image-sequence)** (frame-scrub "video from stills"),
   **[SVG Draw](/animation-engine/svg-draw)** (self-drawing line art, scroll-scrub).

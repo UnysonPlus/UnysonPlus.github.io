@@ -1,7 +1,7 @@
 ---
 sidebar_position: 12
 title: Motion Gallery
-slug: /3d-gallery
+slug: /motion-gallery
 ---
 
 # Motion Gallery

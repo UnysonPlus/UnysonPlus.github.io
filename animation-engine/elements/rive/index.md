@@ -63,6 +63,18 @@ document.addEventListener('fwRiveEvent', function (e) {
 });
 ```
 
+### Data bindings
+
+Rive's **data binding** (a file's *View Model*) exposes named properties you can set at runtime. The **Data bindings** list (Animation tab) drives them from the builder — so **one `.riv` becomes a live label, counter, progress value or brand re-theme** without re-exporting. Add a row per property:
+
+| Field | What it does |
+| --- | --- |
+| **Property name / path** | The View-Model property, e.g. `score`. A nested one uses `/` — `card/title`. Names come from the Rive editor's **Data** panel. |
+| **Type** | **Text** · **Number** · **Boolean** (`yes`/`no`) · **Colour** (a hex like `#00b295`) · **Trigger** (fires once on load, after the other bindings — handy to set an initial state). |
+| **Value** | The value to set (empty for a Trigger). |
+
+Missing properties are skipped silently, so a binding that doesn't match hurts nothing. Needs a `.riv` built with data binding.
+
 ## Style tab
 
 **Fit** (contain / cover / fill / fit-width / fit-height / none), **Alignment**, **Height**, **Trim empty space**, and a **Background** (transparent by default — Rive files usually are).
@@ -82,7 +94,7 @@ A **fallback poster** (shown if the runtime can't load, and as the still image u
 
 ## Live demo
 
-**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/rive/)** — an interactive State-Machine car (click to fire its trigger), play-on-hover and play-on-view examples, and a **Rive button whose event your page handles** (the `fwRiveEvent` JS hook, live).
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/rive/)** — an interactive State-Machine car (click to fire its trigger), play-on-hover and play-on-view examples, a **Rive button whose event your page handles** (the `fwRiveEvent` JS hook, live), and a **data-bound card** whose name/age/colour are set from the builder.
 
 ## Steps
 

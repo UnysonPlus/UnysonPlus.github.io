@@ -75,6 +75,18 @@ Rive's **data binding** (a file's *View Model*) exposes named properties you can
 
 Missing properties are skipped silently, so a binding that doesn't match hurts nothing. Needs a `.riv` built with data binding.
 
+### Asset swaps (images / fonts)
+
+The image half of data binding: a `.riv` can **reference** images (an avatar, a product photo, a logo) or fonts instead of baking them in, and the **Swap file assets** list replaces them with your own — from the Media Library, a URL, or your data. Add a row per asset:
+
+| Field | What it does |
+| --- | --- |
+| **Asset name** | The asset's name exactly as it appears in the Rive editor's **Assets** panel (e.g. `avatar.png`). |
+| **Image** | Upload / pick the replacement image from the Media Library. |
+| **…or a URL** | A direct image *or* font URL (takes priority) — use it for a `.ttf` / `.otf` / `.woff` font or a remote image. |
+
+Only **referenced (“exported”) assets** can be swapped — mark an asset for export in the Rive editor. Unmatched names are left as the file's own asset.
+
 ### Live inputs (pointer / scroll)
 
 Wire a **Number input** (or a View-Model number property) to a live page signal — the **pointer** or **scroll** — so the animation reacts continuously, no code: a character that follows the cursor, a gauge that tracks scroll, a value that sweeps with the mouse. Add a row per input:
@@ -141,10 +153,11 @@ Setting up data-driven Rive — where the property names come from and how value
 - **[Data binding](./data-binding.md)** — drive a file's title / labels / numbers / colours from the builder (the live-dashboard demo, built from scratch).
 - **[Drive Rive from JavaScript](./live-js-control.md)** — reach an instance with `window.fwRive` and push **live** data (a REST poll / WebSocket) into it.
 - **[Pointer & scroll inputs](./live-inputs.md)** — wire a Number input to the pointer or scroll, no code (cursor-follow characters, scroll gauges).
+- **[Asset swaps](./asset-swaps.md)** — replace the images / fonts a `.riv` references with your own (avatars, product photos, logos, brand fonts).
 
 ## Live demo
 
-**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/rive/)** — an interactive State-Machine car (click to fire its trigger), play-on-hover and play-on-view examples, a **Rive button whose event your page handles** (the `fwRiveEvent` JS hook, live), a **data-bound dashboard** whose title, tickers and figures come from bound values (one file, any data), a **"push new figures"** button that updates it live via `window.fwRive`, and a **scroll gauge** whose bar tracks your scroll — no code.
+**→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/rive/)** — an interactive State-Machine car (click to fire its trigger), play-on-hover and play-on-view examples, a **Rive button whose event your page handles** (the `fwRiveEvent` JS hook, live), a **data-bound dashboard** whose title, tickers and figures come from bound values (one file, any data), a **"push new figures"** button that updates it live via `window.fwRive`, a **scroll gauge** whose bar tracks your scroll — no code, and an **asset-swap** card whose three images are all swapped in from outside the `.riv`.
 
 ## Steps
 

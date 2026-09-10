@@ -369,6 +369,21 @@ engines conflates converter changes with rendering-behaviour changes (this produ
 
 Newest first. Each entry = one structural change to the deterministic converter.
 
+- **2026-09-10 — Full-bleed SPLIT HERO spans the viewport, not the global container (site-converter 1.8.75).** A
+  full-VIEWPORT section (`min-h-screen`/`h-screen`/`min-height:100vh`) laid out as a MULTI-COLUMN grid with NO
+  inner content cap (`w-full grid grid-cols-2`) is meant to span the viewport — its columns are true viewport
+  fractions (~50vw text + ~50vw media). The converter was boxing it to the theme's global container (~1280px), so
+  each column shrank to ~624px and a large FLUID heading (e.g. a 144px `Oswald` title correctly reproduced) needed
+  ~756px and OVERFLOWED its column, spilling across the midline and OVERLAPPING the media column (the hero
+  title-overlaps-image bug). Root cause was two-layered: `map_container_width(0)` → Inherit → global container;
+  AND the mapper's flexbox content-width push fell through `container_width_px(custom 100%)=0` to the SITE
+  container width and pinned the flexbox at ~1248px. Fix: `is_fullbleed_split_hero($node)` (stitch) detects the
+  pattern (gated on `min-h-screen` + `section_is_multicol_grid` + no inner cap, so a normal `w-full` content
+  section — nearly every Tailwind section is `w-full` — or a single-column centred hero is untouched); the section
+  then gets `is_fullwidth=true` + a `100%` `container_width`, and the mapper pushes a `100%` `content_width` onto
+  its flexbox children instead of the site container. Verified: the text column goes 624→**936px**, the title fits
+  (right edge 780 inside its 936 column, no overflow) and the media sits cleanly beside it; **17-site hero-heavy
+  regression unchanged vs baseline — container/structure/spacing/height_sanity all 100, no per-site change ≥3.**
 - **2026-09-09 — P7: dark timeline/project cards keep their fill + light title (site-converter 1.8.71).** Generator A's
   Selected Works is a carousel of dark `.project-card`s (fill oklch(0.15), near-white title). It maps to the
   `timeline` shortcode, which defaults to a LIGHT card — so on the converted dark-theme site the near-white heading

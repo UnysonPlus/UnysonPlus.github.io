@@ -69,3 +69,4 @@ The Convert screen has three tabs:
 - **[Convert from a file](./convert-from-file.md)** — Google Stitch & other exports.
 - **[The capture service](./capture-service.md)** — install once, endpoints, security, troubleshooting.
 - **[AI assist](./ai-assist.md)** — optional Claude‑powered refinement.
+- **[Roadmap](./roadmap.md)** — output targets: Unyson+ and Block Theme today; Elementor, Divi, Bricks and more next.

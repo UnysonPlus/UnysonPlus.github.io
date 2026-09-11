@@ -110,6 +110,16 @@ A design often wraps a block of copy in a painted shape — a translucent card, 
 - **The source stylesheet is read like a browser reads it**: a heading sized by a descendant rule such as `.card h2 { font-size: clamp(…) }` keeps that fluid size, and a later, weaker reset cannot override it.
 - **Small pill labels stay a chip row**, and a label that sits flush on its heading stays flush — a zero gap is a value, not a missing one.
 
+## Rounded bands with rows inside
+
+A design's closing band is often one large rounded shell — a gradient wash with a soft glow, clipped corners, a two-column grid inside and a thin footer row underneath. The converter keeps every piece:
+
+- **The shell fills the section.** When the shell's own width is the site's container rule, the panel fills the section instead of subtracting the gutter twice; its inner wrapper's padding becomes the panel's inset; a glow layered over a gradient stays layered, and the shell clips like the source.
+- **Rows keep their layout inside a panel** — the exact column ratio, the gap, bottom alignment, a `space-between` spread with content-sized cells, and the row's own margin, inset and one-sided hairline (a Box Preset whose border sits on one side).
+- **A column that is a stack of cards** (two glass stat cards, spaced by a gap) converts as that stack, gap included; a big word beside a big number is a stat value like the number.
+- **Plain tag rows stay rows**, and a bare line of text in a cell stays a text block.
+- **The stylesheet is read for the capture's viewport**: a mobile-only rule never overrides the desktop one.
+
 ## Tints painted by pseudo-elements
 
 A dark wash over a hero video or photo is often not an element at all but a `::before` or `::after` layer on the section — for example a radial vignette stacked on a top-to-bottom fade. The capture records such a covering pseudo-layer, and the converter splits it: the linear fade (or a flat colour) becomes the section's native **Background → Overlay**, editable like any other, while layers the overlay field cannot express (the radial vignette) are carried verbatim as a scoped pseudo-layer on the section. The tint reads like the source, and nothing is painted twice.

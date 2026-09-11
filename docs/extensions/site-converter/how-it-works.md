@@ -75,6 +75,12 @@ A masthead is rarely just logo · menu · one button, and the converter no longe
 
 **The header's hairline and the menu hover colour** are read from the source's own stylesheet rules (`border-bottom` on the bar, `a:hover` on the links), so a faint translucent rule and a warm hover tint arrive as-is instead of the theme defaults.
 
+**A header with no container wrapper is Full Width**, inset by exactly the side padding the source row used, so the logo and buttons sit where the design put them instead of at the theme's default gutter.
+
+## Tints painted by pseudo-elements
+
+A dark wash over a hero video or photo is often not an element at all but a `::before` or `::after` layer on the section — for example a radial vignette stacked on a top-to-bottom fade. The capture records such a covering pseudo-layer, and the converter splits it: the linear fade (or a flat colour) becomes the section's native **Background → Overlay**, editable like any other, while layers the overlay field cannot express (the radial vignette) are carried verbatim as a scoped pseudo-layer on the section. The tint reads like the source, and nothing is painted twice.
+
 ## Boxed text and floating notes
 
 A paragraph that is *also* a box — a translucent glass callout, a bordered aside — is not folded into the heading's subtitle (a subtitle can't carry a box). It becomes a **Text Block wearing a real Box Preset**: the converter reads the box's fill, border, corners, shadow, padding and blur from the source and registers them as a preset under Theme Settings → Components → Box Presets, then assigns it on the block's *Styling → Box Style*. Edit the preset once and every block that wears it follows.

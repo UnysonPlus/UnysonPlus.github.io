@@ -27,8 +27,9 @@ Further targets under consideration, in the order they are likely to arrive:
 | **WPBakery** | Shortcode-based, close to the Unyson+ output |
 | **Oxygen** | JSON tree per page |
 | **Breakdance** | JSON tree per page |
-| **Brizy** | JSON tree per page |
 | **Kadence Blocks**, **GenerateBlocks**, **Spectra** | Block-based — variants of the Block Theme emitter |
+
+Every target above is listed in the converter's **Output** picker inside Unyson+ (disabled, marked *Coming soon*) so you can see where it is heading.
 
 Targets marked **Coming soon** are planned. When development on one starts, its status changes to **Pre-Alpha build**: it converts, it is in active development, and it is not yet meant for production sites. It graduates to **Available** once it passes the same fixture and real-site checks the Unyson+ output goes through.
 

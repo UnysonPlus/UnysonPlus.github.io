@@ -59,6 +59,22 @@ Names follow two rules, in order:
 
 So a site with one button size gets a single **Default**; two sizes give **Default + Large** or **Default + Small**; three give **Small / Default / Large** — or **Default / Small / X-Small** when the default is the biggest. The size the site uses most is always the one a new button gets.
 
+## Container width: the declared cap, not the measured one
+
+The site-wide Container Width comes from the source's main content column. The capture measures that column in the browser, but a measurement is limited by the capture viewport: a shell declared as `width: min(1440px, calc(100% - 48px))` measures only 1392px at a 1440px-wide capture, and a converted site pinned to 1392 would never grow to the design's 1440 on a wider screen. So the converter also reads the source stylesheet's own declaration for that container — `max-width: 1440px`, `max-width: min(1440px, …)` or `width: min(1440px, …)` — and uses the declared cap when it is larger than the measurement (within a sanity bound, so an unrelated rule can't take over). Responsive `.container` steps are handled separately by the container ladder.
+
+## Headers with two rows, several buttons, and chips
+
+A masthead is rarely just logo · menu · one button, and the converter no longer forces it into that shape.
+
+**Two rows become the Header's native rows.** When a source header stacks a *brand row* (logo, a label, the buttons) over a row that holds *only the menu links*, the menu is placed in the **Bottom Bar** (or the Top Bar when the links sit above the brand) in the column matching the source alignment. The nav row's rule line becomes the bar's own border on the edge facing the brand row, its fill becomes the bar background, and its padding and link spacing are carried exactly. The header's at-rest height is the brand row's height, since the theme lays the bar out as its own row.
+
+**Every button in the header becomes a CTA Button element**, in source order, and each one is matched to the Button Preset that has its skin — colour, border, size — the same way body buttons are. A translucent "glass" button matches its glass preset; nothing falls back to a hardcoded style or size.
+
+**A decorative label** beside the logo — a pill with a small glowing dot and a short line of text — becomes a **List Item** element: the text stays editable, the dot is an icon in the dot's colour, and the pill styling rides along. If the source hides the label on small screens, the element's *Hide On* checkboxes are set to match.
+
+**The header's hairline and the menu hover colour** are read from the source's own stylesheet rules (`border-bottom` on the bar, `a:hover` on the links), so a faint translucent rule and a warm hover tint arrive as-is instead of the theme defaults.
+
 ## Boxed text and floating notes
 
 A paragraph that is *also* a box — a translucent glass callout, a bordered aside — is not folded into the heading's subtitle (a subtitle can't carry a box). It becomes a **Text Block wearing a real Box Preset**: the converter reads the box's fill, border, corners, shadow, padding and blur from the source and registers them as a preset under Theme Settings → Components → Box Presets, then assigns it on the block's *Styling → Box Style*. Edit the preset once and every block that wears it follows.

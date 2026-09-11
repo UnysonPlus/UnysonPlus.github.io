@@ -110,6 +110,12 @@ A design often wraps a block of copy in a painted shape — a translucent card, 
 - **The source stylesheet is read like a browser reads it**: a heading sized by a descendant rule such as `.card h2 { font-size: clamp(…) }` keeps that fluid size, and a later, weaker reset cannot override it.
 - **Small pill labels stay a chip row**, and a label that sits flush on its heading stays flush — a zero gap is a value, not a missing one.
 
+## Horizontal scroll strips
+
+A row of wide cards that scrolls sideways — each card a fixed share of the container, snapping into place, the scrollbar hidden — is kept as exactly that: one non-wrapping row that scrolls on the x axis with the source's item width and snap points, never squeezed into a three-column grid. A card that is itself a two-column layout (copy beside a painted panel) keeps that layout, its skin, and its exact heading size inside the strip.
+
+Rows also keep their line discipline: a row the source does not wrap stays on one line, and a cell capped to a fixed width (an intro capped at 400px beside a heading) holds that width while the heading takes the rest — so the heading breaks where the source breaks.
+
 ## Rounded bands with rows inside
 
 A design's closing band is often one large rounded shell — a gradient wash with a soft glow, clipped corners, a two-column grid inside and a thin footer row underneath. The converter keeps every piece:

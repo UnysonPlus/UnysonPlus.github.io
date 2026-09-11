@@ -77,6 +77,17 @@ A masthead is rarely just logo · menu · one button, and the converter no longe
 
 **A header with no container wrapper is Full Width**, inset by exactly the side padding the source row used, so the logo and buttons sit where the design put them instead of at the theme's default gutter.
 
+## Two-column cards: geometry, skins and rhythm
+
+A split band, a text panel beside a photo tile, is where a conversion usually drifts. The converter reads each piece from the source's computed layout:
+
+- **Unequal columns stay unequal.** A grid with `1.08fr .92fr` tracks becomes a native Grid carrying that exact ratio, not two equal halves.
+- **Cards keep their height and centring.** A cell's minimum height and its vertically centred content are native flexbox options on the column.
+- **Every card wears a Box Preset**, including a photo tile that holds only an image. The image fills the frame edge to edge and the preset clips it to the corner radius. A two-layer shadow (an inset highlight plus a drop) keeps both layers: the most visible one in the preset's Box Shadow field, the full value in the preset's CSS.
+- **Pill labels become a chip row.** A row of short boxed labels is a wrapping flex row of Text Blocks, each wearing the same pill Box Preset, sized to content so nothing wraps.
+- **Heading rhythm comes from the source.** A plain-CSS eyebrow folds into the heading's Overline with its exact size and tracking; the gaps between eyebrow, title and intro are read from whichever element carries the margin; an intro at the body size stays at the body size; a fluid `clamp()` title keeps scaling with the viewport.
+- **Decorative glows survive.** A blurred corner glow painted by a `::before` layer is carried onto the column as a scoped pseudo-layer, scaled in percentages of the card, and the card clips it as the source does.
+
 ## Tints painted by pseudo-elements
 
 A dark wash over a hero video or photo is often not an element at all but a `::before` or `::after` layer on the section — for example a radial vignette stacked on a top-to-bottom fade. The capture records such a covering pseudo-layer, and the converter splits it: the linear fade (or a flat colour) becomes the section's native **Background → Overlay**, editable like any other, while layers the overlay field cannot express (the radial vignette) are carried verbatim as a scoped pseudo-layer on the section. The tint reads like the source, and nothing is painted twice.

@@ -58,3 +58,9 @@ Names follow two rules, in order:
 2. **Otherwise the most-used size is "Default"** (slug `md`), and every other size is named by where it sits relative to it — *Large*, *X-Large*, *2X-Large* above; *Small*, *X-Small*, *2X-Small* below.
 
 So a site with one button size gets a single **Default**; two sizes give **Default + Large** or **Default + Small**; three give **Small / Default / Large** — or **Default / Small / X-Small** when the default is the biggest. The size the site uses most is always the one a new button gets.
+
+## Boxed text and floating notes
+
+A paragraph that is *also* a box — a translucent glass callout, a bordered aside — is not folded into the heading's subtitle (a subtitle can't carry a box). It becomes a **Text Block wearing a real Box Preset**: the converter reads the box's fill, border, corners, shadow, padding and blur from the source and registers them as a preset under Theme Settings → Components → Box Presets, then assigns it on the block's *Styling → Box Style*. Edit the preset once and every block that wears it follows.
+
+A short text **pinned over a band** (a note at `left: 8%; top: 18%` of a hero) keeps its placement through the native **Position** option (Advanced tab): the converter carries exactly the sides the source declared — a percentage stays a percentage — and makes the section the positioned ancestor so the note measures against the band, exactly like the source. The note itself also wears a Box Preset for its pill.

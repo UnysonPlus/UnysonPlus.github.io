@@ -30,4 +30,4 @@ Over-long lines are tiring to read — the eye loses its place returning to the 
 
 <img src="/img/shortcodes/text-block-styling.png" alt="Text Block options panel — Styling tab" width="1200" />
 
-Text Color, Background Color, and Margin & Padding.
+Text Color, Background Color, Margin & Padding — and **Box Style**: wrap the whole block in a reusable **Box Preset** (fill, border, corners, shadow, padding and hover effects — Theme Settings → Components → Box Presets). That is how a callout, an aside, a glass card or a floating note is styled once and reused; the Site Converter assigns it automatically when a source paragraph is itself a box.

@@ -45,3 +45,16 @@ reference lives in one place. This page and the other Site Converter pages
 ([Convert from a URL](./convert-from-url.md), [Convert from a file](./convert-from-file.md),
 [the capture service](./capture-service.md), [AI assist](./ai-assist.md),
 [Manual tools](./manual-tools.md)) are the **task guides** for using the extension in `wp-admin`.
+
+## Button sizes: how many, and what they're called
+
+The converter never invents sizes. It creates **exactly as many Button Sizes as the source has distinct button boxes**: every short-text link or button is clustered by its computed font-size, paddings and fixed height (small measurement noise collapses into one cluster), and each cluster becomes one size whose values are the most common ones in that cluster.
+
+Sizes are **ranked by the box a reader perceives** — a fixed height (`height: 58px`, a Tailwind `h-11`), otherwise the font box plus vertical padding. Size means the button's box, not its type size: a tall pill with 10px uppercase text ranks above a shorter, padded button with 14px text.
+
+Names follow two rules, in order:
+
+1. **The source's own size names win.** A button carrying `btn-sm`, `btn-lg`, `btn-xl`, `button--large` and the like keeps that name.
+2. **Otherwise the most-used size is "Default"** (slug `md`), and every other size is named by where it sits relative to it — *Large*, *X-Large*, *2X-Large* above; *Small*, *X-Small*, *2X-Small* below.
+
+So a site with one button size gets a single **Default**; two sizes give **Default + Large** or **Default + Small**; three give **Small / Default / Large** — or **Default / Small / X-Small** when the default is the biggest. The size the site uses most is always the one a new button gets.

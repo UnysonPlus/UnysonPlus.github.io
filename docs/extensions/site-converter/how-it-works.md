@@ -86,6 +86,7 @@ A split band, a text panel beside a photo tile, is where a conversion usually dr
 - **Every card wears a Box Preset**, including a photo tile that holds only an image. The image fills the frame edge to edge and the preset clips it to the corner radius. A two-layer shadow (an inset highlight plus a drop) keeps both layers: the most visible one in the preset's Box Shadow field, the full value in the preset's CSS.
 - **Pill labels become a chip row.** A row of short boxed labels is a wrapping flex row of Text Blocks, each wearing the same pill Box Preset, sized to content so nothing wraps.
 - **Heading rhythm comes from the source.** A plain-CSS eyebrow folds into the heading's Overline with its exact size and tracking; the gaps between eyebrow, title and intro are read from whichever element carries the margin; an intro at the body size stays at the body size; a fluid `clamp()` title keeps scaling with the viewport.
+- **A fluid heading stays fluid on every screen.** When the source sizes a heading with `clamp()` or `vw`, the converter carries the expression itself — never the pixel size measured at capture — and expresses the heading's line-height and letter-spacing relative to the font (`.9`, `-.06em`) so they scale with it. A title that is 80px at 1440 is 96px at 1920 in both the source and the conversion.
 - **Decorative glows survive.** A blurred corner glow painted by a `::before` layer is carried onto the column as a scoped pseudo-layer, scaled in percentages of the card, and the card clips it as the source does.
 
 ## Stacked band cards

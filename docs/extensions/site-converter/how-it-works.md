@@ -88,6 +88,16 @@ A split band, a text panel beside a photo tile, is where a conversion usually dr
 - **Heading rhythm comes from the source.** A plain-CSS eyebrow folds into the heading's Overline with its exact size and tracking; the gaps between eyebrow, title and intro are read from whichever element carries the margin; an intro at the body size stays at the body size; a fluid `clamp()` title keeps scaling with the viewport.
 - **Decorative glows survive.** A blurred corner glow painted by a `::before` layer is carried onto the column as a scoped pseudo-layer, scaled in percentages of the card, and the card clips it as the source does.
 
+## Stacked band cards
+
+A stack of full-width band cards, each a painted panel beside a copy column, is read from the source's own layout rather than guessed from its child count:
+
+- **A single-track grid is a stack**, not a row: the bands stay full width, one under another, with the source gap and the space above them.
+- **Each band is a card that is also a row.** The card's radius, fill, hairline, shadow and height become a Box Preset on the row, clipped so the painted panel stays inside the corners; the two tracks keep their exact ratio.
+- **An empty painted panel is content.** A cell that holds no text or image but is painted by the source (a stack of gradient blooms) survives as an empty cell carrying that paint.
+- **The copy column keeps its inset and spread**, and its label, heading and paragraph fold into one Special Heading with the source's sizes and gaps.
+- **A zero padding is a value.** A section the source deliberately sets to no top padding stays at zero instead of picking up the theme default, and a heading capped narrower than its section keeps its own measure without narrowing the section.
+
 ## Tints painted by pseudo-elements
 
 A dark wash over a hero video or photo is often not an element at all but a `::before` or `::after` layer on the section — for example a radial vignette stacked on a top-to-bottom fade. The capture records such a covering pseudo-layer, and the converter splits it: the linear fade (or a flat colour) becomes the section's native **Background → Overlay**, editable like any other, while layers the overlay field cannot express (the radial vignette) are carried verbatim as a scoped pseudo-layer on the section. The tint reads like the source, and nothing is painted twice.

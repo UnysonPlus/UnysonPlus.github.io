@@ -42,7 +42,7 @@ Use a **link** (`<a href>`) to navigate to another page or section, and a **butt
 | **Custom Width** | Used when Button Width = Custom |
 | **Alignment** | Left, Center, Right |
 | **Button State** | Active, Disabled |
-| **Hover Animation** | A set of hover effects |
+| **Hover Animation** | A motion effect from the shared Hover Animations library — the built-in effects (Lift, Grow, Shine sweep, Glow pulse, Tilt, …) plus your own from Theme Settings → Components → Hover Animations. Box Presets pick from the same list. |
 | **Margin** | Spacing |
 
 :::note[Screenshots — styles, sizes & hover]

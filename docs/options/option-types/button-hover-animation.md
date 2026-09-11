@@ -7,9 +7,16 @@ description: The Unyson+ button-hover-animation option type — a preview picker
 
 # Button Hover Animation
 
-A picker that previews and selects a **button hover effect** from a set of choices. Each option renders
+A picker that previews and selects a **hover effect** from a set of choices. Each option renders
 a live preview button (styled by `preview_base`, default `btn btn-primary`) so you can see the effect
 before choosing. The saved value is the chosen effect's key (empty = none).
+
+The choices come from **one shared Hover Animations library**: the built-in `.btnfx-*` effects plus your
+own entries from Theme Settings → Components → **Hover Animations**. The same picker sits on the Button
+element (*Hover Animation*) and on a Box Preset (Theme Settings → Components → Box Presets → *Hover
+Animation*) — add an animation once and both offer it. On a button the class is appended to the element;
+on a box the effect is re-emitted onto the preset's own `.boxp-{slug}` class, so nothing extra is added
+to the markup. Pass `sc_get_hover_animation_choices()` as `choices` to get that combined list.
 
 ```php
 $options = [

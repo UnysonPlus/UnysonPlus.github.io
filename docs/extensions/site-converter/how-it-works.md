@@ -110,6 +110,10 @@ A design often wraps a block of copy in a painted shape — a translucent card, 
 - **The source stylesheet is read like a browser reads it**: a heading sized by a descendant rule such as `.card h2 { font-size: clamp(…) }` keeps that fluid size, and a later, weaker reset cannot override it.
 - **Small pill labels stay a chip row**, and a label that sits flush on its heading stays flush — a zero gap is a value, not a missing one.
 
+## No footer in the source, no footer on the page
+
+Some designs end on their own closing band and never render a site footer. The converter notices when the source has no footer (or no header) and sets the page's native **Hide Site Footer** / **Hide Site Header** switch, so the converted page ends exactly where the design ends instead of growing a theme footer underneath. The switch lives on the page's Layout options, so you can turn the footer back on with one click.
+
 ## Signup forms become the Newsletter element
 
 An email signup in the source — with or without a real `<form>` tag — converts to the native **Newsletter** element, and the import activates the **Newsletter CRM** so submissions are captured from the first visit. The converter reads the form the way a visitor sees it: a field wrapped in a pill keeps that pill (its fill, hairline, blur, shadow, padding and placeholder colour), a button below the field gives the stacked design with a full-width submit, the button wears the site's own Button Preset while keeping its exact type, and a glyph inside the field becomes the element's **Field Icon** — an inline SVG or a pack icon, or the nearest Lucide glyph by meaning when the source used an icon set the theme doesn't ship.

@@ -110,6 +110,10 @@ A design often wraps a block of copy in a painted shape — a translucent card, 
 - **The source stylesheet is read like a browser reads it**: a heading sized by a descendant rule such as `.card h2 { font-size: clamp(…) }` keeps that fluid size, and a later, weaker reset cannot override it.
 - **Small pill labels stay a chip row**, and a label that sits flush on its heading stays flush — a zero gap is a value, not a missing one.
 
+## Bands keep their side inset
+
+Many designs hold each band off the viewport edge with a plain wrapper — a shell with a 24px side margin, or a padded inner div — rather than a named container. The converter flattens those wrappers, but it keeps their side margin and padding and carries the total onto the band it produced as the element's native **Spacing** margin (nested wrappers add up). A centred, capped box is left alone: its auto margins are centring, not an inset, so it stays centred. The converted band sits exactly where the source band sat, with no edge-to-edge spill.
+
 ## No footer in the source, no footer on the page
 
 Some designs end on their own closing band and never render a site footer. The converter notices when the source has no footer (or no header) and sets the page's native **Hide Site Footer** / **Hide Site Header** switch, so the converted page ends exactly where the design ends instead of growing a theme footer underneath. The switch lives on the page's Layout options, so you can turn the footer back on with one click.

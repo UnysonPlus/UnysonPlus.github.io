@@ -9,6 +9,8 @@ description: Download the UnysonPlus AI Dev Kit from GitHub, check the requireme
 # Get the Kit
 
 The AI Dev Kit is a public GitHub repository. Clone it, run the setup, and you're ready to build.
+It is free for non-commercial use and source-available; sites you build with it are yours to use
+commercially. See [License](./license.md).
 
 ## Requirements
 

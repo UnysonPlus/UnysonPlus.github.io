@@ -138,6 +138,10 @@ A design's closing band is often one large rounded shell — a gradient wash wit
 - **Plain tag rows stay rows**, and a bare line of text in a cell stays a text block.
 - **The stylesheet is read for the capture's viewport**: a mobile-only rule never overrides the desktop one.
 
+## Animated pseudo-elements
+
+A card whose `::after` sweeps a band of light across it (an oversized gradient layer with a transform, a keyframe animation and a blend mode) is read from the stylesheet rule the designer wrote, not from a single frame of the running animation. The converter carries the layer's position, gradient, transform, animation and blend mode onto the element's scoped CSS, keeps the host clipped like the source, and brings the keyframes along under a name unique to that element, so the sweep keeps moving on the converted page and never collides with another site's animation of the same name.
+
 ## Tints painted by pseudo-elements
 
 A dark wash over a hero video or photo is often not an element at all but a `::before` or `::after` layer on the section — for example a radial vignette stacked on a top-to-bottom fade. The capture records such a covering pseudo-layer, and the converter splits it: the linear fade (or a flat colour) becomes the section's native **Background → Overlay**, editable like any other, while layers the overlay field cannot express (the radial vignette) are carried verbatim as a scoped pseudo-layer on the section. The tint reads like the source, and nothing is painted twice.

@@ -110,9 +110,9 @@ A design often wraps a block of copy in a painted shape — a translucent card, 
 - **The source stylesheet is read like a browser reads it**: a heading sized by a descendant rule such as `.card h2 { font-size: clamp(…) }` keeps that fluid size, and a later, weaker reset cannot override it.
 - **Small pill labels stay a chip row**, and a label that sits flush on its heading stays flush — a zero gap is a value, not a missing one.
 
-## Bands keep their side inset
+## Bands keep the source container
 
-Many designs hold each band off the viewport edge with a plain wrapper — a shell with a 24px side margin, or a padded inner div — rather than a named container. The converter flattens those wrappers, but it keeps their side margin and padding and carries the total onto the band it produced as the element's native **Spacing** margin (nested wrappers add up). A centred, capped box is left alone: its auto margins are centring, not an inset, so it stays centred. The converted band sits exactly where the source band sat, with no edge-to-edge spill.
+Many designs hold each band inside a plain shell — a wrapper declared as the site container (say, up to 1440px wide, centred, with a 24px gutter) or simply padded on the sides. The converter reads the declared rule, not just how it happened to measure at capture time: a declared container becomes the band's **Content Width** cap plus the theme's native **Container Gutter**, so the band sits exactly where the source band sits on every screen size — inset on a laptop, centred at its cap on a wide monitor. A wrapper that is only a fixed side margin or padding keeps that inset as the band's **Spacing** margin. Both the one-shot Convert flow and a bundle import go through the same mapper setup, so they produce the same page.
 
 ## No footer in the source, no footer on the page
 

@@ -140,7 +140,7 @@ A design's closing band is often one large rounded shell — a gradient wash wit
 
 ## Phones are measured too
 
-A page is captured at desktop width and again at phone width, and only what changes between the two is kept: a section's tighter phone rhythm, a card's smaller inset, a minimum height that no longer applies when cards stack, a heading or paragraph that steps down a size, an element the design hides on small screens. Each of those lands on the option the theme already makes responsive (section padding tiers, the cell's Min Height tiers, Responsive Hide) or on a scoped phone rule, so the converted page follows the design on a phone instead of relying on generic breakpoint behaviour. Images that fill a card beside their text return to their natural height when the layout stacks.
+A page is captured at desktop width and again at phone width, and only what changes between the two is kept: a section's tighter phone rhythm, a card's smaller inset, a minimum height that no longer applies when cards stack, a heading or paragraph that steps down a size, an element the design hides on small screens. Each of those lands on the option the theme already makes responsive (section padding tiers, the cell's Min Height tiers, Responsive Hide) or on a scoped phone rule, so the converted page follows the design on a phone instead of relying on generic breakpoint behaviour. Images that fill a card beside their text return to their natural height when the layout stacks. Tablets are measured as well, so the middle tier follows the design too: a grid the design stacks at its own tablet breakpoint stacks on tablets on the converted page, and the side gutter tightens on phones the way the design does.
 
 ## The long tail of CSS
 

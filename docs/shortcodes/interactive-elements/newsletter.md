@@ -31,6 +31,8 @@ A placeholder disappears the moment someone starts typing, so it's not a substit
 - **Success Message** — shown after a successful subscription. Defaults to "Thanks for subscribing!".
 - **Error Message** — shown when the submission fails. Defaults to "Something went wrong. Please try again."
 - **List ID** — optional value passed to the `fw_newsletter_subscribe` hook for list integrations (Mailchimp, etc.).
+- **Field Icon** — an optional glyph shown inside the email field, before the placeholder (an envelope, a user mark). Pick from the icon packs, an SVG, an upload or an emoji; the field pads past it.
+- **Field Icon Color** — the glyph's colour; empty inherits the field text colour.
 
 ## Design
 
@@ -44,7 +46,7 @@ A placeholder disappears the moment someone starts typing, so it's not a substit
 
 <img src="/img/shortcodes/newsletter-styling.png" alt="Newsletter options panel — Styling tab" width="1200" />
 
-- **Button Color** — background color of the submit button.
+- **Button Preset** — a Theme Settings → Buttons preset for the submit button, so it matches the site's real buttons. Leave it empty for the accent button on the theme primary colour.
 - **Field Background** — background color of the input fields.
 - **Box Background (Boxed)** — background color of the form box when a boxed design is used.
 - **Text Color** — color of the heading and description text.

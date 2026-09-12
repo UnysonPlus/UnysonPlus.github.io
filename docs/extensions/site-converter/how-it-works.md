@@ -138,6 +138,10 @@ A design's closing band is often one large rounded shell — a gradient wash wit
 - **Plain tag rows stay rows**, and a bare line of text in a cell stays a text block.
 - **The stylesheet is read for the capture's viewport**: a mobile-only rule never overrides the desktop one.
 
+## The long tail of CSS
+
+Beyond layout, colour and type, a design leans on dozens of one-off properties: a card at 72% opacity, a grayscale photo, a clipped or masked panel, an outline with an offset, a single accent border on the left, a gradient border, a tiled background, a text shadow, an italic line, a two-line clamp, multi-column text, a sticky sidebar, a card that lifts on hover, a colour written with color-mix(). The converter reads all of these from the rendered page and keeps them where they belong: box-level properties ride the card's Box Preset (so two cards that differ only in opacity or hover get their own presets), text properties ride the heading or text element, an image's own treatment rides its picture, and a cell's order or self-alignment becomes the native option. Both engines carry the same set, proven by the same fixture.
+
 ## Animated pseudo-elements
 
 A card whose `::after` sweeps a band of light across it (an oversized gradient layer with a transform, a keyframe animation and a blend mode) is read from the stylesheet rule the designer wrote, not from a single frame of the running animation. The converter carries the layer's position, gradient, transform, animation and blend mode onto the element's scoped CSS, keeps the host clipped like the source, and brings the keyframes along under a name unique to that element, so the sweep keeps moving on the converted page and never collides with another site's animation of the same name.

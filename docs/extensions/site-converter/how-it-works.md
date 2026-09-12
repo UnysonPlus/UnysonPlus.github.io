@@ -110,6 +110,10 @@ A design often wraps a block of copy in a painted shape — a translucent card, 
 - **The source stylesheet is read like a browser reads it**: a heading sized by a descendant rule such as `.card h2 { font-size: clamp(…) }` keeps that fluid size, and a later, weaker reset cannot override it.
 - **Small pill labels stay a chip row**, and a label that sits flush on its heading stays flush — a zero gap is a value, not a missing one.
 
+## Signup forms become the Newsletter element
+
+An email signup in the source — with or without a real `<form>` tag — converts to the native **Newsletter** element, and the import activates the **Newsletter CRM** so submissions are captured from the first visit. The converter reads the form the way a visitor sees it: a field wrapped in a pill keeps that pill (its fill, hairline, blur, shadow, padding and placeholder colour), a button below the field gives the stacked design with a full-width submit, the button wears the site's own Button Preset while keeping its exact type, and a glyph inside the field becomes the element's **Field Icon** — an inline SVG or a pack icon, or the nearest Lucide glyph by meaning when the source used an icon set the theme doesn't ship.
+
 ## Horizontal scroll strips
 
 A row of wide cards that scrolls sideways — each card a fixed share of the container, snapping into place, the scrollbar hidden — is kept as exactly that: one non-wrapping row that scrolls on the x axis with the source's item width and snap points, never squeezed into a three-column grid. A card that is itself a two-column layout (copy beside a painted panel) keeps that layout, its skin, and its exact heading size inside the strip.

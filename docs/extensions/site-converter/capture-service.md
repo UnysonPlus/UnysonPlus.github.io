@@ -28,6 +28,16 @@ from a file* too. It requires **no AI API and no account**; its only dependency 
    ```
    It serves `http://localhost:8787`. The status next to the **Analyze & convert** button turns
    green once detected. Need a different port? Set `PORT` before starting.
+4. **Allow the browser to reach it.** The first time the Convert page checks for the service,
+   Chrome asks whether your site may *"Access other apps and services on this device"* — that is
+   the browser's local-network permission, needed because the wp-admin page (on your site's domain)
+   is calling the service on `localhost`. Click **Allow**:
+
+   <img src="/img/extensions/site-converter/allow-local-network-access.png" alt="Chrome prompt: your site wants to access other apps and services on this device — click Allow" width="640" />
+
+   If you click **Block** by mistake, the status stays on "service not detected" even though the
+   service is running. Reset it from the site-info icon at the left of the address bar (or Chrome's
+   *Site settings*), then reload the Convert page.
 
 :::tip[No Node?]
 You can still convert a **file** offline (lower fidelity), and you can import a pre‑built bundle
@@ -77,7 +87,7 @@ capture correctly:
 
 | Symptom | Fix |
 |---|---|
-| "service not detected" | The service isn't running, or the Service URL/port doesn't match. Start `node serve.mjs` and check the port. |
+| "service not detected" | The service isn't running, or the Service URL/port doesn't match. Start `node serve.mjs` and check the port. Also make sure you clicked **Allow** on Chrome's *"Access other apps and services on this device"* prompt (see step 4 above) — a blocked prompt hides a running service. |
 | A capture renders blank / 0 sections | A CDN style runtime hadn't applied yet — update to the latest service version (it waits for styling). On Windows, the service uses a correct `file://` URL automatically. |
 | Capture is slow | First run downloads/launches Chrome; subsequent runs are faster. Heavy pages take longer to settle. |
 | AI shows "no AI backend" | Sign in to Claude Code, or set `ANTHROPIC_API_KEY`, then restart the service. See [AI assist](./ai-assist.md). |

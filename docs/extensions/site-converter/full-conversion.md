@@ -45,8 +45,11 @@ npm install        # first time only
 node serve.mjs     # serves http://localhost:8787
 ```
 
-The status next to **Analyze & convert** in wp-admin turns green once it's detected. Full detail —
-endpoints, ports, security, troubleshooting — is on **[The capture service](./capture-service.md)**.
+The status next to **Analyze & convert** in wp-admin turns green once it's detected. The first time
+it checks, Chrome asks whether your site may *"Access other apps and services on this device"* —
+click **Allow** (the admin page is calling the service on `localhost`); a blocked prompt leaves the
+status on "not detected". Full detail — endpoints, ports, security, troubleshooting — is on
+**[The capture service](./capture-service.md)**.
 
 :::note[No Node?]
 You can still convert a **file** offline (lower fidelity) and import a pre-built bundle under

@@ -160,6 +160,20 @@ section stays transparent over it. A signup pill whose button sits inside the fi
 **Capsule** design; a masthead that is the `<nav>` keeps its wordmark and its button; a footer that is only a brand
 and a disclaimer becomes those two columns, with no invented copyright line.
 
+## Entrances and their sequence
+
+Many sites animate their content in with a pair of classes — one that hides an element (`opacity: 0` plus a small
+offset and a transition) and one that reveals it once it scrolls into view — with delay helpers that stage a title,
+then a paragraph, then a form, or the cards of a grid one after another. Those are not framework hooks, so nothing
+used to carry them. The capture now pairs each hidden rule with its shown rule and records what it measures on every
+element it matches: the direction and distance of the offset, whether it scales in, the transition's duration, its
+delay, and the timing function. The converter turns that into the element's **Scroll Motion → Reveal** (from the
+Animation Engine, which the import switches on when a source needs it): the same direction and distance, the delay
+kept exactly so the sequence plays as staged, the character chosen from the offset (a plain slide is Subtle, a
+scaled-in entrance Standard or Dramatic) and the nearest GSAP ease for the source's curve. A card that animates as a
+whole gets its reveal on its column, so the stagger belongs to the grid, not to the icon inside each tile. A field
+row that brightens when the pointer is over it keeps that hover as a scoped rule on the newsletter.
+
 ## A footer built as a panel
 
 A footer whose rows sit inside one inset panel — a bordered or tinted, padded shell with a width cap and a bottom

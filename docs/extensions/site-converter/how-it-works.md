@@ -149,6 +149,19 @@ A masthead is read by geometry: the brand row and a links-only row count as two 
 ## Bento grids, toolbar rows and the whole button
 
 A grid whose tiles span different numbers of tracks across several rows is rebuilt from what the capture measured: tiles that share a top edge form a row, each keeps its measured width and height. A title bar made of short labels and dots spread across a row stays a row, with its placement, hairline, padding and tint. A hero intro's bottom padding is the gap before the buttons it precedes, a page whose source has no masthead hides the theme header, and a footer's row of pill links stays a row. A button is carried whole: its resting look, its hover transform and shadow, the layers it draws with ::before and ::after, the hover state of each, and the keyframes they animate with — the converted button moves exactly like the source, with no library effect substituted on top.
+## A footer built as a panel
+
+A footer whose rows sit inside one inset panel — a bordered or tinted, padded shell with a width cap and a bottom
+label bar — converts to the theme's **Boxed Body** footer rather than flattening to plain bars. The converter reads
+the panel's measures (its cap from the wide-viewport pass, the gutter from its side margin, padding, fill, border,
+shadow, radius) into the option, sets every bar inside it to full width, and carries the rows' own vertical
+rhythm as scoped CSS. A decorative strip inside the panel (an empty, absolutely positioned gradient) becomes the
+panel's pseudo-element. A lead heading with a small label above it keeps the label as an eyebrow; a grid whose
+columns share a baseline sets the row's **Column Alignment** to Bottom; the columns take the grid's measured
+split. The footer's last row, when it is a bar of short labels rather than a © line, becomes the copyright bar's
+columns as they are — nothing is invented in its place. Translucent hairlines and muted colours keep their alpha
+instead of flattening to a solid.
+
 ## Spacing that belongs to a wrapper
 
 A grouping wrapper the converter flattens (a centred heading group with a bottom margin, a strip pinned to the bottom of a hero with its own padding) hands its vertical margin and padding to the first and last block it produced, and those land on the block's native Spacing — under a section heading, above a "trusted by" caption, below its logo row. A button only inherits a wrapper's margin when that wrapper holds nothing but buttons, a hero's header clearance is read from its first in-flow child only, and a heading asserts its own captured top margin so a theme default cannot double a carried gap. Brand strips built from icon marks beside visible names keep those names, the strip's measured gap and its item typography; a card's icon chip is its icon, never a decoration; and when a page carries two distinct outline button designs each becomes its own preset, so a header call to action keeps its own border and hover instead of wearing the plan buttons' style.

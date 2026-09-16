@@ -38,7 +38,7 @@ A placeholder disappears the moment someone starts typing, so it's not a substit
 
 <img src="/img/shortcodes/newsletter-design.png" alt="Newsletter options panel — Design tab" width="1200" />
 
-- **Design** — image-picker selecting the form layout from the registered presets. Defaults to `inline`.
+- **Design** — image-picker selecting the form layout from the registered presets. Defaults to `inline`. Built-ins: **Inline** (field + button side by side), **Stacked** (button on its own row), **Boxed card** (the form in a tinted box) and **Capsule** — one pill where the input rides transparent inside and the submit button sits inside the pill at its right edge, the classic hero "enter your email → Open account" form. The pill takes the Field Background colour; restyle it with `selector .fw-nl__fields{…}` in Advanced CSS.
 - **Alignment** — horizontal alignment of the form. Defaults to left.
 - **Field Roundness** — corner style of the inputs and button. Choices: Square / Rounded / Pill (default Rounded).
 

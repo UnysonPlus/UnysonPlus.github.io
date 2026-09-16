@@ -160,6 +160,21 @@ section stays transparent over it. A signup pill whose button sits inside the fi
 **Capsule** design; a masthead that is the `<nav>` keeps its wordmark and its button; a footer that is only a brand
 and a disclaimer becomes those two columns, with no invented copyright line.
 
+## A page laid out on a grid canvas
+
+Some pages have no sections at all: the whole page is one grid, and each piece — the hero copy, a product card, a tile —
+sits on its own tracks, side by side and offset from one another. The converter now reads that placement. Pieces that share
+a grid row become one row of columns at their measured widths, each keeping its own top margin and the offset that pushed
+it right, so the asymmetric composition survives instead of collapsing into a stack of full-width bands.
+
+The same page taught a few more shapes. A video pinned to the right half of the viewport, masked and glowing, that the whole
+page scrolls over is the site's background video, not the first section's: it lands on Site Background (fixed) and keeps
+its width, anchor, mask, filter and glow. A fixed bar of three plain labels with no links is still the masthead — the label
+matching the site's name becomes the wordmark, the others ride as chips, no menu is invented, and its blend mode stays so
+the labels read over light and dark. A card's empty gradient frame becomes a real painted block that grows to fill the card;
+a price beside a button stays a row; and an empty ring holding a blurred dot renders as a painted emblem rather than
+invisible markup.
+
 ## The header lockup is the site identity
 
 A header that stacks a small eyebrow over the wordmark — "ARCHIVE" over "Basin Trust" — is the site's identity, and the

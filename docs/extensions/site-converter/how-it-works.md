@@ -160,6 +160,20 @@ section stays transparent over it. A signup pill whose button sits inside the fi
 **Capsule** design; a masthead that is the `<nav>` keeps its wordmark and its button; a footer that is only a brand
 and a disclaimer becomes those two columns, with no invented copyright line.
 
+## Animations that keep running
+
+An entrance plays once; some things never stop — a status dot that pulses, a heading word that sways, a hero shell that
+drifts or grows as you scroll. The capture now records the animation an element actually runs (infinite or scroll-driven)
+together with its keyframes, and the converter carries it on that element's own CSS, so a pulsing dot keeps pulsing on the
+converted page.
+
+The same page settled a few more things. Rules a source writes on the `body` tag itself — a layered gradient ground, a fixed
+grid pattern drawn through `body::before` — now travel with the page like class-keyed rules do, and a pseudo layer keeps its
+placement. A floating card header keeps the gap the source gave it on every side. A hero whose section is the grid keeps
+its two uneven tracks. Progress bars drawn with utility-class widths become the native progress widget. A stat card's
+caption stays above its number, a pill overline keeps its faint fill and tracking, and a split overline + heading folds
+back into one heading.
+
 ## A page laid out on a grid canvas
 
 Some pages have no sections at all: the whole page is one grid, and each piece — the hero copy, a product card, a tile —

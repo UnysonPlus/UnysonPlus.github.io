@@ -160,6 +160,20 @@ section stays transparent over it. A signup pill whose button sits inside the fi
 **Capsule** design; a masthead that is the `<nav>` keeps its wordmark and its button; a footer that is only a brand
 and a disclaimer becomes those two columns, with no invented copyright line.
 
+## The header lockup is the site identity
+
+A header that stacks a small eyebrow over the wordmark — "ARCHIVE" over "Basin Trust" — is the site's identity, and the
+theme keeps that identity in one place: the Site Title and Tagline in Settings → General mirror the header's own title and
+eyebrow. The importer now lets the measured lockup own both, so the browser tab, the header and the footer all read the
+source brand exactly as the source stacked it; the page `<title>` only fills the tagline when the header carried none.
+
+The same page taught a few layout shapes: a bento tile that spans two rows beside smaller tiles is split by its column,
+not folded into one row of slivers; the small row of a glyph and a boxed chip at the top of a panel keeps its two ends
+apart, and the chip keeps its own width and its monospace face; a stat keeps the weight and family its digits were set
+in, and its caption goes through the same Text Style matching as any label; a video that carried a filter no longer
+paints black under its frames while it loads; and a button filled with a modern colour notation (oklch, oklab, hsl)
+still finds its button preset.
+
 ## Rules that live on the page itself
 
 Not every rule belongs to a section. A source can style its `<main>` or `<body>` directly — a background that darkens as

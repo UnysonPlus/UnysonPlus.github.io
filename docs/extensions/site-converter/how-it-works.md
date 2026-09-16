@@ -160,6 +160,19 @@ section stays transparent over it. A signup pill whose button sits inside the fi
 **Capsule** design; a masthead that is the `<nav>` keeps its wordmark and its button; a footer that is only a brand
 and a disclaimer becomes those two columns, with no invented copyright line.
 
+## Sharp corners, centred rows and other unrounded facts
+
+Not every card is rounded. A console-style design draws its cards, its terminal window and its spec table with
+square corners, and a card with a fill, a full border or a shadow is a card whatever its radius. A grid that centres
+its columns vertically (`items-center`) puts a shorter copy column lower than the taller card grid beside it, so rows
+are found by what overlaps vertically, not by matching tops. A statistic keeps a comparison sign as its prefix and a
+unit written onto its digits as its suffix (`< 1.2ms`), while a number inside a filename or a small "TTY // 1" label is
+left alone. A numbered card that also carries a label and a status line stays a card (the steps element would drop
+both). A terminal's title bar — three window dots beside a filename, a label at the right — is rebuilt as that bar with
+its fill and hairline. A footer column titled over a row of icon links becomes that column, and every icon in the row
+becomes a profile, even a glyph no network names. A page-wide fixed grid pattern behind everything goes to the theme's
+Site Background Pattern.
+
 ## Type lands on presets, not on the paragraph
 
 A small label — uppercase, tracked, 12px, a muted ink — is a typographic role, not a one-off. The converter matches a

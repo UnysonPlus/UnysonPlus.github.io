@@ -149,6 +149,17 @@ A masthead is read by geometry: the brand row and a links-only row count as two 
 ## Bento grids, toolbar rows and the whole button
 
 A grid whose tiles span different numbers of tracks across several rows is rebuilt from what the capture measured: tiles that share a top edge form a row, each keeps its measured width and height. A title bar made of short labels and dots spread across a row stays a row, with its placement, hairline, padding and tint. A hero intro's bottom padding is the gap before the buttons it precedes, a page whose source has no masthead hides the theme header, and a footer's row of pill links stays a row. A button is carried whole: its resting look, its hover transform and shadow, the layers it draws with ::before and ::after, the hover state of each, and the keyframes they animate with — the converted button moves exactly like the source, with no library effect substituted on top.
+## A page without sections
+
+Some pages put everything in one `<main>`: a hero wrapper, then a card grid, with no `<section>` tags — and a video
+pinned behind the whole page by a fixed wrapper. The converter cuts the container into bands (each becomes a section,
+and the container's own top and bottom padding go to the first and last band), keeps a band content-tall rather than
+stretching it to the viewport, reads a band that is itself a card grid as that grid (cards, box presets, icon badges),
+and routes the page-wide video to **Theme Settings → General → Layout → Site Background** as a fixed video, so every
+section stays transparent over it. A signup pill whose button sits inside the field becomes the newsletter's
+**Capsule** design; a masthead that is the `<nav>` keeps its wordmark and its button; a footer that is only a brand
+and a disclaimer becomes those two columns, with no invented copyright line.
+
 ## A footer built as a panel
 
 A footer whose rows sit inside one inset panel — a bordered or tinted, padded shell with a width cap and a bottom

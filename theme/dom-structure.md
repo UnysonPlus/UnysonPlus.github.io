@@ -6,7 +6,7 @@ sidebar_position: 1.5
 # DOM structure
 
 This page is the reference for the markup the Unyson+ Theme renders — from `<body>` down to a
-page-builder `<section>` and its columns. The theme aims for a **lean, landmark-correct tree**: one
+page-builder `<section>` and its Flexbox layout. The theme aims for a **lean, landmark-correct tree**: one
 theme-owned layout root, semantic `<header>` / `<main>` / `<footer>`, and no wrapper `<div>` that
 isn't doing a real job. Everything below reflects the current output.
 
@@ -92,11 +92,9 @@ A builder page is a designed composition, not a syndicatable article, so it emit
         role="main">
     <div class="fw-page-builder-content entry-content">   <!-- plugin wrapper (see below) -->
       <section class="section …">                          <!-- one page-builder section -->
-        <div class="fw-container">                         <!-- width constraint -->
-          <div class="fw-row">                             <!-- flex gutter row -->
-            <div class="fw-col-12 fw-col-lg-6 …">          <!-- a grid column -->
-              …shortcode content…
-            </div>
+        <div class="fw-flexbox fw-flex fw-gap-24px …">     <!-- a Flexbox: a flex row -->
+          <div class="fw-flexbox fw-span-12 fw-span-lg-6 …">  <!-- a Flexbox child: responsive span -->
+            …shortcode content…
           </div>
         </div>
       </section>
@@ -252,38 +250,55 @@ Within `#masthead`, the builder emits up to three bars, each an optional row:
 
 ## Section anatomy
 
-Each page-builder `<section>` builds this stack down to the content. Wrappers past the four
-structural ones are **conditional** — they render only when their feature is configured:
+Layout inside a section is built with the **Flexbox** element (`.fw-flexbox`) — the modern,
+nestable layout primitive. There is **no mandatory `container → row → column` chain**: a section
+holds Flexboxes directly, each of which is itself a flex (or grid, or block) container whose children
+are more Flexboxes carrying responsive twelfths spans. Decorative wrappers render only when their
+feature is configured:
 
 ```html
-<section class="section section--…" style="…background…">
+<section class="section …" style="…background…">
   <span class="fs-background-overlay"></span>   <!-- only: video background + overlay -->
   <div class="pattern-layer"></div>             <!-- only: background pattern preset -->
   <div class="sc-shape-divider--top"></div>     <!-- only: top shape divider -->
   <div class="sc-shape-divider--bottom"></div>  <!-- only: bottom shape divider -->
 
-  <div class="fw-container">                     <!-- width constraint (or -fluid) -->
-    <div class="fw-row">                         <!-- flex row w/ gutter -->
-      <div class="fw-col-12 fw-col-lg-6 …">      <!-- a grid column -->
-        <div class="…styling card…">             <!-- only: column has bg/border/padding/preset -->
-          …shortcode content…
-        </div>
-      </div>
+  <div class="fw-flexbox fw-flex fw-gap-24px fw-collapse …">   <!-- a Flexbox: a flex row -->
+    <div class="fw-flexbox fw-span-12 fw-span-md-6 …">          <!-- a Flexbox child: responsive span -->
+      …shortcode content…
+    </div>
+    <div class="fw-flexbox fw-span-12 fw-span-md-6 …">
+      …shortcode content…
     </div>
   </div>
 </section>
 ```
 
-Notes:
+The **Flexbox** (`.fw-flexbox`, per-instance scope class `fx-<hash>`):
+
+- Renders any semantic tag — `div` (default), `section`, `header`, `main`, `article`, `aside`,
+  `footer`, `nav` — so structure stays meaningful.
+- Has three **display modes**: **Flex** (`fw-flex` + direction/wrap), **Grid** (`fw-grid`, children's
+  spans become grid tracks), or **Block** (neither class — clean markup).
+- Lays children out with **responsive twelfths spans** — `fw-span-12`, `fw-span-md-6`,
+  `fw-span-lg-4`, … — plus `fw-gap-*` (gap scale), `fw-flex-column` / `fw-flex-nowrap`,
+  `fw-justify-*` / `fw-items-*` / `fw-content-*`, `fw-order-*` / `fw-self-*`, and `fw-collapse`
+  (row children stack on small screens).
+- Carries its own **styling directly** (background, border, radius, shadow, box preset, padding),
+  scoped by its `fx-<hash>` class — there is no separate inner "styling card" div.
+
+Other notes:
 
 - The section's **background, overlay, min-height and alignment** are inline `style` + classes on the
   `<section>` itself — no extra layer div (an image/gradient overlay is folded into the
   `background-image` stack; only a *video* background needs the `.fs-background-overlay` element).
-- The section skips its own `.fw-container` when it contains explicit **Container** elements (those
-  become the sibling bands instead), avoiding double nesting.
-- A column's **inner "styling card"** div renders only when the column carries a background, border,
-  shadow, box preset, padding, or full-height / content-alignment — an unstyled column emits its
-  content directly.
 
-For the reasoning behind keeping vs. collapsing these wrappers, see
+:::note Legacy grid
+Older content — and current **Site Converter** output — may still render the Bootstrap-style grid
+(`.fw-container` → `.fw-row` → `.fw-col-12 .fw-col-lg-6 …`), and an explicit **Container** element
+emits `.fw-container.fw-container-el`. That path is fully supported and still renders, but new builds
+use the Flexbox model above. Don't be surprised to see both on a page assembled from mixed sources.
+:::
+
+For the reasoning behind keeping vs. collapsing the outer wrappers, see
 [Why the #page wrapper stays](/decisions/keep-page-wrapper-as-site-layout-root).

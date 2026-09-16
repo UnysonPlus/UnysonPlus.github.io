@@ -160,6 +160,16 @@ section stays transparent over it. A signup pill whose button sits inside the fi
 **Capsule** design; a masthead that is the `<nav>` keeps its wordmark and its button; a footer that is only a brand
 and a disclaimer becomes those two columns, with no invented copyright line.
 
+## Type lands on presets, not on the paragraph
+
+A small label — uppercase, tracked, 12px, a muted ink — is a typographic role, not a one-off. The converter matches a
+text's measured treatment (size, transform, tracking, weight) against the Text Styles it derived for the site and
+sets the block's **Text Style** to the one whose every declared property agrees, so a tracked uppercase label takes
+the Eyebrow rather than whatever style is merely closest in size; its colour goes to the block's **Text Color**. Nothing
+is written inline on the paragraph: what the preset owns stays on the preset, and the little that is per-instance (a
+zero margin, no wrapping, a separator dot's size and tint) rides the block's own Custom CSS. A line of short labels
+separated by dots becomes one text block of spans, laid out as the same flex line, instead of three elements in a row.
+
 ## Entrances and their sequence
 
 Many sites animate their content in with a pair of classes — one that hides an element (`opacity: 0` plus a small

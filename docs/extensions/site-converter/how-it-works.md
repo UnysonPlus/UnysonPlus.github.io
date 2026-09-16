@@ -160,6 +160,17 @@ section stays transparent over it. A signup pill whose button sits inside the fi
 **Capsule** design; a masthead that is the `<nav>` keeps its wordmark and its button; a footer that is only a brand
 and a disclaimer becomes those two columns, with no invented copyright line.
 
+## Rules that live on the page itself
+
+Not every rule belongs to a section. A source can style its `<main>` or `<body>` directly — a background that darkens as
+you scroll (a scroll-driven animation with its keyframes), a page-wide blend. Those classes are never dropped: their
+rules travel to **Misc Custom CSS**, re-pointed at the theme's own `main` and `body`, keyframes included, with the
+wrapper's layout left to the theme. The same page taught a few more shapes: a numbered chip beside a hairline and a
+label becomes one line whose rule grows to fill the row; a mock editor of code lines becomes one code block that keeps
+its indents and token colours; a huge faint heading pinned behind a title becomes a watermark on the Position option;
+a stat whose value is a glyph (∞) still sits in the stat row; footer columns titled by small uppercase labels are
+columns; and the body font is the face the paragraphs actually use, not the second family a font URL happens to list.
+
 ## Sharp corners, centred rows and other unrounded facts
 
 Not every card is rounded. A console-style design draws its cards, its terminal window and its spec table with

@@ -160,6 +160,19 @@ section stays transparent over it. A signup pill whose button sits inside the fi
 **Capsule** design; a masthead that is the `<nav>` keeps its wordmark and its button; a footer that is only a brand
 and a disclaimer becomes those two columns, with no invented copyright line.
 
+## A data table keeps its design
+
+A table is more than its cells. A converted page used to get the rows and columns and then the theme's plain table
+look — grey rules, small padding, the default type — because the converter only chose one of the built-in Table
+Presets by name. Now it measures the table it sees and builds a preset from it: the cell padding, the hairlines
+between rows, the header's rule, colour, weight and case, the row hover, zebra fills, an outer frame, the caption.
+That preset appears in Theme Settings → Components → Tables like any other, the converted table points at it, and
+editing the preset restyles every table that uses it.
+
+Inside the cells, only what differs from the table's base travels with the content: a bold first column, a mono value
+column, a coloured status word, a small badge chip with its own fill. Those ride as plain inline styles the editor
+keeps, so the table stays editable cell by cell.
+
 ## Animations that keep running
 
 An entrance plays once; some things never stop — a status dot that pulses, a heading word that sways, a hero shell that

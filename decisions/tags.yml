@@ -122,3 +122,8 @@ animation-engine:
   label: Animation Engine
   permalink: /animation-engine
   description: The Animation Engine extension — its modules, shortcodes and effects
+
+admin-ui:
+  label: Admin UI
+  permalink: /admin-ui
+  description: The wp-admin skin, its modes, and how the framework's own screens are styled

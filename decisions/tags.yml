@@ -127,3 +127,13 @@ admin-ui:
   label: Admin UI
   permalink: /admin-ui
   description: The wp-admin skin, its modes, and how the framework's own screens are styled
+
+site-converter:
+  label: Site Converter
+  permalink: /site-converter
+  description: The deterministic converter — capture, recognisers, mapping, and the fidelity it is measured against
+
+css:
+  label: CSS
+  permalink: /css
+  description: Stylesheets, the cascade, and the generated CSS the framework emits

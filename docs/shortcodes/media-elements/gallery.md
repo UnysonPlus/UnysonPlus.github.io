@@ -56,6 +56,7 @@ Each design reveals its own options:
 | **Caption Source** | Image Caption · Image Title · Alt Text · Description |
 | **Image Style** | Any Image Style preset — crop, corners, mask, filter, scrim (Theme Settings → Components → Image Styles) |
 | **Zoom on Hover** | On/Off |
+| **Corners** | Square (default) · Rounded (6px) · Rounded large (12px) — ignored when an Image Style preset is applied, since the preset owns the corners |
 
 Plus **Text / Background / Title / Caption Color**, a **Font Size Preset**, and **Margin &
 Padding**.

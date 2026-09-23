@@ -19,7 +19,7 @@ A vector animation avoids the file weight of a video, but a large or complex `.j
 
 ## Content
 
-<img src="/img/shortcodes/lottie-content.png" alt="Lottie Animation options panel — Content tab" width="1200" />
+<img src="/img/shortcodes/lottie-content.png" alt="Lottie Animation options panel — Content tab" width="840" />
 
 - **Source** — where the animation comes from: URL (.json) (default) or Upload / Media Library.
 - **Lottie JSON URL** — a direct link to a `.json` animation (e.g. the "Lottie JSON" export from LottieFiles). Must be a `.json` Lottie/Bodymovin file, not a `.lottie` or GIF.
@@ -27,7 +27,7 @@ A vector animation avoids the file weight of a video, but a large or complex `.j
 
 ## Design
 
-<img src="/img/shortcodes/lottie-design.png" alt="Lottie Animation options panel — Design tab" width="1200" />
+<img src="/img/shortcodes/lottie-design.png" alt="Lottie Animation options panel — Design tab" width="840" />
 
 - **Trigger** — when the animation plays: Autoplay on load (default), Play when scrolled into view, Play on hover, or Play / pause on click.
 - **Loop** — repeat the animation. Defaults to Yes.
@@ -39,7 +39,7 @@ A vector animation avoids the file weight of a video, but a large or complex `.j
 
 ## Styling
 
-<img src="/img/shortcodes/lottie-styling.png" alt="Lottie Animation options panel — Styling tab" width="1200" />
+<img src="/img/shortcodes/lottie-styling.png" alt="Lottie Animation options panel — Styling tab" width="840" />
 
 - **Margin & Padding** — spacing around the element.
 

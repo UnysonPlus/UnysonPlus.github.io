@@ -333,7 +333,7 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title} — WordPress theme framework`}
-      description="Unyson+ is a free, modular WordPress framework for developers: custom fields, theme settings, a page builder, and a theme builder. Take one piece or the whole thing. GPL licensed, no license keys.">
+      description="Unyson+ is a free, modular, page-builder-first WordPress framework — custom fields, post types, a Flexbox/Div page builder, a theme builder, a no-library Animation Engine, and a Site Converter that turns AI-generated designs into WordPress. A modern continuation of Unyson. GPL licensed, no license keys.">
       <HomepageHeader />
       <main>
         <FrameworkStory />

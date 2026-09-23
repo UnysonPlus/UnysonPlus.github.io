@@ -19,7 +19,7 @@ Give every image its real width and height (or an aspect ratio) so the browser r
 
 ## Content
 
-<img src="/img/shortcodes/media-image-content.png" alt="Image options panel — Content tab" width="1200" />
+<img src="/img/shortcodes/media-image-content.png" alt="Image options panel — Content tab" width="750" />
 
 - **Choose Image** — upload a new image or pick one from the media library. Source of truth is a WordPress attachment, so the alt text comes from the media library (never from the URL). Pick a source larger than the display size below so it stays sharp.
 - **Width** — a unit-input (number + unit; choices `px`, `%`, `vw`, `rem`, `em`; default `300px`). Applied as inline CSS so any unit previews correctly. When **both** Width and Height are in `px`, the source image is cropped to that exact size server-side via `fw_resize`, and the px value also becomes the HTML `width` attribute (reduces layout shift). Non-px units only scale the display. Leave Height empty to keep the aspect ratio.
@@ -29,7 +29,7 @@ Give every image its real width and height (or an aspect ratio) so the browser r
 
 ## Styling
 
-<img src="/img/shortcodes/media-image-styling.png" alt="Image options panel — Styling tab" width="1200" />
+<img src="/img/shortcodes/media-image-styling.png" alt="Image options panel — Styling tab" width="750" />
 
 - **Image Style** — a live-preview picker of the reusable **Image Style presets** (crop ratio, corner radius, shape mask, filter, scrim), managed in **Theme Settings → Components → Image Styles**.
 - **Background Color** — compact color picker (a `bg-*` preset or a custom hex) applied to the wrapper. With padding, this renders a colored frame around the image.

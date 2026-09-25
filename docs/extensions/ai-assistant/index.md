@@ -20,10 +20,11 @@ builder, external AI agents connected over MCP, and an AI channel in the
 
 :::warning Beta — trial stage
 The AI Assistant is in **beta**. It appears in *Unyson+ → Extensions* as **AI Assistant (Beta)** and
-ships inactive. **Phase 1 has shipped** (extension 1.0.0): the abilities layer below — read the site,
-create pages, insert / update / move / remove items, and undo — callable over the WordPress REST
-abilities endpoints today. The builder panel, MCP setup screen, verify loop and Chat channel are still
-to come; the [roadmap](#roadmap) is updated as each phase lands. Expect changes while in beta.
+ships inactive. **Phases 1 and 2 have shipped** (extension 1.0.1): the abilities layer below — read
+the site, create pages, insert / update / move / remove items, and undo — plus a built-in **MCP
+server** and a *Unyson+ → AI Assistant* screen for [connecting an AI agent](#front-end-1--mcp-access-for-ai-agents).
+The builder panel, verify loop and Chat channel are still to come; the [roadmap](#roadmap) is updated
+as each phase lands. Expect changes while in beta.
 :::
 
 ## What it does
@@ -163,23 +164,70 @@ POST /wp-json/wp-abilities/v1/abilities/unysonplus/update-element/run
      {"input": {"post_id": 42, "path": "0.1", "atts": {"title": "Hello"}}}
 ```
 
-An external agent signs in with an **Application Password**. WordPress only enables those over
-**HTTPS**, or on a site whose `WP_ENVIRONMENT_TYPE` is `local`.
+An external caller signs in with an **Application Password** (see
+[Connecting an agent](#connecting-an-agent) below). Most agents are better served by the MCP
+endpoint, which wraps these same abilities as tools.
 
 ## Front-end 1 — MCP access for AI agents
 
-The quickest front-end to ship, and the one that needs no key stored in WordPress. Abilities
-flagged for MCP are served by WordPress's MCP adapter, so any MCP-capable AI agent on your
-desktop can list and call them.
+**Shipped in 1.0.1.** The extension runs its own MCP server, so any MCP-capable AI agent — a
+desktop app, a command-line coding agent, an IDE assistant — can use your site's abilities as tools.
+No AI key is stored in WordPress: the agent brings its own model.
 
-- **Authentication:** a WordPress **Application Password** for a dedicated user. The agent can do
-  exactly what that user's role allows — nothing more.
-- **Typical session:** the agent calls `site-info` → `list-elements` → `describe-element` for the
-  pieces it needs → `create-page` / `insert-section` → `render-check` → reports back.
-- **Where it shines:** large jobs (a whole site from a brief), repetitive edits across many pages,
-  and pairing with the [Site Converter](../site-converter/index.md) to reproduce a source site.
-- **Setup (planned):** *Unyson+ → AI Assistant → Connect an agent* shows the MCP endpoint URL and
-  a one-click "create Application Password" button with a ready-to-paste config snippet.
+```
+POST /wp-json/unysonplus-ai/v1/mcp      (MCP Streamable HTTP transport, JSON responses)
+```
+
+The fourteen abilities appear as tools named without the prefix: `site_info`, `list_elements`,
+`describe_element`, `get_page`, `list_presets`, `search_content`, `get_content`, `create_page`,
+`insert_items`, `update_element`, `move_element`, `remove_element`, `list_revisions` and `undo`.
+Each tool carries read-only / destructive / idempotent hints so the agent can ask before a risky
+step. The server also sends the agent short working instructions (start with `site_info`, check
+`describe_element` before setting options, keep new pages as drafts, use presets for styling).
+
+- **Access mode:** *Unyson+ → AI Assistant → MCP access* — **Off** (default: every agent is refused),
+  **Read-only** (only the Read tools are offered), or **Read & write**.
+- **Who the agent is:** it signs in with an Application Password and acts as **that user**, so it can
+  only do what the user's role allows. Use an Editor account to keep an agent away from site settings.
+- **Where it shines:** large jobs (a whole page or site from a brief), repetitive edits across many
+  pages, and pairing with the [Site Converter](../site-converter/index.md) to reproduce a source site.
+- **Also works with the WordPress MCP adapter.** Every ability is flagged `meta.mcp.public`, so a site
+  running the adapter plugin exposes the same tools through it.
+
+### Connecting an agent
+
+1. Activate **AI Assistant (Beta)** under *Unyson+ → Extensions*.
+2. Open *Unyson+ → AI Assistant*, set **MCP access** to *Read-only* or *Read & write*, and save.
+3. Under **Connect an agent**, give the connection a label (e.g. "Work laptop") and click
+   **Create connection password**. The screen shows — **once** — the server URL, username, password,
+   the ready-made `Authorization` header, and a JSON config block:
+
+   ```json
+   {
+     "mcpServers": {
+       "unysonplus": {
+         "type": "http",
+         "url": "https://example.com/wp-json/unysonplus-ai/v1/mcp",
+         "headers": { "Authorization": "Basic <base64 of username:password>" }
+       }
+     }
+   }
+   ```
+
+4. Paste that into your agent's MCP server settings (or add a remote HTTP MCP server with the URL and
+   `Authorization` header), then ask it to build something — e.g. *"Build a draft landing page for a
+   small bakery: a hero, a three-item features row and a closing call to action."*
+
+Every connection is listed under **Your connections** with when it was last used, and **Revoke** signs
+that agent out immediately. Create one connection per agent or device so each can be revoked alone.
+
+:::note HTTPS and local sites
+WordPress only offers Application Passwords over **HTTPS** or on a site whose `WP_ENVIRONMENT_TYPE`
+is `local`. On a plain-HTTP **development** host — `localhost`, `127.0.0.1`, or a name ending in
+`.local`, `.test` or `.localhost` — the AI Assistant enables them so you can connect an agent while
+building locally. Return `false` from the `fw_ai_assistant_allow_local_app_passwords` filter to opt out.
+A live site should always be served over HTTPS: the password travels with every request.
+:::
 
 ## Front-end 2 — the in-builder assistant panel
 
@@ -249,29 +297,32 @@ assistant:
 | AI provider key | *Settings → Connectors* (WordPress core) | None |
 | Model preference | *Unyson+ → AI Assistant* | Provider default |
 | Allowed roles for the builder panel | *Unyson+ → AI Assistant* | Administrator, Editor |
-| MCP access | *Unyson+ → AI Assistant → Connect an agent* | Off |
+| MCP access (Off / Read-only / Read & write) | *Unyson+ → AI Assistant → MCP access* — stored as option `upw_ai_mcp_mode` | Off |
+| Agent connections | *Unyson+ → AI Assistant → Connect an agent* (WordPress Application Passwords) | None |
 | Chat AI channel | *Theme Settings → Site-wide UX → Chat Button* | Off |
 | Visitor daily message cap | same | 100 |
 
-Nothing is written outside the standard places: revisions use WordPress revisions, settings use
-the extension's options, and the optional visitor log is a custom table removed on uninstall.
+Nothing is written outside the standard places: AI revisions are post-meta rows on the page they
+belong to (the newest 20 per page), settings are WordPress options, connections are ordinary
+Application Passwords, and the planned visitor log will be a custom table removed on uninstall.
 
-### File layout (planned)
+### File layout
 
 ```
 framework/extensions/ai-assistant/
 ├── manifest.php
-├── class-fw-extension-ai-assistant.php
+├── class-fw-extension-ai-assistant.php   admin screen + wiring
 ├── includes/
-│   ├── abilities/          one file per ability category (read, build, safety, visitor)
-│   ├── class-schema-validator.php
-│   ├── class-revisions.php
-│   └── class-render-check.php
-├── views/                  settings page, builder panel mount
-└── static/
-    ├── js/panel.js         builder chat panel
-    └── css/panel.css
+│   ├── class-fw-ai-schema.php            element catalog, option schemas, validation
+│   ├── class-fw-ai-store.php             builder-tree read/write, revisions, paths
+│   ├── class-fw-ai-abilities.php         ability registration + callbacks
+│   └── class-fw-ai-mcp.php               the MCP server endpoint
+└── views/page.php                        Unyson+ → AI Assistant
 ```
+
+The builder panel (Phase 3) will add `static/` assets, and the render check (Phase 4) its own class.
+For developers, `fw_ai_assistant_tree_saved` fires after every AI write with the post id and the new
+tree.
 
 The Chat AI channel lives in the **Chat** extension (`chat/includes/ai-channel.php`) and only
 activates when the AI Assistant extension is active.
@@ -281,9 +332,9 @@ activates when the AI Assistant extension is active.
 | Phase | Deliverable | Done when | Status |
 | --- | --- | --- | --- |
 | 1 | Extension skeleton + read abilities + write abilities with schema validation and revisions | A test page can be built and undone entirely through abilities | **Done** — 1.0.0 |
-| 2 | MCP access + "Connect an agent" screen | An external agent builds a 3-section page from a one-line brief | Not started |
+| 2 | MCP access + "Connect an agent" screen | An external agent builds a 3-section page from a one-line brief | **Done** — 1.0.1 |
 | 3 | In-builder assistant panel | "Add a pricing section" works in the backend builder and Live Page Editor, with per-step Undo | Not started |
-| 4 | `render-check` + verify loop | Every build reply includes a render check; a deliberately broken section is caught | Not started |
+| 4 | `render-check` + verify loop | Every build reply includes a render check; a deliberately broken section is caught (the Phase 2 acceptance run showed why: an agent left icon boxes without an icon, rendering an empty gap above each title) | Not started |
 | 5 | Chat AI channel | Answers a question from a published page, hands off to a human channel, respects the daily cap | Not started |
 
 ## Open questions

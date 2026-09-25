@@ -15,7 +15,7 @@ description: "Free WordPress live editor — edit your page-builder pages visual
 
 The **Live Page Editor** lets you edit Page Builder pages directly on the live
 front end — hover any section, column or element to select it and change its
-options in place, Avada-style, layered on top of the existing Page Builder.
+options in place, layered on top of the existing Page Builder.
 
 It edits the **same content** as the classic backend builder (it's the one
 builder model under the hood), so anything you do in one editor shows up in the

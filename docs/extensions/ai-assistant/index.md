@@ -1,14 +1,14 @@
 ---
 sidebar_position: 1
-title: "Free WordPress AI Site Builder Assistant"
-sidebar_label: "AI Assistant"
+title: "Free WordPress AI Site Builder Assistant (Beta)"
+sidebar_label: "AI Assistant (Beta)"
 description: "Free WordPress AI assistant for the Unyson+ page builder — build and edit pages by conversation, drive your site from any MCP-capable AI agent, and answer visitors through the Chat button. Built on the WordPress 7 Abilities API, AI Client and Connectors."
 ---
 
-# AI Assistant
+# AI Assistant (Beta)
 
 <div class="ext-hero">
-  <span class="ext-hero__badge">FREE!</span>
+  <span class="ext-hero__badge">BETA</span>
   <p class="ext-hero__title">Build pages by talking to your site.</p>
   <p class="ext-hero__sub">Ask for a pricing section, a new landing page or a restyled header and watch it land in the page builder as real, editable elements — using your own AI provider key, or an AI agent you already use. No proprietary credits, no paid tier.</p>
 </div>
@@ -18,9 +18,12 @@ schema-checked actions. The same actions power three front-ends: a chat panel in
 builder, external AI agents connected over MCP, and an AI channel in the
 [Chat](../overview.md#available-extensions) button that answers your visitors.
 
-:::info Status — in design
-This page is the design and build plan. Nothing has shipped yet; the
-[roadmap](#roadmap) below is updated as each phase lands.
+:::warning Beta — trial stage
+The AI Assistant is in **beta**. It appears in *Unyson+ → Extensions* as **AI Assistant (Beta)** and
+ships inactive. **Phase 1 has shipped** (extension 1.0.0): the abilities layer below — read the site,
+create pages, insert / update / move / remove items, and undo — callable over the WordPress REST
+abilities endpoints today. The builder panel, MCP setup screen, verify loop and Chat channel are still
+to come; the [roadmap](#roadmap) is updated as each phase lands. Expect changes while in beta.
 :::
 
 ## What it does
@@ -94,16 +97,17 @@ Design rules:
 ## Abilities
 
 All abilities live in the `unysonplus` namespace, grouped into categories. The **Visitor** column
-marks the read-only subset that the Chat AI channel is allowed to use.
+marks the read-only subset that the Chat AI channel is allowed to use. Every ability in the *Site and
+content* table is live in 1.0.0; in the other two tables each row says **Shipped** or *Planned*.
 
 ### Site and content (read)
 
 | Ability | Input | Returns | Permission | Visitor |
 | --- | --- | --- | --- | --- |
 | `unysonplus/site-info` | — | Site name, tagline, active theme, active extensions, page list | `edit_posts` | No |
-| `unysonplus/list-elements` | optional category | Every available page-builder element with a one-line summary | `edit_posts` | No |
-| `unysonplus/describe-element` | element slug | The element's full option schema + usage notes | `edit_posts` | No |
-| `unysonplus/get-page` | post ID | The page's builder structure (sections → columns → elements) | `edit_post` on that ID | No |
+| `unysonplus/list-elements` | optional category | Every layout type and page-builder element with a one-line summary | `edit_posts` | No |
+| `unysonplus/describe-element` | element slug, `include_effects` | Every option id with its type, tab, label, allowed choices and default (animation effect options only on request) | `edit_posts` | No |
+| `unysonplus/get-page` | post ID, `detail` (outline / full) | The page's builder tree; the outline gives every item a `path` such as `0.2.1` | `edit_post` on that ID | No |
 | `unysonplus/list-presets` | preset type | Button, box, section and color presets with their names | `edit_posts` | No |
 | `unysonplus/search-content` | query | Matching published pages, posts and products (title, excerpt, URL) | public | **Yes** |
 | `unysonplus/get-content` | post ID or URL | Plain-text body of a *published* page, post or product | public | **Yes** |
@@ -112,26 +116,55 @@ marks the read-only subset that the Chat AI channel is allowed to use.
 
 | Ability | Input | Effect | Permission | Hints |
 | --- | --- | --- | --- | --- |
-| `unysonplus/create-page` | title, status (draft default), optional structure | Creates a new builder page | `publish_pages` for publish, else `edit_pages` | — |
-| `unysonplus/insert-section` | post ID, position, section structure | Inserts a validated section | `edit_post` | — |
-| `unysonplus/update-element` | post ID, element path, option values | Changes options on one element | `edit_post` | idempotent |
-| `unysonplus/move-element` | post ID, from path, to path | Reorders sections, columns or elements | `edit_post` | idempotent |
-| `unysonplus/remove-element` | post ID, element path | Deletes an element or section | `edit_post` | **destructive** |
-| `unysonplus/apply-template` | post ID, template ID, position | Inserts a Template Library section or page | `edit_post` | — |
-| `unysonplus/save-preset` | preset type, name, values | Creates or updates a Theme Settings preset | `edit_theme_options` | idempotent |
-| `unysonplus/update-theme-settings` | settings path, values | Changes Theme Settings (colors, fonts, header, footer…) | `edit_theme_options` | — |
-| `unysonplus/convert-url` | source URL | Runs the Site Converter capture + import | `manage_options` | **destructive** |
+| `unysonplus/create-page` | title, status (draft default), post type, slug, optional items | Creates a new builder page — **Shipped** | publish capability for publish/private, else edit | — |
+| `unysonplus/insert-items` | post ID, items, optional parent path + position | Inserts validated items at the page root or inside a layout item — **Shipped** | `edit_post` | — |
+| `unysonplus/update-element` | post ID, path, atts (merged; `null` resets one), column width | Changes options on one item — **Shipped** | `edit_post` | idempotent |
+| `unysonplus/move-element` | post ID, path, destination parent, position | Moves an item with its children — **Shipped** | `edit_post` | — |
+| `unysonplus/remove-element` | post ID, path | Deletes an item and everything inside it — **Shipped** | `edit_post` | **destructive** |
+| `unysonplus/apply-template` | post ID, template ID, position | Inserts a Template Library section or page — *Planned* | `edit_post` | — |
+| `unysonplus/save-preset` | preset type, name, values | Creates or updates a Theme Settings preset — *Planned* | `edit_theme_options` | idempotent |
+| `unysonplus/update-theme-settings` | settings path, values | Changes Theme Settings (colors, fonts, header, footer…) — *Planned* | `edit_theme_options` | — |
+| `unysonplus/convert-url` | source URL | Runs the Site Converter capture + import — *Planned* | `manage_options` | **destructive** |
 
 ### Safety and verification
 
 | Ability | Input | Returns | Permission |
 | --- | --- | --- | --- |
-| `unysonplus/list-revisions` | post ID | AI-tagged revisions, newest first | `edit_post` |
-| `unysonplus/undo` | post ID, optional revision ID | Restores the page to the revision saved before an AI change | `edit_post` |
-| `unysonplus/render-check` | post ID | Rendered HTML summary: sections found, headings, missing images, console errors, and an optional screenshot | `edit_post` |
+| `unysonplus/list-revisions` | post ID | AI revisions, newest first (the newest 20 are kept) — **Shipped** | `edit_post` |
+| `unysonplus/undo` | post ID, optional revision ID | Restores a saved revision; the current state is saved first, so an undo can itself be undone — **Shipped** | `edit_post` |
+| `unysonplus/render-check` | post ID | Rendered HTML summary: sections found, headings, missing images, console errors, and an optional screenshot — *Planned* | `edit_post` |
 
-Every write ability returns the changed structure *plus* a short diff, so the model — and the
-person watching — can see exactly what moved.
+Every write ability returns the page's new outline, the id of the revision that undoes it, and edit
+and preview links. Invalid input changes nothing and returns the exact problems — an unknown option
+id, a value outside a select's choices, an element placed where it cannot sit — so the model can
+correct itself and retry.
+
+### Items and paths
+
+Items use the same shape the builder saves. A layout item is
+`{type: "flexbox" | "section" | "column" | "container" | "row", atts: {…}, _items: […]}` (a column also
+takes `width`, e.g. `"1_2"`); an element is `{type: "simple", shortcode: "button", atts: {…}}`. The
+page root holds sections, flexboxes or containers; a section holds only columns; elements go inside a
+column or flexbox. A new band is usually
+`{type: "flexbox", atts: {html_tag: "section", display: "block"}, _items: […]}`.
+
+A **path** is the dotted index `get-page` prints (`0.2.1` = first band → its third child → that
+child's second child), or `id:<unique_id>`.
+
+### Calling the abilities over REST
+
+Abilities are served under WordPress's `wp-abilities/v1` namespace. Read-only abilities run with
+`GET`, the rest with `POST`:
+
+```
+GET  /wp-json/wp-abilities/v1/abilities?category=unysonplus-build
+GET  /wp-json/wp-abilities/v1/abilities/unysonplus/get-page/run?input[post_id]=42
+POST /wp-json/wp-abilities/v1/abilities/unysonplus/update-element/run
+     {"input": {"post_id": 42, "path": "0.1", "atts": {"title": "Hello"}}}
+```
+
+An external agent signs in with an **Application Password**. WordPress only enables those over
+**HTTPS**, or on a site whose `WP_ENVIRONMENT_TYPE` is `local`.
 
 ## Front-end 1 — MCP access for AI agents
 
@@ -247,7 +280,7 @@ activates when the AI Assistant extension is active.
 
 | Phase | Deliverable | Done when | Status |
 | --- | --- | --- | --- |
-| 1 | Extension skeleton + read abilities + write abilities with schema validation and revisions | A test page can be built and undone entirely through abilities | Not started |
+| 1 | Extension skeleton + read abilities + write abilities with schema validation and revisions | A test page can be built and undone entirely through abilities | **Done** — 1.0.0 |
 | 2 | MCP access + "Connect an agent" screen | An external agent builds a 3-section page from a one-line brief | Not started |
 | 3 | In-builder assistant panel | "Add a pricing section" works in the backend builder and Live Page Editor, with per-step Undo | Not started |
 | 4 | `render-check` + verify loop | Every build reply includes a render check; a deliberately broken section is caught | Not started |
@@ -255,9 +288,10 @@ activates when the AI Assistant extension is active.
 
 ## Open questions
 
-- **Minimum WordPress version.** The assistant needs WordPress 7's AI Client and Connectors. On
-  older sites, should the extension hide itself, or offer MCP-only mode using the Abilities API
-  (available since 6.9)?
+- **Minimum WordPress version.** The abilities layer needs only the Abilities API, so 1.0.0 requires
+  WordPress 6.9 (on older WordPress it loads but registers nothing). The builder panel and Chat
+  channel will need WordPress 7's AI Client and Connectors. Should those parts hide themselves on
+  6.9, or should the extension require 7.0 outright?
 - **Where the builder panel lives.** A docked side panel (always visible) or a floating button
   that opens it (less clutter)?
 - **Screenshots in `render-check`.** Server-side screenshots need a headless browser, which most

@@ -20,11 +20,12 @@ builder, external AI agents connected over MCP, and an AI channel in the
 
 :::warning Beta — trial stage
 The AI Assistant is in **beta**. It appears in *Unyson+ → Extensions* as **AI Assistant (Beta)** and
-ships inactive. **Phases 1 and 2 have shipped** (extension 1.0.1): the abilities layer below — read
-the site, create pages, insert / update / move / remove items, and undo — plus a built-in **MCP
-server** and a *Unyson+ → AI Assistant* screen for [connecting an AI agent](#front-end-1--mcp-access-for-ai-agents).
-The builder panel, verify loop and Chat channel are still to come; the [roadmap](#roadmap) is updated
-as each phase lands. Expect changes while in beta.
+ships inactive. **Phases 1–3 have shipped** (extension 1.0.2): the abilities layer below — read the
+site, create pages, insert / update / move / remove items, and undo — a built-in **MCP server** for
+[connecting an AI agent](#front-end-1--mcp-access-for-ai-agents), and the
+[**AI Assistant panel**](#front-end-2--the-in-builder-assistant-panel) in the page builder and Live
+Page Editor. The verify loop and Chat channel are still to come; the [roadmap](#roadmap) is updated as
+each phase lands. Expect changes while in beta.
 :::
 
 ## What it does
@@ -231,19 +232,51 @@ A live site should always be served over HTTPS: the password travels with every 
 
 ## Front-end 2 — the in-builder assistant panel
 
-A chat panel docked in the page builder (backend and [Live Page Editor](../live-editor.md)),
-powered by the WordPress AI Client and whatever provider key is set under **Connectors**.
+**Shipped in 1.0.2.** An **✦ AI Assistant (Beta)** button sits at the bottom right of the backend
+page builder and of the [Live Page Editor](../live-editor.md). It opens a chat panel: describe a
+change — *"Add a pricing section with three plans"*, *"Add a FAQ at the end"*, *"Make the headings
+sound more confident"* — and it lands in the builder a few seconds later.
 
-- **Context-aware:** the panel knows which page is open and which element is selected, so
-  "make this button bigger" needs no explanation.
-- **Streaming progress:** each ability call is shown as a step ("Inserted section *Pricing*",
-  "Updated button preset *Primary*") with an **Undo** link on every step.
-- **Draft-safe by default:** new pages are created as drafts; changes to a published page are
-  applied to the builder but not saved until you press **Update**, exactly like a manual edit.
-- **Prompt starters:** "Build a landing page for…", "Rewrite this section's copy", "Match this
-  page to my brand colors", "Convert this URL".
-- **No key configured:** the panel shows a short explainer linking to **Settings → Connectors**
-  and to the MCP option above.
+- **It edits what you have open.** The panel sends the page as it is in your editor — unsaved edits
+  included — and the AI works on that copy. The result is applied to the builder, **not saved**:
+  press **Update** (or **Save** in the Live Page Editor) to keep it, exactly like a manual edit.
+- **One step on your Undo.** Each AI change is a single entry on the builder's own Undo / Redo
+  history (and the Live Page Editor's Ctrl+Z). Every reply also has an **Undo this change** link.
+- **It knows the page.** The current outline goes along with every request, so "change the second
+  heading" or "add a section below the pricing" needs no further explanation.
+- **Shows its work.** Each reply lists the changes made ("Inserted 1 item(s)", "Updated button at
+  1.2"…).
+- **Safe with concurrent edits.** If you change the page while the assistant is working, its result is
+  not applied (so nothing you did is overwritten) and it asks you to try again.
+- **Conversational.** Follow-ups carry the recent conversation, so "make it four plans instead" works.
+
+### Choosing the AI model
+
+The panel needs a model. *Unyson+ → AI Assistant → Builder assistant → AI model* picks one:
+
+| Option | What it uses | Where it works |
+| --- | --- | --- |
+| **Automatic** (default) | The WordPress AI Client if a provider key is set, otherwise the local agent command | Everywhere |
+| **WordPress AI Client** | The provider key under WordPress's *Settings → Connectors* (WordPress 7 or newer) — you pay the provider per request | Everywhere |
+| **Local agent command** | A command-line AI agent already installed on the machine, run in the background by the web server | Local development hosts only (`localhost`, `*.local`, `*.test`) |
+| **Off** | — hides the button | — |
+
+The **local agent command** is for building on your own machine without an API key: if a
+command-line AI agent that accepts an MCP server config file is installed and signed in, enter the
+command that runs it with two placeholders — `{mcp_config}` (a one-off MCP config pointing at this
+site) and `{prompt_file}` (the instructions and request) — and its output becomes the reply. For each
+request the extension creates a temporary Application Password and a one-off session, points the agent
+at the [MCP server](#front-end-1--mcp-access-for-ai-agents) with them, and deletes both when the agent
+finishes. The session limits the agent to the panel's tools and to the copy of the page you have open.
+The command is only accepted, shown and run on a development host, never on a public site.
+
+When no model is available the panel explains how to add one instead of accepting a request.
+
+:::note Beta testing status
+1.0.2 was verified end to end with the **local agent command**, in both the backend builder and the
+Live Page Editor. The **WordPress AI Client** path uses the same sandbox and tools but has not yet been
+run against a live provider key — reports welcome.
+:::
 
 ## Front-end 3 — the Chat AI channel
 
@@ -295,8 +328,8 @@ assistant:
 | --- | --- | --- |
 | Enable AI Assistant | *Unyson+ → Extensions* | Off (ships inactive) |
 | AI provider key | *Settings → Connectors* (WordPress core) | None |
-| Model preference | *Unyson+ → AI Assistant* | Provider default |
-| Allowed roles for the builder panel | *Unyson+ → AI Assistant* | Administrator, Editor |
+| Builder assistant AI model (Automatic / WordPress AI Client / Local agent command / Off) | *Unyson+ → AI Assistant → Builder assistant* — option `upw_ai_panel_backend` | Automatic |
+| Local agent command (development hosts only) | same — option `upw_ai_local_agent_cmd` | None |
 | MCP access (Off / Read-only / Read & write) | *Unyson+ → AI Assistant → MCP access* — stored as option `upw_ai_mcp_mode` | Off |
 | Agent connections | *Unyson+ → AI Assistant → Connect an agent* (WordPress Application Passwords) | None |
 | Chat AI channel | *Theme Settings → Site-wide UX → Chat Button* | Off |
@@ -316,11 +349,14 @@ framework/extensions/ai-assistant/
 │   ├── class-fw-ai-schema.php            element catalog, option schemas, validation
 │   ├── class-fw-ai-store.php             builder-tree read/write, revisions, paths
 │   ├── class-fw-ai-abilities.php         ability registration + callbacks
-│   └── class-fw-ai-mcp.php               the MCP server endpoint
+│   ├── class-fw-ai-mcp.php               the MCP server endpoint
+│   └── class-fw-ai-panel.php             the builder panel's REST routes + model backends
+├── static/                               the panel's JS + CSS
 └── views/page.php                        Unyson+ → AI Assistant
 ```
 
-The builder panel (Phase 3) will add `static/` assets, and the render check (Phase 4) its own class.
+The panel is only loaded for users who can edit the page. The render check (Phase 4) will add its own
+class.
 For developers, `fw_ai_assistant_tree_saved` fires after every AI write with the post id and the new
 tree.
 
@@ -333,7 +369,7 @@ activates when the AI Assistant extension is active.
 | --- | --- | --- | --- |
 | 1 | Extension skeleton + read abilities + write abilities with schema validation and revisions | A test page can be built and undone entirely through abilities | **Done** — 1.0.0 |
 | 2 | MCP access + "Connect an agent" screen | An external agent builds a 3-section page from a one-line brief | **Done** — 1.0.1 |
-| 3 | In-builder assistant panel | "Add a pricing section" works in the backend builder and Live Page Editor, with per-step Undo | Not started |
+| 3 | In-builder assistant panel | "Add a pricing section" works in the backend builder and Live Page Editor, with per-step Undo | **Done** — 1.0.2 |
 | 4 | `render-check` + verify loop | Every build reply includes a render check; a deliberately broken section is caught (the Phase 2 acceptance run showed why: an agent left icon boxes without an icon, rendering an empty gap above each title) | Not started |
 | 5 | Chat AI channel | Answers a question from a published page, hands off to a human channel, respects the daily cap | Not started |
 
@@ -343,8 +379,9 @@ activates when the AI Assistant extension is active.
   WordPress 6.9 (on older WordPress it loads but registers nothing). The builder panel and Chat
   channel will need WordPress 7's AI Client and Connectors. Should those parts hide themselves on
   6.9, or should the extension require 7.0 outright?
-- **Where the builder panel lives.** A docked side panel (always visible) or a floating button
-  that opens it (less clutter)?
+- **Panel placement.** 1.0.2 uses a floating button that opens a panel at the bottom right; while
+  open, it covers part of the backend editor's *Publish* box (close the panel to reach it). Should it
+  dock on the left instead, or shrink when the Publish box is in view?
 - **Screenshots in `render-check`.** Server-side screenshots need a headless browser, which most
   hosts don't have. The default could be an HTML-only check, with screenshots only when the
   capture service is reachable.

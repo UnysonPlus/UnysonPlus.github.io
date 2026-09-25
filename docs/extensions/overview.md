@@ -53,7 +53,7 @@ page (where you activate and deactivate it yourself):
 | **Animation Engine** | WebGL objects, scroll/hover/cursor/text motion and page-transition modules. → [docs](/animation-engine/) | Yes — off by default |
 | **Animated Icons** | Adds an "Animated" tab to the icon picker (Lottie, Rive, animated SVG, GIF/APNG/WebP). | Yes — off by default |
 | **Chat** | A floating multi-channel contact button (WhatsApp, Messenger, Telegram, SMS, Email…). | Yes — off by default |
-| **AI Assistant** *(in design)* | Build and edit pages by conversation, connect MCP-capable AI agents, and add an AI channel to the Chat button. → [docs](./ai-assistant/index.md) | Not yet released |
+| **AI Assistant** *(beta)* | Lets AI build and edit pages through safe, undoable actions; a builder chat panel, MCP setup and a Chat AI channel are on the roadmap. → [docs](./ai-assistant/index.md) | Yes — off by default |
 | **Gutenberg Blocks** | Exposes Unyson+ elements as native, server-rendered Gutenberg blocks. → [docs](/blocks/intro) | Yes |
 | **Shortcodes** *(hidden)* | The shortcodes framework that powers the page builder. → [docs](./shortcodes/index.md) | Auto |
 | **Blog** *(hidden)* | Relabels Posts as "Blog" across the admin and front end. → [docs](./blog.md) | Auto |

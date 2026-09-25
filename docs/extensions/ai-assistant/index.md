@@ -20,12 +20,13 @@ builder, external AI agents connected over MCP, and an AI channel in the
 
 :::warning Beta — trial stage
 The AI Assistant is in **beta**. It appears in *Unyson+ → Extensions* as **AI Assistant (Beta)** and
-ships inactive. **Phases 1–3 have shipped** (extension 1.0.2): the abilities layer below — read the
+ships inactive. **Phases 1–4 have shipped** (extension 1.0.3): the abilities layer below — read the
 site, create pages, insert / update / move / remove items, and undo — a built-in **MCP server** for
-[connecting an AI agent](#front-end-1--mcp-access-for-ai-agents), and the
+[connecting an AI agent](#front-end-1--mcp-access-for-ai-agents), the
 [**AI Assistant panel**](#front-end-2--the-in-builder-assistant-panel) in the page builder and Live
-Page Editor. The verify loop and Chat channel are still to come; the [roadmap](#roadmap) is updated as
-each phase lands. Expect changes while in beta.
+Page Editor, and a [**render check**](#the-verify-loop) the assistant runs after every build. The Chat
+channel is still to come; the [roadmap](#roadmap) is updated as each phase lands. Expect changes while
+in beta.
 :::
 
 ## What it does
@@ -134,7 +135,7 @@ content* table is live in 1.0.0; in the other two tables each row says **Shipped
 | --- | --- | --- | --- |
 | `unysonplus/list-revisions` | post ID | AI revisions, newest first (the newest 20 are kept) — **Shipped** | `edit_post` |
 | `unysonplus/undo` | post ID, optional revision ID | Restores a saved revision; the current state is saved first, so an undo can itself be undone — **Shipped** | `edit_post` |
-| `unysonplus/render-check` | post ID | Rendered HTML summary: sections found, headings, missing images, console errors, and an optional screenshot — *Planned* | `edit_post` |
+| `unysonplus/render-check` | post ID | Renders the page and lists what a visitor would notice, each with its item path — see [The verify loop](#the-verify-loop) — **Shipped** | `edit_post` |
 
 Every write ability returns the page's new outline, the id of the revision that undoes it, and edit
 and preview links. Invalid input changes nothing and returns the exact problems — an unknown option
@@ -179,9 +180,9 @@ No AI key is stored in WordPress: the agent brings its own model.
 POST /wp-json/unysonplus-ai/v1/mcp      (MCP Streamable HTTP transport, JSON responses)
 ```
 
-The fourteen abilities appear as tools named without the prefix: `site_info`, `list_elements`,
+The fifteen abilities appear as tools named without the prefix: `site_info`, `list_elements`,
 `describe_element`, `get_page`, `list_presets`, `search_content`, `get_content`, `create_page`,
-`insert_items`, `update_element`, `move_element`, `remove_element`, `list_revisions` and `undo`.
+`insert_items`, `update_element`, `move_element`, `remove_element`, `render_check`, `list_revisions` and `undo`.
 Each tool carries read-only / destructive / idempotent hints so the agent can ask before a risky
 step. The server also sends the agent short working instructions (start with `site_info`, check
 `describe_element` before setting options, keep new pages as drafts, use presets for styling).
@@ -305,22 +306,42 @@ more channel: **AI Assistant**.
 | A model writes invalid builder content | Every write is validated against the live option schema; invalid input is rejected with a readable error the model can correct |
 | A change goes wrong | A revision tagged `ai` is saved before every write; `undo` restores it, and the panel shows Undo on each step |
 | Doing more than the user may do | Each ability's permission check uses standard WordPress capabilities for the *current* user; MCP agents act as their Application Password user |
-| Destructive actions | Abilities marked `destructive` (remove, convert URL) require an explicit confirmation step in the panel |
+| Destructive actions | Abilities carry a `destructive` hint so an agent can ask first, and the assistant is instructed to ask before removing content you wrote; in the panel nothing is saved until you press Update, and every change is one Undo step. *(A confirmation dialog in the panel is planned.)* |
 | Prompt injection from page content or visitors | Visitor chat only has read-only abilities; content returned by `get-content` is passed to the model as quoted data, never as instructions |
-| Runaway usage | Per-user and per-site rate limits; a daily cap for the visitor channel |
-| Claiming success that isn't real | The assistant must call `render-check` after a build and include its result in the final reply |
+| Runaway usage | The panel caps each request at 16 model rounds (the local agent at 10 minutes). *(Per-user rate limits and the visitor channel's daily cap are planned.)* |
+| Claiming success that isn't real | The assistant is instructed to run `render-check` and fix what it reports; the panel runs it again itself and shows the result under every reply that changed the page |
 
 ## The verify loop
 
-A reply saying "I've recreated the page" is worthless if the page is broken. After every build the
-assistant:
+**Shipped in 1.0.3.** A reply saying "I've built the page" is worthless if the page is broken, so the
+assistant checks its own work:
 
-1. Calls `render-check` on the page it changed.
-2. Confirms every section it inserted appears in the rendered HTML, headings are in order, images
-   load, and there are no front-end errors.
-3. When a reference was given (a URL or screenshot), compares section by section using the
-   capture service's visual comparison and lists what still differs.
-4. Reports the result honestly — what matches, and what it could not match.
+1. After building, it calls **`render-check`**, which renders the page element by element — inside
+   the builder panel, the unsaved version you have open — and lists every problem with the item's
+   `path`.
+2. It fixes what the check reports for the items it added or changed, and checks again.
+3. The panel then runs the check once more itself and shows the result under the reply — a green
+   *"Page check: No problems found"* or the list of what is still wrong — so the verdict never rests on
+   the model's word alone.
+
+What the check reports:
+
+| Severity | Problem |
+| --- | --- |
+| Error | An element that renders nothing, fails while rendering, prints a PHP error, or leaves raw `[shortcode]` text on the page |
+| Error | An image with no source, or pointing at an uploaded file that no longer exists |
+| Warning | An element's **main visual** is empty — an icon box with no icon, an image box with no image, a Lottie with no file — which shows as an empty gap |
+| Warning | Text still showing its default, like a button labelled "Submit" |
+| Warning | A link that goes nowhere (`#` or empty) |
+| Warning | An empty section or flexbox with no styling of its own (a styled empty one — a coloured bar, a divider — is left alone) |
+| Warning | More than one `h1`, or a heading that skips a level (`h2` → `h4`) |
+
+The "main visual" is an icon or media option named after the element itself (`icon_box` → `icon`,
+`image_box` → `image`), so optional extras such as a button's icon are not flagged. Theme and extension
+developers can adjust the list per element with the `fw_ai_assistant_visual_atts` filter.
+
+The check reads markup, not pixels. Comparing the result visually against a reference design is the
+next step (see [Open questions](#open-questions)).
 
 ## Settings and storage
 
@@ -350,14 +371,13 @@ framework/extensions/ai-assistant/
 │   ├── class-fw-ai-store.php             builder-tree read/write, revisions, paths
 │   ├── class-fw-ai-abilities.php         ability registration + callbacks
 │   ├── class-fw-ai-mcp.php               the MCP server endpoint
-│   └── class-fw-ai-panel.php             the builder panel's REST routes + model backends
+│   ├── class-fw-ai-panel.php             the builder panel's REST routes + model backends
+│   └── class-fw-ai-check.php             render-check
 ├── static/                               the panel's JS + CSS
 └── views/page.php                        Unyson+ → AI Assistant
 ```
 
-The panel is only loaded for users who can edit the page. The render check (Phase 4) will add its own
-class.
-For developers, `fw_ai_assistant_tree_saved` fires after every AI write with the post id and the new
+The panel is only loaded for users who can edit the page. For developers, `fw_ai_assistant_tree_saved` fires after every AI write with the post id and the new
 tree.
 
 The Chat AI channel lives in the **Chat** extension (`chat/includes/ai-channel.php`) and only
@@ -370,7 +390,7 @@ activates when the AI Assistant extension is active.
 | 1 | Extension skeleton + read abilities + write abilities with schema validation and revisions | A test page can be built and undone entirely through abilities | **Done** — 1.0.0 |
 | 2 | MCP access + "Connect an agent" screen | An external agent builds a 3-section page from a one-line brief | **Done** — 1.0.1 |
 | 3 | In-builder assistant panel | "Add a pricing section" works in the backend builder and Live Page Editor, with per-step Undo | **Done** — 1.0.2 |
-| 4 | `render-check` + verify loop | Every build reply includes a render check; a deliberately broken section is caught (the Phase 2 acceptance run showed why: an agent left icon boxes without an icon, rendering an empty gap above each title) | Not started |
+| 4 | `render-check` + verify loop | Every build reply includes a render check; a deliberately broken section is caught (the Phase 2 acceptance run showed why: an agent left icon boxes without an icon, rendering an empty gap above each title) | **Done** — 1.0.3 (the same request now ends with the icons set and a clean check) |
 | 5 | Chat AI channel | Answers a question from a published page, hands off to a human channel, respects the daily cap | Not started |
 
 ## Open questions
@@ -382,8 +402,9 @@ activates when the AI Assistant extension is active.
 - **Panel placement.** 1.0.2 uses a floating button that opens a panel at the bottom right; while
   open, it covers part of the backend editor's *Publish* box (close the panel to reach it). Should it
   dock on the left instead, or shrink when the Publish box is in view?
-- **Screenshots in `render-check`.** Server-side screenshots need a headless browser, which most
-  hosts don't have. The default could be an HTML-only check, with screenshots only when the
-  capture service is reachable.
+- **Visual comparison.** 1.0.3's render check is HTML-only, which works on every host. Pixel checks
+  (layout gaps, overlapping elements, comparing against a reference design) need a headless browser,
+  which most hosts don't have. Should the check add a visual pass only when the capture service is
+  reachable?
 - **Visitor channel models.** Should the visitor channel be allowed to use a cheaper model than
   the builder panel, configured separately?

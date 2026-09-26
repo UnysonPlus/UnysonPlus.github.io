@@ -42,6 +42,29 @@ The list is shown in the order the combined file uses, with the **theme styleshe
 end** (parent then child) so the cascade is preserved, your child theme's CSS still has the authority
 to override the framework and shortcode styles.
 
+### Finding things in a long list
+
+A real site registers a couple of hundred stylesheets, so the list is folded into **collapsible
+groups** — WordPress core, the framework, shortcodes, each extension, animation effects, the parent
+and child themes, generated CSS, and other plugins. Groups come from each asset's *path*, which is
+what actually identifies its owner, rather than its handle name, which a plugin can choose freely.
+
+Each group header carries a **tri-state checkbox** (checked, partially checked, unchecked) that
+toggles the whole group, and a count of how many of its stylesheets are being combined. Above the
+list are **Check all** / **Uncheck all**, a **filter box** that matches on handle or path, and an
+**Only unchecked** toggle for reviewing just the exclusions. A group with nothing selected is greyed
+out, so a glance down the collapsed list shows what is being left out without opening anything.
+
+Groups are ordered by where their first stylesheet falls in the cascade, and handles keep their
+cascade order *inside* each group — the list is grouped, never re-sorted, so it still reads
+top-to-bottom the way the combined file is assembled.
+
+:::note Animation effects
+The Animation Engine's effect partials get their own group. Their classes are applied by JavaScript
+after the page loads, which makes them the easiest thing on the page to break by excluding the wrong
+handle — so they are kept visible as one set rather than scattered through the list.
+:::
+
 ## JavaScript
 
 Scripts detected on the front end are listed too, but combining JS is more delicate than CSS, so the

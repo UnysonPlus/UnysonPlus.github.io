@@ -72,7 +72,8 @@ under 15% of the stylesheet it downloads — the framework and every shortcode s
 they *can* render, and a page uses one of them.
 
 Switch on **Remove unused CSS** and each page gets its own copy of the bundle with the rules nothing
-on it can match taken out. On a measured site the homepage went from **39.3 KiB to 16.3 KiB
+on it can match taken out. WordPress's own inline block styles are trimmed at the same time — on a
+page built with the page builder rather than blocks those are typically **70% unused**. On a measured site the homepage went from **39.3 KiB to 16.3 KiB
 gzipped** with no rendering change at all. The purged copy is generated the first time a page is
 viewed and cached from then on, so visitors never wait for it.
 
@@ -103,6 +104,43 @@ plain entry keeps any selector containing that text, and slashes make it a regul
 ```
 promo-banner
 /^\.seasonal-/
+```
+
+## Preloading the hero image
+
+A slow "largest contentful paint" usually is not about file size — it is about *when* the browser
+finds out the image exists. Normally it cannot know until it has downloaded the stylesheet, built
+the layout and reached that element.
+
+**Preload the hero image** tells it straight away. It also removes the `loading="lazy"` attribute
+from that one image, which matters more than it sounds: the page builder marks every image lazy,
+including the one in your hero — so the browser was being told to *delay* the very element the
+score is measured on.
+
+On a test page over a typical mobile connection this took the largest contentful paint from
+**3.2 seconds to 2.3** — nearly a second, with no change to the page itself.
+
+The hero is the first reasonably-sized image after your header, ignoring logos and icons. If a page
+has no such image, nothing is added.
+
+:::tip Measure it on a real connection
+On a local site this setting appears to do nothing — there is no network latency to hide, so the
+order things are fetched barely matters. Test it with throttling on, or on the live site.
+:::
+
+## Caching of generated files
+
+The combined and purged files are cached by the browser for a year. This is safe because their
+filenames contain a hash of their contents — change anything and the filename changes, so a visitor
+can never be served a stale file. Nothing to configure; an `.htaccess` is written alongside them.
+
+If your server is nginx rather than Apache, that file is ignored and the same rule belongs in your
+server config:
+
+```nginx
+location ~* /uploads/unysonplus/asset-optimizer/.*\.(css|js)$ {
+    add_header Cache-Control "public, max-age=31536000, immutable";
+}
 ```
 
 ## JavaScript

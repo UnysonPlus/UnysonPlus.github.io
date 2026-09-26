@@ -65,6 +65,46 @@ after the page loads, which makes them the easiest thing on the page to break by
 handle — so they are kept visible as one set rather than scattered through the list.
 :::
 
+## Removing unused CSS
+
+Combining solves the number of requests; it does not make the CSS smaller. A typical page uses
+under 15% of the stylesheet it downloads — the framework and every shortcode ship all the variants
+they *can* render, and a page uses one of them.
+
+Switch on **Remove unused CSS** and each page gets its own copy of the bundle with the rules nothing
+on it can match taken out. On a measured site the homepage went from **39.3 KiB to 16.3 KiB
+gzipped** with no rendering change at all. The purged copy is generated the first time a page is
+viewed and cached from then on, so visitors never wait for it.
+
+It needs **Combine CSS** on and **CSS delivery** set to *Linked file* — with inline delivery the
+stylesheet is already in the page before this step can run.
+
+:::caution Test it before you rely on it
+This is the one setting here whose mistakes are quiet. A rule removed in error does not raise an
+error: it shows up as a button with no hover, or a mobile menu that opens wrong, on a page nobody
+re-tested. After switching it on, click through a few pages — open the menu, expand an accordion,
+hover the buttons, tab through the links.
+
+If something looks wrong, add `?fw_ao_nopurge=1` to the URL. That serves the full stylesheet for
+that one request, so you can tell immediately whether this feature is the cause.
+:::
+
+### The safelist
+
+A page is scanned as it arrives, and a lot of CSS exists for moments that scan never sees — a menu
+opened, a row hovered, a slider started, an element scrolled into view. Those are protected
+automatically: state classes (`is-`, `has-`, `active`, `open`…), every hover and focus rule,
+animation and slider classes, the Animation Engine's effects, and anything driven by an attribute
+such as `aria-expanded`.
+
+Add to **Never remove (safelist)** only for class names your own JavaScript adds. One per line; a
+plain entry keeps any selector containing that text, and slashes make it a regular expression:
+
+```
+promo-banner
+/^\.seasonal-/
+```
+
 ## JavaScript
 
 Scripts detected on the front end are listed too, but combining JS is more delicate than CSS, so the

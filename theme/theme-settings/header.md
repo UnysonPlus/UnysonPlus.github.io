@@ -128,7 +128,45 @@ dark frosted bar that shrinks as you scroll.
 sit within each row. **Mobile Menu Side**, **Scroll Spy** (`nav_scrollspy`, one-page highlight +
 smooth-scroll), and **Hide Top / Bottom Bar on Mobile** round out the tab.
 
+## 7. Menu item styling
+
+The **Menu** sub-tab sets how top-level navigation items react on hover and for the current page. It
+splits into a single **Menu Item Style** (the primary treatment) plus optional **Style Modifiers** that
+stack on top of it - so a look like *Underline + Bold + Glow* is a style plus two checkboxes, not a
+one-off tile.
+
+**Menu Item Style** (`menu_item_style`) - pick one primary treatment, grouped by family:
+
+- **None** - colour only, no hover treatment.
+- **Underline** / **Underline (static)** - a 2px rule that grows in from the centre, or simply fades in.
+- **Gradient Underline** - the rule drawn as a two-tone gradient.
+- **Pill** / **Box** - a fully-rounded or soft-rounded filled background.
+- **Slide Fill** - the filled background wipes in from the left.
+- **Marker** - an angled, semi-transparent felt-tip swipe behind the text.
+- **Outline** - a bordered box in the accent colour.
+- **Bottom Bar** / **Top Bar** - a thick accent bar flush to one edge.
+- **Dot** - a small dot centred beneath the item.
+- **Sliding** - a single pill that glides between items on hover and rests under the current page (the
+  premium "magic" indicator, driven by `assets/js/navigation.js`, with a static current-item fill as a
+  no-JS fallback).
+
+The choice adds `body.menu-style-<slug>`, which `style.css` keys the treatment off. Fills use the **Item
+Hover / Active Background**; underlines, bars, dot and Marker use the **Hover / Active Color**.
+
+**Style Modifiers** (`menu_item_modifiers`) - check any; each combines with the style above:
+
+- **Bold** - the label goes bold on hover / current.
+- **Letter-spacing** - tracking widens slightly.
+- **Uppercase** - labels render in uppercase.
+- **Glow** - a soft accent glow blooms behind the text (best on dark headers).
+- **Fade the inactive items** - non-active items rest dimmed, full strength on hover / current.
+
+Each checked modifier adds an independent `body.menu-mod-<slug>` class, so any combination works. Two
+legacy values migrate automatically: the old *Highlight* fill is now **Marker**, and the old standalone
+*Fade* becomes primary **None** plus the **Fade the inactive items** modifier. A live gallery of every
+style and modifier lives on the demos site under **Theme -> Menu Item Styles**.
+
 ---
 
-The remaining sub-tabs - **Menu**, **Top Bar**, **Main Header**, **Bottom Bar** - configure the rows and
+The remaining sub-tabs - **Top Bar**, **Main Header**, **Bottom Bar** - configure the rows and
 navigation inside the chosen layout, and are documented separately.

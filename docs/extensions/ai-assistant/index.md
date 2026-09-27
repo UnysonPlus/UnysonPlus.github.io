@@ -172,6 +172,11 @@ panel.
 | [Post Types](/data-modeling/post-types) | `unysonplus/post-types-list`, `post-types-save`, `post-types-save-taxonomy`, `post-types-install-blueprint` | Custom post types and taxonomies, and ready-made blueprints |
 | [Custom Fields](/data-modeling/custom-fields) | `unysonplus/custom-fields-list` *(panel)*, `custom-fields-save-group`, `custom-fields-set-values` *(panel)* | Field groups and field values, checked against the fields' own definitions |
 | [Forms](../forms/index.md) | `unysonplus/forms-describe` *(panel)*, `forms-add` *(panel)* | Contact forms from starters or simple field lists — never form entries |
+| [WooCommerce](../woocommerce/index.md) | `unysonplus/woo-settings`, `woo-settings-update` | The shop-look settings (catalog grid, single product, shopper tools …): read them, and change them with every value checked — undoable |
+| WooCommerce | `unysonplus/woo-list-products`, `woo-save-product` | List products, and create or update simple products — name, text, prices and sale price, SKU (kept unique), stock, categories, images, the card ribbon and size guide. Orders and customers are never read |
+| Animation Engine | `unysonplus/animation-effects` *(panel)*, `animation-apply` *(panel)* | The effects an element can take (entrance, scroll effect, scroll reveal, hover, text effects …) with each effect's settings, and applying or removing one on a page item — every setting checked against the element's own options |
+| Animation Engine | `unysonplus/animation-site-modules` | The site-wide modules (custom cursor, page transitions, preloader, scroll progress, smooth scroll) and whether each is on; they are switched with `update-theme-settings` |
+| Animated Icons | `unysonplus/animated-icons-describe` *(panel)* | Which animated-icon types are on (Lottie, Rive, animated SVG, GIF / APNG / WebP), the icon value to set for each, and the Lottie / Rive files already uploaded |
 
 In testing, the single request *"create a draft 'Book a Tasting' page with a booking form (name, email,
 preferred date, guests 1–6, message) that emails bookings@…, and add it to the primary menu"* produced the
@@ -571,6 +576,7 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 6 | Site-building abilities: Theme Settings, presets, templates, URL conversion | An agent sets up a design system and draft pages from a one-line brief, and every settings change can be undone | **Done** — 1.0.5 |
 | 7 | Site-wide assistant + abilities from other extensions (first: SEO, Theme Builder) | From the Dashboard, "create a draft page" works end to end; an extension adds abilities from its own code, with undo | **Done** — 1.0.6 |
 | 8 | Abilities for Mega Menu, Snippets, Portfolio, Post Types, Custom Fields and Forms | A real agent builds a page with a booking form and adds it to the main menu from one request, and every change can be undone | **Done** — 1.0.7 |
+| 9 | Abilities for WooCommerce, the Animation Engine and Animated Icons | A product is created, edited and undone with prices restored; a scroll-reveal effect is applied to a section, renders on the front end and is removed again; a Lottie icon set through the AI renders | **Done** — WooCommerce 1.0.71, Animation Engine 1.3.90, Animated Icons 1.0.6 |
 
 ## Open questions
 
@@ -584,9 +590,9 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
   reachable?
 - **Visitor channel models.** Should the visitor channel be allowed to use a cheaper model than
   the builder panel, configured separately?
-- **More extensions.** WooCommerce (products and its settings), the Animation Engine and Animated Icons
-  are the remaining candidates. Form entries and newsletter subscribers are personal data, so they stay
-  out of the AI's reach unless that is explicitly decided otherwise.
+- **Personal data.** Every extension with something to build now has abilities. Form entries,
+  newsletter subscribers, and WooCommerce orders and customers are personal data, so they stay out of
+  the AI's reach unless that is explicitly decided otherwise.
 - **Visitor channel extras.** Opening hours for the human hand-off, an opt-in conversation log for
   review, and an estimated monthly cost next to the daily limit — worth adding?
 - **Testing with a provider key.** Both the builder panel and the visitor channel were verified end to

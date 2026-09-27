@@ -57,6 +57,18 @@ extension but don't see the menu item, WooCommerce is either not installed or no
 extension will say so in an admin notice, with a one-click Install or Activate button.
 :::
 
+## With the AI Assistant
+
+When the [AI Assistant (Beta)](../ai-assistant/index.md) extension is active, the AI can work on the shop:
+
+- **`woo-settings`** and **`woo-settings-update`** — read the settings on this extension's settings page
+  and change them. Every value is checked against the field it belongs to before anything is saved.
+- **`woo-list-products`** and **`woo-save-product`** — list products, and create or update simple
+  products: name, description, regular and sale price, SKU (which must be unique), stock, categories,
+  images, the product-card ribbon and the size guide. New products are drafts.
+
+Every change can be undone. Orders, customers and payment data are never read.
+
 ## What it does
 
 ### Theme-aware, with a universal fallback

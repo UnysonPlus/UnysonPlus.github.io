@@ -137,3 +137,8 @@ css:
   label: CSS
   permalink: /css
   description: Stylesheets, the cascade, and the generated CSS the framework emits
+
+ai-assistant:
+  label: AI Assistant
+  permalink: /ai-assistant
+  description: The AI Assistant (Beta) extension — its model backends, tools and safety model

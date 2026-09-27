@@ -129,3 +129,15 @@ if ( $subtitle ) {
 `fw_get_field()` takes the field name, an optional post ID, and an optional default:
 `fw_get_field( $name, $post_id = null, $default = null )`. For a repeater, it returns an array of
 rows you loop over.
+
+## With the AI Assistant
+
+When the [AI Assistant (Beta)](../extensions/ai-assistant/index.md) extension is active, the AI can design and fill fields:
+
+- **`custom-fields-list`** — the field groups, where they appear, and their fields.
+- **`custom-fields-save-group`** — create or update a group (fields with label, name, type, choices and
+  settings), checked against the same schema as this screen.
+- **`custom-fields-set-values`** — fill a post's fields, checked against each field (a select only takes
+  its choices, and so on).
+
+Every change can be undone.

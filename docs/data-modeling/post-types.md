@@ -240,3 +240,16 @@ See [Per-extension hooks](../hooks/extension-hooks.md) for the full list.
 4. Optionally add a **Taxonomy** and attach it to the post type(s).
 5. Save. The overview table confirms what registered and how much content each type holds, and
    [Custom Fields](./custom-fields.md) adds meta boxes to your new post types.
+
+## With the AI Assistant
+
+When the [AI Assistant (Beta)](../extensions/ai-assistant/index.md) extension is active, the AI can model content types:
+
+- **`post-types-list`** — the defined post types and taxonomies, and the ready-made blueprints.
+- **`post-types-save`** and **`post-types-save-taxonomy`** — create or update a post type (names, supports,
+  page builder, archive, icon) or a taxonomy — through the same save as this screen, so permalinks are
+  refreshed.
+- **`post-types-install-blueprint`** — add a blueprint (team, events, testimonials …) without overwriting
+  anything.
+
+Every change can be undone. Try *"Add an Events post type with an Event type category, using the page builder."*

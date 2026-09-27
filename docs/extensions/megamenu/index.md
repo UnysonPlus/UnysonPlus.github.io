@@ -388,3 +388,16 @@ class FW_Ext_Mega_Menu_Custom_Walker extends FW_Ext_Mega_Menu_Walker
     > ```
 
 3.  Adapt options popup sizes by overwriting these config keys.
+
+## With the AI Assistant
+
+When the [AI Assistant (Beta)](../ai-assistant/index.md) extension is active, the AI can build your navigation:
+
+- **`menus-list`** — every menu, where it is shown, and its items (with mega-menu settings).
+- **`menus-create`**, **`menus-add-items`**, **`menus-assign`**, **`menus-remove-item`** — create a menu from
+  a nested list (pages or links), add to one, put it in a location (primary header, footer …), remove items.
+- **`megamenu-set-item`** — turn a top-level item into a mega menu and set its row / column / item options
+  (column width, content type, call-to-action, badges …), checked against the same options as the Menus screen.
+
+Every change can be undone. Try *"Create a main menu with Home, About, Services (with a mega menu of our
+three service pages) and Contact, and put it in the header."*

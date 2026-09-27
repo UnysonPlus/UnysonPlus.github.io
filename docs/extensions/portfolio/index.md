@@ -133,3 +133,14 @@ Templates are located in the [views/](/extensions/creating-extensions/introducti
 - `single.php` - Portfolio course single post template. By default is used `single.php` from the theme root directory, you can overwrite it by creating `framework-customizations/extensions/portfolio/views/single.php`.
 - `taxonomy.php` - Portfolio category template. By default is used `taxonomy.php` from the theme root directory, you can overwrite it by creating `framework-customizations/extensions/portfolio/views/taxonomy.php`.
 - `content.php` - Default portfolio single page template content. It is loaded if the `framework-customizations/extensions/portfolio/views/single.php` doesn't exist and is used `single.php` from the theme root directory. The content of this view is rendered using worpdress [the_content](http://codex.wordpress.org/Plugin_API/Filter_Reference/the_content) filter, when the course single page is loaded.
+
+## With the AI Assistant
+
+When the [AI Assistant (Beta)](../ai-assistant/index.md) extension is active, the AI can manage projects:
+
+- **`portfolio-list`** and **`portfolio-describe`** — the projects, and the project fields (client, date,
+  services, results, testimonial, gallery …).
+- **`portfolio-save-project`** — create or update a project: title, text, categories and tags, featured
+  image, gallery and details, checked against the same fields as the edit screen. New projects are drafts.
+
+Every change can be undone.

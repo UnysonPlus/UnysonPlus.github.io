@@ -561,3 +561,15 @@ class FW_Option_Type_Form_Builder_Item_Yes_No extends FW_Option_Type_Form_Builde
 Now the field will be displayed in frontend as a radio box and the validation will work. The submitted value will be used by the form type you chose when created the form, for e.g. the Contact Forms sub-extensions will send the value in email.
 
 You can [inspect the built-in form items](https://github.com/UnysonPlus/UnysonPlus-Forms-Extension/tree/master/includes/option-types/form-builder/items) to learn what possibilities for customization are available (for e.g. what methods from the extended class you can overwrite).
+
+## With the AI Assistant
+
+When the [AI Assistant (Beta)](../ai-assistant/index.md) extension is active, the AI can add forms to pages:
+
+- **`forms-describe`** — the field types and the ready-made starters (contact, booking, quote, registration,
+  support, feedback, NPS, signup).
+- **`forms-add`** — a contact form from a starter and / or a list of fields (label, required, width,
+  choices), with who receives the submissions and the button / success texts.
+
+The AI has **no access to form entries** — the people who submit stay private. Try *"Add a booking form
+with name, email, preferred date and number of guests to the Contact page."*

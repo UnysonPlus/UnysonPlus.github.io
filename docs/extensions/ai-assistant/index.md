@@ -165,6 +165,18 @@ panel.
 | SEO | `unysonplus/seo-audit` | Checks up to 100 published pages for missing, long, auto-generated or duplicate titles and descriptions, and hidden (noindex) pages |
 | [Theme Builder](../theme-builder/index.md) | `unysonplus/theme-builder-list` | Header / body / footer parts, the templates combining them with where each applies, and the display-rule vocabulary |
 | Theme Builder | `unysonplus/theme-builder-save-template` | Creates or updates a template — its parts, display rules ("entire site", "this page", "front page" …), enabled and priority — undoable |
+| [Mega Menu](../megamenu/index.md) | `unysonplus/menus-list`, `menus-create`, `menus-add-items`, `menus-assign`, `menus-remove-item` | Navigation menus: list them, create one from a nested list of pages / links, add to it, show it in a location, remove items |
+| Mega Menu | `unysonplus/megamenu-set-item` | Turns a top-level item into a mega menu and sets row / column / item options |
+| [Snippets](../snippets.md) | `unysonplus/snippets-list` *(panel)*, `snippets-create` | Reusable blocks and Global Sections: list them (with the item that places each) and create new ones |
+| [Portfolio](../portfolio/index.md) | `unysonplus/portfolio-list`, `portfolio-describe`, `portfolio-save-project` | Projects: list, describe the project fields, create / update a project with its details, images and categories |
+| [Post Types](/data-modeling/post-types) | `unysonplus/post-types-list`, `post-types-save`, `post-types-save-taxonomy`, `post-types-install-blueprint` | Custom post types and taxonomies, and ready-made blueprints |
+| [Custom Fields](/data-modeling/custom-fields) | `unysonplus/custom-fields-list` *(panel)*, `custom-fields-save-group`, `custom-fields-set-values` *(panel)* | Field groups and field values, checked against the fields' own definitions |
+| [Forms](../forms/index.md) | `unysonplus/forms-describe` *(panel)*, `forms-add` *(panel)* | Contact forms from starters or simple field lists — never form entries |
+
+In testing, the single request *"create a draft 'Book a Tasting' page with a booking form (name, email,
+preferred date, guests 1–6, message) that emails bookings@…, and add it to the primary menu"* produced the
+page, the form and the menu item, passing the render check — all undone afterwards with `undo` /
+`undo_change`.
 
 Theme Builder parts are ordinary page-builder posts, so the AI **builds** a header, footer or body with
 the page abilities (`create_page` with post type `up_header`, `up_footer` or `up_body`, then
@@ -243,7 +255,9 @@ check — in about six minutes.
 
 ## The site-wide assistant
 
-**Shipped in 1.0.6.** An **✦ AI Assistant** item in the admin top bar opens a chat window on every
+**Shipped in 1.0.6** (it follows the site-build protocol's order since 1.0.7: colours, typography,
+container width, presets, header / footer with menus, then pages, then a check of every page). An
+**✦ AI Assistant** item in the admin top bar opens a chat window on every
 admin screen — the Dashboard, Pages, Settings, anywhere. Unlike the builder panel it is not tied to one
 page: it has **every** ability, so you can ask for whole-site work in plain words:
 
@@ -556,6 +570,7 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 5 | Chat AI channel | Answers a question from a published page, hands off to a human channel, respects the daily cap | **Done** — 1.0.4 |
 | 6 | Site-building abilities: Theme Settings, presets, templates, URL conversion | An agent sets up a design system and draft pages from a one-line brief, and every settings change can be undone | **Done** — 1.0.5 |
 | 7 | Site-wide assistant + abilities from other extensions (first: SEO, Theme Builder) | From the Dashboard, "create a draft page" works end to end; an extension adds abilities from its own code, with undo | **Done** — 1.0.6 |
+| 8 | Abilities for Mega Menu, Snippets, Portfolio, Post Types, Custom Fields and Forms | A real agent builds a page with a booking form and adds it to the main menu from one request, and every change can be undone | **Done** — 1.0.7 |
 
 ## Open questions
 
@@ -569,9 +584,9 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
   reachable?
 - **Visitor channel models.** Should the visitor channel be allowed to use a cheaper model than
   the builder panel, configured separately?
-- **More extensions.** Next candidates: Mega Menu, Snippets / global sections, Portfolio, Post Types,
-  Custom Fields and Forms (the forms themselves). Form entries and newsletter subscribers are personal
-  data, so they stay out of the AI's reach unless that is explicitly decided otherwise.
+- **More extensions.** WooCommerce (products and its settings), the Animation Engine and Animated Icons
+  are the remaining candidates. Form entries and newsletter subscribers are personal data, so they stay
+  out of the AI's reach unless that is explicitly decided otherwise.
 - **Visitor channel extras.** Opening hours for the human hand-off, an opt-in conversation log for
   review, and an estimated monthly cost next to the daily limit — worth adding?
 - **Testing with a provider key.** Both the builder panel and the visitor channel were verified end to

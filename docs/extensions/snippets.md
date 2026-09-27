@@ -69,3 +69,13 @@ To reuse a whole **Section** or **Column** at the root of a page (not inside a c
 snippet's kind to **Section** or **Column** and insert it from the Page Builder's **Templates**
 manager. See [Global Templates](./global-templates.md).
 :::
+
+## With the AI Assistant
+
+When the [AI Assistant (Beta)](ai-assistant/index.md) extension is active, the AI can work with snippets:
+
+- **`snippets-list`** — every snippet with its kind and the exact item to place it on a page.
+- **`snippets-create`** — a new Block (inline embed) or Global Section (a band reused on many pages),
+  optionally filled with content; its content is then edited with the page tools like any page.
+
+Try *"Turn our newsletter band into a Global Section and use it at the bottom of every service page."*

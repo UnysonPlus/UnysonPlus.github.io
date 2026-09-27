@@ -20,13 +20,14 @@ builder, external AI agents connected over MCP, and an AI channel in the
 
 :::warning Beta — trial stage
 The AI Assistant is in **beta**. It appears in *Unyson+ → Extensions* as **AI Assistant (Beta)** and
-ships inactive. **All six roadmap phases have shipped** (extension 1.0.5): the abilities layer below
+ships inactive. **All six roadmap phases have shipped** (extension 1.0.6): the abilities layer below
 — read the site, create pages, insert / update / move / remove items, and undo — a built-in **MCP
 server** for [connecting an AI agent](#front-end-1--mcp-access-for-ai-agents), the
 [**AI Assistant panel**](#front-end-2--the-in-builder-assistant-panel) in the page builder and Live
 Page Editor, a [**render check**](#the-verify-loop) the assistant runs after every build, an
 [**AI channel**](#front-end-3--the-chat-ai-channel) in the Chat button for visitors, and
-[**site-building abilities**](#building-a-whole-site) — Theme Settings, presets, templates and URL conversion. Expect changes
+[**site-building abilities**](#building-a-whole-site) — Theme Settings, presets, templates and URL conversion —
+and a [**site-wide assistant**](#the-site-wide-assistant) in the admin top bar. Expect changes
 while in beta; the [open questions](#open-questions) list what is still being decided.
 :::
 
@@ -100,7 +101,8 @@ Design rules:
 
 ## Abilities
 
-All 23 abilities live in the `unysonplus` namespace and are live as of 1.0.5. Permissions are ordinary
+The AI Assistant's own 25 abilities (below) live in the `unysonplus` namespace and are live as of 1.0.6;
+other extensions add [their own](#extension-abilities). Permissions are ordinary
 WordPress capabilities of the user the AI acts as. *(The Chat AI channel uses none of them — see
 [Front-end 3](#front-end-3--the-chat-ai-channel).)*
 
@@ -146,6 +148,28 @@ WordPress capabilities of the user the AI acts as. *(The Chat AI channel uses no
 | `unysonplus/undo` | post ID, optional revision ID | Restores a page revision; the current state is saved first, so an undo can itself be undone | `edit_post` |
 | `unysonplus/list-settings-revisions` | — | The Theme Settings values saved before each AI change, newest first (20 kept) | `edit_theme_options` |
 | `unysonplus/undo-theme-settings` | optional revision ID | Puts back the Theme Settings an AI change touched; also undoable | `edit_theme_options` |
+| `unysonplus/list-changes` | — | Changes made through other extensions' abilities (SEO, Theme Builder …), newest first | `edit_posts` |
+| `unysonplus/undo-change` | optional revision ID | Undoes one of those changes (a template it created goes to the trash); also undoable | `edit_posts` |
+
+### Extension abilities
+
+Other UnysonPlus extensions add abilities of their own while the AI Assistant is active (see
+[For extension developers](#for-extension-developers--adding-abilities)). They appear in the site-wide
+assistant and the MCP server like the built-in ones; the ones marked *panel* also appear in the builder
+panel.
+
+| Extension | Ability | What it does |
+| --- | --- | --- |
+| [SEO](../seo/index.md) | `unysonplus/seo-get-page` *(panel)* | The title, description, canonical, robots and social tags a page really outputs, and where each comes from — your override, a settings template, or auto-generated — with length hints |
+| SEO | `unysonplus/seo-update-page` *(panel)* | Sets or clears a page's SEO overrides (title, description, canonical, noindex / nofollow, Open Graph, Twitter) — undoable |
+| SEO | `unysonplus/seo-audit` | Checks up to 100 published pages for missing, long, auto-generated or duplicate titles and descriptions, and hidden (noindex) pages |
+| [Theme Builder](../theme-builder/index.md) | `unysonplus/theme-builder-list` | Header / body / footer parts, the templates combining them with where each applies, and the display-rule vocabulary |
+| Theme Builder | `unysonplus/theme-builder-save-template` | Creates or updates a template — its parts, display rules ("entire site", "this page", "front page" …), enabled and priority — undoable |
+
+Theme Builder parts are ordinary page-builder posts, so the AI **builds** a header, footer or body with
+the page abilities (`create_page` with post type `up_header`, `up_footer` or `up_body`, then
+`insert_items`), and **places** it with a template. In testing, "give the SEO test page its own header"
+produced a new header part and a template applying it to that one page, visible on the live page.
 
 Every write ability returns the page's new outline, the id of the revision that undoes it, and edit
 and preview links. Invalid input changes nothing and returns the exact problems — an unknown option
@@ -201,6 +225,13 @@ check — in about six minutes.
 
 - **Theme Settings changes are live immediately** (pages can stay drafts). Every change is snapshotted,
   and `undo_theme_settings` puts back the previous values.
+- **Your hand edits are protected.** The AI and the Site Converter both remember exactly what they
+  last wrote to each Theme Settings group. If you have changed a group by hand since, the AI **skips**
+  it and reports it (`skipped`), so the agent asks you before overwriting your work — and only then
+  retries with `force`. In the other direction, a later re-conversion treats the AI's changes like your
+  own edits and leaves them alone.
+- **Values are checked before they are saved** — against the settings' own definitions, down to the
+  items inside lists — and if the theme cannot build its styles with them, the change is rolled back.
 - **A child theme can override Theme Settings.** A theme generated by the Site Converter carries the
   source site's CSS, which wins over Theme Settings fonts and colours. `site_info` warns the agent when
   a child theme is active; for a fresh design on such a site, switch back to the parent theme first.
@@ -209,6 +240,24 @@ check — in about six minutes.
   agent passes an explicit `confirm` — which it is instructed to do only after you agree.
 - **Theme Settings and URL conversion are for agents over MCP.** The builder panel works on the page
   you have open, so it offers templates but not site-wide settings.
+
+## The site-wide assistant
+
+**Shipped in 1.0.6.** An **✦ AI Assistant** item in the admin top bar opens a chat window on every
+admin screen — the Dashboard, Pages, Settings, anywhere. Unlike the builder panel it is not tied to one
+page: it has **every** ability, so you can ask for whole-site work in plain words:
+
+- *"Create a draft About page with our story, values and team."*
+- *"Give the site a warm colour palette and friendly fonts."*
+- *"Add a rounded 'Pill' button style and use it for calls to action."*
+
+It works on the real site: new pages are created as **drafts**, Theme Settings changes are **live**
+(and undoable — just ask it to undo), and it asks before anything destructive. While it works you see
+a live progress line (time elapsed and changes made so far); when it finishes, the reply lists every
+change with a link to open it.
+
+It uses the same AI model as the builder panel ([Choosing the AI model](#choosing-the-ai-model)). On
+page-editing screens the ✦ item opens the builder panel instead, which works on the page you have open.
 
 ## Front-end 1 — MCP access for AI agents
 
@@ -220,7 +269,7 @@ No AI key is stored in WordPress: the agent brings its own model.
 POST /wp-json/unysonplus-ai/v1/mcp      (MCP Streamable HTTP transport, JSON responses)
 ```
 
-All 23 abilities appear as tools named without the prefix and with underscores — `site_info`,
+Every ability appears as a tool named without the prefix and with underscores — `site_info`,
 `describe_element`, `create_page`, `insert_items`, `update_theme_settings`, `save_preset`,
 `apply_template`, `render_check`, `undo` and so on.
 Each tool carries read-only / destructive / idempotent hints so the agent can ask before a risky
@@ -409,6 +458,46 @@ developers can adjust the list per element with the `fw_ai_assistant_visual_atts
 The check reads markup, not pixels. Comparing the result visually against a reference design is the
 next step (see [Open questions](#open-questions)).
 
+## For extension developers — adding abilities
+
+Any UnysonPlus extension (or a theme) can give the AI abilities of its own, from its own code. The AI
+Assistant provides the plumbing — naming, input checking, MCP exposure, the read / write / destructive
+hints and undo — so an extension only describes what its ability does:
+
+```php
+add_action( 'fw_ai_assistant_register_abilities', function () {
+	fw_ai_register_ability( 'myext-update-thing', array(
+		'label'       => __( 'Update a thing', 'my-textdomain' ),
+		'description' => 'What it does and when to use it — written for the AI.',
+		'input'       => array(
+			'post_id' => array( 'type' => 'integer' ),
+			'title'   => array( 'type' => 'string' ),
+		),
+		'required'    => array( 'post_id' ),
+		'permission'  => 'edit_post',           // a capability (checked per post) or a callable
+		'execute'     => 'myext_ai_update_thing', // callable( array $input ): array|WP_Error
+		'readonly'    => false,
+		'destructive' => false,
+		'panel'       => true,                  // also offer it in the builder panel (page-scoped only)
+	) );
+} );
+
+function myext_ai_update_thing( $in ) {
+	$rev = fw_ai_snapshot( array( 'post_meta' => array( $in['post_id'] => array( '_myext_title' ) ) ),
+		'unysonplus/myext-update-thing', 'Changed the thing title' );
+	update_post_meta( $in['post_id'], '_myext_title', sanitize_text_field( $in['title'] ) );
+	return array( 'ok' => true, 'post_id' => $in['post_id'], 'undo_revision_id' => $rev );
+}
+```
+
+- The hook only fires while the AI Assistant is active (on WordPress 6.9+), so nothing else is needed
+  to keep the extension working without it.
+- The ability becomes `unysonplus/myext-update-thing`, and appears automatically in the site-wide
+  assistant and the MCP server — and, with `'panel' => true`, in the builder panel.
+- `fw_ai_snapshot()` saves the current value of options and / or post meta keys; the built-in
+  `undo_change` ability restores it (`list_changes` lists them).
+- Return `post_id` in the result and the site-wide assistant links to that post in its reply.
+
 ## Settings and storage
 
 | Setting | Where | Default |
@@ -466,6 +555,7 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 4 | `render-check` + verify loop | Every build reply includes a render check; a deliberately broken section is caught (the Phase 2 acceptance run showed why: an agent left icon boxes without an icon, rendering an empty gap above each title) | **Done** — 1.0.3 (the same request now ends with the icons set and a clean check) |
 | 5 | Chat AI channel | Answers a question from a published page, hands off to a human channel, respects the daily cap | **Done** — 1.0.4 |
 | 6 | Site-building abilities: Theme Settings, presets, templates, URL conversion | An agent sets up a design system and draft pages from a one-line brief, and every settings change can be undone | **Done** — 1.0.5 |
+| 7 | Site-wide assistant + abilities from other extensions (first: SEO, Theme Builder) | From the Dashboard, "create a draft page" works end to end; an extension adds abilities from its own code, with undo | **Done** — 1.0.6 |
 
 ## Open questions
 
@@ -473,15 +563,15 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
   WordPress 6.9 (on older WordPress it loads but registers nothing). The builder panel and Chat
   channel will need WordPress 7's AI Client and Connectors. Should those parts hide themselves on
   6.9, or should the extension require 7.0 outright?
-- **Panel placement.** 1.0.2 uses a floating button that opens a panel at the bottom right; while
-  open, it covers part of the backend editor's *Publish* box (close the panel to reach it). Should it
-  dock on the left instead, or shrink when the Publish box is in view?
 - **Visual comparison.** 1.0.3's render check is HTML-only, which works on every host. Pixel checks
   (layout gaps, overlapping elements, comparing against a reference design) need a headless browser,
   which most hosts don't have. Should the check add a visual pass only when the capture service is
   reachable?
 - **Visitor channel models.** Should the visitor channel be allowed to use a cheaper model than
   the builder panel, configured separately?
+- **More extensions.** Next candidates: Mega Menu, Snippets / global sections, Portfolio, Post Types,
+  Custom Fields and Forms (the forms themselves). Form entries and newsletter subscribers are personal
+  data, so they stay out of the AI's reach unless that is explicitly decided otherwise.
 - **Visitor channel extras.** Opening hours for the human hand-off, an opt-in conversation log for
   review, and an estimated monthly cost next to the daily limit — worth adding?
 - **Testing with a provider key.** Both the builder panel and the visitor channel were verified end to

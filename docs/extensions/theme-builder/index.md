@@ -149,6 +149,18 @@ Now the page's own builder content flows into your designed chrome, and the desi
 belongs — in the page, not duplicated into a global body. See
 [Body Templates → the Post Content pattern](./body-templates.md#the-post-content-pattern).
 
+## With the AI Assistant
+
+When the [AI Assistant (Beta)](../ai-assistant/index.md) extension is active, the AI can work with the
+Theme Builder too. Parts are ordinary builder posts, so it builds a header, body or footer with its page
+tools, then uses:
+
+- **`theme-builder-list`** — the parts, the templates and where each applies, and the rule vocabulary;
+- **`theme-builder-save-template`** — create or update a template: its parts, display rules, enabled
+  and priority. Every change can be undone (a new template goes to the trash).
+
+Try *"Create a simpler header for the landing pages and use it only on the Offers page."*
+
 ## In this section
 
 - **[Headers & Footers](./headers-and-footers.md)** — building header/footer presets, the Header Type

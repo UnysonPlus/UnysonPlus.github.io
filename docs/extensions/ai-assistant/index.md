@@ -346,6 +346,10 @@ page builder and of the [Live Page Editor](../live-editor.md). It opens a chat p
 change — *"Add a pricing section with three plans"*, *"Add a FAQ at the end"*, *"Make the headings
 sound more confident"* — and it lands in the builder a few seconds later.
 
+The button and panel sit at the **bottom right** by default. *Panel position* in *Unyson+ → AI Assistant
+→ Builder assistant* can move them to the **bottom left** (clear of the admin menu) or **beside the
+sidebar**, which keeps the builder's Publish box uncovered.
+
 - **It edits what you have open.** The panel sends the page as it is in your editor — unsaved edits
   included — and the AI works on that copy. The result is applied to the builder, **not saved**:
   press **Update** (or **Save** in the Live Page Editor) to keep it, exactly like a manual edit.
@@ -524,6 +528,7 @@ function myext_ai_update_thing( $in ) {
 | Enable AI Assistant | *Unyson+ → Extensions* | Off (ships inactive) |
 | AI provider key | *Settings → Connectors* (WordPress core) | None |
 | Builder assistant AI model (Automatic / WordPress AI Client / Local agent command / Off) | *Unyson+ → AI Assistant → Builder assistant* — option `upw_ai_panel_backend` | Automatic |
+| Panel position (Bottom right / Bottom left / Beside the sidebar) | same — option `upw_ai_panel_position` | Bottom right |
 | Local agent command (development hosts only) | same — option `upw_ai_local_agent_cmd` | None |
 | MCP access (Off / Read-only / Read & write) | *Unyson+ → AI Assistant → MCP access* — stored as option `upw_ai_mcp_mode` | Off |
 | Agent connections | *Unyson+ → AI Assistant → Connect an agent* (WordPress Application Passwords) | None |

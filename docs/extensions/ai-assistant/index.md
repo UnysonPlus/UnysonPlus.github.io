@@ -426,6 +426,18 @@ computer**, through the [UnysonPlus AI Dev Kit](../site-converter/index.md) (the
 Site Converter's capture service) or through [Ollama](https://ollama.com) directly. Nothing is sent to an
 AI company, and it costs nothing.
 
+**Claude, if the kit has it.** If Claude Code is installed and signed in on your computer (the AI Dev
+Kit dashboard shows *AI ready (Claude Code subscription)*), the assistant uses **Claude** through the kit
+instead of the local model, and the panel says *Connected: Claude — your Claude subscription, through the
+AI Dev Kit on this computer*. For each request the site opens a one-off session with a temporary password,
+the kit runs Claude Code on your computer against your site — over HTTPS, so it works for a hosted site
+too — and the password is deleted as soon as the answer is back. Claude can only use your site's
+assistant tools, nothing else on your computer. With Claude it can take on whole-site requests, not
+just one section at a time.
+
+The top of the panel always says which AI is answering: *Connected: Claude …*, your provider through
+WordPress, or the local model's name.
+
 **How it reaches your computer.** Your site's server — especially on a web host — cannot connect to
 your computer: to the server, `localhost` means the server itself. Your **browser** can, because it runs
 on your computer. So in this mode the assistant panel does the talking: it sends your request to the

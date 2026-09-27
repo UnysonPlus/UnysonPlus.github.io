@@ -58,6 +58,7 @@ The service exposes a few CORS‑enabled endpoints (your admin browser calls the
 | `GET /capture?url=<url>&target=block-theme` | Render a live URL → `block-bundle.json` for the **Block theme** output |
 | `GET /mirror?url=<url>&zip=1` | Mirror a page verbatim (for **Duplicate as landing page**) → a `.zip` of `index.html` + `assets/` |
 | `POST /local-ai/tool-chat` | One tool-calling turn on your local model — used by the [AI Assistant's free local AI](../ai-assistant/index.md#free-local-ai-on-your-computer) |
+| `POST /local-ai/agent` | Runs Claude Code (your subscription) as the AI Assistant's agent against your site — used instead of the local model when Claude Code is signed in on this computer |
 
 **Works with a hosted site.** Every call goes from your admin browser to the service, and the browser
 hands the result to WordPress. The WordPress server never has to reach your computer — which it could

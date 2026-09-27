@@ -20,12 +20,13 @@ builder, external AI agents connected over MCP, and an AI channel in the
 
 :::warning Beta — trial stage
 The AI Assistant is in **beta**. It appears in *Unyson+ → Extensions* as **AI Assistant (Beta)** and
-ships inactive. **All five roadmap phases have shipped** (extension 1.0.4): the abilities layer below
+ships inactive. **All six roadmap phases have shipped** (extension 1.0.5): the abilities layer below
 — read the site, create pages, insert / update / move / remove items, and undo — a built-in **MCP
 server** for [connecting an AI agent](#front-end-1--mcp-access-for-ai-agents), the
 [**AI Assistant panel**](#front-end-2--the-in-builder-assistant-panel) in the page builder and Live
-Page Editor, a [**render check**](#the-verify-loop) the assistant runs after every build, and an
-[**AI channel**](#front-end-3--the-chat-ai-channel) in the Chat button for visitors. Expect changes
+Page Editor, a [**render check**](#the-verify-loop) the assistant runs after every build, an
+[**AI channel**](#front-end-3--the-chat-ai-channel) in the Chat button for visitors, and
+[**site-building abilities**](#building-a-whole-site) — Theme Settings, presets, templates and URL conversion. Expect changes
 while in beta; the [open questions](#open-questions) list what is still being decided.
 :::
 
@@ -99,43 +100,52 @@ Design rules:
 
 ## Abilities
 
-All abilities live in the `unysonplus` namespace, grouped into categories. The **Visitor** column
-marks the read-only subset that the Chat AI channel is allowed to use. Every ability in the *Site and
-content* table is live in 1.0.0; in the other two tables each row says **Shipped** or *Planned*.
+All 23 abilities live in the `unysonplus` namespace and are live as of 1.0.5. Permissions are ordinary
+WordPress capabilities of the user the AI acts as. *(The Chat AI channel uses none of them — see
+[Front-end 3](#front-end-3--the-chat-ai-channel).)*
 
 ### Site and content (read)
 
-| Ability | Input | Returns | Permission | Visitor |
-| --- | --- | --- | --- | --- |
-| `unysonplus/site-info` | — | Site name, tagline, active theme, active extensions, page list | `edit_posts` | No |
-| `unysonplus/list-elements` | optional category | Every layout type and page-builder element with a one-line summary | `edit_posts` | No |
-| `unysonplus/describe-element` | element slug, `include_effects` | Every option id with its type, tab, label, allowed choices and default (animation effect options only on request) | `edit_posts` | No |
-| `unysonplus/get-page` | post ID, `detail` (outline / full) | The page's builder tree; the outline gives every item a `path` such as `0.2.1` | `edit_post` on that ID | No |
-| `unysonplus/list-presets` | preset type | Button, box, section and color presets with their names | `edit_posts` | No |
-| `unysonplus/search-content` | query | Matching published pages, posts and products (title, excerpt, URL) | public | **Yes** |
-| `unysonplus/get-content` | post ID or URL | Plain-text body of a *published* page, post or product | public | **Yes** |
+| Ability | Input | Returns | Permission |
+| --- | --- | --- | --- |
+| `unysonplus/site-info` | — | Site name, tagline, active theme (flagging a child theme that can override Theme Settings), active extensions, page list | `edit_posts` |
+| `unysonplus/list-elements` | optional category | Every layout type and page-builder element with a one-line summary | `edit_posts` |
+| `unysonplus/describe-element` | element slug, `include_effects` | Every option id with its type, tab, label, allowed choices and default (animation effect options only on request) | `edit_posts` |
+| `unysonplus/get-page` | post ID, `detail` (outline / full) | The page's builder tree; the outline gives every item a `path` such as `0.2.1` | `edit_post` on that ID |
+| `unysonplus/list-presets` | preset type | Button, box, section, colour and typography presets with their names | `edit_posts` |
+| `unysonplus/describe-theme-settings` | optional `id`, `search` | Without an id, every Theme Settings option grouped by section (*General › Layout*, *Components › Buttons* …); with an id, its full schema and current value | `edit_theme_options` |
+| `unysonplus/list-templates` | optional `kind` (full / section / column), `search` | Template Library templates (bundled, installed or available) and templates saved in this site | `edit_posts` |
+| `unysonplus/search-content` | query | Matching published pages, posts and products (title, excerpt, URL) | public |
+| `unysonplus/get-content` | post ID or URL | Plain-text body of a *published* page, post or product | public |
 
-### Building (write)
+### Building pages (write)
 
 | Ability | Input | Effect | Permission | Hints |
 | --- | --- | --- | --- | --- |
-| `unysonplus/create-page` | title, status (draft default), post type, slug, optional items | Creates a new builder page — **Shipped** | publish capability for publish/private, else edit | — |
-| `unysonplus/insert-items` | post ID, items, optional parent path + position | Inserts validated items at the page root or inside a layout item — **Shipped** | `edit_post` | — |
-| `unysonplus/update-element` | post ID, path, atts (merged; `null` resets one), column width | Changes options on one item — **Shipped** | `edit_post` | idempotent |
-| `unysonplus/move-element` | post ID, path, destination parent, position | Moves an item with its children — **Shipped** | `edit_post` | — |
-| `unysonplus/remove-element` | post ID, path | Deletes an item and everything inside it — **Shipped** | `edit_post` | **destructive** |
-| `unysonplus/apply-template` | post ID, template ID, position | Inserts a Template Library section or page — *Planned* | `edit_post` | — |
-| `unysonplus/save-preset` | preset type, name, values | Creates or updates a Theme Settings preset — *Planned* | `edit_theme_options` | idempotent |
-| `unysonplus/update-theme-settings` | settings path, values | Changes Theme Settings (colors, fonts, header, footer…) — *Planned* | `edit_theme_options` | — |
-| `unysonplus/convert-url` | source URL | Runs the Site Converter capture + import — *Planned* | `manage_options` | **destructive** |
+| `unysonplus/create-page` | title, status (draft default), post type, slug, optional items | Creates a new builder page | publish capability for publish/private, else edit | — |
+| `unysonplus/insert-items` | post ID, items, optional parent path + position | Inserts validated items at the page root or inside a layout item | `edit_post` | — |
+| `unysonplus/update-element` | post ID, path, atts (merged; `null` resets one), column width | Changes options on one item | `edit_post` | idempotent |
+| `unysonplus/move-element` | post ID, path, destination parent, position | Moves an item with its children | `edit_post` | — |
+| `unysonplus/remove-element` | post ID, path | Deletes an item and everything inside it | `edit_post` | **destructive** |
+| `unysonplus/apply-template` | post ID, template ID, optional parent path + position, `replace` | Inserts a template (installing a library template first if needed), or replaces the page with a full-page template | `edit_post` (installing: administrator) | — |
+
+### Designing the site (write — live immediately)
+
+| Ability | Input | Effect | Permission | Hints |
+| --- | --- | --- | --- | --- |
+| `unysonplus/update-theme-settings` | `values` { setting id: value }, `merge` | Changes Theme Settings — colours, typography, layout, header, footer. Validated against the settings schema; object values are merged into the current value | `edit_theme_options` | idempotent |
+| `unysonplus/save-preset` | preset type, name, values | Creates or updates one named preset (a button, box, section, colour or typography style); every element wearing it changes together | `edit_theme_options` | idempotent |
+| `unysonplus/convert-url` | URL, `confirm`, `dry_run` | Runs the [Site Converter](../site-converter/index.md) on a URL: a new child theme (activated), Theme Settings and pages. Refuses to run until the user has explicitly agreed (`confirm`); `dry_run` tests without changing the site | administrator | **destructive** |
 
 ### Safety and verification
 
 | Ability | Input | Returns | Permission |
 | --- | --- | --- | --- |
-| `unysonplus/list-revisions` | post ID | AI revisions, newest first (the newest 20 are kept) — **Shipped** | `edit_post` |
-| `unysonplus/undo` | post ID, optional revision ID | Restores a saved revision; the current state is saved first, so an undo can itself be undone — **Shipped** | `edit_post` |
-| `unysonplus/render-check` | post ID | Renders the page and lists what a visitor would notice, each with its item path — see [The verify loop](#the-verify-loop) — **Shipped** | `edit_post` |
+| `unysonplus/render-check` | post ID | Renders the page and lists what a visitor would notice, each with its item path — see [The verify loop](#the-verify-loop) | `edit_post` |
+| `unysonplus/list-revisions` | post ID | A page's AI revisions, newest first (the newest 20 are kept) | `edit_post` |
+| `unysonplus/undo` | post ID, optional revision ID | Restores a page revision; the current state is saved first, so an undo can itself be undone | `edit_post` |
+| `unysonplus/list-settings-revisions` | — | The Theme Settings values saved before each AI change, newest first (20 kept) | `edit_theme_options` |
+| `unysonplus/undo-theme-settings` | optional revision ID | Puts back the Theme Settings an AI change touched; also undoable | `edit_theme_options` |
 
 Every write ability returns the page's new outline, the id of the revision that undoes it, and edit
 and preview links. Invalid input changes nothing and returns the exact problems — an unknown option
@@ -170,6 +180,36 @@ An external caller signs in with an **Application Password** (see
 [Connecting an agent](#connecting-an-agent) below). Most agents are better served by the MCP
 endpoint, which wraps these same abilities as tools.
 
+## Building a whole site
+
+With the design abilities an AI agent can set up a site from a one-line brief, not just a page. It
+works outside-in, the same order a designer would:
+
+1. **Design system** — `describe_theme_settings`, then `update_theme_settings` for the colour palette,
+   typography and layout, and `save_preset` for the button, box and section styles.
+2. **Header and footer** — their Theme Settings.
+3. **Pages** — `create_page`, then `apply_template` where a template fits and `insert_items` section by
+   section where one doesn't.
+4. **Check** — `render_check` on every page, fixing what it reports.
+
+In testing, the brief *"set up a site for a small artisan bakery: a warm design system, a rounded
+button preset, and draft Home and Menu pages"* produced a new palette, heading and body fonts, a pill
+button preset used by every call to action, and two complete draft pages — both passing the render
+check — in about six minutes.
+
+**Good to know:**
+
+- **Theme Settings changes are live immediately** (pages can stay drafts). Every change is snapshotted,
+  and `undo_theme_settings` puts back the previous values.
+- **A child theme can override Theme Settings.** A theme generated by the Site Converter carries the
+  source site's CSS, which wins over Theme Settings fonts and colours. `site_info` warns the agent when
+  a child theme is active; for a fresh design on such a site, switch back to the parent theme first.
+- **To reproduce an existing website**, `convert_url` runs the [Site Converter](../site-converter/index.md).
+  It replaces pages with the same slugs and activates a new child theme, so it refuses to run until the
+  agent passes an explicit `confirm` — which it is instructed to do only after you agree.
+- **Theme Settings and URL conversion are for agents over MCP.** The builder panel works on the page
+  you have open, so it offers templates but not site-wide settings.
+
 ## Front-end 1 — MCP access for AI agents
 
 **Shipped in 1.0.1.** The extension runs its own MCP server, so any MCP-capable AI agent — a
@@ -180,9 +220,9 @@ No AI key is stored in WordPress: the agent brings its own model.
 POST /wp-json/unysonplus-ai/v1/mcp      (MCP Streamable HTTP transport, JSON responses)
 ```
 
-The fifteen abilities appear as tools named without the prefix: `site_info`, `list_elements`,
-`describe_element`, `get_page`, `list_presets`, `search_content`, `get_content`, `create_page`,
-`insert_items`, `update_element`, `move_element`, `remove_element`, `render_check`, `list_revisions` and `undo`.
+All 23 abilities appear as tools named without the prefix and with underscores — `site_info`,
+`describe_element`, `create_page`, `insert_items`, `update_theme_settings`, `save_preset`,
+`apply_template`, `render_check`, `undo` and so on.
 Each tool carries read-only / destructive / idempotent hints so the agent can ask before a risky
 step. The server also sends the agent short working instructions (start with `site_info`, check
 `describe_element` before setting options, keep new pages as drafts, use presets for styling).
@@ -402,7 +442,9 @@ framework/extensions/ai-assistant/
 │   ├── class-fw-ai-panel.php             the builder panel's REST routes + model backends
 │   ├── class-fw-ai-check.php             render-check
 │   ├── class-fw-ai-local.php             the local agent runner (development hosts)
-│   └── class-fw-ai-visitor.php           the Chat AI channel
+│   ├── class-fw-ai-visitor.php           the Chat AI channel
+│   ├── class-fw-ai-settings.php          Theme Settings: describe, update, presets, undo
+│   └── class-fw-ai-build.php             templates + URL conversion
 ├── static/                               panel + visitor window JS / CSS
 └── views/page.php                        Unyson+ → AI Assistant
 ```
@@ -423,6 +465,7 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 3 | In-builder assistant panel | "Add a pricing section" works in the backend builder and Live Page Editor, with per-step Undo | **Done** — 1.0.2 |
 | 4 | `render-check` + verify loop | Every build reply includes a render check; a deliberately broken section is caught (the Phase 2 acceptance run showed why: an agent left icon boxes without an icon, rendering an empty gap above each title) | **Done** — 1.0.3 (the same request now ends with the icons set and a clean check) |
 | 5 | Chat AI channel | Answers a question from a published page, hands off to a human channel, respects the daily cap | **Done** — 1.0.4 |
+| 6 | Site-building abilities: Theme Settings, presets, templates, URL conversion | An agent sets up a design system and draft pages from a one-line brief, and every settings change can be undone | **Done** — 1.0.5 |
 
 ## Open questions
 

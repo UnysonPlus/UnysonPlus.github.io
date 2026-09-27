@@ -55,6 +55,18 @@ The service exposes a few CORS‑enabled endpoints (your admin browser calls the
 | `GET /capture?url=<url>` | Render a live URL → `convert-bundle.zip` |
 | `POST /capture-file` | Render an uploaded Stitch **.zip** or raw **HTML** body → `convert-bundle.zip` |
 | `POST /ai-convert` | (Optional) Claude refines a draft mapping + authors a stylesheet — see [AI assist](./ai-assist.md) |
+| `GET /capture?url=<url>&target=block-theme` | Render a live URL → `block-bundle.json` for the **Block theme** output |
+| `GET /mirror?url=<url>&zip=1` | Mirror a page verbatim (for **Duplicate as landing page**) → a `.zip` of `index.html` + `assets/` |
+| `POST /local-ai/tool-chat` | One tool-calling turn on your local model — used by the [AI Assistant's free local AI](../ai-assistant/index.md#free-local-ai-on-your-computer) |
+
+**Works with a hosted site.** Every call goes from your admin browser to the service, and the browser
+hands the result to WordPress. The WordPress server never has to reach your computer — which it could
+not do from a web host, where `localhost` means the server itself. (Block-theme output and **Duplicate as
+landing page** used to ask the server to fetch from the service, which only worked when WordPress ran on
+the same machine; since Site Converter 1.10.15 the browser fetches and uploads them too, and the old
+server-side request remains only as a fallback.) The optional AI refinement of entrance animations and
+preloaders still runs during the server-side build, so on a hosted site those fall back to the
+rule-based result.
 
 ### How `/capture-file` works
 

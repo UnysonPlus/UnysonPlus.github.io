@@ -369,9 +369,10 @@ The panel needs a model. *Unyson+ → AI Assistant → Builder assistant → AI 
 
 | Option | What it uses | Where it works |
 | --- | --- | --- |
-| **Automatic** (default) | The WordPress AI Client if a provider key is set, otherwise the local agent command | Everywhere |
+| **Automatic** (default) | The WordPress AI Client if a provider key is set, then the local agent command, and otherwise [local AI on your computer](#free-local-ai-on-your-computer) | Everywhere |
 | **WordPress AI Client** | The provider key under WordPress's *Settings → Connectors* (WordPress 7 or newer) — you pay the provider per request | Everywhere |
 | **Local agent command** | A command-line AI agent already installed on the machine, run in the background by the web server | Local development hosts only (`localhost`, `*.local`, `*.test`) |
+| **Local AI on this computer** | A free model running on **your** computer, through the UnysonPlus AI Dev Kit or Ollama — see below | Everywhere, including hosted sites (Chrome, Edge, Firefox) |
 | **Off** | — hides the button | — |
 
 The **local agent command** is for building on your own machine without an API key: if a
@@ -384,6 +385,46 @@ finishes. The session limits the agent to the panel's tools and to the copy of t
 The command is only accepted, shown and run on a development host, never on a public site.
 
 When no model is available the panel explains how to add one instead of accepting a request.
+
+### Free local AI on your computer
+
+No subscription and no API key? The assistant can use a free AI model that runs on **your own
+computer**, through the [UnysonPlus AI Dev Kit](../site-converter/index.md) (the same kit that runs the
+Site Converter's capture service) or through [Ollama](https://ollama.com) directly. Nothing is sent to an
+AI company, and it costs nothing.
+
+**How it reaches your computer.** Your site's server — especially on a web host — cannot connect to
+your computer: to the server, `localhost` means the server itself. Your **browser** can, because it runs
+on your computer. So in this mode the assistant panel does the talking: it sends your request to the
+model on `localhost`, runs each tool the model asks for through your site (as you, logged in), passes the
+result back, and repeats until the model is done. The server only opens and closes the editing session.
+The Site Converter reaches the capture service the same way.
+
+**Setting it up**
+
+1. Start the AI Dev Kit (`start-converter.bat`). Its dashboard opens at `http://localhost:4600`.
+2. In the dashboard, go to *Settings → Local AI models* and pull a model — **Qwen3 8B** is the best
+   choice for most PCs, **Qwen3 4B** for a smaller one. The model must be able to call tools; vision-only
+   models cannot.
+3. In WordPress, set *Unyson+ → AI Assistant → Builder assistant → AI model* to **Local AI on this
+   computer** (or leave it on Automatic when no provider key is set).
+4. Open the assistant. It checks for the model and shows which one it will use — or what is missing.
+
+To use Ollama without the kit, set **Local AI address** to `http://localhost:11434` and allow your site
+in Ollama's `OLLAMA_ORIGINS` setting (for example `OLLAMA_ORIGINS=https://your-site.com`). The first
+time, the browser may ask whether this site may access devices on your network — allow it. Safari does
+not let web pages talk to programs on your computer, so use Chrome, Edge or Firefox.
+
+**What to expect.** A small model is slower and less capable than a cloud model. It works best for one
+change at a time — *"Add a FAQ section with three questions"*, *"Add three feature cards about why
+customers choose us"*, *"Add a call to action"* — not for building a whole site from one sentence. To
+help it, this mode gives the model a shorter list of tools, ready-made section recipes (FAQ, feature
+cards, call to action, text) that it copies instead of working out every option, and automatic
+reminders when it stops half way or leaves a problem the page check found.
+
+In testing with Qwen3 8B on a mid-range laptop GPU (6 GB), a FAQ section took about three minutes and
+a three-card feature section about seven, both finishing with a clean page check. A faster graphics
+card cuts that considerably.
 
 :::note Beta testing status
 1.0.2 was verified end to end with the **local agent command**, in both the backend builder and the
@@ -530,6 +571,8 @@ function myext_ai_update_thing( $in ) {
 | Builder assistant AI model (Automatic / WordPress AI Client / Local agent command / Off) | *Unyson+ → AI Assistant → Builder assistant* — option `upw_ai_panel_backend` | Automatic |
 | Panel position (Bottom right / Bottom left / Beside the sidebar) | same — option `upw_ai_panel_position` | Bottom right |
 | Local agent command (development hosts only) | same — option `upw_ai_local_agent_cmd` | None |
+| Local AI address (the kit or Ollama, as seen from your browser) | same — option `upw_ai_browser_url` | `http://localhost:8787` |
+| Local model (blank = the kit's pick) | same — option `upw_ai_browser_model` | None |
 | MCP access (Off / Read-only / Read & write) | *Unyson+ → AI Assistant → MCP access* — stored as option `upw_ai_mcp_mode` | Off |
 | Agent connections | *Unyson+ → AI Assistant → Connect an agent* (WordPress Application Passwords) | None |
 | Chat AI channel + its label, greeting, notes, excluded pages | *Theme Settings → Site-wide UX → Chat Button* (stored with the Chat Button settings) | Off |
@@ -582,6 +625,7 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 7 | Site-wide assistant + abilities from other extensions (first: SEO, Theme Builder) | From the Dashboard, "create a draft page" works end to end; an extension adds abilities from its own code, with undo | **Done** — 1.0.6 |
 | 8 | Abilities for Mega Menu, Snippets, Portfolio, Post Types, Custom Fields and Forms | A real agent builds a page with a booking form and adds it to the main menu from one request, and every change can be undone | **Done** — 1.0.7 |
 | 9 | Abilities for WooCommerce, the Animation Engine and Animated Icons | A product is created, edited and undone with prices restored; a scroll-reveal effect is applied to a section, renders on the front end and is removed again; a Lottie icon set through the AI renders | **Done** — WooCommerce 1.0.71, Animation Engine 1.3.90, Animated Icons 1.0.6 |
+| 10 | Free local AI on the editor's computer (AI Dev Kit or Ollama), run from the browser | With Qwen3 8B, "add a FAQ section" and "add three feature cards" finish in the page builder with a clean page check, on a site that cannot reach the editor's computer | **Done** — 1.0.9 (capture service 1.11.60) |
 
 ## Open questions
 

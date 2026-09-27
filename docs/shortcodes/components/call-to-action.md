@@ -40,4 +40,4 @@ Background Color, Title Color, Content Color, and Margin & Padding.
 
 <img src="/img/shortcodes/call-to-action-layout.png" alt="Call To Action options panel — Layout tab" width="1200" />
 
-![Call To Action options panel — Layout tab](/img/shortcodes/call-to-action-layout.png)
+<img src="/img/shortcodes/call-to-action-layout.png" alt="Call To Action options panel — Layout tab" width="1200" />

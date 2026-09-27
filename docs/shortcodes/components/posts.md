@@ -77,4 +77,4 @@ Color**, **Meta Color**, **Chip Background** & **Chip Text** (the category chips
 **Accent Color** that tints links, read-more and the pagination pills. Leave any blank to
 inherit the theme.
 
-![Posts options panel — Styling tab](/img/shortcodes/posts-styling.png)
+<img src="/img/shortcodes/posts-styling.png" alt="Posts options panel — Styling tab" width="1200" />

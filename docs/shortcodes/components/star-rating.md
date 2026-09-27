@@ -19,7 +19,7 @@ Five drawn stars mean nothing to a screen reader. Always express the value as te
 
 ## Content
 
-<img src="/img/shortcodes/star-rating-content.png" alt="Star Rating options panel — Content tab" width="1200" />
+<img src="/img/shortcodes/star-rating-content.png" alt="Star Rating options panel — Content tab" width="840" />
 
 - **Rating** — slider from `0` to `10` in `0.5` steps (default `4.5`); set it on the same scale as the "Out Of" value below.
 - **Out Of** — `5` (default) or `10`.
@@ -29,7 +29,7 @@ Five drawn stars mean nothing to a screen reader. Always express the value as te
 
 ## Design
 
-<img src="/img/shortcodes/star-rating-design.png" alt="Star Rating options panel — Design tab" width="1200" />
+<img src="/img/shortcodes/star-rating-design.png" alt="Star Rating options panel — Design tab" width="840" />
 
 - **Symbol** — image-picker of symbols (star, hearts, circles, bar, etc.); default `star`.
 - **Size** — `Small`, `Medium` (default), `Large`, or `Extra large`.
@@ -37,7 +37,7 @@ Five drawn stars mean nothing to a screen reader. Always express the value as te
 
 ## Styling
 
-<img src="/img/shortcodes/star-rating-styling.png" alt="Star Rating options panel — Styling tab" width="1200" />
+<img src="/img/shortcodes/star-rating-styling.png" alt="Star Rating options panel — Styling tab" width="840" />
 
 - **Filled Color** — color of the filled symbols.
 - **Empty Color** — color of the empty symbols.

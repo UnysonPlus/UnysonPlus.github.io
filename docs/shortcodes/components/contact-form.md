@@ -40,4 +40,4 @@ Every form field must have a real `<label>` tied to it — that's what a screen 
 
 <img src="/img/shortcodes/contact-form-settings.png" alt="Contact form options panel — Settings tab" width="1200" />
 
-![Contact form options panel — Settings tab](/img/shortcodes/contact-form-settings.png)
+<img src="/img/shortcodes/contact-form-settings.png" alt="Contact form options panel — Settings tab" width="1200" />

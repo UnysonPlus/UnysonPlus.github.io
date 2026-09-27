@@ -113,4 +113,4 @@ class/ID and visibility controls).
 
 <img src="/img/shortcodes/icon-box-styling.png" alt="Icon Box options panel — Styling tab" width="1200" />
 
-![Icon Box options panel — Styling tab](/img/shortcodes/icon-box-styling.png)
+<img src="/img/shortcodes/icon-box-styling.png" alt="Icon Box options panel — Styling tab" width="1200" />

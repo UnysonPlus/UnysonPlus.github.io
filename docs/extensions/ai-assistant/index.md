@@ -404,8 +404,7 @@ The Site Converter reaches the capture service the same way.
 
 1. Start the AI Dev Kit (`start-converter.bat`). Its dashboard opens at `http://localhost:4600`.
 2. In the dashboard, go to *Settings → Local AI models* and pull a model — **Qwen3 8B** is the best
-   choice for most PCs, **Qwen3 4B** for a smaller one. The model must be able to call tools; vision-only
-   models cannot.
+   choice for most PCs, **Qwen3 4B** for a smaller one.
 3. In WordPress, set *Unyson+ → AI Assistant → Builder assistant → AI model* to **Local AI on this
    computer** (or leave it on Automatic when no provider key is set).
 4. Open the assistant. It checks for the model and shows which one it will use — or what is missing.
@@ -420,11 +419,13 @@ change at a time — *"Add a FAQ section with three questions"*, *"Add three fea
 customers choose us"*, *"Add a call to action"* — not for building a whole site from one sentence. To
 help it, this mode gives the model a shorter list of tools, ready-made section recipes (FAQ, feature
 cards, call to action, text) that it copies instead of working out every option, and automatic
-reminders when it stops half way or leaves a problem the page check found.
+reminders when it stops half way or leaves a problem the page check found. The model answers each step
+with one small JSON instruction that is checked before it runs, so any text model works — it does not
+need built-in tool calling.
 
-In testing with Qwen3 8B on a mid-range laptop GPU (6 GB), a FAQ section took about three minutes and
-a three-card feature section about seven, both finishing with a clean page check. A faster graphics
-card cuts that considerably.
+In testing with Qwen3 8B on a mid-range laptop GPU (6 GB), a FAQ section took about a minute, a call to
+action about two, and a three-card feature section about six (it added the icons after the page check
+asked for them) — each finishing with a clean page check. A faster graphics card cuts that considerably.
 
 :::note Beta testing status
 1.0.2 was verified end to end with the **local agent command**, in both the backend builder and the

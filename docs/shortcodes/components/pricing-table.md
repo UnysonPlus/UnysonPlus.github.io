@@ -47,7 +47,7 @@ repaints them.
 | Option | Choices |
 | --- | --- |
 | **Design** | Classic · Modern · Minimal · Gradient · Dark · Outline — the card **skin**: paint, not structure |
-| **Layout** | **Grid** · **List** · **Bars** — the plans' **structure** (see below) |
+| **Layout** | **Grid** · **List** — the plans' **structure** (see below) |
 | **Columns (Desktop)** | 1 · 2 · 3 · 4 · 5 — plans per row (Grid layout). `1` gives a single centred plan |
 | **Gap** | Spacing between plans, from your Spacing → Gap Scale presets |
 | **Featured Plan Emphasis** | Any combination of Raise / lift up · Highlight border · Glow shadow · Top badge / banner · Accent button. Leave empty for no emphasis |
@@ -68,19 +68,8 @@ adds one option of its own:
 | --- | --- |
 | **Divider between rows** | The hairline rule between rows. On by default |
 
-**Bars** — stacked full-width bands that are still **cards**: the List's reading order with the Grid's
-card treatment, the price and button on the right of each band. It suits two or three plans with short
-feature lists, where side-by-side cards leave a lot of empty column and a flush menu row is too plain for
-something carrying a button. The **Design** skin paints each band, and **Gap** sets the space between
-them. On a phone each band unstacks into name → price → full-width button.
-
 For a price list, leave **Features** empty and drop the **Button Label** on each plan: a service menu
 is a name, a description and a price, and the row reads better without an empty feature list under it.
-
-:::note[Which one does a conversion pick?]
-The Site Converter chooses **Grid** or **List** by measuring the source's own container — never by the
-number of plans. It never picks **Bars** on its own: that is a layout you choose by hand.
-:::
 
 ## Styling
 

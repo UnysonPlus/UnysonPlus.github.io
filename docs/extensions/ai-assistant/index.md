@@ -137,6 +137,7 @@ WordPress capabilities of the user the AI acts as. *(The Chat AI channel uses no
 | --- | --- | --- | --- | --- |
 | `unysonplus/update-theme-settings` | `values` { setting id: value }, `merge` | Changes Theme Settings — colours, typography, layout, header, footer. Validated against the settings schema; object values are merged into the current value | `edit_theme_options` | idempotent |
 | `unysonplus/save-preset` | preset type, name, values | Creates or updates one named preset (a button, box, section, colour or typography style); every element wearing it changes together | `edit_theme_options` | idempotent |
+| `unysonplus/update-site-identity` | `title`, `tagline`, `icon_id` | WordPress's own site identity (*Settings → General*): the site title, tagline, and site icon (a square image already in the Media Library; `0` removes it). Only what is passed changes; undo with `undo-change` | `manage_options` | — |
 | `unysonplus/convert-url` | URL, `confirm`, `dry_run` | Runs the [Site Converter](../site-converter/index.md) on a URL: a new child theme (activated), Theme Settings and pages. Refuses to run until the user has explicitly agreed (`confirm`); `dry_run` tests without changing the site | administrator | **destructive** |
 
 ### Safety and verification
@@ -277,6 +278,38 @@ change with a link to open it.
 
 It uses the same AI model as the builder panel ([Choosing the AI model](#choosing-the-ai-model)). On
 page-editing screens the ✦ item opens the builder panel instead, which works on the page you have open.
+
+### It knows where you are
+
+Both the site-wide assistant and the builder panel tell the AI which screen or page you are on, with a
+few real facts about it, so a question like *"what should I change here?"* is about that place:
+
+| Where | What the AI is told | Example ideas offered |
+| --- | --- | --- |
+| A page in the builder | The title you have typed (even before the page is saved), how many sections it has, whether it has a call to action, and — with the SEO extension — whether its title and description need work | *Build a starter layout: a hero, three feature cards and a call to action* · *Add a call to action at the end of the page* · *Write an SEO title and description for this page* |
+| Settings → General | The site title, tagline and whether a site icon is set | *Suggest three sharper taglines, then apply the best one* · *Use the site logo as the site icon* |
+| Pages | How many pages there are, how many have no SEO description, and whether the usual Contact / About / FAQ pages exist | *Write SEO titles and descriptions for the 4 pages missing one* · *Create a draft FAQ page with six common questions* |
+| Appearance → Menus | Whether the main navigation has a menu, and which published pages are in no menu | *Add the 3 published pages that are in no menu to the main menu* |
+| Theme Settings | That changes here are live | *Pick a heading and body font pair that feels friendly and readable* |
+| Products (WooCommerce) | How many products have no description | *Write descriptions for the 5 products that have none* |
+| The Dashboard and anywhere else | The number of pages and drafts, a missing tagline, a main menu that is not set up | *Build the main menu from the published pages* |
+
+The ideas are the buttons shown when a conversation is empty. They are chosen by fixed rules from those
+facts — not made up by the AI — so they appear instantly, cost nothing, and only suggest things the
+assistant can actually do. Jobs that other extensions queue for you (such as the Site Converter's list of
+findings) are still shown first.
+
+### Your conversation is kept
+
+Each conversation is saved for **you** and for **that page or screen**, so a page refresh — or opening
+the same page in another browser — brings it back, and the AI still knows what was said, so a follow-up
+like *"make that section darker"* keeps working. Another editor opening the same page starts their own
+conversation. **New chat** in the panel header clears it and starts again.
+
+Only the messages and the list of what changed are kept — the last 30 messages per page or screen, for
+30 days. A restored reply shows as *applied earlier* without the "Undo this change" button: after a
+reload the builder's own undo history starts again too, so undo such a change with the page's
+revisions, or ask the assistant to undo it.
 
 ## Front-end 1 — MCP access for AI agents
 
@@ -571,6 +604,7 @@ function myext_ai_update_thing( $in ) {
 | AI provider key | *Settings → Connectors* (WordPress core) | None |
 | Builder assistant AI model (Automatic / WordPress AI Client / Local agent command / Off) | *Unyson+ → AI Assistant → Builder assistant* — option `upw_ai_panel_backend` | Automatic |
 | Panel position (Bottom right / Bottom left / Beside the sidebar) | same — option `upw_ai_panel_position` | Bottom right |
+| Saved conversations | Per user — user meta `upw_ai_chats` (last 30 messages per page / screen, 30 days) | — |
 | Local agent command (development hosts only) | same — option `upw_ai_local_agent_cmd` | None |
 | Local AI address (the kit or Ollama, as seen from your browser) | same — option `upw_ai_browser_url` | `http://localhost:8787` |
 | Local model (blank = the kit's pick) | same — option `upw_ai_browser_model` | None |
@@ -581,7 +615,8 @@ function myext_ai_update_thing( $in ) {
 
 Nothing is written outside the standard places: AI revisions are post-meta rows on the page they
 belong to (the newest 20 per page), settings are WordPress options, connections are ordinary
-Application Passwords, and visitor conversations are not stored at all (only a per-day counter for the
+Application Passwords, an editor's own assistant conversations are one user-meta row (removed with the
+user), and visitor conversations are not stored at all (only a per-day counter for the
 daily limit, and a cached plain-text copy of each page the channel reads, refreshed when the page
 changes).
 
@@ -627,6 +662,7 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 8 | Abilities for Mega Menu, Snippets, Portfolio, Post Types, Custom Fields and Forms | A real agent builds a page with a booking form and adds it to the main menu from one request, and every change can be undone | **Done** — 1.0.7 |
 | 9 | Abilities for WooCommerce, the Animation Engine and Animated Icons | A product is created, edited and undone with prices restored; a scroll-reveal effect is applied to a section, renders on the front end and is removed again; a Lottie icon set through the AI renders | **Done** — WooCommerce 1.0.71, Animation Engine 1.3.90, Animated Icons 1.0.6 |
 | 10 | Free local AI on the editor's computer (AI Dev Kit or Ollama), run from the browser | With Qwen3 8B, "add a FAQ section" and "add three feature cards" finish in the page builder with a clean page check, on a site that cannot reach the editor's computer | **Done** — 1.0.9 (capture service 1.11.60) |
+| 11 | Knows where you are; keeps the conversation | On Settings → General the ideas are about the tagline and the answer uses the real title and tagline; a new page is called by its typed title; a reload restores the conversation and *New chat* clears it | **Done** — 1.0.12 |
 
 ## Open questions
 

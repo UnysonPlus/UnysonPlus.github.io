@@ -511,6 +511,28 @@ settings to the Chat Button tab) and `fw_ext_chat_channel_svg` (an icon for a cu
 | Runaway usage | The panel caps each request at 16 model rounds (the local agent at 10 minutes); the visitor channel has a per-visitor rate limit (10 questions per 5 minutes) and a site-wide daily limit |
 | Claiming success that isn't real | The assistant is instructed to run `render-check` and fix what it reports; the panel runs it again itself and shows the result under every reply that changed the page |
 
+### AI Changes: see and undo every change
+
+*Unyson+ → AI Changes* lists every change the AI made to your site, newest first: page edits, Theme
+Settings changes, and changes through other extensions (menus, forms, SEO, products, the site title and
+tagline). Each row says **when**, **what changed**, **where** (linked) and **who** asked for it, with a
+button:
+
+| Button | What it does |
+| --- | --- |
+| **Undo** | Puts back what that change replaced. |
+| **Restore page to before this** | On an older change to a page: puts the page back to how it was before that change. Later AI changes to the same page are rolled back too. |
+| **Redo** | On an undo (shown as *Undid: …*): puts the change back. The change it reversed shows as **Undone** until then. |
+
+Every undo saves the current state first, so nothing is lost by trying one. The filters show only
+**Pages**, **Theme Settings** or **Other** changes. Anyone who can edit a page can undo changes to it;
+site-wide changes need an administrator. The site-wide assistant links to the screen after every reply
+that changed something.
+
+Kept: the latest 20 changes per page, 20 Theme Settings changes and 30 other changes. Changes the chat
+panel makes inside the page builder are not saved until you press **Update**, so the builder's own Undo
+covers those and they are not listed.
+
 ## The verify loop
 
 **Shipped in 1.0.3.** A reply saying "I've built the page" is worthless if the page is broken, so the
@@ -651,6 +673,7 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 9 | Abilities for WooCommerce, the Animation Engine and Animated Icons | A product is created, edited and undone with prices restored; a scroll-reveal effect is applied to a section, renders on the front end and is removed again; a Lottie icon set through the AI renders | **Done** — WooCommerce 1.0.71, Animation Engine 1.3.90, Animated Icons 1.0.6 |
 | 10 | Free local AI on the editor's computer (the AI Dev Kit or a local model runner), run from the browser | With the recommended 8B model, "add a FAQ section" and "add three feature cards" finish in the page builder with a clean page check, on a site that cannot reach the editor's computer | **Done** — 1.0.9 (capture service 1.11.60) |
 | 11 | Knows where you are; keeps the conversation | On Settings → General the ideas are about the tagline and the answer uses the real title and tagline; a new page is called by its typed title; a reload restores the conversation and *New chat* clears it | **Done** — 1.0.12 |
+| 12 | AI Changes: every AI change across the site, with undo and redo | Page, Theme Settings and site-identity changes are listed, undone, redone and restored from the screen, and an undone change shows as Undone | **Done** — 1.0.18 |
 
 ## Open questions
 

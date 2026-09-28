@@ -18,6 +18,13 @@ WordPress site you can hand to a client, blog from, or run SEO and forms on. The
 **[Site Converter](/extensions/site-converter)** rebuilds your Lovable design into a **native, fully
 editable WordPress site**: real page-builder pages, a matching theme, menus and Media Library.
 
+<div class="yt-embed">
+  <iframe src="https://www.youtube-nocookie.com/embed/Uc8bW_4smKc" title="Lovable to WordPress — full conversion walkthrough" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+*Watch the full conversion end to end — capture, convert, then edit the result in the builder. The
+written steps below cover the same ground.*
+
 Because Lovable renders in the browser, the reliable path is to **convert from its published URL** —
 the converter opens the live page in real Chrome and reads the **computed** styles, so what you see
 is what you get.
@@ -72,6 +79,8 @@ iframe or screenshot.
 
 ## See also
 
+- [Convert your Wegic site to WordPress](/guides/convert-wegic-to-wordpress) — the same flow for
+  another hosted AI builder.
 - [Convert an AI-generated static HTML site to WordPress](/guides/convert-ai-generated-html-to-wordpress)
   — the general guide for any AI export (v0, Bolt, Stitch, Claude…).
 - [Convert from a URL](/extensions/site-converter/convert-from-url) — the URL path in detail.

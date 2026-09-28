@@ -36,7 +36,8 @@ features, do it in a few minutes, no code unless noted. New to the builder? Star
 - [Convert an AI-generated static HTML site to WordPress](/guides/convert-ai-generated-html-to-wordpress)
   — the pillar guide, plus tool-specific paths:
   [Google Stitch →](/guides/convert-google-stitch-to-wordpress) ·
-  [Lovable →](/guides/convert-lovable-to-wordpress)
+  [Lovable →](/guides/convert-lovable-to-wordpress) ·
+  [Wegic →](/guides/convert-wegic-to-wordpress)
 
 ---
 

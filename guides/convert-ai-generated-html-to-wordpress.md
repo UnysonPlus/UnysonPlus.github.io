@@ -30,6 +30,13 @@ AI-generated HTML into a **native, fully editable WordPress site** — real page
 matching theme, menus and Media Library — in **just a few clicks, in minutes, with no cost and no
 coding**. It's a *rebuild into editable content*, not a static screenshot import.
 
+<div class="yt-embed">
+  <iframe src="https://www.youtube-nocookie.com/embed/IzbyAkHr08U" title="AI-generated HTML to WordPress — full conversion walkthrough" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+*A complete conversion, start to finish: an AI-generated landing page becomes an editable WordPress
+site. The written steps below cover the same ground.*
+
 :::tip[TL;DR]
 Install **Unyson+** (free) → activate **Site Converter** → **Unyson+ → Convert** → upload your AI
 export (or paste its URL) → **Convert to WordPress**. Every page comes out editable in the visual

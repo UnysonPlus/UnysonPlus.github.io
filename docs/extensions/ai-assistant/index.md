@@ -56,7 +56,7 @@ operations across a multisite network.
    and which one: **Ready** (green, with an *Open the AI Assistant* button) or **Not connected yet**.
 3. If it is not connected, follow **Connect an AI** on the same screen. The recommended way is the
    [AI Dev Kit](#free-local-ai-on-your-computer): run it on your computer and the assistant uses your
-   Claude subscription (or a free local model), even on a hosted site. Press **Check again** and the box
+   AI subscription (or a free local model), even on a hosted site. Press **Check again** and the box
    turns green. The alternative is an AI provider key under *Settings → Connectors*.
 
 That is all a newcomer needs. **Where the assistant appears** sets the panel position, and everything
@@ -235,7 +235,7 @@ POST /wp-json/wp-abilities/v1/abilities/unysonplus/update-element/run
 ```
 
 An external caller signs in with an **Application Password** (see
-[Connecting an agent](#connecting-an-agent) below). Most agents are better served by the MCP
+[MCP server](./mcp-server.md)). Most agents are better served by the MCP
 endpoint, which wraps these same abilities as tools.
 
 ## Building a whole site
@@ -329,65 +329,21 @@ revisions, or ask the assistant to undo it.
 
 ## Front-end 1 — MCP access for AI agents
 
-**Shipped in 1.0.1.** The extension runs its own MCP server, so any MCP-capable AI agent — a
-desktop app, a command-line coding agent, an IDE assistant — can use your site's abilities as tools.
-No AI key is stored in WordPress: the agent brings its own model.
+**Shipped in 1.0.1.** The extension runs its own **MCP server**, so any MCP-capable AI program (a
+command-line coding agent, an IDE assistant, a desktop app) can use your site's abilities as tools. No AI
+key is stored in WordPress: the program brings its own model.
 
-```
-POST /wp-json/unysonplus-ai/v1/mcp      (MCP Streamable HTTP transport, JSON responses)
-```
+- **Endpoint:** `POST /wp-json/unysonplus-ai/v1/mcp` (Streamable HTTP, JSON responses, stateless).
+- **Tools:** every ability, named without the prefix and with underscores (`site_info`, `create_page`,
+  `insert_items`, `render_check`, `undo` …), each with read-only / destructive / idempotent hints. The
+  server also sends the program short working instructions.
+- **Access:** *Unyson+ → AI Assistant → Advanced → Outside AI programs*: **Off** (default), **Read only**
+  or **Read and write**. The program signs in with an Application Password created on that screen and acts
+  as that user, limited by the user's role.
 
-Every ability appears as a tool named without the prefix and with underscores — `site_info`,
-`describe_element`, `create_page`, `insert_items`, `update_theme_settings`, `save_preset`,
-`apply_template`, `render_check`, `undo` and so on.
-Each tool carries read-only / destructive / idempotent hints so the agent can ask before a risky
-step. The server also sends the agent short working instructions (start with `site_info`, check
-`describe_element` before setting options, keep new pages as drafts, use presets for styling).
-
-- **Access mode:** *Unyson+ → AI Assistant → Advanced → Outside AI programs* — **Off** (default: every
-  agent is refused), **Read only** (only the Read tools are offered), or **Read and write**.
-- **Who the agent is:** it signs in with an Application Password and acts as **that user**, so it can
-  only do what the user's role allows. Use an Editor account to keep an agent away from site settings.
-- **Where it shines:** large jobs (a whole page or site from a brief), repetitive edits across many
-  pages, and pairing with the [Site Converter](../site-converter/index.md) to reproduce a source site.
-- **Also works with the WordPress MCP adapter.** Every ability is flagged `meta.mcp.public`, so a site
-  running the adapter plugin exposes the same tools through it.
-
-### Connecting an agent
-
-1. Activate **AI Assistant (Beta)** under *Unyson+ → Extensions*.
-2. Open *Unyson+ → AI Assistant → Advanced → Outside AI programs*, set access to *Read only* or
-   *Read and write*, and save. (Creating a connection password switches it on for you if it is off.)
-3. In the same place, name the connection (e.g. "Claude Code on my laptop") and click
-   **Create a connection password**. The screen shows — **once** — the server URL, username, password,
-   the ready-made `Authorization` header, and a JSON config block:
-
-   ```json
-   {
-     "mcpServers": {
-       "unysonplus": {
-         "type": "http",
-         "url": "https://example.com/wp-json/unysonplus-ai/v1/mcp",
-         "headers": { "Authorization": "Basic <base64 of username:password>" }
-       }
-     }
-   }
-   ```
-
-4. Paste that into your agent's MCP server settings (or add a remote HTTP MCP server with the URL and
-   `Authorization` header), then ask it to build something — e.g. *"Build a draft landing page for a
-   small bakery: a hero, a three-item features row and a closing call to action."*
-
-Every connection is listed under **Your connections** with when it was last used, and **Revoke** signs
-that agent out immediately. Create one connection per agent or device so each can be revoked alone.
-
-:::note HTTPS and local sites
-WordPress only offers Application Passwords over **HTTPS** or on a site whose `WP_ENVIRONMENT_TYPE`
-is `local`. On a plain-HTTP **development** host — `localhost`, `127.0.0.1`, or a name ending in
-`.local`, `.test` or `.localhost` — the AI Assistant enables them so you can connect an agent while
-building locally. Return `false` from the `fw_ai_assistant_allow_local_app_passwords` filter to opt out.
-A live site should always be served over HTTPS: the password travels with every request.
-:::
+The **[MCP server reference](./mcp-server.md)** covers connecting, every method, tool results and errors,
+testing with `curl`, troubleshooting and limits. For step-by-step setup in specific AI programs, see the
+guide [Connect an AI coding tool to your WordPress site](/guides/connect-ai-tools-to-wordpress).
 
 ## Front-end 2 — the in-builder assistant panel
 
@@ -423,7 +379,7 @@ The panel needs a model. *Unyson+ → AI Assistant → Advanced → AI model →
 | **Automatic** (default) | The WordPress AI Client if a provider key is set, then the local agent command, and otherwise [local AI on your computer](#free-local-ai-on-your-computer) | Everywhere |
 | **WordPress AI Client** | The provider key under WordPress's *Settings → Connectors* (WordPress 7 or newer) — you pay the provider per request | Everywhere |
 | **Local agent command** | A command-line AI agent already installed on the machine, run in the background by the web server | Local development hosts only (`localhost`, `*.local`, `*.test`) |
-| **Local AI on this computer** | A free model running on **your** computer, through the UnysonPlus AI Dev Kit or Ollama — see below | Everywhere, including hosted sites (Chrome, Edge, Firefox) |
+| **Local AI on this computer** | The AI Dev Kit on **your** computer: your AI subscription through its command-line agent, or a free local model — see below | Everywhere, including hosted sites (Chrome, Edge, Firefox) |
 | **Off** | — hides the button | — |
 
 The **local agent command** is for building on your own machine without an API key: if a
@@ -431,7 +387,7 @@ command-line AI agent that accepts an MCP server config file is installed and si
 command that runs it with two placeholders — `{mcp_config}` (a one-off MCP config pointing at this
 site) and `{prompt_file}` (the instructions and request) — and its output becomes the reply. For each
 request the extension creates a temporary Application Password and a one-off session, points the agent
-at the [MCP server](#front-end-1--mcp-access-for-ai-agents) with them, and deletes both when the agent
+at the [MCP server](./mcp-server.md) with them, and deletes both when the agent
 finishes. The session limits the agent to the panel's tools and to the copy of the page you have open.
 The command is only accepted, shown and run on a development host, never on a public site.
 
@@ -439,22 +395,21 @@ When no model is available the panel explains how to add one instead of acceptin
 
 ### Free local AI on your computer
 
-No subscription and no API key? The assistant can use a free AI model that runs on **your own
-computer**, through the [UnysonPlus AI Dev Kit](../site-converter/index.md) (the same kit that runs the
-Site Converter's capture service) or through [Ollama](https://ollama.com) directly. Nothing is sent to an
-AI company, and it costs nothing.
+No API key? The assistant can use the AI on **your own computer**, through the
+[UnysonPlus AI Dev Kit](../site-converter/index.md) (the same kit that runs the Site Converter's capture
+service): either your **AI subscription**, through the command-line agent it signs in with, or a **free
+local model**. Nothing goes through the server. For the exact steps per AI service, see the guide
+[Set up AI for Unyson+](/guides/set-up-ai-for-unysonplus).
 
-**Claude, if the kit has it.** If Claude Code is installed and signed in on your computer (the AI Dev
-Kit dashboard shows *AI ready (Claude Code subscription)*), the assistant uses **Claude** through the kit
-instead of the local model, and the panel says *Connected: Claude — your Claude subscription, through the
-AI Dev Kit on this computer*. For each request the site opens a one-off session with a temporary password,
-the kit runs Claude Code on your computer against your site — over HTTPS, so it works for a hosted site
-too — and the password is deleted as soon as the answer is back. Claude can only use your site's
-assistant tools, nothing else on your computer. With Claude it can take on whole-site requests, not
-just one section at a time.
+**Your subscription, if the kit has it.** When the kit's command-line agent is signed in, the assistant
+hands each request to it instead of the local model, and the panel names the AI it connected to. For each
+request the site opens a one-off session with a temporary password, the kit runs the agent on your
+computer against your site (over HTTPS, so it works for a hosted site too), and the password is deleted
+as soon as the answer is back. The agent can only use your site's assistant tools, nothing else on your
+computer. With a subscription model it can take on whole-site requests, not just one section at a time.
 
-The top of the panel always says which AI is answering: *Connected: Claude …*, your provider through
-WordPress, or the local model's name.
+The top of the panel always says which AI is answering: your subscription through the kit, your provider
+through WordPress, or the local model's name.
 
 **How it reaches your computer.** Your site's server — especially on a web host — cannot connect to
 your computer: to the server, `localhost` means the server itself. Your **browser** can, because it runs
@@ -466,17 +421,17 @@ The Site Converter reaches the capture service the same way.
 **Setting it up**
 
 1. Start the AI Dev Kit (`start-converter.bat`). Its dashboard opens at `http://localhost:4600`.
-2. In the dashboard, go to *Settings → Local AI models* and pull a model — **Qwen3 8B** is the best
-   choice for most PCs, **Qwen3 4B** for a smaller one. You can also add your own
+2. In the dashboard, go to *Settings → Local AI models* and download a model: the recommended **8B**
+   model suits most PCs, the recommended **4B** one a smaller PC. You can also add your own
    ([how](../site-converter/capture-service.md#local-ai-models)); press **Check** to see whether it is
    up to the job.
 3. In WordPress, set *Unyson+ → AI Assistant → Advanced → AI model → Which AI answers* to **Local AI on this
    computer** (or leave it on Automatic when no provider key is set).
 4. Open the assistant. It checks for the model and shows which one it will use — or what is missing.
 
-To use Ollama without the kit, set **Local AI address** to `http://localhost:11434` and allow your site
-in Ollama's `OLLAMA_ORIGINS` setting (for example `OLLAMA_ORIGINS=https://your-site.com`). The first
-time, the browser may ask whether this site may access devices on your network — allow it. Safari does
+You can also point **Local AI address** at a local model runner you already use, without the kit (the
+[guide](/guides/set-up-ai-for-unysonplus) shows how). The first time, the browser may ask whether this
+site may access devices on your network — allow it. Safari does
 not let web pages talk to programs on your computer, so use Chrome, Edge or Firefox.
 
 **What to expect.** A small model is slower and less capable than a cloud model. It works best for one
@@ -488,7 +443,7 @@ reminders when it stops half way or leaves a problem the page check found. The m
 with one small JSON instruction that is checked before it runs, so any text model works — it does not
 need built-in tool calling.
 
-In testing with Qwen3 8B on a mid-range laptop GPU (6 GB), a FAQ section took about a minute, a call to
+In testing with the recommended 8B model on a mid-range laptop GPU (6 GB), a FAQ section took about a minute, a call to
 action about two, and a three-card feature section about six (it added the icons after the page check
 asked for them) — each finishing with a clean page check. A faster graphics card cuts that considerably.
 
@@ -638,7 +593,7 @@ function myext_ai_update_thing( $in ) {
 | Panel position (Bottom right / Bottom left / Beside the sidebar) | *Unyson+ → AI Assistant → Where the assistant appears* — option `upw_ai_panel_position` | Bottom right |
 | Saved conversations | Per user — user meta `upw_ai_chats` (last 30 messages per page / screen, 30 days) | — |
 | Agent command (development hosts only) | *Advanced → AI model* — option `upw_ai_local_agent_cmd` | None |
-| Local AI address (the kit or Ollama, as seen from your browser) | *Advanced → AI model* — option `upw_ai_browser_url` | `http://localhost:8787` |
+| Local AI address (the kit or a local model runner, as seen from your browser) | *Advanced → AI model* — option `upw_ai_browser_url` | `http://localhost:8787` |
 | Local model (blank = the kit's pick) | *Advanced → AI model* — option `upw_ai_browser_model` | None |
 | Access for outside AI programs (Off / Read only / Read and write) | *Advanced → Outside AI programs* — option `upw_ai_mcp_mode` | Off |
 | Connection passwords for outside AI programs | *Advanced → Outside AI programs* (WordPress Application Passwords; the one-off passwords the chat panel uses per request are not listed and delete themselves) | None |
@@ -694,7 +649,7 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 7 | Site-wide assistant + abilities from other extensions (first: SEO, Theme Builder) | From the Dashboard, "create a draft page" works end to end; an extension adds abilities from its own code, with undo | **Done** — 1.0.6 |
 | 8 | Abilities for Mega Menu, Snippets, Portfolio, Post Types, Custom Fields and Forms | A real agent builds a page with a booking form and adds it to the main menu from one request, and every change can be undone | **Done** — 1.0.7 |
 | 9 | Abilities for WooCommerce, the Animation Engine and Animated Icons | A product is created, edited and undone with prices restored; a scroll-reveal effect is applied to a section, renders on the front end and is removed again; a Lottie icon set through the AI renders | **Done** — WooCommerce 1.0.71, Animation Engine 1.3.90, Animated Icons 1.0.6 |
-| 10 | Free local AI on the editor's computer (AI Dev Kit or Ollama), run from the browser | With Qwen3 8B, "add a FAQ section" and "add three feature cards" finish in the page builder with a clean page check, on a site that cannot reach the editor's computer | **Done** — 1.0.9 (capture service 1.11.60) |
+| 10 | Free local AI on the editor's computer (the AI Dev Kit or a local model runner), run from the browser | With the recommended 8B model, "add a FAQ section" and "add three feature cards" finish in the page builder with a clean page check, on a site that cannot reach the editor's computer | **Done** — 1.0.9 (capture service 1.11.60) |
 | 11 | Knows where you are; keeps the conversation | On Settings → General the ideas are about the tagline and the answer uses the real title and tagline; a new page is called by its typed title; a reload restores the conversation and *New chat* clears it | **Done** — 1.0.12 |
 
 ## Open questions

@@ -51,7 +51,7 @@ the **Analyze & convert** button shows green when it's detected.
 
 The conversion is one long request with no server‑side progress stream, so the progress bar is
 **time‑estimated** — it eases toward a ceiling and snaps forward when each phase actually completes.
-With AI assist on, a rotating set of "what Claude is doing now" messages plays during the (longer)
+With AI assist on, a rotating set of "what the AI is doing now" messages plays during the (longer)
 AI step so the wait never looks frozen.
 
 ## Tips

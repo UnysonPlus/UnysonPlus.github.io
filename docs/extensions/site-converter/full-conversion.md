@@ -34,7 +34,7 @@ You set these up a single time; then every conversion reuses them.
 | 2 | **Parent theme `unysonplus-theme`** | Install & activate under *Appearance → Themes*. A conversion builds a **child** of this theme. |
 | 3 | **Site Converter extension** | Enable it in *Unyson+ → Extensions*. The tool then appears at **Unyson+ → Convert**. |
 | 4 | **The capture service** (for URLs + full-fidelity file rendering) | Clone **[UnysonPlus-Capture-Service](https://github.com/UnysonPlus/UnysonPlus-Capture-Service)**, then run it (below). Needs **Node 20+** and **Google Chrome**. |
-| 5 | **(Optional) AI** | Either the **Claude Code** CLI on your PATH *(uses your subscription — no key)*, **or** an `ANTHROPIC_API_KEY` env var *(pay-per-use API)*. Enables *AI assist* / the AI-assisted lane. |
+| 5 | **(Optional) AI** | Your AI subscription through a signed-in command-line AI agent *(no key)*, a provider API key *(pay per use)*, or a free local model — see [Set up AI for Unyson+](/guides/set-up-ai-for-unysonplus). Enables *AI assist* / the AI-assisted lane. |
 
 **Start the capture service** (leave the terminal open while converting):
 
@@ -86,13 +86,13 @@ it's built**.
 
 - **[Convert from a URL](./convert-from-url.md)** — the live-site / preview-link path.
 - **[Convert from a file](./convert-from-file.md)** — a Stitch export or pasted HTML.
-- Tick **AI assist** to have Claude refine the mapping + author a higher-fidelity stylesheet —
+- Tick **AI assist** to have the AI refine the mapping —
   **[AI assist](./ai-assist.md)**.
 
 ### Lane B — AI-assisted, high-fidelity build
 
 When you need it *pixel-close* — a flagship page, a client site, a demo — pair the capture service
-with an AI coding assistant (**Claude Code**) driving the build from your gathered inputs
+with an AI coding assistant driving the build from your gathered inputs
 (view-source + screenshot + media). This lane leans on the extra inputs from Step 2 and the
 **method** below to reproduce the design **from Theme Settings + shortcode options** in a
 near-empty child theme (not a wall of scoped CSS).

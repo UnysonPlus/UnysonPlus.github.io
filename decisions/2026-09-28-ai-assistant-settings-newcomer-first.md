@@ -37,7 +37,7 @@ conversations, and the AI's changes to the site.
 - The screen opens with **one status**: Ready (naming the AI that answers, with *Open the AI
   Assistant*), Not connected yet, or Turned off. With local AI it runs the same check the chat panel
   runs, so it is never a guess.
-- **Connect an AI** shows one recommended path (the AI Dev Kit: Claude with a subscription, or a free
+- **Connect an AI** shows one recommended path (the AI Dev Kit: an AI subscription, or a free
   model without one) as three real steps, and the provider key as the alternative. It collapses into
   "Other ways to connect" once the status is Ready.
 - The model choice, **Outside AI programs** (renamed from "Connect an agent", with a sentence saying the

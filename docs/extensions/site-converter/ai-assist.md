@@ -6,7 +6,7 @@ title: AI assist
 # AI assist (optional)
 
 By default the converter is **fully deterministic and offline** — no AI, no account, no keys. AI
-assist is an **optional** refinement that, when enabled, has **Claude** improve the conversion. It
+assist is an **optional** refinement that, when enabled, has an **AI model** improve the conversion. It
 runs inside the **[capture service](./capture-service.md)** on your machine.
 
 ## What it does — refine the mapping, not the design
@@ -17,7 +17,7 @@ sizes, layout, header/footer). The AI only improves the **mapping** — the judg
 gets wrong.
 
 After the capture, the draft mapping (each block carries its source content) is sent to the service's
-`POST /ai-convert`, where Claude returns **only a corrected mapping**:
+`POST /ai-convert`, where the AI returns **only a corrected mapping**:
 
 1. **Fix mis‑detected roles** — e.g. "this block is a heading, not a paragraph; this is a button."
 2. **Mark decorative / chrome blocks** to skip.
@@ -47,36 +47,18 @@ reach everyone only through the maintainer's reviewed, committed releases — ne
 
 ## Backends — pick one
 
-The service auto‑detects a backend (order: `AI_BACKEND` env → API key → `claude` on PATH → off):
+The service detects an AI backend by itself, in this order: an explicit backend setting, then a
+provider API key, then a signed-in command-line AI agent (your subscription), then a selected free local
+model, else off. Pick one:
 
-### Option A — Claude Code (your subscription)
+- **Your AI subscription**, through the command-line agent it signs in with: no key needed.
+- **A provider API key**: pay per use, set when starting the service.
+- **A free local model**, downloaded in the AI Dev Kit dashboard.
 
-1. Install the Claude Code CLI (native installer is most reliable on Windows):
-   ```powershell
-   irm https://claude.ai/install.ps1 | iex
-   ```
-   macOS / Linux:
-   ```bash
-   curl -fsSL https://claude.ai/install.sh | bash
-   ```
-2. Make sure `claude --version` works in a **new** terminal (add `~/.local/bin` to PATH if needed).
-3. Run `claude` once, sign in, then `/exit`.
-4. Restart the service (`node serve.mjs`) — its log should say **"AI ON — Claude Code subscription"**.
-
-### Option B — Anthropic API key (pay‑per‑use)
-
-Create a key at [console.anthropic.com](https://console.anthropic.com) (it needs billing and is
-**separate** from a Claude.ai subscription), then start the service with it:
-
-```powershell
-$env:ANTHROPIC_API_KEY="sk-ant-..."; node serve.mjs
-```
-```bash
-ANTHROPIC_API_KEY=sk-ant-... node serve.mjs
-```
-
-Either way, your key/subscription stays in the local service — **never** sent to or stored in
-WordPress. The Convert screen shows the detected backend next to the AI checkbox (from `/health`).
+The exact steps for each service are in the guide
+**[Set up AI for Unyson+](/guides/set-up-ai-for-unysonplus)**. Either way, your key or subscription
+stays in the local service — **never** sent to or stored in WordPress. The Convert screen shows the
+detected backend next to the AI checkbox (from `/health`).
 
 ## Runtime & cost
 
@@ -98,7 +80,7 @@ deterministic baseline; at worst it's a no‑op.
 
 | Symptom | Fix |
 |---|---|
-| "no AI backend" | Sign in to Claude Code or set `ANTHROPIC_API_KEY`, then restart the service. |
-| `claude --version` not recognized | Add the install folder to PATH (new terminal), or set `CLAUDE_CLI` to the binary path. |
-| Want a specific model | Set `ANTHROPIC_MODEL` (e.g. `claude-opus-4-8`). |
+| "no AI backend" | Sign in the command-line agent, set a provider API key, or select a local model, then restart the service ([setup guide](/guides/set-up-ai-for-unysonplus)). |
+| The agent's command is not recognized | Add its install folder to PATH (new terminal), or point the service at the program's full path ([setup guide](/guides/set-up-ai-for-unysonplus#troubleshooting)). |
+| Want a specific model | Set the model environment variable before starting the service ([setup guide](/guides/set-up-ai-for-unysonplus#troubleshooting)). |
 | It "timed out" | Update the service (the AI step no longer caps runtime by default). |

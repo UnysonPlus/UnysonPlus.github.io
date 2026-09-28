@@ -402,8 +402,8 @@ key or local CLI rather than a metered credit balance.
 
 ### Let an AI assistant work on your SEO (MCP) <span className="badge badge--secondary">Exploring</span>
 
-The most interesting item on this page. Model Context Protocol lets an AI client — Claude
-Desktop, Claude Code, Cursor, VS Code — connect directly to your site and work with its SEO
+The most interesting item on this page. Model Context Protocol lets an AI client — a desktop AI app, a command-line coding agent, an IDE
+assistant — connect directly to your site and work with its SEO
 data: *find posts missing meta descriptions*, *set titles across a section*, *create a
 redirect*.
 

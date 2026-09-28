@@ -20,14 +20,14 @@ extension section to a basic overview + a link, so all conversion info lives in 
 Both doc sets describe the same underlying engine but for different readers. The extension pages
 (`index`, `convert-from-file`, `convert-from-url`, `capture-service`, `ai-assist`, `manual-tools`,
 `how-it-works`) are a **product manual** for a WordPress user running the plugin in `wp-admin`. The
-AI Dev Kit pages are for a **developer** running Claude Code to drive an agentic conversion and
+AI Dev Kit pages are for a **developer** running a command-line AI agent to drive an agentic conversion and
 improve the converter.
 
 Two facts complicated a wholesale move:
 
 1. **The Site Converter extension is a standalone plugin** — fully usable without the kit (its
    deterministic engine and the capture service need no AI and no Node tooling from the kit).
-2. **The extension has its *own* optional "AI assist"** — Claude running *inside the capture service*
+2. **The extension has its *own* optional "AI assist"** — an AI model running *inside the capture service*
    to refine the mapping only. That is **not** the same as the kit's full agentic build. So there are
    three tiers, not two: extension-deterministic, extension-AI-assist, and kit-full-agentic.
 
@@ -36,7 +36,7 @@ Two facts complicated a wholesale move:
 - **Full consolidation (the original proposal).** Move every extension subpage's content into the
   kit; collapse the extension section to one overview page + a prominent "see the AI Dev Kit" link.
   *Trade-off:* a user who just installed the plugin to convert an HTML file gets bounced into
-  developer-kit docs that imply they need Node + Claude — and the extension's light AI-assist gets
+  developer-kit docs that imply they need Node + an AI agent — and the extension's light AI-assist gets
   conflated with the kit's full agentic build. The plugin stops being self-documenting.
 - **Hybrid.** Keep the pure task pages (file/URL) in the extension; move everything conceptual
   (how-it-works, ai-assist, full-conversion, manual-tools pipeline) to the kit. *Trade-off:* splits

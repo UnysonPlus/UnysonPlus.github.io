@@ -7,7 +7,7 @@ date: 2026-09-27
 description: "Users without an AI subscription can run a free model on their own computer. A hosted WordPress server cannot reach that computer, so the assistant panel in the browser runs the loop. And small models' native tool calls proved too fragile, so each step is one JSON action constrained by a schema."
 ---
 
-**The question:** Can someone with no Claude or ChatGPT subscription still use the AI Assistant, with a free model running on their own PC (the AI Dev Kit already runs one for the Site Converter) — and if so, how does a live site talk to it?
+**The question:** Can someone with no AI subscription still use the AI Assistant, with a free model running on their own PC (the AI Dev Kit already runs one for the Site Converter) — and if so, how does a live site talk to it?
 
 <!-- truncate -->
 
@@ -17,7 +17,7 @@ The assistant had two ways to reach a model: the WordPress AI Client (a paid pro
 "local agent command" that the web server runs on the same machine (development sites only). Neither
 helps a site owner on a web host who has no subscription.
 
-The AI Dev Kit already runs Ollama and lets the user pull a model. The obvious question was why the
+The AI Dev Kit already runs a local model runner and lets the user pull a model. The obvious question was why the
 site could not simply call it, the way the Site Converter calls the capture service. The answer turned
 out to be that the Site Converter mostly *doesn't* — its main calls are `fetch()` requests from the
 admin page, in the browser. To a web host's server, `localhost` is the server itself; the user's PC sits
@@ -40,18 +40,18 @@ infrastructure; the same trust boundary as the Site Converter.
 
 Then, how the model asks for tools:
 
-**Native tool calling** (Ollama `tools`). Tested first. With Qwen3 8B the calls were silently dropped
-whenever a long argument — a section with its items — had one stray token: Ollama's parser failed and
+**Native tool calling** (the model runner's `tools` option). Tested first. With an 8B model the calls were silently dropped
+whenever a long argument — a section with its items — had one stray token: the runner's parser failed and
 returned an empty message, and the model looked like it was doing nothing for minutes.
 
-**One JSON action per turn**, constrained by Ollama's `format` schema: `{"tool", "arguments"}` or
+**One JSON action per turn**, constrained by the runner's `format` schema: `{"tool", "arguments"}` or
 `{"reply"}`. The output always parses; a stray token becomes a visible, fixable value instead of a lost
 call; and it works with any text model, not only tool-calling ones.
 
 ## Decision
 
 - A fourth model choice, **Local AI on this computer**, whose loop runs in the assistant panel. It talks to
-  the AI Dev Kit (`POST /local-ai/tool-chat`) or to Ollama directly, and to the site through MCP with the
+  the AI Dev Kit (`POST /local-ai/tool-chat`) or to the local model runner directly, and to the site through MCP with the
   user's cookie session and a one-off session header. Automatic falls back to it when nothing else is set
   up, and the panel checks for a model when opened.
 - Each step is one **JSON action** constrained by a schema — not a native tool call.

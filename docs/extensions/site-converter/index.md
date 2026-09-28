@@ -55,8 +55,7 @@ exactly like a URL.) See **[How it works](./how-it-works.md)** for the architect
 The Convert screen has three tabs:
 
 - **Convert** — the happy path. Set up the capture service once, then convert from a URL or a file.
-  Optionally tick **AI assist** to have Claude refine the mapping + author a higher‑fidelity
-  stylesheet ([details](./ai-assist.md)).
+  Optionally tick **AI assist** to have the AI refine the mapping ([details](./ai-assist.md)).
 - **Manual tools** — the piece‑by‑piece importers (bundle `.zip`, header/footer theme generator,
   images, styling presets, theme settings, pages, menus) for running a single phase by hand.
 - **Diagnostics** — a capture‑service health check and the Theme Settings doctor.
@@ -68,5 +67,5 @@ The Convert screen has three tabs:
 - **[Convert from a URL](./convert-from-url.md)** — the live‑site path, step by step.
 - **[Convert from a file](./convert-from-file.md)** — Google Stitch & other exports.
 - **[The capture service](./capture-service.md)** — install once, endpoints, security, troubleshooting.
-- **[AI assist](./ai-assist.md)** — optional Claude‑powered refinement.
+- **[AI assist](./ai-assist.md)** — optional AI-powered refinement.
 - **[Roadmap](./roadmap.md)** — output targets: Unyson+ and Block Theme today; Elementor, Divi, Bricks and more next.

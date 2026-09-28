@@ -25,7 +25,7 @@ panel with trigger / delay / stagger / easing), and the mapper already knows eve
 So the raw capability to sequence reveals is entirely mechanical — the converter can walk the built
 node tree and assign effects itself. The only thing that genuinely benefits from *taste* is the
 **choice** of effect per element (should the hero CTA slide up last for emphasis? should a
-testimonial row cascade left-to-right?). The local AI (Ollama / Claude Code / an API key, via the
+testimonial row cascade left-to-right?). The local AI (a local model, a command-line AI agent or an API key, via the
 capture service) is good at exactly that semantic judgement — but it is slower, varies run to run,
 and is only present when the user has a backend configured and the capture service running.
 
@@ -63,7 +63,7 @@ available.
   validate against a fixed vocabulary.
 - **Consistency with the converter's whole philosophy.** This mirrors the standing rule that the
   deterministic path is the source of truth and the AI is a helper on top (the same shape as the
-  always-on local micro-pass that only *names* sections while Claude/deterministic own the
+  always-on local micro-pass that only *names* sections while the cloud AI / deterministic engine own the
   structural mapping). Determinism stays the default; intelligence is additive.
 - **Graceful degradation is explicit.** "Refine with AI" is only offered when a backend + the
   capture service are present, and any error returns the deterministic base — so there is no state

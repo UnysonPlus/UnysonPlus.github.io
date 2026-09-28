@@ -49,6 +49,22 @@ while in beta; the [open questions](#open-questions) list what is still being de
 Out of scope for the first version: generating images, editing theme PHP files, and bulk
 operations across a multisite network.
 
+## Getting started
+
+1. Activate **AI Assistant (Beta)** under *Unyson+ → Extensions*.
+2. Open *Unyson+ → AI Assistant*. The box at the top says whether the chat panel is connected to an AI,
+   and which one: **Ready** (green, with an *Open the AI Assistant* button) or **Not connected yet**.
+3. If it is not connected, follow **Connect an AI** on the same screen. The recommended way is the
+   [AI Dev Kit](#free-local-ai-on-your-computer): run it on your computer and the assistant uses your
+   Claude subscription (or a free local model), even on a hosted site. Press **Check again** and the box
+   turns green. The alternative is an AI provider key under *Settings → Connectors*.
+
+That is all a newcomer needs. **Where the assistant appears** sets the panel position, and everything
+technical (the model choice, outside AI programs over MCP, the list of abilities, **Reset**) sits under
+**Advanced**. *Reset AI Assistant settings* puts every setting on the screen back to a fresh install
+(optionally clearing your saved conversations); connection passwords stay until you revoke them, and
+changes the AI made to your site are not touched.
+
 ## Built on the WordPress 7 AI stack
 
 WordPress 7 ships the whole AI stack in core, so the AI Assistant builds on it rather than
@@ -328,8 +344,8 @@ Each tool carries read-only / destructive / idempotent hints so the agent can as
 step. The server also sends the agent short working instructions (start with `site_info`, check
 `describe_element` before setting options, keep new pages as drafts, use presets for styling).
 
-- **Access mode:** *Unyson+ → AI Assistant → MCP access* — **Off** (default: every agent is refused),
-  **Read-only** (only the Read tools are offered), or **Read & write**.
+- **Access mode:** *Unyson+ → AI Assistant → Advanced → Outside AI programs* — **Off** (default: every
+  agent is refused), **Read only** (only the Read tools are offered), or **Read and write**.
 - **Who the agent is:** it signs in with an Application Password and acts as **that user**, so it can
   only do what the user's role allows. Use an Editor account to keep an agent away from site settings.
 - **Where it shines:** large jobs (a whole page or site from a brief), repetitive edits across many
@@ -340,9 +356,10 @@ step. The server also sends the agent short working instructions (start with `si
 ### Connecting an agent
 
 1. Activate **AI Assistant (Beta)** under *Unyson+ → Extensions*.
-2. Open *Unyson+ → AI Assistant*, set **MCP access** to *Read-only* or *Read & write*, and save.
-3. Under **Connect an agent**, give the connection a label (e.g. "Work laptop") and click
-   **Create connection password**. The screen shows — **once** — the server URL, username, password,
+2. Open *Unyson+ → AI Assistant → Advanced → Outside AI programs*, set access to *Read only* or
+   *Read and write*, and save. (Creating a connection password switches it on for you if it is off.)
+3. In the same place, name the connection (e.g. "Claude Code on my laptop") and click
+   **Create a connection password**. The screen shows — **once** — the server URL, username, password,
    the ready-made `Authorization` header, and a JSON config block:
 
    ```json
@@ -379,8 +396,8 @@ page builder and of the [Live Page Editor](../live-editor.md). It opens a chat p
 change — *"Add a pricing section with three plans"*, *"Add a FAQ at the end"*, *"Make the headings
 sound more confident"* — and it lands in the builder a few seconds later.
 
-The button and panel sit at the **bottom right** by default. *Panel position* in *Unyson+ → AI Assistant
-→ Builder assistant* can move them to the **bottom left** (clear of the admin menu) or **beside the
+The button and panel sit at the **bottom right** by default. **Where the assistant appears** on the
+*Unyson+ → AI Assistant* screen can move them to the **bottom left** (clear of the admin menu) or **beside the
 sidebar**, which keeps the builder's Publish box uncovered.
 
 - **It edits what you have open.** The panel sends the page as it is in your editor — unsaved edits
@@ -398,7 +415,8 @@ sidebar**, which keeps the builder's Publish box uncovered.
 
 ### Choosing the AI model
 
-The panel needs a model. *Unyson+ → AI Assistant → Builder assistant → AI model* picks one:
+The panel needs a model. *Unyson+ → AI Assistant → Advanced → AI model → Which AI answers* picks one
+(most people leave it on **Automatic** and follow **Connect an AI** at the top of the screen instead):
 
 | Option | What it uses | Where it works |
 | --- | --- | --- |
@@ -450,7 +468,7 @@ The Site Converter reaches the capture service the same way.
 1. Start the AI Dev Kit (`start-converter.bat`). Its dashboard opens at `http://localhost:4600`.
 2. In the dashboard, go to *Settings → Local AI models* and pull a model — **Qwen3 8B** is the best
    choice for most PCs, **Qwen3 4B** for a smaller one.
-3. In WordPress, set *Unyson+ → AI Assistant → Builder assistant → AI model* to **Local AI on this
+3. In WordPress, set *Unyson+ → AI Assistant → Advanced → AI model → Which AI answers* to **Local AI on this
    computer** (or leave it on Automatic when no provider key is set).
 4. Open the assistant. It checks for the model and shows which one it will use — or what is missing.
 
@@ -614,14 +632,15 @@ function myext_ai_update_thing( $in ) {
 | --- | --- | --- |
 | Enable AI Assistant | *Unyson+ → Extensions* | Off (ships inactive) |
 | AI provider key | *Settings → Connectors* (WordPress core) | None |
-| Builder assistant AI model (Automatic / WordPress AI Client / Local agent command / Off) | *Unyson+ → AI Assistant → Builder assistant* — option `upw_ai_panel_backend` | Automatic |
-| Panel position (Bottom right / Bottom left / Beside the sidebar) | same — option `upw_ai_panel_position` | Bottom right |
+| Which AI answers (Automatic / Local AI on this computer / AI provider key / Agent command / Off) | *Unyson+ → AI Assistant → Advanced → AI model* — option `upw_ai_panel_backend` | Automatic |
+| Panel position (Bottom right / Bottom left / Beside the sidebar) | *Unyson+ → AI Assistant → Where the assistant appears* — option `upw_ai_panel_position` | Bottom right |
 | Saved conversations | Per user — user meta `upw_ai_chats` (last 30 messages per page / screen, 30 days) | — |
-| Local agent command (development hosts only) | same — option `upw_ai_local_agent_cmd` | None |
-| Local AI address (the kit or Ollama, as seen from your browser) | same — option `upw_ai_browser_url` | `http://localhost:8787` |
-| Local model (blank = the kit's pick) | same — option `upw_ai_browser_model` | None |
-| MCP access (Off / Read-only / Read & write) | *Unyson+ → AI Assistant → MCP access* — stored as option `upw_ai_mcp_mode` | Off |
-| Agent connections | *Unyson+ → AI Assistant → Connect an agent* (WordPress Application Passwords) | None |
+| Agent command (development hosts only) | *Advanced → AI model* — option `upw_ai_local_agent_cmd` | None |
+| Local AI address (the kit or Ollama, as seen from your browser) | *Advanced → AI model* — option `upw_ai_browser_url` | `http://localhost:8787` |
+| Local model (blank = the kit's pick) | *Advanced → AI model* — option `upw_ai_browser_model` | None |
+| Access for outside AI programs (Off / Read only / Read and write) | *Advanced → Outside AI programs* — option `upw_ai_mcp_mode` | Off |
+| Connection passwords for outside AI programs | *Advanced → Outside AI programs* (WordPress Application Passwords; the one-off passwords the chat panel uses per request are not listed and delete themselves) | None |
+| Reset | *Advanced → Reset* — deletes the options above (access back to Off), optionally your saved conversations; leaves connection passwords and site changes alone | — |
 | Chat AI channel + its label, greeting, notes, excluded pages | *Theme Settings → Site-wide UX → Chat Button* (stored with the Chat Button settings) | Off |
 | Visitor daily limit | same | 100 |
 

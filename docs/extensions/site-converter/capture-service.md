@@ -58,6 +58,8 @@ The service exposes a few CORS‑enabled endpoints (your admin browser calls the
 | `GET /capture?url=<url>&target=block-theme` | Render a live URL → `block-bundle.json` for the **Block theme** output |
 | `GET /mirror?url=<url>&zip=1` | Mirror a page verbatim (for **Duplicate as landing page**) → a `.zip` of `index.html` + `assets/` |
 | `POST /local-ai/tool-chat` | One tool-calling turn on your local model — used by the [AI Assistant's free local AI](../ai-assistant/index.md#free-local-ai-on-your-computer) |
+| `POST /local-ai/import` | Registers a `.gguf` model file from this computer with Ollama (see [Local AI models](#local-ai-models)) |
+| `POST /local-ai/check` | Grades a local model on a small task in the shape the converter and the AI Assistant use: Ready, Weak or Not suitable |
 | `POST /local-ai/agent` | Runs Claude Code (your subscription) as the AI Assistant's agent against your site — used instead of the local model when Claude Code is signed in on this computer |
 
 **Works with a hosted site.** Every call goes from your admin browser to the service, and the browser
@@ -86,6 +88,33 @@ capture correctly:
 - **Wait until styled** — Tailwind compiles its CSS *after* the network is idle, so the extractor
   waits until styling is actually applied (a substantial stylesheet exists / the real font is in
   use) before reading the page. Normal sites pass this instantly.
+
+## Local AI models
+
+The dashboard's **Settings → Local AI models** lists recommended models to download with one click. You
+can also bring your own:
+
+- **Add a model** by name from [ollama.com/library](https://ollama.com/library) (for example
+  `llama3.1:8b`), by pasting its ollama.com page, or by pasting a Hugging Face link to a GGUF model
+  (`https://huggingface.co/<user>/<model>-GGUF`, optionally with a quantization such as `:Q4_K_M`).
+  It downloads with the same progress bar.
+- **Import a `.gguf` file** already on your computer by pasting its full path (and, optionally, a name).
+  Ollama keeps its own copy in the kit's model folder, so you need that much free disk space. Nothing
+  leaves your computer. Only `.gguf` files are accepted: they hold model data, not code.
+- Added models carry a **custom** badge, and are selected and deleted like the others.
+
+Models differ a lot in how well they follow instructions, so every downloaded model has a **Check**
+button. It gives the model one small task in the exact shape the converter and the AI Assistant use
+(pick the right tool, then fill in a two-question FAQ word for word) and grades the answer:
+
+| Result | Meaning |
+| --- | --- |
+| **Ready** | Right tool, every question and answer correct. Good to use. |
+| **Weak** | Valid answer, wrong content. It will run, but expect poor results. |
+| **Not suitable** | It could not answer in the required format at all. |
+
+In testing, a very small model (135 million parameters) came back **Weak** while Qwen3 8B came back
+**Ready**. The licence of any model you add is yours to check.
 
 ## Security & privacy
 

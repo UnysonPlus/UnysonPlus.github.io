@@ -467,7 +467,9 @@ The Site Converter reaches the capture service the same way.
 
 1. Start the AI Dev Kit (`start-converter.bat`). Its dashboard opens at `http://localhost:4600`.
 2. In the dashboard, go to *Settings → Local AI models* and pull a model — **Qwen3 8B** is the best
-   choice for most PCs, **Qwen3 4B** for a smaller one.
+   choice for most PCs, **Qwen3 4B** for a smaller one. You can also add your own
+   ([how](../site-converter/capture-service.md#local-ai-models)); press **Check** to see whether it is
+   up to the job.
 3. In WordPress, set *Unyson+ → AI Assistant → Advanced → AI model → Which AI answers* to **Local AI on this
    computer** (or leave it on Automatic when no provider key is set).
 4. Open the assistant. It checks for the model and shows which one it will use — or what is missing.

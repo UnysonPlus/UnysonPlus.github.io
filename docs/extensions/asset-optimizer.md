@@ -143,6 +143,31 @@ location ~* /uploads/unysonplus/asset-optimizer/.*\.(css|js)$ {
 }
 ```
 
+## Image quality
+
+The theme generates its own cropped versions of your images. Until now those were written at
+whatever quality the server happened to default to — on a real site that came out around 88, which
+is higher than WordPress's own default and roughly twice the file size a good WebP needs.
+
+**Image quality** sets it explicitly. 82 is WordPress's default and the recommended choice; 80 is a
+little smaller again and hard to tell apart; 75 is noticeably smaller and worth checking on a photo
+you care about first. On a real image from a live site, 75 produced a crop **17% smaller** than 82
+with no visible difference at normal viewing size.
+
+The saving appears gradually. Each crop is re-made the first time it is shown after you change the
+setting, not all at once, so a busy site spreads the work over its next few page views rather than
+doing it in one go.
+
+PNG images are unaffected — PNG is lossless, so there is no quality to trade.
+
+:::note Above 80 is wasted
+Each crop is also saved as WebP, and visitors get whichever file is smaller. The WebP stops getting
+bigger above about 80, so raising the setting past that only inflates a JPEG nobody downloads. Below
+about 70 the JPEG becomes the smaller of the two and is served instead — still correct, still the
+smallest file, but you are looking at JPEG compression at that point, which is where visible
+artefacts start.
+:::
+
 ## JavaScript
 
 Scripts detected on the front end are listed too, but combining JS is more delicate than CSS, so the

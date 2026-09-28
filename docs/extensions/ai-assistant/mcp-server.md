@@ -26,12 +26,41 @@ This page is the reference.
 | **Transport** | MCP Streamable HTTP: JSON-RPC 2.0 over POST, answered with plain JSON (no event stream) |
 | **Protocol versions** | `2025-06-18`, `2025-03-26`, `2024-11-05` (the client's choice when supported, else the newest) |
 | **Sessions** | Stateless: no session id to keep; every request stands alone |
-| **Sign-in** | HTTP Basic with a WordPress **Application Password**: `Authorization: Basic base64(username:password)` |
-| **Acts as** | The WordPress user who owns the password, limited by that user's role |
+| **Sign-in** | **Web sign-in (OAuth 2.1)**: the program opens a page on your site where you choose **Allow**; or an **Application Password** sent as `Authorization: Basic base64(username:password)` |
+| **Acts as** | The WordPress user who allowed the app or owns the password, limited by that user's role |
 | **Access switch** | *Unyson+ → AI Assistant → Advanced → Outside AI programs*: **Off** (default), **Read only**, **Read and write** |
 | **Needs** | The AI Assistant extension active, WordPress 6.9+ (Abilities API), and HTTPS on a live site |
 
-## Turn it on and get a password
+## Sign in with the web page (OAuth)
+
+Programs that support web sign-in for remote MCP servers need **only the server URL**. Add
+`https://<your-site>/wp-json/unysonplus-ai/v1/mcp` as a remote MCP server, and the program opens a page
+on your site:
+
+1. If you are not logged in to WordPress, log in first (the page is part of wp-admin).
+2. The page names the app and asks **"Allow … to use this site?"**. Choose what it may do:
+   **Read and write** or **Read only**.
+3. Press **Allow**. You return to the program, which is now connected as you. **Deny** cancels.
+
+If access for outside programs is **Off**, an administrator's **Allow** turns it on (at the level they
+chose); other users see that an administrator must allow it.
+
+The app stays signed in for up to 30 days of inactivity. *Unyson+ → AI Assistant → Advanced → Outside AI
+programs → Apps signed in with your account* lists each app, its access, and when it was last used;
+**Sign out** ends its access immediately.
+
+**For client developers.** Standard MCP authorization:
+
+| | |
+| --- | --- |
+| **Discovery** | A signed-out request answers **401** with `WWW-Authenticate: Bearer resource_metadata="…/wp-json/unysonplus-ai/v1/oauth/protected-resource"`. Also served at `/.well-known/oauth-protected-resource`, `/.well-known/oauth-authorization-server` and `/.well-known/openid-configuration` on the site's home URL |
+| **Registration** | Dynamic client registration: `POST …/oauth/register` with `redirect_uris` (https, or http on `localhost` / `127.0.0.1`). Public clients only (`token_endpoint_auth_method: none`) |
+| **Authorization** | Authorization code with **PKCE `S256`** (required). Scopes `mcp:write` (default) and `mcp:read` |
+| **Tokens** | `POST …/oauth/token`, form-encoded. Access tokens last 1 hour; refresh tokens 30 days and are replaced on every use. Codes are single-use and expire after 10 minutes |
+| **Revocation** | `POST …/oauth/revoke` with `token` (RFC 7009) |
+| **Where tokens work** | Only on the AI Assistant's own routes (`/wp-json/unysonplus-ai/…`), never on the rest of the WordPress REST API. The site stores only a hash of each token |
+
+## Or use a connection password
 
 1. Activate **AI Assistant (Beta)** under *Unyson+ → Extensions*.
 2. Open *Unyson+ → AI Assistant → Advanced → Outside AI programs*.
@@ -128,10 +157,11 @@ curl -s -u 'USERNAME:APPLICATION PASSWORD' -H 'content-type: application/json' \
 | You see | Why | Fix |
 | --- | --- | --- |
 | **404** `rest_no_route` | The AI Assistant extension is not active (or the site is older than WordPress 6.9) | Activate it under *Unyson+ → Extensions* |
-| **401** `upw_ai_mcp_auth` "Authenticate with an Application Password" | No valid `Authorization` header arrived | Check the username and password. If they are right, your host may be stripping the header before WordPress sees it (common on Apache with PHP as CGI): add `SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1` to the site's `.htaccess` |
+| **401** `upw_ai_mcp_auth` "Sign in" | No valid `Authorization` header arrived: a web sign-in that has not happened yet or has expired, or a wrong password | Check the username and password. If they are right, your host may be stripping the header before WordPress sees it (common on Apache with PHP as CGI): add `SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1` to the site's `.htaccess` |
 | **401** on a plain-HTTP live site | WordPress only offers Application Passwords over HTTPS | Serve the site over HTTPS |
 | **403** `upw_ai_mcp_off` | Access is set to Off | Set it to Read only or Read and write |
-| **403** `upw_ai_mcp_forbidden` | The password's user cannot edit content | Use a password created by an Editor or Administrator |
+| **403** `upw_ai_mcp_forbidden` | The signed-in user cannot edit content | Sign in (or create the password) as an Editor or Administrator |
+| The sign-in page says the app "asked to return to an address it did not register" | The program's sign-in request does not match its registration | Remove the server from the program and add it again |
 | **405** on `GET` | Expected: the server has no event stream | POST JSON-RPC messages |
 | JSON-RPC error `-32602` "Unknown tool" | The tool is not offered to this connection: a write tool in Read-only mode, or an extension that is not active | Switch to Read and write, or activate the extension |
 | JSON-RPC error `-32601` "Method not found" | A method outside the list above | See [What it answers](#what-it-answers) |
@@ -143,10 +173,9 @@ while you build. Return `false` from the `fw_ai_assistant_allow_local_app_passwo
 
 ## Limits
 
-- **No OAuth sign-in yet.** Programs that connect to remote MCP servers only through a browser sign-in
-  flow, and cannot send an `Authorization` header, cannot connect yet. Programs that accept a header
-  (or a small local bridge that adds one) work today; the
-  [guide](/guides/connect-ai-tools-to-wordpress) covers both.
+- **Web sign-in needs a site the program can reach.** A program that runs on a provider's servers
+  (a web chat app's connector) signs in over the internet, so it can connect to a public HTTPS site,
+  not to a site on your own computer. Programs that run on your computer can use either.
 - **No resources, prompts or change notifications.** Everything is a tool; the tool list does not
   change during a connection.
 - **No streaming.** Each call answers when it is done. The tools are quick; a whole-site build is many

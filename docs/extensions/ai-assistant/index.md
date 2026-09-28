@@ -338,8 +338,9 @@ key is stored in WordPress: the program brings its own model.
   `insert_items`, `render_check`, `undo` …), each with read-only / destructive / idempotent hints. The
   server also sends the program short working instructions.
 - **Access:** *Unyson+ → AI Assistant → Advanced → Outside AI programs*: **Off** (default), **Read only**
-  or **Read and write**. The program signs in with an Application Password created on that screen and acts
-  as that user, limited by the user's role.
+  or **Read and write**. The program signs in through a **web sign-in page** on your site (OAuth 2.1:
+  you press *Allow* and pick Read and write or Read only; added in 1.0.19) or with an Application
+  Password created on that screen, and acts as that user, limited by the user's role.
 
 The **[MCP server reference](./mcp-server.md)** covers connecting, every method, tool results and errors,
 testing with `curl`, troubleshooting and limits. For step-by-step setup in specific AI programs, see the
@@ -674,6 +675,7 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 10 | Free local AI on the editor's computer (the AI Dev Kit or a local model runner), run from the browser | With the recommended 8B model, "add a FAQ section" and "add three feature cards" finish in the page builder with a clean page check, on a site that cannot reach the editor's computer | **Done** — 1.0.9 (capture service 1.11.60) |
 | 11 | Knows where you are; keeps the conversation | On Settings → General the ideas are about the tagline and the answer uses the real title and tagline; a new page is called by its typed title; a reload restores the conversation and *New chat* clears it | **Done** — 1.0.12 |
 | 12 | AI Changes: every AI change across the site, with undo and redo | Page, Theme Settings and site-identity changes are listed, undone, redone and restored from the screen, and an undone change shows as Undone | **Done** — 1.0.18 |
+| 13 | Web sign-in (OAuth 2.1) for the MCP server | A client that knows only the server URL discovers the sign-in from the 401, registers, gets an Allow page in wp-admin, exchanges the code with PKCE, lists and calls tools with its token; a read-only sign-in sees only Read tools; refresh rotates; Sign out and revocation end access at once; the token is refused on the rest of the REST API | **Done** — 1.0.19 |
 
 ## Open questions
 

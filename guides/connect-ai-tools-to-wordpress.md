@@ -20,6 +20,14 @@ You do not need any of this for the **✦ AI Assistant** chat panel inside WordP
 different way. See [Set up AI for Unyson+](./set-up-ai-for-unysonplus.md).
 :::
 
+:::tip Does your tool offer a browser sign-in for MCP servers?
+Then skip the password: add the server URL
+`https://example.com/wp-json/unysonplus-ai/v1/mcp` as a remote MCP server, and the tool opens a page on
+your site asking **"Allow … to use this site?"**. Choose *Read and write* or *Read only* and press
+**Allow**. See [Web apps](#web-apps-chatgpt-and-claudeai) below. The password steps that follow work
+with every tool.
+:::
+
 ## 1. Create a connection password on your site
 
 1. In WordPress, activate **AI Assistant (Beta)** under *Unyson+ → Extensions*.
@@ -127,11 +135,21 @@ systems.) Restart Claude Desktop; the tools appear under the tools icon in a new
 Add a **remote HTTP** (Streamable HTTP) MCP server with the Server URL and an `Authorization` header set
 to the value you copied. Most tools accept the config block the connection screen shows as-is.
 
-:::caution Not yet: web apps that need a browser sign-in
-**ChatGPT** connectors and **claude.ai** custom connectors on the web connect only through an OAuth sign-in
-flow and cannot send a password header, so they cannot connect to the site yet. Use one of the tools
-above.
-:::
+### Web apps: ChatGPT and claude.ai
+
+**ChatGPT** connectors and **claude.ai** custom connectors connect through a browser sign-in (OAuth)
+instead of a password, which the site supports from AI Assistant 1.0.19:
+
+1. In the app's connector settings, add a custom connector (remote MCP server) with the URL
+   `https://example.com/wp-json/unysonplus-ai/v1/mcp`. Leave any client ID / secret fields empty: the
+   app registers itself.
+2. The app opens your site. Log in to WordPress if asked, choose *Read and write* or *Read only*, and
+   press **Allow**.
+3. Back in the app, the site's tools are available in your chats.
+
+These apps connect from the provider's servers, so your site must be **public and on HTTPS**: a site
+on your own computer cannot be reached. The app appears under *Apps signed in with your account* on the
+Outside AI programs screen, where **Sign out** disconnects it.
 
 ## 3. Try it
 
@@ -154,4 +172,5 @@ causes: the extension is not active (a 404), or the host strips the `Authorizati
 the right password), which one `.htaccess` line fixes.
 
 When the tool has connected, **Last used** in the connections list shows the time. To disconnect a
-tool, press **Revoke** next to its connection.
+tool, press **Revoke** next to its connection (or **Sign out** next to an app that used the browser
+sign-in).

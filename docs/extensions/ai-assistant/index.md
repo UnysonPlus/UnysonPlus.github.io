@@ -161,6 +161,7 @@ WordPress capabilities of the user the AI acts as. *(The Chat AI channel uses no
 | Ability | Input | Returns | Permission |
 | --- | --- | --- | --- |
 | `unysonplus/render-check` | post ID | Renders the page and lists what a visitor would notice, each with its item path — see [The verify loop](#the-verify-loop) | `edit_post` |
+| `unysonplus/visual-check` | source URL, post ID (drafts too) or URL, optional device | Renders both pages in a real browser and says how different they look and, section by section, what is missing, moved or restyled — see [Compare with a source site](#compare-with-a-source-site) | `edit_posts` |
 | `unysonplus/list-revisions` | post ID | A page's AI revisions, newest first (the newest 20 are kept) | `edit_post` |
 | `unysonplus/undo` | post ID, optional revision ID | Restores a page revision; the current state is saved first, so an undo can itself be undone | `edit_post` |
 | `unysonplus/list-settings-revisions` | — | The Theme Settings values saved before each AI change, newest first (20 kept) | `edit_theme_options` |
@@ -563,8 +564,33 @@ The "main visual" is an icon or media option named after the element itself (`ic
 `image_box` → `image`), so optional extras such as a button's icon are not flagged. Theme and extension
 developers can adjust the list per element with the `fw_ai_assistant_visual_atts` filter.
 
-The check reads markup, not pixels. Comparing the result visually against a reference design is the
-next step (see [Open questions](#open-questions)).
+The check reads markup, not pixels. For how the page *looks* next to a reference, see the next section.
+
+### Compare with a source site
+
+**Shipped in 1.0.21.** When you rebuild or convert an existing site, the question is not only "does the
+page work?" but "does it look like the original?". Ask in plain words — *"Does my draft About page look
+the same as https://old-site.example/about/? Check visually."* — and the assistant calls
+**`visual-check`**, which renders both pages in a real browser and compares them two ways:
+
+- **How different they look:** an overall difference in percent, both page heights, and the horizontal
+  strips that differ most. Under about 10 % is usually a close match (fonts and images anti-alias
+  differently in every browser).
+- **Section by section:** the pages are paired section by section, and inside each pair every heading,
+  text, image and icon is matched to its counterpart. Each difference comes back by name — a whole
+  section missing, an item missing or added, an item moved, a group that went from three columns to
+  two, a different font, colour or background, a spacing change, a section much taller or shorter.
+
+The assistant then fixes the page with its normal tools and checks again. Nothing is changed by the
+check itself. **Drafts work too:** the renderer gets a private preview link for that one page, valid for
+15 minutes and hidden from search engines. Pass `device: tablet` or `mobile` to compare the narrow
+layouts.
+
+**What it needs.** The rendering is done by the capture service of the
+[AI Dev Kit](/extensions/site-converter/capture-service) (1.11.78 or newer) on your computer. A site on
+the same computer calls it directly. A **live site cannot reach your computer**, so there the check
+runs when you ask from the chat panel with local AI: your browser, which can reach the kit, does the
+measuring and hands the result to the site. A check takes about half a minute to a minute.
 
 ## For extension developers — adding abilities
 
@@ -647,7 +673,13 @@ framework/extensions/ai-assistant/
 │   ├── class-fw-ai-local.php             the local agent runner (development hosts)
 │   ├── class-fw-ai-visitor.php           the Chat AI channel
 │   ├── class-fw-ai-settings.php          Theme Settings: describe, update, presets, undo
-│   └── class-fw-ai-build.php             templates + URL conversion
+│   ├── class-fw-ai-build.php             templates + URL conversion
+│   ├── class-fw-ai-toolkit.php           extension abilities: registration helper + undo
+│   ├── class-fw-ai-context.php           where you are + starter ideas, site identity
+│   ├── class-fw-ai-history.php           saved conversations
+│   ├── class-fw-ai-changes.php           the AI Changes screen
+│   ├── class-fw-ai-oauth.php             web sign-in (OAuth) for the MCP server
+│   └── class-fw-ai-visual.php            visual check against a source site
 ├── static/                               panel + visitor window JS / CSS
 └── views/page.php                        Unyson+ → AI Assistant
 ```
@@ -676,6 +708,7 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 11 | Knows where you are; keeps the conversation | On Settings → General the ideas are about the tagline and the answer uses the real title and tagline; a new page is called by its typed title; a reload restores the conversation and *New chat* clears it | **Done** — 1.0.12 |
 | 12 | AI Changes: every AI change across the site, with undo and redo | Page, Theme Settings and site-identity changes are listed, undone, redone and restored from the screen, and an undone change shows as Undone | **Done** — 1.0.18 |
 | 13 | Web sign-in (OAuth 2.1) for the MCP server | A client that knows only the server URL discovers the sign-in from the 401, registers, gets an Allow page in wp-admin, exchanges the code with PKCE, lists and calls tools with its token; a read-only sign-in sees only Read tools; refresh rotates; Sign out and revocation end access at once; the token is refused on the rest of the REST API | **Done** — 1.0.19 |
+| 14 | Visual check against a source site | A draft copy of a page with one section removed is compared with the original: the check reports that section as missing (by name, in the right place), the height gap and the strips that differ; the same answer comes back when the server cannot reach the kit and the browser measures instead; asked in plain words, the chat panel runs the check and explains it | **Done** — 1.0.21 (capture service 1.11.78) |
 
 ## Open questions
 
@@ -683,10 +716,9 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
   WordPress 6.9 (on older WordPress it loads but registers nothing). The builder panel and Chat
   channel will need WordPress 7's AI Client and Connectors. Should those parts hide themselves on
   6.9, or should the extension require 7.0 outright?
-- **Visual comparison.** 1.0.3's render check is HTML-only, which works on every host. Pixel checks
-  (layout gaps, overlapping elements, comparing against a reference design) need a headless browser,
-  which most hosts don't have. Should the check add a visual pass only when the capture service is
-  reachable?
+- **Visual comparison without the kit.** The visual check (1.0.21) needs the AI Dev Kit's browser on
+  the editor's computer, because most hosts have no headless browser. Should a hosted rendering option
+  exist for people who never install the kit?
 - **Visitor channel models.** Should the visitor channel be allowed to use a cheaper model than
   the builder panel, configured separately?
 - **Personal data.** Every extension with something to build now has abilities. Form entries,

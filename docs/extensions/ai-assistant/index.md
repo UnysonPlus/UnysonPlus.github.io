@@ -710,9 +710,10 @@ layouts.
 
 **What it needs.** The rendering is done by the capture service of the
 [AI Dev Kit](/extensions/site-converter/capture-service) (1.11.78 or newer) on your computer. A site on
-the same computer calls it directly. A **live site cannot reach your computer**, so there the check
-runs when you ask from the chat panel with local AI: your browser, which can reach the kit, does the
-measuring and hands the result to the site. A check takes about half a minute to a minute.
+the same computer calls it directly. A **live site cannot reach your computer**, so there the
+measuring happens on your side instead: with a local model, your browser asks the kit; with Claude
+through the AI Dev Kit (capture service 1.11.84 or newer), the kit gives Claude a measuring tool of its
+own, and the result is handed back to the site. A check takes about half a minute to a minute.
 
 ## For extension developers — adding abilities
 

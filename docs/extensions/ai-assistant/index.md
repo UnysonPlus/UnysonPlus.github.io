@@ -161,6 +161,7 @@ WordPress capabilities of the user the AI acts as. *(The Chat AI channel uses no
 | Ability | Input | Returns | Permission |
 | --- | --- | --- | --- |
 | `unysonplus/render-check` | post ID | Renders the page and lists what a visitor would notice, each with its item path — see [The verify loop](#the-verify-loop) | `edit_post` |
+| `unysonplus/replace-text` | find, replace, options; then apply with the preview's plan code | Changes the same text everywhere on the site — preview first — see [Change text everywhere](#change-text-everywhere) | `edit_posts` (Theme Settings: `edit_theme_options`) |
 | `unysonplus/visual-check` | source URL, post ID (drafts too) or URL, optional device | Renders both pages in a real browser and says how different they look and, section by section, what is missing, moved or restyled — see [Compare with a source site](#compare-with-a-source-site) | `edit_posts` |
 | `unysonplus/list-revisions` | post ID | A page's AI revisions, newest first (the newest 20 are kept) | `edit_post` |
 | `unysonplus/undo` | post ID, optional revision ID | Restores a page revision; the current state is saved first, so an undo can itself be undone | `edit_post` |
@@ -315,6 +316,30 @@ The ideas are the buttons shown when a conversation is empty. They are chosen by
 facts — not made up by the AI — so they appear instantly, cost nothing, and only suggest things the
 assistant can actually do. Jobs that other extensions queue for you (such as the Site Converter's list of
 findings) are still shown first.
+
+### Change text everywhere
+
+**Shipped in 1.0.22.** Renamed the business, changed a phone number or a price? Ask once — *"We renamed
+the company. Change the old name to the new one everywhere."* The assistant uses **`replace-text`**, which
+works in two steps so nothing changes unseen:
+
+1. **Preview.** It finds every place the text appears and shows you how many, where, and examples
+   (before → after). Nothing has changed yet.
+2. **Apply.** Only after you say yes does it make exactly those changes. A page someone edited in the
+   meantime is skipped rather than changed blind.
+
+**Where it looks:** the page-builder content of every page, post and template (drafts too), titles and
+excerpts, custom menu labels, and Theme Settings text such as the footer copyright or the top bar.
+
+**What it leaves alone:** anything that is not words a visitor reads — ids, CSS, colours, icons, images,
+fonts and other settings. Links and web addresses are left alone too, unless you ask (useful for a
+phone number or e-mail inside a `tel:` / `mailto:` link). In formatted text only the words change, never
+the markup. Matching is case-sensitive and whole-word by default, so "cat" does not touch "category".
+The site title and tagline are not changed by it; the preview says when they contain the text, and the
+assistant can change them separately.
+
+**Undo:** every page is saved as a revision first, titles and Theme Settings as one change each, and it
+all appears on [AI Changes](#ai-changes-see-and-undo-every-change) with Undo.
 
 ### Your conversation is kept
 
@@ -679,7 +704,8 @@ framework/extensions/ai-assistant/
 │   ├── class-fw-ai-history.php           saved conversations
 │   ├── class-fw-ai-changes.php           the AI Changes screen
 │   ├── class-fw-ai-oauth.php             web sign-in (OAuth) for the MCP server
-│   └── class-fw-ai-visual.php            visual check against a source site
+│   ├── class-fw-ai-visual.php            visual check against a source site
+│   └── class-fw-ai-replace.php           find and replace across the site
 ├── static/                               panel + visitor window JS / CSS
 └── views/page.php                        Unyson+ → AI Assistant
 ```
@@ -709,6 +735,7 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 12 | AI Changes: every AI change across the site, with undo and redo | Page, Theme Settings and site-identity changes are listed, undone, redone and restored from the screen, and an undone change shows as Undone | **Done** — 1.0.18 |
 | 13 | Web sign-in (OAuth 2.1) for the MCP server | A client that knows only the server URL discovers the sign-in from the 401, registers, gets an Allow page in wp-admin, exchanges the code with PKCE, lists and calls tools with its token; a read-only sign-in sees only Read tools; refresh rotates; Sign out and revocation end access at once; the token is refused on the rest of the REST API | **Done** — 1.0.19 |
 | 14 | Visual check against a source site | A draft copy of a page with one section removed is compared with the original: the check reports that section as missing (by name, in the right place), the height gap and the strips that differ; the same answer comes back when the server cannot reach the kit and the browser measures instead; asked in plain words, the chat panel runs the check and explains it | **Done** — 1.0.21 (capture service 1.11.78) |
+| 15 | Change text everywhere, preview first | Renaming the business across a real site: the preview lists 43 changes in 8 pages and the footer (and names the site title as out of scope) without changing anything; the plan applies only after "yes", with links, markup and settings untouched; undoing restores every page and setting byte for byte | **Done** — 1.0.22 |
 
 ## Open questions
 

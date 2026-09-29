@@ -108,7 +108,7 @@ Every [ability](./index.md#abilities) appears as a tool named without the `unyso
 underscores: `unysonplus/create-page` is the tool `create_page`. The core set covers reading the site
 (`site_info`, `list_elements`, `describe_element`, `get_page`, `search_content`, `get_content`), building
 pages (`create_page`, `insert_items`, `update_element`, `move_element`, `remove_element`,
-`apply_template`), designing the site (`describe_theme_settings`, `update_theme_settings`,
+`apply_template`, and `replace_text` for site-wide find and replace with a preview), designing the site (`describe_theme_settings`, `update_theme_settings`,
 `save_preset`, `update_site_identity`), checking (`render_check`, and `visual_check` to compare a page with a source site) and undoing (`undo`,
 `undo_theme_settings`, `undo_change` and the revision lists). Active extensions add their own
 (menus, forms, SEO, shop products, animations and more); the

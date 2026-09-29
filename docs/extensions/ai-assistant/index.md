@@ -607,6 +607,20 @@ settings to the Chat Button tab) and `fw_ext_chat_channel_svg` (an icon for a cu
 | Runaway usage | The panel caps each request at 16 model rounds (the local agent at 10 minutes); the visitor channel has a per-visitor rate limit (10 questions per 5 minutes) and a site-wide daily limit |
 | Claiming success that isn't real | The assistant is instructed to run `render-check` and fix what it reports; the panel runs it again itself and shows the result under every reply that changed the page |
 
+### Who can use it, and the usage log
+
+**Shipped in 1.0.28.** Under *Unyson+ → AI Assistant → Advanced → Who can use it*, tick the roles that may
+use the assistant — the chat in the builder and on admin screens, and connecting outside AI programs. With
+nothing ticked, everyone who can edit content can use it (as before). **Administrators can always use
+it**, so nobody can lock the site out of its own settings. For any other role, the chat does not appear
+and outside programs signed in as that user are refused.
+
+*Unyson+ → AI Usage* (administrators) shows what the assistant was asked: when, by whom, through which
+channel (builder chat, site chat, local AI, an outside program), on which page, and the first 200
+characters of the request — or, for an outside program, the tool it called. A summary counts each
+person's use over the last 30 days. The newest 500 requests are kept; the log can be switched off on the
+settings screen and cleared on the AI Usage screen.
+
 ### AI Changes: see and undo every change
 
 *Unyson+ → AI Changes* lists every change the AI made to your site, newest first: page edits, Theme
@@ -812,6 +826,7 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 18 | Build a page from a screenshot or sketch | A wireframe sketch (hero, three service cards, call to action) attached in the chat became a draft page with those three sections, the sketch's words and matching icons, in the site's design; one agent run per message on a multi-minute build | **Done** — 1.0.25 |
 | 19 | Brand kit from a logo | From a gold wordmark logo the assistant measured its colours, proposed a five-colour palette (contrast claims checked independently) and a font pairing, applied it only after "yes", and every change was undone back to the exact previous settings | **Done** — 1.0.26 |
 | 20 | "More ideas": AI suggestions for the current page | On a 7-section page the assistant returned four suggestions naming the page's real rows and cards in 15 seconds, each a button that sends that request | **Done** — 1.0.27 |
+| 21 | Who can use it + usage log | An Editor saw the assistant with no roles ticked, lost the chat and got a 403 over MCP once only Authors were allowed, and got it back when Editor was ticked on the settings screen; administrators kept access throughout; a chat request and an outside program's tool call were logged, the panel's own calls were not | **Done** — 1.0.28 |
 
 ## Open questions
 

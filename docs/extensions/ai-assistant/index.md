@@ -346,7 +346,7 @@ The site title and tagline are not changed by it; the preview says when they con
 assistant can change them separately.
 
 **Undo:** every page is saved as a revision first, titles and Theme Settings as one change each, and it
-all appears on [AI Changes](#ai-changes-see-and-undo-every-change) with Undo.
+all appears on the [Changes tab](#ai-changes-see-and-undo-every-change) with Undo.
 
 ### Image help
 
@@ -375,7 +375,7 @@ placeholders such as `{{current_year}}`, shortcodes and brand names.
 Review the draft, then publish it. With a multilingual plugin that supports it (Polylang), give the
 language code too — *"… into French (fr)"* — and the draft is set to that language and linked as the
 page's translation. The header, footer and menus belong to the theme, not the page, so they are not
-translated by this. Undo on AI Changes moves the draft to the trash.
+translated by this. Undo on the Changes tab moves the draft to the trash.
 
 ### Build a page from a screenshot or sketch
 
@@ -585,7 +585,7 @@ or (on a development machine) the [local agent command](#choosing-the-ai-model).
 | **Pages to leave out** | Comma-separated page IDs or slugs the assistant must never read | Empty |
 | **Daily limit** | Most visitor messages answered per day, site-wide. After that the window offers your other channels until tomorrow. 0 = no limit. Shows this month's count and cost estimate | 100 |
 | **Team hours** | When a person can take over, one range per line in your site's time zone: `Mon-Fri 09:00-17:00`, `Sat 10am-2pm` | Empty (always reachable) |
-| **Keep a conversation log** | Keep visitors' questions and the answers for 30 days, to review on *AI Usage* | Off |
+| **Keep a conversation log** | Keep visitors' questions and the answers for 30 days, to review on the *Usage* tab | Off |
 | **Price per million input / output tokens** | Your provider's prices, only for the cost estimate | Empty |
 
 **Team hours.** The assistant knows whether your team is in right now. When it hands a visitor to a
@@ -595,13 +595,13 @@ back."*) above your other channels.
 
 **Cost and abuse.** Each visitor message is one request to your AI provider. Besides the daily limit,
 each visitor can ask at most 10 questions in 5 minutes, and requests without a valid page token are
-refused. *Unyson+ → AI Usage* shows the month so far — messages answered, hand-offs, estimated tokens and,
+refused. The *Usage* tab (*Unyson+ → AI Assistant → Usage*) shows the month so far — messages answered, hand-offs, estimated tokens and,
 with your provider's prices filled in, the estimated cost and a projection for the month. Tokens are
 estimated from the length of what was sent and received; your provider's bill is the exact figure.
 
 **Conversations.** By default nothing is stored — the window keeps the last few messages in the
 visitor's browser only while it is open. With **Keep a conversation log** on, questions and answers are
-kept for 30 days on *AI Usage*, grouped by a tag that changes every day and does not identify the
+kept for 30 days on the *Usage* tab, grouped by a tag that changes every day and does not identify the
 visitor, and a suggested paragraph for your privacy policy appears under *Settings → Privacy*.
 
 **For developers.** The channel plugs into Chat through three generic hooks that any extension can use
@@ -629,15 +629,17 @@ nothing ticked, everyone who can edit content can use it (as before). **Administ
 it**, so nobody can lock the site out of its own settings. For any other role, the chat does not appear
 and outside programs signed in as that user are refused.
 
-*Unyson+ → AI Usage* (administrators) shows what the assistant was asked: when, by whom, through which
+The *Usage* tab (*Unyson+ → AI Assistant → Usage*, administrators) shows what the assistant was asked: when, by whom, through which
 channel (builder chat, site chat, local AI, an outside program), on which page, and the first 200
 characters of the request — or, for an outside program, the tool it called. A summary counts each
 person's use over the last 30 days. The newest 500 requests are kept; the log can be switched off on the
-settings screen and cleared on the AI Usage screen.
+Settings tab and cleared on the Usage tab.
 
 ### AI Changes: see and undo every change
 
-*Unyson+ → AI Changes* lists every change the AI made to your site, newest first: page edits, Theme
+**Where:** since 1.0.31 the AI Assistant has one screen with three tabs — **Settings**, **Changes** and **Usage**. People who can edit pages but are not administrators see only **Changes**.
+
+The *Changes* tab (*Unyson+ → AI Assistant → Changes*) lists every change the AI made to your site, newest first: page edits, Theme
 Settings changes, and changes through other extensions (menus, forms, SEO, products, the site title and
 tagline). Each row says **when**, **what changed**, **where** (linked) and **who** asked for it, with a
 button:
@@ -800,7 +802,7 @@ framework/extensions/ai-assistant/
 │   ├── class-fw-ai-toolkit.php           extension abilities: registration helper + undo
 │   ├── class-fw-ai-context.php           where you are + starter ideas, site identity
 │   ├── class-fw-ai-history.php           saved conversations
-│   ├── class-fw-ai-changes.php           the AI Changes screen
+│   ├── class-fw-ai-changes.php           the Changes tab
 │   ├── class-fw-ai-oauth.php             web sign-in (OAuth) for the MCP server
 │   ├── class-fw-ai-visual.php            visual check against a source site
 │   ├── class-fw-ai-replace.php           find and replace across the site

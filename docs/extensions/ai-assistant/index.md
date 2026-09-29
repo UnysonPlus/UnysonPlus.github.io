@@ -402,6 +402,14 @@ button style. Each step can be undone.
 A converted site's child theme may set its own fonts or colours in its stylesheet, which win over Theme
 Settings; the assistant says so when the active theme is a child theme, and can track the override down.
 
+### More ideas
+
+**Shipped in 1.0.27.** Next to the instant starter ideas, **✦ More ideas** asks the AI itself to look at
+where you are and suggest four specific things it could do there — based on what is actually on the page
+(*"Add a fifth value card to the row that has Craftsmanship, Care, Clarity, Accountability"*), not generic
+advice. Each suggestion is a button: click it to ask for exactly that. Suggestions the assistant offers in
+any reply work the same way.
+
 ### Your conversation is kept
 
 Each conversation is saved for **you** and for **that page or screen**, so a page refresh — or opening
@@ -803,6 +811,7 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 17 | Translate a page into a draft copy | Asked to translate a 7-section page into French, the assistant translated all 65 texts in one minute; the draft renders with the same layout and styling (italic accents kept) while the original is untouched; a scripted round trip showed the copy identical to the original apart from the text; undo trashes the draft | **Done** — 1.0.24 |
 | 18 | Build a page from a screenshot or sketch | A wireframe sketch (hero, three service cards, call to action) attached in the chat became a draft page with those three sections, the sketch's words and matching icons, in the site's design; one agent run per message on a multi-minute build | **Done** — 1.0.25 |
 | 19 | Brand kit from a logo | From a gold wordmark logo the assistant measured its colours, proposed a five-colour palette (contrast claims checked independently) and a font pairing, applied it only after "yes", and every change was undone back to the exact previous settings | **Done** — 1.0.26 |
+| 20 | "More ideas": AI suggestions for the current page | On a 7-section page the assistant returned four suggestions naming the page's real rows and cards in 15 seconds, each a button that sends that request | **Done** — 1.0.27 |
 
 ## Open questions
 

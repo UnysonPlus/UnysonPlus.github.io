@@ -53,7 +53,7 @@ The service exposes a few CORS‑enabled endpoints (your admin browser calls the
 |---|---|
 | `GET /health` | `{ ok, service, version, aiReady, aiBackend }` — used to detect the service + show AI status |
 | `GET /capture?url=<url>` | Render a live URL → `convert-bundle.zip` |
-| `POST /capture-file` | Render an uploaded design-tool **.zip** export or raw **HTML** body → `convert-bundle.zip` |
+| `POST /capture-file` | Render an uploaded Stitch **.zip** or raw **HTML** body → `convert-bundle.zip` |
 | `POST /ai-convert` | (Optional) the AI refines a draft mapping — see [AI assist](./ai-assist.md) |
 | `GET /capture?url=<url>&target=block-theme` | Render a live URL → `block-bundle.json` for the **Block theme** output |
 | `GET /mirror?url=<url>&zip=1` | Mirror a page verbatim (for **Duplicate as landing page**) → a `.zip` of `index.html` + `assets/` |
@@ -80,7 +80,7 @@ upload the full URL‑path quality.
 
 ## Rendering robustness
 
-Two engine details make CDN‑driven exports (e.g. a CSS framework loaded from a CDN, as design-tool exports do)
+Two engine details make CDN‑driven exports (e.g. the **Tailwind Play CDN** that Google Stitch uses)
 capture correctly:
 
 - **Retry on context loss** — a late client re‑render can destroy the page's execution context

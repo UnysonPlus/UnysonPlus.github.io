@@ -63,9 +63,9 @@ What you collect depends on how faithful you need the result.
 
 **Minimum (automated lane):** one of —
 
-- a **source URL** (a live site / an AI builder's preview link / any page built with a CSS
-  framework), **or**
-- a **design file** — a design tool's `.zip` export or a pasted `code.html`.
+- a **source URL** (a live site / an AI-generated preview link — Lovable, v0, Bolt, Stitch, any
+  Tailwind/Bootstrap page), **or**
+- a **design file** — a Google Stitch `.zip` or a pasted `code.html`.
 
 **For the highest fidelity (AI-assisted lane)** — also grab, into a folder per site:
 
@@ -85,7 +85,7 @@ styles, and rebuilds it as clean shortcodes + a matching child theme — each pa
 it's built**.
 
 - **[Convert from a URL](./convert-from-url.md)** — the live-site / preview-link path.
-- **[Convert from a file](./convert-from-file.md)** — a design-tool export or pasted HTML.
+- **[Convert from a file](./convert-from-file.md)** — a Stitch export or pasted HTML.
 - Tick **AI assist** to have the AI refine the mapping —
   **[AI assist](./ai-assist.md)**.
 

@@ -583,12 +583,26 @@ or (on a development machine) the [local agent command](#choosing-the-ai-model).
 | **AI assistant greeting** | The first message visitors see | A short hello |
 | **AI assistant notes** | Tone and emphasis for the assistant ("friendly and brief; mention free delivery over $50") — it still answers only from your pages | Empty |
 | **Pages to leave out** | Comma-separated page IDs or slugs the assistant must never read | Empty |
-| **Daily limit** | Most visitor messages answered per day, site-wide. After that the window offers your other channels until tomorrow. 0 = no limit | 100 |
+| **Daily limit** | Most visitor messages answered per day, site-wide. After that the window offers your other channels until tomorrow. 0 = no limit. Shows this month's count and cost estimate | 100 |
+| **Team hours** | When a person can take over, one range per line in your site's time zone: `Mon-Fri 09:00-17:00`, `Sat 10am-2pm` | Empty (always reachable) |
+| **Keep a conversation log** | Keep visitors' questions and the answers for 30 days, to review on *AI Usage* | Off |
+| **Price per million input / output tokens** | Your provider's prices, only for the cost estimate | Empty |
+
+**Team hours.** The assistant knows whether your team is in right now. When it hands a visitor to a
+person while the team is away, the window says when you are back (*"Our team is away right now — we are
+available Mon-Fri 09:00-17:00. Leave your question through one of these and we will reply when we are
+back."*) above your other channels.
 
 **Cost and abuse.** Each visitor message is one request to your AI provider. Besides the daily limit,
 each visitor can ask at most 10 questions in 5 minutes, and requests without a valid page token are
-refused. Conversations are not stored — the window keeps the last few messages in the visitor's
-browser only while it is open.
+refused. *Unyson+ → AI Usage* shows the month so far — messages answered, hand-offs, estimated tokens and,
+with your provider's prices filled in, the estimated cost and a projection for the month. Tokens are
+estimated from the length of what was sent and received; your provider's bill is the exact figure.
+
+**Conversations.** By default nothing is stored — the window keeps the last few messages in the
+visitor's browser only while it is open. With **Keep a conversation log** on, questions and answers are
+kept for 30 days on *AI Usage*, grouped by a tag that changes every day and does not identify the
+visitor, and a suggested paragraph for your privacy policy appears under *Settings → Privacy*.
 
 **For developers.** The channel plugs into Chat through three generic hooks that any extension can use
 for a channel of its own: `fw_ext_chat_channels` (add, remove or reorder channels — a channel can be a
@@ -827,6 +841,7 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 19 | Brand kit from a logo | From a gold wordmark logo the assistant measured its colours, proposed a five-colour palette (contrast claims checked independently) and a font pairing, applied it only after "yes", and every change was undone back to the exact previous settings | **Done** — 1.0.26 |
 | 20 | "More ideas": AI suggestions for the current page | On a 7-section page the assistant returned four suggestions naming the page's real rows and cards in 15 seconds, each a button that sends that request | **Done** — 1.0.27 |
 | 21 | Who can use it + usage log | An Editor saw the assistant with no roles ticked, lost the chat and got a 403 over MCP once only Authors were allowed, and got it back when Editor was ticked on the settings screen; administrators kept access throughout; a chat request and an outside program's tool call were logged, the panel's own calls were not | **Done** — 1.0.28 |
+| 22 | Visitor chat: team hours, conversation log, cost estimate | Hours parsed from "Mon-Fri 09:00-17:00 / Sat 10am-2pm" give the right in/away answer on weekdays, evenings and weekends; a hand-off while away carries the back-at note and the visitor model is told the team is away; answers are counted with an estimated cost that matches the prices by hand, and logged when the log is on | **Done** — 1.0.29 |
 
 ## Open questions
 
@@ -842,8 +857,6 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 - **Personal data.** Every extension with something to build now has abilities. Form entries,
   newsletter subscribers, and WooCommerce orders and customers are personal data, so they stay out of
   the AI's reach unless that is explicitly decided otherwise.
-- **Visitor channel extras.** Opening hours for the human hand-off, an opt-in conversation log for
-  review, and an estimated monthly cost next to the daily limit — worth adding?
 - **Testing with a provider key.** Both the builder panel and the visitor channel were verified end to
   end with the local agent command; the WordPress AI Client path shares the same code but has not yet
   been run against a live provider key.

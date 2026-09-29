@@ -165,6 +165,7 @@ WordPress capabilities of the user the AI acts as. *(The Chat AI channel uses no
 | `unysonplus/translate-page` | post ID, language, optional language code, `[{ key, text }]` | A new draft copy with the translated text; the original is unchanged | `edit_post` |
 | `unysonplus/list-media` | search, `missing_alt`, `unattached`, limit | Media Library images with their alt text, size and the pages that use them | `upload_files` |
 | `unysonplus/view-media` | up to 6 image IDs | The images themselves (resized), for an AI that can see — over MCP | `upload_files` |
+| `unysonplus/extract-colors` | image ID, optional max | The image's main colours measured from its pixels (or an SVG's code), with share and contrast against white and black text | `upload_files` |
 | `unysonplus/update-media` | up to 50 × `{ id, alt, title, caption, description }` | Updates image details as one undoable change | `upload_files` |
 | `unysonplus/set-featured-image` | post ID, image ID (0 removes) | Sets or removes a featured image; undoable | `edit_post` |
 | `unysonplus/replace-text` | find, replace, options; then apply with the preview's plan code | Changes the same text everywhere on the site — preview first — see [Change text everywhere](#change-text-everywhere) | `edit_posts` (Theme Settings: `edit_theme_options`) |
@@ -388,6 +389,18 @@ tells you what it could not reproduce.
 
 The image is saved in your Media Library. This needs an AI that can see images, such as Claude through
 the AI Dev Kit; a whole page takes a few minutes.
+
+### Brand kit from a logo
+
+**Shipped in 1.0.26.** Attach your logo (or name it in the Media Library) and ask *"Create a brand kit
+from our logo"*. The assistant **measures** the logo's colours from its pixels — exact hex values, not
+guesses — builds a palette around them (primary, secondary, accent, text and background colours, with
+readable text on every colour), picks a heading and body font that suit the logo, and **shows you the kit
+first**. When you agree, it applies it to Theme Settings: the colour presets, typography and the main
+button style. Each step can be undone.
+
+A converted site's child theme may set its own fonts or colours in its stylesheet, which win over Theme
+Settings; the assistant says so when the active theme is a child theme, and can track the override down.
 
 ### Your conversation is kept
 
@@ -789,6 +802,7 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 16 | Image help: alt text, library images, featured images | Asked to write alt text for the 29 images missing it, the assistant looked at every image and saved accurate descriptions in one change (spot-checked against the pictures), and one undo restored them all; a featured image was set and undone | **Done** — 1.0.23 |
 | 17 | Translate a page into a draft copy | Asked to translate a 7-section page into French, the assistant translated all 65 texts in one minute; the draft renders with the same layout and styling (italic accents kept) while the original is untouched; a scripted round trip showed the copy identical to the original apart from the text; undo trashes the draft | **Done** — 1.0.24 |
 | 18 | Build a page from a screenshot or sketch | A wireframe sketch (hero, three service cards, call to action) attached in the chat became a draft page with those three sections, the sketch's words and matching icons, in the site's design; one agent run per message on a multi-minute build | **Done** — 1.0.25 |
+| 19 | Brand kit from a logo | From a gold wordmark logo the assistant measured its colours, proposed a five-colour palette (contrast claims checked independently) and a font pairing, applied it only after "yes", and every change was undone back to the exact previous settings | **Done** — 1.0.26 |
 
 ## Open questions
 

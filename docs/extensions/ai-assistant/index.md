@@ -376,6 +376,19 @@ language code too — *"… into French (fr)"* — and the draft is set to that 
 page's translation. The header, footer and menus belong to the theme, not the page, so they are not
 translated by this. Undo on AI Changes moves the draft to the trash.
 
+### Build a page from a screenshot or sketch
+
+**Shipped in 1.0.25.** Attach an image to your message — the image button next to **Send**, or paste
+or drop it into the chat — and ask *"Build a draft page that looks like this"* (sending an image with no
+text asks exactly that). A screenshot of a page you like, a wireframe, or a photo of a sketch on paper
+all work. The assistant looks at the image, lists its sections from top to bottom, and builds a **draft
+page** from real page-builder elements: the words from the picture, in your site's own colours, fonts
+and button styles (ask it to match the picture's look instead if you prefer). It checks the page and
+tells you what it could not reproduce.
+
+The image is saved in your Media Library. This needs an AI that can see images, such as Claude through
+the AI Dev Kit; a whole page takes a few minutes.
+
 ### Your conversation is kept
 
 Each conversation is saved for **you** and for **that page or screen**, so a page refresh — or opening
@@ -775,6 +788,7 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 15 | Change text everywhere, preview first | Renaming the business across a real site: the preview lists 43 changes in 8 pages and the footer (and names the site title as out of scope) without changing anything; the plan applies only after "yes", with links, markup and settings untouched; undoing restores every page and setting byte for byte | **Done** — 1.0.22 |
 | 16 | Image help: alt text, library images, featured images | Asked to write alt text for the 29 images missing it, the assistant looked at every image and saved accurate descriptions in one change (spot-checked against the pictures), and one undo restored them all; a featured image was set and undone | **Done** — 1.0.23 |
 | 17 | Translate a page into a draft copy | Asked to translate a 7-section page into French, the assistant translated all 65 texts in one minute; the draft renders with the same layout and styling (italic accents kept) while the original is untouched; a scripted round trip showed the copy identical to the original apart from the text; undo trashes the draft | **Done** — 1.0.24 |
+| 18 | Build a page from a screenshot or sketch | A wireframe sketch (hero, three service cards, call to action) attached in the chat became a draft page with those three sections, the sketch's words and matching icons, in the site's design; one agent run per message on a multi-minute build | **Done** — 1.0.25 |
 
 ## Open questions
 

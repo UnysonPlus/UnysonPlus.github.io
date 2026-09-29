@@ -161,6 +161,8 @@ WordPress capabilities of the user the AI acts as. *(The Chat AI channel uses no
 | Ability | Input | Returns | Permission |
 | --- | --- | --- | --- |
 | `unysonplus/render-check` | post ID | Renders the page and lists what a visitor would notice, each with its item path — see [The verify loop](#the-verify-loop) | `edit_post` |
+| `unysonplus/get-page-text` | post ID | Every visitor-facing text on a page as `{ key, text }` — for translation | `edit_post` |
+| `unysonplus/translate-page` | post ID, language, optional language code, `[{ key, text }]` | A new draft copy with the translated text; the original is unchanged | `edit_post` |
 | `unysonplus/list-media` | search, `missing_alt`, `unattached`, limit | Media Library images with their alt text, size and the pages that use them | `upload_files` |
 | `unysonplus/view-media` | up to 6 image IDs | The images themselves (resized), for an AI that can see — over MCP | `upload_files` |
 | `unysonplus/update-media` | up to 50 × `{ id, alt, title, caption, description }` | Updates image details as one undoable change | `upload_files` |
@@ -360,6 +362,19 @@ all appears on [AI Changes](#ai-changes-see-and-undo-every-change) with Undo.
 Looking at images needs an AI that can see pictures, connected over MCP — for example Claude through
 the AI Dev Kit. A text-only local model can still list images and edit their details, working from the
 file names and where the images are used.
+
+### Translate a page
+
+**Shipped in 1.0.24.** Ask *"Translate the About page into French"*. The assistant reads every piece of
+text a visitor sees on the page — headings, paragraphs, buttons, list items, tabs — translates it, and
+creates a **new draft** with the translation: same layout, same styling, same images and settings. The
+original page is never changed. Formatting inside the text (bold, italic, links) is kept, and so are
+placeholders such as `{{current_year}}`, shortcodes and brand names.
+
+Review the draft, then publish it. With a multilingual plugin that supports it (Polylang), give the
+language code too — *"… into French (fr)"* — and the draft is set to that language and linked as the
+page's translation. The header, footer and menus belong to the theme, not the page, so they are not
+translated by this. Undo on AI Changes moves the draft to the trash.
 
 ### Your conversation is kept
 
@@ -726,7 +741,8 @@ framework/extensions/ai-assistant/
 │   ├── class-fw-ai-oauth.php             web sign-in (OAuth) for the MCP server
 │   ├── class-fw-ai-visual.php            visual check against a source site
 │   ├── class-fw-ai-replace.php           find and replace across the site
-│   └── class-fw-ai-media.php             Media Library: find, view, alt text, featured images
+│   ├── class-fw-ai-media.php             Media Library: find, view, alt text, featured images
+│   └── class-fw-ai-translate.php         translated draft copies of pages
 ├── static/                               panel + visitor window JS / CSS
 └── views/page.php                        Unyson+ → AI Assistant
 ```
@@ -758,6 +774,7 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 14 | Visual check against a source site | A draft copy of a page with one section removed is compared with the original: the check reports that section as missing (by name, in the right place), the height gap and the strips that differ; the same answer comes back when the server cannot reach the kit and the browser measures instead; asked in plain words, the chat panel runs the check and explains it | **Done** — 1.0.21 (capture service 1.11.78) |
 | 15 | Change text everywhere, preview first | Renaming the business across a real site: the preview lists 43 changes in 8 pages and the footer (and names the site title as out of scope) without changing anything; the plan applies only after "yes", with links, markup and settings untouched; undoing restores every page and setting byte for byte | **Done** — 1.0.22 |
 | 16 | Image help: alt text, library images, featured images | Asked to write alt text for the 29 images missing it, the assistant looked at every image and saved accurate descriptions in one change (spot-checked against the pictures), and one undo restored them all; a featured image was set and undone | **Done** — 1.0.23 |
+| 17 | Translate a page into a draft copy | Asked to translate a 7-section page into French, the assistant translated all 65 texts in one minute; the draft renders with the same layout and styling (italic accents kept) while the original is untouched; a scripted round trip showed the copy identical to the original apart from the text; undo trashes the draft | **Done** — 1.0.24 |
 
 ## Open questions
 

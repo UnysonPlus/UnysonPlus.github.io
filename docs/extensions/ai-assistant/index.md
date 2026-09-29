@@ -360,7 +360,7 @@ all appears on [AI Changes](#ai-changes-see-and-undo-every-change) with Undo.
   and places the images in the page's elements.
 - **Featured images.** *"Set the featured image of the About page to the office photo"* — undoable.
 
-Looking at images needs an AI that can see pictures, connected over MCP — for example Claude through
+Looking at images needs an AI that can see pictures, connected over MCP — for example your AI subscription through
 the AI Dev Kit. A text-only local model can still list images and edit their details, working from the
 file names and where the images are used.
 
@@ -372,7 +372,7 @@ creates a **new draft** with the translation: same layout, same styling, same im
 original page is never changed. Formatting inside the text (bold, italic, links) is kept, and so are
 placeholders such as `{{current_year}}`, shortcodes and brand names.
 
-Review the draft, then publish it. With a multilingual plugin that supports it (Polylang), give the
+Review the draft, then publish it. With a multilingual plugin that supports linked translations, give the
 language code too — *"… into French (fr)"* — and the draft is set to that language and linked as the
 page's translation. The header, footer and menus belong to the theme, not the page, so they are not
 translated by this. Undo on AI Changes moves the draft to the trash.
@@ -387,7 +387,7 @@ page** from real page-builder elements: the words from the picture, in your site
 and button styles (ask it to match the picture's look instead if you prefer). It checks the page and
 tells you what it could not reproduce.
 
-The image is saved in your Media Library. This needs an AI that can see images, such as Claude through
+The image is saved in your Media Library. This needs an AI that can see images, such as your AI subscription through
 the AI Dev Kit; a whole page takes a few minutes.
 
 ### Brand kit from a logo
@@ -475,7 +475,7 @@ The panel needs a model. *Unyson+ → AI Assistant → Advanced → AI model →
 | **Automatic** (default) | The WordPress AI Client if a provider key is set, then the local agent command, and otherwise [local AI on your computer](#free-local-ai-on-your-computer) | Everywhere |
 | **WordPress AI Client** | The provider key under WordPress's *Settings → Connectors* (WordPress 7 or newer) — you pay the provider per request | Everywhere |
 | **Local agent command** | A command-line AI agent already installed on the machine, run in the background by the web server | Local development hosts only (`localhost`, `*.local`, `*.test`) |
-| **Local AI on this computer** | The AI Dev Kit on **your** computer: your AI subscription through its command-line agent, or a free local model — see below | Everywhere, including hosted sites (Chrome, Edge, Firefox) |
+| **Local AI on this computer** | The AI Dev Kit on **your** computer: your AI subscription through its command-line agent, or a free local model — see below | Everywhere, including hosted sites (most desktop browsers) |
 | **Off** | — hides the button | — |
 
 The **local agent command** is for building on your own machine without an API key: if a
@@ -527,8 +527,8 @@ The Site Converter reaches the capture service the same way.
 
 You can also point **Local AI address** at a local model runner you already use, without the kit (the
 [guide](/guides/set-up-ai-for-unysonplus) shows how). The first time, the browser may ask whether this
-site may access devices on your network — allow it. Safari does
-not let web pages talk to programs on your computer, so use Chrome, Edge or Firefox.
+site may access devices on your network — allow it. Some browsers (notably the one built into Macs) do
+not let web pages talk to programs on your computer; if the panel cannot find the kit, use another browser.
 
 **What to expect.** A small model is slower and less capable than a cloud model. It works best for one
 change at a time — *"Add a FAQ section with three questions"*, *"Add three feature cards about why
@@ -711,8 +711,8 @@ layouts.
 **What it needs.** The rendering is done by the capture service of the
 [AI Dev Kit](/extensions/site-converter/capture-service) (1.11.78 or newer) on your computer. A site on
 the same computer calls it directly. A **live site cannot reach your computer**, so there the
-measuring happens on your side instead: with a local model, your browser asks the kit; with Claude
-through the AI Dev Kit (capture service 1.11.84 or newer), the kit gives Claude a measuring tool of its
+measuring happens on your side instead: with a local model, your browser asks the kit; with your AI
+subscription through the AI Dev Kit (capture service 1.11.84 or newer), the kit gives the AI a measuring tool of its
 own, and the result is handed back to the site. A check takes about half a minute to a minute.
 
 ## For extension developers — adding abilities

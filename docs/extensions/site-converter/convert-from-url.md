@@ -6,7 +6,7 @@ title: Convert from a URL
 # Convert from a URL
 
 The highest‑fidelity path. Point it at a live site and it's rendered + converted in one step. Best
-for AI builders that render in the browser (Lovable, v0, Bolt, React/Vite apps).
+for AI builders that render in the browser (JavaScript single-page apps).
 
 :::tip[💡 Web dev tip: check what got carried over, not just how it looks]
 An AI-builder preview often skips things a real site needs — meaningful image alt text, a sensible
@@ -23,7 +23,7 @@ the **Analyze & convert** button shows green when it's detected.
 ## Steps
 
 1. Go to **Unyson+ → Convert** → the **Convert** tab.
-2. Paste the site URL (e.g. `https://your-site.lovable.app/`).
+2. Paste the site URL (e.g. `https://your-site.example.app/`).
 3. Choose options:
    - **Create child theme** — on = build a matching child theme; off = *grab content only* (the
      sections become a **new page**, your homepage and active theme are untouched, no section CSS is

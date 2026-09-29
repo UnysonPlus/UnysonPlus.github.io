@@ -5,8 +5,8 @@ title: Convert from a file
 
 # Convert from a file
 
-Upload an export from your design tool and convert it. **Google Stitch** is fully supported (export
-→ `.zip`), and any other plain‑HTML export converts too.
+Upload an export from your design tool and convert it. **Zipped HTML exports** (a single screen or a
+whole multi‑screen project) are fully supported, and any other plain‑HTML export converts too.
 
 :::tip[💡 Web dev tip: a design export rarely comes with real semantics]
 Design-tool exports are optimized for looking right, not for meaning right — a "heading" is often
@@ -18,7 +18,7 @@ tags and image alt text once it lands in the builder, the same way you'd review 
 
 ## Two fidelity modes
 
-A Stitch export is just self‑contained HTML (it loads Tailwind + fonts from a CDN). So how it's
+Such an export is just self‑contained HTML (it loads Tailwind + fonts from a CDN). So how it's
 converted depends on whether the **[capture service](./capture-service.md)** is running:
 
 | Mode | When | Fidelity |
@@ -37,7 +37,7 @@ path uses. Rendering the file closes the quality gap entirely.
 ## Steps
 
 1. **Unyson+ → Convert** → **Convert** tab → choose **Upload a file (.zip)**.
-2. **Choose File** — a Google Stitch `.zip` (a single exported frame or a whole multi‑screen
+2. **Choose File** — a design tool's `.zip` export (a single exported frame or a whole multi‑screen
    project), or under **Advanced options**, paste one screen's `code.html`.
 3. Set the options (Create child theme / Capture header / Capture footer / Import images / AI assist).
 4. Click **Convert to WordPress** (one click) or **Review mapping first**.

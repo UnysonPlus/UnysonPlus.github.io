@@ -26,7 +26,7 @@ See [Importers & demo system](/importers-and-demos).
 
 **Cause depends on the source:**
 
-- **JS apps (React / Vite / Lovable):** the static HTML is a shell, so the scanner mines the page's
+- **JavaScript single-page apps:** the static HTML is a shell, so the scanner mines the page's
   script bundles for asset URLs. Very heavy Wix-style sites still expose few images statically — use the
   **URL-list** mode and supply the image URLs.
 - **SVG sites:** WordPress blocks SVG upload by default, so inline-SVG graphics yield zero bitmap

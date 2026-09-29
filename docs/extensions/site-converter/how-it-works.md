@@ -5,7 +5,7 @@ title: How it works
 
 # How it works — the short version
 
-Site Converter renders your source (a URL, or an uploaded HTML/Stitch export), reads its **live DOM +
+Site Converter renders your source (a URL, or an uploaded HTML / design-tool export), reads its **live DOM +
 computed CSS**, and rebuilds it as a **native UnysonPlus site** — a child theme plus page‑builder
 pages, real menus, footer widget areas, and a populated Media Library. Nothing is hand‑coded; every
 page stays editable in the builder.

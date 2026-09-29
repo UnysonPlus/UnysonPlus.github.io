@@ -13,8 +13,8 @@ description: "Free WordPress site converter — turn any static or AI-generated 
   <p class="ext-hero__sub">Point it at a URL, an HTML file, or an AI-generated export and it rebuilds the design as native, editable UnysonPlus pages — not a static import, and completely free.</p>
 </div>
 
-**Site Converter** turns an existing website — especially an **AI‑generated design** (Lovable, v0,
-Bolt, Google Stitch, any Tailwind/Bootstrap page) — into a **native, fully‑editable Unyson+
+**Site Converter** turns an existing website — especially an **AI‑generated design** (a site from an
+AI builder, a design tool's HTML export, any page built with a CSS framework) — into a **native, fully‑editable Unyson+
 WordPress site**: a child theme plus page‑builder pages, real menus, footer widget areas, and the
 Media Library populated. Nothing is hand‑coded — every page stays editable in the builder.
 
@@ -31,10 +31,10 @@ styles, and rebuilds it as clean Unyson+ shortcodes + a matching child theme —
 | Input | Needs | How it renders |
 |---|---|---|
 | **Convert from a URL** | The local capture service running | A real browser (headless Chrome) loads the live site |
-| **Convert from a file** | A Stitch `.zip` / pasted `code.html` | The capture service renders the file **the same way** — or an offline PHP fallback when the service is off |
+| **Convert from a file** | A design tool's `.zip` export / pasted `code.html` | The capture service renders the file **the same way** — or an offline PHP fallback when the service is off |
 
 Both inputs feed the **same deterministic extractor**, so they produce consistent, high‑fidelity
-results. (A Google Stitch export is just self‑contained HTML — the service opens it in Chrome
+results. (A design tool's export is just self‑contained HTML — the service opens it in a real browser
 exactly like a URL.) See **[How it works](./how-it-works.md)** for the architecture.
 
 ## What you get from a conversion
@@ -65,7 +65,7 @@ The Convert screen has three tabs:
 - **[Full conversion — start to finish](./full-conversion.md)** — the complete picture: what to install once, the inputs to gather, and both conversion lanes tied together. **Start here.**
 - **[How it works](./how-it-works.md)** — the architecture and the conversion algorithm.
 - **[Convert from a URL](./convert-from-url.md)** — the live‑site path, step by step.
-- **[Convert from a file](./convert-from-file.md)** — Google Stitch & other exports.
+- **[Convert from a file](./convert-from-file.md)** — design-tool and other HTML exports.
 - **[The capture service](./capture-service.md)** — install once, endpoints, security, troubleshooting.
 - **[AI assist](./ai-assist.md)** — optional AI-powered refinement.
 - **[Roadmap](./roadmap.md)** — output targets: Unyson+ and Block Theme today; Elementor, Divi, Bricks and more next.

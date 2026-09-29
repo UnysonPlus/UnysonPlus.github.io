@@ -27,7 +27,7 @@ how you apply a **downloaded** bundle, or re‑apply one without re‑capturing.
 ### Find images (media)
 
 Fetch a source site's images into the **Media Library**, de‑duped by source URL. Scan a page URL
-(optionally mining the page's JS bundle for runtime‑injected images, needed for React/Vite/Lovable
+(optionally mining the page's JS bundle for runtime‑injected images, needed for JavaScript single-page
 apps) or paste image URLs directly.
 
 ### Import Styling Presets

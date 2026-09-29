@@ -119,7 +119,8 @@ Each tool carries a title, a description, a JSON input schema and hints: `readOn
 asks before a risky step.
 
 **Results.** A successful call returns the result as JSON text in `content[0].text` and, for object
-results, the same data in `structuredContent`. A rejected call returns `isError: true` and says exactly
+results, the same data in `structuredContent`. `view_media` also returns the pictures themselves as
+`image` content items after the text, so a program whose model can see images can describe them. A rejected call returns `isError: true` and says exactly
 what to fix: every option id and value is checked against the element's real options before anything is
 saved. For example, placing a button straight on the page root with a misspelled option returns:
 

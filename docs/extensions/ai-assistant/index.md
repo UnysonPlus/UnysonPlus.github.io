@@ -161,6 +161,10 @@ WordPress capabilities of the user the AI acts as. *(The Chat AI channel uses no
 | Ability | Input | Returns | Permission |
 | --- | --- | --- | --- |
 | `unysonplus/render-check` | post ID | Renders the page and lists what a visitor would notice, each with its item path — see [The verify loop](#the-verify-loop) | `edit_post` |
+| `unysonplus/list-media` | search, `missing_alt`, `unattached`, limit | Media Library images with their alt text, size and the pages that use them | `upload_files` |
+| `unysonplus/view-media` | up to 6 image IDs | The images themselves (resized), for an AI that can see — over MCP | `upload_files` |
+| `unysonplus/update-media` | up to 50 × `{ id, alt, title, caption, description }` | Updates image details as one undoable change | `upload_files` |
+| `unysonplus/set-featured-image` | post ID, image ID (0 removes) | Sets or removes a featured image; undoable | `edit_post` |
 | `unysonplus/replace-text` | find, replace, options; then apply with the preview's plan code | Changes the same text everywhere on the site — preview first — see [Change text everywhere](#change-text-everywhere) | `edit_posts` (Theme Settings: `edit_theme_options`) |
 | `unysonplus/visual-check` | source URL, post ID (drafts too) or URL, optional device | Renders both pages in a real browser and says how different they look and, section by section, what is missing, moved or restyled — see [Compare with a source site](#compare-with-a-source-site) | `edit_posts` |
 | `unysonplus/list-revisions` | post ID | A page's AI revisions, newest first (the newest 20 are kept) | `edit_post` |
@@ -340,6 +344,22 @@ assistant can change them separately.
 
 **Undo:** every page is saved as a revision first, titles and Theme Settings as one change each, and it
 all appears on [AI Changes](#ai-changes-see-and-undo-every-change) with Undo.
+
+### Image help
+
+**Shipped in 1.0.23.** The assistant can work with your Media Library:
+
+- **Write alt text.** Ask *"Write alt text for every image that is missing it"*. The assistant lists the
+  images without alt text, **looks at each one**, and writes a short description of what it shows (for
+  people using screen readers, and for search engines), saved as one change you can undo. It also sees
+  which pages use each image, so the description fits how the image is used.
+- **Pick images for a section.** *"Use our team photos in the team section"* — it searches the library
+  and places the images in the page's elements.
+- **Featured images.** *"Set the featured image of the About page to the office photo"* — undoable.
+
+Looking at images needs an AI that can see pictures, connected over MCP — for example Claude through
+the AI Dev Kit. A text-only local model can still list images and edit their details, working from the
+file names and where the images are used.
 
 ### Your conversation is kept
 
@@ -705,7 +725,8 @@ framework/extensions/ai-assistant/
 │   ├── class-fw-ai-changes.php           the AI Changes screen
 │   ├── class-fw-ai-oauth.php             web sign-in (OAuth) for the MCP server
 │   ├── class-fw-ai-visual.php            visual check against a source site
-│   └── class-fw-ai-replace.php           find and replace across the site
+│   ├── class-fw-ai-replace.php           find and replace across the site
+│   └── class-fw-ai-media.php             Media Library: find, view, alt text, featured images
 ├── static/                               panel + visitor window JS / CSS
 └── views/page.php                        Unyson+ → AI Assistant
 ```
@@ -736,6 +757,7 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 13 | Web sign-in (OAuth 2.1) for the MCP server | A client that knows only the server URL discovers the sign-in from the 401, registers, gets an Allow page in wp-admin, exchanges the code with PKCE, lists and calls tools with its token; a read-only sign-in sees only Read tools; refresh rotates; Sign out and revocation end access at once; the token is refused on the rest of the REST API | **Done** — 1.0.19 |
 | 14 | Visual check against a source site | A draft copy of a page with one section removed is compared with the original: the check reports that section as missing (by name, in the right place), the height gap and the strips that differ; the same answer comes back when the server cannot reach the kit and the browser measures instead; asked in plain words, the chat panel runs the check and explains it | **Done** — 1.0.21 (capture service 1.11.78) |
 | 15 | Change text everywhere, preview first | Renaming the business across a real site: the preview lists 43 changes in 8 pages and the footer (and names the site title as out of scope) without changing anything; the plan applies only after "yes", with links, markup and settings untouched; undoing restores every page and setting byte for byte | **Done** — 1.0.22 |
+| 16 | Image help: alt text, library images, featured images | Asked to write alt text for the 29 images missing it, the assistant looked at every image and saved accurate descriptions in one change (spot-checked against the pictures), and one undo restored them all; a featured image was set and undone | **Done** — 1.0.23 |
 
 ## Open questions
 

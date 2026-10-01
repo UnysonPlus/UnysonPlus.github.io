@@ -143,6 +143,21 @@ location ~* /uploads/unysonplus/asset-optimizer/.*\.(css|js)$ {
 }
 ```
 
+## Stylesheets that arrive late
+
+Some stylesheets are not requested until the page is already being built — an element registers its
+own CSS at the moment it renders, which is after the bundle has been assembled. Those used to stay
+outside the bundle permanently, loading as separate requests on every single view. On one measured
+site that was **seven stylesheets, about 35 KB**, every time.
+
+Asset Optimizer now remembers what each page actually used and folds those stylesheets into the
+bundle from the next view onwards. Nothing to switch on. The only thing to know is that **the very
+first view of a page after a change still shows them separately** — that view is what teaches it.
+Load the page twice before judging the result.
+
+The memory is per URL, lasts a week, and is cleared automatically whenever the bundles are — when you
+switch theme, activate or deactivate a plugin, run an update, or save these settings.
+
 ## Image quality
 
 The theme generates its own cropped versions of your images. Until now those were written at

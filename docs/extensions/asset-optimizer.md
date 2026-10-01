@@ -128,6 +128,35 @@ On a local site this setting appears to do nothing — there is no network laten
 order things are fetched barely matters. Test it with throttling on, or on the live site.
 :::
 
+## Browser cache for static files
+
+The combined and purged files are already cached for a year (below). Everything *else* your site
+serves — your uploaded images, your fonts, the stylesheets and scripts that belong to plugins and
+themes — is left to whatever your host decides, and hosts are usually conservative. On one measured
+site that was seven days for images and fonts, and **no caching instruction at all** for some plugin
+scripts, so returning visitors re-downloaded them every time.
+
+**Browser cache for static files** extends the same one-year policy to all of it, by adding a block
+to `wp-content/.htaccess`. Anything already in that file is left untouched, and switching the option
+off removes only the block it added.
+
+Be clear about what this is worth: it only helps people who come back. A first-time visitor downloads
+everything either way, so this will not rescue a slow page — it is a small, free improvement for
+repeat visits.
+
+:::note When could this serve someone a stale file?
+Almost never, by design. Plugin and theme files carry a version in their URL that changes when they
+update, and WordPress never reuses an upload filename — it adds `-1` instead. Both cases produce a
+new address, so the old cached copy is simply never asked for again.
+
+The exception is replacing a file *in place* — over FTP, or with a "replace media" plugin. Someone
+who already has the old one keeps it until they hard-refresh. This is also why the rule deliberately
+stops short of marking files `immutable`: that would tell browsers to ignore even a hard refresh.
+:::
+
+This needs Apache or LiteSpeed. On nginx the setting shows you the equivalent configuration to paste
+into your server config instead, since an `.htaccess` there would do nothing at all.
+
 ## Caching of generated files
 
 The combined and purged files are cached by the browser for a year. This is safe because their

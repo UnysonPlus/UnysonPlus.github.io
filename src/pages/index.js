@@ -10,7 +10,7 @@ import styles from './index.module.css';
 
 const HIGHLIGHTS = [
   {value: '100+', label: 'Builder Elements'},
-  {value: '21', label: 'Extensions'},
+  {value: '25+', label: 'Extensions'},
   {value: 'Free', label: 'GPL Licensed'},
   {value: 'Auto', label: 'GitHub Updates'},
 ];
@@ -203,7 +203,7 @@ function HomepageHeader() {
         />
         <p className={styles.heroTagline}>{siteConfig.tagline}</p>
         <p className={styles.heroSubtitle}>
-          Custom fields, theme settings, a page builder, a theme builder.{' '}
+          A Flexbox/Div page builder, a theme builder, custom fields, an Animation Engine, and a Site Converter.{' '}
           <span className={styles.heroSubtitleLine}>
             Take one piece or the whole thing. Free, no license keys.
           </span>

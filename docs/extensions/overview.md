@@ -44,6 +44,7 @@ page (where you activate and deactivate it yourself):
 | **SEO** | Dynamic titles &amp; descriptions, canonical URLs, indexing control and XML sitemaps. → [docs](./seo/index.md) | Yes |
 | **Security** | Login throttling, two-factor sign-in, XML-RPC and header hardening, a custom login address, and Site Health checks — each measure off until you switch it on. → [docs](./security.md) | Yes — off by default |
 | **Forms** | Drag &amp; drop contact form builder. → [docs](./forms/index.md) | Yes |
+| **Short Links** | Branded short links on your own domain (301 / 302 / 307 / 308) with click and unique-visitor counts, bot filtering and privacy-first defaults. → [docs](./short-links.md) | Yes — off by default |
 | **Newsletter / Subscriber CRM** | Stores and manages people who sign up through the `[newsletter]` element — subscribers, lists, tags, segments, CSV import/export. | Yes |
 | **Mega Menu** | Multi-column dropdown mega menus. → [docs](./megamenu/index.md) | Yes |
 | **Mailer** *(hidden)* | Global email settings + send service used by Forms / Newsletter. → [docs](./mailer.md) | Dependency |

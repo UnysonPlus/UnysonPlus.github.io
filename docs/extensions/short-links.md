@@ -2,8 +2,8 @@
 sidebar_position: 12
 title: "WordPress Short Links — Branded Redirects with Click Tracking"
 sidebar_label: "Short Links"
-description: "Short, branded links on your own domain: yoursite.com/deal sends visitors anywhere with a 301, 302, 307 or 308 redirect. Click and unique-visitor counts with bot filtering, privacy-first defaults, nofollow and sponsored handling, query forwarding, a [short_link] shortcode and a REST API."
-keywords: [wordpress short links, branded links, link shortener, affiliate link cloaking, redirect manager, 301 redirect, click tracking]
+description: "Short, branded links on your own domain: yoursite.com/deal sends visitors anywhere with a 301, 302, 307 or 308 redirect. Click reports, categories, CSV / JSON import and export (including from another link plugin), a REST API with API keys and signed webhooks, and privacy-first click tracking."
+keywords: [wordpress short links, branded links, link shortener, affiliate link cloaking, redirect manager, 301 redirect, click tracking, link shortener api, import short links, webhooks]
 ---
 
 # Short Links
@@ -11,7 +11,7 @@ keywords: [wordpress short links, branded links, link shortener, affiliate link 
 <div class="ext-hero">
   <span class="ext-hero__badge">FREE!</span>
   <p class="ext-hero__title">yoursite.com/deal → anywhere. Counted, and private by default.</p>
-  <p class="ext-hero__sub">Short, branded links on your own domain, with click and unique-visitor counts, bot filtering, nofollow and sponsored handling, query forwarding, a shortcode and a REST API.</p>
+  <p class="ext-hero__sub">Short, branded links on your own domain, with click reports, categories, import and export, and an API with signed webhooks so your other apps can create, change and measure links too.</p>
 </div>
 
 **Short Links** turns any long URL into a short address on your own site. Affiliate links,
@@ -22,7 +22,7 @@ place it was shared follows.
 It is **off by default**. Activate it from **Unyson+ → Extensions**, then open
 **Unyson+ → Short Links**.
 
-<img src="/img/extensions/short-links/links-list.png" alt="The Short Links list with views, search, click counts and row actions" width="1672" />
+<img src="/img/extensions/short-links/links-list-categories.png" alt="The Short Links list with categories, redirect types and click counts" width="1672" />
 
 ## Create a link
 
@@ -52,6 +52,24 @@ It is **off by default**. Activate it from **Unyson+ → Extensions**, then open
 Slugs may contain letters, numbers, `- _ . ~` and `/`, so `deals/summer` is fine. They are not
 case-sensitive: `/Deal` and `/deal` are the same link.
 
+### Categories
+
+Group links into categories (campaigns, affiliates, content…). Tick them on the link form or type
+new ones there, filter the list by category, and manage them under **Manage categories**. Exports,
+imports and the API all carry them.
+
+## Reports
+
+**Short Links → Reports** shows every link at once for the last 7, 30 or 90 days or 12 months:
+total clicks and unique visitors, clicks per day, the top links, and where clicks came from
+(referrers, countries, devices, browsers). Hover a day in the chart for its exact numbers.
+
+<img src="/img/extensions/short-links/reports.png" alt="The Reports tab: totals, a clicks-per-day chart, top links and breakdowns" width="1672" />
+
+Totals and the chart come from a daily summary that is kept forever, even when you limit how long
+individual clicks are stored. The referrer / country / device breakdowns need the individual clicks,
+so they cover only the history you keep.
+
 ## Clicks and unique visitors
 
 Each link's edit screen shows its totals, its top referrers, countries, devices and browsers, and a
@@ -80,9 +98,41 @@ not counted as new on every click.
 - Country comes only from a header your CDN or host already adds. Visitor addresses are never sent
   to a lookup service.
 
+## Import and export
+
+**Short Links → Import / Export.**
+
+<img src="/img/extensions/short-links/import-export.png" alt="Export and import panels" width="1672" />
+
+- **Export** every link as **CSV** (opens in any spreadsheet) or **JSON** (keeps everything, for
+  moving links to another site). Pick a category to export just that one.
+- **Import** a CSV or JSON file. Any CSV with at least a `target_url` (or `url`) column works;
+  **Download a sample CSV** shows every column. Choose what happens when a slug already exists:
+  skip it, overwrite it, or import it under a new slug (`deal-2`).
+
+Nothing is written until you have seen the **review**: how many links are new, will be overwritten,
+renamed, skipped, or can't be imported, with the reason for each problem row.
+
+<img src="/img/extensions/short-links/import-review.png" alt="The import review: counts per outcome and the rows that cannot be imported" width="1672" />
+
+**Import now** then runs in small batches with a progress bar, so a file with thousands of links
+never times out. A slug that appears twice in the file is imported once.
+
+### Moving from another link plugin
+
+If another link-shortener plugin's tables are on the site, an **Import from another link plugin**
+panel appears. It reads them directly — nothing to export first — and leaves them untouched, so both
+can run side by side until you switch over. It brings across each link's slug, destination, title,
+notes, redirect type, nofollow / sponsored, query forwarding, categories and click totals, and can
+also copy the **click history** so your reports show past days. Redirect kinds Short Links does not
+offer (framed, meta-refresh, JavaScript) become 307 and are listed in the review; payment links are
+left out. Running it again skips everything already imported. When you are happy, deactivate the
+other plugin so the two do not answer the same addresses.
+
 ## Settings
 
-**Unyson+ → Short Links → Settings** (administrators):
+There is one settings screen: **Unyson+ → Short Links → Settings** (administrators). The
+**Settings** link on the extension's card opens the same page.
 
 | Setting | Default | |
 | --- | --- | --- |
@@ -148,18 +198,68 @@ from another app, or the usual cookie + nonce from the admin.
 | `GET` / `PATCH` / `DELETE /links/{id}` | Read, change only the fields you send, or trash (`?force=1` deletes permanently). |
 | `POST /links/{id}/restore` | Restore from the trash. |
 | `GET /slug` · `GET /slug?check=x` | A fresh free slug, or whether `x` is usable and why not. |
+| `POST /links/batch` | Up to 100 `create` / `update` / `delete` / `restore` operations, with a result for each. |
+| `GET /links/{id}/stats` · `GET /stats` | Totals and clicks per day for a date range (`from`, `to`), optional `breakdown[]` (referrer, country, device, browser, os), and the top links. |
+| `GET /categories` | All categories. |
+| `GET /openapi.json` | A machine-readable description of every endpoint (OpenAPI 3.1). Most API tools and AI agents can import it. |
 
 Every link carries a `version` number. Send it back with a `PATCH` (as `version`, or an `If-Match`
 header): if someone else changed the link in the meantime, you get **409** instead of silently
-overwriting their edit.
+overwriting their edit. To keep another app in sync, list with `view=any&modified_since=<last sync>`
+(trashed links included) and subscribe to webhooks for permanent deletions.
+
+### API keys
+
+**Short Links → API & Webhooks** (administrators) creates a key per app. Send it as
+`Authorization: Bearer fwsl_…`.
+
+<img src="/img/extensions/short-links/api-webhooks.png" alt="The API & Webhooks tab: API keys with their permissions, and webhooks" width="1672" />
+
+- A key **acts as you**, narrowed to the permissions you tick: **read** links, **create & change**
+  links, **read stats**. Missing a permission returns **403**.
+- It works **only** on the Short Links API — never the rest of your site — so a leaked key cannot
+  touch posts, users or settings. Revoke it in one click.
+- Only a fingerprint of the key is stored; the full key is shown once, when you create it.
+- Each key may make 120 requests a minute (over that returns **429**).
+
+```bash
+curl -H "Authorization: Bearer fwsl_…" https://yoursite.com/wp-json/fw-short-links/v1/links
+curl -H "Authorization: Bearer fwsl_…" -H "Content-Type: application/json" \
+     -d '{"target_url":"https://example.com/spring","slug":"spring","categories":["Campaigns"]}' \
+     https://yoursite.com/wp-json/fw-short-links/v1/links
+```
+
+### Webhooks
+
+Webhooks tell another app the moment something happens: a link is created, changed, trashed,
+restored or deleted, an import finishes, or clicks were recorded (sent in batches every five
+minutes). Deliveries run in the background and are retried for about 15 hours if the other end is
+down; a webhook that keeps failing switches itself off. **Send test** posts a `ping` straight away.
+
+Each request is JSON — `{ "id", "event", "created_at", "site", "data" }` — and is **signed**. To
+verify one, take the `t` and `v1` values from the `X-Webhook-Signature` header and check that
+`v1` equals HMAC-SHA256 of `t + "." + raw body` using the webhook's secret (and that `t` is
+recent, to stop replays):
+
+```php
+list( $t, $v1 ) = sscanf( $_SERVER['HTTP_X_WEBHOOK_SIGNATURE'], 't=%d,v1=%s' );
+$valid = hash_equals( hash_hmac( 'sha256', $t . '.' . file_get_contents( 'php://input' ), $secret ), $v1 )
+	&& abs( time() - $t ) < 300;
+```
 
 **Hooks:**
 
 - Filters: `fw_ext_short_links_prepare`, `fw_ext_short_links_target_url`,
   `fw_ext_short_links_should_track`, `fw_ext_short_links_reserved_slugs`,
   `fw_ext_short_links_bot_regex`, `fw_ext_short_links_resolve`.
-- Actions: `fw_ext_short_links_saved`, `fw_ext_short_links_deleted`,
+- Actions: `fw_ext_short_links_saved`, `fw_ext_short_links_deleted`, `fw_ext_short_links_restored`,
   `fw_ext_short_links_before_redirect`, `fw_ext_short_links_click`.
+
+## Privacy requests
+
+Clicks are anonymous unless a logged-in visitor followed a link. Those clicks are included in
+**Tools → Export Personal Data**, and **Erase Personal Data** anonymises them (keeping your totals
+right). Suggested wording for your privacy policy is added to **Settings → Privacy → Policy Guide**.
 
 ## How it stays fast
 

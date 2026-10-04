@@ -194,6 +194,30 @@ Load the page twice before judging the result.
 The memory is per URL, lasts a week, and is cleared automatically whenever the bundles are — when you
 switch theme, activate or deactivate a plugin, run an update, or save these settings.
 
+## Generate missing image sizes
+
+WordPress normally saves several versions of every image you upload, so a browser can fetch one that
+suits the space it has to fill. If those in-between versions were never made, there is nothing to
+choose from and **every visitor downloads the full-size original**, however small it appears on the
+page.
+
+This is the usual state of images brought in by the Site Converter, which makes only two sizes on
+purpose because resizing is the slowest part of a conversion.
+
+**Generate missing image sizes** fills in what is absent. On a measured page a slot 1024 pixels wide
+was downloading the 1440-wide original at **91.9 KB**; with the missing sizes in place the browser
+took the 1024-wide file at **67.7 KB** instead — 26% less, for exactly the same picture on screen.
+
+The work happens gradually as pages are viewed, one image per view, so no page stalls waiting for it;
+a page with several unfinished images catches up over its next few visits. An image that cannot be
+processed is noted and quietly skipped rather than retried forever.
+
+:::tip Already have a lot of images?
+This fixes them as they are viewed, which is fine for a normal site. To do the whole library at once
+instead, regenerate your thumbnails — `wp media regenerate` on the command line, or any of the
+regenerate-thumbnails plugins.
+:::
+
 ## Image quality
 
 The theme generates its own cropped versions of your images. Until now those were written at

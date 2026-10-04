@@ -77,8 +77,8 @@ page built with the page builder rather than blocks those are typically **70% un
 gzipped** with no rendering change at all. The purged copy is generated the first time a page is
 viewed and cached from then on, so visitors never wait for it.
 
-It needs **Combine CSS** on and **CSS delivery** set to *Linked file* — with inline delivery the
-stylesheet is already in the page before this step can run.
+It needs **Combine CSS** on. It works with either **CSS delivery** setting: with *Inline* the trimmed
+stylesheet is what gets written into the page, not the full one.
 
 :::note The Live Editor is never affected
 Editing a page with the Live Editor switches the whole optimizer off for that one request, so the
@@ -134,6 +134,28 @@ has no such image, nothing is added.
 On a local site this setting appears to do nothing — there is no network latency to hide, so the
 order things are fetched barely matters. Test it with throttling on, or on the live site.
 :::
+
+## Inline or linked? (the render-blocking question)
+
+A linked stylesheet is a *render-blocking request*: the browser will not paint until it has it. Tools
+flag this, and switching **CSS delivery** to *Inline* makes the warning go away, because the CSS
+travels inside the page.
+
+Whether that is actually an improvement depends on how people use your site. Measured on a real page
+over a throttled connection:
+
+| | First view | Every later page view |
+| --- | --- | --- |
+| **Linked file** | 30.2 KB | 12.0 KB (CSS already cached) |
+| **Inline** | 30.2 KB | 30.2 KB (CSS re-sent every time) |
+
+The first view costs the same either way, and inline painted about **50–85 ms sooner** because it
+saves a round trip. But the stylesheet can no longer be cached, so **every subsequent page costs an
+extra 18 KB**.
+
+So: *Inline* suits a site where most visits are a single page — a landing page or a campaign page.
+*Linked file* suits a site people browse, where the stylesheet is fetched once and reused, and it is
+the default for that reason. Either way the difference is small; this is a refinement, not a rescue.
 
 ## Browser cache for static files
 

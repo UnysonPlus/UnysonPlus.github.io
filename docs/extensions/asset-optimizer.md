@@ -80,6 +80,13 @@ viewed and cached from then on, so visitors never wait for it.
 It needs **Combine CSS** on and **CSS delivery** set to *Linked file* — with inline delivery the
 stylesheet is already in the page before this step can run.
 
+:::note The Live Editor is never affected
+Editing a page with the Live Editor switches the whole optimizer off for that one request, so the
+editor always gets the complete stylesheet. It has to: the editor builds its interface after the page
+loads, so none of it is visible to the scan that decides which rules are in use, and without this it
+would come up unstyled. Your visitors still get the optimized page as normal.
+:::
+
 :::caution Test it before you rely on it
 This is the one setting here whose mistakes are quiet. A rule removed in error does not raise an
 error: it shows up as a button with no hover, or a mobile menu that opens wrong, on a page nobody

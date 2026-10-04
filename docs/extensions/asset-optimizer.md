@@ -113,6 +113,30 @@ promo-banner
 /^\.seasonal-/
 ```
 
+## Move late CSS into the head
+
+Some elements write their own CSS while the page is being built, and it ends up at the bottom of the
+page — after the browser has already drawn them. Rules that decide how wide an element is, or whether
+it is centred, then arrive too late, and the element visibly jumps into place.
+
+On a measured page the hero was drawn against the left edge and then jumped **360 pixels across** when
+its CSS finally loaded. That single jump accounted for the page's entire layout-shift score:
+
+| | Layout shift score |
+| --- | --- |
+| Off | 0.1468 |
+| **On** | **0.0000** |
+
+Switching this on collects those blocks and puts them in the page head, where they belong, so
+everything is drawn in its final position the first time. The page looks exactly the same once
+loaded — it just stops moving while it gets there.
+
+:::tip If a tool blames your fonts
+Page-speed tools often attribute this kind of shift to a web font, because fonts are the usual
+culprit. A quick way to tell them apart: a font swap moves things **downwards**, as text re-wraps.
+If your content is jumping **sideways**, it is late CSS, not the font.
+:::
+
 ## Preloading the hero image
 
 A slow "largest contentful paint" usually is not about file size — it is about *when* the browser

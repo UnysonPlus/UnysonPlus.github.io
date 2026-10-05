@@ -2,8 +2,8 @@
 sidebar_position: 12
 title: "WordPress Short Links — Branded Redirects with Click Tracking"
 sidebar_label: "Short Links"
-description: "Short, branded links on your own domain: yoursite.com/deal sends visitors anywhere with a 301, 302, 307 or 308 redirect. Click reports, categories, CSV / JSON import and export (including from another link plugin), a REST API with API keys and signed webhooks, and privacy-first click tracking."
-keywords: [wordpress short links, branded links, link shortener, affiliate link cloaking, redirect manager, 301 redirect, click tracking, link shortener api, import short links, webhooks]
+description: "Short, branded links on your own domain: yoursite.com/deal sends visitors anywhere with a 301, 302, 307 or 308 redirect. Click reports, categories, CSV / JSON import and export (including straight from Pretty Links), a REST API with API keys and signed webhooks, and privacy-first click tracking."
+keywords: [wordpress short links, branded links, link shortener, affiliate link cloaking, redirect manager, 301 redirect, click tracking, link shortener api, import short links, webhooks, pretty links alternative, migrate from pretty links]
 ---
 
 # Short Links
@@ -118,16 +118,17 @@ renamed, skipped, or can't be imported, with the reason for each problem row.
 **Import now** then runs in small batches with a progress bar, so a file with thousands of links
 never times out. A slug that appears twice in the file is imported once.
 
-### Moving from another link plugin
+### Moving from Pretty Links
 
-If another link-shortener plugin's tables are on the site, an **Import from another link plugin**
-panel appears. It reads them directly — nothing to export first — and leaves them untouched, so both
+If **Pretty Links** (free or Pro) is installed — or was, and its tables are still in the database —
+an **Import from another link plugin** panel appears on this tab. It reads them directly — nothing to export first — and leaves them untouched, so both
 can run side by side until you switch over. It brings across each link's slug, destination, title,
 notes, redirect type, nofollow / sponsored, query forwarding, categories and click totals, and can
 also copy the **click history** so your reports show past days. Redirect kinds Short Links does not
 offer (framed, meta-refresh, JavaScript) become 307 and are listed in the review; payment links are
-left out. Running it again skips everything already imported. When you are happy, deactivate the
-other plugin so the two do not answer the same addresses.
+left out (Short Links has no payment links). Pretty Links' categories come across; its tags do not.
+Running it again skips everything already imported. When you are happy, deactivate Pretty Links so
+the two do not answer the same addresses.
 
 ## Settings
 

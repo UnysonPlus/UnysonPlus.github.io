@@ -275,5 +275,8 @@ redirect down.
   The screen warns you if they are off.
 - Redirects are sent with `Cache-Control: no-store`, even permanent ones. Browsers then always come
   back to your site, so an edited destination takes effect immediately and every click is counted.
+- On a multisite network installed in subdirectories, the main site cannot use a slug that is a
+  subsite's address (for example `shop` when `yoursite.com/shop/` is a site) — WordPress sends that
+  path to the subsite, so the link could never work.
 - A link in the trash keeps its slug, so nobody can reuse a shared address by accident. Delete it
   permanently to free the slug.

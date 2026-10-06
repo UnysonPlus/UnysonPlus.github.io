@@ -118,9 +118,36 @@ different width on the Phone / Tablet / Desktop tabs (see [Responsive](#responsi
 > always content‑sized and inline. The **Width** control applies to a nested **flexbox container** —
 > that's how you build "a 1/3 sidebar next to a 2/3 main", with each side being its own flexbox.
 
+### Grid spans and bento layouts
+
+Set **Display** to **Grid** and the children become grid cells. Each child (a nested flexbox) can say
+where it sits and how much room it takes:
+
+| Option (on the child) | What it does |
+| --- | --- |
+| **Grid Column Span** | How many columns the cell covers, `1`–`12`, or **Full row**. Works with any column count, so Span 2 in a 3‑column grid is a double‑width tile. |
+| **Grid Column Start** | The column the cell begins at, so you can place it without empty spacer cells. |
+| **Grid Row Span** | How many rows the cell covers. Span 2 makes a tall tile beside two stacked ones. |
+| **Grid Row Start** | The row the cell begins at. |
+
+On the grid itself, **Grid Rows** sets explicit row tracks (a count, or a value such as `240px auto`),
+and **Row Height** gives every automatic row a fixed height, so tall tiles have rows to span. That's a
+bento grid: a 3‑column grid with 180px rows, one tile at Column Span 2 + Row Span 2, and the next
+tiles flow into the hole beside it. With **Responsive Collapse** on, the grid stacks to one column on
+phones and every span resets.
+
+### Box link
+
+**Box Link** makes the whole box clickable, which is the usual way to build a clickable card. It's a
+*stretched* link: one link covers the box, and links and buttons inside the box stay clickable on top
+of it, so the markup stays valid. Add a **Link Label** to tell screen readers where it goes (it falls
+back to the box's first heading).
+
 ### Gap, spacing, and classes
 
 - **Gap** — the space between children (main and cross axis, or set them independently).
+- **Custom Gap** — an exact gap (e.g. `18px`, `2.5rem`) when the spacing scale doesn't have the value
+  you need. It overrides the Gap preset.
 - **CSS Class / CSS ID** (Advanced tab) — land a class on the container itself, the clean way to
   attach your own styling. (Per the framework's clean‑DOM rule, prefer this over classes buried in
   WYSIWYG content.)
@@ -141,7 +168,7 @@ value for that breakpoint. It's mobile‑first:
 992px up, and a device you leave **blank inherits the smaller one**. So the classic responsive
 header — a **Row** on desktop that becomes a **Column** on phones — is just Direction = *Column* on
 the Phone tab and *Row* on the Desktop tab. The same per‑device switcher is on **Direction, Reverse,
-Wrap, Gap, Justify, Align items, Align content, Width, Align‑self, Order, Grow to Fill, and Min
+Wrap, Gap, Custom Gap, Justify, Align items, Align content, Width, Grid spans, Align‑self, Order, Grow to Fill, and Min
 height** — every layout control.
 
 Under the hood each device value becomes a **mobile‑first utility class** (`flex-lg-row`,

@@ -27,8 +27,10 @@ Settings carry over.
 ## Turning it on
 
 1. Make sure **Elementor** (the free plugin) is installed and active.
-2. Go to **Unyson+ → Extensions** and activate **Elementor Widgets**. It needs the Shortcodes
-   extension, which is always on.
+2. Go to **Unyson+ → Extensions**. Elementor Widgets is downloaded on demand rather than
+   bundled, so click **Show other extensions**, then **Install** on the **Elementor Widgets**
+   card, then **Activate**. It needs the Shortcodes extension, which is always on. Later
+   updates arrive through the same Extensions page.
 3. For the shop widgets, also activate the **WooCommerce** extension (and the WooCommerce
    plugin).
 

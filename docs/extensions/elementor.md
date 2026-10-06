@@ -36,7 +36,8 @@ Settings carry over.
 
 Open any page in Elementor: the **Unyson+** category is at the top of the widget panel, and
 **Unyson+ Shop** and **Unyson+ Motion** right below it when WooCommerce and the Animation
-Engine are on.
+Engine are on. Each widget carries the same icon as its Unyson+ page-builder element, so you
+can tell the two sets apart at a glance.
 
 <img src="/img/extensions/elementor/widget-panel.png" alt="Elementor's widget panel with the Unyson+ category at the top" width="300" />
 

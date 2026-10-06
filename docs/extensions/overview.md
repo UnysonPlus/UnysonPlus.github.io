@@ -57,6 +57,7 @@ page (where you activate and deactivate it yourself):
 | **Chat** | A floating multi-channel contact button (WhatsApp, Messenger, Telegram, SMS, Email…). | Yes — off by default |
 | **AI Assistant** *(beta)* | Lets AI build and edit pages through safe, undoable actions; a builder chat panel, MCP setup and a Chat AI channel are on the roadmap. → [docs](./ai-assistant/index.md) | Yes — off by default |
 | **Gutenberg Blocks** | Exposes Unyson+ elements as native, server-rendered Gutenberg blocks. → [docs](/blocks/intro) | Yes |
+| **Elementor Widgets** | 53 Unyson+ elements as native Elementor widgets, edited in Elementor's side panel — including free replacements for Elementor Pro and WooCommerce widgets. → [docs](./elementor.md) | Yes |
 | **Shortcodes** *(hidden)* | The shortcodes framework that powers the page builder. → [docs](./shortcodes/index.md) | Auto |
 | **Blog** *(hidden)* | Relabels Posts as "Blog" across the admin and front end. → [docs](./blog.md) | Auto |
 | **Update** *(hidden)* | GitHub-based auto-updates for the plugin, theme and extensions. → [docs](./updates.md) | Auto |

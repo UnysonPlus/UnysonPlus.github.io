@@ -2,7 +2,7 @@
 sidebar_position: 6
 title: "Unyson+ Elements as Elementor Widgets"
 sidebar_label: "Elementor Widgets"
-description: "Use Unyson+ elements inside Elementor — 53 native widgets edited in Elementor's own side panel, including free replacements for Elementor Pro widgets like Posts, Form, Slides, Countdown, Flip Box and WooCommerce product widgets."
+description: "Use Unyson+ elements inside Elementor — 64 native widgets edited in Elementor's own side panel, including free replacements for Elementor Pro widgets like Posts, Form, Slides, Countdown, Flip Box and WooCommerce product widgets."
 keywords: ["Elementor widgets", "Elementor Pro alternative", "free Elementor widgets", "Elementor WooCommerce widgets", "Unyson+ Elementor"]
 ---
 
@@ -11,7 +11,7 @@ keywords: ["Elementor widgets", "Elementor Pro alternative", "free Elementor wid
 <div class="ext-hero">
   <span class="ext-hero__badge">FREE!</span>
   <p class="ext-hero__title">The widgets Elementor charges for, built in.</p>
-  <p class="ext-hero__sub">53 Unyson+ elements as native Elementor widgets — posts grids, forms, slides, countdowns, flip boxes, pricing tables and a full set of WooCommerce widgets — edited in Elementor's own side panel, with free Elementor.</p>
+  <p class="ext-hero__sub">64 Unyson+ elements as native Elementor widgets — posts grids, forms, slides, countdowns, flip boxes, pricing tables and a full set of WooCommerce widgets — edited in Elementor's own side panel, with free Elementor.</p>
 </div>
 
 The **Elementor Widgets** extension puts Unyson+ elements into Elementor's widget panel. They
@@ -32,10 +32,11 @@ Settings carry over.
    card, then **Activate**. It needs the Shortcodes extension, which is always on. Later
    updates arrive through the same Extensions page.
 3. For the shop widgets, also activate the **WooCommerce** extension (and the WooCommerce
-   plugin).
+   plugin). For the motion widgets, activate the **Animation Engine** extension.
 
 Open any page in Elementor: the **Unyson+** category is at the top of the widget panel, and
-**Unyson+ Shop** right below it when WooCommerce is on.
+**Unyson+ Shop** and **Unyson+ Motion** right below it when WooCommerce and the Animation
+Engine are on.
 
 <img src="/img/extensions/elementor/widget-panel.png" alt="Elementor's widget panel with the Unyson+ category at the top" width="300" />
 
@@ -96,6 +97,20 @@ Open any page in Elementor: the **Unyson+** category is at the top of the widget
 | **Upsells**, **Wishlist**, **Compare** | Related products and the visitor's saved and compared products. |
 | **Product Page** | A whole single-product layout for a chosen product. |
 | **Cart**, **Checkout**, **My Account**, **Order Tracking**, **Free Shipping Bar** | WooCommerce's own pages and blocks, styled by Unyson+. |
+
+### Unyson+ Motion (11, with the Animation Engine)
+
+| Widget | Use it for |
+| --- | --- |
+| **WebGL Object** | A live 3D shader object (blob, sphere, waves…) that reacts to the pointer and scroll. |
+| **SVG Draw** / **SVG Morph** | An SVG that draws its strokes, or a shape that morphs through other shapes. |
+| **Motion Gallery** | 3D galleries — carousel ring, panorama wall, card sphere, orbit, scatter, device cycler. |
+| **Parallax Scene** | Depth layers that move with scroll or the pointer. |
+| **Image Scroll Choreography** / **Text Scroll Choreography** | Images or text that travel across the screen as the page scrolls. |
+| **Interactive Reveal** | Stacked layers revealed by drag, hover, scroll or time. |
+| **Image Sequence** | A frame-by-frame sequence played by scroll. |
+| **3D Model** | A GLB / glTF model with camera controls, AR and hotspots. |
+| **Rive** | An interactive Rive animation. |
 
 ## Editing a widget
 

@@ -34,8 +34,10 @@ with every tool.
 2. Open *Unyson+ → AI Assistant → Advanced → Outside AI programs*.
 3. Name the connection after the tool (for example "Claude Code on my laptop") and press
    **Create a connection password**.
-4. Keep the page open: it shows the details **once**. You need the **Server URL** and the
-   **Authorization header** (it starts with `Basic `).
+4. Keep the page open: it shows the details **once**. Press **Copy everything** to copy the Server URL,
+   username, password and **Authorization header** (it starts with `Basic `) in one go — paste it to your
+   AI tool or straight to the AI that asked. Separate fields and a ready-made MCP config are under
+   *Other formats*.
 
 Access is switched to *Read and write*. Choose *Read only* on the same screen if the tool should only
 look. Your site must use **HTTPS** (a local development site on `localhost`, `.local` or `.test` is

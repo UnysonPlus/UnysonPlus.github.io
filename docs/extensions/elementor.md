@@ -1,12 +1,12 @@
 ---
 sidebar_position: 6
 title: "Unyson+ Elements as Elementor Widgets"
-sidebar_label: "Elementor Widgets"
+sidebar_label: "Elementor"
 description: "Use Unyson+ elements inside Elementor — 64 native widgets edited in Elementor's own side panel, including free replacements for Elementor Pro widgets like Posts, Form, Slides, Countdown, Flip Box and WooCommerce product widgets."
 keywords: ["Elementor widgets", "Elementor Pro alternative", "free Elementor widgets", "Elementor WooCommerce widgets", "Unyson+ Elementor"]
 ---
 
-# Elementor Widgets
+# Elementor
 
 <div class="ext-hero">
   <span class="ext-hero__badge">FREE!</span>
@@ -14,7 +14,7 @@ keywords: ["Elementor widgets", "Elementor Pro alternative", "free Elementor wid
   <p class="ext-hero__sub">64 Unyson+ elements as native Elementor widgets — posts grids, forms, slides, countdowns, flip boxes, pricing tables and a full set of WooCommerce widgets — edited in Elementor's own side panel, with free Elementor.</p>
 </div>
 
-The **Elementor Widgets** extension puts Unyson+ elements into Elementor's widget panel. They
+The **Elementor** extension puts Unyson+ elements into Elementor's widget panel. They
 behave like any built-in Elementor widget: drag one onto the page, edit it in the side panel
 (Content, Style and Advanced tabs), and watch the preview update as you type. Undo, revisions,
 copy / paste and Elementor's global colours all work as usual.
@@ -27,8 +27,8 @@ Settings carry over.
 ## Turning it on
 
 1. Make sure **Elementor** (the free plugin) is installed and active.
-2. Go to **Unyson+ → Extensions**. Elementor Widgets is downloaded on demand rather than
-   bundled, so click **Show other extensions**, then **Install** on the **Elementor Widgets**
+2. Go to **Unyson+ → Extensions**. The Elementor extension is downloaded on demand rather than
+   bundled, so click **Show other extensions**, then **Install** on the **Elementor**
    card, then **Activate**. It needs the Shortcodes extension, which is always on. Later
    updates arrive through the same Extensions page.
 3. For the shop widgets, also activate the **WooCommerce** extension (and the WooCommerce
@@ -152,7 +152,7 @@ send method" above itself after a submission.
 Free Elementor lists the widgets of its paid version as locked tiles. Since the Unyson+
 categories cover most of them, the extension hides those locked tiles, the locked *Atomic
 Form* category and the "Upgrade" banners. To show them again, switch **Hide locked Pro
-widgets** off under **Unyson+ → Extensions → Elementor Widgets**. With Elementor Pro installed
+widgets** off under **Unyson+ → Extensions → Elementor**. With Elementor Pro installed
 the setting does nothing — Pro's widgets show as usual, next to the Unyson+ ones.
 
 <img src="/img/extensions/elementor/settings.png" alt="The Hide locked Pro widgets setting" width="1672" />

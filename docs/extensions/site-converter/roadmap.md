@@ -35,7 +35,7 @@ Targets marked **Coming soon** are planned. When development on one starts, its 
 
 ### Elementor (Pre-Alpha)
 
-Pick **Elementor** in the Output picker to convert pages into Elementor Flexbox Containers and widgets. It needs Elementor active with Flexbox Containers switched on, and the Unyson+ Theme for the header and footer. The converter offers to install the theme if it is missing. Each element goes down a fallback ladder: an Unyson+ widget from the Elementor Widgets extension when it is installed, then a free Elementor widget, then a container of widgets, then an HTML widget as a last resort. Activate the **Builder Sync** extension to keep the Unyson+ Theme Settings colours and fonts in step with Elementor's global colours and fonts, in both directions.
+Pick **Elementor** in the Output picker to convert pages into Elementor Flexbox Containers and widgets. It needs Elementor active with Flexbox Containers switched on, and the Unyson+ Theme for the header and footer. The converter offers to install the theme if it is missing. Each element goes down a fallback ladder: an Unyson+ widget from the Elementor extension when it is installed, then a free Elementor widget, then a container of widgets, then an HTML widget as a last resort. Activate the **Builder Sync** extension to keep the Unyson+ Theme Settings colours and fonts in step with Elementor's global colours and fonts, in both directions.
 
 ## How a new target is built
 

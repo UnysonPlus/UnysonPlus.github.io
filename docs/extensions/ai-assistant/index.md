@@ -163,6 +163,8 @@ WordPress capabilities of the user the AI acts as. *(The Chat AI channel uses no
 | `unysonplus/render-check` | post ID | Renders the page and lists what a visitor would notice, each with its item path — see [The verify loop](#the-verify-loop) | `edit_post` |
 | `unysonplus/get-page-text` | post ID | Every visitor-facing text on a page as `{ key, text }` — for translation | `edit_post` |
 | `unysonplus/translate-page` | post ID, language, optional language code, `[{ key, text }]` | A new draft copy with the translated text; the original is unchanged | `edit_post` |
+| `unysonplus/list-extensions` | — | Every Unyson+ extension with whether it is installed and active | `manage_options` |
+| `unysonplus/manage-extension` | extension slug, install / activate / deactivate, confirm | Installs, activates or deactivates an extension — previews first, acts on `confirm` | `manage_options` |
 | `unysonplus/list-media` | search, `missing_alt`, `unattached`, limit | Media Library images with their alt text, size and the pages that use them | `upload_files` |
 | `unysonplus/view-media` | up to 6 image IDs | The images themselves (resized), for an AI that can see — over MCP | `upload_files` |
 | `unysonplus/extract-colors` | image ID, optional max | The image's main colours measured from its pixels (or an SVG's code), with share and contrast against white and black text | `upload_files` |
@@ -409,6 +411,24 @@ where you are and suggest four specific things it could do there — based on wh
 (*"Add a fifth value card to the row that has Craftsmanship, Care, Clarity, Accountability"*), not generic
 advice. Each suggestion is a button: click it to ask for exactly that. Suggestions the assistant offers in
 any reply work the same way.
+
+### Install extensions, and convert a live site
+
+**Shipped in 1.0.36.** The assistant can set up what a job needs and convert a site on a live server:
+
+- **Extensions.** Ask *"Convert https://example.com into this site"* on a site without the Site
+  Converter, and the assistant offers to install it. Installing, activating and deactivating an Unyson+
+  extension works exactly like *Unyson+ → Extensions*: the assistant says what it will do and waits for
+  your yes. Administrators only, and it can never switch off itself or the extensions it needs.
+- **Converting on a live server.** A site made with an AI site builder is an empty shell until its
+  scripts run, and a live server cannot reach the AI Dev Kit on your computer to render it. So the
+  conversion now uses the page as the **kit renders it on your side**: in the chat panel your browser asks
+  the kit; with Claude through the kit, the kit renders and sends the page itself; an outside AI program
+  connected with a connection password fetches it from the kit and passes it in. Without a render the
+  assistant does not convert an empty shell — it explains what is missing.
+
+Converting still replaces pages with the same names and switches the site to a new child theme, so the
+assistant asks before it starts.
 
 ### Your conversation is kept
 
@@ -845,6 +865,7 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 20 | "More ideas": AI suggestions for the current page | On a 7-section page the assistant returned four suggestions naming the page's real rows and cards in 15 seconds, each a button that sends that request | **Done** — 1.0.27 |
 | 21 | Who can use it + usage log | An Editor saw the assistant with no roles ticked, lost the chat and got a 403 over MCP once only Authors were allowed, and got it back when Editor was ticked on the settings screen; administrators kept access throughout; a chat request and an outside program's tool call were logged, the panel's own calls were not | **Done** — 1.0.28 |
 | 22 | Visitor chat: team hours, conversation log, cost estimate | Hours parsed from "Mon-Fri 09:00-17:00 / Sat 10am-2pm" give the right in/away answer on weekdays, evenings and weekends; a hand-off while away carries the back-at note and the visitor model is told the team is away; answers are counted with an estimated cost that matches the prices by hand, and logged when the log is on | **Done** — 1.0.29 |
+| 23 | Install extensions and convert a live site | Over MCP, on a server that could not reach the kit: a missing extension was previewed, then downloaded and activated in 4 seconds; the AI Assistant refused to switch itself off; a conversion without a render was refused with the kit request, and with the kit's render it built the full site — pages, menus and its own child theme | **Done** — 1.0.36 |
 
 ## Open questions
 

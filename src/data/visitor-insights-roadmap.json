@@ -3,9 +3,9 @@
   "extension": "visitor-insights",
   "cloneDir": "UnysonPlus-Visitor-Insights-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Visitor-Insights-Extension",
-  "extensionVersion": null,
-  "generatedAt": "2026-10-11T17:54:36.431Z",
-  "detected": false,
+  "extensionVersion": "1.0.0",
+  "generatedAt": "2026-10-11T18:27:59.422Z",
+  "detected": true,
   "milestones": [
     {
       "id": "p1-core",
@@ -23,8 +23,8 @@
               "settings-options.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/3"
+          "status": "done",
+          "progress": "3/3"
         },
         {
           "id": "p1-schema",
@@ -35,8 +35,8 @@
               "includes/class-fw-vi-installer.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-consent",
@@ -50,8 +50,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-tracker",
@@ -65,8 +65,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-collector",
@@ -79,8 +79,8 @@
               "includes/class-fw-vi-rest.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/3"
+          "status": "done",
+          "progress": "3/3"
         },
         {
           "id": "p1-abuse",
@@ -92,13 +92,13 @@
             ],
             "symbols": [
               {
-                "file": "collector/collect.php",
+                "file": "collector/class-fw-vi-ingest.php",
                 "pattern": "hash_hmac"
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p1-rollup",
@@ -110,8 +110,8 @@
               "includes/class-fw-vi-retention.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p1-privacy",
@@ -125,8 +125,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-ids",
@@ -137,8 +137,8 @@
               "includes/class-fw-vi-element-ids.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },
@@ -156,8 +156,8 @@
               "includes/class-fw-vi-admin-page.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-reports",
@@ -168,8 +168,8 @@
               "includes/class-fw-vi-reports.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-live",
@@ -183,8 +183,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },
@@ -203,8 +203,8 @@
               "includes/class-fw-vi-heatmaps.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p1-hm-viewer",
@@ -216,8 +216,8 @@
               "static/js/vendor/simpleheat.js"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p1-hm-adminbar",
@@ -231,8 +231,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },
@@ -251,8 +251,8 @@
               "includes/class-fw-vi-sections.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p1-sec-overlay",
@@ -263,8 +263,8 @@
               "static/js/live-editor-overlay.js"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-sec-badges",
@@ -275,8 +275,8 @@
               "static/js/admin/builder-badges.js"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },

@@ -8,9 +8,9 @@ description: "Visitor Insights (in development) — privacy-first, self-hosted v
 # Visitor Insights
 
 :::info In development
-Visitor Insights is being built now and is not released yet. The [roadmap](./roadmap.mdx) shows
-what is done, what is in progress and what is planned — it is checked automatically against the
-extension's source code, so it is always current.
+**Phase 1 is built** — traffic, heatmaps and section analytics — and ships in an upcoming release.
+The [roadmap](./roadmap.mdx) shows what is done and what is next; it is checked automatically against
+the extension's source code, so it is always current.
 :::
 
 Visitor Insights shows how people actually use your site: where they click, how far they scroll,
@@ -57,7 +57,41 @@ Every module has its own switch, and a module you leave off adds nothing to your
   honours Global Privacy Control, and can be set to wait for consent everywhere.
 - **Session recording is opt-in only**, masks every form field in the visitor's browser before
   anything is sent, and never records checkout, account or login pages.
-- Privacy-policy text and WordPress personal-data export / erase tools are included.
+- Suggested privacy-policy text is included. The statistics keep nothing that can be linked to a
+  person, so there is nothing to export or erase; session recording will add WordPress's
+  personal-data export and erase tools.
 
-Visitor Insights will ship inactive. When it is released you will switch it on under
-**Unyson+ → Extensions**.
+## Using it
+
+Switch it on under **Unyson+ → Extensions → Visitor Insights**. Collection starts at once; reports
+live under **Unyson+ → Visitor Insights**.
+
+| Tab | What you see |
+| --- | --- |
+| **Overview** | Page views, unique visitors, average time on page, a daily chart, top pages, referrers, campaigns, devices, browsers and countries, for 7, 30 or 90 days or 12 months. |
+| **Pages** | Every tracked page with its views, visitors, time on page and how many read at least half of it. |
+| **Heatmaps** | The live page at desktop, tablet or mobile width with a **clicks**, **scroll reach**, **attention** or **elements** map on top, and a table of every section: how many visitors reached it and how long it stayed in view. |
+| **Live** | Page views in the last five minutes, by page. |
+| **Settings** | Sampling, pages to skip, consent, data retention, excluded addresses. |
+
+Heat also appears where you edit: a **Heatmap** button in the [Live Editor](../live-editor.md)
+canvas, a badge on each item in the page builder (its share of clicks, and for sections how many
+visitors reached it), and **Heatmap** in the admin bar on any page of your site.
+
+Your own visits do not count while you are logged in as an editor — open the site in a private
+window to see the first page view arrive (within about a minute).
+
+### Consent
+
+- **With a consent plugin** that supports the WordPress Consent API, tracking waits for
+  *anonymous statistics* consent and starts or stops the moment the visitor changes their choice.
+- **Without one**, choose in Settings: track anonymously with an opt-out, or wait for consent
+  everywhere. If you show your own banner, call `UnysonPlusVI.grant()` when the visitor accepts.
+- Put `[visitor_insights_optout]` on your privacy page so visitors can opt out in one click, and
+  use the suggested text Visitor Insights adds to **Settings → Privacy → Policy Guide**.
+
+### Page caches and security plugins
+
+Tracking works on cached pages — it needs nothing per visitor in the HTML. If your host blocks the
+fast collector, Visitor Insights notices and switches to the WordPress REST API by itself
+(**Settings → Status** shows which one is in use). Clear your page cache after changing settings.

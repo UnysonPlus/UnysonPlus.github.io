@@ -19,8 +19,9 @@ campaign URLs, a podcast's "find us at yoursite.com/show", a printed QR code tha
 working after the destination moves. You change where a link goes at any time, and every
 place it was shared follows.
 
-It is **off by default**. Activate it from **Unyson+ → Extensions**, then open
-**Unyson+ → Short Links**.
+It is **off by default** and is not part of the base download. Go to **Unyson+ → Extensions**, find
+the **Short Links** card, press **Download**, then **Activate**, and open **Unyson+ → Short Links**.
+(The card is listed from UnysonPlus 3.0.42; on an older version, update the plugin first.)
 
 <img src="/img/extensions/short-links/links-list-categories.png" alt="The Short Links list with categories, redirect types and click counts" width="1672" />
 

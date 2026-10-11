@@ -1,0 +1,7 @@
+{
+  "label": "Visitor Insights",
+  "position": 21,
+  "collapsible": true,
+  "collapsed": true,
+  "link": { "type": "doc", "id": "extensions/visitor-insights/index" }
+}

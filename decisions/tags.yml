@@ -142,3 +142,13 @@ ai-assistant:
   label: AI Assistant
   permalink: /ai-assistant
   description: The AI Assistant (Beta) extension — its model backends, tools and safety model
+
+analytics:
+  label: Analytics
+  permalink: /analytics
+  description: Visitor Insights — heatmaps, traffic and behaviour analytics
+
+privacy:
+  label: Privacy
+  permalink: /privacy
+  description: Consent, personal data and what we refuse to collect

@@ -1,0 +1,50 @@
+---
+sidebar_position: 2
+title: Roadmap
+description: What is built, what is in progress, and what is planned for Visitor Insights — verified automatically against the extension source tree.
+---
+
+import Roadmap, {RoadmapSummary} from '@site/src/components/Roadmap';
+import data from '@site/src/data/visitor-insights-roadmap.json';
+
+# Roadmap
+
+Four phases, built in order. Phase 1 is a complete product on its own — traffic, heatmaps and
+section analytics on a privacy-first core — and each later phase adds modules on top of the same
+tracker and storage.
+
+<RoadmapSummary data={data} />
+
+<Roadmap data={data} />
+
+## How this page stays current
+
+Status is not ticked by hand. `src/data/visitor-insights-roadmap.json` lists every task with a
+`detect` block naming the files (and, where needed, code symbols) that make it real, and
+`scripts/gen-roadmap.mjs` checks them against the extension's source tree:
+
+| Result | Status |
+| --- | --- |
+| Every file and symbol found | **Done** |
+| Some found, some missing | **In progress** |
+| None found | **Planned** |
+
+```bash
+npm run roadmap:vi            # scan and rewrite the JSON
+npm run roadmap:vi -- --dry   # report only, write nothing
+npm run roadmap:vi -- --check # exit 1 if stale
+```
+
+The `detect` paths double as the extension's agreed file layout, decided before the code is
+written. The same mechanism keeps the [POS Sync roadmap](../pos-sync/roadmap.mdx) honest.
+
+## Not on the roadmap
+
+Stated plainly, so nobody waits for them:
+
+- **Identifying visitors or building personal profiles.** Visitor Insights measures how a site is
+  used, not who uses it.
+- **Advertising, retargeting or ad attribution.** No data is shared with ad platforms.
+- **Sending data to a hosted service** — ours or anyone else's. Self-hosted is the point.
+- **A second short-link report.** Short-link clicks arrive as goals from the
+  [Short Links](../short-links.md) extension rather than being tracked twice.

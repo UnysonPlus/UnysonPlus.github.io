@@ -3,9 +3,9 @@ import clsx from 'clsx';
 import styles from './styles.module.css';
 
 /**
- * <Roadmap /> — renders the POS Sync roadmap from src/data/pos-roadmap.json.
+ * <Roadmap /> — renders an extension roadmap from its src/data/*-roadmap.json.
  *
- * Task status is NOT hand-maintained: `scripts/gen-pos-roadmap.mjs` scans the real
+ * Task status is NOT hand-maintained: `scripts/gen-roadmap.mjs` (or gen-pos-roadmap.mjs) scans the real
  * extension source tree and rewrites the JSON, so this page reflects what actually
  * exists on disk. See the "How this page stays current" section of the roadmap doc.
  */

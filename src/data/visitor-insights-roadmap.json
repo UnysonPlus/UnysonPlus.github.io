@@ -3,8 +3,8 @@
   "extension": "visitor-insights",
   "cloneDir": "UnysonPlus-Visitor-Insights-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Visitor-Insights-Extension",
-  "extensionVersion": "1.0.0",
-  "generatedAt": "2026-10-11T18:27:59.422Z",
+  "extensionVersion": "1.0.1",
+  "generatedAt": "2026-10-11T19:00:33.117Z",
   "detected": true,
   "milestones": [
     {
@@ -295,8 +295,8 @@
               "static/js/modules/goals.js"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p2-goal-integrations",
@@ -307,8 +307,8 @@
               "includes/integrations/class-fw-vi-integrations.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },
@@ -326,8 +326,8 @@
               "includes/class-fw-vi-funnels.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },
@@ -345,8 +345,8 @@
               "static/js/modules/frustration.js"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p2-errors",
@@ -357,8 +357,8 @@
               "includes/class-fw-vi-errors.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },
@@ -377,8 +377,8 @@
               "includes/class-fw-vi-vitals.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         }
       ]
     },

@@ -4,7 +4,7 @@
   "cloneDir": "UnysonPlus-Visitor-Insights-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Visitor-Insights-Extension",
   "extensionVersion": "1.0.5",
-  "generatedAt": "2026-10-12T07:11:21.475Z",
+  "generatedAt": "2026-10-12T07:13:08.656Z",
   "detected": true,
   "milestones": [
     {
@@ -584,12 +584,12 @@
             "symbols": [
               {
                 "file": "includes/class-fw-vi-reports.php",
-                "pattern": "functions+totals_between"
+                "pattern": "function\\s+totals_between"
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p6-channels",

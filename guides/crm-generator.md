@@ -23,7 +23,29 @@ choices into two things:
   so one paste carries everything.
 
 The agent then builds a normal WordPress site on Unyson+, using features that already ship with
-the framework. Real estate is the first industry preset.
+the framework.
+
+## Pick your industry
+
+Each industry has its own page with a preset: the pages, content, lead forms, pipeline stages and
+rules that industry needs.
+
+| Page | For |
+|---|---|
+| [crm.unysonplus.com](https://crm.unysonplus.com/) | **Any business.** Describe what you do; the site is built around a Services section, quote and booking forms, and a sales pipeline. |
+| [/real-estate-crm-website/](https://crm.unysonplus.com/real-estate-crm-website/) | **Real estate** agents, teams and brokerages: listings, IDX, showings and valuations. |
+| [/home-services-crm-website/](https://crm.unysonplus.com/home-services-crm-website/) | **Home services** such as plumbers, electricians, roofers and HVAC: quote requests with photos, service areas and a job pipeline. |
+| [/dental-clinic-crm-website/](https://crm.unysonplus.com/dental-clinic-crm-website/) | **Dental and medical clinics**: treatments, appointment requests, new patient information and recalls. Forms never ask for health details. |
+| [/law-firm-crm-website/](https://crm.unysonplus.com/law-firm-crm-website/) | **Law firms**: practice areas, attorney profiles, consultation requests and an intake pipeline, with the disclaimers legal advertising needs. |
+| [/gym-crm-website/](https://crm.unysonplus.com/gym-crm-website/) | **Gyms, fitness studios and personal trainers**: classes, a timetable, memberships and free trial sign-ups. |
+| [/salon-spa-crm-website/](https://crm.unysonplus.com/salon-spa-crm-website/) | **Salons, spas, barbers and nail studios**: services and prices, booking requests, a gallery and rebooking reminders. |
+| [/recruitment-agency-crm-website/](https://crm.unysonplus.com/recruitment-agency-crm-website/) | **Recruitment agencies**: a job board, applications with CV upload, vacancy requests and a placement pipeline. |
+| [/event-venue-crm-website/](https://crm.unysonplus.com/event-venue-crm-website/) | **Wedding, party and conference venues**: spaces, date availability enquiries, tours and a brochure download. |
+
+You can switch industry from the **Industry** menu at the top of the form; each industry keeps its
+own saved choices. Most presets can also work alongside software the business already uses (an IDX
+provider, a booking system, intake software or an applicant tracking system): choose it in the form
+and the agent adds its widget next to the site's own forms, which still feed the built-in CRM.
 
 It runs entirely in your browser. Nothing you type is sent to a server; your choices are saved in
 your own browser so you can come back to them.
@@ -37,10 +59,14 @@ your own browser so you can come back to them.
 
 ## Use the generator
 
-1. Open [crm.unysonplus.com](https://crm.unysonplus.com/).
+The steps below use the real estate page; the Any business page has the same sections, with
+**Services** in place of **Listings**.
+
+1. Open [the real estate generator](https://crm.unysonplus.com/real-estate-crm-website/).
 2. **Business.** Enter the business name, market (city or region), and optionally the tagline,
    brokerage and license number. The license and brokerage go in the site footer, which many
-   markets require.
+   markets require. On the Any business page, also describe what the business does in a sentence
+   or two; the agent builds the site around it.
 3. **Who you serve.** Tick buyers, sellers, renters, investors, luxury or relocation. Pages and
    forms that match switch on by themselves (for example, *Sellers* adds the **Selling your home**
    page and the **Home valuation** form). Anything you tick or untick by hand stays as you set it.
@@ -52,11 +78,15 @@ your own browser so you can come back to them.
 7. **CRM pipeline.** Edit the stages, one per line, in order. Pick the follow-up emails to draft.
 8. **Brand.** Pick your primary and accent colors, a style, your logo option and the site language.
 9. **Build setup.** Choose your AI agent and where WordPress is installed.
-10. Click **Copy prompt** (or **Download prompt**) and paste it into your agent from the WordPress
+10. Check **Before you build** at the bottom of the form. It lists what is still **Missing** (such
+    as the lead email) and what to **Have ready** (photos, headshots, your IDX login). Anything
+    missing is added to the prompt, so the agent asks you for it before it starts.
+11. Open the **Preview** tab to see the site's pages, lead forms and pipeline stages in your colors.
+12. Click **Copy prompt** (or **Download prompt**) and paste it into your agent from the WordPress
     project folder.
 
 **Copy share link** puts your choices into a link you can send to a colleague or keep for later.
-**Reset to defaults** clears everything back to the real estate preset.
+**Reset to defaults** clears everything back to that industry's preset.
 
 ## What the agent builds
 
@@ -81,7 +111,7 @@ did not create without asking.
 
 Newsletter CRM does not have a drag-and-drop pipeline board yet. Until it does, each stage is a
 tag named `Stage: <name>` and has a saved segment, so opening a stage is one click and moving a
-lead means changing its tag. When the pipeline board ships ([phase 4 of the roadmap](./crm-generator-roadmap.md#phase-4-crm-features-in-the-plugin)), the same stages
+lead means changing its tag. When the pipeline board ships ([phase 5 of the roadmap](./crm-generator-roadmap.md#phase-5-crm-features-in-the-plugin)), the same stages
 carry over.
 
 ## Listings and IDX
@@ -102,19 +132,22 @@ add IDX later without rebuilding the site.
 
 ## The site spec
 
-`site-spec.json` has a `spec_version` (currently `1.0`) and these sections:
+`site-spec.json` has a `spec_version` (currently `1.1`), a `vertical` naming the industry preset,
+and these sections:
 
 | Section | Holds |
 |---|---|
-| `business` | Name, type (solo, team, brokerage), market, tagline, brokerage, license number, audiences, language |
+| `business` | Name, type, market or area served, tagline, audiences, language, plus the preset's own details (brokerage and license number for real estate, a description for any business) |
 | `pages` | Each page's slug, title and purpose |
-| `listings` | Source (`manual`, `idx`, `both`), IDX provider, and for manual listings the post type, taxonomies, base and extra fields, filters and sample count |
+| `listings` (real estate) | Source (`manual`, `idx`, `both`), IDX provider, and for manual listings the post type, taxonomies, base and extra fields, filters and sample count |
+| `services` (any business) | The Services post type, its base and extra fields, and how many services to draft from the description |
 | `lead_capture` | Notification email and each form's starter, fields, placement and actions |
 | `crm` | Pipeline stages and method, lists, double opt-in, follow-up emails |
 | `brand` | Primary and accent colors, style, logo option |
 | `seo` | Primary keyword, schema types |
 | `compliance` | Equal housing statement, footer license, privacy policy, form consent, MLS disclaimer |
 | `build` | Agent, WordPress location, and links to the AI Dev Kit, plugin and theme |
+| `missing` | Details the owner has not given yet; the agent asks for these first |
 
 The spec is the contract between the generator and whatever builds the site. Today that is your AI
 agent; [phase 6 of the roadmap](./crm-generator-roadmap.md#phase-6-spec-importer) adds an importer that applies the predictable parts directly in
@@ -122,11 +155,10 @@ WordPress.
 
 ## Roadmap
 
-The generator is done for real estate. Next, it becomes **one engine with a preset per industry**:
-home services, dental and medical clinics, law firms and gyms first, then salons, recruitment
-agencies and event venues. Each preset is released with a live demo built from its own prompt.
-After that come a pipeline board and other CRM features in the plugin, and an importer that applies
-the spec without AI. The full plan, with progress, is on the
+All eight industry presets and the Any business page are live. Next, each preset's prompt is run
+end to end on a fresh WordPress install and the result becomes that industry's live demo. After that
+come a pipeline board and other CRM features in the plugin, and an importer that applies the spec
+without AI. The full plan, with progress, is on the
 [CRM generator roadmap](./crm-generator-roadmap.md).
 
 ## FAQ

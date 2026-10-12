@@ -32,7 +32,7 @@ This means:
   for all of them.
 - Every industry page adds to the same site, which helps all of them appear in search results.
 
-The home page becomes an industry picker plus an **Any business** preset for businesses outside the
+The home page is an industry picker plus an **Any business** preset for businesses outside the
 list.
 
 ## Which industries, and why
@@ -44,16 +44,16 @@ An industry is added when it passes three tests:
 3. Unyson+ already has most of the building blocks: a
    [Post Types blueprint](/data-modeling/post-types), a Forms starter, and the Newsletter CRM.
 
-| Wave | Industry | Builds on | Main lead form | Example pipeline |
+| Industry | Page | Builds on | Main lead form | Example pipeline |
 |---|---|---|---|---|
-| Done | Real estate | Properties blueprint | Showing request, home valuation | New → Showing → Under contract → Closed |
-| 1 | Home services (plumbing, roofing, HVAC) | Services and Locations blueprints, Quote request starter | Quote request | New → Quoted → Booked → Done |
-| 1 | Dental or medical clinic | Services and Team blueprints, Booking starter | Appointment request | New → Booked → Visited → Recall |
-| 1 | Law firm | Services (practice areas), Team, Case Studies | Free consultation | Enquiry → Consultation → Retained → Closed |
-| 1 | Fitness studio or gym | Events (classes), Team (trainers), pricing table | Free trial class | Trial → Visited → Member → Lapsed |
-| 2 | Salon and spa | Services, Team, Booking starter | Booking request | New → Booked → Regular |
-| 2 | Recruitment agency | Jobs blueprint | Job application, hiring enquiry | Applied → Screened → Placed |
-| 2 | Event venue and weddings | Events, gallery, Quote request starter | Date availability | Enquiry → Tour → Booked |
+| Real estate | [/real-estate-crm-website/](https://crm.unysonplus.com/real-estate-crm-website/) | Properties blueprint | Showing request, home valuation | New → Showing → Under contract → Closed |
+| Home services | [/home-services-crm-website/](https://crm.unysonplus.com/home-services-crm-website/) | Services and Locations blueprints | Quote request with photos | New → Site visit → Quote sent → Won → Job complete |
+| Dental or medical clinic | [/dental-clinic-crm-website/](https://crm.unysonplus.com/dental-clinic-crm-website/) | Services (as Treatments), Team Members | Appointment request | New → Booked → Attended → Recall due |
+| Law firm | [/law-firm-crm-website/](https://crm.unysonplus.com/law-firm-crm-website/) | Services (as Practice areas), Team Members, Case Studies | Consultation request | Enquiry → Conflict check → Consultation → Retained |
+| Fitness studio or gym | [/gym-crm-website/](https://crm.unysonplus.com/gym-crm-website/) | Services (as Classes), Team Members, Events | Free trial | Trial booked → Trial attended → Member → Lapsed |
+| Salon and spa | [/salon-spa-crm-website/](https://crm.unysonplus.com/salon-spa-crm-website/) | Services, Team Members | Booking request | Booked → Visited → Rebooked → Regular |
+| Recruitment agency | [/recruitment-agency-crm-website/](https://crm.unysonplus.com/recruitment-agency-crm-website/) | Job Listings, Team Members | Job application with CV upload, vacancy request | Screened → Interview → Offer → Placed |
+| Event venue and weddings | [/event-venue-crm-website/](https://crm.unysonplus.com/event-venue-crm-website/) | Services (as Spaces), Events, Downloads | Date availability, venue tour | Enquiry → Tour → Proposal → Deposit paid |
 
 Being considered after that: insurance agencies, financial advisers, coaches and consultants, car
 dealers (whose inventory works like property listings), tutoring, and non-profits (donors instead
@@ -67,10 +67,12 @@ it.
 
 ## Every preset is proven by a real build
 
-Before a preset is released, its prompt is run on a fresh WordPress install and the result is
-checked: every page, every form, and a test lead reaching the CRM. That build becomes the preset's
-**live demo**, linked from its page, so you can click through the kind of site it produces before
-you start.
+Each preset's prompt is checked against the plugin's real blueprints, field types and settings
+before release. On top of that, each prompt is run by an AI agent on a fresh WordPress install,
+exactly as a site owner would, and the result is checked: every page, every form, and a test lead
+reaching the CRM. Anything the agent had to guess at goes back into the preset. That build becomes
+the preset's **live demo**, linked from its page, so you can click through the kind of site it
+produces before you start. These builds are [phase 4](#phase-4-verified-builds-and-live-demos).
 
 ## Phases
 
@@ -85,27 +87,43 @@ you start.
 - [x] Copy, download and share link; choices saved in your browser
 - [x] [Generator guide](./crm-generator.md) and this roadmap
 
-### Phase 2: one engine for every industry
+### Phase 2: one engine for every industry (done)
 
-- [ ] Presets moved into data files, shared by one engine
-- [ ] Each industry page generated as plain HTML, so search engines read all of it
-- [ ] Home page becomes an industry picker
-- [ ] **Any business** preset
-- [ ] Real estate moves to `/real-estate-crm-website/`
-- [ ] Live preview: a sitemap and page wireframes in your colors, updating as you choose
-- [ ] "Before you build" checklist: logo, photos, lead email, outside accounts
+- [x] Presets moved into data files, shared by one engine
+- [x] Each industry page generated as plain HTML, so search engines read all of it
+- [x] Home page becomes an industry picker
+- [x] **Any business** preset
+- [x] Real estate moves to `/real-estate-crm-website/`
+- [x] Live preview: a sitemap and page wireframes in your colors, updating as you choose
+- [x] "Before you build" checklist: logo, photos, lead email, outside accounts
 
-### Phase 3: industries, wave 1
+### Phase 3: industry presets (done)
 
-Each one is released with a verified build and a live demo.
+- [x] Real estate
+- [x] Home services
+- [x] Dental or medical clinic
+- [x] Law firm
+- [x] Fitness studio or gym
+- [x] Salon and spa
+- [x] Recruitment agency
+- [x] Event venue and weddings
+- [x] Optional connection to software the business already uses, per industry
 
+### Phase 4: verified builds and live demos
+
+Each preset's prompt run end to end by an AI agent on a fresh WordPress install, its findings fed
+back into the preset, and the result published as that industry's live demo.
+
+- [ ] Real estate
 - [ ] Home services
 - [ ] Dental or medical clinic
 - [ ] Law firm
 - [ ] Fitness studio or gym
-- [ ] Live demo for real estate
+- [ ] Salon and spa
+- [ ] Recruitment agency
+- [ ] Event venue and weddings
 
-### Phase 4: CRM features in the plugin
+### Phase 5: CRM features in the plugin
 
 These go into Unyson+ itself, so every site the generator builds gets them.
 
@@ -115,12 +133,6 @@ These go into Unyson+ itself, so every site the generator builds gets them.
 - [ ] Assigning leads to team members
 - [ ] Front-end search by number fields (price, bedrooms), not only by category
 - [ ] Saved searches and new-item email alerts
-
-### Phase 5: industries, wave 2
-
-- [ ] Salon and spa
-- [ ] Recruitment agency
-- [ ] Event venue and weddings
 
 ### Phase 6: spec importer
 

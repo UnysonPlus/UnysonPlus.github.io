@@ -31,17 +31,6 @@ An image that conveys information (a product, a portrait, a diagram) needs alt t
 - **Custom Icon (Emoji / SVG)** — optional text. If filled, overrides the Icon picker; accepts an emoji or inline SVG markup (whose colors are fixed, so Icon Color won't affect them).
 - **Button / Link Style** — select for the call-to-action under the text; choices `None` (default), `Button`, `Text link`, `Arrow link`.
 - **Button Label** — text shown on the button / link (default `Read More`). Ignored when Button / Link Style is None.
-- **Meta — Left** — short field shown at the start of a footer line under the text (e.g. `9 days / 8 nights`). Blank to hide.
-- **Meta — Right** — short field at the end of the same line (e.g. `From $12,450`). Used on its own it sits at the start instead, so one field never looks stranded.
-- **Meta Emphasis** — which of the two reads as the stronger; choices `None — both the same`, `Left field`, `Right field` (default). A price is usually brighter and bolder than the label beside it.
-- **Rule Above Meta Row** — switch (default `Yes`) drawing a hairline between the text and the meta row.
-
-:::tip The meta row is for aligned pairs, not more text
-Both fields sit on one baseline and the row pins to the **bottom of the card**, so the rows stay level
-across a grid however long each description runs. That alignment is the reason to use it — if you only
-want another sentence, use **Text**. Leaving both fields blank renders nothing at all.
-:::
-
 ## Design
 
 <img src="/img/shortcodes/image-box-design.png" alt="Image Box options panel — Design tab" width="1200" />

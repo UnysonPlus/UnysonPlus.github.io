@@ -157,6 +157,43 @@ the setting does nothing — Pro's widgets show as usual, next to the Unyson+ on
 
 <img src="/img/extensions/elementor/settings.png" alt="The Hide locked Pro widgets setting" width="1672" />
 
+## Keeping Theme Settings and Elementor in step
+
+On a site that uses both, your colours and fonts live in two places: the Unyson+ **Theme
+Settings** (which also style the theme's header and footer) and Elementor's **Site
+Settings**. The extension's **Design Sync** keeps them the same. Change a colour or a
+heading font on either side and the other follows.
+
+What stays in step:
+
+- the colour presets: Primary, Secondary and Accent become Elementor's system colours, the rest its custom colours
+- the heading and body fonts, and the H1–H6 styles
+- the link colours, the container width and the site background
+- the primary button
+- the Text Styles, as Elementor's custom fonts
+
+Choose the direction under **Unyson+ → Extensions → Elementor → Design Sync**:
+
+| Setting | What happens |
+| --- | --- |
+| **Two-way** (default) | Saving either side updates the other. |
+| **One-way** | Theme Settings update Elementor; changes made in Elementor stay in Elementor. |
+| **Off** | The two are kept apart. |
+
+The sync never deletes anything. A setting one side has no place for is left alone on the
+other (Elementor has no slot for a Text Style's custom CSS, for example). A colour you
+delete in Elementor stays in Theme Settings, because your pages may still use it. Colours
+and fonts you added in Elementor yourself are never removed. If you rename a colour in
+Elementor, the matching Unyson+ colour is renamed too rather than duplicated.
+
+An Elementor editor that is already open shows the old colours until you reload it.
+
+:::note
+Design Sync used to be a separate **Builder Sync** extension. It is now part of the
+Elementor extension. If you had Builder Sync on, your direction setting carries over and
+Builder Sync switches itself off the next time you open the dashboard.
+:::
+
 ## Troubleshooting
 
 - **A widget shows a hint instead of content in the editor** — it has nothing to show yet:

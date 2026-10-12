@@ -24,6 +24,8 @@ Both sides keep their design as plain lists that are saved through a known event
 
 ## Decision
 
+*Status: Superseded in part (2026-10-12). The sync is no longer a separate extension; it is the Elementor extension's Design Sync. See [Why Builder Sync became part of the Elementor extension](/decisions/builder-sync-merged-into-elementor). The rest of this decision (the neutral model, the identity map, the two safety rules) stands.*
+
 A separate **Builder Sync** extension, not part of the converter, because it is useful on any site running both. It keeps a builder-neutral design model (`FW_Builder_Sync_Design`) and one provider per builder (`fw_builder_sync_providers`); Elementor is the first. It syncs colour presets, the body text colour, heading and body fonts, H1–H6, link colours, container width, the site background, the primary button and Text Styles. Direction is a setting: two-way (default), Theme Settings → builder, or off. Renames ride an identity map rather than a schema change.
 
 Two rules make it safe:

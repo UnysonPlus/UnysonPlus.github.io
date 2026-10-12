@@ -81,7 +81,7 @@ did not create without asking.
 
 Newsletter CRM does not have a drag-and-drop pipeline board yet. Until it does, each stage is a
 tag named `Stage: <name>` and has a saved segment, so opening a stage is one click and moving a
-lead means changing its tag. When the pipeline board ships ([phase 2](#roadmap)), the same stages
+lead means changing its tag. When the pipeline board ships ([phase 4 of the roadmap](./crm-generator-roadmap.md#phase-4-crm-features-in-the-plugin)), the same stages
 carry over.
 
 ## Listings and IDX
@@ -117,42 +117,17 @@ add IDX later without rebuilding the site.
 | `build` | Agent, WordPress location, and links to the AI Dev Kit, plugin and theme |
 
 The spec is the contract between the generator and whatever builds the site. Today that is your AI
-agent; [phase 3](#roadmap) adds an importer that applies the predictable parts directly in
+agent; [phase 6 of the roadmap](./crm-generator-roadmap.md#phase-6-spec-importer) adds an importer that applies the predictable parts directly in
 WordPress.
 
 ## Roadmap
 
-### Phase 1: the generator (done)
-
-- [x] Free generator page at crm.unysonplus.com, hosted on GitHub Pages
-- [x] Real estate preset: pages, listing fields, lead forms, pipeline stages, follow-up emails
-- [x] Pages and forms that follow your audience and business type
-- [x] Manual listings, IDX provider, or both
-- [x] Build prompt grounded in the AI Dev Kit, with the full spec included
-- [x] `site-spec.json` version 1.0
-- [x] Copy, download and share link; choices saved in your browser
-- [x] This guide
-
-### Phase 2: CRM features in the plugin
-
-- [ ] Pipeline board in Newsletter CRM (stages as columns, drag a lead between them)
-- [ ] Contact timeline: notes, tasks and every form a lead submitted
-- [ ] Lead assignment to agents
-- [ ] Front-end property search by price, beds and baths, not only by taxonomy
-- [ ] Saved searches and new-listing alerts by email
-
-### Phase 3: spec importer
-
-- [ ] A WordPress screen that applies `site-spec.json` directly: post types, fields, forms, CRM
-      lists, tags and segments, with no AI needed for those parts
-- [ ] The agent then handles only design and written content
-
-### Phase 4: more industries
-
-- [ ] Dental clinic
-- [ ] Law firm
-- [ ] Home services
-- [ ] Fitness studio
+The generator is done for real estate. Next, it becomes **one engine with a preset per industry**:
+home services, dental and medical clinics, law firms and gyms first, then salons, recruitment
+agencies and event venues. Each preset is released with a live demo built from its own prompt.
+After that come a pipeline board and other CRM features in the plugin, and an importer that applies
+the spec without AI. The full plan, with progress, is on the
+[CRM generator roadmap](./crm-generator-roadmap.md).
 
 ## FAQ
 

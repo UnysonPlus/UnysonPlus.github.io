@@ -33,6 +33,7 @@ features, do it in a few minutes, no code unless noted. New to the builder? Star
 - [Set up AI for Unyson+ (Claude subscription, API key or free local models)](./set-up-ai-for-unysonplus.md)
 - [Connect an AI coding tool to your WordPress site (Claude Code, Cursor, VS Code, Windsurf, Claude Desktop)](./connect-ai-tools-to-wordpress.md)
 - [Build a free CRM website with the CRM Website Generator (real estate preset)](./crm-generator.md)
+  — and the [CRM generator roadmap](./crm-generator-roadmap.md)
 
 ## Setup & site-wide
 

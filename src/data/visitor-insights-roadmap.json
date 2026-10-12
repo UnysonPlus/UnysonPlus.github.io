@@ -3,8 +3,8 @@
   "extension": "visitor-insights",
   "cloneDir": "UnysonPlus-Visitor-Insights-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Visitor-Insights-Extension",
-  "extensionVersion": "1.0.5",
-  "generatedAt": "2026-10-12T07:13:08.656Z",
+  "extensionVersion": "1.0.6",
+  "generatedAt": "2026-10-12T11:16:32.183Z",
   "detected": true,
   "milestones": [
     {
@@ -641,6 +641,49 @@
           },
           "status": "done",
           "progress": "1/1"
+        }
+      ]
+    },
+    {
+      "id": "p7-depth",
+      "title": "Phase 7 · Deeper heatmaps",
+      "goal": "Heatmaps that answer \"for whom?\" and travel outside the admin.",
+      "tasks": [
+        {
+          "id": "p7-hm-channels",
+          "title": "Heatmaps by traffic channel",
+          "detail": "Every heatmap mode filtered to the visits of one channel — what visitors from search click, how far social visitors scroll.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/class-fw-vi-heatmaps.php",
+                "pattern": "'hmch'"
+              }
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
+        },
+        {
+          "id": "p7-hm-image",
+          "title": "Heatmap as an image",
+          "detail": "Download the page with the current map drawn over it as a PNG, to share or put in a report.",
+          "detect": {
+            "files": [
+              "static/js/vendor/html2canvas.min.js"
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
+        },
+        {
+          "id": "p7-verify",
+          "title": "Shop orders and email, verified",
+          "detail": "Order goals with their value checked on a WooCommerce site, and the weekly email and alerts checked end to end.",
+          "detect": {},
+          "status": "done",
+          "progress": null,
+          "pin": true
         }
       ]
     }

@@ -167,6 +167,10 @@ calling `UnysonPlusVI.grantRecording()`. Without one of these, nothing is record
   channel to see which pages its visitors land on.
 - **What changed after we did that?** Add a note to the chart — a redesign, a campaign, a price
   change — and it appears as a marker on that day.
+- **For whom?** Filter any heatmap to one traffic channel — what visitors from search click, how
+  far visitors from social scroll.
+- **Take it with you.** *Download image* saves the page with the current map on top, captioned with
+  the page, device, period and channel — ready for a report or a client email.
 - **Show me.** From a page's heatmap (and the Pages list) open the recordings of visits that
   included that page.
 - **Tell me when it breaks.** Switch on alerts for an email the morning after script errors, broken

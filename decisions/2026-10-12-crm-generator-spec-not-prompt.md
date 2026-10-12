@@ -33,7 +33,7 @@ build a site. What was missing was a way for a non-technical owner to describe t
 ## Decision
 
 Option 2, with the CRM kept in the plugin, and the page built as plain HTML, CSS and JavaScript on
-GitHub Pages at `crm-generator.unysonplus.com`. The spec (`spec_version` 1.0) is embedded at the
+GitHub Pages at `crm.unysonplus.com`. The spec (`spec_version` 1.0) is embedded at the
 end of the prompt so a single paste carries everything. Pipeline stages are tags in Newsletter CRM
 until a pipeline board ships there. Live MLS data is never promised: the generator offers manual
 listings, an existing IDX provider, or both.

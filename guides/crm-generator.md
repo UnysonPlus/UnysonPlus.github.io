@@ -13,7 +13,7 @@ keywords:
 
 # Free CRM website generator
 
-The [CRM Website Generator](https://crm-generator.unysonplus.com/) is a free page where you pick
+The [CRM Website Generator](https://crm.unysonplus.com/) is a free page where you pick
 what your site needs: listings, lead forms, sales pipeline stages, brand colors. It turns those
 choices into two things:
 
@@ -37,7 +37,7 @@ your own browser so you can come back to them.
 
 ## Use the generator
 
-1. Open [crm-generator.unysonplus.com](https://crm-generator.unysonplus.com/).
+1. Open [crm.unysonplus.com](https://crm.unysonplus.com/).
 2. **Business.** Enter the business name, market (city or region), and optionally the tagline,
    brokerage and license number. The license and brokerage go in the site footer, which many
    markets require.
@@ -124,7 +124,7 @@ WordPress.
 
 ### Phase 1: the generator (done)
 
-- [x] Free generator page at crm-generator.unysonplus.com, hosted on GitHub Pages
+- [x] Free generator page at crm.unysonplus.com, hosted on GitHub Pages
 - [x] Real estate preset: pages, listing fields, lead forms, pipeline stages, follow-up emails
 - [x] Pages and forms that follow your audience and business type
 - [x] Manual listings, IDX provider, or both

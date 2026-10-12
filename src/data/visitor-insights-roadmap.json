@@ -3,8 +3,8 @@
   "extension": "visitor-insights",
   "cloneDir": "UnysonPlus-Visitor-Insights-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Visitor-Insights-Extension",
-  "extensionVersion": "1.0.1",
-  "generatedAt": "2026-10-11T19:00:33.117Z",
+  "extensionVersion": "1.0.2",
+  "generatedAt": "2026-10-12T05:09:45.044Z",
   "detected": true,
   "milestones": [
     {
@@ -397,8 +397,8 @@
               "includes/class-fw-vi-form-analytics.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         }
       ]
     },
@@ -416,8 +416,8 @@
               "includes/class-fw-vi-search.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },
@@ -436,8 +436,8 @@
               "static/js/modules/experiments.js"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         }
       ]
     },
@@ -455,8 +455,8 @@
               "includes/class-fw-vi-digest.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p3-ai",
@@ -467,8 +467,8 @@
               "includes/class-fw-vi-ai.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },

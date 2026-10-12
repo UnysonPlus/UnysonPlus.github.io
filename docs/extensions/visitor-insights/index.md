@@ -8,9 +8,10 @@ description: "Visitor Insights (in development) — privacy-first, self-hosted v
 # Visitor Insights
 
 :::info In development
-**Phases 1 and 2 are built** — traffic, heatmaps, section analytics, goals, funnels, frustration
-& errors and real-visitor performance. Phase 1 is released as Visitor Insights 1.0.0; Phase 2 ships
-in an upcoming release.
+**Phases 1–3 are built** — traffic, heatmaps, section analytics, goals, funnels, frustration &
+errors, real-visitor performance, form analytics, site search, section A/B tests, a weekly email and
+AI Assistant answers. Phases 1 and 2 are released (Visitor Insights 1.0.1); Phase 3 ships in an
+upcoming release.
 The [roadmap](./roadmap.mdx) shows what is done and what is next; it is checked automatically against
 the extension's source code, so it is always current.
 :::
@@ -75,6 +76,9 @@ live under **Unyson+ → Visitor Insights**.
 | **Heatmaps** | The live page at desktop, tablet or mobile width with a **clicks**, **scroll reach**, **attention** or **elements** map on top, and a table of every section: how many visitors reached it and how long it stayed in view. |
 | **Goals** | Every goal with its completions, rate per page view and value (order totals), and the pages where goals are completed. |
 | **Funnels** | Step-by-step journeys — for example *pricing page → booking form sent* — with how many visitors continue at each step. |
+| **A/B tests** | Two versions of a section on the same page, half the visitors each, with the winner decided by a goal and a confidence figure. |
+| **Forms** | Every form: how many visitors start it, send it or give up — and the field where they gave up. |
+| **Search** | What visitors search for on your site, and the searches that find nothing. |
 | **Frustration** | Rage clicks, dead clicks and clicks followed by an error, per page; script errors grouped by message; missing pages (404) and where visitors came from. |
 | **Performance** | Core Web Vitals from real visitors — loading (LCP), responsiveness (INP), visual stability (CLS) and server response — per device, page and content type. |
 | **Live** | Page views in the last five minutes, by page. |
@@ -88,7 +92,9 @@ canvas, a badge on each item in the page builder (its share of clicks, and for s
 visitors reached it), and **Heatmap** in the admin bar on any page of your site.
 
 Your own visits do not count while you are logged in as an editor — open the site in a private
-window to see the first page view arrive (within about a minute).
+window to see the first page view arrive (within about a minute). **Settings → Logged-in users**
+decides who else is left out: by default logged-in visitors who cannot edit content (customers,
+members) are counted; you can leave out everyone who is logged in, or count editors too.
 
 ### Goals
 
@@ -104,6 +110,23 @@ A goal is anything a visit can achieve. There are four ways to count one, and no
 Funnels are built from pages and goals. A visitor counts at a step once they have done every step
 before it on the same day — Visitor Insights recognises a returning visitor only within a day,
 because it keeps no identifier on their device.
+
+### A/B testing a section
+
+Build both versions of a section on the page — one under the other — then pick them on the
+**A/B tests** tab with the goal that decides. Half of the page views see A, half see B; the choice is
+made in the visitor's browser before the page appears, so there is no flicker and it works with page
+caches. The tab shows visitors and goal completions per version and calls a winner once it is 95%
+confident. Stopping the test keeps the winner showing; delete the other section in the builder when
+you are ready.
+
+### Weekly email and the AI Assistant
+
+Switch on **Settings → Weekly email** for a Monday summary: the week compared with the one before, top
+pages, and anything worth fixing — broken internal links, frustrated clicks, script errors, slow pages.
+With the AI Assistant active you can ask it about the numbers in plain words, for example *"Which
+section of the home page loses mobile visitors?"*; it reads the same reports, with every section and
+element named as it is in the builder.
 
 ### Consent
 

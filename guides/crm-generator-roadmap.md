@@ -114,6 +114,10 @@ produces before you start. These builds are [phase 4](#phase-4-verified-builds-a
 Each preset's prompt run end to end by an AI agent on a fresh WordPress install, its findings fed
 back into the preset, and the result published as that industry's live demo.
 
+Status: all eight test builds have run, and what they found is now in the presets: the extension
+order, email setup, form starters, CRM tag slugs, single-page layouts with Theme Builder and more.
+Each item is ticked when its live demo is published.
+
 - [ ] Real estate
 - [ ] Home services
 - [ ] Dental or medical clinic

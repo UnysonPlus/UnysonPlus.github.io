@@ -146,6 +146,18 @@ calling `UnysonPlusVI.grantRecording()`. Without one of these, nothing is record
 - Recordings stay on your server. Watching one needs administrator rights, and every playback is
   logged.
 
+### Everyday extras
+
+- **Where visits come from** — the Overview groups every visit into a channel: Direct, Search,
+  Social, AI assistants, Email, Paid, Campaign or Referral, from the referring site and any campaign
+  tags on the link.
+- **On your dashboard** — a Visitor Insights widget shows the week against the one before, the last
+  14 days at a glance, the top pages and how many page views are happening right now.
+- **Export** — download pages, sources, goals or daily totals as CSV for any period.
+- **Page caches** — after you change a setting or an A/B test, common page caches are cleared for you.
+- **Mouse-movement maps** — an optional heatmap mode showing where the pointer lingers on desktop,
+  off by default.
+
 ### Consent
 
 - **With a consent plugin** that supports the WordPress Consent API, tracking waits for

@@ -3,8 +3,8 @@
   "extension": "visitor-insights",
   "cloneDir": "UnysonPlus-Visitor-Insights-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Visitor-Insights-Extension",
-  "extensionVersion": "1.0.3",
-  "generatedAt": "2026-10-12T05:23:13.025Z",
+  "extensionVersion": "1.0.4",
+  "generatedAt": "2026-10-12T05:44:40.897Z",
   "detected": true,
   "milestones": [
     {
@@ -497,6 +497,73 @@
           "detect": {
             "files": [
               "static/js/admin/player.js"
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
+        }
+      ]
+    },
+    {
+      "id": "p5-polish",
+      "title": "Phase 5 · Reach & polish",
+      "goal": "Smaller pieces that make the numbers easier to use day to day: where visits come from, the headline figures on the dashboard, exports, and less manual cache-clearing.",
+      "tasks": [
+        {
+          "id": "p5-channels",
+          "title": "Traffic channels",
+          "detail": "Every visit grouped as Direct, Search, Social, AI assistants, Email, Paid, Campaign or Referral, from its referrer and campaign tags.",
+          "detect": {
+            "files": [
+              "includes/class-fw-vi-channels.php"
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
+        },
+        {
+          "id": "p5-dashboard",
+          "title": "Dashboard widget",
+          "detail": "The week at a glance on the WordPress dashboard: visits against last week, a seven-day sparkline, top pages and who is on the site now.",
+          "detect": {
+            "files": [
+              "includes/class-fw-vi-dashboard.php"
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
+        },
+        {
+          "id": "p5-export",
+          "title": "CSV export",
+          "detail": "Download pages, sources, goals and daily totals for any period.",
+          "detect": {
+            "files": [
+              "includes/class-fw-vi-export.php"
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
+        },
+        {
+          "id": "p5-cache",
+          "title": "Automatic page-cache clearing",
+          "detail": "When settings or an A/B test change, the common page caches are cleared so visitors get the new page.",
+          "detect": {
+            "files": [
+              "includes/class-fw-vi-cache.php"
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
+        },
+        {
+          "id": "p5-moves",
+          "title": "Mouse-movement maps",
+          "detail": "Where the pointer lingers, as a heatmap mode — desktop only, sampled and binned in the browser, off by default.",
+          "detect": {
+            "files": [
+              "static/js/modules/moves.js"
             ]
           },
           "status": "done",

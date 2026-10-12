@@ -8,10 +8,10 @@ description: "Visitor Insights (in development) — privacy-first, self-hosted v
 # Visitor Insights
 
 :::info In development
-**Phases 1–3 are built** — traffic, heatmaps, section analytics, goals, funnels, frustration &
-errors, real-visitor performance, form analytics, site search, section A/B tests, a weekly email and
-AI Assistant answers. Phases 1 and 2 are released (Visitor Insights 1.0.1); Phase 3 ships in an
-upcoming release.
+**All four phases are built** — traffic, heatmaps, section analytics, goals, funnels, frustration
+& errors, real-visitor performance, form analytics, site search, section A/B tests, a weekly email, AI
+Assistant answers and consent-only session recording. Phases 1 and 2 are released (Visitor Insights
+1.0.1); the rest ships in an upcoming release.
 The [roadmap](./roadmap.mdx) shows what is done and what is next; it is checked automatically against
 the extension's source code, so it is always current.
 :::
@@ -81,6 +81,7 @@ live under **Unyson+ → Visitor Insights**.
 | **Search** | What visitors search for on your site, and the searches that find nothing. |
 | **Frustration** | Rage clicks, dead clicks and clicks followed by an error, per page; script errors grouped by message; missing pages (404) and where visitors came from. |
 | **Performance** | Core Web Vitals from real visitors — loading (LCP), responsiveness (INP), visual stability (CLS) and server response — per device, page and content type. |
+| **Recordings** | Replays of individual visits — only of visitors who agreed to it — with the visits that had problems marked. |
 | **Live** | Page views in the last five minutes, by page. |
 | **Settings** | Sampling, which modules run, pages to skip, consent, data retention, excluded addresses. |
 
@@ -127,6 +128,23 @@ pages, and anything worth fixing — broken internal links, frustrated clicks, s
 With the AI Assistant active you can ask it about the numbers in plain words, for example *"Which
 section of the home page loses mobile visitors?"*; it reads the same reports, with every section and
 element named as it is in the builder.
+
+### Session recording
+
+Off until you switch it on, and then **only ever with the visitor's opt-in consent** — no law exempts
+recording individual visits, so Visitor Insights does not try. The consent comes from a consent plugin
+that supports the WordPress Consent API (the visitor accepts *statistics*), or from your own banner
+calling `UnysonPlusVI.grantRecording()`. Without one of these, nothing is recorded.
+
+- Everything typed into a form is replaced with `*` in the visitor's browser before it is sent; you
+  can also hide all text, or single elements with the class `up-vi-mask` (or leave them out with
+  `up-vi-block`). Cart, checkout, account and login pages are never recorded.
+- Only a share of consenting visits is recorded (one in five by default), optionally only the visits
+  that ran into a problem, and recordings are deleted after 30 days (7–90).
+- Withdrawing consent stops the recording and deletes it. Put `[visitor_insights_recording]` on your
+  privacy page so visitors can delete their own recording at any time.
+- Recordings stay on your server. Watching one needs administrator rights, and every playback is
+  logged.
 
 ### Consent
 

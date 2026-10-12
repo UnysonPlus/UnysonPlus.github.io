@@ -3,8 +3,8 @@
   "extension": "visitor-insights",
   "cloneDir": "UnysonPlus-Visitor-Insights-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Visitor-Insights-Extension",
-  "extensionVersion": "1.0.2",
-  "generatedAt": "2026-10-12T05:09:45.044Z",
+  "extensionVersion": "1.0.3",
+  "generatedAt": "2026-10-12T05:23:13.025Z",
   "detected": true,
   "milestones": [
     {
@@ -487,8 +487,8 @@
               "includes/class-fw-vi-recordings.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p4-player",
@@ -499,8 +499,8 @@
               "static/js/admin/player.js"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     }

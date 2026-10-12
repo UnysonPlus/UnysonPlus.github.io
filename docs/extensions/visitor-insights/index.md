@@ -158,6 +158,20 @@ calling `UnysonPlusVI.grantRecording()`. Without one of these, nothing is record
 - **Mouse-movement maps** — an optional heatmap mode showing where the pointer lingers on desktop,
   off by default.
 
+### Reading the numbers
+
+- **Compared with what?** Every figure on the Overview, and every page in the Pages list, shows its
+  change against the period before.
+- **Which channel works?** *How each channel performs* shows, per channel, the views, time on page,
+  how many read half the page, goal completions and the conversion rate. Filter the Pages tab by a
+  channel to see which pages its visitors land on.
+- **What changed after we did that?** Add a note to the chart — a redesign, a campaign, a price
+  change — and it appears as a marker on that day.
+- **Show me.** From a page's heatmap (and the Pages list) open the recordings of visits that
+  included that page.
+- **Tell me when it breaks.** Switch on alerts for an email the morning after script errors, broken
+  internal links or traffic move far from the usual. Nothing is sent on a normal day.
+
 ### Consent
 
 - **With a consent plugin** that supports the WordPress Consent API, tracking waits for

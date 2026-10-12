@@ -3,8 +3,8 @@
   "extension": "visitor-insights",
   "cloneDir": "UnysonPlus-Visitor-Insights-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Visitor-Insights-Extension",
-  "extensionVersion": "1.0.4",
-  "generatedAt": "2026-10-12T05:44:40.897Z",
+  "extensionVersion": "1.0.5",
+  "generatedAt": "2026-10-12T07:11:21.475Z",
   "detected": true,
   "milestones": [
     {
@@ -564,6 +564,79 @@
           "detect": {
             "files": [
               "static/js/modules/moves.js"
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
+        }
+      ]
+    },
+    {
+      "id": "p6-analysis",
+      "title": "Phase 6 · Analysis",
+      "goal": "Answers to the questions people ask once the data is coming in: compared with what, from which channel, and what changed after we did that.",
+      "tasks": [
+        {
+          "id": "p6-compare",
+          "title": "Compared with the previous period",
+          "detail": "Every Overview figure and each page shows its change against the period before.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/class-fw-vi-reports.php",
+                "pattern": "functions+totals_between"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6-channels",
+          "title": "Channel performance",
+          "detail": "Per traffic channel: views, time on page, how many read half the page, goal completions and conversion rate — and a channel filter for the Pages tab.",
+          "detect": {
+            "files": [
+              "includes/class-fw-vi-segments.php"
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
+        },
+        {
+          "id": "p6-annotations",
+          "title": "Annotations",
+          "detail": "Mark a date on the chart — a redesign, a campaign, a price change — and see what changed after it.",
+          "detect": {
+            "files": [
+              "includes/class-fw-vi-annotations.php"
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
+        },
+        {
+          "id": "p6-rec-links",
+          "title": "Recordings per page",
+          "detail": "Open the recordings of a page straight from its heatmap and from the Pages tab.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/class-fw-vi-recordings.php",
+                "pattern": "rec_path"
+              }
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
+        },
+        {
+          "id": "p6-alerts",
+          "title": "Alerts",
+          "detail": "An email when something jumps: script errors, broken links or a sudden drop in traffic, compared with the usual.",
+          "detect": {
+            "files": [
+              "includes/class-fw-vi-alerts.php"
             ]
           },
           "status": "done",

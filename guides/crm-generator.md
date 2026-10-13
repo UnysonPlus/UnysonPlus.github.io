@@ -57,6 +57,9 @@ your own browser so you can come back to them.
 - An AI coding agent that can read files and run commands where WordPress lives.
 - About 15 minutes for the form. The build itself depends on the agent and the number of pages.
 
+No extra WordPress plugins are needed: Unyson+ works without the Classic Editor plugin, and form
+emails go out through WordPress's own mail until you set up SMTP.
+
 ## Use the generator
 
 The steps below use the real estate page; the Any business page has the same sections, with
@@ -98,7 +101,7 @@ The prompt walks the agent through seven steps, in this order:
 | 1. Design system | Sets [Theme Settings](/guides/global-colors-and-fonts) (colors, type, buttons, header and footer) before any page is built. |
 | 2. Listings | Installs the **Properties** blueprint and adds your extra fields and a status taxonomy, builds the listings page with filters and the single listing layout, and creates the sample listings. |
 | 3. Pages | Builds each page you chose, with a call to action leading to a lead form. |
-| 4. Lead capture | Builds each form from the Forms starter templates. Every submission is stored as an entry; leads who tick the consent box are added to the CRM. |
+| 4. Lead capture | Builds each form from the Forms starter templates (Contact, Appointment request, Newsletter signup). Every submission is stored as an entry, even if the notification email fails; leads who tick the consent box are added to the CRM after confirming their email (double opt-in). |
 | 5. CRM | Sets up Newsletter CRM: lists for each audience, one tag per pipeline stage, a saved segment per stage, and your follow-up emails as **drafts**. |
 | 6. SEO and compliance | Page titles and descriptions, structured data, accessibility, speed, and a footer with brokerage, license and an Equal Housing Opportunity statement. |
 | 7. Check and report | Opens every page on desktop and phone, submits each form once, then reports what still needs you (photos, logo, real listings). |

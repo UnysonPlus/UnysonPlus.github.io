@@ -3,18 +3,18 @@ sidebar_position: 1
 slug: /
 title: "Membership — members-only content, plans and payments for WordPress"
 sidebar_label: "Membership"
-description: "The planned Unyson+ Membership extension: plans, one access engine for every page, element and menu, a member area designed in the page builder, your own payment accounts with no transaction fee, and a full connection to the Unyson+ CRM."
+description: "The Unyson+ Membership extension: plans, one access engine for every page, element and menu, a member area designed in the page builder, your own payment accounts with no transaction fee, and a full connection to the Unyson+ CRM."
 ---
 
 # Membership
 
-:::info In progress
+:::info Built, arriving with the next release
 Phases 1 and 2 are built: the Membership app, plans, members, access rules with the one access engine
 behind them, sign-up forms with email confirmation and approval, the login and account pages, member emails,
 profile fields, a REST API and AI Assistant tools. Phase 3 is built too: plans are sold by card, PayPal or
 bank transfer, with coupons, tax, invoices, and upgrades and downgrades members make themselves. Phase 4 connects Membership to the [CRM](./crm.md): members are contacts, plans are tags, and
 access rules can use CRM tags, lists and segments. Phase 5 adds drip content, a metered paywall, protected downloads and
-selling single items. Phase 6 adds everything for keeping members, and gift memberships. Phase 7 adds team memberships, a member directory and membership cards. Phase 8 connects Membership to WooCommerce. Phase 9 adds reports. Phase 10 adds account security, importers, a scheduler check and command-line tools. All of it arrives with the next release. The
+selling single items. Phase 6 adds everything for keeping members, and gift memberships. Phase 7 adds team memberships, a member directory and membership cards. Phase 8 connects Membership to WooCommerce. Phase 9 adds reports. Phase 10 adds account security, importers, a scheduler check and command-line tools. Phase 11 adds courses with progress, quizzes and certificates. Every phase on the roadmap is built, and all of it arrives with the next release. The
 [roadmap](./roadmap.mdx) tracks each task against the code. The design comes from a study of the leading
 membership plugins and platforms, summarised under [Research](./research.md).
 :::
@@ -261,6 +261,40 @@ history and the payments, so the past months are filled in straight away:
 - **Command line.** With WP-CLI: `wp membership list`, `plans`, `grant`, `extend`, `expire`, and `reconcile`,
   which checks every subscription with its payment service and fixes any that drifted.
 
+## Courses
+
+Switch on **Courses** and two new screens appear under **Courses** in the WordPress menu: courses and lessons.
+A course is protected content with an order and a progress record, on the same access engine as everything
+else, so there is no second membership system to learn.
+
+- **Who may take it.** On each course choose the plans that include it, any logged-in member, or open to
+  everyone. Membership keeps an access rule named after the course in step with that choice, so the lessons are
+  protected and the course page itself stays open, as the place where people join. Sell the course on its own
+  (Pay per item) and buyers get in too.
+- **Lessons.** Each lesson belongs to a course, has a module name (lessons with the same one are grouped) and a
+  place in the order. A lesson can open a set number of days after the student starts the course.
+- **Progress.** Students press **Complete and continue**, see a progress bar and ticks in the outline, and the course page
+  offers **Resume the course** where they left off. Their courses, with progress, appear on the account page. The
+  **Course Outline** element shows a course's outline anywhere in the builder.
+- **Quizzes.** Write a quiz on the lesson in plain text: a line starting `Q:` is a question, `*` marks a right
+  answer and `-` a wrong one (two or more `*` make it *tick all that apply*), and `=` gives a typed answer, matched
+  without caring about capitals or spaces. Set a pass mark (70% by default) and, if you like, require the quiz to
+  be passed before the next lesson opens. Students see which questions they got wrong and can try again.
+- **Certificates.** Tick **Give a certificate when the course is completed** on the course and students get one, by email too, when every lesson
+  is complete. Use the built-in design, or design a page in the builder with `{name}`, `{course}`, `{date}`,
+  `{code}` and `{verify_url}`, which are filled in for each student. The certificate link shows that it is genuine
+  to anyone who opens it, and it prints cleanly or saves as PDF from the browser's print dialog.
+
+```text
+Q: Which of these are payment methods?
+* Card
+* Bank transfer
+- Telepathy
+
+Q: Type the word that means content released over time.
+= drip
+```
+
 ## Profile fields, the API and AI
 
 - **Profile fields** (Membership → Profile fields): extra details to keep about members, such as a company,
@@ -363,8 +397,8 @@ menus, so a simple members area stays as light as a simple members area should b
 | **WooCommerce** | Products that grant plans, member prices and free shipping, members-only products, store subscriptions as the billing source |
 | **Reports** | Monthly recurring revenue, churn, lifetime value, trial conversion, recovered payments, cohorts |
 | **Account security** | Limits on simultaneous sessions, one-click login links that are signed and single-use, passkeys, and a login and access log |
-| **Importers** | Members, plans and live subscriptions from CSV or from other membership plugins, keeping renewals running |
-| **Courses** | Courses with lessons, progress, quizzes and certificates on the same access engine |
+| **Importers** | Members, plans and live subscriptions from a CSV file (such as an export from another membership plugin), or from a WordPress role or user field, keeping renewals running |
+| **Courses** | Courses with lessons in modules, progress and resume, quizzes that can gate the next lesson, and verifiable certificates, on the same access engine |
 
 ## How it fits with the rest of Unyson+
 

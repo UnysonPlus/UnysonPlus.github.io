@@ -3,8 +3,8 @@
   "extension": "membership",
   "cloneDir": "UnysonPlus-Membership-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Membership-Extension",
-  "extensionVersion": "1.0.15",
-  "generatedAt": "2026-10-14T12:17:50.739Z",
+  "extensionVersion": "1.0.16",
+  "generatedAt": "2026-10-14T13:56:15.632Z",
   "detected": true,
   "milestones": [
     {
@@ -861,8 +861,8 @@
               "modules/courses/class-fw-membership-courses.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p11-progress",
@@ -874,8 +874,8 @@
               "shortcodes/course-outline/config.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p11-quizzes",
@@ -886,20 +886,20 @@
               "modules/courses/class-fw-membership-quizzes.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p11-certificates",
           "title": "Certificates",
-          "detail": "A certificate designed in the builder and issued on completion as a PDF, with a verification link.",
+          "detail": "A certificate designed in the builder (or a built-in design), issued and emailed on completion, printable or saved as PDF, with a verification link.",
           "detect": {
             "files": [
               "modules/courses/class-fw-membership-certificates.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     }

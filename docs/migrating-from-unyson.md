@@ -65,7 +65,8 @@ the plugin/theme current from the dashboard.
 Some extensions from the original Unyson (Backups, Events, Feedback, Learning, SEO, Sliders, Social,
 Translation) are **not bundled** in Unyson+. Use a dedicated WordPress plugin for those needs
 (e.g. a backup plugin, an SEO plugin). The extensions that *are* included are listed in the
-[Extensions overview](/extensions/overview).
+[Extensions overview](/extensions/overview). Courses and lessons (the old Learning extension) are planned as the
+Courses module of the [Membership](/membership) extension, built from scratch on its access rules.
 
 ### Header/footer presets are now the Theme Builder
 

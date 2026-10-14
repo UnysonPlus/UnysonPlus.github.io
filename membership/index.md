@@ -11,7 +11,8 @@ description: "The planned Unyson+ Membership extension: plans, one access engine
 :::info In progress
 Phases 1 and 2 are built: the Membership app, plans, members, access rules with the one access engine
 behind them, sign-up forms with email confirmation and approval, the login and account pages, member emails,
-profile fields, a REST API and AI Assistant tools. They arrive with the next release. Payments come next. The
+profile fields, a REST API and AI Assistant tools. Phase 3 has started: plans can be sold by card (with
+renewals) or bank transfer. All of it arrives with the next release. The
 [roadmap](./roadmap.mdx) tracks each task against the code. The design comes from a study of the leading
 membership plugins and platforms, summarised under [Research](./research.md).
 :::
@@ -71,6 +72,39 @@ Open **Unyson+ → Membership** and it takes over the screen like an app of its 
   hears about sign-ups to approve, whether members may cancel, and the button classes Membership uses so its
   buttons match your Theme Settings button presets. Membership data is included in WordPress's personal-data
   export and erase tools.
+
+## Selling plans
+
+Switch on **Payments** in Membership → Modules, then open **Membership → Payments → Payment settings**.
+
+- **Two pages do the selling.** Put the **Pricing Plans** element on one page: it shows your plans as cards,
+  with a Monthly / Yearly switch when plans have both, a highlighted plan, and "Your plan" on the ones the
+  visitor already holds. Put the **Membership Checkout** element on another page and choose that page as the
+  **Checkout page** in the payment settings. Each plan's **Join** button goes to the checkout with that plan
+  and price.
+- **The checkout** shows the plan, its price, any free trial and setup fee, and asks a new buyer for their
+  name, email and a password, so the account is made in the same step. Someone whose email already has an
+  account is asked to log in first, never attached to that account. Add a **Terms page** in the settings and
+  buyers must tick that they accept it. A free plan skips payment altogether.
+- **Card payments (Stripe).** Paste your Stripe secret key and a webhook signing secret (the settings show the
+  address to give Stripe and the events to choose). The buyer pays on Stripe's own checkout page, so card
+  details never touch your site, and cards, Apple Pay and Google Pay all work there. Prices that repeat
+  become Stripe subscriptions: Stripe bills each renewal, and the membership follows. A paid renewal pushes
+  the end date out, a failed one makes the membership **Past due** while Stripe retries (access continues
+  for 3 days after the paid period), and a cancellation in Stripe ends it at the period end. Test mode
+  uses your test keys and no real money moves. Unyson+ takes no fee.
+- **Bank transfer or cash.** Write your payment instructions (use `{reference}` for the payment's reference).
+  The buyer sees them after checkout, the membership waits, and you start it with **Mark paid** on the
+  Payments screen. Bank transfer is offered for one-off prices only, since nothing renews by itself.
+- **Membership → Payments** lists every payment, renewal and refund with its status and reference, and
+  what was taken in the last 30 days. **Refund** refunds a card payment through Stripe; refunding a first
+  payment ends the membership.
+- **For members**, the account page lists their payments and has an **Update your payment method** button
+  that opens Stripe's billing page, where they can change their card or see their invoices. A receipt is
+  emailed after each payment, and a "payment failed" email when a renewal does not go through. Both are
+  editable under Emails.
+- **Developers** can add another payment method with the `unysonplus_membership_gateways` filter, and change
+  the Stripe checkout (for example to allow promotion codes) with `unysonplus_membership_stripe_session`.
 
 ## Profile fields, the API and AI
 

@@ -3,8 +3,8 @@
   "extension": "membership",
   "cloneDir": "UnysonPlus-Membership-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Membership-Extension",
-  "extensionVersion": "1.0.5",
-  "generatedAt": "2026-10-14T09:50:42.113Z",
+  "extensionVersion": "1.0.6",
+  "generatedAt": "2026-10-14T10:24:10.888Z",
   "detected": true,
   "milestones": [
     {
@@ -340,14 +340,14 @@
         {
           "id": "p3-gateways",
           "title": "Payment gateway layer",
-          "detail": "One gateway interface (charge, subscribe, change, pause, cancel, refund, webhook) so new gateways are add-ons, and every payment, refund and renewal lands in one payments table.",
+          "detail": "One gateway interface (start a payment, confirm the return, cancel, refund, billing portal, signed webhook) so new gateways are add-ons, and every payment, refund and renewal lands in one payments table.",
           "detect": {
             "files": [
               "modules/payments/class-fw-membership-gateways.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p3-stripe",
@@ -358,8 +358,8 @@
               "modules/payments/gateways/class-fw-membership-gateway-stripe.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p3-paypal",
@@ -371,21 +371,21 @@
               "modules/payments/gateways/class-fw-membership-gateway-offline.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "in-progress",
+          "progress": "1/2"
         },
         {
           "id": "p3-checkout",
           "title": "Checkout and pricing elements",
-          "detail": "A **Pricing plans** element (monthly / yearly toggle, highlighted plan) and a one-page **Checkout** element that creates the account and takes payment in one step, with captcha and an order summary.",
+          "detail": "A **Pricing plans** element (monthly / yearly toggle, highlighted plan) and a one-page **Checkout** element that creates the account and takes payment in one step, with an order summary and an optional terms checkbox.",
           "detect": {
             "files": [
               "shortcodes/pricing-plans/config.php",
               "shortcodes/membership-checkout/config.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p3-changes",
@@ -850,7 +850,7 @@
     {
       "id": "p11-courses",
       "title": "Phase 11 · Courses",
-      "goal": "A course module on the same access engine, so a course is just protected content with order and progress, not a second membership system.",
+      "goal": "A course module on the same access engine, so a course is just protected content with order and progress, not a second membership system. Built from scratch: it replaces the old Learning extension, which is no longer offered (its lessons had no progress tracking, enrolment or working access control).",
       "tasks": [
         {
           "id": "p11-courses",

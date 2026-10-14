@@ -3,8 +3,8 @@
   "extension": "membership",
   "cloneDir": "UnysonPlus-Membership-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Membership-Extension",
-  "extensionVersion": "1.0.4",
-  "generatedAt": "2026-10-14T09:36:36.544Z",
+  "extensionVersion": "1.0.5",
+  "generatedAt": "2026-10-14T09:50:42.113Z",
   "detected": true,
   "milestones": [
     {
@@ -278,8 +278,8 @@
               "includes/class-fw-membership-profile.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p2-emails",
@@ -327,8 +327,8 @@
               "includes/ai-abilities.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         }
       ]
     },

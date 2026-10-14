@@ -9,11 +9,11 @@ description: "The planned Unyson+ Membership extension: plans, one access engine
 # Membership
 
 :::info In progress
-Phase 1 and most of phase 2 are built: the Membership app, plans, members, access rules with the one
-access engine behind them, sign-up forms, email confirmation and approval, the login and account pages and
-member emails. They arrive with the next release. Profile fields and the REST API finish phase 2; payments
-come next. The [roadmap](./roadmap.mdx) tracks each task against the code. The design comes from a study of
-the leading membership plugins and platforms, summarised under [Research](./research.md).
+Phases 1 and 2 are built: the Membership app, plans, members, access rules with the one access engine
+behind them, sign-up forms with email confirmation and approval, the login and account pages, member emails,
+profile fields, a REST API and AI Assistant tools. They arrive with the next release. Payments come next. The
+[roadmap](./roadmap.mdx) tracks each task against the code. The design comes from a study of the leading
+membership plugins and platforms, summarised under [Research](./research.md).
 :::
 
 ## Finding your way around
@@ -71,6 +71,20 @@ Open **Unyson+ → Membership** and it takes over the screen like an app of its 
   hears about sign-ups to approve, whether members may cancel, and the button classes Membership uses so its
   buttons match your Theme Settings button presets. Membership data is included in WordPress's personal-data
   export and erase tools.
+
+## Profile fields, the API and AI
+
+- **Profile fields** (Membership → Profile fields): extra details to keep about members, such as a company,
+  a phone number or a birthday. Each is text, longer text, a choice, a tick box, a date, a number, a phone
+  number or a web address; it can be required, limited to some plans, and editable by members or only by you.
+  Members fill them in on their account page, a sign-up form fills one when it has a field with the same label,
+  and you see and edit them on the member's page. They are part of the personal-data export and erase.
+- **REST API** at `/wp-json/fw-membership/v1/`: the open plans with their prices (`/plans`), whether the current
+  visitor may see an item (`/access?post=ID`) and the member's own memberships (`/me`), all useful for pricing
+  tables and headless front ends; and, for membership managers, members, granting and changing memberships, and
+  the access rules. Every change goes through the same rules as the app, so the history and emails stay whole.
+- **AI Assistant**: a connected AI app can describe your membership set-up and create or change plans, access
+  rules and settings. It never reads a member's details.
 
 ## Protecting content
 

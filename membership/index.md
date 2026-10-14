@@ -9,10 +9,11 @@ description: "The planned Unyson+ Membership extension: plans, one access engine
 # Membership
 
 :::info In progress
-Phase 1 is built: the Membership app, plans, members, and access rules with the one access engine behind
-them, so holding a plan now opens content. It arrives with the next release. Accounts and registration come
-next, then payments. The [roadmap](./roadmap.mdx) tracks each task against the code. The design comes from a
-study of the leading membership plugins and platforms, summarised under [Research](./research.md).
+Phase 1 and most of phase 2 are built: the Membership app, plans, members, access rules with the one
+access engine behind them, sign-up forms, email confirmation and approval, the login and account pages and
+member emails. They arrive with the next release. Profile fields and the REST API finish phase 2; payments
+come next. The [roadmap](./roadmap.mdx) tracks each task against the code. The design comes from a study of
+the leading membership plugins and platforms, summarised under [Research](./research.md).
 :::
 
 ## Finding your way around
@@ -42,6 +43,34 @@ Open **Unyson+ → Membership** and it takes over the screen like an app of its 
   sees: a teaser and a prompt to log in or join, a trip to the login page, another page, or "page not found".
   Every rule that covers a page must be passed.
 - **Modules** lists every switchable module with the phase it arrives in.
+
+## Sign-ups, logins and the member area
+
+- **Sign-up forms are ordinary contact forms.** Switch on **Register a member** in the form's
+  Settings → Actions and choose the plan it gives (usually a free one). The form needs an Email field; add the
+  **Username** and **Password** fields from the form builder if people should choose them, otherwise the
+  username comes from the email and they get an email to set a password. The password is never stored with
+  the form entry, never in the notification email and never shown again.
+- **Email confirmation** (on by default) sends a link that works once and for a limited time; opening it shows
+  a button that confirms, so mail scanners that open every link cannot confirm for someone. Until then the
+  person cannot log in and the plan has not started.
+- **Approval**: a form can also make each sign-up wait for you. You get an email; approve them on their member
+  page, and they are emailed back.
+- **If something is wrong** (the email already has an account, the plan is full) the visitor sees the message
+  on the form and nothing is sent or stored.
+- **Member Login** element: a login form in your site's style, with "forgot your password" and a sign-up link.
+  Logging in goes through WordPress's own login, so the Security extension's login protection and two-factor
+  login always apply. Members land where their plan says, or on their account page, never in wp-admin.
+- **Member Account** element: the member's details (changing the email needs their password), their
+  memberships with their dates and **Cancel** (access continues to the end date; you can switch cancelling
+  off), changing the password, and signing out of other devices.
+- **Member emails** under Membership → Emails: confirm your email, welcome, waiting for approval, a sign-up to
+  approve (to you), approved, cancelled and ended. Each is editable with placeholders such as `{first_name}`
+  and `{plan}`, can be switched off, and can be sent to yourself as a test.
+- **Settings**: the account and login pages, where people land after confirming, how long links work, who
+  hears about sign-ups to approve, whether members may cancel, and the button classes Membership uses so its
+  buttons match your Theme Settings button presets. Membership data is included in WordPress's personal-data
+  export and erase tools.
 
 ## Protecting content
 

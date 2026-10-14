@@ -3,8 +3,8 @@
   "extension": "membership",
   "cloneDir": "UnysonPlus-Membership-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Membership-Extension",
-  "extensionVersion": "1.0.3",
-  "generatedAt": "2026-10-14T08:52:50.839Z",
+  "extensionVersion": "1.0.4",
+  "generatedAt": "2026-10-14T09:36:36.544Z",
   "detected": true,
   "milestones": [
     {
@@ -229,21 +229,21 @@
               "includes/forms/class-fw-membership-form-fields.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p2-auth",
           "title": "Login, logout and password reset",
-          "detail": "Login, lost-password and reset elements styled by the theme, redirects after login and logout per plan, and the WordPress login page optionally replaced. Works with the Security extension's throttling and two-factor login.",
+          "detail": "A **Member Login** element styled by the theme (with \"forgot your password\" and a sign-up link) that logs in through WordPress's own login, so the Security extension's throttling and two-factor login always apply, and per-plan pages after login and logout (members never land in wp-admin). Password reset uses WordPress's own screen.",
           "detect": {
             "files": [
               "includes/class-fw-membership-accounts.php",
               "shortcodes/member-login/config.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p2-verify",
@@ -254,8 +254,8 @@
               "includes/class-fw-membership-verification.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p2-account",
@@ -266,8 +266,8 @@
               "shortcodes/member-account/config.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p2-profile",
@@ -290,8 +290,8 @@
               "includes/class-fw-membership-emails.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p2-blocks",
@@ -314,8 +314,8 @@
               "includes/class-fw-membership-privacy.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p2-api",

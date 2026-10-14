@@ -14,7 +14,7 @@ behind them, sign-up forms with email confirmation and approval, the login and a
 profile fields, a REST API and AI Assistant tools. Phase 3 is built too: plans are sold by card, PayPal or
 bank transfer, with coupons, tax, invoices, and upgrades and downgrades members make themselves. Phase 4 connects Membership to the [CRM](./crm.md): members are contacts, plans are tags, and
 access rules can use CRM tags, lists and segments. Phase 5 adds drip content, a metered paywall, protected downloads and
-selling single items. All of it arrives with the next release. The
+selling single items. Phase 6 adds everything for keeping members, and gift memberships. All of it arrives with the next release. The
 [roadmap](./roadmap.mdx) tracks each task against the code. The design comes from a study of the leading
 membership plugins and platforms, summarised under [Research](./research.md).
 :::
@@ -159,6 +159,32 @@ Each of these is a module you switch on under **Membership → Modules**.
   file) sells that one item through the same checkout, for ever or for a number of days. People who are not
   allowed to see it get a **Buy this for $5** button on the prompt, and buyers can open it even when it is also
   part of a plan they do not hold. Coupons, tax, invoices and every payment method work as for plans.
+
+## Keeping members
+
+Switch on **Retention** under Membership → Modules; its options are under **Membership → Settings → Keeping
+members**, and **Membership → Retention** shows why people leave and what kept them.
+
+- **When a renewal payment fails**, the member keeps access for a few days while the payment service tries
+  again, gets emails on the days you choose, and every email has a one-click link to update the card (it does
+  not log anyone in by itself: whoever opens it logs in as themselves first). Members whose card expires before
+  their next renewal get a warning (card payments).
+- **Pause instead of cancel.** Members can pause for one to three months (or up to your limit). Nothing is
+  charged and there is no access meanwhile; it starts again by itself on the day, or earlier with **Resume
+  now**. A membership without a subscription gets the paused time added to its end date.
+- **Before someone cancels**, they are asked why (your list of reasons) and offered one thing: a discount for
+  the next few months (card payments), a pause, or a cheaper plan. **Cancel anyway** is always one click away.
+- **Reminders** go out a few days before a renewal, before a free trial ends, and before a membership that will
+  not renew ends (with a link to renew). A while after a membership ends, a **win-back** email can offer a
+  one-time discount code for their old plan (with the Coupons module).
+
+## Gift memberships
+
+Switch on **Gift memberships** (with Payments). The Pricing Plans element then shows **Give as a gift** under
+each plan. The buyer gives the recipient's name and email and a message, and pays once: a monthly plan is given
+as one month, and nothing renews. When the payment arrives, the recipient gets an email with a link to start
+their membership, into a new account or the one they have (if they already hold that plan, it is extended).
+**Membership → Gifts** lists every gift, with **Send again** and **Cancel**.
 
 ## Profile fields, the API and AI
 

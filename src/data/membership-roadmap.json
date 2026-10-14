@@ -3,8 +3,8 @@
   "extension": "membership",
   "cloneDir": "UnysonPlus-Membership-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Membership-Extension",
-  "extensionVersion": "1.0.10",
-  "generatedAt": "2026-10-14T11:21:50.177Z",
+  "extensionVersion": "1.0.11",
+  "generatedAt": "2026-10-14T11:36:20.998Z",
   "detected": true,
   "milestones": [
     {
@@ -597,8 +597,8 @@
               "modules/retention/class-fw-membership-dunning.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p6-pause",
@@ -609,8 +609,8 @@
               "modules/retention/class-fw-membership-pause.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p6-cancel",
@@ -621,8 +621,8 @@
               "modules/retention/class-fw-membership-cancel-flow.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p6-winback",
@@ -633,8 +633,8 @@
               "modules/retention/class-fw-membership-reminders.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p6-gifts",
@@ -645,8 +645,8 @@
               "modules/gifts/class-fw-membership-gifts.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },

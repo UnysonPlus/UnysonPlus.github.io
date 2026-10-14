@@ -14,7 +14,7 @@ behind them, sign-up forms with email confirmation and approval, the login and a
 profile fields, a REST API and AI Assistant tools. Phase 3 is built too: plans are sold by card, PayPal or
 bank transfer, with coupons, tax, invoices, and upgrades and downgrades members make themselves. Phase 4 connects Membership to the [CRM](./crm.md): members are contacts, plans are tags, and
 access rules can use CRM tags, lists and segments. Phase 5 adds drip content, a metered paywall, protected downloads and
-selling single items. Phase 6 adds everything for keeping members, and gift memberships. Phase 7 adds team memberships, a member directory and membership cards. Phase 8 connects Membership to WooCommerce. Phase 9 adds reports. All of it arrives with the next release. The
+selling single items. Phase 6 adds everything for keeping members, and gift memberships. Phase 7 adds team memberships, a member directory and membership cards. Phase 8 connects Membership to WooCommerce. Phase 9 adds reports. Phase 10 adds account security, importers, a scheduler check and command-line tools. All of it arrives with the next release. The
 [roadmap](./roadmap.mdx) tracks each task against the code. The design comes from a study of the leading
 membership plugins and platforms, summarised under [Research](./research.md).
 :::
@@ -237,6 +237,29 @@ history and the payments, so the past months are filled in straight away:
   month, with no record of who.
 
 **Download as CSV** exports two years month by month. Amounts stay in their own currency.
+
+## Account security and running the site
+
+- **Devices at once** (Account security module). A plan can allow, say, two devices signed in at a time; logging
+  in on a third signs out the one used least recently. It discourages sharing an account without getting in
+  anyone's way, and members see where they are signed in on their account page.
+- **Login links.** Under every Membership login form, **Email me a login link instead** sends a link that works
+  once, for 15 minutes. Opening it shows a **Log me in** button, so email scanners that open every link cannot
+  use it up, and asking for one never reveals whether an address has an account.
+- **Passkeys.** Members add a passkey (their fingerprint, face or device PIN) on their account page, then use
+  **Log in with a passkey** on any login form, including the WordPress one. A passkey is already two factors in
+  one, so it is not asked for a second step.
+- **The log.** Each member's page shows their logins (and how), wrong passwords, pages they were turned away from
+  and plan changes, and how many places the account was used from in the last 30 days, a hint that an account is
+  being shared. Addresses are only kept as a scrambled fingerprint, and entries go after 90 days.
+- **Importers.** **Membership → Import** reads a CSV file (any columns: you match them, with a dry run first).
+  Include each member's payment-service subscription ID and their renewals keep arriving as before. It can also
+  give a plan to everyone with a WordPress role, or with a value in a user field, for sites where members used to
+  be stored that way. Running the same import again changes nothing.
+- **Scheduled jobs.** Membership → Home shows whether the jobs that end memberships, send drip emails and
+  reminders run on time, and if not, the line to add to your server's scheduler. Site Health checks it too.
+- **Command line.** With WP-CLI: `wp membership list`, `plans`, `grant`, `extend`, `expire`, and `reconcile`,
+  which checks every subscription with its payment service and fixes any that drifted.
 
 ## Profile fields, the API and AI
 

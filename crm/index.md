@@ -9,9 +9,11 @@ description: "The Unyson+ CRM: contacts and companies, a sales pipeline, email m
 # CRM
 
 :::info In progress
-The first part of the CRM is built: the CRM app itself, contacts, companies, the activity timeline, the
-consent log and custom fields. It arrives with the next release. The [roadmap](./roadmap.mdx) shows the
-phases and tracks each one against the code as it lands.
+Phase 1, contacts and companies, is built: the CRM app, contacts and companies with custom fields, the
+timeline and consent log, rule-based segments, tags and lists with per-list subscription status,
+duplicate merging, the bin, team roles, an audit log, module switches and undoable CSV imports. It
+arrives with the next release. The [roadmap](./roadmap.mdx) shows the next phases and tracks each one
+against the code as it lands.
 :::
 
 The CRM is a complete customer system inside your WordPress site: the people and companies you work

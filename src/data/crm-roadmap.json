@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.56",
-  "generatedAt": "2026-10-14T10:37:39.039Z",
+  "extensionVersion": "1.0.57",
+  "generatedAt": "2026-10-14T10:47:10.153Z",
   "detected": true,
   "milestones": [
     {
@@ -458,8 +458,8 @@
               "includes/class-fw-crm-direct-email.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p2-inbound",

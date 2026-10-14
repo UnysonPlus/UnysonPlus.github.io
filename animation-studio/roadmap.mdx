@@ -1,0 +1,36 @@
+---
+sidebar_position: 2
+title: Roadmap
+description: The Animation Studio's phases, from the scene file, player and responsive stage through the editor, export, Unyson+ integration, AI, 3D and video export.
+---
+
+import Roadmap, {RoadmapSummary} from '@site/src/components/Roadmap';
+import data from '@site/src/data/animation-studio-roadmap.json';
+
+# Roadmap
+
+Seven phases, built in order. Phases 1 to 3 make a complete hand-built studio: design a hero animation on
+the timeline and export it as HTML. Phase 4 puts scenes into Unyson+ pages, phase 5 adds the AI, and the
+later phases add 3D, finer control and video export. Every phase builds on the same scene file, so nothing
+made early has to be redone later.
+
+<RoadmapSummary data={data} />
+
+<Roadmap data={data} />
+
+## Order of work
+
+1. **Foundations.** The scene file, the player and the responsive stage come first, because everything
+   else reads or writes them. A hand-written scene playing on the live subdomain is the first milestone.
+2. **Editor.** The canvas, the timeline, the inspector and about twenty presets: enough to build a real
+   hero by hand.
+3. **Export.** Standalone HTML and an embed snippet, each recording the player version it was made with.
+4. **Unyson+ integration.** A page-builder element with an **Open in Studio** round trip, and one preset
+   library shared with the [Animation Engine](/animation-engine).
+5. **AI.** Prompts produce scene files through the [AI Dev Kit](/ai-dev-kit), so every result can be edited
+   on the timeline.
+6. **3D and finer control.** three.js clips, a keyframe and curve editor, and scroll-linked playback.
+7. **Later.** Video export, accounts with cloud saving, and click-to-advance presentations.
+
+The plan and the reasons behind it are on the [overview](./index.md); what already exists elsewhere is on the
+[research](./research.md) page.

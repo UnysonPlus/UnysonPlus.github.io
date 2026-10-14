@@ -1,0 +1,243 @@
+{
+  "_comment": "SOURCE OF TRUTH for the Animation Studio roadmap rendered at /animation-studio/roadmap. Hand-maintained while the Studio is in planning: there is no source tree to scan yet, so every task is `planned`. When the Studio repo exists, give tasks `detect` blocks and a generator script like the other roadmaps.",
+  "extension": "animation-studio",
+  "repo": "https://github.com/UnysonPlus",
+  "detected": false,
+  "milestones": [
+    {
+      "id": "p1-foundations",
+      "title": "Phase 1 · Foundations",
+      "goal": "The parts everything else stands on: the project, the scene file, the player that plays it, the responsive stage and the route to the live site. At the end of this phase a hand-written scene file plays correctly on the subdomain.",
+      "tasks": [
+        {
+          "id": "p1-scaffold",
+          "title": "Project scaffold",
+          "detail": "A GitHub repository with a React + TypeScript editor built by Vite, and a separate plain-JavaScript player package. Both build to static files.",
+          "status": "planned"
+        },
+        {
+          "id": "p1-scene-format",
+          "title": "Scene file, version 1",
+          "detail": "The JSON format with tracks, clips, preset settings, keyframes, assets and breakpoints, plus a schema that validates it and a version number so later formats can upgrade older files.",
+          "status": "planned"
+        },
+        {
+          "id": "p1-player",
+          "title": "Player runtime",
+          "detail": "Reads a scene file and builds one GSAP timeline. Seekable and repeatable: no unseeded randomness and no real-time physics, so any frame can be shown exactly.",
+          "status": "planned"
+        },
+        {
+          "id": "p1-stage",
+          "title": "Responsive stage",
+          "detail": "An aspect ratio per breakpoint, the three height modes (**ratio**, **ratio capped to the window**, **fill the window**), sizes in CSS container units, and a safe-area guide.",
+          "status": "planned"
+        },
+        {
+          "id": "p1-deploy",
+          "title": "Deploy to the subdomain",
+          "detail": "A GitHub Action builds the editor and uploads it to `animation-studio.unysonplus.com` on cPanel on each release.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "p2-editor",
+      "title": "Phase 2 · Editor",
+      "goal": "The working studio: a canvas, a timeline and a first preset library, enough to build a hero animation by hand from start to finish.",
+      "tasks": [
+        {
+          "id": "p2-canvas",
+          "title": "Canvas and layers",
+          "detail": "Text, image and shape layers placed on the stage; select, move and resize them; edit text in place.",
+          "status": "planned"
+        },
+        {
+          "id": "p2-timeline",
+          "title": "Timeline",
+          "detail": "Tracks and clips; drag, trim and move clips; a playhead with frame-accurate scrubbing; zoom; play, pause and loop.",
+          "status": "planned"
+        },
+        {
+          "id": "p2-inspector",
+          "title": "Inspector",
+          "detail": "Edit the selected clip's settings (text, image, colours, duration, easing), with per-breakpoint overrides for position, size and type size.",
+          "status": "planned"
+        },
+        {
+          "id": "p2-presets",
+          "title": "Preset library, first set",
+          "detail": "About twenty presets in a drag-and-drop panel: text entrances (split, slam, scramble, stretch, glitch), shape and line reveals, image wipes and counters.",
+          "status": "planned"
+        },
+        {
+          "id": "p2-save",
+          "title": "Undo, redo and saving",
+          "detail": "Full undo and redo; projects saved in the browser automatically; download and reopen a project file.",
+          "status": "planned"
+        },
+        {
+          "id": "p2-playback",
+          "title": "Playback modes",
+          "detail": "Play on load, play when scrolled into view, and loop or play once.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "p3-export",
+      "title": "Phase 3 · Export",
+      "goal": "Get a finished scene out of the Studio and onto a website.",
+      "tasks": [
+        {
+          "id": "p3-html",
+          "title": "Standalone HTML export",
+          "detail": "One HTML file that contains the scene and the player and runs anywhere.",
+          "status": "planned"
+        },
+        {
+          "id": "p3-embed",
+          "title": "Embed snippet",
+          "detail": "A short snippet that places the scene on any website.",
+          "status": "planned"
+        },
+        {
+          "id": "p3-assets",
+          "title": "Images and fonts in exports",
+          "detail": "Choose between embedding assets in the file and linking to them; handle web-font loading so text never flashes in the wrong font.",
+          "status": "planned"
+        },
+        {
+          "id": "p3-versioning",
+          "title": "Player versioning",
+          "detail": "Every export records the player version it was made with, so a later change to a preset never alters a scene that is already published.",
+          "status": "planned"
+        },
+        {
+          "id": "p3-a11y",
+          "title": "Accessibility",
+          "detail": "Respect reduced-motion settings, keep text as real text, and give decorative layers the right hidden roles.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "p4-unysonplus",
+      "title": "Phase 4 · Unyson+ integration",
+      "goal": "Put Studio scenes into Unyson+ pages and share one preset library with the Animation Engine.",
+      "tasks": [
+        {
+          "id": "p4-element",
+          "title": "Page-builder element",
+          "detail": "An element that plays a scene inside a Unyson+ page, using the stage's height modes.",
+          "status": "planned"
+        },
+        {
+          "id": "p4-roundtrip",
+          "title": "Open in Studio",
+          "detail": "From the element, open its scene in the Studio, edit it and bring the result back.",
+          "status": "planned"
+        },
+        {
+          "id": "p4-shared-presets",
+          "title": "Shared preset library",
+          "detail": "Presets usable both in the Studio and in the [Animation Engine](/animation-engine), so an effect is built once.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "p5-ai",
+      "title": "Phase 5 · AI",
+      "goal": "Describe an animation in words and get an editable scene, using the AI Dev Kit on the user's own computer.",
+      "tasks": [
+        {
+          "id": "p5-bridge",
+          "title": "Studio-to-kit connection",
+          "detail": "The Studio talks to the AI Dev Kit on `localhost`. The kit accepts only the Studio's own address. Browser permission prompts are handled, and Safari is tested early.",
+          "status": "planned"
+        },
+        {
+          "id": "p5-generate",
+          "title": "Prompt to scene",
+          "detail": "The AI writes a scene file using only presets from the catalogue, so the result lands on the timeline as ordinary, editable clips.",
+          "status": "planned"
+        },
+        {
+          "id": "p5-edit",
+          "title": "Edit by prompt",
+          "detail": "Select a clip or a stretch of the timeline and describe the change (\"make this punchier\", \"slow the ending\").",
+          "status": "planned"
+        },
+        {
+          "id": "p5-code-clip",
+          "title": "Custom code clip",
+          "detail": "An escape hatch for effects no preset covers: a clip that runs its own GSAP code, with clear limits on what it can reach.",
+          "status": "planned"
+        },
+        {
+          "id": "p5-kit-hub",
+          "title": "AI Dev Kit hub",
+          "detail": "The kit's local dashboard becomes a home for all its jobs (Site Converter, AI Assistant connection, Animation Studio), each showing whether it is connected.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "p6-3d",
+      "title": "Phase 6 · 3D and finer control",
+      "goal": "3D objects on the timeline, and hand-keyframed motion for anything the presets don't cover.",
+      "tasks": [
+        {
+          "id": "p6-three",
+          "title": "3D clips",
+          "detail": "A three.js layer driven by the timeline: models, extruded text and logos, and camera moves. Loaded only by scenes that use it.",
+          "status": "planned"
+        },
+        {
+          "id": "p6-keyframes",
+          "title": "Keyframe and curve editor",
+          "detail": "Keyframe any property by hand and shape its easing on a curve.",
+          "status": "planned"
+        },
+        {
+          "id": "p6-scroll",
+          "title": "Scroll-linked playback",
+          "detail": "Tie the timeline to the page scroll, so a section plays forward and back as the visitor scrolls.",
+          "status": "planned"
+        },
+        {
+          "id": "p6-more-presets",
+          "title": "More presets",
+          "detail": "Backgrounds, particles, masks, transitions between scenes, and 3D entrances.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "p7-later",
+      "title": "Phase 7 · Later",
+      "goal": "Useful additions once the core works, none of which change the scene file.",
+      "tasks": [
+        {
+          "id": "p7-video",
+          "title": "Video export",
+          "detail": "Render a scene to MP4 or WebM through the AI Dev Kit, frame by frame in a headless browser. Possible because every timeline is seekable.",
+          "status": "planned"
+        },
+        {
+          "id": "p7-accounts",
+          "title": "Accounts and cloud saving",
+          "detail": "Sign in, save projects online and share a link to a scene, using PHP and MySQL on the existing hosting.",
+          "status": "planned"
+        },
+        {
+          "id": "p7-slides",
+          "title": "Click-to-advance presentations",
+          "detail": "Markers on the timeline that pause playback until a click, for slide-style presentations.",
+          "status": "planned"
+        }
+      ]
+    }
+  ]
+}

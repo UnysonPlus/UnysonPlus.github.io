@@ -29,6 +29,7 @@ function sitemapDataPlugin() {
   const DOCS_LABELS = {
     default: 'Manual',
     animationEngine: 'Animation Engine',
+    animationStudio: 'Animation Studio',
     theme: 'The Theme',
     guides: 'Guides',
     aiDevKit: 'AI Dev Kit',
@@ -40,6 +41,7 @@ function sitemapDataPlugin() {
     'Main',
     'Manual',
     'Animation Engine',
+    'Animation Studio',
     'CRM',
     'Membership',
     'The Theme',
@@ -141,7 +143,7 @@ const config = {
         hashed: true,
         indexDocs: true,
         indexBlog: true,
-        docsRouteBasePath: ['/', '/animation-engine', '/theme', '/guides', '/ai-dev-kit', '/blocks', '/crm', '/membership'],
+        docsRouteBasePath: ['/', '/animation-engine', '/animation-studio', '/theme', '/guides', '/ai-dev-kit', '/blocks', '/crm', '/membership'],
         // Index BOTH blog instances: the News blog (/blog) and the Design Decisions blog
         // (/decisions). Without this the plugin only indexes the default /blog, so decisions
         // posts never show up in search.
@@ -284,7 +286,7 @@ const config = {
             return name ? ['/extensions/gutenberg/' + name] : undefined;
           }
           const OTHER = [
-            '/animation-engine', '/theme', '/guides', '/ai-dev-kit',
+            '/animation-engine', '/animation-studio', '/theme', '/guides', '/ai-dev-kit',
             '/reference', '/decisions', '/blog', '/blocks', '/crm', '/membership',
           ];
           if (existingPath === '/' || existingPath === '/sitemap' || existingPath === '/markdown-page') {
@@ -304,6 +306,16 @@ const config = {
         path: 'animation-engine',
         routeBasePath: 'animation-engine',
         sidebarPath: './sidebarsAnimationEngine.js',
+        editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'animationStudio',
+        path: 'animation-studio',
+        routeBasePath: 'animation-studio',
+        sidebarPath: './sidebarsAnimationStudio.js',
         editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
       },
     ],
@@ -515,6 +527,7 @@ const config = {
               {label: 'Demos', href: 'https://demos.unysonplus.com/'},
               {label: 'API Reference', to: '/reference/'},
               {label: 'Design Decisions', to: '/decisions'},
+              {label: 'Animation Studio', to: '/animation-studio/'},
             ],
           },
           {

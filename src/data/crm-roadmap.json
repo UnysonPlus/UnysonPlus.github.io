@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.47",
-  "generatedAt": "2026-10-14T08:05:09.129Z",
+  "extensionVersion": "1.0.48",
+  "generatedAt": "2026-10-14T08:11:02.773Z",
   "detected": true,
   "milestones": [
     {
@@ -77,8 +77,8 @@
               "includes/class-fw-crm-modules.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-contacts",
@@ -544,10 +544,20 @@
           "detect": {
             "files": [
               "modules/email/class-fw-crm-sender.php"
+            ],
+            "symbols": [
+              {
+                "file": "modules/email/class-fw-crm-sender.php",
+                "pattern": "host_presets"
+              },
+              {
+                "file": "modules/email/class-fw-crm-sender.php",
+                "pattern": "purge_bodies"
+              }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "in-progress",
+          "progress": "1/3"
         },
         {
           "id": "p3-providers",
@@ -594,8 +604,8 @@
               "modules/email/class-fw-crm-campaigns.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p3-subscriptions",

@@ -9,15 +9,47 @@ description: "The Unyson+ Membership extension: plans, one access engine for eve
 # Membership
 
 :::info Built, arriving with the next release
-Phases 1 and 2 are built: the Membership app, plans, members, access rules with the one access engine
-behind them, sign-up forms with email confirmation and approval, the login and account pages, member emails,
-profile fields, a REST API and AI Assistant tools. Phase 3 is built too: plans are sold by card, PayPal or
-bank transfer, with coupons, tax, invoices, and upgrades and downgrades members make themselves. Phase 4 connects Membership to the [CRM](./crm.md): members are contacts, plans are tags, and
-access rules can use CRM tags, lists and segments. Phase 5 adds drip content, a metered paywall, protected downloads and
-selling single items. Phase 6 adds everything for keeping members, and gift memberships. Phase 7 adds team memberships, a member directory and membership cards. Phase 8 connects Membership to WooCommerce. Phase 9 adds reports. Phase 10 adds account security, importers, a scheduler check and command-line tools. Phase 11 adds courses with progress, quizzes and certificates. Every phase on the roadmap is built, and all of it arrives with the next release. The
-[roadmap](./roadmap.mdx) tracks each task against the code. The design comes from a study of the leading
-membership plugins and platforms, summarised under [Research](./research.md).
+Everything on this page is built and arrives with the next release: the Membership app, plans, members,
+access rules with the one access engine behind them, sign-up forms with email confirmation and approval, the
+login and account pages, member emails, profile fields, a REST API and AI Assistant tools; selling plans by
+card, PayPal or bank transfer, with coupons, tax, invoices, gifts and upgrades and downgrades members make
+themselves; the connection to the [CRM](./crm.md), where members are contacts, plans are tags and access rules
+can use CRM tags, lists and segments; drip content, a metered paywall, protected downloads and selling single
+items; everything for keeping members; team memberships, a member directory and membership cards; the
+WooCommerce connection; reports; account security, importers, a scheduler check and command-line tools; and
+courses with progress, quizzes and certificates. The [roadmap](./roadmap.mdx) tracks each task against the
+code. The design comes from a study of the leading membership plugins and platforms, summarised under
+[Research](./research.md).
 :::
+
+## Start here
+
+New to Membership? The beginner guide walks you through every screen, step by step:
+
+- **[Getting started](./getting-started.md)**: set up a working members site in about half an hour.
+- **[Plans, members and access](/membership/plans-members-access)**: [the Home screen](./basics/home-dashboard.md),
+  [plans](./basics/plans.md), [members](./basics/members.md) and [access rules](./basics/access-rules.md).
+- **[Sign-up, login and the member area](/membership/member-area)**: [sign-up forms](./member-area/signup-forms.md),
+  [login and the account page](./member-area/login-and-account.md), [profile fields](./member-area/profile-fields.md),
+  [emails](./member-area/emails.md) and [settings](./member-area/settings.md).
+- **[Selling plans](/membership/selling)**: [payments](./selling/payments.md),
+  [the pricing table and checkout](./selling/pricing-and-checkout.md), [coupons](./selling/coupons.md),
+  [tax](./selling/tax.md), [gift memberships](./selling/gifts.md) and [pay-per-item](./selling/pay-per-item.md).
+- **[Content tools](/membership/content-tools)**: [drip content](./content/drip-content.md),
+  [the metered paywall](./content/metered-paywall.md), [protected downloads](./content/downloads.md) and
+  [courses](./content/courses.md).
+- **[Teams, directory and cards](/membership/community)**: [groups and teams](./community/groups-and-teams.md),
+  [the member directory](./community/member-directory.md) and [membership cards](./community/membership-cards.md).
+- **[Reports and keeping members](/membership/insights)**: [reports](./insights/reports.md) and
+  [retention](./insights/retention.md).
+- **[Running your site](/membership/running-your-site)**: [modules](./running-your-site/modules.md),
+  [WooCommerce](./running-your-site/woocommerce.md), [the CRM connection](./running-your-site/crm-connection.md),
+  [account security](./running-your-site/account-security.md),
+  [import and export](./running-your-site/import-and-export.md),
+  [scheduled jobs and WP-CLI](./running-your-site/scheduled-jobs-and-cli.md) and
+  [privacy and data](./running-your-site/privacy-and-data.md).
+
+The rest of this page is a quick overview of everything Membership does.
 
 ## Finding your way around
 
@@ -25,8 +57,9 @@ Open **Unyson+ → Membership** and it takes over the screen like an app of its 
 [CRM](/crm) does:
 
 - **The Membership sidebar** lists every area: Home, Members, Plans and Access rules; Payments and Coupons;
-  Reports; Emails, Modules and Settings. Areas still being built are marked **Soon**, and their page says
-  what they will do.
+  Reports; Emails, Modules and Settings. **Payments**, **Coupons** and **Reports** carry an **Off** badge
+  while their module is switched off, and their page says what they do, with an **Open Modules** button; the
+  other modules add their own items when you switch them on.
 - **The WordPress menu folds to its icons** while you are in Membership. **Hide the WordPress menu** at the
   bottom of the sidebar removes it altogether (your choice is remembered), and **Back to WordPress** takes
   you to the dashboard. With the CRM on, **Open the CRM** is there too.
@@ -43,9 +76,10 @@ Open **Unyson+ → Membership** and it takes over the screen like an app of its 
 - **Access rules** each say what is protected (the entire site, all items of a type, a single page or post,
   the pages under a page, a category or tag, a post type archive, or addresses such as `/members/*`, with
   "Except" lines for exceptions), who may see it (plans, roles, or anyone logged in) and what everyone else
-  sees: a teaser and a prompt to log in or join, a trip to the login page, another page, or "page not found".
+  sees: a teaser and a prompt to log in or join (its **Join** button goes to the **Join page** set in
+  Settings), a trip to the login page, another page, or "page not found".
   Every rule that covers a page must be passed.
-- **Modules** lists every switchable module with the phase it arrives in.
+- **Modules** lists every switchable module with a switch for each.
 
 ## Sign-ups, logins and the member area
 
@@ -70,7 +104,7 @@ Open **Unyson+ → Membership** and it takes over the screen like an app of its 
 - **Member emails** under Membership → Emails: confirm your email, welcome, waiting for approval, a sign-up to
   approve (to you), approved, cancelled and ended. Each is editable with placeholders such as `{first_name}`
   and `{plan}`, can be switched off, and can be sent to yourself as a test.
-- **Settings**: the account and login pages, where people land after confirming, how long links work, who
+- **Settings**: the account, login and join pages, where people land after confirming, how long links work, who
   hears about sign-ups to approve, whether members may cancel, and the button classes Membership uses so its
   buttons match your Theme Settings button presets. Membership data is included in WordPress's personal-data
   export and erase tools.
@@ -127,8 +161,9 @@ Switch on **Payments** in Membership → Modules, then open **Membership → Pay
   one is paid. On the Pricing Plans element those plans say **Change plan** rather than selling a second
   membership.
 - **Membership → Payments** lists every payment, renewal and refund with its status and reference, and
-  what was taken in the last 30 days. **Refund** refunds a card payment through Stripe; refunding a first
-  payment ends the membership.
+  what was taken in the last 30 days. **Refund** refunds a card or PayPal payment through the payment service,
+  and **Mark refunded** records a bank transfer you have paid back yourself; refunding a first payment ends
+  the membership.
 - **For members**, the account page lists their payments and has an **Update your payment method** button
   that opens Stripe's billing page, where they can change their card or see their invoices. A receipt is
   emailed after each payment, and a "payment failed" email when a renewal does not go through. Both are
@@ -180,8 +215,8 @@ members**, and **Membership → Retention** shows why people leave and what kept
 
 ## Gift memberships
 
-Switch on **Gift memberships** (with Payments). The Pricing Plans element then shows **Give as a gift** under
-each plan. The buyer gives the recipient's name and email and a message, and pays once: a monthly plan is given
+Switch on **Gift memberships** (with Payments). The Pricing Plans element then shows **Give as a gift** (its **Gift link text**) under
+each paid plan. A gift code typed into the checkout's **Have a code?** box opens that gift. The buyer gives the recipient's name and email and a message, and pays once: a monthly plan is given
 as one month, and nothing renews. When the payment arrives, the recipient gets an email with a link to start
 their membership, into a new account or the one they have (if they already hold that plan, it is extended).
 **Membership → Gifts** lists every gift, with **Send again** and **Cancel**.

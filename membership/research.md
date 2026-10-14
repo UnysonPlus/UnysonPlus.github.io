@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 12
 title: Research
 description: What the leading WordPress membership plugins and hosted membership platforms do, where they fall short, and what that means for the Unyson+ Membership extension.
 ---

@@ -1,0 +1,10 @@
+{
+  "label": "Selling plans",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "slug": "/selling",
+    "title": "Selling plans",
+    "description": "Sell memberships from WordPress with your own Stripe, PayPal or bank account: payments and payment settings, the pricing table and checkout, coupons, tax and EU VAT, gift memberships and selling single items without a plan."
+  }
+}

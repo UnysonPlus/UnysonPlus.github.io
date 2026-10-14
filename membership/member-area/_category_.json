@@ -1,0 +1,10 @@
+{
+  "label": "Sign-up, login and the member area",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "slug": "/member-area",
+    "title": "Sign-up, login and the member area",
+    "description": "Let people join your WordPress membership site with Unyson+: sign-up forms with email confirmation and approval, a login page and a member account page in your own design, profile fields, member emails and the site-wide Membership settings."
+  }
+}

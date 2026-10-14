@@ -1,0 +1,10 @@
+{
+  "label": "Plans, members and access",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "slug": "/plans-members-access",
+    "title": "Plans, members and access",
+    "description": "The core of the Unyson+ Membership extension for WordPress: the Home screen, creating plans with prices and lengths, managing members and their memberships, and protecting content with access rules."
+  }
+}

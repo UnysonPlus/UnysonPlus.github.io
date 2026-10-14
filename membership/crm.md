@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 10
 title: Membership and the CRM
 description: How the Unyson+ Membership extension connects to the Unyson+ CRM — one person, one contact; plans mirrored to tags; CRM conditions in access rules; membership events on the timeline and in automations — and what each extension needs from the other.
 ---
@@ -9,7 +9,8 @@ description: How the Unyson+ Membership extension connects to the Unyson+ CRM �
 :::tip Built
 The connection described here is built (Membership 1.0.9): it switches itself on while the CRM is active, with
 its options under **Membership → Settings → CRM connection**, including a button that brings every existing
-member into the CRM at once.
+member into the CRM at once. For a step-by-step guide to setting it up and every option, see
+[The CRM connection](./running-your-site/crm-connection.md).
 :::
 
 

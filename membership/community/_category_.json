@@ -1,0 +1,10 @@
+{
+  "label": "Teams, directory and cards",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "slug": "/community",
+    "title": "Teams, directory and cards",
+    "description": "Build a community around your WordPress membership with Unyson+: team plans with seats and invitations, a searchable member directory with per-field privacy, and membership cards with a QR code for check-in."
+  }
+}

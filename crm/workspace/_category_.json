@@ -1,0 +1,10 @@
+{
+  "label": "Workspace and team",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "slug": "/workspace",
+    "title": "Workspace and team",
+    "description": "The Unyson+ CRM Home dashboard, team roles for managers and sales reps, the bin and audit log, and settings and modules."
+  }
+}

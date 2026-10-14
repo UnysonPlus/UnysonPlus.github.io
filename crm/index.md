@@ -3,18 +3,15 @@ sidebar_position: 1
 slug: /
 title: "CRM — a self-hosted CRM for WordPress"
 sidebar_label: "CRM"
-description: "The Unyson+ CRM: contacts and companies, a sales pipeline, email marketing, automations and lead scoring, all inside your own WordPress site, built to run on ordinary hosting and open to other extensions through a public API."
+keywords: [wordpress crm, self-hosted crm, crm plugin for wordpress, free wordpress crm, sales pipeline wordpress, contact management wordpress, small business crm, gdpr crm, crm with email marketing]
+description: "A self-hosted CRM for WordPress: contacts, companies, a sales pipeline, tasks, email and reports in your own database, with no per-contact fees."
 ---
 
 # CRM
 
-:::info In progress
-Phase 1, contacts and companies, is built: the CRM app, contacts and companies with custom fields, the
-timeline and consent log, rule-based segments, tags and lists with per-list subscription status,
-duplicate merging, the bin, team roles, an audit log, module switches and undoable CSV imports.
-Phase 2 is well under way: sales pipelines with a drag-and-drop deals board, deal pages, tasks with
-reminders, calls and meetings with outcomes and attendees, a calendar, sales reports, files on records, one-to-one email, editable notes, the pipeline and task
-cards on Home, and the REST API for all of it are built. Both arrive with the next release. The [roadmap](./roadmap.mdx) shows the next phases and tracks each one
+:::info Phases 1 and 2 are built
+Contacts and companies (Phase 1) and the sales pipeline (Phase 2) are complete and arrive with the next
+release. Email marketing, automations and scoring follow; the [roadmap](./roadmap.mdx) tracks each phase
 against the code as it lands.
 :::
 
@@ -24,20 +21,48 @@ Your data stays in your own database, with no per-contact fees and no outside se
 
 It grows out of the **Newsletter / Subscriber CRM** extension, which is renamed to **CRM** and reorganized: its email builder, campaigns, sending queue, lists, tags, segments, double opt-in and form integration carry over, and the newsletter subscriber grows into a full contact.
 
+## In this manual
+
+**Start here:** [Getting started](./getting-started.md): turn the CRM on, choose modules, add your team and
+bring in your contacts.
+
+**Contacts and companies**
+
+- [Contacts](./contacts/contacts.md): the contact record, stages, owners, notes and the timeline
+- [Companies](./contacts/companies.md) and [custom fields](./contacts/custom-fields.md)
+- [Lists, tags and segments](./contacts/lists-tags-segments.md)
+- [Import and export](./contacts/import-export.md) (CSV import with a dry run and undo)
+- [Duplicates and merging](./contacts/duplicates-and-merge.md)
+- [Consent and privacy](./contacts/consent-and-privacy.md)
+
+**Sales pipeline**
+
+- [Pipelines and deals](./sales/pipelines-and-deals.md): the drag-and-drop deals board
+- [Products and line items](./sales/products-and-line-items.md), including WooCommerce products
+- [Tasks, calls and meetings](./sales/tasks-calls-meetings.md) and the [calendar](./sales/calendar.md)
+- [Email and replies](./sales/email-and-replies.md): one-to-one email and replies on the timeline
+- [Files on records](./sales/files.md) and [sales reports](./sales/sales-reports.md)
+
+**Workspace and team:** [Home dashboard](./workspace/home-dashboard.md), [team roles](./workspace/team-roles.md),
+[bin and audit log](./workspace/bin-and-audit-log.md), [settings and modules](./workspace/settings-and-modules.md).
+
+**Developers:** [REST API](./developers/rest-api.md), [PHP API and hooks](./developers/php-api-and-hooks.md).
+
 ## Finding your way around
 
 Open **Unyson+ → CRM** and the CRM takes over the screen like an app of its own:
 
 - **The CRM sidebar** lists every area: Home, Contacts, Companies, Deals, Tasks, Calendar, Campaigns,
-  Lists & segments, Reports, Import / Export and Settings. Areas still being built are marked **Soon**,
-  and their page says what they will do.
+  Lists & segments, Reports, Import / Export, Custom fields, Bin, Audit log and Settings. Areas that
+  belong to a module you switched off are hidden.
 - **The WordPress menu folds to its icons** while you are in the CRM and comes back when you leave.
   **Hide the WordPress menu** at the bottom of the CRM sidebar removes it altogether (your choice is
   remembered), and **Back to WordPress** takes you to the dashboard.
 - **The top bar** has search across contacts and companies (press <kbd>/</kbd> to jump to it) and a
-  **New** menu for a contact, a company, an email campaign or a CSV import.
+  **New** menu for a contact, a company, a deal, a task, an email campaign or a CSV import.
 - **Home** shows where things stand: how many contacts and how many are new, contacts by lifecycle stage,
-  what happened lately, the newest contacts and your campaigns. An empty CRM shows the three ways people
+  the pipeline, your tasks, what happened lately, the newest contacts and your campaigns, in cards each
+  person can rearrange. An empty CRM shows the three ways people
   arrive instead: added by hand, imported, or collected by a form on your site.
 - **A contact's page** has their details and your own fields (edit them in place), a stage picker, notes
   and the full timeline, the companies they work at, their lists and tags, their email status and the

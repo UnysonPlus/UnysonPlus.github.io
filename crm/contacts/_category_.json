@@ -1,0 +1,10 @@
+{
+  "label": "Contacts and companies",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "slug": "/contacts-and-companies",
+    "title": "Contacts and companies",
+    "description": "Manage people and companies in the Unyson+ WordPress CRM: contact records, custom fields, lists, tags, segments, CSV import, merging and consent."
+  }
+}

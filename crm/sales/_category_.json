@@ -1,0 +1,10 @@
+{
+  "label": "Sales pipeline",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "slug": "/sales-pipeline",
+    "title": "Sales pipeline",
+    "description": "Sell from WordPress with the Unyson+ CRM: a deals board, products, tasks, calls, a calendar, one-to-one email, replies, files and sales reports."
+  }
+}

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 91
 title: Research
 description: What other CRMs, WordPress CRM plugins and membership plugins do, how they stay reliable on ordinary hosting, and what that means for the Unyson+ CRM and Membership extensions.
 ---

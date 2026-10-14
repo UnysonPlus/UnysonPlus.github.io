@@ -39,10 +39,11 @@ The Studio has three parts, and each uses the technology that suits its job.
 |---|---|---|
 | **The editor** (timeline, canvas, panels) | React + TypeScript, built with Vite | A drag-and-drop timeline editor is a large interactive app that runs in the browser. It compiles to static files, so the server never runs Node.js. |
 | **The player** (what an exported scene ships) | Plain JavaScript + GSAP, with three.js only when a scene uses 3D | It has to be tiny and work on any page, including inside WordPress. React stays in the editor and never ships with a scene. |
-| **The backend** (later: saved projects and accounts) | PHP + MySQL | Runs on ordinary shared hosting with no extra setup. |
+| **Hosting** | GitHub Pages | Free, and published automatically from the repository. The Studio needs no server of its own: it is static files, and the AI runs on each user's own computer. |
 
-The editor is a static site. It is built from its GitHub repository and uploaded to the subdomain by a
-GitHub Action on each release, so ordinary cPanel hosting is enough.
+The editor is a static site. A GitHub Action builds it from the repository on each push and publishes it to
+GitHub Pages under the `animation-studio.unysonplus.com` subdomain. A server only becomes necessary for
+accounts and cloud saving, which come late in the [roadmap](./roadmap.mdx).
 
 ### The scene file
 

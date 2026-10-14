@@ -36,7 +36,7 @@
         {
           "id": "p1-deploy",
           "title": "Deploy to the subdomain",
-          "detail": "A GitHub Action builds the editor and uploads it to `animation-studio.unysonplus.com` on cPanel on each release.",
+          "detail": "A GitHub Action builds the editor and publishes it to GitHub Pages at `animation-studio.unysonplus.com` on each push.",
           "status": "planned"
         }
       ]
@@ -228,7 +228,7 @@
         {
           "id": "p7-accounts",
           "title": "Accounts and cloud saving",
-          "detail": "Sign in, save projects online and share a link to a scene, using PHP and MySQL on the existing hosting.",
+          "detail": "Sign in, save projects online and share a link to a scene. The one part that needs a server (PHP and MySQL on the existing hosting).",
           "status": "planned"
         },
         {

@@ -47,7 +47,7 @@ review (45 min)", and on each attendee's timeline.
 Use **Tasks → Log a call or meeting** on a record: choose call or meeting, when it happened, an optional
 subject, the outcome and how long it took. It is saved as done and logged on the timeline straight away.
 
-<img src="/img/crm/log-call.png" alt="Log a call or meeting on a contact: type, time, subject, outcome and duration" width="390" />
+<img src="/img/crm/log-call.png" alt="Log a call or meeting on a contact: type, time, subject, outcome and duration" width="445" />
 
 ## Frequently asked questions
 

@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.55",
-  "generatedAt": "2026-10-14T10:28:41.202Z",
+  "extensionVersion": "1.0.56",
+  "generatedAt": "2026-10-14T10:37:39.039Z",
   "detected": true,
   "milestones": [
     {
@@ -434,8 +434,8 @@
               "includes/class-fw-crm-files.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p2-products",

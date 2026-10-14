@@ -13,7 +13,7 @@ Phase 1, contacts and companies, is built: the CRM app, contacts and companies w
 timeline and consent log, rule-based segments, tags and lists with per-list subscription status,
 duplicate merging, the bin, team roles, an audit log, module switches and undoable CSV imports.
 Phase 2 is well under way: sales pipelines with a drag-and-drop deals board, deal pages, tasks with
-reminders, calls and meetings with outcomes and attendees, a calendar, sales reports, editable notes, the pipeline and task
+reminders, calls and meetings with outcomes and attendees, a calendar, sales reports, files on records, editable notes, the pipeline and task
 cards on Home, and the REST API for all of it are built. Both arrive with the next release. The [roadmap](./roadmap.mdx) shows the next phases and tracks each one
 against the code as it lands.
 :::

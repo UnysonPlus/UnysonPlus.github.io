@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.62",
-  "generatedAt": "2026-10-14T12:11:36.858Z",
+  "extensionVersion": "1.0.65",
+  "generatedAt": "2026-10-14T14:53:37.908Z",
   "detected": true,
   "milestones": [
     {
@@ -564,7 +564,7 @@
         {
           "id": "p3-sender",
           "title": "Sending queue",
-          "detail": "Campaigns are queued and sent in small batches by the scheduler, so a big send never hits a host's time limit, with per-hour limits to respect shared hosting. Carried over from the Newsletter / Subscriber CRM and reworked for the new layout. One queue row per recipient, claimed atomically so no email is ever sent twice; an emails-per-second cap with presets per kind of host; a per-campaign speed limit so opens and clicks cannot flood the site; stored email bodies purged after sending while the statistics are kept.",
+          "detail": "Campaigns are queued and sent in small batches by the scheduler, so a big send never hits a host's time limit, with per-hour limits to respect shared hosting. Carried over from the Newsletter / Subscriber CRM and reworked for the new layout. One queue row per recipient, claimed atomically so no email is ever sent twice; a sending-rate cap with presets per kind of host; a per-campaign speed limit so opens and clicks cannot flood the site; the per-recipient send log cleared after a retention period while each campaign's totals are kept.",
           "detect": {
             "files": [
               "modules/email/class-fw-crm-sender.php"
@@ -576,12 +576,16 @@
               },
               {
                 "file": "modules/email/class-fw-crm-sender.php",
-                "pattern": "purge_bodies"
+                "pattern": "purge_queues"
+              },
+              {
+                "file": "modules/email/class-fw-crm-campaigns.php",
+                "pattern": "claim_batch"
               }
             ]
           },
-          "status": "in-progress",
-          "progress": "1/3"
+          "status": "done",
+          "progress": "4/4"
         },
         {
           "id": "p3-providers",

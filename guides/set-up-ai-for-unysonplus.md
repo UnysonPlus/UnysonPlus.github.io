@@ -18,8 +18,8 @@ unless you give WordPress a provider key.
 | **A free local model**, through Ollama | Free | Good for one section at a time | AI Assistant, Site Converter |
 
 Everything below starts from the AI Dev Kit. Get it from
-[GitHub](https://github.com/UnysonPlus/UnysonPlus-AI-Dev-Kit), then run `start-converter.bat`
-(Windows) or `start-converter.command` (macOS). The first run downloads what it needs; keep the window
+[GitHub](https://github.com/UnysonPlus/UnysonPlus-AI-Dev-Kit), then run `start.bat`
+(Windows) or `start.command` (macOS). The first run downloads what it needs; keep the window
 open while you work. Its dashboard opens at `http://localhost:4600`.
 
 ## Use your Claude subscription (Claude Code)

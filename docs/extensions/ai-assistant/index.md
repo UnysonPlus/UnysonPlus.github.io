@@ -536,7 +536,7 @@ The Site Converter reaches the capture service the same way.
 
 **Setting it up**
 
-1. Start the AI Dev Kit (`start-converter.bat`). Its dashboard opens at `http://localhost:4600`.
+1. Start the AI Dev Kit (`start.bat` on Windows, `start.command` on macOS). Its dashboard opens at `http://localhost:4600`.
 2. In the dashboard, go to *Settings → Local AI models* and download a model: the recommended **8B**
    model suits most PCs, the recommended **4B** one a smaller PC. You can also add your own
    ([how](../site-converter/capture-service.md#local-ai-models)); press **Check** to see whether it is

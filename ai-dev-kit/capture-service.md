@@ -48,8 +48,8 @@ capture and convert straight from the *Unyson+ → Convert* screen. Its main end
 
 ## The dashboard
 
-Starting the capture service (`start-converter.bat` on Windows, `start-converter.sh` / `.command` on
-macOS/Linux) also opens a **browser dashboard** at `http://localhost:4600`. It's the visual face of the
+Starting the AI Dev Kit (`start.bat` on Windows, `start.command` on macOS — or, run standalone, the service's own `start-converter.bat` / `.sh`)
+also opens a **browser dashboard** at `http://localhost:4600`. It's the visual face of the
 service, with these tabs:
 
 - **Convert** — run and watch a URL → WordPress conversion live, with design tokens, section mapping, and

@@ -411,17 +411,14 @@ const config = {
             position: 'left',
             label: 'Extensions',
           },
+          {to: '/extensions/crm', label: 'CRM', position: 'left'},
+          {to: '/extensions/membership', label: 'Membership', position: 'left'},
           {
             type: 'docSidebar',
             sidebarId: 'blocksSidebar',
             docsPluginId: 'blocks',
             position: 'left',
             label: 'Blocks',
-          },
-          {
-            href: 'https://demos.unysonplus.com/',
-            label: 'Demos',
-            position: 'left',
           },
           {
             type: 'docSidebar',
@@ -439,27 +436,11 @@ const config = {
           },
           {
             type: 'docSidebar',
-            sidebarId: 'guidesSidebar',
-            docsPluginId: 'guides',
-            position: 'left',
-            label: 'Guides',
-          },
-          {
-            type: 'docSidebar',
             sidebarId: 'aiDevKitSidebar',
             docsPluginId: 'aiDevKit',
             position: 'left',
             label: 'AI Dev Kit',
           },
-          {
-            type: 'docSidebar',
-            sidebarId: 'referenceSidebar',
-            docsPluginId: 'phpApi',
-            position: 'left',
-            label: 'API Reference',
-          },
-          {to: '/decisions', label: 'Design Decisions', position: 'left'},
-          {to: '/blog', label: 'News', position: 'left'},
           {
             href: 'https://github.com/UnysonPlus',
             label: 'GitHub',
@@ -484,6 +465,15 @@ const config = {
               {label: 'GitHub Org', href: 'https://github.com/UnysonPlus'},
               {label: 'Plugin Repo', href: 'https://github.com/UnysonPlus/UnysonPlus'},
               {label: 'Theme Repo', href: 'https://github.com/UnysonPlus/UnysonPlus-Theme'},
+            ],
+          },
+          {
+            title: 'Resources',
+            items: [
+              {label: 'Guides', to: '/guides/'},
+              {label: 'Demos', href: 'https://demos.unysonplus.com/'},
+              {label: 'API Reference', to: '/reference/'},
+              {label: 'Design Decisions', to: '/decisions'},
             ],
           },
           {

@@ -14,7 +14,7 @@ behind them, sign-up forms with email confirmation and approval, the login and a
 profile fields, a REST API and AI Assistant tools. Phase 3 is built too: plans are sold by card, PayPal or
 bank transfer, with coupons, tax, invoices, and upgrades and downgrades members make themselves. Phase 4 connects Membership to the [CRM](./crm.md): members are contacts, plans are tags, and
 access rules can use CRM tags, lists and segments. Phase 5 adds drip content, a metered paywall, protected downloads and
-selling single items. Phase 6 adds everything for keeping members, and gift memberships. Phase 7 adds team memberships, a member directory and membership cards. All of it arrives with the next release. The
+selling single items. Phase 6 adds everything for keeping members, and gift memberships. Phase 7 adds team memberships, a member directory and membership cards. Phase 8 connects Membership to WooCommerce. All of it arrives with the next release. The
 [roadmap](./roadmap.mdx) tracks each task against the code. The design comes from a study of the leading
 membership plugins and platforms, summarised under [Research](./research.md).
 :::
@@ -204,6 +204,21 @@ their membership, into a new account or the one they have (if they already hold 
   full screen to show at the door, or print it. Scanning its QR code with any phone shows "Valid membership" or
   "Not valid"; staff who are logged in also see who it is and can **Check in** the member, which is noted in
   their history.
+
+## WooCommerce
+
+With WooCommerce active, switch on the **WooCommerce** module.
+
+- **Products that give a plan.** On a product's **Membership** tab, choose the plan buying it gives. The plan
+  starts as soon as the order is paid, and ends if the order is refunded or cancelled; buying it again extends
+  it. A guest buyer gets an account made from their billing email. With WooCommerce's subscriptions add-on, a
+  subscription product's plan follows the subscription: on hold, cancelled and expired are all reflected.
+- **Member perks.** On a plan's page (Options), give members a store discount (on everything, or on chosen
+  product categories) and free shipping. Members see a **member price** against the normal one; the best
+  discount of the plans they hold applies, and a sale that is already cheaper wins.
+- **Members-only products.** On the product's Membership tab, tick the plans whose members may buy it; everyone
+  else sees "For members of …" instead of the Add to cart button. To hide products from non-members entirely,
+  use an access rule on them like on any other content.
 
 ## Profile fields, the API and AI
 

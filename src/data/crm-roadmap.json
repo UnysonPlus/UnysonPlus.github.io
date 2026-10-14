@@ -1,0 +1,627 @@
+{
+  "_comment": "SOURCE OF TRUTH for the CRM roadmap rendered at /extensions/crm/roadmap. Task `status` is maintained AUTOMATICALLY by `npm run roadmap:crm` (scripts/gen-roadmap.mjs), which inspects the real extension source tree and flips a task to `done` when everything in its `detect` block exists. The CRM grows out of the Newsletter / Subscriber CRM (renamed to `crm` and reorganized), so several tasks build on code that already exists there. The detect paths are the extension's agreed file layout after the reorganization: core classes in includes/, each switchable module in modules/<module>/ (not auto-included, so a module that is off loads no code). Hand-edit title/detail/detect freely; set `pin: true` on a task whose status the script should leave alone.",
+  "extension": "crm",
+  "cloneDir": "UnysonPlus-CRM-Extension",
+  "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
+  "extensionVersion": null,
+  "generatedAt": "2026-10-14T04:57:31.729Z",
+  "detected": false,
+  "milestones": [
+    {
+      "id": "p1-foundation",
+      "title": "Phase 1 · Contacts and companies",
+      "goal": "The record everything else hangs on. A contact is a person with an owner, a lifecycle stage, custom fields and a timeline, linked to companies, sorted by lists, tags and rule-based segments. Privacy, consent and team roles are built in here, once, so no later module can skip them.",
+      "tasks": [
+        {
+          "id": "p1-rename",
+          "title": "Rename to CRM and reorganize",
+          "detail": "The Newsletter / Subscriber CRM becomes the CRM: folder `newsletter-crm` becomes `crm`, with its repository, settings, hooks and connector tool names renamed to match (no data to migrate; its tables are already `fw_crm_*`). Its working parts are kept and moved into the new layout rather than rewritten: the email builder, campaigns and the batched sender, lists, tags and segments, double opt-in and the preference page, the contact form action, the Newsletter element listener, the privacy tools and the AI connector tools. Everything that pointed at the old name moves in the same release: the Site Converter, Visitor Insights, the `forms-add` tool and the CRM website generator.",
+          "pin": true,
+          "status": "planned"
+        },
+        {
+          "id": "p1-scaffold",
+          "title": "Extension scaffold",
+          "detail": "`manifest.php`, the extension class and a settings screen under **Unyson+ → CRM**. Ships inactive; downloaded from the Extensions manager.",
+          "detect": {
+            "files": [
+              "manifest.php",
+              "class-fw-extension-crm.php",
+              "settings-options.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/3"
+        },
+        {
+          "id": "p1-schema",
+          "title": "Tables and migrations",
+          "detail": "Contacts, companies, contact-company links, custom field values, tags and lists, segment definitions and the activity log, each indexed for the screens that read them. Versioned installer with `migrate()`; tables are never dropped on deactivation. Every later change to the tables goes through a numbered migration, so sites update in place.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-installer.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-modules",
+          "title": "Module switches",
+          "detail": "Settings switch each module (pipeline, email, automations, scoring) on or off. A module that is off loads no code and adds no menu.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-modules.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-contacts",
+          "title": "Contacts",
+          "detail": "The subscriber record grows into a contact: an owner, a lifecycle stage (subscriber, lead, customer…), phone and address, companies and custom fields, with subscription status kept as one part of it. A list with search, filters and bulk actions, and a profile page with details, consent, companies, tags, lists and the timeline. Duplicate detection by email.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-contacts.php",
+              "includes/admin/class-fw-crm-admin-contacts.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "p1-companies",
+          "title": "Companies",
+          "detail": "Companies (accounts) with their own fields, owner and timeline; a contact can belong to several.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-companies.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-fields",
+          "title": "Custom fields",
+          "detail": "Typed fields (text, number, date, choice, money, URL…) for contacts, companies and deals, defined on one screen and stored in their own table so lists can sort and filter by them.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-fields.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-tags",
+          "title": "Tags and lists",
+          "detail": "Lists are audiences people join (and leave); tags are labels. Both are the building blocks of segments, automations and membership rules. Carried over from the Newsletter / Subscriber CRM and reworked for the new layout.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-tags.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-timeline",
+          "title": "Activity timeline",
+          "detail": "One event log for every contact and company: form submissions, emails, notes, tasks, deal changes, tag changes. Every module writes to it; the profile page reads it.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-activity.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-segments",
+          "title": "Rule-based segments",
+          "detail": "Segments today hold one filter each (status, list, tag or search). They become saved, live segments built from AND / OR rules over fields, tags, lists, lifecycle stage, activity and dates, feeding campaigns, automations and reports.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-segments.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-import",
+          "title": "Import and export",
+          "detail": "CSV import with column mapping, duplicate handling and a dry run; export of any segment. Carried over from the Newsletter / Subscriber CRM and reworked for the new layout.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-import.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-forms",
+          "title": "Contact form action",
+          "detail": "The contact form's subscribe action becomes **Add to the CRM**: create or update the contact, add tags and lists, record consent and log the submission on the timeline, configured on each form's Actions tab.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-forms-action.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-newsletter-element",
+          "title": "Newsletter signup element",
+          "detail": "The Newsletter element (in Shortcodes) announces a signup through `fw_newsletter_subscribe`, and the CRM keeps listening to store the contact, with double opt-in when the email module is on. Carried over, so signups never go unsaved during the rename.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-capture.php"
+            ],
+            "symbols": [
+              {
+                "file": "includes/class-fw-crm-capture.php",
+                "pattern": "fw_newsletter_subscribe"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "p1-privacy",
+          "title": "Privacy and consent",
+          "detail": "A consent log per contact (what, when, from which form), the WordPress personal data exporter and eraser, and retention settings. Carried over from the Newsletter / Subscriber CRM and reworked for the new layout.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-privacy.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-roles",
+          "title": "Team roles",
+          "detail": "CRM capabilities and two roles: a CRM manager sees everything; a sales rep sees and edits only the contacts, companies and deals they own.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-capabilities.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-api",
+          "title": "REST API and AI connector tools",
+          "detail": "The REST API grows to every record type, and the AI connector tools (today: describe the set-up, save lists and tags, save segments, settings, draft campaigns) grow to fields, companies and pipelines. No tool returns a contact's personal details.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-rest.php",
+              "includes/ai-abilities.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        }
+      ]
+    },
+    {
+      "id": "p2-pipeline",
+      "title": "Phase 2 · Sales pipeline",
+      "goal": "Deals on a board. Several pipelines, each with its own stages; deals carry a value, an owner and a close date, and move by drag and drop. Tasks and notes keep the follow-up from slipping.",
+      "tasks": [
+        {
+          "id": "p2-pipelines",
+          "title": "Pipelines and stages",
+          "detail": "Any number of pipelines (sales, onboarding, hiring…), each with ordered stages and a win probability per stage.",
+          "detect": {
+            "files": [
+              "modules/pipeline/class-fw-crm-pipelines.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2-deals",
+          "title": "Deals",
+          "detail": "A deal has a title, value and currency, owner, contacts, company, stage, expected close date and custom fields. Won and lost, with a lost reason.",
+          "detect": {
+            "files": [
+              "modules/pipeline/class-fw-crm-deals.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2-board",
+          "title": "Pipeline board",
+          "detail": "Columns per stage with totals; drag a deal to move it, to won or to lost. Filters by owner, value and date.",
+          "detect": {
+            "files": [
+              "modules/pipeline/static/js/board.js"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2-deal-page",
+          "title": "Deal page",
+          "detail": "Details, contacts, company, tasks, notes and the deal's timeline on one screen.",
+          "detect": {
+            "files": [
+              "modules/pipeline/class-fw-crm-admin-deal.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2-tasks",
+          "title": "Tasks and reminders",
+          "detail": "Calls, meetings, emails and to-dos with due dates and owners, on contacts, companies and deals; a My Tasks view and email reminders.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-tasks.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2-notes",
+          "title": "Notes",
+          "detail": "Notes on any record, shown on its timeline.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-notes.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2-direct-email",
+          "title": "One-to-one email",
+          "detail": "Write to a contact from their profile or a deal; the email is sent through the Mailer and logged on the timeline.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-direct-email.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2-reports",
+          "title": "Sales reports",
+          "detail": "Pipeline value by stage, a forecast weighted by stage probability, won and lost over time, and performance per owner.",
+          "detect": {
+            "files": [
+              "modules/pipeline/class-fw-crm-reports.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p3-email",
+      "title": "Phase 3 · Email marketing",
+      "goal": "Campaigns that reach the inbox. Designed in a block email builder from a template gallery, sent in batches through SMTP or an email service, and measured with opens and clicks.",
+      "tasks": [
+        {
+          "id": "p3-sender",
+          "title": "Sending queue",
+          "detail": "Campaigns are queued and sent in small batches by the scheduler, so a big send never hits a host's time limit, with per-hour limits to respect shared hosting. Carried over from the Newsletter / Subscriber CRM and reworked for the new layout.",
+          "detect": {
+            "files": [
+              "modules/email/class-fw-crm-sender.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p3-providers",
+          "title": "Email services",
+          "detail": "The provider layer already exists (local sending through the Mailer). It gains email services sent directly through their API, for speed, deliverability and bounce handling.",
+          "detect": {
+            "files": [
+              "modules/email/providers/class-fw-crm-provider.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p3-builder",
+          "title": "Email builder",
+          "detail": "Drag-and-drop blocks (text, image, button, columns, social, divider) compiled to email-safe HTML, with personalization tags and a live preview. Carried over from the Newsletter / Subscriber CRM and reworked for the new layout.",
+          "detect": {
+            "files": [
+              "modules/email/builder/class-fw-crm-email-builder.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p3-templates",
+          "title": "Template gallery",
+          "detail": "Ready-made basic and designed templates (newsletter, announcement, welcome, follow-up, offer), plus saving your own.",
+          "detect": {
+            "files": [
+              "modules/email/templates/index.json"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p3-campaigns",
+          "title": "Campaigns",
+          "detail": "Pick an audience (list, tag or segment), design, test, schedule and send. Campaigns that have started can no longer be edited, so everyone gets the same email. Carried over from the Newsletter / Subscriber CRM and reworked for the new layout.",
+          "detect": {
+            "files": [
+              "modules/email/class-fw-crm-campaigns.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p3-subscriptions",
+          "title": "Double opt-in and preferences",
+          "detail": "Confirmation emails, a preference page where people choose their lists, and one-click unsubscribe in every email. Carried over from the Newsletter / Subscriber CRM and reworked for the new layout.",
+          "detect": {
+            "files": [
+              "modules/email/class-fw-crm-subscriptions.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p3-tracking",
+          "title": "Opens, clicks and bounces",
+          "detail": "Open and click tracking (switchable, for privacy), bounce and complaint handling, and campaign reports.",
+          "detect": {
+            "files": [
+              "modules/email/class-fw-crm-tracking.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p4-automations",
+      "title": "Phase 4 · Automations",
+      "goal": "The CRM working on its own. An automation starts on a trigger and runs steps: send an email, wait, branch on a condition, change tags, move a deal, create a task, call a webhook. Built to run reliably on ordinary shared hosting.",
+      "tasks": [
+        {
+          "id": "p4-engine",
+          "title": "Automation engine",
+          "detail": "Each contact's progress through an automation is a row with a next-run time; the runner processes due rows in small batches. Waits of minutes or months cost nothing while they wait.",
+          "detect": {
+            "files": [
+              "modules/automations/class-fw-crm-automations.php",
+              "modules/automations/class-fw-crm-runner.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "p4-cron",
+          "title": "Reliable scheduling",
+          "detail": "A health check that shows whether the scheduler is running on time, and the exact cron line for a real server cron job (cPanel and similar), replacing WordPress's visit-triggered scheduler.",
+          "detect": {
+            "files": [
+              "modules/automations/class-fw-crm-cron-check.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-triggers",
+          "title": "Triggers",
+          "detail": "Form submitted, list joined or left, tag added or removed, field changed, date reached (birthdays, renewals), deal stage changed, email opened or clicked, purchase made.",
+          "detect": {
+            "files": [
+              "modules/automations/triggers/class-fw-crm-trigger.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-actions",
+          "title": "Actions",
+          "detail": "Send an email, wait, if / else, add or remove tags and lists, update a field, create or move a deal, create a task, notify the team, call a webhook, start or end another automation.",
+          "detect": {
+            "files": [
+              "modules/automations/actions/class-fw-crm-action.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-goals",
+          "title": "Goals and exit conditions",
+          "detail": "Jump ahead when a contact reaches a goal (buys, books, replies), and leave an automation when a condition stops being true.",
+          "detect": {
+            "files": [
+              "modules/automations/class-fw-crm-goals.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-editor",
+          "title": "Automation editor",
+          "detail": "A visual flow editor: triggers at the top, steps in between, branches side by side, with a count of contacts at each step.",
+          "detect": {
+            "files": [
+              "modules/automations/static/js/editor.js"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-recipes",
+          "title": "Ready-made automations",
+          "detail": "Welcome series, lead nurture, quote or booking follow-up, re-engagement and deal follow-up, ready to switch on and edit.",
+          "detect": {
+            "files": [
+              "modules/automations/recipes/index.json"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p5-scoring",
+      "title": "Phase 5 · Scoring and site activity",
+      "goal": "Know who is ready to buy. Points for what contacts do, and which pages known contacts read, so the team calls the warmest leads first.",
+      "tasks": [
+        {
+          "id": "p5-scoring",
+          "title": "Lead scoring",
+          "detail": "Rules that add or remove points for opens, clicks, page visits, form submissions and fields; scores that fade over time; segments and automations by score.",
+          "detect": {
+            "files": [
+              "modules/scoring/class-fw-crm-scoring.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p5-site",
+          "title": "Site activity for known contacts",
+          "detail": "Pages a contact visits after they identify themselves (a form or an email click), with consent, on their timeline and as an automation trigger.",
+          "detect": {
+            "files": [
+              "modules/scoring/class-fw-crm-site-activity.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p6-integrations",
+      "title": "Phase 6 · Integrations and the extension API",
+      "goal": "Other extensions build on the CRM without reaching into its tables. A documented, versioned PHP API, events and REST endpoints let the Membership extension, WooCommerce and anything written later read and change contacts, tags and deals, and react when they change.",
+      "tasks": [
+        {
+          "id": "p6-php-api",
+          "title": "Public PHP API",
+          "detail": "One entry point, `fw_crm()`, for finding, creating and updating contacts, companies and deals, adding and removing tags and lists, checking membership of a tag, list or segment, and writing to the timeline. Versioned and documented; the tables behind it stay private.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-api.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6-events",
+          "title": "Events catalogue",
+          "detail": "A documented action for every change (contact created, tag added, list joined, deal moved, email clicked…), each with the same payload shape, so integrations and automations listen to one stream.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-events.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6-integrations",
+          "title": "Integrations registry",
+          "detail": "Extensions register themselves as CRM integrations: their own triggers and actions appear in Automations, their own fields on the contact page, and their activity on the timeline. The CRM never needs to know about them in advance.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-integrations.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6-woocommerce",
+          "title": "WooCommerce",
+          "detail": "Customers become contacts; orders, totals and products land on the timeline and become segment rules and automation triggers (purchased, refunded, abandoned cart).",
+          "detect": {
+            "files": [
+              "modules/integrations/class-fw-crm-woocommerce.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6-membership-link",
+          "title": "Ready for the Membership extension",
+          "detail": "Membership is its own extension. The CRM gives it what it needs: a contact linked to a WordPress user only when someone must log in, tag, list and segment checks for access rules, and membership events (joined, renewed, expired) on the timeline and in Automations.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-users.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p7-ai",
+      "title": "Phase 7 · Built with AI",
+      "goal": "The whole CRM can be set up by an AI app through the connector, and the CRM website generator builds sites on it.",
+      "tasks": [
+        {
+          "id": "p7-tools",
+          "title": "Connector tools for every module",
+          "detail": "Pipelines and stages, campaigns and templates, automations from recipes, scoring rules and access rules, each as an AI Assistant tool. Setting things up, never reading or contacting the people in the CRM.",
+          "detect": {
+            "files": [
+              "modules/pipeline/ai-abilities.php",
+              "modules/email/ai-abilities.php",
+              "modules/automations/ai-abilities.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/3"
+        },
+        {
+          "id": "p7-generator",
+          "title": "CRM website generator on the CRM",
+          "detail": "The generator's prompts build on the CRM: a real pipeline instead of stage tags, and a welcome automation instead of a single welcome email.",
+          "pin": true,
+          "status": "planned"
+        }
+      ]
+    }
+  ]
+}

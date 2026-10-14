@@ -1,0 +1,56 @@
+---
+sidebar_position: 2
+title: Roadmap
+description: The CRM's phases, from contacts and companies to the sales pipeline, email marketing, automations, scoring and the integrations other extensions build on, verified automatically against the extension source tree.
+---
+
+import Roadmap, {RoadmapSummary} from '@site/src/components/Roadmap';
+import data from '@site/src/data/crm-roadmap.json';
+
+# Roadmap
+
+Seven phases, built in order. Phase 1 is a useful CRM on its own (contacts, companies, segments, forms
+and the Newsletter element feeding it), and each later phase adds a module on top of the same contact
+record and activity timeline. Phase 1 starts by renaming the **Newsletter / Subscriber CRM** to **CRM** and
+reorganizing it: its working parts (the email builder, campaigns, the sender, lists, tags and segments)
+carry over, and everything that pointed at the old name moves in the same release.
+
+<RoadmapSummary data={data} />
+
+<Roadmap data={data} />
+
+## Order of work
+
+1. **Rename and reorganize, then contacts and companies.** The data model, privacy, team roles, the contact
+   form action and the Newsletter element.
+2. **Sales pipeline.** Deals, the board, tasks and notes.
+3. **Email marketing.** Much of it exists already (the builder, campaigns, the queue, opt-in); this phase
+   adds the template gallery, email services and tracking.
+4. **Automations.** The engine and its scheduler check first, then triggers, actions, the editor and
+   ready-made recipes.
+5. **Scoring and site activity.**
+6. **Integrations and the extension API.** The public API, events and integrations registry that the
+   Membership extension, WooCommerce and future extensions connect through.
+7. **AI connector tools for every module**, and the CRM website generator moved onto the CRM.
+
+## How this page stays current
+
+Status is not ticked by hand. `src/data/crm-roadmap.json` lists every task with a `detect` block naming the
+files (and, where needed, code symbols) that make it real, and `scripts/gen-roadmap.mjs` checks them against
+the extension's source tree:
+
+| Result | Status |
+| --- | --- |
+| Every file and symbol found | **Done** |
+| Some found, some missing | **In progress** |
+| None found | **Planned** |
+
+```bash
+npm run roadmap:crm            # scan and rewrite the JSON
+npm run roadmap:crm -- --dry   # report only, write nothing
+npm run roadmap:crm -- --check # exit 1 if stale
+```
+
+The `detect` paths double as the extension's agreed file layout, decided before the code is written: core
+classes in `includes/`, and each switchable module in `modules/<module>/`, which is not loaded unless the
+module is on.

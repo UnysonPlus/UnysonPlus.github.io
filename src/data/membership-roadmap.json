@@ -3,8 +3,8 @@
   "extension": "membership",
   "cloneDir": "UnysonPlus-Membership-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Membership-Extension",
-  "extensionVersion": "1.0.8",
-  "generatedAt": "2026-10-14T11:02:21.395Z",
+  "extensionVersion": "1.0.9",
+  "generatedAt": "2026-10-14T11:09:51.970Z",
   "detected": true,
   "milestones": [
     {
@@ -451,8 +451,8 @@
               "modules/crm/class-fw-membership-crm.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-identity",
@@ -463,8 +463,8 @@
               "modules/crm/class-fw-membership-crm-identity.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-mirror",
@@ -475,8 +475,8 @@
               "modules/crm/class-fw-membership-crm-sync.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-rules",
@@ -487,8 +487,8 @@
               "modules/crm/class-fw-membership-crm-conditions.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-timeline",
@@ -499,8 +499,8 @@
               "modules/crm/class-fw-membership-crm-timeline.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-automations",
@@ -511,8 +511,8 @@
               "modules/crm/class-fw-membership-crm-automations.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-summary",
@@ -523,8 +523,8 @@
               "modules/crm/class-fw-membership-crm-summary.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },

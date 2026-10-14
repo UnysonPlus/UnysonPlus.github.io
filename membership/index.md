@@ -12,7 +12,8 @@ description: "The planned Unyson+ Membership extension: plans, one access engine
 Phases 1 and 2 are built: the Membership app, plans, members, access rules with the one access engine
 behind them, sign-up forms with email confirmation and approval, the login and account pages, member emails,
 profile fields, a REST API and AI Assistant tools. Phase 3 is built too: plans are sold by card, PayPal or
-bank transfer, with coupons, tax, invoices, and upgrades and downgrades members make themselves. All of it arrives with the next release. The
+bank transfer, with coupons, tax, invoices, and upgrades and downgrades members make themselves. Phase 4 connects Membership to the [CRM](./crm.md): members are contacts, plans are tags, and
+access rules can use CRM tags, lists and segments. All of it arrives with the next release. The
 [roadmap](./roadmap.mdx) tracks each task against the code. The design comes from a study of the leading
 membership plugins and platforms, summarised under [Research](./research.md).
 :::

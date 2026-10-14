@@ -6,6 +6,13 @@ description: How the Unyson+ Membership extension connects to the Unyson+ CRM �
 
 # Membership and the CRM
 
+:::tip Built
+The connection described here is built (Membership 1.0.9): it switches itself on while the CRM is active, with
+its options under **Membership → Settings → CRM connection**, including a button that brings every existing
+member into the CRM at once.
+:::
+
+
 Membership and the [CRM](/crm) are separate extensions that are made to work together. Membership works
 without the CRM (plenty of members sites need no CRM), and the CRM works without Membership. When both are
 on, Membership's **CRM module** switches on by itself and joins them into one system: every member is a

@@ -36,8 +36,8 @@
         {
           "id": "p1-deploy",
           "title": "Deploy to the subdomain",
-          "detail": "A GitHub Action builds the editor and publishes it to GitHub Pages at `animation-studio.unysonplus.com` on each push. The workflow is written; it goes live with the first push.",
-          "status": "in-progress"
+          "detail": "A GitHub Action builds the editor and publishes it to GitHub Pages at `animation-studio.unysonplus.com` (HTTPS) on every push to main.",
+          "status": "done"
         }
       ]
     },

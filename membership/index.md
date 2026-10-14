@@ -9,11 +9,10 @@ description: "The planned Unyson+ Membership extension: plans, one access engine
 # Membership
 
 :::info In progress
-The first part is built: the Membership app itself, plans with prices and inheritance, membership records
-with their full history, adding and managing members by hand, and the Modules screen. It arrives with the
-next release. Access rules come next. The [roadmap](./roadmap.mdx) tracks each task against the code. The
-design comes from a study of the leading membership plugins and platforms, summarised under
-[Research](./research.md).
+Phase 1 is built: the Membership app, plans, members, and access rules with the one access engine behind
+them, so holding a plan now opens content. It arrives with the next release. Accounts and registration come
+next, then payments. The [roadmap](./roadmap.mdx) tracks each task against the code. The design comes from a
+study of the leading membership plugins and platforms, summarised under [Research](./research.md).
 :::
 
 ## Finding your way around
@@ -37,7 +36,31 @@ Open **Unyson+ → Membership** and it takes over the screen like an app of its 
 - **A member's page** shows each membership with its status, dates and source, with **Extend**, **Change
   plan**, **Cancel at end date**, **End now** and **Reactivate**, a form to add another plan, and the
   history of every change and who made it.
+- **Access rules** each say what is protected (the entire site, all items of a type, a single page or post,
+  the pages under a page, a category or tag, a post type archive, or addresses such as `/members/*`, with
+  "Except" lines for exceptions), who may see it (plans, roles, or anyone logged in) and what everyone else
+  sees: a teaser and a prompt to log in or join, a trip to the login page, another page, or "page not found".
+  Every rule that covers a page must be passed.
 - **Modules** lists every switchable module with the phase it arrives in.
+
+## Protecting content
+
+- **A rule** under Membership → Access rules protects many things at once.
+- **One item**: the **Membership** box in the editor sets a page or post to *Members only* (any plan or chosen
+  plans), *Open to everyone* whatever the rules say, or *Follow the access rules*, and lists the rules that
+  cover it now.
+- **Part of a page**: every page-builder element, section and column has a **Membership** field in its
+  Advanced tab (members, people without a plan, members of chosen plans, everyone except them, logged in or
+  out). The **Paywall Prompt** element is the "this is for members" box to place yourself, usually shown only
+  to people without a plan.
+- **Menus**: each menu item has the same **Show to** choice; a hidden item takes its sub-items with it.
+- **Check it**: on the site, **View as** in the admin bar previews any page as a logged-out visitor, a
+  logged-in user without a plan, or a member of any plan. Administrators otherwise see everything.
+
+Protection holds wherever the content could surface: archives, search, RSS feeds, the REST API, comments,
+the XML sitemap, attachments, and the description and social tags the SEO extension writes. Protected pages
+are sent with no-cache headers so a page cache never shows one person's view to another. A plan can also give
+a WordPress role while it lasts, applied on the fly; roles that can manage the site are never offered.
 
 Membership turns a Unyson+ site into a members site: free and paid plans, content that opens only to the
 right people, a member area designed in the page builder like any other page, and payments taken with your

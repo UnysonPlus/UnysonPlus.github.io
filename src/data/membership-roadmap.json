@@ -3,8 +3,8 @@
   "extension": "membership",
   "cloneDir": "UnysonPlus-Membership-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Membership-Extension",
-  "extensionVersion": "1.0.0",
-  "generatedAt": "2026-10-14T07:48:02.250Z",
+  "extensionVersion": "1.0.2",
+  "generatedAt": "2026-10-14T08:34:49.634Z",
   "detected": true,
   "milestones": [
     {
@@ -75,8 +75,8 @@
               }
             ]
           },
-          "status": "in-progress",
-          "progress": "2/3"
+          "status": "done",
+          "progress": "3/3"
         },
         {
           "id": "p1-memberships",
@@ -112,8 +112,8 @@
               "includes/class-fw-membership-rules.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-access",
@@ -130,8 +130,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p1-protect",
@@ -142,8 +142,8 @@
               "includes/class-fw-membership-protect.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-denied",
@@ -155,13 +155,13 @@
               "shortcodes/paywall-prompt/config.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p1-elements",
           "title": "Visibility on every element",
-          "detail": "Every page-builder element, section and column gains **Members** fields in its Advanced → Display conditions: show to plans, hide from plans, members or non-members, through the existing display-conditions filter. Gutenberg blocks get the same fields.",
+          "detail": "Every page-builder element, section and column gains a **Membership** field in its Advanced tab: everyone, members, people without a plan, members of chosen plans, everyone except them, logged-in or logged-out people. The same choices are on every menu item.",
           "detect": {
             "files": [
               "includes/class-fw-membership-elements.php"
@@ -173,8 +173,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p1-menus",
@@ -185,8 +185,8 @@
               "includes/class-fw-membership-menus.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-cache",
@@ -197,8 +197,8 @@
               "includes/class-fw-membership-cache.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-admin",
@@ -288,6 +288,18 @@
           "detect": {
             "files": [
               "includes/class-fw-membership-emails.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2-blocks",
+          "title": "Visibility on editor blocks",
+          "detail": "The same Membership choices on WordPress's own blocks in the block editor (a panel in the block sidebar, applied when the block renders), for content written without the page builder.",
+          "detect": {
+            "files": [
+              "includes/class-fw-membership-blocks.php"
             ]
           },
           "status": "planned",

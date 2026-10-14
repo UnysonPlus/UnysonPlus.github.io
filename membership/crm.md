@@ -88,29 +88,27 @@ builder from its template gallery, so receipts and reminders match the newslette
 The connection follows one rule from the CRM's design: **other extensions use the CRM's public API and
 events, never its tables.**
 
-| Membership needs | The CRM provides | CRM roadmap |
-| --- | --- | --- |
-| Find or create a contact; link a WordPress user | The public PHP API, `fw_crm()`, and the contact-user link | Phase 6 · Public PHP API; Ready for the Membership extension |
-| Add and remove tags and lists; check tag, list and segment membership | The same API | Phase 6 · Public PHP API |
-| Rule conditions on tags, lists, segments and fields | The shared filter engine | Phase 1 · Rule-based segments |
-| Timeline entries and the contact-page panel | Integrations registry (timeline types, contact panels, fields) | Phase 6 · Integrations registry |
-| Triggers and actions in automations | Integrations registry and the automation engine | Phase 4 · Automations; Phase 6 · Integrations registry |
-| Plan, status and value per contact | Purchase summaries | Phase 6 · Purchase summaries |
-| A card on the CRM home | Dashboard widget registry | Phase 6 · Dashboard widget registry |
-| Listen to contact changes (email changed, contact deleted) | The events catalogue | Phase 6 · Events catalogue |
+The CRM side of the connection is built (CRM 1.0.43 and 1.0.44, arriving with the next release), so the
+CRM module is no longer waiting on the CRM:
 
-In the other direction, the CRM listens to Membership's documented events (one per status change, all with
-the same payload) rather than reading Membership's tables.
+| Membership needs | The CRM provides |
+| --- | --- |
+| Find a member's contact, or link one | `FW_CRM_Contacts::find_by_user()`, `id_for_user()` (one cached query, for every page view), `link_user()` and `unlink_user()`, which refuse to link a contact that belongs to someone else |
+| Create the contact at registration | `FW_CRM_Contacts::create()`, which finds an existing contact by email instead of making a duplicate |
+| Mirror plans to tags | `FW_CRM_Lists::get_or_create()` with `managed_by => 'membership'`, then `add_to_list()` and `remove_from_list()`. Managed tags are locked in the CRM, so staff cannot break the mirror by hand |
+| Tag, list and segment conditions in access rules | `FW_CRM_Subscribers::has_lists()` (any, all or none; one cached query) and `FW_CRM_Segments::contact_matches()` |
+| Plan, status and renewal date on the contact | Managed custom fields, written with `FW_CRM_Fields::set_values()` and filterable in segments ("Gold members past due", "renews in the next 7 days") |
+| Timeline entries | `FW_CRM_Activity::log()` with Membership's own types, labelled through `unysonplus_crm_activity_types` |
+| A Membership panel on the contact page | The `unysonplus_crm_contact_panels` filter |
+| A card on the CRM home, a link in the CRM sidebar | `unysonplus_crm_dashboard_cards` and `unysonplus_crm_nav` |
+| React when a contact changes | `unysonplus_crm_contact_updated`, which passes the old and new value of every changed field |
+| Triggers and actions in automations | Designed with the CRM's automations phase |
 
-The CRM already has the foundations: contacts carry a WordPress user link, a relations table links any two
-kinds of record (a membership attaches to its contact there), there is an activity timeline, and the CRM
-fires an event for each contact, tag and list change. What is still to come is the public API and the
-registries in CRM phase 6. So the order of work is:
-
-1. Membership phases 1 to 3 (plans, access, accounts, payments) need nothing from the CRM.
-2. CRM phase 6's **public API**, **events catalogue**, **integrations registry** and **Membership link** are
-   built next, alongside them.
-3. Membership phase 4, the CRM module, is then built on those, with no shortcuts into CRM tables.
+In the other direction, the CRM listens to Membership's documented events
+(`unysonplus_membership_joined`, `_renewed`, `_cancelled`, `_expired` and the rest, plus
+`unysonplus_membership_changed` for all of them, each with the same arguments) rather than reading
+Membership's tables. Email changes travel one way only, from the WordPress account to the contact: an edit
+in the CRM never changes the address someone logs in with.
 
 ## When the CRM is off
 

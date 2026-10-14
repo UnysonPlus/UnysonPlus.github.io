@@ -8,11 +8,36 @@ description: "The planned Unyson+ Membership extension: plans, one access engine
 
 # Membership
 
-:::info Planned
-The Membership extension is designed and on the [roadmap](./roadmap.mdx); no code has shipped yet. This
-page describes what it will be. The design comes from a study of the leading membership plugins and
-platforms, summarised under [Research](./research.md).
+:::info In progress
+The first part is built: the Membership app itself, plans with prices and inheritance, membership records
+with their full history, adding and managing members by hand, and the Modules screen. It arrives with the
+next release. Access rules come next. The [roadmap](./roadmap.mdx) tracks each task against the code. The
+design comes from a study of the leading membership plugins and platforms, summarised under
+[Research](./research.md).
 :::
+
+## Finding your way around
+
+Open **Unyson+ → Membership** and it takes over the screen like an app of its own, the same way the
+[CRM](/crm) does:
+
+- **The Membership sidebar** lists every area: Home, Members, Plans and Access rules; Payments and Coupons;
+  Reports; Emails, Modules and Settings. Areas still being built are marked **Soon**, and their page says
+  what they will do.
+- **The WordPress menu folds to its icons** while you are in Membership. **Hide the WordPress menu** at the
+  bottom of the sidebar removes it altogether (your choice is remembered), and **Back to WordPress** takes
+  you to the dashboard. With the CRM on, **Open the CRM** is there too.
+- **The top bar** searches members by name or email (press <kbd>/</kbd> to jump to it) and has a **New**
+  menu for a member or a plan.
+- **Home** shows members with access, active, cancelled and ended memberships, members by plan, recent
+  changes and who is ending in the next two weeks. A fresh install shows the first three steps instead.
+- **A plan's page** holds its name, prices (several per plan, such as monthly and yearly), how long it
+  lasts (until cancelled, a set time, or until a date), what other plan it includes, its priority and a
+  member limit. A plan with members is archived rather than deleted.
+- **A member's page** shows each membership with its status, dates and source, with **Extend**, **Change
+  plan**, **Cancel at end date**, **End now** and **Reactivate**, a form to add another plan, and the
+  history of every change and who made it.
+- **Modules** lists every switchable module with the phase it arrives in.
 
 Membership turns a Unyson+ site into a members site: free and paid plans, content that opens only to the
 right people, a member area designed in the page builder like any other page, and payments taken with your

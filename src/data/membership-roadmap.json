@@ -3,9 +3,9 @@
   "extension": "membership",
   "cloneDir": "UnysonPlus-Membership-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Membership-Extension",
-  "extensionVersion": null,
-  "generatedAt": "2026-10-14T07:09:06.003Z",
-  "detected": false,
+  "extensionVersion": "1.0.0",
+  "generatedAt": "2026-10-14T07:48:02.250Z",
+  "detected": true,
   "milestones": [
     {
       "id": "p1-foundation",
@@ -23,8 +23,8 @@
               "thumbnail.svg"
             ]
           },
-          "status": "planned",
-          "progress": "0/3"
+          "status": "done",
+          "progress": "3/3"
         },
         {
           "id": "p1-schema",
@@ -41,8 +41,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p1-modules",
@@ -53,8 +53,8 @@
               "includes/class-fw-membership-modules.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-plans",
@@ -63,10 +63,20 @@
           "detect": {
             "files": [
               "includes/class-fw-membership-plans.php"
+            ],
+            "symbols": [
+              {
+                "file": "includes/class-fw-membership-plans.php",
+                "pattern": "function lineage"
+              },
+              {
+                "file": "includes/class-fw-membership-access.php",
+                "pattern": "user_has_cap"
+              }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "in-progress",
+          "progress": "2/3"
         },
         {
           "id": "p1-memberships",
@@ -77,8 +87,8 @@
               "includes/class-fw-membership-memberships.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-service",
@@ -90,8 +100,8 @@
               "includes/class-fw-membership-events.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p1-rules",
@@ -199,8 +209,8 @@
               "includes/admin/class-fw-membership-admin-page.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },
@@ -418,7 +428,7 @@
     {
       "id": "p4-crm",
       "title": "Phase 4 · Connected to the CRM",
-      "goal": "With both extensions on, every member is a CRM contact, memberships show on the contact's page and timeline, access rules can use CRM tags, lists and segments, and membership events drive CRM automations and campaigns. Built on the CRM's public API and events (CRM roadmap phase 6), never its tables.",
+      "goal": "With both extensions on, every member is a CRM contact, memberships show on the contact's page and timeline, access rules can use CRM tags, lists and segments, and membership events drive CRM automations and campaigns. Built on the CRM's extension API and events (already in the CRM), never its tables.",
       "tasks": [
         {
           "id": "p4-bridge",

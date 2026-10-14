@@ -32,12 +32,16 @@ function sitemapDataPlugin() {
     theme: 'The Theme',
     guides: 'Guides',
     aiDevKit: 'AI Dev Kit',
+    crm: 'CRM',
+    membership: 'Membership',
   };
   const BLOG_LABELS = {default: 'News', decisions: 'Design Decisions'};
   const ORDER = [
     'Main',
     'Manual',
     'Animation Engine',
+    'CRM',
+    'Membership',
     'The Theme',
     'Guides',
     'AI Dev Kit',

@@ -184,8 +184,9 @@ What the membership plugin we studied does, and what ours should plan for:
 - **Account security**: one session at a time, lockout after failed logins, logout when idle.
 - **A course system**: courses with ordered lessons, quiz gates, progress stored per lesson, plus drip
   release and certificates (which the plugin we studied lacks).
-- **Payments through WooCommerce**, with upgrades, downgrades and pausing, rather than a limited payment
-  module of its own.
+- **Full payments with upgrades, downgrades and pausing**, rather than the limited payment module we
+  studied. The Membership design settles this as its own checkout on the site owner's payment accounts,
+  with WooCommerce as an optional billing source (see [Membership research](/membership/research)).
 - **A client area** where a member sees their files, orders and course progress.
 
 ## Lessons

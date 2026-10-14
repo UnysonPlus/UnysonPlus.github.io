@@ -16,7 +16,8 @@
     "indexnow": "node scripts/indexnow.mjs",
     "roadmap:pos": "node scripts/gen-pos-roadmap.mjs",
     "roadmap:vi": "node scripts/gen-roadmap.mjs src/data/visitor-insights-roadmap.json",
-    "roadmap:crm": "node scripts/gen-roadmap.mjs src/data/crm-roadmap.json"
+    "roadmap:crm": "node scripts/gen-roadmap.mjs src/data/crm-roadmap.json",
+    "roadmap:membership": "node scripts/gen-roadmap.mjs src/data/membership-roadmap.json"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.1",

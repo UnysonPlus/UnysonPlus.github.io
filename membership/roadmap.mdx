@@ -1,0 +1,58 @@
+---
+sidebar_position: 3
+title: Roadmap
+description: The Membership extension's phases, from plans and the access engine to accounts, payments, the CRM connection, content tools, retention, groups, store integration, reports, security and courses, verified automatically against the extension source tree.
+---
+
+import Roadmap, {RoadmapSummary} from '@site/src/components/Roadmap';
+import data from '@site/src/data/membership-roadmap.json';
+
+# Roadmap
+
+Eleven phases, built in order. Phases 1 and 2 already make a complete free or hand-granted members site
+(plans, access rules, the member area and emails); phase 3 adds selling; phase 4 joins it to the
+[CRM](/crm); every later phase is a module on the same plans, membership records and access engine.
+
+<RoadmapSummary data={data} />
+
+<Roadmap data={data} />
+
+## Order of work
+
+1. **Plans, membership records and the access engine.** The tables, the status rules and the one resolver
+   every gate uses, including element and menu visibility and leak-proof gating.
+2. **Accounts and the member area.** Registration through Forms, login, the account page, emails and the
+   REST API.
+3. **Payments.** The gateway layer, card payments and wallets, PayPal, checkout, coupons, invoices and tax.
+4. **The CRM connection**, built on the CRM's public API, events and integrations registry (CRM roadmap
+   phase 6), which are built alongside phases 1 to 3. See [Membership and the CRM](./crm.md).
+5. **Content tools**: drip, the metered paywall, protected downloads and pay per item.
+6. **Retention**: failed-payment recovery, pause, the cancellation flow, reminders and gifts.
+7. **Groups and community**: team plans, the directory and membership cards.
+8. **Store integration** for WooCommerce sites.
+9. **Reports.**
+10. **Security and operations**: session limits, login links, passkeys, the scheduler status card,
+    importers and the command line.
+11. **Courses**, on the same access engine.
+
+## How this page stays current
+
+Status is not ticked by hand. `src/data/membership-roadmap.json` lists every task with a `detect` block naming
+the files (and, where needed, code symbols) that make it real, and `scripts/gen-roadmap.mjs` checks them
+against the extension's source tree:
+
+| Result | Status |
+| --- | --- |
+| Every file and symbol found | **Done** |
+| Some found, some missing | **In progress** |
+| None found | **Planned** |
+
+```bash
+npm run roadmap:membership            # scan and rewrite the JSON
+npm run roadmap:membership -- --dry   # report only, write nothing
+npm run roadmap:membership -- --check # exit 1 if stale
+```
+
+The `detect` paths double as the extension's agreed file layout, decided before the code is written: core
+classes in `includes/`, each switchable module in `modules/<module>/` (not loaded unless the module is on),
+and page-builder elements in `shortcodes/<name>/`.

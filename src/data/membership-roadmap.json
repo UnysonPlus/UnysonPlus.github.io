@@ -1,0 +1,885 @@
+{
+  "_comment": "SOURCE OF TRUTH for the Membership roadmap rendered at /membership/roadmap. Task `status` is maintained AUTOMATICALLY by `npm run roadmap:membership` (scripts/gen-roadmap.mjs), which inspects the real extension source tree and flips a task to `done` when everything in its `detect` block exists. The detect paths are the extension's agreed file layout: core classes in includes/, each switchable module in modules/<module>/ (not auto-included, so a module that is off loads no code), page-builder elements in shortcodes/<name>/. Hand-edit title/detail/detect freely; set `pin: true` on a task whose status the script should leave alone.",
+  "extension": "membership",
+  "cloneDir": "UnysonPlus-Membership-Extension",
+  "repo": "https://github.com/UnysonPlus/UnysonPlus-Membership-Extension",
+  "extensionVersion": null,
+  "generatedAt": "2026-10-14T07:09:06.003Z",
+  "detected": false,
+  "milestones": [
+    {
+      "id": "p1-foundation",
+      "title": "Phase 1 · Plans, memberships and the access engine",
+      "goal": "The core every later phase stands on: plans, the membership record that says who holds which plan and in what state, and one access engine that answers \"may this person see this?\" for every page, post, archive, element and menu. A site can already run a free or manually granted members area at the end of this phase.",
+      "tasks": [
+        {
+          "id": "p1-scaffold",
+          "title": "Extension scaffold",
+          "detail": "The `membership` extension: manifest, main class, settings, thumbnail and its entry in the Extensions catalogue. Ships inactive; nothing loads until it is switched on.",
+          "detect": {
+            "files": [
+              "manifest.php",
+              "class-fw-extension-membership.php",
+              "thumbnail.svg"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/3"
+        },
+        {
+          "id": "p1-schema",
+          "title": "Tables and migrations",
+          "detail": "Its own tables from the first release: plans, prices, memberships, membership history, access rules, payments and the event log, indexed for the screens that read them. A versioned installer with numbered migrations; tables are never dropped on deactivation, only by the explicit \"Remove all data\" action.",
+          "detect": {
+            "files": [
+              "includes/class-fw-membership-installer.php"
+            ],
+            "symbols": [
+              {
+                "file": "includes/class-fw-membership-installer.php",
+                "pattern": "DB_VERSION"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "p1-modules",
+          "title": "Module switches",
+          "detail": "One Modules screen. The core is always on; every other module (payments, drip, groups, courses…) is switched on there, and a module that is off loads no code and adds no menus.",
+          "detect": {
+            "files": [
+              "includes/class-fw-membership-modules.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-plans",
+          "title": "Plans and prices",
+          "detail": "Unlimited plans, each with any number of prices (free, one-time, monthly, yearly, custom interval, fixed-date renewal, lifetime), a trial, a setup fee, a duration or expiry date, a sign-up limit, a priority so the highest plan wins when someone holds several, and inheritance (Gold includes everything Silver unlocks). A plan can also give a WordPress role or grant or deny capabilities while it is active, applied on the fly and never written into the role, so switching the extension off leaves nothing behind.",
+          "detect": {
+            "files": [
+              "includes/class-fw-membership-plans.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-memberships",
+          "title": "Membership records",
+          "detail": "A membership is a real record (person × plan) with a status, start, renewal and end dates, the source that granted it (manual, payment, WooCommerce, group seat, gift, import) and a full history. Several memberships per person are allowed.",
+          "detect": {
+            "files": [
+              "includes/class-fw-membership-memberships.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-service",
+          "title": "Status rules and events",
+          "detail": "One service owns every status change (pending, trialing, active, past due, paused, cancelled with access to period end, expired, refunded) and fires one documented event per change, so emails, the CRM, automations and add-ons all listen to one stream.",
+          "detect": {
+            "files": [
+              "includes/class-fw-membership-service.php",
+              "includes/class-fw-membership-events.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "p1-rules",
+          "title": "Access rules",
+          "detail": "A rule says **what** is protected (reusing the Theme Builder's location vocabulary: entire site, post types, single items, terms, archives, child pages, URL patterns), **who** may see it (plans, any / all / none; logged-in state; roles; later CRM tags, lists and segments, course progress) and **when** (immediately, after N days, from a date). Each post type has a default (open or protected) and any single post can override it: protect, open, or hide from lists. Rule targets are stored as indexed rows and looked up from the page’s context (its ID, terms, author, post type, template), so one query answers any page however many rules exist, and \"except\" groups handle \"all of this category but this post\".",
+          "detect": {
+            "files": [
+              "includes/class-fw-membership-rules.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-access",
+          "title": "Access engine",
+          "detail": "One resolver, `fw_membership()->can( $user, $object )`, used by every gate below, cached per request, with a filter for custom checks. Admins and editors always pass; a \"view as member of…\" toggle in the admin bar previews the site as any plan, and an emailed, time-limited rescue link restores an administrator who has locked themselves out.",
+          "detect": {
+            "files": [
+              "includes/class-fw-membership-access.php"
+            ],
+            "symbols": [
+              {
+                "file": "includes/class-fw-membership-access.php",
+                "pattern": "function can"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "p1-protect",
+          "title": "Leak-proof content gating",
+          "detail": "Protection applies everywhere the content can surface, not only the single page: archives and loops, search, RSS feeds, the REST API, comments, sitemaps, attachments of protected posts and adjacent-post links. Most membership leaks come from the places nobody tested.",
+          "detect": {
+            "files": [
+              "includes/class-fw-membership-protect.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-denied",
+          "title": "What a non-member sees",
+          "detail": "One clear order when access is denied, shown in the interface: a teaser (excerpt or the first N blocks) with an upgrade prompt, a login form, the pricing table, a redirect, or \"not found\". Per rule, with a site default. A **Paywall prompt** element lets designers build the upgrade box in the page builder.",
+          "detect": {
+            "files": [
+              "includes/class-fw-membership-denied.php",
+              "shortcodes/paywall-prompt/config.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "p1-elements",
+          "title": "Visibility on every element",
+          "detail": "Every page-builder element, section and column gains **Members** fields in its Advanced → Display conditions: show to plans, hide from plans, members or non-members, through the existing display-conditions filter. Gutenberg blocks get the same fields.",
+          "detect": {
+            "files": [
+              "includes/class-fw-membership-elements.php"
+            ],
+            "symbols": [
+              {
+                "file": "includes/class-fw-membership-elements.php",
+                "pattern": "fw_sc_display_conditions"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "p1-menus",
+          "title": "Menus per plan",
+          "detail": "Each menu item can be shown to everyone, logged-in users, logged-out users or chosen plans; members can also get their own menu location.",
+          "detect": {
+            "files": [
+              "includes/class-fw-membership-menus.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-cache",
+          "title": "Caching that never shows the wrong page",
+          "detail": "Protected responses are marked uncacheable and a member cookie lets page caches vary, with notes for common caches and hosts, so a cached member page is never served to a visitor.",
+          "detect": {
+            "files": [
+              "includes/class-fw-membership-cache.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-admin",
+          "title": "Membership app in wp-admin",
+          "detail": "A Membership screen in the same app style as the CRM: Home, Members, Plans, Access rules, Payments, Reports, Emails, Modules and Settings. Members can be granted, extended, changed or revoked by hand, with notes and the full history.",
+          "detect": {
+            "files": [
+              "includes/admin/class-fw-membership-admin-page.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p2-accounts",
+      "title": "Phase 2 · Accounts and the member area",
+      "goal": "People can join, log in and look after their own account without leaving the site's design. Everything a member sees is a page-builder element, so the member area is designed like any other page.",
+      "tasks": [
+        {
+          "id": "p2-register",
+          "title": "Registration through Forms",
+          "detail": "A **Register member** form action (next to the CRM's Add to the CRM action) creates the WordPress user, grants a free plan or sends them to checkout, and records consent. New username and password fields join the form builder.",
+          "detect": {
+            "files": [
+              "includes/forms/class-fw-membership-forms-action-register.php",
+              "includes/forms/class-fw-membership-form-fields.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "p2-auth",
+          "title": "Login, logout and password reset",
+          "detail": "Login, lost-password and reset elements styled by the theme, redirects after login and logout per plan, and the WordPress login page optionally replaced. Works with the Security extension's throttling and two-factor login.",
+          "detect": {
+            "files": [
+              "includes/class-fw-membership-accounts.php",
+              "shortcodes/member-login/config.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "p2-verify",
+          "title": "Email verification and approval",
+          "detail": "Optional email verification before access starts, and an optional approval queue for plans that need a human yes.",
+          "detect": {
+            "files": [
+              "includes/class-fw-membership-verification.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2-account",
+          "title": "Account page",
+          "detail": "A **Member account** element with tabs for profile, memberships, payments and invoices, payment method, and security (password, sessions). Members cancel, change plan or update their card here.",
+          "detect": {
+            "files": [
+              "shortcodes/member-account/config.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2-profile",
+          "title": "Profile fields",
+          "detail": "Extra profile fields chosen per plan, stored on the user, or on the CRM contact when the CRM is on, so there is one place for a person's details.",
+          "detect": {
+            "files": [
+              "includes/class-fw-membership-profile.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2-emails",
+          "title": "Member emails",
+          "detail": "Every lifecycle email (welcome, verification, receipt, renewal reminder, payment failed, card expiring, cancelled, expired, plan changed) editable with placeholders, sent through `wp_mail()` so the Mailer's transport applies. When the CRM is on, they use its email builder and templates.",
+          "detect": {
+            "files": [
+              "includes/class-fw-membership-emails.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2-privacy",
+          "title": "Privacy",
+          "detail": "Personal-data export and erasure for memberships, payments and profile fields; payment records are anonymised, not deleted, so accounts stay correct.",
+          "detect": {
+            "files": [
+              "includes/class-fw-membership-privacy.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2-api",
+          "title": "REST API and AI connector tools",
+          "detail": "REST endpoints for plans, members, memberships and rules with proper capability checks and real HTTP error codes, and AI Assistant abilities to set up plans, rules and pages. No ability reads or exports members' personal data.",
+          "detect": {
+            "files": [
+              "includes/class-fw-membership-rest.php",
+              "includes/ai-abilities.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        }
+      ]
+    },
+    {
+      "id": "p3-payments",
+      "title": "Phase 3 · Payments and checkout",
+      "goal": "Selling plans directly, with the site owner's own payment accounts and no transaction fee from Unyson+. Billing runs on the payment service's own subscriptions wherever possible, so renewals do not depend on WordPress's scheduler.",
+      "tasks": [
+        {
+          "id": "p3-gateways",
+          "title": "Payment gateway layer",
+          "detail": "One gateway interface (charge, subscribe, change, pause, cancel, refund, webhook) so new gateways are add-ons, and every payment, refund and renewal lands in one payments table.",
+          "detect": {
+            "files": [
+              "modules/payments/class-fw-membership-gateways.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p3-stripe",
+          "title": "Card payments and wallets",
+          "detail": "The first gateway: cards, Apple Pay, Google Pay and saved-card checkout, subscriptions billed by the payment service, strong customer authentication, signed webhooks with replay protection, and a test mode.",
+          "detect": {
+            "files": [
+              "modules/payments/gateways/class-fw-membership-gateway-stripe.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p3-paypal",
+          "title": "PayPal and offline payments",
+          "detail": "PayPal subscriptions, and bank transfer or cash with manual approval.",
+          "detect": {
+            "files": [
+              "modules/payments/gateways/class-fw-membership-gateway-paypal.php",
+              "modules/payments/gateways/class-fw-membership-gateway-offline.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "p3-checkout",
+          "title": "Checkout and pricing elements",
+          "detail": "A **Pricing plans** element (monthly / yearly toggle, highlighted plan) and a one-page **Checkout** element that creates the account and takes payment in one step, with captcha and an order summary.",
+          "detect": {
+            "files": [
+              "shortcodes/pricing-plans/config.php",
+              "shortcodes/membership-checkout/config.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "p3-changes",
+          "title": "Upgrades, downgrades and proration",
+          "detail": "Members switch plans themselves; the price difference is prorated or applied at renewal, per plan.",
+          "detect": {
+            "files": [
+              "modules/payments/class-fw-membership-plan-change.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p3-coupons",
+          "title": "Coupons",
+          "detail": "Percentage or fixed, first payment or forever, per plan, with usage limits, expiry and bulk generation.",
+          "detect": {
+            "files": [
+              "modules/coupons/class-fw-membership-coupons.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p3-invoices",
+          "title": "Receipts and invoices",
+          "detail": "Numbered invoices with the business and buyer details, downloadable as PDF from the account page.",
+          "detect": {
+            "files": [
+              "modules/payments/class-fw-membership-invoices.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p3-tax",
+          "title": "Tax",
+          "detail": "Tax rates by country and region, EU VAT with VAT-number validation and reverse charge, or automatic tax calculation by the payment service.",
+          "detect": {
+            "files": [
+              "modules/tax/class-fw-membership-tax.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p4-crm",
+      "title": "Phase 4 · Connected to the CRM",
+      "goal": "With both extensions on, every member is a CRM contact, memberships show on the contact's page and timeline, access rules can use CRM tags, lists and segments, and membership events drive CRM automations and campaigns. Built on the CRM's public API and events (CRM roadmap phase 6), never its tables.",
+      "tasks": [
+        {
+          "id": "p4-bridge",
+          "title": "CRM bridge",
+          "detail": "Turns on by itself when the CRM is active. Registers Membership as a CRM integration and degrades cleanly when the CRM is off.",
+          "detect": {
+            "files": [
+              "modules/crm/class-fw-membership-crm.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-identity",
+          "title": "One person, one contact",
+          "detail": "Registration finds or creates the CRM contact by email and links it to the WordPress user; email changes stay in sync both ways, and duplicates are never created.",
+          "detect": {
+            "files": [
+              "modules/crm/class-fw-membership-crm-identity.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-mirror",
+          "title": "Plans mirrored to tags",
+          "detail": "Each plan maps to a CRM tag (and optionally a list) that is added and removed as the membership changes, plus a nightly reconcile. The membership stays the source of truth; tags are a mirror, so they never drift.",
+          "detect": {
+            "files": [
+              "modules/crm/class-fw-membership-crm-sync.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-rules",
+          "title": "CRM conditions in access rules",
+          "detail": "Access rules and element visibility can use CRM tags (any / all / none), lists, segments, lifecycle stage and contact fields, through the CRM's filter engine, so the rule language is the same in both extensions.",
+          "detect": {
+            "files": [
+              "modules/crm/class-fw-membership-crm-conditions.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-timeline",
+          "title": "Timeline and contact page",
+          "detail": "Joined, renewed, payment failed, plan changed, cancelled and expired land on the contact's timeline, and the contact page gets a Membership panel (plans, payments, grant or extend).",
+          "detect": {
+            "files": [
+              "modules/crm/class-fw-membership-crm-timeline.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-automations",
+          "title": "Automation triggers and actions",
+          "detail": "Triggers: member joined, trial ending, renewal due, payment failed, cancelled, expired, drip unlocked, inactive for N days. Actions: grant, extend, pause or revoke a plan, and send a coupon.",
+          "detect": {
+            "files": [
+              "modules/crm/class-fw-membership-crm-automations.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-summary",
+          "title": "Member value on the contact",
+          "detail": "Plan, status, member since, monthly revenue and lifetime value kept as the contact's membership summary, usable in segments (for example \"Gold members past due\"), and a Members card on the CRM home.",
+          "detect": {
+            "files": [
+              "modules/crm/class-fw-membership-crm-summary.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p5-content",
+      "title": "Phase 5 · Content tools",
+      "goal": "The ways publishers and course creators actually release content: on a schedule, a few free articles at a time, as downloads, or one item at a time.",
+      "tasks": [
+        {
+          "id": "p5-drip",
+          "title": "Drip content",
+          "detail": "Release content N days after someone joins, on a fixed date, or in a sequence, with an \"unlocks in 3 days\" notice and an email when it opens.",
+          "detect": {
+            "files": [
+              "modules/drip/class-fw-membership-drip.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p5-metered",
+          "title": "Metered paywall and registration wall",
+          "detail": "Let visitors read N items per period before asking them to register (free) or subscribe, counted per visitor and per account.",
+          "detect": {
+            "files": [
+              "modules/paywall/class-fw-membership-metered.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p5-files",
+          "title": "Protected downloads",
+          "detail": "Files in a protected folder served only through an access check (no guessable URLs), with download limits and logs, and a Downloads element.",
+          "detect": {
+            "files": [
+              "modules/files/class-fw-membership-files.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p5-single",
+          "title": "Pay per item",
+          "detail": "Sell access to one post, page or file without a plan.",
+          "detect": {
+            "files": [
+              "modules/payments/class-fw-membership-single-purchase.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p6-retention",
+      "title": "Phase 6 · Keeping members",
+      "goal": "The tools that keep revenue: recover failed payments, offer a pause instead of a cancellation, ask why people leave, and win them back.",
+      "tasks": [
+        {
+          "id": "p6-dunning",
+          "title": "Failed payment recovery",
+          "detail": "Retries on a schedule, a grace period with access kept, card-update links in emails, and card-expiring reminders. On by default.",
+          "detect": {
+            "files": [
+              "modules/retention/class-fw-membership-dunning.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6-pause",
+          "title": "Pause instead of cancel",
+          "detail": "Members pause for one to three months; billing and access resume by themselves.",
+          "detect": {
+            "files": [
+              "modules/retention/class-fw-membership-pause.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6-cancel",
+          "title": "Cancellation flow",
+          "detail": "A short survey on why, then a save offer (discount, pause or cheaper plan) before the cancellation is confirmed; answers are reported.",
+          "detect": {
+            "files": [
+              "modules/retention/class-fw-membership-cancel-flow.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6-winback",
+          "title": "Reminders and win-back",
+          "detail": "Renewal and trial-ending reminders, and a win-back coupon after expiry.",
+          "detect": {
+            "files": [
+              "modules/retention/class-fw-membership-reminders.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6-gifts",
+          "title": "Gift memberships",
+          "detail": "Buy a plan for someone else; they redeem it with a code or link.",
+          "detect": {
+            "files": [
+              "modules/gifts/class-fw-membership-gifts.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p7-groups",
+      "title": "Phase 7 · Groups and community",
+      "goal": "Memberships for teams and organisations, and the people-facing pieces of a community site.",
+      "tasks": [
+        {
+          "id": "p7-groups",
+          "title": "Group and team memberships",
+          "detail": "One buyer pays for N seats and invites people by email, link or domain; seats can be added, removed and reassigned, and the group owner gets a team page.",
+          "detect": {
+            "files": [
+              "modules/groups/class-fw-membership-groups.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p7-directory",
+          "title": "Member directory and profiles",
+          "detail": "A searchable, filterable directory element and public profile pages, each field with its own privacy setting.",
+          "detect": {
+            "files": [
+              "modules/directory/class-fw-membership-directory.php",
+              "shortcodes/member-directory/config.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "p7-cards",
+          "title": "Membership cards",
+          "detail": "A printable or wallet-style digital card with a QR code for check-in at events or venues.",
+          "detect": {
+            "files": [
+              "modules/cards/class-fw-membership-cards.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p8-commerce",
+      "title": "Phase 8 · Store integration",
+      "goal": "For sites that already sell through WooCommerce: a product can grant a plan, members get member prices, and the store's own subscriptions can drive memberships instead of Membership's checkout.",
+      "tasks": [
+        {
+          "id": "p8-woo-grant",
+          "title": "Products that grant plans",
+          "detail": "Buying a product grants a plan; a refund or cancelled subscription ends it.",
+          "detect": {
+            "files": [
+              "modules/woocommerce/class-fw-membership-woocommerce.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p8-woo-perks",
+          "title": "Member prices and restricted products",
+          "detail": "Member discounts and free shipping per plan, and products hidden from or unbuyable by non-members.",
+          "detect": {
+            "files": [
+              "modules/woocommerce/class-fw-membership-woo-perks.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p9-insights",
+      "title": "Phase 9 · Reports",
+      "goal": "The numbers a membership business runs on, inside WordPress.",
+      "tasks": [
+        {
+          "id": "p9-reports",
+          "title": "Revenue and member reports",
+          "detail": "Monthly recurring revenue, new, upgraded, downgraded and lost members, churn, lifetime value, trial conversion and failed-payment recovery, by plan and period.",
+          "detect": {
+            "files": [
+              "modules/analytics/class-fw-membership-reports.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p9-cohorts",
+          "title": "Cohorts and content",
+          "detail": "Retention by joining month and by source, and which protected content members actually read (with Visitor Insights when it is on).",
+          "detect": {
+            "files": [
+              "modules/analytics/class-fw-membership-cohorts.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p10-security",
+      "title": "Phase 10 · Security and operations",
+      "goal": "Stop account sharing, make login easier without making it weaker, and make the extension easy to move to and to run.",
+      "tasks": [
+        {
+          "id": "p10-sessions",
+          "title": "Account sharing limits",
+          "detail": "A limit on simultaneous sessions or devices per plan, with members able to sign out other devices.",
+          "detect": {
+            "files": [
+              "modules/security/class-fw-membership-sessions.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p10-magic",
+          "title": "One-click login links",
+          "detail": "Login links in emails that are signed, single-use and expire, never a shared code.",
+          "detect": {
+            "files": [
+              "modules/security/class-fw-membership-magic-links.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p10-passkeys",
+          "title": "Passkeys",
+          "detail": "Sign in with a passkey (fingerprint, face or device PIN), alongside the Security extension's two-factor login.",
+          "detect": {
+            "files": [
+              "modules/security/class-fw-membership-passkeys.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p10-scheduler",
+          "title": "Scheduler status",
+          "detail": "A health card showing whether scheduled jobs (reminders, expiries, drip, reconcile) run on time, with the exact cron line to add on shared hosting.",
+          "detect": {
+            "files": [
+              "includes/admin/class-fw-membership-health.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p10-import",
+          "title": "Importers",
+          "detail": "Import members, plans and active subscriptions from a CSV file or from other membership plugins, keeping payment-service subscription IDs so renewals continue.",
+          "detect": {
+            "files": [
+              "modules/importers/class-fw-membership-importers.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p10-log",
+          "title": "Login and access log",
+          "detail": "Logins, failed logins, denied access and plan changes per member, for support and for spotting shared accounts.",
+          "detect": {
+            "files": [
+              "modules/security/class-fw-membership-log.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p10-cli",
+          "title": "Command line",
+          "detail": "WP-CLI commands to list, grant, expire and reconcile memberships.",
+          "detect": {
+            "files": [
+              "includes/class-fw-membership-cli.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p11-courses",
+      "title": "Phase 11 · Courses",
+      "goal": "A course module on the same access engine, so a course is just protected content with order and progress, not a second membership system.",
+      "tasks": [
+        {
+          "id": "p11-courses",
+          "title": "Courses and lessons",
+          "detail": "Courses with modules and lessons in order, enrolment by plan or single purchase, and drip per lesson.",
+          "detect": {
+            "files": [
+              "modules/courses/class-fw-membership-courses.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p11-progress",
+          "title": "Progress and completion",
+          "detail": "Mark complete, resume where you left off, progress bars and a course outline element.",
+          "detect": {
+            "files": [
+              "modules/courses/class-fw-membership-progress.php",
+              "shortcodes/course-outline/config.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "p11-quizzes",
+          "title": "Quizzes",
+          "detail": "Quizzes that can gate the next lesson, with the common question types and a pass mark.",
+          "detect": {
+            "files": [
+              "modules/courses/class-fw-membership-quizzes.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p11-certificates",
+          "title": "Certificates",
+          "detail": "A certificate designed in the builder and issued on completion as a PDF, with a verification link.",
+          "detect": {
+            "files": [
+              "modules/courses/class-fw-membership-certificates.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    }
+  ]
+}

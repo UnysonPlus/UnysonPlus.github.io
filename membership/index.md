@@ -13,7 +13,8 @@ Phases 1 and 2 are built: the Membership app, plans, members, access rules with 
 behind them, sign-up forms with email confirmation and approval, the login and account pages, member emails,
 profile fields, a REST API and AI Assistant tools. Phase 3 is built too: plans are sold by card, PayPal or
 bank transfer, with coupons, tax, invoices, and upgrades and downgrades members make themselves. Phase 4 connects Membership to the [CRM](./crm.md): members are contacts, plans are tags, and
-access rules can use CRM tags, lists and segments. All of it arrives with the next release. The
+access rules can use CRM tags, lists and segments. Phase 5 adds drip content, a metered paywall, protected downloads and
+selling single items. All of it arrives with the next release. The
 [roadmap](./roadmap.mdx) tracks each task against the code. The design comes from a study of the leading
 membership plugins and platforms, summarised under [Research](./research.md).
 :::
@@ -134,6 +135,30 @@ Switch on **Payments** in Membership → Modules, then open **Membership → Pay
   editable under Emails.
 - **Developers** can add another payment method with the `unysonplus_membership_gateways` filter, and change
   the Stripe checkout (for example to allow promotion codes) with `unysonplus_membership_stripe_session`.
+
+## Drip, free reads, downloads and single items
+
+Each of these is a module you switch on under **Membership → Modules**.
+
+- **Drip content.** On an access rule, **Opens after (days)** releases it that many days after the person
+  joined, and **Opens on (date)** releases it on a date. Until then, members who would otherwise see it get
+  "This opens for you in 3 days", their account page lists what is **Coming up for you**, and they get an
+  email the day it opens. For a course-like sequence, give each lesson its own rule: 0, 7, 14 days.
+- **Metered paywall.** Tick **Free reads** on a rule and people without access can read a few of those items
+  each month (or week, or day) before the prompt appears: visitors a few, and people with a free account more,
+  which turns it into a registration wall (**Membership → Settings → Metered paywall**). Each item counts once,
+  and a short note says how many free articles are left. Visitors are counted in their browser, so clearing
+  cookies resets it, as with any metered paywall.
+- **Protected downloads.** Upload files under **Membership → Downloads** and choose who may download them
+  (plans, any member, anyone logged in) and how many times a month. Files are kept in a folder with a random
+  name that the web server refuses to serve, under random file names, so there is no address to guess or
+  share; every download goes through an access check and is logged. Put a file on a page with the **Member
+  Download** element. On Nginx, the random names are the protection; add a `deny` rule for the folder if you
+  want belt and braces.
+- **Selling one item.** The **Sell on its own** box on any post or page (and the price field on a protected
+  file) sells that one item through the same checkout, for ever or for a number of days. People who are not
+  allowed to see it get a **Buy this for $5** button on the prompt, and buyers can open it even when it is also
+  part of a plan they do not hold. Coupons, tax, invoices and every payment method work as for plans.
 
 ## Profile fields, the API and AI
 

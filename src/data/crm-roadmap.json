@@ -3,9 +3,9 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": null,
-  "generatedAt": "2026-10-14T04:57:31.729Z",
-  "detected": false,
+  "extensionVersion": "1.0.38",
+  "generatedAt": "2026-10-14T06:00:41.167Z",
+  "detected": true,
   "milestones": [
     {
       "id": "p1-foundation",
@@ -17,7 +17,20 @@
           "title": "Rename to CRM and reorganize",
           "detail": "The Newsletter / Subscriber CRM becomes the CRM: folder `newsletter-crm` becomes `crm`, with its repository, settings, hooks and connector tool names renamed to match (no data to migrate; its tables are already `fw_crm_*`). Its working parts are kept and moved into the new layout rather than rewritten: the email builder, campaigns and the batched sender, lists, tags and segments, double opt-in and the preference page, the contact form action, the Newsletter element listener, the privacy tools and the AI connector tools. Everything that pointed at the old name moves in the same release: the Site Converter, Visitor Insights, the `forms-add` tool and the CRM website generator.",
           "pin": true,
-          "status": "planned"
+          "status": "done"
+        },
+        {
+          "id": "p1-shell",
+          "title": "CRM app shell",
+          "detail": "The CRM gets its own interface inside wp-admin: a CRM sidebar (Home, Contacts, Companies, Calendar, Deals, Tasks, Campaigns, Automations, Reports, Settings) and a top bar with search and quick add. Opening the CRM folds the WordPress menu to its icons; a focus mode hides it with a **Back to WordPress** link, and a sales rep can land there straight after logging in.",
+          "detect": {
+            "files": [
+              "includes/admin/class-fw-crm-app.php",
+              "static/js/app.js"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
         },
         {
           "id": "p1-scaffold",
@@ -30,20 +43,30 @@
               "settings-options.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/3"
+          "status": "done",
+          "progress": "3/3"
         },
         {
           "id": "p1-schema",
           "title": "Tables and migrations",
-          "detail": "Contacts, companies, contact-company links, custom field values, tags and lists, segment definitions and the activity log, each indexed for the screens that read them. Versioned installer with `migrate()`; tables are never dropped on deactivation. Every later change to the tables goes through a numbered migration, so sites update in place.",
+          "detail": "Contacts, companies, contact-company links, custom field values, tags and lists, segment definitions and the activity log, each indexed for the screens that read them. Versioned installer with `migrate()`; tables are never dropped on deactivation. Every later change to the tables goes through a numbered migration, so sites update in place. The busiest values (owner, company, lifecycle stage, source, timezone, score, lifetime value, last activity) are real columns on the contact row, so segments stay simple, fast queries.",
           "detect": {
             "files": [
               "includes/class-fw-crm-installer.php"
+            ],
+            "symbols": [
+              {
+                "file": "includes/class-fw-crm-installer.php",
+                "pattern": "lifecycle_stage"
+              },
+              {
+                "file": "includes/class-fw-crm-installer.php",
+                "pattern": "fw_crm_companies|companies"
+              }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "in-progress",
+          "progress": "1/3"
         },
         {
           "id": "p1-modules",
@@ -85,7 +108,7 @@
         {
           "id": "p1-fields",
           "title": "Custom fields",
-          "detail": "Typed fields (text, number, date, choice, money, URL…) for contacts, companies and deals, defined on one screen and stored in their own table so lists can sort and filter by them.",
+          "detail": "Typed fields for contacts, companies and deals, defined on one screen and grouped into sections: text, number, date, choice, money, URL, plus a **lookup** (a link to another record), auto-number, address and calculated fields. Values live in their own table so lists can sort and filter by them.",
           "detect": {
             "files": [
               "includes/class-fw-crm-fields.php"
@@ -107,6 +130,30 @@
           "progress": "0/1"
         },
         {
+          "id": "p1-list-status",
+          "title": "Subscription status per list",
+          "detail": "Whether someone may be emailed (pending, subscribed, unsubscribed, bounced, complained) is kept per contact and list, with timestamps, separately from the lifecycle stage. Double opt-in, preferences and bounces all depend on it.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-list-membership.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-relations",
+          "title": "Relations between records",
+          "detail": "One table of labelled, two-way links between any two records (contact ↔ company, contact ↔ deal, deal ↔ case, a membership ↔ contact), so new record types attach without a schema change.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-relations.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
           "id": "p1-timeline",
           "title": "Activity timeline",
           "detail": "One event log for every contact and company: form submissions, emails, notes, tasks, deal changes, tag changes. Every module writes to it; the profile page reads it.",
@@ -121,7 +168,7 @@
         {
           "id": "p1-segments",
           "title": "Rule-based segments",
-          "detail": "Segments today hold one filter each (status, list, tag or search). They become saved, live segments built from AND / OR rules over fields, tags, lists, lifecycle stage, activity and dates, feeding campaigns, automations and reports.",
+          "detail": "Segments today hold one filter each (status, list, tag or search). They become saved, live segments built from AND / OR rules over fields, tags, lists, lifecycle stage, activity and dates, feeding campaigns, automations and reports. One filter engine serves list views, segments, campaign audiences, automation conditions and, later, Membership's access rules, so there is one rule language everywhere. Segment counts are cached.",
           "detect": {
             "files": [
               "includes/class-fw-crm-segments.php"
@@ -133,7 +180,7 @@
         {
           "id": "p1-import",
           "title": "Import and export",
-          "detail": "CSV import with column mapping, duplicate handling and a dry run; export of any segment. Carried over from the Newsletter / Subscriber CRM and reworked for the new layout.",
+          "detail": "CSV import with column mapping, duplicate handling and a dry run; export of any segment. Carried over from the Newsletter / Subscriber CRM and reworked for the new layout. Every import is a batch that can be rolled back, with saved column mappings; large imports run in the background with a progress bar.",
           "detect": {
             "files": [
               "includes/class-fw-crm-import.php"
@@ -143,16 +190,40 @@
           "progress": "0/1"
         },
         {
+          "id": "p1-merge",
+          "title": "Merge duplicates",
+          "detail": "Duplicates suggested on import and on matching email or phone; merging moves tags, lists, deals, notes, the timeline and automation progress onto one record.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-merge.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-bin",
+          "title": "Bin and restore",
+          "detail": "Deleted records go to a bin first and can be restored; emptying the bin is a separate, explicit step.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-trash.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
           "id": "p1-forms",
           "title": "Contact form action",
-          "detail": "The contact form's subscribe action becomes **Add to the CRM**: create or update the contact, add tags and lists, record consent and log the submission on the timeline, configured on each form's Actions tab.",
+          "detail": "The contact form's subscribe action becomes **Add to the CRM**: create or update the contact, add tags and lists, record consent and log the submission on the timeline, configured on each form's Actions tab. Form posts are rate-limited per visitor, with an optional captcha.",
           "detect": {
             "files": [
               "includes/class-fw-crm-forms-action.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-newsletter-element",
@@ -169,8 +240,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p1-privacy",
@@ -181,13 +252,37 @@
               "includes/class-fw-crm-privacy.php"
             ]
           },
+          "status": "done",
+          "progress": "1/1"
+        },
+        {
+          "id": "p1-consent",
+          "title": "Consent log",
+          "detail": "What each person agreed to, the exact wording they saw, when, and from which form or page.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-consent.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-audit",
+          "title": "Audit log",
+          "detail": "Who changed what and when, for admins, built on the same change events every module emits.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-audit.php"
+            ]
+          },
           "status": "planned",
           "progress": "0/1"
         },
         {
           "id": "p1-roles",
           "title": "Team roles",
-          "detail": "CRM capabilities and two roles: a CRM manager sees everything; a sales rep sees and edits only the contacts, companies and deals they own.",
+          "detail": "CRM capabilities and two roles: a CRM manager sees everything; a sales rep sees and edits only the contacts, companies and deals they own. Every query passes through one permission layer, and creating or linking a WordPress user checks capabilities first.",
           "detect": {
             "files": [
               "includes/class-fw-crm-capabilities.php"
@@ -204,10 +299,16 @@
             "files": [
               "includes/class-fw-crm-rest.php",
               "includes/ai-abilities.php"
+            ],
+            "symbols": [
+              {
+                "file": "includes/class-fw-crm-rest.php",
+                "pattern": "/companies"
+              }
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "in-progress",
+          "progress": "2/3"
         }
       ]
     },
@@ -231,7 +332,7 @@
         {
           "id": "p2-deals",
           "title": "Deals",
-          "detail": "A deal has a title, value and currency, owner, contacts, company, stage, expected close date and custom fields. Won and lost, with a lost reason.",
+          "detail": "A deal has a title, value and currency, owner, contacts, company, stage, expected close date and custom fields. Won and lost, with a lost reason. Lost reasons, a per-deal probability that can override the stage's, and stalled-deal alerts when a deal sits in one stage too long.",
           "detect": {
             "files": [
               "modules/pipeline/class-fw-crm-deals.php"
@@ -289,12 +390,60 @@
           "progress": "0/1"
         },
         {
+          "id": "p2-activities",
+          "title": "Calls, meetings and calendar",
+          "detail": "Log calls (outcome, duration, notes) and schedule meetings with a time, attendees and a reminder; a calendar view of everything due.",
+          "detect": {
+            "files": [
+              "modules/pipeline/class-fw-crm-calendar.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2-files",
+          "title": "Files on records",
+          "detail": "Attach files from the media library to contacts, companies and deals.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-files.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2-products",
+          "title": "Products and line items",
+          "detail": "Optional: line items on deals from a simple product list, or from WooCommerce products when it is active. A line item copies the price, so later price changes do not rewrite old deals.",
+          "detect": {
+            "files": [
+              "modules/pipeline/class-fw-crm-products.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
           "id": "p2-direct-email",
           "title": "One-to-one email",
           "detail": "Write to a contact from their profile or a deal; the email is sent through the Mailer and logged on the timeline.",
           "detect": {
             "files": [
               "includes/class-fw-crm-direct-email.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2-inbound",
+          "title": "Replies on the timeline",
+          "detail": "Replies reach the contact's timeline through a BCC address or a connected mailbox, which also lets an automation stop when someone answers.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-inbound-email.php"
             ]
           },
           "status": "planned",
@@ -311,6 +460,61 @@
           },
           "status": "planned",
           "progress": "0/1"
+        },
+        {
+          "id": "p2-dashboard",
+          "title": "CRM home dashboard",
+          "detail": "Counts, tasks due today, deals by stage, recent activity, list growth and the health of the sending queue, as cards you can rearrange.",
+          "detect": {
+            "files": [
+              "includes/admin/class-fw-crm-dashboard.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p2b-cases",
+      "title": "Phase 2b · Cases",
+      "goal": "Support requests tracked like deals. A case belongs to a contact and company, moves through statuses, has a priority and an owner, and keeps every reply and note on the timeline.",
+      "tasks": [
+        {
+          "id": "p2b-cases",
+          "title": "Cases",
+          "detail": "A light support-ticket record that reuses the pipeline engine for its statuses (new, open, waiting, solved), with a priority, an owner and a due date.",
+          "detect": {
+            "files": [
+              "modules/cases/class-fw-crm-cases.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2b-board",
+          "title": "Case list and board",
+          "detail": "A list and a board by status, filtered by owner, priority and age.",
+          "detect": {
+            "files": [
+              "modules/cases/static/js/cases.js"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2b-forms",
+          "title": "Cases from forms and email",
+          "detail": "A contact form action and the inbound email address can open a case.",
+          "detect": {
+            "files": [
+              "modules/cases/class-fw-crm-cases-intake.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
         }
       ]
     },
@@ -322,7 +526,7 @@
         {
           "id": "p3-sender",
           "title": "Sending queue",
-          "detail": "Campaigns are queued and sent in small batches by the scheduler, so a big send never hits a host's time limit, with per-hour limits to respect shared hosting. Carried over from the Newsletter / Subscriber CRM and reworked for the new layout.",
+          "detail": "Campaigns are queued and sent in small batches by the scheduler, so a big send never hits a host's time limit, with per-hour limits to respect shared hosting. Carried over from the Newsletter / Subscriber CRM and reworked for the new layout. One queue row per recipient, claimed atomically so no email is ever sent twice; an emails-per-second cap with presets per kind of host; a per-campaign speed limit so opens and clicks cannot flood the site; stored email bodies purged after sending while the statistics are kept.",
           "detect": {
             "files": [
               "modules/email/class-fw-crm-sender.php"
@@ -394,10 +598,47 @@
         {
           "id": "p3-tracking",
           "title": "Opens, clicks and bounces",
-          "detail": "Open and click tracking (switchable, for privacy), bounce and complaint handling, and campaign reports.",
+          "detail": "Open and click tracking (switchable, for privacy), bounce and complaint handling, and campaign reports. Clicks from corporate link scanners are filtered out, and tracked links are stored once in a short-link table.",
           "detect": {
             "files": [
               "modules/email/class-fw-crm-tracking.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p3-senders",
+          "title": "Sender profiles",
+          "detail": "Several From names and addresses, and transactional email (receipts, confirmations) kept apart from marketing email.",
+          "detect": {
+            "files": [
+              "modules/email/class-fw-crm-senders.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p3-smart",
+          "title": "Smart links and post digests",
+          "detail": "Links that add a tag when clicked, and a recurring email of the latest posts.",
+          "detect": {
+            "files": [
+              "modules/email/class-fw-crm-smart-links.php",
+              "modules/email/class-fw-crm-digest.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "p3-channels",
+          "title": "Message channels",
+          "detail": "Email is the first channel of a channel registry, so SMS and messaging apps can be added later without changing campaigns or automations.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-channels.php"
             ]
           },
           "status": "planned",
@@ -494,6 +735,55 @@
           },
           "status": "planned",
           "progress": "0/1"
+        },
+        {
+          "id": "p4-runlog",
+          "title": "Run log and contact progress",
+          "detail": "Each run is logged as succeeded, partly done or failed with the reason, and every contact shows which automations they are in and at which step.",
+          "detect": {
+            "files": [
+              "modules/automations/class-fw-crm-run-log.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-safety",
+          "title": "Safe automations",
+          "detail": "A loop guard so automations cannot set each other off endlessly, a once-per-contact option, edits staged on live automations so people already inside are not broken, and a test run for one contact.",
+          "detect": {
+            "files": [
+              "modules/automations/class-fw-crm-automation-guard.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-more",
+          "title": "More conditions and steps",
+          "detail": "Changed to / changed from conditions, date and birthday triggers, a random split, and round-robin owner assignment.",
+          "detect": {
+            "files": [
+              "modules/automations/actions/class-fw-crm-action-assign-owner.php",
+              "modules/automations/actions/class-fw-crm-action-split.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "p4-cli",
+          "title": "Command line",
+          "detail": "WP-CLI commands to run the sending queue and automations, the scaling path on a VPS.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-cli.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
         }
       ]
     },
@@ -505,7 +795,7 @@
         {
           "id": "p5-scoring",
           "title": "Lead scoring",
-          "detail": "Rules that add or remove points for opens, clicks, page visits, form submissions and fields; scores that fade over time; segments and automations by score.",
+          "detail": "Rules that add or remove points for opens, clicks, page visits, form submissions and fields; scores that fade over time; segments and automations by score. Several named scores per contact (by product or interest) and a score on deals.",
           "detect": {
             "files": [
               "modules/scoring/class-fw-crm-scoring.php"
@@ -521,6 +811,18 @@
           "detect": {
             "files": [
               "modules/scoring/class-fw-crm-site-activity.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p5-events",
+          "title": "Events",
+          "detail": "One events table for anything a contact does (custom events from code, clicks on marked elements, logins, purchases), usable in segments, scores and automations.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-events-store.php"
             ]
           },
           "status": "planned",
@@ -588,6 +890,42 @@
           "detect": {
             "files": [
               "includes/class-fw-crm-users.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6-widgets",
+          "title": "Dashboard widget registry",
+          "detail": "Other extensions add their own cards to the CRM home dashboard.",
+          "detect": {
+            "files": [
+              "includes/admin/class-fw-crm-widgets.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6-summaries",
+          "title": "Purchase summaries",
+          "detail": "Each store or membership provider keeps a summary per contact (orders, total spent, plan and status), so segments and automations can use it without reaching into other extensions' tables.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-commerce.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6-objects",
+          "title": "Custom objects",
+          "detail": "An API for registering new record types (with fields, relations, the timeline and permissions), with an admin screen later.",
+          "detect": {
+            "files": [
+              "includes/class-fw-crm-objects.php"
             ]
           },
           "status": "planned",

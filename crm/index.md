@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+slug: /
 title: "CRM — a self-hosted CRM for WordPress"
 sidebar_label: "CRM"
 description: "The Unyson+ CRM (planned): contacts and companies, a sales pipeline, email marketing, automations and lead scoring, all inside your own WordPress site, built to run on ordinary hosting and open to other extensions through a public API."

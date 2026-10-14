@@ -45,7 +45,7 @@ page (where you activate and deactivate it yourself):
 | **Security** | Login throttling, two-factor sign-in, XML-RPC and header hardening, a custom login address, and Site Health checks — each measure off until you switch it on. → [docs](./security.md) | Yes — off by default |
 | **Forms** | Drag &amp; drop contact form builder. → [docs](./forms/index.md) | Yes |
 | **Short Links** | Branded short links on your own domain (301 / 302 / 307 / 308) with click reports, categories, import / export and an API with signed webhooks. → [docs](./short-links.md) | Yes — off by default |
-| **Newsletter / Subscriber CRM** | Stores and manages people who sign up through the `[newsletter]` element — subscribers, lists, tags, segments, CSV import/export. Being renamed and grown into the [CRM](./crm/index.md). | Yes |
+| **Newsletter / Subscriber CRM** | Stores and manages people who sign up through the `[newsletter]` element — subscribers, lists, tags, segments, CSV import/export. Being renamed and grown into the [CRM](/crm). | Yes |
 | **Mega Menu** | Multi-column dropdown mega menus. → [docs](./megamenu/index.md) | Yes |
 | **Mailer** *(hidden)* | Global email settings + send service used by Forms / Newsletter. → [docs](./mailer.md) | Dependency |
 | **Asset Optimizer** | Combine enqueued assets to cut HTTP requests. → [docs](./asset-optimizer.md) | Yes |

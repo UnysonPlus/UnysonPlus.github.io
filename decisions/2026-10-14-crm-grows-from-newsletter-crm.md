@@ -48,5 +48,5 @@ A contact is not a WordPress user; the Membership extension links one only when 
 The rename costs nothing because nobody depends on the old name, and it keeps the most expensive pieces
 already built (the email builder above all). Reorganizing into modules gives one shared contact record
 without cross-extension plumbing, while a site that only wants a newsletter still runs only that. The
-roadmap lives at [/extensions/crm/roadmap](/extensions/crm/roadmap) and tracks each phase against the code
+roadmap lives at [/crm/roadmap](/crm/roadmap) and tracks each phase against the code
 as it lands.

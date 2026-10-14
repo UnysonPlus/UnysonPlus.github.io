@@ -137,7 +137,7 @@ const config = {
         hashed: true,
         indexDocs: true,
         indexBlog: true,
-        docsRouteBasePath: ['/', '/animation-engine', '/theme', '/guides', '/ai-dev-kit', '/blocks'],
+        docsRouteBasePath: ['/', '/animation-engine', '/theme', '/guides', '/ai-dev-kit', '/blocks', '/crm', '/membership'],
         // Index BOTH blog instances: the News blog (/blog) and the Design Decisions blog
         // (/decisions). Without this the plugin only indexes the default /blog, so decisions
         // posts never show up in search.
@@ -262,6 +262,11 @@ const config = {
           {from: '/learn/performance', to: '/performance'},
           {from: '/learn/seo', to: '/extensions/seo'},
           {from: '/learn/accessibility', to: '/'},
+          // CRM and Membership moved out of Extensions into their own sections.
+          {from: '/extensions/crm', to: '/crm'},
+          {from: '/extensions/crm/roadmap', to: '/crm/roadmap'},
+          {from: '/extensions/crm/research', to: '/crm/research'},
+          {from: '/extensions/membership', to: '/membership'},
         ],
         // The Manual moved from /docs/* to /* — 301 every old Manual URL to its
         // new root path. Only Manual pages are remapped; the other doc instances
@@ -276,7 +281,7 @@ const config = {
           }
           const OTHER = [
             '/animation-engine', '/theme', '/guides', '/ai-dev-kit',
-            '/reference', '/decisions', '/blog', '/blocks',
+            '/reference', '/decisions', '/blog', '/blocks', '/crm', '/membership',
           ];
           if (existingPath === '/' || existingPath === '/sitemap' || existingPath === '/markdown-page') {
             return undefined;
@@ -295,6 +300,26 @@ const config = {
         path: 'animation-engine',
         routeBasePath: 'animation-engine',
         sidebarPath: './sidebarsAnimationEngine.js',
+        editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'crm',
+        path: 'crm',
+        routeBasePath: 'crm',
+        sidebarPath: './sidebarsCrm.js',
+        editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'membership',
+        path: 'membership',
+        routeBasePath: 'membership',
+        sidebarPath: './sidebarsMembership.js',
         editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
       },
     ],
@@ -411,8 +436,20 @@ const config = {
             position: 'left',
             label: 'Extensions',
           },
-          {to: '/extensions/crm', label: 'CRM', position: 'left'},
-          {to: '/extensions/membership', label: 'Membership', position: 'left'},
+          {
+            type: 'docSidebar',
+            sidebarId: 'crmSidebar',
+            docsPluginId: 'crm',
+            position: 'left',
+            label: 'CRM',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'membershipSidebar',
+            docsPluginId: 'membership',
+            position: 'left',
+            label: 'Membership',
+          },
           {
             type: 'docSidebar',
             sidebarId: 'blocksSidebar',

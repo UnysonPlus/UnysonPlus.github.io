@@ -3,8 +3,8 @@
   "extension": "membership",
   "cloneDir": "UnysonPlus-Membership-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Membership-Extension",
-  "extensionVersion": "1.0.11",
-  "generatedAt": "2026-10-14T11:36:20.998Z",
+  "extensionVersion": "1.0.12",
+  "generatedAt": "2026-10-14T11:48:31.707Z",
   "detected": true,
   "milestones": [
     {
@@ -664,8 +664,8 @@
               "modules/groups/class-fw-membership-groups.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p7-directory",
@@ -677,8 +677,8 @@
               "shortcodes/member-directory/config.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p7-cards",
@@ -689,8 +689,8 @@
               "modules/cards/class-fw-membership-cards.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },

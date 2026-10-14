@@ -14,7 +14,7 @@ behind them, sign-up forms with email confirmation and approval, the login and a
 profile fields, a REST API and AI Assistant tools. Phase 3 is built too: plans are sold by card, PayPal or
 bank transfer, with coupons, tax, invoices, and upgrades and downgrades members make themselves. Phase 4 connects Membership to the [CRM](./crm.md): members are contacts, plans are tags, and
 access rules can use CRM tags, lists and segments. Phase 5 adds drip content, a metered paywall, protected downloads and
-selling single items. Phase 6 adds everything for keeping members, and gift memberships. All of it arrives with the next release. The
+selling single items. Phase 6 adds everything for keeping members, and gift memberships. Phase 7 adds team memberships, a member directory and membership cards. All of it arrives with the next release. The
 [roadmap](./roadmap.mdx) tracks each task against the code. The design comes from a study of the leading
 membership plugins and platforms, summarised under [Research](./research.md).
 :::
@@ -185,6 +185,25 @@ each plan. The buyer gives the recipient's name and email and a message, and pay
 as one month, and nothing renews. When the payment arrives, the recipient gets an email with a link to start
 their membership, into a new account or the one they have (if they already hold that plan, it is extended).
 **Membership → Gifts** lists every gift, with **Send again** and **Cancel**.
+
+## Teams, the directory and cards
+
+- **Team memberships** (Groups and teams module). Give a plan **Team seats** (Plans → the plan → Options) and
+  whoever holds it can bring that many people in besides themselves: by email invitation, by a join link they
+  share, or automatically for everyone with an email at their organisation's domain. Each team member has the
+  same plan as the owner and it follows the owner's: renewed, paused, cancelled or ended together. The owner
+  manages the team on their account page (invite, withdraw an invitation, remove someone, which frees the seat
+  at once); members can leave. **Membership → Groups** lists every team and lets you change its seats.
+- **Member directory** (Member directory module). Put the **Member Directory** element on a page: a searchable,
+  filterable grid of members, each with a profile page. By default only members who tick **Show me in the
+  member directory** on their account page are listed, and you choose whether members only or everyone can
+  browse. Each profile field has its own **In the directory** setting (not shown, members, everyone): name and
+  picture are always shown, the email address never is, and fields a visitor may not see cannot be searched or
+  filtered either.
+- **Membership cards** (Membership cards module). Members find their card on their account page and can open it
+  full screen to show at the door, or print it. Scanning its QR code with any phone shows "Valid membership" or
+  "Not valid"; staff who are logged in also see who it is and can **Check in** the member, which is noted in
+  their history.
 
 ## Profile fields, the API and AI
 

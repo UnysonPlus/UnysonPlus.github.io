@@ -3,8 +3,8 @@
   "extension": "membership",
   "cloneDir": "UnysonPlus-Membership-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Membership-Extension",
-  "extensionVersion": "1.0.2",
-  "generatedAt": "2026-10-14T08:34:49.634Z",
+  "extensionVersion": "1.0.3",
+  "generatedAt": "2026-10-14T08:52:50.839Z",
   "detected": true,
   "milestones": [
     {
@@ -161,7 +161,7 @@
         {
           "id": "p1-elements",
           "title": "Visibility on every element",
-          "detail": "Every page-builder element, section and column gains a **Membership** field in its Advanced tab: everyone, members, people without a plan, members of chosen plans, everyone except them, logged-in or logged-out people. The same choices are on every menu item.",
+          "detail": "Every page-builder element, section and column gains a **Membership** tab (next to Advanced, only while the extension is on): everyone, members, people without a plan, members of chosen plans, everyone except them, logged-in or logged-out people, and what everyone else gets instead (nothing, or the members prompt). The same choices are on every menu item, and the [member_content] shortcode covers text written outside the builder.",
           "detect": {
             "files": [
               "includes/class-fw-membership-elements.php"
@@ -302,8 +302,8 @@
               "includes/class-fw-membership-blocks.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p2-privacy",

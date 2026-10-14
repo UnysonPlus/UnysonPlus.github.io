@@ -49,10 +49,22 @@ Open **Unyson+ → Membership** and it takes over the screen like an app of its 
 - **One item**: the **Membership** box in the editor sets a page or post to *Members only* (any plan or chosen
   plans), *Open to everyone* whatever the rules say, or *Follow the access rules*, and lists the rules that
   cover it now.
-- **Part of a page**: every page-builder element, section and column has a **Membership** field in its
-  Advanced tab (members, people without a plan, members of chosen plans, everyone except them, logged in or
-  out). The **Paywall Prompt** element is the "this is for members" box to place yourself, usually shown only
-  to people without a plan.
+- **Part of a page**: every page-builder element, section and column has a **Membership** tab (next to
+  Advanced, present while the extension is on): show it to everyone, members, people without a plan, members of
+  chosen plans, everyone except them, or logged-in or logged-out people, and choose what everyone else gets in
+  its place: nothing, or the members prompt. The **Paywall Prompt** element is that prompt to place yourself.
+- **Blocks**: WordPress's own blocks get the same **Membership** panel in the block sidebar, for content
+  written in the block editor.
+- **Anywhere else** (the classic editor, text widgets, other builders): the `[member_content]` shortcode.
+
+  ```text
+  [member_content]Members of any plan see this.[/member_content]
+  [member_content plans="gold,silver"]Gold or Silver members see this.[/member_content]
+  [member_content show="non_members"]Join today![/member_content]
+  [member_content plans="gold" prompt="yes"]Others see the members prompt instead.[/member_content]
+  [member_content plans="gold" else="Upgrade to Gold to read this."]…[/member_content]
+  ```
+
 - **Menus**: each menu item has the same **Show to** choice; a hidden item takes its sub-items with it.
 - **Check it**: on the site, **View as** in the admin bar previews any page as a logged-out visitor, a
   logged-in user without a plan, or a member of any plan. Administrators otherwise see everything.
@@ -88,7 +100,7 @@ and none of them is held back for a higher tier.
 | **Access rules** | **What** is protected (the entire site, post types, single items, categories and tags, archives, child pages, URL patterns), **who** may see it (plans any / all / none, logged-in state, roles) and **when** (now, after N days, from a date). A default per post type, with a protect / open / hide override on any single post |
 | **Leak-proof gating** | Protection applies to archives, search, feeds, the REST API, comments, sitemaps and attachments, not only the single page |
 | **What non-members see** | One clear fallback per rule: a teaser with an upgrade prompt, a login form, the pricing table, a redirect or "not found"; a **Paywall prompt** element to design the upgrade box |
-| **Element and menu visibility** | Every page-builder element, section and column gets **Members** fields under Advanced → Display conditions; Gutenberg blocks and menu items get the same choices |
+| **Element and menu visibility** | A **Membership** tab on every page-builder element, section and column, the same panel on block-editor blocks, a `[member_content]` shortcode, and the same choice on every menu item |
 | **Accounts** | Registration through the Forms extension (a **Register member** action, plus username and password fields), login, logout, password reset, optional email verification and approval |
 | **Member area** | **Member login**, **Member account** and **Paywall prompt** elements, styled by your theme: profile, memberships, payments, invoices, payment method and security in one place |
 | **Member emails** | Every lifecycle email (welcome, receipt, reminder, payment failed, cancelled, expired) editable with placeholders, sent through `wp_mail()` so your mail settings apply |

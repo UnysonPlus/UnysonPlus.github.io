@@ -9,8 +9,9 @@ description: "The plan for the Unyson+ Animation Studio: a browser editor for ti
 
 # Animation Studio
 
-> **Planning stage.** Nothing here is built yet. This page records the plan and the decisions behind it;
-> the [roadmap](./roadmap.mdx) lists the work in order, and the [research](./research.md) page covers what
+> **In development.** The player, the responsive stage and the editor (phases 1 and 2) are built and
+> running locally, and go live with the first release. This page records the plan and the decisions behind
+> it; the [roadmap](./roadmap.mdx) tracks each task, and the [research](./research.md) page covers what
 > already exists and what we borrow from it.
 
 The Animation Studio is a browser editor for motion graphics: big kinetic type, shapes, images and 3D, laid

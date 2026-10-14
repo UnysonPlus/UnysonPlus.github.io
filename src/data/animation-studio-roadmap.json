@@ -1,7 +1,7 @@
 {
-  "_comment": "SOURCE OF TRUTH for the Animation Studio roadmap rendered at /animation-studio/roadmap. Hand-maintained while the Studio is in planning: there is no source tree to scan yet, so every task is `planned`. When the Studio repo exists, give tasks `detect` blocks and a generator script like the other roadmaps.",
+  "_comment": "SOURCE OF TRUTH for the Animation Studio roadmap rendered at /animation-studio/roadmap. Hand-maintained: update task `status` (planned, in-progress, done) as work lands in the UnysonPlus-Animation-Studio repository, and `extensionVersion` to the Studio version.",
   "extension": "animation-studio",
-  "repo": "https://github.com/UnysonPlus",
+  "repo": "https://github.com/UnysonPlus/UnysonPlus-Animation-Studio",
   "detected": false,
   "milestones": [
     {
@@ -13,31 +13,31 @@
           "id": "p1-scaffold",
           "title": "Project scaffold",
           "detail": "A GitHub repository with a React + TypeScript editor built by Vite, and a separate plain-JavaScript player package. Both build to static files.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p1-scene-format",
           "title": "Scene file, version 1",
           "detail": "The JSON format with tracks, clips, preset settings, keyframes, assets and breakpoints, plus a schema that validates it and a version number so later formats can upgrade older files.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p1-player",
           "title": "Player runtime",
           "detail": "Reads a scene file and builds one GSAP timeline. Seekable and repeatable: no unseeded randomness and no real-time physics, so any frame can be shown exactly.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p1-stage",
           "title": "Responsive stage",
           "detail": "An aspect ratio per breakpoint, the three height modes (**ratio**, **ratio capped to the window**, **fill the window**), sizes in CSS container units, and a safe-area guide.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p1-deploy",
           "title": "Deploy to the subdomain",
-          "detail": "A GitHub Action builds the editor and publishes it to GitHub Pages at `animation-studio.unysonplus.com` on each push.",
-          "status": "planned"
+          "detail": "A GitHub Action builds the editor and publishes it to GitHub Pages at `animation-studio.unysonplus.com` on each push. The workflow is written; it goes live with the first push.",
+          "status": "in-progress"
         }
       ]
     },
@@ -49,38 +49,38 @@
         {
           "id": "p2-canvas",
           "title": "Canvas and layers",
-          "detail": "Text, image and shape layers placed on the stage; select, move and resize them; edit text in place.",
-          "status": "planned"
+          "detail": "Text, image and shape layers on the stage; click to select, drag to move with snapping to the centre and the safe area, resize with handles, and double-click to edit text in place.",
+          "status": "done"
         },
         {
           "id": "p2-timeline",
           "title": "Timeline",
           "detail": "Tracks and clips; drag, trim and move clips; a playhead with frame-accurate scrubbing; zoom; play, pause and loop.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p2-inspector",
           "title": "Inspector",
           "detail": "Edit the selected clip's settings (text, image, colours, duration, easing), with per-breakpoint overrides for position, size and type size.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p2-presets",
           "title": "Preset library, first set",
-          "detail": "About twenty presets in a drag-and-drop panel: text entrances (split, slam, scramble, stretch, glitch), shape and line reveals, image wipes and counters.",
-          "status": "planned"
+          "detail": "22 presets in a drag-and-drop panel, each with a live preview on hover: text (rise, slam, stretch, scramble, typewriter, blur, flip, tracking), reveal and exit (fade, wipe, iris, slide, grow), move and scale (pop, zoom, spin, keyframes) and emphasis (wave, pulse, shake, float, recolour).",
+          "status": "done"
         },
         {
           "id": "p2-save",
           "title": "Undo, redo and saving",
-          "detail": "Full undo and redo; projects saved in the browser automatically; download and reopen a project file.",
-          "status": "planned"
+          "detail": "Full undo and redo (a drag is one step), the working scene saved in the browser automatically, and project files (`.scene.json`) to download and reopen.",
+          "status": "done"
         },
         {
           "id": "p2-playback",
           "title": "Playback modes",
           "detail": "Play on load, play when scrolled into view, and loop or play once.",
-          "status": "planned"
+          "status": "done"
         }
       ]
     },
@@ -93,7 +93,7 @@
           "id": "p3-html",
           "title": "Standalone HTML export",
           "detail": "One HTML file that contains the scene and the player and runs anywhere.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p3-embed",
@@ -104,20 +104,20 @@
         {
           "id": "p3-assets",
           "title": "Images and fonts in exports",
-          "detail": "Choose between embedding assets in the file and linking to them; handle web-font loading so text never flashes in the wrong font.",
-          "status": "planned"
+          "detail": "Uploaded images are embedded in the exported file. Web fonts are still linked from their stylesheet; choosing to embed them is to come.",
+          "status": "in-progress"
         },
         {
           "id": "p3-versioning",
           "title": "Player versioning",
-          "detail": "Every export records the player version it was made with, so a later change to a preset never alters a scene that is already published.",
-          "status": "planned"
+          "detail": "Exported pages carry their own copy of the player, so later preset changes never alter them. A shared, versioned player for embeds is to come.",
+          "status": "in-progress"
         },
         {
           "id": "p3-a11y",
           "title": "Accessibility",
           "detail": "Respect reduced-motion settings, keep text as real text, and give decorative layers the right hidden roles.",
-          "status": "planned"
+          "status": "done"
         }
       ]
     },
@@ -239,5 +239,7 @@
         }
       ]
     }
-  ]
+  ],
+  "extensionVersion": "0.0.3",
+  "versionLabel": "Studio"
 }

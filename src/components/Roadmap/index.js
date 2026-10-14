@@ -71,7 +71,7 @@ export function RoadmapSummary({data}) {
         <span className={styles.muted}>
           {active > 0 && `${active} in progress · `}
           {data.extensionVersion
-            ? `extension v${data.extensionVersion}`
+            ? `${data.versionLabel ?? 'extension'} v${data.extensionVersion}`
             : 'not yet scaffolded'}
         </span>
       </div>

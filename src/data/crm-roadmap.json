@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.44",
-  "generatedAt": "2026-10-14T07:43:48.675Z",
+  "extensionVersion": "1.0.45",
+  "generatedAt": "2026-10-14T07:49:38.784Z",
   "detected": true,
   "milestones": [
     {
@@ -198,8 +198,8 @@
               "includes/class-fw-crm-merge.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-bin",

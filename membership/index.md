@@ -12,7 +12,7 @@ description: "The planned Unyson+ Membership extension: plans, one access engine
 Phases 1 and 2 are built: the Membership app, plans, members, access rules with the one access engine
 behind them, sign-up forms with email confirmation and approval, the login and account pages, member emails,
 profile fields, a REST API and AI Assistant tools. Phase 3 has started: plans can be sold by card (with
-renewals) or bank transfer. All of it arrives with the next release. The
+renewals) or bank transfer, and members can upgrade or downgrade themselves. All of it arrives with the next release. The
 [roadmap](./roadmap.mdx) tracks each task against the code. The design comes from a study of the leading
 membership plugins and platforms, summarised under [Research](./research.md).
 :::
@@ -96,6 +96,15 @@ Switch on **Payments** in Membership → Modules, then open **Membership → Pay
 - **Bank transfer or cash.** Write your payment instructions (use `{reference}` for the payment's reference).
   The buyer sees them after checkout, the membership waits, and you start it with **Mark paid** on the
   Payments screen. Bank transfer is offered for one-off prices only, since nothing renews by itself.
+- **Members change plan themselves.** On a plan's page, tick the plans its members may move to under
+  **Members can switch to**. Their account page then shows **Change plan** with each choice and what will
+  happen. A move to a dearer plan happens at once: the difference for the rest of the period is charged now,
+  or the new price starts at the next renewal if you prefer (Payment settings → **When a member upgrades**).
+  A move to a cheaper or free plan takes effect at the next renewal, so nobody loses time they paid for, and
+  until then the member can choose **Keep my current plan**. A member without a subscription (added by hand,
+  or on a one-off price) moves to a paid plan through the checkout, and their old membership ends once the new
+  one is paid. On the Pricing Plans element those plans say **Change plan** rather than selling a second
+  membership.
 - **Membership → Payments** lists every payment, renewal and refund with its status and reference, and
   what was taken in the last 30 days. **Refund** refunds a card payment through Stripe; refunding a first
   payment ends the membership.

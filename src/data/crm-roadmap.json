@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.65",
-  "generatedAt": "2026-10-14T14:53:37.908Z",
+  "extensionVersion": "1.0.66",
+  "generatedAt": "2026-10-14T15:03:15.910Z",
   "detected": true,
   "milestones": [
     {
@@ -656,8 +656,8 @@
               "modules/email/class-fw-crm-tracking.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p3-senders",

@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.39",
-  "generatedAt": "2026-10-14T06:09:58.189Z",
+  "extensionVersion": "1.0.40",
+  "generatedAt": "2026-10-14T06:49:57.792Z",
   "detected": true,
   "milestones": [
     {
@@ -29,8 +29,8 @@
               "static/js/app.js"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p1-scaffold",
@@ -90,8 +90,8 @@
               "includes/admin/class-fw-crm-admin-contacts.php"
             ]
           },
-          "status": "in-progress",
-          "progress": "1/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p1-companies",
@@ -468,10 +468,24 @@
           "detect": {
             "files": [
               "includes/admin/class-fw-crm-dashboard.php"
+            ],
+            "symbols": [
+              {
+                "file": "includes/admin/class-fw-crm-dashboard.php",
+                "pattern": "FW_CRM_Tasks::"
+              },
+              {
+                "file": "includes/admin/class-fw-crm-dashboard.php",
+                "pattern": "FW_CRM_Deals::"
+              },
+              {
+                "file": "includes/admin/class-fw-crm-dashboard.php",
+                "pattern": "unysonplus_crm_dashboard_cards"
+              }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "in-progress",
+          "progress": "1/4"
         }
       ]
     },

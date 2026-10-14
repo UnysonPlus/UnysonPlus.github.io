@@ -3,13 +3,14 @@ sidebar_position: 1
 slug: /
 title: "CRM — a self-hosted CRM for WordPress"
 sidebar_label: "CRM"
-description: "The Unyson+ CRM (planned): contacts and companies, a sales pipeline, email marketing, automations and lead scoring, all inside your own WordPress site, built to run on ordinary hosting and open to other extensions through a public API."
+description: "The Unyson+ CRM: contacts and companies, a sales pipeline, email marketing, automations and lead scoring, all inside your own WordPress site, built to run on ordinary hosting and open to other extensions through a public API."
 ---
 
 # CRM
 
-:::info Planned
-The CRM is being designed now. Nothing on this page ships yet; the [roadmap](./roadmap.mdx) shows the
+:::info In progress
+The first part of the CRM is built: the CRM app itself, contacts, companies, the activity timeline, the
+consent log and custom fields. It arrives with the next release. The [roadmap](./roadmap.mdx) shows the
 phases and tracks each one against the code as it lands.
 :::
 
@@ -18,6 +19,28 @@ with, the deals you are chasing, the emails you send them, and the automations t
 Your data stays in your own database, with no per-contact fees and no outside service to sign up to.
 
 It grows out of the **Newsletter / Subscriber CRM** extension, which is renamed to **CRM** and reorganized: its email builder, campaigns, sending queue, lists, tags, segments, double opt-in and form integration carry over, and the newsletter subscriber grows into a full contact.
+
+## Finding your way around
+
+Open **Unyson+ → CRM** and the CRM takes over the screen like an app of its own:
+
+- **The CRM sidebar** lists every area: Home, Contacts, Companies, Deals, Tasks, Calendar, Campaigns,
+  Lists & segments, Reports, Import / Export and Settings. Areas still being built are marked **Soon**,
+  and their page says what they will do.
+- **The WordPress menu folds to its icons** while you are in the CRM and comes back when you leave.
+  **Hide the WordPress menu** at the bottom of the CRM sidebar removes it altogether (your choice is
+  remembered), and **Back to WordPress** takes you to the dashboard.
+- **The top bar** has search across contacts and companies (press <kbd>/</kbd> to jump to it) and a
+  **New** menu for a contact, a company, an email campaign or a CSV import.
+- **Home** shows where things stand: how many contacts and how many are new, contacts by lifecycle stage,
+  what happened lately, the newest contacts and your campaigns. An empty CRM shows the three ways people
+  arrive instead: added by hand, imported, or collected by a form on your site.
+- **A contact's page** has their details and your own fields (edit them in place), a stage picker, notes
+  and the full timeline, the companies they work at, their lists and tags, their email status and the
+  consent log with the exact wording they agreed to. **A company's page** works the same way and lists
+  its people.
+
+Adding someone by hand never subscribes them to your emails; email consent only comes from the person.
 
 ## What it covers
 

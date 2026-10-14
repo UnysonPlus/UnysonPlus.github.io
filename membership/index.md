@@ -14,7 +14,7 @@ behind them, sign-up forms with email confirmation and approval, the login and a
 profile fields, a REST API and AI Assistant tools. Phase 3 is built too: plans are sold by card, PayPal or
 bank transfer, with coupons, tax, invoices, and upgrades and downgrades members make themselves. Phase 4 connects Membership to the [CRM](./crm.md): members are contacts, plans are tags, and
 access rules can use CRM tags, lists and segments. Phase 5 adds drip content, a metered paywall, protected downloads and
-selling single items. Phase 6 adds everything for keeping members, and gift memberships. Phase 7 adds team memberships, a member directory and membership cards. Phase 8 connects Membership to WooCommerce. All of it arrives with the next release. The
+selling single items. Phase 6 adds everything for keeping members, and gift memberships. Phase 7 adds team memberships, a member directory and membership cards. Phase 8 connects Membership to WooCommerce. Phase 9 adds reports. All of it arrives with the next release. The
 [roadmap](./roadmap.mdx) tracks each task against the code. The design comes from a study of the leading
 membership plugins and platforms, summarised under [Research](./research.md).
 :::
@@ -219,6 +219,24 @@ With WooCommerce active, switch on the **WooCommerce** module.
 - **Members-only products.** On the product's Membership tab, tick the plans whose members may buy it; everyone
   else sees "For members of …" instead of the Add to cart button. To hide products from non-members entirely,
   use an access rule on them like on any other content.
+
+## Reports
+
+Switch on **Reports**, then open **Membership → Reports**. Everything is worked out from the memberships, their
+history and the payments, so the past months are filled in straight away:
+
+- **Monthly recurring revenue** now and by plan (a yearly price counts as a twelfth each month; trials and one-off
+  prices do not count), with a chart of the last 12 months.
+- **Month by month:** members at the start, new members, upgrades and downgrades, members lost, churn, failed and
+  recovered payments, and revenue.
+- **Lifetime value** (paid, minus refunds, per paying member), **trial conversion**, and the share of failed
+  payments that were recovered.
+- **Cohorts:** of the people who joined in each month, the share still members one, two, three… months later; and
+  the share still members by how they came (paid sign-up, free sign-up, gift, team seat, store order…).
+- **Most-read members-only content:** counted each time a member opens a protected page or post, per item and
+  month, with no record of who.
+
+**Download as CSV** exports two years month by month. Amounts stay in their own currency.
 
 ## Profile fields, the API and AI
 

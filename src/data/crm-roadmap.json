@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.52",
-  "generatedAt": "2026-10-14T09:34:26.144Z",
+  "extensionVersion": "1.0.53",
+  "generatedAt": "2026-10-14T09:47:55.457Z",
   "detected": true,
   "milestones": [
     {
@@ -388,6 +388,19 @@
           },
           "status": "done",
           "progress": "1/1"
+        },
+        {
+          "id": "p2-api",
+          "title": "REST API for deals, pipelines and tasks",
+          "detail": "Pipelines, deals (move, win, lose, the bin, linked contacts, the timeline), tasks and notes through the CRM's REST API, with the same rules as the screens: a sales rep reaches only their own deals and tasks.",
+          "detect": {
+            "files": [
+              "modules/pipeline/class-fw-crm-rest-deals.php",
+              "includes/rest/class-fw-crm-rest-tasks.php"
+            ]
+          },
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p2-activities",

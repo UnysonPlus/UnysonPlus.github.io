@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.48",
-  "generatedAt": "2026-10-14T08:11:02.773Z",
+  "extensionVersion": "1.0.50",
+  "generatedAt": "2026-10-14T08:19:49.013Z",
   "detected": true,
   "milestones": [
     {
@@ -126,8 +126,8 @@
               "includes/class-fw-crm-tags.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-list-status",
@@ -138,8 +138,8 @@
               "includes/class-fw-crm-list-membership.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-relations",

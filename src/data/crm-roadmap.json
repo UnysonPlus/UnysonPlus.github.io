@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.53",
-  "generatedAt": "2026-10-14T09:47:55.457Z",
+  "extensionVersion": "1.0.54",
+  "generatedAt": "2026-10-14T10:06:20.079Z",
   "detected": true,
   "milestones": [
     {
@@ -408,11 +408,22 @@
           "detail": "Log calls (outcome, duration, notes) and schedule meetings with a time, attendees and a reminder; a calendar view of everything due.",
           "detect": {
             "files": [
-              "modules/pipeline/class-fw-crm-calendar.php"
+              "includes/class-fw-crm-calendar.php",
+              "includes/admin/class-fw-crm-admin-calendar.php"
+            ],
+            "symbols": [
+              {
+                "file": "includes/class-fw-crm-tasks.php",
+                "pattern": "function log_call"
+              },
+              {
+                "file": "includes/class-fw-crm-tasks.php",
+                "pattern": "function set_attendees"
+              }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "4/4"
         },
         {
           "id": "p2-files",

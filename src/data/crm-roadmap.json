@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.46",
-  "generatedAt": "2026-10-14T08:00:04.721Z",
+  "extensionVersion": "1.0.47",
+  "generatedAt": "2026-10-14T08:05:09.129Z",
   "detected": true,
   "milestones": [
     {
@@ -276,8 +276,8 @@
               "includes/class-fw-crm-audit.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-roles",

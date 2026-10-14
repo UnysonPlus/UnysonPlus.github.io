@@ -256,9 +256,14 @@ history and the payments, so the past months are filled in straight away:
   Include each member's payment-service subscription ID and their renewals keep arriving as before. It can also
   give a plan to everyone with a WordPress role, or with a value in a user field, for sites where members used to
   be stored that way. Running the same import again changes nothing.
+- **Exporting.** **Members → Export CSV** downloads the memberships the list is showing (its status, plan and
+  search filters apply), one row per membership. The first columns are exactly the ones the importer reads, so a
+  file exported from one site imports into another with subscriptions still linked; the columns after them (ids,
+  names, source, trial and cancel dates) are for reading. Cells that a spreadsheet would run as formulas are
+  made safe. It works whether or not the Importers module is on.
 - **Scheduled jobs.** Membership → Home shows whether the jobs that end memberships, send drip emails and
   reminders run on time, and if not, the line to add to your server's scheduler. Site Health checks it too.
-- **Command line.** With WP-CLI: `wp membership list`, `plans`, `grant`, `extend`, `expire`, and `reconcile`,
+- **Command line.** With WP-CLI: `wp membership list`, `export`, `plans`, `grant`, `extend`, `expire`, and `reconcile`,
   which checks every subscription with its payment service and fixes any that drifted.
 
 ## Courses

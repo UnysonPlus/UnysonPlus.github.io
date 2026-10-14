@@ -11,8 +11,9 @@ description: "The Unyson+ CRM: contacts and companies, a sales pipeline, email m
 :::info In progress
 Phase 1, contacts and companies, is built: the CRM app, contacts and companies with custom fields, the
 timeline and consent log, rule-based segments, tags and lists with per-list subscription status,
-duplicate merging, the bin, team roles, an audit log, module switches and undoable CSV imports. It
-arrives with the next release. The [roadmap](./roadmap.mdx) shows the next phases and tracks each one
+duplicate merging, the bin, team roles, an audit log, module switches and undoable CSV imports.
+Phase 2 has started: sales pipelines with a drag-and-drop deals board, deal pages, tasks with reminders,
+editable notes and the pipeline and task cards on Home are built. Both arrive with the next release. The [roadmap](./roadmap.mdx) shows the next phases and tracks each one
 against the code as it lands.
 :::
 

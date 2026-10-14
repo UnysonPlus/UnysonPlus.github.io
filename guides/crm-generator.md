@@ -17,7 +17,8 @@ The [CRM Website Generator](https://crm.unysonplus.com/) is a free page where yo
 what your site needs: listings, lead forms, sales pipeline stages, brand colors. It turns those
 choices into two things:
 
-- **A build prompt** you paste into an AI coding agent (Claude Code, Cursor, Codex or similar).
+- **A build prompt** you paste into a Claude chat connected to your site (no coding tools needed),
+  or into an AI coding agent such as Claude Code, Cursor or Codex.
 - **`site-spec.json`**, the same choices as a structured file, so the agent works from exact
   values instead of interpreting a paragraph. The spec is also included at the end of the prompt,
   so one paste carries everything.
@@ -52,10 +53,13 @@ your own browser so you can come back to them.
 
 ## What you need
 
-- A WordPress install: on your computer (local) or on your web host. If you have neither, choose
-  **Not installed yet** and the prompt tells the agent to help you set one up first.
-- An AI coding agent that can read files and run commands where WordPress lives.
+- A **fresh** WordPress (or your host's staging copy), never a site with real content.
+- Either a **paid Claude plan** (Claude builds from the normal Claude app, through a connector to your
+  site) or an **AI coding agent** that can read files and run commands where WordPress lives.
 - About 15 minutes for the form. The build itself depends on the agent and the number of pages.
+
+New to this? [Set up WordPress for the generator](./crm-generator-setup.md) walks you through getting
+WordPress, installing Unyson+ and connecting Claude, with no terminal and no password sharing.
 
 No extra WordPress plugins are needed: Unyson+ works without the Classic Editor plugin, and form
 emails go out through WordPress's own mail until you set up SMTP.

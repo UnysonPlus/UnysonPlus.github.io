@@ -11,8 +11,8 @@ description: "The planned Unyson+ Membership extension: plans, one access engine
 :::info In progress
 Phases 1 and 2 are built: the Membership app, plans, members, access rules with the one access engine
 behind them, sign-up forms with email confirmation and approval, the login and account pages, member emails,
-profile fields, a REST API and AI Assistant tools. Phase 3 has started: plans can be sold by card (with
-renewals) or bank transfer, and members can upgrade or downgrade themselves. All of it arrives with the next release. The
+profile fields, a REST API and AI Assistant tools. Phase 3 is built too: plans are sold by card, PayPal or
+bank transfer, with coupons, tax, invoices, and upgrades and downgrades members make themselves. All of it arrives with the next release. The
 [roadmap](./roadmap.mdx) tracks each task against the code. The design comes from a study of the leading
 membership plugins and platforms, summarised under [Research](./research.md).
 :::
@@ -93,9 +93,28 @@ Switch on **Payments** in Membership → Modules, then open **Membership → Pay
   the end date out, a failed one makes the membership **Past due** while Stripe retries (access continues
   for 3 days after the paid period), and a cancellation in Stripe ends it at the period end. Test mode
   uses your test keys and no real money moves. Unyson+ takes no fee.
+- **PayPal.** Paste the Client ID and Secret of a PayPal app, and the ID of a webhook pointed at the address
+  the settings show. One-off prices are paid as PayPal orders; repeating prices become PayPal subscriptions,
+  with trials, setup fees, tax and discounts built in. PayPal cannot move a subscription to another plan
+  without the buyer approving it again, so members who pay with PayPal change plan by cancelling and joining
+  the new one.
 - **Bank transfer or cash.** Write your payment instructions (use `{reference}` for the payment's reference).
   The buyer sees them after checkout, the membership waits, and you start it with **Mark paid** on the
   Payments screen. Bank transfer is offered for one-off prices only, since nothing renews by itself.
+- **Coupons** (switch on the Coupons module): a percentage or an amount off the first payment, the first few
+  months or every payment, for chosen plans, with a total limit, a limit per person and start and end dates.
+  **Make many codes** creates single-use codes in one go and downloads them as a CSV. Buyers type a code at
+  the checkout, or follow a link ending in `?coupon=CODE` (to the pricing page or the checkout). With Stripe,
+  the discount is applied by Stripe itself, so renewals are discounted for exactly the right months.
+- **Tax** (switch on the Tax module; its settings are in Payment settings): your own rates by country, and by
+  state or region where it matters, with prices that include tax or have it added. The checkout asks for the
+  country first and shows the exact total, tax and discount included, before anything else. Turn on **EU VAT
+  numbers** and a business in another EU country that gives a valid VAT number (checked with the EU's VIES
+  service) pays no VAT, marked as reverse charge. If you use Stripe Tax, choose it instead and Stripe works out
+  the tax on its payment page.
+- **Invoices.** Every paid payment gets the next number in one unbroken sequence, with your prefix, business
+  name, address and tax number (Payment settings → Invoices). Members open their invoices from their account
+  page and the receipt email, and can print them or save them as PDF.
 - **Members change plan themselves.** On a plan's page, tick the plans its members may move to under
   **Members can switch to**. Their account page then shows **Change plan** with each choice and what will
   happen. A move to a dearer plan happens at once: the difference for the rest of the period is charged now,

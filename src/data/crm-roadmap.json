@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.38",
-  "generatedAt": "2026-10-14T06:00:41.167Z",
+  "extensionVersion": "1.0.39",
+  "generatedAt": "2026-10-14T06:09:58.189Z",
   "detected": true,
   "milestones": [
     {
@@ -65,8 +65,8 @@
               }
             ]
           },
-          "status": "in-progress",
-          "progress": "1/3"
+          "status": "done",
+          "progress": "3/3"
         },
         {
           "id": "p1-modules",
@@ -90,8 +90,8 @@
               "includes/admin/class-fw-crm-admin-contacts.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "in-progress",
+          "progress": "1/2"
         },
         {
           "id": "p1-companies",
@@ -102,8 +102,8 @@
               "includes/class-fw-crm-companies.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-fields",
@@ -114,8 +114,8 @@
               "includes/class-fw-crm-fields.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-tags",
@@ -150,8 +150,8 @@
               "includes/class-fw-crm-relations.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-timeline",
@@ -162,8 +162,8 @@
               "includes/class-fw-crm-activity.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-segments",
@@ -264,8 +264,8 @@
               "includes/class-fw-crm-consent.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-audit",

@@ -53,6 +53,12 @@
           "status": "done"
         },
         {
+          "id": "p2-multi",
+          "title": "Multiple selection, Align and Distribute",
+          "detail": "Select several layers with Shift or Ctrl + click, a dragged box or Ctrl+A; move them together; align their edges or centres to each other, the stage or the safe area; distribute them by edge, centre or equal gaps; and lock layers so they stay put.",
+          "status": "done"
+        },
+        {
           "id": "p2-timeline",
           "title": "Timeline",
           "detail": "Tracks and clips; drag, trim and move clips; a playhead with frame-accurate scrubbing; zoom; play, pause and loop.",
@@ -240,6 +246,6 @@
       ]
     }
   ],
-  "extensionVersion": "0.0.4",
+  "extensionVersion": "0.0.5",
   "versionLabel": "Studio"
 }

@@ -221,8 +221,8 @@
         {
           "id": "p6-three",
           "title": "3D clips",
-          "detail": "A three.js layer driven by the timeline: models, extruded text and logos, and camera moves. Loaded only by scenes that use it.",
-          "status": "planned"
+          "detail": "3D layers drawn by three.js: extruded 3D text, shapes, extruded SVG logos and glTF/GLB models, with matte to chrome finishes and studio lighting. Spin 3D, Tumble in, Orbit and Camera push presets; every frame drawn from the timeline, so 3D seeks, loops and scroll-links. three.js loads only for scenes with a 3D layer.",
+          "status": "done"
         },
         {
           "id": "p6-keyframes",
@@ -239,7 +239,7 @@
         {
           "id": "p6-more-presets",
           "title": "More presets",
-          "detail": "Second set shipped (31 presets): Count up, Soft wipe, Blinds, Turn (3D), Sheen, and a new Ambient and backgrounds group with Drift, Gradient flow and Particles. Still to come: transitions between groups and 3D entrances with depth.",
+          "detail": "Second set shipped (35 presets with 3D): Count up, Soft wipe, Blinds, Turn, Sheen, Drift, Gradient flow, Particles, and 3D entrances (Tumble in, Spin 3D, Orbit, Camera push). Still to come: transitions between groups.",
           "status": "in-progress"
         }
       ]
@@ -270,6 +270,6 @@
       ]
     }
   ],
-  "extensionVersion": "0.0.15",
+  "extensionVersion": "0.0.16",
   "versionLabel": "Studio"
 }

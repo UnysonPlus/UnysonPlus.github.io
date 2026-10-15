@@ -42,13 +42,24 @@ close to clean.
 
 ### The preset library
 
-Thirty-one presets in five groups. **Text:** Rise, Slam, Stretch, Scramble, Typewriter, Blur in, Flip, Tracking and
+Thirty-five presets in six groups. **Text:** Rise, Slam, Stretch, Scramble, Typewriter, Blur in, Flip, Tracking and
 **Count up** (a number counts to its value, keeping its prefix, separators and suffix). **Reveal and exit:** Fade,
 Wipe, **Soft wipe** (feathered edge), Iris, Slide, Grow, **Blinds** (staggered strips). **Move and scale:** Pop, Zoom,
 Spin, **Turn** (3D), Keyframes, Custom code. **Emphasis:** Wave, Pulse, Shake, Float, Recolour, **Sheen** (one light
 sweep). **Ambient and backgrounds:** **Drift** (a slow move and scale creep for held frames), **Gradient flow** (a
-gradient fill flowing across a shape) and **Particles** (a seeded field of rising, falling or drifting dots).
+gradient fill flowing across a shape) and **Particles** (a seeded field of rising, falling or drifting dots). **3D:** Spin 3D,
+Tumble in, Orbit and Camera push, for 3D layers.
 Hover a preset in the library to see it play.
+
+### 3D layers
+
+**+ 3D** adds a 3D object to the scene: **3D text** with rounded edges, a **shape** (rounded box, sphere, ring,
+knot, cylinder, crystal), your **logo** extruded from an SVG, or a **glTF / GLB model**. Pick a finish (matte, satin,
+glossy, metal, chrome) and a resting pose; it is lit by a built-in studio environment with real reflections. The 3D
+presets **Spin 3D**, **Tumble in**, **Orbit** and **Camera push** turn the object and move the camera, and the usual
+presets (Fade, Slide, Pop…) work on it too. 3D is drawn from the timeline like everything else, so it scrubs, loops
+and plays as the page scrolls. The 3D engine (three.js) loads only for scenes that have a 3D layer, so other scenes
+stay as light as before.
 
 ### Keyframes and curves
 

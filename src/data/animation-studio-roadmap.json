@@ -239,8 +239,8 @@
         {
           "id": "p6-more-presets",
           "title": "More presets",
-          "detail": "Second set shipped (35 presets with 3D): Count up, Soft wipe, Blinds, Turn, Sheen, Drift, Gradient flow, Particles, and 3D entrances (Tumble in, Spin 3D, Orbit, Camera push). Still to come: transitions between groups.",
-          "status": "in-progress"
+          "detail": "35 presets in six groups, including Count up, Soft wipe, Blinds, Turn, Sheen, Drift, Gradient flow, Particles and the 3D set (Tumble in, Spin 3D, Orbit, Camera push), plus transitions between groups (Crossfade, Push, Zoom through, Soft wipe, Blinds, Iris, 3D turn) applied from the group Inspector.",
+          "status": "done"
         }
       ]
     },
@@ -270,6 +270,6 @@
       ]
     }
   ],
-  "extensionVersion": "0.0.17",
+  "extensionVersion": "0.0.18",
   "versionLabel": "Studio"
 }

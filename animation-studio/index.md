@@ -55,6 +55,13 @@ gradient fill flowing across a shape) and **Particles** (a seeded field of risin
 Tumble in, Orbit and Camera push, for 3D layers.
 Hover a preset in the library to see it play.
 
+### Full screen and transitions
+
+The **full screen** icon at the right of the stage toolbar (or the **F** key) plays the scene at your screen's real
+size, without the editor. Select a group and use **Transition to the next group** to hand it over to the next part
+of the scene with a Crossfade, Push, Zoom through, Soft wipe, Blinds, Iris or 3D turn: a matched exit and entrance,
+timed together, as ordinary clips you can still edit.
+
 ### 3D layers
 
 **+ 3D** adds a 3D object to the scene: **3D text** with rounded edges, a **shape** (rounded box, sphere, ring,

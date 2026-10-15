@@ -62,6 +62,7 @@ Every module is **off** on a new site, except CRM, which is on whenever the CRM 
 | **Account security** | A limit on devices signed in at once, one-click login links, passkeys and a login log. See [Account security](./account-security.md). | Nothing. |
 | **Importers** | **Setup → Import**: "Bring in members and live subscriptions from a CSV file (such as an export from another plugin), or give plans to everyone with a WordPress role or user field." See [Import and export](./import-and-export.md). | Nothing. |
 | **Courses** | **Courses** in the sidebar: courses with lessons, progress, quizzes and certificates, on the same access rules, and the Course Outline element. See [Courses](../content/courses.md). | Nothing. |
+| **Webhooks** | **Setup → Webhooks**: "Tell another app the moment members join, renew, cancel, pay or finish a course: signed JSON, sent in the background with retries." See [For developers](./developers.md#webhooks). | Nothing. |
 
 For the selling modules see [Selling plans](/membership/selling); for drip, the paywall, downloads and
 courses see [Content tools](/membership/content-tools); for teams, the directory and cards see
@@ -104,6 +105,7 @@ What changes for your members while a module is off:
 | **Reports** | The **Reports** item shows its **Off** badge and the "Reports is switched off" page, and members-only page views stop being counted. |
 | **WooCommerce** | New orders no longer grant plans and member prices stop. Plans already granted stay. |
 | **Importers** | The Import screen goes away. Imported members stay. **Members → Export CSV** keeps working. |
+| **Webhooks** | Nothing is sent and the Webhooks screen goes away; your webhooks and their secrets are kept for when you switch it back on. |
 
 Other modules (downloads, gifts, groups, directory, cards, courses) take their screens and features away while
 off and keep their records.
@@ -129,3 +131,5 @@ Anyone who can manage Membership (administrators by default).
 - Start selling: [Payments](../selling/payments.md) and [Pricing table and checkout](../selling/pricing-and-checkout.md).
 - Keep members: [Retention](../insights/retention.md).
 - Back to the [Membership overview](/membership).
+
+Want a module of your own? See [Your own module](./developers.md#your-own-module).

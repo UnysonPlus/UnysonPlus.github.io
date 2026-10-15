@@ -46,8 +46,10 @@ New to Membership? The beginner guide walks you through every screen, step by st
   [WooCommerce](./running-your-site/woocommerce.md), [the CRM connection](./running-your-site/crm-connection.md),
   [account security](./running-your-site/account-security.md),
   [import and export](./running-your-site/import-and-export.md),
-  [scheduled jobs and WP-CLI](./running-your-site/scheduled-jobs-and-cli.md) and
-  [privacy and data](./running-your-site/privacy-and-data.md).
+  [scheduled jobs and WP-CLI](./running-your-site/scheduled-jobs-and-cli.md),
+  [privacy and data](./running-your-site/privacy-and-data.md),
+  [the AI Assistant](./running-your-site/ai-assistant.md) and
+  [for developers: REST API, webhooks, hooks and your own modules](./running-your-site/developers.md).
 
 The rest of this page is a quick overview of everything Membership does.
 

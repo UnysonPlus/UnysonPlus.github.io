@@ -40,6 +40,16 @@ dropped into a Unyson+ page or embedded on any site.
 The rules the AI follows and the rules Check scene measures are the same set, so a scene the AI makes starts
 close to clean.
 
+### The preset library
+
+Thirty-one presets in five groups. **Text:** Rise, Slam, Stretch, Scramble, Typewriter, Blur in, Flip, Tracking and
+**Count up** (a number counts to its value, keeping its prefix, separators and suffix). **Reveal and exit:** Fade,
+Wipe, **Soft wipe** (feathered edge), Iris, Slide, Grow, **Blinds** (staggered strips). **Move and scale:** Pop, Zoom,
+Spin, **Turn** (3D), Keyframes, Custom code. **Emphasis:** Wave, Pulse, Shake, Float, Recolour, **Sheen** (one light
+sweep). **Ambient and backgrounds:** **Drift** (a slow move and scale creep for held frames), **Gradient flow** (a
+gradient fill flowing across a shape) and **Particles** (a seeded field of rising, falling or drifting dots).
+Hover a preset in the library to see it play.
+
 ### Keyframes and curves
 
 When no preset does what you want, a **Keyframes** clip lets you set values by hand: Move X/Y, scale, rotation,

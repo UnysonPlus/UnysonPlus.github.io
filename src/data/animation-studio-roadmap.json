@@ -239,8 +239,8 @@
         {
           "id": "p6-more-presets",
           "title": "More presets",
-          "detail": "Backgrounds, particles, masks, transitions between scenes, and 3D entrances.",
-          "status": "planned"
+          "detail": "Second set shipped (31 presets): Count up, Soft wipe, Blinds, Turn (3D), Sheen, and a new Ambient and backgrounds group with Drift, Gradient flow and Particles. Still to come: transitions between groups and 3D entrances with depth.",
+          "status": "in-progress"
         }
       ]
     },
@@ -270,6 +270,6 @@
       ]
     }
   ],
-  "extensionVersion": "0.0.14",
+  "extensionVersion": "0.0.15",
   "versionLabel": "Studio"
 }

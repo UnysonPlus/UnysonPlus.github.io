@@ -81,6 +81,23 @@ your pages and in video exports. Click one to hear it.
 
 AI assist uses the same sounds when you ask for a scene with sound, a video or an ad.
 
+### Styles
+
+A style is a look to build from: a colour palette, a font pairing, a motion personality (how headlines, supporting text
+and shapes enter and leave, and how they ease), a pace and a sound palette. The **Styles** tab of the library has eight:
+**Night**, **Clean**, **Kinetic**, **Pastel**, **Neon**, **Editorial**, **Playful** and **Luxe**. Hover a card to see
+its title card play; click it for what you can do with it.
+
+- **Apply to this scene.** Choose any of **Colours and fonts**, **Motion** and **Sounds**. Words and timing stay as
+  they are. Colours are matched by their role (text, secondary text, accent, panels), each act's headline gets the
+  style's display font, and entrances keep their variety: clips that entered differently before still do. Undo brings
+  the previous look back.
+- **New scene.** Starts a title card in the style (kicker, headline, a line and a supporting line), ready to edit.
+- **Use with AI assist.** AI assist follows the style when it makes or changes a scene; a new scene gets exactly the
+  style's colours and fonts. The style can also be picked in AI assist itself.
+- **Save this scene as a style.** Takes your scene's colours, fonts, the presets it uses for each role and its sounds,
+  and adds it to the list (kept in this browser).
+
 ### Share links
 
 **Export → Share link** gives you a link with the whole scene inside it. Whoever opens it gets their own copy in the

@@ -313,7 +313,13 @@
         {
           "id": "p8-styles",
           "title": "Styles (scene presets)",
-          "detail": "Ready looks the AI and the user can build from: palette, type, motion personality, pacing and a sound palette, each with a reference scene. Save your own scenes as styles; a brand kit (logo, colours, fonts) on top.",
+          "detail": "Eight ready looks (Night, Clean, Kinetic, Pastel, Neon, Editorial, Playful, Luxe), each a palette, a font pairing, a motion personality, a pace and a sound palette. Apply one to a scene (colours and fonts, motion and sounds, each optional), start a new scene in it, or give it to AI assist as art direction. Save your own scene as a style.",
+          "status": "done"
+        },
+        {
+          "id": "p8-brand-kit",
+          "title": "Brand kit",
+          "detail": "Your logo, colours and fonts as a style of your own, edited directly, plus styles exported and imported as files to share with a team.",
           "status": "planned"
         },
         {

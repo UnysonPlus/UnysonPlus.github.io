@@ -30,7 +30,7 @@ subscribed overall. Their page shows the history of every list they joined or le
 ## Tags
 
 Tags need no consent and have no status: a contact simply has a tag or not. Add tags on a contact's page,
-in bulk from the contacts list, in an import, or through a form's **Add to the CRM** action.
+in bulk from the contacts list, in an import, or through a form's [**Add to the CRM**](./forms-and-signups.md) settings.
 
 **Rename or merge tags** (on Lists & segments) renames a tag everywhere, or merges two tags into one: every
 contact moves to the kept tag and the segments that used the other one are updated. Tags created by another

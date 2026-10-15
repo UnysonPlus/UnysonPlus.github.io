@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.67",
-  "generatedAt": "2026-10-15T07:05:26.546Z",
+  "extensionVersion": "1.0.68",
+  "generatedAt": "2026-10-15T08:28:22.900Z",
   "detected": true,
   "milestones": [
     {
@@ -222,15 +222,22 @@
         },
         {
           "id": "p1-forms",
-          "title": "Contact form action",
-          "detail": "The contact form's subscribe action becomes **Add to the CRM**: create or update the contact, add tags and lists, record consent and log the submission on the timeline, configured on each form's Actions tab. Form posts are rate-limited per visitor, with an optional captcha.",
+          "title": "Leads from forms",
+          "detail": "A contact or booking form adds its senders as contacts: each answer goes to a contact field, an existing custom field or a new one the CRM creates from the form field, the whole submission lands on the timeline, and a booking can become a deal or a meeting. Subscribing still needs a ticked consent box.",
           "detect": {
             "files": [
-              "includes/class-fw-crm-forms-action.php"
+              "includes/class-fw-crm-forms-action.php",
+              "includes/forms/class-fw-crm-form-map.php"
+            ],
+            "symbols": [
+              {
+                "file": "includes/forms/class-fw-crm-form-map.php",
+                "pattern": "function ensure_field"
+              }
             ]
           },
           "status": "done",
-          "progress": "1/1"
+          "progress": "3/3"
         },
         {
           "id": "p1-newsletter-element",

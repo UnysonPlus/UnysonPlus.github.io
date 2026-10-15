@@ -52,6 +52,7 @@ time.
 | `contact.tagged` / `contact.untagged` | A tag is added to / removed from a contact | `contact`, `tag` (`id`, `slug`, `name`), `source` |
 | `contact.subscribed` | A contact subscribes to email (including confirming double opt-in) | The contact |
 | `contact.unsubscribed` | A contact unsubscribes | The contact |
+| `form.submitted` | A contact or booking form with **Add the sender to the CRM** is sent ([forms](../contacts/forms-and-signups.md)) | `contact`, `new_contact`, `form_id`, `form_title`, `entry_id`, `answers` (each `id`, `label`, `type`, `value`) |
 | `task.created` / `task.completed` | A task, call or meeting is added / done | The task (`completed` adds `outcome`) |
 | `company.created` / `.updated` / `.deleted` | Companies change (Companies module) | The company |
 | `deal.created` / `.updated` | A deal is added / changed (Sales pipeline module) | The deal (`updated` adds `changed`) |

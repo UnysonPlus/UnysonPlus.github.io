@@ -32,6 +32,7 @@ bring in your contacts.
 - [Companies](./contacts/companies.md) and [custom fields](./contacts/custom-fields.md)
 - [Lists, tags and segments](./contacts/lists-tags-segments.md)
 - [Import and export](./contacts/import-export.md) (CSV import with a dry run and undo)
+- [Leads from your forms](./contacts/forms-and-signups.md): contact, booking and newsletter forms
 - [Duplicates and merging](./contacts/duplicates-and-merge.md)
 - [Consent and privacy](./contacts/consent-and-privacy.md)
 
@@ -98,8 +99,10 @@ beginner is never faced with tools they do not use. A module that is off loads n
   own triggers, actions, fields and timeline entries. A planned **Membership** extension (its own
   extension, for members-only content, levels and renewals) connects this way, as does WooCommerce.
 
-- **Forms.** Every contact form gets an **Add to the CRM** action that creates or updates the contact, adds
-  tags and lists and records consent. Submissions are still kept under Form Entries either way.
+- **Forms.** A contact or booking form can add its senders to the CRM: it creates or updates the contact,
+  saves the answers you choose (to contact fields or custom fields it creates for you), keeps the whole
+  submission on the timeline, and can turn a booking into a deal or a meeting. People are only subscribed to
+  your emails when they tick a consent box. See [Leads from your forms](./contacts/forms-and-signups.md).
 - **Newsletter element.** Signups from the Newsletter element become contacts.
 - **AI Assistant.** A connected AI app can set the CRM up through its tools (fields, lists, segments,
   pipelines, campaigns, automations), but no tool reads or contacts the people in it.

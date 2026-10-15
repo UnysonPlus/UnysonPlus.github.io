@@ -55,8 +55,8 @@ Administrators always have full access. See [Team roles](./workspace/team-roles.
   lets you check the whole file before anything is saved. Every import can be undone. See
   [Import and export](./contacts/import-export.md).
 - **Add people by hand** with **New → Contact** in the top bar.
-- **Collect them from your site.** Every contact form gets an **Add to the CRM** action, and the Newsletter
-  element's signups become contacts.
+- **Collect them from your site.** Newsletter element signups become contacts, and any contact or booking
+  form can add its senders, with the answers you choose. See [Leads from your forms](./contacts/forms-and-signups.md).
 
 Adding or importing someone never subscribes them to your emails. Email consent only comes from the person
 (a signup form, a confirmed opt-in), or from an import where you confirm everyone agreed.

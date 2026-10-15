@@ -22,6 +22,10 @@ Everything below starts from the AI Dev Kit. Get it from
 (Windows) or `start.command` (macOS). The first run downloads what it needs; keep the window
 open while you work. Its dashboard opens at `http://localhost:4600`.
 
+<div style="text-align:center; margin:1.75rem 0;">
+  <a class="button button--primary button--lg" href="https://github.com/UnysonPlus/UnysonPlus-AI-Dev-Kit">Get the AI Dev Kit on GitHub →</a>
+</div>
+
 ## Use your Claude subscription (Claude Code)
 
 A Claude subscription needs **no API key**: Claude Code signs in with your account, and the kit uses

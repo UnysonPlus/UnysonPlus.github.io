@@ -46,6 +46,7 @@ capture and convert straight from the *Unyson+ → Convert* screen. Its main end
 | `/pen-shortcode` | Turn a pasted pen (HTML/CSS/JS) into an installable UnysonPlus **shortcode** `.zip` — see [What It Can Build](./what-it-can-build.md#turn-a-pen-into-a-shortcode). |
 | `/local-ai/chat*` | The dashboard's built-in chat (history / send / clear) against a local model. |
 | `/studio/status`, `/studio/ai` | The [Animation Studio](/animation-studio)'s AI tab: whether AI is ready, and a scene file made (or changed) from a request. Only the Studio's own pages may call these. |
+| `/studio/render` | The Animation Studio's video export: starts a render (scene, size, frame rate, MP4 or WebM), reports its progress, and serves the finished file. Headless Chrome draws each frame and ffmpeg encodes them. Only the Studio's own pages may call it. |
 | `/hub/status` | The dashboard's Home page: the service version, whether AI is ready, and when the Site Converter, the AI Assistant and the Animation Studio last called the kit (and from which site). Kept in memory only, so it resets when the kit restarts. |
 
 ## The dashboard

@@ -55,6 +55,14 @@ gradient fill flowing across a shape) and **Particles** (a seeded field of risin
 Tumble in, Orbit and Camera push, for 3D layers.
 Hover a preset in the library to see it play.
 
+### Video export
+
+**Export → Video** turns a scene into an MP4 or WebM for social posts, presentations, or anywhere HTML can't go:
+Full HD, HD, 4K, vertical (1080 × 1920) or square, at 24, 30 or 60 frames a second. The AI Dev Kit on your computer
+renders it frame by frame, so every frame is exact, 3D included, however slow the machine. The size picks the layout:
+a vertical video uses the scene's mobile layout, as a phone would. The kit needs ffmpeg; the Studio tells you how to
+install it if it is missing.
+
 ### Full screen and transitions
 
 The **full screen** icon at the right of the stage toolbar (or the **F** key) plays the scene at your screen's real

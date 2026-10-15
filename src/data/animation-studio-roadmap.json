@@ -252,8 +252,8 @@
         {
           "id": "p7-video",
           "title": "Video export",
-          "detail": "Render a scene to MP4 or WebM through the AI Dev Kit, frame by frame in a headless browser. Possible because every timeline is seekable.",
-          "status": "planned"
+          "detail": "Built: Export → Video renders MP4 (H.264) or WebM (VP9) at Full HD, HD, 4K, vertical or square, 24 to 60 fps. The AI Dev Kit draws the scene frame by frame in headless Chrome and encodes it with ffmpeg, so every frame is exact, 3D included. Ships with the next AI Dev Kit release.",
+          "status": "in-progress"
         },
         {
           "id": "p7-accounts",
@@ -270,6 +270,6 @@
       ]
     }
   ],
-  "extensionVersion": "0.0.18",
+  "extensionVersion": "0.0.20",
   "versionLabel": "Studio"
 }

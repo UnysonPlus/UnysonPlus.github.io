@@ -55,6 +55,14 @@ gradient fill flowing across a shape) and **Particles** (a seeded field of risin
 Tumble in, Orbit and Camera push, for 3D layers.
 Hover a preset in the library to see it play.
 
+### Sound
+
+**+ Audio** adds a voice-over, music or a sound effect. Audio sits on its own timeline rows with a waveform, so you
+can line up words and motion by eye; drag to move it, drag an edge to trim, and set volume and fades in the Inspector.
+On a web page, a scene with sound starts muted with a small **Tap for sound** button, because browsers block sound
+until the visitor interacts. Presentations and full screen play sound from the first click, and video exports mix it
+in. Next on the roadmap: built-in sound effects, styles, and a scene made automatically from your voice-over.
+
 ### Share links
 
 **Export → Share link** gives you a link with the whole scene inside it. Whoever opens it gets their own copy in the

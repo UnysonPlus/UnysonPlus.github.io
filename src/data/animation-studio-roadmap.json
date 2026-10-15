@@ -280,8 +280,50 @@
           "status": "done"
         }
       ]
+    },
+    {
+      "id": "phase-8",
+      "title": "Phase 8 · Sound and voice",
+      "tasks": [
+        {
+          "id": "p8-audio",
+          "title": "Audio track",
+          "detail": "Voice-overs, music and sound effects on the timeline with waveforms, trimming, volume and fades, played in step with the animation. Scenes with sound start muted on pages (a Tap for sound button), and video exports mix the sound in.",
+          "status": "done"
+        },
+        {
+          "id": "p8-sfx",
+          "title": "Built-in sound effects",
+          "detail": "Effects generated in code (pop, click, whoosh, rise, impact, sparkle, typing): no files, no licences. A Sound option on any clip adds the matching effect on the frame the motion lands.",
+          "status": "planned"
+        },
+        {
+          "id": "p8-styles",
+          "title": "Styles (scene presets)",
+          "detail": "Ready looks the AI and the user can build from: palette, type, motion personality, pacing and a sound palette, each with a reference scene. Save your own scenes as styles; a brand kit (logo, colours, fonts) on top.",
+          "status": "planned"
+        },
+        {
+          "id": "p8-transcribe",
+          "title": "Transcription in the AI Dev Kit",
+          "detail": "Whisper speech-to-text on your own computer, with the time of every word, plus how it is said: emphasis, pauses, pace and energy.",
+          "status": "planned"
+        },
+        {
+          "id": "p8-voice-scene",
+          "title": "Make a scene from a voice-over",
+          "detail": "Upload a voice-over and, with AI connected, get a scene timed to the words: key phrases as text, presets that match the delivery, transitions between ideas and automatic sound effects, in the style you pick.",
+          "status": "planned"
+        },
+        {
+          "id": "p8-mcp",
+          "title": "Studio tools for AI apps (MCP)",
+          "detail": "The AI Dev Kit offers the Studio as tools to AI apps such as Claude Desktop, so a scene can be made or changed from a conversation.",
+          "status": "planned"
+        }
+      ]
     }
   ],
-  "extensionVersion": "0.0.22",
+  "extensionVersion": "0.0.23",
   "versionLabel": "Studio"
 }

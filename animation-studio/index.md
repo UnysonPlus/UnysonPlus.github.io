@@ -40,6 +40,14 @@ dropped into a Unyson+ page or embedded on any site.
 The rules the AI follows and the rules Check scene measures are the same set, so a scene the AI makes starts
 close to clean.
 
+### Scroll-linked playback
+
+Set **Starts** to **As the page scrolls** and the page's scroll position becomes the playhead: scroll down to play,
+up to rewind. **Pin while playing** holds the stage still (below the header height) for the **Scroll length** you
+set, in screens; unpinned, the scene plays while it crosses the window. **Smoothing** lets the playhead glide to
+the scroll position. **Try scrolling in a test page** (Inspector, Playback) opens the scene between stand-in page
+content. The Studio Scene element offers the same choice, with its own Scroll length.
+
 ### Measured eases
 
 Clips can use twelve **measured eases**, listed first in the Easing menu with what each is for: Soft land,

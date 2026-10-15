@@ -32,8 +32,9 @@ Each option starts at **Scene default**, which keeps what was set in the Studio.
 | Option | What it does |
 |---|---|
 | **Height** | How tall the scene may grow: **keep the shape** (the page scrolls if it is taller than the window), **keep the shape, never taller than the window**, or **fill the window**. |
-| **Header height** | Pixels left for a sticky site header when the scene is capped to, or fills, the window. |
-| **Starts** | When the scene plays: when scrolled into view, or when the page loads. |
+| **Header height** | Pixels left for a sticky site header when the scene is capped to, or fills, the window. A scene that plays as the page scrolls is held in place just below this height. |
+| **Starts** | When the scene plays: when scrolled into view, when the page loads, or **as the page scrolls** (the scroll position plays it forwards and back, with the stage held in place while it plays). |
+| **Scroll length** | For a scene that plays as the page scrolls: how many screens of scrolling it takes while held in place. 0 keeps the scene's own setting. |
 | **Loop** | Loop or play once. |
 
 **Custom code clips** in a scene run only when the page's author is allowed to publish unfiltered HTML (administrators

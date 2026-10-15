@@ -104,6 +104,18 @@ curl -X POST https://example.com/wp-json/fw-crm/v1/deals/42/move \
 | `PATCH|DELETE /notes/{id}` | Edit or delete a note (its author or a manager) |
 | `GET /calendar` | `from`, `to` (up to 62 days), `owner` → events by day |
 
+## Webhooks
+
+Managers can create and manage [webhooks](./webhooks.md) under `/webhooks` (Webhooks module). A webhook
+pushes events out as they happen; the routes above are for reading and changing records.
+
+## Modules and routes
+
+A route that belongs to a module exists only while that module is on: `/deals`, `/pipelines`, `/products` and
+`/reports` (Sales pipeline), `/calendar` (Calendar), `/contacts/{id}/email` (Email conversations), `/audit`
+(Audit log) and `/webhooks` (Webhooks). A switched-off module's routes answer `404 rest_no_route`. Contacts,
+companies, fields, segments, tasks, notes and files are always there.
+
 ## The inbound email address
 
 `POST /inbound/{token}` is public on purpose: the token is the secret. Email services post incoming email to

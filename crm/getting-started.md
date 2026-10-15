@@ -24,17 +24,21 @@ spreadsheet, or collected by a form on your site.
 
 ## 2. Choose the modules you need
 
-Open **CRM → Settings**. Contacts and companies are always on; the rest are modules you switch on or off:
+The first time a CRM manager opens the CRM, Home asks **What will you use the CRM for?** Tick what fits and
+press **Set up my CRM**; only the modules behind your answers are switched on. **Skip, keep it simple**
+starts with the core alone.
 
-| Module | Turn it on if you… |
+<img src="/img/crm/setup-question.png" alt="The CRM's first-run question: keep track of people, sell to customers, send newsletters, email people one to one" width="1070" />
+
+| Answer | Switches on |
 | --- | --- |
-| **Sales pipeline** | track deals, quotes or bookings through stages, with products, tasks and sales reports |
-| **Email marketing** | send newsletters and campaigns to lists, tags or segments |
+| **Keep track of people** | Nothing extra: contacts, notes, tags, lists, segments, tasks, files and import are always there |
+| **Sell to customers** | Companies, Sales pipeline and Calendar |
+| **Send newsletters** | Email marketing |
+| **Email people one to one** | Email conversations |
 
-A module that is off loads no code and adds no menu items, and its data stays until you turn it back on.
-See [Settings and modules](./workspace/settings-and-modules.md).
-
-<img src="/img/crm/settings-modules.png" alt="CRM settings: switch the sales pipeline and email marketing modules on or off" width="938" />
+Change your mind at any time under **CRM → Modules**. A module that is off loads no code and adds no menu
+items, and its data stays until you turn it back on. See [Modules and settings](./workspace/settings-and-modules.md).
 
 ## 3. Add your team
 

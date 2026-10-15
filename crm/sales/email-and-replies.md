@@ -8,7 +8,8 @@ keywords: [send email from wordpress crm, email tracking crm wordpress, log emai
 
 # Email and replies
 
-Write to a contact without leaving the CRM, and see their answer on the same timeline.
+Write to a contact without leaving the CRM, and see their answer on the same timeline. This is the
+**Email conversations** module: switch it on under [CRM → Modules](../workspace/settings-and-modules.md).
 
 ## Write a one-to-one email
 

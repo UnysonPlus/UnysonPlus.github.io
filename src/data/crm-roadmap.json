@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.66",
-  "generatedAt": "2026-10-14T15:03:15.910Z",
+  "extensionVersion": "1.0.67",
+  "generatedAt": "2026-10-15T07:05:26.546Z",
   "detected": true,
   "milestones": [
     {
@@ -70,15 +70,22 @@
         },
         {
           "id": "p1-modules",
-          "title": "Module switches",
-          "detail": "Settings switch each module (pipeline, email, automations, scoring) on or off. A module that is off loads no code and adds no menu.",
+          "title": "Modules",
+          "detail": "A small core that is always on, and modules switched on from a Modules screen of cards: companies, sales pipeline, calendar, email conversations, email marketing, audit log and webhooks, with automations, scoring and cases to come. A module that is off loads no code and adds no menu; a new site is asked what it will use the CRM for and starts with only that. Other plugins can add their own module.",
           "detect": {
             "files": [
-              "includes/class-fw-crm-modules.php"
+              "includes/class-fw-crm-modules.php",
+              "includes/admin/class-fw-crm-admin-modules.php"
+            ],
+            "symbols": [
+              {
+                "file": "includes/class-fw-crm-modules.php",
+                "pattern": "function needs_setup"
+              }
             ]
           },
           "status": "done",
-          "progress": "1/1"
+          "progress": "3/3"
         },
         {
           "id": "p1-contacts",
@@ -408,7 +415,7 @@
           "detail": "Log calls (outcome, duration, notes) and schedule meetings with a time, attendees and a reminder; a calendar view of everything due.",
           "detect": {
             "files": [
-              "includes/class-fw-crm-calendar.php",
+              "modules/calendar/class-fw-crm-calendar.php",
               "includes/admin/class-fw-crm-admin-calendar.php"
             ],
             "symbols": [
@@ -455,7 +462,7 @@
           "detail": "Write to a contact from their profile or a deal; the email is sent through the Mailer and logged on the timeline.",
           "detect": {
             "files": [
-              "includes/class-fw-crm-direct-email.php"
+              "modules/conversations/class-fw-crm-direct-email.php"
             ]
           },
           "status": "done",
@@ -467,7 +474,7 @@
           "detail": "Replies reach the contact's timeline through a BCC address or a connected mailbox, which also lets an automation stop when someone answers.",
           "detect": {
             "files": [
-              "includes/class-fw-crm-inbound-email.php"
+              "modules/conversations/class-fw-crm-inbound-email.php"
             ]
           },
           "status": "done",
@@ -910,6 +917,20 @@
           },
           "status": "planned",
           "progress": "0/1"
+        },
+        {
+          "id": "p6-webhooks",
+          "title": "Outbound webhooks",
+          "detail": "Send CRM events (new contacts, tags, subscriptions, deals won, tasks done, email opens, clicks and bounces) to other apps as signed JSON the moment they happen, retried in the background and logged, with a test button and a REST API to manage them. Other extensions add their own events.",
+          "detect": {
+            "files": [
+              "modules/webhooks/class-fw-crm-webhooks.php",
+              "modules/webhooks/class-fw-crm-admin-webhooks.php",
+              "modules/webhooks/class-fw-crm-rest-webhooks.php"
+            ]
+          },
+          "status": "done",
+          "progress": "3/3"
         },
         {
           "id": "p6-integrations",

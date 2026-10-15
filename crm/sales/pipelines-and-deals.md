@@ -12,7 +12,7 @@ A deal is something you hope to sell: a quote, a booking, a contract, a project.
 stages a deal moves through until it is won or lost. The Unyson+ CRM shows your pipeline as a board you drag
 deals across, right inside WordPress.
 
-Turn on the **Sales pipeline** module in [Settings](../workspace/settings-and-modules.md) to use it.
+Switch on the **Sales pipeline** module under [CRM → Modules](../workspace/settings-and-modules.md) to use it.
 
 ## The deals board
 

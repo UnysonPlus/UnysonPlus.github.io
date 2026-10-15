@@ -11,6 +11,8 @@ keywords: [wordpress crm companies, b2b crm wordpress, account management wordpr
 A company record groups the people you deal with at one business, and the deals, tasks, files and history
 that belong to it. Contacts can work at several companies, with one marked as their main company.
 
+Companies is a module: switch it on under [CRM → Modules](../workspace/settings-and-modules.md) if you sell to businesses.
+
 <img src="/img/crm/company-page.png" alt="A company page in the WordPress CRM with its details, timeline, people and deals" width="1920" />
 
 ## Add a company

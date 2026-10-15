@@ -11,6 +11,8 @@ keywords: [crm calendar wordpress, sales calendar, task calendar wordpress, meet
 The calendar puts everything with a date on one screen: your tasks, calls and meetings by their time, deals
 on the day they are expected to close, and email campaigns on the day they are scheduled or were sent.
 
+The calendar is a module: switch it on under [CRM → Modules](../workspace/settings-and-modules.md).
+
 <img src="/img/crm/calendar.png" alt="The WordPress CRM calendar month view with tasks, meetings and deal close dates" width="1920" />
 
 ## Month and week

@@ -9,7 +9,8 @@ keywords: [wordpress crm hooks, crm php api, extend wordpress crm, crm actions f
 # PHP API and hooks
 
 Other extensions build on the CRM through its PHP classes and WordPress hooks, never its database tables.
-Check that the CRM is active first:
+Check that the CRM is active first, and for a part that belongs to a module, that the module is on
+(`FW_CRM_Modules::enabled( 'pipeline' )`):
 
 ```php
 if ( function_exists( 'fw_ext' ) && fw_ext( 'crm' ) && class_exists( 'FW_CRM_Contacts' ) ) {
@@ -63,6 +64,7 @@ FW_CRM_Activity::log( 'contact', $contact_id, 'booking', 'Booked: Colour, 3 Nov'
 | `unysonplus_crm_contact_panels`, `unysonplus_crm_company_panels`, `unysonplus_crm_deal_panels` | A panel on a record page: `id => { label, callback( $record ), priority, column: side or main }` |
 | `unysonplus_crm_dashboard_cards` | A Home card: `id => { title, callback(), priority, column }`; people can move or hide it |
 | `unysonplus_crm_record_actions` (action) | Buttons in a record's header: `( $object, $record )` |
+| `unysonplus_crm_modules` | A module on CRM → Modules: `id => { label, description, icon, group, default, requires, requires_text, available, soon }`. See [Create a custom module](./custom-modules.md) |
 | `unysonplus_crm_nav` | A sidebar item: `view => { label, icon, url?, cap?, module? }`; render it on `unysonplus_crm_render_view` |
 | `unysonplus_crm_settings_sections` (action) | A section on CRM → Settings |
 | `unysonplus_crm_handle_action` | Handle your own form actions: `( $result, $action )` → redirect args or `[ '_back' => $url ]` |
@@ -82,6 +84,8 @@ FW_CRM_Activity::log( 'contact', $contact_id, 'booking', 'Booked: Colour, 3 Nov'
 | `unysonplus_crm_file_attached` · `_detached( $object, $id, $attachment_id )` | Files |
 | `unysonplus_crm_direct_email_sent( $contact, $mail, $deal_id )` · `unysonplus_crm_email_received( $contact_id, $message, $deal_id )` | Email out and replies in |
 | `unysonplus_crm_import_finished` · `_import_undone` | CSV imports |
+| `unysonplus_crm_module_toggled( $id, $on )` | A module was switched on or off (refuse with the `unysonplus_crm_module_can_disable` filter) |
+| `unysonplus_crm_webhook( $event, $data )` (you fire it) | Queue a [webhook](./webhooks.md) event |
 
 Useful filters: `unysonplus_crm_lifecycle_stages`, `unysonplus_crm_field_types`, `unysonplus_crm_segment_fields`,
 `unysonplus_crm_task_types`, `unysonplus_crm_lost_reasons`, `unysonplus_crm_default_currency`,

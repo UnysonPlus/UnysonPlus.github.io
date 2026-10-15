@@ -44,17 +44,18 @@ bring in your contacts.
 - [Files on records](./sales/files.md) and [sales reports](./sales/sales-reports.md)
 
 **Workspace and team:** [Home dashboard](./workspace/home-dashboard.md), [team roles](./workspace/team-roles.md),
-[bin and audit log](./workspace/bin-and-audit-log.md), [settings and modules](./workspace/settings-and-modules.md).
+[bin and audit log](./workspace/bin-and-audit-log.md), [modules and settings](./workspace/settings-and-modules.md).
 
-**Developers:** [REST API](./developers/rest-api.md), [PHP API and hooks](./developers/php-api-and-hooks.md).
+**Developers:** [REST API](./developers/rest-api.md), [PHP API and hooks](./developers/php-api-and-hooks.md),
+[create a custom module](./developers/custom-modules.md), [webhooks](./developers/webhooks.md).
 
 ## Finding your way around
 
 Open **Unyson+ → CRM** and the CRM takes over the screen like an app of its own:
 
 - **The CRM sidebar** lists every area: Home, Contacts, Companies, Deals, Tasks, Calendar, Campaigns,
-  Lists & segments, Reports, Import / Export, Custom fields, Bin, Audit log and Settings. Areas that
-  belong to a module you switched off are hidden.
+  Lists & segments, Reports, Import / Export, Custom fields, Bin, Audit log, Webhooks, Modules and
+  Settings. Areas that belong to a module you switched off are hidden.
 - **The WordPress menu folds to its icons** while you are in the CRM and comes back when you leave.
   **Hide the WordPress menu** at the bottom of the CRM sidebar removes it altogether (your choice is
   remembered), and **Back to WordPress** takes you to the dashboard.
@@ -73,13 +74,19 @@ Adding someone by hand never subscribes them to your emails; email consent only 
 
 ## What it covers
 
-The CRM is one extension made of modules. **Contacts and companies** is always on; every other module is
-switched on in the CRM's settings, and a module that is off loads no code and adds no menus.
+The CRM is one extension: a small core that is always on, and modules you switch on under **CRM → Modules**
+when you need them. A new site is asked what it will use the CRM for and starts with only that, so a
+beginner is never faced with tools they do not use. A module that is off loads no code and adds no menus.
 
-| Module | What it does |
+| Part | What it does |
 | --- | --- |
-| **Contacts and companies** | People and companies with an owner, a lifecycle stage and your own fields; lists, tags and rule-based segments; one activity timeline per record; CSV import and export; consent and privacy built in |
-| **Sales pipeline** | Several pipelines with their own stages, a drag-and-drop deal board, deal pages, tasks with reminders, notes, one-to-one email and sales reports |
+| **The core** (always on) | People with an owner, a lifecycle stage and your own fields; lists, tags and rule-based segments; one activity timeline per record; tasks with reminders; files; CSV import and export; consent and privacy built in |
+| **Companies** | The organisations your contacts work for, each with a record, a timeline and its people |
+| **Sales pipeline** | Several pipelines with their own stages, a drag-and-drop deal board, deal pages, products and sales reports |
+| **Calendar** | Calls, meetings and dated tasks on a month, week and day calendar |
+| **Email conversations** | One-to-one email from a contact's record, and their replies on the timeline |
+| **Audit log** | Who changed, exported, merged or deleted what |
+| **Webhooks** | CRM events sent to other apps as signed JSON the moment they happen |
 | **Email marketing** | Campaigns built in a block email builder from a template gallery, double opt-in, a preference page, batched sending through SMTP or an email service, and open and click reports |
 | **Automations** | Triggers (a form, a tag, a date, a deal stage, a purchase) start a flow of steps: send an email, wait, branch, change tags, move a deal, create a task, call a webhook |
 | **Scoring and site activity** | Points for what contacts do, and the pages known contacts read, so the warmest leads come first |

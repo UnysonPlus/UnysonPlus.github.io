@@ -8,6 +8,9 @@ keywords: [restore deleted contacts wordpress, crm recycle bin, crm audit log, a
 
 # Bin and audit log
 
+The bin is always there. The audit log is a module: switch it on under [CRM → Modules](./settings-and-modules.md)
+once more than one person works in the CRM.
+
 ## The bin
 
 Deleting a contact, company or deal moves it to the **bin**. It disappears from lists, search, segments and

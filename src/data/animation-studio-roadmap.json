@@ -190,8 +190,8 @@
         {
           "id": "p5-kit-hub",
           "title": "AI Dev Kit hub",
-          "detail": "The kit's local dashboard becomes a home for all its jobs (Site Converter, AI Assistant connection, Animation Studio), each showing whether it is connected.",
-          "status": "planned"
+          "detail": "The kit's dashboard opens on a Home page with a card per job (Site Converter, AI Assistant, Animation Studio): whether each is ready, when it last called the kit and from which site, plus the AI in use. Retitled Unyson+ AI Dev Kit.",
+          "status": "done"
         }
       ]
     },

@@ -46,6 +46,7 @@ capture and convert straight from the *Unyson+ → Convert* screen. Its main end
 | `/pen-shortcode` | Turn a pasted pen (HTML/CSS/JS) into an installable UnysonPlus **shortcode** `.zip` — see [What It Can Build](./what-it-can-build.md#turn-a-pen-into-a-shortcode). |
 | `/local-ai/chat*` | The dashboard's built-in chat (history / send / clear) against a local model. |
 | `/studio/status`, `/studio/ai` | The [Animation Studio](/animation-studio)'s AI tab: whether AI is ready, and a scene file made (or changed) from a request. Only the Studio's own pages may call these. |
+| `/hub/status` | The dashboard's Home page: the service version, whether AI is ready, and when the Site Converter, the AI Assistant and the Animation Studio last called the kit (and from which site). Kept in memory only, so it resets when the kit restarts. |
 
 ## The dashboard
 
@@ -53,6 +54,8 @@ Starting the AI Dev Kit (`start.bat` on Windows, `start.command` on macOS — or
 also opens a **browser dashboard** at `http://localhost:4600`. It's the visual face of the
 service, with these tabs:
 
+- **Home** — where the dashboard opens: a card for each job the kit does (Site Converter, AI Assistant,
+  Animation Studio), showing whether it is ready, when it last called the kit and from which site, and which AI is in use.
 - **Convert** — run and watch a URL → WordPress conversion live, with design tokens, section mapping, and
   a source-vs-result comparison.
 - **Pen (Alpha)** — paste a pen's HTML/CSS/JS and download an installable shortcode `.zip` (see below).

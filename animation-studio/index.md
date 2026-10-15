@@ -40,6 +40,15 @@ dropped into a Unyson+ page or embedded on any site.
 The rules the AI follows and the rules Check scene measures are the same set, so a scene the AI makes starts
 close to clean.
 
+### Keyframes and curves
+
+When no preset does what you want, a **Keyframes** clip lets you set values by hand: Move X/Y, scale, rotation,
+opacity and blur. Each property is its own track, moving between the keyframes that set it. Put the playhead
+where you want a keyframe and click **Add keyframe at playhead**, or, with the clip selected, simply **drag the
+layer on the stage**: that sets its position keyframe at the playhead. Diamonds on the timeline select
+keyframes and drag them in time. For the move into each keyframe, pick an ease or draw a **custom curve** by
+dragging two handles, including overshoot (above the box) and anticipation (below it).
+
 ### Scroll-linked playback
 
 Set **Starts** to **As the page scrolls** and the page's scroll position becomes the playhead: scroll down to play,

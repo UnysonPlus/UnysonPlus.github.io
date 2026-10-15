@@ -341,6 +341,61 @@
           "status": "planned"
         }
       ]
+    },
+    {
+      "id": "p9-fluid",
+      "title": "Phase 9 · Fluid motion",
+      "goal": "Scenes that flow like hand-made motion graphics: one element turning into the next, with transitions, a camera, drawn paths, glow and impact.",
+      "tasks": [
+        {
+          "id": "p9-transitions",
+          "title": "Scene transitions",
+          "detail": "Transitions that act on a whole group or act, not one layer: a light slash that wipes to the next scene, a flash, a whip pan with motion blur, a zoom-through, a pixel glitch, a panel that shatters. Dropped between two groups on the timeline, timed so one scene hands over to the next.",
+          "status": "planned"
+        },
+        {
+          "id": "p9-camera",
+          "title": "Camera",
+          "detail": "One camera over every layer: pan, zoom, tilt and turn in 3D perspective, keyframed on its own timeline row, so the viewer glides through a scene instead of watching things move on a still page.",
+          "status": "planned"
+        },
+        {
+          "id": "p9-paths",
+          "title": "Paths and drawn lines",
+          "detail": "Lines, curves and connectors that draw themselves, layers that travel along a path (a comet that writes a word), and fading trails behind moving things.",
+          "status": "planned"
+        },
+        {
+          "id": "p9-glow",
+          "title": "Glow and motion blur",
+          "detail": "Neon glow on text and shapes, and blur along the direction of fast moves, so quick motion reads as speed rather than a jump.",
+          "status": "planned"
+        },
+        {
+          "id": "p9-bursts",
+          "title": "Impact bursts",
+          "detail": "One-off bursts of sparks, shards or rings on a hit, landing with the sound and the word they punctuate.",
+          "status": "planned"
+        },
+        {
+          "id": "p9-captions",
+          "title": "Captions with the spoken word highlighted",
+          "detail": "Captions built from a transcribed voice-over that light up each word as it is said, in the style's colours, alongside or instead of the big kinetic type.",
+          "status": "planned"
+        },
+        {
+          "id": "p9-ui-kit",
+          "title": "Interface building blocks",
+          "detail": "Ready-made pieces for product videos: a prompt box that types, highlighted tags, a node diagram with connecting lines, timeline and progress bars, stacking list cards.",
+          "status": "planned"
+        },
+        {
+          "id": "p9-benchmark",
+          "title": "Benchmark against hand-made videos",
+          "detail": "Rebuild reference motion-graphics videos from their voice-overs with the new tools and compare them frame by frame, the way the Site Converter is measured against its sources, until the Studio's version holds up next to them.",
+          "status": "planned"
+        }
+      ]
     }
   ],
   "extensionVersion": "0.0.23",

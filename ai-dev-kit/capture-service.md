@@ -45,6 +45,7 @@ capture and convert straight from the *Unyson+ → Convert* screen. Its main end
 | `/ai-convert` | Optional AI refinement of a draft mapping (uses your local AI backend). |
 | `/pen-shortcode` | Turn a pasted pen (HTML/CSS/JS) into an installable UnysonPlus **shortcode** `.zip` — see [What It Can Build](./what-it-can-build.md#turn-a-pen-into-a-shortcode). |
 | `/local-ai/chat*` | The dashboard's built-in chat (history / send / clear) against a local model. |
+| `/studio/status`, `/studio/ai` | The [Animation Studio](/animation-studio)'s AI tab: whether AI is ready, and a scene file made (or changed) from a request. Only the Studio's own pages may call these. |
 
 ## The dashboard
 

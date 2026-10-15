@@ -121,12 +121,13 @@ The AI writes a **scene file, not code**. It chooses presets from the catalogue 
 so everything it makes lands on the timeline as ordinary clips that can be moved, trimmed and edited by hand.
 A **custom code clip** stays available as an escape hatch for effects no preset covers.
 
-Two technical points need early testing:
+How the connection works in practice:
 
-- **Browser to local kit.** Chrome and Firefox let an `https://` site call a service on `localhost`, and
-  recent Chrome versions ask the user once for permission. Safari is stricter and may need a different route.
-- **Only the Studio may call the kit.** The kit accepts requests only from the Studio's own address, so other
-  websites cannot drive it.
+- **The browser asks first.** Chrome and other browsers ask before a website may reach apps on your own
+  computer ("…wants to access other apps and services on this device"). Choose **Allow** once. If it was
+  refused, the Studio's AI tab says so and shows where to turn it back on.
+- **Only the Studio may call the kit.** The kit answers only the Studio's own address, so other websites cannot
+  use your AI.
 
 The AI Dev Kit's local dashboard will become a hub for all its jobs (Site Converter, AI Assistant connection
 and Animation Studio), each showing whether it is connected.

@@ -166,20 +166,20 @@
         {
           "id": "p5-bridge",
           "title": "Studio-to-kit connection",
-          "detail": "The Studio talks to the AI Dev Kit on `localhost`. The kit accepts only the Studio's own address. Browser permission prompts are handled, and Safari is tested early.",
-          "status": "planned"
+          "detail": "The Studio reaches the AI Dev Kit on the user's computer (`localhost:8787`). The kit only answers the Studio's own pages. Browsers ask once before a website may reach apps on the device; the Studio explains the prompt and what to do if it was refused.",
+          "status": "done"
         },
         {
           "id": "p5-generate",
           "title": "Prompt to scene",
-          "detail": "The AI writes a scene file using only presets from the catalogue, so the result lands on the timeline as ordinary, editable clips.",
-          "status": "planned"
+          "detail": "The AI tab turns a request into a scene file built only from the preset catalogue (sent with each request, so the kit never goes stale). The result is validated; an invalid answer gets one automatic repair round. It lands on the timeline as ordinary clips, one undo step.",
+          "status": "done"
         },
         {
           "id": "p5-edit",
           "title": "Edit by prompt",
-          "detail": "Select a clip or a stretch of the timeline and describe the change (\"make this punchier\", \"slow the ending\").",
-          "status": "planned"
+          "detail": "\"Change this scene\" or \"Change the selected layers\": the AI returns the whole scene with only the asked-for change, keeping every other layer and id, and re-checks the layout at every screen size so bigger text never overlaps or leaves the safe area.",
+          "status": "done"
         },
         {
           "id": "p5-code-clip",
@@ -252,6 +252,6 @@
       ]
     }
   ],
-  "extensionVersion": "0.0.7",
+  "extensionVersion": "0.0.9",
   "versionLabel": "Studio"
 }

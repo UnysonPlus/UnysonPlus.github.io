@@ -81,6 +81,16 @@ your pages and in video exports. Click one to hear it.
 
 AI assist uses the same sounds when you ask for a scene with sound, a video or an ad.
 
+### Search engines and screen readers
+
+A scene shows its words a few at a time, so every scene also carries them once as plain text, in reading order: the
+headline as a heading, each act's headline one level below, the rest as paragraphs. Search engines index it and screen
+readers read it, while visitors see the animation (screen readers skip the animated copy, so nothing is read twice). The
+scene's **Search engines and screen readers** settings show exactly what is written, set the headline's level (Heading 2
+by default; Heading 1 only when the scene is the page's main title) and can mark a scene **decorative** (no text at all).
+The Studio Scene element in WordPress writes this text into the page's HTML, and the Studio's embed code and HTML export
+include it too.
+
 ### Styles
 
 A style is a look to build from: a colour palette, a font pairing, a motion personality (how headlines, supporting text

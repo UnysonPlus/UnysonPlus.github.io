@@ -43,6 +43,22 @@ scene plays.
 
 Visitors who have turned off animation in their system settings always see the scene's still frame instead.
 
+## Search tab
+
+An animation shows its words a few at a time, scrambled, masked or mid-effect, so a search engine looking at the moving
+scene would read fragments. The element therefore also writes the scene's words into the page once, as plain text, in
+the order they appear: the headline as a heading, each act's headline one level below, the rest as paragraphs. Search
+engines index that text and screen readers read it; visitors see the animation, which screen readers skip so nothing is
+read twice.
+
+| Option | What it does |
+|---|---|
+| **Headline as** | The heading level the scene's headline gets: Heading 1 (only when the scene is the page's main title; a page has one), Heading 2 (the default, a section) or Heading 3, or a plain paragraph. |
+| **Text for search engines** | Include the scene's words, or mark the scene **decorative**: no text at all, and hidden from screen readers. Use that for animation that only decorates. |
+
+**Scene default** uses what the scene says (set in the Studio under **Search engines and screen readers**, where you
+also see exactly what gets written).
+
 ## Good to know
 
 - **Layouts follow the element's width, not the screen's.** In a half-width column, a scene uses the layout that fits

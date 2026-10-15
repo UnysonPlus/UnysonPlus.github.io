@@ -184,8 +184,8 @@
         {
           "id": "p5-code-clip",
           "title": "Custom code clip",
-          "detail": "An escape hatch for effects no preset covers: a clip that runs its own GSAP code, with clear limits on what it can reach.",
-          "status": "planned"
+          "detail": "An escape hatch for effects no preset covers: a clip that runs your own GSAP code. It runs only where the page allows it (the Studio, your own exports, and WordPress pages by authors trusted with unfiltered HTML), a failing clip never stops the scene, and the AI never writes one.",
+          "status": "done"
         },
         {
           "id": "p5-kit-hub",
@@ -252,6 +252,6 @@
       ]
     }
   ],
-  "extensionVersion": "0.0.9",
+  "extensionVersion": "0.0.10",
   "versionLabel": "Studio"
 }

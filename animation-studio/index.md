@@ -119,7 +119,11 @@ Studio's server needs no AI keys and runs no AI calls, so there is no per-use co
 
 The AI writes a **scene file, not code**. It chooses presets from the catalogue and fills in their settings,
 so everything it makes lands on the timeline as ordinary clips that can be moved, trimmed and edited by hand.
-A **custom code clip** stays available as an escape hatch for effects no preset covers.
+A **custom code clip** stays available as an escape hatch for effects no preset covers. It runs your own GSAP code
+with the layer (`el`), the scene timeline (`tl`), `gsap` and the clip's start (`at`) and `duration`. Because it is real
+JavaScript, it runs only where the page allows it: the Studio, your own downloads and embed codes (which add
+`data-upw-allow-code`, and the Export window says so), and WordPress pages whose author may publish unfiltered HTML.
+Elsewhere the player skips it and plays the rest. A clip that throws is logged and skipped. The AI never writes one.
 
 How the connection works in practice:
 

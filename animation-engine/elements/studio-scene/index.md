@@ -36,6 +36,10 @@ Each option starts at **Scene default**, which keeps what was set in the Studio.
 | **Starts** | When the scene plays: when scrolled into view, or when the page loads. |
 | **Loop** | Loop or play once. |
 
+**Custom code clips** in a scene run only when the page's author is allowed to publish unfiltered HTML (administrators
+and editors on a single site), the same rule as Motion Snippet. For any other author they are skipped and the rest of the
+scene plays.
+
 Visitors who have turned off animation in their system settings always see the scene's still frame instead.
 
 ## Good to know

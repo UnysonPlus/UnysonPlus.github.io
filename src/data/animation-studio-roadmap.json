@@ -59,6 +59,12 @@
           "status": "done"
         },
         {
+          "id": "p2-groups",
+          "title": "Groups",
+          "detail": "Group layers (Ctrl+G) to manage big scenes: a group has a timeline of its own, opens with a double-click (breadcrumb, everything else dimmed, Escape steps back), moves in time as one by dragging its bar, and takes presets as a whole. Ungrouping keeps every layer where and when it was.",
+          "status": "done"
+        },
+        {
           "id": "p2-timeline",
           "title": "Timeline",
           "detail": "Tracks and clips; drag, trim and move clips; a playhead with frame-accurate scrubbing; zoom; play, pause and loop.",
@@ -246,6 +252,6 @@
       ]
     }
   ],
-  "extensionVersion": "0.0.6",
+  "extensionVersion": "0.0.7",
   "versionLabel": "Studio"
 }

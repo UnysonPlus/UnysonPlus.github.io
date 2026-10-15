@@ -10,7 +10,7 @@ description: "The plan for the Unyson+ Animation Studio: a browser editor for ti
 # Animation Studio
 
 > **Alpha, live at [animation-studio.unysonplus.com](https://animation-studio.unysonplus.com/).** The player,
-> the responsive stage, the editor and export (phases 1 to 3) are built. Alpha means features are still
+> the responsive stage, the editor, export, the Unyson+ element and AI assist (phases 1 to 5) are built. Alpha means features are still
 > missing and the scene file format may change between versions; exported pages and embeds keep working
 > regardless. This page records the plan and the decisions behind
 > it; the [roadmap](./roadmap.mdx) tracks each task, and the [research](./research.md) page covers what
@@ -22,8 +22,31 @@ text, image or timing, and watch it play. The difference from a video tool is th
 exports **plain HTML**, not an MP4. The result plays live in the page, stays sharp at any size, and weighs
 kilobytes instead of megabytes.
 
-It will live at **`animation-studio.unysonplus.com`**. The first target is **website heroes and sections**,
+It lives at **`animation-studio.unysonplus.com`**. The first target is **website heroes and sections**,
 dropped into a Unyson+ page or embedded on any site.
+
+## Two ways to make a scene
+
+- **By hand.** Drag presets onto the timeline. Their defaults follow timing measured from professional motion
+  design, and **Check scene** (the Check tab) points out what could be better while you work: text that leaves
+  before it can be read, text too small on a screen size, text off the stage or sitting on other text, two clips
+  fighting over one layer, and long stretches where nothing moves. Most items have a one-click fix, and
+  **Apply all** runs every sure fix at once.
+- **With AI, then by hand.** The **✦ AI assist** button (bottom right of the stage) opens a chat with the AI
+  Dev Kit. Ask for a new scene, a change to the whole scene, or a change to the layers you selected. Every answer
+  is one undo step with a **Go back to before this** link and a Check scene count; **Fix with AI** in the Check
+  tab sends its findings to the AI. From there you keep refining by hand, with the same tools as above.
+
+The rules the AI follows and the rules Check scene measures are the same set, so a scene the AI makes starts
+close to clean.
+
+### Measured eases
+
+Clips can use twelve **measured eases**, listed first in the Easing menu with what each is for: Soft land,
+Snap and settle, Glide, Whip, Pop over, Crash in, Bounce hard, Cruise, Soft in-out, Gentle in, Leave and Crash
+out. Exits default to **Leave**, which speeds up out of frame: an exit is new motion, not the entrance played
+backwards. Staggered text presets have a **Rhythm** setting, natural (uneven, but the same on every play) or
+even.
 
 ## Why HTML instead of video
 
@@ -129,12 +152,16 @@ How the connection works in practice:
 
 - **The browser asks first.** Chrome and other browsers ask before a website may reach apps on your own
   computer ("…wants to access other apps and services on this device"). Choose **Allow** once. If it was
-  refused, the Studio's AI tab says so and shows where to turn it back on.
+  refused, AI assist says so and shows where to turn it back on.
 - **Only the Studio may call the kit.** The kit answers only the Studio's own address, so other websites cannot
   use your AI.
 
-The AI Dev Kit's local dashboard will become a hub for all its jobs (Site Converter, AI Assistant connection
-and Animation Studio), each showing whether it is connected.
+- **Who is answering is shown.** The panel names the AI at work, for example "Connected: Claude, your Claude
+  subscription, through the AI Dev Kit", or the local model's name.
+- **The Studio sends its own motion rules** with each request, so the kit never holds an out-of-date copy.
+
+The AI Dev Kit's dashboard opens on a Home page showing each of its jobs (Site Converter, AI Assistant and
+Animation Studio) and whether it is connected.
 
 ## Still to decide
 

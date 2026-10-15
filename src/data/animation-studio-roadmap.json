@@ -83,6 +83,18 @@
           "status": "done"
         },
         {
+          "id": "p2-eases",
+          "title": "Measured eases and better defaults",
+          "detail": "Twelve named eases measured from professional motion pieces (Soft land, Snap and settle, Pop over, Leave…), each with what it is for. Exits default to an accelerating curve, staggered text gets a natural uneven rhythm, and the preset defaults follow measured timing.",
+          "status": "done"
+        },
+        {
+          "id": "p2-check",
+          "title": "Check scene",
+          "detail": "A Check tab that reviews the scene as you work: text that leaves before it can be read, text too small on a screen size, text off the stage or on other text, clips fighting over a layer, long stretches with nothing moving. One-click fixes, Apply all, and Fix with AI.",
+          "status": "done"
+        },
+        {
           "id": "p2-save",
           "title": "Undo, redo and saving",
           "detail": "Full undo and redo (a drag is one step), the working scene saved in the browser automatically, and project files (`.scene.json`) to download and reopen.",
@@ -182,6 +194,12 @@
           "status": "done"
         },
         {
+          "id": "p5-assist",
+          "title": "AI assist panel",
+          "detail": "A floating ✦ AI assist button over the stage opens a chat with the AI Dev Kit: who is answering, scope chips (this scene, the selected layers, a new scene), starter ideas, and for every answer one undo step, \"Go back to before this\" and a Check scene count. The Studio sends its motion rules with each request.",
+          "status": "done"
+        },
+        {
           "id": "p5-code-clip",
           "title": "Custom code clip",
           "detail": "An escape hatch for effects no preset covers: a clip that runs your own GSAP code. It runs only where the page allows it (the Studio, your own exports, and WordPress pages by authors trusted with unfiltered HTML), a failing clip never stops the scene, and the AI never writes one.",
@@ -252,6 +270,6 @@
       ]
     }
   ],
-  "extensionVersion": "0.0.10",
+  "extensionVersion": "0.0.12",
   "versionLabel": "Studio"
 }

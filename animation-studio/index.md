@@ -63,6 +63,19 @@ On a web page, a scene with sound starts muted with a small **Tap for sound** bu
 until the visitor interacts. Presentations and full screen play sound from the first click, and video exports mix it
 in. Next on the roadmap: styles, and a scene made automatically from your voice-over.
 
+### Words (transcribing a voice-over)
+
+Select a voice-over on the timeline and click **Transcribe** in its **Words** section. Speech recognition (whisper.cpp)
+runs on your own computer through the AI Dev Kit: nothing is uploaded, and after a one-time download it works offline.
+There are two speech models: **Fast** (148 MB, about ten seconds per minute of audio) for clear voice-overs, and
+**Accurate** (488 MB) for accents, noise and music, which also adds punctuation.
+
+Every word gets its time and an **emphasis** score, measured from the recording itself: how loud, how high and how long
+it is said compared with the speaker's own average. The strongest words are shown in bold, the delivery is summarised
+(pace in words a minute, and whether it sounds calm, conversational, energetic or expressive), and the words appear along
+the clip's waveform on the timeline. Click a word to jump there. The words stay with the clip when you move or trim it,
+and they are what **making a scene from a voice-over** builds on.
+
 ### Sound effects
 
 The **Sounds** tab of the library holds 25 built-in sounds in five groups: movement (whoosh, swish, slide, spin),

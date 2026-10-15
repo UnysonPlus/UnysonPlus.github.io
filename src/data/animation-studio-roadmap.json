@@ -325,8 +325,8 @@
         {
           "id": "p8-transcribe",
           "title": "Transcription in the AI Dev Kit",
-          "detail": "Whisper speech-to-text on your own computer, with the time of every word, plus how it is said: emphasis, pauses, pace and energy.",
-          "status": "planned"
+          "detail": "Select a voice-over and click Transcribe: whisper.cpp runs on your own computer through the AI Dev Kit (downloaded once, then offline; Fast 148 MB or Accurate 488 MB). Every word gets its time and an emphasis score from how loudly, how high and how long it is said, and the delivery is summarised (pace, energy). Words show on the timeline and a click jumps to one.",
+          "status": "done"
         },
         {
           "id": "p8-voice-scene",

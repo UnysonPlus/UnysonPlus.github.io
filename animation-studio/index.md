@@ -55,6 +55,13 @@ gradient fill flowing across a shape) and **Particles** (a seeded field of risin
 Tumble in, Orbit and Camera push, for 3D layers.
 Hover a preset in the library to see it play.
 
+### Click-to-advance presentations
+
+Turn a scene into a presentation: set **Advance** to **On click** in the scene's Playback settings and drop
+**markers** on the timeline (**+ Marker**, or the M key, at the playhead). The scene then stops at each marker and waits
+for a click, a tap or the arrow keys, with a small pulsing arrow as the cue; the left arrow goes back. Full screen (F)
+is a presenter mode. Visitors who turn off animation jump from slide to slide.
+
 ### Video export
 
 **Export → Video** turns a scene into an MP4 or WebM for social posts, presentations, or anywhere HTML can't go:

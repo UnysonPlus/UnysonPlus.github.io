@@ -252,8 +252,8 @@
         {
           "id": "p7-video",
           "title": "Video export",
-          "detail": "Built: Export → Video renders MP4 (H.264) or WebM (VP9) at Full HD, HD, 4K, vertical or square, 24 to 60 fps. The AI Dev Kit draws the scene frame by frame in headless Chrome and encodes it with ffmpeg, so every frame is exact, 3D included. Ships with the next AI Dev Kit release.",
-          "status": "in-progress"
+          "detail": "Export → Video renders MP4 (H.264) or WebM (VP9) at Full HD, HD, 4K, vertical or square, 24 to 60 fps. The AI Dev Kit (1.12.34) draws the scene frame by frame in headless Chrome and encodes it with ffmpeg, so every frame is exact, 3D included.",
+          "status": "done"
         },
         {
           "id": "p7-accounts",
@@ -264,12 +264,12 @@
         {
           "id": "p7-slides",
           "title": "Click-to-advance presentations",
-          "detail": "Markers on the timeline that pause playback until a click, for slide-style presentations.",
-          "status": "planned"
+          "detail": "Timeline markers and Playback → Advance: On click. The scene stops at each marker until a click, a tap or the arrow keys, with a pulsing hint; full screen is a presenter mode; without motion it jumps slide to slide.",
+          "status": "done"
         }
       ]
     }
   ],
-  "extensionVersion": "0.0.20",
+  "extensionVersion": "0.0.21",
   "versionLabel": "Studio"
 }

@@ -27,6 +27,10 @@ dropped into a Unyson+ page or embedded on any site.
 
 ## Two ways to make a scene
 
+The Studio opens on a demo: a 38-second Unyson+ promo in six acts, each a group on the timeline, that uses every
+preset. Open a group (double-click) to see how an act is built. **New** in the top bar starts an empty scene with the
+same screen sizes and fonts; Undo brings the previous one back.
+
 - **By hand.** Drag presets onto the timeline. Their defaults follow timing measured from professional motion
   design, and **Check scene** (the Check tab) points out what could be better while you work: text that leaves
   before it can be read, text too small on a screen size, text off the stage or sitting on other text, two clips

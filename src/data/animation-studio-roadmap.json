@@ -331,8 +331,8 @@
         {
           "id": "p8-voice-scene",
           "title": "Make a scene from a voice-over",
-          "detail": "Upload a voice-over and, with AI connected, get a scene timed to the words: key phrases as text, presets that match the delivery, transitions between ideas and automatic sound effects, in the style you pick.",
-          "status": "planned"
+          "detail": "Transcribe a voice-over, then click Make a scene from this voice-over: the words are grouped into beats (phrases between pauses and sentence ends) and AI assist builds kinetic type timed to them, the key words of each beat entering as they are said, the strongest words landing as hits with a sound, transitions at pauses, and motion matched to the delivery, in the style picked in AI assist. Check scene treats text the voice is saying as read by ear.",
+          "status": "done"
         },
         {
           "id": "p8-mcp",

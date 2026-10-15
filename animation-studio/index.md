@@ -76,6 +76,21 @@ it is said compared with the speaker's own average. The strongest words are show
 the clip's waveform on the timeline. Click a word to jump there. The words stay with the clip when you move or trim it,
 and they are what **making a scene from a voice-over** builds on.
 
+### Make a scene from a voice-over
+
+Once a voice-over has its words, its **Words** section offers **Make a scene from this voice-over** (it needs AI assist,
+through the AI Dev Kit). The Studio groups the words into beats, the phrases said between pauses and sentence ends,
+and AI assist builds kinetic type on them:
+
+- each beat's **key words** (not captions of every word) enter just before they are said and give way to the next beat;
+- the **strongest words** land as the big moments: the largest type or the accent colour, a slam or pop exactly on the
+  word, with a sound effect;
+- **pauses** become transitions, and the **delivery** sets the motion: snappy for an energetic voice, gentle for a calm one;
+- the style picked in AI assist sets the colours, fonts and personality.
+
+The result is an ordinary scene: every layer and clip can be changed by hand, Undo brings back what you had, and Check
+scene reviews it (text the voice is saying at that moment is read by ear, so it only needs to stay up while it is said).
+
 ### Sound effects
 
 The **Sounds** tab of the library holds 25 built-in sounds in five groups: movement (whoosh, swish, slide, spin),

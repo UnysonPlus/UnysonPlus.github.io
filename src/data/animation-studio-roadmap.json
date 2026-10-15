@@ -135,14 +135,14 @@
         {
           "id": "p4-element",
           "title": "Page-builder element",
-          "detail": "An element that plays a scene inside a Unyson+ page, using the stage's height modes.",
-          "status": "planned"
+          "detail": "The **Studio Scene** element (Animation Engine → Studio Scene) plays a scene inside a Unyson+ page with the bundled player: paste the scene file or the embed code, and override the height mode, header height, start and loop for that placement.",
+          "status": "done"
         },
         {
           "id": "p4-roundtrip",
           "title": "Open in Studio",
-          "detail": "From the element, open its scene in the Studio, edit it and bring the result back.",
-          "status": "planned"
+          "detail": "**Open in Animation Studio** opens the Studio with the element's scene; **Save to page** sends the edited scene straight back into the element. Each side only accepts messages from the other.",
+          "status": "done"
         },
         {
           "id": "p4-shared-presets",
@@ -246,6 +246,6 @@
       ]
     }
   ],
-  "extensionVersion": "0.0.5",
+  "extensionVersion": "0.0.6",
   "versionLabel": "Studio"
 }

@@ -55,6 +55,12 @@ gradient fill flowing across a shape) and **Particles** (a seeded field of risin
 Tumble in, Orbit and Camera push, for 3D layers.
 Hover a preset in the library to see it play.
 
+### Share links
+
+**Export → Share link** gives you a link with the whole scene inside it. Whoever opens it gets their own copy in the
+Studio, to watch or change, and their own work comes back with Undo. Nothing is uploaded and no account is needed, so
+sharing costs nothing to run. Scenes with uploaded images make long links; image addresses keep them short.
+
 ### Click-to-advance presentations
 
 Turn a scene into a presentation: set **Advance** to **On click** in the scene's Playback settings and drop

@@ -256,9 +256,21 @@
           "status": "done"
         },
         {
+          "id": "p7-share",
+          "title": "Share links",
+          "detail": "Export → Share link puts the whole scene, compressed, inside the link: anyone who opens it gets their own copy in the Studio. No account, no server and no storage; custom code clips are removed from shared scenes.",
+          "status": "done"
+        },
+        {
+          "id": "p7-drive",
+          "title": "Save to Google Drive",
+          "detail": "Projects on any computer without our own server: people sign in with Google and their scenes are saved to their own Drive. Planned if people ask for cross-device projects.",
+          "status": "planned"
+        },
+        {
           "id": "p7-accounts",
-          "title": "Accounts and cloud saving",
-          "detail": "Sign in, save projects online and share a link to a scene. The one part that needs a server (PHP and MySQL on the existing hosting).",
+          "title": "Accounts and cloud projects (only if needed)",
+          "detail": "If real accounts are ever needed (a project library, short links, embeds that update in place), they run on a free cloud tier, separate from the website hosting, with uploads on object storage and embeds still served from GitHub Pages.",
           "status": "planned"
         },
         {
@@ -270,6 +282,6 @@
       ]
     }
   ],
-  "extensionVersion": "0.0.21",
+  "extensionVersion": "0.0.22",
   "versionLabel": "Studio"
 }

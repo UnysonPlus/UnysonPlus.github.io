@@ -61,7 +61,25 @@ Hover a preset in the library to see it play.
 can line up words and motion by eye; drag to move it, drag an edge to trim, and set volume and fades in the Inspector.
 On a web page, a scene with sound starts muted with a small **Tap for sound** button, because browsers block sound
 until the visitor interacts. Presentations and full screen play sound from the first click, and video exports mix it
-in. Next on the roadmap: built-in sound effects, styles, and a scene made automatically from your voice-over.
+in. Next on the roadmap: styles, and a scene made automatically from your voice-over.
+
+### Sound effects
+
+The **Sounds** tab of the library holds 25 built-in sounds in five groups: movement (whoosh, swish, slide, spin),
+clicks and taps (pop, click, tick, tap, typing, beep), hits and drops (impact, thud, sub hit, drop, glitch), tones and
+chimes (chime, sparkle, success, notify) and textures and swells (riser, swell, shimmer, reveal). The player makes them
+itself from a few lines of code, so there is nothing to download or license, and they sound the same in the Studio, on
+your pages and in video exports. Click one to hear it.
+
+- **On a clip.** Select a clip and pick a sound in its **Sound** section (or click **Add** in the Sounds tab). The sound
+  plays when the clip starts, or on its last frame for a landing, and moves with the clip whenever you move or stretch
+  it. Offset, volume and pitch fine-tune it; a small speaker on the clip shows it has one.
+- **Suggested sounds.** **Add suggested sounds** gives a scene's key moments the sound that suits each preset (a slam
+  gets an impact, a wipe a swish, a typewriter typing), about one every second and a half at most, so the sound
+  supports the motion instead of piling up. Change or remove any of them afterwards.
+- **On its own.** With no clip selected, **Add** puts the sound on the audio rows at the playhead, like a sound file.
+
+AI assist uses the same sounds when you ask for a scene with sound, a video or an ad.
 
 ### Share links
 

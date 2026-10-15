@@ -295,7 +295,19 @@
         {
           "id": "p8-sfx",
           "title": "Built-in sound effects",
-          "detail": "Effects generated in code (pop, click, whoosh, rise, impact, sparkle, typing): no files, no licences. A Sound option on any clip adds the matching effect on the frame the motion lands.",
+          "detail": "25 sounds made by the player itself (whoosh, swish, pop, click, typing, impact, thud, riser, chime, sparkle, shimmer and more): nothing to download, identical in the Studio, on pages and in video exports. Give any clip a sound and it moves with the clip; Add suggested sounds places matching ones on a scene's key moments.",
+          "status": "done"
+        },
+        {
+          "id": "p8-sfx-library",
+          "title": "Sound library in the AI Dev Kit",
+          "detail": "A one-click download of about a thousand free public-domain (CC0) sound effects, searchable from the Studio, plus an optional search of Freesound's public-domain sounds with your own free key.",
+          "status": "planned"
+        },
+        {
+          "id": "p8-sfx-generate",
+          "title": "Generate a sound",
+          "detail": "Describe a sound (\"a soft paper swoosh, 0.6 s\") and the AI Dev Kit makes it: with your own sound-effects API key, or with an open model it downloads and runs on your computer.",
           "status": "planned"
         },
         {

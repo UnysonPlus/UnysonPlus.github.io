@@ -9,8 +9,10 @@ description: "The plan for the Unyson+ Animation Studio: a browser editor for ti
 
 # Animation Studio
 
-> **Early preview, live at [animation-studio.unysonplus.com](https://animation-studio.unysonplus.com/).**
-> The player, the responsive stage and the editor (phases 1 and 2) are built. This page records the plan and the decisions behind
+> **Alpha, live at [animation-studio.unysonplus.com](https://animation-studio.unysonplus.com/).** The player,
+> the responsive stage, the editor and export (phases 1 to 3) are built. Alpha means features are still
+> missing and the scene file format may change between versions; exported pages and embeds keep working
+> regardless. This page records the plan and the decisions behind
 > it; the [roadmap](./roadmap.mdx) tracks each task, and the [research](./research.md) page covers what
 > already exists and what we borrow from it.
 

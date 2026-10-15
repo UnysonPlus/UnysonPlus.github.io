@@ -98,20 +98,20 @@
         {
           "id": "p3-embed",
           "title": "Embed snippet",
-          "detail": "A short snippet that places the scene on any website.",
-          "status": "planned"
+          "detail": "Copy-and-paste embed code from the Export window: the scene inline plus the player, loaded from its permanent versioned address. Works in any page that accepts HTML, such as a Custom HTML block in WordPress.",
+          "status": "done"
         },
         {
           "id": "p3-assets",
           "title": "Images and fonts in exports",
-          "detail": "Uploaded images are embedded in the exported file. Web fonts are still linked from their stylesheet; choosing to embed them is to come.",
-          "status": "in-progress"
+          "detail": "Uploaded images travel inside the scene. Web fonts can be embedded in the downloaded page (Latin character sets packed in, others left linked), so it works offline.",
+          "status": "done"
         },
         {
           "id": "p3-versioning",
           "title": "Player versioning",
-          "detail": "Exported pages carry their own copy of the player, so later preset changes never alter them. A shared, versioned player for embeds is to come.",
-          "status": "in-progress"
+          "detail": "Downloaded pages carry their own copy of the player; embeds load a published player version that never changes. The build refuses to publish a changed player under an existing version number.",
+          "status": "done"
         },
         {
           "id": "p3-a11y",
@@ -240,6 +240,6 @@
       ]
     }
   ],
-  "extensionVersion": "0.0.3",
+  "extensionVersion": "0.0.4",
   "versionLabel": "Studio"
 }

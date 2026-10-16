@@ -319,6 +319,9 @@ So the stage is responsive in three ways.
    - **Ratio, capped to the window**: the stage never grows taller than the window minus the site header. This
      is the default for heroes, so the whole animation is on screen at first load.
    - **Fill the window**: exactly one screen tall, whatever its shape.
+   - **Window too short** (capped and fill): **Trim top and bottom** keeps the full width and lets the safe area
+     protect what matters; **Show it all** shrinks the whole shape to fit, centred, with the stage's background (or the
+     page's, when the scene has none) at the sides. On a logged-in WordPress page, both leave room for the admin bar.
 3. **A safe area.** The editor shows a central safe zone, as video editors do. Key text stays inside it and
    backgrounds bleed to the edges, so nothing important is cut off when a height mode trims the stage.
 

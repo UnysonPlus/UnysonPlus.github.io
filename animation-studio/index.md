@@ -49,7 +49,7 @@ close to clean.
 Forty-two presets in seven groups. **Text:** Rise, Slam, Stretch, Scramble, Typewriter, Blur in, Flip, Tracking and
 **Count up** (a number counts to its value, keeping its prefix, separators and suffix). **Reveal and exit:** Fade,
 Wipe, **Soft wipe** (feathered edge), Iris, Slide, Grow, **Blinds** (staggered strips). **Move and scale:** Pop, Zoom,
-Spin, **Turn** (3D), **Scroll** (scrolls a tall screenshot inside its frame, or pans a wide one across), Keyframes,
+Spin, **Turn** (3D), **Scroll** (scrolls a tall screenshot inside its frame, or pans a wide one across; **Repeat** makes it endless), Keyframes,
 Custom code. **Emphasis:** Wave, Pulse, Shake, Float, Recolour, **Sheen** (one light
 sweep). **Ambient and backgrounds:** **Drift** (a slow move and scale creep for held frames), **Gradient flow** (a
 gradient fill flowing across a shape) and **Particles** (a seeded field of rising, falling or drifting dots).

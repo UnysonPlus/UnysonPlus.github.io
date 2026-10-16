@@ -42,3 +42,10 @@ A name should describe the whole thing and match the product's own vocabulary; t
 be explained. Keeping the badge to our own sites gets the growth loop where we control the page, without putting
 credit links on anyone else's site (which WordPress's plugin rules forbid without consent, and which would cost the
 goodwill a free tool depends on).
+
+## Update: the tool takes the name too
+
+While still in alpha, the Animation Studio itself was renamed **Kinetic Scenes**: one name for the tool and what it
+makes. It moved to **kinetic-scenes.unysonplus.com** (repository `UnysonPlus-Kinetic-Scenes`), the WordPress element
+became the **Kinetic Scene** element, and these docs moved to `/kinetic-scenes` (the old pages redirect). No one used the
+old address yet, so it was retired rather than kept.

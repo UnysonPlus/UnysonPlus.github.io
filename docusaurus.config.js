@@ -29,7 +29,7 @@ function sitemapDataPlugin() {
   const DOCS_LABELS = {
     default: 'Manual',
     animationEngine: 'Animation Engine',
-    animationStudio: 'Animation Studio',
+    kineticScenes: 'Kinetic Scenes',
     theme: 'The Theme',
     guides: 'Guides',
     aiDevKit: 'AI Dev Kit',
@@ -41,7 +41,7 @@ function sitemapDataPlugin() {
     'Main',
     'Manual',
     'Animation Engine',
-    'Animation Studio',
+    'Kinetic Scenes',
     'CRM',
     'Membership',
     'The Theme',
@@ -143,7 +143,7 @@ const config = {
         hashed: true,
         indexDocs: true,
         indexBlog: true,
-        docsRouteBasePath: ['/', '/animation-engine', '/animation-studio', '/theme', '/guides', '/ai-dev-kit', '/blocks', '/crm', '/membership'],
+        docsRouteBasePath: ['/', '/animation-engine', '/kinetic-scenes', '/theme', '/guides', '/ai-dev-kit', '/blocks', '/crm', '/membership'],
         // Index BOTH blog instances: the News blog (/blog) and the Design Decisions blog
         // (/decisions). Without this the plugin only indexes the default /blog, so decisions
         // posts never show up in search.
@@ -286,9 +286,13 @@ const config = {
             return name ? ['/extensions/gutenberg/' + name] : undefined;
           }
           const OTHER = [
-            '/animation-engine', '/animation-studio', '/theme', '/guides', '/ai-dev-kit',
+            '/animation-engine', '/kinetic-scenes', '/theme', '/guides', '/ai-dev-kit',
             '/reference', '/decisions', '/blog', '/blocks', '/crm', '/membership',
           ];
+          // The Animation Studio was renamed Kinetic Scenes: its old pages point at the new ones.
+          if (existingPath === '/kinetic-scenes' || existingPath.startsWith('/kinetic-scenes/')) {
+            return ['/animation-studio' + existingPath.slice('/kinetic-scenes'.length)];
+          }
           if (existingPath === '/' || existingPath === '/sitemap' || existingPath === '/markdown-page') {
             return undefined;
           }
@@ -312,10 +316,10 @@ const config = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'animationStudio',
-        path: 'animation-studio',
-        routeBasePath: 'animation-studio',
-        sidebarPath: './sidebarsAnimationStudio.js',
+        id: 'kineticScenes',
+        path: 'kinetic-scenes',
+        routeBasePath: 'kinetic-scenes',
+        sidebarPath: './sidebarsKineticScenes.js',
         editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
       },
     ],
@@ -527,7 +531,7 @@ const config = {
               {label: 'Demos', href: 'https://demos.unysonplus.com/'},
               {label: 'API Reference', to: '/reference/'},
               {label: 'Design Decisions', to: '/decisions'},
-              {label: 'Animation Studio', to: '/animation-studio/'},
+              {label: 'Kinetic Scenes', to: '/kinetic-scenes/'},
             ],
           },
           {

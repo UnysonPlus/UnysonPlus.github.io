@@ -1,28 +1,28 @@
 ---
 sidebar_position: 1
 slug: /
-title: "Animation Studio — timeline motion graphics for the web"
-sidebar_label: "Animation Studio"
+title: "Kinetic Scenes — timeline motion graphics for the web"
+sidebar_label: "Kinetic Scenes"
 keywords: [html animation editor, gsap timeline editor, web motion graphics, animated hero section, kinetic typography html, three.js animation editor, ai animation generator]
-description: "The plan for the Unyson+ Animation Studio: a browser editor for timeline motion graphics, with drag-and-drop presets, that exports plain HTML for website heroes and sections rather than video."
+description: "The plan for Unyson+ Kinetic Scenes: a browser editor for timeline motion graphics, with drag-and-drop presets, that exports plain HTML for website heroes and sections rather than video."
 ---
 
-# Animation Studio
+# Kinetic Scenes
 
-> **Alpha, live at [animation-studio.unysonplus.com](https://animation-studio.unysonplus.com/).** The player,
+> **Alpha, live at [kinetic-scenes.unysonplus.com](https://kinetic-scenes.unysonplus.com/).** The player,
 > the responsive stage, the editor, export, the Unyson+ element and AI assist (phases 1 to 5) are built. Alpha means features are still
 > missing and the scene file format may change between versions; exported pages and embeds keep working
 > regardless. This page records the plan and the decisions behind
 > it; the [roadmap](./roadmap.mdx) tracks each task, and the [research](./research.md) page covers what
 > already exists and what we borrow from it.
 
-The Animation Studio is a browser editor for motion graphics: big kinetic type, shapes, images and 3D, laid
+Kinetic Scenes is a browser editor for motion graphics: big kinetic type, shapes, images and 3D, laid
 out on a timeline the way a video editor lays out clips. You drag a preset onto the timeline, change its
 text, image or timing, and watch it play. The difference from a video tool is the output: the Studio
 exports **plain HTML**, not an MP4. The result plays live in the page, stays sharp at any size, and weighs
 kilobytes instead of megabytes.
 
-It lives at **`animation-studio.unysonplus.com`**. The first target is **website heroes and sections**,
+It lives at **`kinetic-scenes.unysonplus.com`**. The first target is **website heroes and sections**,
 dropped into a Unyson+ page or embedded on any site.
 
 ## Two ways to make a scene
@@ -118,7 +118,7 @@ headline as a heading, each act's headline one level below, the rest as paragrap
 readers read it, while visitors see the animation (screen readers skip the animated copy, so nothing is read twice). The
 scene's **Search engines and screen readers** settings show exactly what is written, set the headline's level (Heading 2
 by default; Heading 1 only when the scene is the page's main title) and can mark a scene **decorative** (no text at all).
-The Studio Scene element in WordPress writes this text into the page's HTML, and the Studio's embed code and HTML export
+The Kinetic Scene element in WordPress writes this text into the page's HTML, and the Studio's embed code and HTML export
 include it too.
 
 ### Links and the ending
@@ -241,7 +241,7 @@ Set **Starts** to **As the page scrolls** and the page's scroll position becomes
 up to rewind. **Pin while playing** holds the stage still (below the header height) for the **Scroll length** you
 set, in screens; unpinned, the scene plays while it crosses the window. **Smoothing** lets the playhead glide to
 the scroll position. **Try scrolling in a test page** (Inspector, Playback) opens the scene between stand-in page
-content. The Studio Scene element offers the same choice, with its own Scroll length.
+content. The Kinetic Scene element offers the same choice, with its own Scroll length.
 
 ### Measured eases
 
@@ -271,7 +271,7 @@ The Studio has three parts, and each uses the technology that suits its job.
 | **Hosting** | GitHub Pages | Free, and published automatically from the repository. The Studio needs no server of its own: it is static files, and the AI runs on each user's own computer. |
 
 The editor is a static site. A GitHub Action builds it from the repository on each push and publishes it to
-GitHub Pages under the `animation-studio.unysonplus.com` subdomain. A server only becomes necessary for
+GitHub Pages under the `kinetic-scenes.unysonplus.com` subdomain. A server only becomes necessary for
 accounts and cloud saving, which come late in the [roadmap](./roadmap.mdx).
 
 ### The scene file
@@ -367,7 +367,7 @@ How the connection works in practice:
 - **The Studio sends its own motion rules** with each request, so the kit never holds an out-of-date copy.
 
 The AI Dev Kit's dashboard opens on a Home page showing each of its jobs (Site Converter, AI Assistant and
-Animation Studio) and whether it is connected.
+Kinetic Scenes) and whether it is connected.
 
 ## Still to decide
 

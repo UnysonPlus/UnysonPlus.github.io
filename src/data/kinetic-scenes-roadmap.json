@@ -1,7 +1,7 @@
 {
-  "_comment": "SOURCE OF TRUTH for the Animation Studio roadmap rendered at /animation-studio/roadmap. Hand-maintained: update task `status` (planned, in-progress, done) as work lands in the UnysonPlus-Animation-Studio repository, and `extensionVersion` to the Studio version.",
-  "extension": "animation-studio",
-  "repo": "https://github.com/UnysonPlus/UnysonPlus-Animation-Studio",
+  "_comment": "SOURCE OF TRUTH for Kinetic Scenes roadmap rendered at /kinetic-scenes/roadmap. Hand-maintained: update task `status` (planned, in-progress, done) as work lands in the UnysonPlus-Kinetic-Scenes repository, and `extensionVersion` to the Studio version.",
+  "extension": "kinetic-scenes",
+  "repo": "https://github.com/UnysonPlus/UnysonPlus-Kinetic-Scenes",
   "detected": false,
   "milestones": [
     {
@@ -36,7 +36,7 @@
         {
           "id": "p1-deploy",
           "title": "Deploy to the subdomain",
-          "detail": "A GitHub Action builds the editor and publishes it to GitHub Pages at `animation-studio.unysonplus.com` (HTTPS) on every push to main.",
+          "detail": "A GitHub Action builds the editor and publishes it to GitHub Pages at `kinetic-scenes.unysonplus.com` (HTTPS) on every push to main.",
           "status": "done"
         }
       ]
@@ -153,13 +153,13 @@
         {
           "id": "p4-element",
           "title": "Page-builder element",
-          "detail": "The **Studio Scene** element (Animation Engine → Studio Scene) plays a scene inside a Unyson+ page with the bundled player: paste the scene file or the embed code, and override the height mode, header height, start and loop for that placement.",
+          "detail": "The **Kinetic Scene** element (Animation Engine → Kinetic Scene) plays a scene inside a Unyson+ page with the bundled player: paste the scene file or the embed code, and override the height mode, header height, start and loop for that placement.",
           "status": "done"
         },
         {
           "id": "p4-roundtrip",
           "title": "Open in Studio",
-          "detail": "**Open in Animation Studio** opens the Studio with the element's scene; **Save to page** sends the edited scene straight back into the element. Each side only accepts messages from the other.",
+          "detail": "**Open in Kinetic Scenes** opens the Studio with the element's scene; **Save to page** sends the edited scene straight back into the element. Each side only accepts messages from the other.",
           "status": "done"
         },
         {
@@ -208,7 +208,7 @@
         {
           "id": "p5-kit-hub",
           "title": "AI Dev Kit hub",
-          "detail": "The kit's dashboard opens on a Home page with a card per job (Site Converter, AI Assistant, Animation Studio): whether each is ready, when it last called the kit and from which site, plus the AI in use. Retitled Unyson+ AI Dev Kit.",
+          "detail": "The kit's dashboard opens on a Home page with a card per job (Site Converter, AI Assistant, Kinetic Scenes): whether each is ready, when it last called the kit and from which site, plus the AI in use. Retitled Unyson+ AI Dev Kit.",
           "status": "done"
         }
       ]
@@ -233,7 +233,7 @@
         {
           "id": "p6-scroll",
           "title": "Scroll-linked playback",
-          "detail": "Starts: As the page scrolls. The scroll position is the playhead, forwards and back. Pin while playing holds the stage below the header for a set number of screens; smoothing glides the playhead. Built without a scroll plugin, in the Studio, the exports and the Studio Scene element (with a Scroll length option), plus a Try scrolling test page.",
+          "detail": "Starts: As the page scrolls. The scroll position is the playhead, forwards and back. Pin while playing holds the stage below the header for a set number of screens; smoothing glides the playhead. Built without a scroll plugin, in the Studio, the exports and the Kinetic Scene element (with a Scroll length option), plus a Try scrolling test page.",
           "status": "done"
         },
         {

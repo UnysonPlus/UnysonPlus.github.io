@@ -16,9 +16,9 @@ does the AI connect?
 
 ## Context
 
-The [Animation Studio](/animation-studio) is a drag-and-drop timeline editor: presets placed as clips, text
+The [Animation Studio](/kinetic-scenes) is a drag-and-drop timeline editor: presets placed as clips, text
 and images edited in place, 3D later. Its output is plain HTML rather than video. The hosting available for
-`animation-studio.unysonplus.com` is ordinary shared cPanel hosting, which runs PHP and MySQL but may not run
+`kinetic-scenes.unysonplus.com` is ordinary shared cPanel hosting, which runs PHP and MySQL but may not run
 Node.js. The [AI Dev Kit](/ai-dev-kit) already runs on users' computers for the Site Converter and the AI
 Assistant.
 
@@ -47,7 +47,7 @@ timeline; an AI that writes scene data produces ordinary clips.
 - **The editor is React + TypeScript, built with Vite to static files.** No Node.js runs on the server.
 - **Exports ship a plain JavaScript player on GSAP**, with three.js loaded only for 3D. React never ships
   with a scene.
-- **Host on GitHub Pages** under the `animation-studio.unysonplus.com` subdomain, published by an Action on
+- **Host on GitHub Pages** under the `kinetic-scenes.unysonplus.com` subdomain, published by an Action on
   each push. PHP and MySQL on the cPanel hosting come in only for accounts and cloud saving, late in the
   roadmap.
 - **Scenes are a JSON scene file** played as one seekable GSAP timeline, so frames are exact and video export

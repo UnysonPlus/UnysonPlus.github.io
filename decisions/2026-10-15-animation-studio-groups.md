@@ -15,7 +15,7 @@ group?
 
 ## Context
 
-In the [Animation Studio](/animation-studio), the **scene** is the whole thing: one timeline, one file, one placement on a
+In the [Animation Studio](/kinetic-scenes), the **scene** is the whole thing: one timeline, one file, one placement on a
 page. Video tools let you nest a timeline inside another (a precomposition) so a headline and its underline can be
 timed, moved and animated as one. The Studio needed the same, and the name decides how people understand it.
 

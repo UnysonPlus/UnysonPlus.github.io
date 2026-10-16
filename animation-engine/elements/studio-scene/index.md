@@ -1,13 +1,13 @@
 ---
 sidebar_position: 11.8
-title: Studio Scene
+title: Kinetic Scene
 slug: /studio-scene
-description: Play a timeline motion-graphics scene made in the Unyson+ Animation Studio inside any Unyson+ page, as live HTML, and edit it in the Studio straight from the element.
+description: Play a timeline motion-graphics scene made in Unyson+ Kinetic Scenes inside any Unyson+ page, as live HTML, and edit it in the Studio straight from the element.
 ---
 
-# Studio Scene
+# Kinetic Scene
 
-Put a scene made in the [Animation Studio](/animation-studio) on any page: kinetic type, shapes and images animated on a
+Put a scene made in the [Kinetic Scenes](/kinetic-scenes) on any page: kinetic type, shapes and images animated on a
 timeline, playing as **live HTML**. The words stay real text (sharp at any size, readable by search engines and screen
 readers), the whole scene weighs a few kilobytes, and it has its own layout for desktop, tablet and mobile.
 
@@ -15,11 +15,11 @@ readers), the whole scene weighs a few kilobytes, and it has its own layout for 
 
 ## Add it
 
-Builder palette → **Animation Engine** → **Studio Scene**. Then either:
+Builder palette → **Animation Engine** → **Kinetic Scene**. Then either:
 
 - **Paste a scene.** In the Studio, use **Export → Embed code** (or **Save** for the scene file) and paste it into the
   element's **Scene** field. Both work; the element reads the scene out of the embed code.
-- **Open it in the Studio.** Click **Open in Animation Studio**. The Studio opens in a new window with this element's
+- **Open it in the Studio.** Click **Open in Kinetic Scenes**. The Studio opens in a new window with this element's
   scene loaded (or your current Studio work, if the element is empty). Edit it, then click **Save to page** in the Studio's
   green bar: the scene comes straight back into the field. Update the page to keep it.
 

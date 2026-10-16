@@ -366,6 +366,12 @@
           "status": "planned"
         },
         {
+          "id": "p9-image-layers",
+          "title": "Image layers (AI)",
+          "detail": "Split into layers: an image becomes a group of stacked transparent layers (background, subject, objects, text) in exactly the same place, so a picture can be revealed piece by piece instead of all at once, each part animated on its own. With a depth per layer, a camera move turns a flat photo into a 2.5D parallax shot. Runs through the AI Dev Kit: Qwen-Image-Layered through the user's own fal.ai key (or on a local GPU that can hold it), with a lighter local fallback (cutting out the subject and filling in behind it) that runs on an ordinary computer.",
+          "status": "planned"
+        },
+        {
           "id": "p9-glow",
           "title": "Glow and motion blur",
           "detail": "Neon glow on text and shapes, and blur along the direction of fast moves, so quick motion reads as speed rather than a jump.",

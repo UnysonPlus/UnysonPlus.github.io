@@ -177,6 +177,22 @@ The transition replaces the leaving group's exit and the arriving group's entran
 longer exit on their own just before it, so the transition carries the whole scene away. The new transitions bring
 their sound too. They are also in the library under **Scene transitions**, to use on any layer or group by hand.
 
+### Camera
+
+**+ Camera** (in the timeline) adds a camera key at the playhead, and the scene gets a **Camera** row. The camera is one
+view over every layer: between two keys it pans, zooms, rolls and tilts in perspective, so the viewer glides through
+the scene instead of watching things move on a still page. Select a key to set where the view is at that moment
+(zoom, pan across and down, tilt back, turn, roll) and the curve of the move into it; a value left empty holds where
+it was. Drag a key's diamond to retime it, double-click it (or press Delete) to remove it.
+
+**Add a move from the playhead** builds a whole move from wherever the camera is: **Push in**, **Pull out**, **Pan
+right** or **left**, **Tilt reveal** (the scene starts leaning back and settles flat), **Slow drift** (keeps a held
+frame alive) and **Dutch roll**.
+
+Layers are moved in the flat layout: while the camera moves the view, **Camera view** in the stage toolbar can be
+turned off to select and drag layers on the stage (the timeline works either way). Scene transitions and the camera
+work together: a slash's glowing line moves with the picture it cuts, while a flash or a dip stays fixed to the screen.
+
 ### 3D layers
 
 **+ 3D** adds a 3D object to the scene: **3D text** with rounded edges, a **shape** (rounded box, sphere, ring,

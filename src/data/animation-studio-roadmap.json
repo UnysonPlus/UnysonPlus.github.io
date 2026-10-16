@@ -356,8 +356,8 @@
         {
           "id": "p9-camera",
           "title": "Camera",
-          "detail": "One camera over every layer: pan, zoom, tilt and turn in 3D perspective, keyframed on its own timeline row, so the viewer glides through a scene instead of watching things move on a still page.",
-          "status": "planned"
+          "detail": "One camera over every layer that pans, zooms, rolls and tilts in perspective, keyframed on its own Camera row with a curve per move, ready-made moves (push in, pull out, pans, tilt reveal, slow drift, Dutch roll) and a Camera view switch for editing the flat layout. Transitions stay exact under a moving camera.",
+          "status": "done"
         },
         {
           "id": "p9-paths",

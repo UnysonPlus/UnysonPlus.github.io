@@ -448,24 +448,24 @@
     {
       "id": "p10-tours",
       "title": "Phase 10 · Product tours and interactive scenes",
-      "goal": "Show Unyson+ (or any product) working, from screenshots instead of screen recordings: a cursor that moves, hovers and clicks, zooms into the part that matters, and scenes visitors can click, follow and explore. Comes right after paths and drawn lines.",
+      "goal": "Show Unyson+ (or any product) working, from screenshots instead of screen recordings: a cursor that moves, hovers and clicks, zooms into the part that matters, and scenes visitors can click, follow and explore. Links and the looping ending came first (a hero's call to action needs them now); hover effects next, then paths and drawn lines (Phase 9), then the tour tools.",
       "tasks": [
         {
           "id": "p10-links",
           "title": "Links on layers",
-          "detail": "Give any text, shape, image or group a link (an address, or an anchor on the page; optionally a new tab). It becomes a real, keyboard-reachable link, announced by screen readers and included in the scene's text for search engines. Only web, email and same-page addresses are accepted.",
-          "status": "planned"
+          "detail": "Any text, shape, image or group can be a link (a web address, a page on the same site, an anchor, email or phone; optionally a new tab). On the stage it is a click area; the real link sits in the scene's text for search engines and screen readers, so keyboard users reach it with Tab and the layer shows a focus ring. Other kinds of address are left out.",
+          "status": "done"
+        },
+        {
+          "id": "p10-end",
+          "title": "What happens at the end",
+          "detail": "Stop on the last frame, loop everything, or loop the last part: after one full play, the scene repeats only from a moment you choose, so a closing call to action keeps breathing (and stays clickable) while the rest holds. Idle presets made for it (an endless glow, a slow breathe) are still to come.",
+          "status": "done"
         },
         {
           "id": "p10-hover",
           "title": "Hover effects",
           "detail": "Presets for layers people can point at (lift, grow, glow, brighten, a shine sweeping across, an underline drawing in, a colour change), and custom CSS for anything else where the page's author is trusted. Hovers never fight the animation, and on phones a tap just follows the link.",
-          "status": "planned"
-        },
-        {
-          "id": "p10-end",
-          "title": "What happens at the end",
-          "detail": "Stop on the last frame, loop everything, or loop only the last part: after one full play, the scene repeats from a point you choose, so a final call to action keeps breathing while the rest holds. With idle presets made for it (a slow endless grow, a glow).",
           "status": "planned"
         },
         {

@@ -119,6 +119,27 @@ by default; Heading 1 only when the scene is the page's main title) and can mark
 The Studio Scene element in WordPress writes this text into the page's HTML, and the Studio's embed code and HTML export
 include it too.
 
+### Links and the ending
+
+Any layer can be a link: select it and give it an address in its **Link** settings (a web address, a page on the same
+site such as `/download`, an anchor such as `#pricing`, `mailto:` or `tel:`), optionally opening in a new tab. For a
+button, group its shape and its label and put the link on the **group**, so the whole button is clickable. A shape has
+no words of its own, so give it a **Link text**.
+
+Links work on the page, in the embed code and in full screen (F); while you edit, a click still just selects the layer.
+Each link is also a real link in the scene's text for search engines and screen readers, so keyboard users reach it
+with Tab (the layer shows a focus ring on the stage) and search engines follow it. Only web, same-site, anchor, email
+and phone addresses are accepted; anything else is left out.
+
+**At the end** (the scene's Playback settings) decides what happens when the scene finishes:
+
+- **Stop on the last frame.** It plays once and holds.
+- **Loop everything.** It starts over, with an optional pause between loops.
+- **Loop the last part.** It plays once from the start, then repeats only from **Loop from** to the end, so a closing
+  call to action keeps moving while everything else holds. Set it after the closing entrances (**Use the playhead**
+  takes the moment you are looking at), and give the button a clip that starts and ends at rest, such as **Pulse** with
+  one swell or **Float**, so the repeat is seamless. Its links stay clickable the whole time.
+
 ### Styles
 
 A style is a look to build from: a colour palette, a font pairing, a motion personality (how headlines, supporting text

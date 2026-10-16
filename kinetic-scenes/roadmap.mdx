@@ -9,11 +9,10 @@ import data from '@site/src/data/kinetic-scenes-roadmap.json';
 
 # Roadmap
 
-Seven phases, built in order. Phases 1 to 3 make a complete hand-built studio: design a hero animation on
-the timeline and export it as HTML. Phases 1 to 3 are built; the Studio is in alpha at
-[kinetic-scenes.unysonplus.com](https://kinetic-scenes.unysonplus.com/). Phase 4 puts scenes into Unyson+ pages, phase 5 adds the AI, and the
-later phases add 3D, finer control and video export. Every phase builds on the same scene file, so nothing
-made early has to be redone later.
+Twelve phases, built in order on one scene file, so nothing made early has to be redone later. Phases 1 to 8 are largely
+built and the Studio is in alpha at [kinetic-scenes.unysonplus.com](https://kinetic-scenes.unysonplus.com/): the
+editor, export, the Unyson+ element, AI assist, 3D, sound and voice. Phases 9 and 10 are in progress (fluid motion,
+product tours and interactive scenes), phase 11 makes the AI a real motion director, and phase 12 adds a Video mode.
 
 <RoadmapSummary data={data} />
 
@@ -21,17 +20,21 @@ made early has to be redone later.
 
 ## Order of work
 
-1. **Foundations.** The scene file, the player and the responsive stage come first, because everything
-   else reads or writes them. A hand-written scene playing on the live subdomain is the first milestone.
-2. **Editor.** The canvas, the timeline, the inspector and about twenty presets: enough to build a real
-   hero by hand.
+1. **Foundations.** The scene file, the player and the responsive stage, because everything else reads or writes them.
+2. **Editor.** The canvas, the timeline, the inspector and the presets: enough to build a real hero by hand.
 3. **Export.** Standalone HTML and an embed snippet, each recording the player version it was made with.
-4. **Unyson+ integration.** A page-builder element with an **Open in Studio** round trip, and one preset
-   library shared with the [Animation Engine](/animation-engine).
+4. **Unyson+ integration.** The Kinetic Scene element with an **Open in Kinetic Scenes** round trip.
 5. **AI.** Prompts produce scene files through the [AI Dev Kit](/ai-dev-kit), so every result can be edited
    on the timeline.
-6. **3D and finer control.** three.js clips, a keyframe and curve editor, and scroll-linked playback.
-7. **Later.** Video export, accounts with cloud saving, and click-to-advance presentations.
+6. **3D and finer control.** three.js layers, a keyframe and curve editor, and scroll-linked playback.
+7. **Later.** Video export, click-to-advance presentations and share links.
+8. **Sound and voice.** Built-in sound effects, voice-overs with their words, styles, and scenes made from a voice-over.
+9. **Fluid motion.** Transitions, the camera, paths, beat sync, captions and the motion that hand-made reels use.
+10. **Product tours and interactive scenes.** Links, hover effects, the looping ending, pinning to the stage, cursors,
+    focus and screenshots that come alive.
+11. **The AI director.** The AI plans with you, builds, checks, looks at rendered frames and fixes what it sees, with
+    tools from the kit and only the subscription you already have; plus a quick scene from any website.
+12. **Video mode.** Formats, transparent overlays for video editors, and videos that feel like one camera move.
 
 The plan and the reasons behind it are on the [overview](./index.md); what already exists elsewhere is on the
 [research](./research.md) page.

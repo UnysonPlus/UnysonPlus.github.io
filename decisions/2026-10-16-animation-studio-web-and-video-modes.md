@@ -30,7 +30,7 @@ trimming would mean building a different product.
 
 ## Decision
 
-Two modes, named **Web** and **Video**. Web is the default and the focus; Video comes after Phase 10 (product tours and interactive scenes) as Phase 11.
+Two modes, named **Web** and **Video**. Web is the default and the focus; Video comes after Phase 11 (the AI director) as Phase 12.
 
 Video mode is a **motion-graphics companion for power users**, not an editor: they cut and trim in their video editor
 and use the Studio for kinetic type, backgrounds, objects, transitions and effects. Its first features are fixed

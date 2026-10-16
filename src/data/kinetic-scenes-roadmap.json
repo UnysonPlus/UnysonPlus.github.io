@@ -416,25 +416,31 @@
         {
           "id": "p9-voice-lead",
           "title": "Picture leads the voice on punchlines",
-          "detail": "In scenes made from a voice-over, the visual for a punchline or strong word lands about 0.2 s before it is said, which reads as inevitable rather than late. A timing rule for AI assist and Check scene.",
+          "detail": "In scenes made from a voice-over, a reveal finishes on its word instead of starting on it, so the picture lands as the word is heard (the viewer sees, then hears). Punchlines lead slightly; transcripts reach the AI as compact phrase lines, leaving more of its budget for the scene.",
           "status": "planned"
         },
         {
           "id": "p9-beat-sync",
           "title": "Music beat sync",
-          "detail": "The AI Dev Kit finds the beats and tempo of a music track; cuts, transitions and hits can then snap to the beat grid, and AI assist can build a scene paced by the music.",
+          "detail": "Drop music on the timeline and the Studio finds its tempo, beat grid and strongest moments, right in the browser (no Python): each beat scored by its onset strength, local contrast, loudness and bass. The beats show on the audio row; a big reveal can snap up to 0.15 s onto a strong moment and small entrances up to 0.10 s onto a beat, only a few are locked per scene, and text that must be read lands on every other beat at fast tempos. AI assist gets the same cue list.",
+          "status": "planned"
+        },
+        {
+          "id": "p9-audio-reactive",
+          "title": "Music-reactive glow",
+          "detail": "A loudness and bass curve computed once from the music lets a few things breathe with it (a glow, a background's warmth, a card's presence). Precomputed, so it seeks and exports exactly; never equaliser bars or strobing.",
+          "status": "planned"
+        },
+        {
+          "id": "p9-sound-craft",
+          "title": "Sound that sounds designed",
+          "detail": "Fewer effects, each tied to something visible; each sound started early by its own attack so its hit lands on the frame; a softness rating on every built-in sound so repeated ones stay gentle; and video export mixed to a standard loudness (-14 LUFS, peaks under -1 dB) with music lowered under a voice-over.",
           "status": "planned"
         },
         {
           "id": "p9-ui-kit",
           "title": "Interface building blocks",
           "detail": "Ready-made pieces for product videos: a prompt box that types, highlighted tags, a node diagram with connecting lines, timeline and progress bars, stacking list cards.",
-          "status": "planned"
-        },
-        {
-          "id": "p9-site-promo",
-          "title": "A promo scene from your website",
-          "detail": "Point the Studio at a WordPress site: the Site Converter's capture gives its real headlines, colours, fonts and screenshots, and AI assist builds a launch or showcase scene from them, in the site's own style.",
           "status": "planned"
         },
         {
@@ -489,7 +495,7 @@
         {
           "id": "p10-cursor",
           "title": "Cursors",
-          "detail": "Built-in vector cursors (arrow, pointing hand, text) that switch as they pass over things, sized and timed like a real pointer.",
+          "detail": "Built-in cursors drawn big enough to read in a video (about 7% of the frame wide in a full-frame scene), which enter from off-screen and leave the same way, never fade in on the spot, and change from an arrow to a pointing hand over buttons. The cursor carries the viewer's eye from one thing to the next, and its click visibly causes what happens next.",
           "status": "planned"
         },
         {
@@ -531,8 +537,69 @@
       ]
     },
     {
+      "id": "p11-director",
+      "title": "Phase 11 · The AI director",
+      "goal": "Make the AI Dev Kit the best motion designer of the tools out there, using only the AI subscription you already pay for (Claude, ChatGPT, Cursor): no API keys, no per-use cost. The difference is not a bigger prompt but a way of working: the AI plans with you, builds, checks its work, looks at rendered frames, fixes what it sees and hands you a scene you can still edit, for a website or a video.",
+      "tasks": [
+        {
+          "id": "p11-skill",
+          "title": "The Kinetic Scenes skill",
+          "detail": "Everything an AI needs to make a good scene, written for any agent: the workflow, the scene format, every preset and its settings, the motion rules, styles and tones, sound, and a checklist. Generated from the Studio's own code on every release, so it never goes out of date; published at kinetic-scenes.unysonplus.com/skill/ (any AI can read it from a link) and copied into the AI Dev Kit for agents working on your computer.",
+          "status": "planned"
+        },
+        {
+          "id": "p11-tools",
+          "title": "Tools the AI can use",
+          "detail": "The kit gives the AI hands and eyes: inspect (capture a website, read a project, transcribe a voice-over), check (the real validator and Check scene), stills (render frames to look at), beats (analyse music) and render (video export). Offered as kit commands and as a local MCP server, so Claude Code, Codex and Cursor can call them while they work.",
+          "status": "planned"
+        },
+        {
+          "id": "p11-plan",
+          "title": "Plan first",
+          "detail": "For a new scene, the AI first writes a storyboard you can adjust: the hook in the first two seconds, the highlights, the ending, each act's length, what appears one by one, the transitions and the sound. It builds only once you agree, so long scenes come out right and you steer before the work is done.",
+          "status": "planned"
+        },
+        {
+          "id": "p11-review",
+          "title": "Look, criticise, fix",
+          "detail": "After building, the kit renders the settled frame of every act and the middle of every transition; the AI looks at them with the Check scene report, criticises its own work like a reviewer (cramped layouts, low contrast, muddy transitions, unreadable text) and fixes it, at most a few rounds. Only then does it show you the result.",
+          "status": "planned"
+        },
+        {
+          "id": "p11-quick",
+          "title": "Quick scene from a website or a project",
+          "detail": "Paste a URL (or point at a project folder) and get a scene: the kit's capture service renders the site and takes its real colours, fonts, copy and screenshots; the AI plans and builds from them, shows the product in use rather than describing it, and never invents claims. The result is an editable scene that works as a hero and exports as a video.",
+          "status": "planned"
+        },
+        {
+          "id": "p11-subscriptions",
+          "title": "Any of your subscriptions",
+          "detail": "Your Claude subscription through the claude command (already working), your ChatGPT subscription through OpenAI's codex command, and Cursor through cursor-agent. The kit picks what you have; nothing needs an API key.",
+          "status": "planned"
+        },
+        {
+          "id": "p11-webmcp",
+          "title": "An AI inside the open Studio",
+          "detail": "The Studio registers its own tools with the browser (WebMCP): look at the scene, inspect a layer, render a frame at any moment, edit text, move layers, add and change clips. An AI in the browser (ChatGPT Desktop already supports it; Chrome is trialling it) can then work on the scene in front of you, with every change in the normal undo history.",
+          "status": "planned"
+        },
+        {
+          "id": "p11-craft",
+          "title": "Better rules for every step",
+          "detail": "The craft the best tools use, built into the rules and checks: tone presets that set structure (number of acts, hold lengths, transition style, sound density); one new thing at a time; no two acts in a row with the same entrance and layout; a pause of 0.3 to 0.75 s before a big payoff; entrances under about 0.8 s; two or three transition styles per scene; no muddy crossfade between two busy layouts.",
+          "status": "planned"
+        },
+        {
+          "id": "p11-poster",
+          "title": "The best still frame, picked for you",
+          "detail": "The Still frame (what visitors who turn off animation see, and a video's thumbnail) is suggested automatically: the most complete settled moment, with every word in and nothing mid-transition.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
       "id": "p10-video",
-      "title": "Phase 11 · Video mode",
+      "title": "Phase 12 · Video mode",
       "goal": "A motion-graphics companion for video creators who edit elsewhere: make kinetic type, backgrounds, objects and effects to layer over Reels, TikToks, Shorts and YouTube videos. Web stays the main mode.",
       "tasks": [
         {
@@ -581,6 +648,12 @@
           "id": "p10-simple-tools",
           "title": "Simple video tools (later)",
           "detail": "Light trimming and speed changes for footage layers. Editing stays the job of a video editor; the Studio is for what goes on top.",
+          "status": "planned"
+        },
+        {
+          "id": "p12-continuity",
+          "title": "Videos that feel like one camera move",
+          "detail": "For videos (not website loops): how a scene leaves sets how the next one arrives (same direction and speed, cutting mid-motion), one main direction for the whole film with other directions saved for meaning, causes and effects on the same frame, and no idle floating to fill time: every second something tells the story. A check measures every cut.",
           "status": "planned"
         }
       ]

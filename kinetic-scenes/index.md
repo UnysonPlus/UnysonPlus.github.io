@@ -374,6 +374,25 @@ How the connection works in practice:
 The AI Dev Kit's dashboard opens on a Home page showing each of its jobs (Site Converter, AI Assistant and
 Kinetic Scenes) and whether it is connected.
 
+### Where the AI is going: the AI director
+
+The best AI video tools are not better because of a bigger prompt. They work in a loop with tools: they plan,
+build, render, look at the result, criticise it and fix it. Phase 11 of the [roadmap](./roadmap.mdx) brings that
+loop to Kinetic Scenes, still running only on the AI subscription you already have (Claude, ChatGPT or Cursor) and
+never an API key:
+
+- **A skill for any AI.** The workflow, the scene format, every preset, the motion rules, styles, sound and a
+  checklist, generated from the Studio's own code so it never goes stale. Published on the Kinetic Scenes site for
+  any AI to read, and copied into the AI Dev Kit.
+- **Tools.** The kit lets the AI inspect a website, a project or a voice-over, check a scene, render stills to
+  look at, analyse music and export video, as commands and as a local MCP server.
+- **Plan, build, look, fix.** A storyboard you can adjust before anything is built; after building, the AI looks
+  at rendered frames with the Check scene report and fixes what it sees before showing you.
+- **Quick scene from a website.** Paste a URL; the kit's capture service brings the site's real colours, fonts,
+  copy and screenshots, and the AI builds an editable scene that shows the product in use.
+- **An AI inside the open Studio.** The Studio offers its tools to AIs in the browser (WebMCP), so one can work on
+  the scene in front of you, change by change, with undo.
+
 ## Still to decide
 
 - **Free or paid.** Whether the Studio is free with the AI optional, or tied to accounts from the start.

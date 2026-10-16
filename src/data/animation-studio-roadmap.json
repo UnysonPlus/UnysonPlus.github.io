@@ -354,6 +354,12 @@
           "status": "done"
         },
         {
+          "id": "p9-whip-streak",
+          "title": "Whip and light-streak transitions",
+          "detail": "The cut hand-made reels use most: a velocity-matched whip (the old scene accelerates out with heavy directional blur, the new one arrives from the same direction at the same speed and settles), and a light streak fired exactly at the cut to hide the join.",
+          "status": "planned"
+        },
+        {
           "id": "p9-camera",
           "title": "Camera",
           "detail": "One camera over every layer that pans, zooms, rolls and tilts in perspective, keyframed on its own Camera row with a curve per move, ready-made moves (push in, pull out, pans, tilt reveal, slow drift, Dutch roll) and a Camera view switch for editing the flat layout. Transitions stay exact under a moving camera.",
@@ -363,6 +369,12 @@
           "id": "p9-paths",
           "title": "Paths and drawn lines",
           "detail": "Lines, curves and connectors that draw themselves, layers that travel along a path (a comet that writes a word), and fading trails behind moving things.",
+          "status": "planned"
+        },
+        {
+          "id": "p9-word-carrier",
+          "title": "Word-reveal carrier",
+          "detail": "A text preset where the first word slides in big and fast and each following word travels less (for example 360, 120, 60, 25, 12 px), so a line arrives with momentum instead of in a uniform stagger.",
           "status": "planned"
         },
         {
@@ -390,9 +402,27 @@
           "status": "planned"
         },
         {
+          "id": "p9-voice-lead",
+          "title": "Picture leads the voice on punchlines",
+          "detail": "In scenes made from a voice-over, the visual for a punchline or strong word lands about 0.2 s before it is said, which reads as inevitable rather than late. A timing rule for AI assist and Check scene.",
+          "status": "planned"
+        },
+        {
+          "id": "p9-beat-sync",
+          "title": "Music beat sync",
+          "detail": "The AI Dev Kit finds the beats and tempo of a music track; cuts, transitions and hits can then snap to the beat grid, and AI assist can build a scene paced by the music.",
+          "status": "planned"
+        },
+        {
           "id": "p9-ui-kit",
           "title": "Interface building blocks",
           "detail": "Ready-made pieces for product videos: a prompt box that types, highlighted tags, a node diagram with connecting lines, timeline and progress bars, stacking list cards.",
+          "status": "planned"
+        },
+        {
+          "id": "p9-site-promo",
+          "title": "A promo scene from your website",
+          "detail": "Point the Studio at a WordPress site: the Site Converter's capture gives its real headlines, colours, fonts and screenshots, and AI assist builds a launch or showcase scene from them, in the site's own style.",
           "status": "planned"
         },
         {

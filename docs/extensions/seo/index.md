@@ -89,7 +89,8 @@ than eight.
 
 ## Settings
 
-Seven tabs under **Unyson+ → SEO**. The last, **Import**, is covered under [Importing from another plugin](#importing-from-another-plugin).
+Eight tabs under **Unyson+ → SEO**. Two of them hold more than settings: **Reports** is covered under
+[Reports](#reports), and **Import/Export** under [Importing from another plugin](#importing-from-another-plugin).
 
 ### General
 
@@ -137,6 +138,12 @@ Add your **X / Twitter account** so shared links are attributed to it.
 and they are not links displayed anywhere: they exist to feed the `sameAs` property that
 tells a search engine which accounts are genuinely yours. That structured data is still to
 come, so for now these fields are stored and not yet emitted.
+
+### Reports
+
+Three read-only views, plus the handful of settings that feed them: how long to keep recorded search
+phrases, when to call a page stale, and the API key for speed data. Covered under
+[Reports](#reports).
 
 ### Structured data
 
@@ -201,6 +208,33 @@ Two deliberate limits:
 A guessed dimension is worse than none, because it is believed.
 :::
 
+
+### When a page has no picture at all
+
+Most sites have pages with nothing to show — a contact page, a policy, a short announcement. Before
+this, every one of them fell through to the site-wide default, so every link to the site looked
+identical in a feed.
+
+A card is now **drawn from the page title** instead: the title over your chosen colours, with the
+site name beneath it. It sits at the rung *between* "nothing on the page" and "the site default", so
+a page that already has a picture — or one you chose yourself — is never overridden.
+
+Set the colours under **Unyson+ → SEO → Social**, and switch it off there if you would rather every
+such page used the default image.
+
+:::note
+No font ships with the extension. One is **found** instead: a `.ttf` you pick in the settings, then
+your theme's own if it has one, then the usual system fonts. If none is found, nothing is drawn and
+the ladder simply falls through to the default — drawing something unreadable would be worse than
+drawing nothing.
+:::
+
+The title is sized by measuring it, so a two-word title is set large and a long one is set smaller
+rather than being cut off. A title too long for even the smallest size is truncated with an ellipsis
+on the last line.
+
+Cards are drawn once and cached. Retitling a page draws a new one and sweeps the old away.
+
 ### What is emitted
 
 Open Graph and Twitter tags are produced together from one resolution. Twitter's own fields
@@ -215,6 +249,85 @@ an image that never arrives.
 
 
 ---
+
+
+---
+
+## Reports
+
+Three read-only views under **Unyson+ → SEO → Reports**, each built from something the site already
+has or something Google gives you free for your own property. None of them needs a subscription, an
+account with us, or a crawler.
+
+### What visitors searched for and did not find
+
+WordPress records nothing about your own search box. That is a waste: it is the only keyword data
+about your **actual** audience that costs nothing and is not an estimate. A search that comes back
+empty is a visitor telling you, in their own words, that a page is missing.
+
+Two lists:
+
+- **Found nothing** — ranked by how many people asked. One person searching once is noise; the same
+  phrase forty times is a page you have not written. Each row offers to start that page, pre-titled.
+- **Barely found anything** — one or two results. Often the page exists but does not use the words
+  people are actually searching with, which is a smaller fix and an easy win.
+
+Phrases are counted, not logged individually: "Blue Widgets", "blue widgets" and "  BLUE  WIDGETS  "
+are one row with a count of three.
+
+:::note
+**Crawlers are not recorded**, and phrases are forgotten after 90 days by default. Search text is
+typed by visitors, and people paste things they did not mean to — keeping it forever is a liability
+with no analytical value, since a phrase last seen two years ago is not a content gap any more. You
+can change the retention or switch recording off entirely, and clear everything recorded so far.
+Nothing is ever sent off your site.
+:::
+
+### Pages going stale
+
+The most useful editorial work on an established site is rarely writing new pages. It is finding the
+ones that quietly stopped being true.
+
+The report lists your pages oldest-touched first, with how long since each was last edited and how
+many words are on it, flagging the stale and the thin. Both thresholds are yours to set.
+
+**Word count is measured from the page-builder tree**, not from the stored markup — so a builder page
+is counted by the prose a reader actually sees, rather than by the HTML around it. Without that,
+every builder page would read as thin and the report would be noise.
+
+:::note
+Age and length say **what to look at, not what is wrong**. A page can be four years old and perfectly
+correct. This report is a reading list, not a fault list — it gets sharper when Search Console
+arrives and can say which of those pages used to earn traffic.
+:::
+
+
+### How fast pages really are
+
+Core Web Vitals — Largest Contentful Paint, Interaction to Next Paint and Cumulative Layout Shift —
+from Google's Chrome UX Report. These are **field data**: real visits over the last 28 days, not a
+lab score from one simulated connection. They answer whether the site is fast for the people
+actually using it.
+
+The number shown is the **75th percentile**, because that is what Google judges a site on. An
+average is flattered by a handful of fast visits; the 75th percentile is not.
+
+It needs a free API key: enable the **Chrome UX Report API** in Google Cloud, create an API key, and
+paste it in. Only your own site is ever queried, and the data costs nothing.
+
+:::note
+**"Not enough traffic" is the ordinary answer**, not a fault. Chrome only reports on sites with
+enough real visits, so a new or small site will have no field data at all — and that is said plainly
+rather than shown as a zero, because a zero reads as a result. A rejected key is reported
+separately, since the two mean completely different things.
+:::
+
+Readings are cached for twelve hours and fetched only when you ask, so this never slows the settings
+page down on its own.
+
+This pairs with the [Asset Optimizer](../asset-optimizer.md), which already optimises for these
+metrics — preloading the likely LCP image, and reordering blocks to avoid layout shift. Until now it
+had no way to tell you whether any of that worked.
 
 ## Editing from the list
 

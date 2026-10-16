@@ -41,7 +41,7 @@ page (where you activate and deactivate it yourself):
 | **Portfolio** | A fully-featured portfolio module. → [docs](./portfolio/index.md) | Yes |
 | **Sidebars** | Add multiple/dynamic sidebars per page. → [docs](./sidebars/index.md) | Yes |
 | **Breadcrumbs** | Drop-in breadcrumb navigation. → [docs](./breadcrumbs/index.md) | Yes |
-| **SEO** | Dynamic titles &amp; descriptions, canonical URLs, indexing control and XML sitemaps. → [docs](./seo/index.md) | Yes |
+| **SEO** | Dynamic titles &amp; descriptions, sharing cards, structured data, XML sitemaps, and reports on what visitors could not find. → [docs](./seo/index.md) | Yes |
 | **Security** | Login throttling, two-factor sign-in, XML-RPC and header hardening, a custom login address, and Site Health checks — each measure off until you switch it on. → [docs](./security.md) | Yes — off by default |
 | **Forms** | Drag &amp; drop contact form builder. → [docs](./forms/index.md) | Yes |
 | **Short Links** | Branded short links on your own domain (301 / 302 / 307 / 308) with click reports, categories, import / export and an API with signed webhooks. → [docs](./short-links.md) | Yes — off by default |

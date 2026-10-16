@@ -221,6 +221,11 @@ a clear finish line.
 This only makes sense after the per-page checks above exist — it is the same engine pointed
 at the whole site.
 
+Part of the ground is already covered: [Pages going stale](./index.md#pages-going-stale) reports age
+and length across the site today, and the [list columns](./index.md#editing-from-the-list) show
+which pages are following a template rather than saying something of their own. What is missing is
+the keyphrase and structure checks, which need the per-page analysis first.
+
 ---
 
 ## Internal linking

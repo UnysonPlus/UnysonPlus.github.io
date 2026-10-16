@@ -463,6 +463,12 @@
           "status": "done"
         },
         {
+          "id": "p10-scroll",
+          "title": "Scroll a screenshot",
+          "detail": "The Scroll preset scrolls a tall screenshot inside its frame (or pans a wide one across), from one point to another, so a real settings page or site can be shown moving inside a browser window, tilting with the camera.",
+          "status": "done"
+        },
+        {
           "id": "p10-hover",
           "title": "Hover effects",
           "detail": "Presets for layers people can point at (lift, grow, glow, brighten, a shine sweeping across, an underline drawing in, a colour change), and custom CSS for anything else where the page's author is trusted. Hovers never fight the animation, and on phones a tap just follows the link.",

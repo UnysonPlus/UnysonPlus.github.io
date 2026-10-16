@@ -46,12 +46,14 @@ close to clean.
 
 ### The preset library
 
-Thirty-five presets in six groups. **Text:** Rise, Slam, Stretch, Scramble, Typewriter, Blur in, Flip, Tracking and
+Forty-two presets in seven groups. **Text:** Rise, Slam, Stretch, Scramble, Typewriter, Blur in, Flip, Tracking and
 **Count up** (a number counts to its value, keeping its prefix, separators and suffix). **Reveal and exit:** Fade,
 Wipe, **Soft wipe** (feathered edge), Iris, Slide, Grow, **Blinds** (staggered strips). **Move and scale:** Pop, Zoom,
-Spin, **Turn** (3D), Keyframes, Custom code. **Emphasis:** Wave, Pulse, Shake, Float, Recolour, **Sheen** (one light
+Spin, **Turn** (3D), **Scroll** (scrolls a tall screenshot inside its frame, or pans a wide one across), Keyframes,
+Custom code. **Emphasis:** Wave, Pulse, Shake, Float, Recolour, **Sheen** (one light
 sweep). **Ambient and backgrounds:** **Drift** (a slow move and scale creep for held frames), **Gradient flow** (a
-gradient fill flowing across a shape) and **Particles** (a seeded field of rising, falling or drifting dots). **3D:** Spin 3D,
+gradient fill flowing across a shape) and **Particles** (a seeded field of rising, falling or drifting dots).
+**Transitions** between groups: Slash, Flash, Dip to colour, Whip pan, Zoom through and Glitch. **3D:** Spin 3D,
 Tumble in, Orbit and Camera push, for 3D layers.
 Hover a preset in the library to see it play.
 

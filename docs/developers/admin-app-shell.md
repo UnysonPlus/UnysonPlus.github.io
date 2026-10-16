@@ -19,21 +19,11 @@ wraps**. By the eighth tab, the one you want is never the one in front of you.
 - **focus mode** (per user) hides the WordPress menu altogether, with "Back to WordPress" as the way
   out.
 
-```
-┌────┬──────────────┬──────────────────────────────────────────┐
-│ W  │  SEO         │  SEO ›                                   │  ← top bar (crumbs, title, actions)
-│ P  │              │  General                                 │
-│    │ SEARCH APP.  ├──────────────────────────────────────────┤
-│ 📌 │ ▸ General    │                                          │
-│ 📄 │   Titles     │   your view renders here                 │  ← content column (yours)
-│ 💬 │   Sharing    │                                          │
-│ 🎨 │              │                                          │
-│    │ REPORTS      │                                          │
-│    │   Console    │                                          │
-└────┴──────────────┴──────────────────────────────────────────┘
-  ↑        ↑
-folded   FW_Admin_App
-```
+<img src="/img/developers/admin-app-shell.png" alt="The SEO screen inside the shell: the WordPress menu folded to icons, the app's own menu in groups down the left, and the view filling the rest" width="960" />
+
+*The SEO extension inside the shell. WordPress's menu is folded to icons on the far left; everything
+between it and the content is `FW_Admin_App`.*
+
 
 :::info[It is a developer API, not a user setting]
 There is no switch that turns this on for arbitrary screens, and there shouldn't be. A screen earns
@@ -289,8 +279,8 @@ Scope it to your app's body class, and build on the shell's tokens so your scree
 Skin's light/dark modes for free:
 
 ```css
-/* Tokens the shell defines on .fw-app */
-.fw-app {
+/* Tokens the shell defines on body.fw-app-screen */
+body.fw-app-screen {
 	--app-bg      /* page background      */
 	--app-panel   /* card / panel surface */
 	--app-side    /* sidebar surface      */
@@ -311,6 +301,18 @@ body.fw-app-my-ext .my-ext-card {
 
 Each token falls back to a WordPress admin value when the Admin Skin is off, so you never need a
 second set of colours.
+
+They are declared on the **body**, not on `.fw-app`, so an app with its own token names can alias
+them from the body-scoped rule its CSS is already written against:
+
+```css
+body.fw-app-crm {
+	--crm-panel: var(--app-panel);
+	--crm-text: var(--app-text);
+	/* …the CRM's screens were written against --crm-*; one alias block keeps
+	   them, and there is still only one definition of the colour. */
+}
+```
 
 ### Classes the frame renders
 
@@ -389,6 +391,21 @@ if ( ! class_exists( 'FW_Admin_App' ) ) {
 ```
 :::
 
+:::caution[Don't try to out-specify the Admin Skin by hand]
+The Admin Skin colours every link with the accent through
+`body.upa a:not([class*="button"]):not([class*="btn"])` — four class-level parts. A rule like
+`.fw-app a.my-link` has two and loses, silently, and **only when the skin is active**. Both the CRM
+and Membership shipped a sidebar that was accent-coloured for exactly this reason, with a comment
+above it explaining the colour it was failing to apply.
+
+The shell already wins this fight for its own navigation. For your content, scope from the body when
+you need to beat a skin rule:
+
+```css
+body.fw-app-my-ext .fw-app .my-panel a { color: var(--app-text2); }
+```
+:::
+
 :::caution[Don't register your own focus handler]
 The framework registers the shared ajax action on every admin request. `attach()` runs on
 `admin_menu`, which `admin-ajax.php` never fires — a handler registered from there would never be
@@ -402,10 +419,11 @@ listening, and the toggle would work until the page reloaded.
 | Screen | App id | Notes |
 | --- | --- | --- |
 | SEO | `seo` | Eleven views in four groups; sidebar reconciled with the options schema. |
+| CRM | `crm` | Top-bar search and a "New" menu through the slots; `module` resolved in a callable `nav`. |
+| Membership | `membership` | The same shape as the CRM. |
 
-The CRM and Membership screens are where this frame came from — they still carry their own copy of
-it and move onto `FW_Admin_App` next. If you are adding a new app screen, use this; don't copy
-theirs.
+All three now draw one frame. The CRM and Membership are the ones to read if your app needs the top
+bar slots; SEO is the shortest complete example.
 
 Reading the SEO extension (`framework/extensions/seo/includes/class-fw-seo-app.php` plus
 `class-fw-seo-settings-page.php`) is the shortest complete example: a nav definition, a `view`-routed

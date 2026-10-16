@@ -50,9 +50,18 @@ by lifting the CRM's file and renaming its prefixes.
 and wraps its view in `open()` / `close()`; everything inside the content column stays the
 extension's own. Extension-specific styling stays in the extension — only the frame moved.
 
-The SEO extension adopted it first and now carries no shell of its own: its app file is a navigation
-definition plus the reconciliation that keeps the sidebar honest against the options schema. CRM and
-Membership follow.
+All three screens adopted it the same day. Each now carries a navigation definition and its own
+content, and no frame: SEO's app file is a menu plus the reconciliation that keeps the sidebar honest
+against the options schema; the CRM and Membership add their top-bar search and New menu through the
+shell's slots.
+
+Extracting it immediately found two bugs that had been living in all three copies. The shell's
+colour tokens had to move from the app container to the body, because an app aliases them
+(`--crm-text: var(--app-text)`) from a body-scoped rule where the container's tokens do not exist.
+And the sidebar's link colour had never actually applied with the Admin Skin on: the skin's
+`body.upa a:not([class*="button"]):not([class*="btn"])` carries four class-level parts and outranked
+the `.fw-crm-app a.fw-crm-side__link` written to beat it — with a comment above it explaining the
+colour it was failing to apply. Three copies, one wrong rule, nobody looking at it three times.
 
 Two details settled along the way:
 

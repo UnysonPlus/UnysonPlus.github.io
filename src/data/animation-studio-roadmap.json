@@ -350,8 +350,8 @@
         {
           "id": "p9-transitions",
           "title": "Scene transitions",
-          "detail": "Transitions that act on a whole group or act, not one layer: a light slash that wipes to the next scene, a flash, a whip pan with motion blur, a zoom-through, a pixel glitch, a panel that shatters. Dropped between two groups on the timeline, timed so one scene hands over to the next.",
-          "status": "planned"
+          "detail": "Six transitions made for whole groups: Slash (a glowing line sweeps across and reveals the next scene), Flash, Whip pan, Glitch, Dip to colour and Zoom through, each with its sound, alongside Crossfade, Push, Soft wipe, Blinds, Iris and 3D turn. Transition to the next group places the matched pair; the leaving group's own exits give way to it.",
+          "status": "done"
         },
         {
           "id": "p9-camera",

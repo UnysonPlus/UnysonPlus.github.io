@@ -160,9 +160,22 @@ install it if it is missing.
 ### Full screen and transitions
 
 The **full screen** icon at the right of the stage toolbar (or the **F** key) plays the scene at your screen's real
-size, without the editor. Select a group and use **Transition to the next group** to hand it over to the next part
-of the scene with a Crossfade, Push, Zoom through, Soft wipe, Blinds, Iris or 3D turn: a matched exit and entrance,
-timed together, as ordinary clips you can still edit.
+size, without the editor.
+
+Select a group (an act or a slide) and use **Transition to the next group** in the Inspector to hand it over to the
+next part of the scene: a matched exit and entrance, timed together, as ordinary clips you can still edit.
+
+- **Slash:** a glowing diagonal line sweeps across the stage and the next scene appears behind it (set its slant and colour).
+- **Flash:** a burst of light, with the cut at its brightest moment.
+- **Whip pan:** a fast slide with blur, as if the camera swung to the next scene.
+- **Glitch:** slices jump and colours split for a few frames, then the cut.
+- **Dip to colour:** the screen fills with a colour, holds a beat and opens on the next scene.
+- **Zoom through:** the scene rushes past the camera as the next approaches from the distance.
+- **Crossfade, Push, Soft wipe, Blinds, Iris** and **3D turn** for quieter changes.
+
+The transition replaces the leaving group's exit and the arriving group's entrance; the leaving group's layers no
+longer exit on their own just before it, so the transition carries the whole scene away. The new transitions bring
+their sound too. They are also in the library under **Scene transitions**, to use on any layer or group by hand.
 
 ### 3D layers
 

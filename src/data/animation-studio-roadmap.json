@@ -366,6 +366,18 @@
           "status": "done"
         },
         {
+          "id": "p9-exact-frames",
+          "title": "Exact frames when jumping",
+          "detail": "Jumping to a moment (scrubbing, seeking, video export) shows exactly what playing to it shows. The player's self-test now checks every frame where any of the 41 presets or a camera key starts or ends, plus the frames either side (231 frames, all identical), and video export takes each frame at an exact frame time, so a cut never lands a frame early or late.",
+          "status": "done"
+        },
+        {
+          "id": "p9-safe-export",
+          "title": "Safer video export",
+          "detail": "Before the first frame, video export waits for fonts, every image (loaded and decoded), images used as backgrounds and every 3D model, and tells you in the Studio if anything failed to load or ran out of time, instead of silently rendering blank frames.",
+          "status": "done"
+        },
+        {
           "id": "p9-paths",
           "title": "Paths and drawn lines",
           "detail": "Lines, curves and connectors that draw themselves, layers that travel along a path (a comet that writes a word), and fading trails behind moving things.",

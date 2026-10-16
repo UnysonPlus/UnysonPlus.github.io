@@ -322,6 +322,11 @@ So the stage is responsive in three ways.
    - **Window too short** (capped and fill): **Trim top and bottom** keeps the full width and lets the safe area
      protect what matters; **Show it all** shrinks the whole shape to fit, centred, with the stage's background (or the
      page's, when the scene has none) at the sides. On a logged-in WordPress page, both leave room for the admin bar.
+4. **Pin to the stage.** Inside a layout, positions are percentages of the scene's frame, so every scene keeps its
+   design on any screen. A layer or group that belongs to the box rather than the picture (a badge, a logo, a corner
+   call to action) can be **pinned to the stage** instead: its X and Y become percentages of the stage, so 100 / 100
+   with the bottom-right anchor is the real corner of whatever box the scene fills, on any screen shape. Sizes and
+   text keep the frame's units, pinned layers sit above the rest, and the camera leaves them where they are.
 3. **A safe area.** The editor shows a central safe zone, as video editors do. Key text stays inside it and
    backgrounds bleed to the edges, so nothing important is cut off when a height mode trims the stage.
 

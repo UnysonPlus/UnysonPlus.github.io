@@ -469,6 +469,18 @@
           "status": "done"
         },
         {
+          "id": "p10-pin",
+          "title": "Pin to the stage",
+          "detail": "A layer or group can be pinned to the stage instead of the scene's frame: its position becomes a percentage of the stage, so badges, logos and corner calls to action sit in the real corner of any box the scene fills, whatever its shape. Sizes keep the frame's units; pinned layers stay put when the camera moves.",
+          "status": "done"
+        },
+        {
+          "id": "p10-shape-layouts",
+          "title": "Layouts by shape",
+          "detail": "Besides the layouts by width (desktop, tablet, phone), an extra layout for stages much wider than the design (an ultrawide hero), so the content can spread out instead of showing the page at the sides.",
+          "status": "planned"
+        },
+        {
           "id": "p10-hover",
           "title": "Hover effects",
           "detail": "Presets for layers people can point at (lift, grow, glow, brighten, a shine sweeping across, an underline drawing in, a colour change), and custom CSS for anything else where the page's author is trusted. Hovers never fight the animation, and on phones a tap just follows the link.",

@@ -36,6 +36,7 @@ rendered HTML. It's the map everything below hangs on.
 | **Create an extension** | [Creating extensions](/category/creating-extensions) |
 | **Add dynamic tags** | [Dynamic Content → add a provider](/dynamic-content#add-your-own-tags-acf-pods-a-custom-value) |
 | **Hook into the framework / theme** | [Hooks & Filters](/hooks) (258 hooks, by subsystem) |
+| **Give an admin screen a sidebar** (an app, not a settings page) | [Admin app shell](./admin-app-shell.md) |
 
 ## Work with options & storage
 

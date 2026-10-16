@@ -89,8 +89,17 @@ than eight.
 
 ## Settings
 
-Eight tabs under **Unyson+ → SEO**. Two of them hold more than settings: **Reports** is covered under
-[Reports](#reports), and **Import/Export** under [Importing from another plugin](#importing-from-another-plugin).
+**Unyson+ → SEO** opens as its own screen: the WordPress menu folds to icons and SEO's own menu takes
+the left edge, grouped into **Search appearance**, **Site**, **Reports** and **Tools**. Each entry is
+its own address (`…&view=social_tab`), so a screen can be linked to and bookmarked, and only the view
+you are on does any work — the four reports used to be queried on every load of the page.
+
+"Hide the WordPress menu", at the foot of the sidebar, puts the screen on its own; the setting is
+remembered for you and applies to every Unyson+ app screen. (The frame itself is the framework's —
+see [Admin app shell](/developers/admin-app-shell) if you are building one.)
+
+The report views are covered under [Reports](#reports), and **Import / Export** under
+[Importing from another plugin](#importing-from-another-plugin).
 
 ### General
 

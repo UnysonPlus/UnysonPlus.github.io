@@ -152,3 +152,8 @@ privacy:
   label: Privacy
   permalink: /privacy
   description: Consent, personal data and what we refuse to collect
+
+admin:
+  label: Admin
+  permalink: /admin
+  description: The WordPress admin screens Unyson+ draws, and the frame around them

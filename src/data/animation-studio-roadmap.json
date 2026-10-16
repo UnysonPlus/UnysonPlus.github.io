@@ -446,8 +446,75 @@
       ]
     },
     {
+      "id": "p10-tours",
+      "title": "Phase 10 · Product tours and interactive scenes",
+      "goal": "Show Unyson+ (or any product) working, from screenshots instead of screen recordings: a cursor that moves, hovers and clicks, zooms into the part that matters, and scenes visitors can click, follow and explore. Comes right after paths and drawn lines.",
+      "tasks": [
+        {
+          "id": "p10-links",
+          "title": "Links on layers",
+          "detail": "Give any text, shape, image or group a link (an address, or an anchor on the page; optionally a new tab). It becomes a real, keyboard-reachable link, announced by screen readers and included in the scene's text for search engines. Only web, email and same-page addresses are accepted.",
+          "status": "planned"
+        },
+        {
+          "id": "p10-hover",
+          "title": "Hover effects",
+          "detail": "Presets for layers people can point at (lift, grow, glow, brighten, a shine sweeping across, an underline drawing in, a colour change), and custom CSS for anything else where the page's author is trusted. Hovers never fight the animation, and on phones a tap just follows the link.",
+          "status": "planned"
+        },
+        {
+          "id": "p10-end",
+          "title": "What happens at the end",
+          "detail": "Stop on the last frame, loop everything, or loop only the last part: after one full play, the scene repeats from a point you choose, so a final call to action keeps breathing while the rest holds. With idle presets made for it (a slow endless grow, a glow).",
+          "status": "planned"
+        },
+        {
+          "id": "p10-cursor",
+          "title": "Cursors",
+          "detail": "Built-in vector cursors (arrow, pointing hand, text) that switch as they pass over things, sized and timed like a real pointer.",
+          "status": "planned"
+        },
+        {
+          "id": "p10-move-to",
+          "title": "Move to a target",
+          "detail": "Pick a layer (the Save button) and the cursor travels to it along a natural curve with real pointer easing, so a tour is built by pointing, not by keyframing.",
+          "status": "planned"
+        },
+        {
+          "id": "p10-click",
+          "title": "Click effect",
+          "detail": "The cursor presses, a ring ripples out, the button dips and a click sounds, all landing on the same frame.",
+          "status": "planned"
+        },
+        {
+          "id": "p10-focus",
+          "title": "Focus and spotlight",
+          "detail": "Frame a region and the camera zooms to it; a spotlight dims everything else; a callout label points at the thing being explained.",
+          "status": "planned"
+        },
+        {
+          "id": "p10-cutout",
+          "title": "Cut a piece out of a screenshot",
+          "detail": "Drag a box over part of a screenshot (a button, a panel, a row) and it becomes its own layer in exactly the same place, ready to press, slide or glow, with the gap behind it filled from its surroundings. Interface screenshots are mostly rectangles, so this needs no AI.",
+          "status": "planned"
+        },
+        {
+          "id": "p10-states",
+          "title": "Before and after states",
+          "detail": "Swap to a second screenshot of the same screen exactly on the click frame (the menu opened, the setting saved), or type into a field, so actions have visible results.",
+          "status": "planned"
+        },
+        {
+          "id": "p10-hotspots",
+          "title": "Hotspots",
+          "detail": "Clickable areas that jump to a part of the scene, so a visitor can choose what to see next: an interactive demo instead of a single linear play.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
       "id": "p10-video",
-      "title": "Phase 10 · Video mode",
+      "title": "Phase 11 · Video mode",
       "goal": "A motion-graphics companion for video creators who edit elsewhere: make kinetic type, backgrounds, objects and effects to layer over Reels, TikToks, Shorts and YouTube videos. Web stays the main mode.",
       "tasks": [
         {

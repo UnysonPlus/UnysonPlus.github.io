@@ -432,6 +432,61 @@
           "status": "planned"
         }
       ]
+    },
+    {
+      "id": "p10-video",
+      "title": "Phase 10 · Video mode",
+      "goal": "A motion-graphics companion for video creators who edit elsewhere: make kinetic type, backgrounds, objects and effects to layer over Reels, TikToks, Shorts and YouTube videos. Web stays the main mode.",
+      "tasks": [
+        {
+          "id": "p10-modes",
+          "title": "Web and Video modes",
+          "detail": "Choose what a scene is for when you start it, and switch later. Web (the default) keeps responsive layouts, scroll and click playback, search-engine text and the WordPress element. Video sets one fixed format, plays once at an exact length, puts sound first and shows the tools and checks that suit video.",
+          "status": "planned"
+        },
+        {
+          "id": "p10-formats",
+          "title": "Video formats and platform safe zones",
+          "detail": "9:16 (1080×1920), 1:1, 4:5 and 16:9 at a chosen frame rate, with guides for where TikTok, Reels and Shorts cover the picture with their buttons and captions.",
+          "status": "planned"
+        },
+        {
+          "id": "p10-overlay-export",
+          "title": "Transparent overlay export",
+          "detail": "Export the motion graphics alone, with a transparent background (WebM with alpha, or ProRes 4444), ready to drop on top of footage in CapCut, Premiere or DaVinci Resolve. MP4 for finished pieces, and a cover image.",
+          "status": "planned"
+        },
+        {
+          "id": "p10-footage",
+          "title": "Your footage as a reference or background",
+          "detail": "Bring in a video or photo to design against: line up type and effects with what happens on camera, then export the graphics alone or the full composite.",
+          "status": "planned"
+        },
+        {
+          "id": "p10-video-checks",
+          "title": "Video checks and AI rules",
+          "detail": "Check scene and AI assist tuned for video: a hook in the first seconds, scene pacing, caption ratios, platform length limits and loudness.",
+          "status": "planned"
+        },
+        {
+          "id": "p10-multi-format",
+          "title": "One project, several formats",
+          "detail": "Lay a scene out once for 9:16, 1:1 and 16:9 and export them together.",
+          "status": "planned"
+        },
+        {
+          "id": "p10-browser-export",
+          "title": "Video export without the AI Dev Kit",
+          "detail": "Investigate rendering video in the browser itself (WebCodecs), so video export works on the website with nothing installed.",
+          "status": "planned"
+        },
+        {
+          "id": "p10-simple-tools",
+          "title": "Simple video tools (later)",
+          "detail": "Light trimming and speed changes for footage layers. Editing stays the job of a video editor; the Studio is for what goes on top.",
+          "status": "planned"
+        }
+      ]
     }
   ],
   "extensionVersion": "0.0.23",

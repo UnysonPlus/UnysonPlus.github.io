@@ -1,0 +1,8 @@
+{
+  "label": "Custom Cursor",
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "engines/interaction/cursor/index"
+  }
+}

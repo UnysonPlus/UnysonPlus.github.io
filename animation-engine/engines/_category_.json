@@ -1,0 +1,12 @@
+{
+  "label": "Effects",
+  "position": 3,
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "Animation Engine — Effects",
+    "slug": "/effects",
+    "description": "Every scroll, entrance, hover and page-level motion effect you can apply from the builder's Animations tab — grouped by what they do."
+  }
+}

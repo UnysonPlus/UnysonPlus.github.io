@@ -1,0 +1,8 @@
+{
+  "label": "Preloader",
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "engines/page-level/preloader/index"
+  }
+}

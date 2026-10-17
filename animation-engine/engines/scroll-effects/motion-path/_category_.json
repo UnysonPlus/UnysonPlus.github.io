@@ -1,0 +1,8 @@
+{
+  "label": "Motion Path",
+  "position": 7,
+  "link": {
+    "type": "doc",
+    "id": "engines/scroll-effects/motion-path/index"
+  }
+}

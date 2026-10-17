@@ -1,0 +1,8 @@
+{
+  "label": "Physics Effects",
+  "position": 3,
+  "link": {
+    "type": "doc",
+    "id": "engines/interaction/physics/index"
+  }
+}

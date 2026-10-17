@@ -1,0 +1,8 @@
+{
+  "label": "Entrance Animation",
+  "position": 1,
+  "link": {
+    "type": "doc",
+    "id": "engines/entrance-text/entrance-animation/index"
+  }
+}

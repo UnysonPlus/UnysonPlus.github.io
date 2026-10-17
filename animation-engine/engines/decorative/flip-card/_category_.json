@@ -1,0 +1,8 @@
+{
+  "label": "3D Flip Card",
+  "position": 3,
+  "link": {
+    "type": "doc",
+    "id": "engines/decorative/flip-card/index"
+  }
+}

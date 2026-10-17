@@ -1,0 +1,8 @@
+{
+  "label": "Infinite Scroll Loop",
+  "position": 4,
+  "link": {
+    "type": "doc",
+    "id": "engines/scroll-layout/scroll-loop/index"
+  }
+}

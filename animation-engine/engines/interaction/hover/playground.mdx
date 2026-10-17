@@ -1,0 +1,57 @@
+---
+slug: /hover/playground
+sidebar_position: 1
+title: Playground
+sidebar_label: "Playground ⚡"
+description: Interactive playground for the Unyson+ Hover Interaction effects — pick an effect, tweak its options live, and copy the generated sample.
+hide_table_of_contents: true
+---
+
+import HoverPlayground from '@site/src/components/HoverPlayground';
+
+# Hover Interactions — Playground
+
+<HoverPlayground />
+
+Pick an effect **on the right**, hover the card, and tweak the options. Everything here runs the
+**real plugin CSS** — the same `.sc-hover--*` classes, `--hover-*` custom properties and
+`data-hover-*` attributes the builder outputs — so what you see is what ships. The
+**Sample option** block updates as you tweak, ready to copy.
+
+:::info[What this covers]
+The switcher includes **every** hover effect, grouped by kind — **Pointer** (Magnetic, 3D
+Tilt, Spotlight *incl. gradient tint*, Ripple, Cursor Blob, Cursor Trail, Flashlight, Depth
+Layers), **Motion** (Lift, Scale, Push, Pulse, Bounce, Jelly, Skew, Rotate, Shake, Squash &
+Stretch), **Decoration** (Glow/Gradient border, Corner brackets, Fill sweep, Border draw,
+Outline, Shine, Background pan, Color shift, Marching Ants, Shockwave, Peel Corner, Liquid Goo,
+Arrow Slide), **Text** (Underline grow, Glitch, Letter spacing, Text scramble, Text swap,
+Magnetic Letters) and **Image** (Image reveal, Grayscale, Blur, Brightness). The pointer- and
+text-driven effects run the same small JavaScript the plugin ships. The one effect not previewed
+here is **WebGL Refract** — it needs the plugin's Three.js shader pipeline; view it on your own
+site. See **[Hover Interactions](./index.md)** for the full reference.
+:::
+
+## How the option is stored
+
+Hover Interaction is **stackable**, so its saved value is an **array of instances** — each
+a `{ effect, …settings }` map. The playground shows a single instance; add more in the
+builder to combine effects (e.g. **Lift + Glow Border + Ripple**) and the array grows:
+
+```php
+'demo_hover' => [
+    'type'  => 'hover',
+    'value' => [
+        [ 'effect' => 'lift',        'distance' => 8, 'shadow' => 'yes' ],
+        [ 'effect' => 'glow_border', 'glow_color' => '#6aa6ff' ],
+    ],
+],
+```
+
+:::note[Colors use the palette]
+Color options use the theme **color-preset picker**, so they actually store
+`[ 'predefined' => 'bg-primary', 'custom' => '' ]` (a preset) or
+`[ 'predefined' => '', 'custom' => '#6aa6ff' ]` (a one-off). The playground shows the
+resolved color for clarity.
+:::
+
+← Back to [Hover Interactions](./index.md)

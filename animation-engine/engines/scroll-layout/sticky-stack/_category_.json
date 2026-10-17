@@ -1,0 +1,8 @@
+{
+  "label": "Sticky Card Stack",
+  "position": 3,
+  "link": {
+    "type": "doc",
+    "id": "engines/scroll-layout/sticky-stack/index"
+  }
+}

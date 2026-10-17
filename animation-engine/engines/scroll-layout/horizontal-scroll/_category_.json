@@ -1,0 +1,8 @@
+{
+  "label": "Horizontal Scroll",
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "engines/scroll-layout/horizontal-scroll/index"
+  }
+}

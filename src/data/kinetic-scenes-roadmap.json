@@ -560,6 +560,12 @@
           "status": "planned"
         },
         {
+          "id": "p11-explainer",
+          "title": "Explainer mode",
+          "detail": "A named mode in AI assist for explainer videos and heroes. Script first: the AI writes the narration and splits it into segments, each naming what the screen shows, and you approve or edit it before anything is built. The structure is a hook in the first two seconds, the problem, the product in use (entry, key action, result), why it matters and a call to action. The narration explains what the viewer sees instead of reading the screen aloud; every segment moves the picture (a cursor click, a focus, a state change, kinetic type for the key phrase), and each visual lands just before its words. Captions come from the narration, one line at a time. Then the AI director loop checks it, looks at rendered frames and fixes it.",
+          "status": "planned"
+        },
+        {
           "id": "p11-review",
           "title": "Look, criticise, fix",
           "detail": "After building, the kit renders the settled frame of every act and the middle of every transition; the AI looks at them with the Check scene report, criticises its own work like a reviewer (cramped layouts, low contrast, muddy transitions, unreadable text) and fixes it, at most a few rounds. Only then does it show you the result.",
@@ -575,6 +581,12 @@
           "id": "p11-subscriptions",
           "title": "Any of your subscriptions",
           "detail": "Your Claude subscription through the claude command (already working), your ChatGPT subscription through OpenAI's codex command, and Cursor through cursor-agent. The kit picks what you have; nothing needs an API key.",
+          "status": "planned"
+        },
+        {
+          "id": "p11-tts",
+          "title": "Voice-over from a script",
+          "detail": "No microphone needed: the AI Dev Kit turns a script into a voice-over on your computer with a free local voice model (such as Kokoro), with no account or API. Every word arrives with its time, so the scene is built on the real narration (the audio is the clock), and changing a line regenerates only that part. Your own recording still works as before.",
           "status": "planned"
         },
         {

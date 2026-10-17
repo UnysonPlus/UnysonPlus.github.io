@@ -30,7 +30,7 @@ foundations laid earlier. We're doing the three [focus areas](./focus-areas) **o
 <text x="46" y="195" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">1</text>
 <rect x="82" y="150" width="648" height="80" rx="12" fill="var(--ifm-color-emphasis-100)" stroke="var(--ifm-color-emphasis-200)"/>
 <text x="104" y="180" font-size="17" font-weight="700" fill="var(--ifm-font-color-base)">Phase 1 — Motion timeline</text>
-<text x="104" y="206" font-size="13" fill="var(--ifm-color-emphasis-700)">Beat keyframes across a pinned section</text>
+<text x="104" y="206" font-size="13" fill="var(--ifm-color-emphasis-700)">Beat keyframes + a visual scroll-timeline editor</text>
 <text x="708" y="174" text-anchor="end" font-size="10" font-weight="700" letter-spacing="1" fill="var(--ifm-color-emphasis-600)">IMPACT</text>
 <circle cx="654" cy="198" r="5" fill="#2F74E6"/><circle cx="672" cy="198" r="5" fill="#2F74E6"/><circle cx="690" cy="198" r="5" fill="#2F74E6"/><circle cx="708" cy="198" r="5" fill="none" stroke="var(--ifm-color-emphasis-400)" stroke-width="1.5"/>
 </g>
@@ -69,11 +69,23 @@ The highest return for the least effort — and the base everything else builds 
 
 **Outcome:** the whole engine feels like one polished system, and future scroll features get cheaper.
 
-## Phase 1 — Motion timeline (the pragmatic 80%)
+## Phase 1 — Motion timeline (the pragmatic 80%, then the visual editor)
 
-- **Beat keyframes** — per-element 2–3 keyframed states across a pinned Section's beats, each with an
-  easing pick, built on the existing [Scroll Story](/animation-engine/scrollytelling) plumbing.
-- **(Optional)** a bounded "Motion Timeline" element for advanced users, only if there's demand.
+Three stages that ladder up — each useful on its own, all writing the **same native builder
+options** (see [Area 2](./focus-areas#area-2--a-real-motion-timeline) for the full rationale):
+
+- **1a · Beat keyframes (native).** Per-element 2–3 keyframed states across a pinned Section's beats,
+  each with an easing pick, built on the existing [Scroll Story](/animation-engine/scrollytelling)
+  plumbing. Basic controls in the element panel; the finer knobs (offsets, stagger, custom easing,
+  trigger ranges) in the **Advanced** box so the basic panel stays uncluttered.
+- **1b · The Scroll Timeline Editor (visual).** A tracks-and-keyframes editor built by **reusing the
+  Kinetic Scenes timeline**, with the playhead driven by **scroll instead of a clock** — a pinned
+  Section is the fixed stage, its `vh` pin length the scrubbable axis. Launched on the **front end**
+  from an **Animation Engine Timeline** admin-bar icon (later folded into the Live Editor), and
+  scoped to one pinned **Scroll Scene** first. It reads and writes the same options as **1a** — a
+  view over the settings, never a separate scene file.
+- **1c · Page-level choreography.** A whole-page scroll ruler showing every section's triggers and
+  scrubs at once — read-only first, then editable.
 
 ## Phase 2 — Real 3D scenes
 

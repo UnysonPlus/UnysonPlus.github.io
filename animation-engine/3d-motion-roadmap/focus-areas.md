@@ -35,18 +35,42 @@ timeline" means **keyframing several properties over one shared, scrubbable axis
 hidden; a third of the way through, centered; near the end, exits left" — each step with its own
 easing.
 
-**Where we're going — pragmatically.** A full After-Effects-style visual timeline editor is a
-product unto itself, and it doesn't fit neatly into a builder. So we ladder up instead:
+**Where we're going.** A full visual timeline editor used to read as "a product unto itself" that
+doesn't fit a builder — but we now have a second asset that changes the calculus: **Kinetic
+Scenes**, our standalone timeline editor for fixed-viewport scenes. We already *have* that product,
+so rather than cram one into a builder modal we **reuse it**, and ladder up in three tiers:
 
-1. **Beat keyframes** on a pinned Section — give each element 2–3 keyframed states across the pinned
-   scroll range, each with an easing pick. This covers the large majority of what people want a
-   timeline for, expressed as builder options, and it reuses the existing
-   [Scroll Story](/animation-engine/scrollytelling) beat plumbing.
-2. **(Optional, later)** a bounded "Motion Timeline" element for advanced users — a small
-   tracks-and-keyframes UI that compiles down to a GSAP timeline.
+1. **Beat keyframes (native, basic).** Give each element 2–3 keyframed states across a pinned
+   Section's scroll range, each with an easing pick — built on the existing
+   [Scroll Story](/animation-engine/scrollytelling) beat plumbing. This covers the large majority of
+   what people want a timeline for, as a handful of builder options.
+2. **Advanced controls (the Advanced box).** The finer knobs — per-keyframe offsets, stagger, custom
+   easing, trigger ranges — live in the element's **Advanced** tab, so the basic panel stays
+   uncluttered while power users still get depth.
+3. **The Scroll Timeline Editor (visual).** A real tracks-and-keyframes editor for full
+   choreography, built by **reusing the Kinetic Scenes timeline** rather than reinventing it.
 
-The near-term answer to "proper motion timeline" is **beat keyframes** — real multi-step
-choreography, without turning the builder into video-editing software.
+**The idea that makes it fit.** Kinetic Scenes needs two things — a **fixed stage** and a
+**playhead**. A **pinned Section gives you both**: pin it and the viewport is frozen for a known slice
+of scroll (the stage), and that scroll distance *is* the playhead. So a "scroll scene" is simply
+Kinetic Scenes with the playhead swapped from a **clock** to **scroll progress** (GSAP's `scrub`
+already does exactly this) — same tracks, same keyframes, same stage; a second playhead source, not a
+second editor. Pinning also dissolves the two hardest problems of timing against a page: a pin's
+length is authored in `vh`, so keyframe positions stay stable and responsive across breakpoints.
+
+**Where it's edited.** On the **front end**, where the real scroll context lives — launched from an
+**Animation Engine Timeline** icon in the logged-in admin bar (and, in time, folded into the
+**Live Editor**, which already overlays the rendered page). Authoring scroll timing inside a cramped
+builder modal never made sense; editing it on the actual page does.
+
+**Scope — a pinned Section first, then the whole page.** The first unit is a single **pinned "Scroll
+Scene"** (bounded, stable, reuses the editor as-is). From there it grows to a **page-level overview** —
+every section's triggers and scrubs on one scroll ruler — read-only first, then editable.
+
+**The data model — native, not a parallel format.** Everything stays **builder options**: basic beat
+keyframes in the element panel, finer controls in the Advanced box, and the visual editor **reads and
+writes those same options**. The timeline is a *view* over native settings, so there is no separate
+scene file to keep in sync and no new place for a site's motion to live.
 
 ## Area 3 — Real 3D scenes {#area-3--real-3d-scenes}
 

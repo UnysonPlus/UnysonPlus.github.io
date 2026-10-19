@@ -14,6 +14,22 @@ description: "Free WordPress drag-and-drop form builder: conditional logic, stor
 
 This extension adds the possibility to create a forms (for e.g. a contact form). Use the drag & drop form builder to create any form you'll ever want or need.
 
+## The form library
+
+Build a form once and show it anywhere. **Unyson+ → Forms** lists your saved forms with how many fields
+each has, how many entries it has received and which pages show it.
+
+- **Add New** opens the form-type picker, then the same builder and settings as a Contact Form element.
+- **Show it on a page:** add a Contact Form element and choose the form under **Form Fields → Saved Form**,
+  or pick it from **Your saved forms** in the picker. The element keeps its own style, so the same form can
+  look different on different pages. Edit the saved form once and every page showing it changes.
+- **Save an existing form:** in a Contact Form element, **Save to the library** turns its fields into a
+  saved form and links the element to it.
+- **Entries** of a saved form are grouped under that form, whichever page they came from.
+- **Duplicate, Export and Import** (as a `.json` file) from the list, to copy a form or move it to another
+  site.
+- **History:** every save is kept as a revision, so an earlier version can be compared and restored.
+
 ## Sending, confirmations and spam protection
 
 - **No page reload.** A form sends in the background and shows its result where the form is. Without

@@ -11,6 +11,9 @@ builder.
 
 The options open in a modal with a **Form Fields** builder and a **Settings** section.
 
+**Saved forms:** choose a form from the library under **Form Fields → Saved Form** to show it here; this
+element then keeps only its Style. See [the form library](/extensions/forms#the-form-library).
+
 **Starting a new form:** an empty form opens on **What kind of form is this?**: pick a type (contact, quote,
 callback, product enquiry, support ticket, appointment, table booking, event registration, RSVP, job
 application, volunteer sign-up, feedback, NPS survey, newsletter signup or download) to fill in its fields

@@ -3,8 +3,8 @@
   "extension": "forms",
   "cloneDir": "UnysonPlus-Forms-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Forms-Extension",
-  "extensionVersion": "2.0.69",
-  "generatedAt": "2026-10-19T16:47:24.146Z",
+  "extensionVersion": "2.0.70",
+  "generatedAt": "2026-10-19T17:38:35.828Z",
   "detected": true,
   "milestones": [
     {
@@ -358,31 +358,31 @@
         {
           "id": "p3-store",
           "title": "Saved forms",
-          "detail": "A form is stored once, with its fields, settings, actions and style, and keeps a stable id, so entries group by real form instead of by page.",
+          "detail": "A form is stored once (a private post type), with its fields, settings and actions, and keeps a stable id, so entries group by real form instead of by page.",
           "detect": {
             "files": [
               "includes/library/class-fw-forms-library.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p3-admin",
           "title": "Forms screen",
-          "detail": "Unyson+ → Forms, beside Form Entries and Forms Settings: every form with its entry count, last submission and where it is placed. New form starts from the starter picker; duplicate, export and import a form as JSON.",
+          "detail": "Unyson+ → Forms, beside Form Entries: every form with its number of fields, its entries and the pages it is placed on. Add New starts from the form-type picker; Duplicate, Export and Import a form as JSON.",
           "detect": {
             "files": [
               "includes/library/class-fw-forms-library-admin.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p3-element",
           "title": "The element picks a saved form",
-          "detail": "The Contact Form element chooses a form from the library, so editing it once updates every page that shows it. A form built inside an element keeps working and gets a Save to the library button.",
+          "detail": "The Contact Form element chooses a saved form (Form Fields → Saved Form), so editing it once updates every page that shows it; the element keeps its own Style. A form built inside an element keeps working and has a \"Save to the library\" link; saved forms also appear in the picker.",
           "detect": {
             "symbols": [
               {
@@ -391,20 +391,23 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p3-revisions",
           "title": "Form history and undo",
-          "detail": "Every save of a form is kept, so an earlier version can be compared and restored.",
+          "detail": "Every save of a form is kept as a WordPress revision, so an earlier version can be compared and restored.",
           "detect": {
-            "files": [
-              "includes/library/class-fw-forms-revisions.php"
+            "symbols": [
+              {
+                "file": "includes/library/class-fw-forms-library.php",
+                "pattern": "function _restore"
+              }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },

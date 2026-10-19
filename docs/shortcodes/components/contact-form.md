@@ -11,6 +11,10 @@ builder.
 
 The options open in a modal with a **Form Fields** builder and a **Settings** section.
 
+**Field look:** the **Style** tab's **Form Style** picks one of your [Form Styles presets](/theme/components/form-styles)
+(Standard, Soft, Underline, Rounded, On Dark, or your own), so every form on the site matches and editing the preset
+restyles them all. The field settings below it on the Style tab change this one form only.
+
 :::tip[💡 Web dev tip: every input needs a label]
 Every form field must have a real `<label>` tied to it — that's what a screen reader announces, and tapping the label focuses the field (a bigger target on mobile). Placeholder text is **not** a label: it disappears the moment someone types. Mark required fields, and describe any error in text, not colour alone. [MDN: the label element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label)
 :::

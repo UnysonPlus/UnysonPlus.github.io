@@ -13,7 +13,7 @@ button / border / table preset's color fields) picks from this list, and each co
 variable plus a pair of utility classes. Recolor a preset and everything that references it updates.
 
 
-![Theme Settings → Components → Color Presets](/img/theme/components/color-presets.png)
+<img src="/img/theme/components/color-presets.png" alt="Theme Settings → Components → Color Presets" width="1108" />
 
 ## How it's coded
 

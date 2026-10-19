@@ -12,7 +12,7 @@ skin on the site: **Button Presets** (the color/skin), **Sizes** (the dimensions
 Animations** (custom hover CSS). A button combines one of each, e.g. `class="btn btn-primary btn-lg"`.
 
 
-![Theme Settings → Components → Buttons](/img/theme/components/buttons.png)
+<img src="/img/theme/components/buttons.png" alt="Theme Settings → Components → Buttons" width="1108" />
 
 ## 1. Button Presets — the skin
 

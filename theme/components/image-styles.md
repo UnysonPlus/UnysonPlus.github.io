@@ -14,7 +14,7 @@ an image (Styling → **Image Style**) — galleries, image boxes, post cards, a
 once applies it consistently everywhere (this replaced the old per-element *Image Mask* option).
 
 
-![Theme Settings → Components → Image Styles](/img/theme/components/image-styles.png)
+<img src="/img/theme/components/image-styles.png" alt="Theme Settings → Components → Image Styles" width="1108" />
 
 ## How it's coded
 

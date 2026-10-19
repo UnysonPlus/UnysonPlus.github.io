@@ -13,7 +13,7 @@ produces a **`.tbl-{slug}`** class you pick on a **Table** (Table Options → Ta
 cell padding.
 
 
-![Theme Settings → Components → Table Presets](/img/theme/components/table-presets.png)
+<img src="/img/theme/components/table-presets.png" alt="Theme Settings → Components → Table Presets" width="1108" />
 
 ## How it's coded
 

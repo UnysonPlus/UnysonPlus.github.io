@@ -13,7 +13,7 @@ radius, padding, box-shadow and an optional background fill (color / gradient / 
 a **Countdown**, and similar.
 
 
-![Theme Settings → Components → Box Presets](/img/theme/components/box-presets.png)
+<img src="/img/theme/components/box-presets.png" alt="Theme Settings → Components → Box Presets" width="1108" />
 
 ## How it's coded
 

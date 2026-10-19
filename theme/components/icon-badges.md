@@ -13,7 +13,7 @@ color + size), a border and a box-shadow. Each preset produces a **`.iconb-{slug
 an **Icon Box** (Styling → Icon Badge Preset), with **Default** and **Hover** states.
 
 
-![Theme Settings → Components → Icon Badges](/img/theme/components/icon-badges.png)
+<img src="/img/theme/components/icon-badges.png" alt="Theme Settings → Components → Icon Badges" width="1108" />
 
 ## How it's coded
 

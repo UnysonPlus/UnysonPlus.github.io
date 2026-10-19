@@ -13,7 +13,7 @@ Member card layout). Unlike the other Components tabs, this isn't an `addable-bo
 a **management dashboard** for installed packs.
 
 
-![Theme Settings → Components → Element Designs](/img/theme/components/element-designs.png)
+<img src="/img/theme/components/element-designs.png" alt="Theme Settings → Components → Element Designs" width="1108" />
 
 ## How it's coded
 

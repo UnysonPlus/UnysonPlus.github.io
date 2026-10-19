@@ -12,7 +12,7 @@ slants, curves…) you pick for a Section's **Top** or **Bottom** edge. The shap
 its **Color / Height / Flip** are set per Section.
 
 
-![Theme Settings → Components → Shape Dividers](/img/theme/components/shape-dividers.png)
+<img src="/img/theme/components/shape-dividers.png" alt="Theme Settings → Components → Shape Dividers" width="1108" />
 
 ## How it's coded
 

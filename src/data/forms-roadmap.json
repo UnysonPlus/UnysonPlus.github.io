@@ -3,8 +3,8 @@
   "extension": "forms",
   "cloneDir": "UnysonPlus-Forms-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Forms-Extension",
-  "extensionVersion": "2.0.66",
-  "generatedAt": "2026-10-19T11:29:26.666Z",
+  "extensionVersion": "2.0.67",
+  "generatedAt": "2026-10-19T14:32:36.444Z",
   "detected": true,
   "milestones": [
     {
@@ -115,19 +115,19 @@
         {
           "id": "p1-presets",
           "title": "Form Styles presets in Theme Settings",
-          "detail": "Field background, text, border, focus colour, corner radius and padding; label colour and position (above, floating, or inside as a placeholder); error and success colours; checkbox, radio and rating styles. Each preset has a light and a dark variant for forms placed on dark sections.",
+          "detail": "Theme Settings → Components → Form Styles: field background, text, border, focus colour and ring, placeholder, label, help, error and choice colours; border width, box or underline, corner radius, height, side padding and text size; label size, weight and case; separate colours for site dark mode; and custom CSS. Ships Standard, Soft, Underline, Rounded and On Dark (for forms on dark sections).",
           "detect": {
             "files": [
               "includes/styles/class-fw-forms-style-presets.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-element",
           "title": "Form style picker on the element",
-          "detail": "The Contact Form element's Style tab becomes a Form style dropdown plus the per-form layout settings (width, alignment, spacing). The submit button keeps using the Button presets.",
+          "detail": "The Contact Form element's Style tab has a Form Style dropdown. Its own field settings remain as \"this form only\" overrides that win over the preset; width, alignment and spacing stay per form. The submit button keeps using the Button presets.",
           "detect": {
             "symbols": [
               {
@@ -136,28 +136,32 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-backcompat",
           "title": "Existing forms keep their look",
-          "detail": "A form that already has its own field colours keeps them until a style preset is chosen for it. Nothing changes on existing sites until someone opts in.",
+          "detail": "Standard reproduces the original field look exactly and is the default, so existing forms render the same. A form whose style was renamed or deleted falls back to plain fields.",
           "detect": {
             "symbols": [
               {
                 "file": "includes/styles/class-fw-forms-style-presets.php",
-                "pattern": "function legacy_style"
+                "pattern": "function is_valid"
+              },
+              {
+                "file": "extensions/contact-forms/shortcodes/contact-form/class-fw-shortcode-contact-form.php",
+                "pattern": "is_valid\\( \\$form_style \\)"
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p1-shared",
           "title": "One style for every form on the site",
-          "detail": "The same style tokens apply to the Newsletter element, Membership's forms and booking forms, and the Site Converter maps a source site's input styling into a preset.",
+          "detail": "The same Form Styles reach the Newsletter element and Membership's forms, and the Site Converter maps a source site's input styling into a preset.",
           "detect": {
             "symbols": [
               {
@@ -499,6 +503,21 @@
           "detect": {
             "files": [
               "static/js/conversational.js"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-floating",
+          "title": "Floating labels",
+          "detail": "A Form Styles option that places the label inside the field and moves it above while typing, without losing the label for screen readers.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/styles/class-fw-forms-style-presets.php",
+                "pattern": "'floating'"
+              }
             ]
           },
           "status": "planned",

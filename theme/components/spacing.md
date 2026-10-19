@@ -13,7 +13,7 @@ site's spacing rhythm is editable in one place and every element's Spacing contr
 named steps.
 
 
-![Theme Settings → Components → Spacing](/img/theme/components/spacing.png)
+<img src="/img/theme/components/spacing.png" alt="Theme Settings → Components → Spacing" width="1108" />
 
 ## How it's coded
 

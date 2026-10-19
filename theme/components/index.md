@@ -23,6 +23,7 @@ and **where that output lives**.
 | **Text Styles** | `.font-{slug}` + `--font-size-{slug}` | [Text Styles](./text-styles.md) |
 | **Buttons** | `.btn-{slug}` / `.btn-outline-{slug}` + sizes | [Buttons](./buttons.md) |
 | **Box Presets** | `.boxp-{slug}` | [Box Presets](./box-presets.md) |
+| **Form Styles** (Forms extension) | `.formp-{slug}` | [Form Styles](./form-styles.md) |
 | **Image Styles** | `.imgs-{slug}` token bundle | [Image Styles](./image-styles.md) |
 | **Background Patterns** | `.pattern-{id}` | [Background Patterns](./background-patterns.md) |
 | **Section Styles** | `.section--{slug}` | [Section Styles](./section-styles.md) |

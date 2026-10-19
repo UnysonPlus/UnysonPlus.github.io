@@ -16,7 +16,7 @@ They're offered by the **Text Style** dropdown in a shortcode's Styling tab (and
 Special Heading's *Subtitle Text Style*).
 
 
-![Theme Settings → Components → Text Styles](/img/theme/components/text-styles.png)
+<img src="/img/theme/components/text-styles.png" alt="Theme Settings → Components → Text Styles" width="1108" />
 
 ## How it's coded
 

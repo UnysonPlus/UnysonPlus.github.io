@@ -13,7 +13,7 @@ patterns**. Each becomes a `.pattern-{id}` you draw as a decorative layer behind
 are the Animation Engine's job; this library is CSS + HTML only.)
 
 
-![Theme Settings → Components → Background Patterns](/img/theme/components/background-patterns.png)
+<img src="/img/theme/components/background-patterns.png" alt="Theme Settings → Components → Background Patterns" width="1108" />
 
 ## How it's coded
 

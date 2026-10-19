@@ -13,7 +13,7 @@ Section via **Layout → Section Variant**. The three defaults — **Alt / Light
 built-in variants; retint them or add your own branded bands.
 
 
-![Theme Settings → Components → Section Styles](/img/theme/components/section-styles.png)
+<img src="/img/theme/components/section-styles.png" alt="Theme Settings → Components → Section Styles" width="1108" />
 
 ## How it's coded
 

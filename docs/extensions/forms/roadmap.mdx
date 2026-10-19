@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 title: Roadmap
-description: The Forms extension's plan, from Form Styles presets and a form-type picker to a form library, multi-step forms, payments, quizzes and the Bookings connection, verified automatically against the extension source tree.
+description: "The Forms extension's plan: Form Styles presets, better sending (no reload, accessible errors, spam filtering), a form-type picker, a form library, multi-step and richer fields, payments, quizzes, analytics, entry views and the Bookings connection, verified automatically against the extension source tree."
 ---
 
 import Roadmap, {RoadmapSummary} from '@site/src/components/Roadmap';
@@ -32,13 +32,30 @@ appear on many pages and is edited in one place.
 ## Order of work
 
 1. **Form Styles presets.** Small, and every form on the site changes at once.
-2. **The form-type picker**, so the starters are found without opening a Templates panel.
-3. **The form library**, the biggest change: it moves where forms are stored, so existing forms keep
+2. **Better sending**: no page reload, accessible error messages (WCAG 2.2), autofill hints, a choice of what
+   happens after sending, a copy to the sender, smarter notifications, and Turnstile, hCaptcha and content
+   spam filtering. Every existing form benefits, so this comes before new form types.
+3. **The form-type picker**, so the starters are found without opening a Templates panel, plus "describe a
+   form" with the AI Assistant.
+4. **The form library**, the biggest change: it moves where forms are stored, so existing forms keep
    working inside their elements and can be moved to the library when wanted.
-4. **Multi-step forms and richer fields** (name, phone, address).
-5. **Calculations and payments**, which also cover donations and simple orders.
-6. **Quizzes, limits, save and continue, signatures, create-a-post, survey results and webhooks.**
-7. **Bookings**, which stays its own extension and plugs in with a field and an action.
+5. **Longer forms and richer fields**: steps, name, phone and address fields, repeating groups, picture
+   choices, ranking, sliders, survey grids, pre-filled answers and a one-question-at-a-time layout.
+6. **Calculations and payments**, with coupons, recurring payments and pay-later, which also cover
+   donations and simple orders.
+7. **Quizzes, limits, save and continue, signatures, create-a-post, survey results, PDFs, spreadsheets and
+   webhooks.**
+8. **Analytics and follow-up**: where people give up, optional unfinished entries, notes and assignment,
+   scheduled exports.
+9. **Showing entries on the site**: directories and listings with an approval step.
+10. **Bookings**, which stays its own extension and plugs in with a field and an action.
+
+### Already covered elsewhere
+
+Some features other form builders sell as add-ons already exist in Unyson+ through other extensions, so they
+are not repeated here: email-list signups, double opt-in and CRM records come from the [CRM](/crm), user
+registration and member-only forms from [Membership](/membership), and webhooks to other systems from the
+CRM's webhooks module as well as the planned form action.
 
 ## How this page stays current
 

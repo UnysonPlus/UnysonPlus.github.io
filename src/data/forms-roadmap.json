@@ -4,7 +4,7 @@
   "cloneDir": "UnysonPlus-Forms-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Forms-Extension",
   "extensionVersion": "2.0.66",
-  "generatedAt": "2026-10-19T11:24:39.840Z",
+  "generatedAt": "2026-10-19T11:29:26.666Z",
   "detected": true,
   "milestones": [
     {
@@ -172,8 +172,121 @@
       ]
     },
     {
+      "id": "p1b-submit",
+      "title": "Phase 2 · Better sending: accessible, instant and trusted",
+      "goal": "The basics every form on every site benefits from, before any new form type: sending without a page reload, errors everyone can find and fix, the sender getting a copy, and stronger spam protection.",
+      "tasks": [
+        {
+          "id": "p1b-ajax",
+          "title": "Send without reloading the page",
+          "detail": "The form sends in the background and shows its message in place; the page no longer reloads and jumps back to the top. Forms still work with JavaScript off, falling back to today's reload.",
+          "detect": {
+            "files": [
+              "static/js/submit.js"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1b-errors",
+          "title": "Accessible error messages",
+          "detail": "Each problem is described in words next to its field and linked to it for screen readers (aria-invalid and aria-describedby); a long form gets a summary at the top; focus moves to the first problem; colour is never the only signal. Follows WCAG 2.2 success criteria 3.3.1, 3.3.3 and 1.4.1.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/option-types/form-builder/items/text/view.php",
+                "pattern": "aria-invalid"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1b-autocomplete",
+          "title": "Autofill hints",
+          "detail": "Name, email, phone and address fields declare what they hold, so browsers and password managers fill them in and assistive tools can recognise them (WCAG 2.2 success criterion 1.3.5).",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/option-types/form-builder/items/email/view.php",
+                "pattern": "autocomplete"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1b-confirm",
+          "title": "What happens after sending",
+          "detail": "Show a message, show a message and hide the form, go to a thank-you page, or go to any address, with answers usable in the message or the address. Different outcomes can depend on the answers.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "extensions/contact-forms/shortcodes/contact-form/options.php",
+                "pattern": "'confirmation_type'"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1b-autoresponder",
+          "title": "A confirmation email to the sender",
+          "detail": "An on-submit action that emails the person who sent the form a copy of their answers or a custom message, with the site's email styling.",
+          "detect": {
+            "files": [
+              "includes/actions/class-fw-forms-action-autoresponder.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1b-notifications",
+          "title": "Smarter notification emails",
+          "detail": "More than one notification per form, CC and BCC, recipients chosen by an answer (sales questions to sales, support to support), and answer tags such as {name} or {all_fields} in the subject and body.",
+          "detect": {
+            "files": [
+              "includes/notifications/class-fw-forms-merge-tags.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1b-captcha",
+          "title": "Cloudflare Turnstile and hCaptcha",
+          "detail": "Two more spam checks beside reCAPTCHA. Turnstile is free with no usage cap and usually shows nothing to real visitors.",
+          "detect": {
+            "files": [
+              "includes/option-types/form-builder/items/turnstile/class-fw-option-type-form-builder-item-turnstile.php",
+              "includes/option-types/form-builder/items/hcaptcha/class-fw-option-type-form-builder-item-hcaptcha.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "p1b-spamfilter",
+          "title": "Content spam filtering",
+          "detail": "Check submissions against Akismet when it is installed, and against a site list of blocked words, email domains and links. A caught submission is kept as Spam in Entries rather than lost.",
+          "detect": {
+            "files": [
+              "includes/spam/class-fw-forms-spam-filter.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
       "id": "p2-picker",
-      "title": "Phase 2 · Choose a form type first",
+      "title": "Phase 3 · Choose a form type first",
       "goal": "The starter forms stop being hidden in the builder's Templates panel. Adding a Contact Form element opens a picker of form types first, then the same builder as today.",
       "tasks": [
         {
@@ -202,12 +315,24 @@
           },
           "status": "planned",
           "progress": "0/1"
+        },
+        {
+          "id": "p2-ai",
+          "title": "Describe a form, get a form",
+          "detail": "In the picker, describe the form in a sentence (\"a waiver for a surf school with an emergency contact and a signature\") and the AI Assistant builds the fields, actions and messages for you to edit.",
+          "detect": {
+            "files": [
+              "includes/ai/class-fw-forms-ai-generate.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
         }
       ]
     },
     {
       "id": "p3-library",
-      "title": "Phase 3 · The form library",
+      "title": "Phase 4 · The form library",
       "goal": "Forms become things you build once and place anywhere, the model Gravity Forms and WPForms use. Unyson+ → Forms lists every form; the Contact Form element shows one of them.",
       "tasks": [
         {
@@ -248,12 +373,24 @@
           },
           "status": "planned",
           "progress": "0/1"
+        },
+        {
+          "id": "p3-revisions",
+          "title": "Form history and undo",
+          "detail": "Every save of a form is kept, so an earlier version can be compared and restored.",
+          "detect": {
+            "files": [
+              "includes/library/class-fw-forms-revisions.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
         }
       ]
     },
     {
       "id": "p4-fields",
-      "title": "Phase 4 · Longer forms and richer fields",
+      "title": "Phase 5 · Longer forms and richer fields",
       "goal": "What application, registration and intake forms need: steps, and fields that collect a person's details properly.",
       "tasks": [
         {
@@ -315,12 +452,63 @@
           },
           "status": "planned",
           "progress": "0/1"
+        },
+        {
+          "id": "p4-repeater",
+          "title": "Repeating groups",
+          "detail": "A set of fields a visitor can add again (\"add another guest\", \"add another job\"), each copy stored as its own row.",
+          "detect": {
+            "files": [
+              "includes/option-types/form-builder/items/repeater/class-fw-option-type-form-builder-item-repeater.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-choices",
+          "title": "Picture choices, ranking, sliders and grids",
+          "detail": "Choices shown as images, drag-to-rank options, a range slider, and a Likert grid (several statements rated on one scale) for surveys.",
+          "detect": {
+            "files": [
+              "includes/option-types/form-builder/items/image-choice/class-fw-option-type-form-builder-item-image-choice.php",
+              "includes/option-types/form-builder/items/ranking/class-fw-option-type-form-builder-item-ranking.php",
+              "includes/option-types/form-builder/items/range/class-fw-option-type-form-builder-item-range.php",
+              "includes/option-types/form-builder/items/likert/class-fw-option-type-form-builder-item-likert.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/4"
+        },
+        {
+          "id": "p4-prefill",
+          "title": "Pre-filled and piped answers",
+          "detail": "Fill fields from the address, the logged-in user or the CRM contact, and repeat an earlier answer later in the form (\"Thanks, {name}. Which date suits you?\").",
+          "detect": {
+            "files": [
+              "includes/prefill/class-fw-forms-prefill.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-conversational",
+          "title": "One question at a time",
+          "detail": "An optional layout that shows one question per screen, with keyboard navigation and a progress bar. The same form can be shown either way.",
+          "detect": {
+            "files": [
+              "static/js/conversational.js"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
         }
       ]
     },
     {
       "id": "p5-money",
-      "title": "Phase 5 · Calculations and payments",
+      "title": "Phase 6 · Calculations and payments",
       "goal": "Forms that work out a price and take the money: quotes, simple orders, deposits and donations, without a shop.",
       "tasks": [
         {
@@ -359,12 +547,48 @@
           },
           "status": "planned",
           "progress": "0/2"
+        },
+        {
+          "id": "p5-coupons",
+          "title": "Coupons",
+          "detail": "Fixed or percentage discount codes on payment forms, with limits on uses and dates.",
+          "detect": {
+            "files": [
+              "includes/payments/class-fw-forms-coupons.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p5-recurring",
+          "title": "Recurring payments",
+          "detail": "Monthly or yearly charges for donations and simple subscriptions, cancellable by the payer.",
+          "detect": {
+            "files": [
+              "includes/payments/class-fw-forms-subscriptions.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p5-offline",
+          "title": "Pay later",
+          "detail": "A bank transfer or pay-on-arrival choice that records the amount owed and is marked paid by hand.",
+          "detect": {
+            "files": [
+              "includes/payments/gateways/class-fw-forms-gateway-offline.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
         }
       ]
     },
     {
       "id": "p6-more",
-      "title": "Phase 6 · Quizzes, limits and more",
+      "title": "Phase 7 · Quizzes, limits and more",
       "goal": "The remaining form types from the common list, and the tools long or popular forms need.",
       "tasks": [
         {
@@ -450,12 +674,134 @@
           },
           "status": "planned",
           "progress": "0/1"
+        },
+        {
+          "id": "p6-pdf",
+          "title": "PDF copies of entries",
+          "detail": "Turn an entry into a PDF (a receipt, an application, a signed waiver), attach it to the emails or download it from Entries.",
+          "detect": {
+            "files": [
+              "includes/pdf/class-fw-forms-pdf.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6-sheets",
+          "title": "Send to a spreadsheet action",
+          "detail": "Add each submission as a row in a Google Sheets spreadsheet.",
+          "detect": {
+            "files": [
+              "includes/actions/class-fw-forms-action-sheets.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p6b-insights",
+      "title": "Phase 8 · See how forms perform and follow up",
+      "goal": "Which forms are seen, started, finished and abandoned, and the tools to act on what comes in.",
+      "tasks": [
+        {
+          "id": "p6b-analytics",
+          "title": "Form analytics",
+          "detail": "Views, starts, completions and the field where people give up, per form and over time. Shares the Visitor Insights data when that extension is on.",
+          "detect": {
+            "files": [
+              "includes/analytics/class-fw-forms-analytics.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6b-partial",
+          "title": "Unfinished entries",
+          "detail": "Optionally keep what a visitor typed into a form they did not send, so a half-finished quote request can be followed up. Off by default, and stated in the form's privacy notice when on.",
+          "detect": {
+            "files": [
+              "includes/entries/class-fw-forms-partial-entries.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6b-workspace",
+          "title": "Working with entries",
+          "detail": "Notes on an entry, assign it to a team member, star it, reply from the entry, and correct an answer with the change logged.",
+          "detect": {
+            "files": [
+              "includes/entries/class-fw-forms-entry-notes.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6b-schedule",
+          "title": "Scheduled export and clean-up",
+          "detail": "Email a CSV of new entries every day or week, and set retention per form instead of one site-wide period.",
+          "detect": {
+            "files": [
+              "includes/entries/class-fw-forms-entries-schedule.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p6c-views",
+      "title": "Phase 9 · Show entries on the site",
+      "goal": "Use what people send as content: directories, listings and testimonials, with an approval step before anything goes public.",
+      "tasks": [
+        {
+          "id": "p6c-views",
+          "title": "Entry views",
+          "detail": "An element that shows a form's entries as a table, grid, list, map or calendar, with search, filters and a page per entry. Only the fields chosen for it are shown.",
+          "detect": {
+            "files": [
+              "includes/views/class-fw-forms-views.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6c-approval",
+          "title": "Approval before publishing",
+          "detail": "Entries shown in a view wait for approval; an approver gets an email and can approve or reject from it.",
+          "detect": {
+            "files": [
+              "includes/workflow/class-fw-forms-approval.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6c-edit",
+          "title": "People edit their own entries",
+          "detail": "A logged-in person can update what they sent (a listing, an application) until it is locked.",
+          "detect": {
+            "files": [
+              "includes/views/class-fw-forms-entry-edit.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
         }
       ]
     },
     {
       "id": "p7-bookings",
-      "title": "Phase 7 · Bookings plug in",
+      "title": "Phase 10 · Bookings plug in",
       "goal": "Reservations stay a separate Bookings extension (availability, nightly or slot pricing, calendar sync). It connects to Forms the way the CRM and Membership do: by adding a field and an action, never by moving booking code into Forms.",
       "tasks": [
         {

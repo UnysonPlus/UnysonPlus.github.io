@@ -1,0 +1,478 @@
+{
+  "_comment": "SOURCE OF TRUTH for the Forms roadmap rendered at /docs/extensions/forms/roadmap. Task `status` is maintained AUTOMATICALLY by `npm run roadmap:forms` (scripts/gen-roadmap.mjs), which inspects the real extension source tree and flips a task to `done` when everything in its `detect` block exists. The detect paths are the extension's agreed file layout: core classes in includes/<area>/, each field type in includes/option-types/form-builder/items/<type>/, each on-submit step in includes/actions/, the element in extensions/contact-forms/shortcodes/contact-form/. Hand-edit title/detail/detect freely; set `pin: true` on a task whose status the script should leave alone.",
+  "extension": "forms",
+  "cloneDir": "UnysonPlus-Forms-Extension",
+  "repo": "https://github.com/UnysonPlus/UnysonPlus-Forms-Extension",
+  "extensionVersion": "2.0.66",
+  "generatedAt": "2026-10-19T11:24:39.840Z",
+  "detected": true,
+  "milestones": [
+    {
+      "id": "p0-today",
+      "title": "Phase 0 · What Forms already does",
+      "goal": "The base every later phase builds on: a drag-and-drop form builder inside the Contact Form element, stored entries, conditional fields, on-submit actions other extensions add to, and ready-made starter forms.",
+      "tasks": [
+        {
+          "id": "p0-entries",
+          "title": "Stored entries",
+          "detail": "Every submission is kept under Unyson+ → Form Entries, even when the notification email fails: search, status views, date filter, bulk archive or delete, CSV export, a retention period, and the WordPress personal-data export and erase tools.",
+          "detect": {
+            "files": [
+              "includes/entries/class-fw-forms-entries.php",
+              "includes/entries/class-fw-forms-entries-admin.php",
+              "includes/entries/class-fw-forms-entries-capture.php"
+            ]
+          },
+          "status": "done",
+          "progress": "3/3"
+        },
+        {
+          "id": "p0-fields",
+          "title": "Field types",
+          "detail": "Text, textarea, email, website, number, select, radio, checkboxes, date and time, star or score rating, hidden values, consent boxes and private file uploads.",
+          "detect": {
+            "files": [
+              "includes/option-types/form-builder/items/date/class-fw-option-type-form-builder-item-date.php",
+              "includes/option-types/form-builder/items/rating/class-fw-option-type-form-builder-item-rating.php",
+              "includes/option-types/form-builder/items/hidden/class-fw-option-type-form-builder-item-hidden.php",
+              "includes/option-types/form-builder/items/consent/class-fw-option-type-form-builder-item-consent.php",
+              "includes/option-types/form-builder/items/file-upload/class-fw-option-type-form-builder-item-file-upload.php"
+            ]
+          },
+          "status": "done",
+          "progress": "5/5"
+        },
+        {
+          "id": "p0-conditions",
+          "title": "Conditional fields",
+          "detail": "Any field can be shown only when another field has a given answer. The rule is also enforced on the server, so a hidden field is never checked or collected.",
+          "detect": {
+            "files": [
+              "includes/conditions/class-fw-forms-conditions.php"
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
+        },
+        {
+          "id": "p0-actions",
+          "title": "On-submit actions",
+          "detail": "A per-form list of steps that run after a submission. Forms ships Store entry; the CRM adds Add to the CRM and Membership adds Register member. Any extension can register its own.",
+          "detect": {
+            "files": [
+              "includes/actions/class-fw-forms-actions.php",
+              "includes/actions/class-fw-forms-action.php",
+              "includes/actions/class-fw-forms-action-store.php"
+            ]
+          },
+          "status": "done",
+          "progress": "3/3"
+        },
+        {
+          "id": "p0-starters",
+          "title": "Starter forms",
+          "detail": "Nine ready-made forms in the builder's Templates panel: Contact, Appointment request, Table booking, Quote request, Event registration, Support ticket, Feedback, NPS survey and Newsletter signup.",
+          "detect": {
+            "files": [
+              "includes/class-fw-forms-starters.php"
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
+        },
+        {
+          "id": "p0-spam",
+          "title": "Spam protection",
+          "detail": "A hidden honeypot field, Google reCAPTCHA, and a limit on how many forms one visitor can send in ten minutes.",
+          "detect": {
+            "files": [
+              "includes/option-types/form-builder/items/honeypot/class-fw-option-type-form-builder-item-honeypot.php",
+              "includes/option-types/form-builder/items/recaptcha/class-fw-option-type-form-builder-item-recaptcha.php"
+            ]
+          },
+          "status": "done",
+          "progress": "2/2"
+        },
+        {
+          "id": "p0-ai",
+          "title": "AI Assistant abilities",
+          "detail": "A connected AI can describe the field types and starters and place a form with its actions. It never sees the entries.",
+          "detect": {
+            "files": [
+              "includes/ai-abilities.php"
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
+        }
+      ]
+    },
+    {
+      "id": "p1-styles",
+      "title": "Phase 1 · Form Styles presets",
+      "goal": "Field styling moves onto presets in Theme Settings, the same rule buttons and boxes already follow, so every form on a site matches and one edit restyles them all. The Contact Form element picks a style; its own Style tab keeps only what belongs to that one form.",
+      "tasks": [
+        {
+          "id": "p1-presets",
+          "title": "Form Styles presets in Theme Settings",
+          "detail": "Field background, text, border, focus colour, corner radius and padding; label colour and position (above, floating, or inside as a placeholder); error and success colours; checkbox, radio and rating styles. Each preset has a light and a dark variant for forms placed on dark sections.",
+          "detect": {
+            "files": [
+              "includes/styles/class-fw-forms-style-presets.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-element",
+          "title": "Form style picker on the element",
+          "detail": "The Contact Form element's Style tab becomes a Form style dropdown plus the per-form layout settings (width, alignment, spacing). The submit button keeps using the Button presets.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "extensions/contact-forms/shortcodes/contact-form/options.php",
+                "pattern": "'form_style'"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-backcompat",
+          "title": "Existing forms keep their look",
+          "detail": "A form that already has its own field colours keeps them until a style preset is chosen for it. Nothing changes on existing sites until someone opts in.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/styles/class-fw-forms-style-presets.php",
+                "pattern": "function legacy_style"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-shared",
+          "title": "One style for every form on the site",
+          "detail": "The same style tokens apply to the Newsletter element, Membership's forms and booking forms, and the Site Converter maps a source site's input styling into a preset.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/styles/class-fw-forms-style-presets.php",
+                "pattern": "unysonplus_forms_style_targets"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p2-picker",
+      "title": "Phase 2 · Choose a form type first",
+      "goal": "The starter forms stop being hidden in the builder's Templates panel. Adding a Contact Form element opens a picker of form types first, then the same builder as today.",
+      "tasks": [
+        {
+          "id": "p2-picker",
+          "title": "Starter picker on a new form",
+          "detail": "A new Contact Form element opens with a grid of form types, each with a short preview and its fields listed, plus Blank and the site's own saved forms. Picking one fills the builder and the form's actions; everything stays editable.",
+          "detect": {
+            "files": [
+              "extensions/contact-forms/shortcodes/contact-form/static/js/starter-picker.js"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2-more-starters",
+          "title": "More starter types",
+          "detail": "Job application, volunteer sign-up, RSVP, lead magnet download, callback request, product enquiry and a short quiz, on top of the nine starters.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/class-fw-forms-starters.php",
+                "pattern": "job-application"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p3-library",
+      "title": "Phase 3 · The form library",
+      "goal": "Forms become things you build once and place anywhere, the model Gravity Forms and WPForms use. Unyson+ → Forms lists every form; the Contact Form element shows one of them.",
+      "tasks": [
+        {
+          "id": "p3-store",
+          "title": "Saved forms",
+          "detail": "A form is stored once, with its fields, settings, actions and style, and keeps a stable id, so entries group by real form instead of by page.",
+          "detect": {
+            "files": [
+              "includes/library/class-fw-forms-library.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p3-admin",
+          "title": "Forms screen",
+          "detail": "Unyson+ → Forms, beside Form Entries and Forms Settings: every form with its entry count, last submission and where it is placed. New form starts from the starter picker; duplicate, export and import a form as JSON.",
+          "detect": {
+            "files": [
+              "includes/library/class-fw-forms-library-admin.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p3-element",
+          "title": "The element picks a saved form",
+          "detail": "The Contact Form element chooses a form from the library, so editing it once updates every page that shows it. A form built inside an element keeps working and gets a Save to the library button.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "extensions/contact-forms/shortcodes/contact-form/options.php",
+                "pattern": "'library_form'"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p4-fields",
+      "title": "Phase 4 · Longer forms and richer fields",
+      "goal": "What application, registration and intake forms need: steps, and fields that collect a person's details properly.",
+      "tasks": [
+        {
+          "id": "p4-steps",
+          "title": "Multi-step forms",
+          "detail": "A page-break field splits a form into steps with a progress bar, Back and Next. Each step is checked before moving on, and conditional rules can skip a step.",
+          "detect": {
+            "files": [
+              "includes/option-types/form-builder/items/page-break/class-fw-option-type-form-builder-item-page-break.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-name",
+          "title": "Name field",
+          "detail": "First and last name in one field, stored separately so the CRM and emails can use each part.",
+          "detect": {
+            "files": [
+              "includes/option-types/form-builder/items/name/class-fw-option-type-form-builder-item-name.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-phone",
+          "title": "Phone field",
+          "detail": "A country code and number, checked and stored in one international format.",
+          "detect": {
+            "files": [
+              "includes/option-types/form-builder/items/phone/class-fw-option-type-form-builder-item-phone.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-address",
+          "title": "Address field",
+          "detail": "Street, city, region, postcode and country, with the parts stored separately.",
+          "detect": {
+            "files": [
+              "includes/option-types/form-builder/items/address/class-fw-option-type-form-builder-item-address.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-content",
+          "title": "Section headings and text",
+          "detail": "A heading-and-text block to explain a part of the form between fields. It collects nothing.",
+          "detect": {
+            "files": [
+              "includes/option-types/form-builder/items/section/class-fw-option-type-form-builder-item-section.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p5-money",
+      "title": "Phase 5 · Calculations and payments",
+      "goal": "Forms that work out a price and take the money: quotes, simple orders, deposits and donations, without a shop.",
+      "tasks": [
+        {
+          "id": "p5-calc",
+          "title": "Calculated field",
+          "detail": "A total worked out from other answers (quantity × price, options that add to a base price), shown live and recalculated on the server.",
+          "detect": {
+            "files": [
+              "includes/option-types/form-builder/items/calculation/class-fw-option-type-form-builder-item-calculation.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p5-product",
+          "title": "Product and amount fields",
+          "detail": "A product with a price and quantity, and a pay-what-you-want amount for donations, with suggested amounts.",
+          "detect": {
+            "files": [
+              "includes/option-types/form-builder/items/product/class-fw-option-type-form-builder-item-product.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p5-payments",
+          "title": "Take payment action",
+          "detail": "An on-submit action that charges the form's total by card through Stripe or through PayPal. The entry records the payment and its status; a failed payment keeps the entry and tells the visitor.",
+          "detect": {
+            "files": [
+              "includes/payments/class-fw-forms-payments.php",
+              "includes/actions/class-fw-forms-action-payment.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        }
+      ]
+    },
+    {
+      "id": "p6-more",
+      "title": "Phase 6 · Quizzes, limits and more",
+      "goal": "The remaining form types from the common list, and the tools long or popular forms need.",
+      "tasks": [
+        {
+          "id": "p6-quiz",
+          "title": "Quiz scoring",
+          "detail": "Points per answer, a total score, and a different message, redirect or CRM tag for each score range. Covers knowledge quizzes and product-finder quizzes.",
+          "detect": {
+            "files": [
+              "includes/quiz/class-fw-forms-quiz.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6-limits",
+          "title": "Entry and seat limits",
+          "detail": "Close a form after a number of entries, on a date, or once each choice's seats are taken (\"Saturday workshop: 3 places left\"), with a message shown when it is full.",
+          "detect": {
+            "files": [
+              "includes/limits/class-fw-forms-limits.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6-drafts",
+          "title": "Save and continue later",
+          "detail": "A visitor can save a long form part-way and get a link by email to finish it.",
+          "detect": {
+            "files": [
+              "includes/drafts/class-fw-forms-drafts.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6-signature",
+          "title": "Signature field",
+          "detail": "Draw a signature with a mouse or finger, stored privately with the entry like a file upload.",
+          "detect": {
+            "files": [
+              "includes/option-types/form-builder/items/signature/class-fw-option-type-form-builder-item-signature.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6-post",
+          "title": "Create a post action",
+          "detail": "Turn a submission into a draft post or a custom post type entry (a listing, a testimonial, an event), with fields mapped to the title, content, featured image and custom fields.",
+          "detect": {
+            "files": [
+              "includes/actions/class-fw-forms-action-create-post.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6-reports",
+          "title": "Survey results",
+          "detail": "A results view per form: answer counts and charts for choice and rating fields, average scores, NPS, and the trend over time.",
+          "detect": {
+            "files": [
+              "includes/reports/class-fw-forms-reports.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6-webhook",
+          "title": "Send to a webhook action",
+          "detail": "Post a submission's answers as JSON to any URL, for automation tools and other systems.",
+          "detect": {
+            "files": [
+              "includes/actions/class-fw-forms-action-webhook.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p7-bookings",
+      "title": "Phase 7 · Bookings plug in",
+      "goal": "Reservations stay a separate Bookings extension (availability, nightly or slot pricing, calendar sync). It connects to Forms the way the CRM and Membership do: by adding a field and an action, never by moving booking code into Forms.",
+      "tasks": [
+        {
+          "id": "p7-field",
+          "title": "Dates and availability field",
+          "detail": "Supplied by the Bookings extension: a calendar that greys out taken dates or slots and shows the live price, usable in any form. Planned with that extension.",
+          "pin": true,
+          "status": "planned"
+        },
+        {
+          "id": "p7-action",
+          "title": "Reserve action",
+          "detail": "Supplied by the Bookings extension: holds the chosen dates when the form is sent and re-checks that they are still free. A booking form is then a normal form with its own extra questions.",
+          "pin": true,
+          "status": "planned"
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 ---
 title: "Free WordPress Form Builder"
 sidebar_label: "Forms"
-description: "Free WordPress drag-and-drop contact form builder — conditional logic, multi-step forms, spam protection and email notifications, no coding. A free alternative to Gravity Forms & WPForms."
+description: "Free WordPress drag-and-drop form builder: conditional logic, stored entries, file uploads, ratings, spam protection, email notifications and nine starter forms, with no coding and no paid tiers."
 ---
 
 # Forms
@@ -9,7 +9,7 @@ description: "Free WordPress drag-and-drop contact form builder — conditional 
 <div class="ext-hero">
   <span class="ext-hero__badge">FREE!</span>
   <p class="ext-hero__title">Build premium forms in minutes.</p>
-  <p class="ext-hero__sub">A free WordPress <strong>drag-and-drop contact form builder</strong> with conditional logic, multi-step forms, spam protection and email notifications — no coding, and every premium feature Gravity Forms and WPForms charge for is included and unlimited.</p>
+  <p class="ext-hero__sub">A free WordPress <strong>drag-and-drop form builder</strong> with conditional logic, stored entries, file uploads, ratings, spam protection and email notifications. No coding and no paid tiers. Multi-step forms, payments and quizzes are on the <a href="/extensions/forms/roadmap">roadmap</a>.</p>
 </div>
 
 This extension adds the possibility to create a forms (for e.g. a contact form). Use the drag & drop form builder to create any form you'll ever want or need.

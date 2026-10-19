@@ -1,0 +1,63 @@
+---
+sidebar_position: 2
+title: Roadmap
+description: The Forms extension's plan, from Form Styles presets and a form-type picker to a form library, multi-step forms, payments, quizzes and the Bookings connection, verified automatically against the extension source tree.
+---
+
+import Roadmap, {RoadmapSummary} from '@site/src/components/Roadmap';
+import data from '@site/src/data/forms-roadmap.json';
+
+# Roadmap
+
+Forms is growing from a contact-form builder into an all-in-one form system: one builder that makes contact,
+lead, registration, application, survey, quiz, order and donation forms, with other extensions adding their
+own fields and on-submit actions to it. Phase 0 is what already ships.
+
+<RoadmapSummary data={data} />
+
+<Roadmap data={data} />
+
+## How it will feel
+
+Adding a **Contact Form** element opens the same form builder as today, with two additions in front of it:
+
+1. **Pick a form type** (phase 2). A grid of starters (Contact, Quote request, Event registration and so on),
+   plus Blank and your own saved forms. Picking one fills in the fields and the right actions.
+2. **Pick a form style** (phase 1). A dropdown of the Form Styles presets from Theme Settings, the same way
+   the submit button already picks a Button preset.
+
+Once the form library lands (phase 3), the element can also show a form that already exists, so one form can
+appear on many pages and is edited in one place.
+
+## Order of work
+
+1. **Form Styles presets.** Small, and every form on the site changes at once.
+2. **The form-type picker**, so the starters are found without opening a Templates panel.
+3. **The form library**, the biggest change: it moves where forms are stored, so existing forms keep
+   working inside their elements and can be moved to the library when wanted.
+4. **Multi-step forms and richer fields** (name, phone, address).
+5. **Calculations and payments**, which also cover donations and simple orders.
+6. **Quizzes, limits, save and continue, signatures, create-a-post, survey results and webhooks.**
+7. **Bookings**, which stays its own extension and plugs in with a field and an action.
+
+## How this page stays current
+
+Status is not ticked by hand. `src/data/forms-roadmap.json` lists every task with a `detect` block naming the
+files (and, where needed, code symbols) that make it real, and `scripts/gen-roadmap.mjs` checks them against
+the extension's source tree:
+
+| Result | Status |
+| --- | --- |
+| Every file and symbol found | **Done** |
+| Some found, some missing | **In progress** |
+| None found | **Planned** |
+
+```bash
+npm run roadmap:forms            # scan and rewrite the JSON
+npm run roadmap:forms -- --dry   # report only, write nothing
+npm run roadmap:forms -- --check # exit 1 if stale
+```
+
+The `detect` paths double as the extension's agreed file layout, decided before the code is written: core
+classes in `includes/<area>/`, each field type in `includes/option-types/form-builder/items/<type>/`, each
+on-submit step in `includes/actions/`, and the element in `extensions/contact-forms/shortcodes/contact-form/`.

@@ -14,6 +14,31 @@ description: "Free WordPress drag-and-drop form builder: conditional logic, stor
 
 This extension adds the possibility to create a forms (for e.g. a contact form). Use the drag & drop form builder to create any form you'll ever want or need.
 
+## Sending, confirmations and spam protection
+
+- **No page reload.** A form sends in the background and shows its result where the form is. Without
+  JavaScript it still works the ordinary way.
+- **Errors everyone can find.** Each problem is written next to its field and announced by screen readers;
+  a form with several problems shows a summary at the top, with links to each field.
+- **After sending** (Contact Form → Settings → Options): keep the form and show the message, replace the
+  form with the message, go to a thank-you page, or go to any address.
+- **Answer tags** put the visitor's answers into the email subject, the success message and the thank-you
+  address: `{text_name}` (a field's name in the builder), `{all_fields}`, `{site_name}`, `{page_title}`,
+  `{page_url}`, `{date}`. For example: *New enquiry from {text_name}*.
+- **Notifications:** one or more recipients, plus CC and BCC. With no recipient set, the site's admin
+  email gets it.
+- **Email the sender** (Settings → Actions): a confirmation email to the person who sent the form. It
+  greets them by name; a copy of their answers is a separate switch, best used with a human check on the
+  form, since a form emails whatever address is typed into it.
+- **Autofill:** name, email, phone, company and address fields tell the browser what they hold, so it can
+  fill them in.
+- **Human checks:** Cloudflare Turnstile (free, usually invisible) and hCaptcha fields, beside reCAPTCHA.
+  Add the keys once under Unyson+ → Forms → Settings. A check without keys stays hidden and never blocks a
+  visitor.
+- **Spam filtering** (Forms → Settings): Akismet (when its plugin is set up), blocked words, blocked email
+  domains and a link limit. A caught message still sees the normal thank-you, so bots learn nothing; nothing
+  is emailed and it waits under **Form Entries → Spam**, where *Not spam* restores it.
+
 ## Customize Views
 
 - **Form Fields** - Frontend form fields views can be customized in `framework-customizations/extensions/forms/form-builder/items/{item-type}/views/view.php`. All built-in form builder item types can be found in `framework/extensions/forms/includes/option-types/form-builder/items/` directory.

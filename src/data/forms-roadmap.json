@@ -3,8 +3,8 @@
   "extension": "forms",
   "cloneDir": "UnysonPlus-Forms-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Forms-Extension",
-  "extensionVersion": "2.0.67",
-  "generatedAt": "2026-10-19T14:32:36.444Z",
+  "extensionVersion": "2.0.68",
+  "generatedAt": "2026-10-19T15:25:19.753Z",
   "detected": true,
   "milestones": [
     {
@@ -189,8 +189,8 @@
               "static/js/submit.js"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1b-errors",
@@ -199,13 +199,17 @@
           "detect": {
             "symbols": [
               {
-                "file": "includes/option-types/form-builder/items/text/view.php",
+                "file": "static/js/submit.js",
                 "pattern": "aria-invalid"
+              },
+              {
+                "file": "static/js/submit.js",
+                "pattern": "fw-form-error-summary"
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p1b-autocomplete",
@@ -219,13 +223,13 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1b-confirm",
           "title": "What happens after sending",
-          "detail": "Show a message, show a message and hide the form, go to a thank-you page, or go to any address, with answers usable in the message or the address. Different outcomes can depend on the answers.",
+          "detail": "Keep the form and show the message, replace the form with the message, go to a thank-you page, or go to any address, with answers usable in the message and the address.",
           "detect": {
             "symbols": [
               {
@@ -234,8 +238,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1b-autoresponder",
@@ -246,20 +250,20 @@
               "includes/actions/class-fw-forms-action-autoresponder.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1b-notifications",
-          "title": "Smarter notification emails",
-          "detail": "More than one notification per form, CC and BCC, recipients chosen by an answer (sales questions to sales, support to support), and answer tags such as {name} or {all_fields} in the subject and body.",
+          "title": "CC, BCC and answer tags in notifications",
+          "detail": "CC and BCC on the notification email, the admin email when no recipient is set, and answer tags such as {text_name} or {all_fields} in the subject and the messages.",
           "detect": {
             "files": [
               "includes/notifications/class-fw-forms-merge-tags.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1b-captcha",
@@ -271,16 +275,28 @@
               "includes/option-types/form-builder/items/hcaptcha/class-fw-option-type-form-builder-item-hcaptcha.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p1b-spamfilter",
           "title": "Content spam filtering",
-          "detail": "Check submissions against Akismet when it is installed, and against a site list of blocked words, email domains and links. A caught submission is kept as Spam in Entries rather than lost.",
+          "detail": "Check submissions against Akismet when it is installed, and against a site list of blocked words, email domains and a link limit. A caught submission still sees the normal success message, sends nothing and is kept as Spam in Entries rather than lost.",
           "detect": {
             "files": [
               "includes/spam/class-fw-forms-spam-filter.php"
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
+        },
+        {
+          "id": "p1b-routing",
+          "title": "Several notifications, routed by answer",
+          "detail": "More than one notification per form, recipients chosen by an answer (sales questions to sales, support to support), and a different after-sending outcome depending on the answers.",
+          "detect": {
+            "files": [
+              "includes/notifications/class-fw-forms-notifications.php"
             ]
           },
           "status": "planned",

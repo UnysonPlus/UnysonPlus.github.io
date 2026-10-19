@@ -15,6 +15,10 @@ The options open in a modal with a **Form Fields** builder and a **Settings** se
 (Standard, Soft, Underline, Rounded, On Dark, or your own), so every form on the site matches and editing the preset
 restyles them all. The field settings below it on the Style tab change this one form only.
 
+**After sending:** Settings → Options → **After Sending** keeps the form and shows the message, replaces the
+form with the message, or goes to a thank-you page or address. The subject, success message and address
+accept answer tags such as `{text_name}`; see [Forms → Sending, confirmations and spam protection](/extensions/forms#sending-confirmations-and-spam-protection).
+
 :::tip[💡 Web dev tip: every input needs a label]
 Every form field must have a real `<label>` tied to it — that's what a screen reader announces, and tapping the label focuses the field (a bigger target on mobile). Placeholder text is **not** a label: it disappears the moment someone types. Mark required fields, and describe any error in text, not colour alone. [MDN: the label element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label)
 :::

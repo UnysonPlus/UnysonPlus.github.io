@@ -384,6 +384,24 @@
           "status": "planned"
         },
         {
+          "id": "p9-diagram",
+          "title": "Diagram layer",
+          "detail": "Nodes and connections as one layer: flowcharts, architecture diagrams and branch graphs (lines that branch off and merge back, labels, and a tag that moves from node to node). Adding a node animates it in and its connections draw themselves; moving a node bends its connections with it. Stored as data, so the AI can write one and you can edit it.",
+          "status": "planned"
+        },
+        {
+          "id": "p9-repeat",
+          "title": "Repeat from a list",
+          "detail": "Design one item (a row with a badge, a title and a subtitle, an app card, a step card), give it a list of entries, and get one copy per entry, laid out and staggered. Change the list and every copy updates; steps can point at an item by its position.",
+          "status": "planned"
+        },
+        {
+          "id": "p9-text-swap",
+          "title": "Change text",
+          "detail": "A label or pill changes its text on cue (\"booting\" to \"ready in 45 s\", \"1 / 10\" to \"2 / 10\") with a quick slide, roll or fade, and its box resizes smoothly to fit the new words.",
+          "status": "planned"
+        },
+        {
           "id": "p9-word-carrier",
           "title": "Word-reveal carrier",
           "detail": "A text preset where the first word slides in big and fast and each following word travels less (for example 360, 120, 60, 25, 12 px), so a line arrives with momentum instead of in a uniform stagger.",
@@ -440,7 +458,7 @@
         {
           "id": "p9-ui-kit",
           "title": "Interface building blocks",
-          "detail": "Ready-made pieces for product videos: a prompt box that types, highlighted tags, a node diagram with connecting lines, timeline and progress bars, stacking list cards.",
+          "detail": "Ready-made pieces for product videos: a prompt box that types, highlighted tags, progress bars that fill over a set time, timer readouts (\"21 s\", \"0:45\"), stacking list cards, and dashed outlines that can march while something is working and turn solid when it is ready.",
           "status": "planned"
         },
         {
@@ -542,8 +560,8 @@
         },
         {
           "id": "p10-states",
-          "title": "Before and after states",
-          "detail": "Swap to a second screenshot of the same screen exactly on the click frame (the menu opened, the setting saved), or type into a field, so actions have visible results.",
+          "title": "Before and after states, and steps",
+          "detail": "Swap to a second screenshot of the same screen exactly on the click frame (the menu opened, the setting saved), or type into a field, so actions have visible results. Beyond two states: a scene can be a sequence of steps, and each step says what changes (this row is active, the terminal shows this command, this box fills, this node appears, this counter reads 3 / 10). The Studio builds the timing, every panel stays in sync, and steps can be reordered or retimed as a whole. The AI describes a walkthrough as steps instead of placing hundreds of keyframes.",
           "status": "planned"
         },
         {

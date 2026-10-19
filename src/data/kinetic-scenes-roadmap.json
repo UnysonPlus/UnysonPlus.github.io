@@ -468,6 +468,12 @@
           "status": "planned"
         },
         {
+          "id": "p9-code-edits",
+          "title": "Code edits",
+          "detail": "The Code layer changes existing code, not only writes new code: typing in the middle with the lines below sliding down smoothly, selecting and deleting, and turning one version into another (repeated lines becoming a function call). Autocomplete popups and parameter hints appear while typing, the editor scrolls to follow the caret, and a Run step shows the output panel. You describe the code as versions (before, after each step) and the Studio works out the keystrokes between them, timed to the voice-over through Steps.",
+          "status": "planned"
+        },
+        {
           "id": "p9-select-box",
           "title": "Select box emphasis",
           "detail": "An emphasis preset that draws a coloured box with small square corner handles around one word of a headline, like a selected object in a design tool, with the word taking the box's colour. Useful well beyond code: heroes, product tours and social clips.",
@@ -598,7 +604,7 @@
         {
           "id": "p11-explainer",
           "title": "Explainer mode",
-          "detail": "A named mode in AI assist for explainer videos and heroes. Script first: the AI writes the narration and splits it into segments, each naming what the screen shows, and you approve or edit it before anything is built. The structure is a hook in the first two seconds, the problem, the product in use (entry, key action, result), why it matters and a call to action. The narration explains what the viewer sees instead of reading the screen aloud; every segment moves the picture (a cursor click, a focus, a state change, kinetic type for the key phrase), and each visual lands just before its words. Captions come from the narration, one line at a time. Then the AI director loop checks it, looks at rendered frames and fixes it.",
+          "detail": "A named mode in AI assist for explainer videos and heroes. Script first: the AI writes the narration and splits it into segments, each naming what the screen shows, and you approve or edit it before anything is built. The structure is a hook in the first two seconds, the problem, the product in use (entry, key action, result), why it matters and a call to action. The narration explains what the viewer sees instead of reading the screen aloud; every segment moves the picture (a cursor click, a focus, a state change, kinetic type for the key phrase), and each visual lands just before its words. Captions come from the narration, one line at a time. Then the AI director loop checks it, looks at rendered frames and fixes it. For coding tutorials the AI writes the script and the code for each step together, running the code first so the output on screen is real. You record the narration in your own voice (or make it with a local voice tool or the kit's built-in voice), the kit transcribes it with a time for every word, and the AI builds the timeline so every code change and caption lands on the word it belongs to. Any language the transcription supports works, including Filipino and Taglish.",
           "status": "planned"
         },
         {

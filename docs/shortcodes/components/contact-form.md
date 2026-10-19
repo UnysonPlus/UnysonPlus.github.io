@@ -11,6 +11,13 @@ builder.
 
 The options open in a modal with a **Form Fields** builder and a **Settings** section.
 
+**Starting a new form:** an empty form opens on **What kind of form is this?**: pick a type (contact, quote,
+callback, product enquiry, support ticket, appointment, table booking, event registration, RSVP, job
+application, volunteer sign-up, feedback, NPS survey, newsletter signup or download) to fill in its fields
+and its subject, button and thank-you text, or start blank. With an AI provider connected, you can also
+describe the form in a sentence and have it built for you. **Choose a form type**, above the fields, brings
+the picker back.
+
 **Field look:** the **Style** tab's **Form Style** picks one of your [Form Styles presets](/theme/components/form-styles)
 (Standard, Soft, Underline, Rounded, On Dark, or your own), so every form on the site matches and editing the preset
 restyles them all. The field settings below it on the Style tab change this one form only.

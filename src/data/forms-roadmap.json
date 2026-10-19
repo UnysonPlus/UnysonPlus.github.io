@@ -3,8 +3,8 @@
   "extension": "forms",
   "cloneDir": "UnysonPlus-Forms-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Forms-Extension",
-  "extensionVersion": "2.0.68",
-  "generatedAt": "2026-10-19T15:25:19.753Z",
+  "extensionVersion": "2.0.69",
+  "generatedAt": "2026-10-19T16:47:24.146Z",
   "detected": true,
   "milestones": [
     {
@@ -312,41 +312,41 @@
         {
           "id": "p2-picker",
           "title": "Starter picker on a new form",
-          "detail": "A new Contact Form element opens with a grid of form types, each with a short preview and its fields listed, plus Blank and the site's own saved forms. Picking one fills the builder and the form's actions; everything stays editable.",
+          "detail": "A new Contact Form element opens with the form types, grouped, each with a short description and its number of fields, plus Blank. Picking one fills the builder and the subject, button and thank-you text; everything stays editable. \"Choose a form type\" in the builder header reopens it. (Saved forms join the picker with the form library.)",
           "detect": {
             "files": [
               "extensions/contact-forms/shortcodes/contact-form/static/js/starter-picker.js"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p2-more-starters",
           "title": "More starter types",
-          "detail": "Job application, volunteer sign-up, RSVP, lead magnet download, callback request, product enquiry and a short quiz, on top of the nine starters.",
+          "detail": "Callback request, product enquiry, RSVP, job application, volunteer sign-up and a download (lead magnet), on top of the nine starters. A quiz starter follows quiz scoring.",
           "detect": {
             "symbols": [
               {
                 "file": "includes/class-fw-forms-starters.php",
-                "pattern": "job-application"
+                "pattern": "function job\\("
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p2-ai",
           "title": "Describe a form, get a form",
-          "detail": "In the picker, describe the form in a sentence (\"a waiver for a surf school with an emergency contact and a signature\") and the AI Assistant builds the fields, actions and messages for you to edit.",
+          "detail": "In the picker, describe the form in a sentence and the site's AI provider (connected through WordPress's AI Client) builds the fields and texts for you to edit. Every field is checked before it reaches the builder.",
           "detect": {
             "files": [
               "includes/ai/class-fw-forms-ai-generate.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },

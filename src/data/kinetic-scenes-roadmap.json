@@ -444,6 +444,24 @@
           "status": "planned"
         },
         {
+          "id": "p9-code-kit",
+          "title": "Code explainer kit",
+          "detail": "Everything a coding explainer needs. A Code layer that shows real code with syntax colours, line numbers, a file tab and an optional window frame and Run button, stored as text so the AI can write it and you can edit it. A Type code preset that types it character by character with a blinking caret, in a natural rhythm (quick within a word, a short pause at punctuation and new lines) and line by line so it can follow a voice-over. Line and token highlights that aim at a line or a word in the code and follow it as it types or scrolls. A Terminal style for a prompt, a typed command and output appearing on cue. Callout pills with a connector that stay attached to the line they explain, and labelled value boxes for showing what a variable holds. With Explainer mode, AI assist can take a code file and a topic and build the whole video.",
+          "status": "planned"
+        },
+        {
+          "id": "p9-select-box",
+          "title": "Select box emphasis",
+          "detail": "An emphasis preset that draws a coloured box with small square corner handles around one word of a headline, like a selected object in a design tool, with the word taking the box's colour. Useful well beyond code: heroes, product tours and social clips.",
+          "status": "planned"
+        },
+        {
+          "id": "p9-morph",
+          "title": "Morph between acts",
+          "detail": "The same word, card or screenshot glides from its place in one act to its place in the next (position, size, colour and corner radius), instead of fading out and in again, so the viewer's eye never loses it.",
+          "status": "planned"
+        },
+        {
           "id": "p9-benchmark",
           "title": "Benchmark against hand-made videos",
           "detail": "Rebuild reference motion-graphics videos from their voice-overs with the new tools and compare them frame by frame, the way the Site Converter is measured against its sources, until the Studio's version holds up next to them.",

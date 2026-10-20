@@ -61,9 +61,30 @@ Every email a guest gets links to a private page with their booking and its stat
 the number of hours before it starts that you choose (48 by default), or you can switch online cancelling off. You
 get an email when a guest cancels.
 
+## Taking payment when people book
+
+A bookable can ask for **the whole price** or **a part of it now** (for example 30%) when someone books. Add the
+**Take payment** action to the booking form (Settings → Actions) and the booking appears in the order with the
+right amount, worked out on the server: the visitor pays by card, PayPal or bank transfer, whichever the form offers
+([Forms payments](/extensions/forms)).
+
+- When the payment goes through, the booking shows it as paid and can be **confirmed at once**.
+- If a card or PayPal payment is never finished, the booking gives its place back after the time you set (an hour
+  by default), so an abandoned checkout never blocks your calendar. Bank transfers are left for you to decide.
+- A refund on the form entry takes the amount back off the booking.
+
+## Guests in the CRM
+
+When the [CRM](/crm) is on, every guest becomes a contact (a lead when they book, a customer once
+confirmed) with each booking on their timeline. With the CRM's pipeline turned on, each booking is also a deal in a
+**Bookings** pipeline, won when you confirm it and lost when it is declined or cancelled. Three contact fields, **Next
+booking**, **Last booking ended** and **Confirmed bookings**, let you send a reminder before someone arrives or a
+thank-you after they leave, and the CRM's automations can start on "Booking made", "confirmed", "declined" or
+"cancelled". Bookings → **Bring past bookings into the CRM** adds the ones made before.
+
 ## Answer tags
 
 Use these in the form's success message and emails: `{booking_ref}`, `{booking_item}`, `{booking_when}`,
 `{booking_nights}`, `{booking_guests}`, `{booking_total}`, `{booking_deposit}`.
 
-See the [roadmap](/extensions/bookings/roadmap) for what comes next: deposits paid online and the CRM connection.
+See the [roadmap](/extensions/bookings/roadmap) for what comes next: letting the visitor choose between several rooms or staff, weekday rates and extras, reminders, and moving an existing booking plugin over.

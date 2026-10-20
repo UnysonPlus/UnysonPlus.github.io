@@ -114,8 +114,8 @@
               "includes/forms/class-fw-bookings-payments.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "b2-crm",
@@ -126,8 +126,8 @@
               "includes/crm/class-fw-bookings-crm.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },
@@ -188,6 +188,6 @@
     }
   ],
   "detected": true,
-  "extensionVersion": "1.0.1",
-  "generatedAt": "2026-10-20T08:19:03.117Z"
+  "extensionVersion": "1.0.2",
+  "generatedAt": "2026-10-20T08:24:57.200Z"
 }

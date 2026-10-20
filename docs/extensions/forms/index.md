@@ -33,6 +33,7 @@ file upload, hidden values and consent boxes:
 - **Repeating Group**: a few fields the visitor can fill in again with "Add another guest", between a
   minimum and a maximum you set. Saved as "1) Name: Ana, Age: 30; 2) Name: Leo, Age: 4".
 - **Payment Method**: lets the payer choose between card, PayPal and paying later.
+- **Coupon**: a box for a discount code, with an Apply button that shows the discount.
 - **Product**: something with a price, either one item ("Registration, $50") or a choice of options with
   their own prices ("Half day $90 / Full day $160"). It can be always included, added with a tick, or
   bought in a typed quantity.
@@ -79,6 +80,14 @@ Every answer, however many boxes it uses, is stored and emailed as one readable 
     from the entry.
   - **Pay later**: a bank transfer, pay on arrival or an invoice. The visitor sees your instructions; you
     mark the payment paid (or cancelled, or refunded) on the entry.
+- **Coupons:** add codes in Forms Settings → Payments → Coupons: a percentage or a fixed amount, off the
+  first payment or every payment, with an optional last day and number of uses. A **Coupon** field on the
+  form lets the payer apply a code and see the discount straight away; the code is checked again when the
+  form is sent.
+- **Subscriptions:** set a Product's **Billing** to every week, month or year. The payer pays the one-off
+  items and the first period now, by card or PayPal, and the rest renews by itself. Every renewal appears
+  on the entry; you can cancel from the entry, and the payer from a link you can put in their email
+  (`{subscription_cancel_link}`). One form can mix one-off products with recurring ones of one billing period.
 - **Let the payer choose** with a **Payment Method** field (Card, PayPal, Pay later). Only the ways that are
   set up are shown.
 - **Keys** go in Forms Settings → Payments: Stripe's secret key and webhook signing secret, PayPal's Client
@@ -86,7 +95,7 @@ Every answer, however many boxes it uses, is stored and emailed as one readable 
   already has keys, forms use those when these are empty.
 - **Answer tags** for the success message and emails: `{order_total}`, `{order_summary}`, `{payment_ref}`,
   `{payment_method}`, `{payment_instructions}`, and `{payment_link}` (a link to pay by card later, handy in
-  a Pay later email).
+  a Pay later email), `{subscription_ref}`, `{subscription_price}`, `{subscription_cancel_link}`.
 - The **currency** is set once for every form in Forms Settings → Payments.
 - The form-type picker has an **Order form** and a **Donation** form to start from.
 

@@ -3,8 +3,8 @@
   "extension": "forms",
   "cloneDir": "UnysonPlus-Forms-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Forms-Extension",
-  "extensionVersion": "2.0.75",
-  "generatedAt": "2026-10-20T02:43:22.086Z",
+  "extensionVersion": "2.0.76",
+  "generatedAt": "2026-10-20T03:18:16.598Z",
   "detected": true,
   "milestones": [
     {
@@ -597,8 +597,8 @@
               "includes/payments/class-fw-forms-coupons.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p5-recurring",
@@ -609,8 +609,8 @@
               "includes/payments/class-fw-forms-subscriptions.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p5-offline",

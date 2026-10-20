@@ -30,9 +30,25 @@ file upload, hidden values and consent boxes:
 - **Picture Choices**: options shown as image cards, one or several.
 - **Ranking**: put options in order with Move up / Move down.
 - **Survey Grid**: several statements answered on one scale, such as "Strongly disagree" to "Strongly agree".
+- **Repeating Group**: a few fields the visitor can fill in again with "Add another guest", between a
+  minimum and a maximum you set. Saved as "1) Name: Ana, Age: 30; 2) Name: Leo, Age: 4".
 - **Turnstile, hCaptcha, reCAPTCHA**: human checks.
 
 Every answer, however many boxes it uses, is stored and emailed as one readable line.
+
+### Pre-filled and personal forms
+
+- **Pre-fill:** a field fills itself in from the logged-in visitor's account (and their CRM contact, when the
+  CRM is active), or from the page address: `?name_1=Rosa` fills the field whose name is `name_1`. A link in a
+  newsletter can open a form already holding the reader's details. Developers can add their own values
+  with the `fw_ext_forms_prefill_values` filter.
+- **Answer piping:** write a field's name in curly brackets in a label, a section or a help line, and the
+  visitor's answer appears there as they type: "Who is coming with you, {name_1}?" reads "Who is coming
+  with you, Rosa?".
+- **One question at a time:** the Contact Form's **Style → Layout** can show each field on its own screen,
+  with a progress bar, Back / Next, and Enter to move on. Good for short surveys and sign-ups on phones.
+- **Floating labels:** the **Floating Labels** [Form Style](/theme/components/form-styles) puts the label inside
+  the field and lifts it out of the way when the visitor starts typing.
 
 ## The form library
 

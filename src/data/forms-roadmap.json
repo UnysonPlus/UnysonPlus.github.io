@@ -3,8 +3,8 @@
   "extension": "forms",
   "cloneDir": "UnysonPlus-Forms-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Forms-Extension",
-  "extensionVersion": "2.0.71",
-  "generatedAt": "2026-10-20T00:57:29.590Z",
+  "extensionVersion": "2.0.72",
+  "generatedAt": "2026-10-20T01:20:33.335Z",
   "detected": true,
   "milestones": [
     {
@@ -485,8 +485,8 @@
               "includes/option-types/form-builder/items/repeater/class-fw-option-type-form-builder-item-repeater.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-choices",
@@ -512,8 +512,8 @@
               "includes/prefill/class-fw-forms-prefill.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-conversational",
@@ -524,8 +524,8 @@
               "static/js/conversational.js"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-floating",
@@ -539,8 +539,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },

@@ -26,6 +26,7 @@ submit button is not part of a form style: it keeps using your [Button presets](
 | **Soft** | Filled light grey fields with no visible border and a coloured focus ring. |
 | **Underline** | A single line under each field and small uppercase labels. The typed text takes the page's own colour. |
 | **Rounded** | Pill-shaped fields. Long text boxes keep a gentler curve so they don't turn into capsules. |
+| **Floating Labels** | The label sits inside each text box and rises above the value when the field is focused or filled. |
 | **On Dark** | Translucent fields with light text and labels, for forms placed on a dark section. |
 
 <img src="/img/theme/components/form-style-standard.png" alt="A form using the Standard style" width="760" />
@@ -49,7 +50,8 @@ submit button is not part of a form style: it keeps using your [Button presets](
   text size.
 - **Focus ring:** none, subtle, medium or strong, in the focus colour. An underline style gets a thicker
   underline instead of a halo.
-- **Labels:** size, weight, and uppercase or as written.
+- **Labels:** size, weight, uppercase or as written, and position: above the field, or **floating** inside it
+  (text boxes and long text boxes; choices, dropdowns and other fields keep their label above).
 - **Dark mode:** a separate set of field, text, border, placeholder, label and help colours used when the
   site is shown in dark mode. Leave them empty to keep the normal colours.
 - **Custom CSS:** for anything else. `{{SELECTOR}}` becomes the preset's class; the fields sit inside

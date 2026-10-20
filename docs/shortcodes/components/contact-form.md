@@ -22,8 +22,11 @@ describe the form in a sentence and have it built for you. **Choose a form type*
 the picker back.
 
 **Field look:** the **Style** tab's **Form Style** picks one of your [Form Styles presets](/theme/components/form-styles)
-(Standard, Soft, Underline, Rounded, On Dark, or your own), so every form on the site matches and editing the preset
+(Standard, Soft, Underline, Rounded, Floating Labels, On Dark, or your own), so every form on the site matches and editing the preset
 restyles them all. The field settings below it on the Style tab change this one form only.
+
+**Layout:** Style → **Layout** shows all fields at once, or **one question at a time** with a progress bar
+and Back / Next.
 
 **After sending:** Settings → Options → **After Sending** keeps the form and shows the message, replaces the
 form with the message, or goes to a thank-you page or address. The subject, success message and address

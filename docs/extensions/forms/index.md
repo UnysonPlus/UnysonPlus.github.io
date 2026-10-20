@@ -32,6 +32,13 @@ file upload, hidden values and consent boxes:
 - **Survey Grid**: several statements answered on one scale, such as "Strongly disagree" to "Strongly agree".
 - **Repeating Group**: a few fields the visitor can fill in again with "Add another guest", between a
   minimum and a maximum you set. Saved as "1) Name: Ana, Age: 30; 2) Name: Leo, Age: 4".
+- **Product**: something with a price, either one item ("Registration, $50") or a choice of options with
+  their own prices ("Half day $90 / Full day $160"). It can be always included, added with a tick, or
+  bought in a typed quantity.
+- **Amount**: the visitor chooses how much: suggested amounts as buttons, their own amount, or both, with
+  a minimum and a maximum. For donations, deposits and "pay what you like".
+- **Calculated**: a figure worked out from other answers, such as a total or a price per person, updated as
+  the visitor types (see below).
 - **Turnstile, hCaptcha, reCAPTCHA**: human checks.
 
 Every answer, however many boxes it uses, is stored and emailed as one readable line.
@@ -49,6 +56,27 @@ Every answer, however many boxes it uses, is stored and emailed as one readable 
   with a progress bar, Back / Next, and Enter to move on. Good for short surveys and sign-ups on phones.
 - **Floating labels:** the **Floating Labels** [Form Style](/theme/components/form-styles) puts the label inside
   the field and lifts it out of the way when the visitor starts typing.
+
+## Prices, totals and payments
+
+- **Calculated fields** use a formula over other answers: a field's name in curly brackets, numbers,
+  `+ - * /`, brackets, and `round`, `ceil`, `floor`, `min`, `max`. For example
+  `{product_tour} + {product_pickup} + {amount_tip}` or `{calc_total} / max({number_people}, 1)`. A Product
+  counts as its line total, an Amount as the amount, and a choice as the last number in its text
+  ("Airport pickup (+40)" counts 40). Shown as money or as a number. A hidden one can be a step in a bigger
+  sum.
+- **The server works every figure out again** from the form itself when it is sent; a price or total the
+  browser shows is never trusted.
+- **Take payment** (Contact Form → Settings → Actions) charges the total of the form's Products, Amounts
+  and any Calculated field marked "add it to the total to pay". Each payment is kept with its entry under
+  Form Entries, with a reference such as `F-7K3QD`, its method and its status.
+- **Pay later** is the first way to pay: a bank transfer, pay on arrival or an invoice. The visitor sees
+  your instructions; you mark the payment paid (or cancelled, or refunded) on the entry. Card payments
+  are next on the [roadmap](/extensions/forms/roadmap).
+- **Answer tags** for the success message and emails: `{order_total}`, `{order_summary}`, `{payment_ref}`,
+  `{payment_method}`, `{payment_instructions}`.
+- The **currency** is set once for every form in Forms Settings → Payments.
+- The form-type picker has an **Order form** and a **Donation** form to start from.
 
 ## The form library
 

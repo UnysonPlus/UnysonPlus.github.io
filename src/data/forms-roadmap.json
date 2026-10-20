@@ -3,8 +3,8 @@
   "extension": "forms",
   "cloneDir": "UnysonPlus-Forms-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Forms-Extension",
-  "extensionVersion": "2.0.73",
-  "generatedAt": "2026-10-20T01:55:40.106Z",
+  "extensionVersion": "2.0.74",
+  "generatedAt": "2026-10-20T02:30:48.125Z",
   "detected": true,
   "milestones": [
     {
@@ -558,8 +558,8 @@
               "includes/option-types/form-builder/items/calculation/class-fw-option-type-form-builder-item-calculation.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p5-product",
@@ -570,8 +570,8 @@
               "includes/option-types/form-builder/items/product/class-fw-option-type-form-builder-item-product.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p5-payments",
@@ -580,11 +580,13 @@
           "detect": {
             "files": [
               "includes/payments/class-fw-forms-payments.php",
-              "includes/actions/class-fw-forms-action-payment.php"
+              "includes/actions/class-fw-forms-action-payment.php",
+              "includes/payments/gateways/class-fw-forms-gateway-stripe.php",
+              "includes/payments/gateways/class-fw-forms-gateway-paypal.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "in-progress",
+          "progress": "2/4"
         },
         {
           "id": "p5-coupons",
@@ -619,8 +621,8 @@
               "includes/payments/gateways/class-fw-forms-gateway-offline.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },

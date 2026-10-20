@@ -41,10 +41,29 @@ The **Reserve** action (Settings → Actions) is on by default and only does som
   Decline and Cancel. The menu shows how many are waiting.
 - **Block dates or times** for a stay booked elsewhere, maintenance or a day off.
 
+## The calendar and phone bookings
+
+**Bookings → Calendar** shows a month at a glance: one row for each thing you rent out, one column per day, with
+who is booked, what is waiting for you, blocked days and stays booked on other sites. A day is shaded by how full it
+is. Click the **+** on a free day to add a booking taken by phone or in person; it is checked against the calendar
+like any other, and the guest can be emailed a receipt.
+
+## Listed on other booking sites too?
+
+Each bookable can **import** the calendars of the other sites it is listed on (paste their iCal export address,
+one per line). They are checked every hour, and a night booked there is never offered here. If a site is briefly
+unreachable, its last known bookings stay in place, so dates never open by accident. Each bookable also has
+**its own calendar address** to paste into those sites, so a booking made here closes the dates there too.
+
+## Guests manage their booking
+
+Every email a guest gets links to a private page with their booking and its status. They can cancel it there, up to
+the number of hours before it starts that you choose (48 by default), or you can switch online cancelling off. You
+get an email when a guest cancels.
+
 ## Answer tags
 
 Use these in the form's success message and emails: `{booking_ref}`, `{booking_item}`, `{booking_when}`,
 `{booking_nights}`, `{booking_guests}`, `{booking_total}`, `{booking_deposit}`.
 
-See the [roadmap](/extensions/bookings/roadmap) for what comes next: a calendar view, syncing with other booking sites, deposits paid
-online and the CRM connection.
+See the [roadmap](/extensions/bookings/roadmap) for what comes next: deposits paid online and the CRM connection.

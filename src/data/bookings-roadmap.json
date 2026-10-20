@@ -78,8 +78,8 @@
               "includes/admin/class-fw-bookings-calendar.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "b2-ical",
@@ -90,8 +90,8 @@
               "includes/class-fw-bookings-ical.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "b2-manage",
@@ -102,8 +102,8 @@
               "includes/class-fw-bookings-manage.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "b2-pay",
@@ -188,6 +188,6 @@
     }
   ],
   "detected": true,
-  "extensionVersion": "1.0.0",
-  "generatedAt": "2026-10-20T07:55:55.994Z"
+  "extensionVersion": "1.0.1",
+  "generatedAt": "2026-10-20T08:19:03.117Z"
 }

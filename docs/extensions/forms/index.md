@@ -14,6 +14,13 @@ description: "Free WordPress drag-and-drop form builder: conditional logic, stor
 
 This extension adds the possibility to create a forms (for e.g. a contact form). Use the drag & drop form builder to create any form you'll ever want or need.
 
+## One style for every form
+
+**Form Styles** (Theme Settings → Components → Form Styles) give fields one look everywhere: the Contact Form
+element picks one on its Style tab, the **Newsletter** element has the same choice (or "the site's default form
+style"), and Membership's login form follows the site's default. Edit a style once and every form wearing it
+changes. A site converted from another builder gets a style made from the source site's own fields.
+
 ## Field types
 
 Besides text, email, number, website, dropdown, single and multiple choice, date and time, rating,
@@ -225,6 +232,16 @@ each has, how many entries it has received and which pages show it.
   email gets it.
   **Send the notification email** can be switched off for a form that only needs its stored entries, or
   whose action already tells you (a booking action that sends its own alert, for example).
+- **Routed by answer** (Contact Form → Settings → **Notifications**):
+  - *Send it to someone else, by answer*: for example, when **Department** is **Sales**, send it to the sales team
+    instead of the main address, or as well as it.
+  - *More notifications*: extra emails with their own recipients, subject and wording, such as a short summary for a
+    manager, or a copy to the address the visitor typed (`{email_1}`). Each can be sent always or only on a matching
+    answer, and they go out even when the main notification is switched off.
+  - *A different "after sending"*: show another message or go to another page depending on an answer.
+
+  Rules name a field by its label, as conditional fields do. A rule naming a field that does not exist never
+  applies, so a typo cannot send mail to the wrong place.
 - **Email the sender** (Settings → Actions): a confirmation email to the person who sent the form. It
   greets them by name; a copy of their answers is a separate switch, best used with a human check on the
   form, since a form emails whatever address is typed into it.

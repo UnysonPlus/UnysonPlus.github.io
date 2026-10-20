@@ -3,8 +3,8 @@
   "extension": "forms",
   "cloneDir": "UnysonPlus-Forms-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Forms-Extension",
-  "extensionVersion": "2.0.83",
-  "generatedAt": "2026-10-20T07:55:56.838Z",
+  "extensionVersion": "2.0.85",
+  "generatedAt": "2026-10-20T11:00:48.114Z",
   "detected": true,
   "milestones": [
     {
@@ -170,8 +170,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },
@@ -299,8 +299,8 @@
               "includes/notifications/class-fw-forms-notifications.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },

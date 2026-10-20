@@ -161,6 +161,30 @@ per week. Names, emails, phone numbers, addresses and files are never summarised
 - **Keep entries for…**: each form can delete its entries after its own number of days (Settings → Options),
   instead of the site-wide period.
 
+## Showing entries on the site
+
+Turn what people send into content: a directory of members, listings, testimonials, an events calendar.
+
+1. In the form's **Settings → On the site**, switch on **Entries can be shown on the site**. Nothing is ever shown
+   from a form until you do.
+2. Leave **Approve each entry before it is shown** on (the default) to check each one first. The approvers get an
+   email with the answers and **Approve** / **Reject** links that work without logging in; the entry screen has
+   the same buttons, and Form Entries gets a **To approve** list.
+3. Add an **Entry View** element to a page, choose the form, and list the fields to show. Pick how to show them:
+   a **table**, **cards**, a **list**, a **map** (from a "latitude, longitude" field) or a **calendar** (from a
+   date field). Add a search box, a filter on one field, and a page for each entry.
+
+Only the fields you list are shown, and search and the filter only look at those fields, so nobody can find an
+entry by what it says in a field you did not choose. Uploaded files are never shown.
+
+### Letting people edit what they sent
+
+With **Senders can edit their entry** on, a logged-in person sees an **Edit** link next to their own entries (use
+an Entry View with **Only the visitor's own entries**). It opens the form with their answers filled in; sending it
+updates the entry, without a new notification. The change is kept in the entry's history, and if the form approves
+entries first, the edited one waits for approval again. Choose when editing stops: once the entry is approved,
+after a number of days, or never.
+
 ## More actions
 
 - **Send to a webhook** posts each submission to an address, as JSON or form fields, for automation tools

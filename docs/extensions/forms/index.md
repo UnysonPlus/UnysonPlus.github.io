@@ -145,6 +145,22 @@ often each choice was picked, the average rating and, for a 0–10 question, the
 statement, averages for numbers, quiz scores and results, the latest answers to open questions, and entries
 per week. Names, emails, phone numbers, addresses and files are never summarised.
 
+## Following up
+
+- **How each form performs** (Form Results): how many saw the form, started it and sent it, and the field
+  where people gave up. Only counts are kept, with no cookies and nothing anyone typed; search engines and your
+  own logged-in editors are not counted. Turn it off in Forms Settings → Entries.
+- **Unfinished entries** (Settings → Options, off by default): keep what a visitor typed even if they leave
+  without sending, so a half-finished quote request can be followed up. A short notice under the form says so.
+  They appear under Form Entries → Unfinished and are deleted if the visitor sends the form after all.
+- **On each entry**: star it, assign it to someone on your team (they get an email), add notes only your team
+  sees, reply to the sender by email, and correct an answer. Every step is kept in the entry's history, with the
+  old answer for a correction. The list has **Starred** and **Assigned to me** views.
+- **A spreadsheet by email**: Forms Settings → Entries can email a CSV of the new entries every day or every
+  week (Monday mornings). Nothing is sent when nothing came in.
+- **Keep entries for…**: each form can delete its entries after its own number of days (Settings → Options),
+  instead of the site-wide period.
+
 ## More actions
 
 - **Send to a webhook** posts each submission to an address, as JSON or form fields, for automation tools

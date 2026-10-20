@@ -112,6 +112,21 @@ Contact Form → Settings → **Limits**:
   left" next to the choice, switches a full choice off, and refuses it if it is sent anyway. Places are
   counted from the stored entries, so deleting an entry frees its place.
 
+## Long forms, PDFs and spreadsheets
+
+- **Save and continue later** (Settings → Options): a button next to Send lets the visitor save their
+  answers and get an email with a link to finish later; the link fills the form in again. Saved answers
+  are kept for the days you choose (30 by default) and removed once the form is sent. Passwords, files and
+  drawn signatures are never saved.
+- **PDF copies**: every entry has a **Download PDF** button, and a PDF of the answers (with a drawn
+  signature) can be attached to the notification email and to the sender's confirmation (Settings →
+  Options → PDF copy). The title takes answer tags, such as *Waiver signed by {text_name}*. Latin letters,
+  accents and the euro sign are printed; other alphabets are left out of the PDF.
+- **Send to a spreadsheet** (an action) adds each submission as a row in a Google Sheets spreadsheet: put
+  a Google service account key in Forms Settings → Google Sheets, share the spreadsheet with that account,
+  and choose the spreadsheet and tab on the form. A header row of field labels is kept up to date, and
+  answers are written as plain text, so an answer can never run as a formula.
+
 ## Quizzes
 
 Contact Form → Settings → **Quiz** turns a form into a quiz or a "which one suits you" finder:

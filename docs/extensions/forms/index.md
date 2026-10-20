@@ -79,6 +79,8 @@ each has, how many entries it has received and which pages show it.
   `{page_url}`, `{date}`. For example: *New enquiry from {text_name}*.
 - **Notifications:** one or more recipients, plus CC and BCC. With no recipient set, the site's admin
   email gets it.
+  **Send the notification email** can be switched off for a form that only needs its stored entries, or
+  whose action already tells you (a booking action that sends its own alert, for example).
 - **Email the sender** (Settings → Actions): a confirmation email to the person who sent the form. It
   greets them by name; a copy of their answers is a separate switch, best used with a human check on the
   form, since a form emails whatever address is typed into it.

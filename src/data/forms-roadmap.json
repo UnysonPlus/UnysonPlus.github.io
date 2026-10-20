@@ -3,8 +3,8 @@
   "extension": "forms",
   "cloneDir": "UnysonPlus-Forms-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Forms-Extension",
-  "extensionVersion": "2.0.72",
-  "generatedAt": "2026-10-20T01:20:33.335Z",
+  "extensionVersion": "2.0.73",
+  "generatedAt": "2026-10-20T01:55:40.106Z",
   "detected": true,
   "milestones": [
     {
@@ -845,16 +845,16 @@
         {
           "id": "p7-field",
           "title": "Dates and availability field",
-          "detail": "Supplied by the Bookings extension: a calendar that greys out taken dates or slots and shows the live price, usable in any form. Planned with that extension.",
+          "detail": "Supplied by the Bookings extension: a calendar that greys out taken dates or slots and shows the live price, usable in any form. First built in a rental site's own booking plugin (a \"Stay dates\" field checked on the server for free nights, minimum stay and guest limit); it moves into Bookings when that extension is built.",
           "pin": true,
-          "status": "planned"
+          "status": "in-progress"
         },
         {
           "id": "p7-action",
           "title": "Reserve action",
-          "detail": "Supplied by the Bookings extension: holds the chosen dates when the form is sent and re-checks that they are still free. A booking form is then a normal form with its own extra questions.",
+          "detail": "Supplied by the Bookings extension: holds the chosen dates when the form is sent and re-checks that they are still free. A booking form is then a normal form with its own extra questions. First built in a rental site's own booking plugin (\"Reserve the dates\": creates the pending booking with the reference the thank-you message shows, and sends the owner's confirm / decline alert); Forms gained a switch to turn its own notification email off for it.",
           "pin": true,
-          "status": "planned"
+          "status": "in-progress"
         }
       ]
     }

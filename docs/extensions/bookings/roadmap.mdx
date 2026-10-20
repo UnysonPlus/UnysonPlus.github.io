@@ -1,0 +1,18 @@
+---
+sidebar_position: 2
+title: Roadmap
+description: "The Bookings extension's plan: bookables by the night or by time slot with a Forms booking field (done), then a calendar view, iCal sync, guest self-service, online deposits and the CRM, verified automatically against the extension source tree."
+---
+
+import Roadmap, {RoadmapSummary} from '@site/src/components/Roadmap';
+import data from '@site/src/data/bookings-roadmap.json';
+
+# Roadmap
+
+Bookings is Forms' Phase 10: reservations stay in their own extension and plug into Forms by adding a field and an
+action, the way the CRM and Membership do, so no booking code ever moves into Forms. Status is checked against the
+extension's files automatically.
+
+<RoadmapSummary data={data} />
+
+<Roadmap data={data} />

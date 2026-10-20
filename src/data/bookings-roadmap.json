@@ -1,0 +1,193 @@
+{
+  "_comment": "SOURCE OF TRUTH for the Bookings roadmap rendered at /docs/extensions/bookings/roadmap. Task status is maintained by `npm run roadmap:bookings` (scripts/gen-roadmap.mjs) from the extension source tree.",
+  "extension": "bookings",
+  "cloneDir": "UnysonPlus-Bookings-Extension",
+  "repo": "https://github.com/UnysonPlus/UnysonPlus-Bookings-Extension",
+  "milestones": [
+    {
+      "id": "b1-core",
+      "title": "Phase 1 · Bookables and the booking form",
+      "goal": "Anything bookable, one availability engine, and a booking form that is a normal form.",
+      "tasks": [
+        {
+          "id": "b1-bookables",
+          "title": "Bookables by the night or by time slot",
+          "detail": "Rooms, rentals, tables and services: how many at once, guest limit, seasonal nightly rates, fees and deposit, or opening hours cut into slots with a break, minimum notice and how far ahead.",
+          "detect": {
+            "files": [
+              "includes/class-fw-bookings-bookables.php",
+              "includes/class-fw-bookings-store.php"
+            ]
+          },
+          "status": "done",
+          "progress": "2/2"
+        },
+        {
+          "id": "b1-engine",
+          "title": "One availability engine",
+          "detail": "What is free and what it costs, asked by the calendar, the server check, the REST endpoint and the admin alike; held pending bookings, blocks and other calendars all count.",
+          "detect": {
+            "files": [
+              "includes/class-fw-bookings-availability.php",
+              "includes/class-fw-bookings-rest.php"
+            ]
+          },
+          "status": "done",
+          "progress": "2/2"
+        },
+        {
+          "id": "b1-forms",
+          "title": "Dates and availability field + Reserve action",
+          "detail": "A live calendar in any form (taken dates struck through, free times, the price), booked under a lock when the form is sent; answer tags and two starters.",
+          "detect": {
+            "files": [
+              "includes/forms/class-fw-bookings-field.php",
+              "includes/forms/class-fw-bookings-reserve-action.php",
+              "static/js/booking.js"
+            ]
+          },
+          "status": "done",
+          "progress": "3/3"
+        },
+        {
+          "id": "b1-answer",
+          "title": "Confirm or decline, from the email or the admin",
+          "detail": "The owner alert with signed Confirm / Decline links, the guest receipt and answer emails, and the Bookings list with blocks.",
+          "detect": {
+            "files": [
+              "includes/class-fw-bookings-service.php",
+              "includes/admin/class-fw-bookings-admin.php"
+            ]
+          },
+          "status": "done",
+          "progress": "2/2"
+        }
+      ]
+    },
+    {
+      "id": "b2-run",
+      "title": "Phase 2 · Running the bookings",
+      "goal": "Everything an owner needs day to day.",
+      "tasks": [
+        {
+          "id": "b2-calendar",
+          "title": "Calendar view in the admin",
+          "detail": "A month and week view of every bookable, with drag to block and click to open a booking; add a phone booking by hand.",
+          "detect": {
+            "files": [
+              "includes/admin/class-fw-bookings-calendar.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "b2-ical",
+          "title": "Sync with other booking sites",
+          "detail": "Import other channels' calendars (hourly) and export ours at a secret address, per bookable, so a night booked elsewhere is never offered here.",
+          "detect": {
+            "files": [
+              "includes/class-fw-bookings-ical.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "b2-manage",
+          "title": "Guests manage their booking",
+          "detail": "A private link in every email to see, change or cancel the booking within the rules the owner sets.",
+          "detect": {
+            "files": [
+              "includes/class-fw-bookings-manage.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "b2-pay",
+          "title": "Deposits and totals paid online",
+          "detail": "The booking's total or deposit added to the Forms order, so Stripe or PayPal take it when the form is sent; refunds noted on the booking.",
+          "detect": {
+            "files": [
+              "includes/forms/class-fw-bookings-payments.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "b2-crm",
+          "title": "CRM connection",
+          "detail": "Guests become contacts with each booking on their timeline and a pipeline of stays.",
+          "detect": {
+            "files": [
+              "includes/crm/class-fw-bookings-crm.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "b3-more",
+      "title": "Phase 3 · More ways to book",
+      "goal": "The cases a single rental or a single service does not cover.",
+      "tasks": [
+        {
+          "id": "b3-choose",
+          "title": "The visitor chooses what to book",
+          "detail": "One field offering several rooms or staff, with what is free for the chosen dates.",
+          "detect": {
+            "files": [
+              "includes/forms/class-fw-bookings-choice.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "b3-rates",
+          "title": "Weekday rates, long-stay discounts, extras",
+          "detail": "Weekend prices, a discount from a number of nights, and priced extras (breakfast, airport pickup).",
+          "detect": {
+            "files": [
+              "includes/class-fw-bookings-rates.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "b3-reminders",
+          "title": "Reminders and follow-ups",
+          "detail": "An email before arrival or the appointment, and a thank-you after.",
+          "detect": {
+            "files": [
+              "includes/class-fw-bookings-reminders.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "b3-move",
+          "title": "Move a rental site's own booking plugin onto Bookings",
+          "detail": "The bespoke plugin that pioneered the Stay dates field and Reserve action moves its rooms, bookings and calendars into Bookings.",
+          "detect": {
+            "files": [
+              "includes/tools/class-fw-bookings-import.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    }
+  ],
+  "detected": true,
+  "extensionVersion": "1.0.0",
+  "generatedAt": "2026-10-20T07:55:55.994Z"
+}

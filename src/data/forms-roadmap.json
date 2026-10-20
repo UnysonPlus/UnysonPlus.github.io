@@ -4,7 +4,7 @@
   "cloneDir": "UnysonPlus-Forms-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Forms-Extension",
   "extensionVersion": "2.0.83",
-  "generatedAt": "2026-10-20T07:19:02.998Z",
+  "generatedAt": "2026-10-20T07:55:56.838Z",
   "detected": true,
   "milestones": [
     {
@@ -847,16 +847,18 @@
         {
           "id": "p7-field",
           "title": "Dates and availability field",
-          "detail": "Supplied by the Bookings extension: a calendar that greys out taken dates or slots and shows the live price, usable in any form. First built in a rental site's own booking plugin (a \"Stay dates\" field checked on the server for free nights, minimum stay and guest limit); it moves into Bookings when that extension is built.",
+          "detail": "Supplied by the Bookings extension (since 1.0.0): the \"Dates and availability\" field, a live calendar that strikes through taken dates or lists free time slots and shows the price, usable in any form. First built in a rental site's own booking plugin; see the Bookings roadmap for what comes next.",
           "pin": true,
-          "status": "in-progress"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p7-action",
           "title": "Reserve action",
-          "detail": "Supplied by the Bookings extension: holds the chosen dates when the form is sent and re-checks that they are still free. A booking form is then a normal form with its own extra questions. First built in a rental site's own booking plugin (\"Reserve the dates\": creates the pending booking with the reference the thank-you message shows, and sends the owner's confirm / decline alert); Forms gained a switch to turn its own notification email off for it.",
+          "detail": "Supplied by the Bookings extension (since 1.0.0): the \"Reserve\" action books the chosen dates or time under a lock when the form is sent, so the last place cannot go twice, and emails the owner (Confirm / Decline links) and the guest. A booking form is a normal form with its own questions.",
           "pin": true,
-          "status": "in-progress"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     }

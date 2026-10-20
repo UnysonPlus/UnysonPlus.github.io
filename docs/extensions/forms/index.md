@@ -112,6 +112,24 @@ Contact Form → Settings → **Limits**:
   left" next to the choice, switches a full choice off, and refuses it if it is sent anyway. Places are
   counted from the stored entries, so deleting an entry frees its place.
 
+## Quizzes
+
+Contact Form → Settings → **Quiz** turns a form into a quiz or a "which one suits you" finder:
+
+- **Points** go one answer per line: `Paris = 1`. To score an answer in one question only, start with the
+  field's name: `checkboxes_primes: 9 = -1`. Typed answers score too, and case does not matter.
+- **Results by score**: each range has a title, a message, and optionally a page to send the visitor to and
+  a CRM tag for their contact.
+- Show the result with `{quiz_score}`, `{quiz_max}`, `{quiz_percent}`, `{quiz_result}` and `{quiz_message}` in
+  the success message. The score is also saved with the entry.
+
+## Form Results
+
+Unyson+ → **Form Results** (or **See results** on Form Entries) sums up a form's entries for any period: how
+often each choice was picked, the average rating and, for a 0–10 question, the NPS, a table per survey-grid
+statement, averages for numbers, quiz scores and results, the latest answers to open questions, and entries
+per week. Names, emails, phone numbers, addresses and files are never summarised.
+
 ## More actions
 
 - **Send to a webhook** posts each submission to an address, as JSON or form fields, for automation tools

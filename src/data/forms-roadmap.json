@@ -3,8 +3,8 @@
   "extension": "forms",
   "cloneDir": "UnysonPlus-Forms-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Forms-Extension",
-  "extensionVersion": "2.0.76",
-  "generatedAt": "2026-10-20T03:18:16.598Z",
+  "extensionVersion": "2.0.77",
+  "generatedAt": "2026-10-20T04:51:33.938Z",
   "detected": true,
   "milestones": [
     {
@@ -652,8 +652,8 @@
               "includes/limits/class-fw-forms-limits.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p6-drafts",
@@ -676,8 +676,8 @@
               "includes/option-types/form-builder/items/signature/class-fw-option-type-form-builder-item-signature.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p6-post",
@@ -688,8 +688,8 @@
               "includes/actions/class-fw-forms-action-create-post.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p6-reports",
@@ -712,8 +712,8 @@
               "includes/actions/class-fw-forms-action-webhook.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p6-pdf",

@@ -34,6 +34,8 @@ file upload, hidden values and consent boxes:
   minimum and a maximum you set. Saved as "1) Name: Ana, Age: 30; 2) Name: Leo, Age: 4".
 - **Payment Method**: lets the payer choose between card, PayPal and paying later.
 - **Coupon**: a box for a discount code, with an Apply button that shows the discount.
+- **Signature**: sign with a mouse, finger or pen, or type a full name instead. A drawn signature is kept
+  privately with the entry like an uploaded file, and attached to the notification email.
 - **Product**: something with a price, either one item ("Registration, $50") or a choice of options with
   their own prices ("Half day $90 / Full day $160"). It can be always included, added with a tick, or
   bought in a typed quantity.
@@ -98,6 +100,26 @@ Every answer, however many boxes it uses, is stored and emailed as one readable 
   a Pay later email), `{subscription_ref}`, `{subscription_price}`, `{subscription_cancel_link}`.
 - The **currency** is set once for every form in Forms Settings → Payments.
 - The form-type picker has an **Order form** and a **Donation** form to start from.
+
+## Limits
+
+Contact Form → Settings → **Limits**:
+
+- **Close after a number of entries**, or **open and close on dates** (a date alone closes at the end of that
+  day). While the form is closed your message shows instead of it, and a page left open from before is
+  refused when it is sent.
+- **Places per choice**: one line per choice, such as `Saturday workshop | 20`. The form shows "3 places
+  left" next to the choice, switches a full choice off, and refuses it if it is sent anyway. Places are
+  counted from the stored entries, so deleting an entry frees its place.
+
+## More actions
+
+- **Send to a webhook** posts each submission to an address, as JSON or form fields, for automation tools
+  (Zapier, Make, n8n) and other systems. With a secret, each request carries a signature header the
+  receiver can check.
+- **Create a post** turns each submission into a post of any type (a testimonial, a listing, an event), as a
+  draft for you to review by default. Answer tags fill the title and content, custom fields take
+  `key = {answer tag}` lines, and an uploaded photo or the signature can become the featured image.
 
 ## The form library
 

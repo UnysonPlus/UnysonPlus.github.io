@@ -1,0 +1,407 @@
+{
+  "_comment": "SOURCE OF TRUTH for the AI Website Creator roadmap rendered at /ai-dev-kit/ai-website-creator. The AI Website Creator is NOT an extension — it lives in the AI Dev Kit (skills + docs/recipes + the generalized vertical-template library) and drives the plugin's existing fresh-build and Site Converter paths. Task `status` is maintained by `npm run roadmap:site-creator` (scripts/gen-roadmap.mjs), which resolves the source tree via `cloneDir` (the AI Dev Kit push clone) and flips a task to `done` when everything in its `detect` block exists there. Nothing is built yet, so every unpinned task is `planned` — correct before any code exists. Hand-edit title/detail/detect freely; set `pin: true` on a concept task with no single file footprint.",
+  "extension": "ai-website-creator",
+  "cloneDir": "UnysonPlus-AI-Dev-Kit",
+  "versionLabel": "kit",
+  "repo": "https://github.com/UnysonPlus/UnysonPlus-AI-Dev-Kit",
+  "milestones": [
+    {
+      "id": "p1-archetypes",
+      "title": "Phase 1 · The archetype catalogue",
+      "goal": "A curated set of **section archetypes**, each a small recipe that emits **page-builder JSON + Unyson+ shortcodes + Animation Engine effects**, with colour and type coming from **Theme Settings presets** rather than baked onto each element. Start where the demand is — heroes, navbars, feature grids, CTAs, footers, marquees — not at a hundred thin entries.",
+      "tasks": [
+        {
+          "id": "p1-format",
+          "title": "Recipe format",
+          "detail": "One document shape every recipe follows: *when to use it*, *the composition* (the exact shortcode arrangement as a builder-JSON template), *the motion* (which Animation Engine effect pairs with it, and the restrained default), *the tokens* (which Theme Settings presets it expects), and *a live preview* (a link to our own demo page). The format is the contract the composition guide and the create-site skill both read.",
+          "detect": {
+            "files": [
+              "docs/site-creator/recipes/README.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-heroes",
+          "title": "Hero recipes",
+          "detail": "The highest-frequency archetype by a wide margin. A handful of genuinely good heroes (centered, split, editorial-oversized, media-backed), each as a builder-JSON template with restrained motion and preset-driven type.",
+          "detect": {
+            "files": [
+              "docs/site-creator/recipes/heroes.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-navbars",
+          "title": "Navbar recipes",
+          "detail": "Universal header patterns built on the Header/Footer Builder: logo, primary nav from the sitemap, an accessible mobile menu, an active-page state, and the primary CTA.",
+          "detect": {
+            "files": [
+              "docs/site-creator/recipes/navbars.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-feature-grids",
+          "title": "Feature-grid recipes",
+          "detail": "Icon-box and card grids for features, services and benefits, mapped to the real shortcodes with preset-owned card skins (never per-element copies).",
+          "detect": {
+            "files": [
+              "docs/site-creator/recipes/feature-grids.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-ctas",
+          "title": "CTA recipes",
+          "detail": "Conversion blocks — banner CTAs, split CTAs, inverted full-bleed CTAs — with the button skin living on its colour preset.",
+          "detect": {
+            "files": [
+              "docs/site-creator/recipes/ctas.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-footers",
+          "title": "Footer recipes",
+          "detail": "Universal footer patterns on the Footer Builder: brand summary, navigation, the primary conversion path, and legal links once they exist.",
+          "detect": {
+            "files": [
+              "docs/site-creator/recipes/footers.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p1-marquees",
+          "title": "Marquee & logo-strip recipes",
+          "detail": "Moving strips for logos, words and proof, using the native marquee element with reduced-motion handling built in.",
+          "detect": {
+            "files": [
+              "docs/site-creator/recipes/marquees.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p2-styles",
+      "title": "Phase 2 · The style library",
+      "goal": "A curated set of named **design directions** a person can pick from — the \"make the design <style>\" input. A style is not a theme file; it is a mapping from a look to **Theme Settings presets** (palette, fonts, radius, borders, spacing), the **Animation Engine** register that fits it (instant vs. cinematic), and the section treatments that express its personality. We take the *taxonomy and the design thinking* from the public design-prompt libraries; every style is re-authored here in our own vocabulary, because those prompts describe React and Tailwind components, not page-builder output.",
+      "tasks": [
+        {
+          "id": "p2-model",
+          "title": "Style model",
+          "detail": "How a named style resolves to a design system: the Theme Settings preset set it writes, the type pairing, the radius/border/texture rules, and the Animation Engine defaults. One model so every style is described the same way and the picker can list them.",
+          "detect": {
+            "files": [
+              "docs/site-creator/styles/README.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2-map-skills",
+          "title": "Map to the existing aesthetic skills",
+          "detail": "Several directions already exist as design skills — a refined default, minimalist, brutalist, and a high-end \"expensive-agency\" look. A style entry points at the matching skill where one exists, and only carries a new recipe where there is a genuine gap, so the library reuses rather than duplicates.",
+          "pin": true,
+          "status": "planned"
+        },
+        {
+          "id": "p2-seed",
+          "title": "Seed the high-value styles",
+          "detail": "A first set drawn from the demand we can see: a monochrome editorial look (pure black and white, serif hero, zero radius, line textures, inversion hover), a newsprint look, a Swiss/Bauhaus grid look, a modern dark look, a terminal look, a luxury look, and a kinetic/motion-led look. Each is a design direction expressed as Theme Settings presets plus section treatments — authored here, never copied.",
+          "detect": {
+            "files": [
+              "docs/site-creator/styles/monochrome.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p2-picker",
+          "title": "The style picker",
+          "detail": "The intake step that offers the styles as an enumerated choice (the \"dropdown\"), with a *describe-your-own* escape hatch so the curated set is never a cage. In the kit this is a choice in the create-site flow; in a later in-admin or hosted surface it becomes a visual picker with thumbnails — same list, no rework.",
+          "pin": true,
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "p3-composition",
+      "title": "Phase 3 · The composition guide",
+      "goal": "A catalogue of parts is not a site. This is the sequencing layer that turns a chosen style and a set of archetypes into a coherent page, and it slots onto the existing build protocol rather than replacing it: **design system first → chrome (header/footer) → sections, region by region → motion → ship gate.** The generator is no more allowed to skip to \"write sections\" than a careful human build is.",
+      "tasks": [
+        {
+          "id": "p3-guide",
+          "title": "Composition guide",
+          "detail": "The ordering rules, the page-shape heuristics (which archetypes a given page type wants, and in what sequence), and the hand-off into the build protocol's phases and gates.",
+          "detect": {
+            "files": [
+              "docs/site-creator/composition.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p3-shipgate",
+          "title": "Ship-gate wiring",
+          "detail": "Every composed page carries the same accessibility, SEO and performance obligations as everything else we ship — reduced-motion handling, a sane Web Vitals cost, real content in the HTML — checked with the kit's `tools/measure` harness. A page that fails the gate does not ship.",
+          "detect": {
+            "files": [
+              "docs/site-creator/ship-gate.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p4-create-skill",
+      "title": "Phase 4 · The create-site skill",
+      "goal": "The single entry point the person runs in their own Claude Code / Cursor through the AI Dev Kit. One flow, four ways in: a plain-language **brief**, a **reference URL**, a **design reference** (screenshot / image), or a **vertical template**. It gathers a structured spec, then drives the build protocol (or the Site Converter for the URL and design-reference paths) to a finished, editable Unyson+ site.",
+      "tasks": [
+        {
+          "id": "p4-skill",
+          "title": "Skill scaffold",
+          "detail": "A `create-site` skill under the kit's reserved `skills/` folder: a `SKILL.md` that wires the intake, the style picker, the archetype catalogue, the composition guide and the ship gate into one routed flow.",
+          "detect": {
+            "files": [
+              "skills/create-site/SKILL.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-spec",
+          "title": "Site spec",
+          "detail": "A structured description of the site — business, pages, brand, style, sections, SEO, compliance — generalized from the CRM website generator's `site-spec.json`. The spec, not a prose prompt, is the source of truth the build reads.",
+          "detect": {
+            "files": [
+              "skills/create-site/site-spec.schema.json"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-brief",
+          "title": "Input: a brief",
+          "detail": "From a plain-language brief (\"a barber shop, warm and dark, booking-led\") to the spec: propose a sitemap, pick a style and archetypes, fill copy, choose a palette. The fresh-build path — the only input that skips capture.",
+          "detect": {
+            "files": [
+              "skills/create-site/inputs/brief.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-url",
+          "title": "Input: a reference URL",
+          "detail": "Hand the URL to the capture service and Site Converter, which produce a native build; the creator then refines it through the same composition and ship-gate steps. Reuses the converter end to end rather than re-implementing it.",
+          "detect": {
+            "files": [
+              "skills/create-site/inputs/url.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-design-ref",
+          "title": "Input: a design reference",
+          "detail": "From an uploaded screenshot or image: read the look (palette, type, spacing, treatment) into a style and tokens, without copying the reference's content, logos or distinctive layout. Captures the design, builds original content on it.",
+          "detect": {
+            "files": [
+              "skills/create-site/inputs/design-reference.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-vertical",
+          "title": "Input: a vertical template",
+          "detail": "Pick an industry starting point and let the creator customize it — the CRM-generator pattern, generalized (see Phase 6).",
+          "detect": {
+            "files": [
+              "skills/create-site/inputs/vertical.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p4-rules",
+          "title": "Build rules ported from the field",
+          "detail": "The durable rules a good WordPress build follows, as the creator's own: editable builder output (never static HTML or one big Custom HTML block), one universal header and footer, drafts not published until asked, native Unyson+ / theme SEO configured against the real business details, and no invented testimonials, metrics, pricing or claims.",
+          "detect": {
+            "files": [
+              "skills/create-site/build-rules.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p5-content",
+      "title": "Phase 5 · Content maintenance",
+      "goal": "After the site exists, keep it growing. A separate flow for creating a page or post around a topic: research and recommend, wait for approval, draft and optimize for SEO, then publish only on an explicit second approval. Two gates, never one.",
+      "tasks": [
+        {
+          "id": "p5-skill",
+          "title": "Content skill",
+          "detail": "A `content` flow in the kit that uses the existing site and its records as the source of truth, so it never re-asks for business, audience or brand facts already known.",
+          "detect": {
+            "files": [
+              "skills/create-site/content.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p5-research",
+          "title": "Research & recommend (gate 1)",
+          "detail": "Study the sitemap, internal links, the topic and search intent; return page-vs-post, angles, titles, a heading structure, the internal links to add, and the specific expert questions only the owner can answer. Wait for approval before drafting.",
+          "pin": true,
+          "status": "planned"
+        },
+        {
+          "id": "p5-draft",
+          "title": "Draft & optimize",
+          "detail": "Create an editable draft in the current design system, set title, permalink, meta and schema, run the native SEO checks, add genuinely-relevant internal links, and never keyword-stuff or invent facts to satisfy a score.",
+          "pin": true,
+          "status": "planned"
+        },
+        {
+          "id": "p5-publish",
+          "title": "Publish (gate 2)",
+          "detail": "Publish the approved draft only on an explicit go-ahead — do not rewrite it — then verify the public URL, canonical and SEO metadata.",
+          "pin": true,
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "p6-verticals",
+      "title": "Phase 6 · Vertical templates",
+      "goal": "Generalize the CRM website generator into the creator's vertical-template layer, so an industry is a starting point rather than a separate product. The CRM Generator becomes the first vertical; its industry presets become the model for the shared library.",
+      "tasks": [
+        {
+          "id": "p6-format",
+          "title": "Vertical-template format",
+          "detail": "The generalized, non-industry form of the CRM generator's industry presets: pages, copy, forms, the spec and the build wording for a vertical, as data the create-site flow reads.",
+          "detect": {
+            "files": [
+              "docs/site-creator/verticals/README.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6-crm-first",
+          "title": "CRM as the first vertical",
+          "detail": "Fold the CRM website generator in as the first vertical-template provider: its spec and prompts already drive the AI Dev Kit fresh-build path, so it is the proof the pattern works. The CRM pipeline, forms and newsletter CRM come switched on for this vertical.",
+          "pin": true,
+          "status": "planned"
+        },
+        {
+          "id": "p6-more",
+          "title": "Further verticals",
+          "detail": "A handful more, drawn from the generator's existing set (local business, professional service, ecommerce, SaaS), each a vertical template the creator can start from and customize.",
+          "detect": {
+            "files": [
+              "docs/site-creator/verticals/catalogue.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p7-gallery",
+      "title": "Phase 7 · The style gallery",
+      "goal": "A rendered Unyson+ example per style, so a person can see before they pick — and so the gallery doubles as proof of what the creator makes. Built on our own demos network, listed on the demos home, never a copy of anyone else's preview media.",
+      "tasks": [
+        {
+          "id": "p7-demos",
+          "title": "A demo page per style",
+          "detail": "One native Unyson+ page per seeded style, each the same content rendered through that style's presets, so the differences are the design and nothing else.",
+          "detect": {
+            "files": [
+              "docs/site-creator/gallery.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p7-home",
+          "title": "Listed on the demos home",
+          "detail": "Each style demo gets a card on the demos home grid, so it is discoverable and never orphaned, per the house rule for demos.",
+          "pin": true,
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "p8-surface",
+      "title": "Phase 8 · Product surface",
+      "goal": "Make it easy for a non-expert to drive. v1 is the kit itself — install the AI Dev Kit, point your agent at your WordPress, run the create-site flow — with onboarding that explains exactly that. An in-admin wizard and a hosted web app are later surfaces on the same proven engine, not v1.",
+      "tasks": [
+        {
+          "id": "p8-onboarding",
+          "title": "Onboarding",
+          "detail": "The guided \"how to use it\" path: install the kit, connect the agent to the target WordPress, and run the create-site flow — written so someone who has never used Claude Code can follow it.",
+          "detect": {
+            "files": [
+              "docs/site-creator/onboarding.md"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p8-admin",
+          "title": "In-admin wizard (future)",
+          "detail": "The AI Assistant extension drives the whole flow inside wp-admin, so no CLI is needed. A later surface on the same engine.",
+          "pin": true,
+          "status": "planned"
+        },
+        {
+          "id": "p8-hosted",
+          "title": "Hosted app (future)",
+          "detail": "A hosted web app that builds and deploys into the person's WordPress. The biggest surface and the most infrastructure; only once the engine is proven.",
+          "pin": true,
+          "status": "planned"
+        }
+      ]
+    }
+  ],
+  "detected": true,
+  "extensionVersion": null,
+  "generatedAt": "2026-10-20T01:12:17.115Z"
+}

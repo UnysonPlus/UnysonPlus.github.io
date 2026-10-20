@@ -1,0 +1,127 @@
+---
+title: AI Website Creator
+sidebar_label: AI Website Creator
+sidebar_position: 8.5
+description: The phased plan for building beautiful, animated Unyson+ sites from a brief, a URL, a design reference or a vertical template — through the AI Dev Kit, with native page-builder output rather than throwaway React.
+---
+
+import Roadmap, {RoadmapSummary} from '@site/src/components/Roadmap';
+import data from '@site/src/data/ai-website-creator-roadmap.json';
+
+# AI Website Creator
+
+The Site Converter answers *"I have a site, make it Unyson+."* The **AI Website Creator** is the
+other half: *"I have nothing — make me a beautiful, animated site."* It runs through the **AI Dev
+Kit**, which the person installs into their own Claude Code or Cursor, and it drives the framework's
+existing fresh-build and Site Converter paths to a finished, **editable** Unyson+ site.
+
+:::note Status: planned, not started
+Nothing on this page is built yet. It lives here so the plan survives outside a chat log — see
+[the house rule on roadmaps](/decisions). Scope and ordering will move; the framing below is what
+we have agreed so far. (This page was the earlier "Site Generation Roadmap", now named and expanded.)
+:::
+
+<RoadmapSummary data={data} />
+
+<Roadmap data={data} />
+
+## Why this, and why now
+
+Prompt-to-site tools are everywhere, and they nearly all produce the same thing: **React and
+Tailwind** that a WordPress user then has to rebuild by hand. It looks good in a screenshot and is of
+no use on the site they actually run.
+
+That gap is the opportunity. Unyson+ already owns the hard parts — a page builder with a real data
+model, Theme Settings presets, the Header/Footer Builder, and the Animation Engine for motion. A
+creator that emits **our** vocabulary produces a page the person can open in the builder and edit on
+the spot. Nothing is transcribed, nothing is rebuilt. "AI builds it, but you own actual WordPress" is
+the whole pitch, and the prompt-to-React tools cannot say it.
+
+## Four ways in
+
+The creator is one flow with four entry points, so "generate", "convert" and "match this design" are
+inputs to the same builder rather than separate tools:
+
+| Input | What happens |
+| --- | --- |
+| **A brief** | A plain-language description → a sitemap, a style, archetypes, copy and a palette. The pure fresh-build path. |
+| **A reference URL** | Handed to the capture service and Site Converter for a native build, then refined through the same steps. |
+| **A design reference** | A screenshot or image read into a style and tokens — the *look*, not the content, logos or layout. |
+| **A vertical template** | An industry starting point (the CRM-generator pattern, generalized) that the creator customizes. |
+
+## The principle: native output is the moat
+
+A recipe must emit **page-builder JSON + Unyson+ shortcodes + Animation Engine effects**, with design
+tokens applied through **Theme Settings presets** rather than baked onto each element. That one rule
+is what separates this from every prompt-to-React tool, and it is also what keeps the output
+maintainable: change the preset later and every section wearing it changes with it.
+
+It follows that porting an existing prompt library is not possible even in principle — those prompts
+describe React components. What transfers is the *design thinking and the taxonomy*: which archetypes
+matter, and which named looks people actually ask for.
+
+:::caution We take the taxonomy, not the library
+The public design-prompt libraries are **inspiration for categorisation and design direction only**.
+We do not bundle, copy or redistribute any of them: their prompts target React/Tailwind, their
+preview media sits on someone else's CDN, and their entries carry third-party brand names. Every
+recipe and every style we ship is authored here, and every preview points at **our own demo pages**.
+:::
+
+## The style library
+
+A person should be able to say *"make the design monochrome"* and get it. A **style** is not a theme
+file — it is a mapping from a named look to **Theme Settings presets** (palette, fonts, radius,
+borders, spacing), the **Animation Engine** register that fits it (instant vs. cinematic), and the
+section treatments that express its personality. "Monochrome" becomes a pure black-and-white palette,
+a serif display face, zero radius, hairline and heavy rules, line textures, and inversion-on-hover —
+all as presets and shortcode options, not as copied component code.
+
+Several directions already exist as design skills (a refined default, minimalist, brutalist, and a
+high-end look); a style entry reuses the matching skill where one exists and only carries a new recipe
+where there is a genuine gap. The picker offers the styles as a choice, with a *describe-your-own*
+escape hatch so the set is never a cage. Each style is proved by its **demo page** (Phase 7): a style
+is not done until it renders.
+
+## Order of work
+
+1. **The archetype catalogue** — the high-frequency sections (heroes, navbars, feature grids, CTAs,
+   footers, marquees) as builder-JSON recipes.
+2. **The style library** — named design directions as preset mappings, seeded from the looks people
+   ask for, reusing our aesthetic skills where they fit.
+3. **The composition guide** — the sequencing layer, wired onto the existing build protocol (design
+   system first → chrome → sections, region by region → motion → ship gate).
+4. **The create-site skill** — the single entry flow with the four inputs, plus the durable build
+   rules (editable output, one universal header/footer, drafts not published until asked, native SEO,
+   no invented proof).
+5. **Content maintenance** — research → approve → draft → optimize → approve → publish, two gates.
+6. **Vertical templates** — generalize the CRM website generator; the CRM is the first vertical.
+7. **The style gallery** — one native Unyson+ demo per style, listed on the demos home.
+8. **Product surface** — onboarding for the kit flow now; an in-admin wizard and a hosted app later.
+
+## How this page stays current
+
+Status is not ticked by hand. `src/data/ai-website-creator-roadmap.json` lists every task with a
+`detect` block naming the files that make it real, and `scripts/gen-roadmap.mjs` checks them against
+the **AI Dev Kit** source tree (the creator lives in the kit, not in an extension):
+
+| Result | Status |
+| --- | --- |
+| Every file and symbol found | **Done** |
+| Some found, some missing | **In progress** |
+| None found | **Planned** |
+
+```bash
+npm run roadmap:site-creator            # scan and rewrite the JSON
+npm run roadmap:site-creator -- --dry   # report only, write nothing
+npm run roadmap:site-creator -- --check # exit 1 if stale
+```
+
+Tasks with no single-file footprint (a principle, a mapping, a gate) are pinned, so the scan leaves
+them as written.
+
+## What this is not
+
+- Not a React or Tailwind generator, and not a port of anyone else's prompt library.
+- Not a replacement for the Site Converter — conversion and generation are two entry points to the
+  same builder.
+- Not a licence to bundle third-party preview media, prompts or brand names. See the caution above.

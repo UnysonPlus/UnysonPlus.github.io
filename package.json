@@ -1,6 +1,6 @@
 {
   "name": "unysonplus-site",
-  "version": "0.6.54",
+  "version": "0.6.55",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
@@ -18,7 +18,8 @@
     "roadmap:vi": "node scripts/gen-roadmap.mjs src/data/visitor-insights-roadmap.json",
     "roadmap:crm": "node scripts/gen-roadmap.mjs src/data/crm-roadmap.json",
     "roadmap:membership": "node scripts/gen-roadmap.mjs src/data/membership-roadmap.json",
-    "roadmap:forms": "node scripts/gen-roadmap.mjs src/data/forms-roadmap.json"
+    "roadmap:forms": "node scripts/gen-roadmap.mjs src/data/forms-roadmap.json",
+    "roadmap:site-creator": "node scripts/gen-roadmap.mjs src/data/ai-website-creator-roadmap.json"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.1",

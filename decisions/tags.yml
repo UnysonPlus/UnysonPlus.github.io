@@ -157,3 +157,8 @@ admin:
   label: Admin
   permalink: /admin
   description: The WordPress admin screens Unyson+ draws, and the frame around them
+
+site-creator:
+  label: Site creator
+  permalink: /site-creator
+  description: The AI Website Creator — generating Unyson+ sites from a brief, URL, design reference or vertical template

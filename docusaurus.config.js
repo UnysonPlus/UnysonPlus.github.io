@@ -273,6 +273,8 @@ const config = {
           {from: '/extensions/crm/roadmap', to: '/crm/roadmap'},
           {from: '/extensions/crm/research', to: '/crm/research'},
           {from: '/extensions/membership', to: '/membership'},
+          // The "Site Generation Roadmap" was named and expanded into the AI Website Creator.
+          {from: '/ai-dev-kit/site-generation-roadmap', to: '/ai-dev-kit/ai-website-creator'},
         ],
         // The Manual moved from /docs/* to /* — 301 every old Manual URL to its
         // new root path. Only Manual pages are remapped; the other doc instances

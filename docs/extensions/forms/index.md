@@ -14,6 +14,26 @@ description: "Free WordPress drag-and-drop form builder: conditional logic, stor
 
 This extension adds the possibility to create a forms (for e.g. a contact form). Use the drag & drop form builder to create any form you'll ever want or need.
 
+## Field types
+
+Besides text, email, number, website, dropdown, single and multiple choice, date and time, rating,
+file upload, hidden values and consent boxes:
+
+- **Name**: one "Full name" box, or first and last name side by side.
+- **Phone**: brings up the number keypad on phones and accepts the usual international formats.
+- **Address**: street, an optional second line, city, an optional region, postcode and country; the
+  country can be filled in for the visitor.
+- **Section**: a heading and a short explanation between fields.
+- **Page Break**: splits a long form into steps, with a progress bar and Back / Next. Each step is checked
+  before moving on, and a problem found when the form is sent opens the step it is on.
+- **Range Slider**: pick a number by dragging, with its value shown (for example "$450").
+- **Picture Choices**: options shown as image cards, one or several.
+- **Ranking**: put options in order with Move up / Move down.
+- **Survey Grid**: several statements answered on one scale, such as "Strongly disagree" to "Strongly agree".
+- **Turnstile, hCaptcha, reCAPTCHA**: human checks.
+
+Every answer, however many boxes it uses, is stored and emailed as one readable line.
+
 ## The form library
 
 Build a form once and show it anywhere. **Unyson+ → Forms** lists your saved forms with how many fields

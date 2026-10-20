@@ -3,8 +3,8 @@
   "extension": "forms",
   "cloneDir": "UnysonPlus-Forms-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Forms-Extension",
-  "extensionVersion": "2.0.70",
-  "generatedAt": "2026-10-19T17:38:35.828Z",
+  "extensionVersion": "2.0.71",
+  "generatedAt": "2026-10-20T00:57:29.590Z",
   "detected": true,
   "milestones": [
     {
@@ -419,50 +419,50 @@
         {
           "id": "p4-steps",
           "title": "Multi-step forms",
-          "detail": "A page-break field splits a form into steps with a progress bar, Back and Next. Each step is checked before moving on, and conditional rules can skip a step.",
+          "detail": "A Page Break field splits a form into steps with a progress bar, Back and Next. Each step is checked before moving on, an error found on sending opens the step it belongs to, and without JavaScript the whole form shows at once with each break as a heading.",
           "detect": {
             "files": [
               "includes/option-types/form-builder/items/page-break/class-fw-option-type-form-builder-item-page-break.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-name",
           "title": "Name field",
-          "detail": "First and last name in one field, stored separately so the CRM and emails can use each part.",
+          "detail": "Full name in one box, or first and last name side by side, with the right autofill on each.",
           "detect": {
             "files": [
               "includes/option-types/form-builder/items/name/class-fw-option-type-form-builder-item-name.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-phone",
           "title": "Phone field",
-          "detail": "A country code and number, checked and stored in one international format.",
+          "detail": "A phone box that brings up the number keypad, accepts the usual international formats and fills in from the browser.",
           "detect": {
             "files": [
               "includes/option-types/form-builder/items/phone/class-fw-option-type-form-builder-item-phone.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-address",
           "title": "Address field",
-          "detail": "Street, city, region, postcode and country, with the parts stored separately.",
+          "detail": "Street, an optional second line, city, an optional region, postcode and country, each with its own autofill; the country can be filled in for the visitor.",
           "detect": {
             "files": [
               "includes/option-types/form-builder/items/address/class-fw-option-type-form-builder-item-address.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-content",
@@ -473,8 +473,8 @@
               "includes/option-types/form-builder/items/section/class-fw-option-type-form-builder-item-section.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-repeater",
@@ -491,7 +491,7 @@
         {
           "id": "p4-choices",
           "title": "Picture choices, ranking, sliders and grids",
-          "detail": "Choices shown as images, drag-to-rank options, a range slider, and a Likert grid (several statements rated on one scale) for surveys.",
+          "detail": "Choices shown as image cards, a ranking with Move up / Move down buttons (or dropdowns without JavaScript), a range slider showing its value, and a survey grid (several statements on one scale) that stacks on phones.",
           "detect": {
             "files": [
               "includes/option-types/form-builder/items/image-choice/class-fw-option-type-form-builder-item-image-choice.php",
@@ -500,8 +500,8 @@
               "includes/option-types/form-builder/items/likert/class-fw-option-type-form-builder-item-likert.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/4"
+          "status": "done",
+          "progress": "4/4"
         },
         {
           "id": "p4-prefill",

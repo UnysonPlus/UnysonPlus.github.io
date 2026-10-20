@@ -32,6 +32,7 @@ file upload, hidden values and consent boxes:
 - **Survey Grid**: several statements answered on one scale, such as "Strongly disagree" to "Strongly agree".
 - **Repeating Group**: a few fields the visitor can fill in again with "Add another guest", between a
   minimum and a maximum you set. Saved as "1) Name: Ana, Age: 30; 2) Name: Leo, Age: 4".
+- **Payment Method**: lets the payer choose between card, PayPal and paying later.
 - **Product**: something with a price, either one item ("Registration, $50") or a choice of options with
   their own prices ("Half day $90 / Full day $160"). It can be always included, added with a tick, or
   bought in a typed quantity.
@@ -70,11 +71,22 @@ Every answer, however many boxes it uses, is stored and emailed as one readable 
 - **Take payment** (Contact Form → Settings → Actions) charges the total of the form's Products, Amounts
   and any Calculated field marked "add it to the total to pay". Each payment is kept with its entry under
   Form Entries, with a reference such as `F-7K3QD`, its method and its status.
-- **Pay later** is the first way to pay: a bank transfer, pay on arrival or an invoice. The visitor sees
-  your instructions; you mark the payment paid (or cancelled, or refunded) on the entry. Card payments
-  are next on the [roadmap](/extensions/forms/roadmap).
+- **Ways to pay:**
+  - **Card** through Stripe and **PayPal**: after sending the form, the payer pays on Stripe's or PayPal's
+    own secure page (no card details touch your site) and comes back to your page, where a note confirms
+    the payment. If they stop halfway, the note says nothing was charged and offers a link to try again.
+    Each payment updates by itself when the service confirms it, fails or is refunded, and you can refund
+    from the entry.
+  - **Pay later**: a bank transfer, pay on arrival or an invoice. The visitor sees your instructions; you
+    mark the payment paid (or cancelled, or refunded) on the entry.
+- **Let the payer choose** with a **Payment Method** field (Card, PayPal, Pay later). Only the ways that are
+  set up are shown.
+- **Keys** go in Forms Settings → Payments: Stripe's secret key and webhook signing secret, PayPal's Client
+  ID, Secret and Webhook ID (the page shows the webhook address to paste into each service). If Membership
+  already has keys, forms use those when these are empty.
 - **Answer tags** for the success message and emails: `{order_total}`, `{order_summary}`, `{payment_ref}`,
-  `{payment_method}`, `{payment_instructions}`.
+  `{payment_method}`, `{payment_instructions}`, and `{payment_link}` (a link to pay by card later, handy in
+  a Pay later email).
 - The **currency** is set once for every form in Forms Settings → Payments.
 - The form-type picker has an **Order form** and a **Donation** form to start from.
 

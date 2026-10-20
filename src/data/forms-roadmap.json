@@ -3,8 +3,8 @@
   "extension": "forms",
   "cloneDir": "UnysonPlus-Forms-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Forms-Extension",
-  "extensionVersion": "2.0.74",
-  "generatedAt": "2026-10-20T02:30:48.125Z",
+  "extensionVersion": "2.0.75",
+  "generatedAt": "2026-10-20T02:43:22.086Z",
   "detected": true,
   "milestones": [
     {
@@ -585,8 +585,8 @@
               "includes/payments/gateways/class-fw-forms-gateway-paypal.php"
             ]
           },
-          "status": "in-progress",
-          "progress": "2/4"
+          "status": "done",
+          "progress": "4/4"
         },
         {
           "id": "p5-coupons",

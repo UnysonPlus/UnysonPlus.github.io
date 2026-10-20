@@ -390,6 +390,12 @@
           "status": "planned"
         },
         {
+          "id": "p9-flow-lines",
+          "title": "Flow lines",
+          "detail": "A bundle of glowing curves between two layers, made in one go: pick the start and end layers, how many lines, how far they fan out and squeeze together, their gradient colours and how strongly they glow (a soft halo under a bright core, brightening where lines cross). The lines draw themselves, light pulses or icons can flow along them, and they stay attached when either layer moves, so they work with the camera and with pinned layers. For showing data, work or ideas passing from one thing to another.",
+          "status": "planned"
+        },
+        {
           "id": "p9-repeat",
           "title": "Repeat from a list",
           "detail": "Design one item (a row with a badge, a title and a subtitle, an app card, a step card), give it a list of entries, and get one copy per entry, laid out and staggered. Change the list and every copy updates; steps can point at an item by its position.",

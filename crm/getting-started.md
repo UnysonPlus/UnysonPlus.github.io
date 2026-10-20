@@ -12,6 +12,13 @@ The Unyson+ CRM runs inside your own WordPress site: no outside service to sign 
 fees. This page takes you from a fresh install to a working CRM: turning it on, picking the parts you need,
 adding your team and getting your first contacts in.
 
+:::tip Building a new site for one industry?
+The free [CRM Website Generator](https://crm.unysonplus.com/) writes the whole build (pages, lead forms, pipeline and CRM) as a prompt
+for your AI agent, with ready-made starting points such as a [real estate CRM for realtors](https://crm.unysonplus.com/real-estate-crm-website/)
+and a [salon and spa CRM](https://crm.unysonplus.com/salon-spa-crm-website/). See all the industries in the
+[CRM overview](./index.md#start-from-your-industry).
+:::
+
 ## 1. Turn the CRM on
 
 1. In WordPress, open **Unyson+ → Extensions** and activate **CRM**.

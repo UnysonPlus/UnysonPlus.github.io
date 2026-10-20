@@ -92,6 +92,28 @@ beginner is never faced with tools they do not use. A module that is off loads n
 | **Automations** | Triggers (a form, a tag, a date, a deal stage, a purchase) start a flow of steps: send an email, wait, branch, change tags, move a deal, create a task, call a webhook |
 | **Scoring and site activity** | Points for what contacts do, and the pages known contacts read, so the warmest leads come first |
 
+## Start from your industry
+
+The free [CRM Website Generator](https://crm.unysonplus.com/) builds a whole CRM website for one kind of business: the pages, the
+lead forms, the pipeline stages and the CRM set up to match. Pick your industry, choose what you need, and
+copy the prompt for your AI agent.
+
+- [Real estate CRM website](https://crm.unysonplus.com/real-estate-crm-website/): a free CRM for realtors, agent teams and
+  brokerages, with listings, showing requests and home valuations
+- [Home services CRM website](https://crm.unysonplus.com/home-services-crm-website/): quote requests, service areas and recent jobs for
+  plumbers, electricians, roofers and other trades
+- [Dental and medical clinic CRM website](https://crm.unysonplus.com/dental-clinic-crm-website/): appointment requests, new patient
+  information and check-up reminders
+- [Law firm CRM website](https://crm.unysonplus.com/law-firm-crm-website/): practice areas, consultation requests and an intake pipeline
+- [Gym and fitness studio CRM website](https://crm.unysonplus.com/gym-crm-website/): classes, memberships and free trial sign-ups
+- [Salon and spa CRM website](https://crm.unysonplus.com/salon-spa-crm-website/): services and prices, booking requests and rebooking
+  reminders
+- [Recruitment agency CRM website](https://crm.unysonplus.com/recruitment-agency-crm-website/): a job board, applications with CV
+  upload and vacancy requests from employers
+- [Event and wedding venue CRM website](https://crm.unysonplus.com/event-venue-crm-website/): date enquiries, venue tours and a
+  pipeline to deposit paid
+- [Any business](https://crm.unysonplus.com/): start from a description of your business
+
 ## How it fits with the rest of Unyson+
 
 - **Other extensions.** The CRM offers a versioned PHP API, a catalogue of events and REST endpoints, so

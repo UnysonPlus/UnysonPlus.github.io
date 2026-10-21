@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import {useColorMode} from '@docusaurus/theme-common';
 
@@ -41,11 +41,14 @@ export default function KineticScene({src, light, caption}) {
   const {colorMode} = useColorMode();
   const dark = useBaseUrl(src);
   const bright = useBaseUrl(light || src);
+  // The page is pre-rendered without knowing the reader's theme: pick the scene once in the browser.
+  const [ready, setReady] = useState(false);
+  useEffect(() => setReady(true), []);
   const url = colorMode === 'light' && light ? bright : dark;
   return (
     <figure style={{margin: '0.5rem 0 1.5rem'}}>
       <div style={{aspectRatio: '16 / 9'}}>
-        <Scene key={url} url={url} />
+        {ready && <Scene key={url} url={url} />}
       </div>
       {caption && <figcaption style={{fontSize: '0.875rem', opacity: 0.75, marginTop: '0.5rem'}}>{caption}</figcaption>}
     </figure>

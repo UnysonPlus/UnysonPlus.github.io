@@ -283,29 +283,29 @@
               "skills/create-site/content.md"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p5-research",
           "title": "Research & recommend (gate 1)",
-          "detail": "Study the sitemap, internal links, the topic and search intent; return page-vs-post, angles, titles, a heading structure, the internal links to add, and the specific expert questions only the owner can answer. Wait for approval before drafting.",
+          "detail": "Study the sitemap, internal links, the topic and search intent; return page-vs-post, angles, titles, a heading structure, the internal links to add, and the specific expert questions only the owner can answer. Wait for approval before drafting. **Landed in skills/create-site/content.md, step 1.** Returns page-vs-post with the reason, the angle (including \"improve the page you already have\" when that is the honest answer), title options, the heading structure, the internal links in both directions, and the expert questions only the owner can answer — then waits. A draft written before those answers is generic content with their name on it.",
           "pin": true,
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p5-draft",
           "title": "Draft & optimize",
-          "detail": "Create an editable draft in the current design system, set title, permalink, meta and schema, run the native SEO checks, add genuinely-relevant internal links, and never keyword-stuff or invent facts to satisfy a score.",
+          "detail": "Create an editable draft in the current design system, set title, permalink, meta and schema, run the native SEO checks, add genuinely-relevant internal links, and never keyword-stuff or invent facts to satisfy a score. **Landed in skills/create-site/content.md, step 2.** Editable builder content in the existing design system, with the native seo extension fields set as discrete meta keys (_fw_seo_title / _fw_seo_description / _fw_seo_canonical / the og and twitter pairs), where an empty value deletes the row and a cleared template falls through to auto. Explicitly forbids keyword-stuffing and inventing facts to satisfy a score — if the piece needs a fact nobody has, go back and ask.",
           "pin": true,
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p5-publish",
           "title": "Publish (gate 2)",
-          "detail": "Publish the approved draft only on an explicit go-ahead — do not rewrite it — then verify the public URL, canonical and SEO metadata.",
+          "detail": "Publish the approved draft only on an explicit go-ahead — do not rewrite it — then verify the public URL, canonical and SEO metadata. **Landed in skills/create-site/content.md, step 3.** Publishes only the draft that was read — no tidying between approval and publishing, because then what goes live is not what was approved — and verifies the live URL, permalink, rendered title and description, canonical, both link directions, and that no staging noindex survived.",
           "pin": true,
-          "status": "planned"
+          "status": "done"
         }
       ]
     },
@@ -409,5 +409,5 @@
   ],
   "detected": true,
   "extensionVersion": null,
-  "generatedAt": "2026-10-21T13:00:34.897Z"
+  "generatedAt": "2026-10-21T13:06:08.985Z"
 }

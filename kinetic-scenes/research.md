@@ -1,5 +1,5 @@
 ---
-sidebar_position: 91
+sidebar_position: 21
 title: Research
 description: What open-source animation editors and HTML video tools already exist, what each offers Kinetic Scenes, and why the Studio builds its own editor around a GSAP player.
 ---

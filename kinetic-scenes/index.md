@@ -1,566 +1,71 @@
 ---
 sidebar_position: 1
 slug: /
-title: "Kinetic Scenes — timeline motion graphics for the web"
-sidebar_label: "Kinetic Scenes"
-keywords: [html animation editor, gsap timeline editor, web motion graphics, animated hero section, kinetic typography html, three.js animation editor, ai animation generator]
-description: "The plan for Unyson+ Kinetic Scenes: a browser editor for timeline motion graphics, with drag-and-drop presets, that exports plain HTML for website heroes and sections rather than video."
+title: "Kinetic Scenes — timeline motion graphics for the web and for video"
+sidebar_label: "Overview"
+keywords: [html animation editor, gsap timeline editor, web motion graphics, animated hero section, kinetic typography html, short form video effects, ai video editor, motion graphics for reels]
+description: "Unyson+ Kinetic Scenes is a browser editor for timeline motion graphics: drag presets onto a timeline, export plain HTML for website heroes and sections, or render video for Reels, TikTok, Shorts and YouTube."
 ---
 
 # Kinetic Scenes
 
-> **Alpha, live at [kinetic-scenes.unysonplus.com](https://kinetic-scenes.unysonplus.com/).** The player,
-> the responsive stage, the editor, export, the Unyson+ element and AI assist (phases 1 to 5) are built. Alpha means features are still
-> missing and the scene file format may change between versions; exported pages and embeds keep working
-> regardless. This page records the plan and the decisions behind
-> it; the [roadmap](./roadmap.mdx) tracks each task, and the [research](./research.md) page covers what
-> already exists and what we borrow from it.
-
-Kinetic Scenes is a browser editor for motion graphics: big kinetic type, shapes, images and 3D, laid
-out on a timeline the way a video editor lays out clips. You drag a preset onto the timeline, change its
-text, image or timing, and watch it play. The difference from a video tool is the output: the Studio
-exports **plain HTML**, not an MP4. The result plays live in the page, stays sharp at any size, and weighs
-kilobytes instead of megabytes.
-
-It lives at **`kinetic-scenes.unysonplus.com`**. The first target is **website heroes and sections**,
-dropped into a Unyson+ page or embedded on any site.
-
-## Two ways to make a scene
-
-The Studio opens on a demo: a 38-second Unyson+ promo in six acts, each a group on the timeline, that uses every
-preset. Open a group (double-click) to see how an act is built. **New** in the top bar starts an empty scene with the
-same screen sizes and fonts; Undo brings the previous one back.
-
-- **By hand.** Drag presets onto the timeline. Their defaults follow timing measured from professional motion
-  design, and **Check scene** (the Check tab) points out what could be better while you work: text that leaves
-  before it can be read, text too small on a screen size, text off the stage or sitting on other text, two clips
-  fighting over one layer, and long stretches where nothing moves. Most items have a one-click fix, and
-  **Apply all** runs every sure fix at once.
-- **With AI, then by hand.** The **✦ AI assist** button (bottom right of the stage) opens a chat with the AI
-  Dev Kit. Ask for a new scene, a change to the whole scene, or a change to the layers you selected. Every answer
-  is one undo step with a **Go back to before this** link and a Check scene count; **Fix with AI** in the Check
-  tab sends its findings to the AI. From there you keep refining by hand, with the same tools as above.
-
-The rules the AI follows and the rules Check scene measures are the same set, so a scene the AI makes starts
-close to clean.
-
-### The preset library
-
-Sixty-six presets in nine groups. **Text:** Rise, Slam, Stretch, Scramble, Typewriter (with an optional typing
-**caret**), Blur in, Flip, Tracking, **Carry in** (the first word arrives from far and each next one travels less),
-**Count up** (a number counts to its value, keeping its prefix, separators and suffix; a clock like "0:45" counts in
-minutes and seconds) and **Change text** (the words swap for new ones on cue, rolling, sliding, fading or blurring;
-chain several to step through "1 / 10", "2 / 10"…; a pill around the words resizes smoothly to the new ones).
-**Reveal and exit:** Fade, Wipe, **Soft wipe**, Iris, Slide (with optional **motion blur**), Grow, **Blinds**,
-**Stack** (drops onto a pile like a card) and **Draw** (a line or flow lines drawing themselves). **Move and
-scale:** Pop, Zoom, Spin, **Turn** (3D), **Scroll** (a tall screenshot scrolling in its frame; **Repeat** makes it
-endless), **Progress bar**, **Follow path** (travels along a line, with an optional fading trail), **Morph into**
-(glides into another layer's place, size, colour and corners and hands over to it), Keyframes, Custom code.
-**Emphasis:** Wave, Pulse, Shake, Float, Recolour, **Sheen**, **Select box** (a coloured box with corner handles
-around a word or two), **Glow** (a neon glow, optionally flickering on), **Burst** (sparks, shards, dots or rings on
-a hit) and **Make solid** (a dashed outline closes up). **Ambient and backgrounds:** **Drift**, **Gradient flow**,
-**Particles**, **Marching outline** and **React to music** (a glow, scale or brightness that breathes with the
-music's loudness or bass). **Cursor and tours:** **Move to**, **Click**, **Spotlight**, **Callout** and **Before and after** (see Product tours below). **Code** (for Code layers): **Type code**, **Change code**, **Highlight code**, **Code
-note** and **Run code**. **Transitions** between groups: Slash, Flash, Dip to colour, **Whip pan** (a
-velocity-matched camera swing, optionally with a light streak on the cut), **Light streak**, Zoom through and
-Glitch. **3D:** Spin 3D, Tumble in, Orbit and Camera push, for 3D layers.
-Hover a preset in the library to see it play.
-
-### Lines, flow lines and diagrams
-
-Three layer types draw with lines, added from the timeline (**+ Line**, **+ Diagram**, **+ Flow**):
-
-- **Line:** a curve, an arrow, an underline swoosh or any SVG path. Its coordinates run from 0 to 100 across and down
-  its box, so it stretches with the box while its width stays the same. Choose a ready-made shape or paste path data;
-  give it arrowheads, a glow or dashes; add **Draw** to draw it on. Any layer can travel along it with **Follow path**
-  (and leave a fading **trail**, for a comet).
-- **Flow lines:** a bundle of glowing curves joining two layers, worked out every frame from where those two layers are,
-  so they stay attached however either one moves (with the camera too). Set how many lines, how far they spread at the
-  ends and squeeze in the middle, how much they sway, their colours and glow, and light **pulses** running along them.
-  Draw them on with **Draw**; send an icon along one with **Follow path**.
-- **Diagram:** nodes and connections as data, for flowcharts, architecture diagrams and branch graphs. Nodes are boxes,
-  pills, circles, dots (a commit with its label beside it) or **value** boxes (a variable's name above, its value inside).
-  Each node and connection can appear at its own moment (a node pops in, its connections draw themselves), nodes can
-  glide to new places with their connections bending along, and a **tag** (like HEAD) can travel from node to node.
-
-### Code, lists, captions and pictures in layers
-
-- **Code** (**+ Code**): an editor window or a terminal showing real code with syntax colours and line numbers,
-  drawn from its clips. **Type code** types lines in, in a natural rhythm with a caret (and an optional
-  autocomplete popup). **Change code** turns the code into a new version the way a person edits: each changed
-  part is selected and deleted, the new text typed in its place, new lines opened with Enter first, and the lines
-  below slide to make room. **Highlight code** marks lines or one word, **Code note** puts a pill beside a line,
-  **Run code** presses Run and shows the output. Give the whole new version; only what differs is touched.
-- **Lists** (**+ List**, or **Turn into a list** on a group): one designed row or card copied for every entry
-  of a list, with `{{field}}` placeholders in its words, laid out in a row, a column or a grid and staggered.
-  Change the list and every copy follows. **Unpack into layers** turns it back into ordinary layers.
-- **Captions** (**+ Captions**): the words of a transcribed voice-over, a few at a time, with the word being said
-  lit up (or every word said so far), in your type and colours.
-- **Pills on text:** any text layer can carry a pill or tag sized to its words (a status label, a badge).
-- **Split into layers** (on an image layer, through the AI Dev Kit): the picture becomes stacked transparent
-  layers in exactly the same place. With your own fal.ai key an AI splits it into several layers; without one,
-  the kit cuts the subject out on your computer and fills the background in behind it. Each layer gets a
-  **depth**: any layer can, from -1 (far) to 1 (near), and with a camera pan or zoom near layers move and grow
-  more than the rest, so a flat photo becomes a 2.5D shot.
-
-### Product tours
-
-Show a product working from screenshots, without a screen recording:
-
-- **Cursor** (**+ Cursor**): a pointer for tours, drawn big enough to read in a video. Its position is where its tip
-  starts, so put it off the stage and it enters. **Move to** sends it to a layer you pick (a point on it, or a point
-  on the stage to leave) along a gentle curve with a pointer's easing, and over a link or a button it turns into a
-  pointing hand. **Click** presses: the cursor dips, a ring ripples out and the button under it dips, on one frame.
-  The cursor always draws on top.
-- **Spotlight** dims everything but a layer; **Callout** points at it with a labelled pill. **Focus the camera on
-  it** (in a layer's settings) adds camera keys that glide in to frame the layer, hold and glide back.
-- **Cut a piece out** (on an image layer): a button, panel or row of a screenshot becomes its own layer in exactly
-  the same place, ready to press, slide or glow, and the gap behind it is filled from its surroundings.
-- **Before and after** swaps a screenshot for a second one of the same screen on the frame a click lands.
-- **Steps** (in the scene's settings): a walkthrough written as a list of steps, each saying what changes. The
-  Studio turns them into clips and markers; AI assist can write them.
-- **Hotspots:** a link can **play from** a marker instead of leaving the page, so a visitor chooses what to see
-  next. **Hover** effects (lift, grow, glow, brighten, a shine, an underline, a colour change) answer visitors with a
-  mouse; phones just follow the link.
-- **Layouts by shape:** besides the layouts by width, **Add an ultrawide layout** gives a stage that fills a very
-  wide window a layout of its own, so the content can spread out.
-
-### Music
-
-Select a music clip and **Find the beats**: the Studio works out the tempo, the beat grid and the strongest moments
-right in the browser, and marks them on the clip in the timeline (strong moments taller). **Snap reveals to the
-beat** moves a few big reveals up to 0.15 s so they land on a strong moment, and smaller entrances up to 0.10 s onto
-a beat. AI assist gets the same cues, and **React to music** lets one or two things breathe with it.
-
-Sound is mixed to sound designed: a sound attached to a clip's end (a landing), and any big hit or riser, starts
-early by its own attack so the hit lands on the frame; the same sound repeated within two seconds gets softer each
-time; music is lowered under a voice-over while it speaks; and video exported through the AI Dev Kit is mixed to
--14 LUFS with peaks under -1 dB. In scenes made from a voice-over, each text reveal is moved to finish on the word
-it shows.
-
-### Sound
-
-**+ Audio** adds a voice-over, music or a sound effect. Audio sits on its own timeline rows with a waveform, so you
-can line up words and motion by eye; drag to move it, drag an edge to trim, and set volume and fades in the Inspector.
-On a web page, a scene with sound starts muted with a small **Tap for sound** button, because browsers block sound
-until the visitor interacts. Presentations and full screen play sound from the first click, and video exports mix it
-in. Next on the roadmap: styles, and a scene made automatically from your voice-over.
-
-### Words (transcribing a voice-over)
-
-Select a voice-over on the timeline and click **Transcribe** in its **Words** section. Speech recognition (whisper.cpp)
-runs on your own computer through the AI Dev Kit: nothing is uploaded, and after a one-time download it works offline.
-There are two speech models: **Fast** (148 MB, about ten seconds per minute of audio) for clear voice-overs, and
-**Accurate** (488 MB) for accents, noise and music, which also adds punctuation.
-
-Every word gets its time and an **emphasis** score, measured from the recording itself: how loud, how high and how long
-it is said compared with the speaker's own average. The strongest words are shown in bold, the delivery is summarised
-(pace in words a minute, and whether it sounds calm, conversational, energetic or expressive), and the words appear along
-the clip's waveform on the timeline. Click a word to jump there. The words stay with the clip when you move or trim it,
-and they are what **making a scene from a voice-over** builds on.
-
-### Make a scene from a voice-over
-
-Once a voice-over has its words, its **Words** section offers **Make a scene from this voice-over** (it needs AI assist,
-through the AI Dev Kit). The Studio groups the words into beats, the phrases said between pauses and sentence ends,
-and AI assist builds kinetic type on them:
-
-- each beat's **key words** (not captions of every word) enter just before they are said and give way to the next beat;
-- the **strongest words** land as the big moments: the largest type or the accent colour, a slam or pop exactly on the
-  word, with a sound effect;
-- **pauses** become transitions, and the **delivery** sets the motion: snappy for an energetic voice, gentle for a calm one;
-- the style picked in AI assist sets the colours, fonts and personality.
-
-The result is an ordinary scene: every layer and clip can be changed by hand, Undo brings back what you had, and Check
-scene reviews it (text the voice is saying at that moment is read by ear, so it only needs to stay up while it is said).
-
-### Sound effects
-
-The **Sounds** tab of the library holds 25 built-in sounds in five groups: movement (whoosh, swish, slide, spin),
-clicks and taps (pop, click, tick, tap, typing, beep), hits and drops (impact, thud, sub hit, drop, glitch), tones and
-chimes (chime, sparkle, success, notify) and textures and swells (riser, swell, shimmer, reveal). The player makes them
-itself from a few lines of code, so there is nothing to download or license, and they sound the same in the Studio, on
-your pages and in video exports. Click one to hear it.
-
-- **On a clip.** Select a clip and pick a sound in its **Sound** section (or click **Add** in the Sounds tab). The sound
-  plays when the clip starts, or on its last frame for a landing, and moves with the clip whenever you move or stretch
-  it. Offset, volume and pitch fine-tune it; a small speaker on the clip shows it has one.
-- **Suggested sounds.** **Add suggested sounds** gives a scene's key moments the sound that suits each preset (a slam
-  gets an impact, a wipe a swish, a typewriter typing), about one every second and a half at most, so the sound
-  supports the motion instead of piling up. Change or remove any of them afterwards.
-- **On its own.** With no clip selected, **Add** puts the sound on the audio rows at the playhead, like a sound file.
-
-AI assist uses the same sounds when you ask for a scene with sound, a video or an ad.
-
-### Search engines and screen readers
-
-A scene shows its words a few at a time, so every scene also carries them once as plain text, in reading order: the
-headline as a heading, each act's headline one level below, the rest as paragraphs. Search engines index it and screen
-readers read it, while visitors see the animation (screen readers skip the animated copy, so nothing is read twice). The
-scene's **Search engines and screen readers** settings show exactly what is written, set the headline's level (Heading 2
-by default; Heading 1 only when the scene is the page's main title) and can mark a scene **decorative** (no text at all).
-The Kinetic Scene element in WordPress writes this text into the page's HTML, and the Studio's embed code and HTML export
-include it too.
-
-### Links and the ending
-
-Any layer can be a link: select it and give it an address in its **Link** settings (a web address, a page on the same
-site such as `/download`, an anchor such as `#pricing`, `mailto:` or `tel:`), optionally opening in a new tab. For a
-button, group its shape and its label and put the link on the **group**, so the whole button is clickable. A shape has
-no words of its own, so give it a **Link text**.
-
-Links work on the page, in the embed code and in full screen (F); while you edit, a click still just selects the layer.
-Each link is also a real link in the scene's text for search engines and screen readers, so keyboard users reach it
-with Tab (the layer shows a focus ring on the stage) and search engines follow it. Only web, same-site, anchor, email
-and phone addresses are accepted; anything else is left out.
-
-**At the end** (the scene's Playback settings) decides what happens when the scene finishes:
-
-- **Stop on the last frame.** It plays once and holds.
-- **Loop everything.** It starts over, with an optional pause between loops.
-- **Loop the last part.** It plays once from the start, then repeats only from **Loop from** to the end, so a closing
-  call to action keeps moving while everything else holds. Set it after the closing entrances (**Use the playhead**
-  takes the moment you are looking at), and give the button a clip that starts and ends at rest, such as **Pulse** with
-  one swell or **Float**, so the repeat is seamless. Its links stay clickable the whole time.
-
-### Styles
-
-A style is a look to build from: a colour palette, a font pairing, a motion personality (how headlines, supporting text
-and shapes enter and leave, and how they ease), a pace and a sound palette. The **Styles** tab of the library has eight:
-**Night**, **Clean**, **Kinetic**, **Pastel**, **Neon**, **Editorial**, **Playful** and **Luxe**. Hover a card to see
-its title card play; click it for what you can do with it.
-
-- **Apply to this scene.** Choose any of **Colours and fonts**, **Motion** and **Sounds**. Words and timing stay as
-  they are. Colours are matched by their role (text, secondary text, accent, panels), each act's headline gets the
-  style's display font, and entrances keep their variety: clips that entered differently before still do. Undo brings
-  the previous look back.
-- **New scene.** Starts a title card in the style (kicker, headline, a line and a supporting line), ready to edit.
-- **Use with AI assist.** AI assist follows the style when it makes or changes a scene; a new scene gets exactly the
-  style's colours and fonts. The style can also be picked in AI assist itself.
-- **Save this scene as a style.** Takes your scene's colours, fonts, the presets it uses for each role and its sounds,
-  and adds it to the list (kept in this browser).
-
-### Share links
-
-**Export → Share link** gives you a link with the whole scene inside it. Whoever opens it gets their own copy in the
-Studio, to watch or change, and their own work comes back with Undo. Nothing is uploaded and no account is needed, so
-sharing costs nothing to run. Scenes with uploaded images make long links; image addresses keep them short.
-
-### Click-to-advance presentations
-
-Turn a scene into a presentation: set **Advance** to **On click** in the scene's Playback settings and drop
-**markers** on the timeline (**+ Marker**, or the M key, at the playhead). The scene then stops at each marker and waits
-for a click, a tap or the arrow keys, with a small pulsing arrow as the cue; the left arrow goes back. Full screen (F)
-is a presenter mode. Visitors who turn off animation jump from slide to slide.
-
-### Video export
-
-**Export → Video** turns a scene into an MP4 or WebM for social posts, presentations, or anywhere HTML can't go:
-Full HD, HD, 4K, vertical (1080 × 1920) or square, at 24, 30 or 60 frames a second. The AI Dev Kit on your computer
-renders it frame by frame, so every frame is exact, 3D included, however slow the machine. The size picks the layout:
-a vertical video uses the scene's mobile layout, as a phone would. The kit needs ffmpeg; the Studio tells you how to
-install it if it is missing.
-
-**Without the kit.** Where the browser can draw part of a page into a picture (HTML-in-Canvas, in Chrome behind an
-experimental setting today and switched on by default once it ships), Export offers **Render in this browser**: the same
-exact, frame-by-frame MP4 with its sound, rendered and encoded by the browser itself. See-through and ProRes exports
-still need the kit.
-
-### Video mode
-
-A scene is **made for** the web (the default) or as a **video**: choose it at the top of the Inspector with nothing
-selected. Web keeps responsive layouts, scroll and click playback, search-engine text and the WordPress element.
-Video is for Reels, TikTok, Shorts and YouTube, or for graphics to lay over your own footage in a video editor:
-
-- **Formats.** Vertical 9:16, portrait 4:5, square 1:1 and landscape 16:9, one or several. Each format is its own
-  layout; pick one above the stage to arrange it, and the preview shows it at its exact size (1080 × 1920 and so on).
-  The scene starts on its own and plays once at its exact length.
-- **App guides.** Choose where it will be posted, then turn on **App guides** above the stage: the areas the app
-  covers with its own buttons, captions and bars are marked, and Check scene warns when words sit under them.
-- **Footage.** **+ Footage** on the timeline adds a video to design against: line up words and effects with what
-  happens on camera. Trim where the file starts, change its speed, fit it, and mark it **Reference only** to leave it
-  out of a graphics-only export. Its own sound can go into the video. Footage stays in your browser (it is far too
-  big for the scene file); videos and the downloaded page carry it, a share link and the embed code can't.
-- **Export.** One format or all of them in one go, as MP4, WebM or ProRes (.mov). **See-through background** gives
-  graphics only, with transparency (WebM, or ProRes 4444 for CapCut, Premiere and DaVinci Resolve); a scene with
-  reference footage can also be exported as the full composite. Tick **Cover image** for the thumbnail as a PNG.
-- **Checks for video.** The hook on screen within two seconds, captions for a voice-over (most people watch muted),
-  the platform's length limit, a video that plays once, no idle floating, and every cut between acts: no empty
-  frame, and the movement carried across it (when a shot leaves to the left, the next arrives from the right, moving
-  the same way), with one main direction for the whole video. AI assist follows the same rules in video mode.
-
-### Video editing effects
-
-The effects short-form editors use on talking-head videos, about 45 of them, are presets, ready-made pieces and named
-effects AI assist knows.
-
-- **Text:** Gravity drop (letters fall and bounce), Fly-in strip (tilted headline strips; several make a headline
-  storm), Knockout (the footage shows through the letters), Receipt printer, Odometer (rolling digits), Running
-  timecode, and captions that slam in (giant captions) or drop in (viral drop) word by word.
-- **Emphasis:** Strike (a line through, then it falls away), Jiggle, Tick (checklists), Orbit around.
-- **On footage and pictures:** Snap zoom, Digital zoom (blur and a recording frame), Colour grade (black and white,
-  noir, warm, cool, film, vivid, faded, teal and orange), Grade wipe (a before / after slider, or a mood curtain coming
-  down), Projected film, Liquid glass, Portal (picture in picture), Copies (a playing grid, a contact sheet, a picture
-  dive, a scrolling feed) and Shatter. Pictures and footage can sit in a phone, a browser window, a polaroid, a film
-  strip or a card.
-- **Footage tools** (select footage, then Footage tools; they run in the AI Dev Kit on your computer):
-  - **Cut out the person** adds a see-through copy of them above the graphics. Put words behind their head (a
-    magazine cover), swap the background (green screen, a studio), give them a Sticker outline on a coloured backdrop
-    (paper cut-out), or Shatter the footage under them (frame break).
-  - **Follow the face** finds the face in every frame; the Follow the face preset keeps any layer on it, or above,
-    below or beside it: a circle drawn round the face (live markup), a label over the head, icons orbiting it.
-  - **Use its sound** adds the footage's audio as a voice track, to transcribe for captions.
-- **Pieces** (the library's Pieces tab): a comment box that types and gets a reply, a prompt bar, a chat window, a file
-  drop, an editing timeline, a growth chart, a storyboard deck, app icons with one struck off, a counting checklist, a
-  headline storm, a kinetic hook, a title card, an intertitle, a receipt, a screenplay page, a magazine cover and giant
-  captions. Each is an ordinary group you can change; with the person cut out, a piece goes behind them.
-- **Edit my video** (AI assist, with footage in the scene): the footage's sound is transcribed, then the AI adds
-  captions and places effects on the moments that suit them, each landing on its word. Ask for any effect by name
-  ("a gravity drop on the word drop", "a snap zoom on the punchline").
-
-### Full screen and transitions
-
-The **full screen** icon at the right of the stage toolbar (or the **F** key) plays the scene at your screen's real
-size, without the editor.
-
-Select a group (an act or a slide) and use **Transition to the next group** in the Inspector to hand it over to the
-next part of the scene: a matched exit and entrance, timed together, as ordinary clips you can still edit.
-
-- **Slash:** a glowing diagonal line sweeps across the stage and the next scene appears behind it (set its slant and colour).
-- **Flash:** a burst of light, with the cut at its brightest moment.
-- **Whip pan:** a fast slide with blur, as if the camera swung to the next scene.
-- **Glitch:** slices jump and colours split for a few frames, then the cut.
-- **Dip to colour:** the screen fills with a colour, holds a beat and opens on the next scene.
-- **Zoom through:** the scene rushes past the camera as the next approaches from the distance.
-- **Crossfade, Push, Soft wipe, Blinds, Iris** and **3D turn** for quieter changes.
-
-The transition replaces the leaving group's exit and the arriving group's entrance; the leaving group's layers no
-longer exit on their own just before it, so the transition carries the whole scene away. The new transitions bring
-their sound too. They are also in the library under **Scene transitions**, to use on any layer or group by hand.
-
-### Camera
-
-**+ Camera** (in the timeline) adds a camera key at the playhead, and the scene gets a **Camera** row. The camera is one
-view over every layer: between two keys it pans, zooms, rolls and tilts in perspective, so the viewer glides through
-the scene instead of watching things move on a still page. Select a key to set where the view is at that moment
-(zoom, pan across and down, tilt back, turn, roll) and the curve of the move into it; a value left empty holds where
-it was. Drag a key's diamond to retime it, double-click it (or press Delete) to remove it.
-
-**Add a move from the playhead** builds a whole move from wherever the camera is: **Push in**, **Pull out**, **Pan
-right** or **left**, **Tilt reveal** (the scene starts leaning back and settles flat), **Slow drift** (keeps a held
-frame alive) and **Dutch roll**.
-
-Layers are moved in the flat layout: while the camera moves the view, **Camera view** in the stage toolbar can be
-turned off to select and drag layers on the stage (the timeline works either way). Scene transitions and the camera
-work together: a slash's glowing line moves with the picture it cuts, while a flash or a dip stays fixed to the screen.
-
-### 3D layers
-
-**+ 3D** adds a 3D object to the scene: **3D text** with rounded edges, a **shape** (rounded box, sphere, ring,
-knot, cylinder, crystal), your **logo** extruded from an SVG, or a **glTF / GLB model**. Pick a finish (matte, satin,
-glossy, metal, chrome) and a resting pose; it is lit by a built-in studio environment with real reflections. The 3D
-presets **Spin 3D**, **Tumble in**, **Orbit** and **Camera push** turn the object and move the camera, and the usual
-presets (Fade, Slide, Pop…) work on it too. 3D is drawn from the timeline like everything else, so it scrubs, loops
-and plays as the page scrolls. The 3D engine (three.js) loads only for scenes that have a 3D layer, so other scenes
-stay as light as before.
-
-### Keyframes and curves
-
-When no preset does what you want, a **Keyframes** clip lets you set values by hand: Move X/Y, scale, rotation,
-opacity and blur. Each property is its own track, moving between the keyframes that set it. Put the playhead
-where you want a keyframe and click **Add keyframe at playhead**, or, with the clip selected, simply **drag the
-layer on the stage**: that sets its position keyframe at the playhead. Diamonds on the timeline select
-keyframes and drag them in time. For the move into each keyframe, pick an ease or draw a **custom curve** by
-dragging two handles, including overshoot (above the box) and anticipation (below it).
-
-### Scroll-linked playback
-
-Set **Starts** to **As the page scrolls** and the page's scroll position becomes the playhead: scroll down to play,
-up to rewind. **Pin while playing** holds the stage still (below the header height) for the **Scroll length** you
-set, in screens; unpinned, the scene plays while it crosses the window. **Smoothing** lets the playhead glide to
-the scroll position. **Try scrolling in a test page** (Inspector, Playback) opens the scene between stand-in page
-content. The Kinetic Scene element offers the same choice, with its own Scroll length.
-
-### Measured eases
-
-Clips can use twelve **measured eases**, listed first in the Easing menu with what each is for: Soft land,
-Snap and settle, Glide, Whip, Pop over, Crash in, Bounce hard, Cruise, Soft in-out, Gentle in, Leave and Crash
-out. Exits default to **Leave**, which speeds up out of frame: an exit is new motion, not the entrance played
-backwards. Staggered text presets have a **Rhythm** setting, natural (uneven, but the same on every play) or
-even.
-
-## Why HTML instead of video
+> **Alpha, live at [kinetic-scenes.unysonplus.com](https://kinetic-scenes.unysonplus.com/).** Every phase of the
+> [roadmap](./roadmap.mdx) is built. Alpha means features may still change and the scene file format can move between
+> versions; exported pages and embeds keep working regardless, because each one keeps the player version it was made with.
+
+Kinetic Scenes is a browser editor for motion graphics: big kinetic type, shapes, pictures, footage, code, diagrams and 3D,
+laid out on a timeline the way a video editor lays out clips. You drag a preset onto the timeline, change its words,
+picture or timing, and watch it play. Then you choose where it goes:
+
+- **On a web page**, as **plain HTML**. The scene plays live in the page, stays sharp at any size, weighs kilobytes instead
+  of megabytes, keeps its words readable by search engines and screen readers, and can play on load, as it scrolls into
+  view, in step with the scroll, or slide by slide on click.
+- **As a video**, for Reels, TikTok, Shorts, YouTube or anywhere HTML can't go: MP4, WebM or ProRes, in one format or all
+  of them at once, with sound, a cover image and, if you like, a see-through background to lay over your own footage.
+
+<img src="/img/kinetic-scenes/studio.png" alt="The Studio: the preset library on the left, the stage in the middle, the timeline below and the Inspector on the right" width="1920" />
+
+## What you can make
+
+| | |
+|---|---|
+| **Website heroes and sections** | An animated headline, a product reveal, a feature list, a pricing call to action. Responsive layouts for desktop, tablet and phone, one timeline. |
+| **Product tours** | A cursor that moves and clicks, spotlights, callouts and before/after swaps, built from screenshots instead of a screen recording. |
+| **Code explainers and tutorials** | An editor or terminal that types, edits, highlights and runs real code, with diagrams, flow lines and captions. |
+| **Explainer videos** | A script written with AI, spoken by a free voice on your computer, with the picture landing on every word. |
+| **Short-form video** | Hooks, captions and about 45 editing effects from Reels and TikTok, on your own footage, with the person cut out and the face followed. |
+| **Presentations** | Click-to-advance slides with markers, played full screen. |
+
+## Find your way round
+
+| Page | What it covers |
+|---|---|
+| [The Studio](./studio.md) | The editor's parts, a first scene step by step, saving and opening, keyboard shortcuts. |
+| [Layers](./layers.md) | Every layer type: text, shapes, pictures, footage, 3D, groups, lines, flow lines, diagrams, code, lists, captions and the cursor. |
+| [Presets](./presets.md) | All 87 presets, what each one does, what it works on and its settings. |
+| [Timeline and animation](./timeline.md) | Clips, groups and acts, transitions, keyframes and curves, eases, the camera. |
+| [Stage, layouts and playback](./stage.md) | Breakpoints and height modes, the safe area, when a scene plays, links, the ending, styles. |
+| [Sound, voice and captions](./sound.md) | Audio rows, built-in sounds, music beats, transcribing a voice-over, voice-overs from a script, captions. |
+| [Product tours and code](./tours.md) | Cursor, spotlight, callout, steps and hotspots; code layers; diagrams. |
+| [Video mode](./video.md) | Formats, app guides, footage, video checks and video export. |
+| [Video editing effects](./video-effects.md) | Effects on text and footage, cutting the person out, following the face, ready-made pieces. |
+| [AI](./ai.md) | AI assist, plan first, explainers, look and fix, Edit my video, the skill, the CLI and MCP tools. |
+| [Export and WordPress](./export.md) | HTML, embed code, share links, the Kinetic Scene element, video export with and without the AI Dev Kit. |
+| [Check scene](./check-scene.md) | The rules it checks and how to fix what it finds. |
+| [How it works](./how-it-works.md) | Why HTML, the scene file, the player, how it is built and hosted. |
+
+## Why HTML instead of video, for the web
 
 - **Small.** A scene is a few kilobytes of data plus a shared player, not a multi-megabyte video file.
 - **Sharp everywhere.** Text and shapes are drawn by the browser, so they stay crisp on any screen.
-- **Real text.** Headlines remain text, so search engines, screen readers and translation tools can read
-  them, and the words can change without re-rendering anything.
-- **Interactive.** A scene can play on load, when it scrolls into view, or in step with the scroll.
-- **Kind to motion-sensitive visitors.** Scenes respect the visitor's reduced-motion setting automatically.
-
-## How it is built
-
-The Studio has three parts, and each uses the technology that suits its job.
-
-| Part | Technology | Why |
-|---|---|---|
-| **The editor** (timeline, canvas, panels) | React + TypeScript, built with Vite | A drag-and-drop timeline editor is a large interactive app that runs in the browser. It compiles to static files, so the server never runs Node.js. |
-| **The player** (what an exported scene ships) | Plain JavaScript + GSAP, with three.js only when a scene uses 3D | It has to be tiny and work on any page, including inside WordPress. React stays in the editor and never ships with a scene. |
-| **Hosting** | GitHub Pages | Free, and published automatically from the repository. The Studio needs no server of its own: it is static files, and the AI runs on each user's own computer. |
-
-The editor is a static site. A GitHub Action builds it from the repository on each push and publishes it to
-GitHub Pages under the `kinetic-scenes.unysonplus.com` subdomain. A server only becomes necessary for
-accounts and cloud saving, which come late in the [roadmap](./roadmap.mdx).
-
-### The scene file
-
-Everything rests on one data format, the **scene file** (JSON). It lists:
-
-- **Tracks**, stacked like layers.
-- **Clips** on each track. A clip is one preset placed at a time, with its own settings (text, image,
-  colours, duration, easing).
-- **Keyframes**, for anything animated by hand rather than by a preset.
-- **Assets**: images, fonts and 3D models the scene uses.
-- **Breakpoints**: the stage shape and any per-device overrides (see below).
-
-The player reads a scene file and builds one GSAP timeline from it. Each preset is a small function that adds
-its tweens to that timeline at the clip's start time. Because the timeline is the single source of truth, the
-same scene file drives the editor's preview, the exported HTML, the page-builder element, the AI and, later,
-video export.
-
-**Every timeline is seekable and repeatable.** Scenes use no unseeded randomness and no real-time physics, so
-any frame can be shown exactly at any moment. That keeps scrubbing frame-accurate in the editor and makes
-thumbnails and video export possible later.
-
-### Presets
-
-Presets are the building blocks people drag in: text entrances (split, slam, scramble, stretch, glitch),
-shape and line reveals, image wipes, counters, backgrounds, and 3D objects. They share a library with the
-[Animation Engine](/animation-engine), so an effect built once is available in both places.
-
-## The stage
-
-A scene plays inside a **stage**: a box with a set shape, like a video frame. You design on a fixed canvas and
-it plays the same everywhere. A single 16:9 box doesn't work for website heroes, though:
-
-- On a 1920px-wide monitor, a 16:9 stage is 1080px tall, but the browser window is only about 950px tall
-  once tabs and the address bar take their share.
-- On a 390px-wide phone, the same stage is 219px tall, and large headline type becomes fine print.
-
-So the stage is responsive in three ways.
-
-1. **A shape per breakpoint.** Desktop, tablet and mobile each have their own aspect ratio (for example 16:9,
-   4:3 and 4:5). There is one timeline; each breakpoint can override position, size and type size.
-2. **A height mode per placement:**
-   - **Ratio**: pure video behaviour. The stage keeps its shape, and the page scrolls if it is taller than the
-     window.
-   - **Ratio, capped to the window**: the stage never grows taller than the window minus the site header. This
-     is the default for heroes, so the whole animation is on screen at first load.
-   - **Fill the window**: exactly one screen tall, whatever its shape.
-   - **Window too short** (capped and fill): **Trim top and bottom** keeps the full width and lets the safe area
-     protect what matters; **Show it all** shrinks the whole shape to fit, centred, with the stage's background (or the
-     page's, when the scene has none) at the sides. On a logged-in WordPress page, both leave room for the admin bar.
-4. **Pin to the stage.** Inside a layout, positions are percentages of the scene's frame, so every scene keeps its
-   design on any screen. A layer or group that belongs to the box rather than the picture (a badge, a logo, a corner
-   call to action) can be **pinned to the stage** instead: its X and Y become percentages of the stage, so 100 / 100
-   with the bottom-right anchor is the real corner of whatever box the scene fills, on any screen shape. Sizes and
-   text keep the frame's units, pinned layers sit above the rest, and the camera leaves them where they are.
-3. **A safe area.** The editor shows a central safe zone, as video editors do. Key text stays inside it and
-   backgrounds bleed to the edges, so nothing important is cut off when a height mode trims the stage.
-
-Sizes and positions are stored relative to the stage width (CSS container units) rather than by scaling a
-fixed-size box. Text stays sharp and selectable, and the stage lays out like any other section.
-
-## Exports
-
-A finished scene can leave the Studio in three ways:
-
-- **A standalone HTML file**: open it, host it, or send it.
-- **An embed snippet** for any website.
-- **A Unyson+ element**: a page-builder element plays the scene inside a Unyson+ page, with an
-  **Open in Studio** button to edit it again.
-
-Every export records the player version it was made with, so later changes to a preset never alter a scene
-that is already published.
-
-## AI
-
-The AI runs through the [AI Dev Kit](/ai-dev-kit) on the user's own computer, using their own AI
-subscription or a local model. The Studio sends the prompt to the kit, and the kit sends a scene back. The
-Studio's server needs no AI keys and runs no AI calls, so there is no per-use cost to cover.
-
-The AI writes a **scene file, not code**. It chooses presets from the catalogue and fills in their settings,
-so everything it makes lands on the timeline as ordinary clips that can be moved, trimmed and edited by hand.
-A **custom code clip** stays available as an escape hatch for effects no preset covers. It runs your own GSAP code
-with the layer (`el`), the scene timeline (`tl`), `gsap` and the clip's start (`at`) and `duration`. Because it is real
-JavaScript, it runs only where the page allows it: the Studio, your own downloads and embed codes (which add
-`data-upw-allow-code`, and the Export window says so), and WordPress pages whose author may publish unfiltered HTML.
-Elsewhere the player skips it and plays the rest. A clip that throws is logged and skipped. The AI never writes one.
-
-How the connection works in practice:
-
-- **The browser asks first.** Chrome and other browsers ask before a website may reach apps on your own
-  computer ("…wants to access other apps and services on this device"). Choose **Allow** once. If it was
-  refused, AI assist says so and shows where to turn it back on.
-- **Only the Studio may call the kit.** The kit answers only the Studio's own address, so other websites cannot
-  use your AI.
-
-- **Who is answering is shown.** The panel names the AI at work, for example "Connected: Claude, your Claude
-  subscription, through the AI Dev Kit", or the local model's name.
-- **The Studio sends its own motion rules** with each request, so the kit never holds an out-of-date copy.
-
-The AI Dev Kit's dashboard opens on a Home page showing each of its jobs (Site Converter, AI Assistant and
-Kinetic Scenes) and whether it is connected.
-
-### The AI director
-
-The best AI video tools are not better because of a bigger prompt. They work in a loop with tools: they plan,
-build, render, look at the result, criticise it and fix it. Kinetic Scenes works the same way, on the AI subscription
-you already have (Claude, ChatGPT through Codex, or Cursor) and never an API key.
-
-- **Plan first.** Turn on **Plan first** in AI assist and choose what you are making: a storyboard, an explainer or a
-  tutorial. The AI writes the plan (for an explainer, the narration split into segments, each naming what the screen
-  shows); adjust it, then **Build it**. When the request names a length ("a 20 second explainer"), the script is
-  kept to what fits in it.
-- **Build with a voice-over.** For an explainer or a tutorial, **Build with a voice-over** has a free voice on your
-  computer speak the script (installed once, about 60 MB), times every word, and builds the scene on that clock, so
-  each picture lands just before the words that describe it. The voice-over stays editable in the inspector's
-  **Voice-over from a script** section.
-- **Look and fix.** With **Look and fix** on, the kit renders the settled frame of every act and the middle of every
-  transition, the AI looks at them with the Check scene report, and fixes what it sees before showing you.
-- **Quick scene from a website.** Paste a URL: the kit brings the site's real colours, fonts, copy and screenshots,
-  and the AI builds an editable scene that shows the product in use.
-- **An AI inside the open Studio.** The Studio offers its tools to AIs in the browser (WebMCP), so one can work on
-  the scene in front of you, change by change, with undo.
-
-**A skill for any AI.** The workflow, the scene format, every preset, the motion rules and a checklist are published
-at [kinetic-scenes.unysonplus.com/skill](https://kinetic-scenes.unysonplus.com/skill/) (and `llms.txt`), generated
-from the Studio's own code so they never go stale, and copied into the AI Dev Kit.
-
-**Tools for agents.** An agent such as Claude Code, Codex or Cursor can write a scene file directly and use the kit's
-scene tools to check it, without the Studio open:
-
-```bash
-cd <kit>/assembled/UnysonPlus-Capture-Service/tools/design-capture
-node studio-cli.mjs check scene.json          # validate + Check scene
-node studio-cli.mjs inspect scene.json        # layers and clips in time, sound, key moments
-node studio-cli.mjs stills scene.json         # frames at the key moments, to look at
-node studio-cli.mjs render scene.json --out scene.mp4
-node studio-cli.mjs beats music.mp3           # tempo, beats and the strongest moments
-node studio-cli.mjs transcribe voice.mp3      # every word with its time
-```
-
-The same six are a local MCP server, so the agent calls them as tools (`scene_stills` returns the frames as images it
-can look at):
-
-```bash
-claude mcp add kinetic-scenes -- node <kit>/assembled/UnysonPlus-Capture-Service/tools/design-capture/studio-mcp.mjs
-```
+- **Real text.** Headlines remain text, so search engines, screen readers and translation tools can read them, and the
+  words can change without re-rendering anything.
+- **Interactive.** A scene can play on load, when it scrolls into view, in step with the scroll, or slide by slide on
+  click, and any layer can be a link.
+- **Kind to motion-sensitive visitors.** Scenes respect the visitor's reduced-motion setting automatically and show a
+  still frame instead.
 
 ## Still to decide
 
-- **Free or paid.** Whether the Studio is free with the AI optional, or tied to accounts from the start.
-- **Where projects are saved.** In the browser and as downloadable project files at first, with cloud saving
-  and accounts added later.
-- **Playback beyond heroes.** Click-to-advance slides and longer presentations come after the hero and section
-  use case works.
+- **Free or paid.** Whether the Studio stays free with the AI optional, or is tied to accounts.
+- **Where projects are saved.** Today in the browser and as downloadable project files; cloud saving and accounts later.

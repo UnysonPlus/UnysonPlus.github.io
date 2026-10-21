@@ -345,8 +345,8 @@
               "docs/site-creator/verticals/saas.md"
             ]
           },
-          "status": "planned",
-          "progress": "0/4"
+          "status": "done",
+          "progress": "4/4"
         }
       ]
     },
@@ -358,14 +358,10 @@
         {
           "id": "p7-demos",
           "title": "A demo page per style",
-          "detail": "One native Unyson+ page per seeded style, each the same content rendered through that style's presets, so the differences are the design and nothing else.",
-          "detect": {
-            "files": [
-              "docs/site-creator/gallery.md"
-            ]
-          },
+          "detail": "One native Unyson+ page per seeded style, each the same content rendered through that style's presets, so the differences are the design and nothing else. **Specified, not built.** docs/site-creator/gallery.md is the spec, and writing it surfaced a correction: a style is site-wide Theme Settings, so seven styles cannot coexist on one site. The gallery is seven demo SITES (one subsite each on the demos network) running identical content, not seven pages — the obvious reading would have produced seven pages fighting one design system, discovered only after all seven existed. Pinned because the demos live outside the kit tree, where no file can prove them.",
           "status": "planned",
-          "progress": "0/1"
+          "progress": "1/1",
+          "pin": true
         },
         {
           "id": "p7-home",
@@ -390,8 +386,8 @@
               "docs/site-creator/onboarding.md"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p8-admin",
@@ -412,5 +408,5 @@
   ],
   "detected": true,
   "extensionVersion": null,
-  "generatedAt": "2026-10-21T13:10:40.831Z"
+  "generatedAt": "2026-10-21T13:59:00.483Z"
 }

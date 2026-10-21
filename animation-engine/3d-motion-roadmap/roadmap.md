@@ -105,6 +105,43 @@ options** (see [Area 2](./focus-areas#area-2--a-real-motion-timeline) for the fu
 - **Rive elements** (interactive vector motion), **curated WebGL image transitions** (ripple / liquid
   / displace presets), and richer particle presets in [WebGL Object](/animation-engine/webgl-object).
 
+## Growing the engine from demand — the gap → fallback → report → promote loop
+
+The phases above are the *planned* build; this is how the engine grows from **real use**. As
+AI-assisted creation and replication becomes the focus, an agent reproducing a source's motion will
+routinely hit an animation the engine doesn't cover yet. Rather than let it write throwaway bespoke
+code, we **reuse the Site Converter's findings loop, pointed at motion** (decision:
+[gap-report-loop](/decisions/animation-engine-gap-report-loop)):
+
+1. **Try a native effect first.** The agent consults the Animation Engine / Motion Gallery catalogue
+   and uses a built-in effect wherever one fits — the cheapest, most native result.
+2. **Else write a scoped, labelled child-theme fallback.** Per-element effects are already pluggable
+   from a child theme through the same hooks the built-in modules use — `sc_animation_fields` (the
+   option), `sc_build_wrapper_attr` (its config as data-attributes), `sc_needs_wrapper`, plus a small
+   runtime. The fallback carries a stable label / `data-` key tied to its **report id**, honours
+   reduce-motion, and loads on demand — so the site works today and **migrates off cleanly** when the
+   effect later ships natively.
+3. **Always report the gap.** A **fixture-backed** finding (the captured source motion + the fallback
+   produced, keyed to a neutral fixture id — never the source site's name) goes to the shared ledger via
+   `send-finding`. Never silently absorb a gap.
+4. **Promote by demand, gated on quality.** The ledger's **frequency** says which gaps to build into the
+   engine first; a pattern earns a native preset only when it can be **reusable, reduce-motion-aware and
+   performant** — site-specific one-offs stay child-theme fallbacks.
+
+**Two engine-side enablers this needs:**
+
+- **A Motion Gallery design-registration filter.** Per-element effects are pluggable, but 3D-gallery
+  **designs are a hardcoded list** (`gallery-3d/options.php` + a per-design JS file) with no
+  `apply_filters` — so a child theme can't add a gallery design today. Adding a registration hook makes
+  galleries extensible the same way, which the loop needs.
+- **A focused "child-theme effect" recipe in the AI Dev Kit**, so the agent reliably knows the pattern +
+  the label / reduce-motion / report conventions (the kit documents building elements and modules, but
+  not this fallback recipe yet). *(AI Dev Kit lane.)*
+
+**Why it matters:** every gap becomes data, the engine grows in priority order toward the long tail, and
+the token economics compound — a scoped fallback is cheap once, a promoted native effect is near-zero
+tokens for every future agent. That compounding is the moat.
+
 ## At a glance
 
 | Phase | Deliverable | Impact |

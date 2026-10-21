@@ -244,7 +244,7 @@
         },
         {
           "id": "p6-blender",
-          "title": "Blender (optional add-on)",
+          "title": "Blender (add-on, coming soon)",
           "detail": "An installable add-on in the AI Dev Kit that has Blender build an elaborate 3D object from a description and save it as a glTF model for a 3D layer. Optional: the built-in 3D (text, shapes, SVGs and glTF) already draws live in the browser, and Blender is a large install.",
           "status": "planned"
         }
@@ -354,9 +354,15 @@
         },
         {
           "id": "p8-clap",
-          "title": "Sound identification (optional add-on)",
+          "title": "Sound identification (add-on, coming soon)",
           "detail": "An installable add-on in the AI Dev Kit that names the sounds in a clip (a door slam, a music hit, ambience) with an audio-labelling model, so AI assist can find and reuse moments in someone's own footage. Optional, because built-in sounds and Freesound results are already named.",
           "status": "planned"
+        },
+        {
+          "id": "p8-addons",
+          "title": "Add-ons",
+          "detail": "An Add-ons panel lists the extra tools the AI Dev Kit can use on this computer: connectors to apps the person installs (found automatically, or at a location set once) and downloads the kit installs itself. Voicebox is the first connector: its voice profiles speak voice-overs from a script, every word timed. See [Add-ons](/kinetic-scenes/addons).",
+          "status": "done"
         }
       ]
     },
@@ -829,6 +835,6 @@
       ]
     }
   ],
-  "extensionVersion": "0.0.62",
+  "extensionVersion": "0.0.63",
   "versionLabel": "Studio"
 }

@@ -261,6 +261,11 @@ renders it frame by frame, so every frame is exact, 3D included, however slow th
 a vertical video uses the scene's mobile layout, as a phone would. The kit needs ffmpeg; the Studio tells you how to
 install it if it is missing.
 
+**Without the kit.** Where the browser can draw part of a page into a picture (HTML-in-Canvas, in Chrome behind an
+experimental setting today and switched on by default once it ships), Export offers **Render in this browser**: the same
+exact, frame-by-frame MP4 with its sound, rendered and encoded by the browser itself. See-through and ProRes exports
+still need the kit.
+
 ### Video mode
 
 A scene is **made for** the web (the default) or as a **video**: choose it at the top of the Inspector with nothing

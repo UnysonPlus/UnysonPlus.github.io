@@ -781,20 +781,20 @@
         {
           "id": "p14-fast-edit",
           "title": "A faster Edit my video",
-          "detail": "The AI answers with only what it adds (new layers and clips) instead of rewriting the whole scene, so the answer is a fraction of the length; the Studio merges it in. Target: under a minute.",
-          "status": "planned"
+          "detail": "The AI answers with only what it adds (new layers and clips), and Look and fix with only the layers it changes, instead of rewriting the whole scene; the Studio and the AI Dev Kit merge them in. The AI's own call went from about 5 minutes to under 2 with Claude Code's default model; a faster model chosen in the AI Dev Kit brings it under a minute.",
+          "status": "done"
         },
         {
           "id": "p14-gpu-cutout",
           "title": "Cut-out on the graphics card",
-          "detail": "The person is cut out on the graphics card where the computer has one, many times faster than on the processor; the processor stays the fallback.",
-          "status": "planned"
+          "detail": "The person is cut out on the graphics card (WebGPU) where the computer has one: about 50 ms a frame on a graphics card instead of about 650 ms on the processor, which stays the fallback.",
+          "status": "done"
         },
         {
           "id": "p14-browser-export",
           "title": "Video export in the browser",
-          "detail": "Where the browser can draw part of a page into a picture (the HTML-in-Canvas feature, arriving in Chrome), the Studio renders and encodes the video itself, frame by frame and exact, with nothing installed. Elsewhere the AI Dev Kit renders it as now.",
-          "status": "planned"
+          "detail": "Where the browser can draw part of a page into a picture (HTML-in-Canvas; in Chrome behind an experimental setting today), the Studio renders the video itself with nothing installed: each frame exact, encoded by the browser (H.264 and AAC) into an MP4. Elsewhere, and for see-through or ProRes video, the AI Dev Kit renders it.",
+          "status": "done"
         }
       ]
     }

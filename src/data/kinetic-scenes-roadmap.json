@@ -772,6 +772,31 @@
           "status": "done"
         }
       ]
+    },
+    {
+      "id": "p14-speed",
+      "title": "Phase 14 — Faster, and video without the kit",
+      "goal": "Make the slow parts quick and remove the last thing that needs the AI Dev Kit: editing a video with AI in under a minute, cutting the person out on the graphics card, and exporting video from the browser itself where the browser can draw a page into a picture.",
+      "tasks": [
+        {
+          "id": "p14-fast-edit",
+          "title": "A faster Edit my video",
+          "detail": "The AI answers with only what it adds (new layers and clips) instead of rewriting the whole scene, so the answer is a fraction of the length; the Studio merges it in. Target: under a minute.",
+          "status": "planned"
+        },
+        {
+          "id": "p14-gpu-cutout",
+          "title": "Cut-out on the graphics card",
+          "detail": "The person is cut out on the graphics card where the computer has one, many times faster than on the processor; the processor stays the fallback.",
+          "status": "planned"
+        },
+        {
+          "id": "p14-browser-export",
+          "title": "Video export in the browser",
+          "detail": "Where the browser can draw part of a page into a picture (the HTML-in-Canvas feature, arriving in Chrome), the Studio renders and encodes the video itself, frame by frame and exact, with nothing installed. Elsewhere the AI Dev Kit renders it as now.",
+          "status": "planned"
+        }
+      ]
     }
   ],
   "extensionVersion": "0.0.23",

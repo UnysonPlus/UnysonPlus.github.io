@@ -19,8 +19,8 @@
               "docs/site-creator/recipes/README.md"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-heroes",
@@ -31,8 +31,8 @@
               "docs/site-creator/recipes/heroes.md"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-navbars",
@@ -43,8 +43,8 @@
               "docs/site-creator/recipes/navbars.md"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-feature-grids",
@@ -55,8 +55,8 @@
               "docs/site-creator/recipes/feature-grids.md"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-ctas",
@@ -67,8 +67,8 @@
               "docs/site-creator/recipes/ctas.md"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-footers",
@@ -79,8 +79,8 @@
               "docs/site-creator/recipes/footers.md"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p1-marquees",
@@ -91,8 +91,8 @@
               "docs/site-creator/recipes/marquees.md"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },
@@ -110,15 +110,15 @@
               "docs/site-creator/styles/README.md"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p2-map-skills",
           "title": "Map to the existing aesthetic skills",
           "detail": "Several directions already exist as design skills — a refined default, minimalist, brutalist, and a high-end \"expensive-agency\" look. A style entry points at the matching skill where one exists, and only carries a new recipe where there is a genuine gap, so the library reuses rather than duplicates.",
           "pin": true,
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p2-seed",
@@ -126,11 +126,17 @@
           "detail": "A first set drawn from the demand we can see: a monochrome editorial look (pure black and white, serif hero, zero radius, line textures, inversion hover), a newsprint look, a Swiss/Bauhaus grid look, a modern dark look, a terminal look, a luxury look, and a kinetic/motion-led look. Each is a design direction expressed as Theme Settings presets plus section treatments — authored here, never copied.",
           "detect": {
             "files": [
-              "docs/site-creator/styles/monochrome.md"
+              "docs/site-creator/styles/monochrome.md",
+              "docs/site-creator/styles/brutalist.md",
+              "docs/site-creator/styles/modern-dark.md",
+              "docs/site-creator/styles/newsprint.md",
+              "docs/site-creator/styles/swiss.md",
+              "docs/site-creator/styles/terminal.md",
+              "docs/site-creator/styles/luxury.md"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "in-progress",
+          "progress": "3/7"
         },
         {
           "id": "p2-picker",
@@ -403,5 +409,5 @@
   ],
   "detected": true,
   "extensionVersion": null,
-  "generatedAt": "2026-10-20T01:12:17.115Z"
+  "generatedAt": "2026-10-21T10:42:54.550Z"
 }

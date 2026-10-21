@@ -110,6 +110,21 @@ the **AI Dev Kit** source tree (the creator lives in the kit, not in an extensio
 | Some found, some missing | **In progress** |
 | None found | **Planned** |
 
+Two exceptions are worth knowing, because both look like bugs otherwise.
+
+**Pinned tasks are set by hand.** A task carrying `pin: true` is skipped by the scanner and keeps
+whatever status it was given. That is for work no file can prove — a mapping decision, a judgement
+that a surface is finished — and it is why a pinned task can read **Done** with no `detect` block.
+
+**Point the scanner at the working copy.** By default it resolves the push clone
+(`Github Repository/UnysonPlus-AI-Dev-Kit`), which only carries what has been pushed — so a run from a
+clean checkout reports everything as *Planned* even when the work is done. The kit's working copy is
+its source of truth, so scan that:
+
+```bash
+EXT_DIR="D:/Web Dev/UnysonPlus-AI-Dev-Kit" npm run roadmap:site-creator
+```
+
 ```bash
 npm run roadmap:site-creator            # scan and rewrite the JSON
 npm run roadmap:site-creator -- --dry   # report only, write nothing

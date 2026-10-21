@@ -27,6 +27,26 @@ The AI follows the same rules when it builds a scene, so a scene it makes starts
 - **Inside the safe area** on every layout, so trimming the stage never cuts it off.
 - **Text on text:** two text layers overlapping while both are on screen.
 
+### Check the layout
+
+The rules above work from the scene file. **Check the layout**, at the top of the Check tab, measures the stage itself.
+It plays to the moment each part of the scene has fully landed (everything in, nothing leaving yet, nothing still
+arriving), measures what is drawn there, then puts the playhead back. It finds:
+
+- **Words on words**, measured on the letters you can actually see (not on the layers' boxes).
+- **Words crossing a panel's edge**, or touching it with no room inside. A panel is a shape with a visible edge: an
+  outline or a solid fill. Soft glows and faint washes don't count.
+- **A tick far from its words.**
+- **A list with uneven gaps** between its lines, and **a list off-centre** under a centred heading above it (lists inside
+  a panel, like a menu, are left alone).
+- **Words off the stage.**
+
+Each item says when it was measured. **Show at** jumps the playhead there and selects the layer. It checks the screen
+size the stage is showing, so switch layouts and run it again for each one. **Fix with AI** sends these items too.
+
+The AI Dev Kit runs the same measurements: `stills` renders one frame of each part at that moment and lists what it
+measured, and AI assist's **Look and fix** fixes every item before looking at the frames itself.
+
 ## Timing and motion
 
 - **Clips fighting:** two moving clips on one layer at once. Fix: start the second when the first ends.

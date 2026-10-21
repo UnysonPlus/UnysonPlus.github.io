@@ -92,14 +92,20 @@ without the Studio open:
 cd <kit>/assembled/UnysonPlus-Capture-Service/tools/design-capture
 node studio-cli.mjs check scene.json          # validate + Check scene
 node studio-cli.mjs inspect scene.json        # layers and clips in time, sound, key moments
-node studio-cli.mjs stills scene.json         # frames at the key moments, to look at
+node studio-cli.mjs stills scene.json         # a frame of each part once it has landed, with its layout measured
 node studio-cli.mjs render scene.json --out scene.mp4   # --format webm|mov, --transparent, --cover
 node studio-cli.mjs beats music.mp3           # tempo, beats and the strongest moments
 node studio-cli.mjs transcribe voice.mp3      # every word with its time
+node studio-cli.mjs separate clip.mp4         # the voice and the music as two WAV files
 ```
 
+`stills` is the review step: one frame of every part at the moment it has fully landed, and a list of the layout problems
+measured on each (words on words, ticks far from their words, uneven or off-centre lists, words crossing a panel). An
+agent fixes those, then looks at each frame itself against the review list in the skill (alignment, spacing, panels,
+balance, reading) before handing the scene over.
+
 Add `--json` for machine-readable output. The same tools are a local MCP server, so the agent calls them as tools
-(`scene_stills` returns the frames as images it can look at). The server adds three more: `scene_guide` (the scene
+(`scene_stills` returns the frames as images it can look at, `audio_separate` splits a clip). The server adds three more: `scene_guide` (the scene
 format and the presets, so the AI writes valid scenes), `scene_link` (a Studio link that opens the scene in the
 browser) and `scene_save` (writes a scene to a file). Every scene tool takes either a file path or the scene itself, so an
 app without file access can still use them:

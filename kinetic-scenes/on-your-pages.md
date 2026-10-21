@@ -61,5 +61,5 @@ run.reset();  // back to the start
 run.destroy();// stop and put the element back as it was
 ```
 
-Load the player from the Studio (`https://kinetic-scenes.unysonplus.com/player/0.0.42/scene-player.js`, with
+Load the player from the Studio (`https://kinetic-scenes.unysonplus.com/player/0.0.44/scene-player.js`, with
 `data-auto-mount="false"` on the script tag if the page has no scenes). Custom-code clips only run inside scenes.

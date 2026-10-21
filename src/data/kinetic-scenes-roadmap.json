@@ -241,6 +241,12 @@
           "title": "More presets",
           "detail": "35 presets in six groups, including Count up, Soft wipe, Blinds, Turn, Sheen, Drift, Gradient flow, Particles and the 3D set (Tumble in, Spin 3D, Orbit, Camera push), plus transitions between groups (Crossfade, Push, Zoom through, Soft wipe, Blinds, Iris, 3D turn) applied from the group Inspector.",
           "status": "done"
+        },
+        {
+          "id": "p6-blender",
+          "title": "Blender (optional add-on)",
+          "detail": "An installable add-on in the AI Dev Kit that has Blender build an elaborate 3D object from a description and save it as a glTF model for a 3D layer. Optional: the built-in 3D (text, shapes, SVGs and glTF) already draws live in the browser, and Blender is a large install.",
+          "status": "planned"
         }
       ]
     },
@@ -339,6 +345,18 @@
           "title": "Studio tools for AI apps (MCP)",
           "detail": "The AI Dev Kit's studio-mcp.mjs gives AI apps such as Claude Desktop nine tools: check, inspect, stills and render a scene, beats and transcription, plus the scene guide (the format and presets), a Studio link that opens a scene in the browser, and saving a scene to a file. Scenes can be passed inline, so a conversation can make one from nothing.",
           "status": "done"
+        },
+        {
+          "id": "p8-separate",
+          "title": "Voice and music separation",
+          "detail": "Separate voice and music, on footage and on audio clips, splits a clip's sound into a voice track and a music track in step with it: transcribe the voice alone for cleaner word times, remove or replace the music, or keep both (music is lowered under the voice). HTDemucs v4 runs in the AI Dev Kit through ONNX Runtime, on this computer; about 170 MB, downloaded once. Also the kit's separate command and audio_separate tool.",
+          "status": "done"
+        },
+        {
+          "id": "p8-clap",
+          "title": "Sound identification (optional add-on)",
+          "detail": "An installable add-on in the AI Dev Kit that names the sounds in a clip (a door slam, a music hit, ambience) with an audio-labelling model, so AI assist can find and reuse moments in someone's own footage. Optional, because built-in sounds and Freesound results are already named.",
+          "status": "planned"
         }
       ]
     },
@@ -654,6 +672,12 @@
           "title": "The best still frame, picked for you",
           "detail": "The Still frame (what visitors who turn off animation see, and a video's thumbnail) is suggested automatically: the most complete settled moment, with every word in and nothing mid-transition.",
           "status": "done"
+        },
+        {
+          "id": "p11-layout-review",
+          "title": "Check the layout",
+          "detail": "Every part of a scene is reviewed at the moment it has fully landed. The player measures the drawn frame there (words on words, words crossing or crowding a panel, ticks far from their words, uneven or off-centre lists, words off the stage); the Studio's Check tab runs it on request, the kit's stills and check report it, and AI assist fixes every item before looking at the frames against a written review list. Ticks and strikes now sit beside the words, not at the edge of the text box.",
+          "status": "done"
         }
       ]
     },
@@ -770,6 +794,12 @@
           "title": "AI assist that edits your video",
           "detail": "Every effect is a named recipe AI assist knows. Drop in raw footage and say what you want: the kit transcribes it, adds captions, and places effects on the moments that suit them (a gravity drop on the word it names, a snap zoom on the punchline, a comment CTA at the end), all as ordinary clips you can change.",
           "status": "done"
+        },
+        {
+          "id": "p13-loadout",
+          "title": "Loadout piece",
+          "detail": "Five locked slots fill one by one while a counter steps 0/5 to 5/5 and a card names each item: a stack, a toolkit, the steps of a setup.",
+          "status": "done"
         }
       ]
     },
@@ -799,6 +829,6 @@
       ]
     }
   ],
-  "extensionVersion": "0.0.60",
+  "extensionVersion": "0.0.62",
   "versionLabel": "Studio"
 }

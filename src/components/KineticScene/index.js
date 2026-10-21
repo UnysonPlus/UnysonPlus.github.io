@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 // A live Kinetic Scene on a docs page: the Studio's published player (loaded once) plays a scene file from /static.
-const PLAYER = 'https://kinetic-scenes.unysonplus.com/player/0.0.42/scene-player.js';
+const PLAYER = 'https://kinetic-scenes.unysonplus.com/player/0.0.44/scene-player.js';
 
 let loading = null;
 function loadPlayer() {

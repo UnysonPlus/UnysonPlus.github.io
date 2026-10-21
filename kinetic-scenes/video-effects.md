@@ -110,12 +110,28 @@ on the face, or above, below, left or right of it, while the clip runs (optional
 Adds the footage's audio as a voice track in step with it (and mutes the footage), ready to **transcribe** for captions and
 for timing effects to the words.
 
+### Separate voice and music
+
+Splits the footage's sound into two tracks in step with it: the **voice**, and the **music** (with any effects). The
+footage goes quiet. You can:
+
+- **Transcribe the voice alone** for cleaner word times when music plays under the speaker.
+- **Remove the music:** delete its track.
+- **Replace it:** delete it and add your own.
+- **Keep both:** music is lowered under the voice automatically.
+
+The same button sits in a selected audio clip's **Voice and music** section, where it replaces the clip with the two
+tracks.
+
+It runs HTDemucs v4 (the open Demucs model) in the AI Dev Kit on your computer, and nothing is uploaded. The first use
+downloads about 170 MB, once. It takes about as long as the clip.
+
 ## Ready-made pieces
 
 The library's **Pieces** tab adds animated pieces at the playhead, each an ordinary group you can change. With the person
 cut out, a piece goes behind them.
 
-![All seventeen pieces](/img/kinetic-scenes/pieces.jpg)
+![Seventeen of the pieces](/img/kinetic-scenes/pieces.jpg)
 
 | Piece | What it is |
 |---|---|
@@ -136,6 +152,7 @@ cut out, a piece goes behind them.
 | **Screenplay page** | Lines typed, then a line highlighted. |
 | **Magazine cover** | Masthead, cover lines and an issue badge, meant to sit behind the person. |
 | **Giant captions** | Big captions, each word slamming in as it is said. |
+| **Loadout** | Five locked slots fill one by one while a counter steps 0/5 to 5/5 and a card names each item: a stack, a toolkit, the steps of a setup. |
 
 ## Edit my video with AI
 

@@ -98,12 +98,31 @@ node studio-cli.mjs beats music.mp3           # tempo, beats and the strongest m
 node studio-cli.mjs transcribe voice.mp3      # every word with its time
 ```
 
-Add `--json` for machine-readable output. The same six are a local MCP server, so the agent calls them as tools
-(`scene_stills` returns the frames as images it can look at):
+Add `--json` for machine-readable output. The same tools are a local MCP server, so the agent calls them as tools
+(`scene_stills` returns the frames as images it can look at). The server adds three more: `scene_guide` (the scene
+format and the presets, so the AI writes valid scenes), `scene_link` (a Studio link that opens the scene in the
+browser) and `scene_save` (writes a scene to a file). Every scene tool takes either a file path or the scene itself, so an
+app without file access can still use them:
 
 ```bash
 claude mcp add kinetic-scenes -- node <kit>/assembled/UnysonPlus-Capture-Service/tools/design-capture/studio-mcp.mjs
 ```
+
+In **Claude Desktop** (or any MCP app), add the server to its MCP settings (`claude_desktop_config.json`):
+
+```json
+{
+  "mcpServers": {
+    "kinetic-scenes": {
+      "command": "node",
+      "args": ["<kit>/assembled/UnysonPlus-Capture-Service/tools/design-capture/studio-mcp.mjs"]
+    }
+  }
+}
+```
+
+Then ask for a scene in the conversation: it reads the guide, writes the scene, checks it, looks at the stills and gives
+you a link that opens it in the Studio.
 
 ## An AI inside the open Studio
 

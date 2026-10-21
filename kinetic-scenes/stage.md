@@ -108,6 +108,18 @@ and shapes enter and leave, and how they ease), a pace and a sound palette. The 
 - **Save this scene as a style:** your colours, fonts, the presets you use for each role and your sounds, kept in this
   browser.
 
+### Brand kits
+
+**Create a brand kit** at the top of the Styles tab makes a style of your own from your brand: a name, your **logo**
+(PNG, SVG, JPG or WebP, up to 1.5 MB), five colours (background, text, secondary text, accent and panels), a display and
+a body font with their weights, whether headlines are in capitals, and which built-in style it **moves like** (its motion
+personality, pace and sounds). A brand card shows a **Brand** tag.
+
+- **New scene** in a brand style starts with your logo on the title card; **Add the logo** puts it on the open scene.
+- **AI assist** uses the logo when it builds a scene in your brand.
+- **Edit** opens the brand kit again; **Export** downloads any style as a `.json` file and **Import a style** reads one, so
+  a team can share the same look.
+
 ## Fonts and background
 
 The scene's **Fonts** settings list the fonts it uses (Google Fonts, by family and stylesheet address); the Export window

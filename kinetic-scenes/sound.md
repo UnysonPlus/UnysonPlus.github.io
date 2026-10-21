@@ -45,6 +45,18 @@ or on its last frame for a landing, and moves with the clip whenever you move or
   a typewriter typing), about one every second and a half at most, so sound supports the motion instead of piling up.
 - With no clip selected, **Add** puts the sound on the audio rows at the playhead, like a sound file.
 
+### More sounds
+
+With the search box empty, the bottom of the Sounds tab offers two more ways to get a sound. Both run through the
+[AI Dev Kit](/ai-dev-kit), so it needs to be running.
+
+- **Make a sound.** Describe it ("a soft paper swoosh, 0.6 s") and click **Make**. With an ElevenLabs key in the kit, the
+  sound is generated; otherwise the AI writes a synth recipe (oscillators, noise, a filter and envelopes) that the Studio
+  renders into a WAV right in the browser. The result is added at the playhead as a sound effect.
+- **Search Freesound.** Paste your free Freesound API key once, then search its public-domain (CC0) sounds: no credit
+  needed, free to use anywhere. Click a result to hear it and **Add** to put it at the playhead. Sounds you use are cached
+  on your computer.
+
 ## Music and the beat
 
 Select a music clip and **Find the beats**: the Studio works out the tempo, the beat grid and how strong each beat is, right

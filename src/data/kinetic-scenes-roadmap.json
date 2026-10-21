@@ -165,8 +165,8 @@
         {
           "id": "p4-shared-presets",
           "title": "Shared preset library",
-          "detail": "Presets usable both in the Studio and in the [Animation Engine](/animation-engine), so an effect is built once.",
-          "status": "planned"
+          "detail": "The Animation Engine's **Kinetic Scenes Preset** plays 39 of the Studio's presets (text, reveal, move and emphasis) on ordinary page elements, in view, on load, on hover or on click, with the Kinetic Scene element's own player (its new playPreset()), so an effect is built once. See [Presets on your pages](/kinetic-scenes/on-your-pages).",
+          "status": "done"
         }
       ]
     },
@@ -264,7 +264,7 @@
         {
           "id": "p7-drive",
           "title": "Save to Google Drive",
-          "detail": "Projects on any computer without our own server: people sign in with Google and their scenes are saved to their own Drive. Planned if people ask for cross-device projects.",
+          "detail": "Projects on any computer without our own server: people sign in with Google and their scenes are saved to their own Drive. Planned if people ask for cross-device projects. Needs a Google OAuth client ID from the site owner before it can be built.",
           "status": "planned"
         },
         {
@@ -301,14 +301,14 @@
         {
           "id": "p8-sfx-library",
           "title": "Sound library in the AI Dev Kit",
-          "detail": "A one-click download of about a thousand free public-domain (CC0) sound effects, searchable from the Studio, plus an optional search of Freesound's public-domain sounds with your own free key.",
-          "status": "planned"
+          "detail": "Search Freesound's public-domain (CC0) sounds from the Sounds tab with your own free key, through the AI Dev Kit (sounds are cached on your computer and added to the scene as audio). The planned one-click bulk download was dropped: the public CC0 packs could not be fetched reliably, and search covers far more sounds.",
+          "status": "done"
         },
         {
           "id": "p8-sfx-generate",
           "title": "Generate a sound",
-          "detail": "Describe a sound (\"a soft paper swoosh, 0.6 s\") and the AI Dev Kit makes it: with your own sound-effects API key, or with an open model it downloads and runs on your computer.",
-          "status": "planned"
+          "detail": "Describe a sound (\"a soft paper swoosh, 0.6 s\") and click Make: with an ElevenLabs key the AI Dev Kit generates it; otherwise the AI writes a synth recipe (oscillators, noise, filter and envelopes) that the Studio renders into a WAV in the browser, with no model to download.",
+          "status": "done"
         },
         {
           "id": "p8-styles",
@@ -319,8 +319,8 @@
         {
           "id": "p8-brand-kit",
           "title": "Brand kit",
-          "detail": "Your logo, colours and fonts as a style of your own, edited directly, plus styles exported and imported as files to share with a team.",
-          "status": "planned"
+          "detail": "Create a brand kit in the Styles tab: name, logo, five colours, fonts and weights, capitals and which built-in style it moves like. Brand styles add the logo to new scenes and AI assist uses it; any style exports and imports as a .json file to share with a team.",
+          "status": "done"
         },
         {
           "id": "p8-transcribe",
@@ -337,8 +337,8 @@
         {
           "id": "p8-mcp",
           "title": "Studio tools for AI apps (MCP)",
-          "detail": "The AI Dev Kit offers the Studio as tools to AI apps such as Claude Desktop, so a scene can be made or changed from a conversation.",
-          "status": "planned"
+          "detail": "The AI Dev Kit's studio-mcp.mjs gives AI apps such as Claude Desktop nine tools: check, inspect, stills and render a scene, beats and transcription, plus the scene guide (the format and presets), a Studio link that opens a scene in the browser, and saving a scene to a file. Scenes can be passed inline, so a conversation can make one from nothing.",
+          "status": "done"
         }
       ]
     },
@@ -494,7 +494,7 @@
         {
           "id": "p9-benchmark",
           "title": "Benchmark against hand-made videos",
-          "detail": "Rebuild reference motion-graphics videos from their voice-overs with the new tools and compare them frame by frame, the way the Site Converter is measured against its sources, until the Studio's version holds up next to them. Round 1 rebuilt a 10-second side-by-side race explainer from the new pieces and fixed what it found (pills sized to their words, Change text resizing them smoothly); round 2 compares it frame by frame with the reference.",
+          "detail": "Rebuild reference motion-graphics videos from their voice-overs with the new tools and compare them frame by frame, the way the Site Converter is measured against its sources, until the Studio's version holds up next to them. Round 1 rebuilt a 10-second side-by-side race explainer from the new pieces and fixed what it found (pills sized to their words, Change text resizing them smoothly); round 2 compares it frame by frame with the reference. Round 2 waits for the reference video.",
           "status": "in-progress"
         }
       ]
@@ -799,6 +799,6 @@
       ]
     }
   ],
-  "extensionVersion": "0.0.23",
+  "extensionVersion": "0.0.60",
   "versionLabel": "Studio"
 }

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 12
+sidebar_position: 11.5
 title: Export and WordPress
 description: Getting a scene out of Kinetic Scenes — a standalone HTML page, embed code, share links, the Kinetic Scene element in WordPress, and video through the AI Dev Kit or the browser itself.
 ---

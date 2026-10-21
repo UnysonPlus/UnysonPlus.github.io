@@ -13,8 +13,9 @@ This is the vision section for the Animation Engine — a plain-language guide t
 scroll.
 
 :::info[A living document]
-This is a forward-looking roadmap, not a changelog. Priorities and sequencing may shift — but the
-direction below is where we're taking motion in UnysonPlus.
+Part map of what's **already shipped**, part **roadmap** for what's ahead — marked throughout, so you
+can tell the two apart. Priorities and sequencing for the unshipped parts may shift, but the direction
+is where we're taking motion in UnysonPlus.
 :::
 
 ## The short version
@@ -35,11 +36,12 @@ So the goal isn't to "catch up." It's to push past the everyday scroll-and-fade 
 three things that define genuinely premium motion:
 
 1. **[Scroll that feels effortless](./focus-areas.md#area-1--scroll-feel)** — one smooth-scroll
-   substrate under everything.
+   substrate under everything. **✅ Shipped** ([Smooth Scroll](/animation-engine/smooth-scroll)).
 2. **[A real motion timeline](./focus-areas.md#area-2--a-real-motion-timeline)** — keyframing several
-   properties over one scrubbable axis, not just single-effect presets.
+   properties over one scrubbable axis, not just single-effect presets. **The native 80% has shipped**
+   ([Scroll Keyframes](/animation-engine/scroll-keyframes)); the visual editor is still ahead.
 3. **[Real 3D scenes you move through](./focus-areas.md#area-3--real-3d-scenes)** — a camera flying
-   through actual depth, not a flat image with a fake camera.
+   through actual depth, not a flat image with a fake camera. *(Still ahead.)*
 
 ## How to read this section
 
@@ -47,9 +49,10 @@ three things that define genuinely premium motion:
 | --- | --- |
 | **[Motion vocabulary](./terminology.md)** | What "scrub," "pin," "motion timeline," "real 3D vs CSS 3D," shaders and particles actually mean |
 | **[What the engine does today](./current-capabilities.md)** | The full, accurate map of current motion capabilities |
-| **[Where we're leveling up](./focus-areas.md)** | The three focus areas that separate good from award-tier |
+| **[Where we're leveling up](./focus-areas.md)** | The three focus areas that separate good from award-tier (with what's already shipped) |
 | **[The modern motion toolbox](./toolbox.md)** | The libraries behind these effects, and which fit a page builder |
-| **[Roadmap](./roadmap.md)** | The phased plan, what we'll build vs. keep bespoke, and the performance rules every effect follows |
+| **[Extending the engine](./extending-the-engine.md)** | How new effects and gallery designs register from a child theme, and the gap → fallback → report loop (shipped) |
+| **[Roadmap](./roadmap.md)** | The phased plan, what's shipped vs. still ahead, what we keep bespoke, and the performance rules every effect follows |
 
 ## About "camera-glide" background motion
 

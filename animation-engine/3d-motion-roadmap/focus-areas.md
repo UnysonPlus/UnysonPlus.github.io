@@ -17,15 +17,16 @@ which causes micro-jitter — the single most noticeable "cheap vs. premium" tel
 industry uses is a **smooth-scroll interpolator** (Lenis) that keeps the page and the animations in
 lockstep, frame-for-frame.
 
-**Where we're going.** Promote smooth scroll to a **site-wide switch** (with a strength/smoothing
-control) and route the scroll engine through it, so *everything* that scrolls shares one clock. The
-result is that every scroll effect on the page suddenly feels like one polished system — and every
-future scroll feature inherits that quality for free.
+**✅ Shipped.** Smooth scroll is now a **site-wide switch** — [Smooth Scroll](/animation-engine/smooth-scroll)
+(Theme Settings → Site-wide UX → Smooth Scroll), Lenis-powered momentum with a smoothing/strength
+control. And it shares **one clock** with the rest of the scroll engine: Smooth Scroll and
+[Scroll Loop](/animation-engine/scroll-loop) run off a single Lenis instance via the `window.__upwLenis`
+singleton (whichever boots first owns it), so every scroll effect scrubs against the same clock and
+enabling both never spawns two.
 
 :::tip[Biggest win, least work]
-This is mostly wiring — the smooth-scroll library is already in the engine (it powers
-[Scroll Loop](/animation-engine/scroll-loop)). Making it global is the highest return for the least
-effort, which is why it's first.
+This was mostly wiring — the smooth-scroll library was already in the engine — which is exactly why it
+was first, and why it shipped first.
 :::
 
 ## Area 2 — A real motion timeline {#area-2--a-real-motion-timeline}
@@ -40,10 +41,11 @@ doesn't fit a builder — but we now have a second asset that changes the calcul
 Scenes**, our standalone timeline editor for fixed-viewport scenes. We already *have* that product,
 so rather than cram one into a builder modal we **reuse it**, and ladder up in three tiers:
 
-1. **Beat keyframes (native, basic).** Give each element 2–3 keyframed states across a pinned
-   Section's scroll range, each with an easing pick — built on the existing
-   [Scroll Story](/animation-engine/scrollytelling) beat plumbing. This covers the large majority of
-   what people want a timeline for, as a handful of builder options.
+1. **Beat keyframes (native, basic).** ✅ **Shipped as [Scroll Keyframes](/animation-engine/scroll-keyframes)** —
+   give any element Start / Middle / End keyframed states across a pinned Section's scroll range, each
+   with an easing pick, auto-driven from a [Scroll Story](/animation-engine/scrollytelling) scene or the
+   element's own viewport travel. This covers the large majority of what people want a timeline for, as
+   a handful of builder options.
 2. **Advanced controls (the Advanced box).** The finer knobs — per-keyframe offsets, stagger, custom
    easing, trigger ranges — live in the element's **Advanced** tab, so the basic panel stays
    uncluttered while power users still get depth.
@@ -98,9 +100,10 @@ motion support, and mobile throttling. See the [performance rules](./roadmap#gua
 
 ## And a few smaller additions
 
-- **Rive elements** — interactive, stateful vector motion (icons/mascots that react to hover, scroll
-  or data) at 60fps and tiny file sizes.
+- **Rive elements** — ✅ **shipped as [Rive](/animation-engine/rive)**: interactive, stateful vector
+  motion (icons/mascots that react to hover, scroll or data) at 60fps and tiny file sizes, with live
+  inputs, data binding and JS control.
 - **WebGL image transitions** — a curated set of shader presets (ripple / liquid / displace) applied
-  to image elements — chosen from a dropdown, never hand-coded.
+  to image elements — chosen from a dropdown, never hand-coded. *(Still ahead.)*
 
 Next: [the libraries behind all this →](./toolbox)

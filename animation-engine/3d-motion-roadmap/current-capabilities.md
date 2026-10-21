@@ -48,12 +48,15 @@ which is exactly why the [focus areas](./focus-areas) are so specific.
 | **GSAP + ScrollTrigger + SplitText** | The industry-standard animation core — drives [Scroll Motion](/animation-engine/)'s scrub, pin and text reveals. |
 | **Three.js (real WebGL)** | [WebGL Object](/animation-engine/webgl-object) — refractive glass/metal objects, particle systems, full-screen shaders. |
 | **Google `<model-viewer>`** | [Model Viewer](/animation-engine/model-viewer) — glTF/GLB models with orbit, HDR lighting, and AR. |
-| **Lenis smooth-scroll** | [Scroll Loop](/animation-engine/scroll-loop) — smooth, snapping, seamless section scroll. |
+| **Lenis smooth-scroll** | Site-wide [Smooth Scroll](/animation-engine/smooth-scroll) and [Scroll Loop](/animation-engine/scroll-loop) — momentum scrolling and seamless section scroll, sharing one Lenis instance. |
 
 ## On every element's *Animations* tab
 
 - **Scroll Motion** — genuine scroll **scrub**, **pin** (with pin length), parallax, velocity-skew,
   colour-scrub, count-ups, and SplitText staggers, plus an advanced tier with curated easing curves.
+- **[Scroll Keyframes](/animation-engine/scroll-keyframes)** — the builder's mini motion timeline: move
+  any element through Start / Middle / End keyframed states as you scroll, each with its own easing,
+  auto-driven from a Scroll Story scene or the element's own viewport travel.
 - **[Hover Interactions](/animation-engine/hover)** — dozens of pointer effects: spotlight, lift, 3D
   tilt, magnetic pull, glow-border, glitch, text-scramble, WebGL image displace — stackable.
 - **[Text Effects](/animation-engine/text-effects)** — kinetic typography: shimmer, typewriter,
@@ -80,7 +83,8 @@ which is exactly why the [focus areas](./focus-areas) are so specific.
 
 ## Site-wide
 
-- **[Cursor](/animation-engine/cursor)** (40+ styles), **[Page Transitions](/animation-engine/page-transitions)**,
+- **[Smooth Scroll](/animation-engine/smooth-scroll)** (site-wide Lenis momentum),
+  **[Cursor](/animation-engine/cursor)** (40+ styles), **[Page Transitions](/animation-engine/page-transitions)**,
   **[Preloader](/animation-engine/preloader)**, **[Scroll Progress](/animation-engine/scroll-progress)**,
   and animated **[Backgrounds](/animation-engine/backgrounds)** (35 Canvas/CSS effects).
 
@@ -93,8 +97,16 @@ which is exactly why the [focus areas](./focus-areas) are so specific.
   animation clips, **AR ("view in your space")**, hotspots and material variants.
 - **[Motion Gallery](/animation-engine/motion-gallery)** — CSS-3D ring / wall / sphere / orbit / scatter /
   stack / device layouts, scroll-scrubbable and able to sync to a Scroll Story beat.
+- **[Rive](/animation-engine/rive)** — interactive, stateful vector animations (live inputs, data
+  binding, asset swaps, JS control) at 60fps and tiny file sizes.
 - **[Image Sequence](/animation-engine/image-sequence)** (frame-scrub "video from stills"),
   **[SVG Draw](/animation-engine/svg-draw)** (self-drawing line art, scroll-scrub).
+
+## Extensible
+
+The list above isn't closed. New per-element effects and Motion Gallery designs register from a
+**child theme**, through the same hooks the built-ins use — and an AI agent can discover the natives
+first and grow the engine from real demand. See **[Extending the engine](./extending-the-engine)**.
 
 :::note[The takeaway]
 This is a wide, capable base — more complete than most WordPress motion tools. That's *why* the

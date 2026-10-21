@@ -21,7 +21,7 @@ foundations laid earlier. We're doing the three [focus areas](./focus-areas) **o
 <text x="46" y="79" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">0</text>
 <rect x="82" y="34" width="648" height="80" rx="12" fill="var(--ifm-color-emphasis-100)" stroke="var(--ifm-color-emphasis-200)"/>
 <text x="104" y="64" font-size="17" font-weight="700" fill="var(--ifm-font-color-base)">Phase 0 — Foundation</text>
-<text x="104" y="90" font-size="13" fill="var(--ifm-color-emphasis-700)">Site-wide smooth scroll + one scroll engine</text>
+<text x="104" y="90" font-size="13" fill="var(--ifm-color-emphasis-700)">Site-wide smooth scroll + one scroll engine — ✓ shipped</text>
 <text x="708" y="58" text-anchor="end" font-size="10" font-weight="700" letter-spacing="1" fill="var(--ifm-color-emphasis-600)">IMPACT</text>
 <circle cx="654" cy="82" r="5" fill="#0FA36B"/><circle cx="672" cy="82" r="5" fill="#0FA36B"/><circle cx="690" cy="82" r="5" fill="#0FA36B"/><circle cx="708" cy="82" r="5" fill="#0FA36B"/>
 </g>
@@ -30,7 +30,7 @@ foundations laid earlier. We're doing the three [focus areas](./focus-areas) **o
 <text x="46" y="195" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">1</text>
 <rect x="82" y="150" width="648" height="80" rx="12" fill="var(--ifm-color-emphasis-100)" stroke="var(--ifm-color-emphasis-200)"/>
 <text x="104" y="180" font-size="17" font-weight="700" fill="var(--ifm-font-color-base)">Phase 1 — Motion timeline</text>
-<text x="104" y="206" font-size="13" fill="var(--ifm-color-emphasis-700)">Beat keyframes + a visual scroll-timeline editor</text>
+<text x="104" y="206" font-size="13" fill="var(--ifm-color-emphasis-700)">Beat keyframes ✓ shipped · visual editor ahead</text>
 <text x="708" y="174" text-anchor="end" font-size="10" font-weight="700" letter-spacing="1" fill="var(--ifm-color-emphasis-600)">IMPACT</text>
 <circle cx="654" cy="198" r="5" fill="#2F74E6"/><circle cx="672" cy="198" r="5" fill="#2F74E6"/><circle cx="690" cy="198" r="5" fill="#2F74E6"/><circle cx="708" cy="198" r="5" fill="none" stroke="var(--ifm-color-emphasis-400)" stroke-width="1.5"/>
 </g>
@@ -106,8 +106,10 @@ options** (see [Area 2](./focus-areas#area-2--a-real-motion-timeline) for the fu
 
 ## Phase 3 — Flourishes
 
-- **Rive elements** (interactive vector motion), **curated WebGL image transitions** (ripple / liquid
-  / displace presets), and richer particle presets in [WebGL Object](/animation-engine/webgl-object).
+- **Rive elements** (interactive vector motion) — ✅ **shipped as [Rive](/animation-engine/rive)**:
+  stateful vector animations with live inputs, data binding, asset swaps and JS control.
+- **Curated WebGL image transitions** (ripple / liquid / displace presets) and richer particle presets
+  in [WebGL Object](/animation-engine/webgl-object) — still ahead.
 
 ## Growing the engine from demand ✅ Shipped
 
@@ -121,12 +123,12 @@ recipe — have shipped, so this now works end to end.
 
 ## At a glance
 
-| Phase | Deliverable | Impact |
-| --- | --- | --- |
-| **0** | Site-wide smooth scroll + one scroll engine + shared guardrails | Very high |
-| **1** | Beat keyframes (the timeline "80%") | High |
-| **2** | Parametric scroll-camera 3D scene element | Very high |
-| **3** | Rive + WebGL image transitions + particle presets | Medium–High |
+| Phase | Deliverable | Impact | Status |
+| --- | --- | --- | --- |
+| **0** | Site-wide smooth scroll + one scroll engine + shared guardrails | Very high | ✅ Shipped |
+| **1** | Beat keyframes (the timeline "80%") → visual editor | High | 1a ✅ shipped · 1b–1c ahead |
+| **2** | Parametric scroll-camera 3D scene element | Very high | Planned |
+| **3** | Rive + WebGL image transitions + particle presets | Medium–High | Rive ✅ · rest planned |
 
 ## What we build vs. what stays curated {#build-vs-curated}
 

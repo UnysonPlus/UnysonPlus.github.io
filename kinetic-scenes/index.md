@@ -46,19 +46,41 @@ close to clean.
 
 ### The preset library
 
-Forty-four presets in seven groups. **Text:** Rise, Slam, Stretch, Scramble, Typewriter, Blur in, Flip, Tracking and
-**Count up** (a number counts to its value, keeping its prefix, separators and suffix) and **Change text** (the words
-swap for new ones on cue, rolling, sliding, fading or blurring; chain several to step through "1 / 10", "2 / 10"…).
-**Reveal and exit:** Fade,
-Wipe, **Soft wipe** (feathered edge), Iris, Slide, Grow, **Blinds** (staggered strips). **Move and scale:** Pop, Zoom,
-Spin, **Turn** (3D), **Scroll** (scrolls a tall screenshot inside its frame, or pans a wide one across; **Repeat** makes it endless), Keyframes,
-Custom code. **Emphasis:** Wave, Pulse, Shake, Float, Recolour, **Sheen** (one light
-sweep) and **Select box** (a coloured box with corner handles around a word or two, which take its colour, like a
-selected object in a design tool). **Ambient and backgrounds:** **Drift** (a slow move and scale creep for held frames), **Gradient flow** (a
-gradient fill flowing across a shape) and **Particles** (a seeded field of rising, falling or drifting dots).
-**Transitions** between groups: Slash, Flash, Dip to colour, Whip pan, Zoom through and Glitch. **3D:** Spin 3D,
-Tumble in, Orbit and Camera push, for 3D layers.
+Fifty-four presets in seven groups. **Text:** Rise, Slam, Stretch, Scramble, Typewriter (with an optional typing
+**caret**), Blur in, Flip, Tracking, **Carry in** (the first word arrives from far and each next one travels less, so the
+line lands with momentum), **Count up** (a number counts to its value, keeping its prefix, separators and suffix; a clock
+like "0:45" counts in minutes and seconds) and **Change text** (the words swap for new ones on cue, rolling, sliding,
+fading or blurring; chain several to step through "1 / 10", "2 / 10"…). **Reveal and exit:** Fade, Wipe, **Soft wipe**
+(feathered edge), Iris, Slide (with optional **motion blur** along the move), Grow, **Blinds** (staggered strips),
+**Stack** (drops onto a pile like a card) and **Draw** (a line or flow lines drawing themselves). **Move and scale:**
+Pop, Zoom, Spin, **Turn** (3D), **Scroll** (scrolls a tall screenshot inside its frame, or pans a wide one across;
+**Repeat** makes it endless), **Progress bar** (a bar fills the shape), **Follow path** (travels along a line, with an
+optional fading trail), Keyframes, Custom code. **Emphasis:** Wave, Pulse, Shake, Float, Recolour, **Sheen** (one light
+sweep), **Select box** (a coloured box with corner handles around a word or two, which take its colour), **Glow** (a neon
+glow that stays on, optionally flickering on like a sign), **Burst** (a one-off burst of sparks, shards, dots or rings
+on a hit) and **Make solid** (a dashed outline closes up). **Ambient and backgrounds:** **Drift**, **Gradient flow**,
+**Particles** and **Marching outline** (the dashes of a dashed outline travel round it while something works).
+**Transitions** between groups: Slash, Flash, Dip to colour, **Whip pan** (one velocity-matched camera swing with a
+blur along the move, optionally with a light streak on the cut), **Light streak**, Zoom through and Glitch. **3D:** Spin
+3D, Tumble in, Orbit and Camera push, for 3D layers.
 Hover a preset in the library to see it play.
+
+### Lines, flow lines and diagrams
+
+Three layer types draw with lines, added from the timeline (**+ Line**, **+ Diagram**, **+ Flow**):
+
+- **Line:** a curve, an arrow, an underline swoosh or any SVG path. Its coordinates run from 0 to 100 across and down
+  its box, so it stretches with the box while its width stays the same. Choose a ready-made shape or paste path data;
+  give it arrowheads, a glow or dashes; add **Draw** to draw it on. Any layer can travel along it with **Follow path**
+  (and leave a fading **trail**, for a comet).
+- **Flow lines:** a bundle of glowing curves joining two layers, worked out every frame from where those two layers are,
+  so they stay attached however either one moves (with the camera too). Set how many lines, how far they spread at the
+  ends and squeeze in the middle, how much they sway, their colours and glow, and light **pulses** running along them.
+  Draw them on with **Draw**; send an icon along one with **Follow path**.
+- **Diagram:** nodes and connections as data, for flowcharts, architecture diagrams and branch graphs. Nodes are boxes,
+  pills, circles, dots (a commit with its label beside it) or **value** boxes (a variable's name above, its value inside).
+  Each node and connection can appear at its own moment (a node pops in, its connections draw themselves), nodes can
+  glide to new places with their connections bending along, and a **tag** (like HEAD) can travel from node to node.
 
 ### Sound
 

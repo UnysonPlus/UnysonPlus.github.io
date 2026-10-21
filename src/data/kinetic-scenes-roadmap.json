@@ -357,7 +357,7 @@
           "id": "p9-whip-streak",
           "title": "Whip and light-streak transitions",
           "detail": "The cut hand-made reels use most: a velocity-matched whip (the old scene accelerates out with heavy directional blur, the new one arrives from the same direction at the same speed and settles), and a light streak fired exactly at the cut to hide the join.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p9-camera",
@@ -381,19 +381,19 @@
           "id": "p9-paths",
           "title": "Paths and drawn lines",
           "detail": "Lines, curves and connectors that draw themselves, layers that travel along a path (a comet that writes a word), and fading trails behind moving things.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p9-diagram",
           "title": "Diagram layer",
           "detail": "Nodes and connections as one layer: flowcharts, architecture diagrams and branch graphs (lines that branch off and merge back, labels, and a tag that moves from node to node). Adding a node animates it in and its connections draw themselves; moving a node bends its connections with it. Stored as data, so the AI can write one and you can edit it.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p9-flow-lines",
           "title": "Flow lines",
           "detail": "A bundle of glowing curves between two layers, made in one go: pick the start and end layers, how many lines, how far they fan out and squeeze together, their gradient colours and how strongly they glow (a soft halo under a bright core, brightening where lines cross). The lines draw themselves, light pulses or icons can flow along them, and they stay attached when either layer moves, so they work with the camera and with pinned layers. For showing data, work or ideas passing from one thing to another.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p9-repeat",
@@ -411,7 +411,7 @@
           "id": "p9-word-carrier",
           "title": "Word-reveal carrier",
           "detail": "A text preset where the first word slides in big and fast and each following word travels less (for example 360, 120, 60, 25, 12 px), so a line arrives with momentum instead of in a uniform stagger.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p9-image-layers",
@@ -423,13 +423,13 @@
           "id": "p9-glow",
           "title": "Glow and motion blur",
           "detail": "Neon glow on text and shapes, and blur along the direction of fast moves, so quick motion reads as speed rather than a jump.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p9-bursts",
           "title": "Impact bursts",
           "detail": "One-off bursts of sparks, shards or rings on a hit, landing with the sound and the word they punctuate.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p9-captions",
@@ -465,7 +465,7 @@
           "id": "p9-ui-kit",
           "title": "Interface building blocks",
           "detail": "Ready-made pieces for product videos: a prompt box that types, highlighted tags, progress bars that fill over a set time, timer readouts (\"21 s\", \"0:45\"), stacking list cards, and dashed outlines that can march while something is working and turn solid when it is ready.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p9-code-kit",

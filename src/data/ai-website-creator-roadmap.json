@@ -141,9 +141,9 @@
         {
           "id": "p2-picker",
           "title": "The style picker",
-          "detail": "The intake step that offers the styles as an enumerated choice (the \"dropdown\"), with a *describe-your-own* escape hatch so the curated set is never a cage. In the kit this is a choice in the create-site flow; in a later in-admin or hosted surface it becomes a visual picker with thumbnails — same list, no rework. **Waits on Phase 4.** The picker is a step in the create-site flow, and that flow does not exist yet — the seven styles are the list it will offer, so the library is ready for it. Building a picker before there is anything to pick into would be a UI with no behind it.",
+          "detail": "The intake step that offers the styles as an enumerated choice (the \"dropdown\"), with a *describe-your-own* escape hatch so the curated set is never a cage. In the kit this is a choice in the create-site flow; in a later in-admin or hosted surface it becomes a visual picker with thumbnails — same list, no rework. **Landed with Phase 4.** It is the style step of the create-site intake: skills/create-site/inputs/brief.md offers the seven styles as an enumerated choice with a describe-your-own option, and the spec carries the result as brand.style plus brand.style_notes — the escape hatch that keeps the curated set from being a cage. A visual picker with thumbnails is the same list in a later surface, not a rework.",
           "pin": true,
-          "status": "planned"
+          "status": "done"
         }
       ]
     },
@@ -192,8 +192,8 @@
               "skills/create-site/SKILL.md"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-spec",
@@ -204,8 +204,8 @@
               "skills/create-site/site-spec.schema.json"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-brief",
@@ -216,8 +216,8 @@
               "skills/create-site/inputs/brief.md"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-url",
@@ -228,8 +228,8 @@
               "skills/create-site/inputs/url.md"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-design-ref",
@@ -240,8 +240,8 @@
               "skills/create-site/inputs/design-reference.md"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-vertical",
@@ -252,8 +252,8 @@
               "skills/create-site/inputs/vertical.md"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-rules",
@@ -264,8 +264,8 @@
               "skills/create-site/build-rules.md"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },
@@ -409,5 +409,5 @@
   ],
   "detected": true,
   "extensionVersion": null,
-  "generatedAt": "2026-10-21T12:26:59.981Z"
+  "generatedAt": "2026-10-21T13:00:34.897Z"
 }

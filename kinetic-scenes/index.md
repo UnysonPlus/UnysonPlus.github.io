@@ -46,12 +46,15 @@ close to clean.
 
 ### The preset library
 
-Forty-two presets in seven groups. **Text:** Rise, Slam, Stretch, Scramble, Typewriter, Blur in, Flip, Tracking and
-**Count up** (a number counts to its value, keeping its prefix, separators and suffix). **Reveal and exit:** Fade,
+Forty-four presets in seven groups. **Text:** Rise, Slam, Stretch, Scramble, Typewriter, Blur in, Flip, Tracking and
+**Count up** (a number counts to its value, keeping its prefix, separators and suffix) and **Change text** (the words
+swap for new ones on cue, rolling, sliding, fading or blurring; chain several to step through "1 / 10", "2 / 10"…).
+**Reveal and exit:** Fade,
 Wipe, **Soft wipe** (feathered edge), Iris, Slide, Grow, **Blinds** (staggered strips). **Move and scale:** Pop, Zoom,
 Spin, **Turn** (3D), **Scroll** (scrolls a tall screenshot inside its frame, or pans a wide one across; **Repeat** makes it endless), Keyframes,
 Custom code. **Emphasis:** Wave, Pulse, Shake, Float, Recolour, **Sheen** (one light
-sweep). **Ambient and backgrounds:** **Drift** (a slow move and scale creep for held frames), **Gradient flow** (a
+sweep) and **Select box** (a coloured box with corner handles around a word or two, which take its colour, like a
+selected object in a design tool). **Ambient and backgrounds:** **Drift** (a slow move and scale creep for held frames), **Gradient flow** (a
 gradient fill flowing across a shape) and **Particles** (a seeded field of rising, falling or drifting dots).
 **Transitions** between groups: Slash, Flash, Dip to colour, Whip pan, Zoom through and Glitch. **3D:** Spin 3D,
 Tumble in, Orbit and Camera push, for 3D layers.

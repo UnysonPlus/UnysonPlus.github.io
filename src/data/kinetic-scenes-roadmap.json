@@ -405,7 +405,7 @@
           "id": "p9-text-swap",
           "title": "Change text",
           "detail": "A label or pill changes its text on cue (\"booting\" to \"ready in 45 s\", \"1 / 10\" to \"2 / 10\") with a quick slide, roll or fade, and its box resizes smoothly to fit the new words.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p9-word-carrier",
@@ -483,7 +483,7 @@
           "id": "p9-select-box",
           "title": "Select box emphasis",
           "detail": "An emphasis preset that draws a coloured box with small square corner handles around one word of a headline, like a selected object in a design tool, with the word taking the box's colour. Useful well beyond code: heroes, product tours and social clips.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p9-morph",

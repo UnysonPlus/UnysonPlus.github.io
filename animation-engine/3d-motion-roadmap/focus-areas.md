@@ -48,7 +48,10 @@ so rather than cram one into a builder modal we **reuse it**, and ladder up in t
    easing, trigger ranges — live in the element's **Advanced** tab, so the basic panel stays
    uncluttered while power users still get depth.
 3. **The Scroll Timeline Editor (visual).** A real tracks-and-keyframes editor for full
-   choreography, built by **reusing the Kinetic Scenes timeline** rather than reinventing it.
+   choreography, built by **reusing the Kinetic Scenes timeline** rather than reinventing it. A
+   feasibility probe confirmed the fit: the player already drives a *seekable* GSAP timeline from
+   scroll (pinned stage, sticky-header offset, smoothing), and its timeline / keyframe UI is a clean,
+   self-contained component — so we reuse both, and only build the bridge below.
 
 **The idea that makes it fit.** Kinetic Scenes needs two things — a **fixed stage** and a
 **playhead**. A **pinned Section gives you both**: pin it and the viewport is frozen for a known slice
@@ -67,10 +70,13 @@ builder modal never made sense; editing it on the actual page does.
 Scene"** (bounded, stable, reuses the editor as-is). From there it grows to a **page-level overview** —
 every section's triggers and scrubs on one scroll ruler — read-only first, then editable.
 
-**The data model — native, not a parallel format.** Everything stays **builder options**: basic beat
-keyframes in the element panel, finer controls in the Advanced box, and the visual editor **reads and
-writes those same options**. The timeline is a *view* over native settings, so there is no separate
-scene file to keep in sync and no new place for a site's motion to live.
+**The data model — native, bridged to the reused editor.** Everything stays **builder options**: basic
+beat keyframes in the element panel, finer controls in the Advanced box. The reused player and
+timeline editor speak a portable *scene* object, so a thin **compiler maps native options ⇄ scene** —
+the scene is a compile target the editor renders and the player scrubs, **never a file stored on the
+site**. So the visual editor **reads and writes the same native options** (a *view* over the settings),
+and there is no parallel format or new home for a site's motion. That one mapping layer is the only
+genuinely new piece; the runtime and the editor are reused.
 
 ## Area 3 — Real 3D scenes {#area-3--real-3d-scenes}
 

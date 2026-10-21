@@ -84,6 +84,11 @@ options** (see [Area 2](./focus-areas#area-2--a-real-motion-timeline) for the fu
   from an **Animation Engine Timeline** admin-bar icon (later folded into the Live Editor), and
   scoped to one pinned **Scroll Scene** first. It reads and writes the same options as **1a** — a
   view over the settings, never a separate scene file.
+  <br />*Probed 2026-10-21 — confirmed feasible:* the Kinetic Scenes player already ships the scroll
+  mode (pinned sticky stage + sticky-header offset + smoothing, driving a seekable GSAP timeline) and
+  its timeline / keyframe editor is a clean, props-driven component. The **one piece to build** is a
+  **native-options ⇄ scene compiler** so the scene stays a compile target, not a stored file — see the
+  Design Decisions log ("reuse Kinetic Scenes for the scroll timeline editor").
 - **1c · Page-level choreography.** A whole-page scroll ruler showing every section's triggers and
   scrubs at once — read-only first, then editable.
 

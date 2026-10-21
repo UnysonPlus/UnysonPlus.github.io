@@ -399,7 +399,7 @@
           "id": "p9-repeat",
           "title": "Repeat from a list",
           "detail": "Design one item (a row with a badge, a title and a subtitle, an app card, a step card), give it a list of entries, and get one copy per entry, laid out and staggered. Change the list and every copy updates; steps can point at an item by its position.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p9-text-swap",
@@ -417,7 +417,7 @@
           "id": "p9-image-layers",
           "title": "Image layers (AI)",
           "detail": "Split into layers: an image becomes a group of stacked transparent layers (background, subject, objects, text) in exactly the same place, so a picture can be revealed piece by piece instead of all at once, each part animated on its own. With a depth per layer, a camera move turns a flat photo into a 2.5D parallax shot. Runs through the AI Dev Kit: Qwen-Image-Layered through the user's own fal.ai key (or on a local GPU that can hold it), with a lighter local fallback (cutting out the subject and filling in behind it) that runs on an ordinary computer.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p9-glow",
@@ -435,31 +435,31 @@
           "id": "p9-captions",
           "title": "Captions with the spoken word highlighted",
           "detail": "Captions built from a transcribed voice-over that light up each word as it is said, in the style's colours, alongside or instead of the big kinetic type.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p9-voice-lead",
           "title": "Picture leads the voice on punchlines",
           "detail": "In scenes made from a voice-over, a reveal finishes on its word instead of starting on it, so the picture lands as the word is heard (the viewer sees, then hears). Punchlines lead slightly; transcripts reach the AI as compact phrase lines, leaving more of its budget for the scene.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p9-beat-sync",
           "title": "Music beat sync",
           "detail": "Drop music on the timeline and the Studio finds its tempo, beat grid and strongest moments, right in the browser (no Python): each beat scored by its onset strength, local contrast, loudness and bass. The beats show on the audio row; a big reveal can snap up to 0.15 s onto a strong moment and small entrances up to 0.10 s onto a beat, only a few are locked per scene, and text that must be read lands on every other beat at fast tempos. AI assist gets the same cue list.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p9-audio-reactive",
           "title": "Music-reactive glow",
           "detail": "A loudness and bass curve computed once from the music lets a few things breathe with it (a glow, a background's warmth, a card's presence). Precomputed, so it seeks and exports exactly; never equaliser bars or strobing.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p9-sound-craft",
           "title": "Sound that sounds designed",
           "detail": "Fewer effects, each tied to something visible; each sound started early by its own attack so its hit lands on the frame; a softness rating on every built-in sound so repeated ones stay gentle; and video export mixed to a standard loudness (-14 LUFS, peaks under -1 dB) with music lowered under a voice-over.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p9-ui-kit",
@@ -471,13 +471,13 @@
           "id": "p9-code-kit",
           "title": "Code explainer kit",
           "detail": "Everything a coding explainer needs. A Code layer that shows real code with syntax colours, line numbers, a file tab and an optional window frame and Run button, stored as text so the AI can write it and you can edit it. A Type code preset that types it character by character with a blinking caret, in a natural rhythm (quick within a word, a short pause at punctuation and new lines) and line by line so it can follow a voice-over. Line and token highlights that aim at a line or a word in the code and follow it as it types or scrolls. A Terminal style for a prompt, a typed command and output appearing on cue. Callout pills with a connector that stay attached to the line they explain, and labelled value boxes for showing what a variable holds. With Explainer mode, AI assist can take a code file and a topic and build the whole video.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p9-code-edits",
           "title": "Code edits",
           "detail": "The Code layer changes existing code, not only writes new code: typing in the middle with the lines below sliding down smoothly, selecting and deleting, and turning one version into another (repeated lines becoming a function call). Autocomplete popups and parameter hints appear while typing, the editor scrolls to follow the caret, and a Run step shows the output panel. You describe the code as versions (before, after each step) and the Studio works out the keystrokes between them, timed to the voice-over through Steps.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p9-select-box",
@@ -489,13 +489,13 @@
           "id": "p9-morph",
           "title": "Morph between acts",
           "detail": "The same word, card or screenshot glides from its place in one act to its place in the next (position, size, colour and corner radius), instead of fading out and in again, so the viewer's eye never loses it.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p9-benchmark",
           "title": "Benchmark against hand-made videos",
-          "detail": "Rebuild reference motion-graphics videos from their voice-overs with the new tools and compare them frame by frame, the way the Site Converter is measured against its sources, until the Studio's version holds up next to them.",
-          "status": "planned"
+          "detail": "Rebuild reference motion-graphics videos from their voice-overs with the new tools and compare them frame by frame, the way the Site Converter is measured against its sources, until the Studio's version holds up next to them. Round 1 rebuilt a 10-second side-by-side race explainer from the new pieces and fixed what it found (pills sized to their words, Change text resizing them smoothly); round 2 compares it frame by frame with the reference.",
+          "status": "in-progress"
         }
       ]
     },

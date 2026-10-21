@@ -46,23 +46,24 @@ close to clean.
 
 ### The preset library
 
-Fifty-four presets in seven groups. **Text:** Rise, Slam, Stretch, Scramble, Typewriter (with an optional typing
-**caret**), Blur in, Flip, Tracking, **Carry in** (the first word arrives from far and each next one travels less, so the
-line lands with momentum), **Count up** (a number counts to its value, keeping its prefix, separators and suffix; a clock
-like "0:45" counts in minutes and seconds) and **Change text** (the words swap for new ones on cue, rolling, sliding,
-fading or blurring; chain several to step through "1 / 10", "2 / 10"…). **Reveal and exit:** Fade, Wipe, **Soft wipe**
-(feathered edge), Iris, Slide (with optional **motion blur** along the move), Grow, **Blinds** (staggered strips),
-**Stack** (drops onto a pile like a card) and **Draw** (a line or flow lines drawing themselves). **Move and scale:**
-Pop, Zoom, Spin, **Turn** (3D), **Scroll** (scrolls a tall screenshot inside its frame, or pans a wide one across;
-**Repeat** makes it endless), **Progress bar** (a bar fills the shape), **Follow path** (travels along a line, with an
-optional fading trail), Keyframes, Custom code. **Emphasis:** Wave, Pulse, Shake, Float, Recolour, **Sheen** (one light
-sweep), **Select box** (a coloured box with corner handles around a word or two, which take its colour), **Glow** (a neon
-glow that stays on, optionally flickering on like a sign), **Burst** (a one-off burst of sparks, shards, dots or rings
-on a hit) and **Make solid** (a dashed outline closes up). **Ambient and backgrounds:** **Drift**, **Gradient flow**,
-**Particles** and **Marching outline** (the dashes of a dashed outline travel round it while something works).
-**Transitions** between groups: Slash, Flash, Dip to colour, **Whip pan** (one velocity-matched camera swing with a
-blur along the move, optionally with a light streak on the cut), **Light streak**, Zoom through and Glitch. **3D:** Spin
-3D, Tumble in, Orbit and Camera push, for 3D layers.
+Sixty-one presets in eight groups. **Text:** Rise, Slam, Stretch, Scramble, Typewriter (with an optional typing
+**caret**), Blur in, Flip, Tracking, **Carry in** (the first word arrives from far and each next one travels less),
+**Count up** (a number counts to its value, keeping its prefix, separators and suffix; a clock like "0:45" counts in
+minutes and seconds) and **Change text** (the words swap for new ones on cue, rolling, sliding, fading or blurring;
+chain several to step through "1 / 10", "2 / 10"…; a pill around the words resizes smoothly to the new ones).
+**Reveal and exit:** Fade, Wipe, **Soft wipe**, Iris, Slide (with optional **motion blur**), Grow, **Blinds**,
+**Stack** (drops onto a pile like a card) and **Draw** (a line or flow lines drawing themselves). **Move and
+scale:** Pop, Zoom, Spin, **Turn** (3D), **Scroll** (a tall screenshot scrolling in its frame; **Repeat** makes it
+endless), **Progress bar**, **Follow path** (travels along a line, with an optional fading trail), **Morph into**
+(glides into another layer's place, size, colour and corners and hands over to it), Keyframes, Custom code.
+**Emphasis:** Wave, Pulse, Shake, Float, Recolour, **Sheen**, **Select box** (a coloured box with corner handles
+around a word or two), **Glow** (a neon glow, optionally flickering on), **Burst** (sparks, shards, dots or rings on
+a hit) and **Make solid** (a dashed outline closes up). **Ambient and backgrounds:** **Drift**, **Gradient flow**,
+**Particles**, **Marching outline** and **React to music** (a glow, scale or brightness that breathes with the
+music's loudness or bass). **Code** (for Code layers): **Type code**, **Change code**, **Highlight code**, **Code
+note** and **Run code**. **Transitions** between groups: Slash, Flash, Dip to colour, **Whip pan** (a
+velocity-matched camera swing, optionally with a light streak on the cut), **Light streak**, Zoom through and
+Glitch. **3D:** Spin 3D, Tumble in, Orbit and Camera push, for 3D layers.
 Hover a preset in the library to see it play.
 
 ### Lines, flow lines and diagrams
@@ -81,6 +82,39 @@ Three layer types draw with lines, added from the timeline (**+ Line**, **+ Diag
   pills, circles, dots (a commit with its label beside it) or **value** boxes (a variable's name above, its value inside).
   Each node and connection can appear at its own moment (a node pops in, its connections draw themselves), nodes can
   glide to new places with their connections bending along, and a **tag** (like HEAD) can travel from node to node.
+
+### Code, lists, captions and pictures in layers
+
+- **Code** (**+ Code**): an editor window or a terminal showing real code with syntax colours and line numbers,
+  drawn from its clips. **Type code** types lines in, in a natural rhythm with a caret (and an optional
+  autocomplete popup). **Change code** turns the code into a new version the way a person edits: each changed
+  part is selected and deleted, the new text typed in its place, new lines opened with Enter first, and the lines
+  below slide to make room. **Highlight code** marks lines or one word, **Code note** puts a pill beside a line,
+  **Run code** presses Run and shows the output. Give the whole new version; only what differs is touched.
+- **Lists** (**+ List**, or **Turn into a list** on a group): one designed row or card copied for every entry
+  of a list, with `{{field}}` placeholders in its words, laid out in a row, a column or a grid and staggered.
+  Change the list and every copy follows. **Unpack into layers** turns it back into ordinary layers.
+- **Captions** (**+ Captions**): the words of a transcribed voice-over, a few at a time, with the word being said
+  lit up (or every word said so far), in your type and colours.
+- **Pills on text:** any text layer can carry a pill or tag sized to its words (a status label, a badge).
+- **Split into layers** (on an image layer, through the AI Dev Kit): the picture becomes stacked transparent
+  layers in exactly the same place. With your own fal.ai key an AI splits it into several layers; without one,
+  the kit cuts the subject out on your computer and fills the background in behind it. Each layer gets a
+  **depth**: any layer can, from -1 (far) to 1 (near), and with a camera pan or zoom near layers move and grow
+  more than the rest, so a flat photo becomes a 2.5D shot.
+
+### Music
+
+Select a music clip and **Find the beats**: the Studio works out the tempo, the beat grid and the strongest moments
+right in the browser, and marks them on the clip in the timeline (strong moments taller). **Snap reveals to the
+beat** moves a few big reveals up to 0.15 s so they land on a strong moment, and smaller entrances up to 0.10 s onto
+a beat. AI assist gets the same cues, and **React to music** lets one or two things breathe with it.
+
+Sound is mixed to sound designed: a sound attached to a clip's end (a landing), and any big hit or riser, starts
+early by its own attack so the hit lands on the frame; the same sound repeated within two seconds gets softer each
+time; music is lowered under a voice-over while it speaks; and video exported through the AI Dev Kit is mixed to
+-14 LUFS with peaks under -1 dB. In scenes made from a voice-over, each text reveal is moved to finish on the word
+it shows.
 
 ### Sound
 

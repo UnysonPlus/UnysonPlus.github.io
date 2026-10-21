@@ -323,15 +323,15 @@
               "docs/site-creator/verticals/README.md"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p6-crm-first",
           "title": "CRM as the first vertical",
-          "detail": "Fold the CRM website generator in as the first vertical-template provider: its spec and prompts already drive the AI Dev Kit fresh-build path, so it is the proof the pattern works. The CRM pipeline, forms and newsletter CRM come switched on for this vertical.",
+          "detail": "Fold the CRM website generator in as the first vertical-template provider: its spec and prompts already drive the AI Dev Kit fresh-build path, so it is the proof the pattern works. The CRM pipeline, forms and newsletter CRM come switched on for this vertical. **Folded in by routing and documentation, not by code.** The generator stays the emitter: its nine presets are listed as the available set in docs/site-creator/verticals/catalogue.md, the create-site vertical input routes CRM-shaped sites to it, and the spec schema carries its lead_capture and crm blocks as optional vertical extensions so what it emits is read directly. There is no code integration and none is needed for it to be the first provider.",
           "pin": true,
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p6-more",
@@ -339,11 +339,14 @@
           "detail": "A handful more, drawn from the generator's existing set (local business, professional service, ecommerce, SaaS), each a vertical template the creator can start from and customize.",
           "detect": {
             "files": [
-              "docs/site-creator/verticals/catalogue.md"
+              "docs/site-creator/verticals/local-business.md",
+              "docs/site-creator/verticals/professional-service.md",
+              "docs/site-creator/verticals/ecommerce.md",
+              "docs/site-creator/verticals/saas.md"
             ]
           },
           "status": "planned",
-          "progress": "0/1"
+          "progress": "0/4"
         }
       ]
     },
@@ -409,5 +412,5 @@
   ],
   "detected": true,
   "extensionVersion": null,
-  "generatedAt": "2026-10-21T13:06:08.985Z"
+  "generatedAt": "2026-10-21T13:10:40.831Z"
 }

@@ -1,0 +1,76 @@
+---
+title: Kit Assistant
+sidebar_label: Kit Assistant
+sidebar_position: 8.6
+description: The plan for the AI Dev Kit dashboard's Chat tab — giving it the kit's own context and tools, so it can look at a page, read a conversion report and search the docs instead of declining.
+---
+
+import Roadmap, {RoadmapSummary} from '@site/src/components/Roadmap';
+import data from '@site/src/data/kit-assistant-roadmap.json';
+
+# Kit Assistant
+
+The **Chat** tab in the AI Dev Kit dashboard. It answers, but it cannot *do* anything, and this page
+is the plan for fixing that.
+
+:::note Status: Phase 1 under way
+The first two tasks are built — the chat now carries a brief describing the kit, and states which model
+is answering. It still has no tools, so it cannot fetch a page itself; what changed is that it can now
+point at the part of the kit that can. The summary below is detected from the kit source, not ticked by
+hand.
+:::
+
+<RoadmapSummary data={data} />
+
+## What is actually wrong with it
+
+Not the model, and not the prompt wording. The panel is a **passthrough**: `/local-ai/chat` takes the
+last twelve turns, prepends one sentence of system prompt, and sends them on. No tools, no context, no
+knowledge of the service it is running inside.
+
+That single design choice produces every unhelpful answer people hit:
+
+| Asked | It says | What is actually true |
+| --- | --- | --- |
+| *"What's your AI model?"* | "I don't have access to my underlying model name." | The server returns `out.model` on **every reply**, and the dashboard header shows the provider. |
+| *"Can you make a short scene on the Studio?"* | "I don't have browser/network access." | The Studio bridge runs **on this service** — the home screen reports its last call. |
+| *"Can you connect to this URL?"* | "I can't browse it." | The kit **is** a browser: `capture.mjs` drives Playwright and `/capture` is an HTTP endpoint. |
+
+The third one is the clearest. A converter assistant that cannot look at a page is refusing the job it
+exists for — and it is refusing with a capability its own process already has.
+
+## The shape of the fix
+
+Three phases, in dependency order, each useful on its own:
+
+1. **Context** — tell it where it is. No new infrastructure; the service already holds all of it.
+2. **Tools** — let it use the kit's hands. Reading only: look at a page, read a report, search the docs.
+3. **Actions** — let it change things, behind an explicit confirm.
+
+Reading is safe and lands first. Writing comes last and never runs on the strength of a sentence typed
+in a chat box.
+
+<Roadmap data={data} />
+
+## Two rules this plan does not bend
+
+**Every tool call is visible.** Each call and its result renders in the panel as a row the person can
+open. An assistant that reads your files invisibly is one you cannot check, and this panel sits next to
+real site data.
+
+**Nothing writes without a confirm.** Localhost is fair game across this project; a push, a live site
+or a destructive local change is never automatic. A chat box is the easiest place in the product to
+type something you did not quite mean, so the gate matters more here than anywhere else.
+
+## How this page stays current
+
+Status is detected, not ticked by hand: `src/data/kit-assistant-roadmap.json` names the files and
+symbols that make each task real, and `scripts/gen-roadmap.mjs` checks them against the kit source
+tree. Tasks carrying `pin: true` are the exception — they are set by hand, for work no file can prove.
+
+```bash
+EXT_DIR="D:/Web Dev/UnysonPlus-AI-Dev-Kit" node scripts/gen-roadmap.mjs src/data/kit-assistant-roadmap.json
+```
+
+The `EXT_DIR` matters: without it the scanner resolves the **push clone**, which only carries what has
+been pushed, and reports finished work as planned.

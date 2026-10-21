@@ -1,0 +1,177 @@
+{
+  "_comment": "SOURCE OF TRUTH for the Kit Assistant roadmap rendered at /ai-dev-kit/kit-assistant. The Kit Assistant is the Chat tab in the AI Dev Kit dashboard, served by the capture service (/local-ai/chat in serve.mjs, chatLocalModel in to-ai.mjs). Status is auto-detected by scripts/gen-roadmap.mjs against the kit working copy — run it with EXT_DIR pointed at d:/Web Dev/UnysonPlus-AI-Dev-Kit, since the default resolves the push clone.",
+  "extension": "kit-assistant",
+  "cloneDir": "UnysonPlus-AI-Dev-Kit",
+  "versionLabel": "Capture service",
+  "repo": "https://github.com/UnysonPlus/UnysonPlus-Capture-Service",
+  "milestones": [
+    {
+      "id": "a1-context",
+      "title": "Phase 1 — Let it know where it is",
+      "goal": "Today the chat is a **passthrough**: a one-sentence system prompt, the last twelve turns, and nothing else. It does not know which model is answering it, that a capture service is running beside it, or that a `capture-out/` folder exists a few paths away. Every unhelpful answer in the current panel traces back to that. This phase costs no new infrastructure — it is context the service already holds and simply never sends.",
+      "tasks": [
+        {
+          "id": "a1-prompt",
+          "title": "A system prompt that describes the kit",
+          "detail": "Replace the single sentence in `CHAT_SYSTEM` with a brief that states what the kit is, what sits beside the chat (the capture service, the converter, the Studio bridge, the recipes and styles), and — critically — **what it must not claim it cannot do**. The current prompt leaves the model to guess, and it guesses that it is a generic chatbot with no abilities.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "assembled/UnysonPlus-Capture-Service/tools/design-capture/to-ai.mjs",
+                "pattern": "CHAT_SYSTEM_KIT|KIT_BRIEF"
+              }
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
+        },
+        {
+          "id": "a1-model",
+          "title": "Tell it which model is answering",
+          "detail": "Asked \"what's your AI model?\" the panel says it has no access to that — while the server returns `out.model` on every single reply and the dashboard header shows the provider. The answering backend and model go into the turn, so the chat can state them plainly. This is the cheapest possible fix and the most visibly silly failure.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "assembled/UnysonPlus-Capture-Service/tools/design-capture/to-ai.mjs",
+                "pattern": "answeringModelLine"
+              }
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
+        },
+        {
+          "id": "a1-captures",
+          "title": "Know what has been captured",
+          "detail": "A list of the sites in the watched `capture-out/` folder, with each one's section count and conversion-report headline, injected as context. It turns \"I can't see anything\" into \"the last capture has 11 sections; two still fall back to code_block\" — which is the question people actually open the panel to ask.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "assembled/UnysonPlus-Capture-Service/tools/design-capture/serve.mjs",
+                "pattern": "chatCaptureContext|captureSummaryForChat"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "a2-tools",
+      "title": "Phase 2 — Give it the kit's own hands",
+      "goal": "The kit **is** a browser. `capture.mjs` drives Playwright, `/capture` is an HTTP endpoint, and the conversion pipeline runs locally. So \"I don't have network/browser access to external sites\" is not a limitation — it is the chat being unaware of the machinery it is sitting inside. This phase exposes that machinery as tools the model can call, with every call reported in the panel so nothing happens invisibly.",
+      "tasks": [
+        {
+          "id": "a2-loop",
+          "title": "A tool-calling loop",
+          "detail": "The chat currently sends one message and renders one reply. It needs a loop: offer tools, run the ones the model asks for, feed the results back, repeat to a bounded depth. The OpenAI-shaped `tool_calls` translation already exists in `to-ai.mjs` for the endpoint backends — this reuses it rather than inventing a second path.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "assembled/UnysonPlus-Capture-Service/tools/design-capture/to-ai.mjs",
+                "pattern": "chatWithTools|CHAT_TOOLS"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "a2-fetch",
+          "title": "Tool: look at a URL",
+          "detail": "The exact request the panel refused twice. Fetch a page through the kit's own browser and return its title, headings, text and a screenshot path — not a raw capture run, which is heavier than a question deserves. A read-only look at a page is the single most-wanted thing a converter assistant can do.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "assembled/UnysonPlus-Capture-Service/tools/design-capture/serve.mjs",
+                "pattern": "tool_look_at_url|lookAtUrl"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "a2-report",
+          "title": "Tool: read a conversion report",
+          "detail": "Return a captured site's conversion report — per-section coverage, the fallbacks, the style-coverage number — so the chat can answer \"why did this section come out as a code block?\" from the data rather than from guesswork.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "assembled/UnysonPlus-Capture-Service/tools/design-capture/serve.mjs",
+                "pattern": "tool_conversion_report"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "a2-docs",
+          "title": "Tool: search the kit's own docs",
+          "detail": "The kit ships the recipes, the styles, the option references and the build protocol. Let the chat search and quote them, so \"how do I set a hero?\" is answered from `docs/site-creator/recipes/heroes.md` rather than from the model's memory of some other page builder.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "assembled/UnysonPlus-Capture-Service/tools/design-capture/serve.mjs",
+                "pattern": "tool_search_docs"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "a2-visible",
+          "title": "Every tool call is visible",
+          "detail": "The panel renders each call and its result as a collapsible row, so the person can see what was read and from where. A tool-using assistant that works invisibly is one nobody can check — and this panel sits next to real site data.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "assembled/UnysonPlus-Capture-Service/tools/design-capture/dashboard/index.html",
+                "pattern": "chat-tool-call"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "a3-act",
+      "title": "Phase 3 — Let it act, behind a gate",
+      "goal": "Reading is safe; writing is not. Everything in this phase changes something on disk or on a site, so each tool asks first and nothing runs on the strength of a sentence in a chat box. The gate is the feature, not an obstacle to it.",
+      "tasks": [
+        {
+          "id": "a3-capture",
+          "title": "Tool: run a capture (confirmed)",
+          "detail": "Start a real capture of a URL into `capture-out/`, after an explicit confirm in the panel. Long-running, so it reports progress rather than blocking the turn.",
+          "detect": {},
+          "pin": true,
+          "status": "planned"
+        },
+        {
+          "id": "a3-write",
+          "title": "Writes are confirmed, never inferred",
+          "detail": "One approval path for every tool that changes anything — capture, convert, write a theme setting — with a dry-run that shows what would change. The rule the rest of the kit already follows: localhost is fair game, a push or a live site is never automatic.",
+          "detect": {},
+          "pin": true,
+          "status": "planned"
+        },
+        {
+          "id": "a3-studio",
+          "title": "Hand off to Kinetic Scenes",
+          "detail": "\"Make me a short scene\" should reach the Studio bridge that already exists on this service, instead of being declined. The chat composes the request and hands it over; the Studio remains where the scene is edited.",
+          "detect": {},
+          "pin": true,
+          "status": "planned"
+        }
+      ]
+    }
+  ],
+  "detected": true,
+  "extensionVersion": null,
+  "generatedAt": "2026-10-21T10:52:12.029Z"
+}

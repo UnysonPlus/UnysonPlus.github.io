@@ -20,7 +20,8 @@
     "roadmap:membership": "node scripts/gen-roadmap.mjs src/data/membership-roadmap.json",
     "roadmap:forms": "node scripts/gen-roadmap.mjs src/data/forms-roadmap.json",
     "roadmap:bookings": "node scripts/gen-roadmap.mjs src/data/bookings-roadmap.json",
-    "roadmap:site-creator": "node scripts/gen-roadmap.mjs src/data/ai-website-creator-roadmap.json"
+    "roadmap:site-creator": "node scripts/gen-roadmap.mjs src/data/ai-website-creator-roadmap.json",
+    "roadmap:kit-assistant": "node scripts/gen-roadmap.mjs src/data/kit-assistant-roadmap.json"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.1",

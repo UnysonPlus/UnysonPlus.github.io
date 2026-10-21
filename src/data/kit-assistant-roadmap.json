@@ -150,7 +150,8 @@
           "detail": "Start a real capture of a URL into `capture-out/`, after an explicit confirm in the panel. Long-running, so it reports progress rather than blocking the turn.",
           "detect": {},
           "pin": true,
-          "status": "planned"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "a3-write",
@@ -158,20 +159,22 @@
           "detail": "One approval path for every tool that changes anything — capture, convert, write a theme setting — with a dry-run that shows what would change. The rule the rest of the kit already follows: localhost is fair game, a push or a live site is never automatic.",
           "detect": {},
           "pin": true,
-          "status": "planned"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "a3-studio",
           "title": "Hand off to Kinetic Scenes",
-          "detail": "\"Make me a short scene\" should reach the Studio bridge that already exists on this service, instead of being declined. The chat composes the request and hands it over; the Studio remains where the scene is edited.",
+          "detail": "\"Make me a short scene\" should reach the Studio bridge that already exists on this service, instead of being declined. The chat composes the request and hands it over; the Studio remains where the scene is edited. **Kit side done (capture service 1.12.44):** the chat composes the request, the person confirms, and the kit holds it for an hour at `GET /studio/handoff?id=…` (Kinetic Scenes origin only, collected once; `/studio/status` advertises the `handoff` feature). **Left:** the Studio opening `?handoff=<id>` — fetch the request and queue it in the AI panel.",
           "detect": {},
           "pin": true,
-          "status": "planned"
+          "status": "in-progress",
+          "progress": "1/2"
         }
       ]
     }
   ],
   "detected": true,
   "extensionVersion": null,
-  "generatedAt": "2026-10-21T13:05:10.276Z"
+  "generatedAt": "2026-10-21T17:32:11.901Z"
 }

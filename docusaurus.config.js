@@ -490,6 +490,13 @@ const config = {
           },
           {
             type: 'docSidebar',
+            sidebarId: 'kineticScenesSidebar',
+            docsPluginId: 'kineticScenes',
+            position: 'left',
+            label: 'Kinetic Scenes',
+          },
+          {
+            type: 'docSidebar',
             sidebarId: 'themeSidebar',
             docsPluginId: 'theme',
             position: 'left',
@@ -535,7 +542,6 @@ const config = {
               {label: 'Demos', href: 'https://demos.unysonplus.com/'},
               {label: 'API Reference', to: '/reference/'},
               {label: 'Design Decisions', to: '/decisions'},
-              {label: 'Kinetic Scenes', to: '/kinetic-scenes/'},
             ],
           },
           {

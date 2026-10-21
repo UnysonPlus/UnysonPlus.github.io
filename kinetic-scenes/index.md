@@ -261,6 +261,29 @@ renders it frame by frame, so every frame is exact, 3D included, however slow th
 a vertical video uses the scene's mobile layout, as a phone would. The kit needs ffmpeg; the Studio tells you how to
 install it if it is missing.
 
+### Video mode
+
+A scene is **made for** the web (the default) or as a **video**: choose it at the top of the Inspector with nothing
+selected. Web keeps responsive layouts, scroll and click playback, search-engine text and the WordPress element.
+Video is for Reels, TikTok, Shorts and YouTube, or for graphics to lay over your own footage in a video editor:
+
+- **Formats.** Vertical 9:16, portrait 4:5, square 1:1 and landscape 16:9, one or several. Each format is its own
+  layout; pick one above the stage to arrange it, and the preview shows it at its exact size (1080 × 1920 and so on).
+  The scene starts on its own and plays once at its exact length.
+- **App guides.** Choose where it will be posted, then turn on **App guides** above the stage: the areas the app
+  covers with its own buttons, captions and bars are marked, and Check scene warns when words sit under them.
+- **Footage.** **+ Footage** on the timeline adds a video to design against: line up words and effects with what
+  happens on camera. Trim where the file starts, change its speed, fit it, and mark it **Reference only** to leave it
+  out of a graphics-only export. Its own sound can go into the video. Footage stays in your browser (it is far too
+  big for the scene file); videos and the downloaded page carry it, a share link and the embed code can't.
+- **Export.** One format or all of them in one go, as MP4, WebM or ProRes (.mov). **See-through background** gives
+  graphics only, with transparency (WebM, or ProRes 4444 for CapCut, Premiere and DaVinci Resolve); a scene with
+  reference footage can also be exported as the full composite. Tick **Cover image** for the thumbnail as a PNG.
+- **Checks for video.** The hook on screen within two seconds, captions for a voice-over (most people watch muted),
+  the platform's length limit, a video that plays once, no idle floating, and every cut between acts: no empty
+  frame, and the movement carried across it (when a shot leaves to the left, the next arrives from the right, moving
+  the same way), with one main direction for the whole video. AI assist follows the same rules in video mode.
+
 ### Full screen and transitions
 
 The **full screen** icon at the right of the stage toolbar (or the **F** key) plays the scene at your screen's real

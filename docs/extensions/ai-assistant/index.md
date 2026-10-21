@@ -866,6 +866,9 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 21 | Who can use it + usage log | An Editor saw the assistant with no roles ticked, lost the chat and got a 403 over MCP once only Authors were allowed, and got it back when Editor was ticked on the settings screen; administrators kept access throughout; a chat request and an outside program's tool call were logged, the panel's own calls were not | **Done** — 1.0.28 |
 | 22 | Visitor chat: team hours, conversation log, cost estimate | Hours parsed from "Mon-Fri 09:00-17:00 / Sat 10am-2pm" give the right in/away answer on weekdays, evenings and weekends; a hand-off while away carries the back-at note and the visitor model is told the team is away; answers are counted with an estimated cost that matches the prices by hand, and logged when the log is on | **Done** — 1.0.29 |
 | 23 | Install extensions and convert a live site | Over MCP, on a server that could not reach the kit: a missing extension was previewed, then downloaded and activated in 4 seconds; the AI Assistant refused to switch itself off; a conversion without a render was refused with the kit request, and with the kit's render it built the full site — pages, menus and its own child theme | **Done** — 1.0.36 |
+| 24 | **Upload media** (`upload-media`): add an image, SVG, video or PDF to the Media Library from a URL or from file data, with title, alt text and caption | Over MCP only (no terminal, no REST call), an agent uploads a logo from a URL and a generated image from data, both appear in the Media Library with alt text and are used on a page; an SVG goes through the existing sanitiser; a file type WordPress refuses is refused with the reason; an account without the upload permission is refused; undo deletes the upload | Planned |
+| 25 | **Child theme files** (`child-theme-files`): list, read and write files in the ACTIVE child theme only (CSS, JS, JSON, images, templates, `functions.php`) | An agent adds a rule to the child theme's `style.css` and a hook to its `functions.php`, both live on the next load; every write keeps a backup and undo restores the file byte for byte; a PHP file with a syntax error is refused before it is saved; a path outside the child theme (`../`, the parent theme, a plugin) is refused; PHP writes are refused for accounts without theme-editing rights and on sites that turn file editing off; writes are two-step (preview, then confirm) | Planned |
+| 26 | **Install / update a theme package** (`install-theme`): install or update a theme from a `.zip` URL through WordPress's own installer — the same action as Appearance → Themes → Upload Theme | An agent updates a child theme from a `.zip` link after the person confirms, and reports the version it replaced; it is refused for accounts that cannot install themes and on sites that turn file changes off; a broken package leaves the old theme in place | Planned |
 
 ## Open questions
 
@@ -878,6 +881,13 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
   exist for people who never install the kit?
 - **Visitor channel models.** Should the visitor channel be allowed to use a cheaper model than
   the builder panel, configured separately?
+- **Why the file tools (phases 24–26) exist, and their limits.** An AI connected only through the
+  assistant could build pages but could not add one image or change one line of a child theme, so a
+  site owner had to finish the job by hand or hand out SFTP access. These tools give the AI no power the
+  account does not already have in wp-admin (upload files, edit theme files, upload a theme), behind
+  WordPress's own permission checks, its file-editing switches and a confirm step. Deliberately out of
+  scope: the parent theme, plugins, and running arbitrary uploaded code. Open: should writing PHP into
+  the child theme need a separate site-wide switch, off by default, on top of the account's rights?
 - **Personal data.** Every extension with something to build now has abilities. Form entries,
   newsletter subscribers, and WooCommerce orders and customers are personal data, so they stay out of
   the AI's reach unless that is explicitly decided otherwise.

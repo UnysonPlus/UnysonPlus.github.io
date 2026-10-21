@@ -43,6 +43,27 @@ Pick **Elementor** in the Output picker to convert pages into Elementor Flexbox 
 2. The design system — colours, fonts, spacing, button and box presets — is written into the target's global styles.
 3. Training sessions on real sites tune the mapping for that builder, exactly as the Unyson+ output was tuned.
 
+## Known gaps
+
+Found during training on real sources, recorded here rather than left in a chat log.
+
+**A card's header pair is dropped.** Some sources open a card with two small items above its title — an
+index numeral beside an arrow, or a year beside a venue chip — and close it with a label/value meta row
+(`Core Jurisdiction: …`, `Outcome: …`). The card recognizer claims the card but carries neither, so that
+text is lost. Measured on one converted source: **14 visible text runs across two sections**, with the
+cards also losing their borders. This is the single largest remaining text loss we know of.
+
+The open question is deliberately *not* "add options to the card element". A comparable case — a labelled
+row of mutually exclusive chips inside a form — was solved by translating onto a field the form builder
+**already had** (`radio`), adding nothing to the product surface. The same test applies here: if the pair
+can ride on something the card elements already offer, it should; if it cannot, the honest answer is to
+report the loss rather than grow the element.
+
+**Related, now fixed:** the capture used to finish its work and never exit, so anything that waited for
+the child (the test suite, the service) saw a timeout instead of the success already written to disk; and
+the client-rendered-app guard charged every small static page a 124-second wait plus a full re-navigation
+for a hydration problem it did not have.
+
 ## What you need
 
 The converter ships inside the Unyson+ plugin. Install Unyson+, open **Site Converter**, paste a URL or upload an HTML file, and pick the output target.

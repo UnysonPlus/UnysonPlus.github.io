@@ -284,6 +284,35 @@ Video is for Reels, TikTok, Shorts and YouTube, or for graphics to lay over your
   frame, and the movement carried across it (when a shot leaves to the left, the next arrives from the right, moving
   the same way), with one main direction for the whole video. AI assist follows the same rules in video mode.
 
+### Video editing effects
+
+The effects short-form editors use on talking-head videos, about 45 of them, are presets, ready-made pieces and named
+effects AI assist knows.
+
+- **Text:** Gravity drop (letters fall and bounce), Fly-in strip (tilted headline strips; several make a headline
+  storm), Knockout (the footage shows through the letters), Receipt printer, Odometer (rolling digits), Running
+  timecode, and captions that slam in (giant captions) or drop in (viral drop) word by word.
+- **Emphasis:** Strike (a line through, then it falls away), Jiggle, Tick (checklists), Orbit around.
+- **On footage and pictures:** Snap zoom, Digital zoom (blur and a recording frame), Colour grade (black and white,
+  noir, warm, cool, film, vivid, faded, teal and orange), Grade wipe (a before / after slider, or a mood curtain coming
+  down), Projected film, Liquid glass, Portal (picture in picture), Copies (a playing grid, a contact sheet, a picture
+  dive, a scrolling feed) and Shatter. Pictures and footage can sit in a phone, a browser window, a polaroid, a film
+  strip or a card.
+- **Footage tools** (select footage, then Footage tools; they run in the AI Dev Kit on your computer):
+  - **Cut out the person** adds a see-through copy of them above the graphics. Put words behind their head (a
+    magazine cover), swap the background (green screen, a studio), give them a Sticker outline on a coloured backdrop
+    (paper cut-out), or Shatter the footage under them (frame break).
+  - **Follow the face** finds the face in every frame; the Follow the face preset keeps any layer on it, or above,
+    below or beside it: a circle drawn round the face (live markup), a label over the head, icons orbiting it.
+  - **Use its sound** adds the footage's audio as a voice track, to transcribe for captions.
+- **Pieces** (the library's Pieces tab): a comment box that types and gets a reply, a prompt bar, a chat window, a file
+  drop, an editing timeline, a growth chart, a storyboard deck, app icons with one struck off, a counting checklist, a
+  headline storm, a kinetic hook, a title card, an intertitle, a receipt, a screenplay page, a magazine cover and giant
+  captions. Each is an ordinary group you can change; with the person cut out, a piece goes behind them.
+- **Edit my video** (AI assist, with footage in the scene): the footage's sound is transcribed, then the AI adds
+  captions and places effects on the moments that suit them, each landing on its word. Ask for any effect by name
+  ("a gravity drop on the word drop", "a snap zoom on the punchline").
+
 ### Full screen and transitions
 
 The **full screen** icon at the right of the stage toolbar (or the **F** key) plays the scene at your screen's real

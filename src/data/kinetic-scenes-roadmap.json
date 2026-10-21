@@ -727,49 +727,49 @@
           "id": "p13-matte",
           "title": "Cut the person out of the footage",
           "detail": "The AI Dev Kit separates the person from the background in every frame (on your computer, no upload) and adds them as a see-through footage layer above the graphics. That unlocks: words behind the person (magazine cover, a headline behind the head), paper cut-out (a white outline on a coloured backdrop), a new background (green screen, studio reveal), the background shattering while the person stays (frame break), stepping out of a frame (frame escape) and dolly zoom (background and person zooming opposite ways).",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p13-track",
           "title": "Follow the person",
           "detail": "The kit finds the face (or a chosen point) in every frame and turns it into a path a layer can follow: a hand-drawn circle that stays on the face (live markup), icons orbiting the head (orbit), captions or a callout that move with the speaker, a zoom that keeps the face centred.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p13-footage-fx",
           "title": "Effects on footage",
           "detail": "Presets for a footage layer: snap zoom (a sharp punch-in), digital zoom (zoom, blur and a recording frame), colour grades that animate (black and white, warm, cool, film), the grade wiping across with a before / after handle (grade slider, eyedropper grade, mood curtain), projected film (sprocket edges, flicker, grain), film look, a liquid-glass lens that bends the picture as it passes, and a picture-in-picture portal the video flies into.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p13-frames",
           "title": "Frames and copies of the footage",
           "detail": "Show footage (or an image) inside a phone, a browser, a polaroid, a film strip or a video card, and in copies: a playing grid, a contact sheet filling up, a picture dive (the frame inside the frame inside the frame), a title card that dives into the phone.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p13-text",
           "title": "Text effects from short-form video",
           "detail": "Gravity drop (letters fall, bounce and settle), headline storm (tilted headline strips flying in and stacking), knockout captions (words cut out of a block, the video showing through), giant captions and viral drop caption styles, receipt printer (a slip printing out of a slot), screenplay page (typed, then highlighted), intertitle (a silent-film card), title card with a running timecode, and an odometer counter with rolling digits.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p13-emphasis",
           "title": "Emphasis presets",
           "detail": "Strike (a line drawn through, then the thing falls away), jiggle (the phone-home-screen wobble before a delete), checklist pop (items ticking on one by one beside the speaker), and a flat orbit (things circling a point).",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p13-ui",
           "title": "Ready-made UI pieces",
           "detail": "Animated pieces to drop in and edit: a comment box that types and gets a reply (comment CTA, comment drop), a prompt bar, a chat window, a file drop zone, an editing timeline, a social feed scrolling past, a fan of storyboard cards, a growth chart that climbs with its counter, a row of app icons, and an effects checklist that counts up.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p13-ai",
           "title": "AI assist that edits your video",
           "detail": "Every effect is a named recipe AI assist knows. Drop in raw footage and say what you want: the kit transcribes it, adds captions, and places effects on the moments that suit them (a gravity drop on the word it names, a snap zoom on the punchline, a comment CTA at the end), all as ordinary clips you can change.",
-          "status": "planned"
+          "status": "done"
         }
       ]
     }

@@ -455,24 +455,50 @@ How the connection works in practice:
 The AI Dev Kit's dashboard opens on a Home page showing each of its jobs (Site Converter, AI Assistant and
 Kinetic Scenes) and whether it is connected.
 
-### Where the AI is going: the AI director
+### The AI director
 
 The best AI video tools are not better because of a bigger prompt. They work in a loop with tools: they plan,
-build, render, look at the result, criticise it and fix it. Phase 11 of the [roadmap](./roadmap.mdx) brings that
-loop to Kinetic Scenes, still running only on the AI subscription you already have (Claude, ChatGPT or Cursor) and
-never an API key:
+build, render, look at the result, criticise it and fix it. Kinetic Scenes works the same way, on the AI subscription
+you already have (Claude, ChatGPT through Codex, or Cursor) and never an API key.
 
-- **A skill for any AI.** The workflow, the scene format, every preset, the motion rules, styles, sound and a
-  checklist, generated from the Studio's own code so it never goes stale. Published on the Kinetic Scenes site for
-  any AI to read, and copied into the AI Dev Kit.
-- **Tools.** The kit lets the AI inspect a website, a project or a voice-over, check a scene, render stills to
-  look at, analyse music and export video, as commands and as a local MCP server.
-- **Plan, build, look, fix.** A storyboard you can adjust before anything is built; after building, the AI looks
-  at rendered frames with the Check scene report and fixes what it sees before showing you.
-- **Quick scene from a website.** Paste a URL; the kit's capture service brings the site's real colours, fonts,
-  copy and screenshots, and the AI builds an editable scene that shows the product in use.
+- **Plan first.** Turn on **Plan first** in AI assist and choose what you are making: a storyboard, an explainer or a
+  tutorial. The AI writes the plan (for an explainer, the narration split into segments, each naming what the screen
+  shows); adjust it, then **Build it**. When the request names a length ("a 20 second explainer"), the script is
+  kept to what fits in it.
+- **Build with a voice-over.** For an explainer or a tutorial, **Build with a voice-over** has a free voice on your
+  computer speak the script (installed once, about 60 MB), times every word, and builds the scene on that clock, so
+  each picture lands just before the words that describe it. The voice-over stays editable in the inspector's
+  **Voice-over from a script** section.
+- **Look and fix.** With **Look and fix** on, the kit renders the settled frame of every act and the middle of every
+  transition, the AI looks at them with the Check scene report, and fixes what it sees before showing you.
+- **Quick scene from a website.** Paste a URL: the kit brings the site's real colours, fonts, copy and screenshots,
+  and the AI builds an editable scene that shows the product in use.
 - **An AI inside the open Studio.** The Studio offers its tools to AIs in the browser (WebMCP), so one can work on
   the scene in front of you, change by change, with undo.
+
+**A skill for any AI.** The workflow, the scene format, every preset, the motion rules and a checklist are published
+at [kinetic-scenes.unysonplus.com/skill](https://kinetic-scenes.unysonplus.com/skill/) (and `llms.txt`), generated
+from the Studio's own code so they never go stale, and copied into the AI Dev Kit.
+
+**Tools for agents.** An agent such as Claude Code, Codex or Cursor can write a scene file directly and use the kit's
+scene tools to check it, without the Studio open:
+
+```bash
+cd <kit>/assembled/UnysonPlus-Capture-Service/tools/design-capture
+node studio-cli.mjs check scene.json          # validate + Check scene
+node studio-cli.mjs inspect scene.json        # layers and clips in time, sound, key moments
+node studio-cli.mjs stills scene.json         # frames at the key moments, to look at
+node studio-cli.mjs render scene.json --out scene.mp4
+node studio-cli.mjs beats music.mp3           # tempo, beats and the strongest moments
+node studio-cli.mjs transcribe voice.mp3      # every word with its time
+```
+
+The same six are a local MCP server, so the agent calls them as tools (`scene_stills` returns the frames as images it
+can look at):
+
+```bash
+claude mcp add kinetic-scenes -- node <kit>/assembled/UnysonPlus-Capture-Service/tools/design-capture/studio-mcp.mjs
+```
 
 ## Still to decide
 

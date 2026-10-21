@@ -46,7 +46,7 @@ close to clean.
 
 ### The preset library
 
-Sixty-one presets in eight groups. **Text:** Rise, Slam, Stretch, Scramble, Typewriter (with an optional typing
+Sixty-six presets in nine groups. **Text:** Rise, Slam, Stretch, Scramble, Typewriter (with an optional typing
 **caret**), Blur in, Flip, Tracking, **Carry in** (the first word arrives from far and each next one travels less),
 **Count up** (a number counts to its value, keeping its prefix, separators and suffix; a clock like "0:45" counts in
 minutes and seconds) and **Change text** (the words swap for new ones on cue, rolling, sliding, fading or blurring;
@@ -60,7 +60,7 @@ endless), **Progress bar**, **Follow path** (travels along a line, with an optio
 around a word or two), **Glow** (a neon glow, optionally flickering on), **Burst** (sparks, shards, dots or rings on
 a hit) and **Make solid** (a dashed outline closes up). **Ambient and backgrounds:** **Drift**, **Gradient flow**,
 **Particles**, **Marching outline** and **React to music** (a glow, scale or brightness that breathes with the
-music's loudness or bass). **Code** (for Code layers): **Type code**, **Change code**, **Highlight code**, **Code
+music's loudness or bass). **Cursor and tours:** **Move to**, **Click**, **Spotlight**, **Callout** and **Before and after** (see Product tours below). **Code** (for Code layers): **Type code**, **Change code**, **Highlight code**, **Code
 note** and **Run code**. **Transitions** between groups: Slash, Flash, Dip to colour, **Whip pan** (a
 velocity-matched camera swing, optionally with a light streak on the cut), **Light streak**, Zoom through and
 Glitch. **3D:** Spin 3D, Tumble in, Orbit and Camera push, for 3D layers.
@@ -102,6 +102,28 @@ Three layer types draw with lines, added from the timeline (**+ Line**, **+ Diag
   the kit cuts the subject out on your computer and fills the background in behind it. Each layer gets a
   **depth**: any layer can, from -1 (far) to 1 (near), and with a camera pan or zoom near layers move and grow
   more than the rest, so a flat photo becomes a 2.5D shot.
+
+### Product tours
+
+Show a product working from screenshots, without a screen recording:
+
+- **Cursor** (**+ Cursor**): a pointer for tours, drawn big enough to read in a video. Its position is where its tip
+  starts, so put it off the stage and it enters. **Move to** sends it to a layer you pick (a point on it, or a point
+  on the stage to leave) along a gentle curve with a pointer's easing, and over a link or a button it turns into a
+  pointing hand. **Click** presses: the cursor dips, a ring ripples out and the button under it dips, on one frame.
+  The cursor always draws on top.
+- **Spotlight** dims everything but a layer; **Callout** points at it with a labelled pill. **Focus the camera on
+  it** (in a layer's settings) adds camera keys that glide in to frame the layer, hold and glide back.
+- **Cut a piece out** (on an image layer): a button, panel or row of a screenshot becomes its own layer in exactly
+  the same place, ready to press, slide or glow, and the gap behind it is filled from its surroundings.
+- **Before and after** swaps a screenshot for a second one of the same screen on the frame a click lands.
+- **Steps** (in the scene's settings): a walkthrough written as a list of steps, each saying what changes. The
+  Studio turns them into clips and markers; AI assist can write them.
+- **Hotspots:** a link can **play from** a marker instead of leaving the page, so a visitor chooses what to see
+  next. **Hover** effects (lift, grow, glow, brighten, a shine, an underline, a colour change) answer visitors with a
+  mouse; phones just follow the link.
+- **Layouts by shape:** besides the layouts by width, **Add an ultrawide layout** gives a stage that fills a very
+  wide window a layout of its own, so the content can spread out.
 
 ### Music
 

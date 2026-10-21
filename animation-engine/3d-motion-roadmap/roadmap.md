@@ -128,15 +128,20 @@ code, we **reuse the Site Converter's findings loop, pointed at motion** (decisi
    engine first; a pattern earns a native preset only when it can be **reusable, reduce-motion-aware and
    performant** — site-specific one-offs stay child-theme fallbacks.
 
-**Two engine-side enablers this needs:**
+**Two engine-side enablers this needs — both now shipped:**
 
-- **A Motion Gallery design-registration filter.** Per-element effects are pluggable, but 3D-gallery
-  **designs are a hardcoded list** (`gallery-3d/options.php` + a per-design JS file) with no
-  `apply_filters` — so a child theme can't add a gallery design today. Adding a registration hook makes
-  galleries extensible the same way, which the loop needs.
-- **A focused "child-theme effect" recipe in the AI Dev Kit**, so the agent reliably knows the pattern +
-  the label / reduce-motion / report conventions (the kit documents building elements and modules, but
-  not this fallback recipe yet). *(AI Dev Kit lane.)*
+- **A Motion Gallery design-registration filter** — ✅ shipped (Animation Engine 1.4.26). 3D-gallery
+  designs used to be a hardcoded list; a child theme can now register one the same way per-element
+  effects already plug in, through four touch points: `upw_gallery_3d_design_groups` (picker),
+  `upw_gallery_3d_render_designs` (render whitelist), `upw_gallery_3d_design_assets` (on-demand driver
+  JS/CSS) and the JS `window.upwGallery3d.registerDesign(key, build)`. The driver gets the same `ctx`
+  primitives the built-ins use (stage, cards, `progress()`, `attachDrag`, a generation-stamped `loop()`,
+  pre-resolved `reduce`). A worked example — "Arc Deck", registered from a drop-in mu-plugin with no
+  plugin edit — proves the round-trip end to end.
+- **A focused "child-theme effect" recipe in the AI Dev Kit** — ✅ shipped. The kit's child-theme
+  fallback recipe covers both the per-element hooks and the gallery registration path, with the stable
+  label / `data-` key → report-id convention, the reduce-motion branch, and the `send-finding` report,
+  so the agent reliably knows the pattern. *(AI Dev Kit lane.)*
 
 **Why it matters:** every gap becomes data, the engine grows in priority order toward the long tail, and
 the token economics compound — a scoped fallback is cheap once, a promoted native effect is near-zero

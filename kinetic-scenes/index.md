@@ -9,8 +9,9 @@ description: "Unyson+ Kinetic Scenes is a browser editor for timeline motion gra
 
 # Kinetic Scenes
 
-> **Alpha, live at [kinetic-scenes.unysonplus.com](https://kinetic-scenes.unysonplus.com/).** Every phase of the
-> [roadmap](./roadmap.mdx) is built. Alpha means features may still change and the scene file format can move between
+> **Beta, live at [kinetic-scenes.unysonplus.com](https://kinetic-scenes.unysonplus.com/).** Every phase of the
+> [roadmap](./roadmap.mdx) is built. Beta means everything planned is built while rough edges are polished;
+> features may still change and the scene file format can move between
 > versions; exported pages and embeds keep working regardless, because each one keeps the player version it was made with.
 
 Kinetic Scenes is a browser editor for motion graphics: big kinetic type, shapes, pictures, footage, code, diagrams and 3D,

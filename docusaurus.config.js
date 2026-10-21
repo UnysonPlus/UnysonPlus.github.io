@@ -244,6 +244,8 @@ const config = {
         redirects: [
           {from: '/docs/extensions/custom-fields', to: '/data-modeling/custom-fields'},
           {from: '/docs/extensions/post-types', to: '/data-modeling/post-types'},
+          // Element Designs moved out of Components into its own top-level Theme Settings tab.
+          {from: '/theme/components/element-designs', to: '/theme/element-designs'},
           // The icon-v2 / icon-v3 option-type ids were consolidated into one `icon` type.
           {from: '/docs/options/option-types/icon-v2', to: '/options/option-types/icon'},
           // Post Carousel was dropped (a duplicate of the Posts element).

@@ -31,7 +31,12 @@ and **where that output lives**.
 | **Icon Badges** | `.iconb-{slug}` | [Icon Badges](./icon-badges.md) |
 | **Table Presets** | `.tbl-{slug}` | [Table Presets](./table-presets.md) |
 | **Spacing** | `.m-*` / `.p-*` utilities | [Spacing](./spacing.md) |
-| **Element Designs** | design packs (per-element) | [Element Designs](./element-designs.md) |
+
+:::note Element Designs moved
+**Element Designs** used to be a tab here, but it isn't a preset library — it's a *manager* for
+installable per-element design packs (each ships its own scoped CSS, not a shared preset). It now has
+**its own top-level Theme Settings tab** (beside Icons). See [Element Designs](../element-designs.md).
+:::
 
 ## How the whole system works (shared pipeline)
 

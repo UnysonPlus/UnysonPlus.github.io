@@ -56,28 +56,32 @@ foundations laid earlier. We're doing the three [focus areas](./focus-areas) **o
 <figcaption style="text-align:center;font-size:.85rem;color:var(--ifm-color-emphasis-600);margin-top:.5rem;">The plan, in four phases — each ships value on its own; later phases build on earlier foundations.</figcaption>
 </figure>
 
-## Phase 0 — Foundation
+## Phase 0 — Foundation ✅ Shipped
 
-The highest return for the least effort — and the base everything else builds on.
+The highest return for the least effort — and the base everything else builds on. **This phase has
+shipped.**
 
-- **Site-wide smooth scroll** — a Theme Settings toggle (plus a smoothing/strength control), with the
-  scroll engine routed through it.
-- **One scroll engine** — progressively bring the scroll-based sections onto a single scroll system
-  so they all scrub against the same clock.
-- **Shared guardrails** — a common reduced-motion + mobile-throttle + off-screen-pause helper every
-  effect uses, so quality and accessibility are uniform.
+- **Site-wide smooth scroll** — ✅ shipped as [Smooth Scroll](/animation-engine/smooth-scroll)
+  (Theme Settings → Site-wide UX → Smooth Scroll), Lenis-powered momentum across the whole page.
+- **One scroll engine** — ✅ shipped. Smooth Scroll and [Scroll Loop](/animation-engine/scroll-loop)
+  share a single Lenis instance through the `window.__upwLenis` singleton (whichever boots first owns
+  it), so everything that scrolls scrubs against the same clock and enabling both never spawns two.
+- **Shared guardrails** — a common reduced-motion + mobile-throttle + off-screen-pause discipline
+  every effect follows (see [Performance](/animation-engine/performance)).
 
 **Outcome:** the whole engine feels like one polished system, and future scroll features get cheaper.
 
 ## Phase 1 — Motion timeline (the pragmatic 80%, then the visual editor)
 
 Three stages that ladder up — each useful on its own, all writing the **same native builder
-options** (see [Area 2](./focus-areas#area-2--a-real-motion-timeline) for the full rationale):
+options** (see [Area 2](./focus-areas#area-2--a-real-motion-timeline) for the full rationale).
+**Stage 1a has shipped;** 1b and 1c are still ahead.
 
-- **1a · Beat keyframes (native).** Per-element 2–3 keyframed states across a pinned Section's beats,
-  each with an easing pick, built on the existing [Scroll Story](/animation-engine/scrollytelling)
-  plumbing. Basic controls in the element panel; the finer knobs (offsets, stagger, custom easing,
-  trigger ranges) in the **Advanced** box so the basic panel stays uncluttered.
+- **1a · Beat keyframes (native).** ✅ **Shipped as [Scroll Keyframes](/animation-engine/scroll-keyframes)** —
+  move any element through Start / Middle / End keyframed states as you scroll, each with an easing
+  pick, auto-driven from a [Scroll Story](/animation-engine/scrollytelling) scene or the element's own
+  viewport travel. Basic controls in the element panel; the finer knobs (offsets, stagger, custom
+  easing, trigger ranges) in the **Advanced** box.
 - **1b · The Scroll Timeline Editor (visual).** A tracks-and-keyframes editor built by **reusing the
   Kinetic Scenes timeline**, with the playhead driven by **scroll instead of a clock** — a pinned
   Section is the fixed stage, its `vh` pin length the scrubbable axis. Launched on the **front end**
@@ -105,47 +109,15 @@ options** (see [Area 2](./focus-areas#area-2--a-real-motion-timeline) for the fu
 - **Rive elements** (interactive vector motion), **curated WebGL image transitions** (ripple / liquid
   / displace presets), and richer particle presets in [WebGL Object](/animation-engine/webgl-object).
 
-## Growing the engine from demand — the gap → fallback → report → promote loop
+## Growing the engine from demand ✅ Shipped
 
-The phases above are the *planned* build; this is how the engine grows from **real use**. As
-AI-assisted creation and replication becomes the focus, an agent reproducing a source's motion will
-routinely hit an animation the engine doesn't cover yet. Rather than let it write throwaway bespoke
-code, we **reuse the Site Converter's findings loop, pointed at motion** (decision:
-[gap-report-loop](/decisions/animation-engine-gap-report-loop)):
+Beyond the planned phases, the engine grows from **real use**: when AI-assisted creation hits a motion
+it doesn't cover yet, a **gap → fallback → report → promote** loop adds it cleanly and feeds demand back
+in. Both enablers this needed — a Motion Gallery design-registration filter and the child-theme effect
+recipe — have shipped, so this now works end to end.
 
-1. **Try a native effect first.** The agent consults the Animation Engine / Motion Gallery catalogue
-   and uses a built-in effect wherever one fits — the cheapest, most native result.
-2. **Else write a scoped, labelled child-theme fallback.** Per-element effects are already pluggable
-   from a child theme through the same hooks the built-in modules use — `sc_animation_fields` (the
-   option), `sc_build_wrapper_attr` (its config as data-attributes), `sc_needs_wrapper`, plus a small
-   runtime. The fallback carries a stable label / `data-` key tied to its **report id**, honours
-   reduce-motion, and loads on demand — so the site works today and **migrates off cleanly** when the
-   effect later ships natively.
-3. **Always report the gap.** A **fixture-backed** finding (the captured source motion + the fallback
-   produced, keyed to a neutral fixture id — never the source site's name) goes to the shared ledger via
-   `send-finding`. Never silently absorb a gap.
-4. **Promote by demand, gated on quality.** The ledger's **frequency** says which gaps to build into the
-   engine first; a pattern earns a native preset only when it can be **reusable, reduce-motion-aware and
-   performant** — site-specific one-offs stay child-theme fallbacks.
-
-**Two engine-side enablers this needs — both now shipped:**
-
-- **A Motion Gallery design-registration filter** — ✅ shipped (Animation Engine 1.4.26). 3D-gallery
-  designs used to be a hardcoded list; a child theme can now register one the same way per-element
-  effects already plug in, through four touch points: `upw_gallery_3d_design_groups` (picker),
-  `upw_gallery_3d_render_designs` (render whitelist), `upw_gallery_3d_design_assets` (on-demand driver
-  JS/CSS) and the JS `window.upwGallery3d.registerDesign(key, build)`. The driver gets the same `ctx`
-  primitives the built-ins use (stage, cards, `progress()`, `attachDrag`, a generation-stamped `loop()`,
-  pre-resolved `reduce`). A worked example — "Arc Deck", registered from a drop-in mu-plugin with no
-  plugin edit — proves the round-trip end to end.
-- **A focused "child-theme effect" recipe in the AI Dev Kit** — ✅ shipped. The kit's child-theme
-  fallback recipe covers both the per-element hooks and the gallery registration path, with the stable
-  label / `data-` key → report-id convention, the reduce-motion branch, and the `send-finding` report,
-  so the agent reliably knows the pattern. *(AI Dev Kit lane.)*
-
-**Why it matters:** every gap becomes data, the engine grows in priority order toward the long tail, and
-the token economics compound — a scoped fallback is cheap once, a promoted native effect is near-zero
-tokens for every future agent. That compounding is the moat.
+➡️ **This is a shipped capability, documented in full on its own page: [Extending the engine](./extending-the-engine).**
+(Decision: [gap-report-loop](/decisions/animation-engine-gap-report-loop).)
 
 ## At a glance
 

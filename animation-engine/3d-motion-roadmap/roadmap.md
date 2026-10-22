@@ -96,6 +96,21 @@ options** (see [Area 2](./focus-areas#area-2--a-real-motion-timeline) for the fu
 - **1c · Page-level choreography.** A whole-page scroll ruler showing every section's triggers and
   scrubs at once — read-only first, then editable.
 
+## Scroll Choreography for the Motion Gallery
+
+The [Motion Gallery](/animation-engine/motion-gallery)'s version of the motion timeline: a gallery that
+**starts as a stack, forms into one layout, reforms into another, then the images exit — all driven by
+scroll**. Built on a *formation timeline* — each "look" is a per-card pose, and the runtime lerps every card
+between the two bounding formations at the current scroll progress (generalizing `photo_scatter`'s existing
+scatter→tidy morph to N formations). It rides the gallery's existing pin + scroll playhead and honours
+reduced motion. (Decision: [motion-gallery-scroll-choreography](/decisions/motion-gallery-scroll-choreography).)
+
+- **Tier 1 — a `scroll_choreography` design** (🧪 prototyped): a curated, interpolable formation set
+  (stack · grid · ring · fan · wall · scatter-out) offered as Sequence presets, inside the `gallery_3d`
+  picker. A gallery stacks in, forms a grid, reforms into a 3D ring, then flies out — scrubbed by scroll.
+- **Tier 2 — morph between *any* existing designs** (ahead): give each design a declarative `layout(i, n)`
+  so a choreography can sequence `ring → tunnel → sphere`. Bigger refactor; the natural next step.
+
 ## Phase 2 — Real 3D scenes
 
 - **A parametric "3D Scene" element** — a few pre-built, scroll-scrubbed camera scenes (gallery

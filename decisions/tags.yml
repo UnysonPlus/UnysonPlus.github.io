@@ -123,6 +123,11 @@ animation-engine:
   permalink: /animation-engine
   description: The Animation Engine extension — its modules, shortcodes and effects
 
+motion-gallery:
+  label: Motion Gallery
+  permalink: /motion-gallery
+  description: The Motion Gallery (gallery_3d) element — its 3D/flow/stack designs and scroll behaviour
+
 admin-ui:
   label: Admin UI
   permalink: /admin-ui

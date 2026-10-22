@@ -15,11 +15,25 @@ how it is built.
 
 ## The parts of the screen
 
-### The top bar
+### The top bar and the menus
 
-**Undo** and **Redo**, **New** (an empty scene with the same screen sizes and fonts; Undo brings the old one back),
-**Open** (a `.scene.json` project file), **Save** (downloads the project file, Ctrl+S) and **Export** (HTML, embed code,
-share link and video; see [Export](./export.md)).
+Beside the logo is a menu bar, like a desktop editor's. Click a menu to open it, move along the bar to the next one, and
+use the arrow keys and Enter inside; each entry shows its keyboard shortcut. On a narrow window the menus fold into one
+**☰** button.
+
+| Menu | What is in it |
+|---|---|
+| **File** | **New** (an empty scene with the same screen sizes and fonts; Undo brings the old one back), **Open…** (a `.scene.json` project file), **Save** (downloads the project file, Ctrl+S), **Load the demo**, **Export…** |
+| **Edit** | Undo, Redo, Duplicate, Delete, Rename, Select all, Group, Ungroup |
+| **View** | The screen size (Desktop, Laptop, Tablet, Mobile), the height mode, Safe area, Camera view, Full screen |
+| **Insert** | Every kind of layer (the same as the timeline's **+** buttons), Audio, a Marker, and a ready-made piece |
+| **Scene** | Scene settings, Styles and brand kit, Check scene, Check the layout |
+| **AI** | AI assist, AI settings (style, voice, look and fix), Voice-over from a script |
+| **Tools** | [Add-ons](./addons.md), Separate voice and music, Transcribe a voice-over (with footage or an audio clip selected) |
+| **Help** | This manual, the keyboard shortcuts, what is new |
+
+On the right, **Undo**, **Redo** and **Export** (HTML, embed code, share link and video; see [Export](./export.md)) stay
+one click away.
 
 ### The library (left)
 

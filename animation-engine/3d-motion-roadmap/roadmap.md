@@ -117,10 +117,13 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   reorderable, any number of steps. GSAP-driven, pinned + scrubbed.
 - **Chaining** (🧪 prototyped): several choreography galleries on one page **each pin, play, and hand off**
   as you scroll — GSAP ScrollTrigger sequences pinned sections automatically (offsetting each for the
-  earlier pins). *Sequential today; the overlap handoff below is next.*
-- **Overlap handoff via Motion Sequence** (ahead): nest each gallery's entrance/exit as a **sub-timeline**
-  in one master timeline (`tl.add(childTimeline, ">-overlap")`), so gallery 1 exits *as* gallery 2 enters —
-  generalizing Motion Sequence's step contract from "a CSS tween" to "any element that hands back a timeline."
+  earlier pins). *This is the sequential mode; the overlap handoff below supersedes it for a connected feel.*
+- **Overlap handoff** (✅ built): a container marked `.tdg-choreo-chain` **overlays** its galleries and drives
+  **one** pinned, scrubbed master GSAP timeline that nests each gallery's pose sub-timeline placed with an
+  overlap at the seams — so gallery 1 flies out *as* gallery 2 assembles in, and so on ("connected as one").
+  The pose engine is extracted into a shared `choreoPoser(el)` the master timeline reuses per gallery; each
+  gallery stays a real, independently-configured Motion Gallery shortcode. *Proven end-to-end (one master
+  ScrollTrigger, 3 galleries, clean handoff at each seam).*
 - **Real-design layouts** (ahead): give each gallery design a declarative resting layout so a step is a
   *real* design (ring → tunnel → sphere), not a formation proxy.
 - **Authoring** (ahead): a "link to the gallery above" / right-click *Create choreography* action, and

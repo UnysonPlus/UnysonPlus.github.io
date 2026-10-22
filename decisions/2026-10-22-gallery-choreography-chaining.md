@@ -57,4 +57,5 @@ How should that chaining be structured, and what animation engine should drive i
 - Standing on GSAP + ScrollTrigger gives pin, scrub, overlap and nested timelines for free and battle-tested,
   and lines the gallery up with the rest of the engine.
 - The Flip finding saves a dead end: it's the "obvious" tool for morphing layouts, but not under a pinned scrub.
-  Status: **Accepted** (engine + sequential chaining prototyped; overlap handoff + real-design layouts ahead).
+  Status: **Accepted** (engine + sequential chaining + **overlap handoff** built — one master timeline nesting
+  each gallery's pose sub-timeline with overlap; real-design layouts and authoring sugar ahead).

@@ -96,20 +96,35 @@ options** (see [Area 2](./focus-areas#area-2--a-real-motion-timeline) for the fu
 - **1c · Page-level choreography.** A whole-page scroll ruler showing every section's triggers and
   scrubs at once — read-only first, then editable.
 
-## Scroll Choreography for the Motion Gallery
+## Scroll Choreography & gallery chaining
 
-The [Motion Gallery](/animation-engine/motion-gallery)'s version of the motion timeline: a gallery that
-**starts as a stack, forms into one layout, reforms into another, then the images exit — all driven by
-scroll**. Built on a *formation timeline* — each "look" is a per-card pose, and the runtime lerps every card
-between the two bounding formations at the current scroll progress (generalizing `photo_scatter`'s existing
-scatter→tidy morph to N formations). It rides the gallery's existing pin + scroll playhead and honours
-reduced motion. (Decision: [motion-gallery-scroll-choreography](/decisions/motion-gallery-scroll-choreography).)
+The [Motion Gallery](/animation-engine/motion-gallery)'s version of the motion timeline: galleries whose
+cards **assemble in, morph through arrangements, and exit — all driven by scroll** — and, chained, several
+galleries that **hand off one to the next** down the page. The end goal is the author's model: *add N
+gallery shortcodes, configure each independently, and they connect into one scroll sequence.*
+(Decisions: [motion-gallery-scroll-choreography](/decisions/motion-gallery-scroll-choreography),
+[gallery-choreography-chaining](/decisions/gallery-choreography-chaining).)
 
-- **Tier 1 — a `scroll_choreography` design** (🧪 prototyped): a curated, interpolable formation set
-  (stack · grid · ring · fan · wall · scatter-out) offered as Sequence presets, inside the `gallery_3d`
-  picker. A gallery stacks in, forms a grid, reforms into a 3D ring, then flies out — scrubbed by scroll.
-- **Tier 2 — morph between *any* existing designs** (ahead): give each design a declarative `layout(i, n)`
-  so a choreography can sequence `ring → tunnel → sphere`. Bigger refactor; the natural next step.
+**Engine — on GSAP + ScrollTrigger.** Rather than a hand-rolled rAF loop, the choreography runs on a
+pinned, scrubbed **ScrollTrigger** driving a pose engine (per-card poses for each formation, with per-step
+holds, cascade and easing). This is the same timeline substrate the engine's [Motion Sequence](/animation-engine/)
+("choreography without code") already uses, so chaining can reuse it. *Finding: GSAP **Flip** is ideal for
+non-pinned layout reflows but unreliable under a pinned+scrubbed trigger (its absolute coordinates shift when
+the stage goes `position: fixed`), so pinned choreography uses the pose engine, not Flip.*
+
+- **A per-step `scroll_choreography`** (🧪 prototyped): an ordered, addable **Steps** list — each step a
+  formation with its own **hold** — that the cards morph through (stack → grid → ring → sphere → exit…),
+  reorderable, any number of steps. GSAP-driven, pinned + scrubbed.
+- **Chaining** (🧪 prototyped): several choreography galleries on one page **each pin, play, and hand off**
+  as you scroll — GSAP ScrollTrigger sequences pinned sections automatically (offsetting each for the
+  earlier pins). *Sequential today; the overlap handoff below is next.*
+- **Overlap handoff via Motion Sequence** (ahead): nest each gallery's entrance/exit as a **sub-timeline**
+  in one master timeline (`tl.add(childTimeline, ">-overlap")`), so gallery 1 exits *as* gallery 2 enters —
+  generalizing Motion Sequence's step contract from "a CSS tween" to "any element that hands back a timeline."
+- **Real-design layouts** (ahead): give each gallery design a declarative resting layout so a step is a
+  *real* design (ring → tunnel → sphere), not a formation proxy.
+- **Authoring** (ahead): a "link to the gallery above" / right-click *Create choreography* action, and
+  retire the standalone abstract design once galleries chain natively.
 
 ## Phase 2 — Real 3D scenes
 

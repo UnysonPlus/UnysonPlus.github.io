@@ -45,21 +45,22 @@ instead (see [below](#prefer-a-coding-agent)).
 2. In WordPress, go to **Plugins → Add New → Upload Plugin**, choose the file, then **Install Now** and
    **Activate**.
 
-## 2. Run the one-click setup
+## 2. Turn on the AI Assistant
 
-Go to **Unyson+ → Connect AI** and press **Set up this site for an AI app**. It:
+1. Go to **Unyson+ → Extensions** and install **AI Assistant**. (The notice on your dashboard links
+   there too.) If the Unyson+ theme is not active yet, WordPress offers it in a notice; activate it.
+2. Open **Unyson+ → AI Assistant → Settings → Advanced → Outside AI programs**, choose
+   **Read and write** and press **Save access**.
+3. Press **Check the connection** in the same section. Each line shows a tick, or says in plain words what
+   to fix. If your web addresses are set to "Plain", it offers a one-click switch to "Post name".
 
-- installs and activates the Unyson+ theme;
-- downloads and activates the features the build needs (page builder, forms, email, CRM, post types,
-  custom fields, SEO, Theme Builder and the AI Assistant);
-- sets your permalinks to "Post name";
-- switches on the connection Claude uses, and tests that it can be reached.
-
-Each step shows a tick, or says in plain words what to fix. You can run it again safely.
+You do not need to switch on the CRM, post types or custom fields yourself: when Claude builds the CRM,
+it turns on the extensions it needs, and asks you first.
 
 ## 3. Connect Claude
 
-The setup page shows your **connector address**, ending in `/wp-json/unysonplus-ai/v1/mcp`. Copy it, then:
+The **Server URL** under *Outside AI programs* is your connector address, ending in
+`/wp-json/unysonplus-ai/v1/mcp`. Copy it, then:
 
 1. In Claude's settings, add a **custom connector** and paste the address. Leave any client ID or
    secret fields empty.

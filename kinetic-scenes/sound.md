@@ -101,7 +101,9 @@ pace is a calm explainer pace by default.
 
 **In your own voice.** With [Voicebox](https://github.com/jamiepine/voicebox) open on your computer, your Voicebox voice
 profiles appear in the **Voice** menu too ("Voicebox: Jon"). Each line is spoken in that voice, then every word is timed,
-exactly as with the built-in voices; AI assist's **Build with a voice-over** uses the voice you picked last. The first line
+exactly as with the built-in voices. AI assist has the same **Voice** menu (under **Style**) for **Build with a
+voice-over**; the two menus are one choice, so changing either changes both. A voice track made this way shows its
+voice when you select it ("Voice: Voicebox: Jon"). The first line
 can take a few minutes while Voicebox loads its model; after that, a line takes seconds. Only use a voice you have the
 right to use: your own, or someone's with their permission. See [Add-ons](./addons.md).
 

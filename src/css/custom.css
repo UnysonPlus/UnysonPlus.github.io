@@ -269,3 +269,12 @@ html.plugin-id-decisions article header h1 {
 .theme-admonition-tip > div:first-child > :first-child {
   display: none;
 }
+
+/* Kinetic Scenes embeds: the sound button only shows while the pointer is over the scene (or a keyboard is on it).
+   Touch screens have no hover, so there it stays visible. */
+@media (hover: hover) and (pointer: fine) {
+  .ks-embed .upw-sound[data-on] { opacity: 0; transition: opacity .2s ease; }
+  .ks-embed:hover .upw-sound[data-on],
+  .ks-embed:focus-within .upw-sound[data-on] { opacity: 1; }
+  .ks-embed:hover .upw-sound[data-on="1"] { opacity: .75; }
+}

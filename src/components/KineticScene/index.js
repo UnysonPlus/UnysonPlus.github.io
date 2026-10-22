@@ -45,8 +45,23 @@ export default function KineticScene({src, light, caption}) {
   const [ready, setReady] = useState(false);
   useEffect(() => setReady(true), []);
   const url = colorMode === 'light' && light ? bright : dark;
+  const fig = useRef(null);
+  // Browsers only allow sound after the visitor interacts with the page, so the first click, tap or key press anywhere
+  // turns it on (pressing the scene's own sound button, which counts as that interaction).
+  useEffect(() => {
+    const on = (e) => {
+      const btn = fig.current?.querySelector('.upw-sound');
+      if (!btn || btn.contains(e.target)) return;
+      if (btn.dataset.on !== '1') btn.click();
+      off();
+    };
+    const off = () => { window.removeEventListener('pointerdown', on, true); window.removeEventListener('keydown', on, true); };
+    window.addEventListener('pointerdown', on, true);
+    window.addEventListener('keydown', on, true);
+    return off;
+  }, [url]);
   return (
-    <figure style={{margin: '0.5rem 0 1.5rem'}}>
+    <figure ref={fig} className="ks-embed" style={{margin: '0.5rem 0 1.5rem'}}>
       <div style={{aspectRatio: '16 / 9'}}>
         {ready && <Scene key={url} url={url} />}
       </div>

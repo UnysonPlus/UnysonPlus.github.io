@@ -20,8 +20,10 @@ The **✦ AI assist** button at the bottom right of the stage opens the chat.
 <img src="/img/kinetic-scenes/ai-assist.png" alt="AI assist, connected through the AI Dev Kit" width="440" />
 
 - **What to change:** **This scene**, **Selected** (only the layers you selected) or **New scene**.
-- **Style:** a [style](./stage.md#styles) for it to follow, or none (the AI decides).
-- **Look and fix:** after building, the kit renders key frames and the AI fixes what it sees (below).
+- **Settings** (the gear at the top of the panel): the **Style** to follow (a [style](./stage.md#styles), or none: the AI
+  decides), the **Voice** for **Build with a voice-over**, and **Look and fix** (after building, the kit renders each part
+  once it has landed and the AI fixes what it sees, below). A line under the scope buttons shows what is chosen; click it to
+  change it. The connection shows as a green dot in the header, with the AI's name in the settings.
 - Every answer is **one undo step**, with a **Go back to before this** link and a Check scene count; **Fix with AI** in the
   Check tab sends its findings to the AI.
 - The rules the AI follows and the rules Check scene measures are the same, so its scenes start close to clean.

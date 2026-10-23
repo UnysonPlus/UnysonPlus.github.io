@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.72",
-  "generatedAt": "2026-10-23T01:03:00.158Z",
+  "extensionVersion": "1.0.73",
+  "generatedAt": "2026-10-23T01:22:05.452Z",
   "detected": true,
   "milestones": [
     {
@@ -604,14 +604,19 @@
         {
           "id": "p3-providers",
           "title": "Email services",
-          "detail": "The provider layer already exists (local sending through the Mailer). It gains email services sent directly through their API, for speed, deliverability and bounce handling.",
+          "detail": "Campaigns and CRM email can be sent through SendGrid, Mailgun, Postmark, Brevo or Amazon SES by API instead of the site mail, chosen per sender, with each service's bounce, complaint and unsubscribe webhook feeding back into the CRM.",
           "detect": {
             "files": [
-              "modules/email/providers/class-fw-crm-provider.php"
+              "modules/email/services/class-fw-crm-mail-service.php",
+              "modules/email/services/class-fw-crm-mail-service-sendgrid.php",
+              "modules/email/services/class-fw-crm-mail-service-mailgun.php",
+              "modules/email/services/class-fw-crm-mail-service-postmark.php",
+              "modules/email/services/class-fw-crm-mail-service-brevo.php",
+              "modules/email/services/class-fw-crm-mail-service-ses.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "6/6"
         },
         {
           "id": "p3-builder",
@@ -619,23 +624,30 @@
           "detail": "Drag-and-drop blocks (text, image, button, columns, social, divider) compiled to email-safe HTML, with personalization tags and a live preview. Carried over from the Newsletter / Subscriber CRM and reworked for the new layout.",
           "detect": {
             "files": [
-              "modules/email/builder/class-fw-crm-email-builder.php"
+              "modules/email/builder/class-fw-option-type-email-builder.php",
+              "modules/email/class-fw-crm-email-compiler.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p3-templates",
           "title": "Template gallery",
-          "detail": "Ready-made basic and designed templates (newsletter, announcement, welcome, follow-up, offer), plus saving your own.",
+          "detail": "Ready-made starters (announcement, newsletter digest, promotion, welcome, follow-up, event invitation, plain letter), plus saving your own from the builder.",
           "detect": {
             "files": [
-              "modules/email/templates/index.json"
+              "modules/email/class-fw-crm-email-templates.php"
+            ],
+            "symbols": [
+              {
+                "file": "modules/email/class-fw-crm-email-templates.php",
+                "pattern": "follow_up"
+              }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p3-campaigns",
@@ -655,11 +667,21 @@
           "detail": "Confirmation emails, a preference page where people choose their lists, and one-click unsubscribe in every email. Carried over from the Newsletter / Subscriber CRM and reworked for the new layout.",
           "detect": {
             "files": [
-              "modules/email/class-fw-crm-subscriptions.php"
+              "includes/class-fw-crm-endpoints.php"
+            ],
+            "symbols": [
+              {
+                "file": "includes/class-fw-crm-endpoints.php",
+                "pattern": "preferences_url"
+              },
+              {
+                "file": "includes/class-fw-crm-mail.php",
+                "pattern": "unsubscribe_headers"
+              }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "3/3"
         },
         {
           "id": "p3-tracking",
@@ -679,11 +701,12 @@
           "detail": "Several From names and addresses, and transactional email (receipts, confirmations) kept apart from marketing email.",
           "detect": {
             "files": [
-              "modules/email/class-fw-crm-senders.php"
+              "modules/email/class-fw-crm-senders.php",
+              "modules/email/class-fw-crm-admin-sending.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p3-smart",
@@ -695,8 +718,8 @@
               "modules/email/class-fw-crm-digest.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p3-channels",
@@ -707,8 +730,8 @@
               "includes/class-fw-crm-channels.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },

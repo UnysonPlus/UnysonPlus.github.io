@@ -93,6 +93,19 @@ Useful filters: `unysonplus_crm_lifecycle_stages`, `unysonplus_crm_field_types`,
 `unysonplus_crm_woo_products`, `unysonplus_crm_task_reminders` (return false to stop reminder emails),
 `unysonplus_crm_direct_email` (change a one-to-one email before it is sent), `unysonplus_crm_bin_days`.
 
+## Sending and channels
+
+- **Sender profiles**: wrap your own `wp_mail()` call in `FW_CRM_Senders::begin( 'marketing'|'transactional', $profile_id = '' )`
+  and `FW_CRM_Senders::end()` to send it as a CRM sender (its From, Reply-To and email service).
+- **Email services**: add one by subclassing `FW_CRM_Mail_Service` (`id()`, `label()`, `fields()`, `send( $message )`,
+  optional `parse_events( $request )`) and registering it with the `unysonplus_crm_mail_services` filter
+  (id → class name). Its webhook address is `/wp-json/fw-crm/v1/mail-services/<id>/events?token=…`.
+- **Channels**: `FW_CRM_Channels::send( 'email', $contact_id, array( 'subject' => …, 'body' => …, 'purpose' => 'transactional' ) )`
+  sends a message and logs it on the timeline. Add SMS or a messaging app with the `unysonplus_crm_channels` filter:
+  `id => { label, icon, address( $contact ), send( $contact, $message ), available }`.
+- Hooks: `unysonplus_crm_mail_service_sent`, `unysonplus_crm_email_event` (open, click, bounce… with a bot flag),
+  `unysonplus_crm_smart_link_clicked`, `unysonplus_crm_digest_queued`, `unysonplus_crm_channel_sent`.
+
 ## Automations (registering now, running later)
 
 The Automations module is planned. Extensions can already register their triggers and actions; nothing reads

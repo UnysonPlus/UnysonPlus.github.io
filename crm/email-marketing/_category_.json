@@ -1,0 +1,10 @@
+{
+  "label": "Email marketing",
+  "position": 4.5,
+  "link": {
+    "type": "generated-index",
+    "slug": "/email-marketing",
+    "title": "Email marketing",
+    "description": "Send campaigns and newsletters from WordPress with the Unyson+ CRM: a block email builder and templates, double opt-in and a preference page, sender profiles, email services such as SendGrid, Mailgun, Postmark, Brevo and Amazon SES, smart links and an automatic post digest."
+  }
+}

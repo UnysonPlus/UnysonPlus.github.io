@@ -151,6 +151,14 @@ calling `UnysonPlusVI.grantRecording()`. Without one of these, nothing is record
 
 ### Everyday extras
 
+- **Keywords** — the words people searched before they arrived, for each landing page. The big
+  search engines no longer pass search words to websites, so they come from **Google Search
+  Console** (connected in the SEO extension: clicks, how often the page was shown, average
+  position), from the search engines that still pass them, and from `utm_term` on campaign links.
+  Each row says where it came from.
+- **Referring pages** — the exact page a visitor clicked from (a forum thread, an article) when the
+  referring site shares it, with the page they landed on. Many sites share only their domain;
+  those visits are listed under the site as "page not shared".
 - **Where visits come from** — the Overview groups every visit into a channel: Direct, Search,
   Social, AI assistants, Email, Paid, Campaign or Referral, from the referring site and any campaign
   tags on the link.

@@ -3,8 +3,8 @@
   "extension": "visitor-insights",
   "cloneDir": "UnysonPlus-Visitor-Insights-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Visitor-Insights-Extension",
-  "extensionVersion": "1.0.8",
-  "generatedAt": "2026-10-23T01:11:30.729Z",
+  "extensionVersion": "1.0.9",
+  "generatedAt": "2026-10-23T01:29:36.432Z",
   "detected": true,
   "milestones": [
     {
@@ -732,8 +732,8 @@
               "includes/class-fw-vi-keywords.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p9-referrers",
@@ -747,8 +747,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p9-entry-exit",

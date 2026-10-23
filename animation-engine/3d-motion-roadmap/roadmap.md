@@ -124,10 +124,17 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   The pose engine is extracted into a shared `choreoPoser(el)` the master timeline reuses per gallery; each
   gallery stays a real, independently-configured Motion Gallery shortcode. *Proven end-to-end (one master
   ScrollTrigger, 3 galleries, clean handoff at each seam).*
+- **Authoring — the Chain switch** (✅ built): each Scroll-Choreography gallery has a **"Chain with
+  adjacent galleries"** toggle. Drop several galleries next to each other in one column, tick Chain on
+  each, and the runtime **auto-groups** the adjacent chained galleries into a `.tdg-choreo-chain` wrapper
+  and drives the overlap handoff — no container class, no hidden step list. This is the author's original
+  model: *add N real gallery shortcodes, configure each, they connect into one sequence.* *(Verified: 3
+  stacked galleries, Chain on, auto-wrapped into one master ScrollTrigger with clean handoffs.)*
 - **Real-design layouts** (ahead): give each gallery design a declarative resting layout so a step is a
   *real* design (ring → tunnel → sphere), not a formation proxy.
-- **Authoring** (ahead): a "link to the gallery above" / right-click *Create choreography* action, and
-  retire the standalone abstract design once galleries chain natively.
+- **Authoring polish** (ahead): cross-column / cross-section grouping (today it groups galleries that are
+  adjacent siblings in one column), a right-click *Create choreography* helper, and retiring the standalone
+  abstract `scroll_choreography` steps design once native chaining is the only authoring path.
 
 ## Phase 2 — Real 3D scenes
 

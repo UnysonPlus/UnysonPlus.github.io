@@ -13,7 +13,7 @@ keywords:
 
 # Free CRM website generator
 
-The [CRM Website Generator](https://crm.unysonplus.com/) is a free page where you pick
+The [CRM Website Generator](https://create.unysonplus.com/crm/) is a free page where you pick
 what your site needs: listings, lead forms, sales pipeline stages, brand colors. It turns those
 choices into two things:
 
@@ -33,15 +33,15 @@ rules that industry needs.
 
 | Page | For |
 |---|---|
-| [crm.unysonplus.com](https://crm.unysonplus.com/) | **Any business.** Describe what you do; the site is built around a Services section, quote and booking forms, and a sales pipeline. |
-| [/real-estate-crm-website/](https://crm.unysonplus.com/real-estate-crm-website/) | **Real estate** agents, teams and brokerages: listings, IDX, showings and valuations. |
-| [/home-services-crm-website/](https://crm.unysonplus.com/home-services-crm-website/) | **Home services** such as plumbers, electricians, roofers and HVAC: quote requests with photos, service areas and a job pipeline. |
-| [/dental-clinic-crm-website/](https://crm.unysonplus.com/dental-clinic-crm-website/) | **Dental and medical clinics**: treatments, appointment requests, new patient information and recalls. Forms never ask for health details. |
-| [/law-firm-crm-website/](https://crm.unysonplus.com/law-firm-crm-website/) | **Law firms**: practice areas, attorney profiles, consultation requests and an intake pipeline, with the disclaimers legal advertising needs. |
-| [/gym-crm-website/](https://crm.unysonplus.com/gym-crm-website/) | **Gyms, fitness studios and personal trainers**: classes, a timetable, memberships and free trial sign-ups. |
-| [/salon-spa-crm-website/](https://crm.unysonplus.com/salon-spa-crm-website/) | **Salons, spas, barbers and nail studios**: services and prices, booking requests, a gallery and rebooking reminders. |
-| [/recruitment-agency-crm-website/](https://crm.unysonplus.com/recruitment-agency-crm-website/) | **Recruitment agencies**: a job board, applications with CV upload, vacancy requests and a placement pipeline. |
-| [/event-venue-crm-website/](https://crm.unysonplus.com/event-venue-crm-website/) | **Wedding, party and conference venues**: spaces, date availability enquiries, tours and a brochure download. |
+| [crm.unysonplus.com](https://create.unysonplus.com/crm/) | **Any business.** Describe what you do; the site is built around a Services section, quote and booking forms, and a sales pipeline. |
+| [/real-estate-crm-website/](https://create.unysonplus.com/crm/real-estate/) | **Real estate** agents, teams and brokerages: listings, IDX, showings and valuations. |
+| [/home-services-crm-website/](https://create.unysonplus.com/crm/home-services/) | **Home services** such as plumbers, electricians, roofers and HVAC: quote requests with photos, service areas and a job pipeline. |
+| [/dental-clinic-crm-website/](https://create.unysonplus.com/crm/dental-clinic/) | **Dental and medical clinics**: treatments, appointment requests, new patient information and recalls. Forms never ask for health details. |
+| [/law-firm-crm-website/](https://create.unysonplus.com/crm/law-firm/) | **Law firms**: practice areas, attorney profiles, consultation requests and an intake pipeline, with the disclaimers legal advertising needs. |
+| [/gym-crm-website/](https://create.unysonplus.com/crm/gym/) | **Gyms, fitness studios and personal trainers**: classes, a timetable, memberships and free trial sign-ups. |
+| [/salon-spa-crm-website/](https://create.unysonplus.com/crm/salon-spa/) | **Salons, spas, barbers and nail studios**: services and prices, booking requests, a gallery and rebooking reminders. |
+| [/recruitment-agency-crm-website/](https://create.unysonplus.com/crm/recruitment-agency/) | **Recruitment agencies**: a job board, applications with CV upload, vacancy requests and a placement pipeline. |
+| [/event-venue-crm-website/](https://create.unysonplus.com/crm/event-venue/) | **Wedding, party and conference venues**: spaces, date availability enquiries, tours and a brochure download. |
 
 You can switch industry from the **Industry** menu at the top of the form; each industry keeps its
 own saved choices. Most presets can also work alongside software the business already uses (an IDX
@@ -69,7 +69,7 @@ emails go out through WordPress's own mail until you set up SMTP.
 The steps below use the real estate page; the Any business page has the same sections, with
 **Services** in place of **Listings**.
 
-1. Open [the real estate generator](https://crm.unysonplus.com/real-estate-crm-website/).
+1. Open [the real estate generator](https://create.unysonplus.com/crm/real-estate/).
 2. **Business.** Enter the business name, market (city or region), and optionally the tagline,
    brokerage and license number. The license and brokerage go in the site footer, which many
    markets require. On the Any business page, also describe what the business does in a sentence

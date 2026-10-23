@@ -11,7 +11,7 @@ keywords:
 
 # Set up WordPress for the CRM website generator
 
-The [CRM Website Generator](https://crm.unysonplus.com/) writes a prompt that builds your whole site:
+The [CRM Website Generator](https://create.unysonplus.com/crm/) writes a prompt that builds your whole site:
 pages, lead forms and a CRM. With a paid Claude plan, Claude builds it from the normal Claude app,
 connected to your site through Unyson+. You never open a terminal, never need an API key and never
 share a password.
@@ -71,7 +71,7 @@ That's the whole sign-in: no password goes into Claude. The
 
 ## 4. Build
 
-1. Fill in the [generator](https://crm.unysonplus.com/). Under **Build setup**, keep **How will you
+1. Fill in the [generator](https://create.unysonplus.com/crm/). Under **Build setup**, keep **How will you
    build?** on **In the Claude app** and **Your fresh WordPress is** on **On my web host**.
 2. Press **Copy prompt** and paste it into a new Claude chat with the Unyson+ connector switched on.
 3. Claude works in **stages**: it checks the site, sets up the design, builds the pages, the forms and

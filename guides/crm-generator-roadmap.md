@@ -13,7 +13,7 @@ keywords:
 
 # CRM website generator roadmap
 
-This page tracks what is planned for the [CRM Website Generator](https://crm.unysonplus.com/).
+This page tracks what is planned for the [CRM Website Generator](https://create.unysonplus.com/crm/).
 For how to use it today, see the [generator guide](./crm-generator.md).
 
 ## The approach: one generator, many industries
@@ -46,14 +46,14 @@ An industry is added when it passes three tests:
 
 | Industry | Page | Builds on | Main lead form | Example pipeline |
 |---|---|---|---|---|
-| Real estate | [/real-estate-crm-website/](https://crm.unysonplus.com/real-estate-crm-website/) | Properties blueprint | Showing request, home valuation | New → Showing → Under contract → Closed |
-| Home services | [/home-services-crm-website/](https://crm.unysonplus.com/home-services-crm-website/) | Services and Locations blueprints | Quote request with photos | New → Site visit → Quote sent → Won → Job complete |
-| Dental or medical clinic | [/dental-clinic-crm-website/](https://crm.unysonplus.com/dental-clinic-crm-website/) | Services (as Treatments), Team Members | Appointment request | New → Booked → Attended → Recall due |
-| Law firm | [/law-firm-crm-website/](https://crm.unysonplus.com/law-firm-crm-website/) | Services (as Practice areas), Team Members, Case Studies | Consultation request | Enquiry → Conflict check → Consultation → Retained |
-| Fitness studio or gym | [/gym-crm-website/](https://crm.unysonplus.com/gym-crm-website/) | Services (as Classes), Team Members, Events | Free trial | Trial booked → Trial attended → Member → Lapsed |
-| Salon and spa | [/salon-spa-crm-website/](https://crm.unysonplus.com/salon-spa-crm-website/) | Services, Team Members | Booking request | Booked → Visited → Rebooked → Regular |
-| Recruitment agency | [/recruitment-agency-crm-website/](https://crm.unysonplus.com/recruitment-agency-crm-website/) | Job Listings, Team Members | Job application with CV upload, vacancy request | Screened → Interview → Offer → Placed |
-| Event venue and weddings | [/event-venue-crm-website/](https://crm.unysonplus.com/event-venue-crm-website/) | Services (as Spaces), Events, Downloads | Date availability, venue tour | Enquiry → Tour → Proposal → Deposit paid |
+| Real estate | [/real-estate-crm-website/](https://create.unysonplus.com/crm/real-estate/) | Properties blueprint | Showing request, home valuation | New → Showing → Under contract → Closed |
+| Home services | [/home-services-crm-website/](https://create.unysonplus.com/crm/home-services/) | Services and Locations blueprints | Quote request with photos | New → Site visit → Quote sent → Won → Job complete |
+| Dental or medical clinic | [/dental-clinic-crm-website/](https://create.unysonplus.com/crm/dental-clinic/) | Services (as Treatments), Team Members | Appointment request | New → Booked → Attended → Recall due |
+| Law firm | [/law-firm-crm-website/](https://create.unysonplus.com/crm/law-firm/) | Services (as Practice areas), Team Members, Case Studies | Consultation request | Enquiry → Conflict check → Consultation → Retained |
+| Fitness studio or gym | [/gym-crm-website/](https://create.unysonplus.com/crm/gym/) | Services (as Classes), Team Members, Events | Free trial | Trial booked → Trial attended → Member → Lapsed |
+| Salon and spa | [/salon-spa-crm-website/](https://create.unysonplus.com/crm/salon-spa/) | Services, Team Members | Booking request | Booked → Visited → Rebooked → Regular |
+| Recruitment agency | [/recruitment-agency-crm-website/](https://create.unysonplus.com/crm/recruitment-agency/) | Job Listings, Team Members | Job application with CV upload, vacancy request | Screened → Interview → Offer → Placed |
+| Event venue and weddings | [/event-venue-crm-website/](https://create.unysonplus.com/crm/event-venue/) | Services (as Spaces), Events, Downloads | Date availability, venue tour | Enquiry → Tour → Proposal → Deposit paid |
 
 Being considered after that: insurance agencies, financial advisers, coaches and consultants, car
 dealers (whose inventory works like property listings), tutoring, and non-profits (donors instead

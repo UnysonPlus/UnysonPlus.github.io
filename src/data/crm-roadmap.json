@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.76",
-  "generatedAt": "2026-10-23T03:09:19.848Z",
+  "extensionVersion": "1.0.77",
+  "generatedAt": "2026-10-23T04:35:35.082Z",
   "detected": true,
   "milestones": [
     {
@@ -1044,23 +1044,40 @@
         {
           "id": "p7-tools",
           "title": "Connector tools for every module",
-          "detail": "Pipelines and stages, campaigns and templates, automations from recipes, scoring rules and access rules, each as an AI Assistant tool. Setting things up, never reading or contacting the people in the CRM.",
+          "detail": "Pipelines and stages, campaigns from templates, sender profiles and the post digest, automations from recipes, and scoring rules, each as an AI Assistant tool (access rules come from the Membership extension's own tools). Setting things up, never reading or contacting the people in the CRM: automations and campaigns are saved as drafts.",
           "detect": {
             "files": [
               "modules/pipeline/ai-abilities.php",
               "modules/email/ai-abilities.php",
-              "modules/automations/ai-abilities.php"
+              "modules/automations/ai-abilities.php",
+              "modules/scoring/ai-abilities.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/3"
+          "status": "done",
+          "progress": "4/4"
         },
         {
           "id": "p7-generator",
           "title": "CRM website generator on the CRM",
-          "detail": "The generator's prompts build on the CRM: a real pipeline instead of stage tags, and a welcome automation instead of a single welcome email.",
+          "detail": "The generator's prompts (create.unysonplus.com) build on the CRM: a real sales pipeline where every enquiry arrives as a deal, and a welcome series and a quote or booking follow-up as automations, instead of stage tags and a single welcome email. Detected by the CRM tools those prompts call.",
           "pin": true,
-          "status": "planned"
+          "status": "done",
+          "detect": {
+            "files": [
+              "modules/pipeline/ai-abilities.php",
+              "modules/automations/recipes/index.json"
+            ],
+            "symbols": [
+              {
+                "file": "modules/pipeline/ai-abilities.php",
+                "pattern": "crm-save-pipeline"
+              },
+              {
+                "file": "modules/automations/recipes/index.json",
+                "pattern": "welcome-series"
+              }
+            ]
+          }
         }
       ]
     }

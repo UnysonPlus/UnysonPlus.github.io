@@ -94,32 +94,33 @@ beginner is never faced with tools they do not use. A module that is off loads n
 
 ## Start from your industry
 
-The free [CRM Website Generator](https://crm.unysonplus.com/) builds a whole CRM website for one kind of business: the pages, the
+The free [CRM Website Generator](https://create.unysonplus.com/crm/) builds a whole CRM website for one kind of business: the pages, the
 lead forms, the pipeline stages and the CRM set up to match. Pick your industry, choose what you need, and
 copy the prompt for your AI agent.
 
-- [Real estate CRM website](https://crm.unysonplus.com/real-estate-crm-website/): a free CRM for realtors, agent teams and
+- [Real estate CRM website](https://create.unysonplus.com/crm/real-estate/): a free CRM for realtors, agent teams and
   brokerages, with listings, showing requests and home valuations
-- [Home services CRM website](https://crm.unysonplus.com/home-services-crm-website/): quote requests, service areas and recent jobs for
+- [Home services CRM website](https://create.unysonplus.com/crm/home-services/): quote requests, service areas and recent jobs for
   plumbers, electricians, roofers and other trades
-- [Dental and medical clinic CRM website](https://crm.unysonplus.com/dental-clinic-crm-website/): appointment requests, new patient
+- [Dental and medical clinic CRM website](https://create.unysonplus.com/crm/dental-clinic/): appointment requests, new patient
   information and check-up reminders
-- [Law firm CRM website](https://crm.unysonplus.com/law-firm-crm-website/): practice areas, consultation requests and an intake pipeline
-- [Gym and fitness studio CRM website](https://crm.unysonplus.com/gym-crm-website/): classes, memberships and free trial sign-ups
-- [Salon and spa CRM website](https://crm.unysonplus.com/salon-spa-crm-website/): services and prices, booking requests and rebooking
+- [Law firm CRM website](https://create.unysonplus.com/crm/law-firm/): practice areas, consultation requests and an intake pipeline
+- [Gym and fitness studio CRM website](https://create.unysonplus.com/crm/gym/): classes, memberships and free trial sign-ups
+- [Salon and spa CRM website](https://create.unysonplus.com/crm/salon-spa/): services and prices, booking requests and rebooking
   reminders
-- [Recruitment agency CRM website](https://crm.unysonplus.com/recruitment-agency-crm-website/): a job board, applications with CV
+- [Recruitment agency CRM website](https://create.unysonplus.com/crm/recruitment-agency/): a job board, applications with CV
   upload and vacancy requests from employers
-- [Event and wedding venue CRM website](https://crm.unysonplus.com/event-venue-crm-website/): date enquiries, venue tours and a
+- [Event and wedding venue CRM website](https://create.unysonplus.com/crm/event-venue/): date enquiries, venue tours and a
   pipeline to deposit paid
-- [Any business](https://crm.unysonplus.com/): start from a description of your business
+- [Any business](https://create.unysonplus.com/crm/): start from a description of your business
 
 ## How it fits with the rest of Unyson+
 
 - **Other extensions.** The CRM offers a versioned PHP API, a catalogue of events and REST endpoints, so
   other extensions read and change contacts, tags and deals without touching its tables, and can add their
-  own triggers, actions, fields and timeline entries. A planned **Membership** extension (its own
-  extension, for members-only content, levels and renewals) connects this way, as does WooCommerce.
+  own triggers, actions, fields and timeline entries. The **Membership** extension (its own extension,
+  for members-only content, plans and renewals) connects this way, as does WooCommerce. See the
+  [extension API](./developers/extension-api.md).
 
 - **Forms.** A contact or booking form can add its senders to the CRM: it creates or updates the contact,
   saves the answers you choose (to contact fields or custom fields it creates for you), keeps the whole

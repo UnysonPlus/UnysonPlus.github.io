@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.68",
-  "generatedAt": "2026-10-15T08:28:22.900Z",
+  "extensionVersion": "1.0.72",
+  "generatedAt": "2026-10-23T01:03:00.158Z",
   "detected": true,
   "milestones": [
     {
@@ -535,14 +535,14 @@
         {
           "id": "p2b-cases",
           "title": "Cases",
-          "detail": "A light support-ticket record that reuses the pipeline engine for its statuses (new, open, waiting, solved), with a priority, an owner and a due date.",
+          "detail": "A light support-ticket record with its own statuses (new, open, waiting on the customer, solved), a priority, an owner and a due date. The conversation lives on the case timeline.",
           "detect": {
             "files": [
               "modules/cases/class-fw-crm-cases.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p2b-board",
@@ -553,8 +553,8 @@
               "modules/cases/static/js/cases.js"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p2b-forms",
@@ -565,8 +565,8 @@
               "modules/cases/class-fw-crm-cases-intake.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },

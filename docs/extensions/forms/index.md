@@ -224,10 +224,18 @@ each has, how many entries it has received and which pages show it.
 - **Errors everyone can find.** Each problem is written next to its field and announced by screen readers;
   a form with several problems shows a summary at the top, with links to each field.
 - **After sending** (Contact Form → Settings → Options): keep the form and show the message, replace the
-  form with the message, go to a thank-you page, or go to any address.
+  form with the message, go to a thank-you page, or go to any address. **Messages Appear** puts the sent
+  message and any problems above the form or under the Send button.
 - **Answer tags** put the visitor's answers into the email subject, the success message and the thank-you
-  address: `{text_name}` (a field's name in the builder), `{all_fields}`, `{site_name}`, `{page_title}`,
-  `{page_url}`, `{date}`. For example: *New enquiry from {text_name}*.
+  address: `{your_name}` (a field's **Field Name**), `{all_fields}`, `{site_name}`, `{page_title}`,
+  `{page_url}`, `{date}`. For example: *New enquiry from {your_name}*.
+  - **Field Name**, under Label in every field's settings, is filled in from the label as you type ("Make/Model"
+    becomes `make_model`) and kept unique. Rename it and the form's own subject and messages follow. A field
+    left without one still answers to its automatic id (such as `{text_3f2a9c1}`).
+  - Every setting that takes tags shows them as **buttons underneath**: click one to put it where your cursor is.
+- **The notification email** (Contact Form → Settings → Texts): a **From Name** such as *{your_name} via
+  {site_name}* (the sending address is always the site's), and a **Message Body** written with tags, where
+  `{all_fields}` lists every answer. Left empty, the email is the usual table of answers.
 - **Notifications:** one or more recipients, plus CC and BCC. With no recipient set, the site's admin
   email gets it.
   **Send the notification email** can be switched off for a form that only needs its stored entries, or

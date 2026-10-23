@@ -29,7 +29,7 @@ Your Unyson knowledge transfers directly:
 
 ## What's new and improved
 
-- **Modern PHP & WordPress.** Requires **PHP 7.4+** and current WordPress; the codebase was
+- **Modern PHP & WordPress.** Requires **PHP 8.0+** and current WordPress; the codebase was
   modernized throughout.
 - **GitHub auto-updates.** The plugin, theme, and every extension update **straight from GitHub**
   (the [UnysonPlus org](https://github.com/UnysonPlus)), no marketplace or license server. See

@@ -67,7 +67,7 @@ Two flags shape how an extension appears and behaves:
 
 ```php
 $manifest['requirements'] = array(
-    'php'        => array( 'min_version' => '7.4' ),
+    'php'        => array( 'min_version' => '8.0' ),
     'wordpress'  => array( 'min_version' => '6.0' ),
     'framework'  => array( 'min_version' => '2.10.0' ),
     'extensions' => array(

@@ -70,7 +70,7 @@ by default.
 | Layer | Built on |
 | --- | --- |
 | **Front end (visitor)** | Vanilla JS, Bootstrap 5 CSS, CSS custom properties; Splide / Leaflet / noUiSlider; GSAP / Lenis / three.js / Lottie / Rive for motion |
-| **PHP core** | The options-framework engine, the extension system, the manifest/updater — PHP 7.4+ (8.2-clean), typed & namespaced in the newer code |
+| **PHP core** | The options-framework engine, the extension system, the manifest/updater — PHP 8.0+ (8.2-clean), typed & namespaced in the newer code |
 | **Admin builder / options UI** | Server-rendered PHP enhanced with jQuery. **No Backbone and no Underscore anywhere in the framework** as of 2.16.19 — the options modal and the page-builder canvas both run on the framework's own `fw.Class` / `fw.Collection` / `fw.View` / `fw.ModalFrame`, and core ships `fw.template` / `fw.escapeHtml` / `fw.throttle` / `fw.debounce` / `fw.clone` / `fw.isObject` / `fw.isEmpty`. jQuery remains, deliberately — see the roadmap below |
 
 For exactly how that layer works — the `_render()` + `fw:options:init` contract, and the measured

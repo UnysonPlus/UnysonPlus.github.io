@@ -11,12 +11,15 @@ description: Fixes for the Unyson+ page builder — stacked editors, a blank opt
 
 **Symptom:** the post screen shows the block editor *and* the Page Builder meta box at the same time.
 
-**Cause:** the Page Builder sits in a meta box **below** the content editor. With the Gutenberg block
-editor active you see both at once.
+**Cause:** the Page Builder sits in a meta box **below** the content editor, so it only looks right on
+the **classic** editor screen. Normally the bundled **Page Editor** extension serves that classic
+screen for you automatically — if you're seeing both stacked, the Page Editor isn't doing its job for
+this post type (it was deactivated, or that post type is on the "keep the block editor" opt-out list).
 
-**Fix:** install and activate the **Classic Editor** plugin, which restores WordPress's original editor
-and works much better alongside the builder. Unyson+ shows a dismissible notice recommending it; dismiss
-the notice instead if you prefer the stacked layout.
+**Fix:** no plugin to install — Unyson+ is self-sufficient. Make sure the **Page Builder** extension is
+active (the Page Editor rides with it), then check **Unyson+ → Extensions → Page Builder → Settings →
+"Keep the block editor for"** and remove this post type from that list so it opens in the classic
+editor. Background: [Is the classic editor in WordPress core?](/page-builder/classic-editor-and-gutenberg)
 
 ## An element's options panel opens blank with just "error:"
 

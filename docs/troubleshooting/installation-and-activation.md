@@ -2,7 +2,7 @@
 title: Installation & activation
 sidebar_position: 2
 slug: /troubleshooting/installation-and-activation
-description: Getting Unyson+ installed and active — requirements, the Classic Editor step, downloading the correct zip, and adding extensions.
+description: Getting Unyson+ installed and active — requirements, the editor (no Classic Editor plugin needed), downloading the correct zip, and adding extensions.
 ---
 
 # Installation & activation
@@ -14,17 +14,20 @@ Issues that show up when first installing Unyson+ or turning it on.
 The framework declares a minimum **PHP**, **WordPress**, and (for extensions) framework version. If the
 server is below one of them, activation is blocked and a notice names what's needed.
 
-- **Fix:** update PHP to **7.4+** and WordPress to a current version, then activate again.
+- **Fix:** update PHP to **8.0+** and WordPress to a current version, then activate again.
 - Extensions have their own requirements too, see
   ["Framework requirements not met" / an extension won't activate](./options-and-settings.md#framework-requirements-not-met--an-extension-wont-activate).
 
-## The page builder shows two editors stacked on the post screen
+## Do I need the Classic Editor plugin?
 
-The builder sits **below** the content editor, so with the block editor (Gutenberg) active you see
-both. Install and activate the **Classic Editor** plugin first, before you start building.
+**No.** Unyson+ ships a bundled **Page Editor** that rides with the Page Builder and automatically
+serves WordPress's **built-in classic editor** (it flips the core `use_block_editor_for_post_type`
+switch — the exact thing the Classic Editor plugin does, in about fifteen lines). So the builder gets
+its full-width home with **no extra plugin to install**, and you won't see two editors stacked.
 
-- **Do it in this order:** Classic Editor → the Unyson+ plugin → the parent theme.
-- Full detail: [I see two editors stacked on the post screen](./editor-and-page-builder.md#i-see-two-editors-stacked-on-the-post-screen).
+- **Just install the Unyson+ plugin and the parent theme** — that's the whole setup.
+- Why this works, and how to opt a post type back to Gutenberg:
+  [Is the classic editor in WordPress core?](/page-builder/classic-editor-and-gutenberg)
 
 ## I downloaded the repo and half the features are missing
 
@@ -45,6 +48,6 @@ zip. Everything else is **downloaded on demand**.
 
 ## The admin looks broken right after activating
 
-A blank screen or PHP error on activation is almost always a **version mismatch** (PHP below 7.4) or a
+A blank screen or PHP error on activation is almost always a **version mismatch** (PHP below 8.0) or a
 conflicting plugin. Check the requirements notice above first; if the screen is fully blank, enable
 `WP_DEBUG` to surface the underlying error, then resolve the named conflict.

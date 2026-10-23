@@ -14,8 +14,8 @@ specific problem.
 
 - **[FAQ](./faq.md)** — is it free, do I need a license key, which theme, which PHP, do I have to use
   the builder, how do updates work.
-- **[Installation & activation](./installation-and-activation.md)** — requirements, the Classic Editor
-  step, downloading the right zip, adding extensions.
+- **[Installation & activation](./installation-and-activation.md)** — requirements, the editor (no
+  Classic Editor plugin needed), downloading the right zip, adding extensions.
 - **[Editor & Page Builder](./editor-and-page-builder.md)** — stacked editors, a blank options panel,
   layout not rendering, column wrapping, literal `{{tokens}}`.
 - **[Options & settings](./options-and-settings.md)** — "Undefined option type", requirements not met,

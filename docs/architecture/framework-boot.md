@@ -14,8 +14,10 @@ sequence from the plugin's entry file to the `fw_init` action.
 `unysonplus.php` is a normal WordPress plugin header. Its job is small: guard against
 double-loading (`if ( defined( 'FW' ) )`), then `require framework/bootstrap.php`. It also wires
 up the **GitHub plugin-update-checker** (the auto-updater pointed at
-`UnysonPlus/UnysonPlus`, branch `master`) and a few plugin-only conveniences (activation hooks, the
-Classic Editor recommendation notice, update pre/post hooks).
+`UnysonPlus/UnysonPlus`, branch `master`), a **PHP 8.0 floor guard** (bail with an admin notice on
+older PHP rather than fatal), and a few plugin-only conveniences (activation hooks, update pre/post
+hooks). The bundled **Page Editor** extension — not an external plugin — serves the classic editor
+screen the Page Builder mounts on.
 
 :::note[The framework is path-agnostic]
 `unysonplus.php` notes it explicitly: *"The framework doesn't know that it's used as a plugin. It

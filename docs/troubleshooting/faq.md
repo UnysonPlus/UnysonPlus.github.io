@@ -33,16 +33,20 @@ adopt those pieces when you want them.
 
 ## Which PHP and WordPress versions does it need?
 
-Unyson+ targets **PHP 7.4+** and current WordPress. It's built on the proven Unyson foundation and
+Unyson+ targets **PHP 8.0+** and current WordPress. It's built on the proven Unyson foundation and
 modernized for today's PHP and WordPress. If an install is below the minimum, the framework reports it
 on activation (see [Installation & activation](./installation-and-activation.md)).
 
-## Do I need the block editor (Gutenberg) or the Classic Editor?
+## Do I need the block editor (Gutenberg) or the Classic Editor plugin?
 
-The page builder lives in a meta box **below** the content editor and assumes the **Classic Editor**.
-Install and activate the Classic Editor plugin before you build, so you don't see two editors stacked
-on the post screen. Everything else (options, custom fields, extensions) is unaffected by which editor
-you use. See [Editor & Page Builder](./editor-and-page-builder.md).
+**Neither — you don't install anything.** The page builder lives in a meta box below the content
+editor, so it wants the **classic** editor screen, and Unyson+ serves that itself: a bundled **Page
+Editor** extension flips WordPress's own core switch (`use_block_editor_for_post_type`) so the builder
+gets a full-width home with **no Classic Editor plugin**. You stay inside WordPress, keeping the normal
+dashboard and every other plugin's meta boxes (Yoast, etc.). You can send specific post types (say,
+blog Posts) back to Gutenberg from the Page Builder settings. Everything else (options, custom fields,
+extensions) is unaffected by which editor you use. See
+[Is the classic editor in WordPress core?](/page-builder/classic-editor-and-gutenberg).
 
 ## How do updates work?
 
@@ -58,6 +62,14 @@ The public plugin ships a lean base (the core framework plus the `blog` and `upd
 other extension is downloaded on demand from the framework's **Extensions manager**, so you install
 only what a site needs and the base stays small. Downloaded extensions live under
 `framework-customizations/` and survive plugin updates.
+
+## Is Unyson+ production-ready? Can I use it on client sites?
+
+Yes, for custom WordPress theme work — that's its intended use. It's built on the proven Unyson
+foundation, modernized for **PHP 8.0+** and current WordPress, and shipped through versioned,
+tagged releases with a clean rollback path, and your content stays in standard WordPress (no
+lock-in). For the full evidence — release process, compatibility, testing, and portability — see
+[Is Unyson+ production-ready?](/project-maturity).
 
 ## Is this the same as Unyson? Can I migrate?
 

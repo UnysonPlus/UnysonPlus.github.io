@@ -17,7 +17,7 @@ Out-of-date software is the most common way sites get hacked, so keep **WordPres
 Unyson+ runs on any standard WordPress host. You'll need:
 
 - **WordPress** — a currently supported version.
-- **PHP 7.4 or newer** (PHP 8.1–8.2 recommended).
+- **PHP 8.0 or newer** (PHP 8.1–8.2 recommended).
 - **MySQL 5.7+** or **MariaDB 10.3+**.
 - The usual PHP extensions (normally already enabled): `zip`, `curl`, `mysqli`, `gd`,
   `mbstring`, `dom`, `openssl`.

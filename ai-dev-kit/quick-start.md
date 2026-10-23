@@ -32,10 +32,9 @@ Stop it later with `npx @wordpress/env stop`.
 
 ### Option B — your own WordPress (Local, XAMPP, MAMP, a dev host…)
 
-Install and activate these, then use your own site URL:
+Install and activate these, then use your own site URL (no Classic Editor plugin — the bundled Page
+Editor serves WordPress's built-in classic editor for the builder automatically):
 
-- **Classic Editor** — install & activate **first** (the page builder assumes the classic editor, not
-  Gutenberg).
 - **UnysonPlus plugin** — the **latest release zip** from
   [the releases page](https://github.com/UnysonPlus/UnysonPlus/releases/latest) → *Plugins → Add New →
   Upload*. Don't `git clone` the repo — that's core-only; the release zip is the full plugin.

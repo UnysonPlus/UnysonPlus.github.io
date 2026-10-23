@@ -4,7 +4,7 @@
   "cloneDir": "UnysonPlus-Visitor-Insights-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Visitor-Insights-Extension",
   "extensionVersion": "1.0.8",
-  "generatedAt": "2026-10-23T00:13:13.918Z",
+  "generatedAt": "2026-10-23T01:11:30.729Z",
   "detected": true,
   "milestones": [
     {
@@ -715,6 +715,121 @@
           },
           "status": "done",
           "progress": "1/1"
+        }
+      ]
+    },
+    {
+      "id": "p9-discovery",
+      "title": "Phase 9 · How visitors found you",
+      "goal": "Answer \"what did they search for, and where did they come from?\" as fully as the search engines allow, and show each visit as a path from the page it entered on to the page or link it left by.",
+      "tasks": [
+        {
+          "id": "p9-keywords",
+          "title": "Search keywords per landing page",
+          "detail": "The words people searched before they arrived, for each page they landed on. Search engines no longer pass the search terms to the site they send visitors to, so the terms come from where they still exist: Google Search Console (through the connection the SEO extension already makes: queries, clicks, impressions and position per page), the search engines that still send a query in the referrer, campaign terms (utm_term) and the site's own search box, each labelled with where it came from.",
+          "detect": {
+            "files": [
+              "includes/class-fw-vi-keywords.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p9-referrers",
+          "title": "Referring pages, not just sites",
+          "detail": "The exact page a visitor clicked from (the forum thread, the article, the AI assistant answer) where the browser sends it, grouped under its site, with the landing page each one brought people to.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/class-fw-vi-rollup.php",
+                "pattern": "'rp'"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p9-entry-exit",
+          "title": "Entry and exit pages",
+          "detail": "Which page each visit started on and which it ended on, with the bounce rate of each entry page.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/class-fw-vi-reports.php",
+                "pattern": "function entry_pages"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p9-visits",
+          "title": "Visitor paths and recent activity",
+          "detail": "A log of recent visits: when, from where (channel, referrer, keyword when known, country), on which device, and the pages in order. No cookies, nothing that says who the visitor is, and kept for a short, set number of days.",
+          "detect": {
+            "files": [
+              "includes/class-fw-vi-visits.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p9-outbound",
+          "title": "Exit links and downloads",
+          "detail": "Clicks on links that leave the site and on files (PDF, ZIP, documents), counted per link and per page.",
+          "detect": {
+            "files": [
+              "static/js/modules/outbound.js"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p9-returning",
+          "title": "Returning visitors (with consent)",
+          "detail": "New against returning visitors. Counting a return needs something remembered on the device, so it is measured only for visitors who gave statistics consent; everyone else is counted as today.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "static/js/vi-core.js",
+                "pattern": "returning"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p9-geo",
+          "title": "Regions and cities",
+          "detail": "Region and city next to country, from a location database kept on the site (no lookup service), with a map. The address is used for the lookup and then discarded, as now.",
+          "detect": {
+            "files": [
+              "includes/class-fw-vi-geo.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p9-bots",
+          "title": "Bot report",
+          "detail": "How much of the traffic was automated and filtered out (search crawlers, AI crawlers, monitors and the rest), so the human share is visible rather than implied.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/class-fw-vi-bot-filter.php",
+                "pattern": "fw_vi_bots"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
         }
       ]
     }

@@ -26,11 +26,12 @@ when you need it, so the CRM only shows the tools your business uses.
 | **Email conversations** | write to contacts from their record and keep their replies on the timeline |
 | **Email marketing** | send newsletters and campaigns to lists, tags or segments |
 | **Automations** | want follow-up emails, tags, tasks and deal moves to happen on their own when contacts do something ([automations](../email-marketing/automations.md)) |
+| **Lead scoring and site activity** | want points for what contacts do, named scores, and the pages known contacts visit ([lead scoring](../email-marketing/lead-scoring.md)) |
 | **Audit log** | have more than one person in the CRM and want a record of who changed what |
 | **Support cases** | answer customer questions and problems as cases with a status, priority and owner ([support cases](./support-cases.md)) |
 | **Webhooks** | want other apps to hear about new contacts, won deals and other events ([developer guide](../developers/webhooks.md)) |
 
-Lead scoring is listed as **Coming soon** (see the [roadmap](../roadmap.mdx)).
+Every module is available; see the [roadmap](../roadmap.mdx) for what comes next.
 
 Flip a switch and press **Save modules**. What happens:
 

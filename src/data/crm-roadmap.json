@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.74",
-  "generatedAt": "2026-10-23T02:09:20.555Z",
+  "extensionVersion": "1.0.75",
+  "generatedAt": "2026-10-23T02:34:01.885Z",
   "detected": true,
   "milestones": [
     {
@@ -890,8 +890,8 @@
               "modules/scoring/class-fw-crm-scoring.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p5-site",
@@ -902,8 +902,8 @@
               "modules/scoring/class-fw-crm-site-activity.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p5-events",
@@ -914,8 +914,8 @@
               "includes/class-fw-crm-events-store.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },

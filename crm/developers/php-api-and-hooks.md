@@ -93,6 +93,17 @@ Useful filters: `unysonplus_crm_lifecycle_stages`, `unysonplus_crm_field_types`,
 `unysonplus_crm_woo_products`, `unysonplus_crm_task_reminders` (return false to stop reminder emails),
 `unysonplus_crm_direct_email` (change a one-to-one email before it is sent), `unysonplus_crm_bin_days`.
 
+## Events and scores
+
+- **Record an event**: `do_action( 'unysonplus_crm_track', $contact_id_or_email, 'name', array( 'value' => …, 'url' => …, 'props' => array() ) )`
+  or `FW_CRM_Events_Store::record( $contact_id, 'name', $args )`. Read with `FW_CRM_Events_Store::for_contact()` and
+  `count( $contact_id, 'name', $days )`. Every event fires `unysonplus_crm_event_recorded` (the row) and the
+  `crm.event` automation trigger; `unysonplus_crm_event_names` adds names to the pickers.
+- **Scores** (Lead scoring module): `FW_CRM_Scoring::add( $contact_id, $points, $score = 'default', $reason )`,
+  `get()`, `all_for()`, `top()`. Changes fire `unysonplus_crm_score_changed( $contact_id, $score, $from, $to )`.
+- **Segment fields with their own SQL**: a field added with `unysonplus_crm_segment_fields` can carry
+  `'sql' => callable( $op, $value )` returning a condition on the contact row aliased `s`.
+
 ## Sending and channels
 
 - **Sender profiles**: wrap your own `wp_mail()` call in `FW_CRM_Senders::begin( 'marketing'|'transactional', $profile_id = '' )`

@@ -3,8 +3,8 @@
   "extension": "visitor-insights",
   "cloneDir": "UnysonPlus-Visitor-Insights-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Visitor-Insights-Extension",
-  "extensionVersion": "1.0.10",
-  "generatedAt": "2026-10-23T03:15:07.466Z",
+  "extensionVersion": "1.0.11",
+  "generatedAt": "2026-10-23T04:05:12.905Z",
   "detected": true,
   "milestones": [
     {
@@ -847,8 +847,8 @@
               "static/js/admin/visitor-map.js"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p10-page-detail",
@@ -862,8 +862,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p10-path-filters",
@@ -877,8 +877,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p10-next-pages",
@@ -892,8 +892,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p10-console-plus",
@@ -907,8 +907,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p10-summaries",
@@ -922,8 +922,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p10-ai",
@@ -937,16 +937,16 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p10-hardening",
           "title": "Checked under real conditions",
-          "detail": "Search Console keywords on a connected site, bot counts and tracking behind common page-cache plugins, consent withdrawal clearing the returning-visitor note, and the collector and rollup under a burst of visits per minute — each verified and any gap fixed.",
+          "detail": "Verified: consent withdrawal removes the returning-visitor note; a burst of 3,000 page views (about 840 a second) is accepted and folded in under 4 seconds; page tokens now last 45 days, so pages a cache keeps for weeks are still counted. Still to check: Search Console keywords on a site with a live connection.",
           "detect": {},
-          "status": "planned",
-          "progress": null,
+          "status": "in-progress",
+          "progress": "3/4",
           "pin": true
         }
       ]

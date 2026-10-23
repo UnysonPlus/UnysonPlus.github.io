@@ -177,6 +177,22 @@ calling `UnysonPlusVI.grantRecording()`. Without one of these, nothing is record
 - **Bots** — how much of the traffic was automated (search crawlers, AI crawlers, SEO tools, link
   previews, monitors, scripts) and which bots they were, next to the human page views. On a site
   with a full-page cache, crawler numbers are a minimum.
+- **Everything about one page** — click a page on the Pages view for its trend, channels,
+  keywords, referring pages, how often visits start or end there, the pages visitors came from
+  and went to next, goals, forms, exit links, devices and places, with links to its heatmap,
+  recordings and editor.
+- **Visitor map** — countries shaded by page views and cities as dots, for any period, and for
+  one channel at a time from the visit log. The outline ships with the extension (Natural Earth,
+  public domain); no map service is called.
+- **Search Console opportunities** — on the Keywords view: search terms climbing and falling
+  against the period before, and pages sitting on the second page of results with the search
+  term to work on.
+- **Visit log filters and CSV** — filter visitor paths by place, search words, referring site,
+  device, new or returning, how the visit left, or a page it went through, and download the
+  result.
+- **Weekly email and alerts** — the email adds how visitors found you (top search terms, new
+  referring pages, cities that grew, bot share); an optional alert tells you when a new site
+  starts sending visitors.
 - **Where visits come from** — the Overview groups every visit into a channel: Direct, Search,
   Social, AI assistants, Email, Paid, Campaign or Referral, from the referring site and any campaign
   tags on the link.

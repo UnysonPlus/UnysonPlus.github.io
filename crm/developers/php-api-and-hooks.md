@@ -8,6 +8,9 @@ keywords: [wordpress crm hooks, crm php api, extend wordpress crm, crm actions f
 
 # PHP API and hooks
 
+Start with the [extension API](./extension-api.md): `fw_crm()` is the stable entry point, with one events stream,
+integrations, purchase summaries and custom objects. This page lists the lower-level classes and hooks.
+
 Other extensions build on the CRM through its PHP classes and WordPress hooks, never its database tables.
 Check that the CRM is active first, and for a part that belongs to a module, that the module is on
 (`FW_CRM_Modules::enabled( 'pipeline' )`):

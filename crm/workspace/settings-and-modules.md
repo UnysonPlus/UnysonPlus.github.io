@@ -29,6 +29,7 @@ when you need it, so the CRM only shows the tools your business uses.
 | **Lead scoring and site activity** | want points for what contacts do, named scores, and the pages known contacts visit ([lead scoring](../email-marketing/lead-scoring.md)) |
 | **Audit log** | have more than one person in the CRM and want a record of who changed what |
 | **Support cases** | answer customer questions and problems as cases with a status, priority and owner ([support cases](./support-cases.md)) |
+| **WooCommerce** | run a WooCommerce shop and want customers, orders and abandoned carts in the CRM ([WooCommerce](../sales/woocommerce.md)) |
 | **Webhooks** | want other apps to hear about new contacts, won deals and other events ([developer guide](../developers/webhooks.md)) |
 
 Every module is available; see the [roadmap](../roadmap.mdx) for what comes next.

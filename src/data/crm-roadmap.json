@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.75",
-  "generatedAt": "2026-10-23T02:34:01.885Z",
+  "extensionVersion": "1.0.76",
+  "generatedAt": "2026-10-23T03:09:19.848Z",
   "detected": true,
   "milestones": [
     {
@@ -933,8 +933,8 @@
               "includes/class-fw-crm-api.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p6-events",
@@ -945,8 +945,8 @@
               "includes/class-fw-crm-events.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p6-webhooks",
@@ -971,8 +971,8 @@
               "includes/class-fw-crm-integrations.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p6-woocommerce",
@@ -983,8 +983,8 @@
               "modules/integrations/class-fw-crm-woocommerce.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p6-membership-link",
@@ -995,8 +995,8 @@
               "includes/class-fw-crm-users.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p6-widgets",
@@ -1007,8 +1007,8 @@
               "includes/admin/class-fw-crm-widgets.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p6-summaries",
@@ -1019,8 +1019,8 @@
               "includes/class-fw-crm-commerce.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p6-objects",
@@ -1031,8 +1031,8 @@
               "includes/class-fw-crm-objects.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },

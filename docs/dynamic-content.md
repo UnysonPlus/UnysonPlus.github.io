@@ -86,6 +86,7 @@ These ship in the box. The **Links** group adds one entry per public post type, 
 | `{{author_name}}` | Post author's display name |
 | `{{author_bio}}` | Author biographical info |
 | `{{author_url}}` | Author archive URL |
+| `{{author_meta\|key=title}}` | Any field of the author's profile, by key (e.g. a role, expertise or social handle). Passwords, sessions and capabilities are never read. |
 
 ### Date & Time
 

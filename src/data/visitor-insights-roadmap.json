@@ -3,8 +3,8 @@
   "extension": "visitor-insights",
   "cloneDir": "UnysonPlus-Visitor-Insights-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Visitor-Insights-Extension",
-  "extensionVersion": "1.0.9",
-  "generatedAt": "2026-10-23T01:29:36.432Z",
+  "extensionVersion": "1.0.10",
+  "generatedAt": "2026-10-23T02:10:40.554Z",
   "detected": true,
   "milestones": [
     {
@@ -762,8 +762,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p9-visits",
@@ -774,8 +774,8 @@
               "includes/class-fw-vi-visits.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p9-outbound",
@@ -786,8 +786,8 @@
               "static/js/modules/outbound.js"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p9-returning",
@@ -801,20 +801,20 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p9-geo",
           "title": "Regions and cities",
-          "detail": "Region and city next to country, from a location database kept on the site (no lookup service), with a map. The address is used for the lookup and then discarded, as now.",
+          "detail": "Region and city next to country, from the CDN location headers or a location database kept on the site (the free DB-IP city database, downloaded from Settings, or a GeoLite2 file); no lookup service. Shown on the Overview and in each visit. The address is used for the lookup and then discarded, as now.",
           "detect": {
             "files": [
               "includes/class-fw-vi-geo.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p9-bots",
@@ -823,13 +823,13 @@
           "detect": {
             "symbols": [
               {
-                "file": "includes/class-fw-vi-bot-filter.php",
+                "file": "includes/class-fw-vi-installer.php",
                 "pattern": "fw_vi_bots"
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     }

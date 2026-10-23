@@ -159,6 +159,24 @@ calling `UnysonPlusVI.grantRecording()`. Without one of these, nothing is record
 - **Referring pages** — the exact page a visitor clicked from (a forum thread, an article) when the
   referring site shares it, with the page they landed on. Many sites share only their domain;
   those visits are listed under the site as "page not shared".
+- **Visitor paths** — a log of recent visits: when, where from (the referring link, search words
+  when known, channel), the region and city, device, browser, new or returning, and every page in
+  order, ending with the link or download the visitor left by. No cookies, no IP addresses and
+  nothing that says who the visitor is; the log is kept for 7 to 90 days (Settings → Keep visit
+  paths). Filter it by entry page or channel.
+- **Entry and exit pages** — on the Pages view: which pages visits start and end on, with the bounce
+  rate of each entry page.
+- **Exit links and downloads** — clicks on links that leave the site and on files such as PDFs,
+  counted per address.
+- **New and returning visitors** — measured only for visitors who gave statistics consent (a WP
+  Consent API plugin's "statistics" answer, or `UnysonPlusVI.grantStatistics()` from your own
+  banner), because telling them apart needs a note on the device.
+- **Regions and cities** — from your CDN's location headers, or from a location database kept on
+  the site: download the free DB-IP city database from **Settings → City database** (about 60 MB),
+  or add a GeoLite2 City file. The address is looked up on your own server and then discarded.
+- **Bots** — how much of the traffic was automated (search crawlers, AI crawlers, SEO tools, link
+  previews, monitors, scripts) and which bots they were, next to the human page views. On a site
+  with a full-page cache, crawler numbers are a minimum.
 - **Where visits come from** — the Overview groups every visit into a channel: Direct, Search,
   Social, AI assistants, Email, Paid, Campaign or Referral, from the referring site and any campaign
   tags on the link.

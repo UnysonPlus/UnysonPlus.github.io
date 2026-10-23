@@ -27,6 +27,11 @@ An author box is a natural fit for `schema.org`'s **Person** structured data —
 - **Role / Tagline** — optional line under the name.
 - **Bio** — custom bio, or overrides the user's biographical info.
 - **Avatar** — custom avatar upload, or overrides the user's Gravatar.
+- **From the user's profile** — for a chosen or current user, fill the box from their profile instead of typing it:
+  - **Role from profile field** — the field holding their role or job title (e.g. `title`), used when Role / Tagline is empty.
+  - **Bio profile field** — which field holds the bio. `description` is WordPress's Biographical Info; a site may keep a longer bio in its own field (e.g. `full_bio`).
+  - **Show email line** + **Email line label** — a line with the user's email address as a link, after a label such as "Feedback -".
+  - **Links from the profile** — the user's Website and any profile field named after a network (twitter, linkedin, facebook …) become link icons, ahead of the links listed below. **Email icon from the profile** adds an email icon too.
 - **Social / Profile Links** — a repeatable list; each entry is one link:
   - **Network** — chosen from the social catalog (Website is the default).
   - **URL** — the link target.

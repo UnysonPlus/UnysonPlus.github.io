@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.73",
-  "generatedAt": "2026-10-23T01:22:05.452Z",
+  "extensionVersion": "1.0.74",
+  "generatedAt": "2026-10-23T02:09:20.555Z",
   "detected": true,
   "milestones": [
     {
@@ -750,8 +750,8 @@
               "modules/automations/class-fw-crm-runner.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p4-cron",
@@ -762,8 +762,8 @@
               "modules/automations/class-fw-crm-cron-check.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-triggers",
@@ -774,8 +774,8 @@
               "modules/automations/triggers/class-fw-crm-trigger.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-actions",
@@ -786,8 +786,8 @@
               "modules/automations/actions/class-fw-crm-action.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-goals",
@@ -798,8 +798,8 @@
               "modules/automations/class-fw-crm-goals.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-editor",
@@ -810,8 +810,8 @@
               "modules/automations/static/js/editor.js"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-recipes",
@@ -822,8 +822,8 @@
               "modules/automations/recipes/index.json"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-runlog",
@@ -834,8 +834,8 @@
               "modules/automations/class-fw-crm-run-log.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-safety",
@@ -846,8 +846,8 @@
               "modules/automations/class-fw-crm-automation-guard.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p4-more",
@@ -859,8 +859,8 @@
               "modules/automations/actions/class-fw-crm-action-split.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p4-cli",
@@ -871,8 +871,8 @@
               "includes/class-fw-crm-cli.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },

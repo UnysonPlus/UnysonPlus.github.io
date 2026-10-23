@@ -103,13 +103,13 @@ Useful filters: `unysonplus_crm_lifecycle_stages`, `unysonplus_crm_field_types`,
 - **Channels**: `FW_CRM_Channels::send( 'email', $contact_id, array( 'subject' => …, 'body' => …, 'purpose' => 'transactional' ) )`
   sends a message and logs it on the timeline. Add SMS or a messaging app with the `unysonplus_crm_channels` filter:
   `id => { label, icon, address( $contact ), send( $contact, $message ), available }`.
-- Hooks: `unysonplus_crm_mail_service_sent`, `unysonplus_crm_email_event` (open, click, bounce… with a bot flag),
+- Hooks: `unysonplus_crm_mail_service_sent`, `unysonplus_crm_email_event` (counted opens, clicks, bounces…; scanners are left out),
   `unysonplus_crm_smart_link_clicked`, `unysonplus_crm_digest_queued`, `unysonplus_crm_channel_sent`.
 
-## Automations (registering now, running later)
+## Automations: your own triggers and actions
 
-The Automations module is planned. Extensions can already register their triggers and actions; nothing reads
-them until it arrives.
+With the Automations module on, your triggers appear in the editor's "Starts when" list and your actions in
+its "Add a step" menu. Registering while the module is off is harmless.
 
 ```php
 add_filter( 'unysonplus_crm_automation_triggers', function ( $t ) {
@@ -127,4 +127,27 @@ do_action( 'unysonplus_crm_automation_event', 'myext.booked', $contact_id, array
 ```
 
 Name triggers and actions `<extension>.<event>`. Action callbacks run in the background with no logged-in
-user. The CRM's own reply event is `crm.email_replied`.
+user and return `true`, a `WP_Error` (a code starting with `skip` is logged as skipped, not failed), or
+`array( 'message' => …, 'context' => array( … ) )` to pass values (such as a new record's id) to later steps.
+`$context['test']` is true during a test run: do not contact real people then.
+
+A trigger's settings match the event's values of the same key unless it has its own
+`'match' => function ( $settings, $context ) { … }`. The CRM's own triggers are `crm.*` (contact added,
+subscribed, form submitted, tag added or removed, list joined or left, field changed, date reached, task
+completed, deal created / moved / won / lost, email opened / clicked / replied, case opened, purchase made).
+
+Other hooks: `unysonplus_crm_automation_started`, `unysonplus_crm_automation_finished`,
+`unysonplus_crm_automation_saved`, `unysonplus_crm_automation_loop_stopped`, and the filters
+`unysonplus_crm_automation_condition_fields` (add a condition with a `test` callback) and
+`unysonplus_crm_automation_recipes`.
+
+### Command line
+
+```bash
+wp crm automations run [--budget=50]   # run what is due (use from a server cron job)
+wp crm automations status              # scheduler health and every automation's numbers
+wp crm automations list
+wp crm automations test <automation> <contact>
+wp crm automations dates               # check date triggers now
+wp crm queue run                       # send the next campaign batches
+```

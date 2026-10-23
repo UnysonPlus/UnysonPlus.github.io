@@ -3,8 +3,8 @@
   "extension": "visitor-insights",
   "cloneDir": "UnysonPlus-Visitor-Insights-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Visitor-Insights-Extension",
-  "extensionVersion": "1.0.6",
-  "generatedAt": "2026-10-12T11:16:32.183Z",
+  "extensionVersion": "1.0.8",
+  "generatedAt": "2026-10-23T00:13:13.918Z",
   "detected": true,
   "milestones": [
     {
@@ -684,6 +684,37 @@
           "status": "done",
           "progress": null,
           "pin": true
+        }
+      ]
+    },
+    {
+      "id": "p8-portability",
+      "title": "Phase 8 · Portability & navigation",
+      "goal": "Move a whole Visitor Insights setup and its history between sites, and find every report from one sidebar.",
+      "tasks": [
+        {
+          "id": "p8-transfer",
+          "title": "Import / Export",
+          "detail": "One file with the setup (settings, goals, funnels, A/B tests, notes) and optionally the history, for all time or a recent period. Import adds to what is here or replaces it; pages are matched by address, so history follows a site to a new domain or folder. Visitor keys, secrets and recordings never leave the site.",
+          "detect": {
+            "files": [
+              "includes/class-fw-vi-transfer.php"
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
+        },
+        {
+          "id": "p8-app",
+          "title": "App menu",
+          "detail": "The screens use the same sidebar frame as SEO, the CRM and Membership: grouped views instead of a row of thirteen tabs, and a menu of its own for people who may see the reports but not the Unyson+ menu.",
+          "detect": {
+            "files": [
+              "includes/class-fw-vi-app.php"
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     }

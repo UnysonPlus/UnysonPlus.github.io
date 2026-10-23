@@ -67,9 +67,12 @@ Every module has its own switch, and a module you leave off adds nothing to your
 ## Using it
 
 Switch it on under **Unyson+ → Extensions → Visitor Insights**. Collection starts at once; reports
-live under **Unyson+ → Visitor Insights**.
+live under **Unyson+ → Visitor Insights**, in the same sidebar layout as SEO, the CRM and
+Membership: the views are grouped into **Behaviour**, **Conversions**, **Site health** and **Setup**,
+and the period switch sits at the top right. Someone allowed to see the reports but not the rest of
+Unyson+ gets a **Visitor Insights** menu of their own.
 
-| Tab | What you see |
+| View | What you see |
 | --- | --- |
 | **Overview** | Page views, unique visitors, average time on page, a daily chart, top pages, referrers, campaigns, devices, browsers and countries, for 7, 30 or 90 days or 12 months. |
 | **Pages** | Every tracked page with its views, visitors, time on page and how many read at least half of it. |
@@ -154,6 +157,11 @@ calling `UnysonPlusVI.grantRecording()`. Without one of these, nothing is record
 - **On your dashboard** — a Visitor Insights widget shows the week against the one before, the last
   14 days at a glance, the top pages and how many page views are happening right now.
 - **Export** — download pages, sources, goals or daily totals as CSV for any period.
+- **Import / Export** (Setup) — download the whole setup (settings, goals, funnels, A/B tests and
+  notes), with or without its history, as one file, and load it into this or another site. Import
+  either **adds to** what is there (goals and days the site already has are kept) or **replaces**
+  it. Pages are matched by their address, so history follows a site that moved to a new domain or
+  folder. Session recordings, the daily visitor keys and the collector's secrets are never included.
 - **Page caches** — after you change a setting or an A/B test, common page caches are cleared for you.
 - **Mouse-movement maps** — an optional heatmap mode showing where the pointer lingers on desktop,
   off by default.

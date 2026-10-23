@@ -4,7 +4,7 @@
   "cloneDir": "UnysonPlus-Visitor-Insights-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Visitor-Insights-Extension",
   "extensionVersion": "1.0.10",
-  "generatedAt": "2026-10-23T02:10:40.554Z",
+  "generatedAt": "2026-10-23T03:15:07.466Z",
   "detected": true,
   "milestones": [
     {
@@ -830,6 +830,124 @@
           },
           "status": "done",
           "progress": "1/1"
+        }
+      ]
+    },
+    {
+      "id": "p10-understand",
+      "title": "Phase 10 · From numbers to answers",
+      "goal": "Make what Phase 9 collects easy to read and act on: a map, one page with everything about a page, filters and exports for the visit log, and short summaries that say what changed.",
+      "tasks": [
+        {
+          "id": "p10-map",
+          "title": "Visitor map",
+          "detail": "A world map of where visits came from: countries shaded by visits and cities as dots, for any period and channel. Drawn from a map outline shipped with the extension (public-domain data), so nothing is fetched from a map service.",
+          "detect": {
+            "files": [
+              "static/js/admin/visitor-map.js"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p10-page-detail",
+          "title": "Everything about one page",
+          "detail": "One view per page: its traffic and trend, the channels, keywords and referring pages that bring visitors to it, how often it is the entry or exit page, where visitors go next, its exit links and downloads, form and goal results, and links to its heatmap and recordings.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/class-fw-vi-admin-page.php",
+                "pattern": "render_page_detail"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p10-path-filters",
+          "title": "Visit log filters and export",
+          "detail": "Filter visitor paths by country or city, keyword, referring site, device, new or returning, and \"left by a download / exit link\"; search the log by page; download the filtered log as CSV.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/class-fw-vi-visits.php",
+                "pattern": "function export"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p10-next-pages",
+          "title": "Where visitors go next",
+          "detail": "For any page, the pages visitors open next and the ones they came from, drawn from the visit log, so dead ends and strong paths through the site show up.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/class-fw-vi-visits.php",
+                "pattern": "function next_pages"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p10-console-plus",
+          "title": "Search Console opportunities",
+          "detail": "From the Search Console data: search terms climbing or falling against the period before, and pages shown on the second page of results (positions 8 to 20) that a better title or more content could lift, each linked to the page's SEO settings.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/class-fw-vi-keywords.php",
+                "pattern": "function opportunities"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p10-summaries",
+          "title": "\"What brought them\" in the weekly email and alerts",
+          "detail": "The weekly email gains the top keywords, new referring pages, the cities that grew, and the bot share; an optional alert when a new site starts sending visitors.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/class-fw-vi-digest.php",
+                "pattern": "FW_VI_Keywords"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p10-ai",
+          "title": "AI Assistant: where traffic came from",
+          "detail": "Read-only AI Assistant abilities for keywords, referring pages, visitor paths, cities and bots, so questions like \"where did this week's visitors come from?\" or \"which pages do search visitors leave from?\" are answered from the site's own data.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "includes/class-fw-vi-ai.php",
+                "pattern": "FW_VI_Visits::"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p10-hardening",
+          "title": "Checked under real conditions",
+          "detail": "Search Console keywords on a connected site, bot counts and tracking behind common page-cache plugins, consent withdrawal clearing the returning-visitor note, and the collector and rollup under a burst of visits per minute — each verified and any gap fixed.",
+          "detect": {},
+          "status": "planned",
+          "progress": null,
+          "pin": true
         }
       ]
     }

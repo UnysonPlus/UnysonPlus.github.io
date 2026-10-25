@@ -19,6 +19,19 @@ There are two kinds:
 - **Connectors**, for apps you install yourself. The kit finds them where they usually are, or you tell it once where
   they are: an address, or the app's folder or program. With a folder or program set, the kit **starts the app when it
   is needed**, so you do not have to open it first.
+
+**Find it** looks in the usual install places: the program folders and the top two levels of each drive (so
+`D:\AI\voicebox` is found). If it finds the app, it fills in the path. **Browse…** opens your computer's own file or
+folder picker (through the kit; a web page cannot read a real path from your disk). **Type it** lets you paste a path.
+
+### One AI tool on the graphics card at a time
+
+Voicebox and ACE-Step each load a large model onto your graphics card, and two at once can overfill a 6 GB card and
+make both slow or fail. So before one starts working, the kit closes the other **if the kit opened it**, waits for the
+memory to come back, then goes on. Making a voice-over and then music opens Voicebox, closes it, then opens ACE-Step.
+An app you opened yourself is never closed. Anything the kit opened also closes after ten idle minutes, and when the
+kit itself closes.
+
 - **Downloads**, which the kit installs itself the first time you use them.
 
 | Add-on | Kind | What it does | Where you use it |
@@ -43,9 +56,9 @@ Voicebox for each line in turn, using the engine the profile is set to, joins th
 every word with speech recognition, so scenes and captions follow it exactly. The first line can take a few minutes
 while Voicebox loads its model; after that, each line takes seconds.
 
-To have the kit open Voicebox for you, set its **Program** in the Add-ons panel (for example
-`C:\Program Files\Voicebox\Voicebox.exe`). When a voice-over needs Voicebox and it is closed, the kit starts it and
-waits until it answers.
+To have the kit open Voicebox for you, set its **Program** in the Add-ons panel: **Find it**, or **Browse…** to
+`voicebox.exe` (not `voicebox-server.exe`). When a voice-over needs Voicebox and it is closed, the kit starts it and
+waits until it answers; the first line then takes a minute or so while it loads.
 
 Only use a voice you have the right to use: your own, or someone's with their permission.
 
@@ -72,7 +85,8 @@ launcher, inside the folder you chose.
 
 The add-ons are listed by the kit at `GET /studio/addons`. A connector's location is set with `POST /studio/addons/<id>
 { "location": "…" }` (an empty location goes back to the usual place; add `"field": "app"` for Voicebox's program) and
-kept in the kit's `addons.json`. A voice-over in a Voicebox voice is `POST /studio/voice { "lines": […], "voice":
+kept in the kit's `addons.json`. `POST /studio/addons/<id>/find` searches and saves (`{ found }`);
+`POST /studio/addons/<id>/browse { field }` opens the computer's picker (`{ chosen }`, null when cancelled). A voice-over in a Voicebox voice is `POST /studio/voice { "lines": […], "voice":
 "voicebox:<profile id>" }`. Music is `POST /studio/music { "prompt": "…", "seconds": 30, "bpm": 120 }`, then poll
 `GET /studio/music/<id>` for `{ state, step, result: { src, bpm, seconds } }`. From the command line:
 `node studio-cli.mjs music "upbeat pop instrumental" --seconds 30 --bpm 120 --out music.mp3`.

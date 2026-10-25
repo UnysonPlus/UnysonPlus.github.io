@@ -833,8 +833,69 @@
           "status": "done"
         }
       ]
+    },
+    {
+      "id": "p15-approachable",
+      "title": "Phase 15 — Approachable, and proven",
+      "goal": "The editor can already do a great deal; this phase makes it easy for someone who has never used a timeline to make and export a good animation in a few minutes, and backs its claims with tests. Prompted by outside reviews: the concept rated highly, ease of adoption and production readiness were the weak spots.",
+      "tasks": [
+        {
+          "id": "p15-first-run",
+          "title": "Your first scene in two minutes",
+          "detail": "A guided first run for new visitors, built on the Studio's own tour tools (cursor, spotlight, callouts): pick a starting point, change the words, watch it play, export. Skippable, offered once, reopenable from Help. The aim: a polished result before reading any of the manual.",
+          "status": "planned"
+        },
+        {
+          "id": "p15-templates",
+          "title": "Start from a template",
+          "detail": "Complete, ready-to-use scenes by goal, not by technique: website hero, product reveal, feature list, pricing, call to action, logo intro, social promo, explainer and code walkthrough. Shown when starting a new scene (File, New) and in the library, each in the person's brand kit when they have one. Every template passes Check scene and the settled-frame layout review before it ships.",
+          "status": "planned"
+        },
+        {
+          "id": "p15-by-goal",
+          "title": "Presets by what you want to do",
+          "detail": "A second way to browse the presets, by goal (\"make a headline land\", \"reveal a picture\", \"draw attention\", \"change scenes\") alongside today's technique groups, with plain-language names next to motion terms, so people who do not know motion vocabulary still find the right one.",
+          "status": "planned"
+        },
+        {
+          "id": "p15-ai-clarity",
+          "title": "What works without AI, and what AI adds",
+          "detail": "One clear screen, and a section on the overview: the editor, export and video work free with no AI at all; the AI Dev Kit adds local tools (speech, voices, separation, rendering); AI assist needs an AI connected through it (your own subscription or a local model). Shown the first time someone opens AI assist or Add-ons.",
+          "status": "planned"
+        },
+        {
+          "id": "p15-positioning",
+          "title": "Lead with the result, standalone first",
+          "detail": "Rewrite the overview and the Studio's first screen around the result (\"Create professional motion graphics for websites and video, without starting from scratch or writing animation code\"), not the number of presets. Present Kinetic Scenes as a standalone tool that works on any website, with Unyson+ and WordPress as an added advantage rather than a requirement.",
+          "status": "planned"
+        },
+        {
+          "id": "p15-testing",
+          "title": "Tested and published: browsers, phones, big scenes, video, WordPress",
+          "detail": "A repeatable test run, published on the docs: current Chrome, Edge, Firefox and Safari (desktop and iOS); playback smoothness on a mid-range phone; scenes with 100+ layers and long timelines; video export in every format, in the AI Dev Kit and in the browser; the Kinetic Scene element in WordPress with common themes, page builders and caching plugins. Failures become fixes or documented limits.",
+          "status": "planned"
+        },
+        {
+          "id": "p15-limits",
+          "title": "Known limitations and support",
+          "detail": "A plain page: which browsers are supported, where projects are saved (this browser, project files) and what that means, what each export carries (fonts, footage, sound), the version promise for embeds, and what is not supported yet.",
+          "status": "planned"
+        },
+        {
+          "id": "p15-version",
+          "title": "One source of truth for the version and stage",
+          "detail": "The Studio publishes its own version and release stage (Beta) in a small file at build time; the docs, the roadmap and the overview read it instead of a number typed by hand, so the editor and the documentation can never disagree.",
+          "status": "planned"
+        },
+        {
+          "id": "p15-decide",
+          "title": "Decide: free or paid, and where projects are saved",
+          "detail": "Settle the two open questions on the overview (whether the Studio stays free with AI optional, and whether projects get cloud saving and accounts), and record the reasons in the Design Decisions log.",
+          "status": "planned"
+        }
+      ]
     }
   ],
-  "extensionVersion": "0.0.63",
+  "extensionVersion": "0.0.69",
   "versionLabel": "Studio"
 }

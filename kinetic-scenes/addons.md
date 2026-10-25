@@ -1,24 +1,30 @@
 ---
 sidebar_position: 12.2
 title: Add-ons
-description: Extra tools Kinetic Scenes can use through the AI Dev Kit on your computer — Voicebox for voice-overs in your own voice, speech recognition, voices, voice and music separation, with Blender and sound identification coming soon.
+description: Extra tools Kinetic Scenes can use through the AI Dev Kit on your computer — Voicebox for voice-overs in your own voice, ACE-Step for background music, speech recognition, voices, voice and music separation, with Blender and sound identification coming soon.
 ---
 
 # Add-ons
 
 Add-ons are extra tools the Studio can use through the [AI Dev Kit](/ai-dev-kit) on your own computer. Open them from
-**Add-ons** in the top bar to see what is connected or installed. Nothing is uploaded anywhere: the kit does the work
+**Tools → Add-ons** to see what is connected or installed. Nothing is uploaded anywhere: the kit does the work
 locally.
+
+The AI Dev Kit is a free helper you install once. If the Studio cannot find it, the Add-ons panel and AI assist show
+**Get the AI Dev Kit** and **How to set it up** ([the setup guide](/guides/set-up-ai-for-unysonplus)); once it is
+running, click **Check again**.
 
 There are two kinds:
 
-- **Connectors**, for apps you install yourself. The kit finds them where they usually are; if one is somewhere unusual,
-  set its location once in the Add-ons panel.
+- **Connectors**, for apps you install yourself. The kit finds them where they usually are, or you tell it once where
+  they are: an address, or the app's folder or program. With a folder or program set, the kit **starts the app when it
+  is needed**, so you do not have to open it first.
 - **Downloads**, which the kit installs itself the first time you use them.
 
 | Add-on | Kind | What it does | Where you use it |
 |---|---|---|---|
 | **Voicebox** | Connector | Voice-overs in your own voice (or any voice you have the right to use) from your Voicebox profiles. | [Voice-over from a script](./sound.md#a-voice-over-from-a-script), AI assist's **Build with a voice-over** |
+| **ACE-Step music** | Connector | Background music made on your computer, free to use: an instrumental in the style, tempo and length you ask for. | **Insert → Music…**, AI assist settings |
 | **Speech recognition** | Download | Every word of a voice-over with its time (Whisper). | An audio clip's **Words** |
 | **Built-in voices** | Download | Voice-overs from a script in a free synthetic voice (Piper). | Voice-over from a script |
 | **Voice and music separation** | Download | Splits a clip's sound into the voice and the music (Demucs). | [Footage tools](./video-effects.md#separate-voice-and-music), an audio clip's **Voice and music** |
@@ -37,10 +43,36 @@ Voicebox for each line in turn, using the engine the profile is set to, joins th
 every word with speech recognition, so scenes and captions follow it exactly. The first line can take a few minutes
 while Voicebox loads its model; after that, each line takes seconds.
 
+To have the kit open Voicebox for you, set its **Program** in the Add-ons panel (for example
+`C:\Program Files\Voicebox\Voicebox.exe`). When a voice-over needs Voicebox and it is closed, the kit starts it and
+waits until it answers.
+
 Only use a voice you have the right to use: your own, or someone's with their permission.
+
+## ACE-Step music
+
+[ACE-Step 1.5](https://github.com/ace-step/ACE-Step-1.5) is a free, open-source music generator (MIT licence) that runs
+on your own graphics card; the quick model needs less than 4 GB of graphics memory. Install it as its project
+describes, then in the Add-ons panel set ACE-Step's **Location** to its folder (the one with `start_gradio_ui.bat`,
+for example `D:\AI\ACE-Step-1.5`).
+
+**Insert → Music…** (also in the AI menu, Tools and AI assist's settings) opens **Make music**: pick a style
+(Upbeat, Corporate, Cinematic, Chill, Tech) or describe your own, set the length (it starts at the scene's) and the
+tempo, and click **Make music**. The track goes in as a **Music** clip: it drops under a voice-over by itself, and its
+beats are found straight away, so [Snap reveals to the beat](./sound.md#music-and-the-beat) works at once.
+
+When ACE-Step is not running, the kit starts it with its own launcher, with its API on and its update check off, and
+no browser window. The first track takes a minute or so while it loads; after that, half a minute of music takes well
+under a minute. The kit stops the ACE-Step it started after ten minutes without a request, to give your graphics card
+back. If you opened ACE-Step yourself, the kit uses it as it is and never closes it, but it needs its API: set
+`ENABLE_API=--enable-api` in its launcher, or close it and let the kit start it. The kit only ever runs ACE-Step's own
+launcher, inside the folder you chose.
 
 ## For agents
 
 The add-ons are listed by the kit at `GET /studio/addons`. A connector's location is set with `POST /studio/addons/<id>
-{ "location": "…" }` (an empty location goes back to the usual place) and kept in the kit's `addons.json`. A voice-over
-in a Voicebox voice is `POST /studio/voice { "lines": […], "voice": "voicebox:<profile id>" }`.
+{ "location": "…" }` (an empty location goes back to the usual place; add `"field": "app"` for Voicebox's program) and
+kept in the kit's `addons.json`. A voice-over in a Voicebox voice is `POST /studio/voice { "lines": […], "voice":
+"voicebox:<profile id>" }`. Music is `POST /studio/music { "prompt": "…", "seconds": 30, "bpm": 120 }`, then poll
+`GET /studio/music/<id>` for `{ state, step, result: { src, bpm, seconds } }`. From the command line:
+`node studio-cli.mjs music "upbeat pop instrumental" --seconds 30 --bpm 120 --out music.mp3`.

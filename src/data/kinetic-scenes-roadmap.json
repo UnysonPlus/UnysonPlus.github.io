@@ -361,7 +361,7 @@
         {
           "id": "p8-addons",
           "title": "Add-ons",
-          "detail": "An Add-ons panel lists the extra tools the AI Dev Kit can use on this computer: connectors to apps the person installs (found automatically, or at a location set once) and downloads the kit installs itself. Voicebox is the first connector: its voice profiles speak voice-overs from a script, every word timed. See [Add-ons](/kinetic-scenes/addons).",
+          "detail": "An Add-ons panel lists the extra tools the AI Dev Kit can use on this computer: connectors to apps the person installs (found automatically, or at a location set once) and downloads the kit installs itself. Voicebox is the first connector: its voice profiles speak voice-overs from a script, every word timed. See [Add-ons](/kinetic-scenes/addons). ACE-Step is the second connector: Make music adds an instrumental made on this computer as a Music track, beats found. A connector can be given its folder or program, so the kit starts the app when needed (and stops ACE-Step after ten idle minutes); when the kit is not found, the Studio links to it and its setup guide.",
           "status": "done"
         }
       ]
@@ -896,6 +896,6 @@
       ]
     }
   ],
-  "extensionVersion": "0.0.69",
+  "extensionVersion": "0.0.70",
   "versionLabel": "Studio"
 }

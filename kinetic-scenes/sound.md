@@ -59,6 +59,9 @@ With the search box empty, the bottom of the Sounds tab offers two more ways to 
 
 ## Music and the beat
 
+No music yet? **Insert → Music…** makes an instrumental on your computer with the [ACE-Step add-on](./addons.md#ace-step-music),
+free to use, as long as the scene, with its beats already found.
+
 Select a music clip and **Find the beats**: the Studio works out the tempo, the beat grid and how strong each beat is, right
 in the browser, and marks them on the clip (strong moments taller).
 

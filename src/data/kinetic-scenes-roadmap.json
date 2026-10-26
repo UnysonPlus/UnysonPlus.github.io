@@ -894,6 +894,117 @@
           "status": "planned"
         }
       ]
+    },
+    {
+      "id": "p16-reels",
+      "title": "Phase 16 — Reels from your footage",
+      "goal": "Turn a long, unedited video (an unboxing, a tutorial, a talk) into a finished 30-second reel with little or no hand work: the shots chosen, framed vertically, cut on the beat and captioned. Today each of those steps is done by hand.",
+      "tasks": [
+        {
+          "id": "p16-highlights",
+          "title": "Make a reel from this video",
+          "detail": "An AI Dev Kit add-on watches a long video and finds the moments worth keeping (products shown clearly, reveals, steady and sharp shots, what is being talked about), then builds a cut of the length asked for on the music's beats, with a title for each part. Every chosen shot stays an ordinary clip that can be swapped, trimmed or moved.",
+          "status": "planned"
+        },
+        {
+          "id": "p16-reframe",
+          "title": "Landscape to vertical, following the subject",
+          "detail": "Reframe 16:9 footage to 9:16 (or 1:1, 4:5) with the crop following a face, hands or the product, smoothly, building on the face tracking the Studio already has. The crop path is editable afterwards.",
+          "status": "planned"
+        },
+        {
+          "id": "p16-caption-styles",
+          "title": "Caption style packs",
+          "detail": "Ready-made caption looks (bold short-form, neon, chrome, handwritten, karaoke variations) applied in one click, and one style copied onto every caption in the scene.",
+          "status": "planned"
+        },
+        {
+          "id": "p16-words",
+          "title": "Edit by the words",
+          "detail": "Delete words in the transcript and the footage is cut to match: filler words, long silences and retakes removed in one step, using the word timings the Studio already makes.",
+          "status": "planned"
+        },
+        {
+          "id": "p16-stacks",
+          "title": "One-click effect stacks",
+          "detail": "Named combinations of presets (a beat drop, a glitch cut, a punch-in) applied together on the beat, so a short-form edit gets its energy without building each effect by hand.",
+          "status": "planned"
+        },
+        {
+          "id": "p16-behind",
+          "title": "Title behind the subject",
+          "detail": "Text placed between the background and a person cut out of the footage, using the Studio's existing cut-out, so the title appears to stand behind them.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "p17-direct",
+      "title": "Phase 17 — Direct by pointing",
+      "goal": "Make changing a scene with AI as precise as pointing: say what to change where it is, choose a direction before anything is built, and let measurements, not impressions, decide whether a frame is right.",
+      "tasks": [
+        {
+          "id": "p17-point",
+          "title": "Point at the frame to change it",
+          "detail": "Click a spot in the preview and write what to change. AI assist receives the moment, the element under the pointer and a close-up of that area, changes only that, and answers in a sentence; the preview stays where it was. The values it touches (a title, a number, a colour, a hold time) appear as fields to adjust by hand.",
+          "status": "planned"
+        },
+        {
+          "id": "p17-directions",
+          "title": "Three directions first",
+          "detail": "For a new scene, AI assist first proposes three short directions (mood, pace, look, with a still for each) and builds the one chosen, instead of committing to the first idea.",
+          "status": "planned"
+        },
+        {
+          "id": "p17-scored",
+          "title": "Music composed to the scene",
+          "detail": "Alongside ACE-Step, a local composer that writes a short score to the scene's own timing (accents where things land, a lift at the reveal) and plays it with sampled instruments, on any computer, no graphics card needed.",
+          "status": "planned"
+        },
+        {
+          "id": "p17-measured",
+          "title": "Measurements overrule impressions",
+          "detail": "When the AI reviews its frames (Look and fix), the measured layout check has the last word: text that overflows, captions outside the safe area or overlapping parts are fixed even if the frame looks fine to the AI. The layout check also measures captions.",
+          "status": "planned"
+        },
+        {
+          "id": "p17-blur",
+          "title": "Motion blur in videos",
+          "detail": "An option when rendering a video to blend sub-frames, so fast moves look filmed rather than stepped.",
+          "status": "planned"
+        },
+        {
+          "id": "p17-interchange",
+          "title": "Finish in another editor",
+          "detail": "Export a scene's cut, sound and captions as a project other editors open (for example CapCut, Premiere or DaVinci Resolve), as well as the finished video.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "p18-more",
+      "title": "Phase 18 — More to animate",
+      "goal": "More kinds of material to bring into a scene: vector animations from the large free libraries, and 3D objects made from a description.",
+      "tasks": [
+        {
+          "id": "p18-lottie",
+          "title": "Lottie animations",
+          "detail": "A Lottie layer: drop in an animation from the free libraries, play it on the scene's clock, and recolour or reword it in place.",
+          "status": "planned"
+        },
+        {
+          "id": "p18-3d-objects",
+          "title": "3D objects from a description",
+          "detail": "Describe an object and the AI Dev Kit builds it as a 3D model for a 3D layer, checking each attempt by measurement (sizes, parts that touch, nothing intersecting) and by looking at it from several sides, and keeping the best. Replaces the planned Blender add-on as the first route; Blender stays as an option.",
+          "status": "planned"
+        },
+        {
+          "id": "p18-camera-path",
+          "title": "See the camera's path",
+          "detail": "In 3D layers, show the camera's route and field of view in the scene, so a camera move can be shaped by eye.",
+          "status": "planned"
+        }
+      ]
     }
   ],
   "extensionVersion": "0.0.71",

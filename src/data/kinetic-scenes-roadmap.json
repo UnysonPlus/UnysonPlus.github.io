@@ -1096,6 +1096,49 @@
           "detail": "Give AI assist the same kinds of brief that people publish films for (an app launch, a logo reveal, a poster breaking out of its frame, a history in thirty seconds, a wordless explainer) and compare the results side by side; the gaps become fixes. The published films are only used as a reference, never copied."
         }
       ]
+    },
+    {
+      "id": "p20-screencasts",
+      "title": "Phase 20 — Real screen demos, made in minutes",
+      "goal": "Tutorials and promos that show the real product working, recorded and framed automatically: a short step list in, a sharp, zoomed, captioned reel out. Real screen footage reads as genuine in a way generated graphics alone do not.",
+      "tasks": [
+        {
+          "id": "p20-record",
+          "title": "Screencast recorder",
+          "detail": "The AI Dev Kit runs a list of steps in a real browser the way a person would (a visible cursor with click ripples, natural mouse moves, typing, real drags) and records it sharp (2x), carried across page loads with the waiting cut out, plus when and where each step happened.",
+          "status": "done"
+        },
+        {
+          "id": "p20-actions",
+          "title": "Unyson+ actions",
+          "detail": "Ready-made steps that know the WordPress admin and the page builder: name the page, add a section, drag in an element, open its settings, fill a field, save, preview. A demo is a few lines.",
+          "status": "done"
+        },
+        {
+          "id": "p20-autozoom",
+          "title": "Automatic zoom",
+          "detail": "The recording becomes a scene whose camera zooms to each action where it happens and pulls back between them, with numbered step captions, an optional title, end card and music, in 9:16 or 16:9.",
+          "status": "done"
+        },
+        {
+          "id": "p20-demo-site",
+          "title": "A styled demo site",
+          "detail": "A WordPress install with a good-looking theme, real content and fonts, reset with one command, so every demo ends on a page worth showing.",
+          "status": "planned"
+        },
+        {
+          "id": "p20-screenshots",
+          "title": "Screenshots with highlights",
+          "detail": "Sharp 2x shots of any page or element, with an optional highlight, arrow, blur or callout, for explainers, thumbnails and the docs.",
+          "status": "planned"
+        },
+        {
+          "id": "p20-studio",
+          "title": "Screencasts in the Studio",
+          "detail": "Drop a recording into Kinetic Scenes and it arrives framed: browser frame, the automatic zooms as camera keys you can adjust, the cursor and the step captions.",
+          "status": "planned"
+        }
+      ]
     }
   ],
   "extensionVersion": "0.0.71",

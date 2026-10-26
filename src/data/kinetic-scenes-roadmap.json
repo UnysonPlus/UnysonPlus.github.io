@@ -965,6 +965,12 @@
           "title": "Free stock footage search",
           "detail": "Search free stock libraries and open archives for real video clips (and pictures) from inside the Studio, with their licences shown, and drop them on the timeline; for people with no footage of their own.",
           "status": "planned"
+        },
+        {
+          "id": "p16-cutout-methods",
+          "status": "planned",
+          "title": "Choose the cut-out method",
+          "detail": "A setting for how people are cut out of footage, to try what suits each video: Fast (a quick body outline, for drafts), Standard (fine edges on the graphics card, the default), Person and what they hold (SAM 2: click the person and the product, both followed through the video) and Robust Video Matting (very fast and steady, an optional download because of its licence). Each shows what it is good at and whether it is installed. The standard method already runs about three times faster than before."
         }
       ]
     },

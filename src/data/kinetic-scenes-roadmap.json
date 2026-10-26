@@ -1053,6 +1053,43 @@
           "status": "planned"
         }
       ]
+    },
+    {
+      "id": "p19-styles",
+      "title": "Phase 19 — Motion styles, and a stricter review",
+      "goal": "Let people ask for a recognised motion-design style by name (\"make it synthwave\", \"line-art style\") and get the real thing, and have AI assist judge its own work as hard as a design jury would. Adapted from an MIT-licensed collection of fifteen motion-design styles, each with its signature features, a working method and a review rubric (credited in the guide).",
+      "tasks": [
+        {
+          "id": "p19-guide",
+          "title": "A motion-styles guide for AI assist",
+          "detail": "Fifteen styles written down the way AI assist can use them: what makes each recognisable at a glance and how to build it from the Studio's presets, layers, fonts and colours. Ready now: flat vector, line art (lines drawing themselves on), isometric, 3D, Bauhaus, synthwave, aurora glass, collage and HUD / interface. In the AI Dev Kit and the Studio's AI skill, and choosable as a style in AI assist's settings.",
+          "status": "planned"
+        },
+        {
+          "id": "p19-method",
+          "title": "A film's shape: hook, hero moment, end frame",
+          "detail": "AI assist plans every scene the same way: something happening in the first half-second, one unmistakable hero moment around two-thirds of the way through, and a composed end frame held about a second with gentle movement; still key frames checked before the motion is built, and sound hits on the same cue times as the picture.",
+          "status": "planned"
+        },
+        {
+          "id": "p19-jury",
+          "title": "Look and fix, judged like a jury",
+          "detail": "The review scores the frames on seven points (style fidelity, the idea and its wow, motion craft, design and typography, finish, sound and sync, technical), then fixes the weakest first, each fix tied to a moment with concrete numbers. Measured problems still overrule impressions. It looks at enough frames to judge motion, not one still.",
+          "status": "planned"
+        },
+        {
+          "id": "p19-effects",
+          "title": "The effects some styles need",
+          "detail": "New player effects for the styles that cannot be built yet: a frame-by-frame line \"boil\" (hand-drawn cel animation), shapes morphing into one another (liquid and morph styles) and pixelation (pixel art). Alongside the planned text looks: outline, 3D offset shadow, gradient letters and skew.",
+          "status": "planned"
+        },
+        {
+          "id": "p19-library",
+          "title": "Styles as starting points",
+          "detail": "Each style also as a short ready-made scene in the library, made with the Studio and passing its own review, to open and make your own.",
+          "status": "planned"
+        }
+      ]
     }
   ],
   "extensionVersion": "0.0.71",

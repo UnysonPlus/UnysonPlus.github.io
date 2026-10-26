@@ -363,6 +363,18 @@
           "title": "Add-ons",
           "detail": "An Add-ons panel lists the extra tools the AI Dev Kit can use on this computer: connectors to apps the person installs (found automatically, or at a location set once) and downloads the kit installs itself. Voicebox is the first connector: its voice profiles speak voice-overs from a script, every word timed. See [Add-ons](/kinetic-scenes/addons). ACE-Step is the second connector: Make music adds an instrumental made on this computer as a Music track, beats found. A connector can be given its folder or program, so the kit starts the app when needed (and stops ACE-Step after ten idle minutes); when the kit is not found, the Studio links to it and its setup guide.",
           "status": "done"
+        },
+        {
+          "id": "p8-kokoro",
+          "title": "Kokoro voices (add-on)",
+          "detail": "A second set of built-in voices from Kokoro, a small free text-to-speech model (Apache licence) that sounds more natural than the current voices and runs without a graphics card.",
+          "status": "planned"
+        },
+        {
+          "id": "p8-doctor",
+          "title": "Check this computer",
+          "detail": "One AI Dev Kit command, and a button in Add-ons, that lists what this computer has for Kinetic Scenes (the kit's version, ffmpeg, the rendering browser, each add-on and where it is, the graphics card and its free memory), ready to paste into a bug report.",
+          "status": "planned"
         }
       ]
     },
@@ -892,6 +904,12 @@
           "title": "Decide: free or paid, and where projects are saved",
           "detail": "Settle the two open questions on the overview (whether the Studio stays free with AI optional, and whether projects get cloud saving and accounts), and record the reasons in the Design Decisions log.",
           "status": "planned"
+        },
+        {
+          "id": "p15-explainer",
+          "title": "Explainer template",
+          "detail": "A ready-made explainer layout for longer scenes (2-8 minutes): chapter cards, a chapter progress bar, a small heads-up label and subtitles, built from a script by AI assist one part at a time, each part checked before the next.",
+          "status": "planned"
         }
       ]
     },
@@ -935,6 +953,18 @@
           "title": "Title behind the subject",
           "detail": "Text placed between the background and a person cut out of the footage, using the Studio's existing cut-out, so the title appears to stand behind them.",
           "status": "planned"
+        },
+        {
+          "id": "p16-batch",
+          "title": "One scene, many videos from data",
+          "detail": "Bind a scene's words, pictures and numbers to a spreadsheet (products, prices, photos) and render one video per row: a reel for every product in a shop, from one design.",
+          "status": "planned"
+        },
+        {
+          "id": "p16-stock",
+          "title": "Free stock footage search",
+          "detail": "Search free stock libraries and open archives for real video clips (and pictures) from inside the Studio, with their licences shown, and drop them on the timeline; for people with no footage of their own.",
+          "status": "planned"
         }
       ]
     },
@@ -977,6 +1007,18 @@
           "id": "p17-interchange",
           "title": "Finish in another editor",
           "detail": "Export a scene's cut, sound and captions as a project other editors open (for example CapCut, Premiere or DaVinci Resolve), as well as the finished video.",
+          "status": "planned"
+        },
+        {
+          "id": "p17-like-this",
+          "title": "Make one like this",
+          "detail": "Give the AI a video you like: it works out its structure, pacing, text style, cuts and use of music, and builds your scene to the same shape with your own content.",
+          "status": "planned"
+        },
+        {
+          "id": "p17-motion-rules",
+          "title": "Better motion rules, and smoother colour",
+          "detail": "Fold proven motion-design principles (timing and easing, shot composition, cutting to the beat, restraint) into the rules AI assist follows, and blend colours through OKLCH so colour changes and gradients stay bright instead of passing through grey.",
           "status": "planned"
         }
       ]

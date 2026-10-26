@@ -1057,12 +1057,12 @@
     {
       "id": "p19-styles",
       "title": "Phase 19 — Motion styles, and a stricter review",
-      "goal": "Let people ask for a recognised motion-design style by name (\"make it synthwave\", \"line-art style\") and get the real thing, and have AI assist judge its own work as hard as a design jury would. Adapted from an MIT-licensed collection of fifteen motion-design styles, each with its signature features, a working method and a review rubric (credited in the guide).",
+      "goal": "Let people ask for a recognised motion-design style by name (\"make it synthwave\", \"line-art style\") and get the real thing, and have AI assist judge its own work as hard as a design jury would. Built from published motion-design style collections (an MIT-licensed set of fifteen styles with a working method and a review rubric, credited in the guide, and public catalogues of further styles), written in our own words for what the Studio can build.",
       "tasks": [
         {
           "id": "p19-guide",
           "title": "A motion-styles guide for AI assist",
-          "detail": "Fifteen styles written down the way AI assist can use them: what makes each recognisable at a glance and how to build it from the Studio's presets, layers, fonts and colours. Ready now: flat vector, line art (lines drawing themselves on), isometric, 3D, Bauhaus, synthwave, aurora glass, collage and HUD / interface. In the AI Dev Kit and the Studio's AI skill, and choosable as a style in AI assist's settings.",
+          "detail": "About two dozen styles written down the way AI assist can use them: what makes each recognisable at a glance and how to build it from the Studio's presets, layers, fonts and colours. Ready now: flat vector, line art, isometric, 3D, toy and material 3D, Bauhaus, Swiss grid and kinetic type, synthwave, aurora glass, collage, HUD and terminal, dark tech keynote, data story, living UI screencast and vertical social captions. In the AI Dev Kit and the Studio's AI skill, and choosable as a style in AI assist's settings.",
           "status": "planned"
         },
         {
@@ -1080,7 +1080,7 @@
         {
           "id": "p19-effects",
           "title": "The effects some styles need",
-          "detail": "New player effects for the styles that cannot be built yet: a frame-by-frame line \"boil\" (hand-drawn cel animation), shapes morphing into one another (liquid and morph styles) and pixelation (pixel art). Alongside the planned text looks: outline, 3D offset shadow, gradient letters and skew.",
+          "detail": "New player effects for the styles that cannot be built yet: a frame-by-frame line \"boil\" (hand-drawn cel animation), shapes morphing into one another (liquid and morph), pixelation (pixel art), brush strokes painting on over paper texture (watercolour and ink), halftone dots and offset colour plates (risograph print), and scanlines with colour bleed (VHS and CRT, beyond today's film look). Alongside the planned text looks: outline, 3D offset shadow, gradient letters and skew.",
           "status": "planned"
         },
         {
@@ -1088,6 +1088,12 @@
           "title": "Styles as starting points",
           "detail": "Each style also as a short ready-made scene in the library, made with the Studio and passing its own review, to open and make your own.",
           "status": "planned"
+        },
+        {
+          "id": "p19-benchmark",
+          "status": "planned",
+          "title": "Benchmarked against real films",
+          "detail": "Give AI assist the same kinds of brief that people publish films for (an app launch, a logo reveal, a poster breaking out of its frame, a history in thirty seconds, a wordless explainer) and compare the results side by side; the gaps become fixes. The published films are only used as a reference, never copied."
         }
       ]
     }

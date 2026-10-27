@@ -16,7 +16,7 @@ reading everything over the REST API? And if so, where does that work live?
 
 Unyson+ already has the pieces of a headless CMS. Post Types registers post types and taxonomies with
 `show_in_rest` on, and Custom Fields can expose a field group as `unysonplus_fields`. But that output is
-raw (an image is an attachment ID), read-only and limited to posts. Theme Settings, menus and Page Builder
+raw (an image is an ID and a bare URL, with no sizes or alt text), read-only and limited to posts. Theme Settings, menus and Page Builder
 content are not in the API at all, and builder pages exist only as shortcodes that render to HTML.
 
 ## Options considered

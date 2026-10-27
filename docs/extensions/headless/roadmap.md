@@ -1,7 +1,7 @@
 ---
 title: "Headless Extension — Roadmap"
 sidebar_label: "Roadmap"
-sidebar_position: 1
+sidebar_position: 3
 description: "The plan for a Unyson+ Headless extension: run WordPress as a headless CMS with Unyson+ post types, custom fields, settings and page-builder content served over the REST API, in place of ACF and a custom post types plugin."
 ---
 
@@ -28,7 +28,8 @@ The extension builds on these; it does not replace them.
   already appear under `/wp/v2/`.
 - **Custom Fields** can expose a field group in the REST API ("Show in REST API" on the group). The
   values appear under `unysonplus_fields` on each post. Today that output is **read-only**, gives
-  **raw stored values** (an image is an attachment ID, not a URL), and covers **posts only**.
+  **raw stored values** (an image is its attachment ID and a protocol-relative URL, with no sizes or
+  alt text), and covers **posts only**.
 
 ## Phase 1 — Clean, read-only content API <span className="badge badge--warning">Coming soon</span>
 

@@ -1,0 +1,109 @@
+---
+title: "Headless WordPress: How It Works and How People Build It"
+sidebar_label: "How headless WordPress works"
+sidebar_position: 1
+description: "A practical guide to headless WordPress: what it is, when it is worth it, the usual stack (custom post types, ACF, the REST API or WPGraphQL, and a Next.js, Nuxt or Astro front end), and the problems teams run into."
+keywords: [headless wordpress, headless cms, wordpress rest api, wpgraphql, next.js wordpress, acf rest api, decoupled wordpress]
+---
+
+# Headless WordPress: how it works and how people build it
+
+In a normal WordPress site, WordPress does two jobs: it stores and edits the content, and it builds the
+pages visitors see, using a theme. **Headless WordPress** keeps the first job and hands the second to a
+separate application. Editors still work in the WordPress admin, but visitors never load a WordPress
+theme. A front end built with something like Next.js, Nuxt or Astro (or a mobile app) asks WordPress for
+the content over an API and displays it however it likes.
+
+"Headless" means the CMS has no head, no front end of its own. You will also see it called
+**decoupled WordPress**.
+
+## When it is worth it
+
+Headless suits a project when:
+
+- **The front end is already an app.** The team builds in React or Vue, and the website is one part of
+  a larger product.
+- **The same content goes to several places:** a website, a mobile app, a kiosk, an email system.
+- **Performance and hosting matter more than convenience.** A statically built front end on a CDN is
+  very fast and has very little to attack, since WordPress itself can sit on a private address.
+- **Developers want full control** of the markup, routing and build pipeline.
+
+It is usually **not** worth it when:
+
+- The site is a brochure or blog that a normal theme handles well.
+- Editors rely on a visual page builder, plugins that add things to the front end (forms, sliders,
+  pop-ups, SEO tags), or previewing their changes exactly as they will look.
+- There is no developer to maintain a second application. A headless site is two projects, not one.
+
+## The usual stack
+
+Most headless WordPress sites are built from the same four pieces.
+
+### 1. Custom post types and taxonomies
+
+The content is modelled as types: products, team members, events, case studies, each with its own
+categories. People register these in a theme or plugin with `register_post_type()` and
+`register_taxonomy()`, or with a plugin such as CPT UI. For headless use, each type must be registered
+with **`show_in_rest => true`**, or it does not appear in the API.
+
+### 2. Custom fields
+
+A post's title and body are rarely enough. A book also has an author, a page count and a cover image.
+**Advanced Custom Fields (ACF)** is the most common tool for this. Its fields can be added to the REST
+API (each field group has a "Show in REST API" setting), and the **WPGraphQL for ACF** plugin exposes
+them over GraphQL.
+
+### 3. The API
+
+WordPress has two options:
+
+- **The REST API**, built into WordPress. Every public post type is available at
+  `/wp-json/wp/v2/<type>`, and plugins add their own routes. It needs nothing extra, and it is easy to
+  cache. Use `?_fields=` to request only the fields you need, and `?_embed` to include related
+  objects such as the featured image.
+- **GraphQL**, through the **WPGraphQL** plugin. The front end asks for exactly the shape it wants in
+  a single request, and the schema gives you typed queries. Popular with Gatsby, Next.js and Astro sites.
+
+### 4. The front end
+
+The front end fetches content and builds pages from it. The main choice is **when** pages are built:
+
+- **Static generation (SSG):** every page is built ahead of time and served from a CDN. Fastest, but
+  content changes need a rebuild.
+- **Incremental regeneration (ISR) / revalidation:** pages are cached and rebuilt in the background
+  when content changes, usually triggered by a webhook from WordPress.
+- **Server rendering (SSR):** pages are built on each request. Always current, but every visit
+  depends on WordPress answering quickly.
+
+Next.js is the most common choice; Nuxt (Vue), Astro and SvelteKit are also popular.
+
+## Things to plan for
+
+These are the problems most teams run into after the first demo works.
+
+- **Preview.** WordPress's Preview button opens the WordPress front end, which no longer exists. You
+  need a preview route on the front end that can fetch drafts with authentication.
+- **Rebuilds.** Publishing in WordPress has to tell the front end to rebuild or revalidate, usually
+  through a webhook sent on save.
+- **Page builders don't carry over.** A layout built in a visual builder is stored as that builder's
+  own format and rendered by WordPress. A headless front end gets either the finished HTML (with the
+  CSS it depends on) or nothing useful.
+- **Front-end plugins stop working.** Anything that adds output to the theme (forms, SEO tags,
+  analytics, cookie banners, related posts) has to be rebuilt in the front end or read from an API.
+- **SEO metadata.** Titles, descriptions, Open Graph tags and structured data must be fetched and
+  output by the front end. Many SEO plugins add their data to the REST API for this.
+- **Menus and global settings.** Menus, the logo, footer text and contact details are not in the core
+  REST API by default. Teams add an endpoint, or an ACF options page exposed to the API.
+- **Authentication and CORS.** Public content needs no login, but drafts, previews and form posts do.
+  Application passwords or JWT are common, and the WordPress server must allow requests from the
+  front end's domain.
+- **Images.** The front end needs the image URL, sizes and alt text, not just an attachment ID, to
+  build responsive images.
+
+## Doing it with Unyson+
+
+Unyson+ can replace the plugin parts of this stack: its **Post Types** extension registers types and
+taxonomies for the API, and its **Custom Fields** extension puts field values in the REST API without
+ACF. See [Headless WordPress with Unyson+](./unysonplus-headless.md) for a step-by-step example, and
+the [roadmap](./roadmap.md) for the Headless extension that will cover settings, menus, preview and
+builder content.

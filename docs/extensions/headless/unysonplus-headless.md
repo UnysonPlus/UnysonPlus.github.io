@@ -1,0 +1,181 @@
+---
+title: "Headless WordPress Without ACF: Custom Post Types and Fields over the REST API with Unyson+"
+sidebar_label: "Headless with Unyson+"
+sidebar_position: 2
+description: "Build a headless WordPress content API without ACF or a custom post types plugin. Create a post type and custom fields with Unyson+, read them from the REST API, and fetch them in Next.js."
+keywords: [headless wordpress without acf, acf alternative, wordpress custom fields rest api, custom post type rest api, unyson+ headless, next.js wordpress]
+---
+
+# Headless WordPress with Unyson+
+
+This tutorial builds the content side of a headless site using only Unyson+: a **Book** post type with a
+**Genre** taxonomy and five custom fields, available over the WordPress REST API, then fetched from a
+Next.js front end. No ACF and no custom post types plugin are needed.
+
+New to headless? Start with [How headless WordPress works](./headless-wordpress.md).
+
+:::info What works today, and what is coming
+Everything on this page works with the current **Post Types** and **Custom Fields** extensions. The
+planned **Headless** extension adds image sizes and alt text, settings and menus endpoints, preview,
+rebuild webhooks and Page Builder content. See the [roadmap](./roadmap.md).
+:::
+
+## 1. Activate the two extensions
+
+Go to **Unyson+ → Extensions** and activate **Post Types** and **Custom Fields** (download them first
+if they are not installed).
+
+## 2. Create the post type and taxonomy
+
+Go to **Unyson+ → Post Types**.
+
+1. In **Post Types**, click **Add Post Type**: Singular **Book**, Plural **Books**, Key **`book`**.
+   On the **Visibility** tab, leave **Block editor / REST** on (it is on by default). On the **URLs**
+   tab you can set the URL slug to `books`.
+2. In **Taxonomies**, click **Add Taxonomy**: Singular **Genre**, Plural **Genres**, Key **`genre`**,
+   attached to **Book**. Leave **Show in REST** on.
+3. Save.
+
+The type is now in the API at `/wp-json/wp/v2/book`, and the taxonomy at `/wp-json/wp/v2/genre`.
+
+:::tip
+For common content (team members, events, testimonials, FAQs and more), the **Blueprints** tab creates
+the post type, its taxonomies and a matching field group in one click.
+:::
+
+## 3. Create the field group
+
+Go to **Unyson+ → Custom Fields** and click **Add Field Group**.
+
+1. **Group title:** Book Details. **Show on post types:** Book.
+2. Turn on **Show in REST API**. Without it, the values stay out of the API.
+3. Add the fields:
+
+| Field label | Field name | Field type |
+|---|---|---|
+| Subtitle | `subtitle` | Text |
+| Author | `book_author` | Text |
+| Pages | `pages` | Number |
+| Cover image | `cover_image` | Image |
+| Buy link | `buy_url` | URL |
+
+4. Save, then add a book (**Books → Add New**) and fill in the fields.
+
+## 4. Read it from the REST API
+
+Request the books:
+
+```bash
+curl "https://your-site.com/wp-json/wp/v2/book?_fields=id,slug,title,genre,unysonplus_fields"
+```
+
+The field values come back in **`unysonplus_fields`**:
+
+```json
+[
+  {
+    "id": 3629,
+    "slug": "the-quiet-garden",
+    "title": { "rendered": "The Quiet Garden" },
+    "genre": [258],
+    "unysonplus_fields": {
+      "subtitle": "A year among the weeds",
+      "book_author": "Sam Rivera",
+      "pages": 248,
+      "cover_image": {
+        "attachment_id": 3624,
+        "url": "//your-site.com/wp-content/uploads/2026/10/quiet-garden-cover.jpg"
+      },
+      "buy_url": "https://example.com/books/the-quiet-garden"
+    }
+  }
+]
+```
+
+Things to know about the values:
+
+- Each field returns its stored **value shape**. Text is a string, Number a number, and an **Image is an
+  object** with `attachment_id` and `url`. The URL starts with `//` (no `https:`), so add the scheme in
+  the front end. Other common shapes: a Gallery is an array of those image objects, a Repeater is an
+  array of row objects, Checkboxes is an object of the ticked choices (`{ "red": true }`), and Related
+  posts is an array of post IDs.
+- **Taxonomies return term IDs** (`"genre": [258]`). Get the names from `/wp-json/wp/v2/genre`, or add
+  `_embed` to the request.
+- The REST field is **read-only**: the API returns values but does not save them.
+- `unysonplus_fields` requires **Unyson+ Custom Fields 0.1.21 or later** when you trim the response
+  with `_fields`, as above. Earlier versions returned it empty unless `type` was also requested.
+
+## 5. Fetch it in Next.js
+
+A minimal App Router page that lists the books:
+
+```tsx title="app/books/page.tsx"
+const WP = process.env.WP_URL; // e.g. https://your-site.com
+
+type Book = {
+  id: number;
+  slug: string;
+  title: { rendered: string };
+  unysonplus_fields: {
+    subtitle?: string;
+    book_author?: string;
+    pages?: number;
+    cover_image?: { attachment_id: number | ''; url: string };
+    buy_url?: string;
+  };
+};
+
+async function getBooks(): Promise<Book[]> {
+  const res = await fetch(
+    `${WP}/wp-json/wp/v2/book?_fields=id,slug,title,unysonplus_fields&per_page=20`,
+    { next: { revalidate: 300 } } // rebuild the list at most every 5 minutes
+  );
+  if (!res.ok) throw new Error(`WordPress returned ${res.status}`);
+  return res.json();
+}
+
+const absolute = (url?: string) => (url?.startsWith('//') ? `https:${url}` : url);
+
+export default async function BooksPage() {
+  const books = await getBooks();
+  return (
+    <ul>
+      {books.map((book) => {
+        const f = book.unysonplus_fields;
+        return (
+          <li key={book.id}>
+            {f.cover_image?.url && <img src={absolute(f.cover_image.url)} alt="" width={160} />}
+            <h2 dangerouslySetInnerHTML={{ __html: book.title.rendered }} />
+            {f.subtitle && <p>{f.subtitle}</p>}
+            <p>{f.book_author} · {f.pages} pages</p>
+            {f.buy_url && <a href={f.buy_url}>Buy</a>}
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+```
+
+The same request works from Nuxt, Astro, SvelteKit or a mobile app; only the fetching code changes.
+
+## Compared with ACF and a custom post types plugin
+
+| | ACF + CPT plugin | Unyson+ |
+|---|---|---|
+| Post types and taxonomies in REST | Yes | Yes (on by default) |
+| Custom fields in REST | Per field group | Per field group, under `unysonplus_fields` |
+| Repeaters, galleries, relationships | ACF Pro | Included |
+| Global settings in REST | ACF Pro options page | Coming in the Headless extension |
+| Menus, preview, rebuild webhooks | Other plugins or custom code | Coming in the Headless extension |
+| GraphQL | WPGraphQL for ACF | Being considered |
+
+## Current limits
+
+- **Images return the URL and ID only.** For sizes and alt text, request the attachment from
+  `/wp-json/wp/v2/media/<id>`. The Headless extension will add them directly.
+- **Fields on posts only.** Field groups on taxonomy terms and users are not yet in the API.
+- **No settings or menus endpoints yet**, and **Page Builder content** comes through only as
+  `content.rendered`, without the CSS it needs.
+
+All of these are on the [Headless roadmap](./roadmap.md).

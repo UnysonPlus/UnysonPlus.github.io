@@ -1183,6 +1183,12 @@
       "goal": "An AI agent working in a Kinetic Scenes project remembers where it left off, sees timing at a glance, checks every cut before showing you, cleans up spoken footage, and installs in one step.",
       "tasks": [
         {
+          "id": "p22-fast-render",
+          "title": "Faster renders on your graphics card",
+          "detail": "Video export through the AI Dev Kit draws frames on the strongest graphics card the computer has, encodes with its hardware encoder (NVIDIA, AMD, Intel or Apple) when that works, takes frames in several browsers at once, and first makes footage easy to seek. 10 seconds with a screen recording: 35 s of frames became 6.5 s.",
+          "status": "done"
+        },
+        {
           "id": "p22-notes",
           "title": "Project notes",
           "detail": "Each project keeps a notes.md beside scene.json: the plan, what was approved, what is left. A later session, or another agent, carries on from it.",

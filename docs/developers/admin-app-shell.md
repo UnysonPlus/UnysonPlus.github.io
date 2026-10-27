@@ -414,6 +414,37 @@ listening, and the toggle would work until the page reloaded.
 
 ---
 
+## Register a workspace (core 3.0.55)
+
+An app built on this frame can also be a **workspace**: something a site owner lets a role open to instead
+of the WordPress dashboard (Unyson+ → Workspaces). The owner chooses, per role, what it opens to and which
+WordPress menus it keeps, and can give your app its own top-level menu item. Register from your extension's
+init, outside any `is_admin()` check, because the login redirect runs on `wp-login.php`:
+
+```php
+add_action( 'fw_workspaces_register', function () {
+	fw_register_workspace( 'my-app', array(
+		'label'       => __( 'My app', 'my-textdomain' ),
+		'icon'        => 'dashicons-portfolio',
+		'page'        => 'my-app',          // the admin page slug
+		'capability'  => 'my_app_access',   // a role without it keeps WordPress
+		'description' => __( 'One line for the Workspaces screen.', 'my-textdomain' ),
+	) );
+} );
+```
+
+For people in a role that opens to your app, core sends them there after login and from Dashboard,
+hides the WordPress menus the role does not keep, trims the admin bar, and makes focus mode the default
+(the `fw_admin_app_focus_default` filter) until they choose. Your page stays registered where it is: a
+promoted menu item links to the same URL, so its hook suffix and screen id do not change.
+
+Hiding menus is presentation, not access control. Gate your screens and REST routes on `capability` as
+usual. `FW_Workspaces::active()` returns the workspace in force for the current user (`''` for plain
+WordPress), and `FW_Workspaces::for_user( $user )` the one their roles give them. Define
+`FW_WORKSPACES_OFF` as `true` in `wp-config.php` to switch the whole feature off.
+
+The CRM (`crm`) and Membership (`membership`) register workspaces.
+
 ## Who uses it
 
 | Screen | App id | Notes |

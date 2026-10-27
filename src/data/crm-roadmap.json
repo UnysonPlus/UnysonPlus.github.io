@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.77",
-  "generatedAt": "2026-10-23T04:35:35.082Z",
+  "extensionVersion": "1.0.78",
+  "generatedAt": "2026-10-27T16:09:44.439Z",
   "detected": true,
   "milestones": [
     {
@@ -1078,6 +1078,59 @@
               }
             ]
           }
+        }
+      ]
+    },
+    {
+      "id": "p8-workspaces",
+      "title": "Phase 8 — Run the site as a CRM",
+      "goal": "A WordPress site can open straight to the CRM, so a team uses it like a standalone CRM while the owner keeps all of WordPress.",
+      "tasks": [
+        {
+          "id": "p8-core",
+          "title": "Workspaces in core",
+          "detail": "Unyson+ → Workspaces: apps register a workspace; per role, what the site opens to after login and from Dashboard, which WordPress menus stay, a trimmed admin bar and focus mode by default; an app can get its own top-level menu item; administrators switch back from the admin bar. Lives in core (framework/includes/workspaces), so it is pinned.",
+          "pin": true,
+          "status": "done"
+        },
+        {
+          "id": "p8-crm",
+          "title": "The CRM and Membership register as workspaces",
+          "detail": "Both extensions call fw_register_workspace() with their page and capability.",
+          "detect": {
+            "files": [
+              "class-fw-extension-crm.php"
+            ],
+            "symbols": [
+              {
+                "file": "class-fw-extension-crm.php",
+                "pattern": "fw_register_workspace"
+              }
+            ]
+          },
+          "status": "done",
+          "progress": "2/2"
+        },
+        {
+          "id": "p8-presets",
+          "title": "One-click set-ups",
+          "detail": "\"Run this site as a CRM\": one choice sets the CRM roles to open to the CRM, gives it its own menu item and suggests the menus to keep, instead of setting each role by hand.",
+          "pin": true,
+          "status": "planned"
+        },
+        {
+          "id": "p8-members",
+          "title": "Members never see WordPress",
+          "detail": "For a members' site: member roles are kept out of wp-admin (sent to their account page) and do not get the admin bar on the site. A front-end setting, separate from staff workspaces.",
+          "pin": true,
+          "status": "planned"
+        },
+        {
+          "id": "p8-desk",
+          "title": "Move the team desk onto the CRM",
+          "detail": "Replace the separate CRM app used for Unyson+ support with a WordPress site running the CRM workspace, so bugs found in daily use are fixed in the CRM itself.",
+          "pin": true,
+          "status": "planned"
         }
       ]
     }

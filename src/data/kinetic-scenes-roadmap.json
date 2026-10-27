@@ -1176,6 +1176,43 @@
           "status": "planned"
         }
       ]
+    },
+    {
+      "id": "p22-agent-craft",
+      "title": "Phase 22 — Agents that edit like a careful person",
+      "goal": "An AI agent working in a Kinetic Scenes project remembers where it left off, sees timing at a glance, checks every cut before showing you, cleans up spoken footage, and installs in one step.",
+      "tasks": [
+        {
+          "id": "p22-notes",
+          "title": "Project notes",
+          "detail": "Each project keeps a notes.md beside scene.json: the plan, what was approved, what is left. A later session, or another agent, carries on from it.",
+          "status": "planned"
+        },
+        {
+          "id": "p22-timeline",
+          "title": "A timeline at a glance",
+          "detail": "One picture of a stretch of the video: a strip of frames, the sound wave and every spoken word at its time, so an agent places cuts, captions and narration where they belong without pulling dozens of frames.",
+          "status": "planned"
+        },
+        {
+          "id": "p22-cut-check",
+          "title": "Every cut checked",
+          "detail": "After a render the kit inspects each cut: jumps in the picture, clicks in the sound, captions on screen too briefly or hidden, missing narration. Problems are fixed and rendered again before the video is shown. Short fades at cuts stop clicks.",
+          "status": "planned"
+        },
+        {
+          "id": "p22-talking-head",
+          "title": "Clean up spoken footage",
+          "detail": "From the words and their times: cut ums, false starts and long pauses, and choose the best of several takes, with speech recognition that runs on your own computer.",
+          "status": "planned"
+        },
+        {
+          "id": "p22-plugin",
+          "title": "One-step install for Claude Code",
+          "detail": "A Kinetic Scenes plugin for Claude Code: one command adds the skill and the tools (projects, checks, frames, render, sound), instead of a manual setup line.",
+          "status": "planned"
+        }
+      ]
     }
   ],
   "extensionVersion": "0.0.71",

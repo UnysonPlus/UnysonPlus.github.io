@@ -167,3 +167,8 @@ site-creator:
   label: Site creator
   permalink: /site-creator
   description: The AI Website Creator — generating Unyson+ sites from a brief, URL, design reference or vertical template
+
+kinetic-scenes:
+  label: Kinetic Scenes
+  permalink: /kinetic-scenes
+  description: The Kinetic Scenes motion and video studio, its player and its AI Dev Kit tools

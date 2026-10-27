@@ -10,6 +10,9 @@ The AI runs through the [AI Dev Kit](/ai-dev-kit) on your own computer, using yo
 Claude Code, ChatGPT through Codex, Cursor) or a local model. The Studio sends the request to the kit and the kit sends a
 scene back. The Studio's server needs no AI keys and runs no AI calls, so there is no per-use cost to cover.
 
+For whole videos (screen recordings, your own voice, music, frame checks), connect your own AI agent instead: see
+[AI agents and projects](./ai-agents.md). AI assist is for quick ideas and small changes.
+
 The AI writes a **scene file, not code**. It chooses presets from the catalogue and fills in their settings, so everything
 it makes lands on the timeline as ordinary clips you can move, trim and change by hand. It never writes a custom code clip.
 

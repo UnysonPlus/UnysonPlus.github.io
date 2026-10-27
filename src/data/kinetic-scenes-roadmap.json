@@ -1130,12 +1130,49 @@
           "id": "p20-screenshots",
           "title": "Screenshots with highlights",
           "detail": "Sharp 2x shots of any page or element, with an optional highlight, arrow, blur or callout, for explainers, thumbnails and the docs.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p20-studio",
           "title": "Screencasts in the Studio",
           "detail": "Drop a recording into Kinetic Scenes and it arrives framed: browser frame, the automatic zooms as camera keys you can adjust, the cursor and the step captions.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "p21-workspace",
+      "title": "Phase 21 — Projects you share with your AI agent",
+      "goal": "Kinetic Scenes and an AI agent work on the same video: projects are folders on your computer, the Studio shows what the agent makes as it makes it, and you preview and export it yourself.",
+      "tasks": [
+        {
+          "id": "p21-folders",
+          "title": "Projects as folders",
+          "detail": "A workspace kept by the AI Dev Kit (Documents/Kinetic Scenes, or a folder you choose): each project is scene.json, media/ and renders/. File › Projects opens one or makes one from the scene in front of you.",
+          "status": "done"
+        },
+        {
+          "id": "p21-live",
+          "title": "Saved as you work, changes followed live",
+          "detail": "The Studio saves into the folder as you work and writes footage, music and voice into media/. When an agent changes the project, the open Studio updates at once (one Undo goes back).",
+          "status": "done"
+        },
+        {
+          "id": "p21-agent-tools",
+          "title": "Agent tools for projects",
+          "detail": "project_list and project_save on the Kinetic Scenes MCP tools, and studio-cli project: an agent puts a scene and every file it uses into a project and gives you a link that opens it.",
+          "status": "done"
+        },
+        {
+          "id": "p21-connect",
+          "title": "Connect your AI agent",
+          "detail": "The Studio says where the fuller result comes from: an agent connected through the AI Dev Kit records, narrates, makes music and checks frames; AI assist stays for quick ideas and small changes.",
+          "status": "done"
+        },
+        {
+          "id": "p21-agent-assist",
+          "title": "AI assist that works in steps",
+          "detail": "AI assist gets the same tools as a connected agent and works in steps inside the project folder, showing its progress.",
           "status": "planned"
         }
       ]

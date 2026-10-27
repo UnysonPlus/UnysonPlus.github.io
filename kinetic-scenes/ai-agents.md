@@ -65,6 +65,8 @@ too. An administrator can also fix the folder with `KINETIC_WORKSPACE` when the 
    Other agents that use MCP (Codex, Cursor) take the same command in their own MCP settings.
 3. Ask for the video: *"Make a 60-second vertical explainer of our page builder in my voice, as a Kinetic Scenes
    project."* The agent writes into a project, gives you its link, and you watch it fill in.
+   It does not render the video until you ask: you preview it in the Studio, ask for changes, and export it
+   yourself (or ask the agent for the file) when it is right.
 
 The tools the agent gets: `project_list` and `project_save` (the workspace), `scene_guide` (how to make a good scene),
 `scene_check`, `scene_inspect`, `scene_stills` (it looks at frames), `scene_render`, and `audio_beats`,

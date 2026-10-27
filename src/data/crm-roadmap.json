@@ -4,7 +4,7 @@
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
   "extensionVersion": "1.0.78",
-  "generatedAt": "2026-10-27T16:29:04.681Z",
+  "generatedAt": "2026-10-27T16:50:50.924Z",
   "detected": true,
   "milestones": [
     {
@@ -1114,7 +1114,7 @@
         {
           "id": "p8-menus",
           "title": "Menu editor per role",
-          "detail": "Workspaces → Menus: drag to reorder, rename, change icons, hide items and sub-items, per role, with a live preview, copy from another role and reset; the Admin Skin's groups are drop targets. Replaces the skin-only menu layout, whose saved layouts are carried over. Core (framework/includes/workspaces), so pinned.",
+          "detail": "Workspaces → Menus: drag to reorder, rename, change icons, hide items and sub-items, move a sub-item (an extension's screen, such as SEO) out to the top level, per role, with a live preview, copy from another role and reset; the Admin Skin's groups are drop targets. Replaces the skin-only menu layout, whose saved layouts are carried over. Core (framework/includes/workspaces), so pinned.",
           "pin": true,
           "status": "done"
         },

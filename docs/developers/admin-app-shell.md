@@ -449,7 +449,10 @@ The role's menu around the workspace is set on the **Menus** tab (`FW_Admin_Menu
 `fw_admin_menu`): order, names, icons, hidden items and sub-items, per role, applied on the server on
 `admin_menu`. Items are keyed by their `<li>` id; a promoted workspace uses the same id WordPress gives its
 page at the top level (`toplevel_page_<page>`), so one key works for every role. The Admin Skin lends its
-groups through `fw_admin_menu_editor_groups`; a moved item carries the class `fw-mg-<group>`.
+groups through `fw_admin_menu_editor_groups`; a moved item carries the class `fw-mg-<group>`. A sub-item can be **lifted** to
+the top level per role (`lifted` in the layout): it stays registered under its parent, its entry there is hidden,
+and a top-level item with the id `fw-lift-<slug>` links to the same address, so the screen id and access check do
+not change.
 
 ## Who uses it
 

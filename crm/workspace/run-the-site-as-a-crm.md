@@ -53,6 +53,9 @@ The **Menus** tab arranges the WordPress menu for one role at a time. Pick the r
 - **change its icon** with the button beside the name;
 - untick **Shown** to hide an item, or open its sub-items and untick the ones the role does not need;
 - with the Admin Skin on, drag an item into another group (Workspace, Shop, Tools…) and rename the groups.
+- open an item's sub-items and choose **Move to top level** to give one its own menu item, for example SEO out of the
+  Unyson+ menu or Site Health out of Tools. It can then be dragged, renamed and given an icon like any other item;
+  **Move back** returns it. The page itself does not move, so its address and bookmarks keep working.
 
 The preview beside the list shows the menu as that role will see it. **Copy from** gives the role another
 role's menu, and **Reset to the WordPress menu** removes its changes. Administrators whose menu you changed

@@ -68,6 +68,9 @@ too. An administrator can also fix the folder with `KINETIC_WORKSPACE` when the 
    It does not render the video until you ask: you preview it in the Studio, ask for changes, and export it
    yourself (or ask the agent for the file) when it is right.
 
+Once your agent has used the kit's Kinetic Scenes tools, the Studio shows it as connected (*Connected: Claude Code*, with
+when it was last active) in AI assist and in File › Projects.
+
 The tools the agent gets: `project_list` and `project_save` (the workspace), `scene_guide` (how to make a good scene),
 `scene_check`, `scene_inspect`, `scene_stills` (it looks at frames), `scene_render`, and `audio_beats`,
 `audio_transcribe`, `audio_separate`. Agents that run commands also have the kit's command line

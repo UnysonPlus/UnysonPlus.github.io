@@ -24,7 +24,7 @@ person would: it records, listens back, looks at frames and fixes what it sees. 
 A **project** is a folder on your computer, kept by the AI Dev Kit:
 
 ```
-Documents\Kinetic Scenes\          ← the workspace
+Documents\Kinetic Scenes\          ← the workspace (you can choose another folder)
   Product launch\                  ← a project
     scene.json                     ← the scene
     media\                         ← footage, voice, music, pictures
@@ -47,8 +47,11 @@ project's name shows under the Kinetic Scenes logo, with *saved* or *saving*.
 
 Without the AI Dev Kit running, the Studio works as before: the scene is kept in this browser.
 
-**Where the workspace is:** `Documents\Kinetic Scenes` in your user folder. To keep it somewhere else, set
-`KINETIC_WORKSPACE` to a folder before starting the kit (for example `KINETIC_WORKSPACE=D:\Videos\Kinetic Scenes`).
+**Where the workspace is:** a `Kinetic Scenes` folder in your **Documents** folder, wherever your computer keeps it
+(on Windows, Documents can be moved to another drive or to OneDrive, and the workspace follows it; on a Mac it is
+`~/Documents`). To use another folder, click **Change…** in File › Projects and pick it in your computer's folder window
+(**Back to Documents** undoes it). Projects already made stay where they are: move their folders if you want them there
+too. An administrator can also fix the folder with `KINETIC_WORKSPACE` when the kit starts.
 
 ## Connect your agent
 

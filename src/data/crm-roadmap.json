@@ -4,7 +4,7 @@
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
   "extensionVersion": "1.0.78",
-  "generatedAt": "2026-10-27T16:50:50.924Z",
+  "generatedAt": "2026-10-27T18:10:54.129Z",
   "detected": true,
   "milestones": [
     {
@@ -1089,7 +1089,7 @@
         {
           "id": "p8-core",
           "title": "Workspaces in core",
-          "detail": "Unyson+ → Workspaces: apps register a workspace; per role, what the site opens to after login and from Dashboard, which WordPress menus stay, a trimmed admin bar and focus mode by default; an app can get its own top-level menu item; administrators switch back from the admin bar. Lives in core (framework/includes/workspaces), so it is pinned.",
+          "detail": "Unyson+ → Admin Menu → Roles: apps register a workspace; per role, what the site opens to after login and from Dashboard, which WordPress menus stay, a trimmed admin bar and focus mode by default; an app can get its own top-level menu item; administrators switch back from the admin bar. Lives in core (framework/includes/workspaces), so it is pinned.",
           "pin": true,
           "status": "done"
         },
@@ -1113,8 +1113,8 @@
         },
         {
           "id": "p8-menus",
-          "title": "Menu editor per role",
-          "detail": "Workspaces → Menus: drag to reorder, rename, change icons, hide items and sub-items, move a sub-item (an extension's screen, such as SEO) out to the top level, per role, with a live preview, copy from another role and reset; the Admin Skin's groups are drop targets. Replaces the skin-only menu layout, whose saved layouts are carried over. Core (framework/includes/workspaces), so pinned.",
+          "title": "Admin Menu editor per role",
+          "detail": "Unyson+ → Admin Menu, tabs Menus and Roles. Per role: drag to reorder items and sub-items, drag a sub-item (an extension's screen, such as SEO) out to the top level and back, rename, change icons, hide items and sub-items, live preview, copy from another role, reset; the Admin Skin's groups are drop targets. Replaces the skin-only menu layout and the workspaces' own-menu-item switches, whose saved choices are carried over. Core, so pinned.",
           "pin": true,
           "status": "done"
         },

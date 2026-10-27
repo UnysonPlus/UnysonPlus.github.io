@@ -417,8 +417,8 @@ listening, and the toggle would work until the page reloaded.
 ## Register a workspace (core 3.0.55)
 
 An app built on this frame can also be a **workspace**: something a site owner lets a role open to instead
-of the WordPress dashboard (Unyson+ → Workspaces). The owner chooses, per role, what it opens to and which
-WordPress menus it keeps, and can give your app its own top-level menu item. Register from your extension's
+of the WordPress dashboard (Unyson+ → Admin Menu). The owner chooses, per role, what it opens to and which
+WordPress menus it keeps, and can drag your app out of the Unyson+ menu to its own top-level item. Register from your extension's
 init, outside any `is_admin()` check, because the login redirect runs on `wp-login.php`:
 
 ```php
@@ -445,11 +445,11 @@ WordPress), and `FW_Workspaces::for_user( $user )` the one their roles give them
 
 The CRM (`crm`) and Membership (`membership`) register workspaces.
 
-The role's menu around the workspace is set on the **Menus** tab (`FW_Admin_Menu_Editor`, option
+The role's menu around the workspace is set on the **Menus** tab (the workspace itself on **Roles**) (`FW_Admin_Menu_Editor`, option
 `fw_admin_menu`): order, names, icons, hidden items and sub-items, per role, applied on the server on
 `admin_menu`. Items are keyed by their `<li>` id; a promoted workspace uses the same id WordPress gives its
 page at the top level (`toplevel_page_<page>`), so one key works for every role. The Admin Skin lends its
-groups through `fw_admin_menu_editor_groups`; a moved item carries the class `fw-mg-<group>`. A sub-item can be **lifted** to
+groups through `fw_admin_menu_editor_groups`; a moved item carries the class `fw-mg-<group>`. Sub-items keep a per-role order (`sub_order`; the parent's own first entry stays first). A sub-item can be **lifted** to
 the top level per role (`lifted` in the layout): it stays registered under its parent, its entry there is hidden,
 and a top-level item with the id `fw-lift-<slug>` links to the same address, so the screen id and access check do
 not change.

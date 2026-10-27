@@ -50,4 +50,4 @@ WordPress, and administrators can always switch back from the admin bar.
 - The app's page stays registered where it was. A promoted item links to the same address, so screen ids,
   hooks and bookmarks do not change.
 
-*Status: Accepted.*
+*Status: Accepted. Update (same day): the screen became **Unyson+ → Admin Menu**, with a **Menus** tab (the per-role menu editor) and a **Roles** tab (what each role opens to). The site-wide "own menu item" switch was replaced by dragging an app out of the Unyson+ menu in the editor, per role; saved switches were carried over.*

@@ -12,16 +12,18 @@ A site used as a CRM all day should not open to the WordPress dashboard. With **
 in and lands in the CRM, sees the CRM and nothing else they do not need, and you can still reach all of
 WordPress yourself.
 
-Go to **Unyson+ → Workspaces**.
+Go to **Unyson+ → Admin Menu**. It has two tabs: **Menus** arranges each role's menu, and **Roles** sets what each
+role opens to.
 
 ## Give the CRM its own menu item
 
-Under **Menu**, tick **Show CRM as its own item in the WordPress menu**. The CRM moves from inside the
-Unyson+ menu to the top of the WordPress menu, just below Dashboard, for everyone who can use it.
+On **Menus**, open the **Unyson+** item and drag **CRM** out of its sub-items into the menu (or choose **Move to top
+level**). It becomes an item of its own for that role. People who cannot reach the Unyson+ menu, such as Sales
+Reps, already get the CRM as a menu item of its own.
 
 ## Choose what each role opens to
 
-Under **Roles**, set **Opens to** for each role. For a team, the usual choice is:
+On the **Roles** tab, set **Opens to** for each role. For a team, the usual choice is:
 
 | Role | Opens to |
 |---|---|
@@ -53,9 +55,13 @@ The **Menus** tab arranges the WordPress menu for one role at a time. Pick the r
 - **change its icon** with the button beside the name;
 - untick **Shown** to hide an item, or open its sub-items and untick the ones the role does not need;
 - with the Admin Skin on, drag an item into another group (Workspace, Shop, Tools…) and rename the groups.
-- open an item's sub-items and choose **Move to top level** to give one its own menu item, for example SEO out of the
-  Unyson+ menu or Site Health out of Tools. It can then be dragged, renamed and given an icon like any other item;
-  **Move back** returns it. The page itself does not move, so its address and bookmarks keep working.
+- open an item's sub-items to **drag them into a new order**, or **drag one out** into the menu to give it a place of
+  its own, for example SEO out of the Unyson+ menu or Site Health out of Tools (**Move to top level** does the same
+  without dragging). It can then be dragged, renamed and given an icon like any other item. Drag it back into its own
+  menu, or choose **Move back**, to return it. The page itself does not move, so its address and bookmarks keep
+  working;
+- a sub-item can go back to its own menu or out to the top level, not into a different menu, and a menu's first
+  entry (the item itself) stays first.
 
 The preview beside the list shows the menu as that role will see it. **Copy from** gives the role another
 role's menu, and **Reset to the WordPress menu** removes its changes. Administrators whose menu you changed

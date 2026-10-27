@@ -445,6 +445,12 @@ WordPress), and `FW_Workspaces::for_user( $user )` the one their roles give them
 
 The CRM (`crm`) and Membership (`membership`) register workspaces.
 
+The role's menu around the workspace is set on the **Menus** tab (`FW_Admin_Menu_Editor`, option
+`fw_admin_menu`): order, names, icons, hidden items and sub-items, per role, applied on the server on
+`admin_menu`. Items are keyed by their `<li>` id; a promoted workspace uses the same id WordPress gives its
+page at the top level (`toplevel_page_<page>`), so one key works for every role. The Admin Skin lends its
+groups through `fw_admin_menu_editor_groups`; a moved item carries the class `fw-mg-<group>`.
+
 ## Who uses it
 
 | Screen | App id | Notes |

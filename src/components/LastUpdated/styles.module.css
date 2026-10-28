@@ -1,0 +1,5 @@
+.updated {
+  margin: -0.75rem 0 var(--ifm-leading);
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
+}

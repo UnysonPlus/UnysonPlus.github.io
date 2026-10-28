@@ -3,6 +3,25 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
+import {execFileSync} from 'node:child_process';
+
+// "{year}" in a page's front-matter title becomes the year of that file's last commit, so a guide's
+// search title says the year it was last updated: honest (an untouched page keeps its year) and
+// automatic (editing it in a new year moves the title on). A file not committed yet gets this year.
+const lastCommitYear = new Map();
+function yearOf(filePath) {
+  if (!lastCommitYear.has(filePath)) {
+    let year = String(new Date().getFullYear());
+    try {
+      const date = execFileSync('git', ['log', '-1', '--format=%cI', '--', filePath], {encoding: 'utf8'}).trim();
+      if (date) year = date.slice(0, 4);
+    } catch {
+      // not a git checkout: keep this year
+    }
+    lastCommitYear.set(filePath, year);
+  }
+  return lastCommitYear.get(filePath);
+}
 
 // Local plugin: collects every page (all docs instances + both blogs + the home page)
 // at build time and exposes them as global data, so the HTML sitemap page at /sitemap
@@ -128,6 +147,14 @@ const config = {
     // .md files parse as lenient CommonMark (so legacy docs with {braces} and
     // <tags> in prose don't crash the MDX compiler); .mdx still parses as MDX.
     format: 'detect',
+    async parseFrontMatter(params) {
+      const result = await params.defaultParseFrontMatter(params);
+      const {title} = result.frontMatter;
+      if (typeof title === 'string' && title.includes('{year}')) {
+        result.frontMatter.title = title.replaceAll('{year}', yearOf(params.filePath));
+      }
+      return result;
+    },
     hooks: {
       onBrokenMarkdownLinks: 'warn',
       // Some legacy pages reference old screenshots not committed to the repo;

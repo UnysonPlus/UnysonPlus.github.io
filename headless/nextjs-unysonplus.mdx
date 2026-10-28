@@ -1,11 +1,12 @@
 ---
-title: "Headless WordPress with Next.js, No ACF (2026 Guide)"
+title: "Headless WordPress with Next.js, No ACF ({year} Guide)"
 sidebar_label: "Next.js + Unyson+"
 sidebar_position: 6
 description: "A complete headless WordPress site in Next.js (App Router) with Unyson+ instead of ACF and Custom Post Type UI: one plugin for the post type, the fields and the REST API, a page per post built ahead of time, and revalidation."
 keywords: [headless wordpress nextjs, next.js wordpress without acf, acf alternative nextjs, next.js app router wordpress, unyson+ headless, wordpress custom fields rest api]
 ---
 
+import LastUpdated from '@site/src/components/LastUpdated';
 import CodeWorkspace from '@site/src/components/CodeWorkspace';
 import example from '@site/src/data/code-examples/headless-nextjs-unysonplus.json';
 import SetupWpUnysonplus from './_setup-wp-unysonplus.mdx';
@@ -13,6 +14,8 @@ import FrontendNext from './_frontend-next.mdx';
 import Troubleshooting from './_troubleshooting.mdx';
 
 # Headless WordPress with Next.js and Unyson+
+
+<LastUpdated />
 
 The same Next.js front end as [Next.js + ACF](./nextjs-acf.mdx), with **one plugin instead of
 two**: Unyson+'s Post Types extension registers the content type, and its Custom Fields extension adds

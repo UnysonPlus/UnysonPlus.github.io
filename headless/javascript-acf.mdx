@@ -1,11 +1,12 @@
 ---
-title: "Headless WordPress with JavaScript and ACF (2026)"
+title: "Headless WordPress with JavaScript and ACF ({year})"
 sidebar_label: "JavaScript + ACF"
 sidebar_position: 3
 description: "Build a headless WordPress front end in plain HTML and JavaScript with Advanced Custom Fields and Custom Post Type UI: register the post type, expose the fields to the REST API, and render them in the browser."
 keywords: [headless wordpress javascript, acf rest api, acf_format standard, custom post type ui rest api, vanilla javascript wordpress, headless wordpress acf]
 ---
 
+import LastUpdated from '@site/src/components/LastUpdated';
 import CodeWorkspace from '@site/src/components/CodeWorkspace';
 import example from '@site/src/data/code-examples/headless-js-acf.json';
 import SetupWpAcf from './_setup-wp-acf.mdx';
@@ -13,6 +14,8 @@ import FrontendJs from './_frontend-js.mdx';
 import Troubleshooting from './_troubleshooting.mdx';
 
 # Headless WordPress with JavaScript, ACF and CPT UI
+
+<LastUpdated />
 
 The most common headless setup, without a framework: **Custom Post Type UI** registers the content type,
 **Advanced Custom Fields (ACF)** adds the fields, and two plain HTML pages fetch everything from the

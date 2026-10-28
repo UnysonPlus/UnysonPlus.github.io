@@ -97,7 +97,9 @@ offers both forms, and the front end picks one:
 
 ## Keeping the guides current
 
-The [Headless WordPress guides](/headless) put the year in their search titles ("… (2026)"). **Every
-January:** update the year in each guide's `title`, re-run the examples against the current versions of
-WordPress, ACF, CPT UI, WPGraphQL, Next.js and Unyson+, and fix anything that changed. A guide whose year is
-out of date looks abandoned, which is worse than no year at all.
+The [Headless WordPress guides](/headless) put a year in their search titles (`title: "… ({year})"`), and
+show "Updated <month year>" under their heading. Both come from the page's **last commit**, so they move on
+by themselves when a guide is edited, and an untouched guide keeps its year rather than claiming to be
+newer than it is. **Every January**, re-run the examples against the current versions of WordPress, ACF,
+CPT UI, WPGraphQL, Next.js and Unyson+, fix anything that changed, and commit each guide you checked: that
+commit is what moves its year on. A guide still showing last year is one nobody has reviewed yet.

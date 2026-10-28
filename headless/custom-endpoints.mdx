@@ -1,16 +1,19 @@
 ---
-title: "Custom REST Endpoints for Headless WordPress (2026)"
+title: "Custom REST Endpoints for Headless WordPress ({year})"
 sidebar_label: "Custom REST endpoints"
 sidebar_position: 8
 description: "Add your own REST endpoint to WordPress with register_rest_route() so a headless front end gets exactly the data it needs in one request, with ACF fields or Unyson+ Custom Fields."
 keywords: [register_rest_route, wordpress custom rest endpoint, headless wordpress api, acf custom endpoint, wordpress rest api custom route, unyson+ rest api]
 ---
 
+import LastUpdated from '@site/src/components/LastUpdated';
 import CodeWorkspace from '@site/src/components/CodeWorkspace';
 import childExample from '@site/src/data/code-examples/unysonplus-headless-child.json';
 import acfExample from '@site/src/data/code-examples/headless-endpoint-acf.json';
 
 # Custom REST endpoints
+
+<LastUpdated />
 
 The built-in endpoints (`/wp/v2/book`) return WordPress's own shape: titles under `title.rendered`, genres
 as IDs, fields under `acf` or `unysonplus_fields`. That is fine, but the front end ends up making extra

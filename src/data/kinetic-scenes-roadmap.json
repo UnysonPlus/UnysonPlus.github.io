@@ -354,9 +354,9 @@
         },
         {
           "id": "p8-clap",
-          "title": "Sound identification (add-on, coming soon)",
+          "title": "Sound identification (add-on)",
           "detail": "An installable add-on in the AI Dev Kit that names the sounds in a clip (a door slam, a music hit, ambience) with an audio-labelling model, so AI assist can find and reuse moments in someone's own footage. Optional, because built-in sounds and Freesound results are already named.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p8-addons",

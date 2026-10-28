@@ -43,7 +43,7 @@ kit itself closes.
 | **Kokoro voices** | Download | Six more natural voices for voice-overs from a script, on the processor (about 500 MB). | [Voice-over from a script](./sound.md#a-voice-over-from-a-script) |
 | **Voice and music separation** | Download | Splits a clip's sound into the voice and the music (Demucs). | [Footage tools](./video-effects.md#separate-voice-and-music), an audio clip's **Voice and music** |
 | **Blender** | Connector | Builds 3D objects from a description, for 3D layers. | Coming soon |
-| **Sound identification** | Download | Names the sounds in a clip (a door slam, a music hit, ambience). | Coming soon |
+| **Sound identification** | Download | Names the sounds in a clip and when each is heard (CLAP, on the processor, about 560 MB). | [Sounds in this clip](./sound.md#sounds-in-a-clip) on an audio clip |
 
 ## Voicebox
 
@@ -114,5 +114,5 @@ The add-ons are listed by the kit at `GET /studio/addons`. A connector's locatio
 kept in the kit's `addons.json`. `POST /studio/addons/<id>/find` searches and saves (`{ found }`);
 `POST /studio/addons/<id>/browse { field }` opens the computer's picker (`{ chosen }`, null when cancelled). A voice-over in a Voicebox voice is `POST /studio/voice { "lines": […], "voice":
 "voicebox:<profile id>" }`. Music is `POST /studio/music { "prompt": "…", "seconds": 30, "bpm": 120 }`, then poll
-`GET /studio/music/<id>` for `{ state, step, result: { src, bpm, seconds } }`. The computer check is `GET /studio/doctor` (`{ report, text }`). From the command line:
+`GET /studio/music/<id>` for `{ state, step, result: { src, bpm, seconds } }`. The computer check is `GET /studio/doctor` (`{ report, text }`). Sound identification is `POST /studio/clap { src, labels? }`, then poll `GET /studio/clap/<id>` for `{ result: { seconds, overall, segments: [{ start, end, label, score }] } }`. From the command line:
 `node studio-cli.mjs music "upbeat pop instrumental" --seconds 30 --bpm 120 --out music.mp3`.

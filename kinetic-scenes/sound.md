@@ -115,6 +115,19 @@ groups the words into beats (the phrases said between pauses and sentence ends) 
 
 Each text reveal is moved to finish on the word it shows. The result is an ordinary scene you can change by hand.
 
+## Sounds in a clip
+
+Select an audio clip and open **Sounds in this clip** in the Inspector. **Name the sounds** lists what is heard and when:
+speech, music, singing, applause, laughter, a door slam, footsteps, a phone ringing, rain, wind, traffic, a whoosh, a
+beep and about thirty more. Use it to find the moment to cut on, to check what a downloaded sound really contains, or to
+place an effect on the right beat of someone's own recording. Times are on the scene (the clip's start and trim are
+taken into account); click one to move the playhead there. **Mostly** sums up the whole clip.
+
+It runs in the AI Dev Kit on your computer, with CLAP (a free sound-and-words model, Apache licence) on the processor:
+no graphics card, nothing uploaded. The first time, it asks to download about 560 MB (once). A clip is heard two seconds
+at a time, so a stretch starts or ends within about a second of the real change; a sound shorter than that, or hidden
+under louder ones, may not be named. Built-in sounds are already named, so the section shows on your own clips only.
+
 ## A voice-over from a script
 
 No microphone needed. In the scene's **Voice-over from a script** section (or **Build with a voice-over** in AI assist,

@@ -1006,8 +1006,8 @@
         {
           "id": "p17-measured",
           "title": "Measurements overrule impressions",
-          "detail": "When the AI reviews its frames (Look and fix), the measured layout check has the last word: text that overflows, captions outside the safe area or overlapping parts are fixed even if the frame looks fine to the AI. The layout check also measures captions.",
-          "status": "planned"
+          "detail": "When the AI reviews its frames (Look and fix), the measured layout check has the last word: text that overflows, captions outside the safe area or overlapping parts are fixed even if the frame looks fine to the AI. The layout check also measures captions. Shipped with the Phase 19 jury: what Check scene and the layout measurements found always comes first in the review.",
+          "status": "done"
         },
         {
           "id": "p17-blur",
@@ -1030,8 +1030,8 @@
         {
           "id": "p17-motion-rules",
           "title": "Better motion rules, and smoother colour",
-          "detail": "Fold proven motion-design principles (timing and easing, shot composition, cutting to the beat, restraint) into the rules AI assist follows, and blend colours through OKLCH so colour changes and gradients stay bright instead of passing through grey.",
-          "status": "planned"
+          "detail": "Fold proven motion-design principles (timing and easing, shot composition, cutting to the beat, restraint) into the rules AI assist follows, and blend colours through OKLCH so colour changes and gradients stay bright instead of passing through grey. Principles shipped in Studio 0.1.6 (the film's shape, composition, cutting to the beat, restraint); OKLCH colour blending in the player to follow.",
+          "status": "in-progress"
         }
       ]
     },
@@ -1068,38 +1068,38 @@
         {
           "id": "p19-guide",
           "title": "A motion-styles guide for AI assist",
-          "detail": "About two dozen styles written down the way AI assist can use them: what makes each recognisable at a glance and how to build it from the Studio's presets, layers, fonts and colours. Ready now: flat vector, line art, isometric, 3D, toy and material 3D, Bauhaus, Swiss grid and kinetic type, synthwave, aurora glass, collage, HUD and terminal, dark tech keynote, data story, living UI screencast and vertical social captions. In the AI Dev Kit and the Studio's AI skill, and choosable as a style in AI assist's settings.",
-          "status": "planned"
+          "detail": "About two dozen styles written down the way AI assist can use them: what makes each recognisable at a glance and how to build it from the Studio's presets, layers, fonts and colours. Ready now: flat vector, line art, isometric, 3D, toy and material 3D, Bauhaus, Swiss grid and kinetic type, synthwave, aurora glass, collage, HUD and terminal, dark tech keynote, data story, living UI screencast and vertical social captions. In the AI Dev Kit and the Studio's AI skill, and choosable as a style in AI assist's settings. Shipped in Studio 0.1.6: 20 named motion-design styles (28 styles in all), each with what makes it recognisable and how to build it, choosable in the Style library and AI assist, and named in a request. See [Motion styles](/kinetic-scenes/motion-styles).",
+          "status": "done"
         },
         {
           "id": "p19-method",
           "title": "A film's shape: hook, hero moment, end frame",
-          "detail": "AI assist plans every scene the same way: something happening in the first half-second, one unmistakable hero moment around two-thirds of the way through, and a composed end frame held about a second with gentle movement; still key frames checked before the motion is built, and sound hits on the same cue times as the picture.",
-          "status": "planned"
+          "detail": "AI assist plans every scene the same way: something happening in the first half-second, one unmistakable hero moment around two-thirds of the way through, and a composed end frame held about a second with gentle movement; still key frames checked before the motion is built, and sound hits on the same cue times as the picture. Shipped in Studio 0.1.6: AI assist plans a hook in the first half-second, one hero moment about two-thirds in and a composed end frame, with key frames first and sound on the picture's cues.",
+          "status": "done"
         },
         {
           "id": "p19-jury",
           "title": "Look and fix, judged like a jury",
-          "detail": "The review scores the frames on seven points (style fidelity, the idea and its wow, motion craft, design and typography, finish, sound and sync, technical), then fixes the weakest first, each fix tied to a moment with concrete numbers. Measured problems still overrule impressions. It looks at enough frames to judge motion, not one still.",
-          "status": "planned"
+          "detail": "The review scores the frames on seven points (style fidelity, the idea and its wow, motion craft, design and typography, finish, sound and sync, technical), then fixes the weakest first, each fix tied to a moment with concrete numbers. Measured problems still overrule impressions. It looks at enough frames to judge motion, not one still. Shipped: the review scores style, idea, motion, design, finish, sound and technical from frames across the scene, fixes the weakest first with a moment and numbers, and lets measurements overrule impressions; the scores show with the review's note.",
+          "status": "done"
         },
         {
           "id": "p19-effects",
           "title": "The effects some styles need",
-          "detail": "New player effects for the styles that cannot be built yet: a frame-by-frame line \"boil\" (hand-drawn cel animation), shapes morphing into one another (liquid and morph), pixelation (pixel art), brush strokes painting on over paper texture (watercolour and ink), halftone dots and offset colour plates (risograph print), and scanlines with colour bleed (VHS and CRT, beyond today's film look). Alongside the planned text looks: outline, 3D offset shadow, gradient letters and skew.",
-          "status": "planned"
+          "detail": "New player effects for the styles that cannot be built yet: a frame-by-frame line \"boil\" (hand-drawn cel animation), shapes morphing into one another (liquid and morph), pixelation (pixel art), brush strokes painting on over paper texture (watercolour and ink), halftone dots and offset colour plates (risograph print), and scanlines with colour bleed (VHS and CRT, beyond today's film look). Alongside the planned text looks: outline, 3D offset shadow, gradient letters and skew. Shipped in player 0.0.47: line boil, liquid blob, pixelate, brush strokes, risograph (halftone and an offset plate), VHS / CRT, and the outline, 3D offset, gradient and skew text looks.",
+          "status": "done"
         },
         {
           "id": "p19-library",
           "title": "Styles as starting points",
-          "detail": "Each style also as a short ready-made scene in the library, made with the Studio and passing its own review, to open and make your own.",
-          "status": "planned"
+          "detail": "Each style also as a short ready-made scene in the library, made with the Studio and passing its own review, to open and make your own. Shipped: every style opens as a ready-made scene with its signature look (New scene in this style); all 28 pass Check scene with no warnings.",
+          "status": "done"
         },
         {
           "id": "p19-benchmark",
-          "status": "planned",
+          "status": "done",
           "title": "Benchmarked against real films",
-          "detail": "Give AI assist the same kinds of brief that people publish films for (an app launch, a logo reveal, a poster breaking out of its frame, a history in thirty seconds, a wordless explainer) and compare the results side by side; the gaps become fixes. The published films are only used as a reference, never copied."
+          "detail": "Give AI assist the same kinds of brief that people publish films for (an app launch, a logo reveal, a poster breaking out of its frame, a history in thirty seconds, a wordless explainer) and compare the results side by side; the gaps become fixes. The published films are only used as a reference, never copied. First run done: five film briefs in five styles. The style always landed (4/5); finish, motion and technical averaged 2.2-2.6, from four repeated mistakes that are now rules with numbers. Results on the Motion styles page."
         }
       ]
     },

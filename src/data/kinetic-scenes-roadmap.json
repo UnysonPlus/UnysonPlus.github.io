@@ -922,7 +922,7 @@
           "id": "p16-highlights",
           "title": "Make a reel from this video",
           "detail": "An AI Dev Kit add-on watches a long video and finds the moments worth keeping (products shown clearly, reveals, steady and sharp shots, what is being talked about), then builds a cut of the length asked for on the music's beats, with a title for each part. Every chosen shot stays an ordinary clip that can be swapped, trimmed or moved.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p16-reframe",
@@ -1234,8 +1234,8 @@
         {
           "id": "p23-reference-analysis",
           "title": "Learn the rhythm of a reference reel",
-          "detail": "Import a reference video, find its cuts with FFmpeg scene detection, and save a timing map and a contact sheet. A new scene can then follow the same cut points and section lengths, so it is paced like a reel that already works.",
-          "status": "planned"
+          "detail": "Import a reference video, find its cuts with FFmpeg scene detection, and save a timing map and a contact sheet. A new scene can then follow the same cut points and section lengths, so it is paced like a reel that already works. Shipped as the `reference` command and the `video_reference` agent tool: hard cuts plus motion peaks (reveals and transitions), the pace in words, sections, a numbered contact sheet, and rhythm markers on a scene. See [Learn the rhythm of a reel](/kinetic-scenes/reference-rhythm).",
+          "status": "done"
         },
         {
           "id": "p23-beats",

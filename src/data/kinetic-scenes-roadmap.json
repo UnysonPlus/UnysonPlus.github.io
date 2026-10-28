@@ -989,7 +989,7 @@
           "id": "p17-point",
           "title": "Point at the frame to change it",
           "detail": "Click a spot in the preview and write what to change. AI assist receives the moment, the element under the pointer and a close-up of that area, changes only that, and answers in a sentence; the preview stays where it was. The values it touches (a title, a number, a colour, a hold time) appear as fields to adjust by hand.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p17-directions",

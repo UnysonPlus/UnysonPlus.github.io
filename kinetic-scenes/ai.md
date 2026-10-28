@@ -35,6 +35,21 @@ The **✦ AI assist** button at the bottom right of the stage opens the chat.
 own computer ("…wants to access other apps and services on this device"): choose **Allow** once. The kit answers only the
 Studio's own address, so other websites cannot use your AI. The panel names the AI at work.
 
+## Point at the frame to change it
+
+For a change to one thing at one moment, choose **Point** (next to *This scene* and *Selected*), move the playhead to
+the moment, and click the thing in the preview. AI assist shows what it will change and when; write the change ("make
+this green", "hold it a second longer", "say Book now instead").
+
+<img src="/img/kinetic-scenes/ai-point.png" alt="AI assist with Point chosen: Changing Act 2 · Build at 11.4 s" width="398" />
+
+- The AI is told the element, the moment, and to change **only that element**: every other layer, the sound and the
+  timing of everything else stay as they were. The playhead stays where it was.
+- Its answer lists **the values it changed** (a text, a size, a colour, a time, a clip's length) as fields: adjust any
+  of them by hand without asking again. Each edit is one undo step.
+- Point stays chosen while you click, so selecting the element doesn't switch you to *Selected*. One element at a time:
+  for several, use *Selected*.
+
 ## Work in steps (with a project and Claude Code)
 
 When a [project](./ai-agents.md#projects) is open and the AI Dev Kit's AI is **Claude Code**, AI assist can work in steps

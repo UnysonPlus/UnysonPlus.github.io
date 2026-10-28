@@ -945,8 +945,8 @@
         {
           "id": "p16-stacks",
           "title": "One-click effect stacks",
-          "detail": "Named combinations of presets (a beat drop, a glitch cut, a punch-in) applied together on the beat, so a short-form edit gets its energy without building each effect by hand.",
-          "status": "planned"
+          "detail": "Five stacks in one click (Punch-in, Beat drop, Glitch hit, Impact, Whip in), each a set of ordinary clips with its sound, added at the playhead and moved onto the nearest beat of the music.",
+          "status": "done"
         },
         {
           "id": "p16-behind",

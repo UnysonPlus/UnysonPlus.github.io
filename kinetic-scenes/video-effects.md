@@ -56,6 +56,29 @@ by the real player on an illustration; on your own footage they look the same.
 
 Grades, zooms and film combine on the same footage (a grade under projected film, a snap zoom inside a digital zoom).
 
+## Effect stacks
+
+Short-form edits get their energy from several effects landing together on one moment. **Effect stacks** add such a
+combination to the selected layer in one click: put the playhead where it should happen and pick one in **Effect stacks**
+(in the layer's settings).
+
+<img src="/img/kinetic-scenes/effect-stacks.png" alt="The Effect stacks settings: Punch-in, Beat drop, Glitch hit, Whip in" width="310" />
+
+| Stack | For | What it adds |
+|---|---|---|
+| **Punch-in** | footage, pictures, shapes, groups | a sharp **Snap zoom** in on the middle, held for a second, then snapping back out, with a whoosh: the talking-head punch on a key word |
+| **Beat drop** | footage, pictures, shapes, groups | **Snap zoom** in and a **Shake** on the beat, snapping back out on the next beat, with an impact |
+| **Glitch hit** | any layer | a hard **Shake** and a flicker of **noir grade**, with a glitch sound |
+| **Impact** | words, captions, shapes, pictures, groups | a **Pulse** swell, a **Burst** of sparks and a small **Shake**, with a pop |
+| **Whip in** | any layer | arrives with a **Whip pan** from the side, with a swish |
+
+- **On the beat:** when the scene has music with its beats found (**Find the beats** on the music track), the stack moves
+  onto the nearest beat within 0.3 s of the playhead, and Beat drop snaps back on the following beat.
+- **Only while the layer is on:** with the playhead outside the layer's time, the stack is not added and the settings
+  say where to move the playhead.
+- Every stack is **ordinary clips** on the layer's timeline row: move, trim, change or delete each one. **Undo** removes
+  the whole stack.
+
 ## Copies and frames
 
 ![Playing grid, contact sheet, picture dive, scrolling feed, shatter](/img/kinetic-scenes/effects-copies.jpg)

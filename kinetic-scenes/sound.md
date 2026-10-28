@@ -82,6 +82,26 @@ compared with the speaker's own average. The strongest words are shown in bold, 
 a minute, and whether it sounds calm, conversational, energetic or expressive), and the words appear along the clip's
 waveform. Click a word to jump there. The words stay with the clip when you move or trim it.
 
+### Edit by the words
+
+Cut a voice-over by editing its words: the voice, the footage it came from (and the person cut out of that footage) are
+cut together, and everything after moves earlier, so titles and effects stay on their words.
+
+<img src="/img/kinetic-scenes/edit-by-words.png" alt="Edit by the words: a false start struck out, and the Cut button showing the seconds it saves" width="310" />
+
+1. Select the transcribed voice-over (for footage: **Footage tools › Use its sound**, then **Transcribe**).
+2. Click **Edit by the words**. The words become switches: click one to strike it out, click again to keep it.
+3. **Mark ums and repeats** strikes um, uh and the like, and the first of a phrase said twice in a row (a false start:
+   "build your own… build your own header" keeps the second). Check what it marked; common doubles like "very, very" are
+   left alone.
+4. **Shorten pauses over 0.6 s** (on by default) trims long silences between the words you keep to 0.25 s.
+5. **Cut** (it shows the seconds it saves).
+
+No new files are made: the voice-over and the footage each become **parts** that play the kept stretches back to back
+(their start and trim set for you), so every cut can still be adjusted or undone. Captions follow all the parts of a
+voice-over. Footage plays in step with its voice when it has the same start and trim, which **Use its sound** gives it;
+footage at a different speed is left as it is. **Undo** puts everything back.
+
 ## A scene from a voice-over
 
 Once a voice-over has its words, its Words section offers **Make a scene from this voice-over** (AI assist). The Studio

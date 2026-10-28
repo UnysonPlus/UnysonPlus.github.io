@@ -939,8 +939,8 @@
         {
           "id": "p16-words",
           "title": "Edit by the words",
-          "detail": "Delete words in the transcript and the footage is cut to match: filler words, long silences and retakes removed in one step, using the word timings the Studio already makes.",
-          "status": "planned"
+          "detail": "Strike words out of a transcript (or let Mark ums and repeats do it, with long pauses shortened) and the voice-over, its footage and the cut-out person are cut together, with what comes after moved earlier; captions follow every part.",
+          "status": "done"
         },
         {
           "id": "p16-stacks",

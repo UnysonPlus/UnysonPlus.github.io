@@ -1,0 +1,15 @@
+| What you see | Why | Fix |
+|---|---|---|
+| A WordPress "Page not found" page, or a 404, at `/wp-json/…` | Permalinks are set to **Plain** | **Settings → Permalinks**: choose *Post name*, **Save Changes** |
+| `{"code":"rest_no_route", …}` | The post type is not in the REST API, or its slug is not `book` | Check **Show in REST API** on the post type, and its slug. Then **Settings → Permalinks → Save Changes** to refresh the addresses |
+| `[]` (an empty list) | No published books | Publish at least one book; drafts are not public |
+| No `acf` object | The field group's **Show in REST API** is off | ACF → Field Groups → Book Details → Group Settings → **Show in REST API** on |
+| `"cover_image": 3659` (a number) with ACF | `acf_format=standard` is missing from the request | Keep `acf_format=standard` in the request, and the Image field's Return Format on **Image Array** |
+| `"acf": []` or fields missing | Field names differ from the code | Field names must be exactly `subtitle`, `book_author`, `pages`, `cover_image`, `buy_url` |
+| No `unysonplus_fields` object | The field group's **Show in REST API** is off, or Custom Fields is not active | Unyson+ → Custom Fields → Book Details → **Show in REST API** on, then **Save Changes** |
+| `"unysonplus_fields": []` | The request's `_fields` leaves out `type` (needed by Custom Fields before 0.1.21) | Keep `type` in `_fields`, as the examples do, or update Unyson+ |
+| Books show but no covers | The site is on `http://` and the front end on `https://` (mixed content), or no cover was set | Put WordPress on HTTPS; check each book has a cover |
+| The page stays on "Loading…" (plain JavaScript) | Opened from the disk, or `js/config.js` has the wrong address | Serve the folder with a web server; check `WP_URL`; read the error in the browser console (F12) |
+| `WordPress returned 401` or `403` | A security plugin or host rule blocks the REST API for visitors | Allow public `GET` requests to `/wp-json/wp/v2/` in that plugin or rule |
+| Next.js: `Set WP_URL in .env.local` | The environment variable is missing | Create `.env.local` locally, or add `WP_URL` in the host's settings |
+| Next.js: a new book does not appear | The page is cached for up to five minutes | Wait, or lower `revalidate` in `lib/wordpress.ts` |

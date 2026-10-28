@@ -3,7 +3,8 @@
 import { WP_URL } from './config.js';
 
 // Ask only for what the pages use: smaller responses, faster pages.
-const BOOK_FIELDS = 'id,slug,title,excerpt,content,genre,unysonplus_fields';
+// "type" is included because older Custom Fields versions need it to fill unysonplus_fields.
+const BOOK_FIELDS = 'id,slug,type,title,excerpt,content,genre,unysonplus_fields';
 
 async function wp(path) {
   const res = await fetch(`${WP_URL}/wp-json${path}`);

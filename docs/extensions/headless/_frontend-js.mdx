@@ -1,0 +1,36 @@
+### 4.1 Get the code
+
+Click **Download** on the code window above and unzip it anywhere on your computer. You get one folder
+with `index.html`, `book.html`, `js/` and `css/`. There is nothing to install.
+
+### 4.2 Point it at your site
+
+Open `js/config.js` in a text editor and set your WordPress address, with no slash at the end:
+
+```js
+export const WP_URL = 'https://your-site.com';
+```
+
+### 4.3 Run it on your computer
+
+The pages must be opened through a web server, not by double-clicking `index.html` (browsers only run
+JavaScript modules from a web address). Any small server works. From inside the folder, run one of:
+
+```bash
+npx serve .                 # needs Node.js; prints an address such as http://localhost:3000
+python -m http.server 8000  # needs Python; then open http://localhost:8000
+```
+
+Open the address it prints. You should see your books, with their covers, and each one opens its own page.
+
+### 4.4 Put it online
+
+The front end is just files, so any static host can serve it, for free in most cases: **Netlify** (drag
+the folder onto its dashboard), **Cloudflare Pages**, **GitHub Pages**, or the public folder of any web
+host. Upload the whole folder as it is.
+
+- **Use HTTPS on both sides.** A front end on `https://` cannot load content from a WordPress site on
+  plain `http://`; the browser blocks it as mixed content.
+- **No CORS setup is needed.** WordPress lets other sites read its public REST API.
+- **Updates are instant.** The browser fetches from WordPress on every visit, so a book you publish shows
+  up on the next page load.

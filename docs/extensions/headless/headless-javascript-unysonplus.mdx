@@ -8,6 +8,9 @@ keywords: [headless wordpress javascript, acf alternative, wordpress custom fiel
 
 import CodeWorkspace from '@site/src/components/CodeWorkspace';
 import example from '@site/src/data/code-examples/headless-js-unysonplus.json';
+import SetupWpUnysonplus from './_setup-wp-unysonplus.mdx';
+import FrontendJs from './_frontend-js.mdx';
+import Troubleshooting from './_troubleshooting.mdx';
 
 # Headless WordPress with JavaScript and Unyson+
 
@@ -19,31 +22,21 @@ everything in the browser, with no framework and no build step.
 <p><small>With Next.js instead: [Next.js + Unyson+](./headless-nextjs-unysonplus.mdx). The WordPress side
 in more detail, including a version defined in code: [Headless with Unyson+](./unysonplus-headless.mdx).</small></p>
 
-## 1. Set up WordPress
+## 1. Before you start
 
-Under **Unyson+ → Extensions**, activate **Post Types** and **Custom Fields**.
+You need:
 
-1. **Unyson+ → Post Types → Add Post Type:** Singular Book, Plural Books, Key `book`. **Block editor /
-   REST** is on by default (Visibility tab).
-2. **Add Taxonomy:** Singular Genre, Plural Genres, Key `genre`, attached to Book, **Show in REST** on.
-   Save.
-3. **Unyson+ → Custom Fields → Add Field Group:** title "Book Details", shown on Book, with **Show in
-   REST API** turned on. Add the fields:
+- **A WordPress site** you can log in to as an administrator: on any host, or on your own computer (LocalWP, XAMPP). It needs to be reachable from wherever the front end runs.
+- **Unyson+** installed and active (download `unysonplus.zip` from the [installation guide](/installation) and upload it under Plugins → Add New → Upload Plugin).
+- **A text editor**, and a way to serve a folder over HTTP for testing: Node.js (`npx serve`) or Python (`python -m http.server`).
 
-| Field label | Field name | Field type |
-|---|---|---|
-| Subtitle | `subtitle` | Text |
-| Author | `book_author` | Text |
-| Pages | `pages` | Number |
-| Cover image | `cover_image` | Image |
-| Buy link | `buy_url` | URL |
+About 15 minutes for WordPress, and 10 for the front end.
 
-4. Add a few books under **Books → Add New**.
+## 2. Set up WordPress
 
-Tip: the **Blueprints** tab of Post Types creates common types (team, events, FAQs…) with their fields in
-one click.
+<SetupWpUnysonplus />
 
-## 2. What the API returns
+## What the API returns
 
 Unyson+ puts the fields under **`unysonplus_fields`** on each post. No extra query parameter is needed:
 
@@ -81,6 +74,10 @@ Click any file to open it, or download the whole project.
 
 <CodeWorkspace example={example} />
 
+## 4. Set up the front end
+
+<FrontendJs />
+
 ## How it fits together
 
 - **The HTML is a shell.** `index.html` has an empty list and a `<template>` for one book card;
@@ -92,14 +89,9 @@ Click any file to open it, or download the whole project.
 - **Titles and content arrive as HTML.** Titles are converted to plain text before they go into
   `textContent`; the post body is your own site's HTML and is inserted as it is.
 
-## Run it
+## Troubleshooting
 
-1. Download the example and set your site's address in `js/config.js`.
-2. Serve the folder with any static web server (`npx serve .` or `python -m http.server`) and open the
-   address it prints. Opening `index.html` straight from the disk does not work: browsers only load
-   JavaScript modules from a web address.
-
-This example was tested against a WordPress site running Unyson+ set up exactly as in step 1.
+<Troubleshooting />
 
 ## What changes from the ACF version
 

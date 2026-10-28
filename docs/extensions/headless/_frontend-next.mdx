@@ -1,0 +1,61 @@
+### 4.1 What you need
+
+**Node.js 18.18 or newer** (check with `node -v`; get it from nodejs.org). The example uses Next.js 15
+with the App Router and TypeScript; npm installs them for you.
+
+### 4.2 Get the code
+
+Click **Download** on the code window above and unzip it. Open a terminal in that folder and install:
+
+```bash
+npm install
+```
+
+### 4.3 Point it at your site
+
+Copy `.env.example` to `.env.local` and set your WordPress address, with no slash at the end:
+
+```bash
+WP_URL=https://your-site.com
+```
+
+`.env.local` stays on your computer (it is not uploaded with the code), so each place the site runs sets
+its own `WP_URL`.
+
+### 4.4 Run it on your computer
+
+```bash
+npm run dev
+```
+
+Open http://localhost:3000/books. You should see your books with their covers, and each one opens its own
+page at `/books/<slug>`.
+
+To try the production version, which builds every book page ahead of time:
+
+```bash
+npm run build
+npm run start
+```
+
+The build fails with "WordPress returned 404" or a fetch error if `WP_URL` is wrong or the API is not
+reachable; fix that first (see [Troubleshooting](#troubleshooting)).
+
+### 4.5 Put it online
+
+Next.js needs a host that runs it. The simplest is **Vercel** (from the makers of Next.js); **Netlify**
+and any server with Node.js also work.
+
+1. Put the folder in a Git repository (GitHub, GitLab or Bitbucket) and import it on the host.
+2. In the host's project settings, add the environment variable **`WP_URL`** = `https://your-site.com`.
+3. Deploy. The host runs `npm run build`, which fetches every book from WordPress and builds its page.
+
+After that:
+
+- **New and edited books appear within five minutes**, without a new deploy (`revalidate: 300` in
+  `lib/wordpress.ts`). Lower the number for faster updates; a rebuild webhook is on the
+  [roadmap](./roadmap.md).
+- **Use HTTPS for WordPress.** The front end runs on HTTPS, and browsers block `http://` images on an
+  `https://` page.
+- **No CORS setup is needed.** The pages are built on the server, and WordPress lets other sites read its
+  public REST API anyway.

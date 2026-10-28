@@ -1,0 +1,68 @@
+### 2.1 Turn on pretty permalinks
+
+Go to **Settings → Permalinks** and choose anything except **Plain** (for example *Post name*), then
+**Save Changes**. The REST API lives at `/wp-json/`, and that address only works with pretty permalinks.
+(With Plain permalinks the same data is at `/?rest_route=/wp/v2/book`, which the examples do not use.)
+
+### 2.2 Install the two plugins
+
+**Plugins → Add New**, search for and install **Custom Post Type UI** and **Advanced Custom Fields**, then
+**Activate** both.
+
+### 2.3 Create the Book post type
+
+**CPT UI → Add/Edit Post Types**:
+
+1. **Post Type Slug:** `book`. **Plural Label:** Books. **Singular Label:** Book.
+2. Scroll to **Settings** and check that **Show in REST API** is **True** (the default in current
+   versions). Leave **REST API base slug** empty, so the address is `/wp-json/wp/v2/book`.
+3. Under **Supports**, keep Title, Editor and Featured Image.
+4. **Add Post Type.**
+
+### 2.4 Create the Genre taxonomy
+
+**CPT UI → Add/Edit Taxonomies**:
+
+1. **Taxonomy Slug:** `genre`. **Plural Label:** Genres. **Singular Label:** Genre.
+2. **Attach to Post Type:** tick **Books**.
+3. Under **Settings**: **Hierarchical** True (so genres work like categories), **Show in REST API** True.
+4. **Add Taxonomy.**
+
+### 2.5 Create the fields
+
+**ACF → Field Groups → Add New**:
+
+1. **Field Group Title:** Book Details.
+2. Add the fields (**+ Add Field** for each):
+
+| Field Label | Field Name | Field Type | Setting to change |
+|---|---|---|---|
+| Subtitle | `subtitle` | Text | |
+| Author | `book_author` | Text | |
+| Pages | `pages` | Number | |
+| Cover image | `cover_image` | Image | **Return Format: Image Array** |
+| Buy link | `buy_url` | URL | |
+
+The **Field Name** is the key the API uses, so type it exactly as shown.
+
+3. **Settings → Location Rules:** *Post Type* **is equal to** *Book*.
+4. **Settings → Group Settings:** turn on **Show in REST API**. Without it the `acf` object never
+   appears in the API.
+5. **Save Changes.**
+
+### 2.6 Add some content
+
+**Genres → Add New Genre:** add one or two (Fiction, Non-fiction). Then **Books → Add New** for two or
+three books: a title, some text, a genre, and every Book Details field, including a cover image.
+**Publish** each one (drafts are not in the public API).
+
+### 2.7 Check the API
+
+Open this address in your browser, with your own domain:
+
+```text
+https://your-site.com/wp-json/wp/v2/book?_fields=id,slug,title,acf&acf_format=standard
+```
+
+You should see your books as JSON, each with an `acf` object holding the five fields and the cover as an
+object with a `url`. If you see something else, go to [Troubleshooting](#troubleshooting).

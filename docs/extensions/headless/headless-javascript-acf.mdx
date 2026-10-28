@@ -8,6 +8,9 @@ keywords: [headless wordpress javascript, acf rest api, acf_format standard, cus
 
 import CodeWorkspace from '@site/src/components/CodeWorkspace';
 import example from '@site/src/data/code-examples/headless-js-acf.json';
+import SetupWpAcf from './_setup-wp-acf.mdx';
+import FrontendJs from './_frontend-js.mdx';
+import Troubleshooting from './_troubleshooting.mdx';
 
 # Headless WordPress with JavaScript, ACF and CPT UI
 
@@ -21,28 +24,21 @@ The example is a small book site: a list of books, and a page per book.
 [JavaScript + Unyson+](./headless-javascript-unysonplus.mdx). With Next.js:
 [Next.js + ACF](./headless-nextjs-acf.mdx).</small></p>
 
-## 1. Set up WordPress
+## 1. Before you start
 
-Install and activate **Custom Post Type UI** and **Advanced Custom Fields**.
+You need:
 
-1. **CPT UI → Add/Edit Post Types:** slug `book`, labels Books / Book. Under Settings, set
-   **Show in REST API** to True (it is the default in current versions; check it).
-2. **CPT UI → Add/Edit Taxonomies:** slug `genre`, labels Genres / Genre, attached to **Books**, with
-   **Show in REST API** True.
-3. **ACF → Field Groups → Add New:** title "Book Details", location *Post Type is equal to Book*. Under
-   **Group Settings → Settings**, turn on **Show in REST API**. Add the fields:
+- **A WordPress site** you can log in to as an administrator: on any host, or on your own computer (LocalWP, XAMPP). It needs to be reachable from wherever the front end runs.
+- The free plugins **Custom Post Type UI** and **Advanced Custom Fields** (step 2 installs them).
+- **A text editor**, and a way to serve a folder over HTTP for testing: Node.js (`npx serve`) or Python (`python -m http.server`).
 
-| Field label | Field name | Field type |
-|---|---|---|
-| Subtitle | `subtitle` | Text |
-| Author | `book_author` | Text |
-| Pages | `pages` | Number |
-| Cover image | `cover_image` | Image (Return Format: **Image Array**) |
-| Buy link | `buy_url` | URL |
+About 15 minutes for WordPress, and 10 for the front end.
 
-4. Add a few books under **Books → Add New**.
+## 2. Set up WordPress
 
-## 2. What the API returns
+<SetupWpAcf />
+
+## What the API returns
 
 ACF puts the fields under **`acf`** on each post. By default an Image field comes back as just the
 attachment ID. Add **`acf_format=standard`** to the request and ACF returns each field in its Return
@@ -86,6 +82,10 @@ Click any file to open it, or download the whole project.
 
 <CodeWorkspace example={example} />
 
+## 4. Set up the front end
+
+<FrontendJs />
+
 ## How it fits together
 
 - **The HTML is a shell.** `index.html` has an empty list and a `<template>` for one book card;
@@ -97,15 +97,9 @@ Click any file to open it, or download the whole project.
 - **Titles and content arrive as HTML.** Titles are converted to plain text before they go into
   `textContent`; the post body is your own site's HTML and is inserted as it is.
 
-## Run it
+## Troubleshooting
 
-1. Download the example and set your site's address in `js/config.js`.
-2. Serve the folder with any static web server (`npx serve .` or `python -m http.server`) and open the
-   address it prints. Opening `index.html` straight from the disk does not work: browsers only load
-   JavaScript modules from a web address.
-
-WordPress lets other sites read its public REST API, so the pages can live on any domain. This example
-was tested against a WordPress site set up exactly as in step 1.
+<Troubleshooting />
 
 ## Plain JavaScript or Next.js?
 

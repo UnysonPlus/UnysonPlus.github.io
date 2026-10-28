@@ -30,7 +30,8 @@ export type Book = {
 export type Genre = { id: number; name: string; slug: string };
 
 // Ask only for what the pages use: smaller responses, faster builds.
-const BOOK_FIELDS = 'id,slug,title,excerpt,content,genre,unysonplus_fields';
+// "type" is included because older Custom Fields versions need it to fill unysonplus_fields.
+const BOOK_FIELDS = 'id,slug,type,title,excerpt,content,genre,unysonplus_fields';
 
 async function wp<T>(path: string): Promise<T> {
   const res = await fetch(`${WP_URL}/wp-json${path}`, {

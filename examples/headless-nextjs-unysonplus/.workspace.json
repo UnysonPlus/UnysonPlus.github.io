@@ -2,7 +2,7 @@
   "title": "headless-books (Next.js + Unyson+)",
   "open": "lib/wordpress.ts",
   "files": {
-    "lib/wordpress.ts": { "note": "The one place that talks to WordPress: types for the REST response, a fetch helper with revalidation, and one function per query.", "highlight": "36-39,46-48" },
+    "lib/wordpress.ts": { "note": "The one place that talks to WordPress: types for the REST response, a fetch helper with revalidation, and one function per query.", "highlight": "37-40,47-49" },
     "app/books/page.tsx": { "note": "The books list. Fetches books and genres in parallel and turns genre IDs into names.", "highlight": "7-8" },
     "app/books/[slug]/page.tsx": { "note": "One page per book, generated at build time, with its title, description and cover as page metadata.", "highlight": "8-11" },
     "app/layout.tsx": { "note": "The shared HTML shell for every page." },

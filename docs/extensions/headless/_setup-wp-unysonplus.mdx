@@ -1,0 +1,69 @@
+### 2.1 Turn on pretty permalinks
+
+Go to **Settings → Permalinks** and choose anything except **Plain** (for example *Post name*), then
+**Save Changes**. The REST API lives at `/wp-json/`, and that address only works with pretty permalinks.
+(With Plain permalinks the same data is at `/?rest_route=/wp/v2/book`, which the examples do not use.)
+
+### 2.2 Activate the two extensions
+
+Unyson+ must be installed and active (**Plugins**). Then go to **Unyson+ → Extensions**, and **Download**
+(if needed) and **Activate** **Post Types** and **Custom Fields**. Both then appear in the Unyson+ menu.
+
+### 2.3 Create the Book post type
+
+**Unyson+ → Post Types**, then **Add Post Type**:
+
+1. **General** tab: **Singular label** Book, **Plural label** Books, **Key / slug** `book`. Keep the
+   Supports boxes Title, Editor and Featured image ticked.
+2. **Visibility** tab: check that **Block editor / REST** is on (the default). Leave **REST base** empty,
+   so the address is `/wp-json/wp/v2/book`.
+3. **URLs** tab (optional): **URL slug** `books`.
+4. Close the popup.
+
+### 2.4 Create the Genre taxonomy
+
+Still on **Unyson+ → Post Types**, click **Add Taxonomy**:
+
+1. **Singular** Genre, **Plural** Genres, **Key** `genre`, **Post types:** Book, **Hierarchical** on (so
+   genres work like categories).
+2. **Visibility & URLs:** check that **Show in REST** is on (the default).
+3. Close the popup, then **Save Changes** at the bottom of the page. The overview table at the top should
+   now show both as **Registered**.
+
+### 2.5 Create the fields
+
+**Unyson+ → Custom Fields → Add Field Group**:
+
+1. **Group title:** Book Details. **Show on post types:** Book.
+2. Turn on **Show in REST API** ("Expose this group's field values under unysonplus_fields"). Without
+   it the fields never appear in the API.
+3. Under **Fields**, **Add Field** for each:
+
+| Field label | Field name | Field type |
+|---|---|---|
+| Subtitle | `subtitle` | Text |
+| Author | `book_author` | Text |
+| Pages | `pages` | Number |
+| Cover image | `cover_image` | Image |
+| Buy link | `buy_url` | URL |
+
+The **Field name** is the key the API uses, so type it exactly as shown.
+
+4. Close the popup and **Save Changes**.
+
+### 2.6 Add some content
+
+**Books → Genres:** add one or two (Fiction, Non-fiction). Then **Books → Add New** for two or three
+books: a title, some text, a genre, and every Book Details field (the box below the editor), including a
+cover image. **Publish** each one (drafts are not in the public API).
+
+### 2.7 Check the API
+
+Open this address in your browser, with your own domain:
+
+```text
+https://your-site.com/wp-json/wp/v2/book?_fields=id,slug,type,title,unysonplus_fields
+```
+
+You should see your books as JSON, each with a `unysonplus_fields` object holding the five fields. If you
+see something else, go to [Troubleshooting](#troubleshooting).

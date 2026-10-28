@@ -8,6 +8,9 @@ keywords: [headless wordpress nextjs, next.js acf, acf rest api nextjs, custom p
 
 import CodeWorkspace from '@site/src/components/CodeWorkspace';
 import example from '@site/src/data/code-examples/headless-nextjs-acf.json';
+import SetupWpAcf from './_setup-wp-acf.mdx';
+import FrontendNext from './_frontend-next.mdx';
+import Troubleshooting from './_troubleshooting.mdx';
 
 # Headless WordPress with Next.js, ACF and CPT UI
 
@@ -22,27 +25,21 @@ and cover as page metadata.
 [Next.js + Unyson+](./headless-nextjs-unysonplus.mdx). Without a framework:
 [JavaScript + ACF](./headless-javascript-acf.mdx).</small></p>
 
-## 1. Set up WordPress
+## 1. Before you start
 
-Install and activate **Custom Post Type UI** and **Advanced Custom Fields**.
+You need:
 
-1. **CPT UI → Add/Edit Post Types:** slug `book`, labels Books / Book, **Show in REST API** True.
-2. **CPT UI → Add/Edit Taxonomies:** slug `genre`, labels Genres / Genre, attached to **Books**, **Show
-   in REST API** True.
-3. **ACF → Field Groups → Add New:** "Book Details", location *Post Type is equal to Book*, and **Show
-   in REST API** on (Group Settings → Settings). Fields:
+- **A WordPress site** you can log in to as an administrator: on any host, or on your own computer (LocalWP, XAMPP). It needs to be reachable from wherever the front end runs.
+- The free plugins **Custom Post Type UI** and **Advanced Custom Fields** (step 2 installs them).
+- **Node.js 18.18 or newer** and a terminal. The front end is a Next.js 15 project; `npm install` fetches everything else.
 
-| Field label | Field name | Field type |
-|---|---|---|
-| Subtitle | `subtitle` | Text |
-| Author | `book_author` | Text |
-| Pages | `pages` | Number |
-| Cover image | `cover_image` | Image (Return Format: **Image Array**) |
-| Buy link | `buy_url` | URL |
+About 15 minutes for WordPress, and 10 for the front end.
 
-4. Add a few books.
+## 2. Set up WordPress
 
-## 2. What the API returns
+<SetupWpAcf />
+
+## What the API returns
 
 The fields arrive under **`acf`**. With **`acf_format=standard`** in the request, ACF returns each field
 in its Return Format, so the cover is an object with its URL, width, height, alt text and image sizes
@@ -65,6 +62,10 @@ Click any file to open it, or download the whole project.
 
 <CodeWorkspace example={example} />
 
+## 4. Set up the front end
+
+<FrontendNext />
+
 ## How it fits together
 
 - **One file talks to WordPress.** `lib/wordpress.ts` describes the ACF fields as TypeScript types
@@ -78,16 +79,9 @@ Click any file to open it, or download the whole project.
 - **Metadata from ACF.** `generateMetadata` uses the subtitle as the description and the cover, with its
   size and alt text, as the sharing image.
 
-## Run it
+## Troubleshooting
 
-```bash
-cp .env.example .env.local   # then set WP_URL to your WordPress site
-npm install
-npm run dev                  # http://localhost:3000/books
-```
-
-This example was built (`next build`, with type checking) against a WordPress site set up exactly as in
-step 1.
+<Troubleshooting />
 
 ## Next.js or plain JavaScript?
 

@@ -5,7 +5,7 @@
     "index.html": { "note": "The books list page. The list is empty in the HTML; js/books.js fills it from the API using the <template> card.", "highlight": "15,19-28" },
     "book.html": { "note": "One book's page. js/book.js reads ?slug= from the address and fills in the article." },
     "js/config.js": { "note": "The only setting: the address of your WordPress site." },
-    "js/wordpress.js": { "note": "The one place that talks to WordPress: a fetch helper and one function per query, the same shape as the Next.js lib/wordpress.ts.", "highlight": "8-14,16-18" },
+    "js/wordpress.js": { "note": "The one place that talks to WordPress: a fetch helper and one function per query, the same shape as the Next.js lib/wordpress.ts.", "highlight": "9-15,17-19" },
     "js/books.js": { "note": "Fetches books and genres in parallel, then copies the card template once per book.", "highlight": "9,13-14" },
     "js/book.js": { "note": "Finds the book by its slug and fills in the page, including the body written in the WordPress editor." },
     "css/style.css": { "note": "Plain CSS: a grid of book cards, and a two-column book page that stacks on phones." },

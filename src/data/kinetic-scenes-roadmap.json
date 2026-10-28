@@ -1123,8 +1123,8 @@
         {
           "id": "p20-demo-site",
           "title": "A styled demo site",
-          "detail": "A WordPress install with a good-looking theme, real content and fonts, reset with one command, so every demo ends on a page worth showing.",
-          "status": "planned"
+          "detail": "A copy of a designed site kept for demos, with a snapshot of its database and uploads and a one-command reset, so every recording starts from the same clean site and ends on a page worth showing. How to set one up is in the screencasts guide.",
+          "status": "done"
         },
         {
           "id": "p20-screenshots",

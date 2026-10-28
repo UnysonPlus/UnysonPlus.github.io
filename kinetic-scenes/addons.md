@@ -81,6 +81,31 @@ back. If you opened ACE-Step yourself, the kit uses it as it is and never closes
 `ENABLE_API=--enable-api` in its launcher, or close it and let the kit start it. The kit only ever runs ACE-Step's own
 launcher, inside the folder you chose.
 
+## Blender
+
+An AI agent can build 3D models and animated shots in Blender and bring them into your scenes; see
+[Blender](./blender.md). Blender 4.2 or later is found where it is usually installed (or set `BLENDER` to its path), and
+the kit runs it in the background when an agent asks: there is nothing to open or start.
+
+## Check this computer
+
+At the bottom of **Add-ons**, **Check this computer** lists what this computer has for Kinetic Scenes, as plain text
+ready to paste into a bug report:
+
+- the kit's version, the capture service's version and Node;
+- the operating system, processor and memory;
+- ffmpeg and ffprobe (needed for video, audio and previews);
+- the browser the kit renders with (Chrome, Edge or Playwright's Chromium);
+- the graphics card and its free memory;
+- the AI the kit is connected to (or "off");
+- Blender, if it is installed;
+- the workspace folder and its free disk space;
+- every add-on with its state and where it is.
+
+**Copy the report** puts it on the clipboard. Nothing is sent anywhere. From the command line it is
+`node studio-cli.mjs doctor` (add `--json` for the data), and agents have the `kit_doctor` tool: run it first when a
+render, a voice or an add-on fails.
+
 ## For agents
 
 The add-ons are listed by the kit at `GET /studio/addons`. A connector's location is set with `POST /studio/addons/<id>
@@ -88,5 +113,5 @@ The add-ons are listed by the kit at `GET /studio/addons`. A connector's locatio
 kept in the kit's `addons.json`. `POST /studio/addons/<id>/find` searches and saves (`{ found }`);
 `POST /studio/addons/<id>/browse { field }` opens the computer's picker (`{ chosen }`, null when cancelled). A voice-over in a Voicebox voice is `POST /studio/voice { "lines": […], "voice":
 "voicebox:<profile id>" }`. Music is `POST /studio/music { "prompt": "…", "seconds": 30, "bpm": 120 }`, then poll
-`GET /studio/music/<id>` for `{ state, step, result: { src, bpm, seconds } }`. From the command line:
+`GET /studio/music/<id>` for `{ state, step, result: { src, bpm, seconds } }`. The computer check is `GET /studio/doctor` (`{ report, text }`). From the command line:
 `node studio-cli.mjs music "upbeat pop instrumental" --seconds 30 --bpm 120 --out music.mp3`.

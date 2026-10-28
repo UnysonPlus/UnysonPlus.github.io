@@ -270,13 +270,13 @@
         {
           "id": "p7-drive",
           "title": "Save to Google Drive",
-          "detail": "Projects on any computer without our own server: people sign in with Google and their scenes are saved to their own Drive. Planned if people ask for cross-device projects. Needs a Google OAuth client ID from the site owner before it can be built.",
+          "detail": "Projects on any computer without our own server: people sign in with Google and their scenes are saved to their own Drive. Planned if people ask for cross-device projects. Needs a Google OAuth client ID from the site owner before it can be built. Deferred (2026-10-29): not planned until people ask for it; projects stay in the browser and as files.",
           "status": "planned"
         },
         {
           "id": "p7-accounts",
           "title": "Accounts and cloud projects (only if needed)",
-          "detail": "If real accounts are ever needed (a project library, short links, embeds that update in place), they run on a free cloud tier, separate from the website hosting, with uploads on object storage and embeds still served from GitHub Pages.",
+          "detail": "If real accounts are ever needed (a project library, short links, embeds that update in place), they run on a free cloud tier, separate from the website hosting, with uploads on object storage and embeds still served from GitHub Pages. Deferred (2026-10-29): not planned until people ask for it; projects stay in the browser and as files.",
           "status": "planned"
         },
         {
@@ -373,8 +373,8 @@
         {
           "id": "p8-doctor",
           "title": "Check this computer",
-          "detail": "One AI Dev Kit command, and a button in Add-ons, that lists what this computer has for Kinetic Scenes (the kit's version, ffmpeg, the rendering browser, each add-on and where it is, the graphics card and its free memory), ready to paste into a bug report.",
-          "status": "planned"
+          "detail": "One AI Dev Kit command, and a button in Add-ons, that lists what this computer has for Kinetic Scenes (the kit's version, ffmpeg, the rendering browser, each add-on and where it is, the graphics card and its free memory), ready to paste into a bug report. Shipped in Studio 0.1.10: Add-ons › Check this computer, `node studio-cli.mjs doctor` and the `kit_doctor` agent tool. See [Add-ons](/kinetic-scenes/addons).",
+          "status": "done"
         }
       ]
     },

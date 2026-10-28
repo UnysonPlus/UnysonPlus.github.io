@@ -59,7 +59,7 @@ frames and the footage layer to add.
 
 - **Keep web models light:** under about 100,000 triangles and a few megabytes. The kit warns above that; a Decimate
   modifier or 1,024 px textures fix it.
-- **A 3D model is a still object.** Animation stored inside a glTF isn't played yet; the Studio's 3D presets move it.
+- **A model's own animation plays on the scene's clock** (player 0.0.51 and later): keyframe the objects in your script and the GLB carries the animation; the 3D layer plays it from its start, at its speed, looped or once (see [3D layers](./layers#animated-models)).
   For animation made in Blender (bones, physics, particles), render a shot instead.
 - **Rendered shots take time** (seconds for a short simple shot, minutes for long or heavy ones). Ask for a short test
   first.

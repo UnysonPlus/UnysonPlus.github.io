@@ -70,6 +70,16 @@ chrome), a resting pose and the light; it is lit by a built-in studio environmen
 The 3D engine (three.js) loads only for scenes that have a 3D layer.
 
 
+#### Animated models
+
+A glTF or GLB model that carries its own animation (made in Blender, exported from a 3D tool, or built by the
+[Blender tools](./blender)) plays it on the scene's clock: from the layer's start, frame-exact, so it scrubs, loops
+and renders to video like everything else. The 3D layer's settings list the model's animations: play **all of them**
+or one, at a chosen **speed**, **looping** or once and then held on its last pose. Presets (Spin 3D, Orbit, Camera
+push…) still turn and move the whole object on top of its own animation.
+
+<img src="/img/kinetic-scenes/gltf-animation.jpg" alt="A cube that turns and rises: at 0, 0.5, 1 and 3.5 seconds, looping on the left, at half speed and once on the right" width="260" />
+
 #### The camera's path
 
 A selected 3D layer shows its **Camera path** in the Inspector: where the camera goes over the layer's time, seen

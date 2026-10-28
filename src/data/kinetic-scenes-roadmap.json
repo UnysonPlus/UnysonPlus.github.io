@@ -1057,6 +1057,12 @@
           "title": "See the camera's path",
           "detail": "In 3D layers, show the camera's route and field of view in the scene, so a camera move can be shaped by eye.",
           "status": "done"
+        },
+        {
+          "id": "p18-gltf-animation",
+          "status": "done",
+          "title": "Animated 3D models",
+          "detail": "A glTF or GLB model's own animation (from Blender and other 3D tools) plays on the scene's clock: frame-exact, scrubbable and rendered to video, with a choice of clip, speed and looping in the 3D layer (player 0.0.51)."
         }
       ]
     },

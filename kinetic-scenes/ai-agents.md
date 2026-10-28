@@ -89,6 +89,8 @@ loudness, clipping; renders run it on their own), `voice_best_take` (the best of
 (`studio-cli record`, `screencast`, `music`, `project`), which records the screen and builds the scene around the
 recording.
 
+For what each check and clean-up tool does, with examples, see [Checks and clean-up for videos](./video-checks.md).
+
 ## Exporting
 
 Export from the Studio as usual (**Export › Video**). With the AI Dev Kit running, the video is rendered on your computer,

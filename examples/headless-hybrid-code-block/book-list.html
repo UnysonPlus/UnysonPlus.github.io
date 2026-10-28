@@ -1,0 +1,40 @@
+<!-- Paste into a Code Block element (Render as code: OFF). It lists the books from this
+     site's own REST API, so it keeps working wherever the page is moved. -->
+<div id="book-list" class="book-list" aria-live="polite">Loading books…</div>
+
+<style>
+  .book-list { display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+  .book-list a { color: inherit; text-decoration: none; }
+  .book-list img { width: 100%; height: auto; border-radius: 6px; }
+  .book-list h3 { margin: 10px 0 4px; font-size: 18px; }
+  .book-list p { margin: 0; font-size: 14px; opacity: .75; }
+</style>
+
+<script type="module">
+  // WordPress prints the REST API's address in every page's <head>; using it means the
+  // script works on any domain, and on sites installed in a subfolder.
+  const api = document.querySelector('link[rel="https://api.w.org/"]').href;
+  const list = document.getElementById('book-list');
+
+  // Text from the API goes in with textContent, never as HTML.
+  const el = (tag, props = {}) => Object.assign(document.createElement(tag), props);
+
+  try {
+    const res = await fetch(`${api}wp/v2/book?_fields=id,type,title,link,unysonplus_fields&per_page=12`);
+    if (!res.ok) throw new Error(`WordPress returned ${res.status}`);
+    const books = await res.json();
+
+    list.replaceChildren(...books.map((book) => {
+      const f = book.unysonplus_fields;
+      const card = el('a', { href: book.link });
+      if (f.cover_image?.url) card.append(el('img', { src: f.cover_image.url, alt: '' }));
+      card.append(
+        el('h3', { textContent: new DOMParser().parseFromString(book.title.rendered, 'text/html').body.textContent }),
+        el('p', { textContent: [f.book_author, f.pages && `${f.pages} pages`].filter(Boolean).join(' · ') }),
+      );
+      return card;
+    }));
+  } catch (error) {
+    list.textContent = `Could not load the books: ${error.message}`;
+  }
+</script>

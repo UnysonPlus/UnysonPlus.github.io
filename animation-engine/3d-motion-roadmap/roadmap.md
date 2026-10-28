@@ -143,9 +143,12 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   passes the view whitelist) plus `window.upwGallery3dForms.<name> = fn(N)` in the head (or
   `window.upwGallery3d.registerChoreoForm` at runtime) — **no core edit**. *Proven end-to-end with a
   non-core "ribbon" formation rendering from a drop-in alone.*
-- **Authoring polish** (ahead): cross-column / cross-section grouping (today it groups galleries that are
-  adjacent siblings in one column), a right-click *Create choreography* helper, and retiring the standalone
-  abstract `scroll_choreography` steps design once native chaining is the only authoring path.
+- **Authoring polish** (🚧 mostly done): **cross-section grouping** is in — the Chain switch now groups
+  consecutive chained galleries whether they're stacked in one column **or each dropped in its own section**;
+  the runtime relocates them into one overlay wrapper and non-destructively hides the emptied sections. *Both
+  cases verified (one master ScrollTrigger, clean handoff, no empty gaps).* Still ahead: a right-click *Create
+  choreography* builder helper, and retiring the standalone abstract `scroll_choreography` steps design once
+  native chaining is the only authoring path.
 
 ## Phase 2 — Real 3D scenes
 

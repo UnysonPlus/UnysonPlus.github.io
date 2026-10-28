@@ -60,3 +60,18 @@ ffmpeg, mixed to -14 LUFS. The Studio tells you how to install ffmpeg if it is m
 experimental setting today and on by default once it ships), Export offers **Render in this browser**: the same exact,
 frame-by-frame MP4 with its sound, rendered and encoded by the browser itself (H.264 and AAC), with nothing installed.
 See-through and ProRes exports still need the kit.
+
+**How the two compare** (measured 2026-10-28 on the Studio's 38-second demo scene, 1920 × 1080 at 30 fps, on a PC with
+a GeForce GTX 1660 Ti):
+
+| | AI Dev Kit | In this browser |
+|---|---|---|
+| Time | 46 s (the graphics card draws, NVENC encodes, 4 tabs at once) | 31 s |
+| The picture | the reference | the same frames: 2D layers identical, 3D layers within a hair (0.99 similarity overall) |
+| File size | 21 MB | 45 MB (a higher bitrate) |
+| Needs | the kit and ffmpeg | Chrome with HTML-in-Canvas switched on (not on by default yet) |
+
+Both seek every frame exactly rather than recording the scene as it plays, so neither drops or repeats a frame. The kit
+stays the default: it works in any browser, makes smaller files and does see-through and ProRes. When HTML-in-Canvas is
+on by default in Chrome, the browser export becomes the quick choice for a plain MP4. (Before Studio 0.0.97, 3D layers
+came out in the wrong place in a browser export.)

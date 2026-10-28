@@ -1252,8 +1252,8 @@
         {
           "id": "p23-browser-export",
           "title": "Test a frame-accurate export in the browser",
-          "detail": "A trial of exporting in the browser with WebCodecs, encoding every frame at its own timestamp, compared with the current render time. It ships only if it is faster without losing quality.",
-          "status": "planned"
+          "detail": "A trial of exporting in the browser with WebCodecs, encoding every frame at its own timestamp, compared with the current render time. It ships only if it is faster without losing quality. Result (2026-10-28): the Studio's existing in-browser export (it seeks each frame exactly and encodes with WebCodecs) rendered the 38 s demo in 31 s against the kit's 46 s, at matching quality once a 3D placement bug was fixed (Studio 0.0.97). The kit stays the default because the browser path needs Chrome's HTML-in-Canvas, which is still behind a flag.",
+          "status": "done"
         },
         {
           "id": "p23-repo-launch",

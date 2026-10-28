@@ -1019,7 +1019,7 @@
           "id": "p17-interchange",
           "title": "Finish in another editor",
           "detail": "Export a scene's cut, sound and captions as a project other editors open (for example CapCut, Premiere or DaVinci Resolve), as well as the finished video.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p17-like-this",

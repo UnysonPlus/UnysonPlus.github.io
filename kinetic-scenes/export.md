@@ -73,6 +73,30 @@ as long or more (a 1-second test took 6 s without, 15 s with). Agents: `studio-c
 `--blur 4` to `16` for the number of moments), or `blur` on the `scene_render` tool. Not available for a browser
 export.
 
+### For another editor
+
+**Export › For another editor** (video scenes, in a project, with the AI Dev Kit) writes the scene's cut as a project
+other video editors open, into the project's `renders/edit` folder:
+
+| File | Opens in |
+|---|---|
+| `project.fcpxml` | DaVinci Resolve (File › Import › Timeline), Final Cut Pro (File › Import › XML) |
+| `project.xml` | Premiere Pro (File › Import) |
+| `captions.srt` | the voice-over's words as subtitles: any editor, CapCut, YouTube |
+| `README.txt` | these steps, and what was left out |
+
+Each footage layer and sound clip is on its own track (the bottom layer lowest), at its place in time with its in and
+out points and volume. The **graphics** (titles, shapes, 3D, captions as designed) come in as one see-through clip on
+the top track: render the scene first with **See-through** as a **MOV** (ProRes 4444) into the project, then write the
+editor project again. Use it to grade the footage, add effects only those editors have, or hand the edit to someone
+who works in one of them.
+
+Limits: media is referred to where it is in the project folder (move the folder and the editor asks you to find it).
+Effects, transitions and keyframes made in Kinetic Scenes are not recreated as editor effects: they are part of the
+graphics clip, or baked into footage only in the finished video. Subtitles need transcribed words (select the
+voice-over, Words). Checked as valid files with the right clip timings; tell us if an editor reads one wrongly.
+Agents: `studio-cli edit-export scene.json`, MCP `scene_interchange`.
+
 **How the two compare** (measured 2026-10-28 on the Studio's 38-second demo scene, 1920 × 1080 at 30 fps, on a PC with
 a GeForce GTX 1660 Ti):
 

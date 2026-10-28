@@ -167,7 +167,9 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   the next on a loop with a **fade / ripple / liquid-dissolve / displace / wave** shader, with per-preset
   time-per-image, transition length and effect strength. Reuses the full-screen-quad shader path (two
   textures + an animated `uProgress`). *Verified live (5-image loop, images render crisply and advance).*
-  Richer **particle presets** in WebGL Object are still ahead.
+- **Richer particle presets** — ✅ **shipped**: the Particle Field preset gains a **Formation** control —
+  **sphere / galaxy / ring / wave grid / cloud / helix** — each a distinct position generator the cloud
+  settles into (and still rotates + reacts to the pointer). *This closes the Phase 3 WebGL flourish.*
 
 ## Growing the engine from demand ✅ Shipped
 

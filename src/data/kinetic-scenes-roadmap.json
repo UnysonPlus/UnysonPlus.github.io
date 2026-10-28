@@ -1259,7 +1259,7 @@
           "id": "p23-repo-launch",
           "title": "A friendlier public repository",
           "detail": "An animated demo at the top of the README, a one-command start, a FAQ, issue forms and labelled starter issues, so new users and contributors can get going quickly.",
-          "status": "planned"
+          "status": "in-progress"
         }
       ]
     }

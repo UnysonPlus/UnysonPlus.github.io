@@ -1203,20 +1203,20 @@
         {
           "id": "p22-cut-check",
           "title": "Every cut checked",
-          "detail": "After a render the kit inspects each cut: jumps in the picture, clicks in the sound, captions on screen too briefly or hidden, missing narration. Problems are fixed and rendered again before the video is shown. Short fades at cuts stop clicks.",
-          "status": "planned"
+          "detail": "After a render the kit checks the finished video: every voice line heard at its time, no unintended black, loudness about -14 LUFS and no clipping, and reports what to fix before it is shown. Clicks are prevented where they start: every sound clip fades in and out by at least 12 ms.",
+          "status": "done"
         },
         {
           "id": "p22-talking-head",
           "title": "Clean up spoken footage",
-          "detail": "From the words and their times: cut ums, false starts and long pauses, and choose the best of several takes, with speech recognition that runs on your own computer.",
-          "status": "planned"
+          "detail": "From the words and their times: false starts, um / uh and long pauses cut, each cut faded, with an edit list; and the best of several takes of a line chosen by the voice check. Speech recognition runs on your own computer.",
+          "status": "done"
         },
         {
           "id": "p22-plugin",
-          "title": "One-step install for Claude Code",
-          "detail": "A Kinetic Scenes plugin for Claude Code: one command adds the skill and the tools (projects, checks, frames, render, sound), instead of a manual setup line.",
-          "status": "planned"
+          "title": "Connect your agents in one step",
+          "detail": "The first time the AI Dev Kit starts, it asks whether to connect the AI agents it finds (Claude Code, Cursor, Codex): yes registers the Kinetic Scenes tools with each and adds the skill to Claude Code. Or run studio-cli connect.",
+          "status": "done"
         }
       ]
     }

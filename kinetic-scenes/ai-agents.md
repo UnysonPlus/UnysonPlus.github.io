@@ -57,7 +57,10 @@ too. An administrator can also fix the folder with `KINETIC_WORKSPACE` when the 
 ## Connect your agent
 
 1. Install and start the [AI Dev Kit](/ai-dev-kit) (see [Set up AI for Unyson+](/guides/set-up-ai-for-unysonplus)).
-2. Register the Kinetic Scenes tools with your agent. For Claude Code:
+2. **The first time the kit starts, it asks whether to connect the AI agents it finds** (Claude Code, Cursor, Codex). Say
+   yes and it registers the Kinetic Scenes tools with each, and adds the Kinetic Scenes skill to Claude Code. To do it
+   later, or to see what it would change first, run `node studio-cli.mjs connect` in the kit's
+   `tools/design-capture` folder (`--yes` to apply). By hand, for Claude Code:
 
    ```
    claude mcp add kinetic-scenes -- node <kit>/assembled/UnysonPlus-Capture-Service/tools/design-capture/studio-mcp.mjs
@@ -80,7 +83,9 @@ carries on where the last one stopped.
 The tools the agent gets: `project_list`, `project_save` and `project_notes` (the workspace), `scene_guide` (how to make a good scene),
 `scene_check`, `scene_inspect`, `scene_stills` (it looks at frames), `scene_timeline` (frames, sound wave, every spoken
 word at its time and the words on screen in one picture, with pauses inside a phrase marked), `scene_render`, and `audio_beats`,
-`audio_transcribe`, `audio_separate`. Agents that run commands also have the kit's command line
+`audio_transcribe`, `audio_separate`, `video_check` (a finished video checked: every voice line heard, black frames,
+loudness, clipping; renders run it on their own), `voice_best_take` (the best of several takes of a line) and
+`footage_cleanup` (recorded speech without false starts, um / uh and long pauses). Agents that run commands also have the kit's command line
 (`studio-cli record`, `screencast`, `music`, `project`), which records the screen and builds the scene around the
 recording.
 

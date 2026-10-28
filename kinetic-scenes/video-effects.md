@@ -88,6 +88,22 @@ graphics between it and the footage and they go **behind the person**.
   cover** piece is placed there for you).
 - **Paper cut-out:** a coloured backdrop between them, the footage hidden, and **Sticker outline** on the person.
 - **Green screen / studio reveal:** any shape or picture between them as the new background.
+
+### Title behind the person
+
+Select a **text layer** in a scene with footage and use **Behind the person** (in the text's settings): one click puts the
+words between the footage and the person, so the person stands in front of them, the way magazine covers put a head in
+front of the masthead.
+
+<img src="/img/kinetic-scenes/behind-the-person.png" alt="The Behind the person settings on a text layer, with the Put behind the person button" width="310" />
+
+- If the footage has no cut-out yet, the person is **cut out first** (in the AI Dev Kit, on your graphics card; a minute
+  or two for a few seconds of footage). An existing cut-out is used as it is.
+- The title moves to just below the person, in the person's group. A title **pinned to the stage** is unpinned (pinned
+  layers are drawn above everything) and the settings say so.
+- **Placing it:** big, heavy type works best, set where the person covers part of it (behind the head or shoulders, as a
+  masthead), never over the face. Check a few moments: when the person moves, more or less of the title shows.
+- **Undo** puts it back in front.
 - **Frame break:** **Shatter** on the footage, with the person staying whole above it.
 - **Frame escape:** the footage in a frame (card or phone) and the person on top, unframed, so they spill out of it.
 

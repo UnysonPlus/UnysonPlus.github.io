@@ -951,8 +951,8 @@
         {
           "id": "p16-behind",
           "title": "Title behind the subject",
-          "detail": "Text placed between the background and a person cut out of the footage, using the Studio's existing cut-out, so the title appears to stand behind them.",
-          "status": "planned"
+          "detail": "One click on a text layer (Behind the person) puts it between the footage and the person cut out of it, cutting the person out first when needed, so the person stands in front of the title.",
+          "status": "done"
         },
         {
           "id": "p16-batch",

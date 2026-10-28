@@ -1,0 +1,76 @@
+---
+sidebar_position: 12.9
+title: Known limitations, support and test results
+description: Which browsers Kinetic Scenes supports, where projects are saved, what each export carries, what doesn't work yet, and the published results of the latest browser and phone test run.
+keywords: [kinetic scenes browser support, kinetic scenes limitations, safari, firefox, mobile performance, animation performance]
+---
+
+# Known limitations, support and test results
+
+import StudioVersion from '@site/src/components/StudioVersion';
+
+Kinetic Scenes is in <StudioVersion part="stage" /> (now <StudioVersion fallback="the latest version" />). This page
+says plainly what works where, and what doesn't yet.
+
+## Browsers
+
+| | The Studio (editing) | Your scenes on a page | Video export |
+|---|---|---|---|
+| **Chrome, Edge** (desktop) | Yes, recommended | Yes | Yes, in the browser or through the AI Dev Kit |
+| **Firefox** (desktop) | Yes | Yes | Through the AI Dev Kit |
+| **Safari** (Mac) | Yes, but no AI features (see below) | Yes | Through the AI Dev Kit |
+| **Phones and tablets** | Viewing and small edits; the Studio is made for a desktop screen | Yes | Not on the phone |
+
+**Safari and the AI Dev Kit.** Safari blocks a website (the Studio) from reaching apps on your own computer (the AI Dev
+Kit), so AI assist, Look and fix, speech and voices aren't available in Safari. Everything else works. Use Chrome, Edge
+or Firefox for AI. Chrome and Edge may also ask once whether the Studio may reach apps on your computer; allow it for AI.
+
+## Where your projects are saved
+
+- **In this browser** (its own storage). Clearing the browser's site data deletes them, and they don't follow you to
+  another browser or computer. Save a **project file** (File › Save) to keep a scene safely or move it.
+- **With the AI Dev Kit,** also in a projects folder on your computer, where your AI agent can open them too.
+- There's **no cloud saving and no account** yet. That may come later as an option, and your files will keep working.
+
+## What each export carries
+
+| Export | Carries | Needs |
+|---|---|---|
+| **HTML embed** | The scene and the player version it was made with | Fonts and pictures load from where the scene points; keep linked files online |
+| **WordPress element** | The same, inside the Kinetic Scene element | The Unyson+ plugin |
+| **Video** (MP4, WebM, ProRes) | Everything, baked in: fonts, pictures, footage, sound | Nothing after export |
+
+## Limits worth knowing
+
+- **Very busy scenes on phones.** A scene with around 150 animated layers plays smoothly on desktop, but slows down on a
+  mid-range phone (about 11 frames a second in our test). For pages people will open on phones, keep scenes to a few
+  dozen moving layers at once; the demo scene plays at about 41 frames a second on the same phone.
+- **The scene file format can still change** between Beta versions. Pages and embeds you've exported keep working,
+  because each keeps the player version it was made with; scene files are upgraded when you open them.
+- **Fonts** come from Google Fonts or addresses you give. A font that can't load falls back to a system font.
+- **Video export in the browser** uses an experimental Chrome feature; without it, export through the AI Dev Kit.
+
+## Support
+
+Questions and problems: open an issue on the [GitHub repository](https://github.com/UnysonPlus/UnysonPlus-Kinetic-Scenes).
+
+## Test results
+
+A repeatable test run (`benchmarks/compat/run.mjs` in the repository) opens the Studio and plays three scenes with the
+published player in each browser engine and two phone profiles: the demo scene, a big scene with 150 animated layers,
+and a scene using every Phase 19 look (line boil, scanlines, halftone, liquid, pixelate, brush and the text looks).
+Frames per second are measured while each plays (60 is smooth; a phone at 120 Hz can go higher).
+
+**Run of 28 October 2026, player 0.0.48:**
+
+| Profile | Studio opens | Demo scene | 150-layer scene | Looks scene |
+|---|---|---|---|---|
+| Chrome / Edge (Chromium 149) | Yes | 52 fps | 59 fps | 61 fps, no errors |
+| Firefox 151 | Yes | 112 fps | 119 fps | 120 fps, no errors |
+| Safari (WebKit 26.5) | Yes (AI features blocked, see above) | 44 fps | 64 fps | 59 fps, no errors |
+| iPhone 13 profile (WebKit) | Yes (AI blocked) | 23 fps | 41 fps | 32 fps, no errors |
+| Mid-range Android profile (Chromium, CPU 4x slower) | Yes | 41 fps | **11 fps** | 60 fps, no errors |
+
+The phone profiles are emulated on a desktop computer (the Android one with its processor slowed four times, a common
+stand-in for a mid-range phone), so treat them as a guide rather than a measurement of a particular phone. The WordPress
+element is tested separately with the Unyson+ plugin.

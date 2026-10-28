@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
@@ -56,7 +56,20 @@ function Bar({done, total}) {
   );
 }
 
+/** A product that publishes its own version (data.versionUrl, a JSON with `version` and `stage`) is shown live. */
+function useLiveVersion(url) {
+  const [v, setV] = useState(null);
+  useEffect(() => {
+    if (!url) return undefined;
+    let live = true;
+    fetch(url, {cache: 'no-cache'}).then((r) => (r.ok ? r.json() : null)).then((j) => { if (live && j) setV(j); }).catch(() => {});
+    return () => { live = false; };
+  }, [url]);
+  return v;
+}
+
 export function RoadmapSummary({data}) {
+  const live = useLiveVersion(data.versionUrl);
   const tasks = data.milestones.flatMap((m) => m.tasks);
   const done = tasks.filter((t) => t.status === 'done').length;
   const active = tasks.filter((t) => t.status === 'in-progress').length;
@@ -70,9 +83,11 @@ export function RoadmapSummary({data}) {
         </strong>
         <span className={styles.muted}>
           {active > 0 && `${active} in progress · `}
-          {data.extensionVersion
-            ? `${data.versionLabel ?? 'extension'} v${data.extensionVersion}`
-            : 'not yet scaffolded'}
+          {live
+            ? `${data.versionLabel ?? 'extension'} ${live.stage ? `${live.stage} ` : ''}v${live.version}`
+            : data.extensionVersion
+              ? `${data.versionLabel ?? 'extension'} v${data.extensionVersion}`
+              : 'not yet scaffolded'}
         </span>
       </div>
       <Bar done={done} total={tasks.length} />

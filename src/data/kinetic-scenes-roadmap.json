@@ -1025,7 +1025,7 @@
           "id": "p17-like-this",
           "title": "Make one like this",
           "detail": "Give the AI a video you like: it works out its structure, pacing, text style, cuts and use of music, and builds your scene to the same shape with your own content.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p17-motion-rules",

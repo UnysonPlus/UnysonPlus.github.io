@@ -35,6 +35,23 @@ The **✦ AI assist** button at the bottom right of the stage opens the chat.
 own computer ("…wants to access other apps and services on this device"): choose **Allow** once. The kit answers only the
 Studio's own address, so other websites cannot use your AI. The panel names the AI at work.
 
+## Make one like this
+
+**AI › Make one like this…**: give a video you like (yours, or one you admire), say what yours is about, pick a length,
+and **Make mine**. The AI Dev Kit works out how the video is made, in about half a minute:
+
+- **Measured:** its cuts, every moment something changes, its sections (hook, beats, ending) and its pace, fitted to
+  your length;
+- **Seen:** the AI looks at one frame of each shot and writes a brief: the structure and what each part does, the
+  pacing, how text is used (how many words, weight, case, placement, how it enters), cuts and motion, the look, and
+  what the pacing suggests for music.
+
+AI assist then makes **your** scene to that shape (with three directions and the plan first, if they are on), putting
+a cut, a reveal or a new line of text on each of the reference's moments. Only how the video is made carries over:
+never its words, names, logos, people or footage. It can't hear the reference, so it suggests the kind of music from
+the pacing; pick the track yourself (Sounds or Make music). Agents: `studio-cli like-this video.mp4 --seconds 20`,
+MCP `video_like_this`. To use the reference's timing alone, see [Reference rhythm](./reference-rhythm).
+
 ## Three directions first
 
 A new scene (**New scene**, making **A scene**) starts with **three directions** to choose from, before anything is

@@ -24,6 +24,8 @@ decides, and any of the other kind is left out.
 
 ## What the visitor sees
 
+<img src="/img/extensions/bookings/booking-form.png" alt="Two rooms offered in one booking form, each marked free for the chosen dates with its price" width="1210" />
+
 The choices appear above the calendar, each with its name and starting price ("From $100 a night"). The calendar shows
 the chosen one's taken dates and prices, its extras and its guest limit.
 

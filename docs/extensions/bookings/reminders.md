@@ -12,6 +12,8 @@ Bookings can email the guest twice about a confirmed booking: a **reminder** bef
 after it ends. You set both on each bookable, under **Bookings → Bookables → (your room or service) → Reminders and
 follow-ups**.
 
+<img src="/img/extensions/bookings/bookable-extras-reminders.png" alt="Extras, and the reminder and thank-you settings of a room" width="1334" />
+
 | Setting | What it does |
 |---|---|
 | **Reminder (hours before it starts)** | When the reminder goes out. 0 = no reminder. For a stay it counts from the start of check-in day; for an appointment, from its time. 48 means two days before. |

@@ -16,6 +16,8 @@ Every import has two buttons:
 - **Check only** reads everything and tells you what would be added, without writing anything;
 - **Import** adds it.
 
+<img src="/img/extensions/bookings/import.png" alt="Bookings → Import with the spreadsheet (CSV) source" width="800" />
+
 Importing again later is safe: what was already imported is recognised and skipped, and only new rows are added. That
 lets you import once to try, and again just before you switch over.
 

@@ -13,6 +13,8 @@ nights, a discount for longer stays, and extras the guest can add, such as break
 
 All three are set on the bookable, under **Bookings → Bookables → (your room) → Booking settings**.
 
+<img src="/img/extensions/bookings/bookable-rates.png" alt="A room's nightly rate, seasons, weekend rate and long-stay discounts" width="1334" />
+
 ## Weekend rate
 
 **Weekend nightly rate** is the price of a weekend night. Leave it at 0 to price every night the same.
@@ -67,6 +69,8 @@ Late check-out | 30 | stay
 
 The guest ticks the extras they want in the booking form, under the guests count. Each extra shows its price ("$15 a
 guest a night"), and the total updates straight away. Breakfast for 2 guests over 4 nights shows as "Breakfast × 8".
+
+<img src="/img/extensions/bookings/booking-form.png" alt="The booking form: two rooms to choose from, a Thursday-to-Monday stay with two weekend nights, breakfast ticked and the price" width="1210" />
 
 The extras chosen are kept on the booking. They appear in the owner's alert, the guest's emails, the booking list, the
 guest's own booking page, and the `{booking_extras}` answer tag.

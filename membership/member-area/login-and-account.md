@@ -78,6 +78,25 @@ A few details about **After logging in**:
 - Staff (anyone who can edit posts) keep WordPress's normal behaviour and land in wp-admin.
 - Members never land in wp-admin.
 
+### Keep members out of wp-admin completely
+
+Landing elsewhere after login is not the same as never seeing WordPress: a member can still type
+`/wp-admin/` or follow a "Dashboard" link, and the site shows them the WordPress toolbar. To close that,
+go to **Unyson+ → Admin Menu → Roles**:
+
+- the **Run a members' site** set-up does it in one click: Subscribers (the role new members get) are kept
+  out of WordPress, and administrators get Membership as a menu item of its own;
+- or tick **Keep out of WordPress** for each role your members have, and choose **Send members to** (by
+  default their member account page).
+
+People in those roles then never reach wp-admin: signing in, the Dashboard and any admin address take
+them to that page, and the site shows them no WordPress toolbar. Forms and other features that post to
+WordPress in the background keep working. A role that runs the site (administrators) or opens to an app
+such as the CRM is never kept out.
+
+Members still change their name, email and password on the account page, so make sure you have one (see
+above); without it they are sent to the home page.
+
 ### Logging in without a password
 
 Two extra ways to log in appear under the form when the **Account security** module is on

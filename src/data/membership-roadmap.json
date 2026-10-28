@@ -3,8 +3,8 @@
   "extension": "membership",
   "cloneDir": "UnysonPlus-Membership-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Membership-Extension",
-  "extensionVersion": "1.0.16",
-  "generatedAt": "2026-10-14T13:56:15.632Z",
+  "extensionVersion": "1.0.27",
+  "generatedAt": "2026-10-28T05:53:51.917Z",
   "detected": true,
   "milestones": [
     {
@@ -844,6 +844,13 @@
           },
           "status": "done",
           "progress": "1/1"
+        },
+        {
+          "id": "p10-keep-out",
+          "title": "Members never see WordPress",
+          "detail": "Core's Admin Menu → Roles keeps member roles out of wp-admin (login, Dashboard and admin addresses go to the account page) and hides the toolbar on the site; Membership supplies its account page and a one-click \"Run a members' site\" set-up. Core-side, so pinned.",
+          "pin": true,
+          "status": "done"
         }
       ]
     },

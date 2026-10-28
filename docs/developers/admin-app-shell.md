@@ -428,7 +428,11 @@ add_action( 'fw_workspaces_register', function () {
 		'icon'        => 'dashicons-portfolio',
 		'page'        => 'my-app',          // the admin page slug
 		'capability'  => 'my_app_access',   // a role without it keeps WordPress
-		'description' => __( 'One line for the Workspaces screen.', 'my-textdomain' ),
+		'description' => __( 'One line for the Roles tab.', 'my-textdomain' ),
+		// Optional: a one-click set-up on the Roles tab.
+		'roles'       => array( 'my_app_staff' ),   // open to the app
+		'members'     => array(),                    // kept out of wp-admin
+		'setup'       => __( 'Run the site as My app', 'my-textdomain' ),
 	) );
 } );
 ```
@@ -440,7 +444,9 @@ promoted menu item links to the same URL, so its hook suffix and screen id do no
 
 Hiding menus is presentation, not access control. Gate your screens and REST routes on `capability` as
 usual. `FW_Workspaces::active()` returns the workspace in force for the current user (`''` for plain
-WordPress), and `FW_Workspaces::for_user( $user )` the one their roles give them. Define
+WordPress), and `FW_Workspaces::for_user( $user )` the one their roles give them. Roles can also be **kept out of wp-admin** (members): `FW_Workspaces::is_kept_out( $user )`, and the
+`fw_workspaces_member_home` filter says where they go (Membership answers with its account page; a wp-admin
+address is refused). admin-ajax and admin-post stay open to them. Define
 `FW_WORKSPACES_OFF` as `true` in `wp-config.php` to switch the whole feature off.
 
 The CRM (`crm`) and Membership (`membership`) register workspaces.

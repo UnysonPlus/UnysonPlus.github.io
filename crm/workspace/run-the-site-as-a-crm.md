@@ -15,6 +15,14 @@ WordPress yourself.
 Go to **Unyson+ → Admin Menu**. It has two tabs: **Menus** arranges each role's menu, and **Roles** sets what each
 role opens to.
 
+## The quick way
+
+On the **Roles** tab, **Quick set-up → Run the site as a CRM → Apply** does the usual set-up in one click: the CRM
+Manager and Sales Rep roles open to the CRM, and administrators get the CRM as a menu item of its own. Roles it does
+not name are left as they are, so check the table below it afterwards, and each role's menu under **Menus**.
+
+The sections below do the same by hand, and cover the rest.
+
 ## Give the CRM its own menu item
 
 On **Menus**, open the **Unyson+** item and drag **CRM** out of its sub-items into the menu (or choose **Move to top
@@ -80,5 +88,6 @@ they own, whatever menus are shown.
 
 ## Membership too
 
-Membership is a workspace as well. Staff who look after members can open to **Membership** the same way,
-and you can give it its own menu item.
+Membership is a workspace as well. Staff who look after members can open to **Membership** the same way, and you
+can give it its own menu item. The **Run a members' site** set-up also keeps members (Subscribers) out of wp-admin
+altogether; see [keep members out of wp-admin](/membership/member-area/login-and-account#keep-members-out-of-wp-admin-completely).

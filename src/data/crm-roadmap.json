@@ -3,8 +3,8 @@
   "extension": "crm",
   "cloneDir": "UnysonPlus-CRM-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-CRM-Extension",
-  "extensionVersion": "1.0.78",
-  "generatedAt": "2026-10-27T18:10:54.129Z",
+  "extensionVersion": "1.0.79",
+  "generatedAt": "2026-10-28T05:53:39.795Z",
   "detected": true,
   "milestones": [
     {
@@ -1121,16 +1121,16 @@
         {
           "id": "p8-presets",
           "title": "One-click set-ups",
-          "detail": "\"Run this site as a CRM\": one choice sets the CRM roles to open to the CRM, gives it its own menu item and suggests the menus to keep, instead of setting each role by hand.",
+          "detail": "Admin Menu → Roles → Quick set-up: \"Run the site as a CRM\" opens the CRM Manager and Sales Rep roles to the CRM and gives administrators the CRM as a menu item of its own; \"Run a members' site\" keeps Subscribers out of wp-admin and gives administrators Membership as a menu item. Apps declare their set-up when they register (roles, members, setup).",
           "pin": true,
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p8-members",
           "title": "Members never see WordPress",
-          "detail": "For a members' site: member roles are kept out of wp-admin (sent to their account page) and do not get the admin bar on the site. A front-end setting, separate from staff workspaces.",
+          "detail": "Admin Menu → Roles: tick Keep out of WordPress per role and choose where members go (default the Membership account page). Kept-out members never reach wp-admin (login, Dashboard and any admin address go to that page) and get no toolbar on the site; admin-ajax and admin-post stay open. Never applies to a role that runs the site or opens to an app.",
           "pin": true,
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p8-desk",

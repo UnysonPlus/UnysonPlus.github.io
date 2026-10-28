@@ -928,7 +928,7 @@
           "id": "p16-reframe",
           "title": "Landscape to vertical, following the subject",
           "detail": "Reframe 16:9 footage to 9:16 (or 1:1, 4:5) with the crop following a face, hands or the product, smoothly, building on the face tracking the Studio already has. The crop path is editable afterwards.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p16-caption-styles",

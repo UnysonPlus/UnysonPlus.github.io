@@ -144,6 +144,28 @@ on the face, or above, below, left or right of it, while the clip runs (optional
 - **Orbit:** small icons following the face, each with Orbit around.
 - A **label over the head**, a **callout** that moves with the speaker, captions that stay under the chin.
 
+### Reframe to follow the face
+
+Turns wide (16:9) footage into a tall (9:16) or square video without losing the speaker: the footage fills the
+frame's height, and the frame follows the face from side to side as the person moves. The button shows in a
+footage layer's **Footage tools** when the scene is tall or square (Scene › Video, the format list). If the face has
+not been found yet, it finds it first.
+
+<img src="/img/kinetic-scenes/reframe-follow.jpg" alt="Four moments of a 9:16 reframe: the speaker crosses a wide shot from left to right and stays in the tall frame each time" width="675" />
+
+**How it frames.** Like a camera operator, not a tracker: the face path is smoothed over about a second, and the frame
+holds still while the face moves only a little (a dead zone of 6% of the frame's width), then glides to follow. The
+frame never slides past the footage's edge, so no black bars show.
+
+**Editing the framing.** The crop path is an ordinary **Keyframes** clip on the layer, usually a handful of keys
+(the test above used 8 for ten seconds). Select it to move a key, delete one where the frame moves when it shouldn't,
+or add one to look at something else for a moment. Running Reframe again replaces that clip and leaves every other
+clip alone.
+
+**Limits.** It follows one face, side to side; it doesn't zoom or move up and down. With no face in a stretch (the
+person turns away or leaves), the frame holds where it last saw them. It does nothing if the footage is not wider
+than the frame. It follows the face, not hands or a product: for those, add or move keys by hand.
+
 ### Use its sound
 
 Adds the footage's audio as a voice track in step with it (and mutes the footage), ready to **transcribe** for captions and

@@ -145,8 +145,8 @@
               "includes/forms/class-fw-bookings-choice.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "b3-rates",
@@ -157,8 +157,8 @@
               "includes/class-fw-bookings-rates.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "b3-reminders",
@@ -169,25 +169,25 @@
               "includes/class-fw-bookings-reminders.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "b3-move",
           "title": "Move a rental site's own booking plugin onto Bookings",
-          "detail": "The bespoke plugin that pioneered the Stay dates field and Reserve action moves its rooms, bookings and calendars into Bookings.",
+          "detail": "Bookings → Import moves rooms, bookings, owner blocks and other channels' calendars in: from a CSV, or from any source a site registers (fw_ext_bookings_import_sources). The bespoke plugin that pioneered the Stay dates field and Reserve action gets its own site-specific source, kept on that site.",
           "detect": {
             "files": [
               "includes/tools/class-fw-bookings-import.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     }
   ],
   "detected": true,
-  "extensionVersion": "1.0.2",
-  "generatedAt": "2026-10-20T08:24:57.200Z"
+  "extensionVersion": "1.0.4",
+  "generatedAt": "2026-10-28T12:43:58.333Z"
 }

@@ -22,13 +22,18 @@ Under **Bookings → Bookables**, add each thing people book:
   that many times before it shows as taken.
 - **Waiting for you, or straight away.** New bookings can wait for you to confirm them (the default) or be confirmed
   automatically. While a booking waits, its place is held, so nobody else can take it meanwhile.
+- **Weekend rates, long-stay discounts and extras.** A different price for weekend nights, a discount from a number of
+  nights, and extras guests can add (breakfast, an airport pickup). See [Rates and extras](./rates-and-extras.md).
+- **Reminders and follow-ups.** An email before the booking starts and a thank-you after it ends. See
+  [Reminders and follow-ups](./reminders.md).
 
 ## The booking form
 
 Add a **Contact Form** element and pick **Stay request** or **Appointment** in the form-type picker, or add the
 **Dates and availability** field to any form you already have, and choose what it books in the field's settings.
 Visitors see a live calendar: taken dates are struck through, free times are listed, and the price is worked out as
-they choose. The server checks everything again when the form is sent, so two people can never book the last place
+they choose. One field can also offer several rooms or staff and show which are free for the chosen dates; see
+[Choose what to book](./choose-what-to-book.md). The server checks everything again when the form is sent, so two people can never book the last place
 at the same moment.
 
 The **Reserve** action (Settings → Actions) is on by default and only does something on a form with this field.
@@ -85,6 +90,12 @@ thank-you after they leave, and the CRM's automations can start on "Booking made
 ## Answer tags
 
 Use these in the form's success message and emails: `{booking_ref}`, `{booking_item}`, `{booking_when}`,
-`{booking_nights}`, `{booking_guests}`, `{booking_total}`, `{booking_deposit}`.
+`{booking_nights}`, `{booking_guests}`, `{booking_total}`, `{booking_deposit}`, `{booking_extras}` (the extras chosen,
+such as "Breakfast × 8, Airport pickup").
 
-See the [roadmap](/extensions/bookings/roadmap) for what comes next: letting the visitor choose between several rooms or staff, weekday rates and extras, reminders, and moving an existing booking plugin over.
+## Moving over from somewhere else
+
+**Bookings → Import** brings existing bookings in, from a spreadsheet or from another booking plugin. See
+[Import](./import.md).
+
+See the [roadmap](/extensions/bookings/roadmap) for what is built and what comes next.

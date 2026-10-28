@@ -1240,8 +1240,8 @@
         {
           "id": "p23-beats",
           "title": "Beats: describe a reel in a few lines",
-          "detail": "A small set of beat kinds (headline, logo reveal, photo in a mask, split frame, list, rating or proof, closing frame with the credit) that build a full scene in the client's brand. A brief becomes about eight lines of beats instead of a hand-built scene.",
-          "status": "planned"
+          "detail": "A small set of beat kinds (headline, logo reveal, photo in a mask, split frame, list, rating or proof, closing frame with the credit) that build a full scene in the client's brand. A brief becomes about eight lines of beats instead of a hand-built scene. Shipped as the `beats` command and the `scene_from_beats` agent tool: seven beat kinds, layouts clear of the apps' buttons, the credit on the closing frame, and beat starts snapped to a reference rhythm. See [Beats](/kinetic-scenes/beats).",
+          "status": "done"
         },
         {
           "id": "p23-breakdown",

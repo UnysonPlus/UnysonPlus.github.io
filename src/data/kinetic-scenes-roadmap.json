@@ -933,8 +933,8 @@
         {
           "id": "p16-caption-styles",
           "title": "Caption style packs",
-          "detail": "Ready-made caption looks (bold short-form, neon, chrome, handwritten, karaoke variations) applied in one click, and one style copied onto every caption in the scene.",
-          "status": "planned"
+          "detail": "Seven caption styles in one click (Bold, Neon, Chrome, Handwritten, Karaoke, Boxed, Giant), each with its font added for you; a new Letters setting on captions (outline, soft shadow, neon glow, chrome); and Use this style on every caption.",
+          "status": "done"
         },
         {
           "id": "p16-words",

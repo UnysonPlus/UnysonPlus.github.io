@@ -120,7 +120,9 @@ follows; **Unpack into layers** turns it back into ordinary layers.
 The words of a transcribed voice-over, a few at a time (**+ Captions**), in your type and colours. **Words from** (which
 voice-over), **most words at once**, **Words arrive** (a few at a time with a pop; each slams in, for giant captions; each
 drops in, for viral captions), **Light up** (the word being said, every word said so far, or nothing), the highlight
-colour, a box behind the words, capitals. See [Sound, voice and captions](./sound.md#captions).
+colour, a box behind the words, capitals, and the **Letters** (outline, soft shadow, neon glow, chrome). Seven ready-made
+**caption styles** (Bold, Neon, Chrome, Handwritten, Karaoke, Boxed, Giant) apply a whole look in one click. See
+[Sound, voice and captions](./sound.md#captions).
 
 ## Cursor
 

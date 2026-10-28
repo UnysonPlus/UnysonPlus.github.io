@@ -119,6 +119,32 @@ right to use: your own, or someone's with their permission. See [Add-ons](./addo
   in** and bounces (viral captions).
 - **Light up:** the word being said, every word said so far (karaoke), or nothing; with a highlight colour.
 - A box behind the words, capitals, and all the usual type settings.
+- **Letters:** plain, a thick **outline** (the short-form look, in black or a colour you choose), a **soft shadow** that keeps
+  captions readable over busy footage, a **neon glow** (in a colour you choose, else the lit colour), or **chrome**:
+  polished metal letters, with the word being said keeping its lit colour so it still stands out.
+
+### Caption styles
+
+The **Style** buttons at the top of the Captions settings apply a whole look in one click: the font (added to the
+scene's fonts for you), the colours, how the words arrive and light up, the box and the letters. The size, the place
+and which voice-over the captions follow stay as they are.
+
+<img src="/img/kinetic-scenes/caption-packs-panel.png" alt="The Style buttons in the Captions settings: Bold, Neon, Chrome, Handwritten, Karaoke, Boxed, Giant" width="300" />
+
+<img src="/img/kinetic-scenes/caption-packs.jpg" alt="The seven caption styles at the same moment of the same sentence" width="800" />
+
+| Style | Font | The look |
+|---|---|---|
+| **Bold** | Montserrat Black, capitals | white with a black outline; the word being said in yellow; three words at a time |
+| **Neon** | Righteous | a cyan glow; the word being said in green |
+| **Chrome** | Anton, capitals | polished metal letters that slam in; the word being said in gold; two words at a time |
+| **Handwritten** | Caveat | a friendly hand with a soft shadow; words drop in |
+| **Karaoke** | Poppins ExtraBold | every word said so far lights up in teal, on a dark box |
+| **Boxed** | Inter ExtraBold | white on a solid black box; the word being said in red |
+| **Giant** | Anton, capitals | one huge word at a time, slamming in |
+
+Change anything afterwards: a style is only a starting point. **Use this style on every caption** (shown when the scene
+has more than one captions layer) copies this layer's look onto the others, keeping each one's size, place and voice-over.
 
 In [video mode](./video.md), Check scene asks for captions whenever there is a voice-over, because most people watch with
 the sound off.

@@ -130,7 +130,7 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   and drives the overlap handoff — no container class, no hidden step list. This is the author's original
   model: *add N real gallery shortcodes, configure each, they connect into one sequence.* *(Verified: 3
   stacked galleries, Chain on, auto-wrapped into one master ScrollTrigger with clean handoffs.)*
-- **Real-design layouts** (🚧 in progress): give each gallery design a declarative resting layout so a step
+- **Real-design layouts** (✅ built): give each gallery design a declarative resting layout so a step
   is a *real* design, not an abstract formation. Most designs already have a faithful formation proxy
   (ring ≈ Carousel Ring, wall ≈ Panorama Wall, sphere ≈ Card Sphere, tunnel ≈ Card Tunnel, spiral ≈ Spiral
   Stream…); the designs that had **no** faithful look are being added as choreography steps — so far
@@ -138,8 +138,11 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   horizontal reel), **Orbit** (a tilted elliptical halo of cards) and **Hero Reel** (one large hero card
   over a thumbnail row), **Focus Slider** (a big centre card with peeking neighbours), **Depth Stack** (cards
   receding straight into depth) and **Mosaic** (a packed collage of varied tiles) — **19 looks total**.
-  *All verified live.* Remaining before this closes: a declarative registry so each design contributes its
-  own resting pose, rather than a hand-written formation.
+  *All verified live.* And the **declarative registry** is in: a design or child theme contributes a resting
+  pose through the `fw_gallery_3d_choreo_formations` PHP filter (it then appears in the Steps picker and
+  passes the view whitelist) plus `window.upwGallery3dForms.<name> = fn(N)` in the head (or
+  `window.upwGallery3d.registerChoreoForm` at runtime) — **no core edit**. *Proven end-to-end with a
+  non-core "ribbon" formation rendering from a drop-in alone.*
 - **Authoring polish** (ahead): cross-column / cross-section grouping (today it groups galleries that are
   adjacent siblings in one column), a right-click *Create choreography* helper, and retiring the standalone
   abstract `scroll_choreography` steps design once native chaining is the only authoring path.

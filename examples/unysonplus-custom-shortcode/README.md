@@ -10,12 +10,18 @@ class required.
 
 | File | Role |
 | --- | --- |
-| `config.php` | Title, description, palette tab and modal size — where it shows in the builder. |
+| `config.php` | Title, description, palette tab, modal size, and the `title_template` that labels the element on the builder canvas. |
 | `options.php` | The fields in the edit modal. Each option id becomes a key in `$atts`. |
 | `views/view.php` | The front-end HTML. `$atts` holds the resolved option values. |
-| `static.php` | Enqueues the CSS (only when the element is on the page). |
+| `static.php` | Enqueues the CSS + JS (only when the element is on the page). |
 | `static/css/my_element.css` | Front-end styles. |
+| `static/js/my_element.js` | Front-end behaviour — reveals each box on scroll (progressive enhancement). |
 | `static/img/page_builder.svg` | The palette icon (**required**) — a crisp 16×16 glyph. |
+
+> Want the exhaustive, fully-commented reference — rich canvas previews,
+> per-instance enqueues, the designs registry, a section-like element — see the
+> kit's canonical `samples/sample-shortcode` in the UnysonPlus AI Dev Kit. This
+> folder is the friendly, minimal version of it.
 
 The tag is the **folder name**: `[my_element]`. Rename the folder (underscores)
 and the shortcode tag changes with it.

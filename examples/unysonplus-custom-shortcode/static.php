@@ -2,19 +2,34 @@
 /**
  * static.php — enqueue the element's front-end assets (optional).
  *
- * This runs only when the element is present on the page. The version from the
- * extension manifest cache-busts the file whenever you bump the extension.
- *
- * NOTE: fw_ext( 'shortcodes' )->get_uri() resolves inside the Shortcodes
- * EXTENSION. That is correct when this folder lives in the extension
- * (framework/extensions/shortcodes/shortcodes/my_element/). If you instead drop
- * it into a child theme override folder, enqueue from the theme URI instead,
- * e.g. get_stylesheet_directory_uri() . '/.../static/css/my_element.css'.
+ * Runs only on pages where this element actually renders, so there is never an
+ * is_page() guard and nothing loads globally. The manifest version cache-busts
+ * the files whenever you bump the extension.
  */
+
+$ext = fw_ext( 'shortcodes' );
+
+/*
+ * get_declared_URI() resolves through the theme / child-theme override chain,
+ * so a site can drop a replacement asset at the same relative path and have it
+ * win. Prefer it over a hand-built plugins_url(), which bypasses overrides —
+ * and it is why this works whether the folder lives in the extension or in a
+ * child theme's framework-customizations/.
+ */
+$uri     = $ext->get_declared_URI( '/shortcodes/my_element' );
+$version = $ext->manifest->get_version();
 
 wp_enqueue_style(
 	'my-element',
-	fw_ext( 'shortcodes' )->get_uri( '/shortcodes/my_element/static/css/my_element.css' ),
+	$uri . '/static/css/my_element.css',
 	array(),
-	fw_ext( 'shortcodes' )->manifest->get_version()
+	$version
+);
+
+wp_enqueue_script(
+	'my-element',
+	$uri . '/static/js/my_element.js',
+	array(),   // no jQuery unless you genuinely need it
+	$version,
+	true       // in the footer
 );

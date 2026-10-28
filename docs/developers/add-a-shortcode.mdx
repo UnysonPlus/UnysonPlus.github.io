@@ -24,19 +24,26 @@ child theme) to see it appear in the builder. The sections below walk through ea
 
 <CodeWorkspace example={customShortcode} height={460} />
 
+:::tip[The exhaustive reference]
+This is the friendly, minimal version. The UnysonPlus AI Dev Kit ships a canonical, fully-commented
+`samples/sample-shortcode` scaffold — rich canvas previews, per-instance enqueues, a designs registry,
+safe inline-HTML helpers, and the section-like item class — that you copy to start a new element.
+:::
+
 ## Simple element: folder structure
 
 Create `framework/extensions/shortcodes/shortcodes/<your_element>/`:
 
 ```
 shortcodes/my_element/
-├── config.php                  page-builder tab / title / icon / popup size
+├── config.php                  builder tab / title / popup size / canvas label
 ├── options.php                 the fields shown in the edit modal (= the atts schema)
 ├── views/view.php              the front-end HTML template
 ├── static.php                  front-end CSS/JS enqueues (optional)
 └── static/
     ├── img/page_builder.svg    the palette icon (REQUIRED)
-    └── css/my_element.css      (optional) front-end styles
+    ├── css/my_element.css      (optional) front-end styles
+    └── js/my_element.js        (optional) front-end behaviour
 ```
 
 That's it. The Shortcodes loader scans this directory; a folder with a `config.php` and a
@@ -54,11 +61,28 @@ $cfg['page_builder'] = array(
     'description' => __( 'What this element does', 'fw' ),
     'tab'         => __( 'Content Elements', 'fw' ), // which palette tab
     'popup_size'  => 'small',                         // edit-modal width: small | medium | large
+
+    // The live label drawn on the builder canvas (an Underscore.js micro-template).
+    // `o` holds this element's option values.
+    'title_template' => '
+        {{ if ( o && o["heading"] ) { }}
+            <strong>{{- o["heading"] }}</strong>
+        {{ } else { }}
+            <em>My Element</em>
+        {{ } }}
+    ',
 );
 ```
 
 The `tab` decides which palette group it lands in (Content / Media / Interactive / Components /
 Header-Footer Elements).
+
+:::caution[`title_template`: escape user text]
+In the canvas template, **`{{- expr }}` prints HTML-escaped** — use it for anything the user typed.
+`{{= expr }}` prints **raw**, so a title containing `<script>` would execute in wp-admin. Use `{{= }}`
+only for markup you built yourself (an inline SVG). Always render an explicit empty state, and guard
+every property access (`o && o["x"]`) since atts are partially filled while the user types.
+:::
 
 ### `options.php` — the fields (and the atts schema)
 
@@ -106,15 +130,20 @@ are in scope. Output lean, semantic markup, no wrapper-div soup, per the
 
 ### `static.php` — enqueue assets (optional)
 
+Runs only on pages where the element renders. Use `get_declared_URI()` (not `get_uri()`): it resolves
+through the theme / child-theme override chain, so a site can drop a replacement asset at the same path
+and have it win — and it works whether the folder lives in the extension or a child theme's
+`framework-customizations/`.
+
 ```php
 <?php if ( ! defined( 'FW' ) ) die( 'Forbidden' );
 
-wp_enqueue_style(
-    'my-element',
-    fw_ext( 'shortcodes' )->get_uri( '/shortcodes/my_element/static/css/my_element.css' ),
-    array(),
-    fw_ext( 'shortcodes' )->manifest->get_version() // cache-bust on version bump
-);
+$ext     = fw_ext( 'shortcodes' );
+$uri     = $ext->get_declared_URI( '/shortcodes/my_element' );
+$version = $ext->manifest->get_version(); // cache-bust on an extension version bump
+
+wp_enqueue_style(  'my-element', $uri . '/static/css/my_element.css', array(), $version );
+wp_enqueue_script( 'my-element', $uri . '/static/js/my_element.js',  array(), $version, true );
 ```
 
 ## The builder icon (required)

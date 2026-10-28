@@ -21,3 +21,16 @@
 	margin: 0;
 	color: #5f6266;
 }
+
+/* Scroll-reveal — the --reveal class is added by my_element.js, so with no JS
+   (or reduced-motion) the box simply stays visible. */
+.my-element--reveal {
+	opacity: 0;
+	transform: translateY(8px);
+	transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.my-element--reveal.is-visible {
+	opacity: 1;
+	transform: none;
+}

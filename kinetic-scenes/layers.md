@@ -88,6 +88,27 @@ It takes one to three minutes. Objects are built from simple solids, so they sui
 organic shapes (faces, animals, plants); a mug's top is solid rather than hollow. The model is stored inside the
 scene (about 50 KB). Agents: `studio-cli object3d "a coffee mug" --out mug.glb`, MCP `object_from_description`.
 
+## Lottie
+
+**Insert › Lottie animation** adds a Lottie: an animation made in After Effects (or a Lottie tool) and saved as JSON,
+like the thousands of free ones on LottieFiles. It starts with a small sample; **Upload a Lottie (.json)** or paste
+its address to use your own.
+
+<img src="/img/kinetic-scenes/lottie-layer.jpg" alt="The same Lottie at 0, 1 and 3.9 seconds: on the left as made and looping, on the right recoloured purple at half speed, played once and held" width="480" />
+
+- **On the scene's clock.** It never plays by itself: every frame shows exactly the animation's frame for that moment,
+  so it scrubs, loops, follows the timeline's presets and renders to video frame for frame.
+- **Speed**, **Start at** (seconds into the animation) and **Loop** (off: play once and hold the last frame).
+- **Its colours**: every colour the animation uses, most used first. Change one and it changes everywhere in the
+  animation: a brand colour in one click.
+- **Its words**: an animation with text layers lists them; rewrite them in place.
+- Any preset works on it as on any layer (fade it in, slide it, pop it).
+
+Limits: Lottie JSON only (a `.lottie` file is zipped: download the "Lottie JSON" version). Expressions and some After
+Effects effects are not supported, as in most Lottie players; gradients keep their colours. A file is stored inside
+the scene (up to 4 MB), or use its address. The Lottie runtime (lottie-web, MIT, about 170 KB) loads only for scenes
+that have a Lottie layer, and a downloaded page carries it inside.
+
 ## Group
 
 Layers kept together (select several, Ctrl+G). Children keep their places; the group's frame is measured from them, so

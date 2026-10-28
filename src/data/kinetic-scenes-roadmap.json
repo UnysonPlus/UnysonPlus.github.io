@@ -1044,7 +1044,7 @@
           "id": "p18-lottie",
           "title": "Lottie animations",
           "detail": "A Lottie layer: drop in an animation from the free libraries, play it on the scene's clock, and recolour or reword it in place.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p18-3d-objects",

@@ -6,9 +6,6 @@ description: "A practical guide to headless WordPress: what it is, when it is wo
 keywords: [headless wordpress, headless cms, wordpress rest api, wpgraphql, next.js wordpress, acf rest api, decoupled wordpress]
 ---
 
-import CodeWorkspace from '@site/src/components/CodeWorkspace';
-import nextExample from '@site/src/data/code-examples/headless-nextjs.json';
-
 # Headless WordPress: how it works and how people build it
 
 In a normal WordPress site, WordPress does two jobs: it stores and edits the content, and it builds the
@@ -82,22 +79,30 @@ Next.js is the most common choice; Nuxt (Vue), Astro and SvelteKit are also popu
 
 ## What the code looks like
 
-Here is a small but complete headless front end in Next.js. It lists the books from a WordPress site,
-gives each book its own page, and refreshes from WordPress at most every five minutes. The pattern is
-the same in any framework:
+Whatever the front end, the pattern is the same:
 
-- **One file talks to WordPress** (`lib/wordpress.ts`). It knows the API's address, describes the shape
-  of the responses, and has one function per query. Pages never build REST URLs themselves.
+- **One file talks to WordPress.** It knows the API's address and has one function per query
+  (`getBooks()`, `getBook(slug)`). Pages never build REST URLs themselves.
 - **Ask only for the fields you use** with `?_fields=`, so responses stay small.
-- **Cache and revalidate** instead of calling WordPress on every visit.
-- **Pages are plain components** that call those functions and render the result.
+- **Pages call those functions** and render the result.
 
-Click a file to open it, or download the project.
+Each request is a plain HTTP `GET`, so this is the whole of "talking to WordPress":
 
-<CodeWorkspace example={nextExample} />
+```js
+const res = await fetch('https://your-site.com/wp-json/wp/v2/book?_fields=id,slug,title,unysonplus_fields');
+const books = await res.json();
+```
 
-The custom fields here (`subtitle`, `book_author`, `cover_image`…) come from WordPress. With ACF they
-would be under `acf`; this example reads them from `unysonplus_fields`, the Unyson+ equivalent, which
+Two complete, tested examples build the same small book site, one per page, with every file to browse
+and download:
+
+- **[Headless WordPress with plain JavaScript](./headless-javascript.mdx)**: two HTML pages and a few
+  JavaScript modules. No framework, no build step.
+- **[Headless WordPress with Next.js](./headless-nextjs.mdx)**: an App Router site that builds each page
+  ahead of time and refreshes from WordPress.
+
+Their custom fields (`subtitle`, `book_author`, `cover_image`…) come from WordPress. With ACF they would
+be under `acf`; the examples read them from `unysonplus_fields`, the Unyson+ equivalent, which
 [Headless WordPress with Unyson+](./unysonplus-headless.mdx) sets up step by step.
 
 ## Things to plan for

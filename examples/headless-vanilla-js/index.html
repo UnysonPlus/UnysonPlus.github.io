@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Books</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/books.js"></script>
+</head>
+<body>
+  <main>
+    <h1>Books</h1>
+    <!-- js/books.js fills this list from the WordPress REST API. -->
+    <p id="status">Loading books…</p>
+    <ul id="books" class="books"></ul>
+  </main>
+
+  <!-- One book card. The script copies it once per book and fills in the slots. -->
+  <template id="book-card">
+    <li class="book">
+      <a class="book-link">
+        <img class="book-cover" alt="">
+        <h2 class="book-title"></h2>
+      </a>
+      <p class="book-subtitle"></p>
+      <p class="book-meta"></p>
+    </li>
+  </template>
+</body>
+</html>

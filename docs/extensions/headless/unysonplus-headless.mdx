@@ -2,19 +2,18 @@
 title: "Headless WordPress Without ACF: Custom Post Types and Fields over the REST API with Unyson+"
 sidebar_label: "Headless with Unyson+"
 sidebar_position: 2
-description: "Build a headless WordPress content API without ACF or a custom post types plugin. Create a post type and custom fields with Unyson+, read them from the REST API, and fetch them in Next.js."
+description: "Build a headless WordPress content API without ACF or a custom post types plugin. Create a post type and custom fields with Unyson+, read them from the REST API, and fetch them with JavaScript or Next.js."
 keywords: [headless wordpress without acf, acf alternative, wordpress custom fields rest api, custom post type rest api, unyson+ headless, next.js wordpress]
 ---
 
 import CodeWorkspace from '@site/src/components/CodeWorkspace';
-import nextExample from '@site/src/data/code-examples/headless-nextjs.json';
 import childExample from '@site/src/data/code-examples/unysonplus-headless-child.json';
 
 # Headless WordPress with Unyson+
 
 This tutorial builds the content side of a headless site using only Unyson+: a **Book** post type with a
 **Genre** taxonomy and five custom fields, available over the WordPress REST API, then fetched from a
-Next.js front end. No ACF and no custom post types plugin are needed.
+front end in plain JavaScript or Next.js. No ACF and no custom post types plugin are needed.
 
 New to headless? Start with [How headless WordPress works](./headless-wordpress.mdx).
 
@@ -109,17 +108,17 @@ Things to know about the values:
 - `unysonplus_fields` requires **Unyson+ Custom Fields 0.1.21 or later** when you trim the response
   with `_fields`, as above. Earlier versions returned it empty unless `type` was also requested.
 
-## 5. Fetch it in Next.js
+## 5. Build the front end
 
-Here is a complete Next.js (App Router) front end for these books: a books list, a page per book with
-its own title and cover as page metadata, and one file that does all the talking to WordPress. Click
-any file to open it, or download the whole project.
+The books are now one request away from any front end. Two complete, tested front ends for exactly
+this Book post type, with every file to browse and download:
 
-<CodeWorkspace example={nextExample} />
+- **[Plain JavaScript](./headless-javascript.mdx)**: two HTML pages and a few JavaScript modules that
+  fetch the books in the browser. No framework, no build step.
+- **[Next.js](./headless-nextjs.mdx)**: an App Router site with a page per book, built ahead of time and
+  refreshed from WordPress.
 
-To run it: download it, copy `.env.example` to `.env.local` and set `WP_URL` to your site, then
-`npm install` and `npm run dev`. The same requests work from Nuxt, Astro, SvelteKit or a mobile app; only
-the fetching code changes.
+The same requests work from Nuxt, Astro, SvelteKit or a mobile app; only the fetching code changes.
 
 ## Or define it all in code
 

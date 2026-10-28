@@ -40,6 +40,7 @@ kit itself closes.
 | **ACE-Step music** | Connector | Background music made on your computer, free to use: an instrumental in the style, tempo and length you ask for. | **Insert → Music…**, AI assist settings |
 | **Speech recognition** | Download | Every word of a voice-over with its time (Whisper). | An audio clip's **Words** |
 | **Built-in voices** | Download | Voice-overs from a script in a free synthetic voice (Piper). | Voice-over from a script |
+| **Kokoro voices** | Download | Six more natural voices for voice-overs from a script, on the processor (about 500 MB). | [Voice-over from a script](./sound.md#a-voice-over-from-a-script) |
 | **Voice and music separation** | Download | Splits a clip's sound into the voice and the music (Demucs). | [Footage tools](./video-effects.md#separate-voice-and-music), an audio clip's **Voice and music** |
 | **Blender** | Connector | Builds 3D objects from a description, for 3D layers. | Coming soon |
 | **Sound identification** | Download | Names the sounds in a clip (a door slam, a music hit, ambience). | Coming soon |

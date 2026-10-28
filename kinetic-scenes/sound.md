@@ -122,6 +122,13 @@ for an explainer), the AI Dev Kit speaks your script with a free voice on your c
 installed once), times every word and adds it as the voice track. Change a line and only that line is spoken again. The
 pace is a calm explainer pace by default.
 
+**More natural voices (Kokoro).** In **Add-ons**, **Kokoro voices** adds six more voices to the **Voice** menu: warm,
+bright, steady and deep American English, and clear and calm British English (the ones starting "Natural, …"). They come
+from Kokoro, a small free speech model (Apache licence), and run on your computer's processor: no graphics card, nothing
+uploaded. One install of about 500 MB covers all six. The first line after the kit starts takes a few extra seconds
+while Kokoro loads; after that a short line takes about as long to speak as to hear. Words are timed and lines cached
+exactly as with the other voices.
+
 **In your own voice.** With [Voicebox](https://github.com/jamiepine/voicebox) open on your computer, your Voicebox voice
 profiles appear in the **Voice** menu too ("Voicebox: Jon"). Each line is spoken in that voice, then every word is timed,
 exactly as with the built-in voices. AI assist has the same **Voice** menu in its settings (the gear at the top of the panel) for **Build with a

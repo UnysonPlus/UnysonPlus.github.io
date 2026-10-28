@@ -368,7 +368,7 @@
           "id": "p8-kokoro",
           "title": "Kokoro voices (add-on)",
           "detail": "A second set of built-in voices from Kokoro, a small free text-to-speech model (Apache licence) that sounds more natural than the current voices and runs without a graphics card.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p8-doctor",

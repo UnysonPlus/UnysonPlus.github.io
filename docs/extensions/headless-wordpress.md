@@ -1,13 +1,13 @@
 ---
-title: "Headless Extension: REST API for Headless WordPress Sites"
-sidebar_label: "Headless"
+title: "Headless WordPress Extension: REST API for Headless Sites"
+sidebar_label: "Headless WordPress"
 sidebar_position: 27
-description: "The Unyson+ Headless extension: ready-to-use images in the REST API, a JSON schema for custom fields, menus and site settings endpoints, private fields, and an admin screen that previews what a front end receives."
+description: "The Unyson+ Headless WordPress extension: ready-to-use images in the REST API, a JSON schema for custom fields, menus and site settings endpoints, private fields, and an admin screen that previews what a front end receives."
 ---
 
-# Headless extension
+# Headless WordPress extension
 
-The Headless extension gives a front end outside WordPress (Next.js, plain JavaScript, a mobile app)
+The Headless WordPress extension (in the Extensions list as **Headless WordPress**) lets WordPress manage the content while a separate website or app shows it. It gives a front end outside WordPress (Next.js, plain JavaScript, a mobile app)
 what it needs from a Unyson+ site, beyond what the core REST API provides: images it can put straight
 into an `<img>` tag, the site's menus and basic settings, and a screen that shows exactly what the API
 returns. Everything it adds is **read-only and public**, like the rest of the WordPress REST API's public
@@ -26,7 +26,7 @@ Types puts your content types in the REST API and Custom Fields adds their value
 | Ready-to-use images (URL, size, alt text, every image size) | Inside `unysonplus_fields` on every post |
 | The site's menus as nested trees | `GET /wp-json/unysonplus/v1/menus` and `/menus/<location>` |
 | Site name, tagline, logo, icon and chosen Theme Settings | `GET /wp-json/unysonplus/v1/settings` |
-| The **Headless** admin screen with a JSON preview | Unyson+ → Headless |
+| The **Headless WordPress** admin screen with a JSON preview | Unyson+ → Headless WordPress |
 
 Two related controls live in **Custom Fields** (0.1.23 and later), so they work with or without this
 extension: a **Show in REST API** switch on every field, and a JSON **schema** for `unysonplus_fields`.
@@ -37,11 +37,11 @@ extension: a **Show in REST API** switch on every field, and a JSON **schema** f
   and a field group with **Show in REST API** on. [Headless with Unyson+](/headless/unysonplus) walks
   through that setup.
 - **Pretty permalinks** (Settings → Permalinks: anything but Plain), so `/wp-json/` addresses work.
-- Activate **Headless** under **Unyson+ → Extensions**.
+- Activate **Headless WordPress** under **Unyson+ → Extensions**.
 
 ## Ready-to-use images
 
-Custom Fields stores an image as its attachment ID and a URL that starts with `//`. With Headless active,
+Custom Fields stores an image as its attachment ID and a URL that starts with `//`. With Headless WordPress active,
 every image value in `unysonplus_fields` (at the top level, in galleries and inside repeater rows) comes
 back ready to use:
 
@@ -137,20 +137,20 @@ An unknown location, or one with no menu assigned, returns a 404.
 `logo` is the theme's custom logo and `icon` the Site Icon (or `null`). `theme` holds only the Theme
 Settings you choose in the extension's settings; nothing else from Theme Settings is ever exposed.
 
-## The Headless screen
+## The Headless WordPress screen
 
-**Unyson+ → Headless** shows the API addresses, every Custom Fields group in the API with each field
+**Unyson+ → Headless WordPress** shows the API addresses, every Custom Fields group in the API with each field
 marked public or private, and a **Preview** of the JSON a visitor who is not logged in gets for any post.
 
-<img src="/img/extensions/headless/admin-overview.png" alt="The Headless screen: the endpoints, and the Book Details group's fields with Buy link marked private" width="1672" />
+<img src="/img/extensions/headless-wordpress/admin-overview.png" alt="The Headless screen: the endpoints, and the Book Details group's fields with Buy link marked private" width="1672" />
 
-<img src="/img/extensions/headless/admin-preview.png" alt="The Preview: a book's JSON with its subtitle, author, pages and the cover image with width, height, alt text and sizes" width="1672" />
+<img src="/img/extensions/headless-wordpress/admin-preview.png" alt="The Preview: a book's JSON with its subtitle, author, pages and the cover image with width, height, alt text and sizes" width="1672" />
 
 Tick **Stored values** to preview the response as `?unysonplus_raw=1` returns it.
 
 ## Settings
 
-Unyson+ → Extensions → Headless → Settings.
+Unyson+ → Extensions → Headless WordPress → Settings.
 
 | Setting | Default | What it does |
 |---|---|---|

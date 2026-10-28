@@ -31,7 +31,7 @@ and half of it does not involve Unyson+ at all.
 ## Decision
 
 The guides are their own docs section at `/headless`, with the overview at `/headless` itself (not
-`/headless/headless-wordpress`, which repeats the keyword). `/extensions/headless` is a single page for the
+`/headless/headless-wordpress`, which repeats the keyword). `/extensions/headless-wordpress` is a single page for the
 planned extension and its roadmap, pointing to the guides. Every earlier address redirects.
 
 ## Why

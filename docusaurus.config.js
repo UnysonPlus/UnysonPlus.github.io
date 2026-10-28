@@ -272,14 +272,14 @@ const config = {
         // Extensions into the Data & Content Modeling section.
         redirects: [
           // The headless guides moved out of Extensions into their own /headless section; the
-          // planned extension itself kept one page, /extensions/headless.
+          // planned extension itself kept one page, /extensions/headless-wordpress.
           {from: '/extensions/headless/headless-wordpress', to: '/headless'},
           {from: ['/extensions/headless/headless-javascript', '/extensions/headless/headless-javascript-unysonplus'], to: '/headless/javascript-unysonplus'},
           {from: '/extensions/headless/headless-javascript-acf', to: '/headless/javascript-acf'},
           {from: ['/extensions/headless/headless-nextjs', '/extensions/headless/headless-nextjs-unysonplus'], to: '/headless/nextjs-unysonplus'},
           {from: '/extensions/headless/headless-nextjs-acf', to: '/headless/nextjs-acf'},
           {from: '/extensions/headless/unysonplus-headless', to: '/headless/unysonplus'},
-          {from: '/extensions/headless/roadmap', to: '/extensions/headless'},
+          {from: ['/extensions/headless', '/extensions/headless/roadmap'], to: '/extensions/headless-wordpress'},
           {from: '/docs/extensions/custom-fields', to: '/data-modeling/custom-fields'},
           {from: '/docs/extensions/post-types', to: '/data-modeling/post-types'},
           // Element Designs moved out of Components into its own top-level Theme Settings tab.
@@ -409,13 +409,13 @@ const config = {
       '@docusaurus/plugin-content-docs',
       {
         // How to run WordPress headless (with ACF + CPT UI or with Unyson+), separate from the
-        // planned Headless extension, which keeps one page under /extensions/headless.
+        // planned Headless extension, which keeps one page under /extensions/headless-wordpress.
         id: 'headless',
         path: 'headless',
         routeBasePath: 'headless',
         sidebarPath: './sidebarsHeadless.js',
         // A visible date per page (from its last commit): these guides compete on freshness, and
-        // their search titles carry the year (updated every January, see /extensions/headless).
+        // their search titles carry the year (updated every January, see /extensions/headless-wordpress).
         showLastUpdateTime: true,
         editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
       },

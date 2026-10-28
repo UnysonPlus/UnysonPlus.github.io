@@ -129,7 +129,7 @@ across related content, in one request, with a typed schema. Popular with Gatsby
 
 **With Unyson+:** works with one small file of code (there is no GraphQL switch yet): the Post Types
 filters put the type in the schema, and `register_graphql_fields()` adds the Custom Fields values. A
-built-in option is under consideration on the [roadmap](/extensions/headless).
+built-in option is under consideration on the [roadmap](/extensions/headless-wordpress).
 **Guide: [GraphQL (WPGraphQL)](./graphql.mdx)**, with ACF and with Unyson+.
 
 ### Custom REST endpoints
@@ -186,7 +186,7 @@ the blocks; with a page builder, its layout data.
 
 **With Unyson+:** not yet. Page Builder content reaches the API as finished HTML (`content.rendered`),
 which any front end can show but not take apart. Serving the builder layout as structured JSON, plus the
-CSS each page needs, is Phase 2 of the [Headless extension roadmap](/extensions/headless).
+CSS each page needs, is Phase 2 of the [Headless extension roadmap](/extensions/headless-wordpress).
 
 ## Things to plan for
 
@@ -216,5 +216,5 @@ These are the problems most teams run into after the first demo works.
 Unyson+ can replace the plugin parts of this stack: its **Post Types** extension registers types and
 taxonomies for the API, and its **Custom Fields** extension puts field values in the REST API without
 ACF. See [Headless WordPress with Unyson+](./unysonplus.mdx) for a step-by-step example, and
-the [roadmap](/extensions/headless) for the Headless extension that will cover settings, menus, preview and
+the [roadmap](/extensions/headless-wordpress) for the Headless WordPress extension, which covers settings, menus, preview and
 builder content.

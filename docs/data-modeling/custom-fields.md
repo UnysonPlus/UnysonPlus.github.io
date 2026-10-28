@@ -105,7 +105,7 @@ A field group is more than a list of fields. Per group you can set:
 
 Turn on a group's **Show in REST API** and its values appear under `unysonplus_fields` on every post of
 its post types, for example `GET /wp-json/wp/v2/book?_fields=id,title,unysonplus_fields`. Each value has
-its stored shape (an Image is `{ attachment_id, url }`); the [Headless extension](/extensions/headless)
+its stored shape (an Image is `{ attachment_id, url }`); the [Headless extension](/extensions/headless-wordpress)
 turns images into ready-to-use objects with their size and alt text.
 
 - **Keep one field private.** Every field has its own **Show in REST API** checkbox, on by default. Turn

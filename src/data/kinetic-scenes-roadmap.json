@@ -1030,8 +1030,8 @@
         {
           "id": "p17-motion-rules",
           "title": "Better motion rules, and smoother colour",
-          "detail": "Fold proven motion-design principles (timing and easing, shot composition, cutting to the beat, restraint) into the rules AI assist follows, and blend colours through OKLCH so colour changes and gradients stay bright instead of passing through grey. Principles shipped in Studio 0.1.6 (the film's shape, composition, cutting to the beat, restraint); OKLCH colour blending in the player to follow.",
-          "status": "in-progress"
+          "detail": "Fold proven motion-design principles (timing and easing, shot composition, cutting to the beat, restraint) into the rules AI assist follows, and blend colours through OKLab (chosen over OKLCH after testing: OKLCH left hard seams) so colour changes and gradients stay clear instead of passing through grey (player 0.0.48). Principles shipped in Studio 0.1.6 (the film's shape, composition, cutting to the beat, restraint); OKLCH colour blending in the player to follow.",
+          "status": "done"
         }
       ]
     },
@@ -1050,7 +1050,7 @@
           "id": "p18-3d-objects",
           "title": "3D objects from a description",
           "detail": "Describe an object and the AI Dev Kit builds it as a 3D model for a 3D layer, checking each attempt by measurement (sizes, parts that touch, nothing intersecting) and by looking at it from several sides, and keeping the best. Replaces the planned Blender add-on as the first route; Blender stays as an option.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p18-camera-path",

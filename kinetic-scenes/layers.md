@@ -69,6 +69,25 @@ chrome), a resting pose and the light; it is lit by a built-in studio environmen
 (Spin 3D, Tumble in, Orbit, Camera push) turn it and move its camera; the usual presets (Fade, Slide, Pop…) work on it too.
 The 3D engine (three.js) loads only for scenes that have a 3D layer.
 
+
+#### A 3D object from a description
+
+With **Object: Model (glTF / GLB)**, type what you want under **Or make one from a description** ("a ceramic coffee
+mug with a handle, white with a green band", "a trophy on a black base") and **Make it**. The AI Dev Kit:
+
+1. designs it from simple parts (boxes, rounded boxes, spheres, cylinders, cones, rings), at real proportions;
+2. **measures** it: every part touches the rest, no part is buried out of sight in another, nothing is paper-thin, and it
+   stands on the ground. Problems go back to the AI, up to three attempts, and the best is kept;
+3. **looks** at it from the front, side, back and above, and corrects anything that reads wrong (a handle on the wrong
+   side, something facing backwards);
+4. puts it in the layer as a GLB with its own materials. Turn it with the pose and animate it like any 3D layer.
+
+<img src="/img/kinetic-scenes/object-from-description.jpg" alt="A mug made from a description, from the front, the side, the back and at an angle" width="600" />
+
+It takes one to three minutes. Objects are built from simple solids, so they suit product shapes, icons and props, not
+organic shapes (faces, animals, plants); a mug's top is solid rather than hollow. The model is stored inside the
+scene (about 50 KB). Agents: `studio-cli object3d "a coffee mug" --out mug.glb`, MCP `object_from_description`.
+
 ## Group
 
 Layers kept together (select several, Ctrl+G). Children keep their places; the group's frame is measured from them, so

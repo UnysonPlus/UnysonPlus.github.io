@@ -103,6 +103,17 @@ This page is generated from the Studio's own preset catalogue, so it lists every
 | **Sheen** | A band of light sweeps across once. Best after the layer has settled. | shape, image, footage | Angle, Width, Strength, Colour |
 | **Select box** | Draws a coloured box with square corner handles around one word (or a few) of the text, like a selected object in a design tool, and tints the word to match. The key word of a headline. | text | Direction, Word, How many words, Colour, Tint the words, Corner handles, Padding, Line width |
 
+**Smoother colour (player 0.0.48 and later).** Recolour, and every gradient fill, blend through OKLab, a colour space
+built around how people see: the colours in between stay clear instead of passing through grey (blue to yellow no
+longer goes muddy in the middle). A gradient that names its own colour space (`linear-gradient(in srgb, …)`) keeps it,
+and browsers too old for it draw the gradient as before.
+
+<img src="/img/kinetic-scenes/colour-blending.jpg" alt="Three gradients each blended three ways: the old way (left) with a grey middle, OKLab (centre) smooth and clear, OKLCH (right) vivid but with hard seams" width="640" />
+
+*Left: the old blending, grey in the middle. Centre: OKLab, what the player uses. Right: OKLCH, more vivid but with hard
+seams where its colours fall outside what a screen can show, which is why it was not chosen.*
+
+
 ## Cursor and tours
 
 | Preset | What it does | Works on | Settings |

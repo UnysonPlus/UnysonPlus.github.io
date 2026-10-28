@@ -93,9 +93,10 @@ Use these in the form's success message and emails: `{booking_ref}`, `{booking_i
 `{booking_nights}`, `{booking_guests}`, `{booking_total}`, `{booking_deposit}`, `{booking_extras}` (the extras chosen,
 such as "Breakfast × 8, Airport pickup").
 
-## Moving over from somewhere else
+## Import and export
 
-**Bookings → Import** brings existing bookings in, from a spreadsheet or from another booking plugin. See
-[Import](./import.md).
+**Bookings → Import / Export** downloads your bookings as a spreadsheet, or everything (bookables and their settings
+included) as a Bookings file for another site, and brings bookings in from a spreadsheet, a Bookings file or another
+booking plugin. See [Import and export](./import.md).
 
 See the [roadmap](/extensions/bookings/roadmap) for what is built and what comes next.

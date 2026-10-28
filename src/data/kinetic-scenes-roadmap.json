@@ -244,9 +244,9 @@
         },
         {
           "id": "p6-blender",
-          "title": "Blender (add-on, coming soon)",
-          "detail": "An installable add-on in the AI Dev Kit that has Blender build an elaborate 3D object from a description and save it as a glTF model for a 3D layer. Optional: the built-in 3D (text, shapes, SVGs and glTF) already draws live in the browser, and Blender is a large install.",
-          "status": "planned"
+          "title": "Blender",
+          "detail": "An installable add-on in the AI Dev Kit that has Blender build an elaborate 3D object from a description and save it as a glTF model for a 3D layer. Optional: the built-in 3D (text, shapes, SVGs and glTF) already draws live in the browser, and Blender is a large install. Shipped in the AI Dev Kit (no add-on needed): an AI agent writes Blender Python, the kit runs Blender in the background and returns a GLB for a 3D layer (blender_model, with four views to check) or a transparent video for a footage layer (blender_render). See [Blender](/kinetic-scenes/blender).",
+          "status": "done"
         }
       ]
     },

@@ -974,7 +974,7 @@
         },
         {
           "id": "p16-sam2",
-          "status": "planned",
+          "status": "done",
           "title": "Cut out the person and what they hold",
           "detail": "A fourth cut-out method (SAM 2): click the person and the product once, and both are followed and cut out through the whole video, for product demos where the thing in the hand matters as much as the face."
         }

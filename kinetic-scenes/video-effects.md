@@ -140,6 +140,7 @@ video. It applies to the next **Cut out the person** (and to **Behind the person
 | **Standard** (the default) | the best edges, hair included | two models together: one for fine edges, one that knows the body (so a shirt the colour of the wall stays solid); on the graphics card where there is one (about 50 ms a frame), else the processor; each frame blended with the one before so edges don't flicker |
 | **Fast** | drafts: trying a layout before the real cut-out | the body model alone, many times quicker; rough at the hair |
 | **Robust Video Matting** | long clips, people moving: steady edges, very fast | one model that remembers the frames before, so edges hold still from frame to frame; about 18 s for a 10-second clip on a graphics card |
+| **Person and what they hold** | product demos: the person and the product, phone or mug in their hand, both in front | you click them on the first frame; SAM 2.1 follows each one through the video, and the person keeps Robust Video Matting's fine edges. The slowest: about 100 s for a 6-second clip on a graphics card |
 
 <img src="/img/kinetic-scenes/cutout-methods.jpg" alt="The same frame cut out with Standard (left) and Robust Video Matting (right), on a pink background" width="480" />
 
@@ -148,8 +149,25 @@ Add-ons), which brings the runtime it uses, and it downloads its 15 MB model the
 under the GPL-3.0 licence, which is why it isn't part of the kit itself; the videos you make with it are yours. When it
 can't run, the list says *(not installed)* and the hint says what to install.
 
-Coming later: **Person and what they hold**, where you click the person and the product once and both are followed
-through the video.
+#### Person and what they hold
+
+Choose **Person and what they hold**, then **Cut out the person**: the footage's first frame opens. Click the person
+first (**P**, their chest is a good spot), then each thing they hold (**1**, **2**…), and **Cut out**.
+
+<img src="/img/kinetic-scenes/cutout-hold-picker.png" alt="The first frame of the footage with the person marked P and the held product marked 1" width="279" />
+
+Each object is followed on its own: every frame is matched to where it was on the frame before, so it can move, turn
+and cross the person. When it is lost for a moment (turned edge-on, covered by a hand), its last outline holds until
+it is found again.
+
+<img src="/img/kinetic-scenes/cutout-hold.jpg" alt="Three moments of the cut-out: the person and the held product, followed as the product moves across them" width="720" />
+
+- **Everything you click must be in the first frame** of the footage file. For a product that comes in later, trim
+  the footage so it starts with the product in view, cut out, then put the trim back.
+- Held objects have softer edges than the person (their outline is worked out at a lower resolution). Fine for
+  products, phones and packaging; thin things (a pen, a cable) can drop out.
+- It needs voice and music separation installed (for its runtime), and downloads two models the first time: SAM 2.1
+  tiny (Apache-2.0, about 155 MB) and Robust Video Matting (15 MB).
 
 ### Follow the face
 

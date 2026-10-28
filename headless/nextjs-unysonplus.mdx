@@ -14,13 +14,13 @@ import Troubleshooting from './_troubleshooting.mdx';
 
 # Headless WordPress with Next.js and Unyson+
 
-The same Next.js front end as [Next.js + ACF](./headless-nextjs-acf.mdx), with **one plugin instead of
+The same Next.js front end as [Next.js + ACF](./nextjs-acf.mdx), with **one plugin instead of
 two**: Unyson+'s Post Types extension registers the content type, and its Custom Fields extension adds
 the fields and puts them in the REST API. The front end builds a page per post ahead of time and
 refreshes from WordPress in the background.
 
-<p><small>Without a framework: [JavaScript + Unyson+](./headless-javascript-unysonplus.mdx). The WordPress
-side in more detail, including a version defined in code: [Headless with Unyson+](./unysonplus-headless.mdx).</small></p>
+<p><small>Without a framework: [JavaScript + Unyson+](./javascript-unysonplus.mdx). The WordPress
+side in more detail, including a version defined in code: [Headless with Unyson+](./unysonplus.mdx).</small></p>
 
 ## 1. Before you start
 
@@ -52,7 +52,7 @@ The fields arrive under **`unysonplus_fields`**, with no extra query parameter:
 
 `pages` is a number. The image URL starts with `//`, so `absoluteUrl()` in `lib/wordpress.ts` gives it
 your site's scheme. Image sizes and alt text in the response are on the [Headless extension
-roadmap](./roadmap.md).
+roadmap](/extensions/headless).
 
 ## 3. The code
 
@@ -73,7 +73,7 @@ Click any file to open it, or download the whole project.
   (and search engines) already holds the content.
 - **Built ahead of time, refreshed in the background.** `generateStaticParams` builds every book page;
   `revalidate: 300` fetches fresh data at most every five minutes. To update the moment an editor
-  publishes, call a revalidation route from a WordPress webhook (on the [roadmap](./roadmap.md)).
+  publishes, call a revalidation route from a WordPress webhook (on the [roadmap](/extensions/headless)).
 - **Metadata from WordPress.** `generateMetadata` turns the book's title, subtitle and cover into the
   page title, description and sharing image.
 

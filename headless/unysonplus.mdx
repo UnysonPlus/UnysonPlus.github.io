@@ -15,12 +15,12 @@ This tutorial builds the content side of a headless site using only Unyson+: a *
 **Genre** taxonomy and five custom fields, available over the WordPress REST API, then fetched from a
 front end in plain JavaScript or Next.js. No ACF and no custom post types plugin are needed.
 
-New to headless? Start with [How headless WordPress works](./headless-wordpress.mdx).
+New to headless? Start with [How headless WordPress works](./index.mdx).
 
 :::info What works today, and what is coming
 Everything on this page works with the current **Post Types** and **Custom Fields** extensions. The
 planned **Headless** extension adds image sizes and alt text, settings and menus endpoints, preview,
-rebuild webhooks and Page Builder content. See the [roadmap](./roadmap.md).
+rebuild webhooks and Page Builder content. See the [roadmap](/extensions/headless).
 :::
 
 ## 1. Activate the two extensions
@@ -113,9 +113,9 @@ Things to know about the values:
 The books are now one request away from any front end. Two complete, tested front ends for exactly
 this Book post type, with every file to browse and download:
 
-- **[Plain JavaScript](./headless-javascript-unysonplus.mdx)**: two HTML pages and a few JavaScript modules that
+- **[Plain JavaScript](./javascript-unysonplus.mdx)**: two HTML pages and a few JavaScript modules that
   fetch the books in the browser. No framework, no build step.
-- **[Next.js](./headless-nextjs-unysonplus.mdx)**: an App Router site with a page per book, built ahead of time and
+- **[Next.js](./nextjs-unysonplus.mdx)**: an App Router site with a page per book, built ahead of time and
   refreshed from WordPress.
 
 The same requests work from Nuxt, Astro, SvelteKit or a mobile app; only the fetching code changes.
@@ -186,4 +186,4 @@ If you use this route with the Next.js example, read `book_fields` instead of `u
 - **No settings or menus endpoints yet**, and **Page Builder content** comes through only as
   `content.rendered`, without the CSS it needs.
 
-All of these are on the [Headless roadmap](./roadmap.md).
+All of these are on the [Headless roadmap](/extensions/headless).

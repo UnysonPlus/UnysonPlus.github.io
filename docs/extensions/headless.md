@@ -1,16 +1,22 @@
 ---
-title: "Headless Extension — Roadmap"
-sidebar_label: "Roadmap"
-sidebar_position: 7
-description: "The plan for a Unyson+ Headless extension: run WordPress as a headless CMS with Unyson+ post types, custom fields, settings and page-builder content served over the REST API, in place of ACF and a custom post types plugin."
+title: "Headless Extension (Planned): Roadmap"
+sidebar_label: "Headless (planned)"
+sidebar_position: 27
+description: "The plan for the Unyson+ Headless extension: settings and menus endpoints, Page Builder content as HTML or structured JSON, preview, rebuild webhooks and CORS, on top of the REST support Post Types and Custom Fields already have."
 ---
 
-# Headless — Roadmap
+# Headless extension (planned)
 
-A planned extension that lets a WordPress site running Unyson+ act as a **headless CMS**: content is
-edited in WordPress, and a separate front end (Next.js, Nuxt, Astro, a mobile app) reads it over the
-REST API. Unyson+ already covers what ACF and a custom post types plugin would do in such a setup. This
-extension adds the API layer to match.
+A planned extension that adds the rest of what a headless site needs: settings and menus endpoints,
+Page Builder content in a form a front end can use, preview, rebuild webhooks and CORS.
+
+:::tip You can go headless today
+Unyson+ already covers the content side without this extension: **Post Types** puts your types in the
+REST API, and **Custom Fields** adds their values. The **[Headless WordPress guides](/headless)** show how,
+with tested JavaScript and Next.js examples, next to the same setups built with ACF and CPT UI.
+:::
+
+## Roadmap
 
 <span className="badge badge--warning">Coming soon</span> items are intended;
 <span className="badge badge--secondary">Exploring</span> items are under consideration and may not
@@ -20,7 +26,7 @@ happen. Shipped items move into the extension's main documentation.
 No dates. Items ship when they are properly done, and the order below is a rough intent, not a queue.
 :::
 
-## What already exists
+### What already exists
 
 The extension builds on these; it does not replace them.
 
@@ -31,7 +37,7 @@ The extension builds on these; it does not replace them.
   **raw stored values** (an image is its attachment ID and a protocol-relative URL, with no sizes or
   alt text), and covers **posts only**.
 
-## Phase 1 — Clean, read-only content API <span className="badge badge--warning">Coming soon</span>
+### Phase 1 — Clean, read-only content API <span className="badge badge--warning">Coming soon</span>
 
 - **Resolved field values.** Each option type gets a REST formatter, so the API returns something a
   front end can use directly: images and galleries as URL, width, height, alt and sizes; links to posts
@@ -49,7 +55,7 @@ The extension builds on these; it does not replace them.
 - **Admin screen** under Unyson+ → Headless: which post types, groups, fields and settings are
   exposed, with a live preview of the JSON for a chosen post.
 
-## Phase 2 — Page Builder content <span className="badge badge--warning">Coming soon</span>
+### Phase 2 — Page Builder content <span className="badge badge--warning">Coming soon</span>
 
 Builder pages are stored as a tree of shortcodes and normally render to HTML on the server. The API
 offers both forms, and the front end picks one:
@@ -61,7 +67,7 @@ offers both forms, and the front end picks one:
   elements, each with its type and resolved options). The front end maps each element type to its own
   component. This is the truly headless option, and the more work for the front end.
 
-## Phase 3 — Front-end integration <span className="badge badge--warning">Coming soon</span>
+### Phase 3 — Front-end integration <span className="badge badge--warning">Coming soon</span>
 
 - **Front-end URL and preview.** Set the front-end address once; "Preview" and "View" in the admin open
   the front end, with a short-lived token so drafts can be previewed there.
@@ -71,7 +77,7 @@ offers both forms, and the front end picks one:
 - **Redirect the WordPress front end** (optional), so visitors who reach the WordPress address are
   sent to the real site.
 
-## Phase 4 — Writes and starter kit <span className="badge badge--secondary">Exploring</span>
+### Phase 4 — Writes and starter kit <span className="badge badge--secondary">Exploring</span>
 
 - **Write support.** Update callbacks that check each value against its option type, for front ends
   that submit content (application passwords or another token for auth).
@@ -79,7 +85,7 @@ offers both forms, and the front end picks one:
 - **A starter front end** with components for the common builder elements, and the typed client.
 - **A GraphQL bridge** (WPGraphQL) for sites that prefer GraphQL.
 
-## Not in scope
+### Not in scope
 
 - **Animation Engine effects and other front-end scripts** do not travel through the API; a headless
   front end rebuilds them itself.

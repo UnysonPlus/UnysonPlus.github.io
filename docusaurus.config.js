@@ -32,6 +32,7 @@ function sitemapDataPlugin() {
     kineticScenes: 'Kinetic Scenes',
     theme: 'The Theme',
     guides: 'Guides',
+    headless: 'Headless WordPress',
     aiDevKit: 'AI Dev Kit',
     crm: 'CRM',
     membership: 'Membership',
@@ -46,6 +47,7 @@ function sitemapDataPlugin() {
     'Membership',
     'The Theme',
     'Guides',
+    'Headless WordPress',
     'AI Dev Kit',
     'News',
     'Design Decisions',
@@ -242,9 +244,15 @@ const config = {
         // Pages that moved when Custom Fields + Post Types were promoted out of
         // Extensions into the Data & Content Modeling section.
         redirects: [
-          // The headless front-end pages split into an ACF and a Unyson+ version of each.
-          {from: '/extensions/headless/headless-javascript', to: '/extensions/headless/headless-javascript-unysonplus'},
-          {from: '/extensions/headless/headless-nextjs', to: '/extensions/headless/headless-nextjs-unysonplus'},
+          // The headless guides moved out of Extensions into their own /headless section; the
+          // planned extension itself kept one page, /extensions/headless.
+          {from: '/extensions/headless/headless-wordpress', to: '/headless'},
+          {from: ['/extensions/headless/headless-javascript', '/extensions/headless/headless-javascript-unysonplus'], to: '/headless/javascript-unysonplus'},
+          {from: '/extensions/headless/headless-javascript-acf', to: '/headless/javascript-acf'},
+          {from: ['/extensions/headless/headless-nextjs', '/extensions/headless/headless-nextjs-unysonplus'], to: '/headless/nextjs-unysonplus'},
+          {from: '/extensions/headless/headless-nextjs-acf', to: '/headless/nextjs-acf'},
+          {from: '/extensions/headless/unysonplus-headless', to: '/headless/unysonplus'},
+          {from: '/extensions/headless/roadmap', to: '/extensions/headless'},
           {from: '/docs/extensions/custom-fields', to: '/data-modeling/custom-fields'},
           {from: '/docs/extensions/post-types', to: '/data-modeling/post-types'},
           // Element Designs moved out of Components into its own top-level Theme Settings tab.
@@ -367,6 +375,18 @@ const config = {
         path: 'guides',
         routeBasePath: 'guides',
         sidebarPath: './sidebarsGuides.js',
+        editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        // How to run WordPress headless (with ACF + CPT UI or with Unyson+), separate from the
+        // planned Headless extension, which keeps one page under /extensions/headless.
+        id: 'headless',
+        path: 'headless',
+        routeBasePath: 'headless',
+        sidebarPath: './sidebarsHeadless.js',
         editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
       },
     ],
@@ -542,6 +562,7 @@ const config = {
             title: 'Resources',
             items: [
               {label: 'Guides', to: '/guides/'},
+              {label: 'Headless WordPress', to: '/headless'},
               {label: 'Demos', href: 'https://demos.unysonplus.com/'},
               {label: 'API Reference', to: '/reference/'},
               {label: 'Design Decisions', to: '/decisions'},

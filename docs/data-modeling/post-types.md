@@ -99,7 +99,7 @@ change them for a non-standard combination.
 | **Available in menus** | Whether it appears in the Appearance → Menus editor. |
 | **Admin screens / Admin menu item / Admin bar** | Which parts of the admin UI are generated. |
 | **Block editor / REST** | Gutenberg and the REST API. |
-| **REST base** | The endpoint name under `/wp-json/wp/v2/`. Worth setting deliberately if anything headless consumes the type. |
+| **REST base** | The endpoint name under `/wp-json/wp/v2/`. Worth setting deliberately if anything headless consumes the type (see [Headless WordPress](/headless)). |
 | **Exportable** | Whether it's included in Tools → Export. |
 
 ### URLs

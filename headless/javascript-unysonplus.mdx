@@ -14,13 +14,13 @@ import Troubleshooting from './_troubleshooting.mdx';
 
 # Headless WordPress with JavaScript and Unyson+
 
-The same plain-JavaScript front end as [JavaScript + ACF](./headless-javascript-acf.mdx), with **one
+The same plain-JavaScript front end as [JavaScript + ACF](./javascript-acf.mdx), with **one
 plugin instead of two**: Unyson+'s Post Types extension registers the content type and its Custom Fields
 extension adds the fields and puts them in the REST API. The front end is two HTML pages that fetch
 everything in the browser, with no framework and no build step.
 
-<p><small>With Next.js instead: [Next.js + Unyson+](./headless-nextjs-unysonplus.mdx). The WordPress side
-in more detail, including a version defined in code: [Headless with Unyson+](./unysonplus-headless.mdx).</small></p>
+<p><small>With Next.js instead: [Next.js + Unyson+](./nextjs-unysonplus.mdx). The WordPress side
+in more detail, including a version defined in code: [Headless with Unyson+](./unysonplus.mdx).</small></p>
 
 ## 1. Before you start
 
@@ -66,7 +66,7 @@ curl "https://your-site.com/wp-json/wp/v2/book?slug=the-quiet-garden&_fields=id,
 
 Compared with ACF: `pages` stays a number, and the image is its ID plus a URL that starts with `//`, so
 the code adds your site's scheme. Image sizes and alt text in the response are on the
-[Headless extension roadmap](./roadmap.md).
+[Headless extension roadmap](/extensions/headless).
 
 ## 3. The code
 

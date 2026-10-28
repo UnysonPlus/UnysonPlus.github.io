@@ -42,4 +42,4 @@ Keeping it separate keeps the core lean, the same rule as for every other extens
 headless carry none of it. Offering both builder formats lets a project start with rendered pages on day
 one and move element by element to its own components, without changing the API.
 
-The plan is on the [Headless roadmap](/extensions/headless/roadmap).
+The plan is on the [Headless extension roadmap](/extensions/headless); the guides for going headless today are in [Headless WordPress](/headless).

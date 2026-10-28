@@ -99,7 +99,7 @@ A field group is more than a list of fields. Per group you can set:
   groups apply).
 - **Hide on screen** — remove core meta boxes (Excerpt, Discussion, Comments, Revisions, Slug,
   Author, Format, Page Attributes, Featured Image, Categories, Tags, …) from the target edit screen.
-- **Show in REST API** — expose the group's values under `unysonplus_fields` on the targeted post types.
+- **Show in REST API** — expose the group's values under `unysonplus_fields` on the targeted post types. See [Headless WordPress](/headless) for using them from a JavaScript or Next.js front end.
 
 ## Import / Export
 

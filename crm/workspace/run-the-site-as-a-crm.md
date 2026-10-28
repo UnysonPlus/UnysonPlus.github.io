@@ -25,8 +25,7 @@ The sections below do the same by hand, and cover the rest.
 
 ## Give the CRM its own menu item
 
-On **Menus**, open the **Unyson+** item and drag **CRM** out of its sub-items into the menu (or choose **Move to top
-level**). It becomes an item of its own for that role. People who cannot reach the Unyson+ menu, such as Sales
+On **Menus**, click the **Unyson+** item to open it and drag **CRM** out of its sub-items into the menu. It becomes an item of its own for that role. People who cannot reach the Unyson+ menu, such as Sales
 Reps, already get the CRM as a menu item of its own.
 
 ## Choose what each role opens to
@@ -63,11 +62,11 @@ The **Menus** tab arranges the WordPress menu for one role at a time. Pick the r
 - **change its icon** with the button beside the name;
 - untick **Shown** to hide an item, or open its sub-items and untick the ones the role does not need;
 - with the Admin Skin on, drag an item into another group (Workspace, Shop, Tools…) and rename the groups.
-- open an item's sub-items to **drag them into a new order**, or **drag one out** into the menu to give it a place of
-  its own, for example SEO out of the Unyson+ menu or Site Health out of Tools (**Move to top level** does the same
-  without dragging). It can then be dragged, renamed and given an icon like any other item. Drag it back into its own
-  menu, or choose **Move back**, to return it. The page itself does not move, so its address and bookmarks keep
-  working;
+- click an item (or the arrow at its end) to open its sub-items, then **drag them into a new order**, or **drag one
+  out** into the menu to give it a place of its own, for example SEO out of the Unyson+ menu or Site Health out of
+  Tools. It can then be dragged, renamed and given an icon like any other item. Drag it back into its own menu to
+  return it. The page itself does not move, so its address and bookmarks keep working. With the keyboard,
+  **Alt + ←** moves a sub-item out and **Alt + →** moves it back;
 - a sub-item can go back to its own menu or out to the top level, not into a different menu, and a menu's first
   entry (the item itself) stays first.
 

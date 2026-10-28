@@ -1240,14 +1240,14 @@
         {
           "id": "p23-beats",
           "title": "Beats: describe a reel in a few lines",
-          "detail": "A small set of beat kinds (headline, logo reveal, photo in a mask, split frame, list, rating or proof, closing frame with the credit) that build a full scene in the client's brand. A brief becomes about eight lines of beats instead of a hand-built scene. Shipped as the `beats` command and the `scene_from_beats` agent tool: seven beat kinds, layouts clear of the apps' buttons, the credit on the closing frame, and beat starts snapped to a reference rhythm. See [Beats](/kinetic-scenes/beats).",
+          "detail": "A small set of beat kinds (headline, logo reveal, photo in a mask, split frame, list, rating or proof, closing frame with the credit) that build a full scene in the client's brand. A brief becomes about eight lines of beats instead of a hand-built scene. Shipped as the `from-beats` command and the `scene_from_beats` agent tool: seven beat kinds, layouts clear of the apps' buttons, the credit on the closing frame, and beat starts snapped to a reference rhythm. See [Beats](/kinetic-scenes/beats).",
           "status": "done"
         },
         {
           "id": "p23-breakdown",
           "title": "Breakdown view",
-          "detail": "Play a finished reel on top and its storyboard beats underneath, in sync, and export it as a \"how this reel was made\" video for pitches and Kinetic Scenes marketing.",
-          "status": "planned"
+          "detail": "Play a finished reel on top and its storyboard beats underneath, in sync, and export it as a \"how this reel was made\" video for pitches and Kinetic Scenes marketing. Shipped as the `breakdown` command and the `scene_breakdown` agent tool: the finished reel in a phone or browser frame, one card per beat (from its beats, its markers or a reference rhythm), a highlight that follows the reel, and a progress bar, as a 16:9 scene. See [Breakdown](/kinetic-scenes/breakdown).",
+          "status": "done"
         },
         {
           "id": "p23-browser-export",

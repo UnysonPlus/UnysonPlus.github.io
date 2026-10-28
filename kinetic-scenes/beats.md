@@ -72,7 +72,7 @@ starts on one of that reel's moments, so the new video is paced the same way.
 From the AI Dev Kit's command line:
 
 ```sh
-node studio-cli.mjs beats spring.beats.json --duration 20 --rhythm reference.reference.json
+node studio-cli.mjs from-beats spring.beats.json --duration 20 --rhythm reference.reference.json
 ```
 
 | Option | What it does |

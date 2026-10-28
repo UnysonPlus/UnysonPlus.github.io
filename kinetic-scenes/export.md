@@ -61,6 +61,18 @@ experimental setting today and on by default once it ships), Export offers **Ren
 frame-by-frame MP4 with its sound, rendered and encoded by the browser itself (H.264 and AAC), with nothing installed.
 See-through and ProRes exports still need the kit.
 
+**Motion blur** (a checkbox, with the AI Dev Kit): a real camera's shutter stays open for part of each frame, so
+something moving fast smears along its path. A render without it shows a crisp copy in each frame, which reads as
+stepping on fast moves (whip pans, slams, a logo flying in). With motion blur on, the kit captures 8 moments spread
+over half of each frame's time (a 180-degree shutter, as film cameras use) and blends them into the frame.
+
+<img src="/img/kinetic-scenes/motion-blur.png" alt="A box moving fast: without motion blur (top) crisp, with motion blur (bottom) smeared along its direction" width="320" />
+
+It changes nothing that stands still, and costs time: each frame is captured 8 times, so the render takes about twice
+as long or more (a 1-second test took 6 s without, 15 s with). Agents: `studio-cli render scene.json --blur` (or
+`--blur 4` to `16` for the number of moments), or `blur` on the `scene_render` tool. Not available for a browser
+export.
+
 **How the two compare** (measured 2026-10-28 on the Studio's 38-second demo scene, 1920 × 1080 at 30 fps, on a PC with
 a GeForce GTX 1660 Ti):
 

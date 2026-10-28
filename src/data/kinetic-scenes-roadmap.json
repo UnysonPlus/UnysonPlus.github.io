@@ -1013,7 +1013,7 @@
           "id": "p17-blur",
           "title": "Motion blur in videos",
           "detail": "An option when rendering a video to blend sub-frames, so fast moves look filmed rather than stepped.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p17-interchange",

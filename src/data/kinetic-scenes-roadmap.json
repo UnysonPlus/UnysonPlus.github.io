@@ -1225,6 +1225,43 @@
           "status": "done"
         }
       ]
+    },
+    {
+      "id": "p23-learn",
+      "title": "Phase 23 — Learn from great reels",
+      "goal": "Make outreach and client reels faster and better paced by learning from finished reels: read the rhythm of a reel we admire, describe a reel in a few beats, and show how a reel was built. The ideas come from studying an open-source motion-breakdown tool; the code is our own.",
+      "tasks": [
+        {
+          "id": "p23-reference-analysis",
+          "title": "Learn the rhythm of a reference reel",
+          "detail": "Import a reference video, find its cuts with FFmpeg scene detection, and save a timing map and a contact sheet. A new scene can then follow the same cut points and section lengths, so it is paced like a reel that already works.",
+          "status": "planned"
+        },
+        {
+          "id": "p23-beats",
+          "title": "Beats: describe a reel in a few lines",
+          "detail": "A small set of beat kinds (headline, logo reveal, photo in a mask, split frame, list, rating or proof, closing frame with the credit) that build a full scene in the client's brand. A brief becomes about eight lines of beats instead of a hand-built scene.",
+          "status": "planned"
+        },
+        {
+          "id": "p23-breakdown",
+          "title": "Breakdown view",
+          "detail": "Play a finished reel on top and its storyboard beats underneath, in sync, and export it as a \"how this reel was made\" video for pitches and Kinetic Scenes marketing.",
+          "status": "planned"
+        },
+        {
+          "id": "p23-browser-export",
+          "title": "Test a frame-accurate export in the browser",
+          "detail": "A trial of exporting in the browser with WebCodecs, encoding every frame at its own timestamp, compared with the current render time. It ships only if it is faster without losing quality.",
+          "status": "planned"
+        },
+        {
+          "id": "p23-repo-launch",
+          "title": "A friendlier public repository",
+          "detail": "An animated demo at the top of the README, a one-command start, a FAQ, issue forms and labelled starter issues, so new users and contributors can get going quickly.",
+          "status": "planned"
+        }
+      ]
     }
   ],
   "extensionVersion": "0.0.71",

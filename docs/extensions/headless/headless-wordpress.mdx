@@ -80,6 +80,26 @@ The front end fetches content and builds pages from it. The main choice is **whe
 
 Next.js is the most common choice; Nuxt (Vue), Astro and SvelteKit are also popular.
 
+## What the code looks like
+
+Here is a small but complete headless front end in Next.js. It lists the books from a WordPress site,
+gives each book its own page, and refreshes from WordPress at most every five minutes. The pattern is
+the same in any framework:
+
+- **One file talks to WordPress** (`lib/wordpress.ts`). It knows the API's address, describes the shape
+  of the responses, and has one function per query. Pages never build REST URLs themselves.
+- **Ask only for the fields you use** with `?_fields=`, so responses stay small.
+- **Cache and revalidate** instead of calling WordPress on every visit.
+- **Pages are plain components** that call those functions and render the result.
+
+Click a file to open it, or download the project.
+
+<CodeWorkspace example={nextExample} />
+
+The custom fields here (`subtitle`, `book_author`, `cover_image`…) come from WordPress. With ACF they
+would be under `acf`; this example reads them from `unysonplus_fields`, the Unyson+ equivalent, which
+[Headless WordPress with Unyson+](./unysonplus-headless.mdx) sets up step by step.
+
 ## Things to plan for
 
 These are the problems most teams run into after the first demo works.

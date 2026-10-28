@@ -129,15 +129,10 @@
 
 .rowActive,
 .rowActive:hover {
-  background: var(--ifm-color-primary-lightest);
-  color: var(--ifm-color-primary-darkest);
+  background: color-mix(in srgb, var(--ifm-color-primary) 16%, transparent);
+  color: var(--ifm-font-color-base);
+  box-shadow: inset 2px 0 0 var(--ifm-color-primary);
   font-weight: 600;
-}
-
-[data-theme='dark'] .rowActive,
-[data-theme='dark'] .rowActive:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--ifm-color-primary-lightest);
 }
 
 .name {
@@ -264,7 +259,8 @@
   }
 
   .sidebar,
-  .tabs {
+  .tabs,
+  .path {
     display: none;
   }
 
@@ -289,4 +285,9 @@
   .code {
     max-height: 70vh;
   }
+}
+
+/* PHP examples indent with tabs (WordPress coding standards); 8 columns is too wide here. */
+.code pre {
+  tab-size: 4;
 }

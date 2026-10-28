@@ -964,7 +964,7 @@
           "id": "p16-stock",
           "title": "Free stock footage search",
           "detail": "Search free stock libraries and open archives for real video clips (and pictures) from inside the Studio, with their licences shown, and drop them on the timeline; for people with no footage of their own.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p16-cutout-methods",

@@ -25,6 +25,38 @@ when in doubt, open the source's licence page again before using something in a 
 5. **Paid libraries are off limits** unless the person says they have an account: Motion Array, Artgrid, Filmsupply,
    Epidemic Sound, Envato Elements, AEJuice, Soundsnap, RenderHub.
 
+## Search free stock from the Studio
+
+**Insert › Free stock…** searches four of these sources at once and puts what you pick into your project.
+
+<img src="/img/kinetic-scenes/free-stock.png" alt="The Free stock window: four sources with checkboxes, key fields for Pexels and Pixabay, and a search showing NASA footage of the Earth" width="560" />
+
+**Sources.** Each source has a checkbox. Switch one off and neither you nor your AI agent searches it: the choice is
+saved in the AI Dev Kit, so it applies to the Studio, `studio-cli stock` and the agent's `stock_search` tool alike.
+
+| Source | Gives | Needs |
+|---|---|---|
+| Pexels | video, photos | your free key: **Add key**, then paste it (get one at pexels.com/api) |
+| Pixabay | video, photos | your free key (pixabay.com/api/docs) |
+| NASA | video, photos | nothing |
+| Openverse | photos, sounds under Creative Commons; only licences that allow commercial use and changes are asked for | nothing (it can take up to a minute to answer) |
+
+**Search.** Type what you want, pick **Video**, **Photos** or **Sounds**, and a shape (**Tall** for reels, **Wide**
+for YouTube). Each result links to its page and names its creator; **credit needed** marks those whose licence asks
+for a credit.
+
+**Add.** Downloads the file into the project's `media/` folder and puts it on the timeline: footage as a full-frame
+layer, a photo as an image layer, a sound at the playhead. A line goes into the project notes with the file, the
+title and creator, the page, the licence and the credit if one is needed, so you have it when you publish. Adding
+needs an open project (File › Projects); searching does not.
+
+**Limits.** It needs the AI Dev Kit running on your computer. Pexels and Pixabay results are kept for 24 hours (Pixabay
+asks for it). NASA downloads take NASA's large file rather than the original, which can be hundreds of megabytes.
+The rules above still apply: a NASA clip needs "NASA" in your credits and can't suggest NASA endorses anything.
+
+**For AI agents.** `studio-cli stock ocean waves` lists results; `--get 2 --project my-reel` downloads the second into
+the project and notes it; `--photo`, `--audio`, `--orient portrait`. The MCP tool is `stock_search`.
+
 ## Safe defaults for client work (commercial, no credit needed)
 
 | Need | First choice | Also |

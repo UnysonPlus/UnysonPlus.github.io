@@ -89,6 +89,8 @@ loudness, clipping; renders run it on their own), `voice_best_take` (the best of
 (`studio-cli record`, `screencast`, `music`, `project`), which records the screen and builds the scene around the
 recording.
 
+AI assist can also run Claude Code this way from inside the Studio: see [Work in steps](./ai.md#work-in-steps-with-a-project-and-claude-code).
+
 For what each check and clean-up tool does, with examples, see [Checks and clean-up for videos](./video-checks.md).
 
 ## Exporting

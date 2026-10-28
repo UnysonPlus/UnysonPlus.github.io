@@ -35,6 +35,25 @@ The **✦ AI assist** button at the bottom right of the stage opens the chat.
 own computer ("…wants to access other apps and services on this device"): choose **Allow** once. The kit answers only the
 Studio's own address, so other websites cannot use your AI. The panel names the AI at work.
 
+## Work in steps (with a project and Claude Code)
+
+When a [project](./ai-agents.md#projects) is open and the AI Dev Kit's AI is **Claude Code**, AI assist can work in steps
+instead of answering in one go: Claude Code runs as an agent inside the project's folder, with the Kinetic Scenes
+tools. It reads the project notes, looks up the format, edits the scene, looks at the frames it changed, checks its work
+and writes what it did into the notes. Each step shows in the chat as it happens, and the scene updates on the stage
+every time it saves.
+
+<img src="/img/kinetic-scenes/ai-assist-steps-working.png" alt="AI assist working in steps: the steps stream into the chat" width="400" />
+<img src="/img/kinetic-scenes/ai-assist-steps-done.png" alt="The finished answer: what changed, what was checked, and the number of steps" width="400" />
+
+- **Turn it on or off** in the AI assist settings (the gear): *Work in steps in the project*. The line under the request
+  box says *In steps* while it is on. It is used for **This scene** and **Selected**; **New scene** still answers in one go.
+- **What it may touch:** the files in the project folder, and the Kinetic Scenes tools (the guide, check scene, frames,
+  the timeline, the notes). It cannot run commands, reach the web, start other agents, render, or save anywhere else.
+- **Stop** stops it; whatever it already saved stays, and **Undo** goes back step by step.
+- A request takes about a minute (15 or so steps for a small change), using your own Claude subscription through Claude
+  Code. With another AI in the kit (an API key, a local model), AI assist answers in one go, as before.
+
 ## Plan first
 
 Turn on **Plan first** for a new scene and choose what you are making:

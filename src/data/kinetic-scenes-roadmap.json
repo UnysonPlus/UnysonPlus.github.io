@@ -1172,8 +1172,8 @@
         {
           "id": "p21-agent-assist",
           "title": "AI assist that works in steps",
-          "detail": "AI assist gets the same tools as a connected agent and works in steps inside the project folder, showing its progress.",
-          "status": "planned"
+          "detail": "With a project open and Claude Code in the AI Dev Kit, AI assist runs as an agent in the project folder with the Kinetic Scenes tools: it reads the notes, edits the scene, looks at frames, checks its work and adds to the notes, and each step shows in the chat as it happens. It cannot run commands, reach the web or render.",
+          "status": "done"
         }
       ]
     },

@@ -548,6 +548,7 @@ const config = {
               {label: 'Introduction', to: '/intro'},
               {label: 'Extensions', to: '/extensions/overview'},
               {label: 'Blocks', to: '/blocks/intro'},
+              {label: 'Headless WordPress', to: '/headless'},
             ],
           },
           {
@@ -556,14 +557,13 @@ const config = {
               {label: 'GitHub Org', href: 'https://github.com/UnysonPlus'},
               {label: 'Plugin Repo', href: 'https://github.com/UnysonPlus/UnysonPlus'},
               {label: 'Theme Repo', href: 'https://github.com/UnysonPlus/UnysonPlus-Theme'},
+              {label: 'Demos', href: 'https://demos.unysonplus.com/'},
             ],
           },
           {
             title: 'Resources',
             items: [
               {label: 'Guides', to: '/guides/'},
-              {label: 'Headless WordPress', to: '/headless'},
-              {label: 'Demos', href: 'https://demos.unysonplus.com/'},
               {label: 'API Reference', to: '/reference/'},
               {label: 'Design Decisions', to: '/decisions'},
             ],
@@ -573,6 +573,8 @@ const config = {
             items: [
               {label: 'News', to: '/blog'},
               {label: 'Sitemap', to: '/sitemap'},
+              {label: 'Privacy Policy', to: '/privacy'},
+              {label: 'Terms of Use', to: '/terms'},
             ],
           },
         ],

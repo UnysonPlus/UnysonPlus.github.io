@@ -162,8 +162,12 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
 
 - **Rive elements** (interactive vector motion) — ✅ **shipped as [Rive](/animation-engine/rive)**:
   stateful vector animations with live inputs, data binding, asset swaps and JS control.
-- **Curated WebGL image transitions** (ripple / liquid / displace presets) and richer particle presets
-  in [WebGL Object](/animation-engine/webgl-object) — still ahead.
+- **Curated WebGL image transitions** — ✅ **shipped** as the **Image Transitions** preset in
+  [WebGL Object](/animation-engine/webgl-object): a multi-image slideshow that cross-fades from one image to
+  the next on a loop with a **fade / ripple / liquid-dissolve / displace / wave** shader, with per-preset
+  time-per-image, transition length and effect strength. Reuses the full-screen-quad shader path (two
+  textures + an animated `uProgress`). *Verified live (5-image loop, images render crisply and advance).*
+  Richer **particle presets** in WebGL Object are still ahead.
 
 ## Growing the engine from demand ✅ Shipped
 

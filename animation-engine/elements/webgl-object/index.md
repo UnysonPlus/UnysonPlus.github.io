@@ -27,9 +27,9 @@ Pick a **Style** — two families:
 : Glass Blob · Liquid Metal · Distorted Sphere · Particle Field
 
 **Shaders (full-screen)**
-: Gradient Mesh · Plasma · Aurora · Fluid (pointer-reactive) · Dot Matrix / Halftone · Image Distortion
+: Gradient Mesh · Plasma · Aurora · Fluid (pointer-reactive) · Dot Matrix / Halftone · Image Distortion · Image Transitions
 
-Each style reveals its own parameters (e.g. Glass → *Refraction* & *Iridescence*, Liquid Metal → *Metalness* & *Roughness*, Particle Field → *Particle count* & *size*, Plasma → *Scale/Flow/Contrast*, Image Distortion → an *Image* + *Strength*).
+Each style reveals its own parameters (e.g. Glass → *Refraction* & *Iridescence*, Liquid Metal → *Metalness* & *Roughness*, Particle Field → *Particle count* & *size*, Plasma → *Scale/Flow/Contrast*, Image Distortion → an *Image* + *Strength*, **Image Transitions** → a list of *Images* + a *Transition* (fade / ripple / liquid dissolve / displace / wave), *Time per image*, *Transition length* and *Effect strength* — a looping slideshow that melts one image into the next on the GPU).
 
 ## Options by tab
 

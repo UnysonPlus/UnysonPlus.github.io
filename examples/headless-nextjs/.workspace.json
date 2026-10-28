@@ -1,0 +1,13 @@
+{
+  "title": "headless-books (Next.js)",
+  "open": "lib/wordpress.ts",
+  "files": {
+    "lib/wordpress.ts": { "note": "The one place that talks to WordPress: types for the REST response, a fetch helper with revalidation, and one function per query.", "highlight": "36-39,46-48" },
+    "app/books/page.tsx": { "note": "The books list. Fetches books and genres in parallel and turns genre IDs into names.", "highlight": "7-8" },
+    "app/books/[slug]/page.tsx": { "note": "One page per book, generated at build time, with its title, description and cover as page metadata.", "highlight": "8-11" },
+    "app/layout.tsx": { "note": "The shared HTML shell for every page." },
+    ".env.example": { "note": "The only setting: the address of your WordPress site." },
+    "package.json": { "note": "Next.js, React and TypeScript. Nothing else is needed." },
+    "README.md": { "note": "What the WordPress side needs, and how to run it." }
+  }
+}

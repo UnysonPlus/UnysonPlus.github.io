@@ -1198,7 +1198,7 @@
           "id": "p22-timeline",
           "title": "A timeline at a glance",
           "detail": "One picture of a stretch of the video: a strip of frames, the sound wave and every spoken word at its time, so an agent places cuts, captions and narration where they belong without pulling dozens of frames.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p22-cut-check",

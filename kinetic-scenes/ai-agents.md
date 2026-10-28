@@ -78,7 +78,8 @@ before working on a project and add a line when something is decided or done, so
 carries on where the last one stopped.
 
 The tools the agent gets: `project_list`, `project_save` and `project_notes` (the workspace), `scene_guide` (how to make a good scene),
-`scene_check`, `scene_inspect`, `scene_stills` (it looks at frames), `scene_render`, and `audio_beats`,
+`scene_check`, `scene_inspect`, `scene_stills` (it looks at frames), `scene_timeline` (frames, sound wave, every spoken
+word at its time and the words on screen in one picture, with pauses inside a phrase marked), `scene_render`, and `audio_beats`,
 `audio_transcribe`, `audio_separate`. Agents that run commands also have the kit's command line
 (`studio-cli record`, `screencast`, `music`, `project`), which records the screen and builds the scene around the
 recording.

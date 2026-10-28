@@ -1,0 +1,46 @@
+{
+  "name": "unysonplus-headless-child",
+  "title": "headless-books (child theme)",
+  "open": "inc/includes/headless-books-rest.php",
+  "download": "/code-examples/unysonplus-headless-child.zip",
+  "files": [
+    {
+      "path": "framework-customizations/theme/options/posts/book.php",
+      "language": "php",
+      "code": "<?php\n/**\n * The \"Book Details\" box on the Book edit screen.\n *\n * Unyson+ loads options/posts/<post type>.php automatically. Each option id\n * (subtitle, book_author, …) is the key you read the value back with:\n * fw_get_db_post_option( $post_id, 'subtitle' ).\n */\n\nif ( ! defined( 'FW' ) ) {\n\tdie( 'Forbidden' );\n}\n\n$options = array(\n\t'book_details' => array(\n\t\t'title'   => __( 'Book Details', 'headless-books' ),\n\t\t'type'    => 'box',\n\t\t'options' => array(\n\t\t\t'subtitle'    => array(\n\t\t\t\t'type'  => 'text',\n\t\t\t\t'label' => __( 'Subtitle', 'headless-books' ),\n\t\t\t),\n\t\t\t'book_author' => array(\n\t\t\t\t'type'  => 'text',\n\t\t\t\t'label' => __( 'Author', 'headless-books' ),\n\t\t\t),\n\t\t\t'pages'       => array(\n\t\t\t\t'type'  => 'number',\n\t\t\t\t'label' => __( 'Pages', 'headless-books' ),\n\t\t\t),\n\t\t\t'cover_image' => array(\n\t\t\t\t'type'        => 'upload',\n\t\t\t\t'label'       => __( 'Cover image', 'headless-books' ),\n\t\t\t\t'images_only' => true,\n\t\t\t),\n\t\t\t'buy_url'     => array(\n\t\t\t\t'type'  => 'text',\n\t\t\t\t'label' => __( 'Buy link', 'headless-books' ),\n\t\t\t),\n\t\t),\n\t),\n);",
+      "note": "Unyson+ loads this file for the Book edit screen. Each option id is the key the value is saved under."
+    },
+    {
+      "path": "inc/includes/headless-books-rest.php",
+      "language": "php",
+      "code": "<?php\n/**\n * Adds the Book Details values to the REST API as `book_fields`.\n *\n * Doing this in code lets you shape the output for the front end: here the\n * cover comes back with its size and alt text instead of the stored\n * { attachment_id, url } pair.\n */\n\nif ( ! defined( 'FW' ) ) {\n\tdie( 'Forbidden' );\n}\n\nadd_action( 'rest_api_init', 'headless_books_register_rest_fields' );\n\nfunction headless_books_register_rest_fields() {\n\tregister_rest_field( 'book', 'book_fields', array(\n\t\t'get_callback' => 'headless_books_rest_fields',\n\t\t'schema'       => array(\n\t\t\t'description' => __( 'Book Details values.', 'headless-books' ),\n\t\t\t'type'        => 'object',\n\t\t\t'context'     => array( 'view', 'edit' ),\n\t\t\t'readonly'    => true,\n\t\t),\n\t) );\n}\n\n/**\n * @param array $post The post as prepared for the response.\n *\n * @return array\n */\nfunction headless_books_rest_fields( $post ) {\n\t$id = (int) $post['id'];\n\n\treturn array(\n\t\t'subtitle'    => (string) fw_get_db_post_option( $id, 'subtitle', '' ),\n\t\t'book_author' => (string) fw_get_db_post_option( $id, 'book_author', '' ),\n\t\t'pages'       => (int) fw_get_db_post_option( $id, 'pages', 0 ),\n\t\t'cover_image' => headless_books_rest_image( fw_get_db_post_option( $id, 'cover_image' ) ),\n\t\t'buy_url'     => esc_url_raw( (string) fw_get_db_post_option( $id, 'buy_url', '' ) ),\n\t);\n}\n\n/**\n * Turn a stored upload value into what a front end needs for an <img>.\n *\n * @param mixed $value { attachment_id, url } as saved by the upload option.\n *\n * @return array|null\n */\nfunction headless_books_rest_image( $value ) {\n\t$attachment_id = is_array( $value ) && ! empty( $value['attachment_id'] ) ? (int) $value['attachment_id'] : 0;\n\t$src           = $attachment_id ? wp_get_attachment_image_src( $attachment_id, 'large' ) : false;\n\n\tif ( ! $src ) {\n\t\treturn null;\n\t}\n\n\treturn array(\n\t\t'id'     => $attachment_id,\n\t\t'url'    => $src[0],\n\t\t'width'  => (int) $src[1],\n\t\t'height' => (int) $src[2],\n\t\t'alt'    => (string) get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ),\n\t);\n}",
+      "note": "Adds the field values to each book's REST response, and resolves the cover image to a URL, size and alt text.",
+      "highlight": "17-18,36-42"
+    },
+    {
+      "path": "inc/includes/headless-books-types.php",
+      "language": "php",
+      "code": "<?php\n/**\n * The Book post type and the Genre taxonomy.\n *\n * `show_in_rest` is what makes them appear in the REST API at\n * /wp-json/wp/v2/book and /wp-json/wp/v2/genre.\n */\n\nif ( ! defined( 'FW' ) ) {\n\tdie( 'Forbidden' );\n}\n\nadd_action( 'init', 'headless_books_register_types' );\n\nfunction headless_books_register_types() {\n\tregister_post_type( 'book', array(\n\t\t'labels'       => array(\n\t\t\t'name'          => __( 'Books', 'headless-books' ),\n\t\t\t'singular_name' => __( 'Book', 'headless-books' ),\n\t\t),\n\t\t'public'       => true,\n\t\t'has_archive'  => true,\n\t\t'rewrite'      => array( 'slug' => 'books' ),\n\t\t'menu_icon'    => 'dashicons-book',\n\t\t'supports'     => array( 'title', 'editor', 'excerpt', 'thumbnail' ),\n\t\t'show_in_rest' => true,\n\t) );\n\n\tregister_taxonomy( 'genre', 'book', array(\n\t\t'labels'       => array(\n\t\t\t'name'          => __( 'Genres', 'headless-books' ),\n\t\t\t'singular_name' => __( 'Genre', 'headless-books' ),\n\t\t),\n\t\t'hierarchical' => true,\n\t\t'show_in_rest' => true,\n\t) );\n}",
+      "note": "Registers the Book post type and Genre taxonomy with show_in_rest, so they appear in the API.",
+      "highlight": "26,35"
+    },
+    {
+      "path": "functions.php",
+      "language": "php",
+      "code": "<?php\n/**\n * Headless Books child theme.\n *\n * Nothing to load by hand: the parent theme includes every file in this\n * theme's inc/includes/ folder automatically, once the Unyson+ framework is\n * running. Give those files a prefix (headless-books-*) so they never share a\n * name with one of the parent's.\n *\n * Careful with inc/ itself: a file there named like a parent file\n * (inc/post-types.php, inc/menus.php, inc/static.php, inc/hooks.php …)\n * REPLACES the parent's version instead of adding to it.\n */",
+      "note": "Empty on purpose: the parent theme loads inc/includes/ automatically. Read the warning about inc/ file names."
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "code": "# Headless Books — child theme\n\nThe WordPress side of a headless site, written as code instead of set up in the admin. It is a child\ntheme of `unysonplus-theme` and needs the Unyson+ plugin active. The parent theme loads every file in\n`inc/includes/` automatically, so `functions.php` has nothing to require.\n\n| File | What it does |\n|---|---|\n| `inc/includes/headless-books-types.php` | Registers the `book` post type and `genre` taxonomy, both in the REST API. |\n| `framework-customizations/theme/options/posts/book.php` | The \"Book Details\" fields on the Book edit screen. |\n| `inc/includes/headless-books-rest.php` | Adds those values to the REST API as `book_fields`, with the cover's size and alt text. |\n\nInstall it like any theme (zip this folder, then Appearance → Themes → Add New → Upload) and activate it.\n\n```bash\ncurl \"https://your-site.com/wp-json/wp/v2/book?_fields=id,slug,title,book_fields\"\n```\n\nUse this route when the definitions should live in version control or ship with a theme. For a\nno-code setup, the Post Types and Custom Fields extensions create the same thing from the admin.",
+      "note": "What each file does, and how to install the theme."
+    },
+    {
+      "path": "style.css",
+      "language": "css",
+      "code": "/*\nTheme Name:  Headless Books\nDescription: The WordPress side of a headless site: a Book post type, its fields and a REST field, defined in code.\nTemplate:    unysonplus-theme\nVersion:     1.0.0\nText Domain: headless-books\n*/",
+      "note": "The theme header. `Template: unysonplus-theme` makes it a child of the Unyson+ theme."
+    }
+  ]
+}

@@ -4,8 +4,11 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
+    "prestart": "node scripts/gen-code-examples.mjs",
     "start": "docusaurus start",
+    "prebuild": "node scripts/gen-code-examples.mjs",
     "build": "docusaurus build",
+    "code-examples": "node scripts/gen-code-examples.mjs",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",

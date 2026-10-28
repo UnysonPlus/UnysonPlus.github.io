@@ -130,8 +130,13 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   and drives the overlap handoff — no container class, no hidden step list. This is the author's original
   model: *add N real gallery shortcodes, configure each, they connect into one sequence.* *(Verified: 3
   stacked galleries, Chain on, auto-wrapped into one master ScrollTrigger with clean handoffs.)*
-- **Real-design layouts** (ahead): give each gallery design a declarative resting layout so a step is a
-  *real* design (ring → tunnel → sphere), not a formation proxy.
+- **Real-design layouts** (🚧 in progress): give each gallery design a declarative resting layout so a step
+  is a *real* design, not an abstract formation. Most designs already have a faithful formation proxy
+  (ring ≈ Carousel Ring, wall ≈ Panorama Wall, sphere ≈ Card Sphere, tunnel ≈ Card Tunnel, spiral ≈ Spiral
+  Stream…); the first two designs that had **no** faithful look — **Cover Flow** (one flat front card with
+  steeply angled, receding neighbours) and **Film Strip** (an even horizontal reel) — are now added as
+  choreography steps (14 looks total). *Verified live.* More designs (orbit globe, mosaic, hero reel…) to
+  follow, then a declarative registry so a design contributes its own resting pose.
 - **Authoring polish** (ahead): cross-column / cross-section grouping (today it groups galleries that are
   adjacent siblings in one column), a right-click *Create choreography* helper, and retiring the standalone
   abstract `scroll_choreography` steps design once native chaining is the only authoring path.

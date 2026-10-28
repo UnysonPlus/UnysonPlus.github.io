@@ -6,13 +6,17 @@ description: "Build a headless WordPress content API without ACF or a custom pos
 keywords: [headless wordpress without acf, acf alternative, wordpress custom fields rest api, custom post type rest api, unyson+ headless, next.js wordpress]
 ---
 
+import CodeWorkspace from '@site/src/components/CodeWorkspace';
+import nextExample from '@site/src/data/code-examples/headless-nextjs.json';
+import childExample from '@site/src/data/code-examples/unysonplus-headless-child.json';
+
 # Headless WordPress with Unyson+
 
 This tutorial builds the content side of a headless site using only Unyson+: a **Book** post type with a
 **Genre** taxonomy and five custom fields, available over the WordPress REST API, then fetched from a
 Next.js front end. No ACF and no custom post types plugin are needed.
 
-New to headless? Start with [How headless WordPress works](./headless-wordpress.md).
+New to headless? Start with [How headless WordPress works](./headless-wordpress.mdx).
 
 :::info What works today, and what is coming
 Everything on this page works with the current **Post Types** and **Custom Fields** extensions. The
@@ -27,7 +31,7 @@ if they are not installed).
 
 ## 2. Create the post type and taxonomy
 
-Go to **Unyson+ → Post Types**.
+Go to **Unyson+ → Post Types** ([Post Types documentation](/data-modeling/post-types)).
 
 1. In **Post Types**, click **Add Post Type**: Singular **Book**, Plural **Books**, Key **`book`**.
    On the **Visibility** tab, leave **Block editor / REST** on (it is on by default). On the **URLs**
@@ -45,7 +49,7 @@ the post type, its taxonomies and a matching field group in one click.
 
 ## 3. Create the field group
 
-Go to **Unyson+ → Custom Fields** and click **Add Field Group**.
+Go to **Unyson+ → Custom Fields** and click **Add Field Group** ([Custom Fields documentation](/data-modeling/custom-fields)).
 
 1. **Group title:** Book Details. **Show on post types:** Book.
 2. Turn on **Show in REST API**. Without it, the values stay out of the API.
@@ -107,57 +111,62 @@ Things to know about the values:
 
 ## 5. Fetch it in Next.js
 
-A minimal App Router page that lists the books:
+Here is a complete Next.js (App Router) front end for these books: a books list, a page per book with
+its own title and cover as page metadata, and one file that does all the talking to WordPress. Click
+any file to open it, or download the whole project.
 
-```tsx title="app/books/page.tsx"
-const WP = process.env.WP_URL; // e.g. https://your-site.com
+<CodeWorkspace example={nextExample} />
 
-type Book = {
-  id: number;
-  slug: string;
-  title: { rendered: string };
-  unysonplus_fields: {
-    subtitle?: string;
-    book_author?: string;
-    pages?: number;
-    cover_image?: { attachment_id: number | ''; url: string };
-    buy_url?: string;
-  };
-};
+To run it: download it, copy `.env.example` to `.env.local` and set `WP_URL` to your site, then
+`npm install` and `npm run dev`. The same requests work from Nuxt, Astro, SvelteKit or a mobile app; only
+the fetching code changes.
 
-async function getBooks(): Promise<Book[]> {
-  const res = await fetch(
-    `${WP}/wp-json/wp/v2/book?_fields=id,slug,title,unysonplus_fields&per_page=20`,
-    { next: { revalidate: 300 } } // rebuild the list at most every 5 minutes
-  );
-  if (!res.ok) throw new Error(`WordPress returned ${res.status}`);
-  return res.json();
-}
+## Or define it all in code
 
-const absolute = (url?: string) => (url?.startsWith('//') ? `https:${url}` : url);
+Steps 2 and 3 can also be code in a child theme instead of admin screens. Use this route when the
+definitions should live in version control, or ship with a theme you distribute. It is the same Book,
+with one difference: the REST field is your own, so you choose its shape. Here the cover comes back
+ready for an `<img>` tag, with its size and alt text.
 
-export default async function BooksPage() {
-  const books = await getBooks();
-  return (
-    <ul>
-      {books.map((book) => {
-        const f = book.unysonplus_fields;
-        return (
-          <li key={book.id}>
-            {f.cover_image?.url && <img src={absolute(f.cover_image.url)} alt="" width={160} />}
-            <h2 dangerouslySetInnerHTML={{ __html: book.title.rendered }} />
-            {f.subtitle && <p>{f.subtitle}</p>}
-            <p>{f.book_author} · {f.pages} pages</p>
-            {f.buy_url && <a href={f.buy_url}>Buy</a>}
-          </li>
-        );
-      })}
-    </ul>
-  );
+<CodeWorkspace example={childExample} />
+
+How the files are loaded follows the Unyson+ theme conventions:
+
+- **`inc/includes/`** — the parent theme includes every PHP file in a child theme's `inc/includes/`
+  folder automatically, so `functions.php` needs no `require` lines. Prefix the file names
+  (`headless-books-*`) so they never share a name with one of the parent's.
+- **`framework-customizations/theme/options/posts/book.php`** — Unyson+ shows these options on the
+  Book edit screen and saves each value under its option id, which `fw_get_db_post_option()` reads back.
+- **Not straight in `inc/`.** A child file there named like a parent file (`inc/post-types.php`,
+  `inc/menus.php`, `inc/static.php`, `inc/hooks.php`) *replaces* the parent's file instead of adding
+  to it.
+
+The response then carries `book_fields`:
+
+```json
+{
+  "id": 3642,
+  "slug": "the-quiet-garden",
+  "title": { "rendered": "The Quiet Garden" },
+  "genre": [258],
+  "book_fields": {
+    "subtitle": "A year among the weeds",
+    "book_author": "Sam Rivera",
+    "pages": 248,
+    "cover_image": {
+      "id": 3624,
+      "url": "https://your-site.com/wp-content/uploads/2026/10/quiet-garden-cover.jpg",
+      "width": 1024,
+      "height": 1024,
+      "alt": "The Quiet Garden cover"
+    },
+    "buy_url": "https://example.com/books/the-quiet-garden"
+  }
 }
 ```
 
-The same request works from Nuxt, Astro, SvelteKit or a mobile app; only the fetching code changes.
+If you use this route with the Next.js example, read `book_fields` instead of `unysonplus_fields` in
+`lib/wordpress.ts`, and use the cover's `url` as it is (it already has its scheme).
 
 ## Compared with ACF and a custom post types plugin
 

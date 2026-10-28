@@ -1056,7 +1056,7 @@
           "id": "p18-camera-path",
           "title": "See the camera's path",
           "detail": "In 3D layers, show the camera's route and field of view in the scene, so a camera move can be shaped by eye.",
-          "status": "planned"
+          "status": "done"
         }
       ]
     },

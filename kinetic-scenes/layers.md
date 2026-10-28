@@ -70,6 +70,17 @@ chrome), a resting pose and the light; it is lit by a built-in studio environmen
 The 3D engine (three.js) loads only for scenes that have a 3D layer.
 
 
+#### The camera's path
+
+A selected 3D layer shows its **Camera path** in the Inspector: where the camera goes over the layer's time, seen
+**from above** (orbiting and moving in and out) and **from the side** (tilting up and down), with the object in the
+middle. The round dot is where it starts, the square where it ends, the small dots each second (far apart: moving
+fast), and the dashed ring the resting distance. The orange dot is the camera at the playhead, with a wedge for what it
+sees. The path is read from the timeline itself, so every preset (Orbit, Camera push, Tumble in…) and keyframe counts;
+change a clip and the path redraws. A camera that doesn't move shows where it sits.
+
+<img src="/img/kinetic-scenes/camera-path.png" alt="The Camera path panel: a route from above and from the side, with the camera at the playhead and its field of view" width="307" />
+
 #### A 3D object from a description
 
 With **Object: Model (glTF / GLB)**, type what you want under **Or make one from a description** ("a ceramic coffee

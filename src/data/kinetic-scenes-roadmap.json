@@ -995,7 +995,7 @@
           "id": "p17-directions",
           "title": "Three directions first",
           "detail": "For a new scene, AI assist first proposes three short directions (mood, pace, look, with a still for each) and builds the one chosen, instead of committing to the first idea.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p17-scored",

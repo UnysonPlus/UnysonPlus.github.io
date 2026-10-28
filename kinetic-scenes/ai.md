@@ -35,6 +35,17 @@ The **✦ AI assist** button at the bottom right of the stage opens the chat.
 own computer ("…wants to access other apps and services on this device"): choose **Allow** once. The kit answers only the
 Studio's own address, so other websites cannot use your AI. The panel names the AI at work.
 
+## Three directions first
+
+A new scene (**New scene**, making **A scene**) starts with **three directions** to choose from, before anything is
+planned or built. Each is a card in its own colours and font, with its mood, pace and look, and the frame it opens on.
+**Build this one** plans and builds the scene in that direction (with **Plan first** on, you still see and change the
+plan before it is built). Not what you want? Say what to change and you get three more.
+
+The cards are a sample of each direction's palette and type, not rendered frames, so they come back in the time of one
+answer. Turn **Three directions first** off (next to Plan first) to go straight to the plan. Directions are for new
+scenes only; explainers and tutorials start from their script.
+
 ## Point at the frame to change it
 
 For a change to one thing at one moment, choose **Point** (next to *This scene* and *Selected*), move the playhead to

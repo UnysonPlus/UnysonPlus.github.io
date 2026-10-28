@@ -37,19 +37,22 @@ The extension builds on these; it does not replace them.
   **raw stored values** (an image is its attachment ID and a protocol-relative URL, with no sizes or
   alt text), and covers **posts only**.
 
-### Phase 1 — Clean, read-only content API <span className="badge badge--warning">Coming soon</span>
+### Phase 1 — Clean, read-only content API <span className="badge badge--primary">In progress</span>
 
-- **Resolved field values.** Each option type gets a REST formatter, so the API returns something a
+Version **0.1** of the extension is built and being tested; it is not in the Extensions manager yet. Items
+marked <span className="badge badge--success">Built</span> are in it.
+
+- <span className="badge badge--success">Built</span> for images and galleries: **Resolved field values.** Each option type gets a REST formatter, so the API returns something a
   front end can use directly: images and galleries as URL, width, height, alt and sizes; links to posts
   as ID, slug and URL; colours, typography and icons as plain values; repeaters and groups as nested
   arrays. The raw value stays available behind `?unysonplus_raw=1`.
 - **One switch per field**, as well as per group, so a private field in a public group never leaks.
 - **Terms and users.** Field groups attached to taxonomies and user profiles appear on
   `/wp/v2/<taxonomy>` and `/wp/v2/users`.
-- **Settings endpoint** — `/unysonplus/v1/settings`: Theme Settings values the site owner marks as
-  public (logo, colours, fonts, social links, contact details), like an options page.
-- **Menus endpoint** — `/unysonplus/v1/menus/<location>`: a nested menu tree, including mega-menu
-  columns.
+- <span className="badge badge--success">Built</span> **Settings endpoint** — `/unysonplus/v1/settings`: the site name, tagline, address,
+  logo and icon, plus the Theme Settings the site owner lists as public in the extension's settings.
+- <span className="badge badge--success">Built</span> **Menus endpoint** — `/unysonplus/v1/menus` (the locations) and
+  `/unysonplus/v1/menus/<location>`: a nested menu tree. Mega-menu columns are still to come.
 - **Schema.** Each REST field publishes a JSON schema, so clients can generate types (for example
   TypeScript) from `/wp-json`.
 - **Admin screen** under Unyson+ → Headless: which post types, groups, fields and settings are

@@ -101,6 +101,25 @@ A field group is more than a list of fields. Per group you can set:
   Author, Format, Page Attributes, Featured Image, Categories, Tags, …) from the target edit screen.
 - **Show in REST API** — expose the group's values under `unysonplus_fields` on the targeted post types. See [Headless WordPress](/headless) for using them from a JavaScript or Next.js front end.
 
+## In the REST API
+
+Turn on a group's **Show in REST API** and its values appear under `unysonplus_fields` on every post of
+its post types, for example `GET /wp-json/wp/v2/book?_fields=id,title,unysonplus_fields`. Each value has
+its stored shape (an Image is `{ attachment_id, url }`); the [Headless extension](/extensions/headless)
+turns images into ready-to-use objects with their size and alt text.
+
+- **Keep one field private.** Every field has its own **Show in REST API** checkbox, on by default. Turn
+  it off for a value that should stay out of the public API (an internal note, a cost you calculate a
+  price from) while the rest of the group is in it.
+- **A schema for clients.** `unysonplus_fields` publishes a JSON schema with one typed property per field
+  in the API (Text → `string`, Number → `number`, Image → `object` …). Read it with
+  `curl -X OPTIONS https://your-site.com/wp-json/wp/v2/<type>` or generate TypeScript types from it.
+- **Read-only.** The API returns values but does not save them.
+- **For developers:** the `fw_ext_custom_fields_rest_values` filter (`$values, $post_id, $post_type`)
+  changes the values before they are sent.
+
+Step-by-step guides with tested front ends: [Headless WordPress](/headless).
+
 ## Import / Export
 
 All field groups can be exported as JSON and imported on another site (Tools section, import appends

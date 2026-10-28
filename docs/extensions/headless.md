@@ -1,20 +1,169 @@
 ---
-title: "Headless Extension (Planned): Roadmap"
-sidebar_label: "Headless (planned)"
+title: "Headless Extension: REST API for Headless WordPress Sites"
+sidebar_label: "Headless"
 sidebar_position: 27
-description: "The plan for the Unyson+ Headless extension: settings and menus endpoints, Page Builder content as HTML or structured JSON, preview, rebuild webhooks and CORS, on top of the REST support Post Types and Custom Fields already have."
+description: "The Unyson+ Headless extension: ready-to-use images in the REST API, a JSON schema for custom fields, menus and site settings endpoints, private fields, and an admin screen that previews what a front end receives."
 ---
 
-# Headless extension (planned)
+# Headless extension
 
-A planned extension that adds the rest of what a headless site needs: settings and menus endpoints,
-Page Builder content in a form a front end can use, preview, rebuild webhooks and CORS.
+The Headless extension gives a front end outside WordPress (Next.js, plain JavaScript, a mobile app)
+what it needs from a Unyson+ site, beyond what the core REST API provides: images it can put straight
+into an `<img>` tag, the site's menus and basic settings, and a screen that shows exactly what the API
+returns. Everything it adds is **read-only and public**, like the rest of the WordPress REST API's public
+data.
 
-:::tip You can go headless today
-Unyson+ already covers the content side without this extension: **Post Types** puts your types in the
-REST API, and **Custom Fields** adds their values. The **[Headless WordPress guides](/headless)** show how,
-with tested JavaScript and Next.js examples, next to the same setups built with ACF and CPT UI.
+:::info Status: version 0.1, in testing
+The extension is built and being tested; it is not in the Extensions manager yet. This page documents
+what it does. Until it is published, the [Headless WordPress guides](/headless) work without it: Post
+Types puts your content types in the REST API and Custom Fields adds their values.
 :::
+
+## What it adds
+
+| Feature | Where |
+|---|---|
+| Ready-to-use images (URL, size, alt text, every image size) | Inside `unysonplus_fields` on every post |
+| The site's menus as nested trees | `GET /wp-json/unysonplus/v1/menus` and `/menus/<location>` |
+| Site name, tagline, logo, icon and chosen Theme Settings | `GET /wp-json/unysonplus/v1/settings` |
+| The **Headless** admin screen with a JSON preview | Unyson+ → Headless |
+
+Two related controls live in **Custom Fields** (0.1.23 and later), so they work with or without this
+extension: a **Show in REST API** switch on every field, and a JSON **schema** for `unysonplus_fields`.
+
+## Before you start
+
+- Unyson+ with the **Post Types** and **Custom Fields** extensions active, a content type in the REST API
+  and a field group with **Show in REST API** on. [Headless with Unyson+](/headless/unysonplus) walks
+  through that setup.
+- **Pretty permalinks** (Settings → Permalinks: anything but Plain), so `/wp-json/` addresses work.
+- Activate **Headless** under **Unyson+ → Extensions**.
+
+## Ready-to-use images
+
+Custom Fields stores an image as its attachment ID and a URL that starts with `//`. With Headless active,
+every image value in `unysonplus_fields` (at the top level, in galleries and inside repeater rows) comes
+back ready to use:
+
+```json
+"cover_image": {
+  "attachment_id": 3630,
+  "url": "https://your-site.com/wp-content/uploads/2026/10/quiet-garden-cover.jpg",
+  "width": 600,
+  "height": 900,
+  "alt": "The Quiet Garden cover",
+  "sizes": {
+    "thumbnail": { "url": "https://your-site.com/…/quiet-garden-cover-150x150.jpg", "width": 150, "height": 150 },
+    "medium": { "url": "https://your-site.com/…/quiet-garden-cover-200x300.jpg", "width": 200, "height": 300 }
+  }
+}
+```
+
+- `attachment_id` and `url` stay, so front ends written for the stored shape keep working; the `url` is
+  now absolute.
+- `alt` is the image's **Alternative Text** from the Media Library; `sizes` lists every resized copy
+  WordPress made.
+- Add **`?unysonplus_raw=1`** to any request to get the stored values instead.
+- Turn the whole feature off with **Ready-to-use images** in the extension's settings.
+
+## Keeping a field private
+
+Every Custom Fields field has a **Show in REST API** checkbox (Unyson+ → Custom Fields → the group → the
+field), on by default. Turn it off for a value that must not be public, such as an internal note or a
+cost you calculate a price from: the field disappears from the API while the rest of its group stays.
+The group's own **Show in REST API** switch still decides whether the group is in the API at all.
+
+## The schema
+
+`unysonplus_fields` publishes a JSON schema with one property per field in the API, typed from the field
+type (Text → `string`, Number → `number`, Image → `object`, Gallery → `array`, and so on). Clients read it
+from the post type's `OPTIONS` request or from `/wp-json`, and type generators can turn it into
+TypeScript types:
+
+```bash
+curl -X OPTIONS https://your-site.com/wp-json/wp/v2/book
+# … "unysonplus_fields": { "type": "object", "properties": {
+#       "subtitle": { "type": "string" }, "pages": { "type": "number" }, "cover_image": { "type": "object" } … } }
+```
+
+## Menus
+
+`GET /wp-json/unysonplus/v1/menus` lists every menu location of the theme and the menu assigned to it:
+
+```json
+[
+  { "location": "primary", "label": "Primary menu", "menu": { "id": 256, "name": "Main menu", "slug": "main-menu" },
+    "href": "https://your-site.com/wp-json/unysonplus/v1/menus/primary" },
+  { "location": "secondary", "label": "Secondary menu", "menu": null, "href": "…/menus/secondary" }
+]
+```
+
+`GET /wp-json/unysonplus/v1/menus/<location>` returns that menu as a tree. Each item has `id`, `title`,
+`url`, `target`, `classes`, `object` and `object_id` (what it links to), `description`, `parent` and its
+`children`:
+
+```json
+{
+  "location": "primary",
+  "menu": { "id": 256, "name": "Main menu", "slug": "main-menu" },
+  "items": [
+    { "id": 11, "title": "Books", "url": "https://your-site.com/books/", "target": "", "classes": [],
+      "object": "book", "object_id": 0, "description": "", "parent": 0,
+      "children": [
+        { "id": 12, "title": "Fiction", "url": "https://your-site.com/genre/fiction/", "parent": 11, "children": [] }
+      ] }
+  ]
+}
+```
+
+An unknown location, or one with no menu assigned, returns a 404.
+
+## Site settings
+
+`GET /wp-json/unysonplus/v1/settings` returns what a front end needs to brand its pages:
+
+```json
+{
+  "name": "Your Site",
+  "description": "Your tagline",
+  "url": "https://your-site.com/",
+  "language": "en-US",
+  "logo": { "attachment_id": 41, "url": "…", "width": 400, "height": 120, "alt": "", "sizes": {} },
+  "icon": { "attachment_id": 42, "url": "…", "width": 512, "height": 512, "alt": "", "sizes": {} },
+  "theme": { "footer_copyright": "© 2026 Your Site" }
+}
+```
+
+`logo` is the theme's custom logo and `icon` the Site Icon (or `null`). `theme` holds only the Theme
+Settings you choose in the extension's settings; nothing else from Theme Settings is ever exposed.
+
+## The Headless screen
+
+**Unyson+ → Headless** shows the API addresses, every Custom Fields group in the API with each field
+marked public or private, and a **Preview** of the JSON a visitor who is not logged in gets for any post.
+
+<img src="/img/extensions/headless/admin-overview.png" alt="The Headless screen: the endpoints, and the Book Details group's fields with Buy link marked private" width="1672" />
+
+<img src="/img/extensions/headless/admin-preview.png" alt="The Preview: a book's JSON with its subtitle, author, pages and the cover image with width, height, alt text and sizes" width="1672" />
+
+Tick **Stored values** to preview the response as `?unysonplus_raw=1` returns it.
+
+## Settings
+
+Unyson+ → Extensions → Headless → Settings.
+
+| Setting | Default | What it does |
+|---|---|---|
+| **Ready-to-use images** | On | Turns image values into the full object above. Off returns the stored values. |
+| **Theme Settings to expose** | Empty | Theme Settings option ids to include in `/settings` under `theme`, one per line. Unknown ids come back `null`. List only what is public. |
+
+## Limits
+
+- Read-only: nothing here saves data. Forms and other writes still go through their own features.
+- Field groups can target post types only, so terms and users have no fields in the API yet.
+- Page Builder content reaches the API as the finished HTML (`content.rendered`), without the CSS it
+  needs; Phase 2 below changes that.
+- Mega-menu columns are not in the menu tree yet.
 
 ## Roadmap
 
@@ -46,16 +195,16 @@ marked <span className="badge badge--success">Built</span> are in it.
   front end can use directly: images and galleries as URL, width, height, alt and sizes; links to posts
   as ID, slug and URL; colours, typography and icons as plain values; repeaters and groups as nested
   arrays. The raw value stays available behind `?unysonplus_raw=1`.
-- **One switch per field**, as well as per group, so a private field in a public group never leaks.
+- <span className="badge badge--success">Built</span> **One switch per field**, as well as per group, so a private field in a public group never leaks.
 - **Terms and users.** Field groups attached to taxonomies and user profiles appear on
   `/wp/v2/<taxonomy>` and `/wp/v2/users`.
 - <span className="badge badge--success">Built</span> **Settings endpoint** — `/unysonplus/v1/settings`: the site name, tagline, address,
   logo and icon, plus the Theme Settings the site owner lists as public in the extension's settings.
 - <span className="badge badge--success">Built</span> **Menus endpoint** — `/unysonplus/v1/menus` (the locations) and
   `/unysonplus/v1/menus/<location>`: a nested menu tree. Mega-menu columns are still to come.
-- **Schema.** Each REST field publishes a JSON schema, so clients can generate types (for example
+- <span className="badge badge--success">Built</span> **Schema.** Each REST field publishes a JSON schema, so clients can generate types (for example
   TypeScript) from `/wp-json`.
-- **Admin screen** under Unyson+ → Headless: which post types, groups, fields and settings are
+- <span className="badge badge--success">Built</span> **Admin screen** under Unyson+ → Headless: which post types, groups, fields and settings are
   exposed, with a live preview of the JSON for a chosen post.
 
 ### Phase 2 — Page Builder content <span className="badge badge--warning">Coming soon</span>

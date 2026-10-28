@@ -136,8 +136,10 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   Stream…); the designs that had **no** faithful look are being added as choreography steps — so far
   **Cover Flow** (one flat front card with steeply angled, receding neighbours), **Film Strip** (an even
   horizontal reel), **Orbit** (a tilted elliptical halo of cards) and **Hero Reel** (one large hero card
-  over a thumbnail row) — **16 looks total**. *All verified live.* More designs (mosaic, focus slider,
-  depth stack…) to follow, then a declarative registry so each design contributes its own resting pose.
+  over a thumbnail row), **Focus Slider** (a big centre card with peeking neighbours), **Depth Stack** (cards
+  receding straight into depth) and **Mosaic** (a packed collage of varied tiles) — **19 looks total**.
+  *All verified live.* Remaining before this closes: a declarative registry so each design contributes its
+  own resting pose, rather than a hand-written formation.
 - **Authoring polish** (ahead): cross-column / cross-section grouping (today it groups galleries that are
   adjacent siblings in one column), a right-click *Create choreography* helper, and retiring the standalone
   abstract `scroll_choreography` steps design once native chaining is the only authoring path.

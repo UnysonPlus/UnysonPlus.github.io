@@ -27,6 +27,7 @@ A **project** is a folder on your computer, kept by the AI Dev Kit:
 Documents\Kinetic Scenes\          ← the workspace (you can choose another folder)
   Product launch\                  ← a project
     scene.json                     ← the scene
+    notes.md                       ← the plan, what was decided, what is left
     media\                         ← footage, voice, music, pictures
     renders\                       ← exported videos
 ```
@@ -71,7 +72,12 @@ too. An administrator can also fix the folder with `KINETIC_WORKSPACE` when the 
 Once your agent has used the kit's Kinetic Scenes tools, the Studio shows it as connected (*Connected: Claude Code*, with
 when it was last active) in AI assist and in File › Projects.
 
-The tools the agent gets: `project_list` and `project_save` (the workspace), `scene_guide` (how to make a good scene),
+**Project notes.** Each project keeps `notes.md`: the plan, what was decided and what is left. Open it with
+**File › Project notes…**: it saves as you type, and what your agent adds appears while it is open. Agents read the notes
+before working on a project and add a line when something is decided or done, so the next session (or another agent)
+carries on where the last one stopped.
+
+The tools the agent gets: `project_list`, `project_save` and `project_notes` (the workspace), `scene_guide` (how to make a good scene),
 `scene_check`, `scene_inspect`, `scene_stills` (it looks at frames), `scene_render`, and `audio_beats`,
 `audio_transcribe`, `audio_separate`. Agents that run commands also have the kit's command line
 (`studio-cli record`, `screencast`, `music`, `project`), which records the screen and builds the scene around the

@@ -1136,7 +1136,7 @@
           "id": "p20-studio",
           "title": "Screencasts in the Studio",
           "detail": "Drop a recording into Kinetic Scenes and it arrives framed: browser frame, the automatic zooms as camera keys you can adjust, the cursor and the step captions.",
-          "status": "planned"
+          "status": "done"
         }
       ]
     },
@@ -1192,7 +1192,7 @@
           "id": "p22-notes",
           "title": "Project notes",
           "detail": "Each project keeps a notes.md beside scene.json: the plan, what was approved, what is left. A later session, or another agent, carries on from it.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p22-timeline",

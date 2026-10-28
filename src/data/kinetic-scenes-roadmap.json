@@ -958,7 +958,7 @@
           "id": "p16-batch",
           "title": "One scene, many videos from data",
           "detail": "Bind a scene's words, pictures and numbers to a spreadsheet (products, prices, photos) and render one video per row: a reel for every product in a shop, from one design.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p16-stock",

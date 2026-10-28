@@ -130,10 +130,26 @@ front of the masthead.
 - **Frame break:** **Shatter** on the footage, with the person staying whole above it.
 - **Frame escape:** the footage in a frame (card or phone) and the person on top, unframed, so they spill out of it.
 
-Two models work together: one for fine edges such as hair, one that knows the body (so a shirt the colour of the wall
-stays solid). **Fine** quality runs on your graphics card where there is one (about 50 ms a frame) and on the processor
-otherwise; **Fast** uses the body model alone, many times quicker. Each frame is blended with the one before so edges
-don't flicker.
+#### Choosing the cut-out method
+
+**Cut-out method** (in Footage tools, above the buttons) picks how the person is cut out, so you can try what suits each
+video. It applies to the next **Cut out the person** (and to **Behind the person** when it cuts out first).
+
+| Method | Good for | How |
+|---|---|---|
+| **Standard** (the default) | the best edges, hair included | two models together: one for fine edges, one that knows the body (so a shirt the colour of the wall stays solid); on the graphics card where there is one (about 50 ms a frame), else the processor; each frame blended with the one before so edges don't flicker |
+| **Fast** | drafts: trying a layout before the real cut-out | the body model alone, many times quicker; rough at the hair |
+| **Robust Video Matting** | long clips, people moving: steady edges, very fast | one model that remembers the frames before, so edges hold still from frame to frame; about 18 s for a 10-second clip on a graphics card |
+
+<img src="/img/kinetic-scenes/cutout-methods.jpg" alt="The same frame cut out with Standard (left) and Robust Video Matting (right), on a pink background" width="480" />
+
+**Robust Video Matting** is an optional extra: it needs **voice and music separation** installed first (Tools ›
+Add-ons), which brings the runtime it uses, and it downloads its 15 MB model the first time you choose it. Its model is
+under the GPL-3.0 licence, which is why it isn't part of the kit itself; the videos you make with it are yours. When it
+can't run, the list says *(not installed)* and the hint says what to install.
+
+Coming later: **Person and what they hold**, where you click the person and the product once and both are followed
+through the video.
 
 ### Follow the face
 

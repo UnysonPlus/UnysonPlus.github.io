@@ -968,9 +968,15 @@
         },
         {
           "id": "p16-cutout-methods",
-          "status": "planned",
+          "status": "done",
           "title": "Choose the cut-out method",
-          "detail": "A setting for how people are cut out of footage, to try what suits each video: Fast (a quick body outline, for drafts), Standard (fine edges on the graphics card, the default), Person and what they hold (SAM 2: click the person and the product, both followed through the video) and Robust Video Matting (very fast and steady, an optional download because of its licence). Each shows what it is good at and whether it is installed. The standard method already runs about three times faster than before."
+          "detail": "A setting for how people are cut out of footage, to try what suits each video: Standard (fine edges on the graphics card, the default), Fast (a quick body outline, for drafts) and Robust Video Matting (very fast and steady, an optional download because of its licence). Each says what it is good at and whether it is installed. Person and what they hold (SAM 2) is its own item below."
+        },
+        {
+          "id": "p16-sam2",
+          "status": "planned",
+          "title": "Cut out the person and what they hold",
+          "detail": "A fourth cut-out method (SAM 2): click the person and the product once, and both are followed and cut out through the whole video, for product demos where the thing in the hand matters as much as the face."
         }
       ]
     },

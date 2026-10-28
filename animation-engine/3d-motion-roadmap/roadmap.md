@@ -84,20 +84,31 @@ options** (see [Area 2](./focus-areas#area-2--a-real-motion-timeline) for the fu
   easing, trigger ranges) in the **Advanced** box.
 - **1b · The Scroll Timeline Editor (visual).** A tracks-and-keyframes editor built by **reusing the
   Kinetic Scenes timeline**, with the playhead driven by **scroll instead of a clock** — a pinned
-  Section is the fixed stage, its `vh` pin length the scrubbable axis. Launched on the **front end**
-  from an **Animation Engine Timeline** admin-bar icon (later folded into the Live Editor), and
-  scoped to one pinned **Scroll Scene** first. It reads and writes the same options as **1a** — a
-  view over the settings, never a separate scene file.
+  Section is the fixed stage, its `vh` pin length the scrubbable axis. It reads and writes the same
+  options as **1a** — a view over the settings, never a separate scene file.
+  - **Phase 1 ✅ shipped — the visual timeline surface + live scrub.** A front-end, admin-only
+    **[Scroll Timeline](/animation-engine/scroll-timeline)**: a video-editor-style, bottom-docked
+    panel with **one track per scroll animation** on the page, each a block on a readable **0–100 %
+    scroll axis**, a **draggable playhead that scrubs the real page live** (scrub-linked animations
+    animate as you drag), a **scroll %/active** read-out, and **element highlighting** on hover.
+    Open with **Shift + T** or the Timeline button (bottom-right). This is the editor *shell* and the
+    scrubbing substrate — it reads every live ScrollTrigger, where the elements actually exist, which
+    is why it lives on the front end rather than inside a builder modal.
+  - **Phase 2 — ahead: drag-to-retime + the options compiler.** Dragging a block's edges to change an
+    animation's start/end and persisting it back into the element's Scroll Motion options, then the
+    full keyframe lanes.
   <br />*Probed 2026-10-21 — confirmed feasible:* the Kinetic Scenes player already ships the scroll
   mode (pinned sticky stage + sticky-header offset + smoothing, driving a seekable GSAP timeline) and
-  its timeline / keyframe editor is a clean, props-driven component. The **one piece to build** is a
-  **native-options ⇄ scene compiler** so the scene stays a compile target, not a stored file — see the
-  Design Decisions log ("reuse Kinetic Scenes for the scroll timeline editor").
+  its timeline / keyframe editor is a clean, props-driven component. The **piece still to build** for
+  Phase 2 is a **native-options ⇄ scene compiler** so the scene stays a compile target, not a stored
+  file — see the Design Decisions log ("reuse Kinetic Scenes for the scroll timeline editor").
 - **1c · Page-level choreography.** ✅ **Shipped (read-only)** as the **Scroll Ruler** — an admin-only
   front-end overlay (⟺ button bottom-left, or Shift+R) that lists every GSAP ScrollTrigger on the page
   (its element, start/end scroll positions, pin and scrub flags) and maps all their ranges onto a vertical
   ruler with a live playhead; click a row or a bar to jump to that trigger. The page-level view of "what
-  pins / scrubs where" when composing scroll choreography. *Editable (drag ranges) is the next step.*
+  pins / scrubs where" when composing scroll choreography. A richer **horizontal** view of the same data —
+  with a **scrubbing** playhead — now also ships as the **[Scroll Timeline](/animation-engine/scroll-timeline)**
+  (1b Phase 1 above). *Editable (drag ranges) is the next step for both.*
 
 ## Scroll Choreography & gallery chaining
 

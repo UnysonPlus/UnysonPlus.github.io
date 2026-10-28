@@ -1,0 +1,31 @@
+{
+  "title": "Custom shortcode — Highlight Box",
+  "open": "README.md",
+  "files": {
+    "README.md": {
+      "note": "What each file does and where to install the folder. Start here."
+    },
+    "config.php": {
+      "note": "Title, description, palette tab and modal size. The shortcode tag is the folder name, `my_element`.",
+      "highlight": "9-14"
+    },
+    "options.php": {
+      "note": "The edit-modal fields. Each option id (`heading`, `text`, `align`) becomes a key in `$atts`. This array's shape IS the element's schema.",
+      "highlight": "10-30"
+    },
+    "views/view.php": {
+      "note": "Front-end template. `$atts` holds the resolved values; escape everything with `esc_html()` / `esc_attr()`.",
+      "highlight": "12-18"
+    },
+    "static.php": {
+      "note": "Enqueues the CSS only when the element is on the page. Read the NOTE about child-theme placement.",
+      "highlight": "17-22"
+    },
+    "static/css/my_element.css": {
+      "note": "Front-end styles, keyed off the `my-element--{align}` modifier class."
+    },
+    "static/img/page_builder.svg": {
+      "note": "The palette icon (required): a crisp 16x16 glyph, fixed fill `#b3b3b3`, integer coordinates."
+    }
+  }
+}

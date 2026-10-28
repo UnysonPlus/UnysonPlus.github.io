@@ -3,6 +3,9 @@ title: Add a shortcode
 sidebar_position: 2
 ---
 
+import CodeWorkspace from '@site/src/components/CodeWorkspace';
+import customShortcode from '@site/src/data/code-examples/unysonplus-custom-shortcode.json';
+
 # Add a shortcode (page-builder element)
 
 Page-builder **elements** are shortcodes. To add one you create a folder under the Shortcodes
@@ -12,6 +15,14 @@ extension and the framework auto-discovers it, no core edits. There are two kind
   config, options, view, and assets. **No PHP class required.**
 - **Section-like elements** (a custom Section variant that lives at the page root and holds rows) —
   needs a small registration class. Covered at the end.
+
+## A complete element you can download
+
+Here is a working simple element — a **Highlight Box** (`[my_element]`) — with every file filled in.
+Click through the tree, then **Download** the folder and drop it into the Shortcodes extension (or a
+child theme) to see it appear in the builder. The sections below walk through each file.
+
+<CodeWorkspace example={customShortcode} height={460} />
 
 ## Simple element: folder structure
 

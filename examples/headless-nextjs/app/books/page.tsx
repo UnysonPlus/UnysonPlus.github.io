@@ -11,25 +11,22 @@ export default async function BooksPage() {
   return (
     <main>
       <h1>Books</h1>
-      <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: 24 }}>
+      <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: 32, gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))' }}>
         {books.map((book) => {
           const f = book.unysonplus_fields;
           const cover = absoluteUrl(f.cover_image?.url);
           return (
-            <li key={book.id} style={{ display: 'flex', gap: 16 }}>
-              {cover && <img src={cover} alt="" width={120} style={{ height: 'auto' }} />}
-              <div>
-                <h2 style={{ margin: 0 }}>
-                  <Link href={`/books/${book.slug}`}
-                    dangerouslySetInnerHTML={{ __html: book.title.rendered }} />
-                </h2>
-                {f.subtitle && <p style={{ margin: '4px 0' }}>{f.subtitle}</p>}
-                <p style={{ margin: 0, color: '#555' }}>
-                  {f.book_author}
-                  {f.pages ? ` · ${f.pages} pages` : ''}
-                  {book.genre.length > 0 && ` · ${book.genre.map((id) => genreName.get(id)).join(', ')}`}
-                </p>
-              </div>
+            <li key={book.id}>
+              <Link href={`/books/${book.slug}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                {cover && <img src={cover} alt="" style={{ width: '100%', height: 'auto', borderRadius: 6 }} />}
+                <h2 style={{ margin: '12px 0 4px', fontSize: 20 }} dangerouslySetInnerHTML={{ __html: book.title.rendered }} />
+              </Link>
+              {f.subtitle && <p style={{ margin: 0 }}>{f.subtitle}</p>}
+              <p style={{ margin: '4px 0 0', color: '#666', fontSize: 14 }}>
+                {f.book_author}
+                {f.pages ? ` · ${f.pages} pages` : ''}
+                {book.genre.length > 0 && ` · ${book.genre.map((id) => genreName.get(id)).join(', ')}`}
+              </p>
             </li>
           );
         })}

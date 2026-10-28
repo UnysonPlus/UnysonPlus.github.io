@@ -58,8 +58,8 @@ export function getGenres() {
   return wp<Genre[]>('/wp/v2/genre?_fields=id,name,slug&per_page=100');
 }
 
-// Image URLs come back as "//host/path"; give them a scheme.
+// Image URLs come back as "//host/path"; give them the WordPress site's own scheme.
 export function absoluteUrl(url?: string) {
   if (!url) return undefined;
-  return url.startsWith('//') ? `https:${url}` : url;
+  return url.startsWith('//') ? `${new URL(WP_URL!).protocol}${url}` : url;
 }

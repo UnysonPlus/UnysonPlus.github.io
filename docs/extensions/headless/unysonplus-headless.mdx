@@ -99,7 +99,7 @@ The field values come back in **`unysonplus_fields`**:
 Things to know about the values:
 
 - Each field returns its stored **value shape**. Text is a string, Number a number, and an **Image is an
-  object** with `attachment_id` and `url`. The URL starts with `//` (no `https:`), so add the scheme in
+  object** with `attachment_id` and `url`. The URL starts with `//` (no scheme), so add your site's scheme in
   the front end. Other common shapes: a Gallery is an array of those image objects, a Repeater is an
   array of row objects, Checkboxes is an object of the ticked choices (`{ "red": true }`), and Related
   posts is an array of post IDs.

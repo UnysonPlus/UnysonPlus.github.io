@@ -115,9 +115,13 @@ The **✦ AI assist** button at the bottom right of the stage opens a chat with 
 - **Save** downloads a `.scene.json` project file; **Open** loads one. Project files carry everything except footage,
   which stays in the browser it was added in (it is too big for a project file).
 - **Share link** (Export) puts the whole scene in a link; whoever opens it gets their own copy.
+- **Copy scene file** (File) copies the scene as text, for pasting into a bug report or a message. Pictures and sound
+  kept in the scene make it long; then attach the saved file instead.
 - **From WordPress**, **Open in Kinetic Scenes** on the element opens the scene here and **Save to page** sends it back.
 
 ## Keyboard shortcuts
+
+The same list is in the Studio: **Help › Keyboard shortcuts**.
 
 | Keys | Does |
 |---|---|

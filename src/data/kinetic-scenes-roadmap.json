@@ -1258,8 +1258,8 @@
         {
           "id": "p23-repo-launch",
           "title": "A friendlier public repository",
-          "detail": "An animated demo at the top of the README, a one-command start, a FAQ, issue forms and labelled starter issues, so new users and contributors can get going quickly.",
-          "status": "in-progress"
+          "detail": "An animated demo at the top of the README, a one-command start, a FAQ, issue forms and labelled starter issues, so new users and contributors can get going quickly. Done 2026-10-28: README with an animated demo, quick start and FAQ; npm start; issue forms and a pull-request template; npm test. No starter issues: GitHub issues are kept for problems other people report, and we fix what we find ourselves.",
+          "status": "done"
         }
       ]
     }

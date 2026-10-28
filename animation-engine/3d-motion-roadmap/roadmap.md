@@ -94,13 +94,20 @@ options** (see [Area 2](./focus-areas#area-2--a-real-motion-timeline) for the fu
     Open with **Shift + T** or the Timeline button (bottom-right). This is the editor *shell* and the
     scrubbing substrate — it reads every live ScrollTrigger, where the elements actually exist, which
     is why it lives on the front end rather than inside a builder modal.
-  - **Phase 2 — ahead: drag-to-retime + the options compiler.** Dragging a block's edges to change an
-    animation's start/end and persisting it back into the element's Scroll Motion options, then the
-    full keyframe lanes.
+  - **Phase 2 ✅ shipped — drag-to-retime, persisted.** Scroll Motion tracks are editable: **drag the
+    block** to move an animation's **start** (scrub blocks keep their length), **drag the right handle**
+    to move a scrub block's **end**. It previews live and **persists** to a per-page store
+    (`_upw_timing_overrides` post meta) keyed by a stable per-element key — **never the builder JSON**, so
+    it survives re-imports and the manual-edit guard — and the runtime applies it for **every visitor**,
+    not just in the editor. Each edited track gets a **reset (↺)**. Non-Scroll-Motion triggers show as
+    `locked`.
+  - **Phase 3 — ahead: keyframe lanes + the scene compiler.** Editing each Start / Middle / End beat of a
+    [Scroll Keyframes](/animation-engine/scroll-keyframes) timeline on the track, reusing the Kinetic
+    Scenes keyframe editor.
   <br />*Probed 2026-10-21 — confirmed feasible:* the Kinetic Scenes player already ships the scroll
   mode (pinned sticky stage + sticky-header offset + smoothing, driving a seekable GSAP timeline) and
   its timeline / keyframe editor is a clean, props-driven component. The **piece still to build** for
-  Phase 2 is a **native-options ⇄ scene compiler** so the scene stays a compile target, not a stored
+  Phase 3 is a **native-options ⇄ scene compiler** so the scene stays a compile target, not a stored
   file — see the Design Decisions log ("reuse Kinetic Scenes for the scroll timeline editor").
 - **1c · Page-level choreography.** ✅ **Shipped (read-only)** as the **Scroll Ruler** — an admin-only
   front-end overlay (⟺ button bottom-left, or Shift+R) that lists every GSAP ScrollTrigger on the page

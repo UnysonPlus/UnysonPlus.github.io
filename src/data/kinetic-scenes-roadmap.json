@@ -1000,8 +1000,8 @@
         {
           "id": "p17-scored",
           "title": "Music composed to the scene",
-          "detail": "Alongside ACE-Step, a local composer that writes a short score to the scene's own timing (accents where things land, a lift at the reveal) and plays it with sampled instruments, on any computer, no graphics card needed.",
-          "status": "planned"
+          "detail": "Alongside ACE-Step, a local composer that writes a short score to the scene's own timing (accents where things land, a lift at the reveal) and plays it with instruments made in code (sampled instruments later), on any computer, no graphics card needed.",
+          "status": "done"
         },
         {
           "id": "p17-measured",

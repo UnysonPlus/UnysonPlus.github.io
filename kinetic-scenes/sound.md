@@ -130,6 +130,28 @@ voice when you select it ("Voice: Voicebox: Jon"). The first line
 can take a few minutes while Voicebox loads its model; after that, a line takes seconds. Only use a voice you have the
 right to use: your own, or someone's with their permission. See [Add-ons](./addons.md).
 
+## Music composed to the scene
+
+**Tools › Make music… › Composed to this scene** writes a short score to the scene's own timing, in about a second,
+with nothing to install:
+
+- **Tempo** from when things land: the beats fall as close as they can to the moments entrances finish, markers and
+  groups start.
+- **A chord change at each section** (markers, else groups), so the music moves when the scene does.
+- **Accents** where the big moments land (large text, 3D), and **a lift into the reveal** (the scene's still frame):
+  a riser, the drums out for the bar before it, an impact on it.
+- **Moods:** Bright (major, steady drums), Calm (major, slower, no drums), Dark (minor) and Driving (minor, fast).
+
+<audio controls src="/audio/kinetic-scenes/score-bright.mp3" preload="none"></audio>
+
+*The Studio's demo scene, Bright: 116 bpm in C major, the lift into the reveal at 4 s.*
+
+It goes in as a Music track like any other: it drops under the voice-over by itself and its beats are found, so
+reveals can snap to them. Change the scene's timing a lot? Compose again. The instruments are made in code (a plucked
+string, a pad, a bass and drums), not recorded samples: it suits short reels and explainers; for a full produced
+track, use **ACE-Step** in the same window. Agents: `studio-cli compose scene.json --mood calm --out score.wav`, MCP
+`scene_compose`.
+
 ## Captions
 
 **+ Captions** adds the words of a transcribed voice-over, a few at a time, in your type and colours.

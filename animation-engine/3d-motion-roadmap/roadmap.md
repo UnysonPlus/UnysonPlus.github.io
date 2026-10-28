@@ -93,8 +93,11 @@ options** (see [Area 2](./focus-areas#area-2--a-real-motion-timeline) for the fu
   its timeline / keyframe editor is a clean, props-driven component. The **one piece to build** is a
   **native-options ⇄ scene compiler** so the scene stays a compile target, not a stored file — see the
   Design Decisions log ("reuse Kinetic Scenes for the scroll timeline editor").
-- **1c · Page-level choreography.** A whole-page scroll ruler showing every section's triggers and
-  scrubs at once — read-only first, then editable.
+- **1c · Page-level choreography.** ✅ **Shipped (read-only)** as the **Scroll Ruler** — an admin-only
+  front-end overlay (⟺ button bottom-left, or Shift+R) that lists every GSAP ScrollTrigger on the page
+  (its element, start/end scroll positions, pin and scrub flags) and maps all their ranges onto a vertical
+  ruler with a live playhead; click a row or a bar to jump to that trigger. The page-level view of "what
+  pins / scrubs where" when composing scroll choreography. *Editable (drag ranges) is the next step.*
 
 ## Scroll Choreography & gallery chaining
 

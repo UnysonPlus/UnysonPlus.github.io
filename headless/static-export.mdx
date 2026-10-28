@@ -1,0 +1,68 @@
+---
+title: "Static Export: Serve a WordPress Site as Plain HTML (with the Page Builder)"
+sidebar_label: "Static export"
+sidebar_position: 10
+description: "Export a WordPress site, page builder and all, to plain HTML with Simply Static and host it on a CDN or static host, with WordPress kept private. What works, what needs a service, and how it fits Unyson+."
+keywords: [wordpress static export, simply static, static wordpress site, wordpress to html, jamstack wordpress, unyson+ static site]
+---
+
+# Static export
+
+The other guides rebuild the front end. A **static export** keeps it: WordPress renders every page with
+its theme as usual, and a plugin saves the result as plain HTML, CSS, JavaScript and images, which you
+host anywhere (Netlify, Cloudflare Pages, GitHub Pages, any web server). Visitors never reach WordPress,
+which can sit on a private address or on your own computer.
+
+It is headless in the sense that the live site has no WordPress behind it, and it needs no front-end code
+at all.
+
+**Choose it** for brochure sites, portfolios, landing pages and documentation: anything that changes
+when editors publish, not on every visit. It is fast, cheap to host, and has almost nothing to attack.
+
+**Not for** pages that need a server at the moment of the visit: logins and member areas, carts and
+checkout, site search, comments, and forms (unless they post to an outside service).
+
+## Why it suits Unyson+
+
+The Unyson+ page builder, theme, header and footer templates and Animation Engine all end up as ordinary
+HTML, CSS and JavaScript in the browser. A static export captures that output as it is, so a site built
+with the page builder can be exported **without rebuilding anything**, which is not true of the other
+headless approaches.
+
+## How to export with Simply Static
+
+1. **Plugins → Add New → Simply Static**: install and activate.
+2. **Simply Static → Settings → Deploy:** set the **Deployment method** to **ZIP Archive** (download the
+   site as one file) or **Local Directory** (write it to a folder on the server).
+3. **Replacing URLs:** choose **Absolute URLs** and enter the address the static site will live at (for
+   example `https://www.your-site.com`), or **Relative Path** if it will sit at the root of its host.
+   **Offline Usage** makes a copy that opens from the disk.
+4. Click **Generate**. Simply Static crawls every page, follows links to stylesheets, scripts and images,
+   and saves them. The **Activity Log** shows progress; a large site takes a while.
+5. Upload the result to your static host.
+
+After each content change, generate again (and upload). Simply Static Pro and similar tools can push to
+the host for you.
+
+## Unyson+ specifics
+
+- **Asset Optimizer:** its combined CSS and JavaScript files are ordinary files under
+  `wp-content/uploads/unysonplus/asset-optimizer/`, and are exported like any other. Regenerate the export
+  after changing Theme Settings, so the exported pages and their combined files match.
+- **Animation Engine, sliders, galleries, popups:** run in the browser, so they keep working.
+- **Forms (Unyson+ Forms, CRM, Bookings, Membership):** they send their data to WordPress, which is no
+  longer behind the static site. Point forms at an outside form service, or keep WordPress reachable on a
+  subdomain for them.
+- **A live section that reads the API** (see [Hybrid](./hybrid.mdx)): on a static host there is no REST
+  API, so its script must call the WordPress site's own address, and that WordPress must stay reachable
+  (and allow the request, which it does for public data).
+- **Search:** WordPress search needs the server. Use a client-side search (a JSON index searched in the
+  browser) or a hosted search service.
+
+## How this was tested
+
+We exported a Unyson+ test site built with the page builder. The exported pages were plain HTML that made
+**no requests to WordPress**, with their page-builder sections intact, and a live API section inside one
+page showed exactly the limitation above: with no REST API on the static host, it stays on "Loading…".
+The test site has almost 7,000 addresses, so the export was stopped part-way, before Simply Static had
+fetched every stylesheet and image; a complete export of a full site was not checked end to end here.

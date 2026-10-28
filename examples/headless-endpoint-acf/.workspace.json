@@ -1,0 +1,10 @@
+{
+  "title": "books-endpoint (ACF plugin)",
+  "open": "books-endpoint.php",
+  "files": {
+    "books-endpoint.php": {
+      "note": "A one-file plugin: the custom endpoint /wp-json/books/v1/books, reading the ACF fields with get_field().",
+      "highlight": "20-30,51-66"
+    }
+  }
+}

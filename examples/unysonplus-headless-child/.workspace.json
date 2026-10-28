@@ -2,11 +2,33 @@
   "title": "headless-books (child theme)",
   "open": "inc/includes/headless-books-rest.php",
   "files": {
-    "style.css": { "note": "The theme header. `Template: unysonplus-theme` makes it a child of the Unyson+ theme." },
-    "functions.php": { "note": "Empty on purpose: the parent theme loads inc/includes/ automatically. Read the warning about inc/ file names." },
-    "inc/includes/headless-books-types.php": { "note": "Registers the Book post type and Genre taxonomy with show_in_rest, so they appear in the API.", "highlight": "26,35" },
-    "inc/includes/headless-books-rest.php": { "note": "Adds the field values to each book's REST response, and resolves the cover image to a URL, size and alt text.", "highlight": "17-18,36-42" },
-    "framework-customizations/theme/options/posts/book.php": { "note": "Unyson+ loads this file for the Book edit screen. Each option id is the key the value is saved under." },
-    "README.md": { "note": "What each file does, and how to install the theme." }
+    "style.css": {
+      "note": "The theme header. `Template: unysonplus-theme` makes it a child of the Unyson+ theme."
+    },
+    "functions.php": {
+      "note": "Empty on purpose: the parent theme loads inc/includes/ automatically. Read the warning about inc/ file names."
+    },
+    "inc/includes/headless-books-types.php": {
+      "note": "Registers the Book post type and Genre taxonomy with show_in_rest, so they appear in the API.",
+      "highlight": "26,35"
+    },
+    "inc/includes/headless-books-rest.php": {
+      "note": "Adds the field values to each book's REST response, and resolves the cover image to a URL, size and alt text.",
+      "highlight": "17-18,36-42"
+    },
+    "framework-customizations/theme/options/posts/book.php": {
+      "note": "Unyson+ loads this file for the Book edit screen. Each option id is the key the value is saved under."
+    },
+    "README.md": {
+      "note": "What each file does, and how to install the theme."
+    },
+    "inc/includes/headless-books-graphql.php": {
+      "note": "GraphQL (WPGraphQL): puts the post type and taxonomy in the schema through the Post Types filters, and adds the Book Details fields with register_graphql_fields().",
+      "highlight": "14-15,57-61"
+    },
+    "inc/includes/headless-books-endpoint.php": {
+      "note": "A custom REST endpoint, /wp-json/books/v1/books: one request, exactly the shape the front end wants (genre names, cover with size and alt).",
+      "highlight": "17-27"
+    }
   }
 }

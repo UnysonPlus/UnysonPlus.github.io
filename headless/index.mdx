@@ -123,11 +123,19 @@ adds the values under `unysonplus_fields` once a field group's **Show in REST AP
 The **WPGraphQL** plugin adds a `/graphql` endpoint. The front end asks for exactly the fields it needs,
 across related content, in one request, with a typed schema. Popular with Gatsby, Astro and Next.js teams.
 
-**With Unyson+:** partly. Post types show up in GraphQL once they are flagged for it, which the
-`fw_ext_post_types_args` filter can do (`show_in_graphql`, `graphql_single_name`, `graphql_plural_name`).
-Custom Fields values are not in the GraphQL schema yet: for now, register them with WPGraphQL's
-`register_graphql_field()`, reading each value with `fw_get_db_post_option()`. A GraphQL bridge is
-under consideration on the [roadmap](/extensions/headless).
+**With Unyson+:** works with one small file of code (there is no GraphQL switch yet): the Post Types
+filters put the type in the schema, and `register_graphql_fields()` adds the Custom Fields values. A
+built-in option is under consideration on the [roadmap](/extensions/headless).
+**Guide: [GraphQL (WPGraphQL)](./graphql.mdx)**, with ACF and with Unyson+.
+
+### Custom REST endpoints
+
+Your own address, registered with `register_rest_route()`, that returns exactly what a page needs in one
+request: genre names instead of IDs, a ready-to-use cover image, no `title.rendered` wrappers.
+
+**With Unyson+:** a file in the child theme's `inc/includes/`, reading values with
+`fw_get_db_post_option()`; the ACF version is a one-file plugin. Both return the same JSON.
+**Guide: [Custom REST endpoints](./custom-endpoints.mdx).**
 
 ### Framework kits (Faust.js and others)
 
@@ -147,7 +155,7 @@ behind it.
 **With Unyson+:** the best fit for sites built with the Unyson+ theme and page builder, because nothing
 is rebuilt: every page, layout and animation is already HTML, CSS and JavaScript once WordPress renders
 it, so the exporter captures it as it is. Anything that needs a server (forms, search, logins, the CRM)
-needs WordPress or an outside service behind it.
+needs WordPress or an outside service behind it. **Guide: [Static export](./static-export.mdx).**
 
 ### Hybrid (partly headless)
 
@@ -155,8 +163,8 @@ Keep the normal WordPress site and theme, and build one part as an app that read
 finder, a filterable catalogue, a calculator, a members' dashboard.
 
 **With Unyson+:** keep building pages with the page builder, and add the app part with a **Code Block**
-element (set to output the code as it is, not display it): it holds the HTML and the script that fetch
-from the REST API, like the [JavaScript examples](./javascript-unysonplus.mdx).
+element (set to run the code, not show it): it holds the HTML, styles and script that fetch from the
+REST API. **Guide: [Hybrid (partly headless)](./hybrid.mdx).**
 
 ### WordPress as a mobile-app back end
 

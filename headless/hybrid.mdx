@@ -1,0 +1,68 @@
+---
+title: "Hybrid Headless WordPress: A Live API Section Inside a Normal Page"
+sidebar_label: "Hybrid (partly headless)"
+sidebar_position: 9
+description: "Keep your WordPress theme and page builder, and make one section live from the REST API: a book list, a store finder, a catalogue. With a Unyson+ Code Block element, or a block or template on any theme."
+keywords: [hybrid headless wordpress, partially headless wordpress, wordpress rest api widget, fetch wordpress rest api javascript, unyson+ code block, decoupled section]
+---
+
+import CodeWorkspace from '@site/src/components/CodeWorkspace';
+import example from '@site/src/data/code-examples/headless-hybrid-code-block.json';
+
+# Hybrid: one live section inside a normal page
+
+Going headless is not all or nothing. Most of a site can stay a normal WordPress site (theme, page
+builder, SEO plugin, forms) while **one part** is a small app that reads the REST API in the browser: a
+filterable catalogue, a store finder, a calculator, a members' dashboard, a list that updates without
+editing the page.
+
+You keep everything WordPress does well, and add the interactivity only where it is needed. There is no
+second project to host.
+
+## With Unyson+: a Code Block element
+
+1. Have the content in the API: the Book post type and fields from step 2 of
+   [JavaScript + Unyson+](./javascript-unysonplus.mdx).
+2. Edit the page in the page builder. Build the rest of the page as usual (a heading, text, images).
+3. Add a **Code Block** element where the list should appear. In its settings, leave **Render as code**
+   **off**, so the code runs instead of being shown.
+4. Paste the code below into the Code Block and save the page.
+
+<CodeWorkspace example={example} height={560} />
+
+What it does:
+
+- **Finds the API by itself.** WordPress prints the REST API's address in every page's `<head>`
+  (`<link rel="https://api.w.org/">`); the script reads it, so it works on any domain and on sites
+  installed in a subfolder, with no address to configure.
+- **Same site, no CORS.** The page and the API share a domain.
+- **Safe with the content.** Titles and names go in with `textContent`, never as HTML.
+- **Styles stay local.** The CSS is scoped to `.book-list`, so it does not leak into the theme.
+
+The rest of the page, its header and footer, and every other element stay ordinary page-builder content.
+
+:::tip Multi-line code needs the Shortcodes extension 1.15.85 or later
+Older versions let WordPress's automatic paragraphs (`wpautop`) break a Code Block whose script or styles
+contain blank lines (`Unexpected token '<'` in the browser console). It ships with the next Unyson+ release; until then, remove the blank
+lines from the code.
+:::
+
+## With ACF or any theme
+
+The same idea works anywhere: paste the code into a **Custom HTML** block in the block editor, or a
+template file of your theme. Change two things for ACF fields:
+
+- request `acf` instead of `unysonplus_fields`, and add `&acf_format=standard` to the address;
+- read `book.acf.cover_image.url` and `book.acf.book_author`.
+
+## Going further
+
+- **Filters and search:** add `<select>` or `<input>` elements and request
+  `/wp/v2/book?genre=<id>` or `?search=<text>` when they change.
+- **Paging:** the response headers `X-WP-Total` and `X-WP-TotalPages` tell you how many pages there are;
+  request `&page=2`.
+- **A custom endpoint** ([Custom REST endpoints](./custom-endpoints.mdx)) returns exactly what the
+  section shows, in one request.
+
+This page was tested on a Unyson+ site: a page-builder page with a heading element and this Code Block
+listed every book from the API, with covers, and no console errors.

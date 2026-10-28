@@ -1,0 +1,7 @@
+{
+  "title": "book-list (Code Block)",
+  "open": "book-list.html",
+  "files": {
+    "book-list.html": { "note": "Paste into a Code Block element with Render as code off. The list, its styles and the script that fills it from the site's own REST API.", "highlight": "3,16,23" }
+  }
+}

@@ -16,7 +16,8 @@ import styles from './styles.module.css';
  *
  * Highlighting, line numbers, highlighted lines and the copy button come from the
  * site's own CodeBlock, so the code looks like every other block in the docs.
- * A link can open a given file: #code=<example name>/<file path>.
+ * A link can open a given file: #code=<example name>/<file path>; a page can choose the first file
+ * with open="<file path>".
  */
 
 const HASH_PREFIX = '#code=';
@@ -119,13 +120,15 @@ function Branch({node, depth, collapsed, toggle, active, open}) {
   );
 }
 
-export default function CodeWorkspace({example, height = 520}) {
+export default function CodeWorkspace({example, open: openFirst, height = 520}) {
   const byPath = useMemo(() => new Map(example.files.map((f) => [f.path, f])), [example]);
   const tree = useMemo(() => buildTree(example.files), [example]);
   const download = useBaseUrl(example.download);
 
-  const [active, setActive] = useState(example.open);
-  const [tabs, setTabs] = useState([example.open]);
+  // A page can open a particular file first (open="inc/x.php"); otherwise the example's own pick.
+  const first = openFirst && byPath.has(openFirst) ? openFirst : example.open;
+  const [active, setActive] = useState(first);
+  const [tabs, setTabs] = useState([first]);
   const [collapsed, setCollapsed] = useState(() => new Set());
 
   const open = (filePath, {updateHash = true} = {}) => {

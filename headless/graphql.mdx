@@ -1,0 +1,163 @@
+---
+title: "Headless WordPress with GraphQL (WPGraphQL): ACF and Unyson+"
+sidebar_label: "GraphQL (WPGraphQL)"
+sidebar_position: 7
+description: "Use WPGraphQL to query WordPress headless: post types and custom fields in one typed GraphQL request, set up with ACF and CPT UI, or with Unyson+ Post Types and Custom Fields."
+keywords: [wpgraphql, headless wordpress graphql, wpgraphql acf, graphql custom post type, wordpress graphql custom fields, unyson+ graphql]
+---
+
+import CodeWorkspace from '@site/src/components/CodeWorkspace';
+import childExample from '@site/src/data/code-examples/unysonplus-headless-child.json';
+
+# Headless WordPress with GraphQL
+
+The **WPGraphQL** plugin adds a `/graphql` endpoint to WordPress. Instead of several REST requests, the
+front end sends one query that names exactly the fields it wants, across related content (a book, its
+genres, its cover image), and gets back exactly that shape. The schema is typed, so tools can check
+queries and generate TypeScript types.
+
+**Choose GraphQL** when a page needs many related things at once, or the team already uses GraphQL
+(Gatsby, Faust.js, Apollo). **Stay with REST** for simple sites: it needs no plugin and caches more easily.
+
+This page sets up the same Book post type as the other guides, two ways.
+
+## 1. Before you start
+
+- A WordPress site with **pretty permalinks** (Settings → Permalinks: anything but Plain).
+- The **Book** post type, **Genre** taxonomy and **Book Details** fields from step 2 of
+  [JavaScript + ACF](./javascript-acf.mdx) or [JavaScript + Unyson+](./javascript-unysonplus.mdx).
+- **Plugins → Add New → WPGraphQL**: install and activate. It adds a **GraphQL** menu with a query editor
+  (GraphiQL IDE), handy for trying the queries below.
+
+## 2a. With ACF and CPT UI
+
+1. Install and activate **WPGraphQL for ACF** as well.
+2. **CPT UI → Edit Post Types → Book:** set **Show in GraphQL** to True, **GraphQL single name** `book`,
+   **GraphQL plural name** `books`. Save.
+3. **CPT UI → Edit Taxonomies → Genre:** **Show in GraphQL** True, names `genre` / `genres`. Save.
+4. **ACF → Field Groups → Book Details → Settings → GraphQL:** turn on **Show in GraphQL** and set the
+   **GraphQL Type Name / field name** to `bookDetails`. Save.
+
+Query:
+
+```graphql
+{
+  books(first: 20) {
+    nodes {
+      slug
+      title
+      genres { nodes { name } }
+      bookDetails {
+        subtitle
+        bookAuthor
+        pages
+        buyUrl
+        coverImage { node { sourceUrl altText mediaDetails { width height } } }
+      }
+    }
+  }
+}
+```
+
+Response (one book shown):
+
+```json
+{
+  "slug": "the-quiet-garden",
+  "title": "The Quiet Garden",
+  "genres": { "nodes": [{ "name": "Fiction" }] },
+  "bookDetails": {
+    "subtitle": "A year among the weeds",
+    "bookAuthor": "Sam Rivera",
+    "pages": 248,
+    "buyUrl": "https://example.com/books/the-quiet-garden",
+    "coverImage": { "node": { "sourceUrl": "https://your-site.com/…/quiet-garden-cover.jpg", "altText": "The Quiet Garden cover", "mediaDetails": { "width": 600, "height": 900 } } }
+  }
+}
+```
+
+WPGraphQL for ACF renames fields to camelCase (`book_author` → `bookAuthor`), and `pages` is a real
+number here (unlike REST with `acf_format=standard`).
+
+## 2b. With Unyson+
+
+Unyson+ has no GraphQL switch yet, so this is a small file of code: the Post Types extension's
+`fw_ext_post_types_args` and `fw_ext_post_types_taxonomy_args` filters put the type and taxonomy in the
+schema, and `register_graphql_fields()` adds the Book Details values, each read with
+`fw_get_db_post_option()`. The cover is resolved to its URL, alt text and size on the way.
+
+Put the file in your child theme's `inc/includes/` folder; the Unyson+ theme loads it automatically.
+It is part of the child-theme example below (open `inc/includes/headless-books-graphql.php`):
+
+<CodeWorkspace example={childExample} open="inc/includes/headless-books-graphql.php" />
+
+Query:
+
+```graphql
+{
+  books(first: 20) {
+    nodes {
+      slug
+      title
+      genres { nodes { name } }
+      subtitle
+      bookAuthor
+      pages
+      buyUrl
+      cover { url alt width height }
+    }
+  }
+}
+```
+
+Response (one book shown):
+
+```json
+{
+  "slug": "the-quiet-garden",
+  "title": "The Quiet Garden",
+  "genres": { "nodes": [{ "name": "Fiction" }] },
+  "subtitle": "A year among the weeds",
+  "bookAuthor": "Sam Rivera",
+  "pages": 248,
+  "buyUrl": "https://example.com/books/the-quiet-garden",
+  "cover": { "url": "https://your-site.com/…/quiet-garden-cover.jpg", "alt": "The Quiet Garden cover", "width": 600, "height": 900 }
+}
+```
+
+Here the fields sit directly on `Book`, because the code registers them there. A built-in GraphQL
+option for Custom Fields is under consideration on the [Headless extension roadmap](/extensions/headless).
+
+## 3. Call it from the front end
+
+GraphQL is one `POST` to `/graphql` with the query as JSON. This works from the browser, Node.js or
+Next.js server components alike:
+
+```js
+const query = `{ books(first: 20) { nodes { slug title bookAuthor pages cover { url alt } } } }`;
+
+const res = await fetch('https://your-site.com/graphql', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ query }),
+});
+const { data, errors } = await res.json();
+if (errors) throw new Error(errors[0].message);
+console.log(data.books.nodes);
+```
+
+The front-end pages in the other guides work the same way: replace the REST calls in `wordpress.js`
+(or `lib/wordpress.ts`) with this `fetch`, and read `data.books.nodes` instead of the REST array.
+
+## Troubleshooting
+
+| What you see | Fix |
+|---|---|
+| `Cannot query field "books" on type "RootQuery"` | The post type is not in GraphQL: **Show in GraphQL** (CPT UI) or the filter (Unyson+), with the names `book` / `books` |
+| `Cannot query field "bookDetails"` (ACF) | WPGraphQL for ACF is not active, or the field group's **Show in GraphQL** is off |
+| `Cannot query field "subtitle"` (Unyson+) | The `headless-books-graphql.php` file is not loaded: check it is in the child theme's `inc/includes/` and the child theme is active |
+| `/graphql` shows a WordPress 404 | Permalinks are on Plain, or WPGraphQL is not active |
+| Fields come back `null` | The book has no value for them, or a field name in the code differs from the one in Custom Fields |
+
+These setups were tested on two sites: one with CPT UI, ACF, WPGraphQL and WPGraphQL for ACF, and one with
+Unyson+ and WPGraphQL running the file above.

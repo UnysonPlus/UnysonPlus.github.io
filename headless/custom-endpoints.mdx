@@ -1,0 +1,100 @@
+---
+title: "Custom REST Endpoints for Headless WordPress: ACF and Unyson+"
+sidebar_label: "Custom REST endpoints"
+sidebar_position: 8
+description: "Add your own REST endpoint to WordPress with register_rest_route() so a headless front end gets exactly the data it needs in one request, with ACF fields or Unyson+ Custom Fields."
+keywords: [register_rest_route, wordpress custom rest endpoint, headless wordpress api, acf custom endpoint, wordpress rest api custom route, unyson+ rest api]
+---
+
+import CodeWorkspace from '@site/src/components/CodeWorkspace';
+import childExample from '@site/src/data/code-examples/unysonplus-headless-child.json';
+import acfExample from '@site/src/data/code-examples/headless-endpoint-acf.json';
+
+# Custom REST endpoints
+
+The built-in endpoints (`/wp/v2/book`) return WordPress's own shape: titles under `title.rendered`, genres
+as IDs, fields under `acf` or `unysonplus_fields`. That is fine, but the front end ends up making extra
+requests and reshaping data.
+
+A **custom endpoint** is your own address, registered with `register_rest_route()`, that returns exactly
+what a page needs in one request. Here, `/wp-json/books/v1/books` returns every book with its genre names
+and a ready-to-use cover:
+
+```json
+{
+  "slug": "the-quiet-garden",
+  "title": "The Quiet Garden",
+  "subtitle": "A year among the weeds",
+  "author": "Sam Rivera",
+  "pages": 248,
+  "genres": ["Fiction"],
+  "cover": { "url": "https://your-site.com/…/quiet-garden-cover.jpg", "alt": "The Quiet Garden cover", "width": 600, "height": 900 },
+  "buyUrl": "https://example.com/books/the-quiet-garden",
+  "content": "<p>A short novel about a year spent restoring an old walled garden.</p>"
+}
+```
+
+and `/wp-json/books/v1/books/<slug>` returns one book (or a 404).
+
+**Choose a custom endpoint** when you want a stable, front-end-friendly contract, fewer requests, or data
+the core endpoints do not have (computed values, several post types combined). The trade-off: you
+maintain the code, and changes to the data need a code change.
+
+## Before you start
+
+The Book post type, Genre taxonomy and Book Details fields from step 2 of
+[JavaScript + ACF](./javascript-acf.mdx) or [JavaScript + Unyson+](./javascript-unysonplus.mdx). Pretty
+permalinks on. The endpoint does not need the fields' **Show in REST API** switch: it reads them itself.
+
+## With ACF: a one-file plugin
+
+An ACF site can run any theme, so the endpoint is a tiny plugin. Download it, put `books-endpoint.php` in
+`wp-content/plugins/books-endpoint/` (or upload it as a zip under Plugins → Add New → Upload Plugin), and
+activate **Books Endpoint**. Fields are read with ACF's `get_field()`; the cover uses the Image field's
+**Image Array** return format.
+
+<CodeWorkspace example={acfExample} height={460} />
+
+## With Unyson+: a file in the child theme
+
+With the Unyson+ theme, put `headless-books-endpoint.php` in your child theme's `inc/includes/` folder; the
+parent theme loads it automatically (no `require` needed). Fields are read with
+`fw_get_db_post_option()`. It is part of the child-theme example:
+
+<CodeWorkspace example={childExample} open="inc/includes/headless-books-endpoint.php" />
+
+The two versions return identical JSON, so the front end does not care which one the site runs.
+
+## Check it
+
+Open `https://your-site.com/wp-json/books/v1/books` in a browser: you should see the list. Then
+`https://your-site.com/wp-json/books/v1/books/the-quiet-garden` (with one of your slugs) for a single
+book, and any made-up slug for the 404.
+
+## Use it from the front end
+
+```js
+const books = await (await fetch('https://your-site.com/wp-json/books/v1/books')).json();
+// books[0].title, books[0].genres, books[0].cover.url — no reshaping needed
+```
+
+## Good practice
+
+- **Keep a version in the address** (`books/v1`). When the shape must change, add `books/v2` and keep
+  `v1` until the front end has moved.
+- **Public endpoints get `'permission_callback' => '__return_true'`**, and only ever return published
+  content. Anything private needs a real permission check (`current_user_can()`).
+- **Escape what you output** as you would in a template: URLs through `esc_url_raw()`, content through
+  `the_content` filters.
+- **Cache heavy endpoints** in a transient, and clear it when a book is saved (`save_post_book`).
+
+## Troubleshooting
+
+| What you see | Fix |
+|---|---|
+| `rest_no_route` | The plugin or file is not loaded (plugin inactive, file outside `inc/includes/`, or a different child theme active), or permalinks are on Plain |
+| Fields are empty | A field name in the code differs from the one in ACF / Custom Fields |
+| `content` is empty on a Unyson+ site | Update Unyson+: Page Builder versions before 1.7.20 returned empty content to custom endpoints |
+| `cover` is `null` (ACF) | The Image field's Return Format is not **Image Array**, or the book has no cover |
+
+Both versions were tested side by side on an ACF + CPT UI site and a Unyson+ site, returning the same JSON.

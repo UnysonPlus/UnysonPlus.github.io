@@ -387,6 +387,9 @@ const config = {
         path: 'headless',
         routeBasePath: 'headless',
         sidebarPath: './sidebarsHeadless.js',
+        // A visible date per page (from its last commit): these guides compete on freshness, and
+        // their search titles carry the year (updated every January, see /extensions/headless).
+        showLastUpdateTime: true,
         editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
       },
     ],

@@ -91,3 +91,10 @@ offers both forms, and the front end picks one:
   front end rebuilds them itself.
 - **Theme Builder headers and footers** are only available as rendered HTML or as a structured
   layout, like any other builder content.
+
+## Keeping the guides current
+
+The [Headless WordPress guides](/headless) put the year in their search titles ("… (2026)"). **Every
+January:** update the year in each guide's `title`, re-run the examples against the current versions of
+WordPress, ACF, CPT UI, WPGraphQL, Next.js and Unyson+, and fix anything that changed. A guide whose year is
+out of date looks abandoned, which is worse than no year at all.

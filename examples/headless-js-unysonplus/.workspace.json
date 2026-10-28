@@ -1,5 +1,5 @@
 {
-  "title": "headless-books (plain HTML + JavaScript)",
+  "title": "headless-books (JavaScript + Unyson+)",
   "open": "index.html",
   "files": {
     "index.html": { "note": "The books list page. The list is empty in the HTML; js/books.js fills it from the API using the <template> card.", "highlight": "15,19-28" },

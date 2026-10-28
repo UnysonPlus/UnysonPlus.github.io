@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/book.js"></script>
+</head>
+<body>
+  <main>
+    <p><a href="index.html">← All books</a></p>
+    <!-- js/book.js reads ?slug= from the address and fills this in. -->
+    <p id="status">Loading…</p>
+    <article id="book" class="book-page" hidden>
+      <img id="cover" class="book-page-cover" alt="">
+      <div>
+        <h1 id="title"></h1>
+        <p id="subtitle" class="book-subtitle"></p>
+        <p id="meta" class="book-meta"></p>
+        <div id="content"></div>
+        <p><a id="buy" class="button" hidden>Buy this book</a></p>
+      </div>
+    </article>
+  </main>
+</body>
+</html>

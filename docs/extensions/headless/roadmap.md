@@ -1,7 +1,7 @@
 ---
 title: "Headless Extension — Roadmap"
 sidebar_label: "Roadmap"
-sidebar_position: 5
+sidebar_position: 7
 description: "The plan for a Unyson+ Headless extension: run WordPress as a headless CMS with Unyson+ post types, custom fields, settings and page-builder content served over the REST API, in place of ACF and a custom post types plugin."
 ---
 

@@ -1,8 +1,8 @@
 {
-  "name": "headless-nextjs",
-  "title": "headless-books (Next.js)",
+  "name": "headless-nextjs-unysonplus",
+  "title": "headless-books (Next.js + Unyson+)",
   "open": "lib/wordpress.ts",
-  "download": "/code-examples/headless-nextjs.zip",
+  "download": "/code-examples/headless-nextjs-unysonplus.zip",
   "files": [
     {
       "path": "app/books/[slug]/page.tsx",

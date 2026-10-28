@@ -1,0 +1,100 @@
+---
+title: "Headless WordPress with Next.js and Unyson+ (No ACF, No CPT UI)"
+sidebar_label: "Next.js + Unyson+"
+sidebar_position: 6
+description: "A complete headless WordPress site in Next.js (App Router) with Unyson+ instead of ACF and Custom Post Type UI: one plugin for the post type, the fields and the REST API, a page per post built ahead of time, and revalidation."
+keywords: [headless wordpress nextjs, next.js wordpress without acf, acf alternative nextjs, next.js app router wordpress, unyson+ headless, wordpress custom fields rest api]
+---
+
+import CodeWorkspace from '@site/src/components/CodeWorkspace';
+import example from '@site/src/data/code-examples/headless-nextjs-unysonplus.json';
+
+# Headless WordPress with Next.js and Unyson+
+
+The same Next.js front end as [Next.js + ACF](./headless-nextjs-acf.mdx), with **one plugin instead of
+two**: Unyson+'s Post Types extension registers the content type, and its Custom Fields extension adds
+the fields and puts them in the REST API. The front end builds a page per post ahead of time and
+refreshes from WordPress in the background.
+
+<p><small>Without a framework: [JavaScript + Unyson+](./headless-javascript-unysonplus.mdx). The WordPress
+side in more detail, including a version defined in code: [Headless with Unyson+](./unysonplus-headless.mdx).</small></p>
+
+## 1. Set up WordPress
+
+Under **Unyson+ → Extensions**, activate **Post Types** and **Custom Fields**.
+
+1. **Unyson+ → Post Types → Add Post Type:** Singular Book, Plural Books, Key `book` (**Block editor /
+   REST** is on by default).
+2. **Add Taxonomy:** Genre / Genres, Key `genre`, attached to Book, **Show in REST** on. Save.
+3. **Unyson+ → Custom Fields → Add Field Group:** "Book Details", shown on Book, **Show in REST API** on.
+   Fields:
+
+| Field label | Field name | Field type |
+|---|---|---|
+| Subtitle | `subtitle` | Text |
+| Author | `book_author` | Text |
+| Pages | `pages` | Number |
+| Cover image | `cover_image` | Image |
+| Buy link | `buy_url` | URL |
+
+4. Add a few books.
+
+## 2. What the API returns
+
+The fields arrive under **`unysonplus_fields`**, with no extra query parameter:
+
+```json
+"unysonplus_fields": {
+  "subtitle": "A year among the weeds",
+  "book_author": "Sam Rivera",
+  "pages": 248,
+  "cover_image": { "attachment_id": 3630, "url": "//your-site.com/wp-content/uploads/2026/10/quiet-garden-cover.jpg" },
+  "buy_url": "https://example.com/books/the-quiet-garden"
+}
+```
+
+`pages` is a number. The image URL starts with `//`, so `absoluteUrl()` in `lib/wordpress.ts` gives it
+your site's scheme. Image sizes and alt text in the response are on the [Headless extension
+roadmap](./roadmap.md).
+
+## 3. The code
+
+Click any file to open it, or download the whole project.
+
+<CodeWorkspace example={example} />
+
+## How it fits together
+
+- **One file talks to WordPress.** `lib/wordpress.ts` knows the API's address, describes the Unyson+
+  fields as TypeScript types, and has one function per query. Pages never build REST URLs themselves.
+- **Ask only for the fields you use** with `?_fields=`, so responses stay small.
+- **Pages are server components.** They `await` those functions, so the HTML that reaches the browser
+  (and search engines) already holds the content.
+- **Built ahead of time, refreshed in the background.** `generateStaticParams` builds every book page;
+  `revalidate: 300` fetches fresh data at most every five minutes. To update the moment an editor
+  publishes, call a revalidation route from a WordPress webhook (on the [roadmap](./roadmap.md)).
+- **Metadata from WordPress.** `generateMetadata` turns the book's title, subtitle and cover into the
+  page title, description and sharing image.
+
+## Run it
+
+```bash
+cp .env.example .env.local   # then set WP_URL to your WordPress site
+npm install
+npm run dev                  # http://localhost:3000/books
+```
+
+This example was built (`next build`, with type checking) against a WordPress site running Unyson+ set up
+exactly as in step 1.
+
+## What changes from the ACF version
+
+| | ACF + CPT UI | Unyson+ |
+|---|---|---|
+| Plugins | Two | One (two extensions) |
+| Fields in the response | `acf` | `unysonplus_fields` |
+| Extra query parameter | `acf_format=standard` | None |
+| `pages` | String with `acf_format=standard` | Number |
+| Cover image | Object with URL, sizes, alt | ID and `//` URL (sizes and alt planned) |
+
+Everything else (routing, revalidation, metadata) is identical: compare the two `lib/wordpress.ts` files.

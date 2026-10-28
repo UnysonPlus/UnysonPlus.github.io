@@ -1,0 +1,14 @@
+{
+  "title": "headless-books (JavaScript + ACF)",
+  "open": "js/wordpress.js",
+  "files": {
+    "index.html": { "note": "The books list page. The list is empty in the HTML; js/books.js fills it from the API using the <template> card.", "highlight": "15,19-28" },
+    "book.html": { "note": "One book's page. js/book.js reads ?slug= from the address and fills in the article." },
+    "js/config.js": { "note": "The only setting: the address of your WordPress site." },
+    "js/wordpress.js": { "note": "The one place that talks to WordPress. Every book request asks for the `acf` fields with acf_format=standard, so the cover comes back as an object with its URL and alt text.", "highlight": "8,10-16" },
+    "js/books.js": { "note": "Fetches books and genres in parallel, then copies the card template once per book. ACF sends `pages` as a string here, hence Number().", "highlight": "13,21" },
+    "js/book.js": { "note": "Finds the book by its slug and fills in the page, using the cover's own alt text from ACF." },
+    "css/style.css": { "note": "Plain CSS: a grid of book cards, and a two-column book page that stacks on phones." },
+    "README.md": { "note": "What the WordPress side needs (CPT UI + ACF), and how to run it." }
+  }
+}

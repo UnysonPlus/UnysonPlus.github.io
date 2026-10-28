@@ -1,0 +1,13 @@
+{
+  "title": "headless-books (Next.js + ACF)",
+  "open": "lib/wordpress.ts",
+  "files": {
+    "lib/wordpress.ts": { "note": "The one place that talks to WordPress: types for the ACF fields, a fetch helper with revalidation, and one function per query. acf_format=standard returns the cover as an image object.", "highlight": "11-18,32,42" },
+    "app/books/page.tsx": { "note": "The books list. Fetches books and genres in parallel; the cover's width and height come straight from ACF.", "highlight": "16,27" },
+    "app/books/[slug]/page.tsx": { "note": "One page per book, generated at build time, with ACF's cover (and its alt text) as the sharing image.", "highlight": "8-11,20" },
+    "app/layout.tsx": { "note": "The shared HTML shell for every page." },
+    ".env.example": { "note": "The only setting: the address of your WordPress site." },
+    "package.json": { "note": "Next.js, React and TypeScript. Nothing else is needed." },
+    "README.md": { "note": "What the WordPress side needs (CPT UI + ACF), and how to run it." }
+  }
+}

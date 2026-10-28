@@ -242,6 +242,9 @@ const config = {
         // Pages that moved when Custom Fields + Post Types were promoted out of
         // Extensions into the Data & Content Modeling section.
         redirects: [
+          // The headless front-end pages split into an ACF and a Unyson+ version of each.
+          {from: '/extensions/headless/headless-javascript', to: '/extensions/headless/headless-javascript-unysonplus'},
+          {from: '/extensions/headless/headless-nextjs', to: '/extensions/headless/headless-nextjs-unysonplus'},
           {from: '/docs/extensions/custom-fields', to: '/data-modeling/custom-fields'},
           {from: '/docs/extensions/post-types', to: '/data-modeling/post-types'},
           // Element Designs moved out of Components into its own top-level Theme Settings tab.

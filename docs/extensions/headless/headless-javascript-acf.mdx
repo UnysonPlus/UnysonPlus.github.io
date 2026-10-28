@@ -1,0 +1,115 @@
+---
+title: "Headless WordPress with JavaScript, ACF and CPT UI"
+sidebar_label: "JavaScript + ACF"
+sidebar_position: 3
+description: "Build a headless WordPress front end in plain HTML and JavaScript with Advanced Custom Fields and Custom Post Type UI: register the post type, expose the fields to the REST API, and render them in the browser."
+keywords: [headless wordpress javascript, acf rest api, acf_format standard, custom post type ui rest api, vanilla javascript wordpress, headless wordpress acf]
+---
+
+import CodeWorkspace from '@site/src/components/CodeWorkspace';
+import example from '@site/src/data/code-examples/headless-js-acf.json';
+
+# Headless WordPress with JavaScript, ACF and CPT UI
+
+The most common headless setup, without a framework: **Custom Post Type UI** registers the content type,
+**Advanced Custom Fields (ACF)** adds the fields, and two plain HTML pages fetch everything from the
+WordPress REST API in the browser. Nothing to install on the front end and no build step.
+
+The example is a small book site: a list of books, and a page per book.
+
+<p><small>The same front end with Unyson+ instead of the two plugins:
+[JavaScript + Unyson+](./headless-javascript-unysonplus.mdx). With Next.js:
+[Next.js + ACF](./headless-nextjs-acf.mdx).</small></p>
+
+## 1. Set up WordPress
+
+Install and activate **Custom Post Type UI** and **Advanced Custom Fields**.
+
+1. **CPT UI → Add/Edit Post Types:** slug `book`, labels Books / Book. Under Settings, set
+   **Show in REST API** to True (it is the default in current versions; check it).
+2. **CPT UI → Add/Edit Taxonomies:** slug `genre`, labels Genres / Genre, attached to **Books**, with
+   **Show in REST API** True.
+3. **ACF → Field Groups → Add New:** title "Book Details", location *Post Type is equal to Book*. Under
+   **Group Settings → Settings**, turn on **Show in REST API**. Add the fields:
+
+| Field label | Field name | Field type |
+|---|---|---|
+| Subtitle | `subtitle` | Text |
+| Author | `book_author` | Text |
+| Pages | `pages` | Number |
+| Cover image | `cover_image` | Image (Return Format: **Image Array**) |
+| Buy link | `buy_url` | URL |
+
+4. Add a few books under **Books → Add New**.
+
+## 2. What the API returns
+
+ACF puts the fields under **`acf`** on each post. By default an Image field comes back as just the
+attachment ID. Add **`acf_format=standard`** to the request and ACF returns each field in its Return
+Format instead, so the cover arrives as an object with its URL, size and alt text:
+
+```bash
+curl "https://your-site.com/wp-json/wp/v2/book?slug=the-quiet-garden&_fields=id,slug,genre,acf&acf_format=standard"
+```
+
+```json
+[
+  {
+    "id": 3660,
+    "slug": "the-quiet-garden",
+    "genre": [258],
+    "acf": {
+      "subtitle": "A year among the weeds",
+      "book_author": "Sam Rivera",
+      "pages": "248",
+      "cover_image": {
+        "id": 3659,
+        "url": "https://your-site.com/wp-content/uploads/2026/10/quiet-garden-cover.jpg",
+        "alt": "The Quiet Garden cover",
+        "width": 600,
+        "height": 900,
+        "sizes": { "medium": "https://your-site.com/…-200x300.jpg", "medium_large": "…" }
+      },
+      "buy_url": "https://example.com/books/the-quiet-garden"
+    }
+  }
+]
+```
+
+The image object also carries the title, caption, file size and every image size; it is trimmed here.
+Note that **`pages` is a string** (`"248"`) with `acf_format=standard`, while it is a number without it,
+so the code converts it with `Number()`.
+
+## 3. The code
+
+Click any file to open it, or download the whole project.
+
+<CodeWorkspace example={example} />
+
+## How it fits together
+
+- **The HTML is a shell.** `index.html` has an empty list and a `<template>` for one book card;
+  `book.html` has an empty article.
+- **One file talks to WordPress.** `js/wordpress.js` holds the fetch helper and one function per query.
+  Every book request adds `acf_format=standard`, so the pages get ready-to-use images.
+- **Each page script fills its page.** `js/books.js` copies the card template once per book;
+  `js/book.js` reads `?slug=` from the address and fills in the article, using the cover's own alt text.
+- **Titles and content arrive as HTML.** Titles are converted to plain text before they go into
+  `textContent`; the post body is your own site's HTML and is inserted as it is.
+
+## Run it
+
+1. Download the example and set your site's address in `js/config.js`.
+2. Serve the folder with any static web server (`npx serve .` or `python -m http.server`) and open the
+   address it prints. Opening `index.html` straight from the disk does not work: browsers only load
+   JavaScript modules from a web address.
+
+WordPress lets other sites read its public REST API, so the pages can live on any domain. This example
+was tested against a WordPress site set up exactly as in step 1.
+
+## Plain JavaScript or Next.js?
+
+Here the visitor's browser builds each page, so search engines see "Loading…" first and the content only
+after the script runs. That suits small sites, a widget inside another site, and learning the API. For a
+full website where search ranking and first load matter, [Next.js + ACF](./headless-nextjs-acf.mdx) builds
+the same pages on the server.

@@ -1,0 +1,58 @@
+{
+  "name": "headless-nextjs-acf",
+  "title": "headless-books (Next.js + ACF)",
+  "open": "lib/wordpress.ts",
+  "download": "/code-examples/headless-nextjs-acf.zip",
+  "files": [
+    {
+      "path": "app/books/[slug]/page.tsx",
+      "language": "tsx",
+      "code": "import type { Metadata } from 'next';\nimport { notFound } from 'next/navigation';\nimport { getBook, getBooks } from '@/lib/wordpress';\n\ntype Props = { params: Promise<{ slug: string }> };\n\n// Build every book page ahead of time; new books are built on first visit.\nexport async function generateStaticParams() {\n  const books = await getBooks();\n  return books.map((book) => ({ slug: book.slug }));\n}\n\nexport async function generateMetadata({ params }: Props): Promise<Metadata> {\n  const book = await getBook((await params).slug);\n  if (!book) return {};\n  const cover = book.acf.cover_image || null;\n  return {\n    title: book.title.rendered,\n    description: book.acf.subtitle,\n    openGraph: cover ? { images: [{ url: cover.url, width: cover.width, height: cover.height, alt: cover.alt }] } : undefined,\n  };\n}\n\nexport default async function BookPage({ params }: Props) {\n  const book = await getBook((await params).slug);\n  if (!book) notFound();\n\n  const f = book.acf;\n  const cover = f.cover_image || null;\n\n  return (\n    <article>\n      {cover && <img src={cover.url} alt={cover.alt} width={240} style={{ height: 'auto' }} />}\n      <h1 dangerouslySetInnerHTML={{ __html: book.title.rendered }} />\n      {f.subtitle && <p><em>{f.subtitle}</em></p>}\n      <p>\n        {f.book_author}\n        {f.pages ? ` · ${Number(f.pages)} pages` : ''}\n      </p>\n      {/* The post body, written in the WordPress editor. */}\n      <div dangerouslySetInnerHTML={{ __html: book.content.rendered }} />\n      {f.buy_url && <p><a href={f.buy_url}>Buy this book</a></p>}\n    </article>\n  );\n}",
+      "note": "One page per book, generated at build time, with ACF's cover (and its alt text) as the sharing image.",
+      "highlight": "8-11,20"
+    },
+    {
+      "path": "app/books/page.tsx",
+      "language": "tsx",
+      "code": "import Link from 'next/link';\nimport { getBooks, getGenres } from '@/lib/wordpress';\n\nexport const metadata = { title: 'All books' };\n\nexport default async function BooksPage() {\n  // Both requests run at the same time.\n  const [books, genres] = await Promise.all([getBooks(), getGenres()]);\n  const genreName = new Map(genres.map((g) => [g.id, g.name]));\n\n  return (\n    <main>\n      <h1>Books</h1>\n      <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: 32, gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))' }}>\n        {books.map((book) => {\n          const f = book.acf;\n          const cover = f.cover_image || null;\n          return (\n            <li key={book.id}>\n              <Link href={`/books/${book.slug}`} style={{ color: 'inherit', textDecoration: 'none' }}>\n                {cover && <img src={cover.url} alt=\"\" width={cover.width} height={cover.height} style={{ width: '100%', height: 'auto', borderRadius: 6 }} />}\n                <h2 style={{ margin: '12px 0 4px', fontSize: 20 }} dangerouslySetInnerHTML={{ __html: book.title.rendered }} />\n              </Link>\n              {f.subtitle && <p style={{ margin: 0 }}>{f.subtitle}</p>}\n              <p style={{ margin: '4px 0 0', color: '#666', fontSize: 14 }}>\n                {f.book_author}\n                {f.pages ? ` · ${Number(f.pages)} pages` : ''}\n                {book.genre.length > 0 && ` · ${book.genre.map((id) => genreName.get(id)).join(', ')}`}\n              </p>\n            </li>\n          );\n        })}\n      </ul>\n    </main>\n  );\n}",
+      "note": "The books list. Fetches books and genres in parallel; the cover's width and height come straight from ACF.",
+      "highlight": "16,27"
+    },
+    {
+      "path": "app/layout.tsx",
+      "language": "tsx",
+      "code": "import type { Metadata } from 'next';\nimport type { ReactNode } from 'react';\n\nexport const metadata: Metadata = {\n  title: { default: 'Books', template: '%s · Books' },\n};\n\nexport default function RootLayout({ children }: { children: ReactNode }) {\n  return (\n    <html lang=\"en\">\n      <body style={{ fontFamily: 'system-ui, sans-serif', maxWidth: 880, margin: '0 auto', padding: 24 }}>\n        {children}\n      </body>\n    </html>\n  );\n}",
+      "note": "The shared HTML shell for every page."
+    },
+    {
+      "path": "lib/wordpress.ts",
+      "language": "typescript",
+      "code": "// Every request to WordPress goes through this file, so the rest of the app never\n// builds a REST URL by hand.\n\nconst WP_URL = process.env.WP_URL;\n\nif (!WP_URL) {\n  throw new Error('Set WP_URL in .env.local, e.g. WP_URL=https://your-site.com');\n}\n\n// An ACF Image field with Return Format \"Image Array\", as sent with acf_format=standard.\nexport type AcfImage = {\n  id: number;\n  url: string;\n  alt: string;\n  width: number;\n  height: number;\n  sizes: Record<string, string | number>;\n};\n\nexport type Book = {\n  id: number;\n  slug: string;\n  title: { rendered: string };\n  excerpt: { rendered: string };\n  content: { rendered: string };\n  genre: number[];\n  // Filled by the \"Book Details\" ACF field group (Show in REST API on).\n  acf: {\n    subtitle?: string;\n    book_author?: string;\n    // ACF sends numbers as strings when acf_format=standard: convert with Number().\n    pages?: string | number;\n    cover_image?: AcfImage | false;\n    buy_url?: string;\n  };\n};\n\nexport type Genre = { id: number; name: string; slug: string };\n\n// Ask only for what the pages use. acf_format=standard makes ACF return each field\n// in its Return Format: the cover as an object with its URL, size and alt text.\nconst BOOK_QUERY = '_fields=id,slug,title,excerpt,content,genre,acf&acf_format=standard';\n\nasync function wp<T>(path: string): Promise<T> {\n  const res = await fetch(`${WP_URL}/wp-json${path}`, {\n    // Re-fetch at most every 5 minutes (incremental static regeneration).\n    next: { revalidate: 300 },\n  });\n  if (!res.ok) {\n    throw new Error(`WordPress returned ${res.status} for ${path}`);\n  }\n  return res.json() as Promise<T>;\n}\n\nexport function getBooks() {\n  return wp<Book[]>(`/wp/v2/book?${BOOK_QUERY}&per_page=100`);\n}\n\nexport async function getBook(slug: string) {\n  const books = await wp<Book[]>(`/wp/v2/book?slug=${encodeURIComponent(slug)}&${BOOK_QUERY}`);\n  return books[0] ?? null;\n}\n\nexport function getGenres() {\n  return wp<Genre[]>('/wp/v2/genre?_fields=id,name,slug&per_page=100');\n}",
+      "note": "The one place that talks to WordPress: types for the ACF fields, a fetch helper with revalidation, and one function per query. acf_format=standard returns the cover as an image object.",
+      "highlight": "11-18,32,42"
+    },
+    {
+      "path": ".env.example",
+      "language": "bash",
+      "code": "# Copy to .env.local and point it at your WordPress site (no trailing slash).\nWP_URL=https://your-site.com",
+      "note": "The only setting: the address of your WordPress site."
+    },
+    {
+      "path": "package.json",
+      "language": "json",
+      "code": "{\n  \"name\": \"headless-books\",\n  \"private\": true,\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\"\n  },\n  \"dependencies\": {\n    \"next\": \"15.5.4\",\n    \"react\": \"19.1.1\",\n    \"react-dom\": \"19.1.1\"\n  },\n  \"devDependencies\": {\n    \"@types/node\": \"22.18.6\",\n    \"@types/react\": \"19.1.13\",\n    \"typescript\": \"5.9.2\"\n  }\n}",
+      "note": "Next.js, React and TypeScript. Nothing else is needed."
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "code": "# Headless Books — Next.js front end, with ACF\n\nA minimal Next.js (App Router) site that reads a **Book** post type and its ACF fields from a\nWordPress site.\n\n## WordPress side\n\nTwo plugins: **Custom Post Type UI** and **Advanced Custom Fields (ACF)**.\n\n- CPT UI → Add/Edit Post Types: a `book` post type with **Show in REST API** set to True.\n  CPT UI → Add/Edit Taxonomies: a `genre` taxonomy attached to Books, **Show in REST API** True.\n- ACF → Field Groups: a \"Book Details\" group shown on Book, with **Show in REST API** on (Group\n  Settings → Settings), and these fields: `subtitle` (Text), `book_author` (Text), `pages` (Number),\n  `cover_image` (Image, Return Format: Image Array), `buy_url` (URL).\n\n## Run it\n\n```bash\ncp .env.example .env.local   # then set WP_URL\nnpm install\nnpm run dev                  # http://localhost:3000/books\n```\n\n`npm run build` generates every book page ahead of time; pages refresh from WordPress at most every\nfive minutes.",
+      "note": "What the WordPress side needs (CPT UI + ACF), and how to run it."
+    },
+    {
+      "path": "tsconfig.json",
+      "language": "json",
+      "code": "{\n  \"compilerOptions\": {\n    \"target\": \"ES2022\",\n    \"lib\": [\"dom\", \"dom.iterable\", \"esnext\"],\n    \"strict\": true,\n    \"noEmit\": true,\n    \"module\": \"esnext\",\n    \"moduleResolution\": \"bundler\",\n    \"resolveJsonModule\": true,\n    \"isolatedModules\": true,\n    \"esModuleInterop\": true,\n    \"jsx\": \"preserve\",\n    \"skipLibCheck\": true,\n    \"incremental\": true,\n    \"plugins\": [{ \"name\": \"next\" }],\n    \"paths\": { \"@/*\": [\"./*\"] }\n  },\n  \"include\": [\"next-env.d.ts\", \"**/*.ts\", \"**/*.tsx\", \".next/types/**/*.ts\"],\n  \"exclude\": [\"node_modules\"]\n}"
+    }
+  ]
+}

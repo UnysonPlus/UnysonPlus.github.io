@@ -1,0 +1,114 @@
+---
+title: "Headless WordPress with JavaScript and Unyson+ (No ACF, No CPT UI)"
+sidebar_label: "JavaScript + Unyson+"
+sidebar_position: 4
+description: "Build a headless WordPress front end in plain HTML and JavaScript with Unyson+ instead of ACF and Custom Post Type UI: one plugin for the post type, the custom fields and the REST API."
+keywords: [headless wordpress javascript, acf alternative, wordpress custom fields rest api, vanilla javascript wordpress, unyson+ headless, headless wordpress without acf]
+---
+
+import CodeWorkspace from '@site/src/components/CodeWorkspace';
+import example from '@site/src/data/code-examples/headless-js-unysonplus.json';
+
+# Headless WordPress with JavaScript and Unyson+
+
+The same plain-JavaScript front end as [JavaScript + ACF](./headless-javascript-acf.mdx), with **one
+plugin instead of two**: Unyson+'s Post Types extension registers the content type and its Custom Fields
+extension adds the fields and puts them in the REST API. The front end is two HTML pages that fetch
+everything in the browser, with no framework and no build step.
+
+<p><small>With Next.js instead: [Next.js + Unyson+](./headless-nextjs-unysonplus.mdx). The WordPress side
+in more detail, including a version defined in code: [Headless with Unyson+](./unysonplus-headless.mdx).</small></p>
+
+## 1. Set up WordPress
+
+Under **Unyson+ → Extensions**, activate **Post Types** and **Custom Fields**.
+
+1. **Unyson+ → Post Types → Add Post Type:** Singular Book, Plural Books, Key `book`. **Block editor /
+   REST** is on by default (Visibility tab).
+2. **Add Taxonomy:** Singular Genre, Plural Genres, Key `genre`, attached to Book, **Show in REST** on.
+   Save.
+3. **Unyson+ → Custom Fields → Add Field Group:** title "Book Details", shown on Book, with **Show in
+   REST API** turned on. Add the fields:
+
+| Field label | Field name | Field type |
+|---|---|---|
+| Subtitle | `subtitle` | Text |
+| Author | `book_author` | Text |
+| Pages | `pages` | Number |
+| Cover image | `cover_image` | Image |
+| Buy link | `buy_url` | URL |
+
+4. Add a few books under **Books → Add New**.
+
+Tip: the **Blueprints** tab of Post Types creates common types (team, events, FAQs…) with their fields in
+one click.
+
+## 2. What the API returns
+
+Unyson+ puts the fields under **`unysonplus_fields`** on each post. No extra query parameter is needed:
+
+```bash
+curl "https://your-site.com/wp-json/wp/v2/book?slug=the-quiet-garden&_fields=id,slug,genre,unysonplus_fields"
+```
+
+```json
+[
+  {
+    "id": 3629,
+    "slug": "the-quiet-garden",
+    "genre": [258],
+    "unysonplus_fields": {
+      "subtitle": "A year among the weeds",
+      "book_author": "Sam Rivera",
+      "pages": 248,
+      "cover_image": {
+        "attachment_id": 3630,
+        "url": "//your-site.com/wp-content/uploads/2026/10/quiet-garden-cover.jpg"
+      },
+      "buy_url": "https://example.com/books/the-quiet-garden"
+    }
+  }
+]
+```
+
+Compared with ACF: `pages` stays a number, and the image is its ID plus a URL that starts with `//`, so
+the code adds your site's scheme. Image sizes and alt text in the response are on the
+[Headless extension roadmap](./roadmap.md).
+
+## 3. The code
+
+Click any file to open it, or download the whole project.
+
+<CodeWorkspace example={example} />
+
+## How it fits together
+
+- **The HTML is a shell.** `index.html` has an empty list and a `<template>` for one book card;
+  `book.html` has an empty article.
+- **One file talks to WordPress.** `js/wordpress.js` holds the fetch helper, one function per query and
+  `absoluteUrl()`, which gives the `//` image URLs your site's scheme.
+- **Each page script fills its page.** `js/books.js` copies the card template once per book;
+  `js/book.js` reads `?slug=` from the address and fills in the article.
+- **Titles and content arrive as HTML.** Titles are converted to plain text before they go into
+  `textContent`; the post body is your own site's HTML and is inserted as it is.
+
+## Run it
+
+1. Download the example and set your site's address in `js/config.js`.
+2. Serve the folder with any static web server (`npx serve .` or `python -m http.server`) and open the
+   address it prints. Opening `index.html` straight from the disk does not work: browsers only load
+   JavaScript modules from a web address.
+
+This example was tested against a WordPress site running Unyson+ set up exactly as in step 1.
+
+## What changes from the ACF version
+
+| | ACF + CPT UI | Unyson+ |
+|---|---|---|
+| Plugins | Two | One (two extensions) |
+| Fields in the response | `acf` | `unysonplus_fields` |
+| Extra query parameter | `acf_format=standard` | None |
+| `pages` | String with `acf_format=standard` | Number |
+| Cover image | Object with URL, sizes, alt | ID and `//` URL (sizes and alt planned) |
+
+The rest of the code is identical: compare the two `js/wordpress.js` files.

@@ -1,5 +1,5 @@
 {
-  "title": "headless-books (Next.js)",
+  "title": "headless-books (Next.js + Unyson+)",
   "open": "lib/wordpress.ts",
   "files": {
     "lib/wordpress.ts": { "note": "The one place that talks to WordPress: types for the REST response, a fetch helper with revalidation, and one function per query.", "highlight": "36-39,46-48" },

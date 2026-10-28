@@ -1,8 +1,8 @@
 {
-  "name": "headless-vanilla-js",
-  "title": "headless-books (plain HTML + JavaScript)",
+  "name": "headless-js-unysonplus",
+  "title": "headless-books (JavaScript + Unyson+)",
   "open": "index.html",
-  "download": "/code-examples/headless-vanilla-js.zip",
+  "download": "/code-examples/headless-js-unysonplus.zip",
   "files": [
     {
       "path": "css/style.css",

@@ -93,17 +93,87 @@ const res = await fetch('https://your-site.com/wp-json/wp/v2/book?_fields=id,slu
 const books = await res.json();
 ```
 
-Two complete, tested examples build the same small book site, one per page, with every file to browse
-and download:
+Four complete, tested examples build the same small book site, each with every file to browse and
+download. Pick the front end, then the plugins behind it:
 
-- **[Headless WordPress with plain JavaScript](./headless-javascript.mdx)**: two HTML pages and a few
-  JavaScript modules. No framework, no build step.
-- **[Headless WordPress with Next.js](./headless-nextjs.mdx)**: an App Router site that builds each page
-  ahead of time and refreshes from WordPress.
+| | With ACF + CPT UI | With Unyson+ |
+|---|---|---|
+| **Plain JavaScript** (no framework, no build) | [JavaScript + ACF](./headless-javascript-acf.mdx) | [JavaScript + Unyson+](./headless-javascript-unysonplus.mdx) |
+| **Next.js** (pages built on the server) | [Next.js + ACF](./headless-nextjs-acf.mdx) | [Next.js + Unyson+](./headless-nextjs-unysonplus.mdx) |
 
-Their custom fields (`subtitle`, `book_author`, `cover_image`…) come from WordPress. With ACF they would
-be under `acf`; the examples read them from `unysonplus_fields`, the Unyson+ equivalent, which
-[Headless WordPress with Unyson+](./unysonplus-headless.mdx) sets up step by step.
+The front-end code is nearly identical across each row. What changes is the WordPress side: two plugins
+or one, and where the fields sit in the response (`acf` or `unysonplus_fields`).
+
+## Other ways to do headless
+
+The REST API with your own front end is the most common setup, but not the only one. Here is each
+approach, and how Unyson+ fits into it.
+
+### REST API + any front end
+
+What the examples above do: WordPress serves JSON at `/wp-json/`, and any front end (Next.js, Nuxt,
+Astro, SvelteKit, plain JavaScript, a mobile app) fetches it. Built in, no extra plugins, easy to cache.
+
+**With Unyson+:** works today. Post Types puts your types in the API (on by default), and Custom Fields
+adds the values under `unysonplus_fields` once a field group's **Show in REST API** is on.
+
+### GraphQL (WPGraphQL)
+
+The **WPGraphQL** plugin adds a `/graphql` endpoint. The front end asks for exactly the fields it needs,
+across related content, in one request, with a typed schema. Popular with Gatsby, Astro and Next.js teams.
+
+**With Unyson+:** partly. Post types show up in GraphQL once they are flagged for it, which the
+`fw_ext_post_types_args` filter can do (`show_in_graphql`, `graphql_single_name`, `graphql_plural_name`).
+Custom Fields values are not in the GraphQL schema yet: for now, register them with WPGraphQL's
+`register_graphql_field()`, reading each value with `fw_get_db_post_option()`. A GraphQL bridge is
+under consideration on the [roadmap](./roadmap.md).
+
+### Framework kits (Faust.js and others)
+
+Ready-made toolkits that solve preview, routing and login for a WordPress back end: **Faust.js** for
+Next.js (built on WPGraphQL), and WordPress loaders for **Astro** and **Nuxt**.
+
+**With Unyson+:** the REST-based loaders work today, the same way as the examples above. Faust.js needs
+GraphQL, so it inherits the GraphQL notes above.
+
+### Static export
+
+WordPress renders the site with its theme as usual, then a plugin such as **Simply Static** or
+**WP2Static** saves every page as HTML and uploads it to a CDN or static host. Visitors never reach
+WordPress, which can stay private. It is "headless" in the sense that the live site has no WordPress
+behind it.
+
+**With Unyson+:** the best fit for sites built with the Unyson+ theme and page builder, because nothing
+is rebuilt: every page, layout and animation is already HTML, CSS and JavaScript once WordPress renders
+it, so the exporter captures it as it is. Anything that needs a server (forms, search, logins, the CRM)
+needs WordPress or an outside service behind it.
+
+### Hybrid (partly headless)
+
+Keep the normal WordPress site and theme, and build one part as an app that reads the API: a store
+finder, a filterable catalogue, a calculator, a members' dashboard.
+
+**With Unyson+:** keep building pages with the page builder, and add the app part with a **Code Block**
+element (set to output the code as it is, not display it): it holds the HTML and the script that fetch
+from the REST API, like the [JavaScript examples](./headless-javascript-unysonplus.mdx).
+
+### WordPress as a mobile-app back end
+
+The same REST API feeds an iOS or Android app (Swift, Kotlin, React Native, Flutter), often alongside the
+website, so editors manage both from one place.
+
+**With Unyson+:** works today, exactly like the website examples: the app requests
+`/wp-json/wp/v2/<type>` and reads `unysonplus_fields`.
+
+### Structured page content (blocks or layouts as data)
+
+Instead of the finished HTML of a page, the front end receives its structure (each block or element and
+its settings) and renders every piece with its own component. With the block editor this means parsing
+the blocks; with a page builder, its layout data.
+
+**With Unyson+:** not yet. Page Builder content reaches the API as finished HTML (`content.rendered`),
+which any front end can show but not take apart. Serving the builder layout as structured JSON, plus the
+CSS each page needs, is Phase 2 of the [Headless extension roadmap](./roadmap.md).
 
 ## Things to plan for
 

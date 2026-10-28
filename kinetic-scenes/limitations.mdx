@@ -18,12 +18,17 @@ says plainly what works where, and what doesn't yet.
 |---|---|---|---|
 | **Chrome, Edge** (desktop) | Yes, recommended | Yes | Yes, in the browser or through the AI Dev Kit |
 | **Firefox** (desktop) | Yes | Yes | Through the AI Dev Kit |
-| **Safari** (Mac) | Yes, but no AI features (see below) | Yes | Through the AI Dev Kit |
+| **Safari** (Mac) | Yes; AI features after a one-time step (see below) | Yes | Through the AI Dev Kit |
 | **Phones and tablets** | Viewing and small edits; the Studio is made for a desktop screen | Yes | Not on the phone |
 
-**Safari and the AI Dev Kit.** Safari blocks a website (the Studio) from reaching apps on your own computer (the AI Dev
-Kit), so AI assist, Look and fix, speech and voices aren't available in Safari. Everything else works. Use Chrome, Edge
-or Firefox for AI. Chrome and Edge may also ask once whether the Studio may reach apps on your computer; allow it for AI.
+**Safari and the AI Dev Kit.** Safari won't let a secure website (the Studio) talk to the AI Dev Kit's plain local
+address, so the kit (from capture service 1.12.90) also answers on a secure one, `https://127.0.0.1:8789`, with a
+certificate it makes for your computer only. Safari doesn't know that certificate, so the first time it needs one
+step: with the kit running, open [https://127.0.0.1:8789/health](https://127.0.0.1:8789/health), choose **Show
+Details**, then **visit this website** (it is your own computer), and press **Check again** in AI assist. Safari
+remembers it. Nothing is added to your system's trusted certificates. AI assist shows these steps itself when Safari
+can't reach the kit. Chrome, Edge and Firefox use the plain address and need none of this; Chrome and Edge may ask once
+whether the Studio may reach apps on your computer: allow it for AI.
 
 ## Where your projects are saved
 
@@ -67,8 +72,8 @@ Frames per second are measured while each plays (60 is smooth; a phone at 120 Hz
 |---|---|---|---|---|
 | Chrome / Edge (Chromium 149) | Yes | 52 fps | 59 fps | 61 fps, no errors |
 | Firefox 151 | Yes | 112 fps | 119 fps | 120 fps, no errors |
-| Safari (WebKit 26.5) | Yes (AI features blocked, see above) | 44 fps | 64 fps | 59 fps, no errors |
-| iPhone 13 profile (WebKit) | Yes (AI blocked) | 23 fps | 41 fps | 32 fps, no errors |
+| Safari (WebKit 26.5) | Yes (AI after the one-time step, see above) | 44 fps | 64 fps | 59 fps, no errors |
+| iPhone 13 profile (WebKit) | Yes (AI needs the kit on a computer) | 23 fps | 41 fps | 32 fps, no errors |
 | Mid-range Android profile (Chromium, CPU 4x slower) | Yes | 41 fps | **11 fps** | 60 fps, no errors |
 
 The phone profiles are emulated on a desktop computer (the Android one with its processor slowed four times, a common

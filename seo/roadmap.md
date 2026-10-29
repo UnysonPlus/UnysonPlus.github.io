@@ -24,9 +24,9 @@ below is a rough intent rather than a queue.
 Open Graph and Twitter cards **shipped in 2.0.6** — see
 [Sharing cards](./sharing-cards.md) in the main documentation.
 
-Social profile URLs shipped alongside them, under **Unyson+ → SEO → Social → Social profiles**.
-They are recorded but not yet emitted: their purpose is the `sameAs` property on your
-`Organization` node, which arrives with the structured data below.
+Social profile URLs shipped alongside them, under **Unyson+ → SEO → Social → Social profiles**,
+and are emitted as the `sameAs` property on your `Organization` (or `Person`) node — see
+[Structured data](./structured-data.md).
 
 ---
 
@@ -450,14 +450,10 @@ results if something links to it — and because the page was never crawled, its
 never seen. To keep a page out of the index, use the noindex switch and leave it crawlable.
 :::
 
-### Import and export settings <span className="badge badge--secondary">Exploring</span>
+### Import and export settings
 
-Export your SEO configuration to a file and import it into another site. The obvious use is
-an agency running the same setup across many sites; the less obvious one is having a copy
-before you change something.
-
-This pairs with **importing from other plugins** under *Editing at scale* above — same
-machinery, different source.
+**Shipped.** See [Moving settings](./settings-transfer.md) — every site-wide SEO setting in one
+file, with a preview before import and credentials left out unless asked for.
 
 ### Reset settings <span className="badge badge--secondary">Exploring</span>
 
@@ -512,17 +508,15 @@ That said, UnysonPlus is not starting from behind. The theme already publishes a
 your site, and the capture service already ships an AI companion that uses **your own** API
 key or local CLI rather than a metered credit balance.
 
-### Let an AI assistant work on your SEO (MCP) <span className="badge badge--secondary">Exploring</span>
+### Let an AI assistant work on your SEO (MCP)
 
-The most interesting item on this page. Model Context Protocol lets an AI client — a desktop AI app, a command-line coding agent, an IDE
-assistant — connect directly to your site and work with its SEO
-data: *find posts missing meta descriptions*, *set titles across a section*, *create a
-redirect*.
+**Partly shipped.** With the AI Assistant extension active, an AI can read a page's effective SEO,
+update its title, description and other fields, and audit up to a hundred pages for missing or
+duplicate values — see [With the AI Assistant](./ai-assistant.md). The same tools are exposed to
+external AI clients through the site's MCP connection.
 
-WordPress's Abilities API plus an MCP adapter makes this genuinely tractable rather than
-speculative, and it fits how UnysonPlus is already built and used. The honest caveats: it
-requires Application Passwords, it hands an AI client real write access to your content, and
-that trade deserves a deliberate decision rather than a default-on switch.
+Still open: creating redirects and changing site-wide settings from an AI client, which want the
+same deliberate, revertible handling the page-level tools already have.
 
 ### AI content suggestions <span className="badge badge--secondary">Exploring</span> {#ai-content-suggestions}
 

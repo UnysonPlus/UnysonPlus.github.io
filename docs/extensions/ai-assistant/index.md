@@ -196,7 +196,7 @@ panel.
 
 | Extension | Ability | What it does |
 | --- | --- | --- |
-| [SEO](../seo/index.md) | `unysonplus/seo-get-page` *(panel)* | The title, description, canonical, robots and social tags a page really outputs, and where each comes from — your override, a settings template, or auto-generated — with length hints |
+| [SEO](/seo) | `unysonplus/seo-get-page` *(panel)* | The title, description, canonical, robots and social tags a page really outputs, and where each comes from — your override, a settings template, or auto-generated — with length hints |
 | SEO | `unysonplus/seo-update-page` *(panel)* | Sets or clears a page's SEO overrides (title, description, canonical, noindex / nofollow, Open Graph, Twitter) — undoable |
 | SEO | `unysonplus/seo-audit` | Checks up to 100 published pages for missing, long, auto-generated or duplicate titles and descriptions, and hidden (noindex) pages |
 | [Theme Builder](../theme-builder/index.md) | `unysonplus/theme-builder-list` | Header / body / footer parts, the templates combining them with where each applies, and the display-rule vocabulary |

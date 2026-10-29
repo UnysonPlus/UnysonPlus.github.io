@@ -312,13 +312,16 @@ const config = {
           {from: '/learn/clean-code', to: '/page-builder/clean-dom'},
           {from: '/learn/responsive', to: '/page-builder/column-widths'},
           {from: '/learn/performance', to: '/performance'},
-          {from: '/learn/seo', to: '/extensions/seo'},
+          {from: '/learn/seo', to: '/seo'},
           {from: '/learn/accessibility', to: '/'},
           // CRM and Membership moved out of Extensions into their own sections.
           {from: '/extensions/crm', to: '/crm'},
           {from: '/extensions/crm/roadmap', to: '/crm/roadmap'},
           {from: '/extensions/crm/research', to: '/crm/research'},
           {from: '/extensions/membership', to: '/membership'},
+          {from: '/extensions/seo', to: '/seo'},
+          {from: '/extensions/seo/roadmap', to: '/seo/roadmap'},
+          {from: '/extensions/seo/template-tags', to: '/seo/template-tags'},
           // The "Site Generation Roadmap" was named and expanded into the AI Website Creator.
           {from: '/ai-dev-kit/site-generation-roadmap', to: '/ai-dev-kit/ai-website-creator'},
         ],
@@ -388,6 +391,16 @@ const config = {
         path: 'membership',
         routeBasePath: 'membership',
         sidebarPath: './sidebarsMembership.js',
+        editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'seo',
+        path: 'seo',
+        routeBasePath: 'seo',
+        sidebarPath: './sidebarsSeo.js',
         editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
       },
     ],
@@ -532,6 +545,13 @@ const config = {
             docsPluginId: 'membership',
             position: 'left',
             label: 'Membership',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'seoSidebar',
+            docsPluginId: 'seo',
+            position: 'left',
+            label: 'SEO',
           },
           {
             type: 'docSidebar',

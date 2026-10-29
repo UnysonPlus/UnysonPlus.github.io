@@ -1,13 +1,16 @@
 ---
+sidebar_position: 4
 title: "Template tags"
-sidebar_position: 2
+sidebar_label: "Template tags"
+description: "Every template tag Unyson+ SEO understands, for titles and meta descriptions — site tags, page tags, term and archive tags, author tags, and the dynamic custom-field families."
 ---
-
 # Template tags
 
 Template tags are written `%%tag%%` and can be used in any title or description field —
 the site-wide templates in **Unyson+ → SEO → Titles &amp; Meta**, and a single page's own SEO title
 or description.
+
+<img src="/img/seo/seo-titles-meta.png" alt="The Titles & Meta view, with a title and description template per location" width="1644" />
 
 In the editor they appear as **chips** rather than raw text. Use the buttons above each
 field to insert the common ones, or **View all tags** to browse everything with example

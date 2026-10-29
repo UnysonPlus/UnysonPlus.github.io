@@ -1,6 +1,6 @@
 ---
 title: "Roadmap"
-sidebar_position: 3
+sidebar_position: 20
 ---
 
 # Roadmap
@@ -22,7 +22,7 @@ below is a rough intent rather than a queue.
 ## Social sharing
 
 Open Graph and Twitter cards **shipped in 2.0.6** — see
-[Sharing cards](./index.md#sharing-cards) in the main documentation.
+[Sharing cards](./sharing-cards.md) in the main documentation.
 
 Social profile URLs shipped alongside them, under **Unyson+ → SEO → Social → Social profiles**.
 They are recorded but not yet emitted: their purpose is the `sameAs` property on your
@@ -33,7 +33,7 @@ They are recorded but not yet emitted: their purpose is the `sameAs` property on
 ## Structured data
 
 Site identity and per-type schema **shipped in 2.0.8** — see
-[Structured data](./index.md#structured-data).
+[Structured data](./structured-data.md).
 
 ### Author profiles and E-E-A-T <span className="badge badge--secondary">Exploring</span>
 
@@ -44,7 +44,7 @@ and `sameAs` — the signals Google's guidelines describe under Experience and E
 
 ### FAQ data in the graph <span className="badge badge--secondary">Exploring</span>
 
-The [accordion element](../../shortcodes/interactive-elements/accordion.md) can already emit `FAQPage`
+The [accordion element](/shortcodes/interactive-elements/accordion) can already emit `FAQPage`
 structured data — switch on its FAQ rich snippet option and the questions and answers are
 published for search engines to show as an expandable result.
 
@@ -70,10 +70,10 @@ line, a map pin and a directions link next to a result.
 
 Worth being specific about what is actually missing here, because it is less than it looks.
 UnysonPlus already collects all of this. The
-[Business Info](../../shortcodes/components/business-info.md) element holds the name, address, phone,
+[Business Info](/shortcodes/components/business-info) element holds the name, address, phone,
 email, website and map link, plus a seven-day opening-hours grid with per-day open, close and
 closed states — and it already computes a live open/closed status from the site timezone. The
-[Map](../../shortcodes/media-elements/map.md) element already renders locations, with OpenStreetMap as well as
+[Map](/shortcodes/media-elements/map) element already renders locations, with OpenStreetMap as well as
 Google, so no API key is needed to show a map at all.
 
 So the gap is not the data or the display. It is that none of it is currently expressed as
@@ -221,8 +221,8 @@ a clear finish line.
 This only makes sense after the per-page checks above exist — it is the same engine pointed
 at the whole site.
 
-Part of the ground is already covered: [Pages going stale](./index.md#pages-going-stale) reports age
-and length across the site today, and the [list columns](./index.md#editing-from-the-list) show
+Part of the ground is already covered: [Pages going stale](./reports/going-stale.md) reports age
+and length across the site today, and the [list columns](./list-editing.md) show
 which pages are following a template rather than saying something of their own. What is missing is
 the keyphrase and structure checks, which need the per-page analysis first.
 
@@ -395,7 +395,7 @@ are content and which are chrome.
 
 ### List columns and inline editing
 
-**Shipped in 2.0.7** — see [Editing from the list](./index.md#editing-from-the-list).
+**Shipped in 2.0.7** — see [Editing from the list](./list-editing.md).
 
 A **site-wide audit** — "which of my 400 pages emit no description at all" — is still open,
 and is listed under [Content tools](#content-tools). It needs something the columns do not:
@@ -404,7 +404,7 @@ queried until it has been stored somewhere.
 
 ### Importing from other plugins
 
-**Shipped in 2.0.10** — see [Importing from another plugin](./index.md#importing-from-another-plugin).
+**Shipped in 2.0.10** — see [Importing from another plugin](./importing.md).
 
 Site-wide settings (title templates per content type, social defaults) are not imported yet;
 only per-page values are. Templates are a handful of fields you set once, and getting them
@@ -471,7 +471,7 @@ configured into a corner.
 ## Search Console
 
 The connection itself has shipped and sits under
-[Reports](./index.md#reports). What follows is what it could report next.
+[Reports](./reports/search-console.md). What follows is what it could report next.
 
 Everything in this section is **your own data from Google Search Console**, shown inside
 WordPress instead of in another tab.

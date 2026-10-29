@@ -1,0 +1,8 @@
+{
+  "label": "Reports",
+  "position": 10,
+  "collapsible": true,
+  "collapsed": false,
+  "link": { "type": "generated-index", "title": "Reports",
+    "description": "Read-only views built from data the site already has, or that Google gives you free for your own property. None of them needs a subscription or a crawler." }
+}

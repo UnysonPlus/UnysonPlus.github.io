@@ -226,6 +226,142 @@ and length across the site today, and the [list columns](./index.md#editing-from
 which pages are following a template rather than saying something of their own. What is missing is
 the keyphrase and structure checks, which need the per-page analysis first.
 
+
+### Guardrails for generated pages <span className="badge badge--secondary">Exploring</span>
+
+Generating many pages from one template and a dataset — a page per service, per location, per
+product — is a legitimate way to cover demand nobody could write their way through by hand. It is
+also the fastest way to get a whole site discounted, because the penalty for mass-produced thin
+pages is not applied page by page.
+
+The dividing line is whether each page carries something a reader would actually want that the
+others do not. The extension cannot supply that data, but it can say when it is missing:
+
+- **Near-duplicate detection.** Going stale reports pages that are *thin* or *old*; it cannot say
+  "these 340 descriptions are 94% identical to one another", which is the number that matters for
+  templated pages. It needs no external data at all.
+- **Keep pages out of the index until they are substantial.** A rule holding a post type below a
+  word count out of the index, reusing the thin-page threshold that already exists. It lets someone
+  generate a thousand pages and expose only those carrying real content.
+- **Index coverage at scale.** Of the pages generated, how many did Google keep? That comes free
+  with [index coverage](#index-coverage) above, and it is the number that says whether the whole
+  approach is working or being ignored.
+
+---
+
+## Page speed
+
+### Diagnostics, not just the verdict <span className="badge badge--secondary">Exploring</span>
+
+The Page speed report shows field data from real visits, which answers whether the site is slow
+for the people actually using it. It cannot say *what to fix*.
+
+The PageSpeed Insights API is free and needs no account or OAuth at all, and returns the
+diagnostics that name the cause — the render-blocking resource, the oversized image, the element
+shifting the layout. Field data decides whether it is worth your afternoon; lab diagnostics decide
+where the afternoon goes.
+
+---
+
+## Topic research
+
+### Trends import <span className="badge badge--secondary">Exploring</span> {#trends-import}
+
+Google Trends answers what no amount of on-page work can: whether interest in a topic is rising or
+draining away, when in the year it peaks, and which of two phrasings people actually type. It does
+not report search volume and never will — its numbers are relative to the peak of whatever you
+asked for.
+
+There is no API to connect to (see [Not planned](#not-planned)), but every panel in Trends exports
+a CSV, so the import is the route. Download the file, drop it on the **Import / Export** screen,
+and the filename is parsed so the term, report type, geography and date range fill themselves in.
+Each import is stored with the parameters it was taken under, because two exports made under
+different terms or ranges are not comparable, and quietly treating them as if they were would be
+worse than not storing them at all.
+
+The screen will say plainly which settings to use — twelve months, one country. Trends defaults to
+a short worldwide window built for news desks, which reads as pure noise for anything editorial.
+
+### Topic momentum <span className="badge badge--secondary">Exploring</span>
+
+The import on its own is a curiosity. What makes it worth building is the join with data the
+extension already holds, which nothing else in the stack is positioned to do:
+
+| What it sees | What it means | What to do |
+| --- | --- | --- |
+| Rising, already getting impressions, page exists | Positioned for something growing | Refresh before the peak — the most valuable row on the screen |
+| Rising, getting impressions, no real page | Ranking by accident on a growing topic | Write the page you are already half-ranking for |
+| Rising, no impressions, no page | An open gap, ranked by momentum | A candidate for the calendar |
+| Falling, page exists, traffic down | The market moved, not the page | Nothing. Explicitly do not spend a week "fixing" it |
+
+That last row matters as much as the others. Knowing a drop was the topic rather than the site
+saves the fortnight that would otherwise go into repairing something which was never broken.
+
+A fourth signal is already in the product: the site's own search log. A phrase visitors typed into
+your search box **and** which is rising in Trends is about as strong a content signal as a small
+site will ever get.
+
+The matching stays deterministic and explainable. Where the AI Assistant belongs — when it is
+switched on — is turning an accepted row into a proposed title or outline, never into the analysis
+itself. That is the same companion described under
+[AI content suggestions](#ai-content-suggestions), pointed at a topic rather than a page.
+
+---
+
+## Alerts and digests
+
+### The failures nobody notices <span className="badge badge--secondary">Exploring</span>
+
+A small set of checks that catch the failures nobody notices until traffic drops — the
+homepage left on noindex after a launch, a `robots.txt` returning an error, a sitemap that
+has stopped generating.
+
+These are worth doing precisely because they are dull. Every one of them is a site-wide
+outage of your search presence caused by a single switch, and the gap between it happening
+and somebody noticing is usually measured in weeks.
+
+They come first, before anything below, because they are the only ones that are unambiguously
+urgent — and because the checks have to prove reliable before anything more elaborate is worth
+building on top of them.
+
+### Being told, instead of remembering to look <span className="badge badge--secondary">Exploring</span>
+
+Every report in the extension is pull-based. Site search, Going stale, Page speed and Search
+Console all sit behind a menu, and a report nobody opens may as well not exist. Most of what would
+be worth saying is already computed, and simply never leaves the screen that computed it.
+
+The test for anything allowed to interrupt someone: **it names a page, names an action, and is
+rare enough to be believed.** On that test, these qualify:
+
+- The Search Console connection **stopped working** — including the seven-day expiry that catches a
+  Google Cloud project left on "Testing". Without this, every report quietly goes stale while
+  continuing to look fine.
+- A page, or the whole site, **accidentally went `noindex`**.
+- A page gets **many impressions and almost no clicks** — a title not telling people what they
+  would get.
+- A page's impressions **dropped sharply** against the previous four weeks.
+- A page sits at **position 8–15**.
+- A query brings impressions but **no page targets it**.
+- A page passed the staleness threshold **and still gets traffic**. Old pages nobody visits do not
+  matter, and that distinction is what makes the alert worth sending.
+- Visitors **searched the site and found nothing**.
+
+Where it would appear, in the order worth building: a **dashboard widget**, seen on login and
+intruding on nothing; an **inline note in the editor**, because the moment to say "this is two
+years old and still gets 300 visits a month" is when the post is already open; then an opt-in
+**weekly email**; and an **admin notice** reserved for the broken-connection class of problem
+alone.
+
+Two constraints decide whether this is useful or unbearable. **Every alert needs a minimum-volume
+floor** — a site with fifty impressions a month cannot have a meaningful "30% drop", and without
+floors small sites would receive nothing but false alarms. And **SEO moves in months**, so weekly
+is the ceiling; a daily alert misrepresents the tempo of the thing it reports on.
+
+The detection must work with the AI Assistant switched off, since it ships inactive and needs a
+model connection. Where the Assistant earns its place is translation: "CTR 0.9% at position 8.3"
+is not an instruction. "4,000 people saw this page and 36 clicked — the title probably does not say
+what they would get" is.
+
 ---
 
 ## Internal linking
@@ -332,22 +468,10 @@ machinery, different source.
 Restore defaults, per settings group rather than all at once, for when a site has been
 configured into a corner.
 
-### SEO alerts <span className="badge badge--secondary">Exploring</span>
-
-A small set of checks that catch the failures nobody notices until traffic drops — the
-homepage left on noindex after a launch, a `robots.txt` returning an error, a sitemap that
-has stopped generating.
-
-These are worth doing precisely because they are dull. Every one of them is a site-wide
-outage of your search presence caused by a single switch, and the gap between it happening
-and somebody noticing is usually measured in weeks.
-
-Notification by email; anything more elaborate can wait until the checks themselves have
-proved reliable.
-
----
-
 ## Search Console
+
+The connection itself has shipped and sits under
+[Reports](./index.md#reports). What follows is what it could report next.
 
 Everything in this section is **your own data from Google Search Console**, shown inside
 WordPress instead of in another tab.
@@ -365,12 +489,19 @@ usefully, the change in each. Which pages are gaining, which are slipping, and w
 impressions but no clicks (usually a title and description problem, which is precisely what
 this extension can fix).
 
-### Index coverage <span className="badge badge--secondary">Exploring</span>
+### Index coverage <span className="badge badge--warning">Coming soon</span> {#index-coverage}
 
 The most actionable part, and the one nothing else surfaces: how many of your pages Google
 has actually indexed, and for the rest, *why not* — crawled but not indexed, discovered but
-not crawled, or excluded. Per page it can also show when it was last crawled, whether it was
-seen as mobile or desktop, and which rich results it qualified for.
+not crawled, or excluded. Per page it can also show when it was last crawled, which canonical
+Google chose against the one you declared, and which rich results it qualified for.
+
+This is the next thing to build. It answers the most common question in SEO — *why is this
+page not showing up* — which today can only be guessed at, and it needs **no new credential**:
+it runs on the Search Console connection that is already set up and already explained.
+
+On a site generating pages from a template it is also the only honest measure of whether that
+is working at all: of two thousand pages, how many did Google keep?
 
 "Twelve pages have been discovered and never crawled" is a specific problem with specific
 causes. A ranking chart is not.
@@ -385,12 +516,18 @@ background job, not a button.
 
 Which search terms bring people to each page, with impressions, clicks and position history.
 
+The view worth building is per page: the queries a post ranks for, its average position, and
+whether that position is improving or slipping. **Positions 8–15 are where attention pays** —
+close enough to the first page to be worth the effort, far enough down to be invisible — and
+nothing in the admin currently points at them.
+
 One clarification worth making, since competing plugins present this as a *rank tracker*:
 Search Console reports an **average position across everyone who saw the result**, which
 varies by location, device and personalisation. It is a useful trend and it is not your
-ranking. A genuine rank tracker requires scraping search results from many locations, which
-is a paid external service — not something this can honestly provide by reading Search
-Console.
+ranking. It also only covers queries you have **already appeared for** — a keyword you have
+never shown up for has no impressions, so there is no row and nothing to report. A genuine
+rank tracker requires scraping search results from many locations, which is a paid external
+service — not something this can honestly provide by reading Search Console.
 
 ---
 
@@ -417,7 +554,7 @@ speculative, and it fits how UnysonPlus is already built and used. The honest ca
 requires Application Passwords, it hands an AI client real write access to your content, and
 that trade deserves a deliberate decision rather than a default-on switch.
 
-### AI content suggestions <span className="badge badge--secondary">Exploring</span>
+### AI content suggestions <span className="badge badge--secondary">Exploring</span> {#ai-content-suggestions}
 
 Descriptions, titles, FAQs and key points suggested from the page you are editing, with
 defaults for tone and audience so suggestions sound like your site rather than like
@@ -449,6 +586,10 @@ deliberate omissions rather than gaps.
 | **Search engine pinging** | Google retired its sitemap ping endpoint in 2023 and Bing followed. Discovery happens through `robots.txt` and Search Console. IndexNow, above, is the live replacement. |
 | **The `noodp` directive** | It instructed engines not to use DMOZ descriptions. DMOZ closed in 2017. |
 | **Usage tracking** | The extension does not report anything about your site to us. |
+| **Keyword search volume** | Nobody sells that number cheaply, because it comes from licensed clickstream data and web-scale crawling rather than from software. A plugin showing a volume figure would be showing you a guess. |
+| **A Google Trends API connection** | The official API has been an application-gated alpha since 2025 — no self-serve key, no published quotas, no general-availability date. Either every user applies to a waitlist, or we proxy somebody else's data on their behalf. Revisit when it is generally available with a key the user creates themselves, as the Chrome UX Report key already works. The [CSV import](#trends-import) is the route that works today. |
+| **Trends through a scraper or proxy vendor** | A plugin cannot run a headless browser, and the commercial alternatives route requests through third-party residential networks. Both carry somebody else's terms-of-service problem onto your server. |
+| **Capturing a download automatically** | WordPress runs on the server; a downloaded file lands on your own machine. No plugin can reach across that boundary — it is the browser security model, not a missing feature. Dropping the file on the import screen is one step, and the filename fills in the rest. |
 | **Competitor site analysis** | Crawling somebody else's site to score it needs a hosted crawler, which means an account, a subscription and your data leaving your server. Everything here is built to work with no account and no network connection, and that is worth more than the feature. |
 | **A single site score** | A number out of 100 is satisfying and not actionable. The site audit above lists the actual problems instead. |
 | **A system status screen** | WordPress ships **Tools → Site Health**, which already reports the server, PHP, database and plugin state. A second copy of it inside an SEO screen is duplication, not a feature. |

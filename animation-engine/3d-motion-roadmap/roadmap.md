@@ -101,13 +101,20 @@ options** (see [Area 2](./focus-areas#area-2--a-real-motion-timeline) for the fu
     it survives re-imports and the manual-edit guard — and the runtime applies it for **every visitor**,
     not just in the editor. Each edited track gets a **reset (↺)**. Non-Scroll-Motion triggers show as
     `locked`.
-  - **Phase 3 — ahead: keyframe lanes + the scene compiler.** Editing each Start / Middle / End beat of a
-    [Scroll Keyframes](/animation-engine/scroll-keyframes) timeline on the track, reusing the Kinetic
-    Scenes keyframe editor.
+  - **Phase 3a ✅ shipped — keyframe lanes (beat positions).** A [Scroll Keyframes](/animation-engine/scroll-keyframes)
+    element now appears on the timeline as a lane with a **diamond per beat** (Start → Middle → End, or a
+    Pin · Hold · Exit's enter / appear / hold / exit). **Drag an interior beat** to retime *when* it lands;
+    it clamps between its neighbours, previews live, and **persists** to the same per-page store as
+    drag-to-retime (`_upw_timing_overrides`, keyed by the element's stable key — never the builder JSON),
+    so it ships for **every visitor** and resets with ↺. Scroll Keyframes elements aren't GSAP triggers
+    (they ride the shared frame loop), so the editor surfaces them directly.
+  - **Phase 3b — ahead: beat states + the scene compiler.** Editing each beat's **state** (transform /
+    opacity / blur) right on the lane, reusing the Kinetic Scenes keyframe editor — the
+    **native-options ⇄ scene compiler** so the scene stays a compile target, not a stored file.
   <br />*Probed 2026-10-21 — confirmed feasible:* the Kinetic Scenes player already ships the scroll
   mode (pinned sticky stage + sticky-header offset + smoothing, driving a seekable GSAP timeline) and
   its timeline / keyframe editor is a clean, props-driven component. The **piece still to build** for
-  Phase 3 is a **native-options ⇄ scene compiler** so the scene stays a compile target, not a stored
+  Phase 3b is the **native-options ⇄ scene compiler** so the scene stays a compile target, not a stored
   file — see the Design Decisions log ("reuse Kinetic Scenes for the scroll timeline editor").
 - **1c · Page-level choreography.** ✅ **Shipped (read-only)** as the **Scroll Ruler** — an admin-only
   front-end overlay (⟺ button bottom-left, or Shift+R) that lists every GSAP ScrollTrigger on the page
@@ -207,7 +214,7 @@ recipe — have shipped, so this now works end to end.
 | Phase | Deliverable | Impact | Status |
 | --- | --- | --- | --- |
 | **0** | Site-wide smooth scroll + one scroll engine + shared guardrails | Very high | ✅ Shipped |
-| **1** | Beat keyframes (the timeline "80%") → visual editor | High | 1a ✅ shipped · 1b–1c ahead |
+| **1** | Beat keyframes (the timeline "80%") → visual editor | High | 1a ✅ · 1c ✅ · 1b ✅ to Phase 3a (3b ahead) |
 | **2** | Parametric scroll-camera 3D scene element | Very high | Planned |
 | **3** | Rive + WebGL image transitions + particle presets | Medium–High | Rive ✅ · rest planned |
 

@@ -50,6 +50,24 @@ visitors** — the runtime applies your new start/end for everyone, not just in 
 matched by a stable per-element key, so a Scroll Motion element must have been saved at least once since
 this feature shipped for its key to exist; brand-new effects get one on save.)
 
+### Keyframe lanes (Scroll Keyframes)
+
+A [Scroll Keyframes](/animation-engine/scroll-keyframes) element — one that moves through a **Start →
+Middle → End** (or a **Pin · Hold · Exit**) timeline — shows on the Scroll Timeline as a lane with a
+**diamond for each beat**, placed where that beat lands as the element scrolls:
+
+- **Drag an interior beat** (a bright diamond) to change **when it lands** — the *Middle* of a Start →
+  Middle → End, or the *appear* / *hold* beats of a Pin · Hold · Exit. The first and last beats are the
+  endpoints and stay put (dim diamonds).
+- A beat can't cross its neighbours, so the order never breaks.
+- The change **previews live** and is **saved to the same per-page store** as a drag-to-retime — never the
+  builder content — so it survives a re-import and **ships to real visitors**.
+- The edited lane shows the **edited** badge and a **reset (↺)** that restores the authored beats.
+
+This retimes *when* each beat happens. Editing *what* each beat looks like (its transform / opacity) still
+lives in the element's own Scroll Keyframes panel — bringing that onto the lane is the next step (see
+[What's next](#whats-next)).
+
 ## Scroll Ruler — the compact read-out
 
 A thin **vertical** overlay for a quick glance without giving up screen width. Open it with the **⟺**
@@ -72,14 +90,16 @@ find easier to reason about; use whichever reads better for the task.
 | Axis | 0–100 % of the page | Raw scroll pixels |
 | Scrub the page | ✅ Drag the playhead | View-only playhead |
 | Retime (persisted) | ✅ Drag a Scroll Motion block / handle | Read-only |
+| Keyframe beats | ✅ Drag a Scroll Keyframes beat on its lane | Read-only |
 | Best for | Tuning timing & order, scrubbing to a beat, retiming | A compact glance at what pins/scrubs where |
 
-## What's next
+## What's next {#whats-next}
 
-Drag-to-retime (above) moves an animation's **start/end**. The deeper step on the
-[3D Motion & Roadmap](/animation-engine/3d-motion-roadmap/roadmap) (item 1b) is full **keyframe lanes** —
-editing each Start / Middle / End beat of a [Scroll Keyframes](/animation-engine/scroll-keyframes)
-timeline on the track, reusing the Kinetic Scenes keyframe editor. The Ruler's ranges stay read-only.
+Drag-to-retime moves an animation's **start/end**, and **keyframe lanes** (above) now let you retime each
+**beat's position** on a [Scroll Keyframes](/animation-engine/scroll-keyframes) timeline. The deeper step on
+the [3D Motion & Roadmap](/animation-engine/3d-motion-roadmap/roadmap) (item 1b) is editing each beat's
+**state** — its transform / opacity / blur — right on the lane, reusing the Kinetic Scenes keyframe editor.
+The Ruler's ranges stay read-only.
 
 Neither tool affects what a visitor *sees as chrome*: they are author aids, gated to administrators and
 off until you open them. A **retime you save**, however, is meant to ship — it changes the animation's

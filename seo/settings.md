@@ -26,6 +26,28 @@ Title separator, auto-generated descriptions, and canonical URLs. Canonical URLs
 default and tell search engines which address is the original for each page; paginated pages
 correctly canonicalise to themselves rather than to page one.
 
+**Number the pages of a list** (on by default). Page 2 of the blog, a category or a search used to
+carry the same title as page 1, so search results showed several identical titles. With this on,
+page 2 and beyond get the page number added: *Recipes | My Site | Page 2 of 7*. A template that
+already says which page it is, with the `%%page%%` or `%%pagenumber%%` [tag](./template-tags.md),
+is left as it is, so the number never appears twice.
+
+The same tab holds:
+
+- **[Attachment pages](./attachment-pages.md)**: what happens to the page WordPress makes for every
+  uploaded file.
+- **RSS feed**: a line added to the end of every item in your feed. Sites that copy content
+  automatically usually take it from the feed, so the copies end up linking back to the original.
+  Leave it empty to add nothing. `%%post_link%%` becomes a link to the post and `%%site_link%%` a
+  link to your site, and basic HTML is allowed:
+
+  ```
+  The post %%post_link%% first appeared on %%site_link%%.
+  ```
+
+- **[Access and removal](./access-and-removal.md)**: which roles may edit SEO fields, and whether
+  deleting the extension deletes its data.
+
 ## Titles &amp; Meta
 
 A title and description template for every place a page can appear: the homepage, the blog
@@ -51,6 +73,9 @@ afterwards.
 - WordPress publishes its own sitemap at `/wp-sitemap.xml`; the extension switches that off by
   default so your site has one sitemap rather than two competing ones.
 
+The same tab has the **[IndexNow](./indexnow.md)** switch, which tells Bing, Yandex and other search
+engines about a page the moment it is published or updated.
+
 ## Social
 
 Everything about how a page looks when it is shared.
@@ -64,8 +89,8 @@ Add your **X / Twitter account** so shared links are attributed to it.
 
 **Social profiles** records the accounts that belong to this site. These are not decoration
 and they are not links displayed anywhere: they exist to feed the `sameAs` property that
-tells a search engine which accounts are genuinely yours. That structured data is still to
-come, so for now these fields are stored and not yet emitted.
+tells a search engine which accounts are genuinely yours. They are published as `sameAs` in the
+site's [structured data](./structured-data.md).
 
 ## Reports
 
@@ -83,3 +108,15 @@ and what each content type publishes as. Covered in full under
 
 Verification codes for Google Search Console, Bing, Yandex, Baidu and Pinterest. Paste only
 the code from the tag each service gives you, not the whole tag.
+
+For any other service, use **Other services** and paste the **whole tag** it gives you, one per
+line:
+
+```html
+<meta name="facebook-domain-verification" content="a1b2c3d4e5" />
+<meta name="norton-safeweb-site-verification" content="x9y8z7" />
+```
+
+Each one is added to the head of every page. Only `<meta>` tags with a `name` and a `content` are
+used; anything else pasted here (a script, a link, a redirect) is ignored, because this text goes
+into every page.

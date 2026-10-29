@@ -306,19 +306,13 @@ itself. That is the same companion described under
 
 ## Alerts and digests
 
-### The failures nobody notices <span className="badge badge--secondary">Exploring</span>
+### The failures nobody notices
 
-A small set of checks that catch the failures nobody notices until traffic drops — the
-homepage left on noindex after a launch, a `robots.txt` returning an error, a sitemap that
-has stopped generating.
-
-These are worth doing precisely because they are dull. Every one of them is a site-wide
-outage of your search presence caused by a single switch, and the gap between it happening
-and somebody noticing is usually measured in weeks.
-
-They come first, before anything below, because they are the only ones that are unambiguously
-urgent — and because the checks have to prove reliable before anything more elaborate is worth
-building on top of them.
+**Shipped.** See [Site health](./reports/site-health.md): a daily check, by fetching the site the way a search
+engine would, for the site left on "discourage search engines", a noindex homepage, a robots.txt that
+errors or blocks everything, a stray robots.txt file, a dead or empty sitemap, and a Search Console
+connection that has expired. Critical problems raise an admin notice; all of it shows in
+Tools → Site Health too.
 
 ### Being told, instead of remembering to look <span className="badge badge--secondary">Exploring</span>
 
@@ -408,17 +402,16 @@ wrong site-wide is a bigger blast radius than getting one page wrong.
 
 ---
 
-## Smaller additions <span className="badge badge--warning">Coming soon</span>
+## Smaller additions
 
-- **IndexNow** — tell Bing and Yandex about new and updated pages as you publish.
-- **Additional verification code** — a field for any service without a dedicated box.
-- **RSS attribution** — append a link back to your site on every feed item, so content
-  scrapers link to the original.
-- **Paginated titles** — a site-wide suffix for page 2 and beyond, without editing every
-  template.
-- **Editor access by role** — control which roles may edit SEO fields.
-- **Complete removal on uninstall** — an option to delete every setting and stored value when
-  the extension is removed.
+**Shipped.**
+
+- **IndexNow**: see [IndexNow](./indexnow.md).
+- **Additional verification code**: **Other services** under [Verification](./settings.md#verification).
+- **RSS attribution**: the **RSS feed** box under [General](./settings.md#general).
+- **Paginated titles**: **Number the pages of a list** under [General](./settings.md#general).
+- **Editor access by role** and **complete removal on uninstall**: see
+  [Access and removal](./access-and-removal.md).
 
 ---
 

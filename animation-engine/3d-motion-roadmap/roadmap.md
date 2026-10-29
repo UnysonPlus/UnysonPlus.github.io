@@ -183,11 +183,18 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   choreography* builder helper, and retiring the standalone abstract `scroll_choreography` steps design once
   native chaining is the only authoring path.
 
-## Phase 2 — Real 3D scenes
+## Phase 2 — Real 3D scenes 🚧 Started
 
-- **A parametric "3D Scene" element** — a few pre-built, scroll-scrubbed camera scenes (gallery
-  dolly, product orbit, image tunnel). You supply the media and tune a few knobs; the scene and its
-  camera choreography are built in.
+- **A few pre-built, scroll-scrubbed camera scenes** — you supply the media and tune a few knobs; the scene
+  and its camera choreography are built in. Rather than a separate element, these ship as **scroll-driven
+  presets of [WebGL Object](/animation-engine/webgl-object)**, reusing its Three.js renderer, per-page WebGL
+  budget, mobile/low-power throttle and poster/CSS fallback (Design Decisions: "3d-scenes-as-webgl-presets").
+  - **Image Tunnel** — ✅ **shipped.** Your images line a receding tunnel and the **camera dollies forward
+    through them as the section scrolls** — the engine's first scroll-scrubbed camera scene. *Corridor /
+    spiral / fly-through* arrangements, with image count, depth spacing, spread, size and depth fog. *(Verified
+    live: 8 images lining a corridor, camera flies through on scroll, distant planes fade into fog.)*
+  - **Gallery Dolly** and **Product Orbit** — ahead (image planes the camera glides past; a hero the camera
+    orbits — the latter can lean on [Model Viewer](/animation-engine/model-viewer) for real 3D models).
 - **Stretch:** a real-WebGL variant of the [Motion Gallery](/animation-engine/motion-gallery) for true depth,
   lighting and reflection.
 
@@ -220,7 +227,7 @@ recipe — have shipped, so this now works end to end.
 | --- | --- | --- | --- |
 | **0** | Site-wide smooth scroll + one scroll engine + shared guardrails | Very high | ✅ Shipped |
 | **1** | Beat keyframes (the timeline "80%") → visual editor | High | ✅ Shipped (1a · 1b · 1c) |
-| **2** | Parametric scroll-camera 3D scene element | Very high | Planned |
+| **2** | Parametric scroll-camera 3D scenes (WebGL Object presets) | Very high | 🚧 Started — Image Tunnel ✅ |
 | **3** | Rive + WebGL image transitions + particle presets | Medium–High | Rive ✅ · rest planned |
 
 ## What we build vs. what stays curated {#build-vs-curated}

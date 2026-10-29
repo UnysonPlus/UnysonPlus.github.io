@@ -29,7 +29,27 @@ Pick a **Style** — two families:
 **Shaders (full-screen)**
 : Gradient Mesh · Plasma · Aurora · Fluid (pointer-reactive) · Dot Matrix / Halftone · Image Distortion · Image Transitions
 
+**3D Scenes (scroll-driven)**
+: Image Tunnel
+
 Each style reveals its own parameters (e.g. Glass → *Refraction* & *Iridescence*, Liquid Metal → *Metalness* & *Roughness*, Particle Field → *Particle count*, *size* & a *Formation* (sphere / galaxy / ring / wave grid / cloud / helix), Plasma → *Scale/Flow/Contrast*, Image Distortion → an *Image* + *Strength*, **Image Transitions** → a list of *Images* + a *Transition* (fade / ripple / liquid dissolve / displace / wave), *Time per image*, *Transition length* and *Effect strength* — a looping slideshow that melts one image into the next on the GPU).
+
+### Image Tunnel (scroll-driven camera)
+
+A real 3D scene: your **images line a tunnel** and the **camera flies forward through them as the section
+scrolls** — the first scroll-scrubbed camera scene in the engine. Drop it in as a Section background (or a
+tall inline element), add a set of images, and scrolling past the section dollies the camera down the
+corridor; distant images fade into depth fog. Parameters:
+
+- **Images** — the set that lines the tunnel (they repeat to fill the depth).
+- **Arrangement** — *Corridor* (images on alternating walls, angled toward you), *Spiral* (wrapped around
+  the flight path), or *Straight ahead* (fly through a stack).
+- **Image count** — how many planes fill the depth · **Depth spacing** — the gap between them (longer =
+  a longer flight) · **Spread** — how far they sit from the centre line · **Image size** · **Depth fog** —
+  how quickly far images melt into the background.
+
+It reuses the element's Three.js renderer, the per-page WebGL budget, the mobile/low-power throttle and the
+poster/CSS fallback, so it degrades gracefully where WebGL isn't available and respects reduced motion.
 
 ## Options by tab
 

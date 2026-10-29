@@ -424,31 +424,10 @@ wrong site-wide is a bigger blast radius than getting one page wrong.
 
 ## Tools
 
-### robots.txt editor <span className="badge badge--warning">Coming soon</span>
+### robots.txt editor
 
-WordPress generates `robots.txt` dynamically — there is no file on the server to edit — and
-the extension already appends your sitemap to it. What is missing is a way to add your own
-rules without writing a filter.
-
-The useful shape is a small table of *user agent → directive → value* rather than a raw text
-box, because the common mistakes here are syntax errors, and a preview of the finished file
-underneath so you can see what crawlers will actually receive.
-
-Two things worth having built in, since almost everyone wants them and almost nobody writes
-them correctly by hand:
-
-- **Blocking AI crawlers** — GPTBot, CCBot, Google-Extended and the rest, individually or all
-  at once. Whether to block them is a genuine editorial decision and not one this extension
-  should make for you, but making it a checkbox rather than a research project is fair.
-- **Blocking internal search URLs** — `/?s=` produces an unlimited number of thin, duplicate
-  pages, and it is one of the few crawl-budget problems that is both common and trivially
-  fixed.
-
-:::note
-`robots.txt` controls **crawling**, not indexing. A URL blocked there can still appear in
-results if something links to it — and because the page was never crawled, its `noindex` was
-never seen. To keep a page out of the index, use the noindex switch and leave it crawlable.
-:::
+**Shipped.** See [robots.txt editor](./robots-txt.md) — block internal search, block AI training or AI
+search crawlers by name, add your own Allow / Disallow rules, and preview the exact file.
 
 ### Import and export settings
 

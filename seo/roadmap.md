@@ -161,11 +161,11 @@ the gap.
 
 ## Redirects
 
-### Automatic redirects when a slug changes <span className="badge badge--warning">Coming soon</span>
+### Automatic redirects when a slug changes
 
-Rename a page and its old URL stops working — along with every link and bookmark pointing at
-it. Recording a redirect automatically at the moment the slug changes prevents the most
-common cause of avoidable 404s, and needs no attention from anyone.
+**Shipped.** See [Redirects](./redirects.md) — pages, pages moved under another parent (with every
+child page), and renamed categories and tags keep their old addresses working. Ordinary posts were
+already covered by WordPress.
 
 ### Redirect manager <span className="badge badge--secondary">Exploring</span>
 

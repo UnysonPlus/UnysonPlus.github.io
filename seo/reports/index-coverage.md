@@ -39,6 +39,27 @@ chose, so you can decide whether that was right.
 
 ---
 
+## Where else it shows
+
+The report is the overview. The same answer also appears where you work on a page, because
+nobody opens a report about a page while they are editing that page.
+
+**On the posts list**, an **Index** column carries each page's state. Hover the badge for
+Google's own phrase.
+
+<img src="/img/seo/seo-posts-list-index.png" alt="The posts list with an Index column showing Indexed, Not indexed and Excluded on purpose badges" width="1672" />
+
+**In the editor**, a line above the SEO panel spells it out — the state, Google's reason, and the
+URL Google chose instead if it picked a different canonical.
+
+<img src="/img/seo/seo-editor-index-line.png" alt="The line above the SEO panel reading: In Google — Excluded on purpose, Excluded by noindex tag" width="1358" />
+
+Both stay out of the way until they have something to say: the column only appears once Search
+Console is connected, and a page shows nothing until it has been checked, rather than every row of
+a new site reading "not known yet".
+
+---
+
 ## Why it takes a while
 
 Google allows a fixed number of these checks per property per day. A site with several hundred

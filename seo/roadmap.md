@@ -495,9 +495,6 @@ this extension can fix).
 each page, which canonical it chose, and when it last crawled it, gathered in the background
 through the Search Console connection.
 
-Still to come here: surfacing the same answer on the posts list and in the editor, so a page's
-index state is visible where you are working on it rather than only on the report.
-
 ### Query reporting <span className="badge badge--secondary">Exploring</span>
 
 Which search terms bring people to each page, with impressions, clicks and position history.

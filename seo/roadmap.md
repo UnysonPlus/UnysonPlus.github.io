@@ -98,10 +98,10 @@ location on a page.
 These do not change what you say about a page. They reduce the number of low-value URLs a
 search engine has to crawl at all, which matters most on large sites.
 
-### Attachment URL handling <span className="badge badge--warning">Coming soon</span>
+### Attachment URL handling
 
-WordPress creates a page for every uploaded file. They are thin, near-duplicate pages that
-get indexed anyway. Redirect them to the file itself or to the post that uses it.
+**Shipped.** See [Attachment pages](./attachment-pages.md) — send them to the post the file belongs
+to, to the file itself, or keep them, from **SEO → General**.
 
 ### Feed cleanup <span className="badge badge--secondary">Exploring</span>
 

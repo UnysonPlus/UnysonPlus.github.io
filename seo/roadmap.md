@@ -489,28 +489,14 @@ usefully, the change in each. Which pages are gaining, which are slipping, and w
 impressions but no clicks (usually a title and description problem, which is precisely what
 this extension can fix).
 
-### Index coverage <span className="badge badge--warning">Coming soon</span> {#index-coverage}
+### Index coverage
 
-The most actionable part, and the one nothing else surfaces: how many of your pages Google
-has actually indexed, and for the rest, *why not* — crawled but not indexed, discovered but
-not crawled, or excluded. Per page it can also show when it was last crawled, which canonical
-Google chose against the one you declared, and which rich results it qualified for.
+**Shipped.** See [Index coverage](./reports/index-coverage.md) in the manual — whether Google kept
+each page, which canonical it chose, and when it last crawled it, gathered in the background
+through the Search Console connection.
 
-This is the next thing to build. It answers the most common question in SEO — *why is this
-page not showing up* — which today can only be guessed at, and it needs **no new credential**:
-it runs on the Search Console connection that is already set up and already explained.
-
-On a site generating pages from a template it is also the only honest measure of whether that
-is working at all: of two thousand pages, how many did Google keep?
-
-"Twelve pages have been discovered and never crawled" is a specific problem with specific
-causes. A ranking chart is not.
-
-:::note
-Google's URL Inspection API is rate limited, so per-page index status has to be fetched
-gradually and cached rather than refreshed on demand. Any honest implementation is a
-background job, not a button.
-:::
+Still to come here: surfacing the same answer on the posts list and in the editor, so a page's
+index state is visible where you are working on it rather than only on the report.
 
 ### Query reporting <span className="badge badge--secondary">Exploring</span>
 

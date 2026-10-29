@@ -108,8 +108,8 @@ visitors.
 - Disconnecting removes the stored tokens from your site. It does not change anything in your
   Google account, and the credentials remain valid should you want to connect again.
 
-## What is planned
+## What else runs on this connection
 
-[Index coverage](../roadmap.md#index-coverage) is the next piece: asking Google whether a page is
-indexed at all, which canonical it chose against the one you declared, and when it was last
-crawled. It runs on this same connection, so it needs no further setup.
+[Index coverage](./index-coverage.md) asks Google whether each page is indexed at all, which
+canonical it chose against the one you declared, and when it was last crawled. It uses this same
+connection, so once you are connected there is nothing further to set up.

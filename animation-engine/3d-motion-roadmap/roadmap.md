@@ -176,12 +176,19 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   passes the view whitelist) plus `window.upwGallery3dForms.<name> = fn(N)` in the head (or
   `window.upwGallery3d.registerChoreoForm` at runtime) — **no core edit**. *Proven end-to-end with a
   non-core "ribbon" formation rendering from a drop-in alone.*
-- **Authoring polish** (🚧 mostly done): **cross-section grouping** is in — the Chain switch now groups
-  consecutive chained galleries whether they're stacked in one column **or each dropped in its own section**;
-  the runtime relocates them into one overlay wrapper and non-destructively hides the emptied sections. *Both
-  cases verified (one master ScrollTrigger, clean handoff, no empty gaps).* Still ahead: a right-click *Create
-  choreography* builder helper, and retiring the standalone abstract `scroll_choreography` steps design once
-  native chaining is the only authoring path.
+- **Authoring polish**: **cross-section grouping** is in — the Chain switch now groups consecutive chained
+  galleries whether they're stacked in one column **or each dropped in its own section**; the runtime
+  relocates them into one overlay wrapper and non-destructively hides the emptied sections. *Both cases
+  verified (one master ScrollTrigger, clean handoff, no empty gaps).*
+  - **Right-click *Create choreography*** — ✅ **shipped.** Right-click a Motion Gallery in the page builder
+    and pick *Create choreography*: every gallery on the page is switched to the Scroll-Choreography design
+    with **Chain** on in one click, so the adjacent ones connect into a single scroll sequence (the runtime
+    groups them). Fully reversible. *(Verified end-to-end in the builder: the item appears only on galleries,
+    and a click persists `design: scroll_choreography` + `chain: true`.)*
+  - **Retiring the abstract `scroll_choreography` steps design** — still ahead, and **gated**: the Chain
+    toggle and the whole chaining runtime currently live *inside* that design, so it can't be removed until
+    chaining is lifted to be **design-agnostic** (any real design chainable on its own). That's the real next
+    step here, larger than a polish item.
 
 ## Phase 2 — Real 3D scenes ✅ Scenes shipped (WebGL Motion Gallery stretch ahead)
 
@@ -232,7 +239,7 @@ recipe — have shipped, so this now works end to end.
 | **0** | Site-wide smooth scroll + one scroll engine + shared guardrails | Very high | ✅ Shipped |
 | **1** | Beat keyframes (the timeline "80%") → visual editor | High | ✅ Shipped (1a · 1b · 1c) |
 | **2** | Parametric scroll-camera 3D scenes (WebGL Object presets) | Very high | ✅ Tunnel · Gallery Dolly · Product Orbit (WebGL Motion Gallery stretch ahead) |
-| **3** | Rive + WebGL image transitions + particle presets | Medium–High | Rive ✅ · rest planned |
+| **3** | Rive + WebGL image transitions + particle presets | Medium–High | ✅ Shipped (Rive · image transitions · particle presets) |
 
 ## What we build vs. what stays curated {#build-vs-curated}
 

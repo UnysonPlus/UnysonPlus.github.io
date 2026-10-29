@@ -125,6 +125,17 @@ Every design shares the same surrounding controls, so switching design keeps you
 3. Set **Loop Duration** and **On Hover** to taste.
 4. **Save** — the scene renders and loops on the front end.
 
+### Chain several galleries into one scroll sequence
+
+Drop a few Motion Galleries down the page and **connect them into a single pinned scroll choreography** —
+gallery 1 flies out *as* gallery 2 assembles in, and so on. The quickest way: **right-click any Motion
+Gallery in the builder → *Create choreography***. That switches every gallery on the page to the
+**Scroll-Choreography** design with **Chain with adjacent galleries** turned on, and the runtime
+auto-groups the adjacent chained galleries — whether they're stacked in one column or each in its own
+section — into one master scroll sequence. It's fully reversible (untick **Chain**, or switch a gallery's
+design back). You can also set it by hand on each gallery: **Design → Scroll Choreography → Chain with
+adjacent galleries**.
+
 ## Performance & accessibility
 
 - **Loads only when used** — the CSS + driver are enqueued only on pages with the element, and the

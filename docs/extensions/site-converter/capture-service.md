@@ -58,6 +58,8 @@ The service exposes a few CORS‑enabled endpoints (your admin browser calls the
 | `GET /capture?url=<url>&target=block-theme` | Render a live URL → `block-bundle.json` for the **Block theme** output |
 | `GET /mirror?url=<url>&zip=1` | Mirror a page verbatim (for **Duplicate as landing page**) → a `.zip` of `index.html` + `assets/` |
 | `POST /local-ai/tool-chat` | One tool-calling turn on your local model — used by the [AI Assistant's free local AI](../ai-assistant/index.md#free-local-ai-on-your-computer) |
+| `POST /local-ai/chat` | The dashboard's [Kit Assistant](./kit-assistant.md) — a multi-turn message, with any attached images |
+| `POST /local-ai/chat-command` | One [Kit Assistant command](./kit-assistant.md#commands) (`/report`, `/docs`, …) — runs a single tool with no model involved |
 | `POST /local-ai/import` | Registers a `.gguf` model file from this computer with the local model runner (see [Local AI models](#local-ai-models)) |
 | `POST /local-ai/check` | Grades a local model on a small task in the shape the converter and the AI Assistant use: Ready, Weak or Not suitable |
 | `POST /local-ai/agent` | Runs your signed-in command-line AI agent (your subscription) as the AI Assistant's agent against your site — used instead of the local model when one is signed in on this computer |

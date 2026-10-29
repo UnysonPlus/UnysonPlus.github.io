@@ -24,6 +24,7 @@ features, do it in a few minutes, no code unless noted. New to the builder? Star
 
 ## Header, footer & templates
 
+- [Free WordPress templates — ready-made page designs you can edit](./free-wordpress-templates.md)
 - [Build a sticky site header](./sticky-header.md)
 - [Add a dynamic copyright year to your footer](./dynamic-copyright-year.md)
 - [Design a custom 404 page](./custom-404-page.md)

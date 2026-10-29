@@ -32,3 +32,45 @@ page down on its own.
 This pairs with the [Asset Optimizer](/extensions/asset-optimizer), which already optimises for these
 metrics — preloading the likely LCP image, and reordering blocks to avoid layout shift. Until now it
 had no way to tell you whether any of that worked.
+
+---
+
+## What to fix
+
+The figures above answer **whether** speed is worth an afternoon. Below them, **What to fix** says
+where the afternoon should go: a lab test of one page, run by Google, that names the files and
+elements slowing it down.
+
+<img src="/img/seo/seo-speed-diagnostics.png" alt="The What to fix panel: a page address, Mobile or Desktop, a Run diagnostics button, a score of 54, and a list of fixes such as Properly size images with the image files named and how much each could save" width="1630" />
+
+Choose a page on this site and **Mobile** or **Desktop**, then press **Run diagnostics**. A run takes
+up to half a minute on Google's side, which is why it only ever starts from the button and never
+while a screen is loading.
+
+What comes back:
+
+- **A score out of 100** for that one page and device — green from 90, amber from 50, red below.
+- **Up to five fixes**, the biggest time saving first, each naming up to three of the actual files
+  responsible. Anything already passing, or saving less than a tenth of a second, is left off: a
+  long list of trivia hides the two things worth doing.
+- **Also worth knowing** — the element Google treats as the main content, what moves the layout,
+  an oversized page, third-party scripts — when they are a problem.
+
+The result is kept for twelve hours, so you can come back to it while you work through the list.
+
+:::warning You need an API key for this in practice
+Google allows keyless requests, but **every keyless caller on the internet shares one daily
+allowance**, and it is usually used up — the test then stops with *"Google is limiting requests
+without a key"*. Use the same key as the field data above: in the Google Cloud project that owns it,
+enable the **PageSpeed Insights API** as well as the Chrome UX Report API. Both are free.
+:::
+
+**Only pages on this site** can be tested from here. The button is not a way to run Google's test
+against other people's sites.
+
+### Lab and field disagree — which is right?
+
+Both, about different things. The **field** numbers are what real visitors experienced over four
+weeks, across every phone and connection they had. The **lab** score is one simulated visit on a
+deliberately slow phone. A page can pass in the field and score 54 in the lab — the field result is
+the one Google uses for ranking; the lab result is the one that tells you what to change.

@@ -251,15 +251,11 @@ others do not. The extension cannot supply that data, but it can say when it is 
 
 ## Page speed
 
-### Diagnostics, not just the verdict <span className="badge badge--secondary">Exploring</span>
+### Diagnostics, not just the verdict
 
-The Page speed report shows field data from real visits, which answers whether the site is slow
-for the people actually using it. It cannot say *what to fix*.
-
-The PageSpeed Insights API is free and needs no account or OAuth at all, and returns the
-diagnostics that name the cause — the render-blocking resource, the oversized image, the element
-shifting the layout. Field data decides whether it is worth your afternoon; lab diagnostics decide
-where the afternoon goes.
+**Shipped.** See [What to fix](./reports/page-speed.md#what-to-fix) — a lab test of any page on the
+site naming the files and elements slowing it down, below the field data that says whether speed
+is worth the work.
 
 ---
 

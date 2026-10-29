@@ -31,7 +31,7 @@ rendered HTML. It's the map everything below hangs on.
 
 | Task | Guide |
 | --- | --- |
-| **Add a page-builder element** (shortcode) | [Add a shortcode](./add-a-shortcode.md) |
+| **Add a page-builder element** (shortcode) | [Add a shortcode](./add-a-shortcode.mdx) |
 | **Add an option type** | [Create an option type](/options/create-option-type) |
 | **Create an extension** | [Creating extensions](/category/creating-extensions) |
 | **Add dynamic tags** | [Dynamic Content → add a provider](/dynamic-content#add-your-own-tags-acf-pods-a-custom-value) |

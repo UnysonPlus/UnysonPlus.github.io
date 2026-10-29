@@ -38,4 +38,4 @@ AI in Kinetic Scenes runs on **your own AI**, so there's nothing to buy from us:
 - **AI agents** (Claude Code, Cursor, Codex) can use the same tools to make scenes for you.
 
 The Studio checks quietly whether the AI Dev Kit is running. If it isn't, AI features say so, and everything else works
-as normal. Some browsers block websites from reaching apps on your own computer; see [Known limitations](./limitations.md).
+as normal. Some browsers block websites from reaching apps on your own computer; see [Known limitations](./limitations.mdx).

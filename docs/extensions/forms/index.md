@@ -147,7 +147,7 @@ Contact Form → Settings → **Quiz** turns a form into a quiz or a "which one 
 
 ## Form Results
 
-Unyson+ → **Form Results** (or **See results** on Form Entries) sums up a form's entries for any period: how
+Unyson+ → Forms → **Results** (or **See results** on Entries) sums up a form's entries for any period: how
 often each choice was picked, the average rating and, for a 0–10 question, the NPS, a table per survey-grid
 statement, averages for numbers, quiz scores and results, the latest answers to open questions, and entries
 per week. Names, emails, phone numbers, addresses and files are never summarised.
@@ -200,6 +200,20 @@ after a number of days, or never.
 - **Create a post** turns each submission into a post of any type (a testimonial, a listing, an event), as a
   draft for you to review by default. Answer tags fill the title and content, custom fields take
   `key = {answer tag}` lines, and an uploaded photo or the signature can become the featured image.
+
+## Where it lives in the admin
+
+Forms takes **one** item in the Unyson+ menu: **Unyson+ → Forms**. Its screens sit on a tab bar at the top:
+
+| Tab | What it shows |
+|---|---|
+| **Forms** | Your saved forms (the form library, below). |
+| **Entries** | Every submission: filter by form, status or date, search, star, archive, export to CSV. |
+| **Results** | A form's entries summed up for a period (see *Form Results* above). |
+
+The sidebar keeps **Forms** highlighted on all three. The addresses are unchanged
+(`admin.php?page=fw-form-entries`, `admin.php?page=fw-form-results`), so bookmarks and links from
+emails still open them. Entries and Results show only to people who may read entries.
 
 ## The form library
 

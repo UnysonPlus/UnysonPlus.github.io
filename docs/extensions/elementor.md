@@ -142,7 +142,7 @@ you change them in the Unyson+ Page Builder:
 
 The **Form** widget starts as a ready contact form (name, email, message, consent). Each field
 has a type, label, required switch, placeholder, choices (one per line, for dropdowns,
-radios and checkboxes) and width. Submissions are stored under **Unyson+ → Form Entries**
+radios and checkboxes) and width. Submissions are stored under **Unyson+ → Forms → Entries**
 and emailed to the address in **After Submit → Email to** (your site's admin email by
 default). Sending email needs the [Mailer](./mailer.md) set up (**Unyson+ → Extensions → Mailer** settings); until then the form shows "Invalid
 send method" above itself after a submission.

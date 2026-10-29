@@ -314,43 +314,18 @@ errors or blocks everything, a stray robots.txt file, a dead or empty sitemap, a
 connection that has expired. Critical problems raise an admin notice; all of it shows in
 Tools → Site Health too.
 
-### Being told, instead of remembering to look <span className="badge badge--secondary">Exploring</span>
+### Being told, instead of remembering to look
 
-Every report in the extension is pull-based. Site search, Going stale, Page speed and Search
-Console all sit behind a menu, and a report nobody opens may as well not exist. Most of what would
-be worth saying is already computed, and simply never leaves the screen that computed it.
+**Shipped.** See [Alerts](./reports/alerts.md): checked daily and shown on the Dashboard, at the top of
+the page's SEO box and in an optional weekly email that never repeats itself. Pages set to noindex
+while getting clicks, impressions halved, seen but not clicked, old and still visited, just off page
+one, site searches that find nothing, and a broken Search Console connection (the one also raised as
+an admin notice). Every alert has a minimum-volume floor, and at most eight show at once.
 
-The test for anything allowed to interrupt someone: **it names a page, names an action, and is
-rare enough to be believed.** On that test, these qualify:
-
-- The Search Console connection **stopped working** — including the seven-day expiry that catches a
-  Google Cloud project left on "Testing". Without this, every report quietly goes stale while
-  continuing to look fine.
-- A page, or the whole site, **accidentally went `noindex`**.
-- A page gets **many impressions and almost no clicks** — a title not telling people what they
-  would get.
-- A page's impressions **dropped sharply** against the previous four weeks.
-- A page sits at **position 8–15**.
-- A query brings impressions but **no page targets it**.
-- A page passed the staleness threshold **and still gets traffic**. Old pages nobody visits do not
-  matter, and that distinction is what makes the alert worth sending.
-- Visitors **searched the site and found nothing**.
-
-Where it would appear, in the order worth building: a **dashboard widget**, seen on login and
-intruding on nothing; an **inline note in the editor**, because the moment to say "this is two
-years old and still gets 300 visits a month" is when the post is already open; then an opt-in
-**weekly email**; and an **admin notice** reserved for the broken-connection class of problem
-alone.
-
-Two constraints decide whether this is useful or unbearable. **Every alert needs a minimum-volume
-floor** — a site with fifty impressions a month cannot have a meaningful "30% drop", and without
-floors small sites would receive nothing but false alarms. And **SEO moves in months**, so weekly
-is the ceiling; a daily alert misrepresents the tempo of the thing it reports on.
-
-The detection must work with the AI Assistant switched off, since it ships inactive and needs a
-model connection. Where the Assistant earns its place is translation: "CTR 0.9% at position 8.3"
-is not an instruction. "4,000 people saw this page and 36 clicked — the title probably does not say
-what they would get" is.
+Not built: "a query brings impressions but no page targets it". Search Console reports a page for
+every query that brings impressions, so "no page targets it" cannot be told apart from "the page
+targets it badly" without guessing; [Where pages rank](./reports/where-pages-rank.md) covers the
+useful half.
 
 ---
 

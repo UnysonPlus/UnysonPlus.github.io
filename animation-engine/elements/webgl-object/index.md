@@ -30,7 +30,7 @@ Pick a **Style** — two families:
 : Gradient Mesh · Plasma · Aurora · Fluid (pointer-reactive) · Dot Matrix / Halftone · Image Distortion · Image Transitions
 
 **3D Scenes (scroll-driven)**
-: Image Tunnel
+: Image Tunnel · Gallery Dolly · Product Orbit
 
 Each style reveals its own parameters (e.g. Glass → *Refraction* & *Iridescence*, Liquid Metal → *Metalness* & *Roughness*, Particle Field → *Particle count*, *size* & a *Formation* (sphere / galaxy / ring / wave grid / cloud / helix), Plasma → *Scale/Flow/Contrast*, Image Distortion → an *Image* + *Strength*, **Image Transitions** → a list of *Images* + a *Transition* (fade / ripple / liquid dissolve / displace / wave), *Time per image*, *Transition length* and *Effect strength* — a looping slideshow that melts one image into the next on the GPU).
 
@@ -50,6 +50,23 @@ corridor; distant images fade into depth fog. Parameters:
 
 It reuses the element's Three.js renderer, the per-page WebGL budget, the mobile/low-power throttle and the
 poster/CSS fallback, so it degrades gracefully where WebGL isn't available and respects reduced motion.
+
+### Gallery Dolly (scroll-driven camera)
+
+Images hang on a **gently curved wall** and the **camera glides sideways past them** as you scroll — a walk
+down a gallery. Parameters: **Images**, **Image count**, **Rows** (one or two), **Spacing**, **Wall
+distance**, **Curve** (bends the wall into a concave arc that hugs the path; 0 = flat), **Image size** and
+**Depth fog**.
+
+### Product Orbit (scroll-driven camera)
+
+Your images face outward on a **ring** and the **camera orbits the centre** as you scroll — a turntable
+reveal, one image swinging to the front after the next. Parameters: **Images**, **Ring radius**, **Camera
+distance** (how far outside the ring the camera sits), **Orbit sweep** (how far around it travels over the
+scroll), **Camera tilt**, **Image size** and **Depth fog**.
+
+All three scenes share the same foundation — the element's Three.js renderer, the per-page WebGL budget, the
+mobile/low-power throttle and the poster/CSS fallback — so they degrade gracefully and respect reduced motion.
 
 ## Options by tab
 

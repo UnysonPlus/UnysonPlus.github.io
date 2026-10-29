@@ -183,7 +183,7 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   choreography* builder helper, and retiring the standalone abstract `scroll_choreography` steps design once
   native chaining is the only authoring path.
 
-## Phase 2 — Real 3D scenes 🚧 Started
+## Phase 2 — Real 3D scenes ✅ Scenes shipped (WebGL Motion Gallery stretch ahead)
 
 - **A few pre-built, scroll-scrubbed camera scenes** — you supply the media and tune a few knobs; the scene
   and its camera choreography are built in. Rather than a separate element, these ship as **scroll-driven
@@ -193,8 +193,12 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
     through them as the section scrolls** — the engine's first scroll-scrubbed camera scene. *Corridor /
     spiral / fly-through* arrangements, with image count, depth spacing, spread, size and depth fog. *(Verified
     live: 8 images lining a corridor, camera flies through on scroll, distant planes fade into fog.)*
-  - **Gallery Dolly** and **Product Orbit** — ahead (image planes the camera glides past; a hero the camera
-    orbits — the latter can lean on [Model Viewer](/animation-engine/model-viewer) for real 3D models).
+  - **Gallery Dolly** — ✅ **shipped.** Images hang on a gently **curved wall** and the **camera glides
+    sideways past them** on scroll — a walk down a gallery. One or two rows, with a curve that bends the wall
+    into a concave arc hugging the path. *(Verified live.)*
+  - **Product Orbit** — ✅ **shipped.** Your images face outward on a **ring** and the **camera orbits the
+    centre** on scroll — a turntable reveal, each image swinging to the front after the next. *(Verified live.)*
+    A real-3D-model variant (via [Model Viewer](/animation-engine/model-viewer)) is a possible future escalation.
 - **Stretch:** a real-WebGL variant of the [Motion Gallery](/animation-engine/motion-gallery) for true depth,
   lighting and reflection.
 
@@ -227,7 +231,7 @@ recipe — have shipped, so this now works end to end.
 | --- | --- | --- | --- |
 | **0** | Site-wide smooth scroll + one scroll engine + shared guardrails | Very high | ✅ Shipped |
 | **1** | Beat keyframes (the timeline "80%") → visual editor | High | ✅ Shipped (1a · 1b · 1c) |
-| **2** | Parametric scroll-camera 3D scenes (WebGL Object presets) | Very high | 🚧 Started — Image Tunnel ✅ |
+| **2** | Parametric scroll-camera 3D scenes (WebGL Object presets) | Very high | ✅ Tunnel · Gallery Dolly · Product Orbit (WebGL Motion Gallery stretch ahead) |
 | **3** | Rive + WebGL image transitions + particle presets | Medium–High | Rive ✅ · rest planned |
 
 ## What we build vs. what stays curated {#build-vs-curated}

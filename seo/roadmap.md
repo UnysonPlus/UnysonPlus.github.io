@@ -495,22 +495,13 @@ this extension can fix).
 each page, which canonical it chose, and when it last crawled it, gathered in the background
 through the Search Console connection.
 
-### Query reporting <span className="badge badge--secondary">Exploring</span>
+### Query reporting
 
-Which search terms bring people to each page, with impressions, clicks and position history.
+**Shipped.** See [Where your pages rank](./reports/where-pages-rank.md) — the searches almost on page
+one, and in the editor every search a page appears for, with its position and how it moved.
 
-The view worth building is per page: the queries a post ranks for, its average position, and
-whether that position is improving or slipping. **Positions 8–15 are where attention pays** —
-close enough to the first page to be worth the effort, far enough down to be invisible — and
-nothing in the admin currently points at them.
-
-One clarification worth making, since competing plugins present this as a *rank tracker*:
-Search Console reports an **average position across everyone who saw the result**, which
-varies by location, device and personalisation. It is a useful trend and it is not your
-ranking. It also only covers queries you have **already appeared for** — a keyword you have
-never shown up for has no impressions, so there is no row and nothing to report. A genuine
-rank tracker requires scraping search results from many locations, which is a paid external
-service — not something this can honestly provide by reading Search Console.
+Still to come: position history over longer than two four-week windows, so a slow slide over a
+quarter is visible rather than reading as a series of small wobbles.
 
 ---
 

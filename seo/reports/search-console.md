@@ -113,3 +113,6 @@ visitors.
 [Index coverage](./index-coverage.md) asks Google whether each page is indexed at all, which
 canonical it chose against the one you declared, and when it was last crawled. It uses this same
 connection, so once you are connected there is nothing further to set up.
+
+[Where your pages rank](./where-pages-rank.md) lists the searches almost on page one, and shows in
+the editor every search a page already appears for.

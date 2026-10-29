@@ -30,7 +30,7 @@ foundations laid earlier. We're doing the three [focus areas](./focus-areas) **o
 <text x="46" y="195" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">1</text>
 <rect x="82" y="150" width="648" height="80" rx="12" fill="var(--ifm-color-emphasis-100)" stroke="var(--ifm-color-emphasis-200)"/>
 <text x="104" y="180" font-size="17" font-weight="700" fill="var(--ifm-font-color-base)">Phase 1 — Motion timeline</text>
-<text x="104" y="206" font-size="13" fill="var(--ifm-color-emphasis-700)">Beat keyframes ✓ shipped · visual editor ahead</text>
+<text x="104" y="206" font-size="13" fill="var(--ifm-color-emphasis-700)">Beat keyframes + visual timeline editor — ✓ shipped</text>
 <text x="708" y="174" text-anchor="end" font-size="10" font-weight="700" letter-spacing="1" fill="var(--ifm-color-emphasis-600)">IMPACT</text>
 <circle cx="654" cy="198" r="5" fill="#2F74E6"/><circle cx="672" cy="198" r="5" fill="#2F74E6"/><circle cx="690" cy="198" r="5" fill="#2F74E6"/><circle cx="708" cy="198" r="5" fill="none" stroke="var(--ifm-color-emphasis-400)" stroke-width="1.5"/>
 </g>
@@ -75,7 +75,7 @@ shipped.**
 
 Three stages that ladder up — each useful on its own, all writing the **same native builder
 options** (see [Area 2](./focus-areas#area-2--a-real-motion-timeline) for the full rationale).
-**Stage 1a has shipped;** 1b and 1c are still ahead.
+**All three stages (1a, 1b, 1c) have shipped** — the motion timeline is complete.
 
 - **1a · Beat keyframes (native).** ✅ **Shipped as [Scroll Keyframes](/animation-engine/scroll-keyframes)** —
   move any element through Start / Middle / End keyframed states as you scroll, each with an easing
@@ -108,14 +108,19 @@ options** (see [Area 2](./focus-areas#area-2--a-real-motion-timeline) for the fu
     drag-to-retime (`_upw_timing_overrides`, keyed by the element's stable key — never the builder JSON),
     so it ships for **every visitor** and resets with ↺. Scroll Keyframes elements aren't GSAP triggers
     (they ride the shared frame loop), so the editor surfaces them directly.
-  - **Phase 3b — ahead: beat states + the scene compiler.** Editing each beat's **state** (transform /
-    opacity / blur) right on the lane, reusing the Kinetic Scenes keyframe editor — the
-    **native-options ⇄ scene compiler** so the scene stays a compile target, not a stored file.
-  <br />*Probed 2026-10-21 — confirmed feasible:* the Kinetic Scenes player already ships the scroll
-  mode (pinned sticky stage + sticky-header offset + smoothing, driving a seekable GSAP timeline) and
-  its timeline / keyframe editor is a clean, props-driven component. The **piece still to build** for
-  Phase 3b is the **native-options ⇄ scene compiler** so the scene stays a compile target, not a stored
-  file — see the Design Decisions log ("reuse Kinetic Scenes for the scroll timeline editor").
+  - **Phase 3b ✅ shipped — beat states on the lane.** **Click a beat** (any diamond) to edit its **state**
+    — the eight animatable props (X, Y, scale, rotate, rotate X/Y, opacity, blur) + the **ease** — in a small
+    inline editor; the page seeks to that beat so you edit against its live pose, every change previews live,
+    and it **persists as a diff** from the authored values into the same `_upw_timing_overrides` store (never
+    the builder JSON), shipping to **every visitor**. Per-beat ↺ and whole-track ↺. The override *is* the
+    compile target — a native, framework-free editor on the existing overlay, rather than embedding the
+    Kinetic Scenes React component into the front-end tool (see Design Decisions,
+    "keyframe-lane-native-editor"). **This completes item 1b — the motion timeline.**
+  <br />*How it landed:* rather than embedding the Kinetic Scenes React editor into the admin-only,
+  framework-free front-end overlay, the lane edits the element's **native Scroll Keyframes options in place**
+  and persists them as an additive per-page override — the override *is* the compile target, so there's no
+  stored scene file to keep in sync. (The Kinetic Scenes keyframe editor stays the richer authoring surface
+  for full scenes.) See the Design Decisions log ("keyframe-lane-native-editor").
 - **1c · Page-level choreography.** ✅ **Shipped (read-only)** as the **Scroll Ruler** — an admin-only
   front-end overlay (⟺ button bottom-left, or Shift+R) that lists every GSAP ScrollTrigger on the page
   (its element, start/end scroll positions, pin and scrub flags) and maps all their ranges onto a vertical
@@ -214,7 +219,7 @@ recipe — have shipped, so this now works end to end.
 | Phase | Deliverable | Impact | Status |
 | --- | --- | --- | --- |
 | **0** | Site-wide smooth scroll + one scroll engine + shared guardrails | Very high | ✅ Shipped |
-| **1** | Beat keyframes (the timeline "80%") → visual editor | High | 1a ✅ · 1c ✅ · 1b ✅ to Phase 3a (3b ahead) |
+| **1** | Beat keyframes (the timeline "80%") → visual editor | High | ✅ Shipped (1a · 1b · 1c) |
 | **2** | Parametric scroll-camera 3D scene element | Very high | Planned |
 | **3** | Rive + WebGL image transitions + particle presets | Medium–High | Rive ✅ · rest planned |
 

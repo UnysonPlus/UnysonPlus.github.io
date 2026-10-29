@@ -64,9 +64,15 @@ Middle → End** (or a **Pin · Hold · Exit**) timeline — shows on the Scroll
   builder content — so it survives a re-import and **ships to real visitors**.
 - The edited lane shows the **edited** badge and a **reset (↺)** that restores the authored beats.
 
-This retimes *when* each beat happens. Editing *what* each beat looks like (its transform / opacity) still
-lives in the element's own Scroll Keyframes panel — bringing that onto the lane is the next step (see
-[What's next](#whats-next)).
+**Click a beat** (any diamond, including the endpoints) to open its **state editor** — the eight animatable
+properties (X, Y, scale, rotate, rotate X/Y, opacity, blur) plus the **ease** into that beat. The page jumps
+to that beat so you see the pose you're editing, and every change **previews live**. Edited beats get a
+white ring; **↺ Reset beat** restores just that beat, and the lane's ↺ resets the whole timeline.
+
+Both the *when* (beat positions) and the *what* (beat states) are saved to the **same per-page store, as a
+diff from the authored values** — never the builder content — so they survive a re-import and **ship to real
+visitors**. (An element is matched by a stable per-element key, so a Scroll Keyframes element must have been
+saved at least once since this shipped for its key to exist; new ones get it on save.)
 
 ## Scroll Ruler — the compact read-out
 
@@ -91,15 +97,15 @@ find easier to reason about; use whichever reads better for the task.
 | Scrub the page | ✅ Drag the playhead | View-only playhead |
 | Retime (persisted) | ✅ Drag a Scroll Motion block / handle | Read-only |
 | Keyframe beats | ✅ Drag a Scroll Keyframes beat on its lane | Read-only |
+| Beat states | ✅ Click a beat → edit transform / opacity / ease | Read-only |
 | Best for | Tuning timing & order, scrubbing to a beat, retiming | A compact glance at what pins/scrubs where |
 
 ## What's next {#whats-next}
 
-Drag-to-retime moves an animation's **start/end**, and **keyframe lanes** (above) now let you retime each
-**beat's position** on a [Scroll Keyframes](/animation-engine/scroll-keyframes) timeline. The deeper step on
-the [3D Motion & Roadmap](/animation-engine/3d-motion-roadmap/roadmap) (item 1b) is editing each beat's
-**state** — its transform / opacity / blur — right on the lane, reusing the Kinetic Scenes keyframe editor.
-The Ruler's ranges stay read-only.
+The Scroll Timeline now covers the whole of roadmap item **1b**: drag-to-retime for Scroll Motion, and
+**keyframe lanes** for Scroll Keyframes — retiming each beat's **position** *and* editing its **state** right
+on the lane. The Ruler's ranges stay read-only. Beyond the timeline, the
+[3D Motion & Roadmap](/animation-engine/3d-motion-roadmap/roadmap) moves on to **real 3D scenes** (item 2).
 
 Neither tool affects what a visitor *sees as chrome*: they are author aids, gated to administrators and
 off until you open them. A **retime you save**, however, is meant to ship — it changes the animation's

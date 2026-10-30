@@ -58,5 +58,5 @@ mean either a wrong answer or loading every page on the site into memory to chec
 breaks as soon as the list has more than one screenful.
 
 The per-row labels answer it honestly for the page you are looking at. Answering it for a
-whole site needs a stored index of resolved values, which is the
-[site-wide audit](./roadmap.md#content-tools) on the roadmap.
+whole site needs a stored index of resolved values, which is what the
+[site-wide audit](./reports/audit.md) does.

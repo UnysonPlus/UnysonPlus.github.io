@@ -331,18 +331,12 @@ useful half.
 
 ## Internal linking
 
-### Link report and orphaned pages <span className="badge badge--secondary">Exploring</span>
+### Link report and orphaned pages
 
-Internal links are one of the few on-page factors you fully control, and the usual problem is
-not knowing what the current state is. A link report would index every link on the site and
-answer the questions that actually matter:
-
-- **Which pages have no internal links pointing at them?** Orphaned pages are reachable only
-  from a menu or a sitemap, and they are easy to accumulate without noticing.
-- **Where do outbound links go?** A count per external domain, so you can see at a glance
-  which third parties your site links to most.
-- **Which links are internal, external or affiliate?** Affiliate links are worth separating,
-  since they generally want `rel="sponsored"` rather than passing authority.
+**Shipped.** See [Links](./reports/links.md): every link in the content and the page builder is
+indexed (kept current on save), and the report lists the pages nothing links to, the affiliate links
+missing rel="sponsored", and the outside sites linked to most. Each page's SEO box also says how many
+pages link to it.
 
 ### Internal link suggestions <span className="badge badge--secondary">Exploring</span>
 

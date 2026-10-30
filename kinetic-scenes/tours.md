@@ -29,8 +29,42 @@ moves and clicks, and something drawing the eye to what matters.
 - **Select box** draws a coloured box with corner handles around a word or two.
 - **Focus the camera on it** (a layer's settings) adds camera keys that glide in to frame the layer, hold and glide back.
 - **Before and after** swaps a screenshot for a second one of the same screen on the frame a click lands.
+- **Magnify** lifts a layer off the screen: it comes forward, larger, on a soft shadow, with a coloured ring if you give
+  one, and stays until an Out clip.
 - **Cut a piece out** (an image's settings) makes a button, panel or row of a screenshot its own layer, in the same place,
   ready to press, slide or glow.
+
+### Animated screenshots
+
+A still screenshot of a settings screen can come alive: its rows build in one after another, and the option you are
+talking about lifts off the screen while everything else dims, with a label beside it.
+
+<img src="/img/kinetic-scenes/animated-screenshot.jpg" alt="Three frames of an animated Theme Settings screenshot: the rows building in, the Site Width Mode row magnified with the rest dimmed and a label, then a second row labelled" width="810" />
+
+**In the Studio:** add the screenshot as an image layer, then open **Animate this screenshot** in its settings.
+
+1. **Find the rows.** The Studio looks for bands of content separated by plain background and marks each one on a small
+   copy of the picture, numbered. **Rows closer than** (in % of the picture's height) keeps an option's label and its
+   description together; raise it if one option is split into two rows, lower it if two options are joined.
+   Or paste the rows the AI Dev Kit measured in the real page (below), which are exact.
+2. **They arrive:** one after another sliding up, one after another landing like cards, or already there. Set when the
+   first starts and the time **between rows**.
+3. **Row to focus** (its number on the picture, 0 for none) and **Focus with**: Magnify and spotlight, Magnify,
+   Spotlight, or only the label. **Label beside it** adds a Callout; **Hold for** says how long the focus stays before it
+   lets go (0 keeps it to the end).
+4. **Animate it.** Each row becomes its own layer (Row 1, Row 2…) in exactly the same place, the gaps they leave are
+   filled with the screen's own background colour, and the clips are added. The scene grows to fit if it needs to.
+
+Everything it makes is ordinary layers and clips: move a clip, change a label, or add a cursor clicking the focused row.
+
+**With the AI Dev Kit:** its screenshot command measures the rows in the real page instead of guessing them, saves
+each row as its own picture and the screen with the rows hidden (the real empty panel), and writes their places to a
+`rows.json`. An agent builds the scene from those files; you can also paste `rows.json` into the Studio. See the kit's
+`docs/screencasts.md` (Animated screenshots).
+
+**Limits:** row finding works on flat interface screens (settings, lists, tables); on a photo or a busy gradient, mark
+the rows with the kit or **Cut a piece out** instead. On a phone-shaped (9:16) scene make the screenshot nearly full
+width and let it run off the bottom, or the rows are too small to read. Keep Magnify near 1.08 for a full-width row.
 
 ### Steps
 

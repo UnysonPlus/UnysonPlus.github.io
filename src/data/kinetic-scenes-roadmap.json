@@ -1149,6 +1149,12 @@
           "title": "Screencasts in the Studio",
           "detail": "Drop a recording into Kinetic Scenes and it arrives framed: browser frame, the automatic zooms as camera keys you can adjust, the cursor and the step captions.",
           "status": "done"
+        },
+        {
+          "status": "done",
+          "id": "p20-animated-screenshot",
+          "title": "Animated screenshots",
+          "detail": "A still screenshot of a settings screen comes alive: its rows (found in the picture by the Studio, or measured in the real page by the kit's screenshot command with a rows selector) become their own layers in the same place, build in one after another, and the option being talked about lifts off the screen with the new Magnify preset, a spotlight and a label. The kit also saves each row and the empty screen, so agents build the same scene. Shipped in Studio 0.1.16 / player 0.0.53 (Animate this screenshot in an image layer's settings)."
         }
       ]
     },
@@ -1270,7 +1276,7 @@
       ]
     }
   ],
-  "extensionVersion": "0.0.71",
+  "extensionVersion": "0.1.16",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

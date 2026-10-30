@@ -122,6 +122,7 @@ seams where its colours fall outside what a screen can show, which is why it was
 | **Click** | The cursor presses: it dips, a ring ripples out from the tip and the layer under it dips too, all on the same frame. Give it a click sound, and start what the click causes on its last frame. | cursor | The layer under it dips |
 | **Before and after** | A second picture of the same screen takes over (the menu opened, the setting saved): cut on the frame a click lands, or a quick fade or wipe. Several on one picture step through screens. | image | Picture after (address or data URL), Change |
 | **Spotlight** | Everything but this layer dims, with a rounded window around it, and stays that way until an Out clip. Follows the layer through camera moves. | any layer | Direction, Room around it, Corners, Shade |
+| **Magnify** | The layer comes forward, larger, on a soft shadow (with a coloured ring if you give one), and stays that way until an Out clip. Made for a piece cut out of a screenshot: the option being talked about lifts off the screen. | any layer | Direction, Size, Shadow, Ring colour |
 | **Callout** | A labelled pill beside this layer, joined to it by a short line, saying what it is ("Save your changes here"). Stays until an Out clip. | any layer | Direction, Label, Side, Distance, Colour, Text size |
 
 ## Scene transitions

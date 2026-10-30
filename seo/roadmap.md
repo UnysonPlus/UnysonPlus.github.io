@@ -167,28 +167,18 @@ the gap.
 child page), and renamed categories and tags keep their old addresses working. Ordinary posts were
 already covered by WordPress.
 
-### Redirect manager <span className="badge badge--secondary">Exploring</span>
+### Redirect manager
 
-Manual rules for everything the automatic case cannot cover: content that moved before the
-site did, URLs from an old platform, campaign links that should point somewhere new.
+**Shipped.** See [Redirects → Your own redirects](./redirects.md#your-own-redirects): exact or
+regular-expression rules (case and trailing slash ignored, query strings matched when given), 301 /
+302 / 307 / 410, a hit counter and last use per rule, groups and search, and CSV / JSON import and
+export (a plain two-column file from another tool imports too).
 
-What such a thing needs to be useful rather than merely present:
+### 404 monitoring
 
-- **Sensible matching** — optionally ignoring a trailing slash or letter case, since those
-  produce the same page but a different URL, with regular expressions for the awkward cases.
-- **Several sources to one target**, because a page that moved twice has two old URLs.
-- **A hit counter per rule**, so you can tell which redirects still carry traffic and which
-  are dead weight.
-- **The full set of status codes** — 301 and 302, but also 410 Gone for content deliberately
-  removed, which is a clearer signal than redirecting it somewhere irrelevant.
-- **Grouping and search**, because redirect lists grow into the hundreds and become
-  unmaintainable without them.
-
-### 404 monitoring <span className="badge badge--secondary">Exploring</span>
-
-A log of URLs that returned 404, so a redirect can be created from the evidence rather than
-guessed at. Most useful immediately after a migration, which is also when nobody has time to
-go looking.
+**Shipped.** See [404s](./not-found.md): every address that came back "not found", with requests, last
+seen and where visitors came from, bots and scanner probes left out, and a **Redirect it** button per
+row.
 
 ### Whole-site moves <span className="badge badge--secondary">Exploring</span>
 

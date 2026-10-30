@@ -83,20 +83,13 @@ to, to the file itself, or keep them, from **SEO → General**.
 
 The general sitemap ships today, images included. These are the specialised ones.
 
-### Video sitemap <span className="badge badge--secondary">Exploring</span>
+### Video sitemap
 
-A separate sitemap listing video content with its title, description, thumbnail and duration,
-which is what search engines read to show a video thumbnail next to a result.
+**Shipped.** See [Video and news sitemaps](./settings.md#video-and-news-sitemaps): videos from the builder's video elements and from the content, each with thumbnail, title and description; a video without a thumbnail is left out.
 
-The builder helps here in the same way it helps with descriptions: video elements are found
-by walking the builder tree, so the title and thumbnail are already known rather than being
-scraped out of an embed's markup.
+### News sitemap
 
-### News sitemap <span className="badge badge--secondary">Exploring</span>
-
-Google News accepts a sitemap of articles published in the last 48 hours. Genuinely useful if
-you are an approved publisher and worth nothing at all if you are not, so it belongs behind a
-switch rather than on by default.
+**Shipped.** See [Video and news sitemaps](./settings.md#video-and-news-sitemaps): the last 48 hours of articles in Google News' format, off until switched on.
 
 ### HTML sitemap
 

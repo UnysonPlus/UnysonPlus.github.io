@@ -217,10 +217,8 @@ text is read like the content, and every suggestion is explained by the words th
 
 **Shipped in 2.0.7** — see [Editing from the list](./list-editing.md).
 
-A **site-wide audit** — "which of my 400 pages emit no description at all" — is still open,
-and is listed under [Content tools](#content-tools). It needs something the columns do not:
-an index of resolved values. A description is worked out at render time, so it cannot be
-queried until it has been stored somewhere.
+The **site-wide audit** — "which of my 400 pages emit no description at all" — shipped too: see
+[Audit](./reports/audit.md).
 
 ### Importing from other plugins
 
@@ -308,13 +306,10 @@ key or local CLI rather than a metered credit balance.
 
 ### Let an AI assistant work on your SEO (MCP)
 
-**Partly shipped.** With the AI Assistant extension active, an AI can read a page's effective SEO,
-update its title, description and other fields, and audit up to a hundred pages for missing or
-duplicate values — see [With the AI Assistant](./ai-assistant.md). The same tools are exposed to
-external AI clients through the site's MCP connection.
-
-Still open: creating redirects and changing site-wide settings from an AI client, which want the
-same deliberate, revertible handling the page-level tools already have.
+**Shipped.** See [With the AI Assistant](./ai-assistant.md): with the AI Assistant extension active, an
+AI (in the site, or an agent connected over MCP) can read and change a page's SEO, audit pages, read and
+change site-wide settings (credentials excluded), and list, add and delete redirects. Every change can
+be undone with undo_change.
 
 ### AI content suggestions
 

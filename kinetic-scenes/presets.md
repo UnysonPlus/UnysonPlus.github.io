@@ -21,7 +21,15 @@ entrance played backwards: exits default to the **Leave** ease, which speeds up 
 **Sound.** Any clip can carry a sound that moves with it (see [Sound](./sound.md#sounds-on-clips)).
 
 **Staggered text presets** (Rise, Stretch, Blur in, Flip…) animate letter by letter or word by word, with a **Stagger**
-and a **Rhythm**: natural (uneven, but the same on every play) or even.
+and a **Rhythm**: natural (uneven, but the same on every play), even, or **spoken**.
+
+**Spoken rhythm (narration captions).** Animated word by word with the Spoken rhythm, a text layer brings each word in
+as the voice-over says it, using the voice clip's transcribed words: write the sentence the voice reads, put the clip
+where the sentence starts, and give it the sentence's length. The words are matched in order, so a word the voice skips
+or says differently just keeps the pace of its neighbours; if fewer than half match, the preset falls back to an even
+stagger. It needs a voice clip with its words (record or generate the voice-over, then transcribe it) and a layer that
+is not inside a group. Combined with marked words this gives the reel caption look: a sentence across the top, each word
+sharpening as it is said, the key words in an accent colour.
 
 This page is generated from the Studio's own preset catalogue, so it lists every preset with its exact settings.
 

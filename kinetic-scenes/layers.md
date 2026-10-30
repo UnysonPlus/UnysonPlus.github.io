@@ -34,6 +34,9 @@ one it wraps).
 
 - **Pill around it:** a pill or tag sized to the words, with its own fill, outline, padding and corner radius (a status
   label, a badge, a "NEW").
+- **Marked words:** pick a colour, then wrap the words that matter in asterisks: `And the result looks *clean* and
+  *super smooth*.` The marked words are drawn in that colour and the asterisks are not shown (a mark can cover several
+  words). Screen readers get the sentence without them. Without a colour, asterisks are ordinary text.
 - Text presets animate letters or words: [Rise, Slam, Typewriter, Gravity drop…](./presets.md#text).
 
 ## Shape

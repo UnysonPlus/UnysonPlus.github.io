@@ -180,10 +180,11 @@ export (a plain two-column file from another tool imports too).
 seen and where visitors came from, bots and scanner probes left out, and a **Redirect it** button per
 row.
 
-### Whole-site moves <span className="badge badge--secondary">Exploring</span>
+### Whole-site moves
 
-Redirect an entire site to a new domain in one rule, preserving paths — the thing you need
-exactly once, on a day when getting it wrong is expensive.
+**Shipped.** See [Redirects → Moving the whole site](./redirects.md#moving-the-whole-site-to-a-new-domain):
+one setting sends every address to the same path on the new domain (301, query kept), with a preview,
+and the dashboard, login and REST API left alone so the switch can always be turned off.
 
 ---
 

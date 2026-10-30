@@ -114,3 +114,36 @@ message says which ones and why. A redirect for an old address that already has 
 
 Every 404 your visitors hit is listed under [404s](./not-found.md), with a button that fills this form
 in for you.
+
+## Moving the whole site to a new domain
+
+<img src="/img/seo/seo-site-move.png" alt="The 'Moving the whole site' box: the new address, the switch, and a preview of where real addresses will go" width="1644" />
+
+When the site moves to a new domain, **Moving the whole site** sends every address to the same page on
+the new one, with a permanent (301) redirect, so links and search rankings follow:
+
+```
+https://old-name.com/recipes/bread/?ref=mail  →  https://www.new-name.com/recipes/bread/?ref=mail
+```
+
+1. Put the new site live first, with the same addresses.
+2. Enter its address in **New address**. Only its domain is used, plus a folder if the new site lives in
+   one (`https://new-name.com/blog`). Each page keeps its own path and query string.
+3. Check the preview: it shows where the home page, two recent pages and the sitemap will go.
+4. Switch on **Redirect the whole site** and save.
+
+What it does and doesn't touch:
+
+- **Every front-end address moves**: pages, posts, archives, the feed, the sitemap and `robots.txt`,
+  and addresses that don't exist (the new site answers those).
+- **The dashboard, the login page and the REST API are never redirected**, so you can always log in
+  and switch the move off.
+- **Administrators are not redirected**, so you can still browse this site to compare. The admin bar
+  says **Moved to new-name.com** while it is on.
+- A new address on the **same domain** as this one is refused, since it would send visitors round in a
+  circle; so is one without `http://` or `https://`.
+- On a site that lives in a sub-folder, the folder is dropped: `old.com/shop/item/` goes to
+  `new.com/item/`. Point the new address at a folder to keep one.
+
+After the move, tell Google with Search Console's *Change of address* tool; the redirects are what that
+tool checks for.

@@ -35,61 +35,29 @@ and are emitted as the `sameAs` property on your `Organization` (or `Person`) no
 Site identity and per-type schema **shipped in 2.0.8** — see
 [Structured data](./structured-data.md).
 
-### Author profiles and E-E-A-T <span className="badge badge--secondary">Exploring</span>
+### Author profiles and E-E-A-T
 
-Authors already get their own `Person` node with a stable `@id`, so the same writer across
-twenty posts is one entity rather than twenty unrelated names. What is still missing is the
-part authors have to supply: expertise topics and profile links, expressed as `knowsAbout`
-and `sameAs` — the signals Google's guidelines describe under Experience and Expertise.
+**Shipped.** See [Authors: expertise and profiles](./structured-data.md#authors-expertise-and-profiles): job title, areas of expertise and profiles elsewhere on each user's profile, published as `jobTitle`, `knowsAbout` and `sameAs`.
 
-### FAQ data in the graph <span className="badge badge--secondary">Exploring</span>
+### FAQ data in the graph
 
-The [accordion element](/shortcodes/interactive-elements/accordion) can already emit `FAQPage`
-structured data — switch on its FAQ rich snippet option and the questions and answers are
-published for search engines to show as an expandable result.
+**Shipped.** See [FAQ data](./structured-data.md#faq-data): FAQ accordions join the page's graph as `FAQPage`, and the accordion stops printing its separate block, so the questions appear exactly once.
 
-What is left is a smaller, tidier problem than it first appears: that block is emitted
-separately from the main graph, so nothing connects the FAQ to the page it is on. Linking
-them means one representation rather than two adjacent ones. Worth doing, and worth doing
-carefully — emitting the questions twice would be worse than the current arrangement.
+### Product, event and recipe types
 
-### Product, event and recipe types <span className="badge badge--secondary">Exploring</span>
-
-The types that produce the richest results, and the ones that need real per-page fields
-rather than a site-wide setting.
+**Shipped.** See [Products, events, recipes and branches](./structured-data.md#products-events-recipes-and-branches): a Structured data box per page, which says what a rich result still needs instead of publishing a half-filled entry.
 
 ---
 
 ## Local business
 
-### `LocalBusiness` structured data <span className="badge badge--secondary">Exploring</span>
+### `LocalBusiness` structured data
 
-For a business with a physical presence, search engines want the name, address, phone number,
-opening hours and business type as structured data — the thing that produces an opening-hours
-line, a map pin and a directions link next to a result.
+**Shipped.** See [Local business](./structured-data.md#local-business): site-level kind of business, address, map position, price range and opening hours, which the Business Info element also uses for fields left empty, so the two never disagree.
 
-Worth being specific about what is actually missing here, because it is less than it looks.
-UnysonPlus already collects all of this. The
-[Business Info](/shortcodes/components/business-info) element holds the name, address, phone,
-email, website and map link, plus a seven-day opening-hours grid with per-day open, close and
-closed states — and it already computes a live open/closed status from the site timezone. The
-[Map](/shortcodes/media-elements/map) element already renders locations, with OpenStreetMap as well as
-Google, so no API key is needed to show a map at all.
+### Multiple locations
 
-So the gap is not the data or the display. It is that none of it is currently expressed as
-`LocalBusiness` and `openingHoursSpecification` schema, which is the part search engines read.
-
-The open design question is where that data should live. Today it belongs to an element on a
-page, which is right for display and awkward for a site-wide claim about the business. The
-likely answer is site-level fields that the element can also read, so the two never disagree
-— but that is a decision to make deliberately rather than discover.
-
-### Multiple locations <span className="badge badge--secondary">Exploring</span>
-
-A business with several branches needs one entry per location, each with its own address,
-hours and map. The [Post Types](/data-modeling/post-types) extension can already register
-a Locations content type; what it would need is the schema and a way to place a specific
-location on a page.
+**Shipped.** See [Business location](./structured-data.md#products-events-recipes-and-branches): one page per branch, each with its own address and hours, linked to the business as a whole.
 
 ---
 

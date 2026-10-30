@@ -34,6 +34,11 @@ Name, address, phone and opening hours are exactly what search engines want as *
 - **Website URL** — website link.
 - **Map / Directions URL** — map / directions link.
 
+**Site-wide details.** With the SEO extension active, any of the name, address, phone, email and
+opening hours left empty here are filled from [SEO → Structured data → Local business](/seo/structured-data#local-business)
+and Site identity, so the element and the business's structured data never disagree. Fields filled
+on the element always win. (The hours list starts pre-filled; remove its rows to use the site's hours.)
+
 ## Design
 
 <img src="/img/shortcodes/business-info-design.png" alt="Business Info options panel — Design tab" width="1200" />

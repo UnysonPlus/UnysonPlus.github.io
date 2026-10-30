@@ -63,3 +63,13 @@ These two options have several visible variants worth a screenshot each. Suggest
 <img src="/img/shortcodes/accordion-styling.png" alt="Accordion options panel — Styling tab" width="1200" />
 
 Per-state Title, Content and Icon colors (closed/open), Background Color, and Margin & Padding.
+
+## FAQ rich snippet
+
+**FAQ Rich Snippet (Schema)**, on the Behaviour tab, publishes the accordion as structured data for
+search engines: each item's title becomes a question and its content the answer. Use it only on a real
+list of questions and answers, and on the accordions that make up the page's FAQ.
+
+With the [SEO extension](/seo/structured-data#faq-data) active, the questions join the page's one
+structured-data graph (the page becomes an `FAQPage`) and the accordion doesn't print a separate block,
+so they are published once. Without it, the accordion prints its own `FAQPage` block.

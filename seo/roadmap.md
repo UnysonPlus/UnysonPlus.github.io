@@ -132,53 +132,17 @@ and the dashboard, login and REST API left alone so the switch can always be tur
 
 ## Content tools
 
-### Focus keyphrase and content analysis <span className="badge badge--secondary">Exploring</span>
+### Focus keyphrase and content analysis
 
-Set a keyphrase for a page and get specific, checkable feedback — is it in the title, the
-first paragraph, a heading, the URL, the image alt text — along with readability scoring.
+**Shipped.** See [Focus keyphrase and content analysis](./content-analysis.md): exact-phrase checks in the title, description, address, first paragraph, subheadings and alt text, competing pages named, readability as measurements, heading structure.
 
-Deliberately unhurried. Scores are trusted by the people reading them, and a check that is
-wrong is worse than a check that is missing.
+### Site-wide audit
 
-### Site-wide audit <span className="badge badge--secondary">Exploring</span>
+**Shipped.** See [Audit](./reports/audit.md): every page checked in the background, with the specific pages behind each problem (duplicate titles and descriptions, near-duplicates, headings, keyphrase, thin), no score.
 
-The same checks, run across every page rather than the one you are editing, listing what is
-wrong and where — pages with no description, a missing or duplicated title, no focus
-keyphrase, a heading structure that skips levels.
+### Guardrails for generated pages
 
-The useful output here is **a list of specific, fixable problems per URL**, not a single
-number. A score out of 100 tells you nothing actionable and invites optimising the score
-rather than the site; "these eleven pages have no meta description" is a morning's work with
-a clear finish line.
-
-This only makes sense after the per-page checks above exist — it is the same engine pointed
-at the whole site.
-
-Part of the ground is already covered: [Pages going stale](./reports/going-stale.md) reports age
-and length across the site today, and the [list columns](./list-editing.md) show
-which pages are following a template rather than saying something of their own. What is missing is
-the keyphrase and structure checks, which need the per-page analysis first.
-
-
-### Guardrails for generated pages <span className="badge badge--secondary">Exploring</span>
-
-Generating many pages from one template and a dataset — a page per service, per location, per
-product — is a legitimate way to cover demand nobody could write their way through by hand. It is
-also the fastest way to get a whole site discounted, because the penalty for mass-produced thin
-pages is not applied page by page.
-
-The dividing line is whether each page carries something a reader would actually want that the
-others do not. The extension cannot supply that data, but it can say when it is missing:
-
-- **Near-duplicate detection.** Going stale reports pages that are *thin* or *old*; it cannot say
-  "these 340 descriptions are 94% identical to one another", which is the number that matters for
-  templated pages. It needs no external data at all.
-- **Keep pages out of the index until they are substantial.** A rule holding a post type below a
-  word count out of the index, reusing the thin-page threshold that already exists. It lets someone
-  generate a thousand pages and expose only those carrying real content.
-- **Index coverage at scale.** Of the pages generated, how many did Google keep? That comes free
-  with [index coverage](#index-coverage) above, and it is the number that says whether the whole
-  approach is working or being ignored.
+**Shipped.** See [Audit → Pages generated in bulk](./reports/audit.md#pages-generated-in-bulk): near-duplicate detection, thin pages of chosen types kept out of the index and sitemap until they grow, and how many of each type Google kept.
 
 ---
 

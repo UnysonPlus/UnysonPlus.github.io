@@ -49,6 +49,36 @@ its subdomains). **Rebuild** after changing them.
 Every outside site you link to, with how many links and from how many pages, most-linked first. It shows
 at a glance which third parties your content points readers to.
 
+## Suggestions: where links could go
+
+<img src="/img/seo/seo-link-suggestions.png" alt="A post's SEO box with '2 internal link suggestions' open: a page that could link here, and a page this one could link to, each with its sentence and the words to link highlighted" width="1372" />
+
+Each page's **SEO** box has a collapsed **internal link suggestions** line, in both directions:
+
+- **Pages that could link here.** Other pages whose text already mentions this page's subject but
+  don't link to it. The words are already there; they only need a link.
+- **Pages this one could link to.** Other pages whose subject this page mentions, unlinked.
+
+Each suggestion shows **the sentence**, with the words to turn into the link highlighted, and links to
+the page to edit. Nothing is linked automatically: you decide whether the link reads well.
+
+**How the subject is found.** A page's subject is its title, trimmed to the words that matter:
+*How to choose a kitchen worktop* becomes **choose a kitchen worktop**. That phrase is looked for as
+whole words in the other pages' text, including the text of page-builder elements. So that the
+suggestions stay believable:
+
+- titles too vague to place a link on are skipped: one word ("Garden") or very short ("About us");
+- a match must be inside a real sentence, not a heading, a card title or a list of recent posts that
+  is just the title;
+- pairs that are already linked are left out;
+- pages sharing a title are one suggestion, and pages on the same subject as this one aren't
+  suggested at all, since they compete for the same searches rather than link to each other;
+- at most five in each direction.
+
+Suggestions are worked out when the page is opened and kept for 12 hours (sooner after the page is
+saved). Like the rest of this report, no AI is involved: every suggestion can be explained by the
+words that matched.
+
 ## What is read
 
 - **The content** of every published page, post and other content type the SEO extension covers.

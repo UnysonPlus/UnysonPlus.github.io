@@ -338,15 +338,12 @@ indexed (kept current on save), and the report lists the pages nothing links to,
 missing rel="sponsored", and the outside sites linked to most. Each page's SEO box also says how many
 pages link to it.
 
-### Internal link suggestions <span className="badge badge--secondary">Exploring</span>
+### Internal link suggestions
 
-Given the above, suggest pages that could reasonably link to each other, in both directions —
-pages that should link out to this one, and pages this one could link to.
-
-Worth noting where the page builder helps: link extraction reads the builder tree rather than
-parsing rendered HTML, so a link inside a button, a card or an accordion is found as reliably
-as one in a paragraph. Tools that only see the finished markup have to guess at which links
-are content and which are chrome.
+**Shipped.** See [Links → Suggestions](./reports/links.md#suggestions-where-links-could-go): each
+page's SEO box lists the pages that already mention its subject without linking to it, and the pages
+whose subject it mentions, each with the sentence and the words to link highlighted. The page builder's
+text is read like the content, and every suggestion is explained by the words that matched.
 
 ---
 

@@ -103,18 +103,13 @@ search engine has to crawl at all, which matters most on large sites.
 **Shipped.** See [Attachment pages](./attachment-pages.md) — send them to the post the file belongs
 to, to the file itself, or keep them, from **SEO → General**.
 
-### Feed cleanup <span className="badge badge--secondary">Exploring</span>
+### Feed cleanup
 
-Switch off the RSS feeds a site does not use — author feeds, comment feeds, search feeds,
-attachment feeds — redirecting them rather than leaving them to be crawled.
+**Shipped.** See [Feeds you don't use](./settings.md#feeds-you-dont-use): comment, taxonomy, author, search and content-type feeds can be switched off; their head links go and their addresses redirect to the page they belong to.
 
-### Archive defaults <span className="badge badge--secondary">Exploring</span>
+### Archive defaults
 
-Author and date archives are thin, near-duplicate listings on most sites and are worth
-keeping out of the index by default, while staying available for sites that genuinely publish
-by author.
-
----
+**Shipped.** See [Archive defaults](./settings.md#archive-defaults): date archives are noindex by default, and author archives too on a site with one author; a saved setting always wins.
 
 ## More sitemaps
 
@@ -135,29 +130,15 @@ Google News accepts a sitemap of articles published in the last 48 hours. Genuin
 you are an approved publisher and worth nothing at all if you are not, so it belongs behind a
 switch rather than on by default.
 
-### HTML sitemap <span className="badge badge--secondary">Exploring</span>
+### HTML sitemap
 
-A human-readable page listing your content, for visitors rather than crawlers. Small and
-easy, and the one people actually ask for.
-
----
+**Shipped.** See [A sitemap page for visitors](./settings.md#a-sitemap-page-for-visitors): the `[seo_sitemap]` shortcode, with pages nested and noindex content left out.
 
 ## Images
 
-### Global alt and title text <span className="badge badge--secondary">Exploring</span>
+### Global alt and title text
 
-Set what image `alt` and `title` attributes should contain site-wide, written with the same
-[template tags](./template-tags.md) as everything else — the attachment title, its caption,
-the post it appears in — so images uploaded with no alt text are still described rather than
-silent.
-
-Worth stating the limit honestly: generated alt text is a fallback, not a substitute for
-writing it. `alt` exists so that someone using a screen reader knows what the image shows,
-and a filled-in template is better than an empty attribute while being worse than a sentence
-someone wrote. Anything built here should make the hand-written case easy, not merely fill
-the gap.
-
----
+**Shipped.** See [Image alt text](./settings.md#image-alt-text): a Missing alt text filter and column in the Media Library to write the real thing, and an opt-in fallback (title, caption or the page's title) for images still without. Title attributes are not generated: they add nothing a screen reader or search engine uses.
 
 ## Redirects
 
@@ -384,10 +365,9 @@ search crawlers by name, add your own Allow / Disallow rules, and preview the ex
 **Shipped.** See [Moving settings](./settings-transfer.md) — every site-wide SEO setting in one
 file, with a preview before import and credentials left out unless asked for.
 
-### Reset settings <span className="badge badge--secondary">Exploring</span>
+### Reset settings
 
-Restore defaults, per settings group rather than all at once, for when a site has been
-configured into a corner.
+**Shipped.** See [Resetting a screen](./settings.md#resetting-a-screen): per screen, never all at once.
 
 ## Search Console
 

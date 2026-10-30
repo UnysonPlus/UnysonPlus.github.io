@@ -158,46 +158,13 @@ is worth the work.
 
 ## Topic research
 
-### Trends import <span className="badge badge--secondary">Exploring</span> {#trends-import}
+### Trends import
 
-Google Trends answers what no amount of on-page work can: whether interest in a topic is rising or
-draining away, when in the year it peaks, and which of two phrasings people actually type. It does
-not report search volume and never will — its numbers are relative to the peak of whatever you
-asked for.
+**Shipped.** See [Topic momentum → Importing from Trends](./reports/topic-momentum.md#importing-from-trends): Interest over time and Related queries exports, each stored with the terms, country and dates it was taken under; JSON export and import.
 
-There is no API to connect to (see [Not planned](#not-planned)), but every panel in Trends exports
-a CSV, so the import is the route. Download the file, drop it on the **Import / Export** screen,
-and the filename is parsed so the term, report type, geography and date range fill themselves in.
-Each import is stored with the parameters it was taken under, because two exports made under
-different terms or ranges are not comparable, and quietly treating them as if they were would be
-worse than not storing them at all.
+### Topic momentum
 
-The screen will say plainly which settings to use — twelve months, one country. Trends defaults to
-a short worldwide window built for news desks, which reads as pure noise for anything editorial.
-
-### Topic momentum <span className="badge badge--secondary">Exploring</span>
-
-The import on its own is a curiosity. What makes it worth building is the join with data the
-extension already holds, which nothing else in the stack is positioned to do:
-
-| What it sees | What it means | What to do |
-| --- | --- | --- |
-| Rising, already getting impressions, page exists | Positioned for something growing | Refresh before the peak — the most valuable row on the screen |
-| Rising, getting impressions, no real page | Ranking by accident on a growing topic | Write the page you are already half-ranking for |
-| Rising, no impressions, no page | An open gap, ranked by momentum | A candidate for the calendar |
-| Falling, page exists, traffic down | The market moved, not the page | Nothing. Explicitly do not spend a week "fixing" it |
-
-That last row matters as much as the others. Knowing a drop was the topic rather than the site
-saves the fortnight that would otherwise go into repairing something which was never broken.
-
-A fourth signal is already in the product: the site's own search log. A phrase visitors typed into
-your search box **and** which is rising in Trends is about as strong a content signal as a small
-site will ever get.
-
-The matching stays deterministic and explainable. Where the AI Assistant belongs — when it is
-switched on — is turning an accepted row into a proposed title or outline, never into the analysis
-itself. That is the same companion described under
-[AI content suggestions](#ai-content-suggestions), pointed at a topic rather than a page.
+**Shipped.** See [Topic momentum](./reports/topic-momentum.md): each topic's direction (against the same months last year when the export allows) joined with your impressions, your page and your site searches, ending in one thing to do, including nothing for a fading topic.
 
 ---
 
@@ -308,12 +275,9 @@ subscription, no third-party crawler, and nothing about your site sent anywhere 
 between you and Google. It is the one case where connecting an external account genuinely
 earns its place.
 
-### Search performance <span className="badge badge--secondary">Exploring</span>
+### Search performance
 
-Impressions, clicks, click-through rate and average position over time, per page — and more
-usefully, the change in each. Which pages are gaining, which are slipping, and which have
-impressions but no clicks (usually a title and description problem, which is precisely what
-this extension can fix).
+**Shipped.** See [Search performance](./reports/search-performance.md): per-page clicks, impressions, click-through and position with the change against the four weeks before, in three lists: gaining, slipping, seen but not clicked.
 
 ### Index coverage
 
@@ -352,23 +316,13 @@ external AI clients through the site's MCP connection.
 Still open: creating redirects and changing site-wide settings from an AI client, which want the
 same deliberate, revertible handling the page-level tools already have.
 
-### AI content suggestions <span className="badge badge--secondary">Exploring</span> {#ai-content-suggestions}
+### AI content suggestions
 
-Descriptions, titles, FAQs and key points suggested from the page you are editing, with
-defaults for tone and audience so suggestions sound like your site rather than like
-everyone's. Would use the existing AI companion — your key, your usage, no credits to buy.
+**Shipped.** See [AI suggestions](./ai-suggestions.md): titles, descriptions, FAQ questions and key points from the page, in the site's tone and for its audience, on your own AI connection; nothing written without you.
 
-### Visibility in AI search <span className="badge badge--secondary">Exploring</span>
+### Visibility in AI search
 
-Which sites get cited when someone asks an AI assistant a question is becoming a real
-channel, and there is a genuine case for reporting on it.
-
-Worth being clear-eyed about the limits, though. Answers from a language model are not a
-ranking — they vary between runs, between users and between model versions, and asking a
-model which brands rank is asking it to guess. Any report of this kind should be presented as
-a sample of what an assistant said on a given day, not as a position you can track. It also
-means real API calls to third-party providers on every query, so it will only ever work with
-your own key.
+**Shipped.** See [AI answers](./ai-suggestions.md#ai-answers-does-an-assistant-mention-you): your questions put to your AI connection on demand, each answer checked for your site and stored as a dated sample, never as a ranking.
 
 ---
 

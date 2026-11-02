@@ -113,6 +113,47 @@ promo-banner
 /^\.seasonal-/
 ```
 
+If an entry is not a usable pattern — an unclosed bracket, a stray slash — it cannot protect
+anything. That used to pass unnoticed, because the only symptom was CSS still going missing. Such
+entries are now ignored and reported in a notice in the WordPress admin, naming the line at fault.
+
+### Elements that build themselves with JavaScript
+
+Some elements create their own markup after the page has loaded — a table of contents builds its
+list from the headings it finds, for instance. None of that markup exists in the page that was
+scanned, so every rule written for it looks unused and is removed. What you see is an element that
+loads with no styling at all: a list of plain links where there should be a laid-out table of
+contents.
+
+The elements that ship with Unyson+ protect themselves, so this is already handled for them. If you
+have written your own element or script that generates markup, protect its class names by adding
+the prefix to **Never remove (safelist)** — one entry such as `my-widget` covers
+`my-widget__item`, `my-widget__link` and the rest of the family.
+
+Developers can register the same protection from code so it needs no setting at all; see the
+Asset Optimizer reference in the AI Dev Kit for the filter.
+
+## Drop admin-only stylesheets
+
+WordPress loads the icon font it uses for its own dashboard — `dashicons`, around 36&nbsp;KB — on
+your public site as well, where not one of its icons is ever drawn. It is a render-blocking request:
+every visitor waits for a file none of them benefits from. The editor and page-builder panel styles
+are the same, built for screens that only exist inside the admin.
+
+Switching this on stops those files being requested on the front end.
+
+It leaves them alone while the admin toolbar is on screen, because the toolbar draws its own icons
+from that font. So the page looks unchanged while you are logged in — log out, or open the site in a
+private window, to see the difference.
+
+This is independent of **Combine CSS**. Those files were already kept out of the combined
+stylesheet, but keeping them out of the bundle still left the browser fetching them separately,
+which is the request this removes.
+
+It is off by default because "admin-only" is a judgement about intent: a theme is free to use a
+dashicon somewhere on the public site, and if yours does, those glyphs would disappear. Switching it
+on is how you confirm it does not — so after you do, glance at the front end logged out.
+
 ## Move late CSS into the head
 
 Some elements write their own CSS while the page is being built, and it ends up at the bottom of the

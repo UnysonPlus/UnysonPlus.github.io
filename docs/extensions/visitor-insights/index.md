@@ -95,6 +95,12 @@ Heat also appears where you edit: a **Heatmap** button in the [Live Editor](../l
 canvas, a badge on each item in the page builder (its share of clicks, and for sections how many
 visitors reached it), and **Heatmap** in the admin bar on any page of your site.
 
+**Heatmap** in the admin bar opens the page full screen with the heatmap on top. The admin bar itself
+is hidden while you look: your visitors never see it, so their clicks were recorded on a page without
+it, and showing it would push the page down under the dots. The page appears exactly as visitors saw
+it, with the heatmap's own toolbar at the bottom (mode, device, dates, channel, saving an image) and
+**×** to close it and return to the normal page.
+
 Your own visits do not count while you are logged in as an editor — open the site in a private
 window to see the first page view arrive (within about a minute). **Settings → Logged-in users**
 decides who else is left out: by default logged-in visitors who cannot edit content (customers,

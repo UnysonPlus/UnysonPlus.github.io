@@ -20,7 +20,8 @@ the Studio it's about:
 3. **Watch it play:** press play or the Space bar. The timeline shows when each part arrives.
 4. **Export it:** plain HTML for a web page, or a video for Reels, TikTok, Shorts or YouTube.
 
-It shows once per browser. **Help › Your first scene (guide)** opens it again.
+The **×** in its corner closes it for now; it comes back the next time you open the Studio. **Don't show again** (or
+**Done** on the last step) puts it away for good in this browser. **Help › Your first scene (guide)** opens it again.
 
 ## The templates
 

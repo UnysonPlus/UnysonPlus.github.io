@@ -33,7 +33,7 @@ Documents\Kinetic Scenes\          ← the workspace (you can choose another fol
 ```
 
 In the Studio, **File › Projects…** lists them. Open one, or turn the scene in front of you into a new project. The
-project's name shows under the Kinetic Scenes logo, with *saved* or *saving*.
+project's name shows at the top right, beside Undo, with *saved* or *saving*; click it to open the Projects list.
 
 - **It saves as you work** into `scene.json`. **File › Save** saves at once; **File › Download a copy** still downloads the
   scene file.

@@ -64,7 +64,10 @@ visitor's screen. Above it:
 - **Full screen** (F): plays the scene at your screen's real size, without the editor.
 
 On the stage, click a layer to select it, drag it to move it, drag its handles to resize it, Shift-click to select more,
-and double-click a group to step inside it.
+and double-click a group to step inside it. Click empty space (on the stage or the dark area around it) or press Escape to
+clear the selection. Layers that cover the whole stage (a background, a glow, a particle field) are skipped by clicks, so
+they never get in the way of what is on top of them, and a click where only they are clears the selection: select them
+from the timeline.
 
 ### The transport and the timeline (bottom)
 

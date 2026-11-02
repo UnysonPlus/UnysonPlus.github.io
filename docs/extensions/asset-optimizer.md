@@ -222,6 +222,55 @@ So: *Inline* suits a site where most visits are a single page — a landing page
 *Linked file* suits a site people browse, where the stylesheet is fetched once and reused, and it is
 the default for that reason. Either way the difference is small; this is a refinement, not a rescue.
 
+### How big is too big to inline?
+
+*Inline* is refused outright once the stylesheet passes **50&nbsp;KB compressed**, and it is worth
+being clear that this is a **ceiling, not a recommendation**. It is the point past which inlining is
+obviously wrong, not the point up to which it is a good idea.
+
+As a working figure, inline up to about **15&nbsp;KB compressed** on a site people browse through,
+and treat the rest of the range as suitable only for a genuine single-page visit where there is no
+second navigation to pay for the repeated bytes. The number that actually matters is not the file
+size on its own but the file size multiplied by how many pages a visitor opens.
+
+If your stylesheet is larger than that and you still want the blocking request gone — which is the
+usual situation on a real site — **Inline the first screen's CSS** below is the option that
+addresses it, rather than raising the ceiling.
+
+## Inline the first screen's CSS
+
+This is the option for the common case the two choices above cannot solve: a stylesheet too large to
+inline, which still blocks the first paint.
+
+It splits the stylesheet in two. The rules the first screen needs go straight into the page, so there
+is nothing to wait for before the browser can draw. The rest is fetched immediately afterwards
+without holding anything up, and because it stays a file, it is still cached and reused on the next
+page.
+
+On a measured site the stylesheet was 338&nbsp;KB (91&nbsp;KB compressed) — far beyond the inlining
+limit, and inlining it whole would have added those 91&nbsp;KB to every single navigation. The part
+the first screen actually needed was a fraction of it.
+
+:::warning Check this one before relying on it
+Which rules the first screen needs is worked out from **the order of your page's own markup** — the
+things near the top of the HTML — because deciding it properly would mean actually drawing the page,
+which cannot be done while the page is being built.
+
+That approximation is right on the great majority of layouts and wrong on a particular kind: one
+whose main content sits late in the HTML and is moved to the top visually by CSS. There, the top of
+the screen can appear unstyled for an instant before the rest of the stylesheet lands.
+
+So after switching it on, load a few different pages — a post, an archive, the home page — and watch
+the top of the screen as each one appears. If anything flashes, switch it back off.
+:::
+
+Requires **CSS delivery** set to *Linked file*, and works best with **Remove unused CSS** on, since
+it splits whatever stylesheet the page is already serving.
+
+It does nothing at all on a short page — if the whole document is about as big as the first screen,
+there is no split worth making, and it leaves the page alone rather than adding a second request's
+worth of complexity for no gain.
+
 ## Browser cache for static files
 
 The combined and purged files are already cached for a year (below). Everything *else* your site
@@ -347,6 +396,38 @@ Two switches tune the combined bundle:
 | --- | --- |
 | **Defer combined script** | Adds `defer` to the bundle so it loads without blocking render. Safe because the bundle is self-contained and dependency-ordered. |
 | **Minify combined script** | Strips comments and redundant whitespace (conservative, string/template/regex-aware). Most scripts are already minified, so the saving is usually small, experimental. |
+
+### Finding out which script a performance report is blaming
+
+Combining scripts has one real cost that is easy to miss until you need it: performance reports stop
+being actionable.
+
+When a browser flags a slow function — a long task, or a layout recalculation forced from
+JavaScript — it tells you the file and line. Once everything is one bundle, that line number belongs
+to the combined file, which nobody wrote and which changes every time the bundle is rebuilt. There is
+no way to tell whose script is at fault, which is exactly when you most need to know.
+
+**Record which script each line came from** writes a small companion file next to the bundle listing
+which script occupies which lines:
+
+```json
+{
+  "bundle": "combined-dcc54a45f7df.js",
+  "sources": [
+    { "handle": "theme", "source": "wp-content/themes/…/theme.js", "first_line": 1, "last_line": 94 },
+    { "handle": "unysonplus-navigation", "source": "wp-content/themes/…/navigation.js",
+      "first_line": 95, "last_line": 583 }
+  ]
+}
+```
+
+A report blaming line 354 of the bundle is then plainly `navigation.js`. The bundle itself also keeps
+a comment above each script, so you can read it directly if you prefer.
+
+This is **for diagnosis, not for everyday use.** Switching it on changes how the bundle is put
+together — each script is shrunk on its own rather than all of them together — so the file is
+slightly larger, and you should turn it off again when you are done. The companion file is publicly
+readable and names script paths relative to your WordPress folder.
 
 ## Typical workflow
 

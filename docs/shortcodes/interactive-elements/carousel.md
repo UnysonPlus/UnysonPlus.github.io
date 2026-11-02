@@ -35,6 +35,7 @@ Studies repeatedly find most visitors only ever see the first slide, so don't bu
 | **Per Page (Tablet)** | 1–6 slides per view (≤992px) |
 | **Per Page (Mobile)** | 1–6 slides per view (≤576px) |
 | **Gap Between Slides** | CSS length (e.g. `1rem`) |
+| **Use as Section Background** | On/Off — fill the parent Section behind its content (see below) |
 | **Slide Height** | Fixed height (e.g. `600px`, `80vh`) or empty to fit content |
 | **Arrows** | On/Off |
 | **Dots** | On/Off |
@@ -51,7 +52,36 @@ Studies repeatedly find most visitors only ever see the first slide, so don't bu
 | **Pause on Hover** | On/Off |
 | **Loop** | On/Off |
 | **Drag / Swipe** | On/Off |
-| **Transition** | Slide, Fade |
+| **Transition** | Slide, Fade (with Fade, Loop goes back to the first slide) |
+| **Slow Zoom** | On/Off — background images drift slowly closer while their slide shows |
+
+## Use as a section background
+
+Turn on **Layout → Use as Section Background** and the carousel fills the whole Section it sits in,
+**behind** that Section's own heading, text and buttons, which are lifted on top automatically. It
+is the way to make a hero with a calm, changing photo backdrop:
+
+1. Add a **Section** and give it a **min-height** (for example 90vh), so it has room to fill.
+2. Put your heading, text and buttons in it as usual.
+3. Add a **Carousel** to the same Section with your photos as slides. Leave each slide's own
+   heading, text and button empty (the Section's content is what shows on top).
+4. Turn on **Use as Section Background**, set **Transition** to **Fade**, turn on **Autoplay**
+   and **Loop**, and, for a gentle drift, **Slow Zoom**. Use the **Dark Overlay** if the photos
+   make the text hard to read.
+
+In background mode the slides cover the Section one at a time and play on their own: Slides per
+View, Gap, Slide Height, Arrows, Dots, Drag and Pause on Hover are ignored. The first photo loads
+right away with high priority (it is usually the largest image on the page); the others load
+later.
+
+:::tip[Lighter than a background video]
+A background "video" that only fades between a few photos costs several megabytes. The same photos
+as a background carousel weigh a fraction of that, look sharper, and you can swap them in the
+editor at any time. Keep a real video for real motion.
+:::
+
+**Limits:** the background takes no clicks or swipes (the Section's content stays clickable). The
+slow zoom is switched off for visitors whose system asks for reduced motion.
 
 ## Style
 

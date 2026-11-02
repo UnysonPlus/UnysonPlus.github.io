@@ -24,7 +24,7 @@ what hosted SEO suites show (who links to you, how often a phrase is searched) n
 rest of the web. Most of that is sold, not given away, but two sources are free with a key you create
 yourself, the same way the [Search Console](./reports/search-console.md) connection works.
 
-### Links to your site, from Bing Webmaster Tools <span className="badge badge--warning">Coming soon</span>
+### Links to your site, from Bing Webmaster Tools <span className="badge badge--warning">Coming soon</span> {#bing-backlinks}
 
 Bing Webmaster Tools has an official API that lists the links its crawler found pointing at your site.
 Connected with your own free API key, a **Backlinks** report would show:
@@ -113,7 +113,7 @@ deliberate omissions rather than gaps.
 | **A Google Trends API connection** | The official API has been an application-gated alpha since 2025 — no self-serve key, no published quotas, no general-availability date. Either every user applies to a waitlist, or we proxy somebody else's data on their behalf. Revisit when it is generally available with a key the user creates themselves, as the Chrome UX Report key already works. The [CSV import](./reports/topic-momentum.md#importing-from-trends) is the route that works today. |
 | **Trends through a scraper or proxy vendor** | A plugin cannot run a headless browser, and the commercial alternatives route requests through third-party residential networks. Both carry somebody else's terms-of-service problem onto your server. |
 | **Capturing a download automatically** | WordPress runs on the server; a downloaded file lands on your own machine. No plugin can reach across that boundary — it is the browser security model, not a missing feature. Dropping the file on the import screen is one step, and the filename fills in the rest. |
-| **A web-wide backlink index** | Knowing every link on the web means crawling the web: billions of pages, re-crawled constantly. Commercial tools charge for exactly that. The public web-crawl archives are free but measured in terabytes, far beyond a plugin. [Bing's links to your site](#links-to-your-site-from-bing-webmaster-tools) is the free slice that is realistic. |
+| **A web-wide backlink index** | Knowing every link on the web means crawling the web: billions of pages, re-crawled constantly. Commercial tools charge for exactly that. The public web-crawl archives are free but measured in terabytes, far beyond a plugin. [Bing's links to your site](#bing-backlinks) is the free slice that is realistic. |
 | **Competitor site analysis** | Crawling somebody else's site to score it needs a hosted crawler, which means an account, a subscription and your data leaving your server. Everything here is built to work with no account and no network connection, and that is worth more than the feature. |
 | **A single site score** | A number out of 100 is satisfying and not actionable. The [site audit](./reports/audit.md) lists the actual problems instead. |
 | **A system status screen** | WordPress ships **Tools → Site Health**, which already reports the server, PHP, database and plugin state. A second copy of it inside an SEO screen is duplication, not a feature. |

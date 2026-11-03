@@ -71,8 +71,10 @@ is the way to make a hero with a calm, changing photo backdrop:
 
 In background mode the slides cover the Section one at a time and play on their own: Slides per
 View, Gap, Slide Height, Arrows, Dots, Drag and Pause on Hover are ignored. The first photo loads
-right away with high priority (it is usually the largest image on the page); the others load
-later.
+right away with high priority (it is usually the largest image on the page); each of the others
+loads just before it is shown, and every photo comes in the size the screen needs (a phone gets a
+small version, not the original upload). Pick photos from the Media Library so those sizes exist,
+and don't also set the same photo as the Section's background image: it would load twice.
 
 :::tip[Lighter than a background video]
 A background "video" that only fades between a few photos costs several megabytes. The same photos

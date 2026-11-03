@@ -133,6 +133,35 @@ the prefix to **Never remove (safelist)** — one entry such as `my-widget` cove
 Developers can register the same protection from code so it needs no setting at all; see the
 Asset Optimizer reference in the AI Dev Kit for the filter.
 
+## Inline small leftover stylesheets
+
+Combining cannot reach every stylesheet, and some of them it is deliberately left out of.
+
+Elements that load their styling only on the pages that use it are the common case — an animation
+effect, for instance, ships its CSS on the pages where that effect appears and nowhere else. That is
+the right thing to do: the alternative is every page carrying every effect's styling. But it leaves
+those files outside the bundle, and each one is then its own request the browser waits for before it
+draws anything.
+
+At a kilobyte apiece, the waiting is the entire cost — the downloading is nothing. On a measured page
+four such files, about a kilobyte each, were holding up the first paint by an estimated 380&nbsp;ms
+between them.
+
+Switching this on puts their contents into the page where the link was, so they cost nothing to
+fetch. Note this is the *opposite* trade from inlining a whole stylesheet: there, the bytes are the
+problem and the saved request does not pay for them. Here there are almost no bytes, and the request
+is the problem.
+
+It only moves small files, with a limit on the total for any one page, and it leaves alone anything
+scoped to a particular medium such as print — that is not holding up the first paint, and the
+condition would be lost if its rules were poured into the page.
+
+Inlining per page does not undo what keeping those files separate was protecting: a page inlines only
+the files that page actually linked, so nothing becomes site-wide.
+
+This works independently of **CSS delivery** — it tidies up whatever is left over once the rest has
+been bundled, so it is just as useful alongside a linked bundle as an inlined one.
+
 ## Drop admin-only stylesheets
 
 WordPress loads the icon font it uses for its own dashboard — `dashicons`, around 36&nbsp;KB — on

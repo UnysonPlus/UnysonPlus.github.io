@@ -383,6 +383,40 @@ instead, regenerate your thumbnails — `wp media regenerate` on the command lin
 regenerate-thumbnails plugins.
 :::
 
+## WebP quality
+
+Sets how hard the WebP copies are compressed. **80 is the default and a safe place to stay.**
+
+This is a separate control from **Image quality** below, and deliberately so: WebP and JPEG are not
+comparable at the same number. WebP holds detail better, so it can sit lower for the same apparent
+result — which is the whole reason to serve it.
+
+Around 70 is noticeably smaller and still hard to fault on a photograph. Below about 65 the
+difference begins to show on skies and smooth gradients, where WebP's banding is easiest to see, so
+look at an image you care about before keeping it. On a real photograph from a live site, at
+768×512:
+
+| Quality | File size |
+| --- | --- |
+| 80 (default) | 59 KB |
+| 70 | 46 KB |
+| 60 | 41 KB |
+
+:::note If your images changed size after an update
+Before this setting existed, the quality this extension asked for was never actually reaching the
+encoder — every WebP copy was written at WordPress's own default of 86 instead. That is why the
+copies were often only a little smaller than the originals rather than appreciably smaller. They are
+now written at the quality you ask for, so expect existing images to get smaller the next time they
+are shown.
+:::
+
+The saving appears gradually. Copies are re-made the next time each image is shown after you change
+the setting — including copies made before the change, which are treated as out of date — so a busy
+site spreads the work over its next few page views rather than doing it all at once.
+
+A WebP copy is only used when it actually comes out smaller than the original. If it does not, the
+original is kept and nothing is lost.
+
 ## Image quality
 
 The theme generates its own cropped versions of your images. Until now those were written at

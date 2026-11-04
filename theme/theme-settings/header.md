@@ -57,9 +57,11 @@ without custom CSS:
   whole list to an edge and indent it from the viewport for an off-center, editorial layout.
 - **Numbered Items** — prefixes each **top-level** menu item with a two-digit number (`01`, `02`,
   `03` …). The numbers are generated automatically in sequence; submenu items are not numbered.
-- **Aside Tagline** / **Aside Contact** — an optional strapline and contact line (e.g. `email · phone`)
-  shown in the lower-right corner of the overlay. Leave both empty to hide the aside; it keeps its
-  corner position whatever the menu alignment, and drops below the menu on phones.
+- **Aside Content** + **Aside Position** — an optional free-form block in a corner of the overlay.
+  Put anything in it (a strapline, contact details, a couple of links, even a shortcode); line breaks
+  become paragraphs. **Position** places it in any of the four corners (Bottom Right / Bottom Left /
+  Top Right / Top Left) — it keeps that corner whatever the menu alignment, and drops below the menu on
+  phones. Leave the content empty to hide the aside.
 
 For the toggle itself, a text label like **Menu** / **Close** is set separately under **Mobile &
 Tablet** (the toggle's **Label**, and **Close Button → Text**), rather than the default icons.

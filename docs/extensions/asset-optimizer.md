@@ -383,6 +383,28 @@ instead, regenerate your thumbnails — `wp media regenerate` on the command lin
 regenerate-thumbnails plugins.
 :::
 
+## Why an image's file size is sometimes not the problem
+
+Before reaching for quality, check whether the image is simply **bigger than the space it is shown
+in**. A photo served at 768&nbsp;px wide into a card that is 420&nbsp;px wide wastes more than any
+compression setting can win back, and no amount of lowering quality fixes it — it only makes the
+oversized image look worse.
+
+The sign is in the report itself. When a tool says *"larger than it needs to be … use responsive
+images"*, that is a sizing problem. When it says *"increasing the image compression factor could
+improve this image"*, that is a quality problem. They have different fixes and the first one is
+usually worth more.
+
+The elements that ship with Unyson+ hand the browser a set of widths to choose from, so each visitor
+downloads the size that suits their screen. If you have built your own element or template that
+writes its own `<img>` tag, it will serve one fixed file to everyone unless you give it the same
+treatment — see the Dev Kit reference for the helper that does it in one line.
+
+A note on how low to go: compression quality does not reward being pushed. On a detailed photograph —
+stone, foliage, water — dropping from 80 to 40 measured only **14% smaller** while being plainly
+visible. Most photographs have a point past which you lose a lot of appearance for very little
+weight, and 40 is well past it.
+
 ## WebP quality
 
 Sets how hard the WebP copies are compressed. **80 is the default and a safe place to stay.**

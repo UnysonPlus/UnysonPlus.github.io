@@ -128,6 +128,13 @@ normal spelling.
 other words, pauses and flat questions. It cannot judge tone, and a sound that is only slightly off can still pass, so
 listen to the result too.
 
+### Captions that lose their last word
+
+Text timed to the voice (the [Spoken rhythm](./presets.md)) brings each word in as it is said, so if the text leaves too
+early its last word never appears. The scene `check` compares each such layer's last spoken word with the moment the
+layer fades, and warns when it would stay up for less than 0.3 s: `its last word, "across", is said at 32.18 s but the text
+leaves at 32.12 s`. Move the fade later; the next caption can start as this one leaves.
+
 ### Questions that sound like questions
 
 A voice can read a question flat, as a statement, and the words still all match. When the script line ends in a question

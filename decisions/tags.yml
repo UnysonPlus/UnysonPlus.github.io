@@ -172,3 +172,8 @@ kinetic-scenes:
   label: Kinetic Scenes
   permalink: /kinetic-scenes
   description: The Kinetic Scenes motion and video studio, its player and its AI Dev Kit tools
+
+theme-settings:
+  label: Theme Settings
+  permalink: /theme-settings
+  description: The theme's global Theme Settings — Header, Footer, Typography, Colors and their options

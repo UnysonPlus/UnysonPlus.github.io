@@ -43,6 +43,30 @@ The **Header Layout Mode** picker (`header_mode`) chooses the overall shape: **T
 menu). In **Top** mode, **Header Design** gives the bar its structure: **Classic**, **Pill** (radius /
 inset / shadow), **Card** (radius / shadow), or **Centered** (spacing).
 
+### Overlay (fullscreen menu)
+
+In **Overlay** mode the hamburger opens a menu that fills the screen. Pick an **Overlay Style** —
+**Panel** (a plain list), **Radial** (items wrapping a circular disc), or **Concentric** (nested rings
+from a corner) — set the **Overlay Background** (color, gradient or image) and a **Color Mode** that
+spreads the palette across the labels (Shade, Tint, Aurora, Rainbow, Mono, Duotone, Alternating, Glass).
+
+**Panel** adds three editorial options for the magazine-style fullscreen menu, so you can build it
+without custom CSS:
+
+- **Menu Alignment** — **Center** (the classic look), **Left**, or **Right**. Left / Right shift the
+  whole list to an edge and indent it from the viewport for an off-center, editorial layout.
+- **Numbered Items** — prefixes each **top-level** menu item with a two-digit number (`01`, `02`,
+  `03` …). The numbers are generated automatically in sequence; submenu items are not numbered.
+- **Aside Tagline** / **Aside Contact** — an optional strapline and contact line (e.g. `email · phone`)
+  shown in the lower-right corner of the overlay. Leave both empty to hide the aside; it keeps its
+  corner position whatever the menu alignment, and drops below the menu on phones.
+
+For the toggle itself, a text label like **Menu** / **Close** is set separately under **Mobile &
+Tablet** (the toggle's **Label**, and **Close Button → Text**), rather than the default icons.
+
+The menu's font and link colors come from **Header → Menu** (Menu Font, Menu Link Color), so an
+Overlay built this way is entirely native — no child-theme CSS.
+
 ## 2. Structure & dimensions
 
 **Container** (Fixed / Full width) + **Container Width**, **Main Header Height** (`min_height`), **Mobile

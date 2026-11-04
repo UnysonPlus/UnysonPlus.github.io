@@ -127,14 +127,22 @@ Every design shares the same surrounding controls, so switching design keeps you
 
 ### Chain several galleries into one scroll sequence
 
-Drop a few Motion Galleries down the page and **connect them into a single pinned scroll choreography** —
-gallery 1 flies out *as* gallery 2 assembles in, and so on. The quickest way: **right-click any Motion
-Gallery in the builder → *Create choreography***. That switches every gallery on the page to the
-**Scroll-Choreography** design with **Chain with adjacent galleries** turned on, and the runtime
-auto-groups the adjacent chained galleries — whether they're stacked in one column or each in its own
-section — into one master scroll sequence. It's fully reversible (untick **Chain**, or switch a gallery's
-design back). You can also set it by hand on each gallery: **Design → Scroll Choreography → Chain with
-adjacent galleries**.
+Drop a few Motion Galleries down the page and **connect them into a single pinned scroll sequence** —
+gallery 1 flies out *as* gallery 2 assembles in, and so on. **Any design can chain** — a Carousel Ring can
+hand off to a Panorama Wall to a Card Sphere; you're not limited to the Scroll-Choreography design.
+
+Set it up:
+
+1. Put each gallery on **Motion → Scroll-scrub** with **Pin while scrubbing** on.
+2. Turn on **Chain with adjacent galleries** (a switch in the gallery's settings) for every gallery you
+   want linked. They can sit **stacked in one column or each in its own section** — the runtime auto-groups
+   the adjacent chained galleries into one overlapping, pinned master timeline and overlaps each gallery's
+   exit with the next one's entrance.
+
+Each gallery keeps its own design and runs its own motion across its slice of the scroll; at the seams, one
+fades out as the next fades in. It's fully reversible — untick **Chain** on any gallery to free it. (The
+builder's right-click **Create choreography** helper is a one-click way to switch a set of galleries into a
+chained sequence.)
 
 ## Performance & accessibility
 

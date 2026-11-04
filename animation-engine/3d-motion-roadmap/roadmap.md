@@ -185,10 +185,17 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
     with **Chain** on in one click, so the adjacent ones connect into a single scroll sequence (the runtime
     groups them). Fully reversible. *(Verified end-to-end in the builder: the item appears only on galleries,
     and a click persists `design: scroll_choreography` + `chain: true`.)*
-  - **Retiring the abstract `scroll_choreography` steps design** — still ahead, and **gated**: the Chain
-    toggle and the whole chaining runtime currently live *inside* that design, so it can't be removed until
-    chaining is lifted to be **design-agnostic** (any real design chainable on its own). That's the real next
-    step here, larger than a polish item.
+  - **Design-agnostic chaining** — ✅ **shipped.** Chaining is no longer tied to the Scroll-Choreography
+    design: a general top-level **Chain with adjacent galleries** switch stamps `data-tdg-chain` on any
+    Scroll-scrub + pinned gallery, `autoGroupChains`/`buildChain` group every `.tdg[data-tdg-chain]`, and a
+    `__tdgChainProgress` override on `scrollProgress` lets the chain master drive each design's **own**
+    already-running loop (and its entrance reveal). Scroll Choreography still poses its own cards; every other
+    design runs its native motion across its slice, with the opacity crossfade at each seam. *(Verified live:
+    two Carousel Ring galleries chained into one pinned master ScrollTrigger — each ring scrubs its own slice,
+    crossfading at the handoff.)*
+  - **Retiring the abstract `scroll_choreography` steps design** — now **unblocked** (chaining no longer
+    depends on it). The abstract Steps design can be deprecated in favour of chaining real designs; that
+    removal is the next step here.
 
 ## Phase 2 — Real 3D scenes ✅ Scenes shipped (WebGL Motion Gallery stretch ahead)
 

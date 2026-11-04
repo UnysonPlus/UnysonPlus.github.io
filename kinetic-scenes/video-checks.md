@@ -16,7 +16,7 @@ video in a [project](./ai-agents.md#projects); you can run them yourself from th
 | Project notes | What was planned, decided and left to do? | `notes "<project>"` | `project_notes` |
 | Timeline at a glance | Do the words, the cuts and the subtitles line up? | `timeline <scene.json>` | `scene_timeline` |
 | Video check | Is the finished video right: every line heard, no black, loud enough, no clipping? | `cut-check <video>` (runs after every render) | `video_check` |
-| Voice check and best take | Does this voice line say the script, without odd pauses, and do its questions sound like questions? Which take is best? | `voice-check`, `best-take` | `voice_best_take` |
+| Voice check and best take | Does this voice line say the script, without odd pauses, and do its questions sound like questions? Which take is best? | `voice-check`, `voice-review`, `best-take` | `voice_best_take` |
 | Clean up recorded speech | Can the false starts, ums and long pauses go? | `cleanup <clip>` | `footage_cleanup` |
 | Connect your agents | Can my agent use all of this? | `connect` | — |
 
@@ -97,6 +97,36 @@ Lessons that came from these checks, now part of how agents write narration:
 - Write the spoken text in lower case ("pro", not "Pro"); the subtitle keeps the capitals.
 - When the same break comes back take after take, reword the line rather than retrying.
 
+
+### Check every line: voice-review
+
+`voice-review` runs the voice check on **every line of a script, each heard on its own**, in one command. Give it the
+same file you speak the voice-over from, with the kit running:
+
+```
+node studio-cli.mjs voice-review lines.json
+1. OK  Are you still paying for a WordPress SEO plugin?
+4. PROBLEMS  Audit your whole site, and find what's holding it back.
+     heard: Audit your whole site and find what's holding it back.
+     - 0.60 s pause between "whole" and "site" (no punctuation there): sounds machine-made
+6. PROBLEMS  Sitemaps, sharing cards and schema are all done for you.
+     - heard "Zit" where the script has "sitemaps"
+```
+
+`lines.json` is `{ "lines": ["…", "…"], "voice": "…" }`. Lines already spoken come from the kit's cache, so it tests the
+same audio the voice-over uses, and the command exits with an error when any line fails.
+
+**Why line by line:** transcribing a whole voice-over hides slips, because speech recognition leans on the words around a
+sound and corrects it. "Sitemaps" that sounded like "zitemaps" came back as "Site maps" in the whole voice-over and as
+"Zit Maps" on its own.
+
+**When a line fails, change the words, not the take:** the same text comes out the same. Writing "Site maps" fixed a buzzed
+"s" at the start of a line; rewording fixes a gap the voice keeps putting in one phrase. On-screen captions can keep the
+normal spelling.
+
+**Limits:** it finds what speech recognition and timing can measure: changed words, mispronounced words that come out as
+other words, pauses and flat questions. It cannot judge tone, and a sound that is only slightly off can still pass, so
+listen to the result too.
 
 ### Questions that sound like questions
 

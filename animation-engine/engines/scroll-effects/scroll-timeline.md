@@ -13,10 +13,16 @@ anything for a visitor. Both read the page's live **GSAP ScrollTriggers** — ev
 Animation Engine put on the page (Scroll Motion, Scroll Keyframes, Motion Sequence, Motion Gallery
 choreography, scrollytelling, pinned sections…) — so you see exactly what fires where.
 
+Both open from the **admin bar**, under a single **Scroll Tools** menu (visible only to administrators on
+the front end). Keeping the triggers there — rather than as fixed floating buttons — means they never sit
+on top of the site's own on-page controls (chat buttons, back-to-top, cookie bars), so nothing a visitor
+or you would click is ever blocked. If the admin bar is turned off, each tool falls back to a small
+floating button so you still have a way in; the keyboard shortcuts work either way.
+
 ## Scroll Timeline — the visual editor
 
-A **video-editor-style timeline** docked at the bottom of the screen. Open it with the **Timeline**
-button (bottom-right) or press **Shift + T**.
+A **video-editor-style timeline** docked at the bottom of the screen. Open it from the admin bar —
+**Scroll Tools → Timeline** — or press **Shift + T**.
 
 - **One track per scroll animation.** Each is drawn as a coloured block on a **0–100 % scroll axis**,
   so position left-to-right is *where down the page* the animation runs — readable percentages, not raw
@@ -76,8 +82,8 @@ saved at least once since this shipped for its key to exist; new ones get it on 
 
 ## Scroll Ruler — the compact read-out
 
-A thin **vertical** overlay for a quick glance without giving up screen width. Open it with the **⟺**
-button (bottom-left) or press **Shift + R**.
+A thin **vertical** overlay for a quick glance without giving up screen width. Open it from the admin
+bar — **Scroll Tools → Scroll Ruler** — or press **Shift + R**.
 
 - Lists every ScrollTrigger (element, start/end scroll position, pin and scrub flags).
 - Maps all their ranges onto a vertical rail down the right edge, with a live playhead.
@@ -92,7 +98,7 @@ find easier to reason about; use whichever reads better for the task.
 | | Scroll Timeline | Scroll Ruler |
 |---|---|---|
 | Shape | Horizontal, docked bottom | Vertical, right-edge rail |
-| Toggle | **Shift + T** / Timeline button | **Shift + R** / ⟺ button |
+| Toggle | **Shift + T** / Scroll Tools → Timeline | **Shift + R** / Scroll Tools → Scroll Ruler |
 | Axis | 0–100 % of the page | Raw scroll pixels |
 | Scrub the page | ✅ Drag the playhead | View-only playhead |
 | Retime (persisted) | ✅ Drag a Scroll Motion block / handle | Read-only |

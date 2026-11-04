@@ -16,7 +16,7 @@ video in a [project](./ai-agents.md#projects); you can run them yourself from th
 | Project notes | What was planned, decided and left to do? | `notes "<project>"` | `project_notes` |
 | Timeline at a glance | Do the words, the cuts and the subtitles line up? | `timeline <scene.json>` | `scene_timeline` |
 | Video check | Is the finished video right: every line heard, no black, loud enough, no clipping? | `cut-check <video>` (runs after every render) | `video_check` |
-| Voice check and best take | Does this voice line say the script, without odd pauses? Which take is best? | `voice-check`, `best-take` | `voice_best_take` |
+| Voice check and best take | Does this voice line say the script, without odd pauses, and do its questions sound like questions? Which take is best? | `voice-check`, `best-take` | `voice_best_take` |
 | Clean up recorded speech | Can the false starts, ums and long pauses go? | `cleanup <clip>` | `footage_cleanup` |
 | Connect your agents | Can my agent use all of this? | `connect` | — |
 
@@ -96,6 +96,25 @@ Lessons that came from these checks, now part of how agents write narration:
 - Long chains of nouns ("a Pro page builder plan") make the voice break before the last one: shorten them.
 - Write the spoken text in lower case ("pro", not "Pro"); the subtitle keeps the capitals.
 - When the same break comes back take after take, reword the line rather than retrying.
+
+
+### Questions that sound like questions
+
+A voice can read a question flat, as a statement, and the words still all match. When the script line ends in a question
+mark, the voice check listens to how it ends and fails the take only when both signs say "statement":
+
+- **The pitch:** the last quarter second of voice against the half second before it. A rise of 6% or more counts as a
+  question.
+- **The transcript:** speech recognition hears intonation too, so a line it writes down ending in "." instead of "?"
+  was probably read flat.
+
+The result gives the pitch change, for example `the pitch moves -8% at the end, and the transcript ends "plugin."`.
+On one reel's hook, "Still paying every year for a WordPress SEO plugin?" fell 8% and failed; "Are you still paying for a
+WordPress SEO plugin?" rose 34% and passed. **If a question fails, rephrase it rather than re-reading it:** the same words
+tend to come out the same, and an opening like "Are you…" or "Do you…" gives the voice a question to read.
+
+**Limits:** some real questions fall at the end ("What's your name?"), so the transcript can pass a take the pitch alone
+would not. The pitch needs voiced sound at the end of the line, so check one line at a time, not a whole voice-over.
 
 ## Clean up recorded speech
 

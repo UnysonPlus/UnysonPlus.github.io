@@ -3,8 +3,8 @@
   "extension": "visitor-insights",
   "cloneDir": "UnysonPlus-Visitor-Insights-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Visitor-Insights-Extension",
-  "extensionVersion": "1.0.11",
-  "generatedAt": "2026-10-23T04:05:12.905Z",
+  "extensionVersion": "1.0.14",
+  "generatedAt": "2026-11-04T05:26:28.307Z",
   "detected": true,
   "milestones": [
     {
@@ -943,7 +943,7 @@
         {
           "id": "p10-hardening",
           "title": "Checked under real conditions",
-          "detail": "Verified: consent withdrawal removes the returning-visitor note; a burst of 3,000 page views (about 840 a second) is accepted and folded in under 4 seconds; page tokens now last 45 days, so pages a cache keeps for weeks are still counted. Still to check: Search Console keywords on a site with a live connection.",
+          "detail": "Verified: consent withdrawal removes the returning-visitor note; a burst of 3,000 page views (about 840 a second) is accepted and folded in under 4 seconds; page tokens last 45 days, so pages a cache keeps for weeks are still counted; the Search Console request, token renewal, large results, empty results and every error were run through the real code against simulated responses. Still to check: the Keywords view against a site with a live Search Console connection.",
           "detect": {},
           "status": "in-progress",
           "progress": "3/4",

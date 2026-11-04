@@ -51,6 +51,9 @@ features, do it in a few minutes, no code unless noted. New to the builder? Star
   [Wix →](/guides/convert-wix-to-wordpress) ·
   [Squarespace →](/guides/convert-squarespace-to-wordpress) ·
   [Framer →](/guides/convert-framer-to-wordpress)
+- [Convert a site to WordPress with an AI agent (Claude)](/guides/convert-site-to-wordpress-with-ai)
+  — let Claude run the conversion and refine it until it matches the source (for when the automatic
+  convert isn't pixel-perfect).
 
 ---
 

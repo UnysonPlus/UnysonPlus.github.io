@@ -29,6 +29,13 @@ Because Lovable renders in the browser, the reliable path is to **convert from i
 the converter opens the live page in real Chrome and reads the **computed** styles, so what you see
 is what you get.
 
+:::tip[Not close enough? Let an AI agent finish the job]
+An automatic conversion is a **close, editable starting point — not always pixel-perfect.** To get it
+the rest of the way, hand it to an AI agent like **Claude**: it runs the conversion, compares the result
+to your original section by section, and refines it until it matches. See
+**[Convert a site to WordPress with an AI agent](/guides/convert-site-to-wordpress-with-ai)**.
+:::
+
 ## Step 1 — Publish your Lovable site (get a URL)
 
 In Lovable, **Publish** your project to get a live preview/published **URL**. (If you've exported the

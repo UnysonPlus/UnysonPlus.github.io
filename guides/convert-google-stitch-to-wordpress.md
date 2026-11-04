@@ -25,6 +25,13 @@ A Stitch export is self-contained HTML that loads Tailwind + fonts from a CDN. T
 a whole multi-screen project) comes across cleanly, section by section.
 :::
 
+:::tip[Not close enough? Let an AI agent finish the job]
+An automatic conversion is a **close, editable starting point — not always pixel-perfect.** To get it
+the rest of the way, hand it to an AI agent like **Claude**: it runs the conversion, compares the result
+to your original section by section, and refines it until it matches. See
+**[Convert a site to WordPress with an AI agent](/guides/convert-site-to-wordpress-with-ai)**.
+:::
+
 ## Step 1 — Export from Stitch
 
 In Google Stitch, **export your design to HTML** — you'll get a **`.zip`**. It can be a single

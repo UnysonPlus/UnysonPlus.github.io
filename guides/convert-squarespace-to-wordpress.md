@@ -22,6 +22,13 @@ To bring the **actual design** across, the free **[Site Converter](/extensions/s
 reads your live Squarespace page in real Chrome and rebuilds it as a **native, fully editable
 WordPress site** — real page-builder pages, a matching theme, menus and Media Library.
 
+:::tip[Not close enough? Let an AI agent finish the job]
+An automatic conversion is a **close, editable starting point — not always pixel-perfect.** To get it
+the rest of the way, hand it to an AI agent like **Claude**: it runs the conversion, compares the result
+to your original section by section, and refines it until it matches. See
+**[Convert a site to WordPress with an AI agent](/guides/convert-site-to-wordpress-with-ai)**.
+:::
+
 ## Step 1 — Get your live Squarespace URL
 
 Make sure the page is **published** and publicly reachable — on your `*.squarespace.com` address or

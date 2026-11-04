@@ -175,6 +175,9 @@ happen. Shipped items move into the extension's main documentation.
 No dates. Items ship when they are properly done, and the order below is a rough intent, not a queue.
 :::
 
+For the wider plan, including Astro components that could render builder content from this extension, see
+[Beyond WordPress](/beyond-wordpress/roadmap).
+
 ### What already exists
 
 The extension builds on these; it does not replace them.

@@ -52,6 +52,7 @@ function sitemapDataPlugin() {
     theme: 'The Theme',
     guides: 'Guides',
     headless: 'Headless WordPress',
+    beyondWordpress: 'Beyond WordPress',
     aiDevKit: 'AI Dev Kit',
     crm: 'CRM',
     membership: 'Membership',
@@ -67,6 +68,7 @@ function sitemapDataPlugin() {
     'The Theme',
     'Guides',
     'Headless WordPress',
+    'Beyond WordPress',
     'AI Dev Kit',
     'News',
     'Design Decisions',
@@ -442,6 +444,18 @@ const config = {
     [
       '@docusaurus/plugin-content-docs',
       {
+        // Learning Astro and Sanity, and the exploratory plan for taking Unyson+ past WordPress.
+        id: 'beyondWordpress',
+        path: 'beyond-wordpress',
+        routeBasePath: 'beyond-wordpress',
+        sidebarPath: './sidebarsBeyondWordpress.js',
+        showLastUpdateTime: true,
+        editUrl: 'https://github.com/UnysonPlus/UnysonPlus.github.io/tree/main/',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
         id: 'aiDevKit',
         path: 'ai-dev-kit',
         routeBasePath: 'ai-dev-kit',
@@ -605,6 +619,7 @@ const config = {
               {label: 'Extensions', to: '/extensions/overview'},
               {label: 'Blocks', to: '/blocks/intro'},
               {label: 'Headless WordPress', to: '/headless'},
+              {label: 'Beyond WordPress', to: '/beyond-wordpress'},
             ],
           },
           {

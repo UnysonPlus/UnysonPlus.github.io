@@ -42,10 +42,15 @@ features, do it in a few minutes, no code unless noted. New to the builder? Star
 - [Create a custom post type without code](./custom-post-type.md)
 - [Convert an existing website to WordPress](/guides/convert-website-to-wordpress)
 - [Convert an AI-generated static HTML site to WordPress](/guides/convert-ai-generated-html-to-wordpress)
-  — the pillar guide, plus tool-specific paths:
+  — the pillar guide, plus AI-builder paths:
   [Google Stitch →](/guides/convert-google-stitch-to-wordpress) ·
   [Lovable →](/guides/convert-lovable-to-wordpress) ·
   [Wegic →](/guides/convert-wegic-to-wordpress)
+- Move off a hosted site builder:
+  [Webflow →](/guides/convert-webflow-to-wordpress) ·
+  [Wix →](/guides/convert-wix-to-wordpress) ·
+  [Squarespace →](/guides/convert-squarespace-to-wordpress) ·
+  [Framer →](/guides/convert-framer-to-wordpress)
 
 ---
 

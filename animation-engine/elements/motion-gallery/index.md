@@ -129,7 +129,7 @@ Every design shares the same surrounding controls, so switching design keeps you
 
 Drop a few Motion Galleries down the page and **connect them into a single pinned scroll sequence** —
 gallery 1 flies out *as* gallery 2 assembles in, and so on. **Any design can chain** — a Carousel Ring can
-hand off to a Panorama Wall to a Card Sphere; you're not limited to the Scroll-Choreography design.
+hand off to a Panorama Wall to a Card Sphere, each running its own motion across its slice of the scroll.
 
 Set it up:
 

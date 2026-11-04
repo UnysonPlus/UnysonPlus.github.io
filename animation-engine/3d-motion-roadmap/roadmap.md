@@ -181,10 +181,11 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   relocates them into one overlay wrapper and non-destructively hides the emptied sections. *Both cases
   verified (one master ScrollTrigger, clean handoff, no empty gaps).*
   - **Right-click *Create choreography*** — ✅ **shipped.** Right-click a Motion Gallery in the page builder
-    and pick *Create choreography*: every gallery on the page is switched to the Scroll-Choreography design
-    with **Chain** on in one click, so the adjacent ones connect into a single scroll sequence (the runtime
-    groups them). Fully reversible. *(Verified end-to-end in the builder: the item appears only on galleries,
-    and a click persists `design: scroll_choreography` + `chain: true`.)*
+    and pick *Create choreography*: every gallery on the page is switched to **Scroll-scrub + Pin** with
+    **Chain** on in one click — **each keeps its own design** — so the adjacent ones connect into a single
+    scroll sequence (the runtime groups them). Fully reversible. *(Verified end-to-end in the builder: the
+    item appears only on galleries, and a click persists `motion.mode: scroll` + `motion.scroll.pin: yes` +
+    `chain: yes`, leaving the gallery's design untouched.)*
   - **Design-agnostic chaining** — ✅ **shipped.** Chaining is no longer tied to the Scroll-Choreography
     design: a general top-level **Chain with adjacent galleries** switch stamps `data-tdg-chain` on any
     Scroll-scrub + pinned gallery, `autoGroupChains`/`buildChain` group every `.tdg[data-tdg-chain]`, and a
@@ -193,9 +194,12 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
     design runs its native motion across its slice, with the opacity crossfade at each seam. *(Verified live:
     two Carousel Ring galleries chained into one pinned master ScrollTrigger — each ring scrubs its own slice,
     crossfading at the handoff.)*
-  - **Retiring the abstract `scroll_choreography` steps design** — now **unblocked** (chaining no longer
-    depends on it). The abstract Steps design can be deprecated in favour of chaining real designs; that
-    removal is the next step here.
+  - **Retiring the abstract `scroll_choreography` steps design** — ✅ **done.** With chaining now
+    design-agnostic, the abstract Steps design is **removed from the Design picker** in favour of chaining
+    real designs. It is a **safe deprecation**, not a hard removal: the runtime, the view whitelist and its
+    pose/init path all stay, so **existing galleries that still use it keep rendering unchanged** — only new
+    galleries no longer see it as a choice. *(Verified: the design no longer appears in the picker; two live
+    pages still using it render via the retained back-compat path.)*
 
 ## Phase 2 — Real 3D scenes ✅ Scenes shipped (WebGL Motion Gallery stretch ahead)
 

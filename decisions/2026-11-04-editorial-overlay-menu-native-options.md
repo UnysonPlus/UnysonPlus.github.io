@@ -28,10 +28,13 @@ existing `overlay` reveal group as first-class options.
   across sites, so every editorial overlay re-derives the same CSS — it drifts, it isn't discoverable, and
   a converted site can't pick the look from the UI. Custom CSS for a thing many sites want is a smell.
 - **Native options (chosen).** Three additions to the Panel overlay: **Menu Alignment** (Center / Left /
-  Right), **Numbered Items** (switch), and an **Aside** (tagline + contact text). All opt-in — center /
+  Right), **Numbered Items** (switch), and an **Aside** — a single free-form **Aside Content** block
+  (any text / HTML / shortcode) plus an **Aside Position** picker for its corner. All opt-in — center /
   off / empty leave the classic centered panel untouched — and all pure config: alignment and numbering
   are CSS driven by a drawer modifier class, numbering uses a CSS counter (no markup, no per-item data),
-  the aside is one small shared render helper.
+  the aside is one small shared render helper. (The aside started as two fixed fields, a tagline and a
+  contact line, and was collapsed to one free-form content field + position before release — a corner
+  block can hold anything, so two named lines was a needless constraint.)
 
 ## Decision
 

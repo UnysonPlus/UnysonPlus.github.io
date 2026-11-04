@@ -3,8 +3,8 @@
   "extension": "visitor-insights",
   "cloneDir": "UnysonPlus-Visitor-Insights-Extension",
   "repo": "https://github.com/UnysonPlus/UnysonPlus-Visitor-Insights-Extension",
-  "extensionVersion": "1.0.14",
-  "generatedAt": "2026-11-04T05:26:28.307Z",
+  "extensionVersion": "1.0.15",
+  "generatedAt": "2026-11-04T07:28:23.001Z",
   "detected": true,
   "milestones": [
     {
@@ -935,6 +935,18 @@
                 "file": "includes/class-fw-vi-ai.php",
                 "pattern": "FW_VI_Visits::"
               }
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
+        },
+        {
+          "id": "p10-csv",
+          "title": "Spreadsheets on Import / Export",
+          "detail": "Goals, funnels, chart notes and the daily rows behind traffic, sources and goal completions download as CSV and load back unchanged, so a list can be edited in a spreadsheet and history from another tool can be brought in.",
+          "detect": {
+            "files": [
+              "includes/class-fw-vi-transfer-csv.php"
             ]
           },
           "status": "done",

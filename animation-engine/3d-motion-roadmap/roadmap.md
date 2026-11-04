@@ -201,7 +201,7 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
     galleries no longer see it as a choice. *(Verified: the design no longer appears in the picker; two live
     pages still using it render via the retained back-compat path.)*
 
-## Phase 2 — Real 3D scenes ✅ Scenes shipped (WebGL Motion Gallery stretch ahead)
+## Phase 2 — Real 3D scenes ✅ Scenes shipped (WebGL Motion Gallery stretch ⏸️ deferred)
 
 - **A few pre-built, scroll-scrubbed camera scenes** — you supply the media and tune a few knobs; the scene
   and its camera choreography are built in. Rather than a separate element, these ship as **scroll-driven
@@ -217,8 +217,15 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   - **Product Orbit** — ✅ **shipped.** Your images face outward on a **ring** and the **camera orbits the
     centre** on scroll — a turntable reveal, each image swinging to the front after the next. *(Verified live.)*
     A real-3D-model variant (via [Model Viewer](/animation-engine/model-viewer)) is a possible future escalation.
-- **Stretch:** a real-WebGL variant of the [Motion Gallery](/animation-engine/motion-gallery) for true depth,
-  lighting and reflection.
+- **Stretch (⏸️ deferred — future escalation):** a real-WebGL variant of the
+  [Motion Gallery](/animation-engine/motion-gallery) for true depth, lighting and reflection. **Not started
+  by design.** Today's Motion Gallery runs on pure CSS 3D + a single rAF loop (no library) and the
+  scroll-scrubbed *camera* scenes that WebGL would add are already shipped as
+  [WebGL Object](/animation-engine/webgl-object) presets (Image Tunnel, Gallery Dolly, Product Orbit). A
+  Three.js rebuild would be a second rendering engine for the element — a large, multi-session effort with
+  its own asset-loading and performance surface — so it's parked here as a future escalation to pick up only
+  if a real need (true reflections / lighting across the card layouts) appears. The rest of the 3D-motion
+  roadmap is shipped.
 
 ## Phase 3 — Flourishes
 

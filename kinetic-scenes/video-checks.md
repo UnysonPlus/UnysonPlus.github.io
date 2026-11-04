@@ -138,20 +138,30 @@ leaves at 32.12 s`. Move the fade later; the next caption can start as this one 
 ### Questions that sound like questions
 
 A voice can read a question flat, as a statement, and the words still all match. When the script line ends in a question
-mark, the voice check listens to how it ends and fails the take only when both signs say "statement":
+mark, the voice check measures how it ends:
 
-- **The pitch:** the last quarter second of voice against the half second before it. A rise of 6% or more counts as a
-  question.
-- **The transcript:** speech recognition hears intonation too, so a line it writes down ending in "." instead of "?"
-  was probably read flat.
+- **The pitch decides:** the last quarter second of voice against the half second before it. A rise of 6% or more counts
+  as a question; anything less fails the take.
+- **The transcript is only a fallback.** Speech recognition writes "?" after anything worded like a question, however
+  flatly it was said, so a "?" in the transcript does not prove the line sounds like one. It counts only when the pitch
+  cannot be read, and for questions that open with What, Why, How, When, Where, Who or Which, which fall when said well.
 
 The result gives the pitch change, for example `the pitch moves -8% at the end, and the transcript ends "plugin."`.
 On one reel's hook, "Still paying every year for a WordPress SEO plugin?" fell 8% and failed; "Are you still paying for a
 WordPress SEO plugin?" rose 34% and passed. **If a question fails, rephrase it rather than re-reading it:** the same words
-tend to come out the same, and an opening like "Are you…" or "Do you…" gives the voice a question to read.
+tend to come out the same. Short questions that end on the point rise best: "Are your WordPress links too long?" rose 23%,
+while "Are the links on your WordPress site long and ugly?" fell 10%. An opening like "Are you…" helps but does not
+guarantee it ("Are you paying every month for a CRM?" fell 8%), so measure the line.
 
-**Limits:** some real questions fall at the end ("What's your name?"), so the transcript can pass a take the pitch alone
-would not. The pitch needs voiced sound at the end of the line, so check one line at a time, not a whole voice-over.
+**Limits:** the pitch needs voiced sound at the end of the line, so check one line at a time, not a whole voice-over. The
+number is a guide to the ear, not a replacement for it: listen to the hook before you render.
+
+### Word times stay inside their lines
+
+Speech recognition over a whole voice-over can run half a second late. The kit knows exactly when it laid down each line,
+so a generated voice-over's words are fitted into their own line's window, and captions and sounds timed from them stay on
+the voice. If the recogniser hears a different number of words than the script has, the times are left as they came, and
+the Check's overlap and short-display warnings are the sign to look at.
 
 ## Clean up recorded speech
 

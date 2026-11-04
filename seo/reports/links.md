@@ -105,3 +105,8 @@ everything again.
   not counted.
 - Affiliate detection is a pattern match. A link through a tracking service it doesn't recognise
   counts as external; add its address under *Also count as affiliate*.
+
+## Related reports
+
+- [Broken links](./broken-links.md) fetches every link in this index and records what it answers.
+- [Backlinks](./backlinks.md) shows the links coming **to** your site from others.

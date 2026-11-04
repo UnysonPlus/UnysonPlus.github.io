@@ -30,6 +30,11 @@ itself, because two exports made under different settings are not comparable. **
 downloads every import, and importing that file brings them back unchanged, onto another site too.
 **Remove** deletes one.
 
+## How much it is searched
+
+Trends shows direction, not size. With a Bing key, you can [look up real search counts](./search-volumes.md) for a
+phrase, or fill a **Bing searches** column for every topic in the table.
+
 ## The table
 
 Each topic, from *Interest over time* (and each **rising** search from *Related queries*), with:

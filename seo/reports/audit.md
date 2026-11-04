@@ -32,6 +32,13 @@ Each group opens to the list of pages, each linking to its editor. The audit run
 each page is re-checked when you save it, and **Check again now** runs it on demand. It works in the
 background, about a minute for a few hundred pages.
 
+## From served pages and crawlers
+
+Two more sources add lists here. The [rendered-page checks](./served-pages.md) fetch each page and report mixed
+content, overridden titles and canonicals, oversized images and language links that are not returned. If you run
+a dedicated crawler, [its export](../crawler-import.md) can be imported below the report and its findings are
+listed the same way.
+
 ## Pages generated in bulk
 
 Making many pages from one template and a list (a page per town, per service, per product) can cover

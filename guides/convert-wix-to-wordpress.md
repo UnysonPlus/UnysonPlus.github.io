@@ -23,13 +23,6 @@ your live page**. The free **[Site Converter](/extensions/site-converter)** open
 URL in real Chrome, reads the **computed** design, and rebuilds it as a **native, fully editable
 WordPress site** — real page-builder pages, a matching theme, menus and Media Library.
 
-:::tip[Not close enough? Let an AI agent finish the job]
-An automatic conversion is a **close, editable starting point — not always pixel-perfect.** To get it
-the rest of the way, hand it to an AI agent like **Claude**: it runs the conversion, compares the result
-to your original section by section, and refines it until it matches. See
-**[Convert a site to WordPress with an AI agent](/guides/convert-site-to-wordpress-with-ai)**.
-:::
-
 ## Step 1 — Get your live Wix URL
 
 Make sure your Wix site is **published** and publicly reachable — on your `*.wixsite.com` address or
@@ -65,6 +58,13 @@ unlimited forms, WooCommerce, custom post types, and any theme or plugin you lik
 :::tip[Multi-page Wix sites]
 Convert each page from its own live URL. Dynamic pieces — a store, bookings, members — are rebuilt
 with native WordPress plugins (WooCommerce and friends) rather than copied, so you own those too.
+:::
+
+:::tip[Not close enough? Let an AI agent finish the job]
+An automatic conversion is a **close, editable starting point — not always pixel-perfect.** To get it
+the rest of the way, hand it to an AI agent like **Claude**: it runs the conversion, compares the result
+to your original section by section, and refines it until it matches. See
+**[Convert a site to WordPress with an AI agent](/guides/convert-site-to-wordpress-with-ai)**.
 :::
 
 ## FAQ

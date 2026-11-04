@@ -9,13 +9,6 @@ The **Site Converter** brings an existing (often AI-generated) site into WordPre
 editable** Unyson+ content, its images, design presets, theme settings, pages, and menus, plus a
 matching header/footer theme.
 
-:::tip[Not close enough? Let an AI agent finish the job]
-An automatic conversion is a **close, editable starting point — not always pixel-perfect.** To get it
-the rest of the way, hand it to an AI agent like **Claude**: it runs the conversion, compares the result
-to your original section by section, and refines it until it matches. See
-**[Convert a site to WordPress with an AI agent](/guides/convert-site-to-wordpress-with-ai)**.
-:::
-
 ## The fastest path: a Convert bundle
 
 If you have a conversion **bundle** (a `.zip` an agent produced):
@@ -39,6 +32,13 @@ Under **Unyson+ → Convert → Manual tools**, each phase is a standalone tool:
 
 Every imported page is **fully builder-editable**, Site Converter sets the page-builder content and
 lets the plugin regenerate the markup, so you can keep editing in the visual builder.
+
+:::tip[Not close enough? Let an AI agent finish the job]
+An automatic conversion is a **close, editable starting point — not always pixel-perfect.** To get it
+the rest of the way, hand it to an AI agent like **Claude**: it runs the conversion, compares the result
+to your original section by section, and refines it until it matches. See
+**[Convert a site to WordPress with an AI agent](/guides/convert-site-to-wordpress-with-ai)**.
+:::
 
 ## See also
 

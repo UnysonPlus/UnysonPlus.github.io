@@ -24,13 +24,6 @@ Media Library. Because Framer renders in the browser, the reliable path is to **
 published URL**: the converter opens the live page in real Chrome and reads the **computed** styles,
 so it reproduces the real design rather than guessing at it.
 
-:::tip[Not close enough? Let an AI agent finish the job]
-An automatic conversion is a **close, editable starting point — not always pixel-perfect.** To get it
-the rest of the way, hand it to an AI agent like **Claude**: it runs the conversion, compares the result
-to your original section by section, and refines it until it matches. See
-**[Convert a site to WordPress with an AI agent](/guides/convert-site-to-wordpress-with-ai)**.
-:::
-
 ## Step 1 — Publish your Framer site (get a URL)
 
 In Framer, **Publish** your project so it's live on your `*.framer.website` / `*.framer.app` address
@@ -66,6 +59,13 @@ plugins. It's a normal WordPress site now.
 :::tip[Multi-page Framer sites]
 Convert each page from its own published URL. Menus and the footer are rebuilt as real WordPress
 menus and widget areas.
+:::
+
+:::tip[Not close enough? Let an AI agent finish the job]
+An automatic conversion is a **close, editable starting point — not always pixel-perfect.** To get it
+the rest of the way, hand it to an AI agent like **Claude**: it runs the conversion, compares the result
+to your original section by section, and refines it until it matches. See
+**[Convert a site to WordPress with an AI agent](/guides/convert-site-to-wordpress-with-ai)**.
 :::
 
 ## FAQ

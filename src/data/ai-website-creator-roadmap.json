@@ -399,14 +399,90 @@
         {
           "id": "p8-hosted",
           "title": "Hosted app (future)",
-          "detail": "A hosted web app that builds and deploys into the person's WordPress. The biggest surface and the most infrastructure; only once the engine is proven.",
+          "detail": "A hosted web app that builds and deploys into the person's WordPress. Half of this now exists: the Site Creator is hosted, and it produces the spec. What is still missing is the half that BUILDS — today that needs an agent with file access on the person's own machine. So this item is no longer \"a hosted front end\"; it is hosted execution, and it is the biggest surface and the most infrastructure. Only once the engine is proven.",
           "pin": true,
           "status": "planned"
+        },
+        {
+          "id": "p8-site-creator",
+          "title": "One questionnaire, one spec",
+          "detail": "The Site Creator (create.unysonplus.com) is the ONLY thing that asks a person what their site should be. It runs in the browser, needs no AI, and emits a site-spec.json against skills/create-site/site-spec.schema.json with per-industry presets. The kit dashboard's Create site tab stopped carrying its own form and became a launcher + receiver: it opens the Site Creator, reads back the prompt or the spec, summarises it (business, pages, action, style, target, missing[]) and hands it to the Kit Assistant or to the person's own agent. Two emitters of one schema had already drifted — the \"one action\" question reached the spec as `primary_action` on one side, as prompt prose only on the other, and was undeclared in the schema, which is now fixed.",
+          "detect": {
+            "files": [
+              "skills/create-site/site-spec.schema.json"
+            ],
+            "symbols": [
+              {
+                "file": "skills/create-site/site-spec.schema.json",
+                "pattern": "primary_action"
+              },
+              {
+                "file": "assembled/UnysonPlus-Capture-Service/tools/design-capture/dashboard/index.html",
+                "pattern": "scPaste|Open the Site Creator"
+              }
+            ]
+          },
+          "status": "done",
+          "progress": "3/3"
+        },
+        {
+          "id": "p8-handoff",
+          "title": "Send a spec straight to the kit",
+          "detail": "A \"Send to AI Dev Kit\" button on the Site Creator that posts the spec to the running kit on localhost, so the person never copies and pastes. The dashboard already proxies this pattern for WordPress admin pages, so the mechanism exists. **Blocked on a deliberate decision, not on code:** the chat endpoints currently refuse any origin that is not the dashboard, and that gate is what stops another page in the same browser driving the tools or confirming a proposal. Allowing create.unysonplus.com through must be a narrow allowlist entry made on purpose. Until then, paste covers the same ground.",
+          "detect": null,
+          "status": "planned",
+          "progress": null
+        }
+      ]
+    },
+    {
+      "id": "p9-proof",
+      "title": "Phase 9 — Proven on a real build",
+      "goal": "Everything above is machinery. None of it is evidence. The creator's own status card on the kit dashboard says \"Skill ready · not yet run end to end\", and that is the honest state: the archetypes, styles, composition guide, skill and ship gate have never been run together against one real brief, from an empty WordPress to a site someone would show a client. Until that happens, every other improvement is a guess about which part is weakest.",
+      "tasks": [
+        {
+          "id": "p9-end-to-end",
+          "title": "One real site, start to finish",
+          "detail": "Take one brief through the whole flow with nothing skipped: Site Creator → spec → agent → a fresh WordPress → the ship gate. Record what broke, which recipe or style was wrong, and what the agent had to be told that the docs should have said. The output that matters is the list of corrections, not the site. The dashboard card may only turn green when this has actually been done.",
+          "detect": null,
+          "status": "planned",
+          "progress": null
+        },
+        {
+          "id": "p9-card",
+          "title": "The status card tells the truth",
+          "detail": "Once the flow has been run end to end, the Home card stops saying \"not yet run end to end\". It says what is true at the time — and if the run exposed gaps, it says that instead of rounding up to Ready.",
+          "detect": null,
+          "status": "planned",
+          "progress": null
+        }
+      ]
+    },
+    {
+      "id": "p10-no-agent",
+      "title": "Phase 10 — Build without an agent",
+      "goal": "Today a person needs an AI agent with file access to turn a spec into a site. The spec itself needs no AI at all — the Site Creator writes it in the browser — so the gap is only the build step. A deterministic builder would close it, and would also give the AI path something to be measured against.",
+      "tasks": [
+        {
+          "id": "p10-deterministic",
+          "title": "Assemble a site from a spec, with no model",
+          "detail": "Read a site-spec.json and compose the pages from the kit's own recipes, styles and presets directly — no model in the loop. The spec already names the pages, their shapes, the style and the one action; the recipes already say what each section archetype is. The result would be plainer than an agent's, and it would be exact, free, offline and the same every time. `missing[]` governs it exactly as it governs the agent: a section with no real content is omitted, never invented.",
+          "detect": null,
+          "status": "planned",
+          "progress": null
+        },
+        {
+          "id": "p10-compare",
+          "title": "Measured against the agent build",
+          "detail": "Run the same spec through both paths and compare them against the ship gate. This is the only way to learn what the model is actually contributing — and if the deterministic build is close, that is the honest default for someone with no AI.",
+          "detect": null,
+          "status": "planned",
+          "progress": null
         }
       ]
     }
   ],
   "detected": true,
   "extensionVersion": null,
-  "generatedAt": "2026-10-21T13:59:00.483Z"
+  "generatedAt": "2026-11-04T05:23:10.437Z"
 }

@@ -172,9 +172,74 @@
           "progress": "1/2"
         }
       ]
+    },
+    {
+      "id": "a4-useful",
+      "title": "Phase 4 — Worth opening on its own",
+      "goal": "Phases 1–3 made the assistant able to see, act and be trusted. This phase is about whether a person has a reason to open it — can they show it what is wrong instead of describing it, get to a known answer without negotiating with a model, and run it on hardware they already own.",
+      "tasks": [
+        {
+          "id": "a4-images",
+          "title": "Show it a screenshot",
+          "detail": "Attach an image to a message — paperclip, paste or drag and drop, up to four per message, downscaled in the browser to 1568px. Claude's own API path gained a native Messages-API loop with real tool_use and image blocks rather than having images bolted onto the prose tool protocol; Ollama and OpenAI-shaped endpoints carry them in their own native fields; Claude Code is handed the file by path with `Read` granted for that turn. A model that cannot see refuses the attachment and names one that can, instead of answering confidently about a picture it never received. Images are stored once under `_chat/` and the history keeps only a reference.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "assembled/UnysonPlus-Capture-Service/tools/design-capture/to-ai.mjs",
+                "pattern": "chatAnthropicNative|modelSeesImages"
+              },
+              {
+                "file": "assembled/UnysonPlus-Capture-Service/tools/design-capture/serve.mjs",
+                "pattern": "storeChatImages"
+              },
+              {
+                "file": "assembled/UnysonPlus-Capture-Service/tools/design-capture/dashboard/index.html",
+                "pattern": "chatPrepImage|chatAddFiles"
+              }
+            ]
+          },
+          "status": "done",
+          "progress": "3/3"
+        },
+        {
+          "id": "a4-commands",
+          "title": "Typed commands that skip the model",
+          "detail": "`/` opens a filtered list. Each command runs ONE tool directly with no model in the loop — `/report`, `/docs`, `/look`, `/status`, `/capture`, `/studio` — which makes the answer deterministic and instant, and equally reliable on a small local model that would otherwise have to be talked into choosing the right tool. A command that changes something still returns a proposal awaiting Confirm.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "assembled/UnysonPlus-Capture-Service/tools/design-capture/serve.mjs",
+                "pattern": "CHAT_COMMANDS"
+              },
+              {
+                "file": "assembled/UnysonPlus-Capture-Service/tools/design-capture/dashboard/index.html",
+                "pattern": "CHAT_CMDS|chatRunCommand"
+              }
+            ]
+          },
+          "status": "done",
+          "progress": "2/2"
+        },
+        {
+          "id": "a4-triage",
+          "title": "Tell me what is actually worth fixing",
+          "detail": "A tool that reads a conversion and answers the question people open the dashboard to ask: of everything in this report, which three things actually matter? Today `conversion_report` returns the whole table and leaves the person to read it. Triage is judgement under ambiguity, which is the class of problem the model is genuinely better at than a rule — and it is the highest-value addition left on this surface.",
+          "detect": null,
+          "status": "planned",
+          "progress": null
+        },
+        {
+          "id": "a4-byo-runtime",
+          "title": "Point it at a local runtime the person already has",
+          "detail": "Settings already accepts any OpenAI-compatible base URL, so a self-hosted engine on this machine works today by typing its address. What is left is small and deliberate: a preset entry so it is one click rather than a URL to remember, a check that the Kit Assistant's tool calling survives that transport, and docs that point at a model size which is actually usable. **Deferred on purpose:** the kit will not manage the install, the download or the model catalogue for a second runtime — that is the engine's own job, and the storage footprint makes it a poor default. The scope is the address field, nothing more.",
+          "detect": null,
+          "status": "planned",
+          "progress": null
+        }
+      ]
     }
   ],
   "detected": true,
   "extensionVersion": null,
-  "generatedAt": "2026-10-21T17:32:11.901Z"
+  "generatedAt": "2026-11-04T05:23:40.728Z"
 }

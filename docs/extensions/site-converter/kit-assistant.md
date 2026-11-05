@@ -8,7 +8,8 @@ title: The Kit Assistant (chat)
 The **Kit Assistant** is the chat in the AI Dev Kit dashboard, at
 **`http://localhost:4600/#chat`**. It answers questions about your conversions and about Unyson+
 itself, using the kit's own tools: it can open a web page and read it, pull up a capture's conversion
-report, search the kit's documentation, and — with your confirmation — start a capture.
+report, search the kit's documentation, and — with your confirmation — start a capture or have the
+Kinetic Scenes agent work on a video.
 
 It runs on whichever AI backend the kit is set to, so the conversation stays on your machine (a local
 model through Ollama) or goes to your own Claude subscription or API key. Nothing is sent anywhere
@@ -39,6 +40,34 @@ claiming it has started something.
 
 The conversation is kept in `capture-out/chat-history.json` (the last 200 messages) so it survives
 restarting the service. **New chat** clears it.
+
+## Work on your Kinetic Scenes projects
+
+Ask for a video, or a change to one, the way you would ask a person: "in my Free CRM reel, make the hook punchier". The
+assistant finds the project and shows what it will do. Nothing happens until you press **Confirm**.
+
+<img src="/img/extensions/site-converter/kit-assistant-work-on-project.png" alt="A proposal to work on a project, listing the request and what the agent may do, with Confirm and Cancel buttons" width="531" />
+
+**One Confirm covers the whole request.** The Kinetic Scenes agent then does the work in that project's folder: it edits
+the scene, looks at its frames and checks what it made. You see its steps live under the message.
+
+- **Stop** ends it at any time. What it already saved stays.
+- **Open in Kinetic Scenes** opens the result when it finishes.
+- **Put it back** restores the scene to how it was before that run. The last ten versions are kept in the project's
+  `snapshots/` folder.
+- The work carries on if you close the tab, and the result is waiting in the chat when you come back. If the kit itself
+  is closed, the run stops.
+
+The agent can only change that one project's folder. It can't run commands or go on the web, and it never renders a
+video, touches a site or pushes to GitHub.
+
+For a new video, ask for one by name, or by website: "make a new project called Spring Sale from example.com, with a
+voice-over and music". A new project can't be put back, because there is nothing to go back to; delete its folder if you
+don't want it.
+
+This needs Claude Code on your computer, and it uses your Claude subscription, whichever AI the chat itself runs on. A
+small change takes about a minute; a whole video takes about 10 to 20. A small local model may not ask for the agent on
+its own, so `/work` is the reliable way to reach it.
 
 ## Attaching an image
 
@@ -85,6 +114,8 @@ that might otherwise need persuading to pick the right tool.
 | `/doc <path>` | Read one kit doc in full |
 | `/capture <url>` | Capture a site — **asks you to Confirm first** |
 | `/studio <request>` | Hand a scene to Kinetic Scenes — **asks you to Confirm** |
+| `/projects` | Your Kinetic Scenes projects |
+| `/work <project>: <request>` | Have the agent work on a project — **asks you to Confirm** |
 | `/clear` | Clear the conversation |
 | `/help` | List the commands |
 
@@ -101,8 +132,8 @@ is always sent to the model, since looking at a picture is not something a singl
 
 ## Limits
 
-- **Seven tools, nothing else.** It cannot edit a file, run a command, change your WordPress site or
-  touch git.
+- **Nine tools, nothing else.** On its own it cannot edit a file, run a command, change your WordPress site or
+  touch git. The Kinetic Scenes agent can edit one project's folder, and only after your Confirm.
 - **The last 12 turns** of the conversation are sent to the model; older ones scroll out of its view
   (they stay in the transcript).
 - **Six tool rounds** per message. After that it answers with what it has gathered.

@@ -1296,7 +1296,7 @@
           "id": "p24-create-agent",
           "title": "Create runs the project agent",
           "detail": "Create starts a project and runs the agent in it, with steps shown live and a Stop button, as the Kit Assistant will. One Create or Confirm approves the whole request: the agent edits only that project's folder, a snapshot of the scene is taken first, and rendering, pushing and live sites never happen on their own. Voice-over and music join the start screen's step here.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p24-paper",
@@ -1307,7 +1307,7 @@
       ]
     }
   ],
-  "extensionVersion": "0.1.22",
+  "extensionVersion": "0.1.23",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

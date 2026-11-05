@@ -84,7 +84,7 @@ The tools the agent gets: `project_list`, `project_save` and `project_notes` (th
 `scene_check`, `scene_inspect`, `scene_stills` (it looks at frames), `scene_timeline` (frames, sound wave, every spoken
 word at its time and the words on screen in one picture, with pauses inside a phrase marked), `scene_render`, and `audio_beats`,
 `audio_transcribe`, `audio_separate`, `video_check` (a finished video checked: every voice line heard, black frames,
-loudness, clipping; renders run it on their own), `voice_best_take` (the best of several takes of a line) and
+loudness, clipping; renders run it on their own), `voice_over` (a script spoken into one file, with its word times), `voice_best_take` (the best of several takes of a line) and
 `footage_cleanup` (recorded speech without false starts, um / uh and long pauses). Agents that run commands also have the kit's command line
 (`studio-cli record`, `screencast`, `music`, `project`), which records the screen and builds the scene around the
 recording.

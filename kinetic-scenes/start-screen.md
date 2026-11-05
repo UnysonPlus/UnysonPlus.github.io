@@ -43,10 +43,31 @@ These two take one more step before anything is made.
    animation** (plays on a page, on every screen size).
 3. **Choose a length** of 15 to 60 seconds, or let the AI choose. A web animation has no length to set here.
 4. **Choose a style**, or let the AI choose. Your choice also becomes AI assist's style.
-5. **Click Create.** AI assist opens and takes over: with its usual settings on, it shows
-   [three directions, then a plan](./ai.md) for you to approve before building.
+5. **Choose sound.** With an AI agent available, tick **Add a voice-over** and **Add music** for a video.
+6. **Click Create.**
 
 Nothing is rendered. You preview the scene in the Studio and export it when you're ready.
+
+### With your AI agent
+
+If the AI Dev Kit is running and Claude Code is on your computer, **Create makes a new project and your AI agent builds
+the whole video in it.** AI assist opens and shows each step as it happens: reading the website, recording the voice,
+writing the scene, looking at its frames and fixing what it finds. The Studio plays each saved version as it arrives.
+
+- **Clicking Create is your one approval.** The agent then makes as many edits as it needs, inside that project's folder
+  only. It can't run commands, go on the web or touch anything else.
+- **It never renders**, and never touches a site or GitHub.
+- **Stop** ends it at any time. What it already saved stays, and **Undo** goes back.
+- **A whole video takes about 10 to 20 minutes.** A test reel of 15 seconds, with a voice-over and music, took about 12.
+  The work carries on if you close the tab.
+- **It uses your Claude subscription.**
+
+A voice-over needs a voice installed in **Tools › Add-ons**. Music is composed for the scene and added at 25% volume.
+
+### Without an agent
+
+AI assist builds the scene here in the browser instead. With its usual settings on, it shows
+[three directions, then a plan](./ai.md) for you to approve first.
 
 ## Picking up where you left off
 
@@ -82,5 +103,7 @@ appears in the corner and continues from **Change the words**.
 
 - The format, length and style step is only for **Describe it** and **A website**. A long video and a video you like
   ask for their own settings in their own dialogs, and the other options start straight away.
-- Voice-over and music aren't part of this step yet. Add them afterwards with [Sound](./sound.md).
-- With a project open, **Create** still builds a new scene in the browser, not in a project folder.
+- **Add a voice-over** and **Add music** need the agent, and only appear for a video. Without it, add sound afterwards
+  with [Sound](./sound.md).
+- The agent skips the three directions and the plan: it builds from what you asked for. Change the result by asking
+  in AI assist.

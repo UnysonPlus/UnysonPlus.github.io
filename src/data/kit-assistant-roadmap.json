@@ -247,7 +247,7 @@
           "id": "a5-projects",
           "title": "Work on a project from the chat",
           "detail": "Pick a Kinetic Scenes project and ask for a change. The chat runs the project agent the Studio already has, shows its steps live, can be stopped, and ends with the preview link. A snapshot of the scene is taken before each run.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "a5-conversations",

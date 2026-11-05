@@ -7,15 +7,15 @@ keywords: [animation templates, motion graphics templates, website hero animatio
 
 # Templates and your first scene
 
-You don't have to start from an empty stage. **File › New from template** opens finished scenes chosen by what you want
+You don't have to start from an empty stage. The [start screen](./start-screen.md) offers a template along with every other way to begin, and **File › New from template** opens finished scenes chosen by what you want
 to make, built in the style you pick. Change the words and pictures and it's ready; or ask AI assist to build on it.
 
 ## Your first scene in two minutes
 
-The first time you open the Studio, a small guide in the corner walks you through it. Each step outlines the part of
+The first time you make a scene from a template or an empty stage, a small guide in the corner walks you through it. Each step outlines the part of
 the Studio it's about:
 
-1. **Pick a starting point:** choose a template.
+1. **Pick a starting point:** choose one on the start screen. The guide picks up from the next step once you have.
 2. **Change the words:** click any text on the stage and type your own in the Inspector. Pictures change the same way.
 3. **Watch it play:** press play or the Space bar. The timeline shows when each part arrives.
 4. **Export it:** plain HTML for a web page, or a video for Reels, TikTok, Shorts or YouTube.

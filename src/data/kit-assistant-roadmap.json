@@ -237,6 +237,37 @@
           "progress": null
         }
       ]
+    },
+    {
+      "id": "a5-claude-app",
+      "title": "Phase 5 — Works like the Claude app",
+      "goal": "People already know how to use the Claude app, so the dashboard chat should work the same way, starting with Kinetic Scenes. The full experience needs Claude Code on the person's own subscription; small local models keep chat and `/` commands. One Confirm approves a whole request inside one project, and rendering, pushing and live sites still never happen on their own.",
+      "tasks": [
+        {
+          "id": "a5-projects",
+          "title": "Work on a project from the chat",
+          "detail": "Pick a Kinetic Scenes project and ask for a change. The chat runs the project agent the Studio already has, shows its steps live, can be stopped, and ends with the preview link. A snapshot of the scene is taken before each run.",
+          "status": "planned"
+        },
+        {
+          "id": "a5-conversations",
+          "title": "Conversations",
+          "detail": "A sidebar of saved conversations, one for each project, so New chat no longer wipes the only history.",
+          "status": "planned"
+        },
+        {
+          "id": "a5-live",
+          "title": "Live replies and Stop",
+          "detail": "Replies appear as they are written, and a Stop button ends a turn. Today the panel shows \"thinking\" and then the whole answer.",
+          "status": "planned"
+        },
+        {
+          "id": "a5-preview",
+          "title": "Scene preview beside the chat",
+          "detail": "The scene being worked on plays in a panel beside the conversation, like the Claude app's side panel.",
+          "status": "planned"
+        }
+      ]
     }
   ],
   "detected": true,

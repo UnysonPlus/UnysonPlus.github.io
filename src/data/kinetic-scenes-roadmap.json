@@ -1274,9 +1274,40 @@
           "status": "done"
         }
       ]
+    },
+    {
+      "id": "p24-jumpstart",
+      "title": "Phase 24 — A jumpstart for every video",
+      "goal": "One screen that asks what you want to make, so nobody has to know which menu holds what, and new kinds of video that start from it. It shares its Create button with the Kit Assistant, so the Studio and the chat run the same project agent.",
+      "tasks": [
+        {
+          "id": "p24-start-screen",
+          "title": "The start screen",
+          "detail": "What do you want to make today? Describe an idea, or start from a website, a long video, a video you like, a screen recording, a spreadsheet, a template, an empty scene or a saved file, with recent projects beside them. An idea or a website goes through one step for format, length and style. It says what each option still needs, opens with the Studio unless turned off, stays out of the way of project links and page editors, and never overwrites an open project.",
+          "status": "done"
+        },
+        {
+          "id": "p24-keep-request",
+          "title": "Requests keep what came with them",
+          "detail": "Choosing one of the three directions used to send only the words, losing a website's real content or the settings from a video you like. Directions and plans now keep everything that came with the request.",
+          "status": "done"
+        },
+        {
+          "id": "p24-create-agent",
+          "title": "Create runs the project agent",
+          "detail": "Create starts a project and runs the agent in it, with steps shown live and a Stop button, as the Kit Assistant will. One Create or Confirm approves the whole request: the agent edits only that project's folder, a snapshot of the scene is taken first, and rendering, pushing and live sites never happen on their own. Voice-over and music join the start screen's step here.",
+          "status": "planned"
+        },
+        {
+          "id": "p24-paper",
+          "title": "Paper cut-out explainers",
+          "detail": "A new start option and motion style: layered construction paper, a parallax camera, cuts such as tear-away, tape-pull and page-turn, captions on torn paper tags, and a script built on a topic acted out as a physical metaphor. Built on our own player and presets, using open sound effects and textures where they fit.",
+          "status": "planned"
+        }
+      ]
     }
   ],
-  "extensionVersion": "0.1.21",
+  "extensionVersion": "0.1.22",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

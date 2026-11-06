@@ -545,15 +545,16 @@ that would be rude:
 
 - Every warm request is marked **low priority**, so the browser schedules it behind anything
   the reader is actually waiting for. It cannot slow down the page it is running on.
-- It starts at the page's `load` event, or after about 2.5 seconds, **whichever comes first**.
+- It starts at the page's `load` event, or after about 1.2 seconds, **whichever comes first**.
   The timeout matters more than it sounds: on a page where something holds `load` open — a hero
   carousel that keeps fetching slides will do it — waiting for `load` alone means warming begins
   long after the reader has already scrolled. Measured on a real site, `load` did not fire until
   **12.6 seconds**.
 - **Save-Data and 2G visitors are skipped entirely.** Someone on a metered connection who has
   asked the browser to economise does not get speculative downloads.
-- **One image at a time.** Not a burst — each finishes before the next starts, so the connection
-  stays available.
+- **A few at a time** (four), not the whole page at once. Low priority is what keeps it polite;
+  trickling them one-by-one on top of that only meant warming finished *after* the reader had
+  already scrolled, which is the one way this feature fails.
 - It stops after **24 images**, which covers a long page without turning a 200-image archive
   into a download.
 - Images the browser has already loaded are skipped.
@@ -568,6 +569,14 @@ about the first screen and interaction.
 
 Turn this on for readers on a long, image-heavy page. Do not turn it on to chase a score; they
 are different jobs.
+
+### There is a floor
+
+Warming cannot start before the first screen is done, so a reader who scrolls within the first
+second is still ahead of it. Measured on a real eleven-image page (median of three runs, counting
+images the scroll had to fetch on demand): scrolling at **3 seconds** went from 10 to **0**, and at
+**2 seconds** from 11 to **3**. At **1 second** it makes little difference — nothing has had time
+to warm yet, and starting earlier would compete with the content on screen.
 
 ### Why it does not simply make the images eager
 
@@ -586,7 +595,8 @@ finally reaches it, the browser makes its own choice and finds it already in cac
 
 :::tip[Advanced]
 `fw:ext:asset-optimizer:warm_images_max` changes the 24-image cap, and
-`fw:ext:asset-optimizer:warm_images_delay` the 2500&nbsp;ms fallback start.
+`fw:ext:asset-optimizer:warm_images_delay` the 1200&nbsp;ms fallback start, and
+`fw:ext:asset-optimizer:warm_images_concurrency` how many warm at once (4).
 :::
 
 ## Instant navigation

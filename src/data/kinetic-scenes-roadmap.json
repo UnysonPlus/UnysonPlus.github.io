@@ -1315,11 +1315,29 @@
           "title": "Drop with physics",
           "detail": "Selected layers fall, bounce, knock into each other and settle like real objects (Matter.js). The motion is worked out once and saved as ordinary keyframes, so it scrubs, exports and edits like any animation and the player stays as it is. Agents get it as the scene_physics tool.",
           "status": "done"
+        },
+        {
+          "id": "p24-listen",
+          "title": "Second listener",
+          "detail": "Gemini hears a scene's sound before any render, on the person's own key, and gives timed notes on how it comes across. Agents can also send a finished video. Nothing goes without the person's say-so each time.",
+          "status": "done"
+        },
+        {
+          "id": "p24-paste-link",
+          "title": "Paste a link",
+          "detail": "Paste a video link to make one like it, or to learn its rhythm only. The source is studied and then deleted, never reused, and captions are read first.",
+          "status": "planned"
+        },
+        {
+          "id": "p24-video-watch",
+          "title": "Watch a video",
+          "detail": "A video_watch tool for agents, with a frame budget, a focus range and frames pinned to cues.",
+          "status": "planned"
         }
       ]
     }
   ],
-  "extensionVersion": "0.1.26",
+  "extensionVersion": "0.1.27",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

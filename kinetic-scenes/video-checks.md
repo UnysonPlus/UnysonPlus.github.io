@@ -7,6 +7,10 @@ keywords: [kinetic scenes, video check, timeline, voice-over, best take, talking
 
 # Checks and clean-up for videos
 
+:::tip
+These tools measure a video. For an opinion on how the voice comes across, use the [second listener](./second-listener.md).
+:::
+
 These tools come with the [AI Dev Kit](/ai-dev-kit) and run on your computer. Your AI agent uses them while it makes a
 video in a [project](./ai-agents.md#projects); you can run them yourself from the kit's `tools/design-capture` folder with
 `node studio-cli.mjs …`. Nothing is uploaded.

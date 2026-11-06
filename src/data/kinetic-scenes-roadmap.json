@@ -1323,6 +1323,12 @@
           "status": "done"
         },
         {
+          "id": "p24-whats-new",
+          "title": "What's new",
+          "detail": "New features are listed on the start screen and in Help › What's new, with New tags on the menus until the list is opened. Features also show up where they're needed: the second listener above Render video, Drop with physics when layers are selected, and Make it hand-drawn on a shape.",
+          "status": "done"
+        },
+        {
           "id": "p24-paste-link",
           "title": "Paste a link",
           "detail": "Paste a video link to make one like it, or to learn its rhythm only. The source is studied and then deleted, never reused, and captions are read first.",
@@ -1337,7 +1343,7 @@
       ]
     }
   ],
-  "extensionVersion": "0.1.27",
+  "extensionVersion": "0.1.28",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

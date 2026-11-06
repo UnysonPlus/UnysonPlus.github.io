@@ -10,7 +10,7 @@ keywords: [kinetic scenes start screen, make a reel from a website, video wizard
 When you open the Studio, it asks **What do you want to make today?** Every way to begin is on this one screen, so you
 don't have to know which menu holds what.
 
-<img src="/img/kinetic-scenes/start-screen.png" alt="The start screen: a Describe it box, eight ways to start, and recent projects on the right" width="1040" />
+<img src="/img/kinetic-scenes/start-screen.png" alt="The start screen: a Describe it box, the ways to start, and on the right your recent work and what's new" width="1000" />
 
 Open it at any time with **File › Start something new**.
 
@@ -84,6 +84,25 @@ To carry on with the scene in front of you, click its name, press <kbd>Esc</kbd>
   exactly as it was. The new scene is kept in this browser until you save it as a project.
 - **A scene that isn't in a project** is replaced, and **Undo** brings it back.
 - Choosing **A spreadsheet** keeps your scene, because the spreadsheet fills that design.
+
+## What's new
+
+The start screen lists the newest features under **New**. Click one, or **See what's new**, to open the full list. You can
+also open it at any time with **Help › What's new**.
+
+Each feature has a short description and a **Read more** link. Most also have a **Try it** button that opens the feature.
+
+Until you open the list, a dot shows on the **Tools** and **Help** menus and a **New** tag shows beside the new tools. Both
+go away once you've opened it, and they come back when there's more news. This is remembered in your browser, so a
+different browser or a private window shows them again.
+
+You'll also find these features where you need them:
+
+| Feature | Where it shows up |
+|---|---|
+| [Second listener](./second-listener.md) | Above **Render video** in **Export**, when the scene has a voice-over. Also on a selected voice clip, and in **Tools**. |
+| [Drop with physics](./sketch-and-physics.md#drop-with-physics) | In the Inspector when two or more layers are selected, and in **Tools**. |
+| [Hand-drawn](./sketch-and-physics.md#hand-drawn) | **Make it hand-drawn** on a selected shape, and in the Ambient presets. |
 
 ## When it opens
 

@@ -51,6 +51,8 @@ From the Studio, only the sound is sent, along with the script if the scene has 
 
 To replace or remove your key, click **Change key**.
 
+You can also open it from a selected voice clip, or from the line above **Render video** in **Export**.
+
 ## What it reports
 
 You get a short summary, then notes in time order. Each note has:

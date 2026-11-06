@@ -16,8 +16,11 @@ Both play the same on every viewing and export, so what you preview is what you 
 
 ## Hand-drawn
 
-**Hand-drawn** is a preset in the Ambient group, for shape layers. Add it to a rectangle or circle and run the clip for
-the whole layer. Each shape keeps its own scribble, and it uses the layer's fill colour unless you choose another.
+Select a rectangle or circle and click **Make it hand-drawn** in the Inspector. That adds a **Hand-drawn** clip that runs
+for the whole scene, and the button goes away. Select the clip to change the options below.
+
+You can also add it yourself from the Ambient presets. If you do, run the clip for the whole layer. Each shape keeps its
+own scribble, and it uses the layer's fill colour unless you choose another.
 
 | Option | What it does | Default |
 |---|---|---|
@@ -36,7 +39,7 @@ the whole layer. Each shape keeps its own scribble, and it uses the layer's fill
 
 1. Select the layers to drop. Hold Shift or Ctrl and click them on the timeline.
 2. Move the playhead to where they should start.
-3. Choose **Tools › Drop with physics**.
+3. Click **Drop with physics…** in the Inspector, or choose **Tools › Drop with physics**.
 4. Set the options, then click **Drop them**.
 
 | Option | What it does | Default |

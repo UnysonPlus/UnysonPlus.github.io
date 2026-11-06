@@ -91,6 +91,39 @@ So the *feel* is the same — familiar fractions — while the *output* is clean
 | Insert Section → Flexbox | The header **Insert Section** picker now builds modern **Flexbox** layouts (Equal Columns, Offset & Sidebar, Multi-Row, Multi-Column); only its **Masonry** tab still inserts a classic `masonry_section`. | 🟢 Shipped |
 | Columns as Grid | Drop cells into a Grid Div; fractions become grid spans (`1/3` → `span 4`). | 🟡 In progress |
 | Live Editor parity | The modern layout tiles + Div inserts now work in the front-end **Live Page Editor** too, matching the backend builder. | 🟡 In progress |
+| Sticky elements | A **Sticky** switch so an element stays in view while the content beside it scrolls. [Plan below](#sticky-elements). | ⚪ Planned |
+
+### Sticky elements {#sticky-elements}
+
+**The need.** A common layout is an image or map beside a long column of text. Today the shorter side either sits
+centred, leaving a large gap, or scrolls away while the text carries on. It should start level with the heading and
+stay in view until the end of the section. There is no setting for this yet: the Column element's old **Position**
+select, which included **Sticky**, is commented out in its `options.php`, so it never shows in the builder. A site
+needs Custom CSS to do it.
+
+**This is not Scrollytelling.** Scrollytelling pins a section and moves through scenes. Sticky never holds the page
+back: the wheel keeps scrolling normally, and only the element stays in place.
+
+**What to build**
+
+- A **Sticky** switch on the **Layout** tab of every direct child of a Grid or Flexbox Div, and on the Classic Column.
+- **Top offset** (default about 120px), so the element clears a fixed header. It should follow the site's header
+  height where that is known.
+- **Sticky from** a breakpoint (default: desktop). Below it the element behaves normally and stacks with the rest.
+- Turning it on also aligns the element to the top of its row (`align-self: start`), because a stretched or centred
+  element has no room to travel.
+
+**Things to get right**
+
+- Output a real class on the element in the page HTML, with the rule in the element's stylesheet, so the Asset
+  Optimizer's unused-CSS removal keeps it. No JavaScript is needed.
+- Warn in the builder when a parent has `overflow: hidden` or a transform, which stop sticky from working.
+- Sticky and a scroll effect on the same element conflict: warn, or switch the scroll effect off.
+- If the element is taller than the screen, its bottom can never be seen, so turn sticky off or limit its height.
+- Check that the mouse wheel still scrolls the page while the pointer is over an embedded map or video.
+
+**Done means:** the switch works in the backend builder and the Live Page Editor, existing pages are unchanged, and
+it ships with a demo section, the kit's element docs and full public docs.
 
 ## Your existing pages {#your-existing-pages}
 

@@ -1303,11 +1303,23 @@
           "title": "Paper cut-out explainers",
           "detail": "A new start option and motion style: layered construction paper, a parallax camera, cuts such as tear-away, tape-pull and page-turn, captions on torn paper tags, and a script built on a topic acted out as a physical metaphor. Built on our own player and presets, using open sound effects and textures where they fit.",
           "status": "done"
+        },
+        {
+          "id": "p24-sketch",
+          "title": "Hand-drawn shapes",
+          "detail": "A Hand-drawn preset redraws shapes in wobbly pencil with scribbled, cross-hatched, zigzag or dotted fills (Rough.js), the same on every play and export, with an optional flip-book jitter. A Sketchbook motion style is built around it.",
+          "status": "done"
+        },
+        {
+          "id": "p24-physics",
+          "title": "Drop with physics",
+          "detail": "Selected layers fall, bounce, knock into each other and settle like real objects (Matter.js). The motion is worked out once and saved as ordinary keyframes, so it scrubs, exports and edits like any animation and the player stays as it is. Agents get it as the scene_physics tool.",
+          "status": "done"
         }
       ]
     }
   ],
-  "extensionVersion": "0.1.24",
+  "extensionVersion": "0.1.25",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

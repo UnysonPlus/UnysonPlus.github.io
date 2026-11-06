@@ -40,20 +40,36 @@ features, do it in a few minutes, no code unless noted. New to the builder? Star
 
 - [Set global colors and fonts](./global-colors-and-fonts.md)
 - [Create a custom post type without code](./custom-post-type.md)
-- [Convert an existing website to WordPress](/guides/convert-website-to-wordpress)
-- [Convert an AI-generated static HTML site to WordPress](/guides/convert-ai-generated-html-to-wordpress)
-  — the pillar guide, plus AI-builder paths:
-  [Google Stitch →](/guides/convert-google-stitch-to-wordpress) ·
-  [Lovable →](/guides/convert-lovable-to-wordpress) ·
-  [Wegic →](/guides/convert-wegic-to-wordpress)
-- Move off a hosted site builder:
-  [Webflow →](/guides/convert-webflow-to-wordpress) ·
-  [Wix →](/guides/convert-wix-to-wordpress) ·
-  [Squarespace →](/guides/convert-squarespace-to-wordpress) ·
-  [Framer →](/guides/convert-framer-to-wordpress)
-- [Convert a site to WordPress with an AI agent (Claude)](/guides/convert-site-to-wordpress-with-ai)
-  — let Claude run the conversion and refine it until it matches the source (for when the automatic
-  convert isn't pixel-perfect).
+
+## Build or move a site into WordPress
+
+**Fastest free way to a WordPress site?** Design or generate it in the tool you're quickest in, then
+bring it in for free — **[Build a free WordPress site fast](/guides/build-a-free-wordpress-site-fast)**.
+
+- **From a design or AI builder** —
+  [Figma](/guides/convert-figma-to-wordpress) ·
+  [Adobe XD](/guides/convert-xd-to-wordpress) ·
+  [Base44](/guides/convert-base44-to-wordpress) ·
+  [OpenHero](/guides/convert-openhero-to-wordpress) ·
+  [Durable](/guides/convert-durable-to-wordpress) ·
+  [Bolt](/guides/convert-bolt-to-wordpress) ·
+  [v0](/guides/convert-v0-to-wordpress) ·
+  [Lovable](/guides/convert-lovable-to-wordpress) ·
+  [Wegic](/guides/convert-wegic-to-wordpress) ·
+  [Google Stitch](/guides/convert-google-stitch-to-wordpress) ·
+  [Replit](/guides/convert-replit-to-wordpress) ·
+  [Cursor](/guides/convert-cursor-to-wordpress) ·
+  [ChatGPT](/guides/convert-chatgpt-to-wordpress)
+- **Move off a hosted platform** —
+  [Webflow](/guides/convert-webflow-to-wordpress) ·
+  [Wix](/guides/convert-wix-to-wordpress) ·
+  [Squarespace](/guides/convert-squarespace-to-wordpress) ·
+  [Framer](/guides/convert-framer-to-wordpress)
+- **From raw HTML/CSS, or any existing website** —
+  [AI-generated HTML (the pillar)](/guides/convert-ai-generated-html-to-wordpress) ·
+  [any website](/guides/convert-website-to-wordpress)
+- **Hands-off** — [let an AI agent convert and refine it (Claude)](/guides/convert-site-to-wordpress-with-ai),
+  for when the automatic convert isn't pixel-perfect.
 
 ---
 

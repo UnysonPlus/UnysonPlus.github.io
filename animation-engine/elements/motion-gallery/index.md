@@ -94,6 +94,15 @@ don't see it.
   them apart — and **Zigzag Offset** pushes the off-centre cards alternately up and down (left/right when
   vertical), in an **Alternate** or **Fixed** pattern.
 
+**Isometric**
+
+- **Tilt Deck** — your photos lie flat on an isometric ground plane in a grid (**Columns × Depth**) and
+  march diagonally across it. The tile passing through the focus point **lifts off the plane, rotates flat
+  to face you and brightens** (**Focus Lift** / **Focus Brightness**), then settles back as the next one
+  rises; tiles toward the back dim (**Depth Fade**). **Iso Tilt** sets how steeply the plane leans away —
+  lower reads flatter, higher is a steeper top-down isometric. Set **Focus Lift** to 0 for a pure flat
+  isometric grid with no pop. Runs on Continuous, Scroll-scrub or Static.
+
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.
 

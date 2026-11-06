@@ -1302,12 +1302,12 @@
           "id": "p24-paper",
           "title": "Paper cut-out explainers",
           "detail": "A new start option and motion style: layered construction paper, a parallax camera, cuts such as tear-away, tape-pull and page-turn, captions on torn paper tags, and a script built on a topic acted out as a physical metaphor. Built on our own player and presets, using open sound effects and textures where they fit.",
-          "status": "planned"
+          "status": "done"
         }
       ]
     }
   ],
-  "extensionVersion": "0.1.23",
+  "extensionVersion": "0.1.24",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

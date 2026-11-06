@@ -55,6 +55,30 @@ Studies repeatedly find most visitors only ever see the first slide, so don't bu
 | **Transition** | Slide, Fade (with Fade, Loop goes back to the first slide) |
 | **Slow Zoom** | On/Off — background images drift slowly closer while their slide shows |
 
+### What autoplay does when nobody is watching
+
+Two things happen automatically, and neither is an option you need to set.
+
+**An off-screen carousel stops advancing.** This matters more than it sounds, because slides
+after the first are only fetched when the carousel reaches them. An autoplaying hero therefore
+keeps pulling full-bleed photos for as long as the page is open — including long after the
+reader has scrolled well past it — and those downloads queue ahead of the images further down
+the page that the reader is actually scrolling toward. On a measured site the hero carousel
+accounted for **1.6 MB against 260 KB for every other image on the page**, with slides still
+arriving ten seconds in while the reader was several screens down.
+
+So once the carousel leaves the viewport it pauses, and resumes if the reader comes back. A
+visitor who scrolls straight past a five-slide hero now fetches two slides instead of five.
+Nobody sees a difference — the animation they were not watching is simply not happening.
+
+**A visitor who has asked for reduced motion gets no autoplay at all.** If their system is set
+to *Reduce motion*, the carousel holds on the first slide. Arrows, dots and swiping all still
+work, so nothing becomes unreachable — this is what [WCAG 2.2.2](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html)
+asks for from anything that moves on its own.
+
+Both behaviours need no configuration and have no setting to turn off. On a browser without
+`IntersectionObserver` the carousel simply behaves as it always did.
+
 ## Use as a section background
 
 Turn on **Layout → Use as Section Background** and the carousel fills the whole Section it sits in,

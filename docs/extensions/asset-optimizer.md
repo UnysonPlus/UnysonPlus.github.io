@@ -514,6 +514,75 @@ together — each script is shrunk on its own rather than all of them together �
 slightly larger, and you should turn it off again when you are done. The companion file is publicly
 readable and names script paths relative to your WordPress folder.
 
+## Load below-the-fold images early
+
+Lazy loading is the right default, but it has a visible cost on a long page: an image is not
+requested until the reader scrolls near it, so the picture drops into an empty slot a beat
+*after* the text around it. People read that as a slow site, and they are not wrong to — it
+looks broken for a moment.
+
+The surprise is that this usually has nothing to do with how big the images are. Measured on a
+real page, scrolled at a normal reading pace on a throttled connection:
+
+```
+ 13.9s     9 KB   first content image REQUESTED      ← 175 ms to arrive
+ 14.2s     9 KB   second
+ 15.1s    12 KB   third
+ 18.9s    36 KB   fourth
+```
+
+Every one of those took under 200 ms to download. The reader waited nearly fourteen seconds for
+the first of them, not because it was slow but **because nothing had asked for it yet**.
+
+This setting fills that gap. Once the page has finished loading, during an idle moment, the
+remaining images are fetched quietly in the background. By the time anyone scrolls down, the
+browser already has them and the picture is simply there.
+
+### How cautious it is
+
+This spends a visitor's bandwidth on images they may never scroll to, so it holds back wherever
+that would be rude:
+
+- It waits for the page's `load` event, then for an idle moment — it never competes with the
+  content someone is already waiting for.
+- **Save-Data and 2G visitors are skipped entirely.** Someone on a metered connection who has
+  asked the browser to economise does not get speculative downloads.
+- **One image at a time.** Not a burst — each finishes before the next starts, so the connection
+  stays available.
+- It stops after **24 images**, which covers a long page without turning a 200-image archive
+  into a download.
+- Images the browser has already loaded are skipped.
+
+### It will not change your PageSpeed score
+
+Worth being plain about: **Lighthouse never scrolls the page.** Your below-the-fold images
+therefore never load during an audit whether this is on or off, so the number will not move —
+and the bytes now land inside the measurement window, which if anything counts very slightly
+against you. The field data in PageSpeed will not move either, because LCP, INP and CLS are all
+about the first screen and interaction.
+
+Turn this on for readers on a long, image-heavy page. Do not turn it on to chase a score; they
+are different jobs.
+
+### Why it does not simply make the images eager
+
+The obvious implementation would be to flip the remaining images from `loading="lazy"` to
+`eager` and let the browser get on with it. That would be a bug.
+
+WordPress emits `sizes="auto"` on lazy images, and `auto` is **only valid together with
+`loading="lazy"`**. The moment such an image stopped being lazy, its `sizes` would become
+invalid and the browser would fall back to `100vw` — fetching the *largest* candidate in the
+srcset for what might be a 240px card. Strictly worse than doing nothing at all.
+
+So this leaves every attribute exactly as it is and warms a separate request instead, choosing
+the same srcset candidate the browser would have chosen (the smallest one at least as wide as
+the slot, allowing for device pixel ratio). The image element is untouched; when the reader
+finally reaches it, the browser makes its own choice and finds it already in cache.
+
+:::tip[Advanced]
+`fw:ext:asset-optimizer:warm_images_max` changes the 24-image cap.
+:::
+
 ## Instant navigation
 
 Click an internal link on most WordPress sites and you wait. The browser asks the server for the

@@ -57,10 +57,17 @@ The module ships with the engine and loads its runtime **only** on pages that ac
 
 The clip wipes are pure **CSS `clip-path`**: the element starts clipped (per direction) and the runtime adds an `is-in` class when the layout box scrolls into view, transitioning the clip to full. (A plain IntersectionObserver can't be used — a zero-area clip reports ratio 0 — so a passive, rAF-throttled scroll check on the *layout* box is used instead.)
 
-The wipe **starts before the element reaches the screen** — about 1.6 viewport-heights down — so
-that by the time you are looking at it, it is well advanced or already finished. This is the
+The wipe **starts before the element reaches the screen**, and how far before depends on how long
+the wipe itself takes — a 1.3s wipe is given roughly twice the head start of a 0.6s one — so that by
+the time you are looking at it, it is well advanced or already finished. This is the
 difference between an effect and a defect: trigger it only once the element is fully in view and
 the reader arrives at a blank box and watches it open, which looks exactly like a broken image.
 Measured on a real page, moving the trigger from the old value to this one took samples that were
 still less than a quarter revealed on arrival from 9 (out of 46) to **none**, while still catching
-17 of 46 part-way through, so the effect is plainly visible on an unhurried scroll. **Pixelate In** draws the `<img>` onto a `<canvas>` with image-smoothing off and steps the resolution up. Everything honours **reduce motion** (the element is shown instantly, fully revealed).
+17 of 46 part-way through, so the effect is plainly visible on an unhurried scroll. Scaling the head
+start with the duration then cleared the remainder: on a page using 1.2–1.3s wipes, an ordinary
+mouse-wheel scroll went from 1 blank and 5 half-open images to **none of either**.
+
+One limit worth knowing: if you *fling* the page — scrolling several screens a second — no amount of
+head start can finish a wipe that takes well over a second, and some elements will still be caught
+opening. If that matters for your site, a shorter **Duration** is the fix, not a longer runway. **Pixelate In** draws the `<img>` onto a `<canvas>` with image-smoothing off and steps the resolution up. Everything honours **reduce motion** (the element is shown instantly, fully revealed).

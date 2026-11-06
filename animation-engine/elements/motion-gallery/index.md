@@ -102,6 +102,22 @@ don't see it.
   rises; tiles toward the back dim (**Depth Fade**). **Iso Tilt** sets how steeply the plane leans away —
   lower reads flatter, higher is a steeper top-down isometric. Set **Focus Lift** to 0 for a pure flat
   isometric grid with no pop. Runs on Continuous, Scroll-scrub or Static.
+- **Iso Orbit** — your photos ride a ring lying flat on an isometric floor and **revolve** around its
+  centre. The tile at the near point of the orbit **lifts off the plane, rotates flat to face you and
+  brightens** (**Focus Lift** / **Focus Brightness**), then settles back as it carries on round; the far
+  side dims (**Depth Fade**). **Orbit Size** sets the radius and **Iso Tilt** how steeply the floor leans.
+  Spins Clockwise or Counter-clockwise, scrubs on scroll, or holds Static.
+- **Iso Stack** — your photos are stacked into a **tower rising off the isometric floor** on a gentle
+  spiral. As the slabs stream upward, the one passing through the focus height **lifts to face you and
+  brightens** (**Focus Lift** / **Focus Brightness**), then flattens again as it carries on up and
+  recycles; slabs toward the bottom dim (**Depth Fade**). **Stack Gap** sets how tall and airy the tower
+  is and **Spiral** how much it twists (0 is a straight vertical stack). Streams Up or Down, scrubs on
+  scroll, or holds Static.
+- **Iso Cascade** — your photos **descend a diagonal staircase** across the isometric floor: high and
+  far at the back, stepping down and toward you. The tile reaching the front of the cascade **lifts flat
+  to face you and brightens** (**Focus Lift** / **Focus Brightness**), then recycles to the back; tiles
+  toward the back dim (**Depth Fade**). **Spread** sets how far the staircase reaches across the floor
+  and **Rise** how tall it is. Cascades Down or Up, scrubs on scroll, or holds Static.
 
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.

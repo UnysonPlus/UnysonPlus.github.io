@@ -543,8 +543,13 @@ browser already has them and the picture is simply there.
 This spends a visitor's bandwidth on images they may never scroll to, so it holds back wherever
 that would be rude:
 
-- It waits for the page's `load` event, then for an idle moment — it never competes with the
-  content someone is already waiting for.
+- Every warm request is marked **low priority**, so the browser schedules it behind anything
+  the reader is actually waiting for. It cannot slow down the page it is running on.
+- It starts at the page's `load` event, or after about 2.5 seconds, **whichever comes first**.
+  The timeout matters more than it sounds: on a page where something holds `load` open — a hero
+  carousel that keeps fetching slides will do it — waiting for `load` alone means warming begins
+  long after the reader has already scrolled. Measured on a real site, `load` did not fire until
+  **12.6 seconds**.
 - **Save-Data and 2G visitors are skipped entirely.** Someone on a metered connection who has
   asked the browser to economise does not get speculative downloads.
 - **One image at a time.** Not a burst — each finishes before the next starts, so the connection
@@ -580,7 +585,8 @@ the slot, allowing for device pixel ratio). The image element is untouched; when
 finally reaches it, the browser makes its own choice and finds it already in cache.
 
 :::tip[Advanced]
-`fw:ext:asset-optimizer:warm_images_max` changes the 24-image cap.
+`fw:ext:asset-optimizer:warm_images_max` changes the 24-image cap, and
+`fw:ext:asset-optimizer:warm_images_delay` the 2500&nbsp;ms fallback start.
 :::
 
 ## Instant navigation

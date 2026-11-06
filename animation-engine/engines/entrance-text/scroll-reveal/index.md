@@ -37,7 +37,11 @@ The module ships with the engine and loads its runtime **only** on pages that ac
 
 **Clip wipes** share four options:
 
-- **Duration (s)** — how long the wipe takes (0.2–2s).
+- **Duration (s)** — how long the wipe takes (0.2–2s). The default is **0.7s**, and that is
+  deliberately brisk: a long wipe means a longer stretch where the element is still mostly
+  clipped, and on a photo that reads as *an image that hasn't loaded* rather than as an effect.
+  If you push this past about a second, scroll the page afterwards and check how it feels on
+  arrival, not just in the editor.
 - **Delay (s)** — wait after the element enters view before it starts.
 - **Easing** — Ease / Ease Out / Ease In Out / Linear / Smooth-out (default) / Overshoot.
 - **Replay on scroll** — re-run the wipe every time the element re-enters the viewport (otherwise it plays once).
@@ -51,4 +55,12 @@ The module ships with the engine and loads its runtime **only** on pages that ac
 
 ## How it works
 
-The clip wipes are pure **CSS `clip-path`**: the element starts clipped (per direction) and the runtime adds an `is-in` class when the layout box scrolls into view, transitioning the clip to full. (A plain IntersectionObserver can't be used — a zero-area clip reports ratio 0 — so a passive, rAF-throttled scroll check on the *layout* box is used instead.) **Pixelate In** draws the `<img>` onto a `<canvas>` with image-smoothing off and steps the resolution up. Everything honours **reduce motion** (the element is shown instantly, fully revealed).
+The clip wipes are pure **CSS `clip-path`**: the element starts clipped (per direction) and the runtime adds an `is-in` class when the layout box scrolls into view, transitioning the clip to full. (A plain IntersectionObserver can't be used — a zero-area clip reports ratio 0 — so a passive, rAF-throttled scroll check on the *layout* box is used instead.)
+
+The wipe **starts before the element reaches the screen** — about 1.6 viewport-heights down — so
+that by the time you are looking at it, it is well advanced or already finished. This is the
+difference between an effect and a defect: trigger it only once the element is fully in view and
+the reader arrives at a blank box and watches it open, which looks exactly like a broken image.
+Measured on a real page, moving the trigger from the old value to this one took samples that were
+still less than a quarter revealed on arrival from 9 (out of 46) to **none**, while still catching
+17 of 46 part-way through, so the effect is plainly visible on an unhurried scroll. **Pixelate In** draws the `<img>` onto a `<canvas>` with image-smoothing off and steps the resolution up. Everything honours **reduce motion** (the element is shown instantly, fully revealed).

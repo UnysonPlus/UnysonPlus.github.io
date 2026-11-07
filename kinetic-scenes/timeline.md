@@ -9,6 +9,8 @@ description: Clips, groups and acts, scene transitions, keyframes and custom cur
 Everything in a scene happens on one timeline. Every frame is a pure function of time: nothing is random between plays
 and nothing runs in real time, so you can scrub to any moment and see exactly what a visitor (or a video) will show.
 
+To move through the scene, drag along the ruler at the top of the timeline, or drag the green playhead line itself. Your rows stay where they are while you drag, and the playhead's head stays in the ruler however far down you've scrolled.
+
 <img src="/img/kinetic-scenes/timeline.png" alt="The timeline: layers and their clips, audio, the camera row and markers" width="1348" />
 
 ## Clips

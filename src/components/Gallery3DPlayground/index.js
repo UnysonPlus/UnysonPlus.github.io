@@ -395,9 +395,41 @@ const DESIGNS = {
         dirChoices: [['left', 'Left'], ['right', 'Right']]}),
     ],
   },
+  orbit_bloom: {
+    group: 'Orbit',
+    label: 'Orbit Bloom',
+    blurb: 'A ring of billboarded photos that orbits a tilted disc and breathes — blooming from a tight central cluster out to a wide ring and back, cards fading and growing as they open. Bloom 0 = a steady ring.',
+    controls: [
+      sl('radius', 'Ring Size (%)', 32, 10, 60),
+      sl('tilt', 'Ring Tilt (°)', 58, 0, 80),
+      sl('bloom', 'Bloom (%)', 70, 0, 100),
+      sl('focus_glow', 'Focus Brightness (%)', 130, 100, 220),
+      sl('depth_fade', 'Depth Fade (%)', 45, 0, 100),
+      sl('card_size', 'Card Size (%)', 16, 4, 60),
+      ...SHARED({drive: 'continuous', speed: 22, ratio: '1-1', corner: 6, dir: 'cw',
+        driveChoices: [['continuous', 'Continuous'], ['static', 'Static']],
+        dirChoices: [['cw', 'Clockwise'], ['ccw', 'Counter-clockwise']]}),
+    ],
+  },
+  focus_orbit: {
+    group: 'Orbit',
+    label: 'Focus Orbit',
+    blurb: 'Photos orbit a tilted disc; the card reaching the front pulls into the centre, lifts toward you and enlarges into a hero, then returns to the ring as the next takes its place. Hero Pull 0 = an even revolve.',
+    controls: [
+      sl('radius', 'Ring Size (%)', 36, 10, 55),
+      sl('tilt', 'Ring Tilt (°)', 30, 0, 80),
+      sl('hero', 'Hero Pull (%)', 70, 0, 100),
+      sl('focus_glow', 'Focus Brightness (%)', 150, 100, 240),
+      sl('depth_fade', 'Depth Fade (%)', 45, 0, 100),
+      sl('card_size', 'Card Size (%)', 15, 4, 60),
+      ...SHARED({drive: 'continuous', speed: 20, ratio: '1-1', corner: 6, dir: 'cw',
+        driveChoices: [['continuous', 'Continuous'], ['static', 'Static']],
+        dirChoices: [['cw', 'Clockwise'], ['ccw', 'Counter-clockwise']]}),
+    ],
+  },
 };
 
-const GROUP_ORDER = ['3D & Perspective', 'Carousel & Flow', 'Isometric'];
+const GROUP_ORDER = ['3D & Perspective', 'Carousel & Flow', 'Isometric', 'Orbit'];
 const GROUPS = GROUP_ORDER.map((g) => [g, Object.keys(DESIGNS).filter((k) => DESIGNS[k].group === g)]);
 
 const defaultsFor = (d) => Object.fromEntries(DESIGNS[d].controls.map((c) => [c.id, c.def]));

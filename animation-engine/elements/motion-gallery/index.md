@@ -124,6 +124,19 @@ don't see it.
   **Fan Spread** opens the arc wider and **Fan Reach** sets how far the tiles sweep out from the centre.
   Sweeps Left or Right, scrubs on scroll, or holds Static.
 
+**Orbit**
+
+- **Orbit Bloom** — your photos form a ring that orbits a **tilted disc** and **breathes**: it blooms from
+  a tight central cluster out to a wide ring and back, the cards fading and growing as they open. **Bloom**
+  sets how far it contracts between breaths (0 = a steady ring), **Ring Tilt** how far the disc leans, and
+  **Ring Size** the radius. Cards nearest you are brighter; the far arc dims (**Depth Fade**). Spins
+  Clockwise/Counter-clockwise, scrubs on scroll, or holds Static.
+- **Focus Orbit** — your photos orbit a tilted disc, and the card reaching the front **pulls into the
+  centre, lifts toward you and enlarges into a hero**, then returns to the ring as the next takes its place
+  — a rolling central feature. **Hero Pull** sets how strongly the front card leaps to the centre (0 = an
+  even revolve, no hero); **Focus Brightness** highlights it. Spins Clockwise/Counter-clockwise, scrubs on
+  scroll, or holds Static.
+
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.
 

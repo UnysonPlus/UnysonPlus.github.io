@@ -218,6 +218,21 @@ export function buildScene(design, o) {
     return `<div class="tdg tdg--${design.replace(/_/g, '-')}" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__iso">${cells}</div></div></div>`;
   }
 
+  // Orbit family (orbit_bloom · focus_orbit) — billboarded cards on a tilted orbit disc (.tdg__orbit).
+  if (design === 'orbit_bloom' || design === 'focus_orbit') {
+    const ob = {
+      ...shared,
+      'data-tdg-dir': o.direction === 'ccw' ? -1 : 1,
+      'data-tdg-radius': o.radius, 'data-tdg-tilt': o.tilt, 'data-tdg-glow': o.focus_glow,
+      'data-tdg-dfade': o.depth_fade, 'data-tdg-card': o.card_size, 'data-tdg-momentum': 1,
+    };
+    if (design === 'orbit_bloom') { ob['data-tdg-bloom'] = o.bloom; } else { ob['data-tdg-hero'] = o.hero; }
+    const a = attr(ob);
+    let cells = '';
+    for (let i = 0; i < 12; i++) cells += cardHtml(SAMPLES[i % SAMPLES.length]);
+    return `<div class="tdg tdg--${design.replace(/_/g, '-')}" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__orbit">${cells}</div></div></div>`;
+  }
+
   if (design === 'card_reel') {
     // vertical cover-flow carousel — mirror card-reel.php (a loop of cards on a cylinder).
     const n = 9;

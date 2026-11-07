@@ -74,6 +74,8 @@ export function initEl(el) {
   else if (el.classList.contains('tdg--iso-stack')) { initIsoStack(el); }
   else if (el.classList.contains('tdg--iso-cascade')) { initIsoCascade(el); }
   else if (el.classList.contains('tdg--iso-fan')) { initIsoFan(el); }
+  else if (el.classList.contains('tdg--orbit-bloom')) { initOrbitBloom(el); }
+  else if (el.classList.contains('tdg--focus-orbit')) { initFocusOrbit(el); }
   else if (el.classList.contains('tdg--card-reel')) { initReel(el); }
   else if (el.classList.contains('tdg--film-strip')) { initReel(el); }
   else if (el.classList.contains('tdg--wheel-carousel')) { initWheel(el); }

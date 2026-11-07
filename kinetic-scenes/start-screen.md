@@ -10,7 +10,7 @@ keywords: [kinetic scenes start screen, make a reel from a website, video wizard
 When you open the Studio, it asks **What do you want to make today?** Every way to begin is on this one screen, so you
 don't have to know which menu holds what.
 
-<img src="/img/kinetic-scenes/start-screen.png" alt="The start screen: a Describe it box, the ways to start, and on the right your recent work and what's new" width="1000" />
+<img src="/img/kinetic-scenes/start-screen.png" alt="The start screen: a Describe it box, the ways to start, a gallery of styles, and on the right your recent work and what's new" width="1000" />
 
 Open it at any time with **File › Start something new**.
 
@@ -19,7 +19,7 @@ Open it at any time with **File › Start something new**.
 | Start from | What you get | Needs |
 |---|---|---|
 | **Describe it** | Type your idea. The AI plans and builds it. | AI assist connected |
-| **A paper cut-out explainer** | An idea acted out in a small world of cut paper. See [Paper cut-out explainers](./paper-cut-out.md). | AI assist connected, or start from its template |
+| **A style** | Pick any of the 30 styles, then describe your idea or start with a title card. See [Start from a style](#start-from-a-style). | AI assist connected, or nothing for a title card |
 | **A website** | A scene from the site's real words, colours, fonts and screenshots. | AI assist connected |
 | **A long video** | The best moments, cut into a reel. See [Make a reel](./make-a-reel.md). | The AI Dev Kit |
 | **A video you like** | Yours, made with the same structure and pacing, using your own words. Nothing from the video is copied. | The AI Dev Kit |
@@ -31,6 +31,31 @@ Open it at any time with **File › Start something new**.
 
 If something is missing, the screen says so on that option, for example **Needs the AI Dev Kit** or **Turn on AI in the
 kit**. You can still choose it: AI assist shows how to connect, and your request waits there until it can run.
+
+## Start from a style
+
+The bottom of the start screen shows every style as a picture, so you can see what each one looks like before you choose. The screen scrolls, and the header and your recent work stay in place.
+
+- **Hover over a style** to watch it play. It stops when you move away. You can also move to it with the Tab key.
+- **Use the filters** to narrow the list: **Tech and product**, **Clean and bold**, **Drawn and crafted** and **Retro and playful**. **Yours** appears when you have styles of your own.
+- **Click a style** to choose it.
+
+After you choose, you have two ways to go on:
+
+| Choice | What you get | Needs |
+|---|---|---|
+| **Create** | Describe your idea, and the AI builds it in that style. | AI assist connected |
+| **Start with a title card** | A simple opening scene in that style's colours, fonts and motion, to build on yourself. | Nothing |
+
+**Paper cut-out** opens its own step, with a template and a brief written for that style. See [Paper cut-out explainers](./paper-cut-out.md).
+
+The pictures show what each style can look like. A title card uses the style's look but starts plain, so it won't match its preview until you build on it. The same styles are in the **Styles** tab on the left, where you can also apply one to the scene you're working on.
+
+### Limits
+
+- Your own styles have no photo. They show their colours until you hover, then play their title card.
+- If your device is set to reduce motion, previews stay as pictures and don't play.
+- On a touch screen there is no hover, so you see the pictures only.
 
 ## Describing an idea or giving a website
 

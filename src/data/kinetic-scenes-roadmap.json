@@ -1329,6 +1329,12 @@
           "status": "done"
         },
         {
+          "id": "p24-style-gallery",
+          "title": "Style gallery",
+          "detail": "All 30 styles on the start screen, each with its own preview scene: a photo that plays when you hover over it, with filters. Pick one to describe an idea in it or start with a title card.",
+          "status": "done"
+        },
+        {
           "id": "p24-paste-link",
           "title": "Paste a link",
           "detail": "Paste a video link to make one like it, or to learn its rhythm only. The source is studied and then deleted, never reused, and captions are read first.",
@@ -1343,7 +1349,7 @@
       ]
     }
   ],
-  "extensionVersion": "0.1.29",
+  "extensionVersion": "0.1.30",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

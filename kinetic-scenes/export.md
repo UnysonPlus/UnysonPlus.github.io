@@ -54,7 +54,7 @@ however slow the machine.
   composite, and a **cover image**. See [Video mode](./video.md#exporting-a-video).
 
 **With the AI Dev Kit** (the default): the kit on your computer renders it in a headless browser and encodes it with
-ffmpeg, mixed to -14 LUFS. The Studio tells you how to install ffmpeg if it is missing.
+ffmpeg, mixed to -14 LUFS. If [FFmpeg](/kinetic-scenes/ffmpeg) is missing, the Export panel says so and the kit can install it with one click.
 
 **Without the kit:** where the browser can draw part of a page into a picture (HTML-in-Canvas, in Chrome behind an
 experimental setting today and on by default once it ships), Export offers **Render in this browser**: the same exact,

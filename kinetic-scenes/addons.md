@@ -45,6 +45,11 @@ kit itself closes.
 | **Blender** | Connector | Builds 3D objects from a description, for 3D layers. | Coming soon |
 | **Sound identification** | Download | Names the sounds in a clip and when each is heard (CLAP, on the processor, about 560 MB). | [Sounds in this clip](./sound.md#sounds-in-a-clip) on an audio clip |
 
+## FFmpeg
+
+The free tool behind video export, footage, captions and audio. If it isn't on your computer, this panel shows
+**Install FFmpeg**, and the same notice appears wherever a feature needs it. See [FFmpeg](/kinetic-scenes/ffmpeg).
+
 ## Voicebox
 
 [Voicebox](https://github.com/jamiepine/voicebox) is a free, open-source voice studio that clones a voice from a short

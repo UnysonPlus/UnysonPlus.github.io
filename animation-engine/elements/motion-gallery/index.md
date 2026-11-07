@@ -118,6 +118,11 @@ don't see it.
   to face you and brightens** (**Focus Lift** / **Focus Brightness**), then recycles to the back; tiles
   toward the back dim (**Depth Fade**). **Spread** sets how far the staircase reaches across the floor
   and **Rise** how tall it is. Cascades Down or Up, scrubs on scroll, or holds Static.
+- **Iso Fan** — your photos spread along a **flat arc** (a fan) on the isometric floor and **sweep**
+  across it. The tile passing the centre-front **lifts flat to face you and brightens** (**Focus Lift** /
+  **Focus Brightness**), then settles back as it sweeps on; tiles toward the edges dim (**Depth Fade**).
+  **Fan Spread** opens the arc wider and **Fan Reach** sets how far the tiles sweep out from the centre.
+  Sweeps Left or Right, scrubs on scroll, or holds Static.
 
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.

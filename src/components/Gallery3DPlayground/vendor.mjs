@@ -69,6 +69,11 @@ export function initEl(el) {
   else if (el.classList.contains('tdg--card-tunnel')) { initTunnel(el); }
   else if (el.classList.contains('tdg--spiral-stream')) { initSpiral(el); }
   else if (el.classList.contains('tdg--depth-stack')) { initDepthStack(el); }
+  else if (el.classList.contains('tdg--tilt-deck')) { initTiltDeck(el); }
+  else if (el.classList.contains('tdg--iso-orbit')) { initIsoOrbit(el); }
+  else if (el.classList.contains('tdg--iso-stack')) { initIsoStack(el); }
+  else if (el.classList.contains('tdg--iso-cascade')) { initIsoCascade(el); }
+  else if (el.classList.contains('tdg--iso-fan')) { initIsoFan(el); }
   else if (el.classList.contains('tdg--card-reel')) { initReel(el); }
   else if (el.classList.contains('tdg--film-strip')) { initReel(el); }
   else if (el.classList.contains('tdg--wheel-carousel')) { initWheel(el); }

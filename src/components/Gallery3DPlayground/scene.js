@@ -196,6 +196,28 @@ export function buildScene(design, o) {
     return `<div class="tdg tdg--depth-stack" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__depth">${cells}</div></div></div>`;
   }
 
+  // Isometric family (tilt_deck · iso_orbit · iso_stack · iso_cascade · iso_fan) — all share the
+  // .tdg__iso plane DOM; each adds its own data-tdg-* geometry. Mirrors views/designs/iso-*.php.
+  if (design === 'tilt_deck' || design === 'iso_orbit' || design === 'iso_stack' || design === 'iso_cascade' || design === 'iso_fan') {
+    const revMap = {tilt_deck: 'backward', iso_orbit: 'ccw', iso_stack: 'down', iso_cascade: 'up', iso_fan: 'right'};
+    const iso = {
+      ...shared,
+      'data-tdg-dir': o.direction === revMap[design] ? -1 : 1,
+      'data-tdg-tilt': o.iso_tilt, 'data-tdg-lift': o.lift, 'data-tdg-glow': o.focus_glow,
+      'data-tdg-dfade': o.depth_fade, 'data-tdg-card': o.card_size, 'data-tdg-momentum': 1,
+    };
+    let n;
+    if (design === 'tilt_deck') { iso['data-tdg-cols'] = o.columns; iso['data-tdg-gap'] = o.gap; n = Math.max(6, o.columns * o.depth_rows); }
+    else if (design === 'iso_orbit') { iso['data-tdg-radius'] = o.radius; n = 12; }
+    else if (design === 'iso_stack') { iso['data-tdg-gap'] = o.gap; iso['data-tdg-spiral'] = o.spiral; n = 9; }
+    else if (design === 'iso_cascade') { iso['data-tdg-spread'] = o.spread; iso['data-tdg-rise'] = o.rise; n = 10; }
+    else { iso['data-tdg-reach'] = o.reach; iso['data-tdg-arc'] = o.arc; n = 11; }
+    const a = attr(iso);
+    let cells = '';
+    for (let i = 0; i < n; i++) cells += cardHtml(SAMPLES[i % SAMPLES.length]);
+    return `<div class="tdg tdg--${design.replace(/_/g, '-')}" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__iso">${cells}</div></div></div>`;
+  }
+
   if (design === 'card_reel') {
     // vertical cover-flow carousel — mirror card-reel.php (a loop of cards on a cylinder).
     const n = 9;

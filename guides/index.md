@@ -71,6 +71,11 @@ bring it in for free — **[Build a free WordPress site fast](/guides/build-a-fr
 - **Hands-off** — [let an AI agent convert and refine it (Claude)](/guides/convert-site-to-wordpress-with-ai),
   for when the automatic convert isn't pixel-perfect.
 
+## Compare
+
+- [Unyson+ vs Elementor: a free, lightweight alternative](/guides/unysonplus-vs-elementor) — a
+  benchmarked, honest comparison.
+
 ---
 
 Stuck on something? See [Troubleshooting & FAQ](/troubleshooting). Looking for a feature

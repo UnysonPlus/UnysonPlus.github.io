@@ -26,7 +26,14 @@ let js = fs.readFileSync(path.join(PLUGIN, 'js/gallery-3d.js'), 'utf8');
 // generation-guard shim, both of which we re-provide below) so they aren't declared twice. ---
 const headAt = js.indexOf('function num(');
 if (headAt < 0) throw new Error('vendor: could not find the body head (function num()');
+const head = js.slice(0, headAt);
 js = js.slice(headAt);
+
+// Everything the stripped head declares (var / function) that the body still uses MUST be re-provided
+// in the preamble below — otherwise the playground dies at runtime with "X is not defined" (this
+// happened when the plugin added its Live Editor guard, IN_EDITOR, to the head). Checked after the
+// preamble is assembled.
+const headNames = [...new Set([...head.matchAll(/\b(?:var|function)\s+([A-Za-z_$][\w$]*)/g)].map((m) => m[1]))];
 
 // --- strip the auto-scan bootstrap tail ---
 const tailAt = js.indexOf('function scan()');
@@ -52,6 +59,13 @@ var reduce = typeof window !== 'undefined' && window.matchMedia && window.matchM
 // bumpGen() lets every previous loop die instead of piling up.
 var GEN = 0;
 export function bumpGen() { GEN++; }
+
+// Re-declare what the stripped plugin head defines and the body still uses. The playground never runs
+// inside the Live Editor frame, so IN_EDITOR is always false; CUSTOM / dashed() back the child-theme
+// design registry (unused here, but referenced by initCustom).
+var IN_EDITOR = false;
+var CUSTOM = {};
+function dashed(key) { return String(key).replace(/_/g, '-'); }
 function requestAnimationFrame(fn) {
   var g = GEN;
   return window.requestAnimationFrame(function (t) { if (g === GEN) { fn(t); } });
@@ -76,6 +90,10 @@ export function initEl(el) {
   else if (el.classList.contains('tdg--iso-fan')) { initIsoFan(el); }
   else if (el.classList.contains('tdg--orbit-bloom')) { initOrbitBloom(el); }
   else if (el.classList.contains('tdg--focus-orbit')) { initFocusOrbit(el); }
+  else if (el.classList.contains('tdg--dual-orbit')) { initDualOrbit(el); }
+  else if (el.classList.contains('tdg--comet-orbit')) { initCometOrbit(el); }
+  else if (el.classList.contains('tdg--orbit-swarm')) { initOrbitSwarm(el); }
+  else if (el.classList.contains('tdg--ring-tilt')) { initRingTilt(el); }
   else if (el.classList.contains('tdg--card-reel')) { initReel(el); }
   else if (el.classList.contains('tdg--film-strip')) { initReel(el); }
   else if (el.classList.contains('tdg--wheel-carousel')) { initWheel(el); }
@@ -85,6 +103,14 @@ export function initEl(el) {
   else if (el.classList.contains('tdg--mosaic-marquee')) { initMosaic(el); }
 }
 `;
+
+// Guard: a name the stripped head declared, still used by the body, with no declaration in the preamble.
+const preamble = out.slice(0, out.indexOf(js));
+const missing = headNames.filter((n) => new RegExp('\\b' + n.replace(/\$/g, '\\$') + '\\b').test(js)
+  && !new RegExp('\\b(?:var|function)\\s+' + n.replace(/\$/g, '\\$') + '\\b').test(preamble));
+if (missing.length) {
+  throw new Error('vendor: the plugin head declares ' + missing.join(', ') + ' and the body uses it, but the preamble does not re-provide it. Add it to the preamble in vendor.mjs.');
+}
 
 fs.writeFileSync(OUT, out);
 console.log('wrote gallery-engine.js —', out.length, 'bytes');

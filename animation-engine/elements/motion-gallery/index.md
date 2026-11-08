@@ -136,6 +136,31 @@ don't see it.
   — a rolling central feature. **Hero Pull** sets how strongly the front card leaps to the centre (0 = an
   even revolve, no hero); **Focus Brightness** highlights it. Spins Clockwise/Counter-clockwise, scrubs on
   scroll, or holds Static.
+- **Dual Orbit** — two **concentric rings** of photos on one tilted disc, with a thin path drawn under
+  each. Every third card rides the inner ring; the inner ring turns **the other way** (**Counter-rotate**)
+  at its own pace (**Inner Ring Speed**, 100 = the same speed), so the two rings gear past each other.
+  **Outer Ring Size** and **Inner Ring Size** set the radii, **Ring Tilt** the lean, and **Show Orbit
+  Paths** turns the lines off. Galleries with fewer than 15 photos repeat them so both rings stay full.
+- **Comet Orbit** — your photos travel **one elliptical orbit around a glowing focus**, with real orbital
+  timing: they bunch up and **drift slowly along the far end**, then **whip past the focus**, flaring
+  larger and brighter as they pass. **Eccentricity** stretches the ellipse (0 = an even circle), **Flare**
+  sets how much the cards grow and brighten by the focus, **Orbit Tilt** the lean, and **Show Focus Glow**
+  / **Show Orbit Path** turn the "sun" and the line on or off.
+- **Orbit Swarm** — a cloud of photos, **each on its own orbit**: its own radius (**Spread**), its own
+  pace (**Swirl** — inner orbits run faster, so cards overtake each other and the cloud shears into
+  drifting arms) and its own **rise and sink** above the plane (**Height Drift**). Now and then the swarm
+  **gathers** toward the centre and scatters back out (**Gather**, 0 = never). Galleries with fewer than
+  16 photos repeat them so the swarm stays full.
+- **Ring Tilt** — a steeply tilted **flat ring, like a planet's rings**. Unlike the other Orbit designs
+  the photos are **not** turned to face you: they **lie in the ring plane** (the front of the ring reads
+  upright) and stand up by **Card Lift** (0 = flat, 90 = upright, facing outward like standing stones).
+  The ring turns around an optional shaded **planet** (**Show Planet**, **Planet Size**, **Planet
+  Colour**) and slowly **rocks and precesses** (**Wobble**, 0 = steady). Landscape 4:3 tiles by default.
+
+Every Orbit design spins Clockwise/Counter-clockwise, scrubs on scroll (with Pin), or holds Static, and can
+be grabbed and spun by hand (**Drag to spin**, with **Drag Momentum**). The orbit-path line, the focus glow
+and the planet are decorative and hidden from screen readers. The path colour can be changed in Custom CSS
+with `--tdg-track`.
 
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.

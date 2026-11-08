@@ -21,6 +21,9 @@ const se = (id, label, def, choices) => ({id, label, t: 'select', def, choices})
 const RATIO_CHOICES = [['1-1', 'Square (1:1)'], ['4-3', 'Landscape (4:3)'], ['3-4', 'Portrait (3:4)'], ['4-5', 'Portrait (4:5)'], ['16-9', 'Wide (16:9)'], ['9-16', 'Tall (9:16)']];
 const HOVER_CHOICES = [['none', 'Keep rotating'], ['pause', 'Pause'], ['slow', 'Slow down']];
 const DIR_CHOICES = [['left', 'Left'], ['right', 'Right']];
+const YES_NO = [['yes', 'Yes'], ['no', 'No']];
+const ORBIT_DRIVES = [['continuous', 'Continuous'], ['static', 'Static']];
+const ORBIT_DIRS = [['cw', 'Clockwise'], ['ccw', 'Counter-clockwise']];
 
 // Shared across every design (motion + card + frame), mirroring the element's common options.
 const SHARED = (opts = {}) => [
@@ -425,6 +428,74 @@ const DESIGNS = {
       ...SHARED({drive: 'continuous', speed: 20, ratio: '1-1', corner: 6, dir: 'cw',
         driveChoices: [['continuous', 'Continuous'], ['static', 'Static']],
         dirChoices: [['cw', 'Clockwise'], ['ccw', 'Counter-clockwise']]}),
+    ],
+  },
+  dual_orbit: {
+    group: 'Orbit',
+    label: 'Dual Orbit',
+    blurb: 'Two concentric rings of photos on one tilted disc, a thin path under each; the inner ring turns the other way at its own pace, so the rings gear past each other.',
+    controls: [
+      sl('radius', 'Outer Ring Size (%)', 33, 15, 55),
+      sl('inner', 'Inner Ring Size (%)', 50, 25, 85),
+      sl('tilt', 'Ring Tilt (°)', 62, 0, 80),
+      se('counter', 'Counter-rotate', 'yes', YES_NO),
+      sl('inner_speed', 'Inner Ring Speed (%)', 150, 50, 300, 5),
+      se('show_paths', 'Show Orbit Paths', 'yes', YES_NO),
+      sl('focus_glow', 'Focus Brightness (%)', 130, 100, 220),
+      sl('depth_fade', 'Depth Fade (%)', 45, 0, 100),
+      sl('card_size', 'Card Size (%)', 11, 4, 60),
+      ...SHARED({drive: 'continuous', speed: 20, ratio: '1-1', corner: 6, dir: 'cw', driveChoices: ORBIT_DRIVES, dirChoices: ORBIT_DIRS}),
+    ],
+  },
+  comet_orbit: {
+    group: 'Orbit',
+    label: 'Comet Orbit',
+    blurb: 'Photos travel one elliptical orbit around a glowing focus with real orbital timing — drifting slowly at the far end, then whipping past the focus and flaring. Eccentricity 0 = an even circle.',
+    controls: [
+      sl('radius', 'Orbit Size (%)', 33, 15, 55),
+      sl('eccentricity', 'Eccentricity (%)', 62, 0, 85),
+      sl('tilt', 'Orbit Tilt (°)', 45, 0, 80),
+      se('show_focus', 'Show Focus Glow', 'yes', YES_NO),
+      se('show_paths', 'Show Orbit Path', 'yes', YES_NO),
+      sl('flare', 'Flare (%)', 70, 0, 100),
+      sl('depth_fade', 'Depth Fade (%)', 40, 0, 100),
+      sl('card_size', 'Card Size (%)', 12, 4, 60),
+      ...SHARED({drive: 'continuous', speed: 24, ratio: '1-1', corner: 6, dir: 'cw', driveChoices: ORBIT_DRIVES, dirChoices: ORBIT_DIRS}),
+    ],
+  },
+  orbit_swarm: {
+    group: 'Orbit',
+    label: 'Orbit Swarm',
+    blurb: 'A cloud of photos, each on its own orbit and pace — inner ones overtake outer ones, the cloud rises and sinks, and now and then it gathers in and scatters back out.',
+    controls: [
+      sl('radius', 'Swarm Size (%)', 31, 15, 55),
+      sl('spread', 'Spread (%)', 55, 0, 90),
+      sl('swirl', 'Swirl (%)', 60, 0, 100),
+      sl('height', 'Height Drift (%)', 30, 0, 100),
+      sl('cohesion', 'Gather (%)', 45, 0, 100),
+      sl('tilt', 'Orbit Tilt (°)', 55, 0, 80),
+      sl('focus_glow', 'Focus Brightness (%)', 130, 100, 220),
+      sl('depth_fade', 'Depth Fade (%)', 45, 0, 100),
+      sl('card_size', 'Card Size (%)', 9, 4, 60),
+      ...SHARED({drive: 'continuous', speed: 26, ratio: '1-1', corner: 6, dir: 'cw', driveChoices: ORBIT_DRIVES, dirChoices: ORBIT_DIRS}),
+    ],
+  },
+  ring_tilt: {
+    group: 'Orbit',
+    label: 'Ring Tilt',
+    blurb: "A planet's ring: photos lie flat in a steeply tilted ring around a shaded planet, stand up by Card Lift, and the whole ring rocks gently as it turns.",
+    controls: [
+      sl('radius', 'Ring Size (%)', 40, 15, 55),
+      sl('tilt', 'Ring Tilt (°)', 70, 30, 85),
+      sl('lift', 'Card Lift (°)', 20, 0, 90),
+      sl('wobble', 'Wobble (°)', 8, 0, 25),
+      se('show_core', 'Show Planet', 'yes', YES_NO),
+      sl('core_size', 'Planet Size (%)', 34, 10, 70),
+      se('core_color', 'Planet Colour', '#2f74e6', [['#2f74e6', 'Blue'], ['#e8892f', 'Amber'], ['#00b295', 'Green'], ['#8e44ad', 'Violet']]),
+      sl('focus_glow', 'Focus Brightness (%)', 125, 100, 220),
+      sl('depth_fade', 'Depth Fade (%)', 50, 0, 100),
+      sl('card_size', 'Card Size (%)', 12, 4, 60),
+      ...SHARED({drive: 'continuous', speed: 30, ratio: '4-3', corner: 6, dir: 'cw', driveChoices: ORBIT_DRIVES, dirChoices: ORBIT_DIRS}),
     ],
   },
 };

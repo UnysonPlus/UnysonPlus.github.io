@@ -233,6 +233,39 @@ export function buildScene(design, o) {
     return `<div class="tdg tdg--${design.replace(/_/g, '-')}" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__orbit">${cells}</div></div></div>`;
   }
 
+  // More Orbit designs (dual_orbit · comet_orbit · orbit_swarm · ring_tilt) — same .tdg__orbit DOM, each
+  // with its own geometry + decorative extras (paths, focus glow, planet). Mirrors views/designs/<dashed>.php.
+  if (design === 'dual_orbit' || design === 'comet_orbit' || design === 'orbit_swarm' || design === 'ring_tilt') {
+    const oa = {
+      ...shared,
+      'data-tdg-dir': o.direction === 'ccw' ? -1 : 1,
+      'data-tdg-radius': o.radius, 'data-tdg-tilt': o.tilt,
+      'data-tdg-dfade': o.depth_fade, 'data-tdg-card': o.card_size, 'data-tdg-momentum': 1,
+    };
+    let extra = '';
+    let n = 12;
+    if (design === 'dual_orbit') {
+      Object.assign(oa, {'data-tdg-inner': o.inner, 'data-tdg-counter': o.counter === 'yes' ? 1 : 0, 'data-tdg-ispeed': o.inner_speed, 'data-tdg-glow': o.focus_glow});
+      n = 15;
+      if (o.show_paths === 'yes') extra = '<div class="tdg__track"></div><div class="tdg__track"></div>';
+    } else if (design === 'comet_orbit') {
+      Object.assign(oa, {'data-tdg-ecc': o.eccentricity, 'data-tdg-flare': o.flare});
+      if (o.show_paths === 'yes') extra += '<div class="tdg__track"></div>';
+      if (o.show_focus === 'yes') extra += '<div class="tdg__focus"></div>';
+    } else if (design === 'orbit_swarm') {
+      Object.assign(oa, {'data-tdg-spread': o.spread, 'data-tdg-swirl': o.swirl, 'data-tdg-height': o.height, 'data-tdg-cohesion': o.cohesion, 'data-tdg-glow': o.focus_glow});
+      n = 16;
+    } else {
+      Object.assign(oa, {'data-tdg-lift': o.lift, 'data-tdg-wobble': o.wobble, 'data-tdg-core': o.core_size, 'data-tdg-glow': o.focus_glow});
+      n = 16;
+      if (o.show_core === 'yes') extra = `<div class="tdg__planet" style="--tdg-core:${/^#[0-9a-f]{3,8}$/i.test(o.core_color) ? o.core_color : '#2f74e6'}"></div>`;
+    }
+    const a = attr(oa);
+    let cells = '';
+    for (let i = 0; i < n; i++) cells += cardHtml(SAMPLES[i % SAMPLES.length]);
+    return `<div class="tdg tdg--${design.replace(/_/g, '-')}" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__orbit">${extra}${cells}</div></div></div>`;
+  }
+
   if (design === 'card_reel') {
     // vertical cover-flow carousel — mirror card-reel.php (a loop of cards on a cylinder).
     const n = 9;

@@ -7,7 +7,7 @@
  * bootstrap is replaced with the initEl() / bumpGen() exports below.
  */
 
-export const GALLERY_CSS = "/**\n * Motion Gallery — base + Carousel Ring. Pure CSS 3D scene; gallery-3d.js sets the per-card\n * transforms, the ring rotation and (for Back Fade) per-card opacity at runtime.\n */\n\n.tdg {\n\tposition: relative;\n\twidth: 100%;\n\toverflow: hidden;\n\tbackground: var(--tdg-bg, transparent);\n}\n\n/* Stage Overflow = Spill (opt-in): stop clipping at the Stage Height frame so fanned / oversized\n * cards show in full. The wrapper AND the absolutely-positioned stage both open up, so the 3D scene\n * isn't cut at the box. The reserved layout height is unchanged (only Stage Height), so spilled cards\n * can visually overlap neighbours — the control's help asks for vertical breathing room. Designs that\n * clip at the stage on purpose (photo-scatter, hero-reel, mosaic-marquee, card-stack, …) are overridden\n * only when the author explicitly turns Spill on for that instance. */\n/* Spill releases the VERTICAL clip so fanned / oversized cards show in full above and below the stage,\n   but keeps the HORIZONTAL clip so wide layouts (totem/wall rows, off-screen reel cards) can't push the\n   page into a horizontal scrollbar. overflow-x:clip on the non-3D wrapper is safe; the stage stays\n   overflow:visible so it never flattens its preserve-3d. (clip in the x keeps y computed as visible.) */\n.tdg--spill { overflow-x: clip; overflow-y: visible; }\n.tdg--spill .tdg__stage { overflow: visible; }\n\n.tdg__stage {\n\tposition: absolute;\n\tinset: 0;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\ttransform-style: preserve-3d;\n\tperspective-origin: 50% 50%;\n\t/* perspective set by JS from the Perspective control */\n}\n\n/* Pin while scrubbing (Motion: Scroll-scrub): the wrapper is stretched by Scroll Length (see\n * view.php — height: stage + N×100vh, with --tdg-stage-h carrying the stage height) and the stage\n * STICKS, viewport-centred, while the wrapper scrolls past — so the visitor's scroll drives the\n * scrub across the whole pinned stretch, then the stage releases with the page. position:sticky\n * dies inside an overflow:hidden ancestor, so the wrapper opens up and the scene clip moves onto\n * the stage instead. */\n.tdg--pinned { overflow: visible; }\n.tdg--pinned .tdg__stage {\n\tposition: sticky;\n\tinset: auto;\n\ttop: max(0px, calc((100vh - var(--tdg-stage-h, 730px)) / 2));\n\twidth: 100%;\n\theight: var(--tdg-stage-h, 730px);\n\toverflow: hidden;\n}\n\n.tdg__ring {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n\t/* transform (rotateX tilt + rotateY spin) set by JS */\n}\n\n/* Panorama Wall — stacked rows, each a scrolling cylinder of cards. Anchored at the stage centre so\n   it lines up with the perspective-origin (50% 50%) — otherwise the barrel skews to one corner. */\n.tdg__wall {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg__row {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg--panorama-wall .tdg__card { backface-visibility: hidden; }\n\n/* Card Sphere — bands (latitude rings) wrapped on a sphere. */\n.tdg__globe {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg__band {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg--card-sphere .tdg__card { backface-visibility: hidden; }\n\n/* Orbit Globe — billboarded cards distributed through a sphere volume (JS translate3d's each card;\n * the container itself does not rotate, so cards always face the camera). */\n.tdg__orbit {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n\n.tdg__card {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\taspect-ratio: var(--tdg-ratio, 1 / 1);\n\ttransform-style: preserve-3d;\n\twill-change: transform, opacity;\n\tbackface-visibility: visible;\n\t/* width / margins / transform set by JS */\n}\n\n.tdg__inner {\n\twidth: 100%;\n\theight: 100%;\n\tbox-sizing: border-box;\n\tborder-radius: var(--tdg-radius, 14px);\n\tpadding: var(--tdg-pad, 0);\n\toverflow: hidden;\n\t/* NOTE: the layout JS never poses .tdg__inner — it drives .tdg__card. That free seam is what the\n\t * built-in sequential Entrance uses (see .tdg--entrance below), so a per-card reveal composes with\n\t * the 3D motion instead of fighting it. */\n\t/* Card backing is TRANSPARENT so opaque photos sit flush and a thumbnail with a transparent\n\t * margin (documents / logos / alpha PNGs) shows the STAGE through it instead of a dark fill\n\t * reading as an unwanted black border. Set a Card Background / Box Preset (or Card Padding for the\n\t * polaroid frame) if you WANT a card colour behind the image. */\n}\n\n.tdg__link {\n\tdisplay: block;\n\tposition: relative;\n\twidth: 100%;\n\theight: 100%;\n\tborder-radius: inherit;\n\toverflow: hidden;\n\ttext-decoration: none;\n}\n\n.tdg__img {\n\tdisplay: block;\n\t/* !important defends against theme resets like `.content img { height: auto }` (higher specificity\n\t * than `.tdg__img`) — without a full 100% height, object-fit:cover can't fill the card and a card\n\t * whose ratio differs from the image (e.g. a portrait card + a square photo) shows empty space. */\n\twidth: 100% !important;\n\theight: 100% !important;\n\tobject-fit: cover;\n\tborder-radius: inherit;\n}\n\n.tdg__overlay {\n\tposition: absolute;\n\tinset: 0;\n\tdisplay: flex;\n\talign-items: flex-end;\n\tpadding: 10px 12px;\n\tbackground: linear-gradient(to top, rgba(0, 0, 0, 0.62), transparent 62%);\n\topacity: 0;\n\ttransition: opacity 0.3s ease;\n\tpointer-events: none;\n}\n.tdg__card:hover .tdg__overlay { opacity: 1; }\n.tdg__overlay-text { color: #fff; font-size: 13px; line-height: 1.3; }\n\n.tdg__caption {\n\tposition: absolute;\n\tleft: 0;\n\tright: 0;\n\tbottom: -1.6em;\n\ttext-align: center;\n\tfont-size: 12px;\n\topacity: 0.75;\n}\n\n.tdg--empty {\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\tmin-height: 180px;\n\tborder: 1px dashed rgba(127, 127, 127, 0.4);\n\tborder-radius: 10px;\n}\n.tdg__empty { margin: 0; opacity: 0.6; font-size: 14px; }\n\n/* ---- Photo Scatter — photos scattered flat on a tabletop ---- */\n/* Clip to the stage: edge cards (and cards flying in from off-stage) bleed to the frame edge and are\n * cut there — a true edge-to-edge scatter — instead of pushing the page wider (horizontal scrollbar). */\n.tdg--photo-scatter { overflow: hidden; }\n.tdg--photo-scatter .tdg__stage { overflow: hidden; }\n/* Photos lie on a surface, so the card backing is TRANSPARENT — a document/logo thumbnail with a\n * transparent margin then shows the desk/stage through it (a page resting on the table) instead of\n * the dark default card fill reading as an unwanted black border. Opaque photos fill the card as\n * usual. (The generic dark `.tdg__inner` fill still applies to the 3D designs on dark stages.) */\n.tdg--photo-scatter .tdg__inner { background: transparent; box-shadow: none; }\n/* The scatter card is portrait (Card Ratio), but a square source image left its height:100% collapsing\n * to the image's own square aspect — so the photo only filled the TOP of the card and the card's\n * box-shadow sat detached below it (a \"spaced polaroid shadow\"). Pin the image to fill the whole card. */\n.tdg--photo-scatter .tdg__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }\n.tdg--photo-scatter .tdg__plane {\n\tposition: absolute;\n\tinset: 0;\n}\n.tdg--photo-scatter .tdg__card {\n\tposition: absolute;\n\tleft: -200%; /* parked off-stage until the driver seats it */\n\ttop: 50%;\n\topacity: 0;\n\ttransition:\n\t\ttransform 0.95s cubic-bezier(0.22, 0.9, 0.24, 1),\n\t\topacity 0.6s ease;\n\twill-change: transform, opacity;\n\tbox-shadow: var(--tdg-shadow, 0 6px 16px rgba(0, 0, 0, 0.35));\n}\n.tdg--photo-scatter .tdg__card.is-set { pointer-events: auto; }\n.tdg--photo-scatter .tdg__card:not(.is-set) { pointer-events: none; }\n\n@media (prefers-reduced-motion: reduce) {\n\t.tdg__ring { will-change: auto; }\n\t.tdg--photo-scatter .tdg__card { transition: none; will-change: auto; }\n}\n\n/* =====================================================================================\n   Device Cycler — a device frame whose SCREEN cross-fades through the images (view modes).\n   ===================================================================================== */\n.tdg--device-cycler .tdg__stage { display: flex; align-items: center; justify-content: center; width: 100%; }\n.tdg--device-cycler .tdg__device { position: relative; width: var(--tdg-dev-w, 62%); max-width: 100%; margin-inline: auto; flex: 0 0 auto; }\n.tdg--device-cycler .tdg__screen {\n\tposition: relative; width: 100%; aspect-ratio: var(--tdg-ratio, 16 / 9);\n\toverflow: hidden; border-radius: var(--tdg-radius, 4px); background: #0b0b0d;\n}\n.tdg--device-cycler .tdg__plane { position: absolute; inset: 0; }\n.tdg--device-cycler .tdg__card { position: absolute; inset: 0; aspect-ratio: auto; opacity: 0; transition: opacity .55s ease, transform .55s ease; }\n.tdg--device-cycler .tdg__card.is-active { opacity: 1; }\n.tdg--device-cycler .tdg__inner, .tdg--device-cycler .tdg__link { position: absolute; inset: 0; display: block; padding: 0; border-radius: 0; }\n.tdg--device-cycler .tdg__img { width: 100%; height: 100%; object-fit: cover; display: block; }\n\n/* Transition variants */\n.tdg--device-cycler[data-tdg-transition=\"slide_up\"] .tdg__card { transform: translateY(7%); }\n.tdg--device-cycler[data-tdg-transition=\"slide_up\"] .tdg__card.is-active { transform: translateY(0); }\n.tdg--device-cycler[data-tdg-transition=\"slide_up\"] .tdg__card.is-past { transform: translateY(-7%); }\n.tdg--device-cycler[data-tdg-transition=\"none\"] .tdg__card { transition: none; }\n\n/* Laptop — screen bezel + a base bar below */\n.tdg--device-cycler .tdg__device--laptop .tdg__screen { border: 10px solid #1c1c1f; border-radius: 14px; box-shadow: 0 22px 50px rgba(0,0,0,.35); }\n.tdg--device-cycler .tdg__device--laptop::after { content: \"\"; display: block; width: 116%; margin: -1px 0 0 -8%; height: 15px; background: linear-gradient(#cbced4, #a7abb4); border-radius: 0 0 13px 13px; box-shadow: 0 9px 18px rgba(0,0,0,.22); }\n.tdg--device-cycler .tdg__device--laptop::before { content: \"\"; position: absolute; left: 50%; bottom: 4px; transform: translateX(-50%); width: 11%; height: 6px; background: rgba(0,0,0,.22); border-radius: 0 0 7px 7px; z-index: 3; }\n\n/* Tablet — even bezels + a front-camera dot, iPad-style */\n.tdg--device-cycler .tdg__device--tablet { position: relative; }\n.tdg--device-cycler .tdg__device--tablet .tdg__screen { border: 12px solid #16161a; border-radius: 24px; box-shadow: 0 22px 50px rgba(0,0,0,.35); }\n.tdg--device-cycler .tdg__device--tablet::before { content: \"\"; position: absolute; top: 5px; left: 0; right: 0; margin-inline: auto; width: 6px; height: 6px; border-radius: 50%; background: #34353c; box-shadow: 0 0 0 1.5px rgba(0,0,0,.3); z-index: 10; }\n\n/* Phone — rounded body, a dynamic-island pill, and a home indicator (centred via auto margins so the\n   pills stay dead-centre regardless of any transform on the preview/stage). */\n.tdg--device-cycler .tdg__device--phone { position: relative; }\n.tdg--device-cycler .tdg__device--phone .tdg__screen { border: 10px solid #0d0d11; border-radius: 36px; box-shadow: 0 18px 44px rgba(0,0,0,.4); }\n.tdg--device-cycler .tdg__device--phone::before { content: \"\"; position: absolute; top: 18px; left: 0; right: 0; margin-inline: auto; width: 28%; max-width: 110px; height: 18px; background: #0d0d11; border-radius: 10px; z-index: 10; }\n.tdg--device-cycler .tdg__device--phone::after { content: \"\"; position: absolute; bottom: 12px; left: 0; right: 0; margin-inline: auto; width: 30%; max-width: 120px; height: 4px; border-radius: 2px; background: rgba(255,255,255,.7); z-index: 10; }\n\n/* Browser window — title bar with traffic-light dots */\n.tdg--device-cycler .tdg__device--browser .tdg__screen { border: 1px solid rgba(0,0,0,.14); border-top: 32px solid #e8e8ec; border-radius: 10px; box-shadow: 0 18px 44px rgba(0,0,0,.22); }\n.tdg--device-cycler .tdg__device--browser::before { content: \"\"; position: absolute; top: 11px; left: 14px; width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; box-shadow: 18px 0 0 #febc2e, 36px 0 0 #28c840; z-index: 4; }\n\n@media (prefers-reduced-motion: reduce) { .tdg--device-cycler .tdg__card { transition: none; } }\n\n/* Sphere Cascade — columns of cards on a sphere, cascading vertically (JS positions each card;\n * cards sit tangent to the surface, so the back hemisphere is hidden by backface-visibility). */\n.tdg__cascade {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg__col {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n}\n.tdg--sphere-cascade .tdg__card { backface-visibility: hidden; }\n/* Totem Wall — reuses the cascade DOM (.tdg__cascade > .tdg__col > .tdg__card); each column is an\n   independent vertical cylinder, so hide the card backs as they wrap around behind the totem. */\n.tdg--totem-wall .tdg__card { backface-visibility: hidden; }\n/* Parallax Totem — same cascade DOM; cards float at seeded depths, so keep their backs hidden too. */\n.tdg--parallax-totem .tdg__card { backface-visibility: hidden; }\n\n/* Card Tunnel — four walls of cards receding to a vanishing point. The tunnel is centred at the stage\n   origin; JS sizes each card to its wall (so drop the ratio-driven aspect) and sets its 3D transform. */\n.tdg__tunnel { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; will-change: transform; }\n/* Scoped to Card Tunnel — the four wall groups sit at the tunnel origin. (Unscoped, this collided with\n   Panorama Wall's own .tdg__wall and skewed its barrel to a corner.) */\n.tdg--card-tunnel .tdg__wall { position: absolute; left: 0; top: 0; transform-style: preserve-3d; }\n.tdg--card-tunnel .tdg__card { aspect-ratio: auto; backface-visibility: hidden; }\n\n/* Spiral Stream — cards threaded on a tapering helix, each rotating around its vertical axis. Backs\n   stay VISIBLE so a card turned away shows its mirrored face (part of the stream's character). */\n.tdg__spiral { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; will-change: transform; }\n.tdg--spiral-stream .tdg__card { backface-visibility: visible; }\n\n/* Depth Stack — a deck receding into depth, billboarded (facing the camera) with a depth-of-field\n   blur/fade toward the back. JS sets each card's translate3d + wobble + filter. */\n.tdg__depth { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; will-change: transform; }\n.tdg--depth-stack .tdg__card { will-change: transform, opacity, filter; }\n\n/* Tilt Deck (Isometric) — an isometric ground plane (JS sets its rotateX/rotateZ) holding a grid of\n   tiles. The tile crossing the focus point lifts off the plane and faces the camera; JS writes each\n   tile's translate3d + counter-rotation + brightness per frame. */\n.tdg__iso { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; will-change: transform; }\n.tdg--tilt-deck .tdg__card { will-change: transform, opacity, filter; backface-visibility: hidden; }\n/* Iso Orbit — a ring of tiles revolving on the same isometric plane (`.tdg__iso`); the near tile lifts\n   to face the camera. JS writes each tile's translate3d + counter-rotation + brightness per frame. */\n.tdg--iso-orbit .tdg__card { will-change: transform, filter; backface-visibility: hidden; }\n/* Iso Stack — slabs stacked into a tower on the same isometric plane (`.tdg__iso`), streaming up; the\n   focus slab lifts to face the camera. JS writes each slab's translate3d + counter-rotation per frame. */\n.tdg--iso-stack .tdg__card { will-change: transform, opacity, filter; backface-visibility: hidden; }\n/* Iso Cascade — tiles descend a diagonal staircase on the same isometric plane (`.tdg__iso`); the\n   front tile lifts to face the camera. JS writes each tile's translate3d + counter-rotation per frame. */\n.tdg--iso-cascade .tdg__card { will-change: transform, opacity, filter; backface-visibility: hidden; }\n/* Iso Fan — tiles spread along a flat arc on the same isometric plane (`.tdg__iso`) and sweep across;\n   the centre tile lifts to face the camera. JS writes each tile's translate3d + counter-rotation. */\n.tdg--iso-fan .tdg__card { will-change: transform, opacity, filter; backface-visibility: hidden; }\n\n/* Orbit Bloom + Focus Orbit — billboarded cards on a tilted orbit disc (reuses `.tdg__orbit`). JS sets\n   the per-card translate3d (+ counter-rotation to face the camera), scale, opacity and brightness. */\n.tdg--orbit-bloom .tdg__card,\n.tdg--focus-orbit .tdg__card { will-change: transform, opacity, filter; backface-visibility: hidden; }\n\n/* Card Reel — a vertical cover-flow carousel: a single column of cards wrapped on a horizontal\n   cylinder, the centre card flat and forward. JS sets each card's translate + rotateX. */\n.tdg__reel { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; will-change: transform; }\n.tdg--card-reel .tdg__card,\n.tdg--film-strip .tdg__card { backface-visibility: hidden; }\n\n/* Hero Reel — a reel of thumbnail cards over a dimmed, Ken-Burns HERO background (the active card).\n   The stage colour sits behind the hero; the reel sits above it. */\n.tdg--hero-reel .tdg__stage { display: block; overflow: hidden; }\n.tdg--hero-reel .tdg__hero { position: absolute; inset: 0; z-index: 0; will-change: opacity; }\n.tdg--hero-reel .tdg__hero-layer { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; will-change: opacity, transform; }\n.tdg--hero-reel .tdg__reel { position: absolute; left: 50%; top: 50%; z-index: 2; transform: none; will-change: auto; }\n.tdg--hero-reel .tdg__card { position: absolute; left: 50%; top: 50%; will-change: transform; transform-origin: 50% 50%; }\n\n/* Focus Slider — a centred-focus reel (JS: initFocusSlider). No perspective; pure translate + scale. */\n.tdg--focus-slider .tdg__stage { display: block; overflow: hidden; }\n.tdg--focus-slider .tdg__reel { position: absolute; left: 50%; top: 50%; z-index: 2; transform: none; will-change: auto; }\n.tdg--focus-slider .tdg__card { position: absolute; left: 50%; top: 50%; will-change: transform; transform-origin: 50% 50%; }\n\n/* Wheel Carousel — cards fanned on a flat 2D wheel (hub below the frame); JS sets each card's\n   translate + in-plane rotate + scale as the wheel steps around. */\n.tdg__wheel { position: absolute; left: 50%; top: 50%; }\n.tdg--wheel-carousel .tdg__card { transform-origin: 50% 50%; }\n\n/* Cover Flow + Carousel Flow — center-focus carousels sliding horizontally or vertically. JS sets each\n   card's translate + (Cover Flow) tilt / (Carousel Flow) scale + opacity. */\n.tdg__flow { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; will-change: transform; }\n.tdg--cover-flow .tdg__card,\n.tdg--carousel-flow .tdg__card { backface-visibility: hidden; }\n\n/* Mosaic Marquee — airy bento tiles (varied 1×1 / 1×2 / 2×2 spans, some cells left empty so the\n * background shows through) on a track that scrolls sideways forever. */\n.tdg--mosaic-marquee .tdg__stage { display: block; overflow: hidden; box-sizing: border-box; }\n.tdg__mosaic-track { position: absolute; top: 50%; left: 0; display: flex; align-items: flex-start; will-change: transform; }\n.tdg__mosaic { display: grid; grid-auto-flow: column; flex: 0 0 auto; }\n.tdg--mosaic-marquee .tdg__card { position: static; left: auto; top: auto; width: auto; height: auto; margin: 0; aspect-ratio: auto; overflow: hidden; }\n/* The \"Padding\" option frames each card (via the shared --tdg-pad inner padding). Because a CSS %\n * padding resolves against the element's WIDTH, a 2×2 \"full square\" (double the width of a 1×1) would\n * get double the pixel frame — so HALVE the padding on the wide tiles to keep the frame visually equal\n * across sizes. The half / quarter tiles keep the full var(--tdg-pad). */\n.tdg--mosaic-marquee .tdg__card--wide .tdg__inner { padding: calc(var(--tdg-pad, 0%) / 2); }\n.tdg--mosaic-marquee .tdg__card img { width: 100%; height: 100%; object-fit: cover; display: block; }\n\n/* =====================================================================================\n   Card Stack — a deck of image cards; the top is featured, the rest peek behind it, and the\n   deck advances (top peels away, next comes forward) on scroll / a dwell timer. gallery-3d.js\n   sets each card's transform + opacity + z-index every frame from its depth in the deck.\n   ===================================================================================== */\n.tdg--card-stack .tdg__stage { display: flex; align-items: center; justify-content: center; overflow: hidden; }\n.tdg--card-stack .tdg__deck {\n\tposition: relative;\n\twidth: var(--tdg-card-w, 52%);\n\taspect-ratio: var(--tdg-ratio, 4 / 3);\n\ttransform-style: preserve-3d;\n}\n.tdg--card-stack .tdg__card {\n\tposition: absolute;\n\tleft: 0; top: 0;\n\twidth: 100%; height: 100%;\n\taspect-ratio: auto;            /* override the base 50%/50% + ratio positioning */\n\ttransform-origin: 50% 50%;\n\twill-change: transform, opacity;\n}\n\n@media (prefers-reduced-motion: reduce) {\n\t.tdg--card-stack .tdg__card { will-change: auto; }\n}\n\n/* ---- Built-in sequential Entrance (opt-in; poses .tdg__inner, composes with the 3D layout) ---- */\n.tdg--entrance .tdg__inner {\n\topacity: 0;                       /* the JS reveals per card, staggered by index, driven by scroll */\n\twill-change: transform, opacity, filter;\n}\n@media (prefers-reduced-motion: reduce) {\n\t.tdg--entrance .tdg__inner { opacity: 1; }   /* no scrubbing under reduced motion — just show them */\n}\n\n/* ---- Scroll Choreography (cards morph through formations as you scroll) ---- */\n.tdg--scroll-choreography .tdg__stage {\n\tperspective: 1200px;\n\ttransform-style: preserve-3d;\n\toverflow: hidden;\n}\n/* The driver poses every card every frame (absolute, centred, sized in JS) — no CSS transition. */\n.tdg--scroll-choreography .tdg__card {\n\tposition: absolute;\n\tbackface-visibility: hidden;\n\ttransition: none;\n}\n\n/* ---- Chained galleries (overlap handoff) ---- */\n/* The chain controller overlays each gallery inside the marked container and drives one master\n   timeline; galleries are stacked absolutely so one can fly out while the next assembles in. */\n.tdg-choreo-chain { position: relative; }\n.tdg-choreo-chain .tdg--scroll-choreography { margin: 0; }\n.tdg-choreo-chain .tdg--scroll-choreography .tdg__stage { height: 100%; }\n/* A section whose only content was a chained gallery that got relocated into the overlay wrapper — hidden\n   non-destructively (no DOM removal) so cross-section chains don't leave empty gaps. */\n.tdg-choreo-vacated { display: none !important; }\n";
+export const GALLERY_CSS = "/**\n * Motion Gallery — base + Carousel Ring. Pure CSS 3D scene; gallery-3d.js sets the per-card\n * transforms, the ring rotation and (for Back Fade) per-card opacity at runtime.\n */\n\n.tdg {\n\tposition: relative;\n\twidth: 100%;\n\toverflow: hidden;\n\tbackground: var(--tdg-bg, transparent);\n}\n\n/* Stage Overflow = Spill (opt-in): stop clipping at the Stage Height frame so fanned / oversized\n * cards show in full. The wrapper AND the absolutely-positioned stage both open up, so the 3D scene\n * isn't cut at the box. The reserved layout height is unchanged (only Stage Height), so spilled cards\n * can visually overlap neighbours — the control's help asks for vertical breathing room. Designs that\n * clip at the stage on purpose (photo-scatter, hero-reel, mosaic-marquee, card-stack, …) are overridden\n * only when the author explicitly turns Spill on for that instance. */\n/* Spill releases the VERTICAL clip so fanned / oversized cards show in full above and below the stage,\n   but keeps the HORIZONTAL clip so wide layouts (totem/wall rows, off-screen reel cards) can't push the\n   page into a horizontal scrollbar. overflow-x:clip on the non-3D wrapper is safe; the stage stays\n   overflow:visible so it never flattens its preserve-3d. (clip in the x keeps y computed as visible.) */\n.tdg--spill { overflow-x: clip; overflow-y: visible; }\n.tdg--spill .tdg__stage { overflow: visible; }\n\n.tdg__stage {\n\tposition: absolute;\n\tinset: 0;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\ttransform-style: preserve-3d;\n\tperspective-origin: 50% 50%;\n\t/* perspective set by JS from the Perspective control */\n}\n\n/* Pin while scrubbing (Motion: Scroll-scrub): the wrapper is stretched by Scroll Length (see\n * view.php — height: stage + N×100vh, with --tdg-stage-h carrying the stage height) and the stage\n * STICKS, viewport-centred, while the wrapper scrolls past — so the visitor's scroll drives the\n * scrub across the whole pinned stretch, then the stage releases with the page. position:sticky\n * dies inside an overflow:hidden ancestor, so the wrapper opens up and the scene clip moves onto\n * the stage instead. */\n.tdg--pinned { overflow: visible; }\n.tdg--pinned .tdg__stage {\n\tposition: sticky;\n\tinset: auto;\n\ttop: max(0px, calc((100vh - var(--tdg-stage-h, 730px)) / 2));\n\twidth: 100%;\n\theight: var(--tdg-stage-h, 730px);\n\toverflow: hidden;\n}\n\n.tdg__ring {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n\t/* transform (rotateX tilt + rotateY spin) set by JS */\n}\n\n/* Panorama Wall — stacked rows, each a scrolling cylinder of cards. Anchored at the stage centre so\n   it lines up with the perspective-origin (50% 50%) — otherwise the barrel skews to one corner. */\n.tdg__wall {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg__row {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg--panorama-wall .tdg__card { backface-visibility: hidden; }\n\n/* Card Sphere — bands (latitude rings) wrapped on a sphere. */\n.tdg__globe {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg__band {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg--card-sphere .tdg__card { backface-visibility: hidden; }\n\n/* Orbit Globe — billboarded cards distributed through a sphere volume (JS translate3d's each card;\n * the container itself does not rotate, so cards always face the camera). */\n.tdg__orbit {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n\n.tdg__card {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\taspect-ratio: var(--tdg-ratio, 1 / 1);\n\ttransform-style: preserve-3d;\n\twill-change: transform, opacity;\n\tbackface-visibility: visible;\n\t/* width / margins / transform set by JS */\n}\n\n.tdg__inner {\n\twidth: 100%;\n\theight: 100%;\n\tbox-sizing: border-box;\n\tborder-radius: var(--tdg-radius, 14px);\n\tpadding: var(--tdg-pad, 0);\n\toverflow: hidden;\n\t/* NOTE: the layout JS never poses .tdg__inner — it drives .tdg__card. That free seam is what the\n\t * built-in sequential Entrance uses (see .tdg--entrance below), so a per-card reveal composes with\n\t * the 3D motion instead of fighting it. */\n\t/* Card backing is TRANSPARENT so opaque photos sit flush and a thumbnail with a transparent\n\t * margin (documents / logos / alpha PNGs) shows the STAGE through it instead of a dark fill\n\t * reading as an unwanted black border. Set a Card Background / Box Preset (or Card Padding for the\n\t * polaroid frame) if you WANT a card colour behind the image. */\n}\n\n.tdg__link {\n\tdisplay: block;\n\tposition: relative;\n\twidth: 100%;\n\theight: 100%;\n\tborder-radius: inherit;\n\toverflow: hidden;\n\ttext-decoration: none;\n}\n\n.tdg__img {\n\tdisplay: block;\n\t/* !important defends against theme resets like `.content img { height: auto }` (higher specificity\n\t * than `.tdg__img`) — without a full 100% height, object-fit:cover can't fill the card and a card\n\t * whose ratio differs from the image (e.g. a portrait card + a square photo) shows empty space. */\n\twidth: 100% !important;\n\theight: 100% !important;\n\tobject-fit: cover;\n\tborder-radius: inherit;\n}\n\n.tdg__overlay {\n\tposition: absolute;\n\tinset: 0;\n\tdisplay: flex;\n\talign-items: flex-end;\n\tpadding: 10px 12px;\n\tbackground: linear-gradient(to top, rgba(0, 0, 0, 0.62), transparent 62%);\n\topacity: 0;\n\ttransition: opacity 0.3s ease;\n\tpointer-events: none;\n}\n.tdg__card:hover .tdg__overlay { opacity: 1; }\n.tdg__overlay-text { color: #fff; font-size: 13px; line-height: 1.3; }\n\n.tdg__caption {\n\tposition: absolute;\n\tleft: 0;\n\tright: 0;\n\tbottom: -1.6em;\n\ttext-align: center;\n\tfont-size: 12px;\n\topacity: 0.75;\n}\n\n.tdg--empty {\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\tmin-height: 180px;\n\tborder: 1px dashed rgba(127, 127, 127, 0.4);\n\tborder-radius: 10px;\n}\n.tdg__empty { margin: 0; opacity: 0.6; font-size: 14px; }\n\n/* ---- Photo Scatter — photos scattered flat on a tabletop ---- */\n/* Clip to the stage: edge cards (and cards flying in from off-stage) bleed to the frame edge and are\n * cut there — a true edge-to-edge scatter — instead of pushing the page wider (horizontal scrollbar). */\n.tdg--photo-scatter { overflow: hidden; }\n.tdg--photo-scatter .tdg__stage { overflow: hidden; }\n/* Photos lie on a surface, so the card backing is TRANSPARENT — a document/logo thumbnail with a\n * transparent margin then shows the desk/stage through it (a page resting on the table) instead of\n * the dark default card fill reading as an unwanted black border. Opaque photos fill the card as\n * usual. (The generic dark `.tdg__inner` fill still applies to the 3D designs on dark stages.) */\n.tdg--photo-scatter .tdg__inner { background: transparent; box-shadow: none; }\n/* The scatter card is portrait (Card Ratio), but a square source image left its height:100% collapsing\n * to the image's own square aspect — so the photo only filled the TOP of the card and the card's\n * box-shadow sat detached below it (a \"spaced polaroid shadow\"). Pin the image to fill the whole card. */\n.tdg--photo-scatter .tdg__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }\n.tdg--photo-scatter .tdg__plane {\n\tposition: absolute;\n\tinset: 0;\n}\n.tdg--photo-scatter .tdg__card {\n\tposition: absolute;\n\tleft: -200%; /* parked off-stage until the driver seats it */\n\ttop: 50%;\n\topacity: 0;\n\ttransition:\n\t\ttransform 0.95s cubic-bezier(0.22, 0.9, 0.24, 1),\n\t\topacity 0.6s ease;\n\twill-change: transform, opacity;\n\tbox-shadow: var(--tdg-shadow, 0 6px 16px rgba(0, 0, 0, 0.35));\n}\n.tdg--photo-scatter .tdg__card.is-set { pointer-events: auto; }\n.tdg--photo-scatter .tdg__card:not(.is-set) { pointer-events: none; }\n\n@media (prefers-reduced-motion: reduce) {\n\t.tdg__ring { will-change: auto; }\n\t.tdg--photo-scatter .tdg__card { transition: none; will-change: auto; }\n}\n\n/* =====================================================================================\n   Device Cycler — a device frame whose SCREEN cross-fades through the images (view modes).\n   ===================================================================================== */\n.tdg--device-cycler .tdg__stage { display: flex; align-items: center; justify-content: center; width: 100%; }\n.tdg--device-cycler .tdg__device { position: relative; width: var(--tdg-dev-w, 62%); max-width: 100%; margin-inline: auto; flex: 0 0 auto; }\n.tdg--device-cycler .tdg__screen {\n\tposition: relative; width: 100%; aspect-ratio: var(--tdg-ratio, 16 / 9);\n\toverflow: hidden; border-radius: var(--tdg-radius, 4px); background: #0b0b0d;\n}\n.tdg--device-cycler .tdg__plane { position: absolute; inset: 0; }\n.tdg--device-cycler .tdg__card { position: absolute; inset: 0; aspect-ratio: auto; opacity: 0; transition: opacity .55s ease, transform .55s ease; }\n.tdg--device-cycler .tdg__card.is-active { opacity: 1; }\n.tdg--device-cycler .tdg__inner, .tdg--device-cycler .tdg__link { position: absolute; inset: 0; display: block; padding: 0; border-radius: 0; }\n.tdg--device-cycler .tdg__img { width: 100%; height: 100%; object-fit: cover; display: block; }\n\n/* Transition variants */\n.tdg--device-cycler[data-tdg-transition=\"slide_up\"] .tdg__card { transform: translateY(7%); }\n.tdg--device-cycler[data-tdg-transition=\"slide_up\"] .tdg__card.is-active { transform: translateY(0); }\n.tdg--device-cycler[data-tdg-transition=\"slide_up\"] .tdg__card.is-past { transform: translateY(-7%); }\n.tdg--device-cycler[data-tdg-transition=\"none\"] .tdg__card { transition: none; }\n\n/* Laptop — screen bezel + a base bar below */\n.tdg--device-cycler .tdg__device--laptop .tdg__screen { border: 10px solid #1c1c1f; border-radius: 14px; box-shadow: 0 22px 50px rgba(0,0,0,.35); }\n.tdg--device-cycler .tdg__device--laptop::after { content: \"\"; display: block; width: 116%; margin: -1px 0 0 -8%; height: 15px; background: linear-gradient(#cbced4, #a7abb4); border-radius: 0 0 13px 13px; box-shadow: 0 9px 18px rgba(0,0,0,.22); }\n.tdg--device-cycler .tdg__device--laptop::before { content: \"\"; position: absolute; left: 50%; bottom: 4px; transform: translateX(-50%); width: 11%; height: 6px; background: rgba(0,0,0,.22); border-radius: 0 0 7px 7px; z-index: 3; }\n\n/* Tablet — even bezels + a front-camera dot, iPad-style */\n.tdg--device-cycler .tdg__device--tablet { position: relative; }\n.tdg--device-cycler .tdg__device--tablet .tdg__screen { border: 12px solid #16161a; border-radius: 24px; box-shadow: 0 22px 50px rgba(0,0,0,.35); }\n.tdg--device-cycler .tdg__device--tablet::before { content: \"\"; position: absolute; top: 5px; left: 0; right: 0; margin-inline: auto; width: 6px; height: 6px; border-radius: 50%; background: #34353c; box-shadow: 0 0 0 1.5px rgba(0,0,0,.3); z-index: 10; }\n\n/* Phone — rounded body, a dynamic-island pill, and a home indicator (centred via auto margins so the\n   pills stay dead-centre regardless of any transform on the preview/stage). */\n.tdg--device-cycler .tdg__device--phone { position: relative; }\n.tdg--device-cycler .tdg__device--phone .tdg__screen { border: 10px solid #0d0d11; border-radius: 36px; box-shadow: 0 18px 44px rgba(0,0,0,.4); }\n.tdg--device-cycler .tdg__device--phone::before { content: \"\"; position: absolute; top: 18px; left: 0; right: 0; margin-inline: auto; width: 28%; max-width: 110px; height: 18px; background: #0d0d11; border-radius: 10px; z-index: 10; }\n.tdg--device-cycler .tdg__device--phone::after { content: \"\"; position: absolute; bottom: 12px; left: 0; right: 0; margin-inline: auto; width: 30%; max-width: 120px; height: 4px; border-radius: 2px; background: rgba(255,255,255,.7); z-index: 10; }\n\n/* Browser window — title bar with traffic-light dots */\n.tdg--device-cycler .tdg__device--browser .tdg__screen { border: 1px solid rgba(0,0,0,.14); border-top: 32px solid #e8e8ec; border-radius: 10px; box-shadow: 0 18px 44px rgba(0,0,0,.22); }\n.tdg--device-cycler .tdg__device--browser::before { content: \"\"; position: absolute; top: 11px; left: 14px; width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; box-shadow: 18px 0 0 #febc2e, 36px 0 0 #28c840; z-index: 4; }\n\n@media (prefers-reduced-motion: reduce) { .tdg--device-cycler .tdg__card { transition: none; } }\n\n/* Sphere Cascade — columns of cards on a sphere, cascading vertically (JS positions each card;\n * cards sit tangent to the surface, so the back hemisphere is hidden by backface-visibility). */\n.tdg__cascade {\n\tposition: absolute;\n\ttransform-style: preserve-3d;\n\twill-change: transform;\n}\n.tdg__col {\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\ttransform-style: preserve-3d;\n}\n.tdg--sphere-cascade .tdg__card { backface-visibility: hidden; }\n/* Totem Wall — reuses the cascade DOM (.tdg__cascade > .tdg__col > .tdg__card); each column is an\n   independent vertical cylinder, so hide the card backs as they wrap around behind the totem. */\n.tdg--totem-wall .tdg__card { backface-visibility: hidden; }\n/* Parallax Totem — same cascade DOM; cards float at seeded depths, so keep their backs hidden too. */\n.tdg--parallax-totem .tdg__card { backface-visibility: hidden; }\n\n/* Card Tunnel — four walls of cards receding to a vanishing point. The tunnel is centred at the stage\n   origin; JS sizes each card to its wall (so drop the ratio-driven aspect) and sets its 3D transform. */\n.tdg__tunnel { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; will-change: transform; }\n/* Scoped to Card Tunnel — the four wall groups sit at the tunnel origin. (Unscoped, this collided with\n   Panorama Wall's own .tdg__wall and skewed its barrel to a corner.) */\n.tdg--card-tunnel .tdg__wall { position: absolute; left: 0; top: 0; transform-style: preserve-3d; }\n.tdg--card-tunnel .tdg__card { aspect-ratio: auto; backface-visibility: hidden; }\n\n/* Spiral Stream — cards threaded on a tapering helix, each rotating around its vertical axis. Backs\n   stay VISIBLE so a card turned away shows its mirrored face (part of the stream's character). */\n.tdg__spiral { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; will-change: transform; }\n.tdg--spiral-stream .tdg__card { backface-visibility: visible; }\n\n/* Depth Stack — a deck receding into depth, billboarded (facing the camera) with a depth-of-field\n   blur/fade toward the back. JS sets each card's translate3d + wobble + filter. */\n.tdg__depth { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; will-change: transform; }\n.tdg--depth-stack .tdg__card { will-change: transform, opacity, filter; }\n\n/* Tilt Deck (Isometric) — an isometric ground plane (JS sets its rotateX/rotateZ) holding a grid of\n   tiles. The tile crossing the focus point lifts off the plane and faces the camera; JS writes each\n   tile's translate3d + counter-rotation + brightness per frame. */\n.tdg__iso { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; will-change: transform; }\n.tdg--tilt-deck .tdg__card { will-change: transform, opacity, filter; backface-visibility: hidden; }\n/* Iso Orbit — a ring of tiles revolving on the same isometric plane (`.tdg__iso`); the near tile lifts\n   to face the camera. JS writes each tile's translate3d + counter-rotation + brightness per frame. */\n.tdg--iso-orbit .tdg__card { will-change: transform, filter; backface-visibility: hidden; }\n/* Iso Stack — slabs stacked into a tower on the same isometric plane (`.tdg__iso`), streaming up; the\n   focus slab lifts to face the camera. JS writes each slab's translate3d + counter-rotation per frame. */\n.tdg--iso-stack .tdg__card { will-change: transform, opacity, filter; backface-visibility: hidden; }\n/* Iso Cascade — tiles descend a diagonal staircase on the same isometric plane (`.tdg__iso`); the\n   front tile lifts to face the camera. JS writes each tile's translate3d + counter-rotation per frame. */\n.tdg--iso-cascade .tdg__card { will-change: transform, opacity, filter; backface-visibility: hidden; }\n/* Iso Fan — tiles spread along a flat arc on the same isometric plane (`.tdg__iso`) and sweep across;\n   the centre tile lifts to face the camera. JS writes each tile's translate3d + counter-rotation. */\n.tdg--iso-fan .tdg__card { will-change: transform, opacity, filter; backface-visibility: hidden; }\n\n/* Orbit Bloom + Focus Orbit — billboarded cards on a tilted orbit disc (reuses `.tdg__orbit`). JS sets\n   the per-card translate3d (+ counter-rotation to face the camera), scale, opacity and brightness. */\n.tdg--orbit-bloom .tdg__card,\n.tdg--focus-orbit .tdg__card { will-change: transform, opacity, filter; backface-visibility: hidden; }\n\n/* Dual Orbit, Comet Orbit, Orbit Swarm — more billboarded orbit designs on `.tdg__orbit`. */\n.tdg--dual-orbit .tdg__card,\n.tdg--comet-orbit .tdg__card,\n.tdg--orbit-swarm .tdg__card { will-change: transform, filter; backface-visibility: hidden; }\n\n/* Orbit paths (Dual Orbit, Comet Orbit) — a thin line lying in the orbit plane, so it shows the ring /\n   ellipse the cards travel. JS sizes it; colour via --tdg-track. */\n.tdg__track {\n\tposition: absolute;\n\tleft: 0;\n\ttop: 0;\n\tborder-radius: 50%;\n\tpointer-events: none;\n\tborder: 1.5px solid var(--tdg-track, rgba(143, 188, 255, .35));\n\tbox-sizing: border-box;\n}\n\n/* Comet Orbit's focus — a soft \"sun\" the cards swing around (JS sizes + places it). */\n.tdg__focus {\n\tposition: absolute;\n\tleft: 0;\n\ttop: 0;\n\tborder-radius: 50%;\n\tpointer-events: none;\n\tbackground: radial-gradient(circle, #fff 0, rgba(255, 236, 190, .9) 14%, rgba(255, 190, 90, .45) 34%, rgba(255, 160, 60, .12) 56%, transparent 72%);\n}\n\n/* Ring Tilt — cards lie in the ring plane (not billboarded), so their backs can show on the far side\n   when lifted; the planet is a billboarded shaded disc in the middle (colour via --tdg-core). */\n.tdg--ring-tilt .tdg__card { will-change: transform, filter; backface-visibility: visible; }\n.tdg__planet {\n\tposition: absolute;\n\tleft: 0;\n\ttop: 0;\n\tborder-radius: 50%;\n\tpointer-events: none;\n\t/* Highlight on its own layer over an OPAQUE sphere, so the far side of the ring never shows through. */\n\tbackground:\n\t\tradial-gradient(circle at 34% 30%, rgba(255, 255, 255, .75) 0, rgba(255, 255, 255, 0) 38%),\n\t\tradial-gradient(circle at 34% 30%, var(--tdg-core, #2f74e6) 0, var(--tdg-core, #2f74e6) 38%, color-mix(in srgb, var(--tdg-core, #2f74e6) 30%, #000) 100%);\n\tbox-shadow: 0 0 40px color-mix(in srgb, var(--tdg-core, #2f74e6) 45%, transparent);\n}\n\n/* Card Reel — a vertical cover-flow carousel: a single column of cards wrapped on a horizontal\n   cylinder, the centre card flat and forward. JS sets each card's translate + rotateX. */\n.tdg__reel { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; will-change: transform; }\n.tdg--card-reel .tdg__card,\n.tdg--film-strip .tdg__card { backface-visibility: hidden; }\n\n/* Hero Reel — a reel of thumbnail cards over a dimmed, Ken-Burns HERO background (the active card).\n   The stage colour sits behind the hero; the reel sits above it. */\n.tdg--hero-reel .tdg__stage { display: block; overflow: hidden; }\n.tdg--hero-reel .tdg__hero { position: absolute; inset: 0; z-index: 0; will-change: opacity; }\n.tdg--hero-reel .tdg__hero-layer { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; will-change: opacity, transform; }\n.tdg--hero-reel .tdg__reel { position: absolute; left: 50%; top: 50%; z-index: 2; transform: none; will-change: auto; }\n.tdg--hero-reel .tdg__card { position: absolute; left: 50%; top: 50%; will-change: transform; transform-origin: 50% 50%; }\n\n/* Focus Slider — a centred-focus reel (JS: initFocusSlider). No perspective; pure translate + scale. */\n.tdg--focus-slider .tdg__stage { display: block; overflow: hidden; }\n.tdg--focus-slider .tdg__reel { position: absolute; left: 50%; top: 50%; z-index: 2; transform: none; will-change: auto; }\n.tdg--focus-slider .tdg__card { position: absolute; left: 50%; top: 50%; will-change: transform; transform-origin: 50% 50%; }\n\n/* Wheel Carousel — cards fanned on a flat 2D wheel (hub below the frame); JS sets each card's\n   translate + in-plane rotate + scale as the wheel steps around. */\n.tdg__wheel { position: absolute; left: 50%; top: 50%; }\n.tdg--wheel-carousel .tdg__card { transform-origin: 50% 50%; }\n\n/* Cover Flow + Carousel Flow — center-focus carousels sliding horizontally or vertically. JS sets each\n   card's translate + (Cover Flow) tilt / (Carousel Flow) scale + opacity. */\n.tdg__flow { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; will-change: transform; }\n.tdg--cover-flow .tdg__card,\n.tdg--carousel-flow .tdg__card { backface-visibility: hidden; }\n\n/* Mosaic Marquee — airy bento tiles (varied 1×1 / 1×2 / 2×2 spans, some cells left empty so the\n * background shows through) on a track that scrolls sideways forever. */\n.tdg--mosaic-marquee .tdg__stage { display: block; overflow: hidden; box-sizing: border-box; }\n.tdg__mosaic-track { position: absolute; top: 50%; left: 0; display: flex; align-items: flex-start; will-change: transform; }\n.tdg__mosaic { display: grid; grid-auto-flow: column; flex: 0 0 auto; }\n.tdg--mosaic-marquee .tdg__card { position: static; left: auto; top: auto; width: auto; height: auto; margin: 0; aspect-ratio: auto; overflow: hidden; }\n/* The \"Padding\" option frames each card (via the shared --tdg-pad inner padding). Because a CSS %\n * padding resolves against the element's WIDTH, a 2×2 \"full square\" (double the width of a 1×1) would\n * get double the pixel frame — so HALVE the padding on the wide tiles to keep the frame visually equal\n * across sizes. The half / quarter tiles keep the full var(--tdg-pad). */\n.tdg--mosaic-marquee .tdg__card--wide .tdg__inner { padding: calc(var(--tdg-pad, 0%) / 2); }\n.tdg--mosaic-marquee .tdg__card img { width: 100%; height: 100%; object-fit: cover; display: block; }\n\n/* =====================================================================================\n   Card Stack — a deck of image cards; the top is featured, the rest peek behind it, and the\n   deck advances (top peels away, next comes forward) on scroll / a dwell timer. gallery-3d.js\n   sets each card's transform + opacity + z-index every frame from its depth in the deck.\n   ===================================================================================== */\n.tdg--card-stack .tdg__stage { display: flex; align-items: center; justify-content: center; overflow: hidden; }\n.tdg--card-stack .tdg__deck {\n\tposition: relative;\n\twidth: var(--tdg-card-w, 52%);\n\taspect-ratio: var(--tdg-ratio, 4 / 3);\n\ttransform-style: preserve-3d;\n}\n.tdg--card-stack .tdg__card {\n\tposition: absolute;\n\tleft: 0; top: 0;\n\twidth: 100%; height: 100%;\n\taspect-ratio: auto;            /* override the base 50%/50% + ratio positioning */\n\ttransform-origin: 50% 50%;\n\twill-change: transform, opacity;\n}\n\n@media (prefers-reduced-motion: reduce) {\n\t.tdg--card-stack .tdg__card { will-change: auto; }\n}\n\n/* ---- Built-in sequential Entrance (opt-in; poses .tdg__inner, composes with the 3D layout) ---- */\n.tdg--entrance .tdg__inner {\n\topacity: 0;                       /* the JS reveals per card, staggered by index, driven by scroll */\n\twill-change: transform, opacity, filter;\n}\n@media (prefers-reduced-motion: reduce) {\n\t.tdg--entrance .tdg__inner { opacity: 1; }   /* no scrubbing under reduced motion — just show them */\n}\n\n/* ---- Scroll Choreography (cards morph through formations as you scroll) ---- */\n.tdg--scroll-choreography .tdg__stage {\n\tperspective: 1200px;\n\ttransform-style: preserve-3d;\n\toverflow: hidden;\n}\n/* The driver poses every card every frame (absolute, centred, sized in JS) — no CSS transition. */\n.tdg--scroll-choreography .tdg__card {\n\tposition: absolute;\n\tbackface-visibility: hidden;\n\ttransition: none;\n}\n\n/* ---- Chained galleries (overlap handoff) ---- */\n/* The chain controller overlays each gallery inside the marked container and drives one master\n   timeline; galleries are stacked absolutely so one can fly out while the next assembles in. */\n.tdg-choreo-chain { position: relative; }\n.tdg-choreo-chain .tdg--scroll-choreography { margin: 0; }\n.tdg-choreo-chain .tdg--scroll-choreography .tdg__stage { height: 100%; }\n/* A section whose only content was a chained gallery that got relocated into the overlay wrapper — hidden\n   non-destructively (no DOM removal) so cross-section chains don't leave empty gaps. */\n.tdg-choreo-vacated { display: none !important; }\n";
 
 // Reduced motion: the driver renders a static scene instead of animating.
 var reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -17,6 +17,13 @@ var reduce = typeof window !== 'undefined' && window.matchMedia && window.matchM
 // bumpGen() lets every previous loop die instead of piling up.
 var GEN = 0;
 export function bumpGen() { GEN++; }
+
+// Re-declare what the stripped plugin head defines and the body still uses. The playground never runs
+// inside the Live Editor frame, so IN_EDITOR is always false; CUSTOM / dashed() back the child-theme
+// design registry (unused here, but referenced by initCustom).
+var IN_EDITOR = false;
+var CUSTOM = {};
+function dashed(key) { return String(key).replace(/_/g, '-'); }
 function requestAnimationFrame(fn) {
   var g = GEN;
   return window.requestAnimationFrame(function (t) { if (g === GEN) { fn(t); } });
@@ -2521,6 +2528,334 @@ function num( el, attr, dflt ) { var v = parseFloat( el.getAttribute( attr ) ); 
 		requestAnimationFrame( loop );
 	}
 
+	/* Shared drive for the newer Orbit designs (Dual Orbit, Comet Orbit, Orbit Swarm, Ring Tilt): the
+	 * continuous / scroll-scrub / static drive, drag-to-spin with momentum and the hover slow-down — the
+	 * same behaviour as Orbit Bloom's inline loop, in one place. `st.S` is the design's phase (1 unit =
+	 * half a revolution); applyFrame() reads it. */
+	function orbitDrive( el, stage, st, speed, drive, applyFrame ) {
+		var hoverF = hoverFactor( el );
+		var allowDrag = num( el, 'data-tdg-allowdrag', 1 );
+		var momentum = num( el, 'data-tdg-momentum', 1 );
+		var dragging = false, px0 = 0, vel = 0, scrollTarget = null;
+		if ( allowDrag ) {
+			el.style.cursor = 'grab';
+			attachDrag( el,
+				function ( x ) { dragging = true; px0 = x; vel = 0; el.style.cursor = 'grabbing'; },
+				function ( x ) { if ( ! dragging ) { return; } var dd = ( x - px0 ) * 0.004; px0 = x; st.S += dd; vel = dd; },
+				function () { dragging = false; el.style.cursor = 'grab'; } );
+		}
+		if ( drive === 'scroll' ) {
+			var onScroll = function () { scrollTarget = scrollProgress( el, stage ) * num( el, 'data-tdg-rounds', 1 ); };
+			window.addEventListener( 'scroll', onScroll, { passive: true } );
+			onScroll();
+		}
+		var autoRun = ( drive === 'continuous' && ! reduce );
+		if ( ! ( autoRun || allowDrag || drive === 'scroll' ) ) { return; }
+		var last = 0;
+		var loop = function ( tm ) {
+			if ( ! last ) { last = tm; }
+			var dt = Math.min( 0.1, ( tm - last ) / 1000 ); last = tm;
+			if ( ! dragging ) {
+				if ( autoRun ) { st.S += ( 1 / Math.max( 1, speed ) ) * dt * hoverF(); }
+				if ( momentum && Math.abs( vel ) > 0.00002 ) { st.S += vel; vel *= 0.94; }
+				else if ( drive === 'scroll' && scrollTarget !== null ) { st.S += ( scrollTarget - st.S ) * 0.14; if ( Math.abs( scrollTarget - st.S ) < 0.0004 ) { st.S = scrollTarget; } }
+			}
+			applyFrame();
+			requestAnimationFrame( loop );
+		};
+		requestAnimationFrame( loop );
+	}
+
+	/* Size + place an orbit-path line (`.tdg__track`, a bordered ellipse lying in the orbit plane) with
+	 * semi-axes rx / ry, centred at x = cx. No-op when the design was rendered without paths. */
+	function orbitTrack( t, rx, ry, cx ) {
+		if ( ! t ) { return; }
+		t.style.width = ( 2 * rx ) + 'px';
+		t.style.height = ( 2 * ry ) + 'px';
+		t.style.marginLeft = ( -rx + cx ) + 'px';
+		t.style.marginTop = ( -ry ) + 'px';
+	}
+
+	/* Stable 0…1 pseudo-random per card index (same layout on every load / in the preview). */
+	function orbitHash( n ) { var x = Math.sin( n * 127.1 + 311.7 ) * 43758.5453; return x - Math.floor( x ); }
+
+	/* Dual Orbit (Orbit) — two concentric rings of billboarded cards on one tilted disc. Cards alternate
+	 * outer / inner; the inner ring turns the other way (Counter-rotate) at its own speed (Inner Ring
+	 * Speed), so the rings gear past each other. Front cards brighter, far arc dims. An original design. */
+	function initDualOrbit( el ) {
+		if ( el.__tdg ) { return; }
+		el.__tdg = true;
+		var stage = el.querySelector( '.tdg__stage' );
+		var orbit = el.querySelector( '.tdg__orbit' );
+		if ( ! stage || ! orbit ) { return; }
+		var cards = Array.prototype.slice.call( orbit.querySelectorAll( '.tdg__card' ) );
+		var N = cards.length;
+		if ( ! N ) { return; }
+
+		var drive   = el.getAttribute( 'data-tdg-drive' ) || 'continuous';
+		var speed   = num( el, 'data-tdg-speed', 20 );
+		var dir     = num( el, 'data-tdg-dir', 1 );
+		var radPct  = clamp( num( el, 'data-tdg-radius', 33 ), 15, 55 ) / 100;
+		var inPct   = clamp( num( el, 'data-tdg-inner', 50 ), 25, 85 ) / 100;
+		var tilt    = clamp( num( el, 'data-tdg-tilt', 62 ), 0, 80 );
+		var counter = num( el, 'data-tdg-counter', 1 ) ? -1 : 1;
+		var iSpeed  = clamp( num( el, 'data-tdg-ispeed', 150 ), 50, 300 ) / 100;
+		var glow    = clamp( num( el, 'data-tdg-glow', 130 ), 100, 220 ) / 100;
+		var dFade   = clamp( num( el, 'data-tdg-dfade', 45 ) / 100, 0, 1 );
+		var cardPct = clamp( num( el, 'data-tdg-card', 11 ), 4, 60 ) / 100;
+		var TWO = Math.PI * 2;
+
+		// Every third card rides the inner ring, the rest the outer one (fewer than 5 → one ring), so
+		// the outer ring stays full and the inner one reads as a smaller, separate orbit.
+		var outer = [], inner = [];
+		cards.forEach( function ( c, i ) { ( N >= 5 && i % 3 === 1 ) ? inner.push( c ) : outer.push( c ); } );
+		var tracks = orbit.querySelectorAll( '.tdg__track' );
+
+		var cardW = 0, R = 0, W = 1;
+		function layout() {
+			W = stage.clientWidth || el.clientWidth || 1;
+			cardW = Math.max( 20, W * cardPct );
+			R = W * radPct;
+			stage.style.perspective = ( W * 1.7 ) + 'px';
+			orbit.style.transform = 'rotateX(' + tilt + 'deg)';
+			cards.forEach( function ( c ) { c.style.width = cardW + 'px'; c.style.marginLeft = ( -cardW / 2 ) + 'px'; } );
+			cards.forEach( function ( c ) { c.style.marginTop = ( -( c.offsetHeight || cardW ) / 2 ) + 'px'; } );
+			orbitTrack( tracks[ 0 ], R, R, 0 );
+			orbitTrack( tracks[ 1 ], R * inPct, R * inPct, 0 );
+		}
+		function ring( list, Rr, ang, scl, off ) {
+			var n = list.length;
+			for ( var j = 0; j < n; j++ ) {
+				var theta = ( j / n ) * TWO + off + ang;
+				var x = Math.cos( theta ) * Rr, y = Math.sin( theta ) * Rr;
+				var near = ( Math.sin( theta ) + 1 ) / 2;
+				var sc = ( 0.72 + 0.28 * near ) * scl;
+				var c = list[ j ];
+				c.style.transform = 'translate3d(' + x.toFixed( 1 ) + 'px,' + y.toFixed( 1 ) + 'px,0) rotateX(' + ( -tilt ) + 'deg) scale(' + sc.toFixed( 3 ) + ')';
+				c.style.filter = 'brightness(' + ( ( 1 - dFade * ( 1 - near ) ) * ( 1 + ( glow - 1 ) * near ) ).toFixed( 3 ) + ')';
+				c.style.zIndex = String( Math.round( near * 100 ) );
+			}
+		}
+		var st = { S: 0 };
+		function applyFrame() {
+			var a = st.S * TWO * dir * 0.5;
+			ring( outer, R, a, 1, 0 );
+			if ( inner.length ) { ring( inner, R * inPct, a * iSpeed * counter, 0.66, Math.PI / inner.length ); }
+		}
+		layout();
+		applyFrame();
+		window.addEventListener( 'resize', function () { layout(); applyFrame(); }, { passive: true } );
+		orbitDrive( el, stage, st, speed, drive, applyFrame );
+	}
+
+	/* Comet Orbit (Orbit) — billboarded cards travel one elliptical orbit around a glowing focus with
+	 * orbital (Kepler) timing: equal steps of "mean anomaly" become slow drifting at the far end and a fast
+	 * whip past the focus, where the cards flare larger and brighter. Eccentricity 0 = an even circle. An
+	 * original design. */
+	function initCometOrbit( el ) {
+		if ( el.__tdg ) { return; }
+		el.__tdg = true;
+		var stage = el.querySelector( '.tdg__stage' );
+		var orbit = el.querySelector( '.tdg__orbit' );
+		if ( ! stage || ! orbit ) { return; }
+		var cards = Array.prototype.slice.call( orbit.querySelectorAll( '.tdg__card' ) );
+		var N = cards.length;
+		if ( ! N ) { return; }
+		var focusEl = orbit.querySelector( '.tdg__focus' );
+
+		var drive   = el.getAttribute( 'data-tdg-drive' ) || 'continuous';
+		var speed   = num( el, 'data-tdg-speed', 24 );
+		var dir     = num( el, 'data-tdg-dir', 1 );
+		var radPct  = clamp( num( el, 'data-tdg-radius', 33 ), 15, 55 ) / 100;
+		var e       = clamp( num( el, 'data-tdg-ecc', 62 ), 0, 85 ) / 100;
+		var tilt    = clamp( num( el, 'data-tdg-tilt', 45 ), 0, 80 );
+		var flare   = clamp( num( el, 'data-tdg-flare', 70 ) / 100, 0, 1 );
+		var dFade   = clamp( num( el, 'data-tdg-dfade', 40 ) / 100, 0, 1 );
+		var cardPct = clamp( num( el, 'data-tdg-card', 12 ), 4, 60 ) / 100;
+		var TWO = Math.PI * 2;
+		var flareK = flare * ( 0.35 + 0.65 * Math.min( 1, e / 0.5 ) ); // a near-circle flares only a little
+
+		var cardW = 0, A = 0, B = 0, shift = 0, W = 1;
+		function layout() {
+			W = stage.clientWidth || el.clientWidth || 1;
+			cardW = Math.max( 20, W * cardPct );
+			A = W * radPct;
+			B = A * Math.sqrt( 1 - e * e );
+			shift = -A * e * 0.15;                                         // balance the off-centre focus
+			orbitTrack( orbit.querySelector( '.tdg__track' ), A, B, shift );
+			stage.style.perspective = ( W * 1.7 ) + 'px';
+			orbit.style.transform = 'rotateX(' + tilt + 'deg)';
+			cards.forEach( function ( c ) { c.style.width = cardW + 'px'; c.style.marginLeft = ( -cardW / 2 ) + 'px'; } );
+			cards.forEach( function ( c ) { c.style.marginTop = ( -( c.offsetHeight || cardW ) / 2 ) + 'px'; } );
+			if ( focusEl ) {
+				var fs = cardW * 1.7;
+				focusEl.style.width = focusEl.style.height = fs + 'px';
+				focusEl.style.marginLeft = focusEl.style.marginTop = ( -fs / 2 ) + 'px';
+				focusEl.style.transform = 'translate3d(' + ( A * e + shift ).toFixed( 1 ) + 'px,0,0) rotateX(' + ( -tilt ) + 'deg)';
+			}
+		}
+		var st = { S: 0 };
+		function applyFrame() {
+			for ( var i = 0; i < N; i++ ) {
+				var M = ( i / N ) * TWO + st.S * TWO * dir * 0.5;          // mean anomaly — advances evenly
+				var E = M;                                                  // solve Kepler: E − e·sin E = M
+				for ( var it = 0; it < 6; it++ ) { E -= ( E - e * Math.sin( E ) - M ) / ( 1 - e * Math.cos( E ) ); }
+				var x = A * Math.cos( E ) + shift, y = B * Math.sin( E );
+				var near = ( Math.sin( E ) + 1 ) / 2;                       // front of the disc = near
+				var prox = ( 1 + Math.cos( E ) ) / 2;                       // 1 at perihelion (by the focus)
+				var kF = Math.pow( prox, 3 ) * flareK;
+				var sc = ( 0.62 + 0.25 * near ) * ( 1 + kF * 1.1 );
+				var c = cards[ i ];
+				c.style.transform = 'translate3d(' + x.toFixed( 1 ) + 'px,' + y.toFixed( 1 ) + 'px,0) rotateX(' + ( -tilt ) + 'deg) scale(' + sc.toFixed( 3 ) + ')';
+				c.style.filter = 'brightness(' + ( ( 1 - dFade * ( 1 - near ) ) * ( 1 + kF * 0.8 ) ).toFixed( 3 ) + ')';
+				c.style.zIndex = String( 10 + Math.round( ( near + kF ) * 100 ) );
+			}
+		}
+		layout();
+		applyFrame();
+		window.addEventListener( 'resize', function () { layout(); applyFrame(); }, { passive: true } );
+		orbitDrive( el, stage, st, speed, drive, applyFrame );
+	}
+
+	/* Orbit Swarm (Orbit) — every billboarded card keeps its own orbit: its own radius (Spread), pace
+	 * (Swirl — inner orbits run faster, so cards overtake each other) and rise / sink above the plane
+	 * (Height Drift). Periodically the swarm gathers toward the centre and scatters back out (Gather).
+	 * Per-card values come from a stable hash, so the swarm is the same on every load. An original design. */
+	function initOrbitSwarm( el ) {
+		if ( el.__tdg ) { return; }
+		el.__tdg = true;
+		var stage = el.querySelector( '.tdg__stage' );
+		var orbit = el.querySelector( '.tdg__orbit' );
+		if ( ! stage || ! orbit ) { return; }
+		var cards = Array.prototype.slice.call( orbit.querySelectorAll( '.tdg__card' ) );
+		var N = cards.length;
+		if ( ! N ) { return; }
+
+		var drive    = el.getAttribute( 'data-tdg-drive' ) || 'continuous';
+		var speed    = num( el, 'data-tdg-speed', 26 );
+		var dir      = num( el, 'data-tdg-dir', 1 );
+		var radPct   = clamp( num( el, 'data-tdg-radius', 31 ), 15, 55 ) / 100;
+		var spread   = clamp( num( el, 'data-tdg-spread', 55 ), 0, 90 ) / 100;
+		var swirl    = clamp( num( el, 'data-tdg-swirl', 60 ), 0, 100 ) / 100;
+		var hAmt     = clamp( num( el, 'data-tdg-height', 30 ), 0, 100 ) / 100;
+		var cohesion = clamp( num( el, 'data-tdg-cohesion', 45 ), 0, 100 ) / 100;
+		var tilt     = clamp( num( el, 'data-tdg-tilt', 55 ), 0, 80 );
+		var glow     = clamp( num( el, 'data-tdg-glow', 130 ), 100, 220 ) / 100;
+		var dFade    = clamp( num( el, 'data-tdg-dfade', 45 ) / 100, 0, 1 );
+		var cardPct  = clamp( num( el, 'data-tdg-card', 9 ), 4, 60 ) / 100;
+		var TWO = Math.PI * 2;
+
+		// Per-card orbit: radius fraction, start phase, angular speed, height phase. A "sunflower" layout
+		// (golden-angle phases, area-even radii) starts the swarm evenly scattered with no pile-ups; the
+		// faster inner orbits then shear it into drifting spiral arms.
+		var rf = [], ph = [], om = [], hp = [];
+		for ( var i = 0; i < N; i++ ) {
+			rf[ i ] = 1 - spread + spread * Math.sqrt( ( i + 0.5 ) / N );
+			ph[ i ] = i * 2.399963;
+			om[ i ] = 1 + swirl * 1.0 * ( 1 - rf[ i ] );
+			hp[ i ] = orbitHash( i + 100 ) * TWO;
+		}
+
+		var cardW = 0, R = 0, W = 1;
+		function layout() {
+			W = stage.clientWidth || el.clientWidth || 1;
+			cardW = Math.max( 20, W * cardPct );
+			R = W * radPct;
+			stage.style.perspective = ( W * 1.7 ) + 'px';
+			orbit.style.transform = 'rotateX(' + tilt + 'deg)';
+			cards.forEach( function ( c ) { c.style.width = cardW + 'px'; c.style.marginLeft = ( -cardW / 2 ) + 'px'; } );
+			cards.forEach( function ( c ) { c.style.marginTop = ( -( c.offsetHeight || cardW ) / 2 ) + 'px'; } );
+		}
+		var st = { S: 0 };
+		function applyFrame() {
+			var gp = ( 1 - Math.cos( st.S * TWO * 0.35 ) ) / 2;            // 0 scattered … 1 gathered
+			var gather = cohesion * 0.5 * gp * gp;
+			for ( var i = 0; i < N; i++ ) {
+				var theta = ph[ i ] + st.S * TWO * dir * 0.5 * om[ i ];
+				var r = R * rf[ i ] * ( 1 - gather );
+				var x = Math.cos( theta ) * r, y = Math.sin( theta ) * r;
+				var z = Math.sin( st.S * TWO * 0.7 + hp[ i ] ) * hAmt * R * 0.4;
+				var near = ( Math.sin( theta ) + 1 ) / 2;
+				var sc = 0.68 + 0.32 * near;
+				var c = cards[ i ];
+				c.style.transform = 'translate3d(' + x.toFixed( 1 ) + 'px,' + y.toFixed( 1 ) + 'px,' + z.toFixed( 1 ) + 'px) rotateX(' + ( -tilt ) + 'deg) scale(' + sc.toFixed( 3 ) + ')';
+				c.style.filter = 'brightness(' + ( ( 1 - dFade * ( 1 - near ) ) * ( 1 + ( glow - 1 ) * near ) ).toFixed( 3 ) + ')';
+				c.style.zIndex = String( Math.round( near * 100 ) );
+			}
+		}
+		layout();
+		applyFrame();
+		window.addEventListener( 'resize', function () { layout(); applyFrame(); }, { passive: true } );
+		orbitDrive( el, stage, st, speed, drive, applyFrame );
+	}
+
+	/* Ring Tilt (Orbit) — a steeply tilted flat ring, like a planet's rings. The cards are NOT billboarded:
+	 * each lies in the ring plane with its top edge toward the centre (so the front of the ring reads
+	 * upright) and stands up by Card Lift, facing outward. The ring turns around an optional shaded planet
+	 * (a billboarded disc) and slowly rocks and precesses (Wobble). An original design. */
+	function initRingTilt( el ) {
+		if ( el.__tdg ) { return; }
+		el.__tdg = true;
+		var stage = el.querySelector( '.tdg__stage' );
+		var orbit = el.querySelector( '.tdg__orbit' );
+		if ( ! stage || ! orbit ) { return; }
+		var cards = Array.prototype.slice.call( orbit.querySelectorAll( '.tdg__card' ) );
+		var N = cards.length;
+		if ( ! N ) { return; }
+		var planet = orbit.querySelector( '.tdg__planet' );
+
+		var drive   = el.getAttribute( 'data-tdg-drive' ) || 'continuous';
+		var speed   = num( el, 'data-tdg-speed', 30 );
+		var dir     = num( el, 'data-tdg-dir', 1 );
+		var radPct  = clamp( num( el, 'data-tdg-radius', 40 ), 15, 55 ) / 100;
+		var tilt    = clamp( num( el, 'data-tdg-tilt', 70 ), 30, 85 );
+		var lift    = clamp( num( el, 'data-tdg-lift', 20 ), 0, 90 );
+		var wob     = clamp( num( el, 'data-tdg-wobble', 8 ), 0, 25 );
+		var corePct = clamp( num( el, 'data-tdg-core', 34 ), 10, 70 ) / 100;
+		var glow    = clamp( num( el, 'data-tdg-glow', 125 ), 100, 220 ) / 100;
+		var dFade   = clamp( num( el, 'data-tdg-dfade', 50 ) / 100, 0, 1 );
+		var cardPct = clamp( num( el, 'data-tdg-card', 12 ), 4, 60 ) / 100;
+		var TWO = Math.PI * 2;
+		var sinL = Math.sin( lift * Math.PI / 180 );
+
+		var cardW = 0, cardH = 0, R = 0, W = 1;
+		function layout() {
+			W = stage.clientWidth || el.clientWidth || 1;
+			cardW = Math.max( 20, W * cardPct );
+			R = W * radPct;
+			stage.style.perspective = ( W * 1.6 ) + 'px';
+			cards.forEach( function ( c ) { c.style.width = cardW + 'px'; c.style.marginLeft = ( -cardW / 2 ) + 'px'; } );
+			cardH = cards[ 0 ].offsetHeight || cardW;
+			cards.forEach( function ( c ) { c.style.marginTop = ( -cardH / 2 ) + 'px'; } );
+			if ( planet ) {
+				var ps = 2 * R * corePct;
+				planet.style.width = planet.style.height = ps + 'px';
+				planet.style.marginLeft = planet.style.marginTop = ( -ps / 2 ) + 'px';
+			}
+		}
+		var st = { S: 0 };
+		function applyFrame() {
+			var tNow = tilt + wob * Math.sin( st.S * TWO * 0.6 );          // rock
+			var prec = wob * 1.2 * Math.sin( st.S * TWO * 0.3 + 1 );        // precess (sideways lean)
+			orbit.style.transform = 'rotateZ(' + prec.toFixed( 2 ) + 'deg) rotateX(' + tNow.toFixed( 2 ) + 'deg)';
+			if ( planet ) { planet.style.transform = 'rotateX(' + ( -tNow ).toFixed( 2 ) + 'deg) rotateZ(' + ( -prec ).toFixed( 2 ) + 'deg)'; }
+			var lz = ( cardH / 2 ) * sinL;                                  // keep the bottom edge on the ring plane
+			for ( var i = 0; i < N; i++ ) {
+				var theta = ( i / N ) * TWO + st.S * TWO * dir * 0.5;
+				var x = Math.cos( theta ) * R, y = Math.sin( theta ) * R;
+				var near = ( Math.sin( theta ) + 1 ) / 2;
+				var deg = theta * 180 / Math.PI - 90;                       // top edge points at the centre
+				var c = cards[ i ];
+				c.style.transform = 'translate3d(' + x.toFixed( 1 ) + 'px,' + y.toFixed( 1 ) + 'px,' + lz.toFixed( 1 ) + 'px) rotateZ(' + deg.toFixed( 2 ) + 'deg) rotateX(' + ( -lift ) + 'deg)';
+				c.style.filter = 'brightness(' + ( ( 1 - dFade * ( 1 - near ) ) * ( 1 + ( glow - 1 ) * near ) ).toFixed( 3 ) + ')';
+			}
+		}
+		layout();
+		applyFrame();
+		window.addEventListener( 'resize', function () { layout(); applyFrame(); }, { passive: true } );
+		orbitDrive( el, stage, st, speed, drive, applyFrame );
+	}
+
 	/* Card Reel — a vertical cover-flow carousel. A single column of cards wraps around a horizontal
 	 * cylinder: the card at the centre sits flat and forward (the focus), the ones above and below tilt
 	 * back and recede along the curve. The reel flows up/down continuously, or "Stop at centre" snaps
@@ -3728,6 +4063,10 @@ export function initEl(el) {
   else if (el.classList.contains('tdg--iso-fan')) { initIsoFan(el); }
   else if (el.classList.contains('tdg--orbit-bloom')) { initOrbitBloom(el); }
   else if (el.classList.contains('tdg--focus-orbit')) { initFocusOrbit(el); }
+  else if (el.classList.contains('tdg--dual-orbit')) { initDualOrbit(el); }
+  else if (el.classList.contains('tdg--comet-orbit')) { initCometOrbit(el); }
+  else if (el.classList.contains('tdg--orbit-swarm')) { initOrbitSwarm(el); }
+  else if (el.classList.contains('tdg--ring-tilt')) { initRingTilt(el); }
   else if (el.classList.contains('tdg--card-reel')) { initReel(el); }
   else if (el.classList.contains('tdg--film-strip')) { initReel(el); }
   else if (el.classList.contains('tdg--wheel-carousel')) { initWheel(el); }

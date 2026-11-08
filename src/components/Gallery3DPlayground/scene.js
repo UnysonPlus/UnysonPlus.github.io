@@ -266,6 +266,31 @@ export function buildScene(design, o) {
     return `<div class="tdg tdg--${design.replace(/_/g, '-')}" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__orbit">${extra}${cells}</div></div></div>`;
   }
 
+  // Gyro Orbit · Infinity Orbit · Vortex — .tdg__orbit DOM. Mirrors gyro-orbit.php, infinity-orbit.php, vortex.php.
+  if (design === 'gyro_orbit' || design === 'infinity_orbit' || design === 'vortex') {
+    const og = {...shared, 'data-tdg-radius': o.radius, 'data-tdg-dfade': o.depth_fade, 'data-tdg-card': o.card_size, 'data-tdg-momentum': 1};
+    let extra = '';
+    let n;
+    if (design === 'gyro_orbit') {
+      const rings = Math.max(2, Math.min(4, Math.round(o.rings)));
+      Object.assign(og, {'data-tdg-dir': o.direction === 'ccw' ? -1 : 1, 'data-tdg-rings': rings, 'data-tdg-lean': o.lean, 'data-tdg-spin': o.spin, 'data-tdg-glow': o.focus_glow});
+      if (o.show_paths === 'yes') extra += '<div class="tdg__track"></div>'.repeat(rings);
+      if (o.show_core === 'yes') extra += '<div class="tdg__focus"></div>';
+      n = Math.max(12, rings * 5);
+    } else if (design === 'infinity_orbit') {
+      Object.assign(og, {'data-tdg-dir': o.direction === 'ccw' ? -1 : 1, 'data-tdg-loop': o.loop, 'data-tdg-cross': o.cross, 'data-tdg-tilt': o.tilt, 'data-tdg-paths': o.show_paths === 'yes' ? 1 : 0, 'data-tdg-glow': o.focus_glow});
+      n = 14;
+    } else {
+      Object.assign(og, {'data-tdg-dir': o.direction === 'out' ? -1 : 1, 'data-tdg-arms': o.arms, 'data-tdg-twist': o.twist, 'data-tdg-depth': o.depth, 'data-tdg-tilt': o.tilt});
+      if (o.show_core === 'yes') extra = '<div class="tdg__focus"></div>';
+      n = 24;
+    }
+    const a = attr(og);
+    let cells = '';
+    for (let i = 0; i < n; i++) cells += cardHtml(SAMPLES[i % SAMPLES.length]);
+    return `<div class="tdg tdg--${design.replace(/_/g, '-')}" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__orbit">${extra}${cells}</div></div></div>`;
+  }
+
   if (design === 'card_reel') {
     // vertical cover-flow carousel — mirror card-reel.php (a loop of cards on a cylinder).
     const n = 9;

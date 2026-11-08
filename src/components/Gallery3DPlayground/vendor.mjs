@@ -94,6 +94,9 @@ export function initEl(el) {
   else if (el.classList.contains('tdg--comet-orbit')) { initCometOrbit(el); }
   else if (el.classList.contains('tdg--orbit-swarm')) { initOrbitSwarm(el); }
   else if (el.classList.contains('tdg--ring-tilt')) { initRingTilt(el); }
+  else if (el.classList.contains('tdg--gyro-orbit')) { initGyroOrbit(el); }
+  else if (el.classList.contains('tdg--infinity-orbit')) { initInfinityOrbit(el); }
+  else if (el.classList.contains('tdg--vortex')) { initVortex(el); }
   else if (el.classList.contains('tdg--card-reel')) { initReel(el); }
   else if (el.classList.contains('tdg--film-strip')) { initReel(el); }
   else if (el.classList.contains('tdg--wheel-carousel')) { initWheel(el); }

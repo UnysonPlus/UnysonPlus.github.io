@@ -156,10 +156,24 @@ don't see it.
   upright) and stand up by **Card Lift** (0 = flat, 90 = upright, facing outward like standing stones).
   The ring turns around an optional shaded **planet** (**Show Planet**, **Planet Size**, **Planet
   Colour**) and slowly **rocks and precesses** (**Wobble**, 0 = steady). Landscape 4:3 tiles by default.
+- **Gyro Orbit** — an **atom or gyroscope**: your photos are dealt round **2–4 rings** (**Rings**), each
+  on its **own plane**, leaning by **Ring Lean** and fanned evenly round the vertical axis. Neighbouring
+  rings run **opposite ways** around a glowing core (**Show Core Glow**), and the whole gyro slowly turns
+  (**Gyro Spin**, 0 = the rings stay put). **Show Ring Paths** draws each ring as a real 3D circle. The
+  photos repeat until each ring has at least five.
+- **Infinity Orbit** — your photos loop a **figure-eight (∞)** on a tilted plane. Where the loops cross,
+  **one pass rises over the other** (**Cross Height**, 0 = they meet flat). **Loop Width** and **Loop
+  Height** shape the eight, **Plane Tilt** leans it, and **Show Path** draws the ∞ line. Direction is
+  Forward or Reverse.
+- **Vortex** — a **whirlpool**: your photos flow along a few **spiral arms** (**Arms**, 1–6) from the rim
+  into a **glowing eye**, **sinking** (**Depth**), shrinking and darkening (**Fade to Eye**) on the way,
+  then fade out and come back in at the rim. **Twist** sets how many turns an arm makes (negative turns
+  it the other way), and **Tilt** how far you look into it (0 = straight down). Its Motion direction is
+  **Inward** or **Outward** (a fountain). The photos repeat up to 24 so the arms read as spirals.
 
-Every Orbit design spins Clockwise/Counter-clockwise, scrubs on scroll (with Pin), or holds Static, and can
-be grabbed and spun by hand (**Drag to spin**, with **Drag Momentum**). The orbit-path line, the focus glow
-and the planet are decorative and hidden from screen readers. The path colour can be changed in Custom CSS
+Every Orbit design runs Continuous, scrubs on scroll (with Pin), or holds Static, and can be grabbed and
+spun by hand (**Drag to spin**, with **Drag Momentum**). The orbit-path lines, the glows and the planet
+are decorative and hidden from screen readers. The path colour can be changed in Custom CSS
 with `--tdg-track`.
 
 More designs are on the way — the picker groups them by family, so the list grows without the

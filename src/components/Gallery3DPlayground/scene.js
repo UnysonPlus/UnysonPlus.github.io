@@ -291,6 +291,30 @@ export function buildScene(design, o) {
     return `<div class="tdg tdg--${design.replace(/_/g, '-')}" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__orbit">${extra}${cells}</div></div></div>`;
   }
 
+  // Pendulum Orbit · Moon Orbit · Tiered Orbit — .tdg__orbit DOM. Mirrors pendulum-orbit.php, moon-orbit.php, tiered-orbit.php.
+  if (design === 'pendulum_orbit' || design === 'moon_orbit' || design === 'tiered_orbit') {
+    const op = {...shared, 'data-tdg-dir': o.direction === 'ccw' ? -1 : 1, 'data-tdg-radius': o.radius, 'data-tdg-glow': o.focus_glow, 'data-tdg-dfade': o.depth_fade, 'data-tdg-card': o.card_size, 'data-tdg-momentum': 1};
+    let extra = '';
+    let n;
+    if (design === 'pendulum_orbit') {
+      Object.assign(op, {'data-tdg-arc': o.arc, 'data-tdg-swing': o.swing, 'data-tdg-tilt': o.tilt});
+      n = 9;
+    } else if (design === 'moon_orbit') {
+      const pl = Math.max(2, Math.min(6, Math.round(o.planets)));
+      Object.assign(op, {'data-tdg-planets': pl, 'data-tdg-moonr': o.moon_radius, 'data-tdg-mspeed': o.moon_speed, 'data-tdg-msize': o.moon_size, 'data-tdg-tilt': o.tilt});
+      n = Math.max(12, pl * 4);
+    } else {
+      const tr = Math.max(2, Math.min(5, Math.round(o.tiers)));
+      Object.assign(op, {'data-tdg-tiers': tr, 'data-tdg-gap': o.gap, 'data-tdg-taper': o.taper, 'data-tdg-elev': o.elevation, 'data-tdg-alt': o.alternate === 'yes' ? 1 : 0});
+      if (o.show_paths === 'yes') extra = '<div class="tdg__track"></div>'.repeat(tr);
+      n = Math.max(12, tr * 7);
+    }
+    const a = attr(op);
+    let cells = '';
+    for (let i = 0; i < n; i++) cells += cardHtml(SAMPLES[i % SAMPLES.length]);
+    return `<div class="tdg tdg--${design.replace(/_/g, '-')}" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__orbit">${extra}${cells}</div></div></div>`;
+  }
+
   if (design === 'card_reel') {
     // vertical cover-flow carousel — mirror card-reel.php (a loop of cards on a cylinder).
     const n = 9;

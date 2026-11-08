@@ -97,6 +97,9 @@ export function initEl(el) {
   else if (el.classList.contains('tdg--gyro-orbit')) { initGyroOrbit(el); }
   else if (el.classList.contains('tdg--infinity-orbit')) { initInfinityOrbit(el); }
   else if (el.classList.contains('tdg--vortex')) { initVortex(el); }
+  else if (el.classList.contains('tdg--pendulum-orbit')) { initPendulumOrbit(el); }
+  else if (el.classList.contains('tdg--moon-orbit')) { initMoonOrbit(el); }
+  else if (el.classList.contains('tdg--tiered-orbit')) { initTieredOrbit(el); }
   else if (el.classList.contains('tdg--card-reel')) { initReel(el); }
   else if (el.classList.contains('tdg--film-strip')) { initReel(el); }
   else if (el.classList.contains('tdg--wheel-carousel')) { initWheel(el); }

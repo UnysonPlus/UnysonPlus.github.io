@@ -170,6 +170,19 @@ don't see it.
   then fade out and come back in at the rim. **Twist** sets how many turns an arm makes (negative turns
   it the other way), and **Tilt** how far you look into it (0 = straight down). Its Motion direction is
   **Inward** or **Outward** (a fountain). The photos repeat up to 24 so the arms read as spirals.
+- **Pendulum Orbit** — your photos spread along an **arc** of a tilted orbit (**Arc Span**) that **swings
+  back and forth like a pendulum** (**Swing**), easing to a stop at each end, instead of going round. One
+  full swing takes one **Loop Duration** (8 s by default). The card passing the front is the brightest and
+  largest. Direction picks which way it swings first; 0 Swing holds it still for **Drag to swing**.
+- **Moon Orbit** — a **solar system of photos**: the first few photos (**Planets**, 2–6) are large cards
+  orbiting the main ring, and every other photo is dealt to them as a smaller **moon** (**Moon Size**)
+  circling its planet faster (**Moon Speed**) at **Moon Orbit** distance — orbits within orbits. The photos
+  repeat until every planet has three moons.
+- **Tiered Orbit** — **stacked rings** of photos at different heights (**Tiers**, 2–5; **Tier Spacing**,
+  a % of the stage height), seen from slightly above (**View Height**). Neighbouring tiers turn **opposite
+  ways** (**Alternate Directions**). **Taper** narrows the top like a **tree** (positive) or the bottom like a
+  **tornado** (negative); 0 is a straight column. **Show Ring Paths** draws each tier. Unlike Panorama Wall,
+  which wraps around you, you look at it from outside.
 
 Every Orbit design runs Continuous, scrubs on scroll (with Pin), or holds Static, and can be grabbed and
 spun by hand (**Drag to spin**, with **Drag Momentum**). The orbit-path lines, the glows and the planet

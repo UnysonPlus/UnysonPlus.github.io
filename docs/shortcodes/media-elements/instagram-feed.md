@@ -16,6 +16,14 @@ Shows an Instagram profile on your page: the profile picture, name, @handle and 
 with the profile's posts underneath as a **grid** or a **slider** that pages with arrows. Every post
 opens on Instagram. Tabs: **Content**, **Layout**, **Animations**, **Advanced**.
 
+:::note[An add-on element]
+Instagram Feed isn't bundled with Unyson+, so sites that don't need it stay lean. Install it once per site:
+**Unyson+ → Shortcodes → Add a shortcode or design pack**, then **Upload a .zip** with
+the `instagram-feed.zip` file. It installs into
+`wp-content/uploads/unysonplus/shortcodes/` and survives plugin updates, then appears under
+**Media Elements** in the page builder.
+:::
+
 <img src="/img/shortcodes/instagram-feed-demo.png" alt="Instagram Feed: a profile header with a Follow button above a slider of eight square posts, two rows of four, with a next arrow" width="1210" />
 
 ## Live demo
@@ -115,7 +123,8 @@ element renews it automatically every week, so you don't need to paste a new one
 
 ## For developers
 
-- Shortcode tag: `instagram_feed` (Media Elements).
+- Shortcode tag: `instagram_feed` (Media Elements), an add-on installed into
+  `wp-content/uploads/unysonplus/shortcodes/instagram-feed/`.
 - Filter `fw_instagram_feed_api_base` changes the API address (default `https://graph.instagram.com`),
   for example to pin an API version.
 - The background refresh is a one-off WP-Cron event, `fw_igf_refresh`. On a site with WP-Cron disabled,

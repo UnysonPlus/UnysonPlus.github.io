@@ -79,6 +79,15 @@ closed door — all of which look great in a screenshot and are your problem aft
 **Give it the real facts and the sections appear.** That is usually a five-minute conversation and it
 is the difference between a demo and a site.
 
+## How good it has to be
+
+The creator holds itself to a written standard, not just a working site: a four-part design score,
+with a floor it has to clear before the build counts as finished. That page also explains the single
+most useful thing to know before you ask for anything - **saying "simple" gets you simple**, and the
+default sits deliberately below full spectacle.
+
+Read [the design standard](/ai-dev-kit/design-standard) if you want to know what you are going to get.
+
 ## What you get
 
 A normal WordPress site. The pages open in the Unyson+ builder; the colours and fonts are in Theme

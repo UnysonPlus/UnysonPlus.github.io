@@ -351,6 +351,115 @@
       ]
     },
     {
+      "id": "p6b-design-jury",
+      "title": "Phase 6b · The design standard",
+      "goal": "The pipeline could measure whether a created site was **fast, reachable and indexed**, and nothing in it could say whether the site was any **good** — so a generator left alone produced competent, forgettable pages forever. This phase adds the second measurement: a four-part design rubric (Design 40 / Usability 30 / Creativity 20 / Content 10), a **theatre level** chosen from what the site is for rather than from enthusiasm, and **one signature moment** per site built from the framework's own machinery.",
+      "tasks": [
+        {
+          "id": "p6b-rubric",
+          "title": "The rubric and its floor",
+          "detail": "The four weighted criteria restated for a page-builder site, scored 0–10 each with one line of evidence per score, floor **7.0 weighted and nothing below 6**. Includes the honesty rules that stop a self-scored pass from flattering itself: score the whole site rather than the home hero, attach a named defect to every point lost, and run the scoring as its own step rather than as a sentence appended by whoever just built it.",
+          "detect": {
+            "files": [
+              "docs/site-creator/design-jury.md"
+            ],
+            "symbols": [
+              {
+                "file": "docs/site-creator/design-jury.md",
+                "pattern": "Theatre levels"
+              },
+              {
+                "file": "docs/site-creator/design-jury.md",
+                "pattern": "The floor is 7.0 weighted"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/3"
+        },
+        {
+          "id": "p6b-theatre",
+          "title": "Theatre levels — Full, Measured, Quiet",
+          "detail": "The bar never moves; the spectacle does. **Measured is the default**, because reading \"award-grade\" as \"every module at once\" puts a cinematic hero on a loan application and scores *worse* — usability is 30% on its own, and a finance page drowning in motion reads as a site that is not serious about money. An explicit \"simple\", \"basic\" or \"minimal\" routes to Quiet; a brand launch or an explicit \"premium\" routes to Full. The level is named in one line with its reason before building, the way the build protocol makes you name a stack.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "skills/create-site/build-rules.md",
+                "pattern": "Name the theatre level"
+              },
+              {
+                "file": "docs/site-creator/composition.md",
+                "pattern": "theatre level"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "p6b-signature",
+          "title": "One signature moment per site",
+          "detail": "Exactly one idea a visitor would describe out loud — per site, not per page — with everything around it deliberately quiet. Qualifies only when it belongs to this business (moved to a competitor, it breaks), sits on the path the visitor already takes, survives reduced motion / keyboard / a slow phone with the fallback specified alongside it, and is built from an Animation Engine module, a Kinetic Scene, the Motion Gallery or a page transition rather than a bespoke script the person could never edit. The strongest moments are **participatory** — something the visitor operates, made of the subject itself.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "skills/create-site/build-rules.md",
+                "pattern": "One signature moment"
+              },
+              {
+                "file": "docs/site-creator/design-jury.md",
+                "pattern": "something the visitor"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "p6b-gate",
+          "title": "The scored pass in the ship gate",
+          "detail": "Check 5 of the created-site ship gate, so the design score is a gate rather than a report: a page that measures clean but scores below the floor is not finished, for the same reason a slow one is not. It gives the gate's one unautomatable instruction — *open the page and look at it* — a pass mark.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "docs/site-creator/ship-gate.md",
+                "pattern": "It is scored, not just measured"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "p6b-style-moves",
+          "title": "Per-style signature vocabularies",
+          "detail": "Every style file names the two-to-four moves its direction actually wants, the one it must **never** use, and its reduced-motion answer — so a cinematic reveal never lands on a Swiss grid, a luxury site never bounces, and a newsprint page never animates through a third dimension it does not have. Adds a sixth required section to the style contract.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "docs/site-creator/styles/swiss.md",
+                "pattern": "## The signature moment"
+              },
+              {
+                "file": "docs/site-creator/styles/luxury.md",
+                "pattern": "## The signature moment"
+              },
+              {
+                "file": "docs/site-creator/styles/terminal.md",
+                "pattern": "## The signature moment"
+              },
+              {
+                "file": "docs/site-creator/styles/README.md",
+                "pattern": "The signature moment"
+              }
+            ]
+          },
+          "status": "planned",
+          "progress": "0/4"
+        }
+      ]
+    },
+    {
       "id": "p7-gallery",
       "title": "Phase 7 · The style gallery",
       "goal": "A rendered Unyson+ example per style, so a person can see before they pick — and so the gallery doubles as proof of what the creator makes. Built on our own demos network, listed on the demos home, never a copy of anyone else's preview media.",
@@ -422,8 +531,8 @@
               }
             ]
           },
-          "status": "done",
-          "progress": "3/3"
+          "status": "in-progress",
+          "progress": "2/3"
         },
         {
           "id": "p8-handoff",
@@ -484,5 +593,5 @@
   ],
   "detected": true,
   "extensionVersion": null,
-  "generatedAt": "2026-11-04T05:23:10.437Z"
+  "generatedAt": "2026-11-09T08:22:18.440Z"
 }

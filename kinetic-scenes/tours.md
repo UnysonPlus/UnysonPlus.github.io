@@ -21,6 +21,10 @@ moves and clicks, and something drawing the eye to what matters.
 - **Move to** sends it to a layer you pick (a point on it), or to a point on the stage to leave by, along a gentle curve
   with a pointer's easing. Over a link or a button it turns into a pointing hand.
 - **Click** presses: the cursor dips, a ring ripples out and the button under it dips, all on one frame.
+- **Drag** holds the button down and drags, as a crosshair, to a point (with **Build: draw** on a layer, it draws that
+  layer's box). **Type** shows a text I-beam while text types.
+- A **pointer colour** and a **name tag** (in the Inspector) make it look like a collaborator's cursor in a shared design
+  file. [Build with cursors](./build-with-cursors.md) uses a team of them to build a whole layout.
 - The cursor always draws on top.
 
 ### Drawing the eye

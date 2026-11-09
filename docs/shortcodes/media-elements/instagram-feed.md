@@ -16,19 +16,21 @@ Shows an Instagram profile on your page: the profile picture, name, @handle and 
 with the profile's posts underneath as a **grid** or a **slider** that pages with arrows. Every post
 opens on Instagram. Tabs: **Content**, **Layout**, **Animations**, **Advanced**.
 
-:::note[An add-on element]
+:::note[Installed from the Shortcodes Library]
 Instagram Feed isn't bundled with Unyson+, so sites that don't need it stay lean. Install it once per site:
-**Unyson+ → Shortcodes → Add a shortcode or design pack**, then **Upload a .zip** with
-the `instagram-feed.zip` file. It installs into
-`wp-content/uploads/unysonplus/shortcodes/` and survives plugin updates, then appears under
-**Media Elements** in the page builder.
+**Unyson+ → Shortcodes**, find **Instagram Feed** in the **Shortcodes Library** and click **Install**. It
+then appears under **Media Elements** in the page builder. (A site without internet access can upload the
+`instagram.zip` file under **Add a shortcode or design pack → Upload a .zip** instead.)
+
+Upgrading from version 1 of the Instagram element? Pages built with it keep their feed: the old username,
+token, columns, gap, tile shape and corner settings carry over.
 :::
 
 <img src="/img/shortcodes/instagram-feed-demo.png" alt="Instagram Feed: a profile header with a Follow button above a slider of eight square posts, two rows of four, with a next arrow" width="1210" />
 
 ## Live demo
 
-**▶ [See the Instagram Feed live on the demos site](https://demos.unysonplus.com/shortcodes/instagram-feed/)** — a slider and a portrait grid you can click through.
+**▶ [See the Instagram Feed live on the demos site](https://demos.unysonplus.com/shortcodes/instagram/)** — a slider and a portrait grid you can click through.
 
 ## Two ways to fill it
 
@@ -100,6 +102,8 @@ element renews it automatically every week, so you don't need to paste a new one
 - **Columns** — desktop, tablet (up to 991px wide) and phone (up to 599px) separately.
 - **Tile Shape** — *Square*, *Portrait 4:5* (Instagram's feed shape) or *Tall 9:16* (reels).
 - **Gap Between Tiles** — none (the Instagram look), 2, 6, 12 or 20px.
+- **Tile Corners** — square, slightly rounded, rounded or very rounded.
+- **Maximum Width** and **Alignment** — keep the feed narrower than its column, placed left, centre or right.
 - **Reel & Album Icons** — show or hide the corner icons.
 - **Hover Effect** — *Zoom and darken*, *Darken only* or *None*. The Instagram glyph appears on hover.
 - **Open Instagram in a New Tab** — on by default, so visitors keep your page open.
@@ -123,8 +127,8 @@ element renews it automatically every week, so you don't need to paste a new one
 
 ## For developers
 
-- Shortcode tag: `instagram_feed` (Media Elements), an add-on installed into
-  `wp-content/uploads/unysonplus/shortcodes/instagram-feed/`.
+- Shortcode tag: `instagram` (Media Elements), a Shortcodes Library element (v2.0.0) installed into the
+  active theme's `framework-customizations/extensions/shortcodes/shortcodes/instagram/`.
 - Filter `fw_instagram_feed_api_base` changes the API address (default `https://graph.instagram.com`),
   for example to pin an API version.
 - The background refresh is a one-off WP-Cron event, `fw_igf_refresh`. On a site with WP-Cron disabled,

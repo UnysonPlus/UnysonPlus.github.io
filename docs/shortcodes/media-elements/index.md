@@ -13,6 +13,8 @@ Image, video and visual elements for the page canvas — most are available from
 - **[Video](/shortcodes/media-elements/media-video)** — an embedded video from a URL
   (YouTube, Vimeo, self-hosted).
 - **[Gallery](/shortcodes/media-elements/gallery)** — a multi-image gallery.
+- **[Instagram Feed](/shortcodes/media-elements/instagram-feed)** — an Instagram profile and
+  its posts as a grid or slider, from a connected account or images you choose.
 - **[Image Box](/shortcodes/media-elements/image-box)** — an image paired with heading,
   text and link, in many hover / overlay / caption / card designs.
 - **[Image Content](/shortcodes/media-elements/image-content)** — an image beside a block

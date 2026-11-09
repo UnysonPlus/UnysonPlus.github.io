@@ -39,6 +39,8 @@ maintainable site instead of a rough approximation.
 - A **parity harness** that measures how close the build is to the source.
 - **Pen → Shortcode** (Alpha) — paste a pen's HTML/CSS/JS in the dashboard and get an installable
   UnysonPlus shortcode `.zip` with editable text/image options.
+- **[SEO Check](./seo-check.md)** (Alpha) — audit any website's SEO the way a search engine sees it and
+  get one ranked plan, from the dashboard or your agent; on a Unyson+ site the agent can fix what it finds.
 
 ## Who it's for
 
@@ -51,6 +53,7 @@ maintainable site instead of a rough approximation.
 - **[Quick Start](./quick-start.md)** — set up WordPress and run your first build.
 - **[How It Works](./how-it-works.md)** — the capture-first, measure-don't-eyeball method.
 - **[What It Can Build](./what-it-can-build.md)** — conversions, demos, from-scratch sites, and pens → shortcodes.
+- **[SEO Check](./seo-check.md)** — check a site's SEO and get a plan with the fixes.
 - **[The Capture Service](./capture-service.md)** — the capture pipeline and its browser dashboard.
 - **[Get the Kit](./get-the-kit.md)** — requirements and the download.
 - **[Block Theme Roadmap](./block-theme-roadmap.md)** — where a second output target is headed: generating standalone WordPress **block themes**, tier by tier.

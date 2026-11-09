@@ -177,3 +177,8 @@ theme-settings:
   label: Theme Settings
   permalink: /theme-settings
   description: The theme's global Theme Settings — Header, Footer, Typography, Colors and their options
+
+seo:
+  label: SEO
+  permalink: /seo
+  description: "The SEO extension and the SEO Check — what they check, where fixes happen, and what they leave out"

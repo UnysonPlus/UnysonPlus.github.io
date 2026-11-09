@@ -103,6 +103,9 @@ export function initEl(el) {
   else if (el.classList.contains('tdg--wave-grid')) { initWaveGrid(el); }
   else if (el.classList.contains('tdg--flip-grid')) { initFlipGrid(el); }
   else if (el.classList.contains('tdg--magnet-grid')) { initMagnetGrid(el); }
+  else if (el.classList.contains('tdg--blind-reveal')) { initBlindReveal(el); }
+  else if (el.classList.contains('tdg--iris-wipe')) { initIrisWipe(el); }
+  else if (el.classList.contains('tdg--tile-dissolve')) { initTileDissolve(el); }
   else if (el.classList.contains('tdg--card-reel')) { initReel(el); }
   else if (el.classList.contains('tdg--film-strip')) { initReel(el); }
   else if (el.classList.contains('tdg--wheel-carousel')) { initWheel(el); }

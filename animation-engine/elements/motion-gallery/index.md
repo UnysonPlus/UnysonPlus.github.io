@@ -215,6 +215,34 @@ On every Grid design the photos repeat to fill the grid when it has more cells t
 photos (Flip Grid instead cycles through all of them). **Gap** sets the space between cells as a % of a
 card's width.
 
+**Reveal & Wipe**
+
+These show **one large photo at a time** and move to the next with a transition, so they work like a
+hero slider. **Photo Size** sets the photo's width as a % of the stage (it shrinks to fit the Stage
+Height), **Photo Ratio** its shape (16:9 by default) and **Corner Radius** its corners. **Autoplay** moves
+to the next photo every **Loop Duration** (4 s by default) — the transition takes part of that time and
+the photo holds still for the rest; **On Hover → Pause** stops it while the visitor looks. On
+**Scroll-scrub** the visitor's scroll moves through the photos, and scrolling back runs it in reverse.
+**Drag to change** (off by default) lets visitors drag sideways through the photos.
+
+- **Blind Reveal** — the photo is cut into **Slats** (2–40) that **turn over in 3D one after another**,
+  like Venetian blinds, each showing the next photo on its other side. Vertical slats turn sideways,
+  horizontal ones head over heels. **Stagger** sets how far apart they start (0 = all at once, 100 = a
+  slow ripple across); **Gap** leaves a thin seam between slats (0 = the photo looks whole at rest).
+- **Iris Wipe** — the next photo **opens up over the current one through a growing shape**: a **circle**
+  (an iris), a **diamond**, a **diagonal sweep** or **barn doors** parting from the middle. The incoming
+  photo settles from a slight **Zoom** while the outgoing one pushes gently in (0 = a flat wipe); **Wipe
+  Length** sets how much of each photo's time the wipe takes.
+- **Tile Dissolve** — the photo **breaks into a grid of tiles** (**Columns × Rows**) that **fly toward
+  you, spin and fade in a wave** — from the top-left corner, at random, or from the centre out — uncovering
+  the next photo underneath. **Fly Distance** at 0 makes the tiles simply shrink and fade in place.
+
+**Clicking the photo** opens the one on show — in the lightbox (On Card Click → Lightbox; the lightbox
+steps through **every** photo in the gallery) or its link (Open Link). The photo is keyboard-focusable
+when it has a click action (Enter opens it), and screen readers hear the current photo's alt text. Two
+limits: these designs show the photo itself, so **captions are not shown on the photo**, and the per-card
+**Entrance** (Style tab) has no effect — use the element's own Animations tab instead.
+
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.
 

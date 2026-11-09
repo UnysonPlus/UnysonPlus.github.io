@@ -340,6 +340,23 @@ export function buildScene(design, o) {
     return `<div class="tdg tdg--${design.replace(/_/g, '-')}${cls}" style="${style}" ${attr(g)}><div class="tdg__stage"><div class="tdg__grid">${body}</div></div>${pool}</div>`;
   }
 
+  // Reveal & Wipe family (blind_reveal · iris_wipe · tile_dissolve) — an empty .tdg__frame + a hidden pool
+  // the runtime reads the photo URLs from. Mirrors blind-reveal.php, iris-wipe.php, tile-dissolve.php.
+  if (design === 'blind_reveal' || design === 'iris_wipe' || design === 'tile_dissolve') {
+    const rv = {...shared, 'data-tdg-dir': o.direction === 'back' ? -1 : 1, 'data-tdg-frame': o.frame_size, 'data-tdg-allowdrag': 0, 'data-tdg-momentum': 1};
+    let cls = '';
+    if (design === 'blind_reveal') {
+      Object.assign(rv, {'data-tdg-slats': o.slats, 'data-tdg-orient': o.orientation === 'h' ? 'h' : 'v', 'data-tdg-stagger': o.stagger, 'data-tdg-gap': o.gap});
+      if (o.orientation === 'h') cls = ' tdg--blind-h';
+    } else if (design === 'iris_wipe') {
+      Object.assign(rv, {'data-tdg-shape': o.shape, 'data-tdg-zoom': o.zoom, 'data-tdg-dur': o.transition});
+    } else {
+      Object.assign(rv, {'data-tdg-cols': o.columns, 'data-tdg-rows': o.rows, 'data-tdg-pattern': Math.max(0, ['corner', 'random', 'center'].indexOf(o.pattern)), 'data-tdg-fly': o.fly});
+    }
+    const pool = SAMPLES.map((s) => `<div class="tdg__poolitem"><div class="tdg__inner"><span class="tdg__link"><img class="tdg__img" src="${s}" alt=""></span></div></div>`).join('');
+    return `<div class="tdg tdg--${design.replace(/_/g, '-')}${cls}" style="${style}" ${attr(rv)}><div class="tdg__stage"><div class="tdg__frame"></div></div><div class="tdg__pool" hidden>${pool}</div></div>`;
+  }
+
   if (design === 'card_reel') {
     // vertical cover-flow carousel — mirror card-reel.php (a loop of cards on a cylinder).
     const n = 9;

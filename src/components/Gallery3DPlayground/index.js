@@ -645,9 +645,47 @@ const DESIGNS = {
       ...SHARED({drive: 'continuous', speed: 10, ratio: '1-1', corner: 6, dir: 'roam', driveChoices: [['continuous', 'Drift when idle'], ['static', 'Static']], dirChoices: [['roam', 'Roam the whole grid'], ['center', 'Stay near the centre']]}),
     ],
   },
+  blind_reveal: {
+    group: 'Reveal & Wipe',
+    label: 'Blind Reveal',
+    blurb: 'One big photo cut into slats that turn over one after another, like Venetian blinds, to show the next photo.',
+    controls: [
+      sl('slats', 'Slats', 10, 2, 40),
+      se('orientation', 'Slats', 'v', [['v', 'Vertical'], ['h', 'Horizontal']]),
+      sl('stagger', 'Stagger (%)', 50, 0, 100),
+      sl('gap', 'Gap (px)', 2, 0, 20),
+      sl('frame_size', 'Photo Size (%)', 70, 20, 100),
+      ...SHARED({drive: 'continuous', speed: 4, ratio: '16-9', corner: 10, dir: 'fwd', driveChoices: [['continuous', 'Autoplay'], ['static', 'Static']], dirChoices: [['fwd', 'Forward'], ['back', 'Backward']]}),
+    ],
+  },
+  iris_wipe: {
+    group: 'Reveal & Wipe',
+    label: 'Iris Wipe',
+    blurb: 'The next photo opens up over the current one through a growing circle, diamond, diagonal sweep or barn doors.',
+    controls: [
+      se('shape', 'Shape', 'circle', [['circle', 'Circle'], ['diamond', 'Diamond'], ['diagonal', 'Diagonal sweep'], ['doors', 'Barn doors']]),
+      sl('zoom', 'Zoom (%)', 12, 0, 40),
+      sl('transition', 'Wipe Length (%)', 45, 15, 90),
+      sl('frame_size', 'Photo Size (%)', 70, 20, 100),
+      ...SHARED({drive: 'continuous', speed: 4, ratio: '16-9', corner: 10, dir: 'fwd', driveChoices: [['continuous', 'Autoplay'], ['static', 'Static']], dirChoices: [['fwd', 'Forward'], ['back', 'Backward']]}),
+    ],
+  },
+  tile_dissolve: {
+    group: 'Reveal & Wipe',
+    label: 'Tile Dissolve',
+    blurb: 'One big photo breaks into tiles that fly toward you, spin and fade in a wave, uncovering the next photo.',
+    controls: [
+      sl('columns', 'Columns', 8, 2, 20),
+      sl('rows', 'Rows', 5, 2, 14),
+      se('pattern', 'Order', 'corner', [['corner', 'From the corner'], ['random', 'Random'], ['center', 'From the centre out']]),
+      sl('fly', 'Fly Distance (%)', 60, 0, 100),
+      sl('frame_size', 'Photo Size (%)', 70, 20, 100),
+      ...SHARED({drive: 'continuous', speed: 4, ratio: '16-9', corner: 10, dir: 'fwd', driveChoices: [['continuous', 'Autoplay'], ['static', 'Static']], dirChoices: [['fwd', 'Forward'], ['back', 'Backward']]}),
+    ],
+  },
 };
 
-const GROUP_ORDER = ['3D & Perspective', 'Carousel & Flow', 'Isometric', 'Orbit', 'Grid'];
+const GROUP_ORDER = ['3D & Perspective', 'Carousel & Flow', 'Isometric', 'Orbit', 'Grid', 'Reveal & Wipe'];
 const GROUPS = GROUP_ORDER.map((g) => [g, Object.keys(DESIGNS).filter((k) => DESIGNS[k].group === g)]);
 
 const defaultsFor = (d) => Object.fromEntries(DESIGNS[d].controls.map((c) => [c.id, c.def]));

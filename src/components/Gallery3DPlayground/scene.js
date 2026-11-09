@@ -315,6 +315,31 @@ export function buildScene(design, o) {
     return `<div class="tdg tdg--${design.replace(/_/g, '-')}" style="${style}" ${a}><div class="tdg__stage"><div class="tdg__orbit">${extra}${cells}</div></div></div>`;
   }
 
+  // Grid family (wave_grid · flip_grid · magnet_grid) — a cols×rows grid on .tdg__grid. Mirrors
+  // wave-grid.php, flip-grid.php (two-sided cards + a hidden pool), magnet-grid.php.
+  if (design === 'wave_grid' || design === 'flip_grid' || design === 'magnet_grid') {
+    const cols = Math.max(1, Math.round(o.columns)), rows = Math.max(1, Math.round(o.rows)), cells = cols * rows;
+    const g = {...shared, 'data-tdg-cols': cols, 'data-tdg-gap': o.gap, 'data-tdg-card': o.card_size};
+    const inner = (s) => `<div class="tdg__inner"><span class="tdg__link"><img class="tdg__img" src="${s}" alt=""></span></div>`;
+    let body = '', pool = '', cls = '';
+    if (design === 'wave_grid') {
+      Object.assign(g, {'data-tdg-dir': o.direction === 'in' ? -1 : 1, 'data-tdg-tilt': o.tilt, 'data-tdg-amp': o.amplitude, 'data-tdg-wl': o.wavelength,
+        'data-tdg-origin': Math.max(0, ['center', 'left', 'corner'].indexOf(o.origin)), 'data-tdg-glow': o.focus_glow, 'data-tdg-momentum': 1});
+      for (let i = 0; i < cells; i++) body += cardHtml(SAMPLES[i % SAMPLES.length]);
+    } else if (design === 'flip_grid') {
+      const n = SAMPLES.length, imgFor = (j, p) => ((j + p * (cells + 1)) % n + n) % n;
+      Object.assign(g, {'data-tdg-dir': o.direction === 'back' ? -1 : 1, 'data-tdg-axis': o.flip_axis === 'x' ? 'x' : 'y',
+        'data-tdg-order': Math.max(0, ['wave', 'random', 'rows'].indexOf(o.order)), 'data-tdg-tilt': o.tilt, 'data-tdg-allowdrag': 0, 'data-tdg-momentum': 1});
+      for (let j = 0; j < cells; j++) body += `<div class="tdg__card"><div class="tdg__face tdg__face--a">${inner(SAMPLES[imgFor(j, 0)])}</div><div class="tdg__face tdg__face--b" aria-hidden="true">${inner(SAMPLES[imgFor(j, 1)])}</div></div>`;
+      pool = `<div class="tdg__pool" hidden>${SAMPLES.map((s) => `<div class="tdg__poolitem">${inner(s)}</div>`).join('')}</div>`;
+      if (o.flip_axis === 'x') cls = ' tdg--flip-x';
+    } else {
+      Object.assign(g, {'data-tdg-roam': o.direction === 'center' ? 0.4 : 1, 'data-tdg-reach': o.reach, 'data-tdg-lift': o.lift, 'data-tdg-lean': o.lean, 'data-tdg-glow': o.focus_glow, 'data-tdg-allowdrag': 0});
+      for (let i = 0; i < cells; i++) body += cardHtml(SAMPLES[i % SAMPLES.length]);
+    }
+    return `<div class="tdg tdg--${design.replace(/_/g, '-')}${cls}" style="${style}" ${attr(g)}><div class="tdg__stage"><div class="tdg__grid">${body}</div></div>${pool}</div>`;
+  }
+
   if (design === 'card_reel') {
     // vertical cover-flow carousel — mirror card-reel.php (a loop of cards on a cylinder).
     const n = 9;

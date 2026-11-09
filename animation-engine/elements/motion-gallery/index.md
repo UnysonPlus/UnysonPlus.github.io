@@ -189,6 +189,32 @@ spun by hand (**Drag to spin**, with **Drag Momentum**). The orbit-path lines, t
 are decorative and hidden from screen readers. The path colour can be changed in Custom CSS
 with `--tdg-track`.
 
+**Grid**
+
+- **Wave Grid** — your photos in a **Columns × Rows** grid lying on a tilted floor (**Floor Tilt**), with a
+  **ripple running across it**: each photo rises on the crest (**Wave Height**), tips with the slope of the
+  wave and catches the light (**Crest Brightness**). **Wave Starts From** the centre (rings), the left edge
+  (straight swells) or the top-left corner (diagonal); **Wavelength** sets how many photos lie between two
+  crests (small = choppy, large = long swells). Motion direction is **Outward** or **Inward**. At Floor Tilt
+  0 the grid faces you and the wave pushes the photos straight out toward you.
+- **Flip Grid** — a face-on grid of **two-sided cards**. Every **Loop Duration** (4 s by default) a wave of
+  **3D flips** sweeps across it (**Flip Order**: a diagonal wave, random, or row by row) and each card turns
+  over (**Flip**: sideways or head over heels) to show **the next photo** — so a small grid works through
+  the **whole gallery**, set after set. Each card pops slightly toward you as it turns. Clicking a card
+  opens the lightbox on that photo, and the lightbox steps through **every** photo in the gallery, not only
+  the ones on show. **Drag to flip** (off by default) lets visitors flip through by dragging sideways; on
+  Scroll-scrub the visitor's scroll does the flipping.
+- **Magnet Grid** — a face-on grid that **follows the pointer**: the cards within **Reach** lift toward you
+  (**Lift**), grow, brighten and turn to face the pointer, and the whole grid leans its way (**Grid Lean**).
+  When no pointer is over it — or between touches on a phone — an invisible pointer **drifts** across the
+  grid (**Drift when idle**; Direction: **Roam the whole grid** or **Stay near the centre**), so it is never
+  still. On Scroll-scrub the visitor's scroll moves that drifting pointer; moving the real pointer over the
+  grid always takes over.
+
+On every Grid design the photos repeat to fill the grid when it has more cells than the gallery has
+photos (Flip Grid instead cycles through all of them). **Gap** sets the space between cells as a % of a
+card's width.
+
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.
 

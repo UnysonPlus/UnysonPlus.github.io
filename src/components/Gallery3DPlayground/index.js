@@ -597,9 +597,57 @@ const DESIGNS = {
       ...SHARED({drive: 'continuous', speed: 26, ratio: '1-1', corner: 6, dir: 'cw', driveChoices: ORBIT_DRIVES, dirChoices: ORBIT_DIRS}),
     ],
   },
+  wave_grid: {
+    group: 'Grid',
+    label: 'Wave Grid',
+    blurb: 'A grid of photos on a tilted floor with a ripple running across it — each photo rises on the crest and tips with the wave.',
+    controls: [
+      sl('columns', 'Columns', 6, 2, 12),
+      sl('rows', 'Rows', 4, 1, 8),
+      sl('gap', 'Gap (%)', 14, 0, 80),
+      sl('tilt', 'Floor Tilt (°)', 55, 0, 80),
+      sl('amplitude', 'Wave Height (%)', 35, 0, 120),
+      sl('wavelength', 'Wavelength (photos)', 3.5, 1.5, 10, 0.5),
+      se('origin', 'Wave Starts From', 'center', [['center', 'The centre (rings)'], ['left', 'The left edge'], ['corner', 'The top-left corner']]),
+      sl('focus_glow', 'Crest Brightness (%)', 130, 100, 220),
+      sl('card_size', 'Card Size (%)', 11, 4, 40),
+      ...SHARED({drive: 'continuous', speed: 5, ratio: '1-1', corner: 6, dir: 'out', driveChoices: ORBIT_DRIVES, dirChoices: [['out', 'Outward'], ['in', 'Inward']]}),
+    ],
+  },
+  flip_grid: {
+    group: 'Grid',
+    label: 'Flip Grid',
+    blurb: 'A grid of two-sided cards: every few seconds a wave of 3D flips turns each one over to the next photo, cycling through the whole gallery.',
+    controls: [
+      sl('columns', 'Columns', 4, 1, 10),
+      sl('rows', 'Rows', 3, 1, 8),
+      sl('gap', 'Gap (%)', 8, 0, 60),
+      se('flip_axis', 'Flip', 'y', [['y', 'Sideways'], ['x', 'Head over heels']]),
+      se('order', 'Flip Order', 'wave', [['wave', 'A diagonal wave'], ['random', 'Random'], ['rows', 'Row by row']]),
+      sl('tilt', 'Tilt (°)', 8, 0, 40),
+      sl('card_size', 'Card Size (%)', 15, 4, 40),
+      ...SHARED({drive: 'continuous', speed: 4, ratio: '1-1', corner: 6, dir: 'fwd', driveChoices: ORBIT_DRIVES, dirChoices: [['fwd', 'Forward'], ['back', 'Backward']]}),
+    ],
+  },
+  magnet_grid: {
+    group: 'Grid',
+    label: 'Magnet Grid',
+    blurb: 'Move your pointer over it: the nearest cards lift, grow and turn toward it while the grid leans its way. Idle, an invisible pointer drifts across.',
+    controls: [
+      sl('columns', 'Columns', 5, 2, 12),
+      sl('rows', 'Rows', 3, 1, 8),
+      sl('gap', 'Gap (%)', 14, 0, 80),
+      sl('reach', 'Reach (%)', 22, 5, 60),
+      sl('lift', 'Lift (%)', 90, 0, 150),
+      sl('lean', 'Grid Lean (°)', 10, 0, 30),
+      sl('focus_glow', 'Focus Brightness (%)', 130, 100, 220),
+      sl('card_size', 'Card Size (%)', 12, 4, 40),
+      ...SHARED({drive: 'continuous', speed: 10, ratio: '1-1', corner: 6, dir: 'roam', driveChoices: [['continuous', 'Drift when idle'], ['static', 'Static']], dirChoices: [['roam', 'Roam the whole grid'], ['center', 'Stay near the centre']]}),
+    ],
+  },
 };
 
-const GROUP_ORDER = ['3D & Perspective', 'Carousel & Flow', 'Isometric', 'Orbit'];
+const GROUP_ORDER = ['3D & Perspective', 'Carousel & Flow', 'Isometric', 'Orbit', 'Grid'];
 const GROUPS = GROUP_ORDER.map((g) => [g, Object.keys(DESIGNS).filter((k) => DESIGNS[k].group === g)]);
 
 const defaultsFor = (d) => Object.fromEntries(DESIGNS[d].controls.map((c) => [c.id, c.def]));

@@ -100,6 +100,9 @@ export function initEl(el) {
   else if (el.classList.contains('tdg--pendulum-orbit')) { initPendulumOrbit(el); }
   else if (el.classList.contains('tdg--moon-orbit')) { initMoonOrbit(el); }
   else if (el.classList.contains('tdg--tiered-orbit')) { initTieredOrbit(el); }
+  else if (el.classList.contains('tdg--wave-grid')) { initWaveGrid(el); }
+  else if (el.classList.contains('tdg--flip-grid')) { initFlipGrid(el); }
+  else if (el.classList.contains('tdg--magnet-grid')) { initMagnetGrid(el); }
   else if (el.classList.contains('tdg--card-reel')) { initReel(el); }
   else if (el.classList.contains('tdg--film-strip')) { initReel(el); }
   else if (el.classList.contains('tdg--wheel-carousel')) { initWheel(el); }

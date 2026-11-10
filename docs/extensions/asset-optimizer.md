@@ -42,6 +42,37 @@ The list is shown in the order the combined file uses, with the **theme styleshe
 end** (parent then child) so the cascade is preserved, your child theme's CSS still has the authority
 to override the framework and shortcode styles.
 
+### CSS combining scope
+
+Two ways to build that combined file, and the choice is about **which visitor you are optimising
+for**.
+
+**Site-wide (the default)** builds *one* bundle from every stylesheet found across the site and
+serves the same file on every page. The first page a visitor opens pays to download it; every page
+after that is a cache hit and costs nothing. The trade is that a given page carries some CSS it does
+not personally use.
+
+**Per-page** builds a separate file for each page, containing only the stylesheets that page actually
+uses. Any single page is smaller — but a visitor who reads four pages downloads four stylesheets that
+are mostly the same bytes over again, and none of them warms the cache for the next.
+
+:::note[Why the default changed]
+Per-page used to be the default, and it is the one that scores better in PageSpeed. That is a
+measurement artefact rather than a real advantage: an audit loads **one** page, so it can never
+observe the saving that a shared bundle exists to produce, while it always sees the unused bytes that
+bundle carries. Optimising for the audit therefore makes the second and third page of a real visit
+slower. Site-wide became the default in Asset Optimizer **1.1.76**.
+
+Changing the default only affects sites that have never saved this setting. If you have already
+chosen a scope, your choice is kept.
+:::
+
+**Choose per-page when** most visitors land on one page and leave — a single landing page, a campaign
+page, a one-page site. There is no second page for the cache to pay off on, so the smaller file wins.
+**Choose site-wide when** people browse: a blog, a shop, a brochure site with a real menu.
+
+JavaScript is always combined per-page, whichever scope you pick.
+
 ### Finding things in a long list
 
 A real site registers a couple of hundred stylesheets, so the list is folded into **collapsible
@@ -614,13 +645,20 @@ that would be rude:
   into a download.
 - Images the browser has already loaded are skipped.
 
-### It will not change your PageSpeed score
+### It will not improve your PageSpeed score — and can lower it
 
-Worth being plain about: **Lighthouse never scrolls the page.** Your below-the-fold images
-therefore never load during an audit whether this is on or off, so the number will not move —
-and the bytes now land inside the measurement window, which if anything counts very slightly
-against you. The field data in PageSpeed will not move either, because LCP, INP and CLS are all
-about the first screen and interaction.
+Worth being plain about, and this page used to get it wrong. It is true that **Lighthouse never
+scrolls the page**, so you might expect the warmed images to fall outside the audit entirely. They do
+not: warming starts from the page's `load` event **whether or not anyone scrolls**, so an audit does
+download them, inside its own measurement window. On a measured site that turned a 0.7 MB phone page
+load into roughly 2 MB.
+
+So the honest expectation is that this makes the number slightly *worse*, not better — it adds bytes
+and network contention to the measured window and returns nothing a one-page audit can see. The field
+data will not move either way, because LCP, INP and CLS are all about the first screen and
+interaction.
+
+Leave it off on a page whose images are large, where that extra traffic is most of the page weight.
 
 Turn this on for readers on a long, image-heavy page. Do not turn it on to chase a score; they
 are different jobs.
@@ -762,7 +800,7 @@ asset payload are still the work. This is the layer on top.
 eligible, or excluded — which is also the quickest way to confirm one of your exclusions is doing
 what you meant.
 
-**It pairs well with per-page CSS.** With *CSS combining scope* set to per-page, each page's combined
+**It pairs well with per-page CSS.** If you have switched *CSS combining scope* to per-page, each page's combined
 stylesheet is generated on its first view. A prefetch is a real request, so it warms that cache
 ahead of the visit too.
 

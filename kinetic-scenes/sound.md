@@ -13,6 +13,8 @@ Audio sits on its own rows below the layers, with a waveform, so you can line up
 
 - Drag to move, drag an edge to trim; set **volume**, **fade in** and **fade out**, and its **role** (voice, music or
   sound effect) in the Inspector.
+- **Loop** repeats a clip (music shorter than the scene) until its length runs out or the scene ends; see
+  [Long videos](./long-videos.md#music-under-a-long-video).
 - A voice-over longer than the scene makes the scene as long as it.
 - **On a web page** a scene with sound starts muted with a small **Tap for sound** button, because browsers block sound
   until the visitor interacts. Presentations and full screen play sound from the first click, and video exports mix it in.

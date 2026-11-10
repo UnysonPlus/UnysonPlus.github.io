@@ -50,6 +50,11 @@ whether the Studio may reach apps on your computer: allow it for AI.
 - **Very busy scenes on phones.** A scene with around 150 animated layers plays smoothly on desktop, but slows down on a
   mid-range phone (about 11 frames a second in our test). For pages people will open on phones, keep scenes to a few
   dozen moving layers at once; the demo scene plays at about 41 frames a second on the same phone.
+- **One scene is at most 10 minutes.** A longer video is made of chapters, rendered one by one and joined; see
+  [Long videos](./long-videos.md). Renders always cover the whole scene.
+- **Very large scenes in the Studio.** A normal scene plays at full speed while you edit; one with about 1,500 layers plays
+  at around 26 frames a second in the Studio, and opening it or jumping far into it takes a few seconds. Exports are
+  exact either way.
 - **The scene file format can still change** between Beta versions. Pages and embeds you've exported keep working,
   because each keeps the player version it was made with; scene files are upgraded when you open them.
 - **Fonts** come from Google Fonts or addresses you give. A font that can't load falls back to a system font.

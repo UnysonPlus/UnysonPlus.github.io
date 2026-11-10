@@ -1323,6 +1323,12 @@
           "status": "done"
         },
         {
+          "id": "p24-long-videos",
+          "title": "Long videos",
+          "detail": "Videos longer than a reel, made as chapters: a scene renders whole up to its 10-minute limit (the old frame cap cut a long scene short without a word), the AI Dev Kit joins rendered chapters into one video (losslessly when they match) and writes the YouTube chapter list, music clips can Loop to the end of the scene, and long, busy scenes play several times more smoothly in the Studio (the timeline no longer redraws every row on every frame).",
+          "status": "done"
+        },
+        {
           "id": "p24-swarm",
           "title": "Build with cursors",
           "detail": "A team of coloured, named cursors builds a scene's opening in front of the viewer, like collaborators in a shared design file: each box dragged out with a live W x H badge over a grey placeholder, each line of text typed in with an I-beam, then the scene plays on. Written as ordinary cursor layers and clips (new presets Build: draw, Drag and Type; cursors get a colour and a name tag). Agents get it as the scene_swarm tool and studio-cli swarm.",

@@ -683,9 +683,59 @@ const DESIGNS = {
       ...SHARED({drive: 'continuous', speed: 4, ratio: '16-9', corner: 10, dir: 'fwd', driveChoices: [['continuous', 'Autoplay'], ['static', 'Static']], dirChoices: [['fwd', 'Forward'], ['back', 'Backward']]}),
     ],
   },
+  spotlight_wall: {
+    group: 'Spotlight & Focus',
+    label: 'Spotlight Wall',
+    blurb: 'A wall of photos in shadow; a spotlight glides from one to the next, bringing it into full colour. Hover to steer it.',
+    controls: [
+      sl('columns', 'Columns', 5, 1, 12),
+      sl('rows', 'Rows', 3, 1, 8),
+      sl('gap', 'Gap (%)', 10, 0, 80),
+      sl('spot_size', 'Spotlight Size (%)', 80, 30, 300, 5),
+      sl('shadow', 'Shadow Brightness (%)', 35, 0, 100),
+      sl('greyscale', 'Shadow Greyscale (%)', 100, 0, 100),
+      sl('lift', 'Lift (%)', 8, 0, 30),
+      sl('move_time', 'Move Time (%)', 35, 10, 90),
+      se('order', 'Order', 'random', [['random', 'Random'], ['reading', 'Reading order']]),
+      se('follow_pointer', 'Follow Pointer', 'yes', YES_NO),
+      sl('card_size', 'Card Size (%)', 13, 3, 40),
+      ...SHARED({drive: 'continuous', speed: 3, ratio: '1-1', corner: 6, dir: 'fwd', driveChoices: [['continuous', 'Autoplay'], ['static', 'Static']], dirChoices: [['fwd', 'Forward'], ['back', 'Backward']]}),
+    ],
+  },
+  focus_pull: {
+    group: 'Spotlight & Focus',
+    label: 'Focus Pull',
+    blurb: 'Photos float at several depths and the focus racks between them: one layer sharp, the others blurred and dimmed.',
+    controls: [
+      sl('layers', 'Layers', 3, 2, 5),
+      sl('photos', 'Photos', 15, 4, 40),
+      sl('depth', 'Depth (%)', 45, 10, 120),
+      sl('blur', 'Blur (px)', 7, 0, 20),
+      sl('dim', 'Dim (%)', 30, 0, 80),
+      sl('drift', 'Drift (%)', 30, 0, 100),
+      sl('move_time', 'Rack Time (%)', 40, 10, 90),
+      sl('card_size', 'Card Size (%)', 15, 3, 40),
+      ...SHARED({drive: 'continuous', speed: 3, ratio: '1-1', corner: 6, dir: 'front', driveChoices: [['continuous', 'Autoplay'], ['static', 'Static']], dirChoices: [['front', 'Start at the front'], ['back', 'Start at the back']]}),
+    ],
+  },
+  loupe: {
+    group: 'Spotlight & Focus',
+    label: 'Loupe',
+    blurb: 'A mosaic of small photos with a magnifying lens gliding over it. Hover to move the lens yourself.',
+    controls: [
+      sl('columns', 'Columns', 6, 2, 14),
+      sl('rows', 'Rows', 4, 1, 10),
+      sl('gap', 'Gap (%)', 8, 0, 60),
+      sl('lens_size', 'Lens Size (%)', 24, 8, 60),
+      sl('zoom', 'Zoom (%)', 220, 120, 500, 10),
+      se('follow_pointer', 'Follow Pointer', 'yes', YES_NO),
+      sl('card_size', 'Card Size (%)', 10, 3, 30),
+      ...SHARED({drive: 'continuous', speed: 12, ratio: '1-1', corner: 6, dir: 'roam', driveChoices: [['continuous', 'Drift when idle'], ['static', 'Static']], dirChoices: [['roam', 'Roam the whole mosaic'], ['center', 'Stay near the centre']]}),
+    ],
+  },
 };
 
-const GROUP_ORDER = ['3D & Perspective', 'Carousel & Flow', 'Isometric', 'Orbit', 'Grid', 'Reveal & Wipe'];
+const GROUP_ORDER = ['3D & Perspective', 'Carousel & Flow', 'Isometric', 'Orbit', 'Grid', 'Reveal & Wipe', 'Spotlight & Focus'];
 const GROUPS = GROUP_ORDER.map((g) => [g, Object.keys(DESIGNS).filter((k) => DESIGNS[k].group === g)]);
 
 const defaultsFor = (d) => Object.fromEntries(DESIGNS[d].controls.map((c) => [c.id, c.def]));

@@ -243,6 +243,34 @@ when it has a click action (Enter opens it), and screen readers hear the current
 limits: these designs show the photo itself, so **captions are not shown on the photo**, and the per-card
 **Entrance** (Style tab) has no effect — use the element's own Animations tab instead.
 
+**Spotlight & Focus**
+
+These draw the eye to one photo, or one part of the gallery, at a time.
+
+- **Spotlight Wall** — a **Columns × Rows** wall of photos in shadow (**Shadow Brightness**, **Shadow
+  Greyscale**); a **spotlight glides from photo to photo**, holds, and moves on — in a random order that
+  never repeats a photo twice in a row, or in reading order — bringing the photos in its pool up to full
+  colour and growing them slightly (**Lift**). **Spotlight Size** sets the pool of light (bigger lights the
+  neighbours too), **Move Time** how much of each stop is spent gliding, and **Autoplay**'s Loop Duration how
+  long each stop lasts (3 s by default; Direction runs the order forward or backward). With **Follow
+  Pointer** on (the default), the spotlight follows the visitor's pointer while they hover.
+- **Focus Pull** — your photos float at several depths (**Layers**, 2–5; **Depth** between them), like a
+  scene through a camera; the **focus racks** from the front layer to the back and back again (or starts
+  at the back). The layer in focus is sharp and bright; the others **blur** (**Blur**, more the further
+  away) and dim (**Dim**), and the photos in front of the focus turn partly see-through, like foreground
+  blur, so the sharp layer always shows. **Drift** adds a gentle sideways parallax; **Photos** sets how
+  many float in the scene (the gallery repeats to fill it); **Rack Time** how much of each stop the focus
+  spends moving.
+- **Loupe** — a **Columns × Rows mosaic** of small photos with a round **magnifying lens** gliding over
+  it; inside the lens the photos show enlarged (**Zoom**, 220% by default). **Lens Size** and **Lens Ring
+  Colour** style the lens. With **Follow Pointer** on, the lens follows the visitor's pointer while they
+  hover; when idle it drifts (Direction: **Roam the whole mosaic** or **Stay near the centre**). With
+  Motion **Static** the lens waits in the middle until someone hovers.
+
+All three show the photos as cards, so captions, **click to open** (lightbox / link) and the per-card
+**Entrance** work as on the other designs. On Loupe, clicks go to the photo beneath the lens. Scroll-scrub
+moves the spotlight, the focus, or the lens with the visitor's scroll.
+
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.
 

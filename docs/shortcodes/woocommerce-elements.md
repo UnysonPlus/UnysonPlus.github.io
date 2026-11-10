@@ -37,9 +37,9 @@ Image Ratio (Natural · Square · Portrait · Landscape), Text Alignment, and **
 **Quick View** adds a button on each card that opens a modal (image, price, rating, short
 description, add-to-cart, and a full-details link) without leaving the page.
 
-<img src="/img/shortcodes/products-content.png" alt="Products options — Content tab" width="840" />
+<img src="/img/shortcodes/products-content.png" alt="Products options — Content tab" width="1200" />
 
-<img src="/img/shortcodes/products-style.png" alt="Products options — Style tab" width="840" />
+<img src="/img/shortcodes/products-style.png" alt="Products options — Style tab" width="1200" />
 
 ## Product Categories
 

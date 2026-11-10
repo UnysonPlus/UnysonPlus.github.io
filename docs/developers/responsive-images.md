@@ -133,7 +133,7 @@ You rarely build it by hand. **`fw_image_art_resolve( $main_id, $main_ratio, $fo
 | | |
 |---|---|
 | **Formats** | JPG, PNG, WebP. Other files (SVG, GIF) return nothing, and the caller falls back to the uncropped image. |
-| **Widths** | 320, 400, 480, 560, 640, 768, 900, 1024, 1280, 1600, plus the crop's own full width; never upscaled. Filter: `fw_image_crop_widths`. |
+| **Widths** | 320, 400, 480, 560, 640, 736, 768, 900, 1024, 1280, 1600, plus the crop's own full width; never upscaled. 736 covers a 412px phone at 1.75x (needs ~721px), which would otherwise get the crop's full-width file. Filter: `fw_image_crop_widths`. |
 | **Quality** | 82 by default (`fw_image_crop_quality`); the Asset Optimizer sets its own WebP quality. |
 | **Storage** | `uploads/unysonplus/image-crops/<id>-<name>-<w>x<h>-<sig>.<ext>`. The signature covers ratio, crop box, file size, modification time and quality, so changing any of them makes new files. |
 | **Made** | On first request, then reused. A WebP copy is made through the `fw_image_rendition_saved` action when the Asset Optimizer is on. |
@@ -189,7 +189,7 @@ Both helpers live in `framework/extensions/shortcodes/includes/responsive-image-
 
 ## Deferred loading and preloads {#loading}
 
-**Later slides** (or any image a script reveals) use `'lazy_attrs' => true`. Nothing loads until the script restores the attributes: the `<source>` elements **first**, then the `<img>`. A browser picks a `<picture>`'s source when the `<img>` starts loading, so the order matters. The Slider's script does this for the active slide and its neighbours on every move, clones included.
+**Later slides** (or any image a script reveals) use `'lazy_attrs' => true`. Nothing loads until the script restores the attributes: the `<source>` elements **first**, then the `<img>`. A browser picks a `<picture>`'s source when the `<img>` starts loading, so the order matters. The Slider's script does this for the visible slides at once, the next slide once the page has loaded and the browser is idle, both neighbours as soon as someone touches or focuses the slider, and the slide it moves to (plus its neighbours) on every move, clones included. Neighbours are not fetched at start-up, so they never compete with the first screen for bandwidth.
 
 **The page's main image** uses `'fetchpriority' => 'high', 'preload' => true`. `fw_image_tag()` then prints one preload link per device range, each with its own `media`:
 

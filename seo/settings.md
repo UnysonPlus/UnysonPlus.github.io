@@ -66,7 +66,9 @@ afterwards.
 - Anything set to no index is left out automatically — a single page in its own SEO panel, or
   a whole content type in the settings. A sitemap should never advertise a URL whose page
   tells crawlers to ignore it.
-- Opening a sitemap in a browser shows a readable table rather than raw XML.
+- The sitemap is plain XML, written for search engines. Browsers show it as raw XML: the old
+  readable table relied on XSLT, which browsers are removing. For a list people can read, put an
+  [HTML sitemap](./html-sitemap.md) on a page.
 - WordPress publishes its own sitemap at `/wp-sitemap.xml`; the extension switches that off by
   default so your site has one sitemap rather than two competing ones.
 

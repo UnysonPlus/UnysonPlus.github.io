@@ -97,6 +97,23 @@ If something looks wrong, add `?fw_ao_nopurge=1` to the URL. That serves the ful
 that one request, so you can tell immediately whether this feature is the cause.
 :::
 
+### Unused keyframes
+
+A purge also drops `@keyframes` blocks that nothing left in the stylesheet can start. This matters
+more than it sounds for icon fonts: a full animation set ships whether or not a single icon spins,
+and it used to survive a purge that had just deleted every rule naming it.
+
+A name is kept if **any** of these hold, so animations started from JavaScript stay safe:
+
+- a surviving declaration names it (`animation`, `animation-name`, or the shorthand);
+- the name appears anywhere in the page as a class, id or tag — so `fa-beat` survives the moment a
+  `.fa-beat` element exists, which is exactly how a script animates one;
+- the safelist matches it.
+
+What gets dropped is a name that appears in neither the stylesheet nor the page. Starting one would
+mean a script inventing the string at runtime; if your site does that, add the name to the safelist.
+On a measured page this removed 16 of 40 keyframes blocks, about 1.9&nbsp;KB.
+
 ### The safelist
 
 A page is scanned as it arrives, and a lot of CSS exists for moments that scan never sees — a menu
@@ -479,7 +496,7 @@ Two switches tune the combined bundle:
 
 | Option | What it does |
 | --- | --- |
-| **Defer combined script** | Adds `defer` to the bundle so it loads without blocking render. Safe because the bundle is self-contained and dependency-ordered. |
+| **Defer combined script** | Adds `defer` to the bundle *and* to every other front-end script the combiner could not absorb, so the page stops blocking on them too. See below. |
 | **Minify combined script** | Strips comments and redundant whitespace (conservative, string/template/regex-aware). Most scripts are already minified, so the saving is usually small, experimental. |
 
 ### Finding out which script a performance report is blaming
@@ -513,6 +530,44 @@ This is **for diagnosis, not for everyday use.** Switching it on changes how the
 together — each script is shrunk on its own rather than all of them together — so the file is
 slightly larger, and you should turn it off again when you are done. The companion file is publicly
 readable and names script paths relative to your WordPress folder.
+
+## What "Defer" actually defers
+
+Switching on **Defer** does two things, and the second is the one that usually moves a score.
+
+The combined bundle gets `defer`, which is safe because the bundle is self-contained and already in
+dependency order. But the combiner is deliberately fussy — it refuses any script carrying inline or
+localized data, because that data is often per-request and must never be baked into a cached file.
+Those refused scripts used to be left entirely alone, which produced the opposite of what the
+setting promises: one deferred bundle sitting among a dozen render-blocking leftovers. On a measured
+page, 8 of 11 scripts were deferred before and **11 of 11** after.
+
+So Defer now also marks every other front-end script it can: local, in the footer, not already
+asking for its own loading strategy. Core, admin and remote scripts are left alone — a third-party
+script may still rely on `document.write`.
+
+### Why this is safe
+
+The marking is done by asking WordPress for the strategy, with
+`wp_script_add_data( $handle, 'strategy', 'defer' )`, rather than by writing `defer` into the tag.
+That distinction is the whole safety argument. **WordPress then decides for itself, per script,
+whether deferring is actually valid** — and it refuses whenever a script carries an `after` inline
+script, or when anything that depends on it is still blocking.
+
+Tested against a three-deep dependency chain with an `after` inline script in the middle:
+
+```
+          defer off      defer on
+a.js      blocking       blocking   ← held back: its dependent is blocking
+b.js      blocking       blocking   ← held back: carries an `after` inline script
+c.js      blocking       defer
+```
+
+Everything still ran, in order, with no errors. Writing the attribute in by hand would have broken
+that chain; letting WordPress arbitrate does not.
+
+A script you need to stay blocking can be named through the
+`fw:ext:asset-optimizer:js_no_defer_handles` filter.
 
 ## Load below-the-fold images early
 

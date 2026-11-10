@@ -2,8 +2,8 @@
 sidebar_position: 6
 title: "Run a WordPress site as a CRM: workspaces"
 sidebar_label: "Run the site as a CRM"
-description: "Make a WordPress site open straight to the Unyson+ CRM instead of the dashboard. Choose per role what people open to, give the CRM its own menu item, and drag, rename, re-icon and hide each role's WordPress menu items."
-keywords: [wordpress admin menu editor per role, reorder wordpress admin menu, wordpress as a crm, crm only wordpress dashboard, hide wordpress admin menus by role, wordpress login redirect by role, standalone crm on wordpress, wordpress app mode]
+description: "Turn on CRM mode to make a WordPress site open straight to the Unyson+ CRM, with a CRM-only menu and no public website. Choose per role what people open to, give the CRM its own menu item, and drag, rename, re-icon and hide each role's WordPress menu items."
+keywords: [crm mode wordpress, wordpress without frontend, disable wordpress frontend redirect to login, wordpress admin menu editor per role, reorder wordpress admin menu, wordpress as a crm, crm only wordpress dashboard, hide wordpress admin menus by role, wordpress login redirect by role, standalone crm on wordpress, wordpress app mode]
 ---
 
 # Run the site as a CRM
@@ -11,6 +11,51 @@ keywords: [wordpress admin menu editor per role, reorder wordpress admin menu, w
 A site used as a CRM all day should not open to the WordPress dashboard. With **workspaces**, your team signs
 in and lands in the CRM, sees the CRM and nothing else they do not need, and you can still reach all of
 WordPress yourself.
+
+## CRM mode: one switch
+
+The quickest way is in the CRM itself: **CRM → Settings → CRM mode**, at the top of the page.
+
+<img src="/img/crm/crm-mode.png" alt="The CRM mode section of the CRM settings, with Administrators open to the CRM too and No public website ticked, and a Turn on CRM mode button" width="1624" />
+
+Pick what you want and click **Turn on CRM mode**:
+
+- **The CRM's own roles open to the CRM.** CRM Managers and Sales Reps land in the CRM when they sign in, and see
+  only the CRM and their profile in the menu.
+- **Administrators open to the CRM too** (ticked by default). You land in the CRM as well and see the same short
+  menu. **Switch to WordPress** in the top bar, at the right, takes you to the full WordPress admin, and **Switch to
+  CRM** brings you back. The choice is per person, so stepping out does not change what your team sees. While you are
+  in the CRM, the switch shows how many updates (WordPress, plugins, themes) are waiting, since the usual updates
+  item is hidden.
+- **No public website** (ticked by default). For a site that is only a CRM: see [below](#no-public-website).
+
+The section then shows **On**. Change the two options and click **Save**, or click **Turn off CRM mode** to put
+everything back: every role opens to WordPress again and the website is public. Your CRM data is not touched either
+way.
+
+Only administrators can change CRM mode. Under the hood it is the **workspaces** feature described on the rest of
+this page, so everything below still applies, and you can fine-tune it there.
+
+## No public website
+
+A CRM-only site, such as a team's desk on its own subdomain, has nothing to show visitors. With **No public
+website** on:
+
+- anyone who opens the site's address (the home page, a page, a post) is sent to the login screen;
+- people who are signed in are sent to their app, such as the CRM, or to the WordPress admin;
+- search engines are asked not to index anything: every page says `noindex, nofollow` and `robots.txt` disallows the
+  whole site;
+- the SEO warning "search engines may not be able to find this site" is no longer shown, because that is now the
+  point.
+
+What keeps working, because it is not the website: the links in the CRM's emails (confirm, unsubscribe and
+preferences links, open and click tracking), the login screen, forms that post to the site, the REST API (so other
+tools and AI assistants can still connect), and scheduled tasks. Members a site keeps out of wp-admin (see
+[Membership too](#membership-too)) can still reach the front end, since it is the only place they have.
+
+You can also switch it on or off without CRM mode: **Unyson+ → Admin Menu → Roles → Website → No public website**.
+
+## Workspaces in full
 
 Go to **Unyson+ → Admin Menu**. It has two tabs: **Menus** arranges each role's menu, and **Roles** sets what each
 role opens to.
@@ -51,7 +96,8 @@ A sign-in that was heading to a particular page (a link someone followed) still 
 ### Administrators can always switch back
 
 An administrator whose role opens to the CRM gets **Switch to WordPress** in the admin bar, and
-**Switch to CRM** to go back. The choice is per person and is remembered.
+**Switch to CRM** to go back. The choice is per person and is remembered. While in the CRM, the switch shows a red
+count when updates are waiting.
 
 ## Arrange each role's menu
 

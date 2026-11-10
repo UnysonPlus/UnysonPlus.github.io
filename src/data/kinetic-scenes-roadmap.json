@@ -1319,7 +1319,7 @@
         {
           "id": "p24-painted",
           "title": "Painted",
-          "detail": "Shapes and lines painted with real brushes (p5.brush, MIT): a pencil, ink, marker, charcoal, crayon or pastel outline over a watercolour wash, a flat wash or hatching, with an optional paint-on. Seeded, so it paints the same on every play and export; the paint engine (scene-paint.js) loads only for scenes that use it. Next: the same look for website sections through the Animation Engine.",
+          "detail": "Shapes and lines painted with real brushes (p5.brush, MIT): a pencil, ink, marker, charcoal, crayon or pastel outline over a watercolour wash, a flat wash or hatching, with an optional paint-on. Seeded, so it paints the same on every play and export; the paint engine (scene-paint.js) loads only for scenes that use it. The same look is on websites too: the Animation Engine's Painted effect (/painted) paints any element as it scrolls into view.",
           "status": "done"
         },
         {

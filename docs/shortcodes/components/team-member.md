@@ -25,6 +25,15 @@ A team photo's alt text should read like an introduction — the person's name, 
 | **Team Member Job Title** | Role |
 | **Team Member Description** | Short bio |
 
+## Per-device images
+
+The photo keeps its own shape on desktop.
+- **Crop on Smaller Screens:** a crop for smaller screens, for example **Square 1:1** so a landscape photo becomes a neat portrait on tablets and phones.
+- **Focal Point:** keeps the face in view.
+- **Tablet & Phone Image:** a different photo.
+
+The photo now carries a responsive `srcset`. How it works: [Responsive images](/developers/responsive-images).
+
 ## Styling
 
 Text Color, Background Color, and Margin & Padding.

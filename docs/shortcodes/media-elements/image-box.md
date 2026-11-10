@@ -55,6 +55,16 @@ An image that conveys information (a product, a portrait, a diagram) needs alt t
 - **Link / Video URL** — full URL used when Link Behavior is "Link to URL" or "Open video in lightbox" (a YouTube / Vimeo page URL or a direct `.mp4`). Ignored for the lightbox-image and not-clickable behaviors.
 - **Open Link in New Tab** — switch (`_blank` / `_self`; default `_self`). Only applies to the "Link to URL" behavior.
 
+## Per-device images
+
+**Image Crop Ratio** is the desktop shape.
+
+- **Crop on Smaller Screens:** another shape for tablets and phones, chosen with the device switcher. The box takes that shape, and the photo is a file cut for it.
+- **Focal Point:** what stays in view.
+- **Tablet & Phone Image:** an optional different photo, for pictures that don't crop well.
+
+Every Image Box photo now loads pre-cropped files at the Image Crop Ratio, instead of the full original cropped by the browser. How it works: [Responsive images](/developers/responsive-images).
+
 ## Styling
 
 <img src="/img/shortcodes/image-box-styling.png" alt="Image Box options panel — Styling tab" width="1200" />

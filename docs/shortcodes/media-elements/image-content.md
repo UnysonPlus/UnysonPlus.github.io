@@ -37,6 +37,15 @@ Image, Content (rich text), Image Alt Text, Image Link, Open Link in New Window.
 | **Gap** | None, Small, Medium, Large |
 | **Mobile Stacking Order** | Image First, Content First |
 
+## Per-device images
+
+With **Image Fit = Cover**:
+- **Crop on Smaller Screens:** a different shape on tablets and phones. **Image Aspect Ratio** stays the desktop shape; for example 16:9 beside the text on desktop and a 3:4 portrait when stacked on phones.
+- **Focal Point:** what stays in view.
+- **Tablet & Phone Image:** an optional different photo.
+
+Each device downloads a file cut for its own box, and the image now carries a responsive `srcset`. How it works: [Responsive images](/developers/responsive-images).
+
 ## Styling
 
 <img src="/img/shortcodes/image-content-styling.png" alt="Image Content options panel — Styling tab" width="1200" />

@@ -31,7 +31,7 @@ Two things fix that:
 
 ## For site owners {#for-site-owners}
 
-Elements that support it show three fields. They are optional; leave them empty and the element behaves exactly as before.
+Supported so far: **Carousel / Slider**, **Image**, **Before / After**, **Image Box**, **Image + Content**, **Team Member** and **Bleed Section**. They show up to three fields. They are optional; leave them empty and the element behaves exactly as before.
 
 | Field | Where | What it does |
 |---|---|---|
@@ -162,6 +162,16 @@ $art = sc_responsive_image_art( $atts, 'img_', $id, $main_ratio );
 echo fw_image_tag( $id, array( 'class' => 'my-el__img', 'art' => $art, 'sizes' => '(max-width: 767.98px) 100vw, 50vw' ) );
 ```
 
+**Boxes shaped by a CSS ratio class** (Before/After, Image Box): the image fills a box whose `aspect-ratio` comes from a class, so the box must change shape per device too. `sc_responsive_image_box_vars( $atts, 'img_', $id, $main_ratio, '--my-ar' )` returns `--my-ar-lg / -md / -base` variables (only when a device differs); apply them in your stylesheet:
+
+```css
+@media (max-width: 1199.98px) { .my-el[style*="--my-ar-lg"] .my-el__box { aspect-ratio: var(--my-ar-lg); } }
+@media (max-width: 991.98px)  { .my-el[style*="--my-ar-md"] .my-el__box { aspect-ratio: var(--my-ar-md); } }
+@media (max-width: 767.98px)  { .my-el[style*="--my-ar-base"] .my-el__box { aspect-ratio: var(--my-ar-base); } }
+```
+
+`sc_ratio_from_class( 'ratio-16-9' )` turns such a class into `16/9`.
+
 When the fields live in different places, as on the Slider (crops are slider-wide, images per slide), pass the values that win:
 
 ```php
@@ -204,7 +214,7 @@ The **Asset Optimizer** (1.1.75+) moves every `data-fw-hoist` link into `<head>`
 | Phase | Scope | Status |
 |---|---|---|
 | **1** | Shared renderer (`art`, `<picture>`, deferred loading, per-device preloads); `responsive` device subsets; shared fields + reader; **Carousel / Slider** (focal point, crop per device, tablet & phone image, first slide eager, later slides deferred); **Image** element (crop per device, tablet & phone image). | **Done**, shortcodes 1.16.3, Asset Optimizer 1.1.75 |
-| **2** | **Before / After**: one shared crop for the pair, so both photos always match. **Image Box**, **Image + Content**, **Team Member**, **Bleed Section** move to `fw_image_tag()` and the shared fields. | Planned |
+| **2** | **Before / After**: one shared crop for the pair, so both photos always match (no per-device photos). **Image Box**, **Image + Content**, **Team Member**, **Bleed Section** move to `fw_image_tag()` and the shared fields; ratio-class boxes get their per-device shape from `sc_responsive_image_box_vars()`. | **Done**, shortcodes 1.16.6 |
 | **3** | **Gallery**, **Tabs**, **Testimonials** avatars; the Animation Engine image elements. | Planned |
 | **4** | **Section / Column / Flexbox background images**: the same per-device crops as CSS (`image-set()` per media query). | Planned |
 | **Ongoing** | Clean up crops left by an older signature; a click-to-set focal point on the image itself; editor preview per device. | Planned |

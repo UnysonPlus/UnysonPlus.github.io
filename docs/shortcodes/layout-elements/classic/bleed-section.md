@@ -34,6 +34,10 @@ A split layout that puts an image edge-to-edge on one side works well on a wide 
 - **Minimum Height** — force a minimum section height so the split reads as a hero even with short content: *Auto (fit content)* (default), *Small (40vh)*, *Medium (60vh)*, *Large (80vh)*, or *Fullscreen (100vh)*. Pairs with Content Vertical Align.
 - **Full Width Content** — switch. On, the content side uses the full-width container; off, the standard site container width. The image always bleeds to the viewport edge.
 
+## Per-device images
+
+When the halves stack on smaller screens, the image becomes a short, wide strip. **Crop on Smaller Screens** gives each device a file cut for that strip, for example **4:3** on phones and **16:9** on tablets. **Image Position** is the focal point of every crop. **Tablet & Phone Image** sets a different photo. How it works: [Responsive images](/developers/responsive-images).
+
 ## Styling
 
 - **Content Background** — a `background-pro` control (color, gradient and/or image) for the content side. It bleeds to the viewport edge behind the content; the image side is the Bleed Image on the Layout tab.

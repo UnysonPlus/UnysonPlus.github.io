@@ -60,6 +60,17 @@ At the top of the Design tab, the **Type** picker chooses how the two images beh
 - **Max Width** — optional text to constrain the width (e.g. `800px` or `80%`). Blank = full width. Ignored in background mode.
 - **Corner Radius** — `Square`, `Rounded` (default), `Large`. Ignored in background mode.
 
+## Per-device crops
+
+**Image Ratio** is the desktop shape. **Crop on Smaller Screens (both images)** gives tablets and phones their own, chosen with the device switcher: for example square on tablets and **Portrait 3:4** on phones. **Focal Point (both images)** keeps the important part in view.
+
+- **Always cut alike:** both photos get exactly the same crop, so the comparison keeps lining up on every screen.
+- **No per-device photos here.** A different photo for phones would break the comparison.
+- **Pre-cropped files:** each device downloads a file made for its own box. With a fixed Image Ratio, desktop now gets pre-cropped files too, instead of the full photo cropped by the browser.
+- **Background mode:** ignored when the element fills its Section as a background.
+
+How it works: [Responsive images](/developers/responsive-images).
+
 ## Styling
 
 <img src="/img/shortcodes/before-after-styling.png" alt="Before / After options panel — Styling tab" width="1200" />

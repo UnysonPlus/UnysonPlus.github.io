@@ -26,7 +26,8 @@ Pick what you want and click **Turn on CRM mode**:
   menu. **Switch to WordPress** in the top bar, at the right, takes you to the full WordPress admin, and **Switch to
   CRM** brings you back. The choice is per person, so stepping out does not change what your team sees. While you are
   in the CRM, the switch shows how many updates (WordPress, plugins, themes) are waiting, since the usual updates
-  item is hidden.
+  item is hidden. In CRM mode the CRM fills the screen: the CRM sidebar has no "Hide the WordPress menu" or "Back to
+  WordPress" links, because the top-bar switch is the way out.
 - **No public website** (ticked by default). For a site that is only a CRM: see [below](#no-public-website).
 
 The section then shows **On**. Change the two options and click **Save**, or click **Turn off CRM mode** to put

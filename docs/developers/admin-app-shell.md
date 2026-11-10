@@ -339,6 +339,13 @@ on every app screen, not re-decided in each one. Read it with `FW_Admin_App::is_
 needs to know.
 :::
 
+**In a workspace the app always fills the screen.** While someone is in a workspace
+(`FW_Workspaces::active()` is not `''`), `is_focus()` returns `true` whatever they chose, and the
+sidebar has no footer: the WordPress menu is already trimmed to the app, and Dashboard opens back to
+the app, so both links would lead nowhere. The way out is the workspace switch in the top bar
+("Switch to WordPress"); after switching, the footer and the person's own focus choice come back.
+`FW_Admin_App::in_workspace()` tells your view which case it is in.
+
 ---
 
 ## Requiring it
@@ -438,8 +445,8 @@ add_action( 'fw_workspaces_register', function () {
 ```
 
 For people in a role that opens to your app, core sends them there after login and from Dashboard,
-hides the WordPress menus the role does not keep, trims the admin bar, and makes focus mode the default
-(the `fw_admin_app_focus_default` filter) until they choose. Your page stays registered where it is: a
+hides the WordPress menus the role does not keep, trims the admin bar, and keeps your app in focus mode
+with no sidebar footer (see Focus mode above). Your page stays registered where it is: a
 promoted menu item links to the same URL, so its hook suffix and screen id do not change.
 
 Hiding menus is presentation, not access control. Gate your screens and REST routes on `capability` as

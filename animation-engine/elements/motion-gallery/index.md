@@ -271,6 +271,40 @@ All three show the photos as cards, so captions, **click to open** (lightbox / l
 **Entrance** work as on the other designs. On Loupe, clicks go to the photo beneath the lens. Scroll-scrub
 moves the spotlight, the focus, or the lens with the visitor's scroll.
 
+**Stack & Scatter**
+
+Photos as physical prints and cards: piled, stacked, fanned and shuffled.
+
+- **Photo Scatter** — a tabletop scatter of photos that fly in and out in sets as the visitor scrolls, or
+  untangle from a pile into a tidy grid (its own **Cycle** setting picks which).
+- **Card Stack** — a deck with the top card featured and the rest peeking behind; the top card peels away
+  (**Exit** direction) and the next comes forward, one card per scroll or on a timer.
+- **Card Fan** — your photos are held like a **hand of playing cards**, fanned (**Fan Spread**) around a
+  pivot below them (**Pivot Depth**: deeper makes a flatter, wider arc). A highlight sweeps along the hand
+  and back: the card it reaches **rises** (**Lift**), turns upright (**Straighten**) and comes forward while
+  the others darken (**Dim**). **Cards in Hand** sets how many cards the hand holds (the gallery repeats to
+  fill it), **Sway** gently rocks the whole hand, and **Move Time** sets how much of each step the
+  highlight spends moving. With **Follow Pointer** on (the default), the card the visitor points at rises;
+  with Motion **Static** the first card stays raised until someone points.
+- **Shuffle Deck** — a loose deck of photos, the ones behind (**Cards Behind**) peeking out up and to the
+  side (**Deck Offset**), each leaning its own way (**Jitter**; 0 makes a neat deck). The top photo
+  **slides out** to the side (**Slide Distance**, turning by **Slide Tilt**), then **tucks back in at the
+  bottom** while the others move up one place. Direction: **Alternate sides**, **Always to the right** or
+  **Always to the left**; **Shuffle Time** sets how much of each step the shuffle takes (the deck rests for
+  the rest).
+- **Polaroid Drop** — your photos become **instant prints** (a white frame with a deeper bottom margin;
+  **Frame Colour** changes it) that **drop one by one onto a pile**, each landing at its own spot
+  (**Scatter**) and angle (**Max Tilt**) with a small bounce. Direction: **Drop from above**, or **Toss in
+  from the camera** (the print starts big, close to you, and falls onto the table). **Pile Size** sets how
+  many prints lie on the pile; **When Full** either slides the oldest print away as each new one lands,
+  or **sweeps the whole pile off** and starts a new one. **Drop Time** sets how much of each step the drop
+  takes.
+
+Card Fan, Shuffle Deck and Polaroid Drop show the photos as cards, so captions, **click to open**
+(lightbox / link) and the per-card **Entrance** work as on the other designs. Scroll-scrub moves the
+highlight, the shuffle, or the drops with the visitor's scroll. If the cards are too big for the **Stage
+Height**, they shrink to fit it. Polaroid Drop draws its own frame, so it has no Card Padding.
+
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.
 

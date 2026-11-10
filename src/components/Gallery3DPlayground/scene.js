@@ -378,6 +378,30 @@ export function buildScene(design, o) {
     return `<div class="tdg tdg--${design.replace(/_/g, '-')}" style="${style}" ${attr(sf)}><div class="tdg__stage"><div class="tdg__grid">${cells}</div></div></div>`;
   }
 
+  // Stack & Scatter additions (card_fan · shuffle_deck · polaroid_drop) — cards on .tdg__grid. Mirrors
+  // card-fan.php, shuffle-deck.php, polaroid-drop.php.
+  if (design === 'card_fan' || design === 'shuffle_deck' || design === 'polaroid_drop') {
+    const kf = {...shared, 'data-tdg-card': o.card_size, 'data-tdg-allowdrag': 0};
+    let n;
+    if (design === 'card_fan') {
+      Object.assign(kf, {'data-tdg-dir': o.direction === 'rtl' ? -1 : 1, 'data-tdg-spread': o.spread, 'data-tdg-pivot': o.pivot, 'data-tdg-lift': o.lift, 'data-tdg-straight': o.straighten,
+        'data-tdg-dim': o.dim, 'data-tdg-sway': o.sway, 'data-tdg-move': o.move_time, 'data-tdg-follow': o.follow_pointer === 'yes' ? 1 : 0});
+      n = Math.max(3, Math.min(15, Math.round(o.cards)));
+    } else if (design === 'shuffle_deck') {
+      Object.assign(kf, {'data-tdg-side': o.direction === 'right' ? 1 : (o.direction === 'left' ? -1 : 0), 'data-tdg-behind': o.behind, 'data-tdg-offset': o.offset,
+        'data-tdg-jitter': o.jitter, 'data-tdg-slide': o.slide, 'data-tdg-tilt': o.slide_tilt, 'data-tdg-move': o.move_time});
+      n = SAMPLES.length;
+    } else {
+      const pile = Math.max(1, Math.min(20, Math.round(o.pile)));
+      Object.assign(kf, {'data-tdg-from': o.direction === 'camera' ? 'camera' : 'above', 'data-tdg-pile': pile, 'data-tdg-scatter': o.scatter, 'data-tdg-tilt': o.max_tilt,
+        'data-tdg-sweep': o.when_full === 'sweep' ? 1 : 0, 'data-tdg-move': o.move_time});
+      n = SAMPLES.length * Math.ceil((pile + 1) / SAMPLES.length);
+    }
+    let cells = '';
+    for (let i = 0; i < n; i++) cells += cardHtml(SAMPLES[i % SAMPLES.length]);
+    return `<div class="tdg tdg--${design.replace(/_/g, '-')}" style="${style}" ${attr(kf)}><div class="tdg__stage"><div class="tdg__grid">${cells}</div></div></div>`;
+  }
+
   if (design === 'card_reel') {
     // vertical cover-flow carousel — mirror card-reel.php (a loop of cards on a cylinder).
     const n = 9;

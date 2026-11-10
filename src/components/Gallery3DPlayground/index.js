@@ -28,7 +28,7 @@ const ORBIT_DIRS = [['cw', 'Clockwise'], ['ccw', 'Counter-clockwise']];
 // Shared across every design (motion + card + frame), mirroring the element's common options.
 const SHARED = (opts = {}) => [
   se('drive', 'Motion', opts.drive || 'auto', opts.driveChoices || [['auto', 'Auto-rotate'], ['static', 'Static']]),
-  sl('speed', 'Loop Duration (s)', opts.speed || 16, 3, 60, 1),
+  sl('speed', 'Loop Duration (s)', opts.speed || 16, opts.speedMin ?? 3, opts.speedMax ?? 60, 1),
   se('direction', 'Direction', opts.dir || 'left', opts.dirChoices || DIR_CHOICES),
   se('hover_behavior', 'On Hover', 'slow', HOVER_CHOICES),
   se('card_ratio', 'Card Ratio', opts.ratio || '1-1', RATIO_CHOICES),
@@ -733,9 +733,56 @@ const DESIGNS = {
       ...SHARED({drive: 'continuous', speed: 12, ratio: '1-1', corner: 6, dir: 'roam', driveChoices: [['continuous', 'Drift when idle'], ['static', 'Static']], dirChoices: [['roam', 'Roam the whole mosaic'], ['center', 'Stay near the centre']]}),
     ],
   },
+  card_fan: {
+    group: 'Stack & Scatter',
+    label: 'Card Fan',
+    blurb: 'Photos held like a hand of cards; the card the highlight reaches rises out of the fan. Point at a card to raise it.',
+    controls: [
+      sl('cards', 'Cards in Hand', 7, 3, 15),
+      sl('spread', 'Fan Spread (°)', 70, 10, 200),
+      sl('pivot', 'Pivot Depth (%)', 120, 30, 400, 5),
+      sl('lift', 'Lift (%)', 35, 0, 90),
+      sl('straighten', 'Straighten (%)', 60, 0, 100),
+      sl('dim', 'Dim (%)', 25, 0, 90),
+      sl('sway', 'Sway (°)', 3, 0, 20),
+      sl('move_time', 'Move Time (%)', 45, 10, 90),
+      se('follow_pointer', 'Follow Pointer', 'yes', YES_NO),
+      sl('card_size', 'Card Size (%)', 20, 4, 50),
+      ...SHARED({drive: 'continuous', speed: 2, speedMin: 1, speedMax: 10, ratio: '3-4', corner: 12, dir: 'ltr', driveChoices: [['continuous', 'Autoplay'], ['static', 'Static']], dirChoices: [['ltr', 'Start on the left'], ['rtl', 'Start on the right']]}),
+    ],
+  },
+  shuffle_deck: {
+    group: 'Stack & Scatter',
+    label: 'Shuffle Deck',
+    blurb: 'A loose deck of photos; the top one slides out to the side and tucks back in at the bottom.',
+    controls: [
+      sl('behind', 'Cards Behind', 4, 1, 8),
+      sl('offset', 'Deck Offset (%)', 4, 0, 20, 0.5),
+      sl('jitter', 'Jitter (°)', 4, 0, 20),
+      sl('slide', 'Slide Distance (%)', 75, 30, 160),
+      sl('slide_tilt', 'Slide Tilt (°)', 10, 0, 45),
+      sl('move_time', 'Shuffle Time (%)', 55, 15, 95),
+      sl('card_size', 'Card Size (%)', 34, 6, 70),
+      ...SHARED({drive: 'continuous', speed: 3, speedMin: 1, speedMax: 12, ratio: '4-3', corner: 12, dir: 'alternate', driveChoices: [['continuous', 'Autoplay'], ['static', 'Static']], dirChoices: [['alternate', 'Alternate sides'], ['right', 'Always to the right'], ['left', 'Always to the left']]}),
+    ],
+  },
+  polaroid_drop: {
+    group: 'Stack & Scatter',
+    label: 'Polaroid Drop',
+    blurb: 'Instant prints drop one by one onto a growing pile, each landing at its own angle.',
+    controls: [
+      sl('pile', 'Pile Size', 6, 1, 20),
+      se('when_full', 'When Full', 'oldest', [['oldest', 'The oldest slides away'], ['sweep', 'Sweep the pile away']]),
+      sl('scatter', 'Scatter (%)', 45, 0, 200),
+      sl('max_tilt', 'Max Tilt (°)', 14, 0, 45),
+      sl('move_time', 'Drop Time (%)', 45, 15, 95),
+      sl('card_size', 'Card Size (%)', 24, 6, 60),
+      ...SHARED({drive: 'continuous', speed: 2, speedMin: 1, speedMax: 10, ratio: '4-5', corner: 3, dir: 'above', driveChoices: [['continuous', 'Autoplay'], ['static', 'Static']], dirChoices: [['above', 'Drop from above'], ['camera', 'Toss in from the camera']]}).filter((c) => c.id !== 'padding'),
+    ],
+  },
 };
 
-const GROUP_ORDER = ['3D & Perspective', 'Carousel & Flow', 'Isometric', 'Orbit', 'Grid', 'Reveal & Wipe', 'Spotlight & Focus'];
+const GROUP_ORDER = ['3D & Perspective', 'Carousel & Flow', 'Isometric', 'Orbit', 'Grid', 'Reveal & Wipe', 'Spotlight & Focus', 'Stack & Scatter'];
 const GROUPS = GROUP_ORDER.map((g) => [g, Object.keys(DESIGNS).filter((k) => DESIGNS[k].group === g)]);
 
 const defaultsFor = (d) => Object.fromEntries(DESIGNS[d].controls.map((c) => [c.id, c.def]));

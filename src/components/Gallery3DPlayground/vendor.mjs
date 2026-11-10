@@ -109,6 +109,9 @@ export function initEl(el) {
   else if (el.classList.contains('tdg--spotlight-wall')) { initSpotlightWall(el); }
   else if (el.classList.contains('tdg--focus-pull')) { initFocusPull(el); }
   else if (el.classList.contains('tdg--loupe')) { initLoupe(el); }
+  else if (el.classList.contains('tdg--card-fan')) { initCardFan(el); }
+  else if (el.classList.contains('tdg--shuffle-deck')) { initShuffleDeck(el); }
+  else if (el.classList.contains('tdg--polaroid-drop')) { initPolaroidDrop(el); }
   else if (el.classList.contains('tdg--card-reel')) { initReel(el); }
   else if (el.classList.contains('tdg--film-strip')) { initReel(el); }
   else if (el.classList.contains('tdg--wheel-carousel')) { initWheel(el); }

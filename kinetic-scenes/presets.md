@@ -160,6 +160,7 @@ seams where its colours fall outside what a screen can show, which is why it was
 | **Drift** | A slow, steady move and scale creep that keeps a held frame alive. | any layer | Move X, Move Y, Scale to, Rotate |
 | **Gradient flow** | A shape’s gradient fill flows across it and back. Give the shape a gradient fill. | shape | Direction, Cycles |
 | **Particles** | A field of small dots rising, falling or drifting inside the shape. Clear the shape’s fill to show the particles on their own. | shape | Count, Size, Speed, Direction, Colour, Twinkle |
+| **Painted** | The shape or line is painted with real brushes: a pencil, ink, marker, charcoal, crayon or pastel outline over a watercolour wash, a flat wash or hatching. It holds for the rest of the layer and paints the same on every play and export. Paint on above 0 paints it on over that part of the clip. See [Painted](./painted.md). | shape, line | Brush, Fill, Outline, Paint on, Outline colour, Paint colour, Brush size, Watercolour bleed, Paper texture, Paint strength, Hatching gap, Hatching angle, Variation |
 
 ## Code
 

@@ -125,6 +125,7 @@ You'll also find these features where you need them:
 
 | Feature | Where it shows up |
 |---|---|
+| [Painted](./painted.md) | **Paint it** on a selected shape or line, and in the Ambient presets. |
 | [Build with cursors](./build-with-cursors.md) | In **Tools**. |
 | [Second listener](./second-listener.md) | Above **Render video** in **Export**, when the scene has a voice-over. Also on a selected voice clip, and in **Tools**. |
 | [Drop with physics](./sketch-and-physics.md#drop-with-physics) | In the Inspector when two or more layers are selected, and in **Tools**. |

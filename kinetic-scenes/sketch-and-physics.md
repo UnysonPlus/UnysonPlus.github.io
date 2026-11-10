@@ -34,6 +34,7 @@ own scribble, and it uses the layer's fill colour unless you choose another.
 | **Redraws per second** | Above 0, the shape is redrawn a few times a second, like a flip book. Around 4 to 6 works well. | 0 |
 
 **Sketchbook** is a [motion style](./motion-styles.md) built around this look, with handwritten fonts on a pale page.
+For real watercolour, ink and charcoal instead of a quick pencil scribble, use [Painted](./painted.md).
 
 ## Drop with physics
 

@@ -1317,6 +1317,12 @@
           "status": "done"
         },
         {
+          "id": "p24-painted",
+          "title": "Painted",
+          "detail": "Shapes and lines painted with real brushes (p5.brush, MIT): a pencil, ink, marker, charcoal, crayon or pastel outline over a watercolour wash, a flat wash or hatching, with an optional paint-on. Seeded, so it paints the same on every play and export; the paint engine (scene-paint.js) loads only for scenes that use it. Next: the same look for website sections through the Animation Engine.",
+          "status": "done"
+        },
+        {
           "id": "p24-swarm",
           "title": "Build with cursors",
           "detail": "A team of coloured, named cursors builds a scene's opening in front of the viewer, like collaborators in a shared design file: each box dragged out with a live W x H badge over a grey placeholder, each line of text typed in with an I-beam, then the scene plays on. Written as ordinary cursor layers and clips (new presets Build: draw, Drag and Type; cursors get a colour and a name tag). Agents get it as the scene_swarm tool and studio-cli swarm.",

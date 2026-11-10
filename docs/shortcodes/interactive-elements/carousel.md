@@ -23,7 +23,19 @@ Studies repeatedly find most visitors only ever see the first slide, so don't bu
 <img src="/img/shortcodes/carousel-slides.png" alt="Carousel / Slider options panel — Slides tab" width="1200" />
 
 - **Slides** — a repeatable list; each slide has an **Image**, **Heading**, **Text** and a
-  **Button** (label + link).
+  **Button** (label + link). Each slide also has:
+  - **Focal Point**: the part of the photo that stays in view when it is cropped for tablets and phones (Top Left … Center … Bottom Right).
+  - **Tablet & Phone Image**: optional, a different photo for tablets and/or phones, set with the device switcher. Empty = crop the slide's own photo automatically.
+
+## Per-device images
+
+A slider photo is usually landscape, but on a phone a tall hero box is portrait. Without a crop, the phone picks its file by the box's width and stretches it, which looks soft. **Crop Slides on Smaller Screens** (Layout tab) fixes that: pick a shape per device with the device switcher, for example **Phone: Portrait 3:4** and **Tablet: Landscape 4:3**. Every slide is then cut to that shape around its Focal Point, and each device downloads a file made for its own screen. Large desktops always show the photo as it is.
+
+- **Same as the larger screen** (the default) inherits; **Original shape** means no crop.
+- Pick the shape closest to the slider's box on that device: about **9:16** for a full-height phone hero, **3:4** for a shorter one.
+- For a photo that does not crop well (a wide panorama, a subject at the edge), set that slide's **Tablet & Phone Image** instead.
+
+The first slide loads straight away with a preload hint per device, so phones fetch the phone crop first. Later slides load just before they are shown. How it works for developers: [Responsive images](../../developers/responsive-images.md).
 
 ## Layout
 
@@ -36,6 +48,7 @@ Studies repeatedly find most visitors only ever see the first slide, so don't bu
 | **Per Page (Mobile)** | 1–6 slides per view (≤576px) |
 | **Gap Between Slides** | CSS length (e.g. `1rem`) |
 | **Use as Section Background** | On/Off — fill the parent Section behind its content (see below) |
+| **Crop Slides on Smaller Screens** | Per device (Desktop / Tablet / Phone): Same as the larger screen, Original shape, 16:9, 3:2, 4:3, 1:1, 4:5, 3:4, 2:3, 9:16 — see [Per-device images](#per-device-images) |
 | **Slide Height** | Fixed height (e.g. `600px`, `80vh`) or empty to fit content |
 | **Arrows** | On/Off |
 | **Dots** | On/Off |

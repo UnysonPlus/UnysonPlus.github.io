@@ -52,6 +52,23 @@ option type.
   flipping the canvas device preview re-activates the matching tab, and vice-versa, via the
   `fw:builder:device-preview` event.
 
+### Editing only some devices (`devices`, `off_note`)
+
+```php
+'img_images' => array(
+    'type'     => 'responsive',
+    'label'    => __( 'Tablet & Phone Image', 'fw' ),
+    'devices'  => array( 'md', 'base' ),                 // only Tablet + Phone get a control
+    'off_note' => __( 'Desktop uses the main image above.', 'fw' ),
+    'inner'    => array( 'type' => 'upload', 'images_only' => true ),
+),
+```
+
+- **`devices`**: a subset of `base`, `md`, `lg`, `xl`. The option edits only those devices. Leave it out for all four.
+- The other devices keep their tab, so the switcher still follows the builder's device toggle, but show **`off_note`** instead of a control and always save `''`.
+- Use it when another field owns those devices. The [per-device image fields](../../developers/responsive-images.md#your-element) are the first user: the main Image owns desktop, so the override image edits Tablet and Phone only.
+- **Cascade is up to the consumer.** The stored shape is the same `{ base, md, lg, xl }`. The image fields read it **desktop-first** (an empty phone inherits the tablet, which inherits the desktop picture), the opposite of the mobile-first CSS output described below. Say which one your field uses in its description.
+
 ---
 
 ## Authoring: wrapping a control

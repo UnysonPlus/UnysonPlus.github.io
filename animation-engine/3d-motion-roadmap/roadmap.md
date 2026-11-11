@@ -250,6 +250,22 @@ recipe — have shipped, so this now works end to end.
 ➡️ **This is a shipped capability, documented in full on its own page: [Extending the engine](./extending-the-engine).**
 (Decision: [gap-report-loop](/decisions/animation-engine-gap-report-loop).)
 
+## Phase 4 — Interactions (proposed)
+
+The Animation Engine already has more ready-made effects than Framer or Webflow; what they have that
+we don't is **one interaction model**: a trigger that animates *other* elements, named states, live
+preview while editing, and reuse across a class. The proposal is one interaction engine underneath (on
+the GSAP the engine already loads), with today's modules as presets on top:
+
+- **I1 · Targets:** hover, click, load and scroll triggers that animate other elements (named, children, class).
+- **I2 · Live preview:** play interactions and effects inside the builder while editing.
+- **I3 · States:** named states (Open, Active…) with "go to state" and toggle.
+- **I4 · Timeline for every trigger:** the shipped Scroll Timeline overlay edits click, hover and load sequences too.
+- **I5 · Reuse and breakpoints:** save an interaction as a preset, apply it by class, per-device values.
+
+➡️ **The full analysis, feature comparison and reasoning: [Framer & Webflow analysis](./framer-webflow-analysis.md).**
+*Status: proposed, not yet scheduled.*
+
 ## At a glance
 
 | Phase | Deliverable | Impact | Status |

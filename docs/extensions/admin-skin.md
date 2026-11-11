@@ -2,7 +2,7 @@
 sidebar_position: 10
 title: "WordPress Admin Theme — Dark Mode, Grouped Menu, Custom Login"
 sidebar_label: "Admin Skin"
-description: "Free WordPress admin theme: dark mode, a grouped sidebar you can edit per role, a skinned login screen, per-user accent and density. It restyles the real wp-admin, so every plugin screen keeps working."
+description: "Free WordPress admin theme: six skins including a glass dashboard, a background image or gradient behind the admin, dark mode, a grouped sidebar you can edit per role, and a skinned login screen. It restyles the real wp-admin, so every plugin screen keeps working."
 ---
 
 # Admin Skin
@@ -10,7 +10,7 @@ description: "Free WordPress admin theme: dark mode, a grouped sidebar you can e
 <div class="ext-hero">
   <span class="ext-hero__badge">FREE!</span>
   <p class="ext-hero__title">The WordPress admin, with the edges taken off.</p>
-  <p class="ext-hero__sub">Dark mode, a grouped sidebar you can rearrange per role, a login screen that matches, and a per-user accent — across every screen, including the ones other plugins add.</p>
+  <p class="ext-hero__sub">Six skins, a background of your own, dark mode, a grouped sidebar you can rearrange per role, and a login screen that matches — across every screen, including the ones other plugins add.</p>
 </div>
 
 **Admin Skin** restyles the **real** wp-admin rather than replacing it. There is no separate admin
@@ -49,6 +49,71 @@ preview itself does not.
 
 The editor canvas has an opt-in (**Dark editor canvas**) if you want it anyway.
 :::
+
+## Skins
+
+A skin is more than a palette. It sets the typefaces, the corner radii, how tall a table row is, how
+wide the sidebar sits — and, for four of them, structural changes like a sidebar that floats clear of
+the window edge. Six ship with the extension; pick one under **Unyson+ → Admin Skin → Active skin**.
+
+| Skin | What it is for |
+|---|---|
+| **Default** | The modern UnysonPlus admin. Roomy, quiet, one accent. |
+| **Classic** | The same structure at WordPress's own density and blue. The escape hatch for anyone who wants the new layout without the new look. |
+| **Console** | Dense and square: smaller type, short rows, ruled table cells and monospace figures so columns of numbers line up. Built for people who live in list tables. |
+| **Aurora** | A dark analytics dashboard. The sidebar detaches from the edge and the content sits on its own inset panel. |
+| **Soft** | A light product dashboard: a warm paper ground, cards with no borders at all, pill-shaped buttons and fields. |
+| **Glass** | Frosted panels over a background of your choosing, with a floating sidebar. Needs a background to be itself — see below. |
+
+Your mode, accent and density all still apply on top, so each skin has a light and a dark face.
+
+Changing skin changes nothing but how the admin is drawn. Your menu layout, your muted notices and
+your background all survive the switch.
+
+## A background of your own
+
+Under **Unyson+ → Admin Skin → Background** you can put a gradient, a colour or an image behind the
+whole admin. It is deliberately **not** part of the skin, so changing skin keeps your background, and
+every skin that accepts one can use it.
+
+- **Gradient preset** — six bundled gradients. Nothing to upload, nothing to load, and no detail to
+  compete with text. This is the one to reach for first.
+- **A colour of my own** — a flat colour, if you want the admin to carry a brand shade.
+- **An image** — shown full-bleed and held still while the page scrolls.
+
+Two sliders sit under them:
+
+- **Scrim** is a veil laid over the background — light in light mode, dark in dark mode. It is the
+  guard rail that keeps text readable. At 0 the background comes through at full strength, which
+  almost no photograph survives. Raise it until the quietest text on screen is comfortable.
+- **Glass blur** is how far a frosted skin blurs what is behind it. Only skins that frost their
+  panels use it. Blur is redrawn on every scroll, so lower it if the admin feels heavy on an older
+  machine; 0 leaves the panels simply translucent.
+
+:::tip Pick a calm picture
+This sits behind screens people read all day. A photograph with a lot of contrast and detail —
+especially one that is bright in some places and dark in others — is the one thing that can make an
+admin genuinely hard to use. Something soft and evenly lit, plus a scrim, is what works.
+:::
+
+**Console and Classic ignore backgrounds on purpose.** They are opaque by design, and a photograph
+behind them only makes them worse, so the setting simply has no effect while one of them is active.
+
+### Glass needs one
+
+Glass is the skin the background exists for: its panels blur whatever is behind them, so over a flat
+colour there is nothing to blur and it would just look washed out. When no background is set, Glass
+falls back to solid panels and keeps everything else — the radii, the floating sidebar, the spacing.
+
+It does the same thing in two other cases, both deliberate: when your operating system is set to
+reduce transparency, and on a browser that cannot draw the blur at all. In every one of those cases
+you get a solid, readable admin rather than a broken-looking one.
+
+### Turning it off, just for you
+
+If **Let users turn it off** is on, each person gets a **Plain background** switch in their Appearance
+menu. Someone who finds a background distracting drops back to the skin's flat colour without
+changing what anyone else on the site sees.
 
 ## Accent colour
 
@@ -127,7 +192,7 @@ open the same screen.
 
 | Setting | What it does |
 |---|---|
-| **Active skin** | The site-wide skin. Bundled skins ship with the extension. |
+| **Active skin** | The site-wide skin — Default, Classic, Console, Aurora, Soft or Glass. |
 | **Default mode** | Light, dark or system — what a user sees until they choose. |
 | **Density** | Comfortable or compact, as the site default. |
 | **Accent colour** | Overrides the skin's accent for everyone. Empty keeps the skin's own. |
@@ -142,6 +207,10 @@ open the same screen.
 | **Dark editor canvas** | Opt-in: tint the classic editor's writing area in dark mode. See the note above. |
 | **Hide Appearance → Design / Fonts** | Screens that only do anything on a block theme. *Auto* hides them while a classic theme is active and brings them back by themselves on a block theme. |
 | **Keep the WordPress logo** | The W menu in the top bar. |
+| **Background** | None, a gradient preset, a colour of your own, or an image. |
+| **Scrim** | How strongly the background is veiled, to keep text readable. |
+| **Glass blur** | How far a frosted skin blurs what is behind it. |
+| **Let users turn it off** | Adds a *Plain background* switch to each person's Appearance menu. |
 
 ## Good to know
 

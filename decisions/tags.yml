@@ -182,3 +182,8 @@ seo:
   label: SEO
   permalink: /seo
   description: "The SEO extension and the SEO Check — what they check, where fixes happen, and what they leave out"
+
+admin-skin:
+  label: Admin Skin
+  permalink: /admin-skin
+  description: "The Admin Skin extension — skins, the background canvas, and how wp-admin is restyled without breaking other plugins' screens"

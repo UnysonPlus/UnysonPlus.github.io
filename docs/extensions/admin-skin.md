@@ -79,7 +79,13 @@ every skin that accepts one can use it.
 - **Gradient preset** — six bundled gradients. Nothing to upload, nothing to load, and no detail to
   compete with text. This is the one to reach for first.
 - **A colour of my own** — a flat colour, if you want the admin to carry a brand shade.
-- **An image** — shown full-bleed and held still while the page scrolls.
+- **An image** — shown full-bleed and held still while the page scrolls. Picking it opens the
+  WordPress media library, and adds a **Colour behind it**: what shows while the image loads and
+  anywhere the image does not reach. Set it close to the image's overall tone so the page does not
+  flash a different colour on the way in.
+
+You pick one of these, and only its own settings appear — choose *An image* and you get the image
+fields, not a preset list and a colour swatch you are not using.
 
 Two sliders sit under them:
 
@@ -207,7 +213,7 @@ open the same screen.
 | **Dark editor canvas** | Opt-in: tint the classic editor's writing area in dark mode. See the note above. |
 | **Hide Appearance → Design / Fonts** | Screens that only do anything on a block theme. *Auto* hides them while a classic theme is active and brings them back by themselves on a block theme. |
 | **Keep the WordPress logo** | The W menu in the top bar. |
-| **Background** | None, a gradient preset, a colour of your own, or an image. |
+| **Background** | None, a gradient preset, a colour of your own, or an image. Only the chosen one's settings are shown. |
 | **Scrim** | How strongly the background is veiled, to keep text readable. |
 | **Glass blur** | How far a frosted skin blurs what is behind it. |
 | **Let users turn it off** | Adds a *Plain background* switch to each person's Appearance menu. |

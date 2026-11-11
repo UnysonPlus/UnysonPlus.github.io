@@ -780,9 +780,54 @@ const DESIGNS = {
       ...SHARED({drive: 'continuous', speed: 2, speedMin: 1, speedMax: 10, ratio: '4-5', corner: 3, dir: 'above', driveChoices: [['continuous', 'Autoplay'], ['static', 'Static']], dirChoices: [['above', 'Drop from above'], ['camera', 'Toss in from the camera']]}).filter((c) => c.id !== 'padding'),
     ],
   },
+  phone_lineup: {
+    group: 'Devices & Screens',
+    label: 'Phone Lineup',
+    blurb: 'Every photo on a phone; the phones stand in a shallow V and the lineup turns like a carousel. Drag it to turn it.',
+    controls: [
+      sl('phones', 'Phones', 7, 3, 15),
+      sl('spacing', 'Spacing (%)', 70, 20, 200),
+      sl('depth', 'Depth (%)', 50, 0, 150),
+      sl('turn', 'Turn (°)', 25, 0, 80),
+      sl('float', 'Float (%)', 3, 0, 12, 0.5),
+      se('snap', 'Stop at Centre', 'yes', YES_NO),
+      sl('move_time', 'Move Time (%)', 45, 10, 95),
+      sl('card_size', 'Phone Size (%)', 16, 4, 40),
+      ...SHARED({drive: 'continuous', speed: 3, speedMin: 1, speedMax: 12, ratio: '9-16', dir: 'left', driveChoices: [['continuous', 'Continuous'], ['static', 'Static']], dirChoices: [['left', 'Left'], ['right', 'Right']]}).filter((c) => c.id !== 'corner_radius' && c.id !== 'padding'),
+    ],
+  },
+  window_stack: {
+    group: 'Devices & Screens',
+    label: 'Window Stack',
+    blurb: 'Every photo in a browser window, stacked in a tilted 3D pile; the front window leaves and the rest move up.',
+    controls: [
+      sl('behind', 'Windows Behind', 4, 1, 8),
+      sl('gap', 'Depth Gap (%)', 30, 5, 100),
+      sl('offset', 'Offset (%)', 8, 0, 30, 0.5),
+      sl('tilt', 'Tilt (°)', 16, 0, 50),
+      sl('yaw', 'Turn (°)', 22, -45, 45),
+      sl('dim', 'Dim (%)', 30, 0, 80),
+      sl('move_time', 'Move Time (%)', 55, 15, 95),
+      sl('card_size', 'Window Size (%)', 44, 10, 80),
+      ...SHARED({drive: 'continuous', speed: 3, speedMin: 1, speedMax: 12, ratio: '16-9', dir: 'toward', driveChoices: [['continuous', 'Autoplay'], ['static', 'Static']], dirChoices: [['toward', 'Front window comes toward you'], ['down', 'Front window drops away']]}).filter((c) => c.id !== 'corner_radius' && c.id !== 'padding'),
+    ],
+  },
+  device_trio: {
+    group: 'Devices & Screens',
+    label: 'Device Trio',
+    blurb: 'A laptop with a tablet and a phone floating in front of it; the screens change one device at a time. Hover to turn it.',
+    controls: [
+      sl('card_size', 'Size (%)', 48, 15, 90),
+      sl('depth', 'Depth (%)', 30, 0, 100),
+      sl('float', 'Float (%)', 2, 0, 8, 0.5),
+      sl('tilt', 'Tilt (°)', 10, 0, 30),
+      se('follow_pointer', 'Follow Pointer', 'yes', YES_NO),
+      ...SHARED({drive: 'continuous', speed: 3, speedMin: 1, speedMax: 12, dir: 'sway', driveChoices: [['continuous', 'Autoplay'], ['static', 'Static']], dirChoices: [['sway', 'Gentle sway'], ['still', 'Hold still']]}).filter((c) => c.id !== 'card_ratio' && c.id !== 'corner_radius' && c.id !== 'padding'),
+    ],
+  },
 };
 
-const GROUP_ORDER = ['3D & Perspective', 'Carousel & Flow', 'Isometric', 'Orbit', 'Grid', 'Reveal & Wipe', 'Spotlight & Focus', 'Stack & Scatter'];
+const GROUP_ORDER = ['3D & Perspective', 'Carousel & Flow', 'Isometric', 'Orbit', 'Grid', 'Reveal & Wipe', 'Spotlight & Focus', 'Stack & Scatter', 'Devices & Screens'];
 const GROUPS = GROUP_ORDER.map((g) => [g, Object.keys(DESIGNS).filter((k) => DESIGNS[k].group === g)]);
 
 const defaultsFor = (d) => Object.fromEntries(DESIGNS[d].controls.map((c) => [c.id, c.def]));

@@ -402,6 +402,35 @@ export function buildScene(design, o) {
     return `<div class="tdg tdg--${design.replace(/_/g, '-')}" style="${style}" ${attr(kf)}><div class="tdg__stage"><div class="tdg__grid">${cells}</div></div></div>`;
   }
 
+  // Devices & Screens additions (phone_lineup · window_stack · device_trio). Mirrors phone-lineup.php,
+  // window-stack.php, device-trio.php.
+  if (design === 'phone_lineup' || design === 'window_stack') {
+    const df = {...shared, 'data-tdg-card': o.card_size};
+    let n = SAMPLES.length;
+    if (design === 'phone_lineup') {
+      Object.assign(df, {'data-tdg-dir': o.direction === 'right' ? -1 : 1, 'data-tdg-spacing': o.spacing, 'data-tdg-depth': o.depth, 'data-tdg-turn': o.turn, 'data-tdg-bob': o.float,
+        'data-tdg-snap': o.snap === 'yes' ? 1 : 0, 'data-tdg-move': o.move_time, 'data-tdg-allowdrag': 1, 'data-tdg-momentum': 1});
+      n = Math.max(3, Math.min(15, Math.round(o.phones)));
+    } else {
+      Object.assign(df, {'data-tdg-allowdrag': 0, 'data-tdg-exit': o.direction === 'down' ? 'down' : 'toward', 'data-tdg-behind': o.behind, 'data-tdg-gap': o.gap,
+        'data-tdg-offset': o.offset, 'data-tdg-tilt': o.tilt, 'data-tdg-yaw': o.yaw, 'data-tdg-dim': o.dim, 'data-tdg-move': o.move_time});
+    }
+    let cells = '';
+    for (let i = 0; i < n; i++) cells += cardHtml(SAMPLES[i % SAMPLES.length]);
+    return `<div class="tdg tdg--${design.replace(/_/g, '-')}" style="${style}" ${attr(df)}><div class="tdg__stage"><div class="tdg__grid">${cells}</div></div></div>`;
+  }
+  if (design === 'device_trio') {
+    const tf = {...shared, 'data-tdg-card': o.card_size, 'data-tdg-allowdrag': 0, 'data-tdg-sway': o.direction === 'still' ? 0 : 1, 'data-tdg-float': o.float,
+      'data-tdg-depth': o.depth, 'data-tdg-tilt': o.tilt, 'data-tdg-follow': o.follow_pointer === 'yes' ? 1 : 0};
+    let trio = '';
+    ['laptop', 'tablet', 'phone'].forEach((kind, d) => {
+      trio += `<div class="tdg__device tdg__device--${kind}"><div class="tdg__screen">`;
+      for (let j = 0; j < 3; j++) trio += cardHtml(SAMPLES[(d + j * 3) % SAMPLES.length]).replace('class="tdg__card"', 'class="tdg__card' + (j === 0 ? ' is-active' : '') + '"');
+      trio += '</div></div>';
+    });
+    return `<div class="tdg tdg--device-trio" style="${style}" ${attr(tf)}><div class="tdg__stage"><div class="tdg__trio">${trio}</div></div></div>`;
+  }
+
   if (design === 'card_reel') {
     // vertical cover-flow carousel — mirror card-reel.php (a loop of cards on a cylinder).
     const n = 9;

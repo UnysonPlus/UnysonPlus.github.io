@@ -305,6 +305,35 @@ Card Fan, Shuffle Deck and Polaroid Drop show the photos as cards, so captions, 
 highlight, the shuffle, or the drops with the visitor's scroll. If the cards are too big for the **Stage
 Height**, they shrink to fit it. Polaroid Drop draws its own frame, so it has no Card Padding.
 
+**Devices & Screens**
+
+Your photos shown on device screens, for app, product and website showcases.
+
+- **Device Cycler** — one device frame (laptop, tablet, phone, browser or none) whose **screen changes**
+  through your photos, one at a time, by scroll or on a timer.
+- **Phone Lineup** — every photo on the screen of a **phone** (**Frame Colour**). The phones (**Phones**)
+  stand in a shallow V: the centre one nearest, the others stepping back (**Depth**) and turning toward it
+  (**Turn**), spaced by **Spacing** (under 100 they overlap). The lineup **turns like a carousel** (Left or
+  Right), fading phones out at one end and in at the other; **Stop at Centre** (on by default) holds each
+  phone in the middle for the Loop Duration, and **Float** adds a gentle bob. Visitors can **drag** the
+  lineup (**Drag to spin**, with **Drag Momentum**). Use 5 or more phones so the ends fade smoothly.
+- **Window Stack** — every photo in a **browser window** (title bar with the three buttons; **Title Bar
+  Colour**). The windows are stacked in a tilted 3D pile (**Tilt**, **Turn**), each set back (**Depth Gap**)
+  and up to the side (**Offset**) from the one in front, the deeper ones darker (**Dim**). The front window
+  leaves (Direction: **comes toward you** or **drops away**) while the others move forward and it reappears
+  at the back. **Windows Behind** sets how many show behind the front one.
+- **Device Trio** — a **laptop** with a **tablet** and a **phone** floating in front of it (**Depth**). The
+  photos are dealt round the three devices (laptop, tablet, phone, laptop, …) and the **screens change one
+  device at a time**; the Loop Duration is the time between changes. The devices float gently (**Float**)
+  and the group sways (Direction: **Gentle sway** or **Hold still**) and, with **Follow Pointer**, turns
+  toward the visitor's pointer, up to **Tilt**. **Size** is the laptop's width; the tablet and phone scale
+  with it. Give it at least three photos (fewer are repeated so every screen has one).
+
+On all three, each screen is a real photo card: captions and **click to open** (lightbox / link) work, and on
+Phone Lineup and Window Stack the per-card **Entrance** works too. Device Trio shows one photo per screen at
+a time, so use the element's Animations tab for its entrance. If the devices are too big for the **Stage
+Height**, they shrink to fit it.
+
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.
 

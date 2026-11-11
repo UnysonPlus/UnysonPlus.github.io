@@ -112,6 +112,9 @@ export function initEl(el) {
   else if (el.classList.contains('tdg--card-fan')) { initCardFan(el); }
   else if (el.classList.contains('tdg--shuffle-deck')) { initShuffleDeck(el); }
   else if (el.classList.contains('tdg--polaroid-drop')) { initPolaroidDrop(el); }
+  else if (el.classList.contains('tdg--phone-lineup')) { initPhoneLineup(el); }
+  else if (el.classList.contains('tdg--window-stack')) { initWindowStack(el); }
+  else if (el.classList.contains('tdg--device-trio')) { initDeviceTrio(el); }
   else if (el.classList.contains('tdg--card-reel')) { initReel(el); }
   else if (el.classList.contains('tdg--film-strip')) { initReel(el); }
   else if (el.classList.contains('tdg--wheel-carousel')) { initWheel(el); }

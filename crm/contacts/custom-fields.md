@@ -22,7 +22,7 @@ the [REST API](../developers/rest-api.md).
 | Date, Date and time | Birthdays, renewals, appointments (segment rules like "in the next 30 days") |
 | Choice, Multiple choice | A fixed set of options, such as a size or a service |
 | Checkbox | Yes or no |
-| URL, Email, Phone | Links and contact details, checked when saved |
+| URL, Email, Phone | Links and contact details, checked when saved. On a record, a URL shows as a short link that opens in a new tab, and an email as a mail link |
 | Lookup | A link to another record: a contact, company, deal, page or user |
 | Address | A full address in one field |
 | Auto-number | A running number with a prefix, such as `WL-0001`, given automatically |

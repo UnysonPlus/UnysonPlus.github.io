@@ -26,6 +26,11 @@ A company has a name (required), website and domain, phone, email, industry, siz
 ## The company page
 
 - **About**: the company's details. Click **Edit** to change them.
+  - Web addresses (the website and any URL custom field) are links that open in a new tab, so the company
+    page stays open. Long addresses are shortened to the site and path; a Google Maps link reads
+    **Open in Google Maps**.
+  - When the company has an address, a small Google map of it shows under the details. Its **Open in Maps**
+    button opens the place in Google Maps. The map loads only when you scroll to it.
 - **Timeline**: notes and everything that happened with the company, including its deals.
 - **People**: everyone linked to it. **Add a person** creates a contact already linked to the company, or
   link an existing contact by email.
@@ -39,6 +44,11 @@ Yes. Link as many as you need; the first is their main company, shown in lists a
 
 **What happens to the people when I delete a company?**
 They stay. Moving a company to the bin hides it; its people keep their records, and deals keep their history.
+
+**Can I turn the map off?**
+Yes, with one line of PHP (a snippet or your theme's `functions.php`): `add_filter( 'fw_crm_show_maps', '__return_false' );`.
+The map comes from Google, so turn it off if your privacy policy does not allow loading Google in the admin.
+It shows only the company's own name and address, never a contact's.
 
 **Do I have to use companies?**
 No. If you sell to individuals, ignore companies entirely. Nothing requires them.

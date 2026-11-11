@@ -790,6 +790,7 @@ const DESIGNS = {
       sl('depth', 'Depth (%)', 50, 0, 150),
       sl('turn', 'Turn (°)', 25, 0, 80),
       sl('float', 'Float (%)', 3, 0, 12, 0.5),
+      sl('thickness', 'Thickness (%)', 8, 0, 20, 0.5),
       se('snap', 'Stop at Centre', 'yes', YES_NO),
       sl('move_time', 'Move Time (%)', 45, 10, 95),
       sl('card_size', 'Phone Size (%)', 16, 4, 40),

@@ -408,7 +408,7 @@ export function buildScene(design, o) {
     const df = {...shared, 'data-tdg-card': o.card_size};
     let n = SAMPLES.length;
     if (design === 'phone_lineup') {
-      Object.assign(df, {'data-tdg-dir': o.direction === 'right' ? -1 : 1, 'data-tdg-spacing': o.spacing, 'data-tdg-depth': o.depth, 'data-tdg-turn': o.turn, 'data-tdg-bob': o.float,
+      Object.assign(df, {'data-tdg-dir': o.direction === 'right' ? -1 : 1, 'data-tdg-spacing': o.spacing, 'data-tdg-depth': o.depth, 'data-tdg-turn': o.turn, 'data-tdg-bob': o.float, 'data-tdg-thick': o.thickness,
         'data-tdg-snap': o.snap === 'yes' ? 1 : 0, 'data-tdg-move': o.move_time, 'data-tdg-allowdrag': 1, 'data-tdg-momentum': 1});
       n = Math.max(3, Math.min(15, Math.round(o.phones)));
     } else {

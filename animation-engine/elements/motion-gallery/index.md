@@ -311,10 +311,12 @@ Your photos shown on device screens, for app, product and website showcases.
 
 - **Device Cycler** — one device frame (laptop, tablet, phone, browser or none) whose **screen changes**
   through your photos, one at a time, by scroll or on a timer.
-- **Phone Lineup** — every photo on the screen of a **phone** (**Frame Colour**). The phones (**Phones**)
+- **Phone Lineup** — every photo on the screen of a **3D phone**: a thin black bezel round the screen, a
+  metal frame (**Frame Colour**, graphite by default) whose sides show as the phones turn (**Thickness**; 0
+  makes flat screens), the side buttons, and a back with a camera block. The phones (**Phones**)
   stand in a shallow V: the centre one nearest, the others stepping back (**Depth**) and turning toward it
   (**Turn**), spaced by **Spacing** (under 100 they overlap). The lineup **turns like a carousel** (Left or
-  Right), fading phones out at one end and in at the other; **Stop at Centre** (on by default) holds each
+  Right), phones shrinking away at one end and growing back at the other; **Stop at Centre** (on by default) holds each
   phone in the middle for the Loop Duration, and **Float** adds a gentle bob. Visitors can **drag** the
   lineup (**Drag to spin**, with **Drag Momentum**). Use 5 or more phones so the ends fade smoothly.
 - **Window Stack** — every photo in a **browser window** (title bar with the three buttons; **Title Bar

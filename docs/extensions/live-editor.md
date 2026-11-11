@@ -53,11 +53,29 @@ From left to right:
 | **Sections** | Section navigator — jump to, reorder, and rename sections. |
 | **Templates** | Insert / save / import / export builder templates. |
 | **Device toggle** | Preview Desktop / Tablet / Mobile widths. |
+| **Edit / Preview** | Switch between editing the page (it holds still) and playing it as a visitor sees it — animations, scroll effects and hover — with your unsaved changes. See [Edit and Preview modes](#edit-and-preview-modes). |
 | **Undo / Redo** | Step back and forth through your edits. |
 | **Edit in Backend** | Switch to the classic builder for this page. |
-| **Preview** | Open the live page in a new tab (shows the saved version). |
+| **Open saved page** (eye icon) | Open the live page in a new tab (shows the saved version). |
 | **Exit** | Leave the editor (warns if you have unsaved changes). |
 | **Save** | Save your changes. |
+
+## Edit and Preview modes
+
+The **Edit / Preview** switch in the middle of the toolbar changes what the canvas does.
+
+- **Edit** (the default) is for building. The page **holds still**: entrance and exit animations show their final state, scroll effects and galleries stay put, so every section, column and element is easy to select, drag and edit. Elements re-rendered after a change show straight away, never hidden waiting for an entrance.
+- **Preview** plays the page **exactly as a visitor sees it**, with your **unsaved changes**: entrance and exit animations, Scroll Motion, scroll-linked effects, pinned sections, galleries, hover effects and smooth scrolling all run, and you can scroll and hover the page. The selection outlines, inline editing and the editing panels are switched off and dimmed while you preview.
+
+While previewing, a bar at the bottom of the canvas offers **Replay** (reload the preview from the top, to watch the entrances again) and **Back to Edit**. The **device toggle** still works in Preview, so you can watch the page play at tablet and phone widths. **Save** and **Exit** stay available.
+
+Back in Edit, the editing canvas reloads and your unsaved changes are put back into it.
+
+:::tip[Why not just open the page in a new tab?]
+The eye icon still opens the **saved** page in a new tab. Preview shows the page **with your unsaved changes**, inside the editor, at the device width you picked, so you can try an animation, watch it, and tweak it without saving.
+:::
+
+Preview is only for you: it is built for each preview from the editor, is never cached, and is kept out of search engines. Links you click while previewing navigate inside the canvas; **Back to Edit** returns to the page you are editing.
 
 ## Editing content
 

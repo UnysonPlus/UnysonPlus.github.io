@@ -250,21 +250,31 @@ recipe — have shipped, so this now works end to end.
 ➡️ **This is a shipped capability, documented in full on its own page: [Extending the engine](./extending-the-engine).**
 (Decision: [gap-report-loop](/decisions/animation-engine-gap-report-loop).)
 
-## Phase 4 — Interactions (proposed)
+## Phase 4 — Interactions (in progress)
 
 The Animation Engine already has more ready-made effects than Framer or Webflow; what they have that
 we don't is **one interaction model**: a trigger that animates *other* elements, named states, live
-preview while editing, and reuse across a class. The proposal is one interaction engine underneath (on
-the GSAP the engine already loads), with today's modules as presets on top:
+preview while editing, and reuse across a class. The plan is one interaction engine underneath (on
+the GSAP the engine already loads), with today's modules as presets on top.
 
-- **I1 · Targets:** hover, click, load and scroll triggers that animate other elements (named, children, class).
-- **I2 · Live preview:** play interactions and effects inside the builder while editing.
-- **I3 · States:** named states (Open, Active…) with "go to state" and toggle.
-- **I4 · Timeline for every trigger:** the shipped Scroll Timeline overlay edits click, hover and load sequences too.
-- **I5 · Reuse and breakpoints:** save an interaction as a preset, apply it by class, per-device values.
+**Its home is the [Live Editor](/extensions/live-editor).** The classic dashboard builder only shows
+boxes, so motion can't be previewed there; the Live Editor's canvas is the real page in an iframe, which
+is what Framer's and Webflow's canvases are. The classic builder keeps every option; it just doesn't
+preview motion.
+
+- **I2 · Live preview — started.** ✅ **Edit / Preview modes shipped** (Live Editor 0.3.7): Edit holds
+  motion still at its final state so everything is easy to select; Preview plays the page as a visitor
+  sees it, with the unsaved changes. Next: **play the element being edited** while its Animations options
+  are open, and a shared "re-initialise this element" hook so effects restart after a re-render in Edit.
+- **I1 · Targets:** hover, click, load and scroll triggers that animate other elements, the target picked
+  by **clicking it on the canvas** (named, children, class).
+- **I3 · States:** named states (Open, Active…) with "go to state" and toggle, previewed on the canvas.
+- **I4 · Timeline for every trigger:** the shipped Scroll Timeline overlay, docked under the Live Editor
+  canvas, edits click, hover and load sequences too.
+- **I5 · Reuse and breakpoints:** save an interaction as a preset, apply it by class, per-device values
+  previewed at the Live Editor's device widths.
 
 ➡️ **The full analysis, feature comparison and reasoning: [Framer & Webflow analysis](./framer-webflow-analysis.md).**
-*Status: proposed, not yet scheduled.*
 
 ## At a glance
 

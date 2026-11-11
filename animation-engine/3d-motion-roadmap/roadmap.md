@@ -301,6 +301,7 @@ preview motion.
 | **1** | Beat keyframes (the timeline "80%") → visual editor | High | ✅ Shipped (1a · 1b · 1c) |
 | **2** | Parametric scroll-camera 3D scenes (WebGL Object presets) | Very high | ✅ Tunnel · Gallery Dolly · Product Orbit (WebGL Motion Gallery stretch ahead) |
 | **3** | Rive + WebGL image transitions + particle presets | Medium–High | ✅ Shipped (Rive · image transitions · particle presets) |
+| **4** | Interactions: targets, live preview, states, a timeline, reuse and breakpoints | Very high | ✅ Shipped (I1–I5) |
 
 ## What we build vs. what stays curated {#build-vs-curated}
 

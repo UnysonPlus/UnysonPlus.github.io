@@ -1,8 +1,8 @@
 ---
 sidebar_position: 9.5
 title: Screencasts and product demos
-description: Record a real product demo in Kinetic Scenes with the AI Dev Kit — a browser that follows a list of steps (with WordPress, page builder and Live Editor actions), a recording that zooms to each action with step captions and subtitles, sharp screenshots with highlights, the Studio's New from a screencast, and a styled demo site that resets with one command.
-keywords: [kinetic scenes, screencast, product demo, tutorial video, screen recording, auto zoom, wordpress demo, reels]
+description: Record a real product demo in Kinetic Scenes with the AI Dev Kit — a browser that follows a list of steps (with WordPress, page builder and Live Editor actions), a recording that zooms to each action with step captions and subtitles, the voice-over written from the recording and a written step-by-step guide from the same take, sharp screenshots with highlights, the Studio's New from a screencast, and a styled demo site that resets with one command.
+keywords: [kinetic scenes, screencast, product demo, tutorial video, screen recording, auto zoom, ai narration, ai voice-over, step-by-step guide, wordpress demo, reels]
 ---
 
 # Screencasts and product demos
@@ -49,12 +49,17 @@ things happening. The result is `video.mp4` plus `actions.json` (when and where 
 | `type` | `text`, into a `target` if given (`clear` empties it first) |
 | `select` | picks an `option` (or `value`) in a dropdown |
 | `press`, `scroll`, `drag`, `wait`, `goto`, `mark` | a key, a scroll, a drag `from` → `to`, a pause, another page, a labelled moment |
+| `waitFor` | waits for something slow (an AI building a page, an import) until a `target` reaches `state` (`visible`, the default, or `hidden`): the first `keep` seconds (default 2) stay in the video so the viewer sees it working, the rest is cut, like a fast-forward. `timeout` in ms (default 10 minutes) |
 | `wp.title`, `wp.saveDraft`, `wp.preview`, `wp.publish`, `wp.view` | WordPress: name a page, save, preview, publish (waits for the confirmation), open the published page |
 | `pb.addSection`, `pb.add`, `pb.edit`, `pb.set`, `pb.save` | the Unyson+ page builder: add a section, drag in an element by its name, open its settings (one click), fill a field, save |
 | `le.select`, `le.edit`, `le.device`, `le.save` | the Unyson+ Live Editor: click an element on the page, open its settings, switch to Desktop / Tablet / Mobile, save |
 
 A **target** is a CSS selector, `{ "text": "…" }`, `{ "role": "button", "name": "…" }`, `{ "label": "…" }`, or, inside
-the Live Editor's page, the same with `"frame": true`. Each step's `label` becomes its caption in the video.
+the Live Editor's page, the same with `"frame": true`. Each step's `label` becomes its caption in the video, and an
+optional `about` (a sentence on what the step does and why) is kept in `actions.json` for the voice-over below.
+
+**The video always matches `actions.json`:** while the screen is still the browser sends no new pictures, and each one
+is held until the next, so every action happens in the video exactly when `actions.json` says.
 
 ## 2. Frame it
 
@@ -73,6 +78,52 @@ card), `--music`, `--voice` (lines with their times: a voice clip and a subtitle
 
 In the Studio, **File › New from a screencast…** does the same from a recording's `video.mp4` and `actions.json`; the
 camera's keys are on the Camera row, to change by hand.
+
+## The voice-over and a written guide, from the same take
+
+Three commands turn one recording into a narrated video **and** a written step-by-step guide, with nothing else to
+record.
+
+```
+node studio-cli.mjs narrate recording --audience "WordPress site owners"
+node studio-cli.mjs voice recording --voice kokoro:am_michael
+node studio-cli.mjs guide recording --title "Build a page with Claude"
+```
+
+**`narrate` writes the voice-over.** The AI looks at a picture of each step and reads its label and `about` note, then
+writes one line per step, timed to it. Each line has a **word budget**, the words that fit before the next step at a
+calm pace (about 2.5 words a second); a line over its budget is shortened in a second pass, and any still over is
+marked so you can shorten it or give that step a longer `pause`. The result is `narration.json`, a plain list to read
+and change before anything is spoken:
+
+```json
+{ "lang": "en", "lines": [
+  { "step": 1, "at": 0.6, "text": "We name our new page: Sweet Crumb Bakery.", "say": "We name our new page: Sweet Crumb Bakery." },
+  { "step": 5, "at": 25.0, "text": "Claude builds every section itself, then checks the page.", "say": "Claude builds every section itself, then checks the page." }
+] }
+```
+
+`at` is the second in the recording (`"intro"` for a line before it, `"end"` for one on the end card); `say` is what
+the voice reads, where a brand name is respelt so the voice says it right, while the subtitle keeps `text`.
+
+- `--lang es` writes the lines in another language (`narration.es.json`). The built-in voices speak English; for
+  another language, use a [Voicebox](./sound.md) voice that speaks it.
+- `--audience`, `--context` (what the video is about) and `--intro` / `--outro` (a line before the first step, a line
+  for the end card) steer the writing.
+- Without an AI connected, the lines are the step labels (or their `about` notes), ready to rewrite.
+
+**`voice` speaks each line on its own** with the kit's voices and checks it against its text: changed words, pauses in
+the middle of a phrase, a question that does not rise. It writes `voice.json` for `screencast --voice`, and lists any line
+that would still be talking when the next step starts. Shorten that line; the voice is never sped up to fit.
+
+**`guide` writes the guide:** `guide/guide.md` and a self-contained `guide/guide.html`, one numbered step per action
+with a picture of that moment and its target ringed. When `narration.json` exists, its lines are the steps' text. Use
+it for a help page, a docs page or a blog post that matches the video exactly.
+
+<img src="/img/kinetic-scenes/screencast-guide.png" alt="A step-by-step guide made from a recording: the title Build a WordPress page with Claude, step 1 Name the page with its narration line, and a screenshot of the WordPress editor with the page title field ringed in green" width="900" />
+
+An AI agent connected to the kit does the same with the `screencast_narrate`, `screencast_voice` and
+`screencast_guide` tools.
 
 ## 3. Screenshots
 

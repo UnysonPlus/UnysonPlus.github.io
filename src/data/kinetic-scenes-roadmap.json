@@ -1329,6 +1329,12 @@
           "status": "done"
         },
         {
+          "id": "p24-talking-head",
+          "title": "Talking-head effects",
+          "detail": "Effects for a person on camera, best on a person cut out of the footage: Code body (the person in code characters), Engraving (a banknote portrait in fine lines), Manga ink (an impact frame with screentone and speed lines), Blow away (the person crumbles into grains on the wind), Clone row, Text ring (words orbiting the head, passing behind it), Rack focus and Layer explode (a frame's layers apart in depth). Each redraws the playing footage frame by frame, the same in preview and export. New pieces: Voice note, Predict keys, Newspaper front page, Banknote and Day dial. See [Effects on a person](/kinetic-scenes/video-effects#effects-on-a-person).",
+          "status": "done"
+        },
+        {
           "id": "p24-swarm",
           "title": "Build with cursors",
           "detail": "A team of coloured, named cursors builds a scene's opening in front of the viewer, like collaborators in a shared design file: each box dragged out with a live W x H badge over a grey placeholder, each line of text typed in with an I-beam, then the scene plays on. Written as ordinary cursor layers and clips (new presets Build: draw, Drag and Type; cursors get a colour and a name tag). Agents get it as the scene_swarm tool and studio-cli swarm.",

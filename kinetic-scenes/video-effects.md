@@ -1,7 +1,7 @@
 ---
 sidebar_position: 10
 title: Video editing effects
-description: About 45 short-form video effects in Kinetic Scenes — text effects, emphasis, effects on footage, copies and frames, cutting the person out of footage, following the face, and ready-made animated pieces.
+description: About 55 short-form video effects in Kinetic Scenes — text effects, emphasis, effects on a person (code body, engraving, manga ink, blow away, clones, a text ring, rack focus, layer explode), effects on footage, cutting the person out, following the face, and ready-made animated pieces.
 ---
 
 # Video editing effects
@@ -78,6 +78,30 @@ combination to the selected layer in one click: put the playhead where it should
   say where to move the playhead.
 - Every stack is **ordinary clips** on the layer's timeline row: move, trim, change or delete each one. **Undo** removes
   the whole stack.
+
+## Effects on a person
+
+Effects for someone talking to camera. They work on any footage or picture, and best on a **person cut out of the
+footage** (Footage tools › [Cut out the person](#cut-out-the-person)): the cut-out keeps its see-through background, so
+only the person changes and the room behind stays. Find them in the preset library under **Edit a talking head**.
+
+<img src="/img/kinetic-scenes/effects-person.jpg" alt="Four effects on the same picture of a keyboard and a phone: Code body (the picture drawn in code characters), Engraving (rows of fine green lines on paper), Manga ink (black ink, white paper and screentone dots) and Blow away (the picture crumbling into grains blown to the right)" width="800" />
+
+| Effect | What it does | How |
+|---|---|---|
+| **Code body** | The picture redrawn in characters, each as bright as the picture under it, in its own colours or one ink. Code and binary characters flicker like a readout. | **Code body** on the cut-out. Settings: the characters (code, binary, shading, blocks or your own), colour, character size, background. |
+| **Engraving** | A banknote portrait: rows of fine lines that swell where the picture is dark and ripple with its shapes, in one ink on paper, optionally in an engraved oval. | **Engraving** (Oval on) inside the **Banknote** piece below, with its value rolling up. |
+| **Manga ink** | An impact frame: black ink, white paper, screentone dots in the mid-tones, inked outlines and speed lines bursting from behind. | **Manga ink** on the cut-out, a big word slammed in on top (Slam), an impact sound. |
+| **Blow away** | The picture crumbles into grains the wind carries off, sweeping across it; In blows them back together. | **Blow away** on the cut-out, over a **shot of the empty room** (a still frame of the background with the person out of shot), so the person goes and the room stays. |
+| **Clone row** | Copies appear one by one on either side, a little smaller and darker each step, all playing. | **Clone row** on the cut-out: clones of the speaker behind them. |
+| **Text ring** | Letters travel round a tilted ring, nearer ones bigger and brighter. | Two copies of a text layer with **Text ring**: one **under** the cut-out showing the far half, one **over** it showing the near half, so the ring passes behind the head. |
+| **Rack focus** | The layer drifts out of focus (or into it), like a lens pulling focus. | **Rack focus** on the footage behind the cut-out: the room softens, the person stays sharp. |
+| **Layer explode** | The layers of a group come apart in depth while the view turns: footage, captions, sound, graphics, showing how the frame is built. Out: they collapse back. | Group the parts of a frame and put **Layer explode** on the group. |
+
+The pictures are drawn from the playing footage frame by frame, so they play, preview and export the same way. To be
+redrawn, footage from another address must allow it (the AI Dev Kit's own server does); if it doesn't, Code body,
+Engraving and Manga ink show the plain picture and Blow away fades instead of crumbling. Each look blends in over a
+quarter of a second; **Stay after the clip** keeps it on.
 
 ## Copies and frames
 
@@ -248,6 +272,11 @@ cut out, a piece goes behind them.
 | **Magazine cover** | Masthead, cover lines and an issue badge, meant to sit behind the person. |
 | **Giant captions** | Big captions, each word slamming in as it is said. |
 | **Loadout** | Five locked slots fill one by one while a counter steps 0/5 to 5/5 and a card names each item: a stack, a toolkit, the steps of a setup. |
+| **Voice note** | A voice message bubble: the play button presses, the waveform plays through and the time counts up. |
+| **Predict keys** | A phone keyboard slides up, a sentence is typed and the suggestion bar offers the next word, which is tapped. |
+| **Newspaper front page** | The paper's name, a huge headline, columns and a photo slot: put a cut-out person with Risograph or Engraving in the slot. |
+| **Banknote** | An engraved border, serial numbers, a value rolling up like an odometer and an oval for an engraved portrait. |
+| **Day dial** | A big dial with the days round it turns behind the speaker, like a calendar wheel. |
 
 ## Edit my video with AI
 

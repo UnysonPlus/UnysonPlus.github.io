@@ -98,6 +98,9 @@ Interactions move elements with the separate `translate`, `scale` and `rotate` p
 
 ## Previewing
 
+In the [Live Editor](/extensions/live-editor), the **Interaction timeline** (top right of the canvas, when the selected element has Interactions) draws the steps as bars you can drag to change their delay and duration, and scrubs or plays the sequence on the canvas.
+
+
 In the [Live Editor](/extensions/live-editor), **Edit** holds Interactions still so elements are easy to select. To watch one, select the element and click **Play**: it replays in place, so hover over it or click it there. *Scrolled past* needs scrolling, so use **Full preview** for that one.
 
 ## Limits

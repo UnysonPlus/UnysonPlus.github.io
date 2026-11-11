@@ -99,6 +99,17 @@ The eye icon still opens the **saved** page in a new tab. Preview shows the page
 
 Preview is only for you: it is built for each preview from the editor, is never cached, and is kept out of search engines. Links you click while previewing navigate inside the canvas; **Back to Edit** returns to the page you are editing.
 
+## Interaction timeline
+
+When the selected element has [Interactions](/animation-engine/interactions), an **Interaction timeline** button appears at the top right of the canvas. It opens a timeline docked under the canvas:
+
+- **One row per step**, drawn as a bar on a seconds ruler, exactly where it will play: in step order, after or with the previous step, with its delay and duration. When a step animates several elements, its bar covers the whole stagger, with a tick where each one starts. State changes (*Put it in a state*…) are diamonds.
+- **Drag a bar** to change the step's **delay**. **Drag its right edge** to change its **duration**. Both snap to 0.05 s and are written to the page like any other change: **Undo** works, and **Save** keeps it.
+- **Scrub:** click or drag on the ruler to pose the canvas at that moment. **Play** runs the sequence on the canvas, and **⏮** goes back to the start. The preview uses the element's real targets on the Edit canvas, and closing the timeline puts them back as they were.
+- **Several Interactions:** an element with two (for example a hover and a click) shows a tab for each.
+
+The timeline follows the selection: select another element with Interactions and it shows that one's. State changes aren't previewed on the canvas; use the state's **Show this state on the canvas** button, or **Play**, for those. A timeline change is visible in the element's options the next time you open them.
+
 ## Show a state on the canvas
 
 The Animation Engine's [States](/animation-engine/states) card gives an element named looks (Open, Active, Hidden…). In the Live Editor, each state has a **Show this state on the canvas** button. The options window steps aside, the element is centred, and it animates into the state using the values you have typed, even before saving. **Play again** repeats it, and **Back to the options** (or Esc) puts the element back as it was and brings the options window back.

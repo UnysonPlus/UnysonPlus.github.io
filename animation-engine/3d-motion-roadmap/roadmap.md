@@ -250,7 +250,7 @@ recipe — have shipped, so this now works end to end.
 ➡️ **This is a shipped capability, documented in full on its own page: [Extending the engine](./extending-the-engine).**
 (Decision: [gap-report-loop](/decisions/animation-engine-gap-report-loop).)
 
-## Phase 4 — Interactions (in progress: I1, I2 and I3 shipped)
+## Phase 4 — Interactions ✅ shipped (I1–I5)
 
 The Animation Engine already has more ready-made effects than Framer or Webflow; what they have that
 we don't is **one interaction model**: a trigger that animates *other* elements, named states, live
@@ -278,8 +278,11 @@ preview motion.
   named looks on an element (values, a `upw-is-<name>` class, start in it, exclusive groups, inactive while hidden),
   switched by an Interactions step (put in / take out / toggle). In the Live Editor, **Show this state on the canvas**
   previews it. Tabs, drawers and open/close panels are built from them.
-- **I4 · Timeline for every trigger:** the shipped Scroll Timeline overlay, docked under the Live Editor
-  canvas, edits click, hover and load sequences too.
+- **I4 · Timeline for every trigger ✅ shipped** (Live Editor 0.3.12). The **Interaction timeline**, docked under the Live
+  Editor canvas, draws the selected element's Interaction steps (hover, click, load, in view, scrolled past) as bars on
+  a seconds ruler: drag to change the delay, drag the edge to change the duration (undoable), scrub or play the
+  sequence on the canvas. It is its own panel rather than the front-end Scroll Timeline, which stays the tool for
+  scroll-driven motion ([why](/decisions/interaction-timeline-in-the-live-editor)).
 - **I5 · Reuse and breakpoints ✅ shipped** (Animation Engine 1.4.98–1.5.0): **Runs on** (desktop / tablet /
   phone, the *Hide on* breakpoints, switching live as the window crosses one) and **Runs for** every element on the
   page that matches a class, so one Interaction serves a whole grid of cards; both previewed with the Live Editor's

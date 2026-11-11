@@ -262,12 +262,13 @@ boxes, so motion can't be previewed there; the Live Editor's canvas is the real 
 is what Framer's and Webflow's canvases are. The classic builder keeps every option; it just doesn't
 preview motion.
 
-- **I2 · Live preview ✅ shipped** (Live Editor 0.3.7–0.3.8). **Edit / Preview modes:** Edit holds every
+- **I2 · Live preview ✅ shipped** (Live Editor 0.3.7–0.3.9). **Edit / Preview modes:** Edit holds every
   effect still at its final state (a sweep of all 30 module demo pages: nothing hidden, nothing moving), so
   everything is easy to select; Preview plays the page as a visitor sees it, with the unsaved changes.
-  **Play** previews the page scrolled to the selected element, so its motion plays right there. Still to
-  come: replaying an element *inside* Edit without switching to Preview (needs a shared "re-initialise
-  this element" hook across the modules).
+  **Play** replays the selected element *inside* Edit: its section alone is rendered as a visitor sees it
+  and laid exactly over the same section on the canvas, so every module plays through its own code, with no
+  per-module "re-initialise" hook to write or keep in step. Motion that needs scrolling (scroll-linked
+  effects, pins, exits) uses **Full preview**, which scrolls the page to the element.
 - **I1 · Targets:** hover, click, load and scroll triggers that animate other elements, the target picked
   by **clicking it on the canvas** (named, children, class).
 - **I3 · States:** named states (Open, Active…) with "go to state" and toggle, previewed on the canvas.

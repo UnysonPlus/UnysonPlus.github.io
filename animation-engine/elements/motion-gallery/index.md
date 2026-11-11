@@ -363,15 +363,67 @@ Every design shares the same surrounding controls, so switching design keeps you
 - **Loop Duration (s)** — seconds for one full loop; *lower is faster*.
 - **On Hover** — **Slow down** (default), **Pause**, or **Keep rotating**. It reacts to the gallery
   itself, not the empty stage around it.
-- **Card Ratio / Corner Radius / Card Padding**, **Box Style** + **shadow**, and **captions**.
+- **Card Ratio / Corner Radius / Card Padding**, **Box Style** + **shadow**, and **captions** — see
+  [Card Ratio](#card-ratio) below for the shapes.
 - **On Card Click** — opens the shared gallery **lightbox**. Off by default (the cards are moving).
 - **Use as Section Background** — fill the parent Section behind its content; the gallery then
   auto-runs and stays non-interactive.
 
+## Card Ratio
+
+**Card Ratio** sets the shape of every card, so the same design can show wide landscape photos,
+square album covers or tall phone-shaped shots. It sits on the **Design** tab with the chosen design's
+own controls. Some designs name it after what they show: **Tile Ratio** (Tilt Deck, Iso Orbit, Iso
+Cascade, Iso Fan), **Slab Ratio** (Iso Stack), **Photo Ratio** (Blind Reveal, Iris Wipe, Tile
+Dissolve), **Screen Ratio** (Phone Lineup, Device Cycler) and **Window Ratio** (Window Stack). Card
+Tunnel, Device Trio and Scroll Choreography have no ratio control: their cards are sized to the wall,
+the device or the formation.
+
+| Choice | Shape |
+|---|---|
+| **Square (1:1)** | Album covers; the default on most designs. |
+| **Landscape (4:3)** | Wider than tall. |
+| **Wide (16:9)** | Cinematic, letterbox-shaped cards. |
+| **Portrait (3:4)** | Taller than wide, like a magazine cover or a poster. |
+| **Portrait (4:5)** | The Instagram-portrait shape: tall, but not as narrow as 3:4. |
+| **Tall (9:16)** | Full-height, story / Reel-shaped cards. |
+| **Original — mixed** | Every card keeps its **own** image's shape (see below). |
+
+With a fixed ratio, each photo **fills** its card and the overflow is cropped, so pick the ratio
+closest to your photos (portrait photos in a Portrait gallery lose nothing).
+
+### Original — mixed
+
+**Original — mixed (keep each image's shape)** stops forcing one shape: each card takes its own
+image's real proportions from the Media Library, so a gallery of mixed portrait, landscape and square
+photos shows them all at their natural sizes, with nothing cropped. The cards keep the same width and
+their heights follow the photos.
+
+- **Supported on** the flat-card designs: Cover Flow, Carousel Flow, Card Reel, Film Strip, Focus
+  Slider, Hero Reel, Card Stack, Shuffle Deck, Card Fan, Photo Scatter, Polaroid Drop, Carousel Ring,
+  Spiral Stream and Depth Stack.
+- **Other designs** build their geometry from one shared card shape (the sphere's tiling, the grids,
+  the device frames), so on them *Original* falls back to **Square**.
+- An image added by URL (not from the Media Library) has no known size, so its card uses Square.
+
+### Tall shapes and Card Size
+
+**Card Size** (or Tile / Slab / Planet / Phone / Window Size) is a **width**, as a % of the stage, and
+the height follows the ratio. Switching a gallery from Square to Portrait or Tall therefore makes every
+card *taller* at the same width, and on a short stage the tops and bottoms can be cut off by the frame,
+which makes portrait cards look square. Lower **Card Size** when you pick a taller shape (or raise the
+gallery **Height**). A simple rule: multiply the size by the old height ÷ new height. For example
+Square at 46% becomes about 34% for Portrait (3:4) and 26% for Tall (9:16).
+
+**See it live:** the [Cover Flow demo](https://demos.unysonplus.com/motion-gallery/cover-flow/) shows
+the same gallery once per ratio, one section each (all landscape, all wide, all square, all portrait,
+4:5, all tall and Original — mixed), and every design's demo page has the same set of ratio sections.
+
 ## Set it up
 
 1. Add a **Motion Gallery** (builder palette → **Media Elements**) and add your **images**.
-2. **Design** tab → pick a design, then tune its geometry.
+2. **Design** tab → pick a design, then tune its geometry, including its **Card Ratio** (lower the
+   **Card Size** for the tall shapes).
 3. Set **Loop Duration** and **On Hover** to taste.
 4. **Save** — the scene renders and loops on the front end.
 

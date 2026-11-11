@@ -46,6 +46,15 @@ Two options sit above the steps of every trigger:
 
 To use *Runs for*, give the cards a shared CSS class in their **Advanced** tab (for example `card`), put one Interaction on any one of them, and set **Runs for** to *Every element on the page that matches…* `.card`.
 
+### Use on every page
+
+With **Runs for: Every element on the page that matches…**, there is a third option: **Use on every page**. Switch it on, and once the page is **published** the Interaction also runs on the matching elements of **every page of the site**. It works like a class-based interaction in Webflow: make the hover for `.card` once, and every card on the site gets it.
+
+- **Editing:** it stays where you made it, so you edit it there, and the change reaches every page when you save. To stop it, switch the option off (or delete the element or the page).
+- **What counts:** only published pages. A draft source doesn't run anywhere else, and its own page shows it as usual.
+- **Theme Settings → Site-wide UX → Interactions** lists every site-wide Interaction, with its selector, its trigger, the page it was made on, and links to open that page in the Live Editor or the builder.
+- **Weight:** a page loads the Interactions script only when it has interactions of its own or the site has site-wide ones.
+
 In the [Live Editor](/extensions/live-editor), switch the device toggle to tablet or phone and click **Play** to check how it behaves at that width.
 
 ## Steps

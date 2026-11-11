@@ -283,8 +283,9 @@ preview motion.
 - **I5 · Reuse and breakpoints (partly shipped**, Animation Engine 1.4.98). Shipped: **Runs on** (desktop / tablet /
   phone, the *Hide on* breakpoints, switching live as the window crosses one) and **Runs for** every element on the
   page that matches a class, so one Interaction serves a whole grid of cards; both previewed with the Live Editor's
-  device toggle + Play. Still to come: saving an Interaction as a **site-wide preset** applied by class on every page
-  (with Import / Export), and per-device *values* (different distances per device) rather than on/off.
+  device toggle + Play. **Use on every page** (Animation Engine 1.4.99) makes it **site-wide**: made once on its source
+  element, it runs on the matching elements of every page, listed in Theme Settings → Site-wide UX → Interactions.
+  Still to come: per-device *values* (different distances per device) rather than on/off.
 
 ➡️ **The full analysis, feature comparison and reasoning: [Framer & Webflow analysis](./framer-webflow-analysis.md).**
 

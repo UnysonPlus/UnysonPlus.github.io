@@ -42,6 +42,7 @@ Two options sit above the steps of every trigger:
 | Option | What it does |
 | --- | --- |
 | **Runs on** | **Desktop**, **Tablet**, **Phone** (all ticked by default). The breakpoints are the builder's own *Hide on* ones: phone under 768 px, tablet 768–991 px, desktop 992 px and up. On an unticked device the Interaction does nothing, and its targets keep their own look (no *From* start values either). It switches on and off as the window crosses a breakpoint. |
+| **Amount on tablet / Amount on phone** | How far the steps go on that device, as a percentage of desktop (100 = the same, 50 = half as far, 0 = no change). It scales movement, rotation and blur, and how much the scale and opacity change: at 40%, a desktop lift of −10 px is −4 px and a zoom to 1.12 is 1.048. A gentler version for small screens without a second Interaction. |
 | **Runs for** | **This element**, or **Every element on the page that matches…** a selector (`.card`). With the second, every matching element gets its own copy of the Interaction. *This element* and *Elements inside it* in the steps then mean **that** element, so one Interaction set up on one card makes every card lift and zoom its own picture. |
 
 To use *Runs for*, give the cards a shared CSS class in their **Advanced** tab (for example `card`), put one Interaction on any one of them, and set **Runs for** to *Every element on the page that matches…* `.card`.

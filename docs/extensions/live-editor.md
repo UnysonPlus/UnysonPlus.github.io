@@ -53,7 +53,7 @@ From left to right:
 | **Sections** | Section navigator — jump to, reorder, and rename sections. |
 | **Templates** | Insert / save / import / export builder templates. |
 | **Device toggle** | Preview Desktop / Tablet / Mobile widths. |
-| **Edit / Preview** | Switch between editing the page (it holds still) and playing it as a visitor sees it — animations, scroll effects and hover — with your unsaved changes. See [Edit and Preview modes](#edit-and-preview-modes). |
+| **Edit / Preview / Play** | Switch between editing the page (it holds still) and playing it as a visitor sees it — animations, scroll effects and hover — with your unsaved changes; **Play** previews the page scrolled to the selected element. See [Edit and Preview modes](#edit-and-preview-modes). |
 | **Undo / Redo** | Step back and forth through your edits. |
 | **Edit in Backend** | Switch to the classic builder for this page. |
 | **Open saved page** (eye icon) | Open the live page in a new tab (shows the saved version). |
@@ -64,12 +64,18 @@ From left to right:
 
 The **Edit / Preview** switch in the middle of the toolbar changes what the canvas does.
 
-- **Edit** (the default) is for building. The page **holds still**: entrance and exit animations show their final state, scroll effects and galleries stay put, so every section, column and element is easy to select, drag and edit. Elements re-rendered after a change show straight away, never hidden waiting for an entrance.
+- **Edit** (the default) is for building. The page **holds still** in its final state: entrance and exit animations, Scroll Motion, scroll reveals, text effects, galleries, marquees, physics, animated backgrounds, card stacks, scrollytelling and every other Animation Engine effect settle, so every section, column and element is visible and easy to select, drag and edit. Elements re-rendered after a change show straight away, never hidden waiting for an entrance.
 - **Preview** plays the page **exactly as a visitor sees it**, with your **unsaved changes**: entrance and exit animations, Scroll Motion, scroll-linked effects, pinned sections, galleries, hover effects and smooth scrolling all run, and you can scroll and hover the page. The selection outlines, inline editing and the editing panels are switched off and dimmed while you preview.
+
+To watch **one element**, select it and click **Play**: the canvas switches to Preview and glides that element into view from just below the screen, so its entrance, scroll effects and hover play exactly as a visitor would see them. **Back to Edit** returns to it, still selected.
 
 While previewing, a bar at the bottom of the canvas offers **Replay** (reload the preview from the top, to watch the entrances again) and **Back to Edit**. The **device toggle** still works in Preview, so you can watch the page play at tablet and phone widths. **Save** and **Exit** stay available.
 
 Back in Edit, the editing canvas reloads and your unsaved changes are put back into it.
+
+:::note[How Edit holds everything still]
+The editing canvas tells the page's scripts that the visitor prefers **reduced motion**, so every effect uses the still, fully visible version it already shows to visitors who ask for less motion. If a site has switched off **Respect "reduce motion"** (Theme Settings → Animation Engine → Engine Settings), a few effects (animated backgrounds, physics, confetti and the custom cursor) keep moving in Edit too.
+:::
 
 :::tip[Why not just open the page in a new tab?]
 The eye icon still opens the **saved** page in a new tab. Preview shows the page **with your unsaved changes**, inside the editor, at the device width you picked, so you can try an animation, watch it, and tweak it without saving.

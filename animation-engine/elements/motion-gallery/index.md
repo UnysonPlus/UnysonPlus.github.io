@@ -352,6 +352,14 @@ Every design shares the same surrounding controls, so switching design keeps you
   **Scroll-scrub** for a full **scroll choreography** — the images fade in one by one at the start, the
   design scrubs (spins its Rounds / sweeps its passes) through the middle, then they dissolve one by one
   on the way out, all driven by the visitor's scroll.
+- **Entrance and Exit animations** (Animations tab) — the [Entrance Animation](/animation-engine/entrance-animation)
+  and [Exit Animation](/animation-engine/exit-animation) cards play **photo by photo** while the design keeps moving: a
+  ring's photos zoom in one by one as it turns, then leave one by one (last in, first out) as the gallery
+  scrolls off the screen, and come back when it returns. Any of the 56 entrances and 43 exits works, with
+  Sequence Items, Stagger, delay and duration. A **new** Motion Gallery starts with a *Zoom In, one by
+  one* entrance already added. Use this **or** the Style-tab Entrance, not both. The one-photo designs
+  (Reveal & Wipe, Device Cycler, Device Trio), Photo Scatter and a gallery on pinned Scroll-scrub
+  animate as one block.
 - **Loop Duration (s)** — seconds for one full loop; *lower is faster*.
 - **On Hover** — **Slow down** (default), **Pause**, or **Keep rotating**. It reacts to the gallery
   itself, not the empty stage around it.

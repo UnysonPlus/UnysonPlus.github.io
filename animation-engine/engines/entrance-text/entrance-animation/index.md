@@ -67,6 +67,18 @@ Under **Advanced Tweaks**:
 Switching effects keeps the panel — the speed and advanced tweaks you set are remembered per effect.
 :::
 
+## Galleries and grids: one item at a time
+
+On a collection (Gallery, Posts, Logo Grid, Feature List, Pricing Table, Timeline, Steps, Testimonials and the **Motion Gallery**), **Sequence Items** (on by default) plays the entrance on each item in turn instead of on the whole block, spaced by **Stagger (ms)**. Set it to *Together* to animate the block as one.
+
+On the **Motion Gallery** the entrance plays on each photo while the design keeps moving: the photos of a Carousel Ring zoom in one by one as the ring turns, and a Phone Lineup's phones arrive whole, body and screen together. The one-photo designs (Reveal & Wipe, Device Cycler, Device Trio), Photo Scatter and a gallery on Scroll-scrub with Pin animate as one block. A new Motion Gallery starts with a *Zoom In, one by one* entrance already added; change it or remove it like any card.
+
+The **Animation Delay** and each item's **Stagger** are real delays: each item waits its turn before it starts.
+
+## Pair it with an exit
+
+Add an **[Exit Animation](/animation-engine/exit-animation)** to play the element out as it scrolls off the screen and bring it back with this entrance when it returns. Inside the Entrance card, **+ Add a matching exit** adds one set to *Reverse the entrance*.
+
 ## Performance & accessibility
 
 - **Loads only when used.** Animate.css and the tiny trigger script are enqueued **only on pages that use an entrance effect** — a page with none ships zero of those bytes.

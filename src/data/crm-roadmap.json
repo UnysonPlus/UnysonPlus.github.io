@@ -1137,7 +1137,7 @@
           "title": "Move the team desk onto the CRM",
           "detail": "Replace the separate CRM app used for Unyson+ support with a WordPress site running the CRM workspace, so bugs found in daily use are fixed in the CRM itself.",
           "pin": true,
-          "status": "planned"
+          "status": "done"
         }
       ]
     }

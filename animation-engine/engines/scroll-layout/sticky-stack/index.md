@@ -45,6 +45,7 @@ The module loads its runtime **only** on pages that use it, and only the one cho
 - **Pin offset (px)** — the gap from the top of the viewport where each card pins.
 - **Stagger (px)** — how much each stacked card peeks below the one above.
 - **Intensity** — the strength of the chosen style (how much covered cards scale / dim / blur / tilt, how wide the deck fans, etc.).
+- **First column is a heading** — keeps the Section’s first column out of the stack, so it can hold a heading or intro that scrolls normally above the cards (off by default). Any column with the CSS class `upw-ss-skip` (Advanced tab) is also left out, wherever it sits.
 
 ## How it works
 

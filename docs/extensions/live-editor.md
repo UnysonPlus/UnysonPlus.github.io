@@ -99,6 +99,16 @@ The eye icon still opens the **saved** page in a new tab. Preview shows the page
 
 Preview is only for you: it is built for each preview from the editor, is never cached, and is kept out of search engines. Links you click while previewing navigate inside the canvas; **Back to Edit** returns to the page you are editing.
 
+## Pick an Interaction's target on the page
+
+An [Interactions](/animation-engine/interactions) step animates an element named by a CSS selector. In the Live Editor, every *That match* field has a **Pick on the page** button. Click it and the options window steps aside: elements highlight as you point at them, with their name. Click the one the step should animate.
+
+- If it has a **CSS ID**, the step uses it (`#promo`).
+- Otherwise a short class such as `ix-b03cd5` is added to its CSS classes and used (`.ix-b03cd5`). Undo removes it like any other change.
+- The step's **Animate** setting switches to match: *This element*, *Elements inside it* (when you picked something inside the element you're editing) or *Elements on the page*.
+
+**Esc** or **Cancel** stops picking without changing anything. Click **Apply** or **Save** in the options window to keep the new target.
+
 ## Editing content
 
 - **Select** — click any element, column or section. A breadcrumb

@@ -250,7 +250,7 @@ recipe — have shipped, so this now works end to end.
 ➡️ **This is a shipped capability, documented in full on its own page: [Extending the engine](./extending-the-engine).**
 (Decision: [gap-report-loop](/decisions/animation-engine-gap-report-loop).)
 
-## Phase 4 — Interactions (in progress)
+## Phase 4 — Interactions (in progress: I1 and I2 shipped)
 
 The Animation Engine already has more ready-made effects than Framer or Webflow; what they have that
 we don't is **one interaction model**: a trigger that animates *other* elements, named states, live
@@ -269,8 +269,11 @@ preview motion.
   and laid exactly over the same section on the canvas, so every module plays through its own code, with no
   per-module "re-initialise" hook to write or keep in step. Motion that needs scrolling (scroll-linked
   effects, pins, exits) uses **Full preview**, which scrolls the page to the element.
-- **I1 · Targets:** hover, click, load and scroll triggers that animate other elements, the target picked
-  by **clicking it on the canvas** (named, children, class).
+- **I1 · Targets ✅ shipped** (Animation Engine 1.4.95, Live Editor 0.3.10). The **[Interactions](/animation-engine/interactions)**
+  card: on hover, on click, on page load, in view and scrolled past, each playing up to three steps, and each
+  step animating this element, elements inside it, or elements on the page. In the Live Editor, the target is
+  picked by **clicking it on the canvas**. It runs on the browser's Web Animations, not GSAP (see the decision
+  [Interactions on Web Animations](/decisions/interactions-on-web-animations)).
 - **I3 · States:** named states (Open, Active…) with "go to state" and toggle, previewed on the canvas.
 - **I4 · Timeline for every trigger:** the shipped Scroll Timeline overlay, docked under the Live Editor
   canvas, edits click, hover and load sequences too.

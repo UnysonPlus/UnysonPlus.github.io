@@ -35,6 +35,19 @@ An element can have **two** Interactions, for example a hover *and* a click. It 
 | **In view** | A fifth of the element has scrolled into view. | **When it leaves the screen:** play it backwards (so it plays again next time), or keep the end state. |
 | **Scrolled past** | The element's bottom has scrolled above a line *N* px from the top of the screen (80 by default). | Plays backwards when you scroll back above the line. |
 
+## Devices and reuse
+
+Two options sit above the steps of every trigger:
+
+| Option | What it does |
+| --- | --- |
+| **Runs on** | **Desktop**, **Tablet**, **Phone** (all ticked by default). The breakpoints are the builder's own *Hide on* ones: phone under 768 px, tablet 768–991 px, desktop 992 px and up. On an unticked device the Interaction does nothing, and its targets keep their own look (no *From* start values either). It switches on and off as the window crosses a breakpoint. |
+| **Runs for** | **This element**, or **Every element on the page that matches…** a selector (`.card`). With the second, every matching element gets its own copy of the Interaction. *This element* and *Elements inside it* in the steps then mean **that** element, so one Interaction set up on one card makes every card lift and zoom its own picture. |
+
+To use *Runs for*, give the cards a shared CSS class in their **Advanced** tab (for example `card`), put one Interaction on any one of them, and set **Runs for** to *Every element on the page that matches…* `.card`.
+
+In the [Live Editor](/extensions/live-editor), switch the device toggle to tablet or phone and click **Play** to check how it behaves at that width.
+
 ## Steps
 
 Each trigger plays up to **three steps** (Step 1, Step 2, Step 3). Set a later step's **Animate** to *Not used* to leave it out.

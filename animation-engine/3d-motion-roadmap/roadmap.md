@@ -280,8 +280,11 @@ preview motion.
   previews it. Tabs, drawers and open/close panels are built from them.
 - **I4 · Timeline for every trigger:** the shipped Scroll Timeline overlay, docked under the Live Editor
   canvas, edits click, hover and load sequences too.
-- **I5 · Reuse and breakpoints:** save an interaction as a preset, apply it by class, per-device values
-  previewed at the Live Editor's device widths.
+- **I5 · Reuse and breakpoints (partly shipped**, Animation Engine 1.4.98). Shipped: **Runs on** (desktop / tablet /
+  phone, the *Hide on* breakpoints, switching live as the window crosses one) and **Runs for** every element on the
+  page that matches a class, so one Interaction serves a whole grid of cards; both previewed with the Live Editor's
+  device toggle + Play. Still to come: saving an Interaction as a **site-wide preset** applied by class on every page
+  (with Import / Export), and per-device *values* (different distances per device) rather than on/off.
 
 ➡️ **The full analysis, feature comparison and reasoning: [Framer & Webflow analysis](./framer-webflow-analysis.md).**
 

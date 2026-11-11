@@ -99,6 +99,10 @@ The eye icon still opens the **saved** page in a new tab. Preview shows the page
 
 Preview is only for you: it is built for each preview from the editor, is never cached, and is kept out of search engines. Links you click while previewing navigate inside the canvas; **Back to Edit** returns to the page you are editing.
 
+## Show a state on the canvas
+
+The Animation Engine's [States](/animation-engine/states) card gives an element named looks (Open, Active, Hidden…). In the Live Editor, each state has a **Show this state on the canvas** button. The options window steps aside, the element is centred, and it animates into the state using the values you have typed, even before saving. **Play again** repeats it, and **Back to the options** (or Esc) puts the element back as it was and brings the options window back.
+
 ## Pick an Interaction's target on the page
 
 An [Interactions](/animation-engine/interactions) step animates an element named by a CSS selector. In the Live Editor, every *That match* field has a **Pick on the page** button. Click it and the options window steps aside: elements highlight as you point at them, with their name. Click the one the step should animate.

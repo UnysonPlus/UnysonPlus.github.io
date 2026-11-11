@@ -250,7 +250,7 @@ recipe — have shipped, so this now works end to end.
 ➡️ **This is a shipped capability, documented in full on its own page: [Extending the engine](./extending-the-engine).**
 (Decision: [gap-report-loop](/decisions/animation-engine-gap-report-loop).)
 
-## Phase 4 — Interactions (in progress: I1 and I2 shipped)
+## Phase 4 — Interactions (in progress: I1, I2 and I3 shipped)
 
 The Animation Engine already has more ready-made effects than Framer or Webflow; what they have that
 we don't is **one interaction model**: a trigger that animates *other* elements, named states, live
@@ -274,7 +274,10 @@ preview motion.
   step animating this element, elements inside it, or elements on the page. In the Live Editor, the target is
   picked by **clicking it on the canvas**. It runs on the browser's Web Animations, not GSAP (see the decision
   [Interactions on Web Animations](/decisions/interactions-on-web-animations)).
-- **I3 · States:** named states (Open, Active…) with "go to state" and toggle, previewed on the canvas.
+- **I3 · States ✅ shipped** (Animation Engine 1.4.96, Live Editor 0.3.11). **[States](/animation-engine/states)**: up to three
+  named looks on an element (values, a `upw-is-<name>` class, start in it, exclusive groups, inactive while hidden),
+  switched by an Interactions step (put in / take out / toggle). In the Live Editor, **Show this state on the canvas**
+  previews it. Tabs, drawers and open/close panels are built from them.
 - **I4 · Timeline for every trigger:** the shipped Scroll Timeline overlay, docked under the Live Editor
   canvas, edits click, hover and load sequences too.
 - **I5 · Reuse and breakpoints:** save an interaction as a preset, apply it by class, per-device values

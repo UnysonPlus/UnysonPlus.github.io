@@ -42,6 +42,7 @@ Each trigger plays up to **three steps** (Step 1, Step 2, Step 3). Set a later s
 | Option | What it does |
 | --- | --- |
 | **Animate** | The step's target: **This element**, **Elements inside it that match…**, or **Elements on the page that match…** |
+| **Do** | **Animate it with the values below** (the default), or switch the target's [state](./states.md): **Put it in a state**, **Take it out of a state** or **Toggle a state**, with the state's name in **State**. |
 | **That match** | The CSS selector for the target: a CSS ID (`#promo`), a class (`.card-arrow`) or a tag (`img`). With *Inside* and nothing typed, the element's direct children are animated. |
 | **Direction** | **To these values** moves the target from how it looks now to the values. **From these values** starts it at the values and brings it back to how it looks now, which makes a reveal. Before the trigger, a *From* target waits at its start values. |
 | **Move X / Move Y** | Moves it, in pixels. |
@@ -55,6 +56,10 @@ Each trigger plays up to **three steps** (Step 1, Step 2, Step 3). Set a later s
 | **Starts** | **After the previous step**, or **With the previous step** (they play together). |
 
 The whole sequence plays backwards in reverse order, and a hover that ends halfway reverses from wherever it had got to.
+
+## States
+
+For menus, drawers, tabs and accordions, give the element that changes named **[States](./states.md)** (Open, Active, Hidden…) and switch them from Interactions on any element. Several buttons can then drive one panel, and a group keeps one tab active at a time.
 
 ## Naming the element to animate
 

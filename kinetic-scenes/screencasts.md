@@ -49,6 +49,7 @@ things happening. The result is `video.mp4` plus `actions.json` (when and where 
 | `type` | `text`, into a `target` if given (`clear` empties it first) |
 | `select` | picks an `option` (or `value`) in a dropdown |
 | `press`, `scroll`, `drag`, `wait`, `goto`, `mark` | a key, a scroll, a drag `from` → `to`, a pause, another page, a labelled moment |
+| `upload` | chooses a file: the cursor goes to the file field (or the button given as `click`) and the `file` is set, since a system file dialog does not show in a recording |
 | `waitFor` | waits for something slow (an AI building a page, an import) until a `target` reaches `state` (`visible`, the default, or `hidden`): the first `keep` seconds (default 2) stay in the video so the viewer sees it working, the rest is cut, like a fast-forward. `timeout` in ms (default 10 minutes) |
 | `wp.title`, `wp.saveDraft`, `wp.preview`, `wp.publish`, `wp.view` | WordPress: name a page, save, preview, publish (waits for the confirmation), open the published page |
 | `pb.addSection`, `pb.add`, `pb.edit`, `pb.set`, `pb.save` | the Unyson+ page builder: add a section, drag in an element by its name, open its settings (one click), fill a field, save |

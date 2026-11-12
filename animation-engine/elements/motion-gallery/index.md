@@ -18,10 +18,19 @@ pure-CSS 3D scene driven by a single rAF loop (no library).
 
 ## Where to find it
 
-Add **Motion Gallery** from the builder palette → **Media Elements**. Drop your images into the
+Add **Motion Gallery** from the builder palette → **Animation Engine**. Choose the cards' **Source** on the
 **Content** tab, then pick a **Design** on the **Design** tab — each design reveals its own geometry
-controls. The shared card controls (Box Style, shadow, captions, click action) live on the **Style**
-tab.
+controls. The shared card controls (Entrance, Box Style, shadow, captions, click action) live on the
+**Style** tab.
+
+**Source** decides where the cards come from:
+
+- **Media Library** (default) — the images you pick and order yourself.
+- **Post Type** — the featured images of a post type's posts build the cards automatically and stay fresh
+  as you publish. Pick the **Post Type** (any public type with featured images, e.g. Portfolio when that
+  extension is active), the **Number of Cards** (1–200; only posts *with* a featured image become cards)
+  and the **Order** (Newest first, Oldest first, Title A–Z or Menu order). Set **On Card Click** to
+  **Open Link** to link each card to its post.
 
 The element ships with the **Animation Engine** extension — activate it in **Extensions** if you
 don't see it.
@@ -31,11 +40,22 @@ don't see it.
 **3D & Perspective**
 
 - **Carousel Ring** — a ring of cards revolving around you. Tilt it back (**Ring Tilt**), open the
-  loop up (**Ring Opening**), or roll the whole ring to a diagonal (**Diagonal Tilt**).
+  loop up (**Ring Opening**), roll the whole ring to a diagonal (**Diagonal Tilt**), or rock it up and
+  down as it spins (**Vertical Sway**, 0–45°), so you orbit it from shifting heights.
 - **Panorama Wall** — a curved wall of cards scrolling sideways. **Curvature** is signed: negative
   wraps the wall *toward* you (concave), positive bulges it *away* (convex).
 - **Card Sphere** — a spinning disco-ball of images. **Globe Size** zooms the sphere; **Card Size**
   sets how finely it tiles (the bands and card counts are derived to cover it).
+- **Orbit Globe** — cards spread through the *inside* of a sphere rather than on its surface, each one
+  facing you at its own depth, so the globe reads as a slowly orbiting cloud. **Globe Size** (40–95% of
+  the stage's shorter side) zooms it; **Card Size** (8–30% of the globe) is also the density control —
+  smaller cards pack the cloud with more of them; **Gap** thins it out; **Back Fade** dims the cards on
+  the far side; **Tilt** (−45…45°, 27° by default) tips the orbit axis. Turns Left or Right.
+- **Sphere Cascade** — the vertical sibling of Panorama Wall: **Columns** (2–5) of cards cascade up or
+  down a curved surface. **Curvature** (−150…150) is signed: negative curves the grid into a concave
+  bowl you look into, 0 is flat, and toward +150 it wraps into a full sphere. **Tilt** tips the surface,
+  **Gap** spaces the cards, **Edge Fade** fades them toward the rim, and Direction runs **Up**, **Down**
+  or **Alternate columns**.
 - **Totem Wall** — a flat row of *independent* vertical totems: each column wraps its cards around
   its own axis into a rounded pillar and cascades vertically (up / down / alternate). **Curvature**
   is signed — negative curls each column away (concave), positive bulges it toward you into a full
@@ -275,16 +295,25 @@ moves the spotlight, the focus, or the lens with the visitor's scroll.
 
 Photos as physical prints and cards: piled, stacked, fanned and shuffled.
 
-- **Photo Scatter** — a tabletop scatter of photos that fly in and out in sets as the visitor scrolls, or
-  untangle from a pile into a tidy grid (its own **Cycle** setting picks which).
-- **Card Stack** — a deck with the top card featured and the rest peeking behind; the top card peels away
-  (**Exit** direction) and the next comes forward, one card per scroll or on a timer.
+- **Photo Scatter** — a tabletop scatter of photos. Its **Motion** setting picks how they move:
+  **Scatter in & out on scroll** (each set flies in, holds, and flies back out as the visitor scrolls),
+  **Organize on scroll** (one pile untangles into a tidy grid), **Cycle automatically** (with **Dwell** and
+  **Pause on Hover**), **Cycle on click**, or **Hold still**. The cycling modes add **Photos enter from**
+  (all edges, top, bottom, left & right, random), **Photos exit toward** (nearest edge, up, down, left &
+  right, gather into a pile, or fade in place), **End on an organized grid** and **Leave a few in the
+  corners**. **Cards per Set** sets how many photos rest on the table at once; **Rotation Range**, **Size
+  Variance**, **Spread** and **Keep center clear** shape the scatter.
+- **Card Stack** — a deck with the top card featured and the rest peeking behind (**Cards Behind**,
+  **Stack Offset**, **Stack Shrink**). The top card peels away (**Top card leaves**: down, up, left or
+  right) and the next comes forward. **Advance** sets the pace: **On scroll** (one card per scroll),
+  **Automatically** (with a **Dwell** time) or **Off** (the top card only).
 - **Card Fan** — your photos are held like a **hand of playing cards**, fanned (**Fan Spread**) around a
   pivot below them (**Pivot Depth**: deeper makes a flatter, wider arc). A highlight sweeps along the hand
   and back: the card it reaches **rises** (**Lift**), turns upright (**Straighten**) and comes forward while
   the others darken (**Dim**). **Cards in Hand** sets how many cards the hand holds (the gallery repeats to
   fill it), **Sway** gently rocks the whole hand, and **Move Time** sets how much of each step the
-  highlight spends moving. With **Follow Pointer** on (the default), the card the visitor points at rises;
+  highlight spends moving. **Direction** sets where the highlight starts: **Start on the left** or **Start
+  on the right**. With **Follow Pointer** on (the default), the card the visitor points at rises;
   with Motion **Static** the first card stays raised until someone points.
 - **Shuffle Deck** — a loose deck of photos, the ones behind (**Cards Behind**) peeking out up and to the
   side (**Deck Offset**), each leaning its own way (**Jitter**; 0 makes a neat deck). The top photo
@@ -310,20 +339,23 @@ Height**, they shrink to fit it. Polaroid Drop draws its own frame, so it has no
 Your photos shown on device screens, for app, product and website showcases.
 
 - **Device Cycler** — one device frame (laptop, tablet, phone, browser or none) whose **screen changes**
-  through your photos, one at a time, by scroll or on a timer.
+  through your photos, one at a time (**Cycle Screens**: on scroll, automatically with a **Dwell**, or off),
+  with a **Transition** of **Cross-fade**, **Slide up** or **Cut**.
 - **Phone Lineup** — every photo on the screen of a **3D phone**: a thin black bezel round the screen, a
   metal frame (**Frame Colour**, graphite by default) whose sides show as the phones turn (**Thickness**; 0
   makes flat screens), the side buttons, and a back with a camera block. The phones (**Phones**)
   stand in a shallow V: the centre one nearest, the others stepping back (**Depth**) and turning toward it
   (**Turn**), spaced by **Spacing** (under 100 they overlap). The lineup **turns like a carousel** (Left or
   Right), phones shrinking away at one end and growing back at the other; **Stop at Centre** (on by default) holds each
-  phone in the middle for the Loop Duration, and **Float** adds a gentle bob. Visitors can **drag** the
+  phone in the middle for the Loop Duration (**Move Time** sets how much of each step it spends moving),
+  and **Float** adds a gentle bob. Visitors can **drag** the
   lineup (**Drag to spin**, with **Drag Momentum**). Use 5 or more phones so the ends fade smoothly.
 - **Window Stack** — every photo in a **browser window** (title bar with the three buttons; **Title Bar
   Colour**). The windows are stacked in a tilted 3D pile (**Tilt**, **Turn**), each set back (**Depth Gap**)
   and up to the side (**Offset**) from the one in front, the deeper ones darker (**Dim**). The front window
   leaves (Direction: **comes toward you** or **drops away**) while the others move forward and it reappears
-  at the back. **Windows Behind** sets how many show behind the front one.
+  at the back. **Windows Behind** sets how many show behind the front one, and **Move Time** how much of
+  each step the change takes.
 - **Device Trio** — a **laptop** with a **tablet** and a **phone** floating in front of it (**Depth**). The
   photos are dealt round the three devices (laptop, tablet, phone, laptop, …) and the **screens change one
   device at a time**; the Loop Duration is the time between changes. The devices float gently (**Float**)
@@ -336,6 +368,54 @@ Phone Lineup and Window Stack the per-card **Entrance** works too. Device Trio s
 a time, so use the element's Animations tab for its entrance. If the devices are too big for the **Stage
 Height**, they shrink to fit it.
 
+**WebGL (real 3D)**
+
+These three are drawn with real 3D graphics (WebGL), so they have true depth, lights and, on the Mirror Ring, a
+reflective floor. The other designs are built from CSS 3D, which is lighter but can't light or reflect.
+
+<img src="/img/animation-engine/motion-gallery/webgl-mirror-ring.png" alt="Mirror Ring: photos on a ring above a glossy floor that mirrors them, the ones facing away in shadow" width="1920" />
+
+- **Mirror Ring** — your photos stand on a turning ring above a glossy floor that reflects them, lit by a key
+  light and a rim light, so the photos facing away fall into shadow. **Ring Size** (40–160 %) widens the ring,
+  **Camera Height** (0–45°) looks down on it, **Floor Reflection** (0–100 %) sets how strongly the floor mirrors
+  the photos, and **Floor Glow** tints a soft disc of colour under the ring. Grab it and drag to spin it
+  (**Drag to spin**, **Drag Momentum**). Up to 40 photos.
+
+<img src="/img/animation-engine/motion-gallery/webgl-depth-field.png" alt="Depth Field: photos floating at different depths, near ones large and sharp, far ones fading into the background" width="1920" />
+
+- **Depth Field** — photos float at real depth and drift toward you (or **Away from the viewer**), fading out of
+  the fog far away and past you up close. Move the pointer and the camera follows it (**Pointer Parallax**,
+  0–100 %), so near photos shift more than far ones. **Photos in the Field** (4–60, the gallery repeats to fill
+  it), **Depth**, **Spread** and **Fog** set the scene. **Fog Colour** is what distant photos fade into; left
+  empty, it is the Stage Background or, failing that, the colour behind the gallery on the page.
+
+<img src="/img/animation-engine/motion-gallery/webgl-wave-wall.png" alt="Wave Wall: a grid of photos on a rippling surface, each tilted with the wave and lit differently" width="1920" />
+
+- **Wave Wall** — a grid of photos (**Columns** 2–12, **Rows** 1–8) on a rippling surface; each photo tilts with
+  the wave and catches the light, so highlights roll across the wall. **Wave Height**, **Wave Length**, **View
+  Angle** (look up at the wall), **Light Angle** (where the key light comes from), **Gloss** and **Gap** shape it.
+  Point at a photo and it lifts out of the wall.
+
+All three share **Lighting** (Soft, Studio or Dramatic), **Card Size**, **Card Ratio**, **Corner Radius**,
+**Stage Height** and **Stage Background**, the usual **Motion** (an automatic loop, **Scroll-scrub** with an
+optional pin, or **Static**) and **On Hover** (keep going, slow down or pause). Clicking a photo opens the
+lightbox or its link, exactly as on the other designs.
+
+How they behave on the page:
+
+- **Weight:** Three.js and the WebGL script load only on pages that use a WebGL design. The 3D renderer is
+  created when the gallery comes near the screen and released when it scrolls far away, so a page can hold
+  several of them, and nothing renders while the gallery is off screen or the tab is hidden.
+- **Accessibility:** the photos also stay in the page as the usual list of images and links, so screen readers
+  and search engines read them as before. Moving keyboard focus to a photo brings it to the front of the scene
+  and outlines the gallery.
+- **No WebGL** (a very old browser, or WebGL switched off): the photos show as a plain grid instead.
+- **Reduce motion**, and the Live Editor's Edit canvas: one still frame, no movement.
+- **Entrance:** the photos fade and rise in one after another the first time the gallery comes into view. The
+  element's Animations-tab Entrance and Exit play on the gallery as a whole (the photos are drawn on the canvas,
+  so they can't cascade photo by photo).
+- The builder's in-modal preview draws these designs for real, with placeholder cards.
+
 More designs are on the way — the picker groups them by family, so the list grows without the
 element changing.
 
@@ -343,12 +423,22 @@ element changing.
 
 Every design shares the same surrounding controls, so switching design keeps your setup:
 
-- **Motion** — Auto-rotate / Continuous, plus **Drag**, **Scroll-scrub** and **Static**. Under
-  **Scroll-scrub** a **Rounds per scroll** control sets how far your scroll drives the deck across the
-  pin: on a *rotating* design (Ring, Sphere, Orbit) it's **full turns**; on a *flowing* design (walls,
-  tunnels, reels, strips) it reads as **passes** — the deck travels its whole length that many times.
+- **Motion** — three modes, each showing only its own settings:
+  - the design's **own motion** (Continuous, Auto-rotate, Autoplay…), with **Loop Duration**, **Direction**
+    and **On Hover**;
+  - **Scroll-scrub** — the visitor's scroll drives the motion. **Pin while scrubbing** (on by default) holds
+    the gallery on screen for the **Scroll Length** (1–5 screen-heights, 2.5 by default), and **Rounds per
+    scroll** sets how far the scroll drives it: on a *rotating* design (Ring, Sphere, Orbit) it's **full
+    turns**; on a *flowing* design (walls, tunnels, reels, strips) it reads as **passes** — the deck travels
+    its whole length that many times;
+  - **Static** — no motion.
+
+  Separately, most designs have **Drag to spin** (visitors grab and spin it by hand, on top of any mode)
+  and **Drag Momentum** (it keeps spinning after they let go).
 - **Entrance** (Style tab) — reveal the cards one-by-one as the gallery scrolls in: **Fade + Rise**,
-  **Scale**, **Blur**, **Slide** or **Flip**, with a stagger and distance. Combine it with a pinned
+  **Fade + Scale**, **Fade + Blur**, **Slide In** or **Flip In**. **Sequence spread** (0–90) sets how
+  staggered the cascade is (0 = all together), **Rise / slide distance** (0–120 px) how far each card
+  travels, and **Animate out on leave** fades and sinks them back out as the gallery scrolls off the top. Combine it with a pinned
   **Scroll-scrub** for a full **scroll choreography** — the images fade in one by one at the start, the
   design scrubs (spins its Rounds / sweeps its passes) through the middle, then they dissolve one by one
   on the way out, all driven by the visitor's scroll.
@@ -363,9 +453,18 @@ Every design shares the same surrounding controls, so switching design keeps you
 - **Loop Duration (s)** — seconds for one full loop; *lower is faster*.
 - **On Hover** — **Slow down** (default), **Pause**, or **Keep rotating**. It reacts to the gallery
   itself, not the empty stage around it.
-- **Card Ratio / Corner Radius / Card Padding**, **Box Style** + **shadow**, and **captions** — see
+- **Card Ratio / Corner Radius / Card Padding**, **Box Style** + **Card Shadow** — see
   [Card Ratio](#card-ratio) below for the shapes.
-- **On Card Click** — opens the shared gallery **lightbox**. Off by default (the cards are moving).
+- **Captions** (Style tab) — **None**, **Overlay on Hover** or **Below the Image**, read from the **Caption
+  Source**: the image's Caption, Title, Alt Text or Description.
+- **On Card Click** — **Do Nothing** (the default; the cards are moving), **Open Lightbox** (the full image
+  in the shared gallery lightbox), or **Open Link**: each card's own link — its post's page with the Post
+  Type source, or the image's **Link URL** field in the Media Library. Links to other sites open in a new
+  tab.
+- **Stage Height** (730 px by default; px or vh), **Stage Overflow** and **Stage Background** — on each
+  design's options. **Stage Overflow** is **Clip to stage** (the default) or **Spill**, which shows fanned or
+  oversized cards in full beyond the stage (it only changes what's visible, so leave room around the
+  gallery). Leave **Stage Background** empty for a transparent stage.
 - **Use as Section Background** — fill the parent Section behind its content; the gallery then
   auto-runs and stays non-interactive.
 
@@ -376,8 +475,7 @@ square album covers or tall phone-shaped shots. It sits on the **Design** tab wi
 own controls. Some designs name it after what they show: **Tile Ratio** (Tilt Deck, Iso Orbit, Iso
 Cascade, Iso Fan), **Slab Ratio** (Iso Stack), **Photo Ratio** (Blind Reveal, Iris Wipe, Tile
 Dissolve), **Screen Ratio** (Phone Lineup, Device Cycler) and **Window Ratio** (Window Stack). Card
-Tunnel, Device Trio and Scroll Choreography have no ratio control: their cards are sized to the wall,
-the device or the formation.
+Tunnel and Device Trio have no ratio control: their cards are sized to the wall or the device.
 
 | Choice | Shape |
 |---|---|
@@ -421,7 +519,7 @@ the same gallery once per ratio, one section each (all landscape, all wide, all 
 
 ## Set it up
 
-1. Add a **Motion Gallery** (builder palette → **Media Elements**) and add your **images**.
+1. Add a **Motion Gallery** (builder palette → **Animation Engine**) and add your **images**.
 2. **Design** tab → pick a design, then tune its geometry, including its **Card Ratio** (lower the
    **Card Size** for the tall shapes).
 3. Set **Loop Duration** and **On Hover** to taste.
@@ -436,7 +534,7 @@ hand off to a Panorama Wall to a Card Sphere, each running its own motion across
 Set it up:
 
 1. Put each gallery on **Motion → Scroll-scrub** with **Pin while scrubbing** on.
-2. Turn on **Chain with adjacent galleries** (a switch in the gallery's settings) for every gallery you
+2. Turn on **Chain with adjacent galleries** (Style tab, under Entrance) for every gallery you
    want linked. They can sit **stacked in one column or each in its own section** — the runtime auto-groups
    the adjacent chained galleries into one overlapping, pinned master timeline and overlaps each gallery's
    exit with the next one's entrance.

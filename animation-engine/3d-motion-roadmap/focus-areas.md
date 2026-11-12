@@ -43,17 +43,20 @@ so rather than cram one into a builder modal we **reuse it**, and ladder up in t
 
 1. **Beat keyframes (native, basic).** ✅ **Shipped as [Scroll Keyframes](/animation-engine/scroll-keyframes)** —
    give any element Start / Middle / End keyframed states across a pinned Section's scroll range, each
-   with an easing pick, auto-driven from a [Scroll Story](/animation-engine/scrollytelling) scene or the
+   with an easing pick, auto-driven from a [Scrollytelling](/animation-engine/scrollytelling) Full-screen Stage or the
    element's own viewport travel. This covers the large majority of what people want a timeline for, as
    a handful of builder options.
-2. **Advanced controls (the Advanced box).** The finer knobs — per-keyframe offsets, stagger, custom
-   easing, trigger ranges — live in the element's **Advanced** tab, so the basic panel stays
-   uncluttered while power users still get depth.
-3. **The Scroll Timeline Editor (visual).** A real tracks-and-keyframes editor for full
-   choreography, built by **reusing the Kinetic Scenes timeline** rather than reinventing it. A
-   feasibility probe confirmed the fit: the player already drives a *seekable* GSAP timeline from
-   scroll (pinned stage, sticky-header offset, smoothing), and its timeline / keyframe UI is a clean,
-   self-contained component — so we reuse both, and only build the bridge below.
+2. **Advanced controls.** ✅ The finer knobs (custom easing, start points, stagger, trigger ranges) sit in
+   each effect's own inline **Advanced** section inside its card (for example Scroll Motion's Advanced
+   Tweaks), so the basic panel stays uncluttered while power users still get depth.
+3. **The Scroll Timeline Editor (visual).** ✅ **Shipped as the [Scroll Timeline](/animation-engine/scroll-timeline)**:
+   a front-end, video-editor-style panel with one track per scroll animation, a playhead that scrubs the
+   real page live, drag-to-retime for Scroll Motion tracks, and a beat-state editor for Scroll Keyframes.
+   It was planned as a reuse of the Kinetic Scenes timeline; it shipped as a native editor built straight
+   on the page's own ScrollTriggers, which made the bridge described below unnecessary. (For hover, click
+   and load sequences, the Live Editor has its own [Interaction timeline](/extensions/live-editor).)
+
+*The planning notes below are kept for the record of why it works this way.*
 
 **The idea that makes it fit.** Kinetic Scenes needs two things — a **fixed stage** and a
 **playhead**. A **pinned Section gives you both**: pin it and the viewport is frozen for a known slice
@@ -86,12 +89,12 @@ genuinely new piece; the runtime and the editor are reused.
 real WebGL scene with depth** as you scroll. Current 3D is a single object, a single model, or CSS-3D
 planes — never a scene you travel *through*.
 
-**Where we're going.** The hard parts already exist: a Three.js runtime
-([WebGL Object](/animation-engine/webgl-object)) and the scroll-progress plumbing that scenes can
-scrub against. We'll add a **parametric "3D Scene" element** — a small set of pre-built, tunable
-scenes (for example: dolly through a floating gallery, orbit a product, fly through a tunnel of
-images) whose camera is driven by scroll. You drop in your own media, pick a scene, and tune a few
-knobs — no 3D scene-building from scratch.
+**What shipped.** ✅ Rather than a separate element, the scenes ship as scroll-driven **presets of
+[WebGL Object](/animation-engine/webgl-object)**, reusing its Three.js renderer: **Image Tunnel** (fly
+through a tunnel of images), **Gallery Dolly** (glide past a curved gallery wall) and **Product Orbit**
+(orbit a ring of images). You drop in your own media, pick a scene and tune a few knobs; the camera is
+driven by scroll. Next: a WebGL design for the [Motion Gallery](/animation-engine/motion-gallery), for real
+lighting and reflections across its card layouts (🚧 in progress).
 
 :::warning[Performance is part of the design]
 Real WebGL is reserved for one hero moment per page, always with a static image fallback, reduced-
@@ -103,7 +106,8 @@ motion support, and mobile throttling. See the [performance rules](./roadmap#gua
 - **Rive elements** — ✅ **shipped as [Rive](/animation-engine/rive)**: interactive, stateful vector
   motion (icons/mascots that react to hover, scroll or data) at 60fps and tiny file sizes, with live
   inputs, data binding and JS control.
-- **WebGL image transitions** — a curated set of shader presets (ripple / liquid / displace) applied
-  to image elements — chosen from a dropdown, never hand-coded. *(Still ahead.)*
+- **WebGL image transitions** — ✅ **shipped** as the **Image Transitions** preset of
+  [WebGL Object](/animation-engine/webgl-object): a curated set of shader transitions (ripple, liquid,
+  displace…) chosen from a dropdown, never hand-coded.
 
 Next: [the libraries behind all this →](./toolbox)

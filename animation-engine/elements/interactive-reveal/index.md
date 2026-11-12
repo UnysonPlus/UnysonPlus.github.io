@@ -14,7 +14,7 @@ Stack transparent image **layers** and animate them apart — an **exploded / pe
 
 ## Add it
 
-Builder palette → **Media Elements** → **Interactive Reveal**.
+Builder palette → **Animation Engine** → **Interactive Reveal**.
 
 ## Layers
 
@@ -23,6 +23,7 @@ Each layer is one transparent **PNG / WebP** part, stacked back-to-front (top of
 | Per-layer option | Notes |
 | --- | --- |
 | **Image** | The part (transparent PNG/WebP). |
+| **Name** | A label for you, shown in the layer list only. |
 | **Move X / Y (%)** | Travel at full reveal, as a % of the layer's own size. Negative = left / up. |
 | **Rotate (deg)** | Spin as it separates. |
 | **Scale change (%)** | Grow (+) or shrink (−) at full reveal. |
@@ -42,9 +43,9 @@ Labelled pins over the reveal (e.g. *"Neodymium driver"*) that fade in once the 
 | **Drag axis** | Horizontal or vertical (Drag only). |
 | **Scroll behaviour** | *Play in view*, or **Pin & scrub** — holds the reveal full-screen and scrubs it as you scroll through (inline placement). |
 | **Pin length (screens)** | How much scrolling the pinned reveal spans. |
-| **Reverse** | Play exploded → assembled instead. |
+| **Reverse direction** | Play exploded → assembled instead. |
 | **Rest state (%)** | How separated the layers sit before the trigger runs. |
-| **Speed (ms)** | Transition time for Hover / Toggle / Autoplay. |
+| **Speed** | Transition time for Hover / Toggle / Autoplay, 150–3000 ms (700 by default). |
 
 ## Placement
 
@@ -55,11 +56,11 @@ Labelled pins over the reveal (e.g. *"Neodymium driver"*) that fade in once the 
 | **Foreground overlay** | Sits in front of the content. |
 | **Pointer events** | **Decorative** lets clicks pass through to content behind (use for Background / scroll). **Interactive** captures the pointer — required for Hover / Drag / Click, but blocks clicks under the overlap. |
 
-Plus **Aspect ratio**, **Height**, **Max width**, **Alignment** and **Background**.
+Plus **Aspect ratio** (Square 1:1 by default, Landscape 4:3, Wide 16:9, Portrait 3:4 or **Free height**; ignored for Section background), **Height** (520 px by default — used only with *Free height*), **Max width** (0 = full width), **Alignment** and **Background**.
 
 ## Reveal Packs
 
-Frames and layer sets can pile up fast, so Interactive Reveal (and Image Sequence) can pull assets from a **Reveal Pack** — a folder under `wp-content/uploads/unysonplus/reveal/` that **never touches the Media Library**.
+Frames and layer sets can pile up fast, so Interactive Reveal can pull its layers from a **Reveal Pack** — a folder under `wp-content/uploads/unysonplus/reveal/` that **never touches the Media Library**.
 
 - Manage packs at **Media → Reveal Packs**: upload a `.zip` of layer images, see the installed packs, delete them.
 - A `pack.json` manifest (name, poster, and each layer's default offset) is optional — without one, a **radial auto-spread** is generated for you.

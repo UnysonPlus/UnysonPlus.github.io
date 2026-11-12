@@ -13,11 +13,11 @@ sample. It runs the real runtime's `getTotalLength` measuring + staggered `strok
 animation.
 :::
 
-A **self-drawing SVG** — line art, a signature, an animated divider or icon — that traces itself on as it scrolls into view. No heavy 3D library.
+A **self-drawing SVG** — line art, a signature, an animated divider or icon — that traces itself on as it scrolls into view, or draws along with the scroll. No heavy 3D library.
 
 ## Add it
 
-Builder palette → **Media Elements** → **SVG Draw**.
+Builder palette → **Animation Engine** → **SVG Draw**.
 
 ## SVG source
 
@@ -33,7 +33,7 @@ Outline (stroke) paths draw best.
 
 | Group | Option | Notes |
 | --- | --- | --- |
-| **Draw** | Trigger | When scrolled into view *(default)* · On page load · On hover |
+| **Draw** | Trigger | **Scroll into view** *(default)* · **Scrub with scroll** (the drawing follows the scroll position, drawing and un-drawing as the reader scrolls past; Draw duration is ignored) · **Page load** · **Hover** |
 | | Draw duration | Seconds to trace the artwork |
 | | Stagger between paths | Delay between each path (s) |
 | | Direction | Normal · Reverse |

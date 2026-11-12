@@ -23,10 +23,10 @@ effect, set speed / delay / repeat / loop / easing, and copy the generated sampl
 
 ## Pick an effect
 
-Open any element → **Animations** tab → **Entrance Animation**. The picker is a **popover of animated tiles** — each tile previews its motion with the effect name on it. Leave it on **None** for no entrance (nothing loads).
+Open any element → **Animations** tab → **Add Animation** → **Entrance** → **Entrance Animation**. The card's picker is a **popover of animated tiles**, grouped by family with a search box; each tile previews its motion with the effect name on it. There is no *None* tile: to remove the entrance, delete the card with its **×** (a page with no entrance loads nothing).
 
 ```
-Animations  ▸  Entrance Animation: [ None ▾ ]   →  opens a grid of 56 animated effects
+Animations  ▸  Add Animation  ▸  Entrance  ▸  Entrance Animation   →  a grid of 56 animated effects
 ```
 
 There are **56 effects**, grouped like Animate.css:
@@ -46,25 +46,28 @@ There are **56 effects**, grouped like Animate.css:
 
 ## Options
 
-Once you pick an effect, two more controls appear:
+Once you pick an effect, these controls appear in the card:
 
 | Option | Notes |
 | --- | --- |
+| **Trigger** | When it plays. Pick **one or more**: **Scroll into view** (the default), **Page load**, **Click** and **Hover**. *Scroll into view* and *Page load* are entrances: the element stays hidden until it plays. *Click* and *Hover* leave it visible and replay the effect on each event. Combine them, for example reveal on scroll and replay on click (with both *Scroll into view* and *Page load* on, *Page load* wins). |
 | **Speed Preset** | Default (1s) · Slow (2s) · Slower (3s) · Fast (800ms) · Faster (500ms) |
 
 Under **Advanced Tweaks**:
 
 | Option | Notes |
 | --- | --- |
-| **Animation Delay** | Seconds to wait after the element enters view before it animates |
+| **Animation Delay** | Seconds to wait after the element enters view before it animates (decimals are fine, e.g. 0.5) |
 | **Custom Duration** | Override the length in seconds (leave 0 to use the Speed Preset) |
 | **Repeat Count** | How many times it plays (ignored when *Loop Forever* is on) |
 | **Loop Forever** | Run continuously — great with attention-seekers like Pulse or Bounce |
 | **Replay On Scroll** | Re-trigger every time the element re-enters the viewport |
-| **Easing Function** | Override the timing curve (Ease, Ease In/Out, Linear, Smooth, Overshoot, …) |
+| **Sequence Items** | On a gallery or grid: **One by one** (the default) plays the entrance on each item in turn; **Together** animates the block as one. Ignored on single elements. |
+| **Stagger (ms)** | The gap between items when *Sequence Items* is on: 0–600 ms, default 90. |
+| **Easing** | The timing curve, from a picker of about 40 easings (Spring, Elastic, Bounce, Back, Steps and more). *Default* keeps the effect's own curve. Spring, Elastic and Bounce need a 2023 or newer browser. |
 
-:::note[Each effect remembers its own settings]
-Switching effects keeps the panel — the speed and advanced tweaks you set are remembered per effect.
+:::note[One set of settings per element]
+The trigger, speed and Advanced Tweaks are shared by whichever effect you pick: switching the effect keeps the same settings.
 :::
 
 ## Galleries and grids: one item at a time

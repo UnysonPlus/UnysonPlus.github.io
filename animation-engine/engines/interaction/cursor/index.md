@@ -25,18 +25,19 @@ It's **site-wide**: **Theme Settings → Site-wide UX → Cursor**. Turn on **En
 
 ## Styles
 
-**40+ styles**, from minimal to expressive:
+**42 styles**, in the same seven tabs as the picker:
 
-- **Minimal:** Dot · Ring · Dot + Ring · Dual Ring · Bullseye · Crosshair · Brackets · Square · Dashed Ring · Plus · Diamond
-- **Glow & gradient:** Glow · Gradient · Blob · Spotlight · Glass Lens · Invert Disc
-- **Trails:** Comet · Particle Trail · Afterimage · Firefly · Confetti Trail · Bubbles · Motion Streak · Word Trail
-- **Playful / physics:** Elastic Ring · Spring Dot · Rubber Band · Gooey Metaball · Sparkle
-- **Targeting:** Directional Arrow · Radar Pulse · Camera Reticle
-- **Content-aware:** Contextual Label · Sticky Cursor · Image Reveal · Magnify Lens
-- **Artistic:** Ink Brush · Fluid Smear · Ripple Trail
+- **Dot & Ring:** Dot · Ring · Dot + Ring · Dual Ring · Dashed Ring · Elastic Ring · Bullseye
+- **Targeting:** Crosshair · Brackets · Plus · Camera Reticle · Radar Pulse · Directional Arrow
+- **Shapes:** Square · Diamond · Sparkle · Glow · Gradient
+- **Trails:** Comet · Particle Trail · Confetti Trail · Motion Streak · Firefly · Bubbles · Afterimage · Word Trail
+- **Fluid & Lens:** Blob · Spotlight · Glass Lens · Magnify Lens · Gooey Metaball · Ink Brush · Fluid Smear · Ripple Trail · Image Reveal · Invert Disc
+- **Interactive:** Spring Dot · Rubber Band · Sticky Cursor · Contextual Label
 - **Custom:** Custom Image · Glyph / Emoji
 
-Most styles just work; a few reveal extra controls (e.g. **Comet** → tail length, **Particle Trail** → density, **Glass Lens** → radius & blur, **Contextual Label** → default label & font, **Magnify Lens** → zoom & scope, **Image Reveal** → reveal image & window radius).
+Every style shares a **Cursor color** (default `#2f74e6`) and a **Size (px)** (4–28, default 8).
+
+Most styles just work; a few reveal extra controls (e.g. **Comet** → **Tail follow**, **Particle Trail** → density, **Dot + Ring** → **Ring trail**, **Elastic Ring** → **Stretchiness**, **Radar Pulse** → **Pulse interval**, **Afterimage** → **Echoes**, **Word Trail** → **Word** and **Font**, **Ink Brush** → **Brush width**, **Glass Lens** → radius & blur, **Contextual Label** → default label & font, **Magnify Lens** → zoom & scope, **Image Reveal** → reveal image & window radius).
 
 ## Global options
 

@@ -19,9 +19,13 @@ That covers the patterns a single effect cannot:
 
 **→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/interactions/)**. Every example there is live: hover cards, a click-to-open panel, a staggered in-view row, a page-load heading and a scrolled-past badge.
 
+<img src="/img/animation-engine/interactions/interactions-hover-demo.png" alt="The hover demo: the middle card lifted, its picture zoomed and its arrow nudged, while the other two cards rest" width="1250" />
+
 ## Where to find it
 
 Open any element's **Animations** tab, click **Add Animation**, and choose **Interactions** (under *Interaction*). Pick a trigger, then set up the steps.
+
+<img src="/img/animation-engine/interactions/interactions-card.png" alt="The Interactions card: the five trigger tiles with On hover chosen, then Runs on, Amount on tablet and phone, Runs for, Matches and Use on every page" width="1240" />
 
 An element can have **two** Interactions, for example a hover *and* a click. It needs the **Animation Engine** extension.
 
@@ -37,7 +41,7 @@ An element can have **two** Interactions, for example a hover *and* a click. It 
 
 ## Devices and reuse
 
-Two options sit above the steps of every trigger:
+These options sit above the steps of every trigger:
 
 | Option | What it does |
 | --- | --- |
@@ -51,6 +55,8 @@ To use *Runs for*, give the cards a shared CSS class in their **Advanced** tab (
 
 With **Runs for: Every element on the page that matches…**, there is a third option: **Use on every page**. Switch it on, and once the page is **published** the Interaction also runs on the matching elements of **every page of the site**. It works like a class-based interaction in Webflow: make the hover for `.card` once, and every card on the site gets it.
 
+<img src="/img/animation-engine/interactions/interactions-sitewide-settings.png" alt="Theme Settings → Site-wide UX → Interactions: a table of the site-wide Interactions with what they run for, their trigger, the page they were made on and links to edit them" width="1474" />
+
 - **Editing:** it stays where you made it, so you edit it there, and the change reaches every page when you save. To stop it, switch the option off (or delete the element or the page).
 - **What counts:** only published pages. A draft source doesn't run anywhere else, and its own page shows it as usual.
 - **Theme Settings → Site-wide UX → Interactions** lists every site-wide Interaction, with its selector, its trigger, the page it was made on, and links to open that page in the Live Editor or the builder.
@@ -61,6 +67,8 @@ In the [Live Editor](/extensions/live-editor), switch the device toggle to table
 ## Steps
 
 Each trigger plays up to **three steps** (Step 1, Step 2, Step 3). Set a later step's **Animate** to *Not used* to leave it out.
+
+<img src="/img/animation-engine/interactions/interactions-steps.png" alt="Step 1 of a hover Interaction: Animate This element, That match with the Pick on the page button, Do, State, Direction and the Move, Scale and Rotate sliders" width="1240" />
 
 | Option | What it does |
 | --- | --- |
@@ -108,7 +116,7 @@ In the [Live Editor](/extensions/live-editor), **Edit** holds Interactions still
 - The targets are found when the page loads. Elements added to the page later (for example by a filter or an infinite scroll) are not included.
 - **On click** does not make an element focusable. To start a click Interaction from the keyboard, put it on a button or link.
 - *From* reveals hide their targets until the trigger fires. Use them on content that is fine to wait for, not on the only copy of important text.
-- **Reduce motion:** when a visitor asks for less motion (and *Respect "reduce motion"* is on in Theme Settings → Animation Engine), every step jumps straight to its end state.
+- **Reduce motion:** when a visitor asks for less motion (and *Respect "reduce motion"* is on in Theme Settings → Site-wide UX → Animation Engine), every step jumps straight to its end state.
 - It runs on the browser's own Web Animations, with no library. Every current browser supports it.
 
 ## Example: a hover card

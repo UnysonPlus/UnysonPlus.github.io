@@ -36,7 +36,7 @@ the Page Builder keeps normal scrolling so editing stays predictable.
 | Option | Notes |
 | --- | --- |
 | **Smooth (inertia) scrolling** | The master switch (default **No**) |
-| **Smoothness** | How floaty the scroll feels — lower is snappier (closer to native), higher glides longer. Default is a balanced middle |
+| **Smoothness** | How floaty the scroll feels — lower is snappier (closer to native), higher glides longer. 0–100, default 50 (a balanced middle) |
 | **Scroll speed (%)** | How far one wheel notch travels, relative to normal (50–200%, default 100%) |
 | **Enable on touch devices** | Off by default — smoothing touch scrolling often feels wrong, so phones/tablets keep native scrolling unless you turn this on |
 
@@ -46,7 +46,7 @@ the Page Builder keeps normal scrolling so editing stays predictable.
   [Infinite Scroll Loop](/animation-engine/scroll-loop) module — enabling both never creates two
   competing smooth-scrollers.
 - **Stays in sync with Scroll Motion.** On pages that also use
-  [Scroll Motion](/animation-engine/) (GSAP + ScrollTrigger), Smooth Scroll drives ScrollTrigger from
+  [Scroll Motion](/animation-engine/scroll-motion) (GSAP + ScrollTrigger), Smooth Scroll drives ScrollTrigger from
   the same clock, so scrubbed and pinned effects track the smoothed scroll exactly — no lag or drift.
 - **`position: sticky` keeps working.** Lenis keeps *native* scroll under the hood (that's why it's
   the industry standard), so pinned sections, sticky headers and anchor links all behave normally.

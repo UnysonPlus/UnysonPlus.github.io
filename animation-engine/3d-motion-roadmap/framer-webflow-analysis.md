@@ -9,11 +9,15 @@ description: How designers animate in Framer and Webflow, how the Unyson+ Animat
 
 *Analysis written November 2026. It answers one question: can the Unyson+ Animation Engine be as powerful as Framer and Webflow, and what would it take?*
 
+:::note[Since shipped]
+The plan below has been built: **Phase 4 (I1–I5) shipped in November 2026** — [Interactions](/animation-engine/interactions), [States](/animation-engine/states), live preview and the Interaction timeline in the [Live Editor](/extensions/live-editor), and reuse by class with per-device control. The analysis is kept as it was written; the comparison table has a **Since Phase 4** column, and the notes in *Built on what exists* and *Phases* say where the build differed from the plan.
+:::
+
 ## The short answer
 
 **Yes, and the gap is narrower than it looks, but it isn't where most people expect.**
 
-Unyson+ already ships more ready-made motion than either tool: 56 entrances and 43 exits, about 40 hover interactions, 38 text effects, 19 GSAP scroll effects, 27 physics effects, 37 motion paths, 11 card stacks, 15 horizontal-scroll styles, 29 scrollytelling transitions, 23 page transitions, 42 cursors, WebGL, 3D models and the Motion Gallery. On **effect count**, Unyson+ is ahead.
+Unyson+ already ships more ready-made motion than either tool: 56 entrances and 43 exits, 43 hover interactions, 38 text effects, 19 GSAP scroll effects, 27 physics effects, 37 motion paths, 11 card stacks, 15 horizontal-scroll styles, 29 scrollytelling transitions, 23 page transitions, 42 cursors, WebGL, 3D models and the Motion Gallery. On **effect count**, Unyson+ is ahead.
 
 Where Framer and Webflow are ahead is the **authoring model**: one consistent way to say *"when this happens, animate these things like this"*, aimed at any element on the page, previewed live on the canvas. In Unyson+ each effect family is its own module with its own panel, and almost every effect animates only the element it's attached to.
 
@@ -60,27 +64,27 @@ Patterns 1–3 and 7–9 are covered. **Patterns 4–6 are the gap**, and they a
 
 ## Side by side
 
-| Capability | Webflow | Framer | Unyson+ today |
-| --- | --- | --- | --- |
-| Ready-made effects | Presets + reusable custom presets | Effect presets | **Most: hundreds across ~30 modules** |
-| Reveal on scroll, staggered | ✓ | ✓ Appear | ✓ Entrance, Scroll Motion stagger, Motion Sequence |
-| Exit when leaving the screen | ✓ (scroll out of view) | Partly | ✓ Exit Animation |
-| Scroll-linked (scrub) | ✓ with pin | ✓ Scroll Transform / Speed | ✓ Scroll Motion, Scroll Keyframes, Image Sequence |
-| Pinned / sticky storytelling | ✓ | ✓ Scroll Sections + sticky | ✓ Scrollytelling, Card Stack, Horizontal Scroll |
-| Visual timeline | ✓ under the canvas | — (variants, not a timeline) | Partly: front-end **Scroll Timeline** with keyframe lanes, scroll-driven only |
-| **One trigger animates other elements** | ✓ targets | ✓ variants drive children | **Missing** (each effect animates its own element) |
-| **Apply one interaction to a whole class** | ✓ | ✓ via components | **Missing** (presets are per element) |
-| **States / variants** (Open, Active…) | Partly (via actions) | ✓ core feature | **Missing** (fixed hover presets only) |
-| Click / toggle animations | ✓ | ✓ | Partly, inside specific elements |
-| Mouse-move driven | ✓ | Code overrides | ✓ Parallax, Physics, Hover tilt |
-| Split text | ✓ action | ✓ text effects | ✓ Text Effects |
-| Lottie / Rive control | ✓ Lottie action | Components | Partly: Rive and Lottie elements, no "control it from another trigger" |
-| **Live preview while editing** | ✓ on canvas | ✓ on canvas | **Partly**: Motion Gallery and some previews in the builder; most effects play only on the front end |
-| **Per-breakpoint motion** | ✓ | ✓ | **Partly**: "run on mobile" switches, not per-breakpoint values |
-| 3D / WebGL / models | Custom code, Spline | Components | **✓ ahead**: WebGL Object, Model Viewer, Motion Gallery |
-| Motion graphics scenes | — | — | **✓ ahead**: Kinetic Scenes |
-| Build motion from a prompt | — | — | **✓ ahead**: AI Dev Kit |
-| Runs inside WordPress | — | — | **✓** |
+| Capability | Webflow | Framer | Unyson+ (at the time) | Since Phase 4 |
+| --- | --- | --- | --- | --- |
+| Ready-made effects | Presets + reusable custom presets | Effect presets | **Most: hundreds across ~30 modules** |  |
+| Reveal on scroll, staggered | ✓ | ✓ Appear | ✓ Entrance, Scroll Motion stagger, Motion Sequence |  |
+| Exit when leaving the screen | ✓ (scroll out of view) | Partly | ✓ Exit Animation |  |
+| Scroll-linked (scrub) | ✓ with pin | ✓ Scroll Transform / Speed | ✓ Scroll Motion, Scroll Keyframes, Image Sequence |  |
+| Pinned / sticky storytelling | ✓ | ✓ Scroll Sections + sticky | ✓ Scrollytelling, Card Stack, Horizontal Scroll |  |
+| Visual timeline | ✓ under the canvas | — (variants, not a timeline) | Partly: front-end **Scroll Timeline** with keyframe lanes, scroll-driven only | ✓ Also the Live Editor's **Interaction timeline** for hover, click, load, in-view and scrolled-past sequences (I4) |
+| **One trigger animates other elements** | ✓ targets | ✓ variants drive children | **Missing** (each effect animates its own element) | ✓ **[Interactions](/animation-engine/interactions)**: steps that animate this element, elements inside it, or any element on the page (I1) |
+| **Apply one interaction to a whole class** | ✓ | ✓ via components | **Missing** (presets are per element) | ✓ **Runs for** every matching element, and **Use on every page** for site-wide (I5) |
+| **States / variants** (Open, Active…) | Partly (via actions) | ✓ core feature | **Missing** (fixed hover presets only) | ✓ **[States](/animation-engine/states)**: named looks, exclusive groups, put in / take out / toggle (I3) |
+| Click / toggle animations | ✓ | ✓ | Partly, inside specific elements | ✓ Interactions **On click** (toggle, replay or once), and State toggles |
+| Mouse-move driven | ✓ | Code overrides | ✓ Parallax, Physics, Hover tilt |  |
+| Split text | ✓ action | ✓ text effects | ✓ Text Effects |  |
+| Lottie / Rive control | ✓ Lottie action | Components | Partly: Rive and Lottie elements, no "control it from another trigger" |  |
+| **Live preview while editing** | ✓ on canvas | ✓ on canvas | **Partly**: Motion Gallery and some previews in the builder; most effects play only on the front end | ✓ Live Editor **Edit / Preview** modes and **Play** in place (I2) |
+| **Per-breakpoint motion** | ✓ | ✓ | **Partly**: "run on mobile" switches, not per-breakpoint values | ✓ **Runs on** desktop / tablet / phone, and **Amount on tablet / phone** (I5) |
+| 3D / WebGL / models | Custom code, Spline | Components | **✓ ahead**: WebGL Object, Model Viewer, Motion Gallery |  |
+| Motion graphics scenes | — | — | **✓ ahead**: Kinetic Scenes |  |
+| Build motion from a prompt | — | — | **✓ ahead**: AI Dev Kit |  |
+| Runs inside WordPress | — | — | **✓** |  |
 
 *A few Webflow and Framer details above come from third-party tutorials rather than first-party docs (marked "partly" where unsure); the core models (Webflow's triggers, targets, actions and timeline; Framer's effects, variants and scroll sections) are confirmed by their own help and Academy pages.*
 
@@ -109,8 +113,8 @@ An **Interaction** is *trigger → timeline of steps → targets*:
 
 ### Built on what exists
 
-- **Runtime: GSAP**, already loaded by Scroll Motion, with ScrollTrigger for scroll triggers and the shared frame scheduler and reduced-motion guards the engine already uses.
-- **Editor:** a new **Interactions** card on the Animations tab, plus the existing **Scroll Timeline** overlay grown into the timeline for every trigger. Its keyframe lanes and per-page persistence are already built.
+- **Runtime: GSAP**, already loaded by Scroll Motion, with ScrollTrigger for scroll triggers and the shared frame scheduler and reduced-motion guards the engine already uses. *(As built: Interactions run on the browser's own Web Animations, with no library, layered on the separate translate / scale / rotate properties; see the decision [Interactions on Web Animations](/decisions/interactions-on-web-animations).)*
+- **Editor:** a new **Interactions** card on the Animations tab, plus the existing **Scroll Timeline** overlay grown into the timeline for every trigger. Its keyframe lanes and per-page persistence are already built. *(As built: the timeline for Interactions is its own panel in the Live Editor, the **Interaction timeline**, and the Scroll Timeline stays the tool for scroll motion; see [why](/decisions/interaction-timeline-in-the-live-editor).)*
 - **Presets:** today's Hover, Scroll Motion, Entrance and Exit effects stay exactly as they are for most users. Each can be opened as an interaction and customised, so presets become the starting point rather than a ceiling.
 - **Data:** one JSON shape for interactions, so the AI Dev Kit can write them from a prompt, and so they export and import like everything else.
 
@@ -121,7 +125,7 @@ An **Interaction** is *trigger → timeline of steps → targets*:
 | **I1 · Targets** | Hover / click / load / scroll-into-view triggers that animate *other* elements (named element, children, class), with a simple step list | Closes the biggest gap (patterns 4–6) |
 | **I2 · Live preview** | Play any interaction or effect inside the builder, on the element, while editing | The biggest workflow win |
 | **I3 · States** | Named states plus "go to state" and toggle; hover cards, menus and tabs built from them | Framer's strongest idea |
-| **I4 · Timeline for every trigger** | The Scroll Timeline overlay edits click, hover and load sequences too | Reuses the shipped editor |
+| **I4 · Timeline for every trigger** | The Scroll Timeline overlay edits click, hover and load sequences too | Reuses the shipped editor *(shipped as the Live Editor's Interaction timeline)* |
 | **I5 · Reuse and breakpoints** | Save an interaction as a preset, apply it by class, per-breakpoint values | Scale and polish |
 
 ## What stays our advantage
@@ -134,7 +138,7 @@ An **Interaction** is *trigger → timeline of steps → targets*:
 ## Open questions
 
 1. **How far to go in the builder?** Full canvas preview of every effect is a large job. Previewing interactions and the most-used presets first may be enough.
-2. **States inside the page builder:** should states live on elements (like Framer variants) or on interactions (like Webflow actions)? The proposal above keeps them on elements and lets interactions switch between them.
+2. **States inside the page builder:** should states live on elements (like Framer variants) or on interactions (like Webflow actions)? The proposal above keeps them on elements and lets interactions switch between them. *(Settled that way: States live on the element and Interactions switch them.)*
 3. **Should existing modules be rebuilt on the new engine, or only interoperate?** Interoperating is safer: existing pages must keep rendering exactly as they do.
 
 ## Sources

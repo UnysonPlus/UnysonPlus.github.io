@@ -20,9 +20,7 @@ Turn any element into a **3D flip card**: its existing content becomes the **fro
 
 ## Where to find it
 
-Open any element → **Animations** tab → **3D Flip Card** (a popover of style tiles). Pick a flip style; the settings below reveal. Works great on an Icon Box, an Image, or a plain container.
-
-Global on/off: **Theme Settings → Site-wide UX → Effects → Enable 3D Flip Card**.
+Open any element → **Animations** tab → **Add Animation → Interaction → 3D Flip Card** (a popover of style tiles). Pick a flip style; the settings below reveal. Remove the card (×) to turn it off. Works great on an Icon Box, an Image, or a plain container.
 
 ## Flip styles
 
@@ -40,12 +38,14 @@ Each style (except Diagonal, which is fixed) turns on your chosen **Direction / 
 
 ## Triggers
 
+The **Flip on** setting picks the trigger:
+
 | Trigger | Behavior |
 | --- | --- |
 | **Hover** | Flips while the pointer is over it, flips back on leave (pure CSS). |
 | **Click / tap** | Toggles the flip on click; keyboard-accessible (focus + Enter/Space). |
 | **Scroll into view** | Flips once, automatically, when it scrolls into view. |
-| **Auto (loop)** | Flips back and forth on a timer (**Auto interval**). Pauses when off-screen or the tab is in the background. |
+| **Auto (loop)** | Flips back and forth on a timer (**Auto interval**, 1–12 s, default 3). Pauses when off-screen or the tab is in the background. |
 
 ## The back face
 
@@ -55,14 +55,14 @@ Each style (except Diagonal, which is fixed) turns on your chosen **Direction / 
 | **Back background image** | Optional image behind the back content (cover); a subtle scrim keeps text readable. |
 | **Back button** | Optional call-to-action — **text** + **URL** (external links open in a new tab). |
 | **Back content align** | Top / Center / Bottom. |
-| **Back background / text color** | Preset (theme palette) or a custom colour. |
+| **Back background** / **Back text color** | Preset (theme palette) or a custom colour. |
 
 ## Look & feel
 
 | Option | Notes |
 | --- | --- |
-| **Card height** | Both faces share this height. |
-| **Flip speed** | Duration of the turn. |
+| **Card height (px)** | Both faces share this height (80–600, default 260). |
+| **Flip speed (s)** | Duration of the turn (0.2–1.5, default 0.6). |
 | **3D depth (perspective)** | Lower = more dramatic 3D. |
 | **Easing** | Smooth · Spring (overshoot) · Ease out · Linear. |
 | **Corner radius** | Rounds both faces. |

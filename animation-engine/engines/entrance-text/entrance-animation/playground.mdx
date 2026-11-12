@@ -22,24 +22,23 @@ it again. The **Sample option** updates as you tweak.
 
 :::info[Where it lives]
 Entrance Animation is **core** — open any Section, Column or element → **Animations** tab →
-**Entrance Animation**. It needs nothing switched on, and it honours *reduce motion* (the effect is
+**Add Animation** → **Entrance** → **Entrance Animation**. It needs nothing switched on, and it honours *reduce motion* (the effect is
 skipped and content shows normally).
 :::
 
 ## How the option is stored
 
-Entrance Animation is a **multi-picker** whose picker is the **effect**; each effect keeps its own
-speed and advanced tweaks in a nested group:
+Entrance Animation saves the **effect** in `animation`, and its settings once, in a separate
+`animation_settings` value shared by every effect:
 
 ```php
-'animation' => [
-    'effect' => 'animate__fadeInUp',
-    'animate__fadeInUp' => [
-        'group_animation_basic'    => [ 'speed_preset' => '' ],
-        'group_animation_advanced' => [
-            'delay' => 0, 'custom_duration' => 0, 'repeat_count' => 1,
-            'loop_forever' => 'no', 'replay_on_scroll' => 'no', 'easing' => '',
-        ],
+'animation' => [ 'effect' => 'animate__fadeInUp' ],
+'animation_settings' => [
+    'group_animation_basic'    => [ 'trigger' => [ 'view' ], 'speed_preset' => '' ],
+    'group_animation_advanced' => [
+        'delay' => 0, 'custom_duration' => 0, 'repeat_count' => 1,
+        'loop_forever' => 'no', 'replay_on_scroll' => 'no',
+        'sequence' => 'yes', 'sequence_stagger' => 90, 'easing' => 'default',
     ],
 ],
 ```

@@ -20,7 +20,7 @@ Give a scene a sense of **depth** — mark a few elements as *layers* with diffe
 
 ## Where to find it
 
-Open any element → **Animations** tab → **Parallax Layers**. It's a role picker:
+Open any element → **Animations** tab → **Add Animation** → **Scroll** → **Parallax Layers**. It's a role picker:
 
 | Role | Use it on | What it does |
 | --- | --- | --- |
@@ -28,7 +28,6 @@ Open any element → **Animations** tab → **Parallax Layers**. It's a role pic
 | **Scene** | the container (Section / Row / Column) | The tracking stage — pointer position is measured relative to it |
 | **Layer** | each moving element inside | Drifts by its **Depth** as the pointer/scroll moves |
 
-Global on/off: **Theme Settings → Site-wide UX → Effects → Enable parallax layers**.
 
 :::tip[Scene is optional]
 A **Layer** with no Scene ancestor tracks the **whole window** — so you can just drop a Depth on a few elements and get global mouse parallax. Mark a **Scene** when you want the effect scoped to one section (or several independent scenes on a page).
@@ -38,23 +37,23 @@ A **Layer** with no Scene ancestor tracks the **whole window** — so you can ju
 
 | Option | Notes |
 | --- | --- |
-| **Driven by** | Pointer · Scroll · Pointer + Scroll |
-| **Intensity** | How far the deepest layers travel (px) at full pointer/scroll |
-| **Smoothing** | Higher = smoother, more lag as layers ease to the pointer |
+| **Driven by** | Pointer (default) · Scroll · Pointer + Scroll |
+| **Intensity (px)** | How far the deepest layers travel at full pointer/scroll: 8–140, default 40 |
+| **Smoothing** | Higher = smoother, more lag as layers ease to the pointer: 0–100, default 50 |
 
 ## Layer options
 
 | Option | Notes |
 | --- | --- |
-| **Depth** | 0–100. `0` = fixed; higher = closer / more movement |
-| **Axis** | Both · Horizontal only · Vertical only |
-| **Direction** | *With* the pointer, or *Against* (the classic background-recedes feel) |
+| **Depth** | 0–100, default 30. `0` = fixed; higher = closer / more movement |
+| **Axis** | Both (default) · Horizontal only · Vertical only |
+| **Direction** | **With the pointer** (default), or **Against the pointer** (the classic background-recedes feel) |
 | **Scale with depth** | Deeper layers sit slightly larger, hiding their edges as they move |
 | **Depth blur** | A subtle blur that grows with depth (depth-of-field) |
 
 ## Set it up
 
-1. Add a **Section** → **Animations** tab → **Parallax Layers → Scene** (Driven by: Pointer).
+1. Add a **Section** → **Animations** tab → **Add Animation** → **Scroll** → **Parallax Layers → Scene** (Driven by: Pointer).
 2. Put a few elements inside (images, shapes, a heading).
 3. On each, set **Parallax Layers → Layer** with a different **Depth** — e.g. background `15`, midground `40`, foreground `80`. Set the background one to **Against** for extra depth.
 4. **Save** and view — move the pointer and the layers separate by depth.
@@ -65,7 +64,7 @@ For an overlapping hero scene, absolutely-position the layers inside the Scene (
 
 - **One shared loop** drives every layer on the page; off-screen layers are culled.
 - **Loads only when used.**
-- **Reduced motion** and **Disable on mobile** skip it entirely (layers stay put).
+- **Reduced motion** and the engine's **Disable heavy effects on mobile** setting skip it entirely (layers stay put).
 - The **Pointer** source is skipped on touch screens; a Scene set to **Scroll** still moves.
 
 :::note[One transform per element]

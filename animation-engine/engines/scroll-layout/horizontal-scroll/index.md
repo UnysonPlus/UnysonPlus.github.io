@@ -21,7 +21,7 @@ Pin a Section and move its cards **sideways as the visitor scrolls down** — a 
 
 ## Where to find it
 
-It's a **Section-level** control: build a Section with **2+ columns** as the panels, then open the Section → **Animations** tab → **Horizontal Scroll** → pick a style (default **Off**).
+It's a **Section-level** control: build a Section with **2+ columns** as the panels, then open the Section → **Animations** tab → **Add Animation** → **Scroll** → **Horizontal Scroll**, and pick a style (remove it with the card's **×**).
 
 The Section pins for as long as its horizontal travel lasts, then releases — the module loads its runtime **only** on pages that use it, and only the one chosen style's partial.
 
@@ -51,8 +51,8 @@ The Section pins for as long as its horizontal travel lasts, then releases — t
 
 ## Options
 
-- **Panel width** — Natural (content width), Narrow (60%), Wide (80%) or Full-screen (100%).
-- **Intensity** — the strength of the chosen style (how much the panels scale / tilt / skew / parallax).
+- **Panel width** — Natural (content width), Narrow (60%), **Wide (80%)** (the default) or Full-screen (100%).
+- **Intensity** — the strength of the chosen style (how much the panels scale / tilt / skew / parallax): 0–1, default 0.5.
 
 ## How it works
 

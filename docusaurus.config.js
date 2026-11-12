@@ -303,9 +303,6 @@ const config = {
           // The demos network uses short module slugs that don't all match the docs
           // slug, so a demo's "Open the manual" button 404'd. Point each at its real page.
           {from: '/animation-engine/entrance', to: '/animation-engine/entrance-animation'},
-          {from: '/animation-engine/parallax-scene', to: '/animation-engine/parallax'},
-          {from: '/animation-engine/image-scroll-choreography', to: '/shortcodes/animation-elements/image-scroll-choreography'},
-          {from: '/animation-engine/text-scroll-choreography', to: '/shortcodes/animation-elements/text-scroll-choreography'},
           // The "Web Dev Basics" (/learn) hub was retired — its lessons now live
           // inline as "💡 Web dev tip" callouts across the manual. 301 the old
           // pages to the nearest page that carries the matching guidance.

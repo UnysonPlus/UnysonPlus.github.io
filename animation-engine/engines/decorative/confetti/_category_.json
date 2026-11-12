@@ -1,0 +1,8 @@
+{
+  "label": "Confetti",
+  "position": 5,
+  "link": {
+    "type": "doc",
+    "id": "engines/decorative/confetti/index"
+  }
+}

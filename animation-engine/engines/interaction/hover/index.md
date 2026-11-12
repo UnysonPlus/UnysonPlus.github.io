@@ -19,7 +19,9 @@ Pointer-driven effects that play **while hovering** an element — a magnetic pu
 
 ## Where to find it
 
-Open any element → **Animations** tab → **Hover Interaction**. It's a **popover of animated tiles**; leave it on **None** for no hover effect.
+Open any element → **Animations** tab → **Add Animation → Interaction → Hover Interaction**. It's a **popover of 43 animated tiles**; remove the card (×) for no hover effect.
+
+**Hover Target** (inside the card): on a gallery, grid or Motion Gallery, **Each item** (the default) makes only the hovered card react; **Whole element** applies the hover to the whole block. It is ignored on single elements.
 
 :::tip[Stack several hover effects]
 Hover Interaction is **stackable** — after you add it, its tile stays in **Add Animation**, so you can add it again to combine effects on one element (e.g. **Lift + Ripple + Glow Border**). Each card picks one effect and they all run together. Just avoid pairing two *motion* effects (Magnetic / 3D Tilt / Lift) — they share the element's transform — pick one of those plus any number of decorations.
@@ -33,10 +35,10 @@ Every effect below is interactive in the **[playground](./playground.mdx)** ⚡.
 
 | Effect | What it does | Key options |
 | --- | --- | --- |
-| **Magnetic** | The element is pulled toward the cursor | Strength |
-| **3D Tilt** | Tilts in 3D following the pointer | Max tilt · Hover scale · Glare |
-| **Spotlight** | A glow — or a 2-colour gradient tint — follows the cursor | Style (glow / gradient) · Colors · Size |
-| **Ripple** | A ripple expands from the cursor | Ripple color |
+| **Magnetic** | The element is pulled toward the cursor, or pushed away | Mode (Pull toward cursor / Push away) · Strength |
+| **3D Tilt** | Tilts in 3D following the pointer | Max tilt · Hover scale · Glare · Invert (tilt away from the cursor) |
+| **Spotlight** | A glow — or a 2-colour gradient tint — follows the cursor | Style (Glow / Gradient tint) · Color · Second color (gradient) · Size 10–90% |
+| **Ripple** | A ripple expands from the cursor | Ripple color · Ripple from (Cursor entry point / Center) |
 | **Cursor Blob** | A soft colour blob follows the pointer | Blob color · Size |
 | **Cursor Trail** | Fading dots trail the pointer | Trail color · Dot size |
 | **Flashlight** | A dark overlay with a torch hole that follows the pointer | Torch size · Darkness |
@@ -74,13 +76,14 @@ Every effect below is interactive in the **[playground](./playground.mdx)** ⚡.
 
 | Effect | What it does | Key options |
 | --- | --- | --- |
-| **Image Reveal** | Zoom / grayscale→color / shine sweep on an image | Style · Zoom |
+| **Image Reveal** | Six styles on an image: **Zoom**, **Grayscale → color**, **Zoom + color**, **Shine sweep**, **Blur → sharp**, **Duotone → color** | Style · Zoom (1–1.2) · Duration |
 | **Grayscale**, **Blur Focus**, **Brightness** | CSS filters on hover | Amount · direction |
 
-Colors use the theme **color-preset picker**, so they stay tied to your palette (with an inline custom-color option). There's also a **WebGL Refract** effect (chromatic/liquid displacement) that needs the engine's Three.js pipeline.
+Colors use the theme **color-preset picker**, so they stay tied to your palette (with an inline custom-color option). There's also a **WebGL Refract** effect (chromatic / liquid displacement on an image, using the engine's Three.js pipeline): **Effect** (Both, Refract only, Liquid only), **Displacement**, **RGB split**, **Flow speed**, and **Runs** (On hover only / Always animating).
 
 ## Performance & accessibility
 
 - **Loads only when used** — enqueued only on pages with a hover effect.
-- **Pointer-only.** Skipped on touch screens (and honours the engine-wide **Disable on mobile**).
+- **Pointer effects are pointer-only.** Skipped on touch screens, and they honour the engine-wide **Disable heavy effects on mobile** setting.
+- **Keyboard.** The CSS effects also play on keyboard focus (`:focus-visible`), not only on hover.
 - **Reduced motion.** Motion-based effects (magnetic, tilt, scramble, ripple) are disabled; CSS effects like Image Reveal degrade gracefully.

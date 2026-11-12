@@ -20,6 +20,8 @@ Like the Entrance Animation, Exit Animation is part of **core**, so it works eve
 
 Open any element → **Animations** tab → **Add Animation** → **Exit Animation** (filter by **Exit** to find it quickly). Or, inside an Entrance Animation card, click **+ Add a matching exit**.
 
+<img src="/img/animation-engine/exit/exit-animation-cards.png" alt="The Animations tab with an Entrance Animation card (Zoom In) and an Exit Animation card (Zoom Out Up) next to it" width="1240" />
+
 The new card starts on **Reverse the entrance**, so it works straight away:
 
 ```
@@ -35,6 +37,8 @@ To remove the exit, click the card's **×**.
 ## The exits
 
 **43 exits** plus **Reverse the entrance**, grouped like the entrances:
+
+<img src="/img/animation-engine/exit/exit-animation-picker.png" alt="The Exit Animation picker: exits grouped in tabs (Mirror holds Reverse the entrance), Zoom Out Up selected, with Plays when, Duration and Delay below" width="1240" />
 
 | Group | Exits |
 | --- | --- |

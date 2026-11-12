@@ -20,13 +20,11 @@ Physics-driven motion you can attach to **any element** — grab-and-throw, buoy
 
 ## Where to find it
 
-Open any element → **Animations** tab → **Physics**. The picker is a **popover of animated tiles** (each previews its motion, with the effect name on it). Leave it on **None** for no physics.
-
-Global on/off: **Theme Settings → Site-wide UX → Physics**.
+Open any element → **Animations** tab → **Add Animation → Interaction → Physics**. The picker is a **popover of animated tiles** (each previews its motion, with the effect name on it). Remove the card (×) for no physics.
 
 ## The effects
 
-**27 effects**, grouped:
+**27 effects**, in five groups (the picker's tabs):
 
 | Group | Effects |
 | --- | --- |
@@ -34,14 +32,13 @@ Global on/off: **Theme Settings → Site-wide UX → Physics**.
 | **Pointer** *(skipped on touch)* | Spring Follow · Attract · Repel · Orbit Cursor · Rubber Band · Inertia Tilt |
 | **Ambient** *(continuous)* | Float · Levitate · Wind Sway · Pendulum · Wobble · Breathing · Drift · Orbit Point |
 | **Entrance** *(on scroll-in)* | Gravity Drop · Gravity Rise · Weight Sag · Ragdoll · Pop In |
-| **Container** | Bounce Box (bounces around its parent) |
-| **Reaction** *(hover / click)* | Jelly · Squash & Stretch · Recoil · Shake · Momentum Spin |
+| **Reaction** | Bounce Box (bounces around inside its parent) · Jelly · Squash & Stretch · Recoil · Shake · Momentum Spin *(the last five fire on hover / click)* |
 
 Each effect reveals its own options (stiffness, damping, strength, distance, trigger, axis lock, and so on) once you pick it — with sensible defaults, so most effects work the moment you select them.
 
 ## Set it up
 
-1. Open any element → **Animations** tab → **Physics**.
+1. Open any element → **Animations** tab → **Add Animation → Interaction → Physics**.
 2. Pick an effect from the popover — e.g. **Draggable**, **Float**, **Pop In** or **Jelly**.
 3. Tune its options if you like, then **Save**.
 4. View the page — drag effects are grab-and-throw, ambient effects loop, entrance effects play as they scroll in, reaction effects fire on hover/click.
@@ -51,7 +48,8 @@ Each effect reveals its own options (stiffness, damping, strength, distance, tri
 - **One shared loop.** A single render loop drives every physics element on the page.
 - **Loads only when used** — the runtime is enqueued only on pages with a physics effect.
 - **Reduced motion** skips **all** physics (every one is motion).
-- **Touch:** pointer-following effects (Spring Follow, Repel, Orbit Cursor…) are skipped on touch screens; the engine-wide **Disable on mobile** honours phones.
+- **Touch:** pointer-following effects (Spring Follow, Repel, Orbit Cursor…) are skipped on touch screens, and every effect honours the engine-wide **Disable heavy effects on mobile** setting on phones.
+- **Keyboard:** **Draggable** and **Slingshot** can be moved with the **arrow keys** once focused (with the same spring-back or glide), and **Esc** or **Home** snaps them back to where they started.
 - **Off-screen pause:** continuous effects pause when scrolled out of view or the tab is hidden.
 
 :::note[One effect per element]

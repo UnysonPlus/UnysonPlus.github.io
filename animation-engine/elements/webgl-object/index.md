@@ -17,14 +17,14 @@ A real-time **WebGL** element — a glass blob, liquid metal, a distorted sphere
 
 ## Add it
 
-Builder palette → **Media Elements** → **WebGL Object**.
+Builder palette → **Animation Engine** → **WebGL Object**.
 
 ## Styles
 
 Pick a **Style** — two families:
 
 **3D Objects**
-: Glass Blob · Liquid Metal · Distorted Sphere · Particle Field
+: Glass Blob · Liquid Metal · Distorted Sphere · Particle Field · Image Particles
 
 **Shaders (full-screen)**
 : Gradient Mesh · Plasma · Aurora · Fluid (pointer-reactive) · Dot Matrix / Halftone · Image Distortion · Image Transitions
@@ -32,7 +32,7 @@ Pick a **Style** — two families:
 **3D Scenes (scroll-driven)**
 : Image Tunnel · Gallery Dolly · Product Orbit
 
-Each style reveals its own parameters (e.g. Glass → *Refraction* & *Iridescence*, Liquid Metal → *Metalness* & *Roughness*, Particle Field → *Particle count*, *size* & a *Formation* (sphere / galaxy / ring / wave grid / cloud / helix), Plasma → *Scale/Flow/Contrast*, Image Distortion → an *Image* + *Strength*, **Image Transitions** → a list of *Images* + a *Transition* (fade / ripple / liquid dissolve / displace / wave), *Time per image*, *Transition length* and *Effect strength* — a looping slideshow that melts one image into the next on the GPU).
+Each style reveals its own parameters (e.g. Glass → *Refraction* & *Iridescence*, Liquid Metal → *Metalness* & *Roughness*, Particle Field → *Particle count*, *size* & a *Formation* (sphere / galaxy / ring / wave grid / cloud / helix), **Image Particles** → an *Image* sampled into a grid of coloured particles, with *Grid density* (30–220 across), *Point size*, *Cursor scatter* and *Scatter radius* (how far and how widely the particles push away from the pointer), *Idle drift*, *Jitter* and *Blend speed*, Plasma → *Scale/Flow/Contrast*, Image Distortion → an *Image* + *Strength*, **Image Transitions** → a list of *Images* + a *Transition* (fade / ripple / liquid dissolve / displace / wave), *Time per image*, *Transition length* and *Effect strength* — a looping slideshow that melts one image into the next on the GPU).
 
 ### Image Tunnel (scroll-driven camera)
 

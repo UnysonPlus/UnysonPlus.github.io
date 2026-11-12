@@ -61,8 +61,8 @@ Any animation whose progress is tied to the **scroll position** rather than to a
 </figure>
 
 :::tip[You can already do this]
-[Scroll Motion](/animation-engine/) gives you genuine pin + scrub, and
-[Scroll Story](/animation-engine/scrollytelling) gives you the pinned, beat-based cinematic stage.
+[Scroll Motion](/animation-engine/scroll-motion) gives you genuine pin + scrub, and
+[Scrollytelling](/animation-engine/scrollytelling) gives you the pinned, beat-based cinematic stage.
 :::
 
 ## Motion timeline

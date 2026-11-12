@@ -23,14 +23,26 @@ It's **site-wide**: **Theme Settings → Site-wide UX → Page Transitions**. Tu
 
 ## Transitions
 
-**23 styles.** A sampler:
+**23 styles**, in the same four tabs as the picker:
 
-- **Classic:** Fade · Slide · Zoom · Rotate · Flip 3D
-- **Reveals:** Curtain · Doors · Split · Wipe · Diagonal · Circle Reveal · Shape Reveal · Iris · Conic Wipe
-- **Grids & dissolves:** Bars · Stripes · Blinds · Checkerboard · Pixel Dissolve
-- **Expressive:** Glitch · Ripple (from the click) · Morph Blob · Content Fade-Up
+- **Wipe & Slide:** Wipe · Slide · Diagonal · Curtain · Doors · Split · Bars · Blinds · Stripes
+- **Shape & Iris:** Circle Reveal · Iris · Shape Reveal · Conic Wipe · Morph Blob
+- **Fade & Zoom:** Fade · Content Fade-Up · Zoom
+- **3D & FX:** Flip 3D · Rotate · Glitch · Pixel Dissolve · Checkerboard · Ripple (from the click)
 
-Some styles reveal extra controls — e.g. **Slide/Wipe** → direction, **Curtain/Split** → orientation, **Circle Reveal** → origin, **Flip 3D** → axis, **Blinds/Checkerboard/Pixel Dissolve** → strip/column count.
+Some styles reveal extra controls:
+
+| Style | Extra controls |
+| --- | --- |
+| **Slide**, **Wipe** | Direction |
+| **Diagonal** | Direction: Top-left → Bottom-right, or Top-right → Bottom-left |
+| **Curtain**, **Split** | Split: vertical or horizontal |
+| **Circle Reveal** | Origin: Center or a corner |
+| **Shape Reveal** | Shape: Circle, Square or Diamond |
+| **Flip 3D** | Axis: Vertical (Y) or Horizontal (X) |
+| **Blinds** | Orientation, and **Strips** (3–10, default 6) |
+| **Checkerboard** | **Columns** (8–20, default 12) |
+| **Pixel Dissolve** | **Columns** (8–20, default 14) |
 
 ## Global options
 

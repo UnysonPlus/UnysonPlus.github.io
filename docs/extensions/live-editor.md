@@ -64,12 +64,16 @@ From left to right:
 
 The **Edit / Preview** switch in the middle of the toolbar changes what the canvas does.
 
+<img src="/img/extensions/live-editor/modes.png" alt="The Edit, Preview and Play buttons in the middle of the toolbar" width="239" />
+
 - **Edit** (the default) is for building. The page **holds still** in its final state: entrance and exit animations, Scroll Motion, scroll reveals, text effects, galleries, marquees, physics, animated backgrounds, card stacks, scrollytelling and every other Animation Engine effect settle, so every section, column and element is visible and easy to select, drag and edit. Elements re-rendered after a change show straight away, never hidden waiting for an entrance.
 - **Preview** plays the page **exactly as a visitor sees it**, with your **unsaved changes**: entrance and exit animations, Scroll Motion, scroll-linked effects, pinned sections, galleries, hover effects and smooth scrolling all run, and you can scroll and hover the page. The selection outlines, inline editing and the editing panels are switched off and dimmed while you preview.
 
 ### Play: replay one element in place
 
 To watch **one element**, select it and click **Play**. You stay in Edit: the element is centred on the canvas and **its section plays right there**, as a visitor sees it and with your unsaved changes. Entrance animations, Motion Galleries, hover effects, loops and text effects all run, and the rest of the page stays still around it. It appears in a few seconds, because only that one section is rendered, not the whole page.
+
+<img src="/img/extensions/live-editor/play-in-place.png" alt="Play in place: a Motion Gallery's phones playing their entrance right on the Edit canvas, with Replay, Full preview and Done at the bottom" width="1920" />
 
 A bar at the bottom offers:
 
@@ -103,6 +107,8 @@ Preview is only for you: it is built for each preview from the editor, is never 
 
 When the selected element has [Interactions](/animation-engine/interactions), an **Interaction timeline** button appears at the top right of the canvas. It opens a timeline docked under the canvas:
 
+<img src="/img/extensions/live-editor/interaction-timeline.png" alt="The Interaction timeline under the canvas: three steps of a card's hover drawn as bars on a seconds ruler, the playhead at 0.30 s and the card posed mid-lift" width="1920" />
+
 - **One row per step**, drawn as a bar on a seconds ruler, exactly where it will play: in step order, after or with the previous step, with its delay and duration. When a step animates several elements, its bar covers the whole stagger, with a tick where each one starts. State changes (*Put it in a state*…) are diamonds.
 - **Drag a bar** to change the step's **delay**. **Drag its right edge** to change its **duration**. Both snap to 0.05 s and are written to the page like any other change: **Undo** works, and **Save** keeps it.
 - **Scrub:** click or drag on the ruler to pose the canvas at that moment. **Play** runs the sequence on the canvas, and **⏮** goes back to the start. The preview uses the element's real targets on the Edit canvas, and closing the timeline puts them back as they were.
@@ -117,6 +123,8 @@ The Animation Engine's [States](/animation-engine/states) card gives an element 
 ## Pick an Interaction's target on the page
 
 An [Interactions](/animation-engine/interactions) step animates an element named by a CSS selector. In the Live Editor, every *That match* field has a **Pick on the page** button. Click it and the options window steps aside: elements highlight as you point at them, with their name. Click the one the step should animate.
+
+<img src="/img/extensions/live-editor/pick-on-the-page.png" alt="Picking a target: the options window has stepped aside and the panel under the pointer is highlighted with its name" width="1920" />
 
 - If it has a **CSS ID**, the step uses it (`#promo`).
 - Otherwise a short class such as `ix-b03cd5` is added to its CSS classes and used (`.ix-b03cd5`). Undo removes it like any other change.

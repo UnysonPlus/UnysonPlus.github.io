@@ -21,9 +21,7 @@ Light up a block of text **word-by-word as the reader scrolls through it** — t
 
 ## Where to find it
 
-Open a text element (heading, Text Block, Special Heading…) → **Animations** tab → **Scroll Text Highlight** (a popover of style tiles). Best on a large, bold paragraph or headline.
-
-Global on/off: **Theme Settings → Site-wide UX → Effects → Enable Scroll Text Highlight**.
+Open a text element (heading, Text Block, Special Heading…) → **Animations** tab → **Add Animation** → **Scroll** → **Scroll Text Highlight** (a popover of style tiles). Best on a large, bold paragraph or headline.
 
 ## Styles
 
@@ -43,8 +41,8 @@ The **20 styles**, grouped by how they light a word up:
 | --- | --- |
 | **Reveal by** | Word (default) or Character — light up one word, or one letter, at a time. |
 | **Highlight colour** | Preset (theme palette) or custom — the lit colour used by the colour / decoration styles (Fill, Gradient, Sweep, Marker, Pill, Underline, Outline, Glow, Neon). The opacity, focus and motion styles ignore it. |
-| **Per-word ease** | How softly each word transitions on. |
-| **Keep highlighted** | Stay lit once revealed (off = re-dims when scrolled back up). |
+| **Per-word ease (s)** | How softly each word transitions on: 0–1.5 s, default 0.5. |
+| **Keep highlighted** | Stay lit once revealed (on by default; off = re-dims when scrolled back up). |
 
 ## Performance & accessibility
 

@@ -26,9 +26,9 @@ sites. The Animation Engine is already much closer than that suggests:
 - It runs on **GSAP + ScrollTrigger** — the same animation core the pros use.
 - It has **real WebGL 3D** ([WebGL Object](/animation-engine/webgl-object) via Three.js and
   [Model Viewer](/animation-engine/model-viewer) for glTF/GLB models, with AR).
-- It has a **cinematic scroll system** ([Scrollytelling / Scroll Story](/animation-engine/scrollytelling))
+- It has a **cinematic scroll system** ([Scrollytelling](/animation-engine/scrollytelling))
   with a pinned full-screen stage, scrubbed backdrops, and a camera-glide (pan + dolly) over a still
-  image — the "Apple-style product ride" look.
+  image — the "product ride" look of many launch pages.
 - It has **frame-scrub "video-from-stills"** ([Image Sequence](/animation-engine/image-sequence)),
   self-drawing SVG, CSS-3D galleries, physics, kinetic text, a custom cursor, and more.
 
@@ -39,9 +39,12 @@ three things that define genuinely premium motion:
    substrate under everything. **✅ Shipped** ([Smooth Scroll](/animation-engine/smooth-scroll)).
 2. **[A real motion timeline](./focus-areas.md#area-2--a-real-motion-timeline)** — keyframing several
    properties over one scrubbable axis, not just single-effect presets. **The native 80% has shipped**
-   ([Scroll Keyframes](/animation-engine/scroll-keyframes)); the visual editor is still ahead.
+   ([Scroll Keyframes](/animation-engine/scroll-keyframes)), and so has the visual editor
+   ([Scroll Timeline](/animation-engine/scroll-timeline)). **✅ Shipped.**
 3. **[Real 3D scenes you move through](./focus-areas.md#area-3--real-3d-scenes)** — a camera flying
-   through actual depth, not a flat image with a fake camera. *(Still ahead.)*
+   through actual depth, not a flat image with a fake camera. **✅ Shipped** as
+   [WebGL Object](/animation-engine/webgl-object) scenes (Image Tunnel, Gallery Dolly, Product Orbit); a WebGL
+   design for the Motion Gallery is in progress.
 
 ## How to read this section
 
@@ -94,6 +97,6 @@ you can travel *through*.
 </figure>
 
 The Animation Engine already produces this exact effect on purpose — see the **Backdrop Motion**
-(`pan` / `dolly` / `pan_dolly`) options in [Scroll Story](/animation-engine/scrollytelling). The
+(`pan` / `dolly` / `pan_dolly`) options in the [Scrollytelling](/animation-engine/scrollytelling) Full-screen Stage. The
 roadmap's 3D work is about going **beyond** it: a camera moving through a real rendered scene, which
 is the leap that separates a polished marketing page from a studio showpiece.

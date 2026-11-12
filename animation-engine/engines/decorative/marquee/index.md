@@ -19,9 +19,7 @@ Turn any element's content into a **seamless, never-ending ticker** — running 
 
 ## Where to find it
 
-Open any element → **Animations** tab → **Marquee** (a popover with direction tiles): **None · Left · Right · Up · Down**. Works best on a heading or text with large type, or a row of logos/images.
-
-Global on/off: **Theme Settings → Site-wide UX → Effects → Enable marquee**.
+Open any element → **Animations** tab → **Add Animation → Ambient → Marquee**, then pick a direction tile: **Left · Right · Up · Down**. Remove the card (×) to turn it off. Works best on a heading or text with large type, or a row of logos/images.
 
 ## Options
 
@@ -29,9 +27,11 @@ Global on/off: **Theme Settings → Site-wide UX → Effects → Enable marquee*
 | --- | --- |
 | **Direction** | Left / Right / Up / Down |
 | **Speed** | Slow · Normal · Fast, or a **Custom speed** (px/s) that overrides it |
-| **Gap** | Space between each repeat |
+| **Gap (px)** | Space between each repeat (0–200, default 40) |
+| **Text orientation** | **Up / Down only.** Horizontal (stacked lines, the default) keeps normal lines that scroll vertically; **Vertical — sideways** and **Vertical — upright letters** turn the text itself on its side |
 | **Separator** | Optional text shown between repeats (e.g. `•`) |
 | **Pause on hover** | |
+| **Pause / Play control** | Shows a small Pause / Play button on the marquee: an accessible way for visitors to stop looping motion (WCAG 2.2.2). Recommended for anything that scrolls on its own |
 | **Fade edges** | Softly fade the content in/out at the container edges |
 | **Text style** | Normal or **Outline** (hollow letters) |
 
@@ -43,7 +43,7 @@ Global on/off: **Theme Settings → Site-wide UX → Effects → Enable marquee*
 | **Tilt (angle)** | Run the banner at an angle |
 | **Bend (3D tilt)** | 3D perspective tilt — works on any content |
 | **Curve (arc text)** | A **true curve** — the text follows a real arc (rainbow up / valley down). Text content only; overrides Bend for text. The element grows taller on its own to fit the arc. |
-| **Wave** | The content undulates up/down as it scrolls |
+| **Wave** | The content undulates up/down as it scrolls (0–100) |
 
 ### Behavior
 
@@ -56,7 +56,8 @@ Global on/off: **Theme Settings → Site-wide UX → Effects → Enable marquee*
 
 - **Seamless** — the content is doubled so the wrap is invisible for short text or long strips.
 - **Loads only when used**; one shared render loop drives every marquee.
-- **Reduced motion** and **Disable on mobile** leave the content static (unclipped).
+- **Reduced motion** and the engine-wide **Disable heavy effects on mobile** setting leave the content static (unclipped).
+- **Pause / Play control** gives visitors a button to stop the movement.
 
 :::tip[Curved headline]
 For the demo-style curved headline, use a **Special Heading** with large, bold text → Marquee **Left** → **Curve** ~70. Bump it toward 100 for a rounder arc.

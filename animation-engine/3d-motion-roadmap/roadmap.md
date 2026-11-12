@@ -79,7 +79,7 @@ options** (see [Area 2](./focus-areas#area-2--a-real-motion-timeline) for the fu
 
 - **1a · Beat keyframes (native).** ✅ **Shipped as [Scroll Keyframes](/animation-engine/scroll-keyframes)** —
   move any element through Start / Middle / End keyframed states as you scroll, each with an easing
-  pick, auto-driven from a [Scroll Story](/animation-engine/scrollytelling) scene or the element's own
+  pick, auto-driven from a [Scrollytelling](/animation-engine/scrollytelling) scene or the element's own
   viewport travel. Basic controls in the element panel; the finer knobs (offsets, stagger, custom
   easing, trigger ranges) in the **Advanced** box.
 - **1b · The Scroll Timeline Editor (visual).** A tracks-and-keyframes editor built by **reusing the
@@ -91,7 +91,7 @@ options** (see [Area 2](./focus-areas#area-2--a-real-motion-timeline) for the fu
     panel with **one track per scroll animation** on the page, each a block on a readable **0–100 %
     scroll axis**, a **draggable playhead that scrubs the real page live** (scrub-linked animations
     animate as you drag), a **scroll %/active** read-out, and **element highlighting** on hover.
-    Open with **Shift + T** or the Timeline button (bottom-right). This is the editor *shell* and the
+    Open it from the admin bar → **Scroll Tools → Timeline** or with **Shift + T** (a floating Timeline button is the fallback when the admin bar is hidden). This is the editor *shell* and the
     scrubbing substrate — it reads every live ScrollTrigger, where the elements actually exist, which
     is why it lives on the front end rather than inside a builder modal.
   - **Phase 2 ✅ shipped — drag-to-retime, persisted.** Scroll Motion tracks are editable: **drag the
@@ -127,7 +127,7 @@ options** (see [Area 2](./focus-areas#area-2--a-real-motion-timeline) for the fu
   ruler with a live playhead; click a row or a bar to jump to that trigger. The page-level view of "what
   pins / scrubs where" when composing scroll choreography. A richer **horizontal** view of the same data —
   with a **scrubbing** playhead — now also ships as the **[Scroll Timeline](/animation-engine/scroll-timeline)**
-  (1b Phase 1 above). *Editable (drag ranges) is the next step for both.*
+  (1b Phase 1 above), where Scroll Motion tracks can also be dragged to retime them (1b Phase 2). The Ruler itself stays read-only.
 
 ## Scroll Choreography & gallery chaining
 
@@ -140,7 +140,7 @@ gallery shortcodes, configure each independently, and they connect into one scro
 
 **Engine — on GSAP + ScrollTrigger.** Rather than a hand-rolled rAF loop, the choreography runs on a
 pinned, scrubbed **ScrollTrigger** driving a pose engine (per-card poses for each formation, with per-step
-holds, cascade and easing). This is the same timeline substrate the engine's [Motion Sequence](/animation-engine/)
+holds, cascade and easing). This is the same timeline substrate the engine's [Motion Sequence](/animation-engine/motion-sequence)
 ("choreography without code") already uses, so chaining can reuse it. *Finding: GSAP **Flip** is ideal for
 non-pinned layout reflows but unreliable under a pinned+scrubbed trigger (its absolute coordinates shift when
 the stage goes `position: fixed`), so pinned choreography uses the pose engine, not Flip.*
@@ -201,7 +201,7 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
     galleries no longer see it as a choice. *(Verified: the design no longer appears in the picker; two live
     pages still using it render via the retained back-compat path.)*
 
-## Phase 2 — Real 3D scenes ✅ Scenes shipped (WebGL Motion Gallery stretch ⏸️ deferred)
+## Phase 2 — Real 3D scenes ✅ Shipped (scenes + WebGL Motion Gallery designs)
 
 - **A few pre-built, scroll-scrubbed camera scenes** — you supply the media and tune a few knobs; the scene
   and its camera choreography are built in. Rather than a separate element, these ship as **scroll-driven
@@ -217,15 +217,15 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   - **Product Orbit** — ✅ **shipped.** Your images face outward on a **ring** and the **camera orbits the
     centre** on scroll — a turntable reveal, each image swinging to the front after the next. *(Verified live.)*
     A real-3D-model variant (via [Model Viewer](/animation-engine/model-viewer)) is a possible future escalation.
-- **Stretch (⏸️ deferred — future escalation):** a real-WebGL variant of the
-  [Motion Gallery](/animation-engine/motion-gallery) for true depth, lighting and reflection. **Not started
-  by design.** Today's Motion Gallery runs on pure CSS 3D + a single rAF loop (no library) and the
-  scroll-scrubbed *camera* scenes that WebGL would add are already shipped as
-  [WebGL Object](/animation-engine/webgl-object) presets (Image Tunnel, Gallery Dolly, Product Orbit). A
-  Three.js rebuild would be a second rendering engine for the element — a large, multi-session effort with
-  its own asset-loading and performance surface — so it's parked here as a future escalation to pick up only
-  if a real need (true reflections / lighting across the card layouts) appears. The rest of the 3D-motion
-  roadmap is shipped.
+- **Stretch ✅ shipped (Animation Engine 1.5.2): WebGL designs for the Motion Gallery.** Real-WebGL designs for the
+  [Motion Gallery](/animation-engine/motion-gallery), for true depth, lighting and reflection. The other
+  designs run on pure CSS 3D plus a single animation loop (no library), and the scroll-scrubbed *camera*
+  scenes are already shipped as [WebGL Object](/animation-engine/webgl-object) presets (Image Tunnel, Gallery
+  Dolly, Product Orbit). The WebGL design adds what CSS 3D can't: real lighting, reflections and depth across
+  the card layout, rendered with Three.js and loaded only on pages that use it. Shipped as a **WebGL (real 3D)**
+  family of three designs: **Mirror Ring** (a lit ring above a reflective floor), **Depth Field** (photos at true
+  depth in fog, pointer parallax) and **Wave Wall** (a lit, rippling wall of photos). See
+  [Motion Gallery → WebGL](/animation-engine/motion-gallery).
 
 ## Phase 3 — Flourishes
 
@@ -289,7 +289,6 @@ preview motion.
   device toggle + Play. **Use on every page** (Animation Engine 1.4.99) makes it **site-wide**: made once on its source
   element, it runs on the matching elements of every page, listed in Theme Settings → Site-wide UX → Interactions.
   **Amount on tablet / phone** (1.5.0) scales how far the steps go per device, e.g. a gentler lift on phones.
-  I5 is complete; next is **I4**, the timeline editor for click, hover and load sequences.
 
 ➡️ **The full analysis, feature comparison and reasoning: [Framer & Webflow analysis](./framer-webflow-analysis.md).**
 
@@ -299,7 +298,7 @@ preview motion.
 | --- | --- | --- | --- |
 | **0** | Site-wide smooth scroll + one scroll engine + shared guardrails | Very high | ✅ Shipped |
 | **1** | Beat keyframes (the timeline "80%") → visual editor | High | ✅ Shipped (1a · 1b · 1c) |
-| **2** | Parametric scroll-camera 3D scenes (WebGL Object presets) | Very high | ✅ Tunnel · Gallery Dolly · Product Orbit (WebGL Motion Gallery stretch ahead) |
+| **2** | Parametric scroll-camera 3D scenes (WebGL Object presets) | Very high | ✅ Tunnel · Gallery Dolly · Product Orbit · WebGL Motion Gallery designs |
 | **3** | Rive + WebGL image transitions + particle presets | Medium–High | ✅ Shipped (Rive · image transitions · particle presets) |
 | **4** | Interactions: targets, live preview, states, a timeline, reuse and breakpoints | Very high | ✅ Shipped (I1–I5) |
 
@@ -312,7 +311,7 @@ concern; trying to genericize them is where builders drown.
 
 | Build as presets | Use internally / curated | Not planned |
 | --- | --- | --- |
-| Site-wide smooth scroll | Theatre.js to author 3D camera scenes | A general visual timeline editor |
+| Site-wide smooth scroll | Theatre.js to author 3D camera scenes | A general-purpose (non-scroll, non-Interaction) visual timeline editor in the builder |
 | One unified scroll engine | Three.js for a few parametric scenes | A user-facing shader editor |
 | Beat keyframes on pinned sections | Spline for an optional no-code hero object | Open 3D scene composition from scratch |
 | Rive / model-viewer / image-transition presets | Curtains.js/OGL for the shader preset set | Arbitrary per-project camera fly-throughs |

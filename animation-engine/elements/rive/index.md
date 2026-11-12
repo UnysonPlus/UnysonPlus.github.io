@@ -24,7 +24,7 @@ A `.riv` is more than a timeline — it's a small **visual logic graph** (a **St
 - **Booleans** — on/off states (hovered, toggled, open).
 - **Numbers** — continuous values you feed in; **blend states** interpolate smoothly between animations as the number changes (a gauge needle, a character turning to face the pointer, a progress fill).
 
-State Machines can carry their own **pointer listeners**, so a well-built file reacts to hover and click with no configuration. This element then adds the page-side plumbing — *when* it plays and how the pointer/scroll feed it. (Rive's newer **data-binding** and **events → JavaScript** features aren't surfaced by this element yet.)
+State Machines can carry their own **pointer listeners**, so a well-built file reacts to hover and click with no configuration. This element then adds the page-side plumbing — *when* it plays and how the pointer/scroll feed it. Rive's **data binding** and **events** are supported too — see [Events → page actions](#events--page-actions) and [Data binding](./data-binding.md).
 
 ## Animation tab
 
@@ -37,6 +37,7 @@ State Machines can carry their own **pointer listeners**, so a well-built file r
 | **Artboard** | Optional — a specific artboard by name. |
 | **Click fires trigger** | Optional — the name of a State Machine **Trigger** input to fire on click (a "bump", a button press…). For files whose State Machine doesn't carry its own pointer listeners. |
 | **Plays** | **Autoplay** (pauses off-screen) · **On view** · **On hover** · **On click** · **Scroll-scrub**. |
+| **Scroll length** (scroll-scrub) | How many screen-heights the scrub spans: 1–6, 2 by default. |
 | **Scroll input** (scroll-scrub) | The name of a **Number** input in your State Machine — the scroll position (0–100) is written to it, so you design the SM to blend on that input as the visitor scrolls. |
 
 :::tip[Interactivity: listeners vs. triggers]

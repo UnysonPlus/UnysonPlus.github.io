@@ -25,6 +25,8 @@ That is what menus, drawers, tabs and accordions need:
 2. Fill in **State 1**: give it a **Name** (`open`, `closed`, `active`…) and the values the element has in that state. Values are relative to how it normally looks. **States 2 and 3** are optional; leave a name empty to not use it.
 3. On the element that triggers the change (a button, a tab, a card), add an **Interactions** card. In a step, set **Do** to **Put it in a state**, **Take it out of a state** or **Toggle a state**, type the **State** name, and choose the target under **Animate** / **That match**, as for any step.
 
+<img src="/img/animation-engine/states/states-card.png" alt="The States card on a tab button: State 1 named active, with its values, Start in this state, a Group and Inactive" width="1240" />
+
 | State option | What it does |
 | --- | --- |
 | **Name** | The state's name. It is turned into a class-safe name: "Open menu" becomes `open-menu`. |
@@ -43,6 +45,8 @@ That is what menus, drawers, tabs and accordions need:
 | **Take it out of a state** | leaves the state | enters it |
 | **Toggle a state** | switches it | switches it back |
 
+<img src="/img/animation-engine/states/states-step.png" alt="An Interactions step set to Do: Put it in a state, with the state name" width="1240" />
+
 State steps keep their place in the step order, delay and stagger, so they mix with ordinary *Animate* steps. A **Click** Interaction that toggles a state also sets `aria-expanded` on the clicked element.
 
 :::tip
@@ -60,6 +64,8 @@ For buttons that should change a state *every* time they are clicked (an Open bu
 - **To colour the active tab:** `.upw-is-active .tab-label { background: #00b295; color: #fff; }` in Custom CSS.
 - **To make the panels sit on top of each other:** give their column the class `tab-panes` and use `.tab-panes { display: grid } .tab-panes > * { grid-area: 1 / 1 }`.
 
+<img src="/img/animation-engine/states/states-tabs-demo.png" alt="The tabs demo: the Build tab is active (filled green) and only its panel shows" width="1250" />
+
 ## A state without a States card
 
 A step can name a state the target never defined. The target then just gets or loses the class `upw-is-<name>`, with no animation. This is a quick way to drive pure-CSS changes from any trigger.
@@ -67,6 +73,8 @@ A step can name a state the target never defined. The target then just gets or l
 ## Previewing a state
 
 In the [Live Editor](/extensions/live-editor), each state has a **Show this state on the canvas** button. The options window steps aside, the element is centred, and it animates into the state from the values you have typed, even before saving. **Play again** repeats it, and **Back to the options** (or Esc) puts everything back.
+
+<img src="/img/animation-engine/states/states-show-on-canvas.png" alt="The Live Editor showing a tab button in its active state on the canvas, with Play again and Back to the options at the bottom" width="1920" />
 
 ## For developers
 

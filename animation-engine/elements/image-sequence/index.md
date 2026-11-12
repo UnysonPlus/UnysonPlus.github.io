@@ -14,7 +14,7 @@ Play with every option — frames, mode, scroll length, direction, fit and backg
 
 ## Add it
 
-Builder palette → **Media Elements** → **Image Sequence**.
+Builder palette → **Animation Engine** → **Image Sequence**.
 
 ## Frames
 

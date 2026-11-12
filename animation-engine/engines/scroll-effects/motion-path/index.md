@@ -20,7 +20,7 @@ Send any element **travelling along a path** instead of a straight line — a wa
 
 ## Where to find it
 
-It's a **per-element** control: open any element (Section, Column, or a leaf like a heading, image or icon box) → **Animations** tab → **Motion Path** → pick a shape (default **None**).
+It's a **per-element** control: open any element (Section, Column, or a leaf like a heading, image or icon box) → **Animations** tab → **Add Animation** → **Scroll** → **Motion Path**, then pick a shape (remove it with the card's **×**).
 
 The module ships active with the engine and loads its runtime **only** on pages that actually use a motion path.
 
@@ -75,7 +75,7 @@ Any valid single-subpath `d` works (line, curve, arc commands). Keep it to **one
 
 ## Set it up
 
-1. Open an element → **Animations** tab → **Motion Path**.
+1. Open an element → **Animations** tab → **Add Animation** → **Scroll** → **Motion Path**.
 2. Pick a **shape** (or **Custom path** and paste your own `d`).
 3. Choose a **Drive** — **Scroll** to scrub it with the page, **Loop** to run it forever, or **On view** to play once.
 4. Set the **Path size**, and (optionally) a **Start offset**, **Reverse**, and **Align to path**.

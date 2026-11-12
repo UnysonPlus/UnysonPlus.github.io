@@ -20,23 +20,22 @@ Loop a run of full-height **Sections** into a **seamless, never-ending scroll** 
 
 ## Where to find it
 
-It's a **Section-only** control (an infinite loop only makes sense on full-height sections, not columns or leaf elements): open a **Section** → **Animations** tab → **Infinite Scroll Loop** → pick **Infinite Loop** (default **Off**).
+It's a **Section-only** control (an infinite loop only makes sense on full-height sections, not columns or leaf elements): open a **Section** → **Animations** tab → **Add Animation** → **Scroll** → **Infinite Scroll Loop** → pick **Infinite Loop** (default **Off**).
 
-Global on/off: **Theme Settings → Site-wide UX → Effects → Enable Infinite Scroll Loop**.
 
 ## Options
 
 | Option | Notes |
 | --- | --- |
 | **Infinite Loop / Off** | Turn the loop on for this section |
-| **Snap to each section** | *On* = one section per scroll gesture, eased into place (the classic look); *Off* = free continuous smooth scrolling |
-| **Snap duration** | How long the eased glide to each section takes (0.4–1.5s, default 0.8) |
-| **Run on mobile** | Disable the loop + smooth scroll on phones (< 768px) if it feels heavy |
+| **Snap to each section** | *On* (the default) = one section per scroll gesture, eased into place (the classic look); *Off* = free continuous smooth scrolling |
+| **Snap duration (s)** | How long the eased glide to each section takes (0.4–1.5 s, default 0.8) |
+| **Run on mobile** | On by default. Turn it off to disable the loop + smooth scroll on phones (< 768px) if it feels heavy |
 
 ## Set it up
 
 1. Build **2 or more full-height Sections** in a row (give each a min-height of 100vh).
-2. On **each** section → **Animations** tab → **Infinite Scroll Loop → Infinite Loop**.
+2. On **each** section → **Animations** tab → **Add Animation** → **Scroll** → **Infinite Scroll Loop** → **Infinite Loop**.
 3. (Optional) For the depth effect, add media inside and give it the **[Parallax](/animation-engine/parallax)** effect.
 4. Choose **Snap** on/off and **Save**.
 

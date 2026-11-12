@@ -64,7 +64,9 @@ visitor's screen. Above it:
 - **Height mode:** Ratio, Capped or Fill (see [the stage](./stage.md#height-modes)).
 - **Safe area** (in video mode, **App guides**): shows the safe zone, or where the app covers the picture.
 - **Camera view:** shown when the scene has a camera; turn it off to select and drag layers in the flat layout.
-- **Full screen** (F): plays the scene at your screen's real size, without the editor.
+- **Full screen** (F): plays the scene without the editor. A web scene fills your screen at its real size; a video keeps
+  the shape of the format on show, as tall or as wide as the screen allows, with black bars around it (a 9:16 reel stays
+  9:16 and takes the full height).
 
 On the stage, click a layer to select it, drag it to move it, drag its handles to resize it, Shift-click to select more,
 and double-click a group to step inside it. Click empty space (on the stage or the dark area around it) or press Escape to

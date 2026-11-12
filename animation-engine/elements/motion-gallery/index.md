@@ -370,12 +370,12 @@ Height**, they shrink to fit it.
 
 **WebGL (real 3D)**
 
-These twenty-one are drawn with real 3D graphics (WebGL), so they can do what CSS 3D can't: real lights, shadows and
+These twenty-four are drawn with real 3D graphics (WebGL), so they can do what CSS 3D can't: real lights, shadows and
 reflections, shader effects, thousands of particles, breaking glass, water, jelly, soap bubbles, holographic foil,
-and cloth, film and paper that bend. The other designs are built from CSS 3D, which is lighter. Mirror Ring, Depth
+cloth, film and paper that bend, ridged lenticular prints and jigsaw pieces. The other designs are built from CSS 3D, which is lighter. Mirror Ring, Depth
 Field, Wave Wall, Cloth Banners, Fold Strip, Water Pool, Jelly Grid, Gallery Walk, Holo Cards, Domino Row, Photo
-Bubbles, Film Ribbon, Ferris Wheel and Photo Mobile show many photos at once; Liquid Slider, Particle Morph, Flip Book, Shatter and Stage
-Curtain, Photo Cube and Pixel Blocks show **one photo at a time**.
+Bubbles, Film Ribbon, Ferris Wheel, Photo Mobile and Photo Fall show many photos at once; Liquid Slider, Particle Morph, Flip Book,
+Shatter, Stage Curtain, Photo Cube, Pixel Blocks, Lenticular and Jigsaw show **one photo at a time**.
 
 <img src="/img/animation-engine/motion-gallery/webgl-mirror-ring.png" alt="Mirror Ring: photos on a ring above a glossy floor that mirrors them, the ones facing away in shadow" width="1920" />
 
@@ -429,7 +429,9 @@ and stay readable to screen readers and search engines.
   **Burn** (the photo burns away along a glowing, charred edge), **Zoom Blur** (it rushes toward you in a blur and
   settles on the next), **Mosaic** (it changes square by square, in a random order), **Ink** (the next photo
   spreads out from the middle like ink in water, with a dark edge), **Spiral** (the next photo winds in from the
-  centre) or **Light Leak** (a warm flare washes across as it changes, like old film). **Strength** (0–100 %) sets how much the change distorts the photos, **Pointer Ripple**
+  centre), **Light Leak** (a warm flare washes across as it changes, like old film), **Stretch** (the photos slide
+  across, stretched and smeared by their speed) or **Halftone** (the next photo comes in as dots that grow as they
+  sweep across). **Strength** (0–100 %) sets how much the change distorts the photos, **Pointer Ripple**
   (0–100 %) sends soft ripples out from the pointer, and **Slow Zoom** (0–20 %) zooms gently in and out on each
   photo. **Corner Radius** rounds the stage's corners. Clicking opens the photo on screen.
 
@@ -580,6 +582,33 @@ and stay readable to screen readers and search engines.
   the levels in opposite directions. Sweep the pointer across it and it is a breeze: the arms spin faster, then
   settle (**Breeze**). **Photos** (3–12), **Photo Size**, **Sway**, **Arm Colour** (the arms and strings),
   **Lighting**, **Card Ratio** and **Corner Radius**. The photos are two-sided, so they show as they turn.
+
+<img src="/img/animation-engine/motion-gallery/webgl-photo-fall.png" alt="Photo Fall: photos tumbling down through space at different depths, tilted like falling leaves" width="1920" />
+
+- **Photo Fall** — your photos drift down through space, rocking, turning and drifting side to side like falling
+  leaves (**Flutter**). Sweep the pointer across them and it is a gust: the photos near it are blown along with it,
+  spinning, then settle back (**Pointer Gust**). **Motion → Fall** sets the speed (Loop Duration is one fall; choose
+  **Fall** or **Rise** to float them upward); Scroll-scrub moves them with the scroll. **Photos** (6–40; the gallery
+  repeats to fill them), **Photo Size**, **Wind** (a steady sideways drift, −100 to 100), **Depth** (how far back
+  they spread), **Lighting**, **Card Ratio** and **Corner Radius**. Pointing at a photo turns it to face you;
+  clicking opens it.
+
+<img src="/img/animation-engine/motion-gallery/webgl-lenticular.png" alt="Lenticular: a ridged card turning, its ridges showing one photo on one side and the next on the other" width="1920" />
+
+- **Lenticular** — one photo at a time on a ridged card, like a lenticular postcard: one side of every ridge carries
+  one photo and the other side the next, so as the card turns the picture flips from one to the other. Each turn
+  brings in the next photo. Move the pointer and the card tilts toward it, so visitors can flip it themselves
+  (**Pointer Tilt**). **Ridges** (10–60), **Tilt** (15–50°: how far it turns each way; the ridges are cut deep
+  enough that each side hides the other at that angle), **Card Size**, **Move Time**, **Frame Colour** (the thin
+  frame and back), **Lighting**, **Card Ratio** and **Corner Radius**. Swipe for the next photo.
+
+<img src="/img/animation-engine/motion-gallery/webgl-jigsaw.png" alt="Jigsaw: jigsaw pieces of the next photo flying in, turned, to land on the finished puzzle" width="1920" />
+
+- **Jigsaw** — one photo at a time as a jigsaw: the next photo's pieces fly in, turned, in a random order and snap
+  into place on top of the last one. Point at a piece and it lifts out of the puzzle (**Pointer Lift**). **Pieces
+  Across** (4–16; the rows follow the stage's shape), **Scatter** (how far away they fly in from), **Move Time**,
+  **Board Colour** (shows under a lifted piece and in the fine cut lines) and **Lighting**. Swipe for the next
+  photo; the first photo assembles itself as the gallery comes into view.
 
 How they behave on the page:
 

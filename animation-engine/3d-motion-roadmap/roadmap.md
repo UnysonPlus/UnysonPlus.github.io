@@ -241,7 +241,10 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   Cube** (a lit cube that turns a quarter-turn per photo) and **Film Ribbon** (a strip of film twisting through
   space), plus **Mosaic** and **Ink** transitions. **Animation Engine 1.5.8** adds **Pixel Blocks** (a photo of 3D
   blocks that flip to the next), **Ferris Wheel** (photos in gondolas on a turning wheel) and **Photo Mobile** (photos
-  on a balanced mobile stirred by the pointer), plus **Spiral** and **Light Leak** transitions.
+  on a balanced mobile stirred by the pointer), plus **Spiral** and **Light Leak** transitions. **Animation Engine
+  1.5.9** adds **Photo Fall** (photos tumbling down like leaves, blown about by the pointer), **Lenticular** (a ridged
+  card that flips between two photos as it tilts) and **Jigsaw** (the next photo's pieces fly in and snap together),
+  plus **Stretch** and **Halftone** transitions.
 
 ## Phase 3 — Flourishes
 

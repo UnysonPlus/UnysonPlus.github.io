@@ -46,7 +46,7 @@ In the examples below, the Larkspur Garden Club sells **Member** (monthly and ye
 3. Click **Save modules**.
 
 Payments is **off by default**. While it is off, **Payments** and **Coupons** show in the sidebar under
-**Selling** with a **Soon** badge (the badge the shared admin sidebar gives every area that is not available yet). Opening one shows "Payments is switched off", what the area does, "Switch on
+**Selling** with an **Off** badge. Opening one shows "Payments is switched off", what the area does, "Switch on
 the Payments module to use it." and an **Open Modules** button. The Pricing Plans and Membership Checkout
 elements only show a note to administrators. Switching Payments on also lets you switch on the modules that depend on it:
 [Coupons](./coupons.md), [Tax](./tax.md) and [Gift memberships](./gifts.md).

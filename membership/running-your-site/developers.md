@@ -331,9 +331,27 @@ options, emails, webhook events, its own database tables.
 | `unysonplus_membership_rule_who_fields` + `unysonplus_membership_rule_who_extra` + `unysonplus_membership_rule_passes` | A new "who can see it" condition on access rules. |
 | `unysonplus_membership_account_sections` (action, `$user`) | A section on the member's account page. |
 | `unysonplus_membership_email_catalogue` | Emails your module sends, editable on **Membership → Emails**. |
-| `unysonplus_membership_cron_hooks` | Your scheduled job, so **Remove all data** clears it. (The **Scheduled jobs** card on Home lists only Membership's own jobs.) |
+| `unysonplus_membership_cron_hooks` | Your scheduled job, so **Remove all data** clears it and Membership records when it last ran. |
+| `unysonplus_membership_jobs` (filter, `$jobs`) | A line for your scheduled job on the **Scheduled jobs** card on Home: `hook => array( label, seconds between runs )`. Add the hook to `unysonplus_membership_cron_hooks` too, so the card can show its last run. |
 | `FW_Membership_Installer::module_tables( $module, $version, $schema_callback, $tables )` | Database tables, made once per version and removed by **Remove all data**. |
 | `FW_Membership_Webhooks::emit( $event, $data )` + `unysonplus_membership_webhook_events` | Your own webhook events. |
+
+For example, a module with a daily job named `my_addon_daily` lists it on the **Scheduled jobs** card, with its
+state and last run, like this:
+
+```php
+add_filter( 'unysonplus_membership_cron_hooks', function ( $hooks ) {
+	$hooks[] = 'my_addon_daily';
+	return $hooks;
+} );
+add_filter( 'unysonplus_membership_jobs', function ( $jobs ) {
+	$jobs['my_addon_daily'] = array( 'My add-on: daily clean-up', DAY_IN_SECONDS );
+	return $jobs;
+} );
+```
+
+Membership reads `unysonplus_membership_cron_hooks` after the modules load, so a filter added when your module
+loads is in time.
 
 ### A complete example: Welcome calls
 

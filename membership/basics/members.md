@@ -89,8 +89,8 @@ Good to know about adding by hand:
 - **Hand-added members do not count against a plan's Member limit.**
 - **One of each plan per person.** If they already hold that plan, you see "This person already holds that
   plan. Extend it instead."
-- To add many people at once, use the **Importers** module (**Import** in the sidebar). See
-  [Import and export](../running-your-site/import-and-export.md).
+- To add many people at once, use the **Import / Export** module (**Import / Export** under **Setup** in the
+  sidebar). See [Import / Export](../running-your-site/import-and-export.md).
 
 ## A member's page
 
@@ -175,7 +175,7 @@ named after today's date, for example `members-2026-10-14.csv`.
    "everyone who currently has access to Member", choose **With access**, pick **Member** and click **Filter**.
 2. Click **Export CSV**. The file downloads straight away.
 
-The file has one row per membership. The first columns are exactly the ones the Importers module reads, so a file
+The file has one row per membership. The first columns are exactly the ones the Import / Export module reads, so a file
 exported from one site imports into another unchanged:
 
 | Column | Holds |

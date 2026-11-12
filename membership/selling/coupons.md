@@ -29,7 +29,7 @@ offer) and download them as a CSV file.
 
 Coupons is **off by default** and **needs the Payments module** ("Needs the Payments module."); its switch is
 greyed out until [Payments](./payments.md) is on. **Coupons** is always listed in the sidebar under
-**Selling**: while the module is off it carries a **Soon** badge and opens a "Coupons is switched off" page
+**Selling**: while the module is off it carries an **Off** badge and opens a "Coupons is switched off" page
 with an **Open Modules** button. Once on, the screen opens and the checkout gets a **Have a code?** field
 (the [Gift memberships](./gifts.md) module adds the same field, for gift codes).
 

@@ -15,7 +15,7 @@ how to manage memberships from the command line with WP-CLI.
 
 :::info Module
 Both are part of the core and always available. The **Scheduled jobs** card lists extra jobs while the [Drip
-content](../content/drip-content.md) and [Retention](../insights/retention.md) modules are on.
+content](../content/drip-content.md), [Retention](../insights/retention.md) and Webhooks modules are on.
 :::
 
 ## The Scheduled jobs card
@@ -27,6 +27,10 @@ Open **Membership → Home**. The **Scheduled jobs** card lists each job Members
 | **End memberships that reach their end date** | Every hour | Ends memberships whose end date has passed (and their access with them). Always listed. |
 | **Drip: email what opened today** | Once a day | Emails members about drip content that opened for them. Listed while **Drip content** is on. |
 | **Retention: reminders, payment follow-ups, pauses ending** | Once a day | Renewal, trial and expiry reminders, failed-payment follow-ups, win-back emails and pauses that end. Listed while **Retention** is on. |
+| **Webhooks: send waiting events** | Every 5 minutes | Sends the webhook events waiting in the queue, with retries (see [For developers](./developers.md#webhooks)). Listed while **Webhooks** is on. |
+
+An add-on that schedules its own job can list it on the card as well, with the `unysonplus_membership_jobs` filter
+(see [For developers](./developers.md)).
 
 <img src="/img/membership/home.png" alt="Membership Home with the Scheduled jobs card" width="1600" />
 
@@ -112,7 +116,7 @@ wp membership list --status=past_due --format=count
 ### `wp membership export`
 
 Export memberships as CSV, in the columns the importer reads back (the same file as **Members → Export CSV**; see
-[Import and export](./import-and-export.md)).
+[Import / Export](./import-and-export.md)).
 
 | Option | What it does |
 |---|---|
@@ -210,7 +214,7 @@ Check the slug with `wp membership plans`, and the user with `wp user list`.
 
 ## Next steps
 
-- Import and export members: [Import and export](./import-and-export.md).
+- Import and export members: [Import / Export](./import-and-export.md).
 - The Scheduled jobs card on Home: [The Home screen](../basics/home-dashboard.md#scheduled-jobs).
 - What the daily Retention job sends: [Retention](../insights/retention.md).
 - Back to the [Membership overview](/membership).

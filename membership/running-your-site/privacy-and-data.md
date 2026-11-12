@@ -153,5 +153,5 @@ Yes: download the export yourself from **Tools → Export Personal Data** before
 ## Next steps
 
 - Secure accounts with less personal data: [Account security](./account-security.md).
-- Move members out to another site: [Import and export](./import-and-export.md).
+- Move members out to another site: [Import / Export](./import-and-export.md).
 - Back to the [Membership overview](/membership).

@@ -81,7 +81,8 @@ Content covered by that rule is now metered. Content covered by rules without th
 The message underneath depends on who they are:
 
 - A visitor, when the account allowance is bigger than the visitor allowance: "Create a free account to read
-  5 a month, or join to read everything."
+  5 a month, or join to read everything." The period matches **Counted per**: "5 a day", "5 a week" or "5 a
+  month".
 - Anyone else: "Join to read everything, whenever you like." (unless the rule has its own **Message in the
   prompt**).
 

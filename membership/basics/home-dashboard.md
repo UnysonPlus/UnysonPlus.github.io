@@ -97,6 +97,9 @@ job, its state and when it last ran:
 | **End memberships that reach their end date** | every hour | always |
 | **Drip: email what opened today** | once a day | the [Drip content](../content/drip-content.md) module is on |
 | **Retention: reminders, payment follow-ups, pauses ending** | once a day | the [Retention](../insights/retention.md) module is on |
+| **Webhooks: send waiting events** | every 5 minutes | the Webhooks module is on (see [For developers](../running-your-site/developers.md#webhooks)) |
+
+An add-on that runs its own job can add a line here too (see [For developers](../running-your-site/developers.md)).
 
 The state of each job:
 

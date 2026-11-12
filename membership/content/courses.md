@@ -90,7 +90,7 @@ This decides who may open the lessons.
 |---|---|---|
 | **Members of these plans** | Only holders of the ticked plans (or of a plan that includes one of them). | The usual choice for a paid membership: the course is a benefit of the plan. |
 | **Anyone logged in (a free course with an account)** | Anyone with an account on your site, no plan needed. | A free introductory course that builds your email list. |
-| **Everyone** | No restriction; the lessons are open to all visitors. | A fully public course. Progress, quizzes and certificates still need the student to be logged in. |
+| **Everyone** | No restriction; the lessons are open to all visitors. | A fully public course. Progress, quizzes and certificates still need the student to be logged in, and a lesson that is dripped or behind a quiz asks a visitor to log in first (see [A lesson](#a-lesson)). |
 
 Default: **Members of these plans** (with nothing ticked, until you tick a plan). The box note reads: "The
 course page itself is always visible (it is where people join). To also sell it on its own, use "Sell on its
@@ -101,7 +101,7 @@ Behind the scenes, every course keeps one [access rule](../basics/access-rules.m
 protects the course's lessons (as **Pages under a page**, on the course) and is updated each time you save
 the course. You can see it under **Membership → Access rules**, but change who can take the course in
 the course's own box, not in the rule: saving the course rewrites the rule. A course set to **Everyone** has
-no rule. The rule is switched on while the course is published, and deleted when the course is deleted.
+no rule (its drip days and quiz gates still apply, to visitors too). The rule is switched on while the course is published, and deleted when the course is deleted.
 :::
 
 #### Lessons
@@ -244,6 +244,17 @@ If a lesson is not open yet for this student, they see the breadcrumb, the progr
 **Not open yet** with the reason, for example "This lesson opens on 14 May 2027." or "Pass the quiz in
 “Sowing indoors” first."
 
+On a course open to **Everyone**, a visitor who is not logged in meets the same gates, because drip days and
+quizzes count from a student's account. They see the breadcrumb, a **Not open yet** box with the reason and a
+**Log in** button:
+
+- a lesson with **Opens after (days)**: "This lesson opens 7 days after you start the course. Log in or create
+  an account to start it."
+- a lesson after a lesson with a gating quiz: "Pass the quiz in “Sowing indoors” first. Log in or create an
+  account to take it."
+
+Lessons without either gate stay open to visitors to read.
+
 A student is **enrolled** in a course the first time they open one of its lessons. That date is the start
 for every lesson's **Opens after (days)**.
 
@@ -378,7 +389,8 @@ gates. Use a test member account to check the student's view.
 
 **Does progress need an account?**
 Yes. Progress, quizzes and certificates are stored on the student's account. On a course open to
-**Everyone**, visitors can read the lessons but cannot mark them complete.
+**Everyone**, visitors can read the open lessons but cannot mark them complete, and a dripped lesson or one
+behind a quiz asks them to log in or create an account first.
 
 **I turned on certificates after some students had finished.**
 A certificate is issued at the moment a student completes the course. Students who finished before you

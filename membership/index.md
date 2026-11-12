@@ -9,15 +9,15 @@ description: "The Unyson+ Membership extension: plans, one access engine for eve
 # Membership
 
 :::info Released
-Everything on this page is released and in the current version of Membership (1.0.28, which needs the
-Unyson+ framework 3.0.49 or later): the Membership app, plans, members,
+Everything on this page is released and in the current version of Membership (1.0.29, which needs the
+Unyson+ framework 3.0.55 or later): the Membership app, plans, members,
 access rules with the one access engine behind them, sign-up forms with email confirmation and approval, the
 login and account pages, member emails, profile fields, a REST API and AI Assistant tools; selling plans by
 card, PayPal or bank transfer, with coupons, tax, invoices, gifts and upgrades and downgrades members make
 themselves; the connection to the [CRM](./crm.md), where members are contacts, plans are tags and access rules
 can use CRM tags, lists and segments; drip content, a metered paywall, protected downloads and selling single
 items; everything for keeping members; team memberships, a member directory and membership cards; the
-WooCommerce connection; reports; account security, importers, a scheduler check and command-line tools; and
+WooCommerce connection; reports; account security, import and export (members and the whole set-up), a scheduler check and command-line tools; and
 courses with progress, quizzes and certificates; webhooks; and a Membership workspace that keeps members out
 of wp-admin. The [roadmap](./roadmap.mdx) tracks each task against the
 code. The design comes from a study of the leading membership plugins and platforms, summarised under
@@ -61,12 +61,13 @@ Open **Membership** in the WordPress menu (it has its own top-level item) and it
 app of its own, in the same app frame as the [CRM](/crm) and the other Unyson+ apps:
 
 - **The Membership sidebar** lists every area: Home, Members, Plans and Access rules; Payments and Coupons;
-  Reports; Profile fields, Emails, Modules and Settings. **Payments**, **Coupons** and **Reports** carry a
-  **Soon** badge while their module is switched off, and their page says what they do, with an **Open
+  Reports; Profile fields, Emails, Modules and Settings. **Payments**, **Coupons** and **Reports** carry an
+  **Off** badge while their module is switched off, and their page says what they do, with an **Open
   Modules** button; the other modules add their own items when you switch them on.
 - **The WordPress menu folds to its icons** while you are in Membership. **Hide the WordPress menu** at the
   bottom of the sidebar removes it altogether (your choice is remembered, and applies to every Unyson+ app),
-  and **Back to WordPress** takes you to the dashboard.
+  and **Back to WordPress** takes you to the dashboard. When the CRM extension is active and you may use it,
+  **Open the CRM** sits above them; unlike those two, it also shows inside a Membership workspace.
 - **The top bar** searches members by name or email (press <kbd>/</kbd> to jump to it) and has a **New**
   menu for a member, a plan or an access rule.
 - **A Membership workspace.** Under **Unyson+ → Admin Menu → Roles**, a role can open straight to Membership
@@ -299,15 +300,19 @@ history and the payments, so the past months are filled in straight away:
 - **The log.** Each member's page shows their logins (and how), wrong passwords, pages they were turned away from
   and plan changes, and how many places the account was used from in the last 30 days, a hint that an account is
   being shared. Addresses are only kept as a scrambled fingerprint, and entries go after 90 days.
-- **Importers.** **Membership → Import** reads a CSV file (any columns: you match them, with a dry run first).
+- **Import / Export.** **Membership → Import / Export** reads a CSV file (any columns: you match them, with a dry run first).
   Include each member's payment-service subscription ID and their renewals keep arriving as before. It can also
   give a plan to everyone with a WordPress role, or with a value in a user field, for sites where members used to
-  be stored that way. Running the same import again changes nothing.
+  be stored that way. Running the same import again changes nothing. **Download set-up (JSON)** saves every plan
+  and price, every access rule and all Membership settings (never the payment keys) in one file, and **From a
+  set-up file** reads it on another site: plans are matched by slug and rules by name, a match is updated, the rest
+  added, nothing deleted, with a dry run first.
 - **Exporting.** **Members → Export CSV** downloads the memberships the list is showing (its status, plan and
   search filters apply), one row per membership. The first columns are exactly the ones the importer reads, so a
   file exported from one site imports into another with subscriptions still linked; the columns after them (ids,
   names, source, trial and cancel dates) are for reading. Cells that a spreadsheet would run as formulas are
-  made safe. It works whether or not the Importers module is on.
+  made safe. It works whether or not the Import / Export module is on (whose **Download members (CSV)** gives
+  the same file for all members).
 - **Scheduled jobs.** Membership → Home shows whether the jobs that end memberships, send drip emails and
   reminders run on time, and if not, the line to add to your server's scheduler. Site Health checks it too.
 - **Command line.** With WP-CLI: `wp membership list`, `export`, `plans`, `grant`, `extend`, `expire`, and `reconcile`,
@@ -448,7 +453,7 @@ menus, so a simple members area stays as light as a simple members area should b
 | **WooCommerce** | Products that grant plans, member prices and free shipping, members-only products, store subscriptions as the billing source |
 | **Reports** | Monthly recurring revenue, churn, lifetime value, trial conversion, recovered payments, cohorts |
 | **Account security** | Limits on simultaneous sessions, one-click login links that are signed and single-use, passkeys, and a login and access log |
-| **Importers** | Members, plans and live subscriptions from a CSV file (such as an export from another membership plugin), or from a WordPress role or user field, keeping renewals running |
+| **Import / Export** | Download members (CSV) and the whole set-up (JSON) and bring them in on another site; members, plans and live subscriptions from a CSV file (such as an export from another membership plugin), or from a WordPress role or user field, keeping renewals running |
 | **Webhooks** | Signed messages to another app the moment members join, renew, cancel, pay or finish a course, sent in the background with retries (**Membership → Webhooks**) |
 | **Courses** | Courses with lessons in modules, progress and resume, quizzes that can gate the next lesson, and verifiable certificates, on the same access engine |
 

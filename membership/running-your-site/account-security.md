@@ -168,7 +168,7 @@ Yes. Every logged-in browser counts as a session until it logs out or the sessio
 
 ## Next steps
 
-- Import members from another system: [Import and export](./import-and-export.md).
+- Import members from another system: [Import / Export](./import-and-export.md).
 - Handle personal data requests: [Privacy and data](./privacy-and-data.md).
 - Build the login and account pages: [Login and the account page](../member-area/login-and-account.md).
 - Back to the [Membership overview](/membership).

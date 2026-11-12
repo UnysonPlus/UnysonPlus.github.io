@@ -187,7 +187,8 @@ Each plan can send its members somewhere of their own. Open **Membership → Pla
 and look at its settings:
 
 - **After logging in, go to**: an address. Empty means the account page.
-- **After logging out, go to**: an address. Empty means where WordPress normally sends them.
+- **After logging out, go to**: an address. Empty means where WordPress normally sends them; the **Log out**
+  link in the Member Login element ("You are logged in as …") goes back to your home page instead.
 
 <img src="/img/membership/plan-edit-settings.png" alt="The settings of a plan, including the redirects after logging in and out" width="478" />
 

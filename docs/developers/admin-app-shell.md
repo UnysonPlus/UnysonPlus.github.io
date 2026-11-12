@@ -123,6 +123,7 @@ app-specific CSS on.
 | `capability` | string | `'manage_options'` | What the app as a whole requires. (Per-item capabilities go on the items.) |
 | `back` | string | *"Back to WordPress"* | Label of the leave-the-app link. |
 | `back_url` | string | dashboard | Where that link goes. |
+| `links` | array \| callable | `[]` | Extra links at the foot of the sidebar, above the WordPress ones: a list of `label`, `icon`, `url`. A callable is called at render time (so a link can depend on another extension being active). Unlike the two WordPress links, these also show inside a workspace. Framework 3.0.65 or later; older versions ignore it. |
 
 ---
 
@@ -139,7 +140,8 @@ The sidebar is **groups of items**:
 				'label'   => __( 'Item', 'fw' ),
 				'icon'    => 'dashicons-admin-generic',
 				'cap'     => 'edit_posts',              // optional: hidden without it
-				'soon'    => true,                      // optional: renders a "Soon" badge
+				'soon'    => true,                      // optional: greys the item with a "Soon" badge
+				'badge'   => __( 'Off', 'fw' ),         // optional: another word for that badge (3.0.65+)
 				'url'     => admin_url( 'edit.php' ),   // optional: link elsewhere entirely
 				'visible' => function ( $view ) {       // optional: any runtime condition
 					return My_Modules::enabled( 'records' );
@@ -148,6 +150,18 @@ The sidebar is **groups of items**:
 		),
 	),
 ),
+```
+
+Use `badge` when the area exists but is unavailable for another reason, for example a module that is switched
+off: "Soon" would read as "not built yet". Membership marks its switched-off Payments, Coupons and Reports
+**Off** this way, and adds **Open the CRM** through `links`:
+
+```php
+'links' => function () {
+	return class_exists( 'FW_CRM_Admin_Page' ) && current_user_can( FW_CRM_Service::capability() )
+		? array( array( 'label' => __( 'Open the CRM', 'fw' ), 'icon' => 'dashicons-groups', 'url' => FW_CRM_Admin_Page::get_page_url() ) )
+		: array();
+},
 ```
 
 `nav()` applies `cap` and `visible` for you, and **drops a group that is left with nothing in it** —
@@ -322,7 +336,7 @@ body.fw-app-crm {
 | `body.fw-app-<id>` | Your app only — scope your CSS with this. |
 | `body.fw-app-focus` | While the WordPress menu is hidden. |
 | `.fw-app` | The grid: sidebar + main. |
-| `.fw-app-side`, `__brand`, `__groups`, `__group`, `__label`, `__link`, `__text`, `__soon`, `__foot` | The sidebar. |
+| `.fw-app-side`, `__brand`, `__groups`, `__group`, `__label`, `__link`, `__text`, `__soon`, `__foot`, `__links` (the extra foot links) | The sidebar. |
 | `.fw-app-top`, `__menu`, `__title`, `__actions`, `.fw-app-crumbs` | The top bar. |
 | `.fw-app-body` | The content column (also carries `wrap`, so admin notices land correctly). |
 

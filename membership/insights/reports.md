@@ -18,7 +18,7 @@ also means the numbers are right for the past, not only from the day you switche
 
 :::info Module
 Reports is the **Reports** module. Switch it on under **Membership → Modules** (it is off by default). Until
-then, the **Reports** item under **Insights** in the sidebar carries a **Soon** badge, and opening it shows
+then, the **Reports** item under **Insights** in the sidebar carries an **Off** badge, and opening it shows
 "Reports is switched off", what the screen does, "Switch on the Reports module to use it." and an **Open
 Modules** button.
 Money figures need the [Payments](../selling/payments.md) module, because that is where payments come from; without it you still
@@ -58,7 +58,7 @@ If the terms are new to you, here is what they mean in plain words.
 |---|---|---|
 | **Monthly recurring revenue** | What your repeating prices bring in per month, right now. | Every membership that has access today, is **not** in a free trial and has a repeating price adds that price's monthly value. A monthly price counts in full; a yearly price counts as 1/12; a price "every 3 months" counts as 1/3; weekly and daily prices are converted to a month (30.44 days). One-off and free prices count as 0. |
 | **Paying members** | How many memberships make up the MRR above. | The memberships counted in MRR (with access, not in a trial, on a repeating price above zero). |
-| **Churn last month** | The share of members lost in the most recent month of the table. | Members lost in the month ÷ members with access on the 1st of that month, as a percentage. The most recent month is the current one, still in progress, so the figure can rise until the month ends. With no members on the 1st, it shows 0%. |
+| **Churn last month** | The share of members lost in the last full month. | Members lost in that month ÷ members with access on the 1st of that month, as a percentage. The table's final row is the current month, still running, so the card uses the month before it: the figure does not change until the next month is over. With no members on the 1st of that month, it shows **—**. |
 | **Lifetime value (average)** | What a paying member has paid, on average. | Everything paid through Membership (payments with the status paid and an amount above zero) ÷ the number of different people who paid, per currency. Refunded payments are not counted. |
 | **Trial conversion** | How often a free trial becomes a paid membership. | Trials started in the last 180 days. Of the ones that are over, the share that has a paid payment. Trials still running are left out, so a trial that started yesterday does not drag the rate down. |
 | **Failed payments recovered** | How many failed renewals you got back. | Over the 12 months in the table: recovered payments ÷ failed payments. Retention's [failed-payment recovery](./retention.md#when-a-renewal-payment-fails) is what moves this number. |

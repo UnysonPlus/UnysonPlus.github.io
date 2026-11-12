@@ -92,8 +92,9 @@ How long it lasts: **one period** of the price that was bought (one month for a 
 yearly price, three months for "every 3 months"). For a one-off or lifetime price, it lasts as long as the
 plan itself does. If they already hold the plan, that much time is added to their membership instead.
 
-The gift code works **once**. Opening the link again shows "This gift has already been used."; a wrong or
-cancelled code shows "That gift code is not valid."
+The gift code works **once**. Opening the link again shows "This gift has already been used."; a cancelled
+gift (or one whose payment has not gone through yet) shows "This gift is not ready yet, or was cancelled.", and a
+wrong code shows "That gift code is not valid."
 
 :::tip Redeeming with just the code
 Someone who only has the code (copied from the email, or written in a card) can open your checkout page, type

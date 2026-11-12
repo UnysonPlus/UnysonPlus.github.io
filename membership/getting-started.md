@@ -31,7 +31,7 @@ Three words cover nearly everything:
 3. A new item appears in the WordPress menu: **Membership** (a top-level item, not under Unyson+). Click it.
 
 Membership opens as an app of its own, with its own sidebar and top bar (the same app frame as the CRM and the
-other Unyson+ apps). Membership needs the Unyson+ framework 3.0.49 or later for this. Switching the extension off later
+other Unyson+ apps). Membership needs the Unyson+ framework 3.0.55 or later for this. Switching the extension off later
 never deletes anything: your plans, members and rules wait until you switch it back on.
 
 ## 2. Find your way around the app
@@ -45,23 +45,27 @@ never deletes anything: your plans, members and rules wait until you switch it b
 | (top) | **Home**, **Members**, **Plans**, **Access rules** | The core: always there. **Downloads**, **Groups** and **Courses** join this group when you switch on the Protected downloads, Groups and teams, and Courses modules. |
 | **Selling** | **Payments**, **Coupons**, **Gifts** | Taking money. Each needs its module (Payments, Coupons, Gift memberships). |
 | **Insights** | **Reports**, **Retention** | Numbers and keeping members. Need the Reports and Retention modules. |
-| **Setup** | **Profile fields**, **Emails**, **Modules**, **Settings**, **Import**, **Webhooks** | How the site behaves. **Import** needs the Importers module, **Webhooks** the Webhooks module. |
+| **Setup** | **Profile fields**, **Emails**, **Modules**, **Settings**, **Import / Export**, **Webhooks** | How the site behaves. **Import / Export** needs the Import / Export module, **Webhooks** the Webhooks module. |
 
-**Payments**, **Coupons** and **Reports** are always listed. While their module is off they carry a **Soon**
+**Payments**, **Coupons** and **Reports** are always listed. While their module is off they carry an **Off**
 badge, and opening one shows "Payments is switched off" (or Coupons, Reports), what the area does, "Switch on
 the … module to use it." and an **Open Modules** button. The other module items (Downloads, Groups, Courses,
-Gifts, Retention, Import, Webhooks) only appear once their module is on. **Courses** opens WordPress's own
+Gifts, Retention, Import / Export, Webhooks) only appear once their module is on. **Courses** opens WordPress's own
 course list. See [Modules](./running-your-site/modules.md).
 
 At the bottom of the sidebar:
 
+- **Open the CRM** takes you to the [CRM](/crm). It is shown when the CRM extension is active and you are allowed
+  to use the CRM.
 - **Hide the WordPress menu** removes the WordPress admin menu while you work in Membership (click **Show
   the WordPress menu** to bring it back; your choice is remembered, and applies to every Unyson+ app, such as
   the [CRM](/crm)).
 - **Back to WordPress** returns to the dashboard.
 
-Both are hidden when your role opens straight to Membership as a workspace (see Good to know below): there the
-app always fills the screen, and administrators step out with **Switch to WordPress** in the admin bar.
+**Hide the WordPress menu** and **Back to WordPress** are hidden when your role opens straight to Membership as a
+workspace (see Good to know below): there the app always fills the screen, and administrators step out with
+**Switch to WordPress** in the admin bar. **Open the CRM** stays, so a workspace user who may use the CRM can
+still reach it.
 
 **The top bar** has a search box (**Search members by name or email**; press <kbd>/</kbd> to jump to it) and
 a **New** menu with **Add a member**, **Plan** and **Access rule**.
@@ -245,7 +249,7 @@ The core (plans, members, access rules and the member area) is always on. Everyt
 | **WooCommerce** | products that give plans, member prices and free shipping (needs WooCommerce) |
 | **Reports** | revenue, churn, lifetime value and cohorts |
 | **Account security** | limit devices, one-click login links, passkeys and a login log |
-| **Importers** | bring in members and live subscriptions from a CSV file (such as an export from another plugin), or give plans to everyone with a WordPress role or user field |
+| **Import / Export** | download your members (CSV) and your whole set-up (a JSON file) and bring them in on another site; import members and live subscriptions from a CSV file (such as an export from another plugin), or give plans to everyone with a WordPress role or user field |
 | **Webhooks** | tell another app the moment members join, renew, cancel, pay or finish a course |
 | **Courses** | courses with lessons, progress, quizzes and certificates |
 

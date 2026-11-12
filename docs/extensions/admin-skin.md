@@ -61,7 +61,7 @@ the window edge. Six ship with the extension; pick one under **Unyson+ → Admin
 | **Default** | The modern UnysonPlus admin. Roomy, quiet, one accent. |
 | **Classic** | The same structure at WordPress's own density and blue. The escape hatch for anyone who wants the new layout without the new look. |
 | **Console** | Dense and square: smaller type, short rows, ruled table cells and monospace figures so columns of numbers line up. Built for people who live in list tables. |
-| **Aurora** | A dark analytics dashboard. The sidebar detaches from the edge and the content sits on its own inset panel. |
+| **Aurora** | A dark analytics dashboard. The sidebar detaches from the edge, and over a background the content sits on its own inset panel. |
 | **Soft** | A light product dashboard: a warm paper ground, cards with no borders at all, pill-shaped buttons and fields. |
 | **Glass** | Frosted panels over a background of your choosing, with a floating sidebar. Needs a background to be itself — see below. |
 

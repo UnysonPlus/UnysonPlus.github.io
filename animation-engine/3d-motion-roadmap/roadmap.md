@@ -231,7 +231,10 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   that scatter and gather into the next) and **Flip Book** (a 3D book whose pages bend as they turn), with swipe,
   keyboard focus and scroll-scrub. **Animation Engine 1.5.4** adds **Shatter** (the photo breaks into lit shards),
   **Cloth Banners** (photos on fabric banners rippling in the wind) and **Fold Strip** (an accordion-folded strip that
-  flattens under the pointer), plus **Pixelate** and **Glitch** transitions for the Liquid Slider.
+  flattens under the pointer), plus **Pixelate** and **Glitch** transitions for the Liquid Slider. **Animation Engine
+  1.5.5** adds **Water Pool** (photos under water, rippling under the pointer), **Jelly Grid** (photos that bulge and
+  wobble like jelly) and **Stage Curtain** (a pleated curtain that closes and opens between photos), plus
+  **Kaleidoscope** and **Torn Paper** transitions.
 
 ## Phase 3 — Flourishes
 

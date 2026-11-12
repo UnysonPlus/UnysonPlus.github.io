@@ -370,10 +370,11 @@ Height**, they shrink to fit it.
 
 **WebGL (real 3D)**
 
-These nine are drawn with real 3D graphics (WebGL), so they can do what CSS 3D can't: real lights and reflections,
-shader effects, thousands of particles, breaking glass, cloth and paper that bend. The other designs are built
-from CSS 3D, which is lighter. Mirror Ring, Depth Field, Wave Wall, Cloth Banners and Fold Strip show many photos
-at once; Liquid Slider, Particle Morph, Flip Book and Shatter show **one photo at a time**.
+These twelve are drawn with real 3D graphics (WebGL), so they can do what CSS 3D can't: real lights and reflections,
+shader effects, thousands of particles, breaking glass, water, jelly, and cloth and paper that bend. The other
+designs are built from CSS 3D, which is lighter. Mirror Ring, Depth Field, Wave Wall, Cloth Banners, Fold Strip,
+Water Pool and Jelly Grid show many photos at once; Liquid Slider, Particle Morph, Flip Book, Shatter and Stage
+Curtain show **one photo at a time**.
 
 <img src="/img/animation-engine/motion-gallery/webgl-mirror-ring.png" alt="Mirror Ring: photos on a ring above a glossy floor that mirrors them, the ones facing away in shadow" width="1920" />
 
@@ -421,8 +422,9 @@ and stay readable to screen readers and search engines.
 - **Liquid Slider** — the photo fills the stage, cropped to fit, never stretched, and the next one arrives through a
   **Transition**: **Liquid** (it flows in along a soft, moving front), **Ripple** (a ring of waves opens from
   the centre and carries it in), **Slices** (strips slide in one after another), **Swirl** (the photo twists
-  into the next), **Pixelate** (the photo breaks into growing blocks, swaps, then sharpens) or **Glitch** (bands
-  of the picture jump sideways while it swaps). **Strength** (0–100 %) sets how much the change distorts the photos, **Pointer Ripple**
+  into the next), **Pixelate** (the photo breaks into growing blocks, swaps, then sharpens), **Glitch** (bands
+  of the picture jump sideways while it swaps), **Kaleidoscope** (the photo folds into turning mirrored segments
+  and opens out on the next) or **Torn Paper** (the photo is torn away from the right, with a white paper edge). **Strength** (0–100 %) sets how much the change distorts the photos, **Pointer Ripple**
   (0–100 %) sends soft ripples out from the pointer, and **Slow Zoom** (0–20 %) zooms gently in and out on each
   photo. **Corner Radius** rounds the stage's corners. Clicking opens the photo on screen.
 
@@ -452,6 +454,15 @@ and stay readable to screen readers and search engines.
   away** or **Burst outward**; **Breaks From**: the centre, the left edge, the top edge, or everywhere at once.
   **Pieces Across** (4–30) sets their size, **Spin** how much they turn and **Force** how far and fast they fly.
 
+<img src="/img/animation-engine/motion-gallery/webgl-stage-curtain.png" alt="Stage Curtain: a photo framed by red velvet curtains drawing in from both sides, a pleated valance across the top" width="1920" />
+
+- **Stage Curtain** — the photo stands on a stage between two pleated velvet curtains. For each change the
+  curtain draws closed, the photo changes behind it, and the curtain opens again on the next one; open, the
+  halves stay gathered at the sides. **Curtain Colour**, **Pleats** (4–20 folds per half), **Opening** (how much
+  of the stage it leaves clear), **Swag** (how far the inner lower corners lift as it opens; 0 = it slides
+  straight) and **Valance** (a pleated band across the top). The curtain is lit from the side, so the pleats
+  shade like cloth.
+
 *Many photos at once, in motion.*
 
 <img src="/img/animation-engine/motion-gallery/webgl-cloth-banners.png" alt="Cloth Banners: photos printed on fabric banners hanging from a dark rod, each rippling in the wind" width="1920" />
@@ -470,6 +481,25 @@ and stay readable to screen readers and search engines.
   it, so the photos are easy to see; point at a panel and it lifts. **Panels in View** (3–12), **Fold** (0–70°),
   **View Angle**, **Lighting**, **Panel Ratio** and **Corner Radius**; **Drag to slide** (with **Drag
   Momentum**) lets visitors move it by hand.
+
+<img src="/img/animation-engine/motion-gallery/webgl-water-pool.png" alt="Water Pool: a grid of photos seen through blue water, their edges bent by ripples" width="1920" />
+
+- **Water Pool** — your photos lie at the bottom of a pool, on a floor of the water's colour. Move the pointer
+  over the water and ripples spread out from it, bending the photos underneath and catching the light; with
+  **Rain** above 0, drops also land on their own now and then. **Motion → Drift under the water** slowly moves
+  the photos along the floor, wrapping round (Loop Duration is one full pass); Scroll-scrub moves them with the
+  scroll. **Columns** (2–8), **Rows** (1–5), **Gap**, **Ripple Strength** (how much they bend the photos),
+  **Rain**, **Shine** (how brightly they catch the light), **Water Colour**, **Card Ratio** and **Corner Radius**.
+  Clicking opens the photo under the pointer.
+
+<img src="/img/animation-engine/motion-gallery/webgl-jelly-grid.png" alt="Jelly Grid: a lit grid of photos, the ones under the pointer bulging toward the viewer" width="1920" />
+
+- **Jelly Grid** — a lit grid of photos that behave like jelly: the photos near the pointer bulge toward you and
+  wobble as it passes, overshooting and settling, and the light rolls over their curves. A click makes a photo
+  jiggle before its lightbox or link opens. **Columns** (2–10), **Rows** (1–6), **Gap**, **Jelly** (how far they
+  bulge), **Wobble** (how springy they are), **Wave** (a gentle swell that rolls across the grid on its own;
+  Scroll-scrub rolls it with the scroll), **View Angle**, **Gloss**, **Lighting**, **Card Ratio** and **Corner
+  Radius**.
 
 How they behave on the page:
 

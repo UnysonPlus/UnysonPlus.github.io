@@ -370,12 +370,12 @@ Height**, they shrink to fit it.
 
 **WebGL (real 3D)**
 
-These eighteen are drawn with real 3D graphics (WebGL), so they can do what CSS 3D can't: real lights, shadows and
+These twenty-one are drawn with real 3D graphics (WebGL), so they can do what CSS 3D can't: real lights, shadows and
 reflections, shader effects, thousands of particles, breaking glass, water, jelly, soap bubbles, holographic foil,
 and cloth, film and paper that bend. The other designs are built from CSS 3D, which is lighter. Mirror Ring, Depth
 Field, Wave Wall, Cloth Banners, Fold Strip, Water Pool, Jelly Grid, Gallery Walk, Holo Cards, Domino Row, Photo
-Bubbles and Film Ribbon show many photos at once; Liquid Slider, Particle Morph, Flip Book, Shatter and Stage
-Curtain and Photo Cube show **one photo at a time**.
+Bubbles, Film Ribbon, Ferris Wheel and Photo Mobile show many photos at once; Liquid Slider, Particle Morph, Flip Book, Shatter and Stage
+Curtain, Photo Cube and Pixel Blocks show **one photo at a time**.
 
 <img src="/img/animation-engine/motion-gallery/webgl-mirror-ring.png" alt="Mirror Ring: photos on a ring above a glossy floor that mirrors them, the ones facing away in shadow" width="1920" />
 
@@ -427,8 +427,9 @@ and stay readable to screen readers and search engines.
   of the picture jump sideways while it swaps), **Kaleidoscope** (the photo folds into turning mirrored segments
   and opens out on the next), **Torn Paper** (the photo is torn away from the right, with a white paper edge),
   **Burn** (the photo burns away along a glowing, charred edge), **Zoom Blur** (it rushes toward you in a blur and
-  settles on the next), **Mosaic** (it changes square by square, in a random order) or **Ink** (the next photo
-  spreads out from the middle like ink in water, with a dark edge). **Strength** (0–100 %) sets how much the change distorts the photos, **Pointer Ripple**
+  settles on the next), **Mosaic** (it changes square by square, in a random order), **Ink** (the next photo
+  spreads out from the middle like ink in water, with a dark edge), **Spiral** (the next photo winds in from the
+  centre) or **Light Leak** (a warm flare washes across as it changes, like old film). **Strength** (0–100 %) sets how much the change distorts the photos, **Pointer Ripple**
   (0–100 %) sends soft ripples out from the pointer, and **Slow Zoom** (0–20 %) zooms gently in and out on each
   photo. **Corner Radius** rounds the stage's corners. Clicking opens the photo on screen.
 
@@ -474,6 +475,13 @@ and stay readable to screen readers and search engines.
   tips over its top edge). **Cube Size** (20–90 % of the stage height), **Camera Height**, **Float** (a gentle
   bob), **Cube Colour** (the two faces that never come to the front), **Shadow**, **Lighting** and **Corner
   Radius**. The photos are cropped square to fit the faces.
+
+<img src="/img/animation-engine/motion-gallery/webgl-pixel-blocks.png" alt="Pixel Blocks: a photo made of a grid of 3D blocks, the right-hand columns turning over to show the next photo" width="1920" />
+
+- **Pixel Blocks** — the photo is built from a grid of 3D blocks that flip over in a wave to show the next photo
+  on their backs. **Flip Order**: a **Diagonal wave**, **Row by row**, **Out from the centre** or **Random**. Move
+  the pointer over it and the blocks under it sink back and tilt toward it (**Pointer Push**). **Blocks Across**
+  (6–30), **Block Depth**, **Gap**, **Block Side Colour** and **Lighting**.
 
 *Many photos at once, in motion.*
 
@@ -557,11 +565,27 @@ and stay readable to screen readers and search engines.
   **Wave** (how far it curves; 0 = straight), **Twist**, **Film Colour**, **Sprocket Holes**, **Lighting** and
   **Frame Ratio**. Clicking a frame opens its photo.
 
+<img src="/img/animation-engine/motion-gallery/webgl-ferris-wheel.png" alt="Ferris Wheel: a white Ferris wheel on an A-frame with a photo hanging in each gondola" width="1920" />
+
+- **Ferris Wheel** — your photos ride in gondolas on a turning Ferris wheel. The gondolas hang upright from the
+  rim and swing as it turns, and bulbs twinkle round the rim (**Lights**). **Motion → Turn** sets the speed
+  (Loop Duration is one turn, clockwise or anticlockwise); Scroll-scrub turns it with the scroll; with **Drag to
+  spin** visitors grab and spin it. **Gondolas** (6–16; the gallery repeats to fill them), **Gondola Size**,
+  **Swing**, **View Angle**, **Wheel Colour**, **Lighting**, **Card Ratio** and **Corner Radius**. Pointing at a
+  gondola enlarges it a little; clicking opens its photo.
+
+<img src="/img/animation-engine/motion-gallery/webgl-photo-mobile.png" alt="Photo Mobile: photos hanging from the arms of a balanced mobile, the arms turned at different angles" width="1920" />
+
+- **Photo Mobile** — your photos hang from a balanced mobile whose arms turn slowly, each at its own pace and
+  the levels in opposite directions. Sweep the pointer across it and it is a breeze: the arms spin faster, then
+  settle (**Breeze**). **Photos** (3–12), **Photo Size**, **Sway**, **Arm Colour** (the arms and strings),
+  **Lighting**, **Card Ratio** and **Corner Radius**. The photos are two-sided, so they show as they turn.
+
 How they behave on the page:
 
 - **Weight:** Three.js and the WebGL script load only on pages that use a WebGL design. The 3D renderer is
   created when the gallery comes near the screen and released when it scrolls far away, so a page can hold
-  several of them, and nothing renders while the gallery is off screen or the tab is hidden.
+  many of them (the demo pages hold fourteen), and nothing renders while the gallery is off screen or the tab is hidden.
 - **Accessibility:** the photos also stay in the page as the usual list of images and links, so screen readers
   and search engines read them as before. Moving keyboard focus to a photo brings it to the front of the scene
   (or, on the one-photo designs, changes to it) and outlines the gallery.

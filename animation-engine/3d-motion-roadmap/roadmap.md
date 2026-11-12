@@ -239,7 +239,9 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   and **Domino Row** (photos as dominoes that topple and stand back up, with real shadows), plus **Burn** and **Zoom
   Blur** transitions. **Animation Engine 1.5.7** adds **Photo Bubbles** (photos in iridescent soap bubbles), **Photo
   Cube** (a lit cube that turns a quarter-turn per photo) and **Film Ribbon** (a strip of film twisting through
-  space), plus **Mosaic** and **Ink** transitions.
+  space), plus **Mosaic** and **Ink** transitions. **Animation Engine 1.5.8** adds **Pixel Blocks** (a photo of 3D
+  blocks that flip to the next), **Ferris Wheel** (photos in gondolas on a turning wheel) and **Photo Mobile** (photos
+  on a balanced mobile stirred by the pointer), plus **Spiral** and **Light Leak** transitions.
 
 ## Phase 3 — Flourishes
 

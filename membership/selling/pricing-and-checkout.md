@@ -123,6 +123,13 @@ Put the element on **one** page only, and choose that page as the **Checkout pag
 4. **The account fields** for logged-out buyers: "Already have an account? **Log in first**", **First name**,
    **Last name**, **Email** and **Choose a password** (at least 8 characters). Logged-in buyers see "Joining as
    `you@example.com`." (their own email) instead.
+   - **For a one-time price** (paid once, lifetime or free) and for a gift, the field reads **Choose a password
+     (optional)**, with "Leave it empty and we will email you a link to set one, so you can see your receipt
+     later." A buyer who leaves it empty still gets an account (their payment and receipt belong to it), and
+     WordPress's own new-account email ("Login Details") brings a link to choose a password. Someone buying
+     one item goes straight to paying, without making up a password first.
+   - **For a repeating price** (each month, each year…) the password stays required: those buyers log in to
+     see, change or cancel their subscription.
 5. **For a gift**: "Who is the gift for?" with **Their name**, **Their email** and **A message (optional)**.
    The summary at the top then shows one period of the price, for example "GBP 8.00 for 1 month", with "A
    gift: one payment, nothing renews" (no trial days). See [Gift memberships](./gifts.md).
@@ -163,6 +170,13 @@ After paying, the buyer comes back to the same page and sees one of:
   ready for that price. Bank transfer is never offered for monthly or yearly prices, so a repeating plan needs
   Stripe or PayPal switched on (see [Payments](./payments.md#bank-transfer-or-cash-offline)).
 - **A wrong coupon** shows its reason in red ("That code has expired.") and the price stays as it was.
+- **Want the password required for one-time prices too** (for example a lifetime plan to a members' area
+  people must log in to)? One line of PHP in a snippet:
+  `add_filter( 'unysonplus_membership_checkout_password_optional', '__return_false' );`. Return `true`
+  instead to make it optional for repeating prices as well.
+- **PayPal and cards:** for a one-time price, PayPal's page offers **Pay with a Bank Account or Credit Card**,
+  so the buyer pays by card without a PayPal account. For a repeating price, PayPal asks the buyer to log in
+  to (or create) a PayPal account, which can hold their card. That is PayPal's rule for subscriptions.
 
 ## Next steps
 

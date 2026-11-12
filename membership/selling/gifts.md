@@ -37,8 +37,9 @@ checkout's **Have a code?** box accepts gift codes.
    example "GBP 8.00 for 1 month", with "A gift: one payment, nothing renews". Under **Who is the gift for?** they fill in **Their name**, **Their
    email** (required) and **A message (optional)**. The note underneath says: "They get an email with a link
    to start their membership once your payment goes through. You pay once; it does not renew."
-3. A logged-out buyer also fills in their own name, email and password: the buyer gets an account too, so
-   their payment and invoice are on record.
+3. A logged-out buyer also fills in their own name and email: the buyer gets an account too, so their
+   payment and invoice are on record. The password is optional for a gift (it is paid once); left empty,
+   the buyer is emailed a link to set one.
 4. They choose a way to pay and click **Continue to payment**. Every way to pay that is ready is offered,
    **including bank transfer**, because a gift is always a single payment. A [coupon](./coupons.md) works on
    gifts as usual.

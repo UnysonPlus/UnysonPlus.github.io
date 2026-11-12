@@ -34,7 +34,7 @@ and 40 is well past it.
 
 ## Serve WebP images
 
-<img src="/img/extensions/asset-optimizer/images.png" alt="WebP quality, Image quality, Generate missing image sizes and Serve WebP images" width="1658" />
+<img src="/img/extensions/asset-optimizer/serve-webp.png" alt="The Serve WebP images switch" width="1658" />
 
 Makes a WebP copy of every uploaded JPG and PNG — and of each of its sizes and crops — and shows
 visitors the WebP instead. WebP is usually **25–80% smaller for the same apparent quality**, which on
@@ -51,6 +51,8 @@ A WebP copy is only used when it actually comes out smaller than the original. I
 original is kept and nothing is lost.
 
 ## WebP quality
+
+<img src="/img/extensions/asset-optimizer/webp-quality.png" alt="The WebP quality slider, set to 80" width="1658" />
 
 Sets how hard those WebP copies are compressed. **80 is the default and a safe place to stay.**
 
@@ -82,6 +84,8 @@ site spreads the work over its next few page views rather than doing it all at o
 
 ## Image quality
 
+<img src="/img/extensions/asset-optimizer/image-quality.png" alt="The Image quality slider, set to 82" width="1658" />
+
 The theme generates its own cropped versions of your images. Until this setting existed those were
 written at whatever quality the server happened to default to — on a real site that came out around
 88, which is higher than WordPress's own default and roughly twice the file size a good WebP needs.
@@ -105,6 +109,8 @@ start.
 :::
 
 ## Generate missing image sizes
+
+<img src="/img/extensions/asset-optimizer/image-sizes.png" alt="The Generate missing image sizes switch" width="1658" />
 
 WordPress normally saves several versions of every image you upload, so a browser can fetch one that
 suits the space it has to fill. If those in-between versions were never made, there is nothing to

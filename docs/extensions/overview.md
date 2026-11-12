@@ -48,7 +48,7 @@ page (where you activate and deactivate it yourself):
 | **Newsletter / Subscriber CRM** | Stores and manages people who sign up through the `[newsletter]` element — subscribers, lists, tags, segments, CSV import/export. Being renamed and grown into the [CRM](/crm). | Yes |
 | **Mega Menu** | Multi-column dropdown mega menus. → [docs](./megamenu/index.md) | Yes |
 | **Mailer** *(hidden)* | Global email settings + send service used by Forms / Newsletter. → [docs](./mailer.md) | Dependency |
-| **Asset Optimizer** | Combine enqueued assets to cut HTTP requests. → [docs](./asset-optimizer.md) | Yes |
+| **Asset Optimizer** | Combine enqueued assets to cut HTTP requests. → [docs](./asset-optimizer/index.md) | Yes |
 | **Snippets** | Save and embed reusable builder content. → [docs](./snippets.md) | Yes |
 | **WooCommerce** | Storefront elements + theme integration. → [docs](/shortcodes/woocommerce-elements) | Yes |
 | **POS Sync** *(in design)* | Keeps the store in step with sales rung up on a physical till — any POS, any cart. → [docs](./pos-sync/index.md) | Not yet released |

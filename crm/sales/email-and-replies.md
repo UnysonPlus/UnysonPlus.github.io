@@ -24,10 +24,17 @@ Click **Email** in the header of a contact, company or deal.
 
 How it is sent:
 
-- Through your site's mail set-up (the Unyson+ Mailer extension, or any SMTP plugin), so it comes from your
-  domain. If **CRM → Settings → Sending** has a default sender for transactional email, its From address and
-  email service are used instead. See [Senders and email services](../email-marketing/senders-and-services.md).
-- Your name is shown as the sender ("Alex at Your Business") and **replies come back to your own address**.
+- **From** your display name and the site's name ("Alex at Your Business"). The From address is the default
+  transactional sender's under **CRM → Settings → Sending**, otherwise the Mailer's From address. See
+  [Senders and email services](../email-marketing/senders-and-services.md).
+- **Through** that sender's email service if it has one, otherwise the Mailer's SMTP server (or any SMTP plugin),
+  otherwise your web host's own mail.
+- **Replies come back to you**: the Reply-To is the email address in your WordPress profile, and your display name
+  goes under the message.
+
+To send from your own address, such as `you@yourcompany.com`, follow
+[Send email from your own address](./email-from-your-own-address.md).
+
 - It is a personal email, not marketing: no unsubscribe footer and no tracking, and it reaches people who
   unsubscribed from your lists.
 - It is saved on the contact's timeline, and on the deal's when written from a deal.

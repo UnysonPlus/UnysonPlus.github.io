@@ -32,10 +32,14 @@ reply.
 - an optional **Reply-To**;
 - **Send with**: the site's own mail (the Mailer extension, or any SMTP plugin) or one of the email services below.
 
+"The site's own mail" is WordPress's mail: the Mailer's SMTP server when its send method is SMTP (the **Mailer
+settings (SMTP)** link at the top of Sending), or an SMTP plugin, otherwise your web host's own mail.
+
 Until you add one, CRM email uses the Mailer settings (or WordPress's own From address). The first sender you add
 becomes the default for both kinds; change that under the table with **Save defaults**. A campaign can pick any
 sender in its **From** setting. **Send a test** sends a short email with the sender you choose, so you can check it
-arrives before a campaign does. One-to-one email keeps the writer's own name as the From name.
+arrives before a campaign does. One-to-one email keeps the writer's own name as the From name. Its replies go to the writer's profile address, not the sender's Reply-To. A step-by-step set-up for
+your own address is in [Send email from your own address](../sales/email-from-your-own-address.md).
 
 The From address must be one your mail host or email service is allowed to send for (a verified domain), or the
 email will be rejected or filed as spam.

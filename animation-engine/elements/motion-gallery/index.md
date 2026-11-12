@@ -370,9 +370,10 @@ Height**, they shrink to fit it.
 
 **WebGL (real 3D)**
 
-These six are drawn with real 3D graphics (WebGL), so they can do what CSS 3D can't: real lights and reflections,
-shader effects, thousands of particles and pages that bend. The other designs are built from CSS 3D, which is
-lighter. The first three show many photos at once; the last three show **one photo at a time**.
+These nine are drawn with real 3D graphics (WebGL), so they can do what CSS 3D can't: real lights and reflections,
+shader effects, thousands of particles, breaking glass, cloth and paper that bend. The other designs are built
+from CSS 3D, which is lighter. Mirror Ring, Depth Field, Wave Wall, Cloth Banners and Fold Strip show many photos
+at once; Liquid Slider, Particle Morph, Flip Book and Shatter show **one photo at a time**.
 
 <img src="/img/animation-engine/motion-gallery/webgl-mirror-ring.png" alt="Mirror Ring: photos on a ring above a glossy floor that mirrors them, the ones facing away in shadow" width="1920" />
 
@@ -419,8 +420,9 @@ and stay readable to screen readers and search engines.
 
 - **Liquid Slider** — the photo fills the stage, cropped to fit, never stretched, and the next one arrives through a
   **Transition**: **Liquid** (it flows in along a soft, moving front), **Ripple** (a ring of waves opens from
-  the centre and carries it in), **Slices** (strips slide in one after another) or **Swirl** (the photo twists
-  into the next). **Strength** (0–100 %) sets how much the change distorts the photos, **Pointer Ripple**
+  the centre and carries it in), **Slices** (strips slide in one after another), **Swirl** (the photo twists
+  into the next), **Pixelate** (the photo breaks into growing blocks, swaps, then sharpens) or **Glitch** (bands
+  of the picture jump sideways while it swaps). **Strength** (0–100 %) sets how much the change distorts the photos, **Pointer Ripple**
   (0–100 %) sends soft ripples out from the pointer, and **Slow Zoom** (0–20 %) zooms gently in and out on each
   photo. **Corner Radius** rounds the stage's corners. Clicking opens the photo on screen.
 
@@ -442,6 +444,32 @@ and stay readable to screen readers and search engines.
   Curl** (0–100 %; 0 = stiff card pages), **Cover Colour** (the board round the pages), **Lighting**, **Page
   Ratio** and **Corner Radius**. **Loop Duration** here is the seconds per spread. Swiping turns the pages back
   and forth; clicking a page opens its photo.
+
+<img src="/img/animation-engine/motion-gallery/webgl-shatter.png" alt="Shatter: the photo of a cliff breaking into shards from the centre, the next photo showing through the gap" width="1920" />
+
+- **Shatter** — the photo breaks into pieces that turn, catch the light and fly off, revealing the next photo
+  behind. **Pieces**: **Shards** (broken glass) or **Tiles** (square pieces); **Break**: **Toward you**, **Fall
+  away** or **Burst outward**; **Breaks From**: the centre, the left edge, the top edge, or everywhere at once.
+  **Pieces Across** (4–30) sets their size, **Spin** how much they turn and **Force** how far and fast they fly.
+
+*Many photos at once, in motion.*
+
+<img src="/img/animation-engine/motion-gallery/webgl-cloth-banners.png" alt="Cloth Banners: photos printed on fabric banners hanging from a dark rod, each rippling in the wind" width="1920" />
+
+- **Cloth Banners** — your photos printed on fabric banners hanging from a rod. The wind sends waves down the
+  cloth, stronger toward the free bottom edge, and the folds catch the light; point at a banner and it catches
+  a gust. **Motion → Drift along the rod** slides the row along (Loop Duration is the time for every photo to pass;
+  **Static** holds it still, the cloth still moving), and Scroll-scrub moves it with the scroll. **Banners in
+  View** (2–8), **Wind**, **Ripples** (waves per banner), **Gap**, **View Angle**, **Rod Colour**, **Lighting**,
+  **Banner Ratio** and **Corner Radius**.
+
+<img src="/img/animation-engine/motion-gallery/webgl-fold-strip.png" alt="Fold Strip: photos on a paper strip folded like an accordion, alternate panels in light and shade" width="1920" />
+
+- **Fold Strip** — your photos on a paper strip folded like an accordion, flowing sideways; alternate folds face
+  toward and away from the light. With **Unfold on Hover** on, the strip flattens out while the pointer is over
+  it, so the photos are easy to see; point at a panel and it lifts. **Panels in View** (3–12), **Fold** (0–70°),
+  **View Angle**, **Lighting**, **Panel Ratio** and **Corner Radius**; **Drag to slide** (with **Drag
+  Momentum**) lets visitors move it by hand.
 
 How they behave on the page:
 

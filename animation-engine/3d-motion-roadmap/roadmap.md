@@ -229,7 +229,9 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   **Animation Engine 1.5.3** adds three one-photo-at-a-time WebGL designs: **Liquid Slider** (the next photo
   arrives through a liquid, ripple, slices or swirl shader), **Particle Morph** (each photo drawn as particles
   that scatter and gather into the next) and **Flip Book** (a 3D book whose pages bend as they turn), with swipe,
-  keyboard focus and scroll-scrub.
+  keyboard focus and scroll-scrub. **Animation Engine 1.5.4** adds **Shatter** (the photo breaks into lit shards),
+  **Cloth Banners** (photos on fabric banners rippling in the wind) and **Fold Strip** (an accordion-folded strip that
+  flattens under the pointer), plus **Pixelate** and **Glitch** transitions for the Liquid Slider.
 
 ## Phase 3 — Flourishes
 

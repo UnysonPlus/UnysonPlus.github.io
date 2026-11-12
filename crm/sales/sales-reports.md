@@ -16,8 +16,9 @@ how many deals you win, and why you lose the others.
 ## Filters
 
 - **Pipeline**: one pipeline or all of them.
-- **Period**: this month, the last 3, 6 or 12 months, this year, or custom dates. The period decides which
-  **closed** deals count; the open pipeline and the forecast are always as of today.
+- **Period**: this month, the last 3, 6 or 12 months (counted from the start of the month), this year, or custom
+  dates. The last 6 months is the default. The period decides which **closed** deals count; the open pipeline and
+  the forecast are always as of today.
 - **Owner** (managers): everyone, or one person.
 
 ## What the report shows
@@ -29,8 +30,8 @@ how many deals you win, and why you lose the others.
 | **Won** | Value and number of deals won in the period |
 | **Win rate** | Won ÷ (won + lost) in the period |
 | **Average deal won** | The typical size of a win, and how many days deals take from created to won |
-| **Open deals by stage** | Where the open value sits, with the weighted part shown solid |
-| **Forecast by expected close** | Open deals by the month they should close, plus those past their date and those with no date |
+| **Open deals by stage** | Where the open value sits, with the weighted part shown solid (one pipeline: the chosen one, or the default with All pipelines) |
+| **Forecast by expected close** | Open deals by the month they should close over the next six months, plus those later, those past their date and those with no date |
 | **Won and lost** | Won and lost value per month (with a table of the numbers) |
 | **Why deals were lost** | The lost reasons, most common first |
 | **By owner** | Each person's open pipeline, weighted value, wins, win rate and days to close (managers) |

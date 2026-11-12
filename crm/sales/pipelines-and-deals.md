@@ -49,7 +49,10 @@ page (which fills them in). A deal has:
   back to an open stage reopens it.
 - **About**: value, weighted value, probability, created date and how long it has been in this stage.
   **Edit** changes the details.
-- **Products**, **Timeline**, **People**, **Tasks** and **Files**. Add more contacts to the deal under People.
+- **Products**, **Timeline**, **People**, **Tasks** and **Files**. Add more contacts to the deal under People. With
+  the Lead scoring module on, a **Lead score** panel shows the highest score among the deal's contacts.
+- **Move to bin**, at the bottom, puts the deal in the [bin](../workspace/bin-and-audit-log.md), where it can be
+  restored.
 - **Email** writes to one of the deal's contacts and logs it on the deal. See
   [One-to-one email](./email-and-replies.md).
 
@@ -58,7 +61,8 @@ contact's and company's timelines.
 
 ## Pipelines and stages
 
-Open **Deals → Edit pipelines** (CRM managers).
+Open **Deals → Edit pipelines** (CRM managers). A new CRM starts with one **Sales** pipeline: New lead, Contacted,
+Proposal sent and Negotiating, then Won and Lost.
 
 <img src="/img/crm/pipeline-editor.png" alt="The pipeline editor: stages with their win probability and the days before a deal counts as stalled" width="1920" />
 
@@ -68,12 +72,23 @@ Open **Deals → Edit pipelines** (CRM managers).
   "Rejected" in a recruitment pipeline).
 - Removing a stage moves its open deals to the first stage.
 - **Several pipelines**: add one per process, such as sales and renewals. One is the default the board opens.
-  A pipeline can be deleted once it has no deals.
+  A pipeline can be deleted once it has no deals, as long as it is not the only one.
+- **Currency**: each pipeline can have its own. Leave it empty to use the CRM default.
 
 ## Won and lost
 
 Closing a deal records when it closed. **Lost** asks for a reason (price, timing, chose a competitor, no
 budget, no response or other); the reasons feed [sales reports](./sales-reports.md).
+
+## Deals from other places
+
+- **Forms**: a contact or quote form can create a deal for each submission. See
+  [Forms and signups](../contacts/forms-and-signups.md).
+- **Automations**: the actions **Create a deal** and **Move the deal**, and the triggers **Deal created**,
+  **Deal moved to a stage**, **Deal won** and **Deal lost**. See [Automations](../email-marketing/automations.md).
+- **Bookings**: with the [Bookings extension](/extensions/bookings) active, each booking is a deal worth its price
+  in a **Bookings** pipeline (Requested, then Confirmed or Declined or cancelled). Confirming the booking wins the
+  deal; declining or cancelling it loses it.
 
 ## Frequently asked questions
 

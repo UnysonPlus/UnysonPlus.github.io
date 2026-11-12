@@ -30,9 +30,9 @@ may do what.
 | Contacts | `contact( $id_or_email )`, `create_contact( $data )`, `update_contact( $id, $data )`, `upsert_contact( $email, $data, $only_empty = true )`, `trash_contact( $id )`, `fields( $id )`, `set_fields( $id, $values )`, `add_field( $def, $managed_by )` |
 | Tags, lists, segments | `tag( $id, $tags, $source )`, `untag()`, `has_tag( $id, $tags, 'any'|'all'|'none' )`, `tags( $id )`, `add_to_list( $id, $slug )`, `remove_from_list()`, `in_list()`, `in_segment( $id, $id_or_slug )` |
 | Users | `user_contact( $user_id, $create = false )`, `user_can_access( $user_id, array( 'tags' => …, 'lists' => …, 'segment' => …, 'match' => 'any' ) )`, `membership_event( $who, $event, $data )` |
-| Companies, deals | `company()`, `create_company()`, `update_company()`, `link_company( $contact, $company )`, `deal()`, `create_deal()`, `update_deal()`, `move_deal( $id, $stage_id )` |
+| Companies, deals | `company()`, `create_company()`, `update_company()`, `link_company( $contact, $company )`, `deal()`, `create_deal()`, `update_deal()`, `move_deal( $id, $stage_id, $lost_reason = '' )` |
 | Timeline and activity | `log( $id, $type, $title, $body = '', $object = 'contact' )`, `track( $id, $event, $args )`, `create_task( $data )` |
-| Scores and purchases | `score( $id, $score )`, `add_points( $id, $points, $reason )`, `set_summary( $id, $provider, $data )`, `summary( $id, $provider = null )` |
+| Scores and purchases | `score( $id, $score )`, `add_points( $id, $points, $reason, $score = 'default' )`, `set_summary( $id, $provider, $data )`, `summary( $id, $provider = null )` |
 | Extending | `register_integration()`, `register_object()`, `objects()`, `add_widget()`, `emit()`, `has_module( $module )` |
 
 `add_to_list()` is not a newsletter signup: no consent or double opt-in is implied. Use the CRM's own forms or
@@ -59,8 +59,9 @@ untagged, list_joined, list_left, subscribed, unsubscribed, user_linked, user_un
 recorded event); form.submitted; company.created / updated; task.created / completed; deal.created /
 stage_changed / won / lost; case.created / status_changed; email.opened / clicked / bounced / complained /
 received; automation.started / finished; commerce.updated; membership.joined / trial_started / renewed /
-payment_failed / plan_changed / expired / cancelled; object.created / updated; and WooCommerce's order placed,
-refunded and cart abandoned.
+payment_failed / plan_changed / expired / cancelled; object.created / updated; and, with the WooCommerce module
+on, woocommerce.order_placed / order_refunded / cart_abandoned. Add your own `<extension>.<event>` entries with
+the `unysonplus_crm_events_catalogue` filter.
 
 ## Integrations
 

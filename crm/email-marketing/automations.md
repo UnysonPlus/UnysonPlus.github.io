@@ -10,7 +10,8 @@ keywords: [wordpress marketing automation, crm workflows wordpress, drip email w
 
 An automation starts when something happens to a contact and then runs its steps for that contact: send an
 email, wait, take a different path depending on what they did, change their tags or fields, create a task or a
-deal, and more. Switch on **Automations** in **CRM → Modules**, then open **Marketing → Automations**.
+deal, and more. Switch on **Automations** in **CRM → Modules**, then open **Marketing → Automations**. Automations
+are set up by CRM managers and administrators.
 
 ## Start from a recipe
 
@@ -37,21 +38,31 @@ Contact added, subscribed to email, form submitted, tag added or removed, joined
 (optionally *changed to* or *changed from* a value), a date reached (a birthday or renewal date field, on the day
 or days before or after, optionally every year), a task completed, a deal created / moved to a stage / won /
 lost, a campaign email opened or a link clicked, a reply by email, a support case opened and, with WooCommerce,
-a purchase (optionally of one product or above an amount). Other extensions can add their own.
+a purchase (optionally of one product or above an amount). Some come with their module:
+
+- **Lead scoring**: a score reached a value, a known contact visited a page (optionally one whose address
+  contains a word), and an event happened (any recorded event, optionally with a value). See
+  [Lead scoring](./lead-scoring.md).
+- **WooCommerce**: an order refunded and a cart abandoned (optionally above an amount).
+- **Membership**: the membership events, optionally for one plan.
+
+Other extensions can add their own. A trigger whose module is off is not offered.
 
 ### Steps
 
 - **Send an email**: *marketing* emails go only to subscribed contacts and carry an unsubscribe link;
-  *transactional* ones (a confirmation, a reminder) go to anyone with an address. Tags like `{{first_name}}` work.
+  *transactional* ones (a confirmation, a reminder) go to anyone with an address. Each kind comes from its
+  default [sender](./senders-and-services.md). Tags like `{{first_name}}` work.
 - **Wait**: for a while (minutes to weeks), until a day and time ("next Monday at 9:00"), or until a date on the
   contact (three days before their renewal).
 - **If / else**: contacts who meet the conditions take the **Yes** path, everyone else **No**. Conditions can
-  test tags, lists, email status, lifecycle stage, any field, a segment, the deal's stage, and whether they opened
-  or clicked an email during this automation.
-- **Random split**: path A or B by percentage, to compare two follow-ups.
-- **Contact**: add or remove tags, add to or remove from a list, update a field.
+  test tags, lists, email status, lifecycle stage, any field, a segment, the score (and any named score),
+  lifetime value, the deal's stage, and whether they opened or clicked an email during this automation.
+- **Random split**: path A or B by percentage (50% by default), to compare two follow-ups.
+- **Contact**: add or remove tags, add to or remove from a list, update a field, and, with Lead scoring, add or
+  remove points.
 - **Team**: create a task, notify someone by email, assign an owner in turns (round robin).
-- **Deals**: create a deal, move the deal to another stage.
+- **Deals** (with the Sales pipeline module): create a deal, move the deal to another stage.
 - **Flow**: call a webhook, start another automation, end the contact's other automations.
 - **Goal**: when the goal happens to someone still on an earlier step (they book, buy, reply), they jump straight
   to it, so they stop receiving the chasing emails.
@@ -73,12 +84,13 @@ Under **Who and when**:
 - **The same event never starts it twice** (a form entry, an order).
 - **Test run**: on the editor page, enter a contact's email under **Test run for one contact**. The saved steps
   run straight away: waits are skipped and emails come to you instead of them, but tags, fields and deals really
-  change on that contact.
+  change on that contact. With WP-CLI: `wp crm automations test <automation id> <contact id>`.
 
 ## Activity and progress
 
 **Activity** on each automation lists everything that happened: who entered, each step done, skipped (with the
-reason, such as *not subscribed*) or failed, goals reached, who left and who finished. The list shows each
+reason, such as *not subscribed*) or failed, goals reached, who left and who finished. Entries are kept for 90
+days. The list shows each
 automation's numbers: inside now, finished, and problems. Every contact page has an **Automations** panel showing
 which automations they are in and their next step, with a **Remove** link.
 
@@ -98,4 +110,5 @@ On a VPS with WP-CLI, run the CRM directly every minute:
 * * * * * cd /path/to/site && wp crm automations run --quiet && wp crm queue run --quiet
 ```
 
-Then add `define( 'DISABLE_WP_CRON', true );` to `wp-config.php`.
+Then add `define( 'DISABLE_WP_CRON', true );` to `wp-config.php`. `wp crm automations status` shows whether the
+scheduler is on time and each automation's numbers, and `wp crm automations list` lists them.

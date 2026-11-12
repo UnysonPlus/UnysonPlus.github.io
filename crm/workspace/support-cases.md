@@ -26,11 +26,12 @@ Change the status on the case page's status bar, or drag the card on the board.
 ## The board and the list
 
 **CRM → Cases** opens a **board** with a column per status. Drag a card to change its status; the counts update
-at once. The Solved column shows the last 14 days. Switch to **List** for a table you can sort through by status.
+at once. The Solved column shows the last 14 days. Switch to **List** for a table with the contact, status,
+priority, owner, age and last activity of each case, showing **Not solved** by default, one status, or **All**.
 
-Both views filter by **owner** (everyone's, mine, unassigned or a teammate), **priority**, **age** (older than 1, 3,
-7, 14 or 30 days) and a **search** by words or by case number (`#12`). Urgent and high-priority cards are outlined
-so they stand out.
+Both views filter by **owner** (everyone's, mine, unassigned or a teammate), **priority** (low, normal, high or
+urgent), **age** (older than 1, 3, 7, 14 or 30 days) and a **search** by words or by case number (`#12`). Urgent
+and high-priority cards are outlined so they stand out, and a case past its due date is marked overdue.
 
 ## Open a case
 
@@ -40,11 +41,16 @@ so they stand out.
   start of the message), and the whole submission is its first entry. See
   [Forms and signups](../contacts/forms-and-signups.md).
 - **From email** (needs the **Email conversations** module and its forwarding address or mailbox): on the List
-  view, a CRM manager can turn on **Open a case for each new email a customer sends to the CRM's address**.
+  view, a CRM manager can turn on **Open a case for each new email a customer sends to the CRM's address** under
+  **Case settings**.
 
-A new case goes to the contact's owner. If the contact has none, it goes to the person chosen in **New cases go
-to**, or stays unassigned. Someone who only sees their own records sees their cases **and the unassigned ones**,
-and can press **Take it** to make one theirs.
+A case from a form or an email goes to the contact's owner. If the contact has none, it goes to the person chosen
+in **New cases go to** (Case settings), or stays unassigned. Someone who only sees their own records sees their
+cases **and the unassigned ones**, and can press **Take it** to make one theirs. Only CRM managers can delete a
+case.
+
+A new case can also start an automation: the **Support case opened** trigger (see
+[Automations](../email-marketing/automations.md)).
 
 ## Answer by email
 

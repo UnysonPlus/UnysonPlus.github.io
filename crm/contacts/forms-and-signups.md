@@ -30,7 +30,7 @@ From then on, every submission with an email address:
 - **puts the whole submission on the contact's timeline**, every answer, with a link to the entry under
   Form Entries;
 - **adds the form's tags**, so you can see and segment people by the form they came from;
-- and, if you ask it to, **creates a deal or a meeting** from the submission.
+- and, if you ask it to, **creates a deal, a task or meeting, or a support case** from the submission.
 
 **It never subscribes anyone to your emails.** A contact added by a form is in the CRM but not on your mailing
 list. To let people subscribe, add a **Consent** field set to "Newsletter" and switch on **Subscribe them to the
@@ -75,17 +75,21 @@ A contact in the bin who sends a form again is restored.
 
 <img src="/img/crm/form-on-timeline.png" alt="A booking form submission on a contact's timeline, with every answer and a note that the stored phone number was kept" width="794" />
 
-### Turn bookings into deals or meetings
+### Turn bookings into deals, meetings or cases
 
-**Also create** makes each submission into something your team follows up:
+**Also create** makes each submission into something your team follows up (it is **Nothing** by default):
 
 - **A deal in the sales pipeline** (Sales pipeline module). It is named after the answer you pick under
   **Deal name from** (by default the first dropdown, such as the package) and the person's name, and starts
   in the first stage of the pipeline you choose. **Date from** sets its expected close date. If the chosen
-  package has the same name as one of your [products](../sales/products-and-line-items.md), it is added as the
-  deal's line, so the deal gets the product's price as its value.
+  package has the same name as one of your [products](../sales/products-and-line-items.md) (or a shop
+  product), it is added as the deal's line, so the deal gets the product's price as its value.
 - **A task, call or meeting** on the date the person chose, attached to the contact, with their answers in its
-  notes. It appears on the [calendar](../sales/calendar.md) and in Tasks.
+  notes. **Task type** picks which (a meeting by default). It is owned by the contact's owner and appears on
+  the [calendar](../sales/calendar.md) and in Tasks.
+- **A support case** (Support cases module), for a help or support form. Its title comes from a subject-like
+  field, else the first dropdown, else the start of the message, and the answers are its first entry. See
+  [Support cases](../workspace/support-cases.md).
 
 ## Form Entries keeps every submission too
 

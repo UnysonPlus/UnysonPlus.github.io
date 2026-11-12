@@ -50,7 +50,8 @@ default), and again every period after that.
 - **Automations**: the **Score reached a value** trigger fires once, on the way up past the value, so a contact
   crossing 50 can be handed to sales, tagged *hot* or sent a call task. **Add or remove points** is an automation
   step, and if/else conditions can test any score.
-- **Warmest contacts** on the Lead scoring screen lists the top scores.
+- **Warmest contacts** on the Lead scoring screen lists the top scores, and the same card can be shown on
+  [Home](../workspace/home-dashboard.md).
 
 ## Site activity: pages known contacts visit
 

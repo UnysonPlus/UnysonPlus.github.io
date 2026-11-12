@@ -22,7 +22,7 @@ contact's details or history, and none emails anyone:
 | `crm-save-lists`, `crm-save-segment`, `crm-settings` | (always) | Lists and tags, saved segments, double opt-in and the signup emails (settings can be undone) |
 | `crm-save-campaign` | Email marketing | A draft campaign from plain text or simple HTML |
 | `crm-email-templates`, `crm-campaign-from-template` | Email marketing | The starter templates, and a draft campaign laid out by one with your texts, heading and button |
-| `crm-sending` | Email marketing or conversations | Sender profiles (From name and address, Reply-To), the marketing and transactional defaults, and the post digest's set-up (can be undone) |
+| `crm-sending` | Email marketing | Sender profiles (From name and address, Reply-To), the marketing and transactional defaults, and the post digest's set-up (can be undone) |
 | `crm-pipelines`, `crm-save-pipeline` | Sales pipeline | Pipelines and their stages; saving matches the pipeline and its stages by name and never removes a stage that still holds deals |
 | `crm-automations`, `crm-save-automation` | Automations | The automations, the recipes and every trigger and action available; create or update a **draft** automation from a recipe or from your own steps |
 | `crm-scoring` | Lead scoring | Read or change the scoring rules, named scores and fading (can be undone) |

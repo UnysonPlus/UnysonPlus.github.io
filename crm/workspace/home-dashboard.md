@@ -19,8 +19,11 @@ keywords: [crm dashboard wordpress, wordpress crm home, customise crm dashboard,
 - **Recent activity**: what happened across every record lately.
 - **Your tasks**: what is overdue and due today.
 - **Newest contacts** and **Email campaigns**.
+- **Warmest contacts** (with the Lead scoring module) and **Latest orders from contacts** (with the WooCommerce
+  module).
 
-A sales rep's Home is about their own records. An empty CRM shows the three ways contacts arrive instead.
+A card belongs to its module: Companies, Pipeline and Email campaigns show only while their module is on, and
+Email campaigns only to CRM managers. A sales rep's Home is about their own records. An empty CRM shows the three ways contacts arrive instead.
 
 ## Customise Home
 

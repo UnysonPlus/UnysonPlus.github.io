@@ -58,6 +58,18 @@ for stays on.
 
 ## Settings
 
+### CRM mode
+
+At the top of Settings, for administrators: run the whole site as a CRM in one switch. See
+[Run the site as a CRM](./run-the-site-as-a-crm.md).
+
+### Sending and post digest
+
+With Email marketing or Email conversations on: the sender profiles and email services, plus the post digest
+when Email marketing is on. See
+[Senders and email services](../email-marketing/senders-and-services.md) and
+[Post digest](../email-marketing/post-digest.md).
+
 ### Replies on the timeline
 
 The inbound address and the mailbox the CRM checks for replies (Email conversations or Email marketing). See
@@ -66,13 +78,23 @@ The inbound address and the mailbox the CRM checks for replies (Email conversati
 ### Signups and email
 
 - **Default list** for new signups, and whether a form can create new lists.
-- **Double opt-in**: send a confirmation link before a signup counts, with the confirmation email's subject
-  and text.
+- **Double opt-in** (on by default): send a confirmation link before a signup counts, with the confirmation
+  email's subject and text. The link opens a page with a **Confirm subscription** button, because mail scanners
+  open every link in an email. Turn on **Confirm as soon as the link is opened** only if you are sure your
+  readers' mail is not scanned.
 - **Welcome email** after someone confirms.
 - **Notify the site admin** of new signups.
 - **Privacy**: store the signup IP address or not, and shorten it.
 
+### Campaign sending and tracking
+
+- **How fast to send**: shared hosting (up to 300 an hour, the default), VPS or managed hosting (up to 1,500 an
+  hour), an email service (up to 10 a second), or a custom number an hour.
+- **Recipients per batch** (50 by default, at most 500) and how long to keep the per-person send log of a
+  finished campaign (180 days by default; 0 keeps it). The campaign's totals are always kept.
+- **Track opens** and **Track clicks**, both on by default.
+
 ### Remove all data
 
-At the bottom of Settings, **Remove all data** deletes every CRM table and setting after you confirm. It is
+At the bottom of Settings, **Remove all data** deletes every CRM table and setting after you type `DELETE` to confirm. It is
 never done automatically, not even when the extension is deactivated.

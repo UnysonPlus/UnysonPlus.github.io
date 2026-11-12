@@ -9,17 +9,17 @@ description: "A self-hosted CRM for WordPress: contacts, companies, a sales pipe
 
 # CRM
 
-:::info Phases 1 and 2 are built
-Contacts and companies (Phase 1) and the sales pipeline (Phase 2) are complete and arrive with the next
-release. Email marketing, automations and scoring follow; the [roadmap](./roadmap.mdx) tracks each phase
-against the code as it lands.
+:::info Every phase is built
+Contacts and companies, the sales pipeline, support cases, email marketing, automations, lead scoring and the
+integrations with other extensions are all built. The [roadmap](./roadmap.mdx) tracks each phase against the
+code.
 :::
 
 The CRM is a complete customer system inside your WordPress site: the people and companies you work
 with, the deals you are chasing, the emails you send them, and the automations that follow up for you.
 Your data stays in your own database, with no per-contact fees and no outside service to sign up to.
 
-It grows out of the **Newsletter / Subscriber CRM** extension, which is renamed to **CRM** and reorganized: its email builder, campaigns, sending queue, lists, tags, segments, double opt-in and form integration carry over, and the newsletter subscriber grows into a full contact.
+It grew out of the **Newsletter / Subscriber CRM** extension, which was renamed to **CRM** and reorganized: its email builder, campaigns, sending queue, lists, tags, segments, double opt-in and form integration carry over, and the newsletter subscriber grows into a full contact.
 
 ## In this manual
 
@@ -43,20 +43,30 @@ bring in your contacts.
 - [Tasks, calls and meetings](./sales/tasks-calls-meetings.md) and the [calendar](./sales/calendar.md)
 - [Email and replies](./sales/email-and-replies.md): one-to-one email and replies on the timeline
 - [Files on records](./sales/files.md) and [sales reports](./sales/sales-reports.md)
+- [WooCommerce](./sales/woocommerce.md): customers, orders and abandoned carts in the CRM
+
+**Email marketing**
+
+- [Campaigns and the email builder](./email-marketing/campaigns.md)
+- [Senders and email services](./email-marketing/senders-and-services.md) and the [post digest](./email-marketing/post-digest.md)
+- [Automations](./email-marketing/automations.md): follow-ups that run by themselves
+- [Lead scoring and site activity](./email-marketing/lead-scoring.md)
 
 **Workspace and team:** [Home dashboard](./workspace/home-dashboard.md), [team roles](./workspace/team-roles.md),
-[bin and audit log](./workspace/bin-and-audit-log.md), [modules and settings](./workspace/settings-and-modules.md).
+[support cases](./workspace/support-cases.md), [bin and audit log](./workspace/bin-and-audit-log.md),
+[modules and settings](./workspace/settings-and-modules.md), [run the site as a CRM](./workspace/run-the-site-as-a-crm.md).
 
-**Developers:** [REST API](./developers/rest-api.md), [PHP API and hooks](./developers/php-api-and-hooks.md),
-[create a custom module](./developers/custom-modules.md), [webhooks](./developers/webhooks.md).
+**Developers:** [REST API](./developers/rest-api.md), [extension API](./developers/extension-api.md),
+[PHP API and hooks](./developers/php-api-and-hooks.md), [create a custom module](./developers/custom-modules.md),
+[webhooks](./developers/webhooks.md), [AI Assistant tools](./developers/ai-tools.md).
 
 ## Finding your way around
 
 Open **Unyson+ → CRM** and the CRM takes over the screen like an app of its own:
 
-- **The CRM sidebar** lists every area: Home, Contacts, Companies, Deals, Tasks, Calendar, Campaigns,
-  Lists & segments, Reports, Import / Export, Custom fields, Bin, Audit log, Webhooks, Modules and
-  Settings. Areas that belong to a module you switched off are hidden.
+- **The CRM sidebar** lists every area: Home, Contacts, Companies, Deals, Cases, Tasks, Calendar, Campaigns,
+  Lists & segments, Lead scoring, Automations, Reports, Import / Export, Custom fields, Bin, Audit log,
+  Webhooks, Modules and Settings. Areas that belong to a module you switched off are hidden.
 - **The WordPress menu folds to its icons** while you are in the CRM and comes back when you leave.
   **Hide the WordPress menu** at the bottom of the CRM sidebar removes it altogether (your choice is
   remembered), and **Back to WordPress** takes you to the dashboard.
@@ -86,7 +96,9 @@ beginner is never faced with tools they do not use. A module that is off loads n
 | **Sales pipeline** | Several pipelines with their own stages, a drag-and-drop deal board, deal pages, products and sales reports |
 | **Calendar** | Calls, meetings and dated tasks on a month, week and day calendar |
 | **Email conversations** | One-to-one email from a contact's record, and their replies on the timeline |
+| **Support cases** | Questions and problems from customers, each with a status, a priority, an owner and the conversation; opened by hand, from a form or from an email |
 | **Audit log** | Who changed, exported, merged or deleted what |
+| **WooCommerce** | Customers become contacts; orders, refunds and abandoned carts reach the timeline, segments and automations (needs the WooCommerce plugin) |
 | **Webhooks** | CRM events sent to other apps as signed JSON the moment they happen |
 | **Email marketing** | Campaigns built in a block email builder from a template gallery, double opt-in, a preference page, batched sending through SMTP or an email service, and open and click reports |
 | **Automations** | Triggers (a form, a tag, a date, a deal stage, a purchase) start a flow of steps: send an email, wait, branch, change tags, move a deal, create a task, call a webhook |
@@ -94,7 +106,7 @@ beginner is never faced with tools they do not use. A module that is off loads n
 
 ## Start from your industry
 
-The free [CRM Website Generator](https://create.unysonplus.com/crm/) builds a whole CRM website for one kind of business: the pages, the
+The free [Site Creator](https://create.unysonplus.com/crm/) builds a whole CRM website for one kind of business: the pages, the
 lead forms, the pipeline stages and the CRM set up to match. Pick your industry, choose what you need, and
 copy the prompt for your AI agent.
 
@@ -124,12 +136,12 @@ copy the prompt for your AI agent.
 
 - **Forms.** A contact or booking form can add its senders to the CRM: it creates or updates the contact,
   saves the answers you choose (to contact fields or custom fields it creates for you), keeps the whole
-  submission on the timeline, and can turn a booking into a deal or a meeting. People are only subscribed to
-  your emails when they tick a consent box. See [Leads from your forms](./contacts/forms-and-signups.md).
+  submission on the timeline, and can turn a booking into a deal, a meeting or a support case. People are
+  only subscribed to your emails when they tick a consent box. See [Leads from your forms](./contacts/forms-and-signups.md).
 - **Newsletter element.** Signups from the Newsletter element become contacts.
-- **AI Assistant.** A connected AI app can set the CRM up through its tools (fields, lists, segments,
-  pipelines, campaigns, automations), but no tool reads or contacts the people in it.
-- **The CRM website generator** builds its sites on the CRM: a real pipeline and a welcome automation.
+- **AI Assistant.** A connected AI app can set the CRM up through its [tools](./developers/ai-tools.md)
+  (lists, segments, settings, pipelines, campaigns, automations, lead scoring), but no tool reads or contacts the people in it.
+- **The Site Creator** builds its CRM sites on the CRM: a real pipeline and a welcome automation.
 
 ## Built for ordinary hosting
 

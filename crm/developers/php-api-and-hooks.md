@@ -68,7 +68,7 @@ FW_CRM_Activity::log( 'contact', $contact_id, 'booking', 'Booked: Colour, 3 Nov'
 | `unysonplus_crm_dashboard_cards` | A Home card: `id => { title, callback(), priority, column }`; people can move or hide it |
 | `unysonplus_crm_record_actions` (action) | Buttons in a record's header: `( $object, $record )` |
 | `unysonplus_crm_modules` | A module on CRM → Modules: `id => { label, description, icon, group, default, requires, requires_text, available, soon }`. See [Create a custom module](./custom-modules.md) |
-| `unysonplus_crm_nav` | A sidebar item: `view => { label, icon, url?, cap?, module? }`; render it on `unysonplus_crm_render_view` |
+| `unysonplus_crm_nav` | A sidebar item, in a group (`main`, `marketing`, `insights`, `admin`): `$nav[ $group ]['items'][ $view ] = { label, icon, url?, cap?, module?, soon? }`; render it on `unysonplus_crm_render_view` |
 | `unysonplus_crm_settings_sections` (action) | A section on CRM → Settings |
 | `unysonplus_crm_handle_action` | Handle your own form actions: `( $result, $action )` → redirect args or `[ '_back' => $url ]` |
 | `unysonplus_crm_calendar_events` | Items on the calendar: `[ { id, kind, date, time, title, sub, url, icon } ]` |
@@ -78,15 +78,21 @@ FW_CRM_Activity::log( 'contact', $contact_id, 'booking', 'Booked: Colour, 3 Nov'
 | Action | When |
 | --- | --- |
 | `unysonplus_crm_contact_created` · `_updated( $contact, $before, $changes )` · `_trashed` · `_restored` · `_deleted` | Contact changes |
-| `unysonplus_crm_contacts_merged( $kept_id, $removed_row )` | Two contacts merged: move your own references |
+| `unysonplus_crm_contacts_merging( $keep, $other )` · `unysonplus_crm_contacts_merged( $kept_id, $removed_row )` | Two contacts are about to be / were merged: move your own references |
+| `unysonplus_crm_company_created` · `_updated( $company, $before )` · `_deleted` | Company changes |
 | `unysonplus_crm_user_linked` · `_user_unlinked` | A contact linked to or unlinked from a WordPress user |
 | `unysonplus_crm_tag_added` · `_tag_removed( $contact_id, $tag_id, $source )` | Tags |
+| `unysonplus_crm_tag_renamed( $old, $new )` · `unysonplus_crm_tags_merged( $from, $into )` | A tag renamed, or merged into another |
+| `unysonplus_crm_consent_recorded( $id, $contact_id, $purpose, $granted )` | A line added to the consent log |
 | `unysonplus_crm_list_status_changed( $contact_id, $list_id, $from, $to, $source )` | List subscription |
-| `unysonplus_crm_deal_created` · `_updated` · `_stage_changed( $deal, $from, $to )` · `_won` · `_lost( $deal, $reason )` | Deals |
-| `unysonplus_crm_task_created` · `_updated` · `_completed( $task, $outcome )` | Tasks |
+| `unysonplus_crm_deal_created` · `_updated( $deal, $before, $changes )` · `_stage_changed( $deal, $from, $to )` · `_won` · `_lost( $deal, $reason )` · `_trashed` · `_deleted` | Deals |
+| `unysonplus_crm_case_created` · `_updated( $case, $before )` · `_status_changed( $case, $from_status )` · `_deleted` | Support cases (Support cases module) |
+| `unysonplus_crm_task_created` · `_updated( $task, $before )` · `_completed( $task, $outcome )` | Tasks |
 | `unysonplus_crm_file_attached` · `_detached( $object, $id, $attachment_id )` | Files |
 | `unysonplus_crm_direct_email_sent( $contact, $mail, $deal_id )` · `unysonplus_crm_email_received( $contact_id, $message, $deal_id )` | Email out and replies in |
-| `unysonplus_crm_import_finished` · `_import_undone` | CSV imports |
+| `unysonplus_crm_campaign_saved` · `_scheduled` · `_started( $campaign, $queued )` · `_paused` · `_resumed` · `_sent( $campaign, $counts )` · `_deleted` | Email campaigns (Email marketing module) |
+| `unysonplus_crm_import_started` · `_finished` · `_undone` · `unysonplus_crm_exported` | CSV imports and exports |
+| `unysonplus_crm_activity_logged( $id, $object_type, $object_id, $type )` | Any entry added to a timeline |
 | `unysonplus_crm_form_submitted( $contact_id, $ctx, $created )` | A form sent its sender to the CRM; `$ctx['fields']` holds every answer ([forms](../contacts/forms-and-signups.md)) |
 | `unysonplus_crm_module_toggled( $id, $on )` | A module was switched on or off (refuse with the `unysonplus_crm_module_can_disable` filter) |
 | `unysonplus_crm_webhook( $event, $data )` (you fire it) | Queue a [webhook](./webhooks.md) event |
@@ -94,7 +100,10 @@ FW_CRM_Activity::log( 'contact', $contact_id, 'booking', 'Booked: Colour, 3 Nov'
 Useful filters: `unysonplus_crm_lifecycle_stages`, `unysonplus_crm_field_types`, `unysonplus_crm_segment_fields`,
 `unysonplus_crm_task_types`, `unysonplus_crm_lost_reasons`, `unysonplus_crm_default_currency`,
 `unysonplus_crm_woo_products`, `unysonplus_crm_task_reminders` (return false to stop reminder emails),
-`unysonplus_crm_direct_email` (change a one-to-one email before it is sent), `unysonplus_crm_bin_days`.
+`unysonplus_crm_direct_email` (change a one-to-one email before it is sent), `unysonplus_crm_bin_days`,
+`unysonplus_crm_audit_days` (365), `unysonplus_crm_audit_record` (return false to skip an audit entry),
+`unysonplus_crm_case_statuses`, `unysonplus_crm_mail_placeholders` (add `{{placeholders}}` to emails),
+`unysonplus_crm_send_rate`, `unysonplus_crm_capability` (the capability that opens the CRM, `fw_crm_access`).
 
 ## Events and scores
 
@@ -148,7 +157,8 @@ user and return `true`, a `WP_Error` (a code starting with `skip` is logged as s
 A trigger's settings match the event's values of the same key unless it has its own
 `'match' => function ( $settings, $context ) { … }`. The CRM's own triggers are `crm.*` (contact added,
 subscribed, form submitted, tag added or removed, list joined or left, field changed, date reached, task
-completed, deal created / moved / won / lost, email opened / clicked / replied, case opened, purchase made).
+completed, deal created / moved / won / lost, email opened / clicked / replied, case opened, purchase made,
+any recorded event, and with their modules on: score changed, page visited, order refunded, cart abandoned).
 
 Other hooks: `unysonplus_crm_automation_started`, `unysonplus_crm_automation_finished`,
 `unysonplus_crm_automation_saved`, `unysonplus_crm_automation_loop_stopped`, and the filters

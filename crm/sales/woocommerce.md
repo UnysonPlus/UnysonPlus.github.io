@@ -19,30 +19,33 @@ subscribed*. A paid order moves a subscriber, lead or opportunity to **customer*
 
 ## On the contact
 
-- The **timeline** shows each order placed (with its items and total), completed, refunded or cancelled.
+- The **timeline** shows each order placed (with its items and total), completed, refunded, cancelled or failed.
 - The **Purchases** panel shows their number of orders, total spent and last order. Refunds and cancellations
   are taken off, so the total is what they really paid.
 - Their **lifetime value** is their total spent.
 
 ## Segments and automations
 
-- Segment rules: **Number of orders**, **Total spent**, **Last order** (*in the last 90 days*, *more than 180
-  days ago*), **Bought product** (by product ID).
-- Automation triggers: **Made a purchase** (optionally a product or a minimum total), **Order refunded** and
-  **Abandoned a cart** (optionally a minimum cart total). Conditions can test orders and total spent.
+- Segment rules: **Number of orders (all stores)**, **Total spent (all stores)**, **Last order** (*in the last 90
+  days*, *more than 180 days ago*), **Bought product (ID)**. "All stores" also counts payments from the Membership
+  extension.
+- Automation triggers: **Made a purchase** (when an order is completed; optionally a product ID or a minimum
+  total), **Order refunded** and **Abandoned a cart** (optionally a minimum cart total). Conditions can test orders
+  and total spent.
 - Lead scoring rules can give points for purchases.
 
 ## Abandoned carts
 
 For visitors the CRM knows (logged in, or recognised by [site activity](../email-marketing/lead-scoring.md)), a
-cart left without an order for the chosen number of hours (2 by default) goes on their timeline and fires
+cart left without an order for the chosen number of hours (2 by default, up to 168) goes on their timeline and fires
 **Abandoned a cart** once. A follow-up automation might wait an hour and send a reminder, then stop as soon as
 they buy (a goal on *Made a purchase*).
 
 ## Past orders
 
-**CRM → Settings → WooCommerce → Import past orders** brings in existing orders, 200 per click, oldest first,
-so customers from before the CRM have their history and totals too.
+**CRM → Settings → WooCommerce → Import past orders** brings in existing orders, 200 per click, oldest first.
+Their customers become contacts and get their number of orders, total spent and last order. Past orders are not
+added to the timeline one by one.
 
 ## Home
 

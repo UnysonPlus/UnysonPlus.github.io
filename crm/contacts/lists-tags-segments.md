@@ -43,19 +43,26 @@ is in it.
 
 <img src="/img/crm/segment-editor.png" alt="The segment builder in the WordPress CRM with rules, groups and a live count" width="1920" />
 
-1. Open **Lists & segments → New segment** (or filter the contacts list and click **Save as segment**).
+1. Open **Lists & segments** (under Marketing; CRM managers) and click **New segment**, or filter the contacts
+   list, name the filter and click **Save as segment**.
 2. Choose whether contacts must match **all** rules or **any** of them.
-3. Add rules. Each picks a field, a condition and a value. Groups let you combine "all" and "any".
-4. The **live count** shows how many contacts match as you build. Save it with a name.
+3. Add rules. Each picks a field, a condition and a value. **Add a group (and / or)** puts rules in a group
+   with its own "all" or "any", so you can combine the two. Groups go one level deep.
+4. The **live count** shows how many contacts match as you build. Give it a **Segment name** and click
+   **Save segment**. **See the contacts it matches** opens the contacts list filtered by it.
 
 What rules can use:
 
-- **People**: name, email, phone, job title, company, city, region, country, owner (including "me").
-- **Status**: lifecycle stage, email status, whether they have a WordPress account.
+- **People**: first and last name, email, phone, job title, company name, city, region, country, source,
+  owner (including "me", meaning whoever is looking).
+- **Status**: lifecycle stage, email status, whether they have a site account.
 - **Groups**: tags (has any / all / none of), lists (subscribed to).
 - **Numbers and dates**: score, lifetime value, date added, last activity, and "in the last / next N days".
-- **Activity**: something happened (or did not) in the last N days, such as a form entry or a call.
-- **Your custom fields**, with conditions that suit their type.
+- **Activity**: something happened (or did not) on their timeline in the last N days, such as a form entry or
+  a call, or a tracked event (**Did something**), such as a login or a purchase.
+- **Purchases**: number of orders, total spent, last order and bought product, from every connected store.
+- **Lead scores**: each named score, when the [Lead scoring](../email-marketing/lead-scoring.md) module is on.
+- **Your contact custom fields**, with conditions that suit their type.
 
 Segments are used for email campaigns (only subscribed contacts are ever emailed), for filtering the
 contacts list, for exports, and by other extensions, for example to decide who can see members-only content.
@@ -68,7 +75,8 @@ campaigns respect list subscriptions; tags are for organising.
 
 **Do segments update automatically?**
 Yes. A segment is a set of rules checked each time it is used, so new contacts who match are included and
-contacts who stop matching drop out.
+contacts who stop matching drop out. The count shown on Lists & segments is kept for up to five minutes, so it can
+lag a little behind.
 
 **Can I email a segment?**
 Yes, with email marketing on. Only contacts who are subscribed are included.

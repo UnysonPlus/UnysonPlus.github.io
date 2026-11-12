@@ -23,14 +23,19 @@ activity.
 - **Search** by name, email or phone.
 - **Filter** by lifecycle stage, email status, list, tag or a saved [segment](./lists-tags-segments.md).
 - **Save as segment** keeps the current filters as a segment you can reuse and email.
-- **Bulk actions**: subscribe or unsubscribe from a list, add a tag, or move to the bin.
-- **Export** the current filter to CSV (see [Import and export](./import-export.md)).
+- **Bulk actions**: mark unsubscribed, mark subscribed (CRM managers only, for people who already agreed), add or
+  remove a tag (pick the tag in the dropdown next to the bulk actions), or move to the bin.
+- **Export these (CSV)** downloads exactly what the current filter shows (CRM managers; see
+  [Import and export](./import-export.md)).
+- **Find duplicates** lists contacts entered twice (see [Duplicates and merging](./duplicates-and-merge.md)).
+- A sales rep sees only the contacts they own; the line above the list says how many.
 
 ## Add a contact
 
-Click **New → Contact** in the top bar, or **Add contact** on the list. An email address is optional: a lead
-you only have a phone number for is still a contact. If the email already belongs to a contact, you are
-taken to that contact instead of creating a duplicate.
+Click **New → Contact** in the top bar, or **New contact** on the list. A contact needs at least an email, a
+name or a phone number, so a lead you only have a phone number for is still a contact. If the email already
+belongs to a contact, that contact is updated with what you typed and opened, instead of a duplicate being
+made.
 
 Adding someone by hand never subscribes them to your emails. See [Consent and privacy](./consent-and-privacy.md).
 
@@ -41,11 +46,12 @@ Adding someone by hand never subscribes them to your emails. See [Consent and pr
 | Part | What it holds |
 | --- | --- |
 | **Header** | Name, job and company, email, phone, owner, the **Stage** picker and the **Email** button |
-| **About** | Email, phone, job title, address, source, date added and your [custom fields](./custom-fields.md). Click **Edit** to change them in place |
+| **About** | Email, phone, job title, address, source, date added, lifetime value and linked site account (when there are any) and your [custom fields](./custom-fields.md). Click **Edit** to change them in place |
 | **Timeline** | Notes you add and everything that happened: signups, form entries, emails sent and received, calls and meetings, deals, tags and lists, files, merges |
-| **Companies** | The companies they work at, the main one first. Link an existing company or type a new one |
+| **Companies** | The companies they work at, the main one first. Link an existing company or type a new one. Shown when the Companies module is on |
 | **Email** | Their email status, the lists they are on (with when and how they joined or left), and their tags |
 | **Deals, Tasks, Files** | Their [deals](../sales/pipelines-and-deals.md), [tasks, calls and meetings](../sales/tasks-calls-meetings.md) and [files](../sales/files.md) |
+| **Possible duplicates** | Other contacts with the same phone number or full name, each with **Merge…** (CRM managers; shown only when there are some) |
 | **Consent** | Every time they agreed or withdrew, with the exact wording they saw |
 
 ### Lifecycle stages

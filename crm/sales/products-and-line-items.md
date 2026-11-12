@@ -43,6 +43,8 @@ with its ×.
 - Each line **copies** the name and price. Changing a product's price, or deleting the product, never changes
   deals that already use it.
 - Adding and removing lines is written on the deal's timeline, as are value changes.
+- A deal made by a [form](../contacts/forms-and-signups.md) gets a line by itself when the package the person chose
+  has the same name as one of your products (or a WooCommerce product).
 
 ## Frequently asked questions
 

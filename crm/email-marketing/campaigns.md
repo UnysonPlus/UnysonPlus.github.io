@@ -12,8 +12,10 @@ Switch on **Email marketing** in **CRM → Modules**, then open **Marketing → 
 
 ## Write it
 
-- **Email builder**: drag blocks (heading, text, image, button, columns, social links, divider, spacer, table,
-  video, menu, logo and footer) onto the canvas. They are compiled to email-safe HTML that works in Outlook and on
+- **Editor**: choose the **Visual editor** for a short note, or the **Email builder** for anything designed.
+- **Email builder**: drag blocks (logo, heading, text, image, button, divider, spacer, menu, social links, hero,
+  video, table, footer and HTML) onto the canvas, and change a block's width to put blocks side by side in
+  columns. They are compiled to email-safe HTML that works in Outlook and on
   phones. Personal tags such as `{{first_name}}` and `{{site_name}}` fill in per reader.
 - **Templates**: start from Announcement, Newsletter digest, Product promotion, Welcome, **Follow-up**, Event
   invitation or Plain letter, or save your own design as a template and reuse it.
@@ -21,14 +23,20 @@ Switch on **Email marketing** in **CRM → Modules**, then open **Marketing → 
 
 ## Choose who gets it
 
-Pick a **list**, a **tag** or a **segment**. Only people who are **subscribed** are ever sent a campaign: pending,
-unsubscribed, bounced and complained addresses are left out automatically, even if they match.
+Under **Send to**, pick a **list**, a **tag** and/or a **segment** (leave them empty for everyone subscribed). The
+screen shows how many people the campaign matches. Only people who are **subscribed** are ever sent a campaign:
+pending, unsubscribed, bounced and complained addresses are left out automatically, even if they match.
 
 ## Send
 
 **Send now**, **Schedule** for later, or **Send a test** to yourself first. Sending happens in small batches in the
 background, so a big list never hits your host's time limit. Set a **speed limit** per campaign to spread a big send
 over time. Choose **From** to send it with a [sender](./senders-and-services.md) other than the default.
+
+A campaign that is sending or scheduled can be **paused** from the Campaigns list and **resumed** later. WordPress
+runs the sending only when the site has visitors, so on a quiet site use **Run sending now**, or a server cron job
+(see [Automations](./automations.md#make-the-timing-exact-a-server-cron-job)). The overall pace and batch size are
+in CRM → Settings → Campaign sending.
 
 Once a campaign starts sending it can no longer be edited, so everyone receives the same email.
 
@@ -38,8 +46,8 @@ their address first when double opt-in is on (CRM → Settings).
 
 ## Results
 
-The campaign report shows how many people opened and clicked, the most-clicked links, opens by hour, bounces and
-spam complaints. Clicks from corporate link scanners are filtered out. A hard bounce or a spam complaint stops all
+The campaign report shows how many people opened and clicked, the most-clicked links, opens and clicks by hour,
+unsubscribes, bounces and spam complaints, and the latest activity. Clicks from corporate link scanners are filtered out. A hard bounce or a spam complaint stops all
 further campaigns to that address.
 
 ## Smart links: tag the people who click

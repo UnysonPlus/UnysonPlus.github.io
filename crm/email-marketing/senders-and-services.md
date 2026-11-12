@@ -8,14 +8,15 @@ keywords: [wordpress sendgrid newsletter, mailgun wordpress crm, postmark wordpr
 
 # Senders and email services
 
-**CRM → Settings → Sending** decides who CRM email comes from and how it is sent.
+**CRM → Settings → Sending** decides who CRM email comes from and how it is sent. It is there while the Email
+marketing or the Email conversations module is on.
 
 ## Two kinds of email
 
 | Kind | What it covers |
 |---|---|
-| **Marketing** | campaigns and the post digest |
-| **Transactional** | double opt-in confirmations, welcome emails, one-to-one email from a contact's page, and case replies |
+| **Marketing** | campaigns, the post digest, and automation emails set to *marketing* |
+| **Transactional** | double opt-in confirmations, welcome emails, one-to-one email from a contact's page, case replies, and automation emails set to *transactional* |
 
 Each kind has its own **default sender**, so newsletters can come from *news@* through an email service while
 confirmations and replies come from *hello@* through your normal mail. Keeping them apart also protects the emails
@@ -31,7 +32,8 @@ reply.
 - an optional **Reply-To**;
 - **Send with**: the site's own mail (the Mailer extension, or any SMTP plugin) or one of the email services below.
 
-The first sender you add becomes the default for both kinds; change that under the table. A campaign can pick any
+Until you add one, CRM email uses the Mailer settings (or WordPress's own From address). The first sender you add
+becomes the default for both kinds; change that under the table with **Save defaults**. A campaign can pick any
 sender in its **From** setting. **Send a test** sends a short email with the sender you choose, so you can check it
 arrives before a campaign does. One-to-one email keeps the writer's own name as the From name.
 

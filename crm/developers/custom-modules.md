@@ -66,8 +66,8 @@ Every key a module can have:
 | `soon` | `true` lists the module as coming soon, with no switch. |
 
 Pick a module id that is unlikely to clash, such as your plugin's prefix (`acme_loyalty`). The built-in ids
-are `companies`, `pipeline`, `calendar`, `conversations`, `email`, `audit`, `webhooks`, `automations`,
-`scoring` and `cases`.
+are `companies`, `pipeline`, `calendar`, `conversations`, `email`, `automations`, `scoring`, `audit`, `cases`,
+`woocommerce` and `webhooks`.
 
 ## 2. Load your code only while the module is on
 

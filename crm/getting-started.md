@@ -13,7 +13,7 @@ fees. This page takes you from a fresh install to a working CRM: turning it on, 
 adding your team and getting your first contacts in.
 
 :::tip Building a new site for one industry?
-The free [CRM Website Generator](https://create.unysonplus.com/crm/) writes the whole build (pages, lead forms, pipeline and CRM) as a prompt
+The free [Site Creator](https://create.unysonplus.com/crm/) writes the whole build (pages, lead forms, pipeline and CRM) as a prompt
 for your AI agent, with ready-made starting points such as a [real estate CRM for realtors](https://create.unysonplus.com/crm/real-estate/)
 and a [salon and spa CRM](https://create.unysonplus.com/crm/salon-spa/). See all the industries in the
 [CRM overview](./index.md#start-from-your-industry).
@@ -43,6 +43,9 @@ starts with the core alone.
 | **Sell to customers** | Companies, Sales pipeline and Calendar |
 | **Send newsletters** | Email marketing |
 | **Email people one to one** | Email conversations |
+
+The other modules (Automations, Lead scoring and site activity, Support cases, Audit log, WooCommerce and
+Webhooks) are not part of the question: switch them on under **CRM → Modules** when you need them.
 
 Change your mind at any time under **CRM → Modules**. A module that is off loads no code and adds no menu
 items, and its data stays until you turn it back on. See [Modules and settings](./workspace/settings-and-modules.md).
@@ -79,7 +82,9 @@ Lost. Add your products under **Deals → Products** so deal values add themselv
 
 WordPress runs scheduled jobs (task reminders, sending, checking a mailbox for replies) when someone visits
 the site. On a quiet site that can be late. If your host offers cron jobs (cPanel and most others do), add
-one that calls `wp-cron.php` every five minutes and the CRM's background jobs run on time.
+one that calls `wp-cron.php` every five minutes and the CRM's background jobs run on time. On a server with
+WP-CLI you can run the CRM's own commands from cron instead: `wp crm queue run` sends the next campaign batches
+and `wp crm automations run` runs the automations that are due.
 
 ## Frequently asked questions
 

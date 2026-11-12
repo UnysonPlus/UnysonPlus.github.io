@@ -15,10 +15,14 @@ emailed unless they agreed.
 
 - **Only the person can subscribe themselves.** Adding a contact by hand, creating one through the API or
   linking one from a form without a consent box never subscribes them. Imports subscribe people only when
-  you confirm they all agreed.
+  you confirm they all agreed. The one manual exception is **Mark subscribed** in the contacts list's bulk
+  actions, which only CRM managers have, for people who agreed somewhere else.
 - **The consent log** on each contact's page records every time they agreed or withdrew: when, how (a form,
   a confirmation link, an import), from which page, and the exact wording of the box they ticked.
-- **Double opt-in** (in CRM settings) sends a confirmation link before a signup counts.
+- **Double opt-in** (CRM → Settings, on by default) sends a confirmation link before a signup counts; until
+  then the person is **Pending**. The link opens a page with a **Confirm subscription** button, because mail
+  scanners open every link in an email and would otherwise confirm people on their own. **Confirm as soon as
+  the link is opened** (off by default) skips that button.
 - **A preference page** lets people choose which lists they stay on; an unsubscribe link leaves everything.
 - **Per-list status**: leaving one list is remembered, so nothing puts them back by accident. See
   [Lists, tags and segments](./lists-tags-segments.md).
@@ -29,13 +33,22 @@ unsubscribe. See [One-to-one email](/crm/sales/email-and-replies).
 ## Personal data requests
 
 The CRM plugs into WordPress's own **Tools → Export Personal Data** and **Tools → Erase Personal Data**, so a
-request covers a person's CRM record too.
+request covers a person's CRM record too, found by their email address.
+
+- **Export** adds a "CRM contact" section: email, name, email status, lists, tags, when and on which page they
+  signed up, their signup IP and the consent wording they saw.
+- **Erase** anonymises the record instead of deleting it: the email address, name, IP and signup page are
+  removed and the record is kept as unsubscribed. Their phone, address, custom fields and timeline stay. When
+  the request covers those too, also move the contact to the bin and delete them for good from **CRM → Bin**
+  (see [Bin and audit log](../workspace/bin-and-audit-log.md)).
 
 ## What is stored
 
 Contacts, companies, deals and everything about them live in the CRM's tables in your WordPress database.
 Nothing is sent to an outside service by the CRM itself, except the email you choose to send through your
-site's mail set-up. IP addresses at signup can be left out or shortened in settings.
+site's mail set-up. Under **CRM → Settings → Privacy**, **Store the signup IP** (on by default) keeps the IP
+address as consent evidence, and **Anonymise the IP** (off by default) masks its last part before it is
+stored.
 
 ## Frequently asked questions
 

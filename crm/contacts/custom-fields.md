@@ -9,9 +9,9 @@ keywords: [crm custom fields wordpress, custom contact fields, wordpress crm fie
 # Custom fields
 
 Every business tracks something the CRM cannot guess: a membership number, a preferred stylist, a contract
-renewal date. Custom fields add them to contacts, companies and deals, and they work everywhere: on the
-record page, in [segments](./lists-tags-segments.md), in [CSV import and export](./import-export.md) and in
-the [REST API](../developers/rest-api.md).
+renewal date. Custom fields add them to contacts, companies and deals. They show on the record page and in
+the [REST API](../developers/rest-api.md); contact fields also work in [segments](./lists-tags-segments.md)
+and in [CSV import and export](./import-export.md), which cover contacts only.
 
 ## Field types
 
@@ -21,16 +21,17 @@ the [REST API](../developers/rest-api.md).
 | Number, Money | Quantities and amounts (sortable and usable in segment rules like "greater than") |
 | Date, Date and time | Birthdays, renewals, appointments (segment rules like "in the next 30 days") |
 | Choice, Multiple choice | A fixed set of options, such as a size or a service |
-| Checkbox | Yes or no |
-| URL, Email, Phone | Links and contact details, checked when saved. On a record, a URL shows as a short link that opens in a new tab, and an email as a mail link |
-| Lookup | A link to another record: a contact, company, deal, page or user |
+| Yes / no | A tick box |
+| Web address, Email, Phone | Links and contact details, checked when saved. On a record, a URL shows as a short link that opens in a new tab, and an email as a mail link |
+| Link to a record | A link to another record: a contact, a company, a deal, a page or post, or a WordPress user |
 | Address | A full address in one field |
 | Auto-number | A running number with a prefix, such as `WL-0001`, given automatically |
 
 ## Add a field
 
 1. Open **CRM → Custom fields** (under Data; CRM managers and administrators).
-2. Pick the record type at the top: **Contacts**, **Companies** or **Deals**.
+2. Pick the record type at the top: **Contacts**, **Companies** or **Deals**. Companies shows when the Companies
+   module is on, and Deals when the Sales pipeline module is on.
 3. Click **Add a field** and give it a **label**, such as "Preferred stylist". The **key** fills itself in
    (`preferred_stylist`); it is the name used in imports, exports and the API.
 4. Choose the **type**. A choice field asks for its options (one per line), a link field for the kind of
@@ -40,8 +41,8 @@ the [REST API](../developers/rest-api.md).
 <img src="/img/crm/custom-fields.png" alt="The Custom fields screen in the WordPress CRM: a list of contact fields and the form to edit a choice field" width="1920" />
 
 The new field appears straight away on every record of that type, in the segment builder and in the import
-screen. A field's type cannot change once it exists, so its stored values always match it; to change the
-type, add a new field. Deleting a field also deletes the values stored in it.
+screen. A field's key and type cannot change once it exists, so its stored values always match it; to change
+either, add a new field. Deleting a field also deletes the values stored in it.
 
 Some fields are **managed by another extension**: for example, the Membership extension keeps a member's plan
 and renewal date up to date. Those show on the record but are read-only, because the extension owns them.
@@ -52,4 +53,5 @@ and renewal date up to date. Those show on the record but are read-only, because
 Yes. Every contact field appears in the segment builder with operators that suit its type.
 
 **Can I import custom field values from a spreadsheet?**
-Yes. The import screen offers every custom field as a column to map to.
+Yes, for contacts. The import screen offers every contact custom field as a column to map to. A multiple-choice
+value can list its choices separated by `|`, `,` or `;`, and a yes / no field accepts `1`, `yes`, `true`, `y` or `x`.

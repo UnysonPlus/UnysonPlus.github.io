@@ -17,7 +17,7 @@ Companies is a module: switch it on under [CRM → Modules](../workspace/setting
 
 ## Add a company
 
-- **New → Company** in the top bar, or **Add company** on **CRM → Companies**.
+- **New → Company** in the top bar, or **New company** on **CRM → Companies**.
 - Or from a contact's page: in **Companies**, pick an existing company or type a new name and click **Link**.
 
 A company has a name (required), website and domain, phone, email, industry, size, address, an owner and any
@@ -32,15 +32,16 @@ A company has a name (required), website and domain, phone, email, industry, siz
   - When the company has an address, a small Google map of it shows under the details. Its **Open in Maps**
     button opens the place in Google Maps. The map loads only when you scroll to it.
 - **Timeline**: notes and everything that happened with the company, including its deals.
-- **People**: everyone linked to it. **Add a person** creates a contact already linked to the company, or
-  link an existing contact by email.
+- **People**: everyone linked to it. **Add a person** in the header creates a contact already linked to the
+  company; or type the email of an existing contact under People and click **Link**.
 - **Deals**, **Tasks** and **Files**, like a contact's page.
 - **Email** in the header writes to one of its people. See [One-to-one email](../sales/email-and-replies.md).
 
 ## Frequently asked questions
 
 **Can a contact belong to more than one company?**
-Yes. Link as many as you need; the first is their main company, shown in lists and on their page.
+Yes. Link as many as you need; the first is their main company, shown in lists and on their page. Unlink the
+main one (the cross next to it) and another linked company becomes the main one.
 
 **What happens to the people when I delete a company?**
 They stay. Moving a company to the bin hides it; its people keep their records, and deals keep their history.

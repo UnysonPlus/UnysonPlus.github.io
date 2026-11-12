@@ -25,7 +25,8 @@ Click **Email** in the header of a contact, company or deal.
 How it is sent:
 
 - Through your site's mail set-up (the Unyson+ Mailer extension, or any SMTP plugin), so it comes from your
-  domain.
+  domain. If **CRM → Settings → Sending** has a default sender for transactional email, its From address and
+  email service are used instead. See [Senders and email services](../email-marketing/senders-and-services.md).
 - Your name is shown as the sender ("Alex at Your Business") and **replies come back to your own address**.
 - It is a personal email, not marketing: no unsubscribe footer and no tracking, and it reaches people who
   unsubscribed from your lists.
@@ -54,8 +55,9 @@ Keep the address private: anyone who has it can add email to the timeline. **Mak
 
 ### 2. A mailbox the CRM checks (IMAP)
 
-Connect a mailbox that receives replies, such as a shared sales address. Enter the server, port, security,
-user name and password, then **Test connection and save**. Typical settings:
+Connect a mailbox that receives replies, such as a shared sales address. Tick **Check this mailbox**, enter the
+server, port, security (SSL/TLS, STARTTLS or none), user name, password and folder (INBOX unless you change it),
+then **Test connection and save**. A failed test saves nothing. Typical settings:
 
 | Provider | Server | Port | Security |
 | --- | --- | --- | --- |
@@ -73,9 +75,14 @@ encrypted. **Check now** runs a check immediately and shows what it found.
   email written from that deal.
 - **From someone on your team** (your Bcc or a forward): logged as **Email sent** on each contact it went to.
 - **From someone unknown**: skipped, unless you tick **Add people who are not contacts yet as new contacts**.
+- **Bounce and spam-complaint reports** about campaign emails (Email marketing module) mark the contact as
+  bounced or complained.
 - Each message is handled once, even if it arrives both ways.
+- With the **Support cases** module on, a reply to a case email lands on that case, and other new email from a
+  contact can open a case. See [Support cases](../workspace/support-cases.md).
 
-A reply also tells future automations that the person answered, so a follow-up sequence can stop.
+A reply also fires the **Replied by email** automation trigger, so a follow-up sequence can stop or branch. See
+[Automations](../email-marketing/automations.md).
 
 ## Frequently asked questions
 

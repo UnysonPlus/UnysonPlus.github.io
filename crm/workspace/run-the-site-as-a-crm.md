@@ -34,7 +34,7 @@ The section then shows **On**. Change the two options and click **Save**, or cli
 everything back: every role opens to WordPress again and the website is public. Your CRM data is not touched either
 way.
 
-Only administrators can change CRM mode. Under the hood it is the **workspaces** feature described on the rest of
+Only administrators can change CRM mode, and it needs Unyson+ 3.0.55 or later. Under the hood it is the **workspaces** feature described on the rest of
 this page, so everything below still applies, and you can fine-tune it there.
 
 ## No public website
@@ -58,8 +58,9 @@ You can also switch it on or off without CRM mode: **Unyson+ → Admin Menu → 
 
 ## Workspaces in full
 
-Go to **Unyson+ → Admin Menu**. It has two tabs: **Menus** arranges each role's menu, and **Roles** sets what each
-role opens to.
+Go to **Unyson+ → Admin Menu** (administrators). It has two tabs: **Menus** arranges each role's menu, and
+**Roles** sets what each role opens to, which roles are kept out of wp-admin, and whether the site has a public
+website.
 
 ## The quick way
 
@@ -89,10 +90,11 @@ People in a role that opens to the CRM:
 - land in the CRM when they sign in, and when they open Dashboard;
 - see only the CRM and their profile in the WordPress menu, plus whatever you bring back for the role
   under **Menus** (below);
-- get a trimmed admin bar (no WordPress logo, comments, "New" or updates);
+- get a trimmed admin bar (no WordPress logo, comments, "New", updates or Customise);
 - see CRM screens without the WordPress menu until they choose **Show the WordPress menu**.
 
-A sign-in that was heading to a particular page (a link someone followed) still goes there.
+A sign-in that was heading to a particular page (a link someone followed) still goes there. A role that is set to
+the CRM but has no access to it (it lacks the CRM's capability) keeps WordPress, and the table says so in red.
 
 ### Administrators can always switch back
 
@@ -131,6 +133,16 @@ A hidden menu keeps people's focus; it does not lock anything. A hidden top-leve
 address is sent back, but its sub-pages can still be opened by anyone whose role allows them. What someone may do is set by their role, which is why the CRM's own
 [team roles](./team-roles.md) are the right roles for a team: a Sales Rep can only work the CRM records
 they own, whatever menus are shown.
+
+## Keep a role out of wp-admin
+
+The **Roles** table has a **Members** column. Tick **Keep out of WordPress** for a role whose people should never
+see wp-admin, such as customers or members who only use the website. Signing in, opening the Dashboard or any admin
+address takes them to the page chosen under **Members → Send members to** (their member account page with the
+Membership extension, otherwise the home page, or any page you pick), and the site shows them no WordPress toolbar.
+
+A role that runs the site (administrators) shows **Runs the site** instead of the box, and a role that opens to an
+app such as the CRM is never kept out. Click **Save roles** to keep the change.
 
 ## Membership too
 

@@ -8,7 +8,8 @@ keywords: [wordpress crm rest api, crm api wordpress, contacts api, deals api, w
 
 # REST API
 
-Everything in the CRM can be read and changed over WordPress's REST API, under the namespace **`fw-crm/v1`**
+Contacts, companies, deals, tasks and most other CRM records can be read and changed over WordPress's REST
+API, under the namespace **`fw-crm/v1`**
 (for example `https://example.com/wp-json/fw-crm/v1/contacts`).
 
 ## Authentication and permissions
@@ -45,7 +46,8 @@ The API follows the same rules as the screens:
 | `GET /contacts/{id}/files` · `POST` · `DELETE /contacts/{id}/files/{aid}` | Files: post `{ attachment_id }` or a multipart `file` |
 
 `POST /subscribers` (`{ email, name, list, tags }`) is the way to **subscribe** someone, recording their
-consent; creating or updating a contact never changes their email status.
+consent; creating or updating a contact never changes their email status. `GET /subscribers` lists them
+(`status`, `list`, `search`, paged).
 
 ## Companies
 
@@ -62,7 +64,7 @@ consent; creating or updating a contact never changes their email status.
 | `GET /segments/{id}/contacts` | The contacts in a segment |
 | `POST /segments/preview` | `{ rules }` → `{ count, describe }` |
 | `GET /segments/fields` | What rules can use |
-| `GET /audit` | The audit log (managers) |
+| `GET /audit` | The audit log (managers): `actor`, `object_type`, `object_id`, `action`, paged |
 
 ## Deals and pipelines
 
@@ -101,8 +103,8 @@ curl -X POST https://example.com/wp-json/fw-crm/v1/deals/42/move \
 | `GET|PATCH|DELETE /tasks/{id}` | One task |
 | `POST /tasks/{id}/complete` · `POST /tasks/{id}/reopen` | Complete with `{ outcome, duration }`, or reopen |
 | `GET /task-types` | to-do, call, meeting, email |
-| `PATCH|DELETE /notes/{id}` | Edit or delete a note (its author or a manager) |
-| `GET /calendar` | `from`, `to` (up to 62 days), `owner` → events by day |
+| `PATCH|DELETE /notes/{id}` | Edit `{ note }` or delete a note (its author or a manager) |
+| `GET /calendar` | `from`, `to` (`YYYY-MM-DD`, up to 62 days), `owner` (managers: an id or `all`) → events by day |
 
 ## Webhooks
 
@@ -111,10 +113,13 @@ pushes events out as they happen; the routes above are for reading and changing 
 
 ## Modules and routes
 
-A route that belongs to a module exists only while that module is on: `/deals`, `/pipelines`, `/products` and
-`/reports` (Sales pipeline), `/calendar` (Calendar), `/contacts/{id}/email` (Email conversations), `/audit`
-(Audit log) and `/webhooks` (Webhooks). A switched-off module's routes answer `404 rest_no_route`. Contacts,
-companies, fields, segments, tasks, notes and files are always there.
+A route that belongs to a module exists only while that module is on: `/deals`, `/pipelines`, `/products`,
+`/lost-reasons` and `/reports` (Sales pipeline), `/calendar` (Calendar), `/contacts/{id}/email` (Email
+conversations), `/inbound/{token}` (Email conversations or Email marketing), `/mail-services/{service}/events`
+(Email marketing or Email conversations), `/activity` (Lead scoring and site activity), `/audit` (Audit log)
+and `/webhooks` (Webhooks). A switched-off module's routes answer `404 rest_no_route`. Contacts, companies,
+fields, stages, segments, subscribers, tasks, notes and files are always there. Support cases, automations and
+lead scoring rules have no REST routes yet: use their screens, or their PHP classes ([PHP API and hooks](./php-api-and-hooks.md)).
 
 ## The inbound email address
 
@@ -123,3 +128,13 @@ it, either a raw message (in `mime`, `body-mime`, `email` or `raw`, or as the bo
 `message/rfc822`) or parsed fields (`from`/`sender`, `to`/`recipient`, `subject`, `text`/`body-plain`/
 `stripped-text`, `html`, `Message-Id`, `In-Reply-To`). It answers `200` with what it did (`received`,
 `sent`, `unknown`, `duplicate`). See [Email and replies](../sales/email-and-replies.md).
+
+## Other public routes
+
+Like the inbound address, these routes do not use WordPress logins: a secret in the address or a signed cookie
+is the credential.
+
+| Route | Does |
+| --- | --- |
+| `POST /mail-services/{service}/events?token=…` | An email service posts its bounce, complaint and unsubscribe events here. The full address, token included, is shown with the service's settings. Answers `{ ok, handled }` |
+| `POST /activity` | Site activity (Lead scoring module): the visitor's browser reports a page view (`url`, `title`) or an event (`event`, `value`, `url`). Only counted for a known contact carrying the CRM's signed cookie, for an address on this site, and when site activity is allowed. Answers `{ ok }` |

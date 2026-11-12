@@ -53,8 +53,9 @@ time.
 | `contact.subscribed` | A contact subscribes to email (including confirming double opt-in) | The contact |
 | `contact.unsubscribed` | A contact unsubscribes | The contact |
 | `form.submitted` | A contact or booking form with **Add the sender to the CRM** is sent ([forms](../contacts/forms-and-signups.md)) | `contact`, `new_contact`, `form_id`, `form_title`, `entry_id`, `answers` (each `id`, `label`, `type`, `value`) |
-| `task.created` / `task.completed` | A task, call or meeting is added / done | The task (`completed` adds `outcome`) |
-| `company.created` / `.updated` / `.deleted` | Companies change (Companies module) | The company |
+| `task.created` / `task.completed` | A task, call or meeting is added / done | `created`: the task. `completed`: `task`, `outcome` |
+| `company.created` / `.updated` | A company is added / changed (Companies module) | The company: `id`, `name`, `domain`, `website`, `phone`, `email`, `industry`, `size`, `city`, `region`, `country`, `owner_id`, `created_at`, `fields` |
+| `company.deleted` | A company is deleted for good | `id`, `name` |
 | `deal.created` / `.updated` | A deal is added / changed (Sales pipeline module) | The deal (`updated` adds `changed`) |
 | `deal.stage_changed` | A deal moves stage | `deal`, `from_stage_id`, `to_stage_id` |
 | `deal.won` / `deal.lost` | A deal is closed | The deal (`lost` adds `reason`) |

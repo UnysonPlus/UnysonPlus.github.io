@@ -25,11 +25,16 @@ On any contact, company or deal page, open **Tasks → Add a task**:
 
 1. Choose the **type** and the **due** date and time.
 2. Say **what** it is, such as "Call about the quote".
-3. For a call or meeting, set **how long** it should take; for a meeting, **where** and **with whom** (the
-   contact, a company's people or a deal's contacts).
+3. For a call or meeting, set **how long** it should take, and for a meeting **where** (an address or a video
+   link). On a company or deal, tick **with whom** (the company's people or the deal's contacts).
 4. Managers can assign it to someone else with **For**.
 
-You can also add a task from the [calendar](./calendar.md) by clicking + on a day.
+The **New task** box on **CRM → Tasks** adds a task that is not on any record, and you can add one from the
+[calendar](./calendar.md) by clicking + on a day.
+
+Tasks can also be made for you: a contact form can create a task, call or meeting for each submission (see
+[Forms and signups](../contacts/forms-and-signups.md)), and an automation can **Create a task** or start when a
+**Task completed** (see [Automations](../email-marketing/automations.md)).
 
 ## Reminders
 

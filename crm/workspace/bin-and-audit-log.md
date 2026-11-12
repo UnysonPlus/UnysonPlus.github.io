@@ -19,8 +19,9 @@ email audiences, and comes back exactly as it was if restored.
 <img src="/img/crm/bin.png" alt="The CRM bin with deleted contacts, companies and deals to restore or delete for good" width="1920" />
 
 - **CRM → Bin** lists what is in the bin. **Restore** puts a record back; **Delete for good** removes it with
-  its timeline, tasks and field values.
-- Records are deleted for good automatically after **30 days** in the bin.
+  its timeline, tasks and field values. **Empty the bin** deletes everything in it for good at once.
+- Records are deleted for good automatically after **30 days** in the bin (developers can change the number
+  with the `unysonplus_crm_bin_days` filter; 0 keeps them until the bin is emptied by hand).
 - A deal whose contact or company is deleted for good stays, without the link.
 
 The bin is for CRM managers.
@@ -34,5 +35,6 @@ and who changed settings.
 
 <img src="/img/crm/audit-log.png" alt="The CRM audit log listing who changed what and when" width="1920" />
 
-Open **CRM → Audit log** (CRM managers) and filter by person, record type or action. Entries are kept for a
-year.
+Open **CRM → Audit log** (CRM managers) and filter by person or kind of record. Changes made in the
+background, such as by an automation, are recorded as "the system". Entries are kept for a year (filter
+`unysonplus_crm_audit_days`; 0 keeps everything).

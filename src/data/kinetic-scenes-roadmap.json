@@ -1387,11 +1387,17 @@
           "title": "Watch a video",
           "detail": "A video_watch tool for agents, with a frame budget, a focus range and frames pinned to cues.",
           "status": "planned"
+        },
+        {
+          "id": "p24-scene-links",
+          "title": "Scene links: hand over a video to change",
+          "detail": "?scene=<address> opens a copy of a scene published on a unysonplus.com site, with its media read next to the scene file, so whoever received a video can change the words or photos and export their own. Code clips are removed, other sites are refused, and Chrome's shipped HTML-in-Canvas now exports the video with nothing installed, pictures from other sites included.",
+          "status": "done"
         }
       ]
     }
   ],
-  "extensionVersion": "0.1.38",
+  "extensionVersion": "0.1.39",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

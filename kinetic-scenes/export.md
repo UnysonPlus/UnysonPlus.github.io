@@ -31,6 +31,45 @@ already published.
 their own work comes back with Undo. Nothing is uploaded and no account is needed. Scenes with uploaded images make long
 links (image addresses keep them short); footage can't travel in a link.
 
+## Scene links (open a scene from the web)
+
+A **scene link** opens a scene that is published on the web, instead of carrying it inside the link:
+
+```
+https://kinetic-scenes.unysonplus.com/?scene=https://share.unysonplus.com/<name>/scene.json
+```
+
+It is how you hand someone a video **they can change themselves**: a café you made a reel for clicks the link, changes
+the opening hours or a photo, and exports their own copy. Use it when a share link would be too long (scenes with many
+pictures, or footage) or when the scene should stay on your own site.
+
+**What the person sees.** The Studio opens straight on the scene (no start screen) with a note: *"Your copy of
+"<title>". Click any words or picture to change them, then File › Export… to save your video. Nothing you change here
+affects the original."* The `?scene=` part leaves the address once it is read, so reloading keeps their changes. In
+Chrome they can export the video with nothing installed (see [Video](#video)); in other browsers Export asks for the
+AI Dev Kit.
+
+**How to publish one.** Put the project's `scene.json` and its `media/` folder in one folder on your site, as they are
+in the workspace (media paths like `media/p02.jpg` are read next to the scene file). Then:
+
+- **Only `unysonplus.com` addresses open** (`https://` on `unysonplus.com` or a subdomain such as `share.unysonplus.com`).
+  Any other address is refused with a note, so nobody can show their own content under the Studio's name.
+- **The folder must allow the Studio to read it** (CORS). On an Apache or LiteSpeed host, add to the folder's `.htaccess`:
+
+  ```apache
+  <IfModule mod_headers.c>
+    <FilesMatch "\.(json|jpe?g|png|webp|gif|svg|mp3|wav|m4a|mp4|webm)$">
+      Header set Access-Control-Allow-Origin "https://kinetic-scenes.unysonplus.com"
+      Header merge Vary Origin
+    </FilesMatch>
+  </IfModule>
+  ```
+- **Custom code clips are removed** on opening, as with a share link: code is the one part of a scene that could act on
+  the computer that opens it.
+- The original is never changed: the person works on their own copy, in their own browser.
+
+If the files are gone, the Studio says *"The shared scene could not be opened: it is no longer online."*
+
 ## The Kinetic Scene element in WordPress
 
 The Unyson+ page builder has a **Kinetic Scene** element (in the Animation Engine extension) that plays a scene inside a
@@ -56,8 +95,8 @@ however slow the machine.
 **With the AI Dev Kit** (the default): the kit on your computer renders it in a headless browser and encodes it with
 ffmpeg, mixed to -14 LUFS. If [FFmpeg](/kinetic-scenes/ffmpeg) is missing, the Export panel says so and the kit can install it with one click.
 
-**Without the kit:** where the browser can draw part of a page into a picture (HTML-in-Canvas, in Chrome behind an
-experimental setting today and on by default once it ships), Export offers **Render in this browser**: the same exact,
+**Without the kit:** where the browser can draw part of a page into a picture (HTML-in-Canvas, on by default in Chrome
+157 and later), Export offers **Render in this browser**: the same exact,
 frame-by-frame MP4 with its sound, rendered and encoded by the browser itself (H.264 and AAC), with nothing installed.
 See-through and ProRes exports still need the kit. A scene is at most 10 minutes; for a longer video render chapters
 and join them (see [Long videos](./long-videos.md)). When the scene has a voice-over, the video section also offers the
@@ -107,9 +146,12 @@ a GeForce GTX 1660 Ti):
 | Time | 46 s (the graphics card draws, NVENC encodes, 4 tabs at once) | 31 s |
 | The picture | the reference | the same frames: 2D layers identical, 3D layers within a hair (0.99 similarity overall) |
 | File size | 21 MB | 45 MB (a higher bitrate) |
-| Needs | the kit and ffmpeg | Chrome with HTML-in-Canvas switched on (not on by default yet) |
+| Needs | the kit and ffmpeg | Chrome 157 or later (HTML-in-Canvas is on by default) |
 
 Both seek every frame exactly rather than recording the scene as it plays, so neither drops or repeats a frame. The kit
-stays the default: it works in any browser, makes smaller files and does see-through and ProRes. When HTML-in-Canvas is
-on by default in Chrome, the browser export becomes the quick choice for a plain MP4. (Before Studio 0.0.97, 3D layers
-came out in the wrong place in a browser export.)
+stays the default: it works in any browser, makes smaller files and does see-through and ProRes; without it, Chrome's
+own export is the quick choice for a plain MP4. Pictures and footage from other sites (stock photos, a scene link's
+media) are fetched first and drawn from a copy, because the browser leaves another site's picture out of a drawn page;
+one whose site does not allow it comes out blank. (Before Studio 0.0.97, 3D layers came out in the wrong place in a
+browser export. Before Studio 0.1.39, Chrome's shipped version of HTML-in-Canvas, which marks the canvas
+`content="drawable"` rather than `layoutsubtree`, was not recognised, and pictures from other sites came out blank.)

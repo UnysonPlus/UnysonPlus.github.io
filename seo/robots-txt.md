@@ -86,3 +86,8 @@ you when:
 ## Moving it to another site
 
 The rules travel with the rest of the SEO settings in [Moving settings](./settings-transfer.md).
+
+## Filtered and sorted pages
+
+The same tab has a box for shop filter and sort addresses (`?orderby=`, `?filter_…`): keep them out of search
+results, and optionally out of crawling. See [Filtered and sorted pages](./filtered-pages.md).

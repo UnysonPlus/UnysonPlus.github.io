@@ -73,3 +73,8 @@ site's administration address, fill in **Send to**.
 - A page is matched to its post by its address. A Search Console address that doesn't match a post on
   the site (an old address, a different domain) shows its address instead, without an editor link.
 - One alert per page: the most urgent wins.
+
+## Server errors
+
+Pages that start answering with server errors come first in the list, from the hourly check in the
+**Server errors** box on the same tab. See [Server errors](./server-errors.md).

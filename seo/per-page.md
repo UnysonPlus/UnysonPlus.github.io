@@ -27,3 +27,6 @@ optional — leave them alone and the card is built from the fields above. See
 **Advanced** holds the canonical URL and the indexing controls. Those sit behind a
 *use the settings for this content type* switch, so the common case is one control rather
 than eight.
+
+**Advanced** also holds **Language versions**, for a page that exists in other languages as separate pages or
+sites: see [Language versions (hreflang)](./language-versions.md).

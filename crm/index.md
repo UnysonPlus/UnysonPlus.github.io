@@ -64,7 +64,7 @@ bring in your contacts.
 
 Open **Unyson+ → CRM** and the CRM takes over the screen like an app of its own:
 
-- **The CRM sidebar** lists every area: Home, Contacts, Companies, Deals, Cases, Tasks, Calendar, Campaigns,
+- **The CRM sidebar** lists every area: Home, Companies, Contacts, Deals, Cases, Tasks, Calendar, Campaigns,
   Lists & segments, Lead scoring, Automations, Reports, Import / Export, Custom fields, Bin, Audit log,
   Webhooks, Modules and Settings. Areas that belong to a module you switched off are hidden.
 - **The WordPress menu folds to its icons** while you are in the CRM and comes back when you leave.

@@ -104,10 +104,14 @@ Zapier, Make or n8n.
    really came from your site.
 5. Click **Send a test**. The webhook's **Last answer** should show `200`.
 
-<img src="/img/membership/webhooks.png" alt="The Webhooks screen: the add form with every event, and a webhook with its last answer, waiting count, failures in a row and secret" width="1240" />
+<img src="/img/membership/webhooks.png" alt="The Webhooks screen: the add form with every event, and a webhook with its last answer, waiting count, failures in a row and secret" width="1400" />
 
 On each webhook you can change the events (**Save events**), **Switch off** (nothing is kept for it while
 it is off), make a **New secret** (the old one stops working at once) or **Delete** it.
+
+A webhook keeps the list of events that existed when you saved it (nothing ticked means every event known at
+that moment). When a module that sends events of its own is switched on later, tick its events on the webhook
+and click **Save events**.
 
 ### Events
 
@@ -275,7 +279,7 @@ add_action( 'unysonplus_membership_changed', function ( $event, array $membershi
 | `unysonplus_membership_payment_refunded` | `$payment` | A payment was refunded. |
 | `unysonplus_membership_checkout_completed` | `$quote, $user_id, $membership_id, $payment_id` | A checkout finished. |
 | `unysonplus_membership_registered` | `$user_id, $plan_id, $context` | Someone signed up through a form. |
-| `unysonplus_membership_renewal_upcoming` | `$membership, $context` | A renewal is coming up (Retention module). |
+| `unysonplus_membership_renewal_upcoming` | `$membership, $context` | A card renewal is coming up: Stripe announces it a few days ahead (Payments module). `$context` holds `date`, `amount`, `currency` and the card's expiry and last four digits. The Retention module uses it for its reminders. |
 | `unysonplus_membership_access_denied` | `$denied, $post_id` | A visitor was turned away from a page. |
 | `unysonplus_membership_course_enrolled`, `unysonplus_membership_course_completed` | `$user_id, $course_id` | A student started or finished a course. |
 | `unysonplus_membership_lesson_completed` | `$user_id, $lesson_id, $course_id` | A lesson was completed. |
@@ -286,7 +290,7 @@ add_action( 'unysonplus_membership_changed', function ( $event, array $membershi
 
 | Filter | Use it to |
 | --- | --- |
-| `unysonplus_membership_capability` | Let a role other than administrators manage Membership (default `manage_options`). |
+| `unysonplus_membership_capability` | Let a role other than administrators manage Membership (default `manage_options`). A role that has it can be set to open straight to Membership instead of the WordPress dashboard, under **Unyson+ → Admin Menu → Roles** (see [Keep members out of wp-admin](../member-area/login-and-account.md#keep-members-out-of-wp-admin-completely) for the one-click set-up). |
 | `unysonplus_membership_rule_passes` | Open a rule for people your own logic decides (`$passes, $rule, $persona`). |
 | `unysonplus_membership_denied_html` | Change what people without access see. |
 | `unysonplus_membership_email_vars` | Add placeholders to member emails (`$vars, $key, $user`). |
@@ -327,7 +331,7 @@ options, emails, webhook events, its own database tables.
 | `unysonplus_membership_rule_who_fields` + `unysonplus_membership_rule_who_extra` + `unysonplus_membership_rule_passes` | A new "who can see it" condition on access rules. |
 | `unysonplus_membership_account_sections` (action, `$user`) | A section on the member's account page. |
 | `unysonplus_membership_email_catalogue` | Emails your module sends, editable on **Membership → Emails**. |
-| `unysonplus_membership_cron_hooks` | Your scheduled job, so the Health card watches it and Remove all data clears it. |
+| `unysonplus_membership_cron_hooks` | Your scheduled job, so **Remove all data** clears it. (The **Scheduled jobs** card on Home lists only Membership's own jobs.) |
 | `FW_Membership_Installer::module_tables( $module, $version, $schema_callback, $tables )` | Database tables, made once per version and removed by **Remove all data**. |
 | `FW_Membership_Webhooks::emit( $event, $data )` + `unysonplus_membership_webhook_events` | Your own webhook events. |
 
@@ -337,7 +341,7 @@ This small plugin adds a **Welcome calls** module: every new member goes on a li
 list has its own screen with a **Called** button, each member's page says whether they have been called,
 and other apps hear about it through a webhook event.
 
-<img src="/img/membership/addon-module.png" alt="The Welcome calls screen added by the example module, listing a new member to call with a Called button" width="1240" />
+<img src="/img/membership/addon-module.png" alt="The Welcome calls screen added by the example module, listing a new member to call with a Called button" width="1400" />
 
 `wp-content/plugins/membership-welcome-calls/membership-welcome-calls.php`:
 

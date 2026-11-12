@@ -28,7 +28,7 @@ under the **Membership** tab.
    the address of your sign-up page (for example `/join/`). Publish.
 2. **Create an account page.** Add a page called "My account" and drop the **Member Account** element
    onto it. Set **"No membership yet" link** to your pricing or sign-up page. Publish.
-3. **Tell Membership which pages they are.** Open **Unyson+ → Membership → Settings** and, under
+3. **Tell Membership which pages they are.** Open **Membership → Settings** and, under
    **Member pages**, choose "My account" as the **Account page** and "Log in" as the **Login page**. If you
    have a plans page with the Pricing Plans element, choose it as the **Join page** too. Click
    **Save settings**. See [Settings](./settings.md#member-pages).
@@ -55,6 +55,14 @@ Visitors who are logged out see the form: **Email or username**, **Password**, *
 The form posts to WordPress's own login, so everything that protects WordPress logins (the Security
 extension's login throttling and two-factor step, for example) applies here too.
 
+**It matches your other forms.** When the Forms extension is on, the login form wears your site's default
+**Form Style** (the first style in **Theme Settings → Components → Form Styles**), so its fields look like the fields of
+your contact forms; edit that style and the login form follows. Without the Forms extension, or with no
+Form Style at all, it keeps Membership's own look. The **Log In** button always uses your button classes
+from [Settings → Look](./settings.md#look). The same applies to the login form the account page shows to
+logged-out visitors. (Developers: the `unysonplus_membership_form_style` filter picks another style by its
+`formp-…` class, or `''` for Membership's own look.)
+
 ### Every option of Member Login
 
 **Content tab**
@@ -76,7 +84,8 @@ A few details about **After logging in**:
 - If the login page was reached with a destination in its address (`?redirect_to=…`, which Membership's
   "log in to read this" prompts add), the member goes back there, to the page they were trying to read.
 - Staff (anyone who can edit posts) keep WordPress's normal behaviour and land in wp-admin.
-- Members never land in wp-admin.
+- Members never land on the WordPress Dashboard (unless you have not chosen an account page, when
+  "the account page" is their WordPress profile).
 
 ### Keep members out of wp-admin completely
 
@@ -84,10 +93,11 @@ Landing elsewhere after login is not the same as never seeing WordPress: a membe
 `/wp-admin/` or follow a "Dashboard" link, and the site shows them the WordPress toolbar. To close that,
 go to **Unyson+ → Admin Menu → Roles**:
 
-- the **Run a members' site** set-up does it in one click: Subscribers (the role new members get) are kept
-  out of WordPress, and administrators get Membership as a menu item of its own;
-- or tick **Keep out of WordPress** for each role your members have, and choose **Send members to** (by
-  default their member account page).
+- under **Quick set-up**, click **Apply** on **Run a members' site**: Subscribers (the role new members
+  get) are kept out of WordPress, and administrators get Membership as a menu item of its own;
+- or, in the **Roles** table, tick **Keep out of WordPress** in the **Members** column for each role your
+  members have, then under **Members** choose **Send members to** (by default **Their member account
+  page**) and click **Save roles**.
 
 People in those roles then never reach wp-admin: signing in, the Dashboard and any admin address take
 them to that page, and the site shows them no WordPress toolbar. Forms and other features that post to
@@ -96,6 +106,11 @@ such as the CRM is never kept out.
 
 Members still change their name, email and password on the account page, so make sure you have one (see
 above); without it they are sent to the home page.
+
+The same screen works the other way round for your staff: in the **Opens to** column, choose **Membership**
+for a role (for example the people who look after members) and that role lands on the Membership screens
+after logging in and from the Dashboard, instead of on the WordPress dashboard. The role needs access to
+Membership for this to work; administrators set to it can switch back to WordPress from the admin bar.
 
 ### Logging in without a password
 
@@ -168,13 +183,13 @@ new address must not belong to another account.
 
 ## Redirects after login and logout, per plan
 
-Each plan can send its members somewhere of their own. Open **Unyson+ → Membership → Plans**, edit a plan
+Each plan can send its members somewhere of their own. Open **Membership → Plans**, edit a plan
 and look at its settings:
 
 - **After logging in, go to**: an address. Empty means the account page.
 - **After logging out, go to**: an address. Empty means where WordPress normally sends them.
 
-<img src="/img/membership/plan-edit-settings.png" alt="The settings of a plan, including the redirects after logging in and out" width="425" />
+<img src="/img/membership/plan-edit-settings.png" alt="The settings of a plan, including the redirects after logging in and out" width="478" />
 
 When someone holds several plans, the plan with the highest **Priority** number decides. In the example,
 give **Pro** a higher priority than **Member** and point its login redirect at a "Pro lounge" page. These

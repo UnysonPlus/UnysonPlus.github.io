@@ -24,7 +24,7 @@ club" page, while **Member** and **Pro** are sold through the pricing table and 
 
 - The **Forms** extension switched on (**Unyson+ → Extensions**). It provides the form builder, the
   **Contact form** element and the **Actions** tab this page uses.
-- At least one plan in **Unyson+ → Membership → Plans**, usually a free one. A form can also create an
+- At least one plan in **Membership → Plans**, usually a free one. A form can also create an
   account with no plan at all.
 - Sign-up forms are part of the Membership core, so no module needs switching on.
 
@@ -85,7 +85,9 @@ When the submission passes, Membership:
 
 1. Creates the WordPress account, with the site's default role (**Settings → General → New User Default
    Role** in WordPress). The username is the one typed in the Username field, or, when there is none or
-   it is taken, one made from the part of the email before the `@`.
+   it is taken, one made from the part of the email before the `@`. (That role is normally
+   **Subscriber**; to keep members of that role out of wp-admin, see
+   [Keep members out of wp-admin completely](./login-and-account.md#keep-members-out-of-wp-admin-completely).)
 2. Sets the password from the Password field. Without one, WordPress sends its own "set your password"
    email.
 3. Copies the first and last name and any matching profile fields.
@@ -137,7 +139,7 @@ If the link has expired, the page says "This link has expired". Until they confi
 "Please confirm your email address first: open the link in the email we sent you. It may be in your spam
 folder."
 
-**Helping someone who never got the email.** Open their page in **Unyson+ → Membership → Members**. A
+**Helping someone who never got the email.** Open their page in **Membership → Members**. A
 panel **Waiting for email confirmation** offers two buttons:
 
 - **Resend the confirmation email**: sends a fresh link; the old one stops working.
@@ -157,15 +159,15 @@ when both are on). While it waits:
 
 To approve someone:
 
-1. Open **Unyson+ → Membership → Members**. People waiting have the **Pending** status, so they
+1. Open **Membership → Members**. People waiting have the **Pending** status, so they
    appear under the **Pending** tab (the tab shows only while someone is pending).
 
-   <img src="/img/membership/members-list.png" alt="The Members list in the Membership app with its status tabs, the All plans filter, the name or email search, and each membership's plan, status, dates and source" width="1240" />
+   <img src="/img/membership/members-list.png" alt="The Members list in the Membership app with its status tabs, the All plans filter, the name or email search, and each membership's plan, status, dates and source" width="1400" />
 
 2. Open the member. A panel **Waiting for your approval** explains their state.
 3. Click **Approve**. Their membership starts and they get the **Approved** email with a link to log in.
 
-<img src="/img/membership/member-page.png" alt="A member's page in the Membership app: memberships, history, log-ins, profile and the Add a plan form. A sign-up waiting for confirmation or approval shows its panel above the memberships" width="1240" />
+<img src="/img/membership/member-page.png" alt="A member's page in the Membership app: memberships, history, log-ins, profile and the Add a plan form. A sign-up waiting for confirmation or approval shows its panel above the memberships" width="1400" />
 
 There is no "reject" button. Someone you have not approved can never log in, so you can simply leave them
 waiting; to remove them for good, delete their account in WordPress's **Users** screen.

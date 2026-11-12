@@ -23,13 +23,13 @@ offer) and download them as a CSV file.
 
 ## Switch on the Coupons module
 
-1. Open **Unyson+ → Membership → Modules**.
+1. Open **Membership → Modules**.
 2. Switch on **Coupons** ("Percentage or fixed discounts for the first payment or for ever, with limits,
    expiry dates and bulk codes.") and click **Save modules**.
 
 Coupons is **off by default** and **needs the Payments module** ("Needs the Payments module."); its switch is
 greyed out until [Payments](./payments.md) is on. **Coupons** is always listed in the sidebar under
-**Selling**: while the module is off it carries an **Off** badge and opens a "Coupons is switched off" page
+**Selling**: while the module is off it carries a **Soon** badge and opens a "Coupons is switched off" page
 with an **Open Modules** button. Once on, the screen opens and the checkout gets a **Have a code?** field
 (the [Gift memberships](./gifts.md) module adds the same field, for gift codes).
 
@@ -38,7 +38,7 @@ with an **Open Modules** button. Once on, the screen opens and the checkout gets
 The Larkspur Garden Club wants 20% off the first three months of **Member** or **Pro** this spring, with the
 code **SPRING20**.
 
-1. Open **Unyson+ → Membership → Coupons** and click **Add coupon**.
+1. Open **Membership → Coupons** and click **Add coupon**.
 2. **Code**: `SPRING20`.
 3. **Note (only you see it)**: "Spring newsletter offer".
 4. **Discount**: `20`, and choose **% off**.
@@ -48,7 +48,7 @@ code **SPRING20**.
 8. **Works from** 1 March and **Works until** 31 May.
 9. Click **Save coupon**. The notice says "Coupon saved." and the coupon is on the list.
 
-<img src="/img/membership/coupon-edit.png" alt="Editing a coupon: code, discount, how long it applies, plans, limits and dates" width="1240" />
+<img src="/img/membership/coupon-edit.png" alt="Editing a coupon: code, discount, how long it applies, plans, limits and dates" width="1400" />
 
 Share it as a code ("Use SPRING20 at the checkout") or as a link (see [Coupon links](#coupon-links) below).
 
@@ -75,9 +75,9 @@ code counts too.
 
 ## The Coupons screen
 
-**Unyson+ → Membership → Coupons** lists your coupons, newest first, 50 to a page.
+**Membership → Coupons** lists your coupons, newest first, 50 to a page.
 
-<img src="/img/membership/coupons.png" alt="The Coupons screen with codes, discounts, plans, uses and expiry dates" width="1240" />
+<img src="/img/membership/coupons.png" alt="The Coupons screen with codes, discounts, plans, uses and expiry dates" width="1400" />
 
 - **Search codes**: searches codes and notes.
 - **Make many codes** and **Add coupon** (top right).

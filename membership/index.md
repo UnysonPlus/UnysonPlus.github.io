@@ -8,8 +8,9 @@ description: "The Unyson+ Membership extension: plans, one access engine for eve
 
 # Membership
 
-:::info Built, arriving with the next release
-Everything on this page is built and arrives with the next release: the Membership app, plans, members,
+:::info Released
+Everything on this page is released and in the current version of Membership (1.0.28, which needs the
+Unyson+ framework 3.0.49 or later): the Membership app, plans, members,
 access rules with the one access engine behind them, sign-up forms with email confirmation and approval, the
 login and account pages, member emails, profile fields, a REST API and AI Assistant tools; selling plans by
 card, PayPal or bank transfer, with coupons, tax, invoices, gifts and upgrades and downgrades members make
@@ -17,7 +18,8 @@ themselves; the connection to the [CRM](./crm.md), where members are contacts, p
 can use CRM tags, lists and segments; drip content, a metered paywall, protected downloads and selling single
 items; everything for keeping members; team memberships, a member directory and membership cards; the
 WooCommerce connection; reports; account security, importers, a scheduler check and command-line tools; and
-courses with progress, quizzes and certificates. The [roadmap](./roadmap.mdx) tracks each task against the
+courses with progress, quizzes and certificates; webhooks; and a Membership workspace that keeps members out
+of wp-admin. The [roadmap](./roadmap.mdx) tracks each task against the
 code. The design comes from a study of the leading membership plugins and platforms, summarised under
 [Research](./research.md).
 :::
@@ -55,18 +57,22 @@ The rest of this page is a quick overview of everything Membership does.
 
 ## Finding your way around
 
-Open **Unyson+ → Membership** and it takes over the screen like an app of its own, the same way the
-[CRM](/crm) does:
+Open **Membership** in the WordPress menu (it has its own top-level item) and it takes over the screen like an
+app of its own, in the same app frame as the [CRM](/crm) and the other Unyson+ apps:
 
 - **The Membership sidebar** lists every area: Home, Members, Plans and Access rules; Payments and Coupons;
-  Reports; Emails, Modules and Settings. **Payments**, **Coupons** and **Reports** carry an **Off** badge
-  while their module is switched off, and their page says what they do, with an **Open Modules** button; the
-  other modules add their own items when you switch them on.
+  Reports; Profile fields, Emails, Modules and Settings. **Payments**, **Coupons** and **Reports** carry a
+  **Soon** badge while their module is switched off, and their page says what they do, with an **Open
+  Modules** button; the other modules add their own items when you switch them on.
 - **The WordPress menu folds to its icons** while you are in Membership. **Hide the WordPress menu** at the
-  bottom of the sidebar removes it altogether (your choice is remembered), and **Back to WordPress** takes
-  you to the dashboard. With the CRM on, **Open the CRM** is there too.
+  bottom of the sidebar removes it altogether (your choice is remembered, and applies to every Unyson+ app),
+  and **Back to WordPress** takes you to the dashboard.
 - **The top bar** searches members by name or email (press <kbd>/</kbd> to jump to it) and has a **New**
-  menu for a member or a plan.
+  menu for a member, a plan or an access rule.
+- **A Membership workspace.** Under **Unyson+ → Admin Menu → Roles**, a role can open straight to Membership
+  instead of the WordPress dashboard, and the one-click **Run a members' site** set-up keeps members
+  (Subscribers) out of wp-admin, sending them to their account page instead. See
+  [Keep members out of wp-admin](./member-area/login-and-account.md#keep-members-out-of-wp-admin-completely).
 - **Home** shows members with access, active, cancelled and ended memberships, members by plan, recent
   changes and who is ending in the next two weeks. A fresh install shows the first three steps instead.
 - **A plan's page** holds its name, prices (several per plan, such as monthly and yearly), how long it
@@ -97,9 +103,12 @@ Open **Unyson+ → Membership** and it takes over the screen like an app of its 
   page, and they are emailed back.
 - **If something is wrong** (the email already has an account, the plan is full) the visitor sees the message
   on the form and nothing is sent or stored.
-- **Member Login** element: a login form in your site's style, with "forgot your password" and a sign-up link.
+- **Member Login** element: a login form that wears your site's default **Form Style** (from the Forms
+  extension), so it matches your other forms, with "forgot your password" and a sign-up link.
   Logging in goes through WordPress's own login, so the Security extension's login protection and two-factor
-  login always apply. Members land where their plan says, or on their account page, never in wp-admin.
+  login always apply. Members land where their plan says, or on their account page, never in wp-admin. To
+  keep them out of wp-admin altogether, use the **Run a members' site** set-up
+  ([how](./member-area/login-and-account.md#keep-members-out-of-wp-admin-completely)).
 - **Member Account** element: the member's details (changing the email needs their password), their
   memberships with their dates and **Cancel** (access continues to the end date; you can switch cancelling
   off), changing the password, and signing out of other devices.
@@ -175,7 +184,8 @@ Switch on **Payments** in Membership → Modules, then open **Membership → Pay
 
 ## Drip, free reads, downloads and single items
 
-Each of these is a module you switch on under **Membership → Modules**.
+The first three are modules you switch on under **Membership → Modules**; selling single items comes with the
+**Payments** module.
 
 - **Drip content.** On an access rule, **Opens after (days)** releases it that many days after the person
   joined, and **Opens on (date)** releases it on a date. Until then, members who would otherwise see it get
@@ -423,14 +433,13 @@ menus, so a simple members area stays as light as a simple members area should b
 
 | Module | Switch it on for |
 | --- | --- |
-| **Payments** | Selling plans with your own payment accounts: cards and wallets, PayPal, bank transfer; subscriptions billed by the payment service; a one-page checkout and a pricing table element; upgrades and downgrades with proration; receipts and invoices. No transaction fee from Unyson+ |
+| **Payments** | Selling plans with your own payment accounts: cards and wallets, PayPal, bank transfer; subscriptions billed by the payment service; a one-page checkout and a pricing table element; upgrades and downgrades with proration; receipts and invoices; selling one post, page or file without a plan (pay per item). No transaction fee from Unyson+ |
 | **Coupons** | Percentage or fixed discounts, first payment or forever, with limits, expiry and bulk codes |
 | **Tax** | Rates by country and region, EU VAT with number validation and reverse charge, or automatic tax by the payment service |
 | **CRM** | Turns on by itself when the CRM is active: members become contacts, plans mirror to tags, access rules use CRM conditions, membership events drive automations ([details](./crm.md)) |
 | **Drip** | Content that opens N days after joining, on a date, or in sequence, with an email when it opens |
 | **Metered paywall** | A few free articles per period, then a free registration wall or a subscription |
 | **Protected downloads** | Files served only through an access check, with limits and a log |
-| **Pay per item** | Selling one post, page or file without a plan |
 | **Retention** | Failed-payment recovery with retries and card-update links, pause instead of cancel, a cancellation survey with a save offer, reminders and win-back coupons |
 | **Gifts** | Buy a plan for someone else, redeemed by code or link |
 | **Groups** | Team and company plans: one buyer, N seats, invitations by email, link or domain, and a team page |
@@ -440,6 +449,7 @@ menus, so a simple members area stays as light as a simple members area should b
 | **Reports** | Monthly recurring revenue, churn, lifetime value, trial conversion, recovered payments, cohorts |
 | **Account security** | Limits on simultaneous sessions, one-click login links that are signed and single-use, passkeys, and a login and access log |
 | **Importers** | Members, plans and live subscriptions from a CSV file (such as an export from another membership plugin), or from a WordPress role or user field, keeping renewals running |
+| **Webhooks** | Signed messages to another app the moment members join, renew, cancel, pay or finish a course, sent in the background with retries (**Membership → Webhooks**) |
 | **Courses** | Courses with lessons in modules, progress and resume, quizzes that can gate the next lesson, and verifiable certificates, on the same access engine |
 
 ## How it fits with the rest of Unyson+

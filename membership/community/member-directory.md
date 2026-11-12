@@ -20,7 +20,7 @@ decide, for every profile field, whether it is shown to nobody, to members, or t
 
 Member directory is a module and is **off by default**.
 
-1. Go to **Unyson+ → Membership → Modules**.
+1. Go to **Membership → Modules**.
 2. Switch on **Member directory** ("A searchable directory and public profiles, with privacy for each
    field.").
 3. Click **Save modules**.
@@ -29,23 +29,23 @@ Member directory is a module and is **off by default**.
 
 ### Step 1: choose who can browse it and who is listed
 
-1. Go to **Unyson+ → Membership → Settings** and find the **Member directory** panel (see
+1. Go to **Membership → Settings** and find the **Member directory** panel (see
    [Settings](../member-area/settings.md#member-directory-member-directory-module)).
 2. Choose **Who can browse it**, **Who is listed** and, optionally, the **Plans listed**.
 3. Click **Save settings**.
 
-<img src="/img/membership/settings.png" alt="The Membership Settings screen; the Member directory panel (Who can browse it, Who is listed, Plans listed) is near the bottom" width="1240" />
+<img src="/img/membership/settings.png" alt="The Membership Settings screen; the Member directory panel (Who can browse it, Who is listed, Plans listed) is near the bottom" width="1400" />
 
 ### Step 2: decide what each profile field shows
 
 The directory shows details from your **profile fields**: the extra details you keep about members, such as
 "Town", "Favourite crop" or "Growing since".
 
-1. Go to **Unyson+ → Membership → Profile fields** (see [Profile fields](../member-area/profile-fields.md)).
+1. Go to **Membership → Profile fields** (see [Profile fields](../member-area/profile-fields.md)).
 2. For each field, set **In the directory:** to **Not shown**, **Members** or **Everyone**.
 3. Click **Save profile fields**.
 
-<img src="/img/membership/profile-fields.png" alt="The Profile fields screen with four fields (Garden size, Favourite thing to grow, Town, Phone), each with its type, key, options, Required, Members can edit it, In the directory and Only for settings" width="1240" />
+<img src="/img/membership/profile-fields.png" alt="The Profile fields screen with four fields (Garden size, Favourite thing to grow, Town, Phone), each with its type, key, options, Required, Members can edit it, In the directory and Only for settings" width="1400" />
 
 For the Garden Club: "Town" and "Favourite crop" are shown to **Members**, "Growing since" to **Everyone**,
 and "Phone" stays **Not shown**.
@@ -83,7 +83,7 @@ directory.
 | Choice | Who sees the field in the directory |
 |---|---|
 | **Not shown** | Nobody (the default for every field). |
-| **Members** | Visitors with a plan, and administrators. |
+| **Members** | Visitors with a plan, and the people who manage Membership (administrators, by default). |
 | **Everyone** | Anyone who can browse the directory. |
 
 The **name** and **profile picture** (the WordPress avatar) are shown for everyone who is listed. Nothing else

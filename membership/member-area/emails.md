@@ -18,7 +18,7 @@ that module is on.
 
 ## How to edit an email, step by step
 
-1. Open **Unyson+ → Membership → Emails** (in the Setup section of the sidebar).
+1. Open **Membership → Emails** (in the Setup section of the sidebar).
 2. Click an email's title to open it. Next to the title you see who receives it ("to the member" or "to
    you") and **Off** when it is switched off. **Welcome** is open when the screen loads.
 3. Read the line under the title: it says exactly when the email is sent.
@@ -27,7 +27,7 @@ that module is on.
 5. Click **Save emails** at the bottom of the screen.
 6. Click **Send me a test** under the email to see it in your own inbox.
 
-<img src="/img/membership/emails.png" alt="The Emails screen with the list of member emails and the Welcome email opened" width="1240" />
+<img src="/img/membership/emails.png" alt="The Emails screen with the list of member emails and the Welcome email opened" width="1400" />
 
 <img src="/img/membership/email-edit.png" alt="One email opened for editing: the Send this email box, the subject, the message and the Send me a test button" width="940" />
 

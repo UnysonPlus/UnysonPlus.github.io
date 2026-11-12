@@ -19,7 +19,7 @@ They work as a pair. Every **Join** button on the pricing table links to the che
 price already chosen, so the buyer goes straight from "I want this" to paying.
 
 Both elements are in the **Membership** tab of the page builder. They need the **Payments** module
-(**Unyson+ → Membership → Modules**, off by default). While it is off, both elements show administrators a
+(**Membership → Modules**, off by default). While it is off, both elements show administrators a
 note asking them to switch it on, and show visitors nothing. See [Payments](./payments.md) for setting up a
 way to pay.
 
@@ -27,7 +27,7 @@ way to pay.
 
 1. **Create the checkout page.** Add a new page, for example "Join". Open the page builder, add the
    **Membership Checkout** element (Membership tab), and publish the page.
-2. **Tell Membership which page it is.** Open **Unyson+ → Membership → Payments → Payment settings** and
+2. **Tell Membership which page it is.** Open **Membership → Payments → Payment settings** and
    choose the page under **Checkout page**. Save. Every button that sends people to buy something uses this
    page, so set it before anything else.
 3. **Create the plans page.** Add a page, for example "Plans", and add the **Pricing Plans** element.

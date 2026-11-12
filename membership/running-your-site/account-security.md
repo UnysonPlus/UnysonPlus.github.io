@@ -25,7 +25,7 @@ two sections to the account page and a panel to each [member's page](../basics/m
 
 ## Turn it on
 
-1. Go to **Unyson+ → Membership → Modules**, switch on **Account security** and click **Save modules**.
+1. Go to **Membership → Modules**, switch on **Account security** and click **Save modules**.
 2. Set a device limit on the plans that need one (below).
 3. Look at your login page: it now offers **Log in with a passkey** (in browsers that support passkeys) and
    **Email me a login link instead**.
@@ -36,7 +36,7 @@ two sections to the account page and a panel to each [member's page](../basics/m
 
 Set it per plan: **Membership → Plans → edit a plan → Options → Devices signed in at once**.
 
-<img src="/img/membership/plan-edit-settings.png" alt="The Options panel of a plan, with the devices field" width="425" />
+<img src="/img/membership/plan-edit-settings.png" alt="The Options panel of a plan, with the devices field" width="478" />
 
 | Field | What it does | Default | Tip |
 |---|---|---|---|
@@ -131,7 +131,7 @@ entries, newest first, with when it happened and the browser and system:
 | **Plan changed to** `{plan}` | Their plan changed. |
 | **Signed out by the device limit** | A session was ended by the plan's limit. |
 
-<img src="/img/membership/member-page.png" alt="A member's page in the Membership admin" width="1240" />
+<img src="/img/membership/member-page.png" alt="A member's page in the Membership admin" width="1400" />
 
 At the top: *"Used from `{n}` places in the last 30 days."* A "place" is a different internet connection
 (IP address) that logged in. More than three is highlighted with *"That is a lot: the account may be shared."*

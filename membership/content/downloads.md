@@ -21,7 +21,7 @@ monthly limit?
 
 Protected downloads is a module and is **off by default**.
 
-1. Go to **Unyson+ → Membership → Modules**.
+1. Go to **Membership → Modules**.
 2. Switch on **Protected downloads** ("Files served only to people with access, with download limits and a
    log.").
 3. Click **Save modules**.
@@ -33,7 +33,7 @@ A **Downloads** item appears in the Membership sidebar.
 Example: the Larkspur Garden Club offers a **Planting calendar (PDF)** to everyone on the **Member** plan
 (and so to **Pro**, which includes Member), at most 3 downloads a month each.
 
-1. Go to **Unyson+ → Membership → Downloads**.
+1. Go to **Membership → Downloads**.
 2. In **Add a protected file**, click **File** and choose the PDF from your computer.
 3. Type a **Title**: "Planting calendar (PDF)". This is what members see on the button.
 4. Set **Downloads per person per month** to `3`.
@@ -43,7 +43,7 @@ Example: the Larkspur Garden Club offers a **Planting calendar (PDF)** to everyo
 You will see "File added. Put it on a page with the Member Download element." The file now appears in the
 list below the form.
 
-<img src="/img/membership/downloads.png" alt="The Membership Downloads screen with the upload form and the list of files" width="1240" />
+<img src="/img/membership/downloads.png" alt="The Membership Downloads screen with the upload form and the list of files" width="1400" />
 
 ## How to put the file on a page
 
@@ -66,8 +66,12 @@ The element does not need the page itself to be protected. It decides what to sh
   **Log in** link.
 - **A member without the right plan** sees the greyed-out button and "This download is part of a membership
   plan you do not hold."
-- When the file is also **sold on its own** (see below), people without access also get a **Buy it for**
-  button with the price.
+- When the file is limited to chosen plans, people without access also get a **Join** link (visitors) or a
+  **See the plans** link (someone already logged in). It goes to your
+  [Join page](../member-area/settings.md#member-pages), or straight to the checkout when no Join page is set and
+  one paid plan is ticked.
+- When the file is also **sold on its own** (see below), people without access get a **Buy it for** button
+  with the price instead of that link.
 
 ## Every option explained
 
@@ -114,7 +118,7 @@ note asking them to choose a file).
 
 | Option | What it does | Default |
 |---|---|---|
-| **File** | The protected file to offer, chosen from those under **Membership → Downloads**. If the module is off, the help text reads "Switch on Protected downloads in Membership → Modules first." | "— Choose a file —" |
+| **File** | The protected file to offer, chosen from those under **Membership → Downloads**. The help text reads "Upload files under Membership → Downloads.", or, if the module is off, "Switch on Protected downloads in Membership → Modules first." | "— Choose a file —" |
 | **Button text** | The words on the button. | Empty: "Download" and the file's title |
 | **Show the file type and size** | Shows a small line such as "PDF · 2 MB" under the button. | **Yes** |
 

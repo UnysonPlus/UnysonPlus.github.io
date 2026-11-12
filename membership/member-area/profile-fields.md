@@ -22,7 +22,7 @@ setting appears when the **Member directory** module is on.
 
 ## How to add a profile field, step by step
 
-1. Open **Unyson+ → Membership → Profile fields** (in the Setup section of the sidebar).
+1. Open **Membership → Profile fields** (in the Setup section of the sidebar).
 2. Click **Add a field**. A new row appears.
 3. Type the **Label**, for example "Growing style". This is what members see.
 4. Choose the **Type**, for example **Choice (list)**.
@@ -33,7 +33,7 @@ setting appears when the **Member directory** module is on.
 8. With the Member directory module on, choose who sees it in **In the directory:**.
 9. Click **Save profile fields**.
 
-<img src="/img/membership/profile-fields.png" alt="The Profile fields screen with several fields, their type, options, and the required, edit, directory and plan settings" width="1240" />
+<img src="/img/membership/profile-fields.png" alt="The Profile fields screen with several fields, their type, options, and the required, edit, directory and plan settings" width="1400" />
 
 The field now appears on the account page of every member it applies to, under **Your details**, and on
 each member's page in the app.
@@ -70,7 +70,7 @@ each member's page in the app.
 - **The member's account page.** Under **Your details** on the [Member Account element](./login-and-account.md),
   for every field the member may edit and that applies to their plans. A required field left empty stops
   the save with "… is required."
-- **The member's page in the app.** **Unyson+ → Membership → Members**, open a member: the **Profile**
+- **The member's page in the app.** **Membership → Members**, open a member: the **Profile**
   panel shows every field, editable by you, with a **Save profile** button. Here you can also fill in
   fields members cannot edit.
 - **Sign-up forms.** A form field whose label matches a profile field's label (or its key) fills that

@@ -20,7 +20,7 @@ content](../content/drip-content.md) and [Retention](../insights/retention.md) m
 
 ## The Scheduled jobs card
 
-Open **Unyson+ → Membership → Home**. The **Scheduled jobs** card lists each job Membership needs:
+Open **Membership → Home**. The **Scheduled jobs** card lists each job Membership needs:
 
 | Job | How often | What it does |
 |---|---|---|
@@ -28,7 +28,7 @@ Open **Unyson+ → Membership → Home**. The **Scheduled jobs** card lists each
 | **Drip: email what opened today** | Once a day | Emails members about drip content that opened for them. Listed while **Drip content** is on. |
 | **Retention: reminders, payment follow-ups, pauses ending** | Once a day | Renewal, trial and expiry reminders, failed-payment follow-ups, win-back emails and pauses that end. Listed while **Retention** is on. |
 
-<img src="/img/membership/home.png" alt="Membership Home with the Scheduled jobs card" width="1440" />
+<img src="/img/membership/home.png" alt="Membership Home with the Scheduled jobs card" width="1600" />
 
 Each job shows a status and when it last ran (*last run 12 minutes ago*):
 

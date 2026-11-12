@@ -109,7 +109,7 @@ the modules from the list above, and how long you keep records.
 At the bottom of **Membership → Settings** is a **Remove all data** panel. Use it when you want to start again
 from zero or stop using Membership for good.
 
-<img src="/img/membership/settings.png" alt="The Membership Settings screen, ending with the Remove all data panel and its Type DELETE to confirm box" width="1240" />
+<img src="/img/membership/settings.png" alt="The Membership Settings screen, ending with the Remove all data panel and its Type DELETE to confirm box" width="1400" />
 
 It *"Deletes every plan, membership, history entry, access rule and payment record, and these settings. WordPress
 accounts are kept. Switching the extension off never removes anything; only this does."*

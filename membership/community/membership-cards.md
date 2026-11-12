@@ -20,7 +20,7 @@ is no app to install, for members or staff.
 
 Membership cards is a module and is **off by default**.
 
-1. Go to **Unyson+ → Membership → Modules**.
+1. Go to **Membership → Modules**.
 2. Switch on **Membership cards** ("Printable or digital cards with a QR code for check-in.").
 3. Click **Save modules**.
 
@@ -28,12 +28,12 @@ Every member with a current membership now has a card. There is nothing else you
 
 ## How to style the card
 
-1. Go to **Unyson+ → Membership → Settings** and find the **Membership cards** panel (see
+1. Go to **Membership → Settings** and find the **Membership cards** panel (see
    [Settings](../member-area/settings.md#membership-cards-membership-cards-module)).
 2. Set the **Member number prefix** and the **Card colour**.
 3. Click **Save settings**.
 
-<img src="/img/membership/settings.png" alt="The Membership Settings screen; the Membership cards panel (Member number prefix, Card colour) is the last panel before Save settings" width="1240" />
+<img src="/img/membership/settings.png" alt="The Membership Settings screen; the Membership cards panel (Member number prefix, Card colour) is the last panel before Save settings" width="1400" />
 
 ## Every option explained
 
@@ -86,10 +86,10 @@ member's, without the signature failing.
 4. Staff click **Check in**. The page shows "Checked in."
 
 Each check-in is recorded in the member's **History** on their [member page](../basics/members.md#a-members-page)
-(**Unyson+ → Membership → Members →** a member), with the time, as "Checked in." (or "Checked in while not valid." if staff checked in
+(**Membership → Members →** a member), with the time, as "Checked in." (or "Checked in while not valid." if staff checked in
 someone whose membership was not valid).
 
-<img src="/img/membership/member-page.png" alt="A member's page in the Membership admin with their memberships, the History panel, log-ins, profile and the Add a plan form" width="1240" />
+<img src="/img/membership/member-page.png" alt="A member's page in the Membership admin with their memberships, the History panel, log-ins, profile and the Add a plan form" width="1400" />
 
 ### Who counts as staff
 

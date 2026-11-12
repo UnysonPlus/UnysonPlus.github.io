@@ -8,11 +8,12 @@ keywords: [wordpress membership dashboard, membership overview wordpress, member
 
 # The Home screen
 
-**Home** is the first screen you see when you open **Unyson+ → Membership**. It answers the questions you
+**Home** is the first screen you see when you open **Membership** in the WordPress menu (and where a role set to
+open to Membership lands after logging in; see below). It answers the questions you
 would ask every morning: how many members have access, who joined or left lately, who is about to run out,
 and whether the site's background jobs are running on time.
 
-<img src="/img/membership/home.png" alt="The Membership Home screen with the status line, the four count cards, members by plan, recent changes, memberships ending soon and scheduled jobs" width="1440" />
+<img src="/img/membership/home.png" alt="The Membership Home screen with the status line, the four count cards, members by plan, recent changes, memberships ending soon and scheduled jobs" width="1600" />
 
 ## On a brand-new site: the first steps
 
@@ -130,8 +131,14 @@ Two things in the top bar are there on every Membership screen:
   rebuild.
 - **Revenue is not on Home.** Money figures (monthly recurring revenue, churn, lifetime value) are on the
   **Reports** screen, which needs the Reports module. See [Reports](../insights/reports.md).
-- **People who only manage Membership** (not full administrators) get **Membership** as a top-level item in
-  the WordPress menu, because the Unyson+ menu is for administrators.
+- **Membership has its own top-level item** in the WordPress menu, beside the other Unyson+ apps, rather than
+  sitting under the Unyson+ menu.
+- **Open to Membership instead of the dashboard.** Under **Unyson+ → Admin Menu → Roles**, choose **Membership**
+  under **Opens to** for a role that manages Membership: people in it land on this Home screen after logging in
+  and from **Dashboard**, see Membership without the WordPress menu, and administrators get **Switch to
+  WordPress** in the admin bar to step out. The **Run a members' site** quick set-up on the same screen keeps
+  members out of wp-admin; see
+  [Keep members out of wp-admin](../member-area/login-and-account.md#keep-members-out-of-wp-admin-completely).
 
 ## Next steps
 

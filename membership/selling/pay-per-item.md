@@ -16,7 +16,7 @@ You set a price (and, if you like, how many days access lasts), and the locked i
 button that goes to your checkout. Everything the checkout does works for single items too: card, PayPal and
 bank transfer, coupons, tax, receipts and invoices.
 
-Pay per item is part of the **Payments** module (**Unyson+ → Membership → Modules**, off by default); there is
+Pay per item is part of the **Payments** module (**Membership → Modules**, off by default); there is
 nothing else to switch on. Set up a way to pay and a checkout page first (see [Payments](./payments.md)).
 
 ## How it works
@@ -70,13 +70,13 @@ in **Sell on its own** and update the course.
 
 ## Sell a protected download
 
-1. Open **Unyson+ → Membership → Downloads** ([Protected downloads](../content/downloads.md) module) and click a file to edit it.
+1. Open **Membership → Downloads** ([Protected downloads](../content/downloads.md) module) and click a file to edit it.
 2. **Sell on its own for**: the price in your default currency. "Empty: not for sale. Buyers can download it
    from their account and the Member Download element."
 3. **Access for (days)**: "0 = for ever."
 4. Click **Save**.
 
-<img src="/img/membership/downloads.png" alt="The Downloads screen with a file sold on its own" width="1240" />
+<img src="/img/membership/downloads.png" alt="The Downloads screen with a file sold on its own" width="1400" />
 
 The file's hidden plan is added to its **Who may download it** for you, so buyers may download it. Anyone else
 who meets the Member Download element sees the button greyed out, the reason they cannot download it, and

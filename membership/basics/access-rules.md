@@ -19,13 +19,13 @@ everywhere the content could show up: on its own page, in the page-builder conte
 search, RSS feeds, the REST API, comments, attachments, the XML sitemap and the description and social tags in the
 page head. Nothing leaks through a side door.
 
-Rules live under **Unyson+ → Membership → Access rules**. For a single page there is also a shortcut, the
+Rules live under **Membership → Access rules**. For a single page there is also a shortcut, the
 [Membership box](#the-membership-box-on-a-page-or-post) in the editor, and parts of a page can be shown or
 hidden per plan with [element visibility](#show-or-hide-part-of-a-page).
 
 ## The rules list
 
-<img src="/img/membership/rules-list.png" alt="The access rules list with what each rule protects, who can see it and what everyone else sees" width="1240" />
+<img src="/img/membership/rules-list.png" alt="The access rules list with what each rule protects, who can see it and what everyone else sees" width="1400" />
 
 | Column | Shows |
 | --- | --- |
@@ -54,7 +54,7 @@ Example: the Larkspur Garden Club wants every blog post for paying members, exce
 8. Click **Create rule**. It works straight away.
 9. Check it on the site with **View as** (see [Test it with "View as"](#test-it-with-view-as)).
 
-<img src="/img/membership/rule-edit.png" alt="The access rule editor with what it protects, what everyone else sees, who can see it and options" width="1240" />
+<img src="/img/membership/rule-edit.png" alt="The access rule editor with what it protects, what everyone else sees, who can see it and options" width="1400" />
 
 ## Every option explained
 
@@ -93,7 +93,7 @@ page and checkout page. Otherwise visitors are asked to log in on the very page 
 
 ### What everyone else sees
 
-<img src="/img/membership/rule-edit-denied.png" alt="What everyone else sees: a teaser and a prompt, log in, another page or page not found" width="810" />
+<img src="/img/membership/rule-edit-denied.png" alt="What everyone else sees: a teaser and a prompt, log in, another page or page not found" width="917" />
 
 | Choice | What happens | When to use it |
 | --- | --- | --- |

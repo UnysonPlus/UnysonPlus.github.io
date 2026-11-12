@@ -33,7 +33,7 @@ Example: the Larkspur Garden Club sells a yearly membership as a WooCommerce pro
 
 1. Make sure the plan exists: **Membership → [Plans](../basics/plans.md)**, for example **Member**. Its own length decides how long
    the membership lasts (for a product, set the plan's length to one year).
-2. Go to **Unyson+ → Membership → Modules**, switch on **WooCommerce** and click **Save modules**.
+2. Go to **Membership → Modules**, switch on **WooCommerce** and click **Save modules**.
 3. Go to **Products → Add New** (or edit an existing product). Give it a name, for example *Garden Club
    membership (1 year)*, and a price.
 4. Scroll to the **Product data** box and click the **Membership** tab.
@@ -75,7 +75,7 @@ Renewals, retries and card updates are all handled by WooCommerce. Membership on
 Plans can give their members store perks. Open **Membership → Plans**, edit a plan, and find these fields in
 its **Options** panel (they appear while the WooCommerce module is on):
 
-<img src="/img/membership/plan-edit-settings.png" alt="The Options panel of a plan. The store fields (Store discount for members, On products in, Free shipping for members) appear here while the WooCommerce module is on" width="425" />
+<img src="/img/membership/plan-edit-settings.png" alt="The Options panel of a plan. The store fields (Store discount for members, On products in, Free shipping for members) appear here while the WooCommerce module is on" width="478" />
 
 | Field | What it does | Default | Tip |
 |---|---|---|---|

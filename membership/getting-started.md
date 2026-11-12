@@ -28,14 +28,15 @@ Three words cover nearly everything:
 
 1. In WordPress, open **Unyson+ → Extensions**.
 2. Find **Membership**, download it if it is not on your site yet, and click **Activate**.
-3. A new item appears: **Unyson+ → Membership**. Click it.
+3. A new item appears in the WordPress menu: **Membership** (a top-level item, not under Unyson+). Click it.
 
-Membership opens as an app of its own, with its own sidebar and top bar. Switching the extension off later
+Membership opens as an app of its own, with its own sidebar and top bar (the same app frame as the CRM and the
+other Unyson+ apps). Membership needs the Unyson+ framework 3.0.49 or later for this. Switching the extension off later
 never deletes anything: your plans, members and rules wait until you switch it back on.
 
 ## 2. Find your way around the app
 
-<img src="/img/membership/home.png" alt="The Membership Home screen in WordPress with member counts, members by plan, recent changes, memberships ending soon and the scheduled jobs card" width="1440" />
+<img src="/img/membership/home.png" alt="The Membership Home screen in WordPress with member counts, members by plan, recent changes, memberships ending soon and the scheduled jobs card" width="1600" />
 
 **The sidebar** lists every area of Membership, in four groups:
 
@@ -44,19 +45,23 @@ never deletes anything: your plans, members and rules wait until you switch it b
 | (top) | **Home**, **Members**, **Plans**, **Access rules** | The core: always there. **Downloads**, **Groups** and **Courses** join this group when you switch on the Protected downloads, Groups and teams, and Courses modules. |
 | **Selling** | **Payments**, **Coupons**, **Gifts** | Taking money. Each needs its module (Payments, Coupons, Gift memberships). |
 | **Insights** | **Reports**, **Retention** | Numbers and keeping members. Need the Reports and Retention modules. |
-| **Setup** | **Profile fields**, **Emails**, **Modules**, **Settings**, **Import** | How the site behaves. **Import** needs the Importers module. |
+| **Setup** | **Profile fields**, **Emails**, **Modules**, **Settings**, **Import**, **Webhooks** | How the site behaves. **Import** needs the Importers module, **Webhooks** the Webhooks module. |
 
-**Payments**, **Coupons** and **Reports** are always listed. While their module is off they carry an **Off**
+**Payments**, **Coupons** and **Reports** are always listed. While their module is off they carry a **Soon**
 badge, and opening one shows "Payments is switched off" (or Coupons, Reports), what the area does, "Switch on
 the … module to use it." and an **Open Modules** button. The other module items (Downloads, Groups, Courses,
-Gifts, Retention, Import) only appear once their module is on. See [Modules](./running-your-site/modules.md).
+Gifts, Retention, Import, Webhooks) only appear once their module is on. **Courses** opens WordPress's own
+course list. See [Modules](./running-your-site/modules.md).
 
 At the bottom of the sidebar:
 
 - **Hide the WordPress menu** removes the WordPress admin menu while you work in Membership (click **Show
-  the WordPress menu** to bring it back; your choice is remembered).
+  the WordPress menu** to bring it back; your choice is remembered, and applies to every Unyson+ app, such as
+  the [CRM](/crm)).
 - **Back to WordPress** returns to the dashboard.
-- **Open the CRM** appears when the Unyson+ [CRM](/crm) is active.
+
+Both are hidden when your role opens straight to Membership as a workspace (see Good to know below): there the
+app always fills the screen, and administrators step out with **Switch to WordPress** in the admin bar.
 
 **The top bar** has a search box (**Search members by name or email**; press <kbd>/</kbd> to jump to it) and
 a **New** menu with **Add a member**, **Plan** and **Access rule**.
@@ -87,7 +92,7 @@ Start with two plans: a free one and a paid one.
 4. Keep **Until it is cancelled (or for as long as it is paid)**.
 5. Click **Create plan**.
 
-<img src="/img/membership/plan-edit.png" alt="The plan edit screen in the Membership app, with name, slug, description, prices, length and options" width="1240" />
+<img src="/img/membership/plan-edit.png" alt="The plan edit screen in the Membership app, with name, slug, description, prices, length and options" width="1400" />
 
 Later you can add a **Pro** plan with **Also includes** set to **Member**, so Pro members get everything
 Member opens and more. Every field is explained in [Plans](./basics/plans.md).
@@ -101,7 +106,8 @@ The Membership elements are in the **Membership** tab of the page builder's elem
 **The login page**
 
 1. Create a page called **Log in** (**Pages → Add New**) and open it in the page builder.
-2. Add the **Member Login** element. Its defaults are fine: a "Log in" title, "Remember me", "Forgot your
+2. Add the **Member Login** element. It wears your site's default **Form Style** (from the Forms extension),
+   so it looks like your other forms. Its defaults are fine: a "Log in" title, "Remember me", "Forgot your
    password?", and after logging in members go **Where the member's plan says (else the account page)**.
 3. If you have a sign-up page, put its address in **Sign-up page** so the form shows "Not a member yet? Join".
 4. Publish the page.
@@ -133,7 +139,7 @@ button goes straight to the checkout when exactly one paid plan opens the conten
 page. On a site that only has a free plan, though, pointing it at the sign-up page works well.) Every option is
 in [Settings](./member-area/settings.md).
 
-<img src="/img/membership/settings.png" alt="Membership Settings with the Account page, Login page and Join page chosen under Member pages" width="1240" />
+<img src="/img/membership/settings.png" alt="Membership Settings with the Account page, Login page and Join page chosen under Member pages" width="1400" />
 
 **A sign-up page for the free plan**
 
@@ -180,7 +186,7 @@ Say the Garden Club has a page called **Members' seed swap** that only members s
    **Join** button that goes to your Join page.
 6. Click **Create rule**. It works straight away.
 
-<img src="/img/membership/rule-edit.png" alt="The access rule editor: what it protects, what everyone else sees, who can see it and the rule options" width="1240" />
+<img src="/img/membership/rule-edit.png" alt="The access rule editor: what it protects, what everyone else sees, who can see it and the rule options" width="1400" />
 
 There is a quicker way for one page: open it in the editor and, in the **Membership** box on the right, choose
 **Members only** and tick the plans. Use rules for anything bigger (all posts, a category, everything under
@@ -240,14 +246,21 @@ The core (plans, members, access rules and the member area) is always on. Everyt
 | **Reports** | revenue, churn, lifetime value and cohorts |
 | **Account security** | limit devices, one-click login links, passkeys and a login log |
 | **Importers** | bring in members and live subscriptions from a CSV file (such as an export from another plugin), or give plans to everyone with a WordPress role or user field |
+| **Webhooks** | tell another app the moment members join, renew, cancel, pay or finish a course |
 | **Courses** | courses with lessons, progress, quizzes and certificates |
 
-<img src="/img/membership/modules.png" alt="The Membership Modules screen, with every module and its on or off switch" width="1240" />
+<img src="/img/membership/modules.png" alt="The Membership Modules screen, with every module and its on or off switch" width="1400" />
 
 ## Good to know
 
 - **Members are WordPress users.** Each member has a normal WordPress account. Plans add access on top; they
   never change the user's role unless you set **Role while a member** on the plan.
+- **Keep members out of wp-admin.** Members land on their account page after logging in, but can still type
+  `/wp-admin/`. Under **Unyson+ → Admin Menu → Roles**, **Quick set-up → Run a members' site → Apply** keeps
+  Subscribers (the role new members get) out of wp-admin and sends them to their account page. The same screen
+  can make a role open straight to Membership instead of the WordPress dashboard (a role that can manage
+  Membership: by default, administrators). See
+  [Keep members out of wp-admin](./member-area/login-and-account.md#keep-members-out-of-wp-admin-completely).
 - **Administrators are never locked out.** Anyone who manages Membership, and anyone who can edit a page,
   always sees it. Use **View as** to check.
 - **Membership's jobs run on WordPress's scheduler.** Ending memberships on their end date, drip emails and

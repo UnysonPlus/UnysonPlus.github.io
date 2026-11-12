@@ -21,7 +21,8 @@ what your WordPress account may do.
 
 **Setting up**
 
-- Describe what you have: plans, rules, modules and settings (counts only, never names).
+- Describe what you have: plans, rules, modules and settings, with how many members each plan has (counts
+  only, never a member's name or email).
 - Switch modules on or off ("turn on Payments and Coupons").
 - Create or change plans, with their prices, length, what they include, and options such as which plans
   members may switch to, team seats and devices at once.

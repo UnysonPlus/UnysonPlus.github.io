@@ -27,12 +27,12 @@ Once both allowances are used, the normal prompt to join appears: the **subscrip
 
 The Metered paywall is a module and is **off by default**.
 
-1. Go to **Unyson+ → Membership → Modules**.
+1. Go to **Membership → Modules**.
 2. Switch on **Metered paywall** ("Let visitors read a few items for free before asking them to register or
    subscribe.").
 3. Click **Save modules**.
 
-<img src="/img/membership/modules.png" alt="The Membership Modules screen" width="1240" />
+<img src="/img/membership/modules.png" alt="The Membership Modules screen" width="1400" />
 
 ## How to set it up
 
@@ -41,12 +41,12 @@ to (you choose which content is metered).
 
 ### Step 1: set the allowances
 
-1. Go to **Unyson+ → Membership → Settings**.
+1. Go to **Membership → Settings**.
 2. Find the **Metered paywall** panel.
 3. Set **Free reads for visitors**, **Free reads with a free account** and **Counted per**.
 4. Click **Save settings**.
 
-<img src="/img/membership/settings.png" alt="The Membership Settings screen; the Metered paywall panel with Free reads for visitors, Free reads with a free account and Counted per sits below the CRM connection panel" width="1240" />
+<img src="/img/membership/settings.png" alt="The Membership Settings screen; the Metered paywall panel with Free reads for visitors, Free reads with a free account and Counted per sits below the CRM connection panel" width="1400" />
 
 Example for the Larkspur Garden Club: visitors may read **3** articles a month, people with a free account
 **5** a month, and **Member** plan holders everything.
@@ -55,7 +55,7 @@ Example for the Larkspur Garden Club: visitors may read **3** articles a month, 
 
 Metering is switched on **per access rule**, so you decide which content can be sampled.
 
-1. Go to **Unyson+ → Membership → Access rules** and open the rule that protects your articles (or click
+1. Go to **Membership → Access rules** and open the rule that protects your articles (or click
    **New access rule**). For example, a rule protecting **Items in a category or tag** → the "Growing
    guides" category, for the **Member** plan.
 2. Under **What everyone else sees**, choose **A teaser and a prompt to log in or join (recommended)**.
@@ -63,7 +63,7 @@ Metering is switched on **per access rule**, so you decide which content can be 
    Metered paywall)**.
 4. Click **Save rule**.
 
-<img src="/img/membership/rule-edit.png" alt="An access rule with the Free reads option ticked" width="1240" />
+<img src="/img/membership/rule-edit.png" alt="An access rule with the Free reads option ticked" width="1400" />
 
 Content covered by that rule is now metered. Content covered by rules without the tick stays fully locked.
 

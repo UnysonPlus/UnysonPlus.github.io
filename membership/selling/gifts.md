@@ -19,7 +19,7 @@ a link, and their membership starts when they open it and click **Start my membe
 
 ## Switch on the module
 
-1. Open **Unyson+ → Membership → Modules**.
+1. Open **Membership → Modules**.
 2. Switch on **Gift memberships** ("Buy a plan for someone else, redeemed with a code or a link.") and click
    **Save modules**.
 
@@ -53,7 +53,7 @@ module adds it. A gift is one period of a repeating price, paid once, so free tr
 
 ## The gift emails
 
-When the payment goes through, two emails are sent. Both are in **Unyson+ → Membership → Emails**, where you
+When the payment goes through, two emails are sent. Both are in **Membership → Emails**, where you
 can edit their subject and text, send yourself a test, or switch them off.
 
 - **Gift received** (see [Emails](../member-area/emails.md)): "To the person a gift is for, once it is paid." Default subject
@@ -104,9 +104,9 @@ not use the Coupons module.
 
 ## The Gifts screen
 
-**Unyson+ → Membership → Gifts** lists the latest 100 gifts, newest first.
+**Membership → Gifts** lists the latest 100 gifts, newest first.
 
-<img src="/img/membership/gifts.png" alt="The Gifts screen with each gift's plan, code, buyer, recipient and status" width="1240" />
+<img src="/img/membership/gifts.png" alt="The Gifts screen with each gift's plan, code, buyer, recipient and status" width="1400" />
 
 | Column | What it shows |
 | --- | --- |

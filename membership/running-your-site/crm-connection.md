@@ -25,7 +25,7 @@ Settings → CRM connection**.
 ## Set it up
 
 1. Activate the CRM extension (**Unyson+ → Extensions**), if it is not already on.
-2. Go to **Unyson+ → Membership → Settings** and scroll to **CRM connection**. The panel says *"The CRM is
+2. Go to **Membership → Settings** and scroll to **CRM connection**. The panel says *"The CRM is
    active, so members and the CRM work together. Membership only adds to contacts; it never removes a contact or
    a tag it did not add."*
 3. Leave the boxes ticked that you want (the defaults suit most sites; see [Every option explained](#every-option-explained)).
@@ -34,7 +34,7 @@ Settings → CRM connection**.
    through every member once and reports *"`{n}` members brought up to date in the CRM."* New members after that
    are kept in step automatically.
 
-<img src="/img/membership/settings.png" alt="The Membership Settings screen with the CRM connection panel: its switches, Plan tags start with and Bring every member up to date in the CRM now" width="1240" />
+<img src="/img/membership/settings.png" alt="The Membership Settings screen with the CRM connection panel: its switches, Plan tags start with and Bring every member up to date in the CRM now" width="1400" />
 
 ## Members as contacts
 
@@ -101,7 +101,7 @@ Access rules can open content to people by **CRM tag, list or segment**, not onl
    segments**.
 4. Save the rule.
 
-<img src="/img/membership/rule-edit.png" alt="An access rule with its Who can see it section" width="1240" />
+<img src="/img/membership/rule-edit.png" alt="An access rule with its Who can see it section" width="1400" />
 
 Like every other choice in **Who can see it**, passing **any one** is enough: a plan you ticked, a role, or one
 of these CRM conditions. The person must be logged in, because a visitor has no contact. If you have no CRM tags,

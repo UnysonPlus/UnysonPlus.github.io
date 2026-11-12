@@ -12,7 +12,7 @@ A **plan** is what someone gets when they join your site: "Free", "Member", "Pro
 prices, a length, and a few options. On its own a plan does not open anything; [access rules](./access-rules.md)
 say which content each plan may see. When a person holds a plan, that is a **membership**.
 
-Plans live under **Unyson+ → Membership → Plans**.
+Plans live under **Membership → Plans** in the WordPress menu.
 
 ## Free plans and paid plans
 
@@ -28,7 +28,7 @@ and **Pro** (includes Member, plus more).
 
 ## The plans list
 
-<img src="/img/membership/plans-list.png" alt="The Membership plans list with prices, length, included plan and member count for each plan" width="1240" />
+<img src="/img/membership/plans-list.png" alt="The Membership plans list with prices, length, included plan and member count for each plan" width="1400" />
 
 The list shows every plan with:
 
@@ -51,7 +51,7 @@ Hover a plan for its actions: **Edit**, **Members**, **Archive** (or **Restore**
 5. Set any **Options** you need (the defaults are fine for a first plan).
 6. Click **Create plan**. You land back on the plan, now saved; the button reads **Save plan** from then on.
 
-<img src="/img/membership/plan-edit.png" alt="The plan edit screen: the Plan panel with name, slug and description, the Prices table, How long it lasts and Options" width="1240" />
+<img src="/img/membership/plan-edit.png" alt="The plan edit screen: the Plan panel with name, slug and description, the Prices table, How long it lasts and Options" width="1400" />
 
 ## Every option explained
 
@@ -69,7 +69,7 @@ A plan can have several prices, such as monthly and yearly. Click **Add a price*
 the end of a row removes it. The panel itself reminds you: "Leave it without prices for a free plan. People pay
 at your checkout when the Payments module is on; without it, add members by hand or through a sign-up form."
 
-<img src="/img/membership/plan-edit-prices.png" alt="The Prices table on a plan, with a monthly and a yearly price" width="810" />
+<img src="/img/membership/plan-edit-prices.png" alt="The Prices table on a plan, with a monthly and a yearly price" width="917" />
 
 | Column | What it does | Default |
 | --- | --- | --- |
@@ -118,7 +118,7 @@ always give one member a different end date on their page.
 
 ### Options
 
-<img src="/img/membership/plan-edit-settings.png" alt="The Options panel on a plan: also includes, priority, member limit, switching, redirects, role and status" width="425" />
+<img src="/img/membership/plan-edit-settings.png" alt="The Options panel on a plan: also includes, priority, member limit, switching, redirects, role and status" width="478" />
 
 | Field | What it does | Default | When to change it |
 | --- | --- | --- | --- |

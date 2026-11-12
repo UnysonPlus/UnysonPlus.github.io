@@ -27,7 +27,7 @@ In the examples below, the Larkspur Garden Club sells **Member** (monthly and ye
 ## Before you start
 
 - A plan is only for sale once it has a **price**. Prices are set on the plan's page
-  (**Unyson+ → Membership → Plans**, open a plan, **Prices**): an **Amount**, a **Currency**, the
+  (**Membership → Plans**, open a plan, **Prices**): an **Amount**, a **Currency**, the
   **Billing** (**Free**, **One payment**, **Lifetime (one payment, never ends)**, **Every day**, **Every
   week**, **Every month**, **Every year**), **Every** (for example every 3 months), **Trial days** and a
   **Setup fee**.
@@ -36,30 +36,30 @@ In the examples below, the Larkspur Garden Club sells **Member** (monthly and ye
 - For card payments you need a Stripe account; for PayPal, a PayPal business account. Both have a free
   test mode, so you can try everything without real money.
 
-<img src="/img/membership/plan-edit-prices.png" alt="A plan's Prices panel with a monthly and a yearly price" width="810" />
+<img src="/img/membership/plan-edit-prices.png" alt="A plan's Prices panel with a monthly and a yearly price" width="917" />
 
 ## Step 1: switch on the Payments module
 
-1. Open **Unyson+ → Membership → Modules**.
+1. Open **Membership → Modules**.
 2. Switch on **Payments** ("Sell plans with your own payment accounts: cards and wallets, PayPal and bank
    transfer, a checkout and a pricing table. No transaction fee from Unyson+.").
 3. Click **Save modules**.
 
 Payments is **off by default**. While it is off, **Payments** and **Coupons** show in the sidebar under
-**Selling** with an **Off** badge. Opening one shows "Payments is switched off", what the area does, "Switch on
+**Selling** with a **Soon** badge (the badge the shared admin sidebar gives every area that is not available yet). Opening one shows "Payments is switched off", what the area does, "Switch on
 the Payments module to use it." and an **Open Modules** button. The Pricing Plans and Membership Checkout
 elements only show a note to administrators. Switching Payments on also lets you switch on the modules that depend on it:
 [Coupons](./coupons.md), [Tax](./tax.md) and [Gift memberships](./gifts.md).
 
-<img src="/img/membership/modules.png" alt="The Modules screen with Payments switched on" width="1240" />
+<img src="/img/membership/modules.png" alt="The Modules screen with Payments switched on" width="1400" />
 
 ## Step 2: open the payment settings
 
-Open **Unyson+ → Membership → Payments** and click **Payment settings** (top right). Until at least one
+Open **Membership → Payments** and click **Payment settings** (top right). Until at least one
 way to pay is switched on and fully set up, the Payments screen shows: "No payment method is set up yet,
 so plans with a price cannot be bought." with a **Set up payments** link to the same place.
 
-<img src="/img/membership/payment-settings.png" alt="Payment settings: checkout, invoices and the ways to pay" width="1240" />
+<img src="/img/membership/payment-settings.png" alt="Payment settings: checkout, invoices and the ways to pay" width="1400" />
 
 The settings page has these panels, from top to bottom: **Checkout**, **Invoices**, **Tax** (only with the
 Tax module on), then one panel for each way to pay: **Card (Stripe)**, **PayPal** and **Bank transfer or
@@ -269,7 +269,7 @@ amount, and your instructions with the reference filled in. Their account page l
 
 ### Marking a bank transfer paid
 
-1. When the money arrives, open **Unyson+ → Membership → Payments**.
+1. When the money arrives, open **Membership → Payments**.
 2. Find the payment (filter by **Waiting** if you have many). The **Method** column shows the reference.
 3. Hover the member's name and click **Mark paid**.
 
@@ -278,10 +278,10 @@ payment gets its invoice number at this moment.
 
 ## The Payments screen
 
-**Unyson+ → Membership → Payments** lists every money movement: first payments, renewals and refunds,
+**Membership → Payments** lists every money movement: first payments, renewals and refunds,
 newest first, 30 to a page.
 
-<img src="/img/membership/payments.png" alt="The Payments screen: payments taken in the last 30 days, the status tabs, and each payment's member, plan, amount with its invoice number, status and method, with a Refund link under one payment" width="1240" />
+<img src="/img/membership/payments.png" alt="The Payments screen: payments taken in the last 30 days, the status tabs, and each payment's member, plan, amount with its invoice number, status and method, with a Refund link under one payment" width="1400" />
 
 At the top: **Taken in the last 30 days:** with the total per currency (or "No payments in the last 30
 days."), and the **Payment settings** button.
@@ -377,7 +377,7 @@ can switch to** (for example, Member can switch to Pro, and Pro can switch to Me
 **Change plan** on their account page under that membership, with each allowed plan and price and an
 **Upgrade** or **Switch** button.
 
-<img src="/img/membership/plan-edit-settings.png" alt="A plan's settings with "Members can switch to"" width="425" />
+<img src="/img/membership/plan-edit-settings.png" alt="A plan's settings with "Members can switch to"" width="478" />
 
 What happens depends on the move and how the member pays:
 
@@ -420,7 +420,7 @@ method**, which takes them to Stripe's customer portal or to PayPal's automatic 
 
 ## Emails
 
-Payments adds two emails to **Unyson+ → Membership → [Emails](../member-area/emails.md)**, both editable and both able to be switched
+Payments adds two emails to **Membership → [Emails](../member-area/emails.md)**, both editable and both able to be switched
 off:
 
 - **Payment receipt**: after each successful payment, including renewals. Placeholders include `{plan}`,

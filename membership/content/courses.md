@@ -26,7 +26,7 @@ two modules ("Getting started" and "Sowing") and a short quiz.
 
 Courses is a module and is **off by default**.
 
-1. Go to **Unyson+ → Membership → Modules**.
+1. Go to **Membership → Modules**.
 2. Switch on **Courses** ("Courses with lessons, progress, quizzes and certificates on the same access
    rules.").
 3. Click **Save modules**.
@@ -99,7 +99,7 @@ own" below."
 :::info The course's access rule
 Behind the scenes, every course keeps one [access rule](../basics/access-rules.md) named **Course:** followed by the course title. It
 protects the course's lessons (as **Pages under a page**, on the course) and is updated each time you save
-the course. You can see it under **Unyson+ → Membership → Access rules**, but change who can take the course in
+the course. You can see it under **Membership → Access rules**, but change who can take the course in
 the course's own box, not in the rule: saving the course rewrites the rule. A course set to **Everyone** has
 no rule. The rule is switched on while the course is published, and deleted when the course is deleted.
 :::
@@ -218,7 +218,10 @@ Below your course description, the course page shows the outline:
   (dripped, or behind a quiz) has a padlock and no link.
 - For someone who may **not** take it: a box titled **Join to take this course** (or **Log in to take this
   course**, for a course for anyone logged in), the plans it is **Included in**, a **Buy this course for**
-  button when it is for sale on its own, and a **Log in** button for visitors. Every lesson shows a padlock.
+  button when it is for sale on its own, a **Join** button (**See the plans** when logged in) for a course
+  for chosen plans, and a **Log in** button for visitors. **Join** goes to your
+  [Join page](../member-area/settings.md#member-pages), or to the checkout when no Join page is set and the
+  course is for one paid plan. Every lesson shows a padlock.
 
 <img src="/img/membership/front-course.png" alt="A course page on the front end, with the progress bar and outline" width="878" />
 
@@ -322,7 +325,7 @@ The **Print or save as PDF** button opens the browser's print dialog. To get a P
 
 ### The certificate email
 
-The email is **Course certificate** in **Unyson+ → Membership → [Emails](../member-area/emails.md)**, sent "When a student completes a
+The email is **Course certificate** in **Membership → [Emails](../member-area/emails.md)**, sent "When a student completes a
 course that gives a certificate."
 
 - Default subject: `Your certificate for {course}`

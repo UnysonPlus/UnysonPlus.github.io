@@ -23,12 +23,12 @@ still decides **who** may see a page, and the drip fields decide **when** it ope
 
 Drip content is a module and is **off by default**.
 
-1. Go to **Unyson+ → Membership → Modules**.
+1. Go to **Membership → Modules**.
 2. Switch on **Drip content** ("Open content a number of days after someone joins, on a date, or in a
    sequence.").
 3. Click **Save modules**.
 
-<img src="/img/membership/modules.png" alt="The Membership Modules screen with the Drip content module" width="1240" />
+<img src="/img/membership/modules.png" alt="The Membership Modules screen with the Drip content module" width="1400" />
 
 Once it is on, every access rule gets two new fields in its **Options** panel: **Opens after (days)** and
 **Opens on (date)**.
@@ -38,7 +38,7 @@ Once it is on, every access rule gets two new fields in its **Options** panel: *
 Example: the Larkspur Garden Club wants its "Planning your first bed" guide to open for **Member** plan
 holders one week after they join.
 
-1. Go to **Unyson+ → Membership → Access rules** and click **New access rule** (or open an existing rule).
+1. Go to **Membership → Access rules** and click **New access rule** (or open an existing rule).
 2. Under **Rule**, give it a **Name**, such as "Week 1: Planning your first bed".
 3. Under **What it protects**, choose **A specific page or post** and pick the guide.
 4. Under **Who can see it**, tick the **Member** plan.
@@ -46,7 +46,7 @@ holders one week after they join.
 6. In **Options**, set **Opens after (days)** to `7`.
 7. Click **Create rule** (or **Save rule**).
 
-<img src="/img/membership/rule-edit.png" alt="An access rule being edited, with the drip fields in the Options panel" width="1240" />
+<img src="/img/membership/rule-edit.png" alt="An access rule being edited, with the drip fields in the Options panel" width="1400" />
 
 A Member who joined today sees the teaser and a "This opens for you in 7 days" message. On the seventh day
 the page opens for them, and a member who joined a month ago can read it straight away.
@@ -81,7 +81,7 @@ from the day the student starts the course.
 
 ## Every option explained
 
-Both fields are in the **Options** panel of an access rule (**Unyson+ → Membership → Access rules →** a
+Both fields are in the **Options** panel of an access rule (**Membership → Access rules →** a
 rule). They appear only while the Drip content module is on.
 
 | Field | What it does | Default | When to change it |
@@ -127,14 +127,14 @@ something is waiting.
 
 When content opens, members are told by email.
 
-- The email is **New content opened** in **Unyson+ → Membership → Emails**. It goes to the member, "Once a
+- The email is **New content opened** in **Membership → Emails**. It goes to the member, "Once a
   day, when drip content opens for a member."
 - Default subject: `New for you on {site_name}`.
 - Default body: "Hi `{first_name}`, Something new is now open to you:" followed by `{items}` and "Enjoy!".
 - `{items}` is a list of what opened since the last run, one line each: the title and the link.
 - A member gets **one** email a day, however many items opened for them that day.
 
-<img src="/img/membership/emails.png" alt="The Membership Emails screen with the list of member emails, the Welcome email opened for editing, and the Placeholders panel" width="1240" />
+<img src="/img/membership/emails.png" alt="The Membership Emails screen with the list of member emails, the Welcome email opened for editing, and the Placeholders panel" width="1400" />
 
 You can change the subject and wording like any other member email. See
 [Emails](../member-area/emails.md).

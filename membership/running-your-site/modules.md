@@ -18,20 +18,21 @@ memberships, switch on Payments and the selling screens appear.
 
 ## How to switch a module on or off
 
-1. Go to **Unyson+ → Membership → Modules** (under **Setup** in the Membership sidebar).
+1. Go to **Membership → Modules** (Membership has its own item in the WordPress admin menu; Modules is under
+   **Setup** in the Membership sidebar).
 2. Each module is a row with its icon, name, a one-line description and a switch on the right.
 3. Flip the switches you want on (or off).
 4. Click **Save modules**. The page reloads with *"Modules saved."*, and any menus the modules add appear in the
    sidebar.
 
 **What a switched-off module looks like in the sidebar.** **Payments**, **Coupons** and **Reports** are always
-listed in the Membership sidebar, so you can see what is there. While their module is off they carry an
-**Off** badge. Opening one shows "Payments is switched off" (or Coupons, Reports), a sentence about what the
+listed in the Membership sidebar, so you can see what is there. While their module is off they carry a
+**Soon** badge. Opening one shows "Payments is switched off" (or Coupons, Reports), a sentence about what the
 area does, "Switch on the Payments module to use it." (or the Coupons or Reports module) and an **Open Modules**
 button that brings you here. The other modules' items (Downloads, Groups, Courses, Gifts, Retention, Import)
 only appear once their module is on.
 
-<img src="/img/membership/modules.png" alt="Membership Modules screen with a switch for each module" width="1240" />
+<img src="/img/membership/modules.png" alt="Membership Modules screen with a switch for each module" width="1400" />
 
 A few rows look different:
 
@@ -102,7 +103,7 @@ What changes for your members while a module is off:
 | **Metered paywall** | No free reads: visitors see the normal "members only" view at once. |
 | **Retention** | Cancelling is immediate, no pause, reminders or follow-ups, and the grace after a failed payment goes back to 3 days. |
 | **Account security** | No device limit, no login links, passkeys are not offered (saved passkeys are kept), and the login log stops recording. |
-| **Reports** | The **Reports** item shows its **Off** badge and the "Reports is switched off" page, and members-only page views stop being counted. |
+| **Reports** | The **Reports** item shows its **Soon** badge and the "Reports is switched off" page, and members-only page views stop being counted. |
 | **WooCommerce** | New orders no longer grant plans and member prices stop. Plans already granted stay. |
 | **Importers** | The Import screen goes away. Imported members stay. **Members → Export CSV** keeps working. |
 | **Webhooks** | Nothing is sent and the Webhooks screen goes away; your webhooks and their secrets are kept for when you switch it back on. |

@@ -23,7 +23,7 @@ with 5 seats.
 
 Groups and teams is a module and is **off by default**.
 
-1. Go to **Unyson+ → Membership → Modules**.
+1. Go to **Membership → Modules**.
 2. Switch on **Groups and teams** ("One buyer pays for several seats and invites people by email, link or
    email domain.").
 3. Click **Save modules**.
@@ -34,13 +34,13 @@ A **Groups** item appears in the Membership sidebar, and plans get a **Team seat
 
 A team plan is an ordinary plan with a number of seats.
 
-1. Go to **Unyson+ → Membership → Plans** and click **New plan** (or open an existing plan). Every plan
+1. Go to **Membership → Plans** and click **New plan** (or open an existing plan). Every plan
    field is explained in [Plans](../basics/plans.md).
 2. Give it a name ("Garden Club") and its prices, as for any plan.
 3. In the **Options** panel, set **Team seats** to `5`.
 4. Click **Create plan** (or **Save plan**).
 
-<img src="/img/membership/plan-edit-settings.png" alt="The plan editor's Options panel: Also includes, Priority, Member limit, Team seats, Devices signed in at once, Members can switch to, the login and logout redirects, Role while a member, Extra capabilities and Status" width="425" />
+<img src="/img/membership/plan-edit-settings.png" alt="The plan editor's Options panel: Also includes, Priority, Member limit, Team seats, Devices signed in at once, Members can switch to, the login and logout redirects, Role while a member, Extra capabilities and Status" width="478" />
 
 **Team seats** is the number of people the buyer can bring in **besides themselves**. So a plan with 5 seats
 covers 6 people: the owner and five others.
@@ -152,9 +152,9 @@ on the **Groups** screen (below), or have the owner move to a plan with more sea
 
 ## The Groups admin screen
 
-**Unyson+ → Membership → Groups** lists every team.
+**Membership → Groups** lists every team.
 
-<img src="/img/membership/groups.png" alt="The Membership Groups screen listing teams" width="1240" />
+<img src="/img/membership/groups.png" alt="The Membership Groups screen listing teams" width="1400" />
 
 | Column | Shows |
 |---|---|
@@ -181,7 +181,7 @@ Options). Whoever holds it becomes a team owner and invites people from their ac
 
 ### The team invitation email
 
-**Team invitation** in **Unyson+ → Membership → [Emails](../member-area/emails.md)**, sent "When a team owner invites someone by email."
+**Team invitation** in **Membership → [Emails](../member-area/emails.md)**, sent "When a team owner invites someone by email."
 It goes to the invited address.
 
 - Default subject: `{owner_name} invites you to {team_name}`
@@ -205,7 +205,7 @@ No. Their seat is covered by the owner's payment.
 
 **Who counts as the owner on the Members screen?**
 The owner holds the plan normally; team members hold it as a team seat. Both appear under
-**Unyson+ → Membership → Members**, where the seat holders' **Source** reads **Group seat** (see
+**Membership → Members**, where the seat holders' **Source** reads **Group seat** (see
 [Members](../basics/members.md)).
 
 ## Next steps

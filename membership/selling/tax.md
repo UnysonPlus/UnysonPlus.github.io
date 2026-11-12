@@ -23,12 +23,12 @@ apply to you. Check with your accountant or tax office which rates and rules app
 
 ## Switch on the Tax module
 
-1. Open **Unyson+ → Membership → Modules**.
+1. Open **Membership → Modules**.
 2. Switch on **Tax** ("Tax rates by country and region, EU VAT with number validation, or automatic tax by the
    payment service.") and click **Save modules**.
 
 Tax is **off by default** and **needs the Payments module**. It has no screen of its own: its settings are a
-**Tax** panel in **Unyson+ → Membership → Payments → Payment settings**, between **Invoices** and the ways to
+**Tax** panel in **Membership → Payments → Payment settings**, between **Invoices** and the ways to
 pay.
 
 ## Set up your own rates, step by step
@@ -45,7 +45,7 @@ The Larkspur Garden Club is in Germany, sells to people across Europe, and charg
 7. Add more rows for other countries, or a row with `*` as the country code for "every other country".
 8. Click **Save payment settings**.
 
-<img src="/img/membership/payment-settings.png" alt="The Payment settings screen, with the Tax panel (How tax is worked out, Your business is in and the Rates table) between Invoices and Card (Stripe)" width="1240" />
+<img src="/img/membership/payment-settings.png" alt="The Payment settings screen, with the Tax panel (How tax is worked out, Your business is in and the Rates table) between Invoices and Card (Stripe)" width="1400" />
 
 ## Every option explained
 

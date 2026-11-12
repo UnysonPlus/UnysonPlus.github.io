@@ -64,7 +64,7 @@ lee@example.com,Lee,Moss,Free,active,2025-06-10,
 
 ## Import a CSV, step by step
 
-1. Go to **Unyson+ → Membership → Modules**, switch on **Importers**, click **Save modules**.
+1. Go to **Membership → Modules**, switch on **Importers**, click **Save modules**.
 2. Make sure every plan in the file exists under **Membership → Plans**.
 3. Go to **Setup → Import**. In **From a CSV file**, choose your file and click **Upload and match columns**.
 4. **Match the columns.** For each **Membership field** on the left, pick the **Column in your file** that holds
@@ -79,7 +79,7 @@ lee@example.com,Lee,Moss,Free,active,2025-06-10,
    **Import** again. The result reads *"Imported 120 (85 new accounts); 3 were already here; 2 problems."*
 8. Check **Membership → Members**: the imported memberships have the source **Import**.
 
-<img src="/img/membership/import.png" alt="The Import screen with three panels: From a CSV file (Choose File, Upload and match columns), From WordPress roles (a plan for each role, Dry run, Give the plans) and From a user field (Field (meta key), Show its values)" width="1240" />
+<img src="/img/membership/import.png" alt="The Import screen with three panels: From a CSV file (Choose File, Upload and match columns), From WordPress roles (a plan for each role, Dry run, Give the plans) and From a user field (Field (meta key), Show its values)" width="1400" />
 
 The uploaded file is kept for one hour while you match and dry-run. If you take longer, you see *"The upload
 expired. Please upload the file again."*
@@ -150,7 +150,7 @@ If a level or tier was kept in a user field (user meta), for example `club_level
 3. Click **Export CSV**. A file named `members-YYYY-MM-DD.csv` downloads with **every membership matching the
    current filters** (not only the page you are looking at).
 
-<img src="/img/membership/members-list.png" alt="The Members list with its status tabs, the All plans filter, the name or email search, Filter, and the Export CSV and Add a member buttons" width="1240" />
+<img src="/img/membership/members-list.png" alt="The Members list with its status tabs, the All plans filter, the name or email search, Filter, and the Export CSV and Add a member buttons" width="1400" />
 
 ### The export columns
 

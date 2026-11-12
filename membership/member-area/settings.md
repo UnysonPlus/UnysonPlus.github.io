@@ -8,7 +8,7 @@ keywords: [wordpress membership settings, membership account page setting, membe
 
 # Settings
 
-**Unyson+ → Membership → Settings** holds the site-wide choices that are not tied to one plan, one rule
+**Membership → Settings** holds the site-wide choices that are not tied to one plan, one rule
 or one form: which pages are the member pages (account, login and join), how sign-up confirmation and approval behave, whether
 members may cancel themselves, and which button style Membership uses. Modules you switch on add their own
 panels to the same screen, so it is also where you set up the CRM connection, the metered paywall, the
@@ -19,11 +19,11 @@ again whenever you switch on a module that adds a panel.
 
 ## How to use the Settings screen
 
-1. Open **Unyson+ → Membership → Settings** (the last item in the Setup section of the sidebar).
+1. Open **Membership → Settings** (the last item in the Setup section of the sidebar).
 2. Work down the panels. Only the core panels show until you switch modules on.
 3. Click **Save settings** at the bottom. One button saves every panel, including the module panels.
 
-<img src="/img/membership/settings.png" alt="The Membership Settings screen: Member pages (Account page, Login page, Join page), Sign-ups, Members and Look, then the module panels (CRM connection, Metered paywall, Keeping members, Member directory, Membership cards), Save settings and the Remove all data panel" width="1240" />
+<img src="/img/membership/settings.png" alt="The Membership Settings screen: Member pages (Account page, Login page, Join page), Sign-ups, Members and Look, then the module panels (CRM connection, Metered paywall, Keeping members, Member directory, Membership cards), Save settings and the Remove all data panel" width="1400" />
 
 The **Remove all data** panel underneath is a separate form with its own button; **Save settings** never
 touches it.
@@ -81,6 +81,10 @@ the main button and an outlined one for the second, preferring presets whose nam
 fields says which ones are in use now: "In use now: … and …". Type your own classes to override the
 choice. Membership also adds its own fallback look, so buttons still look like buttons in a theme that
 does not style these classes.
+
+These classes are for buttons only. The **fields** of the login form follow your site's default **Form
+Style** instead (Theme Settings → Components → Form Styles, when the Forms extension is on), so they match
+your other forms; see [Login and the account page](./login-and-account.md#the-member-login-element).
 
 ## Panels that modules add
 
@@ -212,7 +216,9 @@ it when you are finished with Membership for good, or to clear a test site.
 Every panel saves with the one **Save settings** button at the bottom.
 
 **Members still land in wp-admin after logging in.** Choose an **Account page**. Staff who can edit posts
-always land in wp-admin, by design.
+always land in wp-admin, by design. To stop members reaching wp-admin at all (by typing its address or
+following a Dashboard link), use **Unyson+ → Admin Menu → Roles**; see
+[Keep members out of wp-admin completely](./login-and-account.md#keep-members-out-of-wp-admin-completely).
 
 **Where are the settings for each plan?** Prices, length, redirects after login and logout, device limits
 and which plans members can switch to are on each plan in **Plans**.

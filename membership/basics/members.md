@@ -11,13 +11,13 @@ keywords: [manage members wordpress, wordpress membership members list, add memb
 A **member** is a WordPress user who holds at least one plan. Each plan they hold is a **membership**, with its
 own status, start date, end date and history. Someone who holds Free and Member has two memberships.
 
-Everything about members is under **Unyson+ → Membership → Members**: the list, each member's own page, and
+Everything about members is under **Membership → Members**: the list, each member's own page, and
 the form to add someone by hand. Every change you make here is written to the member's history with your name,
 and the right emails and connected services (the payment service, the CRM) are told about it.
 
 ## The members list
 
-<img src="/img/membership/members-list.png" alt="The Membership members list with status tabs, plan filter, search, and each membership's plan, status, dates and source" width="1240" />
+<img src="/img/membership/members-list.png" alt="The Membership members list with status tabs, plan filter, search, and each membership's plan, status, dates and source" width="1400" />
 
 The list has **one row per membership**, so a person with two plans appears twice.
 
@@ -71,7 +71,7 @@ up payments, a member moving over from another system, or yourself for testing.
 7. Add a **Note (optional)**, such as "Paid by bank transfer". It appears in the member's history.
 8. Click **Add member**. You land on their member page.
 
-<img src="/img/membership/member-add.png" alt="The Add a member form with email, name, plan, end date, account options and a note" width="1240" />
+<img src="/img/membership/member-add.png" alt="The Add a member form with email, name, plan, end date, account options and a note" width="1400" />
 
 | Field | What it does | Default |
 | --- | --- | --- |
@@ -96,7 +96,7 @@ Good to know about adding by hand:
 
 Click a name anywhere in Membership to open the member's page.
 
-<img src="/img/membership/member-page.png" alt="A member's page in the Membership app with their memberships, history, profile and the Add a plan form" width="1240" />
+<img src="/img/membership/member-page.png" alt="A member's page in the Membership app with their memberships, history, profile and the Add a plan form" width="1400" />
 
 **At the top:** their name, email (a mail link) and "Account since" date, with buttons for their **WordPress
 profile** and, when the CRM is active, **Open in the CRM**.

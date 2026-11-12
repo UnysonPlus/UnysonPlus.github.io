@@ -29,7 +29,7 @@ Failed-payment recovery, pausing a subscription and the discount offer work with
 
 ## Set it up in five minutes
 
-1. Go to **Unyson+ → Membership → Modules**, switch on **Retention** and click **Save modules**.
+1. Go to **Membership → Modules**, switch on **Retention** and click **Save modules**.
 2. Go to **Membership → Settings** and scroll to the **Keeping members** panel (also listed in
    [Settings](../member-area/settings.md#keeping-members-retention-module)).
 3. Check the defaults (they are sensible for most sites, see [Every option explained](#every-option-explained)).
@@ -41,7 +41,7 @@ Failed-payment recovery, pausing a subscription and the discount offer work with
 6. Make sure scheduled jobs run on time (reminders and follow-ups are sent by a daily job): see
    [Scheduled jobs](../running-your-site/scheduled-jobs-and-cli.md).
 
-<img src="/img/membership/settings.png" alt="The Membership Settings screen; the Keeping members panel (failed payments, leaving, reminders and win-back) sits below the Metered paywall panel" width="1240" />
+<img src="/img/membership/settings.png" alt="The Membership Settings screen; the Keeping members panel (failed payments, leaving, reminders and win-back) sits below the Metered paywall panel" width="1400" />
 
 ## When a renewal payment fails
 
@@ -180,7 +180,7 @@ Below the cards:
 
 The **Settings** link next to the period takes you to the **Keeping members** panel.
 
-<img src="/img/membership/retention.png" alt="The Retention screen with the last 90 days, the reasons people leave and what kept them" width="1240" />
+<img src="/img/membership/retention.png" alt="The Retention screen with the last 90 days, the reasons people leave and what kept them" width="1400" />
 
 ## Every option explained
 

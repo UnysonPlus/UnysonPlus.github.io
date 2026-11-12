@@ -370,8 +370,9 @@ Height**, they shrink to fit it.
 
 **WebGL (real 3D)**
 
-These three are drawn with real 3D graphics (WebGL), so they have true depth, lights and, on the Mirror Ring, a
-reflective floor. The other designs are built from CSS 3D, which is lighter but can't light or reflect.
+These six are drawn with real 3D graphics (WebGL), so they can do what CSS 3D can't: real lights and reflections,
+shader effects, thousands of particles and pages that bend. The other designs are built from CSS 3D, which is
+lighter. The first three show many photos at once; the last three show **one photo at a time**.
 
 <img src="/img/animation-engine/motion-gallery/webgl-mirror-ring.png" alt="Mirror Ring: photos on a ring above a glossy floor that mirrors them, the ones facing away in shadow" width="1920" />
 
@@ -396,10 +397,51 @@ reflective floor. The other designs are built from CSS 3D, which is lighter but 
   Angle** (look up at the wall), **Light Angle** (where the key light comes from), **Gloss** and **Gap** shape it.
   Point at a photo and it lifts out of the wall.
 
-All three share **Lighting** (Soft, Studio or Dramatic), **Card Size**, **Card Ratio**, **Corner Radius**,
+Those three share **Lighting** (Soft, Studio or Dramatic), **Card Size**, **Card Ratio**, **Corner Radius**,
 **Stage Height** and **Stage Background**, the usual **Motion** (an automatic loop, **Scroll-scrub** with an
 optional pin, or **Static**) and **On Hover** (keep going, slow down or pause). Clicking a photo opens the
 lightbox or its link, exactly as on the other designs.
+
+*One photo at a time.* These three fill the stage with one photo and change to the next with an effect. Their
+**Motion** is **Autoplay** (**Loop Duration** is the seconds each photo stays, 2–20, **Forward** or
+**Backward**), **Scroll-scrub** (the scroll walks through the photos; with **Pin** on it holds the gallery while
+it does) or **Static** (the first photo). **Move Time** is how much of each photo's time the change takes; the
+photo holds still for the rest. With **Swipe to change** on (the default), visitors swipe or drag left and right
+for the next and previous photo, and moving keyboard focus to a photo in the hidden list changes to it. They load
+each photo at full size, so the picture stays sharp across the stage.
+
+[WebGL Object](/animation-engine/webgl-object)'s **Image Transitions** and **Image Particles** presets draw
+similar effects as a decoration or a background. Use these Motion Gallery designs when the photos are a gallery:
+they come from the gallery's own list, open the lightbox or their links, can be swiped and scrubbed on scroll,
+and stay readable to screen readers and search engines.
+
+<img src="/img/animation-engine/motion-gallery/webgl-liquid-slider.png" alt="Liquid Slider mid-change: the next photo flowing into the current one along a soft, wavy front" width="1920" />
+
+- **Liquid Slider** — the photo fills the stage, cropped to fit, never stretched, and the next one arrives through a
+  **Transition**: **Liquid** (it flows in along a soft, moving front), **Ripple** (a ring of waves opens from
+  the centre and carries it in), **Slices** (strips slide in one after another) or **Swirl** (the photo twists
+  into the next). **Strength** (0–100 %) sets how much the change distorts the photos, **Pointer Ripple**
+  (0–100 %) sends soft ripples out from the pointer, and **Slow Zoom** (0–20 %) zooms gently in and out on each
+  photo. **Corner Radius** rounds the stage's corners. Clicking opens the photo on screen.
+
+<img src="/img/animation-engine/motion-gallery/webgl-particle-morph.png" alt="Particle Morph: a photo of a yellow house drawn as coloured dots, the dots starting to burst apart" width="1920" />
+
+- **Particle Morph** — each photo is drawn as thousands of coloured particles, and they leave the picture and
+  gather into the next one. **Transition**: **Explode** (burst outward and gather), **Swirl** (spin round the
+  centre), **Drift** (blown sideways) or **Rain** (fall and rise again). **Particles Across** (40–240) is how
+  many particles make one row of the picture: more shows finer detail and costs more. **Particle Size**
+  (40–160 %) is their size against the space between them: under 100 shows a dotted picture, over 100 a solid
+  one. **Scatter** (0–100 %) is how far they fly, and **Pointer Push** (0–100 %) moves them out of the
+  pointer's way. Photos from another site need that site to allow it (CORS); without it they show as grey
+  particles.
+
+<img src="/img/animation-engine/motion-gallery/webgl-flip-book.png" alt="Flip Book: an open book lying back, its right-hand page bending as it turns over" width="1920" />
+
+- **Flip Book** — an open book with two photos to a spread; each page bends and catches the light as it turns.
+  **Book Size** (20–95 % of the stage width), **Tilt** (0–60°, how far it lies back as if on a table), **Page
+  Curl** (0–100 %; 0 = stiff card pages), **Cover Colour** (the board round the pages), **Lighting**, **Page
+  Ratio** and **Corner Radius**. **Loop Duration** here is the seconds per spread. Swiping turns the pages back
+  and forth; clicking a page opens its photo.
 
 How they behave on the page:
 
@@ -408,7 +450,7 @@ How they behave on the page:
   several of them, and nothing renders while the gallery is off screen or the tab is hidden.
 - **Accessibility:** the photos also stay in the page as the usual list of images and links, so screen readers
   and search engines read them as before. Moving keyboard focus to a photo brings it to the front of the scene
-  and outlines the gallery.
+  (or, on the one-photo designs, changes to it) and outlines the gallery.
 - **No WebGL** (a very old browser, or WebGL switched off): the photos show as a plain grid instead.
 - **Reduce motion**, and the Live Editor's Edit canvas: one still frame, no movement.
 - **Entrance:** the photos fade and rise in one after another the first time the gallery comes into view. The

@@ -226,6 +226,10 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   family of three designs: **Mirror Ring** (a lit ring above a reflective floor), **Depth Field** (photos at true
   depth in fog, pointer parallax) and **Wave Wall** (a lit, rippling wall of photos). See
   [Motion Gallery → WebGL](/animation-engine/motion-gallery).
+  **Animation Engine 1.5.3** adds three one-photo-at-a-time WebGL designs: **Liquid Slider** (the next photo
+  arrives through a liquid, ripple, slices or swirl shader), **Particle Morph** (each photo drawn as particles
+  that scatter and gather into the next) and **Flip Book** (a 3D book whose pages bend as they turn), with swipe,
+  keyboard focus and scroll-scrub.
 
 ## Phase 3 — Flourishes
 

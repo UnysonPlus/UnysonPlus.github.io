@@ -234,7 +234,10 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   flattens under the pointer), plus **Pixelate** and **Glitch** transitions for the Liquid Slider. **Animation Engine
   1.5.5** adds **Water Pool** (photos under water, rippling under the pointer), **Jelly Grid** (photos that bulge and
   wobble like jelly) and **Stage Curtain** (a pleated curtain that closes and opens between photos), plus
-  **Kaleidoscope** and **Torn Paper** transitions.
+  **Kaleidoscope** and **Torn Paper** transitions. **Animation Engine 1.5.6** adds **Gallery Walk** (a walk down a
+  gallery corridor, the photos framed on both walls), **Holo Cards** (holographic cards that tilt toward the pointer)
+  and **Domino Row** (photos as dominoes that topple and stand back up, with real shadows), plus **Burn** and **Zoom
+  Blur** transitions.
 
 ## Phase 3 — Flourishes
 

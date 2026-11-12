@@ -370,10 +370,10 @@ Height**, they shrink to fit it.
 
 **WebGL (real 3D)**
 
-These twelve are drawn with real 3D graphics (WebGL), so they can do what CSS 3D can't: real lights and reflections,
-shader effects, thousands of particles, breaking glass, water, jelly, and cloth and paper that bend. The other
-designs are built from CSS 3D, which is lighter. Mirror Ring, Depth Field, Wave Wall, Cloth Banners, Fold Strip,
-Water Pool and Jelly Grid show many photos at once; Liquid Slider, Particle Morph, Flip Book, Shatter and Stage
+These fifteen are drawn with real 3D graphics (WebGL), so they can do what CSS 3D can't: real lights, shadows and
+reflections, shader effects, thousands of particles, breaking glass, water, jelly, holographic foil, and cloth and
+paper that bend. The other designs are built from CSS 3D, which is lighter. Mirror Ring, Depth Field, Wave Wall,
+Cloth Banners, Fold Strip, Water Pool, Jelly Grid, Gallery Walk, Holo Cards and Domino Row show many photos at once; Liquid Slider, Particle Morph, Flip Book, Shatter and Stage
 Curtain show **one photo at a time**.
 
 <img src="/img/animation-engine/motion-gallery/webgl-mirror-ring.png" alt="Mirror Ring: photos on a ring above a glossy floor that mirrors them, the ones facing away in shadow" width="1920" />
@@ -424,7 +424,9 @@ and stay readable to screen readers and search engines.
   the centre and carries it in), **Slices** (strips slide in one after another), **Swirl** (the photo twists
   into the next), **Pixelate** (the photo breaks into growing blocks, swaps, then sharpens), **Glitch** (bands
   of the picture jump sideways while it swaps), **Kaleidoscope** (the photo folds into turning mirrored segments
-  and opens out on the next) or **Torn Paper** (the photo is torn away from the right, with a white paper edge). **Strength** (0–100 %) sets how much the change distorts the photos, **Pointer Ripple**
+  and opens out on the next), **Torn Paper** (the photo is torn away from the right, with a white paper edge),
+  **Burn** (the photo burns away along a glowing, charred edge) or **Zoom Blur** (it rushes toward you in a blur and
+  settles on the next). **Strength** (0–100 %) sets how much the change distorts the photos, **Pointer Ripple**
   (0–100 %) sends soft ripples out from the pointer, and **Slow Zoom** (0–20 %) zooms gently in and out on each
   photo. **Corner Radius** rounds the stage's corners. Clicking opens the photo on screen.
 
@@ -500,6 +502,34 @@ and stay readable to screen readers and search engines.
   bulge), **Wobble** (how springy they are), **Wave** (a gentle swell that rolls across the grid on its own;
   Scroll-scrub rolls it with the scroll), **View Angle**, **Gloss**, **Lighting**, **Card Ratio** and **Corner
   Radius**.
+
+<img src="/img/animation-engine/motion-gallery/webgl-gallery-walk.png" alt="Gallery Walk: a corridor with framed photos on both walls, receding into haze" width="1920" />
+
+- **Gallery Walk** — a slow walk down an art-gallery corridor with your photos framed on both walls, two to a
+  step, each in a soft pool of light, the far end fading into haze. **Motion → Walk** moves you along (Loop
+  Duration is one pass past every photo; **Backward** walks back); Scroll-scrub walks with the scroll. Move the
+  pointer and the view turns toward it (**Look Around**, 0 = straight ahead). **Wall Colour**, **Floor Colour**
+  (a glossy floor), **Frame Colour**, **Mat** (a white mount inside each frame), **Light Pools**, **Spacing** and
+  **Picture Ratio**. Clicking a picture opens it.
+
+<img src="/img/animation-engine/motion-gallery/webgl-holo-cards.png" alt="Holo Cards: four photo cards, the one under the pointer tilted and tinted by a rainbow foil" width="1920" />
+
+- **Holo Cards** — your photos as collectible cards with a holographic foil. Point at a card and it tilts toward
+  the pointer and lifts; the foil shifts colour as it turns and a spot of glare follows the pointer. With the
+  pointer away, the cards sway gently (**Motion → Shimmer**, or with the scroll) so the foil keeps catching the
+  light. **Columns** (1–8), **Rows** (1–4), **Gap**, **Foil** (strength), **Foil Pattern** (**Rainbow** bands,
+  **Sparkle** glittering flecks or fine etched **Lines**), **Tilt** (0–35°), **Glare**, **Card Ratio** and
+  **Corner Radius**.
+
+<img src="/img/animation-engine/motion-gallery/webgl-domino-row.png" alt="Domino Row: photos standing as dominoes, the first few toppled onto the next, with shadows on the floor" width="1920" />
+
+- **Domino Row** — your photos stand in a row like dominoes, casting real shadows on the floor. They topple one
+  after another, each coming to rest on the next and the last falling flat, then stand back up from the far
+  end (**Motion → Topple and reset**; Loop Duration is the whole cycle). With Scroll-scrub the scroll knocks
+  them down and scrolling back stands them up. **Dominoes** (4–16; the gallery repeats to fill the row),
+  **Spacing** (wider gaps let each lean further), **View Angle**, **Camera Height**, **Domino Colour** (the
+  edges), **Shadows** (off is lighter for slow devices), **Domino Ratio** and **Corner Radius**. The camera fits
+  the whole row, standing and fallen, at any angle.
 
 How they behave on the page:
 

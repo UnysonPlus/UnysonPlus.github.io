@@ -370,11 +370,12 @@ Height**, they shrink to fit it.
 
 **WebGL (real 3D)**
 
-These fifteen are drawn with real 3D graphics (WebGL), so they can do what CSS 3D can't: real lights, shadows and
-reflections, shader effects, thousands of particles, breaking glass, water, jelly, holographic foil, and cloth and
-paper that bend. The other designs are built from CSS 3D, which is lighter. Mirror Ring, Depth Field, Wave Wall,
-Cloth Banners, Fold Strip, Water Pool, Jelly Grid, Gallery Walk, Holo Cards and Domino Row show many photos at once; Liquid Slider, Particle Morph, Flip Book, Shatter and Stage
-Curtain show **one photo at a time**.
+These eighteen are drawn with real 3D graphics (WebGL), so they can do what CSS 3D can't: real lights, shadows and
+reflections, shader effects, thousands of particles, breaking glass, water, jelly, soap bubbles, holographic foil,
+and cloth, film and paper that bend. The other designs are built from CSS 3D, which is lighter. Mirror Ring, Depth
+Field, Wave Wall, Cloth Banners, Fold Strip, Water Pool, Jelly Grid, Gallery Walk, Holo Cards, Domino Row, Photo
+Bubbles and Film Ribbon show many photos at once; Liquid Slider, Particle Morph, Flip Book, Shatter and Stage
+Curtain and Photo Cube show **one photo at a time**.
 
 <img src="/img/animation-engine/motion-gallery/webgl-mirror-ring.png" alt="Mirror Ring: photos on a ring above a glossy floor that mirrors them, the ones facing away in shadow" width="1920" />
 
@@ -425,8 +426,9 @@ and stay readable to screen readers and search engines.
   into the next), **Pixelate** (the photo breaks into growing blocks, swaps, then sharpens), **Glitch** (bands
   of the picture jump sideways while it swaps), **Kaleidoscope** (the photo folds into turning mirrored segments
   and opens out on the next), **Torn Paper** (the photo is torn away from the right, with a white paper edge),
-  **Burn** (the photo burns away along a glowing, charred edge) or **Zoom Blur** (it rushes toward you in a blur and
-  settles on the next). **Strength** (0–100 %) sets how much the change distorts the photos, **Pointer Ripple**
+  **Burn** (the photo burns away along a glowing, charred edge), **Zoom Blur** (it rushes toward you in a blur and
+  settles on the next), **Mosaic** (it changes square by square, in a random order) or **Ink** (the next photo
+  spreads out from the middle like ink in water, with a dark edge). **Strength** (0–100 %) sets how much the change distorts the photos, **Pointer Ripple**
   (0–100 %) sends soft ripples out from the pointer, and **Slow Zoom** (0–20 %) zooms gently in and out on each
   photo. **Corner Radius** rounds the stage's corners. Clicking opens the photo on screen.
 
@@ -464,6 +466,14 @@ and stay readable to screen readers and search engines.
   of the stage it leaves clear), **Swag** (how far the inner lower corners lift as it opens; 0 = it slides
   straight) and **Valance** (a pleated band across the top). The curtain is lit from the side, so the pleats
   shade like cloth.
+
+<img src="/img/animation-engine/motion-gallery/webgl-photo-cube.png" alt="Photo Cube: a lit cube mid-turn, one photo on its front and the next turning in on its side, with a shadow beneath" width="1920" />
+
+- **Photo Cube** — the photo is on the front of a lit cube, which turns a quarter-turn to bring the next photo
+  round, casting a soft shadow on the floor. **Turn**: **Sideways** (it turns round) or **Roll forward** (it
+  tips over its top edge). **Cube Size** (20–90 % of the stage height), **Camera Height**, **Float** (a gentle
+  bob), **Cube Colour** (the two faces that never come to the front), **Shadow**, **Lighting** and **Corner
+  Radius**. The photos are cropped square to fit the faces.
 
 *Many photos at once, in motion.*
 
@@ -530,6 +540,22 @@ and stay readable to screen readers and search engines.
   **Spacing** (wider gaps let each lean further), **View Angle**, **Camera Height**, **Domino Colour** (the
   edges), **Shadows** (off is lighter for slow devices), **Domino Ratio** and **Corner Radius**. The camera fits
   the whole row, standing and fallen, at any angle.
+
+<img src="/img/animation-engine/motion-gallery/webgl-photo-bubbles.png" alt="Photo Bubbles: photos inside soap bubbles of different sizes, their rims shimmering with rainbow colours" width="1920" />
+
+- **Photo Bubbles** — your photos inside soap bubbles that float up (or sink: **Motion → Float**, **Rise** or
+  **Sink**), wobbling as they go, their rims shimmering with thin-film colours and a window highlight on each. Move
+  the pointer among them and they drift out of its way; pointing at one swells it a little. **Bubbles** (4–30;
+  the gallery repeats to fill them), **Bubble Size**, **Iridescence**, **Depth** (how far they spread toward and
+  away from you), **Wobble** and **Pointer Push**. The photos are cropped round to fit the bubbles.
+
+<img src="/img/animation-engine/motion-gallery/webgl-film-ribbon.png" alt="Film Ribbon: a strip of dark film with sprocket holes curving across the stage, a photo in each frame" width="1920" />
+
+- **Film Ribbon** — your photos on a strip of film with sprocket holes, flowing along a curving path through
+  space and twisting about its length, so the light runs across it. **Motion → Flow** moves the film along (Loop
+  Duration is one pass of every photo); Scroll-scrub winds it with the scroll. **Frames in View** (3–10),
+  **Wave** (how far it curves; 0 = straight), **Twist**, **Film Colour**, **Sprocket Holes**, **Lighting** and
+  **Frame Ratio**. Clicking a frame opens its photo.
 
 How they behave on the page:
 

@@ -92,7 +92,7 @@ every time it saves.
 - **Turn it on or off** in the AI assist settings (the gear): *Work in steps in the project*. The line under the request
   box says *In steps* while it is on. It is used for **This scene** and **Selected**; **New scene** still answers in one go.
 - **What it may touch:** the files in the project folder, and the Kinetic Scenes tools (the guide, check scene, frames,
-  the timeline, the notes). It cannot run commands, reach the web, start other agents, render, or save anywhere else.
+  the timeline, the notes, beats, transcription, voice-over, composed music and physics). It cannot run commands, reach the web, start other agents, render, or save anywhere else.
 - **Stop** stops it; whatever it already saved stays, and **Undo** goes back step by step.
 - A request takes about a minute (15 or so steps for a small change), using your own Claude subscription through Claude
   Code. With another AI in the kit (an API key, a local model), AI assist answers in one go, as before.
@@ -160,7 +160,7 @@ cd <kit>/assembled/UnysonPlus-Capture-Service/tools/design-capture
 node studio-cli.mjs check scene.json          # validate + Check scene
 node studio-cli.mjs inspect scene.json        # layers and clips in time, sound, key moments
 node studio-cli.mjs stills scene.json         # a frame of each part once it has landed, with its layout measured
-node studio-cli.mjs render scene.json --out scene.mp4   # --format webm|mov, --transparent, --cover
+node studio-cli.mjs render scene.json --out scene.mp4   # --format webm|mov, --transparent, --cover, --blur, --composite
 node studio-cli.mjs beats music.mp3           # tempo, beats and the strongest moments
 node studio-cli.mjs transcribe voice.mp3      # every word with its time
 node studio-cli.mjs separate clip.mp4         # the voice and the music as two WAV files
@@ -172,9 +172,10 @@ agent fixes those, then looks at each frame itself against the review list in th
 balance, reading) before handing the scene over.
 
 Add `--json` for machine-readable output. The same tools are a local MCP server, so the agent calls them as tools
-(`scene_stills` returns the frames as images it can look at, `audio_separate` splits a clip). The server adds three more: `scene_guide` (the scene
-format and the presets, so the AI writes valid scenes), `scene_link` (a Studio link that opens the scene in the
-browser) and `scene_save` (writes a scene to a file). Every scene tool takes either a file path or the scene itself, so an
+(`scene_stills` returns the frames as images it can look at, `audio_separate` splits a clip), plus tools the command line
+doesn't need: `scene_guide` (the scene format and the presets, so the AI writes valid scenes), `scene_link` (a Studio link
+that opens the scene in the browser) and `scene_save` (writes a scene to a file). There are 40 in all: see
+[the full list](./ai-agents.md). Every scene tool takes either a file path or the scene itself, so an
 app without file access can still use them:
 
 ```bash

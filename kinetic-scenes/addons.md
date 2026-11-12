@@ -1,7 +1,7 @@
 ---
 sidebar_position: 12.2
 title: Add-ons
-description: Extra tools Kinetic Scenes can use through the AI Dev Kit on your computer — Voicebox for voice-overs in your own voice, ACE-Step for background music, speech recognition, voices, voice and music separation, with Blender and sound identification coming soon.
+description: Extra tools Kinetic Scenes can use through the AI Dev Kit on your computer — Voicebox for voice-overs in your own voice, ACE-Step for background music, speech recognition, voices, voice and music separation, sound identification, Blender and FFmpeg.
 ---
 
 # Add-ons
@@ -42,7 +42,8 @@ kit itself closes.
 | **Built-in voices** | Download | Voice-overs from a script in a free synthetic voice (Piper). | Voice-over from a script |
 | **Kokoro voices** | Download | Six more natural voices for voice-overs from a script, on the processor (about 500 MB). | [Voice-over from a script](./sound.md#a-voice-over-from-a-script) |
 | **Voice and music separation** | Download | Splits a clip's sound into the voice and the music (Demucs). | [Footage tools](./video-effects.md#separate-voice-and-music), an audio clip's **Voice and music** |
-| **Blender** | Connector | Builds 3D objects from a description, for 3D layers. | Coming soon |
+| **Blender** | Connector | An AI agent builds anything in Blender: a 3D model for a 3D layer, or an animated shot as a transparent video. | [Blender](./blender.md) (through your AI agent) |
+| **FFmpeg** | Download | Video and sound processing: exports, footage, captions and the video tools. The kit installs it for you. | [FFmpeg](./ffmpeg.md) |
 | **Sound identification** | Download | Names the sounds in a clip and when each is heard (CLAP, on the processor, about 560 MB). | [Sounds in this clip](./sound.md#sounds-in-a-clip) on an audio clip |
 
 ## FFmpeg

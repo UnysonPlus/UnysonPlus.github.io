@@ -48,16 +48,17 @@ things happening. The result is `video.mp4` plus `actions.json` (when and where 
 | `click`, `dblclick`, `hover` | on a `target` |
 | `type` | `text`, into a `target` if given (`clear` empties it first) |
 | `select` | picks an `option` (or `value`) in a dropdown |
-| `press`, `scroll`, `drag`, `wait`, `goto`, `mark` | a key, a scroll, a drag `from` → `to`, a pause, another page, a labelled moment |
+| `press`, `scroll`, `drag`, `wait`, `goto`, `mark` | a `key`; a scroll `by` pixels (default 300); a drag `from` → `to`; a pause of `ms` (default 600); another page at `path` (its loading cut); a labelled moment |
 | `upload` | chooses a file: the cursor goes to the file field (or the button given as `click`) and the `file` is set, since a system file dialog does not show in a recording |
-| `waitFor` | waits for something slow (an AI building a page, an import) until a `target` reaches `state` (`visible`, the default, or `hidden`): the first `keep` seconds (default 2) stay in the video so the viewer sees it working, the rest is cut, like a fast-forward. `timeout` in ms (default 10 minutes) |
+| `waitFor` | waits for something slow (an AI building a page, an import) until a `target` reaches `state` (`visible`, the default, `hidden`, `attached` or `detached`): the first `keep` seconds (default 2) stay in the video so the viewer sees it working, the rest is cut, like a fast-forward. `timeout` in ms (default 10 minutes) |
 | `wp.title`, `wp.saveDraft`, `wp.preview`, `wp.publish`, `wp.view` | WordPress: name a page, save, preview, publish (waits for the confirmation), open the published page |
-| `pb.addSection`, `pb.add`, `pb.edit`, `pb.set`, `pb.save` | the Unyson+ page builder: add a section, drag in an element by its name, open its settings (one click), fill a field, save |
+| `pb.tab`, `pb.addSection`, `pb.add`, `pb.edit`, `pb.set`, `pb.save` | the Unyson+ page builder: open a tab of elements (`name`), add a section, drag in an element by its name (optionally from a `tab`), open its settings (one click), fill a field, save |
 | `le.select`, `le.edit`, `le.device`, `le.save` | the Unyson+ Live Editor: click an element on the page, open its settings, switch to Desktop / Tablet / Mobile, save |
 
 A **target** is a CSS selector, `{ "text": "…" }`, `{ "role": "button", "name": "…" }`, `{ "label": "…" }`, or, inside
 the Live Editor's page, the same with `"frame": true`. Each step's `label` becomes its caption in the video, and an
-optional `about` (a sentence on what the step does and why) is kept in `actions.json` for the voice-over below.
+optional `about` (a sentence on what the step does and why) is kept in `actions.json` for the voice-over below. A
+step's `pause` (in ms, default 350) is the wait after it; the top-level `tail` (default 1500 ms) is held at the end.
 
 **The video always matches `actions.json`:** while the screen is still the browser sends no new pictures, and each one
 is held until the next, so every action happens in the video exactly when `actions.json` says.
@@ -72,9 +73,10 @@ This writes a scene beside the recording. Its camera **zooms to each action** wh
 a phone in 9:16), holds through it, and pulls back between steps; page changes show the whole screen. Each step label
 becomes a numbered caption, and each voice line a subtitle placed clear of the action.
 
-Options: `--format 9x16 | 16x9`, `--title` and `--intro` (an opening card and its length), `--end` and `--cta` (an end
-card), `--music`, `--voice` (lines with their times: a voice clip and a subtitle each), and the look: `--accent`
-(caption colour), `--bg` (a picture behind the recording), `--title-bg` and `--end-bg`. Put the scene into a
+Options: `--format 9x16 | 16x9`, `--title` and `--intro` (an opening card and its length; `--intro` needs `--title`),
+`--end` and `--cta` (an end card), `--music`, `--voice` (lines with their times: a voice clip and a subtitle each), and
+the look: `--accent` (caption colour), `--glow` (the colour of the background glow), `--bg` (a picture behind the
+recording), `--title-bg` and `--end-bg`. Put the scene into a
 [project](./ai-agents.md#projects) to preview it in the Studio; render only when it is right.
 
 In the Studio, **File › New from a screencast…** does the same from a recording's `video.mp4` and `actions.json`; the
@@ -135,6 +137,8 @@ node studio-cli.mjs shot shots.json --out shots
 Sharp 2x pictures of a page or one element, with optional annotations drawn on the page itself: `highlight` (a ring),
 `callout` (a label beside a target), `arrow` (pointing at a target from a side, stopping just outside it) and `blur`
 (hide personal details). The crop widens to take in the annotations. `steps` set the page up first (click, type, hover).
+A shot with `rows` (a selector matching each row of a settings panel) also writes `<name>.rows.json`, a picture of each
+row and the panel with its rows hidden, for an [animated screenshot](./tours.md).
 
 ## 4. A demo site worth ending on
 

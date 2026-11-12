@@ -20,7 +20,7 @@ waiting for a video.
 
 ## What you need
 
-- The [AI Dev Kit](./index.mdx) running on your computer, in a version that includes this tool.
+- The [AI Dev Kit](/ai-dev-kit) running on your computer, in a version that includes this tool.
 - A Gemini API key of your own. You can [get a free one from Google](https://aistudio.google.com/apikey).
 - A scene with sound.
 

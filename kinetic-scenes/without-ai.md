@@ -33,7 +33,7 @@ optional helper: it can plan and build a scene from a sentence and review its ow
 
 AI in Kinetic Scenes runs on **your own AI**, so there's nothing to buy from us:
 
-- **Your Claude subscription, or a local model,** through the free [AI Dev Kit](./addons.md) on your computer. The Studio
+- **Your Claude or ChatGPT subscription, Cursor, an API key, or a local model,** through the free [AI Dev Kit](/ai-dev-kit) on your computer. The Studio
   talks to the kit on your machine; your scenes aren't sent to us.
 - **AI agents** (Claude Code, Cursor, Codex) can use the same tools to make scenes for you.
 

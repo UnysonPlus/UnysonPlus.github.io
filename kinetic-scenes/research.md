@@ -36,8 +36,9 @@ result opens on the timeline as ordinary clips. This is the main difference betw
 above.
 
 **Keep video export possible.** Because every timeline is seekable, the HyperFrames approach (a headless
-browser stepping through frames and an encoder joining them) can be added later without changing the scene
-file. It is on the [roadmap](./roadmap.mdx) as a later phase.
+browser stepping through frames and an encoder joining them) could be added without changing the scene file, and that
+is how video export was built: **Export › Video** in the Studio and `render` in the AI Dev Kit (see
+[Export](./export.md)).
 
 ## Lessons
 

@@ -36,8 +36,10 @@ The **×** in its corner closes it for now; it comes back the next time you open
 | **Social promo** | A Reel, Short or TikTok: a hook in the first second, three quick beats, a call to action, all clear of the app's buttons. | Video 9:16 |
 | **Explainer** | Longer pieces in chapters: chapter cards, a chapter progress bar, a "Chapter 1 of 3" label and subtitles. Replace the script, or ask AI assist to fill it from yours. | Video 16:9 |
 | **Code demo** | A code window types a snippet, the key line gets a note, and it runs. | Video 16:9 |
+| **Paper cut-out explainer** | Act out an idea in a paper world: layered paper shapes, torn caption tags and paper cuts (see [Paper cut-out explainers](./paper-cut-out.md)). | Video 9:16 |
 
-Every template works in every style, from the original looks to the [motion styles](./motion-styles.md), and follows the
+Every template except the paper cut-out explainer (built for its own style) works in every style, from the original
+looks to the [motion styles](./motion-styles.md), and follows the
 film's shape AI assist uses: something happens at once, one hero moment, and a held end frame. All of them pass Check
 scene with no warnings. The words are placeholders written to be replaced, and the product shot is a placeholder picture.
 
@@ -45,5 +47,5 @@ scene with no warnings. The words are placeholders written to be replaced, and t
 
 The Presets tab can also be browsed **by goal** instead of by technique: *Make a headline land*, *Reveal a picture*,
 *Draw attention*, *Change scenes*, *Show numbers and data*, *Keep a frame alive*, *Show a product or app*, *Give it a
-look* and *Explain code*. Each goal has a short hint and the presets that do it, best first. Switch with **By goal / By
+look*, *Edit a talking head* (effects on a person cut out of the footage) and *Explain code*. Each goal has a short hint and the presets that do it, best first. Switch with **By goal / By
 technique** above the list; the Studio remembers your choice.

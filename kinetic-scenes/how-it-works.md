@@ -11,7 +11,7 @@ description: How Kinetic Scenes is built — the scene file, the player, seekabl
 | Part | Technology | Why |
 |---|---|---|
 | **The editor** (timeline, stage, panels) | React and TypeScript, built with Vite | A drag-and-drop timeline editor is a large interactive app that runs in the browser. It compiles to static files, so the server never runs Node.js. |
-| **The player** (what an exported scene ships) | Plain JavaScript and GSAP, with three.js only when a scene uses 3D | It has to be small and work on any page, including inside WordPress. React stays in the editor and never ships with a scene. |
+| **The player** (what an exported scene ships) | Plain JavaScript and GSAP; three.js, lottie-web and the paint engine load only when a scene uses 3D, a Lottie animation or a painted layer | It has to be small and work on any page, including inside WordPress. React stays in the editor and never ships with a scene. |
 | **Hosting** | GitHub Pages | Published automatically from the repository on each push. The Studio needs no server of its own: it is static files, and the AI runs on each user's own computer. |
 
 The AI, speech recognition, voice-overs, cutting people out of footage and video rendering run in the

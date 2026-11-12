@@ -24,7 +24,7 @@ a product video ("watch your page get built") and a good way to show that someth
 
 1. Lay out the scene as it should look when it is built (the opening frame). The layers you want built must be on the
    stage at the start.
-2. Open **Tools › Build with cursors…** (it is also in the *What do you want to make today?* box when it is new).
+2. Open **Tools › Build with cursors…** (it is also listed in **Help › What's new**).
 3. Choose the options below and click **Build it**.
 4. Play the scene. Everything the build made is ordinary layers and clips, so you can move, retime or delete any of it,
    and **Undo** takes the whole build back.

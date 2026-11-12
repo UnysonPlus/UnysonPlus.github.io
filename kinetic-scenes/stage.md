@@ -96,8 +96,10 @@ element, the embed code and the HTML export all include this text.
 ## Styles
 
 A style is a look to build from: a colour palette, a font pairing, a motion personality (how headlines, supporting text
-and shapes enter and leave, and how they ease), a pace and a sound palette. The **Styles** tab has eight: **Night**,
-**Clean**, **Kinetic**, **Pastel**, **Neon**, **Editorial**, **Playful** and **Luxe**. Hover a card to see its title card.
+and shapes enter and leave, and how they ease), a pace and a sound palette. The **Styles** tab has 30: eight looks
+(**Night**, **Clean**, **Kinetic**, **Pastel**, **Neon**, **Editorial**, **Playful** and **Luxe**) and 22
+[motion styles](./motion-styles.md) named after recognised motion-design styles (synthwave, line art, paper cut-out…).
+Hover a card to see its title card.
 
 <img src="/img/kinetic-scenes/library-styles.png" alt="The Styles tab" width="232" />
 

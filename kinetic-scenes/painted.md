@@ -60,7 +60,7 @@ ink and charcoal. Use one or the other on a layer; the Inspector's buttons go aw
 - **Shapes and lines.** Rectangles (rounded too), circles and ellipses, and line layers. Text, pictures and groups are
   not painted.
 - **It paints in the browser with WebGL2**, which every current browser has. The paint engine (`scene-paint.js`, about
-  42 KB) loads only for scenes that use Painted, and a downloaded page carries it inside.
+  112 KB, 42 KB compressed) loads only for scenes that use Painted, and a downloaded page carries it inside.
 - **A painting is redrawn when its size changes**, and step by step while it paints on. A scene with dozens of large
   paintings painting on at once can drop frames in the live preview; an export is unaffected.
 - The paint engine is [p5.brush](https://github.com/acamposuribe/p5.brush) by Alejandro Campos Uribe (MIT licence).

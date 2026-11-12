@@ -1155,6 +1155,18 @@
           "id": "p20-animated-screenshot",
           "title": "Animated screenshots",
           "detail": "A still screenshot of a settings screen comes alive: its rows (found in the picture by the Studio, or measured in the real page by the kit's screenshot command with a rows selector) become their own layers in the same place, build in one after another, and the option being talked about lifts off the screen with the new Magnify preset, a spotlight and a label. The kit also saves each row and the empty screen, so agents build the same scene. Shipped in Studio 0.1.16 / player 0.0.53 (Animate this screenshot in an image layer's settings)."
+        },
+        {
+          "id": "p20-narrate",
+          "title": "A voice-over and a written guide from the recording",
+          "detail": "From one recording: `narrate` writes the voice-over (an AI looks at a frame of each step and writes one line per step, short enough to be said before the next), `voice` speaks and checks every line, and `guide` writes a step-by-step page with a screenshot of each step, its target ringed. Agents get them as screencast_narrate, screencast_voice and screencast_guide. See [Screencasts](/kinetic-scenes/screencasts#the-voice-over-and-a-written-guide-from-the-same-take).",
+          "status": "done"
+        },
+        {
+          "id": "p20-recorder-steps",
+          "title": "More recorder steps",
+          "detail": "`upload` chooses a file in a file field (a plugin zip, a picture), `waitFor` keeps a few seconds of something slow (an AI building a page, an install) and cuts the rest, and the Live Editor steps (`le.select`, `le.edit`, `le.device`, `le.save`) drive the visual editor. Errors name the step that failed. The video always matches its action times.",
+          "status": "done"
         }
       ]
     },
@@ -1347,6 +1359,12 @@
           "status": "done"
         },
         {
+          "id": "p24-ffmpeg",
+          "title": "FFmpeg, installed for you",
+          "detail": "Video export, footage and captions need the free tool FFmpeg. Kinetic Scenes says so at the moment it is needed, and the AI Dev Kit installs it with one click (or `studio-cli ffmpeg install`, or the ffmpeg_install agent tool), from a checked download. See [FFmpeg](/kinetic-scenes/ffmpeg).",
+          "status": "done"
+        },
+        {
           "id": "p24-whats-new",
           "title": "What's new",
           "detail": "New features are listed on the start screen and in Help › What's new, with New tags on the menus until the list is opened. Features also show up where they're needed: the second listener above Render video, Drop with physics when layers are selected, and Make it hand-drawn on a shape.",
@@ -1373,7 +1391,7 @@
       ]
     }
   ],
-  "extensionVersion": "0.1.33",
+  "extensionVersion": "0.1.38",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

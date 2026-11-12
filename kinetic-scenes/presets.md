@@ -52,6 +52,10 @@ This page is generated from the Studio's own preset catalogue, so it lists every
 | **Knockout** | The words are cut out of a solid block that wipes on, so the footage (or whatever is behind) shows through the letters. Knockout captions: big, heavy words over a talking head. | text | Direction, Block colour (light), Padding |
 | **Odometer** | The number in the text rolls into place like a car's odometer: every digit turns, and each only moves on when the one to its right passes 9. Write the final number in the text. | text | Roll from |
 | **Running timecode** | A timecode in the text (00:00:00:00, hours to frames) runs while the clip plays, like a camera or an editor. Write a timecode in the text; the clip sets how long it runs. | text | Start at, Frames a second |
+| **Outline** | The fill drains out of the letters, leaving their outline (in the text colour, or one you choose). | text | Direction, Line, Colour |
+| **3D offset** | Solid layers stack up under the letters, growing out diagonally as if the type were extruded. | text | Direction, Depth, Step, Shadow colour |
+| **Gradient letters** | A gradient fills the letters and travels slowly through them while the clip plays. | text | From, To, Angle |
+| **Skew** | The letters lean into the motion (or straighten up again, out). | text | Direction, Lean |
 
 ## Reveal and exit
 
@@ -68,6 +72,9 @@ This page is generated from the Studio's own preset catalogue, so it lists every
 | **Receipt printer** | Prints out of a slot at the top of its box in short jerky feeds, like a receipt or a ticket: good for a slip, a card or a list arriving. | any layer | Direction, Feeds |
 | **Soft wipe** | A wipe with a feathered edge: the layer fades in (or out) along a moving soft line. | any layer | Direction, From, Feather |
 | **Blinds** | Revealed (or hidden) in strips, one after another, like a stair wipe. | any layer | Direction, From, Strips, Stagger |
+| **Pixelate** | Pixel art: the layer resolves out of big square pixels (or breaks up into them, out). | any layer | Direction, Biggest pixel |
+| **Brush strokes** | Watercolour and ink: the layer paints on in a few brush strokes, row after row, each with a ragged end. | any layer | Direction, Strokes, From |
+| **Blow away** | The picture crumbles into grains the wind carries off, sweeping across it (In: they blow back together). On a person cut out of the footage, over a shot of the empty room, the person is blown away and the room stays. | footage, image | Direction, Wind, Grain size |
 
 ## Move and scale
 
@@ -88,6 +95,7 @@ This page is generated from the Studio's own preset catalogue, so it lists every
 | **Turn** | Turns into place in 3D, around the vertical or horizontal axis, as if on a hinge through its middle. | any layer | Direction, Axis, Angle, Depth |
 | **Scroll** | Scrolls a tall screenshot inside its frame (or pans a wide one across), from one point to another. Make the frame shorter than the picture. Repeat makes it endless: the picture follows on from itself, and 0 to 100 is one full pass, so a looping ending joins up seamlessly (use the None ease for a steady speed). | image | From, To, Direction, Repeat (endless) |
 | **Custom code** | Your own GSAP code, for an effect no preset covers. It only runs where the page allows custom code (the Studio, downloaded pages and embeds; in WordPress, pages by authors trusted with unfiltered HTML). | any layer | Code |
+| **Layer explode** | The layers of a group come apart in depth while the view turns, showing how the frame is built: footage, captions, sound, graphics. Out: they collapse back into one picture. | group | Direction, Space between layers, Turn, Tilt |
 
 ## Emphasis
 
@@ -110,6 +118,12 @@ This page is generated from the Studio's own preset catalogue, so it lists every
 | **Sticker outline** | A white outline grows round the shape with a soft shadow and a slight pop, like a cut-out sticker: a person cut out of footage on a coloured backdrop (paper cut-out), a logo, an icon. | footage, image, shape, text, 3D, group | Direction, Outline, Colour |
 | **Sheen** | A band of light sweeps across once. Best after the layer has settled. | shape, image, footage | Angle, Width, Strength, Colour |
 | **Select box** | Draws a coloured box with square corner handles around one word (or a few) of the text, like a selected object in a design tool, and tints the word to match. The key word of a headline. | text | Direction, Word, How many words, Colour, Tint the words, Corner handles, Padding, Line width |
+| **Risograph** | Risograph print: halftone dots over the layer and a second ink printed slightly out of register. | image, footage, shape, text, group | Direction, Dot size, Second ink, Misregistration |
+| **Code body** | The picture redrawn in characters: each cell a letter as bright as the picture under it, in its own colours or one ink. Code and binary characters flicker like a readout. On a person cut out of the footage, the person turns into code. | footage, image | Characters, Your own characters, Colour, Ink, Background (empty: see-through), Character size, Stay after the clip |
+| **Engraving** | The picture as a banknote engraving: rows of fine lines that swell where it is dark and ripple with its shapes, in one ink on paper, optionally framed in an engraved oval. Pair it with an odometer for a money moment. | footage, image | Ink, Paper (empty: see-through), Lines, Ripple, Engraved oval frame, Stay after the clip |
+| **Manga ink** | An impact frame: the picture in black ink on white paper, mid-tones in screentone dots, outlines inked, with speed lines bursting from behind. Put a big word on top for the hit. | footage, image | Ink level, Ink, Paper, Speed lines, Number of lines, Stay after the clip |
+| **Clone row** | Copies of the picture appear one by one on either side, a little smaller and darker each step, all playing. On a person cut out of the footage: a row of clones behind the speaker. | footage, image | Direction, Clones on each side, Spacing, Each step smaller, Each step darker |
+| **Rack focus** | The layer drifts out of focus (or into it), like a lens pulling focus. On the footage behind a cut-out person, the background softens while the person stays sharp. | footage, image, shape, text, group | Blur at the start, Blur at the end |
 
 **Smoother colour (player 0.0.48 and later).** Recolour, and every gradient fill, blend through OKLab, a colour space
 built around how people see: the colours in between stay clear instead of passing through grey (blue to yellow no
@@ -121,7 +135,6 @@ and browsers too old for it draw the gradient as before.
 *Left: the old blending, grey in the middle. Centre: OKLab, what the player uses. Right: OKLCH, more vivid but with hard
 seams where its colours fall outside what a screen can show, which is why it was not chosen.*
 
-
 ## Cursor and tours
 
 | Preset | What it does | Works on | Settings |
@@ -129,8 +142,8 @@ seams where its colours fall outside what a screen can show, which is why it was
 | **Move to** | The cursor travels to a layer (a point on it, in % of the layer: 50 / 50 is its centre) along a gentle curve with a pointer's easing, or to a point on the stage when no layer is given (beyond the edges to leave). Over a link or a button it turns into a pointing hand as it arrives. | cursor | To layer, Point across it, Point down it, Or stage X, Or stage Y, Curve, Pointing hand |
 | **Click** | The cursor presses: it dips, a ring ripples out from the tip and the layer under it dips too, all on the same frame. Give it a click sound, and start what the click causes on its last frame. | cursor | The layer under it dips |
 | **Drag** | The cursor holds the button down and drags, as a crosshair, to a layer (a point on it, in % of the layer: 100 / 100 is its bottom-right corner) or a point on the stage, in a straight line. Move it to the top-left corner first and put Build: draw on that layer over the same seconds: the cursor draws the box. | cursor | To layer, Point across it, Point down it, Or stage X, Or stage Y |
-| **Type** | The cursor stays where it is as a text I-beam while text is typed (put Typewriter on the text layer over the same seconds). Give it the Typing sound. | cursor | (none) |
-| **Build: draw** | The layer is drawn as a box in a design tool: an outline grows from its top-left corner with corner handles and a live W x H badge over a grey placeholder, then the layer appears (swept in top to bottom, or faded) as the placeholder melts away. Reveal "none" leaves the layer to the next clip (Typewriter types into the drawn box). See [Build with cursors](./build-with-cursors.md). | most layers | Outline colour, Part spent drawing, Then, Placeholder, Size badge |
+| **Type** | The cursor stays where it is as a text I-beam while text is typed (put Typewriter on the text layer over the same seconds). Give it the Typing sound. | cursor | – |
+| **Build: draw** | The layer is drawn as a box in a design tool: an outline grows from its top-left corner with corner handles and a live W x H badge over a grey placeholder, then the layer appears (swept in top to bottom, or faded) as the placeholder melts away. Reveal "none" leaves the layer to the next clip (Typewriter types into the drawn box). With a Cursor dragging over the drawing part it looks hand-drawn; Tools › Build with cursors does it for a whole scene. | text, shape, image, footage, 3D, group, line, diagram, code, list, Lottie | Outline colour, Part spent drawing, Then, Placeholder, Size badge |
 | **Before and after** | A second picture of the same screen takes over (the menu opened, the setting saved): cut on the frame a click lands, or a quick fade or wipe. Several on one picture step through screens. | image | Picture after (address or data URL), Change |
 | **Spotlight** | Everything but this layer dims, with a rounded window around it, and stays that way until an Out clip. Follows the layer through camera moves. | any layer | Direction, Room around it, Corners, Shade |
 | **Magnify** | The layer comes forward, larger, on a soft shadow (with a coloured ring if you give one), and stays that way until an Out clip. Made for a piece cut out of a screenshot: the option being talked about lifts off the screen. | any layer | Direction, Size, Shadow, Ring colour |
@@ -141,6 +154,9 @@ seams where its colours fall outside what a screen can show, which is why it was
 | Preset | What it does | Works on | Settings |
 |---|---|---|---|
 | **Shatter** | The picture cracks from a point and breaks into shards that fly apart and fall (out), or fly together into place (in). With the person cut out above it, the background breaks while they stay: a frame break. | footage, image | Direction, Impact (across), Impact (down) |
+| **Paper tear** | The sheet tears across the stage with a pale ragged edge; the next scene is revealed behind the rip. | any layer | Direction, Ragged edge, Torn edge, Edge colour |
+| **Page turn** | The scene turns like a page from its left edge, with a soft shadow, uncovering the next one. | any layer | Direction |
+| **Tape pull** | A strip of masking tape is pulled across the stage, taking the old picture with it. | any layer | Direction, Tape colour |
 | **Slash** | A glowing diagonal line sweeps across the stage; the scene appears (or disappears) behind it. | any layer | Direction, Slant, Line colour, Glowing line |
 | **Flash** | A burst of light: the scene cuts at its brightest moment. | any layer | Direction, Colour, Strength |
 | **Dip to colour** | The screen fills with a colour, holds a beat, and opens on the next scene. | any layer | Direction, Colour |
@@ -160,7 +176,13 @@ seams where its colours fall outside what a screen can show, which is why it was
 | **Drift** | A slow, steady move and scale creep that keeps a held frame alive. | any layer | Move X, Move Y, Scale to, Rotate |
 | **Gradient flow** | A shape’s gradient fill flows across it and back. Give the shape a gradient fill. | shape | Direction, Cycles |
 | **Particles** | A field of small dots rising, falling or drifting inside the shape. Clear the shape’s fill to show the particles on their own. | shape | Count, Size, Speed, Direction, Colour, Twinkle |
-| **Painted** | The shape or line is painted with real brushes: a pencil, ink, marker, charcoal, crayon or pastel outline over a watercolour wash, a flat wash or hatching. It holds for the rest of the layer and paints the same on every play and export. Paint on above 0 paints it on over that part of the clip. See [Painted](./painted.md). | shape, line | Brush, Fill, Outline, Paint on, Outline colour, Paint colour, Brush size, Watercolour bleed, Paper texture, Paint strength, Hatching gap, Hatching angle, Variation |
+| **Hand-drawn** | The shape is redrawn with wobbly pencil lines and a scribbled fill. It holds for the rest of the layer; each shape keeps its own scribble, on every play and export. | shape | Fill, Roughness, Bowing, Line weight, Scribble gap, Scribble angle, Line colour, Fill colour, Redraws per second |
+| **Painted** | The shape or line is painted with real brushes: a pencil, ink, marker, charcoal, crayon or pastel outline over a watercolour wash, a flat wash or hatching. It holds for the rest of the layer and paints the same on every play and export. Paint on above 0 paints it on over that part of the clip: the outline is drawn round while the colour blooms in. | shape, line | Brush, Fill, Outline, Paint on (part of the clip), Outline colour, Paint colour, Brush size, Watercolour bleed, Paper texture, Paint strength, Hatching gap, Hatching angle, Variation |
+| **Cut paper** | Construction paper: a hand-cut edge, a fine grain and a shadow lifting it off the layer below. It holds for the rest of the layer. On text with a pill it makes a torn paper tag. | any layer | Rough edge, Paper grain, Shadow, Re-cuts per second |
+| **Line boil** | Hand-drawn cel animation: the outlines wobble a little on every drawing, redrawn a few times a second, for as long as the clip lasts. | any layer | Wobble, Drawings per second |
+| **Liquid blob** | The shape flows from one organic blob into the next, as if it were poured: liquid and morph styles. | shape, image, footage | Speed |
+| **VHS / CRT** | An old tape or tube for as long as the clip lasts: scanlines, colour bleeding into red and blue fringes, a vignette, a jittering frame and a tracking band rolling down. | image, footage, shape, text, group | Colour bleed, Jitter, Tracking band |
+| **Text ring** | The letters travel round a tilted ring, nearer ones bigger and brighter: words orbiting a head. For a ring that passes behind a cut-out person, use two copies of the text: one behind the person showing the far half, one in front showing the near half. | text | Show, Ring size, Tilt, Turns a second, Share of the ring the text fills |
 
 ## Code
 

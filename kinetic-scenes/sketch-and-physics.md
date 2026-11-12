@@ -49,13 +49,13 @@ For real watercolour, ink and charcoal instead of a quick pencil scribble, use [
 | **Floor** | How far down the stage they land. | 88% |
 | **Bounce** | From a dead stop (0) to very bouncy (0.9). | 0.35 |
 | **Time between drops** | The gap between each layer being let go. | 0.12 s |
-| **Add a thud** | A soft sound on up to eight of the hardest landings. | On |
+| **Add a thud on the hardest landings** | A soft sound on up to eight of the hardest landings. | On |
 
 The motion is worked out once and written into each layer as ordinary **Keyframes** clips. That means you can adjust any
 of it by hand, and **Undo** takes it all back. Dropping the same layers again replaces the earlier physics. If the
 drop runs past the end of the scene, the scene gets longer to fit.
 
-Your AI agent can do the same with the `scene_physics` tool, once your AI Dev Kit has been updated to include it.
+Your AI agent can do the same with the `scene_physics` tool in the AI Dev Kit (there is no command-line version).
 
 ### Limits
 

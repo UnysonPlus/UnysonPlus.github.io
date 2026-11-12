@@ -51,6 +51,8 @@ styles:
 | **Pixel art** | Retro game screens: chunky pixels, a pixel font, stepped moves and bleeps. | Everything on a coarse pixel grid; limited palette; a blocky pixel font; things move in whole steps (no smooth easing); sprites blink and bounce; 8-bit sounds. |
 | **Watercolour and ink** | Hand-painted: soft washes and ink lines brushed onto textured paper, slow and quiet. | Soft, uneven colour washes with darker edges, ink outlines, visible paper texture; handwritten titles; things paint on in strokes rather than sliding; long, quiet pacing. |
 | **Hand-drawn cel** | Traditional 2D animation: bold outlines that boil, flat colours, squash and stretch, on twos. | Thick black outlines that wobble slightly on every drawing (line boil), flat fills, squash-and-stretch on impacts, animation "on twos" (12 drawings a second) rather than perfectly smooth. |
+| **Sketchbook** | A notebook page: shapes drawn in wobbly pencil with scribbled fills, handwritten type, and things that jitter like a flip book. | A pale page, dark pencil lines that wobble, boxes and circles filled with loose scribble, handwritten words, and a slight jitter between drawings. |
+| **Paper cut-out** | Layered construction paper: a little world of cut shapes with depth, torn caption tags, and cuts that tear, turn or peel. | Flat shapes of coloured paper stacked in layers with soft shadows between them, slightly rough cut edges, a visible grain, a small physical world acting out the idea, a heavy banner headline and captions on torn paper tags. See [Paper cut-out explainers](./paper-cut-out.md). |
 | **Liquid and morph** | Fluid shapes that pour and merge, gradients that flow, everything morphing instead of cutting. | Organic blobs that wobble and merge, flowing gradients, one shape morphing into the next scene instead of a cut; soft blur on type; slow, continuous motion. |
 
 ## Effects made for these styles
@@ -69,6 +71,9 @@ Some styles need looks that didn't exist before. They are ordinary presets, so y
 | **3D offset** (`text-3d`) | Solid layers stack under the letters, as if extruded. |
 | **Gradient letters** (`text-gradient`) | A gradient fills the letters and travels through them. |
 | **Skew** (`text-skew`) | The letters lean into the motion. |
+| **Hand-drawn** (`sketch`) | Sketchbook: a shape redrawn in wobbly pencil with a scribbled fill (see [Hand-drawn shapes](./sketch-and-physics.md)). |
+| **Cut paper** (`paper`) | Paper cut-out: a hand-cut edge, paper grain and a shadow lifting it off what is below. |
+| **Paper tear**, **Page turn**, **Tape pull** (`tr-tear`, `tr-page`, `tr-tape`) | Paper cut-out: cuts between scenes that tear, turn or peel. |
 
 All of them are exact in time (the same moment always looks the same), so they scrub, preview and export frame by frame.
 

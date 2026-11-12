@@ -62,8 +62,8 @@ talking about lifts off the screen while everything else dims, with a label besi
 Everything it makes is ordinary layers and clips: move a clip, change a label, or add a cursor clicking the focused row.
 
 **With the AI Dev Kit:** its screenshot command measures the rows in the real page instead of guessing them, saves
-each row as its own picture and the screen with the rows hidden (the real empty panel), and writes their places to a
-`rows.json`. An agent builds the scene from those files; you can also paste `rows.json` into the Studio. See the kit's
+each row as its own picture and the screen with the rows hidden (the real empty panel), and writes their places to
+`<name>.rows.json`. An agent builds the scene from those files; you can also paste that file into the Studio. See the kit's
 `docs/screencasts.md` (Animated screenshots).
 
 **Limits:** row finding works on flat interface screens (settings, lists, tables); on a photo or a busy gradient, mark

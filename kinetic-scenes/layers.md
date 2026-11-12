@@ -9,7 +9,7 @@ description: Every Kinetic Scenes layer type and its settings — text, shapes, 
 A scene is a stack of layers, drawn bottom to top in the order of the timeline's rows (the top row is drawn last, in
 front). Each layer has a **box** (where it sits and how big it is), **clips** (the presets that animate it) and,
 optionally, an in and out point, opacity, a link, a hover effect, a depth for parallax and layout overrides per screen
-size. Add layers with the **+** buttons on the timeline.
+size. Add layers with the **+** buttons on the timeline or the **Insert** menu (Lottie animations and free stock are only in the menu).
 
 ![Some layer types, as the player draws them](/img/kinetic-scenes/layers.jpg)
 
@@ -182,7 +182,7 @@ follows; **Unpack into layers** turns it back into ordinary layers.
 ## Captions
 
 The words of a transcribed voice-over, a few at a time (**+ Captions**), in your type and colours. **Words from** (which
-voice-over), **most words at once**, **Words arrive** (a few at a time with a pop; each slams in, for giant captions; each
+voice-over), **Words at a time**, **Words arrive** (a few at a time with a pop; each slams in, for giant captions; each
 drops in, for viral captions), **Light up** (the word being said, every word said so far, or nothing), the highlight
 colour, a box behind the words, capitals, and the **Letters** (outline, soft shadow, neon glow, chrome). Seven ready-made
 **caption styles** (Bold, Neon, Chrome, Handwritten, Karaoke, Boxed, Giant) apply a whole look in one click. See

@@ -58,8 +58,9 @@ In video mode, [Check scene](./check-scene.md) adds the rules that matter for sh
 - **The hook:** the first words on screen by two seconds.
 - **Covered areas:** no words under the app's buttons and captions, in every format.
 - **Captions:** a voice-over needs captions (most people watch muted); **Add captions** adds them.
-- **Length:** over the platform's limit is a warning; long for the platform is a note (Reels about 30 s, TikTok and
-  Shorts under a minute).
+- **Length:** over the platform's limit is a warning; long for the platform is a note (Reels about 30 s, Shorts about 45 s,
+  TikTok about a minute). One scene is at most 10 minutes; a longer video is made of chapters (see
+  [Long videos](./long-videos.md)).
 - **It plays once:** a looping scene gets **Play once**.
 - **Idle floating:** floating for more than two seconds tells no story; cut sooner or show the next thing.
 - **Every cut between acts:** no empty frame at a cut (**Start it at…** closes the gap), and the movement carried across

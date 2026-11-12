@@ -35,7 +35,7 @@ linear colour, and the kit renders with Blender's Standard view so brand colours
 
 - **Blender 4.2 or later** on the same computer (free from blender.org). The kit finds it in the usual install folder,
   or set `BLENDER` to its path.
-- **The [AI Dev Kit](./addons.md)** (for the kit's tools) and an AI agent connected to it.
+- **The [AI Dev Kit](/ai-dev-kit)** (for the kit's tools) and an AI agent connected to it.
 
 ## Ask your agent
 
@@ -57,7 +57,7 @@ frames and the footage layer to add.
 
 ## Limits and tips
 
-- **Keep web models light:** under about 100,000 triangles and a few megabytes. The kit warns above that; a Decimate
+- **Keep web models light:** aim for under 100,000 triangles; the kit warns above 150,000 triangles or 6 MB; a Decimate
   modifier or 1,024 px textures fix it.
 - **A model's own animation plays on the scene's clock** (player 0.0.51 and later): keyframe the objects in your script and the GLB carries the animation; the 3D layer plays it from its start, at its speed, looped or once (see [3D layers](./layers#animated-models)).
   For animation made in Blender (bones, physics, particles), render a shot instead.

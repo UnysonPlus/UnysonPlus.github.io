@@ -22,7 +22,7 @@ to accept or redo.
 4. **Make the reel.** The AI Dev Kit on your computer watches the video (a few seconds per minute of video; longer
    when it also transcribes the speech). The reel replaces the current scene; **Undo** brings your scene back.
 
-Then finish it like any scene: add music from **Sounds**, use **Reframe to follow the face** on wide footage in a tall
+Then finish it like any scene: add music with **Insert › Audio…** or **Insert › Music…**, use **Reframe to follow the face** on wide footage in a tall
 reel, swap a part for a better moment by changing its start in the footage (the clip's offset), or trim one.
 
 ## What it looks for

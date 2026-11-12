@@ -13,8 +13,8 @@ description: Getting a scene out of Kinetic Scenes — a standalone HTML page, e
 ## A page or an embed
 
 - **Download page:** one `.html` file with the scene and its own copy of the player. Open it in a browser, host it, or
-  send it. **Embed fonts** packs the scene's fonts into the file so it works offline. Scenes with a 3D layer add the 3D
-  runtime (about 790 KB).
+  send it. **Embed fonts** packs the scene's fonts into the file so it works offline. Scenes with a 3D layer, a Lottie
+  animation or a painted layer add that runtime (3D is about 790 KB).
 - **Embed code:** a snippet to paste into any page. It loads the player from kinetic-scenes.unysonplus.com at a fixed
   version that never changes, so the scene keeps playing exactly as it did. Uploaded images make embeds heavy; image
   addresses keep them small.
@@ -50,7 +50,7 @@ however slow the machine.
 - **A web scene:** pick a size (Full HD, HD, 4K, vertical 1080 × 1920 or square); the size picks the layout, as a screen
   that size would.
 - **A video scene:** its formats, one or all of them in one go.
-- Frame rate 24, 25, 30, 50 or 60; **see-through background** (WebM or ProRes 4444), **reference footage** in the full
+- Frame rate 24, 25, 30, 50 or 60; **see-through background** for video scenes (WebM or ProRes 4444; the kit's `render --transparent` works for any scene), **reference footage** in the full
   composite, and a **cover image**. See [Video mode](./video.md#exporting-a-video).
 
 **With the AI Dev Kit** (the default): the kit on your computer renders it in a headless browser and encodes it with
@@ -59,7 +59,9 @@ ffmpeg, mixed to -14 LUFS. If [FFmpeg](/kinetic-scenes/ffmpeg) is missing, the E
 **Without the kit:** where the browser can draw part of a page into a picture (HTML-in-Canvas, in Chrome behind an
 experimental setting today and on by default once it ships), Export offers **Render in this browser**: the same exact,
 frame-by-frame MP4 with its sound, rendered and encoded by the browser itself (H.264 and AAC), with nothing installed.
-See-through and ProRes exports still need the kit.
+See-through and ProRes exports still need the kit. A scene is at most 10 minutes; for a longer video render chapters
+and join them (see [Long videos](./long-videos.md)). When the scene has a voice-over, the video section also offers the
+[second listener](./second-listener.md), notes on how it sounds before you render.
 
 **Motion blur** (a checkbox, with the AI Dev Kit): a real camera's shutter stays open for part of each frame, so
 something moving fast smears along its path. A render without it shows a crisp copy in each frame, which reads as
@@ -70,7 +72,7 @@ over half of each frame's time (a 180-degree shutter, as film cameras use) and b
 
 It changes nothing that stands still, and costs time: each frame is captured 8 times, so the render takes about twice
 as long or more (a 1-second test took 6 s without, 15 s with). Agents: `studio-cli render scene.json --blur` (or
-`--blur 4` to `16` for the number of moments), or `blur` on the `scene_render` tool. Not available for a browser
+`--blur 2` to `16` for the number of moments, 8 by default), or `blur` on the `scene_render` tool. Not available for a browser
 export.
 
 ### For another editor

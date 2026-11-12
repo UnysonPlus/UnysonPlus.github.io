@@ -43,10 +43,13 @@ and entrance, timed together, as ordinary clips you can still edit.
 - **Flash:** a burst of light, with the cut at its brightest moment.
 - **Whip pan:** one fast camera swing, velocity-matched: the scene speeds away with a blur along the move and the next
   arrives from the same side at the same speed; an optional light streak hides the join.
-- **Light streak**, **Glitch** (slices jump and colours split), **Dip to colour** (fill, hold a beat, open on the next),
-  **Zoom through** (rush past the camera as the next approaches).
+- **Glitch** (slices jump and colours split), **Dip to colour** (fill, hold a beat, open on the next), **Zoom through**
+  (rush past the camera as the next approaches).
+- **Paper tear**, **Page turn** and **Tape pull**: paper cuts for [paper cut-out](./paper-cut-out.md) scenes.
 - **Crossfade, Push, Soft wipe, Blinds, Iris** and **3D turn** for quieter changes.
-- **Shatter** breaks a picture or footage into flying shards (see [video effects](./video-effects.md)).
+
+**Light streak** and **Shatter** (a picture or footage breaking into flying shards, see
+[video effects](./video-effects.md)) are presets you place yourself; a light streak is also an option of Whip pan.
 
 The transition replaces the leaving group's exit and the arriving group's entrance, and brings its sound.
 

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
 title: Sound, voice and captions
-description: Audio in Kinetic Scenes — voice-overs, music and sound effects on the timeline, 25 built-in sounds, finding the beats, transcribing a voice-over, voice-overs from a script and captions.
+description: Audio in Kinetic Scenes — voice-overs, music and sound effects on the timeline, 29 built-in sounds, finding the beats, transcribing a voice-over, voice-overs from a script and captions.
 ---
 
 # Sound, voice and captions
@@ -29,8 +29,9 @@ Audio sits on its own rows below the layers, with a waveform, so you can line up
 
 ## Built-in sounds
 
-The **Sounds** tab holds 25 built-in sounds in five groups: **movement** (whoosh, swish, slide, spin), **clicks and taps**
-(pop, click, tick, tap, typing, beep), **hits and drops** (impact, thud, sub hit, drop, glitch), **tones and chimes**
+The **Sounds** tab holds 29 built-in sounds in five groups: **movement** (whoosh, whoosh out, swish, slide, spin, paper
+rustle, paper tear, tape pull), **clicks and taps** (pop, soft pop, click, tick, tap, typing, beep), **hits and drops**
+(impact, thud, sub hit, drop, glitch, rubber stamp), **tones and chimes**
 (chime, sparkle, success, notify) and **textures and swells** (riser, swell, shimmer, reveal). The player makes them
 itself from a few lines of code, so there is nothing to download or license, and they sound the same in the Studio, on
 your pages and in video. Click one to hear it.
@@ -178,9 +179,9 @@ track, use **ACE-Step** in the same window. Agents: `studio-cli compose scene.js
 
 **+ Captions** adds the words of a transcribed voice-over, a few at a time, in your type and colours.
 
-- **Words from:** which voice-over (the first one by default). **Most words at once:** 1 to 12.
+- **Words from:** which voice-over (the first one by default). **Words at a time:** 1 to 12 (4 by default).
 - **Words arrive:** a few at a time with a small pop; **each slams in** as it is said (giant captions); or **each drops
-  in** and bounces (viral captions).
+  in** and bounces (viral drop).
 - **Light up:** the word being said, every word said so far (karaoke), or nothing; with a highlight colour.
 - A box behind the words, capitals, and all the usual type settings.
 - **Letters:** plain, a thick **outline** (the short-form look, in black or a colour you choose), a **soft shadow** that keeps

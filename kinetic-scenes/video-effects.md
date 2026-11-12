@@ -90,7 +90,7 @@ only the person changes and the room behind stays. Find them in the preset libra
 | Effect | What it does | How |
 |---|---|---|
 | **Code body** | The picture redrawn in characters, each as bright as the picture under it, in its own colours or one ink. Code and binary characters flicker like a readout. | **Code body** on the cut-out. Settings: the characters (code, binary, shading, blocks or your own), colour, character size, background. |
-| **Engraving** | A banknote portrait: rows of fine lines that swell where the picture is dark and ripple with its shapes, in one ink on paper, optionally in an engraved oval. | **Engraving** (Oval on) inside the **Banknote** piece below, with its value rolling up. |
+| **Engraving** | A banknote portrait: rows of fine lines that swell where the picture is dark and ripple with its shapes, in one ink on paper, optionally in an engraved oval. | **Engraving** (**Engraved oval frame** on) inside the **Banknote** piece below, with its value rolling up. |
 | **Manga ink** | An impact frame: black ink, white paper, screentone dots in the mid-tones, inked outlines and speed lines bursting from behind. | **Manga ink** on the cut-out, a big word slammed in on top (Slam), an impact sound. |
 | **Blow away** | The picture crumbles into grains the wind carries off, sweeping across it; In blows them back together. | **Blow away** on the cut-out, over a **shot of the empty room** (a still frame of the background with the person out of shot), so the person goes and the room stays. |
 | **Clone row** | Copies appear one by one on either side, a little smaller and darker each step, all playing. | **Clone row** on the cut-out: clones of the speaker behind them. |
@@ -206,7 +206,7 @@ on the face, or above, below, left or right of it, while the clip runs (optional
 
 Turns wide (16:9) footage into a tall (9:16) or square video without losing the speaker: the footage fills the
 frame's height, and the frame follows the face from side to side as the person moves. The button shows in a
-footage layer's **Footage tools** when the scene is tall or square (Scene › Video, the format list). If the face has
+footage layer's **Footage tools** when the scene is tall or square (its formats are in the Inspector's **Made for** section, from **Scene › Scene settings**). If the face has
 not been found yet, it finds it first.
 
 <img src="/img/kinetic-scenes/reframe-follow.jpg" alt="Four moments of a 9:16 reframe: the speaker crosses a wide shot from left to right and stays in the tall frame each time" width="675" />

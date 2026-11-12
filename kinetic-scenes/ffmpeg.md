@@ -20,7 +20,7 @@ needs it, and you can install it there and then.
 | Exporting an MP4 in a browser that can render video itself | No. The [Export](/kinetic-scenes/export) panel says so when yours can |
 | Exporting through the AI Dev Kit, including see-through video and batch videos | Yes |
 | Turning a voice-over into words, and captions from them | Yes |
-| Cleaning up footage, highlights, reference videos, the video checks and the second listener | Yes |
+| Cleaning up footage, highlights, reference videos, screen recording and its voice-over and guide, the video checks and the second listener | Yes |
 | Separating voice and music | Yes |
 
 ## Installing it from the Studio

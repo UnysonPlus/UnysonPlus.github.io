@@ -125,6 +125,9 @@ You'll also find these features where you need them:
 
 | Feature | Where it shows up |
 |---|---|
+| [Talking-head effects](./video-effects.md#effects-on-a-person) | The presets library's **Edit a talking head** goal, and the new pieces under **Insert › A piece…**. |
+| [Narrated screencasts](./screencasts.md#the-voice-over-and-a-written-guide-from-the-same-take) | In the AI Dev Kit: `narrate`, `voice` and `guide` after a recording, or your AI agent's screencast tools. |
+| [Long videos](./long-videos.md) | **Loop** on a selected music clip; the AI Dev Kit's `join` for chapters. |
 | [Painted](./painted.md) | **Paint it** on a selected shape or line, and in the Ambient presets. |
 | [Build with cursors](./build-with-cursors.md) | In **Tools**. |
 | [Second listener](./second-listener.md) | Above **Render video** in **Export**, when the scene has a voice-over. Also on a selected voice clip, and in **Tools**. |

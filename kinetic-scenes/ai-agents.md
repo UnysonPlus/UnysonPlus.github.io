@@ -14,7 +14,7 @@ There are two ways to work with AI in Kinetic Scenes.
 | Setup | the AI Dev Kit | the AI Dev Kit, plus an agent such as Claude Code |
 | Good for | quick ideas and small changes to the scene in front of you | whole videos: explainers, tutorials, reels, promos |
 | What it can do | write and change the scene | record your screen, narrate with your own voice, make music, check every frame, fix what it finds, and change the scene |
-| Where the work lives | this browser | a project folder on your computer |
+| Where the work lives | this browser, or the open [project](#projects) | a project folder on your computer |
 
 AI assist sends one request at a time and gets one scene back. An agent works in steps with the kit's tools, the way a
 person would: it records, listens back, looks at frames and fixes what it sees. For a finished video, connect your agent.
@@ -80,14 +80,33 @@ when it was last active) in AI assist and in File › Projects.
 before working on a project and add a line when something is decided or done, so the next session (or another agent)
 carries on where the last one stopped.
 
-The tools the agent gets: `project_list`, `project_save` and `project_notes` (the workspace), `scene_guide` (how to make a good scene),
-`scene_check`, `scene_inspect`, `scene_stills` (it looks at frames), `scene_timeline` (frames, sound wave, every spoken
-word at its time and the words on screen in one picture, with pauses inside a phrase marked), `scene_render`, and `audio_beats`,
-`audio_transcribe`, `audio_separate`, `video_check` (a finished video checked: every voice line heard, black frames,
-loudness, clipping; renders run it on their own), `voice_over` (a script spoken into one file, with its word times), `voice_best_take` (the best of several takes of a line) and
-`footage_cleanup` (recorded speech without false starts, um / uh and long pauses). Agents that run commands also have the kit's command line
-(`studio-cli record`, `screencast`, `music`, `project`), which records the screen and builds the scene around the
-recording.
+The tools the agent gets (40 in all), by what they are for:
+
+- **The workspace:** `project_list`, `project_save`, `project_notes`, `scene_save` and `scene_link` (a link that opens the
+  scene in the Studio).
+- **Making and checking a scene:** `scene_guide` (how to make a good scene), `scene_check`, `scene_inspect`,
+  `scene_stills` (it looks at frames), `scene_timeline` (frames, sound wave, every spoken word at its time and the words
+  on screen in one picture, with pauses inside a phrase marked), `scene_render`, `scene_batch` ([one video per row of a
+  spreadsheet](./batch-videos.md)), `scene_from_beats` ([a reel from a few beats](./beats.md)), `scene_swarm`
+  ([build with cursors](./build-with-cursors.md)), `scene_physics` ([drop with physics](./sketch-and-physics.md)),
+  `scene_compose` (a score composed to the scene), `scene_breakdown` ([how a reel was made](./breakdown.md)) and
+  `scene_interchange` (the cut for another video editor).
+- **Screencasts:** `screencast_narrate` (the voice-over written from a recording), `screencast_voice` (each line spoken
+  and checked) and `screencast_guide` (a written step-by-step guide): see [Screencasts](./screencasts.md#the-voice-over-and-a-written-guide-from-the-same-take).
+- **Video:** `video_check` (a finished video checked: every voice line heard, black frames, loudness, clipping; renders
+  run it on their own), `video_join` ([chapters into one long video](./long-videos.md)), `video_highlights` (a reel from
+  a long video), `video_reference` ([the rhythm of a reel you like](./reference-rhythm.md)), `video_like_this` (a brief
+  from a video you like) and `video_listen` (a [second listener](./second-listener.md), only with your say-so).
+- **Sound and voice:** `voice_over` (a script spoken into one file, with its word times), `voice_best_take` (the best of
+  several takes of a line), `footage_cleanup` (recorded speech without false starts, um / uh and long pauses),
+  `audio_beats`, `audio_transcribe`, `audio_separate` and `audio_identify` (the sounds heard and when).
+- **3D and media:** `object_from_description` (a 3D object designed from a description), `blender_model` and
+  `blender_render` ([Blender](./blender.md)), `stock_search` ([free stock media](./stock-media.md)).
+- **The kit itself:** `kit_doctor` (a check of this computer) and `ffmpeg_install` ([FFmpeg](./ffmpeg.md)).
+
+Agents that run commands also have the kit's command line: `studio-cli record`, `screencast`, `narrate`, `voice` and
+`guide` (a recording, its voice-over and a written guide, see [Screencasts](./screencasts.md)), `join` (chapters into
+one video, see [Long videos](./long-videos.md)), `music` and `project`.
 
 AI assist can also run Claude Code this way from inside the Studio: see [Work in steps](./ai.md#work-in-steps-with-a-project-and-claude-code).
 

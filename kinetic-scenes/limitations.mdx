@@ -41,15 +41,17 @@ whether the Studio may reach apps on your computer: allow it for AI.
 
 | Export | Carries | Needs |
 |---|---|---|
+| **Download page** (HTML file) | The scene and its own copy of the player (and its fonts, with Embed fonts on) | Nothing: open it, host it or send it |
 | **HTML embed** | The scene and the player version it was made with | Fonts and pictures load from where the scene points; keep linked files online |
+| **Share link** | The scene, in the link | Footage is not carried: share a video instead |
 | **WordPress element** | The same, inside the Kinetic Scene element | The Unyson+ plugin |
 | **Video** (MP4, WebM, ProRes) | Everything, baked in: fonts, pictures, footage, sound | Nothing after export |
 
 ## Limits worth knowing
 
-- **Very busy scenes on phones.** A scene with around 150 animated layers plays smoothly on desktop, but slows down on a
-  mid-range phone (about 11 frames a second in our test). For pages people will open on phones, keep scenes to a few
-  dozen moving layers at once; the demo scene plays at about 41 frames a second on the same phone.
+- **Very busy scenes on phones.** A scene with around 150 animated layers plays smoothly on desktop and at about 36
+  frames a second on a mid-range Android phone, but at about 20 on an iPhone (see the test results below). For pages
+  people will open on phones, keep scenes to a few dozen moving layers at once.
 - **One scene is at most 10 minutes.** A longer video is made of chapters, rendered one by one and joined; see
   [Long videos](./long-videos.md). Renders always cover the whole scene.
 - **Very large scenes in the Studio.** A normal scene plays at full speed while you edit; one with about 1,500 layers plays

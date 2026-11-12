@@ -7,9 +7,10 @@ description: The parts of the Kinetic Scenes editor, a first scene step by step,
 # The Studio
 
 The Studio runs in your browser at [kinetic-scenes.unysonplus.com](https://kinetic-scenes.unysonplus.com/). Nothing to
-install; your work is saved in the browser as you go (and as a project file when you choose **Save**). It opens on a demo:
-a 38-second promo in six acts, each a group on the timeline, that uses a wide range of presets. Double-click an act to see
-how it is built.
+install; your work is saved in the browser as you go (and as a project file when you choose **Save**). It opens on the
+[start screen](./start-screen.md) (*What do you want to make today?*), over a demo: a 38-second promo in six acts, each a
+group on the timeline, that uses a wide range of presets. Close the start screen and double-click an act to see how it
+is built.
 
 <img src="/img/kinetic-scenes/studio.png" alt="The Studio with its demo scene" width="1920" />
 
@@ -23,14 +24,14 @@ use the arrow keys and Enter inside; each entry shows its keyboard shortcut. On 
 
 | Menu | What is in it |
 |---|---|
-| **File** | **New** (an empty scene with the same screen sizes and fonts; Undo brings the old one back), **Open…** (a `.scene.json` project file), **Save** (downloads the project file, Ctrl+S), **Load the demo**, **Export…** |
+| **File** | **Projects…** and **Project notes…** ([projects](./ai-agents.md#projects)), **Start something new…** (the start screen), **New** (an empty scene with the same screen sizes and fonts; Undo brings the old one back), **New from template…**, **Open…** (a `.scene.json` project file), **New from a screencast…**, **Save** (into the project folder when a project is open, else downloads the project file; Ctrl+S), **Copy scene file**, **Download a copy**, **Load the demo**, **Export…** |
 | **Edit** | Undo, Redo, Duplicate, Delete, Rename, Select all, Group, Ungroup |
 | **View** | The screen size (Desktop, Laptop, Tablet, Mobile), the height mode, Safe area, Camera view, Full screen |
-| **Insert** | Every kind of layer (the same as the timeline's **+** buttons), Audio, a Marker, and a ready-made piece |
+| **Insert** | Every kind of layer (the same as the timeline's **+** buttons, plus **Free stock…** and **Lottie animation**), **Audio…**, **Music…**, a **Marker**, and **A piece…** |
 | **Scene** | Scene settings, Styles and brand kit, Check scene, Check the layout |
-| **AI** | AI assist, AI settings (style, voice, look and fix), Voice-over from a script |
-| **Tools** | [Add-ons](./addons.md), Separate voice and music, Transcribe a voice-over (with footage or an audio clip selected) |
-| **Help** | This manual, the keyboard shortcuts, what is new |
+| **AI** | AI assist, AI settings (style, voice, look and fix), Voice-over from a script, **Make one like this…**, **Make music…** |
+| **Tools** | [Add-ons](./addons.md), **Make music…**, [Videos from a spreadsheet…](./batch-videos.md), [Build with cursors…](./build-with-cursors.md), [Drop with physics…](./sketch-and-physics.md), [Second listener…](./second-listener.md), [Make a reel from a video…](./make-a-reel.md), Separate voice and music, Transcribe a voice-over (with footage or an audio clip selected) |
+| **Help** | **What's new** (the newest features), **The manual**, **Connect your AI agent**, **Your first scene (guide)**, **Keyboard shortcuts**, **What is new** (the roadmap) |
 
 On the right, **Undo**, **Redo** and **Export** (HTML, embed code, share link and video; see [Export](./export.md)) stay
 one click away.
@@ -39,14 +40,16 @@ one click away.
 
 Four tabs:
 
-- **Presets:** every animation, grouped (Text, Reveal and exit, Move and scale, Emphasis, Cursor and tours, Scene
-  transitions, Ambient and backgrounds, Code, 3D). Hover a preset to see it play. Drag it onto a timeline row, or select a
+- **Presets:** every animation, grouped by technique (Text, Reveal and exit, Move and scale, Emphasis, Cursor and
+  tours, Scene transitions, Ambient and backgrounds, Code, 3D) or, with the **By goal** switch, by what you want to do
+  (make a headline land, reveal a picture, edit a talking head…). Hover a preset to see it play. Drag it onto a timeline row, or select a
   layer and click it to add it at the playhead. Presets that don't fit the selected layer are dimmed. The full list is on
   the [Presets](./presets.md) page.
-- **Pieces:** ready-made animated pieces (a comment box, a prompt bar, a chat window, a growth chart, a title card…),
+- **Pieces:** ready-made animated pieces (a comment box, a prompt bar, a chat window, a growth chart, a title card, a voice
+  note, a newspaper front page, a banknote…),
   added at the playhead as ordinary groups. See [Video editing effects](./video-effects.md#ready-made-pieces).
-- **Sounds:** 25 built-in sounds, made by the player itself. See [Sound](./sound.md#built-in-sounds).
-- **Styles:** eight looks (colours, fonts, motion personality and sounds) to apply or start from. See
+- **Sounds:** 29 built-in sounds, made by the player itself. See [Sound](./sound.md#built-in-sounds).
+- **Styles:** 30 looks and motion styles (colours, fonts, motion personality and sounds) to apply or start from. See
   [Styles](./stage.md#styles).
 
 <img src="/img/kinetic-scenes/library-presets.png" alt="The Presets tab" width="232" /> <img src="/img/kinetic-scenes/library-pieces.png" alt="The Pieces tab" width="232" /> <img src="/img/kinetic-scenes/library-sounds.png" alt="The Sounds tab" width="232" /> <img src="/img/kinetic-scenes/library-styles.png" alt="The Styles tab" width="232" />

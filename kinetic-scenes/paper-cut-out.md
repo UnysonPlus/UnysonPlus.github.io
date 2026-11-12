@@ -15,7 +15,7 @@ because a physical metaphor makes an abstract idea easy to follow.
 
 ## Make one
 
-Open the [start screen](./start-screen.md) and choose **A paper cut-out explainer**.
+Open the [start screen](./start-screen.md) and pick the **Paper cut-out** style in the style gallery; the next step, *A paper cut-out explainer*, asks for the idea.
 
 <img src="/img/kinetic-scenes/start-screen-paper.png" alt="The paper explainer step: what it should explain, format, length and sound, with Start from the template and Create buttons" width="700" />
 

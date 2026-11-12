@@ -75,6 +75,8 @@ The General tab is long because each option is a different trade. This is the wh
 | [Image quality](/extensions/asset-optimizer/images#image-quality) | 82 | How hard the theme's own crops are compressed |
 | [Generate missing image sizes](/extensions/asset-optimizer/images#generate-missing-image-sizes) | Off | Fill in the sizes WordPress never made |
 | [Serve WebP images](/extensions/asset-optimizer/images#serve-webp-images) | Off | Show visitors WebP copies instead of JPG/PNG |
+| [Serve AVIF images](/extensions/asset-optimizer/images#serve-avif-images) | Off | Offer AVIF copies as well — another 28% under WebP |
+| [AVIF quality](/extensions/asset-optimizer/images#avif-quality) | 60 | How hard the AVIF copies are compressed |
 | [Browser cache for static files](/extensions/asset-optimizer/caching-and-scope#browser-cache-for-static-files) | Off | Cache images, fonts and plugin assets for a year |
 | [Load below-the-fold images early](/extensions/asset-optimizer/images#load-below-the-fold-images-early) | Off | Warm lazy images before the reader scrolls |
 | [Instant navigation](/extensions/asset-optimizer/instant-navigation) | Auto | Fetch or render the next page before the click |

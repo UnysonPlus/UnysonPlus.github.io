@@ -82,6 +82,107 @@ The saving appears gradually. Copies are re-made the next time each image is sho
 the setting — including copies made before the change, which are treated as out of date — so a busy
 site spreads the work over its next few page views rather than doing it all at once.
 
+## Serve AVIF images
+
+<img src="/img/extensions/asset-optimizer/serve-avif.png" alt="The Serve AVIF images switch" width="1658" />
+
+AVIF is the newer of the two modern photo formats, and it beats WebP by a useful margin. On the
+same photograph measured above:
+
+| Format | File size |
+| --- | --- |
+| JPEG, quality 82 | 100.8 KB |
+| WebP, quality 80 | 61.0 KB |
+| **AVIF, quality 60** | **43.9 KB** |
+
+That is 56% under the JPEG and **28% under the WebP** — so it is worth having even on a site that
+already serves WebP.
+
+It is switched on separately from WebP, and the two work together: where an AVIF copy exists the
+browser takes it, where it does not the WebP is used, and where neither exists the original is.
+Nothing is destroyed, so turning this off goes straight back to what you had.
+
+### Why it converts in the background instead of as pages are viewed
+
+This is the one place where AVIF is genuinely different from WebP, and it is worth understanding
+before you switch it on.
+
+**AVIF is slow to encode.** Measured on that same photograph, WebP took 65 ms and AVIF took
+**1,787 ms** — about 27 times longer. [Serve WebP images](#serve-webp-images) can afford to convert
+a few images while a page is being rendered because 65 ms each is small. Doing the same with AVIF
+would add roughly seven seconds to one visitor's page load, which is the opposite of what this
+extension is for.
+
+So AVIF never encodes during a page view, and never during an upload either. Instead:
+
+- **New uploads are queued**, not converted, so uploading stays as fast as it was.
+- **A background job runs every five minutes** and converts for about twenty seconds, then stops.
+  It takes the queue first, then walks the rest of your library from the oldest image onwards,
+  remembering where it got to.
+- **The front end only ever serves a copy that already exists.** Until one does, visitors get the
+  WebP or the original exactly as before.
+
+A site therefore catches up by itself over hours rather than all at once, and nobody waits for it.
+
+:::tip[Converting a large library now]
+If you would rather not wait, do it from the command line — no time budget, no page to keep
+responsive:
+
+```
+wp fw-ao avif --status      # how many attachments are left to check
+wp fw-ao avif               # convert everything
+wp fw-ao avif --limit=50    # just the next 50
+wp fw-ao avif --restart     # start again from the beginning of the library
+```
+
+Budget roughly two seconds per file, and remember an attachment is several files — the original
+plus each generated size.
+:::
+
+### How it is served
+
+Each image is wrapped in a `<picture>` element offering the AVIF first, with the ordinary `<img>`
+left inside it as the fallback:
+
+```html
+<picture>
+  <source type="image/avif" srcset="photo-1024x683.avif 1024w, photo-768x512.avif 768w" sizes="…">
+  <img src="photo-1024x683.jpg" srcset="…" sizes="…" alt="…">
+</picture>
+```
+
+The browser chooses. That matters because AVIF support is not universal the way WebP's is — Safari
+only gained it in version 16.4, long after WebP — so simply swapping the URL, which is what the WebP
+option does, would hand an AVIF to a browser that cannot display it.
+
+It also means **the HTML is the same for every visitor**, so the page stays safe to put behind a
+page cache or a CDN. (The alternative — deciding from the request's `Accept` header — produces
+different HTML for different browsers, and a cache that does not know that will serve the wrong one.)
+
+An image that already sits inside a `<picture>` you wrote yourself is left alone, and an image whose
+srcset is only partly converted is left alone too, rather than being offered an incomplete set of
+widths.
+
+### AVIF quality
+
+<img src="/img/extensions/asset-optimizer/avif-quality.png" alt="The AVIF quality slider, set to 60" width="1658" />
+
+**60 is the default.** AVIF numbers are not JPEG or WebP numbers — 60 here is roughly comparable to
+WebP at 80 to look at, which is why the default sits lower than the WebP one rather than matching it.
+
+As with WebP, changing this marks the existing copies out of date, and the background job re-makes
+them over its next few runs.
+
+### When nothing happens
+
+AVIF encoding needs **PHP 8.1 or newer with GD built against libavif**, or ImageMagick with AVIF
+support. A good deal of hosting does not have it. The setting says so on the settings screen when
+your server cannot do it, rather than silently doing nothing.
+
+As with WebP, a copy that does not come out smaller than the file it would replace is thrown away and
+not retried — and the comparison is against whichever file would otherwise have been served, so on a
+site with WebP on it has to beat the WebP, not the original.
+
 ## Image quality
 
 <img src="/img/extensions/asset-optimizer/image-quality.png" alt="The Image quality slider, set to 82" width="1658" />

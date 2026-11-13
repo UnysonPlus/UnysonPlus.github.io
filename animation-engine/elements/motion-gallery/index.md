@@ -370,12 +370,14 @@ Height**, they shrink to fit it.
 
 **WebGL (real 3D)**
 
-These twenty-four are drawn with real 3D graphics (WebGL), so they can do what CSS 3D can't: real lights, shadows and
+These twenty-seven are drawn with real 3D graphics (WebGL), so they can do what CSS 3D can't: real lights, shadows and
 reflections, shader effects, thousands of particles, breaking glass, water, jelly, soap bubbles, holographic foil,
-cloth, film and paper that bend, ridged lenticular prints and jigsaw pieces. The other designs are built from CSS 3D, which is lighter. Mirror Ring, Depth
+cloth, film and paper that bend, ridged lenticular prints, jigsaw pieces, folding paper,
+slot-machine reels and a photo that peels off like a sticker. The other designs are built from CSS 3D, which is lighter. Mirror Ring, Depth
 Field, Wave Wall, Cloth Banners, Fold Strip, Water Pool, Jelly Grid, Gallery Walk, Holo Cards, Domino Row, Photo
 Bubbles, Film Ribbon, Ferris Wheel, Photo Mobile and Photo Fall show many photos at once; Liquid Slider, Particle Morph, Flip Book,
-Shatter, Stage Curtain, Photo Cube, Pixel Blocks, Lenticular and Jigsaw show **one photo at a time**.
+Shatter, Stage Curtain, Photo Cube, Pixel Blocks, Lenticular, Jigsaw, Paper Fold, Slot Reels and Peel show **one photo at a
+time**.
 
 <img src="/img/animation-engine/motion-gallery/webgl-mirror-ring.png" alt="Mirror Ring: photos on a ring above a glossy floor that mirrors them, the ones facing away in shadow" width="1920" />
 
@@ -431,7 +433,8 @@ and stay readable to screen readers and search engines.
   spreads out from the middle like ink in water, with a dark edge), **Spiral** (the next photo winds in from the
   centre), **Light Leak** (a warm flare washes across as it changes, like old film), **Stretch** (the photos slide
   across, stretched and smeared by their speed) or **Halftone** (the next photo comes in as dots that grow as they
-  sweep across). **Strength** (0–100 %) sets how much the change distorts the photos, **Pointer Ripple**
+  sweep across), **Pinch** (the photo is drawn into the centre and opens out as the next) or **Wind** (the photo
+  streaks away row by row as the next blows in behind it). **Strength** (0–100 %) sets how much the change distorts the photos, **Pointer Ripple**
   (0–100 %) sends soft ripples out from the pointer, and **Slow Zoom** (0–20 %) zooms gently in and out on each
   photo. **Corner Radius** rounds the stage's corners. Clicking opens the photo on screen.
 
@@ -609,6 +612,29 @@ and stay readable to screen readers and search engines.
   Across** (4–16; the rows follow the stage's shape), **Scatter** (how far away they fly in from), **Move Time**,
   **Board Colour** (shows under a lifted piece and in the fine cut lines) and **Lighting**. Swipe for the next
   photo; the first photo assembles itself as the gallery comes into view.
+
+<img src="/img/animation-engine/motion-gallery/webgl-paper-fold.png" alt="Paper Fold: a photo half folded, its right half turning over onto the left" width="1920" />
+
+- **Paper Fold** — one photo at a time as a sheet of paper: it folds in half, then in half again into a small note
+  (showing the paper's back), which unfolds as the next photo. **Fold Order** (side first, then top; or top first,
+  then side), **Card Size**, **Move Time**, **Pointer Tilt** (the sheet tilts toward the pointer), **Paper Colour**
+  (the back of the sheet), **Lighting**, **Card Ratio** and **Corner Radius**. Swipe for the next photo.
+
+<img src="/img/animation-engine/motion-gallery/webgl-slot-reels.png" alt="Slot Reels: a photo split across three reels in a dark cabinet, the reels stopped at different points of their spin" width="1920" />
+
+- **Slot Reels** — the photo is split across reels, like a slot machine. For each photo the reels spin and stop one
+  after another, with a small bounce, landing on the next photo; the faces above and below show dimly round the
+  drums' curve. **Reels** (2–6), **Spins** (extra full turns before stopping, 0–6), **Stagger** (how far apart the
+  reels stop; 0 = all at once), **Size**, **Move Time**, **Pointer Tilt**, **Frame Colour** (the cabinet and
+  dividers), **Lighting** and **Photo Ratio**. The reels spin in on the first view. Swipe for the next photo.
+
+<img src="/img/animation-engine/motion-gallery/webgl-peel.png" alt="Peel: a photo peeling away from its top-right corner, the curl showing its paper back and the next photo underneath" width="1920" />
+
+- **Peel** — one photo at a time, peeled off like a sticker: it curls back from a corner, showing its paper back,
+  and reveals the next photo underneath, with a soft shadow along the curl. **Peel From** (a different corner each
+  time, or always top right, top left, bottom right or bottom left), **Curl Size** (tight or wide), **Corner Lift**
+  (how far the corner stands up while the photo shows; pointing at it lifts it more), **Move Time**, **Backing
+  Colour** and **Corner Radius**. Swipe for the next photo.
 
 How they behave on the page:
 

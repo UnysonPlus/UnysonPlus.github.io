@@ -244,7 +244,9 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   on a balanced mobile stirred by the pointer), plus **Spiral** and **Light Leak** transitions. **Animation Engine
   1.5.9** adds **Photo Fall** (photos tumbling down like leaves, blown about by the pointer), **Lenticular** (a ridged
   card that flips between two photos as it tilts) and **Jigsaw** (the next photo's pieces fly in and snap together),
-  plus **Stretch** and **Halftone** transitions.
+  plus **Stretch** and **Halftone** transitions. **Animation Engine 1.5.10** adds **Paper Fold** (a photo that folds into
+  a note and unfolds as the next), **Slot Reels** (the photo split across spinning reels) and **Peel** (a photo peeled
+  off like a sticker), plus **Pinch** and **Wind** transitions.
 
 ## Phase 3 — Flourishes
 

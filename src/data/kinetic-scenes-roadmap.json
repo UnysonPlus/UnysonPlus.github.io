@@ -142,6 +142,18 @@
           "title": "Accessibility",
           "detail": "Respect reduced-motion settings, keep text as real text, and give decorative layers the right hidden roles.",
           "status": "done"
+        },
+        {
+          "id": "p3-web-export",
+          "title": "Web export: light media for live pages",
+          "detail": "Export › For a web page (and studio-cli web-export, MCP scene_web_export) copies a project with every picture and video sized to the largest it is drawn (measured in a browser, camera and zoom included), stills as WebP, footage and sounds trimmed to what the timeline plays, footage without its sound track and voice in mono; a base address makes it ready for the Kinetic Scene element. A 47-second promo went from 22.9 MB to 3.8 MB.",
+          "status": "done"
+        },
+        {
+          "id": "p3-lazy-media",
+          "title": "Load media near the playhead",
+          "detail": "Live scenes fetch each part's pictures and footage as the playhead nears it (the opening first, then ahead), showing the poster frame until then, instead of loading everything when the page opens. Needs a new player version and the Kinetic Scene element to use it.",
+          "status": "planned"
         }
       ]
     },
@@ -1397,7 +1409,7 @@
       ]
     }
   ],
-  "extensionVersion": "0.1.39",
+  "extensionVersion": "0.1.41",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

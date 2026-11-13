@@ -80,6 +80,8 @@ page. It carries its own copy of the player, so no request leaves the site.
 - It writes the scene's words into the page's HTML for search engines and screen readers.
 - The element offers the same playback choices (on load, in view, as the page scrolls, with its own scroll length).
 - Breakpoints follow the **element's** width, not the screen's: in a half-width column a scene uses whichever layout fits.
+- A scene with photos, footage or music should go through **Export › For a web page** first: it sizes and trims the media
+  to what the scene uses and points the scene at your site. See [Web export](./web-export).
 
 ## Video
 

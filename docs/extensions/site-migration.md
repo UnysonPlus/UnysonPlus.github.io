@@ -175,8 +175,10 @@ reported processing time to isolate the network. Read it like this:
 
 It also measures whether several connections move more than one. Over a long round trip a single
 connection spends most of its time waiting for acknowledgements, so opening more can multiply
-throughput — and the file stages then open exactly as many as the measurement justified, and no
-more.
+throughput. **The file stages run a few connections in parallel by default** — so a migration isn't
+needlessly slow just because this test wasn't run first — and running the test refines that number to
+the one your link actually justified, and no more. If the destination runs short of memory the
+migration backs the count down on its own.
 
 ### Compare with destination
 

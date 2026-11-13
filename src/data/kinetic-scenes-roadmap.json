@@ -1407,9 +1407,46 @@
           "status": "done"
         }
       ]
+    },
+    {
+      "id": "p25-words",
+      "title": "Phase 25 — Timed by the words",
+      "goal": "Moments pinned to what the voice says rather than to seconds, so a re-recorded, reworded or translated line re-times everything on it by itself; and with that, one scene made in another language or many versions from a spreadsheet with their own narration. Plus short-form pieces for reels.",
+      "tasks": [
+        {
+          "id": "p25-anchors",
+          "title": "Anchor to a word",
+          "detail": "Pin a layer or a clip to a word (or a phrase) of a voice-over: it starts when the voice says it, with an offset if wanted. Re-record, reword or trim the voice and everything pinned to it moves with the words. The check reports a pin whose word is gone.",
+          "status": "done"
+        },
+        {
+          "id": "p25-script",
+          "title": "Voice clips keep their script",
+          "detail": "A voice made from a script keeps the script, so it can be spoken again in another voice or language, or filled from a spreadsheet.",
+          "status": "done"
+        },
+        {
+          "id": "p25-translate",
+          "title": "Translate a video",
+          "detail": "The AI Dev Kit makes a copy of a project in another language: every word on screen translated, every voice spoken again in a voice for that language, captions re-made, and the pins moved to the translated words, so the timing follows the new voice.",
+          "status": "done"
+        },
+        {
+          "id": "p25-batch-voice",
+          "title": "Batch with voice",
+          "detail": "In a batch from a spreadsheet, the voice-over can change per row too: {{placeholders}} in a voice's script are filled, the line is spoken again only when its words changed (kept for the next run), and the pins re-time each video.",
+          "status": "done"
+        },
+        {
+          "id": "p25-pieces",
+          "title": "Pieces for reels: comment reply, tier list, reveal board",
+          "detail": "A “replying to a comment” sticker to open a reel with a viewer's question, a tier list that drops items into their rows, and a board that uncovers answers one by one with a sound.",
+          "status": "done"
+        }
+      ]
     }
   ],
-  "extensionVersion": "0.1.41",
+  "extensionVersion": "0.1.48",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

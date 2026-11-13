@@ -277,6 +277,9 @@ cut out, a piece goes behind them.
 | **Newspaper front page** | The paper's name, a huge headline, columns and a photo slot: put a cut-out person with Risograph or Engraving in the slot. |
 | **Banknote** | An engraved border, serial numbers, a value rolling up like an odometer and an oval for an engraved portrait. |
 | **Day dial** | A big dial with the days round it turns behind the speaker, like a calendar wheel. |
+| **Replying to a comment** | A viewer's comment as a sticker at the top ("Reply to @name's comment" and the question), popping in with a tilt: open a reel by answering a question. |
+| **Tier list** | S to D rows in their colours, and items that drop into their rows one by one with a pop. Change the items, their rows and their times. |
+| **Reveal board** | A numbered top-5 whose answers are covered, then uncovered one by one with a reveal sound, like a game show. |
 
 ## Edit my video with AI
 

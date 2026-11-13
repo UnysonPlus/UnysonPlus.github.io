@@ -55,9 +55,22 @@ settings save, works too.
   `01-green-mug.mp4`, `02-desk-lamp.mp4` … (named after the first column). It needs the AI Dev Kit running, renders the
   rows one after another (a few minutes each), and can be stopped; a row that fails is listed and the rest carry on.
 
+## A voice-over for every row
+
+A voice-over made from a script (**Audio › Voice-over from a script**) keeps its script, and the script can have
+placeholders too: `{{product}} gives you the rest, for {{price}}.` For each row, the line is **spoken again in the same
+voice** with that row's words, its words are timed, and its captions follow.
+
+- **Only what changed is spoken.** The AI Dev Kit keeps every line it has spoken: a line with no placeholders is made
+  once, and a row that repeats words already spoken reuses them.
+- **What is pinned to a word follows it.** Pin the product's picture to the `{{product}}` word ([word pins](./word-pins)):
+  a longer name in one row moves everything after it to where it is said in that row.
+- **The scene grows if it must.** When a row's voice-over runs past the end, that row's video is made longer to fit it.
+- Rendering a row with a voice-over takes a few seconds more while its line is spoken; it needs the AI Dev Kit.
+
 ## Limits
 
-- Each row is the same design: the same length, layers and timing. Text that is much longer in one row than another
+- Each row is the same design: the same layers and timing (a row's own voice-over re-times only what is pinned to its words). Text that is much longer in one row than another
   can wrap differently: preview the longest row before rendering.
 - Placeholders fill text only; they don't add or remove layers. For a row without a picture, leave the cell empty and
   the layer shows nothing.
@@ -73,4 +86,5 @@ studio-cli batch scene.json --data products.csv --name Product     # renders eve
 studio-cli batch scene.json --data products.csv --rows 1-3,7 --out out/
 ```
 
-The MCP tool is `scene_batch` (`render: true` only when the person asks for the videos).
+The MCP tool is `scene_batch` (`render: true` only when the person asks for the videos). A voice clip whose `script` has placeholders is
+spoken again for each row in its `voiceId` voice, and word pins re-time each video (`voiceRow` in `studio-batch.mjs`).

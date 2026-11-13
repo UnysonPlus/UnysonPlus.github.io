@@ -142,6 +142,33 @@ There are 4 built-in container types:
   > ),
   > ```
 
+- `column` - Lay options out side by side. Two or more `column` containers placed next to each other
+  form one row of columns; each keeps its options' values flat, exactly as if the column weren't there,
+  so options can be wrapped in columns (or taken out again) without touching saved data.
+
+  > ``` php
+  > 'main' => array(
+  >     'type'    => 'column',
+  >     'width'   => '3/5',            // its share of the row; columns without a width share the rest
+  >     'options' => array(
+  >         'option_id' => array( 'type' => 'text' ),
+  >     ),
+  > ),
+  > 'side' => array(
+  >     'type'        => 'column',
+  >     'width'       => '2/5',
+  >     'sticky'      => true,         // stays in view while the other column scrolls
+  >     'stack_first' => true,         // leads when the row is stacked
+  >     'options'     => array(
+  >         'preview_id' => array( 'type' => 'text' ),
+  >     ),
+  > ),
+  > ```
+
+  The row turns into columns only when it is at least **960 px** wide (set `stack_below` on the first
+  column to change that); narrower — a small modal, a small screen, the Live Editor's side panel — the
+  columns stack one under another. See [Columns](#columns) below.
+
 - `popup` - A button, when clicked it will open a modal with options
 
   > ``` php
@@ -152,10 +179,31 @@ There are 4 built-in container types:
   >     ),
   >     'title' => __('Button and Popup Title', '{domain}'),
   >     'attr' => array('class' => 'custom-class', 'data-foo' => 'bar'),
-  >     'modal-size' => 'small', // small, medium, large
+  >     'modal-size' => 'small', // small, medium, large, full
   >     'desc' => __('Button Description', '{domain}'),
   > ),
   > ```
+
+## Columns
+
+The `column` container is for forms with room to spare — mostly the **`full`** shortcode popup size,
+where one long column of options would stretch across the whole window. The Motion Gallery's Design tab
+uses it to put the design picker and its controls on the left and a live preview on the right, pinned in
+view while the controls scroll:
+
+<img src="/img/options/column-container.png" alt="The Motion Gallery's options in a full-size popup: the design's controls in a column on the left, the live preview in a pinned column on the right" width="1860" />
+
+| Setting | On | What it does |
+|---|---|---|
+| `width` | each column | Its share of the row as a fraction, `"3/5"`, `"1/3"` (the same strings the `column-split` option type stores). Columns without one share the rest equally. |
+| `sticky` | each column | Keeps the column in view while the row scrolls — a preview beside long controls. Side by side only, unless the column is also `stack_first`. |
+| `stack_first` | each column | When the row is stacked, this column comes first (and, if sticky, stays pinned at the top). |
+| `stack_below` | the first column | The row's width in px under which the columns stack. Default `960`. It is measured on the row itself, not the window. |
+| `attr` | each column | Extra HTML attributes for the column's wrapper (a `class` is added to its own). |
+
+Limits: columns are laid out with a container query, so the browser must support CSS container queries
+(every current browser does). A single `column` on its own is just a full-width block. Columns can hold
+any options, including other containers, but not tabs that are meant to be top-level.
 
 ## Restrictions
 

@@ -147,7 +147,12 @@ For the shortcode to appear in the page builder the config array contains a spec
 
 - `popup_size` - the size of the popup in which the shortcode options will be displayed.
 
-  > Allowed values are `large | medium | small`. This parameter is optional and the default is set to `small`.
+  > Allowed values are `full | large | medium | small`. This parameter is optional and the default is set to `small`.
+  >
+  > `full` fills the window less a 30 px margin all round, like the media uploader, and follows the window as
+  > it resizes (it is not draggable like the smaller sizes). Use it for an element with a lot to show at once,
+  > such as a live preview beside its controls; lay the form out with the [`column`](/options/introduction#columns)
+  > container so the controls don't stretch across the whole width. The Motion Gallery opens at `full`.
   >
   > ![shortcodes-layout-builder-popup](/img/legacy/layout-builder-popup.jpg)
 

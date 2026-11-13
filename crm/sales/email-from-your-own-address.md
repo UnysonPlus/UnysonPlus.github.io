@@ -9,7 +9,7 @@ keywords: [wordpress crm send email from my address, wordpress crm smtp, crm ema
 # Send email from your own address
 
 When you click **Email** on a contact, company or deal, the CRM sends a personal email for you. This tutorial
-makes those emails come from **your own address**, for example `jon@yourcompany.com`, and brings the replies back
+makes those emails come from **your own address**, for example `john.doe@yourcompany.com`, and brings the replies back
 to you and onto the contact's timeline.
 
 It takes about ten minutes. You need:
@@ -24,8 +24,8 @@ Three settings decide what the person you write to sees. Each step below sets on
 
 | What the reader sees | Where it comes from |
 |---|---|
-| **From name**: "Jon at Your Company" | Your **display name** in your WordPress profile, then "at", then the site's name |
-| **From address**: `jon@yourcompany.com` | The CRM's default **transactional sender** (CRM → Settings → Sending). With no sender set, the **Mailer's From address**. With neither, WordPress's own `wordpress@yourdomain` |
+| **From name**: "John at Your Company" | Your **display name** in your WordPress profile, then "at", then the site's name |
+| **From address**: `john.doe@yourcompany.com` | The CRM's default **transactional sender** (CRM → Settings → Sending). With no sender set, the **Mailer's From address**. With neither, WordPress's own `wordpress@yourdomain` |
 | **Reply-To**: where their reply goes | The **email address in your WordPress profile** |
 | **Your name under the message** | Your **display name** again |
 
@@ -33,7 +33,7 @@ How the email travels is separate: through the email service chosen on the sende
 SMTP server**, otherwise through your web host's own mail. Mail sent straight from a web host often lands in spam,
 so set up SMTP or an email service (step 2) even if the address already looks right.
 
-<img src="/img/crm/email-own-compose.png" alt="The New email box in the CRM, with Jon signed under the message and the note Replies go to jon@unysonplus.com" width="706" />
+<img src="/img/crm/email-own-compose.png" alt="The New email box in the CRM, with John signed under the message and the note Replies go to john.doe@yourcompany.com" width="706" />
 
 The email box shows the result before you send: the name under the message, and **Replies go to** with your address.
 
@@ -41,15 +41,15 @@ The email box shows the result before you send: the name under the message, and 
 
 Open **Users → Profile** (your own profile, top right of the admin bar).
 
-1. Under **Name**, set **Display name publicly as** to the name you sign with, such as "Jon". The CRM uses it as
+1. Under **Name**, set **Display name publicly as** to the name you sign with, such as "John". The CRM uses it as
    the From name and puts it under each new message.
 
-   <img src="/img/crm/email-own-profile-name.png" alt="The Display name publicly as field set to Jon" width="1078" />
+   <img src="/img/crm/email-own-profile-name.png" alt="The Display name publicly as field set to John" width="1078" />
 
-2. Under **Contact Info**, set **Email** to your own address, such as `jon@yourcompany.com`. Replies to your CRM
+2. Under **Contact Info**, set **Email** to your own address, such as `john.doe@yourcompany.com`. Replies to your CRM
    emails go here.
 
-   <img src="/img/crm/email-own-profile-email.png" alt="The Email field in the WordPress profile set to jon@unysonplus.com, with the note that a confirmation email is sent to the new address" width="1078" />
+   <img src="/img/crm/email-own-profile-email.png" alt="The Email field in the WordPress profile set to john.doe@yourcompany.com, with the note that a confirmation email is sent to the new address" width="1078" />
 
 3. Click **Update Profile**.
 
@@ -70,7 +70,7 @@ Open **CRM → Settings**, scroll to **Sending** and click **Mailer settings (SM
 site sends now. (The Mailer comes with the Forms extension; contact forms show the same settings in their **Mailer**
 tab.)
 
-<img src="/img/crm/email-own-mailer.png" alt="Mailer Settings: send method SMTP, server mail.unysonplus.com, user name and From address jon@unysonplus.com, SSL on port 465" width="1758" />
+<img src="/img/crm/email-own-mailer.png" alt="Mailer Settings: send method SMTP, server mail.yourcompany.com, user name and From address john.doe@yourcompany.com, SSL on port 465" width="1758" />
 
 1. **Send Method**: **SMTP**.
 2. **Server Address**, **Username**, **Password**, **Secure Connection** and **Custom Port**: your provider's SMTP
@@ -104,13 +104,13 @@ service under **Send with**.
 Open **CRM → Settings** and scroll to **Sending**.
 
 1. Click **Add a sender** and fill it in:
-   - **Name (for you)**: a label, such as "Jon";
+   - **Name (for you)**: a label, such as "John";
    - **From name**: used by campaigns and confirmations. Your own emails keep your display name;
-   - **From address**: `jon@yourcompany.com`;
+   - **From address**: `john.doe@yourcompany.com`;
    - **Reply-To (optional)**: leave it empty. Your own emails always reply to your profile address;
    - **Send with**: **The site's own mail (Mailer / SMTP)** for option A, or your email service for option B.
 
-   <img src="/img/crm/email-own-sender-form.png" alt="The sender form: name Jon, From name Jon at Unyson+, From address jon@unysonplus.com, Send with the site's own mail" width="1654" />
+   <img src="/img/crm/email-own-sender-form.png" alt="The sender form: name John, From name John Doe, From address john.doe@yourcompany.com, Send with the site's own mail" width="1654" />
 
 2. Click **Save sender**. The first sender becomes the default for both kinds of email.
 3. Under the table, check that **Transactional email from** shows your sender. One-to-one email is transactional.
@@ -118,14 +118,14 @@ Open **CRM → Settings** and scroll to **Sending**.
 4. Next to **Send a test with**, choose your sender, enter an address you can check (a personal one is best), and
    click **Send test**.
 
-<img src="/img/crm/email-own-senders.png" alt="CRM Settings, Sending: the sender Jon as marketing and transactional default, From Jon at Unyson+ jon@unysonplus.com, the Save defaults and Send test controls" width="1692" />
+<img src="/img/crm/email-own-senders.png" alt="CRM Settings, Sending: the sender John as marketing and transactional default, From John Doe john.doe@yourcompany.com, the Save defaults and Send test controls" width="1692" />
 
 Open the test email and check who it is from. In Gmail, **Show original** should say `SPF: PASS` and `DKIM: PASS`.
 
 :::tip Only want one address for everything?
 If the Mailer's **From Address** is already your address and you will not run campaigns from another address, you
 can skip the sender. With no sender, CRM email uses the Mailer's From address. A sender is still the way to send
-campaigns from one address (`news@`) and personal email from another (`jon@`).
+campaigns from one address (`news@`) and personal email from another (`john.doe@`).
 :::
 
 ## Step 4: Write your first email

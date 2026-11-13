@@ -111,16 +111,19 @@ Put the element on **one** page only, and choose that page as the **Checkout pag
 
 1. **The summary**: the plan name and length on the left, the price on the right, and "Free for the first 14
    days" when the price has trial days.
-2. **The price lines**, when there is anything beyond the plain price: **Setup fee**, **Discount (CODE)**,
+2. **The price lines**, when there is anything beyond the plain price: one line per ticked [checkout
+   extra](./checkout-extras.md) ("Longer videos + USD 12.00 a month"), **Setup fee**, **Discount (CODE)**,
    the tax line (for example "VAT (20%)", or "Includes VAT (20%)" when your prices include tax), **Due
    today**, and **Then each renewal** for repeating prices (with "(discounted for 3 months)" for a coupon
    that lasts a few months).
-3. **Have a code?** A code field with **Apply**, shown when the Coupons module or the Gift memberships module
+3. **Add to your order**, when the plan offers [checkout extras](./checkout-extras.md): a tick-box for each,
+   with its price and a short description. Ticking one updates the totals straight away.
+4. **Have a code?** A code field with **Apply**, shown when the Coupons module or the Gift memberships module
    is on. It takes a coupon code, and also a gift code: typing a gift code here and clicking **Apply** opens
    that gift's redeem page, so someone who was given a code can start their membership from the checkout. When the Tax module asks for the
    buyer's **Country** (and **State / region** or **EU VAT number (businesses, optional)**), those fields sit
    here too and the button reads **Update the price**. The total updates before anyone pays.
-4. **The account fields** for logged-out buyers: "Already have an account? **Log in first**", **First name**,
+5. **The account fields** for logged-out buyers: "Already have an account? **Log in first**", **First name**,
    **Last name**, **Email** and **Choose a password** (at least 8 characters). Logged-in buyers see "Joining as
    `you@example.com`." (their own email) instead.
    - **For a one-time price** (paid once, lifetime or free) and for a gift, the field reads **Choose a password
@@ -130,13 +133,13 @@ Put the element on **one** page only, and choose that page as the **Checkout pag
      one item goes straight to paying, without making up a password first.
    - **For a repeating price** (each month, each year…) the password stays required: those buyers log in to
      see, change or cancel their subscription.
-5. **For a gift**: "Who is the gift for?" with **Their name**, **Their email** and **A message (optional)**.
+6. **For a gift**: "Who is the gift for?" with **Their name**, **Their email** and **A message (optional)**.
    The summary at the top then shows one period of the price, for example "GBP 8.00 for 1 month", with "A
    gift: one payment, nothing renews" (no trial days). See [Gift memberships](./gifts.md).
-6. **How would you like to pay?** One choice per way to pay that is ready: **Card**, **PayPal**, **Bank
+7. **How would you like to pay?** One choice per way to pay that is ready: **Card**, **PayPal**, **Bank
    transfer** (or the name you gave it), each with a short explanation.
-7. **I accept the terms.** when you set a **Terms page** in Payment settings.
-8. **The button**: **Continue to payment**, or **Join for free**.
+8. **I accept the terms.** when you set a **Terms page** in Payment settings.
+9. **The button**: **Continue to payment**, or **Join for free**.
 
 After paying, the buyer comes back to the same page and sees one of:
 
@@ -181,6 +184,7 @@ After paying, the buyer comes back to the same page and sees one of:
 ## Next steps
 
 - [Payments](./payments.md): connect Stripe, PayPal or bank transfer.
+- [Checkout extras](./checkout-extras.md): optional add-ons with their own price.
 - [Coupons](./coupons.md): discounts at the checkout.
 - [Tax](./tax.md): add tax and VAT to the checkout.
 - [Gift memberships](./gifts.md) and [Pay per item](./pay-per-item.md).

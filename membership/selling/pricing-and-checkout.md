@@ -117,7 +117,8 @@ Put the element on **one** page only, and choose that page as the **Checkout pag
    today**, and **Then each renewal** for repeating prices (with "(discounted for 3 months)" for a coupon
    that lasts a few months).
 3. **Add to your order**, when the plan offers [checkout extras](./checkout-extras.md): a tick-box for each,
-   with its price and a short description. Ticking one updates the totals straight away.
+   with its price and a short description, or a slider for an extra sold by the amount (a video length, a
+   number of seats). Ticking a box or moving a slider updates the totals straight away.
 4. **Have a code?** A code field with **Apply**, shown when the Coupons module or the Gift memberships module
    is on. It takes a coupon code, and also a gift code: typing a gift code here and clicking **Apply** opens
    that gift's redeem page, so someone who was given a code can start their membership from the checkout. When the Tax module asks for the

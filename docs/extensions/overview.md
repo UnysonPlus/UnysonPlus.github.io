@@ -35,7 +35,7 @@ page (where you activate and deactivate it yourself):
 | **Live Page Editor** | Edit builder pages on the live front end. → [docs](./live-editor.md) | Yes |
 | **Site Converter** | Import an AI-generated / captured website into WordPress. → [docs](./site-converter/index.md) | Yes |
 | **Site Migration** | Move a whole site (DB, uploads, themes, plugins) to another install in resumable background slices. → [docs](./site-migration.md) | Yes |
-| **Template Library** | A browsable catalog of premade section / page templates, downloaded on demand into uploads. | Yes |
+| **[Template Library](./template-library.md)** | Ready-made starter pages (with their photos) and sections, installed in one click from the builder. | Yes |
 | **Custom Fields** | ACF-style custom fields builder. → [docs](/data-modeling/custom-fields) | Yes |
 | **Post Types &amp; Taxonomies** | Register CPTs and taxonomies from the admin. → [docs](/data-modeling/post-types) | Yes |
 | **Portfolio** | A fully-featured portfolio module. → [docs](./portfolio/index.md) | Yes |

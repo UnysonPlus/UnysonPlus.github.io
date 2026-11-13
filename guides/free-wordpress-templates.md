@@ -30,7 +30,7 @@ This guide shows the three free ways to get a template into your site and make i
 
 - A **drag-and-drop [page builder](/page-builder)** that outputs clean, native WordPress content —
   not a locked proprietary format.
-- A **Template Library**: a browsable catalog of premade **sections** (hero, stats band, testimonials,
+- A **[Template Library](/extensions/template-library)**: a browsable catalog of premade **sections** (hero, stats band, testimonials,
   pricing, CTA…) and **whole pages**, downloaded on demand so the plugin stays lean.
 - **Global Templates**: reusable sections that stay in sync across every page.
 - No "unlock this in Pro" walls — Unyson+ and its extensions are free.

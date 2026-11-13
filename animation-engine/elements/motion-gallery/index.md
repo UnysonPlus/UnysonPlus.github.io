@@ -370,14 +370,14 @@ Height**, they shrink to fit it.
 
 **WebGL (real 3D)**
 
-These thirty are drawn with real 3D graphics (WebGL), so they can do what CSS 3D can't: real lights, shadows and
+These thirty-three are drawn with real 3D graphics (WebGL), so they can do what CSS 3D can't: real lights, shadows and
 reflections, shader effects, thousands of particles, breaking glass, water, jelly, soap bubbles, holographic foil,
 cloth, film and paper that bend, ridged lenticular prints, jigsaw pieces, folding paper,
-slot-machine reels, a photo that peels off like a sticker, books on a shelf, a snow globe and a wall of
-retro TVs. The other designs are built from CSS 3D, which is lighter. Mirror Ring, Depth
+slot-machine reels, a photo that peels off like a sticker, books on a shelf, a snow globe, a wall of
+retro TVs, a photo in lit relief, a wall of turning prisms and a photo painted in with a brush. The other designs are built from CSS 3D, which is lighter. Mirror Ring, Depth
 Field, Wave Wall, Cloth Banners, Fold Strip, Water Pool, Jelly Grid, Gallery Walk, Holo Cards, Domino Row, Photo
-Bubbles, Film Ribbon, Ferris Wheel, Photo Mobile, Photo Fall, Bookshelf and TV Wall show many photos at once; Liquid Slider, Particle Morph, Flip Book,
-Shatter, Stage Curtain, Photo Cube, Pixel Blocks, Lenticular, Jigsaw, Paper Fold, Slot Reels, Peel and Snow Globe show **one
+Bubbles, Film Ribbon, Ferris Wheel, Photo Mobile, Photo Fall, Bookshelf, TV Wall and Prism Wall show many photos at once (Prism Wall: a slice of one photo per prism); Liquid Slider, Particle Morph, Flip Book,
+Shatter, Stage Curtain, Photo Cube, Pixel Blocks, Lenticular, Jigsaw, Paper Fold, Slot Reels, Peel, Snow Globe, Photo Relief and Paint Reveal show **one
 photo at a time**.
 
 <img src="/img/animation-engine/motion-gallery/webgl-mirror-ring.png" alt="Mirror Ring: photos on a ring above a glossy floor that mirrors them, the ones facing away in shadow" width="1920" />
@@ -661,6 +661,33 @@ and stay readable to screen readers and search engines.
   set holds a photo; Scroll-scrub flicks them with the scroll. Point at a set to bring it forward (its static
   stops); clicking opens its photo. **TVs** (4–20; the rows follow the stage's shape), **TV Colour**, **Mixed
   Colours** (a different retro colour per set), **Scanlines**, **Static**, **Screen Curve** and **Lighting**.
+
+<img src="/img/animation-engine/motion-gallery/webgl-relief.png" alt="Photo Relief: a photo raised into a lit 3D relief, reshaping into the next photo from the left" width="1920" />
+
+- **Photo Relief** — one photo at a time, raised into a 3D relief: its bright parts (or, with **Raise → The dark
+  parts**, its dark ones) stand up from the surface, lit by a light that rakes slowly across it. For each new
+  photo a crest runs over the surface and reshapes it into the next. It tilts toward the pointer and sways gently
+  when the pointer is away. **Relief Depth**, **Raise**, **Smoothness** (low keeps fine detail; high makes soft,
+  rounded shapes), **Pointer Tilt**, **Light Sweep**, **Shine**, **Move Time**, **Photo Size** and **Corner Radius**.
+  Swipe for the next photo. Photos with clear light and shade (buildings, rocks, faces in side light) give the
+  strongest relief; a flat, evenly lit photo gives a shallow one.
+
+<img src="/img/animation-engine/motion-gallery/webgl-prism-wall.png" alt="Prism Wall: a row of tall three-sided prisms holding slices of a photo, the ones at the right turning to the next" width="1920" />
+
+- **Prism Wall** — a row of three-sided prisms, like a turning advertising sign: each prism holds a vertical slice
+  of the photo on every face. For each new photo they turn in a wave, the faces catching the light as they go.
+  Point at the wall and the prisms near the pointer turn a little toward the next photo. **Prisms** (4–40),
+  **Gap**, **Wave From** (left, right, the centre or a random order), **Wave Spread** (0 turns them all at once),
+  **Pointer Peek**, **Move Time** and **Wall Size**. Swipe for the next photo; clicking opens the photo showing.
+
+<img src="/img/animation-engine/motion-gallery/webgl-paint-reveal.png" alt="Paint Reveal: the next photo being painted over the current one in wavy brush strokes, the lower part still unpainted" width="1920" />
+
+- **Paint Reveal** — one photo at a time; the next one is painted over it in broad brush strokes, back and forth
+  from the top, and the last gaps fill in as the stroke finishes. Visitors can paint it in themselves with the
+  pointer. **Brush** (Soft: wide, feathered strokes; Dry brush: streaky bristle strokes; Ink: crisp, solid
+  strokes), **Brush Size**, **Paint Thickness** (light and shade on the stroke edges), **Pointer Paints**, **Move
+  Time** and **Corner Radius**. With Scroll-scrub the scroll moves the brush, and scrolling back takes the strokes
+  off again. Swipe for the next photo.
 
 How they behave on the page:
 

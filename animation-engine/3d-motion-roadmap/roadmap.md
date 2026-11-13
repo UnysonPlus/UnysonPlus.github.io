@@ -249,7 +249,10 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   off like a sticker), plus **Pinch** and **Wind** transitions. **Animation Engine 1.5.12** adds **Bookshelf** (photo
   books that slide out and turn to show their covers), **Snow Globe** (a photo in a globe that shakes for each change)
   and **TV Wall** (a stack of retro TVs flickering between photos), plus **Focus** and **Shutter** transitions, and a
-  note under the Design tab's preview saying what loads on the page and when.
+  note under the Design tab's preview saying what loads on the page and when. **Animation Engine 1.5.15** adds **Photo
+  Relief** (the photo raised into a lit 3D relief that reshapes into the next), **Prism Wall** (three-sided prisms that
+  turn in a wave to the next photo) and **Paint Reveal** (the next photo painted in with a brush, by itself or by the
+  visitor's pointer).
 
 ## Phase 3 — Flourishes
 

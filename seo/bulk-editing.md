@@ -28,6 +28,7 @@ can change:
 | SEO title, Meta description, Canonical URL | Editable. |
 | No index, No follow | Editable. `1` or `0` — `yes` and `true` are understood too. |
 | Share title, Share description, Share image URL | Editable. |
+| Custom schema (JSON-LD) | Editable. The page's own [custom schema](./custom-schema.md). |
 
 The read-only columns are the point. Without seeing what a page already produces you cannot tell
 which rows are worth touching, and you end up overriding pages that were perfectly fine.

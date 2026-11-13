@@ -27,6 +27,11 @@ image is the one your share card uses. They cannot drift apart — and structure
 contradicts the tags beside it is worse than none, because it is the machine-readable copy
 and it is the one that gets believed.
 
+:::tip Already have JSON-LD?
+Structured data written elsewhere (by an SEO specialist or a schema generator) can be pasted in,
+site-wide or for one page, and is merged into this graph: see [Custom schema](./custom-schema.md).
+:::
+
 ## Site identity
 
 Under **Unyson+ → SEO → Structured data**, say whether the site represents **an organisation** or

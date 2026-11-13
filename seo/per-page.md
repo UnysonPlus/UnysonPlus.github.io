@@ -30,3 +30,6 @@ than eight.
 
 **Advanced** also holds **Language versions**, for a page that exists in other languages as separate pages or
 sites: see [Language versions (hreflang)](./language-versions.md).
+
+**Advanced** also holds **Custom schema (JSON-LD)**: structured data written for this page, merged into
+the site's own. See [Custom schema](./custom-schema.md).

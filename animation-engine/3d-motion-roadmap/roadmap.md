@@ -246,7 +246,10 @@ the stage goes `position: fixed`), so pinned choreography uses the pose engine, 
   card that flips between two photos as it tilts) and **Jigsaw** (the next photo's pieces fly in and snap together),
   plus **Stretch** and **Halftone** transitions. **Animation Engine 1.5.10** adds **Paper Fold** (a photo that folds into
   a note and unfolds as the next), **Slot Reels** (the photo split across spinning reels) and **Peel** (a photo peeled
-  off like a sticker), plus **Pinch** and **Wind** transitions.
+  off like a sticker), plus **Pinch** and **Wind** transitions. **Animation Engine 1.5.12** adds **Bookshelf** (photo
+  books that slide out and turn to show their covers), **Snow Globe** (a photo in a globe that shakes for each change)
+  and **TV Wall** (a stack of retro TVs flickering between photos), plus **Focus** and **Shutter** transitions, and a
+  note under the Design tab's preview saying what loads on the page and when.
 
 ## Phase 3 — Flourishes
 

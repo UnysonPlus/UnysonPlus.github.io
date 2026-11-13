@@ -370,14 +370,15 @@ Height**, they shrink to fit it.
 
 **WebGL (real 3D)**
 
-These twenty-seven are drawn with real 3D graphics (WebGL), so they can do what CSS 3D can't: real lights, shadows and
+These thirty are drawn with real 3D graphics (WebGL), so they can do what CSS 3D can't: real lights, shadows and
 reflections, shader effects, thousands of particles, breaking glass, water, jelly, soap bubbles, holographic foil,
 cloth, film and paper that bend, ridged lenticular prints, jigsaw pieces, folding paper,
-slot-machine reels and a photo that peels off like a sticker. The other designs are built from CSS 3D, which is lighter. Mirror Ring, Depth
+slot-machine reels, a photo that peels off like a sticker, books on a shelf, a snow globe and a wall of
+retro TVs. The other designs are built from CSS 3D, which is lighter. Mirror Ring, Depth
 Field, Wave Wall, Cloth Banners, Fold Strip, Water Pool, Jelly Grid, Gallery Walk, Holo Cards, Domino Row, Photo
-Bubbles, Film Ribbon, Ferris Wheel, Photo Mobile and Photo Fall show many photos at once; Liquid Slider, Particle Morph, Flip Book,
-Shatter, Stage Curtain, Photo Cube, Pixel Blocks, Lenticular, Jigsaw, Paper Fold, Slot Reels and Peel show **one photo at a
-time**.
+Bubbles, Film Ribbon, Ferris Wheel, Photo Mobile, Photo Fall, Bookshelf and TV Wall show many photos at once; Liquid Slider, Particle Morph, Flip Book,
+Shatter, Stage Curtain, Photo Cube, Pixel Blocks, Lenticular, Jigsaw, Paper Fold, Slot Reels, Peel and Snow Globe show **one
+photo at a time**.
 
 <img src="/img/animation-engine/motion-gallery/webgl-mirror-ring.png" alt="Mirror Ring: photos on a ring above a glossy floor that mirrors them, the ones facing away in shadow" width="1920" />
 
@@ -433,8 +434,9 @@ and stay readable to screen readers and search engines.
   spreads out from the middle like ink in water, with a dark edge), **Spiral** (the next photo winds in from the
   centre), **Light Leak** (a warm flare washes across as it changes, like old film), **Stretch** (the photos slide
   across, stretched and smeared by their speed) or **Halftone** (the next photo comes in as dots that grow as they
-  sweep across), **Pinch** (the photo is drawn into the centre and opens out as the next) or **Wind** (the photo
-  streaks away row by row as the next blows in behind it). **Strength** (0–100 %) sets how much the change distorts the photos, **Pointer Ripple**
+  sweep across), **Pinch** (the photo is drawn into the centre and opens out as the next) **Wind** (the photo
+  streaks away row by row as the next blows in behind it), **Focus** (the photo blurs out of focus and sharpens
+  on the next) or **Shutter** (camera aperture blades close over the photo and open on the next). **Strength** (0–100 %) sets how much the change distorts the photos, **Pointer Ripple**
   (0–100 %) sends soft ripples out from the pointer, and **Slow Zoom** (0–20 %) zooms gently in and out on each
   photo. **Corner Radius** rounds the stage's corners. Clicking opens the photo on screen.
 
@@ -635,6 +637,30 @@ and stay readable to screen readers and search engines.
   time, or always top right, top left, bottom right or bottom left), **Curl Size** (tight or wide), **Corner Lift**
   (how far the corner stands up while the photo shows; pointing at it lifts it more), **Move Time**, **Backing
   Colour** and **Corner Radius**. Swipe for the next photo.
+
+<img src="/img/animation-engine/motion-gallery/webgl-bookshelf.png" alt="Bookshelf: books with photo spines on a wooden shelf, one pulled out and turned to show its photo cover" width="1920" />
+
+- **Bookshelf** — your photos are the covers of books standing on wooden shelves, spines out (each spine is a
+  slice of its cover). One at a time, in a shuffled order, a book slides out and turns to show its cover; point
+  at a book and it comes out for you, and clicking opens its photo. **Books** (6–30; the gallery repeats to fill
+  them), **Shelves** (1–3: one long shelf suits a wide stage, more make a taller bookcase), **Pull Out** (how far
+  it comes out), **Move Time**, **Shelf Colour**, **Lighting** and **Cover Ratio**. Near either end of the shelf
+  a book also slides toward the middle as it turns, so its cover stays inside the bookcase.
+
+<img src="/img/animation-engine/motion-gallery/webgl-snow-globe.png" alt="Snow Globe: a photo inside a glass snow globe on a dark base, snow drifting around it" width="1920" />
+
+- **Snow Globe** — one photo at a time inside a glass snow globe on a base. For each new photo the globe shakes,
+  the snow swirls up, and the next photo shows as it settles; move the pointer over the globe and the snow
+  stirs. **Snow** (how much), **Shake** (how hard it shakes), **Pointer Stir**, **Globe Size**, **Move Time**,
+  **Base Colour**, **Lighting**, **Card Ratio** and **Corner Radius**. Swipe for the next photo.
+
+<img src="/img/animation-engine/motion-gallery/webgl-tv-wall.png" alt="TV Wall: a stacked pile of retro TVs in different colours, each screen showing a photo" width="1920" />
+
+- **TV Wall** — a stacked wall of retro TVs, each showing one of your photos on a curved, scanlined screen and
+  flickering through static to the next photo on its own beat. **Motion → Channel Change** sets how long each
+  set holds a photo; Scroll-scrub flicks them with the scroll. Point at a set to bring it forward (its static
+  stops); clicking opens its photo. **TVs** (4–20; the rows follow the stage's shape), **TV Colour**, **Mixed
+  Colours** (a different retro colour per set), **Scanlines**, **Static**, **Screen Curve** and **Lighting**.
 
 How they behave on the page:
 

@@ -600,8 +600,8 @@ const config = {
             label: 'AI Dev Kit',
           },
           {
-            href: 'https://github.com/UnysonPlus',
-            label: 'GitHub',
+            href: 'https://github.com/UnysonPlus/UnysonPlus/releases/latest/download/unysonplus.zip',
+            label: 'Download',
             position: 'right',
           },
         ],

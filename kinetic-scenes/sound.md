@@ -18,6 +18,27 @@ Audio sits on its own rows below the layers, with a waveform, so you can line up
 - A voice-over longer than the scene makes the scene as long as it.
 - **On a web page** a scene with sound starts muted with a small **Tap for sound** button, because browsers block sound
   until the visitor interacts. Presentations and full screen play sound from the first click, and video exports mix it in.
+  Two settings in **Inspector › Playback** (with no layer selected) decide how that button behaves: see
+  [Tap for sound](#tap-for-sound) below.
+
+### Tap for sound
+
+A visitor who turns the sound on in the middle of a narrated scene would otherwise land mid-sentence. **When sound is
+turned on** chooses what happens:
+
+| Choice | What the visitor hears |
+|---|---|
+| **Keep playing** (default) | The sound comes in where the scene is. Right for music-only scenes. |
+| **From the start of the line** | The scene goes back to the start of the voice line being spoken, so it begins with a whole sentence. A short voice clip counts as one line; in one long voice-over, it is the sentence being said. Between lines it just keeps playing. |
+| **From the beginning** | The scene plays from the start, like a video. |
+| **From the beginning early on, else the line** | From the beginning when the sound is turned on in the first seconds (**Early on: the first**, 15 s by default), otherwise from the start of the line. Good for a narrated hero: early on nothing is lost, later the visitor doesn't have to watch everything again. |
+
+A quick fade covers the jump. **Sound button: Shown when the mouse moves** keeps the button out of the picture: it
+shows for the first seconds, then whenever the mouse moves over the scene, and fades out after a moment of stillness.
+On phones and tablets, which have no mouse, and when it has keyboard focus, it always shows.
+
+In the scene file these are `playback.onSound` (`continue`, `line`, `start`, `auto`), `playback.onSoundWithin`
+(seconds) and `playback.soundButton` (`always`, `hover`).
 
 ### Mixed like a sound designer would
 

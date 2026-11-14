@@ -95,8 +95,10 @@ with the new address.
 - **Measuring needs the player from kinetic-scenes.unysonplus.com** (as previews and renders do). Offline, the export
   falls back to the layer boxes and says so in the report.
 - **The copy is made from the project as it is now.** After changing the scene, export again (it replaces `web`).
-- **A web scene's media is still loaded when the page opens.** Light files make that quick, but a long scene with many
-  videos is still heavier than one MP4. Loading each part only as the playhead nears it is on the
+- **A web scene's pictures and videos load when it comes near the screen** (about one screen away), not with the page,
+  so a scene further down costs nothing for visitors who never reach it. A scene near the top still loads as the page
+  opens. See [Loading only what is seen](/animation-engine/studio-scene#loading-only-what-is-seen).
+  Within the scene, everything loads at once: loading each part only as the playhead nears it is on the
   [roadmap](./roadmap).
 - **Footage plays muted live.** A video layer's own sound is only mixed into rendered videos, so the web copy drops it;
   put sound you need on the timeline as an audio clip.

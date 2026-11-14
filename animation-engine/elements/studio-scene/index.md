@@ -36,6 +36,22 @@ Each option starts at **Scene default**, which keeps what was set in the Studio.
 | **Starts** | When the scene plays: when scrolled into view, when the page loads, or **as the page scrolls** (the scroll position plays it forwards and back, with the stage held in place while it plays). |
 | **Scroll length** | For a scene that plays as the page scrolls: how many screens of scrolling it takes while held in place. 0 keeps the scene's own setting. |
 | **Loop** | Loop or play once. |
+| **Pictures and videos load** | **When the scene comes near the screen** (the default) or **With the page**. See [Loading only what is seen](#loading-only-what-is-seen). |
+
+### Loading only what is seen
+
+A scene's pictures and video clips can weigh several megabytes. By default they download only when a visitor scrolls
+within about one screen of the scene, so a scene further down a page costs nothing for visitors who never reach it.
+
+- The scene keeps its size, its layout and its words from the start: only the files wait, so nothing on the page moves
+  when they arrive.
+- A scene at the top of the page, or less than a screen below it, loads its files as the page opens, just as before.
+- Sound already waits for the visitor to turn it on.
+- Still loaded with the page: pictures used to fill a shape, Lottie animations and 3D models.
+
+Choose **With the page** when the scene must be ready the instant it is reached, for example a scene that plays as the
+page scrolls and starts right below a short section. Embed code copied from the Studio behaves the same way; add
+`data-upw-load="page"` to its `<div data-upw-scene>` to load the files with the page.
 
 **Custom code clips** in a scene run only when the page's author is allowed to publish unfiltered HTML (administrators
 and editors on a single site), the same rule as Motion Snippet. For any other author they are skipped and the rest of the

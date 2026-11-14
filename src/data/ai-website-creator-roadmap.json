@@ -374,8 +374,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/3"
+          "status": "done",
+          "progress": "3/3"
         },
         {
           "id": "p6b-theatre",
@@ -393,8 +393,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p6b-signature",
@@ -412,8 +412,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "p6b-gate",
@@ -427,8 +427,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "p6b-style-moves",
@@ -454,8 +454,8 @@
               }
             ]
           },
-          "status": "planned",
-          "progress": "0/4"
+          "status": "done",
+          "progress": "4/4"
         }
       ]
     },
@@ -593,5 +593,5 @@
   ],
   "detected": true,
   "extensionVersion": null,
-  "generatedAt": "2026-11-09T08:22:18.440Z"
+  "generatedAt": "2026-11-14T03:42:48.736Z"
 }

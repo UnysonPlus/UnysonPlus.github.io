@@ -103,6 +103,22 @@ this browser.
 
 To carry on with the scene in front of you, click its name, press <kbd>Esc</kbd> or click outside the box.
 
+## Report a bug or ask for a feature
+
+Under the **Done for you** card, **Found a bug or have an idea for a feature? Contact us** opens the
+[Unyson+ contact form](https://www.unysonplus.com/contact/?area=Kinetic%20Scenes) with **Kinetic Scenes** already
+picked. The same form is in **Help › Report a bug or an idea**, so it is there even when the start screen is
+turned off.
+
+- **No account is needed**: give your name, an email for the reply, what it is about (a bug, a feature request, a
+  question or something else) and your message. It reaches the Unyson+ team directly; replies usually take a couple of
+  days.
+- **For a bug**, say what you did, what you expected and what happened instead, and which browser you use. If the scene
+  matters, mention it: you can send it to us later as a [scene link](./export.md#scene-links-open-a-scene-from-the-web).
+- **Have a GitHub account?** You can also open an issue on the
+  [Kinetic Scenes repository](https://github.com/UnysonPlus/UnysonPlus-Kinetic-Scenes/issues), where everyone can follow
+  the answer and the fix.
+
 ## What happens to your current work
 
 - **An open project is never overwritten.** Anything new you start here first closes the project, so its folder stays

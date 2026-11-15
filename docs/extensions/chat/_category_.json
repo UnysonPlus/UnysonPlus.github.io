@@ -1,0 +1,7 @@
+{
+  "label": "Chat",
+  "position": 14,
+  "collapsible": true,
+  "collapsed": true,
+  "link": { "type": "doc", "id": "extensions/chat/index" }
+}

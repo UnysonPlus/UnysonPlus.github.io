@@ -16,7 +16,7 @@ description: "Free WordPress AI assistant for the Unyson+ page builder — build
 The **AI Assistant** lets an AI model build and edit an Unyson+ site through a set of safe,
 schema-checked actions. The same actions power three front-ends: a chat panel inside the page
 builder, external AI agents connected over MCP, and an AI channel in the
-[Chat](../overview.md#available-extensions) button that answers your visitors.
+[Chat](../chat/index.md) button that answers your visitors.
 
 :::warning Beta — trial stage
 The AI Assistant is in **beta**. It appears in *Unyson+ → Extensions* as **AI Assistant (Beta)** and
@@ -622,7 +622,7 @@ run against a live provider key — reports welcome.
 
 ## Front-end 3 — the Chat AI channel
 
-**Shipped in 1.0.4.** The [Chat](../overview.md#available-extensions) extension is a floating
+**Shipped in 1.0.4.** The [Chat](../chat/index.md) extension is a floating
 contact button with WhatsApp, Messenger, Telegram, SMS, Email and custom-link channels. With the AI
 Assistant active, it gains one more: **Ask our assistant**, which opens a small chat window on the
 page and answers visitors' questions from your website.

@@ -52,6 +52,7 @@ box or fit inside it), **corner radius** and a **frame**: phone, browser window,
 - **Split into layers** (through the AI Dev Kit): the picture becomes stacked transparent layers in exactly the same
   place. With your own fal.ai key an AI splits it into several layers; without one, the kit cuts the subject out on your
   computer and fills the background in behind it. Give each layer a **depth** and a camera move becomes a 2.5D shot.
+  See [Photo cut-outs](./photo-cutouts) for the cut-out on its own, from the command line or an AI agent.
 - **Cut a piece out:** a button, panel or row of a screenshot becomes its own layer in the same place, ready to press,
   slide or glow, with the gap behind it filled from its surroundings.
 

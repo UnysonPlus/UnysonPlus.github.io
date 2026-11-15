@@ -627,7 +627,7 @@ contact button with WhatsApp, Messenger, Telegram, SMS, Email and custom-link ch
 Assistant active, it gains one more: **Ask our assistant**, which opens a small chat window on the
 page and answers visitors' questions from your website.
 
-**Turning it on:** *Theme Settings → Site-wide UX → Chat Button* → **AI assistant (Beta)**. The Chat
+**Turning it on:** *Unyson+ → Chat → Settings → AI assistant* → **AI assistant (Beta)**. The Chat
 button must be enabled, and a model must be available — a provider key under *Settings → Connectors*,
 or (on a development machine) the [local agent command](#choosing-the-ai-model).
 
@@ -678,7 +678,7 @@ visitor, and a suggested paragraph for your privacy policy appears under *Settin
 **For developers.** The channel plugs into Chat through three generic hooks that any extension can use
 for a channel of its own: `fw_ext_chat_channels` (add, remove or reorder channels — a channel can be a
 link or an **action** that fires the `upw-chat:action` DOM event), `fw_ext_chat_settings_fields` (add
-settings to the Chat Button tab) and `fw_ext_chat_channel_svg` (an icon for a custom channel key).
+settings to Unyson+ → Chat → Settings) and `fw_ext_chat_channel_svg` (an icon for a custom channel key).
 
 ## Safety, permissions and undo
 
@@ -843,7 +843,7 @@ function myext_ai_update_thing( $in ) {
 | Access for outside AI programs (Off / Read only / Read and write) | *Advanced → Outside AI programs* — option `upw_ai_mcp_mode` | Off |
 | Connection passwords for outside AI programs | *Advanced → Outside AI programs* (WordPress Application Passwords; the one-off passwords the chat panel uses per request are not listed and delete themselves) | None |
 | Reset | *Advanced → Reset* — deletes the options above (access back to Off), optionally your saved conversations; leaves connection passwords and site changes alone | — |
-| Chat AI channel + its label, greeting, notes, excluded pages | *Theme Settings → Site-wide UX → Chat Button* (stored with the Chat Button settings) | Off |
+| Chat AI channel + its label, greeting, notes, excluded pages | *Unyson+ → Chat → Settings → AI assistant* (stored with the Chat settings) | Off |
 | Visitor daily limit | same | 100 |
 
 Nothing is written outside the standard places: AI revisions are post-meta rows on the page they

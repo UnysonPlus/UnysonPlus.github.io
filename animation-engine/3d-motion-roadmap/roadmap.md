@@ -319,6 +319,27 @@ preview motion.
 
 ➡️ **The full analysis, feature comparison and reasoning: [Framer & Webflow analysis](./framer-webflow-analysis.md).**
 
+## Phase 5 — Animation Creator (planned) {#phase-5}
+
+A visual keyframe editor for **any element on a real page**, built by **reusing Kinetic Scenes**: open a page in the
+Live Editor, choose **Animate**, and Kinetic Scenes opens beside it, connected to the page. Each element you pick
+becomes a track; keyframes, curves (springs included) and triggers (load, in view, scroll, hover, click) play on the
+real page as you edit, and save as a light native timeline that every visitor gets. Kinetic Scenes stays its own app,
+so no editor code reaches the page. **The full plan, architecture and data model:
+[Animation Creator](./animation-creator).** Why Kinetic Scenes: [the decision](/decisions/animation-creator-reuses-kinetic-scenes).
+
+- **5a · Springs everywhere.** The Kinetic Scenes named curves, springs included, and a cubic-bezier field in every
+  Animation Engine ease picker, from one shared eases file. *Quick win; first.*
+- **5b · Bursts.** A **Burst** step and button effect (circles, sparks, lines, confetti from an element on click or
+  hover), growing the Confetti module. *Quick win.*
+- **5c · Connect.** Kinetic Scenes *Page mode*, the Live Editor's **Animate**, element picking both ways.
+- **5d · Author on the page.** Tracks, keyframes, curves, triggers; play and scrub on the canvas.
+- **5e · Save and ship.** Page-timeline storage, the visitor runtime (under 10 KB gzipped, only on pages that use it),
+  breakpoints, reduced motion, Import / Export, docs and a demo.
+- **5f · Scroll timelines.** Scroll-driven timelines, pinned or not, also listed on the Scroll Timeline.
+- **5g · Presets and AI.** Kinetic Scenes' motion presets as starting points, your own saved presets, AI authoring.
+- **5h · Reuse.** Timelines for every element matching a class, and site-wide timelines.
+
 ## At a glance
 
 | Phase | Deliverable | Impact | Status |
@@ -328,6 +349,7 @@ preview motion.
 | **2** | Parametric scroll-camera 3D scenes (WebGL Object presets) | Very high | ✅ Tunnel · Gallery Dolly · Product Orbit · WebGL Motion Gallery designs |
 | **3** | Rive + WebGL image transitions + particle presets | Medium–High | ✅ Shipped (Rive · image transitions · particle presets) |
 | **4** | Interactions: targets, live preview, states, a timeline, reuse and breakpoints | Very high | ✅ Shipped (I1–I5) |
+| **5** | [Animation Creator](./animation-creator): keyframe any page element in Kinetic Scenes, springs, bursts | Very high | 📋 Planned (5a–5h) |
 
 ## What we build vs. what stays curated {#build-vs-curated}
 
@@ -338,7 +360,7 @@ concern; trying to genericize them is where builders drown.
 
 | Build as presets | Use internally / curated | Not planned |
 | --- | --- | --- |
-| Site-wide smooth scroll | Theatre.js to author 3D camera scenes | A general-purpose (non-scroll, non-Interaction) visual timeline editor in the builder |
+| Site-wide smooth scroll | Theatre.js to author 3D camera scenes | A visual timeline editor *inside* the builder (the [Animation Creator](./animation-creator) reuses Kinetic Scenes instead, in its own window) |
 | One unified scroll engine | Three.js for a few parametric scenes | A user-facing shader editor |
 | Beat keyframes on pinned sections | Spline for an optional no-code hero object | Open 3D scene composition from scratch |
 | Rive / model-viewer / image-transition presets | Curtains.js/OGL for the shader preset set | Arbitrary per-project camera fly-throughs |

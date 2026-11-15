@@ -73,7 +73,8 @@ reply.
 
 - [Live chat: what visitors see](./live-chat.md): the window, how replies arrive, the email prompt, phones.
 - [Answering chats](./inbox.md): the inbox, replying, closing, notifications, who can answer.
-- [Channels](./channels.md): WhatsApp, Messenger, Telegram, SMS, email, custom links and the AI channel.
+- [Channels](./channels.md): WhatsApp, Messenger, Telegram, SMS, email, custom links.
+- [AI assistant](./ai-assistant.md): an AI that answers visitors from your pages, your facts and knowledge files, and your business details; how to connect it and test it.
 - [Settings](./settings.md): every option on the Button, Live chat, Channels and AI assistant tabs.
 - [Import / Export](./import-export.md): the CSV and JSON files, moving the chat to another site.
 - [Privacy and spam protection](./privacy-and-spam.md): what is stored, for how long, and how spam is kept out.

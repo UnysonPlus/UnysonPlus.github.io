@@ -622,7 +622,10 @@ run against a live provider key — reports welcome.
 
 ## Front-end 3 — the Chat AI channel
 
-**Shipped in 1.0.4.** The [Chat](../chat/index.md) extension is a floating
+**Shipped in 1.0.4; knowledge, status and Try it in 1.0.55.** The full guide (connecting an AI,
+adding knowledge, testing answers) is [Chat › AI assistant](../chat/ai-assistant.md).
+
+The [Chat](../chat/index.md) extension is a floating
 contact button with WhatsApp, Messenger, Telegram, SMS, Email and custom-link channels. With the AI
 Assistant active, it gains one more: **Ask our assistant**, which opens a small chat window on the
 page and answers visitors' questions from your website.
@@ -631,10 +634,11 @@ page and answers visitors' questions from your website.
 button must be enabled, and a model must be available — a provider key under *Settings → Connectors*,
 or (on a development machine) the [local agent command](#choosing-the-ai-model).
 
-- **Answers from your published pages only.** For each question the site finds the most relevant
-  published pages itself (password-protected, unpublished and excluded pages are never read) and
-  gives their text to the model as reference material. It answers in a few sentences and cites the
-  pages it used, with links.
+- **Answers from your own content only.** For each question the site finds the most relevant
+  published pages itself (password-protected, unpublished and excluded pages are never read), plus the
+  matching sections of your **Facts for the assistant** and uploaded **knowledge files** (Markdown or
+  text), plus your **business details** (address, hours and contact channels), and gives them to the
+  model as reference material. It answers in a few sentences and cites the pages it used, with links.
 - **It cannot do anything but answer.** The visitor's model is given **no tools** — it can't search,
   edit, or call anything. A page or visitor message that tries to talk it into something else has
   nothing to work with, and it is told to treat both as data, not instructions. In testing, "ignore
@@ -652,7 +656,11 @@ or (on a development machine) the [local agent command](#choosing-the-ai-model).
 | **AI assistant (Beta)** | Adds the channel (first in the chooser) | Off |
 | **AI assistant label** | The channel name and the window title | "Ask our assistant" |
 | **AI assistant greeting** | The first message visitors see | A short hello |
-| **AI assistant notes** | Tone and emphasis for the assistant ("friendly and brief; mention free delivery over $50") — it still answers only from your pages | Empty |
+| **AI assistant notes** | Tone and emphasis for the assistant ("friendly and brief; mention free delivery over $50") — it still answers only from your content | Empty |
+| **Facts for the assistant** | Your own facts in Markdown, one topic per heading | Empty |
+| **Knowledge files** | Uploaded `.md` / `.txt` files (20 files, 200 KB each), stored as text in the database | None |
+| **Use your business details** | Site name, SEO local business address / hours / price range, Chat contact channels | On |
+| **Try it** | Ask a test question and see the answer and what the assistant was given | |
 | **Pages to leave out** | Comma-separated page IDs or slugs the assistant must never read | Empty |
 | **Daily limit** | Most visitor messages answered per day, site-wide. After that the window offers your other channels until tomorrow. 0 = no limit. Shows this month's count and cost estimate | 100 |
 | **Team hours** | When a person can take over, one range per line in your site's time zone: `Mon-Fri 09:00-17:00`, `Sat 10am-2pm` | Empty (always reachable) |

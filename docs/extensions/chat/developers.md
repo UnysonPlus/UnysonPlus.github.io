@@ -107,6 +107,17 @@ add_filter( 'fw_ext_chat_settings_fields', function ( $options ) {
 // Read it back: fw_ext( 'chat' )->get_option( 'chat_phone_number' );
 ```
 
+## Save, export and import hooks
+
+Three hooks let another extension keep its own data with the Chat settings (the AI Assistant uses them
+for its knowledge files):
+
+| Hook | Type | Use it to… |
+| --- | --- | --- |
+| `fw_ext_chat_settings_saved( $messages, $values, $ext )` | filter | Act after **Chat → Settings** is saved, including files sent by the form (it is `multipart/form-data`, so `$_FILES` is available). Return extra lines for the "Settings saved." notice. |
+| `fw_ext_chat_export_data( $data, $ext )` | filter | Add your data to the **Download everything (JSON)** file. |
+| `fw_ext_chat_import_data( $data, $with_settings, $ext )` | action | Read it back on import; `$with_settings` is true when *Also replace the settings* was ticked. |
+
 ## Who can answer
 
 By default anyone who can edit pages (editors and administrators) sees the **Chat** menu and answers

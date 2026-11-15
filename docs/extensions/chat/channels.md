@@ -96,10 +96,10 @@ A web address on another site opens in a new tab; a link to your own site opens 
 
 ## The AI assistant channel
 
-With the [AI Assistant](../ai-assistant/index.md#front-end-3--the-chat-ai-channel) extension active, the
-**AI assistant** tab adds an **Ask our assistant** channel. It opens a separate window where an AI
-answers from your published pages, and offers your other channels when it can't help. It's listed
-first, before WhatsApp.
+With the [AI Assistant](../ai-assistant/index.md) extension active, the **AI assistant** tab adds an
+**Ask our assistant** channel. It opens a separate window where an AI answers from your published
+pages, your own facts and knowledge files and your business details, and offers your other channels
+when it can't help. It's listed first, before WhatsApp. See [AI assistant](./ai-assistant.md).
 
 ## Which channels to offer
 

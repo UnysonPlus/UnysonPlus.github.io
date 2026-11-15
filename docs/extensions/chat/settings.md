@@ -56,9 +56,11 @@ details. What to enter for each one is on the [Channels](./channels.md) page.
 
 ## AI assistant
 
-Only shown when the [AI Assistant](../ai-assistant/index.md#front-end-3--the-chat-ai-channel) extension is
-active: the **Ask our assistant** channel, its label, greeting, notes, pages to leave out, daily limit,
-team hours, conversation log and prices. Those settings are explained on the AI Assistant page.
+Only shown when the [AI Assistant](../ai-assistant/index.md) extension is active: a status box (is an AI
+connected?), the **Ask our assistant** channel, its label, greeting and notes, **Facts for the
+assistant**, **Knowledge files**, **Use your business details**, **Try it**, pages to leave out, daily
+limit, team hours, conversation log and prices. All of them are explained on the
+[AI assistant](./ai-assistant.md) page.
 
 ## Where the settings are stored
 

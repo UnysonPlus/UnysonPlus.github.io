@@ -168,6 +168,8 @@ WordPress capabilities of the user the AI acts as. *(The Chat AI channel uses no
 | `unysonplus/upload-media` | url or data + filename, title, alt, caption, attach_to, keep_path | Adds an image, SVG, video or PDF to the Media Library; SVGs are cleaned of scripts; undo deletes it | `upload_files` |
 | `unysonplus/child-theme-files` | action list / read / write / delete, path, content or data, confirm | Files in the ACTIVE child theme only — previews first, backs every file up, undo restores it exactly; PHP needs the extra switch below | `edit_theme_options` (+ `edit_themes` for PHP) |
 | `unysonplus/install-theme` | url (.zip) or data in pieces (upload_id, chunk_index, chunk_count), activate, confirm | Installs or updates a theme through WordPress's own installer — previews the version it replaces, acts on `confirm` | `install_themes` |
+| `unysonplus/install-plugin` | url (.zip) or data in pieces (upload_id, chunk_index, chunk_count), confirm | Installs or updates a plugin through WordPress's own installer, replacing the installed plugin of the same folder — previews the version it replaces, keeps an active plugin active, waits for wp-admin approval on hosts that require it — see [Deploy a plugin, a theme or a Kinetic Scene](#deploy-a-plugin-a-theme-or-a-kinetic-scene) | `install_plugins` |
+| `unysonplus/upload-scene` | name, url (.zip) or data in pieces, confirm | Puts a Kinetic Scene's web export into `uploads/unysonplus/scenes/<name>/` (data and media files only), keeping the previous folder as a backup; returns the `scene.json` address | `upload_files` |
 | `unysonplus/reading-settings` | front_page, posts_page, posts_per_page, permalink_structure | Reads, or sets, the home page, posts page and permalink structure; undoable | `manage_options` |
 | `unysonplus/content-upsert` | items (≤ 50): type, slug, title, status, date, menu_order, excerpt, content, author, terms, featured_image, meta, fw_options | Creates or updates posts of any public type, matched by slug; one undo for the batch | `edit_others_posts` |
 | `unysonplus/user-upsert` | users (≤ 50): login, email, names, url, description, role, meta, photo | Creates or updates users by login; never a role that can manage the site; photo → `wp_metronet_image_id` | `create_users` |
@@ -437,6 +439,47 @@ any reply work the same way.
 
 Converting still replaces pages with the same names and switches the site to a new child theme, so the
 assistant asks before it starts.
+
+### Deploy a plugin, a theme or a Kinetic Scene
+
+**Shipped in 1.0.52.** A site you edit live through an AI connection never needs FTP or a manual upload.
+Besides pages and settings, the AI can put whole packages on it:
+
+| What | Tool | Where it goes |
+| --- | --- | --- |
+| A **plugin** (Unyson+ itself, or any other) | `install-plugin` | Replaces the installed plugin in the same folder, like *Plugins → Add New → Upload Plugin → Replace current with uploaded* |
+| A **theme** or child theme | `install-theme` | Replaces the installed theme, like *Appearance → Themes → Upload Theme* |
+| A **Kinetic Scene** for a page | `upload-scene` | `wp-content/uploads/unysonplus/scenes/<name>/`, where the Kinetic Scene element plays it from |
+
+**How it works.**
+
+1. The AI sends the `.zip` in pieces of up to 2 MB (50 MB in all), or gives a public link to it.
+2. It **previews** first: "This would update Unyson+ from 3.0.67 to 3.0.68", or "This would replace the scene
+   homepage-hero: 29 files, 6 MB". Nothing has changed yet, and the AI asks you.
+3. After your yes it confirms, and the package is installed with WordPress's own installer.
+
+**On hosts that only allow new code from wp-admin** (some managed hosts refuse to create PHP files from
+an outside program's request), a confirmed plugin or theme does not fail: it **waits for you in wp-admin**.
+The next time an administrator opens the dashboard, a notice reads *Your AI app is waiting for your
+approval* and names it, for example *Plugin from your AI app: Update "Unyson+" from 3.0.67 to 3.0.68*,
+with **Install** and **Discard**. Install runs the same installer from that wp-admin page; the AI reads the
+outcome afterwards. A Kinetic Scene holds no code, so it is written straight away.
+
+**Kinetic Scenes.** Export the scene for the web (*Kinetic Scenes → Export → For a web page*) with the
+base address the tool gives, `https://<your site>/wp-content/uploads/unysonplus/scenes/<name>/`, so
+its links point to where it will live. Then send the export folder as a `.zip`. Only data and media files
+are accepted (`scene.json`, pictures, footage, sounds, fonts, 3D models); anything else, such as a PHP
+file, is refused and nothing is written. SVG files are cleaned of scripts. The new folder is written
+beside the old one and swapped in, so a page never plays half a scene, and the previous folder is kept as
+a backup until the next replace.
+
+**What stays safe.**
+
+- A plugin that was active stays active through the update. A broken package leaves the installed plugin
+  or theme as it was.
+- Installing has **no undo**. To go back, install the older package.
+- These tools need the matching WordPress permission (install plugins, install themes, upload files), and
+  sites that turn file changes off (`DISALLOW_FILE_MODS`) refuse them.
 
 ### Your conversation is kept
 
@@ -880,6 +923,8 @@ through Chat's generic channel hooks, so Chat itself carries no AI code.
 | 27 | **Front page, posts page and permalinks** (`reading-settings`) — the last from-scratch gap; menus come from the Mega Menu extension's tools | An agent sets a page as the home page and another as the posts page and switches to `/%postname%/` addresses; the same page for both is refused; undo restores every value and rebuilds the rewrite rules | **Done** — 1.0.42 |
 | 28 | **Install a theme from file data** (`install-theme` with chunked `data`): send a `.zip` in pieces, as `upload-media` takes files, instead of only from a public URL | A child theme built on the editor's computer is installed and activated on a WP Engine site over MCP alone, with no upload by the person and no public download link; an interrupted send can be resumed; a broken package leaves the old theme in place | **Done** — 1.0.46 |
 | 29 | **Theme file writes on managed hosts**: `create-child-theme` and `child-theme-files` write through the same path as the 1.0.43 `install-theme` fix | On WP Engine, where both refused with "Could not write the theme files", a child theme is created and a file in it is changed and undone over MCP | **Done** — 1.0.49, verified on a managed host: where the host refuses PHP files from the AI's request, the install waits for an administrator's Install / Discard in wp-admin |
+| 30a | **Install a plugin from file data** (`install-plugin`): a plugin `.zip` from a link or in pieces, through WordPress's installer, waiting for wp-admin approval where the host requires it | The full Unyson+ plugin (23 MB, 13 pieces) replaced itself on a test site through the approval path and stayed active with all 37 extensions; a test plugin installed, updated while active and stayed active | **Done** — 1.0.52 |
+| 30b | **Upload a Kinetic Scene** (`upload-scene`): a web export into `uploads/unysonplus/scenes/<name>/` | A 29-file homepage hero scene arrived in 4 pieces and served at once; a replace kept the previous folder as a backup; a `.zip` with a PHP file was refused with nothing written | **Done** — 1.0.52 |
 | 30 | **Content tools**: `content-upsert` (any public post type incl. custom ones, matched by slug, with terms, featured image, post meta and Unyson post options), `user-upsert` (author accounts, never administrators, with profile photo), `menu-set` (a nested menu assigned to theme locations), `short-links-import` (links with click totals, optional click history) | A site's reviews with their review fields and logos, its latest posts, its author and reviewer accounts, its menus and its affiliate short links arrive over MCP with no seed plugin; running it twice changes nothing; each batch is undoable | **Done** — 1.0.46 |
 | 31 | **AI Dev Kit deploy tools** (kit side, thin clients of 28–30): `push-theme` (zip a child theme, send it), `export-content` (read a local or archived site into JSON), `push-content` (send it and its images in batches), `push-file` (one child-theme file) | A real casino-affiliate homepage (toplist, reviews, posts, short links) is rebuilt on a fresh WP Engine site from the editor's computer with no file uploaded by the person, and the site-build protocol documents the deploy order | Planned |
 

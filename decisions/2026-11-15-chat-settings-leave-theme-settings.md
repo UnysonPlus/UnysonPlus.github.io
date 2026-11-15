@@ -57,4 +57,14 @@ Settings sub-tab stays as a short note with a link to the new page.
 - The copy-once migration and the signpost tab mean no site loses its settings and nobody is left
   searching the old place.
 
-*Status: Accepted (Chat 1.0.6).*
+## Update: a top-level menu item (Chat 1.0.8)
+
+The same day, the page moved once more: from **Unyson+ → Chat** to its own **Chat** item in the
+main admin menu, right under Comments. The question was "should we move the chat inbox in the main
+dashboard menu since that's where I do replies? The Unyson+ settings are usually just settings
+pages." Answering chats is daily work, like Membership and Bookings, which already sit at the top
+level for that reason; the Unyson+ menu stays for site set-up. Settings and Import / Export remain
+tabs of the same page, so the chat is still managed in one place. The address
+(`admin.php?page=fw-chat`) did not change, so links in emails and bookmarks keep working.
+
+*Status: Accepted (Chat 1.0.6; menu placement updated in 1.0.8).*

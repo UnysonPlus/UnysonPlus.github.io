@@ -16,13 +16,13 @@ description: "Free live chat for WordPress: visitors write in a chat window on y
 Chat adds a floating button to every page of your site. It works in one of two ways:
 
 - **Live chat** (new in 1.0.6): the button opens a **chat window on your site**. Visitors type a message
-  without leaving the page, and you answer it from **Unyson+ → Chat → Inbox**. Your other channels are
+  without leaving the page, and you answer it from **Chat → Inbox**. Your other channels are
   offered under the message box ("Or chat through" WhatsApp, Messenger, email…), for visitors who
   prefer them.
 - **Channels only**: the button links straight to WhatsApp, Messenger, Telegram, SMS, email or any
   link. With one channel it opens that app directly; with several it shows a small menu to pick from.
 
-Everything is on its own page, **Unyson+ → Chat**, with three tabs: **Inbox**, **Settings** and
+Everything is on one page, **Chat** in the main admin menu (right under Comments), with three tabs: **Inbox**, **Settings** and
 **Import / Export**.
 
 ## What visitors see
@@ -60,9 +60,9 @@ When to ask is a setting (**Ask for an email address**):
 
 ## The inbox: answering chats
 
-<img src="/img/extensions/chat/inbox.png" alt="Unyson+ → Chat → Inbox: a list of conversations on the left (Visitor 17 with an unread count, Jane (Visitor 16) with her email) and the open conversation on the right, with the visitor's email, IP address, page, browser and a reply box" width="1672" />
+<img src="/img/extensions/chat/inbox.png" alt="Chat → Inbox: a list of conversations on the left (Visitor 17 with an unread count, Jane (Visitor 16) with her email) and the open conversation on the right, with the visitor's email, IP address, page, browser and a reply box" width="1672" />
 
-**Unyson+ → Chat → Inbox** lists every conversation, newest activity first:
+**Chat → Inbox** lists every conversation, newest activity first:
 
 - **"Visitor 16"**: each conversation gets a number. When the visitor leaves their name it reads
   **"Jane (Visitor 16)"**.
@@ -85,7 +85,7 @@ when they **started**. Type your answer and press **Enter** (or **Send**).
 
 **Where you get told about new messages:**
 
-- **Unyson+ → Chat** in the admin menu, and **Chat** in the admin bar, show how many conversations
+- **Chat** in the admin menu and in the admin bar show how many conversations
   are waiting for a reply.
 - **An email** for a new message, at most one per conversation every 15 minutes, and none while
   someone has the inbox open (setting: **Email me about new messages**).
@@ -96,7 +96,7 @@ when they **started**. Type your answer and press **Enter** (or **Send**).
 ## Set it up
 
 1. Activate **Chat** from **Unyson+ → Extensions** (it ships inactive).
-2. Open **Unyson+ → Chat → Settings**.
+2. Open **Chat → Settings**.
 3. **Button** tab: turn on **Enable** and, if you like, change the label, position and colours.
 4. **Live chat** tab: turn on **Live chat** and check the title, reply time and greeting.
 5. **Channels** tab: turn on the channels you use (WhatsApp, Messenger…) and fill in each one's
@@ -157,9 +157,9 @@ In Live chat it is listed with the other channels under the message box.
 
 ## Import / Export
 
-<img src="/img/extensions/chat/import-export.png" alt="Unyson+ → Chat → Import / Export: download conversations as CSV or everything as JSON, and import a CSV or JSON file, optionally replacing the settings" width="800" />
+<img src="/img/extensions/chat/import-export.png" alt="Chat → Import / Export: download conversations as CSV or everything as JSON, and import a CSV or JSON file, optionally replacing the settings" width="800" />
 
-**Unyson+ → Chat → Import / Export** saves your conversations and settings to a file and reads them
+**Chat → Import / Export** saves your conversations and settings to a file and reads them
 back:
 
 - **Download conversations (CSV):** one row per message (conversation number, visitor, name, email,
@@ -202,7 +202,7 @@ so nobody else can read it.
 
 Until Chat 1.0.6 the settings were in **Theme Settings → Site-wide UX → Chat Button**, where they
 belonged to the theme: switching or converting a site to another theme lost them. They now live on
-**Unyson+ → Chat** and stay put whatever the theme. The first page load after the update **copies
+**Chat** (its own item in the main admin menu) and stay put whatever the theme. The first page load after the update **copies
 your old settings across automatically**; the old Theme Settings tab now only links to the new page.
 
 ## For developers

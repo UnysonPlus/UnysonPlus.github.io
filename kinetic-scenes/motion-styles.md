@@ -7,7 +7,7 @@ keywords: [motion design styles, synthwave animation, line art animation, kineti
 
 # Motion styles
 
-Kinetic Scenes knows about 28 **motion-design styles** by name. Ask AI assist to "make it synthwave" or "in a
+Kinetic Scenes knows about 35 **motion-design styles** by name. Ask AI assist to "make it synthwave" or "in a
 line-art style", or pick a style in the Style library, and you get a scene that someone would recognise as that
 style from any single frame: its colours, its type, its texture and the way things move.
 
@@ -60,6 +60,13 @@ styles:
 | **Woodcut print** | Carved woodblock prints: bold black ink and one red on cream paper, chunky slab type pressed onto the page. | Cream paper, heavy black ink with carved edges, a red second ink a little out of register, pictures made of fine cut lines (the **Engraving** effect), slab capitals that land with the thump of a press. |
 | **Neon sign** | Neon tubes on a dark wall: glowing letters and line drawings that flicker on and hum. | Near-black wall, letters and line drawings as glowing tubes in pink, cyan or yellow, a halo of light on the wall, tubes that stutter on and sometimes keep flickering; the light is the movement. |
 | **Rhythm game show** | A TV game show on the beat: bold cards that slam in, a counter, flashing lights and a big final answer. | Saturated purple and blue light with yellow and pink; rounded cards with thick borders slamming in on the beat; numbers that count, a timer bar, flashes between rounds and one big answer card. Built on a music track's beats. |
+| **Chalkboard** | A classroom chalkboard: dusty white chalk and one or two coloured chalks, sums and diagrams worked out step by step. | A dark green board, soft broken white chalk lines with yellow and pink for what matters, handwritten sums and labels written out step by step, circled answers; erased with a soft fade. |
+| **Ink wash** | Sumi-e ink painting: black ink brushed onto rice paper in a few strokes, wide empty space and a red seal. | Warm rice paper and black ink only, in washes from black to the palest grey; a few confident brush strokes, an ensō circle, lots of empty paper and one small red seal; slow, quiet pacing. |
+| **Stained glass** | A cathedral window: jewel-coloured glass in thick black leading, light pouring through and catching as it moves. | Flat panes of ruby, sapphire, emerald and amber in thick black lead lines, often in an arched window; a warm glow from behind; a sheen of light sweeping across; ornate capitals. |
+| **Rubber-hose cartoon** | A 1930s cartoon: black-and-cream characters with pie-cut eyes and bendy arms, bouncing in time on old film. | Black, white and cream, round characters with pie-cut eyes, white gloves and bendy limbs; everything bounces with the music; old film grain and flicker; an iris closes at the end. |
+| **CRT terminal** | A green-screen computer terminal: glowing phosphor text typing line by line, a blinking cursor and soft scanlines. | One phosphor colour glowing on a dark curved screen; monospace capitals typed line by line from the top left, a prompt and a blinking block cursor; soft scanlines. |
+| **Transit map** | A metro map: thick coloured lines at 45° angles drawing themselves, white station dots and tidy labels. | Flat coloured lines that run only across, down or at 45°, white station dots and interchange capsules, small tidy labels; every step of a process is a stop on the line. |
+| **Radar briefing** | A command-room radar: a green sweep circling a dark scope, contacts blinking up, and terse readouts. | Concentric range rings and crosshairs on a dark green scope, a sweep with a fading trail, blips that blink up as it passes, bracketed labels and capital readouts in a mono font, one amber warning. |
 
 ## Effects made for these styles
 

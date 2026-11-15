@@ -1464,14 +1464,20 @@
         },
         {
           "id": "p26-styles-2",
-          "title": "More styles, in batches",
-          "detail": "Next looks to add the same way: silent film with title cards, chalkboard, sketchnote, ukiyo-e and ink wash, stained glass, 1930s rubber-hose cartoon, CRT terminal, transit-map explainer, exploded teardown, and evidence looks (thermal camera, radar, X-ray, satellite briefing).",
+          "title": "Seven more styles",
+          "detail": "Chalkboard, Ink wash (sumi-e), Stained glass, Rubber-hose cartoon (1930s), CRT terminal, Transit map and Radar briefing, built the same way: palette, fonts, motion, sounds, a guide for AI assist and a moving preview. 43 styles in all.",
+          "status": "done"
+        },
+        {
+          "id": "p26-styles-3",
+          "title": "The next styles",
+          "detail": "Sketchnote, ukiyo-e, silent film with title cards, an exploded teardown and the evidence looks (thermal camera, X-ray), which need a new false-colour effect for pictures and footage first.",
           "status": "planned"
         }
       ]
     }
   ],
-  "extensionVersion": "0.1.53",
+  "extensionVersion": "0.1.54",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

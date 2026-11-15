@@ -22,9 +22,24 @@ It runs on your computer through the [AI Dev Kit](/kinetic-scenes/ai-agents): no
 
 ## Two ways to get one
 
-**In the Studio:** select a picture, then **Split into layers** in the Inspector. The picture becomes two layers in
-exactly the same place: the background (with the subject painted out) and the subject. Once the kit's photo cut-out
-models are downloaded (below), the split uses them; before that it uses a smaller, rougher model.
+**In the Studio: Cut out the object.** Select a picture, then **Cut out the object** in the Inspector:
+
+1. **Check the AI Dev Kit** shows whether it can cut out pictures, and what the first use downloads (the cut-out model,
+   about 224 MB, once).
+2. **To cut out one thing among several** (one dish on a table), drag a box around it on the small picture. Without a
+   box, the main subject is cut out. **Use the whole picture** clears the box.
+3. Tick **Paint it out of the picture behind** to replace the photo under the cut-out with the photo with the subject
+   painted out (about 208 MB more, once), so lifting the cut-out leaves no copy behind. It is soft where the subject
+   was: dim or blur it.
+4. Click **Cut out the object**. The cut-out is added as a new layer exactly over the photo (same box, fit, phone layouts
+   and timing) and selected, ready for a Lift, a Float or a Sticker. Undo removes it.
+
+The Studio shows the kit's verdict on the cut: **Clean cut**, **Look at the edges** (with notes such as a halo on one
+side), or **Not a clean subject**. Nothing is added then: drag a box around the one thing to cut out and try again.
+
+**In the Studio: Split into layers.** Select a picture, then **Split into layers** in the Inspector. The picture becomes
+two layers in exactly the same place: the background (with the subject painted out) and the subject. Once the kit's
+photo cut-out models are downloaded (below), the split uses them; before that it uses a smaller, rougher model.
 
 **With an AI agent or the command line:**
 

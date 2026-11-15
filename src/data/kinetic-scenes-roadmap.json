@@ -1481,9 +1481,28 @@
           "status": "done"
         }
       ]
+    },
+    {
+      "id": "p27-photos",
+      "title": "Phase 27 — Photos that move",
+      "goal": "Most small businesses only have photos, so their videos read as slideshows. Cut the subject out of a photo cleanly, on the person's own computer, so photo-only scenes can lift, float and layer their subjects.",
+      "tasks": [
+        {
+          "id": "p27-cutout-kit",
+          "title": "Photo cut-outs in the AI Dev Kit",
+          "detail": "BiRefNet cuts the subject out and LaMa can paint it out of the photo (both on the computer, with the separation runtime); each cut comes with a verdict (good, check, poor), notes and a check image. Command line cutout, the image_cutout tool for AI agents and a guide on when a cut-out helps (scene_guide topic cutouts). Split into layers uses the same models once they are downloaded.",
+          "status": "done"
+        },
+        {
+          "id": "p27-cutout-studio",
+          "title": "Cut out the object, in the Studio",
+          "detail": "On a picture layer: drag a box to pick one thing among several, optionally paint it out of the photo behind, and the cut-out is added as a new layer exactly over the photo, with the kit's verdict and notes. A poor cut adds nothing.",
+          "status": "done"
+        }
+      ]
     }
   ],
-  "extensionVersion": "0.1.56",
+  "extensionVersion": "0.1.58",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

@@ -15,7 +15,7 @@ The **Style library** shows them all in one window, large enough to choose a loo
 ## Open it
 
 - **Scene › Style library…** in the menu.
-- **See all styles** (the last tile) or **Style library** (top right) under **Start from a style** on the
+- **See all styles** (the last tile) or **Browse all 49 styles** (top right) under **Start from a style** on the
   [start screen](./start-screen.md#start-from-a-style).
 - **Browse all styles** at the top of the **Styles** tab on the left.
 

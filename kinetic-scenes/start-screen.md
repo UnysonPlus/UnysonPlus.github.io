@@ -19,7 +19,7 @@ Open it at any time with **File › Start something new**.
 | Start from | What you get | Needs |
 |---|---|---|
 | **Describe it** | Type your idea. The AI plans and builds it. | AI assist connected |
-| **A style** | Pick any of the 30 styles, then describe your idea or start with a title card. See [Start from a style](#start-from-a-style). | AI assist connected, or nothing for a title card |
+| **A style** | Pick any of the 36 styles, then describe your idea or start with a title card. See [Start from a style](#start-from-a-style). | AI assist connected, or nothing for a title card |
 | **A website** | A scene from the site's real words, colours, fonts and screenshots. | AI assist connected |
 | **A long video** | The best moments, cut into a reel. See [Make a reel](./make-a-reel.md). | The AI Dev Kit |
 | **A video you like** | Yours, made with the same structure and pacing, using your own words. Nothing from the video is copied. | The AI Dev Kit |

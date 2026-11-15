@@ -109,6 +109,25 @@ Turn on **Plan first** for a new scene and choose what you are making:
 Adjust the plan in the chat, then **Build it**. When the request names a length ("a 20 second explainer"), the script is
 kept to what fits in it (about 2.6 spoken words a second).
 
+## Key frames first
+
+A plan is words. Before it is built, **Show the key frames** (beside **Build it**, under the plan) draws each part of the
+plan as one still frame in the real style: the layers, words, pictures, colours and layout that part will have once it
+has landed, with nothing moving yet. They appear in the chat side by side, numbered and named after the parts.
+
+- **Agree on the look first.** A wrong layout, a missing part or a style that does not fit shows up in one answer,
+  before the whole scene is built and timed. Change the plan (in the box or by typing what to change) and click
+  **Show the key frames again**.
+- **Build it from the key frames.** Once frames are shown, the button reads **Build it from the key frames**: the AI
+  animates the plan so that each part ends exactly on its frame (the same layers, words and positions), then adds the
+  entrances, exits, timing, transitions and sound the plan describes.
+- It is optional: **Build it** straight from the plan works as before.
+
+<img src="/img/kinetic-scenes/key-frames.jpg" alt="Four key frames of a Blueprint explainer about bicycle gears: the question, the parts with callouts, a big and a small cog, and the takeaway with the ratio" width="640" />
+
+The key frames take one answer (about two minutes with Claude through the AI Dev Kit), and the build from them another.
+Your scene on the stage is not changed until you build.
+
 ## Explainers with a voice-over
 
 For an explainer or a tutorial, **Build with a voice-over** has a free voice on your computer speak the approved script

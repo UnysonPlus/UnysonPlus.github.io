@@ -1444,9 +1444,34 @@
           "status": "done"
         }
       ]
+    },
+    {
+      "id": "p26-styles-keyframes",
+      "title": "Phase 26 — More styles, and key frames first",
+      "goal": "Widen the style library with looks people ask for by name in explainers and reels, and let people agree how each part of a planned scene looks before anything is animated.",
+      "tasks": [
+        {
+          "id": "p26-styles-1",
+          "title": "Six new motion styles",
+          "detail": "Newsreel (black-and-white film, grain, flicker, sprocket holes, art deco title cards, iris openings), Whiteboard (marker drawings written on as the voice speaks), Blueprint (white drafting lines on a grid, measurements, callouts, exploded views), Woodcut print (black and red ink on cream, engraved pictures, slab type), Neon sign (glowing tubes that flicker on) and Rhythm game show (cards on the beat, counters, flashes). Each has its palette, fonts, motion, sounds, a guide for AI assist, a signature effect and a moving preview on the start screen.",
+          "status": "done"
+        },
+        {
+          "id": "p26-keyframes",
+          "title": "Key frames first",
+          "detail": "Under an AI assist plan, Show the key frames draws each part of the plan as a still in the real style, side by side in the chat; Build it from the key frames animates the plan so each part ends on its frame. Tested with the AI Dev Kit: a four-part Blueprint explainer drew four frames in one answer, and the build kept all 24 of their layers.",
+          "status": "done"
+        },
+        {
+          "id": "p26-styles-2",
+          "title": "More styles, in batches",
+          "detail": "Next looks to add the same way: silent film with title cards, chalkboard, sketchnote, ukiyo-e and ink wash, stained glass, 1930s rubber-hose cartoon, CRT terminal, transit-map explainer, exploded teardown, and evidence looks (thermal camera, radar, X-ray, satellite briefing).",
+          "status": "planned"
+        }
+      ]
     }
   ],
-  "extensionVersion": "0.1.48",
+  "extensionVersion": "0.1.53",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

@@ -7,7 +7,7 @@ keywords: [motion design styles, synthwave animation, line art animation, kineti
 
 # Motion styles
 
-Kinetic Scenes knows about two dozen **motion-design styles** by name. Ask AI assist to "make it synthwave" or "in a
+Kinetic Scenes knows about 28 **motion-design styles** by name. Ask AI assist to "make it synthwave" or "in a
 line-art style", or pick a style in the Style library, and you get a scene that someone would recognise as that
 style from any single frame: its colours, its type, its texture and the way things move.
 
@@ -54,6 +54,12 @@ styles:
 | **Sketchbook** | A notebook page: shapes drawn in wobbly pencil with scribbled fills, handwritten type, and things that jitter like a flip book. | A pale page, dark pencil lines that wobble, boxes and circles filled with loose scribble, handwritten words, and a slight jitter between drawings. |
 | **Paper cut-out** | Layered construction paper: a little world of cut shapes with depth, torn caption tags, and cuts that tear, turn or peel. | Flat shapes of coloured paper stacked in layers with soft shadows between them, slightly rough cut edges, a visible grain, a small physical world acting out the idea, a heavy banner headline and captions on torn paper tags. See [Paper cut-out explainers](./paper-cut-out.md). |
 | **Liquid and morph** | Fluid shapes that pour and merge, gradients that flow, everything morphing instead of cutting. | Organic blobs that wobble and merge, flowing gradients, one shape morphing into the next scene instead of a cut; soft blur on type; slow, continuous motion. |
+| **Newsreel** | A 1920s newsreel: black-and-white film with grain, flicker and sprocket holes, art deco title cards and iris openings. | Black and white only, grain that changes every frame, a flicker, dark corners and sprocket holes; title cards in art deco capitals inside a thin double border; parts open and close through an iris. Its signature is the **Projected film** effect over the whole stage. |
+| **Whiteboard** | A whiteboard explainer: marker drawings, arrows and handwritten words appearing as the voice talks about them. | A clean white board in two or three marker colours: outlined shapes, hand-drawn arrows and underlines, circled words, handwritten headings, each written on at the moment the voice mentions it. Pin each drawing to its word with [word pins](./word-pins.md). |
+| **Blueprint** | A technical drawing on blueprint paper: white lines drawing themselves on a grid, measurements, callouts and parts that slide apart. | Deep blue paper with a fine white grid; thin white lines and no fills; dimension lines with measurements in a mono font, drafting capitals, numbered callouts; one yellow highlight; exploded views along straight axes. |
+| **Woodcut print** | Carved woodblock prints: bold black ink and one red on cream paper, chunky slab type pressed onto the page. | Cream paper, heavy black ink with carved edges, a red second ink a little out of register, pictures made of fine cut lines (the **Engraving** effect), slab capitals that land with the thump of a press. |
+| **Neon sign** | Neon tubes on a dark wall: glowing letters and line drawings that flicker on and hum. | Near-black wall, letters and line drawings as glowing tubes in pink, cyan or yellow, a halo of light on the wall, tubes that stutter on and sometimes keep flickering; the light is the movement. |
+| **Rhythm game show** | A TV game show on the beat: bold cards that slam in, a counter, flashing lights and a big final answer. | Saturated purple and blue light with yellow and pink; rounded cards with thick borders slamming in on the beat; numbers that count, a timer bar, flashes between rounds and one big answer card. Built on a music track's beats. |
 
 ## Effects made for these styles
 
@@ -74,6 +80,9 @@ Some styles need looks that didn't exist before. They are ordinary presets, so y
 | **Hand-drawn** (`sketch`) | Sketchbook: a shape redrawn in wobbly pencil with a scribbled fill (see [Hand-drawn shapes](./sketch-and-physics.md)). |
 | **Cut paper** (`paper`) | Paper cut-out: a hand-cut edge, paper grain and a shadow lifting it off what is below. |
 | **Paper tear**, **Page turn**, **Tape pull** (`tr-tear`, `tr-page`, `tr-tape`) | Paper cut-out: cuts between scenes that tear, turn or peel. |
+| **Projected film** (`film`) | Newsreel: grain, flicker, a vignette and sprocket holes; on a see-through layer the size of the stage it covers the whole scene. |
+| **Engraving** (`engrave`) | Woodcut print: a picture redrawn as fine parallel cut lines in one ink. |
+| **Glow** (`glow`, flicker on) | Neon sign: a tube glow around letters and lines that can stutter like a real tube. |
 
 All of them are exact in time (the same moment always looks the same), so they scrub, preview and export frame by frame.
 
@@ -86,7 +95,7 @@ Every scene AI assist makes follows the same shape, the way motion designers bui
    biggest sound hit. Nothing else competes with it.
 3. **A composed end frame,** designed as a still and held for about a second with only gentle movement.
 
-It decides those key frames first as layouts that already look good, then adds the motion between them. Sound hits sit
+It decides those key frames first as layouts that already look good, then adds the motion between them. With **Plan first**, you can see them before anything is animated: [Show the key frames](./ai.md#key-frames-first). Sound hits sit
 on the same moments as the picture. Its rules also cover composition (one focal point, a grid, real empty space),
 cutting between parts on the beat, and restraint (one idea per frame, two or three kinds of entrance, effects as
 accents).

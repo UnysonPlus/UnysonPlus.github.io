@@ -98,12 +98,12 @@ when they **started**. Type your answer and press **Enter** (or **Send**).
 1. Activate **Chat** from **Unyson+ → Extensions** (it ships inactive).
 2. Open **Unyson+ → Chat → Settings**.
 3. **Button** tab: turn on **Enable** and, if you like, change the label, position and colours.
-4. **Channels** tab: turn on the channels you use (WhatsApp, Messenger…) and fill in each one's
+4. **Live chat** tab: turn on **Live chat** and check the title, reply time and greeting.
+5. **Channels** tab: turn on the channels you use (WhatsApp, Messenger…) and fill in each one's
    number, username, address or link. With Live chat on, these appear under the message box.
-5. **Live chat** tab: turn on **Live chat** and check the title, reply time and greeting.
 6. **Save Changes.** The button appears on every page.
 
-<img src="/img/extensions/chat/settings-tabs.png" alt="The Settings tab's four sub-tabs: Button, Channels, Live chat and AI assistant" width="315" />
+<img src="/img/extensions/chat/settings-tabs.png" alt="The Settings tab's four sub-tabs: Button, Live chat, Channels and AI assistant" width="315" />
 
 :::tip[💡 Web dev tip: say how fast you reply]
 "We usually reply within a few hours" is honest and keeps people from leaving after a minute of
@@ -121,17 +121,6 @@ silence. If you're usually quicker, say so: a shorter promise makes more people 
 | **Position** | Bottom-right or bottom-left. |
 | **Background color / Icon / text color** | The button's colours. The chat window's header and the visitor's messages use the same colours. By default they follow your theme's primary colour. |
 
-### Channels
-
-| Channel | Opens |
-| --- | --- |
-| **WhatsApp** | A WhatsApp chat with your number, with an optional pre-filled message. |
-| **Messenger** | Your Facebook page on Messenger (the username after facebook.com/). |
-| **Telegram** | Your Telegram username. |
-| **SMS / Text** | A text message to your number. |
-| **Email** | A new email to your address, with an optional subject. |
-| **Custom link** | Any link: a booking page, `tel:`, `viber://`, a help desk. |
-
 ### Live chat
 
 <img src="/img/extensions/chat/settings-live.png" alt="The Live chat settings: Live chat switch, window title, reply time, greeting, other channels label, ask for an email address, email notifications, the address to send them to, keep IP addresses and delete conversations after 90 days" width="1672" />
@@ -148,6 +137,17 @@ silence. If you're usually quicker, say so: a shorter promise makes more people 
 | **Send them to** | the site's admin email | Where those emails go. Replies emailed to visitors use it as their reply-to address. |
 | **Keep visitors' IP addresses** | On | Stores each visitor's IP address and shows it in the inbox (partly hidden until you click). Off stores none. |
 | **Delete conversations after (days)** | 90 | Conversations are deleted this many days after their last message (checked once a day). 0 keeps them until you delete them. |
+
+### Channels
+
+| Channel | Opens |
+| --- | --- |
+| **WhatsApp** | A WhatsApp chat with your number, with an optional pre-filled message. |
+| **Messenger** | Your Facebook page on Messenger (the username after facebook.com/). |
+| **Telegram** | Your Telegram username. |
+| **SMS / Text** | A text message to your number. |
+| **Email** | A new email to your address, with an optional subject. |
+| **Custom link** | Any link: a booking page, `tel:`, `viber://`, a help desk. |
 
 ### AI assistant
 

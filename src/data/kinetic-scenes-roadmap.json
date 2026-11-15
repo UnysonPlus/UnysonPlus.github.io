@@ -1473,11 +1473,17 @@
           "title": "False colour, and six more styles",
           "detail": "A False colour effect (thermal camera, X-ray, night vision) for pictures and footage, fading in like a grade, and six styles: Thermal camera, X-ray, Sketchnote, Ukiyo-e, Silent film and Exploded view. 49 styles in all.",
           "status": "done"
+        },
+        {
+          "id": "p26-library",
+          "title": "Style library",
+          "detail": "A window with every style, large and playing: search by any word, filter by group, then start something new in a style, apply it to the scene or give it to AI assist (Scene › Style library…, the start screen and the Styles tab). The start screen shows seven styles, your own and the ones you used last first.",
+          "status": "done"
         }
       ]
     }
   ],
-  "extensionVersion": "0.1.55",
+  "extensionVersion": "0.1.56",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

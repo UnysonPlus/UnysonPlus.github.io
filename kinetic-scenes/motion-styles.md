@@ -18,6 +18,7 @@ the Studio's layers and presets.
 
 ## Where you use them
 
+- **[Style library](./style-library.md)** (Scene › Style library…): every style large and playing, searchable, with all the actions below.
 - **Style library › New scene in this style:** a short ready-made scene in the style, with its signature effect, to
   open and make your own. Every one passes Check scene.
 - **Style library › Apply to this scene:** restyles colours and fonts, motion and sounds of the scene you have.

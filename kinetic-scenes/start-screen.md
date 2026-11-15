@@ -34,11 +34,10 @@ kit**. You can still choose it: AI assist shows how to connect, and your request
 
 ## Start from a style
 
-The bottom of the start screen shows every style as a picture, so you can see what each one looks like before you choose. The screen scrolls, and the header and your recent work stay in place.
+The bottom of the start screen shows seven styles as pictures: your own first, then the ones you used last, then a mix covering the main uses. The eighth tile, **See all styles**, opens the [Style library](./style-library.md) with all 49, searchable and grouped.
 
 - **Hover over a style** to watch it play. It stops when you move away. You can also move to it with the Tab key.
-- **Use the filters** to narrow the list: **Tech and product**, **Clean and bold**, **Drawn and crafted** and **Retro and playful**. **Yours** appears when you have styles of your own.
-- **Click a style** to choose it.
+- **Click a style** to choose it. A style chosen in the Style library with **Start something new in it** lands on the same step.
 
 After you choose, you have two ways to go on:
 
@@ -49,7 +48,7 @@ After you choose, you have two ways to go on:
 
 **Paper cut-out** opens its own step, with a template and a brief written for that style. See [Paper cut-out explainers](./paper-cut-out.md).
 
-The pictures show what each style can look like. A title card uses the style's look but starts plain, so it won't match its preview until you build on it. The same styles are in the **Styles** tab on the left, where you can also apply one to the scene you're working on.
+The pictures show what each style can look like. A title card uses the style's look but starts plain, so it won't match its preview until you build on it. The same styles are in the **Styles** tab on the left and in **Scene › Style library…**, where you can also apply one to the scene you're working on.
 
 ### Limits
 

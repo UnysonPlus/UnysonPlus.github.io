@@ -1470,14 +1470,14 @@
         },
         {
           "id": "p26-styles-3",
-          "title": "The next styles",
-          "detail": "Sketchnote, ukiyo-e, silent film with title cards, an exploded teardown and the evidence looks (thermal camera, X-ray), which need a new false-colour effect for pictures and footage first.",
-          "status": "planned"
+          "title": "False colour, and six more styles",
+          "detail": "A False colour effect (thermal camera, X-ray, night vision) for pictures and footage, fading in like a grade, and six styles: Thermal camera, X-ray, Sketchnote, Ukiyo-e, Silent film and Exploded view. 49 styles in all.",
+          "status": "done"
         }
       ]
     }
   ],
-  "extensionVersion": "0.1.54",
+  "extensionVersion": "0.1.55",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

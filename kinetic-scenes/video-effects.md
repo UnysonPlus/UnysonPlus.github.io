@@ -47,6 +47,7 @@ by the real player on an illustration; on your own footage they look the same.
 | **Snap zoom** | A sharp punch-in on a point (the face, a detail), held; Out snaps back. |
 | **Digital zoom** | The picture steps in with a blur as the focus hunts, inside a recording frame (corners, REC, the zoom). |
 | **Colour grade** | Fades in a look on the picture only: black and white, noir, warm, cool, film, vivid, faded, teal and orange. |
+| **False colour** | Turns the picture into a thermal camera view, an X-ray or night vision, fading in like a grade: for a reveal ("what the camera really sees"), a scan, or a night scene. |
 | **Grade wipe** | The grade sweeps across behind a line with a handle, before and after on either side (a **grade slider**, an **eyedropper grade**); with **Sweep: Down** it is a **mood curtain**. |
 | **Projected film** | Grain, flicker, a vignette and sprocket holes running past; without sprockets it is a **film look**. |
 | **Liquid glass** | A lens of liquid glass glides across, blurring, brightening and saturating what is under it. |

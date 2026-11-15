@@ -7,7 +7,7 @@ keywords: [motion design styles, synthwave animation, line art animation, kineti
 
 # Motion styles
 
-Kinetic Scenes knows about 35 **motion-design styles** by name. Ask AI assist to "make it synthwave" or "in a
+Kinetic Scenes knows about 41 **motion-design styles** by name. Ask AI assist to "make it synthwave" or "in a
 line-art style", or pick a style in the Style library, and you get a scene that someone would recognise as that
 style from any single frame: its colours, its type, its texture and the way things move.
 
@@ -67,6 +67,12 @@ styles:
 | **CRT terminal** | A green-screen computer terminal: glowing phosphor text typing line by line, a blinking cursor and soft scanlines. | One phosphor colour glowing on a dark curved screen; monospace capitals typed line by line from the top left, a prompt and a blinking block cursor; soft scanlines. |
 | **Transit map** | A metro map: thick coloured lines at 45° angles drawing themselves, white station dots and tidy labels. | Flat coloured lines that run only across, down or at 45°, white station dots and interchange capsules, small tidy labels; every step of a process is a stop on the line. |
 | **Radar briefing** | A command-room radar: a green sweep circling a dark scope, contacts blinking up, and terse readouts. | Concentric range rings and crosshairs on a dark green scope, a sweep with a fading trail, blips that blink up as it passes, bracketed labels and capital readouts in a mono font, one amber warning. |
+| **Thermal camera** | A heat camera: pictures in false colour from cold purple to white hot, a crosshair, temperature readouts and a colour scale. | Every picture in false colour (the **False colour** effect, look Thermal camera), a thin crosshair with the temperature at that spot, a vertical colour scale with high and low readings, small capitals in the corners. |
+| **X-ray** | An X-ray scan: pictures inverted to glowing blue-white on navy, a scanning bar, labels with leader lines and clinical type. | Pictures inverted so dense parts glow white-blue on navy (**False colour**, look X-ray), a bright bar scanning down the frame, thin leader lines to small capital labels, one amber warning. |
+| **Sketchnote** | Visual notes: a hand-lettered title in a ribbon banner, doodled icons in containers, arrows and bullets on a dotted page. | A dotted notebook page, a title on a ribbon, doodled icons each in a rounded box with a coloured highlight behind it, hand-drawn arrows between the ideas. |
+| **Ukiyo-e** | A Japanese woodblock print: Prussian-blue waves with white foam, a red sun, flat colour inside black outlines on aged paper. | Flat Prussian blue, indigo, red and grey inside fine black outlines on cream paper; stylised waves with claw-like foam, cloud bands and a red sun; a title cartouche; gentle rocking motion. |
+| **Silent film** | A silent movie: ornate white-on-black title cards with dialogue in quotes, iris shots, a jittering frame and "The End". | Intertitles in white serif on black inside an ornamental double border, dialogue in quotes and narration in italics; grainy, flickering black-and-white pictures; iris openings and closings. |
+| **Exploded view** | A product taken apart in the air: clean parts that slide away from each other, numbered callouts and a tidy parts list. | A clean light studio; a product that separates along one axis with even gaps, numbered callouts with leader lines, a parts list, one accent colour for the part being explained. |
 
 ## Effects made for these styles
 
@@ -90,6 +96,7 @@ Some styles need looks that didn't exist before. They are ordinary presets, so y
 | **Projected film** (`film`) | Newsreel: grain, flicker, a vignette and sprocket holes; on a see-through layer the size of the stage it covers the whole scene. |
 | **Engraving** (`engrave`) | Woodcut print: a picture redrawn as fine parallel cut lines in one ink. |
 | **Glow** (`glow`, flicker on) | Neon sign: a tube glow around letters and lines that can stutter like a real tube. |
+| **False colour** (`false-colour`) | Thermal camera and X-ray: the picture's brightness shown as a colour scale (thermal: cold purple to white hot; X-ray: inverted blue-white on navy; night vision: green phosphor). It fades in like a colour grade. |
 
 All of them are exact in time (the same moment always looks the same), so they scrub, preview and export frame by frame.
 

@@ -1506,6 +1506,61 @@
           "status": "done"
         }
       ]
+    },
+    {
+      "id": "p28-mascots",
+      "title": "Phase 28 — Mascots that talk",
+      "goal": "A mascot or brand character made once in a short step-by-step creator, then used in any scene as its own layer: it talks on the words of the voice-over, blinks, changes pose on the words you pick, and plays the same as an MP4, a see-through video or live on a web page. Your AI agent can direct it. Planned 2026-11-16.",
+      "tasks": [
+        {
+          "id": "p28-creator",
+          "title": "Step-by-step mascot creator",
+          "detail": "Five steps in one window: your mascot (a picture, or a description), its poses, its face, its voice, then use it. Each step says what it needs and can be done again later. Nothing leaves the computer except what you choose to send to your own AI.",
+          "status": "planned"
+        },
+        {
+          "id": "p28-poses",
+          "title": "Poses from one picture",
+          "detail": "A ready prompt for the image AI you already use (or your AI agent, when it can make images) draws the mascot in six poses on a plain background: idle, explaining, waving, thinking, thumbs up, cheering. Upload the sheet and the Studio cuts each pose out by itself, names it and lets you fix a wrong name. Poses can also be added one at a time from separate pictures.",
+          "status": "planned"
+        },
+        {
+          "id": "p28-face",
+          "title": "Face setup: mouth and eyes",
+          "detail": "The Studio guesses where the mouth and eyes are on each pose; drag the boxes to fix them, with a live preview of the mouth moving and the eyes blinking. Optional drawn mouths: a second prompt makes nine mouth shapes for different sounds, so talking looks drawn rather than stretched.",
+          "status": "planned"
+        },
+        {
+          "id": "p28-layer",
+          "title": "A Mascot layer in any scene",
+          "detail": "The mascot is its own layer type: put it in any scene, size it, place it, and give it the usual entrances and exits. Its poses are clips on the timeline, and a pose can be pinned to a word of the voice-over so it changes when that word is said. It blinks on its own, at a natural rhythm.",
+          "status": "planned"
+        },
+        {
+          "id": "p28-lipsync",
+          "title": "Talking on the voice-over",
+          "detail": "The mouth follows the scene's own voice-over: any voice the Studio makes (the free voices, Voicebox, a recording), using the word timings it already has. With the AI Dev Kit, sharper lip sync times each sound, so the mouth closes on M, B and P and rounds on O. Re-record the line and the mouth follows the new take.",
+          "status": "planned"
+        },
+        {
+          "id": "p28-library",
+          "title": "Your mascots in the Library",
+          "detail": "A finished mascot is saved to the Library and reused across projects, with its poses, face boxes and default voice. Import and Export a mascot as one file to move it to another computer or share it with a team.",
+          "status": "planned"
+        },
+        {
+          "id": "p28-agent",
+          "title": "Your AI agent directs the mascot",
+          "detail": "Kit tools let an agent create a mascot from a picture, list a project's mascots, and direct one: write the lines, make the voice, choose a pose for each sentence and time it to the words. A mascot-presenter template turns a script into a finished explainer with the mascot presenting.",
+          "status": "planned"
+        },
+        {
+          "id": "p28-web",
+          "title": "A talking mascot on your website",
+          "detail": "Exported as HTML, the mascot plays live on a page with the Unyson+ Kinetic Scene element: sharp at any size and far lighter than a video, with Tap for sound. Also as an MP4 or a see-through video (WebM or ProRes) to put on top of anything in another editor.",
+          "status": "planned"
+        }
+      ]
     }
   ],
   "extensionVersion": "0.1.60",

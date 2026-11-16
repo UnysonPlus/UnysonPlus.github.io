@@ -66,6 +66,13 @@ from there, and repeating them on every URL does not make a search box more like
 makes every page claim to be the site.
 :::
 
+:::note The old "hentry" class
+WordPress adds the class `hentry` (from hAtom, an older tagging scheme) to every post and page. A
+structured-data validator reads it as a second item and reports *"hentry is not a type defined by
+schema.org"*. While structured data is on, the extension removes that class from the page, since the
+graph already describes the page. Switch structured data off and WordPress's class comes back.
+:::
+
 ## FAQ data
 
 Switch on **FAQ Rich Snippet (Schema)** on an [accordion element](/shortcodes/interactive-elements/accordion)

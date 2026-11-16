@@ -149,6 +149,32 @@ You'll also find these features where you need them:
 | [Drop with physics](./sketch-and-physics.md#drop-with-physics) | In the Inspector when two or more layers are selected, and in **Tools**. |
 | [Hand-drawn](./sketch-and-physics.md#hand-drawn) | **Make it hand-drawn** on a selected shape, and in the Ambient presets. |
 
+## The welcome video
+
+The first time someone opens Kinetic Scenes, a **3-minute video tour** opens in front of the start box. It covers:
+
+- **Why Kinetic Scenes:** your AI picks from over a hundred ready-made animations instead of writing a video from
+  scratch (faster, fewer tokens), each project keeps its scene and its notes so your agent picks up where it left off,
+  and small fixes are yours in the Studio, with no new render to check.
+- **The workspace:** the stage, the timeline, the Inspector, the presets, pieces, sounds and styles, and Export.
+- **HTML vs MP4:** the same scene playing live on a web page, with its own phone layout, at a fraction of the size of the
+  video.
+- **Connecting your AI:** downloading the [AI Dev Kit](/ai-dev-kit), double-clicking `start.bat` (Windows) or
+  `start.command` (Mac), using your Claude, ChatGPT or Cursor subscription or an API key, and writing your prompt
+  wherever your agent runs (the Code tab in the Claude app, VS Code, Cursor or a terminal).
+
+<img src="/img/kinetic-scenes/welcome-video.jpg" alt="The welcome video in front of the start box" width="640" />
+
+- **Press play** to watch it with sound. It does not start by itself: a muted autoplay would make YouTube lay its
+  automatic captions over the subtitles already in the picture.
+- **Start making** (or ×, or a click outside it) closes it and leaves the start box. **Watch on YouTube** opens it there.
+- It opens **once per browser**. It does not open for someone who arrives through a project or scene link, or from a
+  Unyson+ page editor, since they came for a particular scene.
+- To watch it again: **Help › Watch the intro (3 min)**, or **Watch the 3-minute tour** in the start box under the
+  done-for-you card, or [on YouTube](https://www.youtube.com/watch?v=GyLvSuLcbuU).
+- The video is a YouTube embed from `youtube-nocookie.com` (YouTube's privacy-enhanced mode), and it loads only while the
+  dialog is open.
+
 ## When it opens
 
 It opens each time the Studio does, with two exceptions, so it never gets in the way of a job you came to do:

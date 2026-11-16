@@ -864,6 +864,12 @@
       "goal": "The editor can already do a great deal; this phase makes it easy for someone who has never used a timeline to make and export a good animation in a few minutes, and backs its claims with tests. Prompted by outside reviews: the concept rated highly, ease of adoption and production readiness were the weak spots.",
       "tasks": [
         {
+          "id": "p15-welcome-video",
+          "title": "A 3-minute welcome tour",
+          "detail": "A video tour opens once, in front of the start box, for a first-time visitor who did not arrive through a link: why Kinetic Scenes saves your AI work, the workspace, HTML vs MP4, and how to start the AI Dev Kit and connect the AI you already have. Help › Watch the intro and the start box open it again.",
+          "status": "done"
+        },
+        {
           "id": "p15-first-run",
           "title": "Your first scene in two minutes",
           "detail": "A guided first run for new visitors, built on the Studio's own tour tools (cursor, spotlight, callouts): pick a starting point, change the words, watch it play, export. Skippable, offered once, reopenable from Help. The aim: a polished result before reading any of the manual. Shipped in Studio 0.1.8: a four-step guide for new visitors (pick a template, change the words, play, export) that outlines each part of the Studio; shown once, reopened from Help.",
@@ -1502,7 +1508,7 @@
       ]
     }
   ],
-  "extensionVersion": "0.1.58",
+  "extensionVersion": "0.1.59",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

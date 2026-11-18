@@ -1,7 +1,7 @@
 ---
 sidebar_position: 11.56
 title: Mascots that talk
-description: Make a mascot or brand character once, from one picture, your own pose pictures or six poses drawn by your image AI, and it talks on the voice-over of any scene, blinks, breathes and changes pose on the words you pick.
+description: Make a mascot or brand character once, from one picture, your own pose pictures or six poses drawn by your image AI, and it talks on the voice-over of any scene, blinks, breathes and changes pose on the words you pick. Drawn mouths, sharper lip sync, saved mascots, Import / Export, a sample mascot and agent tools.
 ---
 
 # Mascots that talk
@@ -20,7 +20,17 @@ It is made in the Studio, on your computer: the pictures are only sent where you
 
 ### 1. Your mascot
 
-Choose where the pictures come from:
+<img src="/img/kinetic-scenes/mascot-start.jpg" alt="The mascot creator, step 1: Try it with Pip, your saved mascots, Import a mascot file, and the three ways to make a new one" width="640" />
+
+**Use a mascot you have:**
+
+- **Try it with Pip:** the sample mascot that comes with the Studio (six poses, drawn mouths, its face already set). It
+  goes straight into the scene, to try mascots before making your own.
+- **Your mascots:** the ones you saved with **Save to my mascots** (below), in any project. **Remove** takes one off the
+  list.
+- **Import a mascot file…:** a `.mascot.json` file from **Export the mascot** (another computer, a teammate).
+
+**Or make a new one:**
 
 | Choice | What you need | What you get |
 |---|---|---|
@@ -30,8 +40,6 @@ Choose where the pictures come from:
 
 Pictures on a **plain or see-through background** work best: the Studio takes the background off by itself and trims
 each pose. A picture on a busy background (a photo) is used as it is.
-
-<img src="/img/kinetic-scenes/mascot-start.jpg" alt="The mascot creator, step 1: the three choices and the prompt for an image AI" width="640" />
 
 **Six poses with your image AI:** open your image AI, attach a clear picture of your mascot, copy the prompt from the
 creator, send it, then upload the picture it draws (the pose sheet). The prompt asks for the six poses on a plain green
@@ -64,6 +72,24 @@ dark, side by side) and puts the mouth just below them; you fix what is off.
 
 <img src="/img/kinetic-scenes/mascot-face.jpg" alt="Step 3: the eyes found and the mouth below them, with the live preview talking" width="640" />
 
+#### Drawn mouths (optional)
+
+Under the face: **Drawn mouths**. Without them, the pose's own mouth opens and closes (its lower lip moves down over a
+dark opening). With them, the mouth is **drawn for each sound**, which looks more like an animated cartoon:
+
+1. **Copy the mouth prompt** and send it in the same chat with your image AI. It asks for the mascot's mouth nine times,
+   on a green sheet, one per sound: closed, "ah", "ee", "oh", "oo", "m" (lips pressed), "f" (teeth on the lip), "l"
+   (tongue up) and "s" (teeth showing).
+2. **Upload the mouth sheet.** The Studio cuts out the nine mouths and shows them under their sounds. The preview talks
+   with them at once.
+3. **Use the pose's own mouth instead** goes back.
+
+<img src="/img/kinetic-scenes/mascot-mouths.jpg" alt="The face step with Drawn mouths open: the preview talks with a drawn mouth" width="640" />
+
+The drawn mouths go on every pose, over the pose's own mouth, sized to its mouth box.
+
+<img src="/img/kinetic-scenes/mascot-drawn-mouths.jpg" alt="Drawn mouths changing with the sounds: ee, oh, teeth, lips pressed, closed" width="760" />
+
 ### 4. Add it
 
 Give it a name and **Add it to the scene**. It goes in as a **Mascot** layer, about two thirds of the stage high. Move
@@ -75,10 +101,15 @@ and size it like any layer; the picture keeps its shape inside its box.
   captions and word pins use). Any voice the Studio makes has them (the free voices, Voicebox); a recording gets them when
   you transcribe it. Without a voice-over with its words, the mascot stays quiet, and Check scene says so.
 - **Shaped by the sounds.** Each word is timed letter by letter: the mouth opens wide on "a", less on "e" and "i", rounds
-  on "o", and shuts on "m", "b" and "p". Re-record or reword the line and the mouth follows the new take.
+  on "o", and shuts on "m", "b" and "p". With drawn mouths, each of those shows its drawn shape.
+- **Sharper lip sync, from the voice's loudness.** When a mascot goes into a scene, the Studio listens to the voice it
+  talks on once and keeps its loudness on the voice clip (50 values a second). The mouth then shuts in the pauses, even
+  short ones inside a word, and opens wider on the loud, stressed syllables, exactly in time with the sound. For a voice
+  added later, click **Sharper lip sync** in the mascot's settings. It runs in the browser: nothing is uploaded.
 - **Blinks** every few seconds, now and then twice, at its own natural rhythm (the same every time the scene plays).
 - **Breathes**: a slow, small rise and fall, a touch more as it talks.
 
+Re-record or reword the line and the mouth follows the new take (click **Sharper lip sync** again for its loudness).
 Everything is drawn from the scene's time, so the preview, the exported video and the scene on a web page match exactly.
 
 ## Pose changes
@@ -100,38 +131,67 @@ Select the mascot to see them in the Inspector:
 |---|---|
 | **Main pose** | The pose it shows when no Pose clip is playing. |
 | **Talks on** | Which voice-over it follows (the first one with words, unless you choose). |
+| **Sharper lip sync** | Measures the voice's loudness (shown until it is done; afterwards the settings say the mouth follows the loudness). |
 | **Mouth opens** | How wide the mouth opens, 0 (shut) to 1.5. |
 | **Blinks** | Blinking on or off. |
 | **Breathes** | The slow breathing on or off. |
 | **Add a pose change** | A Pose clip at the playhead (two poses or more). |
-| **Edit the mascot** | Back into the creator: rename poses, add or remove poses, fix the face. Pose clips keep working. |
+| **Edit the mascot** | Back into the creator: rename poses, add or remove poses, fix the face, change the drawn mouths. Pose clips keep working. |
 
 It also takes every ordinary preset on its row (an entrance, a slide, an exit), like any layer.
+
+## Your mascots: Import / Export
+
+Under **Import / Export** in the mascot's settings:
+
+- **Save to my mascots** keeps it in this browser, with every picture. **Insert › Mascot…** then lists it in any project,
+  ready to use in one click.
+- **Export the mascot** downloads it as one file, `<name>.mascot.json`, with its poses, face boxes, drawn mouths and
+  settings inside. Use it on another computer, keep it as a backup, or share it with your team.
+- **Import a mascot…** adds a mascot from such a file to the scene (also in the creator's first step).
+
+A file exported and imported again gives the same mascot, unchanged. Saved mascots stay in this browser: clearing the
+browser's site data removes them, so export the ones you want to keep.
+
+## The Mascot presenter template
+
+**A template › Mascot presenter** (in the start box): Pip on the left presents three points that land on the right, one
+by one. It waves hello, explains each point, thinks, and gives a thumbs up at the end. Change the words, add a voice-over
+(Pip talks on it), or put your own mascot in Pip's place (select Pip, **Edit the mascot**, or delete it and add yours).
 
 ## On a web page and in a video
 
 A mascot plays wherever the scene does: exported as a video (MP4, or a see-through WebM or ProRes video to put on top of
-anything in another editor), or live on a web page with the Unyson+ **Kinetic Scene** element, where it is sharp at any
-size and far lighter than a video.
+anything in another editor), as a web page (Export › For a web page), or live on a WordPress page with the Unyson+
+**Kinetic Scene** element. There it is sharp at any size and far lighter than a video. The element needs the scene player
+0.0.70 or newer (the Animation Engine extension 1.5.19 or newer).
 
 ## With an AI agent
 
-An agent connected to the [AI Dev Kit](./ai-agents.md) can use a mascot you made: copy the layer into a project, write
-the lines, make the voice, and pin a Pose clip to the words it belongs to. The format is in the scene file reference
-(`type: "mascot"`, with its `poses` and their `mouth` and `eyes` boxes, and `mascot-pose` clips).
+An agent connected to the [AI Dev Kit](./ai-agents.md) can use the mascots you made, with three tools:
+
+- **`mascot_list`**: the mascots in your workspace projects, with their poses.
+- **`mascot_copy`**: copies one, with its pictures, into another project.
+- **`mascot_direct`**: pins poses to words of the voice-over ("wave on *hello*, thumbs up on *free*"), so they follow a
+  new take by themselves.
+
+Ask it, for example: *"Make a 30-second video where Pip explains our three plans, in a friendly voice, and gives a thumbs
+up on the free one."* The agent's guide is the kit's `docs/mascots.md` (`scene_guide` topic "mascots"); the format is in
+the scene file reference (`type: "mascot"`, its `poses` with their `mouth` and `eyes` boxes, `mouths`, and `mascot-pose`
+clips).
 
 ## Limits
 
-- **The mouth is the pose's own mouth, opened.** Its lower lip moves down while a dark opening grows behind it. It works
-  best when the mouth is **closed** in the pose picture. Drawn mouth shapes for each sound are planned.
+- **The pose's own mouth works best closed** in the picture: it opens by moving the lower lip down. Drawn mouths avoid
+  that limit.
 - **The face boxes are a guess to check.** Eyes that are not a clear pair of spots (sunglasses, eyes drawn as lines) are
   not found: draw their boxes yourself, or turn off Blinks.
 - **The eyelid is the skin just above the eye**, slid down over it, so it matches the skin when that skin is one colour.
-  A busy pattern above the eyes shows as the lid.
-- **Six poses from an image AI depend on the AI.** Some change the character between poses; ask again, or use your own
-  pose pictures.
-- **Up to 24 poses** on one mascot, and up to 12 from one sheet.
-
-Planned next (see the [roadmap](./roadmap.mdx), Phase 28): drawn mouths for each sound, sharper lip sync through the AI
-Dev Kit, your mascots in the Library to reuse across projects, agent tools to direct a mascot, and a mascot-presenter
-template.
+  A busy pattern above the eyes shows as the lid. In the same way, drawn mouths cover the pose's own mouth with the skin
+  just below it.
+- **Pictures from an image AI depend on the AI.** Some change the character between poses, or draw mouths in another
+  style; ask again, or use your own pictures.
+- **Sharper lip sync needs the sound in the browser**: a voice kept only on another computer cannot be measured (the
+  words still move the mouth).
+- **Up to 24 poses** on one mascot, 12 from one sheet; nine drawn mouths.
+- **Pictures are made by your image AI or by you**: the Studio does not draw them itself.

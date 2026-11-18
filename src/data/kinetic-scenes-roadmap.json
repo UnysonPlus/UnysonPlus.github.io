@@ -1527,8 +1527,8 @@
         {
           "id": "p28-face",
           "title": "Face setup: mouth and eyes",
-          "detail": "The Studio guesses where the mouth and eyes are on each pose; drag the boxes to fix them, with a live preview of the mouth moving and the eyes blinking. Optional drawn mouths: a second prompt makes nine mouth shapes for different sounds, so talking looks drawn rather than stretched. First version (0.1.61): eyes found as a matching pair of spots, the mouth placed below them, a live preview, and the face carried to the other poses. Still to do: drawn mouths.",
-          "status": "in-progress"
+          "detail": "The Studio guesses where the mouth and eyes are on each pose; drag the boxes to fix them, with a live preview of the mouth moving and the eyes blinking. Optional drawn mouths: a second prompt makes nine mouth shapes for different sounds, so talking looks drawn rather than stretched. First version (0.1.61): eyes found as a matching pair of spots, the mouth placed below them, a live preview, and the face carried to the other poses. Still to do: drawn mouths. Drawn mouths shipped in 0.1.62: a second prompt makes nine mouth shapes, cut from one sheet and shown per sound.",
+          "status": "done"
         },
         {
           "id": "p28-layer",
@@ -1539,31 +1539,31 @@
         {
           "id": "p28-lipsync",
           "title": "Talking on the voice-over",
-          "detail": "The mouth follows the scene's own voice-over: any voice the Studio makes (the free voices, Voicebox, a recording), using the word timings it already has. With the AI Dev Kit, sharper lip sync times each sound, so the mouth closes on M, B and P and rounds on O. Re-record the line and the mouth follows the new take. First version (0.1.61): every word timed letter by letter (wide on a, round on o, shut on m, b and p). Still to do: sharper lip sync through the AI Dev Kit.",
-          "status": "in-progress"
+          "detail": "The mouth follows the scene's own voice-over: any voice the Studio makes (the free voices, Voicebox, a recording), using the word timings it already has. With the AI Dev Kit, sharper lip sync times each sound, so the mouth closes on M, B and P and rounds on O. Re-record the line and the mouth follows the new take. First version (0.1.61): every word timed letter by letter (wide on a, round on o, shut on m, b and p). Still to do: sharper lip sync through the AI Dev Kit. Sharper lip sync shipped in 0.1.62, measured in the browser instead of the AI Dev Kit (so it works for everyone): the voice's loudness, 50 values a second, kept on the voice clip; the mouth shuts in the pauses and opens wider on stressed syllables.",
+          "status": "done"
         },
         {
           "id": "p28-library",
           "title": "Your mascots in the Library",
-          "detail": "A finished mascot is saved to the Library and reused across projects, with its poses, face boxes and default voice. Import and Export a mascot as one file to move it to another computer or share it with a team.",
-          "status": "planned"
+          "detail": "A finished mascot is saved to the Library and reused across projects, with its poses, face boxes and default voice. Import and Export a mascot as one file to move it to another computer or share it with a team. Shipped in 0.1.62: Save to my mascots (kept in this browser), Export the mascot as one .mascot.json file and Import it (in the mascot's settings and the creator's first step), plus Pip, a sample mascot that comes with the Studio.",
+          "status": "done"
         },
         {
           "id": "p28-agent",
           "title": "Your AI agent directs the mascot",
-          "detail": "Kit tools let an agent create a mascot from a picture, list a project's mascots, and direct one: write the lines, make the voice, choose a pose for each sentence and time it to the words. A mascot-presenter template turns a script into a finished explainer with the mascot presenting.",
-          "status": "planned"
+          "detail": "Kit tools let an agent create a mascot from a picture, list a project's mascots, and direct one: write the lines, make the voice, choose a pose for each sentence and time it to the words. A mascot-presenter template turns a script into a finished explainer with the mascot presenting. Shipped: kit tools mascot_list, mascot_copy and mascot_direct (poses pinned to words), the agent guide docs/mascots.md (scene_guide topic mascots), and the Mascot presenter template in the Studio.",
+          "status": "done"
         },
         {
           "id": "p28-web",
           "title": "A talking mascot on your website",
-          "detail": "Exported as HTML, the mascot plays live on a page with the Unyson+ Kinetic Scene element: sharp at any size and far lighter than a video, with Tap for sound. Also as an MP4 or a see-through video (WebM or ProRes) to put on top of anything in another editor. So far (0.1.61, player 0.0.69): mascots export as MP4 and see-through video, and play in the Studio's web export. Still to do: the Unyson+ Kinetic Scene element in WordPress loads an older player and needs the new one.",
-          "status": "in-progress"
+          "detail": "Exported as HTML, the mascot plays live on a page with the Unyson+ Kinetic Scene element: sharp at any size and far lighter than a video, with Tap for sound. Also as an MP4 or a see-through video (WebM or ProRes) to put on top of anything in another editor. So far (0.1.61, player 0.0.69): mascots export as MP4 and see-through video, and play in the Studio's web export. Still to do: the Unyson+ Kinetic Scene element in WordPress loads an older player and needs the new one. Shipped: MP4 and see-through video, the Studio web export, and the Unyson+ Kinetic Scene element in WordPress with player 0.0.70 (Animation Engine 1.5.19).",
+          "status": "done"
         }
       ]
     }
   ],
-  "extensionVersion": "0.1.61",
+  "extensionVersion": "0.1.62",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

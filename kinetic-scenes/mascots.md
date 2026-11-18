@@ -1,7 +1,7 @@
 ---
 sidebar_position: 11.56
 title: Mascots that talk
-description: Make a mascot or brand character once, from one picture, your own pose pictures or six poses drawn by your image AI, and it talks on the voice-over of any scene, blinks, breathes and changes pose on the words you pick. Drawn mouths, sharper lip sync, saved mascots, Import / Export, a sample mascot and agent tools.
+description: Make a mascot or brand character once, from one picture, your own pose pictures or six poses drawn by your image AI, or start from one of ten sample mascots (people and characters), and it talks on the voice-over of any scene, blinks, breathes and changes pose on the words you pick. Drawn mouths, sharper lip sync, saved mascots, Import / Export and agent tools.
 ---
 
 # Mascots that talk
@@ -20,12 +20,13 @@ It is made in the Studio, on your computer: the pictures are only sent where you
 
 ### 1. Your mascot
 
-<img src="/img/kinetic-scenes/mascot-start.jpg" alt="The mascot creator, step 1: Try it with Pip, your saved mascots, Import a mascot file, and the three ways to make a new one" width="640" />
+<img src="/img/kinetic-scenes/mascot-start.jpg" alt="The mascot creator, step 1: the sample mascots (people and characters), Import a mascot file, and the three ways to make a new one" width="640" />
+
+**Start from a sample:** ten mascots that come with the Studio, ready to talk (see [The sample mascots](#the-sample-mascots)).
+Click one and it goes straight into the scene.
 
 **Use a mascot you have:**
 
-- **Try it with Pip:** the sample mascot that comes with the Studio (six poses, drawn mouths, its face already set). It
-  goes straight into the scene, to try mascots before making your own.
 - **Your mascots:** the ones you saved with **Save to my mascots** (below), in any project. **Remove** takes one off the
   list.
 - **Import a mascot file…:** a `.mascot.json` file from **Export the mascot** (another computer, a teammate).
@@ -153,6 +154,31 @@ Under **Import / Export** in the mascot's settings:
 A file exported and imported again gives the same mascot, unchanged. Saved mascots stay in this browser: clearing the
 browser's site data removes them, so export the ones you want to keep.
 
+## The sample mascots
+
+<img src="/img/kinetic-scenes/mascot-samples.jpg" alt="The ten sample mascots: Pip, Daniel, Grace, Leo, Maya, Rosa, Bolt, Miso, Drip and Hoot" width="800" />
+
+Ten mascots come with the Studio, drawn for Kinetic Scenes and free to use in the videos you make with it. Each has the same six poses (Idle, Explaining, Wave, Thinking, Thumbs up, Cheer), its face already set, and
+nine drawn mouths, so it talks the moment there is a voice-over.
+
+| Group | Mascot | Suits |
+|---|---|---|
+| People | **Daniel**, a businessman in a navy suit | Finance, law, consulting, B2B |
+| People | **Grace**, a businesswoman in a charcoal blazer | The same, a female host |
+| People | **Leo**, a man in a casual sweater | Coaches, creators, small shops |
+| People | **Maya**, a woman in a cardigan | The same, a female host |
+| People | **Rosa**, a chef | Restaurants, bakeries, catering |
+| Characters | **Pip**, a round, friendly character | Anything friendly |
+| Characters | **Bolt**, a robot in green and white | Apps, software, tech |
+| Characters | **Miso**, a purple cat | Shops, cafés, anything for kids |
+| Characters | **Drip**, a blue water drop | Cleaning, plumbing, health |
+| Characters | **Hoot**, an owl in a graduation cap | Courses, schools, tutoring |
+
+Because they share the six poses, a scene, a template or a set of Pose clips made with one works with any other: delete
+one and add another, and its Pose clips can be copied across. Bolt talks with a glowing screen mouth, Hoot with his
+beak. A sample is a starting point like any mascot: **Edit the mascot** changes its pose names or face, and **Save to my
+mascots** keeps your version. Their pictures load from the Studio's site only when you pick one.
+
 ## The Mascot presenter template
 
 **A template › Mascot presenter** (in the start box): Pip on the left presents three points that land on the right, one
@@ -168,15 +194,15 @@ anything in another editor), as a web page (Export › For a web page), or live 
 
 ## With an AI agent
 
-An agent connected to the [AI Dev Kit](./ai-agents.md) can use the mascots you made, with three tools:
+An agent connected to the [AI Dev Kit](./ai-agents.md) can use the mascots you made and the samples, with three tools:
 
-- **`mascot_list`**: the mascots in your workspace projects, with their poses.
-- **`mascot_copy`**: copies one, with its pictures, into another project.
+- **`mascot_list`**: the mascots in your workspace projects, with their poses, and the ten samples.
+- **`mascot_copy`**: copies one, with its pictures, into another project (a sample by its name: "use Grace").
 - **`mascot_direct`**: pins poses to words of the voice-over ("wave on *hello*, thumbs up on *free*"), so they follow a
   new take by themselves.
 
 Ask it, for example: *"Make a 30-second video where Pip explains our three plans, in a friendly voice, and gives a thumbs
-up on the free one."* The agent's guide is the kit's `docs/mascots.md` (`scene_guide` topic "mascots"); the format is in
+up on the free one."* or *"Use Daniel to present our quarterly results in a calm voice."* The agent's guide is the kit's `docs/mascots.md` (`scene_guide` topic "mascots"); the format is in
 the scene file reference (`type: "mascot"`, its `poses` with their `mouth` and `eyes` boxes, `mouths`, and `mascot-pose`
 clips).
 

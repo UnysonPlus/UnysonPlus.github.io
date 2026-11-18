@@ -1559,11 +1559,17 @@
           "title": "A talking mascot on your website",
           "detail": "Exported as HTML, the mascot plays live on a page with the Unyson+ Kinetic Scene element: sharp at any size and far lighter than a video, with Tap for sound. Also as an MP4 or a see-through video (WebM or ProRes) to put on top of anything in another editor. So far (0.1.61, player 0.0.69): mascots export as MP4 and see-through video, and play in the Studio's web export. Still to do: the Unyson+ Kinetic Scene element in WordPress loads an older player and needs the new one. Shipped: MP4 and see-through video, the Studio web export, and the Unyson+ Kinetic Scene element in WordPress with player 0.0.70 (Animation Engine 1.5.19).",
           "status": "done"
+        },
+        {
+          "status": "done",
+          "id": "p28-samples",
+          "title": "Ten sample mascots",
+          "detail": "Ten mascots that come with the Studio, ready to talk, in the creator's first step: people (Daniel and Grace in business clothes, Leo and Maya in casual clothes, Rosa the chef) and characters (Pip, Bolt the robot, Miso the cat, Drip the water drop, Hoot the owl). All share the six poses, so scenes and templates work with any of them; agents use them by name with mascot_copy. Shipped in 0.1.63. See [The sample mascots](/kinetic-scenes/mascots#the-sample-mascots)."
         }
       ]
     }
   ],
-  "extensionVersion": "0.1.62",
+  "extensionVersion": "0.1.63",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

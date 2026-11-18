@@ -1515,32 +1515,32 @@
         {
           "id": "p28-creator",
           "title": "Step-by-step mascot creator",
-          "detail": "Five steps in one window: your mascot (a picture, or a description), its poses, its face, its voice, then use it. Each step says what it needs and can be done again later. Nothing leaves the computer except what you choose to send to your own AI.",
-          "status": "planned"
+          "detail": "Five steps in one window: your mascot (a picture, or a description), its poses, its face, its voice, then use it. Each step says what it needs and can be done again later. Nothing leaves the computer except what you choose to send to your own AI. Shipped in 0.1.61 as Insert › Mascot… (four steps: your mascot, poses, face, add it). See [Mascots that talk](/kinetic-scenes/mascots).",
+          "status": "done"
         },
         {
           "id": "p28-poses",
           "title": "Poses from one picture",
           "detail": "A ready prompt for the image AI you already use (or your AI agent, when it can make images) draws the mascot in six poses on a plain background: idle, explaining, waving, thinking, thumbs up, cheering. Upload the sheet and the Studio cuts each pose out by itself, names it and lets you fix a wrong name. Poses can also be added one at a time from separate pictures.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p28-face",
           "title": "Face setup: mouth and eyes",
-          "detail": "The Studio guesses where the mouth and eyes are on each pose; drag the boxes to fix them, with a live preview of the mouth moving and the eyes blinking. Optional drawn mouths: a second prompt makes nine mouth shapes for different sounds, so talking looks drawn rather than stretched.",
-          "status": "planned"
+          "detail": "The Studio guesses where the mouth and eyes are on each pose; drag the boxes to fix them, with a live preview of the mouth moving and the eyes blinking. Optional drawn mouths: a second prompt makes nine mouth shapes for different sounds, so talking looks drawn rather than stretched. First version (0.1.61): eyes found as a matching pair of spots, the mouth placed below them, a live preview, and the face carried to the other poses. Still to do: drawn mouths.",
+          "status": "in-progress"
         },
         {
           "id": "p28-layer",
           "title": "A Mascot layer in any scene",
           "detail": "The mascot is its own layer type: put it in any scene, size it, place it, and give it the usual entrances and exits. Its poses are clips on the timeline, and a pose can be pinned to a word of the voice-over so it changes when that word is said. It blinks on its own, at a natural rhythm.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p28-lipsync",
           "title": "Talking on the voice-over",
-          "detail": "The mouth follows the scene's own voice-over: any voice the Studio makes (the free voices, Voicebox, a recording), using the word timings it already has. With the AI Dev Kit, sharper lip sync times each sound, so the mouth closes on M, B and P and rounds on O. Re-record the line and the mouth follows the new take.",
-          "status": "planned"
+          "detail": "The mouth follows the scene's own voice-over: any voice the Studio makes (the free voices, Voicebox, a recording), using the word timings it already has. With the AI Dev Kit, sharper lip sync times each sound, so the mouth closes on M, B and P and rounds on O. Re-record the line and the mouth follows the new take. First version (0.1.61): every word timed letter by letter (wide on a, round on o, shut on m, b and p). Still to do: sharper lip sync through the AI Dev Kit.",
+          "status": "in-progress"
         },
         {
           "id": "p28-library",
@@ -1557,13 +1557,13 @@
         {
           "id": "p28-web",
           "title": "A talking mascot on your website",
-          "detail": "Exported as HTML, the mascot plays live on a page with the Unyson+ Kinetic Scene element: sharp at any size and far lighter than a video, with Tap for sound. Also as an MP4 or a see-through video (WebM or ProRes) to put on top of anything in another editor.",
-          "status": "planned"
+          "detail": "Exported as HTML, the mascot plays live on a page with the Unyson+ Kinetic Scene element: sharp at any size and far lighter than a video, with Tap for sound. Also as an MP4 or a see-through video (WebM or ProRes) to put on top of anything in another editor. So far (0.1.61, player 0.0.69): mascots export as MP4 and see-through video, and play in the Studio's web export. Still to do: the Unyson+ Kinetic Scene element in WordPress loads an older player and needs the new one.",
+          "status": "in-progress"
         }
       ]
     }
   ],
-  "extensionVersion": "0.1.60",
+  "extensionVersion": "0.1.61",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

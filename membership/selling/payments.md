@@ -457,6 +457,36 @@ A complete run-through, start to finish, with no real money.
 When everything works, add your live keys and live webhook, switch **Mode** to **Live**, and buy once more
 with a real card for a small amount (then refund it) to be sure.
 
+## One payment system for the whole site (optional)
+
+By default Membership uses the payment settings on this page. If the site also sells in other ways (a shop, paid
+forms, bookings), you can let the shared [Payments](/extensions/payments) system take Membership's payments
+too, so there is one set of provider keys and one list of every payment.
+
+1. Open **Membership → Payments → Payment settings**.
+2. In the **Payment system** panel, set **New purchases are taken by** to **The shared Payments system** and save.
+   Payments is switched on for you the first time.
+3. Open **Payments → Settings** and set up Stripe, PayPal or bank transfer there. Membership's own provider
+   panels are hidden while the shared system is in use.
+4. Give each provider the webhook address shown in **Payments → Settings**. **Keep the webhook you already
+   added for Membership**: it still serves the memberships that were bought before the switch.
+
+What changes and what does not:
+
+- **Only new purchases change.** They are taken by the shared system and appear in **Payments → All
+  payments** as well as in **Membership → Payments**.
+- **Memberships that already renew keep renewing exactly as they do now**, through Membership's own settings.
+  Nothing is moved, and nobody is billed twice. Cancelling, pausing or refunding one of them still works.
+- **You can switch back at any time.** New purchases then use Membership's own settings again, and the
+  memberships bought while the shared system was on carry on there.
+- Coupons, tax, invoices, plan changes, pausing and the offer to stay all work the same either way.
+- For a member nothing looks different.
+
+:::caution Test first
+Switch the provider to test mode in **Payments → Settings** and buy a plan with a test card before using the
+shared system for real payments.
+:::
+
 ## Good to know
 
 - **"Online payment is not available for this plan yet. Please contact us to join."** at the checkout means

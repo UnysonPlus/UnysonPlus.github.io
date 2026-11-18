@@ -13,9 +13,10 @@ forms and bookings do not each carry their own copy of Stripe, PayPal and refund
 
 :::note Where this stands
 Payments takes **one-off payments and subscriptions**, and is the foundation the planned
-[Shop](./shop/roadmap) is built on. **Membership and Forms still use their own payment settings today.** They
-move onto Payments in a later step of the [roadmap](./shop/roadmap), together with coupons, invoices and tax.
-Nothing changes on a site that already takes payments.
+[Shop](./shop/roadmap) is built on. **Membership can use it**, as a choice you switch on
+([how](/membership/selling/payments#one-payment-system-for-the-whole-site-optional)); by default it keeps its
+own payment settings. Forms and Bookings still use their own. Nothing changes on a site that already takes
+payments until you choose it.
 :::
 
 ## It switches on by itself
@@ -146,7 +147,7 @@ believed: Stripe's by its signature, PayPal's by asking PayPal.
 - **PayPal cannot change the price of a running subscription** or restart a cancelled one. Stripe can do both.
 - **Three providers.** Local providers come next on the [roadmap](./shop/roadmap): the Philippines first (GCash,
   Maya, QR Ph), then Southeast Asia, then other regions.
-- Membership, Forms and Bookings do not use it yet.
+- Forms and Bookings do not use it yet. Membership does when its **Payment system** setting says so.
 
 ## For developers
 
@@ -308,6 +309,13 @@ FW_Payments::refund( $charge_id, 10.00, array( 'online' => false ) ); // only re
 $charge  = FW_Payments::get( $charge_id );
 $charges = FW_Payments::for_source( 'shop', $order_id );
 ```
+
+### Ids sent to a provider
+
+A provider is never given a bare row id. `FW_Payments_Gateway::tag( $charge_id )` gives `fwpay-12`, and
+`untag()` reads it back (0 when it is not one of Payments'). One provider account often notifies more than one
+address on the same site, and a bare number arriving at another extension's address could be read there as that
+extension's own row.
 
 ### Add a provider
 

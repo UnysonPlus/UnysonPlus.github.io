@@ -69,7 +69,7 @@
     {
       "id": "p0-move",
       "title": "Phase 0b · Everything that sells moves onto it",
-      "goal": "Forms and Membership each carry their own Stripe, PayPal, offline gateways and coupons. They become thin adapters on the shared core, and sites that already take payments keep working.",
+      "goal": "Forms and Membership each carry their own Stripe, PayPal, offline gateways and coupons. Each gets a switch to the shared core for new purchases, while what already renews stays where it is.",
       "tasks": [
         {
           "id": "s0-recurring",
@@ -109,9 +109,33 @@
           "progress": "0/1"
         },
         {
-          "id": "s0-move",
-          "title": "Membership, Forms and Bookings move onto it",
-          "detail": "Their gateways become thin adapters on the shared core. Saved keys, coupons and payment history migrate once, and sites that already take payments keep working without being set up again.",
+          "id": "s0-move-membership",
+          "title": "Membership can use it",
+          "detail": "A “Payment system” choice in Membership: its own payment settings (the default) or the shared Payments system. Only new purchases follow the choice. Memberships that already renew stay where they are, so nobody is billed twice and switching back is safe.",
+          "detect": {
+            "files": [
+              "../membership/modules/payments/class-fw-membership-gateway-bridge.php"
+            ]
+          },
+          "status": "done",
+          "progress": "1/1"
+        },
+        {
+          "id": "s0-move-forms",
+          "title": "Forms and Bookings can use it",
+          "detail": "The same choice for paid forms, and through them booking deposits: new payments through the shared system, existing subscriptions left where they are.",
+          "detect": {
+            "files": [
+              "../forms/includes/payments/class-fw-forms-gateway-bridge.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "s0-move-default",
+          "title": "The shared system becomes the default",
+          "detail": "Once it has run on real sites: new installs start on the shared system, and each extension’s own provider settings are kept only for the subscriptions that still depend on them.",
           "detect": {
             "files": [
               "includes/class-fw-payments-migrate.php"
@@ -170,6 +194,6 @@
     }
   ],
   "detected": true,
-  "extensionVersion": "1.0.1",
-  "generatedAt": "2026-11-18T04:26:22.903Z"
+  "extensionVersion": "1.0.2",
+  "generatedAt": "2026-11-18T05:31:37.362Z"
 }

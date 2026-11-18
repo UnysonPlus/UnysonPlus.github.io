@@ -4,7 +4,7 @@ title: "Why sell landing page templates instead of prompts?"
 authors: [jon]
 tags: [extensions, architecture]
 date: 2026-11-18
-description: "Looking at prompt libraries for AI site builders as a paid product, we chose to sell Unyson+ landing page templates instead: installed from wp-admin with a license key and personalised with the AI Assistant, at build.unysonplus.com."
+description: "Looking at prompt libraries for AI site builders as a paid product, we chose to sell Unyson+ starter sites and landing page templates instead, as downloads from build.unysonplus.com, imported with a free Starter Sites import and personalised with the AI Assistant. No license key in the plugin."
 ---
 
 ## The question
@@ -57,4 +57,24 @@ Installed templates keep working after a plan ends.
   updates, one-click install and support. Letting installed templates keep working after a plan ends
   matches that and builds trust.
 
-*Status: Accepted. Plan: Template Library → Roadmap.*
+## Update: no license key in Unyson+, and Starter Sites instead
+
+The first plan delivered Pro templates through a **license key** entered in the Template Library, with
+locked templates until then. The answer to that: "I don't want to put license key input on the Unyson+
+plugin. It makes the whole plugin a freemium." A key field, locks and "Get Pro" buttons would make Unyson+
+look like a "lite" plugin and change how the whole framework is seen.
+
+So the plugin gets nothing commercial at all. Instead it gains a free **Starter Sites** import / export
+in the Template Library, the modern successor of the original Unyson "Backups & Demo Content" demo
+importer (the question that led there: "doesn't the original Unyson have a demo import extension? I think
+we can update or have a modern version of that"). The old importer restores a full database backup and
+replaces the site; Starter Sites imports a light, data-only package (pages, the look, header and footer,
+menus, forms, photos), lets you choose what to bring over, never overwrites existing pages, and can be
+undone. Its export is how the kits are made, and how anyone moves a design between their own sites.
+
+The store sells **starter sites** (whole small websites) as well as landing page templates, as
+members-only downloads on build.unysonplus.com; no license system is needed. Plan limits (own sites on
+Pro, client work on Agency) are terms of use, not technical locks. The old demo importer stays in Backups
+& Demo Content for themes that rely on it.
+
+*Status: Accepted, as updated. Plan: Template Library → Roadmap.*

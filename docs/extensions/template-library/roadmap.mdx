@@ -1,0 +1,25 @@
+---
+sidebar_position: 9
+title: Roadmap
+description: "The Template Library's plan: premium landing page templates for Unyson+, sold at build.unysonplus.com and installed from wp-admin with a license key, made your own by hand or with the AI Assistant."
+---
+
+import Roadmap, {RoadmapSummary} from '@site/src/components/Roadmap';
+import data from '@site/src/data/template-store-roadmap.json';
+
+# Roadmap
+
+Unyson+ stays free. Next for the Template Library: **premium landing page templates**, sold at
+**build.unysonplus.com** and installed from wp-admin with a license key. A buyer gets a finished, tested
+page that looks exactly like its preview, then makes it their own in the page builder or by telling the
+AI Assistant what to change. Free templates stay in every site's library; Pro ones show locked until a
+key is entered, and keep working after a plan ends (only new installs and updates stop).
+
+Why templates rather than prompts is recorded in the Design Decisions log:
+[Why sell landing page templates instead of prompts?](/decisions/sell-templates-not-prompts)
+Template Library tasks are checked against the extension's files automatically; store and content tasks
+are updated by hand.
+
+<RoadmapSummary data={data} />
+
+<Roadmap data={data} />

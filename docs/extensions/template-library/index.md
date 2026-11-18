@@ -1,5 +1,6 @@
 ---
-sidebar_position: 9.5
+sidebar_label: "Overview"
+sidebar_position: 1
 title: Template Library
 description: Ready-made starter pages and sections for the Unyson+ page builder — a café, a small business and a portfolio home page with their photos — installed in one click and edited like anything you build yourself.
 ---
@@ -73,7 +74,7 @@ Sections drop into any page between your own content.
 - **Installed templates are kept in** `wp-content/uploads/unysonplus/templates/`, so the plugin stays small and an
   update never removes them.
 - **Inserting copies the layout.** Later changes to a template never change pages you already made with it. For a
-  section that updates everywhere it is used, use a [Global Template](./global-templates.md).
+  section that updates everywhere it is used, use a [Global Template](../global-templates.md).
 - **The catalog is read from the Unyson+ library on GitHub** and refreshed every 12 hours. If your server cannot reach
   it, the Library shows only the templates already installed.
 - Starter pages are best on a new page (or with **Replace page**): they are a whole page, from the welcome to the

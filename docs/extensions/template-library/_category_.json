@@ -1,0 +1,7 @@
+{
+  "label": "Template Library",
+  "position": 9.5,
+  "collapsible": true,
+  "collapsed": true,
+  "link": { "type": "doc", "id": "extensions/template-library/index" }
+}

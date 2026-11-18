@@ -29,7 +29,7 @@ A vector animation avoids the file weight of a video, but a large or complex `.j
 
 <img src="/img/shortcodes/lottie-design.png" alt="Lottie Animation options panel — Design tab" width="840" />
 
-- **Trigger** — when the animation plays: Autoplay on load (default), Play when scrolled into view, Play on hover, or Play / pause on click.
+- **Trigger** — when the animation plays: Autoplay on load (default), Play when scrolled into view, Play on hover, Play / pause on click, or **Controlled by Interactions**: it waits on its first frame, and an [Interactions](/animation-engine/interactions#set-lottie-and-rive-steps) step on any element plays it, plays it backwards, pauses it, or plays part of it (a button that plays a check mark, a card whose icon plays on hover and rewinds on hover-out).
 - **Loop** — repeat the animation. Defaults to Yes.
 - **Rewind on hover-out** — for the Hover trigger, play forward on enter and rewind on leave. Defaults to No.
 - **Speed** — slider from 0.25 to 2.5 (step 0.25); defaults to 1.
@@ -50,3 +50,21 @@ Standard entrance-animation controls (effect, duration, delay, offset).
 ## Advanced
 
 Custom CSS class/ID, responsive visibility toggles, custom attributes, and margin/padding.
+
+## Control it from JavaScript
+
+Each Lottie element gets a small control handle once it starts loading, the same idea as the Rive element's
+`el.fwRive`. Interactions steps use it, and so can your own scripts:
+
+```js
+const lottie = document.querySelector('.my-lottie [data-lottie]').fwLottie;
+lottie.play();            // from the start if it has finished
+lottie.reverse();         // play backwards
+lottie.pause(); lottie.stop();
+lottie.goTo(30);          // show frame 30 and stop; goTo(30, true) plays from there
+lottie.segment(10, 40);   // play frames 10 → 40
+lottie.frame(); lottie.last();   // the current and last frame numbers
+lottie.anim;              // the lottie-web animation itself
+```
+
+The element fires a bubbling **`fwLottieReady`** event (`detail.api`, `detail.element`) once the file has loaded.

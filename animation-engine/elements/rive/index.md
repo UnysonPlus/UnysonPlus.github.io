@@ -105,7 +105,7 @@ It pauses off-screen and when the tab is hidden, and is skipped under *reduce mo
 
 Every Rive element exposes a control handle so your own scripts can drive it at runtime — the same one that makes bindings **live** (a real counter, a colour picker, data from your app or a REST call), not just static builder values. Reach an instance two ways:
 
-- `el.fwRive` — the handle on the element's wrapper (`document.querySelector('#my-rive').fwRive`).
+- `el.fwRive` — the handle on the element's wrapper (`document.querySelector('#my-rive').fwRive`). [Interactions](/animation-engine/interactions#set-lottie-and-rive-steps) steps use the same handle: any trigger on any element can play, pause, fire a trigger or set an input, with no code.
 - `window.fwRive.get(target)` — where `target` is the element, a CSS id, or a selector.
 
 A **`fwRiveReady`** event (bubbles) fires when an instance becomes drivable. The handle's methods:

@@ -351,10 +351,10 @@ Most of it improves **Interactions** directly, so every existing Interaction get
   Move, Scale, Rotate, Opacity and Blur. Colours pick from the Theme Settings palette. Size changes are flagged as
   layout-moving in the panel (they can shift the page); everything else stays on transforms, opacity and filters.
   *First, with 5a.*
-- **6b · Lottie and Rive steps.** An Interactions step that plays, pauses, stops, jumps to a frame / marker or plays a
+- **6b · Lottie and Rive steps.** ✅ *Shipped in Animation Engine 1.5.22 (November 2026): Do → Control its Lottie / Rive animation ([docs](../engines/interaction/interactions/index.md#set-lottie-and-rive-steps)).* An Interactions step that plays, pauses, stops, jumps to a frame / marker or plays a
   segment of a Lottie, and sets a Rive state-machine input or fires a trigger, on any element's hover, click, load or
   in view.
-- **6c · Set step.** An instant change at a moment in the sequence: show / hide, add / remove a class, set a value
+- **6c · Set step.** ✅ *Shipped in Animation Engine 1.5.22: Do → Set something instantly.* An instant change at a moment in the sequence: show / hide, add / remove a class, set a value
   (z-index, pointer events), with no animation.
 - **6d · Layout animation.** Opt-in per element or section: when its size or position changes (an accordion opens, a
   grid filters or reorders, a card expands, a state changes layout), it glides from the old layout to the new one
@@ -385,7 +385,7 @@ Most of it improves **Interactions** directly, so every existing Interaction get
 | **3** | Rive + WebGL image transitions + particle presets | Medium–High | ✅ Shipped (Rive · image transitions · particle presets) |
 | **4** | Interactions: targets, live preview, states, a timeline, reuse and breakpoints | Very high | ✅ Shipped (I1–I5) |
 | **5** | [Animation Creator](./animation-creator): keyframe any page element in Kinetic Scenes, springs, bursts | Very high | 🚧 5a shipped; 5b–5h planned |
-| **6** | Last gaps with Framer / Webflow: more Interaction properties, Lottie / Rive steps, Set, layout animation, shared-element transitions, mouse-move, saved presets | High | 🚧 6a shipped; 6b–6g planned |
+| **6** | Last gaps with Framer / Webflow: more Interaction properties, Lottie / Rive steps, Set, layout animation, shared-element transitions, mouse-move, saved presets | High | 🚧 6a–6c shipped; 6d–6g planned |
 
 ## What we build vs. what stays curated {#build-vs-curated}
 

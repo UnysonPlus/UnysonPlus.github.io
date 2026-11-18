@@ -73,7 +73,7 @@ Each trigger plays up to **three steps** (Step 1, Step 2, Step 3). Set a later s
 | Option | What it does |
 | --- | --- |
 | **Animate** | The step's target: **This element**, **Elements inside it that match…**, or **Elements on the page that match…** |
-| **Do** | **Animate it with the values below** (the default), or switch the target's [state](./states.md): **Put it in a state**, **Take it out of a state** or **Toggle a state**, with the state's name in **State**. |
+| **Do** | **Animate it with the values below** (the default), or switch the target's [state](./states.md): **Put it in a state**, **Take it out of a state** or **Toggle a state**, with the state's name in **State**. Or act instantly: **Set something instantly**, **Control its Lottie animation**, **Control its Rive animation** (see [Set, Lottie and Rive steps](#set-lottie-and-rive-steps)). |
 | **That match** | The CSS selector for the target: a CSS ID (`#promo`), a class (`.card-arrow`) or a tag (`img`). With *Inside* and nothing typed, the element's direct children are animated. |
 | **Direction** | **To these values** moves the target from how it looks now to the values. **From these values** starts it at the values and brings it back to how it looks now, which makes a reveal. Before the trigger, a *From* target waits at its start values. |
 | **Move X / Move Y** | Moves it, in pixels. |
@@ -88,6 +88,35 @@ Each trigger plays up to **three steps** (Step 1, Step 2, Step 3). Set a later s
 | **Starts** | **After the previous step**, or **With the previous step** (they play together). |
 
 The whole sequence plays backwards in reverse order, and a hover that ends halfway reverses from wherever it had got to.
+
+## Set, Lottie and Rive steps
+
+Three more choices under **Do** act at their moment in the sequence, with no animation of their own. Played
+backwards (a hover that ends, a second click with *Clicking again: Plays it backwards*, scrolling back past
+the element), each one is **undone**.
+
+**Set something instantly**
+
+| Set | What it does | Played backwards |
+| --- | --- | --- |
+| **Show it** / **Hide it** | Shows or hides the target (`display`). *Show it* also shows an element hidden by its own CSS. | Hides / shows it again |
+| **Add / Remove / Toggle a CSS class** | The class name(s) in **Class or value** (`is-open`, or several separated by spaces). Pair it with Custom CSS for any change: a colour scheme, a different layout, an open menu. | Removes / adds it back (toggle toggles) |
+| **Bring it forward (z-index)** | Sets z-index to the number in **Class or value**, so the target sits above its neighbours. A target with no position gets `position: relative`, which z-index needs. | Back to its own z-index |
+| **Stop it reacting to the mouse** / **Let it react again** | `pointer-events` off or on, for an overlay that must not catch clicks while it is hidden. | Back to what it was |
+
+**Control its Lottie animation**: the target is a [Lottie Animation](/shortcodes/media-elements/lottie) element, or
+contains one. **Play**, **Play backwards**, **Pause**, **Stop** (back to the start), **Go to a frame and stop**
+(**Frame**), or **Play from one frame to another** (**Frame** → **To frame**). Played backwards, *Play* plays
+backwards, *Pause* resumes, *Go to a frame* returns to where it was, and a segment plays back the other way. Set the
+Lottie's own **Trigger** to **Controlled by Interactions** so it waits on its first frame until a step plays it.
+
+**Control its Rive animation**: the target is a [Rive](/animation-engine/rive) element, or contains one.
+**Play**, **Pause**, **Fire a state-machine trigger** or **Set a state-machine input** (a number, or `true` /
+`false`), by its name in the Rive file (**Trigger or input**). Played backwards, *Play* pauses, *Pause* plays, an
+input goes back to the value it had, and a trigger does nothing (a trigger has nothing to undo).
+
+Lottie and Rive files load after the page, so a step that fires before its file is ready waits for it (up to about
+five seconds). In the [Interaction timeline](/extensions/live-editor), these steps show as markers, like state steps.
 
 ## Easing and springs
 
@@ -164,6 +193,7 @@ In the [Live Editor](/extensions/live-editor), **Edit** holds Interactions still
 - The targets are found when the page loads. Elements added to the page later (for example by a filter or an infinite scroll) are not included.
 - **On click** does not make an element focusable. To start a click Interaction from the keyboard, put it on a button or link.
 - *From* reveals hide their targets until the trigger fires. Use them on content that is fine to wait for, not on the only copy of important text.
+- **Reduce motion** and Lottie: a step that would play a Lottie jumps to the frame it would end on instead.
 - **Reduce motion:** when a visitor asks for less motion (and *Respect "reduce motion"* is on in Theme Settings → Site-wide UX → Animation Engine), every step jumps straight to its end state.
 - It runs on the browser's own Web Animations, with no library. Every current browser supports it. Springs and the Motion design curves need a 2023 browser or later; older ones get the nearest ordinary curve.
 - **Width** and **Height** change the layout around the element, and colours and corner radius are exact values, so they don't follow *Amount on tablet / phone*.

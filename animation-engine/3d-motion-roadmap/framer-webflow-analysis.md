@@ -140,10 +140,10 @@ what is left. It is finer-grained: what an Interaction can animate, a few trigge
 | 3 | **Scroll- and mouse-scrubbed Interactions that move other elements** | Webflow's *while scrolling in view* and *mouse move* scrub any target | Scrubbing moves only the element itself (Scroll Motion, Scroll Keyframes, Parallax); Interactions are one-shot | Scroll: [5f](./roadmap.md#phase-5) · Mouse: [6f](./roadmap.md#phase-6) |
 | 4 | **Layout animation** | Framer's Magic Motion: a size or position change (accordion, filtered grid, expanding card) glides instead of jumping | Not available | [6d](./roadmap.md#phase-6) |
 | 5 | **Shared-element page transitions** | One element flows from one page into the next (Framer; the browser's View Transitions) | Page Transitions animate the whole page | [6e](./roadmap.md#phase-6) |
-| 6 | **Lottie and Rive controlled by Interactions** | Webflow's Lottie action: play, pause, seek from any trigger | The elements play on their own | [6b](./roadmap.md#phase-6) |
+| 6 | **Lottie and Rive controlled by Interactions** | Webflow's Lottie action: play, pause, seek from any trigger | **Lottie and Rive steps (AE 1.5.22)** | ✅ [6b](./roadmap.md#phase-6) |
 | 7 | **Saved, reusable interactions** | Webflow saves custom actions as presets | Site-wide reuse, but no "save as my preset", no Import / Export | [5g](./roadmap.md#phase-5) · [6g](./roadmap.md#phase-6) |
 | 8 | **Loop and repeat** | Repeat, yoyo and infinite loops on a sequence | Play once / toggle / replay; loops only as ready-made Physics effects | The Creator's timelines ([5e](./roadmap.md#phase-5)) · [6g](./roadmap.md#phase-6) |
-| 9 | **An instant "Set" step** | Webflow's *Set*: change a value at a moment (hide, swap a class, z-index) | Steps always animate | [6c](./roadmap.md#phase-6) |
+| 9 | **An instant "Set" step** | Webflow's *Set*: change a value at a moment (hide, swap a class, z-index) | **Set step (AE 1.5.22)** | ✅ [6c](./roadmap.md#phase-6) |
 
 Already on par or ahead, and not on this list: reveals, scroll-linked motion, pinning, storytelling, text effects,
 marquees, mouse parallax, cursors, and drag / throw / spring physics (27 Physics effects); and ahead with real 3D and

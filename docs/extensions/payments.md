@@ -2,8 +2,8 @@
 sidebar_position: 19
 title: "Payments — One Payments System for Every Unyson+ Extension"
 sidebar_label: "Payments"
-description: "Payments is the shared payments core of Unyson+: payment providers and their methods, one list of every payment and refund, a waiting state for bank transfers and cash, and webhooks. It is hidden, and switches on by itself the first time a feature takes money."
-keywords: [wordpress payments, stripe wordpress, paypal wordpress, bank transfer payments, payment gateway api, refunds, payment webhooks, unyson payments]
+description: "Payments is the shared payments core of Unyson+: payment providers and their methods, one-off payments and subscriptions, one list of every payment and refund, a waiting state for bank transfers and cash, and webhooks. It is hidden, and switches on by itself the first time a feature takes money."
+keywords: [wordpress payments, stripe wordpress, paypal wordpress, wordpress subscriptions, recurring payments, bank transfer payments, payment gateway api, refunds, payment webhooks, unyson payments]
 ---
 
 # Payments
@@ -12,10 +12,10 @@ Payments is the part of Unyson+ that takes money. It is built once and shared, s
 forms and bookings do not each carry their own copy of Stripe, PayPal and refunds.
 
 :::note Where this stands
-This first version takes **one-off payments** and is the foundation the planned [Shop](./shop/roadmap) is built
-on. **Membership and Forms still use their own payment settings today.** They move onto Payments in a later
-step of the [roadmap](./shop/roadmap), together with recurring payments, coupons, invoices and tax. Nothing
-changes on a site that already takes payments.
+Payments takes **one-off payments and subscriptions**, and is the foundation the planned
+[Shop](./shop/roadmap) is built on. **Membership and Forms still use their own payment settings today.** They
+move onto Payments in a later step of the [roadmap](./shop/roadmap), together with coupons, invoices and tax.
+Nothing changes on a site that already takes payments.
 :::
 
 ## It switches on by itself
@@ -77,6 +77,35 @@ A paid payment has a **Refund** box. Type an amount, or leave the full amount, f
 A refund made in the Stripe or PayPal dashboard is picked up automatically when the provider notifies the site,
 so you do not need to record it twice.
 
+## Subscriptions
+
+**Payments → Subscriptions** lists every subscription from every extension. The item appears in the menu once
+the site has its first subscription.
+
+<img src="/img/extensions/payments/subscriptions-list.png" alt="The Subscriptions list: how many are running and how many have a failed payment, then one row per subscription with customer, what it is for, price, provider, status, the next date, and the Payments and Stop renewals buttons" width="1672" />
+
+A subscription is billed **by the provider** (Stripe or PayPal), not by your site. Renewals keep happening even
+if the site is briefly down, and each one arrives in **All payments** as its own payment, marked *Renewal*.
+
+| Status | What it means |
+| --- | --- |
+| **Not started** | The customer has not finished the provider's page. |
+| **In trial** | A free trial is running. The **Next** column shows the first payment date. |
+| **Active** | Paid up. **Next** shows the renewal date. |
+| **Payment failed** | A renewal did not go through. The provider tries the card again by itself. |
+| **Paused** | Billing is on hold. |
+| **Ends soon** | Renewals are stopped. What was paid for still runs to the date shown. |
+| **Ended** | Nothing more will be charged. |
+
+- **Stop renewals** stops future charges at the provider. The customer keeps what they paid for until its date.
+  It also tells the extension the subscription belongs to (a membership, for example), which decides what
+  happens to the customer's access.
+- **Keep it running** undoes that, while the subscription has not ended yet (Stripe only; a PayPal subscription
+  cannot be restarted once cancelled).
+- **Payments** opens that customer's payments.
+
+Bank transfer and cash cannot be used for a subscription, because nothing can be charged again by itself.
+
 ## Settings
 
 **Payments → Settings** is one place for every way the site takes money.
@@ -112,8 +141,9 @@ believed: Stripe's by its signature, PayPal's by asking PayPal.
 
 ## Limits of this version
 
-- **One-off payments only.** Subscriptions arrive when Membership moves onto Payments.
-- **No coupons, invoices or tax yet.** They move in from Membership and Forms in the same step.
+- **No coupon codes, invoices or tax rules yet.** Payments applies a discount or a tax rate it is given; the
+  codes, the invoice documents and the per-country tax rules move in from Membership and Forms later.
+- **PayPal cannot change the price of a running subscription** or restart a cancelled one. Stripe can do both.
 - **Three providers.** Local providers come next on the [roadmap](./shop/roadmap): the Philippines first (GCash,
   Maya, QR Ph), then Southeast Asia, then other regions.
 - Membership, Forms and Bookings do not use it yet.
@@ -173,6 +203,76 @@ It returns a `WP_Error`, or an array:
 When the customer comes back to `urls.success`, Payments checks with the provider by itself.
 `FW_Payments::returning()` gives the charge for the current request, so the page can show its status.
 
+### Start a subscription
+
+```php
+$r = FW_Payments_Subscriptions::start( array(
+    'source'      => 'membership',
+    'source_id'   => $membership_id,
+    'amount'      => 19.00,          // one period's price, before discount and tax
+    'currency'    => 'USD',
+    'bill_unit'   => 'month',        // day | week | month | year
+    'bill_count'  => 1,              // every 1 month
+    'trial_days'  => 14,             // optional
+    'setup_fee'   => 0,              // optional, charged once with the first payment
+    'discount'    => array( 'type' => 'percent', 'amount' => 20, 'duration' => 'repeating', 'months' => 3, 'code' => 'SPRING' ),
+    'tax'         => array( 'rate' => 12, 'inclusive' => false, 'label' => 'VAT', 'country' => 'PH' ),
+    'due_now'     => 0,              // what is charged today, for the first payment's row
+    'description' => 'Gold plan, monthly',
+    'customer'    => array( 'user_id' => 7, 'email' => 'ana@example.com', 'name' => 'Ana', 'country' => 'PH' ),
+    'gateway'     => 'stripe',
+    'method'      => 'stripe',
+    'urls'        => array( 'success' => $thanks_url, 'cancel' => $checkout_url ),
+) );
+// array( 'id' => subscription id, 'charge_id' => first payment, 'status' => 'pending', 'redirect' => url ) or WP_Error
+```
+
+Ask for the methods with `'recurring' => true` so only those that can charge again are offered.
+
+- `discount.duration` is `once`, `repeating` (for `months`) or `forever`; `discount.type` is `percent` or `fixed`.
+- `tax` is a rate the site worked out, or `array( 'automatic' => true )` to let Stripe work it out.
+- The first payment is an ordinary charge with a `subscription_id`. Each renewal is another charge with
+  `type` `renewal`; an upgrade's difference is a charge with `type` `extra`. All of them fire
+  `unysonplus_payments_paid`.
+- The subscription is activated **before** its first charge is marked paid, so a paid listener finds its
+  status and `period_end` already set.
+
+```php
+FW_Payments_Subscriptions::cancel( $id );            // stop at the end of the paid period
+FW_Payments_Subscriptions::cancel( $id, true );      // stop now
+FW_Payments_Subscriptions::resume( $id );            // undo a cancellation that has not taken effect
+FW_Payments_Subscriptions::pause( $id, $until );     // unix time
+FW_Payments_Subscriptions::unpause( $id );
+FW_Payments_Subscriptions::switch_price( $id, array( 'amount' => 190, 'bill_unit' => 'year' ), 'prorate' ); // or 'none'
+FW_Payments_Subscriptions::discount( $id, 30, 2 );   // 30% off the next 2 months
+FW_Payments_Subscriptions::manage_url( $id, $return_url ); // where the payer changes their card
+
+$sub     = FW_Payments_Subscriptions::get( $id );
+$sub     = FW_Payments_Subscriptions::for_source( 'membership', $membership_id );
+$charges = FW_Payments_Subscriptions::charges( $id );
+```
+
+Each returns `true` or a `WP_Error`. The provider is asked first, and the change is made on the site only when
+the provider agreed.
+
+| Hook | Arguments | When |
+| --- | --- | --- |
+| `unysonplus_payments_subscription_activated` | `$subscription`, `$ctx` | The payer agreed; it runs (or its trial does) |
+| `unysonplus_payments_subscription_trial_ended` | `$subscription`, `$ctx` | The trial is over and the first period is paid |
+| `unysonplus_payments_subscription_renewed` | `$subscription`, `$charge` | A renewal was paid |
+| `unysonplus_payments_subscription_renewal_failed` | `$subscription`, `$charge` | A renewal payment failed |
+| `unysonplus_payments_subscription_past_due` | `$subscription`, `$ctx` | It became overdue |
+| `unysonplus_payments_subscription_extra_charge` | `$subscription`, `$charge` | The difference for an upgrade was charged |
+| `unysonplus_payments_subscription_upcoming` | `$subscription`, `$data` | A renewal is coming (date, amount, card) |
+| `unysonplus_payments_subscription_cancelling` | `$subscription`, `$ctx` | Renewals were stopped |
+| `unysonplus_payments_subscription_resumed` | `$subscription`, `$ctx` | The cancellation was undone |
+| `unysonplus_payments_subscription_paused` / `_unpaused` | `$subscription`, `$ctx` | Billing went on hold / came back |
+| `unysonplus_payments_subscription_changed` | `$subscription`, `$ctx` | Its price was changed |
+| `unysonplus_payments_subscription_ended` | `$subscription`, `$ctx` | Nothing more will be charged |
+
+`$ctx['by']` is `site` or `provider`: who made the change. Use it so a listener does not send a change back to
+where it came from.
+
 ### Hear what happened
 
 Every extension's payments pass through the same hooks, so always check the source.
@@ -230,5 +330,6 @@ rest.
 | `unysonplus_payments_gateways` | Register providers |
 | `unysonplus_payments_methods` | Reorder, hide or rename the methods offered for an order |
 | `unysonplus_payments_stripe_session` | Change the Stripe Checkout session before it is created |
+| `unysonplus_payments_stripe_subscription_session` | The same, for a subscription |
 | `unysonplus_payments_sources` | Name your own source in the admin list |
 | `unysonplus_payments_capability` | Who may see and refund payments (default `manage_options`) |

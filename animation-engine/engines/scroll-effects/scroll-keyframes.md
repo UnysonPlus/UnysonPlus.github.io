@@ -40,8 +40,13 @@ Each state exposes **X** and **Y** (±300 px), **Scale** (0–3), **Rotate** (±
 3D, ±180°), **Opacity** (0–1) and **Blur** (0–40 px). Anything left at its default simply doesn't move — so
 you only set what you want to animate.
 
-**Easing** is per segment: *Ease into Middle* and *Ease into End* (Linear, Ease Out, Ease In, Ease
-In-Out, Overshoot (back), Sine). Both default to **Ease Out**. A **Run on mobile** switch (on by default)
+**Easing** is per segment: *Ease into Middle* and *Ease into End*, each from the shared curve picker: the
+Motion design curves and springs from [Kinetic Scenes](/kinetic-scenes), the usual families (Power, Sine, Expo,
+Back, Elastic…), the Classic curves, or a custom cubic-bezier you type
+([the picker, explained](../interaction/interactions/index.md#easing-and-springs)). Both default to **Smooth stop**.
+Elements saved before keep their curve: Ease Out, Ease In, Ease In-Out and Overshoot show as the Classic curves,
+Sine as In-Out Sine. Because the motion follows the scrollbar, a spring overshoots and settles as you scroll
+through that part of the range. A **Run on mobile** switch (on by default)
 sits under the states.
 
 ## Pin · Hold · Exit

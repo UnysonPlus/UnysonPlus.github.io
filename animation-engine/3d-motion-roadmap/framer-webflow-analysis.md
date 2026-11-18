@@ -135,8 +135,8 @@ what is left. It is finer-grained: what an Interaction can animate, a few trigge
 
 | # | Still missing | Webflow / Framer | Unyson+ today | Planned as |
 | --- | --- | --- | --- | --- |
-| 1 | **More properties in Interactions** | Size, colours (background, text, border), skew, 3D tilt, corner radius, clip / mask, filters (brightness, greyscale…) | Move X / Y, Scale, Rotate, Opacity, Blur | [6a](./roadmap.md#phase-6) |
-| 2 | **Spring and custom curves** | Springs everywhere (Framer); full GSAP easing (Webflow) | Five fixed eases | [5a](./roadmap.md#phase-5) |
+| 1 | **More properties in Interactions** | Size, colours (background, text, border), skew, 3D tilt, corner radius, clip / mask, filters (brightness, greyscale…) | Move X / Y, Scale, Rotate, Opacity, Blur, and **now all of these (AE 1.5.21)** | ✅ [6a](./roadmap.md#phase-6) |
+| 2 | **Spring and custom curves** | Springs everywhere (Framer); full GSAP easing (Webflow) | **Springs, the Motion design curves and a custom cubic-bezier (AE 1.5.21)** | ✅ [5a](./roadmap.md#phase-5) |
 | 3 | **Scroll- and mouse-scrubbed Interactions that move other elements** | Webflow's *while scrolling in view* and *mouse move* scrub any target | Scrubbing moves only the element itself (Scroll Motion, Scroll Keyframes, Parallax); Interactions are one-shot | Scroll: [5f](./roadmap.md#phase-5) · Mouse: [6f](./roadmap.md#phase-6) |
 | 4 | **Layout animation** | Framer's Magic Motion: a size or position change (accordion, filtered grid, expanding card) glides instead of jumping | Not available | [6d](./roadmap.md#phase-6) |
 | 5 | **Shared-element page transitions** | One element flows from one page into the next (Framer; the browser's View Transitions) | Page Transitions animate the whole page | [6e](./roadmap.md#phase-6) |

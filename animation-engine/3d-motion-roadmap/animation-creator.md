@@ -123,7 +123,7 @@ Each phase ships something useful on its own.
 
 | Phase | What ships | Depends on |
 | --- | --- | --- |
-| **5a · Springs everywhere** | The Kinetic Scenes named curves, springs included, plus a cubic-bezier field, in every Animation Engine ease picker (Scroll Motion, Scroll Keyframes, Interactions, States) from one shared eases file | — |
+| **5a · Springs everywhere** ✅ *shipped (AE 1.5.21)* | The Kinetic Scenes named curves, springs included, plus a cubic-bezier field, in every Animation Engine ease picker (Scroll Motion, Scroll Keyframes, Interactions, States) from one shared eases file | — |
 | **5b · Bursts** | A **Burst** Interactions step and button effect: circles, sparks, lines and confetti bursting from an element on click or hover (grows the Confetti module) | — |
 | **5c · Connect** | Kinetic Scenes *Page mode*; the Live Editor's **Animate**; element list, picking and selection in both directions; read-only display of an element's existing motion | Kinetic Scenes bridge |
 | **5d · Author on the page** | Tracks, keyframes, curves and triggers (load, in view, hover, click); play and scrub on the canvas through the visitor runtime | 5c + the runtime |

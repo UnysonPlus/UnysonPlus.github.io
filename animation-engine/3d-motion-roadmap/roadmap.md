@@ -328,7 +328,7 @@ real page as you edit, and save as a light native timeline that every visitor ge
 so no editor code reaches the page. **The full plan, architecture and data model:
 [Animation Creator](./animation-creator).** Why Kinetic Scenes: [the decision](/decisions/animation-creator-reuses-kinetic-scenes).
 
-- **5a · Springs everywhere.** The Kinetic Scenes named curves, springs included, and a cubic-bezier field in every
+- **5a · Springs everywhere.** ✅ *Shipped in Animation Engine 1.5.21 (November 2026): the shared curve picker in Interactions, States and Scroll Keyframes, and the Motion design + Spring curves in Scroll Motion's Easing list ([docs](../engines/interaction/interactions/index.md#easing-and-springs)).* The Kinetic Scenes named curves, springs included, and a cubic-bezier field in every
   Animation Engine ease picker, from one shared eases file. *Quick win; first.*
 - **5b · Bursts.** A **Burst** step and button effect (circles, sparks, lines, confetti from an element on click or
   hover), growing the Confetti module. *Quick win.*
@@ -346,7 +346,7 @@ What the second comparison pass found still missing after Phase 4 ([the list and
 Most of it improves **Interactions** directly, so every existing Interaction gets better without waiting for the
 [Animation Creator](./animation-creator).
 
-- **6a · More properties in Interactions.** Width / height, background, text and border colour, skew, rotate X / Y
+- **6a · More properties in Interactions.** ✅ *Shipped in Animation Engine 1.5.21 (November 2026): **More properties** on every step and state ([docs](../engines/interaction/interactions/index.md#more-properties)).*  Width / height, background, text and border colour, skew, rotate X / Y
   (3D tilt), corner radius, clip / mask, and filters (brightness, contrast, saturation, greyscale), alongside today's
   Move, Scale, Rotate, Opacity and Blur. Colours pick from the Theme Settings palette. Size changes are flagged as
   layout-moving in the panel (they can shift the page); everything else stays on transforms, opacity and filters.
@@ -384,8 +384,8 @@ Most of it improves **Interactions** directly, so every existing Interaction get
 | **2** | Parametric scroll-camera 3D scenes (WebGL Object presets) | Very high | ✅ Tunnel · Gallery Dolly · Product Orbit · WebGL Motion Gallery designs |
 | **3** | Rive + WebGL image transitions + particle presets | Medium–High | ✅ Shipped (Rive · image transitions · particle presets) |
 | **4** | Interactions: targets, live preview, states, a timeline, reuse and breakpoints | Very high | ✅ Shipped (I1–I5) |
-| **5** | [Animation Creator](./animation-creator): keyframe any page element in Kinetic Scenes, springs, bursts | Very high | 📋 Planned (5a–5h) |
-| **6** | Last gaps with Framer / Webflow: more Interaction properties, Lottie / Rive steps, Set, layout animation, shared-element transitions, mouse-move, saved presets | High | 📋 Planned (6a–6g) |
+| **5** | [Animation Creator](./animation-creator): keyframe any page element in Kinetic Scenes, springs, bursts | Very high | 🚧 5a shipped; 5b–5h planned |
+| **6** | Last gaps with Framer / Webflow: more Interaction properties, Lottie / Rive steps, Set, layout animation, shared-element transitions, mouse-move, saved presets | High | 🚧 6a shipped; 6b–6g planned |
 
 ## What we build vs. what stays curated {#build-vs-curated}
 

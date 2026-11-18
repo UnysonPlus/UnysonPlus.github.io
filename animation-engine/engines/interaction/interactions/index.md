@@ -81,12 +81,60 @@ Each trigger plays up to **three steps** (Step 1, Step 2, Step 3). Set a later s
 | **Rotate** | In degrees. |
 | **Opacity** | 0 = invisible, 1 = fully visible. |
 | **Blur** | In pixels. |
+| **More properties** | Size, corner radius, skew, 3D tilt, colours, filters and a clip reveal. See [More properties](#more-properties). |
 | **Duration**, **Delay** | In seconds. |
-| **Easing** | Smooth stop, Smooth start and stop, Speed up, Overshoot or Linear. |
+| **Easing** | The speed curve, from the shared curve picker: springs, the Motion design curves, the usual families, or a custom cubic-bezier. See [Easing and springs](#easing-and-springs). |
 | **Stagger** | When the selector matches several elements, the gap between each one starting (in seconds). |
 | **Starts** | **After the previous step**, or **With the previous step** (they play together). |
 
 The whole sequence plays backwards in reverse order, and a hover that ends halfway reverses from wherever it had got to.
+
+## Easing and springs
+
+**Easing** opens the shared curve picker, the same one Entrance Animations use. Click the curve to open it,
+search by name, and click a tile. The groups:
+
+- **Motion design**: the curves [Kinetic Scenes](/kinetic-scenes) uses, measured from professional motion design.
+  **Soft land** (the workhorse for text and panels), **Snap and settle**, **Glide**, **Whip**, **Pop over** (passes
+  its mark by about 8 % and settles back), **Crash in** (about 18 %), **Bounce hard** (about 48 %), **Cruise**
+  (steady speed), **Soft in-out**, **Gentle in**, **Leave** and **Crash out** (for exits).
+- **Spring**: Spring Default, Snappy, Bouncy and Strong.
+- **Bezier**, **Power**, **Sine**, **Expo**, **Circ**, **Back**, **Elastic**, **Bounce**, **Irregular** and **Steps**:
+  the usual families, each as *In*, *Out*, *In-Out* and *Out-In*.
+- **Classic**: the five curves Interactions had before (Smooth stop, Smooth start and stop, Speed up, Overshoot,
+  Linear). Interactions saved earlier keep exactly the curve they had, shown under this group.
+- **Custom curve**: type a CSS cubic-bezier as four numbers (`0.2, 1.4, 0.4, 1`) and click **Use**. The two x values
+  are kept between 0 and 1; the y values can go past 0..1 for an overshoot. The thumbnail draws the curve as you
+  type.
+
+<img src="/img/animation-engine/interactions/easing-palette.png" alt="The curve picker scrolled to its end: the Irregular, Steps and Classic groups, with Smooth stop selected, and the Custom curve field with a Use button below" width="522" />
+
+The springs and Motion design curves are real overshoots, so a card on *Pop over* lifts past its mark and settles
+back, the way it would in a scene. They play as CSS `linear()` curves (Chrome 113, Firefox 112, Safari 17.2 and
+later); an older browser gets the nearest ordinary curve instead (an overshoot for the bouncy ones).
+
+## More properties
+
+Under Blur, **More properties** adds a second set of values to a step. Set it to **Size, colour, tilt, filters,
+clip…** to show them; set it back to **None** to switch them off (what you typed is kept, in case you turn it on
+again).
+
+<img src="/img/animation-engine/interactions/more-properties.png" alt="Step 1 with More properties switched on: Width, Height, Corner radius, Skew X, Skew Y, Tilt X and Tilt Y sliders" width="1200" />
+
+| Option | What it does |
+| --- | --- |
+| **Width**, **Height** | In pixels. **0 leaves it as it is.** A size change moves the content around the element (like an accordion opening), so use it on purpose. |
+| **Corner radius** | In pixels. 0 leaves it as it is. |
+| **Skew X**, **Skew Y** | Slants it, in degrees. |
+| **Tilt X**, **Tilt Y** | A 3D tilt, in degrees: Tilt X tips the top edge away (positive) or towards you; Tilt Y turns the right edge away or towards you. |
+| **Background colour**, **Text colour**, **Border colour** | The colour it changes to. The swatches are your Theme Settings colours. Empty leaves it as it is. |
+| **Brightness**, **Contrast**, **Saturation** | In %; 100 leaves it as it is. |
+| **Greyscale** | In %; 0 leaves it as it is, 100 is black and white. |
+| **Clip** + **Clip amount** | Hides part of it behind an edge (**From the left / right / top / bottom edge**) or a **Circle, to the centre**. *Clip amount* is how much is hidden (100 = all). With Direction **From**, it is a reveal: the element wipes into view. |
+
+Skew and tilt are added on top of the element's own transform, like Move, Scale and Rotate. The per-device
+**Amount on tablet / phone** scales skew, tilt, the filters and the clip as well; sizes, corner radius and colours
+are exact values and do not scale.
 
 ## States
 
@@ -102,7 +150,7 @@ A step finds its target by CSS selector, so the target needs a name:
 
 ## Works with other effects
 
-Interactions move elements with the separate `translate`, `scale` and `rotate` properties, which **add to** any transform the element already has. A card can still have its Entrance Animation, Hover effect or Scroll Motion, and the Interaction plays on top. Opacity and blur replace the element's own values while the step holds.
+Interactions move elements with the separate `translate`, `scale` and `rotate` properties, which **add to** any transform the element already has. A card can still have its Entrance Animation, Hover effect or Scroll Motion, and the Interaction plays on top. Skew and 3D tilt (More properties) are added on top in the same way. Opacity, the filters, colours, size, corner radius and the clip replace the element's own values while the step holds.
 
 ## Previewing
 
@@ -117,7 +165,11 @@ In the [Live Editor](/extensions/live-editor), **Edit** holds Interactions still
 - **On click** does not make an element focusable. To start a click Interaction from the keyboard, put it on a button or link.
 - *From* reveals hide their targets until the trigger fires. Use them on content that is fine to wait for, not on the only copy of important text.
 - **Reduce motion:** when a visitor asks for less motion (and *Respect "reduce motion"* is on in Theme Settings → Site-wide UX → Animation Engine), every step jumps straight to its end state.
-- It runs on the browser's own Web Animations, with no library. Every current browser supports it.
+- It runs on the browser's own Web Animations, with no library. Every current browser supports it. Springs and the Motion design curves need a 2023 browser or later; older ones get the nearest ordinary curve.
+- **Width** and **Height** change the layout around the element, and colours and corner radius are exact values, so they don't follow *Amount on tablet / phone*.
+- The filters (Blur, Brightness, Contrast, Saturation, Greyscale) **replace** a filter the element already has from its CSS. When the two lists don't hold the same filters, the browser can't ease between them and switches halfway, so animate filters on elements without a CSS filter of their own.
+- An *In view* step that clips the element itself is watched through its parent, since a fully clipped element never counts as on the screen.
+- A **Clip** cuts what reaches past the element's box only while it is clipping. At rest it reaches 30 % past each edge, so ordinary shadows are not cut.
 
 ## Example: a hover card
 

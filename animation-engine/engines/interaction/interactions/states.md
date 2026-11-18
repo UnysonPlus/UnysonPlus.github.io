@@ -31,8 +31,9 @@ That is what menus, drawers, tabs and accordions need:
 | --- | --- |
 | **Name** | The state's name. It is turned into a class-safe name: "Open menu" becomes `open-menu`. |
 | **Move X / Y, Scale, Rotate, Opacity, Blur** | The element's look in the state. It animates there on the way in and back on the way out. |
+| **More properties** | Size, corner radius, skew, 3D tilt, colours, filters and a clip, as in an Interactions step ([More properties](./index.md#more-properties)). An open card can grow its corners, turn its background to a brand colour or tilt in 3D. |
 | **Also add CSS class** | Extra classes added while in the state, besides `upw-is-<name>`. |
-| **Duration**, **Easing** | How the change animates. |
+| **Duration**, **Easing** | How the change animates. Easing is the shared curve picker, springs and a custom cubic-bezier included ([Easing and springs](./index.md#easing-and-springs)). |
 | **Start in this state** | The element is in the state as the page loads, for example a panel that starts closed or the first tab that starts active. |
 | **Group** | States with the same name and group are **exclusive**: putting one element in the state takes it away from the others in the group. |
 | **Inactive in this state** | While in the state, the element can't be clicked or focused and is hidden from screen readers. Use it for a hidden panel, so invisible content is never in the way. |

@@ -110,7 +110,7 @@ the previous step* or *With the previous step*.
 Five effects — **Reveal, Stagger, Parallax, Pin, Scrub** — carry an optional **Advanced** panel that
 stays collapsed to a single "Default" row until you need it. It adds:
 
-- a curated **GSAP ease** (or a free-text custom ease),
+- a curated **GSAP ease**, the **Motion design** curves and **Springs** of the shared curve picker (the same ones as Interactions and Kinetic Scenes, in their own groups in the list), or a free-text custom ease: any GSAP ease name, or a CSS `cubic-bezier(0.2, 0.8, 0.2, 1)`,
 - **scrub smoothing** for the scrub family (0 snaps to the scrollbar; a value eases it over that many
   seconds), and
 - **ScrollTrigger markers** for debugging (only emitted for administrators).

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 9
 title: "Shop Developer Reference: Products, Variants, Stock and Hooks"
 sidebar_label: "For developers"
 description: "The Unyson+ Shop API for developers: read and write products and variants, change stock with a logged reason, hold stock while a customer pays, grant protected downloads, read enquiries, render cards and grids, and the filters and actions the shop fires."
@@ -139,7 +139,7 @@ The element is `[shop_products show="featured" columns="4" count="4"]`.
 ## Catalog mode and enquiries
 
 ```php
-FW_Shop_Settings::selling();                         // false in this version
+FW_Shop_Settings::selling();                         // true once "Start selling online" was clicked
 FW_Shop_Catalog_Mode::shows_price( $p );             // for the current visitor
 FW_Shop_Catalog_Mode::button( $p );                  // { type: enquiry|link|none, label, url }
 $id = FW_Shop_Catalog_Mode::enquire( array( 'product' => $p['id'], 'variant' => $v['id'], 'qty' => 3,
@@ -149,6 +149,69 @@ $rows = FW_Shop_Catalog_Mode::query( array( 'status' => 'new' ) );
 
 REST: `POST /wp-json/fw-shop/v1/enquiry` with `product`, `variant`, `qty`, `name`, `email`, `phone`, `message`
 → `{ ok, message }`. Public, rate limited.
+
+## Selling
+
+Selling is layered like the rest of the shop. **The shop holds no payment code**: the checkout asks the shared
+Payments extension for the money and listens to what it reports.
+
+| Class | Owns |
+| --- | --- |
+| `FW_Shop_Cart` | A visitor's cart: `{ variant_id: qty }` and a coupon code, never a price |
+| `FW_Shop_Shipping` | Delivery zones and what delivery costs |
+| `FW_Shop_Checkout` | Cart → order → payment, and what follows a payment |
+| `FW_Shop_Orders` | Orders, their lines (a copy of what was bought) and their history; the only place a status changes |
+| `FW_Shop_Emails` | The emails, one per status |
+| `FW_Shop_Pages` / `FW_Shop_Rest` | The cart, checkout and order pages, and the API that redraws them |
+
+```php
+FW_Shop_Checkout::start_selling();                    // switch Payments on, make the two pages, selling = 1
+FW_Shop_Cart::add( $variant_id, 2 );                  // true | WP_Error ("Only 3 are left.")
+FW_Shop_Cart::set_coupon( 'WELCOME10' );              // a code from Payments → Coupons
+$c = FW_Shop_Cart::contents();                        // { lines, count, subtotal, weight, needs_shipping, coupon, notices }
+$t = FW_Shop_Cart::totals( $c, array( 'address' => array( 'country' => 'PH', 'postcode' => '1203' ), 'shipping_method' => '0-std' ) );
+// { subtotal, discount, methods, shipping, shipping_label, tax, tax_label, tax_included, total, currency, … }
+
+$r = FW_Shop_Checkout::place( array(
+    'email' => 'ana@example.com', 'name' => 'Ana Cruz',
+    'address' => array( 'line1' => '12 Mabini St', 'city' => 'Manila', 'postcode' => '1203', 'country' => 'PH' ),
+    'shipping_method' => '0-std', 'payment' => 'offline:offline',
+) );
+// WP_Error (code = the field: email, name, country, line1, city, shipping, payment, terms, cart, stock, coupon)
+// or { order, status: redirect|on_hold|paid, redirect?, instructions? }
+
+FW_Shop_Orders::get_by_number( 'S-1001' );            // with items, needs_ship
+FW_Shop_Orders::query( array( 'status' => 'open' ) ); // paid + packed + on_hold
+FW_Shop_Orders::move( $id, array( 'paid' ), 'packed', 'note' );   // true only for the call that changed it
+FW_Shop_Shipping::methods_for( $address, $c );        // [ { id, label, cost } ], cheapest first, or WP_Error
+```
+
+**How an order follows its payment.** The charge is made with source `shop`, source_id = the order id and
+reference = the order number. Then `unysonplus_payments_waiting` → **on_hold** (stock taken),
+`_paid` → **paid** (stock taken once, cart emptied, downloads granted; an order with nothing to ship goes on to
+**completed**), `_failed` / `_cancelled` → **cancelled** (stock and downloads back), `_refunded` → the refunded
+amount, and **refunded** when it is everything. A payment that arrives after an order was cancelled still
+marks it paid: money received is never ignored.
+
+**Statuses:** `pending` (checkout started, not listed) · `on_hold` · `paid` · `packed` · `shipped` ·
+`completed` · `cancelled` · `refunded`.
+
+**REST** (`/wp-json/fw-shop/v1/`, open while the shop sells, `403` otherwise). A logged-in browser sends
+`X-WP-Nonce`; get one from `admin-ajax.php?action=fw_shop_nonce` (pages may be cached).
+
+| Route | Body | Answer |
+| --- | --- | --- |
+| `GET cart` | | `{ count, html }` |
+| `POST cart/add` | `variant`, `qty` | `{ ok, message, count, cart_url }` |
+| `POST cart/set` | `variant`, `qty` (0 removes) | `{ ok, message, count, html }` |
+| `POST cart/coupon` | `code` (`''` removes) | `{ ok, message, count, html }` |
+| `POST checkout/quote` | `address`, `shipping_method`, `payment`, `email` | `{ choices, summary, count }` |
+| `POST checkout` | the checkout form | `{ ok, status, number, redirect }` or `{ ok: false, message, field }` |
+
+The `html`, `choices` and `summary` are the pages' own renderings, so a redraw can never differ from the page.
+
+**Shortcodes:** `[shop_cart]`, `[shop_checkout]` (builder elements; the checkout page also shows an order when
+the address has `?fw_order=NUMBER&key=KEY`), `[shop_cart_link]` (Cart and the count).
 
 ## Hooks
 
@@ -161,6 +224,9 @@ REST: `POST /wp-json/fw-shop/v1/enquiry` with `product`, `variant`, `qty`, `name
 | `unysonplus_shop_downloaded ( $grant, $file )` | A customer downloaded a file |
 | `unysonplus_shop_imported ( $report )` | An import finished |
 | `unysonplus_shop_before_single`, `unysonplus_shop_after_single ( $product )` | Around the product page |
+| `unysonplus_shop_order_{status} ( $order )` | An order reached a status: `_paid`, `_shipped`, `_cancelled`… |
+| `unysonplus_shop_order_status ( $order, $old )` | After any status change |
+| `unysonplus_shop_order_refund ( $order, $amount )` | Money was returned on an order |
 
 | Filter | Use |
 | --- | --- |
@@ -176,6 +242,12 @@ REST: `POST /wp-json/fw-shop/v1/enquiry` with `product`, `variant`, `qty`, `name
 | `unysonplus_shop_enquiry_to_crm` | Whether enquiries go to the CRM |
 | `unysonplus_shop_setting` | Change a setting as it is read |
 | `unysonplus_shop_capability` | Who may run the shop (default `manage_options`) |
+| `unysonplus_shop_selling` | Whether the shop sells |
+| `unysonplus_shop_cart` | Change the cart's contents as they are read |
+| `unysonplus_shop_shipping_methods ( $methods, $address, $contents )` | Add or change delivery choices (a carrier's live rates) |
+| `unysonplus_shop_countries` | Rename or add countries |
+| `unysonplus_shop_email ( $mail, $type, $order )` | Change an order email, or return `false` to send none |
+| `unysonplus_shop_customer_role` | The role of an account made at checkout |
 
 Example: show prices only to a "trade" role.
 
@@ -187,5 +259,6 @@ add_filter( 'unysonplus_shop_shows_price', function ( $yes, $product ) {
 
 ## Tables
 
-`{prefix}fw_shop_variants`, `fw_shop_stock_log`, `fw_shop_holds`, `fw_shop_enquiries`, `fw_shop_downloads`.
+`{prefix}fw_shop_variants`, `fw_shop_stock_log`, `fw_shop_holds`, `fw_shop_enquiries`, `fw_shop_downloads`,
+`fw_shop_carts`, `fw_shop_orders`, `fw_shop_order_items`, `fw_shop_order_events`.
 They are kept when the extension is switched off.

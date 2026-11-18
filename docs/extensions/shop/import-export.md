@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 8
 title: "Import and Export Shop Products (CSV and JSON)"
 sidebar_label: "Import / Export"
 description: "Import and export products in the Unyson+ Shop: a spreadsheet (CSV) with one row per variant for editing prices and stock in bulk, and a full Shop file (JSON) with settings, categories, options, pictures and extra fields for moving a shop between sites."

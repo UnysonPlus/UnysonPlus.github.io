@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 7
 title: "WordPress Catalog Mode: Show Products and Take Enquiries Without a Cart"
 sidebar_label: "Catalog mode"
 description: "Catalog mode in the Unyson+ Shop shows your products without selling them: show prices to everyone, hide them, or show them only to logged-in customers, and replace Add to cart with an enquiry or request-a-quote form that is kept in the admin, emailed to you and added to the CRM."

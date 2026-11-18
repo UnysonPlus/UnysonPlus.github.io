@@ -13,7 +13,7 @@ forms and bookings do not each carry their own copy of Stripe, PayPal and refund
 
 :::note Where this stands
 Payments takes **one-off payments and subscriptions**, with **coupons, tax by country and numbered invoices**,
-through **nine providers**. It is the foundation the planned [Shop](./shop/roadmap) is built on.
+through **nine providers**. The [Shop](/extensions/shop/selling) takes all its payments through it.
 **Membership**, **Forms** and **Bookings** can all take their payments through it
 ([who uses it](#who-takes-payments-through-it)). Nothing changes on a site that already takes payments its
 own way until its owner chooses.
@@ -316,7 +316,7 @@ The top of **Payments → Settings** lists the extensions that take payments, an
 | --- | --- |
 | **Membership** | A new site starts on this system. A site that already takes membership payments its own way stays there until you switch ([how](/membership/selling/payments#one-payment-system-for-the-whole-site-optional)). |
 | **Forms**, and **Bookings** through it | **Automatic**: this system once it is switched on, unless Forms has payment keys or payments of its own. Change it in Forms Settings → Payments → **Payment system**. |
-| **Shop** (planned) | Always this system. |
+| **Shop** | Always this system: its checkout has no payment code of its own. [Selling →](/extensions/shop/selling) |
 
 - **Nothing sold before is ever moved.** A subscription that renews through an extension's own Stripe or
   PayPal keys keeps renewing there, so nobody is billed twice. The panel counts those subscriptions and tells

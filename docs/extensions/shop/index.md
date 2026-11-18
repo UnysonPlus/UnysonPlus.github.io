@@ -1,9 +1,9 @@
 ---
 sidebar_position: 1
-title: "Shop — A Product Catalogue Built Into Unyson+"
+title: "Shop — An Online Store Built Into Unyson+"
 sidebar_label: "Shop"
-description: "Shop is the store built into Unyson+. This version is the catalogue: physical, digital and service products, options and variants with their own price, stock and picture, stock history, extra fields, Import / Export, and a catalog mode that shows products and takes enquiries without selling."
-keywords: [wordpress product catalogue, wordpress catalog mode, wordpress product variants, request a quote wordpress, product enquiry form, wordpress stock management, wordpress shop without checkout, unyson shop]
+description: "Shop is the store built into Unyson+: physical, digital and service products with options and variants, stock with a history, a cart and a one-page checkout paid through the shared Payments system, delivery zones, orders and their emails, Import / Export, and a catalog mode that shows products and takes enquiries without selling."
+keywords: [wordpress online store, wordpress cart and checkout, wordpress product catalogue, wordpress catalog mode, wordpress product variants, request a quote wordpress, product enquiry form, wordpress stock management, wordpress shop without checkout, unyson shop]
 ---
 
 # Shop
@@ -11,10 +11,10 @@ keywords: [wordpress product catalogue, wordpress catalog mode, wordpress produc
 Shop is the store built into Unyson+. You add your products once, and they appear on a shop page, on category
 pages, on a page of their own, and anywhere you place the **Products** element.
 
-:::note Where this stands
-This version is **the catalogue**. It shows your products and takes enquiries about them. **It does not sell
-yet:** there is no cart and no checkout. Selling online comes next on the [roadmap](/extensions/shop/roadmap), and every
-product you add now stays exactly as it is when it arrives.
+:::note Two ways to run it
+A shop starts in **catalog mode**: it shows your products and takes enquiries about them, with no cart.
+Click **Start selling online** in **Shop → Settings** when you are ready, and it gets a cart, a checkout and
+orders. You can switch back at any time; nothing you added is lost. [Selling →](/extensions/shop/selling)
 :::
 
 <img src="/img/extensions/shop/shop-page.png" alt="The shop page: category links across the top, then a grid of product cards, each with a picture, a name and a price; two carry a Sale flag" width="878" />
@@ -25,6 +25,13 @@ product you add now stays exactly as it is when it arrives.
 - **Options and variants**: sizes, colours or any other choice, each combination with its own price, stock,
   SKU and picture. [Products →](/extensions/shop/products)
 - **Stock** you can count, with a "running low" warning and a history of every change. [Stock →](/extensions/shop/stock)
+- **A cart and a one-page checkout**, paid through the shared [Payments](/extensions/payments) system: card,
+  PayPal, bank transfer, GCash and the other regional providers, discount codes, tax and invoices.
+  [Selling →](/extensions/shop/selling)
+- **Delivery prices** by country and postcode: one price, by weight, free from an order value, collect in
+  person. [Delivery →](/extensions/shop/delivery)
+- **Orders** with a To do list, tracking numbers, refunds, a history and emails to the buyer and to you.
+  [Orders →](/extensions/shop/orders)
 - **Catalog mode**: show prices to everyone, to nobody or only to people who are logged in, and end each
   product in an enquiry button. [Catalog mode →](/extensions/shop/catalog-mode)
 - **Import / Export**: a spreadsheet of products, and a full file to move a shop to another site.
@@ -35,7 +42,7 @@ product you add now stays exactly as it is when it arrives.
 
 1. Go to **Unyson+ → Extensions**, find **Shop** and click **Download**, then **Activate**.
 2. A **Shop** item appears in the admin menu, with Products, Categories, Tags, Stock, Enquiries,
-   Import / Export and Settings.
+   Import / Export and Settings (and Orders and Delivery once the shop sells).
 3. Open **Shop → Products → Add product**. [How to fill a product in →](/extensions/shop/products)
 
 Your shop page is at `your-site.com/shop/`. Add it to your menu like any other link.
@@ -95,11 +102,13 @@ A physical product's **weight** and **size** are shown the same way, under **Shi
 
 ## Settings
 
-**Shop → Settings** has four parts.
+**Shop → Settings** has these parts.
 
 | Part | What is in it |
 | --- | --- |
-| **Catalog mode** | Whether prices show, and what the button on a product does. [Catalog mode →](/extensions/shop/catalog-mode) |
+| **What the shop does** | Catalog mode or selling online, with what is still to set up. [Selling →](/extensions/shop/selling) |
+| **Checkout** | (when selling) the cart and checkout pages, who can buy, terms, new-order emails, order numbers |
+| **Prices and products you do not sell online** | Whether prices show, and what the button on a product does. [Catalog mode →](/extensions/shop/catalog-mode) |
 | **Money and measures** | The currency your prices are in, and the units for weight and size |
 | **Stock** | The "running low" level, and the address that is told about it. [Stock →](/extensions/shop/stock) |
 | **The shop page** | Products in a row, products on a page, and the three addresses |
@@ -113,9 +122,8 @@ A physical product's **weight** and **size** are shown the same way, under **Shi
 
 ## Limits of this version
 
-- **Nothing is sold.** No cart, checkout, delivery prices or order emails yet. See the [roadmap](/extensions/shop/roadmap).
-- **Digital files are not delivered yet.** You can add them and set their limits; download links are sent
-  with an order, once the shop sells.
+- **No customer account page with past orders yet**, no abandoned-cart emails and no reports. See the
+  [roadmap](/extensions/shop/roadmap).
 - **Up to three options, and 200 variants, per product.**
 - **No product search or filters** on the shop page yet.
 - **Products do not appear in search engines' shopping listings** yet. Product structured data comes with the

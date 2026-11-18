@@ -92,27 +92,27 @@
         {
           "id": "s2-cart",
           "title": "The cart",
-          "detail": "A fast cart that works for guests and logged-in customers and survives a login, with quantity limits and the coupon field.",
+          "detail": "A cart for guests and logged-in customers that survives a login, stores no prices (it is priced again on every read), corrects itself when stock runs out, and takes the shared discount codes.",
           "detect": {
             "files": [
               "includes/class-fw-shop-cart.php",
               "includes/class-fw-shop-rest.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "s2-checkout",
           "title": "One-page checkout",
-          "detail": "Address, delivery, payment and a summary on one page, checked again on the server, paid through the shared Payments core. Guest checkout, or an account made at checkout through Membership's accounts.",
+          "detail": "Address, delivery, payment and a summary on one page, checked and priced again on the server, paid through the shared Payments core (hosted pages, bank transfer, free orders). Guest checkout or an account made at checkout, an order page for the buyer, and a \"Start selling online\" switch that makes the pages.",
           "detect": {
             "files": [
               "includes/class-fw-shop-checkout.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "s2-shipping",
@@ -123,20 +123,20 @@
               "includes/class-fw-shop-shipping.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "s2-emails",
           "title": "Order emails",
-          "detail": "Receipt, shipped, refunded and new-order alerts, sent through Mailer and designed in the CRM's email builder.",
+          "detail": "How to pay, receipt, on its way (with tracking), cancelled and refund emails to the buyer, and a new-order alert to the shop, sent through WordPress mail (Mailer). Designing them in the CRM email builder comes later.",
           "detect": {
             "files": [
               "includes/class-fw-shop-emails.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },
@@ -161,15 +161,15 @@
         {
           "id": "s3-orders",
           "title": "Orders and their statuses",
-          "detail": "Orders in their own tables (not posts) with pending, paid, packed, shipped, completed, cancelled and refunded, a timeline of every change, notes, and a search-and-filter admin list.",
+          "detail": "Orders in their own tables (not posts) with pending, waiting for payment, paid, packed, shipped, completed, cancelled and refunded, a To do list, a timeline of every change and email, notes, search and status tabs.",
           "detect": {
             "files": [
               "includes/class-fw-shop-orders.php",
               "includes/admin/class-fw-shop-admin-orders.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "s3-refunds",
@@ -228,7 +228,7 @@
             ]
           },
           "status": "in-progress",
-          "progress": "1/4"
+          "progress": "3/4"
         },
         {
           "id": "s4-templates",
@@ -440,6 +440,6 @@
     }
   ],
   "detected": true,
-  "extensionVersion": "1.0.0",
-  "generatedAt": "2026-11-18T09:23:25.107Z"
+  "extensionVersion": "1.0.1",
+  "generatedAt": "2026-11-18T13:21:50.032Z"
 }

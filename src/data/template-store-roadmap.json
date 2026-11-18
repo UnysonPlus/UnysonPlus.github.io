@@ -12,7 +12,7 @@
         {
           "id": "ts1-model",
           "title": "Sell templates, not prompts",
-          "detail": "Unyson+ stays free; paid access to a growing library of starter sites and landing page templates, downloaded from the store and made your own by hand or with the AI Assistant.",
+          "detail": "Unyson+ stays free; ready-made starter sites and landing page templates, each bought once and downloaded from the store, made your own by hand or with the AI Assistant.",
           "pin": true,
           "status": "done"
         },
@@ -25,10 +25,10 @@
         },
         {
           "id": "ts1-pricing",
-          "title": "Plans and prices",
-          "detail": "Free (3 kits + free sections), Pro (yearly, your own sites), Agency (yearly, client work, team seats), maybe Lifetime. Prices, refunds and the payment provider to confirm.",
+          "title": "Buy each kit once",
+          "detail": "No subscriptions: each kit is bought once, downloaded forever, with free updates to it (suggested $29-59 a starter site, $15-25 a landing page, 3 free kits). An All kits bundle only later, if freelancers and agencies ask for it.",
           "pin": true,
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "ts1-name",
@@ -142,33 +142,33 @@
     {
       "id": "ts3-store",
       "title": "Phase 3 · The store at build.unysonplus.com",
-      "goal": "A storefront built on Unyson+ and its Membership extension: browse, preview, buy, download. No license system.",
+      "goal": "A storefront built on Unyson+ and WooCommerce: browse, preview, buy a kit once, download it forever. No license system, no subscriptions.",
       "tasks": [
         {
           "id": "ts3-catalog",
           "title": "Template catalog and live previews",
-          "detail": "A kit post type with filters (business type, style, number of pages, free / Pro), a page per kit with screenshots and a live desktop / phone preview (each kit imported on its own preview subsite).",
+          "detail": "Each kit a WooCommerce downloadable product with its fields (type, pages, features used, preview link), a gallery with filters (business type, style, starter site / landing page, free), and a page per kit with screenshots and a live desktop / phone preview.",
           "pin": true,
           "status": "planned"
         },
         {
           "id": "ts3-checkout",
-          "title": "Plans and checkout",
-          "detail": "Membership plans with PayPal / Stripe, coupons, tax and invoices; team seats for the Agency plan.",
+          "title": "Cart and checkout",
+          "detail": "WooCommerce cart and checkout with PayPal / Stripe, coupons, tax and invoices; free kits as free products.",
           "pin": true,
           "status": "planned"
         },
         {
           "id": "ts3-downloads",
           "title": "Downloads and update emails",
-          "detail": "Kit files as members-only Protected downloads, the latest version on the account page, and an email to members when a kit is updated or a new one is out.",
+          "detail": "Kit files as WooCommerce downloads with no limit or expiry, in My Account and the order email; replacing a file gives every past buyer the new version, and buyers are emailed when a kit they own is updated.",
           "pin": true,
           "status": "planned"
         },
         {
           "id": "ts3-pages",
           "title": "Store pages",
-          "detail": "Home, Starter sites, Templates & sections, Pricing, Account (downloads, invoices, team), Help, terms, refunds and privacy.",
+          "detail": "Home, Starter sites, Landing pages, FAQ, My Account, Help, terms, refunds and privacy.",
           "pin": true,
           "status": "planned"
         }
@@ -177,7 +177,7 @@
     {
       "id": "ts4-content",
       "title": "Phase 4 · The first collection",
-      "goal": "Twelve original kits (six starter sites, six landing pages): three free, nine Pro.",
+      "goal": "Twelve original kits (six starter sites, six landing pages): three free, nine paid.",
       "tasks": [
         {
           "id": "ts4-pipeline",
@@ -195,7 +195,7 @@
         },
         {
           "id": "ts4-pro",
-          "title": "Nine Pro kits",
+          "title": "Nine paid kits",
           "detail": "Starter sites for an agency, a clinic (with Bookings), a fitness studio (with Membership) and a real estate agent; landing pages for a coach, an event, an online course, home services and a product launch.",
           "pin": true,
           "status": "planned"
@@ -217,7 +217,7 @@
         {
           "id": "ts5-cadence",
           "title": "Two to four new kits a month",
-          "detail": "New kits and sections each month; members vote on what comes next.",
+          "detail": "New kits and sections each month; buyers vote on what comes next. An All kits bundle if freelancers and agencies ask for it.",
           "pin": true,
           "status": "planned"
         }
@@ -226,5 +226,5 @@
   ],
   "detected": true,
   "extensionVersion": "1.1.8",
-  "generatedAt": "2026-11-18T06:07:27.289Z"
+  "generatedAt": "2026-11-18T07:18:17.061Z"
 }

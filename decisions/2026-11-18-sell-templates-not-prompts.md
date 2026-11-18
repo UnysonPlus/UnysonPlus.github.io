@@ -4,7 +4,7 @@ title: "Why sell landing page templates instead of prompts?"
 authors: [jon]
 tags: [extensions, architecture]
 date: 2026-11-18
-description: "Looking at prompt libraries for AI site builders as a paid product, we chose to sell Unyson+ starter sites and landing page templates instead, as downloads from build.unysonplus.com, imported with a free Starter Sites import and personalised with the AI Assistant. No license key in the plugin."
+description: "Looking at prompt libraries for AI site builders as a paid product, we chose to sell Unyson+ starter sites and landing page templates instead, bought once and downloaded from build.unysonplus.com, imported with a free Starter Sites import and personalised with the AI Assistant. No license key in the plugin."
 ---
 
 ## The question
@@ -76,5 +76,18 @@ The store sells **starter sites** (whole small websites) as well as landing page
 members-only downloads on build.unysonplus.com; no license system is needed. Plan limits (own sites on
 Pro, client work on Agency) are terms of use, not technical locks. The old demo importer stays in Backups
 & Demo Content for themes that rely on it.
+
+## Update: buy each kit once, no subscriptions
+
+Then the plans themselves: "Can we just make it purchase to download? No need for plan? It's not like
+people would want a subscription for a website he will only install once and use forever." Agreed: a
+person building one site wants one kit, once, and a subscription only adds friction and the worry of
+what happens on cancelling. So each kit is **bought once and downloaded forever, with free updates to
+it** (suggested $29-59 a starter site, $15-25 a landing page, three kits free). An "All kits" bundle for
+freelancers and agencies comes later, only if they ask for it.
+
+That also changes the store's tool: per-item digital sales with a cart, downloads in My Account and the
+order email, coupons and tax are what **WooCommerce** does, through the Unyson+ WooCommerce extension.
+The Membership extension, the right tool for plans and subscriptions, is no longer needed for the store.
 
 *Status: Accepted, as updated. Plan: Template Library → Roadmap.*

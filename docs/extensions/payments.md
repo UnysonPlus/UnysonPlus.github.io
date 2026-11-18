@@ -122,10 +122,50 @@ Bank transfer and cash cannot be used for a subscription, because nothing can be
 | --- | --- | --- |
 | **Stripe** | Cards, Apple Pay, Google Pay and the local methods switched on in your Stripe account, on Stripe's own payment page | A secret key and a webhook signing secret, for test and for live |
 | **PayPal** | A PayPal account or a card, on PayPal's own page | A Client ID, a Secret and a Webhook ID |
+| **PayMongo** | For shops in the Philippines: GCash, Maya, QR Ph, cards, GrabPay, online banking and BillEase, on PayMongo's own page | A secret key and a webhook secret key, for test and for live |
 | **Bank transfer or cash** | Anything paid outside the site: a bank transfer, cash on delivery, pay at the desk | The name to show at checkout and the payment instructions |
 
 In the bank transfer instructions, `{reference}` is replaced by the payment's reference and `{amount}` by the
 amount.
+
+### GCash, Maya and QR Ph (PayMongo)
+
+Shops in the Philippines take local payments through **PayMongo**. One PayMongo account brings several
+methods, and each one you switch on is offered **by name** at checkout: a customer picks *GCash* and
+PayMongo's page opens straight on GCash.
+
+<img src="/img/extensions/payments/settings-paymongo.png" alt="The PayMongo section of the settings: mode, the secret key and webhook secret key fields for test and live, and one Offer it / Do not offer it choice for each of GCash, Maya, QR Ph, Card, GrabPay, Online banking and BillEase" width="982" />
+
+1. Set the site's **Currency** to `PHP`. PayMongo is only offered for prices in Philippine pesos.
+2. Tick **Offer PayMongo at checkout** and choose the **Mode**.
+3. Paste the **secret key** from PayMongo → Developers → API keys (`sk_test_…` while testing, `sk_live_…` for
+   real payments).
+4. In PayMongo → Developers → Webhooks, add an endpoint for the address shown in the settings, with the events
+   `checkout_session.payment.paid`, `payment.refunded` and `payment.refund.updated`. Paste the webhook's
+   **secret key** (`whsk_…`).
+5. For each method, choose **Offer it** or **Do not offer it**.
+
+| Method | Offered unless you switch it off |
+| --- | --- |
+| **GCash** | Yes |
+| **Maya** | Yes |
+| **QR Ph** (any bank or e-wallet app that scans QR Ph) | Yes |
+| **Card** | Yes |
+| **GrabPay** | No |
+| **Online banking** | No |
+| **BillEase** (pay later) | No |
+
+Good to know:
+
+- **Offer only the methods your PayMongo account has.** PayMongo refuses a payment for a method that is not
+  switched on in your account, and the customer sees its reason.
+- **Nothing under ₱20.** PayMongo takes no smaller payment, so it is not offered for one.
+- **No subscriptions.** An e-wallet cannot be charged again by itself, so PayMongo is not offered for a plan
+  that renews. Use Stripe or PayPal for those.
+- **Refunds** work from the payment's page, in full or in part, and a refund made in PayMongo's dashboard is
+  picked up by itself.
+- In **All payments**, the method reads *PayMongo · gcash*, and the payment's page shows what was actually
+  paid with.
 
 ### Webhooks
 
@@ -135,18 +175,20 @@ Each provider's settings show the address to give it, in this form:
 ```
 https://your-site.com/wp-json/fw-payments/v1/webhooks/stripe
 https://your-site.com/wp-json/fw-payments/v1/webhooks/paypal
+https://your-site.com/wp-json/fw-payments/v1/webhooks/paymongo
 ```
 
 The settings list the exact events to select for each provider. Every notification is checked before it is
-believed: Stripe's by its signature, PayPal's by asking PayPal.
+believed: Stripe's and PayMongo's by their signature, PayPal's by asking PayPal.
 
 ## Limits of this version
 
 - **No coupon codes, invoices or tax rules yet.** Payments applies a discount or a tax rate it is given; the
   codes, the invoice documents and the per-country tax rules move in from Membership and Forms later.
 - **PayPal cannot change the price of a running subscription** or restart a cancelled one. Stripe can do both.
-- **Three providers.** Local providers come next on the [roadmap](./shop/roadmap): the Philippines first (GCash,
-  Maya, QR Ph), then Southeast Asia, then other regions.
+- **Four providers.** Stripe, PayPal, PayMongo for the Philippines, and bank transfer or cash. Southeast Asia
+  and other regions come next on the [roadmap](./shop/roadmap).
+- **Membership does not offer PayMongo yet.** A membership checkout offers Stripe, PayPal and bank transfer.
 - Forms and Bookings do not use it yet. Membership does when its **Payment system** setting says so.
 
 ## For developers
@@ -339,5 +381,7 @@ rest.
 | `unysonplus_payments_methods` | Reorder, hide or rename the methods offered for an order |
 | `unysonplus_payments_stripe_session` | Change the Stripe Checkout session before it is created |
 | `unysonplus_payments_stripe_subscription_session` | The same, for a subscription |
+| `unysonplus_payments_paymongo_session` | Change the PayMongo Checkout Session before it is created |
+| `unysonplus_payments_paymongo_api_version` | `v1` (default) or `v2` for PayMongo Checkout Sessions |
 | `unysonplus_payments_sources` | Name your own source in the admin list |
 | `unysonplus_payments_capability` | Who may see and refund payments (default `manage_options`) |

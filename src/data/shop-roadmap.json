@@ -7,16 +7,29 @@
     {
       "id": "s0-payments",
       "title": "Phase 0 · One payments core for every extension",
-      "goal": "Forms and Membership each carry their own Stripe, PayPal, offline gateways and coupons. Before a store adds a third copy, they become one shared Payments extension that Shop, Membership, Forms and Bookings all use.",
+      "goal": "Forms and Membership each carry their own Stripe, PayPal, offline gateways and coupons. Before a store adds a third copy, they become one shared Payments extension, hidden from the Extensions list and switched on the first time any feature needs to take money.",
       "tasks": [
         {
           "id": "s0-gateway",
-          "title": "One gateway interface",
-          "detail": "The Membership and Forms gateway classes merged into one: start a payment, take it back from a return or a webhook, refund, recurring charges, pause, switch and cancel. A new gateway is written once and works everywhere.",
+          "title": "One provider interface, many payment methods",
+          "detail": "The Membership and Forms gateway classes merged into one. Each provider (Stripe, PayPal, a local provider) is written once and reports the methods it offers for the shop's country and currency, so checkout shows each customer only what fits their order. It covers starting a payment, confirming it from a return or a webhook, payments that wait (bank transfer, over-the-counter cash), refunds, and recurring charges where the method allows them.",
           "detect": {
             "files": [
               "../payments/includes/class-fw-payments-gateway.php",
               "../payments/includes/class-fw-payments-gateways.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s0-on-demand",
+          "title": "Hidden, and switched on only when money is taken",
+          "detail": "Payments does not appear in the Extensions list and no extension requires it. It is installed and turned on the first time a feature needs it: selling switched on in Shop, the Payments module in Membership, a Take payment action in a form, a deposit on a booking. A catalog-mode shop, a free members site or a contact form never loads it. Once on, it adds one Payments screen for keys, the ledger, invoices, tax and coupons, and it stays installed because it holds the payment records.",
+          "detect": {
+            "files": [
+              "../payments/manifest.php",
+              "../payments/includes/class-fw-payments-activation.php",
+              "../payments/includes/admin/class-fw-payments-admin.php"
             ]
           },
           "status": "planned"
@@ -68,13 +81,49 @@
             ]
           },
           "status": "planned"
+        },
+        {
+          "id": "s0-ph",
+          "title": "Philippines: GCash, Maya and QR Ph",
+          "detail": "The first new provider after the move, PayMongo: GCash, Maya, QR Ph, cards and bank transfers for shops in the Philippines.",
+          "detect": {
+            "files": [
+              "../payments/gateways/class-fw-payments-gateway-paymongo.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s0-sea",
+          "title": "Southeast Asia",
+          "detail": "Xendit: e-wallets, QR payments, bank transfers, cards and over-the-counter cash across the Philippines, Indonesia, Malaysia, Thailand and Vietnam in one provider.",
+          "detect": {
+            "files": [
+              "../payments/gateways/class-fw-payments-gateway-xendit.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s0-more",
+          "title": "More regions, as shops ask for them",
+          "detail": "One provider per region, each a single file on the same interface: Mollie (Europe), Razorpay (India), Paystack and Flutterwave (Africa), Mercado Pago (Latin America), Square, and Dragonpay for online banking and cash payments in the Philippines.",
+          "detect": {
+            "files": [
+              "../payments/gateways/class-fw-payments-gateway-mollie.php",
+              "../payments/gateways/class-fw-payments-gateway-razorpay.php",
+              "../payments/gateways/class-fw-payments-gateway-paystack.php",
+              "../payments/gateways/class-fw-payments-gateway-mercadopago.php"
+            ]
+          },
+          "status": "planned"
         }
       ]
     },
     {
       "id": "s1-catalogue",
       "title": "Phase 1 · The catalogue",
-      "goal": "Products that can describe almost anything a small business sells.",
+      "goal": "Products that can describe almost anything a small business sells, usable as a catalogue before the cart exists.",
       "tasks": [
         {
           "id": "s1-products",
@@ -128,6 +177,17 @@
           "detect": {
             "files": [
               "includes/class-fw-shop-import-export.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s1-catalog-mode",
+          "title": "Catalog mode",
+          "detail": "A shop that shows products without selling them: prices shown or hidden, and an enquiry or request-a-quote button that sends a form to the CRM in place of add to cart. No cart, no checkout and no payment code is loaded. Turning selling on later keeps every product as it is.",
+          "detect": {
+            "files": [
+              "includes/class-fw-shop-catalog-mode.php"
             ]
           },
           "status": "planned"

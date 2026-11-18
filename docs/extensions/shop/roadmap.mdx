@@ -26,10 +26,12 @@ done only once its code exists.
 
 0. **One payments core.** Forms and [Membership](/membership) each carry their own Stripe, PayPal and offline
    gateways and their own coupons. Before a store adds a third copy, they become one shared **Payments**
-   extension: one gateway interface, one ledger, one set of invoices, tax and coupons. Membership, Forms and
-   Bookings move onto it, and sites already taking payments keep working.
+   extension: one provider interface, one ledger, one set of invoices, tax and coupons. Membership, Forms and
+   Bookings move onto it, and sites already taking payments keep working. Then the local providers: PayMongo
+   for the Philippines (GCash, Maya, QR Ph), Xendit for Southeast Asia, and more regions as shops ask for them.
 1. **The catalogue**: physical, digital and service products, options and variants, stock, extra fields
-   from Custom Fields, and Import / Export.
+   from Custom Fields, Import / Export, and **catalog mode**, a shop that shows products and takes enquiries
+   without selling. It can ship before the cart exists.
 2. **Cart and checkout**: guest or account checkout on one page, delivery zones and rates, and order emails.
 3. **Running the orders**: statuses, refunds, tracking, invoices, and *My orders* inside the member area.
 4. **Designed in the page builder**: store elements, Theme Builder templates and starter pages.
@@ -38,6 +40,27 @@ done only once its code exists.
 6. **Selling more**: abandoned cart recovery, subscribe and save, bundles, upsells, gift cards, reviews and
    wishlists.
 7. **Reports, privacy and moving in**, including a WooCommerce importer.
+
+## Where payments live
+
+Payments is its own extension, hidden from the Extensions list. No extension requires it. It is installed and
+switched on the first time a feature needs to take money:
+
+| Extension | What switches Payments on |
+| --- | --- |
+| Shop | Selling is switched on (catalog mode off) |
+| Membership | Its Payments module is switched on |
+| Forms | A form gets a Take payment action |
+| Bookings | A bookable gets a deposit |
+
+So a catalog-mode shop, a free members site or a contact form never loads payment code. Once on, Payments adds
+one screen for provider keys, the ledger, invoices, tax and coupons, and it stays installed, because it holds
+the payment records an owner has to keep.
+
+Each **provider** is written once and brings its **methods** with it. Checkout shows a customer only the methods
+that fit the order's country and currency: GCash for an order in pesos, iDEAL for a customer in the Netherlands.
+Most e-wallets are one-off payments, so renewals and repeat deliveries are offered only on methods that can
+charge again, such as cards.
 
 ## Shop and the WooCommerce extension
 

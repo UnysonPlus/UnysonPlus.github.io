@@ -179,6 +179,18 @@ one and add another, and its Pose clips can be copied across. Bolt talks with a 
 beak. A sample is a starting point like any mascot: **Edit the mascot** changes its pose names or face, and **Save to my
 mascots** keeps your version. Their pictures load from the Studio's site only when you pick one.
 
+## Change your mascot's style
+
+A mascot is drawn in one style, but three effects restyle it while it talks: **Silhouette** (one flat ink, the eyes and
+mouth left light), **Line drawing** (only its outlines, white for a blueprint) and **Pixel art** (square pixels, like a
+game sprite). Select the mascot, add the effect from **Give it a look** in the Library, and stretch the clip over the
+words it belongs to. The mascot keeps talking, blinking and changing pose inside each one, so one drawing can appear in
+several styles in the same video.
+
+<img src="/img/kinetic-scenes/restyle-mascot.jpg" alt="One mascot four ways: as drawn, as a silhouette against a sunset, as a white line drawing on blueprint paper, and as pixel art" width="760" />
+
+The settings and limits are on [Restyle effects](./restyle-effects.md).
+
 ## The Mascot presenter template
 
 **A template › Mascot presenter** (in the start box): Pip on the left presents three points that land on the right, one

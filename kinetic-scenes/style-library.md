@@ -7,7 +7,7 @@ keywords: [kinetic scenes styles, video styles, motion design styles, animation 
 
 # Style library
 
-Kinetic Scenes has 49 styles, from clean product looks to chalkboards, newsreels, ukiyo-e prints and thermal cameras.
+Kinetic Scenes has 51 styles, from clean product looks to chalkboards, newsreels, ukiyo-e prints and thermal cameras.
 The **Style library** shows them all in one window, large enough to choose a look by eye.
 
 <img src="/img/kinetic-scenes/style-library.png" alt="The Style library window: a search box, the group filters with Drawn and crafted selected, a grid of styles, and the Whiteboard style shown large on the right with its description and the buttons Start something new in it, Use with AI assist and Export" width="1180" />
@@ -15,7 +15,7 @@ The **Style library** shows them all in one window, large enough to choose a loo
 ## Open it
 
 - **Scene › Style library…** in the menu.
-- **See all styles** (the last tile) or **Browse all 49 styles** (top right) under **Start from a style** on the
+- **See all styles** (the last tile) or **Browse all 51 styles** (top right) under **Start from a style** on the
   [start screen](./start-screen.md#start-from-a-style).
 - **Browse all styles** at the top of the **Styles** tab on the left.
 

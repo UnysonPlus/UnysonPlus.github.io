@@ -74,6 +74,8 @@ styles:
 | **Ukiyo-e** | A Japanese woodblock print: Prussian-blue waves with white foam, a red sun, flat colour inside black outlines on aged paper. | Flat Prussian blue, indigo, red and grey inside fine black outlines on cream paper; stylised waves with claw-like foam, cloud bands and a red sun; a title cartouche; gentle rocking motion. |
 | **Silent film** | A silent movie: ornate white-on-black title cards with dialogue in quotes, iris shots, a jittering frame and "The End". | Intertitles in white serif on black inside an ornamental double border, dialogue in quotes and narration in italics; grainy, flickering black-and-white pictures; iris openings and closings. |
 | **Exploded view** | A product taken apart in the air: clean parts that slide away from each other, numbered callouts and a tidy parts list. | A clean light studio; a product that separates along one axis with even gaps, numbered callouts with leader lines, a parts list, one accent colour for the part being explained. |
+| **Ink silhouette** | Shadow-puppet storytelling: black shapes against a glowing sky, a low sun, and figures you know by their outline alone. | A glowing sky in two or three warm colours with a large pale sun low in the frame; everything else flat black with no inner detail (ground, trees, figures); a few birds as small strokes; at most the eyes left light; slow, calm moves. The **Silhouette** effect turns any picture or mascot black. |
+| **90s low poly** | An early 3D game world: mountains, trees and clouds built from a few flat triangles, bright sky colours and chunky type. | Large flat triangles with no smoothing, each face one colour and a little lighter or darker than the next; sky blue, grass green and one warm accent; pointed trees and faceted mountains; things drop in and bob like game pickups. The **Low poly** effect turns a photo into triangles. |
 
 ## Effects made for these styles
 
@@ -98,6 +100,10 @@ Some styles need looks that didn't exist before. They are ordinary presets, so y
 | **Engraving** (`engrave`) | Woodcut print: a picture redrawn as fine parallel cut lines in one ink. |
 | **Glow** (`glow`, flicker on) | Neon sign: a tube glow around letters and lines that can stutter like a real tube. |
 | **False colour** (`false-colour`) | Thermal camera and X-ray: the picture's brightness shown as a colour scale (thermal: cold purple to white hot; X-ray: inverted blue-white on navy; night vision: green phosphor). It fades in like a colour grade. |
+| **Silhouette** (`silhouette`) | Ink silhouette: the layer in one flat ink, the eyes and mouth left light. Works on any layer; a mascot keeps talking inside it. |
+| **Pixel art** (`pixel-art`) | Pixel art: square pixels that stay for the whole clip (Pixelate only resolves in or out). |
+| **Line drawing** (`line-drawing`) | Blueprint and line art: only the outlines of a layer, in one line colour. |
+| **Low poly** (`low-poly`) | 90s low poly: a picture or footage rebuilt from flat triangles. See [Restyle effects](./restyle-effects.md) for all four. |
 
 All of them are exact in time (the same moment always looks the same), so they scrub, preview and export frame by frame.
 

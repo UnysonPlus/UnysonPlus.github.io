@@ -69,7 +69,7 @@
     {
       "id": "p0-move",
       "title": "Phase 0b · Everything that sells moves onto it",
-      "goal": "Forms and Membership each carry their own Stripe, PayPal, offline gateways and coupons. Each gets a switch to the shared core for new purchases, while what already renews stays where it is.",
+      "goal": "Forms and Membership each carried their own Stripe, PayPal, offline gateways and coupons. Each now has a switch to the shared core for new purchases, while what already renews stays where it is.",
       "tasks": [
         {
           "id": "s0-recurring",
@@ -86,27 +86,27 @@
         {
           "id": "s0-invoices",
           "title": "Invoices and tax",
-          "detail": "Numbered invoices and tax by country from the one ledger, with the tax report.",
+          "detail": "Tax by country from one table of rates, with a tax report by country and a spreadsheet download. Numbered invoices for every paid payment and credit notes for refunds, each keeping a copy of what it said when it was issued, with a page the customer can print or save as a PDF.",
           "detect": {
             "files": [
               "includes/class-fw-payments-invoices.php",
               "includes/class-fw-payments-tax.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/2"
+          "status": "done",
+          "progress": "2/2"
         },
         {
           "id": "s0-coupons",
           "title": "One coupon engine",
-          "detail": "Fixed and percentage codes with limits on uses, dates, customers and what they apply to (products, categories, plans, forms), so one code can work across the store and the memberships.",
+          "detail": "Percentage and fixed codes for the first payment, the first months or every payment, limited by dates, total uses, uses per customer, a smallest order, first purchases, who sells (shop, memberships, forms) and what they apply to (plans, products, categories). Membership and Forms accept the same codes, and uses are counted in one place.",
           "detect": {
             "files": [
               "includes/class-fw-payments-coupons.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "s0-move-membership",
@@ -123,26 +123,26 @@
         {
           "id": "s0-move-forms",
           "title": "Forms and Bookings can use it",
-          "detail": "The same choice for paid forms, and through them booking deposits: new payments through the shared system, existing subscriptions left where they are.",
+          "detail": "A “Payment system” choice in Forms, which booking deposits follow: new payments through the shared system, existing payments and subscriptions left where they are. On the shared system a form can also offer GCash, Maya, iDEAL and the other local methods, and accepts the shared coupon codes.",
           "detect": {
             "files": [
               "../forms/includes/payments/class-fw-forms-gateway-bridge.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "s0-move-default",
-          "title": "The shared system becomes the default",
-          "detail": "Once it has run on real sites: new installs start on the shared system, and each extension’s own provider settings are kept only for the subscriptions that still depend on them.",
+          "title": "The shared system is the default for new installs",
+          "detail": "A new site starts on the shared system: Membership decides once, the first time its payment settings are opened, and Forms uses it automatically unless it has payment keys or payments of its own. Nothing sold before is moved. Payments → Settings lists what still renews through each extension’s own keys, and says when those keys are no longer needed.",
           "detect": {
             "files": [
               "includes/class-fw-payments-migrate.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         }
       ]
     },
@@ -166,19 +166,19 @@
         {
           "id": "s0-sea",
           "title": "Southeast Asia",
-          "detail": "Xendit: e-wallets, QR payments, bank transfers, cards and over-the-counter cash across the Philippines, Indonesia, Malaysia, Thailand and Vietnam in one provider.",
+          "detail": "Xendit: e-wallets, QR payments, bank transfers, cards and over-the-counter cash across the Philippines, Indonesia, Malaysia, Thailand and Vietnam in one provider. One choice opens Xendit’s page with everything the account has; GCash, QRIS, OVO, PromptPay and the others can be offered by name.",
           "detect": {
             "files": [
               "gateways/class-fw-payments-gateway-xendit.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/1"
+          "status": "done",
+          "progress": "1/1"
         },
         {
           "id": "s0-more",
-          "title": "More regions, as shops ask for them",
-          "detail": "One provider per region, each a single file on the same interface: Mollie (Europe), Razorpay (India), Paystack and Flutterwave (Africa), Mercado Pago (Latin America), Square, and Dragonpay for online banking and cash payments in the Philippines.",
+          "title": "More regions",
+          "detail": "One provider per region, each a single file on the same interface: Mollie (Europe: iDEAL, Bancontact, cards, bank transfer), Razorpay (India: UPI, cards, netbanking), Paystack (Nigeria, Ghana, South Africa, Kenya: cards, bank transfer, mobile money) and Mercado Pago (Latin America: cards, Pix, cash vouchers). Flutterwave, Square and Dragonpay follow when a shop asks for them.",
           "detect": {
             "files": [
               "gateways/class-fw-payments-gateway-mollie.php",
@@ -187,13 +187,13 @@
               "gateways/class-fw-payments-gateway-mercadopago.php"
             ]
           },
-          "status": "planned",
-          "progress": "0/4"
+          "status": "done",
+          "progress": "4/4"
         }
       ]
     }
   ],
   "detected": true,
-  "extensionVersion": "1.0.3",
-  "generatedAt": "2026-11-18T06:01:20.887Z"
+  "extensionVersion": "1.0.7",
+  "generatedAt": "2026-11-18T08:32:22.758Z"
 }

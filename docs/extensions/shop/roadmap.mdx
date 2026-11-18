@@ -20,9 +20,14 @@ Status is checked against the extensions' files automatically, so a task shows a
 
 ## Phase 0 · Payments
 
-The store is built on one shared [Payments](../payments) extension, so that comes first. One-off payments
-and subscriptions through Stripe and PayPal, and bank transfer or cash, are built. Moving Membership and Forms
-onto it comes next.
+The store is built on one shared [Payments](../payments) extension, so that came first. It is built: one-off
+payments and subscriptions, coupons, tax by country and numbered invoices, through nine providers (Stripe,
+PayPal, PayMongo, Xendit, Mollie, Razorpay, Paystack, Mercado Pago, and bank transfer or cash). Membership,
+Forms and Bookings can take their payments through it; nothing they sold before is moved
+([why](/decisions/move-to-shared-payments-without-moving-anything)).
+
+What is left before real money: every provider has been tested against a stand-in for its service, not against
+a real merchant account.
 
 <RoadmapSummary data={payments} />
 

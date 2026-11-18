@@ -108,6 +108,26 @@ Every answer, however many boxes it uses, is stored and emailed as one readable 
 - The **currency** is set once for every form in Forms Settings → Payments.
 - The form-type picker has an **Order form** and a **Donation** form to start from.
 
+### One payment system for the whole site
+
+By default a form is paid through the keys in Forms Settings → Payments. A site that also sells in other ways
+can let the shared [Payments](/extensions/payments) system take form payments too: one set of provider keys, one list
+of every payment, and more ways to pay.
+
+- **Forms Settings → Payments → Payment system** has three choices. **Automatic** (the default) uses the shared
+  system once it is switched on, unless Forms already has payment keys or payments of its own. **Forms' own
+  payment settings** and **The shared Payments system** fix the choice.
+- **Only new payments follow it.** Payments and subscriptions that exist stay where they were made, so keep
+  Forms' own keys and webhook address for them. Payments → Settings tells you when they are no longer needed.
+- On the shared system a form can offer **GCash, Maya, iDEAL and the other local methods** set up in
+  Payments → Settings: tick **Local payment methods** in the form's **Payment Method** field. Each is listed
+  under its own name.
+- A **Coupon** field also accepts codes from **Payments → Coupons**.
+- **Mark paid**, **Mark cancelled** and **Refund** on an entry keep working, and the payment shows in
+  **Payments → All payments** as well. Booking deposits follow the same setting, because they are paid
+  through the booking form.
+- A subscription from a form needs Card (Stripe) or PayPal on either system.
+
 ## Limits
 
 Contact Form → Settings → **Limits**:

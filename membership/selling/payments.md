@@ -471,6 +471,10 @@ too, so there is one set of provider keys and one list of every payment.
 4. Give each provider the webhook address shown in **Payments → Settings**. **Keep the webhook you already
    added for Membership**: it still serves the memberships that were bought before the switch.
 
+A **new site starts on the shared system**: the first time you open the payment settings on a site with no
+provider set up and no payment taken, Payments is switched on and chosen for you. A site that already takes
+membership payments its own way is left exactly as it is.
+
 What changes and what does not:
 
 - **Only new purchases change.** They are taken by the shared system and appear in **Payments → All
@@ -480,6 +484,8 @@ What changes and what does not:
 - **You can switch back at any time.** New purchases then use Membership's own settings again, and the
   memberships bought while the shared system was on carry on there.
 - Coupons, tax, invoices, plan changes, pausing and the offer to stay all work the same either way.
+- On the shared system, checkout also accepts codes from **Payments → Coupons**, which can be limited to
+  memberships or to named plans. When both lists have the same code, Membership's own is used.
 - For a member nothing looks different.
 
 :::caution Test first

@@ -340,6 +340,41 @@ so no editor code reaches the page. **The full plan, architecture and data model
 - **5g · Presets and AI.** Kinetic Scenes' motion presets as starting points, your own saved presets, AI authoring.
 - **5h · Reuse.** Timelines for every element matching a class, and site-wide timelines.
 
+## Phase 6 — Closing the last gaps with Framer and Webflow (planned) {#phase-6}
+
+What the second comparison pass found still missing after Phase 4 ([the list and the reasoning](./framer-webflow-analysis.md#still-missing)).
+Most of it improves **Interactions** directly, so every existing Interaction gets better without waiting for the
+[Animation Creator](./animation-creator).
+
+- **6a · More properties in Interactions.** Width / height, background, text and border colour, skew, rotate X / Y
+  (3D tilt), corner radius, clip / mask, and filters (brightness, contrast, saturation, greyscale), alongside today's
+  Move, Scale, Rotate, Opacity and Blur. Colours pick from the Theme Settings palette. Size changes are flagged as
+  layout-moving in the panel (they can shift the page); everything else stays on transforms, opacity and filters.
+  *First, with 5a.*
+- **6b · Lottie and Rive steps.** An Interactions step that plays, pauses, stops, jumps to a frame / marker or plays a
+  segment of a Lottie, and sets a Rive state-machine input or fires a trigger, on any element's hover, click, load or
+  in view.
+- **6c · Set step.** An instant change at a moment in the sequence: show / hide, add / remove a class, set a value
+  (z-index, pointer events), with no animation.
+- **6d · Layout animation.** Opt-in per element or section: when its size or position changes (an accordion opens, a
+  grid filters or reorders, a card expands, a state changes layout), it glides from the old layout to the new one
+  instead of jumping. Measured before and after, animated with transforms, so it stays smooth.
+- **6e · Shared-element page transitions.** Mark an element (a product photo, a post's image or title) as shared,
+  and it flows from its place on one page into its place on the next, using the browser's View Transitions where
+  supported and an ordinary page transition elsewhere. Grows the Page Transitions module.
+- **6f · Mouse-move Interactions.** A scrubbed *mouse move* trigger (over an element or the whole window) that moves
+  any target by the pointer's position, the way scroll scrubs, with smoothing.
+- **6g · Save and share Interactions.** *Save as preset* for any Interaction, a library of your presets, repeat / yoyo
+  / loop on a sequence, and an **Import / Export** screen (JSON) to move them between sites.
+
+### Build order
+
+1. **5a** springs everywhere + **6a** more properties: quick, and every Interaction benefits.
+2. **6b** Lottie and Rive steps + **6c** Set step: small.
+3. **5b** bursts.
+4. **6d** layout animation + **6e** shared-element page transitions: new features in their own right.
+5. The [Animation Creator](./animation-creator) (**5c–5h**), with **6f** and **6g** alongside.
+
 ## At a glance
 
 | Phase | Deliverable | Impact | Status |
@@ -350,6 +385,7 @@ so no editor code reaches the page. **The full plan, architecture and data model
 | **3** | Rive + WebGL image transitions + particle presets | Medium–High | ✅ Shipped (Rive · image transitions · particle presets) |
 | **4** | Interactions: targets, live preview, states, a timeline, reuse and breakpoints | Very high | ✅ Shipped (I1–I5) |
 | **5** | [Animation Creator](./animation-creator): keyframe any page element in Kinetic Scenes, springs, bursts | Very high | 📋 Planned (5a–5h) |
+| **6** | Last gaps with Framer / Webflow: more Interaction properties, Lottie / Rive steps, Set, layout animation, shared-element transitions, mouse-move, saved presets | High | 📋 Planned (6a–6g) |
 
 ## What we build vs. what stays curated {#build-vs-curated}
 

@@ -10,7 +10,7 @@ description: How designers animate in Framer and Webflow, how the Unyson+ Animat
 *Analysis written November 2026. It answers one question: can the Unyson+ Animation Engine be as powerful as Framer and Webflow, and what would it take?*
 
 :::note[Since shipped]
-The plan below has been built: **Phase 4 (I1–I5) shipped in November 2026** — [Interactions](/animation-engine/interactions), [States](/animation-engine/states), live preview and the Interaction timeline in the [Live Editor](/extensions/live-editor), and reuse by class with per-device control. The analysis is kept as it was written; the comparison table has a **Since Phase 4** column, and the notes in *Built on what exists* and *Phases* say where the build differed from the plan.
+The plan below has been built: **Phase 4 (I1–I5) shipped in November 2026** — [Interactions](/animation-engine/interactions), [States](/animation-engine/states), live preview and the Interaction timeline in the [Live Editor](/extensions/live-editor), and reuse by class with per-device control. The analysis is kept as it was written; the comparison table has a **Since Phase 4** column, and the notes in *Built on what exists* and *Phases* say where the build differed from the plan. What is **still missing** after Phase 4 is listed in [Still missing after Phase 4](#still-missing).
 :::
 
 ## The short answer
@@ -127,6 +127,31 @@ An **Interaction** is *trigger → timeline of steps → targets*:
 | **I3 · States** | Named states plus "go to state" and toggle; hover cards, menus and tabs built from them | Framer's strongest idea |
 | **I4 · Timeline for every trigger** | The Scroll Timeline overlay edits click, hover and load sequences too | Reuses the shipped editor *(shipped as the Live Editor's Interaction timeline)* |
 | **I5 · Reuse and breakpoints** | Save an interaction as a preset, apply it by class, per-breakpoint values | Scale and polish |
+
+## Still missing after Phase 4 {#still-missing}
+
+*Added 18 November 2026.* With Phase 4 shipped, every gap ranked above is closed. A second pass over both tools finds
+what is left. It is finer-grained: what an Interaction can animate, a few triggers, and two newer techniques.
+
+| # | Still missing | Webflow / Framer | Unyson+ today | Planned as |
+| --- | --- | --- | --- | --- |
+| 1 | **More properties in Interactions** | Size, colours (background, text, border), skew, 3D tilt, corner radius, clip / mask, filters (brightness, greyscale…) | Move X / Y, Scale, Rotate, Opacity, Blur | [6a](./roadmap.md#phase-6) |
+| 2 | **Spring and custom curves** | Springs everywhere (Framer); full GSAP easing (Webflow) | Five fixed eases | [5a](./roadmap.md#phase-5) |
+| 3 | **Scroll- and mouse-scrubbed Interactions that move other elements** | Webflow's *while scrolling in view* and *mouse move* scrub any target | Scrubbing moves only the element itself (Scroll Motion, Scroll Keyframes, Parallax); Interactions are one-shot | Scroll: [5f](./roadmap.md#phase-5) · Mouse: [6f](./roadmap.md#phase-6) |
+| 4 | **Layout animation** | Framer's Magic Motion: a size or position change (accordion, filtered grid, expanding card) glides instead of jumping | Not available | [6d](./roadmap.md#phase-6) |
+| 5 | **Shared-element page transitions** | One element flows from one page into the next (Framer; the browser's View Transitions) | Page Transitions animate the whole page | [6e](./roadmap.md#phase-6) |
+| 6 | **Lottie and Rive controlled by Interactions** | Webflow's Lottie action: play, pause, seek from any trigger | The elements play on their own | [6b](./roadmap.md#phase-6) |
+| 7 | **Saved, reusable interactions** | Webflow saves custom actions as presets | Site-wide reuse, but no "save as my preset", no Import / Export | [5g](./roadmap.md#phase-5) · [6g](./roadmap.md#phase-6) |
+| 8 | **Loop and repeat** | Repeat, yoyo and infinite loops on a sequence | Play once / toggle / replay; loops only as ready-made Physics effects | The Creator's timelines ([5e](./roadmap.md#phase-5)) · [6g](./roadmap.md#phase-6) |
+| 9 | **An instant "Set" step** | Webflow's *Set*: change a value at a moment (hide, swap a class, z-index) | Steps always animate | [6c](./roadmap.md#phase-6) |
+
+Already on par or ahead, and not on this list: reveals, scroll-linked motion, pinning, storytelling, text effects,
+marquees, mouse parallax, cursors, and drag / throw / spring physics (27 Physics effects); and ahead with real 3D and
+WebGL, the Motion Gallery, Kinetic Scenes, AI that builds motion, and all of it inside WordPress.
+
+**Order:** #1 and #2 first (quick, and every Interaction benefits), then #6 and #9 (small), then #4 and #5 (new
+features in their own right, and the two that make a site *feel* like a Framer site). The rest ride on the
+[Animation Creator](./animation-creator.md).
 
 ## What stays our advantage
 

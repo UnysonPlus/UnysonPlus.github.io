@@ -129,6 +129,6 @@ three clips on one mascot layer and a background for each part. Build the same f
   it. Animate the position, not the rotation, when the grid should look fixed.
 - Low poly reads the picture's pixels, so footage from another website must allow that (the AI Dev Kit's own server
   does). When it does not, the plain picture shows.
-- The effects need player 0.0.71 or newer. The Studio, its previews and video exports have it. The Unyson+ Kinetic
-  Scene element in WordPress gets it with the next Animation Engine update; until then a scene on a WordPress page
-  shows these layers as they were drawn.
+- The effects need player 0.0.71 or newer. The Studio, its previews and video exports have it. On a WordPress page, the
+  Unyson+ Kinetic Scene element has it from the Animation Engine extension 1.5.20; with an older one, these layers show
+  as they were drawn.

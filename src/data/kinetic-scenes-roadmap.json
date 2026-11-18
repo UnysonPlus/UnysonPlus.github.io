@@ -1570,7 +1570,7 @@
           "status": "done",
           "id": "p28-restyle",
           "title": "One mascot, many styles: four restyle effects",
-          "detail": "Four effects that change the style of what is already in a scene, with no new drawings: Silhouette (one flat ink, the eyes and mouth left light), Pixel art (square pixels that stay), Line drawing (only the outlines, white for a blueprint) and Low poly (a picture or footage rebuilt from flat triangles). The first three work on any layer, so a mascot keeps talking, blinking and changing pose inside them. With them come two styles, Ink silhouette and 90s low poly (51 in all). Shipped in 0.1.64 with player 0.0.71. Still to do: the Unyson+ Kinetic Scene element in WordPress needs the new player (an Animation Engine update). See [Restyle effects](/kinetic-scenes/restyle-effects)."
+          "detail": "Four effects that change the style of what is already in a scene, with no new drawings: Silhouette (one flat ink, the eyes and mouth left light), Pixel art (square pixels that stay), Line drawing (only the outlines, white for a blueprint) and Low poly (a picture or footage rebuilt from flat triangles). The first three work on any layer, so a mascot keeps talking, blinking and changing pose inside them. With them come two styles, Ink silhouette and 90s low poly (51 in all). Shipped in 0.1.64 with player 0.0.71. The Unyson+ Kinetic Scene element in WordPress plays them from Animation Engine 1.5.20. See [Restyle effects](/kinetic-scenes/restyle-effects)."
         }
       ]
     }

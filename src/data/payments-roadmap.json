@@ -1,0 +1,175 @@
+{
+  "_comment": "SOURCE OF TRUTH for Phase 0 of the Shop roadmap (the shared Payments extension), rendered at /extensions/shop/roadmap. Task status is maintained by `npm run roadmap:payments` (scripts/gen-roadmap.mjs) from the extension source tree.",
+  "extension": "payments",
+  "cloneDir": "UnysonPlus-Payments-Extension",
+  "repo": "https://github.com/UnysonPlus/UnysonPlus-Payments-Extension",
+  "milestones": [
+    {
+      "id": "p0-core",
+      "title": "Phase 0a · The payments core",
+      "goal": "One shared Payments extension, hidden from the Extensions list and switched on the first time any feature needs to take money.",
+      "tasks": [
+        {
+          "id": "s0-gateway",
+          "title": "One provider interface, many payment methods",
+          "detail": "The Membership and Forms gateway classes merged into one. Each provider (Stripe, PayPal, a local provider) is written once and reports the methods it offers for the shop's country and currency, so checkout shows each customer only what fits their order. It covers starting a payment, confirming it from a return or a webhook, payments that wait (bank transfer, over-the-counter cash), refunds, and recurring charges where the method allows them.",
+          "detect": {
+            "files": [
+              "includes/class-fw-payments-gateway.php",
+              "includes/class-fw-payments-gateways.php"
+            ]
+          },
+          "status": "done",
+          "progress": "2/2"
+        },
+        {
+          "id": "s0-on-demand",
+          "title": "Hidden, and switched on only when money is taken",
+          "detail": "Payments does not appear in the Extensions list and no extension requires it. It is installed and turned on the first time a feature needs it: selling switched on in Shop, the Payments module in Membership, a Take payment action in a form, a deposit on a booking. A catalog-mode shop, a free members site or a contact form never loads it. Once on, it adds one Payments screen for keys, the ledger, invoices, tax and coupons, and it stays installed because it holds the payment records.",
+          "detect": {
+            "files": [
+              "manifest.php",
+              "../../includes/extension-on-demand.php",
+              "includes/admin/class-fw-payments-admin.php"
+            ]
+          },
+          "status": "done",
+          "progress": "3/3"
+        },
+        {
+          "id": "s0-gateways",
+          "title": "Stripe, PayPal and pay later: one-off payments",
+          "detail": "Cards and wallets through Stripe, PayPal, and bank transfer or pay on collection, set up once in one settings screen for the whole site. Full and part refunds, sent back through the provider where it can.",
+          "detect": {
+            "files": [
+              "gateways/class-fw-payments-gateway-stripe.php",
+              "gateways/class-fw-payments-gateway-paypal.php",
+              "gateways/class-fw-payments-gateway-offline.php"
+            ]
+          },
+          "status": "done",
+          "progress": "3/3"
+        },
+        {
+          "id": "s0-ledger",
+          "title": "One payments ledger",
+          "detail": "Every payment and refund from every extension in one table, each tagged with what it paid for (an order, a plan, a form entry, a booking), with a history of everything that happened to it and a webhook address per provider.",
+          "detect": {
+            "files": [
+              "includes/class-fw-payments-ledger.php",
+              "includes/class-fw-payments.php",
+              "includes/class-fw-payments-rest.php"
+            ]
+          },
+          "status": "done",
+          "progress": "3/3"
+        }
+      ]
+    },
+    {
+      "id": "p0-move",
+      "title": "Phase 0b · Everything that sells moves onto it",
+      "goal": "Forms and Membership each carry their own Stripe, PayPal, offline gateways and coupons. They become thin adapters on the shared core, and sites that already take payments keep working.",
+      "tasks": [
+        {
+          "id": "s0-recurring",
+          "title": "Recurring payments",
+          "detail": "Subscriptions on the shared core: start, renew, fail and retry, pause, switch price, cancel at the end of the period, with each method saying whether it can charge again.",
+          "detect": {
+            "files": [
+              "includes/class-fw-payments-subscriptions.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "s0-invoices",
+          "title": "Invoices and tax",
+          "detail": "Numbered invoices and tax by country from the one ledger, with the tax report.",
+          "detect": {
+            "files": [
+              "includes/class-fw-payments-invoices.php",
+              "includes/class-fw-payments-tax.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/2"
+        },
+        {
+          "id": "s0-coupons",
+          "title": "One coupon engine",
+          "detail": "Fixed and percentage codes with limits on uses, dates, customers and what they apply to (products, categories, plans, forms), so one code can work across the store and the memberships.",
+          "detect": {
+            "files": [
+              "includes/class-fw-payments-coupons.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "s0-move",
+          "title": "Membership, Forms and Bookings move onto it",
+          "detail": "Their gateways become thin adapters on the shared core. Saved keys, coupons and payment history migrate once, and sites that already take payments keep working without being set up again.",
+          "detect": {
+            "files": [
+              "includes/class-fw-payments-migrate.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        }
+      ]
+    },
+    {
+      "id": "p0-local",
+      "title": "Phase 0c · Local payment methods",
+      "goal": "One provider per region, each bringing its own methods.",
+      "tasks": [
+        {
+          "id": "s0-ph",
+          "title": "Philippines: GCash, Maya and QR Ph",
+          "detail": "The first new provider after the move, PayMongo: GCash, Maya, QR Ph, cards and bank transfers for shops in the Philippines.",
+          "detect": {
+            "files": [
+              "gateways/class-fw-payments-gateway-paymongo.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "s0-sea",
+          "title": "Southeast Asia",
+          "detail": "Xendit: e-wallets, QR payments, bank transfers, cards and over-the-counter cash across the Philippines, Indonesia, Malaysia, Thailand and Vietnam in one provider.",
+          "detect": {
+            "files": [
+              "gateways/class-fw-payments-gateway-xendit.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/1"
+        },
+        {
+          "id": "s0-more",
+          "title": "More regions, as shops ask for them",
+          "detail": "One provider per region, each a single file on the same interface: Mollie (Europe), Razorpay (India), Paystack and Flutterwave (Africa), Mercado Pago (Latin America), Square, and Dragonpay for online banking and cash payments in the Philippines.",
+          "detect": {
+            "files": [
+              "gateways/class-fw-payments-gateway-mollie.php",
+              "gateways/class-fw-payments-gateway-razorpay.php",
+              "gateways/class-fw-payments-gateway-paystack.php",
+              "gateways/class-fw-payments-gateway-mercadopago.php"
+            ]
+          },
+          "status": "planned",
+          "progress": "0/4"
+        }
+      ]
+    }
+  ],
+  "detected": true,
+  "extensionVersion": "1.0.0",
+  "generatedAt": "2026-11-18T03:54:00.247Z"
+}

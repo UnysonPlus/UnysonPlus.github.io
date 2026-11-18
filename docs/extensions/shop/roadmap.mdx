@@ -7,6 +7,7 @@ description: "The plan for Shop, a native Unyson+ store: one shared payments cor
 
 import Roadmap, {RoadmapSummary} from '@site/src/components/Roadmap';
 import data from '@site/src/data/shop-roadmap.json';
+import payments from '@site/src/data/payments-roadmap.json';
 
 # Shop roadmap
 
@@ -15,8 +16,20 @@ for one reason: **one customer, one checkout and one record across the whole sit
 joins a plan, books a room and fills in a paid form is one contact in the [CRM](/crm), with one account page,
 one payment history and one set of invoices.
 
-Nothing here is built yet. Status is checked against the extension's files automatically, so a task shows as
-done only once its code exists.
+Status is checked against the extensions' files automatically, so a task shows as done only once its code exists.
+
+## Phase 0 · Payments
+
+The store is built on one shared [Payments](../payments) extension, so that comes first. Its first version
+(one-off payments through Stripe, PayPal and bank transfer or cash) is built.
+
+<RoadmapSummary data={payments} />
+
+<Roadmap data={payments} />
+
+## Phases 1 to 7 · Shop
+
+Not started yet.
 
 <RoadmapSummary data={data} />
 
@@ -70,10 +83,11 @@ and the CRM to be one system. Phase 7 brings an importer for moving a WooCommerc
 
 ## How this page stays current
 
-`src/data/shop-roadmap.json` lists every task with a `detect` block naming the files that make it real, and
+`src/data/shop-roadmap.json` and `src/data/payments-roadmap.json` list every task with a `detect` block naming the files that make it real, and
 `scripts/gen-roadmap.mjs` checks them against the extension's source tree:
 
 ```bash
+npm run roadmap:payments        # Phase 0
 npm run roadmap:shop            # scan and rewrite the JSON
 npm run roadmap:shop -- --dry   # report only, write nothing
 npm run roadmap:shop -- --check # exit 1 if stale
@@ -81,5 +95,5 @@ npm run roadmap:shop -- --check # exit 1 if stale
 
 The `detect` paths are also the agreed file layout: core classes in `includes/`, connections to other
 extensions in `includes/integrations/`, switchable modules in `modules/<module>/`, page-builder elements in
-`shortcodes/<name>/`. Phase 0 paths start with `../payments/` because they belong to the shared Payments
-extension.
+`shortcodes/<name>/`. Phase 0 has its own file because it belongs to
+the shared Payments extension.

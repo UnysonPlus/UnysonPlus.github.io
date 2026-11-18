@@ -465,6 +465,12 @@ approval* and names it, for example *Plugin from your AI app: Update "Unyson+" f
 with **Install** and **Discard**. Install runs the same installer from that wp-admin page; the AI reads the
 outcome afterwards. A Kinetic Scene holds no code, so it is written straight away.
 
+The notice only ever offers the **latest** package for each theme or plugin (since 1.0.56): when the AI
+sends a newer version of the same theme or plugin before you approve the first, the newer one replaces
+the waiting one, so you never see "0.1.48 to 0.1.49" and "0.1.48 to 0.1.50" side by side and pick the
+wrong one. The same goes for a PHP file in the child theme: a newer change to the same file replaces the
+waiting one. Requests for different themes, plugins or files still wait side by side.
+
 **Kinetic Scenes.** Export the scene for the web (*Kinetic Scenes → Export → For a web page*) with the
 base address the tool gives, `https://<your site>/wp-content/uploads/unysonplus/scenes/<name>/`, so
 its links point to where it will live. Then send the export folder as a `.zip`. Only data and media files

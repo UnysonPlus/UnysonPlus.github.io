@@ -1,0 +1,62 @@
+---
+sidebar_position: 1
+title: Shop roadmap
+sidebar_label: Roadmap
+description: "The plan for Shop, a native Unyson+ store: one shared payments core first, then the catalogue, cart and checkout, orders, store pages designed in the page builder, and a store connected to the CRM, Membership, Bookings, Forms, SEO, Visitor Insights, POS Sync and the AI Assistant."
+---
+
+import Roadmap, {RoadmapSummary} from '@site/src/components/Roadmap';
+import data from '@site/src/data/shop-roadmap.json';
+
+# Shop roadmap
+
+Shop is a planned online store built into Unyson+ itself, not on top of another store plugin. It is being built
+for one reason: **one customer, one checkout and one record across the whole site.** Someone who buys a product,
+joins a plan, books a room and fills in a paid form is one contact in the [CRM](/crm), with one account page,
+one payment history and one set of invoices.
+
+Nothing here is built yet. Status is checked against the extension's files automatically, so a task shows as
+done only once its code exists.
+
+<RoadmapSummary data={data} />
+
+<Roadmap data={data} />
+
+## Order of work
+
+0. **One payments core.** Forms and [Membership](/membership) each carry their own Stripe, PayPal and offline
+   gateways and their own coupons. Before a store adds a third copy, they become one shared **Payments**
+   extension: one gateway interface, one ledger, one set of invoices, tax and coupons. Membership, Forms and
+   Bookings move onto it, and sites already taking payments keep working.
+1. **The catalogue**: physical, digital and service products, options and variants, stock, extra fields
+   from Custom Fields, and Import / Export.
+2. **Cart and checkout**: guest or account checkout on one page, delivery zones and rates, and order emails.
+3. **Running the orders**: statuses, refunds, tracking, invoices, and *My orders* inside the member area.
+4. **Designed in the page builder**: store elements, Theme Builder templates and starter pages.
+5. **Connected to every Unyson+ extension**: CRM, Membership, Bookings, Forms, SEO, Visitor Insights,
+   POS Sync, the AI Assistant and Chat.
+6. **Selling more**: abandoned cart recovery, subscribe and save, bundles, upsells, gift cards, reviews and
+   wishlists.
+7. **Reports, privacy and moving in**, including a WooCommerce importer.
+
+## Shop and the WooCommerce extension
+
+The [WooCommerce extension](../woocommerce/) is not going away. Sites that run WooCommerce keep using it, with
+its page-builder elements and shopper tools. Shop is for sites that want the store, the memberships, the bookings
+and the CRM to be one system. Phase 7 brings an importer for moving a WooCommerce store across.
+
+## How this page stays current
+
+`src/data/shop-roadmap.json` lists every task with a `detect` block naming the files that make it real, and
+`scripts/gen-roadmap.mjs` checks them against the extension's source tree:
+
+```bash
+npm run roadmap:shop            # scan and rewrite the JSON
+npm run roadmap:shop -- --dry   # report only, write nothing
+npm run roadmap:shop -- --check # exit 1 if stale
+```
+
+The `detect` paths are also the agreed file layout: core classes in `includes/`, connections to other
+extensions in `includes/integrations/`, switchable modules in `modules/<module>/`, page-builder elements in
+`shortcodes/<name>/`. Phase 0 paths start with `../payments/` because they belong to the shared Payments
+extension.

@@ -1,0 +1,467 @@
+{
+  "_comment": "SOURCE OF TRUTH for the Shop roadmap rendered at /docs/extensions/shop/roadmap. Task status is maintained by `npm run roadmap:shop` (scripts/gen-roadmap.mjs) from the extension source tree. Phase 0 paths start with ../payments/ because they live in the shared Payments extension next to Shop.",
+  "extension": "shop",
+  "cloneDir": "UnysonPlus-Shop-Extension",
+  "repo": "https://github.com/UnysonPlus/UnysonPlus-Shop-Extension",
+  "milestones": [
+    {
+      "id": "s0-payments",
+      "title": "Phase 0 · One payments core for every extension",
+      "goal": "Forms and Membership each carry their own Stripe, PayPal, offline gateways and coupons. Before a store adds a third copy, they become one shared Payments extension that Shop, Membership, Forms and Bookings all use.",
+      "tasks": [
+        {
+          "id": "s0-gateway",
+          "title": "One gateway interface",
+          "detail": "The Membership and Forms gateway classes merged into one: start a payment, take it back from a return or a webhook, refund, recurring charges, pause, switch and cancel. A new gateway is written once and works everywhere.",
+          "detect": {
+            "files": [
+              "../payments/includes/class-fw-payments-gateway.php",
+              "../payments/includes/class-fw-payments-gateways.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s0-gateways",
+          "title": "Stripe, PayPal and pay later",
+          "detail": "Cards and wallets through Stripe, PayPal, and bank transfer or pay on collection, set up once in one settings screen for the whole site.",
+          "detect": {
+            "files": [
+              "../payments/gateways/class-fw-payments-gateway-stripe.php",
+              "../payments/gateways/class-fw-payments-gateway-paypal.php",
+              "../payments/gateways/class-fw-payments-gateway-offline.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s0-ledger",
+          "title": "One payments ledger with invoices and tax",
+          "detail": "Every payment and refund from every extension in one table, each one tagged with what it paid for (an order, a plan, a form entry, a booking). Numbered invoices, tax by country and the tax report come from it.",
+          "detect": {
+            "files": [
+              "../payments/includes/class-fw-payments-ledger.php",
+              "../payments/includes/class-fw-payments-invoices.php",
+              "../payments/includes/class-fw-payments-tax.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s0-coupons",
+          "title": "One coupon engine",
+          "detail": "Fixed and percentage codes with limits on uses, dates, customers and what they apply to (products, categories, plans, forms), so one code can work across the store and the memberships.",
+          "detect": {
+            "files": [
+              "../payments/includes/class-fw-payments-coupons.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s0-move",
+          "title": "Membership, Forms and Bookings move onto it",
+          "detail": "Their gateways become thin adapters on the shared core. Saved keys, coupons and payment history migrate once, and sites that already take payments keep working without being set up again.",
+          "detect": {
+            "files": [
+              "../payments/includes/class-fw-payments-migrate.php"
+            ]
+          },
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "s1-catalogue",
+      "title": "Phase 1 · The catalogue",
+      "goal": "Products that can describe almost anything a small business sells.",
+      "tasks": [
+        {
+          "id": "s1-products",
+          "title": "Products: physical, digital and services",
+          "detail": "A product post type with price, sale price and dates, SKU, weight and size, gallery, short and long description, categories and tags. Digital products carry protected files and download limits.",
+          "detect": {
+            "files": [
+              "includes/class-fw-shop-products.php",
+              "includes/class-fw-shop-installer.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s1-variants",
+          "title": "Options and variants",
+          "detail": "Size, colour and any other option, with a price, stock, SKU and image per combination, and swatches in the store.",
+          "detect": {
+            "files": [
+              "includes/class-fw-shop-variants.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s1-stock",
+          "title": "Stock",
+          "detail": "Stock per product or variant, held while a customer pays and released if they leave, low-stock alerts, backorders, and a stock history of every change and why it happened.",
+          "detect": {
+            "files": [
+              "includes/class-fw-shop-stock.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s1-fields",
+          "title": "Extra product fields from Custom Fields",
+          "detail": "Any Custom Fields group can attach to products (ingredients, materials, specifications) and show up in the product elements.",
+          "detect": {
+            "files": [
+              "includes/class-fw-shop-fields.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s1-import",
+          "title": "Import / Export",
+          "detail": "One Import / Export screen: a spreadsheet (CSV) of products and variants for people, and a full JSON file with every setting to move a store between sites. What it exports imports back unchanged.",
+          "detect": {
+            "files": [
+              "includes/class-fw-shop-import-export.php"
+            ]
+          },
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "s2-checkout",
+      "title": "Phase 2 · Cart and checkout",
+      "goal": "A customer can buy and pay, as a guest or with an account.",
+      "tasks": [
+        {
+          "id": "s2-cart",
+          "title": "The cart",
+          "detail": "A fast cart that works for guests and logged-in customers and survives a login, with quantity limits and the coupon field.",
+          "detect": {
+            "files": [
+              "includes/class-fw-shop-cart.php",
+              "includes/class-fw-shop-rest.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s2-checkout",
+          "title": "One-page checkout",
+          "detail": "Address, delivery, payment and a summary on one page, checked again on the server, paid through the shared Payments core. Guest checkout, or an account made at checkout through Membership's accounts.",
+          "detect": {
+            "files": [
+              "includes/class-fw-shop-checkout.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s2-shipping",
+          "title": "Delivery",
+          "detail": "Shipping zones by country and postcode, flat, weight-based and free-over rates, local pickup, and a hook for carrier rates later.",
+          "detect": {
+            "files": [
+              "includes/class-fw-shop-shipping.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s2-emails",
+          "title": "Order emails",
+          "detail": "Receipt, shipped, refunded and new-order alerts, sent through Mailer and designed in the CRM's email builder.",
+          "detect": {
+            "files": [
+              "includes/class-fw-shop-emails.php"
+            ]
+          },
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "s3-orders",
+      "title": "Phase 3 · Running the orders",
+      "goal": "Everything after the payment, for the owner and for the customer.",
+      "tasks": [
+        {
+          "id": "s3-admin",
+          "title": "A store admin made for owners",
+          "detail": "One clean store screen inside wp-admin: Home (today's sales and what needs doing), Orders, Products, Customers, Discounts, Gift cards, Abandoned carts, Reviews, Reports and Settings, with counts on what needs attention and links across to the CRM and email. No digging through WordPress post lists to run the shop.",
+          "detect": {
+            "files": [
+              "includes/admin/class-fw-shop-admin-app.php",
+              "static/js/shop-admin.js"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s3-orders",
+          "title": "Orders and their statuses",
+          "detail": "Orders in their own tables (not posts) with pending, paid, packed, shipped, completed, cancelled and refunded, a timeline of every change, notes, and a search-and-filter admin list.",
+          "detect": {
+            "files": [
+              "includes/class-fw-shop-orders.php",
+              "includes/admin/class-fw-shop-admin-orders.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s3-refunds",
+          "title": "Refunds, tracking and packing slips",
+          "detail": "Full or part refunds sent back through the gateway, stock put back, tracking numbers in the shipped email, and printable invoices and packing slips.",
+          "detect": {
+            "files": [
+              "includes/class-fw-shop-refunds.php",
+              "includes/class-fw-shop-documents.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s3-account",
+          "title": "My orders in the member area",
+          "detail": "Order history, downloads, addresses, reorder and invoices, shown as tabs in the member area Membership already builds, so a site has one account page for everything.",
+          "detect": {
+            "files": [
+              "includes/class-fw-shop-account.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s3-api",
+          "title": "REST API and command line",
+          "detail": "Products, orders, customers and stock over REST and WP-CLI, for apps, headless front ends and scripts.",
+          "detect": {
+            "files": [
+              "includes/class-fw-shop-cli.php"
+            ]
+          },
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "s4-design",
+      "title": "Phase 4 · Designed in the page builder",
+      "goal": "Every store page is a normal Unyson+ page: no template files to edit.",
+      "tasks": [
+        {
+          "id": "s4-elements",
+          "title": "Store elements",
+          "detail": "Product grid and carousel, single product parts (gallery, price, options, add to cart), categories, product search and filters, cart icon and mini-cart, cart and checkout, styled with Theme Settings presets.",
+          "detect": {
+            "files": [
+              "shortcodes/shop-products/config.php",
+              "shortcodes/shop-add-to-cart/config.php",
+              "shortcodes/shop-cart/config.php",
+              "shortcodes/shop-checkout/config.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s4-templates",
+          "title": "Theme Builder templates and starter pages",
+          "detail": "Product, category and search templates in the Theme Builder, and ready-made store pages in the Template Library, so a new store looks finished on the first day.",
+          "detect": {
+            "files": [
+              "includes/class-fw-shop-theme-builder.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s4-blocks",
+          "title": "Blocks and headless",
+          "detail": "The same store elements as blocks for block themes, and the REST API documented for headless front ends.",
+          "detect": {
+            "files": [
+              "includes/class-fw-shop-blocks.php"
+            ]
+          },
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "s5-connected",
+      "title": "Phase 5 · Connected to every Unyson+ extension",
+      "goal": "The reason to build a native store: one customer, one checkout and one record across the whole site.",
+      "tasks": [
+        {
+          "id": "s5-crm",
+          "title": "CRM: every customer is a contact",
+          "detail": "Customers become CRM contacts, their orders and total spend fill the CRM's Purchases panel (the purchase summaries the CRM already offers to any store), and buying, refunds and abandoned carts become events for segments, scoring and automations.",
+          "detect": {
+            "files": [
+              "includes/integrations/class-fw-shop-crm.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s5-membership",
+          "title": "Membership: products that grant plans, prices for members",
+          "detail": "A product can grant a plan or a course, members can get their own prices or discounts, and products can be for members only, all on Membership's access engine.",
+          "detect": {
+            "files": [
+              "includes/integrations/class-fw-shop-membership.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s5-bookings-forms",
+          "title": "Bookings and Forms in the same cart",
+          "detail": "A booking deposit or a room night can go in the cart with the products, and a form can add a configured product to the cart.",
+          "detect": {
+            "files": [
+              "includes/integrations/class-fw-shop-bookings.php",
+              "includes/integrations/class-fw-shop-forms.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s5-seo-insights",
+          "title": "SEO and Visitor Insights",
+          "detail": "Product structured data, product sitemaps and a product feed for shopping listings from the SEO extension. In Visitor Insights: product views, the cart-to-order funnel, and revenue by traffic source, without cookies.",
+          "detect": {
+            "files": [
+              "includes/integrations/class-fw-shop-seo.php",
+              "includes/integrations/class-fw-shop-insights.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s5-pos",
+          "title": "POS Sync store driver",
+          "detail": "Shop added as a store in POS Sync, next to the existing store drivers, so till sales and stock stay in step with the online store.",
+          "detect": {
+            "files": [
+              "../pos-sync/includes/stores/class-fw-pos-store-shop.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s5-ai",
+          "title": "AI Assistant, Chat and the AI Dev Kit",
+          "detail": "AI abilities to add products, change prices and stock, look up orders and build store pages. Chat can answer “where is my order” for a logged-in customer. The AI Dev Kit gets a store guide, so a developer can ask Claude to add a feature to the shop and have it built the Unyson+ way.",
+          "detect": {
+            "files": [
+              "includes/ai-abilities.php"
+            ]
+          },
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "s6-sell-more",
+      "title": "Phase 6 · Selling more",
+      "goal": "The extras that usually need a plugin each.",
+      "tasks": [
+        {
+          "id": "s6-recover",
+          "title": "Abandoned cart recovery",
+          "detail": "Shoppers who gave their email at checkout but did not pay, listed with their cart, value and status (open, emailed, recovered, lost), the amount won back and the recovery rate. A ready-made CRM automation sends the first reminder an hour later and a discount nudge a day later, and any reminder can also be sent by hand.",
+          "detect": {
+            "files": [
+              "modules/recovery/recovery.php",
+              "includes/admin/class-fw-shop-admin-carts.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s6-subscriptions",
+          "title": "Subscribe and save",
+          "detail": "Repeat deliveries of physical products on the shared recurring payments, with skip, pause and cancel in the member area.",
+          "detect": {
+            "files": [
+              "modules/subscriptions/subscriptions.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s6-merch",
+          "title": "Bundles, upsells and gift cards",
+          "detail": "Product bundles, upsell and cross-sell picks, order bumps at checkout, and gift cards built on Membership's gifts.",
+          "detect": {
+            "files": [
+              "modules/bundles/bundles.php",
+              "modules/gift-cards/gift-cards.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s6-shopper",
+          "title": "Reviews, wishlist and back-in-stock",
+          "detail": "Verified-buyer reviews with stars in the product schema, a wishlist, compare, and back-in-stock emails through the CRM.",
+          "detect": {
+            "files": [
+              "modules/reviews/reviews.php",
+              "modules/wishlist/wishlist.php"
+            ]
+          },
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "s7-ops",
+      "title": "Phase 7 · Reports, privacy and moving in",
+      "goal": "Run the store with confidence, and move an existing one across.",
+      "tasks": [
+        {
+          "id": "s7-reports",
+          "title": "Reports",
+          "detail": "Sales, best sellers, stock value, tax and refunds by day, month or year, with CSV export.",
+          "detect": {
+            "files": [
+              "includes/class-fw-shop-reports.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s7-privacy",
+          "title": "Privacy and security",
+          "detail": "Customer data in WordPress's personal data export and erase tools (orders kept as tax records require), and checkout protected against card testing and bots.",
+          "detect": {
+            "files": [
+              "includes/class-fw-shop-privacy.php"
+            ]
+          },
+          "status": "planned"
+        },
+        {
+          "id": "s7-woo-import",
+          "title": "Move a WooCommerce store across",
+          "detail": "Import products, variants, customers, orders and coupons from WooCommerce into Shop, with a dry run first. The WooCommerce extension stays for sites that keep running WooCommerce.",
+          "detect": {
+            "files": [
+              "includes/importers/class-fw-shop-import-woocommerce.php"
+            ]
+          },
+          "status": "planned"
+        }
+      ]
+    }
+  ]
+}

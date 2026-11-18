@@ -187,3 +187,8 @@ admin-skin:
   label: Admin Skin
   permalink: /admin-skin
   description: "The Admin Skin extension — skins, the background canvas, and how wp-admin is restyled without breaking other plugins' screens"
+
+ecommerce:
+  label: E-commerce
+  permalink: /ecommerce
+  description: "Selling on Unyson+ sites: the native Shop, the shared payments core, and the WooCommerce integration"

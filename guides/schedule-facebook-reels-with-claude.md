@@ -1,5 +1,5 @@
 ---
-title: "How to upload and schedule Facebook Reels with Claude (free, with Meta's own API)"
+title: "How to upload and schedule Facebook and Instagram Reels with Claude (free, with Meta's own API)"
 sidebar_label: "Schedule Facebook Reels with Claude"
 description: "Let Claude upload and schedule Reels on your Facebook Page with Meta's own API: no third-party posting service. A step-by-step setup of the Meta app, its permissions and the token, the three calls that publish a reel, and the mistakes we made on the way."
 keywords:
@@ -11,6 +11,8 @@ keywords:
   - meta graph api reels
   - schedule reels free
   - facebook page video api
+  - instagram reels api
+  - post instagram reels with ai
 ---
 
 # How to upload and schedule Facebook Reels with Claude
@@ -27,8 +29,8 @@ day we did it for the Unyson+ Page, with every wrong turn.
 This is the companion to [Upload to YouTube with Claude](./upload-youtube-videos-with-claude.md).
 
 :::note Instagram and Threads
-The same Meta app can also post to Instagram and Threads. Those two sections will be added here once we have them
-working: this page only describes steps we have run ourselves.
+The same Meta app also posts to Instagram: see [Instagram reels with the same app](#instagram-reels-with-the-same-app)
+below. Threads will be added once we have it working: this page only describes steps we have run ourselves.
 :::
 
 ## What you get
@@ -195,6 +197,73 @@ GET https://graph.facebook.com/v27.0/VIDEO_ID
 Ours came back as processed, 48 seconds long, `published: false`, with the scheduled time we asked for and its
 future address. You can also see and edit the reel in **Meta Business Suite**, under scheduled content.
 
+## Instagram reels with the same app
+
+The same app and the same token post reels to Instagram. Two things have to be true first, and neither is obvious.
+
+**1. The Instagram account must be a professional account.** In Instagram, open **Settings › Profile type and tools
+› Switch to professional account** and choose **Business** (Creator also works). Having an account is not enough: a
+personal account cannot be posted to through the API.
+
+**2. It must be connected to your Facebook Page.** On Facebook, switch into the Page, then open **Settings & privacy
+› Settings › Linked accounts › Instagram › Connect account**. Facebook confirms with "Instagram connected".
+
+Add two more permissions in the app's Instagram use case and in the Graph API Explorer: `instagram_basic` and
+`instagram_content_publish`. If your token was made with them already, you do not need a new one after linking: ours
+kept working.
+
+Ask Claude to confirm the link before anything else:
+
+```text
+GET https://graph.facebook.com/v27.0/PAGE_ID?fields=instagram_business_account{id,username}&access_token=PAGE_TOKEN
+```
+
+That returns the Instagram account's id, which every call below uses. An empty answer means step 1 or 2 is not done.
+
+### Upload, then publish
+
+A reel is posted in two halves. The first is private; the second makes it public.
+
+**Upload.** Create a container, send the file to the address it gives back, and wait until Instagram has processed it:
+
+```text
+POST https://graph.facebook.com/v27.0/IG_ID/media
+     media_type=REELS, upload_type=resumable, caption=<the caption>, thumb_offset=<cover frame, in milliseconds>,
+     access_token=PAGE_TOKEN
+     → { "id": CONTAINER_ID, "uri": "https://rupload.facebook.com/ig-api-upload/..." }
+
+POST {uri}        (the raw bytes of the MP4)
+Authorization: OAuth PAGE_TOKEN
+offset: 0
+file_size: <the file's size in bytes>
+
+GET https://graph.facebook.com/v27.0/CONTAINER_ID?fields=status_code&access_token=PAGE_TOKEN
+     → repeat every few seconds until status_code is FINISHED
+```
+
+**Publish.** One call, and the reel is public at once:
+
+```text
+POST https://graph.facebook.com/v27.0/IG_ID/media_publish
+     creation_id=CONTAINER_ID, access_token=PAGE_TOKEN
+```
+
+### What is different from Facebook
+
+| | Facebook Page | Instagram |
+|---|---|---|
+| Scheduling | Yes, 10 minutes to 29 days ahead | **None in the API.** The reel goes public when you publish |
+| Title | A title and a caption | A caption only |
+| Cover | Set afterwards | `thumb_offset`: the frame at that many milliseconds |
+| Daily limit | 30 reels | 100 posts |
+
+Because Instagram cannot schedule, there are two ways to time a reel: publish it when you are ready, or have a
+scheduled task on your computer run the publish call at the chosen time (the computer must be on). An uploaded
+container that is not published is kept for 24 hours.
+
+Our first reel went out this way, and we opened it in a browser that was not signed in: it was public, with its
+caption, even though the app is still marked "Unpublished".
+
 ## The mistakes we made, so you do not have to
 
 | What happened | Why | What to do |
@@ -205,6 +274,7 @@ future address. You can also see and edit the reel in **Meta Business Suite**, u
 | The token reached every Page we manage | We approved all of them in the Facebook window | Fine, but tell Claude the one Page id to post to, and keep it in the script |
 | No Instagram account showed up | None was linked to the Page | Link a Business or Creator Instagram account to the Page, then make a new token |
 | The scheduled time came back in a different format | Sent as a Unix number, returned as a date and time | Compare the moment, not the text |
+| The first Instagram upload failed with no message | Unknown: the same call worked a minute later | Try once more before changing anything, and have the script print the full error |
 
 ## Limits, and one thing we have not confirmed
 
@@ -212,9 +282,9 @@ future address. You can also see and edit the reel in **Meta Business Suite**, u
 - **Scheduling reaches 29 days ahead**, and no closer than 10 minutes.
 - **The long-lived token lasted 60 days for us.** When a call starts failing with an expired token, make a new one in
   the Graph API Explorer (step 3).
-- **Not confirmed yet: whether a new app must be published before its posts are public.** Our app is still marked
-  "Unpublished", and our first reel is scheduled, not live. We will update this page when it goes out and we have
-  looked at it while signed out. Until then, check your own first reel that way.
+- **An unpublished app can still post publicly, on Instagram at least.** Our app is marked "Unpublished", and the
+  Instagram reel it posted was visible to a signed-out visitor. Our first Facebook reel is still scheduled, not live,
+  so the same is not confirmed for a Page yet: check your own first reel while signed out.
 
 ## Where the reels come from
 

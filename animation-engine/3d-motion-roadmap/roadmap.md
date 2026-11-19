@@ -332,7 +332,7 @@ so no editor code reaches the page. **The full plan, architecture and data model
   Animation Engine ease picker, from one shared eases file. *Quick win; first.*
 - **5b · Bursts.** ✅ *Shipped in Animation Engine 1.5.23 (November 2026): a Bursts group in the Confetti card and Do → Burst from it in Interactions ([docs](../engines/decorative/confetti/index.md#bursts)).* A **Burst** step and button effect (circles, sparks, lines, confetti from an element on click or
   hover), growing the Confetti module. *Quick win.*
-- **5c · Connect.** Kinetic Scenes *Page mode*, the Live Editor's **Animate**, element picking both ways.
+- **5c · Connect.** ✅ *Shipped (Live Editor 0.3.20, Kinetic Scenes 0.1.66): **Animate** in the Live Editor opens Kinetic Scenes in page mode with a Page panel of the page's elements and their motion, and selection in both directions ([docs](/extensions/live-editor#animate-kinetic-scenes-beside-the-page-beta)).* Kinetic Scenes *Page mode*, the Live Editor's **Animate**, element picking both ways.
 - **5d · Author on the page.** Tracks, keyframes, curves, triggers; play and scrub on the canvas.
 - **5e · Save and ship.** Page-timeline storage, the visitor runtime (under 10 KB gzipped, only on pages that use it),
   breakpoints, reduced motion, Import / Export, docs and a demo.
@@ -384,7 +384,7 @@ Most of it improves **Interactions** directly, so every existing Interaction get
 | **2** | Parametric scroll-camera 3D scenes (WebGL Object presets) | Very high | ✅ Tunnel · Gallery Dolly · Product Orbit · WebGL Motion Gallery designs |
 | **3** | Rive + WebGL image transitions + particle presets | Medium–High | ✅ Shipped (Rive · image transitions · particle presets) |
 | **4** | Interactions: targets, live preview, states, a timeline, reuse and breakpoints | Very high | ✅ Shipped (I1–I5) |
-| **5** | [Animation Creator](./animation-creator): keyframe any page element in Kinetic Scenes, springs, bursts | Very high | 🚧 5a–5b shipped; 5c–5h planned |
+| **5** | [Animation Creator](./animation-creator): keyframe any page element in Kinetic Scenes, springs, bursts | Very high | 🚧 5a–5c shipped; 5d–5h planned |
 | **6** | Last gaps with Framer / Webflow: more Interaction properties, Lottie / Rive steps, Set, layout animation, shared-element transitions, mouse-move, saved presets | High | ✅ Shipped (6a–6g) |
 
 ## What we build vs. what stays curated {#build-vs-curated}

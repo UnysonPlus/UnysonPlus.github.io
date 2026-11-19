@@ -1573,9 +1573,46 @@
           "detail": "Four effects that change the style of what is already in a scene, with no new drawings: Silhouette (one flat ink, the eyes and mouth left light), Pixel art (square pixels that stay), Line drawing (only the outlines, white for a blueprint) and Low poly (a picture or footage rebuilt from flat triangles). The first three work on any layer, so a mascot keeps talking, blinking and changing pose inside them. With them come two styles, Ink silhouette and 90s low poly (51 in all). Shipped in 0.1.64 with player 0.0.71. The Unyson+ Kinetic Scene element in WordPress plays them from Animation Engine 1.5.20. See [Restyle effects](/kinetic-scenes/restyle-effects)."
         }
       ]
+    },
+    {
+      "id": "p29-pages",
+      "title": "Phase 29 · Animate your pages",
+      "goal": "Kinetic Scenes becomes the motion editor for Unyson+ pages too: the Animation Creator. Open a page from the Live Editor, keyframe its elements in the timeline, preview on the real page and ship it as light native motion.",
+      "tasks": [
+        {
+          "id": "p29-connect",
+          "title": "Page mode",
+          "detail": "Animate in the Live Editor opens the Studio beside the page: a Page panel lists its elements and the motion they already have, and selection goes both ways.",
+          "status": "done"
+        },
+        {
+          "id": "p29-author",
+          "title": "Keyframe page elements",
+          "detail": "Picked elements become timeline tracks: keyframes, curves and triggers, played on the real page through the visitor runtime.",
+          "status": "planned"
+        },
+        {
+          "id": "p29-ship",
+          "title": "Save and ship",
+          "detail": "Page timelines stored on the page, a small runtime, devices, reduced motion and Import / Export.",
+          "status": "planned"
+        },
+        {
+          "id": "p29-scroll",
+          "title": "Scroll timelines",
+          "detail": "A page timeline driven by the scroll position, pinned or not.",
+          "status": "planned"
+        },
+        {
+          "id": "p29-presets",
+          "title": "Presets and AI for pages",
+          "detail": "Motion presets as starting points for page timelines; the AI assist and agent tools author them.",
+          "status": "planned"
+        }
+      ]
     }
   ],
-  "extensionVersion": "0.1.64",
+  "extensionVersion": "0.1.66",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

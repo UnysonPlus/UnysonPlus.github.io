@@ -116,6 +116,30 @@ When the selected element has [Interactions](/animation-engine/interactions), an
 
 The timeline follows the selection: select another element with Interactions and it shows that one's. State changes aren't previewed on the canvas; use the state's **Show this state on the canvas** button, or **Play**, for those. A timeline change is visible in the element's options the next time you open them.
 
+**Save as preset** in the timeline's header saves the Interaction under a name, to reuse on any element
+(**Interactions → A saved Interaction**). Saving again under the same name changes it everywhere it is used. See
+[Saved Interactions](/animation-engine/interactions#saved-interactions).
+
+## Animate: Kinetic Scenes beside the page (beta)
+
+**Animate** (right of the toolbar) opens [Kinetic Scenes](/kinetic-scenes) in a new window, in **page mode**, connected
+to the page you are editing. It is the first part of the
+[Animation Creator](/animation-engine/3d-motion-roadmap/animation-creator): one place to make page motion visually.
+
+- Kinetic Scenes shows a **Page panel** with every element of the page, in order and indented by depth, with the
+  start of its text and the **motion it already has**, named after its Animations-tab cards (*Interactions: hover*,
+  *Entrance: fadeInUp*, *Layout Animation*…). Find an element by name, text or motion, or show only those with motion.
+- **Pick an element in the Page panel** and it is selected (and scrolled into view) on the canvas. **Select one on
+  the canvas** and the Page panel highlights it.
+- Every edit you make in the Live Editor is sent across, so the list stays current.
+- The button reads **Connected** while Kinetic Scenes is open; click it to bring that window forward. Closing either
+  window ends the link.
+- Keyframing the page's elements in the Kinetic Scenes timeline is the next step of the Animation Creator; for now
+  the connection shows and picks.
+
+The two windows only talk to each other: the Live Editor listens to and writes to the Kinetic Scenes window it opened,
+at Kinetic Scenes' own address, and nothing else. If your browser blocks the new window, allow pop-ups for your site.
+
 ## Show a state on the canvas
 
 The Animation Engine's [States](/animation-engine/states) card gives an element named looks (Open, Active, Hidden…). In the Live Editor, each state has a **Show this state on the canvas** button. The options window steps aside, the element is centred, and it animates into the state using the values you have typed, even before saving. **Play again** repeats it, and **Back to the options** (or Esc) puts the element back as it was and brings the options window back.

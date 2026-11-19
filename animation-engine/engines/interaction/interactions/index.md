@@ -38,7 +38,46 @@ An element can have **two** Interactions, for example a hover *and* a click. It 
 | **On page load** | As soon as the page has loaded. | Plays once. |
 | **In view** | A fifth of the element has scrolled into view. | **When it leaves the screen:** play it backwards (so it plays again next time), or keep the end state. |
 | **Scrolled past** | The element's bottom has scrolled above a line *N* px from the top of the screen (80 by default). | Plays backwards when you scroll back above the line. |
+| **A saved Interaction** | Plays an Interaction saved from the Live Editor, with its own trigger: see [Saved Interactions](#saved-interactions). | As that Interaction's trigger. |
 | **Mouse move** | The pointer moves over the element, or anywhere on the page. The steps follow the pointer instead of playing once: see [Mouse move](#mouse-move). | Glides back to its own look when the pointer leaves, or stays. |
+
+## Repeat and back and forth
+
+On **On hover**, **On click**, **On page load** and **In view**, two more options shape how the steps play:
+
+| Option | Default | What it does |
+| --- | --- | --- |
+| **Repeat** | Play once | **2 times**, **3 times**, **5 times**, or **Forever (while it is on)**: while hovered, until the second click, while in view. |
+| **Back and forth** | No | Each time plays forwards and then back, so it ends where it started (a heartbeat, a bell's swing). Without it, each time starts again from the beginning. |
+
+Hovering out, clicking again or scrolling away stops the repeats and plays it back as usual.
+
+**→ [See it on the Interactions demo page](https://demos.unysonplus.com/animation-engine/interactions/)** (scroll to
+*Repeat · Back and forth*): a heart that beats while hovered, a bell that swings five times when clicked.
+
+## Saved Interactions
+
+Make an Interaction once and use it on any element, kept in step everywhere:
+
+1. **Save it:** in the [Live Editor](/extensions/live-editor), select an element with the Interaction, open its
+   **Interaction timeline** and click **Save as preset**, then give it a name.
+2. **Use it:** on any element, **Animations → Add Animation → Interactions → A saved Interaction**, and pick it from
+   **Saved Interaction**.
+3. **Change it:** edit the Interaction on any element and save it again **under the same name**: every element
+   that uses it changes too.
+
+**Theme Settings → Site-wide UX → Interactions → Saved Interactions** lists them (name, trigger, date) with a
+**Delete** link. An element whose saved Interaction was deleted stops playing it.
+
+### Import / Export
+
+Move saved Interactions between sites from the same box:
+
+- **Export (JSON, every setting):** the whole library in one file.
+- **Export (CSV spreadsheet):** one row per saved Interaction: its name, trigger and number of steps, and its full
+  settings as JSON in the last column.
+- **Import:** choose either file and click **Import**. Both import back unchanged; a saved Interaction with the same
+  name is replaced.
 
 ## Mouse move
 

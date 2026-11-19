@@ -364,7 +364,7 @@ Most of it improves **Interactions** directly, so every existing Interaction get
   supported and an ordinary page transition elsewhere. Grows the Page Transitions module.
 - **6f · Mouse-move Interactions.** ✅ *Shipped in Animation Engine 1.5.26 (November 2026): the Mouse move trigger ([docs](../engines/interaction/interactions/index.md#mouse-move)).* A scrubbed *mouse move* trigger (over an element or the whole window) that moves
   any target by the pointer's position, the way scroll scrubs, with smoothing.
-- **6g · Save and share Interactions.** *Save as preset* for any Interaction, a library of your presets, repeat / yoyo
+- **6g · Save and share Interactions.** ✅ *Shipped in Animation Engine 1.5.27 (November 2026): Repeat and Back and forth, Saved Interactions (Live Editor → Save as preset; Interactions → A saved Interaction) with Import / Export ([docs](../engines/interaction/interactions/index.md#saved-interactions)).* *Save as preset* for any Interaction, a library of your presets, repeat / yoyo
   / loop on a sequence, and an **Import / Export** screen (JSON) to move them between sites.
 
 ### Build order
@@ -385,7 +385,7 @@ Most of it improves **Interactions** directly, so every existing Interaction get
 | **3** | Rive + WebGL image transitions + particle presets | Medium–High | ✅ Shipped (Rive · image transitions · particle presets) |
 | **4** | Interactions: targets, live preview, states, a timeline, reuse and breakpoints | Very high | ✅ Shipped (I1–I5) |
 | **5** | [Animation Creator](./animation-creator): keyframe any page element in Kinetic Scenes, springs, bursts | Very high | 🚧 5a–5b shipped; 5c–5h planned |
-| **6** | Last gaps with Framer / Webflow: more Interaction properties, Lottie / Rive steps, Set, layout animation, shared-element transitions, mouse-move, saved presets | High | 🚧 6a–6f shipped; 6g planned |
+| **6** | Last gaps with Framer / Webflow: more Interaction properties, Lottie / Rive steps, Set, layout animation, shared-element transitions, mouse-move, saved presets | High | ✅ Shipped (6a–6g) |
 
 ## What we build vs. what stays curated {#build-vs-curated}
 

@@ -55,7 +55,7 @@ These two options have several visible variants worth a screenshot each. Suggest
 | **Initially Open** | First Item, None (All Closed), All Open |
 | **Collapsible** | On/Off |
 | **Multiple Open** | On/Off |
-| **URL Hash Deep-Linking** | On/Off |
+| **URL Hash Deep-Linking** | On/Off — **off by default**. When on, opening an item writes a `#…` hash into the address bar and a link to that hash auto-opens the item. Leave it off to keep the page URL clean. |
 | **Show Expand / Collapse All Buttons** | On/Off |
 
 ## Styling

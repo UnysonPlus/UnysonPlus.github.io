@@ -73,7 +73,7 @@ Each trigger plays up to **three steps** (Step 1, Step 2, Step 3). Set a later s
 | Option | What it does |
 | --- | --- |
 | **Animate** | The step's target: **This element**, **Elements inside it that match…**, or **Elements on the page that match…** |
-| **Do** | **Animate it with the values below** (the default), or switch the target's [state](./states.md): **Put it in a state**, **Take it out of a state** or **Toggle a state**, with the state's name in **State**. Or act instantly: **Set something instantly**, **Control its Lottie animation**, **Control its Rive animation** (see [Set, Lottie and Rive steps](#set-lottie-and-rive-steps)). |
+| **Do** | **Animate it with the values below** (the default), or switch the target's [state](./states.md): **Put it in a state**, **Take it out of a state** or **Toggle a state**, with the state's name in **State**. Or act instantly: **Set something instantly**, **Control its Lottie animation**, **Control its Rive animation** (see [Set, Lottie and Rive steps](#set-lottie-and-rive-steps)), or **Burst from it** (see [Burst steps](#burst-steps)). |
 | **That match** | The CSS selector for the target: a CSS ID (`#promo`), a class (`.card-arrow`) or a tag (`img`). With *Inside* and nothing typed, the element's direct children are animated. |
 | **Direction** | **To these values** moves the target from how it looks now to the values. **From these values** starts it at the values and brings it back to how it looks now, which makes a reveal. Before the trigger, a *From* target waits at its start values. |
 | **Move X / Move Y** | Moves it, in pixels. |
@@ -117,6 +117,18 @@ input goes back to the value it had, and a trigger does nothing (a trigger has n
 
 Lottie and Rive files load after the page, so a step that fires before its file is ready waits for it (up to about
 five seconds). In the [Interaction timeline](/extensions/live-editor), these steps show as markers, like state steps.
+
+## Burst steps
+
+**Do → Burst from it** pops a short burst from the centre of the target at its moment in the sequence: **Ring,
+sparks and lines**, **Ring**, **Sparks**, **Lines** or a **Confetti pop**, with **Burst rays / sparks**, **Burst size**
+and an optional **Burst colour** (empty = a mix of brand colours). It plays for about 0.6 s. Played backwards there is
+nothing to undo, so a hover burst fires on the way in only.
+
+Pair it with other steps: Step 1 scales a button to 0.92 for 0.12 s, Step 2 (after it) bursts a confetti pop, and the
+button feels pressed and rewarded. The same bursts exist as a stand-alone button effect in the
+[Confetti](/animation-engine/confetti#bursts) card. The Confetti module draws them, so if Confetti is switched off in
+Theme Settings → Site-wide UX, Burst steps do nothing.
 
 ## Easing and springs
 

@@ -330,7 +330,7 @@ so no editor code reaches the page. **The full plan, architecture and data model
 
 - **5a · Springs everywhere.** ✅ *Shipped in Animation Engine 1.5.21 (November 2026): the shared curve picker in Interactions, States and Scroll Keyframes, and the Motion design + Spring curves in Scroll Motion's Easing list ([docs](../engines/interaction/interactions/index.md#easing-and-springs)).* The Kinetic Scenes named curves, springs included, and a cubic-bezier field in every
   Animation Engine ease picker, from one shared eases file. *Quick win; first.*
-- **5b · Bursts.** A **Burst** step and button effect (circles, sparks, lines, confetti from an element on click or
+- **5b · Bursts.** ✅ *Shipped in Animation Engine 1.5.23 (November 2026): a Bursts group in the Confetti card and Do → Burst from it in Interactions ([docs](../engines/decorative/confetti/index.md#bursts)).* A **Burst** step and button effect (circles, sparks, lines, confetti from an element on click or
   hover), growing the Confetti module. *Quick win.*
 - **5c · Connect.** Kinetic Scenes *Page mode*, the Live Editor's **Animate**, element picking both ways.
 - **5d · Author on the page.** Tracks, keyframes, curves, triggers; play and scrub on the canvas.
@@ -384,7 +384,7 @@ Most of it improves **Interactions** directly, so every existing Interaction get
 | **2** | Parametric scroll-camera 3D scenes (WebGL Object presets) | Very high | ✅ Tunnel · Gallery Dolly · Product Orbit · WebGL Motion Gallery designs |
 | **3** | Rive + WebGL image transitions + particle presets | Medium–High | ✅ Shipped (Rive · image transitions · particle presets) |
 | **4** | Interactions: targets, live preview, states, a timeline, reuse and breakpoints | Very high | ✅ Shipped (I1–I5) |
-| **5** | [Animation Creator](./animation-creator): keyframe any page element in Kinetic Scenes, springs, bursts | Very high | 🚧 5a shipped; 5b–5h planned |
+| **5** | [Animation Creator](./animation-creator): keyframe any page element in Kinetic Scenes, springs, bursts | Very high | 🚧 5a–5b shipped; 5c–5h planned |
 | **6** | Last gaps with Framer / Webflow: more Interaction properties, Lottie / Rive steps, Set, layout animation, shared-element transitions, mouse-move, saved presets | High | 🚧 6a–6c shipped; 6d–6g planned |
 
 ## What we build vs. what stays curated {#build-vs-curated}

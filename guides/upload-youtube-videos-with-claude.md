@@ -191,6 +191,11 @@ once, and a mistake in a title is easier to fix before anyone sees it.
 - **The tool has full control of the channel**, because adding subtitles needs YouTube's broadest permission. Use
   it on your own computer, with your own Google project.
 
+## The same reel on Facebook
+
+The companion guide, [Schedule Facebook Reels with Claude](./schedule-facebook-reels-with-claude.md), sets up the same
+thing for a Facebook Page with Meta's own API, so one message can schedule a reel in both places.
+
 ## Where the videos come from
 
 We make ours in [Kinetic Scenes](/kinetic-scenes), the free motion-graphics studio that is part of Unyson+: Claude

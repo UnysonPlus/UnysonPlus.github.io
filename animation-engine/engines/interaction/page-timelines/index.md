@@ -112,5 +112,14 @@ yoyo, runs_on, element, element_name, track_curve, t, x, y, scale, rotate, opaci
 The runtime is `animation-engine/modules/page-timelines/static/js/upw-timeline.js` (`window.upwTimeline`: `load`,
 `seek`, `play`, `arm`, `clear`), and the server side is `page-timelines.php`, where `upw_page_timelines_get( $post_id )`,
 `upw_page_timelines_save( $post_id, $list )` and `upw_page_timelines_clean( $list )` read, store and check the data.
+**REST API:** the timelines are the page's `meta._upw_page_timelines` field on `/wp-json/wp/v2/pages/<id>` (and
+posts), as a JSON string. Anyone can read it (the same data is printed on the page); writing needs a user who can edit
+the page (an application password works), and every write is checked like *Save to page*: unknown fields are dropped
+and values kept in range. An empty string or `[]` removes them.
+
+```bash
+curl -X POST https://example.com/wp-json/wp/v2/pages/123   -u 'editor:APPLICATION PASSWORD' -H 'Content-Type: application/json'   -d '{"meta":{"_upw_page_timelines":"[{\"id\":\"tl-1\",\"name\":\"Intro\",\"duration\":1,\"trigger\":{\"type\":\"load\"},\"tracks\":[{\"target\":\"<item key>\",\"frames\":[{\"t\":0,\"y\":30,\"opacity\":0},{\"t\":0.6,\"y\":0,\"opacity\":1,\"e\":\"cubic-bezier(.22,1,.36,1)\"}]}]}]"}}'
+```
+
 The data shape and the messages between Kinetic Scenes and the Live Editor are on the
 [Live Editor page](/extensions/live-editor#page-timelines-beta).

@@ -31,9 +31,23 @@
           "status": "done"
         },
         {
+          "id": "ts1-two-sites",
+          "title": "www sells, build shows",
+          "detail": "www.unysonplus.com is the shop (WooCommerce cart, checkout, PayPal / Stripe, accounts, orders, kit downloads in My Account); build.unysonplus.com is the storefront (catalog, filters, kit pages, live preview frames). The storefront reads products and prices from www through WooCommerce's public Store API, and Buy opens www's cart with the kit added. WooCommerce scripts stay off www's normal pages and www's product pages stay out of search, so the storefront pages are the ones that rank.",
+          "pin": true,
+          "status": "done"
+        },
+        {
+          "id": "ts1-previews",
+          "title": "Live previews on demos subsites",
+          "detail": "Each kit imported with Starter Sites onto its own demos.unysonplus.com subsite (e.g. /kit-cafe/), kept out of search, with a slim \"Preview: <kit> · price · Buy\" bar; forms say \"this is a preview\" instead of sending. The storefront shows them in desktop and phone frames.",
+          "pin": true,
+          "status": "done"
+        },
+        {
           "id": "ts1-name",
-          "title": "Name and address",
-          "detail": "The store at build.unysonplus.com; the product name and where live previews are hosted to confirm.",
+          "title": "Name, prices and payments",
+          "detail": "Still to settle: the product name, prices, Stripe and/or PayPal, which three kits are free, the photo budget, and whether build.unysonplus.com is its own WordPress install (suggested: built on localhost first, then moved with Site Migration).",
           "pin": true,
           "status": "planned"
         }
@@ -141,34 +155,48 @@
     },
     {
       "id": "ts3-store",
-      "title": "Phase 3 · The store at build.unysonplus.com",
-      "goal": "A storefront built on Unyson+ and WooCommerce: browse, preview, buy a kit once, download it forever. No license system, no subscriptions.",
+      "title": "Phase 3 · The store: storefront at build.unysonplus.com, shop at www.unysonplus.com",
+      "goal": "Browse and preview on build.unysonplus.com, buy once and download forever on www.unysonplus.com. One shop, one source of truth for products and prices; no license system, no subscriptions.",
       "tasks": [
+        {
+          "id": "ts3-shop",
+          "title": "Shop set-up on www",
+          "detail": "Review the WooCommerce set-up already on www.unysonplus.com (Shop, Cart, Checkout, My Account) and the Membership checkout (/pay/) beside it; load WooCommerce scripts only on shop pages; keep product pages out of search.",
+          "pin": true,
+          "status": "planned"
+        },
         {
           "id": "ts3-catalog",
           "title": "Template catalog and live previews",
-          "detail": "Each kit a WooCommerce downloadable product with its fields (type, pages, features used, preview link), a gallery with filters (business type, style, starter site / landing page, free), and a page per kit with screenshots and a live desktop / phone preview.",
+          "detail": "Each kit a WooCommerce downloadable product on www with its fields (type, pages, features used, preview link). On build.unysonplus.com: a gallery with filters (business type, style, starter site / landing page, free) and a page per kit with screenshots and desktop / phone preview frames, all read from www's Store API on the server and cached.",
           "pin": true,
           "status": "planned"
         },
         {
           "id": "ts3-checkout",
           "title": "Cart and checkout",
-          "detail": "WooCommerce cart and checkout with PayPal / Stripe, coupons, tax and invoices; free kits as free products.",
+          "detail": "Buy links to www's cart with the kit added; WooCommerce checkout with PayPal / Stripe, coupons, tax and invoices; free kits as free products.",
           "pin": true,
           "status": "planned"
         },
         {
           "id": "ts3-downloads",
           "title": "Downloads and update emails",
-          "detail": "Kit files as WooCommerce downloads with no limit or expiry, in My Account and the order email; replacing a file gives every past buyer the new version, and buyers are emailed when a kit they own is updated.",
+          "detail": "Kit files as WooCommerce downloads on www with no limit or expiry, in My Account and the order email; replacing a file gives every past buyer the new version, and buyers are emailed when a kit they own is updated.",
+          "pin": true,
+          "status": "planned"
+        },
+        {
+          "id": "ts3-previews",
+          "title": "Preview subsites",
+          "detail": "Each kit imported with Starter Sites on its own demos.unysonplus.com subsite: noindex, the preview bar with the price and Buy, forms that answer \"this is a preview\".",
           "pin": true,
           "status": "planned"
         },
         {
           "id": "ts3-pages",
           "title": "Store pages",
-          "detail": "Home, Starter sites, Landing pages, FAQ, My Account, Help, terms, refunds and privacy.",
+          "detail": "Storefront: Home, Starter sites, Landing pages, FAQ, Help. Shop (www): My Account, terms, refunds and privacy.",
           "pin": true,
           "status": "planned"
         }

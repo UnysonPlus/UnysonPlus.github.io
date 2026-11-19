@@ -4,7 +4,7 @@ title: "Why sell landing page templates instead of prompts?"
 authors: [jon]
 tags: [extensions, architecture]
 date: 2026-11-18
-description: "Looking at prompt libraries for AI site builders as a paid product, we chose to sell Unyson+ starter sites and landing page templates instead, bought once and downloaded from build.unysonplus.com, imported with a free Starter Sites import and personalised with the AI Assistant. No license key in the plugin."
+description: "Looking at prompt libraries for AI site builders as a paid product, we chose to sell Unyson+ starter sites and landing page templates instead, shown on build.unysonplus.com and bought once on www.unysonplus.com's WooCommerce shop, imported with a free Starter Sites import and personalised with the AI Assistant. No license key in the plugin."
 ---
 
 ## The question
@@ -89,5 +89,25 @@ freelancers and agencies comes later, only if they ask for it.
 That also changes the store's tool: per-item digital sales with a cart, downloads in My Account and the
 order email, coupons and tax are what **WooCommerce** does, through the Unyson+ WooCommerce extension.
 The Membership extension, the right tool for plans and subscriptions, is no longer needed for the store.
+
+## Update: www.unysonplus.com sells, build.unysonplus.com shows
+
+Then where the selling happens. www.unysonplus.com already runs WooCommerce (Shop, Cart, Checkout, My
+Account) beside the Membership checkout, so it became **the shop**: cart, checkout with PayPal / Stripe,
+customer accounts, orders and kit downloads in My Account. build.unysonplus.com became **the storefront**:
+the catalog, filters, a page per kit and live preview frames, with no cart of its own.
+
+Options were a full WooCommerce shop on build.unysonplus.com (two shops, two sets of accounts and payment
+set-ups once the done-for-you video service is sold too), or everything on www (the catalog would crowd the
+marketing site). The split keeps **one shop and one source of truth**: the storefront reads every product
+and price from www through WooCommerce's public Store API, on the server and cached, and its "Buy" opens
+www's cart with the kit added. Two rules keep www as it is: WooCommerce's scripts load only on the shop
+pages, and www's product pages stay out of search, so the storefront's kit pages are the ones that rank.
+The same shop can sell the video service later with no new checkout.
+
+Live previews are settled with it: each kit is imported with Starter Sites onto its own subsite of the
+demos.unysonplus.com network (e.g. `/kit-cafe/`), kept out of search, with a slim "Preview: kit · price ·
+Buy" bar, and forms that say "this is a preview" instead of sending. Importing each kit there also tests the
+package.
 
 *Status: Accepted, as updated. Plan: Template Library → Roadmap.*

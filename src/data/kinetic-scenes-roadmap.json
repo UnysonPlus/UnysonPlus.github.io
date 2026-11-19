@@ -1609,7 +1609,8 @@
           "detail": "Motion presets as starting points for page timelines; the AI assist and agent tools author them.",
           "status": "planned"
         }
-      ]
+      ],
+      "detail": "Changed course on 19 November 2026: page timelines are now edited in an Animate workspace inside the Unyson+ Live Editor, and Kinetic Scenes’ page mode is being retired."
     }
   ],
   "extensionVersion": "0.1.66",

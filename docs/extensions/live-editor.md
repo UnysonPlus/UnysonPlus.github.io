@@ -141,6 +141,13 @@ at Kinetic Scenes' own address, and nothing else. If your browser blocks the new
 
 ## Page timelines (beta)
 
+:::info Changing soon
+Page timelines are moving into an **Animate workspace inside the Live Editor**, so you no longer work in a second
+Kinetic Scenes window ([the plan](/animation-engine/3d-motion-roadmap/animation-creator)). Timelines you save now keep
+working and open there.
+:::
+
+
 A **page timeline** moves elements of the real page: a hero heading rising in, cards following one after another,
 an icon that swings while the pointer is over its box. You make it in Kinetic Scenes' own timeline, with its keyframe
 and curve editors, and the **canvas plays it as you work**, through the same small runtime visitors get.

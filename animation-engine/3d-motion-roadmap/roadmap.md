@@ -321,12 +321,11 @@ preview motion.
 
 ## Phase 5 — Animation Creator (planned) {#phase-5}
 
-A visual keyframe editor for **any element on a real page**, built by **reusing Kinetic Scenes**: open a page in the
-Live Editor, choose **Animate**, and Kinetic Scenes opens beside it, connected to the page. Each element you pick
-becomes a track; keyframes, curves (springs included) and triggers (load, in view, scroll, hover, click) play on the
-real page as you edit, and save as a light native timeline that every visitor gets. Kinetic Scenes stays its own app,
-so no editor code reaches the page. **The full plan, architecture and data model:
-[Animation Creator](./animation-creator).** Why Kinetic Scenes: [the decision](/decisions/animation-creator-reuses-kinetic-scenes).
+In the Live Editor, switch to **Animate**: the page stays in the middle, a timeline docks under it, and the side
+panel shows only the tools for what you select. Each element (or class) you animate becomes a track; keyframes,
+curves (springs included) and triggers play on the real page as you scrub, and save as a light native timeline every
+visitor gets. **The full plan: [Animation Creator](./animation-creator).** Why it is in the Live Editor:
+[the decision](/decisions/page-timelines-in-the-live-editor).
 
 - **5a · Springs everywhere.** ✅ *Shipped in Animation Engine 1.5.21 (November 2026): the shared curve picker in Interactions, States and Scroll Keyframes, and the Motion design + Spring curves in Scroll Motion's Easing list ([docs](../engines/interaction/interactions/index.md#easing-and-springs)).* The Kinetic Scenes named curves, springs included, and a cubic-bezier field in every
   Animation Engine ease picker, from one shared eases file. *Quick win; first.*
@@ -336,9 +335,20 @@ so no editor code reaches the page. **The full plan, architecture and data model
 - **5d · Author on the page.** ✅ *Shipped (Live Editor 0.3.21, Animation Engine 1.5.28, Kinetic Scenes 0.1.67): page timelines in Kinetic Scenes page mode, played and scrubbed on the canvas by the visitor runtime ([docs](/extensions/live-editor#page-timelines-beta)).* Tracks, keyframes, curves, triggers; play and scrub on the canvas.
 - **5e · Save and ship.** ✅ *Shipped (Animation Engine 1.5.29, Live Editor 0.3.22, Kinetic Scenes 0.1.68): Save to page, the visitor runtime (3 KB gzipped, only on pages with a timeline, no flash), Runs on, reduced motion, Import / Export as JSON or CSV, and a demo ([docs](/animation-engine/page-timelines)).* Page-timeline storage, the visitor runtime (under 10 KB gzipped, only on pages that use it),
   breakpoints, reduced motion, Import / Export, docs and a demo.
-- **5f · Scroll timelines.** Scroll-driven timelines, pinned or not, also listed on the Scroll Timeline.
-- **5g · Presets and AI.** Kinetic Scenes' motion presets as starting points, your own saved presets, AI authoring.
-- **5h · Reuse.** Timelines for every element matching a class, and site-wide timelines.
+- **Change of course (19 November 2026).** Editing page timelines in Kinetic Scenes' second window was the wrong
+  experience, so they move into an **Animate workspace inside the Live Editor**: lean, native, showing only the tools
+  for what is selected, with no Kinetic Scenes interface ([why](/decisions/page-timelines-in-the-live-editor)). The
+  data, runtime and curves of 5a–5e stay.
+- **A1 · Clean canvas.** The Scroll Ruler, the Scroll Timeline button, the AI Assistant and the chat bubble no longer
+  appear on the Live Editor canvas.
+- **A2 · The Animate workspace.** Design / Animate switch and toolbar, Navigator, contextual side panel, a timeline dock
+  grown from the Interaction timeline, triggers, Runs on, Preview as visitor, Import / Export, one Save and one undo.
+- **A3 · Class targets.** Animate every element with a class, with stagger and order.
+- **A4 · Retire the window.** Animate no longer opens Kinetic Scenes; page mode removed from it.
+- **A5 · Scroll in Animate** (was 5f). Scroll timelines, the page's scroll animations and the ruler in a Scroll tab;
+  the floating tools leave the public pages.
+- **5g · Presets and AI.** Starting points, your own presets, the AI Assistant and MCP tools authoring timelines.
+- **5h · Site-wide.** Timelines used on every page.
 
 ## Phase 6 — Closing the last gaps with Framer and Webflow (planned) {#phase-6}
 
@@ -384,7 +394,7 @@ Most of it improves **Interactions** directly, so every existing Interaction get
 | **2** | Parametric scroll-camera 3D scenes (WebGL Object presets) | Very high | ✅ Tunnel · Gallery Dolly · Product Orbit · WebGL Motion Gallery designs |
 | **3** | Rive + WebGL image transitions + particle presets | Medium–High | ✅ Shipped (Rive · image transitions · particle presets) |
 | **4** | Interactions: targets, live preview, states, a timeline, reuse and breakpoints | Very high | ✅ Shipped (I1–I5) |
-| **5** | [Animation Creator](./animation-creator): keyframe any page element in Kinetic Scenes, springs, bursts | Very high | 🚧 5a–5e shipped; 5f–5h planned |
+| **5** | [Animation Creator](./animation-creator): keyframe any page element in Kinetic Scenes, springs, bursts | Very high | 🚧 5a–5e shipped; Animate workspace (A1–A5), 5g, 5h planned |
 | **6** | Last gaps with Framer / Webflow: more Interaction properties, Lottie / Rive steps, Set, layout animation, shared-element transitions, mouse-move, saved presets | High | ✅ Shipped (6a–6g) |
 
 ## What we build vs. what stays curated {#build-vs-curated}

@@ -25,6 +25,13 @@ in-view cascade of three cards, a hover that moves two elements, and a click tha
 
 ## Make one
 
+:::info Changing soon
+Page timelines are moving into an **Animate workspace inside the Live Editor**, so you no longer work in a second
+Kinetic Scenes window ([the plan](/animation-engine/3d-motion-roadmap/animation-creator)). Timelines you save now keep
+working and open there.
+:::
+
+
 1. Open the page in the **Live Editor** and click **Animate** in its toolbar. Kinetic Scenes opens beside it in
    **page mode**, with the **Page panel** on its left: the page's elements, and the **Timeline** box.
 2. **Pick an element**: click it on the page, or in the Page panel's list.

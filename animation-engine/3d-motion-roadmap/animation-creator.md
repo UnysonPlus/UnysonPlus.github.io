@@ -2,151 +2,121 @@
 sidebar_position: 8
 title: Animation Creator (plan)
 slug: /3d-motion-roadmap/animation-creator
-description: The plan for the Animation Creator — keyframe any element on a real page in the Kinetic Scenes timeline, preview it on the page, and ship it as light native motion. Phases, architecture, data model and open questions.
+description: The plan for the Animation Creator — an Animate workspace in the Live Editor where you keyframe the real elements of a page, with only the tools the selection needs, saved as light native motion. Phases, layout, data and decisions.
 ---
 
 # Animation Creator — the plan
 
-*Planned November 2026. Status: **in progress**: 5a–5e shipped ([Page Timelines](/animation-engine/page-timelines), [Animate in the Live Editor](/extensions/live-editor#animate-kinetic-scenes-beside-the-page-beta), [page timelines](/extensions/live-editor#page-timelines-beta)).*
+*Planned November 2026, revised 19 November 2026. Status: **in progress**: 5a–5e shipped; the Animate workspace
+(A1–A5) is next.*
 
-*This page is the plan; the
-[Roadmap](./roadmap#phase-5) carries the phase list and its status.*
+*This page is the plan; the [Roadmap](./roadmap#phase-5) carries the phase list and its status.*
 
 ## What it is
 
-One place to make page motion visually. Open a page in the [Live Editor](/extensions/live-editor), choose
-**Animate**, and [Kinetic Scenes](/kinetic-scenes) opens beside it, connected to that page. Every element you
-pick on the page becomes a **track** on the Kinetic Scenes timeline. Add keyframes, shape the curve between
-them (springs included), choose what plays it (page load, scrolling into view, scroll position, hover, click),
-and watch it play **on the real page** as you edit. Save, and it ships as a small native timeline that plays
-for every visitor, with nothing heavy added to the page.
+One place to make page motion visually, **inside the Live Editor**. Switch the editor to **Animate**: the page stays
+in the middle, a timeline docks under it, and the side panel shows only the tools for what you select. Select an
+element and animate it, or every element with its class; add keyframes, pick the curve into each (springs
+included), choose what plays the timeline (page load, scrolling into view, hover, click, and scroll position in A5),
+and watch it play on the real page as you scrub. Save, and it ships as a small native timeline every visitor gets.
 
-It is the general-purpose visual timeline the engine has been missing. Today's tools each cover one slice:
+It is the general-purpose visual timeline the engine was missing. The other tools each cover one slice:
 [Scroll Keyframes](/animation-engine/scroll-keyframes) (three beats on scroll), the
 [Scroll Timeline](/animation-engine/scroll-timeline) (retime what a page already has),
-[Interactions](/animation-engine/interactions) (up to three steps per trigger) and the Interaction timeline
-(their timing). The Creator is where you **author** a multi-element sequence from scratch, with as many keyframes
-and elements as the moment needs.
+[Interactions](/animation-engine/interactions) (up to three steps per trigger, with their own Interaction timeline).
 
-## Why reuse Kinetic Scenes
+## The change of course (19 November 2026)
 
-Kinetic Scenes already has every piece the Creator needs, built, tested and in use:
+5c–5e built the Creator as **Kinetic Scenes in a second window**, connected to the Live Editor. It worked, but it was
+the wrong experience: another website in another window, two toolbars, two Saves, and on one monitor the windows
+covered each other. Webflow, which does the same job, keeps everything in its Designer: the interaction's settings
+in a side panel and a timeline at the bottom of the canvas while you work on one. So the Creator moves into the Live
+Editor, **without Kinetic Scenes' interface**: that would make the animation editor clunky and bloated, and Kinetic
+Scenes keeps its own purpose (scenes and videos). The decision and its reasons:
+[Why page timelines are made in the Live Editor, not in Kinetic Scenes](/decisions/page-timelines-in-the-live-editor).
 
-| Kinetic Scenes has | The Creator uses it for |
-| --- | --- |
-| A tracks-and-clips **timeline** with a playhead, zoom, snapping and undo | The page's timeline, one track per element |
-| A **keyframe editor**: Move X / Y, Scale, Rotate, Opacity, Blur, keyed at the playhead | Element keyframes (the same props the engine's Scroll Keyframes already animate) |
-| A **curve editor** and named curves, including **springs** (Pop over, Bounce hard) | The ease into each keyframe |
-| **Scroll-linked playback** (pinned or not, smoothed) in its player | Scroll-driven page timelines |
-| A **preset library** of entrances, exits and emphasis moves | One-click starting points |
-| **AI assist** and the kit's MCP tools | "Make the hero cards cascade in like a deck" |
-| A **bridge to WordPress** (the Kinetic Scene element's *Open in Kinetic Scenes* / *Save to page*) | The connection to the page |
+What 5a–5e built stays: the shared curves with springs (5a), bursts (5b), and the page timeline itself (5d–5e): its
+data, the 3 KB visitor runtime, saving on the page, Runs on, reduced motion, Import / Export, the REST field and the
+[demo](https://demos.unysonplus.com/animation-engine/page-timelines/). Only the editing moves.
 
-Building the same in WordPress would mean writing a second timeline, keyframe editor and curve editor, and keeping
-two of each in step. Reusing it makes Kinetic Scenes **the** motion editor for both scenes and pages: one set of
-skills for the user, one codebase for us.
-
-### How this fits the earlier decision
-
-In October 2026 we chose **not** to embed the Kinetic Scenes editor in the front-end Scroll Timeline overlay
-(Design Decision [keyframe-lane-native-editor](/decisions/keyframe-lane-native-editor)): it would have loaded
-React onto every admin's page view and created a second source of truth, just to edit three beats. This plan keeps
-both of those rules:
-
-- **No editor code on the page.** Kinetic Scenes stays its own app, in its own window or tab. The page side is a
-  small message bridge in the Live Editor canvas, and visitors load only the playback runtime.
-- **One source of truth.** A page timeline is a native piece of page data with its own runtime, edited only in
-  the Creator. It does not mirror or duplicate any other option.
-
-The decision behind this choice: [Why the Animation Creator reuses Kinetic Scenes](/decisions/animation-creator-reuses-kinetic-scenes).
-
-## How it works
+## The Animate workspace
 
 ```
- Live Editor (WordPress)                          Kinetic Scenes (its own window)
- ┌──────────────────────────────┐   messages     ┌──────────────────────────────────┐
- │ canvas = the real page       │ ─────────────▶ │ Page mode                        │
- │  • element list + boxes      │  elements,     │  • tracks = picked elements      │
- │  • click to pick an element  │  selection     │  • keyframe + curve editors      │
- │  • plays the timeline live   │ ◀───────────── │  • triggers, presets, AI assist  │
- │    (the visitor runtime)     │  timeline,     │  • play / scrub                  │
- │                              │  playhead      │                                  │
- │ Save ──▶ page timeline data  │ ◀── Save ───── │                                  │
- └──────────────────────────────┘                └──────────────────────────────────┘
++-----------------------------------------------------------------------------------+
+| [Design | Animate]   [Hero intro v] [+ New]   [> Play] 0.45 / 1.20 s   [Preview as  |
+|                                                                visitor] [Save]    |
++--------------+---------------------------------------------------+----------------+
+| NAVIGATOR    |                                                   | (selection)    |
+| Section      |              the page (canvas)                    |                |
+|  Heading  *  |        held still, plays at the playhead          | see the table  |
+|  Card     *  |                                                   | below          |
++--------------+---------------------------------------------------+----------------+
+| TIMELINE  0s     0.2     0.4     0.6     0.8     1.0     1.2           [-][+] [_] |
+| Heading    <>---------<>                                                          |
+| .card (3)       <>--------------<>   stagger 0.15 s                               |
++-----------------------------------------------------------------------------------+
 ```
 
-1. **Opening.** The Live Editor gets an **Animate** button (and *Animate in Kinetic Scenes* on a selected element).
-   It opens Kinetic Scenes with `?connect=unysonplus&mode=page`, using the same opener handshake as the Kinetic
-   Scene element (`upw-studio:hello`), extended with page messages.
-2. **The page is the preview.** The canvas plays the timeline through the **same runtime visitors get**, so what you
-   see while editing is exactly what ships. Kinetic Scenes shows the timeline, inspector and a simple map of the
-   picked elements; it never tries to copy the page into its own stage.
-3. **Picking.** Clicking an element on the canvas selects it (or adds its track) in Kinetic Scenes; selecting a track
-   outlines its element on the canvas. Elements are addressed by their builder item key (`data-fw-item-id`), or by a
-   class for "every card like this one".
-4. **Playing and scrubbing.** Kinetic Scenes sends the timeline and playhead; the canvas seeks to that moment. For a
-   scroll timeline the playhead stands for the scroll position, and the canvas scrolls with it.
-5. **Saving.** *Save to page* stores the timeline on the page. Undo stays in Kinetic Scenes until you save; the page's
-   own revisions hold the saved versions.
+**Contextual:** the side panel shows the tools for what is selected, and nothing else.
 
-### The data: a page timeline
-
-A page holds any number of named timelines. Each one:
-
-| Field | Meaning |
+| What is selected | The side panel shows |
 | --- | --- |
-| `name` | "Hero intro", "Pricing cards cascade" |
-| `trigger` | `load`, `in-view` (element + threshold), `scroll` (pinned or not, length in screen heights), `hover`, `click` (on an element) |
-| `duration` | Seconds; for a scroll timeline, the share of the scroll range instead |
-| `tracks[]` | One per element: `target` (item key, or a class + "every match") and its keyframes |
-| keyframes | `t` + the props keyed at that moment + the `ease` into it: **the Kinetic Scenes keyframe format unchanged**, so its editor works as is |
-| `repeat`, `yoyo` | Loop and back-and-forth (new: the page runtime adds them, since scenes play once) |
-| `runsOn` | Desktop / tablet / phone, like Interactions |
+| **Nothing** | The timeline: name; **Plays on** (page load, in view, hover, click) and its options; length; loop and back-and-forth; **Runs on** (desktop, tablet, phone); Import / Export |
+| **An element not in the timeline** | **Animate this element** (a track with a first move), **Animate every “.class”** for each class it has, and which other timelines already move it |
+| **An element or class in the timeline** | Its track: the values at the playhead (Move X / Y, Scale, Rotate, Opacity, Blur); changing a value where there is no keyframe adds one; for a class, the stagger and its order |
+| **A keyframe** (a diamond on the timeline) | Its time, its values, the **curve** into it (the shared curve list, springs included), Delete |
 
-Props start with the six Kinetic Scenes already keys (Move X / Y, Scale, Rotate, Opacity, Blur), then add the ones
-the engine's Scroll Keyframes have (Rotate X / Y) and the page-specific ones (clip, colour, filter). It is stored per
-page beside the timing overrides, keyed by element, **never inside the builder JSON**, so re-imports and the
-manual-edit guard leave it alone. Every page timeline can be **exported and imported** as a file (one timeline, or
-all of a page's), so a set-up moves between pages and sites.
+The toolbar keeps only what Animate needs: the timeline picker, play and the time, Preview as visitor, Undo / Redo
+and Save. Design's Edit / Preview / Play and the element tools come back with Design.
 
-### The runtime
+## How it is built
 
-A small build of the Kinetic Scenes player's motion core (keyframe interpolation, the named eases and springs,
-the scroll link), loaded **only on pages that have a timeline**:
+- **Native, in the Live Editor's own code**, grown from what is there: the **Interaction timeline** (a dock under the
+  canvas with rows, draggable bars, a playhead and scrubbing on the real page, undoable edits) becomes the Animate
+  timeline; the **Navigator** is the left panel; the side panel follows the editor's other panels.
+- **No Kinetic Scenes code in the Live Editor.** What they share is the data format and the curves: the shared curve
+  list from 5a already holds Kinetic Scenes' named curves and springs.
+- **Same window:** the playhead moves the canvas directly.
+- **Class targets:** a track targets one element or every element with a class, with a stagger and its order (first
+  to last, last to first, from the centre, random).
+- **One Save and one undo:** the timelines are part of the page's unsaved changes and history; Save writes them with
+  the builder content (stored apart, so re-imports keep working), and the page's revisions include them.
 
-- **Light:** target under 10 KB gzipped; no React, no GSAP required.
-- **Exact:** the same code that previews in the canvas, so editing and visiting match frame for frame.
-- **Safe:** transforms, opacity and filters by default (no layout shift); reduced motion shows the end state; the
-  timeline pauses off screen; the Live Editor's Edit mode holds it still like every other effect.
+## The floating tools
+
+| Tool | Plan |
+| --- | --- |
+| Scroll Ruler | Never on the Live Editor canvas or the public page. Inside Animate, a toggle that draws the ruler over the canvas |
+| Scroll Timeline (the Timeline button) | Never on the canvas or the public page. Becomes the **Scroll** tab of Animate's dock |
+| AI Assistant + chat bubble | Hidden on the canvas (the Live Editor has its own AI panel); visitors still see the chat |
 
 ## Phases
 
-Each phase ships something useful on its own.
-
 | Phase | What ships | Depends on |
 | --- | --- | --- |
-| **5a · Springs everywhere** ✅ *shipped (AE 1.5.21)* | The Kinetic Scenes named curves, springs included, plus a cubic-bezier field, in every Animation Engine ease picker (Scroll Motion, Scroll Keyframes, Interactions, States) from one shared eases file | — |
-| **5b · Bursts** ✅ *shipped (AE 1.5.23)* | A **Burst** Interactions step and button effect: circles, sparks, lines and confetti bursting from an element on click or hover (grows the Confetti module) | — |
-| **5c · Connect** ✅ *shipped (Live Editor 0.3.20, Studio 0.1.66)* | Kinetic Scenes *Page mode*; the Live Editor's **Animate**; element list, picking and selection in both directions; read-only display of an element's existing motion | Kinetic Scenes bridge |
-| **5d · Author on the page** ✅ *shipped (Live Editor 0.3.21, AE 1.5.28, Studio 0.1.67)* | Tracks, keyframes, curves and triggers (load, in view, hover, click); play and scrub on the canvas through the visitor runtime | 5c + the runtime |
-| **5e · Save and ship** ✅ *shipped (AE 1.5.29, Live Editor 0.3.22, Studio 0.1.68)* | Page-timeline storage, the visitor runtime, Runs on breakpoints, reduced motion, **Import / Export**, docs and a demo page | 5d |
-| **5f · Scroll timelines** | Scroll trigger, pinned or not, with the playhead as the scroll position; listed on the [Scroll Timeline](/animation-engine/scroll-timeline) beside the page's other scroll motion | 5e |
-| **5g · Presets and AI** | Kinetic Scenes' motion presets as one-click page starting points; save a timeline as your own preset; the AI assist and MCP tools author page timelines | 5e |
-| **5h · Reuse** | A timeline for every element matching a class, and site-wide timelines (like Interactions' *Use on every page*) | 5e |
+| **5a · Springs everywhere** ✅ *AE 1.5.21* | Kinetic Scenes' named curves, springs included, in every engine ease picker | — |
+| **5b · Bursts** ✅ *AE 1.5.23* | A Burst Interactions step and button effect | — |
+| **5c–5e · Page timelines** ✅ *AE 1.5.29, Live Editor 0.3.22* | The page timeline data, runtime, saving, Runs on, Import / Export, demo (edited in Kinetic Scenes page mode, replaced by A2) | — |
+| **A1 · Clean canvas** | The Scroll Ruler, the Scroll Timeline button, the AI Assistant and the chat bubble no longer appear on the Live Editor canvas | — |
+| **A2 · The Animate workspace** | Design / Animate switch and toolbar; Navigator; contextual side panel; the timeline dock (tracks, keyframes, drag to retime, playhead, scrubbing); triggers, Runs on, Preview as visitor, Import / Export; one Save and one undo | A1 |
+| **A3 · Class targets** | Animate every element with a class, with stagger and order, in the runtime, the data, the first-moment CSS and the CSV | A2 |
+| **A4 · Retire the window** | Animate no longer opens Kinetic Scenes; page mode removed from it; docs, screenshots and demo updated | A2 |
+| **A5 · Scroll in Animate** (was 5f) | The Scroll tab: scroll timelines (the playhead is the scroll position, pinned or not), the existing scroll animations, the ruler toggle; the floating tools leave the public pages | A2 |
+| **5g · Presets and AI** | Starting points, your own presets, the AI Assistant and MCP tools authoring timelines | A2 |
+| **5h · Site-wide** | Timelines used on every page (like Interactions' *Use on every page*) | A3 |
 
-**5a and 5b come first:** they are small, they make the existing tools better straight away, and 5a's shared
-eases file is the first piece of the runtime.
+## The data and the runtime
 
-## Open questions
+A page holds any number of named timelines, stored as post meta `_upw_page_timelines` (never inside the builder
+content). Each has `id`, `name`, `duration`, `trigger` (`load`, `in-view`, `hover`, `click`, with its options),
+`repeat`, `yoyo`, `runsOn` and `tracks`, one per element (`target` = its builder key; A3 adds class targets), each
+with keyframes `{ t, x, y, scale, rotate, opacity, blur, ease, e }` where `e` is the curve as CSS `linear()`. The
+runtime (`upw-timeline.js`, about 3 KB gzipped) loads only on pages with a timeline; the head CSS holds each element
+at its first moment so nothing flashes. Full reference: [Page Timelines](/animation-engine/page-timelines).
 
-- **Live Editor only?** The classic builder shows boxes, not the page, so it can't preview motion. Plan: Animate
-  lives in the Live Editor; the classic builder gets an *Open in the Live Editor to animate* link.
-- **Working offline.** Kinetic Scenes is a hosted app (`kinetic-scenes.unysonplus.com`). The AI Dev Kit can serve a
-  local copy; the Creator should work with either, and say clearly when it can't reach one.
-- **Stable element keys.** ✅ *Checked for 5e:* builder item keys survive edits, and the Live Editor's duplicate gives
-  the copy (and everything inside it) new keys, so a copy is never silently in a timeline. A track whose element is
-  gone, or that came from another page, is listed as *Not on this page* and can be moved to a picked element.
-- **Interactions and Scroll Keyframes.** They stay as they are (simple, inline, fine for most needs). Later, an
-  *Open in Animation Creator* could turn one into a page timeline (one way), and an Interactions step could
-  **play a timeline**, so a click can start a sequence made in the Creator.
-- **Kinetic Scenes is in alpha.** The Page mode should ship as a clearly marked beta inside it until 5e is done.
+## Risks
+
+- **Room on a laptop:** canvas, two side panels and a dock. The dock and both panels collapse; the canvas can zoom out.
+- **Two timelines in one editor:** an element's Interactions keep their own timeline (in Design); Animate is for
+  page timelines. Animate lists an element's Interactions as read-only, so you can see what else moves it.
+- **Keyboard shortcuts** (space to play, Delete for a keyframe) apply only while the dock has focus.

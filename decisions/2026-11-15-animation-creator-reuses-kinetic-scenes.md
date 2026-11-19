@@ -14,6 +14,8 @@ or should it reuse Kinetic Scenes?
 
 <!-- truncate -->
 
+> **Status: Superseded (19 November 2026)** by [Why page timelines are made in the Live Editor, not in Kinetic Scenes](/decisions/page-timelines-in-the-live-editor): after use, the second window was the wrong experience. The page timeline data, runtime and curves this decision produced are kept; the editing moved into the Live Editor.
+
 **Context.** The engine's motion tools each cover a slice: Scroll Keyframes (three beats on scroll), the Scroll
 Timeline (retime and edit what a page already has), Interactions (up to three steps per trigger) and the Interaction
 timeline (their timing). [Kinetic Scenes](/kinetic-scenes) already has a full timeline, keyframe editor, curve editor

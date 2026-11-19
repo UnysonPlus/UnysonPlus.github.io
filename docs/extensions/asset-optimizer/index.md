@@ -30,19 +30,39 @@ you will not know which one helped — or which one hurt. See [Performance](/per
 
 ## Start here
 
-If you want a sensible setup without reading the whole manual, do this in order and measure after each
-step:
+**Most of it is already on.** Activating the extension switches on everything that cannot change how a
+page looks without you noticing:
 
-1. Leave **Combine CSS** and **Combine JavaScript** on, and leave the per-file lists alone.
-2. Turn on **[Remove unused CSS](/extensions/asset-optimizer/unused-css)**, then click through a few pages to check nothing
-   broke. This is usually the single biggest win.
-3. Turn on **[Serve WebP images](/extensions/asset-optimizer/images#serve-webp-images)** and
-   **[Generate missing image sizes](/extensions/asset-optimizer/images#generate-missing-image-sizes)**.
-4. Turn on **[Preload the hero image](/extensions/asset-optimizer/images#preload-the-hero-image)**.
-5. Turn on **[Defer combined script](/extensions/asset-optimizer/javascript#defer-combined-script)**.
-6. Only once the page itself is fast, consider **[Instant navigation](/extensions/asset-optimizer/instant-navigation)**.
+| On out of the box | What it does |
+| --- | --- |
+| Combine CSS and JavaScript | Fewer requests |
+| CSS combining scope: Site-wide | One shared bundle, cached across pages |
+| [Serve WebP images](/extensions/asset-optimizer/images#serve-webp-images) | Usually 25–80% off every photo |
+| [Generate missing image sizes](/extensions/asset-optimizer/images#generate-missing-image-sizes) | Stops phones downloading full-size originals |
+| [Preload the hero image](/extensions/asset-optimizer/images#preload-the-hero-image) | Finds the main image sooner |
+| [Inline small leftover stylesheets](/extensions/asset-optimizer/css#inline-small-leftover-stylesheets) | Removes the last few blocking requests |
+| [Defer combined script](/extensions/asset-optimizer/javascript#defer-combined-script) | Scripts stop blocking the first paint |
+| [Instant navigation](/extensions/asset-optimizer/instant-navigation): Prefetch | The next page is fetched before the click |
 
-Steps 2 and 3 are where most of the time is. Steps 4–6 are refinements.
+Each of those is reversible and leaves your originals alone. So the honest first step is: **activate it,
+look at your site, and measure.**
+
+### Then, one at a time
+
+These are the faster settings, left off because each one *can* change how a page looks on a site nobody
+has checked yet. Turn on **one**, click through a few pages — open the menu, expand an accordion, hover
+the buttons — and measure before moving to the next:
+
+1. **[Remove unused CSS](/extensions/asset-optimizer/unused-css)** — usually the single biggest win, and
+   the one whose mistakes are quietest. Add `?fw_ao_nopurge=1` to a URL to rule it in or out instantly.
+2. **[Serve AVIF images](/extensions/asset-optimizer/images#serve-avif-images)** — another 28% under
+   WebP. Off by default only because it works through your whole media library in the background, which
+   is something to opt into rather than inherit.
+3. **[Inline the first screen's CSS](/extensions/asset-optimizer/css#inline-the-first-screens-css)** and
+   **[Move late CSS into the head](/extensions/asset-optimizer/css#move-late-css-into-the-head)** — both
+   rearrange when CSS arrives, so watch the top of a few pages as they load.
+4. **[Browser cache for static files](/extensions/asset-optimizer/caching-and-scope#browser-cache-for-static-files)**
+   — free for repeat visits, but it writes a block to `wp-content/.htaccess`, so it asks first by being off.
 
 ## How it discovers assets
 
@@ -66,27 +86,27 @@ The General tab is long because each option is a different trade. This is the wh
 | [Remove unused CSS](/extensions/asset-optimizer/unused-css) | Off | Strip rules nothing on the page can match |
 | [Never remove (safelist)](/extensions/asset-optimizer/unused-css#the-safelist) | Empty | Protect classes your own JavaScript adds |
 | [Inline the first screen's CSS](/extensions/asset-optimizer/css#inline-the-first-screens-css) | Off | Split the stylesheet so the first paint never waits |
-| [Inline small leftover stylesheets](/extensions/asset-optimizer/css#inline-small-leftover-stylesheets) | Off | Absorb the tiny files combining could not reach |
+| [Inline small leftover stylesheets](/extensions/asset-optimizer/css#inline-small-leftover-stylesheets) | **On** | Absorb the tiny files combining could not reach |
 | [Record which script each line came from](/extensions/asset-optimizer/javascript#finding-out-which-script-a-report-is-blaming) | Off | Map bundle line numbers back to real files |
 | [Drop admin-only stylesheets](/extensions/asset-optimizer/css#drop-admin-only-stylesheets) | Off | Stop shipping dashboard CSS to visitors |
 | [Move late CSS into the head](/extensions/asset-optimizer/css#move-late-css-into-the-head) | Off | Stop elements jumping into place |
-| [Preload the hero image](/extensions/asset-optimizer/images#preload-the-hero-image) | Off | Tell the browser about the hero immediately |
+| [Preload the hero image](/extensions/asset-optimizer/images#preload-the-hero-image) | **On** | Tell the browser about the hero immediately |
 | [WebP quality](/extensions/asset-optimizer/images#webp-quality) | 80 | How hard the WebP copies are compressed |
 | [Image quality](/extensions/asset-optimizer/images#image-quality) | 82 | How hard the theme's own crops are compressed |
-| [Generate missing image sizes](/extensions/asset-optimizer/images#generate-missing-image-sizes) | Off | Fill in the sizes WordPress never made |
-| [Serve WebP images](/extensions/asset-optimizer/images#serve-webp-images) | Off | Show visitors WebP copies instead of JPG/PNG |
+| [Generate missing image sizes](/extensions/asset-optimizer/images#generate-missing-image-sizes) | **On** | Fill in the sizes WordPress never made |
+| [Serve WebP images](/extensions/asset-optimizer/images#serve-webp-images) | **On** | Show visitors WebP copies instead of JPG/PNG |
 | [Serve AVIF images](/extensions/asset-optimizer/images#serve-avif-images) | Off | Offer AVIF copies as well — another 28% under WebP |
 | [AVIF quality](/extensions/asset-optimizer/images#avif-quality) | 60 | How hard the AVIF copies are compressed |
 | [Browser cache for static files](/extensions/asset-optimizer/caching-and-scope#browser-cache-for-static-files) | Off | Cache images, fonts and plugin assets for a year |
 | [Load below-the-fold images early](/extensions/asset-optimizer/images#load-below-the-fold-images-early) | Off | Warm lazy images before the reader scrolls |
-| [Instant navigation](/extensions/asset-optimizer/instant-navigation) | Auto | Fetch or render the next page before the click |
-| [How early to start](/extensions/asset-optimizer/instant-navigation#how-early-to-start) | Auto | How keen the browser should be |
+| [Instant navigation](/extensions/asset-optimizer/instant-navigation) | **Prefetch** | Fetch or render the next page before the click |
+| [How early to start](/extensions/asset-optimizer/instant-navigation#how-early-to-start) | **Moderate** | How keen the browser should be |
 | [Never speculate cart, checkout or account](/extensions/asset-optimizer/instant-navigation#keeping-it-away-from-the-wrong-pages) | On | Keep shop pages out of speculation |
 | [Never speculate these paths](/extensions/asset-optimizer/instant-navigation#keeping-it-away-from-the-wrong-pages) | Empty | Your own exclusions |
 | [Only for logged-out visitors](/extensions/asset-optimizer/caching-and-scope#only-for-logged-out-visitors) | Off | Serve un-combined assets to editors |
 | [Exclude URLs](/extensions/asset-optimizer/caching-and-scope#exclude-urls) | Empty | Skip the combiner on particular pages |
 | [Stylesheets to combine](/extensions/asset-optimizer/css#choosing-which-stylesheets-to-merge) | All checked | The CSS tab's per-file list |
-| [Defer combined script](/extensions/asset-optimizer/javascript#defer-combined-script) | Off | Stop scripts blocking the first paint |
+| [Defer combined script](/extensions/asset-optimizer/javascript#defer-combined-script) | **On** | Stop scripts blocking the first paint |
 | [Minify combined script](/extensions/asset-optimizer/javascript#minify-combined-script) | On | Strip comments and whitespace from the bundle |
 | [Scripts to combine](/extensions/asset-optimizer/javascript#choosing-which-scripts-to-merge) | First-party | The JavaScript tab's per-file list |
 

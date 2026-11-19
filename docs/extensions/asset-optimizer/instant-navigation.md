@@ -51,8 +51,9 @@ runs*:
   do not.
 - It costs real work on the server and in the visitor's browser for a page that may never be opened.
 
-**Auto** — the default — leaves the decision to WordPress, which currently prefetches conservatively.
-An existing site therefore behaves exactly as it did until you change this.
+**Prefetch is the default.** It fetches the next page's HTML and nothing else, which is safe anywhere,
+so there is no reason to make you go and find it. **Auto** hands the decision back to WordPress, which
+currently prefetches conservatively; pick it if you would rather core decided.
 
 ## How early to start
 

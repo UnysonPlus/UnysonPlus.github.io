@@ -1,5 +1,5 @@
 ---
-title: "How to upload and schedule Facebook and Instagram Reels with Claude (free, with Meta's own API)"
+title: "How to upload and schedule Facebook, Instagram and Threads Reels with Claude (free, with Meta's own API)"
 sidebar_label: "Schedule Facebook Reels with Claude"
 description: "Let Claude upload and schedule Reels on your Facebook Page with Meta's own API: no third-party posting service. A step-by-step setup of the Meta app, its permissions and the token, the three calls that publish a reel, and the mistakes we made on the way."
 keywords:
@@ -12,6 +12,7 @@ keywords:
   - schedule reels free
   - facebook page video api
   - instagram reels api
+  - threads api video post
   - post instagram reels with ai
 ---
 
@@ -30,7 +31,7 @@ This is the companion to [Upload to YouTube with Claude](./upload-youtube-videos
 
 :::note Instagram and Threads
 The same Meta app also posts to Instagram: see [Instagram reels with the same app](#instagram-reels-with-the-same-app)
-below. Threads will be added once we have it working: this page only describes steps we have run ourselves.
+and [Threads](#threads-with-the-same-app) below. This page only describes steps we have run ourselves.
 :::
 
 ## What you get
@@ -264,6 +265,59 @@ container that is not published is kept for 24 hours.
 Our first reel went out this way, and we opened it in a browser that was not signed in: it was public, with its
 caption, even though the app is still marked "Unpublished".
 
+## Threads with the same app
+
+Threads uses the same Meta app but its own sign-in, and it is the quickest of the three to connect.
+
+1. In the app dashboard, open **App roles › Roles › Add People**, choose **Threads Tester** and type your Threads
+   username. The role shows as **Pending**.
+2. In Threads, open **Settings › Account › Website permissions › Invites** and accept the invitation.
+3. Back in the dashboard, open **Use cases › Access the Threads API › Customize › Settings**. Under **User Token
+   Generator**, click **Generate Access Token** beside your profile and approve. The token it shows already lasts 60
+   days. You do not need a redirect address for this.
+
+To extend the token later (once it is at least a day old):
+
+```text
+GET https://graph.threads.net/refresh_access_token?grant_type=th_refresh_token&access_token=TOKEN
+```
+
+### Threads fetches the video itself
+
+Threads does not accept a file. You give it a public address and it downloads the video from there:
+
+```text
+POST https://graph.threads.net/v1.0/THREADS_USER_ID/threads
+     media_type=VIDEO, video_url=<a public https address of the MP4>, text=<up to 500 characters>, access_token=TOKEN
+     → { "id": CONTAINER_ID }
+
+GET https://graph.threads.net/v1.0/CONTAINER_ID?fields=status,error_message&access_token=TOKEN
+     → repeat every few seconds until status is FINISHED
+
+POST https://graph.threads.net/v1.0/THREADS_USER_ID/threads_publish
+     creation_id=CONTAINER_ID, access_token=TOKEN
+```
+
+We put the reel in our WordPress media library for a minute (one call to the site's REST API,
+`POST /wp-json/wp/v2/media`, with an application password), hand that address to Threads, and delete the file as soon
+as the status is FINISHED: Threads has its own copy by then. Any public address works.
+
+Like Instagram, Threads has **no scheduling**, so the same scheduled task on our computer publishes each reel at its
+time. The limit is 250 posts a day, and a video can be up to five minutes long.
+
+## One schedule for every platform
+
+We treat YouTube as the master schedule. A small script reads the publish date of every private video on the channel,
+then:
+
+- schedules the same reel on the Facebook Page for the same moment (Facebook can schedule);
+- every ten minutes, checks whether a reel's time has come and publishes it on Instagram and Threads (they cannot).
+
+It keeps one small file that records which reel went where, so nothing is ever posted twice, and it skips a reel that
+is more than twelve hours late (the computer was off) instead of posting it at the wrong time. If you already
+scheduled reels on your Page by hand, their time can be changed in place:
+`POST /{post-id}` with a new `scheduled_publish_time` worked for us on posts made in Meta Business Suite.
+
 ## The mistakes we made, so you do not have to
 
 | What happened | Why | What to do |
@@ -274,6 +328,7 @@ caption, even though the app is still marked "Unpublished".
 | The token reached every Page we manage | We approved all of them in the Facebook window | Fine, but tell Claude the one Page id to post to, and keep it in the script |
 | No Instagram account showed up | None was linked to the Page | Link a Business or Creator Instagram account to the Page, then make a new token |
 | The scheduled time came back in a different format | Sent as a Unix number, returned as a date and time | Compare the moment, not the text |
+| The site answered a 50 MB upload with a memory error | The file was saved, but WordPress ran out of memory building its reply | Send Threads a lighter copy (we re-encode anything over 25 MB) and check the media library for a leftover |
 | The first Instagram upload failed with no message | Unknown: the same call worked a minute later | Try once more before changing anything, and have the script print the full error |
 
 ## Limits, and one thing we have not confirmed

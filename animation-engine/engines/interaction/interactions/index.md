@@ -38,6 +38,33 @@ An element can have **two** Interactions, for example a hover *and* a click. It 
 | **On page load** | As soon as the page has loaded. | Plays once. |
 | **In view** | A fifth of the element has scrolled into view. | **When it leaves the screen:** play it backwards (so it plays again next time), or keep the end state. |
 | **Scrolled past** | The element's bottom has scrolled above a line *N* px from the top of the screen (80 by default). | Plays backwards when you scroll back above the line. |
+| **Mouse move** | The pointer moves over the element, or anywhere on the page. The steps follow the pointer instead of playing once: see [Mouse move](#mouse-move). | Glides back to its own look when the pointer leaves, or stays. |
+
+## Mouse move
+
+**Mouse move** scrubs the steps with the pointer, the way scroll scrubs Scroll Motion: a card tilts towards the
+pointer, its picture drifts the other way, a badge follows the pointer around the page.
+
+**→ [See it on the Interactions demo page](https://demos.unysonplus.com/animation-engine/interactions/)** (scroll to *Mouse move*).
+
+| Option | Default | What it does |
+| --- | --- | --- |
+| **Follows the pointer** | Over this element | **Over this element** (its centre is the rest position, its edges the full values) or **Anywhere on the page** (the centre of the window is the rest). |
+| **Smoothing** | 85 % | 0 = follows the pointer exactly; higher = glides after it. |
+| **When the pointer leaves it** | Glide back | **Glide back to its own look**, or **Stay where it is**. |
+
+Each step's values are its look with the pointer at the **right or bottom edge**, mirrored at the left or top:
+
+- **Left and right** drive **Move X**, **Rotate**, **Tilt Y** and **Skew X**.
+- **Up and down** drive **Move Y**, **Tilt X** and **Skew Y**.
+- **How far the pointer is from the centre** drives **Scale**, **Opacity**, **Blur** and the filters.
+
+A 3D tilt card: on the card, **More properties → Tilt X −10°, Tilt Y 14°**; on its picture, **Move X −18, Move Y −14**
+(the picture moves the other way, so it seems to sit deeper).
+
+Duration, delay, easing, stagger and the instant steps (Set, Lottie, Rive, Burst, states) are not used by Mouse
+move. It needs a mouse or pen: on phones and tablets the elements keep still. *Amount on tablet / phone* and *Runs on*
+apply as for the other triggers. Reduced motion: nothing moves.
 
 ## Devices and reuse
 

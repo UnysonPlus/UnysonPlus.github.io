@@ -356,7 +356,7 @@ Most of it improves **Interactions** directly, so every existing Interaction get
   in view.
 - **6c · Set step.** ✅ *Shipped in Animation Engine 1.5.22: Do → Set something instantly.* An instant change at a moment in the sequence: show / hide, add / remove a class, set a value
   (z-index, pointer events), with no animation.
-- **6d · Layout animation.** Opt-in per element or section: when its size or position changes (an accordion opens, a
+- **6d · Layout animation.** ✅ *Shipped in Animation Engine 1.5.24 (November 2026): the Layout Animation card ([docs](../engines/interaction/layout-animation/index.md)).* Opt-in per element or section: when its size or position changes (an accordion opens, a
   grid filters or reorders, a card expands, a state changes layout), it glides from the old layout to the new one
   instead of jumping. Measured before and after, animated with transforms, so it stays smooth.
 - **6e · Shared-element page transitions.** Mark an element (a product photo, a post's image or title) as shared,
@@ -385,7 +385,7 @@ Most of it improves **Interactions** directly, so every existing Interaction get
 | **3** | Rive + WebGL image transitions + particle presets | Medium–High | ✅ Shipped (Rive · image transitions · particle presets) |
 | **4** | Interactions: targets, live preview, states, a timeline, reuse and breakpoints | Very high | ✅ Shipped (I1–I5) |
 | **5** | [Animation Creator](./animation-creator): keyframe any page element in Kinetic Scenes, springs, bursts | Very high | 🚧 5a–5b shipped; 5c–5h planned |
-| **6** | Last gaps with Framer / Webflow: more Interaction properties, Lottie / Rive steps, Set, layout animation, shared-element transitions, mouse-move, saved presets | High | 🚧 6a–6c shipped; 6d–6g planned |
+| **6** | Last gaps with Framer / Webflow: more Interaction properties, Lottie / Rive steps, Set, layout animation, shared-element transitions, mouse-move, saved presets | High | 🚧 6a–6d shipped; 6e–6g planned |
 
 ## What we build vs. what stays curated {#build-vs-curated}
 

@@ -339,7 +339,7 @@ visitor gets. **The full plan: [Animation Creator](./animation-creator).** Why i
   experience, so they move into an **Animate workspace inside the Live Editor**: lean, native, showing only the tools
   for what is selected, with no Kinetic Scenes interface ([why](/decisions/page-timelines-in-the-live-editor)). The
   data, runtime and curves of 5a–5e stay.
-- **A1 · Clean canvas.** The Scroll Ruler, the Scroll Timeline button, the AI Assistant and the chat bubble no longer
+- **A1 · Clean canvas.** ✅ *Shipped (Live Editor 0.3.23).* The Scroll Ruler, the Scroll Timeline button, the AI Assistant and the chat bubble no longer
   appear on the Live Editor canvas.
 - **A2 · The Animate workspace.** Design / Animate switch and toolbar, Navigator, contextual side panel, a timeline dock
   grown from the Interaction timeline, triggers, Runs on, Preview as visitor, Import / Export, one Save and one undo.

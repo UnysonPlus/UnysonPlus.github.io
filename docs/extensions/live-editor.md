@@ -68,6 +68,10 @@ The **Edit / Preview** switch in the middle of the toolbar changes what the canv
 
 - **Edit** (the default) is for building. The page **holds still** in its final state: entrance and exit animations, Scroll Motion, scroll reveals, text effects, galleries, marquees, physics, animated backgrounds, card stacks, scrollytelling and every other Animation Engine effect settle, so every section, column and element is visible and easy to select, drag and edit. Elements re-rendered after a change show straight away, never hidden waiting for an entrance.
 - **Preview** plays the page **exactly as a visitor sees it**, with your **unsaved changes**: entrance and exit animations, Scroll Motion, scroll-linked effects, pinned sections, galleries, hover effects and smooth scrolling all run, and you can scroll and hover the page. The selection outlines, inline editing and the editing panels are switched off and dimmed while you preview.
+- **In both modes the canvas shows only your page.** Front-end tools that a logged-in admin otherwise sees on the
+  site (the Scroll Ruler, the Scroll Timeline button, the chat bubble and its AI answers) stay off the canvas, so they
+  never cover the editor's own buttons. Visitors still get the chat. (Theme and plugin authors: a tool of your own can
+  do the same by returning early when `fw_live_editor_is_canvas()` is true.)
 
 ### Play: replay one element in place
 

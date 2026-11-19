@@ -7,7 +7,7 @@ description: The plan for the Animation Creator — keyframe any element on a re
 
 # Animation Creator — the plan
 
-*Planned November 2026. Status: **in progress**: 5a–5d shipped ([Animate in the Live Editor](/extensions/live-editor#animate-kinetic-scenes-beside-the-page-beta), [page timelines](/extensions/live-editor#page-timelines-beta)).*
+*Planned November 2026. Status: **in progress**: 5a–5e shipped ([Page Timelines](/animation-engine/page-timelines), [Animate in the Live Editor](/extensions/live-editor#animate-kinetic-scenes-beside-the-page-beta), [page timelines](/extensions/live-editor#page-timelines-beta)).*
 
 *This page is the plan; the
 [Roadmap](./roadmap#phase-5) carries the phase list and its status.*
@@ -129,7 +129,7 @@ Each phase ships something useful on its own.
 | **5b · Bursts** ✅ *shipped (AE 1.5.23)* | A **Burst** Interactions step and button effect: circles, sparks, lines and confetti bursting from an element on click or hover (grows the Confetti module) | — |
 | **5c · Connect** ✅ *shipped (Live Editor 0.3.20, Studio 0.1.66)* | Kinetic Scenes *Page mode*; the Live Editor's **Animate**; element list, picking and selection in both directions; read-only display of an element's existing motion | Kinetic Scenes bridge |
 | **5d · Author on the page** ✅ *shipped (Live Editor 0.3.21, AE 1.5.28, Studio 0.1.67)* | Tracks, keyframes, curves and triggers (load, in view, hover, click); play and scrub on the canvas through the visitor runtime | 5c + the runtime |
-| **5e · Save and ship** | Page-timeline storage, the visitor runtime, Runs on breakpoints, reduced motion, **Import / Export**, docs and a demo page | 5d |
+| **5e · Save and ship** ✅ *shipped (AE 1.5.29, Live Editor 0.3.22, Studio 0.1.68)* | Page-timeline storage, the visitor runtime, Runs on breakpoints, reduced motion, **Import / Export**, docs and a demo page | 5d |
 | **5f · Scroll timelines** | Scroll trigger, pinned or not, with the playhead as the scroll position; listed on the [Scroll Timeline](/animation-engine/scroll-timeline) beside the page's other scroll motion | 5e |
 | **5g · Presets and AI** | Kinetic Scenes' motion presets as one-click page starting points; save a timeline as your own preset; the AI assist and MCP tools author page timelines | 5e |
 | **5h · Reuse** | A timeline for every element matching a class, and site-wide timelines (like Interactions' *Use on every page*) | 5e |
@@ -143,8 +143,9 @@ eases file is the first piece of the runtime.
   lives in the Live Editor; the classic builder gets an *Open in the Live Editor to animate* link.
 - **Working offline.** Kinetic Scenes is a hosted app (`kinetic-scenes.unysonplus.com`). The AI Dev Kit can serve a
   local copy; the Creator should work with either, and say clearly when it can't reach one.
-- **Stable element keys.** Builder item keys survive edits, but duplicating a section copies them. Check how keys
-  behave on duplicate and template import before 5e, and re-key on duplicate if needed.
+- **Stable element keys.** ✅ *Checked for 5e:* builder item keys survive edits, and the Live Editor's duplicate gives
+  the copy (and everything inside it) new keys, so a copy is never silently in a timeline. A track whose element is
+  gone, or that came from another page, is listed as *Not on this page* and can be moved to a picked element.
 - **Interactions and Scroll Keyframes.** They stay as they are (simple, inline, fine for most needs). Later, an
   *Open in Animation Creator* could turn one into a page timeline (one way), and an Interactions step could
   **play a timeline**, so a click can start a sequence made in the Creator.

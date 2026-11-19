@@ -1595,7 +1595,7 @@
           "id": "p29-ship",
           "title": "Save and ship",
           "detail": "Page timelines stored on the page, a small runtime, devices, reduced motion and Import / Export.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p29-scroll",

@@ -190,8 +190,11 @@ are on the page.
   transform and nothing around it moves (no layout shift).
 - Only **Keyframes clips** on a track count. Kinetic Scenes' other presets do not play on the page yet.
 - When Kinetic Scenes closes, every element goes back to how it was.
-- **Saving a timeline to the page is the next step** (the Animation Creator's *Save and ship*): for now a timeline lasts
-  while both windows are open. Page mode never touches the scene you keep in Kinetic Scenes, nor any project.
+- **Save to page** stores every timeline on the page (post meta, not the builder content), and visitors get it at once.
+  **Runs on** limits a timeline to desktop, tablet or phone, and **Import / Export** moves timelines between pages and
+  sites (JSON, or a CSV spreadsheet). The full guide, with what visitors get, is the
+  [Page Timelines](/animation-engine/page-timelines) page. Page mode never touches the scene you keep in Kinetic Scenes,
+  nor any project.
 - Visitors who ask for **reduced motion** will see each timeline's last moment. *Preview on the page* plays it anyway,
   since you asked to see it.
 
@@ -215,7 +218,15 @@ builder key, and `e` is the curve into the keyframe as CSS `linear()`, baked by 
 class="upw-timelines">` holding the list is read and armed when the page loads.
 
 Kinetic Scenes sends the page `upw-studio:page-timeline` (the timelines, after every edit), `upw-studio:page-seek` (the
-playhead), and `upw-studio:page-arm` / `page-play` / `page-stop`, over the same two-window link as above.
+playhead), and `upw-studio:page-arm` / `page-play` / `page-stop`, over the same two-window link as above. **Save to
+page** sends `upw-studio:page-save { timelines }`; the editor stores them through the `fw_live_editor_save_timelines`
+AJAX action (the editor's nonce, `edit_post` on the page) and answers `upw-studio:page-saved { ok, timelines | message }`.
+The page's saved timelines come with the first `upw-studio:page` message, with `canSave` (false without the Animation
+Engine). A timeline may also carry `runsOn: ['desktop'|'tablet'|'phone']` (left out when all three).
+
+On a visitor page with timelines, the Animation Engine stamps `data-upw-tl="<key>"` on each element they use, prints
+each track's first moment as CSS in the head (under `.upw-tl-on`, so there is no flash), and the list as `<script
+type="application/json" class="upw-timelines">` with the runtime in the footer.
 
 ## Show a state on the canvas
 

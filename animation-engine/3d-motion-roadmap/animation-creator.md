@@ -7,7 +7,7 @@ description: The plan for the Animation Creator — keyframe any element on a re
 
 # Animation Creator — the plan
 
-*Planned November 2026. Status: **in progress**: 5a, 5b and 5c shipped ([Animate in the Live Editor](/extensions/live-editor#animate-kinetic-scenes-beside-the-page-beta)).*
+*Planned November 2026. Status: **in progress**: 5a–5d shipped ([Animate in the Live Editor](/extensions/live-editor#animate-kinetic-scenes-beside-the-page-beta), [page timelines](/extensions/live-editor#page-timelines-beta)).*
 
 *This page is the plan; the
 [Roadmap](./roadmap#phase-5) carries the phase list and its status.*
@@ -128,7 +128,7 @@ Each phase ships something useful on its own.
 | **5a · Springs everywhere** ✅ *shipped (AE 1.5.21)* | The Kinetic Scenes named curves, springs included, plus a cubic-bezier field, in every Animation Engine ease picker (Scroll Motion, Scroll Keyframes, Interactions, States) from one shared eases file | — |
 | **5b · Bursts** ✅ *shipped (AE 1.5.23)* | A **Burst** Interactions step and button effect: circles, sparks, lines and confetti bursting from an element on click or hover (grows the Confetti module) | — |
 | **5c · Connect** ✅ *shipped (Live Editor 0.3.20, Studio 0.1.66)* | Kinetic Scenes *Page mode*; the Live Editor's **Animate**; element list, picking and selection in both directions; read-only display of an element's existing motion | Kinetic Scenes bridge |
-| **5d · Author on the page** | Tracks, keyframes, curves and triggers (load, in view, hover, click); play and scrub on the canvas through the visitor runtime | 5c + the runtime |
+| **5d · Author on the page** ✅ *shipped (Live Editor 0.3.21, AE 1.5.28, Studio 0.1.67)* | Tracks, keyframes, curves and triggers (load, in view, hover, click); play and scrub on the canvas through the visitor runtime | 5c + the runtime |
 | **5e · Save and ship** | Page-timeline storage, the visitor runtime, Runs on breakpoints, reduced motion, **Import / Export**, docs and a demo page | 5d |
 | **5f · Scroll timelines** | Scroll trigger, pinned or not, with the playhead as the scroll position; listed on the [Scroll Timeline](/animation-engine/scroll-timeline) beside the page's other scroll motion | 5e |
 | **5g · Presets and AI** | Kinetic Scenes' motion presets as one-click page starting points; save a timeline as your own preset; the AI assist and MCP tools author page timelines | 5e |

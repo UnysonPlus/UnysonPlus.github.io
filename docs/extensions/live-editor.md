@@ -134,11 +134,88 @@ to the page you are editing. It is the first part of the
 - Every edit you make in the Live Editor is sent across, so the list stays current.
 - The button reads **Connected** while Kinetic Scenes is open; click it to bring that window forward. Closing either
   window ends the link.
-- Keyframing the page's elements in the Kinetic Scenes timeline is the next step of the Animation Creator; for now
-  the connection shows and picks.
+- In page mode you can also **keyframe the page's elements**: see [Page timelines](#page-timelines-beta) below.
 
 The two windows only talk to each other: the Live Editor listens to and writes to the Kinetic Scenes window it opened,
 at Kinetic Scenes' own address, and nothing else. If your browser blocks the new window, allow pop-ups for your site.
+
+## Page timelines (beta)
+
+A **page timeline** moves elements of the real page: a hero heading rising in, cards following one after another,
+an icon that swings while the pointer is over its box. You make it in Kinetic Scenes' own timeline, with its keyframe
+and curve editors, and the **canvas plays it as you work**, through the same small runtime visitors get.
+
+### Make one
+
+1. In the Live Editor, click **Animate**. Kinetic Scenes opens in page mode, with the **Page panel** on its left.
+2. **Pick an element**: click it on the canvas, or in the Page panel's list.
+3. Click **Add *element* to the timeline** (or double-click its row). It becomes a **track** on the timeline, with a
+   Keyframes clip and a first move to change: it rises 30% of its height and fades in, over 0.6 seconds, eased with
+   *Soft land*.
+4. Select the Keyframes clip and change the moves in the Inspector: add keyframes at the playhead, set **Move X / Y**,
+   **Scale**, **Rotate**, **Opacity** and **Blur**, and pick the curve into each keyframe (springs such as *Pop over*
+   included). You can also drag the element's box on the stage to set Move X / Y at the playhead.
+5. **Play or scrub** the timeline: the element on the canvas moves with the playhead, frame for frame.
+6. Add more elements the same way. Each gets its own track, so their timing is easy to offset.
+
+The Kinetic Scenes stage shows a simple **map** of the tracked elements: a box where each sits on the page, so you can
+see what moves where. The real result is the canvas.
+
+### What plays it
+
+In the Page panel's **Timeline** box:
+
+| Setting | What it does |
+| --- | --- |
+| **Plays on** | **Page load** (as the page opens), **In view** (when its element scrolls into view), **Hover** (while the pointer is over its element, and back when it leaves) or **Click** |
+| **The element that starts it** | Hover, click and in view: by default the first track's element; choose another track's element, or the element picked on the page |
+| **Length (s)** | How long the timeline is |
+| **Play back on leaving** | Hover: when the pointer leaves, it plays back to the start (on), or stays where it got to (off) |
+| **Clicks go forward, then back** | Click: each click plays it the other way, like a toggle |
+| **Every time it comes into view** | In view: plays again each time (off: once) |
+| **Loop** / **Back and forth** | Page load and click: repeat for ever, optionally going back and forth |
+
+**Preview on the page** plays it on the canvas as a visitor gets it: it shows the first moment and waits for its
+trigger, so hover the element, click it or scroll it into view. Any edit or scrub ends the preview.
+
+A page can have **several timelines** (**New** in the Timeline box): one for the hero on load, another for a card on
+hover. Pick one in the list to edit it; the canvas shows only the one you are editing, and the other elements as they
+are on the page.
+
+### Good to know
+
+- **Move X / Y are a share of the element's own size** (Move Y 30 = down 30% of its height), so a move fits the element
+  on every screen size. **Blur** is 10 pixels a step.
+- Motion uses the CSS `translate`, `rotate` and `scale` properties, `opacity` and `filter`, so an element keeps its own
+  transform and nothing around it moves (no layout shift).
+- Only **Keyframes clips** on a track count. Kinetic Scenes' other presets do not play on the page yet.
+- When Kinetic Scenes closes, every element goes back to how it was.
+- **Saving a timeline to the page is the next step** (the Animation Creator's *Save and ship*): for now a timeline lasts
+  while both windows are open. Page mode never touches the scene you keep in Kinetic Scenes, nor any project.
+- Visitors who ask for **reduced motion** will see each timeline's last moment. *Preview on the page* plays it anyway,
+  since you asked to see it.
+
+### For developers: the runtime
+
+The runtime is the Animation Engine's `modules/page-timelines/static/js/upw-timeline.js` (about 3 KB gzipped, no
+dependencies). The Live Editor loads it in its canvas. It exposes `window.upwTimeline`:
+
+| Call | Does |
+| --- | --- |
+| `load(list, { edit })` | Replaces the timelines; with `edit` they are held still for scrubbing, otherwise armed for visitors |
+| `seek(id, t)` | Shows timeline `id` at `t` seconds |
+| `play(id, from)` | Plays it from `from`, with its repeat and back-and-forth |
+| `arm(id)` | Waits for its trigger, as a visitor would |
+| `clear()` | Stops everything and puts the elements back |
+
+A timeline is `{ id, name, duration, repeat, yoyo, trigger: { type, target, once, leave, toggle, threshold, delay },
+tracks: [ { target, frames: [ { t, x, y, scale, rotate, opacity, blur, ease, e } ] } ] }`. `target` is the element's
+builder key, and `e` is the curve into the keyframe as CSS `linear()`, baked by Kinetic Scenes from its named curve
+(`ease`), so the runtime needs no curve library. On a visitor page, a `<script type="application/json"
+class="upw-timelines">` holding the list is read and armed when the page loads.
+
+Kinetic Scenes sends the page `upw-studio:page-timeline` (the timelines, after every edit), `upw-studio:page-seek` (the
+playhead), and `upw-studio:page-arm` / `page-play` / `page-stop`, over the same two-window link as above.
 
 ## Show a state on the canvas
 

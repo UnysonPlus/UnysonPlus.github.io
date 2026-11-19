@@ -1589,7 +1589,7 @@
           "id": "p29-author",
           "title": "Keyframe page elements",
           "detail": "Picked elements become timeline tracks: keyframes, curves and triggers, played on the real page through the visitor runtime.",
-          "status": "planned"
+          "status": "done"
         },
         {
           "id": "p29-ship",

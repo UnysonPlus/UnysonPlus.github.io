@@ -359,7 +359,7 @@ Most of it improves **Interactions** directly, so every existing Interaction get
 - **6d · Layout animation.** ✅ *Shipped in Animation Engine 1.5.24 (November 2026): the Layout Animation card ([docs](../engines/interaction/layout-animation/index.md)).* Opt-in per element or section: when its size or position changes (an accordion opens, a
   grid filters or reorders, a card expands, a state changes layout), it glides from the old layout to the new one
   instead of jumping. Measured before and after, animated with transforms, so it stays smooth.
-- **6e · Shared-element page transitions.** Mark an element (a product photo, a post's image or title) as shared,
+- **6e · Shared-element page transitions.** ✅ *Shipped in Animation Engine 1.5.25 (November 2026): the Shared Element card and "Featured images and titles flow into their post" ([docs](../engines/page-level/page-transitions/index.md#shared-elements-between-pages)).* Mark an element (a product photo, a post's image or title) as shared,
   and it flows from its place on one page into its place on the next, using the browser's View Transitions where
   supported and an ordinary page transition elsewhere. Grows the Page Transitions module.
 - **6f · Mouse-move Interactions.** A scrubbed *mouse move* trigger (over an element or the whole window) that moves
@@ -385,7 +385,7 @@ Most of it improves **Interactions** directly, so every existing Interaction get
 | **3** | Rive + WebGL image transitions + particle presets | Medium–High | ✅ Shipped (Rive · image transitions · particle presets) |
 | **4** | Interactions: targets, live preview, states, a timeline, reuse and breakpoints | Very high | ✅ Shipped (I1–I5) |
 | **5** | [Animation Creator](./animation-creator): keyframe any page element in Kinetic Scenes, springs, bursts | Very high | 🚧 5a–5b shipped; 5c–5h planned |
-| **6** | Last gaps with Framer / Webflow: more Interaction properties, Lottie / Rive steps, Set, layout animation, shared-element transitions, mouse-move, saved presets | High | 🚧 6a–6d shipped; 6e–6g planned |
+| **6** | Last gaps with Framer / Webflow: more Interaction properties, Lottie / Rive steps, Set, layout animation, shared-element transitions, mouse-move, saved presets | High | 🚧 6a–6e shipped; 6f–6g planned |
 
 ## What we build vs. what stays curated {#build-vs-curated}
 

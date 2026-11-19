@@ -59,6 +59,50 @@ Some styles reveal extra controls:
 - On **navigation** to an internal link, the overlay plays in reverse (covering the screen), then the browser navigates.
 - Optionally, a **loader** shows once per session on the first page, until it finishes (with an 8-second cap).
 
+## Shared elements between pages
+
+A **shared element** flows from its place on one page into its place on the next, while the rest of the page
+cross-fades: a product photo grows into the product page, a card's title slides up into the post's heading, a logo
+stays put while everything around it changes. It uses the browser's **View Transitions**, so it is smooth and costs
+almost nothing.
+
+**→ [See it on the Interactions demo page](https://demos.unysonplus.com/animation-engine/interactions/)** (scroll to
+*Shared elements*): the square flows into the small one on the Exit Animations page, and back with the browser's
+Back button.
+
+### By name: the Shared Element card
+
+On the element, **Animations → Add Animation → Shared Element**, and give it a **Name** (letters, numbers and dashes:
+`product-photo`, `site-logo`). Give **the same name** to the element it should flow to, on the other page. That is
+all: a page with a Shared Element card opts in to page transitions by itself, and two pages with the same name
+connect.
+
+- `{post}` in the name becomes the post's ID, for post templates (`post-{post}-photo`).
+- Each name must be used **once per page**; if it appears twice, the second is ignored (two elements with one name
+  would cancel the whole transition).
+
+### Automatically: featured images and titles
+
+**Theme Settings → Animations → Page Transitions → Featured images and titles flow into their post.** From a list
+of posts (the blog, an archive, a grid of cards), the clicked card's picture and title move into the post's
+featured image and title as the page changes, and back again when the visitor returns to the list. No names to set.
+
+| Option | Default | What it does |
+| --- | --- | --- |
+| **Featured images and titles flow into their post** | Off | The automatic list ↔ post transition. Independent of *Enable page transitions*. |
+| **Shared elements: duration** | 0.45 s | How long the move takes (0.2–1.5 s). |
+| **Shared elements: easing** | Soft land | The speed curve, from the shared curve picker. |
+
+### Good to know
+
+- **Browsers:** Chrome and Edge (126+) and Safari (18.2+). Other browsers change page as before, so nothing breaks.
+- **With the overlay transitions on:** in browsers that have View Transitions, the cover overlay steps aside on pages
+  that use shared elements (it would hide them); in the others it plays as usual.
+- **Reduce motion:** visitors who ask for less motion change page without the transition.
+- While a page arrives through a transition, `<html>` carries the class `upw-vt-active`, for CSS that should wait.
+- A card's picture and title are found from the clicked link: the nearest `article` or list item around it, then its
+  first image and first heading.
+
 ## Performance & accessibility
 
 - **Loads only when enabled**; nothing is output otherwise (front-end only).

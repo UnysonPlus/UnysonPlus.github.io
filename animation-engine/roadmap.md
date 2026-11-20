@@ -2,7 +2,7 @@
 sidebar_position: 1.5
 title: Roadmap
 slug: /roadmap
-description: What is planned next for the Animation Engine and the Live Editor around it, starting with the design tools Framer has that Unyson+ does not yet. Shipped work lives in the docs, not here.
+description: What is planned next for the Animation Engine and the Live Editor around it, starting with the design tools Framer and Webflow have that Unyson+ does not yet. Shipped work lives in the docs, not here.
 ---
 
 # Roadmap
@@ -66,6 +66,50 @@ Theme Settings rather than in the Animation Engine. They are here so the plan si
 
 - **A desktop app.** The Live Editor runs in the browser, inside the WordPress site people already own.
 - **Hosting.** Unyson+ sites run on whatever WordPress hosting the owner chooses.
+
+## Phase 8: Webflow's design tools {#phase-8}
+
+*Added 20 November 2026.* The same pass over Webflow's Designer. Its interactions are nearly all matched already;
+what it still does better is the **Style panel** (classes, one full Effects group, variable modes, more breakpoints)
+and a few triggers and platform pieces. Items Phase 7 already covers (components, sharing and staging) are not
+repeated. ([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#webflow-design-tools).)
+
+- **8a · One Effects group on every element.** The same group on every element and section: blend mode, opacity,
+  outline, several stacked box shadows, still 2D and 3D transforms (move, rotate, scale, skew, perspective), CSS
+  transitions for hover and state changes, filters, all backdrop filters (blur, brightness, saturation...), cursor,
+  pointer events, and custom properties (CSS variables). Today these exist on some elements only (the Div's Blend
+  Mode and Backdrop Blur, Box Shadow and Filter on a few); this makes them uniform, with the values on the preset
+  where a preset owns the look.
+- **8b · Component triggers.** Interactions triggers that fire on another component's own events: a **tab** changes,
+  a **slider** changes slide, a **dropdown** or **mega menu** opens or closes, the **mobile menu** opens or closes.
+- **8c · "Page starts loading" trigger.** A load trigger that fires as soon as the page begins to load (before
+  images and fonts), next to today's one that waits until it has loaded, for intro sequences that must start at once.
+- **8d · Variable modes.** Give the Theme Settings colours (and sizes) more than one set of values (Light, Dark, a
+  second brand) and switch a section, a page or the whole site between them; a visitor's dark-mode preference can
+  pick the mode.
+- **8e · More breakpoints.** Larger-than-desktop sizes (1280, 1440, 1920) and **phone landscape** in the Live
+  Editor's device toggle, in every responsive option and in **Runs on**, with values cascading from the larger size
+  down unless changed.
+- **8f · A class system.** Style through named classes in the Live Editor: give an element a class, and styling the
+  class restyles every element that has it. Combo classes (a class that only adds to another), a "where it comes
+  from" view (which classes and presets a value is inherited from) and a count of where else the class is used. It
+  sits on top of the presets rather than beside them, so a button preset is a class with a name.
+- **8g · Page A/B tests.** Two versions of a page (or of a section) shown to a share of visitors each, with the goal
+  (a click, a form sent, a sale) measured in Visitor Insights and the winner kept with one click.
+- **8h · A built-in language switcher.** Locales per site, each page's translation linked to its original
+  (translated text, slugs and SEO), a language switcher element, and translated custom post types; built on the
+  AI page translation that exists today.
+- **8i · A "Get started" checklist.** A short checklist in the Live Editor for a new site (logo, colours, fonts, menu,
+  first page, SEO, publish) that ticks itself off as each is done.
+
+### Build order
+
+1. **8a** Effects group, **8b** component triggers and **8c** the start-of-load trigger: small, and every element
+   gains from them.
+2. **8e** more breakpoints, then **8d** variable modes.
+3. **8f** the class system, after **7a** components (they overlap: both reuse a look across elements).
+4. **8g** page A/B tests and **8h** the language switcher.
+5. **8i** the checklist, at any point.
 
 ## Open ideas
 

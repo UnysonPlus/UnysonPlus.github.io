@@ -171,6 +171,25 @@ finds where it is still ahead: drawing, typing and sharing the page. Each gap is
 | A desktop app, hosting | Runs in the browser on any WordPress hosting | Not planned |
 
 
+## Webflow's design tools {#webflow-design-tools}
+
+*Added 20 November 2026.* The same pass over Webflow's Designer (the Style and Interactions panels and the top bar).
+Each gap is an item on the [Roadmap](/animation-engine/roadmap#phase-8).
+
+| Webflow has | Unyson+ | Roadmap |
+| --- | --- | --- |
+| Effects on every element: blending, opacity, outline, box shadows, 2D & 3D transforms, transitions, filters, backdrop filters, cursor, pointer events, custom properties | Most exist on some elements (Blend Mode, Backdrop Blur, Box Shadow, Filter, Cursor, Z-Index), not as one group on all | 8a |
+| Triggers for navbar, dropdown, tab and slider events | Hover, click, load, in view, scrolled past, mouse move | 8b |
+| "When page starts loading" and "finishes loading" | One load trigger, and the Preloader | 8c |
+| Variable modes | Theme Settings colours and fonts, one set of values | 8d |
+| Larger breakpoints and phone landscape | Desktop, tablet, phone | 8e |
+| Class-based styling: combo classes, inheritance, "used on this page" | Per-element options, Theme Settings presets, a CSS Class field | 8f |
+| A/B tests (Optimize) | Visitor Insights, no page tests | 8g |
+| Localization with a locale switcher | AI translation into a draft copy, multilingual plugins | 8h |
+| A "Get started" checklist | — | 8i |
+| Components, sharing and staging | — | 7a, 7i |
+| Element and page triggers, timed animations, loop, preview, per-breakpoint triggers, CMS, analytics, e-commerce, memberships, forms | ✅ Interactions, Page Timelines, Runs on, Post Types and Custom Fields, Visitor Insights, Shop, Membership, Forms | Shipped |
+
 ## What stays our advantage
 
 - **Presets for non-designers.** Most site owners will never open a timeline. Keep the one-click effects front and centre and make the interaction model the *power* layer underneath.

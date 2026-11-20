@@ -60,6 +60,31 @@ A **Web page** carries no byline and no publisher, because most pages have neith
 meaningful sense. Putting an author on a contact page is a small lie that a rich result will
 happily repeat.
 
+### Headline and author
+
+<img src="/img/seo/seo-schema-types.png" alt="The 'What each content type is' box: for each content type, its type, its headline (The SEO title or The page title) and its author (The person who wrote it or The site itself)" width="1644" />
+
+An *Article*, *Blog post* or *News article* also publishes a **headline** and an **author**. Each
+content type has two settings for them, beside its type:
+
+| Setting | Default | The other choice | When to switch |
+| --- | --- | --- | --- |
+| **Headline** | *The SEO title* | *The page title (its H1)* | The heading visitors see differs from the title written for search results, and the structured data should match the page. |
+| **Author** | *The person who wrote it* (their own `Person` record, linked to their author page) | *The site itself* | The content is written in the name of the business: "By the … team". The author then points to the [site identity](#site-identity), the same record as the publisher, and no `Person` record is published for the writer. |
+
+Both defaults keep the output the extension has always had, so nothing changes until you switch
+one. Neither setting does anything while the type is *Web page* or *No structured data*.
+
+If the site identity is replaced by a pasted business record ([Custom schema](./custom-schema.md),
+*It replaces the site identity*), "the site itself" points to that record: author and publisher
+both carry its `@id`.
+
+**Example: travel guides on a villa's site.** A *Guides* post type, set to *Article*, headline *The
+page title (its H1)*, author *The site itself*. Every guide then publishes an `Article` whose
+headline is the guide's H1, whose dates are the post's published and modified dates, whose image
+is its featured image, and whose author and publisher are the villa's own record, with nothing to
+fill in per guide.
+
 :::note
 The **WebSite** node and its search box are emitted only on your home page. Google reads them
 from there, and repeating them on every URL does not make a search box more likely — it just

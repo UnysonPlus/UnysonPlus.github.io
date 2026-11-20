@@ -30,8 +30,9 @@ consent plugin is holding tracking back.
 
 ## Find your way around
 
-Every screen shares one sidebar, grouped by the question each view answers. The period switch (7, 30
-or 90 days, or 12 months) sits at the top right.
+Every screen shares one sidebar, grouped by the question each view answers. The date picker at the top right sets the period for every
+report: Today, Yesterday, the last 7, 30 or 90 days, the last 12 months, or any range you pick on its
+calendar. See [Choose the period](./traffic.md#choose-the-period).
 
 <img src="/img/extensions/visitor-insights/sidebar.png" alt="The Visitor Insights sidebar, with views grouped by the question each one answers" width="220" />
 

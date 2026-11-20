@@ -2,10 +2,55 @@
 sidebar_position: 3
 title: "Traffic Reports in Visitor Insights"
 sidebar_label: "Traffic reports"
-description: "Read the Overview, compare periods, see how each channel performs, add notes to the chart, and dig into one page."
+description: "Choose any period with the date picker, read the Overview, compare periods, see how each channel performs, add notes to the chart, and dig into one page."
 ---
 
 # Traffic reports
+
+## Choose the period
+
+The button at the top right of every report names the period you are looking at. Click it for the date
+picker.
+
+<img src="/img/extensions/visitor-insights/date-picker.png" alt="The date picker: two months of calendar on the left, the quick picks and Apply on the right" width="801" />
+
+**Quick picks** (on the right) apply at once:
+
+| Pick | Shows |
+| --- | --- |
+| **Today** | Today so far. New visits show within about a minute. |
+| **Yesterday** | The whole of yesterday. |
+| **Last 7 days**, **Last 30 days**, **Last 90 days** | That many days up to today. 30 days is where every report starts. |
+| **Last 12 months** | The year up to today. |
+
+**Any other range**, on the calendar:
+
+1. Click the first day, then the last day. Click one day and **Apply** to see that day alone.
+2. **Apply**.
+
+Days that had visits are underlined, so you can see at a glance where there is anything to read. Days after
+today, and days older than your site keeps (**Settings → Keep reports for**, 13 months by default), cannot be
+picked. The arrows move between months. **Esc** or **Cancel** closes it without changing anything.
+
+### The period follows you
+
+The period you pick applies to **every report**, and stays when you move between them, open a page's
+details, filter by channel or download a CSV. The CSV file is named after its dates.
+
+It also sets the comparison. Every *"+12%"* compares the period with the same number of days just before it:
+Today with yesterday, a picked week with the week before it.
+
+### Good to know
+
+- Days follow your site's time zone, and a day is the smallest unit.
+- A range can be up to two years long.
+- **Keywords from Search Console** run two to three days late. The fixed periods end where Search Console's
+  numbers end. Today, Yesterday or a recent picked range asks for exactly those days, so the newest days may
+  have no Search Console rows yet. Keywords recorded on visits are there at once.
+- **Visitor paths** are kept for 7 to 90 days (**Settings → Keep visit paths**), so a longer range shows only
+  the visits still in the log.
+- **Heatmaps** add one more quick pick, **Since the page was last edited**. See
+  [Heatmaps](./heatmaps.md#choose-a-period).
 
 ## Overview
 

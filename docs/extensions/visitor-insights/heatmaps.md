@@ -25,12 +25,16 @@ and after you change the layout around it.
 
 ## Choose a period
 
+The Heatmaps view uses the same [date picker](./traffic.md#choose-the-period) as every report, so you can
+also pick any range on its calendar. It has one extra quick pick, **Since the page was last edited**.
+
 | Period | Use it to |
 | --- | --- |
 | **Today** | Check a change you just made, or that tracking works on a new site. New clicks show within about a minute. |
 | **Yesterday** | Read one full day, such as the day a campaign or a post went out. |
 | **Last 7 days**, **30 days**, **90 days**, **12 months** | See the usual pattern. 30 days is where the map starts. |
 | **Since the page was last edited** | See only clicks on the layout the page has now. It starts on the day the page was last saved, so older clicks on a different layout do not blur the map. |
+| **A range on the calendar** | Compare before and after a change, or read a campaign's own days. |
 
 Every map names its period and its number of page views above the page, for example *"Last 30 days · 2,140
 page views"*.
@@ -45,7 +49,8 @@ Good to know:
   also includes the clicks from earlier on the day you saved it.
 - A page with no post behind it (an archive or a search page) has no edit date, so that choice shows the last
   30 days.
-- The period applies in all three places: the Heatmaps view, the full-screen toolbar and the Live Editor.
+- The full-screen toolbar and the Live Editor have the quick picks in a menu of their own, without the
+  calendar.
 
 ## Sections
 

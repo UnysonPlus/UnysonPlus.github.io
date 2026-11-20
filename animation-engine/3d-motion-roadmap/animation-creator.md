@@ -8,7 +8,7 @@ description: The plan for the Animation Creator — an Animate workspace in the 
 # Animation Creator — the plan
 
 *Planned November 2026, revised 19 November 2026. Status: **in progress**: 5a–5e shipped; the Animate workspace
-(A1–A5) is under way: A1 and A2 shipped.*
+(A1–A5) shipped; 5g and 5h are next.*
 
 *This page is the plan; the [Roadmap](./roadmap#phase-5) carries the phase list and its status.*
 
@@ -99,9 +99,9 @@ and Save. Design's Edit / Preview / Play and the element tools come back with De
 | **5c–5e · Page timelines** ✅ *AE 1.5.29, Live Editor 0.3.22* | The page timeline data, runtime, saving, Runs on, Import / Export, demo (edited in Kinetic Scenes page mode, replaced by A2) | — |
 | **A1 · Clean canvas** ✅ *Live Editor 0.3.23* | The Scroll Ruler, the Scroll Timeline button, the AI Assistant and the chat bubble no longer appear on the Live Editor canvas | — |
 | **A2 · The Animate workspace** ✅ *Live Editor 0.3.24* | Design / Animate switch and toolbar; Navigator; contextual side panel; the timeline dock (tracks, keyframes, drag to retime, playhead, scrubbing); triggers, Runs on, Preview as visitor, Import / Export; one Save and one undo | A1 |
-| **A3 · Class targets** | Animate every element with a class, with stagger and order, in the runtime, the data, the first-moment CSS and the CSV | A2 |
-| **A4 · Retire the window** | Animate no longer opens Kinetic Scenes; page mode removed from it; docs, screenshots and demo updated | A2 |
-| **A5 · Scroll in Animate** (was 5f) | The Scroll tab: scroll timelines (the playhead is the scroll position, pinned or not), the existing scroll animations, the ruler toggle; the floating tools leave the public pages | A2 |
+| **A3 · Class targets** ✅ *AE 1.5.32* | Animate every element with a class, with stagger and order, in the runtime, the data, the first-moment CSS and the CSV | A2 |
+| **A4 · Retire the window** ✅ *Live Editor 0.3.25, Studio 0.1.69* | Animate no longer opens Kinetic Scenes; page mode removed from it; docs, screenshots and demo updated | A2 |
+| **A5 · Scroll in Animate** (was 5f) ✅ *AE 1.5.32, Live Editor 0.3.25* | The Scroll tab: scroll timelines (the playhead is the scroll position, pinned or not), the existing scroll animations, the ruler toggle; the floating tools leave the public pages | A2 |
 | **5g · Presets and AI** | Starting points, your own presets, the AI Assistant and MCP tools authoring timelines | A2 |
 | **5h · Site-wide** | Timelines used on every page (like Interactions' *Use on every page*) | A3 |
 

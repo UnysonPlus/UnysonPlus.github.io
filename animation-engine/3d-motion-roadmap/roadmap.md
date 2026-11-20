@@ -343,9 +343,9 @@ visitor gets. **The full plan: [Animation Creator](./animation-creator).** Why i
   appear on the Live Editor canvas.
 - **A2 · The Animate workspace.** ✅ *Shipped (Live Editor 0.3.24): [the guide](/animation-engine/page-timelines).* Design / Animate switch and toolbar, Navigator, contextual side panel, a timeline dock
   grown from the Interaction timeline, triggers, Runs on, Preview as visitor, Import / Export, one Save and one undo.
-- **A3 · Class targets.** Animate every element with a class, with stagger and order.
-- **A4 · Retire the window.** Animate no longer opens Kinetic Scenes; page mode removed from it.
-- **A5 · Scroll in Animate** (was 5f). Scroll timelines, the page's scroll animations and the ruler in a Scroll tab;
+- **A3 · Class targets.** ✅ *Shipped (Animation Engine 1.5.32, Live Editor 0.3.25).* Animate every element with a class, with stagger and order.
+- **A4 · Retire the window.** ✅ *Shipped (Live Editor 0.3.25, Kinetic Scenes 0.1.69).* Animate no longer opens Kinetic Scenes; page mode removed from it.
+- **A5 · Scroll in Animate** (was 5f). ✅ *Shipped (Animation Engine 1.5.32, Live Editor 0.3.25): [scroll timelines](/animation-engine/page-timelines#scroll-the-scroll-position-is-the-playhead) and the [scroll tools](/animation-engine/scroll-timeline) in the Live Editor.* Scroll timelines, the page's scroll animations and the ruler in a Scroll tab;
   the floating tools leave the public pages.
 - **5g · Presets and AI.** Starting points, your own presets, the AI Assistant and MCP tools authoring timelines.
 - **5h · Site-wide.** Timelines used on every page.
@@ -394,7 +394,7 @@ Most of it improves **Interactions** directly, so every existing Interaction get
 | **2** | Parametric scroll-camera 3D scenes (WebGL Object presets) | Very high | ✅ Tunnel · Gallery Dolly · Product Orbit · WebGL Motion Gallery designs |
 | **3** | Rive + WebGL image transitions + particle presets | Medium–High | ✅ Shipped (Rive · image transitions · particle presets) |
 | **4** | Interactions: targets, live preview, states, a timeline, reuse and breakpoints | Very high | ✅ Shipped (I1–I5) |
-| **5** | [Animation Creator](./animation-creator): keyframe any page element in Kinetic Scenes, springs, bursts | Very high | 🚧 5a–5e shipped; Animate workspace (A1–A5), 5g, 5h planned |
+| **5** | [Animation Creator](./animation-creator): keyframe any page element in Kinetic Scenes, springs, bursts | Very high | 🚧 5a–5e and the Animate workspace (A1–A5) shipped; 5g, 5h planned |
 | **6** | Last gaps with Framer / Webflow: more Interaction properties, Lottie / Rive steps, Set, layout animation, shared-element transitions, mouse-move, saved presets | High | ✅ Shipped (6a–6g) |
 
 ## What we build vs. what stays curated {#build-vs-curated}

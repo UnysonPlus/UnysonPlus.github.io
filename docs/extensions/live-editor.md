@@ -136,7 +136,9 @@ is [Page Timelines](/animation-engine/page-timelines).
 In Animate:
 
 - **The toolbar** shows the timeline you are editing (and **+** for a new one), back to the start, **Play** (or Space),
-  the time, and **Preview**, which plays it as a visitor gets it (it waits for its trigger). Edit / Preview / Play,
+  the time, **Preview**, which plays it as a visitor gets it (it waits for its trigger), and **Scroll tools**, which
+  shows the page as a visitor sees it with the [Scroll Timeline and Scroll Ruler](/animation-engine/scroll-timeline)
+  on it (the only place those two open). Edit / Preview / Play,
   Add, Templates and History step aside until you switch back to **Design**.
 - **The canvas** holds still and only selects: click an element to work on it (no text editing, dragging or
   deleting). The **Structure** list opens on the left, for picking elements that are hard to click.
@@ -148,8 +150,8 @@ In Animate:
 | Selected | The panel shows |
 | --- | --- |
 | Nothing | The timeline: name, **Plays on** and its options, length, loop, **Runs on**, Import / Export |
-| An element not in the timeline | **Animate this element** (a track with a first move: rise and fade in) and, for hover / click / in view, **Starts the timeline** |
-| An element in the timeline | Its values at the playhead: change one and it is keyed there |
+| An element not in the timeline | **Animate this element** (a track with a first move: rise and fade in), **Animate every “.class”** for each class it has, and, for hover / click / in view / scroll, **Starts the timeline** |
+| An element in the timeline (or one with a class that has a track) | Its values at the playhead: change one and it is keyed there; for a class track, **Stagger** and **Order** |
 | A keyframe (click its diamond) | Its time, its values (empty = not set by this keyframe), the **curve** into it with a picture of it, Delete |
 
 - **One Save:** the page's **Save** stores the timelines too, and **Undo / Redo** cover timeline changes like any

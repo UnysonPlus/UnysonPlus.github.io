@@ -1600,8 +1600,8 @@
         {
           "id": "p29-scroll",
           "title": "Scroll timelines",
-          "detail": "A page timeline driven by the scroll position, pinned or not.",
-          "status": "planned"
+          "detail": "A page timeline driven by the scroll position, pinned or not. Shipped in the Unyson+ Live Editor's Animate workspace, where page timelines are made now.",
+          "status": "done"
         },
         {
           "id": "p29-presets",

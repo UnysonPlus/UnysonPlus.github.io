@@ -2,7 +2,7 @@
 sidebar_position: 6
 title: Page Timelines
 slug: /page-timelines
-description: Keyframe the real elements of a page on a timeline in Kinetic Scenes, save it to the page, and play it for visitors on page load, in view, on hover or on click. Runs on chosen devices; Import / Export as JSON or CSV.
+description: Keyframe the real elements of a page on a timeline in the Live Editor's Animate workspace, and play it for visitors on page load, in view, on hover, on click or as they scroll (pinned or not). One element or every element with a class, on chosen devices; Import / Export as JSON or CSV.
 keywords: [page timeline, keyframe animation, wordpress animation timeline, animate elements, hover animation, scroll into view animation, spring animation]
 ---
 
@@ -20,7 +20,8 @@ the **Animation Engine** and **Live Editor** extensions.
 ## Live demo
 
 **→ [See it in the Animation Engine demos](https://demos.unysonplus.com/animation-engine/page-timelines/)**: an
-in-view cascade of three cards, a hover that moves two elements, and a click that plays forward, then back.
+in-view cascade of three cards, a hover that moves two elements, four tiles moved by one class track from the
+centre out, a section pinned while you scroll, and a click that plays forward, then back.
 
 <img src="/img/animation-engine/page-timelines/cascade-demo.png" alt="Three image cards in the middle of the cascade: the first in place, the second rising, the third still faint and low" width="1440" />
 
@@ -59,17 +60,50 @@ click it or scroll it into view. The timeline under the canvas zooms (**−** / 
 **Keys:** Space plays or pauses; Delete removes the selected keyframe (in Animate, Delete never deletes an element);
 Ctrl+Z / Ctrl+Y undo and redo timeline changes like any other edit.
 
+## Every element with a class
+
+One track can move **every element with a class**: four tiles, all the cards of a grid, each item of a list.
+
+1. Give the elements a class: each element's options, **Advanced › CSS class** (for example `pt-tile`).
+2. In Animate, select one of them. The panel offers **Animate every “.pt-tile” (4)**, with how many there are on the
+   page. It adds one track, named *Every .pt-tile (4)*.
+3. Select any of them to change the track: the values at the playhead are the first element's, and two more settings
+   appear: **Stagger (s)**, how long each element waits after the one before, and **Order**: *First to last* (the page
+   order), *Last to first*, *From the centre out* or *Random* (always the same random order, in the editor and for
+   visitors).
+
+<img src="/img/animation-engine/page-timelines/class-track.png" alt="Animate with one of the four tiles selected: the panel shows the track Every .pt-tile (4) with its values, Stagger 0.3 and Order From the centre out; the timeline has one row, Every .pt-tile (4)" width="1600" />
+
+On the timeline the track shows one bar for the first element and a faint bar for each of the others, so you see where
+the last one ends. When a stagger asks for more time than the timeline has, it is lengthened to fit. Add another
+element with the same class later and it joins in, with nothing to change.
+
+## Scroll: the scroll position is the playhead
+
+With **Plays on: Scroll**, scrolling plays the timeline: down plays it forward, up plays it back.
+
+- **Not pinned:** it runs while its element crosses the screen, from the moment the element comes in at the bottom
+  until it leaves at the top.
+- **Pin it:** the element (usually a whole section) holds at the top of the screen while the visitor scrolls the
+  distance you set in **Pinned for (screen heights)**, and the timeline runs from start to end over that distance.
+  Then the page carries on. On the editor's canvas the page keeps its own layout (no pinning), so scrub with the
+  playhead; **Preview** pins it as a visitor sees it.
+
+The **Length** of a scroll timeline sets the spacing of its keyframes (a keyframe at half the length happens half
+way through the scroll), not a time.
+
 ## The timeline's settings
 
 | Setting | What it does |
 | --- | --- |
 | **Name** | For you, in the picker and in exported files |
-| **Plays on** | **Page load**, **In view** (when its element scrolls into view), **Hover** (while the pointer is over its element, or keyboard focus is inside it) or **Click** |
+| **Plays on** | **Page load**, **In view** (when its element scrolls into view), **Hover** (while the pointer is over its element, or keyboard focus is inside it), **Click**, or **Scroll** (the scroll position is the playhead; see above) |
 | **The element that starts it** | Hover, click and in view: by default the first track's element; pick another, or select any element and use *Starts the timeline*, so hovering one card can move another |
 | **Play back on leaving** | Hover: when the pointer leaves, it plays back to the start (on), or stays where it got to (off) |
 | **Clicks go forward, then back** | Click: each click plays it the other way, like a toggle |
 | **Every time it comes into view** | In view: plays again each time (off: once) |
 | **Loop** / **Back and forth** | Page load and click: repeat for ever, optionally going back and forth |
+| **Pin it** / **Pinned for (screen heights)** | Scroll: hold the element in place while the timeline plays, over this many screen heights of scrolling |
 | **Length (s)** | How long the timeline is |
 | **Runs on** | **Desktop** (992 px and wider), **Tablet** (768 to 991 px), **Phone** (narrower than 768 px), the same breakpoints as [Interactions](/animation-engine/interactions). On the others, the elements stay as they are |
 | **Delete this timeline** | Removes it (Undo brings it back) |
@@ -84,6 +118,8 @@ Ctrl+Z / Ctrl+Y undo and redo timeline changes like any other edit.
   element keeps its own transform, and nothing around it moves.
 - **Reduced motion:** visitors who ask their system for less motion see each timeline's last moment and no motion
   (unless the engine's *Respect reduced motion* setting is off).
+- **Scroll:** a pinned timeline holds its element in place with CSS `position: sticky` inside a wrapper as tall as the
+  pin; nothing else on the page moves. Reduced motion shows the end state and pins nothing.
 - **Devices:** a timeline limited with **Runs on** plays only there, and starts or stops if the window is resized across
   a breakpoint.
 - **In the Live Editor**, Design holds timelines still (everything visible, like every other effect), Animate plays
@@ -106,9 +142,9 @@ What you export imports back unchanged. Imported timelines are not saved until y
 another page. After an import, such tracks show in orange on the timeline. Select an element on the page: the panel lists
 them under **Not on this page**, and **Use this element** gives that track's moves to it.
 
-The CSV columns: `timeline_id, timeline, plays_on, length, started_by, once, leave, toggle, threshold, delay, repeat,
-yoyo, runs_on, element, element_name, track_curve, t, x, y, scale, rotate, opacity, blur, curve`. `element` and
-`started_by` are builder keys, `t` is seconds, `curve` is a key from the shared curve list such as `soft_land` or `pop_over` (empty: the track's curve, or none).
+The CSV columns: `timeline_id, timeline, plays_on, length, started_by, once, leave, toggle, threshold, delay, pin,
+screens, repeat, yoyo, runs_on, element, element_name, track_curve, stagger, order, t, x, y, scale, rotate, opacity,
+blur, curve`. `element` and `started_by` are builder keys (or a class such as `.pt-tile`), `t` is seconds, `curve` is a key from the shared curve list such as `soft_land` or `pop_over` (empty: the track's curve, or none).
 
 ## Good to know
 

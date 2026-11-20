@@ -2,7 +2,7 @@
 sidebar_position: 5
 title: "Heatmaps and Section Analytics"
 sidebar_label: "Heatmaps and sections"
-description: "See clicks, scroll reach and attention on the live page at any device width, and how many visitors reach each page-builder section."
+description: "See clicks, scroll reach and attention on the live page at any device width, for today, yesterday, any period or since the last edit, and how many visitors reach each page-builder section."
 ---
 
 # Heatmaps and sections
@@ -22,6 +22,30 @@ table of every section below it.
 
 Clicks on a builder element are stored against that element, so the map stays accurate at every width
 and after you change the layout around it.
+
+## Choose a period
+
+| Period | Use it to |
+| --- | --- |
+| **Today** | Check a change you just made, or that tracking works on a new site. New clicks show within about a minute. |
+| **Yesterday** | Read one full day, such as the day a campaign or a post went out. |
+| **Last 7 days**, **30 days**, **90 days**, **12 months** | See the usual pattern. 30 days is where the map starts. |
+| **Since the page was last edited** | See only clicks on the layout the page has now. It starts on the day the page was last saved, so older clicks on a different layout do not blur the map. |
+
+Every map names its period and its number of page views above the page, for example *"Last 30 days · 2,140
+page views"*.
+
+**Under 100 page views, the map says so**: *"too few for a reliable map, so read it with care"*. With
+few visits, one person clicking five times looks like a hot spot. Choose a longer period, or wait for more
+visits.
+
+Good to know:
+
+- Days follow your site's time zone, and a day is the smallest unit. So **Since the page was last edited**
+  also includes the clicks from earlier on the day you saved it.
+- A page with no post behind it (an archive or a search page) has no edit date, so that choice shows the last
+  30 days.
+- The period applies in all three places: the Heatmaps view, the full-screen toolbar and the Live Editor.
 
 ## Sections
 
@@ -54,6 +78,22 @@ and channel, ready for a report or a client email. Very long pages are cut at 12
 
 From a page's heatmap, and from the Pages list, you can open the [recordings](./recordings.md) of visits
 that included that page.
+
+## Keep your own clicks out
+
+Your visits are not counted while you are logged in as someone who can edit content (the default under
+**Settings → Logged-in users**). Opening a heatmap or the Live Editor never counts either.
+
+You are counted as a visitor when you are **not** logged in: on your phone, in another browser, in a private
+window, or after logging out. To leave those out too:
+
+- **Settings → Excluded IPs**: add your home or office internet address. It covers every device on that
+  connection, logged in or not.
+- **The opt-out**: put `[visitor_insights_optout]` on a page and click it once in each browser you use. The
+  browser remembers it, even when you are logged out.
+
+If your page cache serves cached pages to logged-in users as well, it can hand you a page with the tracker
+in it. Most caches skip logged-in users; if yours does not, add your address under **Excluded IPs**.
 
 ## Limits
 

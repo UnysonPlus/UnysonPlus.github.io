@@ -22,8 +22,9 @@ otherwise you can spend effort "optimizing" something that was never the problem
 **Cause:** it detects assets by doing an internal homepage render, which a **full-page cache** (e.g. WP
 Engine) can serve from cache — hiding the real asset list.
 
-**Fix:** visit any page with **`?fw_asset_optimizer_discover=1`** appended to force a fresh render, then
-return to the settings and refresh. See [Asset Optimizer](/extensions/asset-optimizer).
+**Fix:** use **Re-scan the frontend** on the Asset Optimizer settings page. It forgets the
+remembered stylesheets and scripts, clears the cached bundles and crawls the site again, bypassing
+the page cache. See [Asset Optimizer](/extensions/asset-optimizer).
 
 ## A script broke after I combined it
 

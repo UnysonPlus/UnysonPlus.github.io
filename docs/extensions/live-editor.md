@@ -140,18 +140,19 @@ In Animate:
   shows the page as a visitor sees it with the [Scroll Timeline and Scroll Ruler](/animation-engine/scroll-timeline)
   on it (the only place those two open). Edit / Preview / Play,
   Add, Templates and History step aside until you switch back to **Design**.
+- **The timeline follows the page:** scroll the canvas and the timeline of the section in view comes up in the picker.
 - **The canvas** holds still and only selects: click an element to work on it (no text editing, dragging or
   deleting). The **Structure** list opens on the left, for picking elements that are hard to click.
 - **The timeline** docks under the canvas: one row per element, a diamond for each keyframe, the playhead in red.
-  Click or drag on the ruler to move the playhead (the page follows); drag a diamond to change its time (snapped to
-  0.05 s; hold Shift for free); **−** / **+** zoom; the arrow folds it away.
+  Click or drag on the ruler to move the playhead (the page follows); **double-click a row to add a keyframe** there
+  (or ◆+ in the header, or K); drag a diamond to change its time (snapped to 0.05 s; hold Shift for free); **−** / **+** zoom; the arrow folds it away.
 - **The panel on the right shows only what the selection needs:**
 
 | Selected | The panel shows |
 | --- | --- |
 | Nothing | The timeline: name, **Plays on** and its options, length, loop, **Runs on**, Import / Export |
-| An element not in the timeline | **Animate this element** (a track with a first move: rise and fade in), **Animate every “.class”** for each class it has, and, for hover / click / in view / scroll, **Starts the timeline** |
-| An element in the timeline (or one with a class that has a track) | Its values at the playhead: change one and it is keyed there; for a class track, **Stagger** and **Order** |
+| An element not in the timeline | *Start with* (11 starting points and your presets), **Animate this element**, **Animate every “.class”** for each class it has, and, for hover / click / in view / scroll, **Starts the timeline** |
+| An element in the timeline (or one with a class that has a track) | **◆ Add a keyframe at … s** and its values at the playhead (change one and it is keyed there); for a class track, **Stagger** and **Order**; *Replace its moves with* and *Save these moves as a preset* |
 | A keyframe (click its diamond) | Its time, its values (empty = not set by this keyframe), the **curve** into it with a picture of it, Delete |
 
 - **One Save:** the page's **Save** stores the timelines too, and **Undo / Redo** cover timeline changes like any

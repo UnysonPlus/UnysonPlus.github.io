@@ -2,7 +2,7 @@
 sidebar_position: 6
 title: Page Timelines
 slug: /page-timelines
-description: Keyframe the real elements of a page on a timeline in the Live Editor's Animate workspace, and play it for visitors on page load, in view, on hover, on click or as they scroll (pinned or not). One element or every element with a class, on chosen devices; Import / Export as JSON or CSV.
+description: Keyframe the real elements of a page on a timeline in the Live Editor's Animate workspace (starting points, your own presets, site-wide timelines), and play it for visitors on page load, in view, on hover, on click or as they scroll (pinned or not). One element or every element with a class, on chosen devices; Import / Export as JSON or CSV.
 keywords: [page timeline, keyframe animation, wordpress animation timeline, animate elements, hover animation, scroll into view animation, spring animation]
 ---
 
@@ -29,11 +29,16 @@ centre out, a section pinned while you scroll, and a click that plays forward, t
 
 1. Open the page in the **Live Editor** and switch the toolbar from **Design** to **Animate**. The page stays in the
    middle, the timeline docks under it, and a panel on the right shows the timeline's settings.
-2. **Select an element** on the page (or in the Structure list on the left) and click **Animate this element**. It
-   gets a track with a first move to change: it rises 30% of its height and fades in, over 0.6 seconds.
-3. **Move the playhead** (click or drag on the timeline's ruler) and change a value in the panel: Move X / Y, Scale,
-   Rotate, Opacity or Blur. It is keyed there, at the playhead. A property keyed for the first time also gets its
-   resting value at 0 s, so it moves from rest.
+2. **Select an element** on the page (or in the Structure list on the left), choose a **starting point** in *Start
+   with* (below), and click **Animate this element**. It gets a track with those moves, ready to change.
+3. **Add keyframes** where you want the element to change. Any of these adds one:
+   - move the playhead (click or drag on the timeline's **ruler**) and click **◆ Add a keyframe at … s** in the panel,
+     or **◆+** in the timeline's header, or press **K**;
+   - **double-click** the element's row on the timeline, at the moment you want;
+   - or just **change a value** in the panel (Move X / Y, Scale, Rotate, Opacity, Blur): it is keyed at the playhead.
+
+   A new keyframe starts with the values the element has at that moment, so nothing jumps; then change them. A
+   property keyed for the first time later than 0 s also gets its resting value at 0 s, so it moves from rest.
 4. **Click a diamond** on the timeline to change that keyframe: its time, its values and the **curve** into it (the
    shared curve list: Soft land, Pop over and the other springs, Power, Back, Elastic…). Drag a diamond to retime it.
 5. **Play** (or press Space). The element on the page moves with the playhead.
@@ -42,7 +47,24 @@ centre out, a section pinned while you scroll, and a click that plays forward, t
 
 <img src="/img/animation-engine/page-timelines/keyframe-panel.png" alt="Animate with a keyframe selected: its diamond highlighted on the heading's row in the timeline, and on the right its time, Move X set to 12, the other values empty, and the Pop over curve with a picture of it" width="1600" />
 
+## Starting points and presets
+
+*Start with* (above **Animate this element**) offers ready-made moves: **Rise in**, **Fade in**, **Slide in from the
+left / right**, **Drop in** (with a bounce), **Pop in** (a spring), **Blur in**, **Spin in**, and for hover or
+attention **Swing**, **Pulse** and **Lift**. Each is an ordinary set of keyframes you can then change.
+
+**Your own presets:** select a track's element and click **Save these moves as a preset** (give it a name). It joins
+*Start with* under *Your presets*, on every page of the site; a class track's stagger and order are kept with it.
+**Replace its moves with** (on a track) swaps a track's keyframes for a starting point or a preset. **Import /
+Export › All (JSON)** carries your presets too, so they move to another site with the timelines.
+
 ## The workspace
+
+**The timeline follows the page.** Scroll the canvas and, when most of a section is in view (60% of it, or of the
+screen for a tall one), the timeline that moves that section's elements comes up in the picker, which glows green for a
+moment. Selecting an element that another timeline moves brings that timeline up too. A timeline you pick by hand
+stays until you scroll again, and nothing switches while a timeline plays, waits in Preview, or while you drag a
+keyframe.
 
 The panel on the right shows only what the selection needs:
 
@@ -50,14 +72,14 @@ The panel on the right shows only what the selection needs:
 | --- | --- |
 | **Nothing** | The timeline's settings (below) |
 | **An element not in the timeline** | **Animate this element**; for hover, click and in view, **Starts the timeline**; tracks *not on this page* to move to it; the other timelines that already move it |
-| **An element in the timeline** | Its values at the playhead (a change keys them there), its keyframes, *Starts the timeline*, *Remove from this timeline* |
+| **An element in the timeline** | **◆ Add a keyframe at … s**, its values at the playhead (a change keys them there), its keyframes, *Replace its moves with*, *Save these moves as a preset*, *Starts the timeline*, *Remove from this timeline* |
 | **A keyframe** | Its time, its values (empty = not set by this keyframe), the curve into it with a picture, *Delete this keyframe* |
 
 The toolbar has the timeline picker (**+** for a new one), back to the start, Play, the time and **Preview**, which
 plays it on the page as a visitor gets it: it shows the first moment and waits for its trigger, so hover the element,
 click it or scroll it into view. The timeline under the canvas zooms (**−** / **+**) and folds away (the arrow).
 
-**Keys:** Space plays or pauses; Delete removes the selected keyframe (in Animate, Delete never deletes an element);
+**Keys:** Space plays or pauses; K adds a keyframe at the playhead on the selected element's track; Delete removes the selected keyframe (in Animate, Delete never deletes an element);
 Ctrl+Z / Ctrl+Y undo and redo timeline changes like any other edit.
 
 ## Every element with a class
@@ -108,10 +130,18 @@ way through the scroll), not a time.
 | **Runs on** | **Desktop** (992 px and wider), **Tablet** (768 to 991 px), **Phone** (narrower than 768 px), the same breakpoints as [Interactions](/animation-engine/interactions). On the others, the elements stay as they are |
 | **Delete this timeline** | Removes it (Undo brings it back) |
 
+## Every page of the site
+
+A timeline made only of class tracks (*Animate every “.class”*) can play on **every page**: tick **Use on every page**
+in its settings (with nothing selected). It then shows *· every page* in the picker, is stored once for the whole site,
+and plays wherever elements with its classes appear. Change it on any page; Save stores it for all of them. A timeline
+with an element track cannot (an element exists on one page only), so the box stays greyed out until every track is a
+class track. Only people who may change the site's design (Theme Settings) see this option.
+
 ## What visitors get
 
-- **Only pages with a timeline load anything:** the runtime is about **3 KB** gzipped, with no library. Every other
-  page is untouched.
+- **Only pages with a timeline load anything:** the runtime is about **4 KB** gzipped, with no library. Every other
+  page is untouched (with a site-wide timeline, every page has one).
 - **No flash:** each element's first moment (faded out, moved down) is set in the page's head, so an element that rises
   in is never seen at rest first. If the runtime is blocked, the elements show normally after 4 seconds.
 - **No layout shift:** motion uses the CSS `translate`, `rotate` and `scale` properties, `opacity` and `filter`. An
@@ -156,6 +186,19 @@ blur, curve`. `element` and `started_by` are builder keys (or a class such as `.
 - **Duplicating an element** in the Live Editor gives the copy a new key, so the copy is not in the timeline. Deleting a
   tracked element leaves its track waiting (it shows under *Not on this page* next time).
 - Two timelines can move the same element; the one that plays last sets where it ends up.
+
+## With the AI Assistant (and Claude)
+
+The AI Assistant can make page timelines for you, and so can Claude or any agent connected to the site's AI
+connection. Its two tools:
+
+| Tool | Does |
+| --- | --- |
+| `page_timelines` | Reads a page's timelines, the site-wide ones, your presets and the curve names, with the format |
+| `page_timelines_save` | Saves timelines on a page: adds or replaces them by id (or replaces the whole list), and optionally the site-wide ones. Every value is checked; a curve name becomes its CSS. A snapshot is taken first, so **Undo** in the AI Assistant's Changes (or `undo_change`) brings the old ones back |
+
+Ask, for example: *"Make the three cards on this page rise in one after another when they scroll into view."* If the
+page is open in the Live Editor, reload it to see what the assistant made.
 
 ## For developers
 

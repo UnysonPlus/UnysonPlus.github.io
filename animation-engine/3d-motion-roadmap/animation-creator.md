@@ -7,8 +7,8 @@ description: The plan for the Animation Creator — an Animate workspace in the 
 
 # Animation Creator — the plan
 
-*Planned November 2026, revised 19 November 2026. Status: **in progress**: 5a–5e shipped; the Animate workspace
-(A1–A5) shipped; 5g and 5h are next.*
+*Planned November 2026, revised 19 November 2026. Status: **shipped**: 5a–5e shipped; the Animate workspace
+(A1–A5), 5g and 5h shipped.*
 
 *This page is the plan; the [Roadmap](./roadmap#phase-5) carries the phase list and its status.*
 
@@ -102,8 +102,8 @@ and Save. Design's Edit / Preview / Play and the element tools come back with De
 | **A3 · Class targets** ✅ *AE 1.5.32* | Animate every element with a class, with stagger and order, in the runtime, the data, the first-moment CSS and the CSV | A2 |
 | **A4 · Retire the window** ✅ *Live Editor 0.3.25, Studio 0.1.69* | Animate no longer opens Kinetic Scenes; page mode removed from it; docs, screenshots and demo updated | A2 |
 | **A5 · Scroll in Animate** (was 5f) ✅ *AE 1.5.32, Live Editor 0.3.25* | The Scroll tab: scroll timelines (the playhead is the scroll position, pinned or not), the existing scroll animations, the ruler toggle; the floating tools leave the public pages | A2 |
-| **5g · Presets and AI** | Starting points, your own presets, the AI Assistant and MCP tools authoring timelines | A2 |
-| **5h · Site-wide** | Timelines used on every page (like Interactions' *Use on every page*) | A3 |
+| **5g · Presets and AI** ✅ *AE 1.5.33, Live Editor 0.3.26* | Starting points, your own presets, the AI Assistant and MCP tools authoring timelines | A2 |
+| **5h · Site-wide** ✅ *AE 1.5.33, Live Editor 0.3.26* | Timelines used on every page (like Interactions' *Use on every page*) | A3 |
 
 ## The data and the runtime
 

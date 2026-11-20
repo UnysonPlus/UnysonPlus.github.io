@@ -77,4 +77,4 @@ Advanced box); the compiler produces a scene on the fly for the player to scrub 
   runtime or a timeline UI from scratch.
 
 This is Phase 1b of the Animation Engine
-[3D Motion & Roadmap](/animation-engine/3d-motion-roadmap/roadmap). Status: **Accepted**.
+[Roadmap](/animation-engine/roadmap). Status: **Accepted**.

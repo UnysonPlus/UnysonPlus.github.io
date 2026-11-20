@@ -109,10 +109,9 @@ find easier to reason about; use whichever reads better for the task.
 
 ## What's next {#whats-next}
 
-The Scroll Timeline now covers the whole of roadmap item **1b**: drag-to-retime for Scroll Motion, and
-**keyframe lanes** for Scroll Keyframes — retiming each beat's **position** *and* editing its **state** right
-on the lane. The Ruler's ranges stay read-only. Beyond the timeline, the
-[3D Motion & Roadmap](/animation-engine/3d-motion-roadmap/roadmap) moves on to **real 3D scenes** (item 2).
+The Scroll Timeline covers drag-to-retime for Scroll Motion and **keyframe lanes** for Scroll Keyframes: retiming
+each beat's **position** *and* editing its **state** right on the lane. The Ruler's ranges stay read-only. What is
+planned next is on the [Roadmap](/animation-engine/roadmap).
 
 Neither tool affects what a visitor *sees as chrome*: they are author aids, gated to administrators and
 off until you open them. A **retime you save**, however, is meant to ship — it changes the animation's

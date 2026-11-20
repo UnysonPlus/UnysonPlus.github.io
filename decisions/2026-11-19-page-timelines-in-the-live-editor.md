@@ -51,7 +51,7 @@ one. Framer has no timeline at all, only per-layer effects (that is what our Ani
 - **Class targets** (every element with a class, with stagger) are part of this plan, not later.
 - **The Scroll Ruler and Scroll Timeline** leave the canvas and the public pages, and live inside Animate.
 
-The plan and its phases (A1–A5): [Animation Creator](/animation-engine/3d-motion-roadmap/animation-creator).
+It shipped as [Page Timelines](/animation-engine/page-timelines) in the Animate workspace (phases A1–A5).
 
 ## Why
 

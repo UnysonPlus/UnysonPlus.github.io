@@ -168,7 +168,7 @@ native result), the engine exposes read-only catalogue abilities to the AI Assis
 
 ## The gap → fallback → report → promote loop
 
-The phases on the [roadmap](./roadmap) are the *planned* build; this is how the engine grows from
+The [roadmap](/animation-engine/roadmap) is the *planned* build; this is how the engine grows from
 **real use**. As AI-assisted creation and replication becomes the focus, an agent reproducing a
 source's motion will routinely hit an animation the engine doesn't cover yet. Rather than let it write
 throwaway bespoke code, the engine reuses the Site Converter's findings loop, pointed at motion

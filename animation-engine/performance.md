@@ -55,6 +55,37 @@ until it scrolls into view.
 - **No layout shift** — effects animate transforms and opacity rather than layout, so they don't
   push content around or hurt your Core Web Vitals.
 
+## The rules every effect follows {#guardrails}
+
+Every motion feature ships with these. They are part of the design, not an afterthought:
+
+- **It respects reduced motion.** When a visitor has "reduce motion" set, heavy effects swap for instant or minimal
+  states. This is mandatory.
+- **It is throttled on mobile.** Mobile GPUs slow down when they get hot, so effects cap their work and resolution, and
+  pause when they are off-screen or the tab is hidden.
+- **It enhances, never replaces.** WebGL is detected and falls back to a still image or a video. The real content
+  always lives in the HTML (for search engines and screen readers); 3D is a layer over the page, never the only copy
+  of the content.
+- **Web Vitals come first.** On content and conversion pages the light path ships by default; spectacle is kept for
+  pages where it adds meaning.
+- **One scroll engine.** [Smooth Scroll](/animation-engine/smooth-scroll) and [Scroll Loop](/animation-engine/scroll-loop)
+  share a single Lenis instance (`window.__upwLenis`; whichever boots first owns it), so everything that scrolls
+  scrubs against the same clock and turning both on never starts two.
+
+## What we build, and what stays hand-made {#build-vs-curated}
+
+The engine aims to deliver most premium motion (GSAP-quality scroll, smooth scroll, text reveals, light 3D) as
+**presets** anyone can pick, plus a small, performance-budgeted set of WebGL and Rive flourishes. Fully bespoke studio
+scenes stay hand-built: trying to make every one of them a generic setting is where builders drown.
+
+| Built as presets | Used inside the engine, curated | Not planned |
+| --- | --- | --- |
+| Site-wide smooth scroll | Three.js for a few parametric scenes | A user-facing shader editor |
+| One shared scroll engine | Shader presets (image transitions, Motion Gallery WebGL designs) | Composing open 3D scenes from scratch |
+| Beat keyframes on pinned sections, Page Timelines | An optional no-code hero object | Arbitrary per-project camera fly-throughs |
+| Rive, Model Viewer and image-transition presets | | Whole-page WebGL as the only content layer |
+| Text reveals everywhere | | A full video editor in the Live Editor ([Kinetic Scenes](/kinetic-scenes) is its own app; the Animate workspace stays lean) |
+
 ## Fewer requests, if you want them
 
 Because every effect is a separate file, a page using several effects makes a few small requests. On

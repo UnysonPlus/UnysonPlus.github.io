@@ -98,7 +98,7 @@ lighting and reflections across its card layouts (🚧 in progress).
 
 :::warning[Performance is part of the design]
 Real WebGL is reserved for one hero moment per page, always with a static image fallback, reduced-
-motion support, and mobile throttling. See the [performance rules](./roadmap#guardrails).
+motion support, and mobile throttling. See the [performance rules](/animation-engine/performance#guardrails).
 :::
 
 ## And a few smaller additions

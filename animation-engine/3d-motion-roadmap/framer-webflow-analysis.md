@@ -133,25 +133,43 @@ An **Interaction** is *trigger → timeline of steps → targets*:
 *Added 18 November 2026.* With Phase 4 shipped, every gap ranked above is closed. A second pass over both tools finds
 what is left. It is finer-grained: what an Interaction can animate, a few triggers, and two newer techniques.
 
-| # | Still missing | Webflow / Framer | Unyson+ today | Planned as |
+| # | Was missing | Webflow / Framer | Unyson+ now | Docs |
 | --- | --- | --- | --- | --- |
-| 1 | **More properties in Interactions** | Size, colours (background, text, border), skew, 3D tilt, corner radius, clip / mask, filters (brightness, greyscale…) | Move X / Y, Scale, Rotate, Opacity, Blur, and **now all of these (AE 1.5.21)** | ✅ [6a](./roadmap.md#phase-6) |
-| 2 | **Spring and custom curves** | Springs everywhere (Framer); full GSAP easing (Webflow) | **Springs, the Motion design curves and a custom cubic-bezier (AE 1.5.21)** | ✅ [5a](./roadmap.md#phase-5) |
-| 3 | **Scroll- and mouse-scrubbed Interactions that move other elements** | Webflow's *while scrolling in view* and *mouse move* scrub any target | Scrubbing moves only the element itself (Scroll Motion, Scroll Keyframes, Parallax); Interactions are one-shot | Scroll: [5f](./roadmap.md#phase-5) · Mouse: ✅ [6f](./roadmap.md#phase-6) (AE 1.5.26) |
-| 4 | **Layout animation** | Framer's Magic Motion: a size or position change (accordion, filtered grid, expanding card) glides instead of jumping | **Layout Animation (AE 1.5.24)** | ✅ [6d](./roadmap.md#phase-6) |
-| 5 | **Shared-element page transitions** | One element flows from one page into the next (Framer; the browser's View Transitions) | **Shared elements (AE 1.5.25)** | ✅ [6e](./roadmap.md#phase-6) |
-| 6 | **Lottie and Rive controlled by Interactions** | Webflow's Lottie action: play, pause, seek from any trigger | **Lottie and Rive steps (AE 1.5.22)** | ✅ [6b](./roadmap.md#phase-6) |
-| 7 | **Saved, reusable interactions** | Webflow saves custom actions as presets | **Saved Interactions with Import / Export (AE 1.5.27)** | ✅ [5g](./roadmap.md#phase-5) · [6g](./roadmap.md#phase-6) |
-| 8 | **Loop and repeat** | Repeat, yoyo and infinite loops on a sequence | **Repeat and Back and forth (AE 1.5.27)** | ✅ The Creator's timelines ([5e](./roadmap.md#phase-5)) · [6g](./roadmap.md#phase-6) |
-| 9 | **An instant "Set" step** | Webflow's *Set*: change a value at a moment (hide, swap a class, z-index) | **Set step (AE 1.5.22)** | ✅ [6c](./roadmap.md#phase-6) |
+| 1 | **More properties in Interactions** | Size, colours (background, text, border), skew, 3D tilt, corner radius, clip / mask, filters (brightness, greyscale…) | Move X / Y, Scale, Rotate, Opacity, Blur, and **now all of these (AE 1.5.21)** | ✅ [docs](/animation-engine/interactions#more-properties) |
+| 2 | **Spring and custom curves** | Springs everywhere (Framer); full GSAP easing (Webflow) | **Springs, the Motion design curves and a custom cubic-bezier (AE 1.5.21)** | ✅ [docs](/animation-engine/interactions#easing-and-springs) |
+| 3 | **Scroll- and mouse-scrubbed Interactions that move other elements** | Webflow's *while scrolling in view* and *mouse move* scrub any target | **Scroll timelines in the Animate workspace (AE 1.5.32) and the Mouse move trigger (AE 1.5.26)** | ✅ [Scroll](/animation-engine/page-timelines#scroll-the-scroll-position-is-the-playhead) · [Mouse](/animation-engine/interactions#mouse-move) |
+| 4 | **Layout animation** | Framer's Magic Motion: a size or position change (accordion, filtered grid, expanding card) glides instead of jumping | **Layout Animation (AE 1.5.24)** | ✅ [docs](/animation-engine/layout-animation) |
+| 5 | **Shared-element page transitions** | One element flows from one page into the next (Framer; the browser's View Transitions) | **Shared elements (AE 1.5.25)** | ✅ [docs](/animation-engine/page-transitions#shared-elements-between-pages) |
+| 6 | **Lottie and Rive controlled by Interactions** | Webflow's Lottie action: play, pause, seek from any trigger | **Lottie and Rive steps (AE 1.5.22)** | ✅ [docs](/animation-engine/interactions#set-lottie-and-rive-steps) |
+| 7 | **Saved, reusable interactions** | Webflow saves custom actions as presets | **Saved Interactions with Import / Export (AE 1.5.27)** | ✅ [docs](/animation-engine/interactions#saved-interactions) |
+| 8 | **Loop and repeat** | Repeat, yoyo and infinite loops on a sequence | **Repeat and Back and forth (AE 1.5.27)** | ✅ [Interactions](/animation-engine/interactions#repeat-and-back-and-forth) · [Page Timelines](/animation-engine/page-timelines) |
+| 9 | **An instant "Set" step** | Webflow's *Set*: change a value at a moment (hide, swap a class, z-index) | **Set step (AE 1.5.22)** | ✅ [docs](/animation-engine/interactions#set-lottie-and-rive-steps) |
 
 Already on par or ahead, and not on this list: reveals, scroll-linked motion, pinning, storytelling, text effects,
 marquees, mouse parallax, cursors, and drag / throw / spring physics (27 Physics effects); and ahead with real 3D and
 WebGL, the Motion Gallery, Kinetic Scenes, AI that builds motion, and all of it inside WordPress.
 
-**Order:** #1 and #2 first (quick, and every Interaction benefits), then #6 and #9 (small), then #4 and #5 (new
-features in their own right, and the two that make a site *feel* like a Framer site). The rest ride on the
-[Animation Creator](./animation-creator.md).
+All nine have shipped (Phases 5 and 6, November 2026).
+
+## Framer's design tools {#framer-design-tools}
+
+*Added 20 November 2026.* With the motion gaps closed, a pass over [Framer's design features](https://www.framer.com/design/)
+finds where it is still ahead: drawing, typing and sharing the page. Each gap is now an item on the
+[Roadmap](/animation-engine/roadmap#phase-7).
+
+| Framer has | Unyson+ | Roadmap |
+| --- | --- | --- |
+| Components with variants and properties | Reusable sections and templates, without variants or per-copy properties | 7a |
+| Variable-font axes, OpenType features, text decoration, truncation | Font family, weight, size, spacing and the h1–h6 scale in Theme Settings | 7b |
+| Smooth (squircle) corners | Plain corner radius | 7c |
+| Display P3 colours | sRGB colours | 7d |
+| AI that makes a layout responsive and suggests variations | The AI Assistant builds and edits pages and sections | 7e |
+| Export a layer as PNG or SVG | — | 7f |
+| Vector drawing and icon sets | Icon packs, SVG Draw, uploaded SVG | 7g |
+| A freeform canvas | Flexbox / section / column layouts | 7h |
+| Comments, live co-editing, staging | WordPress revisions, one editor at a time | 7i |
+| A desktop app, hosting | Runs in the browser on any WordPress hosting | Not planned |
+
 
 ## What stays our advantage
 
@@ -171,4 +189,4 @@ features in their own right, and the two that make a site *feel* like a Framer s
 - Webflow: [Introducing Webflow Interactions powered by GSAP](https://webflow.com/updates/introducing-webflow-interactions-powered-by-gsap) · [Triggers, targets, actions and animations overview](https://help.webflow.com/hc/en-us/articles/42832297904019-Triggers-targets-actions-and-animations-overview) · [Interactions timeline](https://help.webflow.com/hc/en-us/articles/42861689104531-Interactions-timeline) · [Interactions with GSAP vs. Classic Interactions](https://help.webflow.com/hc/en-us/articles/46300264646803-Interactions-with-GSAP-vs-Classic-Interactions) · [New actions: Lottie & Set, custom presets](https://webflow.com/updates/new-actions-in-interactions-with-gsap-lottie-set) · [Glossary for Interactions with GSAP](https://help.webflow.com/hc/en-us/articles/42861691922963-Glossary-for-Interactions-with-GSAP) · [When to use interactions (Webflow University)](https://university.webflow.com/videos/when-to-use-interactions)
 - Framer: [Framer animations overview](https://www.framer.com/academy/lessons/framer-animations-overview) · [Animating between variants on scroll](https://www.framer.com/academy/lessons/framer-animations-scroll-variants) · [Effects (Academy)](https://framer.com/academy/topics/effects) · [Scroll (Academy)](https://framer.com/academy/topics/scroll) · [Animations features](https://framer.com/features/animations) · [Text animations](https://www.framer.com/blog/text-animations/)
 - Comparisons and tutorials (third party, opinion): [Zapier: Framer vs Webflow](https://www.zapier.com/blog/framer-vs-webflow) · [Framer vs Webflow in 2025](https://www.toools.design/blog-posts/webflow-vs-framer-in-2025-an-honest-in-depth-comparison) · [Framer University: scroll animations](https://framer.university/blog/10-scroll-animations-to-make-your-website-stand-out) · [Scroll Speed and Transform in Framer](https://designcode.io/framer-web-design-scroll-effects)
-- Unyson+: the Animation Engine inventory (`CATALOG.md`), the [Roadmap](./roadmap.md) and the [Scroll Timeline](/animation-engine/scroll-timeline).
+- Unyson+: the Animation Engine inventory (`CATALOG.md`), the [Roadmap](/animation-engine/roadmap) and the [Scroll Timeline](/animation-engine/scroll-timeline).

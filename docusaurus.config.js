@@ -299,6 +299,8 @@ const config = {
           // "3D Gallery" was renamed to "Motion Gallery" (element + docs). Keep the old
           // slug + the pre-slug playground URL (which carried the /elements/ segment) working.
           {from: '/animation-engine/3d-gallery', to: '/animation-engine/motion-gallery'},
+          {from: '/animation-engine/3d-motion-roadmap/roadmap', to: '/animation-engine/roadmap'},
+          {from: '/animation-engine/3d-motion-roadmap/animation-creator', to: '/animation-engine/page-timelines'},
           {from: '/animation-engine/elements/3d-gallery/playground', to: '/animation-engine/motion-gallery/playground'},
           // The demos network uses short module slugs that don't all match the docs
           // slug, so a demo's "Open the manual" button 404'd. Point each at its real page.

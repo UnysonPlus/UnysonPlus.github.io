@@ -1,11 +1,11 @@
 ---
 sidebar_position: 1
-title: 3D Motion & Roadmap
+title: 3D Motion
 slug: /3d-motion-roadmap
 description: How premium "3D motion" websites are built, what the Animation Engine can do today, and where it's headed next.
 ---
 
-# 3D Motion & Roadmap
+# 3D Motion
 
 This is the vision section for the Animation Engine — a plain-language guide to how modern
 **"3D motion"** websites are built, an honest map of **what the engine can already do**, and the
@@ -55,7 +55,7 @@ three things that define genuinely premium motion:
 | **[Where we're leveling up](./focus-areas.md)** | The three focus areas that separate good from award-tier (with what's already shipped) |
 | **[The modern motion toolbox](./toolbox.md)** | The libraries behind these effects, and which fit a page builder |
 | **[Extending the engine](./extending-the-engine.md)** | How new effects and gallery designs register from a child theme, and the gap → fallback → report loop (shipped) |
-| **[Roadmap](./roadmap.md)** | The phased plan, what's shipped vs. still ahead, what we keep bespoke, and the performance rules every effect follows |
+| **[Roadmap](/animation-engine/roadmap)** | What is still ahead (its own page). What we keep hand-made and the rules every effect follows are on [Performance](/animation-engine/performance#guardrails) |
 
 ## About "camera-glide" background motion
 

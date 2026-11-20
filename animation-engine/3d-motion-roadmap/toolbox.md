@@ -36,4 +36,4 @@ per-project code)?
 - **Real 3D stays curated.** Three.js/R3F power a *small set* of pre-built scenes. Open-ended 3D
   scene composition is a different kind of product and stays out of the builder.
 
-Next: [the roadmap →](./roadmap)
+Next: [the roadmap →](/animation-engine/roadmap)

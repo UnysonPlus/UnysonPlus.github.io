@@ -14,7 +14,7 @@ heading is clicked. You make it in the **Live Editor's Animate workspace**: sele
 timeline under the page, pick the curve into each keyframe (springs included), and the page plays it as you work.
 **Save** and visitors get it at once.
 
-It is part of the **Animation Creator** ([its plan](/animation-engine/3d-motion-roadmap/animation-creator)). It needs
+It is the **Animation Creator** of the Live Editor. It needs
 the **Animation Engine** and **Live Editor** extensions.
 
 ## Live demo

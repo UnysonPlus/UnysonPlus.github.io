@@ -127,7 +127,7 @@ The timeline follows the selection: select another element with Interactions and
 ## Animate: page timelines (beta) {#page-timelines-beta}
 
 **Animate** (the switch beside **Design** in the middle of the toolbar) turns the Live Editor into a timeline editor
-for the page, without leaving it. It is the [Animation Creator](/animation-engine/3d-motion-roadmap/animation-creator):
+for the page, without leaving it. It is the Animation Creator, documented in full in [Page Timelines](/animation-engine/page-timelines):
 keyframe the real elements of the page, and the canvas plays it as you work. The full guide, with what visitors get,
 is [Page Timelines](/animation-engine/page-timelines).
 

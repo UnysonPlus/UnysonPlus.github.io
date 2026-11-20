@@ -37,7 +37,7 @@ second source of truth, for editing three beats.
 
 **Decision.** Reuse Kinetic Scenes in its own window, connected to the Live Editor. The timeline is a native piece
 of page data in the Kinetic Scenes keyframe format, played by a small build of the Kinetic Scenes player's motion
-core, loaded only on pages that use it. The full plan: [Animation Creator](/animation-engine/3d-motion-roadmap/animation-creator).
+core, loaded only on pages that use it. The full plan: [Page Timelines](/animation-engine/page-timelines).
 
 **Why.** It gives users one motion editor to learn for both scenes and pages, and gives us one timeline codebase to
 maintain. It keeps both rules from the October decision: no editor code on the page (Kinetic Scenes stays a separate

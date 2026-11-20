@@ -20,9 +20,13 @@ deleting anything.
 That's it — there's nothing to install. The Blog extension ships inside Unyson+ and is always
 present, so the panel is simply there.
 
+<img src="/img/guides/blog-disable-panel.png" alt="The Blog panel on Settings → Writing, with the Rename Posts checkbox and the Blog visibility dropdown" width="1672" />
+
 ## Choose how far to go
 
 **Blog visibility** is a ladder. Pick the step that matches what you need:
+
+<img src="/img/guides/blog-disable-modes.png" alt="The Blog visibility dropdown showing its four modes: Enabled, Hide the menu, Hide in admin, and Disable" width="908" />
 
 | Mode | What it does |
 | --- | --- |

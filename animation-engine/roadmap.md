@@ -2,7 +2,7 @@
 sidebar_position: 1.5
 title: Roadmap
 slug: /roadmap
-description: What is planned next for the Animation Engine and the Live Editor around it, starting with the design tools Framer and Webflow have that Unyson+ does not yet. Shipped work lives in the docs, not here.
+description: "What is planned next for the Animation Engine and the Live Editor around it: the design tools Framer and Webflow have that Unyson+ does not yet, and a scroll core of our own in place of GSAP. Shipped work lives in the docs, not here."
 ---
 
 # Roadmap
@@ -110,6 +110,46 @@ repeated. ([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#webfl
 3. **8f** the class system, after **7a** components (they overlap: both reuse a look across elements).
 4. **8g** page A/B tests and **8h** the language switcher.
 5. **8i** the checklist, at any point.
+
+## Phase 9: Our own scroll core, without GSAP {#phase-9}
+
+*Added 20 November 2026.* GSAP's free licence (since Webflow bought it) forbids its use in no-code visual animation
+tools that compete with Webflow's own, and the Animate workspace, Interactions and the Scroll Motion presets are such
+tools. Nearly all of the engine already runs on its own code: of its 35 modules, only **Scroll Motion** needs GSAP,
+plus the chaining of Motion Gallery galleries. This phase replaces those last uses, so the engine depends on no
+outside animation library. ([Why](/decisions/leave-gsap-for-our-own-scroll-core).)
+
+What uses GSAP today (November 2026):
+
+| Where | What it uses | Replaced by |
+| --- | --- | --- |
+| **Scroll Motion** (about 23 presets) | Tweens and timelines, ScrollTrigger scrub, pin and stagger, `matchMedia`, SplitText. Ships GSAP + ScrollTrigger + SplitText, about 47 KB gzipped | 9a, 9b, 9c |
+| **Motion Gallery chaining** | One pinned, scrubbed master timeline across chained galleries (the designs themselves run on their own loop) | 9d |
+| **Smooth Scroll, Scroll Loop** | Optional: GSAP's ticker drives Lenis and keeps ScrollTrigger in step when GSAP is on the page | Falls away with 9a |
+| **Scroll Timeline, Scroll Ruler** (editing tools) | Read ScrollTrigger's list of triggers | 9a's registry |
+| **GSAP Generator** | Writes GSAP code to paste into a site | 9e |
+
+- **9a · The scroll core.** One small shared module: scroll-linked progress for any element (start and end
+  positions, scrub with smoothing), **pinning** (a spacer that holds the page's height, refreshed on resize and as
+  fonts and images load), breakpoint conditions in place of `matchMedia`, and a **registry** of everything
+  scroll-driven on the page that the Scroll Timeline and Scroll Ruler read. It grows from the scroll trigger Page
+  Timelines already has (pinned and unpinned), and it drives Smooth Scroll's Lenis on one clock.
+- **9b · Our own text splitter.** Chars, words and lines (re-split on resize), with the original text kept for screen
+  readers, in place of SplitText; shared by Scroll Motion and Text Effects.
+- **9c · Scroll Motion on the core.** Each preset ported one at a time onto 9a and the engine's own tweens (Web
+  Animations, as Interactions use), with its saved options unchanged, so existing pages keep working. Every preset is
+  compared old against new, side by side, on its demo page before the next is moved.
+- **9d · Gallery chaining on the core.** The chained galleries' master timeline moves onto 9a's pinned scrub.
+- **9e · GSAP Generator.** It keeps writing GSAP code for people who use GSAP in their own projects, and loads GSAP only
+  in its own preview, never on a visitor's page.
+- **9f · Remove the vendored GSAP.** Once nothing loads it, GSAP, ScrollTrigger and SplitText leave the plugin. A
+  third-party add-on that wants GSAP brings its own copy.
+
+### Build order
+
+1. **9a** the scroll core and **9b** the splitter.
+2. **9c** Scroll Motion, preset by preset, then **9d** gallery chaining.
+3. **9e**, then **9f** once a release has shipped with no GSAP loaded anywhere.
 
 ## Open ideas
 

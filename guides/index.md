@@ -40,6 +40,7 @@ features, do it in a few minutes, no code unless noted. New to the builder? Star
 
 - [Set global colors and fonts](./global-colors-and-fonts.md)
 - [Create a custom post type without code](./custom-post-type.md)
+- [Disable or hide the blog on a site that doesn't need one](./disable-wordpress-blog.md)
 
 ## Build or move a site into WordPress
 

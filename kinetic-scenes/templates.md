@@ -43,6 +43,28 @@ looks to the [motion styles](./motion-styles.md), and follows the
 film's shape AI assist uses: something happens at once, one hero moment, and a held end frame. All of them pass Check
 scene with no warnings. The words are placeholders written to be replaced, and the product shot is a placeholder picture.
 
+### The Explainer template
+
+The Explainer is the template for longer pieces, the ones that run for minutes rather than seconds. It opens as three
+chapters of 8 seconds each (*What it is*, *How it works*, *Why it matters*), 24 seconds in all, so you can see the shape
+before you fill it:
+
+- **Chapter cards:** each chapter starts with its number (`01`, `02`, `03`) and its title, then gives way to the
+  chapter's main point.
+- **Subtitles:** one line per chapter at the bottom, where the voice-over's words go.
+- **A chapter progress bar** across the top fills from left to right over the whole piece, so viewers always know how
+  far along they are.
+- **A heads-up label** in the top corner (*Chapter 1 of 3*) says where they are.
+
+To make it yours, either edit the words by hand (duplicate a chapter's layers for more chapters and stretch the progress
+bar to the new length), or give AI assist your script. For a long explainer, turn on [Plan first](./ai.md#plan-first)
+and choose **Explainer**, so the narration is split into segments that each name what the screen shows before anything
+is built; [Explainers with a voice-over](./ai.md#explainers-with-a-voice-over) then times every picture to the
+narration. With Claude Code as the kit's AI and a project open, AI assist can also
+[work in steps](./ai.md#work-in-steps-with-a-project-and-claude-code), looking at the frames it changed and checking its
+work as it goes. A single scene runs up to 10 minutes; past that, see
+[Long videos](./long-videos.md).
+
 ## Presets by goal
 
 The Presets tab can also be browsed **by goal** instead of by technique: *Make a headline land*, *Reveal a picture*,

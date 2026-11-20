@@ -55,14 +55,44 @@ Starting the AI Dev Kit (`start.bat` on Windows, `start.command` on macOS — or
 also opens a **browser dashboard** at `http://localhost:4600`. It's the visual face of the
 service, with these tabs:
 
-- **Home** — where the dashboard opens: a card for each job the kit does (Site Converter, AI Assistant,
-  Kinetic Scenes), showing whether it is ready, when it last called the kit and from which site, and which AI is in use.
+- **Home** — where the dashboard opens: a card for each job the kit does (see [The Home page](#the-home-page) below).
 - **Convert** — run and watch a URL → WordPress conversion live, with design tokens, section mapping, and
   a source-vs-result comparison.
 - **Pen (Alpha)** — paste a pen's HTML/CSS/JS and download an installable shortcode `.zip` (see below).
 - **Chat** — a chat panel backed by a local AI model (no key needed).
 - **Benchmarks** — local-AI model benchmarks for conversion quality.
 - **Settings** — the destination WordPress + token, and the local-AI model picker.
+
+### The Home page
+
+The dashboard opens on **Home**, which answers one question: is the kit ready for what you want to do? A line at the top
+says whether the capture service is running (with its version and port), which AI is in use, and whether an update is
+available. Under it is one card per job:
+
+| Card | What it is for | Its button |
+|---|---|---|
+| **Create a Site** | Builds a site from a brief, a reference site, a design or an industry template, in your AI agent | Open the creator |
+| **Kinetic Scenes** | The Studio's AI tab sends requests here and gets scenes back | Open the Studio |
+| **Site Converter** | Captures a site in a real browser and rebuilds it in WordPress | Open the converter |
+| **AI Assistant** | The chat panel in WordPress uses the kit's AI and tools on the same computer | AI settings |
+| **SEO Check** | Checks a website the way a search engine sees it and gives one plan | Open the checker |
+
+Each card shows its state with a coloured dot:
+
+- **Ready** (green): the kit is running and can take the job. **Connected** means that job called the kit in the last
+  hour (for Kinetic Scenes, that the Studio is open right now).
+- **Running, but no AI is set up** (amber): the kit is up but has no AI to answer; pick one in **Settings** or with the
+  AI picker at the top of the dashboard.
+- **Not running** (grey): the capture service is off; start the kit again.
+
+Under the state, a card lists the facts that matter for it: the AI it will use, when it was **last used** and from which
+site, and for SEO Check the last site checked and its score. If part of the kit is older than the dashboard, Home says
+to restart the kit to finish updating.
+
+**Which AI does the work** is chosen with the picker at the top of every dashboard page: Automatic (the strongest one
+available), your Claude, ChatGPT or Cursor subscription through its own command, a Claude API key, your own endpoint, a
+local model, or no AI. Each choice says whether it can run on this computer. See
+[Which AI does the work](/kinetic-scenes/ai#which-ai-does-the-work).
 
 ## The two ways to feed a source
 

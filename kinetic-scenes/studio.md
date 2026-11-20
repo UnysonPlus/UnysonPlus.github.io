@@ -49,7 +49,7 @@ Four tabs:
   note, a newspaper front page, a banknote…),
   added at the playhead as ordinary groups. See [Video editing effects](./video-effects.md#ready-made-pieces).
 - **Sounds:** 29 built-in sounds, made by the player itself. See [Sound](./sound.md#built-in-sounds).
-- **Styles:** 30 looks and motion styles (colours, fonts, motion personality and sounds) to apply or start from. See
+- **Styles:** 51 looks and motion styles (colours, fonts, motion personality and sounds) to apply or start from. See
   [Styles](./stage.md#styles).
 
 <img src="/img/kinetic-scenes/library-presets.png" alt="The Presets tab" width="232" /> <img src="/img/kinetic-scenes/library-pieces.png" alt="The Pieces tab" width="232" /> <img src="/img/kinetic-scenes/library-sounds.png" alt="The Sounds tab" width="232" /> <img src="/img/kinetic-scenes/library-styles.png" alt="The Styles tab" width="232" />
@@ -73,6 +73,31 @@ and double-click a group to step inside it. Click empty space (on the stage or t
 clear the selection. Layers that cover the whole stage (a background, a glow, a particle field) are skipped by clicks, so
 they never get in the way of what is on top of them, and a click where only they are clears the selection: select them
 from the timeline.
+
+- **Snapping:** while you drag, the layer's edges and centre snap to the middle of the stage and to the edges of the
+  [safe area](./stage.md#the-safe-area), and a guide line shows where it snapped. Hold **Alt** while dragging to place it
+  freely.
+- **Edit text in place:** double-click a text layer to type straight onto the stage, in its own font and size. **Enter**
+  keeps the change (Shift+Enter starts a new line), **Escape** cancels it, and clicking away keeps it.
+- **Selecting several:** Shift or Ctrl (⌘ on a Mac) + click adds a layer to the selection or takes it out, dragging on
+  empty stage draws a box that selects every layer it touches, and **Ctrl+A** selects every unlocked layer. Drag any of
+  them and they move together, snapping as one.
+- **Lock:** right-click a layer's row in the timeline and choose **Lock** so it stays put. A locked layer can still be
+  selected (its tag on the stage says *locked*), but it can't be dragged, and Ctrl+A and Align leave it out.
+
+#### Align and distribute
+
+With one or more layers selected, the Inspector shows **Align and distribute**:
+
+| Row | Buttons | What it does |
+|---|---|---|
+| **Align** | Left, horizontal centres, right, top, vertical centres, bottom | Lines up the edges or centres |
+| **Distribute** | Top, vertical centres, bottom, left, horizontal centres, right | Spaces the edges or centres evenly |
+| **Distribute spacing** | Equal gaps down, equal gaps across | Makes the gaps between layers the same |
+
+**Align to** chooses what they line up against: the **Selection** (each other; shown when two or more are selected),
+the **Stage** or the **Safe area**. Distributing among the selection needs three layers or more; against the stage or
+the safe area, two are enough. Every change is one step in the undo history.
 
 ### The transport and the timeline (bottom)
 

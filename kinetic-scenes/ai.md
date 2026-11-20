@@ -217,7 +217,48 @@ In **Claude Desktop** (or any MCP app), add the server to its MCP settings (`cla
 Then ask for a scene in the conversation: it reads the guide, writes the scene, checks it, looks at the stills and gives
 you a link that opens it in the Studio.
 
+## Which AI does the work
+
+AI assist (and every other AI feature in the Studio) runs on whichever AI the [AI Dev Kit](/ai-dev-kit) is set to. None
+of them needs an API key or adds a bill: the kit uses a subscription you already pay for, through its own command on your
+computer.
+
+| Choice | What it uses | Needs on this computer |
+|---|---|---|
+| **Claude subscription** | Your Claude plan | The `claude` command (Claude Code) |
+| **ChatGPT subscription** | Your ChatGPT plan | OpenAI's `codex` command |
+| **Cursor subscription** | Your Cursor plan | The `cursor-agent` command |
+| **Claude API** | A Claude API key, paid per use | The key, set in the kit |
+| **Local model** | A model running on your own computer | A local model set up in the kit |
+| **Your own endpoint** | Any OpenAI-compatible service you have an account with | Its address and key, set in the kit |
+| **Automatic** (the default) | The strongest one that is available | |
+
+- **To switch:** in the kit's dashboard, the **AI** picker at the top (*Which AI does the work*) lists each choice and
+  whether it can run here; a choice that can't says why (for example, *The `codex` CLI is not on PATH*). The choice is
+  saved and stays after a restart. Set it back to **Automatic** to let the kit pick again.
+- **For scripts:** the `AI_BACKEND` environment variable (`claude-code`, `codex`, `cursor`, `api`, `endpoint`, `ollama`, `off`) wins
+  over the saved choice.
+- The AI assist settings show which AI is answering.
+
 ## An AI inside the open Studio
 
-Where the browser offers it (WebMCP), the Studio registers its own tools, so an AI in the browser can work on the scene in
-front of you: look at the scene, add and change layers and clips, seek and select, change by change, each with undo.
+The Studio can also be worked on by an AI that lives in your browser, with no kit in between. Where the browser offers
+**WebMCP** (a new web standard that lets a page hand its own tools to an AI in the browser), the Studio registers these
+tools while it is open:
+
+| Tool | What it does |
+|---|---|
+| `get_scene` | Reads the whole scene file (embedded pictures and sounds shortened) |
+| `list_layers` | Lists the layers, bottom to top, with their ids, types, text, boxes and clips |
+| `list_presets` | Lists every preset a clip can use, with its settings |
+| `check_scene` | Runs **Check scene** and returns its report |
+| `show_moment` | Moves the playhead to a moment, optionally selecting a layer, so you see what the AI means |
+| `set_text` | Changes a text layer's words |
+| `move_layer` | Moves or resizes a layer |
+| `set_layer` | Changes a layer's own settings (fill, stroke, style, picture, start and end, link, hover) |
+| `add_clip`, `update_clip`, `remove_clip` | Adds, changes or removes a preset clip |
+
+Every change goes through the Studio's normal editing, so it shows at once on the stage and the timeline and each one is
+a step in the undo history: **Ctrl+Z** takes back anything the AI did. Nothing needs setting up in the Studio; the tools
+appear only when the browser or the AI app supports WebMCP, and support is still arriving, so check your browser or AI
+app's own notes. Without it, use AI assist or [your own AI agent](./ai-agents.md).

@@ -36,6 +36,15 @@ it once.
 - Presets that need a scene are not offered: ones that work with another layer, keyframes, a picture's pixels, sound or
   the scene's camera.
 
+## Keyframing a whole page
+
+A preset moves one element by itself. To choreograph several elements of a page together (a heading, then its cards one
+after another, then a button), keyframe them on a timeline instead: open the page in the Live Editor's **Animate**
+workspace, where Kinetic Scenes' timeline drives the real page. Page timelines can play on load, in view, on hover, on
+click or with the scroll, can be limited to desktop, tablet or phone, show their end state to visitors who ask for less
+motion, start from ready-made presets, and can be made by the AI Assistant or your own AI agent. See
+[Page timelines](/animation-engine/page-timelines).
+
 ## Good to know
 
 - **Reduced motion.** Visitors who ask for less motion see the element as it is, without the animation (unless the

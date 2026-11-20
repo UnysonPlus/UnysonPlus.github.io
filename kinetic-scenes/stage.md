@@ -81,8 +81,31 @@ and its label and put the link on the **group**; a shape has no words, so give i
 - Links work on the page, in the embed code and in full screen; while you edit, a click just selects the layer.
 - Each link is also a real link in the scene's text, so keyboard users reach it with Tab (the layer shows a focus ring)
   and search engines follow it. Only web, same-site, anchor, email and phone addresses are accepted.
-- **Hover** effects (lift, grow, glow, brighten, shine, underline, a colour change) answer visitors with a mouse; phones
-  just follow the link.
+- **Hover** effects answer visitors with a mouse; phones just follow the link (see below).
+
+### Hover effects
+
+Select a layer and, in the Inspector, pick what happens **When pointed at**:
+
+| Effect | What the visitor sees |
+|---|---|
+| **Lift** | The layer rises a little and casts a soft shadow |
+| **Grow** | It gets about 5% bigger |
+| **Glow** | A glow in the hover colour around it |
+| **Brighten** | It gets a little brighter |
+| **Shine** | A band of light sweeps across it |
+| **Underline** | A line draws in under it, in the hover colour |
+| **Colour** | Its text changes to the hover colour |
+
+- **Colour:** Glow, Underline and Colour use the **Colour** field (bright green when empty).
+- **Custom CSS (trusted pages):** any CSS for the hovered layer, for example `rotate: -2deg;`. It runs only where custom
+  code is allowed: in WordPress, for authors who may post HTML. Elsewhere it is ignored, and anything that could load a
+  script is refused.
+- **They never fight the animation:** a hover is drawn on top of whatever the layer's clips are doing, so a layer can
+  float and still lift when pointed at.
+- **Only with a mouse:** hovers apply where the device can hover; on a phone a tap just follows the link. Visitors who
+  ask their system for less motion get the change without the transition.
+- They show on the page, in the embed and in full screen, not while you edit, where a click selects the layer.
 
 ## Search engines and screen readers
 
@@ -96,8 +119,8 @@ element, the embed code and the HTML export all include this text.
 ## Styles
 
 A style is a look to build from: a colour palette, a font pairing, a motion personality (how headlines, supporting text
-and shapes enter and leave, and how they ease), a pace and a sound palette. The **Styles** tab has 30: eight looks
-(**Night**, **Clean**, **Kinetic**, **Pastel**, **Neon**, **Editorial**, **Playful** and **Luxe**) and 22
+and shapes enter and leave, and how they ease), a pace and a sound palette. The **Styles** tab has 51: eight looks
+(**Night**, **Clean**, **Kinetic**, **Pastel**, **Neon**, **Editorial**, **Playful** and **Luxe**) and 43
 [motion styles](./motion-styles.md) named after recognised motion-design styles (synthwave, line art, paper cut-out…).
 Hover a card to see its title card.
 

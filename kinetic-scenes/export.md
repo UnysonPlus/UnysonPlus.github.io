@@ -97,6 +97,29 @@ however slow the machine.
 **With the AI Dev Kit** (the default): the kit on your computer renders it in a headless browser and encodes it with
 ffmpeg, mixed to -14 LUFS. If [FFmpeg](/kinetic-scenes/ffmpeg) is missing, the Export panel says so and the kit can install it with one click.
 
+**Nothing renders blank.** Before the first frame, the kit waits for the scene's fonts, for every picture to load and
+decode (pictures used as backgrounds too) and for every 3D model to appear. If something still fails to load or runs
+out of time, the render goes ahead without it and says so: the Export panel lists what was missing, and
+`studio-cli render` prints *Rendered without: …*. Fix the address or the file and render again, instead of finding a
+blank frame in the finished video.
+
+**Rendering fast, on your graphics card.** The kit renders as fast as the computer allows, with nothing to set:
+
+- **Drawing:** the headless browser draws on the strongest graphics card the computer has. If only the software
+  renderer is available, it uses that (slower, same result).
+- **Encoding:** the kit tries the card's own H.264 encoder once with a tiny test clip (NVIDIA NVENC, AMD AMF, Intel
+  Quick Sync or Apple VideoToolbox) and uses the first that works; otherwise the processor encodes (libx264). The file
+  is the same either way, only faster.
+- **Several frames at once:** frames are taken in several browser tabs at the same time (a quarter of the processor's
+  threads, between 2 and 6) and handed to the encoder in order.
+- **Footage made easy to seek:** before rendering, each video layer gets a copy with a key frame on every frame, cached
+  so the next render skips it. Sound still comes from the original. On a 10-second clip of a 3200 × 1800 screen
+  recording this took the frames from 35 s to about 7.5 s.
+
+For a computer where the graphics card misbehaves, `STUDIO_RENDER_GPU=0` turns the card off for drawing and encoding,
+`STUDIO_RENDER_WORKERS=<n>` sets the number of tabs, and `STUDIO_RENDER_PROXY=0` skips the footage copies (environment
+variables for the kit, set before starting it).
+
 **Without the kit:** where the browser can draw part of a page into a picture (HTML-in-Canvas, on by default in Chrome
 157 and later), Export offers **Render in this browser**: the same exact,
 frame-by-frame MP4 with its sound, rendered and encoded by the browser itself (H.264 and AAC), with nothing installed.

@@ -14,6 +14,8 @@ them and a logged-in admin couldn't cleanly click either. Where should these tog
 
 <!-- truncate -->
 
+> **Status: Superseded (20 November 2026).** The Scroll Ruler and the Scroll Timeline left the public pages and the admin bar: they now open only in the Live Editor (Animate › Scroll tools). See [Why page timelines are made in the Live Editor](/decisions/page-timelines-in-the-live-editor) and [Scroll Timeline & Ruler](/animation-engine/scroll-timeline).
+
 ## Context
 
 Both tools are **admin-only, front-end** author instruments: they read the page's live GSAP ScrollTriggers and

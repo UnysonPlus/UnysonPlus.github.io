@@ -1606,11 +1606,11 @@
         {
           "id": "p29-presets",
           "title": "Presets and AI for pages",
-          "detail": "Motion presets as starting points for page timelines; the AI assist and agent tools author them.",
-          "status": "planned"
+          "detail": "Motion presets as starting points for page timelines; the AI assist and agent tools author them. Shipped in the Unyson+ Live Editor’s Animate workspace, where page timelines are made now.",
+          "status": "done"
         }
       ],
-      "detail": "Changed course on 19 November 2026: page timelines are now edited in an Animate workspace inside the Unyson+ Live Editor, and Kinetic Scenes’ page mode is being retired."
+      "detail": "Changed course on 19 November 2026: page timelines are now made in the Animate workspace inside the Unyson+ Live Editor, and Kinetic Scenes’ page mode was retired (Studio 0.1.69). Everything planned here shipped there."
     }
   ],
   "extensionVersion": "0.1.66",

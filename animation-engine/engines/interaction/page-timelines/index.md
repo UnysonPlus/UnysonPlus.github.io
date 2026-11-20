@@ -27,6 +27,8 @@ centre out, a section pinned while you scroll, and a click that plays forward, t
 
 ## Make one
 
+<img src="/img/animation-engine/page-timelines/animate-workspace.png" alt="The Live Editor in Animate: Design and Animate in the toolbar with the timeline picker on Card lift on hover, the Structure list on the left, the hover card selected and tilted on the page, the timeline docked under the page with two rows and the playhead at 0.25 s, and on the right the card's values with Add a keyframe at 0.25 s" width="1600" />
+
 1. Open the page in the **Live Editor** and switch the toolbar from **Design** to **Animate**. The page stays in the
    middle, the timeline docks under it, and a panel on the right shows the timeline's settings.
 2. **Select an element** on the page (or in the Structure list on the left), choose a **starting point** in *Start
@@ -52,6 +54,8 @@ centre out, a section pinned while you scroll, and a click that plays forward, t
 *Start with* (above **Animate this element**) offers ready-made moves: **Rise in**, **Fade in**, **Slide in from the
 left / right**, **Drop in** (with a bounce), **Pop in** (a spring), **Blur in**, **Spin in**, and for hover or
 attention **Swing**, **Pulse** and **Lift**. Each is an ordinary set of keyframes you can then change.
+
+<img src="/img/animation-engine/page-timelines/start-with.png" alt="The panel for an element not yet animated: Start with set to Pop in, then Animate this element" width="310" /> <img src="/img/animation-engine/page-timelines/track-panel.png" alt="The panel for an animated element: Add a keyframe at 0.25 s, its values at the playhead, its keyframes, Replace its moves with, Save these moves as a preset" width="310" />
 
 **Your own presets:** select a track's element and click **Save these moves as a preset** (give it a name). It joins
 *Start with* under *Your presets*, on every page of the site; a class track's stagger and order are kept with it.
@@ -137,6 +141,8 @@ in its settings (with nothing selected). It then shows *· every page* in the pi
 and plays wherever elements with its classes appear. Change it on any page; Save stores it for all of them. A timeline
 with an element track cannot (an element exists on one page only), so the box stays greyed out until every track is a
 class track. Only people who may change the site's design (Theme Settings) see this option.
+
+<img src="/img/animation-engine/page-timelines/every-page.png" alt="A timeline's settings with the Use on every page box, and the note that every track is a class track, so it can play on every page" width="310" />
 
 ## What visitors get
 

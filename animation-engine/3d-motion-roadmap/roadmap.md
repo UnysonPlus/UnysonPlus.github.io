@@ -331,7 +331,7 @@ visitor gets. **The full plan: [Animation Creator](./animation-creator).** Why i
   Animation Engine ease picker, from one shared eases file. *Quick win; first.*
 - **5b · Bursts.** ✅ *Shipped in Animation Engine 1.5.23 (November 2026): a Bursts group in the Confetti card and Do → Burst from it in Interactions ([docs](../engines/decorative/confetti/index.md#bursts)).* A **Burst** step and button effect (circles, sparks, lines, confetti from an element on click or
   hover), growing the Confetti module. *Quick win.*
-- **5c · Connect.** ✅ *Shipped (Live Editor 0.3.20, Kinetic Scenes 0.1.66): **Animate** in the Live Editor opens Kinetic Scenes in page mode with a Page panel of the page's elements and their motion, and selection in both directions ([docs](/extensions/live-editor#animate-kinetic-scenes-beside-the-page-beta)).* Kinetic Scenes *Page mode*, the Live Editor's **Animate**, element picking both ways.
+- **5c · Connect.** ✅ *Shipped (Live Editor 0.3.20, Kinetic Scenes 0.1.66): **Animate** in the Live Editor opens Kinetic Scenes in page mode with a Page panel of the page's elements and their motion, and selection in both directions ([docs](/extensions/live-editor#page-timelines-beta)).* Kinetic Scenes *Page mode*, the Live Editor's **Animate**, element picking both ways.
 - **5d · Author on the page.** ✅ *Shipped (Live Editor 0.3.21, Animation Engine 1.5.28, Kinetic Scenes 0.1.67): page timelines in Kinetic Scenes page mode, played and scrubbed on the canvas by the visitor runtime ([docs](/extensions/live-editor#page-timelines-beta)).* Tracks, keyframes, curves, triggers; play and scrub on the canvas.
 - **5e · Save and ship.** ✅ *Shipped (Animation Engine 1.5.29, Live Editor 0.3.22, Kinetic Scenes 0.1.68): Save to page, the visitor runtime (3 KB gzipped, only on pages with a timeline, no flash), Runs on, reduced motion, Import / Export as JSON or CSV, and a demo ([docs](/animation-engine/page-timelines)).* Page-timeline storage, the visitor runtime (under 10 KB gzipped, only on pages that use it),
   breakpoints, reduced motion, Import / Export, docs and a demo.
@@ -341,7 +341,7 @@ visitor gets. **The full plan: [Animation Creator](./animation-creator).** Why i
   data, runtime and curves of 5a–5e stay.
 - **A1 · Clean canvas.** ✅ *Shipped (Live Editor 0.3.23).* The Scroll Ruler, the Scroll Timeline button, the AI Assistant and the chat bubble no longer
   appear on the Live Editor canvas.
-- **A2 · The Animate workspace.** Design / Animate switch and toolbar, Navigator, contextual side panel, a timeline dock
+- **A2 · The Animate workspace.** ✅ *Shipped (Live Editor 0.3.24): [the guide](/animation-engine/page-timelines).* Design / Animate switch and toolbar, Navigator, contextual side panel, a timeline dock
   grown from the Interaction timeline, triggers, Runs on, Preview as visitor, Import / Export, one Save and one undo.
 - **A3 · Class targets.** Animate every element with a class, with stagger and order.
 - **A4 · Retire the window.** Animate no longer opens Kinetic Scenes; page mode removed from it.

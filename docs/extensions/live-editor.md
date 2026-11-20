@@ -124,95 +124,43 @@ The timeline follows the selection: select another element with Interactions and
 (**Interactions → A saved Interaction**). Saving again under the same name changes it everywhere it is used. See
 [Saved Interactions](/animation-engine/interactions#saved-interactions).
 
-## Animate: Kinetic Scenes beside the page (beta)
+## Animate: page timelines (beta) {#page-timelines-beta}
 
-**Animate** (right of the toolbar) opens [Kinetic Scenes](/kinetic-scenes) in a new window, in **page mode**, connected
-to the page you are editing. It is the first part of the
-[Animation Creator](/animation-engine/3d-motion-roadmap/animation-creator): one place to make page motion visually.
+**Animate** (the switch beside **Design** in the middle of the toolbar) turns the Live Editor into a timeline editor
+for the page, without leaving it. It is the [Animation Creator](/animation-engine/3d-motion-roadmap/animation-creator):
+keyframe the real elements of the page, and the canvas plays it as you work. The full guide, with what visitors get,
+is [Page Timelines](/animation-engine/page-timelines).
 
-- Kinetic Scenes shows a **Page panel** with every element of the page, in order and indented by depth, with the
-  start of its text and the **motion it already has**, named after its Animations-tab cards (*Interactions: hover*,
-  *Entrance: fadeInUp*, *Layout Animation*…). Find an element by name, text or motion, or show only those with motion.
-- **Pick an element in the Page panel** and it is selected (and scrolled into view) on the canvas. **Select one on
-  the canvas** and the Page panel highlights it.
-- Every edit you make in the Live Editor is sent across, so the list stays current.
-- The button reads **Connected** while Kinetic Scenes is open; click it to bring that window forward. Closing either
-  window ends the link.
-- In page mode you can also **keyframe the page's elements**: see [Page timelines](#page-timelines-beta) below.
+<img src="/img/animation-engine/page-timelines/animate-workspace.png" alt="The Live Editor in Animate: the Structure list on the left, the page in the middle, the timeline docked under it with three tracks of keyframes, and the timeline's settings on the right" width="1600" />
 
-The two windows only talk to each other: the Live Editor listens to and writes to the Kinetic Scenes window it opened,
-at Kinetic Scenes' own address, and nothing else. If your browser blocks the new window, allow pop-ups for your site.
+In Animate:
 
-## Page timelines (beta)
+- **The toolbar** shows the timeline you are editing (and **+** for a new one), back to the start, **Play** (or Space),
+  the time, and **Preview**, which plays it as a visitor gets it (it waits for its trigger). Edit / Preview / Play,
+  Add, Templates and History step aside until you switch back to **Design**.
+- **The canvas** holds still and only selects: click an element to work on it (no text editing, dragging or
+  deleting). The **Structure** list opens on the left, for picking elements that are hard to click.
+- **The timeline** docks under the canvas: one row per element, a diamond for each keyframe, the playhead in red.
+  Click or drag on the ruler to move the playhead (the page follows); drag a diamond to change its time (snapped to
+  0.05 s; hold Shift for free); **−** / **+** zoom; the arrow folds it away.
+- **The panel on the right shows only what the selection needs:**
 
-:::info Changing soon
-Page timelines are moving into an **Animate workspace inside the Live Editor**, so you no longer work in a second
-Kinetic Scenes window ([the plan](/animation-engine/3d-motion-roadmap/animation-creator)). Timelines you save now keep
-working and open there.
-:::
-
-
-A **page timeline** moves elements of the real page: a hero heading rising in, cards following one after another,
-an icon that swings while the pointer is over its box. You make it in Kinetic Scenes' own timeline, with its keyframe
-and curve editors, and the **canvas plays it as you work**, through the same small runtime visitors get.
-
-### Make one
-
-1. In the Live Editor, click **Animate**. Kinetic Scenes opens in page mode, with the **Page panel** on its left.
-2. **Pick an element**: click it on the canvas, or in the Page panel's list.
-3. Click **Add *element* to the timeline** (or double-click its row). It becomes a **track** on the timeline, with a
-   Keyframes clip and a first move to change: it rises 30% of its height and fades in, over 0.6 seconds, eased with
-   *Soft land*.
-4. Select the Keyframes clip and change the moves in the Inspector: add keyframes at the playhead, set **Move X / Y**,
-   **Scale**, **Rotate**, **Opacity** and **Blur**, and pick the curve into each keyframe (springs such as *Pop over*
-   included). You can also drag the element's box on the stage to set Move X / Y at the playhead.
-5. **Play or scrub** the timeline: the element on the canvas moves with the playhead, frame for frame.
-6. Add more elements the same way. Each gets its own track, so their timing is easy to offset.
-
-The Kinetic Scenes stage shows a simple **map** of the tracked elements: a box where each sits on the page, so you can
-see what moves where. The real result is the canvas.
-
-### What plays it
-
-In the Page panel's **Timeline** box:
-
-| Setting | What it does |
+| Selected | The panel shows |
 | --- | --- |
-| **Plays on** | **Page load** (as the page opens), **In view** (when its element scrolls into view), **Hover** (while the pointer is over its element, and back when it leaves) or **Click** |
-| **The element that starts it** | Hover, click and in view: by default the first track's element; choose another track's element, or the element picked on the page |
-| **Length (s)** | How long the timeline is |
-| **Play back on leaving** | Hover: when the pointer leaves, it plays back to the start (on), or stays where it got to (off) |
-| **Clicks go forward, then back** | Click: each click plays it the other way, like a toggle |
-| **Every time it comes into view** | In view: plays again each time (off: once) |
-| **Loop** / **Back and forth** | Page load and click: repeat for ever, optionally going back and forth |
+| Nothing | The timeline: name, **Plays on** and its options, length, loop, **Runs on**, Import / Export |
+| An element not in the timeline | **Animate this element** (a track with a first move: rise and fade in) and, for hover / click / in view, **Starts the timeline** |
+| An element in the timeline | Its values at the playhead: change one and it is keyed there |
+| A keyframe (click its diamond) | Its time, its values (empty = not set by this keyframe), the **curve** into it with a picture of it, Delete |
 
-**Preview on the page** plays it on the canvas as a visitor gets it: it shows the first moment and waits for its
-trigger, so hover the element, click it or scroll it into view. Any edit or scrub ends the preview.
-
-A page can have **several timelines** (**New** in the Timeline box): one for the hero on load, another for a card on
-hover. Pick one in the list to edit it; the canvas shows only the one you are editing, and the other elements as they
-are on the page.
-
-### Good to know
-
-- **Move X / Y are a share of the element's own size** (Move Y 30 = down 30% of its height), so a move fits the element
-  on every screen size. **Blur** is 10 pixels a step.
-- Motion uses the CSS `translate`, `rotate` and `scale` properties, `opacity` and `filter`, so an element keeps its own
-  transform and nothing around it moves (no layout shift).
-- Only **Keyframes clips** on a track count. Kinetic Scenes' other presets do not play on the page yet.
-- When Kinetic Scenes closes, every element goes back to how it was.
-- **Save to page** stores every timeline on the page (post meta, not the builder content), and visitors get it at once.
-  **Runs on** limits a timeline to desktop, tablet or phone, and **Import / Export** moves timelines between pages and
-  sites (JSON, or a CSV spreadsheet). The full guide, with what visitors get, is the
-  [Page Timelines](/animation-engine/page-timelines) page. Page mode never touches the scene you keep in Kinetic Scenes,
-  nor any project.
-- Visitors who ask for **reduced motion** will see each timeline's last moment. *Preview on the page* plays it anyway,
-  since you asked to see it.
+- **One Save:** the page's **Save** stores the timelines too, and **Undo / Redo** cover timeline changes like any
+  other edit. Delete removes the selected keyframe; in Animate it never deletes an element.
 
 ### For developers: the runtime
 
 The runtime is the Animation Engine's `modules/page-timelines/static/js/upw-timeline.js` (about 3 KB gzipped, no
-dependencies). The Live Editor loads it in its canvas. It exposes `window.upwTimeline`:
+dependencies). The Live Editor loads it in its canvas and drives it with the frame message
+`upw-timeline { op: update | seek | play | arm | stop | clear, ... }`; `set-animate { on }` makes the canvas
+select-only. It exposes `window.upwTimeline`:
 
 | Call | Does |
 | --- | --- |
@@ -222,22 +170,13 @@ dependencies). The Live Editor loads it in its canvas. It exposes `window.upwTim
 | `arm(id)` | Waits for its trigger, as a visitor would |
 | `clear()` | Stops everything and puts the elements back |
 
-A timeline is `{ id, name, duration, repeat, yoyo, trigger: { type, target, once, leave, toggle, threshold, delay },
-tracks: [ { target, frames: [ { t, x, y, scale, rotate, opacity, blur, ease, e } ] } ] }`. `target` is the element's
-builder key, and `e` is the curve into the keyframe as CSS `linear()`, baked by Kinetic Scenes from its named curve
-(`ease`), so the runtime needs no curve library. On a visitor page, a `<script type="application/json"
-class="upw-timelines">` holding the list is read and armed when the page loads.
-
-Kinetic Scenes sends the page `upw-studio:page-timeline` (the timelines, after every edit), `upw-studio:page-seek` (the
-playhead), and `upw-studio:page-arm` / `page-play` / `page-stop`, over the same two-window link as above. **Save to
-page** sends `upw-studio:page-save { timelines }`; the editor stores them through the `fw_live_editor_save_timelines`
-AJAX action (the editor's nonce, `edit_post` on the page) and answers `upw-studio:page-saved { ok, timelines | message }`.
-The page's saved timelines come with the first `upw-studio:page` message, with `canSave` (false without the Animation
-Engine). A timeline may also carry `runsOn: ['desktop'|'tablet'|'phone']` (left out when all three).
-
-On a visitor page with timelines, the Animation Engine stamps `data-upw-tl="<key>"` on each element they use, prints
-each track's first moment as CSS in the head (under `.upw-tl-on`, so there is no flash), and the list as `<script
-type="application/json" class="upw-timelines">` with the runtime in the footer.
+A timeline is `{ id, name, duration, repeat, yoyo, runsOn, trigger: { type, target, once, leave, toggle, threshold,
+delay }, tracks: [ { target, label, frames: [ { t, x, y, scale, rotate, opacity, blur, ease, e } ] } ] }`. `target` is
+the element's builder key; `ease` is a key from the shared curve list (`soft_land`, `pop_over`…) and `e` the same curve
+as CSS `linear()`, so the runtime needs no curve library. The editor's Save (`fw_live_editor_save`) sends them as
+`timelines` (only when they changed) and stores them with `upw_page_timelines_save()`; the editor starts from
+`_fwLiveEditor.pageTimelines`. On a visitor page, a `<script type="application/json" class="upw-timelines">` holding
+the list is read and armed when the page loads.
 
 ## Show a state on the canvas
 

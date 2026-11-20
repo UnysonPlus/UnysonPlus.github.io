@@ -10,8 +10,9 @@ keywords: [page timeline, keyframe animation, wordpress animation timeline, anim
 
 **Keyframe the real elements of your page.** A page timeline moves elements of the page you are editing: a row of cards
 rising in one after another, a card that lifts and tilts while the pointer is over it, a panel that drops in when a
-heading is clicked. You make it in **Kinetic Scenes**, with its timeline, keyframe editor and curve editor (springs
-included), while the Live Editor's canvas plays it as you work. **Save to page** and visitors get it at once.
+heading is clicked. You make it in the **Live Editor's Animate workspace**: select an element, key its moves on a
+timeline under the page, pick the curve into each keyframe (springs included), and the page plays it as you work.
+**Save** and visitors get it at once.
 
 It is part of the **Animation Creator** ([its plan](/animation-engine/3d-motion-roadmap/animation-creator)). It needs
 the **Animation Engine** and **Live Editor** extensions.
@@ -25,46 +26,53 @@ in-view cascade of three cards, a hover that moves two elements, and a click tha
 
 ## Make one
 
-:::info Changing soon
-Page timelines are moving into an **Animate workspace inside the Live Editor**, so you no longer work in a second
-Kinetic Scenes window ([the plan](/animation-engine/3d-motion-roadmap/animation-creator)). Timelines you save now keep
-working and open there.
-:::
+1. Open the page in the **Live Editor** and switch the toolbar from **Design** to **Animate**. The page stays in the
+   middle, the timeline docks under it, and a panel on the right shows the timeline's settings.
+2. **Select an element** on the page (or in the Structure list on the left) and click **Animate this element**. It
+   gets a track with a first move to change: it rises 30% of its height and fades in, over 0.6 seconds.
+3. **Move the playhead** (click or drag on the timeline's ruler) and change a value in the panel: Move X / Y, Scale,
+   Rotate, Opacity or Blur. It is keyed there, at the playhead. A property keyed for the first time also gets its
+   resting value at 0 s, so it moves from rest.
+4. **Click a diamond** on the timeline to change that keyframe: its time, its values and the **curve** into it (the
+   shared curve list: Soft land, Pop over and the other springs, Power, Back, Elastic…). Drag a diamond to retime it.
+5. **Play** (or press Space). The element on the page moves with the playhead.
+6. With nothing selected, choose what plays it (**Plays on**) and where (**Runs on**), then click **Save**: the page
+   and its timelines are saved together.
 
+<img src="/img/animation-engine/page-timelines/keyframe-panel.png" alt="Animate with a keyframe selected: its diamond highlighted on the heading's row in the timeline, and on the right its time, Move X set to 12, the other values empty, and the Pop over curve with a picture of it" width="1600" />
 
-1. Open the page in the **Live Editor** and click **Animate** in its toolbar. Kinetic Scenes opens beside it in
-   **page mode**, with the **Page panel** on its left: the page's elements, and the **Timeline** box.
-2. **Pick an element**: click it on the page, or in the Page panel's list.
-3. Click **Add *element* to the timeline** (or double-click its row). It becomes a **track** with a Keyframes clip and a
-   first move to change: it rises 30% of its height and fades in, over 0.6 seconds.
-4. Select the Keyframes clip and change the moves in the Inspector: **Move X / Y**, **Scale**, **Rotate**, **Opacity**
-   and **Blur**, and the curve into each keyframe.
-5. **Play or scrub** the timeline. The element on the page moves with the playhead.
-6. Choose what plays it (**Plays on**) and where (**Runs on**), then click **Save to page**.
+## The workspace
 
-<img src="/img/animation-engine/page-timelines/page-mode.png" alt="Kinetic Scenes in page mode: the Page panel with the Cards cascade timeline on the left, a map of the three cards on the stage, and their three Keyframes tracks on the timeline" width="1920" />
+The panel on the right shows only what the selection needs:
 
-The stage shows a **map** of the tracked elements (a box where each sits on the page), so you can see what moves
-where. The real result is the page itself.
+| Selected | The panel shows |
+| --- | --- |
+| **Nothing** | The timeline's settings (below) |
+| **An element not in the timeline** | **Animate this element**; for hover, click and in view, **Starts the timeline**; tracks *not on this page* to move to it; the other timelines that already move it |
+| **An element in the timeline** | Its values at the playhead (a change keys them there), its keyframes, *Starts the timeline*, *Remove from this timeline* |
+| **A keyframe** | Its time, its values (empty = not set by this keyframe), the curve into it with a picture, *Delete this keyframe* |
 
-## The Timeline box
+The toolbar has the timeline picker (**+** for a new one), back to the start, Play, the time and **Preview**, which
+plays it on the page as a visitor gets it: it shows the first moment and waits for its trigger, so hover the element,
+click it or scroll it into view. The timeline under the canvas zooms (**−** / **+**) and folds away (the arrow).
 
-<img src="/img/animation-engine/page-timelines/timeline-box.png" alt="The Timeline box: the timeline picker, Name, Plays on, Length, the element that starts it, Runs on, Preview on the page, Save to page and Import / Export" width="299" />
+**Keys:** Space plays or pauses; Delete removes the selected keyframe (in Animate, Delete never deletes an element);
+Ctrl+Z / Ctrl+Y undo and redo timeline changes like any other edit.
+
+## The timeline's settings
 
 | Setting | What it does |
 | --- | --- |
-| **Timeline** / **New** / **Delete** | A page can have any number of timelines (one for the hero on load, another for a card on hover). Pick one to edit it. |
-| **Name** | For you, in the list and in exported files. |
-| **Plays on** | **Page load**, **In view** (when its element scrolls into view), **Hover** (while the pointer is over its element, or keyboard focus is inside it) or **Click**. |
-| **Length (s)** | How long the timeline is. Shortening it cuts every track to the new length. |
-| **The element that starts it** | Hover, click and in view: by default the first track's element. Any track's element, or the picked one, can start it, so hovering one card can move another. |
-| **Play back on leaving** | Hover: when the pointer leaves, it plays back to the start (on), or stays where it got to (off). |
-| **Clicks go forward, then back** | Click: each click plays it the other way, like a toggle. Off: each click plays it from the start. |
-| **Every time it comes into view** | In view: plays again each time it comes back into view (off: once). |
-| **Loop** / **Back and forth** | Page load and click: repeat for ever, optionally going back and forth. |
-| **Runs on** | **Desktop** (992 px and wider), **Tablet** (768 to 991 px), **Phone** (narrower than 768 px), the same breakpoints as [Interactions](/animation-engine/interactions). On the others, the elements stay as they are. |
-| **Preview on the page** | Plays it on the canvas as a visitor gets it: it shows the first moment and waits for its trigger. |
-| **Save to page** | Stores every timeline that has a track. Next to it: *Unsaved changes* or *Saved on the page*. Closing Kinetic Scenes with unsaved changes asks first. |
+| **Name** | For you, in the picker and in exported files |
+| **Plays on** | **Page load**, **In view** (when its element scrolls into view), **Hover** (while the pointer is over its element, or keyboard focus is inside it) or **Click** |
+| **The element that starts it** | Hover, click and in view: by default the first track's element; pick another, or select any element and use *Starts the timeline*, so hovering one card can move another |
+| **Play back on leaving** | Hover: when the pointer leaves, it plays back to the start (on), or stays where it got to (off) |
+| **Clicks go forward, then back** | Click: each click plays it the other way, like a toggle |
+| **Every time it comes into view** | In view: plays again each time (off: once) |
+| **Loop** / **Back and forth** | Page load and click: repeat for ever, optionally going back and forth |
+| **Length (s)** | How long the timeline is |
+| **Runs on** | **Desktop** (992 px and wider), **Tablet** (768 to 991 px), **Phone** (narrower than 768 px), the same breakpoints as [Interactions](/animation-engine/interactions). On the others, the elements stay as they are |
+| **Delete this timeline** | Removes it (Undo brings it back) |
 
 ## What visitors get
 
@@ -78,12 +86,12 @@ where. The real result is the page itself.
   (unless the engine's *Respect reduced motion* setting is off).
 - **Devices:** a timeline limited with **Runs on** plays only there, and starts or stops if the window is resized across
   a breakpoint.
-- **In the Live Editor**, Edit mode holds timelines still (everything visible, like every other effect). Preview mode
-  plays them as a visitor gets them.
+- **In the Live Editor**, Design holds timelines still (everything visible, like every other effect), Animate plays
+  them at the playhead, and Preview plays them as a visitor gets them.
 
 ## Import / Export
 
-Open **Import / Export** in the Timeline box:
+With nothing selected in Animate, open **Import / Export** in the panel:
 
 | Button | Gives you |
 | --- | --- |
@@ -92,21 +100,20 @@ Open **Import / Export** in the Timeline box:
 | **All (CSV)** | A spreadsheet: one row per keyframe, the timeline's settings repeated on each row. Read, sort or edit it in any spreadsheet. |
 | **Import a file…** | A JSON or CSV file from either export. The timelines are **added** (a timeline whose id is taken gets a new one); the first one opens. |
 
-What you export imports back unchanged. Imported timelines are not saved until you click **Save to page**.
+What you export imports back unchanged. Imported timelines are not saved until you click **Save** (and Undo takes an import back).
 
 **Moving timelines to another page or site.** A track points at an element by its builder key, which is different on
-another page. After an import, the Timeline box lists the tracks under **Not on this page**: pick an element and click
-**Use *element*** on each, and its moves go to that element.
+another page. After an import, such tracks show in orange on the timeline. Select an element on the page: the panel lists
+them under **Not on this page**, and **Use this element** gives that track's moves to it.
 
 The CSV columns: `timeline_id, timeline, plays_on, length, started_by, once, leave, toggle, threshold, delay, repeat,
 yoyo, runs_on, element, element_name, track_curve, t, x, y, scale, rotate, opacity, blur, curve`. `element` and
-`started_by` are builder keys, `t` is seconds, `curve` is a Kinetic Scenes curve name (empty: the track's curve).
+`started_by` are builder keys, `t` is seconds, `curve` is a key from the shared curve list such as `soft_land` or `pop_over` (empty: the track's curve, or none).
 
 ## Good to know
 
 - **Move X / Y are a share of the element's own size** (Move Y 30 = down 30% of its height), so a move fits the element
   at every screen size. **Blur** is 10 pixels a step.
-- Only **Keyframes clips** on a track count. Kinetic Scenes' other presets do not play on the page.
 - **Where it is stored:** on the page (post meta `_upw_page_timelines`), beside the builder content, never inside it.
   So editing the page in the builder, or re-importing it, leaves the timelines alone. Each save replaces the last one:
   export a copy first to keep a version.
@@ -121,8 +128,8 @@ The runtime is `animation-engine/modules/page-timelines/static/js/upw-timeline.j
 `upw_page_timelines_save( $post_id, $list )` and `upw_page_timelines_clean( $list )` read, store and check the data.
 **REST API:** the timelines are the page's `meta._upw_page_timelines` field on `/wp-json/wp/v2/pages/<id>` (and
 posts), as a JSON string. Anyone can read it (the same data is printed on the page); writing needs a user who can edit
-the page (an application password works), and every write is checked like *Save to page*: unknown fields are dropped
-and values kept in range. An empty string or `[]` removes them.
+the page (an application password works), and every write is checked like the Live Editor’s Save: unknown fields are dropped
+and values kept in range. An empty string or `[]` removes them. The Live Editor's own Save sends them the same way.
 
 ```bash
 curl -X POST https://example.com/wp-json/wp/v2/pages/123   -u 'editor:APPLICATION PASSWORD' -H 'Content-Type: application/json'   -d '{"meta":{"_upw_page_timelines":"[{\"id\":\"tl-1\",\"name\":\"Intro\",\"duration\":1,\"trigger\":{\"type\":\"load\"},\"tracks\":[{\"target\":\"<item key>\",\"frames\":[{\"t\":0,\"y\":30,\"opacity\":0},{\"t\":0.6,\"y\":0,\"opacity\":1,\"e\":\"cubic-bezier(.22,1,.36,1)\"}]}]}]"}}'

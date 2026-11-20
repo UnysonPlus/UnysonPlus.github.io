@@ -70,8 +70,23 @@ To know what to combine, Asset Optimizer needs to see your front end render. It 
 internal request to your homepage and remembers the stylesheets and scripts that load.
 
 To re-scan later — after activating a new plugin or theme, or if your site sits behind a full-page
-cache — visit any page with **`?fw_asset_optimizer_discover=1`** appended to the URL, then return to
-the settings and refresh.
+cache — use **Re-scan the frontend** on the settings page. It forgets the remembered stylesheets and
+scripts, clears the cached bundles, and crawls your front end again.
+
+### When an asset stops being used
+
+The remembered list is not append-only. Each stylesheet and script carries the date it was last seen
+on a page, refreshed every time a page that uses it is viewed, and anything unseen for **14 days**
+drops out of the combined bundle.
+
+That matters when a theme or plugin stops loading an asset without deleting it — a child theme that
+calls `wp_dequeue_style()` on its parent's stylesheet, for example. The file is still on disk, so
+"the file is gone" cannot be the test. Without the date the combiner would go on folding that CSS
+into every page, where it re-enters the cascade and can override the theme that deliberately dropped
+it. Use **Re-scan the frontend** if you would rather not wait out the 14 days.
+
+Dropping an asset is deliberately the safe direction to get wrong: one left out of the bundle simply
+loads as its own request again, and the next page view puts it back.
 
 ## Every setting, and where it is explained
 
@@ -130,7 +145,7 @@ Two more behaviours have no setting at all and are always on:
 3. On the **JavaScript** tab, the first-party scripts are pre-selected; tick any safe third-party
    scripts you also want combined, and consider **Defer**.
 4. Save. The combined, cached files are served on the front end; re-scan with
-   `?fw_asset_optimizer_discover=1` whenever your asset set changes.
+   **Re-scan the frontend** whenever your asset set changes.
 5. Once the page itself is fast, consider **Instant navigation** to take the wait out of the next
    click. Prefetch first; try prerender only after testing it.
 

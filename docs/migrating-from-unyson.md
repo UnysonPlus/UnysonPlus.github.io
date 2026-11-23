@@ -60,13 +60,16 @@ Updates are delivered from the GitHub repos under the UnysonPlus org, not the or
 channel. They're **version-driven** (an update appears when the repo version is higher), so just keep
 the plugin/theme current from the dashboard.
 
-### Not every original extension ships
+### Almost every original extension is still available
 
-Some extensions from the original Unyson (Backups, Events, Feedback, Learning, SEO, Sliders, Social,
-Translation) are **not bundled** in Unyson+. Use a dedicated WordPress plugin for those needs
-(e.g. a backup plugin, an SEO plugin). The extensions that *are* included are listed in the
-[Extensions overview](/extensions/overview). Courses and lessons (the old Learning extension) are planned as the
-Courses module of the [Membership](/membership) extension, built from scratch on its access rules.
+The extensions from the original Unyson are available in **Unyson+ → Extensions**: Page Builder, WordPress
+Shortcodes, Backups & Demo Content, Sliders, Styling, Breadcrumbs, Events, Feedback, Mega Menu, Portfolio,
+Sidebars, Forms, Mailer, SEO, Social, Analytics and Media, plus many new ones (see the
+[Extensions overview](/extensions/overview)). The one exception is **Learning**: courses and lessons are planned as
+the Courses module of the [Membership](/membership) extension, built from scratch on its access rules.
+
+When your theme was built on Unyson, Unyson+ reads which extensions it uses and shows **Install theme compatible
+extensions** at the top of the Extensions screen: one click installs them all.
 
 ### Header/footer presets are now the Theme Builder
 
@@ -74,7 +77,21 @@ The old per-page header/footer preset idea is generalized into the
 [Theme Builder](/extensions/theme-builder), build header/footer/body parts and assign them with
 conditional rules. Your Theme Settings slot-based header/footer remains the always-present fallback.
 
-## Getting started
+## Switching a live Unyson site
+
+1. **Back up the site** (files and database), as before any big update.
+2. In **Plugins**, deactivate **Unyson**. Keep it installed until you have checked the site, so you can switch back.
+3. Install **Unyson+**: download `unysonplus.zip` from the
+   [latest release](https://github.com/UnysonPlus/UnysonPlus/releases/latest), upload it in **Plugins → Add New**,
+   and activate it. Never run both plugins at once.
+4. Open **Unyson+ → Extensions** and click **Install theme compatible extensions**.
+5. Check your main pages. Theme Settings values and page-builder pages carry over as they are (Unyson+ reads them
+   where the original stored them). When everything looks right, delete the old Unyson plugin.
+
+We tested this on a site built with Unyson 2.7.31 and its official starter theme, on WordPress 7.1 and PHP 8.2:
+every Theme Settings value and every page's content came across unchanged.
+
+## Starting a new project
 
 1. Install the **Unyson+ plugin** and the **Unyson+ Theme** (parent) from the
    [UnysonPlus org on GitHub](https://github.com/UnysonPlus). See [Installation](/installation).

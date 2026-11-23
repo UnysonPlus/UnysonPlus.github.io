@@ -42,6 +42,103 @@
       ]
     },
     {
+      "id": "p31-talking-head",
+      "title": "Phase 31 · More effects for talking-head reels",
+      "goal": "Effects for videos where a person talks to the camera, the gaps left after comparing the Studio with a public effects pack for talking-head reels. Each is written from scratch as a preset or a ready-made piece, so it stays editable on the timeline, uses Follow the face and the cut-out person (graphics can sit behind the speaker), and passes Check scene. Phone and app pieces get a generic look, with no app's branding.",
+      "tasks": [
+        {
+          "id": "p31-study",
+          "title": "Study the talking-head effects pack",
+          "detail": "Read a public, MIT-licensed pack of talking-head reel effects for ideas only (what each effect does and when it is used). Nothing is copied; many of its effects are already presets or pieces here (tier list, comment box, magazine cover, checklist, receipt, spotlight, title behind the person, before and after, colour grades, captions, pause trimming).",
+          "status": "planned"
+        },
+        {
+          "id": "p31-split-push",
+          "title": "Split push",
+          "detail": "A headline card, a screenshot or a B-roll clip slides in from the top and pushes the speaker into the lower half of the frame, then slides away and gives the frame back. For \"here is what it does\" lines and B-roll over a talking head.",
+          "status": "planned"
+        },
+        {
+          "id": "p31-profile-grid",
+          "title": "Profile grid",
+          "detail": "The speaker shrinks into the centre tile of a 3 × 3 grid of reel tiles while the other tiles pop in one by one with view counts; a wall version fills the background behind the speaker while a counter rolls up.",
+          "status": "planned"
+        },
+        {
+          "id": "p31-card-carousel",
+          "title": "3D card carousel",
+          "detail": "Cards (reel covers, screenshots, products) spin around the speaker on a tilted 3D ring, passing behind the cut-out person on the far side.",
+          "status": "planned"
+        },
+        {
+          "id": "p31-phone-ui",
+          "title": "Phone UI pieces",
+          "detail": "Three ready-made pieces in a generic phone style: a follow button that is tapped and flips to \"Following\", toggle switches that turn on one line at a time, and notifications that stack up with a soft glow.",
+          "status": "planned"
+        },
+        {
+          "id": "p31-stamp",
+          "title": "Stamp",
+          "detail": "A rubber stamp slams down on a word or a picture with a little shake and an ink-bleed edge (\"REJECTED\", \"APPROVED\", \"SOLD OUT\"), with a thud from the sound library.",
+          "status": "planned"
+        },
+        {
+          "id": "p31-freeze-arrow",
+          "title": "Freeze frame with a drawn arrow",
+          "detail": "The footage freezes on a frame, a hand-drawn arrow and a short note draw themselves on to point at something, then the video plays on.",
+          "status": "planned"
+        },
+        {
+          "id": "p31-match-cut",
+          "title": "Match cut",
+          "detail": "A different page, picture or headline cuts in on each spoken word while one word stays locked in the same place across all of them.",
+          "status": "planned"
+        },
+        {
+          "id": "p31-led-sign",
+          "title": "LED sign",
+          "detail": "A dot-matrix LED sign types a line out behind the speaker while the room dims, each lit dot glowing.",
+          "status": "planned"
+        },
+        {
+          "id": "p31-glass-widgets",
+          "title": "Glass widgets",
+          "detail": "Frosted-glass widgets (a stat tile, a progress ring, a calendar, a now-playing card) float in around the speaker's head and drift gently.",
+          "status": "planned"
+        },
+        {
+          "id": "p31-halftone-page",
+          "title": "Halftone paper page",
+          "detail": "A cream paper page with the speaker cut out in a corner in halftone dots, while their words build up at the top in serif type with the keywords in red.",
+          "status": "planned"
+        },
+        {
+          "id": "p31-tape-label",
+          "title": "Tape label",
+          "detail": "A strip of tape with a short line on it is slapped on at a slant, as on a box or a chest.",
+          "status": "planned"
+        },
+        {
+          "id": "p31-dot-reveal",
+          "title": "Dot reveal",
+          "detail": "The picture builds itself out of glowing dots, then snaps into focus.",
+          "status": "planned"
+        },
+        {
+          "id": "p31-rain",
+          "title": "Rain behind the person",
+          "detail": "Keys, icons or small pictures fall with physics behind the cut-out speaker and pile up at the bottom.",
+          "status": "planned"
+        },
+        {
+          "id": "p31-lock-on",
+          "title": "Lock-on brackets",
+          "detail": "Corner brackets snap onto the speaker's face and track it while the camera gently follows, with a small label.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
       "id": "open-earlier",
       "title": "Still open from earlier phases",
       "goal": "The few tasks left from phases 1-29. Everything else from those phases is built and described on the guide pages.",
@@ -92,7 +189,7 @@
       ]
     }
   ],
-  "extensionVersion": "0.1.66",
+  "extensionVersion": "0.1.70",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

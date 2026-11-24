@@ -43,6 +43,36 @@ function statcounterPlugin() {
   };
 }
 
+// Matomo analytics (self-hosted at stats.unysonplus.com, site id 3), cookie-free so no banner is
+// needed. src/matomo-route.js counts the page changes the site makes without a reload.
+function matomoPlugin() {
+  return {
+    name: 'matomo',
+    getClientModules() {
+      return ['./src/matomo-route.js'];
+    },
+    injectHtmlTags() {
+      return {
+        headTags: [
+          `<script>
+var _paq = window._paq = window._paq || [];
+_paq.push(['disableCookies']);
+_paq.push(['trackPageView']);
+_paq.push(['enableLinkTracking']);
+(function() {
+  var u="https://stats.unysonplus.com/";
+  _paq.push(['setTrackerUrl', u+'matomo.php']);
+  _paq.push(['setSiteId', '3']);
+  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+  g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+})();
+</script>`,
+        ],
+      };
+    },
+  };
+}
+
 function sitemapDataPlugin() {
   // Section id → display label + sort order (unknown instances fall to the end).
   const DOCS_LABELS = {
@@ -266,6 +296,7 @@ const config = {
   // separate from the Manual (the docsSidebar). All surfaced in the navbar.
   plugins: [
     statcounterPlugin,
+    matomoPlugin,
     sitemapDataPlugin,
     [
       '@docusaurus/plugin-client-redirects',

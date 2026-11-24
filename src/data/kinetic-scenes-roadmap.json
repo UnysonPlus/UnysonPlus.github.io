@@ -139,6 +139,49 @@
       ]
     },
     {
+      "id": "p32-better-3d",
+      "title": "Phase 32 · Better 3D",
+      "goal": "Better and wider 3D for scenes. Agents already build models and shots in Blender through the AI Dev Kit (blender_model, blender_render) and put them in 3D layers; this phase makes those models better, reaches shapes that scripted modelling cannot (a shoe, a plant, a character), and lets you work in a live Blender window when you want to. Each tool is optional and is switched on in the AI Dev Kit's Tools section, planned with the kit.",
+      "tasks": [
+        {
+          "id": "p32-blender-guidance",
+          "title": "Better Blender guidance for agents",
+          "detail": "Fold the checklists of the open, MIT-licensed blender-skills pack into the kit's own Blender guidance: real-world scale, bevels and clean topology, materials, three-point lighting, UVs, decimating for the web and GLB export, so every model an agent writes comes out cleaner. The full pack is recommended as an opt-in extra, not bundled.",
+          "status": "planned"
+        },
+        {
+          "id": "p32-blender-mcp",
+          "title": "Work in a live Blender window",
+          "detail": "Support the official Blender MCP server (Blender's own connector) for hands-on sessions: you watch the model take shape in Blender and adjust it, then the agent hands the result to a 3D layer or a rendered shot. The background tools stay the default for \"just make it\".",
+          "status": "planned"
+        },
+        {
+          "id": "p32-image-to-mesh",
+          "title": "Picture to 3D model (trial)",
+          "detail": "Try LATO.2 (MIT code and weights), an open picture-to-mesh model, for shapes scripts cannot model: a photo or an AI picture becomes a mesh, Blender cleans it up (decimate, materials, GLB) and it lands in a 3D layer. It needs a CUDA graphics card with more memory than this machine's 6 GB, so the trial also tests its hosted demo and a rented GPU before deciding.",
+          "status": "planned"
+        },
+        {
+          "id": "p32-3d-budgets",
+          "title": "3D budgets and checks",
+          "detail": "Ideas from an open web 3D engine made for agents: a size and memory budget per scene (triangles, textures, bytes) shown in Check scene, a warning before a model pushes a web scene past it, and a flicker check for camera moves over thin lines.",
+          "status": "planned"
+        },
+        {
+          "id": "p32-path-traced-stills",
+          "title": "Path-traced stills",
+          "detail": "Render a 3D scene's still frame (the poster and the thumbnail) with a path tracer in Blender (Cycles) for soft shadows and real reflections, while the moving scene stays live on the page.",
+          "status": "planned"
+        },
+        {
+          "id": "p32-app-screencasts",
+          "title": "Screencasts of phone apps",
+          "detail": "Record real Android apps for product tours and client reels: mirror and record an Android phone over USB with scrcpy (the Android Studio emulator when no phone is at hand), and bring the recording in as footage with the screencast tools. iPhone apps: the phone's own screen recording or mirroring it to the computer, since the iOS Simulator runs only on a Mac. The tools themselves are switched on in the AI Dev Kit's Tools section.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
       "id": "open-earlier",
       "title": "Still open from earlier phases",
       "goal": "The few tasks left from phases 1-29. Everything else from those phases is built and described on the guide pages.",

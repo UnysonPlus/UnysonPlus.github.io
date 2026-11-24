@@ -174,6 +174,12 @@
           "status": "planned"
         },
         {
+          "id": "p32-3d-devices",
+          "title": "3D devices that play your screencast",
+          "detail": "Generic, unbranded 3D devices (a phone, a tablet, a laptop and a desktop monitor), modelled once in Blender and shipped with the Studio, whose screen plays a screencast, a picture or another scene live. The device moves, turns, tilts, opens (the laptop lid) and grows with the 3D presets (Spin 3D, Tumble in, Orbit, Camera push), the screen stays sharp at any angle, and one recording can play on several devices side by side (the same app on a phone and a tablet). It replaces the flat phone and browser frames where a product tour or an app reel needs depth, and pairs with the phone-app screencasts below. Light enough for web scenes, and each device in a few colours.",
+          "status": "planned"
+        },
+        {
           "id": "p32-app-screencasts",
           "title": "Screencasts of phone apps",
           "detail": "Record real Android apps for product tours and client reels: mirror and record an Android phone over USB with scrcpy (the Android Studio emulator when no phone is at hand), and bring the recording in as footage with the screencast tools. iPhone apps: the phone's own screen recording or mirroring it to the computer, since the iOS Simulator runs only on a Mac. The tools themselves are switched on in the AI Dev Kit's Tools section.",

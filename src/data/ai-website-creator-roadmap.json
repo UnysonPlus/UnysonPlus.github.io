@@ -552,17 +552,35 @@
         {
           "id": "p9-end-to-end",
           "title": "One real site, start to finish",
-          "detail": "Take one brief through the whole flow with nothing skipped: Site Creator → spec → agent → a fresh WordPress → the ship gate. Record what broke, which recipe or style was wrong, and what the agent had to be told that the docs should have said. The output that matters is the list of corrections, not the site. The dashboard card may only turn green when this has actually been done.",
-          "detect": null,
-          "status": "planned",
+          "detail": "Run 2026-11-25. One brief through the whole flow with nothing skipped: Site Creator → spec (validated against the schema) → agent → a fresh WordPress 7.1.5 → the ship gate, including a review-only scored pass. It FAILED the design jury at 5.5 against the 7.0 floor, which is the useful outcome: the corrections are the deliverable. Headline finds — every recipe wrote `gap-4` where a gap value is a bare slug, so EVERY generated page had zero gutters and the cards abutted; the page-builder wrapper zeroes `--fw-inner-gutter` on a template that is not a container, so every Div-first page ran edge-to-edge below 1280px; `recipes/navbars.md` wrote the header treatment to a `group_header_layout` key that does not exist; the flow never configures Form Styles, so the only conversion surface wears plugin chrome; and the spec had nowhere to put prices or figures, which caps Creativity because a participatory signature moment needs facts that rule 4 forbids inventing. Corrections landed in the recipes, the style file, the build rules, programmatic-setup, the skill and the schema (a new `offering` object).",
+          "detect": {
+            "symbols": [
+              {
+                "file": "docs/site-creator/recipes/feature-grids.md",
+                "pattern": "fw-gap-gap-4"
+              },
+              {
+                "file": "skills/create-site/site-spec.schema.json",
+                "pattern": "offering"
+              }
+            ]
+          },
+          "status": "done",
           "progress": null
         },
         {
           "id": "p9-card",
           "title": "The status card tells the truth",
-          "detail": "Once the flow has been run end to end, the Home card stops saying \"not yet run end to end\". It says what is true at the time — and if the run exposed gaps, it says that instead of rounding up to Ready.",
-          "detect": null,
-          "status": "planned",
+          "detail": "Done. The Home card no longer says “not yet run end to end”, and it did not round up to Ready either: it reads “Run end to end · scored 5.5, corrections applied, not re-scored”, which is what is true. It turns green when the corrected path is re-run and clears the 7.0 floor.",
+          "detect": {
+            "symbols": [
+              {
+                "file": "assembled/UnysonPlus-Capture-Service/tools/design-capture/dashboard/index.html",
+                "pattern": "scored 5.5"
+              }
+            ]
+          },
+          "status": "done",
           "progress": null
         }
       ]

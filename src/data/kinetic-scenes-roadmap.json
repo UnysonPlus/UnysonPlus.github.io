@@ -5,43 +5,6 @@
   "detected": false,
   "milestones": [
     {
-      "id": "p30-new-styles",
-      "title": "Phase 30 · Four new motion styles",
-      "goal": "Four looks Kinetic Scenes does not have yet, added like the other 51 styles: a card on the start screen and in the style picker, a guide that tells the AI how to build the look, a docs page and a place in What's new. Each is written from scratch for Kinetic Scenes, so it stays editable on the timeline and works with your voice, captions and brand.",
-      "tasks": [
-        {
-          "id": "p30-study",
-          "title": "Study the open animation-skills collection",
-          "detail": "Read a public, MIT-licensed collection of AI animation skills for technique only (how it times captions to a voice, builds a stick figure, stacks voxels and follows a route with the camera). Nothing is copied, and the styles named after other creators are left out.",
-          "status": "planned"
-        },
-        {
-          "id": "p30-stick-figure",
-          "title": "Stick figure explainer",
-          "detail": "A whiteboard-white stage where stick figures act the idea out: they walk on, point, shrug and react on the beat of the voice, with simple props and captions. Quick to make and easy to read, for explainers and story reels.",
-          "status": "planned"
-        },
-        {
-          "id": "p30-voxel",
-          "title": "Voxel build",
-          "detail": "A scene built from cubes, block by block: a house, a desk or a city rises as the voice talks, with a slow orbiting camera and soft daylight. A generic blocky look, with no game's name, characters or textures.",
-          "status": "planned"
-        },
-        {
-          "id": "p30-map-route",
-          "title": "3D map route",
-          "detail": "A tilted 3D map where a route draws itself from start to finish while the camera follows it, with pins, place names and a distance or time counting down. Extends the 2D Transit map style for travel, delivery and \"how far\" stories.",
-          "status": "planned"
-        },
-        {
-          "id": "p30-what-if",
-          "title": "\"What if\" 3D explainer",
-          "detail": "A recipe on top of the Toy 3D look for the cartoon \"what if\" format: one question, a 3D world that plays out the answer step by step, and captions timed to the voice-over.",
-          "status": "planned"
-        }
-      ]
-    },
-    {
       "id": "p32-better-3d",
       "title": "Phase 32 · Better 3D",
       "goal": "Better and wider 3D for scenes. Agents already build models and shots in Blender through the AI Dev Kit (blender_model, blender_render) and put them in 3D layers; this phase makes those models better, reaches shapes that scripted modelling cannot (a shoe, a plant, a character), and lets you work in a live Blender window when you want to. Each tool is optional and is switched on in the AI Dev Kit's Tools section, planned with the kit.",

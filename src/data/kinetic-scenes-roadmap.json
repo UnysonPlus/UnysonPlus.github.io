@@ -42,67 +42,6 @@
       ]
     },
     {
-      "id": "p31-talking-head",
-      "title": "Phase 31 · More effects for talking-head reels",
-      "goal": "Effects for videos where a person talks to the camera, the gaps left after comparing the Studio with a public effects pack for talking-head reels. Each is written from scratch as a preset or a ready-made piece, so it stays editable on the timeline, uses Follow the face and the cut-out person (graphics can sit behind the speaker), and passes Check scene. Phone and app pieces get a generic look, with no app's branding.",
-      "tasks": [
-        {
-          "id": "p31-study",
-          "title": "Study the talking-head effects pack",
-          "detail": "Read a public, MIT-licensed pack of talking-head reel effects for ideas only (what each effect does and when it is used). Nothing is copied; many of its effects are already presets or pieces here (tier list, comment box, magazine cover, checklist, receipt, spotlight, title behind the person, before and after, colour grades, captions, pause trimming).",
-          "status": "planned"
-        },
-        {
-          "id": "p31-profile-grid",
-          "title": "Profile grid",
-          "detail": "The speaker shrinks into the centre tile of a 3 × 3 grid of reel tiles while the other tiles pop in one by one with view counts; a wall version fills the background behind the speaker while a counter rolls up.",
-          "status": "planned"
-        },
-        {
-          "id": "p31-card-carousel",
-          "title": "3D card carousel",
-          "detail": "Cards (reel covers, screenshots, products) spin around the speaker on a tilted 3D ring, passing behind the cut-out person on the far side.",
-          "status": "planned"
-        },
-        {
-          "id": "p31-freeze-arrow",
-          "title": "Freeze frame with a drawn arrow",
-          "detail": "The footage freezes on a frame, a hand-drawn arrow and a short note draw themselves on to point at something, then the video plays on.",
-          "status": "planned"
-        },
-        {
-          "id": "p31-match-cut",
-          "title": "Match cut",
-          "detail": "A different page, picture or headline cuts in on each spoken word while one word stays locked in the same place across all of them.",
-          "status": "planned"
-        },
-        {
-          "id": "p31-led-sign",
-          "title": "LED sign",
-          "detail": "A dot-matrix LED sign types a line out behind the speaker while the room dims, each lit dot glowing.",
-          "status": "planned"
-        },
-        {
-          "id": "p31-halftone-page",
-          "title": "Halftone paper page",
-          "detail": "A cream paper page with the speaker cut out in a corner in halftone dots, while their words build up at the top in serif type with the keywords in red.",
-          "status": "planned"
-        },
-        {
-          "id": "p31-dot-reveal",
-          "title": "Dot reveal",
-          "detail": "The picture builds itself out of glowing dots, then snaps into focus.",
-          "status": "planned"
-        },
-        {
-          "id": "p31-rain",
-          "title": "Rain behind the person",
-          "detail": "Keys, icons or small pictures fall with physics behind the cut-out speaker and pile up at the bottom.",
-          "status": "planned"
-        }
-      ]
-    },
-    {
       "id": "p32-better-3d",
       "title": "Phase 32 · Better 3D",
       "goal": "Better and wider 3D for scenes. Agents already build models and shots in Blender through the AI Dev Kit (blender_model, blender_render) and put them in 3D layers; this phase makes those models better, reaches shapes that scripted modelling cannot (a shoe, a plant, a character), and lets you work in a live Blender window when you want to. Each tool is optional and is switched on in the AI Dev Kit's Tools section, planned with the kit.",
@@ -167,6 +106,55 @@
           "id": "p7-accounts",
           "title": "Accounts and cloud projects (only if needed)",
           "detail": "If real accounts are ever needed (a project library, short links, embeds that update in place), they run on a free cloud tier, separate from the website hosting, with uploads on object storage and embeds still served from GitHub Pages. Deferred (2026-10-29): not planned until people ask for it; projects stay in the browser and as files.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": "p33-more-reel-effects",
+      "title": "Phase 33 — More reel effects (from the study)",
+      "goal": "The ideas left over after comparing the Studio with a public pack of talking-head reel effects (read for ideas only; nothing copied). Each is written from scratch as a preset or a ready-made piece, editable on the timeline, using Follow the face and the cut-out person.",
+      "tasks": [
+        {
+          "id": "p33-flip-countdown",
+          "title": "Flip-clock countdown",
+          "detail": "A 3, 2, 1 split-flap countdown above the speaker’s head, each card flipping down with a click.",
+          "status": "planned"
+        },
+        {
+          "id": "p33-tunnel",
+          "title": "Room tunnels away",
+          "detail": "The room behind a cut-out speaker stretches into a tunnel and rushes away, for \"down the rabbit hole\" moments.",
+          "status": "planned"
+        },
+        {
+          "id": "p33-doodles",
+          "title": "Marker doodles round the person",
+          "detail": "Hand-drawn marker doodles (stars, arrows, underlines, a crown) draw themselves round a cut-out speaker and follow the face.",
+          "status": "planned"
+        },
+        {
+          "id": "p33-crayon",
+          "title": "Crayon writing",
+          "detail": "A crayon writes a word behind the speaker’s head stroke by stroke, then underlines it, with a waxy texture.",
+          "status": "planned"
+        },
+        {
+          "id": "p33-logo-link",
+          "title": "Two logos joined",
+          "detail": "Two logos pop in beside the face, joined by a dashed line that runs behind the head (the user’s own logo files; no brand library is bundled).",
+          "status": "planned"
+        },
+        {
+          "id": "p33-uninstall-bar",
+          "title": "Glitchy progress bar",
+          "detail": "An \"uninstalling\" progress bar that stutters, glitches and breaks the frame apart.",
+          "status": "planned"
+        },
+        {
+          "id": "p33-phone-fan",
+          "title": "Phone fan",
+          "detail": "Reel covers fanned out like a hand of phones behind the speaker, dealt in one at a time.",
           "status": "planned"
         }
       ]

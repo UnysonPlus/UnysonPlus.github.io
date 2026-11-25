@@ -38,6 +38,7 @@ by the real player on an illustration; on your own footage they look the same.
 | **Jiggle** | The phone home-screen wobble, as before a delete. **Jiggle delete:** Jiggle, then Strike. |
 | **Orbit around** | Circles round its place on a tilted ring, smaller and dimmer on the far side: icons orbiting a head. |
 | **Stamp** | A rubber stamp drops in, slams down on a word or a picture and jolts it, with worn, inky edges: "APPROVED", "SOLD OUT", "PAID". Settings: the words, the ink colour, the tilt and the size. The out clip lifts it off. Comes with the Rubber stamp sound. |
+| **Freeze frame** | On footage: the picture stops on a frame with a quick flash, a hand-drawn arrow and a short note draw themselves on to point at something, then the video plays on from the same frame (the rest of the clip is pushed back by the freeze, so nothing is skipped). Settings: the note, where it points (across and down, in % of the layer), which side the note sits, the colour. |
 | **Tape label** | A strip of masking tape with torn ends and a handwritten line ("FRAGILE", "Day 1") is slapped across the layer at a slant: across the middle, the top or the bottom. Settings: the words, the tape and writing colours, the tilt and the size. The out clip peels it off from one end. |
 
 ## On footage and pictures
@@ -47,6 +48,7 @@ by the real player on an illustration; on your own footage they look the same.
 | Effect | How |
 |---|---|
 | **Snap zoom** | A sharp punch-in on a point (the face, a detail), held; Out snaps back. |
+| **Dot reveal** | The picture builds itself out of glowing dots that light up and swell until they touch, then snaps into focus; Out runs it backwards. Settings: the dot spacing and the glow colour. Works on text and shapes too. |
 | **Digital zoom** | The picture steps in with a blur as the focus hunts, inside a recording frame (corners, REC, the zoom). |
 | **Colour grade** | Fades in a look on the picture only: black and white, noir, warm, cool, film, vivid, faded, teal and orange. |
 | **False colour** | Turns the picture into a thermal camera view, an X-ray or night vision, fading in like a grade: for a reveal ("what the camera really sees"), a scan, or a night scene. |
@@ -102,6 +104,9 @@ only the person changes and the room behind stays. Find them in the preset libra
 | **Rack focus** | The layer drifts out of focus (or into it), like a lens pulling focus. | **Rack focus** on the footage behind the cut-out: the room softens, the person stays sharp. |
 | **Lock-on brackets** | Four corner brackets snap onto the face with a little overshoot and track it while the clip runs, with an optional small label above ("TARGET", a name), while the picture pushes in gently towards the face. | **Lock-on brackets** on the footage, after **Follow the face** has found the face (without a face path it locks onto the middle of the frame). Settings: the label, the colour, how far it pushes in (0 for none) and the room round the face. |
 | **Split push** | A headline card, a screenshot or a B-roll clip slides down from the top and pushes the speaker into the lower half of the frame, face still in view; the out clip gives the frame back. | **Split push** on the card, with the card's box over the top half. Pick the speaker under **Pushes** (or it takes the biggest footage layer). **Frame it takes** sets how much of the frame the card covers (50% by default; match it to the card's height). The speaker's own clips and the camera are left alone: it is the picture inside that moves. |
+| **Shrink into** | The speaker shrinks into a tile or a corner, with rounded corners and a soft shadow, and the out clip grows them back. | Put it on the graphic that surrounds them (the Profile grid and Halftone paper page pieces carry it). It picks the footage under **Shrinks**, else a cut-out person, else the biggest footage. **Size** is a share of the frame; **Where**: centre or a corner. Like Split push, it moves the picture inside the layer, so the speaker's own clips stay as they are. |
+| **Carousel** | The layers inside a group ride a tilted ring round its centre and turn, nearer ones bigger and brighter. | On a group of cards. **Show** the far side only on a copy under the cut-out person and the near side only on a copy over them, and the cards pass behind the person: the **Card carousel** piece adds both copies for you. |
+| **LED sign** | A dot-matrix LED sign types its line out letter by letter, each lit dot glowing, while the room dims. | **LED sign** on a text layer in a heavy font, placed **under** the cut-out person: everything under the sign darkens, the person above it stays lit, so the sign glows behind them. Settings: the LED colour, the dot size, how much the room dims. |
 | **Layer explode** | The layers of a group come apart in depth while the view turns: footage, captions, sound, graphics, showing how the frame is built. Out: they collapse back. | Group the parts of a frame and put **Layer explode** on the group. |
 
 The pictures are drawn from the playing footage frame by frame, so they play, preview and export the same way. To be
@@ -286,6 +291,11 @@ cut out, a piece goes behind them.
 | **Replying to a comment** | A viewer's comment as a sticker at the top ("Reply to @name's comment" and the question), popping in with a tilt: open a reel by answering a question. |
 | **Tier list** | S to D rows in their colours, and items that drop into their rows one by one with a pop. Change the items, their rows and their times. |
 | **Reveal board** | A numbered top-5 whose answers are covered, then uncovered one by one with a reveal sound, like a game show. |
+| **Match cut** | Five front pages cut in one after another, a hard cut every 0.4 s (on each spoken word), while one big word stays locked in the same place on top. The pages are a group with **Cut through**: change how fast it cuts there, or pin it to the words. |
+| **Profile grid** | The speaker shrinks into the centre tile of a 3 by 3 grid of reel covers while the other eight pop in one by one with their view counts. |
+| **Card carousel** | Six reel covers spin round the speaker on a tilted 3D ring. It adds two layers: the far half goes under a cut-out person and the near half over them, so the cards pass behind the person. |
+| **Halftone paper page** | A cream paper page fills the frame, the speaker shrinks into the bottom-right corner and their words build up at the top in serif type, the keywords (in *asterisks*) in red. Put **Risograph** on the cut-out person for the halftone dots. |
+| **Keyboard rain** | Keyboard keys rain down one after another, bounce and pile up at the bottom, behind a cut-out speaker. |
 | **Follow button** | A profile card in a generic phone style: the Follow button is tapped (a ripple and a little press) and flips to a grey "Following". |
 | **Toggle switches** | A settings panel whose switches turn on one line at a time: the knob slides across with a click and the track turns green. |
 | **Notifications** | Phone notifications (a sale, a subscriber, a payment) stack up one by one, each with a soft glow in its app's colour as it lands. |

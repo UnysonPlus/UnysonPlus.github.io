@@ -37,6 +37,7 @@ kit itself closes.
 | Add-on | Kind | What it does | Where you use it |
 |---|---|---|---|
 | **Voicebox** | Connector | Voice-overs in your own voice (or any voice you have the right to use) from your Voicebox profiles. | [Voice-over from a script](./sound.md#a-voice-over-from-a-script), AI assist's **Build with a voice-over** |
+| **VoiceStudio** | Connector | Voice-overs in your own cloned voice from VoiceStudio, an app you run yourself. | [Voice-over from a script](./sound.md#a-voice-over-from-a-script), AI assist's **Build with a voice-over** |
 | **ACE-Step music** | Connector | Background music made on your computer, free to use: an instrumental in the style, tempo and length you ask for. | **Insert → Music…**, AI assist settings |
 | **Speech recognition** | Download | Every word of a voice-over with its time (Whisper). | An audio clip's **Words** |
 | **Built-in voices** | Download | Voice-overs from a script in a free synthetic voice (Piper). | Voice-over from a script |
@@ -66,6 +67,22 @@ while Voicebox loads its model; after that, each line takes seconds.
 To have the kit open Voicebox for you, set its **Program** in the Add-ons panel: **Find it**, or **Browse…** to
 `voicebox.exe` (not `voicebox-server.exe`). When a voice-over needs Voicebox and it is closed, the kit starts it and
 waits until it answers; the first line then takes a minute or so while it loads.
+
+Only use a voice you have the right to use: your own, or someone's with their permission.
+
+## VoiceStudio
+
+[VoiceStudio](https://voicestudio.sh/) is a voice app that clones a voice from a clean recording and runs on your own
+computer. While it is open, it serves a small local API (`http://127.0.0.1:3900`), and the kit uses it there.
+
+- **Pick your voice** in the **Voice** menu of Voice-over from a script, or in AI assist, as "VoiceStudio: *name*". An
+  AI agent uses it as `voicestudio:` and the name, for example `voicestudio:Jon`.
+- The kit asks VoiceStudio for each line, joins the lines with short pauses and times every word, so scenes and
+  captions follow it exactly. Changing one line remakes only that line.
+- **Open VoiceStudio yourself** before making the voice-over: the kit does not open or close it. If it is closed, the
+  voice-over stops and says so. The Add-ons panel shows whether it is running and which voices it has.
+- **It takes about a minute a line** on a mid-range graphics card (a little longer for the first line after it starts),
+  so a one-minute script takes about ten to fifteen minutes. The result is worth the wait: a natural, expressive take.
 
 Only use a voice you have the right to use: your own, or someone's with their permission.
 

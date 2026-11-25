@@ -71,6 +71,38 @@ Notes on the exact shape:
   brand's `--color-primary`, so the Buttons/Box presets that reference `primary` adopt the brand color.
 - Slug collisions (two rows slugging to the same value) — the first wins.
 
+## Vivid on wide-gamut screens {#wide-gamut}
+
+Most phones, tablets and laptops made in the last few years have a **Display P3** screen, which can show greens, reds
+and oranges more saturated than an ordinary (sRGB) screen. Each Color Preset can use that headroom while every other
+screen keeps the colour exactly as you picked it.
+
+| Setting | On a P3 screen | On an ordinary screen |
+| --- | --- | --- |
+| **Off** (default) | the colour you picked | the colour you picked |
+| **Subtle boost** | the same hue and lightness, halfway to the most saturated the screen can show | the colour you picked |
+| **Most vivid** | the same hue and lightness, as saturated as the screen can show | the colour you picked |
+| **Custom P3 value** | your own value, e.g. `color(display-p3 0 0.85 0.55)` or `oklch(0.75 0.2 165)` | the colour you picked |
+
+Greys, near-black and white are left alone: they have no colour to boost. Because the whole site uses the preset
+through its variable, every button, box, text and background that uses the colour gets it.
+
+How it works: the colour stays the value of `--color-{slug}`, and a second block gives P3 screens their version. The
+boost is worked out in the OKLCH colour space, which keeps the hue and lightness and changes only the saturation.
+
+```css
+:root { --color-primary: #00B295; }
+@media (color-gamut: p3) {
+  @supports (color: color(display-p3 1 1 1)) {
+    :root { --color-primary: color(display-p3 0 0.7147 0.5854); }
+  }
+}
+```
+
+Limits: you see the difference only on a P3 screen (an ordinary monitor shows both the same), and a screenshot or a
+PNG export shows the ordinary colour. A colour that is already at the edge of what screens can show (a pure #ff0000
+red, for instance) gains less than a softer one.
+
 ## Where the output lives
 
 That CSS isn't inline per element. The whole compiled token sheet is written once to a **hashed file

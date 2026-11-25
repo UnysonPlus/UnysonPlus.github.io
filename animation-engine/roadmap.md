@@ -28,18 +28,15 @@ Each has its own page in these docs. The rules every effect follows are on
 [Framer's design features](https://www.framer.com/design/) shows where it is still ahead: the **design** side, meaning
 how a page is drawn, typed and shared. Most of these items land in the [Live Editor](/extensions/live-editor) and
 Theme Settings rather than in the Animation Engine. They are here so the plan sits in one place.
-([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#framer-design-tools).) **7c · smooth corners** has
-shipped: see [Smooth Corners](/theme/components/smooth-corners).
+([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#framer-design-tools).) Shipped so far:
+**7c · smooth corners** ([Smooth Corners](/theme/components/smooth-corners)), **7b · typography controls**
+([Text Styles](/theme/components/text-styles#typography-controls)) and **7d · wide-gamut colour**
+([Color Presets](/theme/components/color-presets#wide-gamut)).
 
 - **7a · Components with variants and properties.** Save a group of elements as a component, give it variants
   (Default, Hover, Pressed, Dark, Small...) and properties (a text, an image, a link, a colour, a show/hide switch) that
   each copy fills in. Changing the component updates every copy. Its variants double as States, so an Interaction can
   switch a component between them.
-- **7b · Typography controls.** Variable-font axes (any weight between 100 and 900, width, slant, optical size),
-  OpenType features (tabular numbers, ligatures, small caps, stylistic sets), text decoration per element (underline
-  style, colour, thickness and offset), and truncation for any text (one line with an ellipsis, or clamp to N lines).
-- **7d · Wide-gamut colour.** Pick colours in Display P3 (the brighter colours modern screens can show) in the colour
-  picker and the Theme Settings palette, with an automatic sRGB fallback for older screens.
 - **7e · AI for layout.** *Make responsive:* the AI Assistant proposes the tablet and phone layout of a section from
   its desktop one. *Variations:* it suggests a few alternative designs of the selected section for you to pick from.
   Both preview on the canvas before anything is kept, and undo reverts them.
@@ -57,11 +54,10 @@ shipped: see [Smooth Corners](/theme/components/smooth-corners).
 
 ### Build order
 
-1. **7b** typography and **7d** wide-gamut colour: small, and every site gains from them.
-2. **7f** export as an image.
-3. **7a** components with variants and properties: the largest, and the one the others build on.
-4. **7g** vector drawing and icon sets, then **7e** AI for layout.
-5. **7h** freeform sections, then **7i** working together.
+1. **7f** export as an image.
+2. **7a** components with variants and properties: the largest, and the one the others build on.
+3. **7g** vector drawing and icon sets, then **7e** AI for layout.
+4. **7h** freeform sections, then **7i** working together.
 
 ### Not planned
 

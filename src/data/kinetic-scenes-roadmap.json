@@ -150,12 +150,6 @@
           "status": "planned"
         },
         {
-          "id": "p32-3d-budgets",
-          "title": "3D budgets and checks",
-          "detail": "Ideas from an open web 3D engine made for agents: a size and memory budget per scene (triangles, textures, bytes) shown in Check scene, a warning before a model pushes a web scene past it, and a flicker check for camera moves over thin lines.",
-          "status": "planned"
-        },
-        {
           "id": "p32-path-traced-stills",
           "title": "Path-traced stills",
           "detail": "Render a 3D scene's still frame (the poster and the thumbnail) with a path tracer in Blender (Cycles) for soft shadows and real reflections, while the moving scene stays live on the page.",
@@ -220,7 +214,7 @@
       ]
     }
   ],
-  "extensionVersion": "0.1.73",
+  "extensionVersion": "0.1.74",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

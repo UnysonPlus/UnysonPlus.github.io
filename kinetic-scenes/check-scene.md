@@ -64,6 +64,31 @@ a voice-over (fix: add captions), the platform's length, playing once (fix: play
 cut (fix: start the next act as the last leaves), the movement carried across each cut (fix: arrive from the matching side)
 and one main direction for the whole video.
 
+## 3D weight
+
+A scene with 3D layers shows a line at the top of Check scene with its **3D weight**: about how many triangles its 3D
+layers draw, how much graphics memory their textures take, and how big the model files are. The numbers are read from
+the glTF / GLB files themselves (a mesh placed twice counts twice), without loading them in 3D. A web scene plays on
+phones too, so past this budget the line becomes a warning:
+
+| | A web scene should stay under |
+|---|---|
+| Triangles, all 3D layers | 300,000 |
+| Triangles, one model | 150,000 |
+| Texture memory | 96 MB |
+| Model files | 12 MB |
+| A texture's longest side | 2,048 px (phones may not show bigger ones) |
+
+A model over its own limit is listed on its own, and selecting the warning selects its layer. The 3D layer's settings
+also show each model's weight as soon as you load it ("This model: 12,345 triangles, 2 textures (largest 1024 px),
+1.2 MB"). A video scene shows the numbers without warnings, since it renders frame by frame. Lighter models (Decimate
+in Blender, or ask your AI agent to rebuild it lighter), 1,024 px textures and fewer 3D layers bring a scene back under.
+
+## Thin lines under a moving camera
+
+When the scene's camera pans or zooms, a line or an outline thinner than **0.15 units** (under a pixel on a phone)
+lands on different pixels every frame and shimmers. Check scene lists each one, with **Make it 0.2 units** as the fix.
+
 ## Lists
 
 Issues on a list's copies belong to the list: they are reported once, on the list, and fixed in its item.

@@ -123,8 +123,8 @@ variables for the kit, set before starting it).
 **Without the kit:** where the browser can draw part of a page into a picture (HTML-in-Canvas, on by default in Chrome
 157 and later), Export offers **Render in this browser**: the same exact,
 frame-by-frame MP4 with its sound, rendered and encoded by the browser itself (H.264 and AAC), with nothing installed.
-See-through and ProRes exports still need the kit. A scene is at most 10 minutes; for a longer video render chapters
-and join them (see [Long videos](./long-videos.md)). When the scene has a voice-over, the video section also offers the
+See-through and ProRes exports still need the kit. A scene can run up to an hour, but a long video is usually still
+better rendered as chapters and joined (see [Long videos](./long-videos.md)). When the scene has a voice-over, the video section also offers the
 [second listener](./second-listener.md), notes on how it sounds before you render.
 
 **Motion blur** (a checkbox, with the AI Dev Kit): a real camera's shutter stays open for part of each frame, so

@@ -1,14 +1,15 @@
 ---
 sidebar_position: 9.85
 title: Long videos
-description: Make long videos in Kinetic Scenes, tutorials, explainers and walkthroughs over 10 minutes, as chapters joined into one video, with looping background music and a YouTube chapter list made for you.
+description: Make long videos in Kinetic Scenes, tutorials, explainers and walkthroughs, as one scene of up to an hour or as chapters joined into one video, with looping background music and a YouTube chapter list made for you.
 keywords: [long video, tutorial video, explainer video, join videos, youtube chapters, loop music, kinetic scenes]
 ---
 
 # Long videos
 
-Kinetic Scenes isn't only for reels. A scene can be landscape 16:9 at 1920 × 1080 and up to **10 minutes** long, and a
-longer video (a tutorial, a course lesson, a product walkthrough) is made of **chapters** joined into one file.
+Kinetic Scenes isn't only for reels. A scene can be landscape 16:9 at 1920 × 1080 and up to **an hour** long, so a
+tutorial, a course lesson or a product walkthrough fits in one scene. Longer videos are still usually built as
+**chapters** joined into one file, for the reasons below — the length limit is no longer one of them.
 
 ## Build it in chapters
 
@@ -60,8 +61,9 @@ Studio, in **Export › Video** and in kit renders.
 
 ## Limits
 
-- **One scene is at most 10 minutes (600 seconds).** Renders always cover the whole scene: a scene is never cut short. A
-  render of a longer scene is refused with a message to split it into chapters.
+- **One scene is at most an hour (3,600 seconds).** Renders always cover the whole scene: a scene is never cut short.
+  The limit is a guard against a typo turning a scene into a ten-hour timeline, not a measure of what the player can
+  do; what actually costs a long scene is its layer count, not its length. It was 10 minutes until Studio 0.1.77.
 - **Rendering takes time:** about real time to three times real time on a typical computer, so a 10-minute chapter
   takes 10 to 30 minutes. That is another reason to render chapter by chapter.
 - **Keep a chapter to a few hundred layers.** The Studio plays a scene of about 1,500 layers at around 26 frames a second,

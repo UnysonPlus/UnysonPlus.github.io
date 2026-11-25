@@ -62,7 +62,7 @@ and choose **Explainer**, so the narration is split into segments that each name
 is built; [Explainers with a voice-over](./ai.md#explainers-with-a-voice-over) then times every picture to the
 narration. With Claude Code as the kit's AI and a project open, AI assist can also
 [work in steps](./ai.md#work-in-steps-with-a-project-and-claude-code), looking at the frames it changed and checking its
-work as it goes. A single scene runs up to 10 minutes; past that, see
+work as it goes. A single scene runs up to an hour; for building a long one as chapters, see
 [Long videos](./long-videos.md).
 
 ## Presets by goal

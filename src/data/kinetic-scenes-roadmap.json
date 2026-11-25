@@ -144,12 +144,6 @@
       "goal": "Better and wider 3D for scenes. Agents already build models and shots in Blender through the AI Dev Kit (blender_model, blender_render) and put them in 3D layers; this phase makes those models better, reaches shapes that scripted modelling cannot (a shoe, a plant, a character), and lets you work in a live Blender window when you want to. Each tool is optional and is switched on in the AI Dev Kit's Tools section, planned with the kit.",
       "tasks": [
         {
-          "id": "p32-blender-mcp",
-          "title": "Work in a live Blender window",
-          "detail": "Support the official Blender MCP server (Blender's own connector) for hands-on sessions: you watch the model take shape in Blender and adjust it, then the agent hands the result to a 3D layer or a rendered shot. The background tools stay the default for \"just make it\".",
-          "status": "planned"
-        },
-        {
           "id": "p32-image-to-mesh",
           "title": "Picture to 3D model (trial)",
           "detail": "Try LATO.2 (MIT code and weights), an open picture-to-mesh model, for shapes scripts cannot model: a photo or an AI picture becomes a mesh, Blender cleans it up (decimate, materials, GLB) and it lands in a 3D layer. It needs a CUDA graphics card with more memory than this machine's 6 GB, so the trial also tests its hosted demo and a rented GPU before deciding.",

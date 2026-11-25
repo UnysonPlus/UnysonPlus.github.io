@@ -52,10 +52,27 @@ Examples of requests that use it:
 ```sh
 node studio-cli.mjs blender model lamp.py --project "Spring launch"
 node studio-cli.mjs blender render splash.py --seconds 4 --fps 30 --width 1080 --height 1080
+node studio-cli.mjs blender import lamp.blend --objects "Lamp" --project "Spring launch"
 ```
 
 A model prints its triangle count, materials and size, the four-view preview, and the 3D layer to add. A shot prints its
 frames and the footage layer to add.
+
+## Working in a live Blender window
+
+Sometimes you want to watch the model take shape and adjust it yourself. For that, connect your AI agent to an open
+Blender with **Blender's own MCP connector** (an add-on inside Blender plus a small server your AI app starts, from
+[projects.blender.org/lab/blender_mcp](https://projects.blender.org/lab/blender_mcp); free, GPL-3.0). The agent builds
+in your Blender window while you watch, and you can change anything by hand.
+
+When it looks right, the agent saves the file (or you do) and brings it into Kinetic Scenes with **`blender_import`**:
+the kit opens the saved file in a background Blender (your window is untouched), leaves out objects hidden from render,
+cameras and lights, runs the [model checks](#the-model-checks), exports a web-ready GLB with four views and adds it as a
+3D layer, into your project's `media/` folder. Fix what the checks report in Blender, save, and import again. To take
+only part of the file, name the objects ("just the lamp").
+
+`blender_import` also brings in models made in other tools or downloaded (GLB, glTF, FBX, OBJ, STL, PLY, USD) through
+the same checks and export.
 
 ## The model checks
 
@@ -83,6 +100,5 @@ pack and adapted to web scenes.
   For animation made in Blender (bones, physics, particles), render a shot instead.
 - **Rendered shots take time** (seconds for a short simple shot, minutes for long or heavy ones). Ask for a short test
   first.
-- **For hands-on work in a live Blender window,** use the official Blender connector in Claude Desktop or Claude Code.
-  The kit's tools are for bringing results into Kinetic Scenes without opening Blender.
+- **For hands-on work in a live Blender window,** see [Working in a live Blender window](#working-in-a-live-blender-window).
 - **Simple objects** built from a few boxes, spheres and rings are quicker as a hand-built 3D layer.

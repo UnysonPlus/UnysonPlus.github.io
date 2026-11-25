@@ -165,7 +165,7 @@
         {
           "id": "p3-lazy-media",
           "title": "Load media near the playhead",
-          "detail": "Live scenes fetch each part's pictures and footage as the playhead nears it (the opening first, then ahead), showing the poster frame until then, instead of loading everything when the page opens. Needs a new player version and the Kinetic Scene element to use it.",
+          "detail": "Live scenes fetch each part's pictures and footage as the playhead nears it (the opening first, then ahead), showing the poster frame until then, instead of loading everything when the page opens. Needs a new player version and the Kinetic Scene element to use it. Already done (Studio 0.1.78): play waits, with a loading ring, for the footage, pictures and sounds the next few seconds need, and footage that stalls holds the scene.",
           "status": "planned"
         },
         {

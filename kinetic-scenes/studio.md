@@ -113,6 +113,32 @@ Flow, plus Audio, Camera keys and Markers.
 - **Right-click** a row for Duplicate, Group, Ungroup and Delete; **double-click** a name (or F2) to rename it.
 - **Zoom** with the slider on the right.
 
+#### The clock
+
+The time beside the play button reads as a clock, **minutes:seconds.hundredths**, with the hours in front once a scene
+passes an hour: `0:04.50 / 0:30.00` for a reel, `4:47.00 / 12:53.21` for an explainer, `1:02:05.25` an hour in. The
+playhead's readout at the top left of the timeline uses the same clock, and the full-screen preview shows tenths
+(`4:47.0`). The hundredths stay because timing is set to the frame. (Before Studio 0.1.78 these were plain seconds,
+`287.00 / 773.21 s`, which made a long scene hard to follow.) Times you type into the Inspector stay in seconds.
+
+#### Play waits for the footage
+
+Press play while a scene's footage, pictures or sounds are still loading (a scene you have just opened, a long video in
+the first seconds, a slow connection) and the scene does not start without them. It looks at what the **next four
+seconds** show and say; if any of it has not arrived, the clock waits and a ring over the stage shows how much has
+loaded (**Loading 60%**, also shown beside the clock in the transport). Once everything is in, it plays by itself, from
+where you pressed play. Before, the clock started at once: the footage stayed blank or frozen on its first frame while
+the text and the voice ran on, and reloading the page was the only cure.
+
+- **A quick load never shows the ring**: it appears only after a third of a second, so a scene that is already loaded
+  plays at once.
+- **Footage that runs out while playing** (a long video on a slow connection) holds the whole scene the same way, with
+  the ring, then carries on, so the picture and the voice stay together.
+- **Press play (or Space) again while it waits** to stop waiting.
+- **It never waits for ever**: after 20 seconds it plays anyway, so one file that will not load cannot stop the scene.
+- The same happens **wherever the scene plays**: on your website, in an exported page, in the full-screen preview. A
+  video export is not affected (it loads every frame before drawing it).
+
 ### The Inspector, Check and Scene file (right)
 
 - **Inspector** edits whatever is selected: the scene (nothing selected), a layer, a clip, an audio clip or a camera key.

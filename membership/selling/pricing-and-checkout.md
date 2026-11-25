@@ -99,6 +99,7 @@ in for you) and shows everything needed to buy it.
 | --- | --- | --- |
 | **Pay button** | The button that sends the buyer to the payment page. | Continue to payment |
 | **Button for a free plan** | The button when there is nothing to pay. | Join for free |
+| **Note under the pay button** | A short line under the button for buyers who hesitate, for example **Questions first?** with a link to your WhatsApp or chat. Links, bold and italics are allowed; anything else is removed. | Empty (no note) |
 | **After a successful payment** | The message shown when the buyer comes back with the payment confirmed. | Thank you! Your membership is active. |
 | **When no plan was chosen** | Shown when someone opens the checkout page without a plan in the address. | Choose a plan to get started. |
 | **Plans page** | An address linked as "See the plans" after the message above. | Empty |
@@ -125,15 +126,16 @@ Put the element on **one** page only, and choose that page as the **Checkout pag
    buyer's **Country** (and **State / region** or **EU VAT number (businesses, optional)**), those fields sit
    here too and the button reads **Update the price**. The total updates before anyone pays.
 5. **The account fields** for logged-out buyers: "Already have an account? **Log in first**", **First name**,
-   **Last name**, **Email** and **Choose a password** (at least 8 characters). Logged-in buyers see "Joining as
+   **Last name**, **Email** and **Choose a password (optional)**. Logged-in buyers see "Joining as
    `you@example.com`." (their own email) instead.
-   - **For a one-time price** (paid once, lifetime or free) and for a gift, the field reads **Choose a password
-     (optional)**, with "Leave it empty and we will email you a link to set one, so you can see your receipt
-     later." A buyer who leaves it empty still gets an account (their payment and receipt belong to it), and
-     WordPress's own new-account email ("Login Details") brings a link to choose a password. Someone buying
-     one item goes straight to paying, without making up a password first.
-   - **For a repeating price** (each month, each year…) the password stays required: those buyers log in to
-     see, change or cancel their subscription.
+   - A buyer who leaves the password empty still gets an account (their payment and receipt belong to it), and
+     WordPress's own new-account email ("Login Details") brings a link to choose a password. So nobody has to
+     make up a password at the moment they are deciding to pay, which is where buyers drop off.
+   - The hint under the field says why the link comes: "…so you can see your receipt later." for a one-time
+     price (paid once, lifetime, free, a gift), and "…so you can manage or cancel your plan later." for a
+     repeating price (each month, each year…), whose buyers log in with that password to see, change or
+     cancel their subscription.
+   - A password they do type must be at least 8 characters.
 6. **For a gift**: "Who is the gift for?" with **Their name**, **Their email** and **A message (optional)**.
    The summary at the top then shows one period of the price, for example "GBP 8.00 for 1 month", with "A
    gift: one payment, nothing renews" (no trial days). See [Gift memberships](./gifts.md).
@@ -141,6 +143,9 @@ Put the element on **one** page only, and choose that page as the **Checkout pag
    transfer** (or the name you gave it), each with a short explanation.
 8. **I accept the terms.** when you set a **Terms page** in Payment settings.
 9. **The button**: **Continue to payment**, or **Join for free**.
+10. **The note under the button**, when you wrote one in **Note under the pay button**, for example
+    "**Questions first?** Message us on WhatsApp. We usually reply within the hour." A buyer with a question
+    finds you right where they hesitate, instead of hunting for a chat bubble.
 
 After paying, the buyer comes back to the same page and sees one of:
 
@@ -174,10 +179,14 @@ After paying, the buyer comes back to the same page and sees one of:
   ready for that price. Bank transfer is never offered for monthly or yearly prices, so a repeating plan needs
   Stripe or PayPal switched on (see [Payments](./payments.md#bank-transfer-or-cash-offline)).
 - **A wrong coupon** shows its reason in red ("That code has expired.") and the price stays as it was.
-- **Want the password required for one-time prices too** (for example a lifetime plan to a members' area
-  people must log in to)? One line of PHP in a snippet:
-  `add_filter( 'unysonplus_membership_checkout_password_optional', '__return_false' );`. Return `true`
-  instead to make it optional for repeating prices as well.
+- **Want the password required** (for example a members' area people must log in to straight after paying)?
+  One line of PHP in a snippet:
+  `add_filter( 'unysonplus_membership_checkout_password_optional', '__return_false' );`. The filter also gets
+  the price as its second argument, so you can require it for some prices only. (Before Membership 1.0.36 it
+  was required for repeating prices by default.)
+- **Keep the checkout page free of distractions.** Give it a plain header with a [Theme Builder
+  template](/extensions/theme-builder/headers-and-footers) that applies to that page only: your logo and one "Questions? Chat
+  with us" button, instead of the full site menu that pulls buyers away just as they are about to pay.
 - **PayPal and cards:** for a one-time price, PayPal's page offers **Pay with a Bank Account or Credit Card**,
   so the buyer pays by card without a PayPal account. For a repeating price, PayPal asks the buyer to log in
   to (or create) a PayPal account, which can hold their card. That is PayPal's rule for subscriptions.

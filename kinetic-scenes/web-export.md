@@ -98,8 +98,9 @@ with the new address.
 - **A web scene's pictures and videos load when it comes near the screen** (about one screen away), not with the page,
   so a scene further down costs nothing for visitors who never reach it. A scene near the top still loads as the page
   opens. See [Loading only what is seen](/animation-engine/studio-scene#loading-only-what-is-seen).
-  Within the scene, everything loads at once: loading each part only as the playhead nears it is on the
-  [roadmap](./roadmap).
+  Within the scene, everything loads at once. When the scene starts playing before a file has arrived (a slow
+  connection, a long video), it waits for what the next seconds need, with a loading ring, instead of playing on
+  without it: see [Play waits for the footage](./studio#play-waits-for-the-footage).
 - **Footage plays muted live.** A video layer's own sound is only mixed into rendered videos, so the web copy drops it;
   put sound you need on the timeline as an audio clip.
 - **Video export uses the project, not the web copy**: renders stay at full quality.

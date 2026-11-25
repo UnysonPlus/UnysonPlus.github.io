@@ -53,12 +53,6 @@
           "status": "planned"
         },
         {
-          "id": "p31-split-push",
-          "title": "Split push",
-          "detail": "A headline card, a screenshot or a B-roll clip slides in from the top and pushes the speaker into the lower half of the frame, then slides away and gives the frame back. For \"here is what it does\" lines and B-roll over a talking head.",
-          "status": "planned"
-        },
-        {
           "id": "p31-profile-grid",
           "title": "Profile grid",
           "detail": "The speaker shrinks into the centre tile of a 3 × 3 grid of reel tiles while the other tiles pop in one by one with view counts; a wall version fills the background behind the speaker while a counter rolls up.",
@@ -74,12 +68,6 @@
           "id": "p31-phone-ui",
           "title": "Phone UI pieces",
           "detail": "Three ready-made pieces in a generic phone style: a follow button that is tapped and flips to \"Following\", toggle switches that turn on one line at a time, and notifications that stack up with a soft glow.",
-          "status": "planned"
-        },
-        {
-          "id": "p31-stamp",
-          "title": "Stamp",
-          "detail": "A rubber stamp slams down on a word or a picture with a little shake and an ink-bleed edge (\"REJECTED\", \"APPROVED\", \"SOLD OUT\"), with a thud from the sound library.",
           "status": "planned"
         },
         {
@@ -110,12 +98,6 @@
           "id": "p31-halftone-page",
           "title": "Halftone paper page",
           "detail": "A cream paper page with the speaker cut out in a corner in halftone dots, while their words build up at the top in serif type with the keywords in red.",
-          "status": "planned"
-        },
-        {
-          "id": "p31-tape-label",
-          "title": "Tape label",
-          "detail": "A strip of tape with a short line on it is slapped on at a slant, as on a box or a chest.",
           "status": "planned"
         },
         {

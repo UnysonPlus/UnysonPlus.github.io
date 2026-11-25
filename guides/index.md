@@ -47,6 +47,9 @@ features, do it in a few minutes, no code unless noted. New to the builder? Star
 **Fastest free way to a WordPress site?** Design or generate it in the tool you're quickest in, then
 bring it in for free — **[Build a free WordPress site fast](/guides/build-a-free-wordpress-site-fast)**.
 
+**Nothing to copy from?** Describe the business instead and have the site built —
+**[Build a WordPress site from a description](/guides/build-a-wordpress-site-from-a-description)**.
+
 - **From a design or AI builder** —
   [Figma](/guides/convert-figma-to-wordpress) ·
   [Adobe XD](/guides/convert-xd-to-wordpress) ·

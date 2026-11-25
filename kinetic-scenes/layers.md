@@ -113,6 +113,47 @@ It takes one to three minutes. Objects are built from simple solids, so they sui
 organic shapes (faces, animals, plants); a mug's top is solid rather than hollow. The model is stored inside the
 scene (about 50 KB). Agents: `studio-cli object3d "a coffee mug" --out mug.glb`, MCP `object_from_description`.
 
+#### 3D devices
+
+**Insert › Device with a screen** adds a 3D **phone**; in the Inspector (**3D object › Object: Device with a screen**)
+choose a **tablet**, a **laptop** or a **desktop monitor** instead. Give it a **screen**: a picture, or a video such as
+a screen recording of an app or a website (type its address, or **Upload a picture or a screen recording…**).
+
+<img src="/img/kinetic-scenes/3d-devices.jpg" alt="A phone playing a vertical reel, a laptop playing an explainer, a tablet held sideways and a desktop monitor, each showing its own screen" width="640" />
+
+- **The screen video plays on the scene's clock**, like footage: it plays while the scene plays, and seeks to the exact
+  frame when you pause, scrub or export a video, so the recording and the motion around it always match. **Video
+  starts at**, **Video speed** and **Loop the video** set which part plays (a video shorter than the layer loops by
+  default).
+- **The screen keeps its true colours** at any angle: it is not shaded by the scene's light, the way a real screen glows.
+- **Fill the screen:** *Crop to fill* (the middle of the picture, as big as the screen) or *Show all of it* (black
+  bars on the screen where the shapes differ). A phone's screen is tall (about 9:19.5), a tablet's 3:4, a laptop's
+  16:10 and a monitor's 16:9.
+- **Held sideways** (phone and tablet) turns the device on its side; the screen content stays upright, so a landscape
+  recording fills it.
+- **Lid open** (laptop) sets how far the lid stands open (default 105°). The **Open lid** preset opens it from closed on
+  the timeline (or closes it, with Direction: Out).
+- **Body colour and finish** change the device itself (graphite or silver by default, metal finish).
+- **Moving it:** the 3D presets (Spin 3D, Tumble in, Orbit, Camera push) and the resting pose turn and move the device;
+  Fade, Slide and the other presets work too. A laptop rests seen a little from above.
+
+The devices are generic and unbranded (no logos, no brand shapes), built in code by the player, so they add nothing to
+download, stay sharp at any size and work in web scenes and video exports alike. A video from another site must allow
+loading from other sites (CORS); a recording you upload stays in your browser like footage, or in the project's
+`media/` folder when the scene is in a workspace project.
+
+Agents write it as a 3D layer:
+
+```json
+{ "id": "phone", "type": "model", "box": { "x": 50, "y": 50, "w": 26, "ratio": 0.55 },
+  "model": { "kind": "device", "device": "phone", "screen": "media/app-demo.mp4", "fit": "cover" },
+  "pose": { "ry": -18 }, "alt": "The app on a phone",
+  "clips": [ { "id": "c1", "preset": "tumble-in", "start": 0, "duration": 1.2 } ] }
+```
+
+Limits: one screen per device; a scene's other layers can't be shown on the screen yet (export them to a video first);
+the laptop's keyboard is drawn, not modelled key by key.
+
 ## Lottie
 
 **Insert › Lottie animation** adds a Lottie: an animation made in After Effects (or a Lottie tool) and saved as JSON,

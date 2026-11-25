@@ -206,6 +206,7 @@ seams where its colours fall outside what a screen can show, which is why it was
 | **Spin 3D** | The object turns around one of its axes, a set number of times. | 3D | Axis, Turns |
 | **Tumble in** | The object tumbles into its pose from a turned, smaller start (or tumbles away). | 3D | Direction, Turn, Tilt, Start scale |
 | **Orbit** | The camera circles the object, rising or dipping as it goes. | 3D | Around, Rise |
+| **Open lid** | A laptop's lid opens to its angle from closed (or closes). 3D devices only: put it on a laptop. | 3D | Direction |
 | **Camera push** | The camera moves in from further away (or pulls back out). | 3D | Direction, Start distance |
 
 ## Custom code

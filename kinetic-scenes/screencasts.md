@@ -82,6 +82,9 @@ recording), `--title-bg` and `--end-bg`. Put the scene into a
 In the Studio, **File › New from a screencast…** does the same from a recording's `video.mp4` and `actions.json`; the
 camera's keys are on the Camera row, to change by hand.
 
+To show a recording **on a 3D phone, tablet, laptop or monitor** that turns and tumbles, use a
+[3D device](./layers#3d-devices) (**Insert › Device with a screen**) and give it the recording as its screen.
+
 ## The voice-over and a written guide, from the same take
 
 Three commands turn one recording into a narrated video **and** a written step-by-step guide, with nothing else to

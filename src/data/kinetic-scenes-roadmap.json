@@ -65,12 +65,6 @@
           "status": "planned"
         },
         {
-          "id": "p31-phone-ui",
-          "title": "Phone UI pieces",
-          "detail": "Three ready-made pieces in a generic phone style: a follow button that is tapped and flips to \"Following\", toggle switches that turn on one line at a time, and notifications that stack up with a soft glow.",
-          "status": "planned"
-        },
-        {
           "id": "p31-freeze-arrow",
           "title": "Freeze frame with a drawn arrow",
           "detail": "The footage freezes on a frame, a hand-drawn arrow and a short note draw themselves on to point at something, then the video plays on.",
@@ -89,12 +83,6 @@
           "status": "planned"
         },
         {
-          "id": "p31-glass-widgets",
-          "title": "Glass widgets",
-          "detail": "Frosted-glass widgets (a stat tile, a progress ring, a calendar, a now-playing card) float in around the speaker's head and drift gently.",
-          "status": "planned"
-        },
-        {
           "id": "p31-halftone-page",
           "title": "Halftone paper page",
           "detail": "A cream paper page with the speaker cut out in a corner in halftone dots, while their words build up at the top in serif type with the keywords in red.",
@@ -110,12 +98,6 @@
           "id": "p31-rain",
           "title": "Rain behind the person",
           "detail": "Keys, icons or small pictures fall with physics behind the cut-out speaker and pile up at the bottom.",
-          "status": "planned"
-        },
-        {
-          "id": "p31-lock-on",
-          "title": "Lock-on brackets",
-          "detail": "Corner brackets snap onto the speaker's face and track it while the camera gently follows, with a small label.",
           "status": "planned"
         }
       ]

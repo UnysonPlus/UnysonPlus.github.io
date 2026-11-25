@@ -37,6 +37,8 @@ by the real player on an illustration; on your own footage they look the same.
 | **Tick** | A tick drawn in a circle beside it; one per line for a checklist that ticks off. |
 | **Jiggle** | The phone home-screen wobble, as before a delete. **Jiggle delete:** Jiggle, then Strike. |
 | **Orbit around** | Circles round its place on a tilted ring, smaller and dimmer on the far side: icons orbiting a head. |
+| **Stamp** | A rubber stamp drops in, slams down on a word or a picture and jolts it, with worn, inky edges: "APPROVED", "SOLD OUT", "PAID". Settings: the words, the ink colour, the tilt and the size. The out clip lifts it off. Comes with the Rubber stamp sound. |
+| **Tape label** | A strip of masking tape with torn ends and a handwritten line ("FRAGILE", "Day 1") is slapped across the layer at a slant: across the middle, the top or the bottom. Settings: the words, the tape and writing colours, the tilt and the size. The out clip peels it off from one end. |
 
 ## On footage and pictures
 
@@ -98,6 +100,8 @@ only the person changes and the room behind stays. Find them in the preset libra
 | **Clone row** | Copies appear one by one on either side, a little smaller and darker each step, all playing. | **Clone row** on the cut-out: clones of the speaker behind them. |
 | **Text ring** | Letters travel round a tilted ring, nearer ones bigger and brighter. | Two copies of a text layer with **Text ring**: one **under** the cut-out showing the far half, one **over** it showing the near half, so the ring passes behind the head. |
 | **Rack focus** | The layer drifts out of focus (or into it), like a lens pulling focus. | **Rack focus** on the footage behind the cut-out: the room softens, the person stays sharp. |
+| **Lock-on brackets** | Four corner brackets snap onto the face with a little overshoot and track it while the clip runs, with an optional small label above ("TARGET", a name), while the picture pushes in gently towards the face. | **Lock-on brackets** on the footage, after **Follow the face** has found the face (without a face path it locks onto the middle of the frame). Settings: the label, the colour, how far it pushes in (0 for none) and the room round the face. |
+| **Split push** | A headline card, a screenshot or a B-roll clip slides down from the top and pushes the speaker into the lower half of the frame, face still in view; the out clip gives the frame back. | **Split push** on the card, with the card's box over the top half. Pick the speaker under **Pushes** (or it takes the biggest footage layer). **Frame it takes** sets how much of the frame the card covers (50% by default; match it to the card's height). The speaker's own clips and the camera are left alone: it is the picture inside that moves. |
 | **Layer explode** | The layers of a group come apart in depth while the view turns: footage, captions, sound, graphics, showing how the frame is built. Out: they collapse back. | Group the parts of a frame and put **Layer explode** on the group. |
 
 The pictures are drawn from the playing footage frame by frame, so they play, preview and export the same way. To be
@@ -282,6 +286,10 @@ cut out, a piece goes behind them.
 | **Replying to a comment** | A viewer's comment as a sticker at the top ("Reply to @name's comment" and the question), popping in with a tilt: open a reel by answering a question. |
 | **Tier list** | S to D rows in their colours, and items that drop into their rows one by one with a pop. Change the items, their rows and their times. |
 | **Reveal board** | A numbered top-5 whose answers are covered, then uncovered one by one with a reveal sound, like a game show. |
+| **Follow button** | A profile card in a generic phone style: the Follow button is tapped (a ripple and a little press) and flips to a grey "Following". |
+| **Toggle switches** | A settings panel whose switches turn on one line at a time: the knob slides across with a click and the track turns green. |
+| **Notifications** | Phone notifications (a sale, a subscriber, a payment) stack up one by one, each with a soft glow in its app's colour as it lands. |
+| **Glass widgets** | Four frosted-glass widgets float in around the speaker and drift gently: a stat that counts up, a progress ring that fills, a calendar date and a now-playing card. Over footage, the glass blurs the video behind it (the shapes' **Frosted** setting). |
 
 ## Edit my video with AI
 

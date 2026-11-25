@@ -44,6 +44,11 @@ one it wraps).
 A rectangle or an ellipse: **fill** (a colour or any CSS gradient), **outline** colour and width, **corner radius**, and a
 **dashed** outline (dash and gap lengths) for drop zones and progress rings (Marching outline and Make solid animate it).
 
+**Frosted** (0 to 10 stage units, off by default) turns the shape into frosted glass: whatever is behind it (footage,
+a photo, other layers) is blurred inside its outline, and its colour lifted a little. Give it a see-through fill (white
+at about 12%, `rgba(255,255,255,0.12)`) and a thin light outline, as the **Glass widgets** piece does. In the scene file
+it is `frost`. Blur costs some speed on phones: a few frosted shapes are fine, a screen full of them is not.
+
 ## Image
 
 A picture (uploaded, or an https address): **description** for screen readers (empty if decorative), **fit** (fill the

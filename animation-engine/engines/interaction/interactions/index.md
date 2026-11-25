@@ -2,7 +2,7 @@
 sidebar_position: 1
 title: Interactions
 slug: /interactions
-description: Hover, click, page-load, in-view and scrolled-past triggers that animate an element and other elements on the page, in up to three steps.
+description: Hover, click, page-load, page-start, in-view, scrolled-past, mouse-move and component-event triggers that animate an element and other elements on the page, in up to three steps.
 ---
 
 # Interactions
@@ -25,7 +25,7 @@ That covers the patterns a single effect cannot:
 
 Open any element's **Animations** tab, click **Add Animation**, and choose **Interactions** (under *Interaction*). Pick a trigger, then set up the steps.
 
-<img src="/img/animation-engine/interactions/interactions-card.png" alt="The Interactions card: the five trigger tiles with On hover chosen, then Runs on, Amount on tablet and phone, Runs for, Matches and Use on every page" width="1240" />
+<img src="/img/animation-engine/interactions/interactions-card.png" alt="The Interactions card: the trigger tiles with On hover chosen, then Runs on, Amount on tablet and phone, Runs for, Matches and Use on every page" width="1240" />
 
 An element can have **two** Interactions, for example a hover *and* a click. It needs the **Animation Engine** extension.
 
@@ -35,15 +35,17 @@ An element can have **two** Interactions, for example a hover *and* a click. It 
 | --- | --- | --- |
 | **On hover** | The pointer moves onto the element, or keyboard focus moves into it. | Plays backwards when the pointer leaves. |
 | **On click** | The element is clicked. | **Clicking again:** plays it backwards (a toggle), plays it again from the start, or does nothing (plays once). |
-| **On page load** | As soon as the page has loaded. | Plays once. |
+| **On page load** | As soon as the page has loaded (images and fonts included). | Plays once. |
+| **Page starts loading** | The instant the page *begins* to load — before images and fonts — for an intro that must start at once. | Plays once. |
 | **In view** | A fifth of the element has scrolled into view. | **When it leaves the screen:** play it backwards (so it plays again next time), or keep the end state. |
 | **Scrolled past** | The element's bottom has scrolled above a line *N* px from the top of the screen (80 by default). | Plays backwards when you scroll back above the line. |
 | **A saved Interaction** | Plays an Interaction saved from the Live Editor, with its own trigger: see [Saved Interactions](#saved-interactions). | As that Interaction's trigger. |
 | **Mouse move** | The pointer moves over the element, or anywhere on the page. The steps follow the pointer instead of playing once: see [Mouse move](#mouse-move). | Glides back to its own look when the pointer leaves, or stays. |
+| **Component event** | Another component on the page fires its own event: a menu, dropdown or panel opens or closes, a **tab** changes, or a **slider** changes slide. See [Component event](#component-event). | **Opens** plays forwards and reverses when it closes; a tab or slide change replays. |
 
 ## Repeat and back and forth
 
-On **On hover**, **On click**, **On page load** and **In view**, two more options shape how the steps play:
+On **On hover**, **On click**, **On page load**, **Page starts loading**, **In view** and **Component event**, two more options shape how the steps play:
 
 | Option | Default | What it does |
 | --- | --- | --- |
@@ -104,6 +106,37 @@ A 3D tilt card: on the card, **More properties → Tilt X −10°, Tilt Y 14°**
 Duration, delay, easing, stagger and the instant steps (Set, Lottie, Rive, Burst, states) are not used by Mouse
 move. It needs a mouse or pen: on phones and tablets the elements keep still. *Amount on tablet / phone* and *Runs on*
 apply as for the other triggers. Reduced motion: nothing moves.
+
+## Page starts loading
+
+**Page starts loading** plays the instant the page *begins* to load — while the HTML is still parsing, before
+images and fonts arrive — so an intro starts at once rather than after everything has downloaded. **On page load**
+is the other half of the pair: it waits until the whole page (images and fonts included) has finished.
+
+Use **Page starts loading** for a hero headline or an overlay that should animate the moment the visitor arrives;
+use **On page load** when the steps depend on the final layout (a measured position, a loaded image's size). Both
+honour reduced motion (they jump to the end), and both take *Repeat*, *Back and forth*, *Runs on*, *Amount* and
+*Runs for*.
+
+## Component event
+
+**Component event** doesn't wait for a hover, click or scroll — it listens for **another component's own event**
+and plays the steps then: slide a note in when the mobile menu opens, pulse a badge when a tab changes, fade a
+caption when a slider moves.
+
+| Option | What it does |
+| --- | --- |
+| **Fires when** | **A menu, dropdown or panel opens** (and reverses when it closes), **…closes**, **A tab changes**, or **A slider changes slide**. |
+| **Watch** | A CSS selector for the component to watch — a mega-menu item (`.menu-item-has-mega-menu`), the mobile menu drawer (`#primary-navigation-drawer`), the tabs (`.wpc-tabs`) or the slider (`.splide`). Leave it empty to watch **this element**. In the Live Editor, click **Pick on the page**. |
+
+It reads the component's **own** signals — the open/close state (`aria-expanded`, `aria-hidden` or an `is-open`
+class), the selected tab (`aria-selected` or the active tab) and the active slide — so it works with the Tabs,
+Carousel and Mega Menu elements and the theme's mobile menu out of the box, and with any third-party component
+that follows the same accessibility conventions. Nothing is added to the component itself.
+
+**A menu … opens** plays the steps forwards when the component opens and reverses them when it closes (a toggle,
+like hover). **A tab changes** and **A slider changes slide** replay the steps on every change. *Repeat*, *Back and
+forth*, *Runs on*, *Amount* and *Runs for* all apply.
 
 ## Devices and reuse
 

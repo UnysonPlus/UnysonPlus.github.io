@@ -81,10 +81,11 @@ repeated. ([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#webfl
   pointer events, and custom properties (CSS variables). Today these exist on some elements only (the Div's Blend
   Mode and Backdrop Blur, Box Shadow and Filter on a few); this makes them uniform, with the values on the preset
   where a preset owns the look.
-- **8b · Component triggers.** Interactions triggers that fire on another component's own events: a **tab** changes,
-  a **slider** changes slide, a **dropdown** or **mega menu** opens or closes, the **mobile menu** opens or closes.
-- **8c · "Page starts loading" trigger.** A load trigger that fires as soon as the page begins to load (before
-  images and fonts), next to today's one that waits until it has loaded, for intro sequences that must start at once.
+- **8b · Component triggers** and **8c · "Page starts loading" trigger** — **shipped in Animation Engine 1.5.37.**
+  Interactions now fire on another component's own events (a **tab** changes, a **slider** changes slide, a dropdown,
+  **mega menu** or the **mobile menu** opens or closes), and a **"Page starts loading"** trigger plays the instant the
+  page begins to load — before images and fonts — beside today's "On page load". See
+  [Interactions → Triggers](/animation-engine/interactions#triggers).
 - **8d · Variable modes.** Give the Theme Settings colours (and sizes) more than one set of values (Light, Dark, a
   second brand) and switch a section, a page or the whole site between them; a visitor's dark-mode preference can
   pick the mode.
@@ -105,8 +106,8 @@ repeated. ([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#webfl
 
 ### Build order
 
-1. **8a** Effects group, **8b** component triggers and **8c** the start-of-load trigger: small, and every element
-   gains from them.
+1. **8a** Effects group: small, and every element gains from it. (**8b** component triggers and **8c** the
+   start-of-load trigger shipped in Animation Engine 1.5.37.)
 2. **8e** more breakpoints, then **8d** variable modes.
 3. **8f** the class system, after **7a** components (they overlap: both reuse a look across elements).
 4. **8g** page A/B tests and **8h** the language switcher.

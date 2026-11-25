@@ -58,6 +58,11 @@ node studio-cli.mjs blender import lamp.blend --objects "Lamp" --project "Spring
 A model prints its triangle count, materials and size, the four-view preview, and the 3D layer to add. A shot prints its
 frames and the footage layer to add.
 
+## Path-traced stills
+
+`blender_still` renders a 3D layer's model in Cycles at the scene's still frame, lined up exactly with the live layer,
+for the cover image and for visitors who turn motion off. See [Path-traced stills](./layers#path-traced-stills).
+
 ## Working in a live Blender window
 
 Sometimes you want to watch the model take shape and adjust it yourself. For that, connect your AI agent to an open

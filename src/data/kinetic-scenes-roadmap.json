@@ -150,12 +150,6 @@
           "status": "planned"
         },
         {
-          "id": "p32-path-traced-stills",
-          "title": "Path-traced stills",
-          "detail": "Render a 3D scene's still frame (the poster and the thumbnail) with a path tracer in Blender (Cycles) for soft shadows and real reflections, while the moving scene stays live on the page.",
-          "status": "planned"
-        },
-        {
           "id": "p32-app-screencasts",
           "title": "Screencasts of phone apps",
           "detail": "Record real Android apps for product tours and client reels: mirror and record an Android phone over USB with scrcpy (the Android Studio emulator when no phone is at hand), and bring the recording in as footage with the screencast tools. iPhone apps: the phone's own screen recording or mirroring it to the computer, since the iOS Simulator runs only on a Mac. The tools themselves are switched on in the AI Dev Kit's Tools section.",
@@ -214,7 +208,7 @@
       ]
     }
   ],
-  "extensionVersion": "0.1.74",
+  "extensionVersion": "0.1.75",
   "versionLabel": "Studio",
   "versionUrl": "https://kinetic-scenes.unysonplus.com/version.json"
 }

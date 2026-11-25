@@ -35,6 +35,12 @@ The **✦ AI assist** button at the bottom right of the stage opens the chat.
 own computer ("…wants to access other apps and services on this device"): choose **Allow** once. The kit answers only the
 Studio's own address, so other websites cannot use your AI. The panel names the AI at work.
 
+### From the AI Dev Kit's Chat
+
+You can also ask for a scene in the **AI Dev Kit's dashboard › Chat**. When you confirm, the Chat gives you a link; it
+opens Kinetic Scenes with your request already in AI assist, making a new scene. The link works once, for an hour, on
+the computer the kit runs on (the kit must be running when you open it). An expired or already-opened link says so.
+
 ## Make one like this
 
 **AI › Make one like this…**: give a video you like (yours, or one you admire), say what yours is about, pick a length,

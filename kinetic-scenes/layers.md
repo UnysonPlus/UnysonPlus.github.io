@@ -113,6 +113,29 @@ It takes one to three minutes. Objects are built from simple solids, so they sui
 organic shapes (faces, animals, plants); a mug's top is solid rather than hollow. The model is stored inside the
 scene (about 50 KB). Agents: `studio-cli object3d "a coffee mug" --out mug.glb`, MCP `object_from_description`.
 
+#### Path-traced stills
+
+A glTF / GLB 3D layer can carry a **path-traced still**: its model rendered in Blender's path tracer (Cycles) at the
+scene's **still frame** (Inspector › Playback › Still frame), with soft shadows, light bouncing between parts and real
+reflections. Select the layer and click **Render a path-traced still** (3D layer › Path-traced still). The AI Dev Kit:
+
+1. opens the scene in its player and reads exactly where the layer is and how it is turned at the still frame (its
+   resting pose, the 3D presets, the camera's orbit and distance);
+2. renders the model in Cycles with the same lens (22°) and framing, so the picture lines up with the live layer;
+3. saves it on the layer as a transparent WebP (usually 20-100 KB), no side over 1,600 px.
+
+<img src="/img/kinetic-scenes/path-traced-still.png" alt="The same mug and gold coaster at the still frame: live 3D on the left, the path-traced still on the right with softer shading and the handle's shadow" width="620" />
+
+The still is shown **instead of the live model for the cover image** (Export, and the cover a video export makes) and
+**for visitors who turn motion off**; everywhere else the scene plays live as before. It is made for one moment, so the
+Inspector says which one: render it again after changing the model, its pose, its motion or the still frame (it warns
+when the still frame has moved). **Remove the still** goes back to the live model everywhere.
+
+It takes about 10 to 60 seconds on a graphics card (longer on the processor). It needs the
+[AI Dev Kit](/ai-dev-kit) and [Blender](./blender) 4.2 or later. It works on glTF / GLB models; 3D text, shapes, logos
+and devices are drawn by the player itself and keep the live look. Agents: `blender_still` (MCP) or
+`studio-cli blender still <scene.json> --layer <id> [--project <name>]`.
+
 #### 3D devices
 
 **Insert › Device with a screen** adds a 3D **phone**; in the Inspector (**3D object › Object: Device with a screen**)

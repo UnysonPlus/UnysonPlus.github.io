@@ -2,10 +2,11 @@
 sidebar_position: 0.5
 title: Scroll Motion
 slug: /scroll-motion
-description: "Scroll Motion — GSAP + ScrollTrigger entrance and scroll-scrubbed motion on any page-builder element, from the Animations tab. Reveal, stagger, split text, parallax, pin, scrub, zoom and more, plus a Custom Code snippet."
+description: "Scroll Motion — entrance and scroll-scrubbed motion on any page-builder element, from the Animations tab, on the Animation Engine's own scroll core (no GSAP). Reveal, stagger, split text, parallax, pin, scrub, zoom and more, plus a Custom Code snippet."
 keywords:
   - unyson+ scroll motion
-  - gsap scrolltrigger wordpress
+  - scroll trigger animation wordpress
+  - gsap alternative wordpress
   - scroll animation page builder
   - scroll reveal parallax pin scrub
   - split text animation wordpress
@@ -13,11 +14,12 @@ keywords:
 
 # Scroll Motion
 
-**Scroll Motion** adds **GSAP + ScrollTrigger** motion to any page-builder element — a Section, a
+**Scroll Motion** adds scroll-driven motion to any page-builder element — a Section, a
 column, or a single element like a heading or image. Pick an effect from the **Scroll Effect** card on the
 element's **Animations** tab and it plays either as an **entrance** (once, as the element scrolls into view) or **scrubbed**
 (tied to the scrollbar, so it moves as you scroll). No code required, and nothing is loaded on a page
-until an effect actually renders on it.
+until an effect actually renders on it. It runs on the Animation Engine's own
+[scroll core](/animation-engine/scroll-core): about 7 KB, no GSAP.
 
 :::note[Requires the Animation Engine extension]
 Scroll Motion is part of the **Animation Engine** extension, which ships inactive by default. Turn it
@@ -110,19 +112,21 @@ the previous step* or *With the previous step*.
 Five effects — **Reveal, Stagger, Parallax, Pin, Scrub** — carry an optional **Advanced** panel that
 stays collapsed to a single "Default" row until you need it. It adds:
 
-- a curated **GSAP ease**, the **Motion design** curves and **Springs** of the shared curve picker (the same ones as Interactions and Kinetic Scenes, in their own groups in the list), or a free-text custom ease: any GSAP ease name, or a CSS `cubic-bezier(0.2, 0.8, 0.2, 1)`,
+- a curated **ease**, the **Motion design** curves and **Springs** of the shared curve picker (the same ones as Interactions and Kinetic Scenes, in their own groups in the list), or a free-text custom ease: an ease name in the familiar form (`power3.out`, `back.out(1.7)`, `elastic.out(1,0.5)`, `steps(12)`…), or a CSS `cubic-bezier(0.2, 0.8, 0.2, 1)`,
 - **scrub smoothing** for the scrub family (0 snaps to the scrollbar; a value eases it over that many
   seconds), and
-- **ScrollTrigger markers** for debugging (only emitted for administrators).
+- **markers** for debugging: lines at the trigger's start and end (only emitted for administrators).
 
 Leaving it on "Default" stamps nothing — the element renders exactly as it would without the panel.
-These same five effects also show a read-only **"Show generated GSAP"** panel that prints the actual
-GSAP your current settings produce and updates live, as a learning aid.
+These same five effects also show a read-only **"Show generated GSAP"** panel that prints the GSAP
+code equivalent to your current settings and updates live, as a learning aid (and a starting point for a
+Custom Code snippet). The page itself does not run GSAP for them.
 
 ## Custom Code (Motion Snippet)
 
-For motion the presets don't cover, choose the **Custom Code** effect and write your own GSAP. Your
-code runs with three things in scope:
+For motion the presets don't cover, choose the **Custom Code** effect and write your own GSAP. This is the
+one part of Scroll Motion that uses GSAP: it is your own code, so GSAP and ScrollTrigger load on the pages that
+have a snippet, and only there. Your code runs with three things in scope:
 
 - **`el`** — this element,
 - **`tl`** — a `gsap.timeline()` already tied to a ScrollTrigger at your chosen start position (and
@@ -141,8 +145,12 @@ Code is also skipped when the visitor prefers reduced motion.
 
 ## Good to know
 
-- **Powered by GSAP + ScrollTrigger** (plus SplitText for Split Text). The runtime and its CSS load
-  **only** on pages where a Scroll Motion effect actually renders, and are served minified.
+- **Runs on the engine's own [scroll core](/animation-engine/scroll-core)** (scroll triggers, pinning, tweens on the
+  browser's Web Animations) and its text splitter for Split Text: about 7 KB gzipped, where GSAP, ScrollTrigger
+  and SplitText were about 47 KB. They load **only** on pages where a Scroll Motion effect actually renders, and
+  are served minified. GSAP itself loads only for a Custom Code snippet.
+- **Finished entrances let go.** When an entrance ends in the element's natural look (in place, fully visible), the
+  animation removes itself, so a hover effect or a later style change on the element works as usual.
 - **One transform per element.** Scroll Motion drives the element's `transform`, so a Scroll Motion
   effect and a Physics or Parallax-layer transform on the *same* element don't combine — put them on
   different elements, or nest.
@@ -150,9 +158,9 @@ Code is also skipped when the visitor prefers reduced motion.
   colour between two values you choose.
 - Respect for **reduced motion** is built in.
 
-:::tip[💡 Web dev tip: tie animation to scroll with ScrollTrigger]
+:::tip[💡 Web dev tip: tie animation to scroll]
 Scroll-driven animation is its own discipline — an effect can *play once* on entry or *scrub* in lock-step
-with the scrollbar, and the trigger's start/end positions decide when. GSAP's ScrollTrigger is the
-standard tool for it, and the same ideas now have a native browser counterpart in scroll-driven
+with the scrollbar, and the trigger's start/end positions decide when. Libraries such as GSAP's ScrollTrigger
+popularised the model, and the same ideas now have a native browser counterpart in scroll-driven
 animations. [MDN: CSS scroll-driven animations](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll-driven_animations)
 :::

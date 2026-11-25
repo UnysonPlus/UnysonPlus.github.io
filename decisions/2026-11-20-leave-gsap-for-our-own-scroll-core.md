@@ -47,7 +47,7 @@ ditch GSAP and build our own animation engine. Let's check first which animation
 **Option 4.** The engine gets its own scroll core and text splitter; Scroll Motion's presets and gallery chaining move
 onto it one at a time, with their saved options unchanged; the GSAP Generator keeps writing GSAP code but loads GSAP
 only in its own preview; and the vendored GSAP, ScrollTrigger and SplitText are removed once a release has shipped
-with nothing loading them. The phases are on the [Roadmap](/animation-engine/roadmap#phase-9).
+with nothing loading them. The phases were on the roadmap; they shipped as [the scroll core](/animation-engine/scroll-core).
 
 ## Why
 
@@ -62,4 +62,6 @@ with nothing loading them. The phases are on the [Roadmap](/animation-engine/roa
 
 *Check the current licence text at gsap.com before relying on this reading of it; it is not legal advice.*
 
-**Status:** Accepted.
+**Status:** Accepted, and shipped in Animation Engine 1.5.34 (25 November 2026): [the scroll core](/animation-engine/scroll-core).
+One change from the plan: GSAP stays in the plugin, loaded only for a Scroll Motion **Custom Code** snippet (the
+author's own GSAP code, which the licence clause does not touch); nothing of the engine's own depends on it.

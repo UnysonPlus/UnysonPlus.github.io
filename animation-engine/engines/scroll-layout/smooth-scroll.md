@@ -46,8 +46,8 @@ the Page Builder keeps normal scrolling so editing stays predictable.
   [Infinite Scroll Loop](/animation-engine/scroll-loop) module — enabling both never creates two
   competing smooth-scrollers.
 - **Stays in sync with Scroll Motion.** On pages that also use
-  [Scroll Motion](/animation-engine/scroll-motion) (GSAP + ScrollTrigger), Smooth Scroll drives ScrollTrigger from
-  the same clock, so scrubbed and pinned effects track the smoothed scroll exactly — no lag or drift.
+  [Scroll Motion](/animation-engine/scroll-motion), the engine's [scroll core](/animation-engine/scroll-core) reads the
+  smoothed scroll position on the same frame, so scrubbed and pinned effects track the smoothed scroll exactly — no lag or drift.
 - **`position: sticky` keeps working.** Lenis keeps *native* scroll under the hood (that's why it's
   the industry standard), so pinned sections, sticky headers and anchor links all behave normally.
 

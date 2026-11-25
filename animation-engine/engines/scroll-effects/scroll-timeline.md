@@ -9,7 +9,8 @@ description: Two author tools, opened from the Live Editor (Animate › Scroll t
 
 Two **author tools** for composing scroll motion. They open **in the Live Editor** and nowhere else: they
 never load on your public pages (not even for logged-in administrators) and never render anything for a
-visitor. Both read the page's live **GSAP ScrollTriggers** — every scroll animation the
+visitor. Both read the page's live **scroll triggers** from the engine's [scroll core](/animation-engine/scroll-core) (and
+GSAP's, on a page with a Custom Code snippet) — every scroll animation the
 Animation Engine put on the page (Scroll Motion, Scroll Keyframes, Motion Sequence, Motion Gallery
 choreography, scrollytelling, pinned sections…) — so you see exactly what fires where.
 

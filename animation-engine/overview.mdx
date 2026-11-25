@@ -34,7 +34,7 @@ Open any element (and most Sections and Columns) → **Animations** → **Add An
 | [Exit Animation](/animation-engine/exit-animation) *(core)* | Exit | Animate the element out as it leaves the screen, and back in when it returns — 43 exits or "Reverse the entrance" |
 | [Text Effects](/animation-engine/text-effects) | Entrance | Kinetic typography — 38 effects: split reveals, scramble, typewriter, gradient, glitch, count-up… |
 | [Kinetic Scenes Preset](/animation-engine/kinetic-preset) | Entrance | 39 of the Kinetic Scenes Studio's presets (Rise, Slam, Gravity drop, Strike, Jiggle…) on an ordinary element |
-| [Scroll Motion](/animation-engine/scroll-motion) | Scroll | The **Scroll Effect** card: GSAP scroll effects — reveal, stagger, split text, parallax, pin, scrub, zoom, count-up, mask wipe… plus Custom Code |
+| [Scroll Motion](/animation-engine/scroll-motion) | Scroll | The **Scroll Effect** card: scroll effects on the engine's own [scroll core](/animation-engine/scroll-core) — reveal, stagger, split text, parallax, pin, scrub, zoom, count-up, mask wipe… plus Custom Code |
 | [Scroll Keyframes](/animation-engine/scroll-keyframes) | Scroll | Start → middle → end states scrubbed with the scroll, or a Pin · Hold · Exit choreography |
 | [Scroll Reveal](/animation-engine/scroll-reveal) | Scroll | Un-mask an element as it scrolls in — 22 styles: clip-path wipes, iris, shapes, blinds, plus Pixelate In and Dissolve In |
 | [Scroll Text Highlight](/animation-engine/scroll-text-highlight) | Scroll | Light up text word by word as it scrolls through view — fill, fade, blur or marker sweep |
@@ -121,7 +121,7 @@ Stacking is offered only where it's genuinely useful. Forcing it on effects that
 
 The engine is built to stay out of the way:
 
-- **Loads only where used.** Every effect's CSS/JS is enqueued **only on pages that actually use it** — a page with no effects ships none of these bytes. Heavy libraries (GSAP, Three.js, model-viewer) are vendored and load only for the pages that need them.
+- **Loads only where used.** Every effect's CSS/JS is enqueued **only on pages that actually use it** — a page with no effects ships none of these bytes. Scroll motion runs on the engine's own [scroll core](/animation-engine/scroll-core) (about 7 KB, no GSAP); heavy libraries (Three.js, model-viewer) are vendored and load only for the pages that need them.
 - **Reduced motion.** Everything respects `prefers-reduced-motion: reduce`, gated by the engine-wide **Respect "reduce motion"** setting (Theme Settings → Site-wide UX → Animation Engine, on by default). Effects fall back to a static frame or plain content.
 - **Touch aware.** Pointer-driven effects (Hover, Cursor, pointer-following Physics) are skipped on touch screens, and the engine-wide **Disable heavy effects on mobile** setting skips the GPU-heavy ones (WebGL and physics) on phones.
 - **Off-screen pause.** Continuous effects (backgrounds, ambient physics) pause when scrolled out of view and when the tab is hidden.

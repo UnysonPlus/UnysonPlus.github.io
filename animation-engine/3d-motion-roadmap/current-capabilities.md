@@ -45,7 +45,7 @@ which is exactly why the [focus areas](./focus-areas) are so specific.
 
 | Foundation | What it powers |
 | --- | --- |
-| **GSAP + ScrollTrigger + SplitText** | The industry-standard animation core — drives [Scroll Motion](/animation-engine/scroll-motion)'s scrub, pin and text reveals. |
+| **The [scroll core](/animation-engine/scroll-core)** | The engine's own scroll triggers, pinning, tweens, timelines and text splitter (about 7 KB) — drives [Scroll Motion](/animation-engine/scroll-motion)'s scrub, pin and text reveals, Motion Sequences and Motion Gallery chaining. GSAP loads only for a Custom Code snippet. |
 | **Three.js (real WebGL)** | [WebGL Object](/animation-engine/webgl-object) — refractive glass/metal objects, particle systems, full-screen shaders. |
 | **Google `<model-viewer>`** | [Model Viewer](/animation-engine/model-viewer) — glTF/GLB models with orbit, HDR lighting, and AR. |
 | **Lenis smooth-scroll** | Site-wide [Smooth Scroll](/animation-engine/smooth-scroll) and [Scroll Loop](/animation-engine/scroll-loop) — momentum scrolling and seamless section scroll, sharing one Lenis instance. |
@@ -92,7 +92,7 @@ which is exactly why the [focus areas](./focus-areas) are so specific.
   **[Backgrounds](/animation-engine/backgrounds)** (35 Canvas/CSS effects, layered up to 12 deep, on any
   Section, Bleed Section, Masonry Section or Row).
 - **[Motion Sequence](/animation-engine/motion-sequence)** — assembles a Section's children into a single
-  `gsap.timeline()` on one trigger (play-once, or scrub-and-pin), tuned by an "overlap" control. Visual
+  timeline on one trigger (play-once, or scrub-and-pin), tuned by an "overlap" control. Visual
   timelines now exist too: the [Scroll Timeline](/animation-engine/scroll-timeline) for scroll motion and
   the Live Editor's [Interaction timeline](/extensions/live-editor) for Interactions.
 

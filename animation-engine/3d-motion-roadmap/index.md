@@ -23,7 +23,8 @@ is where we're taking motion in UnysonPlus.
 Most people assume a WordPress builder can't touch the "3D motion" you see on award-winning studio
 sites. The Animation Engine is already much closer than that suggests:
 
-- It runs on **GSAP + ScrollTrigger** — the same animation core the pros use.
+- It runs on its own **[scroll core](/animation-engine/scroll-core)** — scroll triggers, scrub, pinning and timelines in
+  about 7 KB, the same model the pros use with GSAP + ScrollTrigger, without the library.
 - It has **real WebGL 3D** ([WebGL Object](/animation-engine/webgl-object) via Three.js and
   [Model Viewer](/animation-engine/model-viewer) for glTF/GLB models, with AR).
 - It has a **cinematic scroll system** ([Scrollytelling](/animation-engine/scrollytelling))

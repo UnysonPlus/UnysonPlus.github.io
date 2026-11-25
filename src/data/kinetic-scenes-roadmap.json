@@ -109,55 +109,6 @@
           "status": "planned"
         }
       ]
-    },
-    {
-      "id": "p33-more-reel-effects",
-      "title": "Phase 33 — More reel effects (from the study)",
-      "goal": "The ideas left over after comparing the Studio with a public pack of talking-head reel effects (read for ideas only; nothing copied). Each is written from scratch as a preset or a ready-made piece, editable on the timeline, using Follow the face and the cut-out person.",
-      "tasks": [
-        {
-          "id": "p33-flip-countdown",
-          "title": "Flip-clock countdown",
-          "detail": "A 3, 2, 1 split-flap countdown above the speaker’s head, each card flipping down with a click.",
-          "status": "planned"
-        },
-        {
-          "id": "p33-tunnel",
-          "title": "Room tunnels away",
-          "detail": "The room behind a cut-out speaker stretches into a tunnel and rushes away, for \"down the rabbit hole\" moments.",
-          "status": "planned"
-        },
-        {
-          "id": "p33-doodles",
-          "title": "Marker doodles round the person",
-          "detail": "Hand-drawn marker doodles (stars, arrows, underlines, a crown) draw themselves round a cut-out speaker and follow the face.",
-          "status": "planned"
-        },
-        {
-          "id": "p33-crayon",
-          "title": "Crayon writing",
-          "detail": "A crayon writes a word behind the speaker’s head stroke by stroke, then underlines it, with a waxy texture.",
-          "status": "planned"
-        },
-        {
-          "id": "p33-logo-link",
-          "title": "Two logos joined",
-          "detail": "Two logos pop in beside the face, joined by a dashed line that runs behind the head (the user’s own logo files; no brand library is bundled).",
-          "status": "planned"
-        },
-        {
-          "id": "p33-uninstall-bar",
-          "title": "Glitchy progress bar",
-          "detail": "An \"uninstalling\" progress bar that stutters, glitches and breaks the frame apart.",
-          "status": "planned"
-        },
-        {
-          "id": "p33-phone-fan",
-          "title": "Phone fan",
-          "detail": "Reel covers fanned out like a hand of phones behind the speaker, dealt in one at a time.",
-          "status": "planned"
-        }
-      ]
     }
   ],
   "extensionVersion": "0.1.75",

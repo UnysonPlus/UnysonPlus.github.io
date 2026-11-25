@@ -39,6 +39,8 @@ by the real player on an illustration; on your own footage they look the same.
 | **Orbit around** | Circles round its place on a tilted ring, smaller and dimmer on the far side: icons orbiting a head. |
 | **Stamp** | A rubber stamp drops in, slams down on a word or a picture and jolts it, with worn, inky edges: "APPROVED", "SOLD OUT", "PAID". Settings: the words, the ink colour, the tilt and the size. The out clip lifts it off. Comes with the Rubber stamp sound. |
 | **Freeze frame** | On footage: the picture stops on a frame with a quick flash, a hand-drawn arrow and a short note draw themselves on to point at something, then the video plays on from the same frame (the rest of the clip is pushed back by the freeze, so nothing is skipped). Settings: the note, where it points (across and down, in % of the layer), which side the note sits, the colour. |
+| **Flip clock** | On a text layer: a split-flap card counts from one number to another (3, 2, 1), each step flipping down like an airport board, in the layer's font and colour. Settings: from, to, the card colour. |
+| **Crayon** | On a text layer: the word is written letter by letter in a waxy, grainy crayon line, then underlined. A heavy, rounded font looks most like crayon; under a cut-out person it is written behind their head. |
 | **Tape label** | A strip of masking tape with torn ends and a handwritten line ("FRAGILE", "Day 1") is slapped across the layer at a slant: across the middle, the top or the bottom. Settings: the words, the tape and writing colours, the tilt and the size. The out clip peels it off from one end. |
 
 ## On footage and pictures
@@ -48,6 +50,7 @@ by the real player on an illustration; on your own footage they look the same.
 | Effect | How |
 |---|---|
 | **Snap zoom** | A sharp punch-in on a point (the face, a detail), held; Out snaps back. |
+| **Tunnel** | The room tunnels away: the picture drawn inside itself as oval rings (or frames), each a little darker and turned, rushing away into a dark centre. Put it on the room behind a cut-out person. Settings: rings per clip, twist, how dark the centre gets, ovals or frames, stay after the clip. |
 | **Dot reveal** | The picture builds itself out of glowing dots that light up and swell until they touch, then snaps into focus; Out runs it backwards. Settings: the dot spacing and the glow colour. Works on text and shapes too. |
 | **Digital zoom** | The picture steps in with a blur as the focus hunts, inside a recording frame (corners, REC, the zoom). |
 | **Colour grade** | Fades in a look on the picture only: black and white, noir, warm, cool, film, vivid, faded, teal and orange. |
@@ -206,6 +209,8 @@ it is found again.
 
 ### Follow the face
 
+**Follow the face** with no footage picked follows the first footage whose face has been found, so a piece inserted before the face was found starts following as soon as it is.
+
 Finds the face in every frame and keeps its path on the footage. Give any layer the **Follow the face** preset to keep it
 on the face, or above, below, left or right of it, while the clip runs (optionally growing and shrinking with the face):
 
@@ -296,6 +301,10 @@ cut out, a piece goes behind them.
 | **Card carousel** | Six reel covers spin round the speaker on a tilted 3D ring. It adds two layers: the far half goes under a cut-out person and the near half over them, so the cards pass behind the person. |
 | **Halftone paper page** | A cream paper page fills the frame, the speaker shrinks into the bottom-right corner and their words build up at the top in serif type, the keywords (in *asterisks*) in red. Put **Risograph** on the cut-out person for the halftone dots. |
 | **Keyboard rain** | Keyboard keys rain down one after another, bounce and pile up at the bottom, behind a cut-out speaker. |
+| **Marker doodles** | Yellow marker doodles draw themselves round the speaker: a crown, a star, a sparkle, an arrow and a squiggle under the chin. With the face found (Follow the face), the group follows it. |
+| **Logo link** | Two logos pop in beside the face, joined by a dashed line that draws across behind the head and marches. Put your own logo pictures in place of the lettered circles. |
+| **Glitchy progress bar** | An "Uninstalling…" panel whose bar crawls, stalls at 38%, jumps to 94%, shakes, then glitches out of the frame. |
+| **Phone fan** | Five phones are dealt in one at a time and fan out like a hand of cards behind the speaker, each screen a reel cover. |
 | **Follow button** | A profile card in a generic phone style: the Follow button is tapped (a ripple and a little press) and flips to a grey "Following". |
 | **Toggle switches** | A settings panel whose switches turn on one line at a time: the knob slides across with a click and the track turns green. |
 | **Notifications** | Phone notifications (a sale, a subscriber, a payment) stack up one by one, each with a soft glow in its app's colour as it lands. |

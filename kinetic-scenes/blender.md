@@ -34,7 +34,9 @@ linear colour, and the kit renders with Blender's Standard view so brand colours
 ## What you need
 
 - **Blender 4.2 or later** on the same computer (free from blender.org). The kit finds it in the usual install folder,
-  or set `BLENDER` to its path.
+  or set `BLENDER` to its path. With several versions installed it uses the newest **4.x**: Blender 5's renderer runs
+  about three times slower in the background (measured on a GTX 1660 Ti: 3.5 s a frame against 1.3 s on 4.2). Blender 5
+  works too when it is the only one.
 - **The [AI Dev Kit](/ai-dev-kit)** (for the kit's tools) and an AI agent connected to it.
 
 ## Ask your agent
@@ -54,6 +56,24 @@ node studio-cli.mjs blender render splash.py --seconds 4 --fps 30 --width 1080 -
 
 A model prints its triangle count, materials and size, the four-view preview, and the 3D layer to add. A shot prints its
 frames and the footage layer to add.
+
+## The model checks
+
+Every model is checked after it is exported, and what the check finds comes back to the agent with the four views:
+
+| Check | Why it matters on a web page |
+|---|---|
+| **Open edges** on a part with depth | Faces are one-sided on the web, so a hole shows an empty inside. |
+| **Inside-out parts** | A closed part whose faces point inwards renders dark or see-through. |
+| **Loose vertices, faces with no area** | Leftovers that add weight and can flicker. |
+| **No material** on a part | It shows plain white. |
+| **Procedural textures** (noise, Voronoi, colour ramps…) | The model file keeps only plain material values, so the pattern disappears. |
+| Note: **no bevels**, **all faces flat-shaded** | Hard edges with no bevel catch no light; flat curved parts look faceted. |
+
+The agent fixes them and builds the model again. Behind the checks is a written checklist the agent follows (real
+proportions, the silhouette first, bevels on hard edges, smooth shading, closed parts, materials a web page can carry,
+a web-sized triangle count, then look and fix one thing at a time), drawn from the open, MIT-licensed blender-skills
+pack and adapted to web scenes.
 
 ## Limits and tips
 

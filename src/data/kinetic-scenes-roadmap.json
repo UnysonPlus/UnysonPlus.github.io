@@ -144,12 +144,6 @@
       "goal": "Better and wider 3D for scenes. Agents already build models and shots in Blender through the AI Dev Kit (blender_model, blender_render) and put them in 3D layers; this phase makes those models better, reaches shapes that scripted modelling cannot (a shoe, a plant, a character), and lets you work in a live Blender window when you want to. Each tool is optional and is switched on in the AI Dev Kit's Tools section, planned with the kit.",
       "tasks": [
         {
-          "id": "p32-blender-guidance",
-          "title": "Better Blender guidance for agents",
-          "detail": "Fold the checklists of the open, MIT-licensed blender-skills pack into the kit's own Blender guidance: real-world scale, bevels and clean topology, materials, three-point lighting, UVs, decimating for the web and GLB export, so every model an agent writes comes out cleaner. The full pack is recommended as an opt-in extra, not bundled.",
-          "status": "planned"
-        },
-        {
           "id": "p32-blender-mcp",
           "title": "Work in a live Blender window",
           "detail": "Support the official Blender MCP server (Blender's own connector) for hands-on sessions: you watch the model take shape in Blender and adjust it, then the agent hands the result to a 3D layer or a rendered shot. The background tools stay the default for \"just make it\".",

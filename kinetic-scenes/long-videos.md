@@ -63,7 +63,9 @@ Studio, in **Export › Video** and in kit renders.
 
 - **One scene is at most an hour (3,600 seconds).** Renders always cover the whole scene: a scene is never cut short.
   The limit is a guard against a typo turning a scene into a ten-hour timeline, not a measure of what the player can
-  do; what actually costs a long scene is its layer count, not its length. It was 10 minutes until Studio 0.1.77.
+  do; what actually costs a long scene is its layer count, not its length. It was 10 minutes until Studio 0.1.77, and
+  the AI Dev Kit's renderer needs version 1.13.19 or later to agree with it — an older kit still refuses to render a
+  scene over 10 minutes, with the message "one scene can be at most 600".
 - **Rendering takes time:** about real time to three times real time on a typical computer, so a 10-minute chapter
   takes 10 to 30 minutes. That is another reason to render chapter by chapter.
 - **Keep a chapter to a few hundred layers.** The Studio plays a scene of about 1,500 layers at around 26 frames a second,

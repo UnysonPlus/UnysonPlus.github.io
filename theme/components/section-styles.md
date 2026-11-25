@@ -36,3 +36,8 @@ on the `<section>`. Because it stores the slug, editing the preset restyles ever
 ## Related
 
 - [Section shortcode](/shortcodes/layout-elements/section) · [Components overview](./index.md)
+
+## Smooth corners
+
+Each Section Style has a **Corner Smoothing** setting under its Border radius: Off (a plain quarter circle), Soft, Squircle (the app-icon curve) or Strong. Browsers that cannot draw
+it keep the plain rounded corner. See [Smooth Corners](./smooth-corners.md) for what each step looks like.

@@ -173,3 +173,10 @@ foreach ( $atts as $k => $v ) {
 | `wp_enqueue_scripts` / `wp_footer` | Load your CSS/JS runtime |
 | `anim_meta['category']` | Which inserter tab your tile groups under |
 | `anim_meta['multi']` | Allow the effect to be added more than once and combined |
+
+## Use the motion core
+
+Your runtime can use the same shared pieces as the built-in modules: one frame loop that pauses in background tabs, the
+easing curves, the in-view watcher and the scroll-progress formula. Depend on `upw_anim_raf_handle()` when you enqueue
+your script and use `window.upwAnimRaf`, `window.upwEase`, `window.upwInView` and `window.upwScrollProgress`. See
+[the motion core](/animation-engine/motion-core).

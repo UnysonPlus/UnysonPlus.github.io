@@ -76,3 +76,8 @@ the Animation Engine.
 
 - [`image-style-picker`](/options/option-types/image-style-picker) — the picker control.
 - [Components overview](./index.md) — the shared pipeline.
+
+## Smooth corners
+
+Each Image Style has a **Corner Smoothing** setting under its Corner Radius (it reshapes rounded corners, not a mask): Off (a plain quarter circle), Soft, Squircle (the app-icon curve) or Strong. Browsers that cannot draw
+it keep the plain rounded corner. See [Smooth Corners](./smooth-corners.md) for what each step looks like.

@@ -39,7 +39,7 @@ in another). Many modules also run their own animation-frame loop or their own "
 ## Decision
 
 Option 3. The scroll core becomes the engine's one motion core, and each module moves onto it (roadmap
-[Phase 11](/animation-engine/roadmap#phase-11)). It stays an internal library: documented on the scroll core page,
+[Phase 11](/animation-engine/motion-core)). It stays an internal library: documented on the scroll core page,
 usable from a theme's own scripts, but not published or marketed on its own.
 
 The first step shipped in Animation Engine 1.5.35: one set of easing curves (`window.upwEase`) for the whole engine.
@@ -56,3 +56,23 @@ tweens).
 - **Lighter pages.** A page with several effects ships one copy of the shared pieces instead of one per module.
 - **No upkeep we do not need.** A public library is a second product with its own users and promises. If developers
   ask for one later, the core is already there to publish.
+
+## Follow-up: "one way to tween" does not mean "everything through the scroll core"
+
+*Decided the same day, while finishing Phase 11.* The plan's last step was to play every module's keyframes through
+the scroll core's tweens and timelines. Looking at the code, Interactions and Layout Animation already play on the
+browser's own Web Animations, the same mechanism the core's tweens use, with the shared curves. Routing them through
+the scroll core would add its 6 KB to pages that need no scroll triggers, and Page Timelines' pinned scroll mode uses a
+sticky wrapper that, unlike the core's fixed pinning, keeps working inside transformed containers and on the Live
+Editor's canvas.
+
+So "one way to tween" became: **every playback runs either on the browser's Web Animations or as a playhead on the
+shared frame loop, eased by the shared curves, triggered by the shared in-view watcher, and measured with the shared
+scroll-progress formula.** The scroll core is loaded only where scroll triggers, pinning or timelines are needed. The
+Kinetic Scenes player is the Studio app's own player, shipped as a vendor file, and is not part of the engine's core.
+
+**Status:** shipped. The rest of Phase 11 went out in Animation Engine 1.5.36: one shared frame loop and one in-view
+watcher for every module (see [the motion core](/animation-engine/motion-core)). Moving the modules over also found and
+fixed five bugs: three in the shared loop itself (an extra frame scheduled when a module re-subscribed mid-frame, and two
+mid-frame removal cases), the Custom scroll-progress style overwriting the shared scroll-progress helper, and a Horizontal
+Scroll section that never moved when its row sat inside a container.

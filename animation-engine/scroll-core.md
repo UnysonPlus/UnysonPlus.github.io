@@ -52,7 +52,7 @@ ScrollTrigger then load on that page alone.
   Animations, so the browser can move them on its compositor. When an entrance ends in the element's natural look, the
   animation removes itself: a later hover effect or style change on the element is never overridden by a finished
   animation.
-- **One clock.** Everything updates on the engine's shared frame loop, and only while something is moving. With
+- **One clock.** Everything updates on the engine's shared frame loop ([the motion core](/animation-engine/motion-core)), and only while something is moving. With
   [Smooth Scroll](/animation-engine/smooth-scroll), it reads the smoothed scroll position on the same frame.
 - **Staying right.** Positions are worked out again when the window is resized, when web fonts and images finish
   loading, and when the page's height changes (an accordion opens, a section loads later).

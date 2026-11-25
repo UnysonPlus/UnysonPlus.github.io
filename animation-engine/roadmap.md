@@ -2,7 +2,7 @@
 sidebar_position: 1.5
 title: Roadmap
 slug: /roadmap
-description: "What is planned next for the Animation Engine and the Live Editor around it: the design tools Framer and Webflow have that Unyson+ does not yet, motion capture in the Site Converter, and one motion core for every module. Shipped work lives in the docs, not here."
+description: "What is planned next for the Animation Engine and the Live Editor around it: the design tools Framer and Webflow have that Unyson+ does not yet, and motion capture in the Site Converter. Shipped work lives in the docs, not here."
 ---
 
 # Roadmap
@@ -16,7 +16,8 @@ Phases 0 to 6 of the earlier plan have all shipped: smooth scroll and one scroll
 designs, [Rive](/animation-engine/rive), [Interactions](/animation-engine/interactions) and
 [States](/animation-engine/states), [Layout Animation](/animation-engine/layout-animation), shared-element
 [Page Transitions](/animation-engine/page-transitions), and [Page Timelines](/animation-engine/page-timelines) in the Live
-Editor's Animate workspace. Phase 9 replaced GSAP with the engine's own [scroll core](/animation-engine/scroll-core).
+Editor's Animate workspace. Phase 9 replaced GSAP with the engine's own [scroll core](/animation-engine/scroll-core), and Phase 11 put every
+module on one [motion core](/animation-engine/motion-core).
 Each has its own page in these docs. The rules every effect follows are on
 [Performance](/animation-engine/performance#guardrails).
 :::
@@ -27,7 +28,8 @@ Each has its own page in these docs. The rules every effect follows are on
 [Framer's design features](https://www.framer.com/design/) shows where it is still ahead: the **design** side, meaning
 how a page is drawn, typed and shared. Most of these items land in the [Live Editor](/extensions/live-editor) and
 Theme Settings rather than in the Animation Engine. They are here so the plan sits in one place.
-([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#framer-design-tools).)
+([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#framer-design-tools).) **7c · smooth corners** has
+shipped: see [Smooth Corners](/theme/components/smooth-corners).
 
 - **7a · Components with variants and properties.** Save a group of elements as a component, give it variants
   (Default, Hover, Pressed, Dark, Small...) and properties (a text, an image, a link, a colour, a show/hide switch) that
@@ -36,8 +38,6 @@ Theme Settings rather than in the Animation Engine. They are here so the plan si
 - **7b · Typography controls.** Variable-font axes (any weight between 100 and 900, width, slant, optical size),
   OpenType features (tabular numbers, ligatures, small caps, stylistic sets), text decoration per element (underline
   style, colour, thickness and offset), and truncation for any text (one line with an ellipsis, or clamp to N lines).
-- **7c · Smooth corners.** A "smoothing" control next to the corner radius on any box, button, image or section, for
-  the continuous squircle curve instead of a plain circular arc.
 - **7d · Wide-gamut colour.** Pick colours in Display P3 (the brighter colours modern screens can show) in the colour
   picker and the Theme Settings palette, with an automatic sRGB fallback for older screens.
 - **7e · AI for layout.** *Make responsive:* the AI Assistant proposes the tablet and phone layout of a section from
@@ -57,7 +57,7 @@ Theme Settings rather than in the Animation Engine. They are here so the plan si
 
 ### Build order
 
-1. **7c** smooth corners, **7b** typography and **7d** wide-gamut colour: small, and every site gains from them.
+1. **7b** typography and **7d** wide-gamut colour: small, and every site gains from them.
 2. **7f** export as an image.
 3. **7a** components with variants and properties: the largest, and the one the others build on.
 4. **7g** vector drawing and icon sets, then **7e** AI for layout.
@@ -130,32 +130,11 @@ Animate workspace), not as code, and proves the match frame by frame. It builds 
 - **10d · Fix and learn.** Gaps go through the converter's usual findings loop, so a motion the engine cannot express yet
   becomes a request for the engine, not a one-off script.
 
-## Phase 11: One motion core for every module {#phase-11}
-
-*Added 25 November 2026.* The [scroll core](/animation-engine/scroll-core) already does what GSAP did for the engine.
-This phase moves every module onto it, so motion behaves the same everywhere, each fix is made once, and a page with
-several effects ships the shared pieces once. It stays an internal library, not a public product
-([why](/decisions/one-motion-core-internal-not-public)). Nothing changes for people building pages: each step keeps
-every setting and every curve exactly as it moves today, and is checked against the old one. The first step, **11a ·
-one set of easing curves**, shipped in Animation Engine 1.5.35 ([the engine's curves](/animation-engine/scroll-core#eases)).
-
-- **11b · One frame loop.** The modules that still run their own animation-frame loop (Marquee, Motion Path, Scroll
-  Progress, Text Effects, Scroll Text Highlight, Scroll Loop, the Hover text effects, SVG Draw and Morph, Rive, the 3D
-  elements and others) move onto the engine's shared loop, which pauses in a hidden tab and runs only while something
-  moves.
-- **11c · One "in view" trigger.** The modules that each watch for an element coming into view (Interactions, Page
-  Timelines, Scroll Reveal, Text Effects and others) use the core's triggers instead, so start points read the same way
-  everywhere and refresh together when the page changes height.
-- **11d · One way to tween.** Page Timelines and Interactions play their keyframes through the core's tweens and
-  timelines instead of their own players, and the Kinetic Scenes Preset follows.
-- **Stays as it is:** one-line fixed curves inside a hot drawing loop (the Motion Gallery's, the confetti's) and the
-  physics and WebGL simulations, which are not tweens.
-
 ## Order of work
 
 Decided 25 November 2026: **Phase 9 first, then Phase 7, then Phase 8, then Phase 10.** Phase 9 (the scroll core, in
-place of GSAP) shipped in Animation Engine 1.5.34: see [the scroll core](/animation-engine/scroll-core). Phase 11 runs
-alongside: its steps are small and are taken between the larger items.
+place of GSAP) shipped in Animation Engine 1.5.34: see [the scroll core](/animation-engine/scroll-core). Phase 11 (one
+motion core for every module) shipped in Animation Engine 1.5.35 and 1.5.36: see [the motion core](/animation-engine/motion-core).
 
 ## Open ideas
 

@@ -51,3 +51,8 @@ stored, editing the preset restyles every card using it.
 
 - [Components overview](./index.md) — the shared pipeline.
 - [Color Presets](./color-presets.md) — the colors a box preset references.
+
+## Smooth corners
+
+Each Box Preset has a **Corner Smoothing** setting under its Corner Radius: Off (a plain quarter circle), Soft, Squircle (the app-icon curve) or Strong. Browsers that cannot draw
+it keep the plain rounded corner. See [Smooth Corners](./smooth-corners.md) for what each step looks like.

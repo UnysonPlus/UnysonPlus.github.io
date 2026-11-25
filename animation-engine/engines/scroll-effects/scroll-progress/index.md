@@ -58,8 +58,10 @@ rail with chapter markers, say):
   verbatim, so only administrators can use it.
 - **Custom CSS** — injected in a `<style>` tag on the front end. Target `.upw-sp--custom` and drive the
   motion from the `--sp-progress` CSS variable (0–1), e.g. `transform: scaleY(var(--sp-progress))`.
-- **Custom JS** — runs after the markup. Read `window.upwScrollProgress` (0–1), or listen for the
-  `upw:scroll` event: `window.addEventListener('upw:scroll', e => e.detail)`.
+- **Custom JS** — runs after the markup. Read the page progress (0–1) from `window.upwScrollProgress.value`,
+  or listen for the `upw:scroll` event: `window.addEventListener('upw:scroll', e => e.detail)`.
+  (`window.upwScrollProgress` itself is the engine's shared [scroll-progress helper](/animation-engine/motion-core#scroll-progress);
+  it still reads as the number in arithmetic, so `upwScrollProgress * 100` keeps working.)
 
 :::note[Section dots]
 The dots use the page's `<section>` / `.fw-section` blocks (needs 2+). They highlight the section

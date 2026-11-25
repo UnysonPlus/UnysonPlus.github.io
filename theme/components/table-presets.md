@@ -43,3 +43,8 @@ A Table's **Table Preset** control is the
 ## Related
 
 - [Page Builder Elements](/shortcodes/overview) · [`table-style-picker`](/options/option-types/table-style-picker) · [Components overview](./index.md)
+
+## Smooth corners
+
+Each Table Preset has a **Corner Smoothing** setting under its Corner Radius, for the frame: Off (a plain quarter circle), Soft, Squircle (the app-icon curve) or Strong. Browsers that cannot draw
+it keep the plain rounded corner. See [Smooth Corners](./smooth-corners.md) for what each step looks like.

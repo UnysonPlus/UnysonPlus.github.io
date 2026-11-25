@@ -80,3 +80,8 @@ A button element's **Preset** control is the
 - [`button-presets`](/options/option-types/button-presets) · [`button-style-picker`](/options/option-types/button-style-picker) · [`button-hover-animation`](/options/option-types/button-hover-animation)
 - [Color Presets](./color-presets.md) — the colors buttons reference.
 - [Components overview](./index.md) — the shared pipeline.
+
+## Smooth corners
+
+Each **Button Size** has a **Corner Smoothing** setting under its Border Radius: Off (a plain quarter circle), Soft, Squircle (the app-icon curve) or Strong. Browsers that cannot draw
+it keep the plain rounded corner. See [Smooth Corners](./smooth-corners.md) for what each step looks like.

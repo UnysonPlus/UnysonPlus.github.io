@@ -44,7 +44,8 @@ and resumes when they return. A backgrounded page spends **no CPU** on animation
 draining a laptop battery or spinning up a fan for a page nobody is looking at.
 
 Off-screen elements are skipped too: a background or physics effect below the fold doesn't animate
-until it scrolls into view.
+until it scrolls into view. Every module shares the same loop and the same "in view" watcher, so a page with ten effects
+costs the browser one loop and a handful of watchers, not ten of each. See [the motion core](/animation-engine/motion-core).
 
 ## Respectful by default
 

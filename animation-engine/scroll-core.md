@@ -57,6 +57,35 @@ ScrollTrigger then load on that page alone.
 - **Staying right.** Positions are worked out again when the window is resized, when web fonts and images finish
   loading, and when the page's height changes (an accordion opens, a section loads later).
 
+## The engine's curves {#eases}
+
+The whole Animation Engine eases with **one set of curves**, kept in the shared frame loop (`window.upwEase`, since
+Animation Engine 1.5.35). The scroll core, [Page Timelines](/animation-engine/page-timelines),
+[Scroll Keyframes](/animation-engine/scroll-keyframes) and the scroll choreography of the
+[Text](/animation-engine/text-scroll-choreography) and [Image](/animation-engine/image-scroll-choreography) Scroll
+Choreography elements all read from it, so a curve
+moves the same way in every one of them ([why](/decisions/one-motion-core-internal-not-public)).
+
+It understands:
+
+- **Named curves:** `none`, `power1` to `power4` (also called `quad`, `cubic`, `quart`, `quint`), `sine`, `expo`,
+  `circ`, `back(1.7)`, `elastic(1, 0.5)` and `bounce`, each with `.in`, `.out` (the default) or `.inOut`, for example
+  `power3.out` or `back.out(1.7)`.
+- **Every CSS curve:** `ease`, `ease-in`, `ease-out`, `ease-in-out`, `cubic-bezier(…)`, `steps(…)`, and `linear(…)`,
+  which is how the easing picker stores its springs and the Motion design curves.
+
+Older short names keep their curves: Scroll Keyframes' *Out*, *In* and *In-out* are `power2` (cubic), *Back* is
+`back.out`, *Sine* is `sine.inOut`; the scroll choreography's *In*, *Out* and *In-out* are `power1` (quadratic).
+
+```js
+const f = upwEase('back.out(1.7)'); // a function from 0..1 to 0..1
+f(0.5);                              // ≈ 1.09: past the end, then back
+upwEase('linear(0, 0.9 50%, 1)');    // a spring from the easing picker
+upwEase('nonsense');                 // null: the caller keeps its own default
+```
+
+`upwScroll.ease(name)` gives the same functions, with `power2.out` for a name it does not know.
+
 ## The text splitter
 
 `upwSplit(element, { type })` wraps each character, word or line in its own element so they can be animated one by

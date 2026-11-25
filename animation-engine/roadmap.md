@@ -2,7 +2,7 @@
 sidebar_position: 1.5
 title: Roadmap
 slug: /roadmap
-description: "What is planned next for the Animation Engine and the Live Editor around it: the design tools Framer and Webflow have that Unyson+ does not yet, and motion capture in the Site Converter. Shipped work lives in the docs, not here."
+description: "What is planned next for the Animation Engine and the Live Editor around it: the design tools Framer and Webflow have that Unyson+ does not yet, motion capture in the Site Converter, and one motion core for every module. Shipped work lives in the docs, not here."
 ---
 
 # Roadmap
@@ -130,10 +130,32 @@ Animate workspace), not as code, and proves the match frame by frame. It builds 
 - **10d · Fix and learn.** Gaps go through the converter's usual findings loop, so a motion the engine cannot express yet
   becomes a request for the engine, not a one-off script.
 
+## Phase 11: One motion core for every module {#phase-11}
+
+*Added 25 November 2026.* The [scroll core](/animation-engine/scroll-core) already does what GSAP did for the engine.
+This phase moves every module onto it, so motion behaves the same everywhere, each fix is made once, and a page with
+several effects ships the shared pieces once. It stays an internal library, not a public product
+([why](/decisions/one-motion-core-internal-not-public)). Nothing changes for people building pages: each step keeps
+every setting and every curve exactly as it moves today, and is checked against the old one. The first step, **11a ·
+one set of easing curves**, shipped in Animation Engine 1.5.35 ([the engine's curves](/animation-engine/scroll-core#eases)).
+
+- **11b · One frame loop.** The modules that still run their own animation-frame loop (Marquee, Motion Path, Scroll
+  Progress, Text Effects, Scroll Text Highlight, Scroll Loop, the Hover text effects, SVG Draw and Morph, Rive, the 3D
+  elements and others) move onto the engine's shared loop, which pauses in a hidden tab and runs only while something
+  moves.
+- **11c · One "in view" trigger.** The modules that each watch for an element coming into view (Interactions, Page
+  Timelines, Scroll Reveal, Text Effects and others) use the core's triggers instead, so start points read the same way
+  everywhere and refresh together when the page changes height.
+- **11d · One way to tween.** Page Timelines and Interactions play their keyframes through the core's tweens and
+  timelines instead of their own players, and the Kinetic Scenes Preset follows.
+- **Stays as it is:** one-line fixed curves inside a hot drawing loop (the Motion Gallery's, the confetti's) and the
+  physics and WebGL simulations, which are not tweens.
+
 ## Order of work
 
 Decided 25 November 2026: **Phase 9 first, then Phase 7, then Phase 8, then Phase 10.** Phase 9 (the scroll core, in
-place of GSAP) shipped in Animation Engine 1.5.34: see [the scroll core](/animation-engine/scroll-core).
+place of GSAP) shipped in Animation Engine 1.5.34: see [the scroll core](/animation-engine/scroll-core). Phase 11 runs
+alongside: its steps are small and are taken between the larger items.
 
 ## Open ideas
 

@@ -5,6 +5,43 @@
   "detected": false,
   "milestones": [
     {
+      "id": "capability-shorts",
+      "title": "Capability shorts — one video per thing it can do",
+      "goal": "A short vertical video (up to a minute) for each of the 40 things in Help › What Kinetic Scenes can do, showing the feature working and the prompt that made it. Each is made in Kinetic Scenes, posted to YouTube Shorts, Facebook and Instagram, and its YouTube id added to the list, so the start box’s Did you know? tip plays it for returning visitors. Made in batches of five, in the Unyson+ look and the Jon 4 voice, built to a preview link and rendered only when asked.",
+      "tasks": [
+        {
+          "id": "shorts-1",
+          "title": "Shorts, batch 1: what people miss",
+          "detail": "Cut the person out of your video; your screen on a 3D phone; a mascot that talks; a voice-over in your own voice; real 3D models with Blender.",
+          "status": "planned"
+        },
+        {
+          "id": "shorts-2",
+          "title": "Shorts, batch 2: let the AI make it",
+          "detail": "Describe it, get a scene; turn a website into a video; cut a long video into a reel; make one like a video you like; a video for every row of a spreadsheet.",
+          "status": "planned"
+        },
+        {
+          "id": "shorts-3",
+          "title": "Shorts, batch 3: reel effects",
+          "detail": "Talking-head effects (freeze frame, split push, LED sign); graphics that follow your face; ready-made pieces; captions word by word; moves that land on a word.",
+          "status": "planned"
+        },
+        {
+          "id": "shorts-4",
+          "title": "Shorts, batch 4: looks",
+          "detail": "55 styles; restyle anything; painted and hand-drawn; a paper cut-out explainer; things that fall and bounce.",
+          "status": "planned"
+        },
+        {
+          "id": "shorts-5",
+          "title": "Shorts, batch 5: products and finishing",
+          "detail": "Product tours from a screen recording; charts, counters and code; animated heroes for your website; export in every shape; check the scene for you.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
       "id": "p32-better-3d",
       "title": "Phase 32 · Better 3D",
       "goal": "Better and wider 3D for scenes. Agents already build models and shots in Blender through the AI Dev Kit (blender_model, blender_render) and put them in 3D layers; this phase makes those models better, reaches shapes that scripted modelling cannot (a shoe, a plant, a character), and lets you work in a live Blender window when you want to. Each tool is optional and is switched on in the AI Dev Kit's Tools section, planned with the kit.",

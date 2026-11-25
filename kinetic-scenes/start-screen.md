@@ -175,6 +175,38 @@ The first time someone opens Kinetic Scenes, a **3-minute video tour** opens in 
 - The video is a YouTube embed from `youtube-nocookie.com` (YouTube's privacy-enhanced mode), and it loads only while the
   dialog is open.
 
+## Did you know? (tips for returning visitors)
+
+Someone who has been here before (who has seen the welcome video) gets one thing Kinetic Scenes can do each time the
+start box opens, under the done-for-you card, in place of the tour link:
+
+<img src="/img/kinetic-scenes/did-you-know.png" alt="A Did you know? tip in the start box: Export a video or a web page, with Show me, How it works, Another tip, Everything it can do and Hide tips" width="246" />
+
+- **Show me** opens the part of the Studio that does it (the spreadsheet window, Free stock, the 3D device, Export…),
+  where there is one. **How it works** opens its page in this manual.
+- **Ask your AI:** most tips carry a prompt to copy and give to Claude through the [AI Dev Kit](/ai-dev-kit), or to
+  AI assist. Tips marked **AI Dev Kit** need the free kit running on your computer.
+- **A video:** a tip whose short has been published shows its thumbnail; clicking it plays the short (a YouTube embed
+  from `youtube-nocookie.com`, loaded only while it plays). Tips with a video come up first.
+- **Another tip** shows the next one. You don't see a tip again until you have seen them all, then the round starts over.
+- **Everything it can do** opens the full list (below). **Hide tips** turns them off for this browser and brings the
+  tour link back; Help › What Kinetic Scenes can do still has them all.
+
+## What Kinetic Scenes can do
+
+**Help › What Kinetic Scenes can do** lists everything you can make, by hand or by asking your AI (40 things, from a
+voice-over in your own voice to a 3D phone playing your screen recording), grouped as Let the AI make it; Voice, music
+and sound; People on camera; Pictures, footage and 3D; Looks and styles; Products and websites; Finish and share.
+
+<img src="/img/kinetic-scenes/what-it-can-do.png" alt="The What Kinetic Scenes can do window: a search box, then each thing with what it is, a prompt to copy, Show me and How it works" width="560" />
+
+- **Search** by any word ("voice", "3D", "captions", "website").
+- Each entry has what it is, **Copy** for its prompt, **Show me** and **How it works**, and its short once it is
+  published. It is the list to open when you wonder whether Kinetic Scenes can do something.
+- The individual effects, pieces and styles are in their own libraries (the [presets](./presets.md), the
+  [pieces](./video-effects.md#ready-made-pieces) and the [55 styles](./motion-styles.md)); this list is the things
+  people want to make.
+
 ## When it opens
 
 It opens each time the Studio does, with two exceptions, so it never gets in the way of a job you came to do:

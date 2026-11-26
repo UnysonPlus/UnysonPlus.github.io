@@ -132,6 +132,9 @@ the text and the voice ran on, and reloading the page was the only cure.
 
 - **A quick load never shows the ring**: it appears only after a third of a second, so a scene that is already loaded
   plays at once.
+- **Sound counts only when it is on**, and only the sounds that start in those four seconds: a visitor who has not
+  turned the sound on neither waits for it nor downloads it, and a long music bed that is already running when the sound
+  is turned on joins as soon as it arrives instead of holding the picture (player 0.0.84+).
 - **Footage that runs out while playing** (a long video on a slow connection) holds the whole scene the same way, with
   the ring, then carries on, so the picture and the voice stay together.
 - **Press play (or Space) again while it waits** to stop waiting.

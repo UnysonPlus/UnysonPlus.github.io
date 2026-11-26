@@ -30,14 +30,11 @@ how a page is drawn, typed and shared. Most of these items land in the [Live Edi
 Theme Settings rather than in the Animation Engine. They are here so the plan sits in one place.
 ([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#framer-design-tools).) Shipped so far:
 **7c · smooth corners** ([Smooth Corners](/theme/components/smooth-corners)), **7b · typography controls**
-([Text Styles](/theme/components/text-styles#typography-controls)) and **7d · wide-gamut colour**
-([Color Presets](/theme/components/color-presets#wide-gamut)) and **7f · export as an image**
-([Save as image](/extensions/live-editor#save-as-image)).
+([Text Styles](/theme/components/text-styles#typography-controls)), **7d · wide-gamut colour**
+([Color Presets](/theme/components/color-presets#wide-gamut)), **7f · export as an image**
+([Save as image](/extensions/live-editor#save-as-image)) and **7a · components with variants and properties**
+([Components](/extensions/snippets#components)).
 
-- **7a · Components with variants and properties.** Save a group of elements as a component, give it variants
-  (Default, Hover, Pressed, Dark, Small...) and properties (a text, an image, a link, a colour, a show/hide switch) that
-  each copy fills in. Changing the component updates every copy. Its variants double as States, so an Interaction can
-  switch a component between them.
 - **7e · AI for layout.** *Make responsive:* the AI Assistant proposes the tablet and phone layout of a section from
   its desktop one. *Variations:* it suggests a few alternative designs of the selected section for you to pick from.
   Both preview on the canvas before anything is kept, and undo reverts them.
@@ -53,9 +50,8 @@ Theme Settings rather than in the Animation Engine. They are here so the plan si
 
 ### Build order
 
-1. **7a** components with variants and properties: the largest, and the one the others build on.
-2. **7g** vector drawing and icon sets, then **7e** AI for layout.
-3. **7h** freeform sections, then **7i** working together.
+1. **7g** vector drawing and icon sets, then **7e** AI for layout.
+2. **7h** freeform sections, then **7i** working together.
 
 ### Not planned
 

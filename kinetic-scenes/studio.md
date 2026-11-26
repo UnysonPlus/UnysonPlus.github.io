@@ -132,6 +132,14 @@ the text and the voice ran on, and reloading the page was the only cure.
 
 - **A quick load never shows the ring**: it appears only after a third of a second, so a scene that is already loaded
   plays at once.
+- **Opening a project shows the ring too** (Studio 0.1.91+): its words appear at once but its pictures and footage take
+  a moment to arrive from the AI Dev Kit, so the stage is dimmed under a ring with the percentage until every picture
+  and video of the scene is in (30 s at most). Press play during it and play waits for the first seconds, then starts.
+- **The voice-over is waited for as well**: Play holds until the voice lines and music that start in the next four
+  seconds are decoded, so the first line never comes in late, and each line plays once.
+- **While playing**, what shows in the next second is checked every half second: a picture or footage that has not
+  arrived holds the scene with the ring instead of appearing blank. A file that still has not arrived after 20 seconds
+  is skipped from then on, so a broken address cannot hold the scene every time.
 - **Sound counts only when it is on**, and only the sounds that start in those four seconds: a visitor who has not
   turned the sound on neither waits for it nor downloads it, and a long music bed that is already running when the sound
   is turned on joins as soon as it arrives instead of holding the picture (player 0.0.84+).

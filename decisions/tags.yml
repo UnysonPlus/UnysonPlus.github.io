@@ -192,3 +192,8 @@ ecommerce:
   label: E-commerce
   permalink: /ecommerce
   description: "Selling on Unyson+ sites: the native Shop, the shared payments core, and the WooCommerce integration"
+
+design:
+  label: Design
+  permalink: /design
+  description: Design direction, composition and what separates a generated page from a designed one

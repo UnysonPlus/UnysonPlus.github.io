@@ -8,6 +8,12 @@ description: How good a created site has to be before it ships — the four-part
 
 # The design standard
 
+:::tip What a site is built from
+This page is the bar. [Components and motion](/ai-dev-kit/components-and-motion) is the inventory — the
+patterns, dividers, presets and motion modules a build is supposed to reach for, and the extension that
+ships switched off and silently removes half of them.
+:::
+
 Every site the creator builds is measured twice. The first measurement is the one most tools stop at:
 is it fast, is it reachable, is it indexed. The second is newer and harder — **is it any good**.
 

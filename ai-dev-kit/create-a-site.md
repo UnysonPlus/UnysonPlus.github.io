@@ -86,7 +86,31 @@ with a floor it has to clear before the build counts as finished. That page also
 most useful thing to know before you ask for anything - **saying "simple" gets you simple**, and the
 default sits deliberately below full spectacle.
 
-Read [the design standard](/ai-dev-kit/design-standard) if you want to know what you are going to get.
+Read [the design standard](/ai-dev-kit/design-standard) if you want to know what you are going to get,
+and [choosing a style](/ai-dev-kit/choosing-a-style) before you name one — thirty directions all apply
+cleanly, so nothing downstream can tell you a plausible choice is the wrong one.
+
+## Your logo
+
+**You get a real one, even if you have not supplied artwork.**
+
+This used to go the other way. A missing logo was treated like a missing testimonial — a fact nobody
+supplied — so sites shipped with their name set in the body font, which is the theme's fallback rather
+than a design and the clearest sign nobody finished the job.
+
+The distinction that fixed it: the creator must never invent a *fact about you* — a testimonial, a price,
+an opening time, an accreditation — because those can be wrong about you and you would be held to them. A
+wordmark drawn from your own name cannot be wrong about you. It asserts nothing your name does not already
+assert, so it was never covered by that rule.
+
+So the creator builds one, **after** your style is set and from it: your heading typeface, a colour
+already in your palette, the shape language the style chose. You get it in the header, a reversed copy for
+a dark footer, and a square cut for the browser-tab icon, which usually has to be simplified because most
+logotypes stop being a shape at 16 pixels.
+
+If you *do* have a logo, say so at the start and it will use yours instead. If you are having one made,
+say that too — it will set a composed wordmark and tell you it is a placeholder, rather than leaving you to
+discover it.
 
 ## What you get
 

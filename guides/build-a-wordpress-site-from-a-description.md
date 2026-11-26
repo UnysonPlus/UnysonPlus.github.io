@@ -39,10 +39,10 @@ a questionnaire  →  a site spec  →  your AI agent builds it  →  a scored c
    [AI Dev Kit](/ai-dev-kit/) and builds the site on your WordPress. It runs on your machine, against
    your install. Nothing is uploaded anywhere, and there is no account to create.
 3. **A gate at the end** decides whether it is finished, including a
-   [scored design pass](/design-standard).
+   [scored design pass](/ai-dev-kit/design-standard).
 
 The full walkthrough for someone who has never driven an AI agent is
-[Create a site](/create-a-site). What follows is the shorter version, plus the things worth knowing
+[Create a site](/ai-dev-kit/create-a-site). What follows is the shorter version, plus the things worth knowing
 before you start.
 
 ## What you are asked
@@ -96,7 +96,7 @@ which then fight the design system when it arrives.
 2. **The header and footer**, also Theme Settings — exactly one of each, inherited by every page.
 3. **The pages**, one band at a time, from the shape the page type calls for: a home page is an index,
    a contact page *is* the call to action and does not need another one at the bottom.
-4. **Motion last, and sparingly** — see [the design standard](/design-standard) on how much the brief
+4. **Motion last, and sparingly** — see [the design standard](/ai-dev-kit/design-standard) on how much the brief
    has actually earned.
 5. **The gate**: performance, accessibility, SEO, and then a score out of ten in four categories with a
    pass mark.
@@ -135,7 +135,7 @@ visitors cannot read.
 ## How good does it have to be?
 
 There is a published bar, and it is worth reading before you form an opinion of the result:
-**[the design standard](/design-standard)**. In short — every site is scored out of ten on Design,
+**[the design standard](/ai-dev-kit/design-standard)**. In short — every site is scored out of ten on Design,
 Usability, Creativity and Content, weighted 40/30/20/10, and anything under 7.0 overall, or under 6 in
 any single category, is not finished rather than delivered with notes.
 
@@ -163,7 +163,7 @@ own hosting.
 
 ## See also
 
-- [Create a site](/create-a-site) — the full walkthrough, written for a first-time agent user
-- [The design standard](/design-standard) — the rubric the result is scored against
+- [Create a site](/ai-dev-kit/create-a-site) — the full walkthrough, written for a first-time agent user
+- [The design standard](/ai-dev-kit/design-standard) — the rubric the result is scored against
 - [Set up AI for Unyson+](/guides/set-up-ai-for-unysonplus) — connecting Claude, an API key, or a free local model
 - [Build a free WordPress site fast](/guides/build-a-free-wordpress-site-fast) — the other route, when you already have a design to reproduce

@@ -58,6 +58,30 @@ location ~* /uploads/unysonplus/asset-optimizer/.*\.(css|js)$ {
 }
 ```
 
+### How much disk the cache uses
+
+One file per distinct bundle, not one per page. Two pages whose combined CSS comes out identical
+share the same file, because the filename is a hash of the bytes produced — so a site with 200
+pages that all load the same stylesheets keeps **one** combined file, not 200.
+
+A page whose asset mix genuinely differs does get its own file, and [Remove unused
+CSS](/extensions/asset-optimizer/unused-css) is per-page by nature, so a large site with purging on
+will hold more. Two things keep that bounded:
+
+- Anything not served for **7 days** is deleted. Being served refreshes that clock, so a bundle in
+  active use is never evicted.
+- A hard ceiling of **256 MB** on the whole directory, oldest evicted first.
+
+Everything in there is regenerable, so if the cap ever evicts something still wanted, the next
+request rebuilds it. You can empty it any time with **Clear cache** on the settings page.
+
+:::note[If you are on an older build]
+Before Asset Optimizer 1.1.82 the filename hashed the *inputs* rather than the output, and the input
+order was not stable between pages — so the same stylesheets, concatenated in a different order,
+were stored again under a new name for each URL. On a large site that reached gigabytes. Updating
+fixes it going forward; use **Clear cache** once to reclaim what the old builds left behind.
+:::
+
 ## Only for logged-out visitors
 
 <img src="/img/extensions/asset-optimizer/scope-limits.png" alt="Only for logged-out visitors, and Exclude URLs" width="1658" />

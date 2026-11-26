@@ -54,6 +54,29 @@ Without the AI Dev Kit running, the Studio works as before: the scene is kept in
 (**Back to Documents** undoes it). Projects already made stay where they are: move their folders if you want them there
 too. An administrator can also fix the folder with `KINETIC_WORKSPACE` when the kit starts.
 
+## ChatGPT, Gemini and other chat apps
+
+Kinetic Scenes works with ChatGPT in two ways.
+
+- **In the ChatGPT app or website (no setup):** ask it to make a Kinetic Scene. It reads the scene format from the
+  app's published skill (`kinetic-scenes.unysonplus.com/llms.txt` points it there) and answers with the scene as one
+  block of JSON. On a computer, open [Kinetic Scenes](https://kinetic-scenes.unysonplus.com/), close the start box,
+  open the **Scene file** tab on the right, select all its text and paste the scene over it: it applies as soon as it
+  is valid. If the tab lists problems, paste them back to ChatGPT and ask for the fixed file. (Or save the JSON as
+  `scene.json` and use **File › Open…**.) This route has no pictures you don't already host, no voice-over,
+  music, checks or video export from the chat: those need the kit.
+- **Codex, ChatGPT's coding agent (the full set of tools):** with the [AI Dev Kit](/ai-dev-kit) running, Codex gets
+  the same Kinetic Scenes tools as Claude Code (projects, voice-overs, stock footage, cut-outs, checks, stills,
+  rendering). The kit connects it for you (step 2 below writes `~/.codex/config.toml`). Codex signs in with your
+  ChatGPT plan. AI assist inside the Studio can use your ChatGPT plan too: pick **ChatGPT subscription** as the kit's
+  AI (it runs through the `codex` command).
+
+The same goes for Gemini, Claude in a browser and any other chat app: the paste route works with any of them.
+
+**On a phone** you can look around Kinetic Scenes and play scenes, and the start box says so, but making and editing
+scenes needs a computer: the editor is built for a mouse and a big screen. Someone who finds Kinetic Scenes from a chat
+on their phone can come back to the same address on a computer.
+
 ## Connect your agent
 
 1. Install and start the [AI Dev Kit](/ai-dev-kit) (see [Set up AI for Unyson+](/guides/set-up-ai-for-unysonplus)).

@@ -32,6 +32,13 @@ Open it at any time with **File › Start something new**.
 If something is missing, the screen says so on that option, for example **Needs the AI Dev Kit** or **Turn on AI in the
 kit**. You can still choose it: AI assist shows how to connect, and your request waits there until it can run.
 
+### On a phone
+
+On a small touch screen the start box opens with a note: you can look around and play scenes on a phone, but making
+and editing them needs a computer (the editor is made for a mouse and a big screen). Many people find Kinetic Scenes
+from an AI chat on their phone; the note tells them to come back on a computer. Making a scene from a chat app:
+[ChatGPT, Gemini and other chat apps](./ai-agents.md#chatgpt-gemini-and-other-chat-apps).
+
 ## Start from a style
 
 The bottom of the start screen shows seven styles as pictures: your own first, then the ones you used last, then a mix covering the main uses. The eighth tile, **See all styles**, opens the [Style library](./style-library.md) with all 49, searchable and grouped.

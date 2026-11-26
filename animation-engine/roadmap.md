@@ -89,6 +89,10 @@ repeated. ([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#webfl
   **Stage 2 shipped 27 November 2026** (Shortcodes 1.16.29, theme 2.6.69): Phone landscape, Wide and Full HD tabs in
   every per-device option, behind Theme Settings → [More Screen Sizes](/options/option-types/responsive#more-screen-sizes)
   (off by default; values kept when turned off), with their CSS generated only on sites that turn it on.
+  **Stage 3 shipped 27 November 2026** (Live Editor 0.3.36): a Screen sizes menu with a frame per size (Full HD 1920,
+  Wide 1440, Large 1280, Desktop 1024, Tablet 768, Phone landscape 667, Phone 375) beside Fit / Tablet / Phone, option
+  tabs that follow the canvas both ways, and Hide on mapped onto its three existing ranges
+  ([Screen sizes](/extensions/live-editor#screen-sizes)).
 - **8f · A class system.** Style through named classes in the Live Editor: give an element a class, and styling the
   class restyles every element that has it. Combo classes (a class that only adds to another), a "where it comes
   from" view (which classes and presets a value is inherited from) and a count of where else the class is used. It

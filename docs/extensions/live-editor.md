@@ -52,7 +52,7 @@ From left to right:
 | **+ Add** | Opens the element panel — drag an element onto the canvas. |
 | **Sections** | Section navigator — jump to, reorder, and rename sections. |
 | **Templates** | Insert / save / import / export builder templates. |
-| **Device toggle** | Preview Desktop / Tablet / Mobile widths. |
+| **Device toggle** | **Fit** (fills the window), **Tablet** and **Phone**, plus the **Screen sizes** menu (▾) with a frame for every size the site edits. See [Screen sizes](#screen-sizes). |
 | **Edit / Preview / Play** | Switch between editing the page (it holds still) and playing it as a visitor sees it — animations, scroll effects and hover — with your unsaved changes; **Play** replays the selected element right where it is, without leaving Edit. See [Edit and Preview modes](#edit-and-preview-modes). |
 | **Undo / Redo** | Step back and forth through your edits. |
 | **Edit in Backend** | Switch to the classic builder for this page. |
@@ -241,6 +241,24 @@ Click **Templates** for a panel with three groups — **Full**, **Section** and
 Templates are shared with the backend builder, so anything saved in one editor
 is available in the other.
 
+## Screen sizes {#screen-sizes}
+
+The canvas previews the page at a real width: the iframe's own width drives the page's media queries, so what you see
+is the responsive layout a visitor gets at that size.
+
+- **Fit** (the default) fills the window. The size it shows depends on your screen and the open panels.
+- **Tablet** (768px) and **Phone** (375px) sit next to it.
+- The **Screen sizes** menu (the ▾ beside them) lists a fixed frame for every size the site edits: **Large desktop**
+  1280px, **Desktop** 1024px, Tablet 768px and Phone 375px, plus **Full HD** 1920px, **Wide** 1440px and **Phone
+  landscape** 667px when Theme Settings → General → Layout → [More Screen Sizes](/options/option-types/responsive#more-screen-sizes)
+  is on. A frame wider than the canvas is zoomed to fit (the zoom control shows by how much). The ▾ lights up while a
+  size from the menu is showing.
+
+**The option tabs follow the canvas.** With an element's options open, every per-device option shows the tab for the
+size on screen: Wide shows its Wide tab, Fit shows the tab its real width falls in. It works the other way too:
+clicking a tab in an option (say Phone landscape) moves the canvas to that size's frame, so you see the value you are
+editing. The command palette has one **Device:** entry per size.
+
 ## Hide / Show (responsive)
 
 Every item has a device-aware **Hide / Show** control (in the right-click menu).
@@ -248,6 +266,10 @@ It hides the item on whichever device you're currently previewing — Desktop,
 Tablet or Mobile — using the same **"Hide on"** option found on the element's
 **Advanced** tab. Hidden items are dimmed in the canvas and disappear at the
 matching breakpoint on the published page.
+
+"Hide on" keeps its three ranges (Mobile below 768px, Tablet 768–991px, Desktop from 992px), so the other sizes fall
+inside them: hiding on **Phone landscape** hides on Mobile, and hiding on **Desktop, Large desktop, Wide or Full HD**
+hides on Desktop.
 
 ## Working together {#working-together}
 

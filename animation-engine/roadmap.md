@@ -32,7 +32,7 @@ Theme Settings rather than in the Animation Engine. They are here so the plan si
 **7c · smooth corners** ([Smooth Corners](/theme/components/smooth-corners)), **7b · typography controls**
 ([Text Styles](/theme/components/text-styles#typography-controls)) and **7d · wide-gamut colour**
 ([Color Presets](/theme/components/color-presets#wide-gamut)) and **7f · export as an image**
-([Save as image](/docs/extensions/live-editor#save-as-image)).
+([Save as image](/extensions/live-editor#save-as-image)).
 
 - **7a · Components with variants and properties.** Save a group of elements as a component, give it variants
   (Default, Hover, Pressed, Dark, Small...) and properties (a text, an image, a link, a colour, a show/hide switch) that

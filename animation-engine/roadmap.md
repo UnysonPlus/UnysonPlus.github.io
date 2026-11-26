@@ -71,12 +71,12 @@ what it still does better is the **Style panel** (classes, one full Effects grou
 and a few triggers and platform pieces. Items Phase 7 already covers (components, sharing and staging) are not
 repeated. ([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#webflow-design-tools).)
 
-- **8a · One Effects group on every element.** The same group on every element and section: blend mode, opacity,
-  outline, several stacked box shadows, still 2D and 3D transforms (move, rotate, scale, skew, perspective), CSS
-  transitions for hover and state changes, filters, all backdrop filters (blur, brightness, saturation...), cursor,
-  pointer events, and custom properties (CSS variables). Today these exist on some elements only (the Div's Blend
-  Mode and Backdrop Blur, Box Shadow and Filter on a few); this makes them uniform, with the values on the preset
-  where a preset owns the look.
+- **8a · One Effects group on every element** — **shipped (Shortcodes 1.16.25).** Every element now has the same
+  **Effects** tab: opacity, blend mode, outline, stacked box shadows, 2D and 3D transforms (move, rotate, scale, skew,
+  tilt + perspective), filters, all backdrop filters, a transition for hover/state changes, cursor, pointer events and
+  custom properties (CSS variables), emitted as scoped inline CSS. Additive and non-destructive — the per-element
+  effects a few elements already had keep working, and where a preset owns the look the preset still wins. See
+  [Common controls → Effects](/shortcodes/common-controls#effects).
 - **8b · Component triggers** and **8c · "Page starts loading" trigger** — **shipped in Animation Engine 1.5.37.**
   Interactions now fire on another component's own events (a **tab** changes, a **slider** changes slide, a dropdown,
   **mega menu** or the **mobile menu** opens or closes), and a **"Page starts loading"** trigger plays the instant the
@@ -102,8 +102,8 @@ repeated. ([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#webfl
 
 ### Build order
 
-1. **8a** Effects group: small, and every element gains from it. (**8b** component triggers and **8c** the
-   start-of-load trigger shipped in Animation Engine 1.5.37.)
+1. **8a** Effects group (Shortcodes 1.16.25), **8b** component triggers and **8c** the start-of-load trigger
+   (Animation Engine 1.5.37) — all shipped.
 2. **8e** more breakpoints, then **8d** variable modes.
 3. **8f** the class system, after **7a** components (they overlap: both reuse a look across elements).
 4. **8g** page A/B tests and **8h** the language switcher.

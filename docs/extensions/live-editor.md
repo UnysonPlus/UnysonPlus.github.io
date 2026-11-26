@@ -264,8 +264,37 @@ matching breakpoint on the published page.
 Right-click any item (or use the **⋮ More** button on its hover toolbar) for the
 full action list:
 
-> Edit · Duplicate · Copy · Paste · Copy Settings · Paste Settings ·
-> Hide / Show · Save as Template · Delete
+> Edit · Spacing · Duplicate · Copy · Paste · Copy Settings · Paste Settings · Copy as JSON · Paste JSON ·
+> Check contrast · Save as image · Note · Hide / Show · Save as Template · Delete
+
+## Save as image {#save-as-image}
+
+Right-click any section, column or element and choose **Save as image…** to download it as a picture: for a social
+post, a slide, a mock-up, or to send a section to someone for review.
+
+<img src="/img/live-editor/save-as-image.png" alt="The Save as image box over a section in the Live Editor: the section's name and size, buttons for PNG 1x, 2x and 3x and SVG, and a Transparent background checkbox" width="580" />
+
+| Choice | What you get |
+| --- | --- |
+| **PNG 1x** | The element at its size on the canvas (a 1280 px wide section gives a 1280 px wide picture). |
+| **PNG 2x** | Twice the pixels, sharp on high-resolution screens and in slides. The usual choice. |
+| **PNG 3x** | Three times the pixels, for print or for cropping in. |
+| **SVG** | A vector file that keeps text and shapes sharp at any size (photos inside stay photos). Opens in a browser, in design tools and in most slide apps. |
+| **Transparent background** | Leaves out the colour behind the element, so a button or a card can sit on anything. Without it, the picture gets the background the element sits on. |
+
+The file is named after the element (`section@2x.png`, `hero-heading.svg`) and lands in your browser's downloads.
+
+What is in the picture:
+
+- **The element as visitors see it**, on the device size the canvas is showing (switch to tablet or phone first for
+  those layouts). The editor's own marks (the dashed outlines, the selection, the toolbars) are left out.
+- **Its images and web fonts**, embedded in the file.
+- **The moment you save it.** An animated element is captured as it looks at that moment; a video is captured as its
+  current frame.
+
+Limits: a picture or font from another website that does not allow it to be read is left out of the export; a
+`<canvas>` or WebGL scene (a Motion Gallery design, a WebGL Object) may export blank or as its last frame; very tall
+sections at 3x make large files. Nothing is saved on the site: the picture is made in your browser.
 
 ## Keyboard shortcuts
 

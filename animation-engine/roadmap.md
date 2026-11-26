@@ -31,7 +31,8 @@ Theme Settings rather than in the Animation Engine. They are here so the plan si
 ([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#framer-design-tools).) Shipped so far:
 **7c · smooth corners** ([Smooth Corners](/theme/components/smooth-corners)), **7b · typography controls**
 ([Text Styles](/theme/components/text-styles#typography-controls)) and **7d · wide-gamut colour**
-([Color Presets](/theme/components/color-presets#wide-gamut)).
+([Color Presets](/theme/components/color-presets#wide-gamut)) and **7f · export as an image**
+([Save as image](/docs/extensions/live-editor#save-as-image)).
 
 - **7a · Components with variants and properties.** Save a group of elements as a component, give it variants
   (Default, Hover, Pressed, Dark, Small...) and properties (a text, an image, a link, a colour, a show/hide switch) that
@@ -40,8 +41,6 @@ Theme Settings rather than in the Animation Engine. They are here so the plan si
 - **7e · AI for layout.** *Make responsive:* the AI Assistant proposes the tablet and phone layout of a section from
   its desktop one. *Variations:* it suggests a few alternative designs of the selected section for you to pick from.
   Both preview on the canvas before anything is kept, and undo reverts them.
-- **7f · Export as an image.** Right-click a section or element in the Live Editor and save it as PNG (1x, 2x, 3x) or
-  SVG, for a social post, a slide or a mock-up.
 - **7g · Vector drawing.** Draw and edit shapes and paths on the canvas (pen tool, points and handles, boolean union,
   subtract and intersect) and keep them as clean inline SVG. Comes with searchable icon sets to drop in and recolour.
 - **7h · Freeform sections.** A section where elements sit where you put them, as on a design canvas (free position,
@@ -54,10 +53,9 @@ Theme Settings rather than in the Animation Engine. They are here so the plan si
 
 ### Build order
 
-1. **7f** export as an image.
-2. **7a** components with variants and properties: the largest, and the one the others build on.
-3. **7g** vector drawing and icon sets, then **7e** AI for layout.
-4. **7h** freeform sections, then **7i** working together.
+1. **7a** components with variants and properties: the largest, and the one the others build on.
+2. **7g** vector drawing and icon sets, then **7e** AI for layout.
+3. **7h** freeform sections, then **7i** working together.
 
 ### Not planned
 

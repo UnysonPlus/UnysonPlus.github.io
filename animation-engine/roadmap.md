@@ -86,6 +86,9 @@ repeated. ([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#webfl
   **Stage 1 shipped 27 November 2026** (Shortcodes 1.16.28, theme 2.6.68): the shared map
   ([breakpoint map](/options/option-types/responsive#breakpoint-map)), Large desktop kept by the spacing classes, the
   Container's alignment / reverse / gap and the AI checker, and a Large desktop tab in Theme Settings → Container Width.
+  **Stage 2 shipped 27 November 2026** (Shortcodes 1.16.29, theme 2.6.69): Phone landscape, Wide and Full HD tabs in
+  every per-device option, behind Theme Settings → [More Screen Sizes](/options/option-types/responsive#more-screen-sizes)
+  (off by default; values kept when turned off), with their CSS generated only on sites that turn it on.
 - **8f · A class system.** Style through named classes in the Live Editor: give an element a class, and styling the
   class restyles every element that has it. Combo classes (a class that only adds to another), a "where it comes
   from" view (which classes and presets a value is inherited from) and a count of where else the class is used. It

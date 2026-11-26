@@ -79,9 +79,58 @@ The map holds seven tiers, reusing the grid CSS's own names so every saved class
 | `xxl` | Wide | 1400px |
 | `xxxl` | Full HD | 1920px |
 
-The responsive option edits `base`, `md`, `lg` and `xl` today. Phone landscape, Wide and Full HD are being added to
-the option, the Live Editor's device toggle, **Hide on** and **Runs on** in stages (roadmap
-[8e](/animation-engine/roadmap#phase-8)); exact pixel spacing (`pt-xxxl-[90px]`) already works at every tier.
+Every site edits `base`, `md`, `lg` and `xl`. The other three are opt-in, per site (next section).
+
+### More screen sizes (Phone landscape, Wide, Full HD) {#more-screen-sizes}
+
+**Theme Settings → General → Layout → More Screen Sizes** (off by default) adds three tabs to every per-device option,
+this one and [`spacing`](./spacing.md) alike:
+
+| Tab | Key | From | Icon |
+| --- | --- | --- | --- |
+| Phone landscape | `sm` | 576px | the phone, turned |
+| Wide | `xxl` | 1400px | the desktop with a **W** |
+| Full HD | `xxxl` | 1920px | the desktop with **HD** |
+
+What it is for: a layout that should change on a turned phone (two cards side by side instead of stacked), and pages
+that should use the room on big monitors (a wider container, three columns instead of two, a taller hero).
+
+- **Same cascade.** A blank tab takes the next smaller one, so turning the switch on changes nothing until you set a
+  value on a new tab.
+- **Off keeps your values.** Turning the switch off hides the three tabs and stops using their values, but does not
+  delete them: they ride along, hidden, each time the element is saved, and come back when you turn it on again.
+- **Stored only when set.** A value keeps its four keys (`base`, `md`, `lg`, `xl`); `sm` / `xxl` / `xxxl` are added
+  only when they hold something, so pages saved on a site without the switch are unchanged.
+- **The CSS comes with the switch.** The layout classes the new tabs write (`fw-span-xxl-4`, `fw-flex-sm-row`,
+  `section--cols-xxl-center`, `pt-sm-3`, `fw-gap-xxxl-5` …) are added only on a site that turns it on: the spacing and
+  gap classes join the generated Theme Settings CSS, and the grid / Section classes are generated from their
+  Large desktop rules into one cached file, `uploads/unysonplus/css/breakpoints-more-<hash>.css` (about 40 KB), loaded
+  after the other styles.
+- **Phone landscape beats Stack on phones.** A flex Div's *Responsive Collapse* stacks its children full width below
+  768px. A width you set on the Phone landscape tab wins over it between 576 and 767px.
+- **Container Width** (Theme Settings → General → Layout) gets the Wide and Full HD tabs too; the header bar follows
+  them unless Header → Layout sets its own width.
+
+Where the tabs do not appear yet: the Live Editor's device toggle, **Hide on** and the Animation Engine's
+**Runs on** (roadmap [8e](/animation-engine/roadmap#phase-8), stages 3 and 4). Exact pixel spacing
+(`pt-xxxl-[90px]`) works at every tier.
+
+#### Reading the tiers in your own element
+
+```php
+// The tiers this site edits, smallest first, with their class infix:
+foreach ( fw_breakpoint_layers() as $tier => $infix ) {      // 'base' => '', 'sm' => '-sm', 'md' => '-md' …
+    $v = $value[ $tier ] ?? '';
+    if ( $v !== '' ) { $classes[] = 'my-thing' . $infix . '-' . $v; }
+}
+// A per-element rule for one tier:
+$css .= fw_breakpoint_wrap( $tier, '.my-el{min-height:' . $h . '}' );  // base: as is; others: in their @media
+```
+
+`fw_breakpoints_active()` gives the keys, `fw_breakpoints_more_enabled()` says whether the switch is on (filter
+`fw:breakpoints:more` to force it). A class family of your own gets its extra tiers from the generator when its
+stylesheet is added with the `fw:breakpoints:css_sources` filter and its Large desktop rules sit in an
+`@media (min-width:1200px)` block.
 
 **Theme Settings → General → Layout → Container Width** has the Large desktop tab too: set it when the content
 should widen on big screens (for example 1170px from 992px and 1320px from 1200px). Left blank, large screens keep

@@ -126,6 +126,14 @@ Array
 )
 ```
 
+### Per-device values
+
+`advanced` holds one layer per screen size above Phone, each with its own `margin` / `padding` slots and class names
+that carry the size (`pt-md-3`, `mb-xl-5`): `md` (Tablet, 768px), `lg` (Desktop, 992px) and `xl` (Large desktop,
+1200px). With **More Screen Sizes** on (Theme Settings → General → Layout), the tabs add `sm` (Phone landscape, 576px),
+`xxl` (Wide, 1400px) and `xxxl` (Full HD, 1920px); those three are stored only when they hold a value, and are kept
+(hidden) if the switch is turned off. See [More screen sizes](./responsive.md#more-screen-sizes).
+
 ## In Gutenberg blocks (the React control)
 
 `spacing` is one of the option types that also has a **React version**, so it can appear inside a Gutenberg block's sidebar.

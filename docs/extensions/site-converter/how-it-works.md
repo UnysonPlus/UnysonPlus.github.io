@@ -264,6 +264,63 @@ scaled-in entrance Standard or Dramatic) and the nearest GSAP ease for the sourc
 whole gets its reveal on its column, so the stagger belongs to the grid, not to the icon inside each tile. A field
 row that brightens when the pointer is over it keeps that hover as a scoped rule on the newsletter.
 
+## Recorded motion: entrances as native Interactions {#recorded-motion}
+
+Since capture service 1.13.24 and Site Converter 1.12.13, a conversion also brings a page's **entrance motion**
+across, measured rather than guessed, as **native Interactions** you can open and change in the Live Editor (its
+interaction timeline), not as code.
+
+**1 · Recording.** Before the page is captured, the capture service plays it on a **virtual clock**: a clock inside
+the page that holds its time, timers and animation frames, and sets every CSS animation, CSS transition and Web
+Animation to that clock at each 25 ms step. It records the page from its load event, then scrolls it down in steps
+and records what moves into view. Because time moves only when the recorder says, a 0.8 s entrance is sampled at its
+real 0.8 s however slow the capture is, and every run gives the same result.
+
+For each element whose own opacity, position, scale, rotation or blur changes and comes to rest, it records:
+
+| What | How |
+| --- | --- |
+| **Trigger** | On page load, or in view (it started after a scroll step brought it on screen). |
+| **Delay and duration** | Exact from the browser for CSS animations, transitions and Web Animations; measured to the step for motion a script drives. |
+| **Start state** | Opacity, x / y in px, scale, rotation, blur, relative to where it comes to rest. |
+| **Speed curve** | The Animation Engine easing closest to the source's curve (an exact match when the source uses the same curve), or the source's own `cubic-bezier()`. |
+| **Staggers** | Siblings with the same motion and evenly spaced delays are reported as one stagger. |
+
+It writes `motion.json` beside the other capture files and stamps each element (`data-sc-motion`).
+
+**2 · Converting.** Each stamped element becomes an **Interaction** on its element: *On page load* or *In view*
+(plays once), step 1 *From* the recorded start state, with the recorded duration, delay and curve. A card that moves
+as a whole gets it on its column, so the stagger belongs to the grid. The recorded motion wins over the older
+class-pair guess (the reveal described in [Entrances and their sequence](#entrances-and-their-sequence)), so it never
+plays twice. Elements built by routes that do not carry the stamp are matched afterwards by their text. A motion that
+has no element of its own on the converted page (its text was merged into a heading's subtitle, say) is listed with
+the reason in `motion-report.json`.
+
+**3 · Checking it frame by frame.** `motion-verify.mjs` (in the capture service) records the source and the converted
+page the same way, pairs the elements by their text, and reports, per element, the delay and duration error in ms, the
+difference between the two speed curves and the start state. A motion passes within ±80 ms of timing and a curve
+difference of 0.05 or less:
+
+<img src="/img/site-converter/motion-check.png" alt="The motion check report: 6 of 7 source motions match; each row lists the element, the source and converted timing, curve and start state, and the difference" width="700" />
+
+```
+node motion-verify.mjs <source url> <converted page url> <out folder> --report=<capture-out>/motion-report.json
+```
+
+It writes `motion-verify.html` (the table, and side-by-side frames of both pages on load and as each part scrolls
+into view), `motion-verify.json`, and `motion-gaps.json`.
+
+**4 · Gaps.** Whatever does not match (missing, drifting, or not expressible as an Interaction) becomes a
+**motion-gap finding** in `motion-gaps.json`, in the format of the converter's findings form, so a motion the engine
+cannot express yet becomes a request for the engine. `--send` files them, after you have agreed to share findings.
+
+**Limits.** Motion that follows the scroll position (parallax, scrubbed timelines) and infinite loops stay with
+[Animations that keep running](#animations-that-keep-running) and the Scroll Motion effects; clip-path reveals,
+text split into letters and hover motion are listed as not expressible. Only the first page of a conversion is
+recorded. A page with heavy script that changes layout after load can shift what is "in view"; the check reports a
+motion that plays on load in the conversion only because the element is already on screen there as layout, not motion.
+`--no-motion` skips the recording.
+
 ## A footer built as a panel
 
 A footer whose rows sit inside one inset panel — a bordered or tinted, padded shell with a width cap and a bottom

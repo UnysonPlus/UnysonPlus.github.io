@@ -104,6 +104,11 @@ a source page's animations across as **native, editable motion** (Page Timelines
 Animate workspace), not as code, and proves the match frame by frame. It builds on the engine's own
 [scroll core](/animation-engine/scroll-core) (Phase 9, shipped), so scroll-driven motion has a native home.
 
+**Shipped 27 November 2026** (capture service 1.13.24, Site Converter 1.12.13): see
+[Recorded motion](/extensions/site-converter/how-it-works#recorded-motion). Entrances (on load and in view) come across
+as native Interactions with the source's exact timing and curve, checked frame by frame; scroll-linked motion and loops
+keep their existing routes, and what does not match is filed as a motion gap.
+
 - **10a · Record the source's motion.** During capture, read the page's own animation data where it exists (CSS and
   browser animations give exact durations, delays and easings) and track each moving element frame by frame where it
   does not (position, size, opacity, transform), on a virtual clock so every capture is identical.

@@ -114,7 +114,12 @@ blank frame in the finished video.
   threads, between 2 and 6) and handed to the encoder in order.
 - **Footage made easy to seek:** before rendering, each video layer gets a copy with a key frame on every frame, cached
   so the next render skips it. Sound still comes from the original. On a 10-second clip of a 3200 × 1800 screen
-  recording this took the frames from 35 s to about 7.5 s.
+  recording this took the frames from 35 s to about 7.5 s. The screen recording playing on a **3D phone, tablet, laptop
+  or monitor** gets the same copy (AI Dev Kit 1.13.40+): 16 seconds of a phone and a laptop each playing a recording
+  went from 77 s to 46 s.
+- **3D layers cost the most:** each frame draws the 3D object on the graphics card in every tab, so a scene with 3D
+  devices takes about three times its own length to render on a mid-range card, against well under that for words,
+  pictures and footage.
 
 For a computer where the graphics card misbehaves, `STUDIO_RENDER_GPU=0` turns the card off for drawing and encoding,
 `STUDIO_RENDER_WORKERS=<n>` sets the number of tabs, and `STUDIO_RENDER_PROXY=0` skips the footage copies (environment

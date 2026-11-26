@@ -541,6 +541,9 @@ sidebar**, which keeps the builder's Publish box uncovered.
 - **Safe with concurrent edits.** If you change the page while the assistant is working, its result is
   not applied (so nothing you did is overwritten) and it asks you to try again.
 - **Conversational.** Follow-ups carry the recent conversation, so "make it four plans instead" works.
+- **Layout proposals in the Live Editor.** Right-click a section for **Make responsive with AI** (its tablet and
+  phone layout) or **Design variations with AI** (three alternative designs). Each proposal previews on the canvas
+  before anything is kept: [AI layout](../live-editor.md#ai-layout).
 
 ### Choosing the AI model
 

@@ -249,6 +249,52 @@ Tablet or Mobile — using the same **"Hide on"** option found on the element's
 **Advanced** tab. Hidden items are dimmed in the canvas and disappear at the
 matching breakpoint on the published page.
 
+## AI layout: make responsive, design variations {#ai-layout}
+
+With the [AI Assistant](./ai-assistant/index.md) connected to an AI, right-click a section (or a flexbox, container
+or row band) and choose:
+
+- **Make responsive with AI…** The AI proposes how the section, designed on desktop, should lay out on **tablet and
+  phone**: what stacks, what comes first, alignment, gaps, which decorative parts to hide on a phone. It changes only
+  the section's per-device settings (the Phone / Tablet / Desktop tabs of its options), never its content.
+- **Design variations with AI…** The AI proposes **three alternative designs** of the section: another arrangement,
+  card style, image side or emphasis, with every heading, text, image, button and link kept word for word.
+
+A picker opens over the bottom of the canvas with **Original** and each proposal, its name and why the AI suggests it.
+Click a proposal and the canvas shows it in place of the section. Nothing is changed on the page while you look.
+
+<img src="/img/live-editor/ai-layout-variations.png" alt="The Design variations picker in the Live Editor: Original and three proposals, with the selected one, image left and a dark text card, drawn on the canvas" width="750" />
+
+For **Make responsive**, the canvas switches to tablet and the picker has its own **Desktop / Tablet / Phone**
+buttons, so you can check each proposal at each size:
+
+<img src="/img/live-editor/ai-layout-responsive.png" alt="The Make responsive picker with the phone preview: the section's image stacked above its text" width="750" />
+
+- **Keep this one** puts the previewed proposal into the page as **one step on Undo** (Ctrl+Z brings the previous
+  layout back). Like every edit, it is saved when you press **Save**.
+- **Cancel**, **×** or **Esc** puts the original back on the canvas.
+
+### What it checks before you see a proposal
+
+The site writes the request, sends it through whichever AI the AI Assistant uses (the site's own provider, or the AI
+Dev Kit / a local model on your computer), and checks every answer against the real options of each element:
+
+- **Make responsive** accepts only per-device settings, each checked against what the option allows. **The desktop
+  layout stays exactly as it is**: a new phone or tablet value that would also reach the desktop (because the desktop
+  inherits it) gets the current desktop value pinned, and a change to a setting the desktop leaves at the theme
+  default is dropped, since no desktop value can bring the default back.
+- **Design variations** must be a valid section (known elements and option values, columns only inside a section),
+  get fresh ids, and must still contain the section's text. A proposal that lost content or failed the checks is not
+  shown; the picker says how many were left out.
+
+### Limits
+
+- It needs the AI Assistant extension with an AI connected (the menu items appear only then). A proposal takes from a
+  few seconds with a hosted AI to two minutes or more with a local model or Claude Code on your computer.
+- Variations use only the element types already in the section and the site's presets; they do not invent new
+  content, images or colours outside your Theme Settings.
+- One section at a time. For a change in words ("make this a three-column grid"), use the AI Assistant chat.
+
 ## Copy & Paste
 
 - **Copy / Paste** — copy any item and paste a fresh copy elsewhere. The
@@ -265,7 +311,8 @@ Right-click any item (or use the **⋮ More** button on its hover toolbar) for t
 full action list:
 
 > Edit · Spacing · Duplicate · Copy · Paste · Copy Settings · Paste Settings · Copy as JSON · Paste JSON ·
-> Check contrast · Save as image · Note · Hide / Show · Save as Template · Delete
+> Check contrast · Save as image · Note · Hide / Show · Save as Template · Make responsive with AI · Design variations with AI ·
+> Delete
 
 ## Save as image {#save-as-image}
 

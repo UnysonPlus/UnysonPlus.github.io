@@ -111,9 +111,9 @@ that should use the room on big monitors (a wider container, three columns inste
 - **Container Width** (Theme Settings → General → Layout) gets the Wide and Full HD tabs too; the header bar follows
   them unless Header → Layout sets its own width.
 
-Where the tabs do not appear yet: the Live Editor's device toggle, **Hide on** and the Animation Engine's
-**Runs on** (roadmap [8e](/animation-engine/roadmap#phase-8), stages 3 and 4). Exact pixel spacing
-(`pt-xxxl-[90px]`) works at every tier.
+Elsewhere: the Live Editor previews every size ([Screen sizes](/extensions/live-editor#screen-sizes)); **Hide on**
+keeps its three ranges (Phone landscape falls under Mobile, the big screens under Desktop); the Animation Engine's
+**Runs on** gains a **Wide** box (1400px and up). Exact pixel spacing (`pt-xxxl-[90px]`) works at every tier.
 
 #### Reading the tiers in your own element
 

@@ -131,7 +131,7 @@ way through the scroll), not a time.
 | **Loop** / **Back and forth** | Page load and click: repeat for ever, optionally going back and forth |
 | **Pin it** / **Pinned for (screen heights)** | Scroll: hold the element in place while the timeline plays, over this many screen heights of scrolling |
 | **Length (s)** | How long the timeline is |
-| **Runs on** | **Desktop** (992 px and wider), **Tablet** (768 to 991 px), **Phone** (narrower than 768 px), the same breakpoints as [Interactions](/animation-engine/interactions). On the others, the elements stay as they are |
+| **Runs on** | **Desktop** (992 px and wider), **Tablet** (768 to 991 px), **Phone** (narrower than 768 px), the same breakpoints as [Interactions](/animation-engine/interactions). With [More Screen Sizes](/options/option-types/responsive#more-screen-sizes) on, **Wide** (1400 px and wider) is a box of its own and Desktop means 992 to 1399 px. On the others, the elements stay as they are |
 | **Delete this timeline** | Removes it (Undo brings it back) |
 
 ## Every page of the site

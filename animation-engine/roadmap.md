@@ -93,6 +93,9 @@ repeated. ([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#webfl
   Wide 1440, Large 1280, Desktop 1024, Tablet 768, Phone landscape 667, Phone 375) beside Fit / Tablet / Phone, option
   tabs that follow the canvas both ways, and Hide on mapped onto its three existing ranges
   ([Screen sizes](/extensions/live-editor#screen-sizes)).
+  **Stage 4 shipped 27 November 2026** (Animation Engine 1.5.43, Live Editor 0.3.37): **Runs on** for Interactions and
+  Page Timelines gains **Wide** (1400px+) with More Screen Sizes on, Desktop then meaning 992–1399px; older settings
+  keep running on wide screens. **8e is complete.**
 - **8f · A class system.** Style through named classes in the Live Editor: give an element a class, and styling the
   class restyles every element that has it. Combo classes (a class that only adds to another), a "where it comes
   from" view (which classes and presets a value is inherited from) and a count of where else the class is used. It

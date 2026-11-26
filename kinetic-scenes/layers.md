@@ -160,7 +160,8 @@ a screen recording of an app or a website (type its address, or **Upload a pictu
 - **Held sideways** (phone and tablet) turns the device on its side; the screen content stays upright, so a landscape
   recording fills it.
 - **Lid open** (laptop) sets how far the lid stands open (default 105°). The **Open lid** preset opens it from closed on
-  the timeline (or closes it, with Direction: Out).
+  the timeline (or closes it, with Direction: Out). The lid stays closed from the moment the laptop appears until Open
+  lid starts, also when another clip comes first: a laptop that tumbles in arrives closed, then opens (player 0.0.86+).
 - **Body colour and finish** change the device itself (graphite or silver by default, metal finish).
 - **Moving it:** the 3D presets (Spin 3D, Tumble in, Orbit, Camera push) and the resting pose turn and move the device;
   Fade, Slide and the other presets work too. A laptop rests seen a little from above.

@@ -119,6 +119,7 @@ copy-pasteable example.
 | [`unit-input`](./unit-input.md) | A number paired with a unit selector (px / rem / em / %) |
 | [`code-editor`](./code-editor.md) | A syntax-highlighted code editor |
 | [`svg-code`](./svg-code.md) | Inline-SVG field — paste `<svg>` or upload a .svg, sanitised on save |
+| [`vector-svg`](./vector-svg.md) | A drawing editor (pen, shapes, boolean operations) that saves clean inline SVG |
 | [`wp-editor`](./wp-editor.md) | The WordPress rich-text (TinyMCE) editor |
 | [`html`](./html.md) | Render arbitrary HTML in the form (no stored value) |
 | [`hidden`](./hidden.md) | A stored value with no visible control |

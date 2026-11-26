@@ -33,13 +33,12 @@ Theme Settings rather than in the Animation Engine. They are here so the plan si
 ([Text Styles](/theme/components/text-styles#typography-controls)), **7d · wide-gamut colour**
 ([Color Presets](/theme/components/color-presets#wide-gamut)), **7f · export as an image**
 ([Save as image](/extensions/live-editor#save-as-image)) and **7a · components with variants and properties**
-([Components](/extensions/snippets#components)).
+([Components](/extensions/snippets#components)) and **7g · vector drawing** ([Vector Shape](/shortcodes/media-elements/vector-shape);
+the searchable icon sets were already in the [Icon](/shortcodes/media-elements/icon) picker).
 
 - **7e · AI for layout.** *Make responsive:* the AI Assistant proposes the tablet and phone layout of a section from
   its desktop one. *Variations:* it suggests a few alternative designs of the selected section for you to pick from.
   Both preview on the canvas before anything is kept, and undo reverts them.
-- **7g · Vector drawing.** Draw and edit shapes and paths on the canvas (pen tool, points and handles, boolean union,
-  subtract and intersect) and keep them as clean inline SVG. Comes with searchable icon sets to drop in and recolour.
 - **7h · Freeform sections.** A section where elements sit where you put them, as on a design canvas (free position,
   layers, snapping and guides), with the same layout turned into a responsive stack on smaller screens.
 - **7i · Working together.** Comments pinned to an element of the page, presence (who else is editing, and where),
@@ -50,7 +49,7 @@ Theme Settings rather than in the Animation Engine. They are here so the plan si
 
 ### Build order
 
-1. **7g** vector drawing and icon sets, then **7e** AI for layout.
+1. **7e** AI for layout.
 2. **7h** freeform sections, then **7i** working together.
 
 ### Not planned

@@ -31,6 +31,8 @@ Image, video and visual elements for the page canvas — most are available from
   vector with autoplay, hover, on-scroll or click triggers.
 - **[Map](/shortcodes/media-elements/map)** — an embedded map.
 - **[Icon](/shortcodes/media-elements/icon)** — a single vector icon.
+- **[Vector Shape](/shortcodes/media-elements/vector-shape)** — a shape you draw yourself (pen, shapes, Union /
+  Subtract / Intersect / Exclude), kept as clean inline SVG.
 - **[Logo Grid](/shortcodes/media-elements/logo-grid)** — a grid, carousel or marquee of
   client / partner logos.
 - **[Portfolio Grid](/shortcodes/media-elements/portfolio-grid)** — a filterable

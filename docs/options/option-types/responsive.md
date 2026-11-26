@@ -7,11 +7,11 @@ sidebar_position: 53
 
 `responsive` is a **generic wrapper** that turns any single control into a
 **per-device** control. It renders the inner control once for each breakpoint —
-**Phone / Tablet / Desktop** — behind a shared device-tab switcher, and stores one
+**Phone / Tablet / Desktop / Large desktop** — behind a shared device-tab switcher, and stores one
 value per layer:
 
 ```php
-array( 'base' => <value>, 'md' => <value|''>, 'lg' => <value|''> )
+array( 'base' => <value>, 'md' => <value|''>, 'lg' => <value|''>, 'xl' => <value|''> )
 ```
 
 It is **mobile-first / Bootstrap-native**, exactly like the [`spacing`](./spacing.md)
@@ -40,9 +40,10 @@ option type.
 | `base` | Phone | all widths (min-width 0) | *(none)* |
 | `md` | Tablet | ≥ 768px | `-md` |
 | `lg` | Desktop | ≥ 992px | `-lg` |
+| `xl` | Large desktop | ≥ 1200px | `-xl` |
 
 - **Mobile-first cascade.** `base` is the foundation. `md` overrides it from 768px up;
-  `lg` overrides from 992px up. A blank device **inherits** the next smaller one — so
+  `lg` from 992px up, `xl` from 1200px up. A blank device **inherits** the next smaller one — so
   `Phone Auto + Desktop 1/2` renders full-width on phones and half-width on desktop, with
   nothing emitted for tablet (it inherits phone).
 - **Tab display order is Desktop → Tablet → Phone** (the familiar Elementor order) — this
@@ -51,6 +52,52 @@ option type.
 - The switcher is **synced to the builder's global device toggle** (`window.fwPbDevice`):
   flipping the canvas device preview re-activates the matching tab, and vice-versa, via the
   `fw:builder:device-preview` event.
+
+### The breakpoint map {#breakpoint-map}
+
+The widths above come from **one shared map**, `framework/includes/breakpoints.php` (loaded early by the
+framework). Read it instead of writing `768` / `992` / `1200` into your own code:
+
+| Function | Returns |
+| --- | --- |
+| `fw_breakpoints()` | every tier in order: `key => [ 'min' => px, 'label', 'short', 'icon' ]` |
+| `fw_breakpoint_keys()` | `[ 'base', 'sm', 'md', 'lg', 'xl', 'xxl', 'xxxl' ]` |
+| `fw_breakpoint_min( 'lg' )` | `992` (`0` for `base`) |
+| `fw_breakpoint_media( 'xl' )` | `@media (min-width:1200px)` (`''` for `base`) |
+| `fw_breakpoint_upper( 'lg' )` | `1199.98`, the top of that tier (for a "this tier only" range); `''` for the last |
+| `fw_breakpoints_js()` | the same list for a script: `[ { key, min, label, short } ]` |
+
+The map holds seven tiers, reusing the grid CSS's own names so every saved class stays valid:
+
+| Key | Tier | From |
+| --- | --- | --- |
+| `base` | Phone | 0 |
+| `sm` | Phone landscape | 576px |
+| `md` | Tablet | 768px |
+| `lg` | Desktop | 992px |
+| `xl` | Large desktop | 1200px |
+| `xxl` | Wide | 1400px |
+| `xxxl` | Full HD | 1920px |
+
+The responsive option edits `base`, `md`, `lg` and `xl` today. Phone landscape, Wide and Full HD are being added to
+the option, the Live Editor's device toggle, **Hide on** and **Runs on** in stages (roadmap
+[8e](/animation-engine/roadmap#phase-8)); exact pixel spacing (`pt-xxxl-[90px]`) already works at every tier.
+
+**Theme Settings → General → Layout → Container Width** has the Large desktop tab too: set it when the content
+should widen on big screens (for example 1170px from 992px and 1320px from 1200px). Left blank, large screens keep
+the Desktop width.
+
+To change the widths for a site, filter the map (keep the keys and their order):
+
+```php
+add_filter( 'fw:breakpoints', function ( $bps ) {
+    $bps['xl']['min'] = 1280; // Large desktop from 1280px
+    return $bps;
+} );
+```
+
+The filter moves the device tab labels and the exact-pixel spacing rules. The grid's own utility classes
+(`col-xl-6`, `pt-xl-3`) are compiled at 1200px and do not move with it.
 
 ### Editing only some devices (`devices`, `off_note`)
 

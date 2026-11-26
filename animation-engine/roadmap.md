@@ -83,6 +83,9 @@ repeated. ([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#webfl
   width, the Live Editor's own width rules); (2) the new tiers in the responsive option and the CSS that reads it;
   (3) the Live Editor device toggle (fixed 667 / 1280 / 1440 / 1920 frames, option tabs following the device) and
   Hide on; (4) Runs on and Interactions (adding Wide).
+  **Stage 1 shipped 27 November 2026** (Shortcodes 1.16.28, theme 2.6.68): the shared map
+  ([breakpoint map](/options/option-types/responsive#breakpoint-map)), Large desktop kept by the spacing classes, the
+  Container's alignment / reverse / gap and the AI checker, and a Large desktop tab in Theme Settings → Container Width.
 - **8f · A class system.** Style through named classes in the Live Editor: give an element a class, and styling the
   class restyles every element that has it. Combo classes (a class that only adds to another), a "where it comes
   from" view (which classes and presets a value is inherited from) and a count of where else the class is used. It

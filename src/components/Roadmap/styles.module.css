@@ -98,6 +98,11 @@
   color: var(--ifm-color-warning-darker);
 }
 
+.badge_deferred {
+  color: var(--ifm-color-emphasis-500);
+  border-style: dashed;
+}
+
 .badge_planned {
   color: var(--ifm-color-emphasis-600);
 }
@@ -168,4 +173,8 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+.task_deferred .taskTitle {
+  color: var(--ifm-color-emphasis-600);
 }

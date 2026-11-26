@@ -47,12 +47,6 @@
       "goal": "Better and wider 3D for scenes. Agents already build models and shots in Blender through the AI Dev Kit (blender_model, blender_render) and put them in 3D layers; this phase makes those models better, reaches shapes that scripted modelling cannot (a shoe, a plant, a character), and lets you work in a live Blender window when you want to. Each tool is optional and is switched on in the AI Dev Kit's Tools section, planned with the kit.",
       "tasks": [
         {
-          "id": "p32-image-to-mesh",
-          "title": "Picture to 3D model (trial)",
-          "detail": "Try LATO.2 (MIT code and weights), an open picture-to-mesh model, for shapes scripts cannot model: a photo or an AI picture becomes a mesh, Blender cleans it up (decimate, materials, GLB) and it lands in a 3D layer. It needs a CUDA graphics card with more memory than this machine's 6 GB, so the trial also tests its hosted demo and a rented GPU before deciding.",
-          "status": "planned"
-        },
-        {
           "id": "p32-app-screencasts",
           "title": "Screencasts of phone apps",
           "detail": "Record real Android apps for product tours and client reels: mirror and record an Android phone over USB with scrcpy (the Android Studio emulator when no phone is at hand), and bring the recording in as footage with the screencast tools. iPhone apps: the phone's own screen recording or mirroring it to the computer, since the iOS Simulator runs only on a Mac. The tools themselves are switched on in the AI Dev Kit's Tools section.",
@@ -93,20 +87,26 @@
     },
     {
       "id": "later-if-asked",
-      "title": "Later, only if people ask",
+      "title": "Later, deferred or only if people ask",
       "goal": "Cloud options that wait until people ask for projects across computers. Until then, projects stay in the browser and as folders on your computer.",
       "tasks": [
+        {
+          "id": "p32-image-to-mesh",
+          "title": "Picture to 3D model (trial)",
+          "detail": "Try LATO.2 (MIT code and weights), an open picture-to-mesh model, for shapes scripts cannot model: a photo or an AI picture becomes a mesh, Blender cleans it up (decimate, materials, GLB) and it lands in a 3D layer. It needs a CUDA graphics card with more memory than this machine's 6 GB, so the trial also tests its hosted demo and a rented GPU before deciding. Deferred (2026-11-26): the model wants more graphics memory than the 6 GB card here; revisit with a bigger card or when people ask.",
+          "status": "deferred"
+        },
         {
           "id": "p7-drive",
           "title": "Save to Google Drive",
           "detail": "Projects on any computer without our own server: people sign in with Google and their scenes are saved to their own Drive. Planned if people ask for cross-device projects. Needs a Google OAuth client ID from the site owner before it can be built. Deferred (2026-10-29): not planned until people ask for it; projects stay in the browser and as files.",
-          "status": "planned"
+          "status": "deferred"
         },
         {
           "id": "p7-accounts",
           "title": "Accounts and cloud projects (only if needed)",
           "detail": "If real accounts are ever needed (a project library, short links, embeds that update in place), they run on a free cloud tier, separate from the website hosting, with uploads on object storage and embeds still served from GitHub Pages. Deferred (2026-10-29): not planned until people ask for it; projects stay in the browser and as files.",
-          "status": "planned"
+          "status": "deferred"
         }
       ]
     }

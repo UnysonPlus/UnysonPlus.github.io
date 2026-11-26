@@ -14,6 +14,7 @@ const LABELS = {
   done: 'Done',
   'in-progress': 'In progress',
   planned: 'Planned',
+  deferred: 'Deferred',
 };
 
 /**
@@ -44,6 +45,7 @@ function statusOf(milestone) {
   const active = tasks.filter((t) => t.status === 'in-progress').length;
   if (tasks.length && done === tasks.length) return 'done';
   if (done || active) return 'in-progress';
+  if (tasks.length && tasks.every((t) => t.status === 'deferred')) return 'deferred';
   return 'planned';
 }
 

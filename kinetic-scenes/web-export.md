@@ -98,7 +98,9 @@ with the new address.
 - **A web scene's pictures and videos load when it comes near the screen** (about one screen away), not with the page,
   so a scene further down costs nothing for visitors who never reach it. A scene near the top still loads as the page
   opens. See [Loading only what is seen](/animation-engine/studio-scene#loading-only-what-is-seen).
-  Within the scene, everything loads at once. When the scene starts playing before a file has arrived (a slow
+  Within the scene, the files come **part by part**: first those of the parts that play in the next ten seconds, then
+  each later part's as the playhead gets within ten seconds of it (player 0.0.83+), so a visitor who leaves after the
+  opening never downloads the rest of a long explainer. Renders, stills and exports still load everything. When the scene starts playing before a file has arrived (a slow
   connection, a long video), it waits for what the next seconds need, with a loading ring, instead of playing on
   without it: see [Play waits for the footage](./studio#play-waits-for-the-footage).
 - **Footage plays muted live.** A video layer's own sound is only mixed into rendered videos, so the web copy drops it;

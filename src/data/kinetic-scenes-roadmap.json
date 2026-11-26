@@ -60,12 +60,6 @@
       "goal": "The few tasks left from phases 1-29. Everything else from those phases is built and described on the guide pages.",
       "tasks": [
         {
-          "id": "p3-lazy-media",
-          "title": "Load media near the playhead",
-          "detail": "Live scenes fetch each part's pictures and footage as the playhead nears it (the opening first, then ahead), showing the poster frame until then, instead of loading everything when the page opens. Needs a new player version and the Kinetic Scene element to use it. Already done (Studio 0.1.78): play waits, with a loading ring, for the footage, pictures and sounds the next few seconds need, and footage that stalls holds the scene.",
-          "status": "planned"
-        },
-        {
           "id": "p9-benchmark",
           "title": "Benchmark against hand-made videos",
           "detail": "Rebuild reference motion-graphics videos from their voice-overs with the new tools and compare them frame by frame, the way the Site Converter is measured against its sources, until the Studio's version holds up next to them. Round 1 rebuilt a 10-second side-by-side race explainer from the new pieces and fixed what it found (pills sized to their words, Change text resizing them smoothly); round 2 compares it frame by frame with the reference. Round 2 waits for the reference video.",

@@ -46,6 +46,10 @@ within about one screen of the scene, so a scene further down a page costs nothi
 - The scene keeps its size, its layout and its words from the start: only the files wait, so nothing on the page moves
   when they arrive.
 - A scene at the top of the page, or less than a screen below it, loads its files as the page opens, just as before.
+- **Then part by part** (since Animation Engine 1.5.38): when the scene comes near, only the files of the parts that
+  play in its first ten seconds download. Each later part's files follow as the scene gets within ten seconds of it,
+  so a visitor who watches the opening of a long explainer and moves on never downloads the rest. Jumping ahead (a
+  scroll-driven scene scrolled quickly) fetches that part at once. Choosing **With the page** loads everything at once.
 - Sound already waits for the visitor to turn it on.
 - Still loaded with the page: pictures used to fill a shape, Lottie animations and 3D models.
 

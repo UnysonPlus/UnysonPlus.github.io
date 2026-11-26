@@ -48,6 +48,23 @@ project's name shows at the top right, beside Undo, with *saved* or *saving*; cl
 
 Without the AI Dev Kit running, the Studio works as before: the scene is kept in this browser.
 
+**A project needs the kit running to play.** Its pictures, footage and voice stay in the project's folder on your
+computer, and the kit hands them to the Studio (a website cannot read your files by itself). So when you open a project
+link and the kit is not running, a notice over the stage says **Start the AI Dev Kit to play this project**, with how
+to start it (`start.bat` on Windows, `start.command` on a Mac), a link to get the kit, and how to set it up. When the
+browser is the reason (it blocks the site from reaching apps on your computer, Safari's one-time step, or a kit too old
+for projects), the notice says that instead.
+
+- **The page refreshes by itself** as soon as the kit answers, and the project opens with everything in it.
+  **I started it: check now** looks at once; refreshing the page (F5) does the same.
+- **If the kit stops while a project is open** (its window closed, the computer slept), the notice comes back as
+  **The AI Dev Kit stopped**: pictures and sound cannot load and changes cannot be saved until it runs again. When you
+  have changed the scene meanwhile, the page does not refresh by itself, so nothing is thrown away without asking:
+  refresh it once the kit is running.
+- **Close** hides the notice and shows the words of the scene, as kept in this browser.
+- **To show a project to someone who does not have the kit**, export the video, or put it on a web page with the
+  Kinetic Scene element (a web export carries every file with it).
+
 **Where the workspace is:** a `Kinetic Scenes` folder in your **Documents** folder, wherever your computer keeps it
 (on Windows, Documents can be moved to another drive or to OneDrive, and the workspace follows it; on a Mac it is
 `~/Documents`). To use another folder, click **Change…** in File › Projects and pick it in your computer's folder window

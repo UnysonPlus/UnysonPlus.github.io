@@ -73,9 +73,16 @@ repeated. ([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#webfl
 - **8d · Variable modes.** Give the Theme Settings colours (and sizes) more than one set of values (Light, Dark, a
   second brand) and switch a section, a page or the whole site between them; a visitor's dark-mode preference can
   pick the mode.
-- **8e · More breakpoints.** Larger-than-desktop sizes (1280, 1440, 1920) and **phone landscape** in the Live
-  Editor's device toggle, in every responsive option and in **Runs on**, with values cascading from the larger size
-  down unless changed.
+- **8e · More breakpoints.** Larger-than-desktop sizes and **phone landscape** in the Live Editor's device toggle,
+  in every responsive option and in **Runs on**. *Plan (27 November 2026):* seven tiers, one shared map in PHP and JS
+  (it replaces about ten hard-coded copies): Phone (base), **Phone landscape ≥576** (`sm`), Tablet ≥768 (`md`),
+  Desktop ≥992 (`lg`), Large ≥1200 (`xl`, exists today), **Wide ≥1400** (`xxl`) and **Full HD ≥1920** (`xxxl`). The
+  widths reuse the grid CSS's existing `sm` / `xxl` tiers so every saved class stays valid. Values stay mobile-first,
+  as today: an empty size takes the value of the next smaller one (a desktop value keeps applying on wider screens).
+  Stages: (1) the shared map, and the places that ignore the existing `xl` tier today (spacing classes, container
+  width, the Live Editor's own width rules); (2) the new tiers in the responsive option and the CSS that reads it;
+  (3) the Live Editor device toggle (fixed 667 / 1280 / 1440 / 1920 frames, option tabs following the device) and
+  Hide on; (4) Runs on and Interactions (adding Wide).
 - **8f · A class system.** Style through named classes in the Live Editor: give an element a class, and styling the
   class restyles every element that has it. Combo classes (a class that only adds to another), a "where it comes
   from" view (which classes and presets a value is inherited from) and a count of where else the class is used. It

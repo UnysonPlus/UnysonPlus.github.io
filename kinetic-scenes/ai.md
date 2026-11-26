@@ -58,6 +58,39 @@ never its words, names, logos, people or footage. It can't hear the reference, s
 the pacing; pick the track yourself (Sounds or Make music). Agents: `studio-cli like-this video.mp4 --seconds 20`,
 MCP `video_like_this`. To use the reference's timing alone, see [Reference rhythm](./reference-rhythm).
 
+### From a link
+
+Instead of choosing a file, **paste a link** to the video in the same window:
+
+- **A direct link to a video file** (an address ending in `.mp4`, `.webm` or `.mov`, or a server that sends a video)
+  works with nothing else to install.
+- **A video page** (YouTube, YouTube Shorts, Instagram, TikTok, Vimeo and the many other sites it knows) needs
+  [yt-dlp](https://github.com/yt-dlp/yt-dlp), a free downloader you install yourself; the kit uses it when it is on
+  your computer and says so when it is not. The kit **reads the video's captions first**, so the brief knows its words
+  (to learn from, never to reuse), then fetches the video at 720p at most.
+- Whatever is fetched goes to a temporary folder and is **deleted as soon as it has been studied**: a reference is
+  learned from, never kept or reused. Addresses on your own computer or network are refused.
+- It takes a minute or two (the download, then the half minute of working it out).
+- Only study videos you may use for reference.
+
+Agents give `url` instead of `file` to `video_like_this` and `video_reference`.
+
+## Watch a video (for agents)
+
+An agent can look at any video before it describes, cuts or remakes it: the MCP tool **`video_watch`** returns frames
+from it, chosen within a budget, each with its time and the words spoken around it, plus the whole transcript.
+
+- **The budget** (`frames`, default 12, at most 40) is spent where it matters: moments you name (`at`, in seconds)
+  first, then each time a cue word or phrase is spoken (`cues`), then a frame just after every cut (each new shot),
+  then even spacing for what is left.
+- **A focus range** (`from`, `to`) looks at one part only, for example the first five seconds of a hook.
+- **The words** come from the video's own captions when it came from a link, else from the kit's speech recognition
+  (`words: false` skips it).
+- **A file or a link** (`file`, or `url` as above); a fetched video is deleted after.
+
+For example, an agent checking a render's call to action asks for `frames: 4, from: 50, cues: ["subscribe"]`; one
+learning a reel asks for `frames: 16` and reads the frames with their words.
+
 ## Three directions first
 
 A new scene (**New scene**, making **A scene**) starts with **three directions** to choose from, before anything is

@@ -70,18 +70,6 @@
           "title": "Benchmark against hand-made videos",
           "detail": "Rebuild reference motion-graphics videos from their voice-overs with the new tools and compare them frame by frame, the way the Site Converter is measured against its sources, until the Studio's version holds up next to them. Round 1 rebuilt a 10-second side-by-side race explainer from the new pieces and fixed what it found (pills sized to their words, Change text resizing them smoothly); round 2 compares it frame by frame with the reference. Round 2 waits for the reference video.",
           "status": "in-progress"
-        },
-        {
-          "id": "p24-paste-link",
-          "title": "Paste a link",
-          "detail": "Paste a video link to make one like it, or to learn its rhythm only. The source is studied and then deleted, never reused, and captions are read first.",
-          "status": "planned"
-        },
-        {
-          "id": "p24-video-watch",
-          "title": "Watch a video",
-          "detail": "A video_watch tool for agents, with a frame budget, a focus range and frames pinned to cues.",
-          "status": "planned"
         }
       ]
     },

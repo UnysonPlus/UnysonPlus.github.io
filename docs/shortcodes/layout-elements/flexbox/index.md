@@ -21,6 +21,7 @@ pre-set for the job you're starting. **Each has its own detailed page:**
 | **[Block (div)](./block.md)** | `div` tag · `display: block` | `<div>` | the simplest wrapper — grouping, spacing or a background around one thing |
 | **[Flexbox (div)](./flex.md)** | `div` tag · `display: flex` | `<div>` | a one-dimensional row or stack that can wrap |
 | **[Grid (div)](./grid.md)** | `div` tag · `display: grid` | `<div>` | a two-dimensional column layout (CSS Grid) |
+| **[Freeform](./freeform.md)** | any tile, **Display → Freeform** | the tile's tag | elements placed freely by dragging in the Live Editor, stacking in reading order on small screens |
 
 <img src="/img/shortcodes/flexbox-palette.png" alt="The four Flexbox tiles in the Layout Elements tab — Section, Block (div), Flexbox (div) and Grid (div)" width="332" />
 

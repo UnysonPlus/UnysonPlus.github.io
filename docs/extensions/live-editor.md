@@ -249,6 +249,22 @@ Tablet or Mobile — using the same **"Hide on"** option found on the element's
 **Advanced** tab. Hidden items are dimmed in the canvas and disappear at the
 matching breakpoint on the published page.
 
+## Freeform sections {#freeform}
+
+In a Div whose **Display** is **Freeform** ([Freeform (Div)](/shortcodes/layout-elements/flexbox/freeform)), elements
+are placed by hand:
+
+<img src="/img/live-editor/freeform-drag.png" alt="Dragging a heading in a freeform section: a pink snapping guide lines it up with the top of the star, and a read-out shows X 18.26% Y 116px" width="600" />
+
+- **Drag** an element to move it; snapping guides line it up with the canvas edges and centre and with the other
+  elements, and a read-out shows its position. **Alt** while dragging turns snapping off.
+- **Drag the grip** on the right edge of the selected element to change its width.
+- **Arrow keys** nudge it by 1 px (**Shift** for 10 px).
+- **Right-click → Bring to front / Bring forward / Send backward / Send to back** sets which element covers which.
+
+Every move is one Undo step. On the Tablet and Phone previews the section shows its stacked layout (depending on its
+**Stack Below** setting), where elements follow reading order and are not dragged.
+
 ## AI layout: make responsive, design variations {#ai-layout}
 
 With the [AI Assistant](./ai-assistant/index.md) connected to an AI, right-click a section (or a flexbox, container
@@ -312,7 +328,7 @@ full action list:
 
 > Edit · Spacing · Duplicate · Copy · Paste · Copy Settings · Paste Settings · Copy as JSON · Paste JSON ·
 > Check contrast · Save as image · Note · Hide / Show · Save as Template · Make responsive with AI · Design variations with AI ·
-> Delete
+> Bring to front / forward · Send backward / to back (freeform) · Delete
 
 ## Save as image {#save-as-image}
 

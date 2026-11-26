@@ -249,6 +249,59 @@ Tablet or Mobile — using the same **"Hide on"** option found on the element's
 **Advanced** tab. Hidden items are dimmed in the canvas and disappear at the
 matching breakpoint on the published page.
 
+## Working together {#working-together}
+
+Several people can work on the same page: they see who else has it open, leave comments on its elements, and change
+a **staging copy** that only replaces the live page when it is published.
+
+### Who else is here
+
+When someone else has the page open in the Live Editor, their picture (or initials) appears in the toolbar, next to
+Save. Point at it to see what they have selected. The element each person has selected is outlined on your canvas in
+their colour, with their name. If someone else **saves** the page while you have it open, a notice says so, with a
+**Reload** button: reload before saving, or your save replaces theirs.
+
+### Comments pinned to an element
+
+<img src="/img/live-editor/collab-comments.png" alt="A comment thread on a heading: an orange pin with the number of comments on the canvas, and the Comments panel with the comment, a reply, Resolve and a reply box" width="750" />
+
+- **Right-click an element → Comment…**, or select it and open **Comments** (the speech-bubble button in the
+  toolbar), write, and choose **Comment** (or Ctrl+Enter). Without a selection the comment is on the page as a whole.
+- Elements with open comments carry an orange **pin** with the count; click it to open their thread. The toolbar
+  button shows how many threads are open.
+- **Reply** under any thread; **Resolve** closes it (it hides, with **Show resolved** to see it again) and **Reopen**
+  brings it back; **Delete** removes a comment (your own, or anyone's for editors).
+- New comments and replies reach the others within a few seconds. People in a thread get an email when someone
+  answers it, and the page's author gets one for a new comment.
+- Comments are kept with the page but **apart from its content**: they never change the page, are never shown to
+  visitors, and don't need a Save.
+
+### Staging copy
+
+Use a staging copy to rework a live page without visitors seeing it half done, or to have it reviewed first. Open
+**Staging copy** (the page button in the toolbar) → **Make a staging copy** (save your changes first: the copy is made
+from the saved page). It opens in the Live Editor as a draft, with a yellow bar saying it is a staging copy:
+
+<img src="/img/live-editor/collab-staging.png" alt="The Live Editor on a staging copy: a yellow bar under the toolbar says changes here do not touch the live page until they are published, with a Staging options button" width="750" />
+
+Edit and **Save** it like any page. **Staging options** then offers:
+
+- **Share a review link…**: a link that shows the copy (as last saved) to anyone who has it, **without logging in**,
+  for a client or a colleague. Search engines are told not to index it. **Stop sharing** turns the link off.
+- **Publish to the live page…**: replaces the live page's content, settings and SEO with the copy's. The live page's
+  previous version is kept in its **Revision history**, so it can be restored. The copy then goes to the trash, and
+  you are taken to the live page in the Live Editor.
+- **Discard this copy…**: moves the copy to the trash; the live page is not changed.
+
+From the live page, the same menu lists its open staging copies, so the work can be picked up again.
+
+### Limits
+
+- Presence and comments refresh every few seconds; they are not live typing. Two people can still edit the same page
+  at once: the notice about another person's save is the guard, so agree who saves, or use a staging copy.
+- The page title is not copied back on publish (the copy is called "… (staging copy)").
+- Emails use the site's normal mail setup; if the site cannot send mail, comments still work.
+
 ## Freeform sections {#freeform}
 
 In a Div whose **Display** is **Freeform** ([Freeform (Div)](/shortcodes/layout-elements/flexbox/freeform)), elements
@@ -327,7 +380,7 @@ Right-click any item (or use the **⋮ More** button on its hover toolbar) for t
 full action list:
 
 > Edit · Spacing · Duplicate · Copy · Paste · Copy Settings · Paste Settings · Copy as JSON · Paste JSON ·
-> Check contrast · Save as image · Note · Hide / Show · Save as Template · Make responsive with AI · Design variations with AI ·
+> Check contrast · Save as image · Comment · Note · Hide / Show · Save as Template · Make responsive with AI · Design variations with AI ·
 > Bring to front / forward · Send backward / to back (freeform) · Delete
 
 ## Save as image {#save-as-image}

@@ -35,18 +35,17 @@ Theme Settings rather than in the Animation Engine. They are here so the plan si
 ([Save as image](/extensions/live-editor#save-as-image)), **7a · components with variants and properties**
 ([Components](/extensions/snippets#components)), **7g · vector drawing** ([Vector Shape](/shortcodes/media-elements/vector-shape);
 the searchable icon sets were already in the [Icon](/shortcodes/media-elements/icon) picker), **7e · AI for layout**
-([AI layout](/extensions/live-editor#ai-layout)) and **7h · freeform sections**
-([Freeform (Div)](/shortcodes/layout-elements/flexbox/freeform)).
+([AI layout](/extensions/live-editor#ai-layout)), **7h · freeform sections**
+([Freeform (Div)](/shortcodes/layout-elements/flexbox/freeform)) and **7i · working together**
+([Working together](/extensions/live-editor#working-together)): **Phase 7 is complete** (26 November 2026).
 
-- **7i · Working together.** Comments pinned to an element of the page, presence (who else is editing, and where),
-  and a staging copy of a page to change and review before it goes live.
 - **To look into · "flow" effects.** Framer lists a flow effect among its newer tools. What it does and whether the
   Animation Engine already covers it (Interactions, Layout Animation, Page Timelines) is to be checked before it is
   planned.
 
 ### Build order
 
-1. **7i** working together.
+All done. The "flow" effects item above is the only open point of this phase.
 
 ### Not planned
 

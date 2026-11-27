@@ -132,6 +132,15 @@ normal spelling.
 other words, pauses and flat questions. It cannot judge tone, and a sound that is only slightly off can still pass, so
 listen to the result too.
 
+### Takes cut off at the end
+
+A voice app sometimes stops a take in the middle of its last word: "…for free" ended at full loudness, halfway through
+"free", and the speech recogniser still heard "free", so the word check passed. The voice check now also measures the
+sound's last 60 ms (after any silence an encoder pads on): a line still at speaking loudness there (louder than -30 dB;
+a finished line fades to -45 dB or lower) is reported as "the take stops mid-sound … the end is cut off, make it again"
+(AI Dev Kit 1.13.42+). The same text comes out the same from the kit's cache, so make it again with slightly different
+words.
+
 ### Captions that lose their last word
 
 Text timed to the voice (the [Spoken rhythm](./presets.md)) brings each word in as it is said, so if the text leaves too

@@ -20,7 +20,26 @@ A band that carries **no** component — no pattern, no divider, no preset beyon
 Swiss and Monochrome are *spare*, not *undecorated*.
 :::
 
-## First: the Animation Engine ships switched off
+## First: your bands should go edge to edge
+
+The quickest way to make a generated page look unfinished has nothing to do with motion. It is a
+**tinted or coloured band that stops at the container width**, so the page shows down both sides and
+the band reads as a floating box.
+
+The option is **Full-Width Band** on a section, and it is **off by default** — which contains the
+whole section *including its background*. On, the background spans the window while the content
+stays contained to your site width. That is what almost every band wants: a colour band, a tinted
+"how it works" strip, a dark call to action.
+
+Turn it off only for a band genuinely meant to float as a card. If you cannot say why this one
+floats, it should be full-bleed.
+
+:::caution Full-bleed is the background, not the text
+Edge-to-edge background, contained content. Text running the whole width of a desktop window is
+unreadable — the container width is what keeps the measure sane underneath the bleed.
+:::
+
+## Then: the Animation Engine ships switched off
 
 This is the single thing most likely to make a site come out flat, and it is silent.
 

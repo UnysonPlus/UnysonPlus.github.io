@@ -73,6 +73,9 @@ repeated. ([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#webfl
 - **8d · Variable modes.** Give the Theme Settings colours (and sizes) more than one set of values (Light, Dark, a
   second brand) and switch a section, a page or the whole site between them; a visitor's dark-mode preference can
   pick the mode.
+  **Shipped 27 November 2026** (Shortcodes 1.16.30, theme 2.6.70): [Colour Modes](/theme/components/colour-modes) in
+  Theme Settings (palette, surfaces and other variables per mode), switched per site, page or Section / Div / Container,
+  and a Dark mode that the visitor's toggle or device setting picks. Preset CSS now follows a mode.
 - **8e · More breakpoints.** Larger-than-desktop sizes and **phone landscape** in the Live Editor's device toggle,
   in every responsive option and in **Runs on**. *Plan (27 November 2026):* seven tiers, one shared map in PHP and JS
   (it replaces about ten hard-coded copies): Phone (base), **Phone landscape ≥576** (`sm`), Tablet ≥768 (`md`),

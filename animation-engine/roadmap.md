@@ -114,6 +114,10 @@ repeated. ([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#webfl
 - **8h · A built-in language switcher.** Locales per site, each page's translation linked to its original
   (translated text, slugs and SEO), a language switcher element, and translated custom post types; built on the
   AI page translation that exists today.
+  **Shipped 27 November 2026** (Languages 1.0.0, a new extension): [Languages](/extensions/languages) gives every page,
+  post and custom post type a language and linked translations, /fr/-style addresses, html lang and hreflang,
+  translated menus, a Language box (copy or link a translation), the Language Switcher element, and AI translations
+  that link themselves.
 - **8i · A "Get started" checklist.** A short checklist in the Live Editor for a new site (logo, colours, fonts, menu,
   first page, SEO, publish) that ticks itself off as each is done.
 

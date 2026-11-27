@@ -108,6 +108,9 @@ repeated. ([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#webfl
   usage counts, the presets an element wears, and where each part of its look comes from).
 - **8g · Page A/B tests.** Two versions of a page (or of a section) shown to a share of visitors each, with the goal
   (a click, a form sent, a sale) measured in Visitor Insights and the winner kept with one click.
+  **Shipped 27 November 2026** (Visitor Insights 1.0.18): [A/B tests](/extensions/visitor-insights/ab-tests) now test a
+  whole page as well as a section (version B is a draft copy, same address), with a chosen share of visitors for B, and
+  **Keep A / Keep B** makes the winner permanent in one click (with Undo).
 - **8h · A built-in language switcher.** Locales per site, each page's translation linked to its original
   (translated text, slugs and SEO), a language switcher element, and translated custom post types; built on the
   AI page translation that exists today.

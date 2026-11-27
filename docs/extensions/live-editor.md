@@ -259,6 +259,14 @@ size on screen: Wide shows its Wide tab, Fit shows the tab its real width falls 
 clicking a tab in an option (say Phone landscape) moves the canvas to that size's frame, so you see the value you are
 editing. The command palette has one **Device:** entry per size.
 
+## Classes {#classes}
+
+The **Classes** button (the tag in the toolbar) opens a panel for the selected element's [classes](/theme/components/classes):
+named styles shared by many elements. Add or remove a class (one undo step), make a new one, or open a class to change
+it: the canvas shows the change on every element that has it, and **Save class** applies it on every page. The panel also
+says how many elements and pages use each class, and **where the element's look comes from**: which class, preset or
+setting sets each property.
+
 ## Hide / Show (responsive)
 
 Every item has a device-aware **Hide / Show** control (in the right-click menu).

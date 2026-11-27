@@ -103,6 +103,9 @@ repeated. ([The comparison](./3d-motion-roadmap/framer-webflow-analysis.md#webfl
   class restyles every element that has it. Combo classes (a class that only adds to another), a "where it comes
   from" view (which classes and presets a value is inherited from) and a count of where else the class is used. It
   sits on top of the presets rather than beside them, so a button preset is a class with a name.
+  **Shipped 27 November 2026** (Shortcodes 1.16.31, Live Editor 0.3.38): [Classes](/theme/components/classes) in Theme
+  Settings and on every element's Advanced tab, combo classes, and the Live Editor's Classes panel (live class editing,
+  usage counts, the presets an element wears, and where each part of its look comes from).
 - **8g · Page A/B tests.** Two versions of a page (or of a section) shown to a share of visitors each, with the goal
   (a click, a form sent, a sale) measured in Visitor Insights and the winner kept with one click.
 - **8h · A built-in language switcher.** Locales per site, each page's translation linked to its original
